@@ -18,245 +18,95 @@
     <name>AccountDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="78"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="78"/>
       <source>Form</source>
       <translation>Formulář</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="79"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="79"/>
       <source>Display additional nodes</source>
       <translation>Zobrazit dodatečné položky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="80"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="80"/>
       <source>Important</source>
       <translation>Důležité</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="33"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="81"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="81"/>
       <source>Unread</source>
       <translation>Nepřečtené</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
       <source>Labels</source>
       <translation>Štítky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
       <source>Probes</source>
       <translation>Dotazy</translation>
     </message>
   </context>
   <context>
-    <name>AdBlockDialog</name>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="25"/>
-      <source>AdBlock configuration</source>
-      <translation>AdBlock nastavení</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="62"/>
-      <source>Cannot enable AdBlock</source>
-      <translation>AdBlock nemůže být povolen</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="63"/>
-      <source>There is some error in AdBlock component and it cannot be enabled. Check error message below (or application debug log) for more information.</source>
-      <translation>V AdBlocku je nějaká chyba, a tak nemůže být aktivován. Mrkněte níže na detail chyby nebo prozkoumejte aplikační log.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="97"/>
-      <source>OK!</source>
-      <translation>OK!</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="112"/>
-      <source>There is error, check application log for more details and head to online documentation.</source>
-      <translation>Došlo k chybě, zkontrolujte log programu a případně prověřte dokumentaci.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="83"/>
-      <source>There is error, check application log for more details and head to online documentation. Also make sure that Node.js is installed.
-
-Error: %1</source>
-      <translation>Došlo k chybě, zkontrolujte log programu a případně prověřte dokumentaci. Ujistětě se, že máte nakonfigurovaný Node.js.
-
-Chyba: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="87"/>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="114"/>
-      <source>ERROR!</source>
-      <translation>CHYBA!</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="37"/>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="38"/>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="104"/>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="105"/>
-      <source>No additional info.</source>
-      <translation>Žádné další info.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.cpp" line="96"/>
-      <source>It seems your AdBlock runs fine, but wait few seconds to be sure.</source>
-      <translation>Vypadá to, že AdBlock běží dobře, ale počkejme pár vteřin.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="20"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="148"/>
-      <source>Enable AdBlock</source>
-      <translation>Povolit AdBlock</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="32"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="149"/>
-      <source>&amp;Help</source>
-      <translation>&amp;Pomoc</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="58"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="151"/>
-      <source>Filter lists</source>
-      <translation>Filtrovací seznamy</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="64"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="150"/>
-      <source>Add your direct links to filter lists here (one URL per line)</source>
-      <translation>Zde přidávejte přímé odkazy na seznamy filtrů (jeden odkaz na řádek)</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="78"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="153"/>
-      <source>Custom filters</source>
-      <translation>Vlastní filtry</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockdialog.ui" line="84"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_adblockdialog.h" line="152"/>
-      <source>Add your custom filters here (one filter per line)</source>
-      <translation>Zde přidávejte vlastní filtry (jeden filtr na řádek)</translation>
-    </message>
-  </context>
-  <context>
-    <name>AdBlockIcon</name>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="12"/>
-      <source>AdBlock lets you block unwanted content on web pages</source>
-      <translation>AdBlock vám umožňuje blokovat nevyžádaný obsah na webových stránkách.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockicon.cpp" line="45"/>
-      <source>Show AdBlock &amp;settings</source>
-      <translation>Zobrazit nastavení &amp;AdBlocku</translation>
-    </message>
-  </context>
-  <context>
-    <name>AdBlockManager</name>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="199"/>
-      <source>Failed to setup filters and start server: %1.</source>
-      <translation>Nepodařilo se nastavit filtry a spustit server: %1.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/adblock/adblockmanager.cpp" line="377"/>
-      <source>failed to download filter list &apos;%1&apos;</source>
-      <translation>nepodařilo se stáhnout filter &apos;%1&apos;</translation>
-    </message>
-  </context>
-  <context>
-    <name>ApiServer</name>
-    <message>
-      <location filename="../src/librssguard/network-web/apiserver.cpp" line="188"/>
-      <source>account with ID %1 not found</source>
-      <translation>účet s ID %1 nebyl nalezen</translation>
-    </message>
-  </context>
-  <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1230"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1073"/>
       <source>Application is already running.</source>
       <translation>Aplikace již běží</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="638"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="505"/>
       <source>Output directory is not writable.</source>
       <translation>Nelze psát do cílové složky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="646"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="513"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>Soubor nastavení nebyl zkopírován do cílového adresáře.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="661"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="528"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Obnovení databáze nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="668"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="535"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Obnovení nastavení nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1248"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1091"/>
       <source>Cannot add feed</source>
       <translation>Nelze přidat kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1249"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1092"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Kanál nemůže být přidán, protože nemáte aktivovaný žádný účet který umí přidávat kanály.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1420"/>
-      <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1409"/>
-      <source>Packages were NOT updated because of error: %2. Affected packages:
-%1</source>
-      <translation>Balíčky NEBYLY aktualizovány z důvodu chyby: %2. Postižené balíčky:
-%1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1421"/>
-      <source>These packages were installed/updated:
-%1</source>
-      <translation>Tyto balíčky byly nainstalovány/aktualizovány:
-%1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1108"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="958"/>
       <source>Unread articles fetched</source>
       <translation>Staženy nepřečtené zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="392"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="298"/>
       <source>Go to changelog</source>
       <translation>Zobrazit seznam změn</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1179"/>
-      <source>AdBlock needs to be configured</source>
-      <translation>Je třeba nastavit AdBlock</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="386"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="292"/>
       <source>Welcome</source>
       <translation>Vítejte</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="387"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="293"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -267,12 +117,7 @@ Prosím, zkontrolujte novinky kliknutím
 na tuto bublinu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1180"/>
-      <source>AdBlock is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation>AdBlock není korektně nakonfigurován. Běžte do &quot;Nastavení&quot; -&gt; &quot;Node.js&quot; a zkontrolujte nastavení.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1229"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1072"/>
       <source>Already running</source>
       <translation>Již běží</translation>
     </message>
@@ -281,73 +126,73 @@ na tuto bublinu.</translation>
     <name>ArticleAmountControl</name>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="256"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="256"/>
       <source>Form</source>
       <translation>Formulář</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="261"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="261"/>
       <source>Ignoring old articles</source>
       <translation>Ignorování starých zpráv</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
       <source>Add articles with any date into the database</source>
       <translation>Přidávat do databáze všechny články, nehledě na datum vytvoření</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
       <source>Avoid adding articles before this date/time into the database</source>
       <translation>Nepřidávat starší články než nastavené datum do databáze</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="259"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="259"/>
       <source>Absolute date/time</source>
       <translation>Absolutní datum/čas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="260"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="260"/>
       <source>Relative time</source>
       <translation>Relativní čas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="267"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="267"/>
       <source>Limiting amount of articles in feeds</source>
       <translation>Omezení počtu článků v kanálech</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="262"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="262"/>
       <source>Customize article limits</source>
       <translation>Přizpůsobit limity článků</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
       <source>In database, keep</source>
       <translation>Uchovávat v databázi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="264"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="264"/>
       <source>Do not remove important articles</source>
       <translation>Neodstraňovat důležité články</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="265"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="265"/>
       <source>Do not remove unread articles</source>
       <translation>Neodstraňovat nepřečtené články</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="266"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="266"/>
       <source>Just move articles to recycle bin, do not purge them</source>
       <translation>Stačí přesunout články do koše, nemazat je fyzicky</translation>
     </message>
@@ -381,42 +226,42 @@ na tuto bublinu.</translation>
     <name>ArticleListNotification</name>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="66"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="142"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="142"/>
       <source>...</source>
       <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="144"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="144"/>
       <source>Go to previous page</source>
       <translation>Jít na předchozí stránku</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="94"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="147"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="147"/>
       <source>Go to next page</source>
       <translation>Jít na další stránku</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="101"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="150"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="150"/>
       <source>Open article in article list</source>
       <translation>Otevřít článek v seznamu článků</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="108"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="153"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="153"/>
       <source>Open article in web browser</source>
       <translation>Otevřít článek ve webovém prohlížeči</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="122"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="156"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="156"/>
       <source>Mark all articles as read</source>
       <translation>Označit všechny zprávy jako přečtené</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="73"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="93"/>
       <source>%n feeds fetched</source>
       <translation>
         <numerusform>%n kanál načten</numerusform>
@@ -427,72 +272,28 @@ na tuto bublinu.</translation>
     </message>
   </context>
   <context>
-    <name>ArticleParse</name>
-    <message>
-      <location filename="../src/librssguard/network-web/articleparse.cpp" line="39"/>
-      <source>Packages for article-extractor are installed</source>
-      <translation>Balíčky pro article-extractor jsou nainstalovány</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/articleparse.cpp" line="40"/>
-      <source>Reload your website or article and you can test it then!</source>
-      <translation>Znovu načtěte svou webovou stránku nebo článek a poté to můžete vyzkoušet!</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/articleparse.cpp" line="45"/>
-      <source>Packages for article-extractor are installed. You can now use this feature!</source>
-      <translation>Balíčky pro article-extractor jsou nainstalovány. Nyní můžete použít tuto funkci!</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/articleparse.cpp" line="62"/>
-      <source>Packages for article-extractor are NOT installed</source>
-      <translation>Balíčky pro article-extractor NEJSOU nainstalovány</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/articleparse.cpp" line="63"/>
-      <source>There is error: %1</source>
-      <translation>Máme chybu: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/articleparse.cpp" line="69"/>
-      <source>Packages for article-extractor are NOT installed. There is error: %1</source>
-      <translation>Balíčky pro article-extractor nejsou nainstalovány. Došlo k chybě: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/articleparse.cpp" line="104"/>
-      <source>Node.js libraries not installed</source>
-      <translation>Node.js balíčky nejsou nainstalované</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/articleparse.cpp" line="105"/>
-      <location filename="../src/librssguard/network-web/articleparse.cpp" line="115"/>
-      <source>Node.js is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation>Node.js není nakonfigurováno správně. Jděte do &quot;Nastavení -&gt; &quot;Node.js&quot; a zkontrolujte nastavení a případně Node.js nainstalujte.</translation>
-    </message>
-  </context>
-  <context>
     <name>AuthenticationDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="122"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="122"/>
       <source>Form</source>
       <translation>Formulář</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="125"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="125"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
       <translation>Některé kanály vyžaduje autentizaci, a to včetně kanálů pro GMail. Je podporována autentizace BASIC, NTLM-2 a DIGEST-MD5.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="127"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="127"/>
       <source>Credentials</source>
       <translation>Přihlašovací údaje</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="25"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="123"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="123"/>
       <source>Authentication type</source>
       <translation>Způsob autentizace</translation>
     </message>
@@ -500,14 +301,14 @@ na tuto bublinu.</translation>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="60"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="100"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="128"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="128"/>
       <source>Username</source>
       <translation>Uživatelské jméno</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="73"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="129"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="129"/>
       <source>Password</source>
       <translation>Heslo</translation>
     </message>
@@ -583,9 +384,11 @@ na tuto bublinu.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="73"/>
       <source>Number of feeds: %1
-Number of categories: %2</source>
-      <translation>Počet kanálů: %1
-Počet kategorií: %2</translation>
+Number of categories: %2
+Number of disabled feeds: %3</source>
+      <translation type="unfinished">Number of feeds: %1
+Number of categories: %2
+Number of disabled feeds: %3</translation>
     </message>
   </context>
   <context>
@@ -681,183 +484,19 @@ Počet kategorií: %2</translation>
     </message>
   </context>
   <context>
-    <name>DownloadItem</name>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="275"/>
-      <source>Error opening output file: %1</source>
-      <translation>Problém s otevřením souboru: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="113"/>
-      <source>Select destination for downloaded file</source>
-      <translation>Zvolit cílové umístění pro stahovaný soubor</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="301"/>
-      <source>Error: %1</source>
-      <translation>Chyba: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="140"/>
-      <source>Download directory couldn&apos;t be created</source>
-      <translation>Cílový adresář nemohl být vytvořen</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="286"/>
-      <source>Error when saving file: %1</source>
-      <translation>Chyba při ukládání souboru: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="393"/>
-      <source>%1 of %2 (%3 per second) - %4</source>
-      <translation>%1 of %2 (%3 za vteřinu) - %4</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="404"/>
-      <source>%1 of %2 - download completed</source>
-      <translation>%1 z %2 - stahování dokončeno</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="220"/>
-      <source>Cannot open file</source>
-      <translation>Soubor nelze otevřít</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="221"/>
-      <source>Cannot open output file. Open it manually.</source>
-      <translation>Výstupní soubor nelze otevří, otevřete jej ručně.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="231"/>
-      <source>Cannot open directory</source>
-      <translation>Adresář nelze otevřít</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="232"/>
-      <source>Cannot open output directory. Open it manually.</source>
-      <translation>Výstupní adresář nelze otevří, otevřete jej ručně.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="445"/>
-      <source>Download finished</source>
-      <translation>Stahování dokončeno</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="446"/>
-      <source>File &apos;%1&apos; is downloaded.
-Click here to open parent directory.</source>
-      <translation>Soubor &apos;%1&apos; je stažen.
-Klikněte zde pro otevření nadřazeného adresáře.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="457"/>
-      <source>URL: %1</source>
-      <translation>Adresa: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="458"/>
-      <source>Local file: %1</source>
-      <translation>Lokální soubor: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="119"/>
-      <source>Selection of local file cancelled.</source>
-      <translation>Výběr lokálního souboru zrušen.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="450"/>
-      <source>Open folder</source>
-      <translation>Otevřít složku</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloaditem.ui" line="54"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloaditem.h" line="128"/>
-      <source>Filename</source>
-      <translation>Název souboru</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloaditem.ui" line="86"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloaditem.h" line="131"/>
-      <source>&amp;Try again</source>
-      <translation>&amp;Zkusit znovu</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloaditem.ui" line="93"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloaditem.h" line="132"/>
-      <source>&amp;Stop</source>
-      <translation>Z&amp;astavit</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloaditem.ui" line="100"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloaditem.h" line="133"/>
-      <source>&amp;Open file</source>
-      <translation>&amp;Otevřít soubor</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloaditem.ui" line="107"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloaditem.h" line="134"/>
-      <source>Open &amp;directory</source>
-      <translation>&amp;Otevřít adresář</translation>
-    </message>
-  </context>
-  <context>
-    <name>DownloadManager</name>
-    <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="748"/>
-      <source>%n minutes remaining</source>
-      <translation>
-        <numerusform>%n minuta do konce</numerusform>
-        <numerusform>%n minuty do konce</numerusform>
-        <numerusform>%n minut do konce</numerusform>
-        <numerusform>%n minut do konce</numerusform>
-      </translation>
-    </message>
-    <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="752"/>
-      <source>%n seconds remaining</source>
-      <translation>
-        <numerusform>%n vteřina do konce</numerusform>
-        <numerusform>%n vteřiny do konce</numerusform>
-        <numerusform>%n vteřin do konce</numerusform>
-        <numerusform>%n vteřin do konce</numerusform>
-      </translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="764"/>
-      <source>bytes</source>
-      <translation>bajtů</translation>
-    </message>
-    <message numerus="yes">
-      <location filename="../src/librssguard/network-web/downloadmanager.cpp" line="602"/>
-      <source>Downloading %n file(s)...</source>
-      <translation>
-        <numerusform>Stahuji %n soubor...</numerusform>
-        <numerusform>Stahuji %n soubory...</numerusform>
-        <numerusform>Stahuji %n souborů...</numerusform>
-        <numerusform>Stahuji %n souborů...</numerusform>
-      </translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/downloadmanager.ui" line="38"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_downloadmanager.h" line="72"/>
-      <source>Clean up</source>
-      <translation>Vyčistit</translation>
-    </message>
-  </context>
-  <context>
     <name>DynamicShortcutsWidget</name>
     <message>
-      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="126"/>
+      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="127"/>
       <source>Duplicate shortcut</source>
       <translation type="unfinished">Duplicate shortcut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="127"/>
+      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="128"/>
       <source>There is another action which has the same shortcut assigned.</source>
       <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="128"/>
+      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="129"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
       <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
     </message>
@@ -900,18 +539,18 @@ Klikněte zde pro otevření nadřazeného adresáře.</translation>
       <translation>Komu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="114"/>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="120"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="121"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="127"/>
       <source>Cannot download attachment</source>
       <translation>Nelze stáhnout přílohu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="115"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="122"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
       <translation>Přílohu nelze stáhnout, protože nejste přihlášen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="121"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="128"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
       <translation>Přílohu nelze stáhnout, protože došlo k chybě.</translation>
     </message>
@@ -947,33 +586,33 @@ Klikněte zde pro otevření nadřazeného adresáře.</translation>
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="263"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>používá globální nastavení, ale globální stahování zpráv je zakázáno</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="287"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="284"/>
       <source>no errors</source>
       <translation>žádné chyby</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="293"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="290"/>
       <source>authentication error</source>
       <translation>chyba autentifikace</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="296"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="293"/>
       <source>network error</source>
       <translation>chyba sítě</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="249"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="246"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>nestahuje zprávy automaticky</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="260"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="257"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>používá globální nastavení (%n minuta do dalšího stahování zpráv)</numerusform>
@@ -983,7 +622,7 @@ Klikněte zde pro otevření nadřazeného adresáře.</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="274"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="271"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -994,22 +633,22 @@ Klikněte zde pro otevření nadřazeného adresáře.</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="290"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="287"/>
       <source>has new articles</source>
       <translation>má nové zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="296"/>
       <source>parsing error</source>
       <translation>špatný formát kanálu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
       <source>error</source>
       <translation>chyba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="372"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="369"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -1025,7 +664,7 @@ ID položky: %5</translation>
   <context>
     <name>FeedDownloader</name>
     <message>
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="236"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="237"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
       <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
     </message>
@@ -1066,12 +705,12 @@ ID položky: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="371"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="379"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Zahajuji automatické stažení zpráv pro některé kanály</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="372"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="380"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>Budou se stahovat zprávy pro %n kanál</numerusform>
@@ -1081,12 +720,12 @@ ID položky: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="93"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="101"/>
       <source>Cannot fetch articles at this point</source>
       <translation>V tuto chvíli nelze stáhnout zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="94"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="102"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
       <translation>V tuto chvíli nelze zahájit stahování zpráv, protože běží jiná důležitá operace.</translation>
     </message>
@@ -1273,7 +912,7 @@ ID položky: %5</translation>
       <translation>toto asi není OPML soubor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="411"/>
+      <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="417"/>
       <source>Category </source>
       <translation>Kategorie</translation>
     </message>
@@ -1304,12 +943,12 @@ ID položky: %5</translation>
   <context>
     <name>FeedsProxyModel</name>
     <message>
-      <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="273"/>
+      <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="275"/>
       <source>Cannot perform drag &amp; drop operation</source>
       <translation>Drag &amp; drop operaci nelze provést</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="274"/>
+      <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="276"/>
       <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
       <translation>Tažená položka nemůže přesunuta mezi různými účty, toto není podporováno.</translation>
     </message>
@@ -1317,153 +956,213 @@ ID položky: %5</translation>
   <context>
     <name>FeedsToolBar</name>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="78"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="90"/>
       <source>Toolbar spacer</source>
       <translation>Mezera</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="121"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="185"/>
       <source>Everywhere</source>
       <translation>Všude</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="122"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="186"/>
       <source>Titles only</source>
       <translation>Pouze v nadpisech</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="126"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="190"/>
       <source>Search feeds</source>
       <translation>Prohledávat kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="134"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="198"/>
       <source>Feeds search box</source>
       <translation>Hledací panel kanálů</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="208"/>
+      <source>Menu for filtering feeds</source>
+      <translation type="unfinished">Menu for filtering feeds</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="210"/>
+      <source>(feed list)</source>
+      <translation type="unfinished">(feed list)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="214"/>
+      <source>No extra filtering</source>
+      <translation>Žádný filtr</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="220"/>
+      <source>Show unread items</source>
+      <translation type="unfinished">Show unread items</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="226"/>
+      <source>Show non-empty items</source>
+      <translation type="unfinished">Show non-empty items</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="232"/>
+      <source>Show feeds with new articles</source>
+      <translation type="unfinished">Show feeds with new articles</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="238"/>
+      <source>Show feeds with error</source>
+      <translation type="unfinished">Show feeds with error</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="244"/>
+      <source>Show switched off feeds</source>
+      <translation type="unfinished">Show switched off feeds</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="250"/>
+      <source>Show quiet feeds</source>
+      <translation type="unfinished">Show quiet feeds</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="256"/>
+      <source>Show feeds with article filters</source>
+      <translation type="unfinished">Show feeds with article filters</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="262"/>
+      <source>Display all feeds</source>
+      <translation type="unfinished">Display all feeds</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="272"/>
+      <source>Feed list filter</source>
+      <translation type="unfinished">Feed list filter</translation>
     </message>
   </context>
   <context>
     <name>FeedsView</name>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="293"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="291"/>
       <source>Cannot edit item</source>
       <translation>Nelze upravit položku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="420"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="422"/>
       <source>Cannot delete item</source>
       <translation>Nelze smazat položku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1047"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1048"/>
       <source>Context menu for empty space</source>
       <translation>Kontextové menu pro prázdný prostor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="294"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="292"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
       <translation>Nelze editovat vybranou položku, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="421"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="423"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
       <translation>Nelze smazat vybranou položku, protože už běží jiná kritická operace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="923"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="977"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="924"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="978"/>
       <source>Context menu for categories</source>
       <translation>Kontextové menu pro kategorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="243"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="260"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="275"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="459"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="241"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="258"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="273"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="461"/>
       <source>Are you sure?</source>
       <translation>Jste si jistý?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1057"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1058"/>
       <source>Context menu for other items</source>
       <translation>Kontextové menu pro ostatní položky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1101"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1102"/>
       <source>Context menu for regex query</source>
       <translation>Kontextové menu pro regex dotaz</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="170"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="168"/>
       <source>Selected account does not support adding of new feeds.</source>
       <translation>Vybraný účet nepodporuje přidávání nových kanálů.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="188"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="186"/>
       <source>Selected account does not support adding of new categories.</source>
       <translation>Vybraný účet nepodporuje přidávání nových kategorií.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="244"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="276"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="242"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="274"/>
       <source>Do you really want to clean all articles from selected items?</source>
       <translation>Opravdu chcete smazat všechny články z vybraných položek?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="259"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
       <translation type="unfinished">Do you really want to purge all non-starred articles from selected feeds?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="325"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="343"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="360"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="313"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="323"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="341"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="358"/>
       <source>Cannot edit items</source>
       <translation>Nelze upravit položku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="316"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="314"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
       <translation>Vybrané položky nemůžpu být upraveny. Toto není podporováno (zatím).</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="326"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="324"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
       <translation>%1 nepodporuje dávkovou editaci více účtů.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="344"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="342"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
       <translation>%1 nepodporuje dávkové úpravy položek z více účtů.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="361"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="359"/>
       <source>%1 does not support batch editing of items of varying types.</source>
       <translation>%1 nepodporuje dávkové úpravy položek různých typů.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="371"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="369"/>
       <source>Cannot edit some items</source>
       <translation>Nelze upravit nějaké položky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="372"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="370"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
       <translation>Některé z vybraných položek nelze upravit. Pokračuji s úpravou zbytku.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="449"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="451"/>
       <source>Some items won&apos;t be deleted</source>
       <translation>Některé položky nebudou odstraněny</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="450"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="452"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
       <translation>Některé vybrané položky nebudou odstraněny, protože je nelze odstranit.</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="457"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="459"/>
       <source>Deleting %n items</source>
       <translation>
         <numerusform>Smazání %n položky</numerusform>
@@ -1473,7 +1172,7 @@ ID položky: %5</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="458"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="460"/>
       <source>You are about to completely delete %n items.</source>
       <translation>
         <numerusform>Chystáte se odstranit %n položku.</numerusform>
@@ -1483,29 +1182,29 @@ ID položky: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="662"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="664"/>
       <source>Context menu for recycle bins</source>
       <translation>Kontextové menu pro odp. koše
 </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="683"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="685"/>
       <source>Context menu for accounts</source>
       <translation>Kontextové menu pro účty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1078"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1079"/>
       <source>Context menu for label</source>
       <translation>Kontextové menu pro štítek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1026"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1027"/>
       <source>Context menu for important articles</source>
       <translation>Kontextové menu pro důležité zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="169"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="187"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="167"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="185"/>
       <source>Not supported by account</source>
       <translation>Není podporováno</translation>
     </message>
@@ -1513,106 +1212,96 @@ ID položky: %5</translation>
   <context>
     <name>FormAbout</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="129"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="120"/>
       <source>Changelog not found.</source>
       <translation>Historie změn nenalezena.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="31"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="27"/>
       <source>About %1</source>
       <translation>O aplikaci %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="53"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="49"/>
       <source>Cannot copy</source>
       <translation>Nelze kopírovat</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="54"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="50"/>
       <source>Cannot copy info to clipboard.</source>
       <translation>Nelze zkopírovat informace do schránky.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="68"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="64"/>
       <source>FULLY portable</source>
       <translation>ZCELA portable</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="79"/>
-      <source>User data folder (&quot;%5&quot;) -&gt; &quot;%1&quot;
+      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="75"/>
+      <source>User data folder (&quot;%2&quot;) -&gt; &quot;%1&quot;
 
-Settings file (%3) -&gt; &quot;%2&quot;
-Skins base folder -&gt; &quot;%4&quot;
-Icon themes base folder -&gt; &quot;%8&quot;
-Node.js package folder -&gt; &quot;%6&quot;
-QtWebEngine cache folder -&gt; &quot;%7&quot;</source>
-      <translation>Složka uživatelských dat (&quot;%5&quot;) -&gt; &quot;%1&quot;
+Settings file (%4) -&gt; &quot;%3&quot;
+Skins base folder -&gt; &quot;%5&quot;
+Icon themes base folder -&gt; &quot;%6&quot;</source>
+      <translation type="unfinished">User data folder (&quot;%2&quot;) -&gt; &quot;%1&quot;
 
-Soubor nastavení (%3) -&gt; &quot;%2&quot;
-Základní složka skinů -&gt; &quot;%4&quot;
-Základní složky ikon -&gt; &quot;%8&quot;
-Složka balíčku pro Node.js -&gt; &quot;%6&quot;
-Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
+Settings file (%4) -&gt; &quot;%3&quot;
+Skins base folder -&gt; &quot;%5&quot;
+Icon themes base folder -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="134"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="125"/>
       <source>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</source>
       <translation>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Verze:&lt;/b&gt; %1 (sestaveno na %2/%3)&lt;br/&gt;&lt;b&gt;Revize:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Datum sestavení:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (při kompilaci %7)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="152"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="143"/>
       <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
       <translation>&lt;body&gt;%5 je (velmi) lehká čtečka kanálů.&lt;br&gt;&lt;br&gt;Tento software je šířen pod podmínkami licence GNU General Public License, verze 3.&lt;br&gt;&lt;br&gt;Kontakty:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~web&lt;/li&gt;&lt;/ul&gt;Zdrojový kód pro %5 lze získat na jeho webu.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="74"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="70"/>
       <source>NOT portable</source>
       <translation>NEportable</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="71"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="67"/>
       <source>CUSTOM</source>
       <translation>VLASTNÍ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="93"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="224"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="219"/>
       <source>&amp;Copy info to clipboard</source>
       <translation>&amp;Kopírovat informace do schránky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="112"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="226"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="221"/>
       <source>Information</source>
       <translation>Informace</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="160"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="228"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="222"/>
       <source>Licenses</source>
       <translation>Licence</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="172"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="227"/>
-      <source>Licenses page is available only in English language.</source>
-      <translation>Stránka Licence je dostupná pouze v anglickém jazyce.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="180"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="230"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="177"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="224"/>
       <source>Changelog</source>
       <translation>Historie verzí</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="215"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="229"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="212"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="223"/>
       <source>Changelog page is available only in English language.</source>
       <translation>Historie verzí je dostupná pouze v anglickém jazyce.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="223"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="231"/>
+      <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="220"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="225"/>
       <source>Resources</source>
       <translation>Zdroje</translation>
     </message>
@@ -1644,7 +1333,7 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     <name>FormAddAccount</name>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaddaccount.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formaddaccount.h" line="73"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formaddaccount.h" line="73"/>
       <source>Add new account</source>
       <translation>Přidat nový účet</translation>
     </message>
@@ -1798,12 +1487,12 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       <translation>Záloha byla úspěšně vytvořena.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="92"/>
+      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="93"/>
       <source>Backup name cannot be empty.</source>
       <translation>Název zálohy nemůže být prázdný.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="95"/>
+      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="96"/>
       <source>Backup name looks okay.</source>
       <translation>Název zálohy je v pořádku.</translation>
     </message>
@@ -1823,61 +1512,61 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       <translation>Zvolit výstupní adresář</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="86"/>
+      <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="87"/>
       <source>Good destination directory is specified.</source>
       <translation>Je zvolen vhodný výstupní adresář.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="142"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="142"/>
       <source>Backup database/settings</source>
       <translation>Zálohovat databázi/nastavení</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="20"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="143"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="143"/>
       <source>Output directory</source>
       <translation>Výstupní adresář</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="144"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="144"/>
       <source>&amp;Select directory</source>
       <translation>&amp;Zvolit adresář</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="145"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="145"/>
       <source>Backup properties</source>
       <translation>Vlastnosti zálohy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="49"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="146"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="146"/>
       <source>Items to backup</source>
       <translation>Zálohované položky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="56"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="147"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="147"/>
       <source>Database</source>
       <translation>Databáze</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="66"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="148"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="148"/>
       <source>Settings</source>
       <translation>Nastavení</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="76"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="149"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="149"/>
       <source>Backup name</source>
       <translation>Název zálohy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="89"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="150"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="150"/>
       <source>Operation results</source>
       <translation>Výsledky operací</translation>
     </message>
@@ -1920,73 +1609,47 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       <translation>Popis je v pořádku.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="199"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="198"/>
       <source>Select icon file for the category</source>
       <translation>Zvolte ikonu pro Vaši kategorii</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="201"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="200"/>
       <source>Images (%1)</source>
       <translation>Obrázky (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="207"/>
-      <source>Select icon</source>
-      <translation>Vybrat ikonu</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="208"/>
-      <source>Cancel</source>
-      <translation>Zrušit</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="211"/>
-      <source>Look in:</source>
-      <extracomment>Label to describe the folder for icon file selection dialog.</extracomment>
-      <translation>Hledat v:</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="212"/>
-      <source>Icon name:</source>
-      <translation>Název ikony:</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="213"/>
-      <source>Icon type:</source>
-      <translation>Typ ikony:</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="229"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="218"/>
       <source>Category title</source>
       <translation>Název kategorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="230"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="219"/>
       <source>Set title for your category.</source>
       <translation>Zvolte název pro Vaši kategorii.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="231"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="220"/>
       <source>Category description</source>
       <translation>Popis kategorie</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="232"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="221"/>
       <source>Set description for your category.</source>
       <translation>Zvolte popis Vaší kategorie.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="238"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="227"/>
       <source>Icon selection</source>
       <translation>Vybrat ikonu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="240"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="229"/>
       <source>Load icon from file...</source>
       <translation>Načíst ikonu ze souboru...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="242"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="231"/>
       <source>Use default icon from icon theme</source>
       <translation>Použít výchozí ikonu z tématu</translation>
     </message>
@@ -1997,37 +1660,37 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="180"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="180"/>
       <source>Parent category</source>
       <translation type="unfinished">Parent category</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="182"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="182"/>
       <source>Select parent item for your category.</source>
       <translation>Zvolte nadřazenou kategorii pro Vaši kategorii.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="61"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="184"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="184"/>
       <source>Title</source>
       <translation>Nadpis</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="81"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="185"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="185"/>
       <source>Description</source>
       <translation>Popis</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="101"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="186"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="186"/>
       <source>Icon</source>
       <translation>Ikona</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="125"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="188"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="188"/>
       <source>Select icon for your category.</source>
       <translation>Zvolte ikonu pro Vaši kategorii.</translation>
     </message>
@@ -2074,67 +1737,67 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="188"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="188"/>
       <source>Cleanup database</source>
       <translation>Čištění databáze</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="189"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="189"/>
       <source>Cleanup settings</source>
       <translation>Nastavení čištění</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
       <source>Optimize database file</source>
       <translation>Optimalizovat databázi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="191"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="191"/>
       <source>Remove all read articles</source>
       <translation>Smazat přečtené zprávy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="192"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="192"/>
       <source>Remove all articles from recycle bin</source>
       <translation>Smazat zprávy z košů</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="193"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="193"/>
       <source>Remove all articles older than</source>
       <translation>Smazat zprávy starší než</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
       <source>Remove all starred articles</source>
       <translation>Smazat důležité zprávy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="195"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="195"/>
       <source>Database information</source>
       <translation>Informace o databázi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="102"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="196"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="196"/>
       <source>Total data size</source>
       <translation>Velikost dat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="197"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="197"/>
       <source>Database type</source>
       <translation>Typ databáze</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="139"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="198"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="198"/>
       <source>Progress</source>
       <translation>Postup</translation>
     </message>
@@ -2291,22 +1954,22 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormFeedDetails</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="144"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="139"/>
       <source>Add new feed</source>
       <translation>Přidat nový kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="191"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="172"/>
       <source>Cannot save changes: %1</source>
       <translation>Změny nelze uložit: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="148"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="143"/>
       <source>Edit &quot;%1&quot;</source>
       <translation>Upravit &quot;%1&quot;</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="153"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="148"/>
       <source>Edit %n feeds</source>
       <translation>
         <numerusform>Upravit %n kanál</numerusform>
@@ -2316,70 +1979,84 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="205"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="187"/>
       <source>Fetch articles using global interval</source>
       <translation>Stahovat zprávy dle hlavního nastavení</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="207"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="189"/>
       <source>Fetch articles every</source>
       <translation>Stahovat zprávy každých</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="209"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="191"/>
       <source>Disable auto-fetching of articles</source>
       <translation>Zakázat automatické stahování zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="190"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="194"/>
+      <source>Left-to-right</source>
+      <translation type="unfinished">Left-to-right</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="195"/>
+      <source>Right-to-left (everywhere)</source>
+      <translation type="unfinished">Right-to-left (everywhere)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
+      <source>Right-to-left (everywhere except feed list)</source>
+      <translation type="unfinished">Right-to-left (everywhere except feed list)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="198"/>
+      <source>Right-to-left (only in article viewer)</source>
+      <translation type="unfinished">Right-to-left (only in article viewer)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="171"/>
       <source>Cannot save feed properties</source>
       <translation>Nelze uložit vlastnosti kanálu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="223"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="213"/>
       <source>Articles</source>
       <translation>Zprávy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="218"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="209"/>
       <source>Auto-downloading of articles</source>
       <translation>Automatické stahování zpráv</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="220"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="211"/>
       <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
       <translation>Zvolte strategii auto-aktualizací zpráv tohoto kanálu. Výchozí strategorie auto-aktualizace znamená, že kanál bude aktualizován v intervalech udaných v nastavení aplikace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="84"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="222"/>
-      <source>Open articles via their URL automatically</source>
-      <translation>Otevírat zdrojové URL zpráv automaticky</translation>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="124"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="216"/>
+      <source>Right-to-left behavior</source>
+      <translation type="unfinished">Right-to-left behavior</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="97"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="227"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="83"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="217"/>
       <source>Miscellaneous</source>
       <translation>Různé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="122"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="225"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="108"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="215"/>
       <source>Disable this feed</source>
       <translation>Vypnout kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="136"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="226"/>
-      <source>Right-to-left layout</source>
-      <translation>Rozhraní zprava-doleva</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="108"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="224"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="94"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="214"/>
       <source>Ignore notifications for this feed</source>
       <translation>Nepoužívat notifikace pro tento kanál</translation>
     </message>
@@ -2423,819 +2100,795 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="417"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="405"/>
       <source>No possible actions</source>
       <translation>Žádná možná akce</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="376"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="364"/>
       <source>No recycle bin</source>
       <translation>Žádný koš</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="64"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="61"/>
       <source>Main menu</source>
       <translation>Hlavní menu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="77"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="74"/>
       <source>Open main menu</source>
       <translation>Otevřít hlavní menu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="85"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="82"/>
       <source>Open &amp;main menu</source>
       <translation>Otevřít &amp;hlavní menu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="791"/>
       <source>&amp;File</source>
       <translation>&amp;Soubor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="63"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="822"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
       <source>&amp;Help</source>
       <translation>&amp;Pomoc</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="74"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="793"/>
       <source>&amp;View</source>
       <translation>&amp;Zobrazit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="78"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="824"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
       <source>Show/hide</source>
       <translation>Zobrazit/skrýt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="95"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="795"/>
       <source>&amp;Tools</source>
       <translation>&amp;Nástroje</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="826"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="104"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
       <source>F&amp;eeds</source>
       <translation>&amp;Kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="109"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="108"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
       <source>&amp;Add item</source>
       <translation>&amp;Přidat položku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="113"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
       <source>&amp;Move</source>
       <translation>&amp;Přesunout</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="161"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="829"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="159"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
       <source>Art&amp;icles</source>
       <translation>Zpráv&amp;y</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="187"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="830"/>
-      <source>&amp;Recycle bin(s)</source>
-      <translation>&amp;Odpadkové koše</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="194"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="831"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="192"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="801"/>
       <source>&amp;Accounts</source>
       <translation>&amp;Účty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="202"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="832"/>
-      <source>&amp;Web browser &amp;&amp; tabs</source>
-      <translation>&amp;Webový prohlížeč &amp;&amp; taby</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="229"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="660"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="225"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="634"/>
       <source>&amp;Quit</source>
       <translation>&amp;Ukončit</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="232"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="662"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="228"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="636"/>
       <source>Quit the application.</source>
       <translation>Ukončit aplikaci.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="243"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="664"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="239"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="638"/>
       <source>&amp;Settings</source>
       <translation>Na&amp;stavení</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="246"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="666"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="242"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="640"/>
       <source>Display settings of the application.</source>
       <translation>Zobrazit nastavení aplikace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="254"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="668"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="250"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="642"/>
       <source>&amp;About application</source>
       <translation>O &amp;aplikaci</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="257"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="670"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="253"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="644"/>
       <source>Displays extra info about this application.</source>
       <translation>Zobrazí dodatečné informace o této aplikaci.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="271"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="672"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="646"/>
       <source>&amp;Fullscreen</source>
       <translation>Přes celou &amp;obrazovku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="274"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="674"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="270"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="648"/>
       <source>Switch fullscreen mode.</source>
       <translation>Přepnout režim celé obrazovky.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="282"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="676"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="278"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="650"/>
       <source>&amp;Fetch all</source>
       <translation>&amp;Stáhnout vše</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="285"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="678"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="652"/>
       <source>Fetch all feeds</source>
       <translation>Stáhnout všechny kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="293"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="680"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="289"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="654"/>
       <source>Fetch &amp;selected</source>
       <translation>Stáhnout &amp;vybrané</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="296"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="682"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="656"/>
       <source>Fetch selected feeds</source>
       <translation>Stáhnout vybrané kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="317"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="686"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="313"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="660"/>
       <source>Mark articles &amp;read</source>
       <translation>Označit zprávy jako &amp;přečtené</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="320"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="688"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="316"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="662"/>
       <source>Mark selected articles read</source>
       <translation>Označit vybrané zprávy jako přečtené</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="328"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="690"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="324"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="664"/>
       <source>Mark articles &amp;unread</source>
       <translation>Označit zprávy jako &amp;nepřečtené</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="331"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="692"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="327"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="666"/>
       <source>Mark selected articles unread</source>
       <translation>Označit vybrané zprávy jako nepřečtené</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="339"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="694"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="335"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="668"/>
       <source>Switch &amp;importance</source>
       <translation>Přepnout &amp;důležitost</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="342"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="696"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="338"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="670"/>
       <source>Switch importance of selected articles</source>
       <translation>Přepnout důležitost vybraných zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="353"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="700"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="349"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="674"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
       <translation>Označit všechny zprávy (bez filtrů) z vybraných položek jako přečtené.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="364"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="704"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="360"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="678"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
       <translation>Označit všechny zprávy (bez filtrů) z vybraných položek jako nepřečtené.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="372"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="706"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="368"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="680"/>
       <source>&amp;Delete articles</source>
       <translation>&amp;Smazat zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="304"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="684"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="300"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="658"/>
       <source>&amp;Edit selected items</source>
       <translation>&amp;Upravit vybrané položky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="309"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="685"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="185"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
+      <source>&amp;Recycle bins</source>
+      <translation type="unfinished">&amp;Recycle bins</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="200"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
+      <source>Tabs</source>
+      <translation>Panely</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="305"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="659"/>
       <source>&amp;Delete selected items</source>
       <translation>&amp;Odstranit vybrané položky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="350"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="698"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="346"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="672"/>
       <source>Mark selected items &amp;read</source>
       <translation>Označit vybrané položky jako &amp;přečtené</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="361"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="702"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="357"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="676"/>
       <source>Mark selected items &amp;unread</source>
       <translation>Označit vybrané položky jako &amp;nepřečtené</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="380"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="707"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="376"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="681"/>
       <source>&amp;Clean selected items</source>
       <translation>&amp;Vyčistit označené položky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="383"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="709"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="379"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="683"/>
       <source>Deletes all messages from selected items.</source>
       <translation>Smaže všechny zprávy z vybraných položek.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="391"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="711"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="387"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="685"/>
       <source>Open in &amp;external browser</source>
       <translation>Otevřít v &amp;externím prohlížeči</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="394"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="713"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="687"/>
       <source>Open selected articles in external browser</source>
       <translation>Otevřít vybrané zprávy v externím webovém prohlížeči</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="402"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="715"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="398"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="689"/>
       <source>Open in &amp;internal browser</source>
       <translation>Otevřít v &amp;interním prohlížeči</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="405"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="717"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="691"/>
       <source>Open selected articles in internal browser</source>
       <translation>Otevřít vybrané zprávy v interním webovém prohlížeči</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="416"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="719"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="412"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="693"/>
       <source>No actions available</source>
       <translation>Žádná dostupná akce</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="419"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="721"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="415"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="695"/>
       <source>No actions are available right now.</source>
       <translation>Žádná akce není právě dostupná.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="427"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="723"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="423"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="697"/>
       <source>&amp;Mark all read</source>
       <translation>&amp;Označit vše jako přečtené</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="430"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="725"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="426"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="699"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
       <translation>Označí úplně všechny zprávy jako přečtené.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="441"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="727"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="701"/>
       <source>Switch main window visibility</source>
       <translation>Přepnout hlavní okno</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="444"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="729"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="703"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
       <translation>Skryje hlavní ikno, je-li aktuálně viditelné. Jinak jej zobrazí.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="458"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="731"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="705"/>
       <source>&amp;Feed list</source>
       <translation>Seznam &amp;kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="461"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="733"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="457"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="707"/>
       <source>Hides or shows the list of feeds/categories.</source>
       <translation>Skryje nebo zobrazí seznam kanálů/kategorií.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="469"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="465"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="709"/>
       <source>&amp;Clean all</source>
       <translation>&amp;Vyčistit vše</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="472"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="737"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="711"/>
       <source>Deletes all messages from all items.</source>
       <translation>Smaže zprávy ze všech položek.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="480"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="739"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="476"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="713"/>
       <source>&amp;Next item</source>
       <translation>&amp;Další položka</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="488"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="740"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="484"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="714"/>
       <source>&amp;Previous item</source>
       <translation>&amp;Předchozí položka</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="496"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="741"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="492"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="715"/>
       <source>&amp;Next article</source>
       <translation>&amp;Další zpráva</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="504"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="742"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="500"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="716"/>
       <source>&amp;Previous article</source>
       <translation>&amp;Předchozí zpráva</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="512"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="743"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="508"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="717"/>
       <source>Check for &amp;updates</source>
       <translation>Ověřit dostupnost &amp;aktualizace</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="515"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="745"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="511"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="719"/>
       <source>Check if new update for the application is available for download.</source>
       <translation>Zkontrolovat, zda nejsou k dispozici aktualizace programu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="529"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="747"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="525"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="721"/>
       <source>&amp;Main menu</source>
       <translation>Hlavní &amp;menu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="532"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="749"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="528"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="723"/>
       <source>Hides or displays the main menu.</source>
       <translation>Skryje či zobrazí hlavní menu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="540"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="751"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="536"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="725"/>
       <source>Report a &amp;bug...</source>
       <translation>Nahlásit &amp;chybu programu...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="551"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="752"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="547"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="726"/>
       <source>&amp;Toolbars</source>
       <translation>&amp;Nástrojové lišty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="554"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="754"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="550"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="728"/>
       <source>Switch visibility of main toolbars.</source>
       <translation>Přepnout viditelnost hlavnich nástrojových lišet.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="568"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="756"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="564"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="730"/>
       <source>&amp;List headers</source>
       <translation>&amp;Záhlaví sloupců</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="576"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="757"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="572"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="731"/>
       <source>&amp;Donate...</source>
       <translation>&amp;Podpořit autora...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="584"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="758"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="580"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="732"/>
       <source>Display &amp;documentation</source>
       <translation>Zobrazit &amp;dokumentaci</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="592"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="759"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="588"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="733"/>
       <source>&amp;Restart</source>
       <translation>&amp;Restartovat</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="600"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="760"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="596"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="734"/>
       <source>&amp;Restore settings</source>
       <translation>&amp;Obnovit nastavení</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="608"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="761"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="604"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
       <source>&amp;Backup settings</source>
       <translation>&amp;Zálohovat nastavení</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="616"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="762"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="612"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="736"/>
       <source>Switch layout</source>
       <translation>Přepnout rozhraní</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="624"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="763"/>
-      <source>&amp;Downloads</source>
-      <translation>&amp;Stahování</translation>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="871"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
+      <source>Scroll &amp;up preview</source>
+      <translation type="unfinished">Scroll &amp;up preview</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="632"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="764"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="876"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="778"/>
+      <source>Scroll &amp;down preview</source>
+      <translation type="unfinished">Scroll &amp;down preview</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="930"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
+      <source>Reload &amp;skin</source>
+      <translation type="unfinished">Reload &amp;skin</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="620"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="737"/>
       <source>Send via e-mail</source>
       <translation>Odeslat přes e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="635"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="766"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="623"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="739"/>
       <source>Send selected articles via e-mail</source>
       <translation>Odeslat vybrané zprávy přes e-mail</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="643"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="768"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="631"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="741"/>
       <source>&amp;Cleanup database</source>
       <translation>&amp;Vyčistit databázi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="654"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="769"/>
-      <source>Show unread items only</source>
-      <translation>Pouze nepřečtené položky</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="662"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="639"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="742"/>
       <source>&amp;Expand/collapse selected item</source>
       <translation>&amp;Expandovat/složit vybranou položku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="670"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="771"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="647"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="743"/>
       <source>&amp;Add account</source>
       <translation>&amp;Přidat účet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="678"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="772"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="655"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="744"/>
       <source>&amp;Restore articles</source>
       <translation>&amp;Obnovit zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="686"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="663"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="745"/>
       <source>&amp;Restore all recycle bins</source>
       <translation>&amp;Obnovit všechny koše</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="694"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="774"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="671"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
       <source>&amp;Empty all recycle bins</source>
       <translation>&amp;Vysypat všechny koše</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="702"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="775"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="679"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="747"/>
       <source>Next &amp;unread article</source>
       <translation>Další &amp;nepřečtená zpráva</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="716"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="776"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="693"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="748"/>
       <source>Status bar</source>
       <translation>Stavový řádek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="724"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="701"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="749"/>
       <source>&amp;Edit selected account</source>
       <translation>&amp;Upravit vybraný účet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="732"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="778"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="709"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="750"/>
       <source>&amp;Delete selected account</source>
       <translation>&amp;Smazat vybraný účet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="745"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="322"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="722"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="310"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="752"/>
       <source>Add new category</source>
       <translation>Přidat novou kategorii</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="781"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="727"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="753"/>
       <source>Stop ongoing fetching</source>
       <translation>Zastavit stahování zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="758"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
-      <source>New browser tab</source>
-      <translation>Nový tab s prohlížečem</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="766"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="783"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="735"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="754"/>
       <source>Close all tabs</source>
       <translation>Zavřít všechny záložky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="771"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="784"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="740"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="755"/>
       <source>Close all tabs except current</source>
       <translation>Zavřít ostatní záložky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="776"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="785"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="745"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="756"/>
       <source>Go to &amp;next tab</source>
       <translation>Přejít na &amp;další tab</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="781"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="757"/>
       <source>Go to &amp;previous tab</source>
       <translation>Přejít na &amp;předchozí tab</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="789"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="787"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="758"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="758"/>
       <source>&amp;Enable article preview</source>
       <translation>&amp;Povolit náhled zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="794"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="763"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="759"/>
       <source>&amp;Copy URL of selected item</source>
       <translation>&amp;Kopírovat URL vybrané položky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="799"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="768"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="760"/>
       <source>Article &amp;filters</source>
       <translation>Filtry &amp;zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="807"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="776"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="761"/>
       <source>&amp;Show tree expanders</source>
       <translation>&amp;Zobrazit rozbalovače stromu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="812"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="791"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="781"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="762"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
       <translation>&amp;Stáhnout kanály se specifickým auto-stahováním zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="820"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="789"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="763"/>
       <source>Alternate row colors in lists</source>
       <translation>Alternovat barvy pozadí položek v seznamech</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="828"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="793"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="797"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="764"/>
       <source>Automatically &amp;expand item when selected</source>
       <translation>&amp;Automaticky rozbalovat kategorie při výběru</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="839"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="808"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="765"/>
       <source>Message viewer toolbars</source>
       <translation>Nástrojové lišty náhledu zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="844"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="795"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="813"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="766"/>
       <source>Expand/collapse selected item &amp;recursively</source>
       <translation>Rozbalit/sbalit vybranou položku rekurzivně</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="849"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="818"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="767"/>
       <source>Close &amp;current tab</source>
       <translation>Zavřit aktivní &amp;tab</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="823"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="768"/>
       <source>&amp;Copy URLs of selected articles</source>
       <translation>&amp;Kopírovat URL adresy vybraných zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
-      <source>Open in internal browser (no new tab)</source>
-      <translation>Otevřít v interním prohlížeči (žádný nový tab)</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="831"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="769"/>
       <source>&amp;Sort alphabetically</source>
       <translation>Seřadit &amp;abecedně</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="872"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="836"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
       <source>Move &amp;up</source>
       <translation>Přesunout &amp;nahoru</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="801"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="841"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="771"/>
       <source>Move to &amp;top</source>
       <translation>Přesunout &amp;zcela nahoru</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="882"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="846"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="772"/>
       <source>Move &amp;down</source>
       <translation>Přesunout &amp;dolů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="803"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="851"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
       <source>Move to &amp;bottom</source>
       <translation>Přesunout z&amp;cela dolů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="892"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="856"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="774"/>
       <source>Display application &amp;log</source>
       <translation>Zobrazit aplikační &amp;log</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="897"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="805"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="861"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="775"/>
       <source>Focus feeds search box</source>
       <translation>Přepnout na hledací box kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="902"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="866"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="776"/>
       <source>Focus articles search box</source>
       <translation>Přepnout na hledací box zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="907"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="807"/>
-      <source>Scroll &amp;up browser</source>
-      <translation>Skrolovat prohlížeč &amp;nahoru</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="912"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
-      <source>Scroll &amp;down browser</source>
-      <translation>Skrolovat prohlížeč &amp;dolů</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="917"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="809"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="881"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="779"/>
       <source>Rearrange &amp;subcategories alphabetically</source>
       <translation>Přetřídit &amp;podkategorie abecedně</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="922"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="810"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="886"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
       <source>Rearrange &amp;feeds alphabetically</source>
       <translation>Přetřídit &amp;kanály abecedně</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="927"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="811"/>
-      <source>Cleanup web cac&amp;he</source>
-      <translation>Vyčistit webovou cac&amp;he</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="935"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="894"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="781"/>
       <source>You must add new account first</source>
       <translation>Nejprve musíte přidat nový účet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="938"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="897"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="783"/>
       <source>You must add new account first.</source>
       <translation>Nejprve musíte přidat nový účet.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="943"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="902"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="785"/>
       <source>Edit &amp;child feeds</source>
       <translation>Upravit &amp;podřízené kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="907"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
       <source>Edit child feeds (&amp;recursive)</source>
       <translation>Upravit &amp;podřízené kanály (rekurzivně)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="953"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="912"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="787"/>
       <source>Play in &amp;media player</source>
       <translation>Přehrát v &amp;přehrávači médií</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="961"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="920"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>&amp;Pause automatic feed fetching</source>
       <translation type="unfinished">&amp;Pause automatic feed fetching</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="966"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="820"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="925"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
       <source>&amp;Purge selected feeds</source>
       <translation type="unfinished">&amp;Purge selected feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="740"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="332"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="779"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="717"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="320"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="751"/>
       <source>Add new feed</source>
       <translation>Přidat nový kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="383"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="371"/>
       <source>No actions possible</source>
       <translation>Žádná možná akce</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="153"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="145"/>
       <source>Cannot cleanup database</source>
       <translation>Nelze vyčistit databázi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="154"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="146"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
       <translation>Databázi nelze v současné době vyčistit, protože běží jiná kritická akce. Zkuste to později.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="475"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="458"/>
       <source>Play in media player</source>
       <translation>Přehrát v přehrávači médií</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="476"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="459"/>
       <source>(not supported)</source>
       <translation>(nepodporováno)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="542"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="525"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Nejdříve ukončete otevřené modální dialogy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="452"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="439"/>
       <source>Fetching common data</source>
       <translation>Stahuji obecná data</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="541"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="524"/>
       <source>Close dialogs</source>
       <translation>Zavřít dialogy</translation>
     </message>
@@ -3369,147 +3022,147 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="435"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="435"/>
       <source>Article filters</source>
       <translation>Filtry zpráv</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="35"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="436"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="436"/>
       <source>&amp;Check all</source>
       <translation>&amp;Zaškrtnout vše</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="65"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="437"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="437"/>
       <source>&amp;Uncheck all</source>
       <translation>&amp;Odškrtnout vše</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="79"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="438"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="438"/>
       <source>Remove selected</source>
       <translation>Smazat vybrané</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="86"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="439"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="439"/>
       <source>&amp;New filter</source>
       <translation>&amp;Nový filtr</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="115"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="440"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="440"/>
       <source>Article filter details</source>
       <translation>Detaily filtru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="313"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="441"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="451"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="441"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="451"/>
       <source>Title</source>
       <translation>Nadpis</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="145"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="442"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="442"/>
       <source>Title of article filter</source>
       <translation>Název filtru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="443"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="443"/>
       <source>Pre-made filters</source>
       <translation>Předchystané filtry</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="174"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="444"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="444"/>
       <source>JavaScript code</source>
       <translation>Kód JavaScript</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="192"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="445"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="445"/>
       <source>Your JavaScript-based article filtering logic</source>
       <translation>Sem umístěte JavaScript kód vašeho filtru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="206"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="446"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="446"/>
       <source>&amp;Test</source>
       <translation>&amp;Otestovat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="213"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="447"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="447"/>
       <source>Process checked feeds</source>
       <translation>Zpracovat zatržené kanály</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="220"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="448"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="448"/>
       <source>&amp;Beautify</source>
       <translation>&amp;Zkrášlit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="227"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="449"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="449"/>
       <source>Detailed &amp;help</source>
       <translation>Detailní &amp;návod</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="263"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="450"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="450"/>
       <source>Existing articles</source>
       <translation>Existující zprávy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="295"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="458"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="458"/>
       <source>Sample article</source>
       <translation>Testovací zpráva</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="326"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="452"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="452"/>
       <source>URL</source>
       <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="339"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="453"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="453"/>
       <source>Author</source>
       <translation>Autor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="352"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="454"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="454"/>
       <source>Created on</source>
       <translation>Vytvořeno</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="365"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="455"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="455"/>
       <source>Contents</source>
       <translation>Obsah</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="456"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="456"/>
       <source>Read</source>
       <translation>Přečteno</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="387"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="457"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="457"/>
       <source>Important</source>
       <translation>Důležité</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="410"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="459"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="459"/>
       <source>Script output</source>
       <translation>Výstup skriptu</translation>
     </message>
@@ -3517,74 +3170,74 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormRestoreDatabaseSettings</name>
     <message>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="14"/>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="15"/>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="16"/>
       <source>No operation executed yet.</source>
       <translation>Doposud neprovedena žádná operace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="54"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="53"/>
       <source>Restoration was initiated. Restart to proceed.</source>
       <translation>Obnova byla spuštěna, pro její dokončení je třeba restart aplikace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="55"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="54"/>
       <source>You need to restart application for restoration process to finish.</source>
       <translation>Pro dokončení procesu obnovení je třeba restartovat aplikaci.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="60"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="59"/>
       <source>Database and/or settings were not copied to restoration directory successully.</source>
       <translation>Nastavení a/nebo databáze nebyli kopírovány do obnovovacího adresáře úspěšně.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="79"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="78"/>
       <source>Select source directory</source>
       <translation>Zvolte zdrojový adresář</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="85"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="86"/>
       <source>Good source directory is specified.</source>
       <translation>Je zvolen správný zdrojový adresář.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="13"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="12"/>
       <source>Restart</source>
       <translation>Restartovat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="134"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="134"/>
       <source>Restore database/settings</source>
       <translation>Obnovit databázi/nastavení</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="33"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="135"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="135"/>
       <source>Operation results</source>
       <translation>Výsledky operací</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="59"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="136"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="136"/>
       <source>Source directory</source>
       <translation>Zdrojový adresář</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="65"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="137"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="137"/>
       <source>&amp;Select directory</source>
       <translation>&amp;Zvolit adresář</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="82"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="138"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="138"/>
       <source>Restore database</source>
       <translation>Obnovit databázi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="100"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="139"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="139"/>
       <source>Restore settings</source>
       <translation>Obnovit nastavení</translation>
     </message>
@@ -3592,35 +3245,35 @@ Složka cache pro QtWebEngine -&gt; &quot;%7&quot;</translation>
   <context>
     <name>FormSettings</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="107"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="109"/>
       <source>Critical settings were changed</source>
       <translation>Kritická nastavení změněna</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="111"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="144"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="113"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="148"/>
       <source>Changed categories of settings:
 %1.</source>
       <translation>Změněné kategorie nastavení:
 %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="141"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="145"/>
       <source>Some settings are changed and will be lost</source>
       <translation>Některá nastavení jsou změněna a budou ztracena</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="142"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="146"/>
       <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
       <translation>Některá nastavení jsou změněna a zrušením tohoto dialogu o ně přijdete.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="143"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="147"/>
       <source>Do you really want to close this dialog without saving any settings?</source>
       <translation>Opravdu chcete zavřít tento dialog bez uložení nastavení?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="108"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="110"/>
       <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
@@ -3629,13 +3282,13 @@ You have to restart manually.</source>
 Musíte restartovat manuálně.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="110"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="112"/>
       <source>Do you want to restart now?</source>
       <translation>Chcete restartovat nyní?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formsettings.h" line="76"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formsettings.h" line="76"/>
       <source>Settings</source>
       <translation>Nastavení</translation>
     </message>
@@ -3643,22 +3296,22 @@ Musíte restartovat manuálně.</translation>
   <context>
     <name>FormStandardFeedDetails</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="32"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="31"/>
       <source>General</source>
       <translation>Obecné</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="32"/>
       <source>HTTP headers</source>
       <translation type="unfinished">HTTP headers</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>Auth</source>
       <translation type="unfinished">Auth</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="35"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
       <source>Experimental</source>
       <translation>Experimentální</translation>
     </message>
@@ -3723,13 +3376,13 @@ Musíte restartovat manuálně.</translation>
       <translation>Zvolit soubor pro export kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="203"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="239"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="207"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="244"/>
       <source>File is selected.</source>
       <translation>Soubor je vybrán.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="222"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="226"/>
       <source>Select file for feeds import</source>
       <translation>Zvolit soubot pro import kanálů</translation>
     </message>
@@ -3760,19 +3413,19 @@ Musíte restartovat manuálně.</translation>
       <translation>Některé kanály nebyly načteny. Zkontrolujte aplikační log.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="274"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="279"/>
       <source>cannot open file</source>
       <translation>soubor nelze otevřít</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="333"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="334"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="338"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="339"/>
       <source>Feeds were exported successfully.</source>
       <translation>Kanály byly úspěšně exportovány.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="344"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="345"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="349"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="350"/>
       <source>Critical error occurred.</source>
       <translation>Vyskytla se kritická chyba.</translation>
     </message>
@@ -3783,18 +3436,18 @@ Musíte restartovat manuálně.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="167"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="212"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="216"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
       <translation>Soubory OPML 2.0 (*.opml *.xml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="338"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="343"/>
       <source>Cannot write into destination file: &apos;%1&apos;.</source>
       <translation>Do cílového souboru nelze zapisovat: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="168"/>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="213"/>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="217"/>
       <source>TXT files [one URL per line] (*.txt)</source>
       <translation>TXT soubory [jedna URL na řádku] (*.txt)</translation>
     </message>
@@ -4058,37 +3711,37 @@ Nyní ho můžete nainstalovat.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="154"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="154"/>
       <source>Check for updates</source>
       <translation>Zkontrolovat aktualizace</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="20"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="155"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="155"/>
       <source>Current release</source>
       <translation>Nainstalovaná verze</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="34"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="157"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="157"/>
       <source>Available release</source>
       <translation>Dostupná verze</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="48"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="159"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="159"/>
       <source>Status</source>
       <translation>Stav</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="69"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="160"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="160"/>
       <source>Changelog</source>
       <translation>Historie verzí</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="125"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="161"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="161"/>
       <source>Available files</source>
       <translation>Dostupné soubory</translation>
     </message>
@@ -4126,17 +3779,17 @@ Nyní ho můžete nainstalovat.</translation>
       <translation type="unfinished">Third character is not a space.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="361"/>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="359"/>
       <source>Invalid URL for redirection!</source>
       <translation type="unfinished">Invalid URL for redirection!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="438"/>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="436"/>
       <source>Unspecified status code used!</source>
       <translation type="unfinished">Unspecified status code used!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="447"/>
+      <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="445"/>
       <source>META too large!</source>
       <translation type="unfinished">META too large!</translation>
     </message>
@@ -4314,22 +3967,22 @@ Nyní ho můžete nainstalovat.</translation>
   <context>
     <name>GmailServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="43"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="41"/>
       <source>Inbox</source>
       <translation>Příjaté</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="52"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="50"/>
       <source>Sent</source>
       <translation>Odeslané</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="53"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="51"/>
       <source>Drafts</source>
       <translation>Koncepty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="57"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="55"/>
       <source>Spam</source>
       <translation>Odpad</translation>
     </message>
@@ -4681,75 +4334,75 @@ Tokeny vyprší: %2</translation>
   <context>
     <name>GreaderServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="157"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="156"/>
       <source>Other services</source>
       <translation>Jiná služba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="162"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="192"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="161"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="193"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
       <translation>Soubory OPML 2.0 (*.opml *.xml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="164"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="163"/>
       <source>Select file for feeds import</source>
       <translation>Zvolit soubot pro import kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="176"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="204"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="177"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="205"/>
       <source>Done</source>
       <translation>Hotovo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="177"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="178"/>
       <source>Data imported successfully. Reloading feed tree.</source>
       <translation>Data byla úspěšně importována. Obnovuji stromu kanálů.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="184"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="185"/>
       <source>Cannot import feeds</source>
       <translation>Nelze importovat kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="185"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="210"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="186"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="211"/>
       <source>Error: %1</source>
       <translation>Chyba: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="194"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="195"/>
       <source>Select file for feeds export</source>
       <translation>Zvolit soubor pro export kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="204"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="205"/>
       <source>Data exported successfully.</source>
       <translation>Data úspěšně exportována.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="209"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="210"/>
       <source>Cannot export feeds</source>
       <translation>Nelze exportovat kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="266"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="267"/>
       <source>Export feeds</source>
       <translation>Exportovat kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="267"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="268"/>
       <source>Import feeds</source>
       <translation>Importovat kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="367"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="368"/>
       <source>Cannot add item</source>
       <translation>Nelze přidat položku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="368"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="369"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
     </message>
@@ -4766,7 +4419,7 @@ Tokeny vyprší: %2</translation>
     <name>HttpHeadersDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/httpheadersdetails.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_httpheadersdetails.h" line="66"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_httpheadersdetails.h" line="66"/>
       <source>Form</source>
       <translation>Formulář</translation>
     </message>
@@ -4784,7 +4437,7 @@ Tokeny vyprší: %2</translation>
       <translation>Soubor &apos;%1&apos; nelze otevřít pro čtení.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="163"/>
+      <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="172"/>
       <source>Cannot open file &apos;%1&apos; for writting.</source>
       <translation>Nelze otevřít soubor &apos;%1&apos; pro zápis.</translation>
     </message>
@@ -4806,7 +4459,7 @@ Tokeny vyprší: %2</translation>
     <name>ItemDetails</name>
     <message>
       <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_itemdetails.h" line="66"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_itemdetails.h" line="85"/>
       <source>Form</source>
       <translation>Formulář</translation>
     </message>
@@ -4963,14 +4616,6 @@ Tokeny vyprší: %2</translation>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="276"/>
       <source>File ended</source>
       <translation type="unfinished">File ended</translation>
-    </message>
-  </context>
-  <context>
-    <name>LocationLineEdit</name>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/locationlineedit.cpp" line="11"/>
-      <source>Website address goes here</source>
-      <translation>Adresu webové stránky zadejte sem</translation>
     </message>
   </context>
   <context>
@@ -5213,61 +4858,61 @@ Tokeny vyprší: %2</translation>
     <name>MediaPlayer</name>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="143"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="143"/>
       <source>Form</source>
       <translation>Formulář</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="65"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="145"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="145"/>
       <source>Play/pause</source>
       <translation type="unfinished">Play/pause</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="72"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="148"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="148"/>
       <source>Stop</source>
       <translation>Zastavit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="79"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="151"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="151"/>
       <source>Speed</source>
       <translation type="unfinished">Speed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="107"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="154"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="154"/>
       <source>Progress</source>
       <translation>Postup</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="117"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="157"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="157"/>
       <source>Duration</source>
       <translation type="unfinished">Duration</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="124"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="160"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="160"/>
       <source>Mute/unmute</source>
       <translation type="unfinished">Mute/unmute</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="137"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="163"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="163"/>
       <source>Volume</source>
       <translation>Hlasitost</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="156"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="166"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="166"/>
       <source>Download</source>
       <translation>Stáhnout</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="163"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="169"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="169"/>
       <source>Switch fullscreen mode</source>
       <translation type="unfinished">Switch fullscreen mode</translation>
     </message>
@@ -5425,237 +5070,237 @@ Tokeny vyprší: %2</translation>
   <context>
     <name>MessagesModel</name>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="294"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="300"/>
       <source>Id</source>
       <translation>Id</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="295"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="301"/>
       <source>Read</source>
       <translation>Přečteno</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="297"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="303"/>
       <source>Deleted</source>
       <translation>Smazáno</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="296"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="302"/>
       <source>Important</source>
       <translation>Důležité</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="316"/>
       <source>Feed</source>
       <translation>Kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="300"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
       <source>Title</source>
       <translation>Nadpis</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="302"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="308"/>
       <source>Author</source>
       <translation>Autor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="304"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="310"/>
       <source>Contents</source>
       <translation>Obsah</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="298"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="304"/>
       <source>Permanently deleted</source>
       <translation>Permanentně smazáno</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="305"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="311"/>
       <source>Attachments</source>
       <translation>Přílohy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="320"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="326"/>
       <source>List of attachments.</source>
       <translation>Seznam příloh.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="307"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="313"/>
       <source>Account ID</source>
       <translation>ID účtu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="308"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="314"/>
       <source>Custom ID</source>
       <translation>Zvláštní ID</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="309"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="315"/>
       <source>Custom hash</source>
       <translation>Zvláštní hash</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="299"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="305"/>
       <source>Feed ID</source>
       <translation>ID kanálu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="312"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="318"/>
       <source>Has enclosures</source>
       <translation>Má přílohy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="312"/>
       <source>Score</source>
       <translation>Skóre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="303"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="309"/>
       <source>Date</source>
       <translation>Datum</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="206"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="212"/>
       <source>Loading of articles failed, maybe messages could not be downloaded.</source>
       <translation>Načtení zpráv selhalo, možná zprávy nemohly být staženy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="120"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="126"/>
       <source>dot</source>
       <translation>tečka</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="123"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="129"/>
       <source>envelope</source>
       <translation>obálka</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="126"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="132"/>
       <source>feed icon</source>
       <translation>ikona kanálu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="301"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="307"/>
       <source>URL</source>
       <translation>URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="311"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="317"/>
       <source>RTL</source>
       <translation>RTL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="313"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="319"/>
       <source>Assigned labels</source>
       <translation>Přiřazené štítky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="314"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="320"/>
       <source>Assigned label IDs</source>
       <translation>Přiřazená ID štítků</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="316"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="322"/>
       <source>ID of the article.</source>
       <translation>ID zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="316"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="322"/>
       <source>Is article read?</source>
       <translation>Je zpráva přečtená?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="316"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="322"/>
       <source>Is article important?</source>
       <translation>Je zpráva důležitá?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="317"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="323"/>
       <source>Is article deleted?</source>
       <translation>Je zpráva smazaná?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="317"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="323"/>
       <source>Is article permanently deleted from recycle bin?</source>
       <translation>Je zpráva permanentně vysypána z koše?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="318"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
       <source>ID of feed which this article belongs to.</source>
       <translation>ID kanálu, ke kterému zpráva náleží.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="318"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
       <source>Title of the article.</source>
       <translation>Nadpis zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="319"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="325"/>
       <source>Url of the article.</source>
       <translation>Url zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="319"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="325"/>
       <source>Author of the article.</source>
       <translation>Autor zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="319"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="325"/>
       <source>Creation date of the article.</source>
       <translation>Datum vytvoření zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="320"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="326"/>
       <source>Contents of the article.</source>
       <translation>Obsah zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="320"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="326"/>
       <source>Score of the article.</source>
       <translation>Skóre zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="321"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="327"/>
       <source>Account ID of the article.</source>
       <translation>Účtové ID zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="321"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="327"/>
       <source>Custom ID of the article.</source>
       <translation>Zvláštní ID zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="322"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="328"/>
       <source>Custom hash of the article.</source>
       <translation>Zvláštní hash zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="322"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="328"/>
       <source>Name of feed of the article.</source>
       <translation>Jméno kanálu zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="323"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="329"/>
       <source>Indication of enclosures presence within the article.</source>
       <translation>Indikuje, zda zpráva obsahuje přílohy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="323"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="329"/>
       <source>Layout direction of the article</source>
       <translation>Směru toku textu článku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="330"/>
       <source>Labels assigned to the article.</source>
       <translation>Přiřazené štítky.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="330"/>
       <source>Label IDs assigned to the article.</source>
       <translation>ID štítků přiřazených ke článku.</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="372"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="378"/>
       <source>%n months ago</source>
       <translation>
         <numerusform>před %n měsícem</numerusform>
@@ -5665,7 +5310,7 @@ Tokeny vyprší: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="376"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="382"/>
       <source>%n weeks ago</source>
       <translation>
         <numerusform>před %n týdnem</numerusform>
@@ -5675,7 +5320,7 @@ Tokeny vyprší: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="380"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="386"/>
       <source>%n days ago</source>
       <translation>
         <numerusform>před %n dnem</numerusform>
@@ -5685,12 +5330,12 @@ Tokeny vyprší: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="384"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="390"/>
       <source>yesterday</source>
       <translation>včera</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="388"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="394"/>
       <source>%n hours ago</source>
       <translation>
         <numerusform>před %n hodinou</numerusform>
@@ -5700,7 +5345,7 @@ Tokeny vyprší: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="392"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="398"/>
       <source>%n minutes ago</source>
       <translation>
         <numerusform>před %n minutou</numerusform>
@@ -5710,12 +5355,12 @@ Tokeny vyprší: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="395"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="401"/>
       <source>just now</source>
       <translation>teď</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="205"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="211"/>
       <source>Loading of articles from item &apos;%1&apos; failed</source>
       <translation>Načtení zpráv pro položku &apos;%1&apos; selhalo</translation>
     </message>
@@ -5723,128 +5368,133 @@ Tokeny vyprší: %2</translation>
   <context>
     <name>MessagesToolBar</name>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="255"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="235"/>
       <source>No extra highlighting</source>
       <translation>Nic nezvýrazňovat</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="95"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="94"/>
       <source>Toolbar spacer</source>
       <translation>Mezera</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="221"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="211"/>
       <source>Everywhere</source>
       <translation>Všude</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="222"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="212"/>
       <source>Titles only</source>
       <translation>Pouze v nadpisech</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="226"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="216"/>
       <source>Search articles</source>
       <translation>Prohledávat zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="233"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="223"/>
       <source>Article search box</source>
       <translation>Hledací panel zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="251"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="229"/>
       <source>Menu for highlighting articles</source>
       <translation>Menu pro zvýrazňování zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="260"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="231"/>
+      <source>(article list)</source>
+      <translation type="unfinished">(article list)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="241"/>
       <source>Highlight unread articles</source>
       <translation>Zvýraznit nepřečtené zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="265"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="247"/>
       <source>Highlight important articles</source>
       <translation>Zvýraznit důležité zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="269"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="252"/>
       <source>Menu for filtering articles</source>
       <translation>Menu pro filtrování zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="273"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="256"/>
       <source>No extra filtering</source>
       <translation>Žádný filtr</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="278"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="262"/>
       <source>Show unread articles</source>
       <translation>Jen nepřečtené zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="283"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="268"/>
       <source>Show read articles</source>
       <translation type="unfinished">Show read articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="288"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="274"/>
       <source>Show important articles</source>
       <translation>Jen důležité zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="293"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="280"/>
       <source>Show today&apos;s articles</source>
       <translation>Dnešní zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="298"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="286"/>
       <source>Show yesterday&apos;s articles</source>
       <translation>Včerejší zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="303"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="292"/>
       <source>Show articles in last 24 hours</source>
       <translation>Zprávy z posledních 24 hodin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="308"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="298"/>
       <source>Show articles in last 48 hours</source>
       <translation>Zprávy z posledních 48 hodin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="313"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="304"/>
       <source>Show this week&apos;s articles</source>
       <translation>Zprávy z tohoto týdne</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="318"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="310"/>
       <source>Show last week&apos;s articles</source>
       <translation>Zprávy z minulého týdne</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="323"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="316"/>
       <source>Show articles with attachments</source>
       <translation>Zobrazit zprávy s přílohami</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="328"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="322"/>
       <source>Show articles with some score</source>
       <translation>Zobrazit oskórované zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="333"/>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="340"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="328"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="335"/>
       <source>Display all articles</source>
       <translation>Zobrazit všechny zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="350"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="345"/>
       <source>Article highlighter</source>
       <translation>Zvýrazňovač zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="356"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="351"/>
       <source>Article list filter</source>
       <translation>Filtr seznamu zpráv</translation>
     </message>
@@ -5852,47 +5502,47 @@ Tokeny vyprší: %2</translation>
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="695"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="669"/>
       <source>Problem with starting external e-mail client</source>
       <translation>Problém se spuštěním externího e-mailového klienta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="696"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="670"/>
       <source>External e-mail client could not be started.</source>
       <translation>Externí e-mailový klient nemohl být úspěšně spuštěn.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="384"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="383"/>
       <source>Open with external tool</source>
       <translation>Otevřít s externím nástrojem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="653"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="639"/>
       <source>No URL</source>
       <translation type="unfinished">No URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="654"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="640"/>
       <source>Article cannot be played in media player as it has no URL</source>
       <translation type="unfinished">Article cannot be played in media player as it has no URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="907"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="881"/>
       <source>Cannot run external tool</source>
       <translation>Nelze spustit externí nástroj</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="908"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="882"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>Externí nástroj &apos;%1&apos; nelze spustit.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="401"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="400"/>
       <source>No external tools activated</source>
       <translation>Nemáte žádné externí nástroje</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="364"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="363"/>
       <source>Context menu for articles</source>
       <translation>Kontextové menu pro zprávy</translation>
     </message>
@@ -6024,49 +5674,49 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="162"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="162"/>
       <source>Form</source>
       <translation>Formulář</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="23"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="163"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="163"/>
       <source>Host</source>
       <translation>Server</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="41"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="164"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="164"/>
       <source>Hostname or IP of your proxy server</source>
       <translation>Webový název IP adresa proxy serveru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="165"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="165"/>
       <source>Port</source>
       <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="76"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="166"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="166"/>
       <source>Username</source>
       <translation>Uživatelské jméno</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="167"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="167"/>
       <source>Your username for proxy server authentication</source>
       <translation>Vaše uživatelské jméno pro autentifikaci</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="168"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="168"/>
       <source>Password</source>
       <translation>Heslo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="169"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="169"/>
       <source>Your password for proxy server authentication</source>
       <translation>Vaše heslo pro autentifikaci</translation>
     </message>
@@ -6077,7 +5727,7 @@ Tokeny vyprší: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="170"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="170"/>
       <source>Type</source>
       <extracomment>Proxy server type.</extracomment>
       <translation>Typ</translation>
@@ -6242,27 +5892,6 @@ Tokeny vyprší: %2</translation>
     </message>
   </context>
   <context>
-    <name>NodeJs</name>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="77"/>
-      <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="85"/>
-      <source>file not found</source>
-      <translation>soubor nenalezen</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="161"/>
-      <source>Node.js</source>
-      <translation type="unfinished">Node.js</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/nodejs.cpp" line="162"/>
-      <source>Some packages are missing and will be installed or updated:
-%1</source>
-      <translation type="unfinished">Some packages are missing and will be installed or updated:
-%1</translation>
-    </message>
-  </context>
-  <context>
     <name>OAuth2Service</name>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="90"/>
@@ -6301,9 +5930,22 @@ Tokeny vyprší: %2</translation>
     </message>
   </context>
   <context>
+    <name>QLiteHtmlViewer</name>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlviewer.cpp" line="207"/>
+      <source>Context menu for article viewer</source>
+      <translation type="unfinished">Context menu for article viewer</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlviewer.cpp" line="209"/>
+      <source>Copy</source>
+      <translation>Kopírovat</translation>
+    </message>
+  </context>
+  <context>
     <name>QObject</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="618"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="625"/>
       <source>
 
 + %n other feeds.</source>
@@ -6323,7 +5965,7 @@ Tokeny vyprší: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="71"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="72"/>
       <source>Load initial set of feeds</source>
       <translation>Načíst úvodní sadu kanálů</translation>
     </message>
@@ -6375,47 +6017,52 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly je bezpečný prostor, kde můžete soukromě organizovat a prohledávat témata a trendy, které jsou pro vás důležité.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2939"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2937"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Nelze vložit filtr zpráv, protože databáze neumí vrátit ID.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="135"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="138"/>
       <source>Fetching articles right now</source>
       <translation>Právě stahuji zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="138"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="141"/>
       <source>Login data refreshed</source>
       <translation>Data sezení obnovena</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="144"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="147"/>
       <source>New %1 version is available</source>
       <translation>%1 má novou verzi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="147"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="150"/>
       <source>Miscellaneous events</source>
       <translation>Ostatní události</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="150"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="153"/>
       <source>Node.js - package(s) updated</source>
       <translation>Node.js - balíčky aktualizovány</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="153"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="156"/>
       <source>Node.js - package(s) failed to update</source>
       <translation>Node.js - selhala aktualizace balíčků</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="156"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="159"/>
+      <source>Error when fetching articles</source>
+      <translation type="unfinished">Error when fetching articles</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="162"/>
       <source>Unknown event</source>
       <translation>Neznámá událost</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="132"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="135"/>
       <source>New (unread) articles fetched</source>
       <translation>Stažený nové (nepřečtené) zprávy</translation>
     </message>
@@ -6444,44 +6091,49 @@ Podporované čtečky:</translation>
       <translation>a případně další.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="141"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="144"/>
       <source>Login failed</source>
       <translation>Přihlášení selhalo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="632"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="581"/>
       <source>interesting stuff</source>
       <translation>zajímavá věc</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="635"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="584"/>
       <source>interesting stuff (highlighted)</source>
       <translation>zajímavá věc (zvýrazněno)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="638"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="587"/>
       <source>errored items</source>
       <translation>chybové položky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="641"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="590"/>
       <source>errored items (highlighted)</source>
       <translation>chybové položky (zvýrazněno)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="644"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="593"/>
       <source>items with new articles</source>
       <translation>položky s novými zprávami</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="647"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="596"/>
       <source>items with new articles (highlighted)</source>
       <translation>položky s novými zprávami (vybráno)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="650"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="599"/>
       <source>OK-ish color</source>
       <translation>vše v pořádku</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="602"/>
+      <source>disabled items</source>
+      <translation type="unfinished">disabled items</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
@@ -6529,91 +6181,111 @@ Podporované čtečky:</translation>
       <translation>uzavírací &apos; chybí</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="313"/>
-      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="195"/>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="195"/>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="191"/>
+      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="331"/>
+      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="207"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="207"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="197"/>
       <source>XML is not well-formed, %1</source>
       <translation>XML nemá správný tvar, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="319"/>
+      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="337"/>
       <source>not an ATOM feed</source>
       <translation>není ATOM feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="121"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="127"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>JSON chyba &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="125"/>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="157"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="131"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="163"/>
       <source>not a JSON feed</source>
       <translation>není JSON kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="201"/>
+      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="213"/>
       <source>not an RDF feed</source>
       <translation>není RDF kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="201"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="213"/>
       <source>not a RSS feed</source>
       <translation>není RSS kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="156"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="162"/>
       <source>support for gzipped sitemaps is not enabled</source>
       <translation>podpora pro gzippované sitemapy není povolena</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="204"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="210"/>
       <source>sitemap indices are not supported</source>
       <translation>indexy sitemap nejsou podporovány</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="208"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="214"/>
       <source>not a Sitemap</source>
       <translation>není sitemapa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="37"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="72"/>
       <source>Open with external tool</source>
       <translation>Otevřít s externím nástrojem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="100"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="103"/>
+      <source>Save article in HTML format</source>
+      <translation type="unfinished">Save article in HTML format</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="105"/>
+      <source>HTML files (*.htm *.html)</source>
+      <translation type="unfinished">HTML files (*.htm *.html)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="150"/>
+      <source>Load external resources</source>
+      <translation type="unfinished">Load external resources</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="152"/>
+      <source>Save article as...</source>
+      <translation type="unfinished">Save article as...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="154"/>
       <source>Open in external browser</source>
       <translation>Otevřít v externím webovém prohlížeči</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="103"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="157"/>
       <source>Play in media player</source>
       <translation type="unfinished">Play in media player</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="106"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="160"/>
       <source>(not supported)</source>
       <translation type="unfinished">(not supported)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="67"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="70"/>
       <source>iCalendar error &apos;%1&apos;</source>
       <translation type="unfinished">iCalendar error &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="81"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="84"/>
       <source>not an iCalendar</source>
       <translation type="unfinished">not an iCalendar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="198"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="201"/>
       <source>required iCal data are missing</source>
       <translation type="unfinished">required iCal data are missing</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceentrypoint.cpp" line="24"/>
+      <location filename="../src/librssguard-standard/src/standardserviceentrypoint.cpp" line="25"/>
       <source>This service offers integration with standard online RSS/RDF/ATOM/JSON/Sitemap/iCalendar feeds and podcasts.</source>
       <translation type="unfinished">This service offers integration with standard online RSS/RDF/ATOM/JSON/Sitemap/iCalendar feeds and podcasts.</translation>
     </message>
@@ -6626,6 +6298,31 @@ Podporované čtečky:</translation>
       <location filename="../src/librssguard-reddit/src/redditentrypoint.cpp" line="41"/>
       <source>Simplistic Reddit client.</source>
       <translation type="unfinished">Simplistic Reddit client.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="17"/>
+      <source>Select existing folder</source>
+      <translation type="unfinished">Select existing folder</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="41"/>
+      <source>Save file</source>
+      <translation type="unfinished">Save file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="63"/>
+      <source>Select existing file</source>
+      <translation type="unfinished">Select existing file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="392"/>
+      <source>Some feeds have error</source>
+      <translation type="unfinished">Some feeds have error</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="393"/>
+      <source>Some feeds threw an error when fetching articles.</source>
+      <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
     </message>
   </context>
   <context>
@@ -6714,50 +6411,6 @@ Podporované čtečky:</translation>
       <location filename="../src/librssguard/gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp" line="136"/>
       <source>Unknown error</source>
       <translation type="unfinished">Unknown error</translation>
-    </message>
-  </context>
-  <context>
-    <name>Readability</name>
-    <message>
-      <location filename="../src/librssguard/network-web/readability.cpp" line="39"/>
-      <source>Packages for reader mode are installed</source>
-      <translation>Balíčky pro čtecí režím jsou nainstalované</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/readability.cpp" line="40"/>
-      <source>Reload your webpage and then you can use reader mode!</source>
-      <translation type="unfinished">Reload your webpage and then you can use reader mode!</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/readability.cpp" line="45"/>
-      <source>Packages for reader mode are installed. You can now use reader mode!</source>
-      <translation type="unfinished">Packages for reader mode are installed. You can now use reader mode!</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/readability.cpp" line="62"/>
-      <source>Packages for reader mode are NOT installed</source>
-      <translation>Balíčky pro čtecí režím NEJSOU nainstalované</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/readability.cpp" line="63"/>
-      <source>There is error: %1</source>
-      <translation>Máme chybu: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/readability.cpp" line="68"/>
-      <source>Packages for reader mode are NOT installed. There is error: %1</source>
-      <translation type="unfinished">Packages for reader mode are NOT installed. There is error: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/readability.cpp" line="95"/>
-      <source>Node.js libraries not installed</source>
-      <translation>Node.js balíčky nejsou nainstalované</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/readability.cpp" line="96"/>
-      <location filename="../src/librssguard/network-web/readability.cpp" line="106"/>
-      <source>Node.js is not configured properly. Go to &quot;Settings&quot; -&gt; &quot;Node.js&quot; and check if your Node.js is properly configured.</source>
-      <translation>Node.js není nakonfigurováno správně. Jděte do &quot;Nastavení -&gt; &quot;Node.js&quot; a zkontrolujte nastavení a případně Node.js nainstalujte.</translation>
     </message>
   </context>
   <context>
@@ -6965,19 +6618,19 @@ Podporované čtečky:</translation>
   <context>
     <name>RedditServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="132"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="130"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
       <translation>Status autentizace: %1
 Tokeny vyprší: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="134"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="132"/>
       <source>logged-in</source>
       <translation>přihlášen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="134"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="132"/>
       <source>NOT logged-in</source>
       <translation>NEpřihlášen</translation>
     </message>
@@ -7059,19 +6712,19 @@ Tokeny vyprší: %2</translation>
     <name>SearchTextWidget</name>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="32"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="69"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="69"/>
       <source>Search text</source>
       <translation>Hledat text</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="71"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="71"/>
       <source>Find previous occurence</source>
       <translation>Najít předchozí výskyt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="49"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="75"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="75"/>
       <source>Find next occurence</source>
       <translation>Najít další výskyt</translation>
     </message>
@@ -7119,17 +6772,19 @@ Tokeny vyprší: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="393"/>
       <source>Number of feeds: %1
-Number of categories: %2</source>
-      <translation>Počet kanálů: %1
-Počet kategorií: %2</translation>
+Number of categories: %2
+Number of disabled feeds: %3</source>
+      <translation type="unfinished">Number of feeds: %1
+Number of categories: %2
+Number of disabled feeds: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="715"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="718"/>
       <source>Error when fetching list of feeds</source>
       <translation>Chyba při načítání seznamu kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="716"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="719"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>Kanály &amp; kategorie pro účet &apos;%1&apos; nebyly staženy, chyba: %2</translation>
     </message>
@@ -7144,7 +6799,7 @@ Počet kategorií: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="120"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="165"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="312"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="287"/>
       <source>Executables (*)</source>
       <extracomment>File filter for external browser selection dialog.
 ----------
@@ -7154,7 +6809,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="122"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="167"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="310"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="285"/>
       <source>Executables (*.*)</source>
       <translation>Spouštěče (*.*)</translation>
     </message>
@@ -7164,176 +6819,152 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Zvolit spouštěcí soubor e-mailového klienta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="188"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="184"/>
       <source>Opera 12 or older</source>
       <translation>Opera 12 nebo starší</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="320"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="297"/>
       <source>Enter (optional) parameters:</source>
       <translation>Zadat (volitelné) parametry:</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="48"/>
       <source>Executable</source>
       <translation>Spouštěč</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="387"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="343"/>
       <source>Network</source>
       <translation>Síť</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="383"/>
-      <source>Do not accept any incoming cookies</source>
-      <translation>Ignorovat veškeré cookies</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="384"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="341"/>
       <source>Enable HTTP/2</source>
       <translation>Povolit HTTP/2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="41"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="385"/>
-      <source>Enable API server</source>
-      <translation type="unfinished">Enable API server</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="51"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="386"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="342"/>
       <source>Custom User-Agent</source>
       <translation type="unfinished">Custom User-Agent</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="65"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="388"/>
-      <source>Custom &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; flags</source>
-      <translation>Vlastní &quot;QTWEBENGINE_CHROMIUM_FLAGS&quot; přepínače</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="75"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="389"/>
-      <source>Disable cache</source>
-      <translation>Zakázat cache</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="83"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="403"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="357"/>
       <source>External web browser</source>
       <translation>Externí webový prohlížeč</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="89"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="390"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="51"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="344"/>
       <source>Always open hyperlinks in external web browser</source>
       <translation>Odkazy vždy otevírat v externím webovém prohlížeči</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="109"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="223"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="392"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="405"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="71"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="185"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="346"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="359"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Pokud bude nezaškrtnuto, pak se použije výchozí systémový webový prohlížeč.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="112"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="394"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="74"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="348"/>
       <source>Use custom external web browser</source>
       <translation>Použít vlastní webový prohlížeč</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="124"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="395"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="86"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="349"/>
       <source>Web browser executable</source>
       <translation>Spouštěcí soubor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="136"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="396"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="98"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="350"/>
       <source>Executable file of web browser</source>
       <translation>Spouštěcí soubor prohlžeče webu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="149"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="266"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="397"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="410"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="111"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="228"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="351"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="364"/>
       <source>&amp;Browse</source>
       <translation>&amp;Procházet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="158"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="275"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="40"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="398"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="411"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="120"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="237"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="48"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="352"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="365"/>
       <source>Parameters</source>
       <translation>Parametry</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="168"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="285"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="399"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="412"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="130"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="247"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="353"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="366"/>
       <source>Parameters passed to executable</source>
       <translation>Parametry předávané programu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="175"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="292"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="400"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="413"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="137"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="254"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="354"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="367"/>
       <source>Use sample arguments for</source>
       <translation>Použít typické argumenty pro</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="189"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="401"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="151"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="355"/>
       <source>Select browser</source>
       <translation>Zvolte prohlížeč</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="25"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="33"/>
       <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
       <translation>Mějte na vědomí, že &quot;%1&quot; (bez uvozovek) je zástupný symbol pro URL dané zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="204"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="416"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="166"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="370"/>
       <source>External e-mail client</source>
       <translation>Externí e-mailový klient</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="226"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="407"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="188"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="361"/>
       <source>Use custom external e-mail client</source>
       <translation>Použít vlastní e-mailový klient</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="238"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="408"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="200"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="362"/>
       <source>E-mail client executable</source>
       <translation>Spustitelný soubor e-mailového klienta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="253"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="409"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="215"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="363"/>
       <source>Executable file of e-mail client</source>
       <translation>Spustitelný soubor e-mailového klienta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="306"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="414"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="268"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="368"/>
       <source>Select client</source>
       <translation>Zvolit klienta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="29"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="37"/>
       <source>Placeholders:
  • %1 - title of selected message,
  • %2 - body of selected message.</source>
@@ -7342,51 +6973,51 @@ File filter for external e-mail selection dialog.</extracomment>
  • %2 - tělo vybrané zprávy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="321"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="420"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="283"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="374"/>
       <source>External tools</source>
       <translation>Externá nástroje pro zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="356"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="417"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="318"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="371"/>
       <source>&amp;Add tool</source>
       <translation>&amp;Přidat nástroj</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="366"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="418"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="328"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="372"/>
       <source>&amp;Edit selected tool</source>
       <translation>Upravit &amp;vybraný nástroj</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="376"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="419"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="338"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="373"/>
       <source>&amp;Delete selected tool</source>
       <translation>&amp;Smazat vybraný nástroj</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="34"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="42"/>
       <source>On this page, you can setup a list of external tools which can open URLs.</source>
       <translation>Na této stránce si můžete nakonfigurovat seznam externích nástrojů pro otevírání URL adres.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="307"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="282"/>
       <source>Select external tool</source>
       <translation>Vybrat externí nástroj</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="319"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="296"/>
       <source>Enter parameters</source>
       <translation>Zadat parametry ext. nástroje</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="23"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="31"/>
       <source>Network proxy</source>
       <translation>Síťová proxy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="46"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="47"/>
       <source>Network &amp; web &amp; tools</source>
       <translation>Síť &amp; web &amp; nástroje</translation>
     </message>
@@ -7394,82 +7025,82 @@ File filter for external e-mail selection dialog.</extracomment>
   <context>
     <name>SettingsDatabase</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="16"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="25"/>
       <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
       <translation>Mějte na paměti, že rychlost a latence použitého MySQL serveru těžce ovlivňuje svižnost aplikace. Použití pomalého databázového spojení může vést ke špatnému výkonu aplikace např. při prohlížení zpráv.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="119"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="123"/>
       <source>Hostname is empty.</source>
       <translation>Hostitel je prázdný.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="122"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="126"/>
       <source>Hostname looks ok.</source>
       <translation>Hostitel je nejspíš v pořádku.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="128"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="132"/>
       <source>Username is empty.</source>
       <translation>Uživatelské jméno je prázdné.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="131"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="135"/>
       <source>Username looks ok.</source>
       <translation>Uživatelské jméno se jeví být v pořádku.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="137"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="141"/>
       <source>Password is empty.</source>
       <translation>Heslo je prázdné.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="140"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="144"/>
       <source>Password looks ok.</source>
       <translation>Heslo vypadá dobře.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="146"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="150"/>
       <source>Working database is empty.</source>
       <translation>Pracovní databáze je prázdná.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="149"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="153"/>
       <source>Working database is ok.</source>
       <translation>Pracovní databáze je ok.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="170"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="174"/>
       <source>No connection test triggered so far.</source>
       <translation>Test připojení doposud nespuštěn.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="171"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="175"/>
       <source>You did not executed any connection test yet.</source>
       <translation>Doposud nebyl probeden žádny test spojení.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="194"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="198"/>
       <source>Hostname of your MySQL server</source>
       <translation>Hostitel Vašeho MySQL serveru</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="195"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="199"/>
       <source>Username to login with</source>
       <translation>Uživatelské jméno</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="196"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="200"/>
       <source>Password for your username</source>
       <translation>Heslo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="197"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="201"/>
       <source>Working database which you have full access to.</source>
       <translation>Pracovní databáze, ke které máte plný přístup.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="23"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="32"/>
       <source>Usage of in-memory working database has several advantages and pitfalls. Make sure that you are familiar with these before you turn this feature on.
 
 Advantages:
@@ -7495,146 +7126,97 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="17"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="214"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="214"/>
       <source>Database driver</source>
       <translation>Datbázový ovladač</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="52"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="215"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="215"/>
       <source>Use in-memory database as the working database</source>
       <translation>Použít paměťovou databázi jako pracovní datové úložiště</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="81"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="216"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="216"/>
       <source>Hostname</source>
       <translation>Hostitel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="96"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="217"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="217"/>
       <source>Port</source>
       <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="127"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="218"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="218"/>
       <source>Working database</source>
       <translation>Pracovní databáze</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="137"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="219"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="219"/>
       <source>Username</source>
       <translation>Uživatelské jméno</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="150"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="220"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="220"/>
       <source>Password</source>
       <translation>Heslo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="165"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="221"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="221"/>
       <source>Test setup</source>
       <translation>Otestovat</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="34"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.h" line="35"/>
       <source>Data storage</source>
       <translation>Úložiště dat</translation>
     </message>
   </context>
   <context>
-    <name>SettingsDownloads</name>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.cpp" line="34"/>
-      <source>Select downloads target directory</source>
-      <translation>Zvolit cílový adresář pro uložení stahovaných souborů</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="17"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="98"/>
-      <source>Open download manager when new download is started</source>
-      <translation>Při začátku stahování otevírat správce stahování</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="24"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="99"/>
-      <source>Target directory for downloaded files</source>
-      <translation>Cílový adresář pro stahované soubory</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="32"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="100"/>
-      <source>Save all downloaded files to</source>
-      <translation>Uložit všechny stahované soubory do</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="45"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="101"/>
-      <source>Target directory where all downloaded files are saved</source>
-      <translation>Cílový adresář, kam jsou ukládány všechny stahované soubory</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="52"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="102"/>
-      <source>&amp;Browse</source>
-      <translation>&amp;Procházet</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.ui" line="74"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdownloads.h" line="103"/>
-      <source>Ask for each individual downloaded file</source>
-      <translation>Ptát se u každého stahovaného souboru</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsdownloads.h" line="30"/>
-      <source>Downloads</source>
-      <translation>Stahování</translation>
-    </message>
-  </context>
-  <context>
     <name>SettingsFeedsMessages</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="277"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="284"/>
       <source>Select new font</source>
       <translation>Vybrat písmo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="42"/>
       <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
       <translation>Zadejte formát pro čítače zpráv, které jsou zobrazeny u každého kanálu/kategorie. Použijte zástupné symboly &quot;%all&quot; a &quot;%unread&quot;, které představují aktuální hodnoty čítačů.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="37"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="46"/>
       <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
       <translation>Aktivace této volby může mít zásadní negativní dopad na výkon seznamu zpráv, hlavně při velkém množství zpráv.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="49"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="58"/>
       <source>immediately</source>
       <translation type="unfinished">immediately</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="50"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="59"/>
       <source>only manually</source>
       <translation type="unfinished">only manually</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="61"/>
       <source>with delay</source>
       <translation type="unfinished">with delay</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="69"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="78"/>
       <source>days (turned off)</source>
       <translation>dnů (vypnuto)</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="72"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="81"/>
       <source>day(s)</source>
       <translation>
         <numerusform>den</numerusform>
@@ -7644,7 +7226,7 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="78"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="87"/>
       <source> = unchanged size</source>
       <translation> = původní velikost</translation>
     </message>
@@ -7660,262 +7242,262 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="609"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="611"/>
       <source>Feed fetching</source>
       <translation>Stahování kanálů</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="600"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="602"/>
       <source>Fetch all articles on startup with initial delay of</source>
       <translation>Při startu aplikace aktualizovat všechny kanály s úvodní prodlevou</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="601"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="603"/>
       <source>Auto-fetch articles for all feeds every</source>
       <translation>Stáhnout všechny kanály každých</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="602"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="604"/>
       <source>Only auto-fetch articles if application is unfocused</source>
       <translation>Automaticky stahovat kanály, jen pokud aplikace není na popředí</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="604"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="606"/>
       <source>Feed connection timeout</source>
       <translation>Časový limit stažení souboru kanálu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="606"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="608"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
       <translation>Tento časový limit označuje čas, který si stahovací komponenta vyhradí pro získání souboru každého kanálu. Pokud tento čas vyprší a soubor doposud nebyl získán, tak se aktualizace kanálu ukončí a přejde se na další kanál.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="608"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="610"/>
       <source> ms</source>
       <translation>ms</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="603"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="605"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
       <translation>Podpora pro velmi rychlý aktualizační cyklus kanálů (pod 10 vteřin)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="619"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="622"/>
       <source>Feeds list</source>
       <translation>Seznam kanálů</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="471"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="610"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="636"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="474"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="612"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="638"/>
       <source>Row height</source>
       <translation>Výška položky seznamu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="175"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="611"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="613"/>
       <source>Feed list font</source>
       <translation>Písmo seznamu kanálů</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="187"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="375"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="636"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="612"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="628"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="643"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="392"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="639"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="614"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="632"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="645"/>
       <source>Font preview</source>
       <translation>Náhled písma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="197"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="385"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="646"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="613"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="629"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="644"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="402"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="649"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="615"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="633"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="646"/>
       <source>&amp;Change font</source>
       <translation>&amp;Změnit písmo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="222"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="614"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="616"/>
       <source>Article count format</source>
       <translation>Formát počtu zpráv</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="251"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="615"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="617"/>
       <source>Hide article counts if there are no unread articles</source>
       <translation>Skrýt počet zpráv, pokud je nulový</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="258"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="616"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="618"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
       <translation>Povolit pouze základní klávesové zkratky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="265"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="617"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="619"/>
       <source>Display tooltips for feeds and articles</source>
       <translation>Zobrazovat tooltipy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="272"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="618"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="620"/>
+      <source>Strikethrough disabled feed titles</source>
+      <translation type="unfinished">Strikethrough disabled feed titles</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="279"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="621"/>
       <source>Update feed list during feed fetching</source>
       <translation type="unfinished">Update feed list during feed fetching</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="280"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="632"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="287"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="634"/>
       <source>Articles</source>
       <translation>Zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="286"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="620"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="293"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="623"/>
       <source>Remove all read articles from all feeds on application exit</source>
       <translation>Vymazat všechny přečtené zprávy, když se aplikace vypíná</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="293"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="621"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="625"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
       <translation>Při aktualizaci zpráv ignorovat změny v těle zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="314"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="624"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="328"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="628"/>
       <source>Internal article viewer</source>
       <translation>Zabudovaný prohlížeč zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="329"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="626"/>
-      <source>Limit height of all pictures</source>
-      <translation type="unfinished">Limit height of all pictures</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="420"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="631"/>
-      <source>Use legacy article formatting</source>
-      <translation type="unfinished">Use legacy article formatting</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="434"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="633"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="437"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="635"/>
       <source>Unread article icon type</source>
       <translation>Typ indikace nepřečtených článků</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="639"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="558"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="641"/>
       <source>Use custom date/time format for dates-only</source>
       <translation type="unfinished">Use custom date/time format for dates-only</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="679"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="645"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="682"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="647"/>
       <source>Upon article selection, mark as read</source>
       <translation type="unfinished">Upon article selection, mark as read</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="686"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="646"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="689"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="648"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
       <translation type="unfinished">Switch article list to RTL layout if all selected feeds are RTL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="623"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="321"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="627"/>
       <source>Bring application window to front once article is opened in external web browser</source>
       <translation>Při otevření zprávy v ext. webovém prohlížeči následně přepnout focus zpět na aplikaci</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="369"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="627"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="386"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="631"/>
       <source>Article browser font</source>
       <translation>Písmo prohlížeče zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="300"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="622"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="314"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="626"/>
       <source>Fixup date/time of articles which are in the future</source>
       <translation>Opravovat čas článků, který je chybně z budoucnosti</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="320"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="625"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="334"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="629"/>
       <source>Display attachments directly in article</source>
       <translation>Zobrazovat obrazové přílohy přímo v článku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="413"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="630"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="300"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="624"/>
       <source>Keep article viewer always visible</source>
       <translation>Držet panel zobrazení detailu článku stále viditelný</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="428"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="647"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="343"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="630"/>
+      <source>Limit height of attachments</source>
+      <translation type="unfinished">Limit height of attachments</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="431"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="649"/>
       <source>Articles list</source>
       <translation>Seznam zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="447"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="634"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="450"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="636"/>
       <source>Keep article selection in the middle of the article list viewport</source>
       <translation>Udržovat výběr uprostřed seznamu kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="454"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="635"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="457"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="637"/>
       <source>Enable multiline items</source>
       <translation>Povolit víceřádkové zobrazení</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="500"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="637"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="503"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="639"/>
       <source>Top/bottom row padding</source>
       <translation>Horní/dolní padding textu v položkách</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="529"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="638"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="532"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="640"/>
       <source>Use custom date/time format</source>
       <translation>Vlastní formát datumu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="581"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="640"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="584"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="642"/>
       <source>Custom date/time format for today&apos;s articles</source>
       <translation>Vlastní formát datumu pro dnešní zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="624"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="642"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="627"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="644"/>
       <source>Article list font</source>
       <translation>Písmo seznamu zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="607"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="641"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="610"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="643"/>
       <source>Show relative time for articles not older than</source>
       <translation>Zobrazit relativní čas pro zprávy ne starší než</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="38"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.h" line="39"/>
       <source>Feeds &amp; articles</source>
       <translation>Kanály &amp; zprávy</translation>
     </message>
@@ -7923,24 +7505,24 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
   <context>
     <name>SettingsGeneral</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgeneral.cpp" line="51"/>
+      <location filename="../src/librssguard/gui/settings/settingsgeneral.cpp" line="58"/>
       <source> (not supported on this platform)</source>
       <translation> (na této platformě nepodporováno)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="17"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="58"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="58"/>
       <source>Launch %1 on operating system startup</source>
       <translation>Spustit %1 při spuštění operačního systému</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="59"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="59"/>
       <source>Check for %1 updates on application startup</source>
       <translation>Kontrolovat aktualizace programu %1 po startu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="27"/>
+      <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="28"/>
       <source>General</source>
       <translation>Obecné</translation>
     </message>
@@ -7948,83 +7530,88 @@ Autoři této aplikace nenesou žádnou odpovědnost za ztrátu Vašich dat.</tr
   <context>
     <name>SettingsGui</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="41"/>
       <source>Name</source>
       <translation>Název</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="41"/>
       <source>Author</source>
       <translation>Autor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="41"/>
       <source>Forced skin colors</source>
       <translation>Vynucené barvy skinu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="222"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="50"/>
+      <source>Note that skin colors for dialogs/controls only take effect with some styles, for example with the Fusion style.</source>
+      <translation type="unfinished">Note that skin colors for dialogs/controls only take effect with some styles, for example with the Fusion style.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="237"/>
       <source>system style</source>
       <translation type="unfinished">system style</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="224"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="239"/>
       <source>default style</source>
       <translation type="unfinished">default style</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="301"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="316"/>
       <source>Icon only</source>
       <translation>Pouze ikony</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="302"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="317"/>
       <source>Text only</source>
       <translation>Pouze texty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="303"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="318"/>
       <source>Text beside icon</source>
       <translation>Texty vedle ikon</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="304"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="319"/>
       <source>Text under icon</source>
       <translation>Texty pod ikonami</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="305"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="320"/>
       <source>Follow OS style</source>
       <translation>Podle nastavení systému</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="187"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="202"/>
       <source>system icon theme</source>
       <extracomment>Label for disabling icon theme.</extracomment>
       <translation>systémové téma ikon</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="189"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="204"/>
       <source>no icon theme</source>
       <translation>žádné téma ikon</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="170"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="185"/>
       <source>(Your OS does not support tray icons at the moment.)</source>
       <translation>(Váš OS nepodporuje tray ikonu.)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="41"/>
       <source>Forced style</source>
       <translation>Vynucený styl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="42"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="54"/>
       <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
       <translation>Některé barvy skinu lze zde přenastavit.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="255"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="270"/>
       <source>%1
 
 Version: %2
@@ -8035,187 +7622,193 @@ Verze: %2
 Popis: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="328"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="343"/>
       <source>Fetch color from activated skin</source>
       <translation>Načíst barvu z aktivního skinu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="111"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="126"/>
       <source> = default icon size</source>
       <translation> = výchozí velikost ikony</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="408"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="420"/>
       <source>Icons &amp;&amp; skins</source>
       <translation>Ikony &amp;&amp; skiny</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="33"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="404"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="415"/>
       <source>Icon theme</source>
       <translation>Téma ikon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="46"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="405"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="416"/>
       <source>Style</source>
       <translation>Styl</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="59"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="406"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="417"/>
       <source>Skin</source>
       <translation>Téma</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="407"/>
-      <source>Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</source>
-      <translation type="unfinished">Use skin colors (skin colors for dialogs/controls only take effect with Fusion style)</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="120"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="410"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="130"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="422"/>
       <source>Custom skin colors</source>
       <translation>Vlastní barvy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="129"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="409"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="139"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="421"/>
       <source>Customize predefined colors</source>
       <translation type="unfinished">Customize predefined colors</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="141"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="417"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="151"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="429"/>
       <source>Tray area</source>
       <translation>Oznamovací oblast</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="153"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="411"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="163"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="423"/>
       <source>Tray icon</source>
       <translation>Notifikační ikona</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="165"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="412"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="175"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="424"/>
       <source>Use monochrome icon</source>
       <translation>Černobílá stavová ikona</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="172"/>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="226"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="413"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="418"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="182"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="425"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="430"/>
       <source>Display count of unread messages</source>
       <translation>Zobrazit počet nepřečtených zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="179"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="414"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="189"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="426"/>
       <source>Hide main window when it is minimized</source>
       <translation>Skrýt hlavní okno při jeho minimalizaci</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="186"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="415"/>
-      <source>Start application hidden</source>
-      <translation>Spouštět aplikaci skrytou</translation>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="418"/>
+      <source>Use skin colors</source>
+      <translation type="unfinished">Use skin colors</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="196"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="416"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="122"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="419"/>
+      <source>Enable application-wide font anti-aliasing</source>
+      <translation type="unfinished">Enable application-wide font anti-aliasing</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="199"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="427"/>
       <source>Use colored icon when there are unread articles</source>
       <translation type="unfinished">Use colored icon when there are unread articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="220"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="419"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="222"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="428"/>
+      <source>Start application minimized (or hidden if configured)</source>
+      <translation type="unfinished">Start application minimized (or hidden if configured)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="230"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="431"/>
       <source>Task bar</source>
       <translation>Hlavní lišta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="234"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="425"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="244"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="437"/>
       <source>Tabs</source>
       <translation>Panely</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="246"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="420"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="256"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="432"/>
       <source>Close tabs with</source>
       <translation>Zavírat panely pomocí</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="252"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="421"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="262"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="433"/>
       <source>Middle mouse button single-click</source>
       <translation>Prostředního tlačítka myši</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="259"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="422"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="269"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="434"/>
       <source>Left mouse button double-click</source>
       <translation>Dvojitý klik levého tlačítka myši</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="269"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="423"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="279"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="435"/>
       <source>Open new tabs with left mouse button double-click on tab bar</source>
       <translation>Otevírat nové panely poklepáním na panelový pruh</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="276"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="424"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="286"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="436"/>
       <source>Hide tab bar if just one tab is visible</source>
       <translation>Skrýt přepínač tabů, je-li viditelný pouze jeden tab</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="297"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="433"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="307"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="445"/>
       <source>Toolbars</source>
       <translation>Nástrojové lišty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="310"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="426"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="320"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="438"/>
       <source>Toolbar for feeds list</source>
       <translation>Lišta seznamu kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="315"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="427"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="325"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="439"/>
       <source>Toolbar for articles list</source>
       <translation>Lišta seznamu zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="320"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="428"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="330"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="440"/>
       <source>Statusbar</source>
       <translation>Stavový pruh</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="398"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="430"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="408"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="442"/>
       <source>Button style</source>
       <translation>Styl tlačítek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="408"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="431"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="418"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="443"/>
       <source>Toolbar editor</source>
       <translation>Editor nástrojové lišty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="434"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="432"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="444"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="444"/>
       <source>Icon size</source>
       <translation>Velikost ikon</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.h" line="35"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.h" line="36"/>
       <source>User interface</source>
       <translation>Uživatelské rozhraní</translation>
     </message>
@@ -8223,54 +7816,54 @@ Popis: %3</translation>
   <context>
     <name>SettingsLocalization</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="35"/>
       <source>Language</source>
       <translation>Lokalizace</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="35"/>
       <source>Code</source>
       <translation>Kód</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="25"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="35"/>
       <source>Translation progress</source>
       <translation>Postup překladu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="27"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="37"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
       <translation>Pomozte nám zlepšit %1 &lt;a href=&quot;%2&quot;&gt;překlady&lt;/a&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="109"/>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="110"/>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="115"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="117"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="118"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="123"/>
       <source>Big thanks to all translators!</source>
       <translation type="unfinished">Big thanks to all translators!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="114"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="122"/>
       <source>Translations provided by: %1</source>
       <translation type="unfinished">Translations provided by: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="200"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="208"/>
       <source>Translators needed!</source>
       <translation>Potřební překladatelé!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="201"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="209"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
       <translation>Překlad &apos;%1&apos; je neúplný a každý, kdo může pomoci s překladem %2, je vítán.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="203"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="211"/>
       <source>Do you want to help with the translation now?</source>
       <translation>Chcete pomoci s překladem nyní?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="39"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="40"/>
       <source>Localization</source>
       <translation>Lokalizace</translation>
     </message>
@@ -8279,226 +7872,136 @@ Popis: %3</translation>
     <name>SettingsMediaPlayer</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="17"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="114"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="114"/>
       <source>Backend</source>
       <translation type="unfinished">Backend</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="36"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="115"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="115"/>
       <source>Use custom MPV configuration folder</source>
       <translation type="unfinished">Use custom MPV configuration folder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="116"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="116"/>
       <source>Browse</source>
       <translation type="unfinished">Browse</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="44"/>
       <source>You use modern libmpv-based media player backend with API version %1.</source>
       <translation type="unfinished">You use modern libmpv-based media player backend with API version %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="48"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="59"/>
       <source>You use lightweight QtMultimedia-based media player backend. If some videos do not play, then you likely need to install some codecs.</source>
       <translation type="unfinished">You use lightweight QtMultimedia-based media player backend. If some videos do not play, then you likely need to install some codecs.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="53"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="64"/>
       <source>no backend installed</source>
       <translation type="unfinished">no backend installed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="54"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="65"/>
       <source>You do not have any media player available. Media player is only supported on modern platforms where needed libraries are available. You must manually recompile %1 to be able to use media player.</source>
       <translation type="unfinished">You do not have any media player available. Media player is only supported on modern platforms where needed libraries are available. You must manually recompile %1 to be able to use media player.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="68"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="80"/>
       <source>Select folder for your MPV configuration</source>
       <translation type="unfinished">Select folder for your MPV configuration</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="31"/>
+      <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="33"/>
       <source>Media player</source>
       <translation type="unfinished">Media player</translation>
-    </message>
-  </context>
-  <context>
-    <name>SettingsNodejs</name>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="18"/>
-      <source>What is Node.js?</source>
-      <translation>Co je Node.js?</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="19"/>
-      <source>Node.js is asynchronous event-driven JavaScript runtime, designed to build scalable network applications.
-
-%1 integrates Node.js to bring some modern features like Adblock.
-
-Note that usually all required Node.js tools should be available via your &quot;PATH&quot; environment variable, so you do not have to specify full paths.
-
-Also, relaunch &quot;Settings&quot; dialog after you install Node.js.</source>
-      <translation>Node.js je asynchronní běhové prostředí JavaScriptu řízené událostmi, navržené pro vytváření škálovatelných síťových aplikací.
-
-%1 integruje Node.js a přináší několik moderních funkcí, jako je Adblock.
-
-Všimněte si, že obvykle všechny potřebné Node.js nástroje by měly být k dispozici prostřednictvím proměnné prostředí &quot;PATH&quot;, abyste nemuseli specifikovat plné cesty.
-
-Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="112"/>
-      <source>Node.js has version %1.</source>
-      <translation>Node.js má verzi %1.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="123"/>
-      <source>NPM has version %1.</source>
-      <translation>NPM má verzi %1.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="140"/>
-      <source>You cannot choose file, you have to choose FOLDER.</source>
-      <translation>Nelze vybrat soubor, je třeba vybrat složku.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="144"/>
-      <source>Package folder is OK.</source>
-      <translation>Složka s balíčky je OK.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="148"/>
-      <source>Package folder will be created!</source>
-      <translation>Složka s balíčky bude vytvořena.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.cpp" line="29"/>
-      <source>%1 automatically installs some Node.js packages so that you do not have to. %1 does not use global package folder because that requires administrator rights, therefore by default it uses subfolder placed in your &quot;user data&quot; folder.</source>
-      <translation>%1 automaticky nainstaluje některé balíčky Node.js, takže to nemusíte dělat manuálně. %1 nepoužívá globální složku balíčků, protože to vyžaduje práva správce, proto ve výchozím nastavení používá podsložku umístěnou ve vaší uživatelské datové složce.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="148"/>
-      <source>Form</source>
-      <translation>Formulář</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="23"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="149"/>
-      <source>Node.js executable</source>
-      <translation>Spouštěč Node.js</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="44"/>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="74"/>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="104"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="150"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="152"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="154"/>
-      <source>&amp;Browse</source>
-      <translation>&amp;Procházet</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="151"/>
-      <source>NPM executable</source>
-      <translation>Spouštěč NPM</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="83"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="153"/>
-      <source>Package folder </source>
-      <translation>Složka s balíčky</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsnodejs.ui" line="116"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnodejs.h" line="155"/>
-      <source>&amp;Download Node.js</source>
-      <translation>&amp;Stáhnout Node.js</translation>
     </message>
   </context>
   <context>
     <name>SettingsNotifications</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="193"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="199"/>
       <source>Enable notifications</source>
       <translation>Povolit notifikace</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="194"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="37"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="200"/>
       <source>Balloon notifications type</source>
       <translation>Typ notifikací</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="46"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="195"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="43"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="201"/>
       <source>Native notifications (tray icon must be enabled)</source>
       <translation>Nativní notifikace (ikona v oznamovací oblasti musí být povolena)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="196"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="50"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="202"/>
       <source>Custom notifications</source>
       <translation>Vlastní notifikace</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="69"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="197"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="66"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="203"/>
       <source>Position</source>
       <translation>Pozice</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="82"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="198"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="79"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="204"/>
       <source>Width</source>
       <translation type="unfinished">Width</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="105"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="199"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="102"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="205"/>
       <source>Margins</source>
       <translation type="unfinished">Margins</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="125"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="200"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="122"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="206"/>
       <source>Screen</source>
       <translation>Obrazovka</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="159"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="202"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="156"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="208"/>
       <source>Opacity</source>
       <translation type="unfinished">Opacity</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="31"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.h" line="33"/>
       <source>Notifications</source>
       <translation>Notifikace</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="19"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="29"/>
       <source>There are some built-in notification sounds. Just start typing &quot;:&quot; and they will show up.</source>
       <translation>Existují některé vestavěné zvuky notifikací. Stačí začít psát &quot;:&quot; a zobrazí se.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="73"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="32"/>
+      <source>Note that native notifications might have some OS-dependent limitations. For example Windows OS is known to limit the amount of notification originating from each app during short span of time.</source>
+      <translation type="unfinished">Note that native notifications might have some OS-dependent limitations. For example Windows OS is known to limit the amount of notification originating from each app during short span of time.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="93"/>
       <source>%1 (not supported on Wayland)</source>
       <translation type="unfinished">%1 (not supported on Wayland)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="117"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="137"/>
       <source>How do I look?</source>
       <translation type="unfinished">How do I look?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="118"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="138"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
       <translation type="unfinished">Just testing new notifications settings. That&apos;s all.</translation>
     </message>
@@ -8506,7 +8009,7 @@ Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translati
   <context>
     <name>SettingsShortcuts</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="27"/>
+      <location filename="../src/librssguard/gui/settings/settingsshortcuts.h" line="28"/>
       <source>Keyboard shortcuts</source>
       <translation>Klávesové zkratky</translation>
     </message>
@@ -8532,54 +8035,60 @@ Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translati
   <context>
     <name>SingleNotificationEditor</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="48"/>
+      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="50"/>
       <source>Select sound file</source>
       <translation>Vybrat zvukový soubor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="50"/>
+      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="52"/>
       <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
       <translation>WAV soubory (*.wav);;MP3 soubory (*.mp3)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="23"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="129"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="136"/>
       <source>Balloon notification</source>
       <translation>Balónové notifikace</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="30"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="130"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="137"/>
+      <source>Show dialogs</source>
+      <translation type="unfinished">Show dialogs</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="37"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="138"/>
       <source>Play sound</source>
       <translation type="unfinished">Play sound</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="58"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="131"/>
+      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="65"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="139"/>
       <source>Sound</source>
       <translation>Zvuk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="70"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="132"/>
+      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="77"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="140"/>
       <source>Full path to your WAV sound file</source>
       <translation>Plná cesta k souboru WAV</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="77"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="133"/>
+      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="84"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="141"/>
       <source>&amp;Browse</source>
       <translation>&amp;Procházet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="84"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="134"/>
+      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="91"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="142"/>
       <source>&amp;Play</source>
       <translation>&amp;Přehrát</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="103"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="135"/>
+      <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="110"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="143"/>
       <source>Volume</source>
       <translation>Hlasitost</translation>
     </message>
@@ -8587,33 +8096,18 @@ Po instalaci Node.js také restartujte dialog &quot;Nastavení&quot;.</translati
   <context>
     <name>SkinFactory</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="229"/>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="232"/>
-      <source>This page was blocked by AdBlock</source>
-      <translation>Tato stránka byla zablokována AdBlockem</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="230"/>
-      <source>Blocked URL: &quot;%1&quot;&lt;br/&gt;Used filter: &quot;%2&quot;</source>
-      <translation>Zablokováno seznamem: &quot;%1&quot;&lt;br/&gt;Použitý filtr: &quot;%2&quot;</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="296"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="271"/>
       <source>Written by </source>
       <translation>Napsal </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="297"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="269"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="272"/>
       <source>unknown author</source>
       <translation>neznámý autor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="309"/>
-      <source>Newspaper view</source>
-      <translation>Novinový náhled</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="550"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="499"/>
       <source>file %1 not found</source>
       <translation type="unfinished">file %1 not found</translation>
     </message>
@@ -8688,48 +8182,22 @@ If that is the case, then you need to set some time gaps when fetching those fee
 If that is the case, then you need to set some time gaps when fetching those feeds.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="56"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="55"/>
       <source>Select icon file for the account</source>
       <translation type="unfinished">Select icon file for the account</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="58"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="57"/>
       <source>Images (%1)</source>
       <translation>Obrázky (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="64"/>
-      <source>Select icon</source>
-      <translation>Vybrat ikonu</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="65"/>
-      <source>Cancel</source>
-      <translation>Zrušit</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="68"/>
-      <source>Look in:</source>
-      <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-      <translation>Hledat v:</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="69"/>
-      <source>Icon name:</source>
-      <translation>Název ikony:</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="70"/>
-      <source>Icon type:</source>
-      <translation>Typ ikony:</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="83"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="72"/>
       <source> = no spacing</source>
       <translation type="unfinished"> = no spacing</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="86"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="75"/>
       <source> seconds</source>
       <translation type="unfinished">
         <numerusform> seconds</numerusform>
@@ -8755,72 +8223,84 @@ If that is the case, then you need to set some time gaps when fetching those fee
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="115"/>
-      <source>yes</source>
-      <translation>ano</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="115"/>
-      <source>no</source>
-      <translation>ne</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="230"/>
-      <source>Script</source>
-      <translation>Skript</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="233"/>
-      <source>Local file</source>
-      <translation>Místní soubor</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="236"/>
-      <source>Built-in web browser with JavaScript support</source>
-      <translation type="unfinished">Built-in web browser with JavaScript support</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="239"/>
-      <source>Unknown</source>
-      <translation>Neznámý</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="278"/>
-      <source>Cannot save data for feed: %1</source>
-      <translation>Data pro kanál nelze uložit: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="342"/>
-      <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
-      <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="453"/>
-      <source>Cannot move feed, detailed information was logged via debug log.</source>
-      <translation>Kanál nelze přesunout, více informací najdete v aplikačním logu.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="277"/>
-      <source>Cannot save feed data</source>
-      <translation>Nelze uložit vlastnosti kanálu</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="95"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="90"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
 Source: %4
+HTTP/2: %6
 Item ID: %5
 </source>
       <translation type="unfinished">Auto-update status: %1
 Active message filters: %2
 Status: %3
 Source: %4
+HTTP/2: %6
 Item ID: %5
 </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="108"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="112"/>
+      <source>yes</source>
+      <translation>ano</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="112"/>
+      <source>no</source>
+      <translation>ne</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="227"/>
+      <source>Script</source>
+      <translation>Skript</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="230"/>
+      <source>Local file</source>
+      <translation>Místní soubor</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="460"/>
+      <source>uses application setting</source>
+      <translation type="unfinished">uses application setting</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="463"/>
+      <source>enabled</source>
+      <translation type="unfinished">enabled</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="466"/>
+      <source>disabled</source>
+      <translation type="unfinished">disabled</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="469"/>
+      <source>unknown state</source>
+      <translation type="unfinished">unknown state</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="233"/>
+      <source>Unknown</source>
+      <translation>Neznámý</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="272"/>
+      <source>Cannot save data for feed: %1</source>
+      <translation>Data pro kanál nelze uložit: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="443"/>
+      <source>Cannot move feed, detailed information was logged via debug log.</source>
+      <translation>Kanál nelze přesunout, více informací najdete v aplikačním logu.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="271"/>
+      <source>Cannot save feed data</source>
+      <translation>Nelze uložit vlastnosti kanálu</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="105"/>
       <source>Encoding: %1
 Type: %2
 Post-processing script: %3
@@ -8831,12 +8311,12 @@ Post-processing script: %3
 Use raw XML saving: %4</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="411"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="401"/>
       <source>feed format not recognized</source>
       <translation>nebyl rozpoznán formát kanálu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="452"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="442"/>
       <source>Cannot move feed</source>
       <translation>Kanál nelze přesunout</translation>
     </message>
@@ -8864,165 +8344,139 @@ Use raw XML saving: %4</translation>
       <translation>Zvolte popis Vašeho kanálu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="83"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="81"/>
       <source>Icon selection</source>
       <translation>Vybrat ikonu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="90"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="88"/>
       <source>Use default icon from icon theme</source>
       <translation>Použít výchozí ikonu z tématu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="92"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="90"/>
       <source>Fetch icon from feed</source>
       <translation>Stáhnout ikonu online z kanálu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="103"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="104"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="101"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="102"/>
       <source>No metadata fetched so far.</source>
       <translation>Metadata doposud nenačtena.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="158"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="155"/>
       <source>Enter URL</source>
       <translation type="unfinished">Enter URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="159"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="156"/>
       <source>Enter direct URL pointing to the image</source>
       <translation type="unfinished">Enter direct URL pointing to the image</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="178"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="175"/>
       <source>Icon not fetched</source>
       <translation type="unfinished">Icon not fetched</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="179"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="176"/>
       <source>Icon was not fetched due to network error.</source>
       <translation type="unfinished">Icon was not fetched due to network error.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="209"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="206"/>
       <source>Icon fetched successfully.</source>
       <translation>Ikona úspěšně stažena.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="210"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="207"/>
       <source>Icon metadata fetched.</source>
       <translation>Metadata ikony načtena.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="218"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="223"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="228"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="215"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="220"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="225"/>
       <source>No icon fetched.</source>
       <translation>Ikona nestažena.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="274"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="273"/>
       <source>All metadata fetched successfully.</source>
       <translation>Metadata stažena úspěšně.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="275"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="274"/>
       <source>Feed and icon metadata fetched.</source>
       <translation>Metadata a ikona staženy.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="283"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="288"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="293"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="282"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="287"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="292"/>
       <source>No metadata fetched.</source>
       <translation>Žádná metadata nestažena.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="299"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="298"/>
       <source>Feed name is ok.</source>
       <translation>Název kanálu je v pořádku.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="302"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="301"/>
       <source>Feed name is too short.</source>
       <translation>Název kanálu je příliš krátký.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="308"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="307"/>
       <source>Description is empty.</source>
       <translation>Popis je prázdný.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="311"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="310"/>
       <source>The description is ok.</source>
       <translation>Popis je v pořádku.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="320"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="318"/>
       <source>The URL is ok.</source>
       <translation>URL je v pořádku.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="324"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="322"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
       <translation>URL nemá standardní tvar. Začíná vaše URL na &quot;http://&quot; či &quot;https://&quot;?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="328"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="326"/>
       <source>The URL is empty.</source>
       <translation>URL je prázdná.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="337"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="335"/>
       <source>Source is ok.</source>
       <translation>Zdroj je v pořádku.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="347"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="345"/>
       <source>File exists.</source>
       <translation>Soubor existuje.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="350"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="348"/>
       <source>File does not exist.</source>
       <translation>Soubor neexistuje.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="382"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="379"/>
       <source>Select icon file for the feed</source>
       <translation>Vybrat ikonu pro kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="384"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="381"/>
       <source>Images (%1)</source>
       <translation>Obrázky (%1)</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="390"/>
-      <source>Select icon</source>
-      <translation>Vybrat ikonu</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="391"/>
-      <source>Cancel</source>
-      <translation>Zrušit</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="394"/>
-      <source>Look in:</source>
-      <extracomment>Label for field with icon file name textbox for selection dialog.</extracomment>
-      <translation>Hledat v:</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="395"/>
-      <source>Icon name:</source>
-      <translation>Název ikony:</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="396"/>
-      <source>Icon type:</source>
-      <translation>Typ ikony:</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="36"/>
@@ -9045,52 +8499,52 @@ Use raw XML saving: %4</translation>
       <translation>Sem můžete zadat plné volání externího programu i s parametry, které vyprodukuje kanálová data.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="85"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="83"/>
       <source>Select icon from file...</source>
       <translation type="unfinished">Select icon from file...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="87"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="85"/>
       <source>Download icon from URL...</source>
       <translation type="unfinished">Download icon from URL...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="357"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="355"/>
       <source>The source is ok.</source>
       <translation>Zdroj je ok.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="364"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="362"/>
       <source>Command is ok.</source>
       <translation>Příkaz je v pořádku.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="217"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="282"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="214"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="281"/>
       <source>Script failed: %1</source>
       <translation>Skript selhal: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="222"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="287"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="219"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="286"/>
       <source>Network error: %1</source>
       <translation>Síťová chyba: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="227"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="292"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="340"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="367"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="224"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="291"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="338"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="365"/>
       <source>Error: %1</source>
       <translation>Chyba: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="134"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="132"/>
       <source>What is post-processing script?</source>
       <translation>Co je to post-procesní skript?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="135"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="133"/>
       <source>You can use URL as a source of your feed or you can produce your feed with custom script.
 
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
@@ -9187,7 +8641,7 @@ Stažená data kanálů můžete také dodatečně zpracovat post-procesním skr
       <translation>Povolit HTTP/2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="26"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="25"/>
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
@@ -9196,90 +8650,93 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="32"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="31"/>
       <source>Use application settings</source>
       <translation type="unfinished">Use application settings</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="33"/>
       <source>Enabled</source>
       <translation type="unfinished">Enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="35"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
       <source>Disabled</source>
       <translation type="unfinished">Disabled</translation>
     </message>
   </context>
   <context>
+    <name>StandardServiceEntryPoint</name>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceentrypoint.cpp" line="20"/>
+      <source>Local RSS/RDF/ATOM/JSON</source>
+      <translation type="unfinished">Local RSS/RDF/ATOM/JSON</translation>
+    </message>
+  </context>
+  <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="73"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="74"/>
       <source>Do you want to load initial set of feeds?</source>
       <translation>Chcete načíst úvodní set kanálů?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="101"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="102"/>
       <source>Error when loading initial feeds</source>
       <translation>Chyba při načítání úvodních kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="439"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="436"/>
       <source>Fetch metadata</source>
       <translation>Načíst metadata</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="635"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="632"/>
       <source>Export feeds</source>
       <translation>Exportovat kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="636"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="633"/>
       <source>Import feeds</source>
       <translation>Importovat kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="72"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="73"/>
       <source>This new account does not include any feeds. You can now add default set of feeds.</source>
       <translation>Tento nový účet doposud neobsahuje žádné kanály, chcete nyní přidat výchozí sadu kanálů?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="51"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="46"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
       <translation>Jedná se o klasicky účet pro standardní RSS/RDF/ATOM kanály.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="171"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="172"/>
       <source>Cannot add item</source>
       <translation>Nelze přidat položku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="172"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="173"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="308"/>
-      <source>this source type cannot be used on &apos;lite&apos; %1 build</source>
-      <translation type="unfinished">this source type cannot be used on &apos;lite&apos; %1 build</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="601"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="598"/>
       <source>Cannot add category</source>
       <translation>Nelze přidat kategorii</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="602"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="599"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
       <translation>Nelze přidat kategorii, protože probíhá jiná kritická operace.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="581"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="578"/>
       <source>Import was completely successful.</source>
       <translation>Import byl úspěšný.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="578"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="575"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
       <translation>Některé kanály/kategorie nebyly importovány kvůli chybě. Mrkněte do aplikačního logu.</translation>
     </message>
@@ -9323,7 +8780,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
   <context>
     <name>SystemTrayIcon</name>
     <message>
-      <location filename="../src/librssguard/gui/systemtrayicon.cpp" line="97"/>
+      <location filename="../src/librssguard/gui/systemtrayicon.cpp" line="106"/>
       <source>%1
 Unread news: %2</source>
       <translation>%1
@@ -9333,12 +8790,12 @@ Nepřečtené zprávy: %2</translation>
   <context>
     <name>TabBar</name>
     <message>
-      <location filename="../src/librssguard/gui/tabbar.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/tabbar.cpp" line="32"/>
       <source>Close this tab.</source>
       <translation>Zavřít tento panel.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabbar.cpp" line="34"/>
+      <location filename="../src/librssguard/gui/tabbar.cpp" line="33"/>
       <source>Close tab</source>
       <translation>Zavřít panel</translation>
     </message>
@@ -9346,57 +8803,29 @@ Nepřečtené zprávy: %2</translation>
   <context>
     <name>TabWidget</name>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="152"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="136"/>
       <source>Feeds</source>
       <translation>Kanály</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="43"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="44"/>
       <source>Displays main menu.</source>
       <translation>ZObrazí hlavní menu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="54"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="55"/>
       <source>Main menu</source>
       <translation>Hlavní menu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="85"/>
-      <source>Downloads</source>
-      <translation>Stahování</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="261"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="233"/>
       <source>Media player</source>
       <translation type="unfinished">Media player</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="287"/>
-      <source>Web browser</source>
-      <translation>Webový prohlížeč</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="154"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="138"/>
       <source>Browse your feeds and articles</source>
       <translation>Procházet kanály a zprávy</translation>
-    </message>
-  </context>
-  <context>
-    <name>TextBrowserViewer</name>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="362"/>
-      <source>Enable external resources</source>
-      <translation>Povolit externí zdroje</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="364"/>
-      <source>Download</source>
-      <translation>Stáhnout</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="650"/>
-      <source>image</source>
-      <translation>obrázek</translation>
     </message>
   </context>
   <context>
@@ -9478,61 +8907,61 @@ Nepřečtené zprávy: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="32"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="185"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="185"/>
       <source>Activated actions</source>
       <translation>Aktivované akce</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="39"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="186"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="186"/>
       <source>Available actions</source>
       <translation>Dostupné akce</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="76"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="188"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="188"/>
       <source>Move action up</source>
       <translation>Přesunout akci nahoru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="89"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="191"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="191"/>
       <source>Move action down</source>
       <translation>Přesunout akci dolů</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="109"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="194"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="194"/>
       <source>Insert separator</source>
       <translation>Vložit oddělovač</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="122"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="197"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="197"/>
       <source>Insert spacer</source>
       <translation>Vložit mezeru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="142"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="200"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="200"/>
       <source>Add selected action</source>
       <translation>Aktivovat zvolenou akci</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="155"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="203"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="203"/>
       <source>Delete selected action</source>
       <translation>Deaktivovat zvolenou akci</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="168"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="206"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="206"/>
       <source>Delete all actions</source>
       <translation>Deaktivovat všechny akce</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="181"/>
-      <location filename="../build/Desktop_Qt_6_8_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="209"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="209"/>
       <source>Reset toolbar</source>
       <translation>Vyresetovat</translation>
     </message>
@@ -9862,236 +9291,38 @@ Poslední čas přihlášení: %4</translation>
   <context>
     <name>WebBrowser</name>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="27"/>
       <source>Navigation panel</source>
       <translation>Navigační panel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="41"/>
-      <source>View website in reader mode</source>
-      <translation>Zobrazit stránku ve čtenářském režimu</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="37"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="34"/>
       <source>Play in media player</source>
       <translation type="unfinished">Play in media player</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="44"/>
-      <source>Load full source article</source>
-      <translation type="unfinished">Load full source article</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="284"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="231"/>
       <source>No title</source>
       <extracomment>Webbrowser tab title when no title is available.</extracomment>
       <translation>Bez názvu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="401"/>
-      <source>Back</source>
-      <translation>Zpět</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="407"/>
-      <source>Forward</source>
-      <translation>Vpřed</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="413"/>
-      <source>Reload</source>
-      <translation>Obnovit</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="419"/>
-      <source>Stop</source>
-      <translation>Zastavit</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open this website in system web browser</source>
       <translation>Otevřít stránku v systémovém webovém prohlížeči</translation>
     </message>
   </context>
   <context>
-    <name>WebEnginePage</name>
-    <message>
-      <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="77"/>
-      <source>Website alert</source>
-      <translation type="unfinished">Website alert</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webengine/webenginepage.cpp" line="78"/>
-      <source>URL %1 reports this important message: %2</source>
-      <translation type="unfinished">URL %1 reports this important message: %2</translation>
-    </message>
-  </context>
-  <context>
     <name>WebFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="465"/>
-      <source>Web engine settings</source>
-      <translation>Nastavení webového enginu</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="489"/>
-      <source>Auto-load images</source>
-      <translation>Načítat obrázky</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="490"/>
-      <source>JS enabled</source>
-      <translation>JS povolen</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="491"/>
-      <source>JS can open popup windows</source>
-      <translation>JS může otevírat popup okna</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="493"/>
-      <source>JS can access clipboard</source>
-      <translation>JS může přistupovat ke schránce</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="495"/>
-      <source>Hyperlinks can get focus</source>
-      <translation>Odkazy mohou získat focus</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="497"/>
-      <source>Local storage enabled</source>
-      <translation>Lokální úložiště povoleno</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="499"/>
-      <source>Local content can access remote URLs</source>
-      <translation>Lokální obsah může načítat vzdálené URL</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="501"/>
-      <source>XSS auditing enabled</source>
-      <translation>XSS auditing povolen</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="503"/>
-      <source>Spatial navigation enabled</source>
-      <translation>Částečná navigace povolena</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="505"/>
-      <source>Local content can access local files</source>
-      <translation>Lokální obsah může přistupovat k lokálním souborům</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="507"/>
-      <source>Hyperlink auditing enabled</source>
-      <translation>Auditing odkazů povolen</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="509"/>
-      <source>Animate scrolling</source>
-      <translation>Animovat skrolování</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="511"/>
-      <source>Error pages enabled</source>
-      <translation>Chybové stránky povoleny</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="512"/>
-      <source>Plugins enabled</source>
-      <translation>Pluginy povoleny</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="513"/>
-      <source>Fullscreen enabled</source>
-      <translation>Fullscreen povolen</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="517"/>
-      <source>Screen capture enabled</source>
-      <translation>Zachycení obrazovky povoleno</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="519"/>
-      <source>WebGL enabled</source>
-      <translation>WebGL povoleno</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="520"/>
-      <source>Accelerate 2D canvas</source>
-      <translation>Akcelerovat 2D plátno</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="522"/>
-      <source>Print element backgrounds</source>
-      <translation>Tisknout pozadí elementů</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="524"/>
-      <source>Allow running insecure content</source>
-      <translation>Povolit běh nezabezpečeného obsahu</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="526"/>
-      <source>Allow geolocation on insecure origins</source>
-      <translation>Povolit geolokaci nezabezpečeného původu</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="883"/>
-      <source>Web cache is going to be cleared</source>
-      <translation>Webová mezipaměť bude vymazána</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="884"/>
-      <source>Do you really want to clear web cache?</source>
-      <translation>Opravdu chcete vymazat mezipaměť?</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="176"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="69"/>
       <source>Navigate to website manually</source>
       <translation>Přejít na web ručně</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="177"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="70"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
       <translation>%1 nedokázal vaši stránku otevřít v systémovém webovém prohlížeči. Je třeba ji otevřít ručně.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="530"/>
-      <source>JS can activate windows</source>
-      <translation>JS může aktivovat okna</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="532"/>
-      <source>Show scrollbars</source>
-      <translation>Zobrazit posuvníky</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="533"/>
-      <source>Media playback with gestures</source>
-      <translation>Přehrávání médií přes gesta</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="535"/>
-      <source>WebRTC uses only public interfaces</source>
-      <translation>WebRTC smí používat pouze veřejná rozhraní</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="537"/>
-      <source>JS can paste from clipboard</source>
-      <translation>JS může vkládat ze schránky</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="539"/>
-      <source>DNS prefetch enabled</source>
-      <translation>DNS přednačítání povoleno</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="543"/>
-      <source>PDF viewer enabled</source>
-      <translation>PDF prohlížeč povolen</translation>
     </message>
   </context>
 </TS>
