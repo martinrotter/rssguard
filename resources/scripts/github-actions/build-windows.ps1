@@ -218,6 +218,10 @@ if ($use_libmpv -eq "ON") {
   Copy-Item -Path "$ytdlp_path" -Destination ".\app\"
 }
 
+# Remove unneeded files.
+Remove-Item -Verbose ".\app\sqldrivers\qsqlodbc.dll"
+Remove-Item -Verbose ".\app\sqldrivers\qsqlpsql.dll"
+
 $packagebase = "rssguard-${git_tag}-${git_revision}-win"
 
 if ($use_qt5 -eq "ON") {
