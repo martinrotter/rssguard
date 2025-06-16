@@ -101,12 +101,13 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void requestViewNextUnreadMessage();
 
   protected:
-    void drawBranches(QPainter* painter, const QRect& rect, const QModelIndex& index) const;
     void focusInEvent(QFocusEvent* event);
     void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
     void keyPressEvent(QKeyEvent* event);
     void contextMenuEvent(QContextMenuEvent* event);
     void mouseDoubleClickEvent(QMouseEvent* event);
+    virtual void drawBranches(QPainter* painter, const QRect& rect, const QModelIndex& index) const;
+    virtual void drawRow(QPainter* painter, const QStyleOptionViewItem& options, const QModelIndex& index) const;
 
   private slots:
     void onIndexExpanded(const QModelIndex& idx);
@@ -154,10 +155,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     bool m_dontSaveExpandState;
     QList<QPair<QModelIndex, bool>> m_delayedItemExpansions;
     QTimer m_expansionDelayer;
-
-    // QTreeView interface
-  protected:
-    virtual void drawRow(QPainter* painter, const QStyleOptionViewItem& options, const QModelIndex& index) const;
 };
 
 inline FeedsProxyModel* FeedsView::model() const {
