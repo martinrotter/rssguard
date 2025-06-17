@@ -994,27 +994,27 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="226"/>
       <source>Show non-empty items</source>
-      <translation type="unfinished">Show non-empty items</translation>
+      <translation>Afficher les éléments non-vides</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="232"/>
       <source>Show feeds with new articles</source>
-      <translation type="unfinished">Show feeds with new articles</translation>
+      <translation>Afficher les flux avec de nouveaux articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="238"/>
       <source>Show feeds with error</source>
-      <translation type="unfinished">Show feeds with error</translation>
+      <translation>Afficher les flux avec des erreurs</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="244"/>
       <source>Show switched off feeds</source>
-      <translation type="unfinished">Show switched off feeds</translation>
+      <translation>Afficher les flux désactivés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="250"/>
       <source>Show quiet feeds</source>
-      <translation type="unfinished">Show quiet feeds</translation>
+      <translation>Afficher les flux silencieux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="256"/>
