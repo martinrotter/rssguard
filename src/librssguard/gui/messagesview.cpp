@@ -302,13 +302,11 @@ void MessagesView::setupAppearance() {
   setItemsExpandable(false);
   setSortingEnabled(true);
   setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
-  setItemDelegate(new StyledItemDelegate(qApp->settings()
-                                                       ->value(GROUP(GUI), SETTING(GUI::HeightRowMessages))
-                                                       .toInt(),
-                                                     qApp->settings()
-                                                       ->value(GROUP(Messages), SETTING(Messages::ArticleListPadding))
-                                                       .toInt(),
-                                                     this));
+  setItemDelegate(new StyledItemDelegate(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowMessages)).toInt(),
+                                         qApp->settings()
+                                           ->value(GROUP(Messages), SETTING(Messages::ArticleListPadding))
+                                           .toInt(),
+                                         this));
 
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
@@ -611,11 +609,6 @@ void MessagesView::openSelectedSourceMessagesExternally() {
                      .m_url.replace(QRegularExpression(QSL("[\\t\\n]")), QString());
 
     qApp->web()->openUrlInExternalBrowser(link);
-  }
-
-  // Finally, mark opened messages as read.
-  if (!selectionModel()->selectedRows().isEmpty()) {
-    QTimer::singleShot(0, this, &MessagesView::markSelectedMessagesRead);
   }
 
   if (qApp->settings()
