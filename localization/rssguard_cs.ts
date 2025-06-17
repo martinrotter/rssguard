@@ -7880,33 +7880,33 @@ Popis: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="36"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="115"/>
       <source>Use custom MPV configuration folder</source>
-      <translation type="unfinished">Use custom MPV configuration folder</translation>
+      <translation>Použít vlastní MPV konfigurační složku</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="116"/>
       <source>Browse</source>
-      <translation type="unfinished">Browse</translation>
+      <translation>Procházet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="44"/>
       <source>You use modern libmpv-based media player backend with API version %1.</source>
-      <translation type="unfinished">You use modern libmpv-based media player backend with API version %1.</translation>
+      <translation>Používáte moderní přehrávač médií libmpv s API verzí %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="59"/>
       <source>You use lightweight QtMultimedia-based media player backend. If some videos do not play, then you likely need to install some codecs.</source>
-      <translation type="unfinished">You use lightweight QtMultimedia-based media player backend. If some videos do not play, then you likely need to install some codecs.</translation>
+      <translation>Používáte backend přehrávače médií založený na lehké knihovně QtMultimedia. Pokud některá videa nehrají, pak pravděpodobně budete muset nainstalovat některé kodeky.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="64"/>
       <source>no backend installed</source>
-      <translation type="unfinished">no backend installed</translation>
+      <translation>není nainstalován žádný backend</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="65"/>
       <source>You do not have any media player available. Media player is only supported on modern platforms where needed libraries are available. You must manually recompile %1 to be able to use media player.</source>
-      <translation type="unfinished">You do not have any media player available. Media player is only supported on modern platforms where needed libraries are available. You must manually recompile %1 to be able to use media player.</translation>
+      <translation>Nemáte k dispozici žádný přehrávač médií. Přehrávač médií je podporován pouze na moderních platformách, kde jsou dostupné potřebné knihovny. Musíte ručně rekompilovat %1, abyste mohli používat přehrávač médií.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="80"/>
