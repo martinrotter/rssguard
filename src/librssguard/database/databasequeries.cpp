@@ -52,7 +52,7 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table, 
 
   field_names[MSG_DB_LABELS_IDS] = QSL("Messages.labels");
 
-  // TODO: zpomaluje zobrazenĂ„â€šĂ‚Â­ seznamu zprĂ„â€šĂ‹â€ˇv
+  // TODO: zpomaluje zobrazeni seznamu zprav
   /*
   field_names[MSG_DB_LABELS] =
     QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Labels.custom_id IN (SELECT "
