@@ -9,8 +9,10 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
-SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(nullptr) {}
+SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent) {
+  m_ui = new Ui::SettingsDatabase();
+  m_ui->setupUi(this);
+}
 
 SettingsDatabase::~SettingsDatabase() {
   if (m_ui != nullptr) {
@@ -19,9 +21,6 @@ SettingsDatabase::~SettingsDatabase() {
 }
 
 void SettingsDatabase::loadUi() {
-  m_ui = new Ui::SettingsDatabase();
-  m_ui->setupUi(this);
-
   m_ui->m_lblMysqlInfo->setHelpText(tr("Note that speed of used MySQL server and latency of used connection "
                                        "medium HEAVILY influences the final performance of this application. "
                                        "Using slow database connections leads to bad performance when browsing "

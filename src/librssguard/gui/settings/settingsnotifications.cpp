@@ -12,8 +12,10 @@
 #include <QMetaEnum>
 #include <QScreen>
 
-SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(nullptr) {}
+SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent) {
+  m_ui = new Ui::SettingsNotifications();
+  m_ui->setupUi(this);
+}
 
 SettingsNotifications::~SettingsNotifications() {
   if (m_ui != nullptr) {
@@ -22,9 +24,6 @@ SettingsNotifications::~SettingsNotifications() {
 }
 
 void SettingsNotifications::loadUi() {
-  m_ui = new Ui::SettingsNotifications();
-  m_ui->setupUi(this);
-
   m_ui->m_lblInfo
     ->setHelpText(tr("There are some built-in notification sounds. Just start typing \":\" and they will show up."),
                   true);

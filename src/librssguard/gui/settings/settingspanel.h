@@ -28,6 +28,10 @@ class SettingsPanel : public QWidget {
     bool isLoaded() const;
     bool uiLoaded() const;
 
+    int numberOfMatches() const;
+    void setNumberOfMatches(int nmbr);
+    void incrementNumberOfMatches();
+
   protected:
     void onBeginLoadSettings();
     void onEndLoadSettings();
@@ -51,6 +55,7 @@ class SettingsPanel : public QWidget {
     bool m_isLoaded;
     bool m_uiLoaded;
     Settings* m_settings;
+    int m_numberOfMatches;
 };
 
 #endif // SETTINGSPANEL_H

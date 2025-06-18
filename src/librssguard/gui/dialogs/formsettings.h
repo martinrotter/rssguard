@@ -22,6 +22,7 @@ class FormSettings : public QDialog {
     void reject();
 
   private slots:
+    void findInSettings(const QString& find);
     void openSettingsCategory(int category);
 
     // Saves settings into global configuration.
@@ -30,7 +31,10 @@ class FormSettings : public QDialog {
     void cancelSettings();
 
   private:
+    SettingsPanel* getSettingsPanel(QWidget* child) const;
     void addSettingsPanel(SettingsPanel* panel);
+
+    void redrawPanelsList();
 
     Ui::FormSettings m_ui;
     QPushButton* m_btnApply;

@@ -6,7 +6,7 @@
 
 SettingsPanel::SettingsPanel(Settings* settings, QWidget* parent)
   : QWidget(parent), m_requiresRestart(false), m_isDirty(false), m_isLoading(false), m_isLoaded(false),
-    m_settings(settings), m_uiLoaded(false) {}
+    m_uiLoaded(false), m_settings(settings), m_numberOfMatches(0) {}
 
 void SettingsPanel::loadUi() {
   m_uiLoaded = true;
@@ -49,6 +49,18 @@ void SettingsPanel::requireRestart() {
   if (!m_isLoading) {
     setRequiresRestart(true);
   }
+}
+
+int SettingsPanel::numberOfMatches() const {
+  return m_numberOfMatches;
+}
+
+void SettingsPanel::setNumberOfMatches(int nmbr) {
+  m_numberOfMatches = nmbr;
+}
+
+void SettingsPanel::incrementNumberOfMatches() {
+  m_numberOfMatches++;
 }
 
 bool SettingsPanel::uiLoaded() const {

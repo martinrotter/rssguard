@@ -21,7 +21,10 @@
 #include <QMetaObject>
 #include <QStyleFactory>
 
-SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent), m_ui(nullptr) {}
+SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent) {
+  m_ui = new Ui::SettingsGui();
+  m_ui->setupUi(this);
+}
 
 SettingsGui::~SettingsGui() {
   if (m_ui != nullptr) {
@@ -30,8 +33,6 @@ SettingsGui::~SettingsGui() {
 }
 
 void SettingsGui::loadUi() {
-  m_ui = new Ui::SettingsGui();
-  m_ui->setupUi(this);
   m_ui->m_editorMessagesToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorFeedsToolbar->activeItemsWidget()->viewport()->installEventFilter(this);
   m_ui->m_editorMessagesToolbar->availableItemsWidget()->viewport()->installEventFilter(this);

@@ -18,8 +18,10 @@
 #include <QMetaEnum>
 #include <QStringList>
 
-SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(nullptr) {}
+SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent) {
+  m_ui = new Ui::SettingsFeedsMessages();
+  m_ui->setupUi(this);
+}
 
 SettingsFeedsMessages::~SettingsFeedsMessages() {
   if (m_ui != nullptr) {
@@ -28,9 +30,6 @@ SettingsFeedsMessages::~SettingsFeedsMessages() {
 }
 
 void SettingsFeedsMessages::loadUi() {
-  m_ui = new Ui::SettingsFeedsMessages();
-  m_ui->setupUi(this);
-
   m_ui->m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
   m_ui->m_spinStartupUpdateDelay->setMode(TimeSpinBox::Mode::MinutesSeconds);
 

@@ -39,6 +39,7 @@ FormSettings::FormSettings(QWidget& parent) : QDialog(&parent), m_settings(*qApp
 
   connect(m_btnApply, &QPushButton::clicked, this, &FormSettings::applySettings);
   connect(m_ui.m_listSettings, &QListWidget::currentRowChanged, this, &FormSettings::openSettingsCategory);
+  connect(m_ui.m_txtFindInSettings, &BaseLineEdit::textChanged, this, &FormSettings::findInSettings);
 
   addSettingsPanel(new SettingsGeneral(&m_settings, this));
   addSettingsPanel(new SettingsDatabase(&m_settings, this));
@@ -61,6 +62,40 @@ FormSettings::~FormSettings() {
 
 void FormSettings::reject() {
   m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel)->click();
+}
+
+void FormSettings::findInSettings(const QString& find) {
+  for (SettingsPanel* pnl : m_panels) {
+    pnl->setNumberOfMatches(0);
+  }
+
+  for (QWidget* chld : findChildren<QWidget*>()) {
+    if (chld == m_ui.m_txtFindInSettings) {
+      continue;
+    }
+    else if (find.trimmed().isEmpty()) {
+      chld->setStyleSheet({});
+      continue;
+    }
+
+    auto* pnl = getSettingsPanel(chld);
+
+    if (pnl == nullptr) {
+      continue;
+    }
+
+    if (chld->property("text").toString().toLower().contains(find) ||
+        chld->property("title").toString().toLower().contains(find)) {
+      chld->setStyleSheet(QSL("border: 1px solid red;"));
+
+      pnl->incrementNumberOfMatches();
+    }
+    else {
+      chld->setStyleSheet({});
+    }
+  }
+
+  redrawPanelsList();
 }
 
 void FormSettings::openSettingsCategory(int category) {
@@ -100,9 +135,7 @@ void FormSettings::applySettings() {
 
   if (!panels_for_restart.isEmpty()) {
     const QStringList changed_settings_description =
-      panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")),
-                                          QString::fromUtf8(QByteArray(" Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚Â"
-                                                                       " ")));
+      panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")), QString::fromUtf8(QByteArray(" \u2022 ")));
     const QMessageBox::StandardButton clicked_button =
       MsgBox::show(this,
                    QMessageBox::Icon::Question,
@@ -136,9 +169,7 @@ void FormSettings::cancelSettings() {
   }
   else {
     const QStringList changed_settings_description =
-      changed_panels.replaceInStrings(QRegularExpression(QSL("^")),
-                                      QString::fromUtf8(QByteArray(" Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚Â"
-                                                                   " ")));
+      changed_panels.replaceInStrings(QRegularExpression(QSL("^")), QString::fromUtf8(QByteArray(" \u2022 ")));
 
     if (MsgBox::show(this,
                      QMessageBox::Icon::Critical,
@@ -151,6 +182,20 @@ void FormSettings::cancelSettings() {
       done(QDialog::DialogCode::Rejected);
     }
   }
+}
+
+SettingsPanel* FormSettings::getSettingsPanel(QWidget* child) const {
+  QWidget* prnt = child;
+
+  while ((prnt = prnt->parentWidget()) != nullptr) {
+    auto* pan = qobject_cast<SettingsPanel*>(prnt);
+
+    if (pan != nullptr) {
+      return pan;
+    }
+  }
+
+  return nullptr;
 }
 
 void FormSettings::addSettingsPanel(SettingsPanel* panel) {
@@ -172,4 +217,19 @@ void FormSettings::addSettingsPanel(SettingsPanel* panel) {
   connect(panel, &SettingsPanel::settingsChanged, this, [this]() {
     m_btnApply->setEnabled(true);
   });
+}
+
+void FormSettings::redrawPanelsList() {
+  for (int i = 0; i < m_panels.size(); i++) {
+    SettingsPanel* pnl = m_panels.at(i);
+
+    if (pnl->numberOfMatches() > 0) {
+      m_ui.m_listSettings->item(i)->setText(QSL("%1 (%2)").arg(pnl->title(), QString::number(pnl->numberOfMatches())));
+      m_ui.m_listSettings->item(i)->setBackground(Qt::GlobalColor::red);
+    }
+    else {
+      m_ui.m_listSettings->item(i)->setText(pnl->title());
+      m_ui.m_listSettings->item(i)->setBackground(QBrush());
+    }
+  }
 }

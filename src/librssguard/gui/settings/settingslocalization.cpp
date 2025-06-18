@@ -15,9 +15,12 @@
 #include <QJsonObject>
 
 SettingsLocalization::SettingsLocalization(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(nullptr),
+  : SettingsPanel(settings, parent),
     m_urlPercentages(QUrl(QSL("https://api.crowdin.com/api/v2/projects/608575/languages/progress?limit=100"))),
-    m_urlPeople(QUrl(QSL("https://api.crowdin.com/api/v2/projects/608575/members?limit=500"))) {}
+    m_urlPeople(QUrl(QSL("https://api.crowdin.com/api/v2/projects/608575/members?limit=500"))) {
+  m_ui = new Ui::SettingsLocalization();
+  m_ui->setupUi(this);
+}
 
 SettingsLocalization::~SettingsLocalization() {
   if (m_ui != nullptr) {
@@ -26,9 +29,6 @@ SettingsLocalization::~SettingsLocalization() {
 }
 
 void SettingsLocalization::loadUi() {
-  m_ui = new Ui::SettingsLocalization();
-
-  m_ui->setupUi(this);
   m_ui->m_lblAuthors->label()->setWordWrap(true);
   m_ui->m_treeLanguages->setColumnCount(3);
   m_ui->m_treeLanguages->setHeaderHidden(false);

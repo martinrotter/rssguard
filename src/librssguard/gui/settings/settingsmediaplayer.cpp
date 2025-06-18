@@ -13,8 +13,10 @@
 #include <mpv/client.h>
 #endif
 
-SettingsMediaPlayer::SettingsMediaPlayer(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(nullptr) {}
+SettingsMediaPlayer::SettingsMediaPlayer(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent) {
+  m_ui = new Ui::SettingsMediaPlayer();
+  m_ui->setupUi(this);
+}
 
 SettingsMediaPlayer::~SettingsMediaPlayer() {
   if (m_ui != nullptr) {
@@ -23,9 +25,6 @@ SettingsMediaPlayer::~SettingsMediaPlayer() {
 }
 
 void SettingsMediaPlayer::loadUi() {
-  m_ui = new Ui::SettingsMediaPlayer();
-  m_ui->setupUi(this);
-
   SettingsPanel::loadUi();
 }
 

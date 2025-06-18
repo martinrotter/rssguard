@@ -7,12 +7,12 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
 
-SettingsGeneral::SettingsGeneral(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(nullptr) {}
-
-void SettingsGeneral::loadUi() {
+SettingsGeneral::SettingsGeneral(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent) {
   m_ui = new Ui::SettingsGeneral();
   m_ui->setupUi(this);
+}
+
+void SettingsGeneral::loadUi() {
   m_ui->m_checkAutostart->setText(m_ui->m_checkAutostart->text().arg(QSL(APP_NAME)));
   m_ui->m_checkForUpdatesOnStart->setText(m_ui->m_checkForUpdatesOnStart->text().arg(QSL(APP_NAME)));
 

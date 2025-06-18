@@ -6,8 +6,10 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
-SettingsShortcuts::SettingsShortcuts(Settings* settings, QWidget* parent)
-  : SettingsPanel(settings, parent), m_ui(nullptr) {}
+SettingsShortcuts::SettingsShortcuts(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent) {
+  m_ui = new Ui::SettingsShortcuts();
+  m_ui->setupUi(this);
+}
 
 SettingsShortcuts::~SettingsShortcuts() {
   if (m_ui != nullptr) {
@@ -16,8 +18,6 @@ SettingsShortcuts::~SettingsShortcuts() {
 }
 
 void SettingsShortcuts::loadUi() {
-  m_ui = new Ui::SettingsShortcuts();
-  m_ui->setupUi(this);
   connect(m_ui->m_shortcuts, &DynamicShortcutsWidget::setupChanged, this, &SettingsShortcuts::dirtifySettings);
 
   SettingsPanel::loadUi();
