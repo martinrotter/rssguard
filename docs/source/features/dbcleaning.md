@@ -5,7 +5,7 @@ RSS Guard is able to work well with huge databases, keeping hundreds of thousand
 There are two ways of keeping your DB file in good shape.
 
 ## Cleaning DB file manually
-Go to `Tools -> Cleanup database` dialog where you will see all options. Hit `OK` to process the DB file. Note that option `Optimize database file` is checked, then database engine will try to shrink database file (`database.db`) to smallest size possible, removing all empty areas from it.
+Go to `Tools -> Cleanup database` dialog where you will see all options. Hit `OK` to process the DB file. Note that if option `Optimize database file` is checked, then database engine will try to shrink database file (`database.db`) to smallest size possible, removing all empty areas from it.
 
 ## Cleaning DB file automatically
 There is better and more configurable way of keeping your DB file slim and fit. This feature can be configured application-wide and individually for each feed.

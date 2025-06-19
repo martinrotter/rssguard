@@ -4,10 +4,6 @@ RSS Guard is a skinable application. With [Qt stylesheets](https://doc.qt.io/qt-
 
 <img alt="alt-img" src="images/gui-dark.png" width="600px">
 
-```{warning}
-Note that as of RSS Guard `4.1.3`, old skins `vergilius` and `dark` were removed and replaced with `nudus-*` skins. For now, only `nudus` skins are maintained by RSS Guard developers.  
-```
-
 ```{note}
 The skin `API` (see below) is very extensible and allows tweaking the visual part of RSS Guard in many ways without much work.
 ```
@@ -29,7 +25,9 @@ For example, if your new skin is called `greenland`, the folder path should be a
 As stated above, there are specific files that each skin folder must contain:
 * `metadata.xml` - XML file with basic information about the skin's name, author etc.
 * `qt_style.qss` - [Qt stylesheet](https://doc.qt.io/qt-5/stylesheet.html) file
-* `html_*.html`  - HTML files which are dynamically put together to create a complete HTML pages for various things, like newspaper view, article viewer, or error page
+* `qt_style_forced.qss` - Qt stylesheet which is applied everytime, even with `Use skin colors` turned off
+* `html_style.css` - master CSS which is applied to each article
+* `html_*.html`  - HTML files which are dynamically put together to create a complete HTML pages for article viewer
 
 Note that not all skins have to provide a full-blown theming for every UI component of RSS Guard. Skin can provide just a custom HTML/CSS setup for article viewer and a minimal Qt CSS styling for UI controls.
 

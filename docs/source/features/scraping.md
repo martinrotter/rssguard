@@ -11,11 +11,10 @@ Goal of this feature is to allow advanced users to use RSS Guard with data sourc
 ----
 You can select type of source of each feed. Currently these sources are supported:
 * URL - RSS Guard simply downloads feed file from given location and behaves like everyone would expect.
-* Local file - RSS Guard uses file in local filesystem as feed source.
+* Local file - RSS Guard uses file in local filesystem as a feed source.
 * Script - see below.
-* Built-in web browser with JavaScript support - see below.
 
-## 'Script' option
+## `Script` option
 If you choose `Script` option, then you cannot provide URL of your feed, and you rely on custom script to generate feed file and provide its contents to [**standard output** (stdout)](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)). Data written to standard output should be valid feed data.
 
 `Fetch it now` button also works with `Script` option. Therefore, if your source script and (optional) post-process script in cooperation deliver a valid feed data to the output, then all important metadata, like title or icon of the feed, can be discovered :sparkles: automagically :sparkles:.

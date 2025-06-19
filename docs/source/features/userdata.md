@@ -6,8 +6,8 @@ One of the main goals of RSS Guard is to have portable/relocatable user data fol
 
 RSS Guard can run in two modes:
 * **Non-portable**: The default mode, where user data folder is placed in user-wide "config directory" (`C:\Users\<user>\AppData\Local` on Windows).  
-  If the file `C:\Users\<user>\AppData\Local\RSS Guard 4\data\config\config.ini` exists, then this folder is used.  
-* **Portable mode**: This mode allows storing user data folder in a subfolder **data4** in the same directory as RSS Guard binary (`rssguard.exe` on Windows). This mode is used automatically if non-portable mode detection fails.
+  If the file `C:\Users\<user>\AppData\Local\RSS Guard 5\data\config\config.ini` exists, then this folder is used.  
+* **Portable mode**: This mode allows storing user data folder in a subfolder **data5** in the same directory as RSS Guard binary (`rssguard.exe` on Windows). This mode is used automatically if non-portable mode detection fails.
 
 Check `Help -> About application -> Resources` dialog tab to find more info on paths used.
 
