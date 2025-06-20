@@ -456,6 +456,52 @@ DocumentContainer::DocumentContainer()
 
 DocumentContainer::~DocumentContainer() = default;
 
+litehtml::uint_ptr DocumentContainerPrivate::create_font(const litehtml::font_description &descr, const litehtml::document *doc, litehtml::font_metrics *fm) {
+    const QStringList splitNames = QString::fromUtf8(descr.family).split(',', Qt::SkipEmptyParts);
+    QStringList familyNames;
+    std::transform(splitNames.cbegin(),
+                   splitNames.cend(),
+                   std::back_inserter(familyNames),
+                   [this](const QString &s) {
+                       // clean whitespace and quotes
+                       QString name = s.trimmed();
+                       if (name.startsWith('\"'))
+                           name = name.mid(1);
+                       if (name.endsWith('\"'))
+                           name.chop(1);
+                       const QString lowerName = name.toLower();
+                       if (lowerName == "serif")
+                           return serifFont();
+                       if (lowerName == "sans-serif")
+                           return sansSerifFont();
+                       if (lowerName == "monospace")
+                           return monospaceFont();
+                       return name;
+                   });
+    auto font = new QFont();
+    font->setFamilies(familyNames);
+    font->setPixelSize(descr.size);
+    font->setWeight(cssWeightToQtWeight(descr.weight));
+    font->setStyle(toQFontStyle(descr.style));
+    font->setStyleStrategy(m_antialias ? QFont::PreferAntialias : QFont::NoAntialias);
+    if (descr.decoration_line == litehtml::text_decoration_line::text_decoration_line_underline)
+        font->setUnderline(true);
+    if (descr.decoration_line == litehtml::text_decoration_line::text_decoration_line_overline)
+        font->setOverline(true);
+    if (descr.decoration_line == litehtml::text_decoration_line::text_decoration_line_line_through)
+        font->setStrikeOut(true);
+    if (fm) {
+        const QFontMetrics metrics(*font);
+        fm->height = metrics.height();
+        fm->ascent = metrics.ascent();
+        fm->descent = metrics.descent();
+        fm->x_height = metrics.xHeight();
+        fm->draw_spaces = true;
+    }
+    return reinterpret_cast<litehtml::uint_ptr>(font);
+}
+
+/*
 litehtml::uint_ptr DocumentContainerPrivate::create_font(const char *faceName,
                                                          int size,
                                                          int weight,
@@ -506,6 +552,7 @@ litehtml::uint_ptr DocumentContainerPrivate::create_font(const char *faceName,
     }
     return reinterpret_cast<litehtml::uint_ptr>(font);
 }
+*/
 
 void DocumentContainerPrivate::delete_font(litehtml::uint_ptr hFont)
 {
@@ -610,6 +657,21 @@ void DocumentContainerPrivate::get_image_size(const char *src,
     sz.height = pm.height();
 }
 
+void DocumentContainerPrivate::draw_image(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const std::string &url, const std::string &base_url)
+{
+
+}
+
+void DocumentContainerPrivate::draw_solid_fill(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::web_color &color)
+{
+
+}
+
+void DocumentContainerPrivate::draw_linear_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::background_layer::linear_gradient &gradient)
+{
+
+}
+
 void DocumentContainerPrivate::drawSelection(QPainter *painter, const QRect &clip) const
 {
     painter->save();
@@ -682,6 +744,7 @@ void DocumentContainerPrivate::clearSelection()
         m_clipboardCallback(false);
 }
 
+/*
 void DocumentContainerPrivate::draw_background(litehtml::uint_ptr hdc,
                                                const std::vector<litehtml::background_paint> &bgs)
 {
@@ -776,6 +839,7 @@ void DocumentContainerPrivate::draw_background(litehtml::uint_ptr hdc,
     }
     painter->restore();
 }
+*/
 
 void DocumentContainerPrivate::draw_borders(litehtml::uint_ptr hdc,
                                             const litehtml::borders &borders,
@@ -940,10 +1004,12 @@ void DocumentContainerPrivate::del_clip()
     qDebug(log) << "del_clip";
 }
 
+/*
 void DocumentContainerPrivate::get_client_rect(litehtml::position &client) const
 {
     client = {m_clientRect.x(), m_clientRect.y(), m_clientRect.width(), m_clientRect.height()};
 }
+*/
 
 std::shared_ptr<litehtml::element> DocumentContainerPrivate::create_element(
     const char *tag_name,
@@ -1055,28 +1121,14 @@ static litehtml::media_type fromQt(const DocumentContainer::MediaType mt)
     using MT = DocumentContainer::MediaType;
     switch (mt)
     {
-    case MT::None:
-        return litehtml::media_type_none;
     case MT::All:
         return litehtml::media_type_all;
     case MT::Screen:
         return litehtml::media_type_screen;
     case MT::Print:
         return litehtml::media_type_print;
-    case MT::Braille:
-        return litehtml::media_type_braille;
-    case MT::Embossed:
-        return litehtml::media_type_embossed;
-    case MT::Handheld:
-        return litehtml::media_type_handheld;
-    case MT::Projection:
-        return litehtml::media_type_projection;
-    case MT::Speech:
-        return litehtml::media_type_speech;
-    case MT::TTY:
-        return litehtml::media_type_tty;
-    case MT::TV:
-        return litehtml::media_type_tv;
+    default:
+        return litehtml::media_type_unknown;
     }
     Q_UNREACHABLE();
 }
@@ -1510,4 +1562,21 @@ DocumentContainerContext::~DocumentContainerContext() = default;
 void DocumentContainerContext::setMasterStyleSheet(const QString &css)
 {
     d->masterCss = css;
+}
+
+
+void DocumentContainerPrivate::draw_radial_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::background_layer::radial_gradient &gradient)
+{
+}
+
+void DocumentContainerPrivate::draw_conic_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::background_layer::conic_gradient &gradient)
+{
+}
+
+void DocumentContainerPrivate::on_mouse_event(const litehtml::element::ptr &el, litehtml::mouse_event event)
+{
+}
+
+void DocumentContainerPrivate::get_viewport(litehtml::position &viewport) const
+{
 }
