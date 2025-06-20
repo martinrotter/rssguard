@@ -457,7 +457,7 @@ DocumentContainer::DocumentContainer()
 DocumentContainer::~DocumentContainer() = default;
 
 litehtml::uint_ptr DocumentContainerPrivate::create_font(const litehtml::font_description &descr, const litehtml::document *doc, litehtml::font_metrics *fm) {
-    const QStringList splitNames = QString::fromUtf8(descr.family).split(',', Qt::SkipEmptyParts);
+    const QStringList splitNames = QString::fromStdString(descr.family).split(',', Qt::SkipEmptyParts);
     QStringList familyNames;
     std::transform(splitNames.cbegin(),
                    splitNames.cend(),
@@ -1578,6 +1578,9 @@ void DocumentContainerContext::setMasterStyleSheet(const QString &css)
 
 void DocumentContainerPrivate::draw_radial_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::background_layer::radial_gradient &gradient)
 {
+    //draw_solid_fill(hdc,
+    //                layer,
+    //                gradient.color_points.empty() ? litehtml::web_color::transparent : gradient.color_points.at(0));
 }
 
 void DocumentContainerPrivate::draw_conic_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::background_layer::conic_gradient &gradient)
