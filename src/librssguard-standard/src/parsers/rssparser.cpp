@@ -11,7 +11,6 @@
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>
 
-#include <QDomDocument>
 #include <QTextCodec>
 #include <QTextStream>
 
@@ -199,7 +198,7 @@ QPair<StandardFeed*, QList<IconLocation>> RssParser::guessFeed(const QByteArray&
   xml_contents_encoded = xml_contents_encoded.trimmed();
 
   // Feed XML was obtained, guess it now.
-  QDomDocument xml_document;
+  DomDocument xml_document;
   QString error_msg;
   int error_line, error_column;
 

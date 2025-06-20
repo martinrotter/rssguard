@@ -4,10 +4,10 @@
 
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "miscellaneous/domdocument.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/textfactory.h"
 
-#include <QDomDocument>
 #include <QHostInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -72,9 +72,9 @@ QString jsonProcessXmlElement(const QDomElement& elem) {
 }
 
 QString FilterUtils::fromXmlToJson(const QString& xml) const {
-  QDomDocument xml_doc;
+  DomDocument xml_doc;
 
-  xml_doc.setContent(xml);
+  xml_doc.setContent(xml, true);
 
   QString json = QSL("%1").arg(jsonProcessXmlElement(xml_doc.documentElement()));
 

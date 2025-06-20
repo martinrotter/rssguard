@@ -14,7 +14,6 @@
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 
-#include <QDomDocument>
 #include <QTextCodec>
 #include <QTextStream>
 
@@ -189,7 +188,7 @@ QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteAr
   }
 
   // Feed XML was obtained, guess it now.
-  QDomDocument xml_document;
+  DomDocument xml_document;
   QString error_msg;
   int error_line, error_column;
 

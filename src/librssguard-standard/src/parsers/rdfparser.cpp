@@ -9,7 +9,6 @@
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 
-#include <QDomDocument>
 #include <QTextCodec>
 
 RdfParser::RdfParser(const QString& data)
@@ -199,7 +198,7 @@ QPair<StandardFeed*, QList<IconLocation>> RdfParser::guessFeed(const QByteArray&
   xml_contents_encoded = xml_contents_encoded.trimmed();
 
   // Feed XML was obtained, guess it now.
-  QDomDocument xml_document;
+  DomDocument xml_document;
   QString error_msg;
   int error_line, error_column;
 

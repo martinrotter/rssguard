@@ -3,13 +3,13 @@
 #include "miscellaneous/skinfactory.h"
 
 #include "miscellaneous/application.h"
+#include "miscellaneous/domdocument.h"
 #include "miscellaneous/settings.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/rootitem.h"
 
 #include <QDir>
-#include <QDomDocument>
 #include <QDomElement>
 #include <QFontDatabase>
 #include <QMetaEnum>
@@ -302,10 +302,10 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
 
     if (QFile::exists(metadata_file)) {
       QFile skin_file(metadata_file);
-      QDomDocument document;
+      DomDocument document;
 
       if (!skin_file.open(QIODevice::OpenModeFlag::Text | QIODevice::OpenModeFlag::ReadOnly) ||
-          !document.setContent(&skin_file, true)) {
+          !document.setContent(skin_file.readAll(), true)) {
         if (ok != nullptr) {
           *ok = false;
         }

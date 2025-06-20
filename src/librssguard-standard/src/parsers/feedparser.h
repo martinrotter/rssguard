@@ -7,8 +7,8 @@
 
 #include <librssguard/core/message.h>
 #include <librssguard/definitions/typedefs.h>
+#include <librssguard/miscellaneous/domdocument.h>
 
-#include <QDomDocument>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -97,7 +97,7 @@ class FeedParser {
     DataType m_dataType;
     QString m_data;
     QString m_dateTimeFormat;
-    QDomDocument m_xml;
+    DomDocument m_xml;
     QJsonDocument m_json;
     QString m_mrssNamespace;
     bool m_dontUseRawXmlSaving;

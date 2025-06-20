@@ -11,10 +11,10 @@
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/domdocument.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 
 #include <QDomAttr>
-#include <QDomDocument>
 #include <QDomElement>
 #include <QLocale>
 #include <QSqlDatabase>
@@ -61,7 +61,7 @@ FeedsImportExportModel::~FeedsImportExportModel() {
 }
 
 bool FeedsImportExportModel::exportToOMPL20(QByteArray& result, bool export_icons) {
-  QDomDocument opml_document;
+  DomDocument opml_document;
   QDomProcessingInstruction xml_declaration =
     opml_document.createProcessingInstruction(QSL("xml"), QSL("version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\""));
 
@@ -321,9 +321,9 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
   setRootItem(nullptr);
   emit layoutChanged();
 
-  QDomDocument opml_document;
+  DomDocument opml_document;
 
-  if (!opml_document.setContent(data)) {
+  if (!opml_document.setContent(data, true)) {
     throw ApplicationException(tr("OPML document contains errors"));
   }
 

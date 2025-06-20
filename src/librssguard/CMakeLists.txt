@@ -199,6 +199,8 @@ set(SOURCES
   gui/webviewers/webviewer.h
   miscellaneous/application.cpp
   miscellaneous/application.h
+  miscellaneous/domdocument.cpp
+  miscellaneous/domdocument.h
   miscellaneous/externaltool.cpp
   miscellaneous/externaltool.h
   miscellaneous/feedreader.cpp

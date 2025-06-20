@@ -7,7 +7,6 @@
 
 #include <librssguard/core/message.h>
 
-#include <QDomDocument>
 #include <QList>
 
 class AtomParser : public FeedParser {

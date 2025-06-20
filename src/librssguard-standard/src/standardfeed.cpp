@@ -26,9 +26,6 @@
 #endif
 
 #include <QCommandLineParser>
-#include <QDomDocument>
-#include <QDomElement>
-#include <QDomNode>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QPointer>
