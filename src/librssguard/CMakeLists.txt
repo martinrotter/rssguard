@@ -413,9 +413,14 @@ list(APPEND SOURCES
   3rd-party/litehtml/src/gumbo/vector.c
 
   # litehtml 
+  3rd-party/litehtml/src/background.cpp
   3rd-party/litehtml/src/codepoint.cpp
+  3rd-party/litehtml/src/css_borders.cpp
   3rd-party/litehtml/src/css_length.cpp
+  3rd-party/litehtml/src/css_parser.cpp
+  3rd-party/litehtml/src/css_properties.cpp
   3rd-party/litehtml/src/css_selector.cpp
+  3rd-party/litehtml/src/css_tokenizer.cpp
   3rd-party/litehtml/src/document.cpp
   3rd-party/litehtml/src/document_container.cpp
   3rd-party/litehtml/src/el_anchor.cpp
@@ -426,7 +431,6 @@ list(APPEND SOURCES
   3rd-party/litehtml/src/el_cdata.cpp
   3rd-party/litehtml/src/el_comment.cpp
   3rd-party/litehtml/src/el_div.cpp
-  3rd-party/litehtml/src/element.cpp
   3rd-party/litehtml/src/el_font.cpp
   3rd-party/litehtml/src/el_image.cpp
   3rd-party/litehtml/src/el_link.cpp
@@ -439,10 +443,28 @@ list(APPEND SOURCES
   3rd-party/litehtml/src/el_text.cpp
   3rd-party/litehtml/src/el_title.cpp
   3rd-party/litehtml/src/el_tr.cpp
+  3rd-party/litehtml/src/element.cpp
+  3rd-party/litehtml/src/encodings.cpp
+  3rd-party/litehtml/src/flex_item.cpp
+  3rd-party/litehtml/src/flex_line.cpp
+  3rd-party/litehtml/src/formatting_context.cpp
+  3rd-party/litehtml/src/gradient.cpp
   3rd-party/litehtml/src/html.cpp
+  3rd-party/litehtml/src/html_microsyntaxes.cpp
   3rd-party/litehtml/src/html_tag.cpp
   3rd-party/litehtml/src/iterators.cpp
+  3rd-party/litehtml/src/line_box.cpp
   3rd-party/litehtml/src/media_query.cpp
+  3rd-party/litehtml/src/num_cvt.cpp
+  3rd-party/litehtml/src/render_block.cpp
+  3rd-party/litehtml/src/render_block_context.cpp
+  3rd-party/litehtml/src/render_flex.cpp
+  3rd-party/litehtml/src/render_image.cpp
+  3rd-party/litehtml/src/render_inline_context.cpp
+  3rd-party/litehtml/src/render_item.cpp
+  3rd-party/litehtml/src/render_table.cpp
+  3rd-party/litehtml/src/string_id.cpp
+  3rd-party/litehtml/src/strtod.cpp
   3rd-party/litehtml/src/style.cpp
   3rd-party/litehtml/src/stylesheet.cpp
   3rd-party/litehtml/src/table.cpp
@@ -451,22 +473,6 @@ list(APPEND SOURCES
   3rd-party/litehtml/src/url_path.cpp
   3rd-party/litehtml/src/utf8_strings.cpp
   3rd-party/litehtml/src/web_color.cpp
-  3rd-party/litehtml/src/num_cvt.cpp
-  3rd-party/litehtml/src/strtod.cpp
-  3rd-party/litehtml/src/string_id.cpp
-  3rd-party/litehtml/src/css_properties.cpp
-  3rd-party/litehtml/src/line_box.cpp
-  3rd-party/litehtml/src/css_borders.cpp
-  3rd-party/litehtml/src/render_item.cpp
-  3rd-party/litehtml/src/render_block_context.cpp
-  3rd-party/litehtml/src/render_block.cpp
-  3rd-party/litehtml/src/render_inline_context.cpp
-  3rd-party/litehtml/src/render_table.cpp
-  3rd-party/litehtml/src/render_flex.cpp
-  3rd-party/litehtml/src/render_image.cpp
-  3rd-party/litehtml/src/formatting_context.cpp
-  3rd-party/litehtml/src/flex_item.cpp
-  3rd-party/litehtml/src/flex_line.cpp
 
   # qlitehtml
   3rd-party/qlitehtml/src/container_qpainter.h
