@@ -60,15 +60,6 @@ class DocumentContainerPrivate final : public litehtml::document_container
 {
 public: // document_container API
     virtual litehtml::uint_ptr create_font(const litehtml::font_description& descr, const litehtml::document* doc, litehtml::font_metrics* fm);
-
-    /*
-    litehtml::uint_ptr create_font(const char *faceName,
-                                   int size,
-                                   int weight,
-                                   litehtml::font_style italic,
-                                   unsigned int decoration,
-                                   litehtml::font_metrics *fm) override;
-    */
     void delete_font(litehtml::uint_ptr hFont) override;
     int text_width(const char *text, litehtml::uint_ptr hFont) override;
     void draw_text(litehtml::uint_ptr hdc,
@@ -85,10 +76,11 @@ public: // document_container API
 
     virtual void draw_image(litehtml::uint_ptr hdc, const litehtml::background_layer& layer, const std::string& url, const std::string& base_url);
     virtual void draw_solid_fill(litehtml::uint_ptr hdc, const litehtml::background_layer& layer, const litehtml::web_color& color);
-    virtual void draw_linear_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer& layer, const litehtml::background_layer::linear_gradient& gradient);
 
+    virtual void draw_linear_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer& layer, const litehtml::background_layer::linear_gradient& gradient);
     virtual void draw_radial_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::background_layer::radial_gradient &gradient);
     virtual void draw_conic_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::background_layer::conic_gradient &gradient);
+
     virtual void on_mouse_event(const litehtml::element::ptr &el, litehtml::mouse_event event);
     virtual void get_viewport(litehtml::position &viewport) const;
 
@@ -109,8 +101,7 @@ public: // document_container API
     void set_clip(const litehtml::position &pos,
                   const litehtml::border_radiuses &bdr_radius) override;
     void del_clip() override;
-    //void get_client_rect(litehtml::position &client) const override;
-    std::shared_ptr<litehtml::element> create_element(
+      std::shared_ptr<litehtml::element> create_element(
         const char *tag_name,
         const litehtml::string_map &attributes,
         const std::shared_ptr<litehtml::document> &doc) override;
