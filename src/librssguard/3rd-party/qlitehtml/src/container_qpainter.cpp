@@ -501,59 +501,6 @@ litehtml::uint_ptr DocumentContainerPrivate::create_font(const litehtml::font_de
     return reinterpret_cast<litehtml::uint_ptr>(font);
 }
 
-/*
-litehtml::uint_ptr DocumentContainerPrivate::create_font(const char *faceName,
-                                                         int size,
-                                                         int weight,
-                                                         litehtml::font_style italic,
-                                                         unsigned int decoration,
-                                                         litehtml::font_metrics *fm)
-{
-    const QStringList splitNames = QString::fromUtf8(faceName).split(',', Qt::SkipEmptyParts);
-    QStringList familyNames;
-    std::transform(splitNames.cbegin(),
-                   splitNames.cend(),
-                   std::back_inserter(familyNames),
-                   [this](const QString &s) {
-                       // clean whitespace and quotes
-                       QString name = s.trimmed();
-                       if (name.startsWith('\"'))
-                           name = name.mid(1);
-                       if (name.endsWith('\"'))
-                           name.chop(1);
-                       const QString lowerName = name.toLower();
-                       if (lowerName == "serif")
-                           return serifFont();
-                       if (lowerName == "sans-serif")
-                           return sansSerifFont();
-                       if (lowerName == "monospace")
-                           return monospaceFont();
-                       return name;
-                   });
-    auto font = new QFont();
-    font->setFamilies(familyNames);
-    font->setPixelSize(size);
-    font->setWeight(cssWeightToQtWeight(weight));
-    font->setStyle(toQFontStyle(italic));
-    font->setStyleStrategy(m_antialias ? QFont::PreferAntialias : QFont::NoAntialias);
-    if (decoration == litehtml::font_decoration_underline)
-        font->setUnderline(true);
-    if (decoration == litehtml::font_decoration_overline)
-        font->setOverline(true);
-    if (decoration == litehtml::font_decoration_linethrough)
-        font->setStrikeOut(true);
-    if (fm) {
-        const QFontMetrics metrics(*font);
-        fm->height = metrics.height();
-        fm->ascent = metrics.ascent();
-        fm->descent = metrics.descent();
-        fm->x_height = metrics.xHeight();
-        fm->draw_spaces = true;
-    }
-    return reinterpret_cast<litehtml::uint_ptr>(font);
-}
-*/
-
 void DocumentContainerPrivate::delete_font(litehtml::uint_ptr hFont)
 {
     auto font = reinterpret_cast<Font *>(hFont);
@@ -662,10 +609,7 @@ void DocumentContainerPrivate::draw_image(litehtml::uint_ptr hdc, const litehtml
 
 }
 
-void DocumentContainerPrivate::draw_solid_fill(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::web_color &color)
-{
 
-}
 
 void DocumentContainerPrivate::draw_linear_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::background_layer::linear_gradient &gradient)
 {
@@ -742,6 +686,80 @@ void DocumentContainerPrivate::clearSelection()
 
     if (!oldText.isEmpty())
         m_clipboardCallback(false);
+}
+
+void DocumentContainerPrivate::draw_solid_fill(litehtml::uint_ptr hdc,
+                                               const litehtml::background_layer &layer,
+                                               const litehtml::web_color &color)
+{
+    if(color == litehtml::web_color::transparent)
+    {
+        return;
+    }
+
+    auto painter = toQPainter(hdc);
+    const QRegion initialClipRegion = painter->clipRegion();
+    const Qt::ClipOperation initialClipOperation
+        = initialClipRegion.isEmpty() ? Qt::ReplaceClip : Qt::IntersectClip;
+    painter->save();
+
+    if (!initialClipRegion.isEmpty()) {
+        painter->setClipRegion(initialClipRegion);
+    }
+
+    painter->setClipRect(toQRect(layer.clip_box), initialClipOperation);
+    const QRegion horizontalMiddle(QRect(layer.border_box.x,
+                                         layer.border_box.y + layer.border_radius.top_left_y,
+                                         layer.border_box.width,
+                                         layer.border_box.height - layer.border_radius.top_left_y
+                                             - layer.border_radius.bottom_left_y));
+    const QRegion horizontalTop(
+        QRect(layer.border_box.x + layer.border_radius.top_left_x,
+              layer.border_box.y,
+              layer.border_box.width - layer.border_radius.top_left_x - layer.border_radius.top_right_x,
+              layer.border_radius.top_left_y));
+    const QRegion horizontalBottom(QRect(layer.border_box.x + layer.border_radius.bottom_left_x,
+                                         layer.border_box.bottom() - layer.border_radius.bottom_left_y,
+                                         layer.border_box.width - layer.border_radius.bottom_left_x
+                                             - layer.border_radius.bottom_right_x,
+                                         layer.border_radius.bottom_left_y));
+    const QRegion topLeft(QRect(layer.border_box.left(),
+                                layer.border_box.top(),
+                                2 * layer.border_radius.top_left_x,
+                                2 * layer.border_radius.top_left_y),
+                          QRegion::Ellipse);
+    const QRegion topRight(QRect(layer.border_box.right() - 2 * layer.border_radius.top_right_x,
+                                 layer.border_box.top(),
+                                 2 * layer.border_radius.top_right_x,
+                                 2 * layer.border_radius.top_right_y),
+                           QRegion::Ellipse);
+    const QRegion bottomLeft(QRect(layer.border_box.left(),
+                                   layer.border_box.bottom() - 2 * layer.border_radius.bottom_left_y,
+                                   2 * layer.border_radius.bottom_left_x,
+                                   2 * layer.border_radius.bottom_left_y),
+                             QRegion::Ellipse);
+    const QRegion bottomRight(QRect(layer.border_box.right() - 2 * layer.border_radius.bottom_right_x,
+                                    layer.border_box.bottom() - 2 * layer.border_radius.bottom_right_y,
+                                    2 * layer.border_radius.bottom_right_x,
+                                    2 * layer.border_radius.bottom_right_y),
+                              QRegion::Ellipse);
+    const QRegion clipRegion = horizontalMiddle.united(horizontalTop)
+                                   .united(horizontalBottom)
+                                   .united(topLeft)
+                                   .united(topRight)
+                                   .united(bottomLeft)
+                                   .united(bottomRight);
+    painter->setClipRegion(clipRegion, Qt::IntersectClip);
+    painter->setPen(Qt::NoPen);
+    painter->setBrush(toQColor(color));
+    painter->setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
+    painter->drawRect(layer.border_box.x,
+                      layer.border_box.y,
+                      layer.border_box.width,
+                      layer.border_box.height);
+    drawSelection(painter, toQRect(layer.border_box));
+
+    painter->restore();
 }
 
 /*
@@ -1003,13 +1021,6 @@ void DocumentContainerPrivate::del_clip()
     // TODO
     qDebug(log) << "del_clip";
 }
-
-/*
-void DocumentContainerPrivate::get_client_rect(litehtml::position &client) const
-{
-    client = {m_clientRect.x(), m_clientRect.y(), m_clientRect.width(), m_clientRect.height()};
-}
-*/
 
 std::shared_ptr<litehtml::element> DocumentContainerPrivate::create_element(
     const char *tag_name,
@@ -1579,4 +1590,5 @@ void DocumentContainerPrivate::on_mouse_event(const litehtml::element::ptr &el, 
 
 void DocumentContainerPrivate::get_viewport(litehtml::position &viewport) const
 {
+    viewport = {m_clientRect.x(), m_clientRect.y(), m_clientRect.width(), m_clientRect.height()};
 }
