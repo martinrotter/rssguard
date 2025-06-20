@@ -604,16 +604,13 @@ void DocumentContainerPrivate::get_image_size(const char *src,
     sz.height = pm.height();
 }
 
-void DocumentContainerPrivate::draw_image(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const std::string &url, const std::string &base_url)
-{
-
-}
-
-
-
 void DocumentContainerPrivate::draw_linear_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::background_layer::linear_gradient &gradient)
 {
-
+    draw_solid_fill(hdc,
+                    layer,
+                    gradient.color_points.empty()
+                        ? litehtml::web_color::transparent
+                        : gradient.color_points.at(0).color);
 }
 
 void DocumentContainerPrivate::drawSelection(QPainter *painter, const QRect &clip) const
@@ -758,6 +755,99 @@ void DocumentContainerPrivate::draw_solid_fill(litehtml::uint_ptr hdc,
                       layer.border_box.width,
                       layer.border_box.height);
     drawSelection(painter, toQRect(layer.border_box));
+
+    painter->restore();
+}
+
+void DocumentContainerPrivate::draw_image(litehtml::uint_ptr hdc,
+                                          const litehtml::background_layer &layer,
+                                          const std::string &url,
+                                          const std::string &base_url)
+{
+    if(url.empty() || (!layer.clip_box.width && !layer.clip_box.height) )
+    {
+        return;
+    }
+
+    auto painter = toQPainter(hdc);
+    const QRegion initialClipRegion = painter->clipRegion();
+    const Qt::ClipOperation initialClipOperation
+        = initialClipRegion.isEmpty() ? Qt::ReplaceClip : Qt::IntersectClip;
+    painter->save();
+
+    if (!initialClipRegion.isEmpty())
+        painter->setClipRegion(initialClipRegion);
+    painter->setClipRect(toQRect(layer.clip_box), initialClipOperation);
+    const QRegion horizontalMiddle(QRect(layer.border_box.x,
+                                         layer.border_box.y + layer.border_radius.top_left_y,
+                                         layer.border_box.width,
+                                         layer.border_box.height - layer.border_radius.top_left_y
+                                             - layer.border_radius.bottom_left_y));
+    const QRegion horizontalTop(
+        QRect(layer.border_box.x + layer.border_radius.top_left_x,
+              layer.border_box.y,
+              layer.border_box.width - layer.border_radius.top_left_x - layer.border_radius.top_right_x,
+              layer.border_radius.top_left_y));
+    const QRegion horizontalBottom(QRect(layer.border_box.x + layer.border_radius.bottom_left_x,
+                                         layer.border_box.bottom() - layer.border_radius.bottom_left_y,
+                                         layer.border_box.width - layer.border_radius.bottom_left_x
+                                             - layer.border_radius.bottom_right_x,
+                                         layer.border_radius.bottom_left_y));
+    const QRegion topLeft(QRect(layer.border_box.left(),
+                                layer.border_box.top(),
+                                2 * layer.border_radius.top_left_x,
+                                2 * layer.border_radius.top_left_y),
+                          QRegion::Ellipse);
+    const QRegion topRight(QRect(layer.border_box.right() - 2 * layer.border_radius.top_right_x,
+                                 layer.border_box.top(),
+                                 2 * layer.border_radius.top_right_x,
+                                 2 * layer.border_radius.top_right_y),
+                           QRegion::Ellipse);
+    const QRegion bottomLeft(QRect(layer.border_box.left(),
+                                   layer.border_box.bottom() - 2 * layer.border_radius.bottom_left_y,
+                                   2 * layer.border_radius.bottom_left_x,
+                                   2 * layer.border_radius.bottom_left_y),
+                             QRegion::Ellipse);
+    const QRegion bottomRight(QRect(layer.border_box.right() - 2 * layer.border_radius.bottom_right_x,
+                                    layer.border_box.bottom() - 2 * layer.border_radius.bottom_right_y,
+                                    2 * layer.border_radius.bottom_right_x,
+                                    2 * layer.border_radius.bottom_right_y),
+                              QRegion::Ellipse);
+    const QRegion clipRegion = horizontalMiddle.united(horizontalTop)
+                                   .united(horizontalBottom)
+                                   .united(topLeft)
+                                   .united(topRight)
+                                   .united(bottomLeft)
+                                   .united(bottomRight);
+    painter->setClipRegion(clipRegion, Qt::IntersectClip);
+    painter->setPen(Qt::NoPen);
+    painter->setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
+
+    drawSelection(painter, toQRect(layer.border_box));
+
+    const QPixmap pixmap = getPixmap(QString::fromStdString(url),
+                                     QString::fromStdString(base_url));
+    if (layer.repeat == litehtml::background_repeat_no_repeat) {
+        painter->drawPixmap(QRect(layer.origin_box.x,
+                                  layer.origin_box.y,
+                                  layer.origin_box.width,
+                                  layer.origin_box.height),
+                            pixmap);
+    } else if (layer.repeat == litehtml::background_repeat_repeat_x) {
+        if (layer.origin_box.width > 0) {
+            int x = layer.border_box.left();
+            while (x <= layer.border_box.right()) {
+                painter->drawPixmap(QRect(x,
+                                          layer.border_box.top(),
+                                          layer.origin_box.width,
+                                          layer.origin_box.height),
+                                    pixmap);
+                x += layer.origin_box.width;
+            }
+        }
+    } else {
+        qWarning(log) << "unsupported background repeat" << layer.repeat;
+    }
 
     painter->restore();
 }
@@ -1578,13 +1668,20 @@ void DocumentContainerContext::setMasterStyleSheet(const QString &css)
 
 void DocumentContainerPrivate::draw_radial_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::background_layer::radial_gradient &gradient)
 {
-    //draw_solid_fill(hdc,
-    //                layer,
-    //                gradient.color_points.empty() ? litehtml::web_color::transparent : gradient.color_points.at(0));
+    draw_solid_fill(hdc,
+                    layer,
+                    gradient.color_points.empty()
+                        ? litehtml::web_color::transparent
+                        : gradient.color_points.at(0).color);
 }
 
 void DocumentContainerPrivate::draw_conic_gradient(litehtml::uint_ptr hdc, const litehtml::background_layer &layer, const litehtml::background_layer::conic_gradient &gradient)
 {
+    draw_solid_fill(hdc,
+                    layer,
+                    gradient.color_points.empty()
+                        ? litehtml::web_color::transparent
+                        : gradient.color_points.at(0).color);
 }
 
 void DocumentContainerPrivate::on_mouse_event(const litehtml::element::ptr &el, litehtml::mouse_event event)
