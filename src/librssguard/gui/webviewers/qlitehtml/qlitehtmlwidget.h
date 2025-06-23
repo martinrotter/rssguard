@@ -81,7 +81,6 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     QRect fromVirtual(const QRect& r) const;
 
     QString m_html;
-    DocumentContainerContext m_context;
     QUrl m_url;
     DocumentContainer m_documentContainer;
     qreal m_zoomFactor = 1;

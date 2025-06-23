@@ -19,21 +19,6 @@
 #include <QVector>
 
 class DocumentContainerPrivate;
-class DocumentContainerContextPrivate;
-
-class DocumentContainerContext {
-  public:
-    DocumentContainerContext();
-    ~DocumentContainerContext();
-
-    void setMasterStyleSheet(const QString& css);
-
-  private:
-    std::unique_ptr<DocumentContainerContextPrivate> d;
-
-    friend class DocumentContainer;
-    friend class DocumentContainerPrivate;
-};
 
 class DocumentContainer {
   public:
@@ -42,7 +27,7 @@ class DocumentContainer {
 
   public: // outside API
     void setPaintDevice(QPaintDevice* paintDevice);
-    void setDocument(const QByteArray& data, DocumentContainerContext* context);
+    void setDocument(const QByteArray& data);
     bool hasDocument() const;
     void setBaseUrl(const QString& url);
     QString baseUrl() const;
@@ -105,6 +90,10 @@ class DocumentContainer {
 
     int withFixedElementPosition(int y, const std::function<void()>& action);
 
+    QString getMasterCss() const;
+    void setMasterCss(const QString &newMasterCss);
+
   private:
+    QString masterCss;
     std::unique_ptr<DocumentContainerPrivate> d;
 };

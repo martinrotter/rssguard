@@ -1068,11 +1068,10 @@ void DocumentContainer::setScrollPosition(const QPoint& pos) {
   d->m_scrollPosition = pos;
 }
 
-void DocumentContainer::setDocument(const QByteArray& data, DocumentContainerContext* context) {
+void DocumentContainer::setDocument(const QByteArray& data) {
   d->m_pixmaps.clear();
   d->clearSelection();
-  d->m_document =
-    litehtml::document::createFromString(data.constData(), d.get(), context->d->masterCss.toUtf8().constData());
+  d->m_document = litehtml::document::createFromString(data.constData(), d.get(), masterCss.toStdString());
   d->buildIndex();
 }
 
@@ -1455,6 +1454,14 @@ int DocumentContainer::withFixedElementPosition(int y, const std::function<void(
   return -1;
 }
 
+QString DocumentContainer::getMasterCss() const {
+  return masterCss;
+}
+
+void DocumentContainer::setMasterCss(const QString& newMasterCss) {
+  masterCss = newMasterCss;
+}
+
 QPixmap DocumentContainerPrivate::getPixmap(const QString& imageUrl, const QString& baseUrl) {
   const QUrl url = resolveUrl(imageUrl, baseUrl);
   if (!m_pixmaps.contains(url)) {
@@ -1514,14 +1521,6 @@ Index::Entry Index::findElement(int index) const {
   if (upper == std::begin(indexToElement)) // should not happen for index >= 0
     return {-1, {}};
   return *(upper - 1);
-}
-
-DocumentContainerContext::DocumentContainerContext() : d(new DocumentContainerContextPrivate) {}
-
-DocumentContainerContext::~DocumentContainerContext() = default;
-
-void DocumentContainerContext::setMasterStyleSheet(const QString& css) {
-  d->masterCss = css;
 }
 
 void DocumentContainerPrivate::draw_radial_gradient(litehtml::uint_ptr hdc,

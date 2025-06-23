@@ -420,8 +420,7 @@ QLiteHtmlWidget::QLiteHtmlWidget(QWidget* parent) : QAbstractScrollArea(parent) 
     emit copyAvailable(yes);
   });
 
-  // TODO adapt mastercss to palette (default text & background color)
-  m_context.setMasterStyleSheet(master_css);
+  m_documentContainer.setMasterCss(master_css);
 }
 
 QLiteHtmlWidget::~QLiteHtmlWidget() {}
@@ -458,7 +457,7 @@ QUrl QLiteHtmlWidget::url() const {
 void QLiteHtmlWidget::setHtml(const QString& content) {
   m_html = content;
   m_documentContainer.setPaintDevice(viewport());
-  m_documentContainer.setDocument(content.toUtf8(), &m_context);
+  m_documentContainer.setDocument(content.toUtf8());
   verticalScrollBar()->setValue(0);
   horizontalScrollBar()->setValue(0);
   render();
