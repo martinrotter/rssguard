@@ -68,7 +68,7 @@ class DocumentContainer {
     QVector<QRect> mouseDoubleClickEvent(const QPoint& documentPos, const QPoint& viewportPos, Qt::MouseButton button);
     QVector<QRect> leaveEvent();
 
-    QUrl linkAt(const QPoint& documentPos, const QPoint& viewportPos);
+    QUrl linkAt(const QPoint& documentPos, const QPoint& viewportPos) const;
 
     QString caption() const;
     QString selectedText() const;

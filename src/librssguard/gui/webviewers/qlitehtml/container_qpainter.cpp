@@ -1255,7 +1255,7 @@ QVector<QRect> DocumentContainer::leaveEvent() {
   return {};
 }
 
-QUrl DocumentContainer::linkAt(const QPoint& documentPos, const QPoint& viewportPos) {
+QUrl DocumentContainer::linkAt(const QPoint& documentPos, const QPoint& viewportPos) const {
   if (!d->m_document)
     return {};
   const char* href = nullptr;

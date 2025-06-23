@@ -14,45 +14,39 @@ QT_FORWARD_DECLARE_CLASS(QPrinter)
 
 #include <functional>
 
-class QLiteHtmlWidgetPrivate {
-  public:
-    QString html;
-    DocumentContainerContext context;
-    QUrl url;
-    DocumentContainer documentContainer;
-    qreal zoomFactor = 1;
-    QUrl lastHighlightedLink;
-};
-
 class QLiteHtmlWidget : public QAbstractScrollArea {
     Q_OBJECT
+
   public:
     explicit QLiteHtmlWidget(QWidget* parent = nullptr);
     ~QLiteHtmlWidget() override;
 
-    // declaring the getters Q_INVOKABLE to make them Squish-testable
     void setUrl(const QUrl& url);
     Q_INVOKABLE QUrl url() const;
+
     void setHtml(const QString& content);
     Q_INVOKABLE QString html() const;
+
     Q_INVOKABLE QString title() const;
+
+    Q_INVOKABLE QString selectedText() const;
 
     void setZoomFactor(qreal scale);
     qreal zoomFactor() const;
+
+    QPoint scrollPosition() const;
 
     bool findText(const QString& text, QTextDocument::FindFlags flags, bool incremental, bool* wrapped = nullptr);
 
     void setDefaultFont(const QFont& font);
     QFont defaultFont() const;
+
     void setAntialias(bool on);
 
     void scrollToAnchor(const QString& name);
 
     using ResourceHandler = std::function<QByteArray(QUrl)>;
     void setResourceHandler(const ResourceHandler& handler);
-
-    // declaring this Q_INVOKABLE to make it Squish-testable
-    Q_INVOKABLE QString selectedText() const;
 
     void print(QPrinter* printer);
 
@@ -78,12 +72,18 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     void setHightlightedLink(const QUrl& url);
     void withFixedTextPosition(const std::function<void()>& action);
     void render();
-    QPoint scrollPosition() const;
+
     void htmlPos(const QPoint& pos, QPoint* viewportPos, QPoint* htmlPos) const;
+
     QPoint toVirtual(const QPoint& p) const;
     QSize toVirtual(const QSize& s) const;
     QRect toVirtual(const QRect& r) const;
     QRect fromVirtual(const QRect& r) const;
 
-    QLiteHtmlWidgetPrivate* d;
+    QString m_html;
+    DocumentContainerContext m_context;
+    QUrl m_url;
+    DocumentContainer m_documentContainer;
+    qreal m_zoomFactor = 1;
+    QUrl m_lastHighlightedLink;
 };

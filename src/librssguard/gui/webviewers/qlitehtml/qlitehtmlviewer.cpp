@@ -179,7 +179,7 @@ ContextMenuData QLiteHtmlViewer::provideContextMenuData(QContextMenuEvent* event
 
   htmlPos(event->pos(), &viewportPos, &pos);
 
-  QString anchor = d->documentContainer.linkAt(pos, viewportPos).toString();
+  QString anchor = m_documentContainer.linkAt(pos, viewportPos).toString();
 
   if (!anchor.isEmpty()) {
     c.m_linkUrl = anchor;
