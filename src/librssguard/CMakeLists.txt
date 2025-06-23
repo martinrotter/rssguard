@@ -475,12 +475,11 @@ list(APPEND SOURCES
   3rd-party/litehtml/src/web_color.cpp
 
   # qlitehtml
-  3rd-party/qlitehtml/src/container_qpainter.h
-  3rd-party/qlitehtml/src/container_qpainter_p.h
-  3rd-party/qlitehtml/src/qlitehtml_global.h
-  3rd-party/qlitehtml/src/qlitehtmlwidget.h
-  3rd-party/qlitehtml/src/container_qpainter.cpp
-  3rd-party/qlitehtml/src/qlitehtmlwidget.cpp
+  gui/webviewers/qlitehtml/container_qpainter.h
+  gui/webviewers/qlitehtml/container_qpainter_p.h
+  gui/webviewers/qlitehtml/qlitehtmlwidget.h
+  gui/webviewers/qlitehtml/container_qpainter.cpp
+  gui/webviewers/qlitehtml/qlitehtmlwidget.cpp
 
   gui/webviewers/qlitehtml/qlitehtmlviewer.h
   gui/webviewers/qlitehtml/qlitehtmlviewer.cpp

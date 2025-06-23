@@ -3,7 +3,7 @@
 #ifndef QLITEHTMLVIEWER_H
 #define QLITEHTMLVIEWER_H
 
-#include "3rd-party/qlitehtml/src/qlitehtmlwidget.h"
+#include "gui/webviewers/qlitehtml/qlitehtmlwidget.h"
 #include "gui/webviewers/webviewer.h"
 
 #include <QPointer>
