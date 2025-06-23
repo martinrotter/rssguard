@@ -57,17 +57,9 @@ public: // outside API
 
     enum class MediaType
     {
-        None,
         All,
         Screen,
-        Print,
-        Braille,
-        Embossed,
-        Handheld,
-        Projection,
-        Speech,
-        TTY,
-        TV
+        Print
     };
 
     void setMediaType(MediaType t);

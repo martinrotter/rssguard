@@ -456,7 +456,9 @@ DocumentContainer::DocumentContainer()
 
 DocumentContainer::~DocumentContainer() = default;
 
-litehtml::uint_ptr DocumentContainerPrivate::create_font(const litehtml::font_description &descr, const litehtml::document *doc, litehtml::font_metrics *fm) {
+litehtml::uint_ptr DocumentContainerPrivate::create_font(const litehtml::font_description &descr,
+                                                         const litehtml::document *doc,
+                                                         litehtml::font_metrics *fm) {
     const QStringList splitNames = QString::fromStdString(descr.family).split(',', Qt::SkipEmptyParts);
     QStringList familyNames;
     std::transform(splitNames.cbegin(),
@@ -492,10 +494,13 @@ litehtml::uint_ptr DocumentContainerPrivate::create_font(const litehtml::font_de
         font->setStrikeOut(true);
     if (fm) {
         const QFontMetrics metrics(*font);
+        fm->font_size = metrics.height();
         fm->height = metrics.height();
         fm->ascent = metrics.ascent();
         fm->descent = metrics.descent();
         fm->x_height = metrics.xHeight();
+        fm->sub_shift = descr.size / 5;
+        fm->super_shift = descr.size / 3;
         fm->draw_spaces = true;
     }
     return reinterpret_cast<litehtml::uint_ptr>(font);
