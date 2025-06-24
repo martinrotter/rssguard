@@ -11,16 +11,15 @@
 #include <memory>
 #include <unordered_map>
 
-#include <QByteArray>
-#include <QPaintDevice>
-#include <QPainter>
-#include <QPixmap>
 #include <QPoint>
 #include <QRect>
 #include <QString>
 #include <QTextDocument>
 #include <QUrl>
 #include <QVector>
+
+class QPaintDevice;
+class QPainter;
 
 class Selection {
   public:

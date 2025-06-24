@@ -71,7 +71,7 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
   protected:
     void render();
     void withFixedTextPosition(const std::function<void()>& action);
-    void htmlPos(const QPoint& pos, QPoint* viewportPos, QPoint* htmlPos) const;
+    void htmlPos(QPoint pos, QPoint* viewport_pos, QPoint* html_pos) const;
 
     QPoint toVirtual(QPoint p) const;
     QSize toVirtual(QSize s) const;

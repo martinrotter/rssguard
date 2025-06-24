@@ -144,20 +144,24 @@ bool QLiteHtmlWidget::findText(const QString& text, QTextDocument::FindFlags fla
     new_selection_combined = new_selection_combined.united(r);
   }
 
-  QScrollBar* vBar = verticalScrollBar();
+  QScrollBar* v_bar = verticalScrollBar();
   const int top = new_selection_combined.top();
   const int bottom = new_selection_combined.bottom() - toVirtual(viewport()->size()).height();
-  if (success && top < vBar->value() && vBar->minimum() <= top) {
-    vBar->setValue(top);
+
+  if (success && top < v_bar->value() && v_bar->minimum() <= top) {
+    v_bar->setValue(top);
   }
-  else if (success && vBar->value() < bottom && bottom <= vBar->maximum()) {
-    vBar->setValue(bottom);
+  else if (success && v_bar->value() < bottom && bottom <= v_bar->maximum()) {
+    v_bar->setValue(bottom);
   }
   else {
     viewport()->update(fromVirtual(new_selection_combined.translated(-scrollPosition())));
-    for (const QRect& r : std::as_const(old_selection))
+
+    for (const QRect& r : std::as_const(old_selection)) {
       viewport()->update(fromVirtual(r.translated(-scrollPosition())));
+    }
   }
+
   return success;
 }
 
@@ -173,16 +177,22 @@ QFont QLiteHtmlWidget::defaultFont() const {
 }
 
 void QLiteHtmlWidget::scrollToAnchor(const QString& name) {
-  if (!m_documentContainer.hasDocument())
+  if (!m_documentContainer.hasDocument()) {
     return;
+  }
+
   horizontalScrollBar()->setValue(0);
+
   if (name.isEmpty()) {
     verticalScrollBar()->setValue(0);
     return;
   }
+
   const int y = m_documentContainer.anchorY(name);
-  if (y >= 0)
+
+  if (y >= 0) {
     verticalScrollBar()->setValue(std::min(y, verticalScrollBar()->maximum()));
+  }
 }
 
 void QLiteHtmlWidget::setResourceHandler(const QLiteHtmlWidget::ResourceHandler& handler) {
@@ -234,13 +244,18 @@ void QLiteHtmlWidget::print(QPrinter* printer) {
 }
 
 void QLiteHtmlWidget::paintEvent(QPaintEvent* event) {
-  if (!m_documentContainer.hasDocument())
+  if (!m_documentContainer.hasDocument()) {
     return;
+  }
+
   m_documentContainer.setScrollPosition(scrollPosition());
+
   QPainter p(viewport());
+
   p.setWorldTransform(QTransform().scale(m_zoomFactor, m_zoomFactor));
-  p.setRenderHint(QPainter::SmoothPixmapTransform, true);
-  p.setRenderHint(QPainter::Antialiasing, true);
+  p.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
+  p.setRenderHint(QPainter::RenderHint::Antialiasing, m_documentContainer.fontAntialiasing());
+
   m_documentContainer.draw(&p, toVirtual(event->rect()));
 }
 
@@ -252,39 +267,54 @@ void QLiteHtmlWidget::resizeEvent(QResizeEvent* event) {
 }
 
 void QLiteHtmlWidget::mouseMoveEvent(QMouseEvent* event) {
-  QPoint viewportPos;
+  QPoint viewport_pos;
   QPoint pos;
-  htmlPos(event->pos(), &viewportPos, &pos);
-  const QVector<QRect> areas = m_documentContainer.mouseMoveEvent(pos, viewportPos);
-  for (const QRect& r : areas)
+
+  htmlPos(event->pos(), &viewport_pos, &pos);
+
+  const QVector<QRect> areas = m_documentContainer.mouseMoveEvent(pos, viewport_pos);
+
+  for (const QRect& r : areas) {
     viewport()->update(fromVirtual(r.translated(-scrollPosition())));
+  }
 
   updateHightlightedLink();
 }
 
 void QLiteHtmlWidget::mousePressEvent(QMouseEvent* event) {
-  QPoint viewportPos;
+  QPoint viewport_pos;
   QPoint pos;
-  htmlPos(event->pos(), &viewportPos, &pos);
-  const QVector<QRect> areas = m_documentContainer.mousePressEvent(pos, viewportPos, event->button());
-  for (const QRect& r : areas)
+
+  htmlPos(event->pos(), &viewport_pos, &pos);
+
+  const QVector<QRect> areas = m_documentContainer.mousePressEvent(pos, viewport_pos, event->button());
+
+  for (const QRect& r : areas) {
     viewport()->update(fromVirtual(r.translated(-scrollPosition())));
+  }
 }
 
 void QLiteHtmlWidget::mouseReleaseEvent(QMouseEvent* event) {
-  QPoint viewportPos;
+  QPoint viewport_pos;
   QPoint pos;
-  htmlPos(event->pos(), &viewportPos, &pos);
-  const QVector<QRect> areas = m_documentContainer.mouseReleaseEvent(pos, viewportPos, event->button());
-  for (const QRect& r : areas)
+
+  htmlPos(event->pos(), &viewport_pos, &pos);
+
+  const QVector<QRect> areas = m_documentContainer.mouseReleaseEvent(pos, viewport_pos, event->button());
+
+  for (const QRect& r : areas) {
     viewport()->update(fromVirtual(r.translated(-scrollPosition())));
+  }
 }
 
 void QLiteHtmlWidget::mouseDoubleClickEvent(QMouseEvent* event) {
-  QPoint viewportPos;
+  QPoint viewport_pos;
   QPoint pos;
-  htmlPos(event->pos(), &viewportPos, &pos);
-  const QVector<QRect> areas = m_documentContainer.mouseDoubleClickEvent(pos, viewportPos, event->button());
+
+  htmlPos(event->pos(), &viewport_pos, &pos);
+
+  const QVector<QRect> areas = m_documentContainer.mouseDoubleClickEvent(pos, viewport_pos, event->button());
+
   for (const QRect& r : areas) {
     viewport()->update(fromVirtual(r.translated(-scrollPosition())));
   }
@@ -292,36 +322,51 @@ void QLiteHtmlWidget::mouseDoubleClickEvent(QMouseEvent* event) {
 
 void QLiteHtmlWidget::leaveEvent(QEvent* event) {
   Q_UNUSED(event)
+
   const QVector<QRect> areas = m_documentContainer.leaveEvent();
-  for (const QRect& r : areas)
+
+  for (const QRect& r : areas) {
     viewport()->update(fromVirtual(r.translated(-scrollPosition())));
+  }
+
   setHightlightedLink(QUrl());
 }
 
 void QLiteHtmlWidget::contextMenuEvent(QContextMenuEvent* event) {
-  QPoint viewportPos;
+  QPoint viewport_pos;
   QPoint pos;
-  htmlPos(event->pos(), &viewportPos, &pos);
-  emit contextMenuRequested(event->pos(), m_documentContainer.linkAt(pos, viewportPos));
+
+  htmlPos(event->pos(), &viewport_pos, &pos);
+
+  emit contextMenuRequested(event->pos(), m_documentContainer.linkAt(pos, viewport_pos));
 }
 
 static QAbstractSlider::SliderAction getSliderAction(int key) {
-  if (key == Qt::Key_Home)
-    return QAbstractSlider::SliderToMinimum;
-  if (key == Qt::Key_End)
-    return QAbstractSlider::SliderToMaximum;
-  if (key == Qt::Key_PageUp)
-    return QAbstractSlider::SliderPageStepSub;
-  if (key == Qt::Key_PageDown)
-    return QAbstractSlider::SliderPageStepAdd;
-  return QAbstractSlider::SliderNoAction;
+  switch (key) {
+    case Qt::Key::Key_Home:
+      return QAbstractSlider::SliderAction::SliderToMinimum;
+
+    case Qt::Key::Key_End:
+      return QAbstractSlider::SliderAction::SliderToMaximum;
+
+    case Qt::Key::Key_PageUp:
+      return QAbstractSlider::SliderAction::SliderPageStepSub;
+
+    case Qt::Key::Key_PageDown:
+      return QAbstractSlider::SliderAction::SliderPageStepAdd;
+
+    default:
+      return QAbstractSlider::SliderAction::SliderNoAction;
+  }
 }
 
 void QLiteHtmlWidget::keyPressEvent(QKeyEvent* event) {
-  if (event->modifiers() == Qt::NoModifier || event->modifiers() == Qt::KeypadModifier) {
-    const QAbstractSlider::SliderAction sliderAction = getSliderAction(event->key());
-    if (sliderAction != QAbstractSlider::SliderNoAction) {
-      verticalScrollBar()->triggerAction(sliderAction);
+  if (event->modifiers() == Qt::KeyboardModifier::NoModifier ||
+      event->modifiers() == Qt::KeyboardModifier::KeypadModifier) {
+    const QAbstractSlider::SliderAction slider_act = getSliderAction(event->key());
+
+    if (slider_act != QAbstractSlider::SliderAction::SliderNoAction) {
+      verticalScrollBar()->triggerAction(slider_act);
       event->accept();
       return;
     }
@@ -331,17 +376,19 @@ void QLiteHtmlWidget::keyPressEvent(QKeyEvent* event) {
 }
 
 void QLiteHtmlWidget::updateHightlightedLink() {
-  QPoint viewportPos;
+  QPoint viewport_pos;
   QPoint pos;
-  htmlPos(mapFromGlobal(QCursor::pos()), &viewportPos, &pos);
-  setHightlightedLink(m_documentContainer.linkAt(pos, viewportPos));
+
+  htmlPos(mapFromGlobal(QCursor::pos()), &viewport_pos, &pos);
+  setHightlightedLink(m_documentContainer.linkAt(pos, viewport_pos));
 }
 
 void QLiteHtmlWidget::setHightlightedLink(const QUrl& url) {
-  if (m_lastHighlightedLink == url)
+  if (m_lastHighlightedLink == url) {
     return;
-  m_lastHighlightedLink = url;
-  emit linkHighlighted(m_lastHighlightedLink);
+  }
+
+  emit linkHighlighted(m_lastHighlightedLink = url);
 }
 
 const DocumentContainer* QLiteHtmlWidget::documentContainer() const {
@@ -350,27 +397,35 @@ const DocumentContainer* QLiteHtmlWidget::documentContainer() const {
 
 void QLiteHtmlWidget::withFixedTextPosition(const std::function<void()>& action) {
   // remember element to which to scroll after re-rendering
-  QPoint viewportPos;
+  QPoint viewport_pos;
   QPoint pos;
-  htmlPos({}, &viewportPos, &pos); // top-left
+
+  htmlPos({}, &viewport_pos, &pos);
+
   const int y = m_documentContainer.withFixedElementPosition(pos.y(), action);
-  if (y >= 0)
+
+  if (y >= 0) {
     verticalScrollBar()->setValue(std::min(y, verticalScrollBar()->maximum()));
+  }
 }
 
 void QLiteHtmlWidget::render() {
-  if (!m_documentContainer.hasDocument())
+  if (!m_documentContainer.hasDocument()) {
     return;
-  const int fullWidth = width() / m_zoomFactor;
-  const QSize vViewportSize = toVirtual(viewport()->size());
-  const int scrollbarWidth = style()->pixelMetric(QStyle::PM_ScrollBarExtent, nullptr, this);
-  const int w = fullWidth - scrollbarWidth - 2;
-  m_documentContainer.render(w, vViewportSize.height());
-  // scroll bars reflect virtual/scaled size of html document
-  horizontalScrollBar()->setPageStep(vViewportSize.width());
+  }
+
+  const int full_width = width() / m_zoomFactor;
+  const QSize viewport_size = toVirtual(viewport()->size());
+  const int scrollbar_width = style()->pixelMetric(QStyle::PixelMetric::PM_ScrollBarExtent, nullptr, this);
+  const int w = full_width - scrollbar_width - 2;
+
+  m_documentContainer.render(w, viewport_size.height());
+
+  horizontalScrollBar()->setPageStep(viewport_size.width());
   horizontalScrollBar()->setRange(0, std::max(0, m_documentContainer.documentWidth() - w));
-  verticalScrollBar()->setPageStep(vViewportSize.height());
-  verticalScrollBar()->setRange(0, std::max(0, m_documentContainer.documentHeight() - vViewportSize.height()));
+  verticalScrollBar()->setPageStep(viewport_size.height());
+  verticalScrollBar()->setRange(0, std::max(0, m_documentContainer.documentHeight() - viewport_size.height()));
+
   viewport()->update();
 }
 
@@ -378,9 +433,9 @@ QPoint QLiteHtmlWidget::scrollPosition() const {
   return {horizontalScrollBar()->value(), verticalScrollBar()->value()};
 }
 
-void QLiteHtmlWidget::htmlPos(const QPoint& pos, QPoint* viewportPos, QPoint* htmlPos) const {
-  *viewportPos = toVirtual(viewport()->mapFromParent(pos));
-  *htmlPos = *viewportPos + scrollPosition();
+void QLiteHtmlWidget::htmlPos(QPoint pos, QPoint* viewport_pos, QPoint* html_pos) const {
+  *viewport_pos = toVirtual(viewport()->mapFromParent(pos));
+  *html_pos = *viewport_pos + scrollPosition();
 }
 
 QPoint QLiteHtmlWidget::toVirtual(QPoint p) const {
@@ -397,7 +452,7 @@ QRect QLiteHtmlWidget::toVirtual(QRect r) const {
 
 QRect QLiteHtmlWidget::fromVirtual(QRect r) const {
   const QPoint tl{int(r.x() * m_zoomFactor), int(r.y() * m_zoomFactor)};
-  // round size up, and add one since the topleft point was rounded down
   const QSize s{int(r.width() * m_zoomFactor + 0.5) + 1, int(r.height() * m_zoomFactor + 0.5) + 1};
+
   return {tl, s};
 }

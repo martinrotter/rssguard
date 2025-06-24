@@ -9,34 +9,26 @@
 #include <QClipboard>
 #endif
 
+#include "definitions/definitions.h"
+
 #include <algorithm>
 
+#include <QColor>
 #include <QCursor>
-#include <QDebug>
-#include <QDir>
-#include <QFont>
-#include <QFontDatabase>
 #include <QFontMetrics>
 #include <QGuiApplication>
-#include <QLoggingCategory>
+#include <QPaintDevice>
 #include <QPainter>
 #include <QPalette>
+#include <QPen>
+#include <QPixmap>
 #include <QRegularExpression>
-#include <QScreen>
 #include <QTextBoundaryFinder>
-#include <QTextLayout>
-#include <QUrl>
 
 const int kDragDistance = 5;
 
 using Font = QFont;
 using Context = QPainter;
-
-#ifdef Q_STATIC_LOGGING_CATEGORY
-Q_STATIC_LOGGING_CATEGORY(log, "qlitehtml", QtCriticalMsg)
-#else
-static Q_LOGGING_CATEGORY(log, "qlitehtml", QtCriticalMsg)
-#endif
 
 static QFont toQFont(litehtml::uint_ptr hFont) {
   return *reinterpret_cast<Font*>(hFont);
@@ -243,11 +235,12 @@ static QFont::Style toQFontStyle(litehtml::font_style style) {
   switch (style) {
     case litehtml::font_style_normal:
       return QFont::StyleNormal;
+
     case litehtml::font_style_italic:
       return QFont::StyleItalic;
   }
-  // should not happen
-  qWarning(log) << "Unknown litehtml font style:" << style;
+
+  qWarningNN << LOGSEC_HTMLVIEWER << "Unknown litehtml font style:" << QUOTE_W_SPACE_DOT(style);
   return QFont::StyleNormal;
 }
 
@@ -264,7 +257,7 @@ static Qt::PenStyle borderPenStyle(litehtml::border_style style) {
     case litehtml::border_style_solid:
       return Qt::SolidLine;
     default:
-      qWarning(log) << "Unsupported border style:" << style;
+      qWarningNN << LOGSEC_HTMLVIEWER << "Unsupported border style:" << QUOTE_W_SPACE_DOT(style);
   }
   return Qt::SolidLine;
 }
@@ -344,7 +337,8 @@ static QCursor toQCursor(const QString& c) {
     return {Qt::BusyCursor};
   if (c == "zoom-in")
     return {Qt::ArrowCursor}; // ???
-  qWarning(log) << QString("unknown cursor property \"%1\"").arg(c).toUtf8().constData();
+
+  qWarningNN << LOGSEC_HTMLVIEWER << "Unknown cursor property:" << QUOTE_W_SPACE_DOT(c);
   return {Qt::ArrowCursor};
 }
 
@@ -535,7 +529,8 @@ void DocumentContainer::draw_list_marker(litehtml::uint_ptr hdc, const litehtml:
       painter->setPen(Qt::NoPen);
       painter->setBrush(toQColor(marker.color));
       painter->drawEllipse(toQRect(marker.pos));
-      qWarning(log) << "list marker of type" << marker.marker_type << "not supported";
+
+      qWarningNN << LOGSEC_HTMLVIEWER << "List marker of type" << marker.marker_type << "not supported";
     }
   }
   else {
@@ -548,8 +543,6 @@ void DocumentContainer::load_image(const char* src, const char* baseurl, bool re
   const auto qtSrc = QString::fromUtf8(src);
   const auto qtBaseUrl = QString::fromUtf8(baseurl);
   Q_UNUSED(redraw_on_ready)
-  qDebug(log) << "load_image:" << QString("src = \"%1\";").arg(qtSrc).toUtf8().constData()
-              << QString("base = \"%1\"").arg(qtBaseUrl).toUtf8().constData();
   const QUrl url = resolveUrl(qtSrc, qtBaseUrl);
   if (m_pixmaps.contains(url))
     return;
@@ -564,8 +557,6 @@ void DocumentContainer::get_image_size(const char* src, const char* baseurl, lit
   const auto qtBaseUrl = QString::fromUtf8(baseurl);
   if (qtSrc.isEmpty()) // for some reason that happens
     return;
-  qDebug(log) << "get_image_size:" << QString("src = \"%1\";").arg(qtSrc).toUtf8().constData()
-              << QString("base = \"%1\"").arg(qtBaseUrl).toUtf8().constData();
   const QPixmap pm = getPixmap(qtSrc, qtBaseUrl);
   sz.width = pm.width();
   sz.height = pm.height();
@@ -792,108 +783,11 @@ void DocumentContainer::draw_image(litehtml::uint_ptr hdc,
     }
   }
   else {
-    qWarning(log) << "unsupported background repeat" << layer.repeat;
+    qWarningNN << LOGSEC_HTMLVIEWER << "Unsupported background repeat " << QUOTE_W_SPACE_DOT(layer.repeat);
   }
 
   painter->restore();
 }
-
-/*
-void DocumentContainer::draw_background(litehtml::uint_ptr hdc,
-                                               const std::vector<litehtml::background_paint> &bgs)
-{
-    auto painter = toQPainter(hdc);
-    const QRegion initialClipRegion = painter->clipRegion();
-    const Qt::ClipOperation initialClipOperation
-        = initialClipRegion.isEmpty() ? Qt::ReplaceClip : Qt::IntersectClip;
-    painter->save();
-    for (const litehtml::background_paint &bg : bgs) {
-        if (bg.is_root) {
-            // TODO ?
-            //break;
-        }
-        if (!initialClipRegion.isEmpty())
-            painter->setClipRegion(initialClipRegion);
-        painter->setClipRect(toQRect(bg.clip_box), initialClipOperation);
-        const QRegion horizontalMiddle(QRect(bg.border_box.x,
-                                             bg.border_box.y + bg.border_radius.top_left_y,
-                                             bg.border_box.width,
-                                             bg.border_box.height - bg.border_radius.top_left_y
-                                                 - bg.border_radius.bottom_left_y));
-        const QRegion horizontalTop(
-            QRect(bg.border_box.x + bg.border_radius.top_left_x,
-                  bg.border_box.y,
-                  bg.border_box.width - bg.border_radius.top_left_x - bg.border_radius.top_right_x,
-                  bg.border_radius.top_left_y));
-        const QRegion horizontalBottom(QRect(bg.border_box.x + bg.border_radius.bottom_left_x,
-                                             bg.border_box.bottom() - bg.border_radius.bottom_left_y,
-                                             bg.border_box.width - bg.border_radius.bottom_left_x
-                                                 - bg.border_radius.bottom_right_x,
-                                             bg.border_radius.bottom_left_y));
-        const QRegion topLeft(QRect(bg.border_box.left(),
-                                    bg.border_box.top(),
-                                    2 * bg.border_radius.top_left_x,
-                                    2 * bg.border_radius.top_left_y),
-                              QRegion::Ellipse);
-        const QRegion topRight(QRect(bg.border_box.right() - 2 * bg.border_radius.top_right_x,
-                                     bg.border_box.top(),
-                                     2 * bg.border_radius.top_right_x,
-                                     2 * bg.border_radius.top_right_y),
-                               QRegion::Ellipse);
-        const QRegion bottomLeft(QRect(bg.border_box.left(),
-                                       bg.border_box.bottom() - 2 * bg.border_radius.bottom_left_y,
-                                       2 * bg.border_radius.bottom_left_x,
-                                       2 * bg.border_radius.bottom_left_y),
-                                 QRegion::Ellipse);
-        const QRegion bottomRight(QRect(bg.border_box.right() - 2 * bg.border_radius.bottom_right_x,
-                                        bg.border_box.bottom() - 2 * bg.border_radius.bottom_right_y,
-                                        2 * bg.border_radius.bottom_right_x,
-                                        2 * bg.border_radius.bottom_right_y),
-                                  QRegion::Ellipse);
-        const QRegion clipRegion = horizontalMiddle.united(horizontalTop)
-                                       .united(horizontalBottom)
-                                       .united(topLeft)
-                                       .united(topRight)
-                                       .united(bottomLeft)
-                                       .united(bottomRight);
-        painter->setClipRegion(clipRegion, Qt::IntersectClip);
-        painter->setPen(Qt::NoPen);
-        painter->setBrush(toQColor(bg.color));
-        painter->setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
-        painter->drawRect(bg.border_box.x,
-                          bg.border_box.y,
-                          bg.border_box.width,
-                          bg.border_box.height);
-        drawSelection(painter, toQRect(bg.border_box));
-        if (!bg.image.empty()) {
-            const QPixmap pixmap = getPixmap(QString::fromStdString(bg.image),
-                                             QString::fromStdString(bg.baseurl));
-            if (bg.repeat == litehtml::background_repeat_no_repeat) {
-                painter->drawPixmap(QRect(bg.position_x,
-                                          bg.position_y,
-                                          bg.image_size.width,
-                                          bg.image_size.height),
-                                    pixmap);
-            } else if (bg.repeat == litehtml::background_repeat_repeat_x) {
-                if (bg.image_size.width > 0) {
-                    int x = bg.border_box.left();
-                    while (x <= bg.border_box.right()) {
-                        painter->drawPixmap(QRect(x,
-                                                  bg.border_box.top(),
-                                                  bg.image_size.width,
-                                                  bg.image_size.height),
-                                            pixmap);
-                        x += bg.image_size.width;
-                    }
-                }
-            } else {
-                qWarning(log) << "unsupported background repeat" << bg.repeat;
-            }
-        }
-    }
-    painter->restore();
-}
-*/
 
 void DocumentContainer::draw_borders(litehtml::uint_ptr hdc,
                                      const litehtml::borders& borders,
@@ -965,8 +859,6 @@ void DocumentContainer::set_base_url(const char* base_url) {
 }
 
 void DocumentContainer::link(const std::shared_ptr<litehtml::document>& doc, const litehtml::element::ptr& el) {
-  // TODO
-  qDebug(log) << "link";
   Q_UNUSED(doc)
   Q_UNUSED(el)
 }
@@ -1025,35 +917,26 @@ void DocumentContainer::import_css(std::string& text, const std::string& url, st
 }
 
 void DocumentContainer::set_clip(const litehtml::position& pos, const litehtml::border_radiuses& bdr_radius) {
-  // TODO
-  qDebug(log) << "set_clip";
   Q_UNUSED(pos)
   Q_UNUSED(bdr_radius)
 }
 
-void DocumentContainer::del_clip() {
-  // TODO
-  qDebug(log) << "del_clip";
-}
+void DocumentContainer::del_clip() {}
 
 std::shared_ptr<litehtml::element> DocumentContainer::create_element(const char* tag_name,
                                                                      const litehtml::string_map& attributes,
                                                                      const std::shared_ptr<litehtml::document>& doc) {
-  // TODO
-  qDebug(log) << "create_element" << QString::fromUtf8(tag_name);
   Q_UNUSED(attributes)
   Q_UNUSED(doc)
+
   return {};
 }
 
 void DocumentContainer::get_media_features(litehtml::media_features& media) const {
   media.type = mediaType;
-  qDebug(log) << "get_media_features";
 }
 
 void DocumentContainer::get_language(std::string& language, std::string& culture) const {
-  // TODO
-  qDebug(log) << "get_language";
   Q_UNUSED(language)
   Q_UNUSED(culture)
 }
@@ -1454,7 +1337,7 @@ void DocumentContainer::setMasterCss(const QString& master_css) {
 QPixmap DocumentContainer::getPixmap(const QString& imageUrl, const QString& baseUrl) {
   const QUrl url = resolveUrl(imageUrl, baseUrl);
   if (!m_pixmaps.contains(url)) {
-    qWarning(log) << "draw_background: pixmap not loaded for" << url;
+    qWarningNN << LOGSEC_HTMLVIEWER << "Pixmap for URL not loaded: " << QUOTE_W_SPACE_DOT(url);
     return {};
   }
   return m_pixmaps.value(url);
