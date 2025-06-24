@@ -5,31 +5,32 @@
 
 #pragma once
 
-#include "container_qpainter.h"
+#include "gui/webviewers/qlitehtml/container_qpainter.h"
+
+#include <functional>
 
 #include <QAbstractScrollArea>
 #include <QTextDocument>
 
-QT_FORWARD_DECLARE_CLASS(QPrinter)
-
-#include <functional>
+class QPrinter;
 
 class QLiteHtmlWidget : public QAbstractScrollArea {
     Q_OBJECT
 
   public:
     explicit QLiteHtmlWidget(QWidget* parent = nullptr);
-    ~QLiteHtmlWidget() override;
+    virtual ~QLiteHtmlWidget();
 
     void setUrl(const QUrl& url);
-    Q_INVOKABLE QUrl url() const;
+    QUrl url() const;
 
     void setHtml(const QString& content);
-    Q_INVOKABLE QString html() const;
+    QString html() const;
 
-    Q_INVOKABLE QString title() const;
+    QString title() const;
+    QString selectedText() const;
 
-    Q_INVOKABLE QString selectedText() const;
+    const DocumentContainer* documentContainer() const;
 
     void setZoomFactor(qreal scale);
     qreal zoomFactor() const;
@@ -41,7 +42,7 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     void setDefaultFont(const QFont& font);
     QFont defaultFont() const;
 
-    void setAntialias(bool on);
+    void setFontAntialiasing(bool on);
 
     void scrollToAnchor(const QString& name);
 
@@ -57,28 +58,29 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     void contextMenuRequested(const QPoint& pos, const QUrl& url);
 
   protected:
-    void paintEvent(QPaintEvent* event) override;
-    void resizeEvent(QResizeEvent* event) override;
-    void mouseMoveEvent(QMouseEvent* event) override;
-    void mousePressEvent(QMouseEvent* event) override;
-    void mouseReleaseEvent(QMouseEvent* event) override;
-    void mouseDoubleClickEvent(QMouseEvent* event) override;
-    void leaveEvent(QEvent* event) override;
-    void contextMenuEvent(QContextMenuEvent* event) override;
-    void keyPressEvent(QKeyEvent* event) override;
+    virtual void paintEvent(QPaintEvent* event);
+    virtual void resizeEvent(QResizeEvent* event);
+    virtual void mouseMoveEvent(QMouseEvent* event);
+    virtual void mousePressEvent(QMouseEvent* event);
+    virtual void mouseReleaseEvent(QMouseEvent* event);
+    virtual void mouseDoubleClickEvent(QMouseEvent* event);
+    virtual void leaveEvent(QEvent* event);
+    virtual void contextMenuEvent(QContextMenuEvent* event);
+    virtual void keyPressEvent(QKeyEvent* event);
 
   protected:
-    void updateHightlightedLink();
-    void setHightlightedLink(const QUrl& url);
-    void withFixedTextPosition(const std::function<void()>& action);
     void render();
-
+    void withFixedTextPosition(const std::function<void()>& action);
     void htmlPos(const QPoint& pos, QPoint* viewportPos, QPoint* htmlPos) const;
 
-    QPoint toVirtual(const QPoint& p) const;
-    QSize toVirtual(const QSize& s) const;
-    QRect toVirtual(const QRect& r) const;
-    QRect fromVirtual(const QRect& r) const;
+    QPoint toVirtual(QPoint p) const;
+    QSize toVirtual(QSize s) const;
+    QRect toVirtual(QRect r) const;
+    QRect fromVirtual(QRect r) const;
+
+  private:
+    void updateHightlightedLink();
+    void setHightlightedLink(const QUrl& url);
 
     QString m_html;
     QUrl m_url;

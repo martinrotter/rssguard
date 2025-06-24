@@ -26,7 +26,7 @@ QLiteHtmlViewer::QLiteHtmlViewer(QWidget* parent)
   viewport()->setAutoFillBackground(false);
   setFrameShape(QFrame::Shape::NoFrame);
   setFrameShadow(QFrame::Shadow::Plain);
-  setAntialias(true);
+  setFontAntialiasing(true);
 
   horizontalScrollBar()->setSingleStep(5);
   verticalScrollBar()->setSingleStep(5);
@@ -179,7 +179,7 @@ ContextMenuData QLiteHtmlViewer::provideContextMenuData(QContextMenuEvent* event
 
   htmlPos(event->pos(), &viewportPos, &pos);
 
-  QString anchor = m_documentContainer.linkAt(pos, viewportPos).toString();
+  QString anchor = documentContainer()->linkAt(pos, viewportPos).toString();
 
   if (!anchor.isEmpty()) {
     c.m_linkUrl = anchor;

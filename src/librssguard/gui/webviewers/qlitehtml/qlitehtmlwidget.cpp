@@ -33,19 +33,21 @@ QLiteHtmlWidget::QLiteHtmlWidget(QWidget* parent) : QAbstractScrollArea(parent) 
   });
 
   m_documentContainer.setLinkCallback([this](const QUrl& url) {
-    QUrl fullUrl = url;
-    if (url.isRelative() && url.path(QUrl::FullyEncoded).isEmpty()) { // fragment/anchor only
-      fullUrl = m_url;
-      fullUrl.setFragment(url.fragment(QUrl::FullyEncoded));
+    QUrl full_url = url;
+
+    if (url.isRelative() && url.path(QUrl::ComponentFormattingOption::FullyEncoded).isEmpty()) {
+      full_url = m_url;
+      full_url.setFragment(url.fragment(QUrl::ComponentFormattingOption::FullyEncoded));
     }
-    // delay because document may not be changed directly during this callback
+
     QMetaObject::invokeMethod(
       this,
-      [this, fullUrl] {
-        emit linkClicked(fullUrl);
+      [this, full_url] {
+        emit linkClicked(full_url);
       },
-      Qt::QueuedConnection);
+      Qt::ConnectionType::QueuedConnection);
   });
+
   m_documentContainer.setClipboardCallback([this](bool yes) {
     emit copyAvailable(yes);
   });
@@ -55,29 +57,34 @@ QLiteHtmlWidget::QLiteHtmlWidget(QWidget* parent) : QAbstractScrollArea(parent) 
 
 QLiteHtmlWidget::~QLiteHtmlWidget() {}
 
-void QLiteHtmlWidget::setAntialias(bool on) {
+void QLiteHtmlWidget::setFontAntialiasing(bool on) {
   withFixedTextPosition([this, on] {
-    m_documentContainer.setAntialias(on);
-    // force litehtml to recreate fonts
+    m_documentContainer.setFontAntialiasing(on);
+
+    // NOTE: Force litehtml to recreate fonts.
     setHtml(m_html);
   });
 }
 
 void QLiteHtmlWidget::setUrl(const QUrl& url) {
   m_url = url;
-  QUrl baseUrl = url;
-  baseUrl.setFragment({});
-  const QString path = baseUrl.path(QUrl::FullyEncoded);
-  const int lastSlash = path.lastIndexOf('/');
-  const QString basePath = lastSlash >= 0 ? path.left(lastSlash) : QString();
-  baseUrl.setPath(basePath);
-  m_documentContainer.setBaseUrl(baseUrl.toString(QUrl::FullyEncoded));
+
+  QUrl base_url = url;
+  base_url.setFragment({});
+
+  const QString path = base_url.path(QUrl::ComponentFormattingOption::FullyEncoded);
+  const int last_slash = path.lastIndexOf('/');
+  const QString base_path = last_slash >= 0 ? path.left(last_slash) : QString();
+
+  base_url.setPath(base_path);
+  m_documentContainer.setBaseUrl(base_url.toString(QUrl::ComponentFormattingOption::FullyEncoded));
+
   QMetaObject::invokeMethod(
     this,
     [this] {
       updateHightlightedLink();
     },
-    Qt::QueuedConnection);
+    Qt::ConnectionType::QueuedConnection);
 }
 
 QUrl QLiteHtmlWidget::url() const {
@@ -86,17 +93,20 @@ QUrl QLiteHtmlWidget::url() const {
 
 void QLiteHtmlWidget::setHtml(const QString& content) {
   m_html = content;
+
   m_documentContainer.setPaintDevice(viewport());
   m_documentContainer.setDocument(content.toUtf8());
+
   verticalScrollBar()->setValue(0);
   horizontalScrollBar()->setValue(0);
   render();
+
   QMetaObject::invokeMethod(
     this,
     [this] {
       updateHightlightedLink();
     },
-    Qt::QueuedConnection);
+    Qt::ConnectionType::QueuedConnection);
 }
 
 QString QLiteHtmlWidget::html() const {
@@ -108,8 +118,10 @@ QString QLiteHtmlWidget::title() const {
 }
 
 void QLiteHtmlWidget::setZoomFactor(qreal scale) {
-  Q_ASSERT(scale != 0);
+  Q_ASSERT(scale != 0.0);
+
   m_zoomFactor = scale;
+
   withFixedTextPosition([this] {
     render();
   });
@@ -121,16 +133,20 @@ qreal QLiteHtmlWidget::zoomFactor() const {
 
 bool QLiteHtmlWidget::findText(const QString& text, QTextDocument::FindFlags flags, bool incremental, bool* wrapped) {
   bool success = false;
-  QVector<QRect> oldSelection;
-  QVector<QRect> newSelection;
-  m_documentContainer.findText(text, flags, incremental, wrapped, &success, &oldSelection, &newSelection);
-  // scroll to search result position and/or redraw as necessary
-  QRect newSelectionCombined;
-  for (const QRect& r : std::as_const(newSelection))
-    newSelectionCombined = newSelectionCombined.united(r);
+  QVector<QRect> old_selection;
+  QVector<QRect> new_selection;
+
+  m_documentContainer.findText(text, flags, incremental, wrapped, &success, &old_selection, &new_selection);
+
+  QRect new_selection_combined;
+
+  for (const QRect& r : std::as_const(new_selection)) {
+    new_selection_combined = new_selection_combined.united(r);
+  }
+
   QScrollBar* vBar = verticalScrollBar();
-  const int top = newSelectionCombined.top();
-  const int bottom = newSelectionCombined.bottom() - toVirtual(viewport()->size()).height();
+  const int top = new_selection_combined.top();
+  const int bottom = new_selection_combined.bottom() - toVirtual(viewport()->size()).height();
   if (success && top < vBar->value() && vBar->minimum() <= top) {
     vBar->setValue(top);
   }
@@ -138,8 +154,8 @@ bool QLiteHtmlWidget::findText(const QString& text, QTextDocument::FindFlags fla
     vBar->setValue(bottom);
   }
   else {
-    viewport()->update(fromVirtual(newSelectionCombined.translated(-scrollPosition())));
-    for (const QRect& r : std::as_const(oldSelection))
+    viewport()->update(fromVirtual(new_selection_combined.translated(-scrollPosition())));
+    for (const QRect& r : std::as_const(old_selection))
       viewport()->update(fromVirtual(r.translated(-scrollPosition())));
   }
   return success;
@@ -328,6 +344,10 @@ void QLiteHtmlWidget::setHightlightedLink(const QUrl& url) {
   emit linkHighlighted(m_lastHighlightedLink);
 }
 
+const DocumentContainer* QLiteHtmlWidget::documentContainer() const {
+  return &m_documentContainer;
+}
+
 void QLiteHtmlWidget::withFixedTextPosition(const std::function<void()>& action) {
   // remember element to which to scroll after re-rendering
   QPoint viewportPos;
@@ -363,19 +383,19 @@ void QLiteHtmlWidget::htmlPos(const QPoint& pos, QPoint* viewportPos, QPoint* ht
   *htmlPos = *viewportPos + scrollPosition();
 }
 
-QPoint QLiteHtmlWidget::toVirtual(const QPoint& p) const {
+QPoint QLiteHtmlWidget::toVirtual(QPoint p) const {
   return {int(p.x() / m_zoomFactor), int(p.y() / m_zoomFactor)};
 }
 
-QSize QLiteHtmlWidget::toVirtual(const QSize& s) const {
+QSize QLiteHtmlWidget::toVirtual(QSize s) const {
   return {int(s.width() / m_zoomFactor), int(s.height() / m_zoomFactor)};
 }
 
-QRect QLiteHtmlWidget::toVirtual(const QRect& r) const {
+QRect QLiteHtmlWidget::toVirtual(QRect r) const {
   return {toVirtual(r.topLeft()), toVirtual(r.size())};
 }
 
-QRect QLiteHtmlWidget::fromVirtual(const QRect& r) const {
+QRect QLiteHtmlWidget::fromVirtual(QRect r) const {
   const QPoint tl{int(r.x() * m_zoomFactor), int(r.y() * m_zoomFactor)};
   // round size up, and add one since the topleft point was rounded down
   const QSize s{int(r.width() * m_zoomFactor + 0.5) + 1, int(r.height() * m_zoomFactor + 0.5) + 1};

@@ -456,7 +456,7 @@ litehtml::uint_ptr DocumentContainer::create_font(const litehtml::font_descripti
   font->setPixelSize(descr.size);
   font->setWeight(cssWeightToQtWeight(descr.weight));
   font->setStyle(toQFontStyle(descr.style));
-  font->setStyleStrategy(m_antialias ? QFont::PreferAntialias : QFont::NoAntialias);
+  font->setStyleStrategy(m_fontAntialiasing ? QFont::PreferAntialias : QFont::NoAntialias);
   if (descr.decoration_line == litehtml::text_decoration_line::text_decoration_line_underline)
     font->setUnderline(true);
   if (descr.decoration_line == litehtml::text_decoration_line::text_decoration_line_overline)
@@ -1069,7 +1069,7 @@ void DocumentContainer::setScrollPosition(const QPoint& pos) {
 void DocumentContainer::setDocument(const QByteArray& data) {
   m_pixmaps.clear();
   clearSelection();
-  m_document = litehtml::document::createFromString(data.constData(), this, masterCss.toStdString());
+  m_document = litehtml::document::createFromString(data.constData(), this, m_masterCss.toStdString());
   buildIndex();
 }
 
@@ -1387,20 +1387,16 @@ QFont DocumentContainer::defaultFont() const {
   return m_defaultFont;
 }
 
-void DocumentContainer::setAntialias(bool on) {
-  m_antialias = on;
+void DocumentContainer::setFontAntialiasing(bool on) {
+  m_fontAntialiasing = on;
 }
 
-bool DocumentContainer::antialias() const {
-  return m_antialias;
+bool DocumentContainer::fontAntialiasing() const {
+  return m_fontAntialiasing;
 }
 
 void DocumentContainer::setDataCallback(const DocumentContainer::DataCallback& callback) {
   m_dataCallback = callback;
-}
-
-DocumentContainer::DataCallback DocumentContainer::dataCallback() const {
-  return m_dataCallback;
 }
 
 void DocumentContainer::setCursorCallback(const DocumentContainer::CursorCallback& callback) {
@@ -1413,10 +1409,6 @@ void DocumentContainer::setLinkCallback(const DocumentContainer::LinkCallback& c
 
 void DocumentContainer::setPaletteCallback(const DocumentContainer::PaletteCallback& callback) {
   m_paletteCallback = callback;
-}
-
-DocumentContainer::PaletteCallback DocumentContainer::paletteCallback() const {
-  return m_paletteCallback;
 }
 
 void DocumentContainer::setClipboardCallback(const DocumentContainer::ClipboardCallback& callback) {
@@ -1451,12 +1443,12 @@ int DocumentContainer::withFixedElementPosition(int y, const std::function<void(
   return -1;
 }
 
-QString DocumentContainer::getMasterCss() const {
-  return masterCss;
+QString DocumentContainer::masterCss() const {
+  return m_masterCss;
 }
 
-void DocumentContainer::setMasterCss(const QString& newMasterCss) {
-  masterCss = newMasterCss;
+void DocumentContainer::setMasterCss(const QString& master_css) {
+  m_masterCss = master_css;
 }
 
 QPixmap DocumentContainer::getPixmap(const QString& imageUrl, const QString& baseUrl) {

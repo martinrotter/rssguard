@@ -63,7 +63,7 @@ struct Index {
 
 class DocumentContainer : public litehtml::document_container {
   public:
-    DocumentContainer();
+    explicit DocumentContainer();
     virtual ~DocumentContainer();
 
   public: // outside API
@@ -109,30 +109,26 @@ class DocumentContainer : public litehtml::document_container {
 
     void setDefaultFont(const QFont& font);
     QFont defaultFont() const;
-    void setAntialias(bool on);
-    bool antialias() const;
+
+    void setFontAntialiasing(bool on);
+    bool fontAntialiasing() const;
+
+    QString masterCss() const;
+    void setMasterCss(const QString& master_css);
 
     using DataCallback = std::function<QByteArray(QUrl)>;
-    void setDataCallback(const DataCallback& callback);
-    DataCallback dataCallback() const;
-
     using CursorCallback = std::function<void(QCursor)>;
-    void setCursorCallback(const CursorCallback& callback);
-
     using LinkCallback = std::function<void(QUrl)>;
-    void setLinkCallback(const LinkCallback& callback);
-
     using PaletteCallback = std::function<QPalette()>;
-    void setPaletteCallback(const PaletteCallback& callback);
-    PaletteCallback paletteCallback() const;
-
     using ClipboardCallback = std::function<void(bool)>;
+
+    void setDataCallback(const DataCallback& callback);
+    void setCursorCallback(const CursorCallback& callback);
+    void setLinkCallback(const LinkCallback& callback);
+    void setPaletteCallback(const PaletteCallback& callback);
     void setClipboardCallback(const ClipboardCallback& callback);
 
     int withFixedElementPosition(int y, const std::function<void()>& action);
-
-    QString getMasterCss() const;
-    void setMasterCss(const QString& newMasterCss);
 
   public: // document_container API
     virtual litehtml::uint_ptr create_font(const litehtml::font_description& descr,
@@ -173,8 +169,6 @@ class DocumentContainer : public litehtml::document_container {
     virtual void on_mouse_event(const litehtml::element::ptr& el, litehtml::mouse_event event);
     virtual void get_viewport(litehtml::position& viewport) const;
 
-    // void draw_background(litehtml::uint_ptr hdc, const std::vector<litehtml::background_paint> &bgs) override;
-
     void draw_borders(litehtml::uint_ptr hdc,
                       const litehtml::borders& borders,
                       const litehtml::position& draw_pos,
@@ -214,7 +208,7 @@ class DocumentContainer : public litehtml::document_container {
     QString m_caption;
     QFont m_defaultFont = QFont(sansSerifFont(), 16);
     QByteArray m_defaultFontFamilyName = m_defaultFont.family().toUtf8();
-    bool m_antialias = true;
+    bool m_fontAntialiasing = true;
     QHash<QUrl, QPixmap> m_pixmaps;
     Selection m_selection;
     DocumentContainer::DataCallback m_dataCallback;
@@ -225,5 +219,5 @@ class DocumentContainer : public litehtml::document_container {
     bool m_blockLinks = false;
 
   private:
-    QString masterCss;
+    QString m_masterCss;
 };
