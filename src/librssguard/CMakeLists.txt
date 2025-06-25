@@ -475,8 +475,8 @@ list(APPEND SOURCES
   3rd-party/litehtml/src/web_color.cpp
 
   # qlitehtml
-  gui/webviewers/qlitehtml/container_qpainter.cpp
-  gui/webviewers/qlitehtml/container_qpainter.h
+  gui/webviewers/qlitehtml/documentcontainer.cpp
+  gui/webviewers/qlitehtml/documentcontainer.h
   gui/webviewers/qlitehtml/qlitehtmlwidget.cpp
   gui/webviewers/qlitehtml/qlitehtmlwidget.h
   gui/webviewers/qlitehtml/qlitehtmlviewer.cpp

@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "gui/webviewers/qlitehtml/container_qpainter.h"
+#include "gui/webviewers/qlitehtml/documentcontainer.h"
 
 #include <functional>
 

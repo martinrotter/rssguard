@@ -39,23 +39,24 @@ class Selection {
     void update();
     QRect boundingRect() const;
 
-    Element startElem;
-    Element endElem;
-    QVector<QRect> selection;
-    QString text;
+    Element m_startElem;
+    Element m_endElem;
+    QVector<QRect> m_selection;
+    QString m_text;
 
-    QPoint selectionStartDocumentPos;
-    Mode mode = Mode::Free;
-    bool isSelecting = false;
+    QPoint m_startingPos;
+    Mode m_mode = Mode::Free;
+    bool m_isSelecting = false;
 };
 
 struct Index {
-    QString text;
-    // only contains leaf elements
-    std::unordered_map<litehtml::element::ptr, int> elementToIndex;
+    QString m_text;
+
+    // NOTE: Only contains leaf elements.
+    std::unordered_map<litehtml::element::ptr, int> m_elementToIndex;
 
     using Entry = std::pair<int, litehtml::element::ptr>;
-    std::vector<Entry> indexToElement;
+    std::vector<Entry> m_indexToElement;
 
     Entry findElement(int index) const;
 };
@@ -65,7 +66,7 @@ class DocumentContainer : public litehtml::document_container {
     explicit DocumentContainer();
     virtual ~DocumentContainer();
 
-  public: // outside API
+  public: // Outside API.
     void setPaintDevice(QPaintDevice* paintDevice);
     void setDocument(const QByteArray& data);
     bool hasDocument() const;
