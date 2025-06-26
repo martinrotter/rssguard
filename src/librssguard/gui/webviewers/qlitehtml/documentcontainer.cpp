@@ -727,20 +727,25 @@ void DocumentContainer::get_image_size(const char* src, const char* baseurl, lit
 
 void DocumentContainer::drawSelection(QPainter* painter, const QRect& clip) const {
   painter->save();
-  painter->setClipRect(clip, Qt::IntersectClip);
+  painter->setClipRect(clip, Qt::ClipOperation::IntersectClip);
+
   for (const QRect& r : m_selection.m_selection) {
-    const QRect clientRect = r.translated(-m_scrollPosition);
+    const QRect client_rect = r.translated(-m_scrollPosition);
     const QPalette palette = m_paletteCallback();
-    painter->fillRect(clientRect, palette.brush(QPalette::Highlight));
+
+    painter->fillRect(client_rect, palette.brush(QPalette::Highlight));
   }
+
   painter->restore();
 }
 
 static bool isInBody(const litehtml::element::ptr& e) {
   litehtml::element::ptr current = e;
+
   while (current && QString::fromUtf8(current->get_tagName()).toLower() != "body") {
     current = current->parent();
   }
+
   return (bool)current;
 }
 
@@ -750,16 +755,20 @@ void DocumentContainer::buildIndex() {
   m_index.m_text.clear();
 
   int index = 0;
-  bool inBody = false;
+  bool in_body = false;
   litehtml::element::ptr current = firstLeaf(m_document->root(), nullptr);
+
   while (current != m_document->root()) {
     m_index.m_elementToIndex.insert({current, index});
-    if (!inBody) {
-      inBody = isInBody(current);
+
+    if (!in_body) {
+      in_body = isInBody(current);
     }
-    if (inBody && isVisible(current)) {
+
+    if (in_body && isVisible(current)) {
       std::string text;
       current->get_text(text);
+
       if (!text.empty()) {
         m_index.m_indexToElement.push_back({index, current});
         const QString str = QString::fromStdString(text);
@@ -767,34 +776,40 @@ void DocumentContainer::buildIndex() {
         index += str.size();
       }
     }
+
     current = nextLeaf(current, m_document->root());
   }
 }
 
 void DocumentContainer::updateSelection() {
-  const QString oldText = m_selection.m_text;
+  const QString old_text = m_selection.m_text;
+
   m_selection.update();
+
   if (!m_clipboardCallback) {
     return;
   }
 
-  const QString newText = m_selection.m_text;
-  if (oldText.isEmpty() && !newText.isEmpty()) {
+  const QString new_text = m_selection.m_text;
+
+  if (old_text.isEmpty() && !new_text.isEmpty()) {
     m_clipboardCallback(true);
   }
-  else if (!oldText.isEmpty() && newText.isEmpty()) {
+  else if (!old_text.isEmpty() && new_text.isEmpty()) {
     m_clipboardCallback(false);
   }
 }
 
 void DocumentContainer::clearSelection() {
-  const QString oldText = m_selection.m_text;
+  const QString old_text = m_selection.m_text;
+
   m_selection = {};
+
   if (!m_clipboardCallback) {
     return;
   }
 
-  if (!oldText.isEmpty()) {
+  if (!old_text.isEmpty()) {
     m_clipboardCallback(false);
   }
 }
@@ -814,6 +829,7 @@ void DocumentContainer::drawRectWithLambda(litehtml::uint_ptr hdc,
   }
 
   painter->setClipRect(toQRect(layer.clip_box), initialClipOperation);
+
   const QRegion horizontal_middle(QRect(layer.border_box.x,
                                         layer.border_box.y + layer.border_radius.top_left_y,
                                         layer.border_box.width,
@@ -857,10 +873,10 @@ void DocumentContainer::drawRectWithLambda(litehtml::uint_ptr hdc,
                                 .united(bottom_right);
   painter->setClipRegion(clip_region, Qt::ClipOperation::IntersectClip);
   painter->setPen(Qt::PenStyle::NoPen);
+  painter->setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
 
   lmbd(painter);
 
-  painter->setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
   painter->drawRect(layer.border_box.x, layer.border_box.y, layer.border_box.width, layer.border_box.height);
 
   drawSelection(painter, toQRect(layer.border_box));
@@ -891,60 +907,65 @@ void DocumentContainer::draw_image(litehtml::uint_ptr hdc,
   auto painter = toQPainter(hdc);
   const QRegion initialClipRegion = painter->clipRegion();
   const Qt::ClipOperation initialClipOperation = initialClipRegion.isEmpty() ? Qt::ReplaceClip : Qt::IntersectClip;
+
   painter->save();
 
   if (!initialClipRegion.isEmpty()) {
     painter->setClipRegion(initialClipRegion);
   }
+
   painter->setClipRect(toQRect(layer.clip_box), initialClipOperation);
-  const QRegion horizontalMiddle(QRect(layer.border_box.x,
-                                       layer.border_box.y + layer.border_radius.top_left_y,
-                                       layer.border_box.width,
-                                       layer.border_box.height - layer.border_radius.top_left_y -
-                                         layer.border_radius.bottom_left_y));
-  const QRegion horizontalTop(QRect(layer.border_box.x + layer.border_radius.top_left_x,
-                                    layer.border_box.y,
-                                    layer.border_box.width - layer.border_radius.top_left_x -
-                                      layer.border_radius.top_right_x,
-                                    layer.border_radius.top_left_y));
-  const QRegion horizontalBottom(QRect(layer.border_box.x + layer.border_radius.bottom_left_x,
-                                       layer.border_box.bottom() - layer.border_radius.bottom_left_y,
-                                       layer.border_box.width - layer.border_radius.bottom_left_x -
-                                         layer.border_radius.bottom_right_x,
-                                       layer.border_radius.bottom_left_y));
-  const QRegion topLeft(QRect(layer.border_box.left(),
-                              layer.border_box.top(),
-                              2 * layer.border_radius.top_left_x,
-                              2 * layer.border_radius.top_left_y),
-                        QRegion::Ellipse);
-  const QRegion topRight(QRect(layer.border_box.right() - 2 * layer.border_radius.top_right_x,
+
+  const QRegion horizontal_middle(QRect(layer.border_box.x,
+                                        layer.border_box.y + layer.border_radius.top_left_y,
+                                        layer.border_box.width,
+                                        layer.border_box.height - layer.border_radius.top_left_y -
+                                          layer.border_radius.bottom_left_y));
+  const QRegion horizontal_top(QRect(layer.border_box.x + layer.border_radius.top_left_x,
+                                     layer.border_box.y,
+                                     layer.border_box.width - layer.border_radius.top_left_x -
+                                       layer.border_radius.top_right_x,
+                                     layer.border_radius.top_left_y));
+  const QRegion horizontal_bottom(QRect(layer.border_box.x + layer.border_radius.bottom_left_x,
+                                        layer.border_box.bottom() - layer.border_radius.bottom_left_y,
+                                        layer.border_box.width - layer.border_radius.bottom_left_x -
+                                          layer.border_radius.bottom_right_x,
+                                        layer.border_radius.bottom_left_y));
+  const QRegion top_left(QRect(layer.border_box.left(),
                                layer.border_box.top(),
-                               2 * layer.border_radius.top_right_x,
-                               2 * layer.border_radius.top_right_y),
-                         QRegion::Ellipse);
-  const QRegion bottomLeft(QRect(layer.border_box.left(),
-                                 layer.border_box.bottom() - 2 * layer.border_radius.bottom_left_y,
-                                 2 * layer.border_radius.bottom_left_x,
-                                 2 * layer.border_radius.bottom_left_y),
-                           QRegion::Ellipse);
-  const QRegion bottomRight(QRect(layer.border_box.right() - 2 * layer.border_radius.bottom_right_x,
-                                  layer.border_box.bottom() - 2 * layer.border_radius.bottom_right_y,
-                                  2 * layer.border_radius.bottom_right_x,
-                                  2 * layer.border_radius.bottom_right_y),
-                            QRegion::Ellipse);
-  const QRegion clipRegion = horizontalMiddle.united(horizontalTop)
-                               .united(horizontalBottom)
-                               .united(topLeft)
-                               .united(topRight)
-                               .united(bottomLeft)
-                               .united(bottomRight);
-  painter->setClipRegion(clipRegion, Qt::IntersectClip);
-  painter->setPen(Qt::NoPen);
+                               2 * layer.border_radius.top_left_x,
+                               2 * layer.border_radius.top_left_y),
+                         QRegion::RegionType::Ellipse);
+  const QRegion top_right(QRect(layer.border_box.right() - 2 * layer.border_radius.top_right_x,
+                                layer.border_box.top(),
+                                2 * layer.border_radius.top_right_x,
+                                2 * layer.border_radius.top_right_y),
+                          QRegion::RegionType::Ellipse);
+  const QRegion bottom_left(QRect(layer.border_box.left(),
+                                  layer.border_box.bottom() - 2 * layer.border_radius.bottom_left_y,
+                                  2 * layer.border_radius.bottom_left_x,
+                                  2 * layer.border_radius.bottom_left_y),
+                            QRegion::RegionType::Ellipse);
+  const QRegion bottom_right(QRect(layer.border_box.right() - 2 * layer.border_radius.bottom_right_x,
+                                   layer.border_box.bottom() - 2 * layer.border_radius.bottom_right_y,
+                                   2 * layer.border_radius.bottom_right_x,
+                                   2 * layer.border_radius.bottom_right_y),
+                             QRegion::RegionType::Ellipse);
+  const QRegion clip_region = horizontal_middle.united(horizontal_top)
+                                .united(horizontal_bottom)
+                                .united(top_left)
+                                .united(top_right)
+                                .united(bottom_left)
+                                .united(bottom_right);
+
+  painter->setClipRegion(clip_region, Qt::ClipOperation::IntersectClip);
+  painter->setPen(Qt::PenStyle::NoPen);
   painter->setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
 
   drawSelection(painter, toQRect(layer.border_box));
 
   const QPixmap pixmap = getPixmap(QString::fromStdString(url), QString::fromStdString(base_url));
+
   if (layer.repeat == litehtml::background_repeat_no_repeat) {
     painter->drawPixmap(QRect(layer.origin_box.x, layer.origin_box.y, layer.origin_box.width, layer.origin_box.height),
                         pixmap);
@@ -952,6 +973,7 @@ void DocumentContainer::draw_image(litehtml::uint_ptr hdc,
   else if (layer.repeat == litehtml::background_repeat_repeat_x) {
     if (layer.origin_box.width > 0) {
       int x = layer.border_box.left();
+
       while (x <= layer.border_box.right()) {
         painter->drawPixmap(QRect(x, layer.border_box.top(), layer.origin_box.width, layer.origin_box.height), pixmap);
         x += layer.origin_box.width;
@@ -970,8 +992,9 @@ void DocumentContainer::draw_borders(litehtml::uint_ptr hdc,
                                      const litehtml::position& draw_pos,
                                      bool root) {
   Q_UNUSED(root)
-  // TODO: special border styles
+
   auto painter = toQPainter(hdc);
+
   if (borders.top.style != litehtml::border_style_none && borders.top.style != litehtml::border_style_hidden) {
     painter->setPen(borderToQPen(borders.top));
     painter->drawLine(draw_pos.left() + borders.radius.top_left_x,
@@ -991,6 +1014,7 @@ void DocumentContainer::draw_borders(litehtml::uint_ptr hdc,
                      0,
                      90 * 16);
   }
+
   if (borders.bottom.style != litehtml::border_style_none && borders.bottom.style != litehtml::border_style_hidden) {
     painter->setPen(borderToQPen(borders.bottom));
     painter->drawLine(draw_pos.left() + borders.radius.bottom_left_x,
@@ -1010,6 +1034,7 @@ void DocumentContainer::draw_borders(litehtml::uint_ptr hdc,
                      270 * 16,
                      90 * 16);
   }
+
   if (borders.left.style != litehtml::border_style_none && borders.left.style != litehtml::border_style_hidden) {
     painter->setPen(borderToQPen(borders.left));
     painter->drawLine(draw_pos.left(),
@@ -1017,6 +1042,7 @@ void DocumentContainer::draw_borders(litehtml::uint_ptr hdc,
                       draw_pos.left(),
                       draw_pos.bottom() - borders.radius.bottom_left_y);
   }
+
   if (borders.right.style != litehtml::border_style_none && borders.right.style != litehtml::border_style_hidden) {
     painter->setPen(borderToQPen(borders.right));
     painter->drawLine(draw_pos.right(),
@@ -1041,6 +1067,7 @@ void DocumentContainer::link(const std::shared_ptr<litehtml::document>& doc, con
 
 void DocumentContainer::on_anchor_click(const char* url, const litehtml::element::ptr& el) {
   Q_UNUSED(el)
+
   if (!m_blockLinks) {
     m_linkCallback(resolveUrl(QString::fromUtf8(url), m_baseUrl));
   }
@@ -1052,10 +1079,10 @@ void DocumentContainer::set_cursor(const char* cursor) {
 
 void DocumentContainer::transform_text(std::string& text, litehtml::text_transform tt) {
   switch (tt) {
-    case litehtml::text_transform_none:
+    case litehtml::text_transform::text_transform_none:
       break;
 
-    case litehtml::text_transform_capitalize: {
+    case litehtml::text_transform::text_transform_capitalize: {
       auto str = QString::fromStdString(text);
       QTextBoundaryFinder finder(QTextBoundaryFinder::Word, str);
       auto position = finder.toNextBoundary();
@@ -1075,22 +1102,23 @@ void DocumentContainer::transform_text(std::string& text, litehtml::text_transfo
       break;
     }
 
-    case litehtml::text_transform_uppercase:
+    case litehtml::text_transform::text_transform_uppercase:
       std::transform(text.begin(), text.end(), text.begin(), ::toupper);
       break;
 
-    case litehtml::text_transform_lowercase:
+    case litehtml::text_transform::text_transform_lowercase:
       std::transform(text.begin(), text.end(), text.begin(), ::toupper);
       break;
   }
 }
 
 void DocumentContainer::import_css(std::string& text, const std::string& url, std::string& baseurl) {
-  const QUrl actualUrl = resolveUrl(QString::fromStdString(url), QString::fromStdString(baseurl));
-  const QString urlString = actualUrl.toString(QUrl::None);
-  const int lastSlash = urlString.lastIndexOf('/');
-  baseurl = urlString.left(lastSlash).toStdString();
-  text = QString::fromUtf8(m_dataCallback(actualUrl)).toStdString();
+  const QUrl actual_url = resolveUrl(QString::fromStdString(url), QString::fromStdString(baseurl));
+  const QString url_string = actual_url.toString(QUrl::UrlFormattingOption::None);
+  const int last_slash = url_string.lastIndexOf('/');
+
+  baseurl = url_string.left(last_slash).toStdString();
+  text = QString::fromUtf8(m_dataCallback(actual_url)).toStdString();
 }
 
 void DocumentContainer::set_clip(const litehtml::position& pos, const litehtml::border_radiuses& bdr_radius) {
@@ -1110,7 +1138,7 @@ std::shared_ptr<litehtml::element> DocumentContainer::create_element(const char*
 }
 
 void DocumentContainer::get_media_features(litehtml::media_features& media) const {
-  media.type = mediaType;
+  media.type = m_mediaType;
 }
 
 void DocumentContainer::get_language(std::string& language, std::string& culture) const {
@@ -1118,8 +1146,8 @@ void DocumentContainer::get_language(std::string& language, std::string& culture
   Q_UNUSED(culture)
 }
 
-void DocumentContainer::setPaintDevice(QPaintDevice* paintDevice) {
-  m_paintDevice = paintDevice;
+void DocumentContainer::setPaintDevice(QPaintDevice* paint_device) {
+  m_paintDevice = paint_device;
 }
 
 void DocumentContainer::setScrollPosition(const QPoint& pos) {
@@ -1147,17 +1175,21 @@ QString DocumentContainer::baseUrl() const {
 
 void DocumentContainer::render(int width, int height) {
   m_clientRect = {0, 0, width, height};
+
   if (!m_document) {
     return;
   }
+
   m_document->render(width);
   updateSelection();
 }
 
-void DocumentContainer::draw(QPainter* painter, const QRect& clip) {
+void DocumentContainer::draw(QPainter* painter, QRect clip) {
   drawSelection(painter, clip);
+
   const QPoint pos = -m_scrollPosition;
   const litehtml::position clipRect = {clip.x(), clip.y(), clip.width(), clip.height()};
+
   m_document->draw(reinterpret_cast<litehtml::uint_ptr>(painter), pos.x(), pos.y(), &clipRect);
 }
 
@@ -1169,20 +1201,25 @@ int DocumentContainer::documentHeight() const {
   return m_document->height();
 }
 
-int DocumentContainer::anchorY(const QString& anchorName) const {
-  litehtml::element::ptr element = m_document->root()->select_one(QString("#%1").arg(anchorName).toStdString());
+int DocumentContainer::anchorY(const QString& anchor_name) const {
+  litehtml::element::ptr element = m_document->root()->select_one(QString("#%1").arg(anchor_name).toStdString());
+
   if (!element) {
-    element = m_document->root()->select_one(QString("[name=%1]").arg(anchorName).toStdString());
+    element = m_document->root()->select_one(QString("[name=%1]").arg(anchor_name).toStdString());
   }
+
   if (!element) {
     return -1;
   }
+
   while (element) {
     if (element->get_placement().y > 0) {
       return element->get_placement().y;
     }
+
     element = element->parent();
   }
+
   return 0;
 }
 
@@ -1207,59 +1244,66 @@ static litehtml::media_type fromQt(const DocumentContainer::MediaType mt) {
 }
 
 void DocumentContainer::setMediaType(MediaType mt) {
-  mediaType = fromQt(mt);
+  m_mediaType = fromQt(mt);
 }
 
-QVector<QRect> DocumentContainer::mousePressEvent(const QPoint& documentPos,
-                                                  const QPoint& viewportPos,
-                                                  Qt::MouseButton button) {
+QVector<QRect> DocumentContainer::mousePressEvent(QPoint document_pos, QPoint viewport_pos, Qt::MouseButton button) {
   if (!m_document || button != Qt::LeftButton) {
     return {};
   }
-  QVector<QRect> redrawRects;
-  // selection
+
+  QVector<QRect> redraw_rects;
+
   if (m_selection.isValid()) {
-    redrawRects.append(m_selection.boundingRect());
+    redraw_rects.append(m_selection.boundingRect());
   }
+
   clearSelection();
-  m_selection.m_startingPos = documentPos;
-  m_selection.m_startElem = selectionElementAtPoint(m_document->root(), documentPos, viewportPos, m_selection.m_mode);
-  // post to litehtml
-  litehtml::position::vector redrawBoxes;
-  if (m_document->on_lbutton_down(documentPos.x(), documentPos.y(), viewportPos.x(), viewportPos.y(), redrawBoxes)) {
-    for (const litehtml::position& box : redrawBoxes) {
-      redrawRects.append(toQRect(box));
+
+  m_selection.m_startingPos = document_pos;
+  m_selection.m_startElem = selectionElementAtPoint(m_document->root(), document_pos, viewport_pos, m_selection.m_mode);
+
+  litehtml::position::vector redraw_boxes;
+
+  if (m_document
+        ->on_lbutton_down(document_pos.x(), document_pos.y(), viewport_pos.x(), viewport_pos.y(), redraw_boxes)) {
+    redraw_rects.reserve(redraw_boxes.size());
+
+    for (const litehtml::position& box : redraw_boxes) {
+      redraw_rects.append(toQRect(box));
     }
   }
-  return redrawRects;
+
+  return redraw_rects;
 }
 
-QVector<QRect> DocumentContainer::mouseMoveEvent(const QPoint& documentPos, const QPoint& viewportPos) {
+QVector<QRect> DocumentContainer::mouseMoveEvent(QPoint document_pos, QPoint viewport_pos) {
   if (!m_document) {
     return {};
   }
-  QVector<QRect> redrawRects;
-  // selection
+
+  QVector<QRect> redraw_rects;
+
   if (m_selection.m_isSelecting || (!m_selection.m_startingPos.isNull() &&
-                                    (m_selection.m_startingPos - documentPos).manhattanLength() >= kDragDistance &&
+                                    (m_selection.m_startingPos - document_pos).manhattanLength() >= kDragDistance &&
                                     m_selection.m_startElem.element)) {
     const Selection::Element element =
-      selectionElementAtPoint(m_document->root(), documentPos, viewportPos, m_selection.m_mode);
+      selectionElementAtPoint(m_document->root(), document_pos, viewport_pos, m_selection.m_mode);
     if (element.element) {
-      redrawRects.append(m_selection.boundingRect() /*.adjusted(-1, -1, +1, +1)*/); // redraw old selection area
+      redraw_rects.append(m_selection.boundingRect() /*.adjusted(-1, -1, +1, +1)*/); // redraw old selection area
       m_selection.m_endElem = element;
       updateSelection();
-      redrawRects.append(m_selection.boundingRect());
+      redraw_rects.append(m_selection.boundingRect());
     }
     m_selection.m_isSelecting = true;
   }
   litehtml::position::vector redrawBoxes;
-  if (m_document->on_mouse_over(documentPos.x(), documentPos.y(), viewportPos.x(), viewportPos.y(), redrawBoxes)) {
+  if (m_document->on_mouse_over(document_pos.x(), document_pos.y(), viewport_pos.x(), viewport_pos.y(), redrawBoxes)) {
     for (const litehtml::position& box : redrawBoxes) {
-      redrawRects.append(toQRect(box));
+      redraw_rects.append(toQRect(box));
     }
   }
-  return redrawRects;
+  return redraw_rects;
 }
 
 QVector<QRect> DocumentContainer::mouseReleaseEvent(const QPoint& documentPos,

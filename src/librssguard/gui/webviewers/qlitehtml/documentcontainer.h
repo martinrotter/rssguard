@@ -67,17 +67,17 @@ class DocumentContainer : public litehtml::document_container {
     virtual ~DocumentContainer();
 
   public: // Outside API.
-    void setPaintDevice(QPaintDevice* paintDevice);
+    void setPaintDevice(QPaintDevice* paint_device);
     void setDocument(const QByteArray& data);
     bool hasDocument() const;
     void setBaseUrl(const QString& url);
     QString baseUrl() const;
     void setScrollPosition(const QPoint& pos);
     void render(int width, int height);
-    void draw(QPainter* painter, const QRect& clip);
+    void draw(QPainter* painter, QRect clip);
     int documentWidth() const;
     int documentHeight() const;
-    int anchorY(const QString& anchorName) const;
+    int anchorY(const QString& anchor_name) const;
 
     enum class MediaType {
       All,
@@ -88,8 +88,8 @@ class DocumentContainer : public litehtml::document_container {
     void setMediaType(MediaType t);
 
     // these return areas to redraw in document space
-    QVector<QRect> mousePressEvent(const QPoint& documentPos, const QPoint& viewportPos, Qt::MouseButton button);
-    QVector<QRect> mouseMoveEvent(const QPoint& documentPos, const QPoint& viewportPos);
+    QVector<QRect> mousePressEvent(QPoint document_pos, QPoint viewportPosos, Qt::MouseButton button);
+    QVector<QRect> mouseMoveEvent(QPoint documentPoss, QPoint viewport_pos);
     QVector<QRect> mouseReleaseEvent(const QPoint& documentPos, const QPoint& viewportPos, Qt::MouseButton button);
     QVector<QRect> mouseDoubleClickEvent(const QPoint& documentPos, const QPoint& viewportPos, Qt::MouseButton button);
     QVector<QRect> leaveEvent();
@@ -205,7 +205,7 @@ class DocumentContainer : public litehtml::document_container {
 
     QPaintDevice* m_paintDevice = nullptr;
     litehtml::document::ptr m_document;
-    litehtml::media_type mediaType = litehtml::media_type_screen;
+    litehtml::media_type m_mediaType = litehtml::media_type_screen;
     Index m_index;
     QString m_baseUrl;
     QRect m_clientRect;
