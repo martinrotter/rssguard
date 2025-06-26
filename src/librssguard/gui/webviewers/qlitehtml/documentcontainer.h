@@ -130,15 +130,20 @@ class DocumentContainer : public litehtml::document_container {
 
     int withFixedElementPosition(int y, const std::function<void()>& action);
 
+  private:
+    void drawRectWithLambda(litehtml::uint_ptr hdc,
+                            const litehtml::background_layer& layer,
+                            std::function<void(QPainter*)> lmbd);
+
   public: // document_container API
     virtual litehtml::uint_ptr create_font(const litehtml::font_description& descr,
                                            const litehtml::document* doc,
                                            litehtml::font_metrics* fm);
-    void delete_font(litehtml::uint_ptr hFont) override;
-    int text_width(const char* text, litehtml::uint_ptr hFont) override;
+    void delete_font(litehtml::uint_ptr fnt) override;
+    int text_width(const char* text, litehtml::uint_ptr fnt) override;
     void draw_text(litehtml::uint_ptr hdc,
                    const char* text,
-                   litehtml::uint_ptr hFont,
+                   litehtml::uint_ptr fnt,
                    litehtml::web_color color,
                    const litehtml::position& pos) override;
     int pt_to_px(int pt) const override;
