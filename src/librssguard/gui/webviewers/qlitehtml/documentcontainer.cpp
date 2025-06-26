@@ -5,14 +5,11 @@
 
 #include "gui/webviewers/qlitehtml/documentcontainer.h"
 
-#if QT_CONFIG(clipboard)
-#include <QClipboard>
-#endif
-
 #include "definitions/definitions.h"
 
 #include <algorithm>
 
+#include <QClipboard>
 #include <QColor>
 #include <QCursor>
 #include <QFontMetrics>
@@ -469,32 +466,36 @@ bool Selection::isValid() const {
 }
 
 void Selection::update() {
-  const auto addElement = [this](const Selection::Element& element, const Selection::Element& end = {}) {
-    std::string elemText;
-    element.element->get_text(elemText);
-    const QString textStr = QString::fromStdString(elemText);
-    if (!textStr.isEmpty()) {
+  const auto add_element = [this](const Selection::Element& element, const Selection::Element& end = {}) {
+    std::string elem_text;
+    element.element->get_text(elem_text);
+
+    const QString text_str = QString::fromStdString(elem_text);
+
+    if (!text_str.isEmpty()) {
       QRect rect = toQRect(element.element->get_placement()).adjusted(-1, -1, 1, 1);
+
       if (element.index < 0) { // fully selected
-        m_text += textStr;
+        m_text += text_str;
       }
       else if (end.element) { // select from element "to end"
         if (element.element == end.element) {
           // end.index is guaranteed to be >= element.index by caller, same for x
-          m_text += textStr.mid(element.index, end.index - element.index);
+          m_text += text_str.mid(element.index, end.index - element.index);
           const int left = rect.left();
           rect.setLeft(left + element.x);
           rect.setRight(left + end.x);
         }
         else {
-          m_text += textStr.mid(element.index);
+          m_text += text_str.mid(element.index);
           rect.setLeft(rect.left() + element.x);
         }
       }
       else { // select from start of element
-        m_text += textStr.left(element.index);
+        m_text += text_str.left(element.index);
         rect.setRight(rect.left() + element.x);
       }
+
       m_selection.append(rect);
     }
   };
@@ -511,16 +512,19 @@ void Selection::update() {
 
     // Treats start element as a leaf even if it isn't, because it already contains all its
     // children
-    addElement(start, end);
+    add_element(start, end);
+
     if (start.element != end.element) {
       litehtml::element::ptr current = start.element;
+
       do {
         current = nextLeaf(current, end.element);
+
         if (current == end.element) {
-          addElement(end);
+          add_element(end);
         }
         else {
-          addElement({current, -1, -1});
+          add_element({current, -1, -1});
         }
       }
       while (current != end.element);
@@ -530,19 +534,21 @@ void Selection::update() {
     m_selection = {};
     m_text.clear();
   }
-#if QT_CONFIG(clipboard)
+
   QClipboard* cb = QGuiApplication::clipboard();
-  if (cb->supportsSelection()) {
-    cb->setText(m_text, QClipboard::Selection);
+
+  if (cb != nullptr && cb->supportsSelection()) {
+    cb->setText(m_text, QClipboard::Mode::Selection);
   }
-#endif
 }
 
 QRect Selection::boundingRect() const {
   QRect rect;
+
   for (const QRect& r : m_selection) {
     rect = rect.united(r);
   }
+
   return rect;
 }
 
