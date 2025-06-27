@@ -8,7 +8,8 @@
 
 #include <QNetworkProxy>
 
-NetworkProxyDetails::NetworkProxyDetails(QWidget* parent) : QWidget(parent), m_ui(new Ui::NetworkProxyDetails()) {
+NetworkProxyDetails::NetworkProxyDetails(bool account_wide_setting, QWidget* parent)
+  : QWidget(parent), m_ui(new Ui::NetworkProxyDetails()) {
   m_ui->setupUi(this);
 
   m_ui->m_lblProxyInfo->setHelpText(tr("Note that these settings are applied only on newly established connections."),
@@ -21,7 +22,8 @@ NetworkProxyDetails::NetworkProxyDetails(QWidget* parent) : QWidget(parent), m_u
           &NetworkProxyDetails::onProxyTypeChanged);
 
   m_ui->m_cmbProxyType->addItem(tr("No proxy"), QNetworkProxy::ProxyType::NoProxy);
-  m_ui->m_cmbProxyType->addItem(tr("System proxy"), QNetworkProxy::ProxyType::DefaultProxy);
+  m_ui->m_cmbProxyType->addItem(account_wide_setting ? tr("Application-wide proxy") : tr("System proxy"),
+                                QNetworkProxy::ProxyType::DefaultProxy);
   m_ui->m_cmbProxyType->addItem(QSL("Socks5"), QNetworkProxy::ProxyType::Socks5Proxy);
   m_ui->m_cmbProxyType->addItem(QSL("Http"), QNetworkProxy::ProxyType::HttpProxy);
 
@@ -32,10 +34,7 @@ NetworkProxyDetails::NetworkProxyDetails(QWidget* parent) : QWidget(parent), m_u
   connect(m_ui->m_txtProxyHost, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
   connect(m_ui->m_txtProxyPassword, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
   connect(m_ui->m_txtProxyUsername, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
-  connect(m_ui->m_spinProxyPort,
-          QOverload<int>::of(&QSpinBox::valueChanged),
-          this,
-          &NetworkProxyDetails::changed);
+  connect(m_ui->m_spinProxyPort, QOverload<int>::of(&QSpinBox::valueChanged), this, &NetworkProxyDetails::changed);
 }
 
 NetworkProxyDetails::~NetworkProxyDetails() = default;

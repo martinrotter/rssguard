@@ -14,7 +14,7 @@ class RSSGUARD_DLLSPEC NetworkProxyDetails : public QWidget {
     Q_OBJECT
 
   public:
-    explicit NetworkProxyDetails(QWidget* parent = nullptr);
+    explicit NetworkProxyDetails(bool account_wide_setting, QWidget* parent = nullptr);
     virtual ~NetworkProxyDetails();
 
     QNetworkProxy proxy() const;
