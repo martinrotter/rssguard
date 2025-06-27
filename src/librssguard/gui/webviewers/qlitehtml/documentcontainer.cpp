@@ -1289,6 +1289,7 @@ QVector<QRect> DocumentContainer::mouseMoveEvent(QPoint document_pos, QPoint vie
                                     m_selection.m_startElem.element)) {
     const Selection::Element element =
       selectionElementAtPoint(m_document->root(), document_pos, viewport_pos, m_selection.m_mode);
+
     if (element.element) {
       redraw_rects.append(m_selection.boundingRect() /*.adjusted(-1, -1, +1, +1)*/); // redraw old selection area
       m_selection.m_endElem = element;
@@ -1297,103 +1298,134 @@ QVector<QRect> DocumentContainer::mouseMoveEvent(QPoint document_pos, QPoint vie
     }
     m_selection.m_isSelecting = true;
   }
-  litehtml::position::vector redrawBoxes;
-  if (m_document->on_mouse_over(document_pos.x(), document_pos.y(), viewport_pos.x(), viewport_pos.y(), redrawBoxes)) {
-    for (const litehtml::position& box : redrawBoxes) {
+
+  litehtml::position::vector redraw_boxes;
+
+  if (m_document->on_mouse_over(document_pos.x(), document_pos.y(), viewport_pos.x(), viewport_pos.y(), redraw_boxes)) {
+    redraw_rects.reserve(redraw_boxes.size());
+
+    for (const litehtml::position& box : redraw_boxes) {
       redraw_rects.append(toQRect(box));
     }
   }
   return redraw_rects;
 }
 
-QVector<QRect> DocumentContainer::mouseReleaseEvent(const QPoint& documentPos,
-                                                    const QPoint& viewportPos,
-                                                    Qt::MouseButton button) {
-  if (!m_document || button != Qt::LeftButton) {
+QVector<QRect> DocumentContainer::mouseReleaseEvent(QPoint document_pos, QPoint viewport_pos, Qt::MouseButton button) {
+  if (!m_document || button != Qt::MouseButton::LeftButton) {
     return {};
   }
-  QVector<QRect> redrawRects;
-  // selection
+
+  QVector<QRect> redraw_rects;
+
   m_selection.m_isSelecting = false;
   m_selection.m_startingPos = {};
+
   if (m_selection.isValid()) {
     m_blockLinks = true;
   }
   else {
     clearSelection();
   }
-  litehtml::position::vector redrawBoxes;
-  if (m_document->on_lbutton_up(documentPos.x(), documentPos.y(), viewportPos.x(), viewportPos.y(), redrawBoxes)) {
-    for (const litehtml::position& box : redrawBoxes) {
-      redrawRects.append(toQRect(box));
+
+  litehtml::position::vector redraw_boxes;
+
+  if (m_document->on_lbutton_up(document_pos.x(), document_pos.y(), viewport_pos.x(), viewport_pos.y(), redraw_boxes)) {
+    redraw_rects.reserve(redraw_boxes.size());
+
+    for (const litehtml::position& box : redraw_boxes) {
+      redraw_rects.append(toQRect(box));
     }
   }
+
   m_blockLinks = false;
-  return redrawRects;
+  return redraw_rects;
 }
 
-QVector<QRect> DocumentContainer::mouseDoubleClickEvent(const QPoint& documentPos,
-                                                        const QPoint& viewportPos,
+QVector<QRect> DocumentContainer::mouseDoubleClickEvent(QPoint document_pos,
+                                                        QPoint viewport_pos,
                                                         Qt::MouseButton button) {
-  if (!m_document || button != Qt::LeftButton) {
+  if (!m_document || button != Qt::MouseButton::LeftButton) {
     return {};
   }
-  QVector<QRect> redrawRects;
+
+  QVector<QRect> redraw_rects;
+
   clearSelection();
+
   m_selection.m_mode = Selection::Mode::Word;
   const Selection::Element element =
-    selectionElementAtPoint(m_document->root(), documentPos, viewportPos, m_selection.m_mode);
+    selectionElementAtPoint(m_document->root(), document_pos, viewport_pos, m_selection.m_mode);
+
   if (element.element) {
     m_selection.m_startElem = element;
     m_selection.m_endElem = m_selection.m_startElem;
     m_selection.m_isSelecting = true;
+
     updateSelection();
+
     if (m_selection.isValid()) {
-      redrawRects.append(m_selection.boundingRect());
+      redraw_rects.append(m_selection.boundingRect());
     }
   }
   else {
     if (m_selection.isValid()) {
-      redrawRects.append(m_selection.boundingRect());
+      redraw_rects.append(m_selection.boundingRect());
     }
+
     clearSelection();
   }
-  return redrawRects;
+
+  return redraw_rects;
 }
 
 QVector<QRect> DocumentContainer::leaveEvent() {
   if (!m_document) {
     return {};
   }
-  litehtml::position::vector redrawBoxes;
-  if (m_document->on_mouse_leave(redrawBoxes)) {
-    QVector<QRect> redrawRects;
-    for (const litehtml::position& box : redrawBoxes) {
-      redrawRects.append(toQRect(box));
+
+  litehtml::position::vector redraw_boxes;
+
+  if (m_document->on_mouse_leave(redraw_boxes)) {
+    QVector<QRect> redraw_rects;
+
+    redraw_rects.reserve(redraw_boxes.size());
+
+    for (const litehtml::position& box : redraw_boxes) {
+      redraw_rects.append(toQRect(box));
     }
-    return redrawRects;
+
+    return redraw_rects;
   }
+
   return {};
 }
 
-QUrl DocumentContainer::linkAt(const QPoint& documentPos, const QPoint& viewportPos) const {
+QUrl DocumentContainer::linkAt(QPoint document_pos, QPoint viewport_pos) const {
   if (!m_document) {
     return {};
   }
+
   const char* href = nullptr;
-  deepestChildAtPoint(m_document->root(), documentPos, viewportPos, [&href](const litehtml::element::ptr& e) {
+
+  deepestChildAtPoint(m_document->root(), document_pos, viewport_pos, [&href](const litehtml::element::ptr& e) {
     const litehtml::element::ptr parent = e->parent();
+
     if (parent && parent->tag() == litehtml::_a_) {
       href = parent->get_attr("href");
+
       if (href) {
         return true;
       }
     }
+
     return false; /*continue*/
   });
+
   if (href) {
     return resolveUrl(QString::fromUtf8(href), m_baseUrl);
   }
+
   return {};
 }
 
@@ -1410,106 +1442,131 @@ void DocumentContainer::findText(const QString& text,
                                  bool incremental,
                                  bool* wrapped,
                                  bool* success,
-                                 QVector<QRect>* oldSelection,
-                                 QVector<QRect>* newSelection) {
+                                 QVector<QRect>* old_selection,
+                                 QVector<QRect>* new_selection) {
   if (success) {
     *success = false;
   }
-  if (oldSelection) {
-    oldSelection->clear();
+
+  if (old_selection) {
+    old_selection->clear();
   }
-  if (newSelection) {
-    newSelection->clear();
+
+  if (new_selection) {
+    new_selection->clear();
   }
+
   if (!m_document) {
     return;
   }
+
   const bool backward = flags & QTextDocument::FindBackward;
-  int startIndex = backward ? -1 : 0;
+  int start_index = backward ? -1 : 0;
+
   if (m_selection.m_startElem.element && m_selection.m_endElem.element) { // selection
     // poor-man's incremental search starts at beginning of selection,
     // non-incremental at end (forward search) or beginning (backward search)
     Selection::Element start;
     Selection::Element end;
     std::tie(start, end) = startAndEnd(m_selection.m_startElem, m_selection.m_endElem);
-    Selection::Element searchStart;
+    Selection::Element search_start;
+
     if (incremental || backward) {
       if (start.index < 0) { // fully selected
-        searchStart = {firstLeaf(start.element, nullptr), 0, -1};
+        search_start = {firstLeaf(start.element, nullptr), 0, -1};
       }
       else {
-        searchStart = start;
+        search_start = start;
       }
     }
     else {
       if (end.index < 0) { // fully selected
-        searchStart = {nextLeaf(end.element, nullptr), 0, -1};
+        search_start = {nextLeaf(end.element, nullptr), 0, -1};
       }
       else {
-        searchStart = end;
+        search_start = end;
       }
     }
-    const auto findInIndex = m_index.m_elementToIndex.find(searchStart.element);
-    if (findInIndex == std::end(m_index.m_elementToIndex)) {
-      qWarning() << "internal error: cannot find litehmtl element in index";
+
+    const auto find_in_index = m_index.m_elementToIndex.find(search_start.element);
+
+    if (find_in_index == std::end(m_index.m_elementToIndex)) {
       return;
     }
-    startIndex = findInIndex->second + searchStart.index;
+
+    start_index = find_in_index->second + search_start.index;
+
     if (backward) {
-      --startIndex;
+      --start_index;
     }
   }
 
-  const auto fillXPos = [](const Selection::Element& e) {
+  const auto fill_x_pos = [](const Selection::Element& e) {
     std::string ttext;
+
     e.element->get_text(ttext);
+
     const QString text = QString::fromStdString(ttext);
-    const auto fontPtr = e.element->css().get_font();
-    if (!fontPtr) {
+    const auto font_ptr = e.element->css().get_font();
+
+    if (!font_ptr) {
       return e;
     }
-    const QFont& font = toQFont(fontPtr);
+
+    const QFont& font = toQFont(font_ptr);
     const QFontMetrics fm(font);
+
     return Selection::Element{e.element, e.index, fm.size(0, text.left(e.index)).width()};
   };
 
   QString term = QRegularExpression::escape(text);
-  if (flags & QTextDocument::FindWholeWords) {
+
+  if (flags & QTextDocument::FindFlag::FindWholeWords) {
     term = QString("\\b%1\\b").arg(term);
   }
-  const QRegularExpression::PatternOptions patternOptions = (flags & QTextDocument::FindCaseSensitively)
-                                                              ? QRegularExpression::NoPatternOption
-                                                              : QRegularExpression::CaseInsensitiveOption;
-  const QRegularExpression expression(term, patternOptions);
 
-  int foundIndex =
-    backward ? m_index.m_text.lastIndexOf(expression, startIndex) : m_index.m_text.indexOf(expression, startIndex);
-  if (foundIndex < 0) { // wrap
-    foundIndex = backward ? m_index.m_text.lastIndexOf(expression) : m_index.m_text.indexOf(expression);
-    if (wrapped && foundIndex >= 0) {
+  const QRegularExpression::PatternOptions pattern_opts = (flags & QTextDocument::FindFlag::FindCaseSensitively)
+                                                            ? QRegularExpression::PatternOption::NoPatternOption
+                                                            : QRegularExpression::PatternOption::CaseInsensitiveOption;
+  const QRegularExpression expression(term, pattern_opts);
+
+  int found_index =
+    backward ? m_index.m_text.lastIndexOf(expression, start_index) : m_index.m_text.indexOf(expression, start_index);
+
+  if (found_index < 0) { // wrap
+    found_index = backward ? m_index.m_text.lastIndexOf(expression) : m_index.m_text.indexOf(expression);
+
+    if (wrapped && found_index >= 0) {
       *wrapped = true;
     }
   }
-  if (foundIndex >= 0) {
-    const Index::Entry startEntry = m_index.findElement(foundIndex);
-    const Index::Entry endEntry = m_index.findElement(foundIndex + text.size());
-    if (!startEntry.second || !endEntry.second) {
-      qWarning() << "internal error: search ended up with nullptr elements";
+
+  if (found_index >= 0) {
+    const Index::Entry start_entry = m_index.findElement(found_index);
+    const Index::Entry end_entry = m_index.findElement(found_index + text.size());
+
+    if (!start_entry.second || !end_entry.second) {
       return;
     }
-    if (oldSelection) {
-      *oldSelection = m_selection.m_selection;
+
+    if (old_selection) {
+      *old_selection = m_selection.m_selection;
     }
+
     clearSelection();
-    m_selection.m_startElem = fillXPos({startEntry.second, foundIndex - startEntry.first, -1});
-    m_selection.m_endElem = fillXPos({endEntry.second, int(foundIndex + text.size() - endEntry.first), -1});
+
+    m_selection.m_startElem = fill_x_pos({start_entry.second, found_index - start_entry.first, -1});
+    m_selection.m_endElem = fill_x_pos({end_entry.second, int(found_index + text.size() - end_entry.first), -1});
+
     updateSelection();
-    if (newSelection) {
-      *newSelection = m_selection.m_selection;
+
+    if (new_selection) {
+      *new_selection = m_selection.m_selection;
     }
     if (success) {
       *success = true;
     }
+
     return;
   }
   return;
@@ -1518,6 +1575,7 @@ void DocumentContainer::findText(const QString& text,
 void DocumentContainer::setDefaultFont(const QFont& font) {
   m_defaultFont = font;
   m_defaultFontFamilyName = m_defaultFont.family().toUtf8();
+
   // Since font family name and size are read only once, when parsing html,
   // we need to trigger the reparse of this info.
   if (m_document && m_document->root()) {
@@ -1562,11 +1620,14 @@ static litehtml::element::ptr elementForY(int y, const litehtml::element::ptr& e
   if (!element) {
     return {};
   }
+
   if (element->get_placement().y >= y) {
     return element;
   }
+
   for (const litehtml::element::ptr& child : element->children()) {
     litehtml::element::ptr result = elementForY(y, child);
+
     if (result) {
       return result;
     }
@@ -1584,10 +1645,13 @@ static litehtml::element::ptr elementForY(int y, const litehtml::document::ptr& 
 
 int DocumentContainer::withFixedElementPosition(int y, const std::function<void()>& action) {
   const litehtml::element::ptr element = elementForY(y, m_document);
+
   action();
+
   if (element) {
     return element->get_placement().y;
   }
+
   return -1;
 }
 
@@ -1601,29 +1665,28 @@ void DocumentContainer::setMasterCss(const QString& master_css) {
 
 QPixmap DocumentContainer::getPixmap(const QString& imageUrl, const QString& baseUrl) {
   const QUrl url = resolveUrl(imageUrl, baseUrl);
+
   if (!m_pixmaps.contains(url)) {
     qWarningNN << LOGSEC_HTMLVIEWER << "Pixmap for URL not loaded: " << QUOTE_W_SPACE_DOT(url);
     return {};
   }
+
   return m_pixmaps.value(url);
 }
 
 QString DocumentContainer::serifFont() const {
-  // TODO make configurable
   return {"Times New Roman"};
 }
 
 QString DocumentContainer::sansSerifFont() const {
-  // TODO make configurable
   return {"Arial"};
 }
 
 QString DocumentContainer::monospaceFont() const {
-  // TODO make configurable
   return {"Courier"};
 }
 
-QUrl DocumentContainer::resolveUrl(const QString& url, const QString& baseUrl) const {
+QUrl DocumentContainer::resolveUrl(const QString& url, const QString& base_url) const {
   // several cases:
   // full url: "https://foo.bar/blah.css"
   // relative path: "foo/bar.css"
@@ -1631,21 +1694,32 @@ QUrl DocumentContainer::resolveUrl(const QString& url, const QString& baseUrl) c
   // net path: "//foo.bar/blah.css"
   // fragment only: "#foo-fragment"
   const QUrl qurl = QUrl::fromEncoded(url.toUtf8());
+
   if (qurl.scheme().isEmpty()) {
     if (url.startsWith('#')) { // leave alone if just a fragment
       return qurl;
     }
-    const QUrl pageBaseUrl = QUrl(baseUrl.isEmpty() ? m_baseUrl : baseUrl);
+
+    const QUrl page_base_url = QUrl(base_url.isEmpty() ? m_baseUrl : base_url);
+
     if (url.startsWith("//")) { // net path
-      return QUrl(pageBaseUrl.scheme() + ":" + url);
+      return QUrl(page_base_url.scheme() + ":" + url);
     }
-    QUrl serverUrl = QUrl(pageBaseUrl);
-    serverUrl.setPath("");
-    const QString actualBaseUrl =
-      url.startsWith('/') ? serverUrl.toString(QUrl::FullyEncoded) : pageBaseUrl.toString(QUrl::FullyEncoded);
-    QUrl resolvedUrl(actualBaseUrl + '/' + url);
-    resolvedUrl.setPath(resolvedUrl.path(QUrl::FullyEncoded | QUrl::NormalizePathSegments), QUrl::TolerantMode);
-    return resolvedUrl;
+
+    QUrl server_url = QUrl(page_base_url);
+
+    server_url.setPath("");
+
+    const QString actual_base_url = url.startsWith('/')
+                                      ? server_url.toString(QUrl::ComponentFormattingOption::FullyEncoded)
+                                      : page_base_url.toString(QUrl::ComponentFormattingOption::FullyEncoded);
+    QUrl resolved_url(actual_base_url + '/' + url);
+
+    resolved_url.setPath(resolved_url.path(QUrl::ComponentFormattingOption::FullyEncoded |
+                                           QUrl::UrlFormattingOption::NormalizePathSegments),
+                         QUrl::ParsingMode::TolerantMode);
+
+    return resolved_url;
   }
   return qurl;
 }
@@ -1657,9 +1731,11 @@ Index::Entry Index::findElement(int index) const {
                                       [](const Entry& a, const Entry& b) {
                                         return a.first < b.first;
                                       });
+
   if (upper == std::begin(m_indexToElement)) { // should not happen for index >= 0
     return {-1, {}};
   }
+
   return *(upper - 1);
 }
 

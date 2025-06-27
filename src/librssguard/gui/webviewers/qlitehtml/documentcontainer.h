@@ -90,11 +90,11 @@ class DocumentContainer : public litehtml::document_container {
     // these return areas to redraw in document space
     QVector<QRect> mousePressEvent(QPoint document_pos, QPoint viewportPosos, Qt::MouseButton button);
     QVector<QRect> mouseMoveEvent(QPoint documentPoss, QPoint viewport_pos);
-    QVector<QRect> mouseReleaseEvent(const QPoint& documentPos, const QPoint& viewportPos, Qt::MouseButton button);
-    QVector<QRect> mouseDoubleClickEvent(const QPoint& documentPos, const QPoint& viewportPos, Qt::MouseButton button);
+    QVector<QRect> mouseReleaseEvent(QPoint document_pos, QPoint viewport_pos, Qt::MouseButton button);
+    QVector<QRect> mouseDoubleClickEvent(QPoint document_pos, QPoint viewport_pos, Qt::MouseButton button);
     QVector<QRect> leaveEvent();
 
-    QUrl linkAt(const QPoint& documentPos, const QPoint& viewportPos) const;
+    QUrl linkAt(QPoint document_pos, QPoint viewportPos) const;
 
     QString caption() const;
     QString selectedText() const;
@@ -104,8 +104,8 @@ class DocumentContainer : public litehtml::document_container {
                   bool incremental,
                   bool* wrapped,
                   bool* success,
-                  QVector<QRect>* oldSelection,
-                  QVector<QRect>* newSelection);
+                  QVector<QRect>* old_selection,
+                  QVector<QRect>* new_selection);
 
     void setDefaultFont(const QFont& font);
     QFont defaultFont() const;
@@ -197,7 +197,7 @@ class DocumentContainer : public litehtml::document_container {
     QString serifFont() const;
     QString sansSerifFont() const;
     QString monospaceFont() const;
-    QUrl resolveUrl(const QString& url, const QString& baseUrl) const;
+    QUrl resolveUrl(const QString& url, const QString& base_url) const;
     void drawSelection(QPainter* painter, const QRect& clip) const;
     void buildIndex();
     void updateSelection();
