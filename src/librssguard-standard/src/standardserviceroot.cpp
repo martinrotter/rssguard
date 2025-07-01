@@ -368,6 +368,9 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     formatted_feed_contents = codec->toUnicode(feed_contents);
   }
 
+  // we remove null char just in case
+  formatted_feed_contents = formatted_feed_contents.remove(QChar::Null);
+
   // Feed data are downloaded and encoded.
   // Parse data and obtain messages.
   QList<Message> messages;
@@ -409,6 +412,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   if (!f->dateTimeFormat().isEmpty()) {
     parser->setDateTimeFormat(f->dateTimeFormat());
   }
+
 
   parser->setDontUseRawXmlSaving(f->dontUseRawXmlSaving());
   messages = parser->messages();

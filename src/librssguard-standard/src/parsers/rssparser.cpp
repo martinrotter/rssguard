@@ -196,6 +196,7 @@ QPair<StandardFeed*, QList<IconLocation>> RssParser::guessFeed(const QByteArray&
 
   // NOTE: Some XMLs have whitespace before XML declaration, erase it.
   xml_contents_encoded = xml_contents_encoded.trimmed();
+  xml_contents_encoded = xml_contents_encoded.remove(QChar::Null);
 
   // Feed XML was obtained, guess it now.
   DomDocument xml_document;
