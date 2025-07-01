@@ -370,6 +370,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
   // we remove null char just in case
   formatted_feed_contents = formatted_feed_contents.remove(QChar::Null);
+  formatted_feed_contents = formatted_feed_contents.replace(QChar(0x000B), QChar(' '));
 
   // Feed data are downloaded and encoded.
   // Parse data and obtain messages.
