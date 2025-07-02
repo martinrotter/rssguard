@@ -1644,7 +1644,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="180"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Üst kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
@@ -1737,7 +1737,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="191"/>
       <source>Remove all read articles</source>
-      <translation type="unfinished">Remove all read articles</translation>
+      <translation>Okunan tüm makaleleri kaldır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="53"/>
@@ -1755,7 +1755,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
       <source>Remove all starred articles</source>
-      <translation type="unfinished">Remove all starred articles</translation>
+      <translation>Yıldızlı tüm makaleleri kaldır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
@@ -1974,12 +1974,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="194"/>
       <source>Left-to-right</source>
-      <translation type="unfinished">Left-to-right</translation>
+      <translation>Soldan sağa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="195"/>
       <source>Right-to-left (everywhere)</source>
-      <translation type="unfinished">Right-to-left (everywhere)</translation>
+      <translation>Sağdan sola (her yerde)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
@@ -1989,7 +1989,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="198"/>
       <source>Right-to-left (only in article viewer)</source>
-      <translation type="unfinished">Right-to-left (only in article viewer)</translation>
+      <translation>Sağdan sola (yalnız makale görüntüleyicide)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="171"/>
@@ -2006,7 +2006,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="209"/>
       <source>Auto-downloading of articles</source>
-      <translation type="unfinished">Auto-downloading of articles</translation>
+      <translation>Otomatik makale indirme</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
@@ -2346,7 +2346,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="687"/>
       <source>Open selected articles in external browser</source>
-      <translation type="unfinished">Open selected articles in external browser</translation>
+      <translation>Seçili makaleleri dış tarayıcıda aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="398"/>
@@ -2358,7 +2358,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="691"/>
       <source>Open selected articles in internal browser</source>
-      <translation type="unfinished">Open selected articles in internal browser</translation>
+      <translation>Seçili makaleleri iç tarayıcıda aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="412"/>
@@ -2388,13 +2388,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="701"/>
       <source>Switch main window visibility</source>
-      <translation type="unfinished">Switch main window visibility</translation>
+      <translation>Ana pencere görünürlüğünü değiştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="703"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
-      <translation type="unfinished">Hides main window if it is visible and shows it if it is hidden.</translation>
+      <translation>Ana pencereyi görünürse gizler ve gizliyse gösterir.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
@@ -2556,7 +2556,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="623"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="739"/>
       <source>Send selected articles via e-mail</source>
-      <translation type="unfinished">Send selected articles via e-mail</translation>
+      <translation>Seçili makaleleri e-postayla gönder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="631"/>
@@ -2833,7 +2833,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="371"/>
       <source>No actions possible</source>
-      <translation type="unfinished">No actions possible</translation>
+      <translation>Olası eylem yok</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="145"/>
@@ -2853,7 +2853,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="459"/>
       <source>(not supported)</source>
-      <translation type="unfinished">(not supported)</translation>
+      <translation>(desteklenmiyor)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="525"/>
@@ -3094,7 +3094,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="263"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="450"/>
       <source>Existing articles</source>
-      <translation type="unfinished">Existing articles</translation>
+      <translation>Var olan makaleler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="295"/>
@@ -3124,7 +3124,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="365"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="455"/>
       <source>Contents</source>
-      <translation type="unfinished">Contents</translation>
+      <translation>İçerikler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
@@ -3171,7 +3171,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="78"/>
       <source>Select source directory</source>
-      <translation type="unfinished">Select source directory</translation>
+      <translation>Kaynak klasörü seç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="86"/>
@@ -3199,7 +3199,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="59"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="136"/>
       <source>Source directory</source>
-      <translation type="unfinished">Source directory</translation>
+      <translation>Kaynak klasörü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="65"/>
@@ -3306,7 +3306,7 @@ You have to restart manually.</translation>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="38"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="39"/>
       <source>No operation executed yet.</source>
-      <translation type="unfinished">No operation executed yet.</translation>
+      <translation>Henüz yürütülen işlem yok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="70"/>
@@ -3326,7 +3326,7 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="81"/>
       <source>Source file</source>
-      <translation type="unfinished">Source file</translation>
+      <translation>Kaynak dosyası</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="82"/>
@@ -3372,7 +3372,7 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="28"/>
       <source>Full command to execute</source>
-      <translation type="unfinished">Full command to execute</translation>
+      <translation>Yürütülecek tüm komut</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="29"/>
@@ -3492,7 +3492,7 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="226"/>
       <source>Operation result</source>
-      <translation type="unfinished">Operation result</translation>
+      <translation>İşlem sonucu</translation>
     </message>
   </context>
   <context>
@@ -3710,7 +3710,7 @@ You can install it now.</translation>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="48"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="159"/>
       <source>Status</source>
-      <translation type="unfinished">Status</translation>
+      <translation>Durum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="69"/>
@@ -3730,7 +3730,7 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="268"/>
       <source>Line is too short for valid protocol</source>
-      <translation type="unfinished">Line is too short for valid protocol</translation>
+      <translation>Satır geçerli protokol için çok kısa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="273"/>
@@ -3740,7 +3740,7 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="282"/>
       <source>Line does not end with &lt;CR&gt; &lt;LF&gt;</source>
-      <translation type="unfinished">Line does not end with &lt;CR&gt; &lt;LF&gt;</translation>
+      <translation>Satır &lt;CR&gt; &lt;LF&gt; ile bitmiyor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="291"/>
@@ -3789,12 +3789,12 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="66"/>
       <source>No username entered.</source>
-      <translation type="unfinished">No username entered.</translation>
+      <translation>Kullanıcı adı girilmedi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="69"/>
       <source>Some username entered.</source>
-      <translation type="unfinished">Some username entered.</translation>
+      <translation>Bir kullanıcı adı girildi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="75"/>
@@ -3820,12 +3820,12 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="124"/>
       <source>Empty value is entered.</source>
-      <translation type="unfinished">Empty value is entered.</translation>
+      <translation>Boş değer girildi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="128"/>
       <source>Some value is entered.</source>
-      <translation type="unfinished">Some value is entered.</translation>
+      <translation>Bir değer girildi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="17"/>
@@ -3840,7 +3840,7 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="83"/>
       <source>There is error: %1</source>
-      <translation type="unfinished">There is error: %1</translation>
+      <translation>Hata var: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="122"/>
@@ -3908,7 +3908,7 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="579"/>
       <source>No subject</source>
-      <translation type="unfinished">No subject</translation>
+      <translation>Konu yok</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="492"/>
@@ -4129,7 +4129,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="164"/>
       <source>Some value is entered.</source>
-      <translation type="unfinished">Some value is entered.</translation>
+      <translation>Bir değer girildi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="17"/>
@@ -4217,7 +4217,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Üst kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
@@ -4315,13 +4315,13 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="156"/>
       <source>Other services</source>
-      <translation type="unfinished">Other services</translation>
+      <translation>Başka hizmetler</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="161"/>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="193"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
-      <translation type="unfinished">OPML 2.0 files (*.opml *.xml)</translation>
+      <translation>OPML 2.0 dosyaları (*.opml *.xml)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="163"/>
@@ -4777,12 +4777,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="132"/>
       <source>Clear all content</source>
-      <translation type="unfinished">Clear all content</translation>
+      <translation>Tüm içeriği sil</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="196"/>
       <source>Document source</source>
-      <translation type="unfinished">Document source</translation>
+      <translation>Belge kaynağı</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="319"/>
@@ -4982,7 +4982,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="38"/>
       <source>Switch article importance</source>
-      <translation type="unfinished">Switch article importance</translation>
+      <translation>Makale önemini değiştir</translation>
     </message>
   </context>
   <context>
@@ -5146,12 +5146,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="126"/>
       <source>dot</source>
-      <translation type="unfinished">dot</translation>
+      <translation>nokta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="129"/>
       <source>envelope</source>
-      <translation type="unfinished">envelope</translation>
+      <translation>zarf</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="132"/>
@@ -5186,17 +5186,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="322"/>
       <source>Is article read?</source>
-      <translation type="unfinished">Is article read?</translation>
+      <translation>Makale okunmuş mu?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="322"/>
       <source>Is article important?</source>
-      <translation type="unfinished">Is article important?</translation>
+      <translation>Makale önemli mi?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="323"/>
       <source>Is article deleted?</source>
-      <translation type="unfinished">Is article deleted?</translation>
+      <translation>Makale silinmiş mi?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="323"/>
@@ -5221,17 +5221,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="325"/>
       <source>Author of the article.</source>
-      <translation type="unfinished">Author of the article.</translation>
+      <translation>Makalenin yazarı.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="325"/>
       <source>Creation date of the article.</source>
-      <translation type="unfinished">Creation date of the article.</translation>
+      <translation>Makalenin oluşturulma tarihi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="326"/>
       <source>Contents of the article.</source>
-      <translation type="unfinished">Contents of the article.</translation>
+      <translation>Makalenin içerikleri.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="326"/>
@@ -5374,7 +5374,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="231"/>
       <source>(article list)</source>
-      <translation type="unfinished">(article list)</translation>
+      <translation>(makale listesi)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="241"/>
@@ -5399,12 +5399,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="262"/>
       <source>Show unread articles</source>
-      <translation type="unfinished">Show unread articles</translation>
+      <translation>Okunmamış makaleleri göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="268"/>
       <source>Show read articles</source>
-      <translation type="unfinished">Show read articles</translation>
+      <translation>Okunmuş makaleleri göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="274"/>
@@ -5538,7 +5538,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="100"/>
       <source>protocol error</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">protocol error</translation>
+      <translation>protokol hatası</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="108"/>
@@ -5550,7 +5550,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="118"/>
       <source>connection refused</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">connection refused</translation>
+      <translation>bağlantı reddedildi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="123"/>
@@ -5762,7 +5762,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="21"/>
       <source>Username for your Nextcloud account</source>
-      <translation type="unfinished">Username for your Nextcloud account</translation>
+      <translation>Nextcloud hesabınız için kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="22"/>
@@ -6032,12 +6032,12 @@ Feedly is a secure space where you can privately organize and research the topic
     <message>
       <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="34"/>
       <source>XML problem: %1</source>
-      <translation type="unfinished">XML problem: %1</translation>
+      <translation>XML sorunu: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="44"/>
       <source>JSON problem: %1</source>
-      <translation type="unfinished">JSON problem: %1</translation>
+      <translation>JSON sorunu: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderentrypoint.cpp" line="40"/>
@@ -6200,12 +6200,12 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="103"/>
       <source>Save article in HTML format</source>
-      <translation type="unfinished">Save article in HTML format</translation>
+      <translation>Makaleyi HTML biçiminde kaydet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="105"/>
       <source>HTML files (*.htm *.html)</source>
-      <translation type="unfinished">HTML files (*.htm *.html)</translation>
+      <translation>HTML dosyaları (*.htm *.html)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="150"/>
@@ -6230,7 +6230,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="160"/>
       <source>(not supported)</source>
-      <translation type="unfinished">(not supported)</translation>
+      <translation>(desteklenmiyor)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="70"/>
@@ -6240,7 +6240,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="84"/>
       <source>not an iCalendar</source>
-      <translation type="unfinished">not an iCalendar</translation>
+      <translation>iCalendar değil</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="201"/>
@@ -6265,17 +6265,17 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="17"/>
       <source>Select existing folder</source>
-      <translation type="unfinished">Select existing folder</translation>
+      <translation>Var olan klasör seç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="41"/>
       <source>Save file</source>
-      <translation type="unfinished">Save file</translation>
+      <translation>Dosyayı kaydet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="63"/>
       <source>Select existing file</source>
-      <translation type="unfinished">Select existing file</translation>
+      <translation>Var olan dosya seç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="392"/>
@@ -6483,12 +6483,12 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="55"/>
       <source>No username entered.</source>
-      <translation type="unfinished">No username entered.</translation>
+      <translation>Kullanıcı adı girilmedi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="58"/>
       <source>Some username entered.</source>
-      <translation type="unfinished">Some username entered.</translation>
+      <translation>Bir kullanıcı adı girildi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="64"/>
@@ -6529,7 +6529,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="117"/>
       <source>Some value is entered.</source>
-      <translation type="unfinished">Some value is entered.</translation>
+      <translation>Bir değer girildi.</translation>
     </message>
   </context>
   <context>
@@ -6863,7 +6863,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="352"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="365"/>
       <source>Parameters</source>
-      <translation type="unfinished">Parameters</translation>
+      <translation>Parametreler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="130"/>
@@ -7343,7 +7343,7 @@ Bu uygulamanın yazarları kayıp verilerden sorumlu değildir.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="328"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="628"/>
       <source>Internal article viewer</source>
-      <translation type="unfinished">Internal article viewer</translation>
+      <translation>İç makale görüntüleyici</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="437"/>
@@ -7385,13 +7385,13 @@ Bu uygulamanın yazarları kayıp verilerden sorumlu değildir.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="314"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="626"/>
       <source>Fixup date/time of articles which are in the future</source>
-      <translation type="unfinished">Fixup date/time of articles which are in the future</translation>
+      <translation>Gelecekteki makalelerin tarih/saatini düzelt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="334"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="629"/>
       <source>Display attachments directly in article</source>
-      <translation type="unfinished">Display attachments directly in article</translation>
+      <translation>Ekleri doğrudan makalede göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="300"/>
@@ -7403,7 +7403,7 @@ Bu uygulamanın yazarları kayıp verilerden sorumlu değildir.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="343"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="630"/>
       <source>Limit height of attachments</source>
-      <translation type="unfinished">Limit height of attachments</translation>
+      <translation>Eklerin boyunu sınırla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="431"/>
@@ -7767,7 +7767,7 @@ Açıklama: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.h" line="36"/>
       <source>User interface</source>
-      <translation type="unfinished">User interface</translation>
+      <translation>Kullanıcı arayüzü</translation>
     </message>
   </context>
   <context>
@@ -7775,12 +7775,12 @@ Açıklama: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="35"/>
       <source>Language</source>
-      <translation type="unfinished">Language</translation>
+      <translation>Dil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="35"/>
       <source>Code</source>
-      <translation type="unfinished">Code</translation>
+      <translation>Kod</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="35"/>
@@ -8005,7 +8005,7 @@ Açıklama: %3</translation>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="23"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="136"/>
       <source>Balloon notification</source>
-      <translation type="unfinished">Balloon notification</translation>
+      <translation>Balon bildirimi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="30"/>
@@ -8156,9 +8156,9 @@ Bu durumda, bu beslemeleri alırken biraz zaman boşlukları ayarlamanız gereki
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="75"/>
       <source> seconds</source>
-      <translation type="unfinished">
-        <numerusform> seconds</numerusform>
-        <numerusform> seconds</numerusform>
+      <translation>
+        <numerusform> saniye</numerusform>
+        <numerusform> saniye</numerusform>
       </translation>
     </message>
   </context>
@@ -8212,12 +8212,12 @@ Item ID: %5
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="230"/>
       <source>Local file</source>
-      <translation type="unfinished">Local file</translation>
+      <translation>Yerel dosya</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="460"/>
       <source>uses application setting</source>
-      <translation type="unfinished">uses application setting</translation>
+      <translation>uygulama ayarlarını kullanır</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="463"/>
@@ -8232,7 +8232,7 @@ Item ID: %5
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="469"/>
       <source>unknown state</source>
-      <translation type="unfinished">unknown state</translation>
+      <translation>bilinmeyen durum</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="233"/>
@@ -8446,7 +8446,7 @@ Use raw XML saving: %4</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="38"/>
       <source>Full command to execute</source>
-      <translation type="unfinished">Full command to execute</translation>
+      <translation>Yürütülecek tüm komut</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="39"/>
@@ -9180,7 +9180,7 @@ Okunmamış haberler: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>Üst kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="30"/>
