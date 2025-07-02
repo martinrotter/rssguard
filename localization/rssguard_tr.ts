@@ -1552,7 +1552,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="89"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="150"/>
       <source>Operation results</source>
-      <translation type="unfinished">Operation results</translation>
+      <translation>İşlem sonuçları</translation>
     </message>
   </context>
   <context>
@@ -1565,9 +1565,9 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="108"/>
       <source>Edit %n categories</source>
-      <translation type="unfinished">
-        <numerusform>Edit %n categories</numerusform>
-        <numerusform>Edit %n categories</numerusform>
+      <translation>
+        <numerusform>%n kategori düzenle</numerusform>
+        <numerusform>%n kategori düzenle</numerusform>
       </translation>
     </message>
     <message>
@@ -3193,7 +3193,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="33"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="135"/>
       <source>Operation results</source>
-      <translation type="unfinished">Operation results</translation>
+      <translation>İşlem sonuçları</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="59"/>
