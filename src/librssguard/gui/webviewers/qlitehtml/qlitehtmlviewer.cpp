@@ -18,7 +18,7 @@
 #include <QScrollBar>
 
 QLiteHtmlViewer::QLiteHtmlViewer(QWidget* parent)
-  : QLiteHtmlWidget(parent), m_root(nullptr), m_network(new SilentNetworkAccessManager(this)),
+  : QLiteHtmlWidget(parent), m_root(nullptr),
     m_placeholderImage(IconFactory::toByteArray(qApp->icons()->miscPixmap(QSL("image-placeholder")), QSL("PNG"))),
     m_placeholderImageError(IconFactory::toByteArray(qApp->icons()->miscPixmap(QSL("image-placeholder-error")),
                                                      QSL("PNG"))) {
@@ -52,7 +52,7 @@ void QLiteHtmlViewer::findText(const QString& text, bool backwards) {
 }
 
 void QLiteHtmlViewer::reloadNetworkSettings() {
-  m_network->loadSettings();
+  // m_network->loadSettings();
 }
 
 QString QLiteHtmlViewer::html() const {
@@ -69,7 +69,6 @@ void QLiteHtmlViewer::clear() {
 
 void QLiteHtmlViewer::loadMessage(const Message& message, RootItem* root) {
   emit loadingStarted();
-  m_root = root;
 
   auto url = urlForMessage(message, root);
   auto html = htmlForMessage(message, root);
@@ -136,22 +135,24 @@ QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) {
 
   QEventLoop loop;
   QByteArray data;
-  QNetworkReply* reply = m_network->get(QNetworkRequest(url));
 
-  connect(reply, &QNetworkReply::finished, this, [&] {
-    if (reply->error() == QNetworkReply::NetworkError::NoError) {
-      data = reply->readAll();
-    }
-    else {
-      qWarningNN << LOGSEC_HTMLVIEWER << "Image" << QUOTE_W_SPACE(url.toString()) << "was not loaded due to error"
-                 << QUOTE_W_SPACE_DOT(reply->error());
-    }
+  NetworkResult res =
+    NetworkFactory::performNetworkOperation(url.toString(),
+                                            5000,
+                                            {},
+                                            data,
+                                            QNetworkAccessManager::Operation::GetOperation,
+                                            {},
+                                            false,
+                                            {},
+                                            {},
+                                            m_root == nullptr ? QNetworkProxy()
+                                                              : m_root->getParentServiceRoot()->networkProxy());
 
-    reply->deleteLater();
-    loop.exit();
-  });
-
-  loop.exec(QEventLoop::ProcessEventsFlag::ExcludeUserInputEvents);
+  if (res.m_networkError != QNetworkReply::NetworkError::NoError) {
+    qWarningNN << LOGSEC_HTMLVIEWER << "Image" << QUOTE_W_SPACE(url.toString()) << "was not loaded due to error"
+               << QUOTE_W_SPACE_DOT(res.m_networkError);
+  }
 
   if (data.isEmpty()) {
     data = m_placeholderImageError;
@@ -165,15 +166,7 @@ QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) {
 }
 
 void QLiteHtmlViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
-  ServiceRoot* acc = root == nullptr ? nullptr : root->getParentServiceRoot();
-
-  if (acc != nullptr) {
-    QNetworkProxy prx = acc->networkProxy();
-    m_network->setProxy(prx);
-  }
-  else {
-    m_network->setProxy({});
-  }
+  m_root = root;
 
   QLiteHtmlWidget::setUrl(url);
   QLiteHtmlWidget::setHtml(html);

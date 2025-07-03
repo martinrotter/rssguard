@@ -62,7 +62,6 @@ class RSSGUARD_DLLSPEC QLiteHtmlViewer : public QLiteHtmlWidget, public WebViewe
 
   private:
     QPointer<RootItem> m_root;
-    QPointer<SilentNetworkAccessManager> m_network;
     QByteArray m_placeholderImage;
     QByteArray m_placeholderImageError;
     QHash<QUrl, QByteArray> m_imageCache;
