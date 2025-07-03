@@ -22,7 +22,7 @@ NetworkProxyDetails::NetworkProxyDetails(bool account_wide_setting, QWidget* par
           &NetworkProxyDetails::onProxyTypeChanged);
 
   m_ui->m_cmbProxyType->addItem(tr("No proxy"), QNetworkProxy::ProxyType::NoProxy);
-  m_ui->m_cmbProxyType->addItem(account_wide_setting ? tr("Application-wide proxy") : tr("System proxy"),
+  m_ui->m_cmbProxyType->addItem(account_wide_setting ? tr("Use global app setting") : tr("System proxy"),
                                 QNetworkProxy::ProxyType::DefaultProxy);
   m_ui->m_cmbProxyType->addItem(QSL("Socks5"), QNetworkProxy::ProxyType::Socks5Proxy);
   m_ui->m_cmbProxyType->addItem(QSL("Http"), QNetworkProxy::ProxyType::HttpProxy);
