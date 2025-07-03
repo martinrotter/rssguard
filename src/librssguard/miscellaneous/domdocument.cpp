@@ -2,6 +2,8 @@
 
 #include "miscellaneous/domdocument.h"
 
+#include "miscellaneous/iofactory.h"
+
 DomDocument::DomDocument() : QDomDocument() {}
 
 bool DomDocument::setContent(const QByteArray& text,
@@ -9,11 +11,7 @@ bool DomDocument::setContent(const QByteArray& text,
                              QString* error_msg,
                              int* error_line,
                              int* error_column) {
-#if QT_VERSION_MAJOR == 5
-  auto text_modified = text;
-#else
-  auto text_modified = QByteArray(text).replace("&shy;", "");
-#endif
+  auto text_modified = QByteArray(text).trimmed().replace("&shy;", "").replace(0x000B, "");
 
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
   QDomDocument::ParseResult res =
@@ -44,11 +42,14 @@ bool DomDocument::setContent(const QString& text,
                              QString* error_msg,
                              int* error_line,
                              int* error_column) {
-#if QT_VERSION_MAJOR == 5
-  auto text_modified = text;
-#else
-  auto text_modified = QString(text).replace("&shy;", "");
-#endif
+  // NOTE: Removing QChar::SpecialCharacter::Null is only possible
+  // in QString overload of this method because removing zero bytes
+  // from bytearray could remove Unicode characters and mess the data.
+  auto text_modified = QString(text)
+                         .trimmed()
+                         .replace("&shy;", QString())
+                         .replace(QChar::SpecialCharacter::Null, QString())
+                         .replace(QChar(0x000B), QString());
 
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
   QDomDocument::ParseResult res =

@@ -194,9 +194,6 @@ QPair<StandardFeed*, QList<IconLocation>> RdfParser::guessFeed(const QByteArray&
     xml_contents_encoded = QString::fromUtf8(content);
   }
 
-  // NOTE: Some XMLs have whitespace before XML declaration, erase it.
-  xml_contents_encoded = xml_contents_encoded.trimmed();
-
   // Feed XML was obtained, guess it now.
   DomDocument xml_document;
   QString error_msg;
