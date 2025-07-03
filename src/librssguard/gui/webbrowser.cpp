@@ -135,12 +135,12 @@ void WebBrowser::clear(bool also_hide) {
   }
 }
 
-void WebBrowser::setHtml(const QString& html, const QUrl& url) {
+void WebBrowser::setHtml(const QString& html, const QUrl& url, RootItem* root) {
   // NOTE: We need to reload zoom factor here because
   // it could be changed
   reloadZoomFactor();
 
-  m_webView->setHtml(html, url);
+  m_webView->setHtml(html, url, root);
 }
 
 void WebBrowser::loadMessage(const Message& message, RootItem* root) {

@@ -25,7 +25,7 @@ class RSSGUARD_DLLSPEC QLiteHtmlViewer : public QLiteHtmlWidget, public WebViewe
 
     virtual void reloadNetworkSettings();
 
-    virtual void setHtml(const QString& html, const QUrl& url = {});
+    virtual void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);
     virtual QString html() const;
     virtual QUrl url() const;
     virtual void clear();

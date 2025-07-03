@@ -74,7 +74,7 @@ void QLiteHtmlViewer::loadMessage(const Message& message, RootItem* root) {
   auto url = urlForMessage(message, root);
   auto html = htmlForMessage(message, root);
 
-  setHtml(html, url);
+  setHtml(html, url, root);
 
   // TODO: RTL
 
@@ -164,7 +164,17 @@ QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) {
   return data;
 }
 
-void QLiteHtmlViewer::setHtml(const QString& html, const QUrl& url) {
+void QLiteHtmlViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
+  ServiceRoot* acc = root == nullptr ? nullptr : root->getParentServiceRoot();
+
+  if (acc != nullptr) {
+    QNetworkProxy prx = acc->networkProxy();
+    m_network->setProxy(prx);
+  }
+  else {
+    m_network->setProxy({});
+  }
+
   QLiteHtmlWidget::setUrl(url);
   QLiteHtmlWidget::setHtml(html);
 

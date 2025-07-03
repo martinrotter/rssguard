@@ -42,7 +42,7 @@ class WebViewer {
     virtual void findText(const QString& text, bool backwards) = 0;
 
     // Set static HTML into the viewer.
-    virtual void setHtml(const QString& html, const QUrl& url = {}) = 0;
+    virtual void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr) = 0;
 
     // Returns current static HTML loaded in the viewer.
     virtual QString html() const = 0;
