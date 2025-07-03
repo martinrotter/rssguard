@@ -1826,7 +1826,8 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
                     (!ignore_contents_changes && message.m_contents != contents_existing_message);
 
       if (cond_1 || cond_2 || cond_3 || force_update) {
-        if (!feed->getParentServiceRoot()->isSyncable()) {
+        if (!feed->getParentServiceRoot()->isSyncable() &&
+            qApp->settings()->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool()) {
           // Feed is not syncable, thus we got RSS/JSON/whatever.
           // Article is only updated, so we now prefer to keep original read state
           // pretty much the same way starred state is kept.
