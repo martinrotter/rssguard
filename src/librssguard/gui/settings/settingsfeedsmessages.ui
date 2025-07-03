@@ -301,7 +301,7 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
+       <item row="4" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbFixupArticleDatetime">
          <property name="text">
           <string>Fixup date/time of articles which are in the future</string>
@@ -421,10 +421,17 @@
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="2">
+       <item row="7" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbLegacyArticleFormatting">
          <property name="text">
           <string>Use legacy article formatting</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbUnreadWhenUpdated">
+         <property name="text">
+          <string>Mark existing article unread when its updated version is fetched from the feed</string>
          </property>
         </widget>
        </item>
@@ -738,6 +745,7 @@
   <tabstop>m_checkRemoveReadMessagesOnExit</tabstop>
   <tabstop>m_cbArticleViewerAlwaysVisible</tabstop>
   <tabstop>m_cmbIgnoreContentsChanges</tabstop>
+  <tabstop>m_cbUnreadWhenUpdated</tabstop>
   <tabstop>m_cbFixupArticleDatetime</tabstop>
   <tabstop>m_checkBringToForegroundAfterMsgOpened</tabstop>
   <tabstop>m_cbShowEnclosuresDirectly</tabstop>

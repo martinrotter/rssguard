@@ -237,6 +237,9 @@ namespace Messages {
   KEY IgnoreContentsChanges;
   VALUE(bool) IgnoreContentsChangesDef;
 
+  KEY MarkUnreadOnUpdated;
+  VALUE(bool) MarkUnreadOnUpdatedDef;
+
   KEY UnreadIconType;
   VALUE(int) UnreadIconTypeDef;
 

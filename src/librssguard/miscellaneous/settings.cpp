@@ -237,6 +237,9 @@ DVALUE(bool) Messages::ClearReadOnExitDef = false;
 DKEY Messages::IgnoreContentsChanges = "ignore_contents_changes";
 DVALUE(bool) Messages::IgnoreContentsChangesDef = true;
 
+DKEY Messages::MarkUnreadOnUpdated = "mark_unread_on_update";
+DVALUE(bool) Messages::MarkUnreadOnUpdatedDef = false;
+
 DKEY Messages::UnreadIconType = "unread_icons_in_message_list";
 DVALUE(int) Messages::UnreadIconTypeDef = 1; /* MessagesModel::MessageUnreadIcon::Dot */
 

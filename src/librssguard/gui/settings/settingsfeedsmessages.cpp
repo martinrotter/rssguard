@@ -192,6 +192,7 @@ SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent
           &QComboBox::currentTextChanged,
           this,
           &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cbUnreadWhenUpdated, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 
   connect(m_ui->m_cmbMessagesTimeFormat, &QComboBox::currentTextChanged, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbMessagesDateTimeFormatForDatesOnly,
@@ -294,6 +295,8 @@ void SettingsFeedsMessages::loadSettings() {
     m_ui->m_cbLegacyArticleFormatting->setVisible(false);
   }
 
+  m_ui->m_cbUnreadWhenUpdated
+    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool());
   m_ui->m_cmbArticleMarkingPolicy
     ->setCurrentIndex(m_ui->m_cmbArticleMarkingPolicy->findData(settings()
                                                                   ->value(GROUP(Messages),
@@ -414,6 +417,7 @@ void SettingsFeedsMessages::loadSettings() {
 void SettingsFeedsMessages::saveSettings() {
   onBeginSaveSettings();
 
+  settings()->setValue(GROUP(Messages), Messages::MarkUnreadOnUpdated, m_ui->m_cbUnreadWhenUpdated->isChecked());
   settings()->setValue(GROUP(Messages),
                        Messages::ArticleMarkOnSelection,
                        m_ui->m_cmbArticleMarkingPolicy->currentData().toInt());
