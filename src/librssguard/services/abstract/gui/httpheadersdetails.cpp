@@ -35,7 +35,7 @@ QVariantHash HttpHeadersDetails::httpHeaders() const {
   while (exp_match.hasNext()) {
     auto match = exp_match.next();
 
-    h.insert(match.captured(1), match.captured(2));
+    h.insert(match.captured(1).trimmed(), match.captured(2).trimmed());
   }
 
   return h;
