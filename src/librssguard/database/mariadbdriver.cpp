@@ -206,6 +206,13 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
           qFatal("Error when updating DB schema from %d: %s.", installed_db_schema, qPrintable(ex.message()));
         }
       }
+      else if (installed_db_schema > QSL(APP_DB_SCHEMA_VERSION).toInt()) {
+        // NOTE: We have too new database version, likely from newer
+        // RSS Guard. Abort.
+        qFatal("Database schema is too new. Application requires <= %d but %d is installed.",
+               QSL(APP_DB_SCHEMA_VERSION).toInt(),
+               installed_db_schema);
+      }
     }
 
     query_db.finish();
