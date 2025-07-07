@@ -293,8 +293,20 @@ QList<Message> FeedParser::messages() {
       current_time = new_message.m_created;
     }
 
-    // Enclosures.
-    for (Enclosure& enc : new_message.m_enclosures) {
+    // Enclosures, also remove duplicates.
+    QStringList enc_urls;
+
+    for (int i = 0; i < new_message.m_enclosures.size(); i++) {
+      Enclosure& enc = new_message.m_enclosures[i];
+
+      if (enc_urls.contains(enc.m_url)) {
+        qWarningNN << LOGSEC_STANDARD << "Removing redundant enclosure" << QUOTE_W_SPACE_DOT(enc.m_url);
+        new_message.m_enclosures.removeAt(i--);
+        continue;
+      }
+
+      enc_urls.append(enc.m_url);
+
       if (enc.m_mimeType.simplified().isEmpty()) {
         enc.m_mimeType = QSL(DEFAULT_ENCLOSURE_MIME_TYPE);
       }
