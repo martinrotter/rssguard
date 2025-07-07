@@ -286,6 +286,13 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
           qFatal("Error when updating DB schema from %d: %s.", installed_db_schema, qPrintable(ex.message()));
         }
       }
+      else if (installed_db_schema > QSL(APP_DB_SCHEMA_VERSION).toInt()) {
+        // NOTE: We have too new database version, likely from newer
+        // RSS Guard. Abort.
+        qFatal("Database schema is too new. Application requires <= %d but %d is installed.",
+               QSL(APP_DB_SCHEMA_VERSION).toInt(),
+               installed_db_schema);
+      }
 
       qDebugNN << LOGSEC_DB << "File-based SQLite database connection '" << connection_name << "' to file '"
                << QDir::toNativeSeparators(database.databaseName()) << "' seems to be established.";
