@@ -296,6 +296,8 @@ QList<Message> FeedParser::messages() {
     // Enclosures, also remove duplicates.
     QStringList enc_urls;
 
+    enc_urls.reserve(new_message.m_enclosures.size());
+
     for (int i = 0; i < new_message.m_enclosures.size(); i++) {
       Enclosure& enc = new_message.m_enclosures[i];
 

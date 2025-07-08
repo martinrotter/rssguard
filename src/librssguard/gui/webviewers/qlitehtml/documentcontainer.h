@@ -85,6 +85,21 @@ class DocumentContainer : public litehtml::document_container {
       Print
     };
 
+    enum class RequestType {
+      // Data handler has to return (empty or the actual) QByteArray (can be async).
+      // So the image is either directly downloaded and returned or download
+      // is started asynchronously and placeholder is returned in the meantime.
+      ImageDownload,
+
+      // Data handler has to return QPixmap (only sync).
+      // No downloading is performed and cached image is returned.
+      ImageDisplay,
+
+      // Data handler has to return QByteArray (only sync).
+      // Data is downloaded directly and returned if not present in the cache.
+      CssDownload
+    };
+
     void setMediaType(MediaType t);
 
     // these return areas to redraw in document space
@@ -116,7 +131,7 @@ class DocumentContainer : public litehtml::document_container {
     QString masterCss() const;
     void setMasterCss(const QString& master_css);
 
-    using DataCallback = std::function<QByteArray(QUrl)>;
+    using DataCallback = std::function<QVariant(RequestType, QUrl)>;
     using CursorCallback = std::function<void(QCursor)>;
     using LinkCallback = std::function<void(QUrl)>;
     using PaletteCallback = std::function<QPalette()>;
@@ -214,7 +229,6 @@ class DocumentContainer : public litehtml::document_container {
     QFont m_defaultFont = QFont(sansSerifFont(), 16);
     QByteArray m_defaultFontFamilyName = m_defaultFont.family().toUtf8();
     bool m_fontAntialiasing = true;
-    QHash<QUrl, QPixmap> m_pixmaps;
     Selection m_selection;
     DocumentContainer::DataCallback m_dataCallback;
     DocumentContainer::CursorCallback m_cursorCallback;

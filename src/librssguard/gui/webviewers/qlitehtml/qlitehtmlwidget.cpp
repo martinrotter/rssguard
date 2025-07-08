@@ -195,7 +195,7 @@ void QLiteHtmlWidget::scrollToAnchor(const QString& name) {
   }
 }
 
-void QLiteHtmlWidget::setResourceHandler(const QLiteHtmlWidget::ResourceHandler& handler) {
+void QLiteHtmlWidget::setResourceHandler(const DocumentContainer::DataCallback &handler) {
   m_documentContainer.setDataCallback(handler);
 }
 

@@ -18,10 +18,8 @@
 #include <QScrollBar>
 
 QLiteHtmlViewer::QLiteHtmlViewer(QWidget* parent)
-  : QLiteHtmlWidget(parent), m_root(nullptr),
-    m_placeholderImage(IconFactory::toByteArray(qApp->icons()->miscPixmap(QSL("image-placeholder")), QSL("PNG"))),
-    m_placeholderImageError(IconFactory::toByteArray(qApp->icons()->miscPixmap(QSL("image-placeholder-error")),
-                                                     QSL("PNG"))) {
+  : QLiteHtmlWidget(parent), m_root(nullptr), m_placeholderImage(qApp->icons()->miscPixmap(QSL("image-placeholder"))),
+    m_placeholderImageError(qApp->icons()->miscPixmap(QSL("image-placeholder-error"))) {
   setAutoFillBackground(false);
   viewport()->setAutoFillBackground(false);
   setFrameShape(QFrame::Shape::NoFrame);
@@ -34,8 +32,8 @@ QLiteHtmlViewer::QLiteHtmlViewer(QWidget* parent)
   connect(this, &QLiteHtmlWidget::linkHighlighted, this, &QLiteHtmlViewer::linkMouseHighlighted);
   connect(this, &QLiteHtmlWidget::linkClicked, this, &QLiteHtmlViewer::linkClicked);
 
-  setResourceHandler([this](const QUrl& url) {
-    return handleExternalResource(url);
+  setResourceHandler([this](DocumentContainer::RequestType type, const QUrl& url) {
+    return handleExternalResource(type, url);
   });
 }
 
@@ -120,22 +118,32 @@ void QLiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
   QLiteHtmlWidget::setZoomFactor(zoom_factor);
 }
 
-QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) {
+QVariant QLiteHtmlViewer::handleExternalResource(DocumentContainer::RequestType type, const QUrl& url) {
+  qDebugNN << LOGSEC_HTMLVIEWER << "Request for external resource" << QUOTE_W_SPACE(url.toString()) << "of type"
+           << QUOTE_W_SPACE_DOT(int(type));
+
   // TODO: if image is NOT in cache, download it async and return placeholder
   // once image is downloaded, call render() to re-render the page.
 
   if (!loadExternalResources()) {
+    if (type == DocumentContainer::RequestType::ImageDisplay) {
+      return m_placeholderImage;
+    }
+    else {
+      return QByteArray();
+    }
+  }
+
+  if (m_dataCache.contains(url)) {
+    qDebugNN << LOGSEC_HTMLVIEWER << "Loading data" << QUOTE_W_SPACE(url.toString()) << "from cache.";
+    return m_dataCache.value(url);
+  }
+
+  if (type == DocumentContainer::RequestType::ImageDisplay) {
     return m_placeholderImage;
   }
 
-  if (m_imageCache.contains(url)) {
-    qDebugNN << LOGSEC_HTMLVIEWER << "Loading image" << QUOTE_W_SPACE(url.toString()) << "from cache.";
-    return m_imageCache.value(url);
-  }
-
-  QEventLoop loop;
   QByteArray data;
-
   NetworkResult res =
     NetworkFactory::performNetworkOperation(url.toString(),
                                             5000,
@@ -150,19 +158,31 @@ QByteArray QLiteHtmlViewer::handleExternalResource(const QUrl& url) {
                                                               : m_root->getParentServiceRoot()->networkProxy());
 
   if (res.m_networkError != QNetworkReply::NetworkError::NoError) {
-    qWarningNN << LOGSEC_HTMLVIEWER << "Image" << QUOTE_W_SPACE(url.toString()) << "was not loaded due to error"
+    qWarningNN << LOGSEC_HTMLVIEWER << "External data" << QUOTE_W_SPACE(url.toString()) << "was not loaded due to error"
                << QUOTE_W_SPACE_DOT(res.m_networkError);
   }
 
-  if (data.isEmpty()) {
-    data = m_placeholderImageError;
-  }
-  else {
-    qDebugNN << LOGSEC_HTMLVIEWER << "Inserting image" << QUOTE_W_SPACE(url.toString()) << "to cache.";
-    m_imageCache.insert(url, data);
-  }
+  switch (type) {
+    case DocumentContainer::RequestType::ImageDownload: {
+      QPixmap px;
+      px.loadFromData(data);
 
-  return data;
+      if (!px.isNull()) {
+        qDebugNN << LOGSEC_HTMLVIEWER << "Inserting image" << QUOTE_W_SPACE(url.toString()) << "to cache.";
+        m_dataCache.insert(url, px);
+      }
+      else {
+        m_dataCache.insert(url, m_placeholderImageError);
+      }
+
+      return m_dataCache.value(url);
+    }
+
+    case DocumentContainer::RequestType::CssDownload:
+    default:
+      m_dataCache.insert(url, data);
+      return data;
+  }
 }
 
 void QLiteHtmlViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {

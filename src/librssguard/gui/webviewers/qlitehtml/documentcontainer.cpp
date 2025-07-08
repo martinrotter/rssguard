@@ -702,13 +702,8 @@ void DocumentContainer::load_image(const char* src, const char* baseurl, bool re
   const auto qt_baseurl = QString::fromUtf8(baseurl);
   const QUrl url = resolveUrl(qt_src, qt_baseurl);
 
-  if (m_pixmaps.contains(url)) {
-    return;
-  }
-
-  QPixmap pixmap;
-  pixmap.loadFromData(m_dataCallback(url));
-  m_pixmaps.insert(url, pixmap);
+  // NOTE: Just initiate/request image download.
+  m_dataCallback(RequestType::ImageDownload, url);
 }
 
 void DocumentContainer::get_image_size(const char* src, const char* baseurl, litehtml::size& sz) {
@@ -1118,7 +1113,7 @@ void DocumentContainer::import_css(std::string& text, const std::string& url, st
   const int last_slash = url_string.lastIndexOf('/');
 
   baseurl = url_string.left(last_slash).toStdString();
-  text = QString::fromUtf8(m_dataCallback(actual_url)).toStdString();
+  text = QString::fromUtf8(m_dataCallback(RequestType::CssDownload, actual_url).toByteArray()).toStdString();
 }
 
 void DocumentContainer::set_clip(const litehtml::position& pos, const litehtml::border_radiuses& bdr_radius) {
@@ -1155,7 +1150,6 @@ void DocumentContainer::setScrollPosition(const QPoint& pos) {
 }
 
 void DocumentContainer::setDocument(const QByteArray& data) {
-  m_pixmaps.clear();
   clearSelection();
   m_document = litehtml::document::createFromString(data.constData(), this, m_masterCss.toStdString());
   buildIndex();
@@ -1666,12 +1660,7 @@ void DocumentContainer::setMasterCss(const QString& master_css) {
 QPixmap DocumentContainer::getPixmap(const QString& imageUrl, const QString& baseUrl) {
   const QUrl url = resolveUrl(imageUrl, baseUrl);
 
-  if (!m_pixmaps.contains(url)) {
-    qWarningNN << LOGSEC_HTMLVIEWER << "Pixmap for URL not loaded: " << QUOTE_W_SPACE_DOT(url);
-    return {};
-  }
-
-  return m_pixmaps.value(url);
+  return m_dataCallback(RequestType::ImageDisplay, url).value<QPixmap>();
 }
 
 QString DocumentContainer::serifFont() const {
