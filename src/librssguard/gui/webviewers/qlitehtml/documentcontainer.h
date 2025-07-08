@@ -66,19 +66,61 @@ class DocumentContainer : public litehtml::document_container {
     explicit DocumentContainer();
     virtual ~DocumentContainer();
 
-  public: // Outside API.
-    void setPaintDevice(QPaintDevice* paint_device);
-    void setDocument(const QByteArray& data);
-    bool hasDocument() const;
-    void setBaseUrl(const QString& url);
-    QString baseUrl() const;
-    void setScrollPosition(const QPoint& pos);
-    void render(int width, int height);
-    void draw(QPainter* painter, QRect clip);
-    int documentWidth() const;
-    int documentHeight() const;
-    int anchorY(const QString& anchor_name) const;
+    // document_container API.
+    virtual litehtml::uint_ptr create_font(const litehtml::font_description& descr,
+                                           const litehtml::document* doc,
+                                           litehtml::font_metrics* fm);
+    virtual void delete_font(litehtml::uint_ptr fnt) override;
+    virtual int text_width(const char* text, litehtml::uint_ptr fnt) override;
+    virtual void draw_text(litehtml::uint_ptr hdc,
+                           const char* text,
+                           litehtml::uint_ptr fnt,
+                           litehtml::web_color color,
+                           const litehtml::position& pos) override;
+    virtual int pt_to_px(int pt) const override;
+    virtual int get_default_font_size() const override;
+    virtual const char* get_default_font_name() const override;
+    virtual void draw_list_marker(litehtml::uint_ptr hdc, const litehtml::list_marker& marker) override;
+    virtual void load_image(const char* src, const char* baseurl, bool redraw_on_ready) override;
+    virtual void get_image_size(const char* src, const char* baseurl, litehtml::size& sz) override;
+    virtual void draw_image(litehtml::uint_ptr hdc,
+                            const litehtml::background_layer& layer,
+                            const std::string& url,
+                            const std::string& base_url);
+    virtual void draw_solid_fill(litehtml::uint_ptr hdc,
+                                 const litehtml::background_layer& layer,
+                                 const litehtml::web_color& color);
+    virtual void draw_linear_gradient(litehtml::uint_ptr hdc,
+                                      const litehtml::background_layer& layer,
+                                      const litehtml::background_layer::linear_gradient& gradient);
+    virtual void draw_radial_gradient(litehtml::uint_ptr hdc,
+                                      const litehtml::background_layer& layer,
+                                      const litehtml::background_layer::radial_gradient& gradient);
+    virtual void draw_conic_gradient(litehtml::uint_ptr hdc,
+                                     const litehtml::background_layer& layer,
+                                     const litehtml::background_layer::conic_gradient& gradient);
+    virtual void on_mouse_event(const litehtml::element::ptr& el, litehtml::mouse_event event);
+    virtual void get_viewport(litehtml::position& viewport) const;
+    virtual void draw_borders(litehtml::uint_ptr hdc,
+                              const litehtml::borders& borders,
+                              const litehtml::position& draw_pos,
+                              bool root) override;
+    virtual void set_caption(const char* caption) override;
+    virtual void set_base_url(const char* base_url) override;
+    virtual void link(const std::shared_ptr<litehtml::document>& doc, const litehtml::element::ptr& el) override;
+    virtual void on_anchor_click(const char* url, const litehtml::element::ptr& el) override;
+    virtual void set_cursor(const char* cursor) override;
+    virtual void transform_text(std::string& text, litehtml::text_transform tt) override;
+    virtual void import_css(std::string& text, const std::string& url, std::string& baseurl) override;
+    virtual void set_clip(const litehtml::position& pos, const litehtml::border_radiuses& bdr_radius) override;
+    virtual void del_clip() override;
+    virtual std::shared_ptr<litehtml::element> create_element(const char* tag_name,
+                                                              const litehtml::string_map& attributes,
+                                                              const std::shared_ptr<litehtml::document>& doc) override;
+    virtual void get_media_features(litehtml::media_features& media) const override;
+    virtual void get_language(std::string& language, std::string& culture) const override;
 
+    // Outside API.
     enum class MediaType {
       All,
       Screen,
@@ -99,6 +141,21 @@ class DocumentContainer : public litehtml::document_container {
       // Data is downloaded directly and returned if not present in the cache.
       CssDownload
     };
+
+    using DataCallback = std::function<QVariant(RequestType, QUrl)>;
+    using CursorCallback = std::function<void(QCursor)>;
+    using LinkCallback = std::function<void(QUrl)>;
+    using PaletteCallback = std::function<QPalette()>;
+    using ClipboardCallback = std::function<void(bool)>;
+
+    void setPaintDevice(QPaintDevice* paint_device);
+    void setScrollPosition(const QPoint& pos);
+    void render(int width, int height);
+    void draw(QPainter* painter, QRect clip);
+
+    int documentWidth() const;
+    int documentHeight() const;
+    int anchorY(const QString& anchor_name) const;
 
     void setMediaType(MediaType t);
 
@@ -122,6 +179,12 @@ class DocumentContainer : public litehtml::document_container {
                   QVector<QRect>* old_selection,
                   QVector<QRect>* new_selection);
 
+    void setDocument(const QByteArray& data);
+    bool hasDocument() const;
+
+    void setBaseUrl(const QString& url);
+    QString baseUrl() const;
+
     void setDefaultFont(const QFont& font);
     QFont defaultFont() const;
 
@@ -130,12 +193,6 @@ class DocumentContainer : public litehtml::document_container {
 
     QString masterCss() const;
     void setMasterCss(const QString& master_css);
-
-    using DataCallback = std::function<QVariant(RequestType, QUrl)>;
-    using CursorCallback = std::function<void(QCursor)>;
-    using LinkCallback = std::function<void(QUrl)>;
-    using PaletteCallback = std::function<QPalette()>;
-    using ClipboardCallback = std::function<void(bool)>;
 
     void setDataCallback(const DataCallback& callback);
     void setCursorCallback(const CursorCallback& callback);
@@ -150,69 +207,14 @@ class DocumentContainer : public litehtml::document_container {
                             const litehtml::background_layer& layer,
                             std::function<void(QPainter*)> lmbd);
 
-  public: // document_container API
-    virtual litehtml::uint_ptr create_font(const litehtml::font_description& descr,
-                                           const litehtml::document* doc,
-                                           litehtml::font_metrics* fm);
-    void delete_font(litehtml::uint_ptr fnt) override;
-    int text_width(const char* text, litehtml::uint_ptr fnt) override;
-    void draw_text(litehtml::uint_ptr hdc,
-                   const char* text,
-                   litehtml::uint_ptr fnt,
-                   litehtml::web_color color,
-                   const litehtml::position& pos) override;
-    int pt_to_px(int pt) const override;
-    int get_default_font_size() const override;
-    const char* get_default_font_name() const override;
-    void draw_list_marker(litehtml::uint_ptr hdc, const litehtml::list_marker& marker) override;
-    void load_image(const char* src, const char* baseurl, bool redraw_on_ready) override;
-    void get_image_size(const char* src, const char* baseurl, litehtml::size& sz) override;
+    QPixmap getPixmap(const QString& image_url, const QString& base_url);
 
-    virtual void draw_image(litehtml::uint_ptr hdc,
-                            const litehtml::background_layer& layer,
-                            const std::string& url,
-                            const std::string& base_url);
-    virtual void draw_solid_fill(litehtml::uint_ptr hdc,
-                                 const litehtml::background_layer& layer,
-                                 const litehtml::web_color& color);
-
-    virtual void draw_linear_gradient(litehtml::uint_ptr hdc,
-                                      const litehtml::background_layer& layer,
-                                      const litehtml::background_layer::linear_gradient& gradient);
-    virtual void draw_radial_gradient(litehtml::uint_ptr hdc,
-                                      const litehtml::background_layer& layer,
-                                      const litehtml::background_layer::radial_gradient& gradient);
-    virtual void draw_conic_gradient(litehtml::uint_ptr hdc,
-                                     const litehtml::background_layer& layer,
-                                     const litehtml::background_layer::conic_gradient& gradient);
-
-    virtual void on_mouse_event(const litehtml::element::ptr& el, litehtml::mouse_event event);
-    virtual void get_viewport(litehtml::position& viewport) const;
-
-    void draw_borders(litehtml::uint_ptr hdc,
-                      const litehtml::borders& borders,
-                      const litehtml::position& draw_pos,
-                      bool root) override;
-    void set_caption(const char* caption) override;
-    void set_base_url(const char* base_url) override;
-    void link(const std::shared_ptr<litehtml::document>& doc, const litehtml::element::ptr& el) override;
-    void on_anchor_click(const char* url, const litehtml::element::ptr& el) override;
-    void set_cursor(const char* cursor) override;
-    void transform_text(std::string& text, litehtml::text_transform tt) override;
-    void import_css(std::string& text, const std::string& url, std::string& baseurl) override;
-    void set_clip(const litehtml::position& pos, const litehtml::border_radiuses& bdr_radius) override;
-    void del_clip() override;
-    std::shared_ptr<litehtml::element> create_element(const char* tag_name,
-                                                      const litehtml::string_map& attributes,
-                                                      const std::shared_ptr<litehtml::document>& doc) override;
-    void get_media_features(litehtml::media_features& media) const override;
-    void get_language(std::string& language, std::string& culture) const override;
-
-    QPixmap getPixmap(const QString& imageUrl, const QString& baseUrl);
     QString serifFont() const;
     QString sansSerifFont() const;
     QString monospaceFont() const;
+
     QUrl resolveUrl(const QString& url, const QString& base_url) const;
+
     void drawSelection(QPainter* painter, const QRect& clip) const;
     void buildIndex();
     void updateSelection();
@@ -236,7 +238,5 @@ class DocumentContainer : public litehtml::document_container {
     DocumentContainer::PaletteCallback m_paletteCallback;
     DocumentContainer::ClipboardCallback m_clipboardCallback;
     bool m_blockLinks = false;
-
-  private:
     QString m_masterCss;
 };

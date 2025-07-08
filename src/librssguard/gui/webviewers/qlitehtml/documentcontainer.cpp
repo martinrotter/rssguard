@@ -1657,8 +1657,8 @@ void DocumentContainer::setMasterCss(const QString& master_css) {
   m_masterCss = master_css;
 }
 
-QPixmap DocumentContainer::getPixmap(const QString& imageUrl, const QString& baseUrl) {
-  const QUrl url = resolveUrl(imageUrl, baseUrl);
+QPixmap DocumentContainer::getPixmap(const QString& image_url, const QString& base_url) {
+  const QUrl url = resolveUrl(image_url, base_url);
 
   return m_dataCallback(RequestType::ImageDisplay, url).value<QPixmap>();
 }
