@@ -489,12 +489,12 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="128"/>
       <source>There is another action which has the same shortcut assigned.</source>
-      <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
+      <translation>Un'altra azione ha già lo stesso collegamento assegnato.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="129"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
-      <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
+      <translation>Desideri mantenere la nuova scorciatoia e cancellare quella precedente?</translation>
     </message>
   </context>
   <context>
@@ -632,7 +632,7 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="296"/>
       <source>parsing error</source>
-      <translation type="unfinished">parsing error</translation>
+      <translation>Errore di analisi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
@@ -1155,7 +1155,7 @@ Item ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="459"/>
       <source>Deleting %n items</source>
       <translation type="unfinished">
-        <numerusform>Cancello %n oggetti</numerusform>
+        <numerusform>Cancellando %n elementi</numerusform>
         <numerusform>Deleting %n items</numerusform>
       </translation>
     </message>
