@@ -93,7 +93,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="958"/>
       <source>Unread articles fetched</source>
-      <translation>Articles non lus obtenus</translation>
+      <translation>Nouveaux articles non lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="298"/>
@@ -963,7 +963,7 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="190"/>
       <source>Search feeds</source>
-      <translation>Chercher des flux...</translation>
+      <translation>Rechercher des flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="198"/>
@@ -983,8 +983,7 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="214"/>
       <source>No extra filtering</source>
-      <translation>Pas de filtrage 
-supplémentaire</translation>
+      <translation>Sans filtrage supplémentaire</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="220"/>
@@ -2779,15 +2778,13 @@ selectionné d&apos;une manière &amp;récursive</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="861"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="775"/>
       <source>Focus feeds search box</source>
-      <translation>Focaliser la boîte
-de recherche de flux</translation>
+      <translation>Focaliser la barre de recherche des flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="866"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="776"/>
       <source>Focus articles search box</source>
-      <translation>Focaliser la boîte de 
-recherche d&apos;articles</translation>
+      <translation>Focaliser la barre de recherche des articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="881"/>
@@ -3676,7 +3673,7 @@ téléchargée.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="189"/>
       <source>Install</source>
-      <translation>Installation</translation>
+      <translation>Installer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="232"/>
@@ -3720,7 +3717,7 @@ Vous pouvez désormais l&apos;installer.</translation>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="155"/>
       <source>Current release</source>
-      <translation>Version actuelle:</translation>
+      <translation>Version actuelle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="34"/>
@@ -5382,7 +5379,7 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="216"/>
       <source>Search articles</source>
-      <translation>Chercher des articles...</translation>
+      <translation>Rechercher des articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="223"/>
@@ -5417,13 +5414,12 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="256"/>
       <source>No extra filtering</source>
-      <translation>Pas de filtrage 
-supplémentaire</translation>
+      <translation>Sans filtrage supplémentaire</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="262"/>
       <source>Show unread articles</source>
-      <translation>Montrer les articles non-lus</translation>
+      <translation>Montrer les articles non lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="268"/>
@@ -6051,7 +6047,7 @@ Feedly est un éspace sécurisé où vous pouvez organiser et rechercher les suj
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="135"/>
       <source>New (unread) articles fetched</source>
-      <translation>Nouveaux articles (non-lus) obtenus</translation>
+      <translation>Nouveaux articles (non lus) récupérés</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="34"/>
@@ -6627,7 +6623,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <source>%n unread article(s).</source>
       <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
       <translation>
-        <numerusform>%n article non-lu.</numerusform>
+        <numerusform>%n article(s) non lu(s).</numerusform>
         <numerusform>%n articles non-lus.</numerusform>
       </translation>
     </message>
@@ -6673,7 +6669,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="43"/>
       <source>Case-sensitive</source>
-      <translation>Les cases sont prises en compte</translation>
+      <translation>Sensible à la casse</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="129"/>
@@ -6688,7 +6684,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="135"/>
       <source>Regular expression</source>
-      <translation>Expression regulière</translation>
+      <translation>Expression régulière</translation>
     </message>
   </context>
   <context>
@@ -6697,19 +6693,19 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="32"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="69"/>
       <source>Search text</source>
-      <translation>Chercher du texte</translation>
+      <translation>Rechercher du texte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="71"/>
       <source>Find previous occurence</source>
-      <translation>Trouver l&apos;occurence précédente</translation>
+      <translation>Trouver l'occurrence précédente</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="49"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="75"/>
       <source>Find next occurence</source>
-      <translation>Trouver l&apos;occurence suivante</translation>
+      <translation>Trouver l'occurrence suivante</translation>
     </message>
   </context>
   <context>
@@ -7319,7 +7315,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="251"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="617"/>
       <source>Hide article counts if there are no unread articles</source>
-      <translation>Cacher les comptes d&apos;articles si il n&apos;y a pas d&apos;articles non-lus</translation>
+      <translation>Cacher le nombre d'articles s'il n'y a pas d'articles non lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="258"/>
@@ -7373,7 +7369,7 @@ Les auteurs de cette appli NE SONT PAS responsables d'éventuelles pertes de don
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="437"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="635"/>
       <source>Unread article icon type</source>
-      <translation>Type d&apos;icône d&apos;article non-lu</translation>
+      <translation>Type d'icône de l'article non lu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="558"/>
@@ -9249,12 +9245,12 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="14"/>
       <source>Unread articles</source>
-      <translation>Articles non-lus</translation>
+      <translation>Articles non lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/unreadnode.cpp" line="15"/>
       <source>You can find all unread articles here.</source>
-      <translation>Vous pouvez retrouver tous les articles non-lus ici.</translation>
+      <translation>Vous pouvez retrouver tous les articles non lus ici.</translation>
     </message>
   </context>
   <context>
