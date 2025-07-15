@@ -7495,22 +7495,22 @@ Authors of this application are NOT responsible for lost data.</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="41"/>
       <source>Forced skin colors</source>
-      <translation type="unfinished">Forced skin colors</translation>
+      <translation>Colori skin forzati</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="50"/>
       <source>Note that skin colors for dialogs/controls only take effect with some styles, for example with the Fusion style.</source>
-      <translation type="unfinished">Note that skin colors for dialogs/controls only take effect with some styles, for example with the Fusion style.</translation>
+      <translation>Nota: i colori della skin per finestre/controlli funzionano solo con alcuni stili, ad esempio con lo stile Fusion.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="237"/>
       <source>system style</source>
-      <translation type="unfinished">system style</translation>
+      <translation>stile di sistema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="239"/>
       <source>default style</source>
-      <translation type="unfinished">default style</translation>
+      <translation>stile di sistema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="316"/>
@@ -7541,27 +7541,27 @@ Authors of this application are NOT responsible for lost data.</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="202"/>
       <source>system icon theme</source>
       <extracomment>Label for disabling icon theme.</extracomment>
-      <translation type="unfinished">system icon theme</translation>
+      <translation>tema icone di sistema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="204"/>
       <source>no icon theme</source>
-      <translation type="unfinished">no icon theme</translation>
+      <translation>nessun tema icone</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="185"/>
       <source>(Your OS does not support tray icons at the moment.)</source>
-      <translation type="unfinished">(Your OS does not support tray icons at the moment.)</translation>
+      <translation>(Il tuo sistema operativo al momento non supporta le icone nella tray.)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="41"/>
       <source>Forced style</source>
-      <translation type="unfinished">Forced style</translation>
+      <translation>Stile forzato</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="54"/>
       <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
-      <translation type="unfinished">You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</translation>
+      <translation>Qui puoi sovrascrivere alcuni colori definiti dalla tua skin. Alcuni colori vengono usati dinamicamente nell’intera applicazione.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="270"/>
@@ -7577,12 +7577,12 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="343"/>
       <source>Fetch color from activated skin</source>
-      <translation type="unfinished">Fetch color from activated skin</translation>
+      <translation>Prendi i colori dalla skin attiva</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="126"/>
       <source> = default icon size</source>
-      <translation type="unfinished"> = default icon size</translation>
+      <translation> = dimensione icona predefinita</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
@@ -7612,19 +7612,19 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="130"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="422"/>
       <source>Custom skin colors</source>
-      <translation type="unfinished">Custom skin colors</translation>
+      <translation>Colori personalizzati per la skin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="139"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="421"/>
       <source>Customize predefined colors</source>
-      <translation type="unfinished">Customize predefined colors</translation>
+      <translation>Personalizza i colori predefiniti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="151"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="429"/>
       <source>Tray area</source>
-      <translation type="unfinished">Tray area</translation>
+      <translation>Area di notifica</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="163"/>
@@ -7636,7 +7636,7 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="175"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="424"/>
       <source>Use monochrome icon</source>
-      <translation type="unfinished">Use monochrome icon</translation>
+      <translation>Usa icona monocromatica</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="182"/>
@@ -7644,7 +7644,7 @@ Description: %3</translation>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="425"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="430"/>
       <source>Display count of unread messages</source>
-      <translation type="unfinished">Display count of unread messages</translation>
+      <translation>Mostra numero di messaggi non letti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="189"/>
@@ -7656,31 +7656,31 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="418"/>
       <source>Use skin colors</source>
-      <translation type="unfinished">Use skin colors</translation>
+      <translation>Usa i colori della skin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="122"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="419"/>
       <source>Enable application-wide font anti-aliasing</source>
-      <translation type="unfinished">Enable application-wide font anti-aliasing</translation>
+      <translation>Abilita anti-aliasing dei font in tutta l’app</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="199"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="427"/>
       <source>Use colored icon when there are unread articles</source>
-      <translation type="unfinished">Use colored icon when there are unread articles</translation>
+      <translation>Usa icona colorata quando ci sono articoli non letti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="222"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="428"/>
       <source>Start application minimized (or hidden if configured)</source>
-      <translation type="unfinished">Start application minimized (or hidden if configured)</translation>
+      <translation>Avvia l'applicazione minimizzata (o nascosta se configurato)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="230"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="431"/>
       <source>Task bar</source>
-      <translation type="unfinished">Task bar</translation>
+      <translation>Barra delle applicazioni</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="244"/>
@@ -7704,7 +7704,7 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="269"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="434"/>
       <source>Left mouse button double-click</source>
-      <translation type="unfinished">Left mouse button double-click</translation>
+      <translation>Doppio clic col tasto sinistro del mouse</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="279"/>
@@ -7734,7 +7734,7 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="325"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="439"/>
       <source>Toolbar for articles list</source>
-      <translation type="unfinished">Toolbar for articles list</translation>
+      <translation>Barra strumenti per lista articoli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="330"/>
@@ -7746,19 +7746,19 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="408"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="442"/>
       <source>Button style</source>
-      <translation type="unfinished">Button style</translation>
+      <translation>Stile dei pulsanti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="418"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="443"/>
       <source>Toolbar editor</source>
-      <translation type="unfinished">Toolbar editor</translation>
+      <translation>Editor barra strumenti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="444"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="444"/>
       <source>Icon size</source>
-      <translation type="unfinished">Icon size</translation>
+      <translation>Dimensione delle icone</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.h" line="36"/>
@@ -7781,29 +7781,29 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="35"/>
       <source>Translation progress</source>
-      <translation type="unfinished">Translation progress</translation>
+      <translation>Avanzamento della traduzione</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="37"/>
       <source>Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</source>
-      <translation type="unfinished">Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</translation>
+      <translation>Aiutaci a migliorare %1 &lt;a href=&quot;%2&quot;&gt;le traduzioni&lt;/a&gt;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="117"/>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="118"/>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="123"/>
       <source>Big thanks to all translators!</source>
-      <translation type="unfinished">Big thanks to all translators!</translation>
+      <translation>Un grande grazie a tutti i traduttori!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="122"/>
       <source>Translations provided by: %1</source>
-      <translation type="unfinished">Translations provided by: %1</translation>
+      <translation>Traduzioni fornite da: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="208"/>
       <source>Translators needed!</source>
-      <translation type="unfinished">Translators needed!</translation>
+      <translation>Traduttori cercasi!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="209"/>
@@ -7813,12 +7813,12 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="211"/>
       <source>Do you want to help with the translation now?</source>
-      <translation type="unfinished">Do you want to help with the translation now?</translation>
+      <translation>Vuoi aiutare con la traduzione adesso?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.h" line="40"/>
       <source>Localization</source>
-      <translation type="unfinished">Localization</translation>
+      <translation>Localizzazione</translation>
     </message>
   </context>
   <context>
@@ -7827,7 +7827,7 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="17"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="114"/>
       <source>Backend</source>
-      <translation type="unfinished">Backend</translation>
+      <translation>Backend</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="36"/>
@@ -7839,7 +7839,7 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="116"/>
       <source>Browse</source>
-      <translation type="unfinished">Browse</translation>
+      <translation>Sfoglia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="44"/>
