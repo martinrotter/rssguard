@@ -3287,7 +3287,7 @@ Dovrai riavviare manualmente.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>Auth</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
@@ -3347,7 +3347,7 @@ Dovrai riavviare manualmente.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="158"/>
       <source>Command is empty.</source>
-      <translation type="unfinished">Command is empty.</translation>
+      <translation>Il comando è vuoto.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="178"/>
@@ -3511,7 +3511,7 @@ Dovrai riavviare manualmente.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="62"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>Auth</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
@@ -5284,7 +5284,7 @@ Scadenza dei token di accesso: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="378"/>
       <source>%n months ago</source>
       <translation type="unfinished">
-        <numerusform>%n months ago</numerusform>
+        <numerusform>%n mesi fa</numerusform>
         <numerusform>%n months ago</numerusform>
       </translation>
     </message>
@@ -5292,7 +5292,7 @@ Scadenza dei token di accesso: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="382"/>
       <source>%n weeks ago</source>
       <translation type="unfinished">
-        <numerusform>%n weeks ago</numerusform>
+        <numerusform>%n settimane fa</numerusform>
         <numerusform>%n weeks ago</numerusform>
       </translation>
     </message>
@@ -5300,20 +5300,20 @@ Scadenza dei token di accesso: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="386"/>
       <source>%n days ago</source>
       <translation type="unfinished">
-        <numerusform>%n days ago</numerusform>
+        <numerusform>%n giorni fa</numerusform>
         <numerusform>%n days ago</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="390"/>
       <source>yesterday</source>
-      <translation type="unfinished">yesterday</translation>
+      <translation>ieri</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="394"/>
       <source>%n hours ago</source>
       <translation type="unfinished">
-        <numerusform>%n hours ago</numerusform>
+        <numerusform>%n ore fa</numerusform>
         <numerusform>%n hours ago</numerusform>
       </translation>
     </message>
@@ -5321,14 +5321,14 @@ Scadenza dei token di accesso: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="398"/>
       <source>%n minutes ago</source>
       <translation type="unfinished">
-        <numerusform>%n minutes ago</numerusform>
+        <numerusform>%n minuti fa</numerusform>
         <numerusform>%n minutes ago</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="401"/>
       <source>just now</source>
-      <translation type="unfinished">just now</translation>
+      <translation>appena adesso</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="211"/>
@@ -5457,7 +5457,7 @@ Scadenza dei token di accesso: %2</translation>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="328"/>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="335"/>
       <source>Display all articles</source>
-      <translation type="unfinished">Display all articles</translation>
+      <translation>Mostra tutti gli articoli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="345"/>
@@ -7878,7 +7878,7 @@ Description: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="199"/>
       <source>Enable notifications</source>
-      <translation type="unfinished">Enable notifications</translation>
+      <translation>Abilita le notifiche</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="37"/>
@@ -7995,7 +7995,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="52"/>
       <source>WAV files (*.wav);;MP3 files (*.mp3)</source>
-      <translation type="unfinished">WAV files (*.wav);;MP3 files (*.mp3)</translation>
+      <translation>File WAV (*.wav);;File MP3 (*.mp3)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="23"/>
@@ -8153,7 +8153,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="75"/>
       <source> seconds</source>
       <translation type="unfinished">
-        <numerusform> seconds</numerusform>
+        <numerusform> secondi</numerusform>
         <numerusform> seconds</numerusform>
       </translation>
     </message>
@@ -8218,17 +8218,17 @@ Item ID: %5
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="463"/>
       <source>enabled</source>
-      <translation type="unfinished">enabled</translation>
+      <translation>abilitato</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="466"/>
       <source>disabled</source>
-      <translation type="unfinished">disabled</translation>
+      <translation>disabilitato</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="469"/>
       <source>unknown state</source>
-      <translation type="unfinished">unknown state</translation>
+      <translation>stato sconosciuto</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="233"/>
@@ -8479,7 +8479,7 @@ Use raw XML saving: %4</translation>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="219"/>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="286"/>
       <source>Network error: %1</source>
-      <translation type="unfinished">Network error: %1</translation>
+      <translation>Errore di rete: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="224"/>
@@ -8608,12 +8608,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="33"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Abilitato</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
       <source>Disabled</source>
-      <translation type="unfinished">Disabled</translation>
+      <translation>Disabilitato</translation>
     </message>
   </context>
   <context>
@@ -8810,7 +8810,7 @@ Notizie non lette: %2</translation>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="68"/>
       <source>%n day(s)</source>
       <translation type="unfinished">
-        <numerusform>%n day(s)</numerusform>
+        <numerusform>%n giorno(i)</numerusform>
         <numerusform>%n day(s)</numerusform>
       </translation>
     </message>
@@ -8818,7 +8818,7 @@ Notizie non lette: %2</translation>
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="56"/>
       <source>%n second(s)</source>
       <translation type="unfinished">
-        <numerusform>%n second(s)</numerusform>
+        <numerusform>%n secondo(i)</numerusform>
         <numerusform>%n second(s)</numerusform>
       </translation>
     </message>
