@@ -972,7 +972,7 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="208"/>
       <source>Menu for filtering feeds</source>
-      <translation type="unfinished">Menu for filtering feeds</translation>
+      <translation>Beslemeleri filtrelemek için menü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="210"/>
@@ -992,42 +992,42 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="226"/>
       <source>Show non-empty items</source>
-      <translation type="unfinished">Show non-empty items</translation>
+      <translation>Boş olmayan öğeleri göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="232"/>
       <source>Show feeds with new articles</source>
-      <translation type="unfinished">Show feeds with new articles</translation>
+      <translation>Yeni makaleler içeren beslemeleri göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="238"/>
       <source>Show feeds with error</source>
-      <translation type="unfinished">Show feeds with error</translation>
+      <translation>Hatalı beslemeleri göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="244"/>
       <source>Show switched off feeds</source>
-      <translation type="unfinished">Show switched off feeds</translation>
+      <translation>Kapatılan yayınları göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="250"/>
       <source>Show quiet feeds</source>
-      <translation type="unfinished">Show quiet feeds</translation>
+      <translation>Sessiz beslemeleri göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="256"/>
       <source>Show feeds with article filters</source>
-      <translation type="unfinished">Show feeds with article filters</translation>
+      <translation>Beslemeleri makale filtreleriyle gösterme</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="262"/>
       <source>Display all feeds</source>
-      <translation type="unfinished">Display all feeds</translation>
+      <translation>Tüm beslemeleri görüntüle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="272"/>
       <source>Feed list filter</source>
-      <translation type="unfinished">Feed list filter</translation>
+      <translation>Besleme listesi filtresi</translation>
     </message>
   </context>
   <context>
@@ -1050,12 +1050,12 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="292"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-      <translation type="unfinished">Selected item cannot be edited because another critical operation is ongoing.</translation>
+      <translation>Başka bir kritik işlem devam ettiği için seçilen öğe düzenlenemiyor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="423"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-      <translation type="unfinished">Selected item cannot be deleted because another critical operation is ongoing.</translation>
+      <translation/>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="924"/>
@@ -2286,19 +2286,19 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="368"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="680"/>
       <source>&amp;Delete articles</source>
-      <translation type="unfinished">&amp;Delete articles</translation>
+      <translation>&amp;Makaleleri sil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="300"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="658"/>
       <source>&amp;Edit selected items</source>
-      <translation type="unfinished">&amp;Edit selected items</translation>
+      <translation>&amp;Seçili öğeleri düzenle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="185"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
       <source>&amp;Recycle bins</source>
-      <translation type="unfinished">&amp;Recycle bins</translation>
+      <translation>&amp;Geri dönüşüm kutuları</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="200"/>
@@ -2310,7 +2310,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="305"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="659"/>
       <source>&amp;Delete selected items</source>
-      <translation type="unfinished">&amp;Delete selected items</translation>
+      <translation>&amp;Seçili öğeleri sil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="346"/>
@@ -2340,7 +2340,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="387"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="685"/>
       <source>Open in &amp;external browser</source>
-      <translation type="unfinished">Open in &amp;external browser</translation>
+      <translation>Harici tarayıcıda aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
@@ -2352,7 +2352,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="398"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="689"/>
       <source>Open in &amp;internal browser</source>
-      <translation type="unfinished">Open in &amp;internal browser</translation>
+      <translation>Dahili tarayıcıda aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
@@ -2364,7 +2364,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="412"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="693"/>
       <source>No actions available</source>
-      <translation type="unfinished">No actions available</translation>
+      <translation>Mevcut eylem yok</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="415"/>
