@@ -7921,7 +7921,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="32"/>
       <source>Note that native notifications might have some OS-dependent limitations. For example Windows OS is known to limit the amount of notification originating from each app during short span of time.</source>
-      <translation type="unfinished">Note that native notifications might have some OS-dependent limitations. For example Windows OS is known to limit the amount of notification originating from each app during short span of time.</translation>
+      <translation>注意原生通知可能有一些取决于操作系统的限制。比如，Windows 会限制短时间内源自同一应用的通知数量。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="93"/>
@@ -8110,9 +8110,9 @@ Description: %3</source>
       <source>When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
 
 If that is the case, then you need to set some time gaps when fetching those feeds.</source>
-      <translation type="unfinished">When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
+      <translation>当你从同一网站/主机获取许多订阅源时，%1可能（暂时）会因为一下子产生过多网络请求而被封禁。
 
-If that is the case, then you need to set some time gaps when fetching those feeds.</translation>
+如果是这样，那么在获取这些订阅源时，你需要设置一些时间间隔。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="55"/>
@@ -8575,9 +8575,9 @@ Also, you can post-process generated feed data with yet another script if you wi
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
-      <translation type="unfinished">Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
+      <translation>打开此设置在获取该订阅源时可能带来相当大的性能提升，但这种情况只会在一些非常特殊情况下才会出现。
 
-This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</translation>
+此设置在解析订阅源的原始 XML 非常缓慢时有用，对于有很长内容的订阅源会发生这种情况。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="31"/>
