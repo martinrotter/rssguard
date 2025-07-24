@@ -379,9 +379,9 @@ version by clicking this popup notification.</source>
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2
-Number of disabled feeds: %3</translation>
+      <translation>订阅源数： %1
+类别数： %2
+停用的订阅源数： %3</translation>
     </message>
   </context>
   <context>
@@ -481,17 +481,17 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="127"/>
       <source>Duplicate shortcut</source>
-      <translation type="unfinished">Duplicate shortcut</translation>
+      <translation>重复的快捷方式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="128"/>
       <source>There is another action which has the same shortcut assigned.</source>
-      <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
+      <translation>还有一个分配了相同快捷方式的操作。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="129"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
-      <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
+      <translation>要保留新的快捷方式分配并清楚之前的快捷方式吗？</translation>
     </message>
   </context>
   <context>
@@ -653,7 +653,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="237"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
-      <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
+      <translation>由于做了过多网络请求订阅源处于网络”降温“模式下</translation>
     </message>
   </context>
   <context>
@@ -967,12 +967,12 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="208"/>
       <source>Menu for filtering feeds</source>
-      <translation type="unfinished">Menu for filtering feeds</translation>
+      <translation>筛选订阅源的菜单</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="210"/>
       <source>(feed list)</source>
-      <translation type="unfinished">(feed list)</translation>
+      <translation>（订阅源列表）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="214"/>
@@ -982,47 +982,47 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="220"/>
       <source>Show unread items</source>
-      <translation type="unfinished">Show unread items</translation>
+      <translation>（显示未读项目）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="226"/>
       <source>Show non-empty items</source>
-      <translation type="unfinished">Show non-empty items</translation>
+      <translation>显示非空项目</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="232"/>
       <source>Show feeds with new articles</source>
-      <translation type="unfinished">Show feeds with new articles</translation>
+      <translation>显示有新文章的订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="238"/>
       <source>Show feeds with error</source>
-      <translation type="unfinished">Show feeds with error</translation>
+      <translation>显示有错误的订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="244"/>
       <source>Show switched off feeds</source>
-      <translation type="unfinished">Show switched off feeds</translation>
+      <translation>显示已关闭的订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="250"/>
       <source>Show quiet feeds</source>
-      <translation type="unfinished">Show quiet feeds</translation>
+      <translation>显示安静的订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="256"/>
       <source>Show feeds with article filters</source>
-      <translation type="unfinished">Show feeds with article filters</translation>
+      <translation>显示有文章筛选器的订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="262"/>
       <source>Display all feeds</source>
-      <translation type="unfinished">Display all feeds</translation>
+      <translation>展示所有订阅源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="272"/>
       <source>Feed list filter</source>
-      <translation type="unfinished">Feed list filter</translation>
+      <translation>订阅源列表筛选器</translation>
     </message>
   </context>
   <context>
@@ -1095,7 +1095,7 @@ Item ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="259"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
-      <translation type="unfinished">Do you really want to purge all non-starred articles from selected feeds?</translation>
+      <translation>真要从所选订阅源中清除所有未加星标的文章吗？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="313"/>
@@ -1220,16 +1220,16 @@ Item ID: %5</source>
 Settings file (%4) -&gt; &quot;%3&quot;
 Skins base folder -&gt; &quot;%5&quot;
 Icon themes base folder -&gt; &quot;%6&quot;</source>
-      <translation type="unfinished">User data folder (&quot;%2&quot;) -&gt; &quot;%1&quot;
+      <translation>用户数据文件夹(&quot;%2&quot;) -&gt; &quot;%1&quot;
 
-Settings file (%4) -&gt; &quot;%3&quot;
-Skins base folder -&gt; &quot;%5&quot;
-Icon themes base folder -&gt; &quot;%6&quot;</translation>
+设置文件 (%4) -&gt; &quot;%3&quot;
+皮肤基文件夹 -&gt; &quot;%5&quot;
+图标主题基文件夹 -&gt; &quot;%6&amp;quot；</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="125"/>
       <source>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</source>
-      <translation type="unfinished">&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Build date:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (compiled against %7)</translation>
+      <translation>&lt;h4&gt;%8&lt;/h4&gt;&lt;b&gt;版本：&lt;/b&gt; %1 ( %2/%3 版本)&lt;br/&gt;&lt;b&gt;修改:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;构建日期:&lt;/b&gt; %5&lt;br/&gt;&lt;b&gt;操作系统:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %6 (基于 %7 进行构建)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="143"/>
@@ -1636,7 +1636,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="180"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>主分类</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
@@ -1803,7 +1803,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
       <source>Target parent category</source>
-      <translation type="unfinished">Target parent category</translation>
+      <translation>目标主分类</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
@@ -1964,22 +1964,22 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="194"/>
       <source>Left-to-right</source>
-      <translation type="unfinished">Left-to-right</translation>
+      <translation>从左到右</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="195"/>
       <source>Right-to-left (everywhere)</source>
-      <translation type="unfinished">Right-to-left (everywhere)</translation>
+      <translation>从右到左（所有地方）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
       <source>Right-to-left (everywhere except feed list)</source>
-      <translation type="unfinished">Right-to-left (everywhere except feed list)</translation>
+      <translation>从右到左（除订阅源列表外的所有地方）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="198"/>
       <source>Right-to-left (only in article viewer)</source>
-      <translation type="unfinished">Right-to-left (only in article viewer)</translation>
+      <translation>从右到左（仅文章查看器）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="171"/>
@@ -2008,7 +2008,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="124"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="216"/>
       <source>Right-to-left behavior</source>
-      <translation type="unfinished">Right-to-left behavior</translation>
+      <translation>从右到左行为</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="83"/>
@@ -2288,7 +2288,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="185"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
       <source>&amp;Recycle bins</source>
-      <translation type="unfinished">&amp;Recycle bins</translation>
+      <translation>回收站(&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="200"/>
@@ -2522,19 +2522,19 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="871"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
       <source>Scroll &amp;up preview</source>
-      <translation type="unfinished">Scroll &amp;up preview</translation>
+      <translation>向上滚动预览(&amp;U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="876"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="778"/>
       <source>Scroll &amp;down preview</source>
-      <translation type="unfinished">Scroll &amp;down preview</translation>
+      <translation>向下滚动预览(&amp;D)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="930"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Reload &amp;skin</source>
-      <translation type="unfinished">Reload &amp;skin</translation>
+      <translation>重新加载皮肤(&amp;S)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="620"/>
@@ -2805,13 +2805,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="920"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>&amp;Pause automatic feed fetching</source>
-      <translation type="unfinished">&amp;Pause automatic feed fetching</translation>
+      <translation>暂停自动订阅源获取(&amp;P)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="925"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
       <source>&amp;Purge selected feeds</source>
-      <translation type="unfinished">&amp;Purge selected feeds</translation>
+      <translation>清空所选订阅源(&amp;P)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="717"/>
@@ -3271,17 +3271,17 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="32"/>
       <source>HTTP headers</source>
-      <translation type="unfinished">HTTP headers</translation>
+      <translation>HTTP 标头</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>身份验证</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>实验性</translation>
     </message>
   </context>
   <context>
@@ -3500,7 +3500,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="62"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>身份验证</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
@@ -3717,47 +3717,47 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="268"/>
       <source>Line is too short for valid protocol</source>
-      <translation type="unfinished">Line is too short for valid protocol</translation>
+      <translation>行对于有效协议来说过短</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="273"/>
       <source>response too large!</source>
-      <translation type="unfinished">response too large!</translation>
+      <translation>响应过大！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="282"/>
       <source>Line does not end with &lt;CR&gt; &lt;LF&gt;</source>
-      <translation type="unfinished">Line does not end with &lt;CR&gt; &lt;LF&gt;</translation>
+      <translation>行结尾不是 &lt;CR&gt; &lt;LF&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="291"/>
       <source>First character is not a digit.</source>
-      <translation type="unfinished">First character is not a digit.</translation>
+      <translation>第一个字符不是数字。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="300"/>
       <source>Second character is not a digit.</source>
-      <translation type="unfinished">Second character is not a digit.</translation>
+      <translation>第二个字符不是数字。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="312"/>
       <source>Third character is not a space.</source>
-      <translation type="unfinished">Third character is not a space.</translation>
+      <translation>第三个字符不是空格。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="359"/>
       <source>Invalid URL for redirection!</source>
-      <translation type="unfinished">Invalid URL for redirection!</translation>
+      <translation>无效的重定向 URL！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="436"/>
       <source>Unspecified status code used!</source>
-      <translation type="unfinished">Unspecified status code used!</translation>
+      <translation>使用了未指定的状态码！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="445"/>
       <source>META too large!</source>
-      <translation type="unfinished">META too large!</translation>
+      <translation>META 过大！</translation>
     </message>
   </context>
   <context>
@@ -4204,7 +4204,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>主分类</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
@@ -4392,7 +4392,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/httpheadersdetails.cpp" line="14"/>
       <source>Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</source>
-      <translation type="unfinished">Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</translation>
+      <translation>在单独的行中输入每个 key/value HTTP 标头对。注意所有空格都很重要，而且标头名称区分大小写。 另外，请务必用 &apos;=&apos;将 key 和 value 分开，就像下面的示例这样：</translation>
     </message>
   </context>
   <context>
@@ -5356,7 +5356,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="231"/>
       <source>(article list)</source>
-      <translation type="unfinished">(article list)</translation>
+      <translation>（文章列表）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="241"/>
@@ -5386,7 +5386,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="268"/>
       <source>Show read articles</source>
-      <translation type="unfinished">Show read articles</translation>
+      <translation>显示已读文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="274"/>
@@ -5885,7 +5885,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlviewer.cpp" line="207"/>
       <source>Context menu for article viewer</source>
-      <translation type="unfinished">Context menu for article viewer</translation>
+      <translation>文章查看器的右键菜单</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlviewer.cpp" line="209"/>
@@ -5996,7 +5996,7 @@ Feedly是一个安全的空间，你可以私密组织和研究对你而言重�
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="159"/>
       <source>Error when fetching articles</source>
-      <translation type="unfinished">Error when fetching articles</translation>
+      <translation>获取文章时出错</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="162"/>
@@ -6075,7 +6075,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="602"/>
       <source>disabled items</source>
-      <translation type="unfinished">disabled items</translation>
+      <translation>已停用的项目</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
@@ -6179,22 +6179,22 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="103"/>
       <source>Save article in HTML format</source>
-      <translation type="unfinished">Save article in HTML format</translation>
+      <translation>以 HTML 格式保存文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="105"/>
       <source>HTML files (*.htm *.html)</source>
-      <translation type="unfinished">HTML files (*.htm *.html)</translation>
+      <translation>HTML 文件 （*.htm *.html）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="150"/>
       <source>Load external resources</source>
-      <translation type="unfinished">Load external resources</translation>
+      <translation>加载外部资源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="152"/>
       <source>Save article as...</source>
-      <translation type="unfinished">Save article as...</translation>
+      <translation>文章另存为……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="154"/>
@@ -6239,32 +6239,32 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-reddit/src/redditentrypoint.cpp" line="41"/>
       <source>Simplistic Reddit client.</source>
-      <translation type="unfinished">Simplistic Reddit client.</translation>
+      <translation>简化的 Reddit 客户端。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="17"/>
       <source>Select existing folder</source>
-      <translation type="unfinished">Select existing folder</translation>
+      <translation>选择现有文件夹</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="41"/>
       <source>Save file</source>
-      <translation type="unfinished">Save file</translation>
+      <translation>保存文件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="63"/>
       <source>Select existing file</source>
-      <translation type="unfinished">Select existing file</translation>
+      <translation>选择现有文件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="392"/>
       <source>Some feeds have error</source>
-      <translation type="unfinished">Some feeds have error</translation>
+      <translation>一些订阅源有错误</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="393"/>
       <source>Some feeds threw an error when fetching articles.</source>
-      <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
+      <translation>一些订阅源在获取文章时抛出了一个错误。</translation>
     </message>
   </context>
   <context>
@@ -6515,7 +6515,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-reddit/src/redditcategory.cpp" line="17"/>
       <source>Subscriptions</source>
-      <translation type="unfinished">Subscriptions</translation>
+      <translation>订阅</translation>
     </message>
   </context>
   <context>
@@ -6530,7 +6530,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="302"/>
       <source>Reddit: authentication error</source>
-      <translation type="unfinished">Reddit: authentication error</translation>
+      <translation>Reddit: 身份认证错误</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="303"/>
@@ -6546,7 +6546,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="315"/>
       <source>Reddit: authorization denied</source>
-      <translation type="unfinished">Reddit: authorization denied</translation>
+      <translation>Reddit: 身份认证被拒</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="316"/>
@@ -6710,9 +6710,9 @@ Token 过期时间：%2</translation>
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2
-Number of disabled feeds: %3</translation>
+      <translation>订阅源数： %1
+类别数： %2
+停用的订阅源数： %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="718"/>
@@ -6785,7 +6785,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="342"/>
       <source>Custom User-Agent</source>
-      <translation type="unfinished">Custom User-Agent</translation>
+      <translation>自定义 User-Agent</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
@@ -7134,17 +7134,17 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="58"/>
       <source>immediately</source>
-      <translation type="unfinished">immediately</translation>
+      <translation>立即</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="59"/>
       <source>only manually</source>
-      <translation type="unfinished">only manually</translation>
+      <translation>仅手动</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="61"/>
       <source>with delay</source>
-      <translation type="unfinished">with delay</translation>
+      <translation>有延迟</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="78"/>
@@ -7289,7 +7289,7 @@ Authors of this application are NOT responsible for lost data.</source>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="272"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="620"/>
       <source>Strikethrough disabled feed titles</source>
-      <translation type="unfinished">Strikethrough disabled feed titles</translation>
+      <translation>在停用的订阅源标题上划横线</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="279"/>
@@ -7337,13 +7337,13 @@ Authors of this application are NOT responsible for lost data.</source>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="682"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="647"/>
       <source>Upon article selection, mark as read</source>
-      <translation type="unfinished">Upon article selection, mark as read</translation>
+      <translation>选中文章时标为已读</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="689"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="648"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
-      <translation type="unfinished">Switch article list to RTL layout if all selected feeds are RTL</translation>
+      <translation>切换文章列表为从右到左布局，如果所有选中的订阅源都是从右到左</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="321"/>
@@ -7379,7 +7379,7 @@ Authors of this application are NOT responsible for lost data.</source>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="343"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="630"/>
       <source>Limit height of attachments</source>
-      <translation type="unfinished">Limit height of attachments</translation>
+      <translation>限制附件高度</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="431"/>
@@ -7480,17 +7480,17 @@ Authors of this application are NOT responsible for lost data.</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="50"/>
       <source>Note that skin colors for dialogs/controls only take effect with some styles, for example with the Fusion style.</source>
-      <translation type="unfinished">Note that skin colors for dialogs/controls only take effect with some styles, for example with the Fusion style.</translation>
+      <translation>注意对话框/控件皮肤颜色只在某些风格下生效，比如 Fusion。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="237"/>
       <source>system style</source>
-      <translation type="unfinished">system style</translation>
+      <translation>系统样式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="239"/>
       <source>default style</source>
-      <translation type="unfinished">default style</translation>
+      <translation>默认风格</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="316"/>
@@ -7636,25 +7636,25 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="112"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="418"/>
       <source>Use skin colors</source>
-      <translation type="unfinished">Use skin colors</translation>
+      <translation>使用皮肤颜色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="122"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="419"/>
       <source>Enable application-wide font anti-aliasing</source>
-      <translation type="unfinished">Enable application-wide font anti-aliasing</translation>
+      <translation>启用程序级字体抗锯齿</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="199"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="427"/>
       <source>Use colored icon when there are unread articles</source>
-      <translation type="unfinished">Use colored icon when there are unread articles</translation>
+      <translation>有未读文章时使用有颜色的图标</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="222"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="428"/>
       <source>Start application minimized (or hidden if configured)</source>
-      <translation type="unfinished">Start application minimized (or hidden if configured)</translation>
+      <translation>以最小化形式启动程序（或者如果配置好，隐藏启动）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="230"/>
@@ -7921,12 +7921,12 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="32"/>
       <source>Note that native notifications might have some OS-dependent limitations. For example Windows OS is known to limit the amount of notification originating from each app during short span of time.</source>
-      <translation type="unfinished">Note that native notifications might have some OS-dependent limitations. For example Windows OS is known to limit the amount of notification originating from each app during short span of time.</translation>
+      <translation>注意原生通知可能有一些取决于操作系统的限制。比如，Windows 会限制短时间内源自同一应用的通知数量。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="93"/>
       <source>%1 (not supported on Wayland)</source>
-      <translation type="unfinished">%1 (not supported on Wayland)</translation>
+      <translation>%1 （Wayland 上不受支持）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="137"/>
@@ -7987,13 +7987,13 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="30"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="137"/>
       <source>Show dialogs</source>
-      <translation type="unfinished">Show dialogs</translation>
+      <translation>显示对话框</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="37"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="138"/>
       <source>Play sound</source>
-      <translation type="unfinished">Play sound</translation>
+      <translation>播放声音</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="65"/>
@@ -8088,7 +8088,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="59"/>
       <source>Feed fetch spacing</source>
-      <translation type="unfinished">Feed fetch spacing</translation>
+      <translation>订阅源获取间隔</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="16"/>
@@ -8110,9 +8110,9 @@ Description: %3</source>
       <source>When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
 
 If that is the case, then you need to set some time gaps when fetching those feeds.</source>
-      <translation type="unfinished">When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
+      <translation>当你从同一网站/主机获取许多订阅源时，%1可能（暂时）会因为一下子产生过多网络请求而被封禁。
 
-If that is the case, then you need to set some time gaps when fetching those feeds.</translation>
+如果是这样，那么在获取这些订阅源时，你需要设置一些时间间隔。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="55"/>
@@ -8127,13 +8127,13 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="72"/>
       <source> = no spacing</source>
-      <translation type="unfinished"> = no spacing</translation>
+      <translation> = 无间隔</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="75"/>
       <source> seconds</source>
-      <translation type="unfinished">
-        <numerusform> seconds</numerusform>
+      <translation>
+        <numerusform> 秒</numerusform>
       </translation>
     </message>
   </context>
@@ -8161,12 +8161,12 @@ Source: %4
 HTTP/2: %6
 Item ID: %5
 </source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: %4
-HTTP/2: %6
-Item ID: %5
+      <translation>自动更新状态： %1
+活动消息筛选器：%2
+状态： %3
+源：%4
+HTTP/2：%6
+项目 ID：%5
 </translation>
     </message>
     <message>
@@ -8192,22 +8192,22 @@ Item ID: %5
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="460"/>
       <source>uses application setting</source>
-      <translation type="unfinished">uses application setting</translation>
+      <translation>使用程序设置</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="463"/>
       <source>enabled</source>
-      <translation type="unfinished">enabled</translation>
+      <translation>已启用</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="466"/>
       <source>disabled</source>
-      <translation type="unfinished">disabled</translation>
+      <translation>已停用</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="469"/>
       <source>unknown state</source>
-      <translation type="unfinished">unknown state</translation>
+      <translation>未知状态</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="233"/>
@@ -8235,10 +8235,10 @@ Item ID: %5
 Type: %2
 Post-processing script: %3
 Use raw XML saving: %4</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4</translation>
+      <translation>编码：%1
+类型：%2
+后期处理脚本： %3
+使用原始 XML 保存：%4</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="401"/>
@@ -8297,22 +8297,22 @@ Use raw XML saving: %4</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="155"/>
       <source>Enter URL</source>
-      <translation type="unfinished">Enter URL</translation>
+      <translation>输入 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="156"/>
       <source>Enter direct URL pointing to the image</source>
-      <translation type="unfinished">Enter direct URL pointing to the image</translation>
+      <translation>输入直接指向图片的 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="175"/>
       <source>Icon not fetched</source>
-      <translation type="unfinished">Icon not fetched</translation>
+      <translation>未取得图标</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="176"/>
       <source>Icon was not fetched due to network error.</source>
-      <translation type="unfinished">Icon was not fetched due to network error.</translation>
+      <translation>由于网络错误未取得图标。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="206"/>
@@ -8431,12 +8431,12 @@ Use raw XML saving: %4</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="83"/>
       <source>Select icon from file...</source>
-      <translation type="unfinished">Select icon from file...</translation>
+      <translation>从文件选择图标……</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="85"/>
       <source>Download icon from URL...</source>
-      <translation type="unfinished">Download icon from URL...</translation>
+      <translation>从 URL 下载图标……</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="355"/>
@@ -8490,7 +8490,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>主分类</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="37"/>
@@ -8563,7 +8563,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="28"/>
       <source>Use older mechanism for extracting raw XML data</source>
-      <translation type="unfinished">Use older mechanism for extracting raw XML data</translation>
+      <translation>使用较老的原始 XML 数据提取机制</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="54"/>
@@ -8575,24 +8575,24 @@ Also, you can post-process generated feed data with yet another script if you wi
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
-      <translation type="unfinished">Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
+      <translation>打开此设置在获取该订阅源时可能带来相当大的性能提升，但这种情况只会在一些非常特殊情况下才会出现。
 
-This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</translation>
+此设置在解析订阅源的原始 XML 非常缓慢时有用，对于有很长内容的订阅源会发生这种情况。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="31"/>
       <source>Use application settings</source>
-      <translation type="unfinished">Use application settings</translation>
+      <translation>使用程序设置</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="33"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>已启用</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
       <source>Disabled</source>
-      <translation type="unfinished">Disabled</translation>
+      <translation>已停用</translation>
     </message>
   </context>
   <context>
@@ -8600,7 +8600,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceentrypoint.cpp" line="20"/>
       <source>Local RSS/RDF/ATOM/JSON</source>
-      <translation type="unfinished">Local RSS/RDF/ATOM/JSON</translation>
+      <translation>本地 RSS/RDF/ATOM/JSON</translation>
     </message>
   </context>
   <context>
@@ -9151,7 +9151,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
       <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <translation>主分类</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="30"/>
