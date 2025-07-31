@@ -29,6 +29,9 @@ class SettingsGui : public SettingsPanel {
     void resetCustomSkinColor();
 
   private:
+    void changeFont(QLabel& lbl);
+
+  private:
     Ui::SettingsGui* m_ui;
 };
 

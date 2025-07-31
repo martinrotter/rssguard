@@ -73,7 +73,6 @@
 
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
   : SingleApplication(id, argc, argv), m_rawCliArgs(raw_cli_args), m_updateFeedsLock(new Mutex()) {
-
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
   // HACK: Force rendering system to use OpenGL backend.
 #if QT_VERSION_MAJOR < 6
@@ -143,7 +142,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_icons->loadCurrentIconTheme();
 
   reloadCurrentSkin(false);
-  setupFontAntialiasing();
+  setupFont();
 
   if (m_toastNotifications != nullptr) {
     connect(m_toastNotifications,
@@ -911,13 +910,25 @@ QImage Application::generateOverlayIcon(int number) const {
 }
 #endif
 
-void Application::setupFontAntialiasing() {
+void Application::setupFont() {
+  bool custom_font_enabled = qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomizeAppFont)).toBool();
   bool aa_enabled = qApp->settings()->value(GROUP(GUI), SETTING(GUI::FontAntialiasing)).toBool();
 
   QFont fon = QApplication::font();
+
+  if (custom_font_enabled) {
+    if (fon.fromString(settings()->value(GROUP(GUI), GUI::AppFont, fon.toString()).toString())) {
+      qDebugNN << LOGSEC_CORE << "Loaded global custom font" << QUOTE_W_SPACE_DOT(fon.toString());
+    }
+    else {
+      qWarningNN << LOGSEC_CORE << "Failed to load custom global font.";
+    }
+  }
+
   fon.setStyleStrategy(aa_enabled ? QFont::StyleStrategy::PreferAntialias
                                   : QFont::StyleStrategy(QFont::StyleStrategy::NoAntialias |
                                                          QFont::StyleStrategy::NoSubpixelAntialias));
+
   QApplication::setFont(fon);
 }
 

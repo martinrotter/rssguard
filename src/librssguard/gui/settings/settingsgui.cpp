@@ -17,6 +17,7 @@
 #include "miscellaneous/settings.h"
 
 #include <QDropEvent>
+#include <QFontDialog>
 #include <QMetaEnum>
 #include <QMetaObject>
 #include <QStyleFactory>
@@ -120,6 +121,8 @@ void SettingsGui::loadUi() {
           this,
           &SettingsGui::dirtifySettings);
   connect(m_ui->m_displayUnreadMessageCountOnTaskBar, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_gbAppFont, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_gbAppFont, &QGroupBox::toggled, this, &SettingsGui::requireRestart);
 
   connect(m_ui->m_spinToolbarIconSize, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
     if (value <= 0) {
@@ -130,7 +133,26 @@ void SettingsGui::loadUi() {
     }
   });
 
+  connect(m_ui->m_btnChangeFont, &QPushButton::clicked, this, [&]() {
+    changeFont(*m_ui->m_lblAppFont);
+  });
+
   SettingsPanel::loadUi();
+}
+
+void SettingsGui::changeFont(QLabel& lbl) {
+  bool ok;
+  QFont new_font = QFontDialog::getFont(&ok,
+                                        lbl.font(),
+                                        this,
+                                        tr("Select new font"),
+                                        QFontDialog::FontDialogOption::DontUseNativeDialog);
+
+  if (ok) {
+    lbl.setFont(new_font);
+    dirtifySettings();
+    requireRestart();
+  }
 }
 
 QIcon SettingsGui::icon() const {
@@ -175,6 +197,13 @@ void SettingsGui::updateSkinOptions() {
 void SettingsGui::loadSettings() {
   onBeginLoadSettings();
 
+  // Fonts.
+  QFont app_fon;
+
+  // Keep in sync with void MessagesModel::setupFonts().
+  app_fon.fromString(settings()->value(GROUP(GUI), GUI::AppFont, QApplication::font().toString()).toString());
+  m_ui->m_lblAppFont->setFont(app_fon);
+  m_ui->m_gbAppFont->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::CustomizeAppFont)).toBool());
   m_ui->m_checkFontAntialiasing->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::FontAntialiasing)).toBool());
 
   // Load settings of tray icon.
@@ -385,6 +414,8 @@ void SettingsGui::resetCustomSkinColor() {
 void SettingsGui::saveSettings() {
   onBeginSaveSettings();
 
+  settings()->setValue(GROUP(GUI), GUI::AppFont, m_ui->m_lblAppFont->font().toString());
+  settings()->setValue(GROUP(GUI), GUI::CustomizeAppFont, m_ui->m_gbAppFont->isChecked());
   settings()->setValue(GROUP(GUI), GUI::FontAntialiasing, m_ui->m_checkFontAntialiasing->isChecked());
 
   // Save custom skin colors.
