@@ -197,12 +197,12 @@ void QLiteHtmlViewer::setHtml(const QString& html, const QUrl& url, RootItem* ro
 
 ContextMenuData QLiteHtmlViewer::provideContextMenuData(QContextMenuEvent* event) const {
   ContextMenuData c;
-  QPoint viewportPos;
-  QPoint pos;
+  QPointF viewport_pos;
+  QPointF pos;
 
-  htmlPos(event->pos(), &viewportPos, &pos);
+  htmlPos(event->pos(), &viewport_pos, &pos);
 
-  QString anchor = documentContainer()->linkAt(pos, viewportPos).toString();
+  QString anchor = documentContainer()->linkAt(pos, viewport_pos).toString();
 
   if (!anchor.isEmpty()) {
     c.m_linkUrl = anchor;

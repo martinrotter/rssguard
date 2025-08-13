@@ -11,6 +11,7 @@
 #include <memory>
 #include <unordered_map>
 
+#include <QNetworkReply>
 #include <QPoint>
 #include <QRect>
 #include <QString>
@@ -37,14 +38,14 @@ class Selection {
     bool isValid() const;
 
     void update();
-    QRect boundingRect() const;
+    QRectF boundingRect() const;
 
     Element m_startElem;
     Element m_endElem;
-    QVector<QRect> m_selection;
+    QVector<QRectF> m_selection;
     QString m_text;
 
-    QPoint m_startingPos;
+    QPointF m_startingPos;
     Mode m_mode = Mode::Free;
     bool m_isSelecting = false;
 };
@@ -61,7 +62,11 @@ struct Index {
     Entry findElement(int index) const;
 };
 
-class DocumentContainer : public litehtml::document_container {
+class Downloader;
+
+class DocumentContainer : public QObject, litehtml::document_container {
+    Q_OBJECT
+
   public:
     explicit DocumentContainer();
     virtual ~DocumentContainer();
@@ -71,14 +76,14 @@ class DocumentContainer : public litehtml::document_container {
                                            const litehtml::document* doc,
                                            litehtml::font_metrics* fm);
     virtual void delete_font(litehtml::uint_ptr fnt) override;
-    virtual int text_width(const char* text, litehtml::uint_ptr fnt) override;
+    virtual litehtml::pixel_t text_width(const char* text, litehtml::uint_ptr fnt) override;
     virtual void draw_text(litehtml::uint_ptr hdc,
                            const char* text,
                            litehtml::uint_ptr fnt,
                            litehtml::web_color color,
                            const litehtml::position& pos) override;
-    virtual int pt_to_px(int pt) const override;
-    virtual int get_default_font_size() const override;
+    virtual litehtml::pixel_t pt_to_px(float pt) const override;
+    virtual litehtml::pixel_t get_default_font_size() const override;
     virtual const char* get_default_font_name() const override;
     virtual void draw_list_marker(litehtml::uint_ptr hdc, const litehtml::list_marker& marker) override;
     virtual void load_image(const char* src, const char* baseurl, bool redraw_on_ready) override;
@@ -151,7 +156,7 @@ class DocumentContainer : public litehtml::document_container {
     void setPaintDevice(QPaintDevice* paint_device);
     void setScrollPosition(const QPoint& pos);
     void render(int width, int height);
-    void draw(QPainter* painter, QRect clip);
+    void draw(QPainter* painter, QRectF clip);
 
     int documentWidth() const;
     int documentHeight() const;
@@ -160,13 +165,15 @@ class DocumentContainer : public litehtml::document_container {
     void setMediaType(MediaType t);
 
     // these return areas to redraw in document space
-    QVector<QRect> mousePressEvent(QPoint document_pos, QPoint viewportPosos, Qt::MouseButton button);
-    QVector<QRect> mouseMoveEvent(QPoint documentPoss, QPoint viewport_pos);
-    QVector<QRect> mouseReleaseEvent(QPoint document_pos, QPoint viewport_pos, Qt::MouseButton button);
-    QVector<QRect> mouseDoubleClickEvent(QPoint document_pos, QPoint viewport_pos, Qt::MouseButton button);
-    QVector<QRect> leaveEvent();
+    QVector<QRectF> mousePressEvent(QPointF document_pos, QPointF viewportPosos, Qt::MouseButton button);
+    QVector<QRectF> mouseMoveEvent(QPointF documentPoss, QPointF viewport_pos);
+    QVector<QRectF> mouseReleaseEvent(QPointF document_pos, QPointF viewport_pos, Qt::MouseButton button);
+    QVector<QRectF> mouseDoubleClickEvent(QPointF document_pos, QPointF viewport_pos, Qt::MouseButton button);
+    QVector<QRectF> leaveEvent();
 
-    QUrl linkAt(QPoint document_pos, QPoint viewportPos) const;
+    Downloader* downloader() const;
+
+    QUrl linkAt(QPointF document_pos, QPointF viewportPos) const;
 
     QString caption() const;
     QString selectedText() const;
@@ -176,8 +183,8 @@ class DocumentContainer : public litehtml::document_container {
                   bool incremental,
                   bool* wrapped,
                   bool* success,
-                  QVector<QRect>* old_selection,
-                  QVector<QRect>* new_selection);
+                  QVector<QRectF>* old_selection,
+                  QVector<QRectF>* new_selection);
 
     void setDocument(const QByteArray& data);
     bool hasDocument() const;
@@ -202,6 +209,12 @@ class DocumentContainer : public litehtml::document_container {
 
     int withFixedElementPosition(int y, const std::function<void()>& action);
 
+  private slots:
+    void onResourceDownloadCompleted(const QUrl& url,
+                                     QNetworkReply::NetworkError status,
+                                     int http_code,
+                                     QByteArray contents);
+
   private:
     void drawRectWithLambda(litehtml::uint_ptr hdc,
                             const litehtml::background_layer& layer,
@@ -215,7 +228,9 @@ class DocumentContainer : public litehtml::document_container {
 
     QUrl resolveUrl(const QString& url, const QString& base_url) const;
 
-    void drawSelection(QPainter* painter, const QRect& clip) const;
+    void downloadNextExternalResource();
+
+    void drawSelection(QPainter* painter, const QRectF& clip) const;
     void buildIndex();
     void updateSelection();
     void clearSelection();
@@ -239,4 +254,6 @@ class DocumentContainer : public litehtml::document_container {
     DocumentContainer::ClipboardCallback m_clipboardCallback;
     bool m_blockLinks = false;
     QString m_masterCss;
+    Downloader* m_downloader;
+    QStringList m_neededExternalResources;
 };
