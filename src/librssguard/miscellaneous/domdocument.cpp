@@ -11,7 +11,11 @@ bool DomDocument::setContent(const QByteArray& text,
                              QString* error_msg,
                              int* error_line,
                              int* error_column) {
-  auto text_modified = QByteArray(text).trimmed().replace("&shy;", "").replace(0x000B, "");
+  auto text_modified = QByteArray(text)
+                        .trimmed()
+                        .replace("&shy;", "")
+                        .replace("& ", "&amp; ")
+                        .replace(0x000B, "");
 
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
   QDomDocument::ParseResult res =
@@ -48,6 +52,7 @@ bool DomDocument::setContent(const QString& text,
   auto text_modified = QString(text)
                          .trimmed()
                          .replace("&shy;", QString())
+                         .replace("& ", "&amp; ")
                          .replace(QChar::SpecialCharacter::Null, QString())
                          .replace(QChar(0x000B), QString());
 
