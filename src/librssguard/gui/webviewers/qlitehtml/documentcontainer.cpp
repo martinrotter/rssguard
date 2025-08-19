@@ -6,6 +6,7 @@
 #include "gui/webviewers/qlitehtml/documentcontainer.h"
 
 #include "definitions/definitions.h"
+#include "network-web/downloader.h"
 
 #include <algorithm>
 
@@ -35,7 +36,7 @@ static QPainter* toQPainter(litehtml::uint_ptr hdc) {
   return reinterpret_cast<QPainter*>(hdc);
 }
 
-static QRect toQRect(litehtml::position position) {
+static QRectF toQRect(litehtml::position position) {
   return {position.x, position.y, position.width, position.height};
 }
 
@@ -175,7 +176,7 @@ static litehtml::element::ptr nextLeaf(const litehtml::element::ptr& element, co
   return firstLeaf(current, stop);
 }
 
-static Selection::Element selectionDetails(const litehtml::element::ptr& element, const QString& text, QPoint pos) {
+static Selection::Element selectionDetails(const litehtml::element::ptr& element, const QString& text, QPointF pos) {
   // shortcut, which _might_ not really be correct
   if (!element->children().empty()) {
     return {element, -1, -1}; // everything selected
@@ -202,8 +203,8 @@ static Selection::Element selectionDetails(const litehtml::element::ptr& element
 // Does a depth-first iteration over elements that "pos" is inside, and executes
 // \a action with them. If \a action returns \c true, the iteration is stopped.
 static bool deepestChildAtPoint(const litehtml::element::ptr& element,
-                                QPoint pos,
-                                QPoint viewport_pos,
+                                QPointF pos,
+                                QPointF viewport_pos,
                                 const std::function<bool(const litehtml::element::ptr&)>& action,
                                 int level = 0) {
   // TODO are there elements for which we should take viewportPos into account instead?
@@ -212,7 +213,7 @@ static bool deepestChildAtPoint(const litehtml::element::ptr& element,
     return false /*continue iterating*/;
   }
 
-  const QRect placement = toQRect(element->get_placement());
+  const QRectF placement = toQRect(element->get_placement());
 
   // Do not continue down elements that do not cover the position. Exceptions:
   // - elements with 0 size (includes anchors and other weird elements)
@@ -238,13 +239,13 @@ static bool deepestChildAtPoint(const litehtml::element::ptr& element,
 }
 
 static Selection::Element selectionElementAtPoint(const litehtml::element::ptr& element,
-                                                  QPoint pos,
-                                                  QPoint viewport_pos,
+                                                  QPointF pos,
+                                                  QPointF viewport_pos,
                                                   Selection::Mode mode) {
   Selection::Element result;
 
   deepestChildAtPoint(element, pos, viewport_pos, [mode, &result, &pos](const litehtml::element::ptr& element) {
-    const QRect placement = toQRect(element->get_placement());
+    const QRectF placement = toQRect(element->get_placement());
     std::string text;
     element->get_text(text);
 
@@ -474,7 +475,7 @@ void Selection::update() {
     const QString text_str = QString::fromStdString(elem_text);
 
     if (!text_str.isEmpty()) {
-      QRect rect = toQRect(element.element->get_placement()).adjusted(-1, -1, 1, 1);
+      QRectF rect = toQRect(element.element->get_placement()).adjusted(-1, -1, 1, 1);
 
       if (element.index < 0) { // fully selected
         m_text += text_str;
@@ -543,24 +544,35 @@ void Selection::update() {
   }
 }
 
-QRect Selection::boundingRect() const {
-  QRect rect;
+QRectF Selection::boundingRect() const {
+  QRectF rect;
 
-  for (const QRect& r : m_selection) {
+  for (const QRectF& r : m_selection) {
     rect = rect.united(r);
   }
 
   return rect;
 }
 
-DocumentContainer::DocumentContainer() {}
+DocumentContainer::DocumentContainer() : m_downloader(new Downloader(this)) {
+  connect(m_downloader, &Downloader::completed, this, &DocumentContainer::onResourceDownloadCompleted);
+}
 
 DocumentContainer::~DocumentContainer() = default;
 
 litehtml::uint_ptr DocumentContainer::create_font(const litehtml::font_description& descr,
                                                   const litehtml::document* doc,
                                                   litehtml::font_metrics* fm) {
-  const QStringList split_names = QString::fromStdString(descr.family).split(',', Qt::SkipEmptyParts);
+  Q_UNUSED(doc)
+
+  QStringList split_names = QString::fromStdString(descr.family)
+                              .split(',',
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                     Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                     QString::SplitBehavior::SkipEmptyParts);
+#endif
+
   QStringList family_names;
 
   std::transform(split_names.cbegin(), split_names.cend(), std::back_inserter(family_names), [this](const QString& s) {
@@ -632,7 +644,7 @@ void DocumentContainer::delete_font(litehtml::uint_ptr fnt) {
   delete font;
 }
 
-int DocumentContainer::text_width(const char* text, litehtml::uint_ptr fnt) {
+litehtml::pixel_t DocumentContainer::text_width(const char* text, litehtml::uint_ptr fnt) {
   const QFontMetrics fm(toQFont(fnt));
   return fm.horizontalAdvance(QString::fromUtf8(text));
 }
@@ -649,13 +661,13 @@ void DocumentContainer::draw_text(litehtml::uint_ptr hdc,
   painter->drawText(toQRect(pos), 0, QString::fromUtf8(text));
 }
 
-int DocumentContainer::pt_to_px(int pt) const {
+litehtml::pixel_t DocumentContainer::pt_to_px(float pt) const {
   // magic factor of 11/12 to account for differences to webengine/webkit
-  return m_paintDevice->physicalDpiY() * pt * 11 / m_paintDevice->logicalDpiY() / 12;
+  return m_paintDevice->physicalDpiY() * pt * 11.0f / m_paintDevice->logicalDpiY() / 12.0f;
 }
 
-int DocumentContainer::get_default_font_size() const {
-  return m_defaultFont.pointSize();
+litehtml::pixel_t DocumentContainer::get_default_font_size() const {
+  return m_defaultFont.pointSizeF();
 }
 
 const char* DocumentContainer::get_default_font_name() const {
@@ -691,7 +703,7 @@ void DocumentContainer::draw_list_marker(litehtml::uint_ptr hdc, const litehtml:
   }
   else {
     const QPixmap pixmap = getPixmap(QString::fromStdString(marker.image), QString::fromStdString(marker.baseurl));
-    painter->drawPixmap(toQRect(marker.pos), pixmap);
+    painter->drawPixmap(toQRect(marker.pos), pixmap, QRectF());
   }
 }
 
@@ -720,15 +732,15 @@ void DocumentContainer::get_image_size(const char* src, const char* baseurl, lit
   sz.height = pm.height();
 }
 
-void DocumentContainer::drawSelection(QPainter* painter, const QRect& clip) const {
+void DocumentContainer::drawSelection(QPainter* painter, const QRectF& clip) const {
   painter->save();
   painter->setClipRect(clip, Qt::ClipOperation::IntersectClip);
 
-  for (const QRect& r : m_selection.m_selection) {
-    const QRect client_rect = r.translated(-m_scrollPosition);
+  for (const QRectF& r : m_selection.m_selection) {
+    const QRectF client_rect = r.translated(-m_scrollPosition);
     const QPalette palette = m_paletteCallback();
 
-    painter->fillRect(client_rect, palette.brush(QPalette::Highlight));
+    painter->fillRect(client_rect, palette.brush(QPalette::ColorRole::Highlight));
   }
 
   painter->restore();
@@ -807,6 +819,10 @@ void DocumentContainer::clearSelection() {
   if (!old_text.isEmpty()) {
     m_clipboardCallback(false);
   }
+}
+
+Downloader* DocumentContainer::downloader() const {
+  return m_downloader;
 }
 
 void DocumentContainer::drawRectWithLambda(litehtml::uint_ptr hdc,
@@ -1178,11 +1194,14 @@ void DocumentContainer::render(int width, int height) {
   updateSelection();
 }
 
-void DocumentContainer::draw(QPainter* painter, QRect clip) {
+void DocumentContainer::draw(QPainter* painter, QRectF clip) {
   drawSelection(painter, clip);
 
   const QPoint pos = -m_scrollPosition;
-  const litehtml::position clipRect = {clip.x(), clip.y(), clip.width(), clip.height()};
+  const litehtml::position clipRect = {litehtml::pixel_t(clip.x()),
+                                       litehtml::pixel_t(clip.y()),
+                                       litehtml::pixel_t(clip.width()),
+                                       litehtml::pixel_t(clip.height())};
 
   m_document->draw(reinterpret_cast<litehtml::uint_ptr>(painter), pos.x(), pos.y(), &clipRect);
 }
@@ -1241,12 +1260,12 @@ void DocumentContainer::setMediaType(MediaType mt) {
   m_mediaType = fromQt(mt);
 }
 
-QVector<QRect> DocumentContainer::mousePressEvent(QPoint document_pos, QPoint viewport_pos, Qt::MouseButton button) {
+QVector<QRectF> DocumentContainer::mousePressEvent(QPointF document_pos, QPointF viewport_pos, Qt::MouseButton button) {
   if (!m_document || button != Qt::LeftButton) {
     return {};
   }
 
-  QVector<QRect> redraw_rects;
+  QVector<QRectF> redraw_rects;
 
   if (m_selection.isValid()) {
     redraw_rects.append(m_selection.boundingRect());
@@ -1271,12 +1290,12 @@ QVector<QRect> DocumentContainer::mousePressEvent(QPoint document_pos, QPoint vi
   return redraw_rects;
 }
 
-QVector<QRect> DocumentContainer::mouseMoveEvent(QPoint document_pos, QPoint viewport_pos) {
+QVector<QRectF> DocumentContainer::mouseMoveEvent(QPointF document_pos, QPointF viewport_pos) {
   if (!m_document) {
     return {};
   }
 
-  QVector<QRect> redraw_rects;
+  QVector<QRectF> redraw_rects;
 
   if (m_selection.m_isSelecting || (!m_selection.m_startingPos.isNull() &&
                                     (m_selection.m_startingPos - document_pos).manhattanLength() >= kDragDistance &&
@@ -1305,12 +1324,14 @@ QVector<QRect> DocumentContainer::mouseMoveEvent(QPoint document_pos, QPoint vie
   return redraw_rects;
 }
 
-QVector<QRect> DocumentContainer::mouseReleaseEvent(QPoint document_pos, QPoint viewport_pos, Qt::MouseButton button) {
+QVector<QRectF> DocumentContainer::mouseReleaseEvent(QPointF document_pos,
+                                                     QPointF viewport_pos,
+                                                     Qt::MouseButton button) {
   if (!m_document || button != Qt::MouseButton::LeftButton) {
     return {};
   }
 
-  QVector<QRect> redraw_rects;
+  QVector<QRectF> redraw_rects;
 
   m_selection.m_isSelecting = false;
   m_selection.m_startingPos = {};
@@ -1336,14 +1357,14 @@ QVector<QRect> DocumentContainer::mouseReleaseEvent(QPoint document_pos, QPoint 
   return redraw_rects;
 }
 
-QVector<QRect> DocumentContainer::mouseDoubleClickEvent(QPoint document_pos,
-                                                        QPoint viewport_pos,
-                                                        Qt::MouseButton button) {
+QVector<QRectF> DocumentContainer::mouseDoubleClickEvent(QPointF document_pos,
+                                                         QPointF viewport_pos,
+                                                         Qt::MouseButton button) {
   if (!m_document || button != Qt::MouseButton::LeftButton) {
     return {};
   }
 
-  QVector<QRect> redraw_rects;
+  QVector<QRectF> redraw_rects;
 
   clearSelection();
 
@@ -1373,7 +1394,7 @@ QVector<QRect> DocumentContainer::mouseDoubleClickEvent(QPoint document_pos,
   return redraw_rects;
 }
 
-QVector<QRect> DocumentContainer::leaveEvent() {
+QVector<QRectF> DocumentContainer::leaveEvent() {
   if (!m_document) {
     return {};
   }
@@ -1381,7 +1402,7 @@ QVector<QRect> DocumentContainer::leaveEvent() {
   litehtml::position::vector redraw_boxes;
 
   if (m_document->on_mouse_leave(redraw_boxes)) {
-    QVector<QRect> redraw_rects;
+    QVector<QRectF> redraw_rects;
 
     redraw_rects.reserve(redraw_boxes.size());
 
@@ -1395,7 +1416,7 @@ QVector<QRect> DocumentContainer::leaveEvent() {
   return {};
 }
 
-QUrl DocumentContainer::linkAt(QPoint document_pos, QPoint viewport_pos) const {
+QUrl DocumentContainer::linkAt(QPointF document_pos, QPointF viewport_pos) const {
   if (!m_document) {
     return {};
   }
@@ -1436,8 +1457,8 @@ void DocumentContainer::findText(const QString& text,
                                  bool incremental,
                                  bool* wrapped,
                                  bool* success,
-                                 QVector<QRect>* old_selection,
-                                 QVector<QRect>* new_selection) {
+                                 QVector<QRectF>* old_selection,
+                                 QVector<QRectF>* new_selection) {
   if (success) {
     *success = false;
   }
@@ -1649,6 +1670,11 @@ int DocumentContainer::withFixedElementPosition(int y, const std::function<void(
   return -1;
 }
 
+void DocumentContainer::onResourceDownloadCompleted(const QUrl& url,
+                                                    QNetworkReply::NetworkError status,
+                                                    int http_code,
+                                                    QByteArray contents) {}
+
 QString DocumentContainer::masterCss() const {
   return m_masterCss;
 }
@@ -1664,15 +1690,15 @@ QPixmap DocumentContainer::getPixmap(const QString& image_url, const QString& ba
 }
 
 QString DocumentContainer::serifFont() const {
-  return {"Times New Roman"};
+  return QSL("Times New Roman");
 }
 
 QString DocumentContainer::sansSerifFont() const {
-  return {"Arial"};
+  return QSL("Arial");
 }
 
 QString DocumentContainer::monospaceFont() const {
-  return {"Courier"};
+  return QSL("Courier");
 }
 
 QUrl DocumentContainer::resolveUrl(const QString& url, const QString& base_url) const {
@@ -1710,7 +1736,16 @@ QUrl DocumentContainer::resolveUrl(const QString& url, const QString& base_url) 
 
     return resolved_url;
   }
+
   return qurl;
+}
+
+void DocumentContainer::downloadNextExternalResource() {
+  if (m_neededExternalResources.isEmpty()) {
+    return;
+  }
+
+  m_downloader->downloadFile(m_neededExternalResources.first(), 3000);
 }
 
 Index::Entry Index::findElement(int index) const {
@@ -1780,5 +1815,8 @@ void DocumentContainer::draw_conic_gradient(litehtml::uint_ptr hdc,
 void DocumentContainer::on_mouse_event(const litehtml::element::ptr& el, litehtml::mouse_event event) {}
 
 void DocumentContainer::get_viewport(litehtml::position& viewport) const {
-  viewport = {m_clientRect.x(), m_clientRect.y(), m_clientRect.width(), m_clientRect.height()};
+  viewport = {litehtml::pixel_t(m_clientRect.x()),
+              litehtml::pixel_t(m_clientRect.y()),
+              litehtml::pixel_t(m_clientRect.width()),
+              litehtml::pixel_t(m_clientRect.height())};
 }

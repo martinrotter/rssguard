@@ -282,7 +282,11 @@ void SettingsFeedsMessages::initializeMessageDateFormats() {
 
 void SettingsFeedsMessages::changeFont(QLabel& lbl) {
   bool ok;
-  QFont new_font = QFontDialog::getFont(&ok, lbl.font(), this, tr("Select new font"), QFontDialog::DontUseNativeDialog);
+  QFont new_font = QFontDialog::getFont(&ok,
+                                        lbl.font(),
+                                        this,
+                                        tr("Select new font"),
+                                        QFontDialog::FontDialogOption::DontUseNativeDialog);
 
   if (ok) {
     lbl.setFont(new_font);

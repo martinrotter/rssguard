@@ -332,6 +332,11 @@ namespace GUI {
   KEY MonochromeTrayIcon;
   VALUE(bool) MonochromeTrayIconDef;
 
+  KEY CustomizeAppFont;
+  VALUE(bool) CustomizeAppFontDef;
+
+  KEY AppFont;
+
   KEY FontAntialiasing;
   VALUE(bool) FontAntialiasingDef;
 

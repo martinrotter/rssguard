@@ -313,6 +313,11 @@ DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef = false;
 DKEY GUI::MonochromeTrayIcon = "monochrome_tray_icon";
 DVALUE(bool) GUI::MonochromeTrayIconDef = false;
 
+DKEY GUI::CustomizeAppFont = "custom_app_font";
+DVALUE(bool) GUI::CustomizeAppFontDef = false;
+
+DKEY GUI::AppFont = "app_font";
+
 DKEY GUI::FontAntialiasing = "font_antialiasing";
 DVALUE(bool) GUI::FontAntialiasingDef = true;
 
