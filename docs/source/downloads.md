@@ -41,5 +41,9 @@ It is recommended to either use native packages for your distribution, compile b
 ### Mac OS X
 `DMG` packages are provided for Mac users.
 
+```{warning}
+Note that on Mac OS X, in some cases, you have to self-sign the application via `codesign` utility to make it run.
+```
+
 ### KOBO Book Reader
 Yes, RSS Guard was [ported](https://github.com/Szybet/rssguard-inkbox) to KOBO. Feel free to try it and report any bugs upstream or to port author.
