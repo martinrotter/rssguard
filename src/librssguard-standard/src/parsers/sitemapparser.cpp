@@ -167,10 +167,7 @@ QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteAr
 
   QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);
   QString xml_contents_encoded;
-  QString enc =
-    QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""), QRegularExpression::PatternOption::CaseInsensitiveOption)
-      .match(uncompressed_content)
-      .captured(1);
+  QString enc = DomDocument::extractEncoding(content);
 
   if (!enc.isEmpty()) {
     // Some "encoding" attribute was found get the encoding

@@ -174,10 +174,7 @@ QPair<StandardFeed*, QList<IconLocation>> RdfParser::guessFeed(const QByteArray&
                                                                const NetworkResult& network_res) const {
   QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);
   QString xml_contents_encoded;
-  QString enc =
-    QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""), QRegularExpression::PatternOption::CaseInsensitiveOption)
-      .match(content)
-      .captured(1);
+  QString enc = DomDocument::extractEncoding(content);
 
   if (!enc.isEmpty()) {
     // Some "encoding" attribute was found get the encoding
@@ -200,9 +197,10 @@ QPair<StandardFeed*, QList<IconLocation>> RdfParser::guessFeed(const QByteArray&
   int error_line, error_column;
 
   if (!xml_document.setContent(xml_contents_encoded, true, &error_msg, &error_line, &error_column)) {
-    throw ApplicationException(QObject::tr("XML is not well-formed, %1, line %2, column %3").arg(error_msg)
-                                                                      .arg(QString::number(error_line))
-                                                                      .arg(QString::number(error_column)));
+    throw ApplicationException(QObject::tr("XML is not well-formed, %1, line %2, column %3")
+                                 .arg(error_msg)
+                                 .arg(QString::number(error_line))
+                                 .arg(QString::number(error_column)));
   }
 
   QDomElement root_element = xml_document.documentElement();

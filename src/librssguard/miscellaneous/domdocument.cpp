@@ -5,6 +5,14 @@
 #include "miscellaneous/iofactory.h"
 
 #include <QRegularExpression>
+#include <QXmlInputSource>
+
+class XmlInputSource : public QXmlInputSource {
+  public:
+    virtual QString fromRawData(const QByteArray& data, bool beginning) {
+      return QXmlInputSource::fromRawData(data, beginning);
+    }
+};
 
 DomDocument::DomDocument() : QDomDocument() {}
 
@@ -13,35 +21,9 @@ bool DomDocument::setContent(const QByteArray& text,
                              QString* error_msg,
                              int* error_line,
                              int* error_column) {
-  auto text_modified = QByteArray(text)
-                         .trimmed()
-                         .replace("&shy;", "")
-                         .replace(" & ", " &amp; ")
-                         .replace(0x000B, QByteArray())
-                         .replace(0x0014, QByteArray());
+  QString decoded_xml_data = XmlInputSource().fromRawData(text, true);
 
-#if QT_VERSION >= 0x060500 // Qt >= 6.5.0
-  QDomDocument::ParseResult res =
-    QDomDocument::setContent(text_modified,
-                             namespace_processing ? QDomDocument::ParseOption::UseNamespaceProcessing
-                                                  : QDomDocument::ParseOption::Default);
-
-  if (error_msg != nullptr) {
-    *error_msg = res.errorMessage;
-  }
-
-  if (error_line != nullptr) {
-    *error_line = res.errorLine;
-  }
-
-  if (error_column != nullptr) {
-    *error_column = res.errorColumn;
-  }
-
-  return (bool)res;
-#else
-  return QDomDocument::setContent(text_modified, namespace_processing, error_msg, error_line, error_column);
-#endif
+  return setContent(decoded_xml_data, namespace_processing, error_msg, error_line, error_column);
 }
 
 bool DomDocument::setContent(const QString& text,
@@ -49,13 +31,6 @@ bool DomDocument::setContent(const QString& text,
                              QString* error_msg,
                              int* error_line,
                              int* error_column) {
-  // NOTE: Removing QChar::SpecialCharacter::Null is only possible
-  // in QString overload of this method because removing zero bytes
-  // from bytearray could remove Unicode characters and mess the data.
-  //
-  // Note that this "QString" method overload is used for feed XML parsing.
-  //
-  // Keep this kind of in sync with "QByteArray" overload of this method.
   auto text_modified = QString(text)
                          .trimmed()
                          .replace("&shy;", QString())
@@ -91,4 +66,13 @@ bool DomDocument::setContent(const QString& text,
 #else
   return QDomDocument::setContent(text_modified, namespace_processing, error_msg, error_line, error_column);
 #endif
+}
+
+QString DomDocument::extractEncoding(const QByteArray& xml_data) {
+  QString enc =
+    QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""), QRegularExpression::PatternOption::CaseInsensitiveOption)
+      .match(xml_data)
+      .captured(1);
+
+  return enc;
 }

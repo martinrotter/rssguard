@@ -19,6 +19,8 @@ class RSSGUARD_DLLSPEC DomDocument : public QDomDocument {
                     QString* error_msg = nullptr,
                     int* error_line = nullptr,
                     int* error_column = nullptr);
+
+    static QString extractEncoding(const QByteArray& xml_data);
 };
 
 #endif // DOMDOCUMENT_H
