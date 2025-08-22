@@ -71,12 +71,12 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
   protected:
     void render();
     void withFixedTextPosition(const std::function<void()>& action);
-    void htmlPos(QPointF pos, QPointF *viewport_pos, QPointF *html_pos) const;
+    void htmlPos(QPointF pos, QPointF* viewport_pos, QPointF* html_pos) const;
 
     QPointF toVirtual(QPointF p) const;
     QSizeF toVirtual(QSizeF s) const;
-    QRectF toVirtual(QRectF r) const;
-    QRectF fromVirtual(QRectF r) const;
+    QRectF toVirtual(const QRectF& r) const;
+    QRectF fromVirtual(const QRectF& r) const;
 
   private:
     void updateHightlightedLink();

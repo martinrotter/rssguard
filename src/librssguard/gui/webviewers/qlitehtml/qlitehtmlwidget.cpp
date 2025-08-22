@@ -437,7 +437,14 @@ QPoint QLiteHtmlWidget::scrollPosition() const {
 }
 
 void QLiteHtmlWidget::htmlPos(QPointF pos, QPointF* viewport_pos, QPointF* html_pos) const {
-  *viewport_pos = toVirtual(viewport()->mapFromParent(pos));
+  *viewport_pos = toVirtual(viewport()->mapFromParent(
+#if QT_VERSION_MAJOR == 5
+    pos.toPoint()
+#else
+    pos
+#endif
+      ));
+
   *html_pos = *viewport_pos + scrollPosition();
 }
 
@@ -449,11 +456,11 @@ QSizeF QLiteHtmlWidget::toVirtual(QSizeF s) const {
   return {s.width() / m_zoomFactor, s.height() / m_zoomFactor};
 }
 
-QRectF QLiteHtmlWidget::toVirtual(QRectF r) const {
+QRectF QLiteHtmlWidget::toVirtual(const QRectF& r) const {
   return {toVirtual(r.topLeft()), toVirtual(r.size())};
 }
 
-QRectF QLiteHtmlWidget::fromVirtual(QRectF r) const {
+QRectF QLiteHtmlWidget::fromVirtual(const QRectF& r) const {
   const QPointF tl{r.x() * m_zoomFactor, r.y() * m_zoomFactor};
   const QSizeF s{qreal(r.width() * m_zoomFactor + 0.5) + 1, qreal(r.height() * m_zoomFactor + 0.5) + 1};
 
