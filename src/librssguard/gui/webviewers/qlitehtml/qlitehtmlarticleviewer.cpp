@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/webviewers/qlitehtml/qlitehtmlviewer.h"
+#include "gui/webviewers/qlitehtml/qlitehtmlarticleviewer.h"
 
 #include "definitions/definitions.h"
 #include "gui/webbrowser.h"
@@ -17,7 +17,7 @@
 #include <QRegularExpression>
 #include <QScrollBar>
 
-QLiteHtmlViewer::QLiteHtmlViewer(QWidget* parent)
+QLiteHtmlArticleViewer::QLiteHtmlArticleViewer(QWidget* parent)
   : QLiteHtmlWidget(parent), m_root(nullptr), m_placeholderImage(qApp->icons()->miscPixmap(QSL("image-placeholder"))),
     m_placeholderImageError(qApp->icons()->miscPixmap(QSL("image-placeholder-error"))) {
   setAutoFillBackground(false);
@@ -29,43 +29,43 @@ QLiteHtmlViewer::QLiteHtmlViewer(QWidget* parent)
   horizontalScrollBar()->setSingleStep(5);
   verticalScrollBar()->setSingleStep(5);
 
-  connect(this, &QLiteHtmlWidget::linkHighlighted, this, &QLiteHtmlViewer::linkMouseHighlighted);
-  connect(this, &QLiteHtmlWidget::linkClicked, this, &QLiteHtmlViewer::linkClicked);
+  connect(this, &QLiteHtmlWidget::linkHighlighted, this, &QLiteHtmlArticleViewer::linkMouseHighlighted);
+  connect(this, &QLiteHtmlWidget::linkClicked, this, &QLiteHtmlArticleViewer::linkClicked);
 
   setResourceHandler([this](DocumentContainer::RequestType type, const QUrl& url) {
     return handleExternalResource(type, url);
   });
 }
 
-QLiteHtmlViewer::~QLiteHtmlViewer() {}
+QLiteHtmlArticleViewer::~QLiteHtmlArticleViewer() {}
 
-void QLiteHtmlViewer::bindToBrowser(WebBrowser* browser) {
+void QLiteHtmlArticleViewer::bindToBrowser(WebBrowser* browser) {
   viewport()->installEventFilter(browser);
 }
 
-void QLiteHtmlViewer::findText(const QString& text, bool backwards) {
+void QLiteHtmlArticleViewer::findText(const QString& text, bool backwards) {
   QLiteHtmlWidget::findText(text,
                             backwards ? QTextDocument::FindFlag::FindBackward : QTextDocument::FindFlag(0),
                             false);
 }
 
-void QLiteHtmlViewer::reloadNetworkSettings() {
+void QLiteHtmlArticleViewer::reloadNetworkSettings() {
   // m_network->loadSettings();
 }
 
-QString QLiteHtmlViewer::html() const {
+QString QLiteHtmlArticleViewer::html() const {
   return QLiteHtmlWidget::html();
 }
 
-QUrl QLiteHtmlViewer::url() const {
+QUrl QLiteHtmlArticleViewer::url() const {
   return QLiteHtmlWidget::url();
 }
 
-void QLiteHtmlViewer::clear() {
+void QLiteHtmlArticleViewer::clear() {
   setHtml({});
 }
 
-void QLiteHtmlViewer::loadMessage(const Message& message, RootItem* root) {
+void QLiteHtmlArticleViewer::loadMessage(const Message& message, RootItem* root) {
   emit loadingStarted();
 
   auto url = urlForMessage(message, root);
@@ -78,7 +78,7 @@ void QLiteHtmlViewer::loadMessage(const Message& message, RootItem* root) {
   emit loadingFinished(true);
 }
 
-QString QLiteHtmlViewer::htmlForMessage(const Message& message, RootItem* root) const {
+QString QLiteHtmlArticleViewer::htmlForMessage(const Message& message, RootItem* root) const {
   auto html_message = qApp->skins()->generateHtmlOfArticle(message, root);
 
   // Remove other characters which cannot be displayed properly.
@@ -89,15 +89,15 @@ QString QLiteHtmlViewer::htmlForMessage(const Message& message, RootItem* root) 
   return html_message;
 }
 
-double QLiteHtmlViewer::verticalScrollBarPosition() const {
+double QLiteHtmlArticleViewer::verticalScrollBarPosition() const {
   return verticalScrollBar()->value();
 }
 
-void QLiteHtmlViewer::setVerticalScrollBarPosition(double pos) {
+void QLiteHtmlArticleViewer::setVerticalScrollBarPosition(double pos) {
   verticalScrollBar()->setValue(int(pos));
 }
 
-void QLiteHtmlViewer::applyFont(const QFont& fon) {
+void QLiteHtmlArticleViewer::applyFont(const QFont& fon) {
   if (defaultFont() == fon) {
     return;
   }
@@ -106,11 +106,11 @@ void QLiteHtmlViewer::applyFont(const QFont& fon) {
   setZoomFactor(zoomFactor());
 }
 
-qreal QLiteHtmlViewer::zoomFactor() const {
+qreal QLiteHtmlArticleViewer::zoomFactor() const {
   return QLiteHtmlWidget::zoomFactor();
 }
 
-void QLiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
+void QLiteHtmlArticleViewer::setZoomFactor(qreal zoom_factor) {
   if (zoomFactor() == zoom_factor) {
     return;
   }
@@ -118,7 +118,7 @@ void QLiteHtmlViewer::setZoomFactor(qreal zoom_factor) {
   QLiteHtmlWidget::setZoomFactor(zoom_factor);
 }
 
-QVariant QLiteHtmlViewer::handleExternalResource(DocumentContainer::RequestType type, const QUrl& url) {
+QVariant QLiteHtmlArticleViewer::handleExternalResource(DocumentContainer::RequestType type, const QUrl& url) {
   qDebugNN << LOGSEC_HTMLVIEWER << "Request for external resource" << QUOTE_W_SPACE(url.toString()) << "of type"
            << QUOTE_W_SPACE_DOT(int(type));
 
@@ -185,7 +185,7 @@ QVariant QLiteHtmlViewer::handleExternalResource(DocumentContainer::RequestType 
   }
 }
 
-void QLiteHtmlViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
+void QLiteHtmlArticleViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
   m_root = root;
 
   QLiteHtmlWidget::setUrl(url);
@@ -195,7 +195,7 @@ void QLiteHtmlViewer::setHtml(const QString& html, const QUrl& url, RootItem* ro
   emit pageUrlChanged(url);
 }
 
-ContextMenuData QLiteHtmlViewer::provideContextMenuData(QContextMenuEvent* event) const {
+ContextMenuData QLiteHtmlArticleViewer::provideContextMenuData(QContextMenuEvent* event) const {
   ContextMenuData c;
   QPointF viewport_pos;
   QPointF pos;
@@ -211,7 +211,7 @@ ContextMenuData QLiteHtmlViewer::provideContextMenuData(QContextMenuEvent* event
   return c;
 }
 
-void QLiteHtmlViewer::keyPressEvent(QKeyEvent* event) {
+void QLiteHtmlArticleViewer::keyPressEvent(QKeyEvent* event) {
   if (event->matches(QKeySequence::StandardKey::Copy)) {
     auto sel_text = selectedText();
     auto* clip = QGuiApplication::clipboard();
@@ -224,7 +224,7 @@ void QLiteHtmlViewer::keyPressEvent(QKeyEvent* event) {
   QLiteHtmlWidget::keyPressEvent(event);
 }
 
-void QLiteHtmlViewer::contextMenuEvent(QContextMenuEvent* event) {
+void QLiteHtmlArticleViewer::contextMenuEvent(QContextMenuEvent* event) {
   event->accept();
 
   auto* menu = new QMenu(tr("Context menu for article viewer"), this);

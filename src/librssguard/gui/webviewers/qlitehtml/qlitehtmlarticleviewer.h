@@ -1,7 +1,7 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#ifndef QLITEHTMLVIEWER_H
-#define QLITEHTMLVIEWER_H
+#ifndef QLITEHTMLARTICLEVIEWER_H
+#define QLITEHTMLARTICLEVIEWER_H
 
 #include "gui/webviewers/qlitehtml/qlitehtmlwidget.h"
 #include "gui/webviewers/webviewer.h"
@@ -12,13 +12,13 @@
 class QKeyEvent;
 class SilentNetworkAccessManager;
 
-class RSSGUARD_DLLSPEC QLiteHtmlViewer : public QLiteHtmlWidget, public WebViewer {
+class RSSGUARD_DLLSPEC QLiteHtmlArticleViewer : public QLiteHtmlWidget, public WebViewer {
     Q_OBJECT
     Q_INTERFACES(WebViewer)
 
   public:
-    explicit QLiteHtmlViewer(QWidget* parent = nullptr);
-    virtual ~QLiteHtmlViewer();
+    explicit QLiteHtmlArticleViewer(QWidget* parent = nullptr);
+    virtual ~QLiteHtmlArticleViewer();
 
     virtual void bindToBrowser(WebBrowser* browser);
     virtual void findText(const QString& text, bool backwards);
@@ -67,4 +67,4 @@ class RSSGUARD_DLLSPEC QLiteHtmlViewer : public QLiteHtmlWidget, public WebViewe
     QHash<QUrl, QVariant> m_dataCache;
 };
 
-#endif // QLITEHTMLVIEWER_H
+#endif // QLITEHTMLARTICLEVIEWER_H

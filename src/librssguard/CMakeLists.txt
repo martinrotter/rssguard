@@ -479,8 +479,8 @@ list(APPEND SOURCES
   gui/webviewers/qlitehtml/documentcontainer.h
   gui/webviewers/qlitehtml/qlitehtmlwidget.cpp
   gui/webviewers/qlitehtml/qlitehtmlwidget.h
-  gui/webviewers/qlitehtml/qlitehtmlviewer.cpp
-  gui/webviewers/qlitehtml/qlitehtmlviewer.h
+  gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp
+  gui/webviewers/qlitehtml/qlitehtmlarticleviewer.h
 )
 
 if(MSVC)

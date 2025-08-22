@@ -14,11 +14,11 @@ bool DomDocument::setContent(const QByteArray& text,
                              int* error_line,
                              int* error_column) {
   auto text_modified = QByteArray(text)
-                        .trimmed()
-                        .replace("&shy;", "")
-                        .replace("& ", "&amp; ")
-                        .replace(0x000B, "")
-                        .replace(0x0014, "");
+                         .trimmed()
+                         .replace("&shy;", "")
+                         .replace(" & ", " &amp; ")
+                         .replace(0x000B, QByteArray())
+                         .replace(0x0014, QByteArray());
 
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
   QDomDocument::ParseResult res =
@@ -52,17 +52,22 @@ bool DomDocument::setContent(const QString& text,
   // NOTE: Removing QChar::SpecialCharacter::Null is only possible
   // in QString overload of this method because removing zero bytes
   // from bytearray could remove Unicode characters and mess the data.
+  //
+  // Note that this "QString" method overload is used for feed XML parsing.
+  //
+  // Keep this kind of in sync with "QByteArray" overload of this method.
   auto text_modified = QString(text)
                          .trimmed()
                          .replace("&shy;", QString())
-                         .replace("& ", "&amp; ")
+                         .replace(" & ", " &amp; ")
                          .replace(QChar::SpecialCharacter::Null, QString());
-  // remove all forbidden characters per xml official format : https://www.w3.org/TR/xml11/#charsets 
-  text_modified.remove(QRegularExpression(QStringLiteral("[\\x01-\\x08]")));
-  text_modified.remove(QRegularExpression(QStringLiteral("[\\x0B-\\x0C]")));
-  text_modified.remove(QRegularExpression(QStringLiteral("[\\x0E-\\x1F]")));
-  text_modified.remove(QRegularExpression(QStringLiteral("[\\x7F-\\x84]")));
-  text_modified.remove(QRegularExpression(QStringLiteral("[\\x86-\\x9F]")));
+
+  // Remove all forbidden characters per XML official format, see https://www.w3.org/TR/xml11/#charsets.
+  text_modified.remove(QRegularExpression(QSL("[\\x01-\\x08]")));
+  text_modified.remove(QRegularExpression(QSL("[\\x0B-\\x0C]")));
+  text_modified.remove(QRegularExpression(QSL("[\\x0E-\\x1F]")));
+  text_modified.remove(QRegularExpression(QSL("[\\x7F-\\x84]")));
+  text_modified.remove(QRegularExpression(QSL("[\\x86-\\x9F]")));
 
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
   QDomDocument::ParseResult res =
