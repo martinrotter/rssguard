@@ -4,6 +4,8 @@
 
 #include "miscellaneous/iofactory.h"
 
+#include <QRegularExpression>
+
 DomDocument::DomDocument() : QDomDocument() {}
 
 bool DomDocument::setContent(const QByteArray& text,
@@ -11,7 +13,12 @@ bool DomDocument::setContent(const QByteArray& text,
                              QString* error_msg,
                              int* error_line,
                              int* error_column) {
-  auto text_modified = QByteArray(text).trimmed().replace("&shy;", "").replace(0x000B, "");
+  auto text_modified = QByteArray(text)
+                        .trimmed()
+                        .replace("&shy;", "")
+                        .replace("& ", "&amp; ")
+                        .replace(0x000B, "")
+                        .replace(0x0014, "");
 
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
   QDomDocument::ParseResult res =
@@ -48,8 +55,14 @@ bool DomDocument::setContent(const QString& text,
   auto text_modified = QString(text)
                          .trimmed()
                          .replace("&shy;", QString())
-                         .replace(QChar::SpecialCharacter::Null, QString())
-                         .replace(QChar(0x000B), QString());
+                         .replace("& ", "&amp; ")
+                         .replace(QChar::SpecialCharacter::Null, QString());
+  // remove all forbidden characters per xml official format : https://www.w3.org/TR/xml11/#charsets 
+  text_modified.remove(QRegularExpression(QStringLiteral("[\\x01-\\x08]")));
+  text_modified.remove(QRegularExpression(QStringLiteral("[\\x0B-\\x0C]")));
+  text_modified.remove(QRegularExpression(QStringLiteral("[\\x0E-\\x1F]")));
+  text_modified.remove(QRegularExpression(QStringLiteral("[\\x7F-\\x84]")));
+  text_modified.remove(QRegularExpression(QStringLiteral("[\\x86-\\x9F]")));
 
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
   QDomDocument::ParseResult res =
