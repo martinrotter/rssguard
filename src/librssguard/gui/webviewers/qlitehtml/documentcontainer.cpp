@@ -916,16 +916,16 @@ void DocumentContainer::draw_image(litehtml::uint_ptr hdc,
   }
 
   auto painter = toQPainter(hdc);
-  const QRegion initialClipRegion = painter->clipRegion();
-  const Qt::ClipOperation initialClipOperation = initialClipRegion.isEmpty() ? Qt::ReplaceClip : Qt::IntersectClip;
+  const QRegion initial_clip_region = painter->clipRegion();
+  const Qt::ClipOperation initial_clip_operation = initial_clip_region.isEmpty() ? Qt::ReplaceClip : Qt::IntersectClip;
 
   painter->save();
 
-  if (!initialClipRegion.isEmpty()) {
-    painter->setClipRegion(initialClipRegion);
+  if (!initial_clip_region.isEmpty()) {
+    painter->setClipRegion(initial_clip_region);
   }
 
-  painter->setClipRect(toQRect(layer.clip_box), initialClipOperation);
+  painter->setClipRect(toQRect(layer.clip_box), initial_clip_operation);
 
   const QRegion horizontal_middle(QRect(layer.border_box.x,
                                         layer.border_box.y + layer.border_radius.top_left_y,
