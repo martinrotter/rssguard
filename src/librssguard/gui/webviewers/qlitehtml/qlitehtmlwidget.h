@@ -13,6 +13,7 @@
 #include <QTextDocument>
 
 class QPrinter;
+class QMenu;
 
 class QLiteHtmlWidget : public QAbstractScrollArea {
     Q_OBJECT

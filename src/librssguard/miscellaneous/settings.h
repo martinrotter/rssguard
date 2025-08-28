@@ -123,6 +123,12 @@ namespace Messages {
   KEY AvoidOldArticles;
   VALUE(bool) AvoidOldArticlesDef;
 
+  KEY FontAa;
+  VALUE(bool) FontAaDef;
+
+  KEY ShapeAa;
+  VALUE(bool) ShapeAaDef;
+
   KEY ArticleMarkOnSelection;
   VALUE(int) ArticleMarkOnSelectionDef;
 

@@ -8,6 +8,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
+#include "miscellaneous/settings.h"
 
 #include <QDebug>
 #include <QPaintEvent>
@@ -25,6 +26,9 @@ QLiteHtmlWidget::QLiteHtmlWidget(QWidget* parent) : QAbstractScrollArea(parent) 
   setMouseTracking(true);
   horizontalScrollBar()->setSingleStep(kScrollBarStep);
   verticalScrollBar()->setSingleStep(kScrollBarStep);
+
+  setFontAntialiasing(qApp->settings()->value(GROUP(Messages), SETTING(Messages::FontAa)).toBool());
+  setShapeAntialiasing(qApp->settings()->value(GROUP(Messages), SETTING(Messages::ShapeAa)).toBool());
 
   m_documentContainer.setCursorCallback([this](const QCursor& c) {
     viewport()->setCursor(c);
@@ -75,6 +79,8 @@ QLiteHtmlWidget::QLiteHtmlWidget(QWidget* parent) : QAbstractScrollArea(parent) 
 QLiteHtmlWidget::~QLiteHtmlWidget() {}
 
 void QLiteHtmlWidget::setShapeAntialiasing(bool on) {
+  qApp->settings()->setValue(GROUP(Messages), Messages::ShapeAa, on);
+
   withFixedTextPosition([this, on] {
     m_documentContainer.setShapeAntialiasing(on);
     render();
@@ -82,6 +88,8 @@ void QLiteHtmlWidget::setShapeAntialiasing(bool on) {
 }
 
 void QLiteHtmlWidget::setFontAntialiasing(bool on) {
+  qApp->settings()->setValue(GROUP(Messages), Messages::FontAa, on);
+
   withFixedTextPosition([this, on] {
     m_documentContainer.setFontAntialiasing(on);
 

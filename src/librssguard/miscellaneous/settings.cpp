@@ -105,6 +105,12 @@ DVALUE(bool) Messages::DisplayEnclosuresInMessageDef = false;
 DKEY Messages::AvoidOldArticles = "avoid_old_articles";
 DVALUE(bool) Messages::AvoidOldArticlesDef = false;
 
+DKEY Messages::FontAa = "font_aa";
+DVALUE(bool) Messages::FontAaDef = true;
+
+DKEY Messages::ShapeAa = "shape_aa";
+DVALUE(bool) Messages::ShapeAaDef = true;
+
 DKEY Messages::DateTimeToAvoidArticle = "datetime_to_avoid_article";
 DVALUE(QDateTime) Messages::DateTimeToAvoidArticleDef = QDateTime::currentDateTime();
 
