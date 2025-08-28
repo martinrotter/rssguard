@@ -19,7 +19,7 @@ WebViewer::WebViewer() {
 WebViewer::~WebViewer() {}
 
 void WebViewer::reloadSettings() {
-  m_loadExternalResources = qApp->settings()->value(GROUP(Browser), SETTING(Browser::LoadExternalResources)).toBool();
+  setLoadExternalResources(qApp->settings()->value(GROUP(Browser), SETTING(Browser::LoadExternalResources)).toBool());
 }
 
 QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {

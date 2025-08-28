@@ -17,9 +17,7 @@
 #include <QRegularExpression>
 #include <QScrollBar>
 
-QLiteHtmlArticleViewer::QLiteHtmlArticleViewer(QWidget* parent)
-  : QLiteHtmlWidget(parent), m_root(nullptr), m_placeholderImage(qApp->icons()->miscPixmap(QSL("image-placeholder"))),
-    m_placeholderImageError(qApp->icons()->miscPixmap(QSL("image-placeholder-error"))) {
+QLiteHtmlArticleViewer::QLiteHtmlArticleViewer(QWidget* parent) : QLiteHtmlWidget(parent), m_root(nullptr) {
   setAutoFillBackground(false);
   viewport()->setAutoFillBackground(false);
   setFrameShape(QFrame::Shape::NoFrame);
@@ -29,12 +27,11 @@ QLiteHtmlArticleViewer::QLiteHtmlArticleViewer(QWidget* parent)
   horizontalScrollBar()->setSingleStep(5);
   verticalScrollBar()->setSingleStep(5);
 
+  // NOTE: This is called explicitly to set initial value.
+  documentContainer()->setLoadExternalResources(WebViewer::loadExternalResources());
+
   connect(this, &QLiteHtmlWidget::linkHighlighted, this, &QLiteHtmlArticleViewer::linkMouseHighlighted);
   connect(this, &QLiteHtmlWidget::linkClicked, this, &QLiteHtmlArticleViewer::linkClicked);
-
-  setResourceHandler([this](DocumentContainer::RequestType type, const QUrl& url) {
-    return handleExternalResource(type, url);
-  });
 }
 
 QLiteHtmlArticleViewer::~QLiteHtmlArticleViewer() {}
@@ -125,71 +122,6 @@ void QLiteHtmlArticleViewer::setZoomFactor(qreal zoom_factor) {
   }
 
   QLiteHtmlWidget::setZoomFactor(zoom_factor);
-}
-
-QVariant QLiteHtmlArticleViewer::handleExternalResource(DocumentContainer::RequestType type, const QUrl& url) {
-  qDebugNN << LOGSEC_HTMLVIEWER << "Request for external resource" << QUOTE_W_SPACE(url.toString()) << "of type"
-           << QUOTE_W_SPACE_DOT(int(type));
-
-  // TODO: if image is NOT in cache, download it async and return placeholder
-  // once image is downloaded, call render() to re-render the page.
-
-  if (!loadExternalResources()) {
-    if (type == DocumentContainer::RequestType::ImageDisplay) {
-      return m_placeholderImage;
-    }
-    else {
-      return QByteArray();
-    }
-  }
-
-  if (m_dataCache.contains(url)) {
-    qDebugNN << LOGSEC_HTMLVIEWER << "Loading data" << QUOTE_W_SPACE(url.toString()) << "from cache.";
-    return m_dataCache.value(url);
-  }
-
-  if (type == DocumentContainer::RequestType::ImageDisplay) {
-    return m_placeholderImage;
-  }
-
-  QByteArray data;
-  NetworkResult res = NetworkFactory::performNetworkOperation(url.toString(),
-                                                              5000,
-                                                              {},
-                                                              data,
-                                                              QNetworkAccessManager::Operation::GetOperation,
-                                                              {},
-                                                              false,
-                                                              {},
-                                                              {},
-                                                              documentContainer()->networkProxy());
-
-  if (res.m_networkError != QNetworkReply::NetworkError::NoError) {
-    qWarningNN << LOGSEC_HTMLVIEWER << "External data" << QUOTE_W_SPACE(url.toString()) << "was not loaded due to error"
-               << QUOTE_W_SPACE_DOT(res.m_networkError);
-  }
-
-  switch (type) {
-    case DocumentContainer::RequestType::ImageDownload: {
-      QPixmap px;
-      px.loadFromData(data);
-
-      if (!px.isNull()) {
-        qDebugNN << LOGSEC_HTMLVIEWER << "Inserting image" << QUOTE_W_SPACE(url.toString()) << "to cache.";
-        m_dataCache.insert(url, px);
-      }
-      else {
-        m_dataCache.insert(url, m_placeholderImageError);
-      }
-
-      return m_dataCache.value(url);
-    }
-
-    case DocumentContainer::RequestType::CssDownload:
-    default:
-      m_dataCache.insert(url, data);
-      return data;
-  }
 }
 
 void QLiteHtmlArticleViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {

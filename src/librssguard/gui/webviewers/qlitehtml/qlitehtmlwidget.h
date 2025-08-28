@@ -46,10 +46,6 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     void setFontAntialiasing(bool on);
 
     void scrollToAnchor(const QString& name);
-
-    using ResourceHandler = std::function<QByteArray(QUrl)>;
-    void setResourceHandler(const DocumentContainer::DataCallback& handler);
-
     void print(QPrinter* printer);
 
   signals:

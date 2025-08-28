@@ -33,15 +33,15 @@ class RSSGUARD_DLLSPEC QLiteHtmlArticleViewer : public QLiteHtmlWidget, public W
     virtual void loadMessage(const Message& message, RootItem* root);
     virtual QString htmlForMessage(const Message& message, RootItem* root) const;
 
+    virtual bool loadExternalResources() const;
+    virtual void setLoadExternalResources(bool load_resources);
+
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);
 
     virtual void applyFont(const QFont& fon);
     virtual qreal zoomFactor() const;
     virtual void setZoomFactor(qreal zoom_factor);
-
-  private slots:
-    QVariant handleExternalResource(DocumentContainer::RequestType type, const QUrl& url);
 
   protected:
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) const;
@@ -62,9 +62,6 @@ class RSSGUARD_DLLSPEC QLiteHtmlArticleViewer : public QLiteHtmlWidget, public W
 
   private:
     QPointer<RootItem> m_root;
-    QPixmap m_placeholderImage;
-    QPixmap m_placeholderImageError;
-    QHash<QUrl, QVariant> m_dataCache;
 };
 
 #endif // QLITEHTMLARTICLEVIEWER_H

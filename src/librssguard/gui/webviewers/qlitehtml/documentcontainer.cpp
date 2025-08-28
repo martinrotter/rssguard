@@ -6,6 +6,8 @@
 #include "gui/webviewers/qlitehtml/documentcontainer.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "network-web/downloader.h"
 
 #include <algorithm>
@@ -554,7 +556,10 @@ QRectF Selection::boundingRect() const {
   return rect;
 }
 
-DocumentContainer::DocumentContainer() : m_loadExternalResources(false), m_downloader(new Downloader(this)) {
+DocumentContainer::DocumentContainer()
+  : m_placeholderImage(qApp->icons()->miscPixmap(QSL("image-placeholder"))),
+    m_placeholderImageError(qApp->icons()->miscPixmap(QSL("image-placeholder-error"))), m_loadExternalResources(false),
+    m_downloader(new Downloader(this)) {
   connect(m_downloader, &Downloader::completed, this, &DocumentContainer::onResourceDownloadCompleted);
 }
 
@@ -715,7 +720,7 @@ void DocumentContainer::load_image(const char* src, const char* baseurl, bool re
   const QUrl url = resolveUrl(qt_src, qt_baseurl);
 
   // NOTE: Just initiate/request image download.
-  m_dataCallback(RequestType::ImageDownload, url);
+  handleExternalResource(RequestType::ImageDownload, url);
 }
 
 void DocumentContainer::get_image_size(const char* src, const char* baseurl, litehtml::size& sz) {
@@ -825,8 +830,73 @@ bool DocumentContainer::loadExternalResources() const {
   return m_loadExternalResources;
 }
 
-void DocumentContainer::setLoadExternalResources(bool newLoadExternalResources) {
-  m_loadExternalResources = newLoadExternalResources;
+void DocumentContainer::setLoadExternalResources(bool load_resources) {
+  m_loadExternalResources = load_resources;
+}
+
+QVariant DocumentContainer::handleExternalResource(DocumentContainer::RequestType type, const QUrl& url) {
+  qDebugNN << LOGSEC_HTMLVIEWER << "Request for external resource" << QUOTE_W_SPACE(url.toString()) << "of type"
+           << QUOTE_W_SPACE_DOT(int(type));
+
+  // TODO: if image is NOT in cache, download it async and return placeholder
+  // once image is downloaded, call render() to re-render the page.
+
+  if (!loadExternalResources()) {
+    if (type == DocumentContainer::RequestType::ImageDisplay) {
+      return m_placeholderImage;
+    }
+    else {
+      return QByteArray();
+    }
+  }
+
+  if (m_dataCache.contains(url)) {
+    qDebugNN << LOGSEC_HTMLVIEWER << "Loading data" << QUOTE_W_SPACE(url.toString()) << "from cache.";
+    return m_dataCache.value(url);
+  }
+
+  if (type == DocumentContainer::RequestType::ImageDisplay) {
+    return m_placeholderImage;
+  }
+
+  QByteArray data;
+  NetworkResult res = NetworkFactory::performNetworkOperation(url.toString(),
+                                                              5000,
+                                                              {},
+                                                              data,
+                                                              QNetworkAccessManager::Operation::GetOperation,
+                                                              {},
+                                                              false,
+                                                              {},
+                                                              {},
+                                                              networkProxy());
+
+  if (res.m_networkError != QNetworkReply::NetworkError::NoError) {
+    qWarningNN << LOGSEC_HTMLVIEWER << "External data" << QUOTE_W_SPACE(url.toString()) << "was not loaded due to error"
+               << QUOTE_W_SPACE_DOT(res.m_networkError);
+  }
+
+  switch (type) {
+    case DocumentContainer::RequestType::ImageDownload: {
+      QPixmap px;
+      px.loadFromData(data);
+
+      if (!px.isNull()) {
+        qDebugNN << LOGSEC_HTMLVIEWER << "Inserting image" << QUOTE_W_SPACE(url.toString()) << "to cache.";
+        m_dataCache.insert(url, px);
+      }
+      else {
+        m_dataCache.insert(url, m_placeholderImageError);
+      }
+
+      return m_dataCache.value(url);
+    }
+
+    case DocumentContainer::RequestType::CssDownload:
+    default:
+      m_dataCache.insert(url, data);
+      return data;
+  }
 }
 
 QNetworkProxy DocumentContainer::networkProxy() const {
@@ -1145,7 +1215,7 @@ void DocumentContainer::import_css(std::string& text, const std::string& url, st
   const int last_slash = url_string.lastIndexOf('/');
 
   baseurl = url_string.left(last_slash).toStdString();
-  text = QString::fromUtf8(m_dataCallback(RequestType::CssDownload, actual_url).toByteArray()).toStdString();
+  text = QString::fromUtf8(handleExternalResource(RequestType::CssDownload, actual_url).toByteArray()).toStdString();
 }
 
 void DocumentContainer::set_clip(const litehtml::position& pos, const litehtml::border_radiuses& bdr_radius) {
@@ -1627,10 +1697,6 @@ bool DocumentContainer::fontAntialiasing() const {
   return m_fontAntialiasing;
 }
 
-void DocumentContainer::setDataCallback(const DocumentContainer::DataCallback& callback) {
-  m_dataCallback = callback;
-}
-
 void DocumentContainer::setCursorCallback(const DocumentContainer::CursorCallback& callback) {
   m_cursorCallback = callback;
 }
@@ -1702,7 +1768,7 @@ void DocumentContainer::setMasterCss(const QString& master_css) {
 QPixmap DocumentContainer::getPixmap(const QString& image_url, const QString& base_url) {
   const QUrl url = resolveUrl(image_url, base_url);
 
-  return m_dataCallback(RequestType::ImageDisplay, url).value<QPixmap>();
+  return handleExternalResource(RequestType::ImageDisplay, url).value<QPixmap>();
 }
 
 QString DocumentContainer::serifFont() const {

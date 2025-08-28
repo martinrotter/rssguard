@@ -13,6 +13,7 @@
 
 #include <QNetworkProxy>
 #include <QNetworkReply>
+#include <QPixmap>
 #include <QPoint>
 #include <QRect>
 #include <QString>
@@ -148,7 +149,6 @@ class DocumentContainer : public QObject, litehtml::document_container {
       CssDownload
     };
 
-    using DataCallback = std::function<QVariant(RequestType, QUrl)>;
     using CursorCallback = std::function<void(QCursor)>;
     using LinkCallback = std::function<void(QUrl)>;
     using PaletteCallback = std::function<QPalette()>;
@@ -202,7 +202,6 @@ class DocumentContainer : public QObject, litehtml::document_container {
     QString masterCss() const;
     void setMasterCss(const QString& master_css);
 
-    void setDataCallback(const DataCallback& callback);
     void setCursorCallback(const CursorCallback& callback);
     void setLinkCallback(const LinkCallback& callback);
     void setPaletteCallback(const PaletteCallback& callback);
@@ -217,6 +216,7 @@ class DocumentContainer : public QObject, litehtml::document_container {
     void setLoadExternalResources(bool load_resources);
 
   private slots:
+    QVariant handleExternalResource(DocumentContainer::RequestType type, const QUrl& url);
     void onResourceDownloadCompleted(const QUrl& url,
                                      QNetworkReply::NetworkError status,
                                      int http_code,
@@ -254,7 +254,6 @@ class DocumentContainer : public QObject, litehtml::document_container {
     QByteArray m_defaultFontFamilyName = m_defaultFont.family().toUtf8();
     bool m_fontAntialiasing = true;
     Selection m_selection;
-    DocumentContainer::DataCallback m_dataCallback;
     DocumentContainer::CursorCallback m_cursorCallback;
     DocumentContainer::LinkCallback m_linkCallback;
     DocumentContainer::PaletteCallback m_paletteCallback;
@@ -262,6 +261,9 @@ class DocumentContainer : public QObject, litehtml::document_container {
     bool m_blockLinks = false;
     QString m_masterCss;
 
+    QPixmap m_placeholderImage;
+    QPixmap m_placeholderImageError;
+    QHash<QUrl, QVariant> m_dataCache;
     bool m_loadExternalResources;
     QNetworkProxy m_networkProxy;
 

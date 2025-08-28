@@ -195,10 +195,6 @@ void QLiteHtmlWidget::scrollToAnchor(const QString& name) {
   }
 }
 
-void QLiteHtmlWidget::setResourceHandler(const DocumentContainer::DataCallback& handler) {
-  m_documentContainer.setDataCallback(handler);
-}
-
 QString QLiteHtmlWidget::selectedText() const {
   return m_documentContainer.selectedText();
 }
