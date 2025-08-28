@@ -215,6 +215,12 @@ class DocumentContainer : public QObject, litehtml::document_container {
     bool loadExternalResources() const;
     void setLoadExternalResources(bool load_resources);
 
+    bool shapeAntialiasing() const;
+    void setShapeAntialiasing(bool on);
+
+  signals:
+    void renderRequested();
+
   private slots:
     QVariant handleExternalResource(DocumentContainer::RequestType type, const QUrl& url);
     void onResourceDownloadCompleted(const QUrl& url,
@@ -253,6 +259,7 @@ class DocumentContainer : public QObject, litehtml::document_container {
     QFont m_defaultFont = QFont(sansSerifFont(), 16);
     QByteArray m_defaultFontFamilyName = m_defaultFont.family().toUtf8();
     bool m_fontAntialiasing = true;
+    bool m_shapeAntialiasing = true;
     Selection m_selection;
     DocumentContainer::CursorCallback m_cursorCallback;
     DocumentContainer::LinkCallback m_linkCallback;

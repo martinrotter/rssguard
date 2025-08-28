@@ -22,7 +22,7 @@ QLiteHtmlArticleViewer::QLiteHtmlArticleViewer(QWidget* parent) : QLiteHtmlWidge
   viewport()->setAutoFillBackground(false);
   setFrameShape(QFrame::Shape::NoFrame);
   setFrameShadow(QFrame::Shadow::Plain);
-  setFontAntialiasing(true);
+  // setFontAntialiasing(true);
 
   horizontalScrollBar()->setSingleStep(5);
   verticalScrollBar()->setSingleStep(5);
@@ -202,6 +202,8 @@ void QLiteHtmlArticleViewer::contextMenuEvent(QContextMenuEvent* event) {
 
   */
 
-  processContextMenu(menu, event);
+  WebViewer::processContextMenu(menu, event);
+  QLiteHtmlWidget::processContextMenu(menu, event);
+
   menu->popup(event->globalPos());
 }

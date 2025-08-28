@@ -43,10 +43,12 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     void setDefaultFont(const QFont& font);
     QFont defaultFont() const;
 
-    void setFontAntialiasing(bool on);
-
     void scrollToAnchor(const QString& name);
     void print(QPrinter* printer);
+
+  private slots:
+    void setShapeAntialiasing(bool on);
+    void setFontAntialiasing(bool on);
 
   signals:
     void linkClicked(const QUrl& url);
@@ -66,6 +68,7 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     virtual void keyPressEvent(QKeyEvent* event);
 
   protected:
+    void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
     void render();
     void withFixedTextPosition(const std::function<void()>& action);
     void htmlPos(QPointF pos, QPointF* viewport_pos, QPointF* html_pos) const;
@@ -84,4 +87,7 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     DocumentContainer m_documentContainer;
     qreal m_zoomFactor = 1;
     QUrl m_lastHighlightedLink;
+
+    QScopedPointer<QAction> m_actionFontAntialiasing;
+    QScopedPointer<QAction> m_actionShapeAntialiasing;
 };

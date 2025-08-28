@@ -5,6 +5,8 @@
 
 #include "gui/webviewers/qlitehtml/qlitehtmlwidget.h"
 
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 
 #include <QDebug>
@@ -53,9 +55,31 @@ QLiteHtmlWidget::QLiteHtmlWidget(QWidget* parent) : QAbstractScrollArea(parent) 
   });
 
   m_documentContainer.setMasterCss(QString::fromUtf8(IOFactory::readFile(QSL(":/litehtml/master.css"))));
+
+  // Shared context menu actions.
+  m_actionFontAntialiasing.reset(new QAction(qApp->icons()->fromTheme(QSL("format-text-bold")),
+                                             tr("Font antialiasing"),
+                                             this));
+  m_actionFontAntialiasing->setCheckable(true);
+  m_actionFontAntialiasing->setChecked(m_documentContainer.fontAntialiasing());
+  connect(m_actionFontAntialiasing.data(), &QAction::toggled, this, &QLiteHtmlWidget::setFontAntialiasing);
+
+  m_actionShapeAntialiasing.reset(new QAction(qApp->icons()->fromTheme(QSL("draw-star")),
+                                              tr("Shape antialiasing"),
+                                              this));
+  m_actionShapeAntialiasing->setCheckable(true);
+  m_actionShapeAntialiasing->setChecked(m_documentContainer.shapeAntialiasing());
+  connect(m_actionShapeAntialiasing.data(), &QAction::toggled, this, &QLiteHtmlWidget::setShapeAntialiasing);
 }
 
 QLiteHtmlWidget::~QLiteHtmlWidget() {}
+
+void QLiteHtmlWidget::setShapeAntialiasing(bool on) {
+  withFixedTextPosition([this, on] {
+    m_documentContainer.setShapeAntialiasing(on);
+    render();
+  });
+}
 
 void QLiteHtmlWidget::setFontAntialiasing(bool on) {
   withFixedTextPosition([this, on] {
@@ -372,6 +396,12 @@ void QLiteHtmlWidget::keyPressEvent(QKeyEvent* event) {
   }
 
   QAbstractScrollArea::keyPressEvent(event);
+}
+
+void QLiteHtmlWidget::processContextMenu(QMenu* specific_menu, QContextMenuEvent* event) {
+  specific_menu->addSection(tr("Advanced"));
+  specific_menu->addAction(m_actionFontAntialiasing.data());
+  specific_menu->addAction(m_actionShapeAntialiasing.data());
 }
 
 void QLiteHtmlWidget::updateHightlightedLink() {

@@ -34,8 +34,12 @@ static QFont toQFont(litehtml::uint_ptr fnt) {
   return *reinterpret_cast<QFont*>(fnt);
 }
 
-static QPainter* toQPainter(litehtml::uint_ptr hdc) {
-  return reinterpret_cast<QPainter*>(hdc);
+static QPainter* toQPainter(litehtml::uint_ptr hdc, bool shape_aa) {
+  QPainter* painter = reinterpret_cast<QPainter*>(hdc);
+
+  painter->setRenderHint(QPainter::RenderHint::Antialiasing, shape_aa);
+
+  return painter;
 }
 
 static QRectF toQRect(litehtml::position position) {
@@ -659,7 +663,7 @@ void DocumentContainer::draw_text(litehtml::uint_ptr hdc,
                                   litehtml::uint_ptr fnt,
                                   litehtml::web_color color,
                                   const litehtml::position& pos) {
-  auto painter = toQPainter(hdc);
+  auto painter = toQPainter(hdc, m_shapeAntialiasing);
 
   painter->setFont(toQFont(fnt));
   painter->setPen(toQColor(color));
@@ -680,7 +684,7 @@ const char* DocumentContainer::get_default_font_name() const {
 }
 
 void DocumentContainer::draw_list_marker(litehtml::uint_ptr hdc, const litehtml::list_marker& marker) {
-  auto painter = toQPainter(hdc);
+  auto painter = toQPainter(hdc, m_shapeAntialiasing);
 
   if (marker.image.empty()) {
     if (marker.marker_type == litehtml::list_style_type_square) {
@@ -826,6 +830,14 @@ void DocumentContainer::clearSelection() {
   }
 }
 
+bool DocumentContainer::shapeAntialiasing() const {
+  return m_shapeAntialiasing;
+}
+
+void DocumentContainer::setShapeAntialiasing(bool on) {
+  m_shapeAntialiasing = on;
+}
+
 bool DocumentContainer::loadExternalResources() const {
   return m_loadExternalResources;
 }
@@ -914,18 +926,18 @@ Downloader* DocumentContainer::downloader() const {
 void DocumentContainer::drawRectWithLambda(litehtml::uint_ptr hdc,
                                            const litehtml::background_layer& layer,
                                            std::function<void(QPainter*)> lmbd) {
-  auto painter = toQPainter(hdc);
-  const QRegion initialClipRegion = painter->clipRegion();
-  const Qt::ClipOperation initialClipOperation =
-    initialClipRegion.isEmpty() ? Qt::ClipOperation::ReplaceClip : Qt::ClipOperation::IntersectClip;
+  auto painter = toQPainter(hdc, m_shapeAntialiasing);
+  const QRegion initial_clip_region = painter->clipRegion();
+  const Qt::ClipOperation initial_clip_operation =
+    initial_clip_region.isEmpty() ? Qt::ClipOperation::ReplaceClip : Qt::ClipOperation::IntersectClip;
 
   painter->save();
 
-  if (!initialClipRegion.isEmpty()) {
-    painter->setClipRegion(initialClipRegion);
+  if (!initial_clip_region.isEmpty()) {
+    painter->setClipRegion(initial_clip_region);
   }
 
-  painter->setClipRect(toQRect(layer.clip_box), initialClipOperation);
+  painter->setClipRect(toQRect(layer.clip_box), initial_clip_operation);
 
   const QRegion horizontal_middle(QRect(layer.border_box.x,
                                         layer.border_box.y + layer.border_radius.top_left_y,
@@ -968,6 +980,7 @@ void DocumentContainer::drawRectWithLambda(litehtml::uint_ptr hdc,
                                 .united(top_right)
                                 .united(bottom_left)
                                 .united(bottom_right);
+
   painter->setClipRegion(clip_region, Qt::ClipOperation::IntersectClip);
   painter->setPen(Qt::PenStyle::NoPen);
   painter->setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
@@ -1001,7 +1014,7 @@ void DocumentContainer::draw_image(litehtml::uint_ptr hdc,
     return;
   }
 
-  auto painter = toQPainter(hdc);
+  auto painter = toQPainter(hdc, m_shapeAntialiasing);
   const QRegion initial_clip_region = painter->clipRegion();
   const Qt::ClipOperation initial_clip_operation = initial_clip_region.isEmpty() ? Qt::ReplaceClip : Qt::IntersectClip;
 
@@ -1090,7 +1103,7 @@ void DocumentContainer::draw_borders(litehtml::uint_ptr hdc,
                                      bool root) {
   Q_UNUSED(root)
 
-  auto painter = toQPainter(hdc);
+  auto painter = toQPainter(hdc, m_shapeAntialiasing);
 
   if (borders.top.style != litehtml::border_style_none && borders.top.style != litehtml::border_style_hidden) {
     painter->setPen(borderToQPen(borders.top));
