@@ -11,6 +11,7 @@
 #include <memory>
 #include <unordered_map>
 
+#include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QPoint>
 #include <QRect>
@@ -209,6 +210,12 @@ class DocumentContainer : public QObject, litehtml::document_container {
 
     int withFixedElementPosition(int y, const std::function<void()>& action);
 
+    QNetworkProxy networkProxy() const;
+    void setNetworkProxy(const QNetworkProxy& network_proxy);
+
+    bool loadExternalResources() const;
+    void setLoadExternalResources(bool load_resources);
+
   private slots:
     void onResourceDownloadCompleted(const QUrl& url,
                                      QNetworkReply::NetworkError status,
@@ -254,6 +261,10 @@ class DocumentContainer : public QObject, litehtml::document_container {
     DocumentContainer::ClipboardCallback m_clipboardCallback;
     bool m_blockLinks = false;
     QString m_masterCss;
+
+    bool m_loadExternalResources;
+    QNetworkProxy m_networkProxy;
+
     Downloader* m_downloader;
     QStringList m_neededExternalResources;
 };

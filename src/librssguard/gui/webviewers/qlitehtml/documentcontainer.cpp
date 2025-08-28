@@ -554,7 +554,7 @@ QRectF Selection::boundingRect() const {
   return rect;
 }
 
-DocumentContainer::DocumentContainer() : m_downloader(new Downloader(this)) {
+DocumentContainer::DocumentContainer() : m_loadExternalResources(false), m_downloader(new Downloader(this)) {
   connect(m_downloader, &Downloader::completed, this, &DocumentContainer::onResourceDownloadCompleted);
 }
 
@@ -819,6 +819,22 @@ void DocumentContainer::clearSelection() {
   if (!old_text.isEmpty()) {
     m_clipboardCallback(false);
   }
+}
+
+bool DocumentContainer::loadExternalResources() const {
+  return m_loadExternalResources;
+}
+
+void DocumentContainer::setLoadExternalResources(bool newLoadExternalResources) {
+  m_loadExternalResources = newLoadExternalResources;
+}
+
+QNetworkProxy DocumentContainer::networkProxy() const {
+  return m_networkProxy;
+}
+
+void DocumentContainer::setNetworkProxy(const QNetworkProxy& network_proxy) {
+  m_networkProxy = network_proxy;
 }
 
 Downloader* DocumentContainer::downloader() const {

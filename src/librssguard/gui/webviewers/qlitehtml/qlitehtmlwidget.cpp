@@ -394,6 +394,10 @@ void QLiteHtmlWidget::setHightlightedLink(const QUrl& url) {
   emit linkHighlighted(m_lastHighlightedLink = url);
 }
 
+DocumentContainer* QLiteHtmlWidget::documentContainer() {
+  return &m_documentContainer;
+}
+
 const DocumentContainer* QLiteHtmlWidget::documentContainer() const {
   return &m_documentContainer;
 }

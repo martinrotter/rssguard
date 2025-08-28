@@ -89,6 +89,15 @@ QString QLiteHtmlArticleViewer::htmlForMessage(const Message& message, RootItem*
   return html_message;
 }
 
+bool QLiteHtmlArticleViewer::loadExternalResources() const {
+  return WebViewer::loadExternalResources();
+}
+
+void QLiteHtmlArticleViewer::setLoadExternalResources(bool load_resources) {
+  WebViewer::setLoadExternalResources(load_resources);
+  documentContainer()->setLoadExternalResources(load_resources);
+}
+
 double QLiteHtmlArticleViewer::verticalScrollBarPosition() const {
   return verticalScrollBar()->value();
 }
@@ -144,18 +153,16 @@ QVariant QLiteHtmlArticleViewer::handleExternalResource(DocumentContainer::Reque
   }
 
   QByteArray data;
-  NetworkResult res =
-    NetworkFactory::performNetworkOperation(url.toString(),
-                                            5000,
-                                            {},
-                                            data,
-                                            QNetworkAccessManager::Operation::GetOperation,
-                                            {},
-                                            false,
-                                            {},
-                                            {},
-                                            m_root == nullptr ? QNetworkProxy()
-                                                              : m_root->getParentServiceRoot()->networkProxy());
+  NetworkResult res = NetworkFactory::performNetworkOperation(url.toString(),
+                                                              5000,
+                                                              {},
+                                                              data,
+                                                              QNetworkAccessManager::Operation::GetOperation,
+                                                              {},
+                                                              false,
+                                                              {},
+                                                              {},
+                                                              documentContainer()->networkProxy());
 
   if (res.m_networkError != QNetworkReply::NetworkError::NoError) {
     qWarningNN << LOGSEC_HTMLVIEWER << "External data" << QUOTE_W_SPACE(url.toString()) << "was not loaded due to error"
@@ -187,6 +194,9 @@ QVariant QLiteHtmlArticleViewer::handleExternalResource(DocumentContainer::Reque
 
 void QLiteHtmlArticleViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
   m_root = root;
+
+  documentContainer()->setNetworkProxy(m_root == nullptr ? QNetworkProxy()
+                                                         : m_root->getParentServiceRoot()->networkProxy());
 
   QLiteHtmlWidget::setUrl(url);
   QLiteHtmlWidget::setHtml(html);

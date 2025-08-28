@@ -31,6 +31,7 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     QString selectedText() const;
 
     const DocumentContainer* documentContainer() const;
+    DocumentContainer* documentContainer();
 
     void setZoomFactor(qreal scale);
     qreal zoomFactor() const;
