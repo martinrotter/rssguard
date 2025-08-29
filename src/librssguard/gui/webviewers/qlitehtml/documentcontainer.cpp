@@ -854,10 +854,12 @@ QVariant DocumentContainer::handleExternalResource(DocumentContainer::RequestTyp
   // once image is downloaded, call render() to re-render the page.
 
   if (!loadExternalResources()) {
-    if (type == DocumentContainer::RequestType::ImageDisplay) {
+    if (type == DocumentContainer::RequestType::ImageDisplay || type == DocumentContainer::RequestType::ImageDownload) {
+      // External resources are not enabled, display placeholders.
       return m_placeholderImage;
     }
     else {
+      // NOTE: Probably empty CSS.
       return QByteArray();
     }
   }
@@ -868,6 +870,8 @@ QVariant DocumentContainer::handleExternalResource(DocumentContainer::RequestTyp
   }
 
   if (type == DocumentContainer::RequestType::ImageDisplay) {
+    // External resources are enabled and if the picture is not in the cache and we want to display it, display
+    // placeholder.
     return m_placeholderImage;
   }
 
@@ -1768,7 +1772,9 @@ int DocumentContainer::withFixedElementPosition(int y, const std::function<void(
 void DocumentContainer::onResourceDownloadCompleted(const QUrl& url,
                                                     QNetworkReply::NetworkError status,
                                                     int http_code,
-                                                    QByteArray contents) {}
+                                                    const QByteArray& contents) {
+  m_dataCache.insert(url, contents);
+}
 
 QString DocumentContainer::masterCss() const {
   return m_masterCss;

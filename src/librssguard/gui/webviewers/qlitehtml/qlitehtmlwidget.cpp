@@ -486,11 +486,11 @@ void QLiteHtmlWidget::htmlPos(QPointF pos, QPointF* viewport_pos, QPointF* html_
   *html_pos = *viewport_pos + scrollPosition();
 }
 
-QPointF QLiteHtmlWidget::toVirtual(QPointF p) const {
+QPointF QLiteHtmlWidget::toVirtual(const QPointF &p) const {
   return {p.x() / m_zoomFactor, p.y() / m_zoomFactor};
 }
 
-QSizeF QLiteHtmlWidget::toVirtual(QSizeF s) const {
+QSizeF QLiteHtmlWidget::toVirtual(const QSizeF &s) const {
   return {s.width() / m_zoomFactor, s.height() / m_zoomFactor};
 }
 

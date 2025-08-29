@@ -135,7 +135,7 @@ class DocumentContainer : public QObject, litehtml::document_container {
     };
 
     enum class RequestType {
-      // Data handler has to return (empty or the actual) QByteArray (can be async).
+      // Data handler has to return (placeholder or the actual) QPixmap (can be async).
       // So the image is either directly downloaded and returned or download
       // is started asynchronously and placeholder is returned in the meantime.
       ImageDownload,
@@ -226,7 +226,7 @@ class DocumentContainer : public QObject, litehtml::document_container {
     void onResourceDownloadCompleted(const QUrl& url,
                                      QNetworkReply::NetworkError status,
                                      int http_code,
-                                     QByteArray contents);
+                                     const QByteArray& contents);
 
   private:
     void drawRectWithLambda(litehtml::uint_ptr hdc,
