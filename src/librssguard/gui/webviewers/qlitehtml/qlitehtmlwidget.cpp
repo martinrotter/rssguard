@@ -60,6 +60,13 @@ QLiteHtmlWidget::QLiteHtmlWidget(QWidget* parent) : QAbstractScrollArea(parent) 
 
   m_documentContainer.setMasterCss(QString::fromUtf8(IOFactory::readFile(QSL(":/litehtml/master.css"))));
 
+  connect(&m_documentContainer, &DocumentContainer::renderRequested, this, [this]() {
+    withFixedTextPosition([this] {
+      qDebugNN << LOGSEC_HTMLVIEWER << "Re-rendering HTML view after all resources are downloaded.";
+      render();
+    });
+  });
+
   // Shared context menu actions.
   m_actionFontAntialiasing.reset(new QAction(qApp->icons()->fromTheme(QSL("format-text-bold")),
                                              tr("Font antialiasing"),
@@ -486,11 +493,11 @@ void QLiteHtmlWidget::htmlPos(QPointF pos, QPointF* viewport_pos, QPointF* html_
   *html_pos = *viewport_pos + scrollPosition();
 }
 
-QPointF QLiteHtmlWidget::toVirtual(const QPointF &p) const {
+QPointF QLiteHtmlWidget::toVirtual(const QPointF& p) const {
   return {p.x() / m_zoomFactor, p.y() / m_zoomFactor};
 }
 
-QSizeF QLiteHtmlWidget::toVirtual(const QSizeF &s) const {
+QSizeF QLiteHtmlWidget::toVirtual(const QSizeF& s) const {
   return {s.width() / m_zoomFactor, s.height() / m_zoomFactor};
 }
 

@@ -11,6 +11,7 @@
 #include <memory>
 #include <unordered_map>
 
+#include <QMutex>
 #include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QPixmap>
@@ -18,6 +19,7 @@
 #include <QRect>
 #include <QString>
 #include <QTextDocument>
+#include <QTimer>
 #include <QUrl>
 #include <QVector>
 
@@ -222,6 +224,7 @@ class DocumentContainer : public QObject, litehtml::document_container {
     void renderRequested();
 
   private slots:
+    void downloadNextExternalResource();
     QVariant handleExternalResource(DocumentContainer::RequestType type, const QUrl& url);
     void onResourceDownloadCompleted(const QUrl& url,
                                      QNetworkReply::NetworkError status,
@@ -240,8 +243,6 @@ class DocumentContainer : public QObject, litehtml::document_container {
     QString monospaceFont() const;
 
     QUrl resolveUrl(const QString& url, const QString& base_url) const;
-
-    void downloadNextExternalResource();
 
     void drawSelection(QPainter* painter, const QRectF& clip) const;
     void buildIndex();
@@ -274,5 +275,8 @@ class DocumentContainer : public QObject, litehtml::document_container {
     bool m_loadExternalResources;
 
     Downloader* m_downloader;
-    QList<QUrl> m_neededExternalResources;
+
+    QTimer m_timerRerender;
+    QTimer m_timerForPendingExternalResources;
+    QList<QUrl> m_pendingExternalResources;
 };

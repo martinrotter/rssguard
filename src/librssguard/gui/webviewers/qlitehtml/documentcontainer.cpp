@@ -19,6 +19,7 @@
 #include <QFontMetrics>
 #include <QGuiApplication>
 #include <QLinearGradient>
+#include <QMutexLocker>
 #include <QPaintDevice>
 #include <QPainter>
 #include <QPalette>
@@ -564,6 +565,16 @@ DocumentContainer::DocumentContainer()
   : m_placeholderImage(qApp->icons()->miscPixmap(QSL("image-placeholder"))),
     m_placeholderImageError(qApp->icons()->miscPixmap(QSL("image-placeholder-error"))), m_loadExternalResources(false),
     m_downloader(new Downloader(this)) {
+  m_timerForPendingExternalResources.setSingleShot(true);
+  m_timerForPendingExternalResources.setInterval(100);
+  connect(&m_timerForPendingExternalResources,
+          &QTimer::timeout,
+          this,
+          &DocumentContainer::downloadNextExternalResource);
+
+  m_timerRerender.setSingleShot(true);
+  m_timerRerender.setInterval(500);
+
   connect(m_downloader, &Downloader::completed, this, &DocumentContainer::onResourceDownloadCompleted);
 }
 
@@ -846,12 +857,39 @@ void DocumentContainer::setLoadExternalResources(bool load_resources) {
   m_loadExternalResources = load_resources;
 }
 
+void DocumentContainer::onResourceDownloadCompleted(const QUrl& url,
+                                                    QNetworkReply::NetworkError status,
+                                                    int http_code,
+                                                    const QByteArray& contents) {
+  QPixmap px;
+  px.loadFromData(contents);
+
+  if (!px.isNull()) {
+    qDebugNN << LOGSEC_HTMLVIEWER << "Inserting image" << QUOTE_W_SPACE(url.toString()) << "to cache.";
+    m_dataCache.insert(url, px);
+  }
+  else {
+    m_dataCache.insert(url, m_placeholderImageError);
+  }
+
+  m_pendingExternalResources.removeOne(url);
+
+  if (status != QNetworkReply::NetworkError::NoError) {
+    qWarningNN << LOGSEC_HTMLVIEWER << "Async external data" << QUOTE_W_SPACE(url) << "was not loaded due to error"
+               << QUOTE_W_SPACE_DOT(status);
+  }
+
+  if (m_pendingExternalResources.isEmpty()) {
+    emit renderRequested();
+  }
+  else {
+    downloadNextExternalResource();
+  }
+}
+
 QVariant DocumentContainer::handleExternalResource(DocumentContainer::RequestType type, const QUrl& url) {
   qDebugNN << LOGSEC_HTMLVIEWER << "Request for external resource" << QUOTE_W_SPACE(url.toString()) << "of type"
            << QUOTE_W_SPACE_DOT(int(type));
-
-  // TODO: if image is NOT in cache, download it async and return placeholder
-  // once image is downloaded, call render() to re-render the page.
 
   if (!loadExternalResources()) {
     if (type == DocumentContainer::RequestType::ImageDisplay || type == DocumentContainer::RequestType::ImageDownload) {
@@ -875,9 +913,24 @@ QVariant DocumentContainer::handleExternalResource(DocumentContainer::RequestTyp
     return m_placeholderImage;
   }
 
+  if (type == DocumentContainer::RequestType::ImageDownload) {
+    // Just add this resource to list of needed resources and timed downloader
+    // will eventually download it and re-render the document.
+    if (!m_pendingExternalResources.contains(url)) {
+      qDebugNN << LOGSEC_HTMLVIEWER << "Adding" << QUOTE_W_SPACE(url) << "to list of resources for async download.";
+      m_pendingExternalResources.append(url);
+    }
+    else {
+      qDebugNN << LOGSEC_HTMLVIEWER << "Resource" << QUOTE_W_SPACE(url) << "is already queued for async download.";
+    }
+
+    return m_placeholderImage;
+  }
+
+  // Here we download CSS files synchronously.
   QByteArray data;
   NetworkResult res = NetworkFactory::performNetworkOperation(url.toString(),
-                                                              5000,
+                                                              3000,
                                                               {},
                                                               data,
                                                               QNetworkAccessManager::Operation::GetOperation,
@@ -888,26 +941,11 @@ QVariant DocumentContainer::handleExternalResource(DocumentContainer::RequestTyp
                                                               networkProxy());
 
   if (res.m_networkError != QNetworkReply::NetworkError::NoError) {
-    qWarningNN << LOGSEC_HTMLVIEWER << "External data" << QUOTE_W_SPACE(url.toString()) << "was not loaded due to error"
+    qWarningNN << LOGSEC_HTMLVIEWER << "External data" << QUOTE_W_SPACE(url) << "was not loaded due to error"
                << QUOTE_W_SPACE_DOT(res.m_networkError);
   }
 
   switch (type) {
-    case DocumentContainer::RequestType::ImageDownload: {
-      QPixmap px;
-      px.loadFromData(data);
-
-      if (!px.isNull()) {
-        qDebugNN << LOGSEC_HTMLVIEWER << "Inserting image" << QUOTE_W_SPACE(url.toString()) << "to cache.";
-        m_dataCache.insert(url, px);
-      }
-      else {
-        m_dataCache.insert(url, m_placeholderImageError);
-      }
-
-      return m_dataCache.value(url);
-    }
-
     case DocumentContainer::RequestType::CssDownload:
     default:
       m_dataCache.insert(url, data);
@@ -1270,7 +1308,11 @@ void DocumentContainer::setScrollPosition(const QPoint& pos) {
 
 void DocumentContainer::setDocument(const QByteArray& data) {
   clearSelection();
+
+  m_pendingExternalResources.clear();
   m_document = litehtml::document::createFromString(data.constData(), this, m_masterCss.toStdString());
+  m_timerForPendingExternalResources.start();
+
   buildIndex();
 }
 
@@ -1769,13 +1811,6 @@ int DocumentContainer::withFixedElementPosition(int y, const std::function<void(
   return -1;
 }
 
-void DocumentContainer::onResourceDownloadCompleted(const QUrl& url,
-                                                    QNetworkReply::NetworkError status,
-                                                    int http_code,
-                                                    const QByteArray& contents) {
-  m_dataCache.insert(url, contents);
-}
-
 QString DocumentContainer::masterCss() const {
   return m_masterCss;
 }
@@ -1842,11 +1877,15 @@ QUrl DocumentContainer::resolveUrl(const QString& url, const QString& base_url) 
 }
 
 void DocumentContainer::downloadNextExternalResource() {
-  if (m_neededExternalResources.isEmpty()) {
+  if (m_pendingExternalResources.isEmpty()) {
+    qDebugNN << LOGSEC_HTMLVIEWER << "There are no external resources to download.";
     return;
   }
 
-  m_downloader->downloadFile(m_neededExternalResources.first().toString(), 3000);
+  auto url = m_pendingExternalResources.first().toString();
+
+  m_downloader->downloadFile(url, 3000);
+  qDebugNN << LOGSEC_HTMLVIEWER << "Downloading external resources" << QUOTE_W_SPACE_DOT(url);
 }
 
 Index::Entry Index::findElement(int index) const {

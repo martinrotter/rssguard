@@ -436,6 +436,10 @@ void Downloader::setHttp2Status(NetworkFactory::Http2Status status) {
   m_downloadManager->setSpecificHtpp2Status(status);
 }
 
+void Downloader::reloadSettings() {
+  m_downloadManager->loadSettings();
+}
+
 QNetworkProxy Downloader::proxy() const {
   return m_downloadManager->proxy();
 }

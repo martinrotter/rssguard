@@ -37,6 +37,8 @@ class Downloader : public QObject {
 
     void setHttp2Status(NetworkFactory::Http2Status status);
 
+    void reloadSettings();
+
     QNetworkProxy proxy() const;
     void setProxy(const QNetworkProxy& proxy);
 

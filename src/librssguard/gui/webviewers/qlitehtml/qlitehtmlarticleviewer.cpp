@@ -47,7 +47,7 @@ void QLiteHtmlArticleViewer::findText(const QString& text, bool backwards) {
 }
 
 void QLiteHtmlArticleViewer::reloadNetworkSettings() {
-  // m_network->loadSettings();
+  documentContainer()->downloader()->reloadSettings();
 }
 
 QString QLiteHtmlArticleViewer::html() const {
