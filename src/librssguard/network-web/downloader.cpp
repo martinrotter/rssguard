@@ -436,6 +436,10 @@ void Downloader::setHttp2Status(NetworkFactory::Http2Status status) {
   m_downloadManager->setSpecificHtpp2Status(status);
 }
 
+QNetworkProxy Downloader::proxy() const {
+  return m_downloadManager->proxy();
+}
+
 QMap<QString, QString> Downloader::lastHeaders() const {
   return m_lastHeaders;
 }

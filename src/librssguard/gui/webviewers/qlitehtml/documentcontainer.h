@@ -272,8 +272,7 @@ class DocumentContainer : public QObject, litehtml::document_container {
     QPixmap m_placeholderImageError;
     QHash<QUrl, QVariant> m_dataCache;
     bool m_loadExternalResources;
-    QNetworkProxy m_networkProxy;
 
     Downloader* m_downloader;
-    QStringList m_neededExternalResources;
+    QList<QUrl> m_neededExternalResources;
 };

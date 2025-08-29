@@ -916,11 +916,11 @@ QVariant DocumentContainer::handleExternalResource(DocumentContainer::RequestTyp
 }
 
 QNetworkProxy DocumentContainer::networkProxy() const {
-  return m_networkProxy;
+  return m_downloader->proxy();
 }
 
 void DocumentContainer::setNetworkProxy(const QNetworkProxy& network_proxy) {
-  m_networkProxy = network_proxy;
+  m_downloader->setProxy(network_proxy);
 }
 
 Downloader* DocumentContainer::downloader() const {
@@ -1846,7 +1846,7 @@ void DocumentContainer::downloadNextExternalResource() {
     return;
   }
 
-  m_downloader->downloadFile(m_neededExternalResources.first(), 3000);
+  m_downloader->downloadFile(m_neededExternalResources.first().toString(), 3000);
 }
 
 Index::Entry Index::findElement(int index) const {

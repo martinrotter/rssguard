@@ -36,6 +36,8 @@ class Downloader : public QObject {
     QUrl lastUrl() const;
 
     void setHttp2Status(NetworkFactory::Http2Status status);
+
+    QNetworkProxy proxy() const;
     void setProxy(const QNetworkProxy& proxy);
 
   public slots:
