@@ -3,10 +3,10 @@
 #include "gui/dialogs/formmessagefiltersmanager.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-#include "core/messagefilter.h"
-#include "core/messagesforfiltersmodel.h"
 #include "database/databasequeries.h"
 #include "exceptions/filteringexception.h"
+#include "filtering/messagefilter.h"
+#include "filtering/messagesforfiltersmodel.h"
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/jssyntaxhighlighter.h"

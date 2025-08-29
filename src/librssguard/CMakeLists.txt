@@ -7,16 +7,8 @@ set(SOURCES
   core/feedsmodel.h
   core/feedsproxymodel.cpp
   core/feedsproxymodel.h
-  core/filterutils.cpp
-  core/filterutils.h
   core/message.cpp
   core/message.h
-  core/messagefilter.cpp
-  core/messagefilter.h
-  core/messageobject.cpp
-  core/messageobject.h
-  core/messagesforfiltersmodel.cpp
-  core/messagesforfiltersmodel.h
   core/messagesmodel.cpp
   core/messagesmodel.h
   core/messagesmodelcache.cpp
@@ -63,6 +55,14 @@ set(SOURCES
   exceptions/processexception.h
   exceptions/scriptexception.cpp
   exceptions/scriptexception.h
+  filtering/filterutils.cpp
+  filtering/filterutils.h
+  filtering/messagefilter.cpp
+  filtering/messagefilter.h
+  filtering/messageobject.cpp
+  filtering/messageobject.h
+  filtering/messagesforfiltersmodel.cpp
+  filtering/messagesforfiltersmodel.h
   gui/dialogs/filedialog.cpp
   gui/dialogs/filedialog.h
   gui/dialogs/formabout.cpp

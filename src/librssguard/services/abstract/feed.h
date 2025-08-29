@@ -4,7 +4,7 @@
 #define FEED_H
 
 #include "core/message.h"
-#include "core/messagefilter.h"
+#include "filtering/messagefilter.h"
 #include "services/abstract/feedrtlbehavior.h"
 #include "services/abstract/rootitem.h"
 

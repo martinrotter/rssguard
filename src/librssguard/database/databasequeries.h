@@ -3,8 +3,8 @@
 #ifndef DATABASEQUERIES_H
 #define DATABASEQUERIES_H
 
-#include "core/messagefilter.h"
 #include "definitions/typedefs.h"
+#include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"

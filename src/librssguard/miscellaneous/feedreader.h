@@ -4,7 +4,7 @@
 #define FEEDREADER_H
 
 #include "core/feeddownloader.h"
-#include "core/messagefilter.h"
+#include "filtering/messagefilter.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 

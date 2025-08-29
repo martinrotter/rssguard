@@ -3,11 +3,11 @@
 #include "core/feeddownloader.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-#include "core/messagefilter.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/feedfetchexception.h"
 #include "exceptions/filteringexception.h"
+#include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/thread.h"
