@@ -1,9 +1,9 @@
 Article Filtering
 =================
-Sometimes you need to automatically tweak the incoming article - mark it starred, remove ads from its contents, or simply ignore it. That's where article filtering feature comes in.
+Sometimes you need to automatically tweak the incoming article - mark it starred, remove ads from its contents or simply reject it. That's where article filtering feature comes in.
 
 ## `Article filters` dialog
-The dialog seen below offers you a way of managing your article filters. You can assign single filter to multiple feeds.
+The dialog seen below offers you a way of managing your article filters. You can assign single filter to multiple feeds across all accounts.
 
 `Test` button tests selected filter against existing messages. `Process checked feeds` runs the filter against existing messages from checked feeds - in this mode all modifications made by the filter are saved to existing messages.
 
@@ -16,11 +16,11 @@ Article filters are small scripts which are executed automatically when articles
 function filterMessage() { }
 ```
 
-The function should be fast and must return values which belong to enumeration [`FilteringAction`](#filteringaction-enum).
+The function must return values which belong to enumeration [`FilteringAction`](#filteringaction-enum).
 
 Supported set of built-in "standard library" adheres to [ECMA-262](https://ecma-international.org/publications-and-standards/standards/ecma-262).
 
-Each article is accessible in your script via global variable named `msg` of type `MessageObject`, see [this file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) for the declaration. Some properties are writeable, allowing you to change contents of the article before it is written to RSS Guard DB. You can mark article important, change its description, perhaps change author name or even assign some [label](labels) to it!!!
+Each article is accessible in your script via global variable/property named `msg` of type `MessageObject`, see [this file](https://github.com/martinrotter/rssguard/blob/master/src/librssguard/core/messageobject.h) for the declaration. Some properties are writeable, allowing you to change contents of the article before it is written to RSS Guard DB. You can mark article important, change its description, perhaps change author name or even assign some [label](labels) to it!!!
 
 ```{note}
 Some attributes (`read/unread/starred` states) are synchronized back to your account's server - so you can for example mark some articles as starred and the change will be propagated back to TT-RSS server if you use TT-RSS.
