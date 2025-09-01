@@ -220,6 +220,9 @@ class DocumentContainer : public QObject, litehtml::document_container {
     bool shapeAntialiasing() const;
     void setShapeAntialiasing(bool on);
 
+    QString userCss() const;
+    void setUserCss(const QString& user_css);
+
   signals:
     void renderRequested();
 
@@ -268,6 +271,7 @@ class DocumentContainer : public QObject, litehtml::document_container {
     DocumentContainer::ClipboardCallback m_clipboardCallback;
     bool m_blockLinks = false;
     QString m_masterCss;
+    QString m_userCss;
 
     QPixmap m_placeholderImage;
     QPixmap m_placeholderImageError;

@@ -841,6 +841,14 @@ void DocumentContainer::clearSelection() {
   }
 }
 
+QString DocumentContainer::userCss() const {
+  return m_userCss;
+}
+
+void DocumentContainer::setUserCss(const QString& user_css) {
+  m_userCss = user_css;
+}
+
 bool DocumentContainer::shapeAntialiasing() const {
   return m_shapeAntialiasing;
 }
@@ -1310,7 +1318,8 @@ void DocumentContainer::setDocument(const QByteArray& data) {
   clearSelection();
 
   m_pendingExternalResources.clear();
-  m_document = litehtml::document::createFromString(data.constData(), this, m_masterCss.toStdString());
+  m_document =
+    litehtml::document::createFromString(data.constData(), this, m_masterCss.toStdString(), m_userCss.toStdString());
   m_timerForPendingExternalResources.start();
 
   buildIndex();

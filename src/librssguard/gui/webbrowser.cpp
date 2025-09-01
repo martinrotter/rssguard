@@ -61,7 +61,6 @@ void WebBrowser::bindWebView() {
   connect(qobj_viewer, SIGNAL(linkMouseHighlighted(QUrl)), this, SLOT(onLinkHovered(QUrl)));
   connect(qobj_viewer, SIGNAL(linkClicked(QUrl)), this, SLOT(onLinkClicked(QUrl)));
   connect(qobj_viewer, SIGNAL(pageTitleChanged(QString)), this, SLOT(onTitleChanged(QString)));
-  connect(qobj_viewer, SIGNAL(pageUrlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
   connect(qobj_viewer, SIGNAL(pageIconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
   connect(qobj_viewer, SIGNAL(loadingStarted()), this, SLOT(onLoadingStarted()));
   connect(qobj_viewer, SIGNAL(loadingProgress(int)), this, SLOT(onLoadingProgress(int)));

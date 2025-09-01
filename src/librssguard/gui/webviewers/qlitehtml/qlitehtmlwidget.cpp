@@ -60,6 +60,14 @@ QLiteHtmlWidget::QLiteHtmlWidget(QWidget* parent) : QAbstractScrollArea(parent) 
 
   m_documentContainer.setMasterCss(QString::fromUtf8(IOFactory::readFile(QSL(":/litehtml/master.css"))));
 
+  QString user_styles_path =
+    qApp->userDataFolder() + QDir::separator() + QSL("web") + QDir::separator() + QSL("user-styles.css");
+
+  if (QFile::exists(user_styles_path)) {
+    qDebugNN << LOGSEC_HTMLVIEWER << "Loading user CSS styles" << QUOTE_W_SPACE_DOT(user_styles_path);
+    m_documentContainer.setUserCss(QString::fromUtf8(IOFactory::readFile(user_styles_path)));
+  }
+
   connect(&m_documentContainer, &DocumentContainer::renderRequested, this, [this]() {
     withFixedTextPosition([this] {
       qDebugNN << LOGSEC_HTMLVIEWER << "Re-rendering HTML view after all resources are downloaded.";
