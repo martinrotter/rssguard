@@ -7,6 +7,7 @@
 #include "definitions/definitions.h"
 #include "exceptions/feedfetchexception.h"
 #include "exceptions/filteringexception.h"
+#include "filtering/filteringsystem.h"
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
@@ -16,7 +17,6 @@
 #include "services/abstract/labelsnode.h"
 
 #include <QDebug>
-#include <QJSEngine>
 #include <QString>
 #include <QtConcurrentMap>
 
@@ -284,12 +284,10 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       tmr.restart();
 
       // Perform per-message filtering.
-      QJSEngine filter_engine;
-
-      // Create JavaScript communication wrapper for the message.
-      MessageObject msg_obj(&database, feed, feed->getParentServiceRoot(), true);
-
-      MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
+      FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles,
+                                database,
+                                feed,
+                                feed->getParentServiceRoot());
 
       qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000
                << " microseconds.";
@@ -302,8 +300,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
         // Attach live message object to wrapper.
         tmr.restart();
-        msg_obj.setMessage(msg_tweaked_by_filter);
-        qDebugNN << LOGSEC_FEEDDOWNLOADER << "Hooking message took " << tmr.nsecsElapsed() / 1000 << " microseconds.";
+        filtering.setMessage(msg_tweaked_by_filter);
 
         auto feed_filters = feed->messageFilters();
         bool remove_msg = false;
@@ -323,7 +320,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           tmr.restart();
 
           try {
-            MessageObject::FilteringAction decision = msg_filter->filterMessage(&filter_engine);
+            MessageObject::FilteringAction decision = filtering.filterMessage(*msg_filter);
 
             qDebugNN << LOGSEC_FEEDDOWNLOADER << "Running filter script, it took " << tmr.nsecsElapsed() / 1000
                      << " microseconds.";

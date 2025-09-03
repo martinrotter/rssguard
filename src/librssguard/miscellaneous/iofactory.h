@@ -33,12 +33,12 @@ class RSSGUARD_DLLSPEC IOFactory {
     static void startProcess(QProcess* const proc,
                              const QString& executable,
                              const QStringList& arguments = {},
-                             const QProcessEnvironment& pe = {},
-                             const QString& working_directory = {});
+                             const QString& working_directory = {},
+                             const QProcessEnvironment& pe = {});
     static QString startProcessGetOutput(const QString& executable,
                                          const QStringList& arguments = {},
-                                         const QProcessEnvironment& pe = {},
-                                         const QString& working_directory = {});
+                                         const QString& working_directory = {},
+                                         const QProcessEnvironment& pe = {});
 
     // Returns contents of a file.
     // Throws exception when no such file exists.

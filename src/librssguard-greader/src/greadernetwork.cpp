@@ -745,7 +745,6 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
 
     if ((label[QSL("type")].toString() == QSL("folder") ||
          (m_service == GreaderServiceRoot::Service::TheOldReader && label_id.contains(QSL("/label/"))))) {
-
       // We have category (not "state" or "tag" or "label").
       auto* category = new Category();
 
@@ -1068,7 +1067,13 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
 
     message.m_title = message_obj[QSL("title")].toString();
     message.m_author = message_obj[QSL("author")].toString();
-    message.m_created = QDateTime::fromSecsSinceEpoch(message_obj[QSL("published")].toInt(), Qt::TimeSpec::UTC);
+    message.m_created = QDateTime::fromSecsSinceEpoch(message_obj[QSL("published")].toInt(),
+#if QT_VERSION >= 0x060900 // Qt >= 6.9.0
+                                                      QTimeZone::utc());
+#else
+                                                      Qt::TimeSpec::UTC);
+#endif
+
     message.m_createdFromFeed = true;
     message.m_customId = message_obj[QSL("id")].toString();
 

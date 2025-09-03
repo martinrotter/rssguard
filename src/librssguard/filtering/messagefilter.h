@@ -3,10 +3,6 @@
 #ifndef MESSAGEFILTER_H
 #define MESSAGEFILTER_H
 
-#include "core/message.h"
-#include "filtering/messageobject.h"
-
-#include <QJSEngine>
 #include <QObject>
 
 // Class which represents one message filter.
@@ -16,8 +12,6 @@ class RSSGUARD_DLLSPEC MessageFilter : public QObject {
   public:
     explicit MessageFilter(int id = -1, QObject* parent = nullptr);
 
-    MessageObject::FilteringAction filterMessage(QJSEngine* engine);
-
     int id() const;
     void setId(int id);
 
@@ -26,8 +20,6 @@ class RSSGUARD_DLLSPEC MessageFilter : public QObject {
 
     QString script() const;
     void setScript(const QString& script);
-
-    static void initializeFilteringEngine(QJSEngine& engine, MessageObject* message_wrapper);
 
   private:
     int m_id;

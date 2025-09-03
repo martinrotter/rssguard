@@ -429,8 +429,12 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
     }
 
     message.m_createdFromFeed = true;
-    message.m_created =
-      QDateTime::fromMSecsSinceEpoch(entry_obj[QSL("published")].toVariant().toLongLong(), Qt::TimeSpec::UTC);
+    message.m_created = QDateTime::fromMSecsSinceEpoch(entry_obj[QSL("published")].toVariant().toLongLong(),
+#if QT_VERSION >= 0x060900 // Qt >= 6.9.0
+                                                       QTimeZone::utc());
+#else
+                                                       Qt::TimeSpec::UTC);
+#endif
     message.m_customId = entry_obj[QSL("id")].toString();
     message.m_isRead = !entry_obj[QSL("unread")].toBool();
     message.m_url = entry_obj[QSL("canonicalUrl")].toString();

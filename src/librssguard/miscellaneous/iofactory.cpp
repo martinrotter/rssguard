@@ -87,8 +87,8 @@ bool IOFactory::startProcessDetached(const QString& executable,
 void IOFactory::startProcess(QProcess* const proc,
                              const QString& executable,
                              const QStringList& arguments,
-                             const QProcessEnvironment& pe,
-                             const QString& working_directory) {
+                             const QString& working_directory,
+                             const QProcessEnvironment& pe) {
   proc->setProgram(executable);
   proc->setArguments(arguments);
 
@@ -106,8 +106,8 @@ void IOFactory::startProcess(QProcess* const proc,
 
 QString IOFactory::startProcessGetOutput(const QString& executable,
                                          const QStringList& arguments,
-                                         const QProcessEnvironment& pe,
-                                         const QString& working_directory) {
+                                         const QString& working_directory,
+                                         const QProcessEnvironment& pe) {
   QProcess proc;
 
   proc.setProgram(executable);

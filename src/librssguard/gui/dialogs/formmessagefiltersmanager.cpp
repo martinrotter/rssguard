@@ -278,6 +278,8 @@ void FormMessageFiltersManager::loadFilter() {
 void FormMessageFiltersManager::testFilter() {
   m_ui.m_txtErrors->clear();
 
+  // TODO: TODO
+  /*
   // Perform per-message filtering.
   auto* selected_fd_cat = selectedCategoryFeed();
   QJSEngine filter_engine;
@@ -342,6 +344,7 @@ void FormMessageFiltersManager::testFilter() {
     // See output.
     m_ui.m_twMessages->setCurrentIndex(2);
   }
+*/
 }
 
 void FormMessageFiltersManager::displayMessagesOfFeed() {
@@ -360,6 +363,9 @@ void FormMessageFiltersManager::processCheckedFeeds() {
   auto* fltr = selectedFilter();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
+  // TODO: TODO
+
+  /*
   for (RootItem* it : checked) {
     if (it->kind() == RootItem::Kind::Feed) {
       QJSEngine filter_engine;
@@ -483,6 +489,7 @@ void FormMessageFiltersManager::processCheckedFeeds() {
       displayMessagesOfFeed();
     }
   }
+  */
 }
 
 void FormMessageFiltersManager::loadAccount(ServiceRoot* account) {

@@ -116,6 +116,8 @@ int MessagesForFiltersModel::messagesCount() const {
 void MessagesForFiltersModel::testFilter(MessageFilter* filter, QJSEngine* engine, MessageObject* msg_proxy) {
   m_filteringDecisions.clear();
 
+  // TODO: TODO
+  /*
   for (int i = 0; i < m_messages.size(); i++) {
     Message* msg = messageForRow(i);
 
@@ -134,6 +136,7 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, QJSEngine* engin
 
   emit layoutAboutToBeChanged();
   emit layoutChanged();
+*/
 }
 
 Message* MessagesForFiltersModel::messageForRow(int row) {

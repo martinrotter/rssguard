@@ -55,8 +55,10 @@ set(SOURCES
   exceptions/processexception.h
   exceptions/scriptexception.cpp
   exceptions/scriptexception.h
-  filtering/filterutils.cpp
-  filtering/filterutils.h
+  filtering/filterobjects.cpp
+  filtering/filterobjects.h
+  filtering/filteringsystem.cpp
+  filtering/filteringsystem.h
   filtering/messagefilter.cpp
   filtering/messagefilter.h
   filtering/messageobject.cpp

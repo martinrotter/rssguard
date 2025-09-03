@@ -334,14 +334,12 @@ QDateTime IcalendarComponent::fixupDate(QDateTime dat,
   if (time_initialized && spl.size() == 2 && time_zones.contains(spl.at(1))) {
     QTimeZone tz = time_zones.value(spl.at(1));
 
+#if QT_VERSION < 0x060900 // Qt < 6.9.0
     dat.setTimeSpec(Qt::TimeSpec::TimeZone);
+#endif
+
     dat.setTimeZone(tz);
 
-    /*
-    auto yy = dat.toString();
-    auto aa = dat.timeZone().id();
-    auto zz = dat.toUTC().toString();
-*/
     return dat.toUTC();
   }
   else {

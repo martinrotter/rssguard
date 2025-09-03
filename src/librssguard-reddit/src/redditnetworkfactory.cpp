@@ -272,8 +272,12 @@ QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetwork
         new_msg.m_title = msg_obj["title"].toString();
         new_msg.m_author = msg_obj["author"].toString();
         new_msg.m_createdFromFeed = true;
-        new_msg.m_created =
-          QDateTime::fromSecsSinceEpoch(msg_obj["created_utc"].toVariant().toLongLong(), Qt::TimeSpec::UTC);
+        new_msg.m_created = QDateTime::fromSecsSinceEpoch(msg_obj["created_utc"].toVariant().toLongLong(),
+#if QT_VERSION >= 0x060900 // Qt >= 6.9.0
+                                                          QTimeZone::utc());
+#else
+                                                          Qt::TimeSpec::UTC);
+#endif
         new_msg.m_url = QSL("https://reddit.com") + msg_obj["permalink"].toString();
         new_msg.m_contents =
           msg_obj["description_html"]

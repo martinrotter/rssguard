@@ -7,12 +7,13 @@
 
 #include <QObject>
 
+class FilteringSystem;
+
 class MessageObject : public QObject {
     Q_OBJECT
 
     Q_PROPERTY(QList<MessageCategory> categories READ categories)
     Q_PROPERTY(QList<Label*> assignedLabels READ assignedLabels)
-    Q_PROPERTY(QList<Label*> availableLabels READ availableLabels)
     Q_PROPERTY(QString feedCustomId READ feedCustomId)
     Q_PROPERTY(int accountId READ accountId)
     Q_PROPERTY(int id READ id)
@@ -29,7 +30,6 @@ class MessageObject : public QObject {
     Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
     Q_PROPERTY(bool isImportant READ isImportant WRITE setIsImportant)
     Q_PROPERTY(bool isDeleted READ isDeleted WRITE setIsDeleted)
-    Q_PROPERTY(bool runningFilterWhenFetching READ runningFilterWhenFetching)
 
   public:
     enum class FilteringAction {
@@ -69,18 +69,12 @@ class MessageObject : public QObject {
 
     Q_ENUM(DuplicateCheck)
 
-    explicit MessageObject(QSqlDatabase* db,
-                           Feed* feed,
-                           ServiceRoot* account,
-                           bool is_new_message,
-                           QObject* parent = nullptr);
+    explicit MessageObject(QObject* parent = nullptr);
 
+    void setSystem(FilteringSystem* sys);
     void setMessage(Message* message);
 
-    // Check if message is duplicate with another messages in DB.
-    Q_INVOKABLE bool isAlreadyInDatabase(MessageObject::DuplicateCheck attribute_check) const;
-    Q_INVOKABLE bool isDuplicate(MessageObject::DuplicateCheck attribute_check) const;
-    Q_INVOKABLE bool isDuplicateWithAttribute(MessageObject::DuplicateCheck attribute_check) const;
+    Q_INVOKABLE bool isAlreadyInDatabase(DuplicateCheck attribute_check) const;
 
     // Adds given label to list of assigned labels to this message.
     // Returns true if label was assigned now or if the message already has it assigned.
@@ -90,34 +84,19 @@ class MessageObject : public QObject {
     // Returns true if label was now removed or if it is not assigned to the message at all.
     Q_INVOKABLE bool deassignLabel(const QString& label_custom_id) const;
 
-    // Returns label custom ID given label title.
-    Q_INVOKABLE QString findLabelId(const QString& label_title) const;
-
-    // Returns label custom ID given label title or creates
-    // the label if it does not exist.
-    Q_INVOKABLE QString createLabelId(const QString& title, const QString& hex_color = {});
-
     // Add multimedia attachment to the message.
     Q_INVOKABLE void addEnclosure(const QString& url, const QString& mime_type) const;
 
-    // Returns list of assigned and available messages.
     QList<Label*> assignedLabels() const;
-    QList<Label*> availableLabels() const;
-
     QList<MessageCategory> categories() const;
 
-    bool runningFilterWhenFetching() const;
     bool hasEnclosures() const;
-
-    // Generic Message's properties bindings.
     QString feedCustomId() const;
-
     int accountId() const;
+    int id() const;
 
     QString customId() const;
     void setCustomId(const QString& custom_id);
-
-    int id() const;
 
     QString title() const;
     void setTitle(const QString& title);
@@ -153,16 +132,8 @@ class MessageObject : public QObject {
     void setScore(double score);
 
   private:
-    QSqlDatabase* m_db;
-
-    Feed* m_feed;
-    ServiceRoot* m_account;
-
-    QString m_feedCustomId;
-    int m_accountId;
     Message* m_message;
-    QList<Label*> m_availableLabels;
-    bool m_runningAfterFetching;
+    FilteringSystem* m_system;
 };
 
 #endif // MESSAGEOBJECT_H
