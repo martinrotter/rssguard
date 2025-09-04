@@ -191,10 +191,10 @@ double jaro_winkler_distance(QString str1, QString str2) {
   std::vector<QChar> ch1_match;
   ch1_match.reserve(len1);
 
-  for (qsizetype idx1 = 0; idx1 < len1; ++idx1) {
+  for (uint idx1 = 0; idx1 < len1; ++idx1) {
     QChar ch1 = str1[idx1];
 
-    for (qsizetype idx2 = 0; idx2 < len2; ++idx2) {
+    for (uint idx2 = 0; idx2 < len2; ++idx2) {
       QChar ch2 = str2[idx2];
 
       if (idx2 <= idx1 + delta && idx2 + delta >= idx1 && ch1 == ch2 && !flag[idx2]) {
@@ -213,7 +213,7 @@ double jaro_winkler_distance(QString str1, QString str2) {
 
   size_t transpositions = 0;
 
-  for (qsizetype idx1 = 0, idx2 = 0; idx2 < len2; ++idx2) {
+  for (uint idx1 = 0, idx2 = 0; idx2 < len2; ++idx2) {
     if (flag[idx2]) {
       if (str2[idx2] != ch1_match[idx1]) {
         ++transpositions;
@@ -228,7 +228,7 @@ double jaro_winkler_distance(QString str1, QString str2) {
   size_t common_prefix = 0;
   len2 = std::min(qsizetype(4), len2);
 
-  for (qsizetype i = 0; i < len2; ++i) {
+  for (uint i = 0; i < len2; ++i) {
     if (str1[i] == str2[i]) {
       ++common_prefix;
     }
