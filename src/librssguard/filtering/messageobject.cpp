@@ -176,21 +176,27 @@ int MessageObject::id() const {
 double jaro_winkler_distance(QString str1, QString str2) {
   size_t len1 = str1.size();
   size_t len2 = str2.size();
+
   if (len1 < len2) {
     std::swap(str1, str2);
     std::swap(len1, len2);
   }
+
   if (len2 == 0) {
     return len1 == 0 ? 0.0 : 1.0;
   }
+
   size_t delta = std::max(size_t(1), len1 / 2) - 1;
   std::vector<bool> flag(len2, false);
   std::vector<QChar> ch1_match;
   ch1_match.reserve(len1);
+
   for (size_t idx1 = 0; idx1 < len1; ++idx1) {
     QChar ch1 = str1[idx1];
+
     for (size_t idx2 = 0; idx2 < len2; ++idx2) {
       QChar ch2 = str2[idx2];
+
       if (idx2 <= idx1 + delta && idx2 + delta >= idx1 && ch1 == ch2 && !flag[idx2]) {
         flag[idx2] = true;
         ch1_match.push_back(ch1);
@@ -198,32 +204,87 @@ double jaro_winkler_distance(QString str1, QString str2) {
       }
     }
   }
+
   size_t matches = ch1_match.size();
+
   if (matches == 0) {
     return 1.0;
   }
+
   size_t transpositions = 0;
+
   for (size_t idx1 = 0, idx2 = 0; idx2 < len2; ++idx2) {
     if (flag[idx2]) {
       if (str2[idx2] != ch1_match[idx1]) {
         ++transpositions;
       }
+
       ++idx1;
     }
   }
+
   double m = matches;
   double jaro = (m / len1 + m / len2 + (m - transpositions / 2.0) / m) / 3.0;
   size_t common_prefix = 0;
   len2 = std::min(size_t(4), len2);
+
   for (size_t i = 0; i < len2; ++i) {
     if (str1[i] == str2[i]) {
       ++common_prefix;
     }
   }
+
   return 1.0 - (jaro + common_prefix * 0.1 * (1.0 - jaro));
 }
 
-bool MessageObject::isAlreadyInDatabaseExact(DuplicityCheck attribute_check) const {
+#define JARO_WINKLER_DECIDE(attr_check, dupl_check, thres, my_msg_prop, other_msg_prop) \
+  if (Globals::hasFlag(attr_check, dupl_check)) {                                       \
+    double dst = jaro_winkler_distance(my_msg_prop, other_msg_prop);                    \
+    if (dst > thres) {                                                                  \
+      continue;                                                                         \
+    }                                                                                   \
+  }
+
+bool MessageObject::isAlreadyInDatabaseWinkler(DuplicityCheck attribute_check, double similarity_threshold) const {
+  QList<Message> msgs;
+  bool ok = false;
+
+  if (Globals::hasFlag(attribute_check, DuplicityCheck::AllFeedsSameAccount)) {
+    msgs = DatabaseQueries::getUndeletedMessagesForAccount(m_system->database(), accountId(), &ok);
+  }
+  else {
+    msgs = DatabaseQueries::getUndeletedMessagesForFeed(m_system->database(), feedCustomId(), accountId(), &ok);
+  }
+
+  if (!ok) {
+    qCriticalNN << LOGSEC_ARTICLEFILTER << "Query for undeleted articles failed.";
+    return false;
+  }
+
+  foreach (const Message& msg, msgs) {
+    // We check similarity of each article.
+    if (m_system->mode() == FilteringSystem::FiteringUseCase::ExistingArticles && id() > 0 && msg.m_id == id()) {
+      // NOTE: We skip this message because it is the same one.
+      return false;
+    }
+
+    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameTitle, similarity_threshold, title(), msg.m_title)
+    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameUrl, similarity_threshold, url(), msg.m_url)
+    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameAuthor, similarity_threshold, author(), msg.m_author)
+    JARO_WINKLER_DECIDE(attribute_check,
+                        DuplicityCheck::SameDateCreated,
+                        similarity_threshold,
+                        created().toString(),
+                        msg.m_created.toString())
+    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameCustomId, similarity_threshold, customId(), msg.m_customId)
+
+    return true;
+  }
+
+  return false;
+}
+
+bool MessageObject::isAlreadyInDatabase(DuplicityCheck attribute_check) const {
   // Check database according to duplication attribute_check.
   QSqlQuery q(m_system->database());
   QStringList where_clauses;
@@ -273,7 +334,7 @@ bool MessageObject::isAlreadyInDatabaseExact(DuplicityCheck attribute_check) con
 
   QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
 
-  qDebugNN << LOGSEC_MESSAGEMODEL
+  qDebugNN << LOGSEC_ARTICLEFILTER
            << "Prepared query for MSG duplicate identification is:" << QUOTE_W_SPACE_DOT(full_query);
 
   q.setForwardOnly(true);
@@ -299,18 +360,6 @@ bool MessageObject::isAlreadyInDatabaseExact(DuplicityCheck attribute_check) con
   }
 
   return false;
-}
-
-bool MessageObject::isAlreadyInDatabase(DuplicityCheck attribute_check, DuplicityMatcher matcher) const {
-  switch (matcher) {
-    case DuplicityMatcher::Winkler:
-      // TODO:
-      return false;
-
-    case DuplicityMatcher::Exact:
-    default:
-      return isAlreadyInDatabaseExact(attribute_check);
-  }
 }
 
 QList<Label*> MessageObject::assignedLabels() const {

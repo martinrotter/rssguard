@@ -144,6 +144,7 @@
 #define LOGSEC_NETWORK        "network: "
 #define LOGSEC_FEEDMODEL      "feed-model: "
 #define LOGSEC_FEEDDOWNLOADER "feed-downloader: "
+#define LOGSEC_ARTICLEFILTER  "article-filtering: "
 #define LOGSEC_HTMLVIEWER     "html-viewer: "
 #define LOGSEC_MESSAGEMODEL   "message-model: "
 #define LOGSEC_JS             "javascript: "

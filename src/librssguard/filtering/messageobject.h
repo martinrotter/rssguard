@@ -67,21 +67,16 @@ class MessageObject : public QObject {
       SameCustomId = 32
     };
 
-    enum class DuplicityMatcher {
-      Exact,
-      Winkler
-    };
-
     Q_ENUM(DuplicityCheck)
-    Q_ENUM(DuplicityMatcher)
 
     explicit MessageObject(QObject* parent = nullptr);
 
     void setSystem(FilteringSystem* sys);
     void setMessage(Message* message);
 
-    Q_INVOKABLE bool isAlreadyInDatabase(DuplicityCheck attribute_check,
-                                         DuplicityMatcher matcher = DuplicityMatcher::Exact) const;
+    Q_INVOKABLE bool isAlreadyInDatabaseWinkler(DuplicityCheck attribute_check,
+                                                double similarity_threshold = 0.1) const;
+    Q_INVOKABLE bool isAlreadyInDatabase(DuplicityCheck attribute_check) const;
 
     // Adds given label to list of assigned labels to this message.
     // Returns true if label was assigned now or if the message already has it assigned.
@@ -139,8 +134,6 @@ class MessageObject : public QObject {
     void setScore(double score);
 
   private:
-    bool isAlreadyInDatabaseExact(DuplicityCheck attribute_check) const;
-
     Message* m_message;
     FilteringSystem* m_system;
 };

@@ -156,7 +156,12 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
 }
 
 QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
-  return QDateTime::fromMSecsSinceEpoch(milis_from_epoch, Qt::TimeSpec::UTC);
+  return QDateTime::fromMSecsSinceEpoch(milis_from_epoch,
+#if QT_VERSION >= 0x060900 // Qt >= 6.9.0
+                                        QTimeZone::utc());
+#else
+                                        Qt::TimeSpec::UTC);
+#endif
 }
 
 QStringList TextFactory::dateTimePatterns(bool with_tzs) {
