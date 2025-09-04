@@ -174,8 +174,8 @@ int MessageObject::id() const {
 }
 
 double jaro_winkler_distance(QString str1, QString str2) {
-  size_t len1 = str1.size();
-  size_t len2 = str2.size();
+  qsizetype len1 = str1.size();
+  qsizetype len2 = str2.size();
 
   if (len1 < len2) {
     std::swap(str1, str2);
@@ -186,15 +186,15 @@ double jaro_winkler_distance(QString str1, QString str2) {
     return len1 == 0 ? 0.0 : 1.0;
   }
 
-  size_t delta = std::max(size_t(1), len1 / 2) - 1;
+  qsizetype delta = std::max(qsizetype(1), len1 / 2) - 1;
   std::vector<bool> flag(len2, false);
   std::vector<QChar> ch1_match;
   ch1_match.reserve(len1);
 
-  for (size_t idx1 = 0; idx1 < len1; ++idx1) {
+  for (qsizetype idx1 = 0; idx1 < len1; ++idx1) {
     QChar ch1 = str1[idx1];
 
-    for (size_t idx2 = 0; idx2 < len2; ++idx2) {
+    for (qsizetype idx2 = 0; idx2 < len2; ++idx2) {
       QChar ch2 = str2[idx2];
 
       if (idx2 <= idx1 + delta && idx2 + delta >= idx1 && ch1 == ch2 && !flag[idx2]) {
@@ -213,7 +213,7 @@ double jaro_winkler_distance(QString str1, QString str2) {
 
   size_t transpositions = 0;
 
-  for (size_t idx1 = 0, idx2 = 0; idx2 < len2; ++idx2) {
+  for (qsizetype idx1 = 0, idx2 = 0; idx2 < len2; ++idx2) {
     if (flag[idx2]) {
       if (str2[idx2] != ch1_match[idx1]) {
         ++transpositions;
@@ -226,9 +226,9 @@ double jaro_winkler_distance(QString str1, QString str2) {
   double m = matches;
   double jaro = (m / len1 + m / len2 + (m - transpositions / 2.0) / m) / 3.0;
   size_t common_prefix = 0;
-  len2 = std::min(size_t(4), len2);
+  len2 = std::min(qsizetype(4), len2);
 
-  for (size_t i = 0; i < len2; ++i) {
+  for (qsizetype i = 0; i < len2; ++i) {
     if (str1[i] == str2[i]) {
       ++common_prefix;
     }
