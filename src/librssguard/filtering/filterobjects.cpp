@@ -167,6 +167,10 @@ QString FilterApp::createLabel(const QString& label_title, const QString& hex_co
   return {};
 }
 
+void FilterApp::showNotification(const QString& title, const QString& text) {
+  qApp->showGuiMessage(Notification::Event::GeneralEvent, GuiMessage(title, text));
+}
+
 QList<Label*> FilterApp::availableLabels() const {
   return m_system->availableLabels();
 }
@@ -177,4 +181,30 @@ void FilterApp::setSystem(FilteringSystem* sys) {
 
 void FilterFeed::setSystem(FilteringSystem* sys) {
   m_system = sys;
+}
+
+FilterRun::FilterRun(QObject* parent) : QObject(parent), m_numberOfAcceptedMessages(0) {}
+
+int FilterRun::numberOfAcceptedMessages() const {
+  return m_numberOfAcceptedMessages;
+}
+
+void FilterRun::incrementNumberOfAcceptedMessages() {
+  m_numberOfAcceptedMessages++;
+}
+
+int FilterRun::indexOfCurrentFilter() const {
+  return m_indexOfCurrentFilter;
+}
+
+void FilterRun::setIndexOfCurrentFilter(int idx) {
+  m_indexOfCurrentFilter = idx;
+}
+
+int FilterRun::totalCountOfFilters() const {
+  return m_totalCountOfFilters;
+}
+
+void FilterRun::setTotalCountOfFilters(int total) {
+  m_totalCountOfFilters = total;
 }

@@ -288,6 +288,9 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                                 database,
                                 feed,
                                 feed->getParentServiceRoot());
+      auto feed_filters = feed->messageFilters();
+
+      filtering.filterRun().setTotalCountOfFilters(feed_filters.size());
 
       qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000
                << " microseconds.";
@@ -302,7 +305,6 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
         tmr.restart();
         filtering.setMessage(msg_tweaked_by_filter);
 
-        auto feed_filters = feed->messageFilters();
         bool remove_msg = false;
 
         for (int j = 0; j < feed_filters.size(); j++) {
@@ -318,6 +320,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           MessageFilter* msg_filter = filter.data();
 
           tmr.restart();
+
+          filtering.filterRun().setIndexOfCurrentFilter(j);
 
           try {
             FilterMessage::FilteringAction decision = filtering.filterMessage(*msg_filter);
@@ -348,6 +352,10 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           // If we reach this point. Then we ignore the message which is by now
           // already removed, go to next message.
           break;
+        }
+
+        if (!remove_msg) {
+          filtering.filterRun().incrementNumberOfAcceptedMessages();
         }
 
         if (!msg_original.m_isRead && msg_tweaked_by_filter->m_isRead) {

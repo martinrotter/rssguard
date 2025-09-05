@@ -37,6 +37,7 @@ class FilteringSystem : public QObject {
     ServiceRoot* account() const;
     QList<Label*>& availableLabels();
     FiteringUseCase mode() const;
+    FilterRun& filterRun();
 
   private:
     void initializeEngine();

@@ -23,6 +23,7 @@ class FilterApp : public QObject {
 
     Q_INVOKABLE QString findLabel(const QString& label_title) const;
     Q_INVOKABLE QString createLabel(const QString& label_title, const QString& hex_color = {});
+    Q_INVOKABLE void showNotification(const QString& title, const QString& text);
 
     QList<Label*> availableLabels() const;
 
@@ -33,6 +34,27 @@ class FilterApp : public QObject {
 // Information about current filtering run.
 class FilterRun : public QObject {
     Q_OBJECT
+
+  public:
+    Q_PROPERTY(int numberOfAcceptedMessages READ numberOfAcceptedMessages)
+    Q_PROPERTY(int indexOfCurrentFilter READ indexOfCurrentFilter)
+    Q_PROPERTY(int totalCountOfFilters READ totalCountOfFilters)
+
+    explicit FilterRun(QObject* parent = nullptr);
+
+    int numberOfAcceptedMessages() const;
+    void incrementNumberOfAcceptedMessages();
+
+    int indexOfCurrentFilter() const;
+    void setIndexOfCurrentFilter(int idx);
+
+    int totalCountOfFilters() const;
+    void setTotalCountOfFilters(int total);
+
+  private:
+    int m_indexOfCurrentFilter;
+    int m_totalCountOfFilters;
+    int m_numberOfAcceptedMessages;
 };
 
 class FilterFeed : public QObject {

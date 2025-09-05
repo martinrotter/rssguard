@@ -79,6 +79,10 @@ void FilteringSystem::initializeEngine() {
   m_engine.globalObject().setProperty(QSL("run"), m_engine.newQObject(&m_filterRun));
 }
 
+FilterRun& FilteringSystem::filterRun() {
+  return m_filterRun;
+}
+
 FilteringSystem::FiteringUseCase FilteringSystem::mode() const {
   return m_mode;
 }
