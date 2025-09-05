@@ -174,3 +174,7 @@ QList<Label*> FilterApp::availableLabels() const {
 void FilterApp::setSystem(FilteringSystem* sys) {
   m_system = sys;
 }
+
+void FilterFeed::setSystem(FilteringSystem* sys) {
+  m_system = sys;
+}

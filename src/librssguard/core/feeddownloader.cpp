@@ -320,18 +320,18 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           tmr.restart();
 
           try {
-            MessageObject::FilteringAction decision = filtering.filterMessage(*msg_filter);
+            FilterMessage::FilteringAction decision = filtering.filterMessage(*msg_filter);
 
             qDebugNN << LOGSEC_FEEDDOWNLOADER << "Running filter script, it took " << tmr.nsecsElapsed() / 1000
                      << " microseconds.";
 
             switch (decision) {
-              case MessageObject::FilteringAction::Accept:
+              case FilterMessage::FilteringAction::Accept:
                 // Message is normally accepted, it could be tweaked by the filter.
                 continue;
 
-              case MessageObject::FilteringAction::Ignore:
-              case MessageObject::FilteringAction::Purge:
+              case FilterMessage::FilteringAction::Ignore:
+              case FilterMessage::FilteringAction::Purge:
               default:
                 // Remove the message, we do not want it.
                 remove_msg = true;

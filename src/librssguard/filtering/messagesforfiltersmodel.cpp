@@ -40,11 +40,11 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
     case Qt::ItemDataRole::BackgroundRole: {
       if (m_filteringDecisions.contains(index.row())) {
         switch (m_filteringDecisions.value(index.row())) {
-          case MessageObject::FilteringAction::Accept:
+          case FilterMessage::FilteringAction::Accept:
             return qApp->skins()->colorForModel(SkinEnums::PaletteColors::Allright);
 
-          case MessageObject::FilteringAction::Ignore:
-          case MessageObject::FilteringAction::Purge:
+          case FilterMessage::FilteringAction::Ignore:
+          case FilterMessage::FilteringAction::Purge:
             return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError);
 
           default:
@@ -113,7 +113,7 @@ int MessagesForFiltersModel::messagesCount() const {
   return m_messages.size();
 }
 
-void MessagesForFiltersModel::testFilter(MessageFilter* filter, QJSEngine* engine, MessageObject* msg_proxy) {
+void MessagesForFiltersModel::testFilter(MessageFilter* filter, QJSEngine* engine, FilterMessage* msg_proxy) {
   m_filteringDecisions.clear();
 
   // TODO: TODO

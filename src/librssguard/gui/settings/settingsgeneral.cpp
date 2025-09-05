@@ -20,8 +20,8 @@ void SettingsGeneral::loadUi() {
   m_ui->m_checkForUpdatesOnStart->setVisible(false);
 #endif
 
-  connect(m_ui->m_checkAutostart, &QCheckBox::stateChanged, this, &SettingsGeneral::dirtifySettings);
-  connect(m_ui->m_checkForUpdatesOnStart, &QCheckBox::stateChanged, this, &SettingsGeneral::dirtifySettings);
+  connect(m_ui->m_checkAutostart, &QCheckBox::STATE_CHANGED, this, &SettingsGeneral::dirtifySettings);
+  connect(m_ui->m_checkForUpdatesOnStart, &QCheckBox::STATE_CHANGED, this, &SettingsGeneral::dirtifySettings);
 
   SettingsPanel::loadUi();
 }

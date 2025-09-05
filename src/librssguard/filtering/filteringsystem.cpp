@@ -17,16 +17,17 @@ FilteringSystem::FilteringSystem(FiteringUseCase mode,
   m_availableLabels =
     (m_account != nullptr && m_account->labelsNode() != nullptr) ? m_account->labelsNode()->labels() : QList<Label*>();
 
+  m_filterFeed.setSystem(this);
   m_filterApp.setSystem(this);
-  m_message.setSystem(this);
+  m_filterMessage.setSystem(this);
   m_filterUtils.setSystem(this);
 }
 
 void FilteringSystem::setMessage(Message* message) {
-  m_message.setMessage(message);
+  m_filterMessage.setMessage(message);
 }
 
-MessageObject::FilteringAction FilteringSystem::filterMessage(const MessageFilter& filter) {
+FilterMessage::FilteringAction FilteringSystem::filterMessage(const MessageFilter& filter) {
   QJSValue filter_func = m_engine.evaluate(qApp->replaceUserDataFolderPlaceholder(filter.script()));
 
   if (filter_func.isError()) {
@@ -45,15 +46,15 @@ MessageObject::FilteringAction FilteringSystem::filterMessage(const MessageFilte
     throw FilteringException(error, message);
   }
 
-  return MessageObject::FilteringAction(filter_output.toInt());
+  return FilterMessage::FilteringAction(filter_output.toInt());
 }
 
 QJSEngine& FilteringSystem::engine() {
   return m_engine;
 }
 
-MessageObject& FilteringSystem::message() {
-  return m_message;
+FilterMessage& FilteringSystem::message() {
+  return m_filterMessage;
 }
 
 void FilteringSystem::initializeEngine() {
@@ -61,8 +62,11 @@ void FilteringSystem::initializeEngine() {
   m_engine.setUiLanguage(qApp->localization()->loadedLanguage());
 
   // msg
-  m_engine.globalObject().setProperty(QSL("Msg"), m_engine.newQMetaObject(&MessageObject::staticMetaObject));
-  m_engine.globalObject().setProperty(QSL("msg"), m_engine.newQObject(&m_message));
+  m_engine.globalObject().setProperty(QSL("Msg"), m_engine.newQMetaObject(&FilterMessage::staticMetaObject));
+  m_engine.globalObject().setProperty(QSL("msg"), m_engine.newQObject(&m_filterMessage));
+
+  // feed
+  m_engine.globalObject().setProperty(QSL("feed"), m_engine.newQObject(&m_filterFeed));
 
   // utils
   m_engine.globalObject().setProperty(QSL("utils"), m_engine.newQObject(&m_filterUtils));

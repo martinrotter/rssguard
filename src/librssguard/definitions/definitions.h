@@ -6,6 +6,12 @@
 #include <QDebug>
 #include <QtGlobal>
 
+#if QT_VERSION < 0x060900 // Qt < 6.9.0
+#define STATE_CHANGED stateChanged
+#else
+#define STATE_CHANGED checkStateChanged
+#endif
+
 #define SERVICE_CODE_STD_RSS   "std-rss"
 #define SERVICE_CODE_TT_RSS    "tt-rss"
 #define SERVICE_CODE_NEXTCLOUD "nextcloud"

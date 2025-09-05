@@ -3,9 +3,9 @@
 #ifndef FILTERINGSYSTEM_H
 #define FILTERINGSYSTEM_H
 
+#include "filtering/filtermessage.h"
 #include "filtering/filterobjects.h"
 #include "filtering/messagefilter.h"
-#include "filtering/messageobject.h"
 
 #include <QJSEngine>
 #include <QObject>
@@ -28,10 +28,10 @@ class FilteringSystem : public QObject {
 
     void setMessage(Message* message);
 
-    MessageObject::FilteringAction filterMessage(const MessageFilter& filter);
+    FilterMessage::FilteringAction filterMessage(const MessageFilter& filter);
 
     QJSEngine& engine();
-    MessageObject& message();
+    FilterMessage& message();
     QSqlDatabase& database();
     Feed* feed() const;
     ServiceRoot* account() const;
@@ -49,7 +49,9 @@ class FilteringSystem : public QObject {
     QList<Label*> m_availableLabels;
 
     QJSEngine m_engine;
-    MessageObject m_message;
+
+    FilterMessage m_filterMessage;
+    FilterFeed m_filterFeed;
     FilterUtils m_filterUtils;
     FilterApp m_filterApp;
     FilterRun m_filterRun;

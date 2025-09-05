@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "filtering/messageobject.h"
+#include "filtering/filtermessage.h"
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "database/databasefactory.h"
@@ -15,13 +15,13 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
-MessageObject::MessageObject(QObject* parent) : QObject(parent), m_message(nullptr) {}
+FilterMessage::FilterMessage(QObject* parent) : QObject(parent), m_message(nullptr) {}
 
-void MessageObject::setMessage(Message* message) {
+void FilterMessage::setMessage(Message* message) {
   m_message = message;
 }
 
-bool MessageObject::assignLabel(const QString& label_custom_id) const {
+bool FilterMessage::assignLabel(const QString& label_custom_id) const {
   Label* lbl = boolinq::from(m_system->availableLabels()).firstOrDefault([label_custom_id](Label* lbl) {
     return lbl->customId() == label_custom_id;
   });
@@ -38,7 +38,7 @@ bool MessageObject::assignLabel(const QString& label_custom_id) const {
   }
 }
 
-bool MessageObject::deassignLabel(const QString& label_custom_id) const {
+bool FilterMessage::deassignLabel(const QString& label_custom_id) const {
   Label* lbl = boolinq::from(m_message->m_assignedLabels).firstOrDefault([label_custom_id](Label* lbl) {
     return lbl->customId() == label_custom_id;
   });
@@ -52,103 +52,103 @@ bool MessageObject::deassignLabel(const QString& label_custom_id) const {
   }
 }
 
-void MessageObject::addEnclosure(const QString& url, const QString& mime_type) const {
+void FilterMessage::addEnclosure(const QString& url, const QString& mime_type) const {
   m_message->m_enclosures.append(Enclosure(url, mime_type));
 }
 
-QString MessageObject::title() const {
+QString FilterMessage::title() const {
   return m_message->m_title;
 }
 
-void MessageObject::setTitle(const QString& title) {
+void FilterMessage::setTitle(const QString& title) {
   m_message->m_title = title;
 }
 
-QString MessageObject::url() const {
+QString FilterMessage::url() const {
   return m_message->m_url;
 }
 
-void MessageObject::setUrl(const QString& url) {
+void FilterMessage::setUrl(const QString& url) {
   m_message->m_url = url;
 }
 
-QString MessageObject::author() const {
+QString FilterMessage::author() const {
   return m_message->m_author;
 }
 
-void MessageObject::setAuthor(const QString& author) {
+void FilterMessage::setAuthor(const QString& author) {
   m_message->m_author = author;
 }
 
-QString MessageObject::contents() const {
+QString FilterMessage::contents() const {
   return m_message->m_contents;
 }
 
-void MessageObject::setContents(const QString& contents) {
+void FilterMessage::setContents(const QString& contents) {
   m_message->m_contents = contents;
 }
 
-QString MessageObject::rawContents() const {
+QString FilterMessage::rawContents() const {
   return m_message->m_rawContents;
 }
 
-void MessageObject::setRawContents(const QString& raw_contents) {
+void FilterMessage::setRawContents(const QString& raw_contents) {
   m_message->m_rawContents = raw_contents;
 }
 
-QDateTime MessageObject::created() const {
+QDateTime FilterMessage::created() const {
   return m_message->m_created;
 }
 
-void MessageObject::setCreated(const QDateTime& created) {
+void FilterMessage::setCreated(const QDateTime& created) {
   m_message->m_created = created;
 }
 
-bool MessageObject::createdIsMadeup() const {
+bool FilterMessage::createdIsMadeup() const {
   return !m_message->m_createdFromFeed;
 }
 
-void MessageObject::setCreatedIsMadeup(bool madeup) {
+void FilterMessage::setCreatedIsMadeup(bool madeup) {
   m_message->m_createdFromFeed = !madeup;
 }
 
-bool MessageObject::isRead() const {
+bool FilterMessage::isRead() const {
   return m_message->m_isRead;
 }
 
-void MessageObject::setIsRead(bool is_read) {
+void FilterMessage::setIsRead(bool is_read) {
   m_message->m_isRead = is_read;
 }
 
-bool MessageObject::isImportant() const {
+bool FilterMessage::isImportant() const {
   return m_message->m_isImportant;
 }
 
-void MessageObject::setIsImportant(bool is_important) {
+void FilterMessage::setIsImportant(bool is_important) {
   m_message->m_isImportant = is_important;
 }
 
-bool MessageObject::isDeleted() const {
+bool FilterMessage::isDeleted() const {
   return m_message->m_isDeleted;
 }
 
-void MessageObject::setIsDeleted(bool is_deleted) {
+void FilterMessage::setIsDeleted(bool is_deleted) {
   m_message->m_isDeleted = is_deleted;
 }
 
-double MessageObject::score() const {
+double FilterMessage::score() const {
   return m_message->m_score;
 }
 
-void MessageObject::setScore(double score) {
+void FilterMessage::setScore(double score) {
   m_message->m_score = score;
 }
 
-void MessageObject::setSystem(FilteringSystem* sys) {
+void FilterMessage::setSystem(FilteringSystem* sys) {
   m_system = sys;
 }
 
-QString MessageObject::feedCustomId() const {
+QString FilterMessage::feedCustomId() const {
   if (m_system->feed() == nullptr || m_system->feed()->customId() == QString::number(NO_PARENT_CATEGORY)) {
     return m_message->m_feedId;
   }
@@ -157,19 +157,19 @@ QString MessageObject::feedCustomId() const {
   }
 }
 
-int MessageObject::accountId() const {
+int FilterMessage::accountId() const {
   return m_system->account() != nullptr ? m_system->account()->accountId() : NO_PARENT_CATEGORY;
 }
 
-QString MessageObject::customId() const {
+QString FilterMessage::customId() const {
   return m_message->m_customId;
 }
 
-void MessageObject::setCustomId(const QString& custom_id) {
+void FilterMessage::setCustomId(const QString& custom_id) {
   m_message->m_customId = custom_id;
 }
 
-int MessageObject::id() const {
+int FilterMessage::id() const {
   return m_message->m_id;
 }
 
@@ -245,7 +245,7 @@ double jaro_winkler_distance(QString str1, QString str2) {
     }                                                                                   \
   }
 
-bool MessageObject::isAlreadyInDatabaseWinkler(DuplicityCheck attribute_check, double similarity_threshold) const {
+bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck attribute_check, double similarity_threshold) const {
   QList<Message> msgs;
   bool ok = false;
 
@@ -284,7 +284,7 @@ bool MessageObject::isAlreadyInDatabaseWinkler(DuplicityCheck attribute_check, d
   return false;
 }
 
-bool MessageObject::isAlreadyInDatabase(DuplicityCheck attribute_check) const {
+bool FilterMessage::isAlreadyInDatabase(DuplicityCheck attribute_check) const {
   // Check database according to duplication attribute_check.
   QSqlQuery q(m_system->database());
   QStringList where_clauses;
@@ -362,14 +362,14 @@ bool MessageObject::isAlreadyInDatabase(DuplicityCheck attribute_check) const {
   return false;
 }
 
-QList<Label*> MessageObject::assignedLabels() const {
+QList<Label*> FilterMessage::assignedLabels() const {
   return m_message->m_assignedLabels;
 }
 
-QList<MessageCategory> MessageObject::categories() const {
+QList<MessageCategory> FilterMessage::categories() const {
   return m_message->m_categories;
 }
 
-bool MessageObject::hasEnclosures() const {
+bool FilterMessage::hasEnclosures() const {
   return !m_message->m_enclosures.isEmpty();
 }

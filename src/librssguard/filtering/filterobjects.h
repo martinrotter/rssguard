@@ -3,7 +3,7 @@
 #ifndef FILTEROBJECTS_H
 #define FILTEROBJECTS_H
 
-#include "filtering/messageobject.h"
+#include "filtering/filtermessage.h"
 #include "services/abstract/label.h"
 
 #include <QDateTime>
@@ -31,7 +31,19 @@ class FilterApp : public QObject {
 };
 
 // Information about current filtering run.
-class FilterRun : public QObject {};
+class FilterRun : public QObject {
+    Q_OBJECT
+};
+
+class FilterFeed : public QObject {
+    Q_OBJECT
+
+  public:
+    void setSystem(FilteringSystem* sys);
+
+  private:
+    FilteringSystem* m_system;
+};
 
 // Misc utility functions for filtering.
 class FilterUtils : public QObject {

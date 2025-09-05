@@ -3,7 +3,7 @@
 #ifndef MESSAGESFORFILTERSMODEL_H
 #define MESSAGESFORFILTERSMODEL_H
 
-#include "filtering/messageobject.h"
+#include "filtering/filtermessage.h"
 
 #include <QAbstractTableModel>
 #include <QJSEngine>
@@ -24,7 +24,7 @@ class MessagesForFiltersModel : public QAbstractTableModel {
 
   public:
     int messagesCount() const;
-    void testFilter(MessageFilter* filter, QJSEngine* engine, MessageObject* msg_proxy);
+    void testFilter(MessageFilter* filter, QJSEngine* engine, FilterMessage* msg_proxy);
 
     Message messageForRow(int row) const;
     Message* messageForRow(int row);
@@ -37,7 +37,7 @@ class MessagesForFiltersModel : public QAbstractTableModel {
     QList<Message> m_messages{};
 
     // Key is integer position of the message within the list of messages.
-    QMap<int, MessageObject::FilteringAction> m_filteringDecisions{};
+    QMap<int, FilterMessage::FilteringAction> m_filteringDecisions{};
 };
 
 #endif // MESSAGESFORFILTERSMODEL_H

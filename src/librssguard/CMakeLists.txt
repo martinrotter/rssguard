@@ -55,14 +55,14 @@ set(SOURCES
   exceptions/processexception.h
   exceptions/scriptexception.cpp
   exceptions/scriptexception.h
+  filtering/filtermessage.cpp
+  filtering/filtermessage.h
   filtering/filterobjects.cpp
   filtering/filterobjects.h
   filtering/filteringsystem.cpp
   filtering/filteringsystem.h
   filtering/messagefilter.cpp
   filtering/messagefilter.h
-  filtering/messageobject.cpp
-  filtering/messageobject.h
   filtering/messagesforfiltersmodel.cpp
   filtering/messagesforfiltersmodel.h
   gui/dialogs/filedialog.cpp
