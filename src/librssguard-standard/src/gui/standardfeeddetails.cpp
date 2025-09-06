@@ -450,9 +450,24 @@ void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
 }
 
 void StandardFeedDetails::loadCategories(const QList<Category*>& categories, RootItem* root_item) {
+  QList<Category*> cats;
+
+  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool()) {
+    auto sorted = boolinq::from(categories)
+                    .orderBy([](Category* cat) {
+                      return cat->title().toLower();
+                    })
+                    .toStdList();
+
+    cats = FROM_STD_LIST(QList<Category*>, sorted);
+  }
+  else {
+    cats = categories;
+  }
+
   m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue(root_item));
 
-  for (Category* category : categories) {
+  for (Category* category : cats) {
     m_ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue(category));
   }
 }

@@ -68,8 +68,9 @@
 cmake_minimum_required(VERSION 3.14.0)
 
 # Global variables describing the project.
-string(TIMESTAMP YEAR "2025")
-string(TIMESTAMP DATE "2025-09-06")
+file(STRINGS "resources/text/CHANGELOG" CHANGELOG)
+string(REGEX MATCH "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]" DATE ${CHANGELOG})
+string(REGEX MATCH "[0-9][0-9][0-9][0-9]" YEAR ${DATE})
 
 set(APP_NAME "RSS Guard")
 set(APP_EMAIL "rotter.martinos@gmail.com")
