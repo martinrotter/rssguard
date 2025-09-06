@@ -4,4 +4,5 @@
 sed -i -E "s/TIMESTAMP YEAR \"[^\"]+\"/TIMESTAMP YEAR \"$(date +%Y)\"/" CMakeLists.txt
 sed -i -E "s/TIMESTAMP DATE \"[^\"]+\"/TIMESTAMP DATE \"$(date +%Y-%m-%d)\"/" CMakeLists.txt
 
+# Yes, I know.
 git add CMakeLists.txt
