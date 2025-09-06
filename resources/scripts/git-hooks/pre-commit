@@ -1,5 +1,5 @@
 #!/bin/sh
 
 # Replace dynamically generated date/times with static ones.
-cat CMakeLists.txt | sed -i -e "s/TIMESTAMP YEAR \"[^\"]+\"/TIMESTAMP YEAR \"$(date +%Y)\"/" CMakeLists.txt
-cat CMakeLists.txt | sed -i -e "s/TIMESTAMP DATE \"[^\"]+\"/TIMESTAMP DATE \"$(date +%Y-%m-%d)\"/" CMakeLists.txt
+sed -i -E "s/TIMESTAMP YEAR \"[^\"]+\"/TIMESTAMP YEAR \"$(date +%Y)\"/" CMakeLists.txt
+sed -i -E "s/TIMESTAMP DATE \"[^\"]+\"/TIMESTAMP DATE \"$(date +%Y-%m-%d)\"/" CMakeLists.txt
