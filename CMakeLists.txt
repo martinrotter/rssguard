@@ -68,8 +68,8 @@
 cmake_minimum_required(VERSION 3.14.0)
 
 # Global variables describing the project.
-string(TIMESTAMP YEAR "%Y")
-string(TIMESTAMP DATE "%Y-%m-%d")
+string(TIMESTAMP YEAR "2025")
+string(TIMESTAMP DATE "2025-09-06")
 
 set(APP_NAME "RSS Guard")
 set(APP_EMAIL "rotter.martinos@gmail.com")
