@@ -133,7 +133,7 @@ void FormAbout::loadLicenseAndInformation() {
                      QSL(APP_SYSTEM_NAME),
                      QSL(APP_SYSTEM_VERSION),
                      QSL(APP_REVISION),
-                     qApp->localization()->loadedLocale().toString(TextFactory::parseDateTime(QSL(BUILD_DATE)),
+                     qApp->localization()->loadedLocale().toString(TextFactory::parseDateTime(QSL(BUILD_DATE)).date(),
                                                                    QLocale::FormatType::ShortFormat),
                      qVersion(),
                      QSL(QT_VERSION_STR),
