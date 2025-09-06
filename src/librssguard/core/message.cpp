@@ -155,12 +155,14 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
     m_url = QSL(URI_SCHEME_HTTPS) + m_url.mid(2);
   }
   else if (QUrl(m_url).isRelative()) {
-    QUrl base(feed->source());
+    QUrl feed_url(feed->source());
 
-    if (base.isValid()) {
-      base = QUrl(base.scheme() + QSL("://") + base.host());
+    if (feed_url.isValid()) {
+      QUrl feed_homepage_url = QUrl(feed_url.scheme() + QSL("://") + feed_url.host());
 
-      m_url = base.resolved(m_url).toString();
+      feed_homepage_url.setPort(feed_url.port());
+
+      m_url = feed_homepage_url.resolved(m_url).toString();
     }
   }
 

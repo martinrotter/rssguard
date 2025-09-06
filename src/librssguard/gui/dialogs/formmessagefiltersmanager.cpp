@@ -230,10 +230,10 @@ void FormMessageFiltersManager::loadFilters() {
 
 void FormMessageFiltersManager::addNewFilter(const QString& filter_script) {
   try {
-    auto* fltr = m_reader->addMessageFilter(tr("New article filter"),
-                                            filter_script.isEmpty()
-                                              ? QSL("function filterMessage() { return MessageObject.Accept; }")
-                                              : filter_script);
+    auto* fltr =
+      m_reader->addMessageFilter(tr("New article filter"),
+                                 filter_script.isEmpty() ? QSL("function filterMessage() { return Msg.Accept; }")
+                                                         : filter_script);
     auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
 
     it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<MessageFilter*>(fltr));
