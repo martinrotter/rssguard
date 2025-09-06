@@ -122,24 +122,23 @@ void FormAbout::loadLicenseAndInformation() {
 
   // Set other informative texts.
   m_ui.m_lblDesc->setTextFormat(Qt::TextFormat::RichText);
-  m_ui.m_lblDesc->setText(tr("<h4>%8</h4>"
-                             "<b>Version:</b> %1 (built on %2/%3)<br/>"
-                             "<b>Revision:</b> %4<br/>"
-                             "<b>Build date:</b> %5<br/>"
-                             "<b>OS:</b> %9<br/>"
-                             "<b>Qt:</b> %6 (compiled against %7)")
-                            .arg(qApp->applicationVersion(),
-                                 QSL(APP_SYSTEM_NAME),
-                                 QSL(APP_SYSTEM_VERSION),
-                                 QSL(APP_REVISION),
-                                 qApp->localization()
-                                   ->loadedLocale()
-                                   .toString(TextFactory::parseDateTime(QSL("%1 %2").arg(__DATE__, __TIME__)),
-                                             QLocale::FormatType::ShortFormat),
-                                 qVersion(),
-                                 QSL(QT_VERSION_STR),
-                                 QSL(APP_NAME),
-                                 QSysInfo::prettyProductName()));
+  m_ui.m_lblDesc
+    ->setText(tr("<h4>%8</h4>"
+                 "<b>Version:</b> %1 (built on %2/%3)<br/>"
+                 "<b>Revision:</b> %4<br/>"
+                 "<b>Build date:</b> %5<br/>"
+                 "<b>OS:</b> %9<br/>"
+                 "<b>Qt:</b> %6 (compiled against %7)")
+                .arg(qApp->applicationVersion(),
+                     QSL(APP_SYSTEM_NAME),
+                     QSL(APP_SYSTEM_VERSION),
+                     QSL(APP_REVISION),
+                     qApp->localization()->loadedLocale().toString(TextFactory::parseDateTime(QSL(BUILD_DATE)),
+                                                                   QLocale::FormatType::ShortFormat),
+                     qVersion(),
+                     QSL(QT_VERSION_STR),
+                     QSL(APP_NAME),
+                     QSysInfo::prettyProductName()));
   m_ui.m_txtInfo->setText(tr("<body>%5 is a (very) tiny feed reader."
                              "<br><br>This software is distributed under the terms of GNU General "
                              "Public License, version 3."
