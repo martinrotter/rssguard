@@ -2,7 +2,7 @@ Downloads & Installation
 ========================
 
 ## Downloads
-Official place to download RSS Guard is at [Github Releases page](https://github.com/martinrotter/rssguard/releases). You can also download the [development (beta) build](https://github.com/martinrotter/rssguard/releases/tag/devbuild), which is updated automatically every time the source code is updated (there is like 30 minutes delay because the compilation step takes some time).
+Official place to download RSS Guard is at [Github Releases page](https://github.com/martinrotter/rssguard/releases). You can also download the [development (beta) build](https://github.com/martinrotter/rssguard/releases/tag/devbuild4), which is updated automatically every time the source code is updated (there is like 30 minutes delay because the compilation step takes some time).
 
 RSS Guard is also available in [repositories of many Linux distributions](https://repology.org/project/rssguard/versions), and via [Flathub](https://flathub.org/apps/search?q=rssguard).
 
