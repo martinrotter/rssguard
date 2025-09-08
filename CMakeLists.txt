@@ -68,8 +68,9 @@
 cmake_minimum_required(VERSION 3.14.0)
 
 # Global variables describing the project.
-string(TIMESTAMP YEAR "%Y")
-string(TIMESTAMP DATE "%Y-%m-%d")
+file(STRINGS "resources/text/CHANGELOG" CHANGELOG)
+string(REGEX MATCH "[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]" DATE ${CHANGELOG})
+string(REGEX MATCH "[0-9][0-9][0-9][0-9]" YEAR ${DATE})
 
 set(APP_NAME "RSS Guard")
 set(APP_EMAIL "rotter.martinos@gmail.com")
@@ -270,6 +271,7 @@ add_compile_definitions(
   APP_URL_DOCUMENTATION="${APP_URL_DOCUMENTATION}"
   APP_URL_ISSUES_NEW="${APP_URL_ISSUES_NEW}"
   APP_USERAGENT="${APP_NAME}/${CMAKE_PROJECT_VERSION}"
+  BUILD_DATE="${DATE}"
 
   QT_USE_QSTRINGBUILDER
   QT_USE_FAST_CONCATENATION

@@ -61,6 +61,10 @@ class FilterFeed : public QObject {
     Q_OBJECT
 
   public:
+    Q_PROPERTY(QString title READ title)
+
+    QString title() const;
+
     void setSystem(FilteringSystem* sys);
 
   private:
@@ -72,13 +76,15 @@ class FilterUtils : public QObject {
     Q_OBJECT
 
   public:
+    Q_PROPERTY(QString hostname READ hostname)
+
     explicit FilterUtils(QObject* parent = nullptr);
     virtual ~FilterUtils();
 
     void setSystem(FilteringSystem* sys);
 
     // Returns hostname or empty string if failed.
-    Q_INVOKABLE QString hostname() const;
+    QString hostname() const;
 
     // Converts XML -> JSON or returns empty string if failed.
     Q_INVOKABLE QString fromXmlToJson(const QString& xml) const;

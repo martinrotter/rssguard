@@ -6,9 +6,6 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/settings.h"
-#include "miscellaneous/textfactory.h"
-#include "network-web/silentnetworkaccessmanager.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QBuffer>

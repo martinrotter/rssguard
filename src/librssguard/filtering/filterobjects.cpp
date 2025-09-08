@@ -179,6 +179,10 @@ void FilterApp::setSystem(FilteringSystem* sys) {
   m_system = sys;
 }
 
+QString FilterFeed::title() const {
+  return m_system->feed()->title();
+}
+
 void FilterFeed::setSystem(FilteringSystem* sys) {
   m_system = sys;
 }
