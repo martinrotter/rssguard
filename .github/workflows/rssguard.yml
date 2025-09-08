@@ -92,7 +92,7 @@ jobs:
           allowUpdates: true
           artifactErrorsFailBuild: true
           artifacts: artifacts/*/*
-          name: Development builds (5.x new line)
+          name: Development builds (5.x line)
           omitBodyDuringUpdate: true
           prerelease: true
           removeArtifacts: true
