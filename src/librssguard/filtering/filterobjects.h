@@ -62,8 +62,10 @@ class FilterFeed : public QObject {
 
   public:
     Q_PROPERTY(QString title READ title)
+    Q_PROPERTY(QString customId READ customId)
 
     QString title() const;
+    QString customId() const;
 
     void setSystem(FilteringSystem* sys);
 

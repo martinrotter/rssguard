@@ -183,6 +183,10 @@ QString FilterFeed::title() const {
   return m_system->feed()->title();
 }
 
+QString FilterFeed::customId() const {
+  return m_system->feed()->customId();
+}
+
 void FilterFeed::setSystem(FilteringSystem* sys) {
   m_system = sys;
 }
