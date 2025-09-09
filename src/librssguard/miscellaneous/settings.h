@@ -65,6 +65,9 @@ namespace Feeds {
   KEY StrikethroughDisabledFeeds;
   VALUE(bool) StrikethroughDisabledFeedsDef;
 
+  KEY DontAskWhenMarkinAllRead;
+  VALUE(bool) DontAskWhenMarkinAllReadDef;
+
   KEY PauseFeedFetching;
   VALUE(bool) PauseFeedFetchingDef;
 

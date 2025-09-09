@@ -569,6 +569,28 @@ void FeedsView::markAllItemsReadStatus(RootItem::ReadStatus read) {
 }
 
 void FeedsView::markAllItemsRead() {
+  bool dont_show_again = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::DontAskWhenMarkinAllRead)).toBool();
+
+  if (!dont_show_again) {
+    auto res = MsgBox::show(nullptr,
+                            QMessageBox::Icon::Question,
+                            tr("Mark everything as read"),
+                            tr("Do you really want to mark everything as read?"),
+                            QString(),
+                            QString(),
+                            QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                            QMessageBox::StandardButton::No,
+                            &dont_show_again);
+
+    if (dont_show_again) {
+      qApp->settings()->setValue(GROUP(Feeds), Feeds::DontAskWhenMarkinAllRead, dont_show_again);
+    }
+
+    if (res != QMessageBox::StandardButton::Yes) {
+      return;
+    }
+  }
+
   markAllItemsReadStatus(RootItem::ReadStatus::Read);
 }
 
@@ -1179,11 +1201,9 @@ void FeedsView::setupAppearance() {
   setDragDropMode(QAbstractItemView::DragDropMode::InternalMove);
   setRootIsDecorated(false);
   setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
-  setItemDelegate(new StyledItemDelegate(qApp->settings()
-                                                       ->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds))
-                                                       .toInt(),
-                                                     -1,
-                                                     this));
+  setItemDelegate(new StyledItemDelegate(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt(),
+                                         -1,
+                                         this));
 }
 
 void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {

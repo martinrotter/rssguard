@@ -49,6 +49,9 @@ DVALUE(bool) Feeds::EnableTooltipsFeedsMessagesDef = true;
 DKEY Feeds::StrikethroughDisabledFeeds = "strikethrough_disabled_feeds";
 DVALUE(bool) Feeds::StrikethroughDisabledFeedsDef = true;
 
+DKEY Feeds::DontAskWhenMarkinAllRead = "dont_ask_when_marking_all_read";
+DVALUE(bool) Feeds::DontAskWhenMarkinAllReadDef = false;
+
 DKEY Feeds::PauseFeedFetching = "pause_feed_fetching";
 DVALUE(bool) Feeds::PauseFeedFetchingDef = false;
 
