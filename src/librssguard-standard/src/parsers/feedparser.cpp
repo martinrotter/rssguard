@@ -458,10 +458,10 @@ QString FeedParser::xmlWfwComments(const QDomElement& msg_element) const {
     }
 
     return QSL("<div class=\"wfw-comments\">"
-               "<p class=\"wfw-comments-title\">%1</p>"
-               "%2"
+               "<p class=\"wfw-comments-title\">%1 (%2)</p>"
+               "%3"
                "</div>")
-      .arg(QObject::tr("Comments"), comments_markup.join(QL1C('\n')));
+      .arg(QObject::tr("Comments"), QString::number(comments.size()), comments_markup.join(QL1C('\n')));
   }
   else {
     return QString();
