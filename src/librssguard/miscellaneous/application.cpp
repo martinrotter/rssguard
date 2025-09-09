@@ -17,6 +17,7 @@
 #include "gui/dialogs/formlog.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
+#include "gui/feedsview.h"
 #include "gui/messagebox.h"
 #include "gui/messagesview.h"
 #include "gui/notifications/toastnotificationsmanager.h"
@@ -271,6 +272,8 @@ void Application::hideOrShowMainForm() {
     qDebugNN << LOGSEC_CORE << "Showing the main window when the application is starting.";
     mainForm()->show();
   }
+
+  mainForm()->tabWidget()->feedMessageViewer()->feedsView()->setFocus();
 }
 
 void Application::loadDynamicShortcuts() {
