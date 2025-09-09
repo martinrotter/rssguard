@@ -34,7 +34,8 @@ QAction* BaseBar::findMatchingAction(const QString& action, const QList<QAction*
   for (QAction* act : actions) {
     auto act_obj_name = act->objectName();
 
-    if (!act_obj_name.isEmpty() && action.startsWith(act_obj_name)) {
+    // NOTE: action.startsWith(act_obj_name)
+    if (!act_obj_name.isEmpty() && QString::compare(action, act_obj_name, Qt::CaseSensitivity::CaseInsensitive) == 0) {
       return act;
     }
   }
@@ -60,8 +61,21 @@ void BaseToolBar::activateAction(const QString& action_name, QWidgetAction* widg
   const int start = action_name.indexOf('[');
   const int end = action_name.indexOf(']');
 
-  if (start != -1 && end != -1 && end == action_name.length() - 1) {
-    const QStringList menu_action_names = action_name.chopped(1).right(end - start - 1).split(QL1C(';'));
+  if (start != -1 && end != -1 && (start + 1 != end) && end == action_name.length() - 1) {
+    const QStringList menu_action_names = action_name.chopped(1)
+                                            .right(end - start - 1)
+                                            .split(QL1C(';'),
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+                                                   Qt::SplitBehaviorFlags::SkipEmptyParts);
+#else
+                                                   QString::SplitBehavior::SkipEmptyParts);
+#endif
+
+    if (menu_action_names.isEmpty()) {
+      // NOTE: No sub-items are activated, exit.
+      return;
+    }
+
     auto tool_btn = qobject_cast<QToolButton*>(widget_action->defaultWidget());
 
     for (QAction* action : tool_btn->menu()->actions()) {
