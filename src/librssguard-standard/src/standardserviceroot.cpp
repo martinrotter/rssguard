@@ -253,14 +253,14 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   QByteArray feed_contents;
   QString formatted_feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  QList<QPair<QByteArray, QByteArray>> headers;
 
   if (f->sourceType() == StandardFeed::SourceType::Url) {
     spaceHost(host, f->source());
 
     qDebugNN << LOGSEC_STANDARD << "Downloading URL" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
 
-    QList<QPair<QByteArray, QByteArray>> headers = StandardFeed::httpHeadersToList(f->httpHeaders());
-
+    headers = StandardFeed::httpHeadersToList(f->httpHeaders());
     headers << NetworkFactory::generateBasicAuthHeader(f->protection(), f->username(), f->password());
 
     if (!f->lastEtag().isEmpty()) {
@@ -405,6 +405,28 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     default:
       break;
   }
+
+  parser->setResourceHandler([&](const QUrl& url) {
+    QByteArray resource;
+    NetworkResult resource_result =
+      NetworkFactory::performNetworkOperation(url.toString(),
+                                              download_timeout,
+                                              {},
+                                              resource,
+                                              QNetworkAccessManager::Operation::GetOperation,
+                                              headers,
+                                              false,
+                                              {},
+                                              {},
+                                              networkProxy(),
+                                              f->http2Status());
+
+    if (resource_result.m_networkError != QNetworkReply::NetworkError::NoError) {
+      qWarningNN << LOGSEC_STANDARD << "Failed to fetch resource embedded into feed" << QUOTE_W_SPACE_DOT(url);
+    }
+
+    return resource;
+  });
 
   if (!f->dateTimeFormat().isEmpty()) {
     parser->setDateTimeFormat(f->dateTimeFormat());

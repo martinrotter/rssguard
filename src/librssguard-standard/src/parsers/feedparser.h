@@ -44,6 +44,9 @@ class FeedParser {
     bool dontUseRawXmlSaving() const;
     void setDontUseRawXmlSaving(bool no_raw_xml_saving);
 
+    std::function<QByteArray(QUrl)> resourceHandler() const;
+    void setResourceHandler(const std::function<QByteArray(QUrl)>& res_handler);
+
   protected:
     virtual QString feedAuthor() const;
 
@@ -92,13 +95,16 @@ class FeedParser {
                                  const QString& namespace_uri,
                                  const QString& xml_path,
                                  bool only_first) const;
+    QString xmlWfwComments(const QDomElement& msg_element) const;
 
   protected:
+    std::function<QByteArray(QUrl)> m_resourceHandler;
     DataType m_dataType;
     QString m_data;
     QString m_dateTimeFormat;
     DomDocument m_xml;
     QJsonDocument m_json;
+    QString m_wfwNamespace;
     QString m_mrssNamespace;
     bool m_dontUseRawXmlSaving;
 };

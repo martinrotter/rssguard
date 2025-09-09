@@ -200,9 +200,10 @@ QPair<StandardFeed*, QList<IconLocation>> RssParser::guessFeed(const QByteArray&
   int error_line, error_column;
 
   if (!xml_document.setContent(xml_contents_encoded, true, &error_msg, &error_line, &error_column)) {
-    throw ApplicationException(QObject::tr("XML is not well-formed, %1, line %2, column %3").arg(error_msg)
-                                                                      .arg(QString::number(error_line))
-                                                                      .arg(QString::number(error_column)));
+    throw ApplicationException(QObject::tr("XML is not well-formed, %1, line %2, column %3")
+                                 .arg(error_msg)
+                                 .arg(QString::number(error_line))
+                                 .arg(QString::number(error_column)));
   }
 
   QDomElement root_element = xml_document.documentElement();

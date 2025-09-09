@@ -68,3 +68,10 @@ p {
   background-color: #a5c5d0;
   color: white;
 }
+
+.wfw-comment {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 25px;
+  padding: 5px;
+}
