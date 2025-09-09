@@ -22,6 +22,12 @@ FormStandardImportExport::FormStandardImportExport(StandardServiceRoot* service_
   connect(m_model, &FeedsImportExportModel::parsingFinished, this, &FormStandardImportExport::onParsingFinished);
   connect(m_model, &FeedsImportExportModel::parsingProgress, this, &FormStandardImportExport::onParsingProgress);
 
+  QPalette pal;
+
+  pal.setColor(QPalette::ColorGroup::All, QPalette::ColorRole::Window, pal.color(QPalette::ColorRole::Highlight));
+
+  m_ui->m_treeFeeds->setPalette(pal);
+
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-export")));
 
   m_ui->m_txtPostProcessScript->textEdit()->setTabChangesFocus(true);
