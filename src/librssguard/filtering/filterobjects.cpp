@@ -17,6 +17,364 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
+FilterMessage::FilterMessage(QObject* parent) : QObject(parent), m_message(nullptr) {}
+
+void FilterMessage::setMessage(Message* message) {
+  m_message = message;
+}
+
+bool FilterMessage::assignLabel(const QString& label_custom_id) const {
+  Label* lbl = boolinq::from(m_system->availableLabels()).firstOrDefault([label_custom_id](Label* lbl) {
+    return lbl->customId() == label_custom_id;
+  });
+
+  if (lbl != nullptr) {
+    if (!m_message->m_assignedLabels.contains(lbl)) {
+      m_message->m_assignedLabels.append(lbl);
+    }
+
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+bool FilterMessage::deassignLabel(const QString& label_custom_id) const {
+  Label* lbl = boolinq::from(m_message->m_assignedLabels).firstOrDefault([label_custom_id](Label* lbl) {
+    return lbl->customId() == label_custom_id;
+  });
+
+  if (lbl != nullptr) {
+    m_message->m_assignedLabels.removeAll(lbl);
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+void FilterMessage::addEnclosure(const QString& url, const QString& mime_type) const {
+  m_message->m_enclosures.append(Enclosure(url, mime_type));
+}
+
+QString FilterMessage::title() const {
+  return m_message->m_title;
+}
+
+void FilterMessage::setTitle(const QString& title) {
+  m_message->m_title = title;
+}
+
+QString FilterMessage::url() const {
+  return m_message->m_url;
+}
+
+void FilterMessage::setUrl(const QString& url) {
+  m_message->m_url = url;
+}
+
+QString FilterMessage::author() const {
+  return m_message->m_author;
+}
+
+void FilterMessage::setAuthor(const QString& author) {
+  m_message->m_author = author;
+}
+
+QString FilterMessage::contents() const {
+  return m_message->m_contents;
+}
+
+void FilterMessage::setContents(const QString& contents) {
+  m_message->m_contents = contents;
+}
+
+QString FilterMessage::rawContents() const {
+  return m_message->m_rawContents;
+}
+
+void FilterMessage::setRawContents(const QString& raw_contents) {
+  m_message->m_rawContents = raw_contents;
+}
+
+QDateTime FilterMessage::created() const {
+  return m_message->m_created;
+}
+
+void FilterMessage::setCreated(const QDateTime& created) {
+  m_message->m_created = created;
+}
+
+bool FilterMessage::createdIsMadeup() const {
+  return !m_message->m_createdFromFeed;
+}
+
+void FilterMessage::setCreatedIsMadeup(bool madeup) {
+  m_message->m_createdFromFeed = !madeup;
+}
+
+bool FilterMessage::isRead() const {
+  return m_message->m_isRead;
+}
+
+void FilterMessage::setIsRead(bool is_read) {
+  m_message->m_isRead = is_read;
+}
+
+bool FilterMessage::isImportant() const {
+  return m_message->m_isImportant;
+}
+
+void FilterMessage::setIsImportant(bool is_important) {
+  m_message->m_isImportant = is_important;
+}
+
+bool FilterMessage::isDeleted() const {
+  return m_message->m_isDeleted;
+}
+
+void FilterMessage::setIsDeleted(bool is_deleted) {
+  m_message->m_isDeleted = is_deleted;
+}
+
+double FilterMessage::score() const {
+  return m_message->m_score;
+}
+
+void FilterMessage::setScore(double score) {
+  m_message->m_score = score;
+}
+
+void FilterMessage::setSystem(FilteringSystem* sys) {
+  m_system = sys;
+}
+
+QString FilterMessage::feedCustomId() const {
+  if (m_system->feed() == nullptr || m_system->feed()->customId() == QString::number(NO_PARENT_CATEGORY)) {
+    return m_message->m_feedId;
+  }
+  else {
+    return m_system->feed()->customId();
+  }
+}
+
+QString FilterMessage::customId() const {
+  return m_message->m_customId;
+}
+
+void FilterMessage::setCustomId(const QString& custom_id) {
+  m_message->m_customId = custom_id;
+}
+
+int FilterMessage::id() const {
+  return m_message->m_id;
+}
+
+double jaro_winkler_distance(QString str1, QString str2) {
+  qsizetype len1 = str1.size();
+  qsizetype len2 = str2.size();
+
+  if (len1 < len2) {
+    std::swap(str1, str2);
+    std::swap(len1, len2);
+  }
+
+  if (len2 == 0) {
+    return len1 == 0 ? 0.0 : 1.0;
+  }
+
+  qsizetype delta = std::max(qsizetype(1), len1 / 2) - 1;
+  std::vector<bool> flag(len2, false);
+  std::vector<QChar> ch1_match;
+  ch1_match.reserve(len1);
+
+  for (uint idx1 = 0; idx1 < len1; ++idx1) {
+    QChar ch1 = str1[idx1];
+
+    for (uint idx2 = 0; idx2 < len2; ++idx2) {
+      QChar ch2 = str2[idx2];
+
+      if (idx2 <= idx1 + delta && idx2 + delta >= idx1 && ch1 == ch2 && !flag[idx2]) {
+        flag[idx2] = true;
+        ch1_match.push_back(ch1);
+        break;
+      }
+    }
+  }
+
+  size_t matches = ch1_match.size();
+
+  if (matches == 0) {
+    return 1.0;
+  }
+
+  size_t transpositions = 0;
+
+  for (uint idx1 = 0, idx2 = 0; idx2 < len2; ++idx2) {
+    if (flag[idx2]) {
+      if (str2[idx2] != ch1_match[idx1]) {
+        ++transpositions;
+      }
+
+      ++idx1;
+    }
+  }
+
+  double m = matches;
+  double jaro = (m / len1 + m / len2 + (m - transpositions / 2.0) / m) / 3.0;
+  size_t common_prefix = 0;
+  len2 = std::min(qsizetype(4), len2);
+
+  for (uint i = 0; i < len2; ++i) {
+    if (str1[i] == str2[i]) {
+      ++common_prefix;
+    }
+  }
+
+  return 1.0 - (jaro + common_prefix * 0.1 * (1.0 - jaro));
+}
+
+#define JARO_WINKLER_DECIDE(attr_check, dupl_check, thres, my_msg_prop, other_msg_prop) \
+  if (Globals::hasFlag(attr_check, dupl_check)) {                                       \
+    double dst = jaro_winkler_distance(my_msg_prop, other_msg_prop);                    \
+    if (dst > thres) {                                                                  \
+      continue;                                                                         \
+    }                                                                                   \
+  }
+
+bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck attribute_check, double similarity_threshold) const {
+  QList<Message> msgs;
+  bool ok = false;
+
+  if (Globals::hasFlag(attribute_check, DuplicityCheck::AllFeedsSameAccount)) {
+    msgs = DatabaseQueries::getUndeletedMessagesForAccount(m_system->database(), m_system->filterAccount().id(), &ok);
+  }
+  else {
+    msgs = DatabaseQueries::getUndeletedMessagesForFeed(m_system->database(),
+                                                        feedCustomId(),
+                                                        m_system->filterAccount().id(),
+                                                        &ok);
+  }
+
+  if (!ok) {
+    qCriticalNN << LOGSEC_ARTICLEFILTER << "Query for undeleted articles failed.";
+    return false;
+  }
+
+  foreach (const Message& msg, msgs) {
+    // We check similarity of each article.
+    if (m_system->mode() == FilteringSystem::FiteringUseCase::ExistingArticles && id() > 0 && msg.m_id == id()) {
+      // NOTE: We skip this message because it is the same one.
+      return false;
+    }
+
+    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameTitle, similarity_threshold, title(), msg.m_title)
+    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameUrl, similarity_threshold, url(), msg.m_url)
+    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameAuthor, similarity_threshold, author(), msg.m_author)
+    JARO_WINKLER_DECIDE(attribute_check,
+                        DuplicityCheck::SameDateCreated,
+                        similarity_threshold,
+                        created().toString(),
+                        msg.m_created.toString())
+    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameCustomId, similarity_threshold, customId(), msg.m_customId)
+
+    return true;
+  }
+
+  return false;
+}
+
+bool FilterMessage::isAlreadyInDatabase(DuplicityCheck attribute_check) const {
+  // Check database according to duplication attribute_check.
+  QSqlQuery q(m_system->database());
+  QStringList where_clauses;
+  QVector<QPair<QString, QVariant>> bind_values;
+
+  // Now we construct the query according to parameter.
+  if (Globals::hasFlag(attribute_check, DuplicityCheck::SameTitle)) {
+    where_clauses.append(QSL("title = :title"));
+    bind_values.append({QSL(":title"), title()});
+  }
+
+  if (Globals::hasFlag(attribute_check, DuplicityCheck::SameUrl)) {
+    where_clauses.append(QSL("url = :url"));
+    bind_values.append({QSL(":url"), url()});
+  }
+
+  if (Globals::hasFlag(attribute_check, DuplicityCheck::SameAuthor)) {
+    where_clauses.append(QSL("author = :author"));
+    bind_values.append({QSL(":author"), author()});
+  }
+
+  if (Globals::hasFlag(attribute_check, DuplicityCheck::SameDateCreated)) {
+    where_clauses.append(QSL("date_created = :date_created"));
+    bind_values.append({QSL(":date_created"), created().toMSecsSinceEpoch()});
+  }
+
+  if (Globals::hasFlag(attribute_check, DuplicityCheck::SameCustomId)) {
+    where_clauses.append(QSL("custom_id = :custom_id"));
+    bind_values.append({QSL(":custom_id"), customId()});
+  }
+
+  where_clauses.append(QSL("account_id = :account_id"));
+  bind_values.append({QSL(":account_id"), m_system->filterAccount().id()});
+
+  // If we have already message stored in DB, then we also must
+  // make sure that we do not match the message against itself.
+  if (m_system->mode() == FilteringSystem::FiteringUseCase::ExistingArticles && id() > 0) {
+    where_clauses.append(QSL("id != :id"));
+    bind_values.append({QSL(":id"), QString::number(id())});
+  }
+
+  if (!Globals::hasFlag(attribute_check, DuplicityCheck::AllFeedsSameAccount)) {
+    // Limit to current feed.
+    where_clauses.append(QSL("feed = :feed"));
+    bind_values.append({QSL(":feed"), feedCustomId()});
+  }
+
+  QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
+
+  qDebugNN << LOGSEC_ARTICLEFILTER
+           << "Prepared query for MSG duplicate identification is:" << QUOTE_W_SPACE_DOT(full_query);
+
+  q.setForwardOnly(true);
+  q.prepare(full_query);
+
+  for (const auto& bind : bind_values) {
+    q.bindValue(bind.first, bind.second);
+  }
+
+  if (q.exec() && q.next()) {
+    qDebugNN << LOGSEC_DB << "Executed SQL for message duplicates check:"
+             << QUOTE_W_SPACE_DOT(DatabaseFactory::lastExecutedQuery(q));
+
+    if (q.value(0).toInt() > 0) {
+      // Whoops, we have the "same" message in database.
+      qDebugNN << LOGSEC_CORE << "Message" << QUOTE_W_SPACE(title()) << "was identified as duplicate by filter script.";
+      return true;
+    }
+  }
+  else if (q.lastError().isValid()) {
+    qWarningNN << LOGSEC_CORE << "Error when checking for duplicate messages via filtering system, error:"
+               << QUOTE_W_SPACE_DOT(q.lastError().text());
+  }
+
+  return false;
+}
+
+QList<Label*> FilterMessage::assignedLabels() const {
+  return m_message->m_assignedLabels;
+}
+
+QList<MessageCategory> FilterMessage::categories() const {
+  return m_message->m_categories;
+}
+
+bool FilterMessage::hasEnclosures() const {
+  return !m_message->m_enclosures.isEmpty();
+}
+
 FilterUtils::FilterUtils(QObject* parent) : QObject(parent) {}
 
 FilterUtils::~FilterUtils() {
@@ -215,4 +573,16 @@ int FilterRun::totalCountOfFilters() const {
 
 void FilterRun::setTotalCountOfFilters(int total) {
   m_totalCountOfFilters = total;
+}
+
+QString FilterAccount::title() const {
+  return m_system->account()->title();
+}
+
+int FilterAccount::id() const {
+  return m_system->account() != nullptr ? m_system->account()->accountId() : NO_PARENT_CATEGORY;
+}
+
+void FilterAccount::setSystem(FilteringSystem* sys) {
+  m_system = sys;
 }

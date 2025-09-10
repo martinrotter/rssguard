@@ -3,7 +3,7 @@
 #ifndef MESSAGESFORFILTERSMODEL_H
 #define MESSAGESFORFILTERSMODEL_H
 
-#include "filtering/filtermessage.h"
+#include "filtering/filterobjects.h"
 
 #include <QAbstractTableModel>
 #include <QJSEngine>

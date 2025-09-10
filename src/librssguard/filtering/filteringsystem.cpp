@@ -21,6 +21,7 @@ FilteringSystem::FilteringSystem(FiteringUseCase mode,
   m_filterApp.setSystem(this);
   m_filterMessage.setSystem(this);
   m_filterUtils.setSystem(this);
+  m_filterAccount.setSystem(this);
 }
 
 void FilteringSystem::setMessage(Message* message) {
@@ -68,6 +69,9 @@ void FilteringSystem::initializeEngine() {
   // feed
   m_engine.globalObject().setProperty(QSL("feed"), m_engine.newQObject(&m_filterFeed));
 
+  // acc
+  m_engine.globalObject().setProperty(QSL("acc"), m_engine.newQObject(&m_filterAccount));
+
   // utils
   m_engine.globalObject().setProperty(QSL("utils"), m_engine.newQObject(&m_filterUtils));
 
@@ -77,6 +81,10 @@ void FilteringSystem::initializeEngine() {
 
   // run
   m_engine.globalObject().setProperty(QSL("run"), m_engine.newQObject(&m_filterRun));
+}
+
+FilterAccount& FilteringSystem::filterAccount() {
+  return m_filterAccount;
 }
 
 FilterRun& FilteringSystem::filterRun() {

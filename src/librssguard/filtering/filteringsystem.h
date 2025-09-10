@@ -3,7 +3,6 @@
 #ifndef FILTERINGSYSTEM_H
 #define FILTERINGSYSTEM_H
 
-#include "filtering/filtermessage.h"
 #include "filtering/filterobjects.h"
 #include "filtering/messagefilter.h"
 
@@ -38,6 +37,7 @@ class FilteringSystem : public QObject {
     QList<Label*>& availableLabels();
     FiteringUseCase mode() const;
     FilterRun& filterRun();
+    FilterAccount& filterAccount();
 
   private:
     void initializeEngine();
@@ -55,6 +55,7 @@ class FilteringSystem : public QObject {
     FilterFeed m_filterFeed;
     FilterUtils m_filterUtils;
     FilterApp m_filterApp;
+    FilterAccount m_filterAccount;
     FilterRun m_filterRun;
 };
 
