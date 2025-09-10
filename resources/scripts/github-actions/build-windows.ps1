@@ -17,14 +17,19 @@ function Fetch-Latest-Release([string]$OrgRepo, [string]$NameRegex) {
   $releases_url = "https://api.github.com/repos/" + $OrgRepo +"/releases"
   $releases_req = Invoke-WebRequest -Uri "$releases_url" -Headers @{ "Authorization" = "Bearer $env:GITHUB_TOKEN" }
   $releases_json = $releases_req.Content | ConvertFrom-Json
-  $releases_release = $releases_json[0]
-  $asset = $releases_release.assets | Where-Object {$_.name -match $NameRegex} | Select-Object
 
-  Add-Member -InputObject $asset -NotePropertyName "tag_name" -NotePropertyValue $releases_release.tag_name.Substring(1)
+  foreach ($releases_release in $releases_json)
+  {
+    $asset = $releases_release.assets | Where-Object {$_.name -match $NameRegex} | Select-Object
 
-  Write-Host $asset
+    If ($null -eq $asset) {
+      continue
+    }
 
-  return $asset
+    Add-Member -InputObject $asset -NotePropertyName "tag_name" -NotePropertyValue $releases_release.tag_name.Substring(1)
+    Write-Host $asset
+    return $asset
+  }
 }
 
 # Prepare environment.
