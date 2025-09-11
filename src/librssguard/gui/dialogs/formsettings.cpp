@@ -14,6 +14,7 @@
 #include "gui/settings/settingsmediaplayer.h"
 #include "gui/settings/settingsnotifications.h"
 #include "gui/settings/settingsshortcuts.h"
+#include "gui/settings/settingstoolbars.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -43,6 +44,7 @@ FormSettings::FormSettings(QWidget& parent) : QDialog(&parent), m_settings(*qApp
   addSettingsPanel(new SettingsGeneral(&m_settings, this));
   addSettingsPanel(new SettingsDatabase(&m_settings, this));
   addSettingsPanel(new SettingsGui(&m_settings, this));
+  addSettingsPanel(new SettingsToolbars(&m_settings, this));
   addSettingsPanel(new SettingsNotifications(&m_settings, this));
   addSettingsPanel(new SettingsLocalization(&m_settings, this));
   addSettingsPanel(new SettingsShortcuts(&m_settings, this));
@@ -101,7 +103,10 @@ void FormSettings::applySettings() {
   if (!panels_for_restart.isEmpty()) {
     const QStringList changed_settings_description =
       panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")),
-                                          QString::fromUtf8(QByteArray(" Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚Â"
+                                          QString::fromUtf8(QByteArray(" Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬Ä"
+                                                                       "ą"
+                                                                       "Ë‡Ä‚â€šĂ‚Â¬Ă„â€š"
+                                                                       "Ă˘â‚¬Ä…Ä‚â€šĂ‚Â"
                                                                        " ")));
     const QMessageBox::StandardButton clicked_button =
       MsgBox::show(this,
@@ -137,7 +142,10 @@ void FormSettings::cancelSettings() {
   else {
     const QStringList changed_settings_description =
       changed_panels.replaceInStrings(QRegularExpression(QSL("^")),
-                                      QString::fromUtf8(QByteArray(" Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä‚â€šĂ‚Â¬Ă„â€šĂ˘â‚¬Ä…Ä‚â€šĂ‚Â"
+                                      QString::fromUtf8(QByteArray(" Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä"
+                                                                   "‚"
+                                                                   "â€šĂ‚Â¬Ă„â€š"
+                                                                   "Ă˘â‚¬Ä…Ä‚â€šĂ‚Â"
                                                                    " ")));
 
     if (MsgBox::show(this,

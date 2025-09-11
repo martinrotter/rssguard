@@ -20,10 +20,6 @@ class SettingsGui : public SettingsPanel {
     virtual void loadSettings();
     virtual void saveSettings();
 
-  protected:
-    // Does check of controls before dialog can be submitted.
-    bool eventFilter(QObject* obj, QEvent* e);
-
   private slots:
     void updateSkinOptions();
     void resetCustomSkinColor();

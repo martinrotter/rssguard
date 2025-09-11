@@ -13,7 +13,6 @@
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
-#include "network-web/silentnetworkaccessmanager.h"
 #include "network-web/webfactory.h"
 
 #include <QInputDialog>

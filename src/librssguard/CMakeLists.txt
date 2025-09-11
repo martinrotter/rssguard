@@ -175,6 +175,8 @@ set(SOURCES
   gui/settings/settingspanel.h
   gui/settings/settingsshortcuts.cpp
   gui/settings/settingsshortcuts.h
+  gui/settings/settingstoolbars.cpp
+  gui/settings/settingstoolbars.h
   gui/systemtrayicon.cpp
   gui/systemtrayicon.h
   gui/tabbar.cpp
@@ -335,6 +337,7 @@ set(UI_FILES
   gui/settings/settingsmediaplayer.ui
   gui/settings/settingsnotifications.ui
   gui/settings/settingsshortcuts.ui
+  gui/settings/settingstoolbars.ui
   gui/toolbars/toolbareditor.ui
   services/abstract/gui/accountdetails.ui
   services/abstract/gui/authenticationdetails.ui
