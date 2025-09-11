@@ -123,7 +123,7 @@ QList<Enclosure> FeedParser::jsonMessageEnclosures(const QJsonObject& msg_elemen
   return {};
 }
 
-QList<MessageCategory> FeedParser::jsonMessageCategories(const QJsonObject& msg_element) const {
+QList<MessageCategory*> FeedParser::jsonMessageCategories(const QJsonObject& msg_element) const {
   return {};
 }
 
@@ -163,7 +163,7 @@ QList<Enclosure> FeedParser::objMessageEnclosures(const QVariant& msg_element) c
   return {};
 }
 
-QList<MessageCategory> FeedParser::objMessageCategories(const QVariant& msg_element) const {
+QList<MessageCategory*> FeedParser::objMessageCategories(const QVariant& msg_element) const {
   return {};
 }
 
@@ -528,6 +528,6 @@ QList<Enclosure> FeedParser::xmlMessageEnclosures(const QDomElement& msg_element
   return {};
 }
 
-QList<MessageCategory> FeedParser::xmlMessageCategories(const QDomElement& msg_element) const {
+QList<MessageCategory*> FeedParser::xmlMessageCategories(const QDomElement& msg_element) const {
   return {};
 }

@@ -335,14 +335,14 @@ QList<Enclosure> RssParser::xmlMessageEnclosures(const QDomElement& msg_element)
   }
 }
 
-QList<MessageCategory> RssParser::xmlMessageCategories(const QDomElement& msg_element) const {
-  QList<MessageCategory> cats;
+QList<MessageCategory*> RssParser::xmlMessageCategories(const QDomElement& msg_element) const {
+  QList<MessageCategory*> cats;
   QDomNodeList elem_cats = msg_element.toElement().elementsByTagName(QSL("category"));
 
   for (int i = 0; i < elem_cats.size(); i++) {
     QDomElement cat = elem_cats.at(i).toElement();
 
-    cats.append(MessageCategory(cat.text()));
+    cats.append(new MessageCategory(cat.text()));
   }
 
   return cats;

@@ -108,7 +108,7 @@ Message::Message() {
   m_title = m_url = m_author = m_contents = m_rawContents = m_feedId = m_feedTitle = m_customId = m_customHash =
     QL1S("");
   m_enclosures = QList<Enclosure>();
-  m_categories = QList<MessageCategory>();
+  m_categories = QList<MessageCategory*>();
   m_accountId = m_id = 0;
   m_score = 0.0;
   m_isRead = m_isImportant = m_isDeleted = false;
@@ -174,6 +174,11 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
     m_createdFromFeed = false;
     m_created = QDateTime::currentDateTimeUtc();
   }
+}
+
+void Message::deallocateCategories() {
+  qDeleteAll(m_categories);
+  m_categories.clear();
 }
 
 QJsonObject Message::toJson() const {
@@ -305,7 +310,7 @@ uint qHash(const Message& key) {
   return (uint(key.m_accountId) * 10000) + uint(key.m_id);
 }
 
-MessageCategory::MessageCategory(const QString& title) : QObject(), m_title(title) {}
+MessageCategory::MessageCategory(const QString& title, QObject* parent) : QObject(parent), m_title(title) {}
 
 MessageCategory::MessageCategory(const MessageCategory& other) {
   m_title = other.m_title;

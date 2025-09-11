@@ -281,14 +281,14 @@ QList<Enclosure> RdfParser::xmlMessageEnclosures(const QDomElement& msg_element)
   return {};
 }
 
-QList<MessageCategory> RdfParser::xmlMessageCategories(const QDomElement& msg_element) const {
-  QList<MessageCategory> cats;
+QList<MessageCategory*> RdfParser::xmlMessageCategories(const QDomElement& msg_element) const {
+  QList<MessageCategory*> cats;
   QDomNodeList elem_cats = msg_element.toElement().elementsByTagNameNS(m_dcElNamespace, QSL("subject"));
 
   for (int i = 0; i < elem_cats.size(); i++) {
     QDomElement cat = elem_cats.at(i).toElement();
 
-    cats.append(MessageCategory(cat.text()));
+    cats.append(new MessageCategory(cat.text()));
   }
 
   return cats;

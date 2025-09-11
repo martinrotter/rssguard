@@ -59,7 +59,7 @@ class FeedParser {
     virtual QDateTime xmlMessageDateCreated(const QDomElement& msg_element);
     virtual QString xmlMessageId(const QDomElement& msg_element) const;
     virtual QList<Enclosure> xmlMessageEnclosures(const QDomElement& msg_element) const;
-    virtual QList<MessageCategory> xmlMessageCategories(const QDomElement& msg_element) const;
+    virtual QList<MessageCategory*> xmlMessageCategories(const QDomElement& msg_element) const;
     virtual QString xmlMessageRawContents(const QDomElement& msg_element) const;
 
     // JSON.
@@ -71,7 +71,7 @@ class FeedParser {
     virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element);
     virtual QString jsonMessageId(const QJsonObject& msg_element) const;
     virtual QList<Enclosure> jsonMessageEnclosures(const QJsonObject& msg_element) const;
-    virtual QList<MessageCategory> jsonMessageCategories(const QJsonObject& msg_element) const;
+    virtual QList<MessageCategory*> jsonMessageCategories(const QJsonObject& msg_element) const;
     virtual QString jsonMessageRawContents(const QJsonObject& msg_element) const;
 
     // Objects.
@@ -83,7 +83,7 @@ class FeedParser {
     virtual QDateTime objMessageDateCreated(const QVariant& msg_element);
     virtual QString objMessageId(const QVariant& msg_element) const;
     virtual QList<Enclosure> objMessageEnclosures(const QVariant& msg_element) const;
-    virtual QList<MessageCategory> objMessageCategories(const QVariant& msg_element) const;
+    virtual QList<MessageCategory*> objMessageCategories(const QVariant& msg_element) const;
     virtual QString objMessageRawContents(const QVariant& msg_element) const;
 
   protected:

@@ -14,7 +14,7 @@ class FilteringSystem;
 class FilterMessage : public QObject {
     Q_OBJECT
 
-    Q_PROPERTY(QList<MessageCategory> categories READ categories)
+    Q_PROPERTY(QList<MessageCategory*> categories READ categories)
     Q_PROPERTY(QList<Label*> assignedLabels READ assignedLabels)
     Q_PROPERTY(bool hasEnclosures READ hasEnclosures)
     Q_PROPERTY(int id READ id)
@@ -90,7 +90,7 @@ class FilterMessage : public QObject {
     Q_INVOKABLE void addEnclosure(const QString& url, const QString& mime_type) const;
 
     QList<Label*> assignedLabels() const;
-    QList<MessageCategory> categories() const;
+    QList<MessageCategory*> categories() const;
 
     bool hasEnclosures() const;
     int id() const;

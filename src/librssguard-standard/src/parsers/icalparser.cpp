@@ -164,7 +164,7 @@ QList<Enclosure> IcalParser::objMessageEnclosures(const QVariant& msg_element) c
   return {};
 }
 
-QList<MessageCategory> IcalParser::objMessageCategories(const QVariant& msg_element) const {
+QList<MessageCategory*> IcalParser::objMessageCategories(const QVariant& msg_element) const {
   return {};
 }
 

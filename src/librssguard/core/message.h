@@ -41,7 +41,7 @@ class RSSGUARD_DLLSPEC MessageCategory : public QObject {
     Q_PROPERTY(QString title READ title)
 
   public:
-    explicit MessageCategory(const QString& title);
+    explicit MessageCategory(const QString& title, QObject* parent = nullptr);
     MessageCategory(const MessageCategory& other);
 
     QString title() const;
@@ -58,6 +58,7 @@ class RSSGUARD_DLLSPEC Message {
     explicit Message();
 
     void sanitize(const Feed* feed, bool fix_future_datetimes);
+    void deallocateCategories();
 
     QJsonObject toJson() const;
 
@@ -90,8 +91,8 @@ class RSSGUARD_DLLSPEC Message {
     QList<Enclosure> m_enclosures;
 
     // List of assigned labels.
-    // This field is only field when fetching entries of a feed.
-    QList<MessageCategory> m_categories;
+    // This field is only used when fetching entries of a feed.
+    QList<MessageCategory*> m_categories;
 
     // List of custom IDs of labels assigned to this message.
     QList<Label*> m_assignedLabels;

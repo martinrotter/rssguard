@@ -354,6 +354,10 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           break;
         }
 
+        // NOTE: Categories are heap-allocated and must be destroyed manually
+        // after filtering of that particular message is done.
+        msg_original.deallocateCategories();
+
         if (!remove_msg) {
           filtering.filterRun().incrementNumberOfAcceptedMessages();
         }

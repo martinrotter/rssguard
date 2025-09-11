@@ -367,7 +367,7 @@ QList<Label*> FilterMessage::assignedLabels() const {
   return m_message->m_assignedLabels;
 }
 
-QList<MessageCategory> FilterMessage::categories() const {
+QList<MessageCategory*> FilterMessage::categories() const {
   return m_message->m_categories;
 }
 
@@ -509,7 +509,6 @@ QString FilterAccount::createLabel(const QString& label_title, const QString& he
 
     DatabaseQueries::createLabel(db, new_lbl, m_system->account()->accountId());
     m_system->account()->requestItemReassignment(new_lbl, m_system->account()->labelsNode());
-
     m_system->availableLabels().append(new_lbl);
 
     return new_lbl->customId();
