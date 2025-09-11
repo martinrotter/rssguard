@@ -143,15 +143,9 @@ class FilterApp : public QObject {
     Q_OBJECT
 
   public:
-    Q_PROPERTY(QList<Label*> availableLabels READ availableLabels)
-
     void setSystem(FilteringSystem* sys);
 
-    Q_INVOKABLE QString findLabel(const QString& label_title) const;
-    Q_INVOKABLE QString createLabel(const QString& label_title, const QString& hex_color = {});
     Q_INVOKABLE void showNotification(const QString& title, const QString& text);
-
-    QList<Label*> availableLabels() const;
 
   private:
     FilteringSystem* m_system;
@@ -189,11 +183,16 @@ class FilterAccount : public QObject {
   public:
     Q_PROPERTY(QString title READ title)
     Q_PROPERTY(int id READ id)
+    Q_PROPERTY(QList<Label*> availableLabels READ availableLabels)
 
     QString title() const;
     int id() const;
 
     void setSystem(FilteringSystem* sys);
+
+    Q_INVOKABLE QString findLabel(const QString& label_title) const;
+    Q_INVOKABLE QString createLabel(const QString& label_title, const QString& hex_color = {});
+    QList<Label*> availableLabels() const;
 
   private:
     FilteringSystem* m_system;

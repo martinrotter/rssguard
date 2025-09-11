@@ -2,6 +2,7 @@
 
 #include "miscellaneous/settings.h"
 
+#include "gui/messagesview.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 

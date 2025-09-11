@@ -4,7 +4,6 @@
 #define SETTINGS_H
 
 #include "definitions/definitions.h"
-#include "gui/messagesview.h"
 #include "gui/notifications/toastnotificationsmanager.h"
 #include "miscellaneous/settingsproperties.h"
 #include "miscellaneous/textfactory.h"

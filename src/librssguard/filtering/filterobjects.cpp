@@ -474,7 +474,7 @@ void FilterUtils::setSystem(FilteringSystem* sys) {
   m_system = sys;
 }
 
-QString FilterApp::findLabel(const QString& label_title) const {
+QString FilterAccount::findLabel(const QString& label_title) const {
   Label* found_lbl = boolinq::from(m_system->availableLabels()).firstOrDefault([label_title](Label* lbl) {
     return lbl->title().toLower() == label_title.toLower();
   });
@@ -486,7 +486,7 @@ QString FilterApp::findLabel(const QString& label_title) const {
   return found_lbl != nullptr ? found_lbl->customId() : QString();
 }
 
-QString FilterApp::createLabel(const QString& label_title, const QString& hex_color) {
+QString FilterAccount::createLabel(const QString& label_title, const QString& hex_color) {
   QString lbl_id = findLabel(label_title);
 
   if (!lbl_id.isEmpty()) {
@@ -529,7 +529,7 @@ void FilterApp::showNotification(const QString& title, const QString& text) {
   qApp->showGuiMessage(Notification::Event::GeneralEvent, GuiMessage(title, text));
 }
 
-QList<Label*> FilterApp::availableLabels() const {
+QList<Label*> FilterAccount::availableLabels() const {
   return m_system->availableLabels();
 }
 
