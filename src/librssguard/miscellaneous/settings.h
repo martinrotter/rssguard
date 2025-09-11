@@ -360,6 +360,9 @@ namespace GUI {
   VALUE(bool) UnreadNumbersOnTaskBarDef;
 #endif
 
+  KEY UnreadNumbersOnWindow;
+  VALUE(bool) UnreadNumbersOnWindowDef;
+
   KEY TabCloseMiddleClick;
   VALUE(bool) TabCloseMiddleClickDef;
 

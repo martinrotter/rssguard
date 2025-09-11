@@ -41,11 +41,11 @@ void SettingsGui::loadUi() {
   m_ui->m_treeSkins->setHeaderHidden(false);
   m_ui->m_treeSkins->setHeaderLabels({tr("Name"), tr("Author"), tr("Forced style"), tr("Forced skin colors")});
 
-  m_ui->m_tabUi->setTabVisible(m_ui->m_tabUi->indexOf(m_ui->m_tabTaskBar),
+  m_ui->m_grpTaskbar->setVisible(
 #if (defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)) || defined(Q_OS_WIN)
-                               true);
+    true);
 #else
-                               false);
+    false);
 #endif
 
   m_ui->m_helpSkinColors->setHelpText(tr("Note that skin colors for dialogs/controls only take effect with some "
@@ -121,6 +121,7 @@ void SettingsGui::loadUi() {
           this,
           &SettingsGui::dirtifySettings);
   connect(m_ui->m_displayUnreadMessageCountOnTaskBar, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_displayUnreadMessageCountOnWindow, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_gbAppFont, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_gbAppFont, &QGroupBox::toggled, this, &SettingsGui::requireRestart);
 
@@ -248,6 +249,9 @@ void SettingsGui::loadSettings() {
   m_ui->m_displayUnreadMessageCountOnTaskBar
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool());
 #endif
+
+  m_ui->m_displayUnreadMessageCountOnWindow
+    ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnWindow)).toBool());
 
   // Mark active icon theme.
   if (current_theme == QL1S(APP_NO_THEME)) {
@@ -457,6 +461,8 @@ void SettingsGui::saveSettings() {
                        GUI::UnreadNumbersOnTaskBar,
                        m_ui->m_displayUnreadMessageCountOnTaskBar->isChecked());
 #endif
+
+  settings()->setValue(GROUP(GUI), GUI::UnreadNumbersOnWindow, m_ui->m_displayUnreadMessageCountOnWindow->isChecked());
 
   // Make sure that number of unread messages is shown in tray icon as requested.
   qApp->feedReader()->feedsModel()->notifyWithCounts();

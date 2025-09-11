@@ -344,6 +344,9 @@ DKEY GUI::UnreadNumbersOnTaskBar = "show_unread_numbers_on_task_bar";
 DVALUE(bool) GUI::UnreadNumbersOnTaskBarDef = true;
 #endif
 
+DKEY GUI::UnreadNumbersOnWindow = "show_unread_numbers_on_window";
+DVALUE(bool) GUI::UnreadNumbersOnWindowDef = true;
+
 DKEY GUI::UseTrayIcon = "use_tray_icon";
 DVALUE(bool) GUI::UseTrayIconDef = true;
 

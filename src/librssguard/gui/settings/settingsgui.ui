@@ -193,7 +193,7 @@
      </widget>
      <widget class="QWidget" name="m_tabNotifications">
       <attribute name="title">
-       <string>Tray area</string>
+       <string>Tray area &amp;&amp; taskbar &amp;&amp; window</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_3">
        <item row="1" column="0">
@@ -248,7 +248,30 @@
          </layout>
         </widget>
        </item>
-       <item row="2" column="0" colspan="2">
+       <item row="3" column="0">
+        <widget class="QGroupBox" name="m_grpTaskbar">
+         <property name="title">
+          <string>Taskbar</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QCheckBox" name="m_displayUnreadMessageCountOnTaskBar">
+            <property name="text">
+             <string>Display count of unread messages</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item row="0" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkHidden">
+         <property name="text">
+          <string>Start application minimized (or hidden if configured)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0" colspan="2">
         <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Orientation::Vertical</enum>
@@ -261,25 +284,20 @@
          </property>
         </spacer>
        </item>
-       <item row="0" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_checkHidden">
-         <property name="text">
-          <string>Start application minimized (or hidden if configured)</string>
+       <item row="2" column="0">
+        <widget class="QGroupBox" name="m_grpWindow">
+         <property name="title">
+          <string>Window</string>
          </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="m_tabTaskBar">
-      <attribute name="title">
-       <string>Task bar</string>
-      </attribute>
-      <layout class="QFormLayout" name="formLayout_5">
-       <item row="0" column="0">
-        <widget class="QCheckBox" name="m_displayUnreadMessageCountOnTaskBar">
-         <property name="text">
-          <string>Display count of unread messages</string>
-         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QCheckBox" name="m_displayUnreadMessageCountOnWindow">
+            <property name="text">
+             <string>Display count of unread messages</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
@@ -515,24 +533,29 @@
  </customwidgets>
  <tabstops>
   <tabstop>m_tabUi</tabstop>
+  <tabstop>m_cmbIconTheme</tabstop>
+  <tabstop>m_cmbStyles</tabstop>
+  <tabstop>m_checkForceAlternativePalette</tabstop>
+  <tabstop>m_treeSkins</tabstop>
+  <tabstop>m_gbAppFont</tabstop>
+  <tabstop>m_btnChangeFont</tabstop>
+  <tabstop>m_checkFontAntialiasing</tabstop>
+  <tabstop>m_gbCustomSkinColors</tabstop>
+  <tabstop>m_checkHidden</tabstop>
   <tabstop>m_grpTray</tabstop>
   <tabstop>m_checkMonochromeIcons</tabstop>
   <tabstop>m_checkColoredIconsWhenArticles</tabstop>
   <tabstop>m_checkCountUnreadMessages</tabstop>
   <tabstop>m_checkHideWhenMinimized</tabstop>
-  <tabstop>m_checkCloseTabsDoubleClick</tabstop>
+  <tabstop>m_displayUnreadMessageCountOnTaskBar</tabstop>
+  <tabstop>m_displayUnreadMessageCountOnWindow</tabstop>
   <tabstop>m_checkCloseTabsMiddleClick</tabstop>
+  <tabstop>m_checkCloseTabsDoubleClick</tabstop>
   <tabstop>m_checkNewTabDoubleClick</tabstop>
   <tabstop>m_checkHideTabBarIfOneTabVisible</tabstop>
   <tabstop>m_cmbToolbarButtonStyle</tabstop>
   <tabstop>m_spinToolbarIconSize</tabstop>
   <tabstop>m_cmbSelectToolBar</tabstop>
-  <tabstop>m_cmbIconTheme</tabstop>
-  <tabstop>m_cmbStyles</tabstop>
-  <tabstop>m_checkForceAlternativePalette</tabstop>
-  <tabstop>m_treeSkins</tabstop>
-  <tabstop>m_gbCustomSkinColors</tabstop>
-  <tabstop>m_displayUnreadMessageCountOnTaskBar</tabstop>
  </tabstops>
  <resources/>
  <connections/>

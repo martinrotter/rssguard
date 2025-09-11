@@ -855,7 +855,8 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
 #endif
 
   if (m_mainForm != nullptr) {
-    m_mainForm->setWindowTitle(unread_messages > 0
+    m_mainForm->setWindowTitle((settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnWindow)).toBool() &&
+                                unread_messages > 0)
                                  ? QSL("[%2] %1").arg(QSL(APP_LONG_NAME), QString::number(unread_messages))
                                  : QSL(APP_LONG_NAME));
   }
