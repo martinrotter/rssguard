@@ -457,8 +457,13 @@ void ServiceRoot::requestItemExpandStateSave(RootItem* subtree_root) {
   emit itemExpandStateSaveRequested(subtree_root);
 }
 
-void ServiceRoot::requestItemReassignment(RootItem* item, RootItem* new_parent) {
-  emit itemReassignmentRequested(item, new_parent);
+void ServiceRoot::requestItemReassignment(RootItem* item, RootItem* new_parent, bool blocking) {
+  if (blocking) {
+    emit itemBlockingReassignmentRequested(item, new_parent);
+  }
+  else {
+    emit itemReassignmentRequested(item, new_parent);
+  }
 }
 
 void ServiceRoot::requestItemsReassignment(const QList<RootItem*>& items, RootItem* new_parent) {
@@ -1106,7 +1111,6 @@ bool ServiceRoot::onAfterSwitchMessageImportance(RootItem* selected_item, const 
   auto in = importantNode();
 
   if (in != nullptr) {
-
     in->updateCounts(true);
     itemChanged({in});
   }

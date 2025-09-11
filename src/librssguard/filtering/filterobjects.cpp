@@ -54,6 +54,16 @@ bool FilterMessage::deassignLabel(const QString& label_custom_id) const {
   }
 }
 
+void FilterMessage::exportCategoriesToLabels(bool assign_to_message) const {
+  for (MessageCategory* cate : m_message->m_categories) {
+    auto lbl = m_system->filterAccount().createLabel(cate->title());
+
+    if (assign_to_message) {
+      assignLabel(lbl);
+    }
+  }
+}
+
 void FilterMessage::addEnclosure(const QString& url, const QString& mime_type) const {
   m_message->m_enclosures.append(Enclosure(url, mime_type));
 }
@@ -508,7 +518,7 @@ QString FilterAccount::createLabel(const QString& label_title, const QString& he
     QSqlDatabase db = m_system->database();
 
     DatabaseQueries::createLabel(db, new_lbl, m_system->account()->accountId());
-    m_system->account()->requestItemReassignment(new_lbl, m_system->account()->labelsNode());
+    m_system->account()->requestItemReassignment(new_lbl, m_system->account()->labelsNode(), true);
     m_system->availableLabels().append(new_lbl);
 
     return new_lbl->customId();

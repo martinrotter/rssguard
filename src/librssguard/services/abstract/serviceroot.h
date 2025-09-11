@@ -226,7 +226,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void requestReloadMessageList(bool mark_selected_messages_read);
     void requestItemExpand(const QList<RootItem*>& items, bool expand);
     void requestItemExpandStateSave(RootItem* subtree_root);
-    void requestItemReassignment(RootItem* item, RootItem* new_parent);
+    void requestItemReassignment(RootItem* item, RootItem* new_parent, bool blocking = false);
     void requestItemsReassignment(const QList<RootItem*>& items, RootItem* new_parent);
     void requestItemRemoval(RootItem* item);
 
@@ -302,6 +302,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void itemExpandRequested(QList<RootItem*> items, bool expand);
     void itemExpandStateSaveRequested(RootItem* subtree_root);
 
+    void itemBlockingReassignmentRequested(RootItem* item, RootItem* new_parent);
     void itemReassignmentRequested(RootItem* item, RootItem* new_parent);
     void itemRemovalRequested(RootItem* item);
 

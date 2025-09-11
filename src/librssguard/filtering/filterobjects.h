@@ -86,6 +86,10 @@ class FilterMessage : public QObject {
     // Returns true if label was now removed or if it is not assigned to the message at all.
     Q_INVOKABLE bool deassignLabel(const QString& label_custom_id) const;
 
+    // Takes all categories of the message and creates/finds labels for them, then
+    // assigns all the labels.
+    Q_INVOKABLE void exportCategoriesToLabels(bool assign_to_message) const;
+
     // Add multimedia attachment to the message.
     Q_INVOKABLE void addEnclosure(const QString& url, const QString& mime_type) const;
 

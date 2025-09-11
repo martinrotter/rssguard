@@ -422,8 +422,9 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
           &ServiceRoot::itemRemovalRequested,
           this,
           static_cast<void (FeedsModel::*)(RootItem*)>(&FeedsModel::removeItem));
+  connect(root, &ServiceRoot::itemReassignmentRequested, this, &FeedsModel::reassignNodeToNewParent);
   connect(root,
-          &ServiceRoot::itemReassignmentRequested,
+          &ServiceRoot::itemBlockingReassignmentRequested,
           this,
           &FeedsModel::reassignNodeToNewParent,
           Qt::ConnectionType::BlockingQueuedConnection);
