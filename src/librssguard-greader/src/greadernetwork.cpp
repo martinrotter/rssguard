@@ -1028,12 +1028,6 @@ QString GreaderNetwork::convertShortStreamIdToLongStreamId(const QString& stream
   }
 }
 
-QString GreaderNetwork::simplifyStreamId(const QString& stream_id) const {
-  static QRegularExpression reg(QSL("\\/\\d+\\/"));
-
-  return QString(stream_id).replace(reg, QSL("/-/"));
-}
-
 QStringList GreaderNetwork::decodeItemIds(const QString& stream_json_data, QString& continuation) {
   QStringList ids;
   QJsonDocument json_doc = QJsonDocument::fromJson(stream_json_data.toUtf8());

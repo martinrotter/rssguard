@@ -32,6 +32,7 @@ bool GreaderFeed::deleteItem() {
                                                {},
                                                serviceRoot()->networkProxy());
     serviceRoot()->requestItemRemoval(this);
+    removeItself();
     return true;
   }
   catch (const ApplicationException& ex) {
