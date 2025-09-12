@@ -19,8 +19,7 @@
 FeedParser::FeedParser() {}
 
 FeedParser::FeedParser(QString data, DataType is_xml)
-  : m_dataType(is_xml), m_data(std::move(data)), m_wfwNamespace(QSL("http://wellformedweb.org/CommentAPI/")),
-    m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
+  : m_dataType(is_xml), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
   if (m_data.isEmpty()) {
     return;
   }
@@ -194,10 +193,7 @@ QList<Message> FeedParser::messages() {
 
         // Fill available data.
         new_message.m_title = xmlMessageTitle(message_item);
-
         new_message.m_contents = xmlMessageDescription(message_item);
-        new_message.m_contents += xmlWfwComments(message_item);
-
         new_message.m_author = xmlMessageAuthor(message_item);
         new_message.m_url = xmlMessageUrl(message_item);
         new_message.m_created = xmlMessageDateCreated(message_item);
@@ -435,37 +431,23 @@ QStringList FeedParser::xmlTextsFromPath(const QDomElement& element,
   return result;
 }
 
-QString FeedParser::xmlWfwComments(const QDomElement& msg_element) const {
-  QString comments_rss = msg_element.elementsByTagNameNS(m_wfwNamespace, QSL("commentRss")).at(0).toElement().text();
+QString FeedParser::formatComments(const QList<FeedComment>& comments) const {
+  QStringList comments_markup;
+  comments_markup.reserve(comments.size());
 
-  if (!comments_rss.isEmpty()) {
-    QByteArray comments_rss_data = m_resourceHandler(comments_rss);
-    RssParser rss_parser(QString::fromUtf8(comments_rss_data));
-    QList<Message> comments = rss_parser.messages();
-
-    if (comments.isEmpty()) {
-      return QString();
-    }
-
-    QStringList comments_markup;
-
-    for (const Message& comment : comments) {
-      comments_markup << QSL("<div class=\"wfw-comment\">"
-                             "<p class=\"wfw-comment-title\">%1</p>"
-                             "<p class=\"wfw-comment-text\">%2</>"
-                             "</div>")
-                           .arg(comment.m_title, comment.m_contents);
-    }
-
-    return QSL("<div class=\"wfw-comments\">"
-               "<p class=\"wfw-comments-title\">%1 (%2)</p>"
-               "%3"
-               "</div>")
-      .arg(QObject::tr("Comments"), QString::number(comments.size()), comments_markup.join(QL1C('\n')));
+  for (const FeedComment& comment : comments) {
+    comments_markup << QSL("<div class=\"comment\">"
+                           "<p class=\"comment-title\">%1</p>"
+                           "<p class=\"comment-text\">%2</>"
+                           "</div>")
+                         .arg(comment.m_title, comment.m_contents);
   }
-  else {
-    return QString();
-  }
+
+  return QSL("<div class=\"comments\">"
+             "<p class=\"comments-title\">%1 (%2)</p>"
+             "%3"
+             "</div>")
+    .arg(QObject::tr("Comments"), QString::number(comments.size()), comments_markup.join(QL1C('\n')));
 }
 
 std::function<QByteArray(QUrl)> FeedParser::resourceHandler() const {

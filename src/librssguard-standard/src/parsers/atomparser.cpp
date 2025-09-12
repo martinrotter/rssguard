@@ -391,6 +391,49 @@ QString AtomParser::atomNamespace() const {
   return m_atomNamespace;
 }
 
+QList<FeedComment> AtomParser::comments(const QDomElement& msg_element) const {
+  QDomNodeList links = msg_element.elementsByTagNameNS(m_atomNamespace, QSL("link"));
+
+  for (const QDomNode& link : links) {
+    QDomElement link_elem = link.toElement();
+
+    if (link_elem.attribute(QSL("rel")) != QSL("replies") ||
+        link_elem.attribute(QSL("type")) != QSL("application/atom+xml")) {
+      continue;
+    }
+
+    QString comments_atom = link_elem.attribute(QSL("href"));
+
+    if (comments_atom.isEmpty()) {
+      continue;
+    }
+
+    QByteArray comments_atom_data = m_resourceHandler(comments_atom);
+    AtomParser atom_parser(QString::fromUtf8(comments_atom_data));
+    QList<Message> extracted_comments = atom_parser.messages();
+
+    if (extracted_comments.isEmpty()) {
+      return {};
+    }
+
+    QList<FeedComment> cmnts;
+    cmnts.reserve(extracted_comments.size());
+
+    for (Message& extracted_comment : extracted_comments) {
+      extracted_comment.sanitize(nullptr, false);
+
+      FeedComment cmnt;
+      cmnt.m_title = extracted_comment.m_title;
+      cmnt.m_contents = extracted_comment.m_contents;
+      cmnts.append(cmnt);
+    }
+
+    return cmnts;
+  }
+
+  return {};
+}
+
 QDomNodeList AtomParser::xmlMessageElements() {
   return m_xml.elementsByTagNameNS(m_atomNamespace, QSL("entry"));
 }
@@ -410,6 +453,7 @@ QString AtomParser::xmlMessageDescription(const QDomElement& msg_element) const 
     }
   }
 
+  summary += formatComments(comments(msg_element));
   return summary;
 }
 

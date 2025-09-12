@@ -14,6 +14,11 @@
 #include <QJsonObject>
 #include <QString>
 
+struct FeedComment {
+    QString m_title;
+    QString m_contents;
+};
+
 // Base class for all XML-based feed parsers.
 class FeedParser {
   public:
@@ -95,7 +100,8 @@ class FeedParser {
                                  const QString& namespace_uri,
                                  const QString& xml_path,
                                  bool only_first) const;
-    QString xmlWfwComments(const QDomElement& msg_element) const;
+
+    QString formatComments(const QList<FeedComment>& comments) const;
 
   protected:
     std::function<QByteArray(QUrl)> m_resourceHandler;
@@ -104,7 +110,6 @@ class FeedParser {
     QString m_dateTimeFormat;
     DomDocument m_xml;
     QJsonDocument m_json;
-    QString m_wfwNamespace;
     QString m_mrssNamespace;
     bool m_dontUseRawXmlSaving;
 };

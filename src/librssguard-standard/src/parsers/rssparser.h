@@ -29,6 +29,11 @@ class RssParser : public FeedParser {
     virtual QString xmlMessageUrl(const QDomElement& msg_element) const;
     virtual QList<Enclosure> xmlMessageEnclosures(const QDomElement& msg_element) const;
     virtual QList<MessageCategory*> xmlMessageCategories(const QDomElement& msg_element) const;
+
+  private:
+    QList<FeedComment> comments(const QDomElement& msg_element) const;
+
+    QString m_wfwNamespace;
 };
 
 #endif // RSSPARSER_H

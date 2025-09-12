@@ -127,6 +127,7 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   m_title = qApp->web()->stripTags(WebFactory::unescapeHtml(m_title));
 
   m_title = m_title
+              .trimmed()
 
               // Remove non-breaking spaces.
               .replace(reg_spaces, QSL(" "))
@@ -154,14 +155,13 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   if (m_url.startsWith(QL1S("//"))) {
     m_url = QSL(URI_SCHEME_HTTPS) + m_url.mid(2);
   }
-  else if (QUrl(m_url).isRelative()) {
+  else if (feed != nullptr && QUrl(m_url).isRelative()) {
     QUrl feed_url(feed->source());
 
     if (feed_url.isValid()) {
       QUrl feed_homepage_url = QUrl(feed_url.scheme() + QSL("://") + feed_url.host());
 
       feed_homepage_url.setPort(feed_url.port());
-
       m_url = feed_homepage_url.resolved(m_url).toString();
     }
   }

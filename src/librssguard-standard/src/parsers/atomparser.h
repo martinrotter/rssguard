@@ -34,6 +34,7 @@ class AtomParser : public FeedParser {
 
   private:
     QString atomNamespace() const;
+    QList<FeedComment> comments(const QDomElement& msg_element) const;
 
     QString m_atomNamespace;
 };

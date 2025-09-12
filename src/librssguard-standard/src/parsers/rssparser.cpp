@@ -14,7 +14,8 @@
 #include <QTextCodec>
 #include <QTextStream>
 
-RssParser::RssParser(const QString& data) : FeedParser(data) {}
+RssParser::RssParser(const QString& data)
+  : FeedParser(data), m_wfwNamespace(QSL("http://wellformedweb.org/CommentAPI/")) {}
 
 RssParser::~RssParser() {}
 
@@ -274,7 +275,39 @@ QString RssParser::xmlMessageDescription(const QDomElement& msg_element) const {
     description = xmlRawChild(msg_element.elementsByTagName(QSL("description")).at(0).toElement());
   }
 
+  description += formatComments(comments(msg_element));
   return description;
+}
+
+QList<FeedComment> RssParser::comments(const QDomElement& msg_element) const {
+  QString comments_rss = msg_element.elementsByTagNameNS(m_wfwNamespace, QSL("commentRss")).at(0).toElement().text();
+
+  if (!comments_rss.isEmpty()) {
+    QByteArray comments_rss_data = m_resourceHandler(comments_rss);
+    RssParser rss_parser(QString::fromUtf8(comments_rss_data));
+    QList<Message> extracted_comments = rss_parser.messages();
+
+    if (extracted_comments.isEmpty()) {
+      return {};
+    }
+
+    QList<FeedComment> cmnts;
+    cmnts.reserve(extracted_comments.size());
+
+    for (Message& extracted_comment : extracted_comments) {
+      extracted_comment.sanitize(nullptr, false);
+
+      FeedComment cmnt;
+      cmnt.m_title = extracted_comment.m_title;
+      cmnt.m_contents = extracted_comment.m_contents;
+      cmnts.append(cmnt);
+    }
+
+    return cmnts;
+  }
+  else {
+    return {};
+  }
 }
 
 QString RssParser::xmlMessageAuthor(const QDomElement& msg_element) const {
