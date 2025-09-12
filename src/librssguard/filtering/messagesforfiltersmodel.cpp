@@ -4,6 +4,8 @@
 
 #include "definitions/definitions.h"
 #include "exceptions/filteringexception.h"
+#include "filtering/filteringsystem.h"
+#include "filtering/filterobjects.h"
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/skinfactory.h"
@@ -113,19 +115,30 @@ int MessagesForFiltersModel::messagesCount() const {
   return m_messages.size();
 }
 
-void MessagesForFiltersModel::testFilter(MessageFilter* filter, QJSEngine* engine, FilterMessage* msg_proxy) {
+void MessagesForFiltersModel::testFilter(MessageFilter* filter, FilteringSystem* engine) {
   m_filteringDecisions.clear();
 
-  // TODO: TODO
-  /*
   for (int i = 0; i < m_messages.size(); i++) {
     Message* msg = messageForRow(i);
 
     msg->m_rawContents = Message::generateRawAtomContents(*msg);
-    msg_proxy->setMessage(msg);
+    engine->setMessage(msg);
 
     try {
-      MessageObject::FilteringAction decision = filter->filterMessage(engine);
+      FilterMessage::FilteringAction decision = engine->filterMessage(*filter);
+
+      switch (decision) {
+        case FilterMessage::FilteringAction::Accept:
+          // Message is normally accepted, it could be tweaked by the filter.
+          engine->filterRun().incrementNumberOfAcceptedMessages();
+          break;
+
+        case FilterMessage::FilteringAction::Ignore:
+        case FilterMessage::FilteringAction::Purge:
+        default:
+          // Remove the message, we do not want it.
+          break;
+      }
 
       m_filteringDecisions.insert(i, decision);
     }
@@ -136,7 +149,6 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, QJSEngine* engin
 
   emit layoutAboutToBeChanged();
   emit layoutChanged();
-*/
 }
 
 Message* MessagesForFiltersModel::messageForRow(int row) {

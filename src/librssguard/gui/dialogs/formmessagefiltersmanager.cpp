@@ -5,6 +5,8 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "exceptions/filteringexception.h"
+#include "filtering/filteringsystem.h"
+#include "filtering/filterobjects.h"
 #include "filtering/messagefilter.h"
 #include "filtering/messagesforfiltersmodel.h"
 #include "gui/guiutilities.h"
@@ -174,10 +176,10 @@ void FormMessageFiltersManager::filterMessagesLikeThis(const Message& msg) {
         "    msg.url == '%4';\n"
         "\n"
         "  if (is_message_same) {\n"
-        "    return MessageObject.Accept;\n"
+        "    return Msg.Accept;\n"
         "  }\n"
         "  else {\n"
-        "    return MessageObject.Ignore;\n"
+        "    return Msg.Ignore;\n"
         "  }\n"
         "}")
       .arg(QString::number(int(msg.m_isRead)), QString::number(int(msg.m_isImportant)), msg.m_title, msg.m_url);
@@ -278,23 +280,22 @@ void FormMessageFiltersManager::loadFilter() {
 void FormMessageFiltersManager::testFilter() {
   m_ui.m_txtErrors->clear();
 
-  // TODO: TODO
-  /*
   // Perform per-message filtering.
   auto* selected_fd_cat = selectedCategoryFeed();
-  QJSEngine filter_engine;
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  MessageObject msg_obj(&database,
-                        selected_fd_cat->kind() == RootItem::Kind::Feed ? selected_fd_cat->toFeed() : nullptr,
-                        selectedAccount(),
-                        false);
-  auto* fltr = selectedFilter();
+  FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles,
+                            database,
+                            selected_fd_cat->kind() == RootItem::Kind::Feed ? selected_fd_cat->toFeed() : nullptr,
+                            selectedAccount());
 
-  MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
+  filtering.filterRun().setTotalCountOfFilters(1);
+  filtering.filterRun().setIndexOfCurrentFilter(0);
+
+  auto* fltr = selectedFilter();
 
   // Test real messages.
   try {
-    m_msgModel->testFilter(fltr, &filter_engine, &msg_obj);
+    m_msgModel->testFilter(fltr, &filtering);
   }
   catch (const FilteringException& ex) {
     m_ui.m_txtErrors->setTextColor(Qt::GlobalColor::red);
@@ -307,16 +308,16 @@ void FormMessageFiltersManager::testFilter() {
   // Test sample message.
   Message msg = testingMessage();
 
-  msg_obj.setMessage(&msg);
+  filtering.setMessage(&msg);
 
   try {
-    MessageObject::FilteringAction decision = fltr->filterMessage(&filter_engine);
+    FilterMessage::FilteringAction decision = filtering.filterMessage(*fltr);
 
-    m_ui.m_txtErrors->setTextColor(decision == MessageObject::FilteringAction::Accept ? Qt::GlobalColor::darkGreen
+    m_ui.m_txtErrors->setTextColor(decision == FilterMessage::FilteringAction::Accept ? Qt::GlobalColor::darkGreen
                                                                                       : Qt::GlobalColor::red);
 
     QString answer = tr("Article will be %1.\n\n")
-                       .arg(decision == MessageObject::FilteringAction::Accept ? tr("ACCEPTED") : tr("REJECTED"));
+                       .arg(decision == FilterMessage::FilteringAction::Accept ? tr("ACCEPTED") : tr("REJECTED"));
 
     answer += tr("Output (modified) article is:\n"
                  "  Title = '%1'\n"
@@ -344,7 +345,6 @@ void FormMessageFiltersManager::testFilter() {
     // See output.
     m_ui.m_twMessages->setCurrentIndex(2);
   }
-*/
 }
 
 void FormMessageFiltersManager::displayMessagesOfFeed() {
@@ -363,22 +363,23 @@ void FormMessageFiltersManager::processCheckedFeeds() {
   auto* fltr = selectedFilter();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  // TODO: TODO
-
-  /*
   for (RootItem* it : checked) {
     if (it->kind() == RootItem::Kind::Feed) {
-      QJSEngine filter_engine;
-      MessageObject msg_obj(&database, it->toFeed(), selectedAccount(), false);
+      FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles,
+                                database,
+                                it->toFeed(),
+                                selectedAccount());
 
-      MessageFilter::initializeFilteringEngine(filter_engine, &msg_obj);
+      filtering.filterRun().setTotalCountOfFilters(1);
+      filtering.filterRun().setIndexOfCurrentFilter(0);
 
       // We process messages of the feed.
       QList<Message> msgs = it->undeletedMessages();
       QList<Message> read_msgs, important_msgs;
 
       for (int i = 0; i < msgs.size(); i++) {
-        auto labels_in_message = DatabaseQueries::getLabelsForMessage(database, msgs[i], msg_obj.availableLabels());
+        auto labels_in_message =
+          DatabaseQueries::getLabelsForMessage(database, msgs[i], filtering.filterAccount().availableLabels());
 
         // Create backup of message.
         Message* msg = &msgs[i];
@@ -388,21 +389,25 @@ void FormMessageFiltersManager::processCheckedFeeds() {
 
         Message msg_backup(*msg);
 
-        msg_obj.setMessage(msg);
+        filtering.setMessage(msg);
 
         bool remove_from_list = false;
 
         try {
-          MessageObject::FilteringAction result = fltr->filterMessage(&filter_engine);
+          FilterMessage::FilteringAction result = filtering.filterMessage(*fltr);
 
-          if (result == MessageObject::FilteringAction::Purge) {
+          if (result == FilterMessage::FilteringAction::Purge) {
             remove_from_list = true;
 
             // Purge the message completely and remove leftovers.
             DatabaseQueries::purgeMessage(database, msg->m_id);
           }
-          else if (result == MessageObject::FilteringAction::Ignore) {
+          else if (result == FilterMessage::FilteringAction::Ignore) {
             remove_from_list = true;
+          }
+          else {
+            // Article was accepted.
+            filtering.filterRun().incrementNumberOfAcceptedMessages();
           }
         }
         catch (const FilteringException& ex) {
@@ -489,7 +494,6 @@ void FormMessageFiltersManager::processCheckedFeeds() {
       displayMessagesOfFeed();
     }
   }
-  */
 }
 
 void FormMessageFiltersManager::loadAccount(ServiceRoot* account) {

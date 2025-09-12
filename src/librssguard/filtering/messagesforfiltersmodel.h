@@ -6,9 +6,9 @@
 #include "filtering/filterobjects.h"
 
 #include <QAbstractTableModel>
-#include <QJSEngine>
 
 class MessageFilter;
+class FilteringSystem;
 
 class MessagesForFiltersModel : public QAbstractTableModel {
     Q_OBJECT
@@ -24,7 +24,7 @@ class MessagesForFiltersModel : public QAbstractTableModel {
 
   public:
     int messagesCount() const;
-    void testFilter(MessageFilter* filter, QJSEngine* engine, FilterMessage* msg_proxy);
+    void testFilter(MessageFilter* filter, FilteringSystem* engine);
 
     Message messageForRow(int row) const;
     Message* messageForRow(int row);

@@ -55,6 +55,10 @@ bool FilterMessage::deassignLabel(const QString& label_custom_id) const {
 }
 
 void FilterMessage::exportCategoriesToLabels(bool assign_to_message) const {
+  if (m_system->mode() == FilteringSystem::FiteringUseCase::ExistingArticles) {
+    return;
+  }
+
   for (MessageCategory* cate : m_message->m_categories) {
     auto lbl = m_system->filterAccount().createLabel(cate->title());
 
