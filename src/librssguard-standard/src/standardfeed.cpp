@@ -47,6 +47,7 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_httpHeaders = {};
   m_dontUseRawXmlSaving = false;
   m_http2Status = NetworkFactory::Http2Status::DontSet;
+  m_fetchCommentsEnabled = false;
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
@@ -58,6 +59,7 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_username = other.username();
   m_password = other.password();
   m_dontUseRawXmlSaving = other.dontUseRawXmlSaving();
+  m_fetchCommentsEnabled = other.fetchCommentsEnabled();
   m_httpHeaders = other.httpHeaders();
   m_http2Status = other.http2Status();
 }
@@ -102,11 +104,13 @@ QString StandardFeed::additionalTooltip() const {
   return base_tooltip + tr("Encoding: %1\n"
                            "Type: %2\n"
                            "Post-processing script: %3\n"
-                           "Use raw XML saving: %4")
+                           "Use raw XML saving: %4\n"
+                           "Fetch article comments: %5")
                           .arg(encoding(),
                                StandardFeed::typeToString(type()),
                                m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
-                               !dontUseRawXmlSaving() ? tr("yes") : tr("no"));
+                               !dontUseRawXmlSaving() ? tr("yes") : tr("no"),
+                               fetchCommentsEnabled() ? tr("yes") : tr("no"));
 }
 
 NetworkFactory::Http2Status StandardFeed::http2Status() const {
@@ -169,6 +173,7 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("protected")] = int(protection());
   data[QSL("username")] = username();
   data[QSL("password")] = TextFactory::encrypt(password());
+  data[QSL("fetch_comments")] = fetchCommentsEnabled();
   data[QSL("dont_use_raw_xml_saving")] = dontUseRawXmlSaving();
   data[QSL("http_headers")] = httpHeaders();
   data[QSL("http2_status")] = int(http2Status());
@@ -184,6 +189,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setProtection(NetworkFactory::NetworkAuthentication(data[QSL("protected")].toInt()));
   setUsername(data[QSL("username")].toString());
   setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
+  setFetchCommentsEnabled(data[QSL("fetch_comments")].toBool());
   setDontUseRawXmlSaving(data[QSL("dont_use_raw_xml_saving")].toBool());
   setHttpHeaders(data[QSL("http_headers")].toHash());
   setHttp2Status(NetworkFactory::Http2Status(data[QSL("http2_status")].toInt()));
@@ -465,6 +471,14 @@ QString StandardFeed::getHttpDescription() const {
     default:
       return tr("unknown state");
   }
+}
+
+bool StandardFeed::fetchCommentsEnabled() const {
+  return m_fetchCommentsEnabled;
+}
+
+void StandardFeed::setFetchCommentsEnabled(bool enabled) {
+  m_fetchCommentsEnabled = enabled;
 }
 
 QVariantHash StandardFeed::httpHeaders() const {

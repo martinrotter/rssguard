@@ -394,8 +394,8 @@ QString AtomParser::atomNamespace() const {
 QList<FeedComment> AtomParser::comments(const QDomElement& msg_element) const {
   QDomNodeList links = msg_element.elementsByTagNameNS(m_atomNamespace, QSL("link"));
 
-  for (const QDomNode& link : links) {
-    QDomElement link_elem = link.toElement();
+  for (int i = 0; i < links.size(); i++) {
+    QDomElement link_elem = links.at(i).toElement();
 
     if (link_elem.attribute(QSL("rel")) != QSL("replies") ||
         link_elem.attribute(QSL("type")) != QSL("application/atom+xml")) {
@@ -453,7 +453,10 @@ QString AtomParser::xmlMessageDescription(const QDomElement& msg_element) const 
     }
   }
 
-  summary += formatComments(comments(msg_element));
+  if (fetchComments()) {
+    summary += formatComments(comments(msg_element));
+  }
+
   return summary;
 }
 

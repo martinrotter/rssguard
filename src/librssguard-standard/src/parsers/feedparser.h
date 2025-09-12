@@ -52,6 +52,9 @@ class FeedParser {
     std::function<QByteArray(QUrl)> resourceHandler() const;
     void setResourceHandler(const std::function<QByteArray(QUrl)>& res_handler);
 
+    bool fetchComments() const;
+    void setFetchComments(bool cmnts);
+
   protected:
     virtual QString feedAuthor() const;
 
@@ -112,6 +115,7 @@ class FeedParser {
     QJsonDocument m_json;
     QString m_mrssNamespace;
     bool m_dontUseRawXmlSaving;
+    bool m_fetchComments;
 };
 
 #endif // FEEDPARSER_H

@@ -14,23 +14,6 @@
    <string>Form</string>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="2" column="0" colspan="2">
-    <widget class="HelpSpoiler" name="m_helpDontUseRawXml" native="true"/>
-   </item>
-   <item row="1" column="0" colspan="2">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="MultiFeedEditCheckBox" name="m_mcbDontUseRawXml"/>
-     </item>
-     <item>
-      <widget class="QCheckBox" name="m_cbDontUseRawXml">
-       <property name="text">
-        <string>Use older mechanism for extracting raw XML data</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </item>
    <item row="0" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_8">
      <item>
@@ -62,6 +45,40 @@
      </item>
     </layout>
    </item>
+   <item row="1" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbDontUseRawXml"/>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="m_cbDontUseRawXml">
+       <property name="text">
+        <string>Use older mechanism for extracting raw XML data</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbFetchComments"/>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="m_cbFetchComments">
+       <property name="text">
+        <string>Fetch comments for articles</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="2" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_helpDontUseRawXml" native="true"/>
+   </item>
+   <item row="4" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_helpFetchComments" native="true"/>
+   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -82,6 +99,8 @@
   <tabstop>m_cmbEnableHttp2</tabstop>
   <tabstop>m_mcbDontUseRawXml</tabstop>
   <tabstop>m_cbDontUseRawXml</tabstop>
+  <tabstop>m_mcbFetchComments</tabstop>
+  <tabstop>m_cbFetchComments</tabstop>
  </tabstops>
  <resources/>
  <connections/>

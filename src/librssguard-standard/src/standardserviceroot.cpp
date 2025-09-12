@@ -406,6 +406,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       break;
   }
 
+  parser->setFetchComments(f->fetchCommentsEnabled());
   parser->setResourceHandler([&](const QUrl& url) {
     QByteArray resource;
     NetworkResult resource_result =

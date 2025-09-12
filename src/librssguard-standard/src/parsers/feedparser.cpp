@@ -19,7 +19,8 @@
 FeedParser::FeedParser() {}
 
 FeedParser::FeedParser(QString data, DataType is_xml)
-  : m_dataType(is_xml), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")) {
+  : m_dataType(is_xml), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")),
+    m_fetchComments(false) {
   if (m_data.isEmpty()) {
     return;
   }
@@ -452,6 +453,14 @@ QString FeedParser::formatComments(const QList<FeedComment>& comments) const {
              "%3"
              "</div>")
     .arg(QObject::tr("Comments"), QString::number(comments.size()), comments_markup.join(QL1C('\n')));
+}
+
+bool FeedParser::fetchComments() const {
+  return m_fetchComments;
+}
+
+void FeedParser::setFetchComments(bool cmnts) {
+  m_fetchComments = cmnts;
 }
 
 std::function<QByteArray(QUrl)> FeedParser::resourceHandler() const {

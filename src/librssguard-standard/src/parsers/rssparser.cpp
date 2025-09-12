@@ -275,7 +275,10 @@ QString RssParser::xmlMessageDescription(const QDomElement& msg_element) const {
     description = xmlRawChild(msg_element.elementsByTagName(QSL("description")).at(0).toElement());
   }
 
-  description += formatComments(comments(msg_element));
+  if (fetchComments()) {
+    description += formatComments(comments(msg_element));
+  }
+
   return description;
 }
 

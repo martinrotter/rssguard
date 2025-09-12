@@ -28,6 +28,11 @@ StandardFeedExpDetails::StandardFeedExpDetails(QWidget* parent) : QWidget(parent
                                            "happens for feed which do have very long contents."),
                                         false);
 
+  m_ui.m_helpFetchComments->setHelpText(tr("This enables fetching of embedded article comments. Note that if the feed "
+                                           "has many articles and each of them has comments, then the whole feed "
+                                           "fetching can be much much slower with this option enabled."),
+                                        false);
+
   m_ui.m_cmbEnableHttp2->addItem(tr("Use application settings"),
                                  QVariant::fromValue(int(NetworkFactory::Http2Status::DontSet)));
   m_ui.m_cmbEnableHttp2->addItem(tr("Enabled"), QVariant::fromValue(int(NetworkFactory::Http2Status::Enabled)));

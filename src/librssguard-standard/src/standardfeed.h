@@ -126,6 +126,9 @@ class StandardFeed : public Feed {
     QVariantHash httpHeaders() const;
     void setHttpHeaders(const QVariantHash& http_headers);
 
+    bool fetchCommentsEnabled() const;
+    void setFetchCommentsEnabled(bool enabled);
+
   public slots:
     void fetchMetadataForItself();
 
@@ -148,6 +151,7 @@ class StandardFeed : public Feed {
     bool m_dontUseRawXmlSaving;
     QVariantHash m_httpHeaders;
     NetworkFactory::Http2Status m_http2Status;
+    bool m_fetchCommentsEnabled;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)
