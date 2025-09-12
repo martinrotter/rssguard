@@ -432,6 +432,10 @@ QStringList FeedParser::xmlTextsFromPath(const QDomElement& element,
 }
 
 QString FeedParser::formatComments(const QList<FeedComment>& comments) const {
+  if (comments.isEmpty()) {
+    return {};
+  }
+
   QStringList comments_markup;
   comments_markup.reserve(comments.size());
 
