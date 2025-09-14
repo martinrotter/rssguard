@@ -1062,7 +1062,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
     message.m_title = message_obj[QSL("title")].toString();
     message.m_author = message_obj[QSL("author")].toString();
     message.m_created = QDateTime::fromSecsSinceEpoch(message_obj[QSL("published")].toInt(),
-#if QT_VERSION >= 0x060900 // Qt >= 6.9.0
+#if QT_VERSION >= 0x060700 // Qt >= 6.7.0
                                                       QTimeZone::utc());
 #else
                                                       Qt::TimeSpec::UTC);
