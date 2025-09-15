@@ -24,6 +24,8 @@ class MessagesForFiltersModel : public QAbstractTableModel {
 
   public:
     int messagesCount() const;
+
+    void processFeeds(MessageFilter* fltr, ServiceRoot* account, const QList<RootItem*>& checked);
     void testFilter(MessageFilter* filter, FilteringSystem* engine);
 
     Message messageForRow(int row) const;
