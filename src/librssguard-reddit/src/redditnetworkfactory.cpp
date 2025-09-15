@@ -273,7 +273,7 @@ QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetwork
         new_msg.m_author = msg_obj["author"].toString();
         new_msg.m_createdFromFeed = true;
         new_msg.m_created = QDateTime::fromSecsSinceEpoch(msg_obj["created_utc"].toVariant().toLongLong(),
-#if QT_VERSION >= 0x060900 // Qt >= 6.9.0
+#if QT_VERSION >= 0x060700 // Qt >= 6.7.0
                                                           QTimeZone::utc());
 #else
                                                           Qt::TimeSpec::UTC);

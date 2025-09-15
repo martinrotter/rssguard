@@ -6,7 +6,7 @@
 #include <QDebug>
 #include <QtGlobal>
 
-#if QT_VERSION < 0x060900 // Qt < 6.9.0
+#if QT_VERSION < 0x060700 // Qt < 6.7.0
 #define STATE_CHANGED stateChanged
 #else
 #define STATE_CHANGED checkStateChanged

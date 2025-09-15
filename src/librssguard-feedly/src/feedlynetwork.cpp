@@ -430,7 +430,7 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
 
     message.m_createdFromFeed = true;
     message.m_created = QDateTime::fromMSecsSinceEpoch(entry_obj[QSL("published")].toVariant().toLongLong(),
-#if QT_VERSION >= 0x060900 // Qt >= 6.9.0
+#if QT_VERSION >= 0x060700 // Qt >= 6.7.0
                                                        QTimeZone::utc());
 #else
                                                        Qt::TimeSpec::UTC);
