@@ -27,6 +27,12 @@ class FilteringSystem : public QObject {
 
     void setMessage(Message* message);
 
+    void pushMessageStatesToServices(QList<Message>& read_msgs, QList<Message>& important_msgs, RootItem *item, ServiceRoot* account);
+    void compareAndWriteArticleStates(Message* msg_original,
+                                      Message* msg_filtered,
+                                      QList<Message>& read_msgs,
+                                      QList<Message>& important_msgs);
+
     FilterMessage::FilteringAction filterMessage(const MessageFilter& filter);
 
     QJSEngine& engine();

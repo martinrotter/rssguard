@@ -299,11 +299,11 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
       for (int i = 0; i < msgs.size(); i++) {
         Message msg_original(msgs[i]);
-        Message* msg_tweaked_by_filter = &msgs[i];
+        Message* msg_filtered = &msgs[i];
 
         // Attach live message object to wrapper.
         tmr.restart();
-        filtering.setMessage(msg_tweaked_by_filter);
+        filtering.setMessage(msg_filtered);
 
         bool remove_msg = false;
 
@@ -362,73 +362,14 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           filtering.filterRun().incrementNumberOfAcceptedMessages();
         }
 
-        if (!msg_original.m_isRead && msg_tweaked_by_filter->m_isRead) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID:" << QUOTE_W_SPACE(msg_original.m_customId)
-                   << "was marked as read by message scripts.";
-
-          read_msgs << *msg_tweaked_by_filter;
-        }
-
-        if (!msg_original.m_isImportant && msg_tweaked_by_filter->m_isImportant) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID:" << QUOTE_W_SPACE(msg_original.m_customId)
-                   << "was marked as important by message scripts.";
-
-          important_msgs << *msg_tweaked_by_filter;
-        }
-
-        // NOTE: We only remember what labels were added/removed in filters
-        // and store the fact to server (of synchronized) and local DB later.
-        // This is mainly because articles might not even be in DB yet.
-        // So first insert articles, then update their label assignments etc.
-        for (Label* lbl : std::as_const(msg_original.m_assignedLabels)) {
-          if (!msg_tweaked_by_filter->m_assignedLabels.contains(lbl)) {
-            // Label is not there anymore, it was deassigned.
-            msg_tweaked_by_filter->m_deassignedLabelsByFilter << lbl;
-          }
-        }
-
-        for (Label* lbl : std::as_const(msg_tweaked_by_filter->m_assignedLabels)) {
-          if (!msg_original.m_assignedLabels.contains(lbl)) {
-            // Label is in new message, but is not in old message, it
-            // was newly assigned.
-            msg_tweaked_by_filter->m_assignedLabelsByFilter << lbl;
-          }
-        }
+        filtering.compareAndWriteArticleStates(&msg_original, msg_filtered, read_msgs, important_msgs);
 
         if (remove_msg) {
           msgs.removeAt(i--);
         }
       }
 
-      if (!read_msgs.isEmpty()) {
-        // Now we push new read states to the service.
-        if (feed->getParentServiceRoot()->onBeforeSetMessagesRead(feed, read_msgs, RootItem::ReadStatus::Read)) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Notified services about messages marked as read by message filters.";
-        }
-        else {
-          qCriticalNN << LOGSEC_FEEDDOWNLOADER
-                      << "Notification of services about messages marked as read by message filters FAILED.";
-        }
-      }
-
-      if (!important_msgs.isEmpty()) {
-        // Now we push new read states to the service.
-        auto list = boolinq::from(important_msgs)
-                      .select([](const Message& msg) {
-                        return ImportanceChange(msg, RootItem::Importance::Important);
-                      })
-                      .toStdList();
-        QList<ImportanceChange> chngs = FROM_STD_LIST(QList<ImportanceChange>, list);
-
-        if (feed->getParentServiceRoot()->onBeforeSwitchMessageImportance(feed, chngs)) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER
-                   << "Notified services about messages marked as important by message filters.";
-        }
-        else {
-          qCriticalNN << LOGSEC_FEEDDOWNLOADER
-                      << "Notification of services about messages marked as important by message filters FAILED.";
-        }
-      }
+      filtering.pushMessageStatesToServices(read_msgs, important_msgs, feed, acc);
     }
 
     removeDuplicateMessages(msgs);

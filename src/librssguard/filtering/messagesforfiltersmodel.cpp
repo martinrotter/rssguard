@@ -136,27 +136,27 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
           DatabaseQueries::getLabelsForMessage(database, msgs[i], filtering.filterAccount().availableLabels());
 
         // Create backup of message.
-        Message* msg = &msgs[i];
+        Message* msg_filtered = &msgs[i];
 
-        msg->m_assignedLabels = labels_in_message;
-        msg->m_rawContents = Message::generateRawAtomContents(*msg);
+        msg_filtered->m_assignedLabels = labels_in_message;
+        msg_filtered->m_rawContents = Message::generateRawAtomContents(*msg_filtered);
 
-        Message msg_original(*msg);
-        bool remove_mgs = false;
+        Message msg_original(*msg_filtered);
+        bool remove_msg = false;
 
-        filtering.setMessage(msg);
+        filtering.setMessage(msg_filtered);
 
         try {
           FilterMessage::FilteringAction result = filtering.filterMessage(*fltr);
 
           if (result == FilterMessage::FilteringAction::Purge) {
-            remove_mgs = true;
+            remove_msg = true;
 
             // Purge the message completely and remove leftovers.
-            DatabaseQueries::purgeMessage(database, msg->m_id);
+            DatabaseQueries::purgeMessage(database, msg_filtered->m_id);
           }
           else if (result == FilterMessage::FilteringAction::Ignore) {
-            remove_mgs = true;
+            remove_msg = true;
           }
           else {
             // Article was accepted.
@@ -170,77 +170,15 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
           continue;
         }
 
-        if (!msg_original.m_isRead && msg->m_isRead) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_original.m_customId
-                   << "' was marked as read by message scripts.";
+        filtering.compareAndWriteArticleStates(&msg_original, msg_filtered, read_msgs, important_msgs);
 
-          read_msgs << *msg;
-        }
-
-        if (!msg_original.m_isImportant && msg->m_isImportant) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Message with custom ID: '" << msg_original.m_customId
-                   << "' was marked as important by message scripts.";
-
-          important_msgs << *msg;
-        }
-
-        // Process changed labels.
-        for (Label* lbl : std::as_const(msg_original.m_assignedLabels)) {
-          if (!msg->m_assignedLabels.contains(lbl)) {
-            // Label is not there anymore, it was deassigned.
-            msg->m_deassignedLabelsByFilter << lbl;
-
-            qDebugNN << LOGSEC_FEEDDOWNLOADER << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
-                     << "was DEASSIGNED from message" << QUOTE_W_SPACE(msg->m_customId) << "by message filter(s).";
-          }
-        }
-
-        for (Label* lbl : std::as_const(msg->m_assignedLabels)) {
-          if (!msg_original.m_assignedLabels.contains(lbl)) {
-            // Label is in new message, but is not in old message, it
-            // was newly assigned.
-            msg->m_assignedLabelsByFilter << lbl;
-
-            qDebugNN << LOGSEC_FEEDDOWNLOADER << "It was detected that label" << QUOTE_W_SPACE(lbl->customId())
-                     << "was ASSIGNED to message" << QUOTE_W_SPACE(msg->m_customId) << "by message filter(s).";
-          }
-        }
-
-        if (remove_mgs) {
+        if (remove_msg) {
           // Do not update message.
           msgs.removeAt(i--);
         }
       }
 
-      if (!read_msgs.isEmpty()) {
-        // Now we push new read states to the service.
-        if (it->getParentServiceRoot()->onBeforeSetMessagesRead(it, read_msgs, RootItem::ReadStatus::Read)) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Notified services about messages marked as read by message filters.";
-        }
-        else {
-          qCriticalNN << LOGSEC_FEEDDOWNLOADER
-                      << "Notification of services about messages marked as read by message filters FAILED.";
-        }
-      }
-
-      if (!important_msgs.isEmpty()) {
-        // Now we push new read states to the service.
-        auto list = boolinq::from(important_msgs)
-                      .select([](const Message& msg) {
-                        return ImportanceChange(msg, RootItem::Importance::Important);
-                      })
-                      .toStdList();
-        QList<ImportanceChange> chngs = FROM_STD_LIST(QList<ImportanceChange>, list);
-
-        if (it->getParentServiceRoot()->onBeforeSwitchMessageImportance(it, chngs)) {
-          qDebugNN << LOGSEC_FEEDDOWNLOADER
-                   << "Notified services about messages marked as important by message filters.";
-        }
-        else {
-          qCriticalNN << LOGSEC_FEEDDOWNLOADER
-                      << "Notification of services about messages marked as important by message filters FAILED.";
-        }
-      }
+      filtering.pushMessageStatesToServices(read_msgs, important_msgs, it, account);
 
       // Update messages in DB and reload selection.
       it->getParentServiceRoot()->updateMessages(msgs, it->toFeed(), true, nullptr);
