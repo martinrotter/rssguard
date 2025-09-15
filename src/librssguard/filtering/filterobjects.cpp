@@ -54,6 +54,10 @@ bool FilterMessage::deassignLabel(const QString& label_custom_id) const {
   }
 }
 
+void FilterMessage::deassignAllLabels() const {
+  m_message->m_assignedLabels.clear();
+}
+
 void FilterMessage::exportCategoriesToLabels(bool assign_to_message) const {
   if (m_system->mode() == FilteringSystem::FiteringUseCase::ExistingArticles) {
     return;
