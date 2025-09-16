@@ -261,11 +261,11 @@ double jaro_winkler_distance(QString str1, QString str2) {
     }                                                                                   \
   }
 
-bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck attribute_check, double similarity_threshold) const {
+bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double threshold) const {
   QList<Message> msgs;
   bool ok = false;
 
-  if (Globals::hasFlag(attribute_check, DuplicityCheck::AllFeedsSameAccount)) {
+  if (Globals::hasFlag(criteria, DuplicityCheck::AllFeedsSameAccount)) {
     msgs = DatabaseQueries::getUndeletedMessagesForAccount(m_system->database(), m_system->filterAccount().id(), &ok);
   }
   else {
@@ -287,15 +287,15 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck attribute_check, d
       return false;
     }
 
-    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameTitle, similarity_threshold, title(), msg.m_title)
-    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameUrl, similarity_threshold, url(), msg.m_url)
-    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameAuthor, similarity_threshold, author(), msg.m_author)
-    JARO_WINKLER_DECIDE(attribute_check,
+    JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameTitle, threshold, title(), msg.m_title)
+    JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameUrl, threshold, url(), msg.m_url)
+    JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameAuthor, threshold, author(), msg.m_author)
+    JARO_WINKLER_DECIDE(criteria,
                         DuplicityCheck::SameDateCreated,
-                        similarity_threshold,
+                        threshold,
                         created().toString(),
                         msg.m_created.toString())
-    JARO_WINKLER_DECIDE(attribute_check, DuplicityCheck::SameCustomId, similarity_threshold, customId(), msg.m_customId)
+    JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameCustomId, threshold, customId(), msg.m_customId)
 
     return true;
   }
@@ -303,34 +303,34 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck attribute_check, d
   return false;
 }
 
-bool FilterMessage::isAlreadyInDatabase(DuplicityCheck attribute_check) const {
+bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   // Check database according to duplication attribute_check.
   QSqlQuery q(m_system->database());
   QStringList where_clauses;
   QVector<QPair<QString, QVariant>> bind_values;
 
   // Now we construct the query according to parameter.
-  if (Globals::hasFlag(attribute_check, DuplicityCheck::SameTitle)) {
+  if (Globals::hasFlag(criteria, DuplicityCheck::SameTitle)) {
     where_clauses.append(QSL("title = :title"));
     bind_values.append({QSL(":title"), title()});
   }
 
-  if (Globals::hasFlag(attribute_check, DuplicityCheck::SameUrl)) {
+  if (Globals::hasFlag(criteria, DuplicityCheck::SameUrl)) {
     where_clauses.append(QSL("url = :url"));
     bind_values.append({QSL(":url"), url()});
   }
 
-  if (Globals::hasFlag(attribute_check, DuplicityCheck::SameAuthor)) {
+  if (Globals::hasFlag(criteria, DuplicityCheck::SameAuthor)) {
     where_clauses.append(QSL("author = :author"));
     bind_values.append({QSL(":author"), author()});
   }
 
-  if (Globals::hasFlag(attribute_check, DuplicityCheck::SameDateCreated)) {
+  if (Globals::hasFlag(criteria, DuplicityCheck::SameDateCreated)) {
     where_clauses.append(QSL("date_created = :date_created"));
     bind_values.append({QSL(":date_created"), created().toMSecsSinceEpoch()});
   }
 
-  if (Globals::hasFlag(attribute_check, DuplicityCheck::SameCustomId)) {
+  if (Globals::hasFlag(criteria, DuplicityCheck::SameCustomId)) {
     where_clauses.append(QSL("custom_id = :custom_id"));
     bind_values.append({QSL(":custom_id"), customId()});
   }
@@ -345,7 +345,7 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck attribute_check) const {
     bind_values.append({QSL(":id"), QString::number(id())});
   }
 
-  if (!Globals::hasFlag(attribute_check, DuplicityCheck::AllFeedsSameAccount)) {
+  if (!Globals::hasFlag(criteria, DuplicityCheck::AllFeedsSameAccount)) {
     // Limit to current feed.
     where_clauses.append(QSL("feed = :feed"));
     bind_values.append({QSL(":feed"), feedCustomId()});
@@ -466,9 +466,9 @@ QDateTime FilterUtils::parseDateTime(const QString& dat) const {
   return TextFactory::parseDateTime(dat);
 }
 
-QString FilterUtils::runExecutableGetOutput(const QString& executable,
-                                            const QStringList& arguments,
-                                            const QString& working_directory) const {
+QString FilterFs::runExecutableGetOutput(const QString& executable,
+                                         const QStringList& arguments,
+                                         const QString& working_directory) const {
   try {
     return IOFactory::startProcessGetOutput(executable, arguments, working_directory);
   }
@@ -477,15 +477,19 @@ QString FilterUtils::runExecutableGetOutput(const QString& executable,
   }
 }
 
-void FilterUtils::runExecutable(const QString& executable,
-                                const QStringList& arguments,
-                                const QString& working_directory) const {
+void FilterFs::runExecutable(const QString& executable,
+                             const QStringList& arguments,
+                             const QString& working_directory) const {
   try {
     IOFactory::startProcessDetached(executable, arguments, working_directory);
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_JS << "Error when running executable:" << QUOTE_W_SPACE_DOT(ex.message());
   }
+}
+
+void FilterFs::setSystem(FilteringSystem* sys) {
+  m_system = sys;
 }
 
 void FilterUtils::setSystem(FilteringSystem* sys) {

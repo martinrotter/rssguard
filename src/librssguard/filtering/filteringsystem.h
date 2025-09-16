@@ -27,7 +27,10 @@ class FilteringSystem : public QObject {
 
     void setMessage(Message* message);
 
-    void pushMessageStatesToServices(QList<Message>& read_msgs, QList<Message>& important_msgs, RootItem *item, ServiceRoot* account);
+    void pushMessageStatesToServices(QList<Message>& read_msgs,
+                                     QList<Message>& important_msgs,
+                                     RootItem* item,
+                                     ServiceRoot* account);
     void compareAndWriteArticleStates(Message* msg_original,
                                       Message* msg_filtered,
                                       QList<Message>& read_msgs,
@@ -63,6 +66,7 @@ class FilteringSystem : public QObject {
     FilterApp m_filterApp;
     FilterAccount m_filterAccount;
     FilterRun m_filterRun;
+    FilterFs m_filterFs;
 };
 
 #endif // FILTERINGSYSTEM_H

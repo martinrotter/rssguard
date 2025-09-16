@@ -74,9 +74,8 @@ class FilterMessage : public QObject {
     void setSystem(FilteringSystem* sys);
     void setMessage(Message* message);
 
-    Q_INVOKABLE bool isAlreadyInDatabaseWinkler(DuplicityCheck attribute_check,
-                                                double similarity_threshold = 0.1) const;
-    Q_INVOKABLE bool isAlreadyInDatabase(DuplicityCheck attribute_check) const;
+    Q_INVOKABLE bool isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double threshold = 0.1) const;
+    Q_INVOKABLE bool isAlreadyInDatabase(DuplicityCheck criteria) const;
 
     // Adds given label to list of assigned labels to this message.
     // Returns true if label was assigned now or if the message already has it assigned.
@@ -221,6 +220,23 @@ class FilterFeed : public QObject {
     FilteringSystem* m_system;
 };
 
+class FilterFs : public QObject {
+    Q_OBJECT
+
+  public:
+    Q_INVOKABLE QString runExecutableGetOutput(const QString& executable,
+                                               const QStringList& arguments = {},
+                                               const QString& working_directory = {}) const;
+    Q_INVOKABLE void runExecutable(const QString& executable,
+                                   const QStringList& arguments = {},
+                                   const QString& working_directory = {}) const;
+
+    void setSystem(FilteringSystem *sys);
+
+  private:
+    FilteringSystem* m_system;
+};
+
 // Misc utility functions for filtering.
 class FilterUtils : public QObject {
     Q_OBJECT
@@ -241,12 +257,6 @@ class FilterUtils : public QObject {
 
     // Parses string into date/time object.
     Q_INVOKABLE QDateTime parseDateTime(const QString& dat) const;
-    Q_INVOKABLE QString runExecutableGetOutput(const QString& executable,
-                                               const QStringList& arguments = {},
-                                               const QString& working_directory = {}) const;
-    Q_INVOKABLE void runExecutable(const QString& executable,
-                                   const QStringList& arguments = {},
-                                   const QString& working_directory = {}) const;
 
   private:
     FilteringSystem* m_system;

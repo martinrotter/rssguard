@@ -23,6 +23,7 @@ FilteringSystem::FilteringSystem(FiteringUseCase mode,
   m_filterMessage.setSystem(this);
   m_filterUtils.setSystem(this);
   m_filterAccount.setSystem(this);
+  m_filterFs.setSystem(this);
 }
 
 void FilteringSystem::setMessage(Message* message) {
@@ -157,6 +158,9 @@ void FilteringSystem::initializeEngine() {
 
   // run
   m_engine.globalObject().setProperty(QSL("run"), m_engine.newQObject(&m_filterRun));
+
+  // fs
+  m_engine.globalObject().setProperty(QSL("fs"), m_engine.newQObject(&m_filterFs));
 }
 
 FilterAccount& FilteringSystem::filterAccount() {
