@@ -394,4 +394,32 @@ function filterMessage() {
 ```
 
 ```js
+/*
+ * Convert article contents from HTML to plain text with Pandoc.
+ *
+ * This uses Pandoc binary placed directly in user data folder.
+ * Article contents are passed to Pandoc via standard input.
+ */
+function filterMessage() {
+  let res = fs.runExecutableGetOutput(
+      'pandoc.exe',
+      ['-f', 'html', '-t', 'plain'],
+      msg.contents);
+
+  msg.contents = res;
+
+  return Msg.Accept;
+}
+```
+
+```js
+```
+
+```js
+```
+
+```js
+```
+
+```js
 ```

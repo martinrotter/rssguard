@@ -226,12 +226,13 @@ class FilterFs : public QObject {
   public:
     Q_INVOKABLE QString runExecutableGetOutput(const QString& executable,
                                                const QStringList& arguments = {},
+                                               const QString& stdin_data = {},
                                                const QString& working_directory = {}) const;
     Q_INVOKABLE void runExecutable(const QString& executable,
                                    const QStringList& arguments = {},
                                    const QString& working_directory = {}) const;
 
-    void setSystem(FilteringSystem *sys);
+    void setSystem(FilteringSystem* sys);
 
   private:
     FilteringSystem* m_system;

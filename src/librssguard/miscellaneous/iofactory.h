@@ -27,18 +27,15 @@ class RSSGUARD_DLLSPEC IOFactory {
 
     // Filters out shit characters from filename.
     static QString filterBadCharsFromFilename(const QString& name);
+
+    // Process launching.
     static bool startProcessDetached(const QString& executable,
                                      const QStringList& arguments = {},
                                      const QString& working_directory = {});
-    static void startProcess(QProcess* const proc,
-                             const QString& executable,
-                             const QStringList& arguments = {},
-                             const QString& working_directory = {},
-                             const QProcessEnvironment& pe = {});
     static QString startProcessGetOutput(const QString& executable,
                                          const QStringList& arguments = {},
-                                         const QString& working_directory = {},
-                                         const QProcessEnvironment& pe = {});
+                                         const QString& stdin_data = {},
+                                         const QString& working_directory = {});
 
     // Returns contents of a file.
     // Throws exception when no such file exists.
@@ -51,6 +48,15 @@ class RSSGUARD_DLLSPEC IOFactory {
     static bool copyFile(const QString& source, const QString& destination);
 
     static void removeFolder(const QString& path);
+
+  private:
+    static bool setupProcess(QProcess& process,
+                             bool start_detached,
+                             const QString& executable,
+                             const QStringList& arguments = {},
+                             const QString& stdin_data = {},
+                             const QString& working_directory = {},
+                             const QProcessEnvironment& pe = {});
 };
 
 #endif // IOFACTORY_H

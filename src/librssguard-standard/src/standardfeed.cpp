@@ -555,14 +555,14 @@ QByteArray StandardFeed::runScriptProcess(const QStringList& cmd_args,
     process.setArguments(cmd_args.mid(1));
   }
 
-  if (!process.open()) {
-    switch (process.error()) {
-      case QProcess::ProcessError::FailedToStart:
-        throw ScriptException(ScriptException::Reason::InterpreterNotFound);
+  process.open();
 
-      default:
-        break;
-    }
+  switch (process.error()) {
+    case QProcess::ProcessError::FailedToStart:
+      throw ScriptException(ScriptException::Reason::InterpreterNotFound);
+
+    default:
+      break;
   }
 
   if (provide_input) {

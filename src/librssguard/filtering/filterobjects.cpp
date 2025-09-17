@@ -468,9 +468,16 @@ QDateTime FilterUtils::parseDateTime(const QString& dat) const {
 
 QString FilterFs::runExecutableGetOutput(const QString& executable,
                                          const QStringList& arguments,
+                                         const QString& stdin_data,
                                          const QString& working_directory) const {
   try {
-    return IOFactory::startProcessGetOutput(executable, arguments, working_directory);
+    auto res =
+      IOFactory::startProcessGetOutput(executable,
+                                       arguments,
+                                       stdin_data,
+                                       working_directory.isEmpty() ? qApp->userDataFolder() : working_directory);
+
+    return res;
   }
   catch (const ApplicationException& ex) {
     return ex.message();
@@ -481,7 +488,9 @@ void FilterFs::runExecutable(const QString& executable,
                              const QStringList& arguments,
                              const QString& working_directory) const {
   try {
-    IOFactory::startProcessDetached(executable, arguments, working_directory);
+    IOFactory::startProcessDetached(executable,
+                                    arguments,
+                                    working_directory.isEmpty() ? qApp->userDataFolder() : working_directory);
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_JS << "Error when running executable:" << QUOTE_W_SPACE_DOT(ex.message());

@@ -72,59 +72,78 @@ QString IOFactory::filterBadCharsFromFilename(const QString& name) {
   return value;
 }
 
+bool IOFactory::setupProcess(QProcess& process,
+                             bool start_detached,
+                             const QString& executable,
+                             const QStringList& arguments,
+                             const QString& stdin_data,
+                             const QString& working_directory,
+                             const QProcessEnvironment& pe) {
+  if (!stdin_data.isEmpty()) {
+    process.setInputChannelMode(QProcess::InputChannelMode::ManagedInputChannel);
+  }
+
+  process.setProgram(executable);
+  process.setArguments(arguments);
+
+  if (!pe.isEmpty()) {
+    QProcessEnvironment system_pe = QProcessEnvironment::systemEnvironment();
+
+    system_pe.insert(pe);
+    process.setProcessEnvironment(system_pe);
+  }
+
+  if (!working_directory.isEmpty()) {
+    process.setWorkingDirectory(working_directory);
+  }
+
+  bool started = false;
+
+  if (start_detached) {
+    started = process.startDetached(nullptr);
+  }
+  else {
+    process.start();
+    started = true;
+  }
+
+  switch (process.error()) {
+    case QProcess::ProcessError::FailedToStart:
+    case QProcess::ProcessError::Crashed:
+      started = false;
+      qCriticalNN << LOGSEC_CORE << "Process was not started:" << QUOTE_W_SPACE_DOT(process.errorString());
+      // throw ProcessException(process.exitCode(), process.exitStatus(), process.error(), process.errorString());
+      break;
+
+    default:
+      break;
+  }
+
+  if (started && !stdin_data.isEmpty()) {
+    process.write(stdin_data.toUtf8());
+    process.closeWriteChannel();
+  }
+
+  return started;
+}
+
 bool IOFactory::startProcessDetached(const QString& executable,
                                      const QStringList& arguments,
                                      const QString& working_directory) {
   QProcess process;
+  bool started = setupProcess(process, true, executable, arguments, {}, working_directory);
 
-  process.setProgram(executable);
-  process.setArguments(arguments);
-  process.setWorkingDirectory(working_directory);
-
-  return process.startDetached(nullptr);
-}
-
-void IOFactory::startProcess(QProcess* const proc,
-                             const QString& executable,
-                             const QStringList& arguments,
-                             const QString& working_directory,
-                             const QProcessEnvironment& pe) {
-  proc->setProgram(executable);
-  proc->setArguments(arguments);
-
-  QProcessEnvironment system_pe = QProcessEnvironment::systemEnvironment();
-
-  system_pe.insert(pe);
-  proc->setProcessEnvironment(system_pe);
-
-  if (!working_directory.isEmpty()) {
-    proc->setWorkingDirectory(working_directory);
-  }
-
-  proc->start();
+  return started;
 }
 
 QString IOFactory::startProcessGetOutput(const QString& executable,
                                          const QStringList& arguments,
-                                         const QString& working_directory,
-                                         const QProcessEnvironment& pe) {
+                                         const QString& stdin_data,
+                                         const QString& working_directory) {
   QProcess proc;
+  bool started = setupProcess(proc, false, executable, arguments, stdin_data, working_directory);
 
-  proc.setProgram(executable);
-  proc.setArguments(arguments);
-
-  QProcessEnvironment system_pe = QProcessEnvironment::systemEnvironment();
-
-  system_pe.insert(pe);
-  proc.setProcessEnvironment(system_pe);
-
-  if (!working_directory.isEmpty()) {
-    proc.setWorkingDirectory(working_directory);
-  }
-
-  proc.start();
-
-  if (proc.waitForFinished() && proc.exitStatus() == QProcess::ExitStatus::NormalExit &&
+  if (started && proc.waitForFinished() && proc.exitStatus() == QProcess::ExitStatus::NormalExit &&
       proc.exitCode() == EXIT_SUCCESS) {
     return proc.readAllStandardOutput();
   }
