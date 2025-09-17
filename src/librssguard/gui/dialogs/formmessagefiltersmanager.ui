@@ -17,7 +17,7 @@
    <item>
     <widget class="QSplitter" name="splitter">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="handleWidth">
       <number>1</number>
@@ -39,7 +39,7 @@
          <item row="2" column="2">
           <spacer name="horizontalSpacer_5">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -90,7 +90,7 @@
          <item row="1" column="0">
           <spacer name="horizontalSpacer">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -114,18 +114,8 @@
          <property name="title">
           <string>Article filter details</string>
          </property>
-         <layout class="QFormLayout" name="formLayout">
-          <item row="0" column="0">
-           <widget class="QLabel" name="label">
-            <property name="text">
-             <string>Title</string>
-            </property>
-            <property name="buddy">
-             <cstring>m_txtTitle</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_3">
             <item>
              <widget class="QLineEdit" name="m_txtTitle">
@@ -135,50 +125,14 @@
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
-              <property name="maximumSize">
-               <size>
-                <width>300</width>
-                <height>16777215</height>
-               </size>
-              </property>
               <property name="placeholderText">
                <string>Title of article filter</string>
               </property>
              </widget>
             </item>
-            <item>
-             <widget class="QPushButton" name="m_btnPremadeFilters">
-              <property name="text">
-               <string>Pre-made filters</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_2">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
            </layout>
           </item>
-          <item row="1" column="0">
-           <widget class="QLabel" name="label_2">
-            <property name="text">
-             <string>JavaScript code</string>
-            </property>
-            <property name="buddy">
-             <cstring>m_txtScript</cstring>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="1">
+          <item>
            <layout class="QVBoxLayout" name="verticalLayout_2">
             <item>
              <widget class="QPlainTextEdit" name="m_txtScript">
@@ -198,7 +152,7 @@
             </item>
            </layout>
           </item>
-          <item row="2" column="1">
+          <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
              <widget class="QPushButton" name="m_btnTest">
@@ -231,7 +185,7 @@
             <item>
              <spacer name="horizontalSpacer_3">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -391,7 +345,7 @@
           <item>
            <spacer name="horizontalSpacer_4">
             <property name="orientation">
-             <enum>Qt::Horizontal</enum>
+             <enum>Qt::Orientation::Horizontal</enum>
             </property>
             <property name="sizeHint" stdset="0">
              <size>
@@ -440,10 +394,10 @@
    <item>
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Close</set>
+      <set>QDialogButtonBox::StandardButton::Close</set>
      </property>
      <property name="centerButtons">
       <bool>false</bool>
@@ -469,7 +423,6 @@
   <tabstop>m_btnCheckAll</tabstop>
   <tabstop>m_btnUncheckAll</tabstop>
   <tabstop>m_txtTitle</tabstop>
-  <tabstop>m_btnPremadeFilters</tabstop>
   <tabstop>m_txtScript</tabstop>
   <tabstop>m_btnTest</tabstop>
   <tabstop>m_btnRunOnMessages</tabstop>

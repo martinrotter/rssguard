@@ -116,7 +116,6 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   m_ui.m_searchWidget->hide();
 
   initializeTestingMessage();
-  initializePremadeFilters();
   loadFilters();
   loadFilter();
   loadAccounts();
@@ -510,30 +509,6 @@ void FormMessageFiltersManager::beautifyScript() {
                  tr("Beautifier was running for too long time"),
                  tr("Script was not beautified, is 'clang-format' installed?"));
   }
-}
-
-void FormMessageFiltersManager::insertPremadeFilter(QAction* act_filter) {
-  QString filter_path = QSL(":/scripts/filters/") + act_filter->text();
-
-  try {
-    m_ui.m_txtScript->setPlainText(QString::fromUtf8(IOFactory::readFile(filter_path)));
-  }
-  catch (...) {
-  }
-}
-
-void FormMessageFiltersManager::initializePremadeFilters() {
-  QMenu* mn_filters = new QMenu(this);
-
-  connect(mn_filters, &QMenu::triggered, this, &FormMessageFiltersManager::insertPremadeFilter);
-
-  auto js_files = QDir(QSL(":/scripts/filters")).entryList();
-
-  for (const QString& js_file : js_files) {
-    mn_filters->addAction(js_file);
-  }
-
-  m_ui.m_btnPremadeFilters->setMenu(mn_filters);
 }
 
 void FormMessageFiltersManager::initializeTestingMessage() {

@@ -26,10 +26,6 @@
     <file>scripts/mpv/mpv.conf</file>
     <file>scripts/mpv/input.conf</file>
 
-    <file>scripts/filters/blacklist.js</file>
-    <file>scripts/filters/whitelist.js</file>
-    <file>scripts/filters/no-duplicates.js</file>
-
     <file>graphics/rssguard.ico</file>
 
     <file>graphics/rssguard.png</file>

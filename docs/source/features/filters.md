@@ -413,6 +413,50 @@ function filterMessage() {
 ```
 
 ```js
+/*
+ * Embed all images directly into the article, so that article fully works when being offline.
+ *
+ * This calls external Python script (see below) which examines article contents, downloads all images
+ * and stores their data directly into the article.
+ * 
+ * Note that this script is fairly slow, you should pair it with "acc.isAlreadyInDatabase()" function
+ * and is it sparingly as the RSS Guard database will grow immensely.
+ */
+function filterMessage() {
+  let res = fs.runExecutableGetOutput(
+      'python3.exe', ['%data%\\img2base.py'], msg.contents);
+
+  msg.contents = res;
+
+  return Msg.Accept;
+}
+```
+
+```python
+# img2base.py
+import sys, io, base64, requests, mimetypes
+from bs4 import BeautifulSoup
+
+sys.stdin = io.TextIOWrapper(sys.stdin.buffer, encoding="utf-8")
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8")
+
+soup = BeautifulSoup(sys.stdin.read(), "html.parser")
+
+for img in soup.find_all("img"):
+    src = img.get("src")
+    if src and src.startswith(("http://", "https://")):
+        try:
+            r = requests.get(src, timeout=10)
+            r.raise_for_status()
+            mime, _ = mimetypes.guess_type(src)
+            if not mime:
+                mime = "application/octet-stream"
+            b64 = base64.b64encode(r.content).decode("utf-8")
+            img["src"] = f"data:{mime};base64,{b64}"
+        except:
+            continue
+
+sys.stdout.write(str(soup))
 ```
 
 ```js

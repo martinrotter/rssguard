@@ -54,12 +54,9 @@ class FormMessageFiltersManager : public QDialog {
     // Display filter title/contents.
     void showFilter(MessageFilter* filter);
 
-    void insertPremadeFilter(QAction* act_filter);
-
   private:
     void loadAccounts();
     void beautifyScript();
-    void initializePremadeFilters();
     void initializeTestingMessage();
 
     RootItem* selectedCategoryFeed() const;
