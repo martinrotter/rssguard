@@ -705,7 +705,7 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>Yeni makaleleri %n beslemeler için otomatik olarak indireceğim.</numerusform>
-        <numerusform>Yeni makaleleri %n besleme(ler) için otomatik olarak indireceğim.</numerusform>
+        <numerusform>%n besleme için yeni makaleler otomatik olarak indirilecek.</numerusform>
       </translation>
     </message>
     <message>
@@ -8956,7 +8956,7 @@ Okunmamış haberler: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="32"/>
       <source>Username for your TT-RSS account</source>
-      <translation type="unfinished">Username for your TT-RSS account</translation>
+      <translation/>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="33"/>
