@@ -458,12 +458,3 @@ for img in soup.find_all("img"):
 
 sys.stdout.write(str(soup))
 ```
-
-```js
-```
-
-```js
-```
-
-```js
-```
