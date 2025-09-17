@@ -467,10 +467,12 @@ QString Application::userDataFolder() {
   }
 }
 
-QString Application::replaceUserDataFolderPlaceholder(QString text) const {
+QString Application::replaceUserDataFolderPlaceholder(QString text, bool double_escape) const {
   auto user_data_folder = qApp->userDataFolder();
 
-  return text.replace(QSL(USER_DATA_PLACEHOLDER), user_data_folder);
+  return text.replace(QSL(USER_DATA_PLACEHOLDER),
+                      double_escape ? user_data_folder.replace(QDir::separator(), QString(2, QDir::separator()))
+                                    : user_data_folder);
 }
 
 QStringList Application::replaceUserDataFolderPlaceholder(QStringList texts) const {
@@ -1211,5 +1213,5 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
 }
 
 QString Application::customDataFolder() const {
-  return m_customDataFolder;
+  return QDir::toNativeSeparators(m_customDataFolder);
 }

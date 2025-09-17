@@ -143,7 +143,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     // NOTE: Use this to get correct path under which store user data.
     QString userDataFolder();
 
-    QString replaceUserDataFolderPlaceholder(QString text) const;
+    QString replaceUserDataFolderPlaceholder(QString text, bool double_escape = false) const;
     QStringList replaceUserDataFolderPlaceholder(QStringList texts) const;
 
     void setMainForm(FormMain* main_form);

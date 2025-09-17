@@ -402,7 +402,7 @@ function filterMessage() {
  */
 function filterMessage() {
   let res = fs.runExecutableGetOutput(
-      'pandoc.exe',
+      '%data%\\pandoc.exe',
       ['-f', 'html', '-t', 'plain'],
       msg.contents);
 

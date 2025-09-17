@@ -106,7 +106,7 @@ void FilteringSystem::compareAndWriteArticleStates(Message* msg_original,
 }
 
 FilterMessage::FilteringAction FilteringSystem::filterMessage(const MessageFilter& filter) {
-  QJSValue filter_func = m_engine.evaluate(qApp->replaceUserDataFolderPlaceholder(filter.script()));
+  QJSValue filter_func = m_engine.evaluate(qApp->replaceUserDataFolderPlaceholder(filter.script(), true));
 
   if (filter_func.isError()) {
     QJSValue::ErrorType error = filter_func.errorType();
