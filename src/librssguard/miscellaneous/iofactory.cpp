@@ -129,9 +129,10 @@ bool IOFactory::setupProcess(QProcess& process,
 
 bool IOFactory::startProcessDetached(const QString& executable,
                                      const QStringList& arguments,
+                                     const QString& stdin_data,
                                      const QString& working_directory) {
   QProcess process;
-  bool started = setupProcess(process, true, executable, arguments, {}, working_directory);
+  bool started = setupProcess(process, true, executable, arguments, stdin_data, working_directory);
 
   return started;
 }

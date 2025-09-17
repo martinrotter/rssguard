@@ -31,6 +31,7 @@ class RSSGUARD_DLLSPEC IOFactory {
     // Process launching.
     static bool startProcessDetached(const QString& executable,
                                      const QStringList& arguments = {},
+                                     const QString& stdin_data = {},
                                      const QString& working_directory = {});
     static QString startProcessGetOutput(const QString& executable,
                                          const QStringList& arguments = {},

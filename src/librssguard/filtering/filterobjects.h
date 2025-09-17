@@ -230,6 +230,7 @@ class FilterFs : public QObject {
                                                const QString& working_directory = {}) const;
     Q_INVOKABLE void runExecutable(const QString& executable,
                                    const QStringList& arguments = {},
+                                   const QString& stdin_data = {},
                                    const QString& working_directory = {}) const;
 
     void setSystem(FilteringSystem* sys);

@@ -486,10 +486,12 @@ QString FilterFs::runExecutableGetOutput(const QString& executable,
 
 void FilterFs::runExecutable(const QString& executable,
                              const QStringList& arguments,
+                             const QString& stdin_data,
                              const QString& working_directory) const {
   try {
     IOFactory::startProcessDetached(executable,
                                     arguments,
+                                    stdin_data,
                                     working_directory.isEmpty() ? qApp->userDataFolder() : working_directory);
   }
   catch (const ApplicationException& ex) {

@@ -147,10 +147,10 @@ Here is the complete reference documentation of all functions and properties ava
 
 #### Functions
 
-| Name(Parameter)                                             | Return value  | Description
-| :---                                                        | :---          | :---
-| `runExecutable(String exec, Array<String> params)`          | `void`        | Launches external executable with optional parameters and does not wait until executable finishes.
-| `runExecutableGetOutput(String exec, Array<String> params)` | `String`      | Launches external executable with optional parameters, reads its standard output, and returns the output when executable finishes.
+| Name(Parameter)                                                                | Return value  | Description
+| :---                                                                           | :---          | :---
+| `runExecutable(String exec, Array<String> params, String stdin_data)`          | `void`        | Launches external executable with optional parameters and does not wait until executable finishes. Also allows passing data to standard input.
+| `runExecutableGetOutput(String exec, Array<String> params, String stdin_data)` | `String`      | Launches external executable with optional parameters, reads its standard output, and returns the output when executable finishes. Also allows passing data to standard input.
 
 ### Shared Data Types
 
