@@ -183,6 +183,7 @@ void FormMessageFiltersManager::displaySelectedMessageDetails(const QModelIndex&
     m_ui.m_tbMessageContents->clear();
     m_ui.m_tbMessageDbId->clear();
     m_ui.m_tbMessageCustomId->clear();
+    m_ui.m_tbMessageAuthor->clear();
   }
   else {
     Message* msg = m_msgModel->messageForRow(idx.row());
@@ -191,6 +192,7 @@ void FormMessageFiltersManager::displaySelectedMessageDetails(const QModelIndex&
     m_ui.m_tbMessageContents->setPlainText(msg->m_contents);
     m_ui.m_tbMessageDbId->setText(QString::number(msg->m_id));
     m_ui.m_tbMessageCustomId->setText(msg->m_customId);
+    m_ui.m_tbMessageAuthor->setText(msg->m_author);
   }
 }
 
