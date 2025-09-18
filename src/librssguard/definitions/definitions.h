@@ -300,10 +300,8 @@
 #define MFM_MODEL_ISIMPORTANT 1
 #define MFM_MODEL_ISDELETED   2
 #define MFM_MODEL_TITLE       3
-#define MFM_MODEL_URL         4
-#define MFM_MODEL_AUTHOR      5
-#define MFM_MODEL_CREATED     6
-#define MFM_MODEL_SCORE       7
+#define MFM_MODEL_CREATED     4
+#define MFM_MODEL_SCORE       5
 
 #if defined(Q_OS_LINUX)
 #define OS_ID "Linux"

@@ -561,6 +561,11 @@ void FilterApp::showNotification(const QString& title, const QString& text) {
   qApp->showGuiMessage(Notification::Event::GeneralEvent, GuiMessage(title, text));
 }
 
+void FilterApp::log(const QString& message) {
+  qDebugNN << LOGSEC_ARTICLEFILTER << message;
+  emit logged(message);
+}
+
 QList<Label*> FilterAccount::availableLabels() const {
   return m_system->availableLabels();
 }

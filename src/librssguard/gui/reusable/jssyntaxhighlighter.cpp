@@ -43,7 +43,7 @@ JsSyntaxHighlighter::JsSyntaxHighlighter(QTextDocument* parent) : QSyntaxHighlig
   m_multiLineCommentFormat.setForeground(Qt::GlobalColor::red);
 
   m_quotationFormat.setForeground(Qt::GlobalColor::darkGreen);
-  rule.m_pattern = QRegularExpression(QStringLiteral("\".*\""));
+  rule.m_pattern = QRegularExpression(QStringLiteral("(\".*\")|(\'.*\')"));
   rule.m_format = m_quotationFormat;
 
   m_highlightingRules.append(rule);
@@ -76,6 +76,7 @@ QStringList JsSyntaxHighlighter::jsKeywords() const {
 void JsSyntaxHighlighter::highlightBlock(const QString& text) {
   for (const HighlightingRule& rule : std::as_const(m_highlightingRules)) {
     QRegularExpressionMatchIterator matchIterator = rule.m_pattern.globalMatch(text);
+
     while (matchIterator.hasNext()) {
       QRegularExpressionMatch match = matchIterator.next();
       setFormat(match.capturedStart(), match.capturedLength(), rule.m_format);
@@ -85,6 +86,7 @@ void JsSyntaxHighlighter::highlightBlock(const QString& text) {
   setCurrentBlockState(0);
 
   int start_index = 0;
+
   if (previousBlockState() != 1) {
     start_index = text.indexOf(m_commentStartExpression);
   }

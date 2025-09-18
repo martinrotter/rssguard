@@ -90,6 +90,7 @@ Here is the complete reference documentation of all functions and properties ava
 
 | Name(Parameters)                                | Return value | Description
 | :---                                            | :---         | :---
+| `log(String message)`                           | `void`       | Prints message to RSS Guard standard output and also to "Script output" box if "Article filters" dialog is displayed.
 | `showNotification(String title, String text)`   | `void`       | Display toast desktop notification with given title and text.
 
 ### `run`

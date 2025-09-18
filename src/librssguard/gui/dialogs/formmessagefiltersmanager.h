@@ -9,6 +9,7 @@
 
 #include <QDialog>
 
+class QSortFilterProxyModel;
 class AccountCheckSortedModel;
 class MessageFilter;
 class FeedReader;
@@ -31,6 +32,7 @@ class FormMessageFiltersManager : public QDialog {
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
+    void displaySelectedMessageDetails(const QModelIndex& current, const QModelIndex& previous);
     void filterMessagesLikeThis(const Message& msg);
     void showMessageContextMenu(QPoint pos);
     void removeSelectedFilter();
@@ -57,10 +59,8 @@ class FormMessageFiltersManager : public QDialog {
   private:
     void loadAccounts();
     void beautifyScript();
-    void initializeTestingMessage();
 
     RootItem* selectedCategoryFeed() const;
-    Message testingMessage() const;
 
   private:
     Ui::FormMessageFiltersManager m_ui;
@@ -69,8 +69,10 @@ class FormMessageFiltersManager : public QDialog {
     QList<ServiceRoot*> m_accounts;
     FeedReader* m_reader;
     bool m_loadingFilter;
+    QSortFilterProxyModel* m_msgProxyModel;
     MessagesForFiltersModel* m_msgModel;
     JsSyntaxHighlighter* m_highlighter;
+    QColor m_defaultTextColor;
 };
 
 #endif // FORMMESSAGEFILTERSMANAGER_H

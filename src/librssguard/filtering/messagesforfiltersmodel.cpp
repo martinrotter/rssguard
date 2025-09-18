@@ -2,7 +2,6 @@
 
 #include "filtering/messagesforfiltersmodel.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/filteringexception.h"
@@ -13,8 +12,7 @@
 #include "miscellaneous/skinfactory.h"
 
 MessagesForFiltersModel::MessagesForFiltersModel(QObject* parent) : QAbstractTableModel(parent) {
-  m_headerData << tr("Read") << tr("Important") << tr("In recycle bin") << tr("Title") << tr("URL") << tr("Author")
-               << tr("Date") << tr("Score");
+  m_headerData << tr("Read") << tr("Important") << tr("Trash") << tr("Title") << tr("Date") << tr("Score");
 }
 
 void MessagesForFiltersModel::setMessages(const QList<Message>& messages) {
@@ -41,7 +39,7 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
   QString bool_false = tr("false");
 
   switch (role) {
-    case Qt::ItemDataRole::BackgroundRole: {
+    case Qt::ItemDataRole::ForegroundRole: {
       if (m_filteringDecisions.contains(index.row())) {
         switch (m_filteringDecisions.value(index.row())) {
           case FilterMessage::FilteringAction::Accept:
@@ -72,12 +70,6 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
 
         case MFM_MODEL_TITLE:
           return msg.m_title;
-
-        case MFM_MODEL_URL:
-          return msg.m_url;
-
-        case MFM_MODEL_AUTHOR:
-          return msg.m_author;
 
         case MFM_MODEL_CREATED:
           return msg.m_created;
@@ -111,10 +103,6 @@ QVariant MessagesForFiltersModel::headerData(int section, Qt::Orientation orient
 Qt::ItemFlags MessagesForFiltersModel::flags(const QModelIndex& index) const {
   Q_UNUSED(index)
   return Qt::ItemFlag::ItemIsEnabled | Qt::ItemFlag::ItemIsSelectable;
-}
-
-int MessagesForFiltersModel::messagesCount() const {
-  return m_messages.size();
 }
 
 void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* account, const QList<RootItem*>& checked) {

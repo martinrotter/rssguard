@@ -152,6 +152,10 @@ class FilterApp : public QObject {
     void setSystem(FilteringSystem* sys);
 
     Q_INVOKABLE void showNotification(const QString& title, const QString& text);
+    Q_INVOKABLE void log(const QString& message);
+
+  signals:
+    void logged(const QString& message);
 
   private:
     FilteringSystem* m_system;

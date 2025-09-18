@@ -7,6 +7,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "network-web/webfactory.h"
 
+#include <QItemSelectionModel>
 #include <QMouseEvent>
 #include <QTreeView>
 
@@ -48,7 +49,7 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
           this,
           &ArticleListNotification::openArticleInArticleList);
   connect(m_ui.m_treeArticles->selectionModel(),
-          &QItemSelectionModel::currentChanged,
+          &QItemSelectionModel::currentRowChanged,
           this,
           &ArticleListNotification::onMessageSelected);
 

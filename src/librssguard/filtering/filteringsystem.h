@@ -47,6 +47,7 @@ class FilteringSystem : public QObject {
     FiteringUseCase mode() const;
     FilterRun& filterRun();
     FilterAccount& filterAccount();
+    FilterApp& filterApp();
 
   private:
     void initializeEngine();

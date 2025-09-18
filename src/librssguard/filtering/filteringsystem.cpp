@@ -163,6 +163,10 @@ void FilteringSystem::initializeEngine() {
   m_engine.globalObject().setProperty(QSL("fs"), m_engine.newQObject(&m_filterFs));
 }
 
+FilterApp& FilteringSystem::filterApp() {
+  return m_filterApp;
+}
+
 FilterAccount& FilteringSystem::filterAccount() {
   return m_filterAccount;
 }
