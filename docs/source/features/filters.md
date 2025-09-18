@@ -77,7 +77,7 @@ Here is the complete reference documentation of all functions and properties ava
 | :---                                                                          | :---         | :---
 | `addEnclosure(String url, String mime_type)`                                  | `void`       | Adds multimedia attachment to the article.
 | `isAlreadyInDatabase(DuplicityCheck criteria)`                                | `Boolean`    | Allows you to check if SAME message is already stored in the RSS Guard's DB.
-| `isAlreadyInDatabaseWinkler(DuplicityCheck criteria, Number threshold = 0.1)` | `Boolean`    | Allows you to check if SIMILAR message is already stored in the RSS Guard's DB but using Jaro-Winkler edit distance algorithm.
+| `isAlreadyInDatabaseWinkler(DuplicityCheck criteria, Number threshold = 0.1)` | `Boolean`    | Allows you to check if SIMILAR message is already stored in the RSS Guard's DB using Jaro-Winkler edit distance algorithm.
 | `assignLabel(String label_id)`                                                | `Boolean`    | Assigns label to the message. The `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | `deassignLabel(String label_id)`                                              | `Boolean`    | Removes label from the message. The `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | `deassignAllLabels()`                                                         | `void`       | Removes all labels from messages.
