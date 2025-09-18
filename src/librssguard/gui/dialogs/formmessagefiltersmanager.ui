@@ -29,10 +29,10 @@
       <layout class="QGridLayout" name="gridLayout_2" rowstretch="1,2" columnstretch="2,3">
        <item row="0" column="1">
         <layout class="QGridLayout" name="gridLayout_3">
-         <item row="2" column="0">
-          <widget class="QPushButton" name="m_btnCheckAll">
+         <item row="2" column="1">
+          <widget class="QPushButton" name="m_btnUncheckAll">
            <property name="text">
-            <string>&amp;Check all</string>
+            <string>&amp;Uncheck all</string>
            </property>
           </widget>
          </item>
@@ -49,7 +49,21 @@
            </property>
           </spacer>
          </item>
-         <item row="1" column="0" colspan="3">
+         <item row="2" column="0">
+          <widget class="QPushButton" name="m_btnCheckAll">
+           <property name="text">
+            <string>&amp;Check all</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="3">
+          <widget class="QPushButton" name="m_btnDocs">
+           <property name="text">
+            <string>&amp;Docs</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0" colspan="4">
           <widget class="QTreeView" name="m_treeFeeds">
            <property name="uniformRowHeights">
             <bool>true</bool>
@@ -59,14 +73,7 @@
            </attribute>
           </widget>
          </item>
-         <item row="2" column="1">
-          <widget class="QPushButton" name="m_btnUncheckAll">
-           <property name="text">
-            <string>&amp;Uncheck all</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0" colspan="3">
+         <item row="0" column="0" colspan="4">
           <widget class="QComboBox" name="m_cmbAccounts"/>
          </item>
         </layout>

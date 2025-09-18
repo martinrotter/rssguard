@@ -94,6 +94,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
           &QPushButton::clicked,
           m_feedsModel->sourceModel(),
           &AccountCheckModel::uncheckAllItems);
+  connect(m_ui.m_btnDocs, &QPushButton::clicked, this, &FormMessageFiltersManager::openDocs);
   connect(m_feedsModel->sourceModel(),
           &AccountCheckModel::checkStateChanged,
           this,
@@ -163,6 +164,10 @@ bool FormMessageFiltersManager::eventFilter(QObject* watched, QEvent* event) {
   }
 
   return false;
+}
+
+void FormMessageFiltersManager::openDocs() {
+  qApp->web()->openUrlInExternalBrowser(QSL("https://rssguard.readthedocs.io/en/stable/features/filters.html"));
 }
 
 void FormMessageFiltersManager::displaySelectedMessageDetails(const QModelIndex& current, const QModelIndex& previous) {

@@ -32,6 +32,7 @@ class FormMessageFiltersManager : public QDialog {
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
+    void openDocs();
     void displaySelectedMessageDetails(const QModelIndex& current, const QModelIndex& previous);
     void filterMessagesLikeThis(const Message& msg);
     void showMessageContextMenu(QPoint pos);
