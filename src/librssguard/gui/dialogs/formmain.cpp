@@ -518,7 +518,6 @@ void FormMain::updateFeedButtonsAvailability() {
 void FormMain::switchVisibility(bool force_hide) {
   if (force_hide || (isVisible() && !isMinimized())) {
     if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
-
       if (QApplication::activeModalWidget() != nullptr) {
         qApp->showGuiMessage(Notification::Event::GeneralEvent,
                              {tr("Close dialogs"),
@@ -764,7 +763,15 @@ void FormMain::createConnections() {
     FormSettings(*this).exec();
   });
   connect(m_ui->m_actionCleanupDatabase, &QAction::triggered, this, &FormMain::showDbCleanupAssistant);
-  connect(m_ui->m_actionReloadSkin, &QAction::triggered, qApp, &Application::reloadCurrentSkin);
+  connect(m_ui->m_actionReloadSkin, &QAction::triggered, qApp, []() {
+    qApp->reloadCurrentSkin(true);
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Skin reloaded"),
+                                    tr("Note that this feature is only for skin debugging. Restart the application to "
+                                       "have everything loaded correctly."),
+                                    QSystemTrayIcon::MessageIcon::Warning),
+                         GuiMessageDestination(true, true));
+  });
 
   // Menu "Help" connections.
   connect(m_ui->m_actionAboutGuard, &QAction::triggered, this, [this]() {

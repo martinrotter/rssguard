@@ -5,8 +5,6 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/domdocument.h"
 #include "miscellaneous/settings.h"
-#include "network-web/networkfactory.h"
-#include "network-web/webfactory.h"
 #include "services/abstract/rootitem.h"
 
 #include <QDir>
@@ -194,10 +192,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
     }
   }
 
-  if (replace_existing_qss) {
-    qss_to_set = qss_to_set;
-  }
-  else {
+  if (!replace_existing_qss) {
     qss_to_set = qApp->styleSheet() + QSL("\r\n") + qss_to_set;
   }
 
@@ -554,7 +549,6 @@ QPalette Skin::extractPalette() const {
   QList<QPalette::ColorGroup> groups = m_stylePalette.keys();
 
   if (groups.contains(QPalette::ColorGroup::All)) {
-
     groups.removeAll(QPalette::ColorGroup::All);
     groups.insert(0, QPalette::ColorGroup::All);
   }

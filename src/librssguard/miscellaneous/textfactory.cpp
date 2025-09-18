@@ -2,7 +2,6 @@
 
 #include "miscellaneous/textfactory.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "3rd-party/sc/simplecrypt.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"

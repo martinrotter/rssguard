@@ -3,7 +3,6 @@
 #include "miscellaneous/systemfactory.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-#include "exceptions/applicationexception.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/dialogs/formupdate.h"
 #include "miscellaneous/application.h"

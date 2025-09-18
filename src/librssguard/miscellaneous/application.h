@@ -183,7 +183,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     // Restarts the application.
     void restart();
 
-    void reloadCurrentSkin(bool replace_existing_qss = true);
+    void setupFont();
+    void reloadCurrentSkin(bool replace_existing_qss);
 
     // Processes incoming message from another RSS Guard instance.
     void parseCmdArgumentsFromOtherInstance(const QString& message);
@@ -216,7 +217,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     QImage generateOverlayIcon(int number) const;
 #endif
 
-    void setupFont();
     void setupCustomDataFolder(const QString& data_folder);
     void setupWorkHorsePool();
     void determineFirstRuns();
