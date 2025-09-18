@@ -12,15 +12,40 @@
 #include "miscellaneous/skinfactory.h"
 
 MessagesForFiltersModel::MessagesForFiltersModel(QObject* parent) : QAbstractTableModel(parent) {
-  m_headerData << tr("Read") << tr("Important") << tr("Trash") << tr("Title") << tr("Date") << tr("Score");
+  m_headerData << tr("Result") << tr("Read") << tr("Important") << tr("Trash") << tr("Title") << tr("Date")
+               << tr("Score");
 }
 
 void MessagesForFiltersModel::setMessages(const QList<Message>& messages) {
   m_filteringDecisions.clear();
-  m_messages = messages;
+  m_messages.clear();
+
+  for (const Message& msg : messages) {
+    MessageBackupAndOriginal msg_tuple;
+    msg_tuple.m_original = msg;
+    msg_tuple.m_filtered = msg;
+
+    m_messages.append(msg_tuple);
+  }
 
   emit layoutAboutToBeChanged();
   emit layoutChanged();
+}
+
+QString MessagesForFiltersModel::decisionToText(FilterMessage::FilteringAction dec) const {
+  switch (dec) {
+    case FilterMessage::FilteringAction::Accept:
+      return QSL("✓");
+
+    case FilterMessage::FilteringAction::Ignore:
+      return QSL("❌");
+
+    case FilterMessage::FilteringAction::Purge:
+      return QSL("❌❌");
+
+    default:
+      return QSL("?");
+  }
 }
 
 int MessagesForFiltersModel::rowCount(const QModelIndex& parent) const {
@@ -40,17 +65,43 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
 
   switch (role) {
     case Qt::ItemDataRole::ForegroundRole: {
-      if (m_filteringDecisions.contains(index.row())) {
-        switch (m_filteringDecisions.value(index.row())) {
-          case FilterMessage::FilteringAction::Accept:
-            return qApp->skins()->colorForModel(SkinEnums::PaletteColors::Allright);
+      if (index.column() == MFM_MODEL_RESULT) {
+        if (m_filteringDecisions.contains(index.row())) {
+          switch (m_filteringDecisions.value(index.row())) {
+            case FilterMessage::FilteringAction::Accept:
+              return qApp->skins()->colorForModel(SkinEnums::PaletteColors::Allright);
 
-          case FilterMessage::FilteringAction::Ignore:
-          case FilterMessage::FilteringAction::Purge:
-            return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError);
+            case FilterMessage::FilteringAction::Ignore:
+            case FilterMessage::FilteringAction::Purge:
+              return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError);
 
-          default:
-            break;
+            default:
+              break;
+          }
+        }
+      }
+      else {
+        QVariant interest = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError);
+        Message msg_original = m_messages[index.row()].m_original;
+
+        switch (index.column()) {
+          case MFM_MODEL_ISREAD:
+            return msg.m_isRead != msg_original.m_isRead ? interest : QVariant();
+
+          case MFM_MODEL_ISIMPORTANT:
+            return msg.m_isImportant != msg_original.m_isImportant ? interest : QVariant();
+
+          case MFM_MODEL_ISDELETED:
+            return msg.m_isDeleted != msg_original.m_isDeleted ? interest : QVariant();
+
+          case MFM_MODEL_TITLE:
+            return msg.m_title != msg_original.m_title ? interest : QVariant();
+
+          case MFM_MODEL_CREATED:
+            return msg.m_created != msg_original.m_created ? interest : QVariant();
+
+          case MFM_MODEL_SCORE:
+            return msg.m_score != msg_original.m_score ? interest : QVariant();
         }
       }
 
@@ -59,6 +110,10 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
 
     case Qt::ItemDataRole::DisplayRole: {
       switch (index.column()) {
+        case MFM_MODEL_RESULT:
+          return m_filteringDecisions.contains(index.row()) ? decisionToText(m_filteringDecisions.value(index.row()))
+                                                            : QSL("?");
+
         case MFM_MODEL_ISREAD:
           return msg.m_isRead ? bool_true : bool_false;
 
@@ -122,8 +177,6 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
       for (int i = 0; i < msgs.size(); i++) {
         auto labels_in_message =
           DatabaseQueries::getLabelsForMessage(database, msgs[i], filtering.filterAccount().availableLabels());
-
-        // Create backup of message.
         Message* msg_filtered = &msgs[i];
 
         msg_filtered->m_assignedLabels = labels_in_message;
@@ -178,7 +231,11 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, FilteringSystem*
   m_filteringDecisions.clear();
 
   for (int i = 0; i < m_messages.size(); i++) {
-    Message* msg = messageForRow(i);
+    auto& msg_orig_backup = m_messages[i];
+
+    msg_orig_backup.m_original = Message(msg_orig_backup.m_filtered);
+
+    Message* msg = &msg_orig_backup.m_filtered;
 
     msg->m_rawContents = Message::generateRawAtomContents(*msg);
     engine->setMessage(msg);
@@ -212,7 +269,7 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, FilteringSystem*
 
 Message* MessagesForFiltersModel::messageForRow(int row) {
   if (row >= 0 && row < m_messages.size()) {
-    return &m_messages[row];
+    return &m_messages[row].m_filtered;
   }
   else {
     return nullptr;
@@ -221,7 +278,7 @@ Message* MessagesForFiltersModel::messageForRow(int row) {
 
 Message MessagesForFiltersModel::messageForRow(int row) const {
   if (row >= 0 && row < m_messages.size()) {
-    return m_messages[row];
+    return m_messages[row].m_filtered;
   }
   else {
     return Message();

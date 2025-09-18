@@ -59,6 +59,8 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   m_ui.m_txtErrors->setFont(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont));
   m_ui.m_treeExistingMessages->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
 
+  m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_RESULT,
+                                                              QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_ISREAD,
                                                               QHeaderView::ResizeMode::ResizeToContents);
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_ISIMPORTANT,

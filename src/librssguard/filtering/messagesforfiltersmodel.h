@@ -7,8 +7,22 @@
 
 #include <QAbstractTableModel>
 
+// Indexes of columns for message filter manager models.
+#define MFM_MODEL_RESULT      0
+#define MFM_MODEL_ISREAD      1
+#define MFM_MODEL_ISIMPORTANT 2
+#define MFM_MODEL_ISDELETED   3
+#define MFM_MODEL_TITLE       4
+#define MFM_MODEL_CREATED     5
+#define MFM_MODEL_SCORE       6
+
 class MessageFilter;
 class FilteringSystem;
+
+struct MessageBackupAndOriginal {
+    Message m_original;
+    Message m_filtered;
+};
 
 class MessagesForFiltersModel : public QAbstractTableModel {
     Q_OBJECT
@@ -33,8 +47,11 @@ class MessagesForFiltersModel : public QAbstractTableModel {
     void setMessages(const QList<Message>& messages);
 
   private:
+    QString decisionToText(FilterMessage::FilteringAction dec) const;
+
+  private:
     QList<QString> m_headerData{};
-    QList<Message> m_messages{};
+    QList<MessageBackupAndOriginal> m_messages{};
 
     // Key is integer position of the message within the list of messages.
     QMap<int, FilterMessage::FilteringAction> m_filteringDecisions{};
