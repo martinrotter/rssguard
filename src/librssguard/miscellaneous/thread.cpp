@@ -2,6 +2,8 @@
 
 #include "miscellaneous/thread.h"
 
+#include "definitions/definitions.h"
+
 #include <QThread>
 
 #if defined(Q_OS_LINUX)
@@ -48,22 +50,22 @@ void setThreadPriority(Priority prio) {
     int current_priority = getpriority(PRIO_PROCESS, 0);
 
     if (errno != 0) {
-      qDebugNN << "Getting the priority for thread" << QUOTE_W_SPACE(getThreadID()) << "failed with error"
-               << QUOTE_W_SPACE_DOT(errno);
+      qDebugNN << LOGSEC_CORE << "Getting the priority for thread" << QUOTE_W_SPACE(getThreadID())
+               << "failed with error" << QUOTE_W_SPACE_DOT(errno);
     }
     else {
       if (current_priority != prio) {
         setpriority(PRIO_PROCESS, 0, prio);
 
         if (errno != 0) {
-          qDebugNN << "Setting the priority for thread" << QUOTE_W_SPACE(getThreadID()) << "failed with error"
-                   << QUOTE_W_SPACE_DOT(errno);
+          qDebugNN << LOGSEC_CORE << "Setting the priority for thread" << QUOTE_W_SPACE(getThreadID())
+                   << "failed with error" << QUOTE_W_SPACE_DOT(errno);
         }
       }
     }
   }
   else {
-    qDebugNN << "Getting the priority for thread" << QUOTE_W_SPACE(getThreadID()) << "failed with error"
+    qDebugNN << LOGSEC_CORE << "Getting the priority for thread" << QUOTE_W_SPACE(getThreadID()) << "failed with error"
              << QUOTE_W_SPACE_DOT(errno);
   }
 }
