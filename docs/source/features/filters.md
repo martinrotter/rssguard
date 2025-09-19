@@ -459,3 +459,43 @@ for img in soup.find_all("img"):
 
 sys.stdout.write(str(soup))
 ```
+
+```js
+/*
+ * Translate article title using external Python script (see below) and also print it to "Script output" dialog.
+ *
+ * Python sometimes adds extra newlines at the end of its standard output, so trim the translated
+ * title to make sure it is all nice and clean.
+ * 
+ * Note that the translation script calls remote service to do the translating so it is NOT fast. Use sparingly.
+ */
+function filterMessage() {
+  msg.title = fs.runExecutableGetOutput("python3.exe", ["trans-stdin.py", "en", "cs"], msg.title);
+
+  msg.title = msg.title.trim();
+  app.log(msg.title);
+
+  return Msg.Accept;
+}
+```
+
+```python
+import sys
+import asyncio
+from googletrans import Translator
+
+async def translate_string(to_translate, lang_src, lang_dest):
+    async with Translator() as translator:
+        translated_text = await translator.translate(to_translate, src=lang_src, dest=lang_dest)
+        print(translated_text.text)
+
+lang_from = sys.argv[1]
+lang_to = sys.argv[2]
+
+sys.stdin.reconfigure(encoding="utf-8")
+sys.stdout.reconfigure(encoding="utf-8")
+
+data = sys.stdin.read()
+
+asyncio.run(translate_string(data, lang_from, lang_to))
+```
