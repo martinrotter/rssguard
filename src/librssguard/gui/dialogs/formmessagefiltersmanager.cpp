@@ -31,7 +31,6 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   m_ui.setupUi(this);
 
   m_defaultTextColor = m_ui.m_txtErrors->textColor();
-
   m_highlighter = new JsSyntaxHighlighter(m_ui.m_txtScript->document());
 
   std::sort(m_accounts.begin(), m_accounts.end(), [](const ServiceRoot* lhs, const ServiceRoot* rhs) {
@@ -178,12 +177,15 @@ void FormMessageFiltersManager::displaySelectedMessageDetails(const QModelIndex&
   QModelIndex idx = m_msgProxyModel->mapToSource(current);
 
   if (!idx.isValid()) {
+    // NOTE: No need to clear, widget is hidden.
     // Nothing selected, just clear.
+    /*
     m_ui.m_tbMessageUrl->clear();
     m_ui.m_tbMessageContents->clear();
     m_ui.m_tbMessageDbId->clear();
     m_ui.m_tbMessageCustomId->clear();
     m_ui.m_tbMessageAuthor->clear();
+    */
   }
   else {
     Message* msg = m_msgModel->messageForRow(idx.row());
@@ -194,6 +196,8 @@ void FormMessageFiltersManager::displaySelectedMessageDetails(const QModelIndex&
     m_ui.m_tbMessageCustomId->setText(msg->m_customId);
     m_ui.m_tbMessageAuthor->setText(msg->m_author);
   }
+
+  m_ui.m_twDetails->setVisible(idx.isValid());
 }
 
 ServiceRoot* FormMessageFiltersManager::selectedAccount() const {

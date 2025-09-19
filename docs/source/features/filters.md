@@ -3,7 +3,7 @@ Article Filtering
 Sometimes you need to automatically tweak the incoming article - mark it starred, remove ads from its contents or simply reject it. That's where article filtering feature comes in.
 
 ## `Article filters` dialog
-The dialog seen below offers you a way of managing your article filters. You can assign single filter to multiple feeds across all accounts.
+The dialog seen below offers you a way of managing your article filters. You can assign single filter to multiple feeds across all accounts. Dialog allows you to test existing filters and see what changes have been done to articles during filtering process.
 
 `Test` button tests selected filter against existing messages without making permanent changes to them. `Process checked feeds` runs the filter against existing messages from checked feeds - in this mode all modifications made by the filter are saved to existing messages.
 
