@@ -16,6 +16,8 @@
 #define MFM_MODEL_CREATED     5
 #define MFM_MODEL_SCORE       6
 
+#define VALUE_COMPARISON_FORMAT "%2  ↴\n%1"
+
 class MessageFilter;
 class FilteringSystem;
 

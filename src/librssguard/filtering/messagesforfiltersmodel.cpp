@@ -135,6 +135,39 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
 
       break;
     }
+
+    case Qt::ItemDataRole::ToolTipRole: {
+      Message msg_original = m_messages[index.row()].m_original;
+
+      switch (index.column()) {
+        case MFM_MODEL_RESULT:
+          return m_filteringDecisions.contains(index.row()) ? decisionToText(m_filteringDecisions.value(index.row()))
+                                                            : QSL("?");
+
+        case MFM_MODEL_ISREAD:
+          return QSL(VALUE_COMPARISON_FORMAT)
+            .arg(msg.m_isRead ? bool_true : bool_false, msg_original.m_isRead ? bool_true : bool_false);
+
+        case MFM_MODEL_ISIMPORTANT:
+          return QSL(VALUE_COMPARISON_FORMAT)
+            .arg(msg.m_isImportant ? bool_true : bool_false, msg_original.m_isImportant ? bool_true : bool_false);
+
+        case MFM_MODEL_ISDELETED:
+          return QSL(VALUE_COMPARISON_FORMAT)
+            .arg(msg.m_isDeleted ? bool_true : bool_false, msg_original.m_isDeleted ? bool_true : bool_false);
+
+        case MFM_MODEL_TITLE:
+          return QSL(VALUE_COMPARISON_FORMAT).arg(msg.m_title, msg_original.m_title);
+
+        case MFM_MODEL_CREATED:
+          return QSL(VALUE_COMPARISON_FORMAT)
+            .arg(msg.m_created.toString(Qt::DateFormat::ISODate),
+                 msg_original.m_created.toString(Qt::DateFormat::ISODate));
+
+        case MFM_MODEL_SCORE:
+          return QSL(VALUE_COMPARISON_FORMAT).arg(QString::number(msg.m_score), QString::number(msg_original.m_score));
+      }
+    }
   }
 
   return QVariant();

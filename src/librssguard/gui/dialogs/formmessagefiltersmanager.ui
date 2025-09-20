@@ -235,8 +235,8 @@
           <property name="showDropIndicator" stdset="0">
            <bool>false</bool>
           </property>
-          <property name="indentation">
-           <number>0</number>
+          <property name="rootIsDecorated">
+           <bool>false</bool>
           </property>
           <property name="uniformRowHeights">
            <bool>true</bool>
