@@ -233,7 +233,7 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, FilteringSystem*
   for (int i = 0; i < m_messages.size(); i++) {
     auto& msg_orig_backup = m_messages[i];
 
-    msg_orig_backup.m_original = Message(msg_orig_backup.m_filtered);
+    msg_orig_backup.m_filtered = Message(msg_orig_backup.m_original);
 
     Message* msg = &msg_orig_backup.m_filtered;
 
