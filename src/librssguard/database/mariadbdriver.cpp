@@ -113,6 +113,14 @@ bool MariaDbDriver::saveDatabase() {
   return true;
 }
 
+QString MariaDbDriver::foreignKeysEnable() const {
+  return QSL("SET FOREIGN_KEY_CHECKS=1;");
+}
+
+QString MariaDbDriver::foreignKeysDisable() const {
+  return QSL("SET FOREIGN_KEY_CHECKS=0;");
+}
+
 void MariaDbDriver::backupDatabase(const QString& backup_folder, const QString& backup_name) {
   Q_UNUSED(backup_folder)
   Q_UNUSED(backup_name)

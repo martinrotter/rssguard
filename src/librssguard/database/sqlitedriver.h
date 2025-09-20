@@ -32,6 +32,8 @@ class SqliteDriver : public DatabaseDriver {
     virtual QString qtDriverCode() const;
     virtual void backupDatabase(const QString& backup_folder, const QString& backup_name);
     virtual QString autoIncrementPrimaryKey() const;
+    virtual QString foreignKeysEnable() const;
+    virtual QString foreignKeysDisable() const;
     virtual QString blob() const;
     virtual QString text() const;
 

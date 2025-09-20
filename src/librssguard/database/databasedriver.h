@@ -39,6 +39,10 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
     virtual QString autoIncrementPrimaryKey() const = 0;
     virtual QString blob() const = 0;
     virtual QString text() const = 0;
+
+    virtual QString foreignKeysEnable() const = 0;
+    virtual QString foreignKeysDisable() const = 0;
+
     virtual bool vacuumDatabase() = 0;
     virtual bool saveDatabase() = 0;
     virtual void backupDatabase(const QString& backup_folder, const QString& backup_name) = 0;

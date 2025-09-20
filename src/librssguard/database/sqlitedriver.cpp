@@ -410,6 +410,14 @@ QString SqliteDriver::autoIncrementPrimaryKey() const {
   return QSL("INTEGER PRIMARY KEY");
 }
 
+QString SqliteDriver::foreignKeysEnable() const {
+  return QSL("PRAGMA foreign_keys=ON;");
+}
+
+QString SqliteDriver::foreignKeysDisable() const {
+  return QSL("PRAGMA foreign_keys=OFF;");
+}
+
 QString SqliteDriver::blob() const {
   return QSL("BLOB");
 }

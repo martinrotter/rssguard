@@ -86,7 +86,9 @@ CREATE TABLE Messages (
 CREATE TABLE MessageFilters (
   id                  $$,
   name                TEXT        NOT NULL CHECK (name != ''),
-  script              TEXT        NOT NULL CHECK (script != '')
+  script              TEXT        NOT NULL CHECK (script != ''),
+  is_enabled          INTEGER     NOT NULL DEFAULT 1 CHECK (is_enabled >= 0 AND is_enabled <= 1),
+  ordr                INTEGER     NOT NULL CHECK (ordr >= 0)
 );
 -- !
 CREATE TABLE MessageFiltersInFeeds (
