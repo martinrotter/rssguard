@@ -104,6 +104,8 @@ QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
   statements = statements.replaceInStrings(QSL(APP_DB_AUTO_INC_PRIM_KEY_PLACEHOLDER), autoIncrementPrimaryKey());
   statements = statements.replaceInStrings(QSL(APP_DB_BLOB_PLACEHOLDER), blob());
   statements = statements.replaceInStrings(QSL(APP_DB_TEXT_PLACEHOLDER), text());
+  statements = statements.replaceInStrings(QSL(APP_DB_FKEYS_ENABLE_PLACEHOLDER), foreignKeysEnable());
+  statements = statements.replaceInStrings(QSL(APP_DB_FKEYS_DISABLE_PLACEHOLDER), foreignKeysDisable());
 
   return statements;
 }
