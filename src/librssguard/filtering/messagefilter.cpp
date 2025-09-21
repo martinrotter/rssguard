@@ -24,6 +24,22 @@ void MessageFilter::setScript(const QString& script) {
   m_script = script;
 }
 
+bool MessageFilter::enabled() const {
+  return m_enabled;
+}
+
+void MessageFilter::setEnabled(bool enabled) {
+  m_enabled = enabled;
+}
+
+int MessageFilter::sortOrder() const {
+  return m_sortOrder;
+}
+
+void MessageFilter::setSortOrder(int ordr) {
+  m_sortOrder = ordr;
+}
+
 void MessageFilter::setId(int id) {
   m_id = id;
 }

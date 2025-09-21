@@ -3005,7 +3005,7 @@ QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db,
   QList<MessageFilter*> filters;
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT id, name, script FROM MessageFilters;"));
+  q.prepare(QSL("SELECT id, name, script, is_enabled, ordr FROM MessageFilters;"));
 
   if (q.exec()) {
     while (q.next()) {
@@ -3013,6 +3013,8 @@ QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db,
 
       filter->setName(q.value(1).toString());
       filter->setScript(q.value(2).toString());
+      filter->setEnabled(q.value(3).toBool());
+      filter->setSortOrder(q.value(4).toInt());
 
       filters.append(filter);
     }

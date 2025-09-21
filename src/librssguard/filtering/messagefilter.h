@@ -21,10 +21,18 @@ class RSSGUARD_DLLSPEC MessageFilter : public QObject {
     QString script() const;
     void setScript(const QString& script);
 
+    bool enabled() const;
+    void setEnabled(bool enabled);
+
+    int sortOrder() const;
+    void setSortOrder(int ordr);
+
   private:
     int m_id;
     QString m_name;
     QString m_script;
+    bool m_enabled;
+    int m_sortOrder;
 };
 
 #endif // MESSAGEFILTER_H
