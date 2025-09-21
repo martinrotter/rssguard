@@ -45,6 +45,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
 
   m_ui.m_treeFeeds->setIndentation(FEEDS_VIEW_INDENTATION);
   m_ui.m_treeFeeds->setModel(m_feedsModel);
+
   m_ui.m_btnCheckAll->setIcon(qApp->icons()->fromTheme(QSL("dialog-yes"), QSL("edit-select-all")));
   m_ui.m_btnUncheckAll->setIcon(qApp->icons()->fromTheme(QSL("dialog-no"), QSL("edit-select-none")));
   m_ui.m_btnAddNew->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
@@ -53,6 +54,11 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   m_ui.m_btnTest->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start")));
   m_ui.m_btnRunOnMessages->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start")));
   m_ui.m_btnDetailedHelp->setIcon(qApp->icons()->fromTheme(QSL("help-contents")));
+
+  m_ui.m_btnUp->setIcon(qApp->icons()->fromTheme(QSL("arrow-up"), QSL("go-up")));
+  m_ui.m_btnDown->setIcon(qApp->icons()->fromTheme(QSL("arrow-down"), QSL("go-down")));
+  m_ui.m_btnEnable->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start"), QSL("kmplayer")));
+
   m_ui.m_txtScript->setFont(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont));
   m_ui.m_tbMessageContents->setFont(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont));
   m_ui.m_txtErrors->setFont(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont));
@@ -74,9 +80,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   m_ui.m_treeExistingMessages->header()->setSectionsMovable(false);
   m_ui.m_treeExistingMessages->header()->setStretchLastSection(false);
 
-  connect(m_ui.m_btnDetailedHelp, &QPushButton::clicked, this, []() {
-    qApp->web()->openUrlInExternalBrowser(QSL(MSG_FILTERING_HELP));
-  });
+  connect(m_ui.m_btnDetailedHelp, &QPushButton::clicked, this, &FormMessageFiltersManager::openDocs);
   connect(m_ui.m_listFilters, &QListWidget::currentRowChanged, this, &FormMessageFiltersManager::loadFilter);
   connect(m_ui.m_btnAddNew, &QPushButton::clicked, this, [this]() {
     addNewFilter();
@@ -95,7 +99,6 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
           &QPushButton::clicked,
           m_feedsModel->sourceModel(),
           &AccountCheckModel::uncheckAllItems);
-  connect(m_ui.m_btnDocs, &QPushButton::clicked, this, &FormMessageFiltersManager::openDocs);
   connect(m_feedsModel->sourceModel(),
           &AccountCheckModel::checkStateChanged,
           this,

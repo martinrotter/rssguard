@@ -3106,11 +3106,14 @@ void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db,
 void DatabaseQueries::updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter, bool* ok) {
   QSqlQuery q(db);
 
-  q.prepare(QSL("UPDATE MessageFilters SET name = :name, script = :script WHERE id = :id;"));
+  q.prepare(QSL("UPDATE MessageFilters SET name = :name, script = :script, is_enabled = :is_enabled, ordr = :ordr "
+                "WHERE id = :id;"));
 
   q.bindValue(QSL(":name"), filter->name());
   q.bindValue(QSL(":script"), filter->script());
   q.bindValue(QSL(":id"), filter->id());
+  q.bindValue(QSL(":is_enabled"), filter->enabled() ? 1 : 0);
+  q.bindValue(QSL(":ordr"), filter->sortOrder());
   q.setForwardOnly(true);
 
   if (q.exec()) {

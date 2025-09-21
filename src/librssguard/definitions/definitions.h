@@ -57,8 +57,7 @@
 #define DEFAULT_SQL_MESSAGES_FILTER "0 > 1"
 #define MAX_MULTICOLUMN_SORT_STATES 3
 
-#define RELEASES_LIST      "https://api.github.com/repos/martinrotter/rssguard/releases"
-#define MSG_FILTERING_HELP APP_URL_DOCUMENTATION "#fltr"
+#define RELEASES_LIST "https://api.github.com/repos/martinrotter/rssguard/releases"
 #define URL_REGEXP                                                                                             \
   "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/" \
   "~\\+#])?$"
