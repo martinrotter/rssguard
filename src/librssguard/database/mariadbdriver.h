@@ -38,6 +38,8 @@ class MariaDbDriver : public DatabaseDriver {
     virtual bool initiateRestoration(const QString& database_package_file);
     virtual bool finishRestoration();
     virtual qint64 databaseDataSize();
+    virtual QString foreignKeysEnable() const;
+    virtual QString foreignKeysDisable() const;
     virtual QSqlDatabase connection(const QString& connection_name,
                                     DatabaseDriver::DesiredStorageType desired_type =
                                       DatabaseDriver::DesiredStorageType::FromSettings);
