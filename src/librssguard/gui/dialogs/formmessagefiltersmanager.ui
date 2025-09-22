@@ -15,210 +15,213 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_5">
    <item>
-    <widget class="QSplitter" name="splitter">
+    <widget class="QSplitter" name="splitter_2">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
-     <widget class="QWidget" name="layoutWidget">
-      <layout class="QGridLayout" name="gridLayout">
-       <item row="0" column="0">
-        <widget class="QListWidget" name="m_listFilters">
-         <property name="uniformItemSizes">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1">
-        <layout class="QVBoxLayout" name="verticalLayout">
-         <item>
-          <widget class="QComboBox" name="m_cmbAccounts"/>
-         </item>
-         <item>
-          <widget class="QTreeView" name="m_treeFeeds">
-           <property name="uniformRowHeights">
-            <bool>true</bool>
-           </property>
-           <attribute name="headerVisible">
-            <bool>false</bool>
-           </attribute>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="1" column="0">
-        <layout class="QHBoxLayout" name="horizontalLayout_6">
-         <item>
-          <widget class="QToolButton" name="m_btnAddNew">
-           <property name="text">
-            <string>&amp;New filter</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="m_btnRemoveSelected">
-           <property name="text">
-            <string>Remove</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="m_btnEnable">
-           <property name="text">
-            <string>Enable</string>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-         <item>
-          <widget class="QToolButton" name="m_btnUp">
-           <property name="text">
-            <string>Up</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="m_btnDown">
-           <property name="text">
-            <string>Down</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item row="1" column="1">
-        <layout class="QHBoxLayout" name="horizontalLayout_7">
-         <item>
-          <widget class="QToolButton" name="m_btnCheckAll">
-           <property name="text">
-            <string>&amp;Check all</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QToolButton" name="m_btnUncheckAll">
-           <property name="text">
-            <string>&amp;Uncheck all</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <spacer name="horizontalSpacer_5">
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="sizeHint" stdset="0">
-            <size>
-             <width>40</width>
-             <height>20</height>
-            </size>
-           </property>
-          </spacer>
-         </item>
-        </layout>
-       </item>
-       <item row="2" column="0" colspan="2">
-        <widget class="QGroupBox" name="m_gbDetails">
-         <property name="title">
-          <string>Article filter details</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Orientation::Vertical</enum>
+      </property>
+      <widget class="QWidget" name="">
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="0" column="0">
+         <widget class="QListWidget" name="m_listFilters">
+          <property name="uniformItemSizes">
+           <bool>true</bool>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <layout class="QVBoxLayout" name="verticalLayout">
           <item>
-           <widget class="QLineEdit" name="m_txtTitle">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
+           <widget class="QComboBox" name="m_cmbAccounts"/>
+          </item>
+          <item>
+           <widget class="QTreeView" name="m_treeFeeds">
+            <property name="uniformRowHeights">
+             <bool>true</bool>
             </property>
-            <property name="placeholderText">
-             <string>Title of article filter</string>
+            <attribute name="headerVisible">
+             <bool>false</bool>
+            </attribute>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item row="1" column="0">
+         <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QToolButton" name="m_btnAddNew">
+            <property name="text">
+             <string>&amp;New filter</string>
             </property>
            </widget>
           </item>
           <item>
-           <layout class="QVBoxLayout" name="verticalLayout_2">
-            <item>
-             <widget class="QPlainTextEdit" name="m_txtScript">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                <horstretch>0</horstretch>
-                <verstretch>1</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="placeholderText">
-               <string>Your JavaScript-based article filtering logic</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="SearchTextWidget" name="m_searchWidget" native="true"/>
-            </item>
-           </layout>
+           <widget class="QToolButton" name="m_btnRemoveSelected">
+            <property name="text">
+             <string>Remove</string>
+            </property>
+           </widget>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QPushButton" name="m_btnTest">
-              <property name="text">
-               <string>&amp;Test</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="m_btnRunOnMessages">
-              <property name="text">
-               <string>Process checked feeds</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="m_btnBeautify">
-              <property name="text">
-               <string>&amp;Beautify</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QPushButton" name="m_btnDetailedHelp">
-              <property name="text">
-               <string>&amp;Documentation</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <spacer name="horizontalSpacer_3">
-              <property name="orientation">
-               <enum>Qt::Horizontal</enum>
-              </property>
-              <property name="sizeHint" stdset="0">
-               <size>
-                <width>40</width>
-                <height>20</height>
-               </size>
-              </property>
-             </spacer>
-            </item>
-           </layout>
+           <widget class="QToolButton" name="m_btnEnable">
+            <property name="text">
+             <string>Enable</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QToolButton" name="m_btnUp">
+            <property name="text">
+             <string>Up</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="m_btnDown">
+            <property name="text">
+             <string>Down</string>
+            </property>
+           </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-      </layout>
+        </item>
+        <item row="1" column="1">
+         <layout class="QHBoxLayout" name="horizontalLayout_7">
+          <item>
+           <widget class="QToolButton" name="m_btnCheckAll">
+            <property name="text">
+             <string>&amp;Check all</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="m_btnUncheckAll">
+            <property name="text">
+             <string>&amp;Uncheck all</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_5">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QGroupBox" name="m_gbDetails">
+       <property name="title">
+        <string>Article filter details</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QLineEdit" name="m_txtTitle">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="placeholderText">
+           <string>Title of article filter</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_2">
+          <item>
+           <widget class="QPlainTextEdit" name="m_txtScript">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="placeholderText">
+             <string>Your JavaScript-based article filtering logic</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="SearchTextWidget" name="m_searchWidget" native="true"/>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="m_btnTest">
+            <property name="text">
+             <string>&amp;Test</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="m_btnRunOnMessages">
+            <property name="text">
+             <string>Process checked feeds</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="m_btnBeautify">
+            <property name="text">
+             <string>&amp;Beautify</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="m_btnDetailedHelp">
+            <property name="text">
+             <string>&amp;Documentation</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
      </widget>
      <widget class="QTabWidget" name="m_twMessages">
       <property name="sizePolicy">
@@ -383,10 +386,10 @@
    <item>
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Close</set>
+      <set>QDialogButtonBox::StandardButton::Close</set>
      </property>
      <property name="centerButtons">
       <bool>false</bool>
