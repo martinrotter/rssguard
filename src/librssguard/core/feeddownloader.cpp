@@ -284,6 +284,9 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                                   .where([](const QPointer<MessageFilter>& fltr) {
                                     return !fltr.isNull() && fltr->enabled();
                                   })
+                                  .orderBy([](const QPointer<MessageFilter>& fltr) {
+                                    return fltr->sortOrder();
+                                  })
                                   .toStdList();
     QList<QPointer<MessageFilter>> feed_filters_enabled_list =
       FROM_STD_LIST(QList<QPointer<MessageFilter>>, feed_filters_enabled);

@@ -224,8 +224,6 @@ MessageFilter* FeedReader::addMessageFilter(const QString& title, const QString&
 }
 
 void FeedReader::removeMessageFilter(MessageFilter* filter) {
-  m_messageFilters.removeAll(filter);
-
   // Now, remove all references from all feeds.
   auto all_feeds = m_feedsModel->feedsForIndex();
 
@@ -234,10 +232,13 @@ void FeedReader::removeMessageFilter(MessageFilter* filter) {
   }
 
   // Remove from DB.
-  // DatabaseQueries::moveMessageFilter()
-  DatabaseQueries::removeMessageFilterAssignments(qApp->database()->driver()->connection(metaObject()->className()),
-                                                  filter->id());
-  DatabaseQueries::removeMessageFilter(qApp->database()->driver()->connection(metaObject()->className()), filter->id());
+  auto db = qApp->database()->driver()->connection(metaObject()->className());
+
+  DatabaseQueries::moveMessageFilter(m_messageFilters, filter, false, true, {}, db);
+  DatabaseQueries::removeMessageFilterAssignments(db, filter->id());
+  DatabaseQueries::removeMessageFilter(db, filter->id());
+
+  m_messageFilters.removeAll(filter);
 
   // Free from memory as last step.
   filter->deleteLater();

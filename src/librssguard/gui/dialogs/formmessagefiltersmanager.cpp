@@ -536,8 +536,8 @@ void FormMessageFiltersManager::beautifyScript() {
 
 void FormMessageFiltersManager::updateFilterOptions(MessageFilter* filter) {
   m_ui.m_btnRemoveSelected->setEnabled(filter != nullptr);
-  m_ui.m_btnUp->setEnabled(filter != nullptr);
-  m_ui.m_btnDown->setEnabled(filter != nullptr);
+  m_ui.m_btnUp->setEnabled(filter != nullptr && filter->sortOrder() > 0);
+  m_ui.m_btnDown->setEnabled(filter != nullptr && filter->sortOrder() < m_reader->messageFilters().size() - 1);
   m_ui.m_btnEnable->setEnabled(filter != nullptr);
   m_ui.m_btnEnable->setChecked(filter != nullptr && filter->enabled());
 }

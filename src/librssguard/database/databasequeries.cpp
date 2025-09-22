@@ -2933,6 +2933,87 @@ void DatabaseQueries::moveItem(RootItem* item,
   item->setSortOrder(move_index);
 }
 
+void DatabaseQueries::moveMessageFilter(QList<MessageFilter*> all_filters,
+                                        MessageFilter* filter,
+                                        bool move_top,
+                                        bool move_bottom,
+                                        int move_index,
+                                        const QSqlDatabase& db) {
+  int max_sort_order = boolinq::from(all_filters)
+                         .select([=](MessageFilter* it) {
+                           return it->sortOrder();
+                         })
+                         .max();
+
+  if ((!move_top && !move_bottom && filter->sortOrder() == move_index) || /* Item is already sorted OK. */
+      (!move_top && !move_bottom &&
+       move_index < 0) || /* Order cannot be smaller than 0 if we do not move to begin/end. */
+      (!move_top && !move_bottom && move_index > max_sort_order) || /* Cannot move past biggest sort order. */
+      (move_top && filter->sortOrder() == 0) ||                     /* Item is already on top. */
+      (move_bottom && filter->sortOrder() == max_sort_order) ||     /* Item is already on bottom. */
+      max_sort_order <= 0) {                                        /* We only have 1 item, nothing to sort. */
+    return;
+  }
+
+  QSqlQuery q(db);
+
+  if (move_top) {
+    move_index = 0;
+  }
+  else if (move_bottom) {
+    move_index = max_sort_order;
+  }
+
+  int move_low = qMin(move_index, filter->sortOrder());
+  int move_high = qMax(move_index, filter->sortOrder());
+
+  if (filter->sortOrder() > move_index) {
+    q.prepare(QSL("UPDATE MessageFilters SET ordr = ordr + 1 "
+                  "WHERE ordr < :move_high AND ordr >= :move_low;"));
+  }
+  else {
+    q.prepare(QSL("UPDATE MessageFilters SET ordr = ordr - 1 "
+                  "WHERE ordr > :move_low AND ordr <= :move_high;"));
+  }
+
+  q.bindValue(QSL(":move_low"), move_low);
+  q.bindValue(QSL(":move_high"), move_high);
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+
+  q.prepare(QSL("UPDATE MessageFilters SET ordr = :ordr WHERE id = :id;"));
+  q.bindValue(QSL(":id"), filter->id());
+  q.bindValue(QSL(":ordr"), move_index);
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+
+  // Fix live sort orders.
+  if (filter->sortOrder() > move_index) {
+    boolinq::from(all_filters)
+      .where([=](MessageFilter* it) {
+        return it->sortOrder() < move_high && it->sortOrder() >= move_low;
+      })
+      .for_each([](MessageFilter* it) {
+        it->setSortOrder(it->sortOrder() + 1);
+      });
+  }
+  else {
+    boolinq::from(all_filters)
+      .where([=](MessageFilter* it) {
+        return it->sortOrder() > move_low && it->sortOrder() <= move_high;
+      })
+      .for_each([](MessageFilter* it) {
+        it->setSortOrder(it->sortOrder() - 1);
+      });
+  }
+
+  filter->setSortOrder(move_index);
+}
+
 MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const QString& title, const QString& script) {
   if (!db.driver()->hasFeature(QSqlDriver::DriverFeature::LastInsertId)) {
     throw ApplicationException(QObject::tr("Cannot insert article filter, because current database cannot return last "
