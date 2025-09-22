@@ -2,7 +2,7 @@
 
 #include "filtering/messagefilter.h"
 
-MessageFilter::MessageFilter(int id, QObject* parent) : QObject(parent), m_id(id) {}
+MessageFilter::MessageFilter(int id, QObject* parent) : QObject(parent), m_id(id), m_enabled(true), m_sortOrder(0) {}
 
 int MessageFilter::id() const {
   return m_id;

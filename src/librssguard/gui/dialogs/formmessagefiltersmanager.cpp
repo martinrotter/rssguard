@@ -80,12 +80,13 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   m_ui.m_treeExistingMessages->header()->setSectionsMovable(false);
   m_ui.m_treeExistingMessages->header()->setStretchLastSection(false);
 
+  connect(m_ui.m_btnEnable, &QToolButton::clicked, this, &FormMessageFiltersManager::saveSelectedFilter);
   connect(m_ui.m_btnDetailedHelp, &QPushButton::clicked, this, &FormMessageFiltersManager::openDocs);
   connect(m_ui.m_listFilters, &QListWidget::currentRowChanged, this, &FormMessageFiltersManager::loadFilter);
-  connect(m_ui.m_btnAddNew, &QPushButton::clicked, this, [this]() {
+  connect(m_ui.m_btnAddNew, &QToolButton::clicked, this, [this]() {
     addNewFilter();
   });
-  connect(m_ui.m_btnRemoveSelected, &QPushButton::clicked, this, &FormMessageFiltersManager::removeSelectedFilter);
+  connect(m_ui.m_btnRemoveSelected, &QToolButton::clicked, this, &FormMessageFiltersManager::removeSelectedFilter);
   connect(m_ui.m_txtTitle, &QLineEdit::textChanged, this, &FormMessageFiltersManager::saveSelectedFilter);
   connect(m_ui.m_txtScript, &QPlainTextEdit::textChanged, this, &FormMessageFiltersManager::saveSelectedFilter);
   connect(m_ui.m_btnTest, &QPushButton::clicked, this, &FormMessageFiltersManager::testFilter);
@@ -94,9 +95,9 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
           &FormMessageFiltersManager::onAccountChanged);
-  connect(m_ui.m_btnCheckAll, &QPushButton::clicked, m_feedsModel->sourceModel(), &AccountCheckModel::checkAllItems);
+  connect(m_ui.m_btnCheckAll, &QToolButton::clicked, m_feedsModel->sourceModel(), &AccountCheckModel::checkAllItems);
   connect(m_ui.m_btnUncheckAll,
-          &QPushButton::clicked,
+          &QToolButton::clicked,
           m_feedsModel->sourceModel(),
           &AccountCheckModel::uncheckAllItems);
   connect(m_feedsModel->sourceModel(),
@@ -271,6 +272,8 @@ void FormMessageFiltersManager::loadFilters() {
     auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
 
     it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<MessageFilter*>(fltr));
+
+    updateItemFromFilter(it, fltr);
   }
 }
 
@@ -305,17 +308,25 @@ void FormMessageFiltersManager::saveSelectedFilter() {
     return;
   }
 
+  fltr->setEnabled(m_ui.m_btnEnable->isChecked());
   fltr->setName(m_ui.m_txtTitle->text());
   fltr->setScript(m_ui.m_txtScript->toPlainText());
-  m_ui.m_listFilters->currentItem()->setText(fltr->name());
+
+  updateItemFromFilter(m_ui.m_listFilters->currentItem(), fltr);
 
   m_reader->updateMessageFilter(fltr);
+}
+
+void FormMessageFiltersManager::updateItemFromFilter(QListWidgetItem* item, MessageFilter* filter) {
+  item->setText(filter->name());
+  item->setForeground(filter->enabled() ? QBrush() : QBrush(Qt::GlobalColor::red));
 }
 
 void FormMessageFiltersManager::loadFilter() {
   auto* filter = selectedFilter();
   auto* acc = selectedAccount();
 
+  updateFilterOptions(filter);
   loadAccount(acc);
   showFilter(filter);
   loadFilterFeedAssignments(filter, acc);
@@ -521,6 +532,14 @@ void FormMessageFiltersManager::beautifyScript() {
                  tr("Beautifier was running for too long time"),
                  tr("Script was not beautified, is 'clang-format' installed?"));
   }
+}
+
+void FormMessageFiltersManager::updateFilterOptions(MessageFilter* filter) {
+  m_ui.m_btnRemoveSelected->setEnabled(filter != nullptr);
+  m_ui.m_btnUp->setEnabled(filter != nullptr);
+  m_ui.m_btnDown->setEnabled(filter != nullptr);
+  m_ui.m_btnEnable->setEnabled(filter != nullptr);
+  m_ui.m_btnEnable->setChecked(filter != nullptr && filter->enabled());
 }
 
 RootItem* FormMessageFiltersManager::selectedCategoryFeed() const {

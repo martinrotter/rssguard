@@ -58,8 +58,10 @@ class FormMessageFiltersManager : public QDialog {
     void showFilter(MessageFilter* filter);
 
   private:
+    void updateItemFromFilter(QListWidgetItem *item, MessageFilter* filter);
     void loadAccounts();
     void beautifyScript();
+    void updateFilterOptions(MessageFilter* filter);
 
     RootItem* selectedCategoryFeed() const;
 

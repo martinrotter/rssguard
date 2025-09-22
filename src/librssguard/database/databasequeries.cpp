@@ -2941,23 +2941,24 @@ MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const Q
 
   QSqlQuery q(db);
 
-  q.prepare(QSL("INSERT INTO MessageFilters (name, script) VALUES(:name, :script);"));
+  q.exec(QSL("SELECT COUNT(*) FROM MessageFilters;"));
+  q.next();
 
+  int new_ordr = q.value(0).toInt();
+
+  q.prepare(QSL("INSERT INTO MessageFilters (name, script, ordr) VALUES(:name, :script, :ordr);"));
   q.bindValue(QSL(":name"), title);
   q.bindValue(QSL(":script"), script);
-  q.setForwardOnly(true);
+  q.bindValue(QSL(":ordr"), new_ordr);
+  q.exec();
 
-  if (q.exec()) {
-    auto* fltr = new MessageFilter(q.lastInsertId().toInt());
+  auto* fltr = new MessageFilter(q.lastInsertId().toInt());
 
-    fltr->setName(title);
-    fltr->setScript(script);
+  fltr->setName(title);
+  fltr->setScript(script);
+  fltr->setSortOrder(new_ordr);
 
-    return fltr;
-  }
-  else {
-    throw ApplicationException(q.lastError().text());
-  }
+  return fltr;
 }
 
 void DatabaseQueries::removeMessageFilter(const QSqlDatabase& db, int filter_id, bool* ok) {
