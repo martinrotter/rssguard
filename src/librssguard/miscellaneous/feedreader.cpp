@@ -234,6 +234,7 @@ void FeedReader::removeMessageFilter(MessageFilter* filter) {
   }
 
   // Remove from DB.
+  // DatabaseQueries::moveMessageFilter()
   DatabaseQueries::removeMessageFilterAssignments(qApp->database()->driver()->connection(metaObject()->className()),
                                                   filter->id());
   DatabaseQueries::removeMessageFilter(qApp->database()->driver()->connection(metaObject()->className()), filter->id());

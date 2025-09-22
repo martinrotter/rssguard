@@ -279,8 +279,16 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     }
 
     QMutexLocker lck(&m_mutexDb);
+    QList<QPointer<MessageFilter>> feed_filters = feed->messageFilters();
+    auto feed_filters_enabled = boolinq::from(feed_filters)
+                                  .where([](const QPointer<MessageFilter>& fltr) {
+                                    return !fltr.isNull() && fltr->enabled();
+                                  })
+                                  .toStdList();
+    QList<QPointer<MessageFilter>> feed_filters_enabled_list =
+      FROM_STD_LIST(QList<QPointer<MessageFilter>>, feed_filters_enabled);
 
-    if (!feed->messageFilters().isEmpty()) {
+    if (!feed_filters_enabled_list.isEmpty()) {
       tmr.restart();
 
       // Perform per-message filtering.
@@ -288,9 +296,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                                 database,
                                 feed,
                                 feed->getParentServiceRoot());
-      auto feed_filters = feed->messageFilters();
-
-      filtering.filterRun().setTotalCountOfFilters(feed_filters.size());
+      filtering.filterRun().setTotalCountOfFilters(feed_filters_enabled_list.size());
 
       qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000
                << " microseconds.";
@@ -307,13 +313,13 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
         bool remove_msg = false;
 
-        for (int j = 0; j < feed_filters.size(); j++) {
-          QPointer<MessageFilter> filter = feed_filters.at(j);
+        for (int j = 0; j < feed_filters_enabled_list.size(); j++) {
+          QPointer<MessageFilter> filter = feed_filters_enabled_list.at(j);
 
           if (filter.isNull()) {
             qCriticalNN << LOGSEC_FEEDDOWNLOADER
                         << "Article filter was probably deleted, removing its pointer from list of filters.";
-            feed_filters.removeAt(j--);
+            feed_filters_enabled_list.removeAt(j--);
             continue;
           }
 
