@@ -32,6 +32,8 @@ class FormMessageFiltersManager : public QDialog {
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
+    void moveFilterDown();
+    void moveFilterUp();
     void openDocs();
     void displaySelectedMessageDetails(const QModelIndex& current, const QModelIndex& previous);
     void filterMessagesLikeThis(const Message& msg);
@@ -58,7 +60,7 @@ class FormMessageFiltersManager : public QDialog {
     void showFilter(MessageFilter* filter);
 
   private:
-    void updateItemFromFilter(QListWidgetItem *item, MessageFilter* filter);
+    void updateItemFromFilter(QListWidgetItem* item, MessageFilter* filter);
     void loadAccounts();
     void beautifyScript();
     void updateFilterOptions(MessageFilter* filter);

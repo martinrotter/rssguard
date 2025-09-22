@@ -2,6 +2,8 @@
 
 #include "gui/dialogs/formmessagefiltersmanager.h"
 
+#include "3rd-party/boolinq/boolinq.h"
+#include "database/databasequeries.h"
 #include "exceptions/filteringexception.h"
 #include "filtering/filteringsystem.h"
 #include "filtering/filterobjects.h"
@@ -80,6 +82,8 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   m_ui.m_treeExistingMessages->header()->setSectionsMovable(false);
   m_ui.m_treeExistingMessages->header()->setStretchLastSection(false);
 
+  connect(m_ui.m_btnDown, &QToolButton::clicked, this, &FormMessageFiltersManager::moveFilterDown);
+  connect(m_ui.m_btnUp, &QToolButton::clicked, this, &FormMessageFiltersManager::moveFilterUp);
   connect(m_ui.m_btnEnable, &QToolButton::clicked, this, &FormMessageFiltersManager::saveSelectedFilter);
   connect(m_ui.m_btnDetailedHelp, &QPushButton::clicked, this, &FormMessageFiltersManager::openDocs);
   connect(m_ui.m_listFilters, &QListWidget::currentRowChanged, this, &FormMessageFiltersManager::loadFilter);
@@ -169,6 +173,28 @@ bool FormMessageFiltersManager::eventFilter(QObject* watched, QEvent* event) {
   }
 
   return false;
+}
+
+void FormMessageFiltersManager::moveFilterDown() {
+  auto* filter = selectedFilter();
+  auto db = qApp->database()->driver()->connection(metaObject()->className());
+
+  auto row = m_ui.m_listFilters->currentRow();
+
+  DatabaseQueries::moveMessageFilter(m_reader->messageFilters(), filter, false, false, filter->sortOrder() + 1, db);
+  m_ui.m_listFilters->insertItem(row + 1, m_ui.m_listFilters->takeItem(row));
+  m_ui.m_listFilters->setCurrentRow(row + 1);
+}
+
+void FormMessageFiltersManager::moveFilterUp() {
+  auto* filter = selectedFilter();
+  auto db = qApp->database()->driver()->connection(metaObject()->className());
+
+  auto row = m_ui.m_listFilters->currentRow();
+
+  DatabaseQueries::moveMessageFilter(m_reader->messageFilters(), filter, false, false, filter->sortOrder() - 1, db);
+  m_ui.m_listFilters->insertItem(row - 1, m_ui.m_listFilters->takeItem(row));
+  m_ui.m_listFilters->setCurrentRow(row - 1);
 }
 
 void FormMessageFiltersManager::openDocs() {
@@ -268,11 +294,16 @@ void FormMessageFiltersManager::removeSelectedFilter() {
 void FormMessageFiltersManager::loadFilters() {
   auto flt = m_reader->messageFilters();
 
-  for (auto* fltr : std::as_const(flt)) {
+  auto flt_ordered = boolinq::from(flt)
+                       .orderBy([](MessageFilter* f) {
+                         return f->sortOrder();
+                       })
+                       .toStdList();
+
+  for (auto* fltr : std::as_const(flt_ordered)) {
     auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
 
     it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<MessageFilter*>(fltr));
-
     updateItemFromFilter(it, fltr);
   }
 }
