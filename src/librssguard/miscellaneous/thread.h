@@ -5,7 +5,7 @@
 
 #include <QtGlobal>
 
-qlonglong getThreadID();
+RSSGUARD_DLLSPEC qlonglong getThreadID();
 
 #if defined(Q_OS_LINUX)
 // Values corresponding to nice values.

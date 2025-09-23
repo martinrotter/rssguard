@@ -3,10 +3,13 @@
 #ifndef QUITERSSIMPORT_H
 #define QUITERSSIMPORT_H
 
+#include <librssguard/core/message.h>
+
 #include <QObject>
 #include <QSqlDatabase>
 
 class RootItem;
+class StandardFeed;
 class StandardServiceRoot;
 
 class QuiteRssImport : public QObject {
@@ -18,7 +21,9 @@ class QuiteRssImport : public QObject {
     void import();
 
   private:
-    QList<RootItem*> importTree(QSqlDatabase& db, RootItem* root) const;
+    void importArticles(StandardFeed* feed);
+    Message convertArticle(const QSqlRecord& rec) const;
+    QList<StandardFeed*> importTree(QSqlDatabase& db, RootItem* root) const;
     RootItem* extractFeedsAndCategories(QSqlDatabase& db) const;
     QIcon decodeBase64Icon(const QString& base64) const;
 

@@ -11,6 +11,7 @@
 #include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/thread.h>
 
 #include <QSqlError>
 #include <QStack>
@@ -36,15 +37,57 @@ void QuiteRssImport::import() {
   checkIfQuiteRss(quiterss_db);
 
   RootItem* feed_tree = extractFeedsAndCategories(quiterss_db);
-  QList<RootItem*> imported_feeds = importTree(rssguard_db, feed_tree);
+  QList<StandardFeed*> imported_feeds = importTree(rssguard_db, feed_tree);
+
+  for (StandardFeed* feed : imported_feeds) {
+    importArticles(feed);
+  }
 
   delete feed_tree;
+
+  // TODO: reload feedsmodel etc - just like when batch feed fetch finishes.
 
   closeDbConnection(quiterss_db);
 }
 
-QList<RootItem*> QuiteRssImport::importTree(QSqlDatabase& db, RootItem* root) const {
-  QList<RootItem*> feeds;
+void QuiteRssImport::importArticles(StandardFeed* feed) {
+  QSqlDatabase quiterss_db = dbConnection(m_dbFile, QSL("quiterss_%1").arg(getThreadID()));
+  QSqlDatabase rssguard_db = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
+  QList<Message> msgs;
+
+  // Load articles and migrate them to RSS Guard.
+  QSqlQuery q(quiterss_db);
+
+  q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href FROM news WHERE feedId = "
+                ":feed_id;"));
+  q.bindValue(QSL(":feed_id"), feed->customId().toInt());
+  q.exec();
+
+  while (q.next()) {
+    auto msg = convertArticle(q.record());
+
+    msg.sanitize(feed->toFeed(), false);
+    msgs.append(msg);
+  }
+
+  feed->getParentServiceRoot()->updateMessages(msgs, feed->toFeed(), true, nullptr);
+  // DatabaseQueries::updateMessages(rssguard_db, msgs, feed->toFeed(), true);
+}
+
+Message QuiteRssImport::convertArticle(const QSqlRecord& rec) const {
+  Message msg;
+
+  msg.m_customId = rec.value(QSL("guid")).toString();
+  msg.m_author = rec.value(QSL("author_name")).toString();
+  msg.m_url = rec.value(QSL("link_href")).toString();
+  msg.m_title = rec.value(QSL("title")).toString();
+  msg.m_contents = rec.value(QSL("description")).toString();
+
+  return msg;
+}
+
+QList<StandardFeed*> QuiteRssImport::importTree(QSqlDatabase& db, RootItem* root) const {
+  QList<StandardFeed*> feeds;
   QStack<RootItem*> original_parents;
   QStack<RootItem*> new_parents;
   RootItem* target_root_node = m_account;
