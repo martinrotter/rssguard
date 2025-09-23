@@ -27,7 +27,7 @@ class RSSGUARD_DLLSPEC IconFactory : public QObject {
     static QIcon fromByteArray(QByteArray array);
     static QByteArray toByteArray(const QIcon& icon);
 
-    static QPixmap fromByteArray(QByteArray array, const QString& format);
+    static QPixmap fromByteArray(const QByteArray& array, const QString& format);
     static QByteArray toByteArray(const QPixmap& pixmap, const QString& format);
 
     // Returns icon from active theme or invalid icon if

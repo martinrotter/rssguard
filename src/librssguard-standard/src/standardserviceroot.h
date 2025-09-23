@@ -64,6 +64,7 @@ class StandardServiceRoot : public ServiceRoot {
 
   private slots:
     void importFeeds();
+    void importFromQuiteRss();
     void exportFeeds();
 
   private:

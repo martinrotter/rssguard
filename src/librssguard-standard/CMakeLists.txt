@@ -41,6 +41,8 @@ set(SOURCES
   src/standardserviceentrypoint.h
   src/standardserviceroot.cpp
   src/standardserviceroot.h
+  src/quiterssimport.cpp
+  src/quiterssimport.h
 )
 
 set(UI_FILES

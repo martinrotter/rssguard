@@ -13,6 +13,7 @@
 #include "src/parsers/rdfparser.h"
 #include "src/parsers/rssparser.h"
 #include "src/parsers/sitemapparser.h"
+#include "src/quiterssimport.h"
 #include "src/standardcategory.h"
 #include "src/standardfeed.h"
 #include "src/standardfeedsimportexportmodel.h"
@@ -641,6 +642,15 @@ void StandardServiceRoot::importFeeds() {
   form.data()->exec();
 }
 
+void StandardServiceRoot::importFromQuiteRss() {
+  try {
+    QuiteRssImport(this, this).import();
+  }
+  catch (const ApplicationException& ex) {
+    MsgBox::show(nullptr, QMessageBox::Icon::Critical, tr("Error during file import"), ex.message());
+  }
+}
+
 void StandardServiceRoot::exportFeeds() {
   QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainFormWidget()));
 
@@ -654,12 +664,16 @@ QList<QAction*> StandardServiceRoot::serviceMenu() {
 
     auto* action_export_feeds = new QAction(qApp->icons()->fromTheme(QSL("document-export")), tr("Export feeds"), this);
     auto* action_import_feeds = new QAction(qApp->icons()->fromTheme(QSL("document-import")), tr("Import feeds"), this);
+    auto* action_import_quiterss =
+      new QAction(qApp->icons()->fromTheme(QSL("document-import")), tr("Import from QuiteRSS"), this);
 
     connect(action_export_feeds, &QAction::triggered, this, &StandardServiceRoot::exportFeeds);
     connect(action_import_feeds, &QAction::triggered, this, &StandardServiceRoot::importFeeds);
+    connect(action_import_quiterss, &QAction::triggered, this, &StandardServiceRoot::importFromQuiteRss);
 
     m_serviceMenu.append(action_export_feeds);
     m_serviceMenu.append(action_import_feeds);
+    m_serviceMenu.append(action_import_quiterss);
   }
 
   return m_serviceMenu;

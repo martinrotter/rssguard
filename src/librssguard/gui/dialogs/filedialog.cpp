@@ -11,7 +11,7 @@ QString FileDialog::existingDirectory(QWidget* parent,
                                       const QString& dir,
                                       const QString& id,
                                       QFileDialog::Options options) {
-  QString initial_dir_file = id.isEmpty() ? dir : storedFolder(id, dir);
+  QString initial_dir_file = storedFolder(id, dir);
   QFileInfo initial_dir_file_info(initial_dir_file);
   QString fldr = QFileDialog::getExistingDirectory(parent,
                                                    caption.isEmpty() ? QObject::tr("Select existing folder") : caption,
@@ -26,7 +26,7 @@ QString FileDialog::existingDirectory(QWidget* parent,
 }
 
 QString FileDialog::storedFolder(const QString& id, const QString& dir) {
-  return qApp->settings()->value(GROUP(FileDialogPaths), id, dir).toString();
+  return id.isEmpty() ? dir : qApp->settings()->value(GROUP(FileDialogPaths), id, dir).toString();
 }
 
 QString FileDialog::saveFileName(QWidget* parent,
@@ -36,7 +36,7 @@ QString FileDialog::saveFileName(QWidget* parent,
                                  QString* selected_filter,
                                  const QString& id,
                                  QFileDialog::Options options) {
-  QString initial_dir_file = id.isEmpty() ? dir : storedFolder(id, dir);
+  QString initial_dir_file = storedFolder(id, dir);
   QString file = QFileDialog::getSaveFileName(parent,
                                               caption.isEmpty() ? QObject::tr("Save file") : caption,
                                               initial_dir_file,
@@ -58,7 +58,7 @@ QString FileDialog::openFileName(QWidget* parent,
                                  QString* selected_filter,
                                  const QString& id,
                                  QFileDialog::Options options) {
-  QString initial_dir_file = id.isEmpty() ? dir : storedFolder(id, dir);
+  QString initial_dir_file = storedFolder(id, dir);
   QString file = QFileDialog::getOpenFileName(parent,
                                               caption.isEmpty() ? QObject::tr("Select existing file") : caption,
                                               initial_dir_file,
@@ -67,7 +67,8 @@ QString FileDialog::openFileName(QWidget* parent,
                                               options);
 
   if (!file.isEmpty() && !id.isEmpty()) {
-    qApp->settings()->setValue(GROUP(FileDialogPaths), id, QFileInfo(file).absolutePath());
+    auto pth = QFileInfo(file).absolutePath();
+    qApp->settings()->setValue(GROUP(FileDialogPaths), id, pth);
   }
 
   return file;

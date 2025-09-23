@@ -63,7 +63,7 @@ QByteArray IconFactory::toByteArray(const QIcon& icon) {
   return array.toBase64();
 }
 
-QPixmap IconFactory::fromByteArray(QByteArray array, const QString& format) {
+QPixmap IconFactory::fromByteArray(const QByteArray& array, const QString& format) {
   QPixmap pixmap;
   pixmap.loadFromData(array, format.toLocal8Bit().constData());
 
