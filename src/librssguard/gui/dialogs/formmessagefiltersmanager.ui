@@ -53,6 +53,9 @@
          <layout class="QHBoxLayout" name="horizontalLayout_6">
           <item>
            <widget class="QToolButton" name="m_btnAddNew">
+            <property name="toolTip">
+             <string>New filter</string>
+            </property>
             <property name="text">
              <string>&amp;New filter</string>
             </property>
@@ -60,6 +63,9 @@
           </item>
           <item>
            <widget class="QToolButton" name="m_btnRemoveSelected">
+            <property name="toolTip">
+             <string>Remove filter</string>
+            </property>
             <property name="text">
              <string>Remove</string>
             </property>
@@ -67,6 +73,9 @@
           </item>
           <item>
            <widget class="QToolButton" name="m_btnEnable">
+            <property name="toolTip">
+             <string>Enable filter</string>
+            </property>
             <property name="text">
              <string>Enable</string>
             </property>
@@ -90,6 +99,9 @@
           </item>
           <item>
            <widget class="QToolButton" name="m_btnUp">
+            <property name="toolTip">
+             <string>Move filter up</string>
+            </property>
             <property name="text">
              <string>Up</string>
             </property>
@@ -97,6 +109,9 @@
           </item>
           <item>
            <widget class="QToolButton" name="m_btnDown">
+            <property name="toolTip">
+             <string>Move filter down</string>
+            </property>
             <property name="text">
              <string>Down</string>
             </property>
