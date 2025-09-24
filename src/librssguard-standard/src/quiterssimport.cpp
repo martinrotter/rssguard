@@ -89,6 +89,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
 Message QuiteRssImport::convertArticle(const QSqlRecord& rec) const {
   Message msg;
 
+  msg.m_created = QDateTime::currentDateTime();
   msg.m_customId = rec.value(QSL("guid")).toString();
   msg.m_author = rec.value(QSL("author_name")).toString();
   msg.m_url = rec.value(QSL("link_href")).toString();
