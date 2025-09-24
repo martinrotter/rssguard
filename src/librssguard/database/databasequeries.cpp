@@ -1585,7 +1585,7 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
   return ids;
 }
 
-UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
+UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
                                                 QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,
@@ -1875,6 +1875,10 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
     }
   }
 
+  if (!db.transaction()) {
+    qFatal("transaction failed");
+  }
+
   if (!msgs_to_insert.isEmpty()) {
     QString bulk_insert = QSL("INSERT INTO Messages "
                               "(feed, title, is_read, is_important, is_deleted, url, author, score, date_created, "
@@ -1960,6 +1964,8 @@ UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
       }
     }
   }
+
+  db.commit();
 
   const bool uses_online_labels = Globals::hasFlag(feed->getParentServiceRoot()->supportedLabelOperations(),
                                                    ServiceRoot::LabelOperation::Synchronised);

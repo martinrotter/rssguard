@@ -13,6 +13,7 @@
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/miscellaneous/thread.h>
 
+#include <QProgressDialog>
 #include <QSqlError>
 #include <QStack>
 
@@ -39,8 +40,16 @@ void QuiteRssImport::import() {
   RootItem* feed_tree = extractFeedsAndCategories(quiterss_db);
   QList<StandardFeed*> imported_feeds = importTree(rssguard_db, feed_tree);
 
+  QProgressDialog d;
+
+  d.setMaximum(imported_feeds.size());
+  d.setMinimum(0);
+  d.show();
+  int i = 0;
   for (StandardFeed* feed : imported_feeds) {
     importArticles(feed);
+    d.setValue(i++);
+    qApp->processEvents();
   }
 
   delete feed_tree;
@@ -69,6 +78,9 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
     msg.sanitize(feed->toFeed(), false);
     msgs.append(msg);
   }
+
+  qDebugNN << LOGSEC_STANDARD << "Collected" << NONQUOTE_W_SPACE(msgs.size()) << "articles for QuiteRSS import for feed"
+           << NONQUOTE_W_SPACE_DOT(feed->title());
 
   feed->getParentServiceRoot()->updateMessages(msgs, feed->toFeed(), true, nullptr);
   // DatabaseQueries::updateMessages(rssguard_db, msgs, feed->toFeed(), true);

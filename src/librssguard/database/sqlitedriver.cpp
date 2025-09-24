@@ -31,7 +31,7 @@ bool SqliteDriver::vacuumDatabase() {
 
   QSqlQuery query_vacuum(database);
 
-  return query_vacuum.exec(QSL("VACUUM"));
+  return query_vacuum.exec(QSL("PRAGMA optimize")) && query_vacuum.exec(QSL("VACUUM"));
 }
 
 QString SqliteDriver::ddlFilePrefix() const {
@@ -103,7 +103,7 @@ bool SqliteDriver::saveDatabase() {
       sqlite3* handle = *static_cast<sqlite3**>(v.data());
 
       if (handle != nullptr) {
-        loadOrSaveDbInMemoryDb(handle, QDir::toNativeSeparators(db_file.fileName()).toStdString().c_str(), 1);
+        loadOrSaveDbInMemoryDb(handle, QDir::toNativeSeparators(db_file.fileName()).toStdString().c_str(), true);
       }
       else {
         throw ApplicationException(tr("cannot get native 'sqlite3' DB handle"));
@@ -279,6 +279,12 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
 
         try {
           updateDatabaseSchema(query_db, installed_db_schema);
+
+          // NOTE: SQLite recommends to run ANALYZE after DB schema is updated.
+          if (!query_db.exec(QSL("PRAGMA optimize"))) {
+            qWarningNN << LOGSEC_DB << "Failed to ANALYZE updated DB schema.";
+          }
+
           qDebugNN << LOGSEC_DB << "Database schema was updated from" << QUOTE_W_SPACE(installed_db_schema) << "to"
                    << QUOTE_W_SPACE(APP_DB_SCHEMA_VERSION) << "successully.";
         }

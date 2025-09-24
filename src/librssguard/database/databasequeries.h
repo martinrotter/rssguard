@@ -177,7 +177,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
     // Returns counts of updated messages <unread, all>.
-    static UpdatedArticles updateMessages(const QSqlDatabase& db,
+    static UpdatedArticles updateMessages(QSqlDatabase& db,
                                           QList<Message>& messages,
                                           Feed* feed,
                                           bool force_update,

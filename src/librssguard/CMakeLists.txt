@@ -73,6 +73,8 @@ set(SOURCES
   gui/dialogs/formbackupdatabasesettings.h
   gui/dialogs/formdatabasecleanup.cpp
   gui/dialogs/formdatabasecleanup.h
+  gui/dialogs/formprogressworker.cpp
+  gui/dialogs/formprogressworker.h
   gui/dialogs/formlog.cpp
   gui/dialogs/formlog.h
   gui/dialogs/formmain.cpp
@@ -310,6 +312,7 @@ set(SOURCES
 )
 
 set(UI_FILES
+  gui/dialogs/formprogressworker.ui
   gui/dialogs/formabout.ui
   gui/dialogs/formaddaccount.ui
   gui/dialogs/formbackupdatabasesettings.ui
