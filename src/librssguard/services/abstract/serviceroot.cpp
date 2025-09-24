@@ -29,7 +29,8 @@
 ServiceRoot::ServiceRoot(RootItem* parent)
   : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
     m_labelsNode(new LabelsNode(this)), m_probesNode(new SearchsNode(this)), m_unreadNode(new UnreadNode(this)),
-    m_accountId(NO_PARENT_CATEGORY), m_networkProxy(QNetworkProxy()) {
+    m_accountId(NO_PARENT_CATEGORY), m_networkProxy(QNetworkProxy()), m_nodeShowUnread(true), m_nodeShowImportant(true),
+    m_nodeShowLabels(true), m_nodeShowProbes(true) {
   setKind(RootItem::Kind::ServiceRoot);
   appendCommonNodes();
 }
