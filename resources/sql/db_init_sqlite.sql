@@ -1,6 +1,6 @@
 CREATE TABLE Information (
-  inf_key         VARCHAR(128)    NOT NULL UNIQUE CHECK (inf_key != ''), /* Use VARCHAR as MariaDB 10.3 does no support UNIQUE TEXT columns. */
-  inf_value       TEXT
+  inf_key      VARCHAR(128)    NOT NULL UNIQUE CHECK (inf_key != ''), /* Use VARCHAR as MariaDB 10.3 does no support UNIQUE TEXT columns. */
+  inf_value    TEXT
 );
 -- !
 CREATE TABLE Accounts (

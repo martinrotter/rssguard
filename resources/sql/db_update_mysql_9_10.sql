@@ -1,7 +1,0 @@
-USE ##;
--- !
-SET FOREIGN_KEY_CHECKS = 0;
--- !
-ALTER TABLE Messages MODIFY contents **;
--- !
-SET FOREIGN_KEY_CHECKS = 1;
