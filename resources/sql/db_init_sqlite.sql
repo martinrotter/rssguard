@@ -138,6 +138,10 @@ CREATE INDEX IF NOT EXISTS Messages3 ON Messages ( /* For whole account queries.
   account_id
 );
 -- !
+CREATE INDEX IF NOT EXISTS Messages4 ON Messages (
+  custom_id
+);
+-- !
 CREATE INDEX IF NOT EXISTS Categories1 ON Categories (
   account_id
 );
