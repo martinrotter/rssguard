@@ -138,7 +138,14 @@ CREATE INDEX IF NOT EXISTS Messages3 ON Messages ( /* For whole account queries.
   account_id
 );
 -- !
-CREATE INDEX IF NOT EXISTS Messages4 ON Messages (
+CREATE INDEX IF NOT EXISTS Messages4 ON Messages ( /* For whole account queries. */
+  is_read,
+  is_deleted,
+  is_pdeleted,
+  account_id
+);
+-- !
+CREATE INDEX IF NOT EXISTS Messages5 ON Messages (
   custom_id
 );
 -- !
