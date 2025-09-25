@@ -102,12 +102,7 @@ void FormSettings::applySettings() {
 
   if (!panels_for_restart.isEmpty()) {
     const QStringList changed_settings_description =
-      panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")),
-                                          QString::fromUtf8(QByteArray(" Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬Ä"
-                                                                       "ą"
-                                                                       "Ë‡Ä‚â€šĂ‚Â¬Ă„â€š"
-                                                                       "Ă˘â‚¬Ä…Ä‚â€šĂ‚Â"
-                                                                       " ")));
+      panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")), QSL(" \u2022 "));
     const QMessageBox::StandardButton clicked_button =
       MsgBox::show(this,
                    QMessageBox::Icon::Question,
@@ -141,12 +136,7 @@ void FormSettings::cancelSettings() {
   }
   else {
     const QStringList changed_settings_description =
-      changed_panels.replaceInStrings(QRegularExpression(QSL("^")),
-                                      QString::fromUtf8(QByteArray(" Ä‚â€žĂ˘â‚¬ĹˇÄ‚â€ąĂ‚ÂĂ„â€šĂ‹ÂÄ‚ËĂ˘â€šÂ¬ÄąË‡Ä"
-                                                                   "‚"
-                                                                   "â€šĂ‚Â¬Ă„â€š"
-                                                                   "Ă˘â‚¬Ä…Ä‚â€šĂ‚Â"
-                                                                   " ")));
+      changed_panels.replaceInStrings(QRegularExpression(QSL("^")), QSL(" \u2022 "));
 
     if (MsgBox::show(this,
                      QMessageBox::Icon::Critical,
