@@ -15,7 +15,7 @@
 #include <QVariant>
 
 RootItem::RootItem(RootItem* parent_item)
-  : QObject(nullptr), m_kind(RootItem::Kind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QL1S("")), m_title(QString()),
+  : QObject(nullptr), m_kind(RootItem::Kind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QString()), m_title(QString()),
     m_description(QString()), m_creationDate(QDateTime::currentDateTimeUtc()), m_keepOnTop(false),
     m_sortOrder(NO_PARENT_CATEGORY), m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
 
