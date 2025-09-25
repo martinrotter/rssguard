@@ -59,8 +59,6 @@ void QuiteRssImport::import() {
 
   delete feed_tree;
 
-  // TODO: reload feedsmodel etc - just like when batch feed fetch finishes.
-
   closeDbConnection(quiterss_db);
 }
 
@@ -73,8 +71,9 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
   QSqlQuery q(quiterss_db);
   int quiterss_id = feed->property("quiterss_id").toInt();
 
-  q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href FROM news WHERE feedId = "
-                ":feed_id;"));
+  q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href, read, starred "
+                "FROM news "
+                "WHERE feedId = :feed_id AND deleted = 0;"));
   q.bindValue(QSL(":feed_id"), quiterss_id);
   q.exec();
 
@@ -104,6 +103,8 @@ Message QuiteRssImport::convertArticle(const QSqlRecord& rec) const {
   msg.m_url = rec.value(QSL("link_href")).toString();
   msg.m_title = rec.value(QSL("title")).toString();
   msg.m_contents = rec.value(QSL("description")).toString();
+  msg.m_isImportant = rec.value(QSL("starred")).toBool();
+  msg.m_isRead = rec.value(QSL("read")).toBool();
 
   return msg;
 }
