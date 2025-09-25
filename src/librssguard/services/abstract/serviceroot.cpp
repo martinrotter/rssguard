@@ -1296,7 +1296,7 @@ UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed
 
     qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
 
-    updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, db_mutex, &ok);
+    updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, false, db_mutex, &ok);
   }
   else {
     qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());

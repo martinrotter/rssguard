@@ -45,12 +45,17 @@ void QuiteRssImport::import() {
   d.setMaximum(imported_feeds.size());
   d.setMinimum(0);
   d.show();
+
   int i = 0;
+
   for (StandardFeed* feed : imported_feeds) {
     importArticles(feed);
     d.setValue(i++);
     qApp->processEvents();
   }
+
+  m_account->updateCounts(true);
+  m_account->itemChanged(m_account->getSubTree<RootItem>());
 
   delete feed_tree;
 
@@ -66,24 +71,28 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
 
   // Load articles and migrate them to RSS Guard.
   QSqlQuery q(quiterss_db);
+  int quiterss_id = feed->property("quiterss_id").toInt();
 
   q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href FROM news WHERE feedId = "
                 ":feed_id;"));
-  q.bindValue(QSL(":feed_id"), feed->customId().toInt());
+  q.bindValue(QSL(":feed_id"), quiterss_id);
   q.exec();
 
   while (q.next()) {
     auto msg = convertArticle(q.record());
 
-    msg.sanitize(feed->toFeed(), false);
+    msg.sanitize(feed, false);
     msgs.append(msg);
   }
 
   qDebugNN << LOGSEC_STANDARD << "Collected" << NONQUOTE_W_SPACE(msgs.size()) << "articles for QuiteRSS import for feed"
            << NONQUOTE_W_SPACE_DOT(feed->title());
 
-  feed->getParentServiceRoot()->updateMessages(msgs, feed->toFeed(), true, nullptr);
-  // DatabaseQueries::updateMessages(rssguard_db, msgs, feed->toFeed(), true);
+  if (msgs.isEmpty()) {
+    return;
+  }
+
+  DatabaseQueries::updateMessages(rssguard_db, msgs, feed->toFeed(), false, true, nullptr);
 }
 
 Message QuiteRssImport::convertArticle(const QSqlRecord& rec) const {
@@ -165,6 +174,9 @@ QList<StandardFeed*> QuiteRssImport::importTree(QSqlDatabase& db, RootItem* root
 
         auto* new_feed = new StandardFeed(*source_feed);
 
+        // NOTE: Copy QuiteRSS DB ID.
+        new_feed->setProperty("quiterss_id", source_feed->property("quiterss_id"));
+
         try {
           DatabaseQueries::createOverwriteFeed(db, new_feed, m_account->accountId(), target_parent->id());
           m_account->requestItemReassignment(new_feed, target_parent);
@@ -236,7 +248,7 @@ RootItem* QuiteRssImport::extractFeedsAndCategories(QSqlDatabase& db) const {
       new_item = fd;
     }
 
-    new_item->setCustomId(QString::number(id));
+    new_item->setProperty("quiterss_id", id);
     new_item->setTitle(title);
     new_item->setDescription(description);
     new_item->setIcon(decodeBase64Icon(image));

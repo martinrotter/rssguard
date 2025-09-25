@@ -181,6 +181,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                           QList<Message>& messages,
                                           Feed* feed,
                                           bool force_update,
+                                          bool force_insert,
                                           QMutex* db_mutex,
                                           bool* ok = nullptr);
     static bool deleteAccount(const QSqlDatabase& db, ServiceRoot* account);
