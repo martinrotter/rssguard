@@ -78,7 +78,7 @@ class DocumentContainer : public QObject, litehtml::document_container {
     // document_container API.
     virtual litehtml::uint_ptr create_font(const litehtml::font_description& descr,
                                            const litehtml::document* doc,
-                                           litehtml::font_metrics* fm);
+                                           litehtml::font_metrics* fm) override;
     virtual void delete_font(litehtml::uint_ptr fnt) override;
     virtual litehtml::pixel_t text_width(const char* text, litehtml::uint_ptr fnt) override;
     virtual void draw_text(litehtml::uint_ptr hdc,
@@ -95,21 +95,21 @@ class DocumentContainer : public QObject, litehtml::document_container {
     virtual void draw_image(litehtml::uint_ptr hdc,
                             const litehtml::background_layer& layer,
                             const std::string& url,
-                            const std::string& base_url);
+                            const std::string& base_url) override;
     virtual void draw_solid_fill(litehtml::uint_ptr hdc,
                                  const litehtml::background_layer& layer,
-                                 const litehtml::web_color& color);
+                                 const litehtml::web_color& color) override;
     virtual void draw_linear_gradient(litehtml::uint_ptr hdc,
                                       const litehtml::background_layer& layer,
-                                      const litehtml::background_layer::linear_gradient& gradient);
+                                      const litehtml::background_layer::linear_gradient& gradient) override;
     virtual void draw_radial_gradient(litehtml::uint_ptr hdc,
                                       const litehtml::background_layer& layer,
-                                      const litehtml::background_layer::radial_gradient& gradient);
+                                      const litehtml::background_layer::radial_gradient& gradient) override;
     virtual void draw_conic_gradient(litehtml::uint_ptr hdc,
                                      const litehtml::background_layer& layer,
-                                     const litehtml::background_layer::conic_gradient& gradient);
-    virtual void on_mouse_event(const litehtml::element::ptr& el, litehtml::mouse_event event);
-    virtual void get_viewport(litehtml::position& viewport) const;
+                                     const litehtml::background_layer::conic_gradient& gradient) override;
+    virtual void on_mouse_event(const litehtml::element::ptr& el, litehtml::mouse_event event) override;
+    virtual void get_viewport(litehtml::position& viewport) const override;
     virtual void draw_borders(litehtml::uint_ptr hdc,
                               const litehtml::borders& borders,
                               const litehtml::position& draw_pos,
