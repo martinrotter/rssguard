@@ -121,6 +121,7 @@ Message::Message() {
 void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   static QRegularExpression reg_spaces(QString::fromUtf8(QByteArray("[\xE2\x80\xAF]")));
   static QRegularExpression reg_whites(QSL("[\\s]{2,}"));
+  static QRegularExpression reg_nul(QSL("\\x00"));
   static QRegularExpression reg_news(QSL("([\\n\\r])|(^\\s)"));
 
   // Sanitize title.
@@ -144,9 +145,8 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   // Sanitize author.
   m_author = qApp->web()->stripTags(WebFactory::unescapeHtml(m_author));
 
-  // NOTE: We do not need to de-escape HTML here because it is the job of all plugins to provide correct
-  // HTML of their articles.
-  // m_contents = WebFactory::unescapeHtml(m_contents);
+  // Remove NUL (0) bytes.
+  m_contents = m_contents.remove(reg_nul);
 
   // Sanitize URL.
   m_url = m_url.trimmed();

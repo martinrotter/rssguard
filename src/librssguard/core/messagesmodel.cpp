@@ -161,9 +161,11 @@ void MessagesModel::repopulate(int additional_article_id) {
     qCriticalNN << LOGSEC_MESSAGEMODEL << "Used SQL select statement:" << QUOTE_W_SPACE_DOT(statemnt);
   }
 
+  /*
   while (canFetchMore()) {
     fetchMore();
   }
+  */
 
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulated model, SQL statement is now:\n" << QUOTE_W_SPACE_DOT(statemnt);
 }

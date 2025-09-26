@@ -106,6 +106,15 @@ Message QuiteRssImport::convertArticle(const QSqlRecord& rec) const {
   msg.m_isImportant = rec.value(QSL("starred")).toBool();
   msg.m_isRead = rec.value(QSL("read")).toBool();
 
+  if (msg.m_title.trimmed().isEmpty()) {
+    if (msg.m_url.trimmed().isEmpty()) {
+      throw ApplicationException(tr("skipping article, it has no title and no URL"));
+    }
+    else {
+      msg.m_title = msg.m_url;
+    }
+  }
+
   return msg;
 }
 
