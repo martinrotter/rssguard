@@ -396,7 +396,7 @@ StandardFeed::SourceType StandardFeedDetails::sourceType() const {
 }
 
 void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QString& url) {
-  m_account = parent_to_select->getParentServiceRoot();
+  m_account = parent_to_select->account();
 
   // Make sure that "default" icon is used as the default option for new
   // feed.
@@ -434,7 +434,7 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
 }
 
 void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
-  m_account = feed->getParentServiceRoot();
+  m_account = feed->account();
 
   m_ui.m_cmbSourceType->setCurrentIndex(m_ui.m_cmbSourceType->findData(QVariant::fromValue(feed->sourceType())));
   m_ui.m_cmbParentCategory->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue(feed->parent())));

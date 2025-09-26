@@ -31,7 +31,7 @@ int RecycleBin::countOfAllMessages() const {
 
 void RecycleBin::updateCounts(bool update_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  auto ac = DatabaseQueries::getMessageCountsForBin(database, getParentServiceRoot()->accountId());
+  auto ac = DatabaseQueries::getMessageCountsForBin(database, account()->accountId());
 
   m_unreadCount = ac.m_unread;
 
@@ -57,7 +57,7 @@ QList<QAction*> RecycleBin::contextMenuFeedsList() {
 }
 
 QList<Message> RecycleBin::undeletedMessages() const {
-  const int account_id = getParentServiceRoot()->accountId();
+  const int account_id = account()->accountId();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   return DatabaseQueries::getUndeletedMessagesForBin(database, account_id);
@@ -65,7 +65,7 @@ QList<Message> RecycleBin::undeletedMessages() const {
 
 bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  ServiceRoot* service = getParentServiceRoot();
+  ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {
@@ -85,7 +85,7 @@ bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
 
 bool RecycleBin::cleanMessages(bool clear_only_read) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  ServiceRoot* parent_root = getParentServiceRoot();
+  ServiceRoot* parent_root = account();
 
   if (DatabaseQueries::purgeMessagesFromBin(database, clear_only_read, parent_root->accountId())) {
     updateCounts(true);
@@ -115,7 +115,7 @@ bool RecycleBin::empty() {
 
 bool RecycleBin::restore() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  ServiceRoot* parent_root = getParentServiceRoot();
+  ServiceRoot* parent_root = account();
 
   if (DatabaseQueries::restoreBin(database, parent_root->accountId())) {
     parent_root->updateCounts(true);

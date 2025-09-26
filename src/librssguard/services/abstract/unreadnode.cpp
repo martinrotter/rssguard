@@ -18,14 +18,14 @@ UnreadNode::UnreadNode(RootItem* parent_item) : RootItem(parent_item) {
 QList<Message> UnreadNode::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  return DatabaseQueries::getUndeletedUnreadMessages(database, getParentServiceRoot()->accountId());
+  return DatabaseQueries::getUndeletedUnreadMessages(database, account()->accountId());
 }
 
 void UnreadNode::updateCounts(bool including_total_count) {
   Q_UNUSED(including_total_count)
 
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  int account_id = getParentServiceRoot()->accountId();
+  int account_id = account()->accountId();
 
   m_totalCount = m_unreadCount = DatabaseQueries::getUnreadMessageCounts(database, account_id);
 }
@@ -35,7 +35,7 @@ bool UnreadNode::cleanMessages(bool clean_read_only) {
     return true;
   }
 
-  ServiceRoot* service = getParentServiceRoot();
+  ServiceRoot* service = account();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::cleanUnreadMessages(database, service->accountId())) {
@@ -55,7 +55,7 @@ bool UnreadNode::markAsReadUnread(RootItem::ReadStatus status) {
     return true;
   }
 
-  ServiceRoot* service = getParentServiceRoot();
+  ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {

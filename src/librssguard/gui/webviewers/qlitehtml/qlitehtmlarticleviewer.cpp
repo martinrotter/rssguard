@@ -125,7 +125,7 @@ void QLiteHtmlArticleViewer::setHtml(const QString& html, const QUrl& url, RootI
   m_root = root;
 
   documentContainer()->setNetworkProxy(m_root == nullptr ? QNetworkProxy()
-                                                         : m_root->getParentServiceRoot()->networkProxy());
+                                                         : m_root->account()->networkProxy());
 
   QLiteHtmlWidget::setUrl(url);
   QLiteHtmlWidget::setHtml(html);

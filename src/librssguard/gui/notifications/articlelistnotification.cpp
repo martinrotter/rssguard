@@ -149,7 +149,7 @@ void ArticleListNotification::markAllRead() {
 }
 
 void ArticleListNotification::markAsRead(Feed* feed, const QList<Message>& articles) {
-  ServiceRoot* acc = feed->getParentServiceRoot();
+  ServiceRoot* acc = feed->account();
   QStringList message_ids;
   message_ids.reserve(articles.size());
 

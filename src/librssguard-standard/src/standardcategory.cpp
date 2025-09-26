@@ -15,7 +15,7 @@
 StandardCategory::StandardCategory(RootItem* parent_item) : Category(parent_item) {}
 
 StandardServiceRoot* StandardCategory::serviceRoot() const {
-  return qobject_cast<StandardServiceRoot*>(getParentServiceRoot());
+  return qobject_cast<StandardServiceRoot*>(account());
 }
 
 Qt::ItemFlags StandardCategory::additionalFlags() const {
@@ -26,7 +26,7 @@ bool StandardCategory::performDragDropChange(RootItem* target_item) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   try {
-    DatabaseQueries::createOverwriteCategory(database, this, getParentServiceRoot()->accountId(), target_item->id());
+    DatabaseQueries::createOverwriteCategory(database, this, account()->accountId(), target_item->id());
     serviceRoot()->requestItemReassignment(this, target_item);
     return true;
   }

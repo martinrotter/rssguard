@@ -197,7 +197,7 @@ void FeedsModel::removeItem(RootItem* deleting_item) {
     endRemoveRows();
 
     if (deleting_item->kind() != RootItem::Kind::ServiceRoot) {
-      deleting_item->getParentServiceRoot()->updateCounts(true);
+      deleting_item->account()->updateCounts(true);
     }
 
     delete deleting_item;
@@ -544,7 +544,7 @@ bool FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
       QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
 
       for (auto* fd : feeds) {
-        feeds_per_root.insert(fd->getParentServiceRoot(), fd);
+        feeds_per_root.insert(fd->account(), fd);
       }
 
       for (auto* acc : feeds_per_root.uniqueKeys()) {

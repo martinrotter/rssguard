@@ -37,7 +37,7 @@ void Category::updateCounts(bool including_total_count) {
   bool ok;
   auto counts = DatabaseQueries::getMessageCountsForCategory(database,
                                                              customId(),
-                                                             getParentServiceRoot()->accountId(),
+                                                             account()->accountId(),
                                                              including_total_count,
                                                              &ok);
 
@@ -55,11 +55,11 @@ void Category::updateCounts(bool including_total_count) {
 }
 
 bool Category::cleanMessages(bool clean_read_only) {
-  return getParentServiceRoot()->cleanFeeds(getSubTreeFeeds(), clean_read_only);
+  return account()->cleanFeeds(getSubTreeFeeds(), clean_read_only);
 }
 
 bool Category::markAsReadUnread(RootItem::ReadStatus status) {
-  ServiceRoot* service = getParentServiceRoot();
+  ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {

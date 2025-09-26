@@ -27,7 +27,7 @@ QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {
     return message.m_url;
   }
 
-  auto* feed = root != nullptr ? root->getParentServiceRoot()
+  auto* feed = root != nullptr ? root->account()
                                    ->getItemFromSubTree([message](const RootItem* it) {
                                      return it->kind() == RootItem::Kind::Feed && it->customId() == message.m_feedId;
                                    })

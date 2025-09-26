@@ -52,7 +52,7 @@ bool Search::deleteItem() {
   try {
     QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
     DatabaseQueries::deleteProbe(db, this);
-    getParentServiceRoot()->requestItemRemoval(this);
+    account()->requestItemRemoval(this);
     return true;
   }
   catch (const ApplicationException& ex) {
@@ -91,7 +91,7 @@ void Search::setCountOfUnreadMessages(int unreadCount) {
 }
 
 bool Search::cleanMessages(bool clear_only_read) {
-  ServiceRoot* service = getParentServiceRoot();
+  ServiceRoot* service = account();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   try {
@@ -112,7 +112,7 @@ QString Search::additionalTooltip() const {
 }
 
 bool Search::markAsReadUnread(RootItem::ReadStatus status) {
-  ServiceRoot* service = getParentServiceRoot();
+  ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {

@@ -259,8 +259,8 @@ bool FeedsProxyModel::dropMimeData(const QMimeData* data,
       // We have item we want to drag, we also determine the target item.
       RootItemPtr dragged_item = RootItemPtr(pointer_to_item);
       RootItem* target_item = m_sourceModel->itemForIndex(source_parent);
-      ServiceRoot* dragged_item_root = dragged_item->getParentServiceRoot();
-      ServiceRoot* target_item_root = target_item->getParentServiceRoot();
+      ServiceRoot* dragged_item_root = dragged_item->account();
+      ServiceRoot* target_item_root = target_item->account();
 
       if ((dragged_item == target_item || dragged_item->parent() == target_item) && !order_change) {
         qDebugNN << LOGSEC_FEEDMODEL
@@ -460,7 +460,7 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
     return true;
   }
 
-  ServiceRoot* par_account = item->getParentServiceRoot();
+  ServiceRoot* par_account = item->account();
 
   if (item->kind() == RootItem::Kind::Important && !par_account->nodeShowImportant()) {
     return false;

@@ -229,7 +229,7 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
   QString enclosures;
   QString enclosure_images;
 
-  if (root == nullptr || root->getParentServiceRoot()->displaysEnclosures()) {
+  if (root == nullptr || root->account()->displaysEnclosures()) {
     for (const Enclosure& enclosure : message.m_enclosures) {
       QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
 

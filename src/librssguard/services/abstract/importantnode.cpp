@@ -19,12 +19,12 @@ ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
 QList<Message> ImportantNode::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  return DatabaseQueries::getUndeletedImportantMessages(database, getParentServiceRoot()->accountId());
+  return DatabaseQueries::getUndeletedImportantMessages(database, account()->accountId());
 }
 
 void ImportantNode::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  int account_id = getParentServiceRoot()->accountId();
+  int account_id = account()->accountId();
   auto ac = DatabaseQueries::getImportantMessageCounts(database, account_id);
 
   if (including_total_count) {
@@ -35,7 +35,7 @@ void ImportantNode::updateCounts(bool including_total_count) {
 }
 
 bool ImportantNode::cleanMessages(bool clean_read_only) {
-  ServiceRoot* service = getParentServiceRoot();
+  ServiceRoot* service = account();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::cleanImportantMessages(database, clean_read_only, service->accountId())) {
@@ -50,7 +50,7 @@ bool ImportantNode::cleanMessages(bool clean_read_only) {
 }
 
 bool ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
-  ServiceRoot* service = getParentServiceRoot();
+  ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {

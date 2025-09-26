@@ -75,10 +75,10 @@ void SearchsNode::createProbe() {
     QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
     try {
-      DatabaseQueries::createProbe(db, new_prb, getParentServiceRoot()->accountId());
+      DatabaseQueries::createProbe(db, new_prb, account()->accountId());
 
-      getParentServiceRoot()->requestItemReassignment(new_prb, this);
-      getParentServiceRoot()->requestItemExpand({this}, true);
+      account()->requestItemReassignment(new_prb, this);
+      account()->requestItemExpand({this}, true);
 
       new_prb->updateCounts(true);
     }

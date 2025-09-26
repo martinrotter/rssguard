@@ -48,7 +48,7 @@ void CacheForServiceRoot::addLabelsAssignmentsToCache(const QStringList& ids_of_
 }
 
 void CacheForServiceRoot::addLabelsAssignmentsToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign) {
-  auto custom_ids = lbl->getParentServiceRoot()->customIDsOfMessages(ids_of_messages);
+  auto custom_ids = lbl->account()->customIDsOfMessages(ids_of_messages);
 
   addLabelsAssignmentsToCache(custom_ids, lbl->customId(), assign);
 }

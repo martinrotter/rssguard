@@ -47,7 +47,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
 QList<Message> Feed::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  return DatabaseQueries::getUndeletedMessagesForFeed(database, customId(), getParentServiceRoot()->accountId());
+  return DatabaseQueries::getUndeletedMessagesForFeed(database, customId(), account()->accountId());
 }
 
 QVariant Feed::data(int column, int role) const {
@@ -212,7 +212,7 @@ void Feed::appendMessageFilter(MessageFilter* filter) {
 
 void Feed::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  int account_id = getParentServiceRoot()->accountId();
+  int account_id = account()->accountId();
   auto fc = DatabaseQueries::getMessageCountsForFeed(database, customId(), account_id);
 
   if (including_total_count) {
@@ -223,11 +223,11 @@ void Feed::updateCounts(bool including_total_count) {
 }
 
 bool Feed::cleanMessages(bool clean_read_only) {
-  return getParentServiceRoot()->cleanFeeds(QList<Feed*>() << this, clean_read_only);
+  return account()->cleanFeeds(QList<Feed*>() << this, clean_read_only);
 }
 
 bool Feed::markAsReadUnread(RootItem::ReadStatus status) {
-  ServiceRoot* service = getParentServiceRoot();
+  ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {

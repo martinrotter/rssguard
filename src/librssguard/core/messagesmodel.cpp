@@ -206,7 +206,7 @@ void MessagesModel::loadMessages(RootItem* item) {
     setFilter(QSL(DEFAULT_SQL_MESSAGES_FILTER));
   }
   else {
-    if (!item->getParentServiceRoot()->loadMessagesForItem(item, this)) {
+    if (!item->account()->loadMessagesForItem(item, this)) {
       setFilter(QSL(DEFAULT_SQL_MESSAGES_FILTER));
       qCriticalNN << LOGSEC_MESSAGEMODEL << "Loading of messages from item '" << item->title() << "' failed.";
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -582,7 +582,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           QString feed_custom_id = dta.toString();
 
           // TODO: Very slow and repeats itself.
-          auto acc = m_selectedItem->getParentServiceRoot()->feedIconForMessage(feed_custom_id);
+          auto acc = m_selectedItem->account()->feedIconForMessage(feed_custom_id);
 
           if (acc.isNull()) {
             return qApp->icons()->fromTheme(QSL("application-rss+xml"));
@@ -651,7 +651,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
 
   Message message = messageAt(row_index);
 
-  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem, {message}, read)) {
+  if (!m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, {message}, read)) {
     // Cannot change read status of the item. Abort.
     return false;
   }
@@ -666,7 +666,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
   }
 
   if (DatabaseQueries::markMessagesReadUnread(m_db, QStringList() << QString::number(message.m_id), read)) {
-    return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem,
+    return m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem,
                                                                           QList<Message>() << message,
                                                                           read);
   }
@@ -721,7 +721,7 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   const Message message = messageAt(row_index);
   const QPair<Message, RootItem::Importance> pair(message, next_importance);
 
-  if (!m_selectedItem->getParentServiceRoot()
+  if (!m_selectedItem->account()
          ->onBeforeSwitchMessageImportance(m_selectedItem, QList<QPair<Message, RootItem::Importance>>() << pair)) {
     return false;
   }
@@ -741,7 +741,7 @@ bool MessagesModel::switchMessageImportance(int row_index) {
                      index(row_index, MSG_DB_FEED_CUSTOM_ID_INDEX),
                      QVector<int>() << Qt::FontRole);
 
-    return m_selectedItem->getParentServiceRoot()
+    return m_selectedItem->account()
       ->onAfterSwitchMessageImportance(m_selectedItem, QList<QPair<Message, RootItem::Importance>>() << pair);
   }
   else {
@@ -775,12 +775,12 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
 
   reloadWholeLayout();
 
-  if (!m_selectedItem->getParentServiceRoot()->onBeforeSwitchMessageImportance(m_selectedItem, message_states)) {
+  if (!m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem, message_states)) {
     return false;
   }
 
   if (DatabaseQueries::switchMessagesImportance(m_db, message_ids)) {
-    return m_selectedItem->getParentServiceRoot()->onAfterSwitchMessageImportance(m_selectedItem, message_states);
+    return m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem, message_states);
   }
   else {
     return false;
@@ -810,7 +810,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
 
   reloadWholeLayout();
 
-  if (!m_selectedItem->getParentServiceRoot()->onBeforeMessagesDelete(m_selectedItem, msgs)) {
+  if (!m_selectedItem->account()->onBeforeMessagesDelete(m_selectedItem, msgs)) {
     return false;
   }
 
@@ -824,7 +824,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
   }
 
   if (deleted) {
-    return m_selectedItem->getParentServiceRoot()->onAfterMessagesDelete(m_selectedItem, msgs);
+    return m_selectedItem->account()->onAfterMessagesDelete(m_selectedItem, msgs);
   }
   else {
     return false;
@@ -848,12 +848,12 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
 
   reloadWholeLayout();
 
-  if (!m_selectedItem->getParentServiceRoot()->onBeforeSetMessagesRead(m_selectedItem, msgs, read)) {
+  if (!m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, msgs, read)) {
     return false;
   }
 
   if (DatabaseQueries::markMessagesReadUnread(m_db, message_ids, read)) {
-    return m_selectedItem->getParentServiceRoot()->onAfterSetMessagesRead(m_selectedItem, msgs, read);
+    return m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, msgs, read);
   }
   else {
     return false;
@@ -878,12 +878,12 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
 
   reloadWholeLayout();
 
-  if (!m_selectedItem->getParentServiceRoot()->onBeforeMessagesRestoredFromBin(m_selectedItem, msgs)) {
+  if (!m_selectedItem->account()->onBeforeMessagesRestoredFromBin(m_selectedItem, msgs)) {
     return false;
   }
 
   if (DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, false)) {
-    return m_selectedItem->getParentServiceRoot()->onAfterMessagesRestoredFromBin(m_selectedItem, msgs);
+    return m_selectedItem->account()->onAfterMessagesRestoredFromBin(m_selectedItem, msgs);
   }
   else {
     return false;

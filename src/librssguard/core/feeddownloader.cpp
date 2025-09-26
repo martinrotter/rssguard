@@ -85,13 +85,13 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
     QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
 
     for (auto* fd : feeds) {
-      CacheForServiceRoot* fd_cache = fd->getParentServiceRoot()->toCache();
+      CacheForServiceRoot* fd_cache = fd->account()->toCache();
 
       if (fd_cache != nullptr) {
         caches.insert(fd_cache);
       }
 
-      feeds_per_root.insert(fd->getParentServiceRoot(), fd);
+      feeds_per_root.insert(fd->account(), fd);
     }
 
     synchronizeAccountCaches(caches.values(), false);
@@ -261,7 +261,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
   try {
     QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-    QList<Message> msgs = feed->getParentServiceRoot()->obtainNewMessages(feed, stated_messages, tagged_messages);
+    QList<Message> msgs = feed->account()->obtainNewMessages(feed, stated_messages, tagged_messages);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded" << NONQUOTE_W_SPACE(msgs.size()) << "messages for feed ID"
              << QUOTE_W_SPACE_COMMA(feed->customId()) << "operation took" << NONQUOTE_W_SPACE(tmr.nsecsElapsed() / 1000)
@@ -298,7 +298,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles,
                                 database,
                                 feed,
-                                feed->getParentServiceRoot());
+                                feed->account());
       filtering.filterRun().setTotalCountOfFilters(feed_filters_enabled_list.size());
 
       qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000

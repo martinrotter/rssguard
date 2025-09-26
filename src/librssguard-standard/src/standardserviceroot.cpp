@@ -536,7 +536,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
         try {
           DatabaseQueries::createOverwriteCategory(database,
                                                    new_category,
-                                                   target_root_node->getParentServiceRoot()->accountId(),
+                                                   target_root_node->account()->accountId(),
                                                    target_parent->id());
           requestItemReassignment(new_category, target_parent);
 
@@ -583,7 +583,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
         try {
           DatabaseQueries::createOverwriteFeed(database,
                                                new_feed,
-                                               target_root_node->getParentServiceRoot()->accountId(),
+                                               target_root_node->account()->accountId(),
                                                target_parent->id());
           requestItemReassignment(new_feed, target_parent);
         }

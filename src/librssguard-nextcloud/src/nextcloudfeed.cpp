@@ -16,7 +16,7 @@ bool NextcloudFeed::canBeDeleted() const {
 }
 
 bool NextcloudFeed::deleteItem() {
-  if (serviceRoot()->network()->deleteFeed(customId(), getParentServiceRoot()->networkProxy()) && removeItself()) {
+  if (serviceRoot()->network()->deleteFeed(customId(), account()->networkProxy()) && removeItself()) {
     serviceRoot()->requestItemRemoval(this);
     return true;
   }
@@ -32,5 +32,5 @@ bool NextcloudFeed::removeItself() {
 }
 
 NextcloudServiceRoot* NextcloudFeed::serviceRoot() const {
-  return qobject_cast<NextcloudServiceRoot*>(getParentServiceRoot());
+  return qobject_cast<NextcloudServiceRoot*>(account());
 }

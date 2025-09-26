@@ -16,7 +16,7 @@
 TtRssFeed::TtRssFeed(RootItem* parent) : Feed(parent), m_actionShareToPublished(nullptr) {}
 
 TtRssServiceRoot* TtRssFeed::serviceRoot() const {
-  return qobject_cast<TtRssServiceRoot*>(getParentServiceRoot());
+  return qobject_cast<TtRssServiceRoot*>(account());
 }
 
 bool TtRssFeed::canBeDeleted() const {
@@ -25,7 +25,7 @@ bool TtRssFeed::canBeDeleted() const {
 
 bool TtRssFeed::deleteItem() {
   TtRssUnsubscribeFeedResponse response =
-    serviceRoot()->network()->unsubscribeFeed(customNumericId(), getParentServiceRoot()->networkProxy());
+    serviceRoot()->network()->unsubscribeFeed(customNumericId(), account()->networkProxy());
 
   if (response.code() == QSL(UFF_OK) && removeItself()) {
     serviceRoot()->requestItemRemoval(this);

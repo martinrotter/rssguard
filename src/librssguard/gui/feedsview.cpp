@@ -157,7 +157,7 @@ void FeedsView::addFeedIntoSelectedAccount() {
   RootItem* selected = selectedItem();
 
   if (selected != nullptr) {
-    ServiceRoot* root = selected->getParentServiceRoot();
+    ServiceRoot* root = selected->account();
 
     if (root->supportsFeedAdding()) {
       root->addNewFeed(selected, QGuiApplication::clipboard()->text(QClipboard::Mode::Clipboard));
@@ -175,7 +175,7 @@ void FeedsView::addCategoryIntoSelectedAccount() {
   RootItem* selected = selectedItem();
 
   if (selected != nullptr) {
-    ServiceRoot* root = selected->getParentServiceRoot();
+    ServiceRoot* root = selected->account();
 
     if (root->supportsCategoryAdding()) {
       root->addNewCategory(selected);
@@ -331,7 +331,7 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
   // We also check if items are from single account, if not we end.
   std::list<ServiceRoot*> distinct_accounts = boolinq::from(std_editable_items)
                                                 .select([](RootItem* it) {
-                                                  return it->getParentServiceRoot();
+                                                  return it->account();
                                                 })
                                                 .distinct()
                                                 .toStdList();
@@ -725,8 +725,8 @@ QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
                                     qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
                                     qApp->mainForm()->m_ui->m_actionDeleteSelectedItem});
 
-  auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();
-  auto feed_add = clicked_item->getParentServiceRoot()->supportsFeedAdding();
+  auto cat_add = clicked_item->account()->supportsCategoryAdding();
+  auto feed_add = clicked_item->account()->supportsFeedAdding();
 
   if (cat_add || feed_add) {
     m_contextMenuService->addSeparator();
@@ -964,8 +964,8 @@ QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
                                        qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
                                        qApp->mainForm()->m_ui->m_actionDeleteSelectedItem});
 
-  auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();
-  auto feed_add = clicked_item->getParentServiceRoot()->supportsFeedAdding();
+  auto cat_add = clicked_item->account()->supportsCategoryAdding();
+  auto feed_add = clicked_item->account()->supportsFeedAdding();
 
   if (cat_add || feed_add) {
     m_contextMenuCategories->addSeparator();
@@ -1013,8 +1013,8 @@ QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
                                                    << qApp->mainForm()->m_ui->m_actionPurgeSelectedItems
                                                    << qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
 
-  auto cat_add = clicked_item->getParentServiceRoot()->supportsCategoryAdding();
-  auto feed_add = clicked_item->getParentServiceRoot()->supportsFeedAdding();
+  auto cat_add = clicked_item->account()->supportsCategoryAdding();
+  auto feed_add = clicked_item->account()->supportsFeedAdding();
 
   if (cat_add || feed_add) {
     m_contextMenuFeeds->addSeparator();

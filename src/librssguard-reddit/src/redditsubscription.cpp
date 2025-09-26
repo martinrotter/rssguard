@@ -8,7 +8,7 @@
 RedditSubscription::RedditSubscription(RootItem* parent) : Feed(parent), m_prefixedName(QString()) {}
 
 RedditServiceRoot* RedditSubscription::serviceRoot() const {
-  return qobject_cast<RedditServiceRoot*>(getParentServiceRoot());
+  return qobject_cast<RedditServiceRoot*>(account());
 }
 
 QString RedditSubscription::prefixedName() const {

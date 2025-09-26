@@ -350,9 +350,9 @@ bool ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::cleanFeeds(database, textualFeedIds(items), clean_read_only, accountId())) {
-    getParentServiceRoot()->updateCounts(true);
-    getParentServiceRoot()->itemChanged(getParentServiceRoot()->getSubTree<RootItem>());
-    getParentServiceRoot()->requestReloadMessageList(true);
+    account()->updateCounts(true);
+    account()->itemChanged(account()->getSubTree<RootItem>());
+    account()->requestReloadMessageList(true);
     return true;
   }
   else {
@@ -750,7 +750,7 @@ RootItem* ServiceRoot::obtainNewTreeForSyncIn() const {
 }
 
 QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item, ReadStatus target_read) {
-  if (item->getParentServiceRoot() != this) {
+  if (item->account() != this) {
     // Not item from this account.
     return {};
   }
@@ -832,9 +832,9 @@ bool ServiceRoot::markFeedsReadUnread(const QList<Feed*>& items, RootItem::ReadS
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
-    getParentServiceRoot()->updateCounts(false);
-    getParentServiceRoot()->itemChanged(getParentServiceRoot()->getSubTree<RootItem>());
-    getParentServiceRoot()->requestReloadMessageList(read == RootItem::ReadStatus::Read);
+    account()->updateCounts(false);
+    account()->itemChanged(account()->getSubTree<RootItem>());
+    account()->requestReloadMessageList(read == RootItem::ReadStatus::Read);
     return true;
   }
   else {
@@ -1172,7 +1172,7 @@ bool ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*>& labe
                 })
                 .toStdList();
 
-  getParentServiceRoot()->itemChanged(FROM_STD_LIST(QList<RootItem*>, list));
+  account()->itemChanged(FROM_STD_LIST(QList<RootItem*>, list));
   return true;
 }
 

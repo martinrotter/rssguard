@@ -126,7 +126,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
     show();
 
     if (!same_message) {
-      CustomMessagePreviewer* custom_previewer = root->getParentServiceRoot()->customMessagePreviewer();
+      CustomMessagePreviewer* custom_previewer = root->account()->customMessagePreviewer();
 
       if (custom_previewer != nullptr) {
         auto* current_custom_previewer = m_viewerLayout->widget(INDEX_CUSTOM);
@@ -181,14 +181,14 @@ void MessagePreviewer::markMessageAsUnread() {
 
 void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
   if (!m_root.isNull()) {
-    if (m_root->getParentServiceRoot()->onBeforeSetMessagesRead(m_root.data(), QList<Message>() << m_message, read)) {
+    if (m_root->account()->onBeforeSetMessagesRead(m_root.data(), QList<Message>() << m_message, read)) {
       DatabaseQueries::markMessagesReadUnread(qApp->database()
                                                 ->driver()
                                                 ->connection(objectName(),
                                                              DatabaseDriver::DesiredStorageType::FromSettings),
                                               QStringList() << QString::number(m_message.m_id),
                                               read);
-      m_root->getParentServiceRoot()->onAfterSetMessagesRead(m_root.data(), QList<Message>() << m_message, read);
+      m_root->account()->onAfterSetMessagesRead(m_root.data(), QList<Message>() << m_message, read);
       m_message.m_isRead = read == RootItem::ReadStatus::Read;
       emit markMessageRead(m_message.m_id, read);
 
@@ -199,7 +199,7 @@ void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
 
 void MessagePreviewer::switchMessageImportance(bool checked) {
   if (!m_root.isNull()) {
-    if (m_root->getParentServiceRoot()
+    if (m_root->account()
           ->onBeforeSwitchMessageImportance(m_root.data(),
                                             QList<ImportanceChange>()
                                               << ImportanceChange(m_message,
@@ -211,7 +211,7 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
                                                   ->connection(objectName(),
                                                                DatabaseDriver::DesiredStorageType::FromSettings),
                                                 QStringList() << QString::number(m_message.m_id));
-      m_root->getParentServiceRoot()
+      m_root->account()
         ->onAfterSwitchMessageImportance(m_root.data(),
                                          QList<ImportanceChange>()
                                            << ImportanceChange(m_message,
@@ -248,9 +248,9 @@ void MessagePreviewer::updateLabels(bool only_clear) {
     return;
   }
 
-  if (m_root.data() != nullptr && !m_root.data()->getParentServiceRoot()->labelsNode()->labels().isEmpty()) {
+  if (m_root.data() != nullptr && !m_root.data()->account()->labelsNode()->labels().isEmpty()) {
     m_separator = m_toolBar->addSeparator();
-    auto lbls = m_root.data()->getParentServiceRoot()->labelsNode()->labels();
+    auto lbls = m_root.data()->account()->labelsNode()->labels();
 
     std::sort(lbls.begin(), lbls.end(), [](Label* lhs, Label* rhs) {
       return lhs->title().compare(rhs->title(), Qt::CaseSensitivity::CaseInsensitive) < 0;

@@ -126,7 +126,7 @@ bool StandardFeed::canBeDeleted() const {
 }
 
 StandardServiceRoot* StandardFeed::serviceRoot() const {
-  return qobject_cast<StandardServiceRoot*>(getParentServiceRoot());
+  return qobject_cast<StandardServiceRoot*>(account());
 }
 
 bool StandardFeed::deleteItem() {
@@ -248,7 +248,7 @@ void StandardFeed::fetchMetadataForItself() {
                               username(),
                               password(),
                               {},
-                              getParentServiceRoot()->networkProxy());
+                              account()->networkProxy());
 
     // Copy metadata to our object.
     setTitle(metadata.first->title());
@@ -265,7 +265,7 @@ void StandardFeed::fetchMetadataForItself() {
 
     QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-    DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), parent()->id());
+    DatabaseQueries::createOverwriteFeed(database, this, account()->accountId(), parent()->id());
     serviceRoot()->itemChanged({this});
   }
   catch (const ApplicationException& ex) {
@@ -434,7 +434,7 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   try {
-    DatabaseQueries::createOverwriteFeed(database, this, getParentServiceRoot()->accountId(), target_item->id());
+    DatabaseQueries::createOverwriteFeed(database, this, account()->accountId(), target_item->id());
     serviceRoot()->requestItemReassignment(this, target_item);
     return true;
   }
@@ -454,7 +454,7 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
 bool StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  return DatabaseQueries::deleteFeed(database, this, getParentServiceRoot()->accountId());
+  return DatabaseQueries::deleteFeed(database, this, account()->accountId());
 }
 
 QString StandardFeed::getHttpDescription() const {

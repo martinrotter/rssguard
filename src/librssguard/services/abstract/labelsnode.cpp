@@ -29,7 +29,7 @@ void LabelsNode::loadLabels(const QList<Label*>& labels) {
 QList<Message> LabelsNode::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  return DatabaseQueries::getUndeletedLabelledMessages(database, getParentServiceRoot()->accountId());
+  return DatabaseQueries::getUndeletedLabelledMessages(database, account()->accountId());
 }
 
 void LabelsNode::updateCounts(bool including_total_count) {
@@ -39,7 +39,7 @@ void LabelsNode::updateCounts(bool including_total_count) {
   // are recounted, not all.
 
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  int account_id = getParentServiceRoot()->accountId();
+  int account_id = account()->accountId();
   auto acc = DatabaseQueries::getMessageCountsForAllLabels(database, account_id);
 
   for (Label* lbl : labels()) {
@@ -92,7 +92,7 @@ QList<QAction*> LabelsNode::contextMenuFeedsList() {
 }
 
 void LabelsNode::createLabel() {
-  if (Globals::hasFlag(getParentServiceRoot()->supportedLabelOperations(), ServiceRoot::LabelOperation::Adding)) {
+  if (Globals::hasFlag(account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Adding)) {
     FormAddEditLabel frm(qApp->mainFormWidget());
     Label* new_lbl = frm.execForAdd();
 
@@ -100,10 +100,10 @@ void LabelsNode::createLabel() {
       QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
       try {
-        DatabaseQueries::createLabel(db, new_lbl, getParentServiceRoot()->accountId());
+        DatabaseQueries::createLabel(db, new_lbl, account()->accountId());
 
-        getParentServiceRoot()->requestItemReassignment(new_lbl, this);
-        getParentServiceRoot()->requestItemExpand({this}, true);
+        account()->requestItemReassignment(new_lbl, this);
+        account()->requestItemExpand({this}, true);
       }
       catch (const ApplicationException& ex) {
         new_lbl->deleteLater();

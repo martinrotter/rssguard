@@ -16,7 +16,7 @@
 GreaderFeed::GreaderFeed(RootItem* parent) : Feed(parent) {}
 
 GreaderServiceRoot* GreaderFeed::serviceRoot() const {
-  return qobject_cast<GreaderServiceRoot*>(getParentServiceRoot());
+  return qobject_cast<GreaderServiceRoot*>(account());
 }
 
 bool GreaderFeed::canBeDeleted() const {

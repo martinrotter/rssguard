@@ -40,18 +40,18 @@ int Label::countOfAllMessages() const {
 }
 
 bool Label::canBeEdited() const {
-  return Globals::hasFlag(getParentServiceRoot()->supportedLabelOperations(), ServiceRoot::LabelOperation::Editing);
+  return Globals::hasFlag(account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Editing);
 }
 
 bool Label::canBeDeleted() const {
-  return Globals::hasFlag(getParentServiceRoot()->supportedLabelOperations(), ServiceRoot::LabelOperation::Deleting);
+  return Globals::hasFlag(account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Deleting);
 }
 
 bool Label::deleteItem() {
   QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::deleteLabel(db, this)) {
-    getParentServiceRoot()->requestItemRemoval(this);
+    account()->requestItemRemoval(this);
     return true;
   }
   else {
@@ -61,7 +61,7 @@ bool Label::deleteItem() {
 
 void Label::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  int account_id = getParentServiceRoot()->accountId();
+  int account_id = account()->accountId();
 
   // TODO: slow
   auto ac = DatabaseQueries::getMessageCountsForLabel(database, this, account_id);
@@ -82,11 +82,11 @@ QList<Message> Label::undeletedMessages() const {
 void Label::assignToMessage(const Message& msg, bool reload_model) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
-  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, true)) {
+  if (account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, true)) {
     DatabaseQueries::assignLabelToMessage(database, this, msg);
 
     if (reload_model) {
-      getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
+      account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
     }
   }
 }
@@ -94,11 +94,11 @@ void Label::assignToMessage(const Message& msg, bool reload_model) {
 void Label::deassignFromMessage(const Message& msg, bool reload_model) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
-  if (getParentServiceRoot()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, false)) {
+  if (account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, false)) {
     DatabaseQueries::deassignLabelFromMessage(database, this, msg);
 
     if (reload_model) {
-      getParentServiceRoot()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
+      account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
     }
   }
 }
@@ -112,7 +112,7 @@ void Label::setCountOfUnreadMessages(int unreadCount) {
 }
 
 bool Label::cleanMessages(bool clear_only_read) {
-  ServiceRoot* service = getParentServiceRoot();
+  ServiceRoot* service = account();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (DatabaseQueries::cleanLabelledMessages(database, clear_only_read, this)) {
@@ -127,7 +127,7 @@ bool Label::cleanMessages(bool clear_only_read) {
 }
 
 bool Label::markAsReadUnread(RootItem::ReadStatus status) {
-  ServiceRoot* service = getParentServiceRoot();
+  ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {

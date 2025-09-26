@@ -28,7 +28,7 @@ LabelsMenu::LabelsMenu(const QList<Message>& messages, const QList<Label*>& labe
         ? QMap<QString, ArticleCounts>()
         : DatabaseQueries::getCountOfAssignedLabelsToMessages(db,
                                                               messages,
-                                                              labels.first()->getParentServiceRoot()->accountId());
+                                                              labels.first()->account()->accountId());
 
     for (Label* label : boolinq::from(labels)
                           .orderBy([](const Label* label) {

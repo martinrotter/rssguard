@@ -41,7 +41,7 @@ RootItem::~RootItem() {
 }
 
 QString RootItem::hashCode() const {
-  ServiceRoot* root = getParentServiceRoot();
+  ServiceRoot* root = account();
   int acc_id = root == nullptr ? 0 : root->accountId();
 
   return QString::number(acc_id) + QL1S("-") + QString::number(int(kind())) + QL1S("-") + QString::number(id());
@@ -427,7 +427,7 @@ QList<Feed*> RootItem::getSubAutoFetchingEnabledFeeds() const {
   return children;
 }
 
-ServiceRoot* RootItem::getParentServiceRoot() const {
+ServiceRoot* RootItem::account() const {
   const RootItem* working_parent = this;
 
   while (working_parent->kind() != RootItem::Kind::Root) {

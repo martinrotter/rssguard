@@ -403,7 +403,7 @@ void MessagesView::initializeContextMenu() {
 
   // Labels.
   auto labels = m_sourceModel->loadedItem() != nullptr
-                  ? m_sourceModel->loadedItem()->getParentServiceRoot()->labelsNode()->labels()
+                  ? m_sourceModel->loadedItem()->account()->labelsNode()->labels()
                   : QList<Label*>();
   LabelsMenu* menu_labels = new LabelsMenu(selected_messages, labels, m_contextMenu);
 
@@ -438,7 +438,7 @@ void MessagesView::initializeContextMenu() {
     }
 
     auto extra_context_menu =
-      m_sourceModel->loadedItem()->getParentServiceRoot()->contextMenuMessagesList(selected_messages);
+      m_sourceModel->loadedItem()->account()->contextMenuMessagesList(selected_messages);
 
     if (!extra_context_menu.isEmpty()) {
       m_contextMenu->addSeparator();
