@@ -82,8 +82,12 @@ void SearchsNode::createProbe() {
 
       new_prb->updateCounts(true);
     }
-    catch (const ApplicationException&) {
+    catch (const ApplicationException& ex) {
       new_prb->deleteLater();
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           {tr("Not allowed"),
+                            tr("Cannot create label: %1.").arg(ex.message()),
+                            QSystemTrayIcon::MessageIcon::Critical});
     }
   }
 }

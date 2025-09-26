@@ -105,15 +105,19 @@ void LabelsNode::createLabel() {
         getParentServiceRoot()->requestItemReassignment(new_lbl, this);
         getParentServiceRoot()->requestItemExpand({this}, true);
       }
-      catch (const ApplicationException&) {
+      catch (const ApplicationException& ex) {
         new_lbl->deleteLater();
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             {tr("Not allowed"),
+                              tr("Cannot create label: %1.").arg(ex.message()),
+                              QSystemTrayIcon::MessageIcon::Critical});
       }
     }
   }
   else {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         {tr("This account does not allow you to create labels."),
-                          tr("Not allowed"),
+                         {tr("Not allowed"),
+                          tr("This account does not allow you to create labels."),
                           QSystemTrayIcon::MessageIcon::Critical});
   }
 }

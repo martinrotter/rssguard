@@ -259,7 +259,7 @@ bool DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
   }
 }
 
-bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int account_id) {
+void DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -270,9 +270,7 @@ bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
   q.bindValue(QSL(":custom_id"), label->customId());
   q.bindValue(QSL(":account_id"), account_id);
 
-  auto res = q.exec();
-
-  if (res && q.lastInsertId().isValid()) {
+  if (q.exec() && q.lastInsertId().isValid()) {
     label->setId(q.lastInsertId().toInt());
 
     // NOTE: This custom ID in this object will be probably
@@ -281,11 +279,16 @@ bool DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
       label->setCustomId(QString::number(label->id()));
     }
   }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
 
   // Fixup missing custom IDs.
   q.prepare(QSL("UPDATE Labels SET custom_id = id WHERE custom_id IS NULL OR custom_id = '';"));
 
-  return q.exec() && res;
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
 }
 
 void DatabaseQueries::updateProbe(const QSqlDatabase& db, Search* probe) {

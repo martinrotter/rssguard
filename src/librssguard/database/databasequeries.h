@@ -39,7 +39,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                              const QList<Label*>& installed_labels);
     static bool updateLabel(const QSqlDatabase& db, Label* label);
     static bool deleteLabel(const QSqlDatabase& db, Label* label);
-    static bool createLabel(const QSqlDatabase& db, Label* label, int account_id);
+    static void createLabel(const QSqlDatabase& db, Label* label, int account_id);
 
     // Probe operators.
     static void createProbe(const QSqlDatabase& db, Search* probe, int account_id);

@@ -105,6 +105,7 @@ CREATE TABLE Labels (
   custom_id           VARCHAR(200),
   account_id          INTEGER         NOT NULL,
   
+  UNIQUE (name, account_id),
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
 -- !
@@ -115,5 +116,6 @@ CREATE TABLE Probes (
   fltr                TEXT            NOT NULL CHECK (fltr != ''), /* Regular expression. */
   account_id          INTEGER         NOT NULL,
   
+  UNIQUE (name, account_id),
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
