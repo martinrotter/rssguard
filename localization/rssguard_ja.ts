@@ -7701,7 +7701,7 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="196"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="379"/>
       <source>Tray area &amp;&amp; taskbar &amp;&amp; window</source>
-      <translation>トレイエリア &amp; タスクバー &amp; ウィンドウ</translation>
+      <translation>トレイエリア ＆ タスクバー ＆ ウィンドウ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="244"/>
