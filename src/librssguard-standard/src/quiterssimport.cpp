@@ -78,10 +78,15 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
   q.exec();
 
   while (q.next()) {
-    auto msg = convertArticle(q.record());
+    try {
+      auto msg = convertArticle(q.record());
 
-    msg.sanitize(feed, false);
-    msgs.append(msg);
+      msg.sanitize(feed, false);
+      msgs.append(msg);
+    }
+    catch (const ApplicationException& ex) {
+      qWarningNN << LOGSEC_STANDARD << "Article was not converted:" << QUOTE_W_SPACE_DOT(ex.message());
+    }
   }
 
   qDebugNN << LOGSEC_STANDARD << "Collected" << NONQUOTE_W_SPACE(msgs.size()) << "articles for QuiteRSS import for feed"
