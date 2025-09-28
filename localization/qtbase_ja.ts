@@ -4441,7 +4441,7 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>Backspace</source>
-        <translation>Backspae</translation>
+        <translation>Backspace</translation>
     </message>
     <message>
         <source>Return</source>

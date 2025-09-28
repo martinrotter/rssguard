@@ -522,6 +522,29 @@ Tryk på ESC for at annullere</translation>
     </message>
 </context>
 <context>
+    <name>QCupsPrinterSupport</name>
+    <message>
+        <source>Authentication Needed</source>
+        <translation>Der kræves autentifikation</translation>
+    </message>
+    <message>
+        <source>Authentication needed to use %1.</source>
+        <translation>Der kræves autentifikation for at bruge %1.</translation>
+    </message>
+    <message>
+        <source>Authentication needed to use %1 on %2.</source>
+        <translation>Der kræves autentifikation for at bruge %1 på %2.</translation>
+    </message>
+    <message>
+        <source>Username:</source>
+        <translation>Brugernavn:</translation>
+    </message>
+    <message>
+        <source>Password:</source>
+        <translation>Adgangskode:</translation>
+    </message>
+</context>
+<context>
     <name>QDB2Driver</name>
     <message>
         <source>Unable to connect</source>
@@ -659,7 +682,7 @@ Tryk på ESC for at annullere</translation>
     </message>
     <message>
         <source>Resolver initialization failed</source>
-        <translation>Løser initialisering fejlede</translation>
+        <translation>Løser-initialisering fejlede</translation>
     </message>
     <message>
         <source>Server could not process query</source>
@@ -757,6 +780,133 @@ Tryk på ESC for at annullere</translation>
     <message>
         <source>Closes the dock widget</source>
         <translation>Lukker dok-widget&apos;en</translation>
+    </message>
+</context>
+<context>
+    <name>QDtls</name>
+    <message>
+        <source>Invalid (empty) secret</source>
+        <translation>Ugyldig (tom) hemmelighed</translation>
+    </message>
+    <message>
+        <source>Multicast and broadcast addresses are not supported</source>
+        <translation>Multicast- og broadcast-adresser understøttes ikke</translation>
+    </message>
+    <message>
+        <source>Cannot set peer after handshake started</source>
+        <translation>Kan ikke sætte peer efter håndtryk er startet</translation>
+    </message>
+    <message>
+        <source>Invalid address</source>
+        <translation>Ugyldig adresse</translation>
+    </message>
+    <message>
+        <source>Cannot set verification name after handshake started</source>
+        <translation>Kan ikke sætte verifikationsnavn efter håndtryk er startet</translation>
+    </message>
+    <message>
+        <source>Cannot set configuration after handshake started</source>
+        <translation>Kan ikke sætte konfiguration efter håndtryk er startet</translation>
+    </message>
+    <message>
+        <source>Cannot start/continue handshake, invalid handshake state</source>
+        <translation>Kan ikke starte/fortsætte håndtryk, ugyldig håndtryk-tilstand</translation>
+    </message>
+    <message>
+        <source>Invalid (nullptr) socket</source>
+        <translation>Ugyldig (nullptr) socket</translation>
+    </message>
+    <message>
+        <source>To start a handshake you must set peer&apos;s address and port first</source>
+        <translation>For at starte et håndtryk skal du først sætte peer&apos;ens adresse og port</translation>
+    </message>
+    <message>
+        <source>To start a handshake, DTLS server requires non-empty datagram (client hello)</source>
+        <translation>For at starte et håndtryk kræver DTLS-serveren ikke-tomt datagram (klient hello)</translation>
+    </message>
+    <message>
+        <source>Cannot start handshake, already done/in progress</source>
+        <translation>Kan ikke starte håndtryk, allerede færdig/under oprettelse</translation>
+    </message>
+    <message>
+        <source>A valid QUdpSocket and non-empty datagram are needed to continue the handshake</source>
+        <translation>Der behøves en gyldig QUdpSocket og ikke-tomt datagram for at fortsætte håndtrykket</translation>
+    </message>
+    <message>
+        <source>Cannot continue handshake, not in InProgress state</source>
+        <translation>Kan ikke fortsætte håndtryk, ikke i InProgress-tilstand</translation>
+    </message>
+    <message>
+        <source>Cannot resume, not in VerificationError state</source>
+        <translation>Kan ikke genoptage, ikke i VerificationError-tilstand</translation>
+    </message>
+    <message>
+        <source>No handshake in progress, nothing to abort</source>
+        <translation>Intet håndtryk under oprettelse, intet at afbryde</translation>
+    </message>
+    <message>
+        <source>Cannot send shutdown alert, not encrypted</source>
+        <translation>Kan ikke send nedlukningsbesked, ikke krypteret</translation>
+    </message>
+    <message>
+        <source>Cannot write a datagram, not in encrypted state</source>
+        <translation>Kan ikke skrive et datagram, ikke i krypteret tilstand</translation>
+    </message>
+    <message>
+        <source>Cannot read a datagram, not in encrypted state</source>
+        <translation>Kan ikke læse et datagram, ikke i krypteret tilstand</translation>
+    </message>
+    <message>
+        <source>%1 failed</source>
+        <extracomment>%1: Some function</extracomment>
+        <translation>%1 fejlede</translation>
+    </message>
+    <message>
+        <source>Invalid SslMode, SslServerMode or SslClientMode expected</source>
+        <translation>Ugyldig SslMode, SslServerMode eller SslClientMode ventet</translation>
+    </message>
+    <message>
+        <source>Invalid protocol version, DTLS protocol expected</source>
+        <translation>Ugyldig protokolversion, DTLS-protokol ventet</translation>
+    </message>
+    <message>
+        <source>BIO_ADD_new failed, cannot start handshake</source>
+        <translation>BIO_ADD_new fejlede, kan ikke starte håndtryk</translation>
+    </message>
+    <message>
+        <source>Cannot start the handshake, verified client hello expected</source>
+        <translation>Kan ikke starte et håndtryk, verificeret klient hello ventet</translation>
+    </message>
+    <message>
+        <source>Peer verification failed</source>
+        <translation>Peer-verifikation fejlede</translation>
+    </message>
+    <message>
+        <source>The DTLS connection has been closed</source>
+        <translation>DTLS-forbindelsen er blevet lukket</translation>
+    </message>
+    <message>
+        <source>Error while writing: %1</source>
+        <translation>Fejl under skrivning: %1</translation>
+    </message>
+    <message>
+        <source>The DTLS connection has been shutdown</source>
+        <translation>DTLS-forbindelsen er blevet lukket ned</translation>
+    </message>
+    <message>
+        <source>Error while reading: %1</source>
+        <translation>Fejl under læsning: %1</translation>
+    </message>
+</context>
+<context>
+    <name>QDtlsClientVerifier</name>
+    <message>
+        <source>A valid UDP socket, non-empty datagram, valid address/port were expected</source>
+        <translation>En gyldig UDP-socket, ikke-tomt datagram, gyldig adresse/port blev ventet</translation>
+    </message>
+    <message>
+        <source>BIO_ADDR_new failed, ignoring client hello</source>
+        <translation>BIO_ADDR_new fejlede, ignorerer klient hello</translation>
     </message>
 </context>
 <context>
@@ -1914,10 +2064,6 @@ Vil du slette den alligevel?</translation>
         <translation>manglende sektionsdata. Dette er ikke et bibliotek.</translation>
     </message>
     <message>
-        <source>Out of memory while loading plugin &apos;%1&apos;.</source>
-        <translation>Løb tør for hukommelse under indlæsning af pluginet &apos;%1&apos;.</translation>
-    </message>
-    <message>
         <source>Failed to extract plugin meta data from &apos;%1&apos;</source>
         <translation>Kunne ikke udtrække plugin-metadata fra &apos;%1&apos;</translation>
     </message>
@@ -2263,11 +2409,12 @@ Vil du slette den alligevel?</translation>
     </message>
     <message>
         <source>&lt;h3&gt;About Qt&lt;/h3&gt;&lt;p&gt;This program uses Qt version %1.&lt;/p&gt;</source>
-        <translation>&lt;h3&gt;Om Qt&lt;/h3&gt;&lt;p&gt;Dette program bruger Qt version %1.&lt;/p&gt;</translation>
+        <translation>&lt;h3&gt;Om Qt&lt;/h3&gt;&lt;p&gt;Programmet bruger Qt version %1.&lt;/p&gt;</translation>
     </message>
     <message>
-        <source>&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across all major desktop operating systems. It is also available for embedded Linux and other embedded and mobile operating systems.&lt;/p&gt;&lt;p&gt;Qt is available under three different licensing options designed to accommodate the needs of our various users.&lt;/p&gt;&lt;p&gt;Qt licensed under our commercial license agreement is appropriate for development of proprietary/commercial software where you do not want to share any source code with third parties or otherwise cannot comply with the terms of the GNU LGPL version 3.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU LGPL version 3 is appropriate for the development of Qt&amp;nbsp;applications provided you can comply with the terms and conditions of the GNU LGPL version 3.&lt;/p&gt;&lt;p&gt;Please see &lt;a href=&quot;http://%2/&quot;&gt;%2&lt;/a&gt; for an overview of Qt licensing.&lt;/p&gt;&lt;p&gt;Copyright (C) %1 The Qt Company Ltd and other contributors.&lt;/p&gt;&lt;p&gt;Qt and the Qt logo are trademarks of The Qt Company Ltd.&lt;/p&gt;&lt;p&gt;Qt is The Qt Company Ltd product developed as an open source project. See &lt;a href=&quot;http://%3/&quot;&gt;%3&lt;/a&gt; for more information.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Qt er et C++-værktøjskit til programudvikling på tværs af platforme.&lt;/p&gt;&lt;p&gt;Qt giver enkelt-kilde portability på tværs af alle større skrivebordsstyresystemer. Det er også tilgængeligt til Embedded Linux og andre indlejrede og mobile styresystemer.&lt;/p&gt;&lt;p&gt;Qt er tilgængelig under tre forskellige licenseringsmuligheder, designet til at rumme behovene af vores forskellige brugere.&lt;/p&gt;&lt;p&gt;Qt licenseret under vores kommercielle licensaftale er passende til udvikling af proprietær/kommerciel software, hvor du ikke vil dele kildekode med tredjeparter eller på anden måde ikke kan efterleve vilkårene i GNU LGPL version 3.&lt;/p&gt;&lt;p&gt;Qt licenseret under GNU LGPL version 3 er passende til udvikling af Qt-programmer, på forudsætning af at du kan efterleve vilkårene og betingelserne i GNU LGPL version 3.&lt;/p&gt;&lt;p&gt;Se venligst &lt;a href=&quot;http://%2/&quot;&gt;%2&lt;/a&gt; for en oversigt af Qt-licensering.&lt;/p&gt;&lt;p&gt;Ophavsret (C) %1 Qt Company Ltd og andre bidragydere.&lt;/p&gt;&lt;p&gt;Qt og Qt-logoet er varemærker tilhørende Qt Company Ltd.&lt;/p&gt;&lt;p&gt;Qt er Qt Company Ltd-produktet, udviklet som et open source projekt. Se &lt;a href=&quot;http://%3/&quot;&gt;%3&lt;/a&gt; for mere information.&lt;/p&gt;</translation>
+        <source>&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across all major desktop operating systems. It is also available for embedded Linux and other embedded and mobile operating systems.&lt;/p&gt;&lt;p&gt;Qt is available under multiple licensing options designed to accommodate the needs of our various users.&lt;/p&gt;&lt;p&gt;Qt licensed under our commercial license agreement is appropriate for development of proprietary/commercial software where you do not want to share any source code with third parties or otherwise cannot comply with the terms of GNU (L)GPL.&lt;/p&gt;&lt;p&gt;Qt licensed under GNU (L)GPL is appropriate for the development of Qt&amp;nbsp;applications provided you can comply with the terms and conditions of the respective licenses.&lt;/p&gt;&lt;p&gt;Please see &lt;a href=&quot;http://%2/&quot;&gt;%2&lt;/a&gt; for an overview of Qt licensing.&lt;/p&gt;&lt;p&gt;Copyright (C) %1 The Qt Company Ltd and other contributors.&lt;/p&gt;&lt;p&gt;Qt and the Qt logo are trademarks of The Qt Company Ltd.&lt;/p&gt;&lt;p&gt;Qt is The Qt Company Ltd product developed as an open source project. See &lt;a href=&quot;http://%3/&quot;&gt;%3&lt;/a&gt; for more information.&lt;/p&gt;</source>
+        <extracomment>Leave this text untranslated or include a verbatim copy of it below and note that it is the authoritative version in case of doubt.</extracomment>
+        <translation>&lt;p&gt;Qt er et C++-værktøjskit til programudvikling på tværs af platforme.&lt;/p&gt;&lt;p&gt;Qt giver enkelt-kilde portability på tværs af alle større skrivebordsstyresystemer. Det er også tilgængeligt til Embedded Linux og andre indlejrede og mobile styresystemer.&lt;/p&gt;&lt;p&gt;Qt er tilgængelig under flere licenseringsmuligheder, designet til at rumme behovene af vores forskellige brugere.&lt;/p&gt;&lt;p&gt;Qt licenseret under vores kommercielle licensaftale er passende til udvikling af proprietær/kommerciel software, hvor du ikke vil dele kildekode med tredjeparter eller på anden måde ikke kan efterleve vilkårene i GNU LGPL version 3.&lt;/p&gt;&lt;p&gt;Qt licenseret under GNU (L)GPL er passende til udvikling af Qt-programmer, på forudsætning af at du kan efterleve vilkårene og betingelserne i de enkelte licenser.&lt;/p&gt;&lt;p&gt;Se venligst &lt;a href=&quot;http://%2/&quot;&gt;%2&lt;/a&gt; for en oversigt af Qt-licensering.&lt;/p&gt;&lt;p&gt;Ophavsret (C) %1 Qt Company Ltd og andre bidragydere.&lt;/p&gt;&lt;p&gt;Qt og Qt-logoet er varemærker tilhørende Qt Company Ltd.&lt;/p&gt;&lt;p&gt;Qt er Qt Company Ltd-produktet, udviklet som et open source projekt. Se &lt;a href=&quot;http://%3/&quot;&gt;%3&lt;/a&gt; for mere information.&lt;/p&gt;</translation>
     </message>
     <message>
         <source>About Qt</source>
@@ -2673,17 +2820,6 @@ Vil du slette den alligevel?</translation>
     <message>
         <source>Unable to bind variable</source>
         <translation>Kunne ikke binde variablen</translation>
-    </message>
-</context>
-<context>
-    <name>QPPDOptionsModel</name>
-    <message>
-        <source>Name</source>
-        <translation>Navn</translation>
-    </message>
-    <message>
-        <source>Value</source>
-        <translation>Værdi</translation>
     </message>
 </context>
 <context>
@@ -3532,6 +3668,14 @@ Vil du slette den alligevel?</translation>
         <translation>%1 følger ikke den korrekte syntaks. Brug venligst &apos;,&apos; til at separere områder og sider, &apos;-&apos; til at angive områder og sørge for at områder ikke krydser hinanden.</translation>
     </message>
     <message>
+        <source>Duplex Settings Conflicts</source>
+        <translation>Konflikt i dupleksindstillinger</translation>
+    </message>
+    <message>
+        <source>There are conflicts in duplex settings. Do you want to fix them?</source>
+        <translation>Der er konflikter i dupleksindstillingerne. Vil du rette dem?</translation>
+    </message>
+    <message>
         <source>Print to File (PDF)</source>
         <translation>Udskriv til fil (PDF)</translation>
     </message>
@@ -3672,6 +3816,14 @@ Slå venligst en at disse valgmuligheder fra.</translation>
     <message>
         <source>Job Options</source>
         <translation>Job-valgmuligheder</translation>
+    </message>
+    <message>
+        <source>Page Setup Conflicts</source>
+        <translation>Konflikt i sideopsætning</translation>
+    </message>
+    <message>
+        <source>There are conflicts in page setup options. Do you want to fix them?</source>
+        <translation>Der er konflikter i valgmulighederne for sideopsætning. Vil du rette dem?</translation>
     </message>
     <message>
         <source>Advanced Option Conflicts</source>
@@ -6198,6 +6350,21 @@ Role of an accessible object</extracomment>
         <translation>supplerende indhold</translation>
     </message>
     <message>
+        <source>terminal</source>
+        <extracomment>Role of an accessible object</extracomment>
+        <translation>terminal</translation>
+    </message>
+    <message>
+        <source>desktop</source>
+        <extracomment>Role of an accessible object</extracomment>
+        <translation>skrivebord</translation>
+    </message>
+    <message>
+        <source>notification</source>
+        <extracomment>Role of an accessible object</extracomment>
+        <translation>underretning</translation>
+    </message>
+    <message>
         <source>unknown</source>
         <extracomment>Role of an accessible object</extracomment>
         <translation>ukendt</translation>
@@ -6231,6 +6398,14 @@ Role of an accessible object</extracomment>
     <message>
         <source>unsupported protocol</source>
         <translation>protokollen understøttes ikke</translation>
+    </message>
+    <message>
+        <source>Error while setting the minimal protocol version</source>
+        <translation>Fejl under indstilling af den laveste protokolversion</translation>
+    </message>
+    <message>
+        <source>Error while setting the maximum protocol version</source>
+        <translation>Fejl under indstilling af den højeste protokolversion</translation>
     </message>
     <message>
         <source>Invalid or empty cipher list (%1)</source>
@@ -6414,11 +6589,19 @@ Role of an accessible object</extracomment>
     </message>
     <message>
         <source>Error while reading: %1</source>
-        <translation>Fejl under læsning af: %1</translation>
+        <translation>Fejl under læsning: %1</translation>
     </message>
     <message>
         <source>Error during SSL handshake: %1</source>
         <translation>Fejl under SSL-håndtryk: %1</translation>
+    </message>
+    <message>
+        <source>DTLS server requires a &apos;VerifyNone&apos; mode with your version of OpenSSL</source>
+        <translation>DTLS-serveren kræver en &apos;VerifyNone&apos;-tilstand med din version af OpenSSL</translation>
+    </message>
+    <message>
+        <source>TLS initialization failed</source>
+        <translation>TLS-initialisering fejlede</translation>
     </message>
 </context>
 <context>
@@ -6592,6 +6775,10 @@ Role of an accessible object</extracomment>
     <message>
         <source>Image depth not valid</source>
         <translation>Billeddybden er ikke gyldig</translation>
+    </message>
+    <message>
+        <source>Image size exceeds limit</source>
+        <translation>Billedstørrelse overskrider grænse</translation>
     </message>
     <message>
         <source>Could not seek to image read footer</source>

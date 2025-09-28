@@ -40,6 +40,20 @@
     </message>
 </context>
 <context>
+    <name>Print Device Input Slot</name>
+    <message>
+        <source>Automatic</source>
+        <translation>自動</translation>
+    </message>
+</context>
+<context>
+    <name>Print Device Output Bin</name>
+    <message>
+        <source>Automatic</source>
+        <translation>自動</translation>
+    </message>
+</context>
+<context>
     <name>QAbstractSocket</name>
     <message>
         <source>Socket operation timed out</source>
@@ -364,7 +378,15 @@ Press ESC to cancel</source>
     </message>
     <message>
         <source>Displays this help.</source>
-        <translation>顯示此說明。</translation>
+        <translation type="vanished">顯示此說明。</translation>
+    </message>
+    <message>
+        <source>Displays help on commandline options.</source>
+        <translation>顯示指令列選項的說明。</translation>
+    </message>
+    <message>
+        <source>Displays help including Qt specific options.</source>
+        <translation>顯示包含 Qt 特有選項的說明。</translation>
     </message>
     <message>
         <source>Unknown option &apos;%1&apos;.</source>
@@ -899,19 +921,19 @@ Press ESC to cancel</source>
     </message>
     <message>
         <source>Cannot set remote after handshake started</source>
-        <translation>無法在開始交握後設定遠端位置</translation>
+        <translation type="vanished">無法在開始交握後設定遠端位置</translation>
     </message>
     <message>
         <source>Unsupported protocol</source>
-        <translation>不支援的通訊協定</translation>
+        <translation type="vanished">不支援的通訊協定</translation>
     </message>
     <message>
         <source>To start a handshake you must set remote address and port first</source>
-        <translation>要開始交握前必須先設定遠端位址和通訊埠</translation>
+        <translation type="vanished">要開始交握前必須先設定遠端位址和通訊埠</translation>
     </message>
     <message>
         <source>Not in VerificationError state, nothing to abort</source>
-        <translation>非 VerificationError 狀態，沒有需要終止的項目</translation>
+        <translation type="vanished">非 VerificationError 狀態，沒有需要終止的項目</translation>
     </message>
 </context>
 <context>
@@ -996,7 +1018,7 @@ Press ESC to cancel</source>
     </message>
     <message>
         <source>Cannot open for output</source>
-        <translation>無法開啟以供輸出</translation>
+        <translation type="vanished">無法開啟以供輸出</translation>
     </message>
     <message>
         <source>Failure to write block</source>
@@ -1656,6 +1678,74 @@ Do you want to delete it anyway?</source>
         <comment>Translate this string to the string &apos;LTR&apos; in left-to-right languages or to &apos;RTL&apos; in right-to-left languages (such as Hebrew and Arabic) to get proper widget layout.</comment>
         <translation>QT_LAYOUT_DIRECTION</translation>
     </message>
+    <message>
+        <source>QPA plugin. See QGuiApplication documentation for available options for each plugin.</source>
+        <translation>QPA 外掛程式。請檢視 QGuiApplication 文件以得知每個外掛程式的可用選項。</translation>
+    </message>
+    <message>
+        <source>Path to the platform plugins.</source>
+        <translation>平台外掛程式的路徑。</translation>
+    </message>
+    <message>
+        <source>Platform theme.</source>
+        <translation>平台主題。</translation>
+    </message>
+    <message>
+        <source>Additional plugins to load, can be specified multiple times.</source>
+        <translation>要載入的其他外掛程式，可指定多次。</translation>
+    </message>
+    <message>
+        <source>Window geometry for the main window, using the X11-syntax, like 100x100+50+50.</source>
+        <translation>主視窗的大小及位置，使用 X11 語法，例如 100x100+50+50。</translation>
+    </message>
+    <message>
+        <source>Default window icon.</source>
+        <translation>預設視窗圖示。</translation>
+    </message>
+    <message>
+        <source>Title of the first window.</source>
+        <translation>第一個視窗的標題。</translation>
+    </message>
+    <message>
+        <source>Sets the application&apos;s layout direction to Qt::RightToLeft (debugging helper).</source>
+        <translation>設定 Qt::RightToLeft 的應用程式佈局方向（除錯協助程式）。</translation>
+    </message>
+    <message>
+        <source>Restores the application from an earlier session.</source>
+        <translation>還原應用程式至稍早的工作階段。</translation>
+    </message>
+    <message>
+        <source>Display name, overrides $DISPLAY.</source>
+        <translation>顯示器名稱，覆蓋 $DISPLAY。</translation>
+    </message>
+    <message>
+        <source>Instance name according to ICCCM 4.1.2.5.</source>
+        <translation>根據 ICCCM 4.1.2.5 的實體名稱。</translation>
+    </message>
+    <message>
+        <source>Disable mouse grabbing (useful in debuggers).</source>
+        <translation>停用滑鼠抓取（可能對除錯器有助益）。</translation>
+    </message>
+    <message>
+        <source>Force mouse grabbing (even when running in a debugger).</source>
+        <translation>強制滑鼠抓取（即使在除錯器執行）。</translation>
+    </message>
+    <message>
+        <source>ID of the X11 Visual to use.</source>
+        <translation>X11 Visual 要使用的 ID。</translation>
+    </message>
+    <message>
+        <source>Alias for --windowgeometry.</source>
+        <translation>--windowgeometry 的別名。</translation>
+    </message>
+    <message>
+        <source>Alias for --windowicon.</source>
+        <translation>--windowicon 的別名。</translation>
+    </message>
+    <message>
+        <source>Alias for --windowtitle.</source>
+        <translation>--windowtitle 的別名。</translation>
+    </message>
 </context>
 <context>
     <name>QHostInfo</name>
@@ -1688,7 +1778,7 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
         <source>Unknown error (%1)</source>
-        <translation>未知錯誤 (%1)</translation>
+        <translation type="vanished">未知錯誤 (%1)</translation>
     </message>
 </context>
 <context>
@@ -2152,7 +2242,7 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
         <source>Out of memory while loading plugin &apos;%1&apos;.</source>
-        <translation>載入外掛程式「%1」時發生記憶體不足問題。</translation>
+        <translation type="vanished">載入外掛程式「%1」時發生記憶體不足問題。</translation>
     </message>
 </context>
 <context>
@@ -2445,7 +2535,7 @@ Do you want to delete it anyway?</source>
     </message>
     <message>
         <source>&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across all major desktop operating systems. It is also available for embedded Linux and other embedded and mobile operating systems.&lt;/p&gt;&lt;p&gt;Qt is available under three different licensing options designed to accommodate the needs of our various users.&lt;/p&gt;&lt;p&gt;Qt licensed under our commercial license agreement is appropriate for development of proprietary/commercial software where you do not want to share any source code with third parties or otherwise cannot comply with the terms of the GNU LGPL version 3.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU LGPL version 3 is appropriate for the development of Qt&amp;nbsp;applications provided you can comply with the terms and conditions of the GNU LGPL version 3.&lt;/p&gt;&lt;p&gt;Please see &lt;a href=&quot;http://%2/&quot;&gt;%2&lt;/a&gt; for an overview of Qt licensing.&lt;/p&gt;&lt;p&gt;Copyright (C) %1 The Qt Company Ltd and other contributors.&lt;/p&gt;&lt;p&gt;Qt and the Qt logo are trademarks of The Qt Company Ltd.&lt;/p&gt;&lt;p&gt;Qt is The Qt Company Ltd product developed as an open source project. See &lt;a href=&quot;http://%3/&quot;&gt;%3&lt;/a&gt; for more information.&lt;/p&gt;</source>
-        <translation>&lt;p&gt;Qt 是個用於跨平台應用程式開發的工具箱。&lt;/p&gt;
+        <translation type="vanished">&lt;p&gt;Qt 是個用於跨平台應用程式開發的工具箱。&lt;/p&gt;
 &lt;p&gt;Qt 提供了可移植單一來源以能在目前主流的桌面作業系統跨平台。其也支援嵌入式 Linux 和其他嵌入和行動作業系統。&lt;/p&gt;
 &lt;p&gt;Qt 可以用於三個不同的授權選項，以接納各個使用者的需求。&lt;/p&gt;
 &lt;p&gt;使用我們的商業授權條款授權的 Qt 適合拿來開發不希望公開源碼給第三方的專有或商業軟體，或者是無法完全遵守 GNU LGPL 第三版條款的軟體。&lt;/p&gt;
@@ -3760,7 +3850,7 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>Automatic</source>
-        <translation>自動</translation>
+        <translation type="vanished">自動</translation>
     </message>
 </context>
 <context>
@@ -4155,7 +4245,7 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>invalid escape sequence in character class</source>
-        <translation>字元類別中的跳脫序列無效</translation>
+        <translation type="vanished">字元類別中的跳脫序列無效</translation>
     </message>
     <message>
         <source>range out of order in character class</source>
@@ -4222,20 +4312,12 @@ Please turn one of those options off.</source>
         <translation>內部錯誤：代碼超出範圍</translation>
     </message>
     <message>
-        <source>letter or underscore expected after (?&lt; or (?&apos;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>lookbehind assertion is not fixed length</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>malformed number or name after (?(</source>
-        <translation>(?( 後的數字或名稱格式錯誤</translation>
-    </message>
-    <message>
-        <source>conditional group contains more than two branches</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">(?( 後的數字或名稱格式錯誤</translation>
     </message>
     <message>
         <source>assertion expected after (?( or (?(?C)</source>
@@ -4243,7 +4325,7 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>(?R or (?[+-]digits must be followed by )</source>
-        <translation>(?R 或 (?[+-]數字 後必須接 )</translation>
+        <translation type="vanished">(?R 或 (?[+-]數字 後必須接 )</translation>
     </message>
     <message>
         <source>unknown POSIX class name</source>
@@ -4267,15 +4349,11 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>invalid condition (?(0)</source>
-        <translation>條件式 (?(0) 無效</translation>
-    </message>
-    <message>
-        <source>\C is not allowed in a lookbehind assertion</source>
-        <translation type="unfinished"></translation>
+        <translation type="vanished">條件式 (?(0) 無效</translation>
     </message>
     <message>
         <source>PCRE does not support \L, \l, \N{name}, \U, or \u</source>
-        <translation>PCRE 不支援 \L、\l、\N{名稱}、\U 或 \u</translation>
+        <translation type="vanished">PCRE 不支援 \L、\l、\N{名稱}、\U 或 \u</translation>
     </message>
     <message>
         <source>number after (?C is greater than 255</source>
@@ -4295,7 +4373,7 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>syntax error in subpattern name (missing terminator)</source>
-        <translation>子樣式名稱語法錯誤 (缺少結束點)</translation>
+        <translation type="vanished">子樣式名稱語法錯誤 (缺少結束點)</translation>
     </message>
     <message>
         <source>two named subpatterns have the same name (PCRE2_DUPNAMES not set)</source>
@@ -4303,7 +4381,7 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>group name must start with a non-digit</source>
-        <translation>群組名稱不能以數字開頭</translation>
+        <translation type="vanished">群組名稱不能以數字開頭</translation>
     </message>
     <message>
         <source>this version of PCRE2 does not have support for \P, \p, or \X</source>
@@ -4319,11 +4397,11 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>subpattern name is too long (maximum 10000 characters)</source>
-        <translation>子樣式名稱過長 (最長 10000 字元)</translation>
+        <translation type="vanished">子樣式名稱過長 (最長 10000 字元)</translation>
     </message>
     <message>
         <source>too many named subpatterns (maximum 256)</source>
-        <translation>過多命名子樣式 (最多 256 個)</translation>
+        <translation type="vanished">過多命名子樣式 (最多 256 個)</translation>
     </message>
     <message>
         <source>invalid range in character class</source>
@@ -4343,7 +4421,7 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>DEFINE group contains more than one branch</source>
-        <translation>DEFINE 群組有超過一個分支</translation>
+        <translation type="vanished">DEFINE 群組有超過一個分支</translation>
     </message>
     <message>
         <source>missing opening brace after \o</source>
@@ -4358,12 +4436,8 @@ Please turn one of those options off.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>a numbered reference must not be zero</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>an argument is not allowed for (*ACCEPT), (*FAIL), or (*COMMIT)</source>
-        <translation>(*ACCEPT)、(*FAIL) 或 (*COMMIT) 不接受參數</translation>
+        <translation type="vanished">(*ACCEPT)、(*FAIL) 或 (*COMMIT) 不接受參數</translation>
     </message>
     <message>
         <source>(*VERB) not recognized or malformed</source>
@@ -4371,7 +4445,7 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>number is too big</source>
-        <translation>數字太大</translation>
+        <translation type="vanished">數字太大</translation>
     </message>
     <message>
         <source>subpattern name expected</source>
@@ -4379,7 +4453,7 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>digit expected after (?+</source>
-        <translation>(?+ 後應有數字</translation>
+        <translation type="vanished">(?+ 後應有數字</translation>
     </message>
     <message>
         <source>non-octal character in \o{} (closing brace missing?)</source>
@@ -4411,15 +4485,11 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>internal error: unknown opcode in find_fixedlength()</source>
-        <translation>內部錯誤：find_fixedlength() 中有未知 opcode</translation>
+        <translation type="vanished">內部錯誤：find_fixedlength() 中有未知 opcode</translation>
     </message>
     <message>
         <source>\N is not supported in a class</source>
         <translation>類別不支援 \N</translation>
-    </message>
-    <message>
-        <source>SPARE ERROR</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>disallowed Unicode code point (&gt;= 0xd800 &amp;&amp; &lt;= 0xdfff)</source>
@@ -4443,11 +4513,95 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>digits missing in \x{} or \o{}</source>
-        <translation>\x{} 或 \o{} 中沒有數字</translation>
+        <translation type="vanished">\x{} 或 \o{} 中沒有數字</translation>
     </message>
     <message>
         <source>syntax error in (?(VERSION condition</source>
-        <translation>(?(VERSION 條件式語法錯誤</translation>
+        <translation type="vanished">(?(VERSION 條件式語法錯誤</translation>
+    </message>
+    <message>
+        <source>escape sequence is invalid in character class</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>missing closing parenthesis for condition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>a relative value of zero is not allowed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>conditional subpattern contains more than two branches</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>digit expected after (?+ or (?-</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>lookbehind is too complicated</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>\C is not allowed in a lookbehind assertion in UTF-16 mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PCRE2 does not support \F, \L, \l, \N{name}, \U, or \u</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>syntax error in subpattern name (missing terminator?)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>subpattern name must start with a non-digit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>subpattern name is too long (maximum 32 code units)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>too many named subpatterns (maximum 10000)</source>
+        <translation type="unfinished">過多命名子樣式 (最多 256 個) {10000)?}</translation>
+    </message>
+    <message>
+        <source>DEFINE subpattern contains more than one branch</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(?R (recursive pattern call) must be followed by a closing parenthesis</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>obsolete error (should not occur)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>subpattern number is too big</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>internal error: parsed pattern overflow</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>internal error: unknown meta code in check_lookbehinds()</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>callout string is too long</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>digits missing in \x{} or \o{} or \N{U+}</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>syntax error or number too big in (?(VERSION condition</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>internal error: unknown opcode in auto_possessify()</source>
@@ -4483,6 +4637,46 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>pattern string is longer than the limit set by the application</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>internal error: unknown code in parsed pattern</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>internal error: bad code value in parsed_skip()</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PCRE2_EXTRA_ALLOW_SURROGATE_ESCAPES is not allowed in UTF-16 mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>invalid option bits with PCRE2_LITERAL</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>\N{U+dddd} is supported only in Unicode (UTF) mode</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>invalid hyphen in option setting</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>(*alpha_assertion) not recognized</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>script runs require Unicode support, which this version of PCRE2 does not have</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>too many capturing groups (maximum 65535)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>atomic assertion expected after (?( or (?(?C)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4694,7 +4888,31 @@ Please turn one of those options off.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>recursion limit exceeded</source>
+        <source>matching depth limit exceeded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>match with end before start or start moved backwards is not supported</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>bad serialized data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>heap limit exceeded</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>invalid syntax</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>internal error - duplicate substitution match</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>PCRE2_MATCH_INVALID_UTF is not supported for DFA matching</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4719,10 +4937,6 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>bad substitution in replacement string</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>match with end before start is not supported</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4825,8 +5039,12 @@ Please turn one of those options off.</source>
         <translation>檔案名稱對應到一個目錄</translation>
     </message>
     <message>
+        <source>QSaveFile cannot open &apos;%1&apos; without direct write fallback enabled.</source>
+        <translation>QSaveFile 只能在啟用直接寫入後援時開啟「%1」。</translation>
+    </message>
+    <message>
         <source>QSaveFile cannot open &apos;%1&apos; without direct write fallback enabled: path contains an Alternate Data Stream specifier</source>
-        <translation>QSaveFile 無法在沒啟用直接寫入 fallback 的情況下開啟「%1」：位置包含了一個備用檔案串流說明符</translation>
+        <translation type="vanished">QSaveFile 無法在沒啟用直接寫入 fallback 的情況下開啟「%1」：位置包含了一個備用檔案串流說明符</translation>
     </message>
     <message>
         <source>Writing canceled by application</source>
@@ -5248,6 +5466,14 @@ Please turn one of those options off.</source>
         <translation>啟動 (F)</translation>
     </message>
     <message>
+        <source>Launch (G)</source>
+        <translation>啟動 (G)</translation>
+    </message>
+    <message>
+        <source>Launch (H)</source>
+        <translation>啟動 (H)</translation>
+    </message>
+    <message>
         <source>Monitor Brightness Up</source>
         <translation>提高顯示器亮度</translation>
     </message>
@@ -5352,6 +5578,10 @@ Please turn one of those options off.</source>
         <translation>計算機</translation>
     </message>
     <message>
+        <source>Calendar</source>
+        <translation>行事曆</translation>
+    </message>
+    <message>
         <source>Clear</source>
         <translation>清除</translation>
     </message>
@@ -5362,6 +5592,10 @@ Please turn one of those options off.</source>
     <message>
         <source>Close</source>
         <translation>關閉</translation>
+    </message>
+    <message>
+        <source>Adjust contrast</source>
+        <translation>調整對比度</translation>
     </message>
     <message>
         <source>Copy</source>
@@ -5414,6 +5648,10 @@ Please turn one of those options off.</source>
     <message>
         <source>Meeting</source>
         <translation>通訊</translation>
+    </message>
+    <message>
+        <source>Memo</source>
+        <translation>備忘錄</translation>
     </message>
     <message>
         <source>Keyboard Menu</source>
@@ -5494,6 +5732,10 @@ Please turn one of those options off.</source>
     <message>
         <source>Terminal</source>
         <translation>終端器</translation>
+    </message>
+    <message>
+        <source>To-do list</source>
+        <translation>待辦事項清單</translation>
     </message>
     <message>
         <source>Tools</source>
@@ -5788,43 +6030,43 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>Kanji</source>
-        <translation type="unfinished"></translation>
+        <translation>漢字</translation>
     </message>
     <message>
         <source>Muhenkan</source>
-        <translation type="unfinished"></translation>
+        <translation>無變換</translation>
     </message>
     <message>
         <source>Henkan</source>
-        <translation type="unfinished"></translation>
+        <translation>變換</translation>
     </message>
     <message>
         <source>Romaji</source>
-        <translation type="unfinished"></translation>
+        <translation>羅馬字</translation>
     </message>
     <message>
         <source>Hiragana</source>
-        <translation type="unfinished"></translation>
+        <translation>平假名</translation>
     </message>
     <message>
         <source>Katakana</source>
-        <translation type="unfinished"></translation>
+        <translation>片假名</translation>
     </message>
     <message>
         <source>Hiragana Katakana</source>
-        <translation type="unfinished"></translation>
+        <translation>平假名 片假名</translation>
     </message>
     <message>
         <source>Zenkaku</source>
-        <translation type="unfinished"></translation>
+        <translation>全形</translation>
     </message>
     <message>
         <source>Hankaku</source>
-        <translation type="unfinished"></translation>
+        <translation>半形</translation>
     </message>
     <message>
         <source>Zenkaku Hankaku</source>
-        <translation type="unfinished"></translation>
+        <translation>全形 半形</translation>
     </message>
     <message>
         <source>Touroku</source>
@@ -5964,6 +6206,7 @@ Please turn one of those options off.</source>
     </message>
     <message>
         <source>+</source>
+        <extracomment>Key separator in shortcut string</extracomment>
         <translation>+</translation>
     </message>
     <message>
@@ -6292,12 +6535,12 @@ Role of an accessible object</extracomment>
     <message>
         <source>animation</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation>動畫</translation>
+        <translation type="unfinished">動畫</translation>
     </message>
     <message>
         <source>equation</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>方程式</translation>
     </message>
     <message>
         <source>button with drop down</source>
@@ -6382,7 +6625,7 @@ Role of an accessible object</extracomment>
     <message>
         <source>complementary content</source>
         <extracomment>Role of an accessible object</extracomment>
-        <translation type="unfinished"></translation>
+        <translation>附加內容</translation>
     </message>
     <message>
         <source>terminal</source>
@@ -6840,19 +7083,19 @@ Role of an accessible object</extracomment>
     </message>
     <message>
         <source>OCSP reponder&apos;s identity cannot be verified</source>
-        <translation>無法驗證 OCSP 回應器的身份</translation>
+        <translation type="vanished">無法驗證 OCSP 回應器的身份</translation>
     </message>
     <message>
         <source>The certificate provided can not be used for a %1.</source>
-        <translation>提供的憑證不能對 %1 使用。</translation>
+        <translation type="vanished">提供的憑證不能對 %1 使用。</translation>
     </message>
     <message>
         <source>client</source>
-        <translation>客戶端</translation>
+        <translation type="vanished">客戶端</translation>
     </message>
     <message>
         <source>server</source>
-        <translation>伺服器</translation>
+        <translation type="vanished">伺服器</translation>
     </message>
 </context>
 <context>
@@ -6943,6 +7186,10 @@ Role of an accessible object</extracomment>
     <message>
         <source>No common ancestor for targets and source of transition from state &apos;%1&apos;</source>
         <translation>來自「%1」的過渡狀態的來源和目標沒有共同上階項目</translation>
+    </message>
+    <message>
+        <source>Child mode of state machine &apos;%1&apos; is not &apos;ExclusiveStates&apos;.</source>
+        <translation>「%1」狀態機的子模式不是「ExclusiveStates」。</translation>
     </message>
     <message>
         <source>Unknown error</source>
@@ -7540,20 +7787,6 @@ The minimum Direct2D version required is %1. The Direct2D version on this system
     <message>
         <source>Invalid character reference.</source>
         <translation>無效的字元參考。</translation>
-    </message>
-</context>
-<context>
-    <name>Print Device Input Slot</name>
-    <message>
-        <source>Automatic</source>
-        <translation>自動</translation>
-    </message>
-</context>
-<context>
-    <name>Print Device Output Bin</name>
-    <message>
-        <source>Automatic</source>
-        <translation>自動</translation>
     </message>
 </context>
 </TS>

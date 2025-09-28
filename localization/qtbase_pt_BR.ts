@@ -41,6 +41,20 @@
     </message>
 </context>
 <context>
+    <name>Print Device Input Slot</name>
+    <message>
+        <source>Automatic</source>
+        <translation>Automático</translation>
+    </message>
+</context>
+<context>
+    <name>Print Device Output Bin</name>
+    <message>
+        <source>Automatic</source>
+        <translation>Automático</translation>
+    </message>
+</context>
+<context>
     <name>QAbstractSocket</name>
     <message>
         <source>Socket operation timed out</source>
@@ -222,10 +236,6 @@
 <context>
     <name>QCocoaMenuItem</name>
     <message>
-        <source>About Qt</source>
-        <translation>Sobre o Qt</translation>
-    </message>
-    <message>
         <source>About</source>
         <translation>Sobre</translation>
     </message>
@@ -272,6 +282,10 @@
     <message>
         <source>Select All</source>
         <translation>Selecionar tudo</translation>
+    </message>
+    <message>
+        <source>About Qt</source>
+        <translation>Sobre o Qt</translation>
     </message>
 </context>
 <context>
@@ -362,10 +376,6 @@ Pressione ESC para cancelar</translation>
     <message>
         <source>Displays version information.</source>
         <translation>Mostra informações sobre a versão.</translation>
-    </message>
-    <message>
-        <source>Displays this help.</source>
-        <translation>Mostra esta ajuda.</translation>
     </message>
     <message>
         <source>Displays help on commandline options.</source>
@@ -792,6 +802,69 @@ Pressione ESC para cancelar</translation>
     </message>
 </context>
 <context>
+    <name>QDomParser</name>
+    <message>
+        <source>Error occurred while processing XML declaration</source>
+        <translation>Ocorreu um erro ao processar a declaração XML</translation>
+    </message>
+    <message>
+        <source>Multiple DTD sections are not allowed</source>
+        <translation>Múltiplas seções DTD não são permitidas</translation>
+    </message>
+    <message>
+        <source>Error occurred while processing document type declaration</source>
+        <translation>Ocorreu um erro ao processar a declaração de tipo de documento</translation>
+    </message>
+    <message>
+        <source>Error occurred while processing comment</source>
+        <translation>Ocorreu um erro ao processar o comentário</translation>
+    </message>
+    <message>
+        <source>Error occurred while processing a processing instruction</source>
+        <translation>Ocorreu um erro ao processar uma instrução de processamento</translation>
+    </message>
+    <message>
+        <source>Error occurred while processing a start element</source>
+        <translation>Ocorreu um erro ao processar um elemento inicial</translation>
+    </message>
+    <message>
+        <source>Unexpected end element &apos;%1&apos;</source>
+        <translation>Elemento final não esperado &apos;%1&apos;</translation>
+    </message>
+    <message>
+        <source>Error occurred while processing an end element</source>
+        <translation>Ocorreu um erro ao processar um elemento final</translation>
+    </message>
+    <message>
+        <source>Error occurred while processing the element content</source>
+        <translation>Ocorreu um erro ao processar o conteúdo do elemento</translation>
+    </message>
+    <message>
+        <source>Error occurred while processing comments</source>
+        <translation>Ocorreu um erro ao processar os comentários</translation>
+    </message>
+    <message>
+        <source>Error occurred while processing an entity reference</source>
+        <translation>Ocorreu um erro ao processar uma referência de entidade</translation>
+    </message>
+    <message>
+        <source>Unexpected token</source>
+        <translation>Token não esperado</translation>
+    </message>
+    <message>
+        <source>Tag mismatch</source>
+        <translation>Etiqueta incompatível</translation>
+    </message>
+    <message>
+        <source>Error occurred while processing entity declaration</source>
+        <translation>Ocorreu um erro ao processar a declaração de entidade</translation>
+    </message>
+    <message>
+        <source>Error occurred while processing notation declaration</source>
+        <translation>Ocorreu um erro ao processar a declaração de notação</translation>
+    </message>
+</context>
+<context>
     <name>QDtls</name>
     <message>
         <source>Invalid (empty) secret</source>
@@ -988,16 +1061,12 @@ Pressione ESC para cancelar</translation>
         <translation>Não foi possível abrir %1 para entrada</translation>
     </message>
     <message>
-        <source>Cannot open for output</source>
-        <translation>Não foi possível abrir para saída</translation>
+        <source>Cannot open for output: %1</source>
+        <translation>Não foi possível abrir para saída: %1</translation>
     </message>
     <message>
         <source>Failure to write block</source>
         <translation>Falha na gravação do bloco</translation>
-    </message>
-    <message>
-        <source>Cannot open for output: %1</source>
-        <translation>Não foi possível abrir para saída: %1</translation>
     </message>
     <message>
         <source>Cannot create %1 for output</source>
@@ -1748,10 +1817,6 @@ para cada plugin.</translation>
         <source>Host not found</source>
         <translation>Servidor não encontrado</translation>
     </message>
-    <message>
-        <source>Unknown error (%1)</source>
-        <translation>Erro desconhecido (%1)</translation>
-    </message>
 </context>
 <context>
     <name>QHttp</name>
@@ -2182,10 +2247,6 @@ para cada plugin.</translation>
         <translation>Não foi possível descarregar a biblioteca %1: %2</translation>
     </message>
     <message>
-        <source>Cannot resolve symbol &quot;%1&quot; in %2: %3</source>
-        <translation>Não foi possível resolver o símbolo &quot;%1&quot; em %2: %3</translation>
-    </message>
-    <message>
         <source>&apos;%1&apos; is not a valid Mach-O binary (%2)</source>
         <translation>&apos;%1&apos; não é um executável Mach-O válido (%2)</translation>
     </message>
@@ -2321,6 +2382,10 @@ para cada plugin.</translation>
     <message>
         <source>%1: Access denied</source>
         <translation>%1: Acesso negado</translation>
+    </message>
+    <message>
+        <source>Socket is not connected</source>
+        <translation>O socket não está conectado</translation>
     </message>
 </context>
 <context>
@@ -2695,13 +2760,6 @@ para cada plugin.</translation>
     <message>
         <source>Error while uploading %1: %2</source>
         <translation>Ocorreu um erro ao enviar o %1: %2</translation>
-    </message>
-</context>
-<context>
-    <name>QNetworkAccessManager</name>
-    <message>
-        <source>Network access is disabled.</source>
-        <translation>O acesso à rede está desativado.</translation>
     </message>
 </context>
 <context>
@@ -3805,10 +3863,6 @@ Desative uma das opções.</translation>
         <source>OK</source>
         <translation>OK</translation>
     </message>
-    <message>
-        <source>Automatic</source>
-        <translation>Automático</translation>
-    </message>
 </context>
 <context>
     <name>QPrintPreviewDialog</name>
@@ -4014,6 +4068,22 @@ Desative uma das opções.</translation>
         <translation>Tons de cinza</translation>
     </message>
     <message>
+        <source>Double Sided Printing</source>
+        <translation>Impressão em dupla face</translation>
+    </message>
+    <message>
+        <source>Off</source>
+        <translation>Desligado</translation>
+    </message>
+    <message>
+        <source>Long side binding</source>
+        <translation>Encadernação no lado longo</translation>
+    </message>
+    <message>
+        <source>Short side binding</source>
+        <translation>Encadernação no lado curto</translation>
+    </message>
+    <message>
         <source>Duplex Printing</source>
         <translation>Impressão duplex</translation>
     </message>
@@ -4205,10 +4275,6 @@ Desative uma das opções.</translation>
         <translation>sequência de escape inválida na classe do caractere</translation>
     </message>
     <message>
-        <source>invalid escape sequence in character class</source>
-        <translation>sequência de escape inválida na classe do caractere</translation>
-    </message>
-    <message>
         <source>range out of order in character class</source>
         <translation>intervalo fora de ordem na classe do caractere</translation>
     </message>
@@ -4277,6 +4343,10 @@ Desative uma das opções.</translation>
         <translation>parêntese de fechamento ausente para a condição</translation>
     </message>
     <message>
+        <source>lookbehind assertion is not fixed length</source>
+        <translation>a declaração lookbehind não é de comprimento fixo</translation>
+    </message>
+    <message>
         <source>a relative value of zero is not allowed</source>
         <translation>não é permitido um valor relativo de zero</translation>
     </message>
@@ -4285,8 +4355,32 @@ Desative uma das opções.</translation>
         <translation>subpadrão condicional contém mais de duas ramificações</translation>
     </message>
     <message>
+        <source>assertion expected after (?( or (?(?C)</source>
+        <translation>afirmação esperada após (?( ou (?(?C)</translation>
+    </message>
+    <message>
         <source>digit expected after (?+ or (?-</source>
         <translation>dígito esperado após (?+ ou (?-</translation>
+    </message>
+    <message>
+        <source>unknown POSIX class name</source>
+        <translation>nome da classe POSIX desconhecido</translation>
+    </message>
+    <message>
+        <source>internal error in pcre2_study(): should not occur</source>
+        <translation>erro interno no pcre2_study(): não deve ocorrer</translation>
+    </message>
+    <message>
+        <source>this version of PCRE2 does not have Unicode support</source>
+        <translation>esta versão do PCRE2 não possui suporte a Unicode</translation>
+    </message>
+    <message>
+        <source>parentheses are too deeply nested (stack check)</source>
+        <translation>parênteses são extremamente aninhados (verificação de pilha)</translation>
+    </message>
+    <message>
+        <source>character code point value in \x{} or \o{} is too large</source>
+        <translation>o valor do ponto de código de caracteres em \x{} ou \o{} é muito grande</translation>
     </message>
     <message>
         <source>lookbehind is too complicated</source>
@@ -4301,12 +4395,44 @@ Desative uma das opções.</translation>
         <translation>O PCRE2 não suporta \F, \L, \l, \N{name}, \U, ou \u</translation>
     </message>
     <message>
+        <source>number after (?C is greater than 255</source>
+        <translation>número após (?C é maior que 255</translation>
+    </message>
+    <message>
+        <source>closing parenthesis for (?C expected</source>
+        <translation>era esperado o fechamento de parênteses para (?C</translation>
+    </message>
+    <message>
+        <source>invalid escape sequence in (*VERB) name</source>
+        <translation>sequência de escape inválida no nome (*VERB)</translation>
+    </message>
+    <message>
+        <source>unrecognized character after (?P</source>
+        <translation>caractere não reconhecido após (?P</translation>
+    </message>
+    <message>
         <source>syntax error in subpattern name (missing terminator?)</source>
         <translation>erro de sintaxe no nome do subpadrão (falta o terminador?)</translation>
     </message>
     <message>
+        <source>two named subpatterns have the same name (PCRE2_DUPNAMES not set)</source>
+        <translation>dois subpadrões nomeados têm o mesmo nome (PCRE2_DUPNAMES não definido)</translation>
+    </message>
+    <message>
         <source>subpattern name must start with a non-digit</source>
         <translation>o nome do subpadrão deve começar com não-dígito</translation>
+    </message>
+    <message>
+        <source>this version of PCRE2 does not have support for \P, \p, or \X</source>
+        <translation>esta versão do PCRE2 não possui suporte a \P, \p, ou \X</translation>
+    </message>
+    <message>
+        <source>malformed \P or \p sequence</source>
+        <translation>sequência inválida de \P ou \p</translation>
+    </message>
+    <message>
+        <source>unknown property name after \P or \p</source>
+        <translation>nome da propriedade desconhecido após \P ou \p</translation>
     </message>
     <message>
         <source>subpattern name is too long (maximum 32 code units)</source>
@@ -4317,8 +4443,36 @@ Desative uma das opções.</translation>
         <translation>muitos subpadrões nomeados (máximo 10000)</translation>
     </message>
     <message>
+        <source>invalid range in character class</source>
+        <translation>intervalo inválido na classe de caracteres</translation>
+    </message>
+    <message>
+        <source>octal value is greater than \377 in 8-bit non-UTF-8 mode</source>
+        <translation>o valor em octal é maior que \377 no modo 8-bit non-UTF-8</translation>
+    </message>
+    <message>
+        <source>internal error: overran compiling workspace</source>
+        <translation>erro interno: invasão do espaço de trabalho de compilação</translation>
+    </message>
+    <message>
+        <source>internal error: previously-checked referenced subpattern not found</source>
+        <translation>erro interno: o subpadrão referenciado anteriormente verificado não foi encontrado</translation>
+    </message>
+    <message>
         <source>DEFINE subpattern contains more than one branch</source>
         <translation>o subpadrão DEFINE contém mais de uma ramificação</translation>
+    </message>
+    <message>
+        <source>missing opening brace after \o</source>
+        <translation>falta abrir um colchete após \o</translation>
+    </message>
+    <message>
+        <source>internal error: unknown newline setting</source>
+        <translation>erro interno: configuração desconhecida de nova linha</translation>
+    </message>
+    <message>
+        <source>\g is not followed by a braced, angle-bracketed, or quoted name/number or by a plain number</source>
+        <translation>\g não é seguido por um colchete, parênteses de ângulo ou nome/número citado ou número simples</translation>
     </message>
     <message>
         <source>(?R (recursive pattern call) must be followed by a closing parenthesis</source>
@@ -4329,20 +4483,80 @@ Desative uma das opções.</translation>
         <translation>erro obsoleto (não deve ocorrer)</translation>
     </message>
     <message>
+        <source>(*VERB) not recognized or malformed</source>
+        <translation>(*VERB) não reconhecido ou malformado</translation>
+    </message>
+    <message>
         <source>subpattern number is too big</source>
         <translation>o número do subpadrão é muito grande</translation>
+    </message>
+    <message>
+        <source>subpattern name expected</source>
+        <translation>nome do subpadrão esperado</translation>
     </message>
     <message>
         <source>internal error: parsed pattern overflow</source>
         <translation>erro interno: superfluxo do padrão analisado</translation>
     </message>
     <message>
+        <source>non-octal character in \o{} (closing brace missing?)</source>
+        <translation>caracteres não-octais em \o{} (falta fechar o colchete?)</translation>
+    </message>
+    <message>
+        <source>different names for subpatterns of the same number are not allowed</source>
+        <translation>não são permitidos nomes diferentes nos subpadrões do mesmo número</translation>
+    </message>
+    <message>
+        <source>(*MARK) must have an argument</source>
+        <translation>(*MARK) deve ter um argumento</translation>
+    </message>
+    <message>
+        <source>non-hex character in \x{} (closing brace missing?)</source>
+        <translation>caracteres não-hexadecimais em \x{} (falta fechar o colchete?)</translation>
+    </message>
+    <message>
+        <source>\c must be followed by a printable ASCII character</source>
+        <translation>\c deve ser seguido por um caractere ASCII imprimível</translation>
+    </message>
+    <message>
+        <source>\c must be followed by a letter or one of [\]^_?</source>
+        <translation>\c deve ser seguido por uma letra ou um dos caracteres [\]^_?</translation>
+    </message>
+    <message>
+        <source>\k is not followed by a braced, angle-bracketed, or quoted name</source>
+        <translation>\k não é seguido por um colchete, parênteses de ângulo ou nome citado</translation>
+    </message>
+    <message>
         <source>internal error: unknown meta code in check_lookbehinds()</source>
         <translation>erro interno: código meta desconhecido em check_lookbehinds()</translation>
     </message>
     <message>
+        <source>\N is not supported in a class</source>
+        <translation>\N não é suportado na classe</translation>
+    </message>
+    <message>
         <source>callout string is too long</source>
         <translation>a string de chamada é muito longa</translation>
+    </message>
+    <message>
+        <source>disallowed Unicode code point (&gt;= 0xd800 &amp;&amp; &lt;= 0xdfff)</source>
+        <translation>não é permitido ponto de código Unicode (&gt;= 0xd800 &amp;&amp; &lt;= 0xdfff)</translation>
+    </message>
+    <message>
+        <source>using UTF is disabled by the application</source>
+        <translation>o uso de UTF está desativado pelo aplicativo</translation>
+    </message>
+    <message>
+        <source>using UCP is disabled by the application</source>
+        <translation>o uso de UCP está desativado pelo aplicativo</translation>
+    </message>
+    <message>
+        <source>name is too long in (*MARK), (*PRUNE), (*SKIP), or (*THEN)</source>
+        <translation>nome muito longo em (*MARK), (*PRUNE), (*SKIP) ou (*THEN)</translation>
+    </message>
+    <message>
+        <source>character code point value in \u.... sequence is too large</source>
+        <translation>o valor do ponto de código de caracteres na sequência \u.... é muito grande</translation>
     </message>
     <message>
         <source>digits missing in \x{} or \o{} or \N{U+}</source>
@@ -4351,6 +4565,42 @@ Desative uma das opções.</translation>
     <message>
         <source>syntax error or number too big in (?(VERSION condition</source>
         <translation>erro de sintaxe ou número muito grande na condição (?(VERSION</translation>
+    </message>
+    <message>
+        <source>internal error: unknown opcode in auto_possessify()</source>
+        <translation>erro interno: opção desconhecida em auto_possessify()</translation>
+    </message>
+    <message>
+        <source>missing terminating delimiter for callout with string argument</source>
+        <translation>delimitador de terminação ausente para chamada com argumento da string</translation>
+    </message>
+    <message>
+        <source>unrecognized string delimiter follows (?C</source>
+        <translation>o delimitador de string não reconhecido segue (?C</translation>
+    </message>
+    <message>
+        <source>using \C is disabled by the application</source>
+        <translation>o uso do \C é desativado pelo aplicativo</translation>
+    </message>
+    <message>
+        <source>(?| and/or (?J: or (?x: parentheses are too deeply nested</source>
+        <translation>(?| e/ou (?J: ou (?x: os parênteses são muito agrupados</translation>
+    </message>
+    <message>
+        <source>using \C is disabled in this PCRE2 library</source>
+        <translation>o uso do \C está desativado nesta biblioteca PCRE2</translation>
+    </message>
+    <message>
+        <source>regular expression is too complicated</source>
+        <translation>a expressão regular é muito complicada</translation>
+    </message>
+    <message>
+        <source>lookbehind assertion is too long</source>
+        <translation>a declaração lookbehind é muito longa</translation>
+    </message>
+    <message>
+        <source>pattern string is longer than the limit set by the application</source>
+        <translation>a string de padrões é mais longa do que o limite definido pelo aplicativo</translation>
     </message>
     <message>
         <source>internal error: unknown code in parsed pattern</source>
@@ -4391,270 +4641,6 @@ Desative uma das opções.</translation>
     <message>
         <source>atomic assertion expected after (?( or (?(?C)</source>
         <translation>declaração atômica esperada após (?( ou (?(?C)</translation>
-    </message>
-    <message>
-        <source>letter or underscore expected after (?&lt; or (?&apos;</source>
-        <translation>letra ou sublinhado esperado após (?&lt; ou (?&apos;</translation>
-    </message>
-    <message>
-        <source>lookbehind assertion is not fixed length</source>
-        <translation>a declaração lookbehind não é de comprimento fixo</translation>
-    </message>
-    <message>
-        <source>malformed number or name after (?(</source>
-        <translation>número ou nome mal formado após (?(</translation>
-    </message>
-    <message>
-        <source>conditional group contains more than two branches</source>
-        <translation>grupo condicional contém mais de duas ramificações</translation>
-    </message>
-    <message>
-        <source>assertion expected after (?( or (?(?C)</source>
-        <translation>afirmação esperada após (?( ou (?(?C)</translation>
-    </message>
-    <message>
-        <source>(?R or (?[+-]digits must be followed by )</source>
-        <translation>(?R ou (?[+-]dígitos devem ser seguidos de )</translation>
-    </message>
-    <message>
-        <source>unknown POSIX class name</source>
-        <translation>nome da classe POSIX desconhecido</translation>
-    </message>
-    <message>
-        <source>internal error in pcre2_study(): should not occur</source>
-        <translation>erro interno no pcre2_study(): não deve ocorrer</translation>
-    </message>
-    <message>
-        <source>this version of PCRE2 does not have Unicode support</source>
-        <translation>esta versão do PCRE2 não possui suporte a Unicode</translation>
-    </message>
-    <message>
-        <source>parentheses are too deeply nested (stack check)</source>
-        <translation>parênteses são extremamente aninhados (verificação de pilha)</translation>
-    </message>
-    <message>
-        <source>character code point value in \x{} or \o{} is too large</source>
-        <translation>o valor do ponto de código de caracteres em \x{} ou \o{} é muito grande</translation>
-    </message>
-    <message>
-        <source>invalid condition (?(0)</source>
-        <translation>condição inválida (?(0)</translation>
-    </message>
-    <message>
-        <source>\C is not allowed in a lookbehind assertion</source>
-        <translation>\C não é permitido em uma declaração lookbehind</translation>
-    </message>
-    <message>
-        <source>PCRE does not support \L, \l, \N{name}, \U, or \u</source>
-        <translation>PCRE não suporta\L, \l, \N{nome}, \U, ou \u</translation>
-    </message>
-    <message>
-        <source>number after (?C is greater than 255</source>
-        <translation>número após (?C é maior que 255</translation>
-    </message>
-    <message>
-        <source>closing parenthesis for (?C expected</source>
-        <translation>era esperado o fechamento de parênteses para (?C</translation>
-    </message>
-    <message>
-        <source>invalid escape sequence in (*VERB) name</source>
-        <translation>sequência de escape inválida no nome (*VERB)</translation>
-    </message>
-    <message>
-        <source>unrecognized character after (?P</source>
-        <translation>caractere não reconhecido após (?P</translation>
-    </message>
-    <message>
-        <source>syntax error in subpattern name (missing terminator)</source>
-        <translation>erro de sintaxe no nome do subpadrão (falta o terminador)</translation>
-    </message>
-    <message>
-        <source>two named subpatterns have the same name (PCRE2_DUPNAMES not set)</source>
-        <translation>dois subpadrões nomeados têm o mesmo nome (PCRE2_DUPNAMES não definido)</translation>
-    </message>
-    <message>
-        <source>group name must start with a non-digit</source>
-        <translation>o nome do grupo deve começar com um não-dígito</translation>
-    </message>
-    <message>
-        <source>this version of PCRE2 does not have support for \P, \p, or \X</source>
-        <translation>esta versão do PCRE2 não possui suporte a \P, \p, ou \X</translation>
-    </message>
-    <message>
-        <source>malformed \P or \p sequence</source>
-        <translation>sequência inválida de \P ou \p</translation>
-    </message>
-    <message>
-        <source>unknown property name after \P or \p</source>
-        <translation>nome da propriedade desconhecido após \P ou \p</translation>
-    </message>
-    <message>
-        <source>subpattern name is too long (maximum 10000 characters)</source>
-        <translation>o nome do subpadrão é muito longo (máximo 10000 caracteres)</translation>
-    </message>
-    <message>
-        <source>too many named subpatterns (maximum 256)</source>
-        <translation>muitos subpadrões nomeados (máximo 256)</translation>
-    </message>
-    <message>
-        <source>invalid range in character class</source>
-        <translation>intervalo inválido na classe de caracteres</translation>
-    </message>
-    <message>
-        <source>octal value is greater than \377 in 8-bit non-UTF-8 mode</source>
-        <translation>o valor em octal é maior que \377 no modo 8-bit non-UTF-8</translation>
-    </message>
-    <message>
-        <source>internal error: overran compiling workspace</source>
-        <translation>erro interno: invasão do espaço de trabalho de compilação</translation>
-    </message>
-    <message>
-        <source>internal error: previously-checked referenced subpattern not found</source>
-        <translation>erro interno: o subpadrão referenciado anteriormente verificado não foi encontrado</translation>
-    </message>
-    <message>
-        <source>DEFINE group contains more than one branch</source>
-        <translation>grupo DEFINE contém mais de uma ramificação</translation>
-    </message>
-    <message>
-        <source>missing opening brace after \o</source>
-        <translation>falta abrir um colchete após \o</translation>
-    </message>
-    <message>
-        <source>internal error: unknown newline setting</source>
-        <translation>erro interno: configuração desconhecida de nova linha</translation>
-    </message>
-    <message>
-        <source>\g is not followed by a braced, angle-bracketed, or quoted name/number or by a plain number</source>
-        <translation>\g não é seguido por um colchete, parênteses de ângulo ou nome/número citado ou número simples</translation>
-    </message>
-    <message>
-        <source>a numbered reference must not be zero</source>
-        <translation>uma referência numerada não deve ser zero</translation>
-    </message>
-    <message>
-        <source>an argument is not allowed for (*ACCEPT), (*FAIL), or (*COMMIT)</source>
-        <translation>um argumento não é permitido para (*ACCEPT), (*FAIL), ou (*COMMIT)</translation>
-    </message>
-    <message>
-        <source>(*VERB) not recognized or malformed</source>
-        <translation>(*VERB) não reconhecido ou malformado</translation>
-    </message>
-    <message>
-        <source>number is too big</source>
-        <translation>número muito grande</translation>
-    </message>
-    <message>
-        <source>subpattern name expected</source>
-        <translation>nome do subpadrão esperado</translation>
-    </message>
-    <message>
-        <source>digit expected after (?+</source>
-        <translation>dígito esperado após (?+</translation>
-    </message>
-    <message>
-        <source>non-octal character in \o{} (closing brace missing?)</source>
-        <translation>caracteres não-octais em \o{} (falta fechar o colchete?)</translation>
-    </message>
-    <message>
-        <source>different names for subpatterns of the same number are not allowed</source>
-        <translation>não são permitidos nomes diferentes nos subpadrões do mesmo número</translation>
-    </message>
-    <message>
-        <source>(*MARK) must have an argument</source>
-        <translation>(*MARK) deve ter um argumento</translation>
-    </message>
-    <message>
-        <source>non-hex character in \x{} (closing brace missing?)</source>
-        <translation>caracteres não-hexadecimais em \x{} (falta fechar o colchete?)</translation>
-    </message>
-    <message>
-        <source>\c must be followed by a printable ASCII character</source>
-        <translation>\c deve ser seguido por um caractere ASCII imprimível</translation>
-    </message>
-    <message>
-        <source>\c must be followed by a letter or one of [\]^_?</source>
-        <translation>\c deve ser seguido por uma letra ou um dos caracteres [\]^_?</translation>
-    </message>
-    <message>
-        <source>\k is not followed by a braced, angle-bracketed, or quoted name</source>
-        <translation>\k não é seguido por um colchete, parênteses de ângulo ou nome citado</translation>
-    </message>
-    <message>
-        <source>internal error: unknown opcode in find_fixedlength()</source>
-        <translation>erro interno: opção desconhecida em find_fixedlength()</translation>
-    </message>
-    <message>
-        <source>\N is not supported in a class</source>
-        <translation>\N não é suportado na classe</translation>
-    </message>
-    <message>
-        <source>SPARE ERROR</source>
-        <translation>Erro de reposição</translation>
-    </message>
-    <message>
-        <source>disallowed Unicode code point (&gt;= 0xd800 &amp;&amp; &lt;= 0xdfff)</source>
-        <translation>não é permitido ponto de código Unicode (&gt;= 0xd800 &amp;&amp; &lt;= 0xdfff)</translation>
-    </message>
-    <message>
-        <source>using UTF is disabled by the application</source>
-        <translation>o uso de UTF está desativado pelo aplicativo</translation>
-    </message>
-    <message>
-        <source>using UCP is disabled by the application</source>
-        <translation>o uso de UCP está desativado pelo aplicativo</translation>
-    </message>
-    <message>
-        <source>name is too long in (*MARK), (*PRUNE), (*SKIP), or (*THEN)</source>
-        <translation>nome muito longo em (*MARK), (*PRUNE), (*SKIP) ou (*THEN)</translation>
-    </message>
-    <message>
-        <source>character code point value in \u.... sequence is too large</source>
-        <translation>o valor do ponto de código de caracteres na sequência \u.... é muito grande</translation>
-    </message>
-    <message>
-        <source>digits missing in \x{} or \o{}</source>
-        <translation>faltam dígitos em \x{} ou \o{}</translation>
-    </message>
-    <message>
-        <source>syntax error in (?(VERSION condition</source>
-        <translation>erro de sintaxe na condição (?(VERSION</translation>
-    </message>
-    <message>
-        <source>internal error: unknown opcode in auto_possessify()</source>
-        <translation>erro interno: opção desconhecida em auto_possessify()</translation>
-    </message>
-    <message>
-        <source>missing terminating delimiter for callout with string argument</source>
-        <translation>delimitador de terminação ausente para chamada com argumento da string</translation>
-    </message>
-    <message>
-        <source>unrecognized string delimiter follows (?C</source>
-        <translation>o delimitador de string não reconhecido segue (?C</translation>
-    </message>
-    <message>
-        <source>using \C is disabled by the application</source>
-        <translation>o uso do \C é desativado pelo aplicativo</translation>
-    </message>
-    <message>
-        <source>(?| and/or (?J: or (?x: parentheses are too deeply nested</source>
-        <translation>(?| e/ou (?J: ou (?x: os parênteses são muito agrupados</translation>
-    </message>
-    <message>
-        <source>using \C is disabled in this PCRE2 library</source>
-        <translation>o uso do \C está desativado nesta biblioteca PCRE2</translation>
-    </message>
-    <message>
-        <source>regular expression is too complicated</source>
-        <translation>a expressão regular é muito complicada</translation>
-    </message>
-    <message>
-        <source>lookbehind assertion is too long</source>
-        <translation>a declaração lookbehind é muito longa</translation>
-    </message>
-    <message>
-        <source>pattern string is longer than the limit set by the application</source>
-        <translation>a string de padrões é mais longa do que o limite definido pelo aplicativo</translation>
     </message>
     <message>
         <source>no match</source>
@@ -4869,34 +4855,6 @@ Desative uma das opções.</translation>
         <translation>limite de profundidade correspondente excedido</translation>
     </message>
     <message>
-        <source>match with end before start or start moved backwards is not supported</source>
-        <translation>a correspondência com o fim antes do início ou início movido para trás não é suportado</translation>
-    </message>
-    <message>
-        <source>bad serialized data</source>
-        <translation>dados serializados ruins</translation>
-    </message>
-    <message>
-        <source>heap limit exceeded</source>
-        <translation>limite de pilhas excedido</translation>
-    </message>
-    <message>
-        <source>invalid syntax</source>
-        <translation>sintaxe inválida</translation>
-    </message>
-    <message>
-        <source>internal error - duplicate substitution match</source>
-        <translation>erro interno - correspondência de substituição duplicada</translation>
-    </message>
-    <message>
-        <source>PCRE2_MATCH_INVALID_UTF is not supported for DFA matching</source>
-        <translation>não há suporte de PCRE2_MATCH_INVALID_UTF para correspondência DFA</translation>
-    </message>
-    <message>
-        <source>recursion limit exceeded</source>
-        <translation>limite de repetiçaõ excedido</translation>
-    </message>
-    <message>
         <source>requested value is not available</source>
         <translation>valor solicitado não está disponível</translation>
     </message>
@@ -4921,12 +4879,32 @@ Desative uma das opções.</translation>
         <translation>má substituição na string de substituição</translation>
     </message>
     <message>
-        <source>match with end before start is not supported</source>
-        <translation>a correspondência com o fim antes do início não é suportado</translation>
+        <source>match with end before start or start moved backwards is not supported</source>
+        <translation>a correspondência com o fim antes do início ou início movido para trás não é suportado</translation>
     </message>
     <message>
         <source>too many replacements (more than INT_MAX)</source>
         <translation>muitas substituições (mais de INT_MAX)</translation>
+    </message>
+    <message>
+        <source>bad serialized data</source>
+        <translation>dados serializados ruins</translation>
+    </message>
+    <message>
+        <source>heap limit exceeded</source>
+        <translation>limite de pilhas excedido</translation>
+    </message>
+    <message>
+        <source>invalid syntax</source>
+        <translation>sintaxe inválida</translation>
+    </message>
+    <message>
+        <source>internal error - duplicate substitution match</source>
+        <translation>erro interno - correspondência de substituição duplicada</translation>
+    </message>
+    <message>
+        <source>PCRE2_MATCH_INVALID_UTF is not supported for DFA matching</source>
+        <translation>não há suporte de PCRE2_MATCH_INVALID_UTF para correspondência DFA</translation>
     </message>
 </context>
 <context>
@@ -5022,10 +5000,6 @@ Desative uma das opções.</translation>
     <message>
         <source>Filename refers to a directory</source>
         <translation>O nome do arquivo se refere a uma pasta</translation>
-    </message>
-    <message>
-        <source>QSaveFile cannot open &apos;%1&apos; without direct write fallback enabled: path contains an Alternate Data Stream specifier</source>
-        <translation>O QSaveFile não pode abrir &apos;%1&apos; sem que a gravação direta seja ativada: o caminho contém um especificador de fluxo de dados alternativo</translation>
     </message>
     <message>
         <source>QSaveFile cannot open &apos;%1&apos; without direct write fallback enabled.</source>
@@ -6655,34 +6629,6 @@ Role of an accessible object</extracomment>
         <translation>Erro ao definir a configuração do OpenSSL (%1)</translation>
     </message>
     <message>
-        <source>Expecting QByteArray for %1</source>
-        <translation>Aguardando QByteArray para %1</translation>
-    </message>
-    <message>
-        <source>An error occurred attempting to set %1 to %2</source>
-        <translation>Ocorreu um erro na tentativa de definir %1 para %2</translation>
-    </message>
-    <message>
-        <source>Wrong value for %1 (%2)</source>
-        <translation>Valor incorreto para %1 (%2)</translation>
-    </message>
-    <message>
-        <source>Unrecognized command %1 = %2</source>
-        <translation>Comando não reconhecido %1 = %2</translation>
-    </message>
-    <message>
-        <source>SSL_CONF_finish() failed</source>
-        <translation>SSL_CONF_finish() falhou</translation>
-    </message>
-    <message>
-        <source>SSL_CONF_CTX_new() failed</source>
-        <translation>SSL_CONF_CTX_new() falhou</translation>
-    </message>
-    <message>
-        <source>OpenSSL version too old, need at least v1.0.2</source>
-        <translation>A versão do OpenSSL é muito antiga, deve ser no mínimo a v1.0.2</translation>
-    </message>
-    <message>
         <source>Error when setting the elliptic curves (%1)</source>
         <translation>Erro ao definir as curvas elípticas (%1)</translation>
     </message>
@@ -6731,8 +6677,28 @@ Role of an accessible object</extracomment>
         <translation>Versão OpenSSL com curvas elípticas desativadas</translation>
     </message>
     <message>
-        <source>DTLS server requires a &apos;VerifyNone&apos; mode with your version of OpenSSL</source>
-        <translation>O servidor DTLS requer um modo &apos;VerifyNone&apos; com sua versão do OpenSSL</translation>
+        <source>Expecting QByteArray for %1</source>
+        <translation>Aguardando QByteArray para %1</translation>
+    </message>
+    <message>
+        <source>An error occurred attempting to set %1 to %2</source>
+        <translation>Ocorreu um erro na tentativa de definir %1 para %2</translation>
+    </message>
+    <message>
+        <source>Wrong value for %1 (%2)</source>
+        <translation>Valor incorreto para %1 (%2)</translation>
+    </message>
+    <message>
+        <source>Unrecognized command %1 = %2</source>
+        <translation>Comando não reconhecido %1 = %2</translation>
+    </message>
+    <message>
+        <source>SSL_CONF_finish() failed</source>
+        <translation>SSL_CONF_finish() falhou</translation>
+    </message>
+    <message>
+        <source>SSL_CONF_CTX_new() failed</source>
+        <translation>SSL_CONF_CTX_new() falhou</translation>
     </message>
     <message>
         <source>No error</source>
@@ -7065,6 +7031,14 @@ Role of an accessible object</extracomment>
     <message>
         <source>Cannot provide a certificate with no key</source>
         <translation>Não é possível fornecer um certificado sem chave</translation>
+    </message>
+    <message>
+        <source>OpenSSL version too old, need at least v1.0.2</source>
+        <translation>A versão do OpenSSL é muito antiga, deve ser no mínimo a v1.0.2</translation>
+    </message>
+    <message>
+        <source>DTLS server requires a &apos;VerifyNone&apos; mode with your version of OpenSSL</source>
+        <translation>O servidor DTLS requer um modo &apos;VerifyNone&apos; com sua versão do OpenSSL</translation>
     </message>
 </context>
 <context>
@@ -7522,7 +7496,7 @@ A versão mínima necessária do Direct2D é %1. A versão do Direct2D neste sis
     </message>
     <message>
         <source>tag mismatch</source>
-        <translation>tag incompatível</translation>
+        <translation>Etiqueta incompatível</translation>
     </message>
     <message>
         <source>error occurred while parsing content</source>
@@ -7704,16 +7678,12 @@ A versão mínima necessária do Direct2D é %1. A versão do Direct2D neste sis
         <translation>Eram esperados dados de texto.</translation>
     </message>
     <message>
-        <source>Recursive entity detected.</source>
-        <translation>Entidade recursiva detectada.</translation>
-    </message>
-    <message>
         <source>Self-referencing entity detected.</source>
-        <translation>Entidade referenciada em si detectada.</translation>
+        <translation>Entidade referenciando a si mesmo detectada.</translation>
     </message>
     <message>
         <source>Entity expands to more characters than the entity expansion limit.</source>
-        <translation>Entidade expandida para mais caracteres que o limite de expansão da entidade.</translation>
+        <translation>A entidade expande para mais caracteres que o limite de expansão da entidade.</translation>
     </message>
     <message>
         <source>Start tag expected.</source>
@@ -7763,19 +7733,16 @@ A versão mínima necessária do Direct2D é %1. A versão do Direct2D neste sis
         <source>Invalid character reference.</source>
         <translation>Referência de caracteres inválida.</translation>
     </message>
-</context>
-<context>
-    <name>Print Device Input Slot</name>
     <message>
-        <source>Automatic</source>
-        <translation>Automático</translation>
+        <source>Recursive entity detected.</source>
+        <translation>Entidade recursiva detectada.</translation>
     </message>
 </context>
 <context>
-    <name>Print Device Output Bin</name>
+    <name>QNetworkAccessManager</name>
     <message>
-        <source>Automatic</source>
-        <translation>Automático</translation>
+        <source>Network access is disabled.</source>
+        <translation>O acesso à rede está desativado.</translation>
     </message>
 </context>
 </TS>

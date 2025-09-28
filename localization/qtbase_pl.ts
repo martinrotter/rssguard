@@ -4794,7 +4794,7 @@ Wyłącz jedną z tych opcji.</translation>
     </message>
     <message>
         <source>Home</source>
-        <translation>Katalog domowy</translation>
+        <translation>Home</translation>
     </message>
     <message>
         <source>End</source>
