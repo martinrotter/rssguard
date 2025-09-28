@@ -98,7 +98,7 @@ bool DatabaseQueries::isLabelAssignedToMessage(const QSqlDatabase& db, Label* la
 
   q.exec() && q.next();
 
-  return q.record().value(0).toInt() > 0;
+  return q.value(0).toInt() > 0;
 }
 
 bool DatabaseQueries::deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg) {

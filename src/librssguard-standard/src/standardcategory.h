@@ -5,8 +5,6 @@
 
 #include <librssguard/services/abstract/category.h>
 
-#include <QSqlRecord>
-
 class StandardServiceRoot;
 
 class StandardCategory : public Category {
