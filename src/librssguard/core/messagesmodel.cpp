@@ -161,11 +161,9 @@ void MessagesModel::repopulate(int additional_article_id) {
     qCriticalNN << LOGSEC_MESSAGEMODEL << "Used SQL select statement:" << QUOTE_W_SPACE_DOT(statemnt);
   }
 
-  /*
   while (canFetchMore()) {
     fetchMore();
   }
-  */
 
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulated model, SQL statement is now:\n" << QUOTE_W_SPACE_DOT(statemnt);
 }
@@ -666,9 +664,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
   }
 
   if (DatabaseQueries::markMessagesReadUnread(m_db, QStringList() << QString::number(message.m_id), read)) {
-    return m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem,
-                                                                          QList<Message>() << message,
-                                                                          read);
+    return m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, QList<Message>() << message, read);
   }
   else {
     return false;
@@ -721,8 +717,9 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   const Message message = messageAt(row_index);
   const QPair<Message, RootItem::Importance> pair(message, next_importance);
 
-  if (!m_selectedItem->account()
-         ->onBeforeSwitchMessageImportance(m_selectedItem, QList<QPair<Message, RootItem::Importance>>() << pair)) {
+  if (!m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem,
+                                                                  QList<QPair<Message, RootItem::Importance>>()
+                                                                    << pair)) {
     return false;
   }
 
@@ -741,8 +738,9 @@ bool MessagesModel::switchMessageImportance(int row_index) {
                      index(row_index, MSG_DB_FEED_CUSTOM_ID_INDEX),
                      QVector<int>() << Qt::FontRole);
 
-    return m_selectedItem->account()
-      ->onAfterSwitchMessageImportance(m_selectedItem, QList<QPair<Message, RootItem::Importance>>() << pair);
+    return m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem,
+                                                                     QList<QPair<Message, RootItem::Importance>>()
+                                                                       << pair);
   }
   else {
     return false;
