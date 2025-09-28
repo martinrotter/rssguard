@@ -154,25 +154,14 @@ void FeedsToolBar::handleMessageFilterChange(QAction* action) {
 }
 
 QStringList FeedsToolBar::defaultActions() const {
-  return QString(GUI::FeedsToolbarActionsDef)
-    .split(',',
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-           Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-           QString::SplitBehavior::SkipEmptyParts);
-#endif
+  return QString(GUI::FeedsToolbarActionsDef).split(QChar(','), SPLIT_BEHAVIOR::SkipEmptyParts);
 }
 
 QStringList FeedsToolBar::savedActions() const {
   return qApp->settings()
     ->value(GROUP(GUI), SETTING(GUI::FeedsToolbarActions))
     .toString()
-    .split(',',
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-           Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-           QString::SplitBehavior::SkipEmptyParts);
-#endif
+    .split(QChar(','), SPLIT_BEHAVIOR::SkipEmptyParts);
 }
 
 QList<QAction*> FeedsToolBar::extraActions() const {

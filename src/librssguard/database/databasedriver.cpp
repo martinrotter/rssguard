@@ -72,12 +72,7 @@ QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
   QStringList statements;
   QString next_file = base_sql_folder + QDir::separator() + sql_file;
   QString sql_script = QString::fromUtf8(IOFactory::readFile(next_file));
-  QStringList new_statements = sql_script.split(QSL(APP_DB_COMMENT_SPLIT),
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                                QString::SplitBehavior::SkipEmptyParts);
-#endif
+  QStringList new_statements = sql_script.split(QSL(APP_DB_COMMENT_SPLIT), SPLIT_BEHAVIOR::SkipEmptyParts);
 
   for (int i = 0; i < new_statements.size(); i++) {
     if (new_statements.at(i).startsWith(QSL(APP_DB_INCLUDE_PLACEHOLDER))) {
@@ -86,12 +81,8 @@ QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
 
       QString included_file = base_sql_folder + QDir::separator() + included_file_name;
       QString included_sql_script = QString::fromUtf8(IOFactory::readFile(included_file));
-      QStringList included_statements = included_sql_script.split(QSL(APP_DB_COMMENT_SPLIT),
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                                  Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                                                  QString::SplitBehavior::SkipEmptyParts);
-#endif
+      QStringList included_statements =
+        included_sql_script.split(QSL(APP_DB_COMMENT_SPLIT), SPLIT_BEHAVIOR::SkipEmptyParts);
 
       statements << included_statements;
     }

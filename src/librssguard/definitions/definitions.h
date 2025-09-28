@@ -57,9 +57,17 @@
 #define DEFAULT_SQL_MESSAGES_FILTER "0 > 1"
 #define MAX_MULTICOLUMN_SORT_STATES 3
 
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+#define SPLIT_BEHAVIOR Qt::SplitBehaviorFlags
+#else
+#define SPLIT_BEHAVIOR QString::SplitBehavior
+#endif
+
 #define RELEASES_LIST "https://api.github.com/repos/martinrotter/rssguard/releases"
-#define URL_REGEXP                                                                                             \
-  "^(http|https|feed|ftp):\\/\\/[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/~\\+#]*[\\w\\-\\@?^=%&amp;/" \
+#define URL_REGEXP                                     \
+  "^(http|https|feed|ftp):\\/\\/"                      \
+  "[\\w\\-_]+(\\.[\\w\\-_]+)+([\\w\\-\\.,@?^=%&amp;:/" \
+  "~\\+#]*[\\w\\-\\@?^=%&amp;/"                        \
   "~\\+#])?$"
 #define SCRIPT_SOURCE_TYPE_REGEXP    "^.+#.*$"
 #define TEXT_TITLE_LIMIT             30
@@ -172,12 +180,15 @@
 #define DEFAULT_ZOOM_FACTOR 1.0f
 #define ZOOM_FACTOR_STEP    0.025f
 
-#define HTTP_COMPLETE_USERAGENT                                                                          \
-  (QByteArrayLiteral("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) " \
-                     "Chrome/136.0.0.0 Safari/537.36 ") +                                                \
+#define HTTP_COMPLETE_USERAGENT                                   \
+  (QByteArrayLiteral("Mozilla/5.0 (Windows NT 10.0; Win64; x64) " \
+                     "AppleWebKit/537.36 (KHTML, like Gecko) "    \
+                     "Chrome/136.0.0.0 Safari/537.36 ") +         \
    QByteArrayLiteral(APP_USERAGENT))
 
-#define FEED_REGEX_MATCHER      "<link[^>]+type=\"application\\/(?:atom\\+xml|rss\\+xml|feed\\+json|json)\"[^>]*>"
+#define FEED_REGEX_MATCHER          \
+  "<link[^>]+type=\"application\\/" \
+  "(?:atom\\+xml|rss\\+xml|feed\\+json|json)\"[^>]*>"
 #define FEED_HREF_REGEX_MATCHER "href=\"([^\"]+)\""
 
 #define PLACEHOLDER_UNREAD_COUNTS "%unread"
@@ -374,8 +385,9 @@
 // Thin macro wrapper for literal strings.
 // They are much more memory efficient and faster.
 // Use it for all literals except for two cases:
-//  a) Methods which take QLatin1String (use QLatin1String for literal argument too),
-//  b) Construction of empty literals "", use QString() instead of QStringLiteral("").
+//  a) Methods which take QLatin1String (use QLatin1String for literal argument
+//  too), b) Construction of empty literals "", use QString() instead of
+//  QStringLiteral("").
 #define QSL(x) QStringLiteral(x)
 #endif
 

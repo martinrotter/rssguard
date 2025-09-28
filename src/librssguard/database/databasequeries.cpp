@@ -52,14 +52,6 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool only_msg_table, 
 
   field_names[MSG_DB_LABELS_IDS] = QSL("Messages.labels");
 
-  // TODO: zpomaluje zobrazeni seznamu zprav
-  /*
-  field_names[MSG_DB_LABELS] =
-    QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Labels.custom_id IN (SELECT "
-        "LabelsInMessages.label FROM LabelsInMessages WHERE LabelsInMessages.account_id = "
-        "Messages.account_id AND LabelsInMessages.message = Messages.custom_id)) as msg_labels");
-        */
-
   return field_names;
 }
 
@@ -198,12 +190,7 @@ QList<Label*> DatabaseQueries::getLabelsForMessage(const QSqlDatabase& db,
   q.bindValue(QSL(":message"), msg.m_customId.isEmpty() ? QString::number(msg.m_id) : msg.m_customId);
 
   if (q.exec() && q.next()) {
-    auto label_ids = q.value(0).toString().split('.',
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                 Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                                 QString::SplitBehavior::SkipEmptyParts);
-#endif
+    auto label_ids = q.value(0).toString().split(QChar('.'), SPLIT_BEHAVIOR::SkipEmptyParts);
 
     auto iter = boolinq::from(installed_labels);
 
@@ -1162,12 +1149,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForProbe(const QSqlDatabase&
 
   if (q.exec()) {
     while (q.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(q.record(), &decoded);
+      Message message = Message::fromSqlQuery(q);
 
-      if (decoded) {
-        messages.append(message);
-      }
+      messages.append(message);
     }
   }
   else {
@@ -1199,12 +1183,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesWithLabel(const QSqlDatabase
 
   if (q.exec()) {
     while (q.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(q.record(), &decoded);
+      Message message = Message::fromSqlQuery(q);
 
-      if (decoded) {
-        messages.append(message);
-      }
+      messages.append(message);
     }
 
     if (ok != nullptr) {
@@ -1240,12 +1221,9 @@ QList<Message> DatabaseQueries::getUndeletedLabelledMessages(const QSqlDatabase&
 
   if (q.exec()) {
     while (q.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(q.record(), &decoded);
+      Message message = Message::fromSqlQuery(q);
 
-      if (decoded) {
-        messages.append(message);
-      }
+      messages.append(message);
     }
 
     if (ok != nullptr) {
@@ -1279,12 +1257,9 @@ QList<Message> DatabaseQueries::getUndeletedImportantMessages(const QSqlDatabase
 
   if (q.exec()) {
     while (q.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(q.record(), &decoded);
+      Message message = Message::fromSqlQuery(q);
 
-      if (decoded) {
-        messages.append(message);
-      }
+      messages.append(message);
     }
 
     if (ok != nullptr) {
@@ -1316,12 +1291,9 @@ QList<Message> DatabaseQueries::getUndeletedUnreadMessages(const QSqlDatabase& d
 
   if (q.exec()) {
     while (q.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(q.record(), &decoded);
+      Message message = Message::fromSqlQuery(q);
 
-      if (decoded) {
-        messages.append(message);
-      }
+      messages.append(message);
     }
 
     if (ok != nullptr) {
@@ -1332,77 +1304,6 @@ QList<Message> DatabaseQueries::getUndeletedUnreadMessages(const QSqlDatabase& d
     if (ok != nullptr) {
       *ok = false;
     }
-  }
-
-  return messages;
-}
-
-QList<Message> DatabaseQueries::getArticlesSlice(const QSqlDatabase& db,
-                                                 const QString& feed_custom_id,
-                                                 int account_id,
-                                                 bool newest_first,
-                                                 bool unread_only,
-                                                 bool starred_only,
-                                                 qint64 start_after_article_date,
-                                                 int row_offset,
-                                                 int row_limit) {
-  QList<Message> messages;
-  QSqlQuery q(db);
-  QString feed_clause = !feed_custom_id.isEmpty() ? QSL("Messages.feed = :feed AND") : QString();
-  QString is_read_clause = unread_only ? QSL("Messages.is_read = :is_read AND ") : QString();
-  QString is_starred_clause = starred_only ? QSL("Messages.is_important = :is_important AND ") : QString();
-  QString account_id_clause = account_id > 0 ? QSL("Messages.account_id = :account_id AND ") : QString();
-  QString date_created_clause;
-
-  if (start_after_article_date > 0) {
-    if (newest_first) {
-      date_created_clause = QSL("Messages.date_created < :date_created AND ");
-    }
-    else {
-      date_created_clause = QSL("Messages.date_created > :date_created AND ");
-    }
-  }
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT %1 "
-                "FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id AND "
-                "                                 Messages.account_id = Feeds.account_id "
-                "WHERE %3 "
-                "      %4 "
-                "      %5 "
-                "      %6 "
-                "      %7 "
-                "      Messages.is_deleted = 0 AND "
-                "      Messages.is_pdeleted = 0 "
-                "ORDER BY Messages.date_created %2 "
-                "LIMIT :row_limit OFFSET :row_offset;")
-              .arg(messageTableAttributes(false, db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", ")),
-                   newest_first ? QSL("DESC") : QSL("ASC"),
-                   feed_clause,
-                   date_created_clause,
-                   account_id_clause,
-                   is_read_clause,
-                   is_starred_clause));
-  q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":row_limit"), row_limit);
-  q.bindValue(QSL(":row_offset"), row_offset);
-  q.bindValue(QSL(":feed"), feed_custom_id);
-  q.bindValue(QSL(":is_read"), 0);
-  q.bindValue(QSL(":is_important"), 1);
-  q.bindValue(QSL(":date_created"), start_after_article_date);
-
-  if (q.exec()) {
-    while (q.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(q.record(), &decoded);
-
-      if (decoded) {
-        messages.append(message);
-      }
-    }
-  }
-  else {
-    throw ApplicationException(q.lastError().driverText() + QSL(" ") + q.lastError().databaseText());
   }
 
   return messages;
@@ -1428,12 +1329,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& 
 
   if (q.exec()) {
     while (q.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(q.record(), &decoded);
+      Message message = Message::fromSqlQuery(q);
 
-      if (decoded) {
-        messages.append(message);
-      }
+      messages.append(message);
     }
 
     if (ok != nullptr) {
@@ -1491,6 +1389,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
   QList<Message> messages;
   QSqlQuery q(db);
 
+  QElapsedTimer tmr;
+  tmr.start();
+
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages "
@@ -1502,12 +1403,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
 
   if (q.exec()) {
     while (q.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(q.record(), &decoded);
+      Message message = Message::fromSqlQuery(q);
 
-      if (decoded) {
-        messages.append(message);
-      }
+      messages.append(message);
     }
 
     if (ok != nullptr) {
@@ -1519,6 +1417,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
       *ok = false;
     }
   }
+
+  auto qq = q.executedQuery();
+  auto elap = tmr.elapsed();
 
   return messages;
 }

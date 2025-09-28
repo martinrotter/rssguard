@@ -336,16 +336,8 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
 
   QString content_type = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader).toString();
   QString boundary = content_type.mid(content_type.indexOf(QL1S("boundary=")) + 9);
-
   QRegularExpression regex(QL1S("--") + boundary + QL1S("(--)?(\\r\\n)?"));
-
-  QStringList list = QString::fromUtf8(data).split(regex,
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                   Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                                   QString::SplitBehavior::SkipEmptyParts);
-#endif
-
+  QStringList list = QString::fromUtf8(data).split(regex, SPLIT_BEHAVIOR::SkipEmptyParts);
   QList<HttpResponse> parts;
 
   parts.reserve(list.size());
@@ -365,13 +357,7 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
     QString body = http_response_str.mid(start_of_body);
     QString headers =
       http_response_str.mid(start_of_headers, start_of_body - start_of_headers).replace(reg_whites, QSL("\n"));
-
-    auto header_lines = headers.split(QL1C('\n'),
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                      Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                      QString::SplitBehavior::SkipEmptyParts);
-#endif
+    auto header_lines = headers.split(QL1C('\n'), SPLIT_BEHAVIOR::SkipEmptyParts);
 
     for (const QString& header_line : std::as_const(header_lines)) {
       int index_colon = header_line.indexOf(QL1C(':'));

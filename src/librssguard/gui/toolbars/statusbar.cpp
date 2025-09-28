@@ -64,25 +64,14 @@ void StatusBar::saveAndSetActions(const QStringList& actions) {
 }
 
 QStringList StatusBar::defaultActions() const {
-  return QString(GUI::StatusbarActionsDef)
-    .split(',',
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-           Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-           QString::SplitBehavior::SkipEmptyParts);
-#endif
+  return QString(GUI::StatusbarActionsDef).split(QChar(','), SPLIT_BEHAVIOR::SkipEmptyParts);
 }
 
 QStringList StatusBar::savedActions() const {
   return qApp->settings()
     ->value(GROUP(GUI), SETTING(GUI::StatusbarActions))
     .toString()
-    .split(',',
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-           Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-           QString::SplitBehavior::SkipEmptyParts);
-#endif
+    .split(QChar(','), SPLIT_BEHAVIOR::SkipEmptyParts);
 }
 
 QList<QAction*> StatusBar::convertActions(const QStringList& actions) {

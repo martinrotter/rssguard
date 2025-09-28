@@ -26,12 +26,7 @@ QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosure
 
   if (enc_err.error != QJsonParseError::ParseError::NoError) {
     // Provide backwards compatibility.
-    auto enc = enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR,
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                     Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                     QString::SplitBehavior::SkipEmptyParts);
-#endif
+    auto enc = enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR, SPLIT_BEHAVIOR::SkipEmptyParts);
 
     enclosures.reserve(enc.size());
 
@@ -203,42 +198,38 @@ QJsonObject Message::toJson() const {
   return obj;
 }
 
-Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
-  if (record.count() != MSG_DB_LABELS_IDS + 1) {
-    if (result != nullptr) {
-      *result = false;
-    }
+#define MSG_FROM_REC                                                                                               \
+  message.m_id = record.value(MSG_DB_ID_INDEX).toInt();                                                            \
+  message.m_isRead = record.value(MSG_DB_READ_INDEX).toBool();                                                     \
+  message.m_isImportant = record.value(MSG_DB_IMPORTANT_INDEX).toBool();                                           \
+  message.m_isDeleted = record.value(MSG_DB_DELETED_INDEX).toBool();                                               \
+  message.m_feedId = record.value(MSG_DB_FEED_CUSTOM_ID_INDEX).toString();                                         \
+  message.m_feedTitle = record.value(MSG_DB_FEED_TITLE_INDEX).toString();                                          \
+  message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();                                                   \
+  message.m_url = record.value(MSG_DB_URL_INDEX).toString();                                                       \
+  message.m_author = record.value(MSG_DB_AUTHOR_INDEX).toString();                                                 \
+  message.m_created = TextFactory::parseDateTime(record.value(MSG_DB_DCREATED_INDEX).value<qint64>());             \
+  message.m_contents = record.value(MSG_DB_CONTENTS_INDEX).toString();                                             \
+  message.m_enclosures = Enclosures::decodeEnclosuresFromString(record.value(MSG_DB_ENCLOSURES_INDEX).toString()); \
+  message.m_score = record.value(MSG_DB_SCORE_INDEX).toDouble();                                                   \
+  message.m_rtlBehavior = record.value(MSG_DB_FEED_IS_RTL_INDEX).value<RtlBehavior>();                             \
+  message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();                                             \
+  message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();                                            \
+  message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();                                        \
+  message.m_assignedLabelsIds = record.value(MSG_DB_LABELS_IDS).toString().split('.', SPLIT_BEHAVIOR::SkipEmptyParts);
 
-    return Message();
-  }
-
+Message Message::fromSqlQuery(const QSqlQuery& record) {
   Message message;
 
-  message.m_id = record.value(MSG_DB_ID_INDEX).toInt();
-  message.m_isRead = record.value(MSG_DB_READ_INDEX).toBool();
-  message.m_isImportant = record.value(MSG_DB_IMPORTANT_INDEX).toBool();
-  message.m_isDeleted = record.value(MSG_DB_DELETED_INDEX).toBool();
-  message.m_feedId = record.value(MSG_DB_FEED_CUSTOM_ID_INDEX).toString();
-  message.m_feedTitle = record.value(MSG_DB_FEED_TITLE_INDEX).toString();
-  message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();
-  message.m_url = record.value(MSG_DB_URL_INDEX).toString();
-  message.m_author = record.value(MSG_DB_AUTHOR_INDEX).toString();
-  message.m_created = TextFactory::parseDateTime(record.value(MSG_DB_DCREATED_INDEX).value<qint64>());
-  message.m_contents = record.value(MSG_DB_CONTENTS_INDEX).toString();
-  message.m_enclosures = Enclosures::decodeEnclosuresFromString(record.value(MSG_DB_ENCLOSURES_INDEX).toString());
-  message.m_score = record.value(MSG_DB_SCORE_INDEX).toDouble();
-  message.m_rtlBehavior = record.value(MSG_DB_FEED_IS_RTL_INDEX).value<RtlBehavior>();
-  message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
-  message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
-  message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();
-  message.m_assignedLabelsIds = record.value(MSG_DB_LABELS_IDS)
-                                  .toString()
-                                  .split('.',
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                         Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                         QString::SplitBehavior::SkipEmptyParts);
-#endif
+  MSG_FROM_REC
+
+  return message;
+}
+
+Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
+  Message message;
+
+  MSG_FROM_REC
 
   if (result != nullptr) {
     *result = true;

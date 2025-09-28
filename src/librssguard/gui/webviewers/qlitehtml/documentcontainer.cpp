@@ -585,14 +585,7 @@ litehtml::uint_ptr DocumentContainer::create_font(const litehtml::font_descripti
                                                   litehtml::font_metrics* fm) {
   Q_UNUSED(doc)
 
-  QStringList split_names = QString::fromStdString(descr.family)
-                              .split(',',
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                     Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                     QString::SplitBehavior::SkipEmptyParts);
-#endif
-
+  QStringList split_names = QString::fromStdString(descr.family).split(QChar(','), SPLIT_BEHAVIOR::SkipEmptyParts);
   QStringList family_names;
 
   std::transform(split_names.cbegin(), split_names.cend(), std::back_inserter(family_names), [this](const QString& s) {

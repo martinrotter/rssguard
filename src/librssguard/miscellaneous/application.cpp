@@ -1061,12 +1061,7 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
 
   qDebugNN << LOGSEC_CORE << "Received" << QUOTE_W_SPACE(message) << "execution message.";
 
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-  QStringList messages = message.split(QSL(ARGUMENTS_LIST_SEPARATOR), Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-  QStringList messages = message.split(QSL(ARGUMENTS_LIST_SEPARATOR), QString::SplitBehavior::SkipEmptyParts);
-#endif
-
+  QStringList messages = message.split(QSL(ARGUMENTS_LIST_SEPARATOR), SPLIT_BEHAVIOR::SkipEmptyParts);
   QCommandLineParser cmd_parser;
 
   messages.prepend(qApp->applicationFilePath());

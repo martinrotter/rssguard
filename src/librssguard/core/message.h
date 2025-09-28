@@ -9,6 +9,7 @@
 
 #include <QDataStream>
 #include <QDateTime>
+#include <QSqlQuery>
 #include <QSqlRecord>
 #include <QStringList>
 
@@ -62,8 +63,7 @@ class RSSGUARD_DLLSPEC Message {
 
     QJsonObject toJson() const;
 
-    // Creates Message from given record, which contains
-    // row from query SELECT * FROM Messages WHERE ....;
+    static Message fromSqlQuery(const QSqlQuery& record);
     static Message fromSqlRecord(const QSqlRecord& record, bool* result = nullptr);
     static QString generateRawAtomContents(const Message& msg);
 

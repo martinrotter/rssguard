@@ -62,14 +62,8 @@ void BaseToolBar::activateAction(const QString& action_name, QWidgetAction* widg
   const int end = action_name.indexOf(']');
 
   if (start != -1 && end != -1 && (start + 1 != end) && end == action_name.length() - 1) {
-    const QStringList menu_action_names = action_name.chopped(1)
-                                            .right(end - start - 1)
-                                            .split(QL1C(';'),
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                                   Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                                   QString::SplitBehavior::SkipEmptyParts);
-#endif
+    const QStringList menu_action_names =
+      action_name.chopped(1).right(end - start - 1).split(QL1C(';'), SPLIT_BEHAVIOR::SkipEmptyParts);
 
     if (menu_action_names.isEmpty()) {
       // NOTE: No sub-items are activated, exit.

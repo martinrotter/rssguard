@@ -365,15 +365,8 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       skin.m_colorPalette = palette;
 
       // Obtain alternative style palette.
-      skin.m_forcedStyles = skin_node.namedItem(QSL("forced-styles"))
-                              .toElement()
-                              .text()
-                              .split(',',
-#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
-                                     Qt::SplitBehaviorFlags::SkipEmptyParts);
-#else
-                                     QString::SplitBehavior::SkipEmptyParts);
-#endif
+      skin.m_forcedStyles =
+        skin_node.namedItem(QSL("forced-styles")).toElement().text().split(QChar(','), SPLIT_BEHAVIOR::SkipEmptyParts);
 
       skin.m_forcedSkinColors =
         skin_node.namedItem(QSL("forced-skin-colors")).toElement().text() == QVariant(true).toString();
