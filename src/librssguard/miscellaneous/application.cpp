@@ -484,7 +484,7 @@ QStringList Application::replaceUserDataFolderPlaceholder(QStringList texts) con
 QString Application::userDataHomeFolder() const {
   static int major_version = QVersionNumber::fromString(QSL(APP_VERSION)).majorVersion();
 
-  QString pth = configFolder() + QDir::separator() + QSL(APP_NAME) + QSL(" %1").arg(major_version);
+  QString pth = configFolder() + QDir::separator() + QSL(APP_LOW_NAME) + QString::number(major_version);
 
   return pth;
 }
