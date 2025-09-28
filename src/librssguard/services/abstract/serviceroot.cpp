@@ -955,7 +955,7 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
       filter_clause = QSL("null");
     }
 
-    model->setFilter(QSL("Feeds.custom_id IN (%1) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
+    model->setFilter(QSL("Messages.feed IN (%1) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
                          "Messages.account_id = %2")
                        .arg(filter_clause, QString::number(accountId())));
 
