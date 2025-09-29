@@ -73,7 +73,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
 
   q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href, read, starred "
                 "FROM news "
-                "WHERE feedId = :feed_id AND deleted = 0;"));
+                "WHERE feedId = :feed_id AND deleted <= 1;"));
   q.bindValue(QSL(":feed_id"), quiterss_id);
   q.exec();
 
@@ -101,8 +101,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
 
 Message QuiteRssImport::convertArticle(const QSqlQuery& rec) const {
   Message msg;
-
-  static QString dt_format = QSL("yyyy-MM-ddTHH:mm:ss");
+  QString dt_format = QSL("yyyy-MM-ddTHH:mm:ss");
 
   msg.m_created = QDateTime::currentDateTime();
   msg.m_customId = rec.value(QSL("guid")).toString();
@@ -114,6 +113,7 @@ Message QuiteRssImport::convertArticle(const QSqlQuery& rec) const {
   msg.m_isRead = rec.value(QSL("read")).toBool();
   msg.m_created = TextFactory::parseDateTime(rec.value(QSL("published")).toString(), &dt_format);
   msg.m_createdFromFeed = !msg.m_created.isNull();
+  msg.m_isDeleted = rec.value(QSL("deleted")).toBool();
 
   if (!msg.m_createdFromFeed) {
     msg.m_created = QDateTime::currentDateTimeUtc();
