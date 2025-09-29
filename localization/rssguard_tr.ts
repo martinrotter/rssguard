@@ -6,7 +6,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="188"/>
       <source>(category)</source>
-      <translation>(kategori)</translation>
+      <translation>(Kategori)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="191"/>
@@ -198,7 +198,7 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation>Burada herhangi bir sınırlamayı ayarlamak, %1'a gelen bazı yazıları görmezden gelmesi için talimat verecektir. Mantık, herhangi bir yazı süzgecinden sonra çalışır, böylece yazı süzgeciniz belirli bir yazıyı kabul etse bile, daha sonra göz ardı edilebilir ve veri tabanına eklenemez.</translation>
+      <translation>Burada herhangi bir sınırlama ayarlamanız, %1'in gelen makalelerden bazılarını yoksaymasına neden olur. Bu mantık, makale filtrelerinden SONRA çalışır; bu nedenle filtreniz belirli bir makaleyi kabul etse bile, makale daha sonra yoksayılabilir ve veritabanına eklenmeyebilir.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
@@ -262,7 +262,7 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
       <source>%n feeds fetched</source>
       <translation>
         <numerusform>%n akıştan veri alındı</numerusform>
-        <numerusform>%n besleme çekildi</numerusform>
+        <numerusform>%n akış çekildi</numerusform>
       </translation>
     </message>
   </context>
@@ -381,7 +381,7 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
-      <translation>Besleme sayısı: %1
+      <translation>Akış sayısı: %1
 Kategori sayısı: %2
 Devre dışı bırakılmış besleme sayısı: %3</translation>
     </message>
@@ -704,8 +704,8 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="382"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
-        <numerusform>%n besleme için yeni makaleler otomatik olarak indirilecek.</numerusform>
-        <numerusform>%n besleme için yeni makaleler otomatik olarak indirilecek.</numerusform>
+        <numerusform>%n akış için yeni makaleler otomatik olarak indirilecek.</numerusform>
+        <numerusform>%n akış için yeni makaleler otomatik olarak indirilecek.</numerusform>
       </translation>
     </message>
     <message>
@@ -916,7 +916,7 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="39"/>
       <source>Titles of feeds/categories.</source>
-      <translation>Beslemelerin/kategorilerin başlıkları.</translation>
+      <translation>Akışların/kategorilerin başlıkları.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="31"/>
@@ -972,12 +972,12 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="208"/>
       <source>Menu for filtering feeds</source>
-      <translation>Beslemeleri filtrelemek için menü</translation>
+      <translation>Akışları filtrelemek için menü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="210"/>
       <source>(feed list)</source>
-      <translation>(besleme listesi)</translation>
+      <translation>(akışlistesi)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="214"/>
@@ -997,12 +997,12 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="232"/>
       <source>Show feeds with new articles</source>
-      <translation>Yeni makaleler içeren beslemeleri göster</translation>
+      <translation>Yeni makaleler içeren akışları göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="238"/>
       <source>Show feeds with error</source>
-      <translation>Hatalı beslemeleri göster</translation>
+      <translation>Hatalı akışları göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="244"/>
@@ -1012,22 +1012,22 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="250"/>
       <source>Show quiet feeds</source>
-      <translation>Sessiz beslemeleri göster</translation>
+      <translation>Sessiz akışları göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="256"/>
       <source>Show feeds with article filters</source>
-      <translation>Beslemeleri makale filtreleriyle gösterme</translation>
+      <translation>Makale filtreleriyle akışları görüntüle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="262"/>
       <source>Display all feeds</source>
-      <translation>Tüm beslemeleri görüntüle</translation>
+      <translation>Tüm akışları görüntüle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="272"/>
       <source>Feed list filter</source>
-      <translation>Besleme listesi filtresi</translation>
+      <translation>Akış listesi filtresi</translation>
     </message>
   </context>
   <context>
@@ -1084,7 +1084,7 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="168"/>
       <source>Selected account does not support adding of new feeds.</source>
-      <translation>Seçilen hesap yeni beslemelerin eklenmesini desteklemiyor.</translation>
+      <translation>Seçilen hesap yeni akışların eklenmesini desteklemiyor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="186"/>
@@ -1100,7 +1100,7 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="259"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
-      <translation>Seçilen tüm beslemelerden yıldızsız makaleleri gerçekten temizlemek istiyor musunuz?</translation>
+      <translation>Seçilen tüm akışlardan yıldızsız makaleleri gerçekten temizlemek istiyor musunuz?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="313"/>
@@ -1169,12 +1169,12 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="577"/>
       <source>Mark everything as read</source>
-      <translation type="unfinished">Mark everything as read</translation>
+      <translation>Her şeyi okundu olarak işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="578"/>
       <source>Do you really want to mark everything as read?</source>
-      <translation type="unfinished">Do you really want to mark everything as read?</translation>
+      <translation>Her şeyi okundu olarak işaretlemek istediğinizden emin misiniz?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="686"/>
@@ -1246,12 +1246,12 @@ Simge Temaları Klasörü -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="124"/>
       <source>&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (compiled against %6)</source>
-      <translation type="unfinished">&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (compiled against %6)</translation>
+      <translation>&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (Geliştirildi %2/%3)&lt;br/&gt;&lt;b&gt;Revizyon:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (Derlenmiş %6)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="137"/>
       <source>&lt;body&gt;%5 is a (very) tiny feed reader.&lt;br&gt;&lt;br&gt;This software is distributed under the terms of GNU General Public License, version 3.&lt;br&gt;&lt;br&gt;Contacts:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-mail&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~website&lt;/li&gt;&lt;/ul&gt;You can obtain source code for %5 from its website.&lt;br&gt;&lt;br&gt;&lt;br&gt;Copyright (C) 2011-%3 %4&lt;/body&gt;</source>
-      <translation>&lt;body&gt;%5 (çok) küçük bir besleme okuyucusudur. &lt;br&gt;&lt;br&gt;Bu yazılım, GNU Genel Kamu Lisansı, sürüm 3'ün hükümleri altında dağıtılmaktadır..&lt;br&gt;&lt;br&gt;İletişim:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-posta&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~internet sitesi&lt;/li&gt;&lt;/ul&gt;
+      <translation>&lt;body&gt;%5 (çok) küçük bir akış okuyucusudur. &lt;br&gt;&lt;br&gt;Bu yazılım, GNU Genel Kamu Lisansı, sürüm 3'ün hükümleri altında dağıtılmaktadır..&lt;br&gt;&lt;br&gt;İletişim:&lt;ul&gt;&lt;li&gt;&lt;a href=&quot;mailto://%1&quot;&gt;%1&lt;/a&gt; ~e-posta&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;%2&quot;&gt;%2&lt;/a&gt; ~internet sitesi&lt;/li&gt;&lt;/ul&gt;
 Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&lt;br&gt;Telif Hakkı(C) 2011-%3 %4&lt;/body&gt;</translation>
     </message>
     <message>
@@ -1798,7 +1798,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="14"/>
       <source>Discover feeds</source>
-      <translation>Beslemeleri keşfedin</translation>
+      <translation>Akışları keşfedin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
@@ -1818,7 +1818,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="77"/>
       <source>Discovered feeds</source>
-      <translation>Keşfedilen beslemeler</translation>
+      <translation>Keşfedilen akışlar</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
@@ -1828,7 +1828,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
       <source>Select parent item for your feed.</source>
-      <translation>Beslemeniz için ana öğeyi seçin.</translation>
+      <translation>Akışınız için ana öğeyi seçin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="128"/>
@@ -1843,12 +1843,12 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="190"/>
       <source>Add single feed with advanced details</source>
-      <translation>Gelişmiş detaylarla tek bir besleme ekle</translation>
+      <translation>Gelişmiş detaylarla tek bir akış ekle</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="197"/>
       <source>&amp;Import checked feeds</source>
-      <translation>&amp;Seçili beslemeleri içe aktar</translation>
+      <translation>&amp;Seçili akışları içe aktar</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="42"/>
@@ -1947,7 +1947,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="139"/>
       <source>Add new feed</source>
-      <translation>Yeni besleme ekle</translation>
+      <translation>Yeni akış ekle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="172"/>
@@ -2041,13 +2041,13 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="108"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="215"/>
       <source>Disable this feed</source>
-      <translation>Bu beslemeyi devre dışı bırak</translation>
+      <translation>Bu akışı devre dışı bırak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="94"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="214"/>
       <source>Ignore notifications for this feed</source>
-      <translation>Bu besleme için bildirimleri görmezden gel</translation>
+      <translation>Bu akış için bildirimleri görmezden gel</translation>
     </message>
   </context>
   <context>
@@ -2055,12 +2055,12 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="49"/>
       <source>Feed added</source>
-      <translation>Besleme eklendi</translation>
+      <translation>Akış eklendi</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="50"/>
       <source>Feed was added, refreshing feed tree...</source>
-      <translation>Besleme eklendi, besleme ağacını yenileyin...</translation>
+      <translation>Akış eklendi, besleme ağacını yenileyin...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="64"/>
@@ -2147,7 +2147,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="104"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
       <source>F&amp;eeds</source>
-      <translation>&amp;Beslemeler</translation>
+      <translation>&amp;Akışlar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="108"/>
@@ -2231,7 +2231,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="652"/>
       <source>Fetch all feeds</source>
-      <translation>Tüm beslemeleri çek</translation>
+      <translation>Tüm akışları çek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="289"/>
@@ -2243,7 +2243,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="656"/>
       <source>Fetch selected feeds</source>
-      <translation>Seçilen beslemeleri çek</translation>
+      <translation>Seçilen akışları çek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="313"/>
@@ -2309,7 +2309,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="185"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
       <source>&amp;Recycle bins</source>
-      <translation>&amp;Geri dönüşüm kutuları</translation>
+      <translation>&amp;Geri Dönüşüm</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="200"/>
@@ -2411,7 +2411,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="705"/>
       <source>&amp;Feed list</source>
-      <translation>&amp;Besleme dizelgesi</translation>
+      <translation>&amp;Akış Listesi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="457"/>
@@ -2507,7 +2507,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="572"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="731"/>
       <source>&amp;Donate...</source>
-      <translation>&amp;Bağış yapmak...</translation>
+      <translation>&amp;Bağış...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="580"/>
@@ -2694,7 +2694,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="781"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="762"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
-      <translation>&amp;Özel otomatik indirme ilkesi ile beslemeler çekin</translation>
+      <translation>&amp;Özel otomatik indirme ilkesi ile akış çekin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="789"/>
@@ -2826,7 +2826,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="920"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>&amp;Pause automatic feed fetching</source>
-      <translation>&amp;Otomatik besleme çekmeyi duraklat</translation>
+      <translation>&amp;Otomatik akış çekmeyi duraklat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="925"/>
@@ -2839,7 +2839,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="320"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="751"/>
       <source>Add new feed</source>
-      <translation>Yeni besleme ekle</translation>
+      <translation>Yeni akış ekle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="371"/>
@@ -2874,12 +2874,12 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="769"/>
       <source>Skin reloaded</source>
-      <translation type="unfinished">Skin reloaded</translation>
+      <translation>Tema yeniden yüklendi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="770"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
-      <translation type="unfinished">Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</translation>
+      <translation>Bu özelliğin yalnızca tema hatası ayıklama için olduğunu unutmayın. Her şeyin doğru şekilde yüklenmesi için uygulamayı yeniden başlatın.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="439"/>
@@ -2965,55 +2965,55 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="57"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="414"/>
       <source>New filter</source>
-      <translation type="unfinished">New filter</translation>
+      <translation>Yeni filtre</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="67"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="418"/>
       <source>Remove filter</source>
-      <translation type="unfinished">Remove filter</translation>
+      <translation>Filtreyi kaldır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="70"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="420"/>
       <source>Remove</source>
-      <translation type="unfinished">Remove</translation>
+      <translation>Kaldır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="77"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="422"/>
       <source>Enable filter</source>
-      <translation type="unfinished">Enable filter</translation>
+      <translation>Filtreyi etkinleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="80"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="424"/>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Etkinleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="103"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="426"/>
       <source>Move filter up</source>
-      <translation type="unfinished">Move filter up</translation>
+      <translation>Filtreyi aşağı taşı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="106"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="428"/>
       <source>Up</source>
-      <translation type="unfinished">Up</translation>
+      <translation>Yukarı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="113"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="430"/>
       <source>Move filter down</source>
-      <translation type="unfinished">Move filter down</translation>
+      <translation>Filtreyi aşağı taşı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="116"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="432"/>
       <source>Down</source>
-      <translation type="unfinished">Down</translation>
+      <translation>Aşağı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="127"/>
@@ -3031,19 +3031,19 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="219"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="441"/>
       <source>&amp;Documentation</source>
-      <translation type="unfinished">&amp;Documentation</translation>
+      <translation>&amp;Belgelendirme</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="294"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="445"/>
       <source>Details</source>
-      <translation type="unfinished">Details</translation>
+      <translation>Ayrıntılar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="354"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="444"/>
       <source>DB ID &amp; Custom ID</source>
-      <translation type="unfinished">DB ID &amp; Custom ID</translation>
+      <translation>Veritabanı ID &amp; Özel ID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="60"/>
@@ -3124,13 +3124,13 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <location filename="../src/librssguard/gui/dialogs/formprogressworker.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formprogressworker.h" line="72"/>
       <source>Dialog</source>
-      <translation type="unfinished">Dialog</translation>
+      <translation>Pencere</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formprogressworker.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formprogressworker.h" line="73"/>
       <source>TextLabel</source>
-      <translation type="unfinished">TextLabel</translation>
+      <translation>Metin Etiketi</translation>
     </message>
   </context>
   <context>
@@ -3278,7 +3278,7 @@ Manuel olarak yeniden başlatmanız gerekiyor.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
       <source>Additional</source>
-      <translation type="unfinished">Additional</translation>
+      <translation>Diğer</translation>
     </message>
   </context>
   <context>
@@ -3434,7 +3434,7 @@ Manuel olarak yeniden başlatmanız gerekiyor.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="55"/>
       <source>Fetch online metadata</source>
-      <translation>Çevrim içi meta verileri çek</translation>
+      <translation>Çevrim içi üst verileri çek</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="64"/>
@@ -3754,7 +3754,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="445"/>
       <source>META too large!</source>
-      <translation>META çok büyük!</translation>
+      <translation>Üst Veri çok büyük!</translation>
     </message>
   </context>
   <context>
@@ -4206,7 +4206,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation>Beslemeniz için ana öğeyi seçin.</translation>
+      <translation>Akış için ana öğeyi seçin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="46"/>
@@ -4251,7 +4251,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="46"/>
       <source>No title is entered. If you are creating new feed, title will be automatically extracted from it.</source>
-      <translation>Başlık girilmedi. Yeni bir besleme oluşturuyorsanız, başlık otomatik olarak beslemeden alınacaktır.</translation>
+      <translation>Başlık girilmedi. Yeni bir akış oluşturuyorsanız, başlık otomatik olarak akıştan alınacaktır.</translation>
     </message>
   </context>
   <context>
@@ -4310,7 +4310,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="163"/>
       <source>Select file for feeds import</source>
-      <translation>Beslemeleri içe aktarmak için dosya seçin</translation>
+      <translation>Akışları içe aktarmak için dosya seçin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="177"/>
@@ -4352,12 +4352,12 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="267"/>
       <source>Export feeds</source>
-      <translation>Beslemeleri içe aktar</translation>
+      <translation>Akışları içe aktar</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="268"/>
       <source>Import feeds</source>
-      <translation>Beslemeleri içe aktar</translation>
+      <translation>Akışları içe aktar</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="368"/>
@@ -4367,7 +4367,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="369"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
-      <translation>Başka bir kritik işlem devam ettiği için besleme eklenemiyor.</translation>
+      <translation>Başka bir kritik işlem devam ettiği için akış eklenemiyor.</translation>
     </message>
   </context>
   <context>
@@ -4410,7 +4410,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="15"/>
       <source>Important articles</source>
-      <translation>önemli makaleler</translation>
+      <translation>Önemli makaleler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/importantnode.cpp" line="16"/>
@@ -5007,12 +5007,12 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="15"/>
       <source>Result</source>
-      <translation type="unfinished">Result</translation>
+      <translation>Sonuç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="15"/>
       <source>Trash</source>
-      <translation type="unfinished">Trash</translation>
+      <translation>Çöp Kutusu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="63"/>
@@ -5338,7 +5338,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="216"/>
       <source>Search articles</source>
-      <translation>Makaleler ara</translation>
+      <translation>Makale ara</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="223"/>
@@ -5623,7 +5623,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="25"/>
       <source>Use global app setting</source>
-      <translation type="unfinished">Use global app setting</translation>
+      <translation>Genel uygulama ayarını kullan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
@@ -5887,7 +5887,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="169"/>
       <source>Context menu for article viewer</source>
-      <translation type="unfinished">Context menu for article viewer</translation>
+      <translation>Makale görüntüleyici için içerik menüsü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="171"/>
@@ -5900,17 +5900,17 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlwidget.cpp" line="80"/>
       <source>Font antialiasing</source>
-      <translation type="unfinished">Font antialiasing</translation>
+      <translation>Yazı tipi kenar yumuşatma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlwidget.cpp" line="87"/>
       <source>Shape antialiasing</source>
-      <translation type="unfinished">Shape antialiasing</translation>
+      <translation>Kenar yumuşatma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlwidget.cpp" line="425"/>
       <source>Advanced</source>
-      <translation type="unfinished">Advanced</translation>
+      <translation>Gelişmiş</translation>
     </message>
   </context>
   <context>
@@ -6040,7 +6040,7 @@ Feedly, sizin için önemli olan konuları ve trendleri özel bir şekilde düze
     <message>
       <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="455"/>
       <source>Comments</source>
-      <translation type="unfinished">Comments</translation>
+      <translation>Yorumlar</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderentrypoint.cpp" line="40"/>
@@ -6156,7 +6156,7 @@ Desteklenen okuyucular listesi:</translation>
       <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="200"/>
       <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="204"/>
       <source>XML is not well-formed, %1, line %2, column %3</source>
-      <translation type="unfinished">XML is not well-formed, %1, line %2, column %3</translation>
+      <translation>XML iyi biçimlendirilmemiş, %1, satır %2, sütun %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="334"/>
@@ -6388,27 +6388,27 @@ Desteklenen okuyucular listesi:</translation>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="24"/>
       <source>Select QuiteRSS database file</source>
-      <translation type="unfinished">Select QuiteRSS database file</translation>
+      <translation>QuiteRSS veritabanı dosyasını seçin</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="26"/>
       <source>QuiteRSS DB files (%1)</source>
-      <translation type="unfinished">QuiteRSS DB files (%1)</translation>
+      <translation>QuiteRSS veritabanı dosyaları (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="214"/>
       <source>Unnamed item</source>
-      <translation type="unfinished">Unnamed item</translation>
+      <translation>Adsız öğe</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="304"/>
       <source>missing QuiteRSS tables %1</source>
-      <translation type="unfinished">missing QuiteRSS tables %1</translation>
+      <translation>eksik QuiteRSS tabloları %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="309"/>
       <source>metadata version 17 was expected</source>
-      <translation type="unfinished">metadata version 17 was expected</translation>
+      <translation>üst veri sürüm 17 bekleniyordu</translation>
     </message>
   </context>
   <context>
@@ -6768,7 +6768,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
-      <translation>Besleme sayısı: %1
+      <translation>Akış sayısı: %1
 Kategori sayısı: %2
 Devre dışı bırakılmış besleme sayısı: %3</translation>
     </message>
@@ -7236,7 +7236,7 @@ Bu uygulamanın yazarları kayıp verilerden sorumlu değildir.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="618"/>
       <source>Feed fetching</source>
-      <translation>Besleme çekmek</translation>
+      <translation>Akış çek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
@@ -7384,7 +7384,7 @@ Bu uygulamanın yazarları kayıp verilerden sorumlu değildir.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="430"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="641"/>
       <source>Mark existing article unread when its updated version is fetched from the feed</source>
-      <translation type="unfinished">Mark existing article unread when its updated version is fetched from the feed</translation>
+      <translation>Güncellenmiş sürümü kaynaktan alındığında mevcut makaleyi okunmadı olarak işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="444"/>
@@ -7450,7 +7450,7 @@ Bu uygulamanın yazarları kayıp verilerden sorumlu değildir.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="438"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="657"/>
       <source>Articles list</source>
-      <translation>Makaleler dizelgesi</translation>
+      <translation>Makaleler Listesi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="457"/>
@@ -7486,7 +7486,7 @@ Bu uygulamanın yazarları kayıp verilerden sorumlu değildir.</translation>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="634"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="652"/>
       <source>Article list font</source>
-      <translation>Makale dizelgesi yazı tipi</translation>
+      <translation>Makale listesi yazı tipi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="617"/>
@@ -7632,13 +7632,13 @@ Açıklama: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="123"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="366"/>
       <source>Application font</source>
-      <translation type="unfinished">Application font</translation>
+      <translation>Uygulama yazı tipi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="135"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="362"/>
       <source>Customize global font</source>
-      <translation type="unfinished">Customize global font</translation>
+      <translation>Genel yazı tipini özelleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="147"/>
@@ -7668,7 +7668,7 @@ Açıklama: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="290"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="377"/>
       <source>Window</source>
-      <translation type="unfinished">Window</translation>
+      <translation>Pencere</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="208"/>
@@ -7714,7 +7714,7 @@ Açıklama: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="196"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="379"/>
       <source>Tray area &amp;&amp; taskbar &amp;&amp; window</source>
-      <translation type="unfinished">Tray area &amp;&amp; taskbar &amp;&amp; window</translation>
+      <translation>Bildirim alanı &amp;&amp; görev çubuğu &amp;&amp; pencere</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="244"/>
@@ -7726,7 +7726,7 @@ Açıklama: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="254"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="374"/>
       <source>Taskbar</source>
-      <translation type="unfinished">Taskbar</translation>
+      <translation>Görev çubuğu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="270"/>
@@ -7983,42 +7983,42 @@ Açıklama: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="23"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="157"/>
       <source>Button style</source>
-      <translation type="unfinished">Button style</translation>
+      <translation>Düğme stili</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="36"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="158"/>
       <source>Icon size</source>
-      <translation type="unfinished">Icon size</translation>
+      <translation>Simge boyutu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="62"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="159"/>
       <source>Toolbar editor</source>
-      <translation type="unfinished">Toolbar editor</translation>
+      <translation>Araç çubuğu düzenleyici</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="76"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="160"/>
       <source>Toolbar for feeds list</source>
-      <translation type="unfinished">Toolbar for feeds list</translation>
+      <translation>Kaynak listesi için araç çubuğu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="81"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="161"/>
       <source>Toolbar for articles list</source>
-      <translation type="unfinished">Toolbar for articles list</translation>
+      <translation>Makale listesi için araç çubuğu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="86"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="162"/>
       <source>Statusbar</source>
-      <translation type="unfinished">Statusbar</translation>
+      <translation>Durum çubuğu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="59"/>
       <source> = default icon size</source>
-      <translation type="unfinished"> = default icon size</translation>
+      <translation>= varsayılan simge boyutu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="74"/>
@@ -8028,32 +8028,32 @@ Açıklama: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="112"/>
       <source>Icon only</source>
-      <translation type="unfinished">Icon only</translation>
+      <translation>Yalnızca simge</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="113"/>
       <source>Text only</source>
-      <translation type="unfinished">Text only</translation>
+      <translation>Yalnızca metin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="114"/>
       <source>Text beside icon</source>
-      <translation type="unfinished">Text beside icon</translation>
+      <translation>Simgenin yanında metin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="115"/>
       <source>Text under icon</source>
-      <translation type="unfinished">Text under icon</translation>
+      <translation>Simgenin altında metin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="116"/>
       <source>Follow OS style</source>
-      <translation type="unfinished">Follow OS style</translation>
+      <translation>İşletim sistemi stilini kullan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.h" line="35"/>
       <source>Toolbars</source>
-      <translation type="unfinished">Toolbars</translation>
+      <translation>Araç çubukları</translation>
     </message>
   </context>
   <context>
@@ -8285,11 +8285,11 @@ Type: %2
 Post-processing script: %3
 Use raw XML saving: %4
 Fetch article comments: %5</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5</translation>
+      <translation>Kodlama: %1
+Tür: %2
+İşlem sonrası betiği: %3
+Ham XML kaydetmeyi kullan: %4
+Makale yorumlarını al: %5</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="112"/>
@@ -8405,7 +8405,7 @@ Fetch article comments: %5</translation>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="101"/>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="102"/>
       <source>No metadata fetched so far.</source>
-      <translation>Şu ana kadar alınmış meta veri yok.</translation>
+      <translation>Şu ana kadar alınmış üst veri yok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="155"/>
@@ -8435,7 +8435,7 @@ Fetch article comments: %5</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="207"/>
       <source>Icon metadata fetched.</source>
-      <translation>İkon meta verisi alındı.</translation>
+      <translation>İkon üst verisi alındı.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="215"/>
@@ -8447,19 +8447,19 @@ Fetch article comments: %5</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="273"/>
       <source>All metadata fetched successfully.</source>
-      <translation>Tüm meta veriler başarıyla çekildi.</translation>
+      <translation>Tüm üst veriler başarıyla çekildi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="274"/>
       <source>Feed and icon metadata fetched.</source>
-      <translation>Besleme ve simge meta verisi çekildi.</translation>
+      <translation>Besleme ve simge üst verisi çekildi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="282"/>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="287"/>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="292"/>
       <source>No metadata fetched.</source>
-      <translation>Alınan meta veri yok.</translation>
+      <translation>Alınan üst veri yok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="298"/>
@@ -8648,7 +8648,7 @@ Ayrıca, dilerseniz oluşturulmuş akış verilerini başka bir betik ile de iş
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="203"/>
       <source>Fetch metadata</source>
-      <translation>Meta verileri çek</translation>
+      <translation>Üst verileri çek</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="215"/>
@@ -8681,7 +8681,7 @@ Ayrıca, dilerseniz oluşturulmuş akış verilerini başka bir betik ile de iş
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="70"/>
       <source>Fetch comments for articles</source>
-      <translation type="unfinished">Fetch comments for articles</translation>
+      <translation>Makaleler için yorumları al</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="37"/>
@@ -8700,7 +8700,7 @@ Bu ayar, beslemenin ham XML ayrıştırılması çok yavaş olduğunda kullanı�
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="31"/>
       <source>This enables fetching of embedded article comments. Note that if the feed has many articles and each of them has comments, then the whole feed fetching can be much much slower with this option enabled.</source>
-      <translation type="unfinished">This enables fetching of embedded article comments. Note that if the feed has many articles and each of them has comments, then the whole feed fetching can be much much slower with this option enabled.</translation>
+      <translation>Bu, gömülü makale yorumlarının alınmasını sağlar. Kaynağın çok sayıda makalesi varsa ve her birinin yorumları bulunuyorsa, bu seçenek etkinken kaynak alımının çok daha yavaş olabileceğini unutmayın.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="36"/>
@@ -8741,12 +8741,12 @@ Bu ayar, beslemenin ham XML ayrıştırılması çok yavaş olduğunda kullanı�
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="460"/>
       <source>Fetch metadata</source>
-      <translation>Meta verileri çek</translation>
+      <translation>Üst verileri çek</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="650"/>
       <source>Error during file import</source>
-      <translation type="unfinished">Error during file import</translation>
+      <translation>Dosya içeri aktarımı sırasında hata</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="665"/>
@@ -8761,7 +8761,7 @@ Bu ayar, beslemenin ham XML ayrıştırılması çok yavaş olduğunda kullanı�
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="668"/>
       <source>Import from QuiteRSS</source>
-      <translation type="unfinished">Import from QuiteRSS</translation>
+      <translation>QuiteRSS'ten içeri aktar</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="74"/>
