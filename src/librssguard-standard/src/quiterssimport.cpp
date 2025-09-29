@@ -79,7 +79,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
 
   while (q.next()) {
     try {
-      auto msg = convertArticle(q.record());
+      auto msg = convertArticle(q);
 
       msg.sanitize(feed, false);
       msgs.append(msg);
@@ -99,8 +99,10 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
   DatabaseQueries::updateMessages(rssguard_db, msgs, feed->toFeed(), false, true, nullptr);
 }
 
-Message QuiteRssImport::convertArticle(const QSqlRecord& rec) const {
+Message QuiteRssImport::convertArticle(const QSqlQuery& rec) const {
   Message msg;
+
+  static QString dt_format = QSL("yyyy-MM-ddTHH:mm:ss");
 
   msg.m_created = QDateTime::currentDateTime();
   msg.m_customId = rec.value(QSL("guid")).toString();
@@ -110,6 +112,12 @@ Message QuiteRssImport::convertArticle(const QSqlRecord& rec) const {
   msg.m_contents = rec.value(QSL("description")).toString();
   msg.m_isImportant = rec.value(QSL("starred")).toBool();
   msg.m_isRead = rec.value(QSL("read")).toBool();
+  msg.m_created = TextFactory::parseDateTime(rec.value(QSL("published")).toString(), &dt_format);
+  msg.m_createdFromFeed = !msg.m_created.isNull();
+
+  if (!msg.m_createdFromFeed) {
+    msg.m_created = QDateTime::currentDateTimeUtc();
+  }
 
   if (msg.m_title.trimmed().isEmpty()) {
     if (msg.m_url.trimmed().isEmpty()) {

@@ -22,7 +22,7 @@ class QuiteRssImport : public QObject {
 
   private:
     void importArticles(StandardFeed* feed);
-    Message convertArticle(const QSqlRecord& rec) const;
+    Message convertArticle(const QSqlQuery &rec) const;
     QList<StandardFeed*> importTree(QSqlDatabase& db, RootItem* root) const;
     RootItem* extractFeedsAndCategories(QSqlDatabase& db) const;
     QIcon decodeBase64Icon(const QString& base64) const;
