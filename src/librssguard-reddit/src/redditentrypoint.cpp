@@ -14,7 +14,7 @@
 RedditEntryPoint::RedditEntryPoint(QObject* parent) : QObject(parent) {}
 
 RedditEntryPoint::~RedditEntryPoint() {
-  qDebugNN << LOGSEC_GMAIL << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_NEXTCLOUD)) << "plugin.";
+  qDebugNN << LOGSEC_REDDIT << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_REDDIT)) << "plugin.";
 }
 
 ServiceRoot* RedditEntryPoint::createNewRoot() const {

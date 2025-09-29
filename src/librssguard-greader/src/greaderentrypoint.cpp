@@ -13,7 +13,7 @@
 GreaderEntryPoint::GreaderEntryPoint(QObject* parent) : QObject(parent) {}
 
 GreaderEntryPoint::~GreaderEntryPoint() {
-  qDebugNN << LOGSEC_CORE << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_GREADER)) << "plugin.";
+  qDebugNN << LOGSEC_GREADER << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_GREADER)) << "plugin.";
 }
 
 ServiceRoot* GreaderEntryPoint::createNewRoot() const {

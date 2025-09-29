@@ -14,7 +14,7 @@
 NextcloudServiceEntryPoint::NextcloudServiceEntryPoint(QObject* parent) : QObject(parent) {}
 
 NextcloudServiceEntryPoint::~NextcloudServiceEntryPoint() {
-  qDebugNN << LOGSEC_GMAIL << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_NEXTCLOUD)) << "plugin.";
+  qDebugNN << LOGSEC_NEXTCLOUD << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_NEXTCLOUD)) << "plugin.";
 }
 
 ServiceRoot* NextcloudServiceEntryPoint::createNewRoot() const {

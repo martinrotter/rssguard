@@ -13,7 +13,7 @@
 FeedlyEntryPoint::FeedlyEntryPoint(QObject* parent) : QObject(parent) {}
 
 FeedlyEntryPoint::~FeedlyEntryPoint() {
-  qDebugNN << LOGSEC_CORE << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_FEEDLY)) << "plugin.";
+  qDebugNN << LOGSEC_FEEDLY << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_FEEDLY)) << "plugin.";
 }
 
 ServiceRoot* FeedlyEntryPoint::createNewRoot() const {

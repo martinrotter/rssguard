@@ -13,7 +13,7 @@
 TtRssServiceEntryPoint::TtRssServiceEntryPoint(QObject* parent) : QObject(parent) {}
 
 TtRssServiceEntryPoint::~TtRssServiceEntryPoint() {
-  qDebugNN << LOGSEC_GMAIL << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_TT_RSS)) << "plugin.";
+  qDebugNN << LOGSEC_TTRSS << "Destructing" << QUOTE_W_SPACE(QSL(SERVICE_CODE_TT_RSS)) << "plugin.";
 }
 
 QString TtRssServiceEntryPoint::name() const {
