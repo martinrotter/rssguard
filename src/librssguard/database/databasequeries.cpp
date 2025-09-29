@@ -1389,9 +1389,6 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
   QList<Message> messages;
   QSqlQuery q(db);
 
-  QElapsedTimer tmr;
-  tmr.start();
-
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages "
@@ -1417,9 +1414,6 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
       *ok = false;
     }
   }
-
-  auto qq = q.executedQuery();
-  auto elap = tmr.elapsed();
 
   return messages;
 }
