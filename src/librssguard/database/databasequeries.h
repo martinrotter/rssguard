@@ -22,7 +22,7 @@
 
 class RSSGUARD_DLLSPEC DatabaseQueries {
   public:
-    static QMap<int, QString> messageTableAttributes(bool only_msg_table, bool is_sqlite);
+    static QMap<int, QString> messageTableAttributes(bool is_sqlite);
 
     // Custom data serializers.
     static QString serializeCustomData(const QVariantHash& data);

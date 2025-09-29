@@ -13,7 +13,7 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_db = qApp->database()->driver()->connection(QSL("MessagesModel"));
 
   // Used in <x>: SELECT <x1>, <x2> FROM ....;
-  m_fieldNames = DatabaseQueries::messageTableAttributes(false, m_db.driverName() == QSL(APP_DB_SQLITE_DRIVER));
+  m_fieldNames = DatabaseQueries::messageTableAttributes(m_db.driverName() == QSL(APP_DB_SQLITE_DRIVER));
 
   // Used in <x>: SELECT ... FROM ... ORDER BY <x1> DESC, <x2> ASC;
   m_orderByNames[MSG_DB_ID_INDEX] = QSL("Messages.id");
@@ -106,11 +106,7 @@ QString MessagesModelSqlLayer::selectStatement(int additional_article_id) const 
     fltr = QSL("(%1) OR Messages.id = %2").arg(m_filter, QString::number(additional_article_id));
   }
 
-  return QL1S("SELECT ") + formatFields() + QL1C(' ') +
-         QL1S("FROM Messages LEFT JOIN Feeds ON Messages.feed = Feeds.custom_id AND Messages.account_id = "
-              "Feeds.account_id "
-              "WHERE ") +
-         fltr + orderByClause() + QL1C(';');
+  return QL1S("SELECT ") + formatFields() + QL1S(" FROM Messages WHERE ") + fltr + orderByClause() + QL1C(';');
 }
 
 QString MessagesModelSqlLayer::orderByClause() const {
