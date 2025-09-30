@@ -90,7 +90,11 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
       QStringList label_ids = q.value(8).toString().split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts);
 
       for (const QString& label_id : label_ids) {
-        msg.m_assignedLabelsByFilter.append(lbls.value(label_id));
+        auto* target_lbl = lbls.value(label_id);
+
+        if (target_lbl != nullptr) {
+          msg.m_assignedLabelsByFilter.append(lbls.value(label_id));
+        }
       }
 
       msg.sanitize(feed, false);
