@@ -5,6 +5,7 @@
 
 #include <librssguard/core/message.h>
 
+#include <QMutex>
 #include <QObject>
 #include <QSqlDatabase>
 
@@ -22,7 +23,7 @@ class QuiteRssImport : public QObject {
 
   private:
     void importArticles(StandardFeed* feed);
-    Message convertArticle(const QSqlQuery &rec) const;
+    Message convertArticle(const QSqlQuery& rec) const;
     QList<StandardFeed*> importTree(QSqlDatabase& db, RootItem* root) const;
     RootItem* extractFeedsAndCategories(QSqlDatabase& db) const;
     QIcon decodeBase64Icon(const QString& base64) const;
@@ -34,6 +35,7 @@ class QuiteRssImport : public QObject {
   private:
     StandardServiceRoot* m_account;
     QString m_dbFile;
+    QMutex m_dbMutex;
 };
 
 #endif // QUITERSSIMPORT_H

@@ -9,13 +9,14 @@
 
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/gui/dialogs/filedialog.h>
+#include <librssguard/gui/dialogs/formprogressworker.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/miscellaneous/thread.h>
 
-#include <QProgressDialog>
 #include <QSqlError>
 #include <QStack>
+#include <QtConcurrentMap>
 
 QuiteRssImport::QuiteRssImport(StandardServiceRoot* account, QObject* parent) : QObject(parent), m_account(account) {}
 
@@ -40,19 +41,18 @@ void QuiteRssImport::import() {
   RootItem* feed_tree = extractFeedsAndCategories(quiterss_db);
   QList<StandardFeed*> imported_feeds = importTree(rssguard_db, feed_tree);
 
-  QProgressDialog d;
+  FormProgressWorker d(qApp->mainFormWidget());
 
-  d.setMaximum(imported_feeds.size());
-  d.setMinimum(0);
-  d.show();
-
-  int i = 0;
-
-  for (StandardFeed* feed : imported_feeds) {
-    importArticles(feed);
-    d.setValue(i++);
-    qApp->processEvents();
-  }
+  d.doWork<StandardFeed*>(
+    tr("Import data from QuiteRSS"),
+    true,
+    imported_feeds,
+    [this](StandardFeed* fd) {
+      importArticles(fd);
+    },
+    [](int progress) {
+      return tr("Imported articles from %1 feeds...").arg(progress);
+    });
 
   m_account->updateCounts(true);
   m_account->itemChanged(m_account->getSubTree<RootItem>());
@@ -96,7 +96,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
     return;
   }
 
-  DatabaseQueries::updateMessages(rssguard_db, msgs, feed->toFeed(), false, true, nullptr);
+  DatabaseQueries::updateMessages(rssguard_db, msgs, feed, false, true, &m_dbMutex);
 }
 
 Message QuiteRssImport::convertArticle(const QSqlQuery& rec) const {

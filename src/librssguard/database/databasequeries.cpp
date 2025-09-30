@@ -1765,16 +1765,13 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
     }
   }
 
-  /*
-  QElapsedTimer tmr;
-  tmr.start();
-  */
-
-  if (!db.transaction()) {
-    qFatal("transaction failed");
-  }
-
   if (!msgs_to_insert.isEmpty()) {
+    QMutexLocker lck(db_mutex);
+
+    if (!db.transaction()) {
+      qFatal("transaction failed");
+    }
+
     QString bulk_insert = QSL("INSERT INTO Messages "
                               "(feed, title, is_read, is_important, is_deleted, url, author, score, date_created, "
                               "contents, enclosures, custom_id, custom_hash, account_id) "
@@ -1816,7 +1813,6 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
 
       if (!vals.isEmpty()) {
         QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
-        QMutexLocker lck(db_mutex);
         auto bulk_query = QSqlQuery(final_bulk, db);
         auto bulk_error = bulk_query.lastError();
 
@@ -1858,24 +1854,17 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
         }
       }
     }
+
+    if (!db.commit()) {
+      qFatal("transaction failed");
+    }
   }
-
-  db.commit();
-
-  /*
-  auto el = tmr.nsecsElapsed() / msgs_to_insert.size();
-  QFile input_file("dbb");
-  input_file.open(QIODevice::WriteOnly | QIODevice::Append);
-  input_file.write(QSL("%1\n").arg(el).toLocal8Bit());
-  input_file.close();
-  */
 
   const bool uses_online_labels =
     Globals::hasFlag(feed->account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Synchronised);
 
   for (Message& message : messages) {
     if (!message.m_customId.isEmpty() || message.m_id > 0) {
-      QMutexLocker lck(db_mutex);
       // bool lbls_changed = false;
 
       if (uses_online_labels) {
@@ -1915,14 +1904,10 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
       */
     }
     else {
-      qCriticalNN << LOGSEC_DB << "Cannot set labels for message" << QUOTE_W_SPACE(message.m_title)
-                  << "because we don't have ID or custom ID.";
+      qWarningNN << LOGSEC_DB << "Cannot set labels for message" << QUOTE_W_SPACE(message.m_title)
+                 << "because we don't have ID or custom ID.";
     }
   }
-
-  // Now, fixup custom IDS for messages which initially did not have them,
-  // just to keep the data consistent.
-  QMutexLocker lck(db_mutex);
 
   QSqlQuery fixup_custom_ids_query(QSL("UPDATE Messages "
                                        "SET custom_id = id "

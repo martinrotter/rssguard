@@ -127,9 +127,6 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
     date_patterns.prepend(*used_dt_format);
   }
 
-  // QDateTime dt1 = locale.toDateTime("GMT", "t");
-  // QString dt2 = dt1.toString();
-
   for (const QString& pattern : std::as_const(date_patterns)) {
 #if QT_VERSION >= 0x060700 // Qt >= 6.7.0
     dt = locale.toDateTime(input_date, pattern, 2000);
@@ -181,6 +178,7 @@ QStringList TextFactory::dateTimePatterns(bool with_tzs) {
   pat << QSL("yyyy-MM-dd");
   pat << QSL("yyyy-MM");
 
+  pat << QSL("MMM dd, yyyy HH:mm:ss");
   pat << QSL("MMM dd yyyy hh:mm:ss");
   pat << QSL("MMM d yyyy hh:mm:ss");
 
