@@ -19,11 +19,11 @@ class RSSGUARD_DLLSPEC FormProgressWorker : public QDialog {
     explicit FormProgressWorker(QWidget* parent = nullptr);
     virtual ~FormProgressWorker();
 
-    template <class TData>
+    template <class TInput>
     int doWork(const QString& title,
                bool can_cancel,
-               const QList<TData>& input,
-               std::function<void(TData)> work_functor,
+               const QList<TInput>& input,
+               std::function<void(TInput)> work_functor,
                std::function<QString(int)> label_functor);
 
   protected:
@@ -47,11 +47,11 @@ class RSSGUARD_DLLSPEC FormProgressWorker : public QDialog {
     Ui::FormProgressWorker* m_ui;
 };
 
-template <class TData>
+template <class TInput>
 inline int FormProgressWorker::doWork(const QString& title,
                                       bool can_cancel,
-                                      const QList<TData>& input,
-                                      std::function<void(TData)> work_functor,
+                                      const QList<TInput>& input,
+                                      std::function<void(TInput)> work_functor,
                                       std::function<QString(int)> label_functor) {
   setCancelVisible(can_cancel);
   setWindowTitle(title);

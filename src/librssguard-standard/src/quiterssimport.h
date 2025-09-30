@@ -22,13 +22,16 @@ class QuiteRssImport : public QObject {
     void import();
 
   private:
-    void importArticles(StandardFeed* feed);
+    void importArticles(StandardFeed* feed, const QMap<QString, Label*>& lbls);
+    void importLabels(const QList<Label*>& labels);
     Message convertArticle(const QSqlQuery& rec) const;
-    QList<StandardFeed*> importTree(QSqlDatabase& db, RootItem* root) const;
-    RootItem* extractFeedsAndCategories(QSqlDatabase& db) const;
+    QMap<QString, Label*> hashLabels(const QList<Label*>& labels) const;
+    QList<StandardFeed*> importTree(const QSqlDatabase& db, RootItem* root) const;
+    RootItem* extractFeedsAndCategories(const QSqlDatabase& db) const;
+    QList<Label*> extractLabels(const QSqlDatabase& db) const;
     QIcon decodeBase64Icon(const QString& base64) const;
 
-    void checkIfQuiteRss(QSqlDatabase& db) const;
+    void checkIfQuiteRss(const QSqlDatabase& db) const;
     QSqlDatabase dbConnection(const QString& db_file, const QString& connection_name) const;
     void closeDbConnection(QSqlDatabase& db) const;
 

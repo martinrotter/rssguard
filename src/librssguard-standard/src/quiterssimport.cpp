@@ -12,7 +12,9 @@
 #include <librssguard/gui/dialogs/formprogressworker.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/miscellaneous/thread.h>
+#include <librssguard/services/abstract/labelsnode.h>
 
 #include <QSqlError>
 #include <QStack>
@@ -39,7 +41,12 @@ void QuiteRssImport::import() {
   checkIfQuiteRss(quiterss_db);
 
   RootItem* feed_tree = extractFeedsAndCategories(quiterss_db);
+  QList<Label*> labels = extractLabels(quiterss_db);
   QList<StandardFeed*> imported_feeds = importTree(rssguard_db, feed_tree);
+
+  importLabels(labels);
+
+  QMap<QString, Label*> hashed_labels = hashLabels(labels);
 
   FormProgressWorker d(qApp->mainFormWidget());
 
@@ -47,8 +54,8 @@ void QuiteRssImport::import() {
     tr("Import data from QuiteRSS"),
     true,
     imported_feeds,
-    [this](StandardFeed* fd) {
-      importArticles(fd);
+    [&](StandardFeed* fd) {
+      importArticles(fd, hashed_labels);
     },
     [](int progress) {
       return tr("Imported articles from %1 feeds...").arg(progress);
@@ -62,7 +69,7 @@ void QuiteRssImport::import() {
   closeDbConnection(quiterss_db);
 }
 
-void QuiteRssImport::importArticles(StandardFeed* feed) {
+void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Label*>& lbls) {
   QSqlDatabase quiterss_db = dbConnection(m_dbFile, QSL("quiterss_%1").arg(getThreadID()));
   QSqlDatabase rssguard_db = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   QList<Message> msgs;
@@ -71,7 +78,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
   QSqlQuery q(quiterss_db);
   int quiterss_id = feed->property("quiterss_id").toInt();
 
-  q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href, read, starred "
+  q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href, read, starred, label "
                 "FROM news "
                 "WHERE feedId = :feed_id;"));
   q.bindValue(QSL(":feed_id"), quiterss_id);
@@ -80,6 +87,11 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
   while (q.next()) {
     try {
       auto msg = convertArticle(q);
+      QStringList label_ids = q.value(8).toString().split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts);
+
+      for (const QString& label_id : label_ids) {
+        msg.m_assignedLabelsByFilter.append(lbls.value(label_id));
+      }
 
       msg.sanitize(feed, false);
       msgs.append(msg);
@@ -97,6 +109,22 @@ void QuiteRssImport::importArticles(StandardFeed* feed) {
   }
 
   DatabaseQueries::updateMessages(rssguard_db, msgs, feed, false, true, &m_dbMutex);
+}
+
+void QuiteRssImport::importLabels(const QList<Label*>& labels) {
+  if (labels.isEmpty()) {
+    return;
+  }
+
+  QSqlDatabase db = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
+
+  for (Label* lbl : labels) {
+    DatabaseQueries::createLabel(db, lbl, m_account->accountId());
+
+    m_account->requestItemReassignment(lbl, m_account->labelsNode());
+  }
+
+  m_account->requestItemExpand({m_account->labelsNode()}, true);
 }
 
 Message QuiteRssImport::convertArticle(const QSqlQuery& rec) const {
@@ -130,7 +158,17 @@ Message QuiteRssImport::convertArticle(const QSqlQuery& rec) const {
   return msg;
 }
 
-QList<StandardFeed*> QuiteRssImport::importTree(QSqlDatabase& db, RootItem* root) const {
+QMap<QString, Label*> QuiteRssImport::hashLabels(const QList<Label*>& labels) const {
+  QMap<QString, Label*> map;
+
+  for (Label* lbl : labels) {
+    map.insert(lbl->customId(), lbl);
+  }
+
+  return map;
+}
+
+QList<StandardFeed*> QuiteRssImport::importTree(const QSqlDatabase& db, RootItem* root) const {
   QList<StandardFeed*> feeds;
   QStack<RootItem*> original_parents;
   QStack<RootItem*> new_parents;
@@ -214,7 +252,7 @@ QList<StandardFeed*> QuiteRssImport::importTree(QSqlDatabase& db, RootItem* root
   return feeds;
 }
 
-RootItem* QuiteRssImport::extractFeedsAndCategories(QSqlDatabase& db) const {
+RootItem* QuiteRssImport::extractFeedsAndCategories(const QSqlDatabase& db) const {
   RootItem* root = new RootItem();
   QMap<int, RootItem*> roots;        // Map of all items (feeds, categories) with their original DB ID.
   QMultiMap<int, RootItem*> parents; // Map which assigns all items to PARENT DB ID.
@@ -295,6 +333,29 @@ RootItem* QuiteRssImport::extractFeedsAndCategories(QSqlDatabase& db) const {
   return root;
 }
 
+QList<Label*> QuiteRssImport::extractLabels(const QSqlDatabase& db) const {
+  QList<Label*> lbls;
+  QSqlQuery q(db);
+
+  if (!q.exec(QSL("SELECT id, name FROM labels;"))) {
+    throw ApplicationException(q.lastError().text());
+  }
+
+  while (q.next()) {
+    QString id = q.value(0).toString();
+    QString name = q.value(1).toString();
+
+    if (!id.isEmpty() && !name.isEmpty()) {
+      Label* lbl = new Label(name, TextFactory::generateColorFromText(name), nullptr);
+
+      lbl->setCustomId(id);
+      lbls.append(lbl);
+    }
+  }
+
+  return lbls;
+}
+
 QIcon QuiteRssImport::decodeBase64Icon(const QString& base64) const {
   if (base64.isEmpty()) {
     return QIcon();
@@ -311,7 +372,7 @@ QIcon QuiteRssImport::decodeBase64Icon(const QString& base64) const {
   }
 }
 
-void QuiteRssImport::checkIfQuiteRss(QSqlDatabase& db) const {
+void QuiteRssImport::checkIfQuiteRss(const QSqlDatabase& db) const {
   QSqlQuery q(db);
 
   if (!q.exec(QSL("SELECT name FROM sqlite_master WHERE type='table';"))) {
