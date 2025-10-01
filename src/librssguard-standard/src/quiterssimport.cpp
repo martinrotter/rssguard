@@ -84,6 +84,8 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
   q.bindValue(QSL(":feed_id"), quiterss_id);
   q.exec();
 
+  PRINT_QUERY(q)
+
   while (q.next()) {
     try {
       auto msg = convertArticle(q);
@@ -277,6 +279,8 @@ RootItem* QuiteRssImport::extractFeedsAndCategories(const QSqlDatabase& db) cons
     throw ApplicationException(q.lastError().text());
   }
 
+  PRINT_QUERY(q)
+
   while (q.next()) {
     int id = q.value(QSL("id")).toInt();
     int pid = q.value(QSL("parentId")).toInt();
@@ -345,6 +349,8 @@ QList<Label*> QuiteRssImport::extractLabels(const QSqlDatabase& db) const {
     throw ApplicationException(q.lastError().text());
   }
 
+  PRINT_QUERY(q)
+
   while (q.next()) {
     QString id = q.value(0).toString();
     QString name = q.value(1).toString();
@@ -383,6 +389,8 @@ void QuiteRssImport::checkIfQuiteRss(const QSqlDatabase& db) const {
     throw ApplicationException(q.lastError().text());
   }
 
+  PRINT_QUERY(q)
+
   QStringList tables = QStringList{QSL("feeds"),
                                    QSL("news"),
                                    QSL("feeds_ex"),
@@ -407,6 +415,8 @@ void QuiteRssImport::checkIfQuiteRss(const QSqlDatabase& db) const {
       q.value(0).toString() != QSL("17")) {
     throw ApplicationException(tr("metadata version 17 was expected"));
   }
+
+  PRINT_QUERY(q)
 }
 
 QSqlDatabase QuiteRssImport::dbConnection(const QString& db_file, const QString& connection_name) const {

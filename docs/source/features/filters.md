@@ -82,7 +82,6 @@ Here is the complete reference documentation of all functions and properties ava
 | `deassignLabel(String label_id)`                                              | `Boolean`    | Removes label from the message. The `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | `deassignAllLabels()`                                                         | `void`       | Removes all labels from messages.
 | `exportCategoriesToLabels(Boolean assign_to_message)`                         | `void`       | Creates RSS Guard labels for all categories of this message. Also optionally assigns the message to those labels.
-| `addEnclosure(String url, String mime_type)`                                  | `void`       | Appends new enclosure/attachment with given URL and MIME type to the article.
 
 ### `app`
 

@@ -194,6 +194,8 @@
 #define PLACEHOLDER_UNREAD_COUNTS "%unread"
 #define PLACEHOLDER_ALL_COUNTS    "%all"
 
+#define PRINT_QUERY(q) qDebugNN << LOGSEC_DB << "Executed query:\n" << q.executedQuery();
+
 #define BACKUP_NAME_SETTINGS   "config"
 #define BACKUP_SUFFIX_SETTINGS ".ini.backup"
 #define BACKUP_NAME_DATABASE   "database"

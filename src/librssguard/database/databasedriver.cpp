@@ -41,6 +41,8 @@ void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
       if (!query.exec(statement) && query.lastError().isValid()) {
         throw ApplicationException(query.lastError().text());
       }
+
+      PRINT_QUERY(query)
     }
 
     // Increment the version.
@@ -61,9 +63,12 @@ void DatabaseDriver::setSchemaVersion(QSqlQuery& query, int new_schema_version, 
   }
 
   query.bindValue(QSL(":schema_version"), QString::number(new_schema_version));
+
   if (!query.exec()) {
     throw ApplicationException(query.lastError().text());
   }
+
+  PRINT_QUERY(query)
 }
 
 QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,

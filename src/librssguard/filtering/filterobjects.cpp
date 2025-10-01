@@ -364,8 +364,7 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   }
 
   if (q.exec() && q.next()) {
-    qDebugNN << LOGSEC_DB << "Executed SQL for message duplicates check:"
-             << QUOTE_W_SPACE_DOT(DatabaseFactory::lastExecutedQuery(q));
+    PRINT_QUERY(q)
 
     if (q.value(0).toInt() > 0) {
       // Whoops, we have the "same" message in database.

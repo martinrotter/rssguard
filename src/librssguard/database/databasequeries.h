@@ -242,6 +242,8 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const Q
   QList<ServiceRoot*> roots;
 
   if (query.exec(QSL("SELECT * FROM Accounts WHERE type = '%1';").arg(code))) {
+    PRINT_QUERY(query)
+
     while (query.next()) {
       ServiceRoot* root = new T();
 
@@ -302,6 +304,8 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
     }
   }
 
+  PRINT_QUERY(query_categories)
+
   while (query_categories.next()) {
     AssignmentItem pair;
 
@@ -356,6 +360,8 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
       *ok = true;
     }
   }
+
+  PRINT_QUERY(query)
 
   while (query.next()) {
     AssignmentItem pair;
