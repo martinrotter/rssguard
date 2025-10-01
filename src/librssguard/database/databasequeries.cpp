@@ -33,8 +33,8 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool is_sqlite) {
   field_names[MSG_DB_ACCOUNT_ID_INDEX] = QSL("Messages.account_id");
   field_names[MSG_DB_CUSTOM_ID_INDEX] = QSL("Messages.custom_id");
   field_names[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
-  field_names[MSG_DB_FEED_TITLE_INDEX] = QSL("Messages.feed"); // TODO: todo
-  field_names[MSG_DB_FEED_IS_RTL_INDEX] = QSL("0");            // TODO: todo
+  field_names[MSG_DB_FEED_TITLE_INDEX] = QSL("Messages.feed"); // NOTE: Loaded in runtime.
+  field_names[MSG_DB_FEED_IS_RTL_INDEX] = QSL("0 AS rtl");     // NOTE: Loaded in runtime.
   field_names[MSG_DB_HAS_ENCLOSURES] = QSL("(CASE WHEN LENGTH(Messages.enclosures) > 10 "
                                            "THEN 'true' "
                                            "ELSE 'false' "

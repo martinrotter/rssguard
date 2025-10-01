@@ -200,6 +200,13 @@ void MessagesModel::setupFonts() {
 void MessagesModel::loadMessages(RootItem* item) {
   m_selectedItem = item;
 
+  if (item != nullptr) {
+    m_hashedFeeds = item->account()->getHashedSubTreeFeeds();
+  }
+  else {
+    m_hashedFeeds.clear();
+  }
+
   if (item == nullptr) {
     setFilter(QSL(DEFAULT_SQL_MESSAGES_FILTER));
   }
@@ -219,16 +226,10 @@ void MessagesModel::loadMessages(RootItem* item) {
 
 bool MessagesModel::setMessageImportantById(int id, RootItem::Importance important) {
   for (int i = 0; i < rowCount(); i++) {
-    int found_id = data(i, MSG_DB_ID_INDEX, Qt::EditRole).toInt();
+    int found_id = data(i, MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
 
     if (found_id == id) {
-      bool set = setData(index(i, MSG_DB_IMPORTANT_INDEX), int(important));
-
-      if (set) {
-        emit dataChanged(index(i, 0), index(i, MSG_DB_LABELS_IDS));
-      }
-
-      return set;
+      return setData(index(i, MSG_DB_IMPORTANT_INDEX), int(important));
     }
   }
 
@@ -291,7 +292,13 @@ void MessagesModel::reloadWholeLayout() {
 }
 
 Message MessagesModel::messageAt(int row_index) const {
-  return Message::fromSqlRecord(m_cache->containsData(row_index) ? m_cache->record(row_index) : record(row_index));
+  auto msg = Message::fromSqlRecord(m_cache->containsData(row_index) ? m_cache->record(row_index) : record(row_index));
+
+  // NOTE: Fill in RTL behavior properly as it is NOT loaded directly from DB.
+  auto* fd = m_hashedFeeds.value(msg.m_feedId);
+  msg.m_rtlBehavior = fd != nullptr ? fd->rtlBehavior() : msg.m_rtlBehavior;
+
+  return msg;
 }
 
 void MessagesModel::setupHeaderData() {
@@ -409,8 +416,8 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         }
       }
       else if (index_column == MSG_DB_FEED_TITLE_INDEX) {
-        // Trim feed title.
-        return data(idx, Qt::ItemDataRole::EditRole).toString().simplified();
+        Feed* fd = m_hashedFeeds.value(data(idx, Qt::ItemDataRole::EditRole).toString());
+        return fd != nullptr ? fd->title() : QSL("-");
       }
       else if (index_column == MSG_DB_CONTENTS_INDEX) {
         // Do not display full contents here.
@@ -422,7 +429,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         return m_cache->containsData(idx.row()) ? m_cache->data(idx) : QSqlQueryModel::data(idx, role);
       }
       else if (index_column == MSG_DB_AUTHOR_INDEX) {
-        const QString author_name = QSqlQueryModel::data(idx, role).toString();
+        const QString author_name = data(idx, Qt::ItemDataRole::EditRole).toString();
 
         return author_name.isEmpty() ? QSL("-") : author_name;
       }
@@ -473,6 +480,10 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         }
         else if (idx.column() == MSG_DB_URL_INDEX) {
           return TextFactory::shorten(data(idx, Qt::ItemDataRole::DisplayRole).toString(), TEXT_TOOLTIP_LIMIT);
+        }
+        else if (idx.column() == MSG_DB_FEED_TITLE_INDEX) {
+          Feed* fd = m_hashedFeeds.value(data(idx, Qt::ItemDataRole::EditRole).toString());
+          return fd != nullptr ? fd->additionalTooltip() : QSL("-");
         }
         else if (idx.column() == MSG_DB_DCREATED_INDEX) {
           return qApp->localization()
@@ -579,14 +590,13 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
             m_cache->containsData(idx_feedid.row()) ? m_cache->data(idx_feedid) : QSqlQueryModel::data(idx_feedid);
           QString feed_custom_id = dta.toString();
 
-          // TODO: Very slow and repeats itself.
-          auto acc = m_selectedItem->account()->feedIconForMessage(feed_custom_id);
+          auto* fd = m_hashedFeeds.value(feed_custom_id);
 
-          if (acc.isNull()) {
+          if (fd == nullptr) {
             return qApp->icons()->fromTheme(QSL("application-rss+xml"));
           }
           else {
-            return acc;
+            return fd->icon();
           }
         }
         else {
@@ -677,11 +687,6 @@ bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
 
     if (found_id == id) {
       bool set = setData(index(i, MSG_DB_READ_INDEX), int(read));
-
-      if (set) {
-        emit dataChanged(index(i, 0), index(i, MSG_DB_LABELS_IDS));
-      }
-
       return set;
     }
   }
@@ -696,11 +701,6 @@ bool MessagesModel::setMessageLabelsById(int id, const QStringList& label_ids) {
     if (found_id == id) {
       QString enc_ids = label_ids.isEmpty() ? QSL(".") : QSL(".") + label_ids.join('.') + QSL(".");
       bool set = setData(index(i, MSG_DB_LABELS_IDS), enc_ids);
-
-      if (set) {
-        emit dataChanged(index(i, 0), index(i, MSG_DB_LABELS_IDS));
-      }
-
       return set;
     }
   }
@@ -734,10 +734,6 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 
   // Commit changes.
   if (DatabaseQueries::markMessageImportant(m_db, message.m_id, next_importance)) {
-    emit dataChanged(index(row_index, 0),
-                     index(row_index, MSG_DB_FEED_CUSTOM_ID_INDEX),
-                     QVector<int>() << Qt::FontRole);
-
     return m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem,
                                                                      QList<QPair<Message, RootItem::Importance>>()
                                                                        << pair);
@@ -754,10 +750,11 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
   message_states.reserve(messages.size());
 
   // Obtain IDs of all desired messages.
+  blockSignals(true);
+
   for (const QModelIndex& message : messages) {
     const Message msg = messageAt(message.row());
-
-    RootItem::Importance message_importance = messageImportance((message.row()));
+    const RootItem::Importance message_importance = RootItem::Importance(msg.m_isImportant);
 
     message_states.append(QPair<Message, RootItem::Importance>(msg,
                                                                message_importance == RootItem::Importance::Important
@@ -771,6 +768,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
                                                                   : int(RootItem::Importance::Important));
   }
 
+  blockSignals(false);
   reloadWholeLayout();
 
   if (!m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem, message_states)) {
@@ -791,6 +789,8 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
   QList<Message> msgs;
   msgs.reserve(messages.size());
 
+  blockSignals(true);
+
   // Obtain IDs of all desired messages.
   for (const QModelIndex& message : messages) {
     const Message msg = messageAt(message.row());
@@ -806,6 +806,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
     }
   }
 
+  blockSignals(false);
   reloadWholeLayout();
 
   if (!m_selectedItem->account()->onBeforeMessagesDelete(m_selectedItem, msgs)) {
@@ -835,6 +836,8 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
   QList<Message> msgs;
   msgs.reserve(messages.size());
 
+  blockSignals(true);
+
   // Obtain IDs of all desired messages.
   for (const QModelIndex& message : messages) {
     Message msg = messageAt(message.row());
@@ -844,6 +847,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
     setData(index(message.row(), MSG_DB_READ_INDEX), int(read));
   }
 
+  blockSignals(false);
   reloadWholeLayout();
 
   if (!m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, msgs, read)) {
@@ -864,6 +868,8 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
   QList<Message> msgs;
   msgs.reserve(messages.size());
 
+  blockSignals(true);
+
   // Obtain IDs of all desired messages.
   for (const QModelIndex& message : messages) {
     const Message msg = messageAt(message.row());
@@ -874,6 +880,7 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
     setData(index(message.row(), MSG_DB_DELETED_INDEX), 0);
   }
 
+  blockSignals(false);
   reloadWholeLayout();
 
   if (!m_selectedItem->account()->onBeforeMessagesRestoredFromBin(m_selectedItem, msgs)) {

@@ -32,8 +32,8 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_orderByNames[MSG_DB_ACCOUNT_ID_INDEX] = QSL("Messages.account_id");
   m_orderByNames[MSG_DB_CUSTOM_ID_INDEX] = QSL("Messages.custom_id");
   m_orderByNames[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
-  m_orderByNames[MSG_DB_FEED_TITLE_INDEX] = QSL("Feeds.title");
-  m_orderByNames[MSG_DB_FEED_IS_RTL_INDEX] = QSL("Feeds.is_rtl");
+  m_orderByNames[MSG_DB_FEED_TITLE_INDEX] = QSL("Messages.feed");
+  m_orderByNames[MSG_DB_FEED_IS_RTL_INDEX] = QSL("rtl");
   m_orderByNames[MSG_DB_HAS_ENCLOSURES] = QSL("has_enclosures");
   m_orderByNames[MSG_DB_LABELS] = QSL("msg_labels");
   m_orderByNames[MSG_DB_LABELS_IDS] = QSL("Messages.labels");

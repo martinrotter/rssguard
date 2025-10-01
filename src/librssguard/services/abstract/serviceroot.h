@@ -213,8 +213,6 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     // Returns counts of updated messages <unread, all>.
     UpdatedArticles updateMessages(QList<Message>& messages, Feed* feed, bool force_update, QMutex* db_mutex);
 
-    QIcon feedIconForMessage(const QString& feed_custom_id) const;
-
     // Removes all/read only messages from given underlying feeds.
     bool cleanFeeds(const QList<Feed*>& items, bool clean_read_only);
 
