@@ -17,12 +17,13 @@ pacman -Syu --noconfirm \
 	libxkbcommon-x11 \
 	libxrandr        \
 	libxtst          \
+	mariadb-clients  \
+	mpv				 \
 	pipewire-audio   \
 	pulseaudio       \
 	pulseaudio-alsa  \
 	qt6ct            \
 	qt6-wayland      \
-	rssguard         \
 	wget             \
 	xorg-server-xvfb \
 	zsync
@@ -33,4 +34,4 @@ wget --retry-connrefused --tries=30 "$EXTRA_PACKAGES" -O ./get-debloated-pkgs.sh
 chmod +x ./get-debloated-pkgs.sh
 ./get-debloated-pkgs.sh --add-mesa --prefer-nano opus-mini
 
-pacman -Q rssguard | awk '{print $2; exit}' > ~/version
+#pacman -Q rssguard | awk '{print $2; exit}' > ~/version

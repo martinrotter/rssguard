@@ -8,7 +8,7 @@ os="$1"
 if [[ "$os" == *"ubuntu"* ]]; then
   echo "We are building for GNU/Linux on Ubuntu."
   is_linux=true
-  prefix="AppDir/usr"
+  prefix="AppDir"
 
   libmpv="ON"
   qtmultimedia="OFF"
@@ -27,14 +27,7 @@ USE_QT6="ON"
 
 # Install needed dependencies.
 if [ $is_linux = true ]; then
-  # Qt 5.
-  sudo apt-get update
-
-  sudo apt-get -qy install appstream cmake ninja-build openssl libssl-dev 
-  sudo apt-get -qy install qt6-5compat-dev qt6-base-dev-tools qt6-image-formats-plugins qt6-multimedia-dev qt6-positioning-dev linguist-qt6 qt6-tools-dev
-  sudo apt-get -qy install libmpv-dev libssl-dev libsqlite3-dev alsa-base alsa-oss alsa-tools alsa-utils gstreamer1.0-alsa gstreamer1.0-plugins-bad gstreamer1.0-plugins-base gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly gstreamer1.0-pulseaudio gstreamer1.0-qt6 gstreamer1.0-vaapi gstreamer1.0-x libasound2-plugins libasound2-plugins-extra libasound2-dev
-
-  
+  echo "No need to install additional packages."  
 else
   # Qt 6.
   QTTARGET="mac"
