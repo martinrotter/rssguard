@@ -119,7 +119,7 @@ QString FeedParser::jsonMessageId(const QJsonObject& msg_element) const {
   return {};
 }
 
-QList<QSharedPointer<Enclosure>> FeedParser::jsonMessageEnclosures(const QJsonObject& msg_element) const {
+QList<QSharedPointer<MessageEnclosure>> FeedParser::jsonMessageEnclosures(const QJsonObject& msg_element) const {
   return {};
 }
 
@@ -159,7 +159,7 @@ QString FeedParser::objMessageId(const QVariant& msg_element) const {
   return {};
 }
 
-QList<QSharedPointer<Enclosure>> FeedParser::objMessageEnclosures(const QVariant& msg_element) const {
+QList<QSharedPointer<MessageEnclosure>> FeedParser::objMessageEnclosures(const QVariant& msg_element) const {
   return {};
 }
 
@@ -301,7 +301,7 @@ QList<Message> FeedParser::messages() {
     enc_urls.reserve(new_message.m_enclosures.size());
 
     for (int i = 0; i < new_message.m_enclosures.size(); i++) {
-      QSharedPointer<Enclosure> enc = new_message.m_enclosures[i];
+      QSharedPointer<MessageEnclosure> enc = new_message.m_enclosures[i];
 
       if (enc_urls.contains(enc->url())) {
         qWarningNN << LOGSEC_STANDARD << "Removing redundant enclosure" << QUOTE_W_SPACE_DOT(enc->url());
@@ -325,8 +325,8 @@ QList<Message> FeedParser::messages() {
   return messages;
 }
 
-QList<QSharedPointer<Enclosure>> FeedParser::xmlMrssGetEnclosures(const QDomElement& msg_element) const {
-  QList<QSharedPointer<Enclosure>> enclosures;
+QList<QSharedPointer<MessageEnclosure>> FeedParser::xmlMrssGetEnclosures(const QDomElement& msg_element) const {
+  QList<QSharedPointer<MessageEnclosure>> enclosures;
   auto content_list = msg_element.elementsByTagNameNS(m_mrssNamespace, QSL("content"));
 
   for (int i = 0; i < content_list.size(); i++) {
@@ -339,7 +339,7 @@ QList<QSharedPointer<Enclosure>> FeedParser::xmlMrssGetEnclosures(const QDomElem
     }
 
     if (!url.isEmpty() && !type.isEmpty()) {
-      enclosures.append(QSharedPointer<Enclosure>(new Enclosure(url, type)));
+      enclosures.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(url, type)));
     }
   }
 
@@ -350,7 +350,7 @@ QList<QSharedPointer<Enclosure>> FeedParser::xmlMrssGetEnclosures(const QDomElem
     QString url = elem_content.attribute(QSL("url"));
 
     if (!url.isEmpty()) {
-      enclosures.append(QSharedPointer<Enclosure>(new Enclosure(url, QSL(DEFAULT_ENCLOSURE_MIME_TYPE))));
+      enclosures.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(url, QSL(DEFAULT_ENCLOSURE_MIME_TYPE))));
     }
   }
 
@@ -519,10 +519,10 @@ QString FeedParser::xmlMessageId(const QDomElement& msg_element) const {
   return {};
 }
 
-QList<QSharedPointer<Enclosure>> FeedParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
+QList<QSharedPointer<MessageEnclosure>> FeedParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
   return {};
 }
 
-QList<MessageCategory*> FeedParser::xmlMessageCategories(const QDomElement& msg_element) const {
+QList<QSharedPointer<MessageCategory>> FeedParser::xmlMessageCategories(const QDomElement& msg_element) const {
   return {};
 }

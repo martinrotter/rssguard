@@ -498,8 +498,8 @@ QString AtomParser::xmlMessageUrl(const QDomElement& msg_element) const {
   }
 }
 
-QList<QSharedPointer<Enclosure>> AtomParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
-  QList<QSharedPointer<Enclosure>> enclosures;
+QList<QSharedPointer<MessageEnclosure>> AtomParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
+  QList<QSharedPointer<MessageEnclosure>> enclosures;
   QDomNodeList elem_links = msg_element.elementsByTagNameNS(m_atomNamespace, QSL("link"));
 
   for (int i = 0; i < elem_links.size(); i++) {
@@ -507,16 +507,16 @@ QList<QSharedPointer<Enclosure>> AtomParser::xmlMessageEnclosures(const QDomElem
     QString attribute = link.attribute(QSL("rel"));
 
     if (attribute == QSL("enclosure")) {
-      enclosures.append(QSharedPointer<Enclosure>(new Enclosure(link.attribute(QSL("href")),
-                                                                link.attribute(QSL("type")))));
+      enclosures.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(link.attribute(QSL("href")),
+                                                                              link.attribute(QSL("type")))));
     }
   }
 
   return enclosures;
 }
 
-QList<MessageCategory*> AtomParser::xmlMessageCategories(const QDomElement& msg_element) const {
-  QList<MessageCategory*> cats;
+QList<QSharedPointer<MessageCategory>> AtomParser::xmlMessageCategories(const QDomElement& msg_element) const {
+  QList<QSharedPointer<MessageCategory>> cats;
   QDomNodeList elem_cats = msg_element.toElement().elementsByTagNameNS(m_atomNamespace, QSL("category"));
 
   for (int i = 0; i < elem_cats.size(); i++) {
@@ -524,7 +524,7 @@ QList<MessageCategory*> AtomParser::xmlMessageCategories(const QDomElement& msg_
     QString lbl = cat.attribute(QSL("label"));
     QString term = cat.attribute(QSL("term"));
 
-    cats.append(new MessageCategory(lbl.isEmpty() ? term : lbl));
+    cats.append(QSharedPointer<MessageCategory>(new MessageCategory(lbl.isEmpty() ? term : lbl)));
   }
 
   return cats;

@@ -634,7 +634,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     }
     else if (!filename.isEmpty()) {
       // We have attachment.
-      msg.m_enclosures.append(QSharedPointer<Enclosure>(new Enclosure(filename + QSL(GMAIL_ATTACHMENT_SEP) +
+      msg.m_enclosures.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(filename + QSL(GMAIL_ATTACHMENT_SEP) +
                                                                         body[QSL("attachmentId")].toString(),
                                                                       filename +
                                                                         QSL(" (%1 KB)")

@@ -214,14 +214,14 @@ QString JsonParser::jsonMessageId(const QJsonObject& msg_element) const {
   return msg_element[QSL("id")].toString();
 }
 
-QList<QSharedPointer<Enclosure>> JsonParser::jsonMessageEnclosures(const QJsonObject& msg_element) const {
+QList<QSharedPointer<MessageEnclosure>> JsonParser::jsonMessageEnclosures(const QJsonObject& msg_element) const {
   auto json_att = msg_element[QSL("attachments")].toArray();
-  QList<QSharedPointer<Enclosure>> enc;
+  QList<QSharedPointer<MessageEnclosure>> enc;
 
   for (const QJsonValue& att : std::as_const(json_att)) {
     QJsonObject att_obj = att.toObject();
 
-    enc.append(QSharedPointer<Enclosure>(new Enclosure(att_obj[QSL("url")].toString(),
+    enc.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(att_obj[QSL("url")].toString(),
                                                        att_obj[QSL("mime_type")].toString())));
   }
 

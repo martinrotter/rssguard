@@ -17,16 +17,16 @@ class QSqlDatabase;
 class Label;
 
 // Represents single enclosure.
-class RSSGUARD_DLLSPEC Enclosure : public QObject {
+class RSSGUARD_DLLSPEC MessageEnclosure : public QObject {
     Q_OBJECT
 
     Q_PROPERTY(QString url READ url WRITE setUrl)
     Q_PROPERTY(QString mimeType READ mimeType WRITE setMimeType)
 
   public:
-    explicit Enclosure(QString url = QString(), QString mime = QString(), QObject* parent = nullptr);
-    Enclosure(const Enclosure& other);
-    ~Enclosure();
+    explicit MessageEnclosure(QString url = QString(), QString mime = QString(), QObject* parent = nullptr);
+    MessageEnclosure(const MessageEnclosure& other);
+    ~MessageEnclosure();
 
     QString url() const;
     void setUrl(const QString& url);
@@ -42,8 +42,8 @@ class RSSGUARD_DLLSPEC Enclosure : public QObject {
 // Represents single enclosure.
 class RSSGUARD_DLLSPEC Enclosures {
   public:
-    static QList<QSharedPointer<Enclosure>> decodeEnclosuresFromString(const QString& enclosures_data);
-    static QString encodeEnclosuresToString(const QList<QSharedPointer<Enclosure>>& enclosures);
+    static QList<QSharedPointer<MessageEnclosure>> decodeEnclosuresFromString(const QString& enclosures_data);
+    static QString encodeEnclosuresToString(const QList<QSharedPointer<MessageEnclosure>>& enclosures);
 };
 
 class Feed;
@@ -57,6 +57,7 @@ class RSSGUARD_DLLSPEC MessageCategory : public QObject {
   public:
     explicit MessageCategory(const QString& title, QObject* parent = nullptr);
     MessageCategory(const MessageCategory& other);
+    ~MessageCategory();
 
     QString title() const;
 
@@ -100,11 +101,11 @@ class RSSGUARD_DLLSPEC Message {
     bool m_isDeleted;
     double m_score;
     RtlBehavior m_rtlBehavior;
-    QList<QSharedPointer<Enclosure>> m_enclosures;
+    QList<QSharedPointer<MessageEnclosure>> m_enclosures;
 
     // List of assigned labels.
     // This field is only used when fetching entries of a feed.
-    QList<MessageCategory*> m_categories;
+    QList<QSharedPointer<MessageCategory>> m_categories;
 
     // List of custom IDs of labels assigned to this message.
     QList<Label*> m_assignedLabels;

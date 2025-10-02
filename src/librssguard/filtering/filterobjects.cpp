@@ -63,7 +63,7 @@ void FilterMessage::exportCategoriesToLabels(bool assign_to_message) const {
     return;
   }
 
-  for (MessageCategory* cate : m_message->m_categories) {
+  for (QSharedPointer<MessageCategory>& cate : m_message->m_categories) {
     auto lbl = m_system->filterAccount().createLabel(cate->title());
 
     if (assign_to_message) {
@@ -73,7 +73,7 @@ void FilterMessage::exportCategoriesToLabels(bool assign_to_message) const {
 }
 
 void FilterMessage::addEnclosure(const QString& url, const QString& mime_type) const {
-  m_message->m_enclosures.append(QSharedPointer<Enclosure>(new Enclosure(url, mime_type)));
+  m_message->m_enclosures.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(url, mime_type)));
 }
 
 QString FilterMessage::title() const {
@@ -385,7 +385,14 @@ QList<Label*> FilterMessage::assignedLabels() const {
 }
 
 QList<MessageCategory*> FilterMessage::categories() const {
-  return m_message->m_categories;
+  auto cats = m_message->m_categories;
+  auto std_cats = boolinq::from(cats)
+                    .select([](const QSharedPointer<MessageCategory>& cat) {
+                      return cat.data();
+                    })
+                    .toStdList();
+
+  return FROM_STD_LIST(QList<MessageCategory*>, std_cats);
 }
 
 bool FilterMessage::hasEnclosures() const {

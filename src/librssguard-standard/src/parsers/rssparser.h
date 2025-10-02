@@ -27,8 +27,8 @@ class RssParser : public FeedParser {
     virtual QDateTime xmlMessageDateCreated(const QDomElement& msg_element);
     virtual QString xmlMessageId(const QDomElement& msg_element) const;
     virtual QString xmlMessageUrl(const QDomElement& msg_element) const;
-    virtual QList<QSharedPointer<Enclosure>> xmlMessageEnclosures(const QDomElement& msg_element) const;
-    virtual QList<MessageCategory*> xmlMessageCategories(const QDomElement& msg_element) const;
+    virtual QList<QSharedPointer<MessageEnclosure>> xmlMessageEnclosures(const QDomElement& msg_element) const;
+    virtual QList<QSharedPointer<MessageCategory>> xmlMessageCategories(const QDomElement& msg_element) const;
 
   private:
     QList<FeedComment> comments(const QDomElement& msg_element) const;

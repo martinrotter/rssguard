@@ -277,14 +277,14 @@ QString RdfParser::xmlMessageUrl(const QDomElement& msg_element) const {
   return msg_element.elementsByTagNameNS(m_rssNamespace, QSL("link")).at(0).toElement().text();
 }
 
-QList<MessageCategory*> RdfParser::xmlMessageCategories(const QDomElement& msg_element) const {
-  QList<MessageCategory*> cats;
+QList<QSharedPointer<MessageCategory>> RdfParser::xmlMessageCategories(const QDomElement& msg_element) const {
+  QList<QSharedPointer<MessageCategory>> cats;
   QDomNodeList elem_cats = msg_element.toElement().elementsByTagNameNS(m_dcElNamespace, QSL("subject"));
 
   for (int i = 0; i < elem_cats.size(); i++) {
     QDomElement cat = elem_cats.at(i).toElement();
 
-    cats.append(new MessageCategory(cat.text()));
+    cats.append(QSharedPointer<MessageCategory>(new MessageCategory(cat.text())));
   }
 
   return cats;

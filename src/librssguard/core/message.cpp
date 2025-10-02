@@ -37,58 +37,58 @@
   message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();                                        \
   message.m_assignedLabelsIds = record.value(MSG_DB_LABELS_IDS).toString().split('.', SPLIT_BEHAVIOR::SkipEmptyParts);
 
-Enclosure::Enclosure(QString url, QString mime, QObject* parent)
+MessageEnclosure::MessageEnclosure(QString url, QString mime, QObject* parent)
   : QObject(parent), m_url(std::move(url)), m_mimeType(std::move(mime)) {}
 
-Enclosure::Enclosure(const Enclosure& other) {
+MessageEnclosure::MessageEnclosure(const MessageEnclosure& other) {
   setMimeType(other.mimeType());
   setUrl(other.url());
 }
 
-Enclosure::~Enclosure() {
-  qDebugNN << LOGSEC_CORE << "Destroying enclosure.";
+MessageEnclosure::~MessageEnclosure() {
+  qDebugNN << LOGSEC_CORE << "Destroying article enclosure.";
 }
 
-QString Enclosure::url() const {
+QString MessageEnclosure::url() const {
   return m_url;
 }
 
-void Enclosure::setUrl(const QString& url) {
+void MessageEnclosure::setUrl(const QString& url) {
   m_url = url;
 }
 
-QString Enclosure::mimeType() const {
+QString MessageEnclosure::mimeType() const {
   return m_mimeType;
 }
 
-void Enclosure::setMimeType(const QString& mime) {
+void MessageEnclosure::setMimeType(const QString& mime) {
   m_mimeType = mime;
 }
 
-QList<QSharedPointer<Enclosure>> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
+QList<QSharedPointer<MessageEnclosure>> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
   QJsonParseError enc_err;
   QJsonDocument enc_doc = QJsonDocument::fromJson(enclosures_data.toUtf8(), &enc_err);
-  QList<QSharedPointer<Enclosure>> enclosures;
+  QList<QSharedPointer<MessageEnclosure>> enclosures;
   QJsonArray enc_arr = enc_doc.array();
 
   for (const QJsonValue& enc_val : enc_arr) {
     const QJsonObject& enc_obj = enc_val.toObject();
 
-    Enclosure* enclosure = new Enclosure();
+    MessageEnclosure* enclosure = new MessageEnclosure();
 
     enclosure->setMimeType(enc_obj.value(QSL("mime")).toString());
     enclosure->setUrl(enc_obj.value(QSL("url")).toString());
 
-    enclosures.append(QSharedPointer<Enclosure>(enclosure));
+    enclosures.append(QSharedPointer<MessageEnclosure>(enclosure));
   }
 
   return enclosures;
 }
 
-QString Enclosures::encodeEnclosuresToString(const QList<QSharedPointer<Enclosure>>& enclosures) {
+QString Enclosures::encodeEnclosuresToString(const QList<QSharedPointer<MessageEnclosure>>& enclosures) {
   QJsonArray enc_arr;
 
-  for (const QSharedPointer<Enclosure>& enc : enclosures) {
+  for (const QSharedPointer<MessageEnclosure>& enc : enclosures) {
     QJsonObject enc_obj;
 
     enc_obj.insert(QSL("mime"), enc->mimeType());
@@ -103,14 +103,10 @@ QString Enclosures::encodeEnclosuresToString(const QList<QSharedPointer<Enclosur
 Message::Message() {
   m_title = m_url = m_author = m_contents = m_rawContents = m_feedId = m_feedTitle = m_customId = m_customHash =
     QL1S("");
-  m_categories = QList<MessageCategory*>();
   m_accountId = m_id = 0;
   m_score = 0.0;
   m_isRead = m_isImportant = m_isDeleted = false;
   m_rtlBehavior = RtlBehavior::NoRtl;
-  m_assignedLabels = QList<Label*>();
-  m_assignedLabelsByFilter = QList<Label*>();
-  m_deassignedLabelsByFilter = QList<Label*>();
 }
 
 Message::Message(const Message& other) {
@@ -128,12 +124,7 @@ Message::Message(const Message& other) {
   m_insertedUpdated = other.m_insertedUpdated;
 
   m_enclosures = other.m_enclosures;
-
-  m_categories = QList<MessageCategory*>();
-
-  for (const MessageCategory* cat : other.m_categories) {
-    m_categories.append(new MessageCategory(*cat));
-  }
+  m_categories = other.m_categories;
 
   m_accountId = other.m_accountId;
   m_id = other.m_id;
@@ -149,8 +140,8 @@ Message::Message(const Message& other) {
 }
 
 Message::~Message() {
-  qDeleteAll(m_categories);
-  m_categories.clear();
+  // qDeleteAll(m_categories);
+  // m_categories.clear();
 
   // qDeleteAll(m_enclosures);
   // m_enclosures.clear();
@@ -301,6 +292,10 @@ MessageCategory::MessageCategory(const QString& title, QObject* parent) : QObjec
 
 MessageCategory::MessageCategory(const MessageCategory& other) {
   m_title = other.m_title;
+}
+
+MessageCategory::~MessageCategory() {
+  qDebugNN << LOGSEC_CORE << "Destroying article category.";
 }
 
 QString MessageCategory::title() const {

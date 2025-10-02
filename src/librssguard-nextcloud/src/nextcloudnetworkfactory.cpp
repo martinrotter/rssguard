@@ -613,15 +613,15 @@ QList<Message> NextcloudGetMessagesResponse::messages() const {
 
     // Check for mediaThumbnail and append as first enclosure to be viewed in internal viewer.
     if (!message_map[QSL("mediaThumbnail")].isUndefined()) {
-      Enclosure* enclosure = new Enclosure(message_map[QSL("mediaThumbnail")].toString(), QSL("image/jpg"));
+      MessageEnclosure* enclosure = new MessageEnclosure(message_map[QSL("mediaThumbnail")].toString(), QSL("image/jpg"));
 
-      msg.m_enclosures.append(QSharedPointer<Enclosure>(enclosure));
+      msg.m_enclosures.append(QSharedPointer<MessageEnclosure>(enclosure));
     }
 
     QString enclosure_link = message_map[QSL("enclosureLink")].toString();
 
     if (!enclosure_link.isEmpty()) {
-      Enclosure* enclosure = new Enclosure();
+      MessageEnclosure* enclosure = new MessageEnclosure();
 
       enclosure->setMimeType(message_map[QSL("enclosureMime")].toString());
       enclosure->setUrl(enclosure_link);
@@ -632,7 +632,7 @@ QList<Message> NextcloudGetMessagesResponse::messages() const {
 
       if (!message_map[QSL("enclosureMime")].toString().isEmpty() ||
           !enclosure_link.startsWith(QSL("https://www.youtube.com/v/"))) {
-        msg.m_enclosures.append(QSharedPointer<Enclosure>(enclosure));
+        msg.m_enclosures.append(QSharedPointer<MessageEnclosure>(enclosure));
       }
     }
 

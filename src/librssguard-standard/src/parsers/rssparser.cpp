@@ -359,26 +359,26 @@ QString RssParser::xmlMessageUrl(const QDomElement& msg_element) const {
   return url;
 }
 
-QList<QSharedPointer<Enclosure>> RssParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
+QList<QSharedPointer<MessageEnclosure>> RssParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
   QString elem_enclosure = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("url"));
   QString elem_enclosure_type = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 
   if (!elem_enclosure.isEmpty()) {
-    return {QSharedPointer<Enclosure>(new Enclosure(elem_enclosure, elem_enclosure_type))};
+    return {QSharedPointer<MessageEnclosure>(new MessageEnclosure(elem_enclosure, elem_enclosure_type))};
   }
   else {
     return {};
   }
 }
 
-QList<MessageCategory*> RssParser::xmlMessageCategories(const QDomElement& msg_element) const {
-  QList<MessageCategory*> cats;
+QList<QSharedPointer<MessageCategory>> RssParser::xmlMessageCategories(const QDomElement& msg_element) const {
+  QList<QSharedPointer<MessageCategory>> cats;
   QDomNodeList elem_cats = msg_element.toElement().elementsByTagName(QSL("category"));
 
   for (int i = 0; i < elem_cats.size(); i++) {
     QDomElement cat = elem_cats.at(i).toElement();
 
-    cats.append(new MessageCategory(cat.text()));
+    cats.append(QSharedPointer<MessageCategory>(new MessageCategory(cat.text())));
   }
 
   return cats;

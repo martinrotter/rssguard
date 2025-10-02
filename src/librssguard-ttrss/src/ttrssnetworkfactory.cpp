@@ -1090,10 +1090,10 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
 
       for (const QJsonValue& attachment : std::as_const(json_att)) {
         QJsonObject mapped_attachemnt = attachment.toObject();
-        Enclosure* enclosure = new Enclosure(mapped_attachemnt[QSL("content_type")].toString(),
+        MessageEnclosure* enclosure = new MessageEnclosure(mapped_attachemnt[QSL("content_type")].toString(),
                                              mapped_attachemnt[QSL("content_url")].toString());
 
-        message.m_enclosures.append(QSharedPointer<Enclosure>(enclosure));
+        message.m_enclosures.append(QSharedPointer<MessageEnclosure>(enclosure));
       }
     }
 

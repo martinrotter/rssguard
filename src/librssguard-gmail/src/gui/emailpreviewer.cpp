@@ -62,7 +62,7 @@ void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item) {
 
   m_ui.m_btnAttachments->menu()->clear();
 
-  for (const QSharedPointer<Enclosure>& att : msg.m_enclosures) {
+  for (const QSharedPointer<MessageEnclosure>& att : msg.m_enclosures) {
     const QStringList att_id_name = att->url().split(QSL(GMAIL_ATTACHMENT_SEP));
 
     m_ui.m_btnAttachments->menu()->addAction(att->mimeType())->setData(att_id_name);
