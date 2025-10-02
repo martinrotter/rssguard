@@ -31,12 +31,11 @@ jobs:
     needs: check-build-script
     name: "${{ matrix.os }}; qt5 = ${{ matrix.use_qt5 }}"
     runs-on: "${{ matrix.os }}"
-    container: "${{ matrix.cont }}"
+    container: ghcr.io/pkgforge-dev/archlinux:latest
     strategy:
       matrix:
         os: [windows-2022, ubuntu-24.04, macos-13]
         use_qt5: ["ON", "OFF"]
-        cont: [ghcr.io/pkgforge-dev/archlinux:latest]
         include:
           - os: windows-2022
             script_name: .\resources\scripts\github-actions\build-windows.ps1
@@ -49,10 +48,6 @@ jobs:
             use_qt5: "ON"
           - os: macos-13
             use_qt5: "ON"
-          - os: macos-13
-            cont: ghcr.io/pkgforge-dev/archlinux:latest
-          - os: windows-2022
-            cont: ghcr.io/pkgforge-dev/archlinux:latest
     steps:         
       - name: Checkout source code
         uses: actions/checkout@v4
