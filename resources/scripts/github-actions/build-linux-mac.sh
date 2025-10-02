@@ -27,7 +27,8 @@ USE_QT6="ON"
 
 # Install needed dependencies.
 if [ $is_linux = true ]; then
-  echo "No need to install additional packages."  
+  echo "No need to install additional packages."
+  git config --global --add safe.directory "*"
 else
   # Qt 6.
   QTTARGET="mac"
