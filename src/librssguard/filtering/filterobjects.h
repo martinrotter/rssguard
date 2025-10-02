@@ -270,6 +270,13 @@ class FilterUtils : public QObject {
     // Parses string into date/time object.
     Q_INVOKABLE QDateTime parseDateTime(const QString& dat) const;
 
+    // Reading and writing data files.
+    Q_INVOKABLE QByteArray readFile(const QString& filename) const;
+    Q_INVOKABLE void writeFile(const QString& filename, const QByteArray& data) const;
+
+    Q_INVOKABLE QString readTextFile(const QString& filename) const;
+    Q_INVOKABLE void writeTextFile(const QString& filename, const QString& data) const;
+
   private:
     FilteringSystem* m_system;
 };

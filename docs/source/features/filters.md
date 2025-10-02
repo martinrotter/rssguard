@@ -144,6 +144,10 @@ Here is the complete reference documentation of all functions and properties ava
 | Name(Parameter)                                             | Return value  | Description
 | :---                                                        | :---          | :---
 | `fromXmlToJson(String xml_string)`                          | `String`      | Converts XML string into JSON.
+| `readFile(String filename)`                                 | `ArrayBuffer` | Reads file into array buffer object.
+| `writeFile(String filename, ArrayBuffer data)`              | `void`        | Writes file from array buffer object.
+| `readTextFile(String filename)`                             | `String`      | Reads file into UTF-8 string.
+| `writeTextFile(String filename, String text)`               | `void`        | Writes file from UTF-8 string.
 | `parseDateTime(String date_time)`                           | `Date`        | Converts textual date/time representation into proper `Date` object.
 
 ### `fs`
@@ -176,6 +180,15 @@ Here is the complete reference documentation of all functions and properties ava
 | `SameDateCreated`     | 8             | Check if message has same date of creation as some another messages.
 | `AllFeedsSameAccount` | 16            | Perform the check across all feeds from your account, not just "current" feed.
 | `SameCustomId`        | 32            | Check if message with same custom ID exists in RSS Guard DB.
+
+#### `MessageEnclosure`
+
+##### Properties
+
+| Name      | Type      | Read-only | Description
+| :---      | :---      | :---:     | ---
+| `url`     | `String`  | ✅         | URL of the message enclosure.
+| `mimeType`| `String`  | ✅         | MIME type of the message enclosure.
 
 #### `MessageCategory`
 
@@ -361,6 +374,92 @@ function filterMessage() {
   }
 
   return Msg.Accept;
+}
+```
+
+```js
+/*
+ * Assign score to articles based on keywords from an external file.
+ *
+ * Each line in `%data%/keywords.txt` should be:
+ *   keyword,score
+ * 
+ * Example:
+ *   crypto,50
+ *   blockchain,30
+ *
+ * Scores are additive but capped at 100.
+ */
+function filterMessage() {
+  let keywords = [];
+
+  try {
+    let fileContent = utils.readTextFile('%data%/keywords.txt');
+    keywords =
+        fileContent.split(/\r?\n/)
+            .map(line => {
+              let parts = line.split(',');
+              if (parts.length === 2) {
+                return {term: parts[0].trim(), score: Number(parts[1].trim())};
+              }
+              return null;
+            })
+            .filter(k => k && !isNaN(k.score));
+  } catch (e) {
+    app.log('Keywords file missing → default score 0.');
+    msg.score = 0;
+    return Msg.Accept;
+  }
+
+  let totalScore = 0;
+
+  for (let k of keywords) {
+    let re = new RegExp(k.term, 'i');
+    if (re.test(msg.title) || re.test(msg.contents)) {
+      totalScore += k.score;
+    }
+  }
+
+  // Cap score at 100.
+  if (totalScore > 100) {
+    totalScore = 100;
+  }
+
+  msg.score = totalScore;
+
+  // Optional: mark as important if high score.
+  if (msg.score >= 70) {
+    msg.isImportant = true;
+  }
+
+  return Msg.Accept;
+}
+```
+
+```js
+/*
+ * Read whitelist from external text file and then uses that whitelist to filter
+ * the articles.
+ */
+function filterMessage() {
+  let keywords = [];
+
+  try {
+    let fileContent = utils.readTextFile('%data%\\whitelist.txt');
+    keywords = fileContent.split(/\r?\n/).filter(line => line.trim() !== '');
+  } catch (e) {
+    app.log('No whitelist file found, accepting all articles.');
+  }
+
+  for (let k of keywords) {
+    let re = new RegExp(k, 'i');
+    if (re.test(msg.title) || re.test(msg.contents)) {
+      msg.isImportant = true;
+      return Msg.Accept;
+    }
+  }
+
+  return Msg.Ignore;
 }
 ```
 

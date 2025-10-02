@@ -493,6 +493,22 @@ QDateTime FilterUtils::parseDateTime(const QString& dat) const {
   return TextFactory::parseDateTime(dat);
 }
 
+QByteArray FilterUtils::readFile(const QString& filename) const {
+  return IOFactory::readFile(filename);
+}
+
+void FilterUtils::writeFile(const QString& filename, const QByteArray& data) const {
+  IOFactory::writeFile(filename, data);
+}
+
+QString FilterUtils::readTextFile(const QString& filename) const {
+  return QString::fromUtf8(IOFactory::readFile(filename));
+}
+
+void FilterUtils::writeTextFile(const QString& filename, const QString& data) const {
+  IOFactory::writeFile(filename, data.toUtf8());
+}
+
 QString FilterFs::runExecutableGetOutput(const QString& executable,
                                          const QStringList& arguments,
                                          const QString& stdin_data,
