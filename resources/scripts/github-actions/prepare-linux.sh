@@ -19,7 +19,9 @@ pacman -Syu --noconfirm \
 	libxrandr        \
 	libxtst          \
 	mariadb-clients  \
+	make			 \
 	mpv				 \
+	ninja			 \
 	pipewire-audio   \
 	pulseaudio       \
 	pulseaudio-alsa  \
