@@ -31,7 +31,7 @@ jobs:
     needs: check-build-script
     name: "${{ matrix.os }}; qt5 = ${{ matrix.use_qt5 }}"
     runs-on: "${{ matrix.os }}"
-    container: ghcr.io/pkgforge-dev/archlinux:latest
+    container: ${{ matrix.cont }}
     strategy:
       matrix:
         os: [windows-2022, ubuntu-24.04, macos-13]
@@ -39,10 +39,13 @@ jobs:
         include:
           - os: windows-2022
             script_name: .\resources\scripts\github-actions\build-windows.ps1
+            cont: null
           - os: ubuntu-24.04
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
+            cont: ghcr.io/pkgforge-dev/archlinux:latest
           - os: macos-13
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
+            cont: null
         exclude:
           - os: ubuntu-24.04
             use_qt5: "ON"
