@@ -40,6 +40,7 @@ jobs:
             script_name: .\resources\scripts\github-actions\build-windows.ps1
           - os: ubuntu-24.04
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
+            container: ghcr.io/pkgforge-dev/archlinux:latest
           - os: macos-13
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
         exclude:
