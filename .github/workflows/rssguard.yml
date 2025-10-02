@@ -36,13 +36,12 @@ jobs:
       matrix:
         os: [windows-2022, ubuntu-24.04, macos-13]
         use_qt5: ["ON", "OFF"]
-        cont: [""]
+        cont: [ghcr.io/pkgforge-dev/archlinux:latest]
         include:
           - os: windows-2022
             script_name: .\resources\scripts\github-actions\build-windows.ps1
           - os: ubuntu-24.04
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
-            cont: ghcr.io/pkgforge-dev/archlinux:latest
           - os: macos-13
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
         exclude:
@@ -50,6 +49,10 @@ jobs:
             use_qt5: "ON"
           - os: macos-13
             use_qt5: "ON"
+          - os: macos-13
+            cont: ghcr.io/pkgforge-dev/archlinux:latest
+          - os: windows-2022
+            cont: ghcr.io/pkgforge-dev/archlinux:latest
     steps:         
       - name: Checkout source code
         uses: actions/checkout@v4
