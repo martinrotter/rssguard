@@ -72,28 +72,26 @@ if [ $is_linux = true ]; then
   echo 'Validating AppStream metadata...'
   appstreamcli validate "$prefix/share/metainfo/$app_id.metainfo.xml"
   
-  # ## Obtain appimagetool.
-  # appimagetool_file=$(wget -q https://github.com/probonopd/go-appimage/releases/expanded_assets/continuous -O - | grep "appimagetool-.*-x86_64.AppImage" | head -n 1 | cut -d '"' -f 2)
-  # wget -c "https://github.com/$appimagetool_file"
-  # chmod +x appimagetool-*.AppImage
-  # mv appimagetool-*.AppImage appimagetool.AppImage
+  ARCH="$(uname -m)"
+  URUNTIME="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/uruntime2appimage.sh"
+  SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
+  
+  export DESKTOP=./AppDir/share/applications/io.github.martinrotter.rssguard.desktop
+  export DEPLOY_OPENGL=1
 
-  # export VERSION=1.0
+  wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
+  chmod +x ./quick-sharun
 
-  # GH_TKN=$GITHUB_TOKEN
-  # unset GITHUB_TOKEN
+  wget --retry-connrefused --tries=30 "$URUNTIME" -O ./uruntime2appimage
+  chmod +x ./uruntime2appimage
 
-  ## https://github.com/QuasarApp/CQtDeployer
-  # ./appimagetool.AppImage -s deploy AppDir/usr/share/applications/*.desktop
-  # ./appimagetool.AppImage ./AppDir
+  # TODO copy sqlite?
 
-  # export GITHUB_TOKEN=$GH_TKN
+  ./quick-sharun ./AppDir/bin/rssguard ./AppDir/lib/rssguard/* ./AppDir/lib/librssguard.so
+  ./uruntime2appimage
 
-  # ## Rename AppImaage.
-  # set -- R*.AppImage
-  # imagename="$1"
-
-  # imagenewname="rssguard-${git_tag}-${git_revision}-linux64.AppImage"
+  imagenewname="rssguard-${git_tag}-${git_revision}-linux64.AppImage"
+  set -- *.AppImage
 else
   # Fix .dylib linking.
   otool -L "$prefix/Contents/MacOS/rssguard"
@@ -109,11 +107,10 @@ else
   # Deploy to DMG.
   macdeployqt "$prefix" -dmg
 
-  # Rename DMG.
-  set -- *.dmg
-  imagename="$1"
   imagenewname="rssguard-${git_tag}-${git_revision}-mac64.dmg"
-
-  mv "$imagename" "$imagenewname"
-  ls
+  set -- *.dmg
 fi
+
+imagename="$1"
+mv "$imagename" "$imagenewname"
+ls
