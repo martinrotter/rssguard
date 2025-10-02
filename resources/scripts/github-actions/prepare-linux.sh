@@ -6,39 +6,40 @@ ARCH="$(uname -m)"
 EXTRA_PACKAGES="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/get-debloated-pkgs.sh"
 
 pacman -Syu --noconfirm \
-	base-devel       \
-	curl             \
-	cmake			 \
-	git              \
-	gtk3             \
-	libxcb           \
-	libxcursor       \
-	libxi            \
-	libxkbcommon     \
-	libxkbcommon-x11 \
-	libxrandr        \
-	libxtst          \
-	mariadb-clients  \
-	make			 \
-	mpv				 \
-	ninja			 \
-	pipewire-audio   \
-	pulseaudio       \
-	pulseaudio-alsa  \
-	qt6ct            \
-	qt6-wayland      \
-	gcc-libs		 \
-	glibc			 \
-	libglvnd		 \
-	qt6-5compat	     \
-	qt6-tools        \
-	qt6-base	     \
-	qt6-declarative	 \
-	qt6-multimedia   \
-	sqlite 			 \
-	wget             \
-	xorg-server-xvfb \
-	zsync
+    appstreamcli	 \
+    base-devel       \
+    cmake			 \
+    curl             \
+    gcc-libs		 \
+    git              \
+    glibc			 \
+    gtk3             \
+    libglvnd		 \
+    libxcb           \
+    libxcursor       \
+    libxi            \
+    libxkbcommon     \
+    libxkbcommon-x11 \
+    libxrandr        \
+    libxtst          \
+    make			 \
+    mariadb-clients  \
+    mpv				 \
+    ninja			 \
+    pipewire-audio   \
+    pulseaudio       \
+    pulseaudio-alsa  \
+    qt6-5compat	     \
+    qt6-base	     \
+    qt6-declarative	 \
+    qt6-multimedia   \
+    qt6-tools        \
+    qt6-wayland      \
+    qt6ct            \
+    sqlite 			 \
+    wget             \
+    xorg-server-xvfb \
+    zsync
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
