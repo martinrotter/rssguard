@@ -26,6 +26,7 @@ class RSSGUARD_DLLSPEC Enclosure : public QObject {
   public:
     explicit Enclosure(QString url = QString(), QString mime = QString(), QObject* parent = nullptr);
     Enclosure(const Enclosure& other);
+    ~Enclosure();
 
     QString url() const;
     void setUrl(const QString& url);
@@ -41,8 +42,8 @@ class RSSGUARD_DLLSPEC Enclosure : public QObject {
 // Represents single enclosure.
 class RSSGUARD_DLLSPEC Enclosures {
   public:
-    static QList<Enclosure*> decodeEnclosuresFromString(const QString& enclosures_data);
-    static QString encodeEnclosuresToString(const QList<Enclosure*>& enclosures);
+    static QList<QSharedPointer<Enclosure>> decodeEnclosuresFromString(const QString& enclosures_data);
+    static QString encodeEnclosuresToString(const QList<QSharedPointer<Enclosure>>& enclosures);
 };
 
 class Feed;
@@ -99,7 +100,7 @@ class RSSGUARD_DLLSPEC Message {
     bool m_isDeleted;
     double m_score;
     RtlBehavior m_rtlBehavior;
-    QList<Enclosure*> m_enclosures;
+    QList<QSharedPointer<Enclosure>> m_enclosures;
 
     // List of assigned labels.
     // This field is only used when fetching entries of a feed.

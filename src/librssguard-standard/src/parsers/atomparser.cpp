@@ -498,8 +498,8 @@ QString AtomParser::xmlMessageUrl(const QDomElement& msg_element) const {
   }
 }
 
-QList<Enclosure*> AtomParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
-  QList<Enclosure*> enclosures;
+QList<QSharedPointer<Enclosure>> AtomParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
+  QList<QSharedPointer<Enclosure>> enclosures;
   QDomNodeList elem_links = msg_element.elementsByTagNameNS(m_atomNamespace, QSL("link"));
 
   for (int i = 0; i < elem_links.size(); i++) {
@@ -507,7 +507,8 @@ QList<Enclosure*> AtomParser::xmlMessageEnclosures(const QDomElement& msg_elemen
     QString attribute = link.attribute(QSL("rel"));
 
     if (attribute == QSL("enclosure")) {
-      enclosures.append(new Enclosure(link.attribute(QSL("href")), link.attribute(QSL("type"))));
+      enclosures.append(QSharedPointer<Enclosure>(new Enclosure(link.attribute(QSL("href")),
+                                                                link.attribute(QSL("type")))));
     }
   }
 

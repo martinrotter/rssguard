@@ -73,7 +73,7 @@ void FilterMessage::exportCategoriesToLabels(bool assign_to_message) const {
 }
 
 void FilterMessage::addEnclosure(const QString& url, const QString& mime_type) const {
-  m_message->m_enclosures.append(new Enclosure(url, mime_type));
+  m_message->m_enclosures.append(QSharedPointer<Enclosure>(new Enclosure(url, mime_type)));
 }
 
 QString FilterMessage::title() const {

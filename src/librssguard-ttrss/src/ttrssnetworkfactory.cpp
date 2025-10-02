@@ -1093,7 +1093,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
         Enclosure* enclosure = new Enclosure(mapped_attachemnt[QSL("content_type")].toString(),
                                              mapped_attachemnt[QSL("content_url")].toString());
 
-        message.m_enclosures.append(enclosure);
+        message.m_enclosures.append(QSharedPointer<Enclosure>(enclosure));
       }
     }
 

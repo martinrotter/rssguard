@@ -1084,7 +1084,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
         message.m_url = href;
       }
       else {
-        message.m_enclosures.append(new Enclosure(href, mime));
+        message.m_enclosures.append(QSharedPointer<Enclosure>(new Enclosure(href, mime)));
       }
     }
 
@@ -1093,7 +1093,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
       QString mime = enc_obj[QSL("type")].toString();
       QString href = enc_obj[QSL("href")].toString();
 
-      message.m_enclosures.append(new Enclosure(href, mime));
+      message.m_enclosures.append(QSharedPointer<Enclosure>(new Enclosure(href, mime)));
     }
 
     for (const QJsonValue& cat : categories) {

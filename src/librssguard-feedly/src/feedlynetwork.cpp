@@ -460,10 +460,11 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
       const QJsonObject& enc_obj = enc.toObject();
       const QString& enc_href = enc_obj[QSL("href")].toString();
 
-      if (!boolinq::from(message.m_enclosures).any([enc_href](const Enclosure* existing_enclosure) {
+      if (!boolinq::from(message.m_enclosures).any([enc_href](const QSharedPointer<Enclosure>& existing_enclosure) {
             return existing_enclosure->url() == enc_href;
           })) {
-        message.m_enclosures.append(new Enclosure(enc_href, enc_obj[QSL("type")].toString()));
+        message.m_enclosures.append(QSharedPointer<Enclosure>(new Enclosure(enc_href,
+                                                                            enc_obj[QSL("type")].toString())));
       }
     }
 

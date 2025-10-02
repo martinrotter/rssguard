@@ -359,12 +359,12 @@ QString RssParser::xmlMessageUrl(const QDomElement& msg_element) const {
   return url;
 }
 
-QList<Enclosure*> RssParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
+QList<QSharedPointer<Enclosure>> RssParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
   QString elem_enclosure = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("url"));
   QString elem_enclosure_type = msg_element.namedItem(QSL("enclosure")).toElement().attribute(QSL("type"));
 
   if (!elem_enclosure.isEmpty()) {
-    return {new Enclosure(elem_enclosure, elem_enclosure_type)};
+    return {QSharedPointer<Enclosure>(new Enclosure(elem_enclosure, elem_enclosure_type))};
   }
   else {
     return {};

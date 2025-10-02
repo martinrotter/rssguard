@@ -107,7 +107,7 @@ class MessagesView : public BaseTreeView {
     void openSingleMessageInNewTab(RootItem* root, const Message& message);
 
     // Notify others about message selections.
-    void currentMessageChanged(const Message& message, RootItem* root);
+    void currentMessageChanged(Message message, RootItem* root);
     void currentMessageRemoved(RootItem* root);
     void willReselectSameMessage();
 

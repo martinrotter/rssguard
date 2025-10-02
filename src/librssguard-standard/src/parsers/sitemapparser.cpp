@@ -278,8 +278,8 @@ QString SitemapParser::xmlMessageId(const QDomElement& msg_element) const {
   return xmlMessageUrl(msg_element);
 }
 
-QList<Enclosure*> SitemapParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
-  QList<Enclosure*> enclosures;
+QList<QSharedPointer<Enclosure>> SitemapParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
+  QList<QSharedPointer<Enclosure>> enclosures;
 
   // sitemap-image
   QDomNodeList elem_links = msg_element.elementsByTagNameNS(sitemapImageNamespace(), QSL("image"));
@@ -290,7 +290,7 @@ QList<Enclosure*> SitemapParser::xmlMessageEnclosures(const QDomElement& msg_ele
 
     if (!loc.isEmpty()) {
       // NOTE: The MIME is made up.
-      enclosures.append(new Enclosure(loc, QSL("image/png")));
+      enclosures.append(QSharedPointer<Enclosure>(new Enclosure(loc, QSL("image/png"))));
     }
   }
 
@@ -307,7 +307,7 @@ QList<Enclosure*> SitemapParser::xmlMessageEnclosures(const QDomElement& msg_ele
 
     if (!loc.isEmpty()) {
       // NOTE: The MIME is made up.
-      enclosures.append(new Enclosure(loc, QSL("video/mpeg")));
+      enclosures.append(QSharedPointer<Enclosure>(new Enclosure(loc, QSL("video/mpeg"))));
     }
   }
 

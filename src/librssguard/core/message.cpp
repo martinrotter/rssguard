@@ -45,6 +45,10 @@ Enclosure::Enclosure(const Enclosure& other) {
   setUrl(other.url());
 }
 
+Enclosure::~Enclosure() {
+  qDebugNN << LOGSEC_CORE << "Destroying enclosure.";
+}
+
 QString Enclosure::url() const {
   return m_url;
 }
@@ -61,10 +65,10 @@ void Enclosure::setMimeType(const QString& mime) {
   m_mimeType = mime;
 }
 
-QList<Enclosure*> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
+QList<QSharedPointer<Enclosure>> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
   QJsonParseError enc_err;
   QJsonDocument enc_doc = QJsonDocument::fromJson(enclosures_data.toUtf8(), &enc_err);
-  QList<Enclosure*> enclosures;
+  QList<QSharedPointer<Enclosure>> enclosures;
   QJsonArray enc_arr = enc_doc.array();
 
   for (const QJsonValue& enc_val : enc_arr) {
@@ -75,16 +79,16 @@ QList<Enclosure*> Enclosures::decodeEnclosuresFromString(const QString& enclosur
     enclosure->setMimeType(enc_obj.value(QSL("mime")).toString());
     enclosure->setUrl(enc_obj.value(QSL("url")).toString());
 
-    enclosures.append(enclosure);
+    enclosures.append(QSharedPointer<Enclosure>(enclosure));
   }
 
   return enclosures;
 }
 
-QString Enclosures::encodeEnclosuresToString(const QList<Enclosure*>& enclosures) {
+QString Enclosures::encodeEnclosuresToString(const QList<QSharedPointer<Enclosure>>& enclosures) {
   QJsonArray enc_arr;
 
-  for (const Enclosure* enc : enclosures) {
+  for (const QSharedPointer<Enclosure>& enc : enclosures) {
     QJsonObject enc_obj;
 
     enc_obj.insert(QSL("mime"), enc->mimeType());
@@ -99,7 +103,6 @@ QString Enclosures::encodeEnclosuresToString(const QList<Enclosure*>& enclosures
 Message::Message() {
   m_title = m_url = m_author = m_contents = m_rawContents = m_feedId = m_feedTitle = m_customId = m_customHash =
     QL1S("");
-  m_enclosures = QList<Enclosure*>();
   m_categories = QList<MessageCategory*>();
   m_accountId = m_id = 0;
   m_score = 0.0;
@@ -124,11 +127,7 @@ Message::Message(const Message& other) {
   m_createdFromFeed = other.m_createdFromFeed;
   m_insertedUpdated = other.m_insertedUpdated;
 
-  m_enclosures = QList<Enclosure*>();
-
-  for (const Enclosure* enc : other.m_enclosures) {
-    m_enclosures.append(new Enclosure(*enc));
-  }
+  m_enclosures = other.m_enclosures;
 
   m_categories = QList<MessageCategory*>();
 
@@ -150,17 +149,11 @@ Message::Message(const Message& other) {
 }
 
 Message::~Message() {
-  for (auto* a : m_categories) {
-    a->deleteLater();
-  }
-
+  qDeleteAll(m_categories);
   m_categories.clear();
 
-  for (auto* a : m_enclosures) {
-    a->deleteLater();
-  }
-
-  m_enclosures.clear();
+  // qDeleteAll(m_enclosures);
+  // m_enclosures.clear();
 }
 
 void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {

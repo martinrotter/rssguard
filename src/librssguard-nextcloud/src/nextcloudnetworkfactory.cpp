@@ -615,7 +615,7 @@ QList<Message> NextcloudGetMessagesResponse::messages() const {
     if (!message_map[QSL("mediaThumbnail")].isUndefined()) {
       Enclosure* enclosure = new Enclosure(message_map[QSL("mediaThumbnail")].toString(), QSL("image/jpg"));
 
-      msg.m_enclosures.append(enclosure);
+      msg.m_enclosures.append(QSharedPointer<Enclosure>(enclosure));
     }
 
     QString enclosure_link = message_map[QSL("enclosureLink")].toString();
@@ -632,7 +632,7 @@ QList<Message> NextcloudGetMessagesResponse::messages() const {
 
       if (!message_map[QSL("enclosureMime")].toString().isEmpty() ||
           !enclosure_link.startsWith(QSL("https://www.youtube.com/v/"))) {
-        msg.m_enclosures.append(enclosure);
+        msg.m_enclosures.append(QSharedPointer<Enclosure>(enclosure));
       }
     }
 
