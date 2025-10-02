@@ -84,7 +84,8 @@ if [ $is_linux = true ]; then
   wget --retry-connrefused --tries=30 "$URUNTIME" -O ./uruntime2appimage
   chmod +x ./uruntime2appimage
 
-  # TODO copy sqlite?
+  mkdir -p "./AppDir/shared/lib/qt6/plugins/sqldrivers"
+  cp -v -R "/usr/lib/qt6/plugins/sqldrivers" "./AppDir/shared/lib/qt6/plugins/"
 
   ./quick-sharun ./AppDir/bin/rssguard ./AppDir/lib/rssguard/* ./AppDir/lib/librssguard.so
   ./uruntime2appimage

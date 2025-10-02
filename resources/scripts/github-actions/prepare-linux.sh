@@ -14,6 +14,7 @@ pacman -Syu --noconfirm \
     git              \
     glibc            \
     gtk3             \
+    libheif          \
     libglvnd         \
     libxcb           \
     libxcursor       \
