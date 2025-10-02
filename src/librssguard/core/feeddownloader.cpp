@@ -295,10 +295,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       tmr.restart();
 
       // Perform per-message filtering.
-      FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles,
-                                database,
-                                feed,
-                                feed->account());
+      FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles, database, feed, feed->account());
       filtering.filterRun().setTotalCountOfFilters(feed_filters_enabled_list.size());
 
       qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000
@@ -362,10 +359,6 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           // already removed, go to next message.
           break;
         }
-
-        // NOTE: Categories are heap-allocated and must be destroyed manually
-        // after filtering of that particular message is done.
-        msg_original.deallocateCategories();
 
         if (!remove_msg) {
           filtering.filterRun().incrementNumberOfAcceptedMessages();

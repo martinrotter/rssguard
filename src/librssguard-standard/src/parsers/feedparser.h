@@ -66,7 +66,7 @@ class FeedParser {
     virtual QString xmlMessageAuthor(const QDomElement& msg_element) const;
     virtual QDateTime xmlMessageDateCreated(const QDomElement& msg_element);
     virtual QString xmlMessageId(const QDomElement& msg_element) const;
-    virtual QList<Enclosure> xmlMessageEnclosures(const QDomElement& msg_element) const;
+    virtual QList<Enclosure*> xmlMessageEnclosures(const QDomElement& msg_element) const;
     virtual QList<MessageCategory*> xmlMessageCategories(const QDomElement& msg_element) const;
     virtual QString xmlMessageRawContents(const QDomElement& msg_element) const;
 
@@ -78,7 +78,7 @@ class FeedParser {
     virtual QString jsonMessageAuthor(const QJsonObject& msg_element) const;
     virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element);
     virtual QString jsonMessageId(const QJsonObject& msg_element) const;
-    virtual QList<Enclosure> jsonMessageEnclosures(const QJsonObject& msg_element) const;
+    virtual QList<Enclosure*> jsonMessageEnclosures(const QJsonObject& msg_element) const;
     virtual QList<MessageCategory*> jsonMessageCategories(const QJsonObject& msg_element) const;
     virtual QString jsonMessageRawContents(const QJsonObject& msg_element) const;
 
@@ -90,13 +90,13 @@ class FeedParser {
     virtual QString objMessageAuthor(const QVariant& msg_element) const;
     virtual QDateTime objMessageDateCreated(const QVariant& msg_element);
     virtual QString objMessageId(const QVariant& msg_element) const;
-    virtual QList<Enclosure> objMessageEnclosures(const QVariant& msg_element) const;
+    virtual QList<Enclosure*> objMessageEnclosures(const QVariant& msg_element) const;
     virtual QList<MessageCategory*> objMessageCategories(const QVariant& msg_element) const;
     virtual QString objMessageRawContents(const QVariant& msg_element) const;
 
   protected:
     void logUnsuccessfulRequest(const NetworkResult& reply) const;
-    QList<Enclosure> xmlMrssGetEnclosures(const QDomElement& msg_element) const;
+    QList<Enclosure*> xmlMrssGetEnclosures(const QDomElement& msg_element) const;
     QString xmlMrssTextFromPath(const QDomElement& msg_element, const QString& xml_path) const;
     QString xmlRawChild(const QDomElement& container) const;
     QStringList xmlTextsFromPath(const QDomElement& element,

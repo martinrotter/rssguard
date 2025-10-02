@@ -17,92 +17,89 @@
 #include <QVariant>
 #include <QVector>
 
-Enclosure::Enclosure(QString url, QString mime) : m_url(std::move(url)), m_mimeType(std::move(mime)) {}
+#define MSG_FROM_REC                                                                                               \
+  message.m_id = record.value(MSG_DB_ID_INDEX).toInt();                                                            \
+  message.m_isRead = record.value(MSG_DB_READ_INDEX).toBool();                                                     \
+  message.m_isImportant = record.value(MSG_DB_IMPORTANT_INDEX).toBool();                                           \
+  message.m_isDeleted = record.value(MSG_DB_DELETED_INDEX).toBool();                                               \
+  message.m_feedId = record.value(MSG_DB_FEED_CUSTOM_ID_INDEX).toString();                                         \
+  message.m_feedTitle = record.value(MSG_DB_FEED_TITLE_INDEX).toString();                                          \
+  message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();                                                   \
+  message.m_url = record.value(MSG_DB_URL_INDEX).toString();                                                       \
+  message.m_author = record.value(MSG_DB_AUTHOR_INDEX).toString();                                                 \
+  message.m_created = TextFactory::parseDateTime(record.value(MSG_DB_DCREATED_INDEX).value<qint64>());             \
+  message.m_contents = record.value(MSG_DB_CONTENTS_INDEX).toString();                                             \
+  message.m_enclosures = Enclosures::decodeEnclosuresFromString(record.value(MSG_DB_ENCLOSURES_INDEX).toString()); \
+  message.m_score = record.value(MSG_DB_SCORE_INDEX).toDouble();                                                   \
+  message.m_rtlBehavior = record.value(MSG_DB_FEED_IS_RTL_INDEX).value<RtlBehavior>();                             \
+  message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();                                             \
+  message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();                                            \
+  message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();                                        \
+  message.m_assignedLabelsIds = record.value(MSG_DB_LABELS_IDS).toString().split('.', SPLIT_BEHAVIOR::SkipEmptyParts);
 
-QList<Enclosure> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
+Enclosure::Enclosure(QString url, QString mime, QObject* parent)
+  : QObject(parent), m_url(std::move(url)), m_mimeType(std::move(mime)) {}
+
+Enclosure::Enclosure(const Enclosure& other) {
+  setMimeType(other.mimeType());
+  setUrl(other.url());
+}
+
+QString Enclosure::url() const {
+  return m_url;
+}
+
+void Enclosure::setUrl(const QString& url) {
+  m_url = url;
+}
+
+QString Enclosure::mimeType() const {
+  return m_mimeType;
+}
+
+void Enclosure::setMimeType(const QString& mime) {
+  m_mimeType = mime;
+}
+
+QList<Enclosure*> Enclosures::decodeEnclosuresFromString(const QString& enclosures_data) {
   QJsonParseError enc_err;
   QJsonDocument enc_doc = QJsonDocument::fromJson(enclosures_data.toUtf8(), &enc_err);
-  QList<Enclosure> enclosures;
+  QList<Enclosure*> enclosures;
+  QJsonArray enc_arr = enc_doc.array();
 
-  if (enc_err.error != QJsonParseError::ParseError::NoError) {
-    // Provide backwards compatibility.
-    auto enc = enclosures_data.split(ENCLOSURES_OUTER_SEPARATOR, SPLIT_BEHAVIOR::SkipEmptyParts);
+  for (const QJsonValue& enc_val : enc_arr) {
+    const QJsonObject& enc_obj = enc_val.toObject();
 
-    enclosures.reserve(enc.size());
+    Enclosure* enclosure = new Enclosure();
 
-    for (const QString& single_enclosure : std::as_const(enc)) {
-      Enclosure enclosure;
+    enclosure->setMimeType(enc_obj.value(QSL("mime")).toString());
+    enclosure->setUrl(enc_obj.value(QSL("url")).toString());
 
-      if (single_enclosure.contains(ECNLOSURES_INNER_SEPARATOR)) {
-        QStringList mime_url = single_enclosure.split(ECNLOSURES_INNER_SEPARATOR);
-
-        enclosure.m_mimeType = QString::fromUtf8(QByteArray::fromBase64(mime_url.at(0).toLocal8Bit()));
-        enclosure.m_url = QString::fromUtf8(QByteArray::fromBase64(mime_url.at(1).toLocal8Bit()));
-      }
-      else {
-        enclosure.m_url = QString::fromUtf8(QByteArray::fromBase64(single_enclosure.toLocal8Bit()));
-      }
-
-      enclosures.append(enclosure);
-    }
-  }
-  else {
-    QJsonArray enc_arr = enc_doc.array();
-
-    for (const QJsonValue& enc_val : enc_arr) {
-      const QJsonObject& enc_obj = enc_val.toObject();
-
-      Enclosure enclosure;
-
-      enclosure.m_mimeType = enc_obj.value(QSL("mime")).toString();
-      enclosure.m_url = enc_obj.value(QSL("url")).toString();
-
-      enclosures.append(enclosure);
-    }
+    enclosures.append(enclosure);
   }
 
   return enclosures;
 }
 
-QJsonArray Enclosures::encodeEnclosuresToJson(const QList<Enclosure>& enclosures) {
+QString Enclosures::encodeEnclosuresToString(const QList<Enclosure*>& enclosures) {
   QJsonArray enc_arr;
 
-  for (const Enclosure& enc : enclosures) {
+  for (const Enclosure* enc : enclosures) {
     QJsonObject enc_obj;
 
-    enc_obj.insert(QSL("mime"), enc.m_mimeType);
-    enc_obj.insert(QSL("url"), enc.m_url);
+    enc_obj.insert(QSL("mime"), enc->mimeType());
+    enc_obj.insert(QSL("url"), enc->url());
 
     enc_arr.append(enc_obj);
   }
 
-  return enc_arr;
-}
-
-QString Enclosures::encodeEnclosuresToString(const QList<Enclosure>& enclosures) {
-  return QJsonDocument(encodeEnclosuresToJson(enclosures)).toJson(QJsonDocument::JsonFormat::Compact);
-
-  /*
-  QStringList enclosures_str;
-
-  for (const Enclosure& enclosure : enclosures) {
-    if (enclosure.m_mimeType.isEmpty()) {
-      enclosures_str.append(enclosure.m_url.toUtf8().toBase64());
-    }
-    else {
-      enclosures_str.append(QString(enclosure.m_mimeType.toUtf8().toBase64()) + ECNLOSURES_INNER_SEPARATOR +
-                            enclosure.m_url.toUtf8().toBase64());
-    }
-  }
-
-  return enclosures_str.join(QString(ENCLOSURES_OUTER_SEPARATOR));
-  */
+  return QJsonDocument(enc_arr).toJson(QJsonDocument::JsonFormat::Compact);
 }
 
 Message::Message() {
   m_title = m_url = m_author = m_contents = m_rawContents = m_feedId = m_feedTitle = m_customId = m_customHash =
     QL1S("");
-  m_enclosures = QList<Enclosure>();
+  m_enclosures = QList<Enclosure*>();
   m_categories = QList<MessageCategory*>();
   m_accountId = m_id = 0;
   m_score = 0.0;
@@ -111,6 +108,59 @@ Message::Message() {
   m_assignedLabels = QList<Label*>();
   m_assignedLabelsByFilter = QList<Label*>();
   m_deassignedLabelsByFilter = QList<Label*>();
+}
+
+Message::Message(const Message& other) {
+  m_title = other.m_title;
+  m_url = other.m_url;
+  m_author = other.m_author;
+  m_contents = other.m_contents;
+  m_rawContents = other.m_rawContents;
+  m_feedId = other.m_feedId;
+  m_feedTitle = other.m_feedTitle;
+  m_customId = other.m_customId;
+  m_customHash = other.m_customHash;
+  m_created = other.m_created;
+  m_createdFromFeed = other.m_createdFromFeed;
+  m_insertedUpdated = other.m_insertedUpdated;
+
+  m_enclosures = QList<Enclosure*>();
+
+  for (const Enclosure* enc : other.m_enclosures) {
+    m_enclosures.append(new Enclosure(*enc));
+  }
+
+  m_categories = QList<MessageCategory*>();
+
+  for (const MessageCategory* cat : other.m_categories) {
+    m_categories.append(new MessageCategory(*cat));
+  }
+
+  m_accountId = other.m_accountId;
+  m_id = other.m_id;
+  m_score = other.m_score;
+  m_isRead = other.m_isRead;
+  m_isImportant = other.m_isImportant;
+  m_isDeleted = other.m_isDeleted;
+  m_rtlBehavior = other.m_rtlBehavior;
+  m_assignedLabels = other.m_assignedLabels;
+  m_assignedLabelsByFilter = other.m_assignedLabelsByFilter;
+  m_deassignedLabelsByFilter = other.m_deassignedLabelsByFilter;
+  m_assignedLabelsIds = other.m_assignedLabelsIds;
+}
+
+Message::~Message() {
+  for (auto* a : m_categories) {
+    a->deleteLater();
+  }
+
+  m_categories.clear();
+
+  for (auto* a : m_enclosures) {
+    a->deleteLater();
+  }
+
+  m_enclosures.clear();
 }
 
 void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
@@ -170,53 +220,6 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
     m_created = QDateTime::currentDateTimeUtc();
   }
 }
-
-void Message::deallocateCategories() {
-  qDeleteAll(m_categories);
-  m_categories.clear();
-}
-
-QJsonObject Message::toJson() const {
-  QJsonObject obj;
-
-  obj.insert(QSL("contents"), m_contents);
-  obj.insert(QSL("is_read"), m_isRead);
-  obj.insert(QSL("is_important"), m_isImportant);
-  obj.insert(QSL("title"), m_title);
-  obj.insert(QSL("date_created"), m_created.toMSecsSinceEpoch());
-  obj.insert(QSL("author"), m_author);
-  obj.insert(QSL("url"), m_url);
-  obj.insert(QSL("id"), m_id);
-  obj.insert(QSL("custom_id"), m_customId);
-  obj.insert(QSL("account_id"), m_accountId);
-  obj.insert(QSL("custom_hash"), m_customHash);
-  obj.insert(QSL("feed_custom_id"), m_feedId);
-  obj.insert(QSL("feed_title"), m_feedTitle);
-  obj.insert(QSL("is_rtl"), int(m_rtlBehavior));
-  obj.insert(QSL("enclosures"), Enclosures::encodeEnclosuresToJson(m_enclosures));
-
-  return obj;
-}
-
-#define MSG_FROM_REC                                                                                               \
-  message.m_id = record.value(MSG_DB_ID_INDEX).toInt();                                                            \
-  message.m_isRead = record.value(MSG_DB_READ_INDEX).toBool();                                                     \
-  message.m_isImportant = record.value(MSG_DB_IMPORTANT_INDEX).toBool();                                           \
-  message.m_isDeleted = record.value(MSG_DB_DELETED_INDEX).toBool();                                               \
-  message.m_feedId = record.value(MSG_DB_FEED_CUSTOM_ID_INDEX).toString();                                         \
-  message.m_feedTitle = record.value(MSG_DB_FEED_TITLE_INDEX).toString();                                          \
-  message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();                                                   \
-  message.m_url = record.value(MSG_DB_URL_INDEX).toString();                                                       \
-  message.m_author = record.value(MSG_DB_AUTHOR_INDEX).toString();                                                 \
-  message.m_created = TextFactory::parseDateTime(record.value(MSG_DB_DCREATED_INDEX).value<qint64>());             \
-  message.m_contents = record.value(MSG_DB_CONTENTS_INDEX).toString();                                             \
-  message.m_enclosures = Enclosures::decodeEnclosuresFromString(record.value(MSG_DB_ENCLOSURES_INDEX).toString()); \
-  message.m_score = record.value(MSG_DB_SCORE_INDEX).toDouble();                                                   \
-  message.m_rtlBehavior = record.value(MSG_DB_FEED_IS_RTL_INDEX).value<RtlBehavior>();                             \
-  message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();                                             \
-  message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();                                            \
-  message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();                                        \
-  message.m_assignedLabelsIds = record.value(MSG_DB_LABELS_IDS).toString().split('.', SPLIT_BEHAVIOR::SkipEmptyParts);
 
 Message Message::fromSqlQuery(const QSqlQuery& record) {
   Message message;

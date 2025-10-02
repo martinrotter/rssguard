@@ -28,7 +28,7 @@ class AtomParser : public FeedParser {
     virtual QDateTime xmlMessageDateCreated(const QDomElement& msg_element);
     virtual QString xmlMessageId(const QDomElement& msg_element) const;
     virtual QString xmlMessageUrl(const QDomElement& msg_element) const;
-    virtual QList<Enclosure> xmlMessageEnclosures(const QDomElement& msg_element) const;
+    virtual QList<Enclosure*> xmlMessageEnclosures(const QDomElement& msg_element) const;
     virtual QList<MessageCategory*> xmlMessageCategories(const QDomElement& msg_element) const;
     virtual QString xmlMessageAuthor(const QDomElement& msg_element) const;
 

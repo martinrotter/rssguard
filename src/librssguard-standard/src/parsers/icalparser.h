@@ -87,8 +87,6 @@ class IcalParser : public FeedParser {
     virtual QString objMessageAuthor(const QVariant& msg_element) const;
     virtual QDateTime objMessageDateCreated(const QVariant& msg_element);
     virtual QString objMessageId(const QVariant& msg_element) const;
-    virtual QList<Enclosure> objMessageEnclosures(const QVariant& msg_element) const;
-    virtual QList<MessageCategory*> objMessageCategories(const QVariant& msg_element) const;
     virtual QString objMessageRawContents(const QVariant& msg_element) const;
 
   private:

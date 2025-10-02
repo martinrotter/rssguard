@@ -62,10 +62,10 @@ void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item) {
 
   m_ui.m_btnAttachments->menu()->clear();
 
-  for (const Enclosure& att : msg.m_enclosures) {
-    const QStringList att_id_name = att.m_url.split(QSL(GMAIL_ATTACHMENT_SEP));
+  for (const Enclosure* att : msg.m_enclosures) {
+    const QStringList att_id_name = att->url().split(QSL(GMAIL_ATTACHMENT_SEP));
 
-    m_ui.m_btnAttachments->menu()->addAction(att.m_mimeType)->setData(att_id_name);
+    m_ui.m_btnAttachments->menu()->addAction(att->mimeType())->setData(att_id_name);
   }
 
   m_ui.m_btnAttachments->setDisabled(m_ui.m_btnAttachments->menu()->isEmpty());
@@ -97,7 +97,6 @@ void EmailPreviewer::downloadAttachment(QAction* act) {
   const QString file_name = act->data().toStringList().at(0);
 
   try {
-
     const QNetworkRequest req = m_account->network()->requestForAttachment(m_message.m_customId, attachment_id);
 
     // TODO: todo

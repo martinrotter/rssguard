@@ -160,14 +160,6 @@ QString IcalParser::objMessageId(const QVariant& msg_element) const {
   return comp.uid();
 }
 
-QList<Enclosure> IcalParser::objMessageEnclosures(const QVariant& msg_element) const {
-  return {};
-}
-
-QList<MessageCategory*> IcalParser::objMessageCategories(const QVariant& msg_element) const {
-  return {};
-}
-
 QString IcalParser::objMessageRawContents(const QVariant& msg_element) const {
   const IcalendarComponent& comp_base = msg_element.value<IcalendarComponent>();
   const EventComponent& comp = static_cast<const EventComponent&>(comp_base);

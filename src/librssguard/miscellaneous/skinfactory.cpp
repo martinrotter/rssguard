@@ -230,19 +230,19 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
   QString enclosure_images;
 
   if (root == nullptr || root->account()->displaysEnclosures()) {
-    for (const Enclosure& enclosure : message.m_enclosures) {
-      QString enc_url = QUrl::fromPercentEncoding(enclosure.m_url.toUtf8());
+    for (const Enclosure* enclosure : message.m_enclosures) {
+      QString enc_url = QUrl::fromPercentEncoding(enclosure->url().toUtf8());
 
       enclosures += QString(skin.m_enclosureMarkup)
                       .replace(QSL("%enclosure_url%"), enc_url)
-                      .replace(QSL("%enclosure_mime%"), enclosure.m_mimeType);
+                      .replace(QSL("%enclosure_mime%"), enclosure->mimeType());
 
-      if (display_enclosures && enclosure.m_mimeType.startsWith(QSL("image/"))) {
+      if (display_enclosures && enclosure->mimeType().startsWith(QSL("image/"))) {
         // Add thumbnail image.
         enclosure_images +=
           QString(skin.m_enclosureImageMarkup)
             .replace(QSL("%enclosure_url%"), enc_url)
-            .replace(QSL("%enclosure_mime%"), enclosure.m_mimeType)
+            .replace(QSL("%enclosure_mime%"), enclosure->mimeType())
             .replace(QSL("%image_size%"), forced_img_height <= 0 ? QSL("none") : QSL("%1px").arg(forced_img_height));
       }
     }

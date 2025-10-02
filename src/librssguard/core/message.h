@@ -17,10 +17,23 @@ class QSqlDatabase;
 class Label;
 
 // Represents single enclosure.
-struct RSSGUARD_DLLSPEC Enclosure {
-  public:
-    explicit Enclosure(QString url = QString(), QString mime = QString());
+class RSSGUARD_DLLSPEC Enclosure : public QObject {
+    Q_OBJECT
 
+    Q_PROPERTY(QString url READ url WRITE setUrl)
+    Q_PROPERTY(QString mimeType READ mimeType WRITE setMimeType)
+
+  public:
+    explicit Enclosure(QString url = QString(), QString mime = QString(), QObject* parent = nullptr);
+    Enclosure(const Enclosure& other);
+
+    QString url() const;
+    void setUrl(const QString& url);
+
+    QString mimeType() const;
+    void setMimeType(const QString& mime);
+
+  private:
     QString m_url;
     QString m_mimeType;
 };
@@ -28,9 +41,8 @@ struct RSSGUARD_DLLSPEC Enclosure {
 // Represents single enclosure.
 class RSSGUARD_DLLSPEC Enclosures {
   public:
-    static QList<Enclosure> decodeEnclosuresFromString(const QString& enclosures_data);
-    static QJsonArray encodeEnclosuresToJson(const QList<Enclosure>& enclosures);
-    static QString encodeEnclosuresToString(const QList<Enclosure>& enclosures);
+    static QList<Enclosure*> decodeEnclosuresFromString(const QString& enclosures_data);
+    static QString encodeEnclosuresToString(const QList<Enclosure*>& enclosures);
 };
 
 class Feed;
@@ -57,11 +69,10 @@ class RSSGUARD_DLLSPEC MessageCategory : public QObject {
 class RSSGUARD_DLLSPEC Message {
   public:
     explicit Message();
+    Message(const Message& other);
+    ~Message();
 
     void sanitize(const Feed* feed, bool fix_future_datetimes);
-    void deallocateCategories();
-
-    QJsonObject toJson() const;
 
     static Message fromSqlQuery(const QSqlQuery& record);
     static Message fromSqlRecord(const QSqlRecord& record, bool* result = nullptr);
@@ -88,7 +99,7 @@ class RSSGUARD_DLLSPEC Message {
     bool m_isDeleted;
     double m_score;
     RtlBehavior m_rtlBehavior;
-    QList<Enclosure> m_enclosures;
+    QList<Enclosure*> m_enclosures;
 
     // List of assigned labels.
     // This field is only used when fetching entries of a feed.

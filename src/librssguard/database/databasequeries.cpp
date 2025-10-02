@@ -1412,12 +1412,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForBin(const QSqlDatabase& d
     PRINT_QUERY(q)
 
     while (q.next()) {
-      bool decoded;
-      Message message = Message::fromSqlRecord(q.record(), &decoded);
+      Message message = Message::fromSqlQuery(q);
 
-      if (decoded) {
-        messages.append(message);
-      }
+      messages.append(message);
     }
 
     if (ok != nullptr) {

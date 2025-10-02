@@ -119,7 +119,7 @@ QString FeedParser::jsonMessageId(const QJsonObject& msg_element) const {
   return {};
 }
 
-QList<Enclosure> FeedParser::jsonMessageEnclosures(const QJsonObject& msg_element) const {
+QList<Enclosure*> FeedParser::jsonMessageEnclosures(const QJsonObject& msg_element) const {
   return {};
 }
 
@@ -159,7 +159,7 @@ QString FeedParser::objMessageId(const QVariant& msg_element) const {
   return {};
 }
 
-QList<Enclosure> FeedParser::objMessageEnclosures(const QVariant& msg_element) const {
+QList<Enclosure*> FeedParser::objMessageEnclosures(const QVariant& msg_element) const {
   return {};
 }
 
@@ -301,18 +301,19 @@ QList<Message> FeedParser::messages() {
     enc_urls.reserve(new_message.m_enclosures.size());
 
     for (int i = 0; i < new_message.m_enclosures.size(); i++) {
-      Enclosure& enc = new_message.m_enclosures[i];
+      Enclosure* enc = new_message.m_enclosures[i];
 
-      if (enc_urls.contains(enc.m_url)) {
-        qWarningNN << LOGSEC_STANDARD << "Removing redundant enclosure" << QUOTE_W_SPACE_DOT(enc.m_url);
+      if (enc_urls.contains(enc->url())) {
+        qWarningNN << LOGSEC_STANDARD << "Removing redundant enclosure" << QUOTE_W_SPACE_DOT(enc->url());
         new_message.m_enclosures.removeAt(i--);
+        delete enc;
         continue;
       }
 
-      enc_urls.append(enc.m_url);
+      enc_urls.append(enc->url());
 
-      if (enc.m_mimeType.simplified().isEmpty()) {
-        enc.m_mimeType = QSL(DEFAULT_ENCLOSURE_MIME_TYPE);
+      if (enc->mimeType().simplified().isEmpty()) {
+        enc->setMimeType(QSL(DEFAULT_ENCLOSURE_MIME_TYPE));
       }
     }
 
@@ -325,8 +326,8 @@ QList<Message> FeedParser::messages() {
   return messages;
 }
 
-QList<Enclosure> FeedParser::xmlMrssGetEnclosures(const QDomElement& msg_element) const {
-  QList<Enclosure> enclosures;
+QList<Enclosure*> FeedParser::xmlMrssGetEnclosures(const QDomElement& msg_element) const {
+  QList<Enclosure*> enclosures;
   auto content_list = msg_element.elementsByTagNameNS(m_mrssNamespace, QSL("content"));
 
   for (int i = 0; i < content_list.size(); i++) {
@@ -339,7 +340,7 @@ QList<Enclosure> FeedParser::xmlMrssGetEnclosures(const QDomElement& msg_element
     }
 
     if (!url.isEmpty() && !type.isEmpty()) {
-      enclosures.append(Enclosure(url, type));
+      enclosures.append(new Enclosure(url, type));
     }
   }
 
@@ -350,7 +351,7 @@ QList<Enclosure> FeedParser::xmlMrssGetEnclosures(const QDomElement& msg_element
     QString url = elem_content.attribute(QSL("url"));
 
     if (!url.isEmpty()) {
-      enclosures.append(Enclosure(url, QSL(DEFAULT_ENCLOSURE_MIME_TYPE)));
+      enclosures.append(new Enclosure(url, QSL(DEFAULT_ENCLOSURE_MIME_TYPE)));
     }
   }
 
@@ -519,7 +520,7 @@ QString FeedParser::xmlMessageId(const QDomElement& msg_element) const {
   return {};
 }
 
-QList<Enclosure> FeedParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
+QList<Enclosure*> FeedParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
   return {};
 }
 

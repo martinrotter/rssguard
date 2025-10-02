@@ -613,10 +613,7 @@ QList<Message> NextcloudGetMessagesResponse::messages() const {
 
     // Check for mediaThumbnail and append as first enclosure to be viewed in internal viewer.
     if (!message_map[QSL("mediaThumbnail")].isUndefined()) {
-      Enclosure enclosure;
-
-      enclosure.m_mimeType = QSL("image/jpg");
-      enclosure.m_url = message_map[QSL("mediaThumbnail")].toString();
+      Enclosure* enclosure = new Enclosure(message_map[QSL("mediaThumbnail")].toString(), QSL("image/jpg"));
 
       msg.m_enclosures.append(enclosure);
     }
@@ -624,13 +621,13 @@ QList<Message> NextcloudGetMessagesResponse::messages() const {
     QString enclosure_link = message_map[QSL("enclosureLink")].toString();
 
     if (!enclosure_link.isEmpty()) {
-      Enclosure enclosure;
+      Enclosure* enclosure = new Enclosure();
 
-      enclosure.m_mimeType = message_map[QSL("enclosureMime")].toString();
-      enclosure.m_url = enclosure_link;
+      enclosure->setMimeType(message_map[QSL("enclosureMime")].toString());
+      enclosure->setUrl(enclosure_link);
 
-      if (enclosure.m_mimeType.isEmpty()) {
-        enclosure.m_mimeType = QSL("image/png");
+      if (enclosure->mimeType().isEmpty()) {
+        enclosure->setMimeType(QSL("image/png"));
       }
 
       if (!message_map[QSL("enclosureMime")].toString().isEmpty() ||

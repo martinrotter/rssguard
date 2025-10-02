@@ -277,10 +277,6 @@ QString RdfParser::xmlMessageUrl(const QDomElement& msg_element) const {
   return msg_element.elementsByTagNameNS(m_rssNamespace, QSL("link")).at(0).toElement().text();
 }
 
-QList<Enclosure> RdfParser::xmlMessageEnclosures(const QDomElement& msg_element) const {
-  return {};
-}
-
 QList<MessageCategory*> RdfParser::xmlMessageCategories(const QDomElement& msg_element) const {
   QList<MessageCategory*> cats;
   QDomNodeList elem_cats = msg_element.toElement().elementsByTagNameNS(m_dcElNamespace, QSL("subject"));
