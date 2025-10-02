@@ -54,7 +54,7 @@ jobs:
     steps:
       - name: Prepare Linux environment
         run: ./resources/scripts/github-actions/prepare-linux.sh
-        if: matrix.os == *"ubuntu"*
+        if: matrix.os == 'ubuntu-24.04'
 
       - name: Checkout source code
         uses: actions/checkout@v4
