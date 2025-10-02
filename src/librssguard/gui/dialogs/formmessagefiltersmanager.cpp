@@ -393,8 +393,25 @@ void FormMessageFiltersManager::testFilter() {
     m_ui.m_txtErrors->append(ex.message());
 
     // See output.
-    m_ui.m_twDetails->setCurrentIndex(2);
+    m_ui.m_twMessages->setCurrentIndex(1);
   }
+}
+
+void FormMessageFiltersManager::processCheckedFeeds() {
+  QList<RootItem*> checked = m_feedsModel->sourceModel()->checkedItems();
+
+  try {
+    m_msgModel->processFeeds(selectedFilter(), selectedAccount(), checked);
+  }
+  catch (const ApplicationException& ex) {
+    m_ui.m_txtErrors->setTextColor(Qt::GlobalColor::red);
+    m_ui.m_txtErrors->append(ex.message());
+
+    // See output.
+    m_ui.m_twMessages->setCurrentIndex(1);
+  }
+
+  displayMessagesOfFeed();
 }
 
 void FormMessageFiltersManager::displayMessagesOfFeed() {
@@ -408,13 +425,6 @@ void FormMessageFiltersManager::displayMessagesOfFeed() {
   }
 
   displaySelectedMessageDetails(m_ui.m_treeExistingMessages->currentIndex(), {});
-}
-
-void FormMessageFiltersManager::processCheckedFeeds() {
-  QList<RootItem*> checked = m_feedsModel->sourceModel()->checkedItems();
-
-  m_msgModel->processFeeds(selectedFilter(), selectedAccount(), checked);
-  displayMessagesOfFeed();
 }
 
 void FormMessageFiltersManager::loadAccount(ServiceRoot* account) {

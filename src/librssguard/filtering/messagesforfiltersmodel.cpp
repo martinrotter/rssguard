@@ -220,28 +220,20 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
 
         filtering.setMessage(msg_filtered);
 
-        try {
-          FilterMessage::FilteringAction result = filtering.filterMessage(*fltr);
+        FilterMessage::FilteringAction result = filtering.filterMessage(*fltr);
 
-          if (result == FilterMessage::FilteringAction::Purge) {
-            remove_msg = true;
+        if (result == FilterMessage::FilteringAction::Purge) {
+          remove_msg = true;
 
-            // Purge the message completely and remove leftovers.
-            DatabaseQueries::purgeMessage(database, msg_filtered->m_id);
-          }
-          else if (result == FilterMessage::FilteringAction::Ignore) {
-            remove_msg = true;
-          }
-          else {
-            // Article was accepted.
-            filtering.filterRun().incrementNumberOfAcceptedMessages();
-          }
+          // Purge the message completely and remove leftovers.
+          DatabaseQueries::purgeMessage(database, msg_filtered->m_id);
         }
-        catch (const FilteringException& ex) {
-          qCriticalNN << LOGSEC_CORE << "Error when running script when processing existing messages:"
-                      << QUOTE_W_SPACE_DOT(ex.message());
-
-          continue;
+        else if (result == FilterMessage::FilteringAction::Ignore) {
+          remove_msg = true;
+        }
+        else {
+          // Article was accepted.
+          filtering.filterRun().incrementNumberOfAcceptedMessages();
         }
 
         filtering.compareAndWriteArticleStates(&msg_original, msg_filtered, read_msgs, important_msgs);
