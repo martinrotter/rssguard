@@ -72,7 +72,6 @@ if [ $is_linux = true ]; then
   echo 'Validating AppStream metadata...'
   appstreamcli validate "$prefix/share/metainfo/$app_id.metainfo.xml"
   
-  ARCH="$(uname -m)"
   URUNTIME="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/uruntime2appimage.sh"
   SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
   
