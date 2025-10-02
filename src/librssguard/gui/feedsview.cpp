@@ -822,7 +822,6 @@ void FeedsView::filterItems(SearchLineEdit::SearchMode mode,
 }
 
 void FeedsView::toggleFeedSortingMode(bool sort_alphabetically) {
-  setSortingEnabled(sort_alphabetically);
   m_proxyModel->setSortAlphabetically(sort_alphabetically);
 }
 
@@ -1188,7 +1187,7 @@ void FeedsView::setupAppearance() {
 
   setUniformRowHeights(true);
   setAnimated(true);
-  setSortingEnabled(false);
+  setSortingEnabled(true);
   setItemsExpandable(true);
   setAutoExpandDelay(800);
   setExpandsOnDoubleClick(true);

@@ -334,30 +334,23 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
       return sortOrder() == Qt::SortOrder::DescendingOrder;
     }
     else if (left_item->kind() == right_item->kind()) {
+      if (left.column() == FDS_MODEL_COUNTS_INDEX) {
+        // We sort according to counts, no matter of alphabetical or manual sorting is enabled.
+        return left_item->countOfUnreadMessages() < right_item->countOfUnreadMessages();
+      }
+
       if (m_sortAlphabetically) {
-        // Both items are of the same type.
-        if (left.column() == FDS_MODEL_COUNTS_INDEX) {
-          // User wants to sort according to counts.
-          return left_item->countOfUnreadMessages() < right_item->countOfUnreadMessages();
-        }
-        else {
-          // In other cases, sort by title.
-          return QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0;
-        }
+        return QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0;
       }
       else {
-        // We sort some types with sort order, other alphabetically.
         switch (left_item->kind()) {
           case RootItem::Kind::Feed:
           case RootItem::Kind::Category:
           case RootItem::Kind::ServiceRoot:
-            return sortOrder() == Qt::SortOrder::AscendingOrder ? left_item->sortOrder() < right_item->sortOrder()
-                                                                : left_item->sortOrder() > right_item->sortOrder();
+            return left_item->sortOrder() < right_item->sortOrder();
 
           default:
-            return sortOrder() == Qt::SortOrder::AscendingOrder
-                     ? QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0
-                     : QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) > 0;
+            return QString::localeAwareCompare(left_item->title().toLower(), right_item->title().toLower()) < 0;
         }
       }
     }
