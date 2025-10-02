@@ -8,6 +8,7 @@ EXTRA_PACKAGES="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImage
 pacman -Syu --noconfirm \
 	base-devel       \
 	curl             \
+	cmake			 \
 	git              \
 	gtk3             \
 	libxcb           \
@@ -24,6 +25,15 @@ pacman -Syu --noconfirm \
 	pulseaudio-alsa  \
 	qt6ct            \
 	qt6-wayland      \
+	gcc-libs		 \
+	glibc			 \
+	libglvnd		 \
+	qt6-5compat	     \
+	qt6-tools        \
+	qt6-base	     \
+	qt6-declarative	 \
+	qt6-multimedia   \
+	sqlite 			 \
 	wget             \
 	xorg-server-xvfb \
 	zsync
