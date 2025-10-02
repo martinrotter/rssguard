@@ -51,7 +51,11 @@ jobs:
             use_qt5: "ON"
           - os: macos-13
             use_qt5: "ON"
-    steps:         
+    steps:
+      - name: Prepare Linux environment
+        run: ./resources/scripts/github-actions/prepare-linux.sh
+        if: matrix.os == *"ubuntu"*
+
       - name: Checkout source code
         uses: actions/checkout@v4
         with:
