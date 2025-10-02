@@ -76,6 +76,16 @@ void FilterMessage::addEnclosure(const QString& url, const QString& mime_type) c
   m_message->m_enclosures.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(url, mime_type)));
 }
 
+bool FilterMessage::removeEnclosure(int index) const {
+  m_message->m_enclosures.removeAt(index);
+
+  return index <= m_message->m_enclosures.size();
+}
+
+void FilterMessage::removeAllEnclosures() const {
+  m_message->m_enclosures.clear();
+}
+
 QString FilterMessage::title() const {
   return m_message->m_title;
 }
@@ -393,6 +403,17 @@ QList<MessageCategory*> FilterMessage::categories() const {
                     .toStdList();
 
   return FROM_STD_LIST(QList<MessageCategory*>, std_cats);
+}
+
+QList<MessageEnclosure*> FilterMessage::enclosures() const {
+  auto cats = m_message->m_enclosures;
+  auto std_cats = boolinq::from(cats)
+                    .select([](const QSharedPointer<MessageEnclosure>& cat) {
+                      return cat.data();
+                    })
+                    .toStdList();
+
+  return FROM_STD_LIST(QList<MessageEnclosure*>, std_cats);
 }
 
 bool FilterMessage::hasEnclosures() const {

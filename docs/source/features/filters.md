@@ -52,30 +52,33 @@ Here is the complete reference documentation of all functions and properties ava
 
 #### Properties
 
-| Name               | Type                    | Read-only | Synchronized | Description
-| :---               | :---                    | :---:     | :---:        | ---
-| `assignedLabels`   | `Array<Label>`          | ✅         | ✅            | List of labels assigned to the article.
-| `categories`       | `Array<MessageCategory>`| ✅         | ❌            | List of categories of the article (extracted from feed).
-| `id`               | `Number`                | ✅         | ❌            | ID assigned to the message in RSS Guard local database.
-| `customId`         | `String`                | ❌         | ❌            | ID of the message as provided by the remote service or feed file.
-| `title`            | `String`                | ❌         | ❌            | The message title.
-| `url`              | `String`                | ❌         | ❌            | The message URL.
-| `author`           | `String`                | ❌         | ❌            | Author of the message.
-| `contents`         | `String`                | ❌         | ❌            | Contents of the message.
-| `rawContents`      | `String`                | ❌         | ❌            | This is the RAW contents of the message obtained from remote service/feed. A raw XML or JSON element data. This attribute has the value only if `runningFilterWhenFetching` returns `true`. In other words, this attribute is not persistently stored in the RSS Guard's DB. Also, this attribute is artificially filled in with ATOM-like data when testing the filter.
-| `score`            | `Number`                | ❌         | ❌            | Arbitrary number in range \<0.0, 100.0\>. You can use this number to sort messages in a custom fashion as this attribute also has its own column in articles list.
-| `hasEnclosures`    | `Boolean`               | ✅         | ❌            | Returns `true` if the article has at least one enclosure/attachment. Otherwise returns `false`.
-| `created`          | `Date`                  | ❌         | ❌            | Date/time of the message.
-| `createdIsMadeup`  | `Boolean`               | ✅         | ❌            | Is `true` if date/time of message was NOT fetched from the feed and current date/time was used instead. 
-| `isRead`           | `Boolean`               | ❌         | ✅            | Is message read?
-| `isImportant`      | `Boolean`               | ❌         | ✅            | Is message important?
-| `isDeleted`        | `Boolean`               | ❌         | ❌            | Is message placed in recycle bin?
+| Name               | Type                     | Read-only | Synchronized | Description
+| :---               | :---                     | :---:     | :---:        | ---
+| `assignedLabels`   | `Array<Label>`           | ✅         | ✅            | List of labels assigned to the article.
+| `categories`       | `Array<MessageCategory>` | ✅         | ❌            | List of categories of the article (extracted from feed).
+| `enclosures`       | `Array<MessageEnclosure>`| ✅         | ❌            | List of attachments of the article.
+| `id`               | `Number`                 | ✅         | ❌            | ID assigned to the message in RSS Guard local database.
+| `customId`         | `String`                 | ❌         | ❌            | ID of the message as provided by the remote service or feed file.
+| `title`            | `String`                 | ❌         | ❌            | The message title.
+| `url`              | `String`                 | ❌         | ❌            | The message URL.
+| `author`           | `String`                 | ❌         | ❌            | Author of the message.
+| `contents`         | `String`                 | ❌         | ❌            | Contents of the message.
+| `rawContents`      | `String`                 | ❌         | ❌            | This is the RAW contents of the message obtained from remote service/feed. A raw XML or JSON element data. This attribute has the value only if `runningFilterWhenFetching` returns `true`. In other words, this attribute is not persistently stored in the RSS Guard's DB. Also, this attribute is artificially filled in with ATOM-like data when testing the filter.
+| `score`            | `Number`                 | ❌         | ❌            | Arbitrary number in range \<0.0, 100.0\>. You can use this number to sort messages in a custom fashion as this attribute also has its own column in articles list.
+| `hasEnclosures`    | `Boolean`                | ✅         | ❌            | Returns `true` if the article has at least one enclosure/attachment. Otherwise returns `false`.
+| `created`          | `Date`                   | ❌         | ❌            | Date/time of the message.
+| `createdIsMadeup`  | `Boolean`                | ✅         | ❌            | Is `true` if date/time of message was NOT fetched from the feed and current date/time was used instead. 
+| `isRead`           | `Boolean`                | ❌         | ✅            | Is message read?
+| `isImportant`      | `Boolean`                | ❌         | ✅            | Is message important?
+| `isDeleted`        | `Boolean`                | ❌         | ❌            | Is message placed in recycle bin?
 
 #### Functions
 
 | Name(Parameters)                                                              | Return value | Description
 | :---                                                                          | :---         | :---
 | `addEnclosure(String url, String mime_type)`                                  | `void`       | Adds multimedia attachment to the article.
+| `removeEnclosure(int index)`                                                  | `Boolean`    | Removes one enclosures from the article, according to index (starting from zero). Returns `true` if enclosure exists and was removed.
+| `removeAllEnclosures()`                                                       | `void`       | Removes all enclosures from the article.
 | `isAlreadyInDatabase(DuplicityCheck criteria)`                                | `Boolean`    | Allows you to check if SAME message is already stored in the RSS Guard's DB.
 | `isAlreadyInDatabaseWinkler(DuplicityCheck criteria, Number threshold = 0.1)` | `Boolean`    | Allows you to check if SIMILAR message is already stored in the RSS Guard's DB using Jaro-Winkler edit distance algorithm.
 | `assignLabel(String label_id)`                                                | `Boolean`    | Assigns label to the message. The `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
@@ -327,6 +330,34 @@ function filterMessage() {
 function filterMessage() {
   if (/youtube\.com/.test(msg.url)) {
     msg.addEnclosure(msg.url, "video/mp4");
+  }
+
+  return Msg.Accept;
+}
+```
+
+```js
+/*
+ * Sets first article attachment as the main article URL and then removes all attachments.
+ */
+function filterMessage() {
+  if (msg.enclosures.length > 0) {
+    msg.url = msg.enclosures[0].url;
+    msg.removeAllEnclosures();
+  }
+
+  return Msg.Accept;
+}
+```
+
+```js
+/*
+ * Sets first article attachment as the main article URL and then removes it from list of attachments.
+ */
+function filterMessage() {
+  if (msg.enclosures.length > 0) {
+    msg.url = msg.enclosures[0].url;
+    msg.removeEnclosure(0);
   }
 
   return Msg.Accept;

@@ -15,6 +15,7 @@ class FilterMessage : public QObject {
     Q_OBJECT
 
     Q_PROPERTY(QList<MessageCategory*> categories READ categories)
+    Q_PROPERTY(QList<MessageEnclosure*> enclosures READ enclosures)
     Q_PROPERTY(QList<Label*> assignedLabels READ assignedLabels)
     Q_PROPERTY(bool hasEnclosures READ hasEnclosures)
     Q_PROPERTY(int id READ id)
@@ -95,8 +96,13 @@ class FilterMessage : public QObject {
     // Add multimedia attachment to the message.
     Q_INVOKABLE void addEnclosure(const QString& url, const QString& mime_type) const;
 
+    // Removes enclosure.
+    Q_INVOKABLE bool removeEnclosure(int index) const;
+    Q_INVOKABLE void removeAllEnclosures() const;
+
     QList<Label*> assignedLabels() const;
     QList<MessageCategory*> categories() const;
+    QList<MessageEnclosure*> enclosures() const;
 
     bool hasEnclosures() const;
     int id() const;
