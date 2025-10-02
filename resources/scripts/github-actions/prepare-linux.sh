@@ -6,15 +6,15 @@ ARCH="$(uname -m)"
 EXTRA_PACKAGES="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/get-debloated-pkgs.sh"
 
 pacman -Syu --noconfirm \
-    appstreamcli	 \
+    appstream        \
     base-devel       \
-    cmake			 \
+    cmake            \
     curl             \
-    gcc-libs		 \
+    gcc-libs         \
     git              \
-    glibc			 \
+    glibc            \
     gtk3             \
-    libglvnd		 \
+    libglvnd         \
     libxcb           \
     libxcursor       \
     libxi            \
@@ -22,21 +22,21 @@ pacman -Syu --noconfirm \
     libxkbcommon-x11 \
     libxrandr        \
     libxtst          \
-    make			 \
+    make             \
     mariadb-clients  \
-    mpv				 \
-    ninja			 \
+    mpv              \
+    ninja            \
     pipewire-audio   \
     pulseaudio       \
     pulseaudio-alsa  \
-    qt6-5compat	     \
-    qt6-base	     \
-    qt6-declarative	 \
+    qt6-5compat      \
+    qt6-base         \
+    qt6-declarative  \
     qt6-multimedia   \
     qt6-tools        \
     qt6-wayland      \
     qt6ct            \
-    sqlite 			 \
+    sqlite           \
     wget             \
     xorg-server-xvfb \
     zsync
