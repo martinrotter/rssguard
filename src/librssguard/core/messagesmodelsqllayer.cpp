@@ -88,6 +88,33 @@ SortColumnsAndOrders MessagesModelSqlLayer::sortColumnAndOrders() const {
   return res;
 }
 
+QList<Message> MessagesModelSqlLayer::fetchMessages(int limit, int offset, int additional_article_id) const {
+  QList<Message> msgs;
+
+  if (limit > 0) {
+    msgs.reserve(limit);
+  }
+
+  QString statemnt = selectStatement(limit, offset, additional_article_id);
+  QSqlQuery q(m_db);
+
+  q.setForwardOnly(true);
+
+  if (!q.exec(statemnt)) {
+    throw ApplicationException(q.lastError().text());
+  }
+
+  PRINT_QUERY(q)
+
+  while (q.next()) {
+    msgs.append(Message::fromSqlQuery(q));
+  }
+
+  q.finish();
+
+  return msgs;
+}
+
 QString MessagesModelSqlLayer::formatFields() const {
   return m_fieldNames.values().join(QSL(", "));
 }
@@ -96,7 +123,7 @@ bool MessagesModelSqlLayer::isColumnNumeric(int column_id) const {
   return m_numericColumns.contains(column_id);
 }
 
-QString MessagesModelSqlLayer::selectStatement(int additional_article_id) const {
+QString MessagesModelSqlLayer::selectStatement(int limit, int offset, int additional_article_id) const {
   QString fltr;
 
   if (additional_article_id <= 0) {
@@ -106,8 +133,9 @@ QString MessagesModelSqlLayer::selectStatement(int additional_article_id) const 
     fltr = QSL("(%1) OR Messages.id = %2").arg(m_filter, QString::number(additional_article_id));
   }
 
+  // TODO: dodělat lazy loading nebo vynulovat
   return QL1S("SELECT ") + formatFields() + QL1S(" FROM Messages WHERE ") + fltr + QL1S(" ") + orderByClause() +
-         QL1S(" ") + limitOffset(0, 0) + QL1C(';');
+         QL1S(" ") + limitOffset(limit, offset) + QL1C(';');
 }
 
 QString MessagesModelSqlLayer::orderByClause() const {
@@ -119,6 +147,9 @@ QString MessagesModelSqlLayer::orderByClause() const {
 
     for (int i = 0; i < m_sortColumns.size(); i++) {
       QString field_name(m_orderByNames[m_sortColumns[i]]);
+      // TODO: nepoužít lower ale místo toho na úrovni DB
+      // mariadb -> specifikovat colate při tvorbě tabulek
+      // sqlite -> nocase colate taktéž při tvorbě tabulek
       QString order_sql = isColumnNumeric(m_sortColumns[i]) ? QSL("%1") : QSL("LOWER(%1)");
 
       sorts.append(order_sql.arg(field_name) +

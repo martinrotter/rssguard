@@ -11,8 +11,6 @@ set(SOURCES
   core/message.h
   core/messagesmodel.cpp
   core/messagesmodel.h
-  core/messagesmodelcache.cpp
-  core/messagesmodelcache.h
   core/messagesmodelsqllayer.cpp
   core/messagesmodelsqllayer.h
   core/messagesproxymodel.cpp

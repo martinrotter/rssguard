@@ -3,7 +3,6 @@
 #include "core/messagesproxymodel.h"
 
 #include "core/messagesmodel.h"
-#include "core/messagesmodelcache.h"
 #include "definitions/globals.h"
 #include "miscellaneous/regexfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -231,8 +230,7 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
   // But also, we want to see messages which have their dirty states cached, because
   // otherwise they would just disappear from the list for example when batch marked as read
   // which is distracting.
-  return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) &&
-         (m_sourceModel->cache()->containsData(source_row) || filterAcceptsMessage(source_row));
+  return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) && filterAcceptsMessage(source_row);
 }
 
 int MessagesProxyModel::additionalArticleId() const {

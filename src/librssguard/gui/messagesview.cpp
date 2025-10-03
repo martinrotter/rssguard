@@ -402,16 +402,15 @@ void MessagesView::initializeContextMenu() {
   }
 
   // Labels.
-  auto labels = m_sourceModel->loadedItem() != nullptr
-                  ? m_sourceModel->loadedItem()->account()->labelsNode()->labels()
-                  : QList<Label*>();
+  auto labels = m_sourceModel->loadedItem() != nullptr ? m_sourceModel->loadedItem()->account()->labelsNode()->labels()
+                                                       : QList<Label*>();
   LabelsMenu* menu_labels = new LabelsMenu(selected_messages, labels, m_contextMenu);
 
   connect(menu_labels, &LabelsMenu::labelsChanged, this, [this]() {
     QModelIndex current_index = selectionModel()->currentIndex();
 
     if (current_index.isValid()) {
-      emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()),
+      emit currentMessageChanged(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()),
                                  m_sourceModel->loadedItem());
     }
     else {
@@ -437,8 +436,7 @@ void MessagesView::initializeContextMenu() {
       m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessages);
     }
 
-    auto extra_context_menu =
-      m_sourceModel->loadedItem()->account()->contextMenuMessagesList(selected_messages);
+    auto extra_context_menu = m_sourceModel->loadedItem()->account()->contextMenuMessagesList(selected_messages);
 
     if (!extra_context_menu.isEmpty()) {
       m_contextMenu->addSeparator();
@@ -467,12 +465,12 @@ void MessagesView::mousePressEvent(QMouseEvent* event) {
 
         if (mapped_index.column() == MSG_DB_IMPORTANT_INDEX) {
           if (m_sourceModel->switchMessageImportance(mapped_index.row())) {
-            emit currentMessageChanged(m_sourceModel->messageAt(mapped_index.row()), m_sourceModel->loadedItem());
+            emit currentMessageChanged(m_sourceModel->messageForRow(mapped_index.row()), m_sourceModel->loadedItem());
           }
         }
         else if (mapped_index.column() == MSG_DB_READ_INDEX) {
           if (m_sourceModel->switchMessageReadUnread(mapped_index.row())) {
-            emit currentMessageChanged(m_sourceModel->messageAt(mapped_index.row()), m_sourceModel->loadedItem());
+            emit currentMessageChanged(m_sourceModel->messageForRow(mapped_index.row()), m_sourceModel->loadedItem());
           }
         }
       }
@@ -498,7 +496,7 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
            << "'.";
 
   if (mapped_current_index.isValid() && selected_rows.size() == 1) {
-    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row());
+    Message message = m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row());
 
     // Set this message as read only if current item
     // wasn't changed by "mark selected messages unread" action.
@@ -548,7 +546,7 @@ void MessagesView::markSelectedMessagesReadDelayed() {
   if (selected_rows.size() == 1 && current_index.isValid() && !m_processingRightMouseButton &&
       m_articleMarkingPolicy == ArticleMarkingPolicy::MarkWithDelay) {
     const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
-    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row());
+    Message message = m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row());
 
     m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
     message.m_isRead = true;
@@ -605,7 +603,7 @@ void MessagesView::openSelectedSourceMessagesExternally() {
   auto rws = selectionModel()->selectedRows();
 
   for (const QModelIndex& index : std::as_const(rws)) {
-    QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
+    QString link = m_sourceModel->messageForRow(m_proxyModel->mapToSource(index).row())
                      .m_url.replace(QRegularExpression(QSL("[\\t\\n]")), QString());
 
     qApp->web()->openUrlInExternalBrowser(link);
@@ -625,7 +623,7 @@ void MessagesView::playSelectedArticleInMediaPlayer() {
   auto rws = selectionModel()->selectedRows();
 
   if (!rws.isEmpty()) {
-    auto msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(rws.first()).row());
+    auto msg = m_sourceModel->messageForRow(m_proxyModel->mapToSource(rws.first()).row());
 
     if (msg.m_url.isEmpty()) {
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -645,7 +643,7 @@ void MessagesView::openSelectedMessagesInternally() {
   auto rws = selectionModel()->selectedRows();
 
   if (!rws.isEmpty()) {
-    auto msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(rws.first()).row());
+    auto msg = m_sourceModel->messageForRow(m_proxyModel->mapToSource(rws.first()).row());
 
     emit openSingleMessageInNewTab(m_sourceModel->loadedItem(), msg);
   }
@@ -654,7 +652,7 @@ void MessagesView::openSelectedMessagesInternally() {
 void MessagesView::sendSelectedMessageViaEmail() {
   if (selectionModel()->selectedRows().size() == 1) {
     const Message message =
-      m_sourceModel->messageAt(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
+      m_sourceModel->messageForRow(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
 
     if (!qApp->web()->sendMessageViaEmail(message)) {
       MsgBox::show(this,
@@ -686,7 +684,7 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   QModelIndex current_index = selectionModel()->currentIndex();
 
   if (current_index.isValid() && selected_indexes.size() == 1) {
-    emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()),
+    emit currentMessageChanged(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()),
                                m_sourceModel->loadedItem());
   }
   else {
@@ -730,7 +728,7 @@ void MessagesView::restoreSelectedMessages() {
   current_index = m_proxyModel->index(current_index.row(), current_index.column());
 
   if (current_index.isValid()) {
-    emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()),
+    emit currentMessageChanged(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()),
                                m_sourceModel->loadedItem());
   }
   else {
@@ -751,7 +749,7 @@ void MessagesView::switchSelectedMessagesImportance() {
   QModelIndex current_index = selectionModel()->currentIndex();
 
   if (current_index.isValid() && selected_indexes.size() == 1) {
-    emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()),
+    emit currentMessageChanged(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()),
                                m_sourceModel->loadedItem());
   }
   else {
