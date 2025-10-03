@@ -227,13 +227,13 @@ if ($use_libmpv -eq "ON") {
 Remove-Item -Verbose ".\app\sqldrivers\qsqlodbc.dll"
 Remove-Item -Verbose ".\app\sqldrivers\qsqlpsql.dll"
 
-$packagebase = "rssguard-${git_tag}-${git_revision}-win"
+$packagebase = "rssguard-${git_tag}-${git_revision}"
 
-if ($use_qt5 -eq "ON") {
-  $packagebase += "7"
+if ($is_qt_6) {
+  $packagebase += "-qt6-win10"
 }
 else {
-  $packagebase += "10"
+  $packagebase += "-qt5-win7"
 }
 
 # Create 7zip package.

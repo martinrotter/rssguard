@@ -4,10 +4,14 @@ set -e
 
 os="$1"
 
+echo "OS: $os"
+
 # Determine OS.
 if [[ "$os" == *"ubuntu"* ]]; then
   echo "We are building for GNU/Linux on Ubuntu."
   is_linux=true
+  os_id="linux64"
+  image_suffix="AppImage"
   prefix="/usr"
 
   libmpv="ON"
@@ -16,14 +20,21 @@ if [[ "$os" == *"ubuntu"* ]]; then
 else
   echo "We are building for macOS."
   is_linux=false
+  os_id="mac64"
+  image_suffix="dmg"
   prefix="RSS Guard.app"
 
   libmpv="OFF"
   qtmultimedia="ON"
 fi
 
-echo "OS: $os"
 USE_QT6="ON"
+
+if [[ "$USE_QT6" == "ON" ]]; then
+  qt_id="qt6"
+else
+  qt_id="qt5"
+fi
 
 # Install needed dependencies.
 if [ $is_linux = true ]; then
@@ -36,7 +47,7 @@ else
   QTARCH="clang_64"
 
   QTPATH="$(pwd)/Qt"
-  QTVERSION="6.9.2"
+  QTVERSION="6.9.3"
   QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
   # Install "aqtinstall" from its master branch to have latest code.
@@ -59,6 +70,9 @@ cmake --version
 # Build application and package it.
 git_tag=$(git describe --tags "$(git rev-list --tags --max-count=1)")
 git_revision=$(git rev-parse --short HEAD)
+image_full_name="rssguard-${git_tag}-${git_revision}-${qt_id}-${os_id}.${image_suffix}"
+
+echo "New output file name is: $image_full_name"
 
 mkdir rssguard-build
 cd rssguard-build
@@ -92,7 +106,6 @@ if [ $is_linux = true ]; then
   ./quick-sharun /usr/bin/rssguard /usr/lib/rssguard/*
   ./uruntime2appimage
 
-  imagenewname="rssguard-${git_tag}-${git_revision}-linux64.AppImage"
   set -- *.AppImage
 else
   # Fix .dylib linking.
@@ -109,10 +122,9 @@ else
   # Deploy to DMG.
   macdeployqt "$prefix" -dmg
 
-  imagenewname="rssguard-${git_tag}-${git_revision}-mac64.dmg"
   set -- *.dmg
 fi
 
-imagename="$1"
-mv "$imagename" "$imagenewname"
+image_generated_name="$1"
+mv "$image_generated_name" "$image_full_name"
 ls
