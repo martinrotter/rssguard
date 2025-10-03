@@ -24,6 +24,18 @@ QSqlDatabase DatabaseDriver::threadSafeConnection(const QString& connection_name
   return database;
 }
 
+QString DatabaseDriver::limitOffset(int limit, int offset) const {
+  if (limit <= 0) {
+    return QString();
+  }
+  else if (offset <= 0) {
+    return QSL("LIMIT %1").arg(QString::number(limit));
+  }
+  else {
+    return QSL("LIMIT %1 OFFSET %2").arg(QString::number(limit), QString::number(offset));
+  }
+}
+
 void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
                                           int source_db_schema_version,
                                           const QString& database_name) {

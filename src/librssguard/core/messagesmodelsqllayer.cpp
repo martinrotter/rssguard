@@ -106,7 +106,8 @@ QString MessagesModelSqlLayer::selectStatement(int additional_article_id) const 
     fltr = QSL("(%1) OR Messages.id = %2").arg(m_filter, QString::number(additional_article_id));
   }
 
-  return QL1S("SELECT ") + formatFields() + QL1S(" FROM Messages WHERE ") + fltr + orderByClause() + QL1C(';');
+  return QL1S("SELECT ") + formatFields() + QL1S(" FROM Messages WHERE ") + fltr + QL1S(" ") + orderByClause() +
+         /*QL1S(" ") + limitOffset(500, 0) +*/ QL1C(';');
 }
 
 QString MessagesModelSqlLayer::orderByClause() const {
@@ -120,13 +121,14 @@ QString MessagesModelSqlLayer::orderByClause() const {
       QString field_name(m_orderByNames[m_sortColumns[i]]);
       QString order_sql = isColumnNumeric(m_sortColumns[i]) ? QSL("%1") : QSL("LOWER(%1)");
 
-      // sorts.append(QSL("LENGTH(%1)").arg(order_sql.arg(field_name)) +
-      //              (m_sortOrders[i] == Qt::SortOrder::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
-
       sorts.append(order_sql.arg(field_name) +
                    (m_sortOrders[i] == Qt::SortOrder::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
     }
 
-    return QL1S(" ORDER BY ") + sorts.join(QSL(", "));
+    return QL1S("ORDER BY ") + sorts.join(QSL(", "));
   }
+}
+
+QString MessagesModelSqlLayer::limitOffset(int limit, int offset) const {
+  return qApp->database()->driver()->limitOffset(limit, offset);
 }

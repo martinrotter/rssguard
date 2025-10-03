@@ -27,6 +27,7 @@ class MessagesModelSqlLayer {
 
   protected:
     QString orderByClause() const;
+    QString limitOffset(int limit, int offset) const;
     QString selectStatement(int additional_article_id = -1) const;
     QString formatFields() const;
 
