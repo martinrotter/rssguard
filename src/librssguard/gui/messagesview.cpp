@@ -909,6 +909,14 @@ void MessagesView::adjustColumns() {
   }
 }
 
+void MessagesView::verticalScrollbarValueChanged(int value) {
+  if (value == verticalScrollBar()->maximum()) {
+    emit reachedEndOfList();
+  }
+
+  QTreeView::verticalScrollbarValueChanged(value);
+}
+
 void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
   // Repopulate the shit.
   sort(column, order, true, false, false, false);

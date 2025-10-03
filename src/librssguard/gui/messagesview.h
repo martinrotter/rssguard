@@ -85,6 +85,9 @@ class MessagesView : public BaseTreeView {
     void highlightMessages(MessagesModel::MessageHighlighter highlighter);
     void changeFilter(MessagesProxyModel::MessageListFilter filter);
 
+  protected slots:
+    virtual void verticalScrollbarValueChanged(int value);
+
   private slots:
     void openSelectedMessagesWithExternalTool();
 
@@ -110,6 +113,7 @@ class MessagesView : public BaseTreeView {
     void currentMessageChanged(Message message, RootItem* root);
     void currentMessageRemoved(RootItem* root);
     void willReselectSameMessage();
+    void reachedEndOfList();
 
   private:
     void sort(int column,
