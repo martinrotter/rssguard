@@ -386,9 +386,9 @@ tej wersji, klikając na to powiadomienie.</translation>
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2
-Number of disabled feeds: %3</translation>
+      <translation>Liczba kanałów: %1
+Liczba kategorii: %2
+Liczba kanałów wyłączonych: %3</translation>
     </message>
   </context>
   <context>
@@ -493,12 +493,12 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="128"/>
       <source>There is another action which has the same shortcut assigned.</source>
-      <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
+      <translation>Istnieje inna akcja, która ma przypisany ten sam skrót.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="129"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
-      <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
+      <translation>Czy chcesz zachować nowy skrót i wyczyścić poprzedni skrót?</translation>
     </message>
   </context>
   <context>
@@ -983,12 +983,12 @@ ID pozycji: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="208"/>
       <source>Menu for filtering feeds</source>
-      <translation type="unfinished">Menu for filtering feeds</translation>
+      <translation>Menu filtrowania kanałów</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="210"/>
       <source>(feed list)</source>
-      <translation type="unfinished">(feed list)</translation>
+      <translation>(lista kanałów)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="214"/>
@@ -998,12 +998,12 @@ ID pozycji: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="220"/>
       <source>Show unread items</source>
-      <translation type="unfinished">Show unread items</translation>
+      <translation>Pokaż nieprzeczytane artykuły</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="226"/>
       <source>Show non-empty items</source>
-      <translation type="unfinished">Show non-empty items</translation>
+      <translation>Pokaż niepuste elementy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="232"/>
@@ -2575,7 +2575,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="930"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Reload &amp;skin</source>
-      <translation type="unfinished">Reload &amp;skin</translation>
+      <translation>Przeładuj &amp;skórkę</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="620"/>
@@ -5032,7 +5032,7 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="15"/>
       <source>Result</source>
-      <translation type="unfinished">Result</translation>
+      <translation>Wynik</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="15"/>
@@ -5658,7 +5658,7 @@ Tokeny logowania wygasają: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="25"/>
       <source>Use global app setting</source>
-      <translation type="unfinished">Use global app setting</translation>
+      <translation>Użyj globalnych ustawień aplikacji</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
@@ -6817,9 +6817,9 @@ Tokeny logowania wygasają: %2</translation>
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2
-Number of disabled feeds: %3</translation>
+      <translation>Liczba kanałów: %1
+Liczba kategorii: %2
+Liczba kanałów wyłączonych: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="724"/>
