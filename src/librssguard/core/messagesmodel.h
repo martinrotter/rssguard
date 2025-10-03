@@ -41,6 +41,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     // Fetches ALL available data to the model.
     // NOTE: This activates the SQL query and populates the model with new data.
     void repopulate(int additional_article_id = 0);
+    void fetchNextBatch();
 
     // Model implementation.
     virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
@@ -49,6 +50,8 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     virtual QVariant data(const QModelIndex& idx, int role = Qt::ItemDataRole::DisplayRole) const;
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     virtual Qt::ItemFlags flags(const QModelIndex& index) const;
+    virtual void fetchMore(const QModelIndex& parent);
+    virtual bool canFetchMore(const QModelIndex& parent) const;
 
     const Message& messageForRow(int row) const;
     Message& messageForRow(int row);
@@ -102,6 +105,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
 
   private:
     QList<Message> m_messages;
+    bool m_canFetchMore;
     MessagesView* m_view;
     MessageHighlighter m_messageHighlighter;
     QString m_customDateFormat;

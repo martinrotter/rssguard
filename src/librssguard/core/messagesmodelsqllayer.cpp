@@ -133,7 +133,6 @@ QString MessagesModelSqlLayer::selectStatement(int limit, int offset, int additi
     fltr = QSL("(%1) OR Messages.id = %2").arg(m_filter, QString::number(additional_article_id));
   }
 
-  // TODO: dodělat lazy loading nebo vynulovat
   return QL1S("SELECT ") + formatFields() + QL1S(" FROM Messages WHERE ") + fltr + QL1S(" ") + orderByClause() +
          QL1S(" ") + limitOffset(limit, offset) + QL1C(';');
 }

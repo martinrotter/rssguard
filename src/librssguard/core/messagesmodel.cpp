@@ -26,9 +26,10 @@
 #define RAD_COLOR 0, 180, 0
 
 MessagesModel::MessagesModel(QObject* parent)
-  : QAbstractTableModel(parent), m_view(nullptr), m_messageHighlighter(MessageHighlighter::NoHighlighting),
-    m_customDateFormat(QString()), m_customTimeFormat(QString()), m_customFormatForDatesOnly(QString()),
-    m_newerArticlesRelativeTime(-1), m_selectedItem(nullptr), m_unreadIconType(MessageUnreadIcon::Dot),
+  : QAbstractTableModel(parent), m_canFetchMore(false), m_view(nullptr),
+    m_messageHighlighter(MessageHighlighter::NoHighlighting), m_customDateFormat(QString()),
+    m_customTimeFormat(QString()), m_customFormatForDatesOnly(QString()), m_newerArticlesRelativeTime(-1),
+    m_selectedItem(nullptr), m_unreadIconType(MessageUnreadIcon::Dot),
     m_multilineListItems(qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()) {
   updateFeedIconsDisplay();
   updateDateFormat();
@@ -142,12 +143,52 @@ void MessagesModel::setView(MessagesView* new_view) {
   m_view = new_view;
 }
 
-void MessagesModel::repopulate(int additional_article_id) {
-  emit layoutAboutToBeChanged();
-  m_messages.clear();
+#define BATCH_SIZE 500
+
+void MessagesModel::fetchMore(const QModelIndex& parent) {
+  qDebugNN << LOGSEC_MESSAGEMODEL << "We need to fetch more articles!";
 
   try {
-    m_messages = fetchMessages(500, 0, additional_article_id);
+    auto more_messages = fetchMessages(BATCH_SIZE, m_messages.size());
+
+    // NOTE: Some message data are NOT fetched from database. Fill them directly into the data here.
+    for (Message& msg : more_messages) {
+      fillComputedMessageData(&msg);
+    }
+
+    if (more_messages.isEmpty()) {
+      m_canFetchMore = false;
+      qWarningNN << LOGSEC_MESSAGEMODEL << "There are no more article to fetch, everything is already loaded!";
+    }
+    else {
+      auto sz = m_messages.size();
+      auto sz_new = sz + more_messages.size() - 1;
+
+      beginInsertRows(QModelIndex(), sz, sz_new);
+      m_messages.reserve(sz_new + 1);
+      m_messages.append(more_messages);
+      endInsertRows();
+    }
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_MESSAGEMODEL << "Error when querying for more articles:" << QUOTE_W_SPACE_DOT(ex.message());
+    m_canFetchMore = false;
+  }
+}
+
+bool MessagesModel::canFetchMore(const QModelIndex& parent) const {
+  return m_canFetchMore;
+}
+
+void MessagesModel::repopulate(int additional_article_id) {
+  qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulate started.";
+
+  emit layoutAboutToBeChanged();
+  m_messages.clear();
+  m_canFetchMore = true;
+
+  try {
+    m_messages = fetchMessages(BATCH_SIZE, 0, additional_article_id);
 
     // NOTE: Some message data are NOT fetched from database. Fill them directly into the data here.
     for (Message& msg : m_messages) {
@@ -157,14 +198,15 @@ void MessagesModel::repopulate(int additional_article_id) {
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_MESSAGEMODEL << "Error when setting new msg view query:" << QUOTE_W_SPACE_DOT(ex.message());
   }
-  /*
-  while (canFetchMore()) {
-    fetchMore();
-  }
-*/
 
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulated model!";
   emit layoutChanged();
+}
+
+void MessagesModel::fetchNextBatch() {
+  if (canFetchMore(QModelIndex())) {
+    fetchMore(QModelIndex());
+  }
 }
 
 int MessagesModel::rowCount(const QModelIndex& parent) const {
