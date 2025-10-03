@@ -87,7 +87,7 @@ if [ $is_linux = true ]; then
   mkdir -p "./AppDir/shared/lib/qt6/plugins/sqldrivers"
   cp -v -R "/usr/lib/qt6/plugins/sqldrivers" "./AppDir/shared/lib/qt6/plugins/"
 
-  ./quick-sharun ./AppDir/bin/rssguard ./AppDir/lib/rssguard/* ./AppDir/lib/librssguard.so
+  ./quick-sharun ./AppDir/bin/rssguard ./AppDir/lib/rssguard/* ./AppDir/lib/librssguard.so ./AppDir/shared/lib/qt6/plugins/sqldrivers/*
   ./uruntime2appimage
 
   imagenewname="rssguard-${git_tag}-${git_revision}-linux64.AppImage"
