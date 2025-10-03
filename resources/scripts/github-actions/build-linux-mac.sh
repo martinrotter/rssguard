@@ -8,7 +8,7 @@ os="$1"
 if [[ "$os" == *"ubuntu"* ]]; then
   echo "We are building for GNU/Linux on Ubuntu."
   is_linux=true
-  prefix="/"
+  prefix="/usr"
 
   libmpv="ON"
   qtmultimedia="OFF"
@@ -69,8 +69,8 @@ cmake --install . --prefix "$prefix"
 
 if [ $is_linux = true ]; then
   # Validate AppStream metadata.
-  #echo 'Validating AppStream metadata...'
-  #appstreamcli validate "$prefix/share/metainfo/$app_id.metainfo.xml"
+  echo 'Validating AppStream metadata...'
+  appstreamcli validate "$prefix/share/metainfo/$app_id.metainfo.xml"
   
   URUNTIME="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/uruntime2appimage.sh"
   SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
