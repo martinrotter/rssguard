@@ -75,8 +75,10 @@ if [ $is_linux = true ]; then
   URUNTIME="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/uruntime2appimage.sh"
   SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
   
-  export DESKTOP=./AppDir/share/applications/io.github.martinrotter.rssguard.desktop
+  export DESKTOP=$prefix/share/applications/io.github.martinrotter.rssguard.desktop
   export DEPLOY_OPENGL=1
+
+  echo "Desktop file: $DESKTOP"
 
   wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
   chmod +x ./quick-sharun

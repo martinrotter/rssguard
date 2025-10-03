@@ -107,7 +107,7 @@ QString MessagesModelSqlLayer::selectStatement(int additional_article_id) const 
   }
 
   return QL1S("SELECT ") + formatFields() + QL1S(" FROM Messages WHERE ") + fltr + QL1S(" ") + orderByClause() +
-         /*QL1S(" ") + limitOffset(500, 0) +*/ QL1C(';');
+         QL1S(" ") + limitOffset(1000, 0) + QL1C(';');
 }
 
 QString MessagesModelSqlLayer::orderByClause() const {
