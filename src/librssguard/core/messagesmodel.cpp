@@ -153,22 +153,6 @@ void MessagesModel::repopulate(int additional_article_id) {
 
   QString statemnt = selectStatement(additional_article_id);
 
-  //////////////
-
-  QSqlQuery q(m_db);
-
-  q.setForwardOnly(true);
-  q.exec(statemnt);
-  QList<Message> messages;
-
-  while (q.next()) {
-    Message message = Message::fromSqlQuery(q);
-
-    messages.append(message);
-  }
-
-  ////////////////
-
   setQuery(statemnt, m_db);
 
   if (lastError().isValid()) {

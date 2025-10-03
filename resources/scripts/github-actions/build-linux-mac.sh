@@ -92,8 +92,6 @@ if [ $is_linux = true ]; then
   ./quick-sharun /usr/bin/rssguard /usr/lib/rssguard/*
   ./uruntime2appimage
 
-  ls
-
   imagenewname="rssguard-${git_tag}-${git_revision}-linux64.AppImage"
   set -- *.AppImage
 else
