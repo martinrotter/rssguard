@@ -8,7 +8,7 @@ os="$1"
 if [[ "$os" == *"ubuntu"* ]]; then
   echo "We are building for GNU/Linux on Ubuntu."
   is_linux=true
-  prefix="AppDir"
+  prefix="/"
 
   libmpv="ON"
   qtmultimedia="OFF"
@@ -84,11 +84,13 @@ if [ $is_linux = true ]; then
   wget --retry-connrefused --tries=30 "$URUNTIME" -O ./uruntime2appimage
   chmod +x ./uruntime2appimage
 
-  mkdir -p "./AppDir/shared/lib/qt6/plugins/sqldrivers"
-  cp -v -R "/usr/lib/qt6/plugins/sqldrivers" "./AppDir/shared/lib/qt6/plugins/"
+  #mkdir -p "./AppDir/shared/lib/qt6/plugins/sqldrivers"
+  #cp -v -R "/usr/lib/qt6/plugins/sqldrivers" "./AppDir/shared/lib/qt6/plugins/"
 
-  ./quick-sharun ./AppDir/bin/rssguard ./AppDir/lib/rssguard/* ./AppDir/lib/librssguard.so ./AppDir/shared/lib/qt6/plugins/sqldrivers/*
+  ./quick-sharun /usr/bin/rssguard /usr/lib/rssguard/*
   ./uruntime2appimage
+
+  ls
 
   imagenewname="rssguard-${git_tag}-${git_revision}-linux64.AppImage"
   set -- *.AppImage
