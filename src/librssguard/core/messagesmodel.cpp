@@ -151,13 +151,14 @@ void MessagesModel::fetchMore(const QModelIndex& parent) {
   try {
     auto more_messages = fetchMessages(BATCH_SIZE, m_messages.size());
 
+    m_canFetchMore = more_messages.size() >= BATCH_SIZE;
+
     // NOTE: Some message data are NOT fetched from database. Fill them directly into the data here.
     for (Message& msg : more_messages) {
       fillComputedMessageData(&msg);
     }
 
     if (more_messages.isEmpty()) {
-      m_canFetchMore = false;
       qWarningNN << LOGSEC_MESSAGEMODEL << "There are no more article to fetch, everything is already loaded!";
     }
     else {
@@ -184,11 +185,12 @@ void MessagesModel::repopulate(int additional_article_id) {
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulate started.";
 
   emit layoutAboutToBeChanged();
+  m_canFetchMore = false;
   m_messages.clear();
-  m_canFetchMore = true;
 
   try {
     m_messages = fetchMessages(BATCH_SIZE, 0, additional_article_id);
+    m_canFetchMore = m_messages.size() >= BATCH_SIZE;
 
     // NOTE: Some message data are NOT fetched from database. Fill them directly into the data here.
     for (Message& msg : m_messages) {
@@ -197,6 +199,8 @@ void MessagesModel::repopulate(int additional_article_id) {
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_MESSAGEMODEL << "Error when setting new msg view query:" << QUOTE_W_SPACE_DOT(ex.message());
+    m_canFetchMore = false;
+    m_messages.clear();
   }
 
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulated model!";
@@ -210,11 +214,11 @@ void MessagesModel::fetchNextBatch() {
 }
 
 int MessagesModel::rowCount(const QModelIndex& parent) const {
-  return m_messages.size();
+  return parent.isValid() ? 0 : m_messages.size();
 }
 
 int MessagesModel::columnCount(const QModelIndex& parent) const {
-  return m_headerData.size();
+  return parent.isValid() ? 0 : m_headerData.size();
 }
 
 bool MessagesModel::setData(const QModelIndex& idx, const QVariant& value, int role) {
@@ -382,8 +386,12 @@ void MessagesModel::setupHeaderData() {
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
-  Q_UNUSED(index)
-  return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemNeverHasChildren;
+  if (index.isValid()) {
+    return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemNeverHasChildren;
+  }
+  else {
+    return Qt::NoItemFlags;
+  }
 }
 
 QList<Message> MessagesModel::messagesAt(const QList<int>& row_indices) const {

@@ -50,6 +50,8 @@ class MessagesProxyModel : public QSortFilterProxyModel {
                                   int hits,
                                   Qt::MatchFlags flags) const;
 
+    virtual bool hasChildren(const QModelIndex& parent) const;
+
     // Performs sort of items.
     virtual void sort(int column, Qt::SortOrder order = Qt::AscendingOrder);
 

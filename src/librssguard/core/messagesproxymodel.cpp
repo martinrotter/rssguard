@@ -368,6 +368,11 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start,
   return result;
 }
 
+bool MessagesProxyModel::hasChildren(const QModelIndex& parent) const {
+  const QModelIndex source_idx = mapToSource(parent);
+  return sourceModel()->hasChildren(source_idx);
+}
+
 void MessagesProxyModel::sort(int column, Qt::SortOrder order) {
   // NOTE: Ignore here, sort is done elsewhere (server-side).
   Q_UNUSED(column)
