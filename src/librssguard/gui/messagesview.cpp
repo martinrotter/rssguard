@@ -185,7 +185,7 @@ void MessagesView::sort(int column,
   m_proxyModel->setAdditionalArticleId(additional_article_id);
 
   if (repopulate_data) {
-    m_sourceModel->repopulate(additional_article_id);
+    m_sourceModel->fetchInitialArticles(additional_article_id);
   }
 
   if (change_header) {

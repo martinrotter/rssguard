@@ -18,8 +18,6 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     Q_OBJECT
 
   public:
-    // Enum which describes basic highlighting schemes
-    // for messages.
     enum class MessageHighlighter {
       NoHighlighting = 1,
       HighlightUnread = 2,
@@ -38,16 +36,17 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     explicit MessagesModel(QObject* parent = nullptr);
     virtual ~MessagesModel();
 
-    // Fetches ALL available data to the model.
+    // Fetches available data to the model.
     // NOTE: This activates the SQL query and populates the model with new data.
-    void repopulate(int additional_article_id = 0);
+    // Not all data are necessarily fetched, some might be lazy-fetched later.
+    void fetchInitialArticles(int additional_article_id = 0);
     void fetchMoreArticles();
 
     // Model implementation.
     virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
     virtual int columnCount(const QModelIndex& parent = QModelIndex()) const;
     virtual bool setData(const QModelIndex& idx, const QVariant& value, int role = Qt::ItemDataRole::EditRole);
-    virtual QVariant data(const QModelIndex& idx, int role = Qt::ItemDataRole::DisplayRole) const;
+    virtual QVariant data(const QModelIndex& idx, int role = Qt::ItemDataRole::EditRole) const;
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     virtual Qt::ItemFlags flags(const QModelIndex& index) const;
 
@@ -56,11 +55,15 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
 
     QList<Message> messagesAt(const QList<int>& row_indices) const;
 
-    QVariant data(int row, int column, int role = Qt::DisplayRole) const;
+    QVariant data(int row, int column, int role = Qt::ItemDataRole::EditRole) const;
+
     int messageId(int row_index) const;
     RootItem::Importance messageImportance(int row_index) const;
 
     RootItem* loadedItem() const;
+
+    // Loads messages of given feeds.
+    void loadMessages(RootItem* item);
 
     void setupIcons();
     void setupFonts();
@@ -81,9 +84,6 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
 
     // Highlights messages.
     void highlightMessages(MessageHighlighter highlighter);
-
-    // Loads messages of given feeds.
-    void loadMessages(RootItem* item);
 
     MessagesView* view() const;
     void setView(MessagesView* new_view);

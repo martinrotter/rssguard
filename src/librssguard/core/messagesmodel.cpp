@@ -23,7 +23,8 @@
 #include <QSqlError>
 #include <QSqlField>
 
-#define RAD_COLOR 0, 180, 0
+#define RAD_COLOR  0, 180, 0
+#define BATCH_SIZE 1000
 
 MessagesModel::MessagesModel(QObject* parent)
   : QAbstractTableModel(parent), m_canFetchMoreArticles(false), m_view(nullptr),
@@ -151,8 +152,6 @@ void MessagesModel::setView(MessagesView* new_view) {
   });
 }
 
-#define BATCH_SIZE 500
-
 void MessagesModel::fetchMoreArticles() {
   qDebugNN << LOGSEC_MESSAGEMODEL << "We need to fetch more articles!";
 
@@ -177,6 +176,10 @@ void MessagesModel::fetchMoreArticles() {
       m_messages.reserve(sz_new + 1);
       m_messages.append(more_messages);
       endInsertRows();
+
+      qApp->showGuiMessage(Notification::Event::NoEvent,
+                           GuiMessage(QString(), tr("Fetched extra %1 articles").arg(more_messages.size())),
+                           GuiMessageDestination(false, false, true));
     }
   }
   catch (const ApplicationException& ex) {
@@ -185,7 +188,7 @@ void MessagesModel::fetchMoreArticles() {
   }
 }
 
-void MessagesModel::repopulate(int additional_article_id) {
+void MessagesModel::fetchInitialArticles(int additional_article_id) {
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulate started.";
 
   emit layoutAboutToBeChanged();
@@ -207,8 +210,8 @@ void MessagesModel::repopulate(int additional_article_id) {
     m_messages.clear();
   }
 
-  qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulated model!";
   emit layoutChanged();
+  qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulated model!";
 }
 
 int MessagesModel::rowCount(const QModelIndex& parent) const {
@@ -226,10 +229,31 @@ bool MessagesModel::setData(const QModelIndex& idx, const QVariant& value, int r
     return false;
   }
 
-  // TODO: dodělat
   auto& msg = messageForRow(idx.row());
 
-  emit dataChanged(index(idx.row(), 0), index(idx.row(), MSG_DB_LABELS_IDS));
+  switch (idx.column()) {
+    case MSG_DB_READ_INDEX:
+      msg.m_isRead = value.toBool();
+      break;
+
+    case MSG_DB_IMPORTANT_INDEX:
+      msg.m_isImportant = value.toBool();
+      break;
+
+    case MSG_DB_DELETED_INDEX:
+      msg.m_isDeleted = value.toBool();
+      break;
+
+    case MSG_DB_LABELS_IDS:
+      msg.m_assignedLabelsIds = value.toStringList();
+      break;
+
+    default:
+      throw ApplicationException(tr("cannot set model data for column %1").arg(idx.column()));
+      break;
+  }
+
+  emit dataChanged(index(idx.row(), 0), index(idx.row(), columnCount() - 1));
   return true;
 }
 
@@ -278,7 +302,7 @@ void MessagesModel::loadMessages(RootItem* item) {
     }
   }
 
-  repopulate();
+  fetchInitialArticles();
 }
 
 bool MessagesModel::setMessageImportantById(int id, RootItem::Importance important) {
@@ -802,8 +826,7 @@ bool MessagesModel::setMessageLabelsById(int id, const QStringList& label_ids) {
     int found_id = data(i, MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
 
     if (found_id == id) {
-      QString enc_ids = label_ids.isEmpty() ? QSL(".") : QSL(".") + label_ids.join('.') + QSL(".");
-      bool set = setData(index(i, MSG_DB_LABELS_IDS), enc_ids);
+      bool set = setData(index(i, MSG_DB_LABELS_IDS), label_ids);
       return set;
     }
   }
@@ -908,7 +931,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
     message_ids.append(QString::number(msg.m_id));
 
     if (m_selectedItem->kind() == RootItem::Kind::Bin) {
-      setData(index(message.row(), MSG_DB_PDELETED_INDEX), 1);
+      // setData(index(message.row(), MSG_DB_PDELETED_INDEX), 1);
     }
     else {
       setData(index(message.row(), MSG_DB_DELETED_INDEX), 1);
@@ -985,7 +1008,7 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
 
     msgs.append(msg);
     message_ids.append(QString::number(msg.m_id));
-    setData(index(message.row(), MSG_DB_PDELETED_INDEX), 0);
+    // setData(index(message.row(), MSG_DB_PDELETED_INDEX), 0);
     setData(index(message.row(), MSG_DB_DELETED_INDEX), 0);
   }
 
