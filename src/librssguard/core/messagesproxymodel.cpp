@@ -10,8 +10,7 @@
 #include <QTimer>
 
 MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_filter(MessageListFilter::NoFiltering),
-    m_additionalArticleId(0) {
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_filter(MessageListFilter::NoFiltering) {
   setObjectName(QSL("MessagesProxyModel"));
 
   initializeFilters();
@@ -122,9 +121,9 @@ bool MessagesProxyModel::filterAcceptsMessage(int msg_row_index) const {
   if (m_filter == MessageListFilter::NoFiltering) {
     return true;
   }
-  else if (m_additionalArticleId > 0 &&
+  else if (m_sourceModel->additionalArticleId() > 0 &&
            m_sourceModel->data(msg_row_index, MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt() ==
-             m_additionalArticleId) {
+             m_sourceModel->additionalArticleId()) {
     return true;
   }
 
@@ -233,17 +232,9 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
   return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) && filterAcceptsMessage(source_row);
 }
 
-int MessagesProxyModel::additionalArticleId() const {
-  return m_additionalArticleId;
-}
-
-void MessagesProxyModel::setAdditionalArticleId(int additional_article_id) {
-  m_additionalArticleId = additional_article_id;
-}
-
 void MessagesProxyModel::setMessageListFilter(MessageListFilter filter) {
   m_filter = filter;
-  m_additionalArticleId = 0;
+  m_sourceModel->setAdditionalArticleId(0);
 }
 
 QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList& indexes, bool deep) const {

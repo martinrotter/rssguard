@@ -85,6 +85,9 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     // Highlights messages.
     void highlightMessages(MessageHighlighter highlighter);
 
+    int additionalArticleId() const;
+    void setAdditionalArticleId(int additional_article_id);
+
     MessagesView* view() const;
     void setView(MessagesView* new_view);
 
@@ -125,6 +128,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     QList<QIcon> m_scoreIcons;
     MessageUnreadIcon m_unreadIconType;
     bool m_multilineListItems;
+    int m_additionalArticleId;
 };
 
 Q_DECLARE_METATYPE(MessagesModel::MessageHighlighter)

@@ -182,7 +182,7 @@ void MessagesView::sort(int column,
   }
 
   m_sourceModel->addSortState(column, order, ignore_multicolumn_sorting);
-  m_proxyModel->setAdditionalArticleId(additional_article_id);
+  m_sourceModel->setAdditionalArticleId(additional_article_id);
 
   if (repopulate_data) {
     m_sourceModel->fetchInitialArticles(additional_article_id);

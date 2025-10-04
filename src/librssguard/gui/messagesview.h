@@ -44,13 +44,13 @@ class MessagesView : public BaseTreeView {
   public slots:
     void copyUrlOfSelectedArticles() const;
 
-    void keyboardSearch(const QString& search);
+    virtual void keyboardSearch(const QString& search);
 
     // Called after data got changed externally
     // and it needs to be reloaded to the view.
     void reloadSelections();
 
-    // Loads un-deleted messages from selected feeds.
+    // Loads messages from selected item.
     void loadItem(RootItem* item);
 
 // Message manipulators.
@@ -112,7 +112,6 @@ class MessagesView : public BaseTreeView {
     // Notify others about message selections.
     void currentMessageChanged(Message message, RootItem* root);
     void currentMessageRemoved(RootItem* root);
-    void willReselectSameMessage();
     void reachedEndOfList();
 
   private:

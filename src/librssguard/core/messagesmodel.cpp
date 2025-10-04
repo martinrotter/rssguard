@@ -31,7 +31,8 @@ MessagesModel::MessagesModel(QObject* parent)
     m_messageHighlighter(MessageHighlighter::NoHighlighting), m_customDateFormat(QString()),
     m_customTimeFormat(QString()), m_customFormatForDatesOnly(QString()), m_newerArticlesRelativeTime(-1),
     m_selectedItem(nullptr), m_unreadIconType(MessageUnreadIcon::Dot),
-    m_multilineListItems(qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()) {
+    m_multilineListItems(qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()),
+    m_additionalArticleId(0) {
   updateFeedIconsDisplay();
   updateDateFormat();
 
@@ -118,6 +119,14 @@ QIcon MessagesModel::generateUnreadIcon() {
   painter.drawPoint(center);
 
   return QIcon(pix);
+}
+
+int MessagesModel::additionalArticleId() const {
+  return m_additionalArticleId;
+}
+
+void MessagesModel::setAdditionalArticleId(int additional_article_id) {
+  m_additionalArticleId = additional_article_id;
 }
 
 QString MessagesModel::descriptionOfUnreadIcon(MessageUnreadIcon type) {
