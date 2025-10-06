@@ -127,6 +127,10 @@ int MessagesModel::additionalArticleId() const {
 
 void MessagesModel::setAdditionalArticleId(int additional_article_id) {
   m_additionalArticleId = additional_article_id;
+
+  qDebugNN << LOGSEC_MESSAGEMODEL
+           << "Setting additional ID of article to be excluded from filtering or reselected after model reset to"
+           << QUOTE_W_SPACE_DOT(additional_article_id);
 }
 
 QString MessagesModel::descriptionOfUnreadIcon(MessageUnreadIcon type) {
@@ -197,7 +201,7 @@ void MessagesModel::fetchMoreArticles() {
   }
 }
 
-void MessagesModel::fetchInitialArticles(int additional_article_id) {
+void MessagesModel::fetchInitialArticles() {
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulate started.";
 
   emit layoutAboutToBeChanged();
@@ -205,7 +209,7 @@ void MessagesModel::fetchInitialArticles(int additional_article_id) {
   m_messages.clear();
 
   try {
-    m_messages = fetchMessages(BATCH_SIZE, 0, additional_article_id);
+    m_messages = fetchMessages(BATCH_SIZE, 0, m_additionalArticleId);
     m_canFetchMoreArticles = m_messages.size() >= BATCH_SIZE;
 
     // NOTE: Some message data are NOT fetched from database. Fill them directly into the data here.
@@ -289,6 +293,7 @@ void MessagesModel::setupFonts() {
 
 void MessagesModel::loadMessages(RootItem* item) {
   m_selectedItem = item;
+  m_additionalArticleId = 0;
 
   if (item != nullptr) {
     m_hashedFeeds = item->account()->getHashedSubTreeFeeds();
@@ -388,6 +393,19 @@ Message& MessagesModel::messageForRow(int row) {
   else {
     throw ApplicationException(tr("article with row %1 not found").arg(row));
   }
+}
+
+int MessagesModel::rowForMessage(int message_id) const {
+  int i = 0;
+  for (const auto& msg : m_messages) {
+    if (msg.m_id == message_id) {
+      return i;
+    }
+
+    i++;
+  }
+
+  return -1;
 }
 
 const Message& MessagesModel::messageForRow(int row) const {

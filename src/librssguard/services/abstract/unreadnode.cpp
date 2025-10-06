@@ -41,7 +41,7 @@ bool UnreadNode::cleanMessages(bool clean_read_only) {
   if (DatabaseQueries::cleanUnreadMessages(database, service->accountId())) {
     service->updateCounts(true);
     service->itemChanged(service->getSubTree<RootItem>());
-    service->requestReloadMessageList(true);
+    service->informOthersAboutDataChange(FeedsModel::ExternalDataChange::DatabaseCleaned);
     return true;
   }
   else {
@@ -67,7 +67,7 @@ bool UnreadNode::markAsReadUnread(RootItem::ReadStatus status) {
   if (DatabaseQueries::markUnreadMessagesRead(database, service->accountId())) {
     service->updateCounts(false);
     service->itemChanged(service->getSubTree<RootItem>());
-    service->requestReloadMessageList(status == RootItem::ReadStatus::Read);
+    service->informOthersAboutDataChange(FeedsModel::ExternalDataChange::MarkedReadUnread);
     return true;
   }
   else {

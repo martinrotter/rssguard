@@ -75,7 +75,7 @@ bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   if (DatabaseQueries::markBinReadUnread(database, service->accountId(), status)) {
     updateCounts(false);
     service->itemChanged(QList<RootItem*>() << this);
-    service->requestReloadMessageList(status == RootItem::ReadStatus::Read);
+    service->informOthersAboutDataChange(FeedsModel::ExternalDataChange::MarkedReadUnread);
     return true;
   }
   else {
@@ -90,7 +90,7 @@ bool RecycleBin::cleanMessages(bool clear_only_read) {
   if (DatabaseQueries::purgeMessagesFromBin(database, clear_only_read, parent_root->accountId())) {
     updateCounts(true);
     parent_root->itemChanged(QList<RootItem*>() << this);
-    parent_root->requestReloadMessageList(true);
+    parent_root->informOthersAboutDataChange(FeedsModel::ExternalDataChange::DatabaseCleaned);
     return true;
   }
   else {
@@ -120,7 +120,7 @@ bool RecycleBin::restore() {
   if (DatabaseQueries::restoreBin(database, parent_root->accountId())) {
     parent_root->updateCounts(true);
     parent_root->itemChanged(parent_root->getSubTree<RootItem>());
-    parent_root->requestReloadMessageList(true);
+    parent_root->informOthersAboutDataChange(FeedsModel::ExternalDataChange::RecycleBinRestored);
     return true;
   }
   else {

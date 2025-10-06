@@ -429,7 +429,7 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
           &FeedsModel::reassignNodeToNewParent,
           Qt::ConnectionType::BlockingQueuedConnection);
   connect(root, &ServiceRoot::dataChanged, this, &FeedsModel::onItemDataChanged);
-  connect(root, &ServiceRoot::reloadMessageListRequested, this, &FeedsModel::reloadMessageListRequested);
+  connect(root, &ServiceRoot::dataChangeNotificationTriggered, this, &FeedsModel::dataChangeNotificationTriggered);
   connect(root, &ServiceRoot::itemExpandRequested, this, &FeedsModel::itemExpandRequested);
   connect(root, &ServiceRoot::itemExpandStateSaveRequested, this, &FeedsModel::itemExpandStateSaveRequested);
 
@@ -552,7 +552,8 @@ bool FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
       }
 
       reloadCountsOfWholeModel();
-      emit reloadMessageListRequested(false);
+      emit dataChangeNotificationTriggered(ExternalDataChange::DatabaseCleaned);
+      // emit reloadMessageListRequested(false);
       return true;
     }
   }

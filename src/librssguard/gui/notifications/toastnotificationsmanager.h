@@ -51,7 +51,11 @@ class ToastNotificationsManager : public QObject {
 
   signals:
     void openingArticleInArticleListRequested(Feed* feed, const Message& msg);
-    void reloadMessageListRequested(bool mark_selected_messages_read);
+    // void reloadMessageListRequested(bool mark_selected_messages_read);
+
+    // Emitted to notify article model about external data change.
+    // Article model will reload article, refresh selected article etc.
+    void dataChangeNotificationTriggered(FeedsModel::ExternalDataChange change);
 
   private:
     QScreen* activeScreen() const;

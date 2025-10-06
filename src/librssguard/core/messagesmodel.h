@@ -5,7 +5,6 @@
 
 #include "core/message.h"
 #include "core/messagesmodelsqllayer.h"
-#include "definitions/definitions.h"
 #include "services/abstract/rootitem.h"
 
 #include <QAbstractTableModel>
@@ -39,7 +38,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     // Fetches available data to the model.
     // NOTE: This activates the SQL query and populates the model with new data.
     // Not all data are necessarily fetched, some might be lazy-fetched later.
-    void fetchInitialArticles(int additional_article_id = 0);
+    void fetchInitialArticles();
     void fetchMoreArticles();
 
     // Model implementation.
@@ -52,6 +51,8 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
 
     const Message& messageForRow(int row) const;
     Message& messageForRow(int row);
+
+    int rowForMessage(int message_id) const;
 
     QList<Message> messagesAt(const QList<int>& row_indices) const;
 

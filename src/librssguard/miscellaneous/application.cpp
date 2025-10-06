@@ -437,9 +437,9 @@ void Application::setMainForm(FormMain* main_form) {
 
   if (m_toastNotifications != nullptr) {
     connect(m_toastNotifications,
-            &ToastNotificationsManager::reloadMessageListRequested,
+            &ToastNotificationsManager::dataChangeNotificationTriggered,
             m_mainForm->tabWidget()->feedMessageViewer()->messagesView(),
-            &MessagesView::reloadSelections);
+            &MessagesView::reactOnExternalDataChange);
   }
 }
 

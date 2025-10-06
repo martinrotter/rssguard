@@ -3,6 +3,7 @@
 #ifndef MESSAGESVIEW_H
 #define MESSAGESVIEW_H
 
+#include "core/feedsmodel.h"
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "gui/reusable/basetreeview.h"
@@ -46,9 +47,11 @@ class MessagesView : public BaseTreeView {
 
     virtual void keyboardSearch(const QString& search);
 
+    void reloadSelections1();
+
     // Called after data got changed externally
     // and it needs to be reloaded to the view.
-    void reloadSelections();
+    void reactOnExternalDataChange(FeedsModel::ExternalDataChange cause);
 
     // Loads messages from selected item.
     void loadItem(RootItem* item);
@@ -115,13 +118,17 @@ class MessagesView : public BaseTreeView {
     void reachedEndOfList();
 
   private:
-    void sort(int column,
-              Qt::SortOrder order,
-              bool repopulate_data,
-              bool change_header,
-              bool emit_changed_from_header,
-              bool ignore_multicolumn_sorting,
-              int additional_article_id = 0);
+    void adjustSort(int column, Qt::SortOrder order, bool emit_changed_from_header, bool ignore_multicolumn_sorting);
+
+    void reselectArticle(int article_id);
+
+    void sort1(int column,
+               Qt::SortOrder order,
+               bool repopulate_data,
+               bool change_header,
+               bool emit_changed_from_header,
+               bool ignore_multicolumn_sorting,
+               int additional_article_id = 0);
 
     // Creates needed connections.
     void createConnections();
@@ -131,6 +138,9 @@ class MessagesView : public BaseTreeView {
 
     // Sets up appearance.
     void setupAppearance();
+
+    void requestArticleDisplay(const Message& msg);
+    void requestArticleHiding();
 
     // Event reimplementations.
     virtual void focusInEvent(QFocusEvent* event);

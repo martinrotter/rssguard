@@ -3,6 +3,7 @@
 #ifndef ARTICLELISTNOTIFICATION_H
 #define ARTICLELISTNOTIFICATION_H
 
+#include "core/feedsmodel.h"
 #include "core/message.h"
 #include "gui/notifications/basetoastnotification.h"
 
@@ -21,7 +22,7 @@ class ArticleListNotification : public BaseToastNotification {
 
   signals:
     void openingArticleInArticleListRequested(Feed* feed, const Message& msg);
-    void reloadMessageListRequested(bool mark_selected_messages_read);
+    void dataChangeNotificationTriggered(FeedsModel::ExternalDataChange change);
 
   public:
     virtual bool eventFilter(QObject* watched, QEvent* event);
