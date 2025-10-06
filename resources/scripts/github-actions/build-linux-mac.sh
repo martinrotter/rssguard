@@ -3,6 +3,13 @@
 set -e
 
 os="$1"
+use_qt5="$2"
+
+if [[ "$use_qt5" == "ON" ]]; then
+  USE_QT6="OFF"
+else
+  USE_QT6="ON"
+fi
 
 echo "OS: $os"
 
@@ -27,8 +34,6 @@ else
   libmpv="OFF"
   qtmultimedia="ON"
 fi
-
-USE_QT6="ON"
 
 if [[ "$USE_QT6" == "ON" ]]; then
   qt_id="qt6"
