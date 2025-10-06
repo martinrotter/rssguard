@@ -52,6 +52,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     const Message& messageForRow(int row) const;
     Message& messageForRow(int row);
     int rowForMessage(int message_id) const;
+    QModelIndex indexForMessage(int message_id) const;
 
     QList<Message> messagesAt(const QList<int>& row_indices) const;
 

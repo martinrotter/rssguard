@@ -412,6 +412,17 @@ int MessagesModel::rowForMessage(int message_id) const {
   return -1;
 }
 
+QModelIndex MessagesModel::indexForMessage(int message_id) const {
+  auto rw = rowForMessage(message_id);
+
+  if (rw < 0) {
+    return QModelIndex();
+  }
+  else {
+    return index(rw, MSG_DB_TITLE_INDEX);
+  }
+}
+
 const Message& MessagesModel::messageForRow(int row) const {
   if (row >= 0 && row < m_messages.size()) {
     return m_messages[row];

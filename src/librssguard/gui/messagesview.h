@@ -33,6 +33,8 @@ class MessagesView : public BaseTreeView {
     explicit MessagesView(QWidget* parent = nullptr);
     virtual ~MessagesView();
 
+    virtual void keyboardSearch(const QString& search);
+
     MessagesProxyModel* model() const;
     MessagesModel* sourceModel() const;
 
@@ -44,10 +46,6 @@ class MessagesView : public BaseTreeView {
 
   public slots:
     void copyUrlOfSelectedArticles() const;
-
-    virtual void keyboardSearch(const QString& search);
-
-    void reloadSelections1();
 
     // Called after data got changed externally
     // and it needs to be reloaded to the view.
@@ -91,18 +89,18 @@ class MessagesView : public BaseTreeView {
   protected slots:
     virtual void verticalScrollbarValueChanged(int value);
 
+  protected:
+    virtual void focusInEvent(QFocusEvent* event);
+    virtual void contextMenuEvent(QContextMenuEvent* event);
+    virtual void mousePressEvent(QMouseEvent* event);
+    virtual void mouseMoveEvent(QMouseEvent* event);
+    virtual void keyPressEvent(QKeyEvent* event);
+    virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
+
   private slots:
     void openSelectedMessagesWithExternalTool();
-
-    // Marks given indexes as selected.
-    void reselectIndexes(const QModelIndexList& indexes);
-
-    // Changes resize mode for all columns.
     void adjustColumns();
-
     void markSelectedMessagesReadDelayed();
-
-    // Saves current sort state.
     void onSortIndicatorChanged(int column, Qt::SortOrder order);
 
   signals:
@@ -118,39 +116,16 @@ class MessagesView : public BaseTreeView {
     void reachedEndOfList();
 
   private:
+    void reselectIndexes(const QModelIndexList& indexes);
     void adjustSort(int column, Qt::SortOrder order, bool emit_changed_from_header, bool ignore_multicolumn_sorting);
-
     void reselectArticle(int article_id);
-
-    void sort1(int column,
-               Qt::SortOrder order,
-               bool repopulate_data,
-               bool change_header,
-               bool emit_changed_from_header,
-               bool ignore_multicolumn_sorting,
-               int additional_article_id = 0);
-
-    // Creates needed connections.
     void createConnections();
-
-    // Initializes context menu.
     void initializeContextMenu();
-
-    // Sets up appearance.
     void setupAppearance();
-
-    void requestArticleDisplay(int article_id);
     void requestArticleDisplay(const Message& msg);
     void requestArticleHiding();
 
-    // Event reimplementations.
-    virtual void focusInEvent(QFocusEvent* event);
-    virtual void contextMenuEvent(QContextMenuEvent* event);
-    virtual void mousePressEvent(QMouseEvent* event);
-    virtual void mouseMoveEvent(QMouseEvent* event);
-    virtual void keyPressEvent(QKeyEvent* event);
-    virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
-
+  private:
     QMenu* m_contextMenu;
     MessagesProxyModel* m_proxyModel;
     MessagesModel* m_sourceModel;
