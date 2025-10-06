@@ -18,7 +18,8 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
 
   public:
     enum class ExternalDataChange {
-      MarkedReadUnread,
+      MarkedRead,
+      MarkedUnread,
       DatabaseCleaned,
       RecycleBinRestored,
       AccountSyncedIn,

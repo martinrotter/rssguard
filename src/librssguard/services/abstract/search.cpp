@@ -131,7 +131,9 @@ bool Search::markAsReadUnread(RootItem::ReadStatus status) {
     DatabaseQueries::markProbeReadUnread(database, this, status);
     service->updateCounts(false);
     service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(FeedsModel::ExternalDataChange::MarkedReadUnread);
+    service->informOthersAboutDataChange(status == RootItem::ReadStatus::Read
+                                           ? FeedsModel::ExternalDataChange::MarkedRead
+                                           : FeedsModel::ExternalDataChange::MarkedUnread);
     return true;
   }
   catch (const ApplicationException& ex) {

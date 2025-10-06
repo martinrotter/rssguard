@@ -75,7 +75,9 @@ bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   if (DatabaseQueries::markBinReadUnread(database, service->accountId(), status)) {
     updateCounts(false);
     service->itemChanged(QList<RootItem*>() << this);
-    service->informOthersAboutDataChange(FeedsModel::ExternalDataChange::MarkedReadUnread);
+    service->informOthersAboutDataChange(status == RootItem::ReadStatus::Read
+                                           ? FeedsModel::ExternalDataChange::MarkedRead
+                                           : FeedsModel::ExternalDataChange::MarkedUnread);
     return true;
   }
   else {

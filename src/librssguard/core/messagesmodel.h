@@ -51,7 +51,6 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
 
     const Message& messageForRow(int row) const;
     Message& messageForRow(int row);
-
     int rowForMessage(int message_id) const;
 
     QList<Message> messagesAt(const QList<int>& row_indices) const;
@@ -82,6 +81,10 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     bool setBatchMessagesDeleted(const QModelIndexList& messages);
     bool setBatchMessagesRead(const QModelIndexList& messages, RootItem::ReadStatus read);
     bool setBatchMessagesRestored(const QModelIndexList& messages);
+
+    // DATA only manipulators.
+    // NOTE: These only edit model data and do not make any DB writes.
+    void markArticleDataReadUnread(bool read);
 
     // Highlights messages.
     void highlightMessages(MessageHighlighter highlighter);

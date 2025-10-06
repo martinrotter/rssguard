@@ -191,7 +191,7 @@ void MessagesModel::fetchMoreArticles() {
       endInsertRows();
 
       qApp->showGuiMessage(Notification::Event::NoEvent,
-                           GuiMessage(QString(), tr("Fetched extra %1 articles").arg(more_messages.size())),
+                           GuiMessage(QString(), tr("Loaded extra %1 articles").arg(more_messages.size())),
                            GuiMessageDestination(false, false, true));
     }
   }
@@ -224,6 +224,10 @@ void MessagesModel::fetchInitialArticles() {
   }
 
   emit layoutChanged();
+
+  qApp->showGuiMessage(Notification::Event::NoEvent,
+                       GuiMessage(QString(), tr("Loaded %1 articles").arg(m_messages.size())),
+                       GuiMessageDestination(false, false, true));
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulated model!";
 }
 
@@ -1052,6 +1056,14 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
   else {
     return false;
   }
+}
+
+void MessagesModel::markArticleDataReadUnread(bool read) {
+  for (Message& msg : m_messages) {
+    msg.m_isRead = read;
+  }
+
+  reloadWholeLayout();
 }
 
 QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int role) const {

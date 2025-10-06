@@ -151,7 +151,8 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   if (DatabaseQueries::markAccountReadUnread(database, accountId(), status)) {
     updateCounts(false);
     itemChanged(getSubTree<RootItem>());
-    informOthersAboutDataChange(FeedsModel::ExternalDataChange::MarkedReadUnread);
+    informOthersAboutDataChange(status == RootItem::ReadStatus::Read ? FeedsModel::ExternalDataChange::MarkedRead
+                                                                     : FeedsModel::ExternalDataChange::MarkedUnread);
     return true;
   }
   else {
@@ -820,7 +821,9 @@ bool ServiceRoot::markFeedsReadUnread(const QList<Feed*>& items, RootItem::ReadS
   if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
     account()->updateCounts(false);
     account()->itemChanged(account()->getSubTree<RootItem>());
-    account()->informOthersAboutDataChange(FeedsModel::ExternalDataChange::MarkedReadUnread);
+    account()->informOthersAboutDataChange(read == RootItem::ReadStatus::Read
+                                             ? FeedsModel::ExternalDataChange::MarkedRead
+                                             : FeedsModel::ExternalDataChange::MarkedUnread);
     return true;
   }
   else {

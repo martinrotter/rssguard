@@ -290,6 +290,42 @@ void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
   reselectArticle(m_sourceModel->additionalArticleId());
 }
 
+void MessagesView::requestArticleDisplay(int article_id) {}
+
+void MessagesView::reactOnExternalDataChange(FeedsModel::ExternalDataChange cause) {
+  switch (cause) {
+    case FeedsModel::ExternalDataChange::MarkedRead:
+    case FeedsModel::ExternalDataChange::MarkedUnread: {
+      m_sourceModel->markArticleDataReadUnread(cause == FeedsModel::ExternalDataChange::MarkedRead);
+
+      if (m_sourceModel->additionalArticleId() <= 0) {
+        return;
+      }
+
+      int article_row = m_sourceModel->rowForMessage(m_sourceModel->additionalArticleId());
+
+      if (article_row < 0) {
+        requestArticleHiding();
+      }
+      else {
+        const Message& msg = m_sourceModel->messageForRow(article_row);
+
+        requestArticleDisplay(msg);
+      }
+
+      break;
+    }
+
+    case FeedsModel::ExternalDataChange::DatabaseCleaned:
+    case FeedsModel::ExternalDataChange::RecycleBinRestored:
+    case FeedsModel::ExternalDataChange::AccountSyncedIn:
+    case FeedsModel::ExternalDataChange::FeedFetchFinished:
+    case FeedsModel::ExternalDataChange::ListFilterChanged:
+    default:
+      break;
+  }
+}
+
 void MessagesView::sort1(int column,
                          Qt::SortOrder order,
                          bool repopulate_data,
@@ -331,8 +367,6 @@ void MessagesView::keyboardSearch(const QString& search) {
   QTreeView::keyboardSearch(search);
   setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
 }
-
-void MessagesView::reactOnExternalDataChange(FeedsModel::ExternalDataChange cause) {}
 
 void MessagesView::setupAppearance() {
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()) {

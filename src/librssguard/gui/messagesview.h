@@ -139,6 +139,7 @@ class MessagesView : public BaseTreeView {
     // Sets up appearance.
     void setupAppearance();
 
+    void requestArticleDisplay(int article_id);
     void requestArticleDisplay(const Message& msg);
     void requestArticleHiding();
 

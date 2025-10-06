@@ -62,7 +62,9 @@ bool ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
   if (DatabaseQueries::markImportantMessagesReadUnread(database, service->accountId(), status)) {
     service->updateCounts(false);
     service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(FeedsModel::ExternalDataChange::MarkedReadUnread);
+    service->informOthersAboutDataChange(status == RootItem::ReadStatus::Read
+                                           ? FeedsModel::ExternalDataChange::MarkedRead
+                                           : FeedsModel::ExternalDataChange::MarkedUnread);
     return true;
   }
   else {
