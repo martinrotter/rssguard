@@ -90,6 +90,10 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     // Highlights messages.
     void highlightMessages(MessageHighlighter highlighter);
 
+    // NOTE: Additional article ID, which should NOT be filtered out
+    // when sorting/filtering with proxy model.
+    //
+    // This is usually selected article etc.
     int additionalArticleId() const;
     void setAdditionalArticleId(int additional_article_id);
 

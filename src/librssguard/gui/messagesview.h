@@ -118,7 +118,7 @@ class MessagesView : public BaseTreeView {
   private:
     void reselectIndexes(const QModelIndexList& indexes);
     void adjustSort(int column, Qt::SortOrder order, bool emit_changed_from_header, bool ignore_multicolumn_sorting);
-    void reselectArticle(int article_id);
+    void reselectArticle(bool ensure_article_reviewed, bool do_not_modify_selection, int article_id);
     void createConnections();
     void initializeContextMenu();
     void setupAppearance();

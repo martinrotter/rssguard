@@ -185,30 +185,35 @@ void MessagesView::adjustSort(int column,
   header()->blockSignals(false);
 }
 
-void MessagesView::reselectArticle(int article_id) {
+void MessagesView::reselectArticle(bool ensure_article_reviewed, bool do_not_modify_selection, int article_id) {
   if (article_id <= 0) {
+    if (ensure_article_reviewed) {
+      requestArticleHiding();
+    }
+
     return;
   }
 
-  int article_row = m_sourceModel->rowForMessage(article_id);
+  QModelIndex idx = m_sourceModel->indexForMessage(article_id);
   QModelIndex idx_to_select;
 
-  if (article_row < 0) {
+  if (!idx.isValid()) {
     // Nothing to select.
-    // Select first row or nothing if model empty.
-    if (m_proxyModel->rowCount() == 0) {
-    }
-    else {
-      idx_to_select = m_proxyModel->index(0, 0);
-    }
   }
   else {
-    idx_to_select = m_proxyModel->mapFromSource(m_sourceModel->index(article_row, MSG_DB_TITLE_INDEX));
+    idx_to_select = m_proxyModel->mapFromSource(idx);
   }
 
   if (idx_to_select.isValid()) {
     setCurrentIndex(idx_to_select);
-    reselectIndexes({idx_to_select});
+
+    if (!do_not_modify_selection) {
+      reselectIndexes({idx_to_select});
+    }
+
+    if (ensure_article_reviewed) {
+      requestArticleDisplay(m_sourceModel->messageForRow(idx.row()));
+    }
   }
   else {
     requestArticleHiding();
@@ -218,7 +223,7 @@ void MessagesView::reselectArticle(int article_id) {
 void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
   adjustSort(column, order, false, false);
   m_sourceModel->fetchInitialArticles();
-  reselectArticle(m_sourceModel->additionalArticleId());
+  reselectArticle(false, false, m_sourceModel->additionalArticleId());
 }
 
 void MessagesView::reactOnExternalDataChange(FeedsModel::ExternalDataChange cause) {
@@ -232,13 +237,17 @@ void MessagesView::reactOnExternalDataChange(FeedsModel::ExternalDataChange caus
       // The goal is to keep selection in-tact.
       m_sourceModel->markArticleDataReadUnread(cause == FeedsModel::ExternalDataChange::MarkedRead);
 
+      reselectArticle(true, true, m_sourceModel->additionalArticleId());
+
+      /*
       if (m_sourceModel->additionalArticleId() <= 0) {
         return;
       }
 
       int article_row = m_sourceModel->rowForMessage(m_sourceModel->additionalArticleId());
+      QModelIndex idx_mapped = m_proxyModel->mapFromSource(m_sourceModel->index(article_row, MSG_DB_TITLE_INDEX));
 
-      if (article_row < 0) {
+      if (article_row < 0 || !idx_mapped.isValid()) {
         requestArticleHiding();
       }
       else {
@@ -246,14 +255,17 @@ void MessagesView::reactOnExternalDataChange(FeedsModel::ExternalDataChange caus
 
         requestArticleDisplay(msg);
       }
+      */
 
       break;
     }
 
+    case FeedsModel::ExternalDataChange::AccountSyncedIn:
+      break;
+
     case FeedsModel::ExternalDataChange::ListFilterChanged:
     case FeedsModel::ExternalDataChange::DatabaseCleaned:
     case FeedsModel::ExternalDataChange::RecycleBinRestored:
-    case FeedsModel::ExternalDataChange::AccountSyncedIn:
     case FeedsModel::ExternalDataChange::FeedFetchFinished:
     default: {
       // With these external changes, some articles might actually be
@@ -274,6 +286,7 @@ void MessagesView::reactOnExternalDataChange(FeedsModel::ExternalDataChange caus
       QModelIndex idx_mapped = m_proxyModel->mapFromSource(idx);
 
       if (!idx_mapped.isValid()) {
+        // clearSelection();
         requestArticleHiding();
       }
       else {
