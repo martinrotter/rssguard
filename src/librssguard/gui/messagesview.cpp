@@ -280,7 +280,11 @@ void MessagesView::reactOnExternalDataChange(FeedsModel::ExternalDataChange caus
         setCurrentIndex(idx_mapped);
         reselectIndexes({idx_mapped});
 
-        scrollTo(idx_mapped, QTreeView::ScrollHint::PositionAtCenter);
+        scrollTo(idx_mapped,
+                 !m_processingAnyMouseButton &&
+                     qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+                   ? QAbstractItemView::ScrollHint::PositionAtCenter
+                   : QAbstractItemView::ScrollHint::EnsureVisible);
 
         // NOTE: The "same" article was again selected and because it was already selected before,
         // we only set the selected ID again.
