@@ -47,8 +47,6 @@ jobs:
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
             cont: null
         exclude:
-          - os: ubuntu-24.04
-            use_qt5: "ON"
           - os: macos-13
             use_qt5: "ON"
     steps:
