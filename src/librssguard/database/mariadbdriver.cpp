@@ -148,7 +148,7 @@ qint64 MariaDbDriver::databaseDataSize() {
   query.bindValue(QSL(":db"), database.databaseName());
 
   if (query.exec() && query.next()) {
-    PRINT_QUERY(query)
+    DatabaseFactory::logLastExecutedQuery(query);
 
     return query.value(0).value<qint64>();
   }
@@ -192,7 +192,7 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
             throw ApplicationException(query_db.lastError().text());
           }
 
-          PRINT_QUERY(query_db)
+          DatabaseFactory::logLastExecutedQuery(query_db);
         }
 
         setSchemaVersion(query_db, QSL(APP_DB_SCHEMA_VERSION).toInt(), true);

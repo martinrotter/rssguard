@@ -255,7 +255,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
             throw ApplicationException(query_db.lastError().text());
           }
 
-          PRINT_QUERY(query_db)
+          DatabaseFactory::logLastExecutedQuery(query_db);
         }
 
         setSchemaVersion(query_db, QSL(APP_DB_SCHEMA_VERSION).toInt(), true);

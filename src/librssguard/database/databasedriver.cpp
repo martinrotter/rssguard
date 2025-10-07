@@ -2,6 +2,7 @@
 
 #include "database/databasedriver.h"
 
+#include "database/databasefactory.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/iofactory.h"
@@ -54,7 +55,7 @@ void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
         throw ApplicationException(query.lastError().text());
       }
 
-      PRINT_QUERY(query)
+      DatabaseFactory::logLastExecutedQuery(query);
     }
 
     // Increment the version.
@@ -80,7 +81,7 @@ void DatabaseDriver::setSchemaVersion(QSqlQuery& query, int new_schema_version, 
     throw ApplicationException(query.lastError().text());
   }
 
-  PRINT_QUERY(query)
+  DatabaseFactory::logLastExecutedQuery(query);
 }
 
 QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,

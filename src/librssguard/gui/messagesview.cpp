@@ -251,8 +251,6 @@ void MessagesView::reactOnExternalDataChange(FeedsModel::ExternalDataChange caus
     }
 
     case FeedsModel::ExternalDataChange::ListFilterChanged:
-      break;
-
     case FeedsModel::ExternalDataChange::DatabaseCleaned:
     case FeedsModel::ExternalDataChange::RecycleBinRestored:
     case FeedsModel::ExternalDataChange::AccountSyncedIn:
@@ -273,17 +271,24 @@ void MessagesView::reactOnExternalDataChange(FeedsModel::ExternalDataChange caus
       m_sourceModel->fetchInitialArticles();
 
       QModelIndex idx = m_sourceModel->indexForMessage(selected_id_article);
+      QModelIndex idx_mapped = m_proxyModel->mapFromSource(idx);
 
-      if (!idx.isValid()) {
+      if (!idx_mapped.isValid()) {
         requestArticleHiding();
       }
       else {
-        QModelIndex idx_mapped = m_proxyModel->mapFromSource(idx);
-
         setCurrentIndex(idx_mapped);
         reselectIndexes({idx_mapped});
 
         scrollTo(idx_mapped, QTreeView::ScrollHint::PositionAtCenter);
+
+        // NOTE: The "same" article was again selected and because it was already selected before,
+        // we only set the selected ID again.
+        //
+        // FIXME: If this shows problematic in the future, then fully reload the article to be sure.
+        // Below is prepared commented out code for that.
+        m_sourceModel->setAdditionalArticleId(selected_id_article);
+        // const Message& msg = m_sourceModel->messageForRow(idx.row());
         // requestArticleDisplay(msg);
       }
 
@@ -637,6 +642,11 @@ void MessagesView::loadItem(RootItem* item) {
 
 void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
   m_proxyModel->setMessageListFilter(filter);
+
+  // NOTE: Proxy model is normally not dynamically filtered, but when user changes filter
+  // explicitly, then yes, we need to do something.
+  m_proxyModel->invalidate();
+
   reactOnExternalDataChange(FeedsModel::ExternalDataChange::ListFilterChanged);
 }
 

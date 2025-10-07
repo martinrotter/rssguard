@@ -104,7 +104,7 @@ QList<Message> MessagesModelSqlLayer::fetchMessages(int limit, int offset, int a
     throw ApplicationException(q.lastError().text());
   }
 
-  PRINT_QUERY(q)
+  DatabaseFactory::logLastExecutedQuery(q);
 
   while (q.next()) {
     msgs.append(Message::fromSqlQuery(q));

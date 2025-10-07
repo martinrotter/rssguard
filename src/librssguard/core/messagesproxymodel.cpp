@@ -234,7 +234,7 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
 
 void MessagesProxyModel::setMessageListFilter(MessageListFilter filter) {
   m_filter = filter;
-  m_sourceModel->setAdditionalArticleId(0);
+  // m_sourceModel->setAdditionalArticleId(0);
 }
 
 QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList& indexes, bool deep) const {
