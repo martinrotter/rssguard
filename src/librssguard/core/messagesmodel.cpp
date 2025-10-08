@@ -261,6 +261,10 @@ bool MessagesModel::setData(const QModelIndex& idx, const QVariant& value, int r
       msg.m_isDeleted = value.toBool();
       break;
 
+    case MSG_DB_PDELETED_INDEX:
+      msg.m_isPdeleted = value.toBool();
+      break;
+
     case MSG_DB_LABELS_IDS:
       msg.m_assignedLabelsIds = value.toStringList();
       break;
@@ -501,7 +505,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           return msg.m_isDeleted;
 
         case MSG_DB_PDELETED_INDEX:
-          return false;
+          return msg.m_isPdeleted;
 
         case MSG_DB_FEED_CUSTOM_ID_INDEX:
           return msg.m_feedId;
@@ -976,7 +980,7 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
     message_ids.append(QString::number(msg.m_id));
 
     if (m_selectedItem->kind() == RootItem::Kind::Bin) {
-      // setData(index(message.row(), MSG_DB_PDELETED_INDEX), 1);
+      setData(index(message.row(), MSG_DB_PDELETED_INDEX), 1);
     }
     else {
       setData(index(message.row(), MSG_DB_DELETED_INDEX), 1);
