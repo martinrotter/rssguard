@@ -154,7 +154,9 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
 
     // Emitted to notify article model about external data change.
     // Article model will reload article, refresh selected article etc.
-    void dataChangeNotificationTriggered(ExternalDataChange change);
+    //
+    // "item" points to the item which caused the change or is nullptr if we do not know.
+    void dataChangeNotificationTriggered(RootItem* item, ExternalDataChange change);
 
   private:
     bool m_updateDuringFetching;

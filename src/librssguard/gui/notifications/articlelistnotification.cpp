@@ -130,7 +130,7 @@ void ArticleListNotification::openArticleInWebBrowser() {
   Message msg = selectedMessage();
 
   markAsRead(fd, {msg});
-  emit dataChangeNotificationTriggered(FeedsModel::ExternalDataChange::MarkedRead);
+  emit dataChangeNotificationTriggered(fd, FeedsModel::ExternalDataChange::MarkedRead);
 
   qApp->web()->openUrlInExternalBrowser(msg.m_url);
 
@@ -145,7 +145,7 @@ void ArticleListNotification::markAllRead() {
     markAsRead(fd, m_newMessages.value(fd));
   }
 
-  emit dataChangeNotificationTriggered(FeedsModel::ExternalDataChange::MarkedRead);
+  emit dataChangeNotificationTriggered(nullptr, FeedsModel::ExternalDataChange::MarkedRead);
 }
 
 void ArticleListNotification::markAsRead(Feed* feed, const QList<Message>& articles) {

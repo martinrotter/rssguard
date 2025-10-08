@@ -64,7 +64,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     RootItem* loadedItem() const;
 
     // Loads messages of given feeds.
-    void loadMessages(RootItem* item);
+    void loadMessages(RootItem* item, bool keep_additional_article_id = false);
 
     void setupIcons();
     void setupFonts();

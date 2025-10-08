@@ -49,7 +49,7 @@ class MessagesView : public BaseTreeView {
 
     // Called after data got changed externally
     // and it needs to be reloaded to the view.
-    void reactOnExternalDataChange(FeedsModel::ExternalDataChange cause);
+    void reactOnExternalDataChange(RootItem* item, FeedsModel::ExternalDataChange cause);
 
     // Loads messages from selected item.
     void loadItem(RootItem* item);

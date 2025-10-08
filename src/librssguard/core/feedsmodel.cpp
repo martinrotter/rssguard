@@ -552,7 +552,7 @@ bool FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
       }
 
       reloadCountsOfWholeModel();
-      emit dataChangeNotificationTriggered(ExternalDataChange::DatabaseCleaned);
+      emit dataChangeNotificationTriggered(nullptr, ExternalDataChange::DatabaseCleaned);
       // emit reloadMessageListRequested(false);
       return true;
     }

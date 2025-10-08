@@ -98,7 +98,7 @@ bool Search::cleanMessages(bool clear_only_read) {
     DatabaseQueries::cleanProbedMessages(database, clear_only_read, this);
     service->updateCounts(true);
     service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(FeedsModel::ExternalDataChange::DatabaseCleaned);
+    service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
     return true;
   }
   catch (const ApplicationException& ex) {
@@ -131,7 +131,8 @@ bool Search::markAsReadUnread(RootItem::ReadStatus status) {
     DatabaseQueries::markProbeReadUnread(database, this, status);
     service->updateCounts(false);
     service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(status == RootItem::ReadStatus::Read
+    service->informOthersAboutDataChange(this,
+                                         status == RootItem::ReadStatus::Read
                                            ? FeedsModel::ExternalDataChange::MarkedRead
                                            : FeedsModel::ExternalDataChange::MarkedUnread);
     return true;

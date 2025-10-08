@@ -22,7 +22,7 @@ class ArticleListNotification : public BaseToastNotification {
 
   signals:
     void openingArticleInArticleListRequested(Feed* feed, const Message& msg);
-    void dataChangeNotificationTriggered(FeedsModel::ExternalDataChange change);
+    void dataChangeNotificationTriggered(RootItem* item, FeedsModel::ExternalDataChange change);
 
   public:
     virtual bool eventFilter(QObject* watched, QEvent* event);

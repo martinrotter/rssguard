@@ -55,7 +55,7 @@ class ToastNotificationsManager : public QObject {
 
     // Emitted to notify article model about external data change.
     // Article model will reload article, refresh selected article etc.
-    void dataChangeNotificationTriggered(FeedsModel::ExternalDataChange change);
+    void dataChangeNotificationTriggered(RootItem* item, FeedsModel::ExternalDataChange change);
 
   private:
     QScreen* activeScreen() const;

@@ -198,7 +198,8 @@ void MessagesView::reselectArticle(bool ensure_article_reviewed, bool do_not_mod
   QModelIndex idx_to_select;
 
   if (!idx.isValid()) {
-    // Nothing to select.
+    // Nothing to select because the source article is no longer available in the
+    // source model.
   }
   else {
     idx_to_select = m_proxyModel->mapFromSource(idx);
@@ -212,10 +213,17 @@ void MessagesView::reselectArticle(bool ensure_article_reviewed, bool do_not_mod
     }
 
     if (ensure_article_reviewed) {
+      scrollTo(idx_to_select,
+               !m_processingAnyMouseButton &&
+                   qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+                 ? QAbstractItemView::ScrollHint::PositionAtCenter
+                 : QAbstractItemView::ScrollHint::EnsureVisible);
+
       requestArticleDisplay(m_sourceModel->messageForRow(idx.row()));
     }
   }
   else {
+    // The article is no longer available in the proxy or source models.
     requestArticleHiding();
   }
 }
@@ -226,89 +234,45 @@ void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
   reselectArticle(false, false, m_sourceModel->additionalArticleId());
 }
 
-void MessagesView::reactOnExternalDataChange(FeedsModel::ExternalDataChange cause) {
+void MessagesView::reactOnExternalDataChange(RootItem* item, FeedsModel::ExternalDataChange cause) {
+  if (m_sourceModel->loadedItem() == nullptr) {
+    qWarningNN << LOGSEC_MESSAGEMODEL << "Not reacting on external article data change because nothing is selected.";
+    return;
+  }
+
+  if (item != nullptr && item->account() != m_sourceModel->loadedItem()->account()) {
+    qWarningNN << LOGSEC_MESSAGEMODEL
+               << "Not reacting on external article data change because different account is selected.";
+    return;
+  }
+
   switch (cause) {
     case FeedsModel::ExternalDataChange::MarkedRead:
     case FeedsModel::ExternalDataChange::MarkedUnread: {
-      // No articles were removed and we do ignore filtering for a bit.
-      // We just refresh model data (no DB writes) to make sure the user
+      // We refresh model data (no DB writes) to make sure the user
       // sees latest article versions.
       //
-      // The goal is to keep selection in-tact.
+      // If the article is not filtered out by filtering, it will be reselected.
       m_sourceModel->markArticleDataReadUnread(cause == FeedsModel::ExternalDataChange::MarkedRead);
-
       reselectArticle(true, true, m_sourceModel->additionalArticleId());
-
-      /*
-      if (m_sourceModel->additionalArticleId() <= 0) {
-        return;
-      }
-
-      int article_row = m_sourceModel->rowForMessage(m_sourceModel->additionalArticleId());
-      QModelIndex idx_mapped = m_proxyModel->mapFromSource(m_sourceModel->index(article_row, MSG_DB_TITLE_INDEX));
-
-      if (article_row < 0 || !idx_mapped.isValid()) {
-        requestArticleHiding();
-      }
-      else {
-        const Message& msg = m_sourceModel->messageForRow(article_row);
-
-        requestArticleDisplay(msg);
-      }
-      */
-
       break;
     }
 
     case FeedsModel::ExternalDataChange::AccountSyncedIn:
-      break;
-
     case FeedsModel::ExternalDataChange::ListFilterChanged:
     case FeedsModel::ExternalDataChange::DatabaseCleaned:
     case FeedsModel::ExternalDataChange::RecycleBinRestored:
     case FeedsModel::ExternalDataChange::FeedFetchFinished:
     default: {
+      bool articles_could_be_removed = cause == FeedsModel::ExternalDataChange::AccountSyncedIn ||
+                                       cause == FeedsModel::ExternalDataChange::DatabaseCleaned ||
+                                       cause == FeedsModel::ExternalDataChange::RecycleBinRestored;
+
       // With these external changes, some articles might actually be
       // removed. We do data re-fetch here, selection will be lost
       // but we try to re-select the same article as before.
-      auto selected_id_article = m_sourceModel->additionalArticleId();
-
-      if (selected_id_article <= 0 && m_sourceModel->loadedItem() != nullptr) {
-        // Nothing is likely selected, just full reload.
-        m_sourceModel->loadMessages(m_sourceModel->loadedItem());
-        return;
-      }
-
-      m_sourceModel->setAdditionalArticleId(0);
-      m_sourceModel->fetchInitialArticles();
-
-      QModelIndex idx = m_sourceModel->indexForMessage(selected_id_article);
-      QModelIndex idx_mapped = m_proxyModel->mapFromSource(idx);
-
-      if (!idx_mapped.isValid()) {
-        // clearSelection();
-        requestArticleHiding();
-      }
-      else {
-        setCurrentIndex(idx_mapped);
-        reselectIndexes({idx_mapped});
-
-        scrollTo(idx_mapped,
-                 !m_processingAnyMouseButton &&
-                     qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
-                   ? QAbstractItemView::ScrollHint::PositionAtCenter
-                   : QAbstractItemView::ScrollHint::EnsureVisible);
-
-        // NOTE: The "same" article was again selected and because it was already selected before,
-        // we only set the selected ID again.
-        //
-        // FIXME: If this shows problematic in the future, then fully reload the article to be sure.
-        // Below is prepared commented out code for that.
-        m_sourceModel->setAdditionalArticleId(selected_id_article);
-        // const Message& msg = m_sourceModel->messageForRow(idx.row());
-        // requestArticleDisplay(msg);
-      }
-
+      m_sourceModel->loadMessages(m_sourceModel->loadedItem(), !articles_could_be_removed);
+      reselectArticle(true, false, m_sourceModel->additionalArticleId());
       break;
     }
   }
@@ -664,7 +628,7 @@ void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
   // explicitly, then yes, we need to do something.
   m_proxyModel->invalidate();
 
-  reactOnExternalDataChange(FeedsModel::ExternalDataChange::ListFilterChanged);
+  reactOnExternalDataChange(m_sourceModel->loadedItem(), FeedsModel::ExternalDataChange::ListFilterChanged);
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {

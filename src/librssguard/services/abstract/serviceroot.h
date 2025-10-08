@@ -221,7 +221,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
 
     // Obvious methods to wrap signals.
     void itemChanged(const QList<RootItem*>& items);
-    void informOthersAboutDataChange(FeedsModel::ExternalDataChange change);
+    void informOthersAboutDataChange(RootItem* item, FeedsModel::ExternalDataChange change);
     void requestItemExpand(const QList<RootItem*>& items, bool expand);
     void requestItemExpandStateSave(RootItem* subtree_root);
     void requestItemReassignment(RootItem* item, RootItem* new_parent, bool blocking = false);
@@ -296,7 +296,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
   signals:
     void proxyChanged(QNetworkProxy proxy);
     void dataChanged(QList<RootItem*> items);
-    void dataChangeNotificationTriggered(FeedsModel::ExternalDataChange change);
+    void dataChangeNotificationTriggered(RootItem* item, FeedsModel::ExternalDataChange change);
     void itemExpandRequested(QList<RootItem*> items, bool expand);
     void itemExpandStateSaveRequested(RootItem* subtree_root);
 

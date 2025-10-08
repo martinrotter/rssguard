@@ -41,7 +41,7 @@ bool ImportantNode::cleanMessages(bool clean_read_only) {
   if (DatabaseQueries::cleanImportantMessages(database, clean_read_only, service->accountId())) {
     service->updateCounts(true);
     service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(FeedsModel::ExternalDataChange::DatabaseCleaned);
+    service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
     return true;
   }
   else {
@@ -62,7 +62,8 @@ bool ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
   if (DatabaseQueries::markImportantMessagesReadUnread(database, service->accountId(), status)) {
     service->updateCounts(false);
     service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(status == RootItem::ReadStatus::Read
+    service->informOthersAboutDataChange(this,
+                                         status == RootItem::ReadStatus::Read
                                            ? FeedsModel::ExternalDataChange::MarkedRead
                                            : FeedsModel::ExternalDataChange::MarkedUnread);
     return true;

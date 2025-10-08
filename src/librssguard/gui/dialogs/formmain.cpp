@@ -144,7 +144,7 @@ void FormMain::showDbCleanupAssistant() {
     tabWidget()
       ->feedMessageViewer()
       ->messagesView()
-      ->reactOnExternalDataChange(FeedsModel::ExternalDataChange::DatabaseCleaned);
+      ->reactOnExternalDataChange(nullptr, FeedsModel::ExternalDataChange::DatabaseCleaned);
   }
   else {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -440,7 +440,7 @@ void FormMain::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   tabWidget()
     ->feedMessageViewer()
     ->messagesView()
-    ->reactOnExternalDataChange(FeedsModel::ExternalDataChange::FeedFetchFinished);
+    ->reactOnExternalDataChange(nullptr, FeedsModel::ExternalDataChange::FeedFetchFinished);
 }
 
 void FormMain::onFeedUpdatesStarted() {
@@ -1035,7 +1035,7 @@ void FormMain::createConnections() {
     tabWidget()
       ->feedMessageViewer()
       ->messagesView()
-      ->reactOnExternalDataChange(FeedsModel::ExternalDataChange::DatabaseCleaned);
+      ->reactOnExternalDataChange(nullptr, FeedsModel::ExternalDataChange::DatabaseCleaned);
   });
   connect(m_ui->m_actionFeedMoveUp,
           &QAction::triggered,

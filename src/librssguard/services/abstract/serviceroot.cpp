@@ -151,7 +151,8 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   if (DatabaseQueries::markAccountReadUnread(database, accountId(), status)) {
     updateCounts(false);
     itemChanged(getSubTree<RootItem>());
-    informOthersAboutDataChange(status == RootItem::ReadStatus::Read ? FeedsModel::ExternalDataChange::MarkedRead
+    informOthersAboutDataChange(this,
+                                status == RootItem::ReadStatus::Read ? FeedsModel::ExternalDataChange::MarkedRead
                                                                      : FeedsModel::ExternalDataChange::MarkedUnread);
     return true;
   }
@@ -282,7 +283,7 @@ void ServiceRoot::completelyRemoveAllData() {
   removeOldAccountFromDatabase(true, true);
   updateCounts(true);
   itemChanged({this});
-  informOthersAboutDataChange(FeedsModel::ExternalDataChange::DatabaseCleaned);
+  informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
 
 void ServiceRoot::removeOldAccountFromDatabase(bool delete_messages_too, bool delete_labels_too) {
@@ -339,7 +340,7 @@ bool ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
   if (DatabaseQueries::cleanFeeds(database, textualFeedIds(items), clean_read_only, accountId())) {
     account()->updateCounts(true);
     account()->itemChanged(account()->getSubTree<RootItem>());
-    account()->informOthersAboutDataChange(FeedsModel::ExternalDataChange::DatabaseCleaned);
+    account()->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
     return true;
   }
   else {
@@ -433,8 +434,8 @@ void ServiceRoot::itemChanged(const QList<RootItem*>& items) {
   emit dataChanged(items);
 }
 
-void ServiceRoot::informOthersAboutDataChange(FeedsModel::ExternalDataChange change) {
-  emit dataChangeNotificationTriggered(change);
+void ServiceRoot::informOthersAboutDataChange(RootItem* item, FeedsModel::ExternalDataChange change) {
+  emit dataChangeNotificationTriggered(item, change);
 }
 
 void ServiceRoot::requestItemExpand(const QList<RootItem*>& items, bool expand) {
@@ -702,7 +703,7 @@ void ServiceRoot::syncIn() {
     new_tree->deleteLater();
 
     updateCounts(true);
-    informOthersAboutDataChange(FeedsModel::ExternalDataChange::AccountSyncedIn);
+    informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::AccountSyncedIn);
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_CORE << "New feed tree for sync-in NOT obtained:" << QUOTE_W_SPACE_DOT(ex.message());
@@ -821,7 +822,8 @@ bool ServiceRoot::markFeedsReadUnread(const QList<Feed*>& items, RootItem::ReadS
   if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
     account()->updateCounts(false);
     account()->itemChanged(account()->getSubTree<RootItem>());
-    account()->informOthersAboutDataChange(read == RootItem::ReadStatus::Read
+    account()->informOthersAboutDataChange(this,
+                                           read == RootItem::ReadStatus::Read
                                              ? FeedsModel::ExternalDataChange::MarkedRead
                                              : FeedsModel::ExternalDataChange::MarkedUnread);
     return true;

@@ -295,9 +295,12 @@ void MessagesModel::setupFonts() {
   m_boldStrikedFont.setStrikeOut(true);
 }
 
-void MessagesModel::loadMessages(RootItem* item) {
+void MessagesModel::loadMessages(RootItem* item, bool keep_additional_article_id) {
   m_selectedItem = item;
-  m_additionalArticleId = 0;
+
+  if (!keep_additional_article_id) {
+    m_additionalArticleId = 0;
+  }
 
   if (item != nullptr) {
     m_hashedFeeds = item->account()->getHashedSubTreeFeeds();
