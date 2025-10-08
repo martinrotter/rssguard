@@ -215,7 +215,7 @@ versão, clicando nesta notificação popup.</translation>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="179"/>
       <source>newest article(s)</source>
       <translation type="unfinished">
-        <numerusform>Artigo(s) mais recente(s)</numerusform>
+        <numerusform>artigo(s) mais recente(s)</numerusform>
         <numerusform>newest article(s)</numerusform>
       </translation>
     </message>
