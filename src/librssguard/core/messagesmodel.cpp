@@ -18,6 +18,7 @@
 
 #include <cmath>
 
+#include <QElapsedTimer>
 #include <QPainter>
 #include <QPainterPath>
 #include <QSqlError>
