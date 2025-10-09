@@ -169,6 +169,9 @@ void MessagesModel::fetchMoreArticles() {
   qDebugNN << LOGSEC_MESSAGEMODEL << "We need to fetch more articles!";
 
   try {
+    QElapsedTimer tmr;
+    tmr.start();
+
     auto more_messages = fetchMessages(BATCH_SIZE, m_messages.size());
 
     m_canFetchMoreArticles = more_messages.size() >= BATCH_SIZE;
@@ -191,7 +194,9 @@ void MessagesModel::fetchMoreArticles() {
       endInsertRows();
 
       qApp->showGuiMessage(Notification::Event::NoEvent,
-                           GuiMessage(QString(), tr("Loaded extra %1 articles").arg(more_messages.size())),
+                           GuiMessage(QString(),
+                                      tr("Loaded extra %1 articles in %2 miliseconds")
+                                        .arg(QString::number(more_messages.size()), QString::number(tmr.elapsed()))),
                            GuiMessageDestination(false, false, true));
     }
   }
@@ -204,7 +209,10 @@ void MessagesModel::fetchMoreArticles() {
 void MessagesModel::fetchInitialArticles() {
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulate started.";
 
-  emit layoutAboutToBeChanged();
+  QElapsedTimer tmr;
+  tmr.start();
+
+  beginResetModel();
   m_canFetchMoreArticles = false;
   m_messages.clear();
 
@@ -223,10 +231,11 @@ void MessagesModel::fetchInitialArticles() {
     m_messages.clear();
   }
 
-  emit layoutChanged();
-
+  endResetModel();
   qApp->showGuiMessage(Notification::Event::NoEvent,
-                       GuiMessage(QString(), tr("Loaded %1 articles").arg(m_messages.size())),
+                       GuiMessage(QString(),
+                                  tr("Loaded %1 articles in %2 miliseconds")
+                                    .arg(QString::number(m_messages.size()), QString::number(tmr.elapsed()))),
                        GuiMessageDestination(false, false, true));
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulated model!";
 }
@@ -332,7 +341,7 @@ void MessagesModel::loadMessages(RootItem* item, bool keep_additional_article_id
 
 bool MessagesModel::setMessageImportantById(int id, RootItem::Importance important) {
   for (int i = 0; i < rowCount(); i++) {
-    int found_id = data(i, MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
+    int found_id = data(i, MSG_DB_ID_INDEX).toInt();
 
     if (found_id == id) {
       return setData(index(i, MSG_DB_IMPORTANT_INDEX), int(important));
@@ -349,11 +358,11 @@ void MessagesModel::highlightMessages(MessagesModel::MessageHighlighter highligh
 }
 
 int MessagesModel::messageId(int row_index) const {
-  return data(row_index, MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
+  return data(row_index, MSG_DB_ID_INDEX).toInt();
 }
 
 RootItem::Importance MessagesModel::messageImportance(int row_index) const {
-  return RootItem::Importance(data(row_index, MSG_DB_IMPORTANT_INDEX, Qt::ItemDataRole::EditRole).toInt());
+  return RootItem::Importance(data(row_index, MSG_DB_IMPORTANT_INDEX).toInt());
 }
 
 RootItem* MessagesModel::loadedItem() const {
@@ -395,6 +404,24 @@ void MessagesModel::updateFeedIconsDisplay() {
 void MessagesModel::reloadWholeLayout() {
   emit layoutAboutToBeChanged();
   emit layoutChanged();
+}
+
+void MessagesModel::reloadChangedLayout(const QModelIndexList& indices) {
+  if (indices.isEmpty()) {
+    return;
+  }
+
+  auto idxs = indices;
+
+  std::sort(idxs.begin(), idxs.end(), [](const QModelIndex& a, const QModelIndex& b) {
+    if (a.row() == b.row()) {
+      return a.column() < b.column();
+    }
+    return a.row() < b.row();
+  });
+
+  emit dataChanged(idxs.constFirst(), idxs.constLast());
+  // emit dataChanged(index(idx_low.row(), 0), index(idx_high.row(), columnCount() - 1));
 }
 
 Message& MessagesModel::messageForRow(int row) {
@@ -685,20 +712,22 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
       QVariant data_read = data(idx_read, Qt::ItemDataRole::EditRole);
       const bool is_bin = qobject_cast<RecycleBin*>(loadedItem()) != nullptr;
-      bool is_deleted;
+      bool striked;
 
       if (is_bin) {
-        QModelIndex idx_del = index(idx.row(), MSG_DB_PDELETED_INDEX);
+        QModelIndex idx_del = index(idx.row(), MSG_DB_DELETED_INDEX);
+        QModelIndex idx_pdel = index(idx.row(), MSG_DB_PDELETED_INDEX);
 
-        is_deleted = data(idx_del, Qt::ItemDataRole::EditRole).toBool();
+        // NOTE: If we are in the bin and the article is permanently deleted (deleted from recycle bin)
+        // or it is NOT deleted (it was restored from bin), then draw as striked.
+        striked =
+          data(idx_pdel, Qt::ItemDataRole::EditRole).toBool() || !data(idx_del, Qt::ItemDataRole::EditRole).toBool();
       }
       else {
         QModelIndex idx_del = index(idx.row(), MSG_DB_DELETED_INDEX);
 
-        is_deleted = data(idx_del, Qt::ItemDataRole::EditRole).toBool();
+        striked = data(idx_del, Qt::ItemDataRole::EditRole).toBool();
       }
-
-      const bool striked = is_deleted;
 
       if (data_read.toBool()) {
         return striked ? m_normalStrikedFont : m_normalFont;
@@ -818,8 +847,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 }
 
 bool MessagesModel::switchMessageReadUnread(int row_index) {
-  RootItem::ReadStatus current_read =
-    RootItem::ReadStatus(data(row_index, MSG_DB_READ_INDEX, Qt::ItemDataRole::EditRole).toInt());
+  RootItem::ReadStatus current_read = RootItem::ReadStatus(data(row_index, MSG_DB_READ_INDEX).toInt());
 
   return setMessageRead(row_index,
                         current_read == RootItem::ReadStatus::Read ? RootItem::ReadStatus::Unread
@@ -827,7 +855,7 @@ bool MessagesModel::switchMessageReadUnread(int row_index) {
 }
 
 bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
-  if (data(row_index, MSG_DB_READ_INDEX, Qt::ItemDataRole::EditRole).toInt() == int(read)) {
+  if (data(row_index, MSG_DB_READ_INDEX).toInt() == int(read)) {
     // Read status is the same is the one currently set.
     // In that case, no extra work is needed.
     return true;
@@ -859,7 +887,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
 
 bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
   for (int i = 0; i < rowCount(); i++) {
-    int found_id = data(i, MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
+    int found_id = data(i, MSG_DB_ID_INDEX).toInt();
 
     if (found_id == id) {
       bool set = setData(index(i, MSG_DB_READ_INDEX), int(read));
@@ -872,7 +900,7 @@ bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
 
 bool MessagesModel::setMessageLabelsById(int id, const QStringList& label_ids) {
   for (int i = 0; i < rowCount(); i++) {
-    int found_id = data(i, MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
+    int found_id = data(i, MSG_DB_ID_INDEX).toInt();
 
     if (found_id == id) {
       bool set = setData(index(i, MSG_DB_LABELS_IDS), label_ids);
@@ -891,16 +919,14 @@ void MessagesModel::fillComputedMessageData(Message* msg) {
 
 bool MessagesModel::switchMessageImportance(int row_index) {
   const QModelIndex target_index = index(row_index, MSG_DB_IMPORTANT_INDEX);
-  const RootItem::Importance current_importance = (RootItem::Importance)data(target_index, Qt::EditRole).toInt();
+  const RootItem::Importance current_importance = (RootItem::Importance)data(target_index).toInt();
   const RootItem::Importance next_importance = current_importance == RootItem::Importance::Important
                                                  ? RootItem::Importance::NotImportant
                                                  : RootItem::Importance::Important;
   const Message& message = messageForRow(row_index);
   const QPair<Message, RootItem::Importance> pair(message, next_importance);
 
-  if (!m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem,
-                                                                  QList<QPair<Message, RootItem::Importance>>()
-                                                                    << pair)) {
+  if (!m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem, {pair})) {
     return false;
   }
 
@@ -927,8 +953,12 @@ bool MessagesModel::switchMessageImportance(int row_index) {
 bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages) {
   QStringList message_ids;
   message_ids.reserve(messages.size());
+
   QList<QPair<Message, RootItem::Importance>> message_states;
   message_states.reserve(messages.size());
+
+  QModelIndexList changed_indices;
+  changed_indices.reserve(messages.size());
 
   // Obtain IDs of all desired messages.
   blockSignals(true);
@@ -947,10 +977,12 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
     setData(idx_msg_imp,
             message_importance == RootItem::Importance::Important ? int(RootItem::Importance::NotImportant)
                                                                   : int(RootItem::Importance::Important));
+
+    changed_indices.append(idx_msg_imp);
   }
 
   blockSignals(false);
-  reloadWholeLayout();
+  reloadChangedLayout(changed_indices);
 
   if (!m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem, message_states)) {
     return false;
@@ -967,8 +999,12 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
 bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
   QStringList message_ids;
   message_ids.reserve(messages.size());
+
   QList<Message> msgs;
   msgs.reserve(messages.size());
+
+  QModelIndexList changed_indices;
+  changed_indices.reserve(messages.size());
 
   blockSignals(true);
 
@@ -979,16 +1015,21 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
     msgs.append(msg);
     message_ids.append(QString::number(msg.m_id));
 
+    QModelIndex idx_del;
+
     if (m_selectedItem->kind() == RootItem::Kind::Bin) {
-      setData(index(message.row(), MSG_DB_PDELETED_INDEX), 1);
+      idx_del = index(message.row(), MSG_DB_PDELETED_INDEX);
     }
     else {
-      setData(index(message.row(), MSG_DB_DELETED_INDEX), 1);
+      idx_del = index(message.row(), MSG_DB_DELETED_INDEX);
     }
+
+    setData(idx_del, 1);
+    changed_indices.append(idx_del);
   }
 
   blockSignals(false);
-  reloadWholeLayout();
+  reloadChangedLayout(changed_indices);
 
   if (!m_selectedItem->account()->onBeforeMessagesDelete(m_selectedItem, msgs)) {
     return false;
@@ -1014,8 +1055,12 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
 bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootItem::ReadStatus read) {
   QStringList message_ids;
   message_ids.reserve(messages.size());
+
   QList<Message> msgs;
   msgs.reserve(messages.size());
+
+  QModelIndexList changed_indices;
+  changed_indices.reserve(messages.size());
 
   blockSignals(true);
 
@@ -1025,11 +1070,15 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
 
     msgs.append(msg);
     message_ids.append(QString::number(msg.m_id));
-    setData(index(message.row(), MSG_DB_READ_INDEX), int(read));
+
+    QModelIndex idx = index(message.row(), MSG_DB_READ_INDEX);
+    setData(idx, int(read));
+
+    changed_indices.append(idx);
   }
 
   blockSignals(false);
-  reloadWholeLayout();
+  reloadChangedLayout(changed_indices);
 
   if (!m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, msgs, read)) {
     return false;
@@ -1046,8 +1095,12 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
 bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
   QStringList message_ids;
   message_ids.reserve(messages.size());
+
   QList<Message> msgs;
   msgs.reserve(messages.size());
+
+  QModelIndexList changed_indices;
+  changed_indices.reserve(messages.size());
 
   blockSignals(true);
 
@@ -1057,12 +1110,18 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
 
     msgs.append(msg);
     message_ids.append(QString::number(msg.m_id));
-    // setData(index(message.row(), MSG_DB_PDELETED_INDEX), 0);
-    setData(index(message.row(), MSG_DB_DELETED_INDEX), 0);
+
+    QModelIndex idx = index(message.row(), MSG_DB_DELETED_INDEX);
+    setData(idx, 0);
+    changed_indices.append(idx);
+
+    idx = index(message.row(), MSG_DB_PDELETED_INDEX);
+    setData(idx, 0);
+    changed_indices.append(idx);
   }
 
   blockSignals(false);
-  reloadWholeLayout();
+  reloadChangedLayout(changed_indices);
 
   if (!m_selectedItem->account()->onBeforeMessagesRestoredFromBin(m_selectedItem, msgs)) {
     return false;

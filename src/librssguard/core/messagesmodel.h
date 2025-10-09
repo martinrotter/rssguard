@@ -71,6 +71,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     void updateDateFormat();
     void updateFeedIconsDisplay();
     void reloadWholeLayout();
+    void reloadChangedLayout(const QModelIndexList& indices);
 
     // SINGLE message manipulators.
     bool switchMessageImportance(int row_index);
