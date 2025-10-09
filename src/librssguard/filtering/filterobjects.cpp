@@ -374,7 +374,7 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   }
 
   if (q.exec() && q.next()) {
-    PRINT_QUERY(q)
+    DatabaseFactory::logLastExecutedQuery(q);
 
     if (q.value(0).toInt() > 0) {
       // Whoops, we have the "same" message in database.

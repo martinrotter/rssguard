@@ -84,7 +84,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
   q.bindValue(QSL(":feed_id"), quiterss_id);
   q.exec();
 
-  PRINT_QUERY(q)
+  DatabaseFactory::logLastExecutedQuery(q);
 
   while (q.next()) {
     try {
@@ -279,7 +279,7 @@ RootItem* QuiteRssImport::extractFeedsAndCategories(const QSqlDatabase& db) cons
     throw ApplicationException(q.lastError().text());
   }
 
-  PRINT_QUERY(q)
+  DatabaseFactory::logLastExecutedQuery(q);
 
   while (q.next()) {
     int id = q.value(QSL("id")).toInt();
@@ -349,7 +349,7 @@ QList<Label*> QuiteRssImport::extractLabels(const QSqlDatabase& db) const {
     throw ApplicationException(q.lastError().text());
   }
 
-  PRINT_QUERY(q)
+  DatabaseFactory::logLastExecutedQuery(q);
 
   while (q.next()) {
     QString id = q.value(0).toString();
@@ -389,7 +389,7 @@ void QuiteRssImport::checkIfQuiteRss(const QSqlDatabase& db) const {
     throw ApplicationException(q.lastError().text());
   }
 
-  PRINT_QUERY(q)
+  DatabaseFactory::logLastExecutedQuery(q);
 
   QStringList tables = QStringList{QSL("feeds"),
                                    QSL("news"),
@@ -416,7 +416,7 @@ void QuiteRssImport::checkIfQuiteRss(const QSqlDatabase& db) const {
     throw ApplicationException(tr("metadata version 17 was expected"));
   }
 
-  PRINT_QUERY(q)
+  DatabaseFactory::logLastExecutedQuery(q);
 }
 
 QSqlDatabase QuiteRssImport::dbConnection(const QString& db_file, const QString& connection_name) const {

@@ -3,7 +3,6 @@
 #include "core/messagesproxymodel.h"
 
 #include "core/messagesmodel.h"
-#include "core/messagesmodelcache.h"
 #include "definitions/globals.h"
 #include "miscellaneous/regexfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -11,8 +10,7 @@
 #include <QTimer>
 
 MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_filter(MessageListFilter::NoFiltering),
-    m_additionalArticleId(0) {
+  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_filter(MessageListFilter::NoFiltering) {
   setObjectName(QSL("MessagesProxyModel"));
 
   initializeFilters();
@@ -123,9 +121,9 @@ bool MessagesProxyModel::filterAcceptsMessage(int msg_row_index) const {
   if (m_filter == MessageListFilter::NoFiltering) {
     return true;
   }
-  else if (m_additionalArticleId > 0 &&
+  else if (m_sourceModel->additionalArticleId() > 0 &&
            m_sourceModel->data(msg_row_index, MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt() ==
-             m_additionalArticleId) {
+             m_sourceModel->additionalArticleId()) {
     return true;
   }
 
@@ -231,21 +229,12 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
   // But also, we want to see messages which have their dirty states cached, because
   // otherwise they would just disappear from the list for example when batch marked as read
   // which is distracting.
-  return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) &&
-         (m_sourceModel->cache()->containsData(source_row) || filterAcceptsMessage(source_row));
-}
-
-int MessagesProxyModel::additionalArticleId() const {
-  return m_additionalArticleId;
-}
-
-void MessagesProxyModel::setAdditionalArticleId(int additional_article_id) {
-  m_additionalArticleId = additional_article_id;
+  return QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent) && filterAcceptsMessage(source_row);
 }
 
 void MessagesProxyModel::setMessageListFilter(MessageListFilter filter) {
   m_filter = filter;
-  m_additionalArticleId = 0;
+  // m_sourceModel->setAdditionalArticleId(0);
 }
 
 QModelIndexList MessagesProxyModel::mapListFromSource(const QModelIndexList& indexes, bool deep) const {
@@ -368,6 +357,11 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start,
   }
 
   return result;
+}
+
+bool MessagesProxyModel::hasChildren(const QModelIndex& parent) const {
+  const QModelIndex source_idx = mapToSource(parent);
+  return sourceModel()->hasChildren(source_idx);
 }
 
 void MessagesProxyModel::sort(int column, Qt::SortOrder order) {

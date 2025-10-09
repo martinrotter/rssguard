@@ -5,22 +5,18 @@
 
 #include "core/message.h"
 #include "core/messagesmodelsqllayer.h"
-#include "definitions/definitions.h"
 #include "services/abstract/rootitem.h"
 
+#include <QAbstractTableModel>
 #include <QFont>
 #include <QIcon>
-#include <QSqlQueryModel>
 
 class MessagesView;
-class MessagesModelCache;
 
-class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
+class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     Q_OBJECT
 
   public:
-    // Enum which describes basic highlighting schemes
-    // for messages.
     enum class MessageHighlighter {
       NoHighlighting = 1,
       HighlightUnread = 2,
@@ -39,30 +35,43 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     explicit MessagesModel(QObject* parent = nullptr);
     virtual ~MessagesModel();
 
-    // Fetches ALL available data to the model.
+    // Fetches available data to the model.
     // NOTE: This activates the SQL query and populates the model with new data.
-    void repopulate(int additional_article_id = 0);
+    // Not all data are necessarily fetched, some might be lazy-fetched later.
+    void fetchInitialArticles();
+    void fetchMoreArticles();
 
     // Model implementation.
-    bool setData(const QModelIndex& idx, const QVariant& value, int role = Qt::EditRole);
-    QVariant data(const QModelIndex& idx, int role = Qt::DisplayRole) const;
-    QVariant data(int row, int column, int role = Qt::DisplayRole) const;
-    QVariant headerData(int section, Qt::Orientation orientation, int role) const;
-    Qt::ItemFlags flags(const QModelIndex& index) const;
+    virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
+    virtual int columnCount(const QModelIndex& parent = QModelIndex()) const;
+    virtual bool setData(const QModelIndex& idx, const QVariant& value, int role = Qt::ItemDataRole::EditRole);
+    virtual QVariant data(const QModelIndex& idx, int role = Qt::ItemDataRole::EditRole) const;
+    virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
+    virtual Qt::ItemFlags flags(const QModelIndex& index) const;
+
+    const Message& messageForRow(int row) const;
+    Message& messageForRow(int row);
+    int rowForMessage(int message_id) const;
+    QModelIndex indexForMessage(int message_id) const;
 
     QList<Message> messagesAt(const QList<int>& row_indices) const;
-    Message messageAt(int row_index) const;
+
+    QVariant data(int row, int column, int role = Qt::ItemDataRole::EditRole) const;
+
     int messageId(int row_index) const;
     RootItem::Importance messageImportance(int row_index) const;
 
     RootItem* loadedItem() const;
-    MessagesModelCache* cache() const;
+
+    // Loads messages of given feeds.
+    void loadMessages(RootItem* item, bool keep_additional_article_id = false);
 
     void setupIcons();
     void setupFonts();
     void updateDateFormat();
     void updateFeedIconsDisplay();
     void reloadWholeLayout();
+    void reloadChangedLayout(const QModelIndexList& indices);
 
     // SINGLE message manipulators.
     bool switchMessageImportance(int row_index);
@@ -75,11 +84,19 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     bool setBatchMessagesRead(const QModelIndexList& messages, RootItem::ReadStatus read);
     bool setBatchMessagesRestored(const QModelIndexList& messages);
 
+    // DATA only manipulators.
+    // NOTE: These only edit model data and do not make any DB writes.
+    void markArticleDataReadUnread(bool read);
+
     // Highlights messages.
     void highlightMessages(MessageHighlighter highlighter);
 
-    // Loads messages of given feeds.
-    void loadMessages(RootItem* item);
+    // NOTE: Additional article ID, which should NOT be filtered out
+    // when sorting/filtering with proxy model.
+    //
+    // This is usually selected article etc.
+    int additionalArticleId() const;
+    void setAdditionalArticleId(int additional_article_id);
 
     MessagesView* view() const;
     void setView(MessagesView* new_view);
@@ -89,19 +106,18 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     static QString descriptionOfUnreadIcon(MessagesModel::MessageUnreadIcon type);
 
   public slots:
-
-    // NOTE: These methods DO NOT actually change data in the DB, just in the model.
-    // These are particularly used by msg browser.
     bool setMessageImportantById(int id, RootItem::Importance important);
     bool setMessageReadById(int id, RootItem::ReadStatus read);
     bool setMessageLabelsById(int id, const QStringList& label_ids);
 
   private:
+    void fillComputedMessageData(Message* msg);
     void setupHeaderData();
 
   private:
+    QList<Message> m_messages;
+    bool m_canFetchMoreArticles;
     MessagesView* m_view;
-    MessagesModelCache* m_cache;
     MessageHighlighter m_messageHighlighter;
     QString m_customDateFormat;
     QString m_customTimeFormat;
@@ -122,6 +138,7 @@ class MessagesModel : public QSqlQueryModel, public MessagesModelSqlLayer {
     QList<QIcon> m_scoreIcons;
     MessageUnreadIcon m_unreadIconType;
     bool m_multilineListItems;
+    int m_additionalArticleId;
 };
 
 Q_DECLARE_METATYPE(MessagesModel::MessageHighlighter)

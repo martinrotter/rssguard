@@ -30,12 +30,21 @@ pacman -Syu --noconfirm \
     pipewire-audio   \
     pulseaudio       \
     pulseaudio-alsa  \
+    qt5-base         \
+    qt5-declarative  \
+    qt5-imageformats \
+    qt5-multimedia   \
+    qt5-tools        \
+    qt5-wayland      \
+    qt5-svg          \
     qt6-5compat      \
     qt6-base         \
     qt6-declarative  \
+    qt6-imageformats \
     qt6-multimedia   \
     qt6-tools        \
     qt6-wayland      \
+    qt6-svg          \
     qt6ct            \
     sqlite           \
     wget             \

@@ -3,6 +3,7 @@
 #ifndef MESSAGESVIEW_H
 #define MESSAGESVIEW_H
 
+#include "core/feedsmodel.h"
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "gui/reusable/basetreeview.h"
@@ -32,6 +33,8 @@ class MessagesView : public BaseTreeView {
     explicit MessagesView(QWidget* parent = nullptr);
     virtual ~MessagesView();
 
+    virtual void keyboardSearch(const QString& search);
+
     MessagesProxyModel* model() const;
     MessagesModel* sourceModel() const;
 
@@ -44,13 +47,11 @@ class MessagesView : public BaseTreeView {
   public slots:
     void copyUrlOfSelectedArticles() const;
 
-    void keyboardSearch(const QString& search);
-
     // Called after data got changed externally
     // and it needs to be reloaded to the view.
-    void reloadSelections();
+    void reactOnExternalDataChange(RootItem* item, FeedsModel::ExternalDataChange cause);
 
-    // Loads un-deleted messages from selected feeds.
+    // Loads messages from selected item.
     void loadItem(RootItem* item);
 
 // Message manipulators.
@@ -85,18 +86,21 @@ class MessagesView : public BaseTreeView {
     void highlightMessages(MessagesModel::MessageHighlighter highlighter);
     void changeFilter(MessagesProxyModel::MessageListFilter filter);
 
+  protected slots:
+    virtual void verticalScrollbarValueChanged(int value);
+
+  protected:
+    virtual void focusInEvent(QFocusEvent* event);
+    virtual void contextMenuEvent(QContextMenuEvent* event);
+    virtual void mousePressEvent(QMouseEvent* event);
+    virtual void mouseMoveEvent(QMouseEvent* event);
+    virtual void keyPressEvent(QKeyEvent* event);
+    virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
+
   private slots:
     void openSelectedMessagesWithExternalTool();
-
-    // Marks given indexes as selected.
-    void reselectIndexes(const QModelIndexList& indexes);
-
-    // Changes resize mode for all columns.
     void adjustColumns();
-
     void markSelectedMessagesReadDelayed();
-
-    // Saves current sort state.
     void onSortIndicatorChanged(int column, Qt::SortOrder order);
 
   signals:
@@ -109,34 +113,19 @@ class MessagesView : public BaseTreeView {
     // Notify others about message selections.
     void currentMessageChanged(Message message, RootItem* root);
     void currentMessageRemoved(RootItem* root);
-    void willReselectSameMessage();
+    void reachedEndOfList();
 
   private:
-    void sort(int column,
-              Qt::SortOrder order,
-              bool repopulate_data,
-              bool change_header,
-              bool emit_changed_from_header,
-              bool ignore_multicolumn_sorting,
-              int additional_article_id = 0);
-
-    // Creates needed connections.
+    void reselectIndexes(const QModelIndexList& indexes);
+    void adjustSort(int column, Qt::SortOrder order, bool emit_changed_from_header, bool ignore_multicolumn_sorting);
+    void reselectArticle(bool ensure_article_reviewed, bool do_not_modify_selection, int article_id);
     void createConnections();
-
-    // Initializes context menu.
     void initializeContextMenu();
-
-    // Sets up appearance.
     void setupAppearance();
+    void requestArticleDisplay(const Message& msg);
+    void requestArticleHiding();
 
-    // Event reimplementations.
-    void focusInEvent(QFocusEvent* event);
-    void contextMenuEvent(QContextMenuEvent* event);
-    void mousePressEvent(QMouseEvent* event);
-    void mouseMoveEvent(QMouseEvent* event);
-    void keyPressEvent(QKeyEvent* event);
-    void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
-
+  private:
     QMenu* m_contextMenu;
     MessagesProxyModel* m_proxyModel;
     MessagesModel* m_sourceModel;

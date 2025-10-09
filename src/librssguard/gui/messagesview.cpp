@@ -3,6 +3,7 @@
 #include "gui/messagesview.h"
 
 #include "3rd-party/boolinq/boolinq.h"
+#include "core/feedsmodel.h"
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "definitions/definitions.h"
@@ -170,27 +171,109 @@ void MessagesView::copyUrlOfSelectedArticles() const {
   }
 }
 
-void MessagesView::sort(int column,
-                        Qt::SortOrder order,
-                        bool repopulate_data,
-                        bool change_header,
-                        bool emit_changed_from_header,
-                        bool ignore_multicolumn_sorting,
-                        int additional_article_id) {
-  if (change_header && !emit_changed_from_header) {
+void MessagesView::adjustSort(int column,
+                              Qt::SortOrder order,
+                              bool emit_changed_from_header,
+                              bool ignore_multicolumn_sorting) {
+  if (!emit_changed_from_header) {
     header()->blockSignals(true);
   }
 
   m_sourceModel->addSortState(column, order, ignore_multicolumn_sorting);
-  m_proxyModel->setAdditionalArticleId(additional_article_id);
 
-  if (repopulate_data) {
-    m_sourceModel->repopulate(additional_article_id);
+  header()->setSortIndicator(column, order);
+  header()->blockSignals(false);
+}
+
+void MessagesView::reselectArticle(bool ensure_article_reviewed, bool do_not_modify_selection, int article_id) {
+  if (article_id <= 0) {
+    if (ensure_article_reviewed) {
+      requestArticleHiding();
+    }
+
+    return;
   }
 
-  if (change_header) {
-    header()->setSortIndicator(column, order);
-    header()->blockSignals(false);
+  QModelIndex idx = m_sourceModel->indexForMessage(article_id);
+  QModelIndex idx_to_select;
+
+  if (!idx.isValid()) {
+    // Nothing to select because the source article is no longer available in the
+    // source model.
+  }
+  else {
+    idx_to_select = m_proxyModel->mapFromSource(idx);
+  }
+
+  if (idx_to_select.isValid()) {
+    setCurrentIndex(idx_to_select);
+
+    if (!do_not_modify_selection) {
+      reselectIndexes({idx_to_select});
+    }
+
+    if (ensure_article_reviewed) {
+      scrollTo(idx_to_select,
+               !m_processingAnyMouseButton &&
+                   qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+                 ? QAbstractItemView::ScrollHint::PositionAtCenter
+                 : QAbstractItemView::ScrollHint::EnsureVisible);
+
+      requestArticleDisplay(m_sourceModel->messageForRow(idx.row()));
+    }
+  }
+  else {
+    // The article is no longer available in the proxy or source models.
+    requestArticleHiding();
+  }
+}
+
+void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
+  adjustSort(column, order, false, false);
+  m_sourceModel->fetchInitialArticles();
+  reselectArticle(true, false, m_sourceModel->additionalArticleId());
+}
+
+void MessagesView::reactOnExternalDataChange(RootItem* item, FeedsModel::ExternalDataChange cause) {
+  if (m_sourceModel->loadedItem() == nullptr) {
+    qWarningNN << LOGSEC_MESSAGEMODEL << "Not reacting on external article data change because nothing is selected.";
+    return;
+  }
+
+  if (item != nullptr && item->account() != m_sourceModel->loadedItem()->account()) {
+    qWarningNN << LOGSEC_MESSAGEMODEL
+               << "Not reacting on external article data change because different account is selected.";
+    return;
+  }
+
+  switch (cause) {
+    case FeedsModel::ExternalDataChange::MarkedRead:
+    case FeedsModel::ExternalDataChange::MarkedUnread: {
+      // We refresh model data (no DB writes) to make sure the user
+      // sees latest article versions.
+      //
+      // Only changed portions of the model are changed, all selections are retained.
+      m_sourceModel->markArticleDataReadUnread(cause == FeedsModel::ExternalDataChange::MarkedRead);
+      break;
+    }
+
+    case FeedsModel::ExternalDataChange::AccountSyncedIn:
+    case FeedsModel::ExternalDataChange::ListFilterChanged:
+    case FeedsModel::ExternalDataChange::DatabaseCleaned:
+    case FeedsModel::ExternalDataChange::RecycleBinRestored:
+    case FeedsModel::ExternalDataChange::FeedFetchFinished:
+    default: {
+      bool articles_could_be_removed = cause == FeedsModel::ExternalDataChange::AccountSyncedIn ||
+                                       cause == FeedsModel::ExternalDataChange::DatabaseCleaned ||
+                                       cause == FeedsModel::ExternalDataChange::RecycleBinRestored;
+
+      // With these external changes, some articles might actually be
+      // removed. We do data re-fetch here, selection will be lost
+      // but we try to re-select the same article as before.
+      m_sourceModel->loadMessages(m_sourceModel->loadedItem(), !articles_could_be_removed);
+      reselectArticle(true, false, m_sourceModel->additionalArticleId());
+      break;
+    }
   }
 }
 
@@ -208,73 +291,6 @@ void MessagesView::keyboardSearch(const QString& search) {
   setSelectionMode(QAbstractItemView::SelectionMode::SingleSelection);
   QTreeView::keyboardSearch(search);
   setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
-}
-
-void MessagesView::reloadSelections() {
-  bool force_load_currently_selected_article = true;
-
-  const QDateTime dt1 = QDateTime::currentDateTime();
-  QModelIndex current_index = selectionModel()->currentIndex();
-  const bool is_current_selected =
-    selectionModel()->selectedRows().contains(m_proxyModel->index(current_index.row(), 0, current_index.parent()));
-  const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
-  const int selected_message_id =
-    m_sourceModel->data(mapped_current_index.row(), MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
-  const int col = header()->sortIndicatorSection();
-  const Qt::SortOrder ord = header()->sortIndicatorOrder();
-  bool do_not_mark_read_on_select = false;
-
-  // Reload the model now.
-  sort(col, ord, true, false, false, true, force_load_currently_selected_article ? selected_message_id : 0);
-
-  // Now, we must find the same previously focused message.
-  if (selected_message_id > 0) {
-    if (m_proxyModel->rowCount() == 0 || !is_current_selected) {
-      current_index = QModelIndex();
-    }
-    else {
-      for (int i = 0; i < m_proxyModel->rowCount(); i++) {
-        QModelIndex msg_idx = m_proxyModel->index(i, MSG_DB_TITLE_INDEX);
-        QModelIndex msg_source_idx = m_proxyModel->mapToSource(msg_idx);
-        int msg_id = m_sourceModel->data(msg_source_idx.row(), MSG_DB_ID_INDEX, Qt::ItemDataRole::EditRole).toInt();
-
-        if (msg_id == selected_message_id) {
-          current_index = msg_idx;
-
-          if (!m_sourceModel->data(msg_source_idx.row(), MSG_DB_READ_INDEX, Qt::ItemDataRole::EditRole)
-                 .toBool() /* && selected_message.m_isRead */) {
-            do_not_mark_read_on_select = true;
-          }
-
-          break;
-        }
-
-        if (i == m_proxyModel->rowCount() - 1) {
-          current_index = QModelIndex();
-        }
-      }
-    }
-  }
-
-  if (current_index.isValid()) {
-    scrollTo(current_index);
-
-    m_processingRightMouseButton = do_not_mark_read_on_select;
-
-    setCurrentIndex(current_index);
-    reselectIndexes({current_index});
-
-    m_processingRightMouseButton = false;
-  }
-  else {
-    // Messages were probably removed from the model, nothing can
-    // be selected and no message can be displayed.
-    emit currentMessageRemoved(m_sourceModel->loadedItem());
-  }
-
-  const QDateTime dt2 = QDateTime::currentDateTime();
-
-  qDebugNN << LOGSEC_GUI << "Reloading of msg selections took " << dt1.msecsTo(dt2) << " miliseconds.";
 }
 
 void MessagesView::setupAppearance() {
@@ -402,20 +418,18 @@ void MessagesView::initializeContextMenu() {
   }
 
   // Labels.
-  auto labels = m_sourceModel->loadedItem() != nullptr
-                  ? m_sourceModel->loadedItem()->account()->labelsNode()->labels()
-                  : QList<Label*>();
+  auto labels = m_sourceModel->loadedItem() != nullptr ? m_sourceModel->loadedItem()->account()->labelsNode()->labels()
+                                                       : QList<Label*>();
   LabelsMenu* menu_labels = new LabelsMenu(selected_messages, labels, m_contextMenu);
 
   connect(menu_labels, &LabelsMenu::labelsChanged, this, [this]() {
     QModelIndex current_index = selectionModel()->currentIndex();
 
     if (current_index.isValid()) {
-      emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()),
-                                 m_sourceModel->loadedItem());
+      requestArticleDisplay(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()));
     }
     else {
-      emit currentMessageRemoved(m_sourceModel->loadedItem());
+      requestArticleHiding();
     }
   });
 
@@ -437,8 +451,7 @@ void MessagesView::initializeContextMenu() {
       m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessages);
     }
 
-    auto extra_context_menu =
-      m_sourceModel->loadedItem()->account()->contextMenuMessagesList(selected_messages);
+    auto extra_context_menu = m_sourceModel->loadedItem()->account()->contextMenuMessagesList(selected_messages);
 
     if (!extra_context_menu.isEmpty()) {
       m_contextMenu->addSeparator();
@@ -467,12 +480,12 @@ void MessagesView::mousePressEvent(QMouseEvent* event) {
 
         if (mapped_index.column() == MSG_DB_IMPORTANT_INDEX) {
           if (m_sourceModel->switchMessageImportance(mapped_index.row())) {
-            emit currentMessageChanged(m_sourceModel->messageAt(mapped_index.row()), m_sourceModel->loadedItem());
+            requestArticleDisplay(m_sourceModel->messageForRow(mapped_index.row()));
           }
         }
         else if (mapped_index.column() == MSG_DB_READ_INDEX) {
           if (m_sourceModel->switchMessageReadUnread(mapped_index.row())) {
-            emit currentMessageChanged(m_sourceModel->messageAt(mapped_index.row()), m_sourceModel->loadedItem());
+            requestArticleDisplay(m_sourceModel->messageForRow(mapped_index.row()));
           }
         }
       }
@@ -494,11 +507,11 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
   const QModelIndex current_index = currentIndex();
   const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
 
-  qDebugNN << LOGSEC_GUI << "Current row changed - proxy '" << current_index << "', source '" << mapped_current_index
-           << "'.";
+  qDebugNN << LOGSEC_GUI << "Current row changed - proxy" << QUOTE_W_SPACE(current_index) << "and source"
+           << QUOTE_W_SPACE_DOT(mapped_current_index);
 
   if (mapped_current_index.isValid() && selected_rows.size() == 1) {
-    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row());
+    Message message = m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row());
 
     // Set this message as read only if current item
     // wasn't changed by "mark selected messages unread" action.
@@ -521,22 +534,32 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
       }
     }
 
-    emit currentMessageChanged(message, m_sourceModel->loadedItem());
+    requestArticleDisplay(message);
   }
   else {
-    emit currentMessageRemoved(m_sourceModel->loadedItem());
+    requestArticleHiding();
   }
 
   if (selected_rows.isEmpty()) {
     setCurrentIndex({});
   }
 
-  if (!m_processingAnyMouseButton &&
+  if (!m_processingAnyMouseButton && currentIndex().isValid() &&
       qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()) {
     scrollTo(currentIndex(), QAbstractItemView::ScrollHint::PositionAtCenter);
   }
 
   QTreeView::selectionChanged(selected, deselected);
+}
+
+void MessagesView::requestArticleDisplay(const Message& msg) {
+  m_sourceModel->setAdditionalArticleId(msg.m_id);
+  emit currentMessageChanged(msg, m_sourceModel->loadedItem());
+}
+
+void MessagesView::requestArticleHiding() {
+  m_sourceModel->setAdditionalArticleId(0);
+  emit currentMessageRemoved(m_sourceModel->loadedItem());
 }
 
 void MessagesView::markSelectedMessagesReadDelayed() {
@@ -548,11 +571,12 @@ void MessagesView::markSelectedMessagesReadDelayed() {
   if (selected_rows.size() == 1 && current_index.isValid() && !m_processingRightMouseButton &&
       m_articleMarkingPolicy == ArticleMarkingPolicy::MarkWithDelay) {
     const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
-    Message message = m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row());
+    Message message = m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row());
 
     m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
     message.m_isRead = true;
-    emit currentMessageChanged(message, m_sourceModel->loadedItem());
+
+    requestArticleDisplay(message);
   }
 }
 
@@ -563,7 +587,9 @@ void MessagesView::loadItem(RootItem* item) {
   const Qt::SortOrder ord = header()->sortIndicatorOrder();
 
   scrollToTop();
-  sort(col, ord, false, true, false, true);
+  clearSelection();
+  adjustSort(col, ord, false, true);
+
   m_sourceModel->loadMessages(item);
 
   bool switch_entire_rtl_list =
@@ -591,21 +617,24 @@ void MessagesView::loadItem(RootItem* item) {
     setLayoutDirection(Qt::LayoutDirection::LayoutDirectionAuto);
   }
 
-  // Messages are loaded, make sure that previously
-  // active message is not shown in browser.
-  emit currentMessageRemoved(m_sourceModel->loadedItem());
+  requestArticleHiding();
 }
 
 void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
   m_proxyModel->setMessageListFilter(filter);
-  reloadSelections();
+
+  // NOTE: Proxy model is normally not dynamically filtered, but when user changes filter
+  // explicitly, then yes, we need to do something.
+  m_proxyModel->invalidate();
+
+  reactOnExternalDataChange(m_sourceModel->loadedItem(), FeedsModel::ExternalDataChange::ListFilterChanged);
 }
 
 void MessagesView::openSelectedSourceMessagesExternally() {
   auto rws = selectionModel()->selectedRows();
 
   for (const QModelIndex& index : std::as_const(rws)) {
-    QString link = m_sourceModel->messageAt(m_proxyModel->mapToSource(index).row())
+    QString link = m_sourceModel->messageForRow(m_proxyModel->mapToSource(index).row())
                      .m_url.replace(QRegularExpression(QSL("[\\t\\n]")), QString());
 
     qApp->web()->openUrlInExternalBrowser(link);
@@ -625,7 +654,7 @@ void MessagesView::playSelectedArticleInMediaPlayer() {
   auto rws = selectionModel()->selectedRows();
 
   if (!rws.isEmpty()) {
-    auto msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(rws.first()).row());
+    auto msg = m_sourceModel->messageForRow(m_proxyModel->mapToSource(rws.first()).row());
 
     if (msg.m_url.isEmpty()) {
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -645,7 +674,7 @@ void MessagesView::openSelectedMessagesInternally() {
   auto rws = selectionModel()->selectedRows();
 
   if (!rws.isEmpty()) {
-    auto msg = m_sourceModel->messageAt(m_proxyModel->mapToSource(rws.first()).row());
+    auto msg = m_sourceModel->messageForRow(m_proxyModel->mapToSource(rws.first()).row());
 
     emit openSingleMessageInNewTab(m_sourceModel->loadedItem(), msg);
   }
@@ -654,7 +683,7 @@ void MessagesView::openSelectedMessagesInternally() {
 void MessagesView::sendSelectedMessageViaEmail() {
   if (selectionModel()->selectedRows().size() == 1) {
     const Message message =
-      m_sourceModel->messageAt(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
+      m_sourceModel->messageForRow(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
 
     if (!qApp->web()->sendMessageViaEmail(message)) {
       MsgBox::show(this,
@@ -686,11 +715,10 @@ void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   QModelIndex current_index = selectionModel()->currentIndex();
 
   if (current_index.isValid() && selected_indexes.size() == 1) {
-    emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()),
-                               m_sourceModel->loadedItem());
+    requestArticleDisplay(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()));
   }
   else {
-    emit currentMessageRemoved(m_sourceModel->loadedItem());
+    requestArticleHiding();
   }
 }
 
@@ -712,7 +740,7 @@ void MessagesView::deleteSelectedMessages() {
     setCurrentIndex(current_index);
   }
   else {
-    emit currentMessageRemoved(m_sourceModel->loadedItem());
+    requestArticleHiding();
   }
 }
 
@@ -730,11 +758,10 @@ void MessagesView::restoreSelectedMessages() {
   current_index = m_proxyModel->index(current_index.row(), current_index.column());
 
   if (current_index.isValid()) {
-    emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()),
-                               m_sourceModel->loadedItem());
+    requestArticleDisplay(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()));
   }
   else {
-    emit currentMessageRemoved(m_sourceModel->loadedItem());
+    requestArticleHiding();
   }
 }
 
@@ -751,13 +778,10 @@ void MessagesView::switchSelectedMessagesImportance() {
   QModelIndex current_index = selectionModel()->currentIndex();
 
   if (current_index.isValid() && selected_indexes.size() == 1) {
-    emit currentMessageChanged(m_sourceModel->messageAt(m_proxyModel->mapToSource(current_index).row()),
-                               m_sourceModel->loadedItem());
+    requestArticleDisplay(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()));
   }
   else {
-    // Messages were probably removed from the model, nothing can
-    // be selected and no message can be displayed.
-    emit currentMessageRemoved(m_sourceModel->loadedItem());
+    requestArticleHiding();
   }
 }
 
@@ -839,7 +863,7 @@ void MessagesView::searchMessages(SearchLineEdit::SearchMode mode,
                                                                                               : -1);
 
   if (selectionModel()->selectedRows().isEmpty()) {
-    emit currentMessageRemoved(m_sourceModel->loadedItem());
+    requestArticleHiding();
   }
   else {
     // Scroll to selected message, it could become scrolled out due to filter change.
@@ -911,9 +935,10 @@ void MessagesView::adjustColumns() {
   }
 }
 
-void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
-  // Repopulate the shit.
-  sort(column, order, true, false, false, false);
+void MessagesView::verticalScrollbarValueChanged(int value) {
+  if (value == verticalScrollBar()->maximum()) {
+    emit reachedEndOfList();
+  }
 
-  emit currentMessageRemoved(m_sourceModel->loadedItem());
+  QTreeView::verticalScrollbarValueChanged(value);
 }

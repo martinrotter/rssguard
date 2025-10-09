@@ -136,9 +136,15 @@ void FormMain::showDbCleanupAssistant() {
 
     // Reload needed stuff.
     qApp->feedUpdateLock()->unlock();
-    tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
     qApp->feedReader()->feedsModel()->informAboutDatabaseCleanup();
     qApp->feedReader()->feedsModel()->reloadCountsOfWholeModel();
+
+    // TODO: model
+    // tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
+    tabWidget()
+      ->feedMessageViewer()
+      ->messagesView()
+      ->reactOnExternalDataChange(nullptr, FeedsModel::ExternalDataChange::DatabaseCleaned);
   }
   else {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -431,7 +437,10 @@ void FormMain::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   Q_UNUSED(results)
 
   statusBar()->clearProgressFeeds();
-  tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
+  tabWidget()
+    ->feedMessageViewer()
+    ->messagesView()
+    ->reactOnExternalDataChange(nullptr, FeedsModel::ExternalDataChange::FeedFetchFinished);
 }
 
 void FormMain::onFeedUpdatesStarted() {
@@ -1023,7 +1032,10 @@ void FormMain::createConnections() {
           &FeedsModel::emptyAllBins);
   connect(m_ui->m_actionMessageFilters, &QAction::triggered, this, [this]() {
     qApp->feedReader()->showMessageFiltersManager();
-    tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
+    tabWidget()
+      ->feedMessageViewer()
+      ->messagesView()
+      ->reactOnExternalDataChange(nullptr, FeedsModel::ExternalDataChange::DatabaseCleaned);
   });
   connect(m_ui->m_actionFeedMoveUp,
           &QAction::triggered,

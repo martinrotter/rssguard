@@ -99,6 +99,7 @@ class RSSGUARD_DLLSPEC Message {
     bool m_isRead;
     bool m_isImportant;
     bool m_isDeleted;
+    bool m_isPdeleted;
     double m_score;
     RtlBehavior m_rtlBehavior;
     QList<QSharedPointer<MessageEnclosure>> m_enclosures;

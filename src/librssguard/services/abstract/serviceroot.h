@@ -3,6 +3,7 @@
 #ifndef SERVICEROOT_H
 #define SERVICEROOT_H
 
+#include "core/feedsmodel.h"
 #include "core/message.h"
 #include "definitions/typedefs.h"
 #include "services/abstract/rootitem.h"
@@ -13,7 +14,6 @@
 
 class QAction;
 class QMutex;
-class FeedsModel;
 class RecycleBin;
 class ImportantNode;
 class UnreadNode;
@@ -221,7 +221,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
 
     // Obvious methods to wrap signals.
     void itemChanged(const QList<RootItem*>& items);
-    void requestReloadMessageList(bool mark_selected_messages_read);
+    void informOthersAboutDataChange(RootItem* item, FeedsModel::ExternalDataChange change);
     void requestItemExpand(const QList<RootItem*>& items, bool expand);
     void requestItemExpandStateSave(RootItem* subtree_root);
     void requestItemReassignment(RootItem* item, RootItem* new_parent, bool blocking = false);
@@ -296,7 +296,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
   signals:
     void proxyChanged(QNetworkProxy proxy);
     void dataChanged(QList<RootItem*> items);
-    void reloadMessageListRequested(bool mark_selected_messages_read);
+    void dataChangeNotificationTriggered(RootItem* item, FeedsModel::ExternalDataChange change);
     void itemExpandRequested(QList<RootItem*> items, bool expand);
     void itemExpandStateSaveRequested(RootItem* subtree_root);
 

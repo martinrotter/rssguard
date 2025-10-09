@@ -17,6 +17,16 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     Q_OBJECT
 
   public:
+    enum class ExternalDataChange {
+      MarkedRead,
+      MarkedUnread,
+      DatabaseCleaned,
+      RecycleBinRestored,
+      AccountSyncedIn,
+      FeedFetchFinished,
+      ListFilterChanged
+    };
+
     explicit FeedsModel(QObject* parent = nullptr);
     virtual ~FeedsModel();
 
@@ -111,7 +121,7 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     // Feeds operations.
     bool markItemRead(RootItem* item, RootItem::ReadStatus read);
     bool markItemCleared(RootItem* item, bool clean_read_only);
-    bool purgeArticles(const QList<Feed *> &feeds);
+    bool purgeArticles(const QList<Feed*>& feeds);
 
     // Signals that properties (probably counts)
     // of ALL items have changed.
@@ -142,8 +152,11 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     // NOTE: Normally expand states are saved when application quits.
     void itemExpandStateSaveRequested(RootItem* subtree_root);
 
-    // Emitted when there is a need of reloading of displayed messages.
-    void reloadMessageListRequested(bool mark_selected_messages_read);
+    // Emitted to notify article model about external data change.
+    // Article model will reload article, refresh selected article etc.
+    //
+    // "item" points to the item which caused the change or is nullptr if we do not know.
+    void dataChangeNotificationTriggered(RootItem* item, ExternalDataChange change);
 
   private:
     bool m_updateDuringFetching;

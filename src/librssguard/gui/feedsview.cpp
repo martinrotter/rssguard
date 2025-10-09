@@ -26,6 +26,7 @@
 #include <QMenu>
 #include <QPainter>
 #include <QPointer>
+#include <QScrollBar>
 #include <QTimer>
 
 FeedsView::FeedsView(QWidget* parent)

@@ -318,9 +318,9 @@ void FeedMessageViewer::createConnections() {
   // State of many messages is changed, then we need
   // to reload selections.
   connect(m_feedsView->sourceModel(),
-          &FeedsModel::reloadMessageListRequested,
+          &FeedsModel::dataChangeNotificationTriggered,
           m_messagesView,
-          &MessagesView::reloadSelections);
+          &MessagesView::reactOnExternalDataChange);
 }
 
 void FeedMessageViewer::updateArticleViewerSettings() {

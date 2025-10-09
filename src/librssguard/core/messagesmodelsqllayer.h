@@ -3,6 +3,8 @@
 #ifndef MESSAGESMODELSQLLAYER_H
 #define MESSAGESMODELSQLLAYER_H
 
+#include "core/message.h"
+
 #include <QList>
 #include <QMap>
 #include <QPair>
@@ -26,16 +28,19 @@ class MessagesModelSqlLayer {
     SortColumnsAndOrders sortColumnAndOrders() const;
 
   protected:
-    QString orderByClause() const;
-    QString limitOffset(int limit, int offset) const;
-    QString selectStatement(int additional_article_id = -1) const;
-    QString formatFields() const;
-
-    bool isColumnNumeric(int column_id) const;
+    QList<Message> fetchMessages(int limit, int offset, int additional_article_id = -1) const;
 
     QSqlDatabase m_db;
 
   private:
+    QString selectStatement(int limit, int offset, int additional_article_id = -1) const;
+
+    QString orderByClause() const;
+    QString limitOffset(int limit, int offset) const;
+    QString formatFields() const;
+
+    bool isColumnNumeric(int column_id) const;
+
     QString m_filter;
 
     // NOTE: These two lists contain data for multicolumn sorting.
