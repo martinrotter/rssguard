@@ -231,7 +231,7 @@ void MessagesView::reselectArticle(bool ensure_article_reviewed, bool do_not_mod
 void MessagesView::onSortIndicatorChanged(int column, Qt::SortOrder order) {
   adjustSort(column, order, false, false);
   m_sourceModel->fetchInitialArticles();
-  reselectArticle(false, false, m_sourceModel->additionalArticleId());
+  reselectArticle(true, false, m_sourceModel->additionalArticleId());
 }
 
 void MessagesView::reactOnExternalDataChange(RootItem* item, FeedsModel::ExternalDataChange cause) {
@@ -252,9 +252,8 @@ void MessagesView::reactOnExternalDataChange(RootItem* item, FeedsModel::Externa
       // We refresh model data (no DB writes) to make sure the user
       // sees latest article versions.
       //
-      // If the article is not filtered out by filtering, it will be reselected.
+      // Only changed portions of the model are changed, all selections are retained.
       m_sourceModel->markArticleDataReadUnread(cause == FeedsModel::ExternalDataChange::MarkedRead);
-      reselectArticle(true, true, m_sourceModel->additionalArticleId());
       break;
     }
 

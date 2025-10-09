@@ -2,8 +2,6 @@
 
 #include "core/messagesmodel.h"
 
-#include "3rd-party/boolinq/boolinq.h"
-#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
@@ -1141,7 +1139,7 @@ void MessagesModel::markArticleDataReadUnread(bool read) {
     msg.m_isRead = read;
   }
 
-  reloadWholeLayout();
+  reloadChangedLayout({index(0, 0), index(rowCount() - 1, columnCount() - 1)});
 }
 
 QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int role) const {
