@@ -144,7 +144,7 @@ class FilterMessage : public QObject {
     void setScore(double score);
 
   private:
-    QString feedCustomId() const;
+    int feedId() const;
 
     Message* m_message;
     FilteringSystem* m_system;

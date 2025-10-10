@@ -315,7 +315,7 @@ void MessagesModel::loadMessages(RootItem* item, bool keep_additional_article_id
   }
 
   if (item != nullptr) {
-    m_hashedFeeds = item->account()->getHashedSubTreeFeeds();
+    m_hashedFeeds = item->account()->getPrimaryIdHashedSubTreeFeeds();
   }
   else {
     m_hashedFeeds.clear();
@@ -794,9 +794,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         if (m_unreadIconType == MessageUnreadIcon::FeedIcon && m_selectedItem != nullptr) {
           QModelIndex idx_feedid = index(idx.row(), MSG_DB_FEED_CUSTOM_ID_INDEX);
           QVariant dta = data(idx_feedid, Qt::ItemDataRole::EditRole);
-          QString feed_custom_id = dta.toString();
+          int feed_id = dta.toInt();
 
-          auto* fd = m_hashedFeeds.value(feed_custom_id);
+          auto* fd = m_hashedFeeds.value(feed_id);
 
           if (fd == nullptr) {
             return qApp->icons()->fromTheme(QSL("application-rss+xml"));

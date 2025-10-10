@@ -122,7 +122,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QList<Message> getUndeletedImportantMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db,
-                                                      const QString& feed_custom_id,
+                                                      int feed_id,
                                                       int account_id,
                                                       bool* ok = nullptr);
     static QList<Message> getUndeletedMessagesForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);

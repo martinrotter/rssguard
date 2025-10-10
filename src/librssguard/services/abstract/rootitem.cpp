@@ -361,6 +361,26 @@ QHash<QString, Feed*> RootItem::getHashedSubTreeFeeds() const {
   return children;
 }
 
+QHash<int, Feed*> RootItem::getPrimaryIdHashedSubTreeFeeds() const {
+  QHash<int, Feed*> children;
+  QList<RootItem*> traversable_items;
+
+  traversable_items.append(const_cast<RootItem* const>(this));
+
+  // Iterate all nested items.
+  while (!traversable_items.isEmpty()) {
+    RootItem* active_item = traversable_items.takeFirst();
+
+    if (active_item->kind() == RootItem::Kind::Feed && !children.contains(active_item->id())) {
+      children.insert(active_item->id(), active_item->toFeed());
+    }
+
+    traversable_items.append(active_item->childItems());
+  }
+
+  return children;
+}
+
 QList<Feed*> RootItem::getSubTreeFeeds(bool recursive) const {
   QList<Feed*> children;
   QList<RootItem*> traversable_items;

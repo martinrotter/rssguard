@@ -39,8 +39,8 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_orderByNames[MSG_DB_LABELS_IDS] = QSL("Messages.labels");
 
   m_numericColumns << MSG_DB_ID_INDEX << MSG_DB_READ_INDEX << MSG_DB_DELETED_INDEX << MSG_DB_PDELETED_INDEX
-                   << MSG_DB_IMPORTANT_INDEX << MSG_DB_ACCOUNT_ID_INDEX << MSG_DB_DCREATED_INDEX << MSG_DB_SCORE_INDEX
-                   << MSG_DB_FEED_IS_RTL_INDEX;
+                   << MSG_DB_IMPORTANT_INDEX << MSG_DB_FEED_CUSTOM_ID_INDEX << MSG_DB_ACCOUNT_ID_INDEX
+                   << MSG_DB_DCREATED_INDEX << MSG_DB_SCORE_INDEX << MSG_DB_FEED_IS_RTL_INDEX;
 }
 
 void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool ignore_multicolumn_sorting) {

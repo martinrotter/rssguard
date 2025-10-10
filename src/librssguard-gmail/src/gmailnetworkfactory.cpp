@@ -222,7 +222,7 @@ void GmailNetworkFactory::setUsername(const QString& username) {
   m_username = username;
 }
 
-QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
+QList<Message> GmailNetworkFactory::messages(Feed* feed,
                                              const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              Feed::Status& error,
                                              const QNetworkProxy& custom_proxy) {
@@ -233,6 +233,7 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
     return {};
   }
 
+  const QString stream_id = feed->customId();
   const bool is_spam_feed =
     QString::compare(stream_id, QSL(GMAIL_SYSTEM_LABEL_SPAM), Qt::CaseSensitivity::CaseInsensitive) == 0;
 
@@ -298,7 +299,8 @@ QList<Message> GmailNetworkFactory::messages(const QString& stream_id,
 
   qDebugNN << LOGSEC_GMAIL << "Will download" << NONQUOTE_W_SPACE(to_download.size()) << "e-mails.";
 
-  auto messages = obtainAndDecodeFullMessages(QList<QString>(to_download.values()), stream_id, custom_proxy);
+  auto messages =
+    obtainAndDecodeFullMessages(QList<QString>(to_download.values()), feed->id(), stream_id, custom_proxy);
 
   error = Feed::Status::Normal;
   return messages;
@@ -634,7 +636,8 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
     }
     else if (!filename.isEmpty()) {
       // We have attachment.
-      msg.m_enclosures.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(filename + QSL(GMAIL_ATTACHMENT_SEP) +
+      msg.m_enclosures
+        .append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(filename + QSL(GMAIL_ATTACHMENT_SEP) +
                                                                         body[QSL("attachmentId")].toString(),
                                                                       filename +
                                                                         QSL(" (%1 KB)")
@@ -697,6 +700,7 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
 }
 
 QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringList& message_ids,
+                                                                int feed_db_id,
                                                                 const QString& feed_id,
                                                                 const QNetworkProxy& custom_proxy) {
   QHash<QString, Message> msgs;
@@ -717,7 +721,7 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
       Message msg;
       QHttpPart part;
 
-      msg.m_feedId = feed_id;
+      msg.m_feedId = feed_db_id;
       msg.m_customId = msg_id;
 
       part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);

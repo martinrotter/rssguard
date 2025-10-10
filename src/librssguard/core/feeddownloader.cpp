@@ -275,6 +275,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     // Now, sanitize messages (tweak encoding etc.).
     for (auto& msg : msgs) {
       msg.m_accountId = acc_id;
+      msg.m_feedId = feed->id();
       msg.sanitize(feed, fix_future_datetimes);
     }
 

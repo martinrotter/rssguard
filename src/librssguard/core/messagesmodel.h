@@ -124,7 +124,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     QString m_customFormatForDatesOnly;
     int m_newerArticlesRelativeTime;
     RootItem* m_selectedItem;
-    QHash<QString, Feed*> m_hashedFeeds;
+    QHash<int, Feed*> m_hashedFeeds;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QFont m_normalFont;

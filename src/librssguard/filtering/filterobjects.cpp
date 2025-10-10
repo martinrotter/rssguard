@@ -178,12 +178,12 @@ void FilterMessage::setSystem(FilteringSystem* sys) {
   m_system = sys;
 }
 
-QString FilterMessage::feedCustomId() const {
+int FilterMessage::feedId() const {
   if (m_system->feed() == nullptr || m_system->feed()->customId() == QString::number(NO_PARENT_CATEGORY)) {
     return m_message->m_feedId;
   }
   else {
-    return m_system->feed()->customId();
+    return m_system->feed()->id();
   }
 }
 
@@ -279,10 +279,8 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
     msgs = DatabaseQueries::getUndeletedMessagesForAccount(m_system->database(), m_system->filterAccount().id(), &ok);
   }
   else {
-    msgs = DatabaseQueries::getUndeletedMessagesForFeed(m_system->database(),
-                                                        feedCustomId(),
-                                                        m_system->filterAccount().id(),
-                                                        &ok);
+    msgs =
+      DatabaseQueries::getUndeletedMessagesForFeed(m_system->database(), feedId(), m_system->filterAccount().id(), &ok);
   }
 
   if (!ok) {
@@ -358,7 +356,7 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   if (!Globals::hasFlag(criteria, DuplicityCheck::AllFeedsSameAccount)) {
     // Limit to current feed.
     where_clauses.append(QSL("feed = :feed"));
-    bind_values.append({QSL(":feed"), feedCustomId()});
+    bind_values.append({QSL(":feed"), feedId()});
   }
 
   QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");

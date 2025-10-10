@@ -23,7 +23,7 @@
   message.m_isImportant = record.value(MSG_DB_IMPORTANT_INDEX).toBool();                                           \
   message.m_isDeleted = record.value(MSG_DB_DELETED_INDEX).toBool();                                               \
   message.m_isPdeleted = record.value(MSG_DB_PDELETED_INDEX).toBool();                                             \
-  message.m_feedId = record.value(MSG_DB_FEED_CUSTOM_ID_INDEX).toString();                                         \
+  message.m_feedId = record.value(MSG_DB_FEED_CUSTOM_ID_INDEX).toInt();                                            \
   message.m_feedTitle = record.value(MSG_DB_FEED_TITLE_INDEX).toString();                                          \
   message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();                                                   \
   message.m_url = record.value(MSG_DB_URL_INDEX).toString();                                                       \
@@ -102,9 +102,8 @@ QString Enclosures::encodeEnclosuresToString(const QList<QSharedPointer<MessageE
 }
 
 Message::Message() {
-  m_title = m_url = m_author = m_contents = m_rawContents = m_feedId = m_feedTitle = m_customId = m_customHash =
-    QL1S("");
-  m_accountId = m_id = 0;
+  m_title = m_url = m_author = m_contents = m_rawContents = m_feedTitle = m_customId = m_customHash = QL1S("");
+  m_accountId = m_id = m_feedId = 0;
   m_score = 0.0;
   m_isRead = m_isImportant = m_isDeleted = m_isPdeleted = false;
   m_rtlBehavior = RtlBehavior::NoRtl;
@@ -257,7 +256,7 @@ QDataStream& operator>>(QDataStream& in, Message& my_obj) {
   int account_id;
   QString custom_hash;
   QString custom_id;
-  QString feed_id;
+  int feed_id;
   int id;
   bool is_important;
   bool is_read;

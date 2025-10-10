@@ -46,7 +46,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
 QList<Message> Feed::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  return DatabaseQueries::getUndeletedMessagesForFeed(database, customId(), account()->accountId());
+  return DatabaseQueries::getUndeletedMessagesForFeed(database, id(), account()->accountId());
 }
 
 QVariant Feed::data(int column, int role) const {

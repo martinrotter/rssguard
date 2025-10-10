@@ -90,7 +90,7 @@ class RSSGUARD_DLLSPEC Message {
     // This should be preferably in UTC and should be converted
     // to localtime when needed.
     QDateTime m_created;
-    QString m_feedId;
+    int m_feedId;
     QString m_feedTitle;
     int m_accountId;
     int m_id;

@@ -1059,9 +1059,9 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
                       .distinct()
                       .toStdList();
 
-    for (const QString& feed_id : feed_ids) {
+    for (int feed_id : feed_ids) {
       auto* feed = getItemFromSubTree([feed_id](const RootItem* it) {
-        return it->kind() == RootItem::Kind::Feed && it->customId() == feed_id;
+        return it->kind() == RootItem::Kind::Feed && it->id() == feed_id;
       });
 
       if (feed != nullptr) {

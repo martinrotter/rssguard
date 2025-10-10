@@ -1367,7 +1367,7 @@ QList<Message> DatabaseQueries::getUndeletedUnreadMessages(const QSqlDatabase& d
 }
 
 QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& db,
-                                                            const QString& feed_custom_id,
+                                                            int feed_id,
                                                             int account_id,
                                                             bool* ok) {
   QList<Message> messages;
@@ -1379,7 +1379,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& 
                 "WHERE is_deleted = 0 AND is_pdeleted = 0 AND "
                 "      feed = :feed AND account_id = :account_id;")
               .arg(messageTableAttributes(db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", "))));
-  q.bindValue(QSL(":feed"), feed_custom_id);
+  q.bindValue(QSL(":feed"), feed_id);
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -1579,7 +1579,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
 
   UpdatedArticles updated_messages;
   int account_id = feed->account()->accountId();
-  auto feed_custom_id = feed->customId();
+  auto feed_id = feed->id();
   QVector<Message*> msgs_to_insert;
 
   if (!force_insert) {
@@ -1636,7 +1636,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
       bool is_read_existing_message = false;
       bool is_important_existing_message = false;
       QString contents_existing_message;
-      QString feed_id_existing_message;
+      int feed_id_existing_message;
       QString title_existing_message;
       QString author_existing_message;
 
@@ -1659,7 +1659,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
           is_read_existing_message = query_select_with_id.value(1).toBool();
           is_important_existing_message = query_select_with_id.value(2).toBool();
           contents_existing_message = query_select_with_id.value(3).toString();
-          feed_id_existing_message = query_select_with_id.value(4).toString();
+          feed_id_existing_message = query_select_with_id.value(4).toInt();
           title_existing_message = query_select_with_id.value(5).toString();
           author_existing_message = query_select_with_id.value(6).toString();
 
@@ -1677,7 +1677,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
         // We need to recognize existing messages according to URL & AUTHOR & TITLE.
         // NOTE: This concerns articles from RSS/ATOM/JSON which do not
         // provide unique ID/GUID.
-        query_select_with_url.bindValue(QSL(":feed"), unnulifyString(feed_custom_id));
+        query_select_with_url.bindValue(QSL(":feed"), feed_id);
         query_select_with_url.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_select_with_url.bindValue(QSL(":url"), unnulifyString(message.m_url));
         query_select_with_url.bindValue(QSL(":author"), unnulifyString(message.m_author));
@@ -1695,7 +1695,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
           is_read_existing_message = query_select_with_url.value(2).toBool();
           is_important_existing_message = query_select_with_url.value(3).toBool();
           contents_existing_message = query_select_with_url.value(4).toString();
-          feed_id_existing_message = query_select_with_url.value(5).toString();
+          feed_id_existing_message = query_select_with_url.value(5).toInt();
           title_existing_message = unnulifyString(message.m_title);
           author_existing_message = unnulifyString(message.m_author);
 
@@ -1728,7 +1728,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
             is_read_existing_message = query_select_with_custom_id.value(2).toBool();
             is_important_existing_message = query_select_with_custom_id.value(3).toBool();
             contents_existing_message = query_select_with_custom_id.value(4).toString();
-            feed_id_existing_message = query_select_with_custom_id.value(5).toString();
+            feed_id_existing_message = query_select_with_custom_id.value(5).toInt();
             title_existing_message = query_select_with_custom_id.value(6).toString();
             author_existing_message = query_select_with_custom_id.value(7).toString();
 
@@ -1746,7 +1746,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
           // Custom IDs are feed-specific.
           // NOTE: This concerns articles with ID/GUID from standard RSS/ATOM/JSON feeds.
           query_select_with_custom_id_for_feed.bindValue(QSL(":account_id"), account_id);
-          query_select_with_custom_id_for_feed.bindValue(QSL(":feed"), feed_custom_id);
+          query_select_with_custom_id_for_feed.bindValue(QSL(":feed"), feed_id);
           query_select_with_custom_id_for_feed.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
 
           qDebugNN << LOGSEC_DB << "Checking if message with feed-specific custom ID"
@@ -1760,7 +1760,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
             is_read_existing_message = query_select_with_custom_id_for_feed.value(2).toBool();
             is_important_existing_message = query_select_with_custom_id_for_feed.value(3).toBool();
             contents_existing_message = query_select_with_custom_id_for_feed.value(4).toString();
-            feed_id_existing_message = feed_custom_id;
+            feed_id_existing_message = feed_id;
             title_existing_message = query_select_with_custom_id_for_feed.value(5).toString();
             author_existing_message = query_select_with_custom_id_for_feed.value(6).toString();
 
@@ -1804,7 +1804,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
           !message.m_customId.isEmpty() && feed->account()->isSyncable() &&
           (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
            message.m_isRead != is_read_existing_message || message.m_isImportant != is_important_existing_message ||
-           (message.m_feedId != feed_id_existing_message && message.m_feedId == feed_custom_id) ||
+           (message.m_feedId != feed_id_existing_message && message.m_feedId == feed_id) ||
            message.m_title != title_existing_message ||
            (!ignore_contents_changes && message.m_contents != contents_existing_message));
         bool cond_2 = !message.m_customId.isEmpty() && !feed->account()->isSyncable() &&
@@ -1902,7 +1902,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
         vals.append(QSL("\n(':feed', ':title', :is_read, :is_important, :is_deleted, "
                         "':url', ':author', :score, :date_created, ':contents', ':enclosures', "
                         "':custom_id', ':custom_hash', :account_id)")
-                      .replace(QSL(":feed"), unnulifyString(feed_custom_id))
+                      .replace(QSL(":feed"), QString::number(feed_id))
                       .replace(QSL(":title"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_title)))
                       .replace(QSL(":is_read"), QString::number(int(msg->m_isRead)))
                       .replace(QSL(":is_important"), QString::number(int(msg->m_isImportant)))

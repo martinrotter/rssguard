@@ -103,7 +103,7 @@ QList<Message> GmailServiceRoot::obtainNewMessages(Feed* feed,
   Q_UNUSED(tagged_messages)
 
   Feed::Status error = Feed::Status::Normal;
-  QList<Message> messages = network()->messages(feed->customId(), stated_messages, error, networkProxy());
+  QList<Message> messages = network()->messages(feed, stated_messages, error, networkProxy());
 
   if (error != Feed::Status::NewMessages && error != Feed::Status::Normal) {
     throw FeedFetchException(error);

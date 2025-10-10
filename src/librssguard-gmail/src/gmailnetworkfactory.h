@@ -44,7 +44,7 @@ class GmailNetworkFactory : public QObject {
                                               const QNetworkProxy& custom_proxy);
     QNetworkRequest requestForAttachment(const QString& email_id, const QString& attachment_id);
     QString sendEmail(Mimesis::Message msg, const QNetworkProxy& custom_proxy, Message* reply_to_message = nullptr);
-    QList<Message> messages(const QString& stream_id,
+    QList<Message> messages(Feed* feed,
                             const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                             Feed::Status& error,
                             const QNetworkProxy& custom_proxy);
@@ -75,6 +75,7 @@ class GmailNetworkFactory : public QObject {
   private:
     bool fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id);
     QList<Message> obtainAndDecodeFullMessages(const QStringList& message_ids,
+                                               int feed_db_id,
                                                const QString& feed_id,
                                                const QNetworkProxy& custom_proxy);
     QStringList decodeLiteMessages(const QString& messages_json_data, QString& next_page_token) const;
