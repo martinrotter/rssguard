@@ -254,12 +254,21 @@ bool DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
   }
 }
 
-void DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int account_id) {
+void DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int account_id, int new_label_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("INSERT INTO Labels (name, color, custom_id, account_id) "
-                "VALUES (:name, :color, :custom_id, :account_id);"));
+
+  if (new_label_id > 0) {
+    q.prepare(QSL("INSERT INTO Labels (id, name, color, custom_id, account_id) "
+                  "VALUES (:id, :name, :color, :custom_id, :account_id);"));
+    q.bindValue(QSL(":id"), new_label_id);
+  }
+  else {
+    q.prepare(QSL("INSERT INTO Labels (name, color, custom_id, account_id) "
+                  "VALUES (:name, :color, :custom_id, :account_id);"));
+  }
+
   q.bindValue(QSL(":name"), label->title());
   q.bindValue(QSL(":color"), label->color().name());
   q.bindValue(QSL(":custom_id"), label->customId());
@@ -1463,6 +1472,30 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
   return messages;
 }
 
+int DatabaseQueries::highestPrimaryIdFeeds(const QSqlDatabase& db) {
+  QSqlQuery q(db);
+
+  if (q.exec(QSL("SELECT MAX(id) FROM Feeds;")) && q.next()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+    return q.value(0).isNull() ? 0 : q.value(0).toInt();
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
+int DatabaseQueries::highestPrimaryIdLabels(const QSqlDatabase& db) {
+  QSqlQuery q(db);
+
+  if (q.exec(QSL("SELECT MAX(id) FROM Labels;")) && q.next()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+    return q.value(0).isNull() ? 0 : q.value(0).toInt();
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
 QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::BagOfMessages bag, const Feed* feed) {
   QStringList ids;
   QSqlQuery q(db);
@@ -2252,12 +2285,12 @@ bool DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& 
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM MessageFiltersInFeeds "
                 "WHERE account_id = :account_id AND "
-                "feed_custom_id NOT IN (SELECT custom_id FROM Feeds WHERE account_id = :account_id);"));
+                "feed NOT IN (SELECT id FROM Feeds WHERE account_id = :account_id);"));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
-    qWarningNN << LOGSEC_DB << "Removing of leftover message filter assignments failed: '" << q.lastError().text()
-               << "'.";
+    qWarningNN << LOGSEC_DB
+               << "Removing of leftover message filter assignments failed:" << QUOTE_W_SPACE_DOT(q.lastError().text());
     return false;
   }
   else {
@@ -2287,7 +2320,11 @@ bool DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
   }
 }
 
-void DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id) {
+void DatabaseQueries::storeAccountTree(const QSqlDatabase& db,
+                                       RootItem* tree_root,
+                                       int next_feed_id,
+                                       int next_label_id,
+                                       int account_id) {
   // Iterate all children.
   auto str = tree_root->getSubTree<RootItem>();
 
@@ -2296,7 +2333,19 @@ void DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
       createOverwriteCategory(db, child->toCategory(), account_id, child->parent()->id());
     }
     else if (child->kind() == RootItem::Kind::Feed) {
-      createOverwriteFeed(db, child->toFeed(), account_id, child->parent()->id());
+      int new_feed_id = 0;
+
+      if (child->id() > 0) {
+        // NOTE: This item has specified physical database ID, we re-use it.
+        new_feed_id = child->id();
+        child->setId(0);
+      }
+      else {
+        // We generate new non-colision ID.
+        new_feed_id = next_feed_id++;
+      }
+
+      createOverwriteFeed(db, child->toFeed(), account_id, child->parent()->id(), new_feed_id);
     }
     else if (child->kind() == RootItem::Kind::Labels) {
       // Add all labels.
@@ -2305,7 +2354,19 @@ void DatabaseQueries::storeAccountTree(const QSqlDatabase& db, RootItem* tree_ro
       for (RootItem* lbl : std::as_const(ch)) {
         Label* label = lbl->toLabel();
 
-        createLabel(db, label, account_id);
+        int new_lbl_id = 0;
+
+        if (lbl->id() > 0) {
+          // NOTE: This item has specified physical database ID, we re-use it.
+          new_lbl_id = lbl->id();
+          lbl->setId(0);
+        }
+        else {
+          // We generate new non-colision ID.
+          new_lbl_id = next_label_id++;
+        }
+
+        createLabel(db, label, account_id, new_lbl_id);
       }
     }
   }
@@ -2620,7 +2681,11 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db,
   DatabaseFactory::logLastExecutedQuery(q);
 }
 
-void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, int account_id, int new_parent_id) {
+void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db,
+                                          Feed* feed,
+                                          int account_id,
+                                          int new_parent_id,
+                                          int new_feed_id) {
   QSqlQuery q(db);
   int next_sort_order;
 
@@ -2646,10 +2711,19 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db, Feed* feed, in
 
   if (feed->id() <= 0) {
     // We need to insert feed first.
-    q.prepare(QSL("INSERT INTO "
-                  "Feeds (title, ordr, date_created, category, update_type, update_interval, account_id, custom_id) "
-                  "VALUES ('new', 0, 0, 0, 0, 1, %1, 'new');")
-                .arg(QString::number(account_id)));
+    if (new_feed_id > 0) {
+      q.prepare(QSL("INSERT INTO "
+                    "Feeds (id, title, ordr, date_created, category, update_type, update_interval, account_id, "
+                    "custom_id) "
+                    "VALUES (%2, 'new', 0, 0, 0, 0, 1, %1, 'new');")
+                  .arg(QString::number(account_id), QString::number(new_feed_id)));
+    }
+    else {
+      q.prepare(QSL("INSERT INTO "
+                    "Feeds (title, ordr, date_created, category, update_type, update_interval, account_id, custom_id) "
+                    "VALUES ('new', 0, 0, 0, 0, 1, %1, 'new');")
+                  .arg(QString::number(account_id)));
+    }
 
     if (!q.exec()) {
       throw ApplicationException(q.lastError().text());
@@ -3168,47 +3242,18 @@ QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db,
   return filters;
 }
 
-QMultiMap<QString, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
-  QSqlQuery q(db);
-  QMultiMap<QString, int> filters_in_feeds;
-
-  q.prepare(QSL("SELECT filter, feed_custom_id FROM MessageFiltersInFeeds WHERE account_id = :account_id;"));
-
-  q.bindValue(QSL(":account_id"), account_id);
-  q.setForwardOnly(true);
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    while (q.next()) {
-      filters_in_feeds.insert(q.value(1).toString(), q.value(0).toInt());
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return filters_in_feeds;
-}
-
 void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db,
-                                                const QString& feed_custom_id,
+                                                int feed_id,
                                                 int filter_id,
                                                 int account_id,
                                                 bool* ok) {
   QSqlQuery q(db);
 
   q.prepare(QSL("SELECT COUNT(*) FROM MessageFiltersInFeeds "
-                "WHERE filter = :filter AND feed_custom_id = :feed_custom_id AND account_id = :account_id;"));
+                "WHERE filter = :filter AND feed = :feed AND account_id = :account_id;"));
   q.setForwardOnly(true);
   q.bindValue(QSL(":filter"), filter_id);
-  q.bindValue(QSL(":feed_custom_id"), feed_custom_id);
+  q.bindValue(QSL(":feed"), feed_id);
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec() && q.next()) {
@@ -3225,10 +3270,10 @@ void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db,
     }
   }
 
-  q.prepare(QSL("INSERT INTO MessageFiltersInFeeds (filter, feed_custom_id, account_id) "
-                "VALUES(:filter, :feed_custom_id, :account_id);"));
+  q.prepare(QSL("INSERT INTO MessageFiltersInFeeds (filter, feed, account_id) "
+                "VALUES(:filter, :feed, :account_id);"));
   q.bindValue(QSL(":filter"), filter_id);
-  q.bindValue(QSL(":feed_custom_id"), feed_custom_id);
+  q.bindValue(QSL(":feed"), feed_id);
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -3273,17 +3318,17 @@ void DatabaseQueries::updateMessageFilter(const QSqlDatabase& db, MessageFilter*
 }
 
 void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db,
-                                                  const QString& feed_custom_id,
+                                                  int feed_id,
                                                   int filter_id,
                                                   int account_id,
                                                   bool* ok) {
   QSqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM MessageFiltersInFeeds "
-                "WHERE filter = :filter AND feed_custom_id = :feed_custom_id AND account_id = :account_id;"));
+                "WHERE filter = :filter AND feed = :feed AND account_id = :account_id;"));
 
   q.bindValue(QSL(":filter"), filter_id);
-  q.bindValue(QSL(":feed_custom_id"), feed_custom_id);
+  q.bindValue(QSL(":feed"), feed_id);
   q.bindValue(QSL(":account_id"), account_id);
   q.setForwardOnly(true);
 
@@ -3323,6 +3368,35 @@ QStringList DatabaseQueries::getAllGmailRecipients(const QSqlDatabase& db, int a
   }
 
   return rec;
+}
+
+QMultiMap<int, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
+  QSqlQuery q(db);
+  QMultiMap<int, int> filters_in_feeds;
+
+  q.prepare(QSL("SELECT filter, feed FROM MessageFiltersInFeeds WHERE account_id = :account_id;"));
+
+  q.bindValue(QSL(":account_id"), account_id);
+  q.setForwardOnly(true);
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+
+    while (q.next()) {
+      filters_in_feeds.insert(q.value(1).toInt(), q.value(0).toInt());
+    }
+
+    if (ok != nullptr) {
+      *ok = true;
+    }
+  }
+  else {
+    if (ok != nullptr) {
+      *ok = false;
+    }
+  }
+
+  return filters_in_feeds;
 }
 
 bool DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id) {

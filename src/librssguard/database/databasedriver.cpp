@@ -37,6 +37,30 @@ QString DatabaseDriver::limitOffset(int limit, int offset) const {
   }
 }
 
+void DatabaseDriver::setForeignKeyChecksEnabled() {
+  auto db = threadSafeConnection(objectName());
+  QSqlQuery query(foreignKeysEnable(), db);
+
+  if (query.lastError().isValid()) {
+    throw ApplicationException(query.lastError().text());
+  }
+  else {
+    DatabaseFactory::logLastExecutedQuery(query);
+  }
+}
+
+void DatabaseDriver::setForeignKeyChecksDisabled() {
+  auto db = threadSafeConnection(objectName());
+  QSqlQuery query(foreignKeysDisable(), db);
+
+  if (query.lastError().isValid()) {
+    throw ApplicationException(query.lastError().text());
+  }
+  else {
+    DatabaseFactory::logLastExecutedQuery(query);
+  }
+}
+
 void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
                                           int source_db_schema_version,
                                           const QString& database_name) {

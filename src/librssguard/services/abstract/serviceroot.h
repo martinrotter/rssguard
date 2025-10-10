@@ -315,9 +315,13 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     // Key is category's custom ID.
     virtual QMap<QString, QVariantMap> storeCustomCategoriesData();
 
+    // Key is label's custom ID.
+    virtual QMap<QString, QVariantMap> storeCustomLabelsData();
+
     virtual void restoreCustomFeedsData(const QMap<QString, QVariantMap>& data, const QHash<QString, Feed*>& feeds);
     virtual void restoreCustomCategoriesData(const QMap<QString, QVariantMap>& data,
                                              const QHash<QString, Category*>& cats);
+    virtual void restoreCustomLabelsData(const QMap<QString, QVariantMap>& data, LabelsNode* labels);
 
   protected:
     RecycleBin* m_recycleBin;

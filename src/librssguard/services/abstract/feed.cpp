@@ -8,7 +8,6 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/settings.h"
-#include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/gui/formfeeddetails.h"
 #include "services/abstract/serviceroot.h"

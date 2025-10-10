@@ -12,8 +12,7 @@ CREATE TABLE Accounts (
   proxy_port      INTEGER,
   proxy_username  TEXT,
   proxy_password  TEXT,
-  /* Custom column for (serialized) custom account-specific data. */
-  custom_data     TEXT
+  custom_data     TEXT   /* Custom column for (serialized) custom account-specific data. */
 );
 -- !
 CREATE TABLE Categories (
@@ -26,7 +25,7 @@ CREATE TABLE Categories (
   icon            ^^,
   account_id      INTEGER         NOT NULL,
   custom_id       TEXT,
-  
+
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
 -- !
@@ -37,7 +36,7 @@ CREATE TABLE Feeds (
   description               TEXT,
   date_created              BIGINT,
   icon                      ^^,
-  category                  INTEGER         NOT NULL CHECK (category >= -1), /* Physical category ID, also root feeds contain -1 here. */
+  category                  INTEGER         NOT NULL CHECK (category >= -1), /* Physical category ID, root feeds contain -1 here. */
   source                    TEXT,
   update_type               INTEGER         NOT NULL CHECK (update_type >= 0),
   update_interval           INTEGER         NOT NULL DEFAULT 900 CHECK (update_interval >= 1),
@@ -53,32 +52,32 @@ CREATE TABLE Feeds (
   recycle_articles          INTEGER(1)      NOT NULL DEFAULT 0 CHECK (recycle_articles >= 0 AND recycle_articles <= 1),
   account_id                INTEGER         NOT NULL,
   custom_id                 VARCHAR(250)    NOT NULL CHECK (custom_id != ''), /* Custom ID cannot be empty, it must contain either service-specific ID, or Feeds/id. */
-  /* Custom column for (serialized) custom account-specific data. */
-  custom_data               TEXT,
+  custom_data               TEXT, /* Custom column for (serialized) custom account-specific data. */
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
 -- !
 CREATE TABLE Messages (
   id              $$,
-  is_read         INTEGER(1)    NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),
-  is_important    INTEGER(1)    NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),
-  is_deleted      INTEGER(1)    NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),
-  is_pdeleted     INTEGER(1)    NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
-  feed            VARCHAR(250)  NOT NULL, /* Points to Feeds/custom_id. */
-  title           VARCHAR(500)  NOT NULL CHECK (title != ''),
+  is_read         INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_read >= 0 AND is_read <= 1),
+  is_important    INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_important >= 0 AND is_important <= 1),
+  is_deleted      INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_deleted >= 0 AND is_deleted <= 1),
+  is_pdeleted     INTEGER(1)      NOT NULL DEFAULT 0 CHECK (is_pdeleted >= 0 AND is_pdeleted <= 1),
+  feed            INTEGER         NOT NULL,
+  title           VARCHAR(500)    NOT NULL CHECK (title != ''),
   url             VARCHAR(1200),
   author          VARCHAR(400),
-  date_created    BIGINT        NOT NULL CHECK (date_created >= 0),
+  date_created    BIGINT          NOT NULL CHECK (date_created >= 0),
   contents        **,
   enclosures      TEXT,
-  score           REAL          NOT NULL DEFAULT 0.0 CHECK (score >= 0.0 AND score <= 100.0),
-  account_id      INTEGER       NOT NULL,
+  score           REAL            NOT NULL DEFAULT 0.0 CHECK (score >= 0.0 AND score <= 100.0),
+  account_id      INTEGER         NOT NULL,
   custom_id       VARCHAR(250),
   custom_hash     VARCHAR(100),
-  labels          TEXT          NOT NULL DEFAULT ".", /* Holds list of assigned label IDs. */
-  
-  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
+  labels          TEXT            NOT NULL DEFAULT ".", /* Holds list of assigned label IDs. */
+
+  FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE NO ACTION, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, because NO ACTION is synonym for RESTRICT. */
+  FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE
 );
 -- !
 CREATE TABLE MessageFilters (
@@ -90,12 +89,13 @@ CREATE TABLE MessageFilters (
 );
 -- !
 CREATE TABLE MessageFiltersInFeeds (
-  filter                INTEGER         NOT NULL,
-  feed_custom_id        VARCHAR(250)    NOT NULL,  /* Points to Feeds/custom_id. */
-  account_id            INTEGER         NOT NULL,
+  filter      INTEGER         NOT NULL,
+  feed        INTEGER         NOT NULL,
+  account_id  INTEGER         NOT NULL,
   
-  FOREIGN KEY (filter) REFERENCES MessageFilters (id) ON DELETE CASCADE,
-  FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
+  FOREIGN KEY (filter)      REFERENCES MessageFilters (id)  ON DELETE CASCADE,
+  FOREIGN KEY (feed)        REFERENCES Feeds (id)           ON DELETE NO ACTION, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, because NO ACTION is synonym for RESTRICT. */
+  FOREIGN KEY (account_id)  REFERENCES Accounts (id)        ON DELETE CASCADE
 );
 -- !
 CREATE TABLE Labels (
@@ -105,17 +105,28 @@ CREATE TABLE Labels (
   custom_id           VARCHAR(200),
   account_id          INTEGER         NOT NULL,
   
-  UNIQUE (name, account_id),
+  UNIQUE (account_id, name),
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
+);
+-- !
+CREATE TABLE LabelsInMessages (
+  message     INTEGER       NOT NULL,
+  label       INTEGER       NOT NULL,
+  account_id  INTEGER       NOT NULL,
+
+  UNIQUE (account_id, message, label),
+  FOREIGN KEY (message)     REFERENCES Messages (id)  ON DELETE CASCADE,
+  FOREIGN KEY (label)       REFERENCES Labels (id)    ON DELETE NO ACTION, /* You need to temporarily disable foreign checks for MariaDB when refreshing labels, because NO ACTION is synonym for RESTRICT. */
+  FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE
 );
 -- !
 CREATE TABLE Probes (
   id                  $$,
   name                VARCHAR(200)    NOT NULL CHECK (name != ''),
-  color               VARCHAR(7)      NOT NULL CHECK (color != ''),
+  color               VARCHAR(7),
   fltr                TEXT            NOT NULL CHECK (fltr != ''), /* Regular expression. */
   account_id          INTEGER         NOT NULL,
   
-  UNIQUE (name, account_id),
+  UNIQUE (account_id, name),
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );

@@ -484,6 +484,7 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     // TODO: This could potentially call Feed::customDatabaseData() and append it
     // to this map and also subsequently restore, but the method is at this point
     // not really used by any syncable plugin.
+    feed_custom_data.insert(QSL("id"), feed->id());
     feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInterval());
     feed_custom_data.insert(QSL("auto_update_type"), int(feed->autoUpdateType()));
     feed_custom_data.insert(QSL("msg_filters"), QVariant::fromValue(feed->messageFilters()));
@@ -518,12 +519,29 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomCategoriesData() {
   for (const Category* cat : std::as_const(str)) {
     QVariantMap cat_custom_data;
 
+    cat_custom_data.insert(QSL("id"), cat->id());
+
     // NOTE: This is here specifically to be able to restore custom sort order.
     // Otherwise the information is lost when list of feeds/folders is refreshed from remote
     // service.
     cat_custom_data.insert(QSL("sort_order"), cat->sortOrder());
 
     custom_data.insert(cat->customId(), cat_custom_data);
+  }
+
+  return custom_data;
+}
+
+QMap<QString, QVariantMap> ServiceRoot::storeCustomLabelsData() {
+  QMap<QString, QVariantMap> custom_data;
+  QList<Label*> str = m_labelsNode == nullptr ? QList<Label*>() : m_labelsNode->labels();
+
+  for (const Label* lbl : std::as_const(str)) {
+    QVariantMap lbl_custom_data;
+
+    lbl_custom_data.insert(QSL("id"), lbl->id());
+
+    custom_data.insert(lbl->customId(), lbl_custom_data);
   }
 
   return custom_data;
@@ -540,6 +558,7 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
       Feed* feed = feeds.value(custom_id);
       QVariantMap feed_custom_data = i.value();
 
+      feed->setId(feed_custom_data.value(QSL("id")).toInt());
       feed->setAutoUpdateInterval(feed_custom_data.value(QSL("auto_update_interval")).toInt());
       feed
         ->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(feed_custom_data.value(QSL("auto_update_type")).toInt()));
@@ -572,6 +591,20 @@ void ServiceRoot::restoreCustomCategoriesData(const QMap<QString, QVariantMap>& 
                                               const QHash<QString, Category*>& cats) {
   Q_UNUSED(data)
   Q_UNUSED(cats)
+}
+
+void ServiceRoot::restoreCustomLabelsData(const QMap<QString, QVariantMap>& data, LabelsNode* labels) {
+  if (data.isEmpty() || labels == nullptr) {
+    return;
+  }
+
+  for (Label* lbl : labels->labels()) {
+    if (data.contains(lbl->customId())) {
+      QVariantMap lbl_custom_data = data.value(lbl->customId());
+
+      lbl->setId(lbl_custom_data.value(QSL("id")).toInt());
+    }
+  }
 }
 
 bool ServiceRoot::nodeShowProbes() const {
@@ -651,14 +684,26 @@ void ServiceRoot::syncIn() {
 
     qDebugNN << LOGSEC_CORE << "New feed tree for sync-in obtained.";
 
-    auto feed_custom_data = storeCustomFeedsData();
-    auto categories_custom_data = storeCustomCategoriesData();
-
     // Remove from feeds model, then from SQL but leave messages intact.
     bool uses_remote_labels = Globals::hasFlag(supportedLabelOperations(), LabelOperation::Synchronised);
 
+    auto feed_custom_data = storeCustomFeedsData();
+    auto categories_custom_data = storeCustomCategoriesData();
+    auto label_custom_data = uses_remote_labels ? storeCustomLabelsData() : QMap<QString, QVariantMap>();
+
     // Remove stuff.
     cleanAllItemsFromModel(uses_remote_labels);
+
+    // NOTE: We need these primary IDs because - all feed/article/label foreign keys
+    // are realised via physical database ID (not custom ID, this is due to performance).
+    // We need to re-use all existing IDs to retain proper foreign key relations to articles and labels.
+    // So we need to make sure that temporarily vacant ID is not taken by newly created feed or label.
+    QSqlDatabase db = qApp->database()->driver()->connection(objectName());
+    int next_primary_id_feeds = DatabaseQueries::highestPrimaryIdFeeds(db) + 1;
+    int next_primary_id_labels = DatabaseQueries::highestPrimaryIdFeeds(db) + 1;
+
+    qApp->database()->driver()->setForeignKeyChecksDisabled();
+
     removeOldAccountFromDatabase(false, uses_remote_labels);
 
     // Re-sort items to accomodate current sort order.
@@ -667,17 +712,27 @@ void ServiceRoot::syncIn() {
     // Restore some local settings to feeds etc.
     restoreCustomCategoriesData(categories_custom_data, new_tree->getHashedSubTreeCategories());
     restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
+    restoreCustomLabelsData(label_custom_data,
+                            dynamic_cast<LabelsNode*>(new_tree->getItemFromSubTree([](const RootItem* it) {
+                              return it->kind() == RootItem::Kind::Labels;
+                            })));
 
     // Model is clean, now store new tree into DB and
     // set primary IDs of the items.
     DatabaseQueries::storeAccountTree(qApp->database()->driver()->connection(metaObject()->className()),
                                       new_tree,
+                                      next_primary_id_feeds,
+                                      next_primary_id_labels,
                                       accountId());
 
     // We have new feed, some feeds were maybe removed,
     // so remove left over messages and filter assignments.
     removeLeftOverMessages();
     removeLeftOverMessageFilterAssignments();
+
+    // TODO: remove leftover label assignments from labels which no longer exist.
+
+    qApp->database()->driver()->setForeignKeyChecksEnabled();
 
     auto chi = new_tree->childItems();
 

@@ -32,16 +32,25 @@ QString TextFactory::extractUsernameFromEmail(const QString& email_address) {
 }
 
 QColor TextFactory::generateColorFromText(const QString& text) {
-  quint32 color = 0;
+  // Compute a stable hash of the input string (MD5 works fine).
+  QByteArray hash = QCryptographicHash::hash(text.toUtf8(), QCryptographicHash::Algorithm::Md5);
 
-  for (const QChar chr : text) {
-    color += chr.unicode();
-  }
+  // Use first 3 bytes of the hash for RGB components.
+  int r = static_cast<unsigned char>(hash[0]);
+  int g = static_cast<unsigned char>(hash[1]);
+  int b = static_cast<unsigned char>(hash[2]);
 
-  // NOTE: https://martin.ankerl.com/2009/12/09/how-to-create-random-colors-programmatically
-  int hue = color % 360;
+  QColor color(r, g, b);
 
-  return QColor::fromHsv(hue, 200, 240);
+  // Optionally, adjust brightness / saturation for visibility.
+  qreal h, s, l, a;
+
+  color.getHslF(&h, &s, &l, &a);
+  s = 0.5 + 0.5 * s; // ensure it's vivid enough
+  l = 0.4 + 0.3 * l; // ensure it's not too dark/light
+  color.setHslF(h, s, l, a);
+
+  return color;
 }
 
 QColor TextFactory::generateRandomColor() {

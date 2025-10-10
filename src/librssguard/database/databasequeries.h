@@ -39,7 +39,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                              const QList<Label*>& installed_labels);
     static bool updateLabel(const QSqlDatabase& db, Label* label);
     static bool deleteLabel(const QSqlDatabase& db, Label* label);
-    static void createLabel(const QSqlDatabase& db, Label* label, int account_id);
+    static void createLabel(const QSqlDatabase& db, Label* label, int account_id, int new_label_id = 0);
 
     // Probe operators.
     static void createProbe(const QSqlDatabase& db, Search* probe, int account_id);
@@ -129,6 +129,8 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
 
     // Custom ID accumulators.
+    static int highestPrimaryIdFeeds(const QSqlDatabase& db);
+    static int highestPrimaryIdLabels(const QSqlDatabase& db);
     static QStringList bagOfMessages(const QSqlDatabase& db, ServiceRoot::BagOfMessages bag, const Feed* feed);
     static QHash<QString, QStringList> bagsOfMessages(const QSqlDatabase& db, const QList<Label*>& labels);
     static QStringList customIdsOfMessagesFromLabel(const QSqlDatabase& db,
@@ -184,8 +186,16 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static bool cleanUnreadMessages(const QSqlDatabase& db, int account_id);
     static bool cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
-    static void storeAccountTree(const QSqlDatabase& db, RootItem* tree_root, int account_id);
-    static void createOverwriteFeed(const QSqlDatabase& db, Feed* feed, int account_id, int new_parent_id);
+    static void storeAccountTree(const QSqlDatabase& db,
+                                 RootItem* tree_root,
+                                 int next_feed_id,
+                                 int next_label_id,
+                                 int account_id);
+    static void createOverwriteFeed(const QSqlDatabase& db,
+                                    Feed* feed,
+                                    int account_id,
+                                    int new_parent_id,
+                                    int new_feed_id = 0);
     static void createOverwriteCategory(const QSqlDatabase& db, Category* category, int account_id, int new_parent_id);
     static bool deleteFeed(const QSqlDatabase& db, Feed* feed, int account_id);
     static bool deleteCategory(const QSqlDatabase& db, Category* category);
@@ -214,15 +224,15 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void removeMessageFilter(const QSqlDatabase& db, int filter_id, bool* ok = nullptr);
     static void removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id, bool* ok = nullptr);
     static QList<MessageFilter*> getMessageFilters(const QSqlDatabase& db, bool* ok = nullptr);
-    static QMultiMap<QString, int> messageFiltersInFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static void assignMessageFilterToFeed(const QSqlDatabase& db,
-                                          const QString& feed_custom_id,
+                                          int feed_id,
                                           int filter_id,
                                           int account_id,
                                           bool* ok = nullptr);
     static void updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter, bool* ok = nullptr);
+    static QMultiMap<int, int> messageFiltersInFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static void removeMessageFilterFromFeed(const QSqlDatabase& db,
-                                            const QString& feed_custom_id,
+                                            int feed_id,
                                             int filter_id,
                                             int account_id,
                                             bool* ok = nullptr);
@@ -416,8 +426,8 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
     // Load custom data.
     feed->setCustomDatabaseData(deserializeCustomData(query.value(FDS_DB_CUSTOM_DATA_INDEX).toString()));
 
-    if (filters_in_feeds.contains(feed->customId())) {
-      auto all_filters_for_this_feed = filters_in_feeds.values(feed->customId());
+    if (filters_in_feeds.contains(feed->id())) {
+      auto all_filters_for_this_feed = filters_in_feeds.values(feed->id());
 
       for (MessageFilter* fltr : global_filters) {
         if (all_filters_for_this_feed.contains(fltr->id())) {
