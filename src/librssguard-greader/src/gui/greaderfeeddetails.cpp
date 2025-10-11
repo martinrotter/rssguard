@@ -38,7 +38,7 @@ void GreaderFeedDetails::onUrlChanged(const QString& new_url) {
 }
 
 void GreaderFeedDetails::onTitleChanged(const QString& new_title) {
-  if (new_title.isEmpty()) {
+  if (!new_title.isEmpty()) {
     ui.m_txtTitle->setStatus(WidgetWithStatus::StatusType::Ok, tr("Title is entered."));
   }
   else {
