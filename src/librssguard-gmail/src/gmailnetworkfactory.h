@@ -75,7 +75,6 @@ class GmailNetworkFactory : public QObject {
   private:
     bool fillFullMessage(Message& msg, const QJsonObject& json, const QString& feed_id);
     QList<Message> obtainAndDecodeFullMessages(const QStringList& message_ids,
-                                               int feed_db_id,
                                                const QString& feed_id,
                                                const QNetworkProxy& custom_proxy);
     QStringList decodeLiteMessages(const QString& messages_json_data, QString& next_page_token) const;

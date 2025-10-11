@@ -1078,9 +1078,6 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
     message.m_created = TextFactory::parseDateTime(t);
     message.m_createdFromFeed = true;
     message.m_customId = QString::number(mapped[QSL("id")].toInt());
-    message.m_feedId = mapped[QSL("feed_id")].type() == QJsonValue::Type::Double
-                         ? QString::number(mapped[QSL("feed_id")].toInt())
-                         : mapped[QSL("feed_id")].toString();
     message.m_title = mapped[QSL("title")].toString();
     message.m_url = mapped[QSL("link")].toString();
 
@@ -1091,7 +1088,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
       for (const QJsonValue& attachment : std::as_const(json_att)) {
         QJsonObject mapped_attachemnt = attachment.toObject();
         MessageEnclosure* enclosure = new MessageEnclosure(mapped_attachemnt[QSL("content_type")].toString(),
-                                             mapped_attachemnt[QSL("content_url")].toString());
+                                                           mapped_attachemnt[QSL("content_url")].toString());
 
         message.m_enclosures.append(QSharedPointer<MessageEnclosure>(enclosure));
       }

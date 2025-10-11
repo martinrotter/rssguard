@@ -418,7 +418,6 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
     const QJsonObject& entry_obj = entry.toObject();
     Message message;
 
-    message.m_feedId = entry_obj[QSL("origin")].toObject()[QSL("streamId")].toString();
     message.m_title = entry_obj[QSL("title")].toString();
     message.m_author = entry_obj[QSL("author")].toString();
     message.m_contents = entry_obj[QSL("content")].toObject()[QSL("content")].toString();
@@ -460,11 +459,12 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
       const QJsonObject& enc_obj = enc.toObject();
       const QString& enc_href = enc_obj[QSL("href")].toString();
 
-      if (!boolinq::from(message.m_enclosures).any([enc_href](const QSharedPointer<MessageEnclosure>& existing_enclosure) {
-            return existing_enclosure->url() == enc_href;
-          })) {
-        message.m_enclosures.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(enc_href,
-                                                                            enc_obj[QSL("type")].toString())));
+      if (!boolinq::from(message.m_enclosures)
+             .any([enc_href](const QSharedPointer<MessageEnclosure>& existing_enclosure) {
+               return existing_enclosure->url() == enc_href;
+             })) {
+        message.m_enclosures
+          .append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(enc_href, enc_obj[QSL("type")].toString())));
       }
     }
 

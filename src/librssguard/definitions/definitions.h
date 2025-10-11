@@ -245,27 +245,27 @@
 #define APP_NO_THEME                ""
 
 // Indexes of columns as they are DEFINED IN THE TABLE for MESSAGES.
-#define MSG_DB_ID_INDEX             0
-#define MSG_DB_READ_INDEX           1
-#define MSG_DB_IMPORTANT_INDEX      2
-#define MSG_DB_DELETED_INDEX        3
-#define MSG_DB_PDELETED_INDEX       4
-#define MSG_DB_FEED_CUSTOM_ID_INDEX 5
-#define MSG_DB_TITLE_INDEX          6
-#define MSG_DB_URL_INDEX            7
-#define MSG_DB_AUTHOR_INDEX         8
-#define MSG_DB_DCREATED_INDEX       9
-#define MSG_DB_CONTENTS_INDEX       10
-#define MSG_DB_ENCLOSURES_INDEX     11
-#define MSG_DB_SCORE_INDEX          12
-#define MSG_DB_ACCOUNT_ID_INDEX     13
-#define MSG_DB_CUSTOM_ID_INDEX      14
-#define MSG_DB_CUSTOM_HASH_INDEX    15
-#define MSG_DB_FEED_TITLE_INDEX     16
-#define MSG_DB_FEED_IS_RTL_INDEX    17
-#define MSG_DB_HAS_ENCLOSURES       18
-#define MSG_DB_LABELS               19
-#define MSG_DB_LABELS_IDS           20
+#define MSG_DB_ID_INDEX          0
+#define MSG_DB_READ_INDEX        1
+#define MSG_DB_IMPORTANT_INDEX   2
+#define MSG_DB_DELETED_INDEX     3
+#define MSG_DB_PDELETED_INDEX    4
+#define MSG_DB_FEED_ID_INDEX     5
+#define MSG_DB_TITLE_INDEX       6
+#define MSG_DB_URL_INDEX         7
+#define MSG_DB_AUTHOR_INDEX      8
+#define MSG_DB_DCREATED_INDEX    9
+#define MSG_DB_CONTENTS_INDEX    10
+#define MSG_DB_ENCLOSURES_INDEX  11
+#define MSG_DB_SCORE_INDEX       12
+#define MSG_DB_ACCOUNT_ID_INDEX  13
+#define MSG_DB_CUSTOM_ID_INDEX   14
+#define MSG_DB_CUSTOM_HASH_INDEX 15
+#define MSG_DB_FEED_TITLE_INDEX  16
+#define MSG_DB_FEED_IS_RTL_INDEX 17
+#define MSG_DB_HAS_ENCLOSURES    18
+#define MSG_DB_LABELS            19
+#define MSG_DB_LABELS_IDS        20
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
 #define CAT_DB_ID_INDEX          0

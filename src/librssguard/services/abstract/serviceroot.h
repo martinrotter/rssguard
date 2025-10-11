@@ -229,7 +229,6 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void requestItemRemoval(RootItem* item);
 
     // Some message/feed attribute selectors.
-    QStringList textualFeedUrls(const QList<Feed*>& feeds) const;
     QStringList textualFeedIds(const QList<Feed*>& feeds) const;
     QStringList customIDsOfMessages(const QList<ImportanceChange>& changes);
     QStringList customIDsOfMessages(const QList<Message>& messages);

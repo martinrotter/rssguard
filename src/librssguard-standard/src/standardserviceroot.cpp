@@ -37,6 +37,7 @@
 #endif
 
 #include <QAction>
+#include <QElapsedTimer>
 #include <QSqlTableModel>
 #include <QStack>
 #include <QTextCodec>
@@ -445,11 +446,6 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   }
 
   delete parser;
-
-  for (Message& mess : messages) {
-    mess.m_feedId = feed->customId();
-  }
-
   return messages;
 }
 

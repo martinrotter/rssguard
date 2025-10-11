@@ -9,7 +9,6 @@
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/textfactory.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
@@ -250,16 +249,15 @@ void ServiceRoot::updateCounts(bool including_total_count) {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   bool ok;
-  QMap<QString, ArticleCounts> counts =
-    DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
+  auto counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
 
   if (ok) {
     for (Feed* feed : feeds) {
-      if (counts.contains(feed->customId())) {
-        feed->setCountOfUnreadMessages(counts.value(feed->customId()).m_unread);
+      if (counts.contains(feed->id())) {
+        feed->setCountOfUnreadMessages(counts.value(feed->id()).m_unread);
 
         if (including_total_count) {
-          feed->setCountOfAllMessages(counts.value(feed->customId()).m_total);
+          feed->setCountOfAllMessages(counts.value(feed->id()).m_total);
         }
       }
       else {
@@ -844,7 +842,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item, ReadStatus t
       case RootItem::Kind::Feed: {
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-        list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->customId(), target_read, accountId());
+        list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->id(), target_read, accountId());
         break;
       }
 
@@ -888,24 +886,12 @@ bool ServiceRoot::markFeedsReadUnread(const QList<Feed*>& items, RootItem::ReadS
   }
 }
 
-QStringList ServiceRoot::textualFeedUrls(const QList<Feed*>& feeds) const {
-  QStringList stringy_urls;
-
-  stringy_urls.reserve(feeds.size());
-
-  for (const Feed* feed : feeds) {
-    stringy_urls.append(!feed->source().isEmpty() ? feed->source() : QSL("no-url"));
-  }
-
-  return stringy_urls;
-}
-
 QStringList ServiceRoot::textualFeedIds(const QList<Feed*>& feeds) const {
   QStringList stringy_ids;
   stringy_ids.reserve(feeds.size());
 
   for (const Feed* feed : feeds) {
-    stringy_ids.append(QSL("'%1'").arg(feed->customId()));
+    stringy_ids.append(QString::number(feed->id()));
   }
 
   return stringy_ids;
@@ -998,17 +984,14 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     QString filter_clause = textualFeedIds(children).join(QSL(", "));
 
     if (filter_clause.isEmpty()) {
-      filter_clause = QSL("null");
+      filter_clause = QSL("NULL");
     }
 
     model->setFilter(QSL("Messages.feed IN (%1) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
                          "Messages.account_id = %2")
                        .arg(filter_clause, QString::number(accountId())));
 
-    QString urls = textualFeedUrls(children).join(QSL(", "));
-
-    qDebugNN << LOGSEC_CORE << "Displaying messages from feeds IDs:" << QUOTE_W_SPACE(filter_clause)
-             << "and URLs:" << QUOTE_W_SPACE_DOT(urls);
+    qDebugNN << LOGSEC_CORE << "Displaying messages from feeds IDs:" << QUOTE_W_SPACE(filter_clause);
   }
 
   return true;

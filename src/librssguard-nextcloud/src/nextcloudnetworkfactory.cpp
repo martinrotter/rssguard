@@ -613,7 +613,8 @@ QList<Message> NextcloudGetMessagesResponse::messages() const {
 
     // Check for mediaThumbnail and append as first enclosure to be viewed in internal viewer.
     if (!message_map[QSL("mediaThumbnail")].isUndefined()) {
-      MessageEnclosure* enclosure = new MessageEnclosure(message_map[QSL("mediaThumbnail")].toString(), QSL("image/jpg"));
+      MessageEnclosure* enclosure =
+        new MessageEnclosure(message_map[QSL("mediaThumbnail")].toString(), QSL("image/jpg"));
 
       msg.m_enclosures.append(QSharedPointer<MessageEnclosure>(enclosure));
     }
@@ -636,7 +637,6 @@ QList<Message> NextcloudGetMessagesResponse::messages() const {
       }
     }
 
-    msg.m_feedId = message_map[QSL("feedId")].toVariant().toString();
     msg.m_isImportant = message_map[QSL("starred")].toBool();
     msg.m_isRead = !message_map[QSL("unread")].toBool();
     msg.m_title = message_map[QSL("title")].toString();

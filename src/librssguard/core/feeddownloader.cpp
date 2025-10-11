@@ -17,6 +17,7 @@
 #include "services/abstract/labelsnode.h"
 
 #include <QDebug>
+#include <QElapsedTimer>
 #include <QString>
 #include <QtConcurrentMap>
 
@@ -276,6 +277,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     for (auto& msg : msgs) {
       msg.m_accountId = acc_id;
       msg.m_feedId = feed->id();
+
       msg.sanitize(feed, fix_future_datetimes);
     }
 

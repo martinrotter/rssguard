@@ -23,7 +23,7 @@
   message.m_isImportant = record.value(MSG_DB_IMPORTANT_INDEX).toBool();                                           \
   message.m_isDeleted = record.value(MSG_DB_DELETED_INDEX).toBool();                                               \
   message.m_isPdeleted = record.value(MSG_DB_PDELETED_INDEX).toBool();                                             \
-  message.m_feedId = record.value(MSG_DB_FEED_CUSTOM_ID_INDEX).toInt();                                            \
+  message.m_feedId = record.value(MSG_DB_FEED_ID_INDEX).toInt();                                            \
   message.m_feedTitle = record.value(MSG_DB_FEED_TITLE_INDEX).toString();                                          \
   message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();                                                   \
   message.m_url = record.value(MSG_DB_URL_INDEX).toString();                                                       \
@@ -102,7 +102,8 @@ QString Enclosures::encodeEnclosuresToString(const QList<QSharedPointer<MessageE
 }
 
 Message::Message() {
-  m_title = m_url = m_author = m_contents = m_rawContents = m_feedTitle = m_customId = m_customHash = QL1S("");
+  m_title = m_url = m_feedCustomId = m_author = m_contents = m_rawContents = m_feedTitle = m_customId = m_customHash =
+    QL1S("");
   m_accountId = m_id = m_feedId = 0;
   m_score = 0.0;
   m_isRead = m_isImportant = m_isDeleted = m_isPdeleted = false;
@@ -116,6 +117,7 @@ Message::Message(const Message& other) {
   m_contents = other.m_contents;
   m_rawContents = other.m_rawContents;
   m_feedId = other.m_feedId;
+  m_feedCustomId = other.m_feedCustomId;
   m_feedTitle = other.m_feedTitle;
   m_customId = other.m_customId;
   m_customHash = other.m_customHash;
@@ -245,9 +247,9 @@ QString Message::generateRawAtomContents(const Message& msg) {
 }
 
 QDataStream& operator<<(QDataStream& out, const Message& my_obj) {
-  out << my_obj.m_accountId << my_obj.m_customHash << my_obj.m_customId << my_obj.m_feedId << my_obj.m_id
-      << my_obj.m_isImportant << my_obj.m_isRead << my_obj.m_isDeleted << my_obj.m_isPdeleted << my_obj.m_score
-      << my_obj.m_rtlBehavior;
+  out << my_obj.m_accountId << my_obj.m_customHash << my_obj.m_customId << my_obj.m_feedId << my_obj.m_feedCustomId
+      << my_obj.m_id << my_obj.m_isImportant << my_obj.m_isRead << my_obj.m_isDeleted << my_obj.m_isPdeleted
+      << my_obj.m_score << my_obj.m_rtlBehavior;
 
   return out;
 }
@@ -264,14 +266,16 @@ QDataStream& operator>>(QDataStream& in, Message& my_obj) {
   bool is_pdeleted;
   RtlBehavior is_rtl;
   double score;
+  QString feed_custom_id;
 
-  in >> account_id >> custom_hash >> custom_id >> feed_id >> id >> is_important >> is_read >> is_deleted >>
-    is_pdeleted >> score >> is_rtl;
+  in >> account_id >> custom_hash >> custom_id >> feed_id >> feed_custom_id >> id >> is_important >> is_read >>
+    is_deleted >> is_pdeleted >> score >> is_rtl;
 
   my_obj.m_accountId = account_id;
   my_obj.m_customHash = custom_hash;
   my_obj.m_customId = custom_id;
   my_obj.m_feedId = feed_id;
+  my_obj.m_feedCustomId = feed_custom_id;
   my_obj.m_id = id;
   my_obj.m_isImportant = is_important;
   my_obj.m_isRead = is_read;

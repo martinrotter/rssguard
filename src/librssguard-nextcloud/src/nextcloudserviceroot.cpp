@@ -95,6 +95,7 @@ void NextcloudServiceRoot::saveAllCachedData(bool ignore_errors) {
   }
 
   QMapIterator<RootItem::Importance, QList<Message>> j(msg_cache.m_cachedStatesImportant);
+  QHash<int, Feed*> hashed_feeds = getPrimaryIdHashedSubTreeFeeds();
 
   // Save the actual data important/not important.
   while (j.hasNext()) {
@@ -106,7 +107,8 @@ void NextcloudServiceRoot::saveAllCachedData(bool ignore_errors) {
       QStringList feed_ids, guid_hashes;
 
       for (const Message& msg : messages) {
-        feed_ids.append(msg.m_feedId);
+        // TODO: check this.
+        feed_ids.append(hashed_feeds.value(msg.m_feedId)->customId());
         guid_hashes.append(msg.m_customHash);
       }
 

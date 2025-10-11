@@ -43,11 +43,11 @@ void Category::updateCounts(bool including_total_count) {
 
   if (ok) {
     for (Feed* feed : feeds) {
-      if (counts.contains(feed->customId())) {
-        feed->setCountOfUnreadMessages(counts.value(feed->customId()).m_unread);
+      if (counts.contains(feed->id())) {
+        feed->setCountOfUnreadMessages(counts.value(feed->id()).m_unread);
 
         if (including_total_count) {
-          feed->setCountOfAllMessages(counts.value(feed->customId()).m_total);
+          feed->setCountOfAllMessages(counts.value(feed->id()).m_total);
         }
       }
     }

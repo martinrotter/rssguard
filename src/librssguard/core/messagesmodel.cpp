@@ -533,7 +533,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         case MSG_DB_PDELETED_INDEX:
           return msg.m_isPdeleted;
 
-        case MSG_DB_FEED_CUSTOM_ID_INDEX:
+        case MSG_DB_FEED_ID_INDEX:
           return msg.m_feedId;
 
         case MSG_DB_TITLE_INDEX:
@@ -792,7 +792,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 
       if (index_column == MSG_DB_READ_INDEX) {
         if (m_unreadIconType == MessageUnreadIcon::FeedIcon && m_selectedItem != nullptr) {
-          QModelIndex idx_feedid = index(idx.row(), MSG_DB_FEED_CUSTOM_ID_INDEX);
+          QModelIndex idx_feedid = index(idx.row(), MSG_DB_FEED_ID_INDEX);
           QVariant dta = data(idx_feedid, Qt::ItemDataRole::EditRole);
           int feed_id = dta.toInt();
 
@@ -912,8 +912,10 @@ bool MessagesModel::setMessageLabelsById(int id, const QStringList& label_ids) {
 
 void MessagesModel::fillComputedMessageData(Message* msg) {
   auto* fd = m_hashedFeeds.value(msg->m_feedId);
+
   msg->m_rtlBehavior = fd != nullptr ? fd->rtlBehavior() : msg->m_rtlBehavior;
   msg->m_feedTitle = fd != nullptr ? fd->title() : msg->m_feedTitle;
+  msg->m_feedCustomId = fd != nullptr ? fd->customId() : QString();
 }
 
 bool MessagesModel::switchMessageImportance(int row_index) {

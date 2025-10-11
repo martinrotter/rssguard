@@ -315,7 +315,7 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
   for (int i = 0; i < m_prefetchedMessages.size(); i++) {
     auto prefetched_msg = m_prefetchedMessages.at(i);
 
-    if (prefetched_msg.m_feedId == stream_id && !iter.any([&prefetched_msg](const Message& ms) {
+    if (prefetched_msg.m_feedCustomId == stream_id && !iter.any([&prefetched_msg](const Message& ms) {
           return ms.m_customId == prefetched_msg.m_customId;
         })) {
       msgs.append(prefetched_msg);
@@ -1119,7 +1119,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
 
     message.m_contents = message_obj[QSL("summary")].toObject()[QSL("content")].toString();
     message.m_rawContents = QJsonDocument(message_obj).toJson(QJsonDocument::JsonFormat::Compact);
-    message.m_feedId =
+    message.m_feedCustomId =
       stream_id.isEmpty() ? message_obj[QSL("origin")].toObject()[QSL("streamId")].toString() : stream_id;
 
     if (message.m_title.isEmpty()) {

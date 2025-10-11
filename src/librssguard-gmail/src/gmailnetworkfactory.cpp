@@ -299,8 +299,7 @@ QList<Message> GmailNetworkFactory::messages(Feed* feed,
 
   qDebugNN << LOGSEC_GMAIL << "Will download" << NONQUOTE_W_SPACE(to_download.size()) << "e-mails.";
 
-  auto messages =
-    obtainAndDecodeFullMessages(QList<QString>(to_download.values()), feed->id(), stream_id, custom_proxy);
+  auto messages = obtainAndDecodeFullMessages(QList<QString>(to_download.values()), stream_id, custom_proxy);
 
   error = Feed::Status::Normal;
   return messages;
@@ -700,7 +699,6 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
 }
 
 QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringList& message_ids,
-                                                                int feed_db_id,
                                                                 const QString& feed_id,
                                                                 const QNetworkProxy& custom_proxy) {
   QHash<QString, Message> msgs;
@@ -721,7 +719,6 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
       Message msg;
       QHttpPart part;
 
-      msg.m_feedId = feed_db_id;
       msg.m_customId = msg_id;
 
       part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);
