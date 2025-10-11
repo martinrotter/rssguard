@@ -37,8 +37,7 @@ QString DatabaseDriver::limitOffset(int limit, int offset) const {
   }
 }
 
-void DatabaseDriver::setForeignKeyChecksEnabled() {
-  auto db = threadSafeConnection(objectName());
+void DatabaseDriver::setForeignKeyChecksEnabled(const QSqlDatabase& db) {
   QSqlQuery query(foreignKeysEnable(), db);
 
   if (query.lastError().isValid()) {
@@ -49,8 +48,7 @@ void DatabaseDriver::setForeignKeyChecksEnabled() {
   }
 }
 
-void DatabaseDriver::setForeignKeyChecksDisabled() {
-  auto db = threadSafeConnection(objectName());
+void DatabaseDriver::setForeignKeyChecksDisabled(const QSqlDatabase& db) {
   QSqlQuery query(foreignKeysDisable(), db);
 
   if (query.lastError().isValid()) {

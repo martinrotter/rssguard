@@ -346,18 +346,6 @@ bool ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
   }
 }
 
-void ServiceRoot::removeLeftOverMessages() {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::purgeLeftoverMessages(database, accountId());
-}
-
-void ServiceRoot::removeLeftOverMessageFilterAssignments() {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::purgeLeftoverMessageFilterAssignments(database, accountId());
-}
-
 QList<Message> ServiceRoot::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
@@ -696,11 +684,11 @@ void ServiceRoot::syncIn() {
     // are realised via physical database ID (not custom ID, this is due to performance).
     // We need to re-use all existing IDs to retain proper foreign key relations to articles and labels.
     // So we need to make sure that temporarily vacant ID is not taken by newly created feed or label.
-    QSqlDatabase db = qApp->database()->driver()->connection(objectName());
+    QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
     int next_primary_id_feeds = DatabaseQueries::highestPrimaryIdFeeds(db) + 1;
-    int next_primary_id_labels = DatabaseQueries::highestPrimaryIdFeeds(db) + 1;
+    int next_primary_id_labels = DatabaseQueries::highestPrimaryIdLabels(db) + 1;
 
-    qApp->database()->driver()->setForeignKeyChecksDisabled();
+    qApp->database()->driver()->setForeignKeyChecksDisabled(db);
 
     removeOldAccountFromDatabase(false, uses_remote_labels);
 
@@ -717,20 +705,16 @@ void ServiceRoot::syncIn() {
 
     // Model is clean, now store new tree into DB and
     // set primary IDs of the items.
-    DatabaseQueries::storeAccountTree(qApp->database()->driver()->connection(metaObject()->className()),
-                                      new_tree,
-                                      next_primary_id_feeds,
-                                      next_primary_id_labels,
-                                      accountId());
+    DatabaseQueries::storeAccountTree(db, new_tree, next_primary_id_feeds, next_primary_id_labels, accountId());
 
     // We have new feed, some feeds were maybe removed,
     // so remove left over messages and filter assignments.
-    removeLeftOverMessages();
-    removeLeftOverMessageFilterAssignments();
+    DatabaseQueries::purgeLeftoverMessages(db, accountId());
+    DatabaseQueries::purgeLeftoverMessageFilterAssignments(db, accountId());
 
     // TODO: remove leftover label assignments from labels which no longer exist.
 
-    qApp->database()->driver()->setForeignKeyChecksEnabled();
+    qApp->database()->driver()->setForeignKeyChecksEnabled(db);
 
     auto chi = new_tree->childItems();
 

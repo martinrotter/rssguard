@@ -45,8 +45,8 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
 
     virtual QString limitOffset(int limit, int offset = 0) const;
 
-    void setForeignKeyChecksEnabled();
-    void setForeignKeyChecksDisabled();
+    void setForeignKeyChecksEnabled(const QSqlDatabase& db);
+    void setForeignKeyChecksDisabled(const QSqlDatabase& db);
 
     virtual bool vacuumDatabase() = 0;
     virtual bool saveDatabase() = 0;
