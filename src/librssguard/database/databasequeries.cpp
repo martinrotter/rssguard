@@ -2302,7 +2302,7 @@ bool DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
 
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM Messages "
-                "WHERE account_id = :account_id AND feed NOT IN (SELECT custom_id FROM Feeds WHERE account_id = "
+                "WHERE account_id = :account_id AND feed NOT IN (SELECT id FROM Feeds WHERE account_id = "
                 ":account_id);"));
   q.bindValue(QSL(":account_id"), account_id);
 

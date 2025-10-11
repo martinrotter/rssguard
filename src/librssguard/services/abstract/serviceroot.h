@@ -274,20 +274,6 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void cleanAllItemsFromModel(bool clean_labels_too);
     void appendCommonNodes();
 
-    // Removes messages which do not belong to any
-    // existing feed.
-    //
-    // NOTE: This situation may happen if user deletes some feed
-    // from another machine and then performs sync-in on this machine.
-    void removeLeftOverMessages();
-
-    // Removes all msg. filter assignments which are (within this account)
-    // assigned to feed (via custom ID) which does not exist anymore.
-    //
-    // NOTE: This situation may happen if user deletes some feed
-    // from another machine and then performs sync-in on this machine.
-    void removeLeftOverMessageFilterAssignments();
-
     // Takes lists of feeds/categories and assembles them into the tree structure.
     void assembleCategories(const Assignment& categories);
     void assembleFeeds(const Assignment& feeds);
