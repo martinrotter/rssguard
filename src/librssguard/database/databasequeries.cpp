@@ -600,7 +600,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
                 "LIMIT 1 OFFSET :offset;"));
 
   q.bindValue(QSL(":offset"), amount_to_keep - 1);
-  q.bindValue(QSL(":feed"), feed->customId());
+  q.bindValue(QSL(":feed"), feed->id());
   q.bindValue(QSL(":account_id"), feed->account()->accountId());
 
   if (!q.exec()) {
@@ -641,7 +641,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
 
   q.bindValue(QSL(":is_important"), dont_remove_starred ? 1 : 2);
   q.bindValue(QSL(":is_read"), dont_remove_unread ? 0 : 2);
-  q.bindValue(QSL(":feed"), feed->customId());
+  q.bindValue(QSL(":feed"), feed->id());
   q.bindValue(QSL(":stamp"), last_kept_stamp);
   q.bindValue(QSL(":account_id"), feed->account()->accountId());
 
@@ -665,11 +665,11 @@ bool DatabaseQueries::purgeFeedArticles(const QSqlDatabase& database, const QLis
   auto feed_clauses = boolinq::from(feeds)
                         .select([](Feed* feed) {
                           return QSL("("
-                                     "Messages.feed = '%1' AND "
+                                     "Messages.feed = %1 AND "
                                      "Messages.account_id = %2 AND "
                                      "Messages.is_important = 0"
                                      ")")
-                            .arg(feed->customId(), QString::number(feed->account()->accountId()));
+                            .arg(QString::number(feed->id()), QString::number(feed->account()->accountId()));
                         })
                         .toStdList();
 
@@ -1521,7 +1521,7 @@ QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::
               .arg(query));
 
   q.bindValue(QSL(":account_id"), feed->account()->accountId());
-  q.bindValue(QSL(":feed"), feed->customId());
+  q.bindValue(QSL(":feed"), feed->id());
   q.exec();
 
   DatabaseFactory::logLastExecutedQuery(q);
@@ -2889,7 +2889,7 @@ bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account
   QSqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM Messages WHERE feed = :feed AND account_id = :account_id;"));
-  q.bindValue(QSL(":feed"), feed->customId());
+  q.bindValue(QSL(":feed"), feed->id());
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
@@ -2899,8 +2899,8 @@ bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account
   DatabaseFactory::logLastExecutedQuery(q);
 
   // Remove feed itself.
-  q.prepare(QSL("DELETE FROM Feeds WHERE custom_id = :feed AND account_id = :account_id;"));
-  q.bindValue(QSL(":feed"), feed->customId());
+  q.prepare(QSL("DELETE FROM Feeds WHERE custom_id = :custom_id AND account_id = :account_id;"));
+  q.bindValue(QSL(":custom_id"), feed->customId());
   q.bindValue(QSL(":account_id"), account_id);
 
   return q.exec() && purgeLeftoverMessageFilterAssignments(db, account_id);
@@ -2973,6 +2973,9 @@ void DatabaseQueries::moveItem(RootItem* item,
     case RootItem::Kind::ServiceRoot:
       table_name = QSL("Accounts");
       break;
+
+    default:
+      throw ApplicationException(QObject::tr("cannot move item of kind %1").arg(int(item->kind())));
   }
 
   if (item->kind() == RootItem::Kind::ServiceRoot) {
