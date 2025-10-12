@@ -147,12 +147,13 @@
 #define HTTP_CODE_TOO_MANY_REQUESTS 429
 #define HTTP_CODE_UNAVAILABLE       503
 
-#define HTTP_HEADERS_ACCEPT         "Accept"
-#define HTTP_HEADERS_CONTENT_TYPE   "Content-Type"
-#define HTTP_HEADERS_CONTENT_LENGTH "Content-Length"
-#define HTTP_HEADERS_AUTHORIZATION  "Authorization"
-#define HTTP_HEADERS_USER_AGENT     "User-Agent"
-#define HTTP_HEADERS_COOKIE         "Cookie"
+#define HTTP_HEADERS_ACCEPT          "Accept"
+#define HTTP_HEADERS_CONTENT_TYPE    "Content-Type"
+#define HTTP_HEADERS_ACCEPT_LANGUAGE "Accept-Language"
+#define HTTP_HEADERS_CONTENT_LENGTH  "Content-Length"
+#define HTTP_HEADERS_AUTHORIZATION   "Authorization"
+#define HTTP_HEADERS_USER_AGENT      "User-Agent"
+#define HTTP_HEADERS_COOKIE          "Cookie"
 
 #define LOGSEC_NETWORK        "network: "
 #define LOGSEC_FEEDMODEL      "feed-model: "
