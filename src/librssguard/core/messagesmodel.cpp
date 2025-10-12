@@ -23,7 +23,7 @@
 #include <QSqlField>
 
 #define RAD_COLOR  0, 180, 0
-#define BATCH_SIZE 1000
+#define BATCH_SIZE 10000
 
 MessagesModel::MessagesModel(QObject* parent)
   : QAbstractTableModel(parent), m_canFetchMoreArticles(false), m_view(nullptr),
