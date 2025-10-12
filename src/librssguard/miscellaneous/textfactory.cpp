@@ -43,7 +43,11 @@ QColor TextFactory::generateColorFromText(const QString& text) {
   QColor color(r, g, b);
 
   // Optionally, adjust brightness / saturation for visibility.
+#if QT_VERSION_MAJOR == 5
+  qreal h, s, l, a;
+#else
   float h, s, l, a;
+#endif
 
   color.getHslF(&h, &s, &l, &a);
   s = 0.5 + 0.5 * s; // ensure it's vivid enough
