@@ -53,6 +53,7 @@ class MessagePreviewer : public TabContent {
 
   private slots:
     void switchLabel(bool assign);
+    void showAllLabels();
     void markMessageAsRead();
     void markMessageAsUnread();
     void markMessageAsReadUnread(RootItem::ReadStatus read);
@@ -80,8 +81,9 @@ class MessagePreviewer : public TabContent {
     QAction* m_actionMarkRead;
     QAction* m_actionMarkUnread;
     QAction* m_actionSwitchImportance;
+    QAction* m_actionShowAllLabels;
     QAction* m_separator;
-    QList<LabelToolbarAction*> m_btnLabels;
+    QList<QAction*> m_btnLabels;
     ItemDetails* m_itemDetails;
     bool m_toolbarVisible;
 

@@ -76,16 +76,18 @@
     <file>./graphics/Breeze/actions/22/process-stop.svg</file>
     <file>./graphics/Breeze/actions/22/system-search.svg</file>
     <file>./graphics/Breeze/actions/22/system-upgrade.svg</file>
+    <file>./graphics/Breeze/actions/32/tag.svg</file>
+    <file>./graphics/Breeze/actions/22/tag-edit.svg</file>
     <file>./graphics/Breeze/actions/22/tag-folder.svg</file>
     <file>./graphics/Breeze/actions/22/tag-new.svg</file>
     <file>./graphics/Breeze/actions/22/tag-properties.svg</file>
     <file>./graphics/Breeze/mimetypes/64/text-x-gettext-translation.svg</file>
     <file>./graphics/Breeze/places/96/user-trash.svg</file>
     <file>./graphics/Breeze/actions/22/view-fullscreen.svg</file>
-    <file>./graphics/Breeze/actions/22/viewimage.svg</file>
     <file>./graphics/Breeze/actions/32/view-list-details.svg</file>
     <file>./graphics/Breeze/actions/32/view-refresh.svg</file>
     <file>./graphics/Breeze/actions/22/view-restore.svg</file>
+    <file>./graphics/Breeze/actions/22/viewimage.svg</file>
     <file>./graphics/Breeze/actions/32/window-close.svg</file>
     <file>./graphics/Breeze/index.theme</file>
     <file>./graphics/Breeze Dark/actions/32/application-exit.svg</file>
@@ -164,16 +166,18 @@
     <file>./graphics/Breeze Dark/actions/22/process-stop.svg</file>
     <file>./graphics/Breeze Dark/actions/22/system-search.svg</file>
     <file>./graphics/Breeze Dark/actions/22/system-upgrade.svg</file>
+    <file>./graphics/Breeze Dark/actions/32/tag.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/tag-edit.svg</file>
     <file>./graphics/Breeze Dark/actions/22/tag-folder.svg</file>
     <file>./graphics/Breeze Dark/actions/22/tag-new.svg</file>
     <file>./graphics/Breeze Dark/actions/22/tag-properties.svg</file>
     <file>./graphics/Breeze Dark/mimetypes/64/text-x-gettext-translation.svg</file>
     <file>./graphics/Breeze Dark/places/96/user-trash.svg</file>
     <file>./graphics/Breeze Dark/actions/22/view-fullscreen.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/viewimage.svg</file>
     <file>./graphics/Breeze Dark/actions/32/view-list-details.svg</file>
     <file>./graphics/Breeze Dark/actions/32/view-refresh.svg</file>
     <file>./graphics/Breeze Dark/actions/22/view-restore.svg</file>
+    <file>./graphics/Breeze Dark/actions/22/viewimage.svg</file>
     <file>./graphics/Breeze Dark/actions/32/window-close.svg</file>
     <file>./graphics/Breeze Dark/index.theme</file>
   </qresource>

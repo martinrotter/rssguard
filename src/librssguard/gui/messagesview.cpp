@@ -10,6 +10,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/labelsmenu.h"
+#include "gui/reusable/scrollablemenu.h"
 #include "gui/reusable/styleditemdelegate.h"
 #include "gui/reusable/treeviewcolumnsmenu.h"
 #include "gui/toolbars/messagestoolbar.h"
@@ -362,7 +363,6 @@ void MessagesView::contextMenuEvent(QContextMenuEvent* event) {
 
   if (!clicked_index.isValid()) {
     TreeViewColumnsMenu menu(header());
-
     menu.exec(event->globalPos());
   }
   else {

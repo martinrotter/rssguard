@@ -34,7 +34,7 @@ main() {
 
   local FOUND_ICON_FILES
   local ICON_THEMES=("Breeze" "Breeze Dark")
-  local ICON_NAMES=($(pcregrep.exe -r -h --om-separator=$'\n' -o1 -o2 '.+fromTheme\(QSL\(\"([\_\-\+a-z]+)\"\)(?:, QSL\(\"([\_\-\+a-z]+)\"\))?' "$ROOT_SRC_FOLDER" | sort -u))
+  local ICON_NAMES=($(pcregrep -r -h --buffer-size=1000K --om-separator=$'\n' -o1 -o2 '.+fromTheme\(QSL\(\"([\_\-\+a-z]+)\"\)(?:, QSL\(\"([\_\-\+a-z]+)\"\))?' "$ROOT_SRC_FOLDER" | sort -u))
 
   #cd $ROOT_SRC_FOLDER
   #echo "${ICON_NAMES[@]}"

@@ -11,6 +11,7 @@ class NonClosableMenu : public QMenu {
     explicit NonClosableMenu(const QString& title, QWidget* parent = nullptr);
 
   protected:
+    virtual bool shouldActionClose(QAction* action) const;
     virtual void keyPressEvent(QKeyEvent* event);
     virtual void mousePressEvent(QMouseEvent* event);
     virtual void mouseReleaseEvent(QMouseEvent* event);

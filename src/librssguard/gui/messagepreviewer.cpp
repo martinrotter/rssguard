@@ -4,6 +4,7 @@
 
 #include "database/databasequeries.h"
 #include "gui/itemdetails.h"
+#include "gui/reusable/scrollablemenu.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
@@ -39,12 +40,17 @@ void MessagePreviewer::createConnections() {
           &QAction::triggered,
           this,
           &MessagePreviewer::switchMessageImportance);
+  connect(m_actionShowAllLabels =
+            new QAction(qApp->icons()->fromTheme(QSL("tag"), QSL("tag-edit")), tr("Show all labels"), this),
+          &QAction::triggered,
+          this,
+          &MessagePreviewer::showAllLabels);
 }
 
 MessagePreviewer::MessagePreviewer(QWidget* parent)
   : TabContent(parent), m_mainLayout(new QGridLayout(this)), m_viewerLayout(new QStackedLayout()),
     m_toolBar(new QToolBar(this)), m_msgBrowser(new WebBrowser(nullptr, this)), m_separator(nullptr),
-    m_btnLabels(QList<LabelToolbarAction*>()), m_itemDetails(new ItemDetails(this)), m_toolbarVisible(true) {
+    m_itemDetails(new ItemDetails(this)), m_toolbarVisible(true) {
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
 
   // NOTE: To make sure that if we have many labels and short message
@@ -171,6 +177,12 @@ void MessagePreviewer::switchLabel(bool assign) {
   emit setMessageLabelIds(m_message.m_id, m_message.m_assignedLabelsIds);
 }
 
+void MessagePreviewer::showAllLabels() {
+  ScrollableMenu mm(tr("Labels"), this);
+  mm.setActions(m_btnLabels, false);
+  mm.exec(QCursor::pos());
+}
+
 void MessagePreviewer::markMessageAsRead() {
   markMessageAsReadUnread(RootItem::ReadStatus::Read);
 }
@@ -211,13 +223,12 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
                                                   ->connection(objectName(),
                                                                DatabaseDriver::DesiredStorageType::FromSettings),
                                                 QStringList() << QString::number(m_message.m_id));
-      m_root->account()
-        ->onAfterSwitchMessageImportance(m_root.data(),
-                                         QList<ImportanceChange>()
-                                           << ImportanceChange(m_message,
-                                                               m_message.m_isImportant
-                                                                 ? RootItem::Importance::NotImportant
-                                                                 : RootItem::Importance::Important));
+      m_root->account()->onAfterSwitchMessageImportance(m_root.data(),
+                                                        QList<ImportanceChange>()
+                                                          << ImportanceChange(m_message,
+                                                                              m_message.m_isImportant
+                                                                                ? RootItem::Importance::NotImportant
+                                                                                : RootItem::Importance::Important));
       emit markMessageImportant(m_message.m_id,
                                 checked ? RootItem::Importance::Important : RootItem::Importance::NotImportant);
 
@@ -244,19 +255,23 @@ void MessagePreviewer::updateLabels(bool only_clear) {
     m_toolBar->removeAction(m_separator);
   }
 
+  m_toolBar->removeAction(m_actionShowAllLabels);
+
   if (only_clear) {
     return;
   }
 
   if (m_root.data() != nullptr && !m_root.data()->account()->labelsNode()->labels().isEmpty()) {
     m_separator = m_toolBar->addSeparator();
+    m_toolBar->addAction(m_actionShowAllLabels);
+
     auto lbls = m_root.data()->account()->labelsNode()->labels();
 
     std::sort(lbls.begin(), lbls.end(), [](Label* lhs, Label* rhs) {
       return lhs->title().compare(rhs->title(), Qt::CaseSensitivity::CaseInsensitive) < 0;
     });
 
-    for (auto* label : lbls) {
+    for (auto* label : std::as_const(lbls)) {
       LabelToolbarAction* act_label = new LabelToolbarAction(this);
 
       act_label->setIcon(IconFactory::generateIcon(label->color()));
