@@ -11,6 +11,8 @@
 #include <QFont>
 #include <QIcon>
 
+#define BATCH_SIZE 10000
+
 class MessagesView;
 
 class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
@@ -38,8 +40,8 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     // Fetches available data to the model.
     // NOTE: This activates the SQL query and populates the model with new data.
     // Not all data are necessarily fetched, some might be lazy-fetched later.
-    void fetchInitialArticles();
-    void fetchMoreArticles();
+    void fetchInitialArticles(int batch_size = BATCH_SIZE);
+    void fetchMoreArticles(int batch_size = BATCH_SIZE);
 
     // Model implementation.
     virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
@@ -106,6 +108,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     static QString descriptionOfUnreadIcon(MessagesModel::MessageUnreadIcon type);
 
   public slots:
+    void fetchAllArticles();
     bool setMessageImportantById(int id, RootItem::Importance important);
     bool setMessageReadById(int id, RootItem::ReadStatus read);
     bool setMessageLabelsById(int id, const QStringList& label_ids);

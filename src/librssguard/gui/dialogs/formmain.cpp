@@ -211,6 +211,9 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionCopyUrlSelectedArticles;
   actions << m_ui->m_actionFocusSearchFeeds;
   actions << m_ui->m_actionFocusSearchArticles;
+  actions << m_ui->m_actionFocusFeedList;
+  actions << m_ui->m_actionFocusArticleList;
+  actions << m_ui->m_actionFocusArticlePreview;
   actions << m_ui->m_actionDeleteSelectedItem;
   actions << m_ui->m_actionServiceAdd;
   actions << m_ui->m_actionServiceEdit;
@@ -829,15 +832,23 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionFocusSearchFeeds,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsToolBar()->searchBox(),
-          [this]() {
-            tabWidget()->feedMessageViewer()->feedsToolBar()->searchBox()->setFocus();
-          });
+          QOverload<>::of(&SearchLineEdit::setFocus));
   connect(m_ui->m_actionFocusSearchArticles,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesToolBar()->searchBox(),
-          [this]() {
-            tabWidget()->feedMessageViewer()->messagesToolBar()->searchBox()->setFocus();
-          });
+          QOverload<>::of(&SearchLineEdit::setFocus));
+  connect(m_ui->m_actionFocusFeedList,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          QOverload<>::of(&FeedsView::setFocus));
+  connect(m_ui->m_actionFocusArticleList,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          QOverload<>::of(&MessagesView::setFocus));
+  connect(m_ui->m_actionFocusArticlePreview,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesBrowser(),
+          QOverload<>::of(&MessagePreviewer::setFocus));
   connect(m_ui->m_actionAddFeedIntoSelectedItem,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),

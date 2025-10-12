@@ -22,8 +22,7 @@
 #include <QSqlError>
 #include <QSqlField>
 
-#define RAD_COLOR  0, 180, 0
-#define BATCH_SIZE 10000
+#define RAD_COLOR 0, 180, 0
 
 MessagesModel::MessagesModel(QObject* parent)
   : QAbstractTableModel(parent), m_canFetchMoreArticles(false), m_view(nullptr),
@@ -164,16 +163,16 @@ void MessagesModel::setView(MessagesView* new_view) {
   });
 }
 
-void MessagesModel::fetchMoreArticles() {
+void MessagesModel::fetchMoreArticles(int batch_size) {
   qDebugNN << LOGSEC_MESSAGEMODEL << "We need to fetch more articles!";
 
   try {
     QElapsedTimer tmr;
     tmr.start();
 
-    auto more_messages = fetchMessages(BATCH_SIZE, m_messages.size());
+    auto more_messages = fetchMessages(batch_size, m_messages.size());
 
-    m_canFetchMoreArticles = more_messages.size() >= BATCH_SIZE;
+    m_canFetchMoreArticles = more_messages.size() >= batch_size;
 
     // NOTE: Some message data are NOT fetched from database. Fill them directly into the data here.
     for (Message& msg : more_messages) {
@@ -205,7 +204,11 @@ void MessagesModel::fetchMoreArticles() {
   }
 }
 
-void MessagesModel::fetchInitialArticles() {
+void MessagesModel::fetchAllArticles() {
+  fetchMoreArticles(0);
+}
+
+void MessagesModel::fetchInitialArticles(int batch_size) {
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulate started.";
 
   QElapsedTimer tmr;
@@ -216,8 +219,8 @@ void MessagesModel::fetchInitialArticles() {
   m_messages.clear();
 
   try {
-    m_messages = fetchMessages(BATCH_SIZE, 0, m_additionalArticleId);
-    m_canFetchMoreArticles = m_messages.size() >= BATCH_SIZE;
+    m_messages = fetchMessages(batch_size, 0, m_additionalArticleId);
+    m_canFetchMoreArticles = m_messages.size() >= batch_size;
 
     // NOTE: Some message data are NOT fetched from database. Fill them directly into the data here.
     for (Message& msg : m_messages) {

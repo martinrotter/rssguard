@@ -45,7 +45,7 @@
      <x>0</x>
      <y>0</y>
      <width>1296</width>
-     <height>22</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -84,7 +84,18 @@
      <addaction name="m_actionSwitchStatusBar"/>
      <addaction name="m_actionSwitchMessageViewerToolbars"/>
     </widget>
+    <widget class="QMenu" name="menu_Focus">
+     <property name="title">
+      <string>&amp;Focus</string>
+     </property>
+     <addaction name="m_actionFocusSearchFeeds"/>
+     <addaction name="m_actionFocusSearchArticles"/>
+     <addaction name="m_actionFocusFeedList"/>
+     <addaction name="m_actionFocusArticleList"/>
+     <addaction name="m_actionFocusArticlePreview"/>
+    </widget>
     <addaction name="m_menuShowHide"/>
+    <addaction name="menu_Focus"/>
     <addaction name="m_actionFullscreen"/>
     <addaction name="m_actionAlternateColorsInLists"/>
     <addaction name="m_actionSwitchMainWindow"/>
@@ -151,8 +162,6 @@
     <addaction name="m_actionMarkSelectedItemsAsUnread"/>
     <addaction name="m_actionPurgeSelectedItems"/>
     <addaction name="m_actionClearSelectedItems"/>
-    <addaction name="separator"/>
-    <addaction name="m_actionFocusSearchFeeds"/>
    </widget>
    <widget class="QMenu" name="m_menuMessages">
     <property name="title">
@@ -177,8 +186,6 @@
     <addaction name="m_actionRestoreSelectedMessages"/>
     <addaction name="separator"/>
     <addaction name="m_actionMessageFilters"/>
-    <addaction name="separator"/>
-    <addaction name="m_actionFocusSearchArticles"/>
    </widget>
    <widget class="QMenu" name="m_menuRecycleBin">
     <property name="title">
@@ -858,12 +865,12 @@
   </action>
   <action name="m_actionFocusSearchFeeds">
    <property name="text">
-    <string>Focus feeds search box</string>
+    <string>Focus feed search box</string>
    </property>
   </action>
   <action name="m_actionFocusSearchArticles">
    <property name="text">
-    <string>Focus articles search box</string>
+    <string>Focus article search box</string>
    </property>
   </action>
   <action name="m_actionBrowserScrollUp">
@@ -928,6 +935,21 @@
   <action name="m_actionReloadSkin">
    <property name="text">
     <string>Reload &amp;skin</string>
+   </property>
+  </action>
+  <action name="m_actionFocusFeedList">
+   <property name="text">
+    <string>Focus &amp;feed list</string>
+   </property>
+  </action>
+  <action name="m_actionFocusArticleList">
+   <property name="text">
+    <string>Focus &amp;article list</string>
+   </property>
+  </action>
+  <action name="m_actionFocusArticlePreview">
+   <property name="text">
+    <string>Focus article &amp;preview</string>
    </property>
   </action>
  </widget>
