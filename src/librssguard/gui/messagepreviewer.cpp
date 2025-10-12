@@ -67,7 +67,6 @@ MessagePreviewer::MessagePreviewer(QWidget* parent)
   m_mainLayout->addWidget(m_toolBar, 0, 0, -1, 1);
 
   setFocusProxy(m_msgBrowser);
-
   createConnections();
 
   m_actionSwitchImportance->setCheckable(true);
