@@ -234,11 +234,15 @@ void MessagesModel::fetchInitialArticles(int batch_size) {
   }
 
   endResetModel();
-  qApp->showGuiMessage(Notification::Event::NoEvent,
-                       GuiMessage(QString(),
-                                  tr("Loaded %1 articles in %2 miliseconds")
-                                    .arg(QString::number(m_messages.size()), QString::number(tmr.elapsed()))),
-                       GuiMessageDestination(false, false, true));
+
+  if (!m_messages.isEmpty()) {
+    qApp->showGuiMessage(Notification::Event::NoEvent,
+                         GuiMessage(QString(),
+                                    tr("Loaded %1 articles in %2 miliseconds")
+                                      .arg(QString::number(m_messages.size()), QString::number(tmr.elapsed()))),
+                         GuiMessageDestination(false, false, true));
+  }
+
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulated model!";
 }
 
