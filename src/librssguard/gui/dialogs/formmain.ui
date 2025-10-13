@@ -45,7 +45,7 @@
      <x>0</x>
      <y>0</y>
      <width>1296</width>
-     <height>30</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -177,6 +177,7 @@
     <addaction name="m_actionSelectNextMessage"/>
     <addaction name="m_actionSelectPreviousMessage"/>
     <addaction name="m_actionSelectNextUnreadMessage"/>
+    <addaction name="m_actionLoadAllArticles"/>
     <addaction name="separator"/>
     <addaction name="m_actionCopyUrlSelectedArticles"/>
     <addaction name="m_actionMarkSelectedMessagesAsRead"/>
@@ -238,7 +239,7 @@
     <string notr="true">Ctrl+Q</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::QuitRole</enum>
+    <enum>QAction::QuitRole</enum>
    </property>
   </action>
   <action name="m_actionSettings">
@@ -263,7 +264,7 @@
     <string notr="true"/>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::AboutRole</enum>
+    <enum>QAction::AboutRole</enum>
    </property>
   </action>
   <action name="m_actionFullscreen">
@@ -950,6 +951,11 @@
   <action name="m_actionFocusArticlePreview">
    <property name="text">
     <string>Focus article &amp;preview</string>
+   </property>
+  </action>
+  <action name="m_actionLoadAllArticles">
+   <property name="text">
+    <string>&amp;Load all remaining articles</string>
    </property>
   </action>
  </widget>

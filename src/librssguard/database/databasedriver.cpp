@@ -26,14 +26,18 @@ QSqlDatabase DatabaseDriver::threadSafeConnection(const QString& connection_name
 }
 
 QString DatabaseDriver::limitOffset(int limit, int offset) const {
-  if (limit <= 0) {
-    return QString();
+  if (limit > 0 && offset > 0) {
+    return QSL("LIMIT %1 OFFSET %2").arg(QString::number(limit), QString::number(offset));
   }
-  else if (offset <= 0) {
+  else if (limit > 0) {
     return QSL("LIMIT %1").arg(QString::number(limit));
   }
+  else if (offset > 0) {
+    // NOTE: This works for SQLite, but not for MariaDB, reimplemented in MariaDB driver.
+    return QSL("LIMIT -1 OFFSET %1").arg(QString::number(offset));
+  }
   else {
-    return QSL("LIMIT %1 OFFSET %2").arg(QString::number(limit), QString::number(offset));
+    return QString();
   }
 }
 

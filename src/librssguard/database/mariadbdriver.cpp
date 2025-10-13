@@ -297,3 +297,12 @@ QString MariaDbDriver::blob() const {
 QString MariaDbDriver::text() const {
   return QSL("MEDIUMTEXT");
 }
+
+QString MariaDbDriver::limitOffset(int limit, int offset) const {
+  if (offset > 0 && limit <= 0) {
+    return QSL("LIMIT 184467440737095 OFFSET %1").arg(QString::number(offset));
+  }
+  else {
+    return DatabaseDriver::limitOffset(limit, offset);
+  }
+}

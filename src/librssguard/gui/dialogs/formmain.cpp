@@ -196,6 +196,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSortFeedsAlphabetically;
   actions << m_ui->m_actionShowTreeBranches;
   actions << m_ui->m_actionAutoExpandItemsWhenSelected;
+  actions << m_ui->m_actionLoadAllArticles;
   actions << m_ui->m_actionMarkSelectedMessagesAsRead;
   actions << m_ui->m_actionMarkSelectedMessagesAsUnread;
   actions << m_ui->m_actionSwitchImportanceOfSelectedMessages;
@@ -514,6 +515,7 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionExpandCollapseItemRecursively->setEnabled(category_selected || service_selected);
   m_ui->m_actionServiceDelete->setEnabled(service_selected);
   m_ui->m_actionServiceEdit->setEnabled(service_selected);
+  m_ui->m_actionLoadAllArticles->setEnabled(anything_selected);
   m_ui->m_actionAddFeedIntoSelectedItem->setEnabled(anything_selected);
   m_ui->m_actionAddCategoryIntoSelectedItem->setEnabled(anything_selected);
   m_ui->m_menuAddItem->setEnabled(!critical_action_running);
@@ -635,6 +637,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionEmptyAllRecycleBins->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
   m_ui->m_actionServiceAdd->setIcon(icon_theme_factory->fromTheme(QSL("list-add")));
   m_ui->m_actionServiceEdit->setIcon(icon_theme_factory->fromTheme(QSL("document-edit")));
+  m_ui->m_actionLoadAllArticles->setIcon(icon_theme_factory->fromTheme(QSL("download")));
   m_ui->m_actionServiceDelete->setIcon(icon_theme_factory->fromTheme(QSL("list-remove")));
   m_ui->m_actionAddFeedIntoSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("application-rss+xml")));
   m_ui->m_actionAddCategoryIntoSelectedItem->setIcon(icon_theme_factory->fromTheme(QSL("folder")));
@@ -861,6 +864,10 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
           &MessagesView::switchSelectedMessagesImportance);
+  connect(m_ui->m_actionLoadAllArticles,
+          &QAction::triggered,
+          qApp->feedReader()->messagesModel(),
+          &MessagesModel::fetchAllArticles);
   connect(m_ui->m_actionDeleteSelectedMessages,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),

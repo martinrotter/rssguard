@@ -10,7 +10,6 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/labelsmenu.h"
-#include "gui/reusable/scrollablemenu.h"
 #include "gui/reusable/styleditemdelegate.h"
 #include "gui/reusable/treeviewcolumnsmenu.h"
 #include "gui/toolbars/messagestoolbar.h"
@@ -258,8 +257,11 @@ void MessagesView::reactOnExternalDataChange(RootItem* item, FeedsModel::Externa
       break;
     }
 
-    case FeedsModel::ExternalDataChange::AccountSyncedIn:
     case FeedsModel::ExternalDataChange::ListFilterChanged:
+      reselectArticle(true, false, m_sourceModel->additionalArticleId());
+      break;
+
+    case FeedsModel::ExternalDataChange::AccountSyncedIn:
     case FeedsModel::ExternalDataChange::DatabaseCleaned:
     case FeedsModel::ExternalDataChange::RecycleBinRestored:
     case FeedsModel::ExternalDataChange::FeedFetchFinished:
