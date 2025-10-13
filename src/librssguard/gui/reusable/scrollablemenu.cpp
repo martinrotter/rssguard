@@ -5,6 +5,8 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
+#include <cmath>
+
 #include <QWheelEvent>
 
 #define ACTIONS_PAGE_SIZE 10
