@@ -542,8 +542,6 @@ if(WIN32)
   list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
 endif()
 
-find_package(Qt6 REQUIRED COMPONENTS Core)
-
 add_library(rssguard SHARED ${SOURCES} ${QM_FILES})
 
 # Bundle icons on some platforms which do not provide system-wide icon themes.
@@ -699,7 +697,6 @@ elseif(WIN32)
     shell32
     odbc32
   )
-target_link_libraries(rssguard PRIVATE Qt6::Core)
 endif()
 
 if((WIN32 AND NOT BUILD_MSYS2) OR OS2)
