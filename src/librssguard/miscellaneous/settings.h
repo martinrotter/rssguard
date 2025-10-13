@@ -131,6 +131,9 @@ namespace Messages {
   KEY ShapeAa;
   VALUE(bool) ShapeAaDef;
 
+  KEY ArticleListLazyLoading;
+  VALUE(bool) ArticleListLazyLoadingDef;
+
   KEY ArticleMarkOnSelection;
   VALUE(int) ArticleMarkOnSelectionDef;
 

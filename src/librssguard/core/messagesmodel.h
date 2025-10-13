@@ -72,6 +72,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     void setupFonts();
     void updateDateFormat();
     void updateFeedIconsDisplay();
+    void reloadLazyLoading();
     void reloadWholeLayout();
     void reloadChangedLayout(const QModelIndexList& indices);
 
@@ -106,6 +107,8 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     static QIcon generateIconForScore(double score);
     static QIcon generateUnreadIcon();
     static QString descriptionOfUnreadIcon(MessagesModel::MessageUnreadIcon type);
+
+    bool lazyLoading() const;
 
   public slots:
     void fetchAllArticles();
@@ -143,6 +146,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     MessageUnreadIcon m_unreadIconType;
     bool m_multilineListItems;
     int m_additionalArticleId;
+    bool m_lazyLoading;
 };
 
 Q_DECLARE_METATYPE(MessagesModel::MessageHighlighter)

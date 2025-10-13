@@ -38,6 +38,14 @@ void SettingsFeedsMessages::loadUi() {
 
   initializeMessageDateFormats();
 
+  m_ui->m_helpArticlesLazyLoading
+    ->setHelpText(tr("If enabled then %1 loads articles into article list on demand as you scroll throught the "
+                     "list.\n\n"
+                     "This can tremendously speed up the application if you have hundreds of thousands articles, but "
+                     "it can hinder your article list filtering because not all articles are loaded, thus your "
+                     "filtering could be off.")
+                    .arg(QSL(APP_NAME)),
+                  true);
   m_ui->m_helpCountsFeedsFormat
     ->setHelpText(tr("Enter format for count of articles displayed next to each "
                      "feed/category in feed list. Use \"%all\" and \"%unread\" strings "
@@ -201,7 +209,7 @@ void SettingsFeedsMessages::loadUi() {
           this,
           &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbUnreadWhenUpdated, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
-
+  connect(m_ui->m_checkArticleListLazyLoading, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbMessagesTimeFormat, &QComboBox::currentTextChanged, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbMessagesDateTimeFormatForDatesOnly,
           &QComboBox::currentTextChanged,
@@ -301,6 +309,8 @@ MessagesView::ArticleMarkingPolicy SettingsFeedsMessages::selectedArticleMarking
 void SettingsFeedsMessages::loadSettings() {
   onBeginLoadSettings();
 
+  m_ui->m_checkArticleListLazyLoading
+    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::ArticleListLazyLoading)).toBool());
   m_ui->m_cbUnreadWhenUpdated
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool());
   m_ui->m_cmbArticleMarkingPolicy
@@ -418,6 +428,9 @@ void SettingsFeedsMessages::loadSettings() {
 void SettingsFeedsMessages::saveSettings() {
   onBeginSaveSettings();
 
+  settings()->setValue(GROUP(Messages),
+                       Messages::ArticleListLazyLoading,
+                       m_ui->m_checkArticleListLazyLoading->isChecked());
   settings()->setValue(GROUP(Messages), Messages::MarkUnreadOnUpdated, m_ui->m_cbUnreadWhenUpdated->isChecked());
   settings()->setValue(GROUP(Messages),
                        Messages::ArticleMarkOnSelection,
@@ -539,6 +552,7 @@ void SettingsFeedsMessages::saveSettings() {
   qApp->feedReader()->feedsModel()->setupBehaviorDuringFetching();
   qApp->feedReader()->feedsModel()->reloadWholeLayout();
 
+  qApp->feedReader()->messagesModel()->reloadLazyLoading();
   qApp->feedReader()->messagesModel()->updateDateFormat();
   qApp->feedReader()->messagesModel()->reloadWholeLayout();
 

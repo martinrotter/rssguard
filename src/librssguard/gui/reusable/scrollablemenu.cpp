@@ -19,7 +19,7 @@ ScrollableMenu::ScrollableMenu(const QString& title, QWidget* parent) : NonClosa
   initialize();
 }
 
-void ScrollableMenu::setActions(const QList<QAction*> actions, bool close_on_trigger) {
+void ScrollableMenu::setActions(const QList<QAction*>& actions, bool close_on_trigger) {
   m_actions = actions;
   m_actionsClosing = close_on_trigger;
 

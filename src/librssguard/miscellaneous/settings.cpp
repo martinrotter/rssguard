@@ -115,6 +115,9 @@ DVALUE(bool) Messages::FontAaDef = true;
 DKEY Messages::ShapeAa = "shape_aa";
 DVALUE(bool) Messages::ShapeAaDef = true;
 
+DKEY Messages::ArticleListLazyLoading = "article_list_lazy_loading";
+DVALUE(bool) Messages::ArticleListLazyLoadingDef = false;
+
 DKEY Messages::DateTimeToAvoidArticle = "datetime_to_avoid_article";
 DVALUE(QDateTime) Messages::DateTimeToAvoidArticleDef = QDateTime::currentDateTime();
 

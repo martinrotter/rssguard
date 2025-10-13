@@ -30,10 +30,10 @@ MessagesModel::MessagesModel(QObject* parent)
     m_customTimeFormat(QString()), m_customFormatForDatesOnly(QString()), m_newerArticlesRelativeTime(-1),
     m_selectedItem(nullptr), m_unreadIconType(MessageUnreadIcon::Dot),
     m_multilineListItems(qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()),
-    m_additionalArticleId(0) {
+    m_additionalArticleId(0), m_lazyLoading(false) {
   updateFeedIconsDisplay();
   updateDateFormat();
-
+  reloadLazyLoading();
   setupFonts();
   setupIcons();
   setupHeaderData();
@@ -219,7 +219,7 @@ void MessagesModel::fetchInitialArticles(int batch_size) {
   m_messages.clear();
 
   try {
-    m_messages = fetchMessages(batch_size, 0, m_additionalArticleId);
+    m_messages = fetchMessages(m_lazyLoading ? batch_size : 0, 0, m_additionalArticleId);
     m_canFetchMoreArticles = m_messages.size() >= batch_size;
 
     // NOTE: Some message data are NOT fetched from database. Fill them directly into the data here.
@@ -403,6 +403,10 @@ void MessagesModel::updateFeedIconsDisplay() {
     MessageUnreadIcon(qApp->settings()->value(GROUP(Messages), SETTING(Messages::UnreadIconType)).toInt());
 }
 
+void MessagesModel::reloadLazyLoading() {
+  m_lazyLoading = qApp->settings()->value(GROUP(Messages), SETTING(Messages::ArticleListLazyLoading)).toBool();
+}
+
 void MessagesModel::reloadWholeLayout() {
   emit layoutAboutToBeChanged();
   emit layoutChanged();
@@ -483,6 +487,10 @@ void MessagesModel::setupHeaderData() {
                 << tr("Custom hash of the article.") << tr("Name of feed of the article.")
                 << tr("Layout direction of the article") << tr("Indication of enclosures presence within the article.")
                 << tr("Labels assigned to the article.") << tr("Label IDs assigned to the article.");
+}
+
+bool MessagesModel::lazyLoading() const {
+  return m_lazyLoading;
 }
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
