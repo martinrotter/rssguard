@@ -130,3 +130,42 @@ CREATE TABLE Probes (
   UNIQUE (account_id, name),
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );
+-- !
+-- !
+-- !
+CREATE INDEX idx_Probes1 ON Probes (account_id);
+-- !
+-- !
+CREATE INDEX idx_Mfif1 ON MessageFiltersInFeeds (account_id);
+-- !
+CREATE INDEX idx_Mfif2 ON MessageFiltersInFeeds (feed);
+-- !
+CREATE INDEX idx_Mfif3 ON MessageFiltersInFeeds (filter);
+-- !
+-- !
+CREATE INDEX idx_Labels1 ON Labels (account_id);
+-- !
+CREATE INDEX idx_Labels2 ON Labels (account_id, custom_id);
+-- !
+-- !
+CREATE INDEX idx_Categories1 ON Categories (account_id);
+-- !
+CREATE INDEX idx_Categories2 ON Categories (parent_id);
+-- !
+CREATE INDEX idx_Categories3 ON Categories (account_id, ordr);
+-- !
+-- !
+CREATE INDEX idx_Feeds1 ON Feeds (account_id);
+-- !
+CREATE INDEX idx_Feeds2 ON Feeds (category);
+-- !
+CREATE INDEX idx_Feeds3 ON Feeds (custom_id);
+-- !
+CREATE INDEX idx_Feeds4 ON Feeds (account_id, ordr);
+-- !
+-- !
+CREATE INDEX idx_Messages1 ON Messages (account_id);
+-- !
+CREATE INDEX idx_Messages2 ON Messages (feed);
+-- !
+CREATE INDEX idx_Messages3 ON Messages (custom_id);
