@@ -23,7 +23,7 @@
   message.m_isImportant = record.value(MSG_DB_IMPORTANT_INDEX).toBool();                                           \
   message.m_isDeleted = record.value(MSG_DB_DELETED_INDEX).toBool();                                               \
   message.m_isPdeleted = record.value(MSG_DB_PDELETED_INDEX).toBool();                                             \
-  message.m_feedId = record.value(MSG_DB_FEED_ID_INDEX).toInt();                                            \
+  message.m_feedId = record.value(MSG_DB_FEED_ID_INDEX).toInt();                                                   \
   message.m_feedTitle = record.value(MSG_DB_FEED_TITLE_INDEX).toString();                                          \
   message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();                                                   \
   message.m_url = record.value(MSG_DB_URL_INDEX).toString();                                                       \
@@ -212,18 +212,6 @@ Message Message::fromSqlQuery(const QSqlQuery& record) {
   Message message;
 
   MSG_FROM_REC
-
-  return message;
-}
-
-Message Message::fromSqlRecord(const QSqlRecord& record, bool* result) {
-  Message message;
-
-  MSG_FROM_REC
-
-  if (result != nullptr) {
-    *result = true;
-  }
 
   return message;
 }

@@ -77,7 +77,6 @@ class RSSGUARD_DLLSPEC Message {
     void sanitize(const Feed* feed, bool fix_future_datetimes);
 
     static Message fromSqlQuery(const QSqlQuery& record);
-    static Message fromSqlRecord(const QSqlRecord& record, bool* result = nullptr);
     static QString generateRawAtomContents(const Message& msg);
 
   public:
