@@ -72,7 +72,7 @@ class RSSGUARD_DLLSPEC Message {
   public:
     explicit Message();
     Message(const Message& other);
-    ~Message();
+    //~Message();
 
     void sanitize(const Feed* feed, bool fix_future_datetimes);
 

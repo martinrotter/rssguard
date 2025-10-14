@@ -142,13 +142,13 @@ Message::Message(const Message& other) {
   m_assignedLabelsIds = other.m_assignedLabelsIds;
 }
 
-Message::~Message() {
+/*Message::~Message() {
   // qDeleteAll(m_categories);
   // m_categories.clear();
 
   // qDeleteAll(m_enclosures);
   // m_enclosures.clear();
-}
+}*/
 
 void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   static QRegularExpression reg_spaces(QString::fromUtf8(QByteArray("[\xE2\x80\xAF]")));

@@ -211,21 +211,31 @@ void MessagesModel::fetchAllArticles() {
 void MessagesModel::fetchInitialArticles(int batch_size) {
   qDebugNN << LOGSEC_MESSAGEMODEL << "Repopulate started.";
 
+  qint64 time_clear, time_fetch, time_fill;
+
   QElapsedTimer tmr;
   tmr.start();
 
   beginResetModel();
   m_canFetchMoreArticles = false;
   m_messages.clear();
+  time_clear = tmr.elapsed();
+  tmr.restart();
 
   try {
     m_messages = fetchMessages(m_lazyLoading ? batch_size : 0, 0, m_additionalArticleId);
     m_canFetchMoreArticles = m_messages.size() >= batch_size;
 
+    time_fetch = tmr.elapsed();
+    tmr.restart();
+
     // NOTE: Some message data are NOT fetched from database. Fill them directly into the data here.
     for (Message& msg : m_messages) {
       fillComputedMessageData(&msg);
     }
+
+    time_fill = tmr.elapsed();
+    tmr.restart();
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_MESSAGEMODEL << "Error when setting new msg view query:" << QUOTE_W_SPACE_DOT(ex.message());
@@ -238,8 +248,14 @@ void MessagesModel::fetchInitialArticles(int batch_size) {
   if (!m_messages.isEmpty()) {
     qApp->showGuiMessage(Notification::Event::NoEvent,
                          GuiMessage(QString(),
-                                    tr("Loaded %1 articles in %2 miliseconds")
-                                      .arg(QString::number(m_messages.size()), QString::number(tmr.elapsed()))),
+                                    tr("Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, "
+                                       "%5 "
+                                       "ms to fill dynamic data)")
+                                      .arg(QString::number(m_messages.size()),
+                                           QString::number(time_clear + time_fill + time_fetch),
+                                           QString::number(time_clear),
+                                           QString::number(time_fetch),
+                                           QString::number(time_fill))),
                          GuiMessageDestination(false, false, true));
   }
 
