@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>StandardFeedNetworkDetails</class>
+ <widget class="QWidget" name="StandardFeedNetworkDetails">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>696</width>
+    <height>459</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbEnableHttp2"/>
+     </item>
+     <item>
+      <layout class="QGridLayout" name="gridLayout_2">
+       <item row="0" column="1">
+        <widget class="QComboBox" name="m_cmbEnableHttp2">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="m_lblEnableHttp2">
+         <property name="text">
+          <string>Enable HTTP/2</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_cmbEnableHttp2</cstring>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="m_gbProxy">
+     <property name="title">
+      <string>Network proxy</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="MultiFeedEditCheckBox" name="m_mcbNetworkProxy"/>
+      </item>
+      <item>
+       <widget class="NetworkProxyDetails" name="m_wdgNetworkProxy" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="m_gbHttpHeaders">
+     <property name="title">
+      <string>HTTP headers</string>
+     </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="MultiFeedEditCheckBox" name="m_mcbHttpHeaders"/>
+      </item>
+      <item row="0" column="1">
+       <widget class="QPlainTextEdit" name="m_txtHttpHeaders"/>
+      </item>
+      <item row="1" column="0" colspan="2">
+       <widget class="HelpSpoiler" name="m_helpHttpHeaders" native="true"/>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="m_gbAuthentication">
+     <property name="title">
+      <string>Authentication</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="AuthenticationDetails" name="m_wdgAuthentication" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>1</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>MultiFeedEditCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>multifeededitcheckbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>NetworkProxyDetails</class>
+   <extends>QWidget</extends>
+   <header>networkproxydetails.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>AuthenticationDetails</class>
+   <extends>QWidget</extends>
+   <header>authenticationdetails.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>m_mcbEnableHttp2</tabstop>
+  <tabstop>m_cmbEnableHttp2</tabstop>
+  <tabstop>m_mcbNetworkProxy</tabstop>
+  <tabstop>m_txtHttpHeaders</tabstop>
+  <tabstop>m_mcbHttpHeaders</tabstop>
+ </tabstops>
+ <resources/>
+ <connections/>
+</ui>

@@ -48,6 +48,7 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_dontUseRawXmlSaving = false;
   m_http2Status = NetworkFactory::Http2Status::DontSet;
   m_fetchCommentsEnabled = false;
+  m_useAccountProxy = true;
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
@@ -62,6 +63,8 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_fetchCommentsEnabled = other.fetchCommentsEnabled();
   m_httpHeaders = other.httpHeaders();
   m_http2Status = other.http2Status();
+  m_proxy = other.networkProxy();
+  m_useAccountProxy = other.useAccountProxy();
 }
 
 QList<QAction*> StandardFeed::contextMenuFeedsList() {
@@ -177,6 +180,13 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("dont_use_raw_xml_saving")] = dontUseRawXmlSaving();
   data[QSL("http_headers")] = httpHeaders();
   data[QSL("http2_status")] = int(http2Status());
+  data[QSL("use_account_proxy")] = useAccountProxy();
+
+  data[QSL("proxy_type")] = int(networkProxy().type());
+  data[QSL("proxy_host")] = networkProxy().hostName();
+  data[QSL("proxy_port")] = networkProxy().port();
+  data[QSL("proxy_username")] = networkProxy().user();
+  data[QSL("proxy_password")] = TextFactory::encrypt(networkProxy().password());
 
   return data;
 }
@@ -193,6 +203,16 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setDontUseRawXmlSaving(data[QSL("dont_use_raw_xml_saving")].toBool());
   setHttpHeaders(data[QSL("http_headers")].toHash());
   setHttp2Status(NetworkFactory::Http2Status(data[QSL("http2_status")].toInt()));
+
+  setUseAccountProxy(data[QSL("use_account_proxy")].toBool());
+
+  QNetworkProxy proxy(QNetworkProxy::ProxyType(data[QSL("proxy_type")].toInt()),
+                      data[QSL("proxy_host")].toString(),
+                      data[QSL("proxy_port")].toInt(),
+                      data[QSL("proxy_username")].toString(),
+                      TextFactory::decrypt(data[QSL("proxy_password")].toString()));
+
+  setNetworkProxy(proxy);
 }
 
 QString StandardFeed::typeToString(StandardFeed::Type type) {
@@ -471,6 +491,22 @@ QString StandardFeed::getHttpDescription() const {
     default:
       return tr("unknown state");
   }
+}
+
+QNetworkProxy StandardFeed::networkProxy() const {
+  return m_proxy;
+}
+
+void StandardFeed::setNetworkProxy(const QNetworkProxy& new_proxy) {
+  m_proxy = new_proxy;
+}
+
+bool StandardFeed::useAccountProxy() const {
+  return m_useAccountProxy;
+}
+
+void StandardFeed::setUseAccountProxy(bool use) {
+  m_useAccountProxy = use;
 }
 
 bool StandardFeed::fetchCommentsEnabled() const {

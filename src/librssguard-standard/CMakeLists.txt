@@ -15,6 +15,8 @@ set(SOURCES
   src/gui/standardaccountdetails.h
   src/gui/standardfeeddetails.cpp
   src/gui/standardfeeddetails.h
+  src/gui/standardfeednetworkdetails.cpp
+  src/gui/standardfeednetworkdetails.h
   src/gui/standardfeedexpdetails.cpp
   src/gui/standardfeedexpdetails.h
   src/parsers/atomparser.cpp
@@ -50,6 +52,7 @@ set(UI_FILES
   src/gui/formstandardimportexport.ui
   src/gui/standardaccountdetails.ui
   src/gui/standardfeeddetails.ui
+  src/gui/standardfeednetworkdetails.ui
   src/gui/standardfeedexpdetails.ui
 )
 

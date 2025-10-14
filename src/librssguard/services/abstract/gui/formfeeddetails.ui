@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>500</width>
-    <height>590</height>
+    <height>580</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,12 +19,12 @@
      <property name="currentIndex">
       <number>0</number>
      </property>
-     <widget class="QWidget" name="tabUpdating">
+     <widget class="QWidget" name="m_tpCommon">
       <attribute name="title">
-       <string>Articles</string>
+       <string>Common</string>
       </attribute>
-      <layout class="QFormLayout" name="formLayout">
-       <item row="0" column="0" colspan="2">
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
           <widget class="MultiFeedEditCheckBox" name="m_mcbAutoDownloading"/>
@@ -73,17 +73,10 @@
          </item>
         </layout>
        </item>
-       <item row="1" column="0" colspan="2">
+       <item>
         <widget class="ArticleAmountControl" name="m_wdgArticleLimiting" native="true"/>
        </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="tabMisc">
-      <attribute name="title">
-       <string>Miscellaneous</string>
-      </attribute>
-      <layout class="QFormLayout" name="formLayout_2">
-       <item row="0" column="0" colspan="2">
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
          <item>
           <widget class="MultiFeedEditCheckBox" name="m_mcbSuppressFeed"/>
@@ -97,7 +90,7 @@
          </item>
         </layout>
        </item>
-       <item row="1" column="0" colspan="2">
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
           <widget class="MultiFeedEditCheckBox" name="m_mcbDisableFeed"/>
@@ -111,7 +104,7 @@
          </item>
         </layout>
        </item>
-       <item row="2" column="0" colspan="2">
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_7">
          <item>
           <widget class="MultiFeedEditCheckBox" name="m_mcbFeedRtl"/>
@@ -132,6 +125,19 @@
          </item>
         </layout>
        </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </widget>
     </widget>
@@ -139,10 +145,10 @@
    <item>
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
-      <enum>Qt::Orientation::Horizontal</enum>
+      <enum>Qt::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::StandardButton::Cancel|QDialogButtonBox::StandardButton::Ok</set>
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
      </property>
      <property name="centerButtons">
       <bool>false</bool>
@@ -174,11 +180,6 @@
   <tabstop>m_mcbAutoDownloading</tabstop>
   <tabstop>m_cmbAutoUpdateType</tabstop>
   <tabstop>m_spinAutoUpdateInterval</tabstop>
-  <tabstop>m_mcbSuppressFeed</tabstop>
-  <tabstop>m_cbSuppressFeed</tabstop>
-  <tabstop>m_mcbDisableFeed</tabstop>
-  <tabstop>m_cbDisableFeed</tabstop>
-  <tabstop>m_mcbFeedRtl</tabstop>
  </tabstops>
  <resources/>
  <connections>

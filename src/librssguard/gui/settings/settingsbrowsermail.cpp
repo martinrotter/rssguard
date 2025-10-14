@@ -23,9 +23,11 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
 
 void SettingsBrowserMail::loadUi() {
   m_ui = new Ui::SettingsBrowserMail();
-  m_proxyDetails = new NetworkProxyDetails(false, this);
+  m_proxyDetails = new NetworkProxyDetails(this);
 
   m_ui->setupUi(this);
+
+  m_proxyDetails->setup(false, false);
 
   m_ui->m_tabBrowserProxy->insertTab(1, m_proxyDetails, tr("Network proxy"));
 

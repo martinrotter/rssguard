@@ -15,6 +15,13 @@
 
 class MessageFilter;
 
+struct FeedUpdateRequest {
+    Feed* feed = nullptr;
+    ServiceRoot* account = nullptr;
+    QHash<ServiceRoot::BagOfMessages, QStringList> stated_messages;
+    QHash<QString, QStringList> tagged_messages;
+};
+
 // Represents results of batch feed updates.
 class FeedDownloadResults {
   public:
@@ -27,17 +34,14 @@ class FeedDownloadResults {
     void appendErroredFeed(Feed* feed, const QString& error);
     void clear();
 
+    QList<FeedUpdateRequest> feedRequests() const;
+    void setFeedRequests(const QList<FeedUpdateRequest>& req);
+
   private:
     QHash<Feed*, QList<Message>> m_updatedFeeds;
     QHash<Feed*, QString> m_erroredFeeds;
     QSet<ServiceRoot*> m_updatedAccounts;
-};
-
-struct FeedUpdateRequest {
-    Feed* feed = nullptr;
-    ServiceRoot* account = nullptr;
-    QHash<ServiceRoot::BagOfMessages, QStringList> stated_messages;
-    QHash<QString, QStringList> tagged_messages;
+    QList<FeedUpdateRequest> m_feedRequests;
 };
 
 struct FeedUpdateResult {

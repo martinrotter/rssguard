@@ -227,8 +227,13 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                                    Feed* feed,
                                    const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                    const QHash<QString, QStringList>& tagged_messages) {
+  // NOTE: Now, we need to make "good enough" decision here.
+  // If user fetches very small amount of feeds, feed to count recalculations feed by feed.
+  // On the other hand, if user does by feed update, it makes sense to update
+  // whole account counts globally as it is faster (less SQL queries).
   const bool update_feed_list =
-    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
+    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool() &&
+    m_feeds.size() <= 25;
 
   if (checkIfFeedOverloaded(feed)) {
     qWarningNN << LOGSEC_CORE << "Feed with source" << QUOTE_W_SPACE(feed->source())
@@ -439,6 +444,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 void FeedDownloader::finalizeUpdate() {
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Finished feed updates in thread" << QUOTE_W_SPACE_DOT(getThreadID());
 
+  m_results.setFeedRequests(m_feeds);
   m_feeds.clear();
 
   // Update of feeds has finished.
@@ -598,6 +604,14 @@ void FeedDownloadResults::appendErroredFeed(Feed* feed, const QString& error) {
 void FeedDownloadResults::clear() {
   m_updatedFeeds.clear();
   m_erroredFeeds.clear();
+}
+
+QList<FeedUpdateRequest> FeedDownloadResults::feedRequests() const {
+  return m_feedRequests;
+}
+
+void FeedDownloadResults::setFeedRequests(const QList<FeedUpdateRequest>& req) {
+  m_feedRequests = req;
 }
 
 QSet<ServiceRoot*> FeedDownloadResults::updatedAccounts() const {

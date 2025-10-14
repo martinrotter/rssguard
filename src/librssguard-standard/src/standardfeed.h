@@ -129,6 +129,12 @@ class StandardFeed : public Feed {
     bool fetchCommentsEnabled() const;
     void setFetchCommentsEnabled(bool enabled);
 
+    bool useAccountProxy() const;
+    void setUseAccountProxy(bool use);
+
+    QNetworkProxy networkProxy() const;
+    void setNetworkProxy(const QNetworkProxy &new_proxy);
+
   public slots:
     void fetchMetadataForItself();
 
@@ -152,6 +158,12 @@ class StandardFeed : public Feed {
     QVariantHash m_httpHeaders;
     NetworkFactory::Http2Status m_http2Status;
     bool m_fetchCommentsEnabled;
+
+    QNetworkProxy m_proxy;
+
+    // NOTE: All other proxy types are covered by QNetworkProxy, escpecially no proxy, system proxy and application
+    // proxy.
+    bool m_useAccountProxy;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)

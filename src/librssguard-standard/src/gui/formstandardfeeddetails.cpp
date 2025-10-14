@@ -4,16 +4,17 @@
 
 #include "src/gui/standardfeeddetails.h"
 #include "src/gui/standardfeedexpdetails.h"
+#include "src/gui/standardfeednetworkdetails.h"
 #include "src/standardfeed.h"
+#include "src/standardserviceroot.h"
 
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/gui/reusable/networkproxydetails.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/network-web/webfactory.h>
 #include <librssguard/services/abstract/category.h>
-#include <librssguard/services/abstract/gui/authenticationdetails.h>
-#include <librssguard/services/abstract/gui/httpheadersdetails.h>
 #include <librssguard/services/abstract/serviceroot.h>
 
 #include <QComboBox>
@@ -26,12 +27,11 @@ FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root,
                                                  const QString& url,
                                                  QWidget* parent)
   : FormFeedDetails(service_root, parent), m_standardFeedDetails(new StandardFeedDetails(this)),
-    m_standardFeedExpDetails(new StandardFeedExpDetails(this)), m_authDetails(new AuthenticationDetails(false, this)),
-    m_headersDetails(new HttpHeadersDetails(this)), m_parentToSelect(parent_to_select), m_urlToProcess(url) {
+    m_standardFeedExpDetails(new StandardFeedExpDetails(this)), m_networkDetails(new StandardFeedNetworkDetails(this)),
+    m_parentToSelect(parent_to_select), m_urlToProcess(url) {
   insertCustomTab(m_standardFeedDetails, tr("General"), 0);
-  insertCustomTab(m_headersDetails, tr("HTTP headers"), 2);
-  insertCustomTab(m_authDetails, tr("Auth"), 2);
-  insertCustomTab(m_standardFeedExpDetails, tr("Additional"));
+  insertCustomTab(m_networkDetails, tr("Network"));
+  insertCustomTab(m_standardFeedExpDetails, tr("Experimental"));
   activateTab(0);
 
   connect(m_standardFeedDetails->m_ui.m_btnFetchMetadata,
@@ -52,12 +52,12 @@ void FormStandardFeedDetails::guessFeed() {
                                    m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText(),
                                    m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
                                    qobject_cast<StandardServiceRoot*>(m_serviceRoot),
-                                   m_authDetails->authenticationType(),
-                                   m_authDetails->username(),
-                                   m_authDetails->password(),
-                                   StandardFeed::httpHeadersToList(m_headersDetails->httpHeaders()),
+                                   m_networkDetails->m_ui.m_wdgAuthentication->authenticationType(),
+                                   m_networkDetails->m_ui.m_wdgAuthentication->username(),
+                                   m_networkDetails->m_ui.m_wdgAuthentication->password(),
+                                   StandardFeed::httpHeadersToList(m_networkDetails->httpHeaders()),
                                    m_serviceRoot->networkProxy(),
-                                   m_standardFeedExpDetails->http2Status());
+                                   m_networkDetails->http2Status());
 }
 
 void FormStandardFeedDetails::guessIconOnly() {
@@ -65,10 +65,10 @@ void FormStandardFeedDetails::guessIconOnly() {
                                        m_standardFeedDetails->m_ui.m_txtSource->textEdit()->toPlainText(),
                                        m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText(),
                                        qobject_cast<StandardServiceRoot*>(m_serviceRoot),
-                                       m_authDetails->authenticationType(),
-                                       m_authDetails->username(),
-                                       m_authDetails->password(),
-                                       StandardFeed::httpHeadersToList(m_headersDetails->httpHeaders()),
+                                       m_networkDetails->m_ui.m_wdgAuthentication->authenticationType(),
+                                       m_networkDetails->m_ui.m_wdgAuthentication->username(),
+                                       m_networkDetails->m_ui.m_wdgAuthentication->password(),
+                                       StandardFeed::httpHeadersToList(m_networkDetails->httpHeaders()),
                                        m_serviceRoot->networkProxy());
 }
 
@@ -122,25 +122,32 @@ void FormStandardFeedDetails::apply() {
       std_feed->setPostProcessScript(m_standardFeedDetails->m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
     }
 
-    if (isChangeAllowed(m_authDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthType")))) {
-      std_feed->setProtection(m_authDetails->authenticationType());
+    if (isChangeAllowed(m_networkDetails->m_ui.m_mcbNetworkProxy)) {
+      std_feed->setNetworkProxy(m_networkDetails->m_ui.m_wdgNetworkProxy->proxy());
+      std_feed->setUseAccountProxy(m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy());
     }
 
-    if (isChangeAllowed(m_authDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthentication")))) {
-      std_feed->setUsername(m_authDetails->username());
-      std_feed->setPassword(m_authDetails->password());
+    if (isChangeAllowed(m_networkDetails->m_ui.m_wdgAuthentication
+                          ->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthType")))) {
+      std_feed->setProtection(m_networkDetails->m_ui.m_wdgAuthentication->authenticationType());
     }
 
-    if (isChangeAllowed(m_headersDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbHttpHeaders")))) {
-      std_feed->setHttpHeaders(m_headersDetails->httpHeaders());
+    if (isChangeAllowed(m_networkDetails->m_ui.m_wdgAuthentication
+                          ->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthentication")))) {
+      std_feed->setUsername(m_networkDetails->m_ui.m_wdgAuthentication->username());
+      std_feed->setPassword(m_networkDetails->m_ui.m_wdgAuthentication->password());
+    }
+
+    if (isChangeAllowed(m_networkDetails->m_ui.m_mcbHttpHeaders)) {
+      std_feed->setHttpHeaders(m_networkDetails->httpHeaders());
     }
 
     if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbDontUseRawXml)) {
       std_feed->setDontUseRawXmlSaving(m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->isChecked());
     }
 
-    if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbEnableHttp2)) {
-      std_feed->setHttp2Status(m_standardFeedExpDetails->http2Status());
+    if (isChangeAllowed(m_networkDetails->m_ui.m_mcbEnableHttp2)) {
+      std_feed->setHttp2Status(m_networkDetails->http2Status());
     }
 
     if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbFetchComments)) {
@@ -190,22 +197,24 @@ void FormStandardFeedDetails::loadFeedData() {
     m_standardFeedDetails->m_ui.m_mcbType->addActionWidget(m_standardFeedDetails->m_ui.m_cmbType);
     m_standardFeedDetails->m_ui.m_mcbEncoding->addActionWidget(m_standardFeedDetails->m_ui.m_cmbEncoding);
 
-    m_authDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthType"))
-      ->addActionWidget(m_authDetails->findChild<QComboBox*>(QSL("m_cbAuthType")));
-    m_authDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthentication"))
-      ->addActionWidget(m_authDetails->findChild<QGroupBox*>(QSL("m_gbAuthentication")));
-
-    m_headersDetails->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbHttpHeaders"))
-      ->addActionWidget(m_headersDetails->findChild<QPlainTextEdit*>(QSL("m_txtHttpHeaders")));
-
     m_standardFeedDetails->m_ui.m_btnFetchMetadata->setEnabled(false);
 
     m_standardFeedExpDetails->m_ui.m_mcbDontUseRawXml
       ->addActionWidget(m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml);
-    m_standardFeedExpDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_standardFeedExpDetails->m_ui.m_lblEnableHttp2);
-    m_standardFeedExpDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_standardFeedExpDetails->m_ui.m_cmbEnableHttp2);
     m_standardFeedExpDetails->m_ui.m_mcbFetchComments
       ->addActionWidget(m_standardFeedExpDetails->m_ui.m_cbFetchComments);
+
+    m_networkDetails->m_ui.m_mcbNetworkProxy->addActionWidget(m_networkDetails->m_ui.m_wdgNetworkProxy);
+
+    m_networkDetails->m_ui.m_wdgAuthentication->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthType"))
+      ->addActionWidget(m_networkDetails->m_ui.m_wdgAuthentication->findChild<QComboBox*>(QSL("m_cbAuthType")));
+    m_networkDetails->m_ui.m_wdgAuthentication->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthentication"))
+      ->addActionWidget(m_networkDetails->m_ui.m_wdgAuthentication->findChild<QGroupBox*>(QSL("m_gbAuthentication")));
+
+    m_networkDetails->m_ui.m_mcbHttpHeaders->addActionWidget(m_networkDetails->m_ui.m_txtHttpHeaders);
+
+    m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_lblEnableHttp2);
+    m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_cmbEnableHttp2);
   }
   else {
     // We hide batch selectors.
@@ -219,11 +228,12 @@ void FormStandardFeedDetails::loadFeedData() {
   // Load categories.
   m_standardFeedDetails->loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 
-  m_authDetails->setAuthenticationType(std_feed->protection());
-  m_authDetails->setUsername(std_feed->username());
-  m_authDetails->setPassword(std_feed->password());
+  m_networkDetails->m_ui.m_wdgAuthentication->setAuthenticationType(std_feed->protection());
+  m_networkDetails->m_ui.m_wdgAuthentication->setUsername(std_feed->username());
+  m_networkDetails->m_ui.m_wdgAuthentication->setPassword(std_feed->password());
+  m_networkDetails->m_ui.m_wdgNetworkProxy->setProxy(std_feed->networkProxy(), std_feed->useAccountProxy());
 
-  m_headersDetails->loadHttpHeaders(std_feed->httpHeaders());
+  m_networkDetails->loadHttpHeaders(std_feed->httpHeaders());
 
   if (m_creatingNew) {
     // auto processed_url = qApp->web()->processFeedUriScheme(m_urlToProcess);
@@ -234,6 +244,6 @@ void FormStandardFeedDetails::loadFeedData() {
     m_standardFeedDetails->setExistingFeed(std_feed);
     m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->setChecked(std_feed->dontUseRawXmlSaving());
     m_standardFeedExpDetails->m_ui.m_cbFetchComments->setChecked(std_feed->fetchCommentsEnabled());
-    m_standardFeedExpDetails->setHttp2Status(std_feed->http2Status());
+    m_networkDetails->setHttp2Status(std_feed->http2Status());
   }
 }

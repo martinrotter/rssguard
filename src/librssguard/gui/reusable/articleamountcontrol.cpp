@@ -27,10 +27,6 @@ ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
   m_ui.m_dtDateTimeToAvoid
     ->setDisplayFormat(qApp->localization()->loadedLocale().dateTimeFormat(QLocale::FormatType::ShortFormat));
 
-  connect(m_ui.m_cbAddAnyDateArticles, &QCheckBox::toggled, this, [this](bool checked) {
-    m_ui.m_gbAvoidOldArticles->setEnabled(!checked);
-  });
-
   // Ignoring articles.
   connect(m_ui.m_cbAddAnyDateArticles, &QCheckBox::toggled, this, &ArticleAmountControl::changed);
   connect(m_ui.m_gbAvoidOldArticles, &QGroupBox::toggled, this, &ArticleAmountControl::changed);
@@ -60,7 +56,7 @@ void ArticleAmountControl::setForAppWideFeatures(bool app_wide, bool batch_edit)
     m_ui.m_cbArticleLimittingCustomize->setVisible(false);
   }
   else {
-    connect(m_ui.m_cbAddAnyDateArticles, &QCheckBox::toggled, m_ui.m_wdgAvoidOldArticles, &QGroupBox::setDisabled);
+    connect(m_ui.m_cbAddAnyDateArticles, &QCheckBox::toggled, m_ui.m_gbAvoidOldArticles, &QGroupBox::setDisabled);
     connect(m_ui.m_cbArticleLimittingCustomize,
             &QCheckBox::toggled,
             m_ui.m_wdgArticleLimittingCustomize,

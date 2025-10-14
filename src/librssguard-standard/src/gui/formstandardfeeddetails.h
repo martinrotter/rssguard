@@ -3,14 +3,11 @@
 #ifndef FORMSSFEEDDETAILS_H
 #define FORMSSFEEDDETAILS_H
 
-#include "src/standardserviceroot.h"
-
 #include <librssguard/services/abstract/gui/formfeeddetails.h>
 
 class StandardFeedDetails;
 class StandardFeedExpDetails;
-class HttpHeadersDetails;
-class AuthenticationDetails;
+class StandardFeedNetworkDetails;
 class StandardFeed;
 
 class FormStandardFeedDetails : public FormFeedDetails {
@@ -35,8 +32,7 @@ class FormStandardFeedDetails : public FormFeedDetails {
   private:
     StandardFeedDetails* m_standardFeedDetails;
     StandardFeedExpDetails* m_standardFeedExpDetails;
-    AuthenticationDetails* m_authDetails;
-    HttpHeadersDetails* m_headersDetails;
+    StandardFeedNetworkDetails* m_networkDetails;
     RootItem* m_parentToSelect;
     QString m_urlToProcess;
 };

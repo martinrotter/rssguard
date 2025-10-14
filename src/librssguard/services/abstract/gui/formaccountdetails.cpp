@@ -15,9 +15,11 @@
 #include "ui_formaccountdetails.h"
 
 FormAccountDetails::FormAccountDetails(const QIcon& icon, QWidget* parent)
-  : QDialog(parent), m_proxyDetails(new NetworkProxyDetails(true, this)), m_accountDetails(new AccountDetails(this)),
+  : QDialog(parent), m_proxyDetails(new NetworkProxyDetails(this)), m_accountDetails(new AccountDetails(this)),
     m_account(nullptr), m_creatingNew(false), m_ui(new Ui::FormAccountDetails()) {
   m_ui->setupUi(this);
+
+  m_proxyDetails->setup(false, true);
 
   insertCustomTab(m_accountDetails, tr("Miscellaneous"), 0);
   insertCustomTab(m_proxyDetails, tr("Network proxy"), 1);

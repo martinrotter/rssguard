@@ -386,8 +386,10 @@ void FeedReader::executeNextAutoUpdate() {
 }
 
 void FeedReader::onFeedUpdatesFinished(FeedDownloadResults updated_feeds) {
+  // NOTE: Keep in sync with the same line in FeedDownloader::updateOneFeed() method.
   const bool update_feed_list =
-    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
+    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool() &&
+    updated_feeds.feedRequests().size() <= 25;
 
   if (!update_feed_list) {
     // NOTE: Counts were not updated during feed fetching, update them now.
