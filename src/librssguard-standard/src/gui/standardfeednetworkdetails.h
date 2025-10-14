@@ -3,8 +3,6 @@
 #ifndef STANDARDFEEDNETWORKDETAILS_H
 #define STANDARDFEEDNETWORKDETAILS_H
 
-#include "src/standardfeed.h"
-
 #include "ui_standardfeednetworkdetails.h"
 
 #include <QNetworkProxy>
@@ -17,6 +15,7 @@ class StandardFeedNetworkDetails : public QWidget {
     Q_OBJECT
 
     friend class FormStandardFeedDetails;
+    friend class StandardFeedDetails;
 
   public:
     explicit StandardFeedNetworkDetails(QWidget* parent = nullptr);

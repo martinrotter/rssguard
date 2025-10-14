@@ -52,6 +52,18 @@ StandardServiceRoot::~StandardServiceRoot() {
   qDeleteAll(m_feedContextMenu);
 }
 
+QNetworkProxy StandardServiceRoot::networkProxyForItem(RootItem* item) const {
+  if (item != nullptr && item->kind() == RootItem::Kind::Feed) {
+    auto* std_feed = qobject_cast<StandardFeed*>(item);
+
+    if (!std_feed->useAccountProxy()) {
+      return std_feed->networkProxy();
+    }
+  }
+
+  return ServiceRoot::networkProxyForItem(item);
+}
+
 void StandardServiceRoot::onDatabaseCleanup() {
   for (Feed* fd : getSubTreeFeeds()) {
     qobject_cast<StandardFeed*>(fd)->setLastEtag({});
@@ -271,17 +283,18 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       qDebugNN << "Using ETag value:" << QUOTE_W_SPACE_DOT(f->lastEtag());
     }
 
-    auto network_result = NetworkFactory::performNetworkOperation(f->source(),
-                                                                  download_timeout,
-                                                                  {},
-                                                                  feed_contents,
-                                                                  QNetworkAccessManager::Operation::GetOperation,
-                                                                  headers,
-                                                                  false,
-                                                                  {},
-                                                                  {},
-                                                                  networkProxy(),
-                                                                  f->http2Status());
+    auto network_result =
+      NetworkFactory::performNetworkOperation(f->source(),
+                                              download_timeout,
+                                              {},
+                                              feed_contents,
+                                              QNetworkAccessManager::Operation::GetOperation,
+                                              headers,
+                                              false,
+                                              {},
+                                              {},
+                                              f->useAccountProxy() ? networkProxy() : f->networkProxy(),
+                                              f->http2Status());
 
     // Update last datetime this host was used.
     // resetHostSpacing(host);
@@ -421,7 +434,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                               false,
                                               {},
                                               {},
-                                              networkProxy(),
+                                              f->useAccountProxy() ? networkProxy() : f->networkProxy(),
                                               f->http2Status());
 
     if (resource_result.m_networkError != QNetworkReply::NetworkError::NoError) {

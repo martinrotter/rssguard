@@ -1209,6 +1209,10 @@ void ServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
   Q_UNUSED(feeds)
 }
 
+QNetworkProxy ServiceRoot::networkProxyForItem(RootItem* item) const {
+  return networkProxy();
+}
+
 CacheForServiceRoot* ServiceRoot::toCache() const {
   return dynamic_cast<CacheForServiceRoot*>(const_cast<ServiceRoot*>(this));
 }

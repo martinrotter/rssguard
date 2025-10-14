@@ -196,6 +196,9 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     // NOTE: Keep in sync with ServiceEntryRoot::code().
     virtual QString code() const = 0;
 
+    // Provides abstraction for service-wide or feed-wide proxy.
+    virtual QNetworkProxy networkProxyForItem(RootItem* item) const;
+
   public:
     CacheForServiceRoot* toCache() const;
 

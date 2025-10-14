@@ -25,6 +25,7 @@ class StandardServiceRoot : public ServiceRoot {
     explicit StandardServiceRoot(RootItem* parent = nullptr);
     virtual ~StandardServiceRoot();
 
+    virtual QNetworkProxy networkProxyForItem(RootItem* item) const;
     virtual FormAccountDetails* accountSetupDialog() const;
     virtual void onDatabaseCleanup();
     virtual void onAfterFeedsPurged(const QList<Feed*>& feeds);

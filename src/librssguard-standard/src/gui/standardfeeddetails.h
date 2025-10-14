@@ -12,6 +12,7 @@
 
 class Category;
 class RootItem;
+class StandardFeedNetworkDetails;
 
 class StandardFeedDetails : public QWidget {
     Q_OBJECT
@@ -22,6 +23,8 @@ class StandardFeedDetails : public QWidget {
     explicit StandardFeedDetails(QWidget* parent = nullptr);
 
     StandardFeed::SourceType sourceType() const;
+
+    void setNetworkDetails(StandardFeedNetworkDetails* network_details);
 
   private slots:
     void guessIconOnly(StandardFeed::SourceType source_type,
@@ -66,6 +69,7 @@ class StandardFeedDetails : public QWidget {
     QAction* m_actionLoadIconFromUrl{};
     QAction* m_actionUseDefaultIcon{};
     QAction* m_actionFetchIcon{};
+    StandardFeedNetworkDetails* m_networkDetails = nullptr;
 };
 
 #endif // STANDARDFEEDDETAILS_H

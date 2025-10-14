@@ -268,7 +268,7 @@ void StandardFeed::fetchMetadataForItself() {
                               username(),
                               password(),
                               {},
-                              account()->networkProxy());
+                              useAccountProxy() ? account()->networkProxy() : networkProxy());
 
     // Copy metadata to our object.
     setTitle(metadata.first->title());

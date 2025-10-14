@@ -34,6 +34,8 @@ FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root,
   insertCustomTab(m_standardFeedExpDetails, tr("Experimental"));
   activateTab(0);
 
+  m_standardFeedDetails->setNetworkDetails(m_networkDetails);
+
   connect(m_standardFeedDetails->m_ui.m_btnFetchMetadata,
           &QPushButton::clicked,
           this,
@@ -56,7 +58,9 @@ void FormStandardFeedDetails::guessFeed() {
                                    m_networkDetails->m_ui.m_wdgAuthentication->username(),
                                    m_networkDetails->m_ui.m_wdgAuthentication->password(),
                                    StandardFeed::httpHeadersToList(m_networkDetails->httpHeaders()),
-                                   m_serviceRoot->networkProxy(),
+                                   m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy()
+                                     ? m_serviceRoot->networkProxy()
+                                     : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy(),
                                    m_networkDetails->http2Status());
 }
 
@@ -69,7 +73,9 @@ void FormStandardFeedDetails::guessIconOnly() {
                                        m_networkDetails->m_ui.m_wdgAuthentication->username(),
                                        m_networkDetails->m_ui.m_wdgAuthentication->password(),
                                        StandardFeed::httpHeadersToList(m_networkDetails->httpHeaders()),
-                                       m_serviceRoot->networkProxy());
+                                       m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy()
+                                         ? m_serviceRoot->networkProxy()
+                                         : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy());
 }
 
 void FormStandardFeedDetails::onTitleChanged(const QString& title) {

@@ -3,6 +3,7 @@
 #include "src/gui/standardfeeddetails.h"
 
 #include "src/definitions.h"
+#include "src/gui/standardfeednetworkdetails.h"
 
 #include <librssguard/3rd-party/boolinq/boolinq.h>
 #include <librssguard/exceptions/applicationexception.h>
@@ -166,7 +167,13 @@ void StandardFeedDetails::onLoadIconFromUrl() {
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QPixmap pixmap;
 
-  if (NetworkFactory::downloadIcon(icon_loc, timeout, pixmap, {}, m_account->networkProxy()) ==
+  if (NetworkFactory::downloadIcon(icon_loc,
+                                   timeout,
+                                   pixmap,
+                                   {},
+                                   m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy()
+                                     ? m_account->networkProxy()
+                                     : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy()) ==
       QNetworkReply::NetworkError::NoError) {
     m_ui.m_btnIcon->setIcon(QIcon(pixmap));
   }
@@ -393,6 +400,10 @@ void StandardFeedDetails::onUseDefaultIcon() {
 
 StandardFeed::SourceType StandardFeedDetails::sourceType() const {
   return m_ui.m_cmbSourceType->currentData().value<StandardFeed::SourceType>();
+}
+
+void StandardFeedDetails::setNetworkDetails(StandardFeedNetworkDetails* network_details) {
+  m_networkDetails = network_details;
 }
 
 void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QString& url) {
