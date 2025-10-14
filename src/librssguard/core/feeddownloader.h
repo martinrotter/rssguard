@@ -18,6 +18,7 @@ class MessageFilter;
 // Represents results of batch feed updates.
 class FeedDownloadResults {
   public:
+    QSet<ServiceRoot*> updatedAccounts() const;
     QHash<Feed*, QString> erroredFeeds() const;
     QHash<Feed*, QList<Message>> updatedFeeds() const;
     QString overview(int how_many_feeds) const;
@@ -27,9 +28,9 @@ class FeedDownloadResults {
     void clear();
 
   private:
-    // QString represents title if the feed, int represents count of newly downloaded messages.
     QHash<Feed*, QList<Message>> m_updatedFeeds;
     QHash<Feed*, QString> m_erroredFeeds;
+    QSet<ServiceRoot*> m_updatedAccounts;
 };
 
 struct FeedUpdateRequest {

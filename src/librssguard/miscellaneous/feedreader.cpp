@@ -386,6 +386,16 @@ void FeedReader::executeNextAutoUpdate() {
 }
 
 void FeedReader::onFeedUpdatesFinished(FeedDownloadResults updated_feeds) {
+  const bool update_feed_list =
+    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
+
+  if (!update_feed_list) {
+    // NOTE: Counts were not updated during feed fetching, update them now.
+    for (auto* acc : updated_feeds.updatedAccounts()) {
+      acc->updateCounts(true);
+    }
+  }
+
   m_feedsModel->reloadWholeLayout();
   m_feedsModel->notifyWithCounts();
 

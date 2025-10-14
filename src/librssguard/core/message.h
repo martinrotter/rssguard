@@ -26,7 +26,7 @@ class RSSGUARD_DLLSPEC MessageEnclosure : public QObject {
   public:
     explicit MessageEnclosure(QString url = QString(), QString mime = QString(), QObject* parent = nullptr);
     MessageEnclosure(const MessageEnclosure& other);
-    ~MessageEnclosure();
+    //~MessageEnclosure();
 
     QString url() const;
     void setUrl(const QString& url);
@@ -57,7 +57,7 @@ class RSSGUARD_DLLSPEC MessageCategory : public QObject {
   public:
     explicit MessageCategory(const QString& title, QObject* parent = nullptr);
     MessageCategory(const MessageCategory& other);
-    ~MessageCategory();
+    //~MessageCategory();
 
     QString title() const;
 

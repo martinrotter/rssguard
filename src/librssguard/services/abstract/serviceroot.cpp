@@ -1300,7 +1300,11 @@ ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRo
   return static_cast<ServiceRoot::LabelOperation>(static_cast<char>(lhs) & static_cast<char>(rhs));
 }
 
-UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed, bool force_update, QMutex* db_mutex) {
+UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
+                                            Feed* feed,
+                                            bool force_update,
+                                            bool recalculate_counts,
+                                            QMutex* db_mutex) {
   UpdatedArticles updated_messages;
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
@@ -1317,7 +1321,8 @@ UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages, Feed* feed
 
   bool anything_removed = feed->removeUnwantedArticles(database);
 
-  if (anything_removed || !updated_messages.m_unread.isEmpty() || !updated_messages.m_all.isEmpty()) {
+  if (recalculate_counts &&
+      (anything_removed || !updated_messages.m_unread.isEmpty() || !updated_messages.m_all.isEmpty())) {
     QMutexLocker lck(db_mutex);
 
     // Something was added or updated in the DB, update numbers.

@@ -46,9 +46,11 @@ MessageEnclosure::MessageEnclosure(const MessageEnclosure& other) {
   setUrl(other.url());
 }
 
+/*
 MessageEnclosure::~MessageEnclosure() {
   qDebugNN << LOGSEC_CORE << "Destroying article enclosure.";
 }
+*/
 
 QString MessageEnclosure::url() const {
   return m_url;
@@ -290,9 +292,11 @@ MessageCategory::MessageCategory(const MessageCategory& other) {
   m_title = other.m_title;
 }
 
+/*
 MessageCategory::~MessageCategory() {
   qDebugNN << LOGSEC_CORE << "Destroying article category.";
 }
+*/
 
 QString MessageCategory::title() const {
   return m_title;

@@ -381,7 +381,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     removeTooOldMessages(feed, msgs);
 
     tmr.restart();
-    auto updated_messages = acc->updateMessages(msgs, feed, false, nullptr);
+    auto updated_messages = acc->updateMessages(msgs, feed, false, update_feed_list, nullptr);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Updating messages in DB took" << NONQUOTE_W_SPACE(tmr.nsecsElapsed() / 1000)
              << "microseconds.";
@@ -587,6 +587,8 @@ void FeedDownloadResults::appendUpdatedFeed(Feed* feed, const QList<Message>& up
   if (!updated_unread_msgs.isEmpty()) {
     m_updatedFeeds.insert(feed, updated_unread_msgs);
   }
+
+  m_updatedAccounts.insert(feed->account());
 }
 
 void FeedDownloadResults::appendErroredFeed(Feed* feed, const QString& error) {
@@ -596,6 +598,10 @@ void FeedDownloadResults::appendErroredFeed(Feed* feed, const QString& error) {
 void FeedDownloadResults::clear() {
   m_updatedFeeds.clear();
   m_erroredFeeds.clear();
+}
+
+QSet<ServiceRoot*> FeedDownloadResults::updatedAccounts() const {
+  return m_updatedAccounts;
 }
 
 QHash<Feed*, QString> FeedDownloadResults::erroredFeeds() const {
