@@ -207,7 +207,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
 
   setUseAccountProxy(data[QSL("use_account_proxy")].toBool());
 
-  QNetworkProxy proxy(QNetworkProxy::ProxyType(data[QSL("proxy_type")].toInt()),
+  QNetworkProxy proxy(static_cast<QNetworkProxy::ProxyType>(data[QSL("proxy_type")].toInt()),
                       data[QSL("proxy_host")].toString(),
                       data[QSL("proxy_port")].toInt(),
                       data[QSL("proxy_username")].toString(),
