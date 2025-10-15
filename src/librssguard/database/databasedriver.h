@@ -39,6 +39,7 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
     virtual QString autoIncrementPrimaryKey() const = 0;
     virtual QString blob() const = 0;
     virtual QString text() const = 0;
+    virtual QString collateNocase() const = 0;
 
     virtual QString foreignKeysEnable() const = 0;
     virtual QString foreignKeysDisable() const = 0;

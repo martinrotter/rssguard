@@ -219,6 +219,7 @@
 #define APP_DB_AUTO_INC_PRIM_KEY_PLACEHOLDER "$$"
 #define APP_DB_BLOB_PLACEHOLDER              "^^"
 #define APP_DB_TEXT_PLACEHOLDER              "**"
+#define APP_DB_COLLATE_PLACEHOLDER           "~~"
 #define APP_DB_FKEYS_ENABLE_PLACEHOLDER      "§§1"
 #define APP_DB_FKEYS_DISABLE_PLACEHOLDER     "§§0"
 

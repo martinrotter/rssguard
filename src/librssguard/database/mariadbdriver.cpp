@@ -298,6 +298,11 @@ QString MariaDbDriver::text() const {
   return QSL("MEDIUMTEXT");
 }
 
+QString MariaDbDriver::collateNocase() const {
+  // NOTE: We do not explicitly specify collate for column as it is specified for the whole database.
+  return QString();
+}
+
 QString MariaDbDriver::limitOffset(int limit, int offset) const {
   if (offset > 0 && limit <= 0) {
     return QSL("LIMIT 184467440737095 OFFSET %1").arg(QString::number(offset));

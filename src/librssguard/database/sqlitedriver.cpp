@@ -433,3 +433,7 @@ QString SqliteDriver::blob() const {
 QString SqliteDriver::text() const {
   return QSL("TEXT");
 }
+
+QString SqliteDriver::collateNocase() const {
+  return QSL("COLLATE NOCASE");
+}

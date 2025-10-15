@@ -36,6 +36,7 @@ class SqliteDriver : public DatabaseDriver {
     virtual QString foreignKeysDisable() const;
     virtual QString blob() const;
     virtual QString text() const;
+    virtual QString collateNocase() const;
 
   private:
     QSqlDatabase initializeDatabase(const QString& connection_name, bool in_memory);

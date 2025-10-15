@@ -141,6 +141,7 @@ QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
   statements = statements.replaceInStrings(QSL(APP_DB_TEXT_PLACEHOLDER), text());
   statements = statements.replaceInStrings(QSL(APP_DB_FKEYS_ENABLE_PLACEHOLDER), foreignKeysEnable());
   statements = statements.replaceInStrings(QSL(APP_DB_FKEYS_DISABLE_PLACEHOLDER), foreignKeysDisable());
+  statements = statements.replaceInStrings(QSL(APP_DB_COLLATE_PLACEHOLDER), collateNocase());
 
   return statements;
 }

@@ -46,6 +46,7 @@ class MariaDbDriver : public DatabaseDriver {
     virtual QString autoIncrementPrimaryKey() const;
     virtual QString blob() const;
     virtual QString text() const;
+    virtual QString collateNocase() const;
     virtual QString limitOffset(int limit, int offset = 0) const;
 
     QString interpretErrorCode(MariaDbError error_code) const;

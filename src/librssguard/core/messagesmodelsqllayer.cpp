@@ -146,13 +146,9 @@ QString MessagesModelSqlLayer::orderByClause() const {
 
     for (int i = 0; i < m_sortColumns.size(); i++) {
       QString field_name(m_orderByNames[m_sortColumns[i]]);
-      // TODO: nepoužít lower ale místo toho na úrovni DB
-      // mariadb -> specifikovat colate při tvorbě tabulek
-      // sqlite -> nocase colate taktéž při tvorbě tabulek
-      QString order_sql = isColumnNumeric(m_sortColumns[i]) ? QSL("%1") : QSL("LOWER(%1)");
 
-      sorts.append(order_sql.arg(field_name) +
-                   (m_sortOrders[i] == Qt::SortOrder::AscendingOrder ? QSL(" ASC") : QSL(" DESC")));
+      sorts.append(QSL("%1 %2").arg(field_name,
+                                    m_sortOrders[i] == Qt::SortOrder::AscendingOrder ? QSL("ASC") : QSL("DESC")));
     }
 
     return QL1S("ORDER BY ") + sorts.join(QSL(", "));
