@@ -18,7 +18,7 @@
 class SilentNetworkAccessManager;
 class QTimer;
 
-class Downloader : public QObject {
+class RSSGUARD_DLLSPEC Downloader : public QObject {
     Q_OBJECT
 
   public:

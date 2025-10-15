@@ -77,7 +77,7 @@ void Downloader::downloadFile(const QString& url,
                               const QString& username,
                               const QString& password) {
   manipulateData(url,
-                 QNetworkAccessManager::GetOperation,
+                 QNetworkAccessManager::Operation::GetOperation,
                  QByteArray(),
                  timeout,
                  protected_contents,

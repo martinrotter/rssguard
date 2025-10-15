@@ -8,9 +8,11 @@
 #include "src/gui/formaddeditemail.h"
 
 #include <librssguard/exceptions/networkexception.h>
+#include <librssguard/gui/dialogs/formprogressworker.h>
 #include <librssguard/gui/messagebox.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/network-web/oauth2service.h>
 
 #include <QJsonObject>
 
@@ -98,6 +100,44 @@ void EmailPreviewer::downloadAttachment(QAction* act) {
 
   try {
     const QNetworkRequest req = m_account->network()->requestForAttachment(m_message.m_customId, attachment_id);
+
+    FormProgressWorker wrkr(qApp->mainFormWidget());
+    QByteArray data;
+
+    wrkr.doSingleWork(
+      tr("Download attachment"),
+      false,
+      [&](WorkerReporter& rprt) {
+        Downloader dwnl;
+        QEventLoop loop;
+        QString target_url = QSL(GMAIL_API_GET_ATTACHMENT).arg(m_message.m_customId, attachment_id);
+        QByteArray bearer = m_account->network()->oauth()->bearer().toLocal8Bit();
+
+        /*        if (bearer.isEmpty()) {
+  throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
+}*/
+        emit rprt.progressRangeChanged(0, 100);
+
+        QObject::connect(&dwnl, &Downloader::completed, &loop, &QEventLoop::quit);
+        QObject::connect(&dwnl, &Downloader::progress, &rprt, [&](qint64 bytes_received, qint64 bytes_total) {
+          emit rprt.progressChanged(bytes_received * 100 / bytes_total);
+        });
+
+        dwnl.appendRawHeader(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer);
+        dwnl.downloadFile(target_url);
+        loop.exec();
+
+        data = dwnl.lastOutputData();
+      },
+      [](int progress) {
+        return tr("Downloaded %1 %...").arg(progress);
+      });
+
+    const QString dt = QJsonDocument::fromJson(data).object()[QSL("data")].toString();
+    const QString fn = "1.dt";
+    if (!dt.isEmpty()) {
+      IOFactory::writeFile(fn, QByteArray::fromBase64(dt.toLocal8Bit(), QByteArray::Base64Option::Base64UrlEncoding));
+    }
 
     // TODO: todo
     /*

@@ -57,3 +57,31 @@ void FormProgressWorker::keyPressEvent(QKeyEvent* event) {
     QDialog::keyPressEvent(event);
   }
 }
+
+WorkerReporter::WorkerReporter(QObject* parent) : QObject(parent) {}
+
+int FormProgressWorker::doSingleWork(const QString& title,
+                                     bool can_cancel,
+                                     std::function<void(WorkerReporter&)> work_functor,
+                                     std::function<QString(int)> label_functor) {
+  setCancelVisible(can_cancel);
+  setWindowTitle(title);
+
+  WorkerReporter report;
+  QFutureWatcher<void> wat_fut;
+  QFuture<void> fut = QtConcurrent::run(work_functor, std::ref(report));
+
+  connect(&report, &WorkerReporter::progressRangeChanged, &wat_fut, &QFutureWatcher<void>::progressRangeChanged);
+  connect(&report, &WorkerReporter::progressChanged, &wat_fut, &QFutureWatcher<void>::progressValueChanged);
+
+  connect(&wat_fut, &QFutureWatcher<void>::progressRangeChanged, this, &FormProgressWorker::changeProgressRange);
+  connect(&wat_fut, &QFutureWatcher<void>::progressValueChanged, this, &FormProgressWorker::setProgress);
+  connect(&wat_fut, &QFutureWatcher<void>::progressValueChanged, this, [this, label_functor](int progress) {
+    setLabel(label_functor(progress));
+  });
+  connect(&wat_fut, &QFutureWatcher<void>::finished, this, &FormProgressWorker::onFinished);
+  connect(&wat_fut, &QFutureWatcher<void>::canceled, this, &FormProgressWorker::onCanceled);
+
+  wat_fut.setFuture(fut);
+  return exec();
+}

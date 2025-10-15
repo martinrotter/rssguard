@@ -12,12 +12,28 @@ namespace Ui {
   class FormProgressWorker;
 }
 
+class RSSGUARD_DLLSPEC WorkerReporter : public QObject {
+    Q_OBJECT
+
+  public:
+    explicit WorkerReporter(QObject* parent = nullptr);
+
+  signals:
+    void progressRangeChanged(int progress, int total);
+    void progressChanged(int progress);
+};
+
 class RSSGUARD_DLLSPEC FormProgressWorker : public QDialog {
     Q_OBJECT
 
   public:
     explicit FormProgressWorker(QWidget* parent = nullptr);
     virtual ~FormProgressWorker();
+
+    int doSingleWork(const QString& title,
+                     bool can_cancel,
+                     std::function<void(WorkerReporter&)> work_functor,
+                     std::function<QString(int)> label_functor);
 
     template <class TInput>
     int doWork(const QString& title,
