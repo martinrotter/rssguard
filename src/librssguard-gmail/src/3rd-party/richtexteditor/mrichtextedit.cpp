@@ -633,11 +633,10 @@ void MRichTextEdit::setText(const QString& text) {
 }
 
 void MRichTextEdit::insertImage() {
-  QSettings s;
-  QString attdir = s.value("general/filedialog-path").toString();
   QString file = FileDialog::openFileName(this,
                                           tr("Select an image"),
-                                          attdir,
+                                          qApp->documentsFolder(),
+                                          {},
                                           tr("JPEG (*.jpg);; GIF (*.gif);; PNG (*.png);; BMP (*.bmp);; All (*)"),
                                           nullptr,
                                           GENERAL_REMEMBERED_PATH);

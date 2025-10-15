@@ -49,6 +49,7 @@ void SingleNotificationEditor::selectSoundFile() {
   auto fil = FileDialog::openFileName(window(),
                                       tr("Select sound file"),
                                       qApp->homeFolder(),
+                                      {},
                                       tr("WAV files (*.wav);;MP3 files (*.mp3)"),
                                       nullptr,
                                       GENERAL_REMEMBERED_PATH);

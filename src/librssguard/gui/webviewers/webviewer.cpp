@@ -101,7 +101,8 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
 void WebViewer::saveHtmlAs() {
   QString selected_file = FileDialog::saveFileName(nullptr,
                                                    QObject::tr("Save article in HTML format"),
-                                                   qApp->homeFolder(),
+                                                   qApp->documentsFolder(),
+                                                   QSL("content.html"),
                                                    QObject::tr("HTML files (*.htm *.html)"),
                                                    nullptr,
                                                    GENERAL_REMEMBERED_PATH);

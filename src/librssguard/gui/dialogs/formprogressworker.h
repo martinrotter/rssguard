@@ -12,17 +12,6 @@ namespace Ui {
   class FormProgressWorker;
 }
 
-class RSSGUARD_DLLSPEC WorkerReporter : public QObject {
-    Q_OBJECT
-
-  public:
-    explicit WorkerReporter(QObject* parent = nullptr);
-
-  signals:
-    void progressRangeChanged(int progress, int total);
-    void progressChanged(int progress);
-};
-
 class RSSGUARD_DLLSPEC FormProgressWorker : public QDialog {
     Q_OBJECT
 
@@ -32,8 +21,8 @@ class RSSGUARD_DLLSPEC FormProgressWorker : public QDialog {
 
     int doSingleWork(const QString& title,
                      bool can_cancel,
-                     std::function<void(WorkerReporter&)> work_functor,
-                     std::function<QString(int)> label_functor);
+                     const std::function<void(QFutureWatcher<void>&)>& work_functor,
+                     const std::function<QString(int)>& label_functor);
 
     template <class TInput>
     int doWork(const QString& title,
@@ -57,7 +46,10 @@ class RSSGUARD_DLLSPEC FormProgressWorker : public QDialog {
     void onCanceled();
 
   private:
-    void setCancelVisible(bool visible);
+    void setupFuture(QFuture<void>& future,
+                     QFutureWatcher<void>& watcher,
+                     const std::function<QString(int)>& label_functor);
+    void setCancelEnabled(bool visible);
 
   private:
     Ui::FormProgressWorker* m_ui;
@@ -69,21 +61,13 @@ inline int FormProgressWorker::doWork(const QString& title,
                                       const QList<TInput>& input,
                                       std::function<void(TInput)> work_functor,
                                       std::function<QString(int)> label_functor) {
-  setCancelVisible(can_cancel);
+  setCancelEnabled(can_cancel);
   setWindowTitle(title);
 
   QFuture<void> fut = QtConcurrent::map(input, work_functor);
   QFutureWatcher<void> wat_fut;
 
-  connect(&wat_fut, &QFutureWatcher<void>::progressRangeChanged, this, &FormProgressWorker::changeProgressRange);
-  connect(&wat_fut, &QFutureWatcher<void>::progressValueChanged, this, &FormProgressWorker::setProgress);
-  connect(&wat_fut, &QFutureWatcher<void>::progressValueChanged, this, [this, label_functor](int progress) {
-    setLabel(label_functor(progress));
-  });
-  connect(&wat_fut, &QFutureWatcher<void>::finished, this, &FormProgressWorker::onFinished);
-  connect(&wat_fut, &QFutureWatcher<void>::canceled, this, &FormProgressWorker::onCanceled);
-
-  wat_fut.setFuture(fut);
+  setupFuture(fut, wat_fut, label_functor);
   return exec();
 }
 

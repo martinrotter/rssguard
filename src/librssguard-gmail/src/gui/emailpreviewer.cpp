@@ -8,6 +8,7 @@
 #include "src/gui/formaddeditemail.h"
 
 #include <librssguard/exceptions/networkexception.h>
+#include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/gui/dialogs/formprogressworker.h>
 #include <librssguard/gui/messagebox.h>
 #include <librssguard/miscellaneous/application.h>
@@ -98,29 +99,42 @@ void EmailPreviewer::downloadAttachment(QAction* act) {
   const QString attachment_id = act->data().toStringList().at(1);
   const QString file_name = act->data().toStringList().at(0);
 
-  try {
-    const QNetworkRequest req = m_account->network()->requestForAttachment(m_message.m_customId, attachment_id);
+  const QString save_file_name = FileDialog::saveFileName(qApp->mainFormWidget(),
+                                                          tr("Save attachmen %1").arg(file_name),
+                                                          qApp->documentsFolder(),
+                                                          file_name,
+                                                          {},
+                                                          nullptr,
+                                                          GENERAL_REMEMBERED_PATH);
 
+  if (save_file_name.isEmpty()) {
+    return;
+  }
+
+  try {
     FormProgressWorker wrkr(qApp->mainFormWidget());
     QByteArray data;
 
     wrkr.doSingleWork(
       tr("Download attachment"),
       false,
-      [&](WorkerReporter& rprt) {
+      [&](QFutureWatcher<void>& rprt) {
         Downloader dwnl;
         QEventLoop loop;
         QString target_url = QSL(GMAIL_API_GET_ATTACHMENT).arg(m_message.m_customId, attachment_id);
         QByteArray bearer = m_account->network()->oauth()->bearer().toLocal8Bit();
 
-        /*        if (bearer.isEmpty()) {
-  throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
-}*/
-        emit rprt.progressRangeChanged(0, 100);
+        /*
+        if (bearer.isEmpty()) {
+          throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
+        }
+        */
+
+        emit rprt.progressRangeChanged(0, 0);
 
         QObject::connect(&dwnl, &Downloader::completed, &loop, &QEventLoop::quit);
         QObject::connect(&dwnl, &Downloader::progress, &rprt, [&](qint64 bytes_received, qint64 bytes_total) {
-          emit rprt.progressChanged(bytes_received * 100 / bytes_total);
+          emit rprt.progressValueChanged(bytes_received / 1000.0);
         });
 
         dwnl.appendRawHeader(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer);
@@ -130,29 +144,13 @@ void EmailPreviewer::downloadAttachment(QAction* act) {
         data = dwnl.lastOutputData();
       },
       [](int progress) {
-        return tr("Downloaded %1 %...").arg(progress);
+        return tr("Downloaded %1 kB...").arg(progress);
       });
 
     const QString dt = QJsonDocument::fromJson(data).object()[QSL("data")].toString();
-    const QString fn = "1.dt";
-    if (!dt.isEmpty()) {
-      IOFactory::writeFile(fn, QByteArray::fromBase64(dt.toLocal8Bit(), QByteArray::Base64Option::Base64UrlEncoding));
-    }
 
-    // TODO: todo
-    /*
-    qApp->downloadManager()->download(req, file_name, [this](DownloadItem* it) {
-      if (it->downloadedSuccessfully()) {
-        const QByteArray raw_json = IOFactory::readFile(it->output().fileName());
-        const QString data = QJsonDocument::fromJson(raw_json).object()[QSL("data")].toString();
-
-        if (!data.isEmpty()) {
-          IOFactory::writeFile(it->output().fileName(),
-                               QByteArray::fromBase64(data.toLocal8Bit(), QByteArray::Base64Option::Base64UrlEncoding));
-        }
-      }
-    });
-    */
+    IOFactory::writeFile(save_file_name,
+                         QByteArray::fromBase64(dt.toLocal8Bit(), QByteArray::Base64Option::Base64UrlEncoding));
   }
   catch (const NetworkException&) {
     MsgBox::show({},

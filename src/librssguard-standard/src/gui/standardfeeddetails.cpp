@@ -385,6 +385,7 @@ void StandardFeedDetails::onLoadIconFromFile() {
   QString fil = FileDialog::openFileName(this,
                                          tr("Select icon file for the feed"),
                                          qApp->homeFolder(),
+                                         {},
                                          tr("Images (%1)").arg(list_formats.join(QL1C(' '))),
                                          nullptr,
                                          GENERAL_REMEMBERED_PATH);

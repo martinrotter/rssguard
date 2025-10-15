@@ -27,8 +27,12 @@ void FormProgressWorker::requestCancellation() {
 }
 
 void FormProgressWorker::changeProgressRange(int from, int to) {
-  m_ui->m_progress->setMinimum(from);
-  m_ui->m_progress->setMaximum(to);
+  if (to <= 0 || from < 0) {
+    m_ui->m_progress->setRange(0, 0);
+  }
+  else {
+    m_ui->m_progress->setRange(from, to);
+  }
 }
 
 void FormProgressWorker::setProgress(int progress) {
@@ -47,9 +51,9 @@ void FormProgressWorker::onCanceled() {
   reject();
 }
 
-void FormProgressWorker::setCancelVisible(bool visible) {
+void FormProgressWorker::setCancelEnabled(bool visible) {
   m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Cancel)->blockSignals(!visible);
-  m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Cancel)->setVisible(visible);
+  m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Cancel)->setEnabled(visible);
 }
 
 void FormProgressWorker::keyPressEvent(QKeyEvent* event) {
@@ -58,30 +62,30 @@ void FormProgressWorker::keyPressEvent(QKeyEvent* event) {
   }
 }
 
-WorkerReporter::WorkerReporter(QObject* parent) : QObject(parent) {}
-
 int FormProgressWorker::doSingleWork(const QString& title,
                                      bool can_cancel,
-                                     std::function<void(WorkerReporter&)> work_functor,
-                                     std::function<QString(int)> label_functor) {
-  setCancelVisible(can_cancel);
+                                     const std::function<void(QFutureWatcher<void>&)>& work_functor,
+                                     const std::function<QString(int)>& label_functor) {
+  setCancelEnabled(can_cancel);
   setWindowTitle(title);
 
-  WorkerReporter report;
   QFutureWatcher<void> wat_fut;
-  QFuture<void> fut = QtConcurrent::run(work_functor, std::ref(report));
+  QFuture<void> fut = QtConcurrent::run(work_functor, std::ref(wat_fut));
 
-  connect(&report, &WorkerReporter::progressRangeChanged, &wat_fut, &QFutureWatcher<void>::progressRangeChanged);
-  connect(&report, &WorkerReporter::progressChanged, &wat_fut, &QFutureWatcher<void>::progressValueChanged);
+  setupFuture(fut, wat_fut, label_functor);
+  return exec();
+}
 
-  connect(&wat_fut, &QFutureWatcher<void>::progressRangeChanged, this, &FormProgressWorker::changeProgressRange);
-  connect(&wat_fut, &QFutureWatcher<void>::progressValueChanged, this, &FormProgressWorker::setProgress);
-  connect(&wat_fut, &QFutureWatcher<void>::progressValueChanged, this, [this, label_functor](int progress) {
+void FormProgressWorker::setupFuture(QFuture<void>& future,
+                                     QFutureWatcher<void>& watcher,
+                                     const std::function<QString(int)>& label_functor) {
+  connect(&watcher, &QFutureWatcher<void>::progressRangeChanged, this, &FormProgressWorker::changeProgressRange);
+  connect(&watcher, &QFutureWatcher<void>::progressValueChanged, this, &FormProgressWorker::setProgress);
+  connect(&watcher, &QFutureWatcher<void>::progressValueChanged, this, [this, label_functor](int progress) {
     setLabel(label_functor(progress));
   });
-  connect(&wat_fut, &QFutureWatcher<void>::finished, this, &FormProgressWorker::onFinished);
-  connect(&wat_fut, &QFutureWatcher<void>::canceled, this, &FormProgressWorker::onCanceled);
+  connect(&watcher, &QFutureWatcher<void>::finished, this, &FormProgressWorker::onFinished);
+  connect(&watcher, &QFutureWatcher<void>::canceled, this, &FormProgressWorker::onCanceled);
 
-  wat_fut.setFuture(fut);
-  return exec();
+  watcher.setFuture(future);
 }

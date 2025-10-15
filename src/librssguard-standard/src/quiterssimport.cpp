@@ -26,6 +26,7 @@ void QuiteRssImport::import() {
   m_dbFile = FileDialog::openFileName(qApp->mainFormWidget(),
                                       tr("Select QuiteRSS database file"),
                                       qApp->homeFolder(),
+                                      QSL("feeds.db"),
                                       tr("QuiteRSS DB files (%1)").arg(QSL("*.db")),
                                       nullptr,
                                       GENERAL_REMEMBERED_PATH);

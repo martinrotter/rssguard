@@ -162,6 +162,7 @@ void GreaderServiceRoot::importFeeds() {
   const QString selected_file = FileDialog::openFileName(qApp->mainFormWidget(),
                                                          tr("Select file for feeds import"),
                                                          qApp->homeFolder(),
+                                                         {},
                                                          filter_opml20,
                                                          nullptr,
                                                          GENERAL_REMEMBERED_PATH);
@@ -188,11 +189,15 @@ void GreaderServiceRoot::importFeeds() {
 }
 
 void GreaderServiceRoot::exportFeeds() {
-  const QString the_file = qApp->homeFolder() + QDir::separator() +
-                           QSL("rssguard_feeds_%1.opml").arg(QDate::currentDate().toString(Qt::DateFormat::ISODate));
+  const QString the_file = QSL("rssguard_feeds_%1.opml").arg(QDate::currentDate().toString(Qt::DateFormat::ISODate));
   const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)");
-  const QString selected_file =
-    FileDialog::saveFileName(qApp->mainFormWidget(), tr("Select file for feeds export"), the_file, filter_opml20);
+  const QString selected_file = FileDialog::saveFileName(qApp->mainFormWidget(),
+                                                         tr("Select file for feeds export"),
+                                                         qApp->documentsFolder(),
+                                                         the_file,
+                                                         filter_opml20,
+                                                         nullptr,
+                                                         GENERAL_REMEMBERED_PATH);
 
   if (selected_file.isEmpty()) {
     return;

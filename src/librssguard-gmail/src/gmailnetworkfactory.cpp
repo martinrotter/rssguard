@@ -200,20 +200,6 @@ QList<RootItem*> GmailNetworkFactory::labels(bool only_user_labels, const QNetwo
   return lbls;
 }
 
-QNetworkRequest GmailNetworkFactory::requestForAttachment(const QString& email_id, const QString& attachment_id) {
-  QString target_url = QSL(GMAIL_API_GET_ATTACHMENT).arg(email_id, attachment_id);
-  QNetworkRequest req(target_url);
-  QByteArray bearer = m_oauth2->bearer().toLocal8Bit();
-
-  if (bearer.isEmpty()) {
-    throw NetworkException(QNetworkReply::NetworkError::AuthenticationRequiredError);
-  }
-
-  req.setRawHeader(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer);
-
-  return req;
-}
-
 void GmailNetworkFactory::setOauth(OAuth2Service* oauth) {
   m_oauth2 = oauth;
 }

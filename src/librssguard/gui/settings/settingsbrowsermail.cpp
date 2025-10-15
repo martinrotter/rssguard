@@ -115,7 +115,7 @@ void SettingsBrowserMail::selectBrowserExecutable() {
   const QString executable_file = FileDialog::openFileName(this,
                                                            tr("Select web browser executable"),
                                                            qApp->homeFolder(),
-
+                                                           {},
   //: File filter for external browser selection dialog.
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
                                                            tr("Executables (*)"));
@@ -160,7 +160,7 @@ void SettingsBrowserMail::selectEmailExecutable() {
   QString executable_file = FileDialog::openFileName(this,
                                                      tr("Select e-mail executable"),
                                                      qApp->homeFolder(),
-
+                                                     {},
   //: File filter for external e-mail selection dialog.
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
                                                      tr("Executables (*)"));
@@ -281,7 +281,8 @@ void SettingsBrowserMail::addExternalTool() {
 ExternalTool SettingsBrowserMail::tweakExternalTool(const ExternalTool& tool) const {
   QString executable_file = FileDialog::openFileName(window(),
                                                      tr("Select external tool"),
-                                                     tool.executable(),
+                                                     QFileInfo(tool.executable()).absolutePath(),
+                                                     QFileInfo(tool.executable()).fileName(),
 #if defined(Q_OS_WIN)
                                                      tr("Executables (*.*)"),
 #else

@@ -54,6 +54,7 @@ void StandardAccountDetails::onLoadIconFromFile() {
   QString fil = FileDialog::openFileName(this,
                                          tr("Select icon file for the account"),
                                          qApp->homeFolder(),
+                                         {},
                                          tr("Images (%1)").arg(list_formats.join(QL1C(' '))),
                                          nullptr,
                                          GENERAL_REMEMBERED_PATH);

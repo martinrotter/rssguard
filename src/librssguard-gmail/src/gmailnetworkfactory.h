@@ -42,7 +42,6 @@ class GmailNetworkFactory : public QObject {
     QMap<QString, QString> getMessageMetadata(const QString& msg_id,
                                               const QStringList& metadata,
                                               const QNetworkProxy& custom_proxy);
-    QNetworkRequest requestForAttachment(const QString& email_id, const QString& attachment_id);
     QString sendEmail(Mimesis::Message msg, const QNetworkProxy& custom_proxy, Message* reply_to_message = nullptr);
     QList<Message> messages(Feed* feed,
                             const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,

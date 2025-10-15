@@ -166,8 +166,7 @@ void FormStandardImportExport::onPostProcessScriptChanged(const QString& new_pp)
 }
 
 void FormStandardImportExport::selectExportFile(bool without_dialog) {
-  const QString the_file = qApp->homeFolder() + QDir::separator() +
-                           QSL("rssguard_feeds_%1.opml").arg(QDate::currentDate().toString(Qt::DateFormat::ISODate));
+  const QString the_file = QSL("rssguard_feeds_%1.opml").arg(QDate::currentDate().toString(Qt::DateFormat::ISODate));
   QString selected_file;
   QString selected_filter;
   const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)");
@@ -182,6 +181,7 @@ void FormStandardImportExport::selectExportFile(bool without_dialog) {
     filter += filter_txt_url_per_line;
     selected_file = FileDialog::saveFileName(this,
                                              tr("Select file for feeds export"),
+                                             qApp->documentsFolder(),
                                              the_file,
                                              filter,
                                              &selected_filter,
@@ -231,6 +231,7 @@ void FormStandardImportExport::selectImportFile() {
   const QString selected_file = FileDialog::openFileName(this,
                                                          tr("Select file for feeds import"),
                                                          qApp->homeFolder(),
+                                                         {},
                                                          filter,
                                                          &selected_filter,
                                                          GENERAL_REMEMBERED_PATH);
