@@ -62,8 +62,6 @@ bool Label::deleteItem() {
 void Label::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();
-
-  // TODO: slow
   auto ac = DatabaseQueries::getMessageCountsForLabel(database, this, account_id);
 
   if (including_total_count) {

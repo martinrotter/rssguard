@@ -712,7 +712,7 @@ void ServiceRoot::syncIn() {
     DatabaseQueries::purgeLeftoverMessages(db, accountId());
     DatabaseQueries::purgeLeftoverMessageFilterAssignments(db, accountId());
 
-    // TODO: remove leftover label assignments from labels which no longer exist.
+    // TODO: Remove leftover label assignments from labels which no longer exist.
 
     qApp->database()->driver()->setForeignKeyChecksEnabled(db);
 

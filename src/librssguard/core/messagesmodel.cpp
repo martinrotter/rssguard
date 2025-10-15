@@ -2,6 +2,7 @@
 
 #include "core/messagesmodel.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
@@ -11,6 +12,7 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 
@@ -609,11 +611,10 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           return !msg.m_enclosures.isEmpty();
 
         case MSG_DB_LABELS:
-          // TODO: odstranit sloupec nebo fillovat stejně jako feedTitle?
-          return QString();
+          return QVariant();
 
         case MSG_DB_LABELS_IDS:
-          return msg.m_assignedLabelsIds;
+          return msg.m_assignedLabelsIds.join(QL1C(','));
 
         default:
           throw ApplicationException(tr("article model column %1 is out of range").arg(idx.column()));
