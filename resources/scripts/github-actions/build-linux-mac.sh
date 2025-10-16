@@ -55,8 +55,7 @@ else
   QTVERSION="6.9.3"
   QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
-  # Install "aqtinstall" from its master branch to have latest code.
-  pip3 install -I git+https://github.com/miurahr/aqtinstall
+  brew install aqtinstall
 
   echo "Qt bin directory is: $QTBIN"
   echo "Qt will be installed to: $QTPATH"
