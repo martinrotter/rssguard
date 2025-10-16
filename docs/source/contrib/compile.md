@@ -4,10 +4,12 @@ RSS Guard is a `C++` application. All common build instructions can be found at 
 
 ```{warning}
 Note that on modern MacOS machines you will experience crashs when launching RSS Guard, and you will have to self-sign the application via `codesign` utility to make it run.
+```
 
-You can generally solve this this by executing this command in a terminal relative to the .app's installed location. 
+You can generally solve this this by executing this command in a terminal relative to the .app's installed location.
+
 ```bash
-codesign --deep -fs - "RSS Guard.app"
+sudo codesign --deep -fs - "RSS Guard.app"
 ```
 
 Here's a quick example of how to build it on Linux:
@@ -20,7 +22,7 @@ cd rssguard
 mkdir rssguard-build
 cd rssguard-build
 
-# Configure the project to build using Qt 6, and disable built-in web browser support
+# Configure the project to build using Qt 6.
 cmake .. --warn-uninitialized -G Ninja -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_VERBOSE_MAKEFILE="ON" -DREVISION_FROM_GIT="ON" -DBUILD_WITH_QT6="ON" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="ON" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="OFF"
 
 # Compile it
@@ -32,3 +34,4 @@ cmake --build .
 # (Optional) Install RSS Guard system-wide
 sudo cmake --install . --prefix /usr --verbose
 ```
+
