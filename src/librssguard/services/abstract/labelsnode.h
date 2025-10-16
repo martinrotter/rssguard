@@ -19,7 +19,7 @@ class RSSGUARD_DLLSPEC LabelsNode : public RootItem {
     virtual QList<QAction*> contextMenuFeedsList();
     virtual void updateCounts(bool including_total_count);
 
-    Label* labelById(const QString& custom_id);
+    Label* labelByCustomId(const QString& custom_id);
 
   public slots:
     void createLabel();

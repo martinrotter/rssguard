@@ -74,6 +74,8 @@ void StandardServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
   for (Feed* fd : feeds) {
     static_cast<StandardFeed*>(fd)->setLastEtag(QString());
   }
+
+  ServiceRoot::onAfterFeedsPurged(feeds);
 }
 
 void StandardServiceRoot::start(bool freshly_activated) {

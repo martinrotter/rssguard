@@ -297,6 +297,11 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void itemRemovalRequested(RootItem* item);
 
   private:
+    void refreshAfterArticlesChange(const QList<Message>& messages,
+                                    bool refresh_bin,
+                                    bool refresh_only_bin,
+                                    bool including_total_counts);
+
     void resortAccountTree(RootItem* tree,
                            const QMap<QString, QVariantMap>& custom_category_data,
                            const QMap<QString, QVariantMap>& custom_feed_data) const;

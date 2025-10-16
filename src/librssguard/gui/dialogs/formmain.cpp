@@ -139,8 +139,6 @@ void FormMain::showDbCleanupAssistant() {
     qApp->feedReader()->feedsModel()->informAboutDatabaseCleanup();
     qApp->feedReader()->feedsModel()->reloadCountsOfWholeModel();
 
-    // TODO: model
-    // tabWidget()->feedMessageViewer()->messagesView()->reloadSelections();
     tabWidget()
       ->feedMessageViewer()
       ->messagesView()

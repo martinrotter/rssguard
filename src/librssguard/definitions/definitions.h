@@ -97,7 +97,7 @@
 #define FEEDS_VIEW_INDENTATION       10
 #define MIME_TYPE_ITEM_POINTER       "rssguard/itempointer"
 #define ENCRYPTION_FILE_NAME         "key.private"
-#define RELOAD_MODEL_BORDER_NUM      10
+#define RELOAD_MODEL_BORDER_NUM      20
 #define DEFAULT_NOTIFICATION_VOLUME  50
 #define MAX_THREADPOOL_THREADS       32
 #define WEB_BROWSER_SCROLL_STEP      50.0

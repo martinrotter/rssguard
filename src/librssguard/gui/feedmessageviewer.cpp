@@ -250,7 +250,6 @@ void FeedMessageViewer::loadMessageToFeedAndArticleList(Feed* feed, const Messag
     return;
   }
 
-  // TODO: expand properly
   m_feedsView->setExpanded(idx_map, true);
   m_feedsView->setCurrentIndex(idx_map);
   QCoreApplication::processEvents();

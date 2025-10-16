@@ -39,8 +39,6 @@ class MessagesModelSqlLayer {
     QString limitOffset(int limit, int offset) const;
     QString formatFields() const;
 
-    bool isColumnNumeric(int column_id) const;
-
     QString m_filter;
 
     // NOTE: These two lists contain data for multicolumn sorting.
@@ -49,7 +47,6 @@ class MessagesModelSqlLayer {
     QMap<int, QString> m_fieldNames;
     QMap<int, QString> m_orderByNames;
     QList<int> m_sortColumns;
-    QList<int> m_numericColumns;
     QList<Qt::SortOrder> m_sortOrders;
 };
 

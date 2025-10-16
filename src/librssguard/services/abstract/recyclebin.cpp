@@ -92,7 +92,7 @@ bool RecycleBin::cleanMessages(bool clear_only_read) {
 
   if (DatabaseQueries::purgeMessagesFromBin(database, clear_only_read, parent_root->accountId())) {
     updateCounts(true);
-    parent_root->itemChanged(QList<RootItem*>() << this);
+    parent_root->itemChanged({this});
     parent_root->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
     return true;
   }

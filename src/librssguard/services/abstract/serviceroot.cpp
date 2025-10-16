@@ -995,96 +995,6 @@ bool ServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item,
   return true;
 }
 
-bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
-                                         const QList<Message>& messages,
-                                         RootItem::ReadStatus read) {
-  Q_UNUSED(messages)
-  Q_UNUSED(read)
-
-  // We know that some messages were marked as read or unread, therefore we do not need to recount
-  // all items, but only some:
-  //  - recycle bin (if recycle bin IS selected)
-  //  - feeds of those messages (if recycle bin is NOT selected)
-  //  - important articles (if some messages IS important AND recycle bin is NOT selected)
-  //  - unread articles (if some messages IS unread AND recycle bin is NOT selected)
-  //  - labels assigned to articles (if recycle bin is NOT selected)
-  //  - probes (if recycle bin is NOT selected)
-  QList<RootItem*> to_update;
-
-  if (selected_item->kind() == RootItem::Kind::Bin) {
-    selected_item->updateCounts(false);
-    to_update << selected_item;
-  }
-  else {
-    auto linq = boolinq::from(messages);
-
-    // 1. Feeds of messages.
-    auto feed_ids = linq
-                      .select([](const Message& msg) {
-                        return msg.m_feedId;
-                      })
-                      .distinct()
-                      .toStdList();
-
-    for (int feed_id : feed_ids) {
-      auto* feed = getItemFromSubTree([feed_id](const RootItem* it) {
-        return it->kind() == RootItem::Kind::Feed && it->id() == feed_id;
-      });
-
-      if (feed != nullptr) {
-        feed->updateCounts(false);
-        to_update << feed;
-      }
-    }
-
-    // 2. Important.
-    if (importantNode() != nullptr) {
-      if (linq.any([](const Message& msg) {
-            return msg.m_isImportant;
-          })) {
-        importantNode()->updateCounts(false);
-        to_update << importantNode();
-      }
-    }
-
-    // 3. Unread.
-    if (unreadNode() != nullptr) {
-      unreadNode()->updateCounts(false);
-      to_update << unreadNode();
-    }
-
-    // 4. Labels assigned.
-    if (labelsNode() != nullptr) {
-      // auto db = qApp->database()->driver()->connection(metaObject()->className());
-      QStringList lbls; // = DatabaseQueries::getCountOfAssignedLabelsToMessages(db, messages, accountId());
-
-      for (const Message& msg : messages) {
-        for (const QString& lbl : msg.m_assignedLabelsIds) {
-          if (!lbls.contains(lbl)) {
-            lbls.append(lbl);
-          }
-        }
-      }
-
-      for (const QString& lbl : lbls) {
-        Label* l = labelsNode()->labelById(lbl);
-
-        if (l != nullptr) {
-          l->updateCounts(false);
-          to_update << l;
-        }
-      }
-    }
-
-    // 5. Probes.
-    m_probesNode->updateCounts(false);
-    to_update << m_probesNode->childItems();
-  }
-
-  itemChanged(to_update);
-  return true;
-}
-
 bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes) {
   Q_UNUSED(selected_item)
 
@@ -1138,23 +1048,6 @@ bool ServiceRoot::onBeforeMessagesDelete(RootItem* selected_item, const QList<Me
   return true;
 }
 
-bool ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages) {
-  Q_UNUSED(selected_item)
-  Q_UNUSED(messages)
-
-  // TODO: We know that some messages were deleted, therefore we do not need to recount
-  // all items, but only some:
-  //  - feeds of those messages (if recycle bin is NOT selected)
-  //  - recycle bin (if recycle bin IS selected)
-  //  - important articles (if some message IS important AND recycle bin is NOT selected)
-  //  - unread articles (if some messages IS unread AND if recycle bin is NOT selected)
-  //  - labels assigned to articles (if recycle bin is NOT selected)
-
-  updateCounts(true);
-  itemChanged(getSubTree<RootItem>());
-  return true;
-}
-
 bool ServiceRoot::onBeforeLabelMessageAssignmentChanged(const QList<Label*>& labels,
                                                         const QList<Message>& messages,
                                                         bool assign) {
@@ -1181,7 +1074,7 @@ bool ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*>& labe
 
   auto list = boolinq::from(labels)
                 .select([](Label* lbl) {
-                  return static_cast<RootItem*>(lbl);
+                  return lbl;
                 })
                 .toStdList();
 
@@ -1196,17 +1089,108 @@ bool ServiceRoot::onBeforeMessagesRestoredFromBin(RootItem* selected_item, const
   return true;
 }
 
-bool ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {
-  Q_UNUSED(selected_item)
-  Q_UNUSED(messages)
+void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
+                                             bool refresh_bin,
+                                             bool refresh_only_bin,
+                                             bool including_total_counts) {
+  QList<RootItem*> to_update;
 
-  updateCounts(true);
-  itemChanged(getSubTree<RootItem>());
+  if (refresh_only_bin) {
+    m_recycleBin->updateCounts(true);
+    to_update << m_recycleBin;
+  }
+  else {
+    auto feeds_hashed = getPrimaryIdHashedSubTreeFeeds();
+    auto msgs_linq = boolinq::from(messages);
+    auto feed_ids = msgs_linq
+                      .select([](const Message& msg) {
+                        return msg.m_feedId;
+                      })
+                      .distinct()
+                      .toStdVector();
+
+    for (int feed_id : feed_ids) {
+      auto* fd = feeds_hashed.value(feed_id);
+      fd->updateCounts(including_total_counts);
+
+      to_update << fd;
+    }
+
+    if (m_importantNode != nullptr && msgs_linq.any([](const Message& msg) {
+          return msg.m_isImportant;
+        })) {
+      m_importantNode->updateCounts(including_total_counts);
+      to_update << m_importantNode;
+    }
+
+    if (m_unreadNode != nullptr) {
+      m_unreadNode->updateCounts(true);
+      to_update << m_unreadNode;
+    }
+
+    if (m_labelsNode != nullptr) {
+      auto lbl_custom_ids = msgs_linq
+                              .selectMany([](const Message& msg) {
+                                auto ids = msg.m_assignedLabelsIds;
+                                return boolinq::from(ids);
+                              })
+                              .distinct()
+                              .toStdVector();
+
+      for (const QString& lbl : lbl_custom_ids) {
+        Label* l = labelsNode()->labelByCustomId(lbl);
+
+        if (l != nullptr) {
+          l->updateCounts(including_total_counts);
+          to_update << l;
+        }
+      }
+    }
+
+    if (refresh_bin) {
+      m_recycleBin->updateCounts(including_total_counts);
+      to_update << m_recycleBin;
+    }
+  }
+
+  itemChanged(to_update);
+}
+
+bool ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {
+  refreshAfterArticlesChange(messages, true, false, true);
+  return true;
+}
+
+bool ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages) {
+  refreshAfterArticlesChange(messages,
+                             true,
+                             selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin,
+                             true);
+  return true;
+}
+
+bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
+                                         const QList<Message>& messages,
+                                         RootItem::ReadStatus read) {
+  refreshAfterArticlesChange(messages,
+                             true,
+                             selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin,
+                             false);
   return true;
 }
 
 void ServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
   Q_UNUSED(feeds)
+
+  QList<RootItem*> itms;
+  itms.reserve(feeds.size());
+
+  for (Feed* fd : feeds) {
+    fd->updateCounts(true);
+    itms.append(fd);
+  }
+
+  itemChanged(itms);
 }
 
 QNetworkProxy ServiceRoot::networkProxyForItem(RootItem* item) const {

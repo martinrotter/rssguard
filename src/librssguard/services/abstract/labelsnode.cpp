@@ -33,11 +33,6 @@ QList<Message> LabelsNode::undeletedMessages() const {
 }
 
 void LabelsNode::updateCounts(bool including_total_count) {
-  // TODO: This is still rather slow because this is automatically
-  // called when message is marked (un)read or starred.
-  // It would be enough if only labels which are assigned to article
-  // are recounted, not all.
-
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();
   auto acc = DatabaseQueries::getMessageCountsForAllLabels(database, account_id);
@@ -62,7 +57,7 @@ void LabelsNode::updateCounts(bool including_total_count) {
   }
 }
 
-Label* LabelsNode::labelById(const QString& custom_id) {
+Label* LabelsNode::labelByCustomId(const QString& custom_id) {
   auto chi = childItems();
 
   return qobject_cast<Label*>(boolinq::from(chi).firstOrDefault([custom_id](RootItem* it) {

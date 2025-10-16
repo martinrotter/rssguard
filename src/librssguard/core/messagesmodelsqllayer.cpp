@@ -9,7 +9,7 @@
 
 MessagesModelSqlLayer::MessagesModelSqlLayer()
   : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)), m_fieldNames({}), m_orderByNames({}), m_sortColumns({}),
-    m_numericColumns({}), m_sortOrders({}) {
+    m_sortOrders({}) {
   m_db = qApp->database()->driver()->connection(QSL("MessagesModel"));
 
   // Used in <x>: SELECT <x1>, <x2> FROM ....;
@@ -37,10 +37,6 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_orderByNames[MSG_DB_HAS_ENCLOSURES] = QSL("has_enclosures");
   m_orderByNames[MSG_DB_LABELS] = QSL("msg_labels");
   m_orderByNames[MSG_DB_LABELS_IDS] = QSL("Messages.labels");
-
-  m_numericColumns << MSG_DB_ID_INDEX << MSG_DB_READ_INDEX << MSG_DB_DELETED_INDEX << MSG_DB_PDELETED_INDEX
-                   << MSG_DB_IMPORTANT_INDEX << MSG_DB_FEED_ID_INDEX << MSG_DB_ACCOUNT_ID_INDEX << MSG_DB_DCREATED_INDEX
-                   << MSG_DB_SCORE_INDEX << MSG_DB_FEED_IS_RTL_INDEX;
 }
 
 void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool ignore_multicolumn_sorting) {
@@ -117,10 +113,6 @@ QList<Message> MessagesModelSqlLayer::fetchMessages(int limit, int offset, int a
 
 QString MessagesModelSqlLayer::formatFields() const {
   return m_fieldNames.values().join(QSL(", "));
-}
-
-bool MessagesModelSqlLayer::isColumnNumeric(int column_id) const {
-  return m_numericColumns.contains(column_id);
 }
 
 QString MessagesModelSqlLayer::selectStatement(int limit, int offset, int additional_article_id) const {

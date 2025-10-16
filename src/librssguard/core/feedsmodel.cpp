@@ -551,9 +551,8 @@ bool FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
         acc->onAfterFeedsPurged(feeds_per_root.values(acc));
       }
 
-      reloadCountsOfWholeModel();
+      notifyWithCounts();
       emit dataChangeNotificationTriggered(nullptr, ExternalDataChange::DatabaseCleaned);
-      // emit reloadMessageListRequested(false);
       return true;
     }
   }

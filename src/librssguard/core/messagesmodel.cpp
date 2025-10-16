@@ -604,8 +604,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           return msg.m_feedTitle;
 
         case MSG_DB_FEED_IS_RTL_INDEX:
-          // TODO: bez konverze
-          return int(msg.m_rtlBehavior);
+          return QVariant::fromValue(msg.m_rtlBehavior);
 
         case MSG_DB_HAS_ENCLOSURES:
           return !msg.m_enclosures.isEmpty();
