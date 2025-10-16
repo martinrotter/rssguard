@@ -70,8 +70,8 @@ void ScrollableMenu::clearCurrentPage() {
 }
 
 void ScrollableMenu::initialize() {
-  m_actUp = new QAction(qApp->icons()->fromTheme(QSL("go-up"), QSL("arrow-up")), tr("Go &up"), this);
-  m_actDown = new QAction(qApp->icons()->fromTheme(QSL("go-down"), QSL("arrow-down")), tr("Go &down"), this);
+  m_actUp = new QAction(qApp->icons()->fromTheme(QSL("go-up"), QSL("arrow-up")), tr("Go &up"), parent());
+  m_actDown = new QAction(qApp->icons()->fromTheme(QSL("go-down"), QSL("arrow-down")), tr("Go &down"), parent());
 
   connect(m_actUp, &QAction::triggered, this, [this]() {
     setPage(m_page - 1);
@@ -88,7 +88,7 @@ void ScrollableMenu::setPageName(const QString& name) {
 void ScrollableMenu::setPage(int page) {
   m_page = page;
 
-  if (m_actions.size() <= ACTIONS_PAGE_SIZE) {
+  if (!m_arrowsVisible) {
     addActions(m_actions);
   }
   else {

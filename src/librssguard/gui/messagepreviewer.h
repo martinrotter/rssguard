@@ -19,19 +19,7 @@ class QToolBar;
 
 class WebBrowser;
 class ItemDetails;
-
-class LabelToolbarAction : public QAction {
-    Q_OBJECT
-
-  public:
-    explicit LabelToolbarAction(QObject* parent = nullptr);
-
-    Label* label() const;
-    void setLabel(Label* label);
-
-  private:
-    QPointer<Label> m_label;
-};
+class LabelsMenu;
 
 class MessagePreviewer : public TabContent {
     Q_OBJECT
@@ -44,6 +32,8 @@ class MessagePreviewer : public TabContent {
 
     virtual WebBrowser* webBrowser() const;
 
+    LabelsMenu *menuLabels() const;
+
   public slots:
     void setToolbarsVisible(bool visible);
     void clear();
@@ -52,8 +42,6 @@ class MessagePreviewer : public TabContent {
     void loadMessage(const Message& message, RootItem* root);
 
   private slots:
-    void switchLabel(bool assign);
-    void showAllLabels();
     void markMessageAsRead();
     void markMessageAsUnread();
     void markMessageAsReadUnread(RootItem::ReadStatus read);
@@ -62,7 +50,6 @@ class MessagePreviewer : public TabContent {
   signals:
     void markMessageRead(int id, RootItem::ReadStatus read);
     void markMessageImportant(int id, RootItem::Importance important);
-    void setMessageLabelIds(int id, const QStringList& ids);
 
   private:
     void createConnections();
@@ -82,6 +69,7 @@ class MessagePreviewer : public TabContent {
     QAction* m_actionMarkUnread;
     QAction* m_actionSwitchImportance;
     QAction* m_actionShowAllLabels;
+    LabelsMenu* m_menuLabels;
     QAction* m_separator;
     QList<QAction*> m_btnLabels;
     ItemDetails* m_itemDetails;

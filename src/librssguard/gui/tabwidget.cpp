@@ -8,6 +8,7 @@
 #include "gui/feedsview.h"
 #include "gui/messagepreviewer.h"
 #include "gui/messagesview.h"
+#include "gui/reusable/labelsmenu.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/tabbar.h"
 #include "gui/webbrowser.h"
@@ -206,7 +207,7 @@ int TabWidget::addSingleMessageView(RootItem* root, const Message& message) {
 
   connect(browser, &MessagePreviewer::markMessageRead, msg_mdl, &MessagesModel::setMessageReadById);
   connect(browser, &MessagePreviewer::markMessageImportant, msg_mdl, &MessagesModel::setMessageImportantById);
-  connect(browser, &MessagePreviewer::setMessageLabelIds, msg_mdl, &MessagesModel::setMessageLabelsById);
+  connect(browser->menuLabels(), &LabelsMenu::setModelArticleLabelIds, msg_mdl, &MessagesModel::setMessageLabelsById);
 
   int index = addTab(browser, root->fullIcon(), message.m_title, TabBar::TabType::Closable);
 

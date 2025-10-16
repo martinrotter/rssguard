@@ -12,19 +12,24 @@ class LabelsMenu : public ScrollableMenu {
   public:
     enum class Operation {
       AddLabel,
-      RemoveLabel
+      RemoveLabel,
+      Toggle
     };
 
-    explicit LabelsMenu(Operation operation,
-                        const QList<Message>& messages,
-                        const QList<Label*>& labels,
-                        QWidget* parent = nullptr);
+    explicit LabelsMenu(Operation operation, QWidget* parent = nullptr);
+
+    QList<Message> messages() const;
+    void setMessages(const QList<Message>& messages);
+
+    void setLabels(const QList<Label*>& labels);
+
+    QList<QAction*> labelActions() const;
 
   signals:
-    void labelsChanged();
+    void setModelArticleLabelIds(int article_id, const QStringList& label_custom_ids);
 
   private slots:
-    void changeLabelAssignment();
+    void changeLabelAssignment(bool assign);
 
   private:
     QAction* labelAction(Label* label);
@@ -32,13 +37,14 @@ class LabelsMenu : public ScrollableMenu {
   private:
     QList<Message> m_messages;
     Operation m_operation;
+    QList<QAction*> m_labelActions;
 };
 
 class LabelAction : public QAction {
     Q_OBJECT
 
   public:
-    explicit LabelAction(Label* label, QWidget* parent_widget, QObject* parent);
+    explicit LabelAction(Label* label, QObject* parent);
 
     Label* label() const;
 

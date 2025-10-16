@@ -34,8 +34,8 @@ class RSSGUARD_DLLSPEC Label : public RootItem {
     virtual QList<Message> undeletedMessages() const;
 
   public slots:
-    void assignToMessage(const Message& msg, bool reload_model = true);
-    void deassignFromMessage(const Message& msg, bool reload_model = true);
+    void assignToMessage(const Message& msg, bool reload_feeds_model = true);
+    void deassignFromMessage(const Message& msg, bool reload_feeds_model = true);
 
   private:
     QColor m_color;

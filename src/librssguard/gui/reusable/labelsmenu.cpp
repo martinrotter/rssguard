@@ -11,14 +11,16 @@
 #include <QKeyEvent>
 #include <QPainter>
 
-LabelsMenu::LabelsMenu(Operation operation,
-                       const QList<Message>& messages,
-                       const QList<Label*>& labels,
-                       QWidget* parent)
+LabelsMenu::LabelsMenu(Operation operation, QWidget* parent)
   : ScrollableMenu(operation == Operation::AddLabel ? tr("Add labels") : tr("Remove labels"), parent),
-    m_messages(messages), m_operation(operation) {
-  setIcon(m_operation == Operation::AddLabel ? qApp->icons()->fromTheme(QSL("tag-new"), QSL("tag-edit"))
-                                             : qApp->icons()->fromTheme(QSL("tag-delete"), QSL("tag-reset")));
+    m_operation(operation) {
+  setIcon((m_operation == Operation::AddLabel || m_operation == Operation::Toggle)
+            ? qApp->icons()->fromTheme(QSL("tag-new"), QSL("tag-edit"))
+            : qApp->icons()->fromTheme(QSL("tag-delete"), QSL("tag-reset")));
+}
+
+void LabelsMenu::setLabels(const QList<Label*>& labels) {
+  m_labelActions.clear();
 
   if (labels.isEmpty()) {
     QAction* act_not_labels = new QAction(tr("No labels found"));
@@ -27,56 +29,74 @@ LabelsMenu::LabelsMenu(Operation operation,
     setActions({act_not_labels}, false);
   }
   else {
-    QList<QAction*> lbls;
+    auto lbls = boolinq::from(labels)
+                  .orderBy([](const Label* label) {
+                    return label->title().toLower();
+                  })
+                  .select([this](Label* label) {
+                    return labelAction(label);
+                  })
+                  .toStdList();
 
-    for (Label* label : boolinq::from(labels)
-                          .orderBy([](const Label* label) {
-                            return label->title().toLower();
-                          })
-                          .toStdList()) {
-      lbls.append(labelAction(label));
-    }
-
-    setActions(lbls, false);
+    m_labelActions = FROM_STD_LIST(QList<QAction*>, lbls);
+    setActions(m_labelActions, false);
   }
 }
 
-void LabelsMenu::changeLabelAssignment() {
+void LabelsMenu::changeLabelAssignment(bool assign) {
   LabelAction* origin = qobject_cast<LabelAction*>(sender());
-
-  origin->setEnabled(false);
+  auto lbl = origin->label();
 
   if (origin != nullptr) {
-    if (m_operation == Operation::AddLabel) {
-      // Assign this label to selected messages.
-      for (const auto& msg : std::as_const(m_messages)) {
-        origin->label()->assignToMessage(msg, true);
-      }
+    if (m_operation != Operation::Toggle) {
+      origin->setEnabled(false);
     }
-    else {
-      // Remove label from selected messages.
-      for (const auto& msg : std::as_const(m_messages)) {
-        origin->label()->deassignFromMessage(msg, true);
+
+    for (auto& msg : m_messages) {
+      if (m_operation == Operation::AddLabel || (m_operation == Operation::Toggle && assign)) {
+        origin->label()->assignToMessage(msg, true);
+        msg.m_assignedLabelsIds.append(lbl->customId());
       }
+      else {
+        origin->label()->deassignFromMessage(msg, true);
+        msg.m_assignedLabelsIds.removeOne(lbl->customId());
+      }
+
+      emit setModelArticleLabelIds(msg.m_id, msg.m_assignedLabelsIds);
     }
   }
-
-  emit labelsChanged();
 }
 
 QAction* LabelsMenu::labelAction(Label* label) {
-  auto* act = new LabelAction(label, this, this);
+  auto* act = new LabelAction(label, this);
 
-  act->setCheckable(true);
+  act->setCheckable(m_operation == Operation::Toggle);
+  act->setChecked(act->isCheckable() && boolinq::from(m_messages).all([&](const Message& msg) {
+    return msg.m_assignedLabelsIds.contains(label->customId());
+  }));
+
   connect(act, &LabelAction::triggered, this, &LabelsMenu::changeLabelAssignment);
 
   return act;
 }
 
-LabelAction::LabelAction(Label* label, QWidget* parent_widget, QObject* parent) : QAction(parent), m_label(label) {
+QList<QAction*> LabelsMenu::labelActions() const {
+  return m_labelActions;
+}
+
+QList<Message> LabelsMenu::messages() const {
+  return m_messages;
+}
+
+void LabelsMenu::setMessages(const QList<Message>& messages) {
+  m_messages = messages;
+}
+
+LabelAction::LabelAction(Label* label, QObject* parent) : QAction(parent), m_label(label) {
   setText(label->title());
   setIconVisibleInMenu(true);
   setIcon(label->icon());
+  setToolTip(label->title());
 }
 
 Label* LabelAction::label() const {

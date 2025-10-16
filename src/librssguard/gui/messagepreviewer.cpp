@@ -4,6 +4,7 @@
 
 #include "database/databasequeries.h"
 #include "gui/itemdetails.h"
+#include "gui/reusable/labelsmenu.h"
 #include "gui/reusable/scrollablemenu.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
@@ -40,11 +41,12 @@ void MessagePreviewer::createConnections() {
           &QAction::triggered,
           this,
           &MessagePreviewer::switchMessageImportance);
-  connect(m_actionShowAllLabels =
-            new QAction(qApp->icons()->fromTheme(QSL("tag"), QSL("tag-edit")), tr("Show all labels"), this),
-          &QAction::triggered,
-          this,
-          &MessagePreviewer::showAllLabels);
+
+  m_actionShowAllLabels =
+    m_toolBar->addAction(qApp->icons()->fromTheme(QSL("tag"), QSL("tag-edit")), tr("Show all labels"));
+  m_actionShowAllLabels->setMenu(m_menuLabels = new LabelsMenu(LabelsMenu::Operation::Toggle, m_toolBar));
+  qobject_cast<QToolButton*>(m_toolBar->widgetForAction(m_actionShowAllLabels))
+    ->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
 }
 
 MessagePreviewer::MessagePreviewer(QWidget* parent)
@@ -52,7 +54,6 @@ MessagePreviewer::MessagePreviewer(QWidget* parent)
     m_toolBar(new QToolBar(this)), m_msgBrowser(new WebBrowser(nullptr, this)), m_separator(nullptr),
     m_itemDetails(new ItemDetails(this)), m_toolbarVisible(true) {
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
-
   // NOTE: To make sure that if we have many labels and short message
   // that whole toolbar is visible.
   // m_toolBar->setSizePolicy(m_toolBar->sizePolicy().horizontalPolicy(), QSizePolicy::Policy::MinimumExpanding);
@@ -159,31 +160,6 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
   }
 }
 
-void MessagePreviewer::switchLabel(bool assign) {
-  auto lbl = qobject_cast<LabelToolbarAction*>(sender())->label();
-
-  if (lbl == nullptr) {
-    return;
-  }
-
-  if (assign) {
-    lbl->assignToMessage(m_message);
-    m_message.m_assignedLabelsIds.append(lbl->customId());
-  }
-  else {
-    lbl->deassignFromMessage(m_message);
-    m_message.m_assignedLabelsIds.removeOne(lbl->customId());
-  }
-
-  emit setMessageLabelIds(m_message.m_id, m_message.m_assignedLabelsIds);
-}
-
-void MessagePreviewer::showAllLabels() {
-  ScrollableMenu mm(tr("Labels"), this);
-  mm.setActions(m_btnLabels, false);
-  mm.exec(QCursor::pos());
-}
-
 void MessagePreviewer::markMessageAsRead() {
   markMessageAsReadUnread(RootItem::ReadStatus::Read);
 }
@@ -247,16 +223,16 @@ void MessagePreviewer::updateButtons() {
 void MessagePreviewer::updateLabels(bool only_clear) {
   for (auto& lbl : m_btnLabels) {
     m_toolBar->removeAction(lbl);
-    lbl->deleteLater();
+    // lbl->deleteLater();
   }
 
   m_btnLabels.clear();
 
   if (m_separator != nullptr) {
     m_toolBar->removeAction(m_separator);
+    m_separator->deleteLater();
+    m_separator = nullptr;
   }
-
-  m_toolBar->removeAction(m_actionShowAllLabels);
 
   if (only_clear) {
     return;
@@ -264,28 +240,15 @@ void MessagePreviewer::updateLabels(bool only_clear) {
 
   if (m_root.data() != nullptr && !m_root.data()->account()->labelsNode()->labels().isEmpty()) {
     m_separator = m_toolBar->addSeparator();
-    m_toolBar->addAction(m_actionShowAllLabels);
 
     auto lbls = m_root.data()->account()->labelsNode()->labels();
 
-    std::sort(lbls.begin(), lbls.end(), [](Label* lhs, Label* rhs) {
-      return lhs->title().compare(rhs->title(), Qt::CaseSensitivity::CaseInsensitive) < 0;
-    });
+    m_menuLabels->setMessages({m_message});
+    m_menuLabels->setLabels(lbls);
 
-    for (auto* label : std::as_const(lbls)) {
-      LabelToolbarAction* act_label = new LabelToolbarAction(this);
-
-      act_label->setIcon(IconFactory::generateIcon(label->color()));
-      act_label->setText(QSL(" ") + label->title());
-      act_label->setCheckable(true);
-      act_label->setChecked(m_message.m_assignedLabelsIds.contains(label->customId()));
-      act_label->setToolTip(label->title());
-      act_label->setLabel(label);
-
-      m_toolBar->addAction(act_label);
-      m_btnLabels.append(act_label);
-
-      connect(act_label, &QAction::toggled, this, &MessagePreviewer::switchLabel);
+    for (auto* act : m_menuLabels->labelActions()) {
+      m_toolBar->addAction(act);
+      m_btnLabels.append(act);
     }
   }
 }
@@ -306,12 +269,6 @@ void MessagePreviewer::ensureDefaultBrowserVisible() {
   m_viewerLayout->setCurrentIndex(INDEX_DEFAULT);
 }
 
-LabelToolbarAction::LabelToolbarAction(QObject* parent) : QAction(parent), m_label(nullptr) {}
-
-Label* LabelToolbarAction::label() const {
-  return m_label.data();
-}
-
-void LabelToolbarAction::setLabel(Label* label) {
-  m_label = label;
+LabelsMenu* MessagePreviewer::menuLabels() const {
+  return m_menuLabels;
 }

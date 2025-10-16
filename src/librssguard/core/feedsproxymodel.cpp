@@ -538,11 +538,15 @@ QModelIndexList FeedsProxyModel::mapListToSource(const QModelIndexList& indexes)
 }
 
 void FeedsProxyModel::setFeedListFilter(FeedListFilter filter) {
-  m_filter = filter;
-
 #if QT_VERSION_MAJOR == 5
+  m_filter = filter;
   invalidateFilter();
+#elif QT_VERSION >= 0x060A00 // Qt > 6.9.0
+  beginFilterChange();
+  m_filter = filter;
+  endFilterChange(QSortFilterProxyModel::Direction::Rows);
 #else
+  m_filter = filter;
   invalidateRowsFilter();
 #endif
 }

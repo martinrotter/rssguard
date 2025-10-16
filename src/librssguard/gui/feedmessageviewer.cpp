@@ -8,6 +8,7 @@
 #include "gui/feedsview.h"
 #include "gui/messagepreviewer.h"
 #include "gui/messagesview.h"
+#include "gui/reusable/labelsmenu.h"
 #include "gui/toolbars/feedstoolbar.h"
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/webbrowser.h"
@@ -302,8 +303,8 @@ void FeedMessageViewer::createConnections() {
           &MessagePreviewer::markMessageImportant,
           m_messagesView->sourceModel(),
           &MessagesModel::setMessageImportantById);
-  connect(m_messagesBrowser,
-          &MessagePreviewer::setMessageLabelIds,
+  connect(m_messagesBrowser->menuLabels(),
+          &LabelsMenu::setModelArticleLabelIds,
           m_messagesView->sourceModel(),
           &MessagesModel::setMessageLabelsById);
 

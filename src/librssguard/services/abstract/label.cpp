@@ -77,25 +77,25 @@ QList<Message> Label::undeletedMessages() const {
   return DatabaseQueries::getUndeletedMessagesWithLabel(database, this);
 }
 
-void Label::assignToMessage(const Message& msg, bool reload_model) {
+void Label::assignToMessage(const Message& msg, bool reload_feeds_model) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
   if (account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, true)) {
     DatabaseQueries::assignLabelToMessage(database, this, msg);
 
-    if (reload_model) {
+    if (reload_feeds_model) {
       account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
     }
   }
 }
 
-void Label::deassignFromMessage(const Message& msg, bool reload_model) {
+void Label::deassignFromMessage(const Message& msg, bool reload_feeds_model) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
   if (account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, false)) {
     DatabaseQueries::deassignLabelFromMessage(database, this, msg);
 
-    if (reload_model) {
+    if (reload_feeds_model) {
       account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
     }
   }
