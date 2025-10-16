@@ -237,6 +237,9 @@ void ServiceRoot::updateCounts(bool including_total_count) {
     if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }
+    else if (child->kind() == RootItem::Kind::Unread) {
+      child->updateCounts(true);
+    }
     else if (child->kind() != RootItem::Kind::Label && child->kind() != RootItem::Kind::Category &&
              child->kind() != RootItem::Kind::ServiceRoot && child->kind() != RootItem::Kind::Probe) {
       child->updateCounts(including_total_count);
@@ -1093,11 +1096,9 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
                                              bool refresh_bin,
                                              bool refresh_only_bin,
                                              bool including_total_counts) {
-  QList<RootItem*> to_update;
-
   if (refresh_only_bin) {
     m_recycleBin->updateCounts(true);
-    to_update << m_recycleBin;
+    itemChanged({m_recycleBin});
   }
   else {
     auto feeds_hashed = getPrimaryIdHashedSubTreeFeeds();
@@ -1109,51 +1110,59 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
                       .distinct()
                       .toStdVector();
 
-    for (int feed_id : feed_ids) {
-      auto* fd = feeds_hashed.value(feed_id);
-      fd->updateCounts(including_total_counts);
-
-      to_update << fd;
+    if (feed_ids.size() > 100) {
+      updateCounts(including_total_counts);
+      itemChanged({getSubTree<RootItem>()});
     }
+    else {
+      QList<RootItem*> to_update;
 
-    if (m_importantNode != nullptr && msgs_linq.any([](const Message& msg) {
-          return msg.m_isImportant;
-        })) {
-      m_importantNode->updateCounts(including_total_counts);
-      to_update << m_importantNode;
-    }
+      for (int feed_id : feed_ids) {
+        auto* fd = feeds_hashed.value(feed_id);
+        fd->updateCounts(including_total_counts);
 
-    if (m_unreadNode != nullptr) {
-      m_unreadNode->updateCounts(true);
-      to_update << m_unreadNode;
-    }
+        to_update << fd;
+      }
 
-    if (m_labelsNode != nullptr) {
-      auto lbl_custom_ids = msgs_linq
-                              .selectMany([](const Message& msg) {
-                                auto ids = msg.m_assignedLabelsIds;
-                                return boolinq::from(ids);
-                              })
-                              .distinct()
-                              .toStdVector();
+      if (m_importantNode != nullptr && msgs_linq.any([](const Message& msg) {
+            return msg.m_isImportant;
+          })) {
+        m_importantNode->updateCounts(including_total_counts);
+        to_update << m_importantNode;
+      }
 
-      for (const QString& lbl : lbl_custom_ids) {
-        Label* l = labelsNode()->labelByCustomId(lbl);
+      if (m_unreadNode != nullptr) {
+        m_unreadNode->updateCounts(true);
+        to_update << m_unreadNode;
+      }
 
-        if (l != nullptr) {
-          l->updateCounts(including_total_counts);
-          to_update << l;
+      if (m_labelsNode != nullptr) {
+        auto lbl_custom_ids = msgs_linq
+                                .selectMany([](const Message& msg) {
+                                  auto ids = msg.m_assignedLabelsIds;
+                                  return boolinq::from(ids);
+                                })
+                                .distinct()
+                                .toStdVector();
+
+        for (const QString& lbl : lbl_custom_ids) {
+          Label* l = labelsNode()->labelByCustomId(lbl);
+
+          if (l != nullptr) {
+            l->updateCounts(including_total_counts);
+            to_update << l;
+          }
         }
       }
-    }
 
-    if (refresh_bin) {
-      m_recycleBin->updateCounts(including_total_counts);
-      to_update << m_recycleBin;
+      if (refresh_bin) {
+        m_recycleBin->updateCounts(including_total_counts);
+        to_update << m_recycleBin;
+      }
+
+      itemChanged(to_update);
     }
   }
-
-  itemChanged(to_update);
 }
 
 bool ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {

@@ -170,4 +170,12 @@ CREATE INDEX idx_Messages2 ON Messages (feed);
 -- !
 CREATE INDEX idx_Messages3 ON Messages (custom_id);
 -- !
-CREATE INDEX idx_Messages4 ON Messages (is_deleted, is_pdeleted, account_id, date_created);
+CREATE INDEX idx_Messages4 ON Messages (feed, is_deleted, is_pdeleted, account_id);
+-- !
+CREATE INDEX idx_Messages5 ON Messages (is_deleted, is_pdeleted, account_id, feed);
+-- !
+CREATE INDEX idx_Messages6 ON Messages (is_important, is_deleted, is_pdeleted, account_id);
+-- !
+CREATE INDEX idx_Messages7 ON Messages (is_read, is_deleted, is_pdeleted, account_id);
+-- !
+CREATE INDEX idx_Messages8 ON Messages (is_deleted, is_pdeleted, account_id, date_created);
