@@ -422,9 +422,12 @@ void MessagesView::initializeContextMenu() {
   // Labels.
   auto labels = m_sourceModel->loadedItem() != nullptr ? m_sourceModel->loadedItem()->account()->labelsNode()->labels()
                                                        : QList<Label*>();
-  LabelsMenu* menu_labels = new LabelsMenu(selected_messages, labels, m_contextMenu);
+  LabelsMenu* menu_labels_add =
+    new LabelsMenu(LabelsMenu::Operation::AddLabel, selected_messages, labels, m_contextMenu);
+  LabelsMenu* menu_labels_remove =
+    new LabelsMenu(LabelsMenu::Operation::RemoveLabel, selected_messages, labels, m_contextMenu);
 
-  connect(menu_labels, &LabelsMenu::labelsChanged, this, [this]() {
+  connect(menu_labels_add, &LabelsMenu::labelsChanged, this, [this]() {
     QModelIndex current_index = selectionModel()->currentIndex();
 
     if (current_index.isValid()) {
@@ -437,7 +440,10 @@ void MessagesView::initializeContextMenu() {
 
   // Rest.
   m_contextMenu->addMenu(menu_ext_tools);
-  m_contextMenu->addMenu(menu_labels);
+  m_contextMenu->addSeparator();
+  m_contextMenu->addMenu(menu_labels_add);
+  m_contextMenu->addMenu(menu_labels_remove);
+  m_contextMenu->addSeparator();
   m_contextMenu->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionSendMessageViaEmail
                                               << qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally
                                               << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally

@@ -15,6 +15,7 @@ class RSSGUARD_DLLSPEC LabelsNode : public RootItem {
     QList<Label*> labels() const;
     void loadLabels(const QList<Label*>& labels);
 
+    virtual QString additionalTooltip() const;
     virtual QList<Message> undeletedMessages() const;
     virtual QList<QAction*> contextMenuFeedsList();
     virtual void updateCounts(bool including_total_count);

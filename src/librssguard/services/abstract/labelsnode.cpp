@@ -26,6 +26,10 @@ void LabelsNode::loadLabels(const QList<Label*>& labels) {
   }
 }
 
+QString LabelsNode::additionalTooltip() const {
+  return tr("Number of labels: %1").arg(labels().size());
+}
+
 QList<Message> LabelsNode::undeletedMessages() const {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
