@@ -422,32 +422,25 @@ void MessagesView::initializeContextMenu() {
   // Labels.
   auto labels = m_sourceModel->loadedItem() != nullptr ? m_sourceModel->loadedItem()->account()->labelsNode()->labels()
                                                        : QList<Label*>();
-  LabelsMenu* menu_labels_add = new LabelsMenu(LabelsMenu::Operation::Toggle, m_contextMenu);
-  // LabelsMenu* menu_labels_remove = new LabelsMenu(LabelsMenu::Operation::RemoveLabel, m_contextMenu);
-
-  // menu_labels_remove->setLabels(labels);
+  LabelsMenu* menu_labels_add = new LabelsMenu(m_contextMenu);
 
   menu_labels_add->setMessages(selected_messages);
   menu_labels_add->setLabels(labels);
-  // menu_labels_remove->setMessages(selected_messages);
 
   connect(menu_labels_add, &LabelsMenu::setModelArticleLabelIds, this, &MessagesView::onArticleLabelIdsChanged);
 
   // Rest.
   m_contextMenu->addMenu(menu_ext_tools);
-  m_contextMenu->addSeparator();
   m_contextMenu->addMenu(menu_labels_add);
-  // m_contextMenu->addMenu(menu_labels_remove);
-  m_contextMenu->addSeparator();
-  m_contextMenu->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionSendMessageViaEmail
-                                              << qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally
-                                              << qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally
-                                              << qApp->mainForm()->m_ui->m_actionPlaySelectedArticlesInMediaPlayer
-                                              << qApp->mainForm()->m_ui->m_actionCopyUrlSelectedArticles
-                                              << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead
-                                              << qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread
-                                              << qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages
-                                              << qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages);
+  m_contextMenu->addActions({qApp->mainForm()->m_ui->m_actionSendMessageViaEmail,
+                             qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally,
+                             qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally,
+                             qApp->mainForm()->m_ui->m_actionPlaySelectedArticlesInMediaPlayer,
+                             qApp->mainForm()->m_ui->m_actionCopyUrlSelectedArticles,
+                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead,
+                             qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread,
+                             qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages,
+                             qApp->mainForm()->m_ui->m_actionDeleteSelectedMessages});
 
   if (m_sourceModel->loadedItem() != nullptr) {
     if (m_sourceModel->loadedItem()->kind() == RootItem::Kind::Bin) {

@@ -10,13 +10,7 @@ class LabelsMenu : public ScrollableMenu {
     Q_OBJECT
 
   public:
-    enum class Operation {
-      AddLabel,
-      RemoveLabel,
-      Toggle
-    };
-
-    explicit LabelsMenu(Operation operation, QWidget* parent = nullptr);
+    explicit LabelsMenu(QWidget* parent = nullptr);
 
     QList<Message> messages() const;
     void setMessages(const QList<Message>& messages);
@@ -34,7 +28,6 @@ class LabelsMenu : public ScrollableMenu {
 
   private:
     QList<Message> m_messages;
-    Operation m_operation;
     QList<QAction*> m_labelActions;
 };
 

@@ -44,7 +44,7 @@ void MessagePreviewer::createConnections() {
 
   m_actionShowAllLabels =
     m_toolBar->addAction(qApp->icons()->fromTheme(QSL("tag"), QSL("tag-edit")), tr("Show all labels"));
-  m_actionShowAllLabels->setMenu(m_menuLabels = new LabelsMenu(LabelsMenu::Operation::Toggle, this));
+  m_actionShowAllLabels->setMenu(m_menuLabels = new LabelsMenu(this));
   qobject_cast<QToolButton*>(m_toolBar->widgetForAction(m_actionShowAllLabels))
     ->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
 }

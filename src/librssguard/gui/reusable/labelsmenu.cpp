@@ -3,7 +3,6 @@
 #include "gui/reusable/labelsmenu.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-#include "database/databasequeries.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
@@ -11,12 +10,8 @@
 #include <QKeyEvent>
 #include <QPainter>
 
-LabelsMenu::LabelsMenu(Operation operation, QWidget* parent)
-  : ScrollableMenu(operation == Operation::AddLabel ? tr("Add labels") : tr("Remove labels"), parent),
-    m_operation(operation) {
-  setIcon((m_operation == Operation::AddLabel || m_operation == Operation::Toggle)
-            ? qApp->icons()->fromTheme(QSL("tag-new"), QSL("tag-edit"))
-            : qApp->icons()->fromTheme(QSL("tag-delete"), QSL("tag-reset")));
+LabelsMenu::LabelsMenu(QWidget* parent) : ScrollableMenu(tr("Labels"), parent) {
+  setIcon(qApp->icons()->fromTheme(QSL("tag-new"), QSL("tag-edit")));
 }
 
 void LabelsMenu::setLabels(const QList<Label*>& labels) {
@@ -29,14 +24,15 @@ void LabelsMenu::setLabels(const QList<Label*>& labels) {
     setActions({act_not_labels}, false);
   }
   else {
-    auto lbls = boolinq::from(labels)
-                  .orderBy([](const Label* label) {
-                    return label->title().toLower();
-                  })
-                  .select([this](Label* label) {
-                    return labelAction(label);
-                  })
-                  .toStdList();
+    auto lbls =
+      boolinq::from(labels)
+        .select([this](Label* label) {
+          return labelAction(label);
+        })
+        .orderBy([](const QAction* label_action) {
+          return QSL("%1%2").arg(label_action->isChecked() ? QSL("0") : QSL("1"), label_action->text().toLower());
+        })
+        .toStdList();
 
     m_labelActions = FROM_STD_LIST(QList<QAction*>, lbls);
     setActions(m_labelActions, false);
@@ -47,18 +43,17 @@ void LabelsMenu::changeLabelAssignment(bool assign) {
   LabelAction* origin = qobject_cast<LabelAction*>(sender());
   auto lbl = origin->label();
 
-  if (origin != nullptr) {
-    if (m_operation != Operation::Toggle) {
-      origin->setEnabled(false);
-    }
-
+  if (origin != nullptr && lbl != nullptr) {
     for (auto& msg : m_messages) {
-      if (m_operation == Operation::AddLabel || (m_operation == Operation::Toggle && assign)) {
-        origin->label()->assignToMessage(msg, true);
+      // NOTE: To avoid duplicates.
+      msg.m_assignedLabelsIds.removeAll(lbl->customId());
+
+      if (assign) {
+        lbl->assignToMessage(msg, true);
         msg.m_assignedLabelsIds.append(lbl->customId());
       }
       else {
-        origin->label()->deassignFromMessage(msg, true);
+        lbl->deassignFromMessage(msg, true);
         msg.m_assignedLabelsIds.removeOne(lbl->customId());
       }
 
@@ -70,12 +65,12 @@ void LabelsMenu::changeLabelAssignment(bool assign) {
 QAction* LabelsMenu::labelAction(Label* label) {
   auto* act = new LabelAction(label, this);
 
-  act->setCheckable(m_operation == Operation::Toggle);
+  act->setCheckable(true);
   act->setChecked(act->isCheckable() && boolinq::from(m_messages).all([&](const Message& msg) {
     return msg.m_assignedLabelsIds.contains(label->customId());
   }));
 
-  connect(act, &LabelAction::triggered, this, &LabelsMenu::changeLabelAssignment);
+  connect(act, &LabelAction::toggled, this, &LabelsMenu::changeLabelAssignment);
 
   return act;
 }
