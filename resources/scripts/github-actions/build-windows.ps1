@@ -214,7 +214,18 @@ Copy-Item -Path "$zlib_path\zlib1.dll" -Destination ".\app\"
 
 if ($git_tag -match "devbuild") {
   # Copy debug symbols.
-  Copy-Item -Path ".\src\librssguard\rssguard.pdb" -Destination ".\app\"
+  Copy-Item -Path ".\src\librssguard\rssguard.pdb" -Destination ".\app\" -Verbose
+
+  $plugins = Get-ChildItem -Path ".\src" -Directory | Where-Object { $_.Name -like "librssguard-*" }
+
+  foreach ($folder in $plugins) {
+    $pdb_file = "$($folder.Name).pdb"
+    $source_file = Join-Path $folder.FullName $pdb_file
+
+    if (Test-Path $source_file) {
+        Copy-Item -Path $source_file -Destination ".\app\plugins\" -Force -Verbose
+    }
+  }
 }
 
 if ($use_libmpv -eq "ON") {
