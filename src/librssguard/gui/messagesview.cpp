@@ -422,37 +422,22 @@ void MessagesView::initializeContextMenu() {
   // Labels.
   auto labels = m_sourceModel->loadedItem() != nullptr ? m_sourceModel->loadedItem()->account()->labelsNode()->labels()
                                                        : QList<Label*>();
-  LabelsMenu* menu_labels_add = new LabelsMenu(LabelsMenu::Operation::AddLabel, m_contextMenu);
-  LabelsMenu* menu_labels_remove = new LabelsMenu(LabelsMenu::Operation::RemoveLabel, m_contextMenu);
+  LabelsMenu* menu_labels_add = new LabelsMenu(LabelsMenu::Operation::Toggle, m_contextMenu);
+  // LabelsMenu* menu_labels_remove = new LabelsMenu(LabelsMenu::Operation::RemoveLabel, m_contextMenu);
 
-  menu_labels_add->setLabels(labels);
-  menu_labels_remove->setLabels(labels);
+  // menu_labels_remove->setLabels(labels);
 
   menu_labels_add->setMessages(selected_messages);
-  menu_labels_remove->setMessages(selected_messages);
+  menu_labels_add->setLabels(labels);
+  // menu_labels_remove->setMessages(selected_messages);
 
-  connect(menu_labels_add,
-          &LabelsMenu::setModelArticleLabelIds,
-          this,
-          [this](int article_id, const QStringList& label_custom_ids) {
-            m_sourceModel->setMessageLabelsById(article_id, label_custom_ids);
-
-            // TODO: pokračovat
-            QModelIndex current_index = selectionModel()->currentIndex();
-
-            if (current_index.isValid()) {
-              requestArticleDisplay(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()));
-            }
-            else {
-              requestArticleHiding();
-            }
-          });
+  connect(menu_labels_add, &LabelsMenu::setModelArticleLabelIds, this, &MessagesView::onArticleLabelIdsChanged);
 
   // Rest.
   m_contextMenu->addMenu(menu_ext_tools);
   m_contextMenu->addSeparator();
   m_contextMenu->addMenu(menu_labels_add);
-  m_contextMenu->addMenu(menu_labels_remove);
+  // m_contextMenu->addMenu(menu_labels_remove);
   m_contextMenu->addSeparator();
   m_contextMenu->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionSendMessageViaEmail
                                               << qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally
@@ -568,6 +553,18 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
   }
 
   QTreeView::selectionChanged(selected, deselected);
+}
+
+void MessagesView::onArticleLabelIdsChanged(int article_id, const QStringList& label_custom_ids) {
+  m_sourceModel->setMessageLabelsById(article_id, label_custom_ids);
+  QModelIndex current_index = selectionModel()->currentIndex();
+
+  if (current_index.isValid()) {
+    requestArticleDisplay(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()));
+  }
+  else {
+    requestArticleHiding();
+  }
 }
 
 void MessagesView::requestArticleDisplay(const Message& msg) {

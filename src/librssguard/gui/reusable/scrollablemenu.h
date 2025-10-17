@@ -14,7 +14,7 @@ class ScrollableMenu : public NonClosableMenu {
     explicit ScrollableMenu(QWidget* parent = nullptr);
     explicit ScrollableMenu(const QString& title, QWidget* parent = nullptr);
 
-    void setActions(const QList<QAction *> &actions, bool close_on_trigger);
+    void setActions(const QList<QAction*>& actions, bool close_on_trigger);
 
   protected:
     virtual void wheelEvent(QWheelEvent* e) override;

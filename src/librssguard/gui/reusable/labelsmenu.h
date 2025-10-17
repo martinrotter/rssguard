@@ -20,10 +20,8 @@ class LabelsMenu : public ScrollableMenu {
 
     QList<Message> messages() const;
     void setMessages(const QList<Message>& messages);
-
-    void setLabels(const QList<Label*>& labels);
-
     QList<QAction*> labelActions() const;
+    void setLabels(const QList<Label*>& labels);
 
   signals:
     void setModelArticleLabelIds(int article_id, const QStringList& label_custom_ids);

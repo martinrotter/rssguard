@@ -98,6 +98,7 @@ class MessagesView : public BaseTreeView {
     virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
 
   private slots:
+    void onArticleLabelIdsChanged(int article_id, const QStringList& label_custom_ids);
     void openSelectedMessagesWithExternalTool();
     void adjustColumns();
     void markSelectedMessagesReadDelayed();

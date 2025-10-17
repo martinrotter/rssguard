@@ -9,15 +9,11 @@
 
 #include <QWheelEvent>
 
-#define ACTIONS_PAGE_SIZE 10
+#define ACTIONS_PAGE_SIZE 20
 
-ScrollableMenu::ScrollableMenu(QWidget* parent) : NonClosableMenu(parent) {
-  initialize();
-}
+ScrollableMenu::ScrollableMenu(QWidget* parent) : NonClosableMenu(parent) {}
 
-ScrollableMenu::ScrollableMenu(const QString& title, QWidget* parent) : NonClosableMenu(title, parent) {
-  initialize();
-}
+ScrollableMenu::ScrollableMenu(const QString& title, QWidget* parent) : NonClosableMenu(title, parent) {}
 
 void ScrollableMenu::setActions(const QList<QAction*>& actions, bool close_on_trigger) {
   m_actions = actions;
@@ -31,10 +27,10 @@ void ScrollableMenu::wheelEvent(QWheelEvent* e) {
   bool up = e->angleDelta().y() > 0;
   bool down = e->angleDelta().y() < 0;
 
-  if (up && m_actUp->isEnabled()) {
+  if (up && m_actUp != nullptr && m_actUp->isEnabled()) {
     m_actUp->trigger();
   }
-  else if (down && m_actDown->isEnabled()) {
+  else if (down && m_actDown != nullptr && m_actDown->isEnabled()) {
     m_actDown->trigger();
   }
 
@@ -42,7 +38,7 @@ void ScrollableMenu::wheelEvent(QWheelEvent* e) {
 }
 
 bool ScrollableMenu::shouldActionClose(QAction* action) const {
-  if (action == m_actDown || action == m_actUp) {
+  if (action != nullptr && (action == m_actDown || action == m_actUp)) {
     return false;
   }
   else {
@@ -70,8 +66,8 @@ void ScrollableMenu::clearCurrentPage() {
 }
 
 void ScrollableMenu::initialize() {
-  m_actUp = new QAction(qApp->icons()->fromTheme(QSL("go-up"), QSL("arrow-up")), tr("Go &up"), parent());
-  m_actDown = new QAction(qApp->icons()->fromTheme(QSL("go-down"), QSL("arrow-down")), tr("Go &down"), parent());
+  m_actUp = new QAction(qApp->icons()->fromTheme(QSL("go-up"), QSL("arrow-up")), tr("Go &up"), this);
+  m_actDown = new QAction(qApp->icons()->fromTheme(QSL("go-down"), QSL("arrow-down")), tr("Go &down"), this);
 
   connect(m_actUp, &QAction::triggered, this, [this]() {
     setPage(m_page - 1);
@@ -89,6 +85,7 @@ void ScrollableMenu::setPage(int page) {
   m_page = page;
 
   if (!m_arrowsVisible) {
+    // NOTE: No pagination, setPage() is only called once.
     addActions(m_actions);
   }
   else {
@@ -127,7 +124,18 @@ void ScrollableMenu::setArrowsVisible(bool visible) {
   m_arrowsVisible = visible;
   clear();
 
+  if (m_actUp != nullptr) {
+    m_actUp->deleteLater();
+    m_actUp = nullptr;
+  }
+
+  if (m_actDown != nullptr) {
+    m_actDown->deleteLater();
+    m_actDown = nullptr;
+  }
+
   if (visible) {
+    initialize();
     addAction(m_actUp);
     addSection(QString());
     addSeparator();
