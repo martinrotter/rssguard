@@ -219,7 +219,7 @@ if ($git_tag -match "devbuild") {
   $plugins = Get-ChildItem -Path ".\src" -Directory | Where-Object { $_.Name -like "librssguard-*" }
 
   foreach ($folder in $plugins) {
-    $pdb_file = "$($folder.Name).pdb"
+    $pdb_file = "*.pdb"
     $source_file = Join-Path $folder.FullName $pdb_file
 
     if (Test-Path $source_file) {
