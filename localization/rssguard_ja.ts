@@ -44,7 +44,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>ラベル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
@@ -535,17 +535,17 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="103"/>
       <source>Save attachmen %1</source>
-      <translation type="unfinished">Save attachmen %1</translation>
+      <translation>添付ファイル %1 を保存</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="119"/>
       <source>Download attachment</source>
-      <translation type="unfinished">Download attachment</translation>
+      <translation>添付ファイルをダウンロード</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="147"/>
       <source>Downloaded %1 kB...</source>
-      <translation type="unfinished">Downloaded %1 kB...</translation>
+      <translation>ダウンロード中 %1 kB…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="158"/>
@@ -2020,7 +2020,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
       <source>Common</source>
-      <translation type="unfinished">Common</translation>
+      <translation>一般</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
@@ -2317,7 +2317,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="89"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="812"/>
       <source>&amp;Focus</source>
-      <translation type="unfinished">&amp;Focus</translation>
+      <translation>フォーカス</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="193"/>
@@ -2557,13 +2557,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="869"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="789"/>
       <source>Focus feed search box</source>
-      <translation type="unfinished">Focus feed search box</translation>
+      <translation>フィード検索ボックスにフォーカス</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="874"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Focus article search box</source>
-      <translation type="unfinished">Focus article search box</translation>
+      <translation>記事検索ボックスにフォーカス</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="879"/>
@@ -2587,24 +2587,24 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="943"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="805"/>
       <source>Focus &amp;feed list</source>
-      <translation type="unfinished">Focus &amp;feed list</translation>
+      <translation>フィードリストにフォーカス</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>Focus &amp;article list</source>
-      <translation type="unfinished">Focus &amp;article list</translation>
+      <translation>記事リストにフォーカス</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="953"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="807"/>
       <source>Focus article &amp;preview</source>
-      <translation type="unfinished">Focus article &amp;preview</translation>
+      <translation>記事のプレビューにフォーカス</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="958"/>
       <source>&amp;Load all remaining articles</source>
-      <translation type="unfinished">&amp;Load all remaining articles</translation>
+      <translation>残りの記事をすべて読み込む</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="628"/>
@@ -3086,7 +3086,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="448"/>
       <source>Script otput</source>
-      <translation type="unfinished">Script otput</translation>
+      <translation>スクリプト出力</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="60"/>
@@ -3310,7 +3310,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>実験的</translation>
     </message>
   </context>
   <context>
@@ -4453,12 +4453,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="18"/>
       <source>Add labels</source>
-      <translation type="unfinished">Add labels</translation>
+      <translation>ラベルを追加</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="18"/>
       <source>Remove labels</source>
-      <translation type="unfinished">Remove labels</translation>
+      <translation>ラベルを削除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="24"/>
@@ -4471,7 +4471,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="19"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>ラベル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="20"/>
@@ -4481,7 +4481,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="30"/>
       <source>Number of labels: %1</source>
-      <translation type="unfinished">Number of labels: %1</translation>
+      <translation>ラベル数: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="85"/>
@@ -4491,7 +4491,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="111"/>
       <source>Cannot create label: %1.</source>
-      <translation type="unfinished">Cannot create label: %1.</translation>
+      <translation>ラベルを作成できません： %1。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="119"/>
@@ -5008,12 +5008,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="44"/>
       <source>Show all labels</source>
-      <translation type="unfinished">Show all labels</translation>
+      <translation>すべてのラベルを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="182"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>ラベル</translation>
     </message>
   </context>
   <context>
@@ -5187,23 +5187,23 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="198"/>
       <source>Loaded extra %1 articles in %2 miliseconds</source>
-      <translation type="unfinished">Loaded extra %1 articles in %2 miliseconds</translation>
+      <translation>%1 の件の追加記事を %2 ミリ秒で読み込みました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="253"/>
       <source>Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, %5 ms to fill dynamic data)</source>
-      <translation type="unfinished">Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, %5 ms to fill dynamic data)</translation>
+      <translation>%1 件の記事を %2 ミリ秒で読み込みました (キャッシュのクリアに %3 ミリ秒、DB データ転送に %4 ミリ秒、動的データの入力に %5 ミリ秒)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
       <source>cannot set model data for column %1</source>
-      <translation type="unfinished">cannot set model data for column %1</translation>
+      <translation>列 %1 のモデルデータを設定できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="460"/>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="493"/>
       <source>article with row %1 not found</source>
-      <translation type="unfinished">article with row %1 not found</translation>
+      <translation>行 %1 の記事が見つかりません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="499"/>
@@ -5328,7 +5328,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="619"/>
       <source>article model column %1 is out of range</source>
-      <translation type="unfinished">article model column %1 is out of range</translation>
+      <translation>記事モデル列 %1 が範囲外です</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="643"/>
@@ -5686,7 +5686,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="30"/>
       <source>Account proxy</source>
-      <translation type="unfinished">Account proxy</translation>
+      <translation>アカウントプロキシ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="33"/>
@@ -6054,7 +6054,7 @@ Feedlyは、あなたにとって重要なトピックやトレンドを個人�
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="2978"/>
       <source>cannot move item of kind %1</source>
-      <translation type="unfinished">cannot move item of kind %1</translation>
+      <translation>種類 %1 のアイテムを移動できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="3137"/>
@@ -6477,17 +6477,17 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="55"/>
       <source>Import data from QuiteRSS</source>
-      <translation type="unfinished">Import data from QuiteRSS</translation>
+      <translation>QuiteRSS からデータをインポート</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="62"/>
       <source>Imported articles from %1 feeds...</source>
-      <translation type="unfinished">Imported articles from %1 feeds...</translation>
+      <translation>%1 フィードから記事をインポートしました…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="158"/>
       <source>skipping article, it has no title and no URL</source>
-      <translation type="unfinished">skipping article, it has no title and no URL</translation>
+      <translation>記事をスキップすると、タイトルやURLはありません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="295"/>
@@ -6768,22 +6768,22 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="73"/>
       <source>Go &amp;up</source>
-      <translation type="unfinished">Go &amp;up</translation>
+      <translation>上へ移動</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="74"/>
       <source>Go &amp;down</source>
-      <translation type="unfinished">Go &amp;down</translation>
+      <translation>下へ移動</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="119"/>
       <source>%1 %2/%3</source>
-      <translation type="unfinished">%1 %2/%3</translation>
+      <translation>%1 %2/%3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="120"/>
       <source>Page</source>
-      <translation type="unfinished">Page</translation>
+      <translation>ページ</translation>
     </message>
   </context>
   <context>
@@ -6863,7 +6863,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="89"/>
       <source>Cannot create label: %1.</source>
-      <translation type="unfinished">Cannot create label: %1.</translation>
+      <translation>ラベルを作成できません： %1。</translation>
     </message>
   </context>
   <context>
@@ -7314,9 +7314,9 @@ Authors of this application are NOT responsible for lost data.</source>
       <source>If enabled then %1 loads articles into article list on demand as you scroll throught the list.
 
 This can tremendously speed up the application if you have hundreds of thousands articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</source>
-      <translation type="unfinished">If enabled then %1 loads articles into article list on demand as you scroll throught the list.
+      <translation>有効にすると、%1 はリストをスクロールするときに、必要に応じて記事を記事リストに読み込みます。
 
-This can tremendously speed up the application if you have hundreds of thousands articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</translation>
+数十万の記事がある場合、これによりアプリケーションの速度が大幅に向上しますが、すべての記事が読み込まれないため、記事リストのフィルタリングが妨げられ、フィルタリングが適切に行われない可能性があります。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="54"/>
@@ -7546,7 +7546,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="703"/>
       <source>Use articles lazy-loading</source>
-      <translation type="unfinished">Use articles lazy-loading</translation>
+      <translation>記事の遅延読み込みを使用する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="321"/>
@@ -8856,7 +8856,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="73"/>
       <source>HTTP headers</source>
-      <translation type="unfinished">HTTP headers</translation>
+      <translation>HTTP ヘッダー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="91"/>
@@ -8866,22 +8866,22 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="26"/>
       <source>Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</source>
-      <translation type="unfinished">Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</translation>
+      <translation>各キー/値 HTTPヘッダーのペアはそれぞれ別の行に入力してください。スペースはすべて有効であり、ヘッダー名は大文字と小文字が区別されることに注意してください。また、以下の例のように、キーと値は必ず &apos;=&apos; で区切ってください：</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="34"/>
       <source>Use application settings</source>
-      <translation type="unfinished">Use application settings</translation>
+      <translation>アプリケーション設定を使用する</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="36"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="37"/>
       <source>Disabled</source>
-      <translation type="unfinished">Disabled</translation>
+      <translation>無効</translation>
     </message>
   </context>
   <context>
