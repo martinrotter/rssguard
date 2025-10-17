@@ -70,24 +70,23 @@ QVariantHash DatabaseQueries::deserializeCustomData(const QString& data) {
   }
 }
 
-bool DatabaseQueries::isLabelAssignedToMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
+void DatabaseQueries::purgeLabelAssignments(const QSqlDatabase& db, Label* label) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT COUNT(*) FROM Messages "
+  q.prepare(QSL("DELETE FROM LabelsInMessages "
                 "WHERE "
-                "  Messages.labels LIKE :label AND "
-                "  Messages.custom_id = :message AND "
-                "  account_id = :account_id;"));
-  q.bindValue(QSL(":label"), QSL("%.%1.%").arg(label->customId()));
-  q.bindValue(QSL(":message"), msg.m_customId);
+                "  LabelsInMessages.label = :label AND "
+                "  LabelsInMessages.account_id = :account_id;"));
+  q.bindValue(QSL(":label"), label->id());
   q.bindValue(QSL(":account_id"), label->account()->accountId());
 
-  q.exec() && q.next();
-
-  DatabaseFactory::logLastExecutedQuery(q);
-
-  return q.value(0).toInt() > 0;
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
 }
 
 void DatabaseQueries::deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
@@ -95,8 +94,10 @@ void DatabaseQueries::deassignLabelFromMessage(const QSqlDatabase& db, Label* la
 
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM LabelsInMessages "
-                "WHERE LabelsInMessages.message = :message AND LabelsInMessages.label = :label AND "
-                "LabelsInMessages.account_id = :account_id;"));
+                "WHERE "
+                "  LabelsInMessages.message = :message AND "
+                "  LabelsInMessages.label = :label AND "
+                "  LabelsInMessages.account_id = :account_id;"));
   q.bindValue(QSL(":message"), msg.m_id);
   q.bindValue(QSL(":label"), label->id());
   q.bindValue(QSL(":account_id"), msg.m_accountId);
@@ -207,36 +208,14 @@ QList<Label*> DatabaseQueries::getLabelsForMessage(const QSqlDatabase& db,
                                                    const Message& msg,
                                                    const QList<Label*>& installed_labels) {
   QList<Label*> labels;
-  QSqlQuery q(db);
 
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT labels FROM Messages WHERE custom_id = :message AND account_id = :account_id;"));
-
-  q.bindValue(QSL(":account_id"), msg.m_accountId);
-  q.bindValue(QSL(":message"), msg.m_customId.isEmpty() ? QString::number(msg.m_id) : msg.m_customId);
-
-  if (q.exec() && q.next()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    auto label_ids = q.value(0).toString().split(QChar('.'), SPLIT_BEHAVIOR::SkipEmptyParts);
-
-    auto iter = boolinq::from(installed_labels);
-
-    for (const QString& lbl_id : label_ids) {
-      Label* candidate_label = iter.firstOrDefault([&](const Label* lbl) {
-        return lbl->customId() == lbl_id;
-      });
-
-      if (candidate_label != nullptr) {
-        labels << candidate_label;
-      }
-    }
-  }
+  // TODO: todo - je třeba? v message už mame m_assignedLabelIds, tak stačí runtime doplnit seznam živých labelů
+  // což se dodělá rovnou do modelu zpráv
 
   return labels;
 }
 
-bool DatabaseQueries::updateLabel(const QSqlDatabase& db, Label* label) {
+void DatabaseQueries::updateLabel(const QSqlDatabase& db, Label* label) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -247,12 +226,17 @@ bool DatabaseQueries::updateLabel(const QSqlDatabase& db, Label* label) {
   q.bindValue(QSL(":id"), label->id());
   q.bindValue(QSL(":account_id"), label->account()->accountId());
 
-  return q.exec();
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
 }
 
-bool DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
-  // NOTE: All dependecies are done via SQL foreign cascaded keys, so no
-  // extra removals are needed.
+void DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
+  purgeLabelAssignments(db, label);
+
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -262,17 +246,9 @@ bool DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
 
   if (q.exec()) {
     DatabaseFactory::logLastExecutedQuery(q);
-
-    q.prepare(QSL("UPDATE Messages "
-                  "SET labels = REPLACE(Messages.labels, :label, \".\") "
-                  "WHERE account_id = :account_id;"));
-    q.bindValue(QSL(":label"), QSL(".%1.").arg(label->customId()));
-    q.bindValue(QSL(":account_id"), label->account()->accountId());
-
-    return q.exec();
   }
   else {
-    return false;
+    throw ApplicationException(q.lastError().text());
   }
 }
 
@@ -918,43 +894,38 @@ ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, i
   }
 }
 
-ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db,
-                                                        Label* label,
-                                                        int account_id,
-                                                        bool* ok) {
+ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id) {
   QSqlQuery q(db);
-
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) FROM Messages "
-                "WHERE "
-                "  is_deleted = 0 AND "
-                "  is_pdeleted = 0 AND "
-                "  account_id = :account_id AND "
-                "  labels LIKE :label;"));
+
+  // Count total and read messages using EXISTS for label.
+  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) "
+                "FROM Messages m "
+                "WHERE m.is_deleted = 0 "
+                "  AND m.is_pdeleted = 0 "
+                "  AND m.account_id = :account_id "
+                "  AND EXISTS ("
+                "    SELECT 1 "
+                "    FROM LabelsInMessages lim "
+                "    WHERE"
+                "      lim.label = :label_id AND "
+                "      lim.account_id = m.account_id AND "
+                "      lim.message = m.id;"));
 
   q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":label"), QSL("%.%1.%").arg(label->customId()));
+  q.bindValue(QSL(":label_id"), label->id());
 
   if (q.exec() && q.next()) {
     DatabaseFactory::logLastExecutedQuery(q);
 
-    if (ok != nullptr) {
-      *ok = true;
-    }
-
     ArticleCounts ac;
-
     ac.m_total = q.value(0).toInt();
     ac.m_unread = ac.m_total - q.value(1).toInt();
 
     return ac;
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-
-    return {};
+    throw ApplicationException(q.lastError().text());
   }
 }
 

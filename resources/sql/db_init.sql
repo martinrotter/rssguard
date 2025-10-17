@@ -149,9 +149,11 @@ CREATE INDEX idx_Labels2 ON Labels (account_id, custom_id);
 -- !
 CREATE INDEX idx_Lim1 ON LabelsInMessages (message);
 -- !
-CREATE INDEX idx_Lim2 ON LabelsInMessages (label);
+CREATE INDEX idx_Lim2 ON LabelsInMessages (label, account_id);
 -- !
 CREATE INDEX idx_Lim3 ON LabelsInMessages (account_id, message);
+-- !
+CREATE INDEX idx_Lim4 ON LabelsInMessages (label, account_id, message);
 -- !
 -- !
 CREATE INDEX idx_Categories1 ON Categories (account_id);

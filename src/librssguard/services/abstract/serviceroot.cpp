@@ -945,14 +945,23 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   }
   else if (item->kind() == RootItem::Kind::Label) {
     // Show messages with particular label.
-    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
-                         "Messages.labels LIKE '%.%2.%' AND Messages.account_id = %1")
-                       .arg(QString::number(accountId()), item->customId()));
+    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
+                         "EXISTS (SELECT 1 "
+                         "FROM LabelsInMessages "
+                         "WHERE "
+                         "  LabelsInMessages.label = %2 AND "
+                         "  LabelsInMessages.account_id = %1 AND "
+                         "  LabelsInMessages.message = Messages.id)")
+                       .arg(QString::number(accountId()), QString::number(item->id())));
   }
   else if (item->kind() == RootItem::Kind::Labels) {
     // Show messages with any label.
-    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
-                         "LENGTH(Messages.labels) > 2 AND Messages.account_id = %1")
+    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
+                         "EXISTS (SELECT 1 "
+                         "FROM LabelsInMessages "
+                         "WHERE "
+                         "  LabelsInMessages.account_id = %1 AND "
+                         "  LabelsInMessages.message = Messages.id)")
                        .arg(QString::number(accountId())));
   }
   else if (item->kind() == RootItem::Kind::ServiceRoot) {

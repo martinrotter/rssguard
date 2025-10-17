@@ -50,13 +50,9 @@ bool Label::canBeDeleted() const {
 bool Label::deleteItem() {
   QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::deleteLabel(db, this)) {
-    account()->requestItemRemoval(this);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::deleteLabel(db, this);
+  account()->requestItemRemoval(this);
+  return true;
 }
 
 void Label::updateCounts(bool including_total_count) {

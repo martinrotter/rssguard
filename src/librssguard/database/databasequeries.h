@@ -29,7 +29,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QVariantHash deserializeCustomData(const QString& data);
 
     // Label operators.
-    static bool isLabelAssignedToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static void deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static void assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static void setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
@@ -37,9 +36,10 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QList<Label*> getLabelsForMessage(const QSqlDatabase& db,
                                              const Message& msg,
                                              const QList<Label*>& installed_labels);
-    static bool updateLabel(const QSqlDatabase& db, Label* label);
-    static bool deleteLabel(const QSqlDatabase& db, Label* label);
+    static void updateLabel(const QSqlDatabase& db, Label* label);
+    static void deleteLabel(const QSqlDatabase& db, Label* label);
     static void createLabel(const QSqlDatabase& db, Label* label, int account_id, int new_label_id = 0);
+    static void purgeLabelAssignments(const QSqlDatabase& db, Label* label);
 
     // Probe operators.
     static void createProbe(const QSqlDatabase& db, Search* probe, int account_id);
@@ -99,10 +99,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                                  int feed_id,
                                                  int account_id,
                                                  bool* ok = nullptr);
-    static ArticleCounts getMessageCountsForLabel(const QSqlDatabase& db,
-                                                  Label* label,
-                                                  int account_id,
-                                                  bool* ok = nullptr);
+    static ArticleCounts getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id);
     static ArticleCounts getMessageCountsForProbe(const QSqlDatabase& db, Search* probe, int account_id);
     static QMap<QString, ArticleCounts> getMessageCountsForAllLabels(const QSqlDatabase& db,
                                                                      int account_id,
