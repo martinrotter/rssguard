@@ -13,7 +13,7 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_db = qApp->database()->driver()->connection(QSL("MessagesModel"));
 
   // Used in <x>: SELECT <x1>, <x2> FROM ....;
-  m_fieldNames = DatabaseQueries::messageTableAttributes(m_db.driverName() == QSL(APP_DB_SQLITE_DRIVER));
+  m_fieldNames = DatabaseQueries::messageTableAttributes();
 
   // Used in <x>: SELECT ... FROM ... ORDER BY <x1> DESC, <x2> ASC;
   m_orderByNames[MSG_DB_ID_INDEX] = QSL("Messages.id");
@@ -32,11 +32,11 @@ MessagesModelSqlLayer::MessagesModelSqlLayer()
   m_orderByNames[MSG_DB_ACCOUNT_ID_INDEX] = QSL("Messages.account_id");
   m_orderByNames[MSG_DB_CUSTOM_ID_INDEX] = QSL("Messages.custom_id");
   m_orderByNames[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
-  m_orderByNames[MSG_DB_FEED_TITLE_INDEX] = QSL("Messages.feed");
+  m_orderByNames[MSG_DB_FEED_TITLE_INDEX] = QSL("fd");
   m_orderByNames[MSG_DB_FEED_IS_RTL_INDEX] = QSL("rtl");
   m_orderByNames[MSG_DB_HAS_ENCLOSURES] = QSL("has_enclosures");
-  m_orderByNames[MSG_DB_LABELS] = QSL("msg_labels");
-  m_orderByNames[MSG_DB_LABELS_IDS] = QSL("Messages.labels");
+  m_orderByNames[MSG_DB_LABELS] = QSL("lbls");
+  m_orderByNames[MSG_DB_LABELS_IDS] = QSL("msg_labels");
 }
 
 void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool ignore_multicolumn_sorting) {

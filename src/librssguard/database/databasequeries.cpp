@@ -14,7 +14,7 @@
 #include <QUrl>
 #include <QVariant>
 
-QMap<int, QString> DatabaseQueries::messageTableAttributes(bool is_sqlite) {
+QMap<int, QString> DatabaseQueries::messageTableAttributes() {
   QMap<int, QString> field_names;
 
   field_names[MSG_DB_ID_INDEX] = QSL("Messages.id");
@@ -33,24 +33,19 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes(bool is_sqlite) {
   field_names[MSG_DB_ACCOUNT_ID_INDEX] = QSL("Messages.account_id");
   field_names[MSG_DB_CUSTOM_ID_INDEX] = QSL("Messages.custom_id");
   field_names[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
-  field_names[MSG_DB_FEED_TITLE_INDEX] = QSL("Messages.feed"); // NOTE: Loaded in runtime.
-  field_names[MSG_DB_FEED_IS_RTL_INDEX] = QSL("0 AS rtl");     // NOTE: Loaded in runtime.
+  field_names[MSG_DB_FEED_TITLE_INDEX] = QSL("0 AS fd");   // NOTE: Loaded in runtime.
+  field_names[MSG_DB_FEED_IS_RTL_INDEX] = QSL("0 AS rtl"); // NOTE: Loaded in runtime.
   field_names[MSG_DB_HAS_ENCLOSURES] = QSL("(CASE WHEN LENGTH(Messages.enclosures) > 10 "
                                            "THEN 'true' "
                                            "ELSE 'false' "
                                            "END) AS has_enclosures");
-
-  if (is_sqlite) {
-    field_names[MSG_DB_LABELS] = QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Messages.labels LIKE '%.' || "
-                                     "Labels.custom_id || '.%') AS msg_labels");
-  }
-  else {
-    field_names[MSG_DB_LABELS] =
-      QSL("(SELECT GROUP_CONCAT(Labels.name) FROM Labels WHERE Messages.labels LIKE CONCAT('%.', "
-          "Labels.custom_id, '.%')) AS msg_labels");
-  }
-
-  field_names[MSG_DB_LABELS_IDS] = QSL("Messages.labels");
+  field_names[MSG_DB_LABELS] = QSL("0 AS lbls"); // TODO: Loaded in runtime.
+  field_names[MSG_DB_LABELS_IDS] = QSL("("
+                                       "SELECT GROUP_CONCAT(Labels.custom_id) "
+                                       "FROM LabelsInMessages lim "
+                                       "JOIN Labels ON lim.label = Labels.id "
+                                       "WHERE lim.message = Messages.id AND lim.account_id = Messages.account_id "
+                                       ") AS msg_labels");
 
   return field_names;
 }
@@ -95,66 +90,93 @@ bool DatabaseQueries::isLabelAssignedToMessage(const QSqlDatabase& db, Label* la
   return q.value(0).toInt() > 0;
 }
 
-bool DatabaseQueries::deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
+void DatabaseQueries::deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("UPDATE Messages "
-                "SET labels = REPLACE(Messages.labels, :label, \".\") "
-                "WHERE Messages.custom_id = :message AND account_id = :account_id;"));
-  q.bindValue(QSL(":label"), QSL(".%1.").arg(label->customId()));
-  q.bindValue(QSL(":message"), msg.m_customId.isEmpty() ? QString::number(msg.m_id) : msg.m_customId);
-  q.bindValue(QSL(":account_id"), label->account()->accountId());
-
-  return q.exec();
-}
-
-bool DatabaseQueries::assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
-  deassignLabelFromMessage(db, label, msg);
-
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-
-  if (db.driverName() == QSL(APP_DB_MYSQL_DRIVER)) {
-    q.prepare(QSL("UPDATE Messages "
-                  "SET labels = CONCAT(Messages.labels, :label) "
-                  "WHERE Messages.custom_id = :message AND account_id = :account_id;"));
-  }
-  else {
-    q.prepare(QSL("UPDATE Messages "
-                  "SET labels = Messages.labels || :label "
-                  "WHERE Messages.custom_id = :message AND account_id = :account_id;"));
-  }
-
-  q.bindValue(QSL(":label"), QSL("%1.").arg(label->customId()));
-  q.bindValue(QSL(":message"), msg.m_customId.isEmpty() ? QString::number(msg.m_id) : msg.m_customId);
-  q.bindValue(QSL(":account_id"), label->account()->accountId());
-
-  return q.exec();
-}
-
-bool DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg) {
-  QSqlQuery q(db);
-
-  auto std_lbls = boolinq::from(labels)
-                    .select([](Label* lbl) {
-                      return lbl->customId();
-                    })
-                    .toStdList();
-
-  QStringList lbls = FROM_STD_LIST(QStringList, std_lbls);
-  QString lblss = QSL(".") + lbls.join('.') + QSL(".");
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("UPDATE Messages "
-                "SET labels = :labels "
-                "WHERE Messages.custom_id = :message AND account_id = :account_id;"));
-  q.bindValue(QSL(":labels"), lblss);
-  q.bindValue(QSL(":message"), msg.m_customId.isEmpty() ? QString::number(msg.m_id) : msg.m_customId);
+  q.prepare(QSL("DELETE FROM LabelsInMessages "
+                "WHERE LabelsInMessages.message = :message AND LabelsInMessages.label = :label AND "
+                "LabelsInMessages.account_id = :account_id;"));
+  q.bindValue(QSL(":message"), msg.m_id);
+  q.bindValue(QSL(":label"), label->id());
   q.bindValue(QSL(":account_id"), msg.m_accountId);
 
-  return q.exec();
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
+void DatabaseQueries::assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
+  bool is_sqlite = db.driverName() == QSL(APP_DB_SQLITE_DRIVER);
+  QSqlQuery q(db);
+  QString insert_cmd;
+
+  q.setForwardOnly(true);
+
+  if (is_sqlite) {
+    insert_cmd = QSL("INSERT OR IGNORE");
+  }
+  else {
+    insert_cmd = QSL("INSERT IGNORE");
+  }
+
+  q.prepare(QSL("%1 INTO LabelsInMessages (message, label, account_id) "
+                "VALUES (:message, :label, :account_id);")
+              .arg(insert_cmd));
+
+  q.bindValue(QSL(":message"), msg.m_id);
+  q.bindValue(QSL(":label"), label->id());
+  q.bindValue(QSL(":account_id"), label->account()->accountId());
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
+void DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg) {
+  QSqlQuery q(db);
+
+  // Remove everything first.
+  q.setForwardOnly(true);
+  q.prepare(QSL("DELETE FROM LabelsInMessages "
+                "WHERE LabelsInMessages.message = :message AND LabelsInMessages.account_id = :account_id;"));
+  q.bindValue(QSL(":message"), msg.m_id);
+  q.bindValue(QSL(":account_id"), msg.m_accountId);
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
+
+  // Insert new label associations (if any).
+  if (!labels.isEmpty()) {
+    // TODO: check
+    QString sql = QSL("INSERT INTO LabelsInMessages (message, label, account_id) VALUES ");
+    QStringList values;
+
+    values.reserve(labels.size());
+
+    for (const Label* lbl : labels) {
+      values << QStringLiteral("(%1, %2, %3)").arg(msg.m_id).arg(lbl->id()).arg(msg.m_accountId);
+    }
+
+    sql += values.join(QSL(", ")) + QL1C(';');
+
+    if (q.exec(sql)) {
+      DatabaseFactory::logLastExecutedQuery(q);
+    }
+    else {
+      throw ApplicationException(q.lastError().text());
+    }
+  }
 }
 
 QList<Label*> DatabaseQueries::getLabelsForAccount(const QSqlDatabase& db, int account_id) {
@@ -1195,7 +1217,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForProbe(const QSqlDatabase&
                 "  Messages.is_pdeleted = 0 AND "
                 "  Messages.account_id = :account_id AND "
                 "  (title REGEXP :fltr OR contents REGEXP :fltr);")
-              .arg(messageTableAttributes(db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", "))));
+              .arg(messageTableAttributes().values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), probe->account()->accountId());
   q.bindValue(QSL(":fltr"), probe->filter());
 
@@ -1229,7 +1251,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesWithLabel(const QSqlDatabase
                 "  Messages.is_pdeleted = 0 AND "
                 "  Messages.account_id = :account_id AND "
                 "  Messages.labels LIKE :label;")
-              .arg(messageTableAttributes(db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", "))));
+              .arg(messageTableAttributes().values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), label->account()->accountId());
   q.bindValue(QSL(":label"), QSL("%.%1.%").arg(label->customId()));
 
@@ -1268,7 +1290,7 @@ QList<Message> DatabaseQueries::getUndeletedLabelledMessages(const QSqlDatabase&
                 "  Messages.is_pdeleted = 0 AND "
                 "  Messages.account_id = :account_id AND "
                 "  LENGTH(Messages.labels) > 2;")
-              .arg(messageTableAttributes(db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", "))));
+              .arg(messageTableAttributes().values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -1304,7 +1326,7 @@ QList<Message> DatabaseQueries::getUndeletedImportantMessages(const QSqlDatabase
                 "FROM Messages "
                 "WHERE is_important = 1 AND is_deleted = 0 AND "
                 "      is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes(db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", "))));
+              .arg(messageTableAttributes().values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -1338,7 +1360,7 @@ QList<Message> DatabaseQueries::getUndeletedUnreadMessages(const QSqlDatabase& d
                 "FROM Messages "
                 "WHERE is_read = 0 AND is_deleted = 0 AND "
                 "      is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes(db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", "))));
+              .arg(messageTableAttributes().values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -1375,7 +1397,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& 
                 "FROM Messages "
                 "WHERE is_deleted = 0 AND is_pdeleted = 0 AND "
                 "      feed = :feed AND account_id = :account_id;")
-              .arg(messageTableAttributes(db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", "))));
+              .arg(messageTableAttributes().values().join(QSL(", "))));
   q.bindValue(QSL(":feed"), feed_id);
   q.bindValue(QSL(":account_id"), account_id);
 
@@ -1411,7 +1433,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForBin(const QSqlDatabase& d
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages "
                 "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes(db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", "))));
+              .arg(messageTableAttributes().values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -1444,7 +1466,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages "
                 "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes(db.driverName() == QSL(APP_DB_SQLITE_DRIVER)).values().join(QSL(", "))));
+              .arg(messageTableAttributes().values().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {

@@ -22,7 +22,7 @@
 
 class RSSGUARD_DLLSPEC DatabaseQueries {
   public:
-    static QMap<int, QString> messageTableAttributes(bool is_sqlite);
+    static QMap<int, QString> messageTableAttributes();
 
     // Custom data serializers.
     static QString serializeCustomData(const QVariantHash& data);
@@ -30,9 +30,9 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
 
     // Label operators.
     static bool isLabelAssignedToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
-    static bool deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
-    static bool assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
-    static bool setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
+    static void deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
+    static void assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
+    static void setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
     static QList<Label*> getLabelsForAccount(const QSqlDatabase& db, int account_id);
     static QList<Label*> getLabelsForMessage(const QSqlDatabase& db,
                                              const Message& msg,

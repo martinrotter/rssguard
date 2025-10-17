@@ -36,7 +36,7 @@
   message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();                                             \
   message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();                                            \
   message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();                                        \
-  message.m_assignedLabelsIds = record.value(MSG_DB_LABELS_IDS).toString().split('.', SPLIT_BEHAVIOR::SkipEmptyParts);
+  message.m_assignedLabelsIds = record.value(MSG_DB_LABELS_IDS).toString().split(',', SPLIT_BEHAVIOR::SkipEmptyParts);
 
 MessageEnclosure::MessageEnclosure(QString url, QString mime, QObject* parent)
   : QObject(parent), m_url(std::move(url)), m_mimeType(std::move(mime)) {}

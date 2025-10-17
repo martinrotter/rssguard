@@ -74,7 +74,6 @@ CREATE TABLE Messages (
   account_id      INTEGER         NOT NULL,
   custom_id       VARCHAR(250),
   custom_hash     VARCHAR(100),
-  labels          TEXT            NOT NULL DEFAULT ".", /* Holds list of assigned label IDs. */
 
   FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE NO ACTION, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, because NO ACTION is synonym for RESTRICT. */
   FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE
@@ -146,6 +145,13 @@ CREATE INDEX idx_Mfif3 ON MessageFiltersInFeeds (filter);
 CREATE INDEX idx_Labels1 ON Labels (account_id);
 -- !
 CREATE INDEX idx_Labels2 ON Labels (account_id, custom_id);
+-- !
+-- !
+CREATE INDEX idx_Lim1 ON LabelsInMessages (message);
+-- !
+CREATE INDEX idx_Lim2 ON LabelsInMessages (label);
+-- !
+CREATE INDEX idx_Lim3 ON LabelsInMessages (account_id, message);
 -- !
 -- !
 CREATE INDEX idx_Categories1 ON Categories (account_id);
