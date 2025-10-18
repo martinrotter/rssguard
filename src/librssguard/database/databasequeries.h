@@ -49,6 +49,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
 
     // Message operators.
     static void markProbeReadUnread(const QSqlDatabase& db, Search* probe, RootItem::ReadStatus read);
+    static void markAllLabelledMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
     static bool markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read);
     static bool markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
     static bool markUnreadMessagesRead(const QSqlDatabase& db, int account_id);

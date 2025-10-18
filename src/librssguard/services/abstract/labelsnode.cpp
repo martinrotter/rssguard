@@ -36,6 +36,27 @@ QList<Message> LabelsNode::undeletedMessages() const {
   return DatabaseQueries::getUndeletedLabelledMessages(database, account()->accountId());
 }
 
+bool LabelsNode::markAsReadUnread(RootItem::ReadStatus status) {
+  ServiceRoot* service = account();
+  auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
+
+  if (cache != nullptr) {
+    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
+  }
+
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+  DatabaseQueries::markAllLabelledMessagesReadUnread(database, service->accountId(), status);
+
+  service->updateCounts(false);
+  service->itemChanged(service->getSubTree<RootItem>());
+  service->informOthersAboutDataChange(this,
+                                       status == RootItem::ReadStatus::Read
+                                         ? FeedsModel::ExternalDataChange::MarkedRead
+                                         : FeedsModel::ExternalDataChange::MarkedUnread);
+  return true;
+}
+
 void LabelsNode::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();

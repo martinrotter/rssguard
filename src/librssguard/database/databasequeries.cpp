@@ -384,6 +384,33 @@ void DatabaseQueries::deleteProbe(const QSqlDatabase& db, Search* probe) {
   DatabaseFactory::logLastExecutedQuery(q);
 }
 
+void DatabaseQueries::markAllLabelledMessagesReadUnread(const QSqlDatabase& db,
+                                                        int account_id,
+                                                        RootItem::ReadStatus read) {
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+
+  q.prepare(QSL("UPDATE Messages SET is_read = :read "
+                "WHERE "
+                "  is_deleted = 0 AND "
+                "  is_pdeleted = 0 AND "
+                "  account_id = :account_id AND "
+                "  EXISTS ("
+                "    SELECT 1 "
+                "    FROM LabelsInMessages lim "
+                "    WHERE lim.message = Messages.id AND lim.account_id = Messages.account_id);"));
+
+  q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw ApplicationException(q.lastError().text());
+  }
+}
+
 bool DatabaseQueries::markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read) {
   QSqlQuery q(db);
   q.setForwardOnly(true);
