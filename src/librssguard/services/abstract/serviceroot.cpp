@@ -1119,7 +1119,7 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
                       .distinct()
                       .toStdVector();
 
-    if (feed_ids.size() > 100) {
+    if (feed_ids.size() > 20) {
       updateCounts(including_total_counts);
       itemChanged({getSubTree<RootItem>()});
     }

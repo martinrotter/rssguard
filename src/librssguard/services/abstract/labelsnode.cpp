@@ -42,7 +42,7 @@ void LabelsNode::updateCounts(bool including_total_count) {
   auto acc = DatabaseQueries::getMessageCountsForAllLabels(database, account_id);
 
   for (Label* lbl : labels()) {
-    if (!acc.contains(lbl->customId())) {
+    if (!acc.contains(lbl->id())) {
       if (including_total_count) {
         lbl->setCountOfAllMessages(0);
       }
@@ -50,7 +50,7 @@ void LabelsNode::updateCounts(bool including_total_count) {
       lbl->setCountOfUnreadMessages(0);
     }
     else {
-      auto ac = acc.value(lbl->customId());
+      auto ac = acc.value(lbl->id());
 
       if (including_total_count) {
         lbl->setCountOfAllMessages(ac.m_total);

@@ -386,19 +386,27 @@ void DatabaseQueries::deleteProbe(const QSqlDatabase& db, Search* probe) {
 
 bool DatabaseQueries::markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read) {
   QSqlQuery q(db);
-
   q.setForwardOnly(true);
+
+  // Update messages that are linked to the given label via LabelsInMessages
   q.prepare(QSL("UPDATE Messages SET is_read = :read "
-                "WHERE "
-                "    is_deleted = 0 AND "
-                "    is_pdeleted = 0 AND "
-                "    account_id = :account_id AND "
-                "    labels LIKE :label;"));
+                "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id AND "
+                "  EXISTS ("
+                "    SELECT 1 FROM LabelsInMessages lim "
+                "    WHERE "
+                "      lim.message = Messages.id AND "
+                "      lim.label = :label_id AND "
+                "      lim.account_id = :account_id);"));
+
   q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
   q.bindValue(QSL(":account_id"), label->account()->accountId());
-  q.bindValue(QSL(":label"), QSL("%.%1.%").arg(label->customId()));
+  q.bindValue(QSL(":label_id"), label->id());
 
-  return q.exec();
+  auto res = q.exec();
+
+  DatabaseFactory::logLastExecutedQuery(q);
+
+  return res;
 }
 
 bool DatabaseQueries::markImportantMessagesReadUnread(const QSqlDatabase& db,
@@ -960,61 +968,39 @@ ArticleCounts DatabaseQueries::getMessageCountsForProbe(const QSqlDatabase& db, 
   }
 }
 
-QMap<QString, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const QSqlDatabase& db,
-                                                                           int account_id,
-                                                                           bool* ok) {
-  QMap<QString, ArticleCounts> counts;
+QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-
-  if (db.driverName() == QSL(APP_DB_MYSQL_DRIVER)) {
-    q.prepare(QSL("SELECT l.custom_id, CONCAT('%.', l.custom_id,'.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
-                  "INNER JOIN Messages m "
-                  "  ON m.account_id = l.account_id AND m.labels LIKE pid "
-                  "WHERE "
-                  "  m.is_deleted = 0 AND "
-                  "  m.is_pdeleted = 0 AND "
-                  "  m.account_id = :account_id "
-                  "GROUP BY pid;"));
-  }
-  else {
-    q.prepare(QSL("SELECT l.custom_id, ('%.' || l.custom_id || '.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
-                  "INNER JOIN Messages m "
-                  "  ON m.account_id = l.account_id AND m.labels LIKE pid "
-                  "WHERE "
-                  "  m.is_deleted = 0 AND "
-                  "  m.is_pdeleted = 0 AND "
-                  "  m.account_id = :account_id "
-                  "GROUP BY pid;"));
-  }
+  q.prepare(QSL("SELECT lim.label, COUNT(*), SUM(CASE WHEN m.is_read = 0 THEN 1 ELSE 0 END) "
+                "FROM LabelsInMessages lim "
+                "JOIN Messages m "
+                "  ON m.id = lim.message AND m.account_id = lim.account_id "
+                "WHERE"
+                "  m.is_deleted = 0 AND m.is_pdeleted = 0 AND m.account_id = :account_id "
+                "GROUP BY lim.label;"));
 
   q.bindValue(QSL(":account_id"), account_id);
 
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    while (q.next()) {
-      QString lbl_custom_id = q.value(0).toString();
-      ArticleCounts ac;
-
-      ac.m_total = q.value(3).toInt();
-      ac.m_unread = ac.m_total - q.value(2).toInt();
-
-      counts.insert(lbl_custom_id, ac);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
   }
 
-  return counts;
+  DatabaseFactory::logLastExecutedQuery(q);
+
+  QMap<int, ArticleCounts> results;
+
+  while (q.next()) {
+    int label_id = q.value(0).toInt();
+
+    ArticleCounts ac;
+    ac.m_total = q.value(1).toInt();
+    ac.m_unread = q.value(2).toInt();
+
+    results.insert(label_id, ac);
+  }
+
+  return results;
 }
 
 ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int account_id, bool* ok) {
