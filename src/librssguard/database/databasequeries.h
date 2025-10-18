@@ -104,10 +104,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QMap<QString, ArticleCounts> getMessageCountsForAllLabels(const QSqlDatabase& db,
                                                                      int account_id,
                                                                      bool* ok = nullptr);
-    static QMap<QString, ArticleCounts> getCountOfAssignedLabelsToMessages(const QSqlDatabase& db,
-                                                                           const QList<Message>& messages,
-                                                                           int account_id,
-                                                                           bool* ok = nullptr);
     static ArticleCounts getImportantMessageCounts(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static int getUnreadMessageCounts(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
     static ArticleCounts getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);

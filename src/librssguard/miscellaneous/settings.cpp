@@ -42,7 +42,7 @@ DKEY Feeds::UpdateTimeout = "feed_update_timeout";
 DVALUE(int) Feeds::UpdateTimeoutDef = DOWNLOAD_TIMEOUT;
 
 DKEY Feeds::CountFormat = "count_format";
-DVALUE(char*) Feeds::CountFormatDef = "(%unread)";
+DVALUE(char*) Feeds::CountFormatDef = "%unread-%all";
 
 DKEY Feeds::EnableTooltipsFeedsMessages = "show_tooltips";
 DVALUE(bool) Feeds::EnableTooltipsFeedsMessagesDef = true;

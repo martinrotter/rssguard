@@ -910,7 +910,7 @@ ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, 
                 "    WHERE"
                 "      lim.label = :label_id AND "
                 "      lim.account_id = m.account_id AND "
-                "      lim.message = m.id;"));
+                "      lim.message = m.id);"));
 
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":label_id"), label->id());
@@ -925,6 +925,8 @@ ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, 
     return ac;
   }
   else {
+    auto xx = q.lastError().text();
+
     throw ApplicationException(q.lastError().text());
   }
 }
@@ -985,77 +987,6 @@ QMap<QString, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const
                   "  m.is_pdeleted = 0 AND "
                   "  m.account_id = :account_id "
                   "GROUP BY pid;"));
-  }
-
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    while (q.next()) {
-      QString lbl_custom_id = q.value(0).toString();
-      ArticleCounts ac;
-
-      ac.m_total = q.value(3).toInt();
-      ac.m_unread = ac.m_total - q.value(2).toInt();
-
-      counts.insert(lbl_custom_id, ac);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return counts;
-}
-
-QMap<QString, ArticleCounts> DatabaseQueries::getCountOfAssignedLabelsToMessages(const QSqlDatabase& db,
-                                                                                 const QList<Message>& messages,
-                                                                                 int account_id,
-                                                                                 bool* ok) {
-  QMap<QString, ArticleCounts> counts;
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-
-  auto msgs_std = boolinq::from(messages)
-                    .select([](const Message& msg) {
-                      return QSL("m.custom_id = '%1'").arg(msg.m_customId);
-                    })
-                    .toStdList();
-
-  QStringList msgs_lst = FROM_STD_LIST(QStringList, msgs_std);
-  auto msgs = msgs_lst.join(QSL(" OR "));
-
-  if (db.driverName() == QSL(APP_DB_MYSQL_DRIVER)) {
-    q.prepare(QSL("SELECT l.custom_id, CONCAT('%.', l.custom_id,'.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
-                  "INNER JOIN Messages m "
-                  "  ON m.account_id = l.account_id AND m.labels LIKE pid "
-                  "WHERE "
-                  "  m.is_deleted = 0 AND "
-                  "  m.is_pdeleted = 0 AND "
-                  "  m.account_id = :account_id AND "
-                  " (%1) "
-                  "GROUP BY pid;")
-                .arg(msgs));
-  }
-  else {
-    q.prepare(QSL("SELECT l.custom_id, ('%.' || l.custom_id || '.%') pid, SUM(m.is_read), COUNT(*) FROM Labels l "
-                  "INNER JOIN Messages m "
-                  "  ON m.account_id = l.account_id AND m.labels LIKE pid "
-                  "WHERE "
-                  "  m.is_deleted = 0 AND "
-                  "  m.is_pdeleted = 0 AND "
-                  "  m.account_id = :account_id AND "
-                  " (%1) "
-                  "GROUP BY pid;")
-                .arg(msgs));
   }
 
   q.bindValue(QSL(":account_id"), account_id);
