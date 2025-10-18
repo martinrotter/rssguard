@@ -44,7 +44,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>Labels</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
@@ -536,17 +536,17 @@ Aantal uitgeschakelde feeds: %3</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="103"/>
       <source>Save attachmen %1</source>
-      <translation type="unfinished">Save attachmen %1</translation>
+      <translation>Bijlage %1 opslaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="119"/>
       <source>Download attachment</source>
-      <translation type="unfinished">Download attachment</translation>
+      <translation>Bijlage downloaden</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="147"/>
       <source>Downloaded %1 kB...</source>
-      <translation type="unfinished">Downloaded %1 kB...</translation>
+      <translation>%1 kB Gedownload...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="158"/>
@@ -2029,7 +2029,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
       <source>Common</source>
-      <translation type="unfinished">Common</translation>
+      <translation>Algemeen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
@@ -2326,7 +2326,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="89"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="812"/>
       <source>&amp;Focus</source>
-      <translation type="unfinished">&amp;Focus</translation>
+      <translation>&amp;Focus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="193"/>
@@ -2566,13 +2566,13 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="869"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="789"/>
       <source>Focus feed search box</source>
-      <translation type="unfinished">Focus feed search box</translation>
+      <translation>Focus feeds zoekvak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="874"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Focus article search box</source>
-      <translation type="unfinished">Focus article search box</translation>
+      <translation>Focus titels zoekvak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="879"/>
@@ -2596,24 +2596,24 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="943"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="805"/>
       <source>Focus &amp;feed list</source>
-      <translation type="unfinished">Focus &amp;feed list</translation>
+      <translation>Focus &amp;feedlijst</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>Focus &amp;article list</source>
-      <translation type="unfinished">Focus &amp;article list</translation>
+      <translation>Focus titelslijst</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="953"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="807"/>
       <source>Focus article &amp;preview</source>
-      <translation type="unfinished">Focus article &amp;preview</translation>
+      <translation>Focus artikel &amp;voorbeeld tonen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="958"/>
       <source>&amp;Load all remaining articles</source>
-      <translation type="unfinished">&amp;Load all remaining articles</translation>
+      <translation>&amp;Alle resterende artikelen laden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="628"/>
@@ -3095,7 +3095,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="448"/>
       <source>Script otput</source>
-      <translation type="unfinished">Script otput</translation>
+      <translation>Scriptuitvoer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="60"/>
@@ -3319,7 +3319,7 @@ Je moet handmatig herstarten.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>Experimenteel</translation>
     </message>
   </context>
   <context>
@@ -4463,12 +4463,12 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="18"/>
       <source>Add labels</source>
-      <translation type="unfinished">Add labels</translation>
+      <translation>Labels toevoegen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="18"/>
       <source>Remove labels</source>
-      <translation type="unfinished">Remove labels</translation>
+      <translation>Labels verwijderen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="24"/>
@@ -4491,7 +4491,7 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="30"/>
       <source>Number of labels: %1</source>
-      <translation type="unfinished">Number of labels: %1</translation>
+      <translation>Aantal labels: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="85"/>
@@ -4501,7 +4501,7 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="111"/>
       <source>Cannot create label: %1.</source>
-      <translation type="unfinished">Cannot create label: %1.</translation>
+      <translation>Kan label niet maken: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="119"/>
@@ -5018,12 +5018,12 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="44"/>
       <source>Show all labels</source>
-      <translation type="unfinished">Show all labels</translation>
+      <translation>Alle labels tonen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="182"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>Labels</translation>
     </message>
   </context>
   <context>
@@ -5197,23 +5197,23 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="198"/>
       <source>Loaded extra %1 articles in %2 miliseconds</source>
-      <translation type="unfinished">Loaded extra %1 articles in %2 miliseconds</translation>
+      <translation>Extra %1 artikelen geladen in %2 miliseconden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="253"/>
       <source>Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, %5 ms to fill dynamic data)</source>
-      <translation type="unfinished">Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, %5 ms to fill dynamic data)</translation>
+      <translation>%1 artikelen in %2 ms (%3 ms voor wissen cache, %4 ms voor DB gegevensoverdracht, %5 ms om dynamische gegevens in te vullen)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
       <source>cannot set model data for column %1</source>
-      <translation type="unfinished">cannot set model data for column %1</translation>
+      <translation>kan geen modelgegevens instellen voor kolom %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="460"/>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="493"/>
       <source>article with row %1 not found</source>
-      <translation type="unfinished">article with row %1 not found</translation>
+      <translation>artikel met rij %1 niet gevonden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="499"/>
@@ -5338,7 +5338,7 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="619"/>
       <source>article model column %1 is out of range</source>
-      <translation type="unfinished">article model column %1 is out of range</translation>
+      <translation>artikelmodelkolom %1 is buiten bereik</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="643"/>
@@ -5701,7 +5701,7 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="30"/>
       <source>Account proxy</source>
-      <translation type="unfinished">Account proxy</translation>
+      <translation>Proxy account</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="33"/>
@@ -6072,7 +6072,7 @@ Feedly is een beveiligde ruimte waar u de onderwerpen en trends die voor u van b
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="2978"/>
       <source>cannot move item of kind %1</source>
-      <translation type="unfinished">cannot move item of kind %1</translation>
+      <translation>kan item van soort %1 niet verplaatsen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="3137"/>
@@ -6495,17 +6495,17 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="55"/>
       <source>Import data from QuiteRSS</source>
-      <translation type="unfinished">Import data from QuiteRSS</translation>
+      <translation>Importeer van QuiteRSS</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="62"/>
       <source>Imported articles from %1 feeds...</source>
-      <translation type="unfinished">Imported articles from %1 feeds...</translation>
+      <translation>Artikelen van %1 feeds geïmporteerd...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="158"/>
       <source>skipping article, it has no title and no URL</source>
-      <translation type="unfinished">skipping article, it has no title and no URL</translation>
+      <translation>artikel overslaan, het heeft geen titel en geen URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="295"/>
@@ -6788,22 +6788,22 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="73"/>
       <source>Go &amp;up</source>
-      <translation type="unfinished">Go &amp;up</translation>
+      <translation>Ga &amp;omhoog</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="74"/>
       <source>Go &amp;down</source>
-      <translation type="unfinished">Go &amp;down</translation>
+      <translation>Ga &amp;omlaag</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="119"/>
       <source>%1 %2/%3</source>
-      <translation type="unfinished">%1 %2/%3</translation>
+      <translation>%1 %2/%3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="120"/>
       <source>Page</source>
-      <translation type="unfinished">Page</translation>
+      <translation>Pagina</translation>
     </message>
   </context>
   <context>
@@ -6883,7 +6883,7 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="89"/>
       <source>Cannot create label: %1.</source>
-      <translation type="unfinished">Cannot create label: %1.</translation>
+      <translation>Kan label niet maken: %1.</translation>
     </message>
   </context>
   <context>
@@ -7334,9 +7334,9 @@ Makers van de applicatie zijn niet verantwoordelijk voor dataverlies.</translati
       <source>If enabled then %1 loads articles into article list on demand as you scroll throught the list.
 
 This can tremendously speed up the application if you have hundreds of thousands articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</source>
-      <translation type="unfinished">If enabled then %1 loads articles into article list on demand as you scroll throught the list.
+      <translation>Indien ingeschakeld worden %1 op verzoek artikelen in de lijst met artikelen geladen omdat je de lijst doorheen scrolt.
 
-This can tremendously speed up the application if you have hundreds of thousands articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</translation>
+Dit kan de applicatie enorm versnellen als je honderdduizenden artikelen hebt, maar het kan het filteren van uw artikellijst bemoeilijken omdat niet alle artikelen worden geladen, waardoor uw filtering mogelijk uitgeschakeld kan worden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="54"/>
@@ -7567,7 +7567,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="703"/>
       <source>Use articles lazy-loading</source>
-      <translation type="unfinished">Use articles lazy-loading</translation>
+      <translation>Gebruik traag laden van artikelen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="321"/>
@@ -8878,7 +8878,7 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="73"/>
       <source>HTTP headers</source>
-      <translation type="unfinished">HTTP headers</translation>
+      <translation>HTTP headers</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="91"/>
@@ -8888,22 +8888,22 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="26"/>
       <source>Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</source>
-      <translation type="unfinished">Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</translation>
+      <translation>Voer elk sleutel/waarde HTTP-header paar op een aparte regel in. Let op dat alle spaties belangrijk zijn en dat headers hoofdlettergevoelig zijn. Zorg er ook voor dat de waarde gescheiden wordt van de waarde met &apos;=&apos;, zoals het voorbeeld hieronder:</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="34"/>
       <source>Use application settings</source>
-      <translation type="unfinished">Use application settings</translation>
+      <translation>Gebruik applicatie instellingen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="36"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Ingeschakeld</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="37"/>
       <source>Disabled</source>
-      <translation type="unfinished">Disabled</translation>
+      <translation>Uitgeschakeld</translation>
     </message>
   </context>
   <context>
