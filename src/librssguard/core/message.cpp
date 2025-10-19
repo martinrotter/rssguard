@@ -120,7 +120,7 @@ Message::Message(const Message& other) {
   m_assignedLabels = other.m_assignedLabels;
   m_assignedLabelsByFilter = other.m_assignedLabelsByFilter;
   m_deassignedLabelsByFilter = other.m_deassignedLabelsByFilter;
-  m_assignedLabelsIds = other.m_assignedLabelsIds;
+  m_assignedLabelCustomIds = other.m_assignedLabelCustomIds;
 }
 
 /*Message::~Message() {
@@ -210,7 +210,7 @@ Message Message::fromSqlQuery(const QSqlQuery& record) {
   message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
   message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
   message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();
-  message.m_assignedLabelsIds = record.value(MSG_DB_LABELS_IDS).toString().split(',', SPLIT_BEHAVIOR::SkipEmptyParts);
+  message.m_assignedLabelCustomIds = record.value(MSG_DB_LABELS_IDS).toString().split(',', SPLIT_BEHAVIOR::SkipEmptyParts);
 
   return message;
 }

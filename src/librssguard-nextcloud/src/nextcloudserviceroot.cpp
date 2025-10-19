@@ -107,7 +107,6 @@ void NextcloudServiceRoot::saveAllCachedData(bool ignore_errors) {
       QStringList feed_ids, guid_hashes;
 
       for (const Message& msg : messages) {
-        // TODO: check this.
         feed_ids.append(hashed_feeds.value(msg.m_feedId)->customId());
         guid_hashes.append(msg.m_customHash);
       }

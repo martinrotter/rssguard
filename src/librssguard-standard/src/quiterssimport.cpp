@@ -96,7 +96,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
         auto* target_lbl = lbls.value(label_id);
 
         if (target_lbl != nullptr) {
-          msg.m_assignedLabelsByFilter.append(lbls.value(label_id));
+          msg.m_assignedLabelsByFilter.append(target_lbl);
         }
       }
 

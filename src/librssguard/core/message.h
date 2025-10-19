@@ -111,10 +111,16 @@ class RSSGUARD_DLLSPEC Message {
     // List of custom IDs of labels assigned to this message.
     QList<Label*> m_assignedLabels;
 
+    // TODO: kompletně se zbavit m_assignedLabels a m_assignedLabelsByFilter a m_deassignedLabelsByFilter
+    // převést na QStringList
+    //
+    // nebo se zbavit m_assignedLabelCustomIds ? a mit prostě jen live seznam labelů
+    //
+
     QList<Label*> m_assignedLabelsByFilter;
     QList<Label*> m_deassignedLabelsByFilter;
 
-    QStringList m_assignedLabelsIds;
+    QStringList m_assignedLabelCustomIds;
 
     // Is true if "created" date was obtained directly
     // from the feed, otherwise is false

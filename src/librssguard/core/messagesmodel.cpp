@@ -299,7 +299,7 @@ bool MessagesModel::setData(const QModelIndex& idx, const QVariant& value, int r
       break;
 
     case MSG_DB_LABELS_IDS:
-      msg.m_assignedLabelsIds = value.toStringList();
+      msg.m_assignedLabelCustomIds = value.toStringList();
       break;
 
     default:
@@ -613,7 +613,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           return QVariant();
 
         case MSG_DB_LABELS_IDS:
-          return msg.m_assignedLabelsIds.join(QL1C(','));
+          return msg.m_assignedLabelCustomIds.join(QL1C(','));
 
         default:
           throw ApplicationException(tr("article model column %1 is out of range").arg(idx.column()));

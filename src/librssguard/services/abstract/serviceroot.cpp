@@ -1148,7 +1148,7 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
       if (m_labelsNode != nullptr) {
         auto lbl_custom_ids = msgs_linq
                                 .selectMany([](const Message& msg) {
-                                  auto ids = msg.m_assignedLabelsIds;
+                                  auto ids = msg.m_assignedLabelCustomIds;
                                   return boolinq::from(ids);
                                 })
                                 .distinct()

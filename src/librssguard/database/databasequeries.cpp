@@ -959,8 +959,6 @@ ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, 
     return ac;
   }
   else {
-    auto xx = q.lastError().text();
-
     throw ApplicationException(q.lastError().text());
   }
 }
