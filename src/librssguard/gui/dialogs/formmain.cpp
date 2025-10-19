@@ -269,20 +269,6 @@ void FormMain::prepareMenus() {
   m_ui->m_actionSwitchMainMenu->setVisible(false);
   m_ui->m_actionFullscreen->setVisible(false);
 #endif
-
-  /*
-  if (QSysInfo::currentCpuArchitecture().contains(QSL("arm"), Qt::CaseSensitivity::CaseInsensitive)) {
-    qWarningNN << LOGSEC_GUI << "Disabling native menu bar.";
-    m_ui->m_menuBar->setNativeMenuBar(false);
-
-#if defined(Q_OS_MACOS)
-    // This works around a macOS-only Qt crash.
-    // QTBUG: https://bugreports.qt.io/browse/QTBUG-102107
-    // TODO: Remove this workaround once the upstream bug gets addressed.
-    m_ui->m_menuBar->setCornerWidget(nullptr);
-#endif
-  }
-  */
 }
 
 void FormMain::switchFullscreenMode() {

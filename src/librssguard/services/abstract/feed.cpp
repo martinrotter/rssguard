@@ -371,8 +371,8 @@ QString Feed::additionalTooltip() const {
   return tr("Auto-update status: %1\n"
             "Active message filters: %2\n"
             "Status: %3\n"
-            "Source: <a href=\"%4\">%4</a>\n"
-            "Item ID: %5")
+            "Source: %4\n"
+            "Item custom ID: %5")
     .arg(getAutoUpdateStatusDescription(),
          m_messageFilters.size() > 0
            ? QSL("%1 (%2)").arg(QString::number(m_messageFilters.size()), fltrs.join(QSL(", ")))

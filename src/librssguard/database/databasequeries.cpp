@@ -159,7 +159,6 @@ void DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<La
 
   // Insert new label associations (if any).
   if (!labels.isEmpty()) {
-    // TODO: check
     QString sql = QSL("INSERT INTO LabelsInMessages (message, label, account_id) VALUES ");
     QStringList values;
 

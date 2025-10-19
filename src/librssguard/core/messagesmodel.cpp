@@ -708,10 +708,6 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
     }
 
-      // TODO: potřeba?
-      // case LOWER_TITLE_ROLE:
-      //   return data(idx, Qt::ItemDataRole::EditRole).toString().toLower();
-
     case Qt::ItemDataRole::ToolTipRole: {
       if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
         return QVariant();

@@ -73,48 +73,21 @@ QList<QAction*> StandardFeed::contextMenuFeedsList() {
 }
 
 QString StandardFeed::additionalTooltip() const {
-  QString stat = getStatusDescription();
-  QString stat_string = statusString();
+  QString base_tooltip = Feed::additionalTooltip();
 
-  if (!stat_string.simplified().isEmpty()) {
-    stat += QSL(" (%1)").arg(stat_string);
-  }
-
-  auto filters = messageFilters();
-  auto std_fltrs = boolinq::from(filters)
-                     .select([](const QPointer<MessageFilter>& pn) {
-                       return pn->name();
-                     })
-                     .toStdList();
-  QStringList fltrs = FROM_STD_LIST(QStringList, std_fltrs);
-
-  // TODO: Basically copied from base implementation.
-  QString base_tooltip =
-    tr("Auto-update status: %1\n"
-       "Active message filters: %2\n"
-       "Status: %3\n"
-       "Source: %4\n"
-       "HTTP/2: %6\n"
-       "Item ID: %5\n")
-      .arg(getAutoUpdateStatusDescription(),
-           filters.size() > 0 ? QSL("%1 (%2)").arg(QString::number(filters.size()), fltrs.join(QSL(", ")))
-                              : QString::number(filters.size()),
-           stat,
-           m_sourceType == SourceType::Url ? QString("<a href=\"%1\">%1</a>").arg(source().left(100))
-                                           : source().left(100),
-           customId(),
-           getHttpDescription());
-
-  return base_tooltip + tr("Encoding: %1\n"
-                           "Type: %2\n"
-                           "Post-processing script: %3\n"
-                           "Use raw XML saving: %4\n"
-                           "Fetch article comments: %5")
-                          .arg(encoding(),
-                               StandardFeed::typeToString(type()),
-                               m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
-                               !dontUseRawXmlSaving() ? tr("yes") : tr("no"),
-                               fetchCommentsEnabled() ? tr("yes") : tr("no"));
+  return base_tooltip + QSL("\n") +
+         tr("Encoding: %1\n"
+            "Type: %2\n"
+            "Post-processing script: %3\n"
+            "Use raw XML saving: %4\n"
+            "Fetch article comments: %5\n"
+            "HTTP/2: %6\n")
+           .arg(encoding(),
+                StandardFeed::typeToString(type()),
+                m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
+                !dontUseRawXmlSaving() ? tr("yes") : tr("no"),
+                fetchCommentsEnabled() ? tr("yes") : tr("no"),
+                getHttpDescription());
 }
 
 NetworkFactory::Http2Status StandardFeed::http2Status() const {
