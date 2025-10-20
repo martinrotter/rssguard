@@ -16,12 +16,6 @@ ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
   setDescription(tr("You can find all important articles here."));
 }
 
-QList<Message> ImportantNode::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  return DatabaseQueries::getUndeletedImportantMessages(database, account()->accountId());
-}
-
 void ImportantNode::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();

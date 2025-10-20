@@ -30,12 +30,6 @@ QString LabelsNode::additionalTooltip() const {
   return tr("Number of labels: %1").arg(labels().size());
 }
 
-QList<Message> LabelsNode::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  return DatabaseQueries::getUndeletedLabelledMessages(database, account()->accountId());
-}
-
 bool LabelsNode::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);

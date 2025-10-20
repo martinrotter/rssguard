@@ -15,7 +15,6 @@ class RSSGUARD_DLLSPEC SearchsNode : public RootItem {
     QList<Search*> probes() const;
     void loadProbes(const QList<Search*>& probes);
 
-    virtual QList<Message> undeletedMessages() const;
     virtual QList<QAction*> contextMenuFeedsList();
 
     virtual int countOfUnreadMessages() const;

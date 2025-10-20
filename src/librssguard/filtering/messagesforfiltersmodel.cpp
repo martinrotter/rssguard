@@ -204,13 +204,12 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
       filtering.filterRun().setIndexOfCurrentFilter(0);
 
       // We process messages of the feed.
-      QList<Message> msgs = it->undeletedMessages();
+      QList<Message> msgs = DatabaseQueries::getUndeletedMessagesForFeed(database, it->id(), account->accountId());
       QList<Message> read_msgs, important_msgs;
 
       for (int i = 0; i < msgs.size(); i++) {
-        auto labels_in_message =
-          DatabaseQueries::getLabelsForMessage(database, msgs[i], filtering.filterAccount().availableLabels());
         Message* msg_filtered = &msgs[i];
+        auto labels_in_message = msg_filtered->getLabelsFromCustomIds(filtering.filterAccount().availableLabels());
 
         msg_filtered->m_assignedLabels = labels_in_message;
         msg_filtered->m_rawContents = Message::generateRawAtomContents(*msg_filtered);

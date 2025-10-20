@@ -76,6 +76,8 @@ class RSSGUARD_DLLSPEC Message {
 
     void sanitize(const Feed* feed, bool fix_future_datetimes);
 
+    QList<Label*> getLabelsFromCustomIds(const QList<Label*> installed_labels) const;
+
     static Message fromSqlQuery(const QSqlQuery& record);
     static QString generateRawAtomContents(const Message& msg);
 

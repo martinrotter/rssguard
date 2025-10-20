@@ -11,7 +11,6 @@ class RSSGUARD_DLLSPEC UnreadNode : public RootItem {
   public:
     explicit UnreadNode(RootItem* parent_item = nullptr);
 
-    virtual QList<Message> undeletedMessages() const;
     virtual bool cleanMessages(bool clean_read_only);
     virtual void updateCounts(bool including_total_count);
     virtual bool markAsReadUnread(ReadStatus status);

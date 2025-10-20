@@ -59,7 +59,6 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     explicit Feed(const Feed& other);
     explicit Feed(const QString& title, const QString& custom_id, const QIcon& icon, RootItem* parent = nullptr);
 
-    virtual QList<Message> undeletedMessages() const;
     virtual QString additionalTooltip() const;
     virtual Qt::ItemFlags additionalFlags() const;
     virtual bool markAsReadUnread(ReadStatus status);

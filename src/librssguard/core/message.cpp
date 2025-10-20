@@ -2,6 +2,7 @@
 
 #include "core/message.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
@@ -189,6 +190,18 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   }
 }
 
+QList<Label*> Message::getLabelsFromCustomIds(const QList<Label*> installed_labels) const {
+  auto linq_std = boolinq::from(installed_labels)
+                    .where([this](Label* lbl) {
+                      return m_assignedLabelCustomIds.contains(lbl->customId());
+                    })
+                    .toStdList();
+
+  QList<Label*> linq = FROM_STD_LIST(QList<Label*>, linq_std);
+
+  return linq;
+}
+
 Message Message::fromSqlQuery(const QSqlQuery& record) {
   Message message;
 
@@ -210,7 +223,8 @@ Message Message::fromSqlQuery(const QSqlQuery& record) {
   message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
   message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
   message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();
-  message.m_assignedLabelCustomIds = record.value(MSG_DB_LABELS_IDS).toString().split(',', SPLIT_BEHAVIOR::SkipEmptyParts);
+  message.m_assignedLabelCustomIds =
+    record.value(MSG_DB_LABELS_IDS).toString().split(',', SPLIT_BEHAVIOR::SkipEmptyParts);
 
   return message;
 }

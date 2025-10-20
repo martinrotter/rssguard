@@ -14,7 +14,6 @@ class RedditServiceRoot : public ServiceRoot, public CacheForServiceRoot {
   public:
     explicit RedditServiceRoot(RootItem* parent = nullptr);
 
-    void setNetwork(RedditNetworkFactory* network);
     RedditNetworkFactory* network() const;
 
     virtual bool isSyncable() const;
@@ -43,12 +42,6 @@ class RedditServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     RedditNetworkFactory* m_network;
 };
 
-inline void RedditServiceRoot::setNetwork(RedditNetworkFactory* network) {
-  m_network = network;
-}
 
-inline RedditNetworkFactory* RedditServiceRoot::network() const {
-  return m_network;
-}
 
 #endif // REDDITSERVICEROOT_H

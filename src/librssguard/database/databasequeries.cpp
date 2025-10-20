@@ -203,17 +203,6 @@ QList<Label*> DatabaseQueries::getLabelsForAccount(const QSqlDatabase& db, int a
   return labels;
 }
 
-QList<Label*> DatabaseQueries::getLabelsForMessage(const QSqlDatabase& db,
-                                                   const Message& msg,
-                                                   const QList<Label*>& installed_labels) {
-  QList<Label*> labels;
-
-  // TODO: todo - je třeba? v message už mame m_assignedLabelIds, tak stačí runtime doplnit seznam živých labelů
-  // což se dodělá rovnou do modelu zpráv
-
-  return labels;
-}
-
 void DatabaseQueries::updateLabel(const QSqlDatabase& db, Label* label) {
   QSqlQuery q(db);
 
@@ -1027,7 +1016,7 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const QSq
   return results;
 }
 
-ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int account_id, bool* ok) {
+ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1039,10 +1028,6 @@ ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db,
   if (q.exec() && q.next()) {
     DatabaseFactory::logLastExecutedQuery(q);
 
-    if (ok != nullptr) {
-      *ok = true;
-    }
-
     ArticleCounts ac;
 
     ac.m_total = q.value(0).toInt();
@@ -1051,11 +1036,7 @@ ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db,
     return ac;
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-
-    return {};
+    throw ApplicationException(q.lastError().text());
   }
 }
 
@@ -1086,7 +1067,7 @@ int DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_
   }
 }
 
-ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool* ok) {
+ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1098,10 +1079,6 @@ ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, in
   if (q.exec() && q.next()) {
     DatabaseFactory::logLastExecutedQuery(q);
 
-    if (ok != nullptr) {
-      *ok = true;
-    }
-
     ArticleCounts ac;
 
     ac.m_total = q.value(0).toInt();
@@ -1110,197 +1087,11 @@ ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, in
     return ac;
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-
-    return {};
-  }
-}
-
-QList<Message> DatabaseQueries::getUndeletedMessagesForProbe(const QSqlDatabase& db, const Search* probe) {
-  QList<Message> messages;
-  QSqlQuery q(db);
-
-  q.prepare(QSL("SELECT %1 "
-                "FROM Messages "
-                "WHERE "
-                "  Messages.is_deleted = 0 AND "
-                "  Messages.is_pdeleted = 0 AND "
-                "  Messages.account_id = :account_id AND "
-                "  (title REGEXP :fltr OR contents REGEXP :fltr);")
-              .arg(messageTableAttributes().values().join(QSL(", "))));
-  q.bindValue(QSL(":account_id"), probe->account()->accountId());
-  q.bindValue(QSL(":fltr"), probe->filter());
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    while (q.next()) {
-      Message message = Message::fromSqlQuery(q);
-
-      messages.append(message);
-    }
-  }
-  else {
     throw ApplicationException(q.lastError().text());
   }
-
-  return messages;
 }
 
-QList<Message> DatabaseQueries::getUndeletedMessagesWithLabel(const QSqlDatabase& db, const Label* label, bool* ok) {
-  QList<Message> messages;
-  QSqlQuery q(db);
-
-  q.prepare(QSL("SELECT %1 "
-                "FROM Messages "
-                "INNER JOIN Feeds "
-                "ON Messages.feed = Feeds.id AND Messages.account_id = :account_id AND Messages.account_id = "
-                "Feeds.account_id "
-                "WHERE "
-                "  Messages.is_deleted = 0 AND "
-                "  Messages.is_pdeleted = 0 AND "
-                "  Messages.account_id = :account_id AND "
-                "  Messages.labels LIKE :label;")
-              .arg(messageTableAttributes().values().join(QSL(", "))));
-  q.bindValue(QSL(":account_id"), label->account()->accountId());
-  q.bindValue(QSL(":label"), QSL("%.%1.%").arg(label->customId()));
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    while (q.next()) {
-      Message message = Message::fromSqlQuery(q);
-
-      messages.append(message);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return messages;
-}
-
-QList<Message> DatabaseQueries::getUndeletedLabelledMessages(const QSqlDatabase& db, int account_id, bool* ok) {
-  QList<Message> messages;
-  QSqlQuery q(db);
-
-  q.prepare(QSL("SELECT %1 "
-                "FROM Messages "
-                "INNER JOIN Feeds "
-                "ON Messages.feed = Feeds.id AND Messages.account_id = Feeds.account_id "
-                "WHERE "
-                "  Messages.is_deleted = 0 AND "
-                "  Messages.is_pdeleted = 0 AND "
-                "  Messages.account_id = :account_id AND "
-                "  LENGTH(Messages.labels) > 2;")
-              .arg(messageTableAttributes().values().join(QSL(", "))));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    while (q.next()) {
-      Message message = Message::fromSqlQuery(q);
-
-      messages.append(message);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    auto a = q.lastError().text();
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return messages;
-}
-
-QList<Message> DatabaseQueries::getUndeletedImportantMessages(const QSqlDatabase& db, int account_id, bool* ok) {
-  QList<Message> messages;
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT %1 "
-                "FROM Messages "
-                "WHERE is_important = 1 AND is_deleted = 0 AND "
-                "      is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes().values().join(QSL(", "))));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    while (q.next()) {
-      Message message = Message::fromSqlQuery(q);
-
-      messages.append(message);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return messages;
-}
-
-QList<Message> DatabaseQueries::getUndeletedUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok) {
-  QList<Message> messages;
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT %1 "
-                "FROM Messages "
-                "WHERE is_read = 0 AND is_deleted = 0 AND "
-                "      is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes().values().join(QSL(", "))));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    while (q.next()) {
-      Message message = Message::fromSqlQuery(q);
-
-      messages.append(message);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return messages;
-}
-
-QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& db,
-                                                            int feed_id,
-                                                            int account_id,
-                                                            bool* ok) {
+QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& db, int feed_id, int account_id) {
   QList<Message> messages;
   QSqlQuery q(db);
 
@@ -1321,56 +1112,15 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& 
 
       messages.append(message);
     }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
   }
   else {
-    auto aa = q.lastError().text();
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
+    throw ApplicationException(q.lastError().text());
   }
 
   return messages;
 }
 
-QList<Message> DatabaseQueries::getUndeletedMessagesForBin(const QSqlDatabase& db, int account_id, bool* ok) {
-  QList<Message> messages;
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT %1 "
-                "FROM Messages "
-                "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes().values().join(QSL(", "))));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    while (q.next()) {
-      Message message = Message::fromSqlQuery(q);
-
-      messages.append(message);
-    }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-
-  return messages;
-}
-
-QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id, bool* ok) {
+QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id) {
   QList<Message> messages;
   QSqlQuery q(db);
 
@@ -1389,15 +1139,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
 
       messages.append(message);
     }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
+    throw ApplicationException(q.lastError().text());
   }
 
   return messages;

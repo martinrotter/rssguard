@@ -39,8 +39,6 @@ class HttpServer : public QObject {
         QString m_value;
     };
 
-    QByteArray generateHttpAnswer(int http_code, const QList<HttpHeader>& headers, const QByteArray& body = {}) const;
-
     struct HttpRequest {
         bool readMethod(QTcpSocket* socket);
         bool readUrl(QTcpSocket* socket);

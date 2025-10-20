@@ -17,7 +17,6 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     explicit GmailServiceRoot(RootItem* parent = nullptr);
     virtual ~GmailServiceRoot();
 
-    void setNetwork(GmailNetworkFactory* network);
     GmailNetworkFactory* network() const;
 
     virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
@@ -59,12 +58,6 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     Message m_replyToMessage;
 };
 
-inline void GmailServiceRoot::setNetwork(GmailNetworkFactory* network) {
-  m_network = network;
-}
 
-inline GmailNetworkFactory* GmailServiceRoot::network() const {
-  return m_network;
-}
 
 #endif // GMAILSERVICEROOT_H

@@ -138,3 +138,7 @@ void RedditServiceRoot::saveAllCachedData(bool ignore_errors) {
   Q_UNUSED(ignore_errors)
   auto msg_cache = takeMessageCache();
 }
+
+RedditNetworkFactory* RedditServiceRoot::network() const {
+  return m_network;
+}

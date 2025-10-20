@@ -418,7 +418,15 @@ void FormMessageFiltersManager::displayMessagesOfFeed() {
   auto* item = selectedCategoryFeed();
 
   if (item != nullptr) {
-    m_msgModel->setMessages(item->undeletedMessages());
+    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+    int account_id = item->account()->accountId();
+    QList<Message> msgs;
+
+    for (Feed* feed : item->getSubTreeFeeds()) {
+      msgs.append(DatabaseQueries::getUndeletedMessagesForFeed(database, feed->id(), account_id));
+    }
+
+    m_msgModel->setMessages(msgs);
   }
   else {
     m_msgModel->setMessages({});
@@ -431,7 +439,8 @@ void FormMessageFiltersManager::loadAccount(ServiceRoot* account) {
   m_feedsModel->setRootItem(account, false, true);
 
   if (account != nullptr) {
-    m_msgModel->setMessages(account->undeletedMessages());
+    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+    m_msgModel->setMessages(DatabaseQueries::getUndeletedMessagesForAccount(database, account->accountId()));
   }
   else {
     m_msgModel->setMessages({});

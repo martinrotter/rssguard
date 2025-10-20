@@ -349,12 +349,6 @@ bool ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
   }
 }
 
-QList<Message> ServiceRoot::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  return DatabaseQueries::getUndeletedMessagesForAccount(database, accountId());
-}
-
 bool ServiceRoot::supportsFeedAdding() const {
   return false;
 }
@@ -1149,7 +1143,7 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
         auto lbl_custom_ids = msgs_linq
                                 .selectMany([](const Message& msg) {
                                   auto ids = msg.m_assignedLabelCustomIds;
-                                  return boolinq::from(ids);
+                                  return boolinq::from(ids.begin(), ids.end());
                                 })
                                 .distinct()
                                 .toStdVector();

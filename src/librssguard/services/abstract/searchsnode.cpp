@@ -25,12 +25,6 @@ void SearchsNode::loadProbes(const QList<Search*>& probes) {
   }
 }
 
-QList<Message> SearchsNode::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  return {};
-}
-
 Search* SearchsNode::probeById(const QString& custom_id) {
   auto chi = childItems();
 

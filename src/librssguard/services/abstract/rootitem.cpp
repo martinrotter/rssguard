@@ -81,18 +81,6 @@ bool RootItem::markAsReadUnread(ReadStatus status) {
   return result;
 }
 
-QList<Message> RootItem::undeletedMessages() const {
-  QList<Message> messages;
-
-  for (RootItem* child : std::as_const(m_childItems)) {
-    if (child->kind() != Kind::Bin && child->kind() != Kind::Labels && child->kind() != Kind::Label) {
-      messages.append(child->undeletedMessages());
-    }
-  }
-
-  return messages;
-}
-
 bool RootItem::cleanMessages(bool clear_only_read) {
   bool result = true;
 

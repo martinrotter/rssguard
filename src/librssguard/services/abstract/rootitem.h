@@ -87,10 +87,6 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // to mark this item as read/unread.
     virtual bool markAsReadUnread(ReadStatus status);
 
-    // Get ALL undeleted messages from this item in one single list.
-    // This is currently used for displaying items in "newspaper mode".
-    virtual QList<Message> undeletedMessages() const;
-
     // This method should "clean" all messages it contains.
     //
     // NOTE: What "clean" means? It means delete messages -> move them to recycle bin
@@ -182,9 +178,6 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // This ALWAYS represents primary column number/ID under which
     // the item is stored in DB.
     int id() const;
-
-    // WARNING: Do not EVER call this method if your "this" object is derived
-    // from "ServiceRoot";
     void setId(int id);
 
     // Each item has its title.

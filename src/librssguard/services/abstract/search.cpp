@@ -68,12 +68,6 @@ void Search::updateCounts(bool including_total_count) {
   setCountOfUnreadMessages(-1);
 }
 
-QList<Message> Search::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  return DatabaseQueries::getUndeletedMessagesForProbe(database, this);
-}
-
 QString Search::filter() const {
   return m_filter;
 }

@@ -66,21 +66,6 @@ void SettingsToolbars::loadUi() {
   SettingsPanel::loadUi();
 }
 
-void SettingsToolbars::changeFont(QLabel& lbl) {
-  bool ok;
-  QFont new_font = QFontDialog::getFont(&ok,
-                                        lbl.font(),
-                                        this,
-                                        tr("Select new font"),
-                                        QFontDialog::FontDialogOption::DontUseNativeDialog);
-
-  if (ok) {
-    lbl.setFont(new_font);
-    dirtifySettings();
-    requireRestart();
-  }
-}
-
 QIcon SettingsToolbars::icon() const {
   return qApp->icons()->fromTheme(QSL("view-list-details"), QSL("draw-freehand"));
 }

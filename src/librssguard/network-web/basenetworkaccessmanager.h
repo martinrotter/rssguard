@@ -23,7 +23,7 @@ class BaseNetworkAccessManager : public QNetworkAccessManager {
     void onSslErrors(QNetworkReply* reply, const QList<QSslError>& error);
 
   protected:
-    QNetworkReply* createRequest(Operation op, const QNetworkRequest& request, QIODevice* outgoingData);
+    virtual QNetworkReply* createRequest(Operation op, const QNetworkRequest& request, QIODevice* outgoingData);
 
   private:
     bool m_enableHttp2;

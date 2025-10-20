@@ -309,3 +309,7 @@ bool GmailServiceRoot::displaysEnclosures() const {
 ServiceRoot::LabelOperation GmailServiceRoot::supportedLabelOperations() const {
   return ServiceRoot::LabelOperation::Synchronised;
 }
+
+GmailNetworkFactory* GmailServiceRoot::network() const {
+  return m_network;
+}

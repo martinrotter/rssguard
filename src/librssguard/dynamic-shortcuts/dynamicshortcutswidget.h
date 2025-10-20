@@ -21,10 +21,6 @@ class DynamicShortcutsWidget : public QWidget {
     // and stored back to settings when application quits.
     void updateShortcuts();
 
-    // Returns true if all shortcuts are unique,
-    // otherwise false.
-    bool areShortcutsUnique() const;
-
     // Populates this widget with shortcut widgets for given actions.
     // NOTE: This gets initial shortcut for each action from its properties, NOT from
     // the application settings, so shortcuts from settings need to be

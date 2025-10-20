@@ -109,6 +109,9 @@ class RSSGUARD_DLLSPEC OAuth2Service : public QObject {
     // Removes all state data and stops redirection handler.
     void logout(bool stop_redirection_handler = true);
 
+  protected:
+    virtual void timerEvent(QTimerEvent* event);
+
   private slots:
     void startRefreshTimer();
     void killRefreshTimer();
@@ -117,8 +120,6 @@ class RSSGUARD_DLLSPEC OAuth2Service : public QObject {
   private:
     QString properClientId() const;
     QString properClientSecret() const;
-
-    void timerEvent(QTimerEvent* event);
 
   private:
     QString m_id;

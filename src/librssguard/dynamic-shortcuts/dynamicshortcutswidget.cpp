@@ -22,25 +22,6 @@ DynamicShortcutsWidget::~DynamicShortcutsWidget() {
   delete m_layout;
 }
 
-bool DynamicShortcutsWidget::areShortcutsUnique() const {
-  QList<QKeySequence> all_shortcuts;
-
-  // Obtain all shortcuts.
-  for (ShortcutCatcher* catcher : m_actionBindings) {
-    const QKeySequence new_shortcut = catcher->shortcut();
-
-    if (!new_shortcut.isEmpty() && all_shortcuts.contains(new_shortcut)) {
-      // Problem, two identical non-empty shortcuts found.
-      return false;
-    }
-    else {
-      all_shortcuts.append(catcher->shortcut());
-    }
-  }
-
-  return true;
-}
-
 void DynamicShortcutsWidget::updateShortcuts() {
   for (ShortcutCatcher* catcher : std::as_const(m_actionBindings)) {
     catcher->action()->setShortcut(catcher->shortcut());

@@ -31,7 +31,6 @@ class RSSGUARD_DLLSPEC Label : public RootItem {
     virtual bool canBeDeleted() const;
     virtual bool deleteItem();
     virtual void updateCounts(bool including_total_count);
-    virtual QList<Message> undeletedMessages() const;
 
   public slots:
     void assignToMessage(const Message& msg, bool reload_feeds_model = true);

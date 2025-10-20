@@ -15,12 +15,6 @@ UnreadNode::UnreadNode(RootItem* parent_item) : RootItem(parent_item) {
   setDescription(tr("You can find all unread articles here."));
 }
 
-QList<Message> UnreadNode::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  return DatabaseQueries::getUndeletedUnreadMessages(database, account()->accountId());
-}
-
 void UnreadNode::updateCounts(bool including_total_count) {
   Q_UNUSED(including_total_count)
 

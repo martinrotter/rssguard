@@ -79,8 +79,11 @@ class TabWidget : public QTabWidget {
     void gotoNextTab();
     void gotoPreviousTab();
 
-  private slots:
+  protected:
+    virtual void tabInserted(int index);
+    virtual void tabRemoved(int index);
 
+  private slots:
     // Fixes tabs indexes.
     void fixContentsAfterMove(int from, int to);
 
@@ -95,9 +98,6 @@ class TabWidget : public QTabWidget {
     void indentTabText(int index);
     void createConnections();
     void setupMainMenuButton();
-
-    void tabInserted(int index);
-    void tabRemoved(int index);
 
     PlainToolButton* m_btnMainMenu;
     QMenu* m_menuMain;

@@ -95,6 +95,7 @@ void TabWidget::updateAppearance() {
 
 void TabWidget::tabInserted(int index) {
   QTabWidget::tabInserted(index);
+
   checkCornerButtonVisibility();
   const int count_of_tabs = count();
 
@@ -106,6 +107,7 @@ void TabWidget::tabInserted(int index) {
 
 void TabWidget::tabRemoved(int index) {
   QTabWidget::tabRemoved(index);
+
   checkCornerButtonVisibility();
   const int count_of_tabs = count();
 

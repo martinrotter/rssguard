@@ -33,9 +33,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static void setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
     static QList<Label*> getLabelsForAccount(const QSqlDatabase& db, int account_id);
-    static QList<Label*> getLabelsForMessage(const QSqlDatabase& db,
-                                             const Message& msg,
-                                             const QList<Label*>& installed_labels);
     static void updateLabel(const QSqlDatabase& db, Label* label);
     static void deleteLabel(const QSqlDatabase& db, Label* label);
     static void createLabel(const QSqlDatabase& db, Label* label, int account_id, int new_label_id = 0);
@@ -103,22 +100,13 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static ArticleCounts getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id);
     static ArticleCounts getMessageCountsForProbe(const QSqlDatabase& db, Search* probe, int account_id);
     static QMap<int, ArticleCounts> getMessageCountsForAllLabels(const QSqlDatabase& db, int account_id);
-    static ArticleCounts getImportantMessageCounts(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static ArticleCounts getImportantMessageCounts(const QSqlDatabase& db, int account_id);
     static int getUnreadMessageCounts(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static ArticleCounts getMessageCountsForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static ArticleCounts getMessageCountsForBin(const QSqlDatabase& db, int account_id);
 
     // Get messages (for newspaper view for example).
-    static QList<Message> getUndeletedMessagesForProbe(const QSqlDatabase& db, const Search* probe);
-    static QList<Message> getUndeletedMessagesWithLabel(const QSqlDatabase& db, const Label* label, bool* ok = nullptr);
-    static QList<Message> getUndeletedLabelledMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static QList<Message> getUndeletedImportantMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static QList<Message> getUndeletedUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db,
-                                                      int feed_id,
-                                                      int account_id,
-                                                      bool* ok = nullptr);
-    static QList<Message> getUndeletedMessagesForBin(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id);
+    static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db, int feed_id, int account_id);
 
     // Custom ID accumulators.
     static int highestPrimaryIdFeeds(const QSqlDatabase& db);

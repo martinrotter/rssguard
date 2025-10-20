@@ -56,13 +56,6 @@ QList<QAction*> RecycleBin::contextMenuFeedsList() {
   return m_contextMenu;
 }
 
-QList<Message> RecycleBin::undeletedMessages() const {
-  const int account_id = account()->accountId();
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  return DatabaseQueries::getUndeletedMessagesForBin(database, account_id);
-}
-
 bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   ServiceRoot* service = account();

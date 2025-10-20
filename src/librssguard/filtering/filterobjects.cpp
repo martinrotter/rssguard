@@ -273,18 +273,18 @@ double jaro_winkler_distance(QString str1, QString str2) {
 
 bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double threshold) const {
   QList<Message> msgs;
-  bool ok = false;
 
-  if (Globals::hasFlag(criteria, DuplicityCheck::AllFeedsSameAccount)) {
-    msgs = DatabaseQueries::getUndeletedMessagesForAccount(m_system->database(), m_system->filterAccount().id(), &ok);
+  try {
+    if (Globals::hasFlag(criteria, DuplicityCheck::AllFeedsSameAccount)) {
+      msgs = DatabaseQueries::getUndeletedMessagesForAccount(m_system->database(), m_system->filterAccount().id());
+    }
+    else {
+      msgs =
+        DatabaseQueries::getUndeletedMessagesForFeed(m_system->database(), feedId(), m_system->filterAccount().id());
+    }
   }
-  else {
-    msgs =
-      DatabaseQueries::getUndeletedMessagesForFeed(m_system->database(), feedId(), m_system->filterAccount().id(), &ok);
-  }
-
-  if (!ok) {
-    qCriticalNN << LOGSEC_ARTICLEFILTER << "Query for undeleted articles failed.";
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_ARTICLEFILTER << "Query for undeleted articles failed:" << QUOTE_W_SPACE_DOT(ex.message());
     return false;
   }
 

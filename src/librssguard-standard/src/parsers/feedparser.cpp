@@ -3,7 +3,6 @@
 #include "src/parsers/feedparser.h"
 
 #include "src/definitions.h"
-#include "src/parsers/rssparser.h"
 
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>

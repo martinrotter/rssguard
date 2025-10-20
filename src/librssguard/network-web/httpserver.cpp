@@ -66,35 +66,6 @@ void HttpServer::setListenAddressPort(const QString& full_uri, bool start_handle
   }
 }
 
-QByteArray HttpServer::generateHttpAnswer(int http_code,
-                                          const QList<HttpHeader>& headers,
-                                          const QByteArray& body) const {
-  QList<HttpHeader> my_headers = headers;
-  QByteArray answer = QSL("HTTP/1.0 %1  \r\n").arg(http_code).toLocal8Bit();
-  int body_length = body.size();
-
-  // Append body length.
-  if (body_length > 0) {
-    my_headers.append({QSL("Content-Length"), QString::number(body_length)});
-  }
-
-  // Append server ID and other common headers.
-  my_headers.append({QSL("Date"), QDateTime::currentDateTimeUtc().toString(Qt::DateFormat::RFC2822Date)});
-  my_headers.append({QSL("Server"), QSL(APP_LONG_NAME)});
-
-  for (const HttpHeader& header : my_headers) {
-    answer.append(QSL("%1: %2\r\n").arg(header.m_name, header.m_value).toLocal8Bit());
-  }
-
-  answer.append(QSL("\r\n").toLocal8Bit());
-
-  if (body_length > 0) {
-    answer.append(body);
-  }
-
-  return answer;
-}
-
 void HttpServer::clientConnected() {
   QTcpSocket* socket = m_httpServer.nextPendingConnection();
 

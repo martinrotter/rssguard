@@ -25,9 +25,6 @@ class SettingsToolbars : public SettingsPanel {
     bool eventFilter(QObject* obj, QEvent* e);
 
   private:
-    void changeFont(QLabel& lbl);
-
-  private:
     Ui::SettingsToolbars* m_ui;
 };
 

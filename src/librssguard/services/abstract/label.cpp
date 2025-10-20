@@ -67,12 +67,6 @@ void Label::updateCounts(bool including_total_count) {
   setCountOfUnreadMessages(ac.m_unread);
 }
 
-QList<Message> Label::undeletedMessages() const {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  return DatabaseQueries::getUndeletedMessagesWithLabel(database, this);
-}
-
 void Label::assignToMessage(const Message& msg, bool reload_feeds_model) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
