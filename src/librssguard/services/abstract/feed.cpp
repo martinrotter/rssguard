@@ -221,7 +221,7 @@ bool Feed::cleanMessages(bool clean_read_only) {
 
 // TODO:
 // - projit všechny ::markAsReadUnread metody a přidat volání account::onBeforeMessageRead.... a onAfterMessageRead...
-// - smazat ::undeletedMessages, ponechat pouze přimo volání pro seznam zpráv ve articlefilter dialogu
+// to same clean....
 bool Feed::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);

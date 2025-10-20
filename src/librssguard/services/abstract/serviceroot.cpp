@@ -464,9 +464,6 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
   for (const Feed* feed : std::as_const(str)) {
     QVariantMap feed_custom_data;
 
-    // TODO: This could potentially call Feed::customDatabaseData() and append it
-    // to this map and also subsequently restore, but the method is at this point
-    // not really used by any syncable plugin.
     feed_custom_data.insert(QSL("id"), feed->id());
     feed_custom_data.insert(QSL("auto_update_interval"), feed->autoUpdateInterval());
     feed_custom_data.insert(QSL("auto_update_type"), int(feed->autoUpdateType()));
@@ -474,15 +471,7 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     feed_custom_data.insert(QSL("is_off"), feed->isSwitchedOff());
     feed_custom_data.insert(QSL("is_quiet"), feed->isQuiet());
     feed_custom_data.insert(QSL("is_rtl"), QVariant::fromValue(feed->rtlBehavior()));
-
     feed_custom_data.insert(QSL("article_limit_ignore"), QVariant::fromValue(feed->articleIgnoreLimit()));
-
-    /*
-    feed_custom_data.insert(QSL("datetime_to_avoid"),
-                            (feed->datetimeToAvoid().isValid() && feed->datetimeToAvoid().toMSecsSinceEpoch() > 0)
-                              ? feed->datetimeToAvoid().toMSecsSinceEpoch()
-                              : feed->hoursToAvoid());
-                              */
 
     // NOTE: This is here specifically to be able to restore custom sort order.
     // Otherwise the information is lost when list of feeds/folders is refreshed from remote
@@ -708,8 +697,7 @@ void ServiceRoot::syncIn() {
     // so remove left over messages and filter assignments.
     DatabaseQueries::purgeLeftoverMessages(db, accountId());
     DatabaseQueries::purgeLeftoverMessageFilterAssignments(db, accountId());
-
-    // TODO: Remove leftover label assignments from labels which no longer exist.
+    DatabaseQueries::purgeLeftoverLabelAssignments(db, accountId());
 
     qApp->database()->driver()->setForeignKeyChecksEnabled(db);
 

@@ -65,9 +65,8 @@ void QLiteHtmlArticleViewer::loadMessage(const Message& message, RootItem* root)
   auto url = urlForMessage(message, root);
   auto html = htmlForMessage(message, root);
 
+  // NOTE: Sadly, litehtml does not really support RTL, therefore RTL is not supported here either.
   setHtml(html, url, root);
-
-  // TODO: RTL
 
   emit loadingFinished(true);
 }

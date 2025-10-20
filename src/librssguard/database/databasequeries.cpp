@@ -1968,6 +1968,26 @@ bool DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& 
   }
 }
 
+void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id) {
+  QSqlQuery q(db);
+  q.setForwardOnly(true);
+
+  // This query deletes any label-message assignments where the referenced message no longer exists
+  // (e.g. because it was deleted while foreign key checks were off).
+  q.prepare(QSL("DELETE FROM LabelsInMessages "
+                "WHERE account_id = :account_id "
+                "AND message NOT IN (SELECT id FROM Messages WHERE account_id = :account_id);"));
+
+  q.bindValue(QSL(":account_id"), account_id);
+
+  if (!q.exec()) {
+    throw ApplicationException(q.lastError().text());
+  }
+  else {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+}
+
 bool DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
