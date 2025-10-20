@@ -211,7 +211,6 @@ Message Message::fromSqlQuery(const QSqlQuery& record) {
   message.m_isDeleted = record.value(MSG_DB_DELETED_INDEX).toBool();
   message.m_isPdeleted = record.value(MSG_DB_PDELETED_INDEX).toBool();
   message.m_feedId = record.value(MSG_DB_FEED_ID_INDEX).toInt();
-  message.m_feedTitle = record.value(MSG_DB_FEED_TITLE_INDEX).toString();
   message.m_title = record.value(MSG_DB_TITLE_INDEX).toString();
   message.m_url = record.value(MSG_DB_URL_INDEX).toString();
   message.m_author = record.value(MSG_DB_AUTHOR_INDEX).toString();
@@ -219,7 +218,6 @@ Message Message::fromSqlQuery(const QSqlQuery& record) {
   message.m_contents = record.value(MSG_DB_CONTENTS_INDEX).toString();
   message.m_enclosures = Enclosures::decodeEnclosuresFromString(record.value(MSG_DB_ENCLOSURES_INDEX).toString());
   message.m_score = record.value(MSG_DB_SCORE_INDEX).toDouble();
-  message.m_rtlBehavior = record.value(MSG_DB_FEED_IS_RTL_INDEX).value<RtlBehavior>();
   message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
   message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
   message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();

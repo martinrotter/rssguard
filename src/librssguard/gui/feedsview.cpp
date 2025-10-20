@@ -624,7 +624,7 @@ void FeedsView::selectNextUnreadItem() {
     next_unread_row = nextPreviousUnreadItem(currentIndex());
   }
   else {
-    next_unread_row = nextPreviousUnreadItem(m_proxyModel->index(0, MSG_DB_READ_INDEX));
+    next_unread_row = nextPreviousUnreadItem(m_proxyModel->index(0, MSG_MDL_READ_INDEX));
   }
 
   if (next_unread_row.isValid()) {

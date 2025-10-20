@@ -33,13 +33,6 @@ QMap<int, QString> DatabaseQueries::messageTableAttributes() {
   field_names[MSG_DB_ACCOUNT_ID_INDEX] = QSL("Messages.account_id");
   field_names[MSG_DB_CUSTOM_ID_INDEX] = QSL("Messages.custom_id");
   field_names[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
-  field_names[MSG_DB_FEED_TITLE_INDEX] = QSL("0 AS fd");   // NOTE: Loaded in runtime.
-  field_names[MSG_DB_FEED_IS_RTL_INDEX] = QSL("0 AS rtl"); // NOTE: Loaded in runtime.
-  field_names[MSG_DB_HAS_ENCLOSURES] = QSL("(CASE WHEN LENGTH(Messages.enclosures) > 10 "
-                                           "THEN 'true' "
-                                           "ELSE 'false' "
-                                           "END) AS has_enclosures");
-  field_names[MSG_DB_LABELS] = QSL("0 AS lbls"); // TODO: Loaded in runtime.
   field_names[MSG_DB_LABELS_IDS] = QSL("("
                                        "SELECT GROUP_CONCAT(Labels.custom_id) "
                                        "FROM LabelsInMessages lim "

@@ -2,7 +2,6 @@
 
 #include "core/messagesmodel.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
@@ -12,7 +11,6 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/textfactory.h"
-#include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 
@@ -282,23 +280,23 @@ bool MessagesModel::setData(const QModelIndex& idx, const QVariant& value, int r
   auto& msg = messageForRow(idx.row());
 
   switch (idx.column()) {
-    case MSG_DB_READ_INDEX:
+    case MSG_MDL_READ_INDEX:
       msg.m_isRead = value.toBool();
       break;
 
-    case MSG_DB_IMPORTANT_INDEX:
+    case MSG_MDL_IMPORTANT_INDEX:
       msg.m_isImportant = value.toBool();
       break;
 
-    case MSG_DB_DELETED_INDEX:
+    case MSG_MDL_DELETED_INDEX:
       msg.m_isDeleted = value.toBool();
       break;
 
-    case MSG_DB_PDELETED_INDEX:
+    case MSG_MDL_PDELETED_INDEX:
       msg.m_isPdeleted = value.toBool();
       break;
 
-    case MSG_DB_LABELS_IDS:
+    case MSG_MDL_LABELS_IDS:
       msg.m_assignedLabelCustomIds = value.toStringList();
       break;
 
@@ -365,10 +363,10 @@ void MessagesModel::loadMessages(RootItem* item, bool keep_additional_article_id
 
 bool MessagesModel::setMessageImportantById(int id, RootItem::Importance important) {
   for (int i = 0; i < rowCount(); i++) {
-    int found_id = data(i, MSG_DB_ID_INDEX).toInt();
+    int found_id = data(i, MSG_MDL_ID_INDEX).toInt();
 
     if (found_id == id) {
-      return setData(index(i, MSG_DB_IMPORTANT_INDEX), int(important));
+      return setData(index(i, MSG_MDL_IMPORTANT_INDEX), int(important));
     }
   }
 
@@ -382,11 +380,11 @@ void MessagesModel::highlightMessages(MessagesModel::MessageHighlighter highligh
 }
 
 int MessagesModel::messageId(int row_index) const {
-  return data(row_index, MSG_DB_ID_INDEX).toInt();
+  return data(row_index, MSG_MDL_ID_INDEX).toInt();
 }
 
 RootItem::Importance MessagesModel::messageImportance(int row_index) const {
-  return RootItem::Importance(data(row_index, MSG_DB_IMPORTANT_INDEX).toInt());
+  return RootItem::Importance(data(row_index, MSG_MDL_IMPORTANT_INDEX).toInt());
 }
 
 RootItem* MessagesModel::loadedItem() const {
@@ -481,7 +479,7 @@ QModelIndex MessagesModel::indexForMessage(int message_id) const {
     return QModelIndex();
   }
   else {
-    return index(rw, MSG_DB_TITLE_INDEX);
+    return index(rw, MSG_MDL_TITLE_INDEX);
   }
 }
 
@@ -497,18 +495,18 @@ const Message& MessagesModel::messageForRow(int row) const {
 void MessagesModel::setupHeaderData() {
   m_headerData << tr("Id") << tr("Read") << tr("Important") << tr("Deleted") << tr("Permanently deleted")
                << tr("Feed ID") << tr("Title") << tr("URL") << tr("Author") << tr("Date") << tr("Contents")
-               << tr("Attachments") << tr("Score") << tr("Account ID") << tr("Custom ID") << tr("Custom hash")
-               << tr("Feed") << tr("RTL") << tr("Has enclosures") << tr("Assigned labels") << tr("Assigned label IDs");
+               << tr("Score") << tr("Account ID") << tr("Custom ID") << tr("Custom hash") << tr("Feed") << tr("RTL")
+               << tr("Has attachments") << tr("Assigned labels") << tr("Assigned label IDs");
 
   m_tooltipData << tr("ID of the article.") << tr("Is article read?") << tr("Is article important?")
                 << tr("Is article deleted?") << tr("Is article permanently deleted from recycle bin?")
                 << tr("ID of feed which this article belongs to.") << tr("Title of the article.")
                 << tr("Url of the article.") << tr("Author of the article.") << tr("Creation date of the article.")
-                << tr("Contents of the article.") << tr("List of attachments.") << tr("Score of the article.")
-                << tr("Account ID of the article.") << tr("Custom ID of the article.")
-                << tr("Custom hash of the article.") << tr("Name of feed of the article.")
-                << tr("Layout direction of the article") << tr("Indication of enclosures presence within the article.")
-                << tr("Labels assigned to the article.") << tr("Label IDs assigned to the article.");
+                << tr("Contents of the article.") << tr("Score of the article.") << tr("Account ID of the article.")
+                << tr("Custom ID of the article.") << tr("Custom hash of the article.")
+                << tr("Name of feed of the article.") << tr("Layout direction of the article")
+                << tr("Indication of attachments presence within the article.") << tr("Labels assigned to the article.")
+                << tr("Label IDs assigned to the article.");
 }
 
 bool MessagesModel::lazyLoading() const {
@@ -544,75 +542,70 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     return QVariant();
   }
 
-  // This message is not in cache, return real data from live query.
   switch (role) {
-    // Human readable data for viewing.
     case Qt::ItemDataRole::EditRole: {
       const Message& msg = messageForRow(idx.row());
 
       switch (idx.column()) {
-        case MSG_DB_ID_INDEX:
+        case MSG_MDL_ID_INDEX:
           return msg.m_id;
 
-        case MSG_DB_READ_INDEX:
+        case MSG_MDL_READ_INDEX:
           return msg.m_isRead;
 
-        case MSG_DB_IMPORTANT_INDEX:
+        case MSG_MDL_IMPORTANT_INDEX:
           return msg.m_isImportant;
 
-        case MSG_DB_DELETED_INDEX:
+        case MSG_MDL_DELETED_INDEX:
           return msg.m_isDeleted;
 
-        case MSG_DB_PDELETED_INDEX:
+        case MSG_MDL_PDELETED_INDEX:
           return msg.m_isPdeleted;
 
-        case MSG_DB_FEED_ID_INDEX:
+        case MSG_MDL_FEED_ID_INDEX:
           return msg.m_feedId;
 
-        case MSG_DB_TITLE_INDEX:
+        case MSG_MDL_TITLE_INDEX:
           return msg.m_title;
 
-        case MSG_DB_URL_INDEX:
+        case MSG_MDL_URL_INDEX:
           return msg.m_url;
 
-        case MSG_DB_AUTHOR_INDEX:
+        case MSG_MDL_AUTHOR_INDEX:
           return msg.m_author;
 
-        case MSG_DB_DCREATED_INDEX:
+        case MSG_MDL_DCREATED_INDEX:
           return msg.m_created;
 
-        case MSG_DB_CONTENTS_INDEX:
+        case MSG_MDL_CONTENTS_INDEX:
           return msg.m_contents;
 
-        case MSG_DB_ENCLOSURES_INDEX:
-          // TODO: odstranit sloupec
-          return false;
-
-        case MSG_DB_SCORE_INDEX:
+        case MSG_MDL_SCORE_INDEX:
           return msg.m_score;
 
-        case MSG_DB_ACCOUNT_ID_INDEX:
+        case MSG_MDL_ACCOUNT_ID_INDEX:
           return msg.m_accountId;
 
-        case MSG_DB_CUSTOM_ID_INDEX:
+        case MSG_MDL_CUSTOM_ID_INDEX:
           return msg.m_customId;
 
-        case MSG_DB_CUSTOM_HASH_INDEX:
+        case MSG_MDL_CUSTOM_HASH_INDEX:
           return msg.m_customHash;
 
-        case MSG_DB_FEED_TITLE_INDEX:
+        case MSG_MDL_FEED_TITLE_INDEX:
           return msg.m_feedTitle;
 
-        case MSG_DB_FEED_IS_RTL_INDEX:
+        case MSG_MDL_FEED_IS_RTL_INDEX:
           return QVariant::fromValue(msg.m_rtlBehavior);
 
-        case MSG_DB_HAS_ENCLOSURES:
+        case MSG_MDL_HAS_ENCLOSURES:
           return !msg.m_enclosures.isEmpty();
 
-        case MSG_DB_LABELS:
+        case MSG_MDL_LABELS:
+          // TODO: TODO
           return QVariant();
 
-        case MSG_DB_LABELS_IDS:
+        case MSG_MDL_LABELS_IDS:
           return msg.m_assignedLabelCustomIds.join(QL1C(','));
 
         default:
@@ -623,7 +616,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     case Qt::ItemDataRole::DisplayRole: {
       int index_column = idx.column();
 
-      if (index_column == MSG_DB_DCREATED_INDEX) {
+      if (index_column == MSG_MDL_DCREATED_INDEX) {
         QDateTime utc_dt = data(idx, Qt::ItemDataRole::EditRole).toDateTime();
         QDateTime dt = utc_dt.toLocalTime();
 
@@ -673,17 +666,20 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           return dt.toString(m_customDateFormat);
         }
       }
-      else if (index_column == MSG_DB_CONTENTS_INDEX) {
+      else if (index_column == MSG_MDL_CONTENTS_INDEX) {
         // Do not display full contents here.
         QString contents = data(idx, Qt::ItemDataRole::EditRole).toString().mid(0, 64).simplified() + QL1S("...");
         return contents;
       }
-      else if (index_column == MSG_DB_AUTHOR_INDEX) {
+      else if (index_column == MSG_MDL_FEED_IS_RTL_INDEX) {
+        return int(data(idx, Qt::ItemDataRole::EditRole).value<RtlBehavior>());
+      }
+      else if (index_column == MSG_MDL_AUTHOR_INDEX) {
         const QString author_name = data(idx, Qt::ItemDataRole::EditRole).toString();
         return author_name.isEmpty() ? QSL("-") : author_name;
       }
-      else if (index_column != MSG_DB_IMPORTANT_INDEX && index_column != MSG_DB_READ_INDEX &&
-               index_column != MSG_DB_HAS_ENCLOSURES && index_column != MSG_DB_SCORE_INDEX) {
+      else if (index_column != MSG_MDL_IMPORTANT_INDEX && index_column != MSG_MDL_READ_INDEX &&
+               index_column != MSG_MDL_HAS_ENCLOSURES && index_column != MSG_MDL_SCORE_INDEX) {
         return data(idx, Qt::ItemDataRole::EditRole);
       }
       else {
@@ -694,13 +690,13 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     case TEXT_DIRECTION_ROLE: {
       int index_column = idx.column();
 
-      if (index_column != MSG_DB_TITLE_INDEX && index_column != MSG_DB_FEED_TITLE_INDEX &&
-          index_column != MSG_DB_AUTHOR_INDEX) {
+      if (index_column != MSG_MDL_TITLE_INDEX && index_column != MSG_MDL_FEED_TITLE_INDEX &&
+          index_column != MSG_MDL_AUTHOR_INDEX) {
         return Qt::LayoutDirection::LayoutDirectionAuto;
       }
       else {
         RtlBehavior rtl_mode =
-          data(index(idx.row(), MSG_DB_FEED_IS_RTL_INDEX), Qt::ItemDataRole::EditRole).value<RtlBehavior>();
+          data(index(idx.row(), MSG_MDL_FEED_IS_RTL_INDEX), Qt::ItemDataRole::EditRole).value<RtlBehavior>();
 
         return (rtl_mode == RtlBehavior::Everywhere || rtl_mode == RtlBehavior::EverywhereExceptFeedList)
                  ? Qt::LayoutDirection::RightToLeft
@@ -713,20 +709,20 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         return QVariant();
       }
       else {
-        if (idx.column() == MSG_DB_SCORE_INDEX) {
+        if (idx.column() == MSG_MDL_SCORE_INDEX) {
           return data(idx, Qt::ItemDataRole::EditRole);
         }
-        else if (idx.column() == MSG_DB_URL_INDEX) {
+        else if (idx.column() == MSG_MDL_URL_INDEX) {
           return TextFactory::shorten(data(idx, Qt::ItemDataRole::EditRole).toString(), TEXT_TOOLTIP_LIMIT);
         }
-        else if (idx.column() == MSG_DB_DCREATED_INDEX) {
+        else if (idx.column() == MSG_MDL_DCREATED_INDEX) {
           return qApp->localization()
             ->loadedLocale()
             .toString(data(idx, Qt::ItemDataRole::EditRole).toDateTime().toLocalTime(),
                       QLocale::FormatType::LongFormat);
         }
-        else if (idx.column() == MSG_DB_READ_INDEX && m_unreadIconType == MessageUnreadIcon::FeedIcon) {
-          return data(idx.row(), MSG_DB_FEED_TITLE_INDEX, Qt::ItemDataRole::EditRole);
+        else if (idx.column() == MSG_MDL_READ_INDEX && m_unreadIconType == MessageUnreadIcon::FeedIcon) {
+          return data(idx.row(), MSG_MDL_FEED_TITLE_INDEX, Qt::ItemDataRole::EditRole);
         }
         else {
           return data(idx, Qt::ItemDataRole::DisplayRole);
@@ -735,14 +731,14 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     }
 
     case Qt::ItemDataRole::FontRole: {
-      QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
+      QModelIndex idx_read = index(idx.row(), MSG_MDL_READ_INDEX);
       QVariant data_read = data(idx_read, Qt::ItemDataRole::EditRole);
       const bool is_bin = qobject_cast<RecycleBin*>(loadedItem()) != nullptr;
       bool striked;
 
       if (is_bin) {
-        QModelIndex idx_del = index(idx.row(), MSG_DB_DELETED_INDEX);
-        QModelIndex idx_pdel = index(idx.row(), MSG_DB_PDELETED_INDEX);
+        QModelIndex idx_del = index(idx.row(), MSG_MDL_DELETED_INDEX);
+        QModelIndex idx_pdel = index(idx.row(), MSG_MDL_PDELETED_INDEX);
 
         // NOTE: If we are in the bin and the article is permanently deleted (deleted from recycle bin)
         // or it is NOT deleted (it was restored from bin), then draw as striked.
@@ -750,7 +746,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           data(idx_pdel, Qt::ItemDataRole::EditRole).toBool() || !data(idx_del, Qt::ItemDataRole::EditRole).toBool();
       }
       else {
-        QModelIndex idx_del = index(idx.row(), MSG_DB_DELETED_INDEX);
+        QModelIndex idx_del = index(idx.row(), MSG_MDL_DELETED_INDEX);
 
         striked = data(idx_del, Qt::ItemDataRole::EditRole).toBool();
       }
@@ -766,7 +762,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     case Qt::ItemDataRole::ForegroundRole:
     case HIGHLIGHTED_FOREGROUND_TITLE_ROLE: {
       if (Globals::hasFlag(m_messageHighlighter, MessageHighlighter::HighlightImportant)) {
-        QModelIndex idx_important = index(idx.row(), MSG_DB_IMPORTANT_INDEX);
+        QModelIndex idx_important = index(idx.row(), MSG_MDL_IMPORTANT_INDEX);
         QVariant dta = data(idx_important, Qt::ItemDataRole::EditRole);
 
         if (dta.toBool()) {
@@ -777,7 +773,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       }
 
       if (Globals::hasFlag(m_messageHighlighter, MessageHighlighter::HighlightUnread)) {
-        QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
+        QModelIndex idx_read = index(idx.row(), MSG_MDL_READ_INDEX);
         QVariant dta = data(idx_read, Qt::ItemDataRole::EditRole);
 
         if (dta.toBool()) {
@@ -792,7 +788,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 
     case Qt::ItemDataRole::SizeHintRole: {
       if (!m_multilineListItems || m_view == nullptr || m_view->isColumnHidden(idx.column()) ||
-          idx.column() != MSG_DB_TITLE_INDEX) {
+          idx.column() != MSG_MDL_TITLE_INDEX) {
         return {};
       }
       else {
@@ -817,9 +813,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     case Qt::ItemDataRole::DecorationRole: {
       const int index_column = idx.column();
 
-      if (index_column == MSG_DB_READ_INDEX) {
+      if (index_column == MSG_MDL_READ_INDEX) {
         if (m_unreadIconType == MessageUnreadIcon::FeedIcon && m_selectedItem != nullptr) {
-          QModelIndex idx_feedid = index(idx.row(), MSG_DB_FEED_ID_INDEX);
+          QModelIndex idx_feedid = index(idx.row(), MSG_MDL_FEED_ID_INDEX);
           QVariant dta = data(idx_feedid, Qt::ItemDataRole::EditRole);
           int feed_id = dta.toInt();
 
@@ -833,7 +829,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           }
         }
         else {
-          QModelIndex idx_read = index(idx.row(), MSG_DB_READ_INDEX);
+          QModelIndex idx_read = index(idx.row(), MSG_MDL_READ_INDEX);
           QVariant dta = data(idx_read, Qt::ItemDataRole::EditRole);
 
           if (m_unreadIconType == MessageUnreadIcon::Dot) {
@@ -844,19 +840,19 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           }
         }
       }
-      else if (index_column == MSG_DB_IMPORTANT_INDEX) {
-        QModelIndex idx_important = index(idx.row(), MSG_DB_IMPORTANT_INDEX);
+      else if (index_column == MSG_MDL_IMPORTANT_INDEX) {
+        QModelIndex idx_important = index(idx.row(), MSG_MDL_IMPORTANT_INDEX);
         QVariant dta = data(idx_important, Qt::ItemDataRole::EditRole);
 
         return dta.toBool() ? m_favoriteIcon : QVariant();
       }
-      else if (index_column == MSG_DB_HAS_ENCLOSURES) {
-        QModelIndex idx_enc = index(idx.row(), MSG_DB_HAS_ENCLOSURES);
+      else if (index_column == MSG_MDL_HAS_ENCLOSURES) {
+        QModelIndex idx_enc = index(idx.row(), MSG_MDL_HAS_ENCLOSURES);
         QVariant dta = data(idx_enc, Qt::ItemDataRole::EditRole);
 
         return dta.toBool() ? m_enclosuresIcon : QVariant();
       }
-      else if (index_column == MSG_DB_SCORE_INDEX) {
+      else if (index_column == MSG_MDL_SCORE_INDEX) {
         QVariant dta = data(idx, Qt::ItemDataRole::EditRole);
         int level = std::min(MSG_SCORE_MAX, std::max(MSG_SCORE_MIN, std::floor(dta.toDouble() / 10.0)));
 
@@ -873,7 +869,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 }
 
 bool MessagesModel::switchMessageReadUnread(int row_index) {
-  RootItem::ReadStatus current_read = RootItem::ReadStatus(data(row_index, MSG_DB_READ_INDEX).toInt());
+  RootItem::ReadStatus current_read = RootItem::ReadStatus(data(row_index, MSG_MDL_READ_INDEX).toInt());
 
   return setMessageRead(row_index,
                         current_read == RootItem::ReadStatus::Read ? RootItem::ReadStatus::Unread
@@ -881,7 +877,7 @@ bool MessagesModel::switchMessageReadUnread(int row_index) {
 }
 
 bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
-  if (data(row_index, MSG_DB_READ_INDEX).toInt() == int(read)) {
+  if (data(row_index, MSG_MDL_READ_INDEX).toInt() == int(read)) {
     // Read status is the same is the one currently set.
     // In that case, no extra work is needed.
     return true;
@@ -895,7 +891,7 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
   }
 
   // Rewrite "visible" data in the model.
-  bool working_change = setData(index(row_index, MSG_DB_READ_INDEX), int(read));
+  bool working_change = setData(index(row_index, MSG_MDL_READ_INDEX), int(read));
 
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
@@ -913,10 +909,10 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
 
 bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
   for (int i = 0; i < rowCount(); i++) {
-    int found_id = data(i, MSG_DB_ID_INDEX).toInt();
+    int found_id = data(i, MSG_MDL_ID_INDEX).toInt();
 
     if (found_id == id) {
-      bool set = setData(index(i, MSG_DB_READ_INDEX), int(read));
+      bool set = setData(index(i, MSG_MDL_READ_INDEX), int(read));
       return set;
     }
   }
@@ -926,10 +922,10 @@ bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
 
 bool MessagesModel::setMessageLabelsById(int id, const QStringList& label_ids) {
   for (int i = 0; i < rowCount(); i++) {
-    int found_id = data(i, MSG_DB_ID_INDEX).toInt();
+    int found_id = data(i, MSG_MDL_ID_INDEX).toInt();
 
     if (found_id == id) {
-      bool set = setData(index(i, MSG_DB_LABELS_IDS), label_ids);
+      bool set = setData(index(i, MSG_MDL_LABELS_IDS), label_ids);
       return set;
     }
   }
@@ -946,7 +942,7 @@ void MessagesModel::fillComputedMessageData(Message* msg) {
 }
 
 bool MessagesModel::switchMessageImportance(int row_index) {
-  const QModelIndex target_index = index(row_index, MSG_DB_IMPORTANT_INDEX);
+  const QModelIndex target_index = index(row_index, MSG_MDL_IMPORTANT_INDEX);
   const RootItem::Importance current_importance = (RootItem::Importance)data(target_index).toInt();
   const RootItem::Importance next_importance = current_importance == RootItem::Importance::Important
                                                  ? RootItem::Importance::NotImportant
@@ -1000,7 +996,7 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
                                                                  ? RootItem::Importance::NotImportant
                                                                  : RootItem::Importance::Important));
     message_ids.append(QString::number(msg.m_id));
-    QModelIndex idx_msg_imp = index(message.row(), MSG_DB_IMPORTANT_INDEX);
+    QModelIndex idx_msg_imp = index(message.row(), MSG_MDL_IMPORTANT_INDEX);
 
     setData(idx_msg_imp,
             message_importance == RootItem::Importance::Important ? int(RootItem::Importance::NotImportant)
@@ -1046,10 +1042,10 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
     QModelIndex idx_del;
 
     if (m_selectedItem->kind() == RootItem::Kind::Bin) {
-      idx_del = index(message.row(), MSG_DB_PDELETED_INDEX);
+      idx_del = index(message.row(), MSG_MDL_PDELETED_INDEX);
     }
     else {
-      idx_del = index(message.row(), MSG_DB_DELETED_INDEX);
+      idx_del = index(message.row(), MSG_MDL_DELETED_INDEX);
     }
 
     setData(idx_del, 1);
@@ -1099,7 +1095,7 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
     msgs.append(msg);
     message_ids.append(QString::number(msg.m_id));
 
-    QModelIndex idx = index(message.row(), MSG_DB_READ_INDEX);
+    QModelIndex idx = index(message.row(), MSG_MDL_READ_INDEX);
     setData(idx, int(read));
 
     changed_indices.append(idx);
@@ -1139,11 +1135,11 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
     msgs.append(msg);
     message_ids.append(QString::number(msg.m_id));
 
-    QModelIndex idx = index(message.row(), MSG_DB_DELETED_INDEX);
+    QModelIndex idx = index(message.row(), MSG_MDL_DELETED_INDEX);
     setData(idx, 0);
     changed_indices.append(idx);
 
-    idx = index(message.row(), MSG_DB_PDELETED_INDEX);
+    idx = index(message.row(), MSG_MDL_PDELETED_INDEX);
     setData(idx, 0);
     changed_indices.append(idx);
   }
@@ -1178,8 +1174,8 @@ QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int
     case Qt::ItemDataRole::DisplayRole:
       // Display textual headers for all columns except "read" and
       // "important" and "has enclosures" columns.
-      if (section != MSG_DB_READ_INDEX && section != MSG_DB_IMPORTANT_INDEX && section != MSG_DB_SCORE_INDEX &&
-          section != MSG_DB_HAS_ENCLOSURES) {
+      if (section != MSG_MDL_READ_INDEX && section != MSG_MDL_IMPORTANT_INDEX && section != MSG_MDL_SCORE_INDEX &&
+          section != MSG_MDL_HAS_ENCLOSURES) {
         return m_headerData.at(section);
       }
       else {
@@ -1195,16 +1191,16 @@ QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int
     // Display icons for "read" and "important" columns.
     case Qt::ItemDataRole::DecorationRole: {
       switch (section) {
-        case MSG_DB_HAS_ENCLOSURES:
+        case MSG_MDL_HAS_ENCLOSURES:
           return m_enclosuresIcon;
 
-        case MSG_DB_READ_INDEX:
+        case MSG_MDL_READ_INDEX:
           return m_readIcon;
 
-        case MSG_DB_IMPORTANT_INDEX:
+        case MSG_MDL_IMPORTANT_INDEX:
           return m_favoriteIcon;
 
-        case MSG_DB_SCORE_INDEX:
+        case MSG_MDL_SCORE_INDEX:
           return m_scoreIcons.at(5);
 
         default:

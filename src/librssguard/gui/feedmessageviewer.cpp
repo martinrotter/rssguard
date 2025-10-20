@@ -99,7 +99,7 @@ void FeedMessageViewer::loadSize() {
   }
   else {
     // Set default sort column.
-    m_messagesView->header()->setSortIndicator(MSG_DB_DCREATED_INDEX, Qt::SortOrder::DescendingOrder);
+    m_messagesView->header()->setSortIndicator(MSG_MDL_DCREATED_INDEX, Qt::SortOrder::DescendingOrder);
   }
 }
 

@@ -162,7 +162,7 @@ void MessagesView::copyUrlOfSelectedArticles() const {
   QStringList urls;
 
   for (const auto article_idx : mapped_indexes) {
-    urls << m_sourceModel->data(m_sourceModel->index(article_idx.row(), MSG_DB_URL_INDEX), Qt::ItemDataRole::EditRole)
+    urls << m_sourceModel->data(m_sourceModel->index(article_idx.row(), MSG_MDL_URL_INDEX), Qt::ItemDataRole::EditRole)
               .toString();
   }
 
@@ -474,12 +474,12 @@ void MessagesView::mousePressEvent(QMouseEvent* event) {
       if (clicked_index.isValid()) {
         const QModelIndex mapped_index = m_proxyModel->mapToSource(clicked_index);
 
-        if (mapped_index.column() == MSG_DB_IMPORTANT_INDEX) {
+        if (mapped_index.column() == MSG_MDL_IMPORTANT_INDEX) {
           if (m_sourceModel->switchMessageImportance(mapped_index.row())) {
             requestArticleDisplay(m_sourceModel->messageForRow(mapped_index.row()));
           }
         }
-        else if (mapped_index.column() == MSG_DB_READ_INDEX) {
+        else if (mapped_index.column() == MSG_MDL_READ_INDEX) {
           if (m_sourceModel->switchMessageReadUnread(mapped_index.row())) {
             requestArticleDisplay(m_sourceModel->messageForRow(mapped_index.row()));
           }
@@ -867,7 +867,7 @@ void MessagesView::searchMessages(SearchLineEdit::SearchMode mode,
 
   BaseToolBar::SearchFields where_search = BaseToolBar::SearchFields(custom_criteria);
 
-  m_proxyModel->setFilterKeyColumn(where_search == BaseToolBar::SearchFields::SearchTitleOnly ? MSG_DB_TITLE_INDEX
+  m_proxyModel->setFilterKeyColumn(where_search == BaseToolBar::SearchFields::SearchTitleOnly ? MSG_MDL_TITLE_INDEX
                                                                                               : -1);
 
   if (selectionModel()->selectedRows().isEmpty()) {
@@ -896,7 +896,7 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
 
     for (const QModelIndex& index : std::as_const(rws)) {
       const QString link =
-        m_sourceModel->data(m_proxyModel->mapToSource(index).row(), MSG_DB_URL_INDEX, Qt::ItemDataRole::EditRole)
+        m_sourceModel->data(m_proxyModel->mapToSource(index).row(), MSG_MDL_URL_INDEX, Qt::ItemDataRole::EditRole)
           .toString()
           .replace(QRegularExpression(QSL("[\\t\\n]")), QString());
 
@@ -924,22 +924,21 @@ void MessagesView::adjustColumns() {
     }
 
     // Hide columns.
-    hideColumn(MSG_DB_ID_INDEX);
-    hideColumn(MSG_DB_DELETED_INDEX);
-    hideColumn(MSG_DB_URL_INDEX);
-    hideColumn(MSG_DB_CONTENTS_INDEX);
-    hideColumn(MSG_DB_PDELETED_INDEX);
-    hideColumn(MSG_DB_ENCLOSURES_INDEX);
-    hideColumn(MSG_DB_SCORE_INDEX);
-    hideColumn(MSG_DB_ACCOUNT_ID_INDEX);
-    hideColumn(MSG_DB_CUSTOM_ID_INDEX);
-    hideColumn(MSG_DB_CUSTOM_HASH_INDEX);
-    hideColumn(MSG_DB_FEED_ID_INDEX);
-    hideColumn(MSG_DB_FEED_TITLE_INDEX);
-    hideColumn(MSG_DB_FEED_IS_RTL_INDEX);
-    hideColumn(MSG_DB_HAS_ENCLOSURES);
-    hideColumn(MSG_DB_LABELS);
-    hideColumn(MSG_DB_LABELS_IDS);
+    hideColumn(MSG_MDL_ID_INDEX);
+    hideColumn(MSG_MDL_DELETED_INDEX);
+    hideColumn(MSG_MDL_URL_INDEX);
+    hideColumn(MSG_MDL_CONTENTS_INDEX);
+    hideColumn(MSG_MDL_PDELETED_INDEX);
+    hideColumn(MSG_MDL_SCORE_INDEX);
+    hideColumn(MSG_MDL_ACCOUNT_ID_INDEX);
+    hideColumn(MSG_MDL_CUSTOM_ID_INDEX);
+    hideColumn(MSG_MDL_CUSTOM_HASH_INDEX);
+    hideColumn(MSG_MDL_FEED_ID_INDEX);
+    hideColumn(MSG_MDL_FEED_TITLE_INDEX);
+    hideColumn(MSG_MDL_FEED_IS_RTL_INDEX);
+    hideColumn(MSG_MDL_HAS_ENCLOSURES);
+    hideColumn(MSG_MDL_LABELS);
+    hideColumn(MSG_MDL_LABELS_IDS);
   }
 }
 

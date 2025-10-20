@@ -246,6 +246,28 @@
 #define APP_LOCAL_ICON_THEME_FOLDER "icons"
 #define APP_NO_THEME                ""
 
+// Column indexes for the model.
+#define MSG_MDL_ID_INDEX          0
+#define MSG_MDL_READ_INDEX        1
+#define MSG_MDL_IMPORTANT_INDEX   2
+#define MSG_MDL_DELETED_INDEX     3
+#define MSG_MDL_PDELETED_INDEX    4
+#define MSG_MDL_FEED_ID_INDEX     5
+#define MSG_MDL_TITLE_INDEX       6
+#define MSG_MDL_URL_INDEX         7
+#define MSG_MDL_AUTHOR_INDEX      8
+#define MSG_MDL_DCREATED_INDEX    9
+#define MSG_MDL_CONTENTS_INDEX    10
+#define MSG_MDL_SCORE_INDEX       11
+#define MSG_MDL_ACCOUNT_ID_INDEX  12
+#define MSG_MDL_CUSTOM_ID_INDEX   13
+#define MSG_MDL_CUSTOM_HASH_INDEX 14
+#define MSG_MDL_FEED_TITLE_INDEX  15
+#define MSG_MDL_FEED_IS_RTL_INDEX 16
+#define MSG_MDL_HAS_ENCLOSURES    17
+#define MSG_MDL_LABELS            18
+#define MSG_MDL_LABELS_IDS        19
+
 // Indexes of columns as they are DEFINED IN THE TABLE for MESSAGES.
 #define MSG_DB_ID_INDEX          0
 #define MSG_DB_READ_INDEX        1
@@ -263,11 +285,7 @@
 #define MSG_DB_ACCOUNT_ID_INDEX  13
 #define MSG_DB_CUSTOM_ID_INDEX   14
 #define MSG_DB_CUSTOM_HASH_INDEX 15
-#define MSG_DB_FEED_TITLE_INDEX  16
-#define MSG_DB_FEED_IS_RTL_INDEX 17
-#define MSG_DB_HAS_ENCLOSURES    18
-#define MSG_DB_LABELS            19
-#define MSG_DB_LABELS_IDS        20
+#define MSG_DB_LABELS_IDS        16
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
 #define CAT_DB_ID_INDEX          0
