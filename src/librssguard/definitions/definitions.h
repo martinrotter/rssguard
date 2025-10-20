@@ -263,10 +263,9 @@
 #define MSG_MDL_CUSTOM_ID_INDEX   13
 #define MSG_MDL_CUSTOM_HASH_INDEX 14
 #define MSG_MDL_FEED_TITLE_INDEX  15
-#define MSG_MDL_FEED_IS_RTL_INDEX 16
-#define MSG_MDL_HAS_ENCLOSURES    17
-#define MSG_MDL_LABELS            18
-#define MSG_MDL_LABELS_IDS        19
+#define MSG_MDL_HAS_ENCLOSURES    16
+#define MSG_MDL_LABELS            17
+#define MSG_MDL_LABELS_IDS        18
 
 // Indexes of columns as they are DEFINED IN THE TABLE for MESSAGES.
 #define MSG_DB_ID_INDEX          0

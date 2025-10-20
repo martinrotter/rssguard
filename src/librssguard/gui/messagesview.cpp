@@ -591,12 +591,12 @@ void MessagesView::markSelectedMessagesReadDelayed() {
 void MessagesView::loadItem(RootItem* item) {
   m_delayedArticleMarker.stop();
 
-  const int col = header()->sortIndicatorSection();
-  const Qt::SortOrder ord = header()->sortIndicatorOrder();
+  const int column = header()->sortIndicatorSection();
+  const Qt::SortOrder order = header()->sortIndicatorOrder();
 
   scrollToTop();
   clearSelection();
-  adjustSort(col, ord, false, true);
+  adjustSort(column, order, false, true);
 
   m_sourceModel->loadMessages(item);
 
@@ -935,7 +935,6 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_MDL_CUSTOM_HASH_INDEX);
     hideColumn(MSG_MDL_FEED_ID_INDEX);
     hideColumn(MSG_MDL_FEED_TITLE_INDEX);
-    hideColumn(MSG_MDL_FEED_IS_RTL_INDEX);
     hideColumn(MSG_MDL_HAS_ENCLOSURES);
     hideColumn(MSG_MDL_LABELS);
     hideColumn(MSG_MDL_LABELS_IDS);

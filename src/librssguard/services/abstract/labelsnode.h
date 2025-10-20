@@ -21,6 +21,7 @@ class RSSGUARD_DLLSPEC LabelsNode : public RootItem {
     virtual void updateCounts(bool including_total_count);
 
     Label* labelByCustomId(const QString& custom_id);
+    QHash<QString, Label*> getHashedLabels() const;
 
   public slots:
     void createLabel();

@@ -14,31 +14,31 @@
 #include <QUrl>
 #include <QVariant>
 
-QMap<int, QString> DatabaseQueries::messageTableAttributes() {
-  QMap<int, QString> field_names;
+QStringList DatabaseQueries::messageTableAttributes() {
+  QStringList field_names;
 
-  field_names[MSG_DB_ID_INDEX] = QSL("Messages.id");
-  field_names[MSG_DB_READ_INDEX] = QSL("Messages.is_read");
-  field_names[MSG_DB_IMPORTANT_INDEX] = QSL("Messages.is_important");
-  field_names[MSG_DB_DELETED_INDEX] = QSL("Messages.is_deleted");
-  field_names[MSG_DB_PDELETED_INDEX] = QSL("Messages.is_pdeleted");
-  field_names[MSG_DB_FEED_ID_INDEX] = QSL("Messages.feed");
-  field_names[MSG_DB_TITLE_INDEX] = QSL("Messages.title");
-  field_names[MSG_DB_URL_INDEX] = QSL("Messages.url");
-  field_names[MSG_DB_AUTHOR_INDEX] = QSL("Messages.author");
-  field_names[MSG_DB_DCREATED_INDEX] = QSL("Messages.date_created");
-  field_names[MSG_DB_CONTENTS_INDEX] = QSL("Messages.contents");
-  field_names[MSG_DB_ENCLOSURES_INDEX] = QSL("Messages.enclosures");
-  field_names[MSG_DB_SCORE_INDEX] = QSL("Messages.score");
-  field_names[MSG_DB_ACCOUNT_ID_INDEX] = QSL("Messages.account_id");
-  field_names[MSG_DB_CUSTOM_ID_INDEX] = QSL("Messages.custom_id");
-  field_names[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
-  field_names[MSG_DB_LABELS_IDS] = QSL("("
-                                       "SELECT GROUP_CONCAT(Labels.custom_id) "
-                                       "FROM LabelsInMessages lim "
-                                       "JOIN Labels ON lim.label = Labels.id "
-                                       "WHERE lim.message = Messages.id AND lim.account_id = Messages.account_id "
-                                       ") AS msg_labels");
+  field_names.append(QSL("Messages.id"));
+  field_names.append(QSL("Messages.is_read"));
+  field_names.append(QSL("Messages.is_important"));
+  field_names.append(QSL("Messages.is_deleted"));
+  field_names.append(QSL("Messages.is_pdeleted"));
+  field_names.append(QSL("Messages.feed"));
+  field_names.append(QSL("Messages.title"));
+  field_names.append(QSL("Messages.url"));
+  field_names.append(QSL("Messages.author"));
+  field_names.append(QSL("Messages.date_created"));
+  field_names.append(QSL("Messages.contents"));
+  field_names.append(QSL("Messages.enclosures"));
+  field_names.append(QSL("Messages.score"));
+  field_names.append(QSL("Messages.account_id"));
+  field_names.append(QSL("Messages.custom_id"));
+  field_names.append(QSL("Messages.custom_hash"));
+  field_names.append(QSL("("
+                         "SELECT GROUP_CONCAT(Labels.custom_id) "
+                         "FROM LabelsInMessages lim "
+                         "JOIN Labels ON lim.label = Labels.id "
+                         "WHERE lim.message = Messages.id AND lim.account_id = Messages.account_id "
+                         ") AS msg_labels"));
 
   return field_names;
 }
@@ -1093,7 +1093,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& 
                 "FROM Messages "
                 "WHERE is_deleted = 0 AND is_pdeleted = 0 AND "
                 "      feed = :feed AND account_id = :account_id;")
-              .arg(messageTableAttributes().values().join(QSL(", "))));
+              .arg(messageTableAttributes().join(QSL(", "))));
   q.bindValue(QSL(":feed"), feed_id);
   q.bindValue(QSL(":account_id"), account_id);
 
@@ -1121,7 +1121,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
   q.prepare(QSL("SELECT %1 "
                 "FROM Messages "
                 "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;")
-              .arg(messageTableAttributes().values().join(QSL(", "))));
+              .arg(messageTableAttributes().join(QSL(", "))));
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {

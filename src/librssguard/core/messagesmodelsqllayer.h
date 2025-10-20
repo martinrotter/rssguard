@@ -34,18 +34,14 @@ class MessagesModelSqlLayer {
 
   private:
     QString selectStatement(int limit, int offset, int additional_article_id = -1) const;
-
     QString orderByClause() const;
     QString limitOffset(int limit, int offset) const;
     QString formatFields() const;
+    int mapColumnToDatabase(int column) const;
 
     QString m_filter;
-
-    // NOTE: These two lists contain data for multicolumn sorting.
-    // They are always same length. Most important sort column/order
-    // are located at the start of lists;
-    QMap<int, QString> m_fieldNames;
-    QMap<int, QString> m_orderByNames;
+    QStringList m_fieldNames;
+    QStringList m_orderByNames;
     QList<int> m_sortColumns;
     QList<Qt::SortOrder> m_sortOrders;
 };

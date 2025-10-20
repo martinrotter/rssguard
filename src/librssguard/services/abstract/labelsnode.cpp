@@ -84,6 +84,16 @@ Label* LabelsNode::labelByCustomId(const QString& custom_id) {
   }));
 }
 
+QHash<QString, Label*> LabelsNode::getHashedLabels() const {
+  QHash<QString, Label*> res;
+
+  for (Label* lbl : labels()) {
+    res.insert(lbl->customId(), lbl);
+  }
+
+  return res;
+}
+
 QList<Label*> LabelsNode::labels() const {
   auto list = boolinq::from(childItems())
                 .select([](RootItem* it) {

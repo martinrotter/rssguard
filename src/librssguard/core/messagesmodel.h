@@ -118,6 +118,8 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     bool setMessageLabelsById(int id, const QStringList& label_ids);
 
   private:
+    QString formatLabels(const QStringList& label_custom_ids) const;
+
     void fillComputedMessageData(Message* msg);
     void setupHeaderData();
 
@@ -132,6 +134,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     int m_newerArticlesRelativeTime;
     RootItem* m_selectedItem;
     QHash<int, Feed*> m_hashedFeeds;
+    QHash<QString, Label*> m_hashedLabels;
     QList<QString> m_headerData;
     QList<QString> m_tooltipData;
     QFont m_normalFont;

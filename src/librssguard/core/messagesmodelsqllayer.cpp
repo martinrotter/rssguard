@@ -7,35 +7,41 @@
 #include "definitions/globals.h"
 #include "miscellaneous/application.h"
 
-MessagesModelSqlLayer::MessagesModelSqlLayer()
-  : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)), m_fieldNames({}), m_orderByNames({}), m_sortColumns({}),
-    m_sortOrders({}) {
+MessagesModelSqlLayer::MessagesModelSqlLayer() : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)) {
   m_db = qApp->database()->driver()->connection(QSL("MessagesModel"));
 
   // Used in <x>: SELECT <x1>, <x2> FROM ....;
   m_fieldNames = DatabaseQueries::messageTableAttributes();
 
   // Used in <x>: SELECT ... FROM ... ORDER BY <x1> DESC, <x2> ASC;
-  m_orderByNames[MSG_DB_ID_INDEX] = QSL("Messages.id");
-  m_orderByNames[MSG_DB_READ_INDEX] = QSL("Messages.is_read");
-  m_orderByNames[MSG_DB_IMPORTANT_INDEX] = QSL("Messages.is_important");
-  m_orderByNames[MSG_DB_DELETED_INDEX] = QSL("Messages.is_deleted");
-  m_orderByNames[MSG_DB_PDELETED_INDEX] = QSL("Messages.is_pdeleted");
-  m_orderByNames[MSG_DB_FEED_ID_INDEX] = QSL("Messages.feed");
-  m_orderByNames[MSG_DB_TITLE_INDEX] = QSL("Messages.title");
-  m_orderByNames[MSG_DB_URL_INDEX] = QSL("Messages.url");
-  m_orderByNames[MSG_DB_AUTHOR_INDEX] = QSL("Messages.author");
-  m_orderByNames[MSG_DB_DCREATED_INDEX] = QSL("Messages.date_created");
-  m_orderByNames[MSG_DB_CONTENTS_INDEX] = QSL("Messages.contents");
-  m_orderByNames[MSG_DB_ENCLOSURES_INDEX] = QSL("Messages.enclosures");
-  m_orderByNames[MSG_DB_SCORE_INDEX] = QSL("Messages.score");
-  m_orderByNames[MSG_DB_ACCOUNT_ID_INDEX] = QSL("Messages.account_id");
-  m_orderByNames[MSG_DB_CUSTOM_ID_INDEX] = QSL("Messages.custom_id");
-  m_orderByNames[MSG_DB_CUSTOM_HASH_INDEX] = QSL("Messages.custom_hash");
-  m_orderByNames[MSG_DB_LABELS_IDS] = QSL("msg_labels");
+  m_orderByNames.append(QSL("Messages.id"));
+  m_orderByNames.append(QSL("Messages.is_read"));
+  m_orderByNames.append(QSL("Messages.is_important"));
+  m_orderByNames.append(QSL("Messages.is_deleted"));
+  m_orderByNames.append(QSL("Messages.is_pdeleted"));
+  m_orderByNames.append(QSL("Messages.feed"));
+  m_orderByNames.append(QSL("Messages.title"));
+  m_orderByNames.append(QSL("Messages.url"));
+  m_orderByNames.append(QSL("Messages.author"));
+  m_orderByNames.append(QSL("Messages.date_created"));
+  m_orderByNames.append(QSL("Messages.contents"));
+  m_orderByNames.append(QSL("Messages.enclosures"));
+  m_orderByNames.append(QSL("Messages.score"));
+  m_orderByNames.append(QSL("Messages.account_id"));
+  m_orderByNames.append(QSL("Messages.custom_id"));
+  m_orderByNames.append(QSL("Messages.custom_hash"));
+  m_orderByNames.append(QSL("msg_labels"));
 }
 
 void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool ignore_multicolumn_sorting) {
+  // We need to map model/header column to source database column.
+  column = mapColumnToDatabase(column);
+
+  if (column < 0) {
+    qWarningNN << LOGSEC_MESSAGEMODEL << "Cannot sort this column.";
+    return;
+  }
+
   int existing = m_sortColumns.indexOf(column);
   bool is_ctrl_pressed =
     Globals::hasFlag(QApplication::queryKeyboardModifiers(), Qt::KeyboardModifier::ControlModifier);
@@ -108,7 +114,67 @@ QList<Message> MessagesModelSqlLayer::fetchMessages(int limit, int offset, int a
 }
 
 QString MessagesModelSqlLayer::formatFields() const {
-  return m_fieldNames.values().join(QSL(", "));
+  return m_fieldNames.join(QSL(", "));
+}
+
+int MessagesModelSqlLayer::mapColumnToDatabase(int column) const {
+  switch (column) {
+    case MSG_MDL_ID_INDEX:
+      return MSG_DB_ID_INDEX;
+
+    case MSG_MDL_READ_INDEX:
+      return MSG_DB_READ_INDEX;
+
+    case MSG_MDL_IMPORTANT_INDEX:
+      return MSG_DB_IMPORTANT_INDEX;
+
+    case MSG_MDL_DELETED_INDEX:
+      return MSG_DB_DELETED_INDEX;
+
+    case MSG_MDL_PDELETED_INDEX:
+      return MSG_DB_PDELETED_INDEX;
+
+    case MSG_MDL_FEED_TITLE_INDEX:
+    case MSG_MDL_FEED_ID_INDEX:
+      return MSG_DB_FEED_ID_INDEX;
+
+    case MSG_MDL_TITLE_INDEX:
+      return MSG_DB_TITLE_INDEX;
+
+    case MSG_MDL_URL_INDEX:
+      return MSG_DB_URL_INDEX;
+
+    case MSG_MDL_AUTHOR_INDEX:
+      return MSG_DB_AUTHOR_INDEX;
+
+    case MSG_MDL_DCREATED_INDEX:
+      return MSG_DB_DCREATED_INDEX;
+
+    case MSG_MDL_CONTENTS_INDEX:
+      return MSG_DB_CONTENTS_INDEX;
+
+    case MSG_MDL_SCORE_INDEX:
+      return MSG_DB_SCORE_INDEX;
+
+    case MSG_MDL_ACCOUNT_ID_INDEX:
+      return MSG_DB_ACCOUNT_ID_INDEX;
+
+    case MSG_MDL_CUSTOM_ID_INDEX:
+      return MSG_DB_CUSTOM_ID_INDEX;
+
+    case MSG_MDL_CUSTOM_HASH_INDEX:
+      return MSG_DB_CUSTOM_HASH_INDEX;
+
+    case MSG_MDL_LABELS:
+    case MSG_MDL_LABELS_IDS:
+      return MSG_DB_LABELS_IDS;
+
+    case MSG_MDL_HAS_ENCLOSURES:
+      return MSG_DB_ENCLOSURES_INDEX;
+
+    default:
+      return -1;
+  }
 }
 
 QString MessagesModelSqlLayer::selectStatement(int limit, int offset, int additional_article_id) const {

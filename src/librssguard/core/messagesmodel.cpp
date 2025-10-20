@@ -2,6 +2,7 @@
 
 #include "core/messagesmodel.h"
 
+#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
@@ -11,6 +12,7 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
 
@@ -338,10 +340,13 @@ void MessagesModel::loadMessages(RootItem* item, bool keep_additional_article_id
   }
 
   if (item != nullptr) {
-    m_hashedFeeds = item->account()->getPrimaryIdHashedSubTreeFeeds();
+    auto* acc = item->account();
+    m_hashedFeeds = acc->getPrimaryIdHashedSubTreeFeeds();
+    m_hashedLabels = acc->labelsNode()->getHashedLabels();
   }
   else {
     m_hashedFeeds.clear();
+    m_hashedLabels.clear();
   }
 
   if (item == nullptr) {
@@ -495,7 +500,7 @@ const Message& MessagesModel::messageForRow(int row) const {
 void MessagesModel::setupHeaderData() {
   m_headerData << tr("Id") << tr("Read") << tr("Important") << tr("Deleted") << tr("Permanently deleted")
                << tr("Feed ID") << tr("Title") << tr("URL") << tr("Author") << tr("Date") << tr("Contents")
-               << tr("Score") << tr("Account ID") << tr("Custom ID") << tr("Custom hash") << tr("Feed") << tr("RTL")
+               << tr("Score") << tr("Account ID") << tr("Custom ID") << tr("Custom hash") << tr("Feed")
                << tr("Has attachments") << tr("Assigned labels") << tr("Assigned label IDs");
 
   m_tooltipData << tr("ID of the article.") << tr("Is article read?") << tr("Is article important?")
@@ -504,9 +509,8 @@ void MessagesModel::setupHeaderData() {
                 << tr("Url of the article.") << tr("Author of the article.") << tr("Creation date of the article.")
                 << tr("Contents of the article.") << tr("Score of the article.") << tr("Account ID of the article.")
                 << tr("Custom ID of the article.") << tr("Custom hash of the article.")
-                << tr("Name of feed of the article.") << tr("Layout direction of the article")
-                << tr("Indication of attachments presence within the article.") << tr("Labels assigned to the article.")
-                << tr("Label IDs assigned to the article.");
+                << tr("Name of feed of the article.") << tr("Indication of attachments presence within the article.")
+                << tr("Labels assigned to the article.") << tr("Label IDs assigned to the article.");
 }
 
 bool MessagesModel::lazyLoading() const {
@@ -595,14 +599,10 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         case MSG_MDL_FEED_TITLE_INDEX:
           return msg.m_feedTitle;
 
-        case MSG_MDL_FEED_IS_RTL_INDEX:
-          return QVariant::fromValue(msg.m_rtlBehavior);
-
         case MSG_MDL_HAS_ENCLOSURES:
           return !msg.m_enclosures.isEmpty();
 
         case MSG_MDL_LABELS:
-          // TODO: TODO
           return QVariant();
 
         case MSG_MDL_LABELS_IDS:
@@ -671,8 +671,10 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         QString contents = data(idx, Qt::ItemDataRole::EditRole).toString().mid(0, 64).simplified() + QL1S("...");
         return contents;
       }
-      else if (index_column == MSG_MDL_FEED_IS_RTL_INDEX) {
-        return int(data(idx, Qt::ItemDataRole::EditRole).value<RtlBehavior>());
+      else if (index_column == MSG_MDL_LABELS) {
+        const Message& msg = messageForRow(idx.row());
+
+        return formatLabels(msg.m_assignedLabelCustomIds);
       }
       else if (index_column == MSG_MDL_AUTHOR_INDEX) {
         const QString author_name = data(idx, Qt::ItemDataRole::EditRole).toString();
@@ -695,8 +697,8 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         return Qt::LayoutDirection::LayoutDirectionAuto;
       }
       else {
-        RtlBehavior rtl_mode =
-          data(index(idx.row(), MSG_MDL_FEED_IS_RTL_INDEX), Qt::ItemDataRole::EditRole).value<RtlBehavior>();
+        const Message& msg = messageForRow(idx.row());
+        RtlBehavior rtl_mode = msg.m_rtlBehavior;
 
         return (rtl_mode == RtlBehavior::Everywhere || rtl_mode == RtlBehavior::EverywhereExceptFeedList)
                  ? Qt::LayoutDirection::RightToLeft
@@ -931,6 +933,22 @@ bool MessagesModel::setMessageLabelsById(int id, const QStringList& label_ids) {
   }
 
   return false;
+}
+
+QString MessagesModel::formatLabels(const QStringList& label_custom_ids) const {
+  auto label_titles_std = boolinq::from(label_custom_ids)
+                            .select([this](const QString& label_custom_id) {
+                              Label* lbl = m_hashedLabels.value(label_custom_id);
+
+                              return lbl != nullptr ? lbl->title() : QString();
+                            })
+                            .where([](const QString& title) {
+                              return !title.isEmpty();
+                            })
+                            .toStdList();
+  QStringList label_titles = FROM_STD_LIST(QStringList, label_titles_std);
+
+  return label_titles.join(QL1C(','));
 }
 
 void MessagesModel::fillComputedMessageData(Message* msg) {
