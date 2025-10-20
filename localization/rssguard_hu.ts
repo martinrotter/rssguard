@@ -1029,7 +1029,7 @@ Elem ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="239"/>
       <source>Show quiet feeds</source>
-      <translation type="unfinished">Show quiet feeds</translation>
+      <translation/>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="245"/>
