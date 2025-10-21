@@ -777,6 +777,7 @@ void FeedsView::drawBranches(QPainter* painter, const QRect& rect, const QModelI
 void FeedsView::focusInEvent(QFocusEvent* event) {
   QTreeView::focusInEvent(event);
 
+  // TOTO: Do we want this?
   if (currentIndex().isValid()) {
     selectionModel()->select(currentIndex(),
                              QItemSelectionModel::SelectionFlag::Select | QItemSelectionModel::SelectionFlag::Rows);
