@@ -367,6 +367,7 @@ QString Feed::additionalTooltip() const {
                      })
                      .toStdList();
   QStringList fltrs = FROM_STD_LIST(QStringList, std_fltrs);
+  QString source_str = QUrl(m_source).isValid() ? QSL("<a href=\"%1\">%1</a>").arg(m_source) : m_source;
 
   return tr("Auto-update status: %1\n"
             "Active message filters: %2\n"
@@ -378,7 +379,7 @@ QString Feed::additionalTooltip() const {
            ? QSL("%1 (%2)").arg(QString::number(m_messageFilters.size()), fltrs.join(QSL(", ")))
            : QString::number(m_messageFilters.size()),
          stat,
-         m_source,
+         source_str,
          customId());
 }
 
