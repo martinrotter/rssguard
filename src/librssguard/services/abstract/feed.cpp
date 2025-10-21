@@ -198,7 +198,7 @@ bool Feed::removeUnwantedArticles(QSqlDatabase& db) {
   auto removed = DatabaseQueries::removeUnwantedArticlesFromFeed(db, this, feed_setup, app_setup);
 
   if (removed) {
-    DatabaseQueries::purgeLeftoverLabelAssignments(db);
+    DatabaseQueries::purgeLeftoverLabelAssignments(db, account()->accountId());
   }
 
   return removed;

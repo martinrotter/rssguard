@@ -213,9 +213,6 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
 
       for (int i = 0; i < msgs.size(); i++) {
         Message* msg_filtered = &msgs[i];
-
-        msg_filtered->m_rawContents = Message::generateRawAtomContents(*msg_filtered);
-
         Message msg_original(*msg_filtered);
         bool remove_msg = false;
 
@@ -252,7 +249,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
     }
   }
 
-  DatabaseQueries::purgeLeftoverLabelAssignments(database);
+  DatabaseQueries::purgeLeftoverLabelAssignments(database, account->accountId());
 }
 
 void MessagesForFiltersModel::testFilter(MessageFilter* filter, FilteringSystem* engine) {
@@ -264,8 +261,6 @@ void MessagesForFiltersModel::testFilter(MessageFilter* filter, FilteringSystem*
     msg_orig_backup.m_filtered = Message(msg_orig_backup.m_original);
 
     Message* msg = &msg_orig_backup.m_filtered;
-
-    msg->m_rawContents = Message::generateRawAtomContents(*msg);
     engine->setMessage(msg);
 
     try {

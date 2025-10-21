@@ -2603,8 +2603,7 @@ bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account
     return false;
   }
 
-  DatabaseQueries::purgeLeftoverLabelAssignments(db);
-
+  DatabaseQueries::purgeLeftoverLabelAssignments(db, account_id);
   DatabaseFactory::logLastExecutedQuery(q);
 
   // Remove feed itself.

@@ -63,7 +63,7 @@ Here is the complete reference documentation of all functions and properties ava
 | `url`              | `String`                 | ❌         | ❌            | The message URL.
 | `author`           | `String`                 | ❌         | ❌            | Author of the message.
 | `contents`         | `String`                 | ❌         | ❌            | Contents of the message.
-| `rawContents`      | `String`                 | ❌         | ❌            | This is the RAW contents of the message obtained from remote service/feed. A raw XML or JSON element data. This attribute has the value only if `runningFilterWhenFetching` returns `true`. In other words, this attribute is not persistently stored in the RSS Guard's DB. Also, this attribute is artificially filled in with ATOM-like data when testing the filter.
+| `rawContents`      | `String`                 | ❌         | ❌            | This is the RAW contents of the message obtained from remote service/feed. A raw XML or JSON data. Note that this property is filled with data only when feeds/articles are fetched not when processing existing articles with the article filter.
 | `score`            | `Number`                 | ❌         | ❌            | Arbitrary number in range \<0.0, 100.0\>. You can use this number to sort messages in a custom fashion as this attribute also has its own column in articles list.
 | `hasEnclosures`    | `Boolean`                | ✅         | ❌            | Returns `true` if the article has at least one enclosure/attachment. Otherwise returns `false`.
 | `created`          | `Date`                   | ❌         | ❌            | Date/time of the message.
