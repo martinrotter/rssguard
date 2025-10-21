@@ -100,7 +100,7 @@ void EmailPreviewer::downloadAttachment(QAction* act) {
   const QString file_name = act->data().toStringList().at(0);
 
   const QString save_file_name = FileDialog::saveFileName(qApp->mainFormWidget(),
-                                                          tr("Save attachmen %1").arg(file_name),
+                                                          tr("Save attachment %1").arg(file_name),
                                                           qApp->documentsFolder(),
                                                           file_name,
                                                           {},
