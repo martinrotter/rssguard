@@ -868,7 +868,9 @@ void FeedsView::reloadDelayedExpansions() {
   m_expansionDelayer.stop();
   m_dontSaveExpandState = true;
 
-  for (const QPair<QModelIndex, bool>& exp : m_delayedItemExpansions) {
+  auto expansions = m_delayedItemExpansions;
+
+  for (const QPair<QModelIndex, bool>& exp : expansions) {
     auto idx = m_proxyModel->mapFromSource(exp.first);
 
     if (idx.isValid()) {
@@ -938,7 +940,7 @@ void FeedsView::reloadItemExpandState(const QModelIndex& source_idx) {
     qApp->settings()->value(GROUP(CategoriesExpandStates), setting_name, it->childCount() > 0).toBool();
 
   m_delayedItemExpansions.append({source_idx, expand});
-  m_expansionDelayer.start(300);
+  m_expansionDelayer.start(600);
 }
 
 QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
@@ -1209,9 +1211,10 @@ void FeedsView::setupAppearance() {
 void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {
   RootItem* selected_item = selectedItem();
 
-  m_proxyModel->setSelectedItem(selected_item);
   QTreeView::selectionChanged(selected, deselected);
   emit itemSelected(selected_item);
+
+  m_proxyModel->setSelectedItem(selected_item);
 
   if (!selectedIndexes().isEmpty() &&
       qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoExpandOnSelection)).toBool()) {

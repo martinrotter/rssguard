@@ -516,6 +516,8 @@ const RootItem* FeedsProxyModel::selectedItem() const {
 
 void FeedsProxyModel::setSelectedItem(const RootItem* selected_item) {
   m_selectedItem = selected_item;
+
+  invalidateFilter();
 }
 
 void FeedsProxyModel::setSortAlphabetically(bool sort_alphabetically) {
