@@ -1084,7 +1084,10 @@ ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, in
   }
 }
 
-QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& db, int feed_id, int account_id) {
+QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& db,
+                                                            int feed_id,
+                                                            const QHash<QString, Label*>& labels,
+                                                            int account_id) {
   QList<Message> messages;
   QSqlQuery q(db);
 
@@ -1101,7 +1104,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& 
     DatabaseFactory::logLastExecutedQuery(q);
 
     while (q.next()) {
-      Message message = Message::fromSqlQuery(q);
+      Message message = Message::fromSqlQuery(q, labels);
 
       messages.append(message);
     }
@@ -1113,7 +1116,9 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& 
   return messages;
 }
 
-QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id) {
+QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabase& db,
+                                                               const QHash<QString, Label*>& labels,
+                                                               int account_id) {
   QList<Message> messages;
   QSqlQuery q(db);
 
@@ -1128,7 +1133,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
     DatabaseFactory::logLastExecutedQuery(q);
 
     while (q.next()) {
-      Message message = Message::fromSqlQuery(q);
+      Message message = Message::fromSqlQuery(q, labels);
 
       messages.append(message);
     }
@@ -1770,6 +1775,10 @@ bool DatabaseQueries::deleteAccountData(const QSqlDatabase& db,
     q.bindValue(QSL(":account_id"), account_id);
     result &= q.exec();
 
+    q.prepare(QSL("DELETE FROM LabelsInMessages WHERE account_id = :account_id;"));
+    q.bindValue(QSL(":account_id"), account_id);
+    result &= q.exec();
+
     DatabaseFactory::logLastExecutedQuery(q);
   }
 
@@ -1974,13 +1983,18 @@ void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db, int 
   QSqlQuery q(db);
   q.setForwardOnly(true);
 
-  // This query deletes any label-message assignments where the referenced message no longer exists
-  // (e.g. because it was deleted while foreign key checks were off).
-  q.prepare(QSL("DELETE FROM LabelsInMessages "
-                "WHERE account_id = :account_id "
-                "AND message NOT IN (SELECT id FROM Messages WHERE account_id = :account_id);"));
-
-  q.bindValue(QSL(":account_id"), account_id);
+  if (account_id > 0) {
+    // Delete leftover assignments for a specific account.
+    q.prepare(QSL("DELETE FROM LabelsInMessages "
+                  "WHERE account_id = :account_id "
+                  "AND message NOT IN (SELECT id FROM Messages WHERE account_id = :account_id);"));
+    q.bindValue(QSL(":account_id"), account_id);
+  }
+  else {
+    // Delete leftover assignments for all accounts.
+    q.prepare(QSL("DELETE FROM LabelsInMessages "
+                  "WHERE message NOT IN (SELECT id FROM Messages);"));
+  }
 
   if (!q.exec()) {
     throw ApplicationException(q.lastError().text());
@@ -2588,6 +2602,8 @@ bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account
   if (!q.exec()) {
     return false;
   }
+
+  DatabaseQueries::purgeLeftoverLabelAssignments(db);
 
   DatabaseFactory::logLastExecutedQuery(q);
 

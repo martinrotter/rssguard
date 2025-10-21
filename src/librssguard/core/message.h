@@ -26,7 +26,6 @@ class RSSGUARD_DLLSPEC MessageEnclosure : public QObject {
   public:
     explicit MessageEnclosure(QString url = QString(), QString mime = QString(), QObject* parent = nullptr);
     MessageEnclosure(const MessageEnclosure& other);
-    //~MessageEnclosure();
 
     QString url() const;
     void setUrl(const QString& url);
@@ -57,7 +56,6 @@ class RSSGUARD_DLLSPEC MessageCategory : public QObject {
   public:
     explicit MessageCategory(const QString& title, QObject* parent = nullptr);
     MessageCategory(const MessageCategory& other);
-    //~MessageCategory();
 
     QString title() const;
 
@@ -72,14 +70,12 @@ class RSSGUARD_DLLSPEC Message {
   public:
     explicit Message();
     Message(const Message& other);
-    //~Message();
 
     void sanitize(const Feed* feed, bool fix_future_datetimes);
 
-    QList<Label*> getLabelsFromCustomIds(const QList<Label*> installed_labels) const;
-
-    static Message fromSqlQuery(const QSqlQuery& record);
+    static Message fromSqlQuery(const QSqlQuery& record, const QHash<QString, Label*>& labels);
     static QString generateRawAtomContents(const Message& msg);
+    static QList<Label*> decodeLabelCustomIds(const QHash<QString, Label*>& labels, const QStringList& custom_ids);
 
   public:
     QString m_title;
@@ -110,19 +106,12 @@ class RSSGUARD_DLLSPEC Message {
     // This field is only used when fetching entries of a feed.
     QList<QSharedPointer<MessageCategory>> m_categories;
 
-    // List of custom IDs of labels assigned to this message.
+    // List of labels assigned to this message.
     QList<Label*> m_assignedLabels;
 
-    // TODO: kompletně se zbavit m_assignedLabels a m_assignedLabelsByFilter a m_deassignedLabelsByFilter
-    // převést na QStringList
-    //
-    // nebo se zbavit m_assignedLabelCustomIds ? a mit prostě jen live seznam labelů
-    //
-
+    // These are here to allow to determine labels which were added or removed by filter.
     QList<Label*> m_assignedLabelsByFilter;
     QList<Label*> m_deassignedLabelsByFilter;
-
-    QStringList m_assignedLabelCustomIds;
 
     // Is true if "created" date was obtained directly
     // from the feed, otherwise is false

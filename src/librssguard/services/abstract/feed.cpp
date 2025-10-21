@@ -195,7 +195,13 @@ bool Feed::removeUnwantedArticles(QSqlDatabase& db) {
   Feed::ArticleIgnoreLimit feed_setup = articleIgnoreLimit();
   Feed::ArticleIgnoreLimit app_setup = Feed::ArticleIgnoreLimit::fromSettings();
 
-  return DatabaseQueries::removeUnwantedArticlesFromFeed(db, this, feed_setup, app_setup);
+  auto removed = DatabaseQueries::removeUnwantedArticlesFromFeed(db, this, feed_setup, app_setup);
+
+  if (removed) {
+    DatabaseQueries::purgeLeftoverLabelAssignments(db);
+  }
+
+  return removed;
 }
 
 void Feed::appendMessageFilter(MessageFilter* filter) {

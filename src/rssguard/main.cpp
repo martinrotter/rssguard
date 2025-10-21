@@ -55,15 +55,8 @@ int main(int argc, char* argv[]) {
   QGuiApplication::setDesktopFileName(APP_REVERSE_NAME);
 #endif
 
-#if defined(QT_STATIC)
-  // NOTE: Add all used resources here.
-  Q_INIT_RESOURCE(icons);
-  Q_INIT_RESOURCE(sql);
-  Q_INIT_RESOURCE(rssguard);
-#endif
-
   QSettings::setDefaultFormat(QSettings::Format::IniFormat);
-  QApplication::setAttribute(Qt::ApplicationAttribute::AA_UseDesktopOpenGL, true);
+  QCoreApplication::setAttribute(Qt::ApplicationAttribute::AA_UseDesktopOpenGL, true);
 
   // We create our own "arguments" list as Qt strips something
   // sometimes out.

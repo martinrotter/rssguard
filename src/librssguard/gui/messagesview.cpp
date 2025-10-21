@@ -548,8 +548,8 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
   QTreeView::selectionChanged(selected, deselected);
 }
 
-void MessagesView::onArticleLabelIdsChanged(int article_id, const QStringList& label_custom_ids) {
-  m_sourceModel->setMessageLabelsById(article_id, label_custom_ids);
+void MessagesView::onArticleLabelIdsChanged(int article_id, const QList<Label*>& labels) {
+  m_sourceModel->setMessageLabelsById(article_id, labels);
   QModelIndex current_index = selectionModel()->currentIndex();
 
   if (current_index.isValid()) {
@@ -937,7 +937,6 @@ void MessagesView::adjustColumns() {
     hideColumn(MSG_MDL_FEED_TITLE_INDEX);
     hideColumn(MSG_MDL_HAS_ENCLOSURES);
     hideColumn(MSG_MDL_LABELS);
-    hideColumn(MSG_MDL_LABELS_IDS);
   }
 }
 

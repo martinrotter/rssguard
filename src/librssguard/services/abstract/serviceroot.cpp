@@ -1128,20 +1128,17 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
       }
 
       if (m_labelsNode != nullptr) {
-        auto lbl_custom_ids = msgs_linq
-                                .selectMany([](const Message& msg) {
-                                  auto ids = msg.m_assignedLabelCustomIds;
-                                  return boolinq::from(ids.begin(), ids.end());
-                                })
-                                .distinct()
-                                .toStdVector();
+        auto msg_lbls = msgs_linq
+                          .selectMany([](const Message& msg) {
+                            return boolinq::from(msg.m_assignedLabels);
+                          })
+                          .distinct()
+                          .toStdVector();
 
-        for (const QString& lbl : lbl_custom_ids) {
-          Label* l = labelsNode()->labelByCustomId(lbl);
-
-          if (l != nullptr) {
-            l->updateCounts(including_total_counts);
-            to_update << l;
+        for (Label* lbl : msg_lbls) {
+          if (lbl != nullptr) {
+            lbl->updateCounts(including_total_counts);
+            to_update << lbl;
           }
         }
       }
@@ -1182,15 +1179,8 @@ bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
 void ServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
   Q_UNUSED(feeds)
 
-  QList<RootItem*> itms;
-  itms.reserve(feeds.size());
-
-  for (Feed* fd : feeds) {
-    fd->updateCounts(true);
-    itms.append(fd);
-  }
-
-  itemChanged(itms);
+  updateCounts(true);
+  itemChanged(getSubTree<RootItem>());
 }
 
 QNetworkProxy ServiceRoot::networkProxyForItem(RootItem* item) const {

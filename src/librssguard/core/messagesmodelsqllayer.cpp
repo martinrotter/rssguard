@@ -86,7 +86,10 @@ SortColumnsAndOrders MessagesModelSqlLayer::sortColumnAndOrders() const {
   return res;
 }
 
-QList<Message> MessagesModelSqlLayer::fetchMessages(int limit, int offset, int additional_article_id) const {
+QList<Message> MessagesModelSqlLayer::fetchMessages(const QHash<QString, Label*>& labels,
+                                                    int limit,
+                                                    int offset,
+                                                    int additional_article_id) const {
   QList<Message> msgs;
 
   if (limit > 0) {
@@ -105,7 +108,7 @@ QList<Message> MessagesModelSqlLayer::fetchMessages(int limit, int offset, int a
   DatabaseFactory::logLastExecutedQuery(q);
 
   while (q.next()) {
-    msgs.append(Message::fromSqlQuery(q));
+    msgs.append(Message::fromSqlQuery(q, labels));
   }
 
   q.finish();
@@ -166,7 +169,6 @@ int MessagesModelSqlLayer::mapColumnToDatabase(int column) const {
       return MSG_DB_CUSTOM_HASH_INDEX;
 
     case MSG_MDL_LABELS:
-    case MSG_MDL_LABELS_IDS:
       return MSG_DB_LABELS_IDS;
 
     case MSG_MDL_HAS_ENCLOSURES:

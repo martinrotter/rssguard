@@ -541,6 +541,8 @@ bool FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
     bool anything_purged = DatabaseQueries::purgeFeedArticles(database, feeds);
 
     if (anything_purged) {
+      DatabaseQueries::purgeLeftoverLabelAssignments(database);
+
       QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
 
       for (auto* fd : feeds) {

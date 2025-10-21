@@ -46,18 +46,18 @@ void LabelsMenu::changeLabelAssignment(bool assign) {
   if (origin != nullptr && lbl != nullptr) {
     for (auto& msg : m_messages) {
       // NOTE: To avoid duplicates.
-      msg.m_assignedLabelCustomIds.removeAll(lbl->customId());
+      msg.m_assignedLabels.removeAll(lbl);
 
       if (assign) {
         lbl->assignToMessage(msg, true);
-        msg.m_assignedLabelCustomIds.append(lbl->customId());
+        msg.m_assignedLabels.append(lbl);
       }
       else {
         lbl->deassignFromMessage(msg, true);
-        msg.m_assignedLabelCustomIds.removeOne(lbl->customId());
+        msg.m_assignedLabels.removeOne(lbl);
       }
 
-      emit setModelArticleLabelIds(msg.m_id, msg.m_assignedLabelCustomIds);
+      emit setModelArticleLabelIds(msg.m_id, msg.m_assignedLabels);
     }
   }
 }
@@ -67,7 +67,7 @@ QAction* LabelsMenu::labelAction(Label* label) {
 
   act->setCheckable(true);
   act->setChecked(act->isCheckable() && boolinq::from(m_messages).all([&](const Message& msg) {
-    return msg.m_assignedLabelCustomIds.contains(label->customId());
+    return msg.m_assignedLabels.contains(label);
   }));
 
   connect(act, &LabelAction::toggled, this, &LabelsMenu::changeLabelAssignment);

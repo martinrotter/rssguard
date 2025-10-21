@@ -28,7 +28,10 @@ class MessagesModelSqlLayer {
     SortColumnsAndOrders sortColumnAndOrders() const;
 
   protected:
-    QList<Message> fetchMessages(int limit, int offset, int additional_article_id = -1) const;
+    QList<Message> fetchMessages(const QHash<QString, Label*>& labels,
+                                 int limit,
+                                 int offset,
+                                 int additional_article_id = -1) const;
 
     QSqlDatabase m_db;
 

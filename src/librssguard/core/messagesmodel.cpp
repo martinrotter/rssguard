@@ -172,7 +172,7 @@ void MessagesModel::fetchMoreArticles(int batch_size) {
     QElapsedTimer tmr;
     tmr.start();
 
-    auto more_messages = fetchMessages(batch_size, m_messages.size());
+    auto more_messages = fetchMessages(m_hashedLabels, batch_size, m_messages.size());
 
     m_canFetchMoreArticles = more_messages.size() >= batch_size;
 
@@ -225,7 +225,7 @@ void MessagesModel::fetchInitialArticles(int batch_size) {
   tmr.restart();
 
   try {
-    m_messages = fetchMessages(m_lazyLoading ? batch_size : 0, 0, m_additionalArticleId);
+    m_messages = fetchMessages(m_hashedLabels, m_lazyLoading ? batch_size : 0, 0, m_additionalArticleId);
     m_canFetchMoreArticles = m_messages.size() >= batch_size;
 
     time_fetch = tmr.elapsed();
@@ -298,8 +298,8 @@ bool MessagesModel::setData(const QModelIndex& idx, const QVariant& value, int r
       msg.m_isPdeleted = value.toBool();
       break;
 
-    case MSG_MDL_LABELS_IDS:
-      msg.m_assignedLabelCustomIds = value.toStringList();
+    case MSG_MDL_LABELS:
+      msg.m_assignedLabels = value.value<QList<Label*>>();
       break;
 
     default:
@@ -501,7 +501,7 @@ void MessagesModel::setupHeaderData() {
   m_headerData << tr("Id") << tr("Read") << tr("Important") << tr("Deleted") << tr("Permanently deleted")
                << tr("Feed ID") << tr("Title") << tr("URL") << tr("Author") << tr("Date") << tr("Contents")
                << tr("Score") << tr("Account ID") << tr("Custom ID") << tr("Custom hash") << tr("Feed")
-               << tr("Has attachments") << tr("Assigned labels") << tr("Assigned label IDs");
+               << tr("Has attachments") << tr("Assigned labels");
 
   m_tooltipData << tr("ID of the article.") << tr("Is article read?") << tr("Is article important?")
                 << tr("Is article deleted?") << tr("Is article permanently deleted from recycle bin?")
@@ -510,7 +510,7 @@ void MessagesModel::setupHeaderData() {
                 << tr("Contents of the article.") << tr("Score of the article.") << tr("Account ID of the article.")
                 << tr("Custom ID of the article.") << tr("Custom hash of the article.")
                 << tr("Name of feed of the article.") << tr("Indication of attachments presence within the article.")
-                << tr("Labels assigned to the article.") << tr("Label IDs assigned to the article.");
+                << tr("Labels assigned to the article.");
 }
 
 bool MessagesModel::lazyLoading() const {
@@ -603,10 +603,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           return !msg.m_enclosures.isEmpty();
 
         case MSG_MDL_LABELS:
-          return QVariant();
-
-        case MSG_MDL_LABELS_IDS:
-          return msg.m_assignedLabelCustomIds.join(QL1C(','));
+          return QVariant::fromValue(msg.m_assignedLabels);
 
         default:
           throw ApplicationException(tr("article model column %1 is out of range").arg(idx.column()));
@@ -674,7 +671,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
       else if (index_column == MSG_MDL_LABELS) {
         const Message& msg = messageForRow(idx.row());
 
-        return formatLabels(msg.m_assignedLabelCustomIds);
+        return formatLabels(msg.m_assignedLabels);
       }
       else if (index_column == MSG_MDL_AUTHOR_INDEX) {
         const QString author_name = data(idx, Qt::ItemDataRole::EditRole).toString();
@@ -922,12 +919,12 @@ bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
   return false;
 }
 
-bool MessagesModel::setMessageLabelsById(int id, const QStringList& label_ids) {
+bool MessagesModel::setMessageLabelsById(int id, const QList<Label*>& labels) {
   for (int i = 0; i < rowCount(); i++) {
     int found_id = data(i, MSG_MDL_ID_INDEX).toInt();
 
     if (found_id == id) {
-      bool set = setData(index(i, MSG_MDL_LABELS_IDS), label_ids);
+      bool set = setData(index(i, MSG_MDL_LABELS), QVariant::fromValue(labels));
       return set;
     }
   }
@@ -935,12 +932,10 @@ bool MessagesModel::setMessageLabelsById(int id, const QStringList& label_ids) {
   return false;
 }
 
-QString MessagesModel::formatLabels(const QStringList& label_custom_ids) const {
-  auto label_titles_std = boolinq::from(label_custom_ids)
-                            .select([this](const QString& label_custom_id) {
-                              Label* lbl = m_hashedLabels.value(label_custom_id);
-
-                              return lbl != nullptr ? lbl->title() : QString();
+QString MessagesModel::formatLabels(const QList<Label*>& labels) const {
+  auto label_titles_std = boolinq::from(labels)
+                            .select([](const Label* label) {
+                              return label != nullptr ? label->title() : QString();
                             })
                             .where([](const QString& title) {
                               return !title.isEmpty();

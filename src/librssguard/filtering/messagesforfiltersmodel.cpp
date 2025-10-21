@@ -10,6 +10,7 @@
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/skinfactory.h"
+#include "services/abstract/labelsnode.h"
 
 MessagesForFiltersModel::MessagesForFiltersModel(QObject* parent) : QAbstractTableModel(parent) {
   m_headerData << tr("Result") << tr("Read") << tr("Important") << tr("Trash") << tr("Title") << tr("Date")
@@ -204,14 +205,15 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
       filtering.filterRun().setIndexOfCurrentFilter(0);
 
       // We process messages of the feed.
-      QList<Message> msgs = DatabaseQueries::getUndeletedMessagesForFeed(database, it->id(), account->accountId());
+      QList<Message> msgs = DatabaseQueries::getUndeletedMessagesForFeed(database,
+                                                                         it->id(),
+                                                                         account->labelsNode()->getHashedLabels(),
+                                                                         account->accountId());
       QList<Message> read_msgs, important_msgs;
 
       for (int i = 0; i < msgs.size(); i++) {
         Message* msg_filtered = &msgs[i];
-        auto labels_in_message = msg_filtered->getLabelsFromCustomIds(filtering.filterAccount().availableLabels());
 
-        msg_filtered->m_assignedLabels = labels_in_message;
         msg_filtered->m_rawContents = Message::generateRawAtomContents(*msg_filtered);
 
         Message msg_original(*msg_filtered);
@@ -249,6 +251,8 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
       it->account()->updateMessages(msgs, it->toFeed(), true, true, nullptr);
     }
   }
+
+  DatabaseQueries::purgeLeftoverLabelAssignments(database);
 }
 
 void MessagesForFiltersModel::testFilter(MessageFilter* filter, FilteringSystem* engine) {

@@ -115,10 +115,10 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
 
     bool setMessageImportantById(int id, RootItem::Importance important);
     bool setMessageReadById(int id, RootItem::ReadStatus read);
-    bool setMessageLabelsById(int id, const QStringList& label_ids);
+    bool setMessageLabelsById(int id, const QList<Label*>& labels);
 
   private:
-    QString formatLabels(const QStringList& label_custom_ids) const;
+    QString formatLabels(const QList<Label*>& labels) const;
 
     void fillComputedMessageData(Message* msg);
     void setupHeaderData();

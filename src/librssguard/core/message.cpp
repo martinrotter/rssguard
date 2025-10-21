@@ -26,12 +26,6 @@ MessageEnclosure::MessageEnclosure(const MessageEnclosure& other) {
   setUrl(other.url());
 }
 
-/*
-MessageEnclosure::~MessageEnclosure() {
-  qDebugNN << LOGSEC_CORE << "Destroying article enclosure.";
-}
-*/
-
 QString MessageEnclosure::url() const {
   return m_url;
 }
@@ -121,16 +115,7 @@ Message::Message(const Message& other) {
   m_assignedLabels = other.m_assignedLabels;
   m_assignedLabelsByFilter = other.m_assignedLabelsByFilter;
   m_deassignedLabelsByFilter = other.m_deassignedLabelsByFilter;
-  m_assignedLabelCustomIds = other.m_assignedLabelCustomIds;
 }
-
-/*Message::~Message() {
-  // qDeleteAll(m_categories);
-  // m_categories.clear();
-
-  // qDeleteAll(m_enclosures);
-  // m_enclosures.clear();
-}*/
 
 void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   static QRegularExpression reg_spaces(QString::fromUtf8(QByteArray("[\xE2\x80\xAF]")));
@@ -190,19 +175,7 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   }
 }
 
-QList<Label*> Message::getLabelsFromCustomIds(const QList<Label*> installed_labels) const {
-  auto linq_std = boolinq::from(installed_labels)
-                    .where([this](Label* lbl) {
-                      return m_assignedLabelCustomIds.contains(lbl->customId());
-                    })
-                    .toStdList();
-
-  QList<Label*> linq = FROM_STD_LIST(QList<Label*>, linq_std);
-
-  return linq;
-}
-
-Message Message::fromSqlQuery(const QSqlQuery& record) {
+Message Message::fromSqlQuery(const QSqlQuery& record, const QHash<QString, Label*>& labels) {
   Message message;
 
   message.m_id = record.value(MSG_DB_ID_INDEX).toInt();
@@ -221,8 +194,8 @@ Message Message::fromSqlQuery(const QSqlQuery& record) {
   message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
   message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
   message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();
-  message.m_assignedLabelCustomIds =
-    record.value(MSG_DB_LABELS_IDS).toString().split(',', SPLIT_BEHAVIOR::SkipEmptyParts);
+  message.m_assignedLabels =
+    decodeLabelCustomIds(labels, record.value(MSG_DB_LABELS_IDS).toString().split(',', SPLIT_BEHAVIOR::SkipEmptyParts));
 
   return message;
 }
@@ -243,6 +216,26 @@ QString Message::generateRawAtomContents(const Message& msg) {
          msg.m_url,
          msg.m_contents.toHtmlEscaped(),
          msg.m_author);
+}
+
+QList<Label*> Message::decodeLabelCustomIds(const QHash<QString, Label*>& labels, const QStringList& custom_ids) {
+  if (labels.isEmpty() || custom_ids.isEmpty()) {
+    return {};
+  }
+
+  auto std_labels_list = boolinq::from(custom_ids)
+                           .select([&](const QString& custom_id) {
+                             return labels.value(custom_id);
+                           })
+                           .where([](Label* lbl) {
+                             return lbl != nullptr;
+                           })
+                           .distinct()
+                           .toStdList();
+
+  QList<Label*> labels_list = FROM_STD_LIST(QList<Label*>, std_labels_list);
+
+  return labels_list;
 }
 
 QDataStream& operator<<(QDataStream& out, const Message& my_obj) {

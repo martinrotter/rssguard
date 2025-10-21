@@ -105,8 +105,13 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static ArticleCounts getMessageCountsForBin(const QSqlDatabase& db, int account_id);
 
     // Get messages (for newspaper view for example).
-    static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db, int account_id);
-    static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db, int feed_id, int account_id);
+    static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db,
+                                                         const QHash<QString, Label*>& labels,
+                                                         int account_id);
+    static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db,
+                                                      int feed_id,
+                                                      const QHash<QString, Label*>& labels,
+                                                      int account_id);
 
     // Custom ID accumulators.
     static int highestPrimaryIdFeeds(const QSqlDatabase& db);
@@ -200,7 +205,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                   int move_index,
                                   const QSqlDatabase& db);
     static bool purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id);
-    static void purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id);
+    static void purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id = -1);
     static MessageFilter* addMessageFilter(const QSqlDatabase& db, const QString& title, const QString& script);
     static void removeMessageFilter(const QSqlDatabase& db, int filter_id, bool* ok = nullptr);
     static void removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id, bool* ok = nullptr);

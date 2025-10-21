@@ -276,11 +276,13 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
 
   try {
     if (Globals::hasFlag(criteria, DuplicityCheck::AllFeedsSameAccount)) {
-      msgs = DatabaseQueries::getUndeletedMessagesForAccount(m_system->database(), m_system->filterAccount().id());
+      msgs = DatabaseQueries::getUndeletedMessagesForAccount(m_system->database(), {}, m_system->filterAccount().id());
     }
     else {
-      msgs =
-        DatabaseQueries::getUndeletedMessagesForFeed(m_system->database(), feedId(), m_system->filterAccount().id());
+      msgs = DatabaseQueries::getUndeletedMessagesForFeed(m_system->database(),
+                                                          feedId(),
+                                                          {},
+                                                          m_system->filterAccount().id());
     }
   }
   catch (const ApplicationException& ex) {
