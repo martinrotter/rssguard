@@ -1732,7 +1732,9 @@ bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, ServiceRoot* account
           << QSL("DELETE FROM Messages WHERE account_id = :account_id;")
           << QSL("DELETE FROM Feeds WHERE account_id = :account_id;")
           << QSL("DELETE FROM Categories WHERE account_id = :account_id;")
+          << QSL("DELETE FROM LabelsInMessages WHERE account_id = :account_id;")
           << QSL("DELETE FROM Labels WHERE account_id = :account_id;")
+          << QSL("DELETE FROM Probes WHERE account_id = :account_id;")
           << QSL("DELETE FROM Accounts WHERE id = :account_id;");
 
   for (const QString& q : std::as_const(queries)) {
