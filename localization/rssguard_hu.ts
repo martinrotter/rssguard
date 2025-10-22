@@ -1593,7 +1593,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="108"/>
       <source>Edit %n categories</source>
       <translation type="unfinished">
-        <numerusform>%n darab kategória szerkesztése</numerusform>
+        <numerusform>%n számú kategória szerkesztése</numerusform>
         <numerusform>Edit %n categories</numerusform>
       </translation>
     </message>
@@ -2328,7 +2328,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="89"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="812"/>
       <source>&amp;Focus</source>
-      <translation type="unfinished">&amp;Focus</translation>
+      <translation/>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="193"/>
