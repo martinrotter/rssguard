@@ -13,7 +13,7 @@ class RSSGUARD_DLLSPEC UnreadNode : public RootItem {
 
     virtual bool cleanMessages(bool clean_read_only);
     virtual void updateCounts(bool including_total_count);
-    virtual bool markAsReadUnread(ReadStatus status);
+    virtual void markAsReadUnread(ReadStatus status);
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
 

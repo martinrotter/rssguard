@@ -14,7 +14,7 @@ class RSSGUARD_DLLSPEC Category : public RootItem {
 
     virtual void updateCounts(bool including_total_count);
     virtual bool cleanMessages(bool clean_read_only);
-    virtual bool markAsReadUnread(ReadStatus status);
+    virtual void markAsReadUnread(ReadStatus status);
     virtual QString additionalTooltip() const;
 };
 

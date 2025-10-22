@@ -98,34 +98,21 @@ QString Search::additionalTooltip() const {
   return tr("Regular expression: %1").arg(QSL("<code>%1</code>").arg(filter()));
 }
 
-bool Search::markAsReadUnread(RootItem::ReadStatus status) {
+void Search::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
   if (cache != nullptr) {
-    try {
-      cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
-    }
-    catch (const ApplicationException& ex) {
-      qCriticalNN << LOGSEC_DB << "Cannot add some IDs to state cache:" << QUOTE_W_SPACE_DOT(ex.message());
-      return false;
-    }
+    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
   }
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  try {
-    DatabaseQueries::markProbeReadUnread(database, this, status);
-    service->updateCounts(false);
-    service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(this,
-                                         status == RootItem::ReadStatus::Read
-                                           ? FeedsModel::ExternalDataChange::MarkedRead
-                                           : FeedsModel::ExternalDataChange::MarkedUnread);
-    return true;
-  }
-  catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_DB << "Cannot mark probe as read/unread:" << QUOTE_W_SPACE_DOT(ex.message());
-    return false;
-  }
+  DatabaseQueries::markProbeReadUnread(database, this, status);
+  service->updateCounts(false);
+  service->itemChanged(service->getSubTree<RootItem>());
+  service->informOthersAboutDataChange(this,
+                                       status == RootItem::ReadStatus::Read
+                                         ? FeedsModel::ExternalDataChange::MarkedRead
+                                         : FeedsModel::ExternalDataChange::MarkedUnread);
 }

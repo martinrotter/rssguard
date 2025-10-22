@@ -265,7 +265,17 @@ void FeedsView::purgeSelectedFeeds() {
     return;
   }
 
-  m_sourceModel->purgeArticles(selectedFeeds(true));
+  try {
+    m_sourceModel->purgeArticles(selectedFeeds(true));
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Cannot purge feeds:" << NONQUOTE_W_SPACE_DOT(ex.message());
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Cannot purge feeds"),
+                                    tr("Failed to purge feeds: %1.").arg(ex.message()),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true));
+  }
 }
 
 void FeedsView::clearAllItems() {
@@ -562,8 +572,18 @@ void FeedsView::rearrangeFeedsOfSelectedItem() {
 }
 
 void FeedsView::markSelectedItemReadStatus(RootItem::ReadStatus read) {
-  for (RootItem* it : selectedItems()) {
-    m_sourceModel->markItemRead(it, read);
+  try {
+    for (RootItem* it : selectedItems()) {
+      m_sourceModel->markItemRead(it, read);
+    }
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Cannot mark item read unread:" << NONQUOTE_W_SPACE_DOT(ex.message());
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Cannot mark item read unread"),
+                                    tr("Failed to mark item read or unread: %1.").arg(ex.message()),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true));
   }
 }
 
@@ -576,7 +596,17 @@ void FeedsView::markSelectedItemUnread() {
 }
 
 void FeedsView::markAllItemsReadStatus(RootItem::ReadStatus read) {
-  m_sourceModel->markItemRead(m_sourceModel->rootItem(), read);
+  try {
+    m_sourceModel->markItemRead(m_sourceModel->rootItem(), read);
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Cannot mark item read unread:" << NONQUOTE_W_SPACE_DOT(ex.message());
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Cannot mark item read unread"),
+                                    tr("Failed to mark item read or unread: %1.").arg(ex.message()),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true));
+  }
 }
 
 void FeedsView::markAllItemsRead() {

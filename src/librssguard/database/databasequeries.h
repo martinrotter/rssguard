@@ -44,29 +44,26 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void deleteProbe(const QSqlDatabase& db, Search* probe);
     static void updateProbe(const QSqlDatabase& db, Search* probe);
 
-    // Message operators.
+    // Read & unread & important articles.
     static void markProbeReadUnread(const QSqlDatabase& db, Search* probe, RootItem::ReadStatus read);
     static void markAllLabelledMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
-    static bool markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read);
-    static bool markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
-    static bool markUnreadMessagesRead(const QSqlDatabase& db, int account_id);
-    static bool markMessagesReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read);
-    static void markMessagesReadUnreadImportant(const QSqlDatabase& db,
-                                                int account_id,
-                                                const QStringList& custom_ids,
-                                                RootItem::ReadStatus read,
-                                                RootItem::Importance important);
-    static bool markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance);
-    static bool markFeedsReadUnread(const QSqlDatabase& db,
+    static void markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read);
+    static void markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
+    static void markUnreadMessagesRead(const QSqlDatabase& db, int account_id);
+    static void markMessagesReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read);
+    static void markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance);
+    static void markFeedsReadUnread(const QSqlDatabase& db,
                                     const QStringList& ids,
                                     int account_id,
                                     RootItem::ReadStatus read);
-    static bool markBinReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
-    static bool markAccountReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
-    static bool switchMessagesImportance(const QSqlDatabase& db, const QStringList& ids);
-    static bool permanentlyDeleteMessages(const QSqlDatabase& db, const QStringList& ids);
-    static bool deleteOrRestoreMessagesToFromBin(const QSqlDatabase& db, const QStringList& ids, bool deleted);
-    static bool restoreBin(const QSqlDatabase& db, int account_id);
+    static void markBinReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
+    static void markAccountReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
+    static void switchMessagesImportance(const QSqlDatabase& db, const QStringList& ids);
+
+    // Delete & restore articles.
+    static void permanentlyDeleteMessages(const QSqlDatabase& db, const QStringList& ids);
+    static void deleteOrRestoreMessagesToFromBin(const QSqlDatabase& db, const QStringList& ids, bool deleted);
+    static void restoreBin(const QSqlDatabase& db, int account_id);
 
     // Purge database.
     static bool removeUnwantedArticlesFromFeed(const QSqlDatabase& db,

@@ -438,34 +438,28 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
   return true;
 }
 
-bool FeedsModel::restoreAllBins() {
-  bool result = true;
+void FeedsModel::restoreAllBins() {
   auto srts = serviceRoots();
 
   for (ServiceRoot* root : std::as_const(srts)) {
     RecycleBin* bin_of_root = root->recycleBin();
 
     if (bin_of_root != nullptr) {
-      result &= bin_of_root->restore();
+      bin_of_root->restore();
     }
   }
-
-  return result;
 }
 
-bool FeedsModel::emptyAllBins() {
-  bool result = true;
+void FeedsModel::emptyAllBins() {
   auto srts = serviceRoots();
 
   for (ServiceRoot* root : std::as_const(srts)) {
     RecycleBin* bin_of_root = root->recycleBin();
 
     if (bin_of_root != nullptr) {
-      result &= bin_of_root->empty();
+      bin_of_root->empty();
     }
   }
-
-  return result;
 }
 
 void FeedsModel::changeSortOrder(RootItem* item, bool move_top, bool move_bottom, int new_sort_order) {
@@ -518,52 +512,38 @@ QList<Feed*> FeedsModel::feedsForIndex(const QModelIndex& index) const {
   return itemForIndex(index)->getSubTreeFeeds();
 }
 
-bool FeedsModel::markItemRead(RootItem* item, RootItem::ReadStatus read) {
+void FeedsModel::markItemRead(RootItem* item, RootItem::ReadStatus read) {
   if (item != nullptr) {
-    return item->markAsReadUnread(read);
+    item->markAsReadUnread(read);
   }
-
-  return true;
 }
 
-bool FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
+void FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
   if (item != nullptr) {
-    return item->cleanMessages(clean_read_only);
+    item->cleanMessages(clean_read_only);
   }
-
-  return true;
 }
 
-bool FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
+void FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
   auto database = qApp->database()->driver()->connection(metaObject()->className());
+  bool anything_purged = DatabaseQueries::purgeFeedArticles(database, feeds);
 
-  try {
-    bool anything_purged = DatabaseQueries::purgeFeedArticles(database, feeds);
+  if (anything_purged) {
+    DatabaseQueries::purgeLeftoverLabelAssignments(database);
 
-    if (anything_purged) {
-      DatabaseQueries::purgeLeftoverLabelAssignments(database);
+    QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
 
-      QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
-
-      for (auto* fd : feeds) {
-        feeds_per_root.insert(fd->account(), fd);
-      }
-
-      for (auto* acc : feeds_per_root.uniqueKeys()) {
-        acc->onAfterFeedsPurged(feeds_per_root.values(acc));
-      }
-
-      notifyWithCounts();
-      emit dataChangeNotificationTriggered(nullptr, ExternalDataChange::DatabaseCleaned);
-      return true;
+    for (auto* fd : feeds) {
+      feeds_per_root.insert(fd->account(), fd);
     }
-  }
-  catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_CORE
-                << "Purging of articles from feeds failed with error:" << QUOTE_W_SPACE_DOT(ex.message());
-  }
 
-  return false;
+    for (auto* acc : feeds_per_root.uniqueKeys()) {
+      acc->onAfterFeedsPurged(feeds_per_root.values(acc));
+    }
+
+    notifyWithCounts();
+    emit dataChangeNotificationTriggered(nullptr, ExternalDataChange::DatabaseCleaned);
+  }
 }
 
 QVariant FeedsModel::data(const QModelIndex& index, int role) const {

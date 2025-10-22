@@ -153,7 +153,7 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
                        {tr("Unsupported"), tr("This is not suppported (yet)."), QSystemTrayIcon::MessageIcon::Warning});
 }
 
-bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
+void ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   auto* cache = dynamic_cast<CacheForServiceRoot*>(this);
 
   if (cache != nullptr) {
@@ -162,17 +162,12 @@ bool ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::markAccountReadUnread(database, accountId(), status)) {
-    updateCounts(false);
-    itemChanged(getSubTree<RootItem>());
-    informOthersAboutDataChange(this,
-                                status == RootItem::ReadStatus::Read ? FeedsModel::ExternalDataChange::MarkedRead
-                                                                     : FeedsModel::ExternalDataChange::MarkedUnread);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::markAccountReadUnread(database, accountId(), status);
+  updateCounts(false);
+  itemChanged(getSubTree<RootItem>());
+  informOthersAboutDataChange(this,
+                              status == RootItem::ReadStatus::Read ? FeedsModel::ExternalDataChange::MarkedRead
+                                                                   : FeedsModel::ExternalDataChange::MarkedUnread);
 }
 
 QList<QAction*> ServiceRoot::addItemMenu() {
@@ -853,21 +848,16 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item, ReadStatus t
   }
 }
 
-bool ServiceRoot::markFeedsReadUnread(const QList<Feed*>& items, RootItem::ReadStatus read) {
+void ServiceRoot::markFeedsReadUnread(const QList<Feed*>& items, RootItem::ReadStatus read) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read)) {
-    account()->updateCounts(false);
-    account()->itemChanged(account()->getSubTree<RootItem>());
-    account()->informOthersAboutDataChange(this,
-                                           read == RootItem::ReadStatus::Read
-                                             ? FeedsModel::ExternalDataChange::MarkedRead
-                                             : FeedsModel::ExternalDataChange::MarkedUnread);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::markFeedsReadUnread(database, textualFeedIds(items), accountId(), read);
+  account()->updateCounts(false);
+  account()->itemChanged(account()->getSubTree<RootItem>());
+  account()->informOthersAboutDataChange(this,
+                                         read == RootItem::ReadStatus::Read
+                                           ? FeedsModel::ExternalDataChange::MarkedRead
+                                           : FeedsModel::ExternalDataChange::MarkedUnread);
 }
 
 QStringList ServiceRoot::textualFeedIds(const QList<Feed*>& feeds) const {

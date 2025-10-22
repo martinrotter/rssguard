@@ -898,12 +898,8 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
     return false;
   }
 
-  if (DatabaseQueries::markMessagesReadUnread(m_db, QStringList() << QString::number(message.m_id), read)) {
-    return m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, {message}, read);
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::markMessagesReadUnread(m_db, QStringList() << QString::number(message.m_id), read);
+  return m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, {message}, read);
 }
 
 bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
@@ -977,17 +973,13 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   }
 
   // Commit changes.
-  if (DatabaseQueries::markMessageImportant(m_db, message.m_id, next_importance)) {
-    return m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem,
-                                                                     QList<QPair<Message, RootItem::Importance>>()
-                                                                       << pair);
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::markMessageImportant(m_db, message.m_id, next_importance);
+  return m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem,
+                                                                   QList<QPair<Message, RootItem::Importance>>()
+                                                                     << pair);
 }
 
-bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages) {
+void MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages) {
   QStringList message_ids;
   message_ids.reserve(messages.size());
 
@@ -1022,18 +1014,14 @@ bool MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
   reloadChangedLayout(changed_indices);
 
   if (!m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem, message_states)) {
-    return false;
+    return;
   }
 
-  if (DatabaseQueries::switchMessagesImportance(m_db, message_ids)) {
-    return m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem, message_states);
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::switchMessagesImportance(m_db, message_ids);
+  m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem, message_states);
 }
 
-bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
+void MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
   QStringList message_ids;
   message_ids.reserve(messages.size());
 
@@ -1069,27 +1057,20 @@ bool MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
   reloadChangedLayout(changed_indices);
 
   if (!m_selectedItem->account()->onBeforeMessagesDelete(m_selectedItem, msgs)) {
-    return false;
+    return;
   }
-
-  bool deleted;
 
   if (m_selectedItem->kind() != RootItem::Kind::Bin) {
-    deleted = DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, true);
+    DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, true);
   }
   else {
-    deleted = DatabaseQueries::permanentlyDeleteMessages(m_db, message_ids);
+    DatabaseQueries::permanentlyDeleteMessages(m_db, message_ids);
   }
 
-  if (deleted) {
-    return m_selectedItem->account()->onAfterMessagesDelete(m_selectedItem, msgs);
-  }
-  else {
-    return false;
-  }
+  m_selectedItem->account()->onAfterMessagesDelete(m_selectedItem, msgs);
 }
 
-bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootItem::ReadStatus read) {
+void MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootItem::ReadStatus read) {
   QStringList message_ids;
   message_ids.reserve(messages.size());
 
@@ -1118,18 +1099,14 @@ bool MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
   reloadChangedLayout(changed_indices);
 
   if (!m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, msgs, read)) {
-    return false;
+    return;
   }
 
-  if (DatabaseQueries::markMessagesReadUnread(m_db, message_ids, read)) {
-    return m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, msgs, read);
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::markMessagesReadUnread(m_db, message_ids, read);
+  m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, msgs, read);
 }
 
-bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
+void MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
   QStringList message_ids;
   message_ids.reserve(messages.size());
 
@@ -1161,15 +1138,11 @@ bool MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
   reloadChangedLayout(changed_indices);
 
   if (!m_selectedItem->account()->onBeforeMessagesRestoredFromBin(m_selectedItem, msgs)) {
-    return false;
+    return;
   }
 
-  if (DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, false)) {
-    return m_selectedItem->account()->onAfterMessagesRestoredFromBin(m_selectedItem, msgs);
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, false);
+  m_selectedItem->account()->onAfterMessagesRestoredFromBin(m_selectedItem, msgs);
 }
 
 void MessagesModel::markArticleDataReadUnread(bool read) {

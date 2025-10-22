@@ -43,7 +43,7 @@ bool ImportantNode::cleanMessages(bool clean_read_only) {
   }
 }
 
-bool ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
+void ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
@@ -53,18 +53,13 @@ bool ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::markImportantMessagesReadUnread(database, service->accountId(), status)) {
-    service->updateCounts(false);
-    service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(this,
-                                         status == RootItem::ReadStatus::Read
-                                           ? FeedsModel::ExternalDataChange::MarkedRead
-                                           : FeedsModel::ExternalDataChange::MarkedUnread);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::markImportantMessagesReadUnread(database, service->accountId(), status);
+  service->updateCounts(false);
+  service->itemChanged(service->getSubTree<RootItem>());
+  service->informOthersAboutDataChange(this,
+                                       status == RootItem::ReadStatus::Read
+                                         ? FeedsModel::ExternalDataChange::MarkedRead
+                                         : FeedsModel::ExternalDataChange::MarkedUnread);
 }
 
 int ImportantNode::countOfUnreadMessages() const {

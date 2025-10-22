@@ -56,7 +56,7 @@ QList<QAction*> RecycleBin::contextMenuFeedsList() {
   return m_contextMenu;
 }
 
-bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
+void RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
@@ -65,18 +65,13 @@ bool RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
     cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
   }
 
-  if (DatabaseQueries::markBinReadUnread(database, service->accountId(), status)) {
-    updateCounts(false);
-    service->itemChanged(QList<RootItem*>() << this);
-    service->informOthersAboutDataChange(this,
-                                         status == RootItem::ReadStatus::Read
-                                           ? FeedsModel::ExternalDataChange::MarkedRead
-                                           : FeedsModel::ExternalDataChange::MarkedUnread);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::markBinReadUnread(database, service->accountId(), status);
+  updateCounts(false);
+  service->itemChanged(QList<RootItem*>() << this);
+  service->informOthersAboutDataChange(this,
+                                       status == RootItem::ReadStatus::Read
+                                         ? FeedsModel::ExternalDataChange::MarkedRead
+                                         : FeedsModel::ExternalDataChange::MarkedUnread);
 }
 
 bool RecycleBin::cleanMessages(bool clear_only_read) {
@@ -94,7 +89,7 @@ bool RecycleBin::cleanMessages(bool clear_only_read) {
   }
 }
 
-bool RecycleBin::empty() {
+void RecycleBin::empty() {
   if (MsgBox::show(nullptr,
                    QMessageBox::Icon::Question,
                    tr("Are you sure?"),
@@ -103,23 +98,18 @@ bool RecycleBin::empty() {
                    {},
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
                    QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
-    return false;
+    return;
   }
 
-  return cleanMessages(false);
+  cleanMessages(false);
 }
 
-bool RecycleBin::restore() {
+void RecycleBin::restore() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   ServiceRoot* parent_root = account();
 
-  if (DatabaseQueries::restoreBin(database, parent_root->accountId())) {
-    parent_root->updateCounts(true);
-    parent_root->itemChanged(parent_root->getSubTree<RootItem>());
-    parent_root->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::RecycleBinRestored);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::restoreBin(database, parent_root->accountId());
+  parent_root->updateCounts(true);
+  parent_root->itemChanged(parent_root->getSubTree<RootItem>());
+  parent_root->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::RecycleBinRestored);
 }

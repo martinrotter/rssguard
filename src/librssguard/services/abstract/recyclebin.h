@@ -14,15 +14,15 @@ class RSSGUARD_DLLSPEC RecycleBin : public RootItem {
 
     virtual QString additionalTooltip() const;
     virtual QList<QAction*> contextMenuFeedsList();
-    virtual bool markAsReadUnread(ReadStatus status);
+    virtual void markAsReadUnread(ReadStatus status);
     virtual bool cleanMessages(bool clear_only_read);
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
     virtual void updateCounts(bool update_total_count);
 
   public slots:
-    virtual bool empty();
-    virtual bool restore();
+    virtual void empty();
+    virtual void restore();
 
   private:
     int m_totalCount;

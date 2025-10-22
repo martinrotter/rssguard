@@ -65,7 +65,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     virtual bool canBeDeleted() const;
     virtual void deleteItem();
     virtual void editItems(const QList<RootItem*>& items);
-    virtual bool markAsReadUnread(ReadStatus status);
+    virtual void markAsReadUnread(ReadStatus status);
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual LabelOperation supportedLabelOperations() const;
@@ -223,7 +223,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     bool cleanFeeds(const QList<Feed*>& items, bool clean_read_only);
 
     // Marks all messages from feeds read/unread.
-    bool markFeedsReadUnread(const QList<Feed*>& items, ReadStatus read);
+    void markFeedsReadUnread(const QList<Feed*>& items, ReadStatus read);
 
     // Obvious methods to wrap signals.
     void itemChanged(const QList<RootItem*>& items);

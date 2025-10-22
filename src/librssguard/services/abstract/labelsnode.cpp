@@ -30,7 +30,7 @@ QString LabelsNode::additionalTooltip() const {
   return tr("Number of labels: %1").arg(labels().size());
 }
 
-bool LabelsNode::markAsReadUnread(RootItem::ReadStatus status) {
+void LabelsNode::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
@@ -41,14 +41,12 @@ bool LabelsNode::markAsReadUnread(RootItem::ReadStatus status) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::markAllLabelledMessagesReadUnread(database, service->accountId(), status);
-
   service->updateCounts(false);
   service->itemChanged(service->getSubTree<RootItem>());
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read
                                          ? FeedsModel::ExternalDataChange::MarkedRead
                                          : FeedsModel::ExternalDataChange::MarkedUnread);
-  return true;
 }
 
 void LabelsNode::updateCounts(bool including_total_count) {

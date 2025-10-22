@@ -175,7 +175,7 @@ void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
                                                 ->driver()
                                                 ->connection(objectName(),
                                                              DatabaseDriver::DesiredStorageType::FromSettings),
-                                              QStringList() << QString::number(m_message.m_id),
+                                              {QString::number(m_message.m_id)},
                                               read);
       m_root->account()->onAfterSetMessagesRead(m_root.data(), QList<Message>() << m_message, read);
       m_message.m_isRead = read == RootItem::ReadStatus::Read;
@@ -199,7 +199,7 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
                                                   ->driver()
                                                   ->connection(objectName(),
                                                                DatabaseDriver::DesiredStorageType::FromSettings),
-                                                QStringList() << QString::number(m_message.m_id));
+                                                {QString::number(m_message.m_id)});
       m_root->account()->onAfterSwitchMessageImportance(m_root.data(),
                                                         QList<ImportanceChange>()
                                                           << ImportanceChange(m_message,

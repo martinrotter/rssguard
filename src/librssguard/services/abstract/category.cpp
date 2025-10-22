@@ -58,7 +58,7 @@ bool Category::cleanMessages(bool clean_read_only) {
   return account()->cleanFeeds(getSubTreeFeeds(), clean_read_only);
 }
 
-bool Category::markAsReadUnread(RootItem::ReadStatus status) {
+void Category::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
@@ -66,7 +66,7 @@ bool Category::markAsReadUnread(RootItem::ReadStatus status) {
     cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
   }
 
-  return service->markFeedsReadUnread(getSubTreeFeeds(), status);
+  service->markFeedsReadUnread(getSubTreeFeeds(), status);
 }
 
 QString Category::additionalTooltip() const {

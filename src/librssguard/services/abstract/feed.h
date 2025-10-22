@@ -61,7 +61,7 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
 
     virtual QString additionalTooltip() const;
     virtual Qt::ItemFlags additionalFlags() const;
-    virtual bool markAsReadUnread(ReadStatus status);
+    virtual void markAsReadUnread(ReadStatus status);
     virtual bool cleanMessages(bool clean_read_only);
     virtual int countOfAllMessages() const;
     virtual int countOfUnreadMessages() const;

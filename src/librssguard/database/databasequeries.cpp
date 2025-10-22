@@ -401,7 +401,7 @@ void DatabaseQueries::markAllLabelledMessagesReadUnread(const QSqlDatabase& db,
   }
 }
 
-bool DatabaseQueries::markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read) {
+void DatabaseQueries::markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read) {
   QSqlQuery q(db);
   q.setForwardOnly(true);
 
@@ -419,14 +419,15 @@ bool DatabaseQueries::markLabelledMessagesReadUnread(const QSqlDatabase& db, Lab
   q.bindValue(QSL(":account_id"), label->account()->accountId());
   q.bindValue(QSL(":label_id"), label->id());
 
-  auto res = q.exec();
-
-  DatabaseFactory::logLastExecutedQuery(q);
-
-  return res;
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::markImportantMessagesReadUnread(const QSqlDatabase& db,
+void DatabaseQueries::markImportantMessagesReadUnread(const QSqlDatabase& db,
                                                       int account_id,
                                                       RootItem::ReadStatus read) {
   QSqlQuery q(db);
@@ -436,10 +437,16 @@ bool DatabaseQueries::markImportantMessagesReadUnread(const QSqlDatabase& db,
                 "WHERE is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
   q.bindValue(QSL(":account_id"), account_id);
-  return q.exec();
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::markUnreadMessagesRead(const QSqlDatabase& db, int account_id) {
+void DatabaseQueries::markUnreadMessagesRead(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -447,81 +454,49 @@ bool DatabaseQueries::markUnreadMessagesRead(const QSqlDatabase& db, int account
                 "WHERE is_read = 0 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":read"), 1);
   q.bindValue(QSL(":account_id"), account_id);
-  return q.exec();
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::markMessagesReadUnread(const QSqlDatabase& db,
+void DatabaseQueries::markMessagesReadUnread(const QSqlDatabase& db,
                                              const QStringList& ids,
                                              RootItem::ReadStatus read) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  return q.exec(QString(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);"))
-                  .arg(ids.join(QSL(", ")), read == RootItem::ReadStatus::Read ? QSL("1") : QSL("0")));
-}
+  q.prepare(QSL("UPDATE Messages SET is_read = %2 WHERE id IN (%1);")
+              .arg(ids.join(QSL(", ")), read == RootItem::ReadStatus::Read ? QSL("1") : QSL("0")));
 
-void DatabaseQueries::markMessagesReadUnreadImportant(const QSqlDatabase& db,
-                                                      int account_id,
-                                                      const QStringList& custom_ids,
-                                                      RootItem::ReadStatus read,
-                                                      RootItem::Importance important) {
-  auto stringed_ids = boolinq::from(custom_ids.begin(), custom_ids.end())
-                        .select([](const QString& id) {
-                          return QSL("'%1'").arg(id);
-                        })
-                        .toStdList();
-
-  QStringList textual_ids = FROM_STD_LIST(QStringList, stringed_ids);
-  QSqlQuery q(db);
-  QStringList setters;
-
-  if (read != RootItem::ReadStatus::Unknown) {
-    setters.append(QSL("is_read = :read"));
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
   }
-
-  if (important != RootItem::Importance::Unknown) {
-    setters.append(QSL("is_important = :important"));
-  }
-
-  q.setForwardOnly(true);
-
-  QString statement = QSL("UPDATE Messages SET %1 "
-                          "  WHERE account_id = :account_id AND custom_id in (%2);")
-                        .arg(setters.join(", "), textual_ids.join(", "));
-
-  if (!q.prepare(statement)) {
+  else {
     throw SqlException(q.lastError());
   }
-
-  q.bindValue(QSL(":read"), int(read));
-  q.bindValue(QSL(":important"), int(important));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
 }
 
-bool DatabaseQueries::markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance) {
+void DatabaseQueries::markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-
-  if (!q.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"))) {
-    qWarningNN << LOGSEC_DB << "Query preparation failed for message importance switch.";
-    return false;
-  }
-
+  q.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"));
   q.bindValue(QSL(":id"), id);
   q.bindValue(QSL(":important"), (int)importance);
 
-  // Commit changes.
-  return q.exec();
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::markFeedsReadUnread(const QSqlDatabase& db,
+void DatabaseQueries::markFeedsReadUnread(const QSqlDatabase& db,
                                           const QStringList& ids,
                                           int account_id,
                                           RootItem::ReadStatus read) {
@@ -533,10 +508,16 @@ bool DatabaseQueries::markFeedsReadUnread(const QSqlDatabase& db,
               .arg(ids.join(QSL(", "))));
   q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
   q.bindValue(QSL(":account_id"), account_id);
-  return q.exec();
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::markBinReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
+void DatabaseQueries::markBinReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -544,49 +525,88 @@ bool DatabaseQueries::markBinReadUnread(const QSqlDatabase& db, int account_id, 
                 "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
   q.bindValue(QSL(":account_id"), account_id);
-  return q.exec();
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::markAccountReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
+void DatabaseQueries::markAccountReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages SET is_read = :read WHERE is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
-  return q.exec();
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::switchMessagesImportance(const QSqlDatabase& db, const QStringList& ids) {
+void DatabaseQueries::switchMessagesImportance(const QSqlDatabase& db, const QStringList& ids) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  return q.exec(QSL("UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);").arg(ids.join(QSL(", "))));
+  q.prepare(QSL("UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);").arg(ids.join(QSL(", "))));
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::permanentlyDeleteMessages(const QSqlDatabase& db, const QStringList& ids) {
+void DatabaseQueries::permanentlyDeleteMessages(const QSqlDatabase& db, const QStringList& ids) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  return q.exec(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE id IN (%1);").arg(ids.join(QSL(", "))));
+  q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE id IN (%1);").arg(ids.join(QSL(", "))));
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::deleteOrRestoreMessagesToFromBin(const QSqlDatabase& db, const QStringList& ids, bool deleted) {
+void DatabaseQueries::deleteOrRestoreMessagesToFromBin(const QSqlDatabase& db, const QStringList& ids, bool deleted) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  return q.exec(QSL("UPDATE Messages SET is_deleted = %2, is_pdeleted = %3 WHERE id IN (%1);")
-                  .arg(ids.join(QSL(", ")), QString::number(deleted ? 1 : 0), QString::number(0)));
+  q.prepare(QSL("UPDATE Messages SET is_deleted = %2, is_pdeleted = %3 WHERE id IN (%1);")
+              .arg(ids.join(QSL(", ")), QString::number(deleted ? 1 : 0), QString::number(0)));
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::restoreBin(const QSqlDatabase& db, int account_id) {
+void DatabaseQueries::restoreBin(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages SET is_deleted = 0 "
                 "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
-  return q.exec();
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
 bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,

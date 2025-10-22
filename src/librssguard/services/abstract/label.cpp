@@ -113,7 +113,7 @@ bool Label::cleanMessages(bool clear_only_read) {
   }
 }
 
-bool Label::markAsReadUnread(RootItem::ReadStatus status) {
+void Label::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
@@ -123,16 +123,11 @@ bool Label::markAsReadUnread(RootItem::ReadStatus status) {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::markLabelledMessagesReadUnread(database, this, status)) {
-    service->updateCounts(false);
-    service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(this,
-                                         status == RootItem::ReadStatus::Read
-                                           ? FeedsModel::ExternalDataChange::MarkedRead
-                                           : FeedsModel::ExternalDataChange::MarkedUnread);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::markLabelledMessagesReadUnread(database, this, status);
+  service->updateCounts(false);
+  service->itemChanged(service->getSubTree<RootItem>());
+  service->informOthersAboutDataChange(this,
+                                       status == RootItem::ReadStatus::Read
+                                         ? FeedsModel::ExternalDataChange::MarkedRead
+                                         : FeedsModel::ExternalDataChange::MarkedUnread);
 }

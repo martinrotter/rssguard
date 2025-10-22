@@ -69,14 +69,10 @@ bool RootItem::isFetching() const {
   return false;
 }
 
-bool RootItem::markAsReadUnread(ReadStatus status) {
-  bool result = true;
-
+void RootItem::markAsReadUnread(ReadStatus status) {
   for (RootItem* child : std::as_const(m_childItems)) {
-    result &= child->markAsReadUnread(status);
+    child->markAsReadUnread(status);
   }
-
-  return result;
 }
 
 bool RootItem::cleanMessages(bool clear_only_read) {

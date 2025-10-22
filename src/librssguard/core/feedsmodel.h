@@ -109,8 +109,8 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     void removeItem(RootItem* deleting_item);
 
     // Recycle bins operations.
-    bool restoreAllBins();
-    bool emptyAllBins();
+    void restoreAllBins();
+    void emptyAllBins();
 
     void changeSortOrder(RootItem* item, bool move_top, bool move_bottom, int new_sort_order = {});
 
@@ -119,9 +119,9 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     void sortDirectDescendants(RootItem* item, RootItem::Kind kind_to_sort);
 
     // Feeds operations.
-    bool markItemRead(RootItem* item, RootItem::ReadStatus read);
-    bool markItemCleared(RootItem* item, bool clean_read_only);
-    bool purgeArticles(const QList<Feed*>& feeds);
+    void markItemRead(RootItem* item, RootItem::ReadStatus read);
+    void markItemCleared(RootItem* item, bool clean_read_only);
+    void purgeArticles(const QList<Feed*>& feeds);
 
     // Signals that properties (probably counts)
     // of ALL items have changed.

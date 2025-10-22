@@ -82,10 +82,10 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     bool setMessageRead(int row_index, RootItem::ReadStatus read);
 
     // BATCH messages manipulators.
-    bool switchBatchMessageImportance(const QModelIndexList& messages);
-    bool setBatchMessagesDeleted(const QModelIndexList& messages);
-    bool setBatchMessagesRead(const QModelIndexList& messages, RootItem::ReadStatus read);
-    bool setBatchMessagesRestored(const QModelIndexList& messages);
+    void switchBatchMessageImportance(const QModelIndexList& messages);
+    void setBatchMessagesDeleted(const QModelIndexList& messages);
+    void setBatchMessagesRead(const QModelIndexList& messages, RootItem::ReadStatus read);
+    void setBatchMessagesRestored(const QModelIndexList& messages);
 
     // DATA only manipulators.
     // NOTE: These only edit model data and do not make any DB writes.

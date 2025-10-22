@@ -85,7 +85,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
 
     // Performs all needed steps (DB update, remote server update)
     // to mark this item as read/unread.
-    virtual bool markAsReadUnread(ReadStatus status);
+    virtual void markAsReadUnread(ReadStatus status);
 
     // This method should "clean" all messages it contains.
     //

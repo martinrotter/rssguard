@@ -230,7 +230,7 @@ bool Feed::cleanMessages(bool clean_read_only) {
 // to same clean....
 
 // TODO: prověřit všechna volání všech metod z databasequeries a přejít na používání vyjimek
-bool Feed::markAsReadUnread(RootItem::ReadStatus status) {
+void Feed::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
 
@@ -238,7 +238,7 @@ bool Feed::markAsReadUnread(RootItem::ReadStatus status) {
     cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
   }
 
-  return service->markFeedsReadUnread({this}, status);
+  service->markFeedsReadUnread({this}, status);
 }
 
 QString Feed::getAutoUpdateStatusDescription() const {
