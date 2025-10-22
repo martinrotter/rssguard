@@ -16,7 +16,7 @@ class GreaderFeed : public Feed {
     explicit GreaderFeed(RootItem* parent = nullptr);
 
     virtual bool canBeDeleted() const;
-    virtual bool deleteItem();
+    virtual void deleteItem();
 
   private:
     GreaderServiceRoot* serviceRoot() const;

@@ -23,22 +23,15 @@ bool GreaderFeed::canBeDeleted() const {
   return true;
 }
 
-bool GreaderFeed::deleteItem() {
-  try {
-    serviceRoot()->network()->subscriptionEdit(QSL(GREADER_API_EDIT_SUBSCRIPTION_DELETE),
-                                               customId(),
-                                               {},
-                                               {},
-                                               {},
-                                               serviceRoot()->networkProxy());
-    removeItself();
-    serviceRoot()->requestItemRemoval(this);
-    return true;
-  }
-  catch (const ApplicationException& ex) {
-    qWarningNN << LOGSEC_GREADER << "Unsubscribing from feed failed, error:" << QUOTE_W_SPACE_DOT(ex.message());
-    return false;
-  }
+void GreaderFeed::deleteItem() {
+  serviceRoot()->network()->subscriptionEdit(QSL(GREADER_API_EDIT_SUBSCRIPTION_DELETE),
+                                             customId(),
+                                             {},
+                                             {},
+                                             {},
+                                             serviceRoot()->networkProxy());
+  removeItself();
+  serviceRoot()->requestItemRemoval(this);
 }
 
 bool GreaderFeed::removeItself() {

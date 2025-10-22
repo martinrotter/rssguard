@@ -28,7 +28,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QString serializeCustomData(const QVariantHash& data);
     static QVariantHash deserializeCustomData(const QString& data);
 
-    // Label operators.
+    // Labels
     static void deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static void assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static void setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
@@ -38,7 +38,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void createLabel(const QSqlDatabase& db, Label* label, int account_id, int new_label_id = 0);
     static void purgeLabelAssignments(const QSqlDatabase& db, Label* label);
 
-    // Probe operators.
+    // Probes
     static void createProbe(const QSqlDatabase& db, Search* probe, int account_id);
     static QList<Search*> getProbesForAccount(const QSqlDatabase& db, int account_id);
     static void deleteProbe(const QSqlDatabase& db, Search* probe);

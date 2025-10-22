@@ -474,15 +474,25 @@ void FeedsView::deleteSelectedItem() {
                              })
                              .toStdList();
 
-  for (const QPointer<RootItem>& pnt : std_pointed_items) {
-    if (pnt.isNull()) {
-      continue;
-    }
+  try {
+    for (const QPointer<RootItem>& pnt : std_pointed_items) {
+      if (pnt.isNull()) {
+        continue;
+      }
 
-    if (pnt->deleteItem()) {
-      m_proxyModel->invalidate();
+      pnt->deleteItem();
     }
   }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Failed to delete item:" << NONQUOTE_W_SPACE_DOT(ex.message());
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Cannot delete item"),
+                                    tr("Failed to delete selected item: %1.").arg(ex.message()),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true));
+  }
+
+  // m_proxyModel->invalidate();
 
   // Changes are done, unlock the update master lock.
   qApp->feedUpdateLock()->unlock();
@@ -772,17 +782,6 @@ void FeedsView::drawBranches(QPainter* painter, const QRect& rect, const QModelI
   if (!rootIsDecorated()) {
     painter->restore();
   }
-}
-
-void FeedsView::focusInEvent(QFocusEvent* event) {
-  QTreeView::focusInEvent(event);
-
-  /*
-  if (currentIndex().isValid()) {
-    selectionModel()->select(currentIndex(),
-                             QItemSelectionModel::SelectionFlag::Select | QItemSelectionModel::SelectionFlag::Rows);
-  }
-  */
 }
 
 void FeedsView::filterItems(SearchLineEdit::SearchMode mode,

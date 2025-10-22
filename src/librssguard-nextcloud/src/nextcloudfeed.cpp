@@ -15,14 +15,10 @@ bool NextcloudFeed::canBeDeleted() const {
   return true;
 }
 
-bool NextcloudFeed::deleteItem() {
-  if (serviceRoot()->network()->deleteFeed(customId(), account()->networkProxy()) && removeItself()) {
-    serviceRoot()->requestItemRemoval(this);
-    return true;
-  }
-  else {
-    return false;
-  }
+void NextcloudFeed::deleteItem() {
+  serviceRoot()->network()->deleteFeed(customId(), account()->networkProxy());
+  removeItself();
+  serviceRoot()->requestItemRemoval(this);
 }
 
 bool NextcloudFeed::removeItself() {

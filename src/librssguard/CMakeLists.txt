@@ -53,6 +53,8 @@ set(SOURCES
   exceptions/processexception.h
   exceptions/scriptexception.cpp
   exceptions/scriptexception.h
+  exceptions/sqlexception.cpp
+  exceptions/sqlexception.h
   filtering/filterobjects.cpp
   filtering/filterobjects.h
   filtering/filteringsystem.cpp

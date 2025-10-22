@@ -20,10 +20,10 @@ class StandardCategory : public Category {
     virtual bool performDragDropChange(RootItem* target_item);
     virtual bool canBeEdited() const;
     virtual bool canBeDeleted() const;
-    virtual bool deleteItem();
+    virtual void deleteItem();
 
   private:
-    bool removeItself();
+    void removeItself();
 };
 
 #endif // FEEDSMODELCLASSICCATEGORY_H

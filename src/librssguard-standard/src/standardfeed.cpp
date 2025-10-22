@@ -106,14 +106,9 @@ StandardServiceRoot* StandardFeed::serviceRoot() const {
   return qobject_cast<StandardServiceRoot*>(account());
 }
 
-bool StandardFeed::deleteItem() {
-  if (removeItself()) {
-    serviceRoot()->requestItemRemoval(this);
-    return true;
-  }
-  else {
-    return false;
-  }
+void StandardFeed::deleteItem() {
+  removeItself();
+  serviceRoot()->requestItemRemoval(this);
 }
 
 NetworkFactory::NetworkAuthentication StandardFeed::protection() const {
@@ -445,10 +440,10 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
   }
 }
 
-bool StandardFeed::removeItself() {
+void StandardFeed::removeItself() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  return DatabaseQueries::deleteFeed(database, this, account()->accountId());
+  DatabaseQueries::deleteFeed(database, this, account()->accountId());
 }
 
 QString StandardFeed::getHttpDescription() const {

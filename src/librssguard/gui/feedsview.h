@@ -101,11 +101,10 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void requestViewNextUnreadMessage();
 
   protected:
-    void focusInEvent(QFocusEvent* event);
-    void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
-    void keyPressEvent(QKeyEvent* event);
-    void contextMenuEvent(QContextMenuEvent* event);
-    void mouseDoubleClickEvent(QMouseEvent* event);
+    virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
+    virtual void keyPressEvent(QKeyEvent* event);
+    virtual void contextMenuEvent(QContextMenuEvent* event);
+    virtual void mouseDoubleClickEvent(QMouseEvent* event);
     virtual void drawBranches(QPainter* painter, const QRect& rect, const QModelIndex& index) const;
     virtual void drawRow(QPainter* painter, const QStyleOptionViewItem& options, const QModelIndex& index) const;
 

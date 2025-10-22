@@ -36,17 +36,12 @@ ServiceRoot::ServiceRoot(RootItem* parent)
 
 ServiceRoot::~ServiceRoot() {}
 
-bool ServiceRoot::deleteItem() {
+void ServiceRoot::deleteItem() {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::deleteAccount(database, this)) {
-    stop();
-    requestItemRemoval(this);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::deleteAccount(database, this);
+  stop();
+  requestItemRemoval(this);
 }
 
 void ServiceRoot::editItems(const QList<RootItem*>& items) {
@@ -102,7 +97,18 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
     if (form.execForEdit(lbl)) {
       QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
-      DatabaseQueries::updateLabel(db, lbl);
+      try {
+        DatabaseQueries::updateLabel(db, lbl);
+        itemChanged({lbl});
+      }
+      catch (const ApplicationException& ex) {
+        qCriticalNN << LOGSEC_CORE << "Failed to update label:" << NONQUOTE_W_SPACE_DOT(ex.message());
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             GuiMessage(tr("Cannot update label"),
+                                        tr("Failed to update label with new information: %1.").arg(ex.message()),
+                                        QSystemTrayIcon::MessageIcon::Critical),
+                             GuiMessageDestination(true, true));
+      }
     }
 
     return;
@@ -126,9 +132,18 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
     if (form.execForEdit(probe)) {
       QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
-      DatabaseQueries::updateProbe(db, probe);
-      updateCounts(probe);
-      itemChanged({probe});
+      try {
+        DatabaseQueries::updateProbe(db, probe);
+        itemChanged({probe});
+      }
+      catch (const ApplicationException& ex) {
+        qCriticalNN << LOGSEC_CORE << "Failed to update probe:" << NONQUOTE_W_SPACE_DOT(ex.message());
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             GuiMessage(tr("Cannot update probe item"),
+                                        tr("Failed to update selected probe: %1.").arg(ex.message()),
+                                        QSystemTrayIcon::MessageIcon::Critical),
+                             GuiMessageDestination(true, true));
+      }
     }
 
     return;

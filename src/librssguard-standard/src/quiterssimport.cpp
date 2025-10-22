@@ -8,6 +8,7 @@
 #include "src/standardserviceroot.h"
 
 #include <librssguard/database/databasequeries.h>
+#include <librssguard/exceptions/sqlexception.h>
 #include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/gui/dialogs/formprogressworker.h>
 #include <librssguard/miscellaneous/application.h>
@@ -277,7 +278,7 @@ RootItem* QuiteRssImport::extractFeedsAndCategories(const QSqlDatabase& db) cons
                   "  parentId "
                   "FROM feeds "
                   "ORDER BY xmlUrl ASC, parentId ASC;"))) {
-    throw ApplicationException(q.lastError().text());
+    throw SqlException(q.lastError());
   }
 
   DatabaseFactory::logLastExecutedQuery(q);
@@ -347,7 +348,7 @@ QList<Label*> QuiteRssImport::extractLabels(const QSqlDatabase& db) const {
   QSqlQuery q(db);
 
   if (!q.exec(QSL("SELECT id, name FROM labels;"))) {
-    throw ApplicationException(q.lastError().text());
+    throw SqlException(q.lastError());
   }
 
   DatabaseFactory::logLastExecutedQuery(q);
@@ -387,7 +388,7 @@ void QuiteRssImport::checkIfQuiteRss(const QSqlDatabase& db) const {
   QSqlQuery q(db);
 
   if (!q.exec(QSL("SELECT name FROM sqlite_master WHERE type='table';"))) {
-    throw ApplicationException(q.lastError().text());
+    throw SqlException(q.lastError());
   }
 
   DatabaseFactory::logLastExecutedQuery(q);

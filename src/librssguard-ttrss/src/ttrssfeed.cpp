@@ -23,18 +23,15 @@ bool TtRssFeed::canBeDeleted() const {
   return true;
 }
 
-bool TtRssFeed::deleteItem() {
+void TtRssFeed::deleteItem() {
   TtRssUnsubscribeFeedResponse response =
     serviceRoot()->network()->unsubscribeFeed(customNumericId(), account()->networkProxy());
 
   if (response.code() == QSL(UFF_OK) && removeItself()) {
     serviceRoot()->requestItemRemoval(this);
-    return true;
   }
   else {
-    qWarningNN << LOGSEC_TTRSS
-               << "Unsubscribing from feed failed, received JSON:" << QUOTE_W_SPACE_DOT(response.toString());
-    return false;
+    throw ApplicationException(response.toString());
   }
 }
 

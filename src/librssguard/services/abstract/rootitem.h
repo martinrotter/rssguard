@@ -79,7 +79,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // Performs deletion of the item, this
     // method should NOT display any additional dialogs.
     // Returns result status.
-    virtual bool deleteItem();
+    virtual void deleteItem();
 
     virtual bool isFetching() const;
 

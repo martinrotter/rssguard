@@ -48,39 +48,27 @@ bool StandardCategory::canBeDeleted() const {
   return true;
 }
 
-bool StandardCategory::deleteItem() {
-  if (removeItself()) {
-    serviceRoot()->requestItemRemoval(this);
-    return true;
-  }
-  else {
-    return false;
-  }
+void StandardCategory::deleteItem() {
+  removeItself();
+  serviceRoot()->requestItemRemoval(this);
 }
 
-bool StandardCategory::removeItself() {
-  bool children_removed = true;
-
+void StandardCategory::removeItself() {
   // Remove all child items (feeds and categories)
   // from the database.
   auto chi = childItems();
 
   for (RootItem* child : std::as_const(chi)) {
     if (child->kind() == RootItem::Kind::Category) {
-      children_removed &= qobject_cast<StandardCategory*>(child)->removeItself();
+      qobject_cast<StandardCategory*>(child)->removeItself();
     }
     else if (child->kind() == RootItem::Kind::Feed) {
-      children_removed &= qobject_cast<StandardFeed*>(child)->removeItself();
+      qobject_cast<StandardFeed*>(child)->removeItself();
     }
   }
 
-  if (children_removed) {
-    // Children are removed, remove this standard category too.
-    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+  // Children are removed, remove this standard category too.
+  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-    return DatabaseQueries::deleteCategory(database, this);
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::deleteCategory(database, this);
 }

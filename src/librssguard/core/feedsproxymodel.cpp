@@ -518,13 +518,15 @@ void FeedsProxyModel::setSelectedItem(const RootItem* selected_item) {
   auto* previous_selected_item = m_selectedItem;
   m_selectedItem = selected_item;
 
-  // TODO: test this when removing feeds, changing all filters etc.
-  // invalidateFilter()
+  // TODO: test this thoroughly on linux
   if (previous_selected_item != nullptr) {
-    // QTimer::singleShot(1000, [this]() {
     auto source_idx = m_sourceModel->indexForItem(previous_selected_item);
-    m_sourceModel->reloadChangedLayout({source_idx});
-    //});
+
+    if (source_idx.isValid()) {
+      // QTimer::singleShot(0, m_sourceModel, [&]() {
+      m_sourceModel->reloadChangedLayout({source_idx});
+      //});
+    }
   }
 }
 

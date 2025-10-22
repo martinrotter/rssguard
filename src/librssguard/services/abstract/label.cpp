@@ -47,12 +47,11 @@ bool Label::canBeDeleted() const {
   return Globals::hasFlag(account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Deleting);
 }
 
-bool Label::deleteItem() {
+void Label::deleteItem() {
   QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::deleteLabel(db, this);
   account()->requestItemRemoval(this);
-  return true;
 }
 
 void Label::updateCounts(bool including_total_count) {

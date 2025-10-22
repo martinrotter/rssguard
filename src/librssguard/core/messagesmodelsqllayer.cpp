@@ -5,6 +5,7 @@
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
+#include "exceptions/sqlexception.h"
 #include "miscellaneous/application.h"
 
 MessagesModelSqlLayer::MessagesModelSqlLayer() : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)) {
@@ -102,7 +103,7 @@ QList<Message> MessagesModelSqlLayer::fetchMessages(const QHash<QString, Label*>
   q.setForwardOnly(true);
 
   if (!q.exec(statemnt)) {
-    throw ApplicationException(q.lastError().text());
+    throw SqlException(q.lastError());
   }
 
   DatabaseFactory::logLastExecutedQuery(q);

@@ -63,9 +63,7 @@ bool RootItem::canBeDeleted() const {
   return false;
 }
 
-bool RootItem::deleteItem() {
-  return false;
-}
+void RootItem::deleteItem() {}
 
 bool RootItem::isFetching() const {
   return false;

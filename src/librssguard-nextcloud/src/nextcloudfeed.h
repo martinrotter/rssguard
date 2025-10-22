@@ -14,7 +14,7 @@ class NextcloudFeed : public Feed {
     explicit NextcloudFeed(RootItem* parent = nullptr);
 
     virtual bool canBeDeleted() const;
-    virtual bool deleteItem();
+    virtual void deleteItem();
 
   private:
     bool removeItself();

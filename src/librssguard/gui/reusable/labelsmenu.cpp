@@ -44,20 +44,30 @@ void LabelsMenu::changeLabelAssignment(bool assign) {
   auto lbl = origin->label();
 
   if (origin != nullptr && lbl != nullptr) {
-    for (auto& msg : m_messages) {
-      // NOTE: To avoid duplicates.
-      msg.m_assignedLabels.removeAll(lbl);
+    try {
+      for (auto& msg : m_messages) {
+        // NOTE: To avoid duplicates.
+        msg.m_assignedLabels.removeAll(lbl);
 
-      if (assign) {
-        lbl->assignToMessage(msg, true);
-        msg.m_assignedLabels.append(lbl);
-      }
-      else {
-        lbl->deassignFromMessage(msg, true);
-        msg.m_assignedLabels.removeOne(lbl);
-      }
+        if (assign) {
+          lbl->assignToMessage(msg, true);
+          msg.m_assignedLabels.append(lbl);
+        }
+        else {
+          lbl->deassignFromMessage(msg, true);
+          msg.m_assignedLabels.removeOne(lbl);
+        }
 
-      emit setModelArticleLabelIds(msg.m_id, msg.m_assignedLabels);
+        emit setModelArticleLabelIds(msg.m_id, msg.m_assignedLabels);
+      }
+    }
+    catch (const ApplicationException& ex) {
+      qCriticalNN << LOGSEC_CORE << "Failed to (de)assign label to/from article:" << NONQUOTE_W_SPACE_DOT(ex.message());
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage(tr("Cannot change labels"),
+                                      tr("Failed to (de)assign label to/from article: %1.").arg(ex.message()),
+                                      QSystemTrayIcon::MessageIcon::Critical),
+                           GuiMessageDestination(true, true));
     }
   }
 }
