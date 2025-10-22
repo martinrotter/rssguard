@@ -139,7 +139,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
       <source>Add articles with any date into the database</source>
-      <translation>Alle artikelen ongeacht datum toevoegen aan de database</translation>
+      <translation>Alle artikelen ongeacht datum toevoegen aan de databank</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
@@ -175,7 +175,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
       <source>In database, keep</source>
-      <translation>In database, bewaren</translation>
+      <translation>In databank, bewaren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
@@ -198,7 +198,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation>Het instellen van eventuele beperkingen hier zal %1 instructie geven om sommige nieuw artikelen te negeren. De logica wordt uitgevoert NA alle artikelfilters, zelfs als je artikel filter een bepaald artikel accepteert, het kan vervolgens nog steeds genegeerd worden en niet toegevoegd worden aan de database.</translation>
+      <translation>Het instellen van eventuele beperkingen hier zal %1 instructie geven om sommige nieuw artikelen te negeren. De logica wordt uitgevoert NA alle artikelfilters, zelfs als je artikel filter een bepaald artikel accepteert, het kan vervolgens nog steeds genegeerd worden en niet toegevoegd worden aan de databank.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
@@ -457,12 +457,12 @@ Aantal uitgeschakelde feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
       <source>Cannot connect to database</source>
-      <translation>Kan niet verbinden met database</translation>
+      <translation>Kan niet verbinden met databank</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation>Er is geen verbinding met u database tot stand gebracht met fout:&apos;%1&apos;. Terugvallen naar SQLite.</translation>
+      <translation>Er is geen verbinding met u databank tot stand gebracht met fout:&apos;%1&apos;. Terugvallen naar SQLite.</translation>
     </message>
   </context>
   <context>
@@ -1255,7 +1255,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>Gebruikersdata folder (&quot;%2&quot;) -&gt; &quot;%1&quot;
 
 Instellingen bestand (%4) -&gt; &quot;%3&quot;
-Skin folder -&gt; &quot;%5&quot;
+Thema folder -&gt; &quot;%5&quot;
 Icoon thema folder -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
@@ -1529,7 +1529,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="14"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="142"/>
       <source>Backup database/settings</source>
-      <translation>Back-up van database/instellingen</translation>
+      <translation>Back-up van databank/instellingen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="20"/>
@@ -1715,7 +1715,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="38"/>
       <source>I am ready.</source>
-      <translation>Ik ben klaar.</translation>
+      <translation>Ik ben er klaar voor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="84"/>
@@ -1744,7 +1744,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="14"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="188"/>
       <source>Cleanup database</source>
-      <translation>Database opschonen</translation>
+      <translation>Databank opschonen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
@@ -1756,7 +1756,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
       <source>Optimize database file</source>
-      <translation>Databasebestand optimaliseren</translation>
+      <translation>Databankbestand optimaliseren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
@@ -1768,7 +1768,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="53"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="192"/>
       <source>Remove all articles from recycle bin</source>
-      <translation>Verwijder alle gelezen artikelen uit prullebak</translation>
+      <translation>Verwijder alle gelezen artikelen uit de prullenbak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
@@ -2416,7 +2416,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="434"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="713"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
-      <translation>Markeer alle berichten in alle items als gelezen. Dit neemt geen berichtenfilters mee in account.</translation>
+      <translation>Markeer alle berichten in alle items als gelezen. Dit neemt geen berichtenfilters in acht.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="445"/>
@@ -2590,7 +2590,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="938"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="804"/>
       <source>Reload &amp;skin</source>
-      <translation>&amp;Skin Verversen</translation>
+      <translation>&amp;Thema Verversen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="943"/>
@@ -2872,7 +2872,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="928"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="802"/>
       <source>&amp;Pause automatic feed fetching</source>
-      <translation>&amp;Pauzeer automatische ophalen van feeds</translation>
+      <translation>&amp;Pauzeer automatisch ophalen van feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="933"/>
@@ -2920,12 +2920,12 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="782"/>
       <source>Skin reloaded</source>
-      <translation>Uiterlijk herladen</translation>
+      <translation>Thema herladen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="783"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
-      <translation>Let op! deze functie is alleen voor skin debugging. Start de applicatie opnieuw om alles correct geladen te krijgen.</translation>
+      <translation>Let op! deze functie is alleen voor thema debugging. Start de applicatie opnieuw om alles correct geladen te krijgen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="450"/>
@@ -7704,7 +7704,7 @@ Dit kan de applicatie enorm versnellen als je honderdduizenden artikelen hebt, m
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="45"/>
       <source>Note that skin colors for dialogs/controls only take effect with some styles, for example with the Fusion style.</source>
-      <translation>Let op dat skinkleuren voor dialoog- en besturingselementen alleen effect hebben met sommige stijlen, bijvoorbeeld de Fusion stijl.</translation>
+      <translation>Let op dat themakleuren voor dialoog- en besturingselementen alleen effect hebben met sommige stijlen, bijvoorbeeld de Fusion stijl.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="117"/>
@@ -7761,7 +7761,7 @@ Omschrijving: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="309"/>
       <source>Fetch color from activated skin</source>
-      <translation>Volgende item</translation>
+      <translation>Kleur ophalen van geactiveerde thema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
@@ -7815,7 +7815,7 @@ Omschrijving: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="175"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="368"/>
       <source>Custom skin colors</source>
-      <translation>Aangepaste kleuren</translation>
+      <translation>Aangepaste themakleuren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="184"/>
@@ -8305,7 +8305,7 @@ Omschrijving: %3</translation>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="264"/>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="267"/>
       <source>unknown author</source>
-      <translation>Onbekende auteur</translation>
+      <translation>onbekende auteur</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="487"/>
