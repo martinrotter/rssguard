@@ -139,7 +139,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
       <source>Add articles with any date into the database</source>
-      <translation>Alle artikelen ongeacht datum toevoegen aan de database</translation>
+      <translation>Alle artikelen ongeacht datum toevoegen aan de databank</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
@@ -175,7 +175,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
       <source>In database, keep</source>
-      <translation>In database, bewaren</translation>
+      <translation>In databank, bewaren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
@@ -198,7 +198,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation>Het instellen van eventuele beperkingen hier zal %1 instructie geven om sommige nieuw artikelen te negeren. De logica wordt uitgevoert NA alle artikelfilters, zelfs als je artikel filter een bepaald artikel accepteert, het kan vervolgens nog steeds genegeerd worden en niet toegevoegd worden aan de database.</translation>
+      <translation>Het instellen van eventuele beperkingen hier zal %1 instructie geven om sommige nieuw artikelen te negeren. De logica wordt uitgevoert NA alle artikelfilters, zelfs als je artikel filter een bepaald artikel accepteert, het kan vervolgens nog steeds genegeerd worden en niet toegevoegd worden aan de databank.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
@@ -457,12 +457,12 @@ Aantal uitgeschakelde feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
       <source>Cannot connect to database</source>
-      <translation>Kan niet verbinden met database</translation>
+      <translation>Kan niet verbinden met databank</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="59"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation>Er is geen verbinding met u database tot stand gebracht met fout:&apos;%1&apos;. Terugvallen naar SQLite.</translation>
+      <translation>Er is geen verbinding met u databank tot stand gebracht met fout:&apos;%1&apos;. Terugvallen naar SQLite.</translation>
     </message>
   </context>
   <context>
@@ -1529,7 +1529,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="14"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="142"/>
       <source>Backup database/settings</source>
-      <translation>Back-up van database/instellingen</translation>
+      <translation>Back-up van databank/instellingen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="20"/>
@@ -1744,7 +1744,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="14"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="188"/>
       <source>Cleanup database</source>
-      <translation>Database opschonen</translation>
+      <translation>Databank opschonen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
@@ -1756,7 +1756,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
       <source>Optimize database file</source>
-      <translation>Databasebestand optimaliseren</translation>
+      <translation>Databankbestand optimaliseren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
@@ -1768,7 +1768,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="53"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="192"/>
       <source>Remove all articles from recycle bin</source>
-      <translation>Verwijder alle gelezen artikelen uit prullebak</translation>
+      <translation>Verwijder alle gelezen artikelen uit de prullenbak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
