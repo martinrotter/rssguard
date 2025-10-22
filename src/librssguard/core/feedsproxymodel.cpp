@@ -515,9 +515,17 @@ const RootItem* FeedsProxyModel::selectedItem() const {
 }
 
 void FeedsProxyModel::setSelectedItem(const RootItem* selected_item) {
+  auto* previous_selected_item = m_selectedItem;
   m_selectedItem = selected_item;
 
-  invalidateFilter();
+  // TODO: test this when removing feeds, changing all filters etc.
+  // invalidateFilter()
+  if (previous_selected_item != nullptr) {
+    // QTimer::singleShot(1000, [this]() {
+    auto source_idx = m_sourceModel->indexForItem(previous_selected_item);
+    m_sourceModel->reloadChangedLayout({source_idx});
+    //});
+  }
 }
 
 void FeedsProxyModel::setSortAlphabetically(bool sort_alphabetically) {

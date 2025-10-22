@@ -777,11 +777,12 @@ void FeedsView::drawBranches(QPainter* painter, const QRect& rect, const QModelI
 void FeedsView::focusInEvent(QFocusEvent* event) {
   QTreeView::focusInEvent(event);
 
-  // TOTO: Do we want this?
+  /*
   if (currentIndex().isValid()) {
     selectionModel()->select(currentIndex(),
                              QItemSelectionModel::SelectionFlag::Select | QItemSelectionModel::SelectionFlag::Rows);
   }
+  */
 }
 
 void FeedsView::filterItems(SearchLineEdit::SearchMode mode,
@@ -1210,12 +1211,12 @@ void FeedsView::setupAppearance() {
 }
 
 void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {
-  RootItem* selected_item = selectedItem();
-
   QTreeView::selectionChanged(selected, deselected);
-  emit itemSelected(selected_item);
 
+  RootItem* selected_item = selectedItem();
   m_proxyModel->setSelectedItem(selected_item);
+
+  emit itemSelected(selected_item);
 
   if (!selectedIndexes().isEmpty() &&
       qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoExpandOnSelection)).toBool()) {
