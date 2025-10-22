@@ -26,7 +26,7 @@ class RSSGUARD_DLLSPEC Search : public RootItem {
     void setCountOfAllMessages(int totalCount);
     void setCountOfUnreadMessages(int unreadCount);
 
-    virtual bool cleanMessages(bool clear_only_read);
+    virtual void cleanMessages(bool clear_only_read);
     virtual QString additionalTooltip() const;
     virtual void markAsReadUnread(ReadStatus status);
     virtual int countOfAllMessages() const;

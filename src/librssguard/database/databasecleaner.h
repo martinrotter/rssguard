@@ -25,16 +25,16 @@ class DatabaseCleaner : public QObject {
   signals:
     void purgeStarted();
     void purgeProgress(int progress, const QString& description);
-    void purgeFinished(bool result);
+    void purgeFinished();
 
   public slots:
     void purgeDatabaseData(CleanerOrders which_data);
 
   private:
-    bool purgeStarredMessages(const QSqlDatabase& database);
-    bool purgeReadMessages(const QSqlDatabase& database);
-    bool purgeOldMessages(const QSqlDatabase& database, int days);
-    bool purgeRecycleBin(const QSqlDatabase& database);
+    void purgeStarredMessages(const QSqlDatabase& database);
+    void purgeReadMessages(const QSqlDatabase& database);
+    void purgeOldMessages(const QSqlDatabase& database, int days);
+    void purgeRecycleBin(const QSqlDatabase& database);
 };
 
 #endif // DATABASECLEANER_H

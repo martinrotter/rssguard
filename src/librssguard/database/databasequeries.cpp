@@ -652,9 +652,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
 
   DatabaseFactory::logLastExecutedQuery(q);
 
-  if (!q.next()) {
-    return false;
-  }
+  q.next();
 
   qlonglong last_kept_stamp = q.value(0).toLongLong();
 
@@ -702,7 +700,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
   return rows_deleted > 0;
 }
 
-bool DatabaseQueries::purgeFeedArticles(const QSqlDatabase& database, const QList<Feed*>& feeds) {
+void DatabaseQueries::purgeFeedArticles(const QSqlDatabase& database, const QList<Feed*>& feeds) {
   QSqlQuery q(database);
 
   auto feed_clauses = boolinq::from(feeds)
@@ -724,27 +722,30 @@ bool DatabaseQueries::purgeFeedArticles(const QSqlDatabase& database, const QLis
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM Messages WHERE %1;").arg(feed_clause));
 
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
   }
   else {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    return q.numRowsAffected() > 0;
+    throw SqlException(q.lastError());
   }
 }
 
-bool DatabaseQueries::purgeMessage(const QSqlDatabase& db, int message_id) {
+void DatabaseQueries::purgeMessage(const QSqlDatabase& db, int message_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM Messages WHERE id = :id;"));
   q.bindValue(QSL(":id"), message_id);
 
-  return q.exec();
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::purgeImportantMessages(const QSqlDatabase& db) {
+void DatabaseQueries::purgeImportantMessages(const QSqlDatabase& db) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -753,10 +754,15 @@ bool DatabaseQueries::purgeImportantMessages(const QSqlDatabase& db) {
   // Remove only messages which are NOT in recycle bin.
   q.bindValue(QSL(":is_deleted"), 0);
 
-  return q.exec();
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::purgeReadMessages(const QSqlDatabase& db) {
+void DatabaseQueries::purgeReadMessages(const QSqlDatabase& db) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -770,10 +776,15 @@ bool DatabaseQueries::purgeReadMessages(const QSqlDatabase& db) {
   // Remove only messages which are NOT starred.
   q.bindValue(QSL(":is_important"), 0);
 
-  return q.exec();
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::purgeOldMessages(const QSqlDatabase& db, int older_than_days) {
+void DatabaseQueries::purgeOldMessages(const QSqlDatabase& db, int older_than_days) {
   QSqlQuery q(db);
   const qint64 since_epoch = older_than_days == 0
                                ? QDateTime::currentDateTimeUtc().addYears(10).toMSecsSinceEpoch()
@@ -785,10 +796,16 @@ bool DatabaseQueries::purgeOldMessages(const QSqlDatabase& db, int older_than_da
 
   // Remove only messages which are NOT starred.
   q.bindValue(QSL(":is_important"), 0);
-  return q.exec();
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
-bool DatabaseQueries::purgeRecycleBin(const QSqlDatabase& db) {
+void DatabaseQueries::purgeRecycleBin(const QSqlDatabase& db) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -797,7 +814,13 @@ bool DatabaseQueries::purgeRecycleBin(const QSqlDatabase& db) {
 
   // Remove only messages which are NOT starred.
   q.bindValue(QSL(":is_important"), 0);
-  return q.exec();
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
 QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db,
@@ -1737,7 +1760,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
   return updated_messages;
 }
 
-bool DatabaseQueries::purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id) {
+void DatabaseQueries::purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1751,7 +1774,13 @@ bool DatabaseQueries::purgeMessagesFromBin(const QSqlDatabase& db, bool clear_on
   }
 
   q.bindValue(QSL(":account_id"), account_id);
-  return q.exec();
+
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
+  }
+  else {
+    throw SqlException(q.lastError());
+  }
 }
 
 bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, ServiceRoot* account) {
@@ -2033,7 +2062,7 @@ void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db, int 
   }
 }
 
-bool DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_id) {
+void DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -2043,13 +2072,10 @@ bool DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
-    qWarningNN << LOGSEC_DB << "Removing of leftover messages failed: '" << q.lastError().text() << "'.";
-    return false;
+    throw SqlException(q.lastError());
   }
   else {
     DatabaseFactory::logLastExecutedQuery(q);
-
-    return true;
   }
 }
 

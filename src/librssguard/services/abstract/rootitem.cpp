@@ -75,16 +75,12 @@ void RootItem::markAsReadUnread(ReadStatus status) {
   }
 }
 
-bool RootItem::cleanMessages(bool clear_only_read) {
-  bool result = true;
-
+void RootItem::cleanMessages(bool clear_only_read) {
   for (RootItem* child : std::as_const(m_childItems)) {
     if (child->kind() != RootItem::Kind::Bin) {
-      result &= child->cleanMessages(clear_only_read);
+      child->cleanMessages(clear_only_read);
     }
   }
-
-  return result;
 }
 
 void RootItem::updateCounts(bool including_total_count) {

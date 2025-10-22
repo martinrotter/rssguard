@@ -77,21 +77,14 @@ void Search::setCountOfUnreadMessages(int unreadCount) {
   m_unreadCount = unreadCount;
 }
 
-bool Search::cleanMessages(bool clear_only_read) {
+void Search::cleanMessages(bool clear_only_read) {
   ServiceRoot* service = account();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  try {
-    DatabaseQueries::cleanProbedMessages(database, clear_only_read, this);
-    service->updateCounts(true);
-    service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
-    return true;
-  }
-  catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_CORE << "Failed to clean messages of probe:" << QUOTE_W_SPACE_DOT(ex.message());
-    return false;
-  }
+  DatabaseQueries::cleanProbedMessages(database, clear_only_read, this);
+  service->updateCounts(true);
+  service->itemChanged(service->getSubTree<RootItem>());
+  service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
 
 QString Search::additionalTooltip() const {

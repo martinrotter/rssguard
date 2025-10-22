@@ -70,15 +70,14 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                                const Feed* feed,
                                                const Feed::ArticleIgnoreLimit& feed_setup,
                                                const Feed::ArticleIgnoreLimit& app_setup);
-
-    static bool purgeFeedArticles(const QSqlDatabase& database, const QList<Feed*>& feeds);
-    static bool purgeMessage(const QSqlDatabase& db, int message_id);
-    static bool purgeImportantMessages(const QSqlDatabase& db);
-    static bool purgeReadMessages(const QSqlDatabase& db);
-    static bool purgeOldMessages(const QSqlDatabase& db, int older_than_days);
-    static bool purgeRecycleBin(const QSqlDatabase& db);
-    static bool purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id);
-    static bool purgeLeftoverMessages(const QSqlDatabase& db, int account_id);
+    static void purgeFeedArticles(const QSqlDatabase& database, const QList<Feed*>& feeds);
+    static void purgeMessage(const QSqlDatabase& db, int message_id);
+    static void purgeImportantMessages(const QSqlDatabase& db);
+    static void purgeReadMessages(const QSqlDatabase& db);
+    static void purgeOldMessages(const QSqlDatabase& db, int older_than_days);
+    static void purgeRecycleBin(const QSqlDatabase& db);
+    static void purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id);
+    static void purgeLeftoverMessages(const QSqlDatabase& db, int account_id);
 
     // Counts of unread/all messages.
     static QMap<int, ArticleCounts> getMessageCountsForCategory(const QSqlDatabase& db,

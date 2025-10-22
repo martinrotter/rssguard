@@ -74,19 +74,14 @@ void RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
                                          : FeedsModel::ExternalDataChange::MarkedUnread);
 }
 
-bool RecycleBin::cleanMessages(bool clear_only_read) {
+void RecycleBin::cleanMessages(bool clear_only_read) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   ServiceRoot* parent_root = account();
 
-  if (DatabaseQueries::purgeMessagesFromBin(database, clear_only_read, parent_root->accountId())) {
-    updateCounts(true);
-    parent_root->itemChanged({this});
-    parent_root->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::purgeMessagesFromBin(database, clear_only_read, parent_root->accountId());
+  updateCounts(true);
+  parent_root->itemChanged({this});
+  parent_root->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
 
 void RecycleBin::empty() {

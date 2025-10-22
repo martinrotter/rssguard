@@ -28,19 +28,14 @@ void ImportantNode::updateCounts(bool including_total_count) {
   m_unreadCount = ac.m_unread;
 }
 
-bool ImportantNode::cleanMessages(bool clean_read_only) {
+void ImportantNode::cleanMessages(bool clean_read_only) {
   ServiceRoot* service = account();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::cleanImportantMessages(database, clean_read_only, service->accountId())) {
-    service->updateCounts(true);
-    service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::cleanImportantMessages(database, clean_read_only, service->accountId());
+  service->updateCounts(true);
+  service->itemChanged(service->getSubTree<RootItem>());
+  service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
 
 void ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {

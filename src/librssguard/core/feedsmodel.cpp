@@ -526,24 +526,22 @@ void FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
 
 void FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
   auto database = qApp->database()->driver()->connection(metaObject()->className());
-  bool anything_purged = DatabaseQueries::purgeFeedArticles(database, feeds);
 
-  if (anything_purged) {
-    DatabaseQueries::purgeLeftoverLabelAssignments(database);
+  DatabaseQueries::purgeFeedArticles(database, feeds);
+  DatabaseQueries::purgeLeftoverLabelAssignments(database);
 
-    QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
+  QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
 
-    for (auto* fd : feeds) {
-      feeds_per_root.insert(fd->account(), fd);
-    }
-
-    for (auto* acc : feeds_per_root.uniqueKeys()) {
-      acc->onAfterFeedsPurged(feeds_per_root.values(acc));
-    }
-
-    notifyWithCounts();
-    emit dataChangeNotificationTriggered(nullptr, ExternalDataChange::DatabaseCleaned);
+  for (auto* fd : feeds) {
+    feeds_per_root.insert(fd->account(), fd);
   }
+
+  for (auto* acc : feeds_per_root.uniqueKeys()) {
+    acc->onAfterFeedsPurged(feeds_per_root.values(acc));
+  }
+
+  notifyWithCounts();
+  emit dataChangeNotificationTriggered(nullptr, ExternalDataChange::DatabaseCleaned);
 }
 
 QVariant FeedsModel::data(const QModelIndex& index, int role) const {

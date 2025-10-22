@@ -21,10 +21,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent)
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("edit-clear")));
 
-  connect(m_ui->m_spinDays,
-          QOverload<int>::of(&QSpinBox::valueChanged),
-          this,
-          &FormDatabaseCleanup::updateDaysSuffix);
+  connect(m_ui->m_spinDays, QOverload<int>::of(&QSpinBox::valueChanged), this, &FormDatabaseCleanup::updateDaysSuffix);
   connect(m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Ok),
           &QPushButton::clicked,
           this,
@@ -90,20 +87,13 @@ void FormDatabaseCleanup::onPurgeProgress(int progress, const QString& descripti
   m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Information, description, description);
 }
 
-void FormDatabaseCleanup::onPurgeFinished(bool finished) {
+void FormDatabaseCleanup::onPurgeFinished() {
   m_ui->m_progressBar->setValue(100);
   m_ui->m_btnBox->setEnabled(true);
 
-  if (finished) {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                 tr("Database cleanup is completed."),
-                                 tr("Database cleanup is completed."));
-  }
-  else {
-    m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                 tr("Database cleanup failed."),
-                                 tr("Database cleanup failed."));
-  }
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok,
+                               tr("Database cleanup is completed."),
+                               tr("Database cleanup is completed."));
 
   loadDatabaseInfo();
 }

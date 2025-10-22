@@ -220,7 +220,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
                                    QMutex* db_mutex);
 
     // Removes all/read only messages from given underlying feeds.
-    bool cleanFeeds(const QList<Feed*>& items, bool clean_read_only);
+    void cleanFeeds(const QList<Feed*>& items, bool clean_read_only);
 
     // Marks all messages from feeds read/unread.
     void markFeedsReadUnread(const QList<Feed*>& items, ReadStatus read);

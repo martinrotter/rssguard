@@ -98,19 +98,14 @@ void Label::setCountOfUnreadMessages(int unreadCount) {
   m_unreadCount = unreadCount;
 }
 
-bool Label::cleanMessages(bool clear_only_read) {
+void Label::cleanMessages(bool clear_only_read) {
   ServiceRoot* service = account();
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::cleanLabelledMessages(database, clear_only_read, this)) {
-    service->updateCounts(true);
-    service->itemChanged(service->getSubTree<RootItem>());
-    service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::cleanLabelledMessages(database, clear_only_read, this);
+  service->updateCounts(true);
+  service->itemChanged(service->getSubTree<RootItem>());
+  service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
 
 void Label::markAsReadUnread(RootItem::ReadStatus status) {

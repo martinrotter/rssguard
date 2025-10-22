@@ -345,18 +345,13 @@ void ServiceRoot::appendCommonNodes() {
   }
 }
 
-bool ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
+void ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  if (DatabaseQueries::cleanFeeds(database, textualFeedIds(items), clean_read_only, accountId())) {
-    account()->updateCounts(true);
-    account()->itemChanged(account()->getSubTree<RootItem>());
-    account()->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
-    return true;
-  }
-  else {
-    return false;
-  }
+  DatabaseQueries::cleanFeeds(database, textualFeedIds(items), clean_read_only, accountId());
+  account()->updateCounts(true);
+  account()->itemChanged(account()->getSubTree<RootItem>());
+  account()->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
 
 bool ServiceRoot::supportsFeedAdding() const {

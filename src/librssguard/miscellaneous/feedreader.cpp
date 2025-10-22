@@ -437,7 +437,12 @@ void FeedReader::quit() {
   }
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
-    m_feedsModel->markItemCleared(m_feedsModel->rootItem(), true);
+    try {
+      m_feedsModel->markItemCleared(m_feedsModel->rootItem(), true);
+    }
+    catch (const ApplicationException& ex) {
+      qCriticalNN << LOGSEC_CORE << "Cannot clear items:" << NONQUOTE_W_SPACE_DOT(ex.message());
+    }
   }
 
   m_feedsModel->stopServiceAccounts();

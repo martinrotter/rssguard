@@ -26,7 +26,7 @@ class FormDatabaseCleanup : public QDialog {
     void startPurging();
     void onPurgeStarted();
     void onPurgeProgress(int progress, const QString& description);
-    void onPurgeFinished(bool finished);
+    void onPurgeFinished();
 
   signals:
     void purgeRequested(const CleanerOrders& which_data);

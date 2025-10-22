@@ -195,11 +195,8 @@ bool Feed::removeUnwantedArticles(QSqlDatabase& db) {
   Feed::ArticleIgnoreLimit feed_setup = articleIgnoreLimit();
   Feed::ArticleIgnoreLimit app_setup = Feed::ArticleIgnoreLimit::fromSettings();
 
-  auto removed = DatabaseQueries::removeUnwantedArticlesFromFeed(db, this, feed_setup, app_setup);
-
-  if (removed) {
-    DatabaseQueries::purgeLeftoverLabelAssignments(db, account()->accountId());
-  }
+  bool removed = DatabaseQueries::removeUnwantedArticlesFromFeed(db, this, feed_setup, app_setup);
+  DatabaseQueries::purgeLeftoverLabelAssignments(db, account()->accountId());
 
   return removed;
 }
@@ -221,8 +218,8 @@ void Feed::updateCounts(bool including_total_count) {
   setCountOfUnreadMessages(fc.m_unread);
 }
 
-bool Feed::cleanMessages(bool clean_read_only) {
-  return account()->cleanFeeds({this}, clean_read_only);
+void Feed::cleanMessages(bool clean_read_only) {
+  account()->cleanFeeds({this}, clean_read_only);
 }
 
 // TODO:

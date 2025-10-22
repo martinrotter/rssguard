@@ -248,8 +248,18 @@ void FeedsView::clearSelectedItems() {
     return;
   }
 
-  for (auto* it : selectedItems()) {
-    m_sourceModel->markItemCleared(it, false);
+  try {
+    for (auto* it : selectedItems()) {
+      m_sourceModel->markItemCleared(it, false);
+    }
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Cannot clear items:" << NONQUOTE_W_SPACE_DOT(ex.message());
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Cannot clear items"),
+                                    tr("Failed to clear items: %1.").arg(ex.message()),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true));
   }
 }
 
@@ -290,7 +300,17 @@ void FeedsView::clearAllItems() {
     return;
   }
 
-  m_sourceModel->markItemCleared(m_sourceModel->rootItem(), false);
+  try {
+    m_sourceModel->markItemCleared(m_sourceModel->rootItem(), false);
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Cannot clear items:" << NONQUOTE_W_SPACE_DOT(ex.message());
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Cannot clear items"),
+                                    tr("Failed to clear items: %1.").arg(ex.message()),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true));
+  }
 }
 
 void FeedsView::editItems(const QList<RootItem*>& items) {

@@ -94,7 +94,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     //
     // If this method is called on "recycle bin" instance of your
     // service account, it should "empty" the recycle bin.
-    virtual bool cleanMessages(bool clear_only_read);
+    virtual void cleanMessages(bool clear_only_read);
 
     // Reloads current counts of articles in this item from DB and
     // sets.

@@ -23,7 +23,7 @@ class RSSGUARD_DLLSPEC Label : public RootItem {
     void setCountOfAllMessages(int totalCount);
     void setCountOfUnreadMessages(int unreadCount);
 
-    virtual bool cleanMessages(bool clear_only_read);
+    virtual void cleanMessages(bool clear_only_read);
     virtual void markAsReadUnread(ReadStatus status);
     virtual int countOfAllMessages() const;
     virtual int countOfUnreadMessages() const;

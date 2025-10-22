@@ -54,8 +54,8 @@ void Category::updateCounts(bool including_total_count) {
   }
 }
 
-bool Category::cleanMessages(bool clean_read_only) {
-  return account()->cleanFeeds(getSubTreeFeeds(), clean_read_only);
+void Category::cleanMessages(bool clean_read_only) {
+  account()->cleanFeeds(getSubTreeFeeds(), clean_read_only);
 }
 
 void Category::markAsReadUnread(RootItem::ReadStatus status) {
