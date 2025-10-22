@@ -1255,7 +1255,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>Gebruikersdata folder (&quot;%2&quot;) -&gt; &quot;%1&quot;
 
 Instellingen bestand (%4) -&gt; &quot;%3&quot;
-Skin folder -&gt; &quot;%5&quot;
+Thema folder -&gt; &quot;%5&quot;
 Icoon thema folder -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
@@ -1715,7 +1715,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="38"/>
       <source>I am ready.</source>
-      <translation>Ik ben klaar.</translation>
+      <translation>Ik ben er klaar voor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="84"/>
@@ -2416,7 +2416,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="434"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="713"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
-      <translation>Markeer alle berichten in alle items als gelezen. Dit neemt geen berichtenfilters mee in account.</translation>
+      <translation>Markeer alle berichten in alle items als gelezen. Dit neemt geen berichtenfilters in acht.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="445"/>
@@ -2590,7 +2590,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="938"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="804"/>
       <source>Reload &amp;skin</source>
-      <translation>&amp;Skin Verversen</translation>
+      <translation>&amp;Thema Verversen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="943"/>
@@ -2872,7 +2872,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="928"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="802"/>
       <source>&amp;Pause automatic feed fetching</source>
-      <translation>&amp;Pauzeer automatische ophalen van feeds</translation>
+      <translation>&amp;Pauzeer automatisch ophalen van feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="933"/>
@@ -2920,12 +2920,12 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="782"/>
       <source>Skin reloaded</source>
-      <translation>Uiterlijk herladen</translation>
+      <translation>Thema herladen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="783"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
-      <translation>Let op! deze functie is alleen voor skin debugging. Start de applicatie opnieuw om alles correct geladen te krijgen.</translation>
+      <translation>Let op! deze functie is alleen voor thema debugging. Start de applicatie opnieuw om alles correct geladen te krijgen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="450"/>
@@ -7704,7 +7704,7 @@ Dit kan de applicatie enorm versnellen als je honderdduizenden artikelen hebt, m
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="45"/>
       <source>Note that skin colors for dialogs/controls only take effect with some styles, for example with the Fusion style.</source>
-      <translation>Let op dat skinkleuren voor dialoog- en besturingselementen alleen effect hebben met sommige stijlen, bijvoorbeeld de Fusion stijl.</translation>
+      <translation>Let op dat themakleuren voor dialoog- en besturingselementen alleen effect hebben met sommige stijlen, bijvoorbeeld de Fusion stijl.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="117"/>
@@ -7761,7 +7761,7 @@ Omschrijving: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="309"/>
       <source>Fetch color from activated skin</source>
-      <translation>Volgende item</translation>
+      <translation>Kleur ophalen van geactiveerde thema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
@@ -7815,7 +7815,7 @@ Omschrijving: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="175"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="368"/>
       <source>Custom skin colors</source>
-      <translation>Aangepaste kleuren</translation>
+      <translation>Aangepaste themakleuren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="184"/>
@@ -8305,7 +8305,7 @@ Omschrijving: %3</translation>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="264"/>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="267"/>
       <source>unknown author</source>
-      <translation>Onbekende auteur</translation>
+      <translation>onbekende auteur</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="487"/>
