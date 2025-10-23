@@ -33,10 +33,16 @@ BaseToastNotification::BaseToastNotification(QWidget* parent) : QDialog(parent),
   m_timerClosingClick.setInterval(200);
   m_timerClosingClick.setSingleShot(true);
 
-  connect(&m_timerClosingClick, &QTimer::timeout, this, &BaseToastNotification::close);
+  connect(&m_timerClosingClick, &QTimer::timeout, this, &BaseToastNotification::closeNotification);
 }
 
-BaseToastNotification::~BaseToastNotification() {}
+BaseToastNotification::~BaseToastNotification() {
+  qDebugNN << LOGSEC_NOTIFICATIONS << "Destroying BaseToastNotification.";
+}
+
+void BaseToastNotification::closeNotification() {
+  emit closeRequested(this, true);
+}
 
 void BaseToastNotification::reject() {
   close();
@@ -46,7 +52,7 @@ void BaseToastNotification::setupCloseButton(QAbstractButton* btn) {
   btn->setToolTip(tr("Close this notification"));
   btn->setIcon(qApp->icons()->fromTheme(QSL("dialog-close"), QSL("gtk-close")));
 
-  connect(btn, &QAbstractButton::clicked, this, &BaseToastNotification::close);
+  connect(btn, &QAbstractButton::clicked, this, &BaseToastNotification::closeNotification);
 }
 
 void BaseToastNotification::setupHeading(QLabel* lbl) {
@@ -103,13 +109,12 @@ void BaseToastNotification::closeEvent(QCloseEvent* event) {
 
   qDebugNN << LOGSEC_NOTIFICATIONS << "Notification got CLOSE event.";
   stopTimedClosing();
-  emit closeRequested(this);
 }
 
 void BaseToastNotification::timerEvent(QTimerEvent* event) {
   if (event->timerId() == m_timerId) {
     qDebugNN << LOGSEC_NOTIFICATIONS << "Notification got TIMER event.";
     stopTimedClosing();
-    emit closeRequested(this);
+    emit closeRequested(this, true);
   }
 }

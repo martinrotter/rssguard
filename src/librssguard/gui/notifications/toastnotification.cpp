@@ -38,7 +38,7 @@ void ToastNotification::loadNotification(Notification::Event event, const GuiMes
     m_ui.m_btnAction->setText(action.m_title.isEmpty() ? tr("Do it!") : action.m_title);
     connect(m_ui.m_btnAction, &QPushButton::clicked, this, [this, action]() {
       action.m_action();
-      emit closeRequested(this);
+      emit closeRequested(this, true);
     });
   }
   else {

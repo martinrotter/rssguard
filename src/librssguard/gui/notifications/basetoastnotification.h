@@ -17,6 +17,8 @@ class BaseToastNotification : public QDialog {
     virtual ~BaseToastNotification();
 
   public slots:
+    void closeNotification();
+
     virtual void reject();
 
   protected:
@@ -30,7 +32,7 @@ class BaseToastNotification : public QDialog {
     void stopTimedClosing();
 
   signals:
-    void closeRequested(BaseToastNotification* notif);
+    void closeRequested(BaseToastNotification* notif, bool free_from_memory);
 
   private:
     QTimer m_timerClosingClick;

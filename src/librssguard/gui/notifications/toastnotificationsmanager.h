@@ -28,7 +28,6 @@ class ToastNotificationsManager : public QObject {
     static QString textForPosition(ToastNotificationsManager::NotificationPosition pos);
 
     explicit ToastNotificationsManager(QObject* parent = nullptr);
-    virtual ~ToastNotificationsManager();
 
     QList<BaseToastNotification*> activeNotifications() const;
 
@@ -43,11 +42,11 @@ class ToastNotificationsManager : public QObject {
     void resetNotifications(bool reload_existing_notifications);
 
   public slots:
-    void clear(bool delete_from_memory);
+    void clear();
     void showNotification(Notification::Event event, const GuiMessage& msg, const GuiAction& action = {});
 
   private slots:
-    void closeNotification(BaseToastNotification* notif, bool delete_from_memory);
+    void closeNotification(BaseToastNotification* notif, bool free_from_memory);
 
   signals:
     void openingArticleInArticleListRequested(Feed* feed, const Message& msg);

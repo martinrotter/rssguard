@@ -53,7 +53,8 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
           this,
           &ArticleListNotification::onMessageSelected);
 
-  m_ui.m_treeArticles->setAttribute(Qt::WA_NoSystemBackground, true);
+  setAttribute(Qt::WidgetAttribute::WA_ShowWithoutActivating, true);
+  m_ui.m_treeArticles->setAttribute(Qt::WidgetAttribute::WA_NoSystemBackground, true);
 
   // Make background transparent.
   auto pal = m_ui.m_treeArticles->palette();
@@ -100,7 +101,7 @@ void ArticleListNotification::openArticleInArticleList() {
 
   if (m_newMessages.size() == 1 && m_newMessages.value(m_newMessages.keys().at(0)).size() == 1) {
     // We only have 1 message in 1 feed.
-    emit closeRequested(this);
+    emit closeRequested(this, false);
   }
 }
 
@@ -136,7 +137,7 @@ void ArticleListNotification::openArticleInWebBrowser() {
 
   if (m_newMessages.size() == 1 && m_newMessages.value(m_newMessages.keys().at(0)).size() == 1) {
     // We only have 1 message in 1 feed.
-    emit closeRequested(this);
+    emit closeRequested(this, false);
   }
 }
 

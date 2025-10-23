@@ -35,10 +35,6 @@ ToastNotificationsManager::ToastNotificationsManager(QObject* parent)
   resetNotifications(false);
 }
 
-ToastNotificationsManager::~ToastNotificationsManager() {
-  clear(true);
-}
-
 QList<BaseToastNotification*> ToastNotificationsManager::activeNotifications() const {
   return m_activeNotifications;
 }
@@ -71,7 +67,7 @@ void ToastNotificationsManager::resetNotifications(bool reload_existing_notifica
   if (reload_existing_notifications) {
     auto notif = m_activeNotifications;
 
-    clear(false);
+    clear();
 
     while (!notif.isEmpty()) {
       BaseToastNotification* one_notif = notif.takeLast();
@@ -81,9 +77,9 @@ void ToastNotificationsManager::resetNotifications(bool reload_existing_notifica
   }
 }
 
-void ToastNotificationsManager::clear(bool delete_from_memory) {
+void ToastNotificationsManager::clear() {
   for (BaseToastNotification* notif : m_activeNotifications) {
-    closeNotification(notif, delete_from_memory);
+    closeNotification(notif, false);
   }
 
   m_activeNotifications.clear();
@@ -139,17 +135,17 @@ void ToastNotificationsManager::showNotification(Notification::Event event,
   processNotification(notif);
 }
 
-void ToastNotificationsManager::closeNotification(BaseToastNotification* notif, bool delete_from_memory) {
+void ToastNotificationsManager::closeNotification(BaseToastNotification* notif, bool free_from_memory) {
   auto notif_idx = m_activeNotifications.indexOf(notif);
 
-  if (delete_from_memory) {
+  m_activeNotifications.removeAll(notif);
+
+  if (free_from_memory) {
     notif->deleteLater();
   }
   else {
     notif->hide();
   }
-
-  m_activeNotifications.removeAll(notif);
 
   // Shift all notifications.
   if (notif_idx < 0) {
@@ -189,7 +185,8 @@ QPoint ToastNotificationsManager::cornerForNewNotification(QRect screen_rect) {
 }
 
 void ToastNotificationsManager::initializeArticleListNotification() {
-  m_articleListNotification = new ArticleListNotification();
+  m_articleListNotification = new ArticleListNotification(qApp->mainFormWidget());
+  m_articleListNotification->hide();
   hookNotification(m_articleListNotification);
 
   connect(m_articleListNotification,
@@ -204,9 +201,12 @@ void ToastNotificationsManager::initializeArticleListNotification() {
 }
 
 void ToastNotificationsManager::hookNotification(BaseToastNotification* notif) {
-  connect(notif, &BaseToastNotification::closeRequested, this, [this](BaseToastNotification* notif) {
-    closeNotification(notif, notif != m_articleListNotification);
-  });
+  connect(notif,
+          &BaseToastNotification::closeRequested,
+          this,
+          [this](BaseToastNotification* notif, bool free_from_memory) {
+            closeNotification(notif, free_from_memory && notif != m_articleListNotification);
+          });
 }
 
 void ToastNotificationsManager::moveNotificationToCorner(BaseToastNotification* notif, QPoint corner) {
