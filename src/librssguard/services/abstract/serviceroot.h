@@ -128,67 +128,29 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     // This method should load messages for given "item" into model.
     virtual bool loadMessagesForItem(RootItem* item, MessagesModel* model);
 
-    // Called BEFORE this read status update (triggered by user in message list) is stored in DB,
-    // when false is returned, change is aborted.
+    // These are called BEFORE and AFTER this article status update is stored in DB.
     // This is the place to make some other changes like updating
     // some ONLINE service or something.
-    //
-    // "read" is status which is ABOUT TO BE SET.
-    virtual bool onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);
 
-    // Called AFTER this read status update (triggered by user in message list) is stored in DB,
-    // when false is returned, change is aborted.
-    // Here service root should inform (via signals)
-    // which items are actually changed.
-    //
-    // "read" is status which is ABOUT TO BE SET.
-    virtual bool onAfterSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);
+    virtual void onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);
+    virtual void onAfterSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);
 
-    // Called BEFORE this importance switch update is stored in DB,
-    // when false is returned, change is aborted.
-    // This is the place to make some other changes like updating
-    // some ONLINE service or something.
-    //
-    // "changes" - list of pairs - <message (integer id), new status>
-    virtual bool onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes);
+    virtual void onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes);
+    virtual void onAfterSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes);
 
-    // Called AFTER this importance switch update is stored in DB,
-    // when false is returned, change is aborted.
-    // Here service root should inform (via signals)
-    // which items are actually changed.
-    //
-    // "changes" - list of pairs - <message (integer id), new status>
-    virtual bool onAfterSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes);
+    virtual void onBeforeMessagesDelete(RootItem* selected_item, const QList<Message>& messages);
+    virtual void onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages);
 
-    // Called BEFORE the list of messages is about to be deleted
-    // by the user from message list.
-    virtual bool onBeforeMessagesDelete(RootItem* selected_item, const QList<Message>& messages);
-
-    // Called AFTER the list of messages was deleted
-    // by the user from message list.
-    virtual bool onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages);
-
-    // Called BEFORE some labels are assigned/deassigned from/to messages.
-    virtual bool onBeforeLabelMessageAssignmentChanged(const QList<Label*>& labels,
+    virtual void onBeforeLabelMessageAssignmentChanged(const QList<Label*>& labels,
                                                        const QList<Message>& messages,
                                                        bool assign);
-
-    // Called AFTER some labels are assigned/deassigned from/to messages.
-    virtual bool onAfterLabelMessageAssignmentChanged(const QList<Label*>& labels,
+    virtual void onAfterLabelMessageAssignmentChanged(const QList<Label*>& labels,
                                                       const QList<Message>& messages,
                                                       bool assign);
 
-    // Called BEFORE the list of messages is about to be restored from recycle bin
-    // by the user from message list.
-    // Selected item is naturally recycle bin.
-    virtual bool onBeforeMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages);
+    virtual void onBeforeMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages);
+    virtual void onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages);
 
-    // Called AFTER the list of messages was restored from recycle bin
-    // by the user from message list.
-    // Selected item is naturally recycle bin.
-    virtual bool onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages);
-
-    // Called AFTER articles of these feeds are purged from the database.
     virtual void onAfterFeedsPurged(const QList<Feed*>& feeds);
 
     // Returns the UNIQUE code of the given service.

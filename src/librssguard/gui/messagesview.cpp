@@ -475,14 +475,12 @@ void MessagesView::mousePressEvent(QMouseEvent* event) {
         const QModelIndex mapped_index = m_proxyModel->mapToSource(clicked_index);
 
         if (mapped_index.column() == MSG_MDL_IMPORTANT_INDEX) {
-          if (m_sourceModel->switchMessageImportance(mapped_index.row())) {
-            requestArticleDisplay(m_sourceModel->messageForRow(mapped_index.row()));
-          }
+          m_sourceModel->switchMessageImportance(mapped_index.row());
+          requestArticleDisplay(m_sourceModel->messageForRow(mapped_index.row()));
         }
         else if (mapped_index.column() == MSG_MDL_READ_INDEX) {
-          if (m_sourceModel->switchMessageReadUnread(mapped_index.row())) {
-            requestArticleDisplay(m_sourceModel->messageForRow(mapped_index.row()));
-          }
+          m_sourceModel->switchMessageReadUnread(mapped_index.row());
+          requestArticleDisplay(m_sourceModel->messageForRow(mapped_index.row()));
         }
       }
 

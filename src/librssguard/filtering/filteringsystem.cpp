@@ -36,13 +36,7 @@ void FilteringSystem::pushMessageStatesToServices(QList<Message>& read_msgs,
                                                   ServiceRoot* account) {
   if (!read_msgs.isEmpty()) {
     // Now we push new read states to the service.
-    if (account->onBeforeSetMessagesRead(item, read_msgs, RootItem::ReadStatus::Read)) {
-      qDebugNN << LOGSEC_ARTICLEFILTER << "Notified services about messages marked as read by message filters.";
-    }
-    else {
-      qCriticalNN << LOGSEC_ARTICLEFILTER
-                  << "Notification of services about messages marked as read by message filters FAILED.";
-    }
+    account->onBeforeSetMessagesRead(item, read_msgs, RootItem::ReadStatus::Read);
   }
 
   if (!important_msgs.isEmpty()) {
@@ -54,13 +48,7 @@ void FilteringSystem::pushMessageStatesToServices(QList<Message>& read_msgs,
                   .toStdList();
     QList<ImportanceChange> chngs = FROM_STD_LIST(QList<ImportanceChange>, list);
 
-    if (account->onBeforeSwitchMessageImportance(item, chngs)) {
-      qDebugNN << LOGSEC_FEEDDOWNLOADER << "Notified services about messages marked as important by message filters.";
-    }
-    else {
-      qCriticalNN << LOGSEC_FEEDDOWNLOADER
-                  << "Notification of services about messages marked as important by message filters FAILED.";
-    }
+    account->onBeforeSwitchMessageImportance(item, chngs);
   }
 }
 

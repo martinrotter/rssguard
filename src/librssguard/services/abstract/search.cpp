@@ -99,9 +99,14 @@ void Search::markAsReadUnread(RootItem::ReadStatus status) {
     cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
   }
 
+  // service->onBeforeSetMessagesRead(this, {}, status);
+
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::markProbeReadUnread(database, this, status);
+
+  // service->onAfterSetMessagesRead(this, {}, status);
+
   service->updateCounts(false);
   service->itemChanged(service->getSubTree<RootItem>());
   service->informOthersAboutDataChange(this,

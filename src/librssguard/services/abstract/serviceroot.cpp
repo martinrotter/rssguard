@@ -975,7 +975,7 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   return true;
 }
 
-bool ServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item,
+void ServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item,
                                           const QList<Message>& messages,
                                           RootItem::ReadStatus read) {
   Q_UNUSED(selected_item)
@@ -985,11 +985,9 @@ bool ServiceRoot::onBeforeSetMessagesRead(RootItem* selected_item,
   if (cache != nullptr) {
     cache->addMessageStatesToCache(customIDsOfMessages(messages), read);
   }
-
-  return true;
 }
 
-bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes) {
+void ServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes) {
   Q_UNUSED(selected_item)
 
   auto cache = dynamic_cast<CacheForServiceRoot*>(this);
@@ -1016,11 +1014,9 @@ bool ServiceRoot::onBeforeSwitchMessageImportance(RootItem* selected_item, const
       cache->addMessageStatesToCache(mark_unstarred_msgs, RootItem::Importance::NotImportant);
     }
   }
-
-  return true;
 }
 
-bool ServiceRoot::onAfterSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes) {
+void ServiceRoot::onAfterSwitchMessageImportance(RootItem* selected_item, const QList<ImportanceChange>& changes) {
   Q_UNUSED(selected_item)
   Q_UNUSED(changes)
 
@@ -1032,17 +1028,14 @@ bool ServiceRoot::onAfterSwitchMessageImportance(RootItem* selected_item, const 
     in->updateCounts(true);
     itemChanged({in});
   }
-
-  return true;
 }
 
-bool ServiceRoot::onBeforeMessagesDelete(RootItem* selected_item, const QList<Message>& messages) {
+void ServiceRoot::onBeforeMessagesDelete(RootItem* selected_item, const QList<Message>& messages) {
   Q_UNUSED(selected_item)
   Q_UNUSED(messages)
-  return true;
 }
 
-bool ServiceRoot::onBeforeLabelMessageAssignmentChanged(const QList<Label*>& labels,
+void ServiceRoot::onBeforeLabelMessageAssignmentChanged(const QList<Label*>& labels,
                                                         const QList<Message>& messages,
                                                         bool assign) {
   auto cache = dynamic_cast<CacheForServiceRoot*>(this);
@@ -1052,11 +1045,9 @@ bool ServiceRoot::onBeforeLabelMessageAssignmentChanged(const QList<Label*>& lab
       cache->addLabelsAssignmentsToCache(messages, lbl, assign);
     });
   }
-
-  return true;
 }
 
-bool ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*>& labels,
+void ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*>& labels,
                                                        const QList<Message>& messages,
                                                        bool assign) {
   Q_UNUSED(messages)
@@ -1073,14 +1064,11 @@ bool ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*>& labe
                 .toStdList();
 
   account()->itemChanged(FROM_STD_LIST(QList<RootItem*>, list));
-  return true;
 }
 
-bool ServiceRoot::onBeforeMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {
+void ServiceRoot::onBeforeMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {
   Q_UNUSED(selected_item)
   Q_UNUSED(messages)
-
-  return true;
 }
 
 void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
@@ -1153,27 +1141,24 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
   }
 }
 
-bool ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {
+void ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {
   refreshAfterArticlesChange(messages, true, false, true);
-  return true;
 }
 
-bool ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages) {
+void ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages) {
   refreshAfterArticlesChange(messages,
                              true,
                              selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin,
                              true);
-  return true;
 }
 
-bool ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
+void ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
                                          const QList<Message>& messages,
                                          RootItem::ReadStatus read) {
   refreshAfterArticlesChange(messages,
                              true,
                              selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin,
                              false);
-  return true;
 }
 
 void ServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {

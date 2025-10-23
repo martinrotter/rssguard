@@ -867,27 +867,24 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
   }
 }
 
-bool MessagesModel::switchMessageReadUnread(int row_index) {
+void MessagesModel::switchMessageReadUnread(int row_index) {
   RootItem::ReadStatus current_read = RootItem::ReadStatus(data(row_index, MSG_MDL_READ_INDEX).toInt());
 
-  return setMessageRead(row_index,
-                        current_read == RootItem::ReadStatus::Read ? RootItem::ReadStatus::Unread
-                                                                   : RootItem::ReadStatus::Read);
+  setMessageRead(row_index,
+                 current_read == RootItem::ReadStatus::Read ? RootItem::ReadStatus::Unread
+                                                            : RootItem::ReadStatus::Read);
 }
 
-bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
+void MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
   if (data(row_index, MSG_MDL_READ_INDEX).toInt() == int(read)) {
     // Read status is the same is the one currently set.
     // In that case, no extra work is needed.
-    return true;
+    return;
   }
 
   const Message& message = messageForRow(row_index);
 
-  if (!m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, {message}, read)) {
-    // Cannot change read status of the item. Abort.
-    return false;
-  }
+  m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, {message}, read);
 
   // Rewrite "visible" data in the model.
   bool working_change = setData(index(row_index, MSG_MDL_READ_INDEX), int(read));
@@ -895,11 +892,11 @@ bool MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
     qDebugNN << "Setting of new data to the model failed for message read change.";
-    return false;
+    return;
   }
 
   DatabaseQueries::markMessagesReadUnread(m_db, QStringList() << QString::number(message.m_id), read);
-  return m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, {message}, read);
+  m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, {message}, read);
 }
 
 bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
@@ -950,7 +947,7 @@ void MessagesModel::fillComputedMessageData(Message* msg) {
   msg->m_feedCustomId = fd != nullptr ? fd->customId() : QString();
 }
 
-bool MessagesModel::switchMessageImportance(int row_index) {
+void MessagesModel::switchMessageImportance(int row_index) {
   const QModelIndex target_index = index(row_index, MSG_MDL_IMPORTANT_INDEX);
   const RootItem::Importance current_importance = (RootItem::Importance)data(target_index).toInt();
   const RootItem::Importance next_importance = current_importance == RootItem::Importance::Important
@@ -959,9 +956,7 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   const Message& message = messageForRow(row_index);
   const QPair<Message, RootItem::Importance> pair(message, next_importance);
 
-  if (!m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem, {pair})) {
-    return false;
-  }
+  m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem, {pair});
 
   // Rewrite "visible" data in the model.
   const bool working_change = setData(target_index, int(next_importance));
@@ -969,14 +964,13 @@ bool MessagesModel::switchMessageImportance(int row_index) {
   if (!working_change) {
     // If rewriting in the model failed, then cancel all actions.
     qDebugNN << LOGSEC_MESSAGEMODEL << "Setting of new data to the model failed for message importance change.";
-    return false;
+    return;
   }
 
   // Commit changes.
   DatabaseQueries::markMessageImportant(m_db, message.m_id, next_importance);
-  return m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem,
-                                                                   QList<QPair<Message, RootItem::Importance>>()
-                                                                     << pair);
+  m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem,
+                                                            QList<QPair<Message, RootItem::Importance>>() << pair);
 }
 
 void MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages) {
@@ -1013,10 +1007,7 @@ void MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
   blockSignals(false);
   reloadChangedLayout(changed_indices);
 
-  if (!m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem, message_states)) {
-    return;
-  }
-
+  m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem, message_states);
   DatabaseQueries::switchMessagesImportance(m_db, message_ids);
   m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem, message_states);
 }
@@ -1056,9 +1047,7 @@ void MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
   blockSignals(false);
   reloadChangedLayout(changed_indices);
 
-  if (!m_selectedItem->account()->onBeforeMessagesDelete(m_selectedItem, msgs)) {
-    return;
-  }
+  m_selectedItem->account()->onBeforeMessagesDelete(m_selectedItem, msgs);
 
   if (m_selectedItem->kind() != RootItem::Kind::Bin) {
     DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, true);
@@ -1098,10 +1087,7 @@ void MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
   blockSignals(false);
   reloadChangedLayout(changed_indices);
 
-  if (!m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, msgs, read)) {
-    return;
-  }
-
+  m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, msgs, read);
   DatabaseQueries::markMessagesReadUnread(m_db, message_ids, read);
   m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, msgs, read);
 }
@@ -1137,10 +1123,7 @@ void MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
   blockSignals(false);
   reloadChangedLayout(changed_indices);
 
-  if (!m_selectedItem->account()->onBeforeMessagesRestoredFromBin(m_selectedItem, msgs)) {
-    return;
-  }
-
+  m_selectedItem->account()->onBeforeMessagesRestoredFromBin(m_selectedItem, msgs);
   DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, false);
   m_selectedItem->account()->onAfterMessagesRestoredFromBin(m_selectedItem, msgs);
 }

@@ -69,24 +69,22 @@ void Label::updateCounts(bool including_total_count) {
 void Label::assignToMessage(const Message& msg, bool reload_feeds_model) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
-  if (account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, true)) {
-    DatabaseQueries::assignLabelToMessage(database, this, msg);
+  account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, true);
+  DatabaseQueries::assignLabelToMessage(database, this, msg);
 
-    if (reload_feeds_model) {
-      account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
-    }
+  if (reload_feeds_model) {
+    account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
   }
 }
 
 void Label::deassignFromMessage(const Message& msg, bool reload_feeds_model) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
-  if (account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, false)) {
-    DatabaseQueries::deassignLabelFromMessage(database, this, msg);
+  account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, false);
+  DatabaseQueries::deassignLabelFromMessage(database, this, msg);
 
-    if (reload_feeds_model) {
-      account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
-    }
+  if (reload_feeds_model) {
+    account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
   }
 }
 

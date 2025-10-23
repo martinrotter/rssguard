@@ -77,9 +77,9 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     void reloadChangedLayout(const QModelIndexList& indices);
 
     // SINGLE message manipulators.
-    bool switchMessageImportance(int row_index);
-    bool switchMessageReadUnread(int row_index);
-    bool setMessageRead(int row_index, RootItem::ReadStatus read);
+    void switchMessageImportance(int row_index);
+    void switchMessageReadUnread(int row_index);
+    void setMessageRead(int row_index, RootItem::ReadStatus read);
 
     // BATCH messages manipulators.
     void switchBatchMessageImportance(const QModelIndexList& messages);

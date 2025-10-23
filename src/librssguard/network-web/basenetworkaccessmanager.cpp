@@ -59,13 +59,13 @@ void BaseNetworkAccessManager::loadSettings() {
 }
 
 void BaseNetworkAccessManager::onSslErrors(QNetworkReply* reply, const QList<QSslError>& error) {
-  qWarningNN << LOGSEC_NETWORK << "Ignoring SSL errors for" << QUOTE_W_SPACE_DOT(reply->url().toString());
-  reply->ignoreSslErrors(error);
+  qWarningNN << LOGSEC_NETWORK << "SSL errors for" << QUOTE_W_SPACE_DOT(reply->url().toString());
+  // reply->ignoreSslErrors(error);
 }
 
 QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Operation op,
                                                        const QNetworkRequest& request,
-                                                       QIODevice* outgoingData) {
+                                                       QIODevice* outgoing_data) {
   QNetworkRequest new_request = request;
 
   new_request.setAttribute(QNetworkRequest::Attribute::RedirectPolicyAttribute,
@@ -108,13 +108,16 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
     }
   }
 
-  auto reply = QNetworkAccessManager::createRequest(op, new_request, outgoingData);
+  auto reply = QNetworkAccessManager::createRequest(op, new_request, outgoing_data);
+
+  /*
   auto ssl_conf = reply->sslConfiguration();
 
   ssl_conf.setPeerVerifyMode(QSslSocket::PeerVerifyMode::VerifyNone);
   ssl_conf.setSslOption(QSsl::SslOption::SslOptionDisableLegacyRenegotiation, false);
 
   reply->setSslConfiguration(ssl_conf);
+  */
 
   return reply;
 }

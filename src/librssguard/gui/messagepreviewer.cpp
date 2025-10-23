@@ -170,47 +170,44 @@ void MessagePreviewer::markMessageAsUnread() {
 
 void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
   if (!m_root.isNull()) {
-    if (m_root->account()->onBeforeSetMessagesRead(m_root.data(), QList<Message>() << m_message, read)) {
-      DatabaseQueries::markMessagesReadUnread(qApp->database()
-                                                ->driver()
-                                                ->connection(objectName(),
-                                                             DatabaseDriver::DesiredStorageType::FromSettings),
-                                              {QString::number(m_message.m_id)},
-                                              read);
-      m_root->account()->onAfterSetMessagesRead(m_root.data(), QList<Message>() << m_message, read);
-      m_message.m_isRead = read == RootItem::ReadStatus::Read;
-      emit markMessageRead(m_message.m_id, read);
+    m_root->account()->onBeforeSetMessagesRead(m_root.data(), {m_message}, read);
+    DatabaseQueries::markMessagesReadUnread(qApp->database()
+                                              ->driver()
+                                              ->connection(objectName(),
+                                                           DatabaseDriver::DesiredStorageType::FromSettings),
+                                            {QString::number(m_message.m_id)},
+                                            read);
+    m_root->account()->onAfterSetMessagesRead(m_root.data(), {m_message}, read);
+    m_message.m_isRead = read == RootItem::ReadStatus::Read;
+    emit markMessageRead(m_message.m_id, read);
 
-      updateButtons();
-    }
+    updateButtons();
   }
 }
 
 void MessagePreviewer::switchMessageImportance(bool checked) {
   if (!m_root.isNull()) {
-    if (m_root->account()
-          ->onBeforeSwitchMessageImportance(m_root.data(),
-                                            QList<ImportanceChange>()
-                                              << ImportanceChange(m_message,
-                                                                  m_message.m_isImportant
-                                                                    ? RootItem::Importance::NotImportant
-                                                                    : RootItem::Importance::Important))) {
-      DatabaseQueries::switchMessagesImportance(qApp->database()
-                                                  ->driver()
-                                                  ->connection(objectName(),
-                                                               DatabaseDriver::DesiredStorageType::FromSettings),
-                                                {QString::number(m_message.m_id)});
-      m_root->account()->onAfterSwitchMessageImportance(m_root.data(),
-                                                        QList<ImportanceChange>()
-                                                          << ImportanceChange(m_message,
-                                                                              m_message.m_isImportant
-                                                                                ? RootItem::Importance::NotImportant
-                                                                                : RootItem::Importance::Important));
-      emit markMessageImportant(m_message.m_id,
-                                checked ? RootItem::Importance::Important : RootItem::Importance::NotImportant);
+    m_root->account()->onBeforeSwitchMessageImportance(m_root.data(),
+                                                       QList<ImportanceChange>()
+                                                         << ImportanceChange(m_message,
+                                                                             m_message.m_isImportant
+                                                                               ? RootItem::Importance::NotImportant
+                                                                               : RootItem::Importance::Important));
+    DatabaseQueries::switchMessagesImportance(qApp->database()
+                                                ->driver()
+                                                ->connection(objectName(),
+                                                             DatabaseDriver::DesiredStorageType::FromSettings),
+                                              {QString::number(m_message.m_id)});
+    m_root->account()->onAfterSwitchMessageImportance(m_root.data(),
+                                                      QList<ImportanceChange>()
+                                                        << ImportanceChange(m_message,
+                                                                            m_message.m_isImportant
+                                                                              ? RootItem::Importance::NotImportant
+                                                                              : RootItem::Importance::Important));
+    emit markMessageImportant(m_message.m_id,
+                              checked ? RootItem::Importance::Important : RootItem::Importance::NotImportant);
 
-      m_message.m_isImportant = checked;
-    }
+    m_message.m_isImportant = checked;
   }
 }
 
