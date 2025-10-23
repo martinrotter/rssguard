@@ -36,14 +36,8 @@ class Notification {
       // Some service failed to login.
       LoginFailure = 6,
 
-      // Node.js - package updated.
-      NodePackageUpdated = 7,
-
-      // Node.js - package failde to update.
-      NodePackageFailedToUpdate = 8,
-
       // There was at least one error during fetching articles.
-      ArticlesFetchingError = 9
+      ArticlesFetchingError = 7
     };
 
     explicit Notification(Event event = Event::NoEvent,

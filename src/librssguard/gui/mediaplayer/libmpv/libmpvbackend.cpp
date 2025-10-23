@@ -58,7 +58,7 @@ LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
   mpv_set_option_string(m_mpvHandle, "vo", "libmpv");
 #endif
-    
+
   mpv_set_option_string(m_mpvHandle, "osd-playing-msg", "${media-title}");
   mpv_set_option_string(m_mpvHandle, "osc", "yes");
   mpv_set_option_string(m_mpvHandle, "input-cursor", "yes");
@@ -73,6 +73,7 @@ LibMpvBackend::LibMpvBackend(Application* app, QWidget* parent)
   if (!m_customConfigFolder.isEmpty()) {
     QByteArray cfg_folder = QDir::toNativeSeparators(m_customConfigFolder).toLocal8Bit();
 
+    mpv_set_option_string(m_mpvHandle, "input-default-bindings", "no");
     mpv_set_option_string(m_mpvHandle, "config-dir", cfg_folder.constData());
   }
   else {
@@ -423,11 +424,29 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
 
     if ((event->type() == QEvent::Type::MouseButtonRelease || event->type() == QEvent::Type::MouseButtonPress) &&
         watched == this) {
-      bool press = event->type() == QEvent::Type::MouseButtonPress;
-
       qDebugNN << LOGSEC_MPV << "Mouse press/release.";
 
-      const char* args[] = {press ? "keydown" : "keyup", "MOUSE_BTN0", nullptr};
+      bool press = event->type() == QEvent::Type::MouseButtonPress;
+      auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
+      QString btn_id = QSL("MBTN_");
+
+      switch (mouse_event->button()) {
+        case Qt::MouseButton::RightButton:
+          btn_id += QSL("RIGHT");
+          break;
+
+        case Qt::MouseButton::MiddleButton:
+          btn_id += QSL("MID");
+          break;
+
+        case Qt::MouseButton::LeftButton:
+        default:
+          btn_id += QSL("LEFT");
+          break;
+      }
+
+      const QByteArray btn_id_arr = btn_id.toLocal8Bit();
+      const char* args[] = {press ? "keydown" : "keyup", btn_id_arr.constData(), nullptr};
 
       mpv_command_async(m_mpvHandle, 0, args);
       event->accept();
@@ -437,7 +456,22 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
     if (event->type() == QEvent::Type::MouseButtonDblClick && watched == this) {
       qDebugNN << LOGSEC_MPV << "Mouse double-click.";
 
-      const char* args[] = {"keypress", "MOUSE_BTN0_DBL", nullptr};
+      auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
+      QString btn_id = QSL("MBTN_");
+
+      switch (mouse_event->button()) {
+        case Qt::MouseButton::RightButton:
+          btn_id += QSL("RIGHT_DBL");
+          break;
+
+        case Qt::MouseButton::LeftButton:
+        default:
+          btn_id += QSL("LEFT_DBL");
+          break;
+      }
+
+      const QByteArray btn_id_arr = btn_id.toLocal8Bit();
+      const char* args[] = {"keypress", btn_id_arr.constData(), nullptr};
 
       mpv_command_async(m_mpvHandle, 0, args);
       event->accept();
@@ -461,9 +495,21 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
     if (event->type() == QEvent::Type::KeyRelease) {
       // We catch all keypresses (even from surrounding widgets).
       QKeyEvent* key_event = dynamic_cast<QKeyEvent*>(event);
-      QString keys =
-        QKeySequence(key_event->key() | key_event->modifiers()).toString(QKeySequence::SequenceFormat::PortableText);
-      QByteArray byte_named_key = keys.toLocal8Bit();
+      QByteArray byte_named_key;
+
+      if ((key_event->modifiers() == Qt::KeyboardModifier::NoModifier ||
+           key_event->modifiers() == Qt::KeyboardModifier::KeypadModifier) &&
+          key_event->key() != 0 && key_event->key() != Qt::Key::Key_unknown) {
+        QChar chr(key_event->key());
+
+        byte_named_key = QString(chr).toLocal8Bit();
+      }
+      else {
+        QKeySequence seq(key_event->key() | key_event->modifiers());
+        QString keys = seq.toString(QKeySequence::SequenceFormat::PortableText);
+
+        byte_named_key = keys.toLocal8Bit();
+      }
 
       const char* args[] = {"keypress", byte_named_key.constData(), nullptr};
 

@@ -124,9 +124,7 @@ QList<Notification::Event> Notification::allEvents() {
           Event::ArticlesFetchingError,
           Event::LoginDataRefreshed,
           Event::LoginFailure,
-          Event::NewAppVersionAvailable,
-          Event::NodePackageUpdated,
-          Event::NodePackageFailedToUpdate};
+          Event::NewAppVersionAvailable};
 }
 
 QString Notification::nameForEvent(Notification::Event event) {
@@ -148,12 +146,6 @@ QString Notification::nameForEvent(Notification::Event event) {
 
     case Notification::Event::GeneralEvent:
       return QObject::tr("Miscellaneous events");
-
-    case Notification::Event::NodePackageUpdated:
-      return QObject::tr("Node.js - package(s) updated");
-
-    case Notification::Event::NodePackageFailedToUpdate:
-      return QObject::tr("Node.js - package(s) failed to update");
 
     case Notification::Event::ArticlesFetchingError:
       return QObject::tr("Error when fetching articles");
