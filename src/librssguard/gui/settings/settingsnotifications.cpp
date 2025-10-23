@@ -131,7 +131,8 @@ void SettingsNotifications::saveSettings() {
 
   auto* toasts = qApp->toastNotifications();
 
-  if (toasts != nullptr) {
+  if (toasts != nullptr && m_ui->m_rbCustomNotifications->isChecked() &&
+      m_ui->m_checkEnableNotifications->isChecked()) {
     toasts->resetNotifications(true);
     toasts->showNotification(Notification::Event::GeneralEvent,
                              GuiMessage(tr("How do I look?"),
