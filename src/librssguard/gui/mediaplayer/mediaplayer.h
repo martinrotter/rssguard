@@ -38,12 +38,9 @@ class MediaPlayer : public TabContent {
 
     void showPlayerNormal();
     void showPlayerFullscreen();
-    void escapeFromFullscreen();
     void switchFullScreen(bool send_event_to_backend);
 
-    void hideControls();
-    void showControls();
-
+    void onClosed();
     void onFullscreenChanged(bool fullscreen);
     void onMutedChanged(bool muted);
     void onSpeedChanged(int speed);
@@ -79,6 +76,7 @@ class MediaPlayer : public TabContent {
     QIcon m_iconMute;
     QIcon m_iconUnmute;
     bool m_muted;
+    bool m_fullscreen;
 };
 
 #endif // MEDIAPLAYER_H

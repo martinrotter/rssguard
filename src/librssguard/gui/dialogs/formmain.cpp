@@ -729,6 +729,24 @@ void FormMain::saveSize() {
   m_ui->m_tabWidget->feedMessageViewer()->saveSize();
 }
 
+void FormMain::hideShowObtrusiveGuiElements(bool show) {
+  // Statusbar.
+  statusBar()->setVisible(show && m_ui->m_actionSwitchStatusBar->isChecked());
+
+  // Menu.
+  m_ui->m_menuBar->setVisible(show && m_ui->m_actionSwitchMainMenu);
+
+  // Tabbar.
+  m_ui->m_tabWidget->tabBar()->setVisible(true);
+
+  if (show) {
+    m_ui->m_tabWidget->updateAppearance();
+  }
+  else {
+    m_ui->m_tabWidget->tabBar()->setVisible(false);
+  }
+}
+
 void FormMain::createConnections() {
   // Status bar connections.
   connect(m_ui->m_menuAddItem, &QMenu::aboutToShow, this, &FormMain::updateAddItemMenu);

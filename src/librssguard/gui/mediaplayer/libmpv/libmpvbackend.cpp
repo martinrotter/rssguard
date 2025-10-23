@@ -500,9 +500,10 @@ bool LibMpvBackend::eventFilter(QObject* watched, QEvent* event) {
       if ((key_event->modifiers() == Qt::KeyboardModifier::NoModifier ||
            key_event->modifiers() == Qt::KeyboardModifier::KeypadModifier) &&
           key_event->key() != 0 && key_event->key() != Qt::Key::Key_unknown) {
-        QChar chr(key_event->key());
+        QKeySequence seq(key_event->key());
+        QString keys = seq.toString(QKeySequence::SequenceFormat::PortableText);
 
-        byte_named_key = QString(chr).toLocal8Bit();
+        byte_named_key = keys.toLocal8Bit();
       }
       else {
         QKeySequence seq(key_event->key() | key_event->modifiers());

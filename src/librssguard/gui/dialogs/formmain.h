@@ -39,6 +39,9 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     void loadSize();
     void saveSize();
 
+    // Hides all GUI elements so that only tab widget contents are visible.
+    void hideShowObtrusiveGuiElements(bool show);
+
   public slots:
     void display();
     void switchVisibility(bool force_hide = false);

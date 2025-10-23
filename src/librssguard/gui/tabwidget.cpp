@@ -75,18 +75,7 @@ void TabWidget::openMainMenu() {
 void TabWidget::checkCornerButtonVisibility() {
   const bool should_be_visible = count() > 1 || !tabBarAutoHide();
 
-  /*
-  if (should_be_visible) {
-    setCornerWidget(m_btnMainMenu, Qt::Corner::TopLeftCorner);
-  }
-  else {
-    setCornerWidget(nullptr, Qt::Corner::TopLeftCorner);
-    setCornerWidget(nullptr, Qt::Corner::TopRightCorner);
-  }
-  */
-
   m_btnMainMenu->setVisible(should_be_visible);
-  // tabBar()->setVisible(should_be_visible);
 }
 
 void TabWidget::updateAppearance() {

@@ -2,6 +2,7 @@
 
 #include "gui/mediaplayer/mediaplayer.h"
 
+#include "gui/dialogs/formmain.h"
 #include "miscellaneous/iconfactory.h"
 
 #if defined(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
@@ -20,13 +21,12 @@ MediaPlayer::MediaPlayer(QWidget* parent)
                           new LibMpvBackend(qApp, this)
 #endif
                             ),
-    m_muted(false) {
+    m_muted(false), m_fullscreen(false) {
   m_ui.setupUi(this);
 
   m_ui.m_container->setWindowFlags(Qt::WindowType::Widget | Qt::WindowType::FramelessWindowHint);
   m_ui.m_layoutContainer->insertWidget(0, m_backend, 1);
 
-  showPlayerNormal();
   setupIcons();
   createBackendConnections();
   createConnections();
@@ -187,7 +187,7 @@ void MediaPlayer::onSeekableChanged(bool seekable) {
 }
 
 bool MediaPlayer::isFullScreen() const {
-  return m_ui.m_container->parent() == nullptr;
+  return m_fullscreen;
 }
 
 void MediaPlayer::setupIcons() {
@@ -202,29 +202,26 @@ void MediaPlayer::setupIcons() {
 }
 
 void MediaPlayer::showPlayerNormal() {
-  m_ui.m_layoutMain->addWidget(m_ui.m_container);
+  m_ui.m_controlPanel->setVisible(true);
+  qApp->mainForm()->hideShowObtrusiveGuiElements(true);
+  qApp->mainForm()->switchFullscreenMode();
 }
 
 void MediaPlayer::showPlayerFullscreen() {
-  m_ui.m_layoutMain->removeWidget(m_ui.m_container);
-
-  m_ui.m_container->setParent(nullptr);
-  m_ui.m_container->showFullScreen();
-}
-
-void MediaPlayer::escapeFromFullscreen() {
-  m_ui.m_container->showNormal();
-  m_ui.m_container->setParent(this);
+  m_ui.m_controlPanel->setVisible(false);
+  qApp->mainForm()->hideShowObtrusiveGuiElements(false);
+  qApp->mainForm()->switchFullscreenMode();
 }
 
 void MediaPlayer::switchFullScreen(bool send_event_to_backend) {
   bool is_fullscreen = isFullScreen();
 
   if (is_fullscreen) {
-    escapeFromFullscreen();
+    m_fullscreen = false;
     showPlayerNormal();
   }
   else {
+    m_fullscreen = true;
     showPlayerFullscreen();
   }
 
@@ -233,11 +230,13 @@ void MediaPlayer::switchFullScreen(bool send_event_to_backend) {
   }
 }
 
-void MediaPlayer::hideControls() {
-  // m_ui.m_
-}
+void MediaPlayer::onClosed() {
+  if (isFullScreen()) {
+    switchFullScreen(false);
+  }
 
-void MediaPlayer::showControls() {}
+  emit closed();
+}
 
 void MediaPlayer::onFullscreenChanged(bool fullscreen) {
   if (isFullScreen() != fullscreen) {
@@ -253,7 +252,7 @@ void MediaPlayer::createBackendConnections() {
   installEventFilter(m_backend);
 
   connect(m_backend, &PlayerBackend::mutedChanged, this, &MediaPlayer::onMutedChanged);
-  connect(m_backend, &PlayerBackend::closed, this, &MediaPlayer::closed);
+  connect(m_backend, &PlayerBackend::closed, this, &MediaPlayer::onClosed);
   connect(m_backend, &PlayerBackend::fullscreenChanged, this, &MediaPlayer::onFullscreenChanged);
   connect(m_backend, &PlayerBackend::speedChanged, this, &MediaPlayer::onSpeedChanged);
   connect(m_backend, &PlayerBackend::volumeChanged, this, &MediaPlayer::onVolumeChanged);
