@@ -73,14 +73,12 @@ void SearchsNode::createProbe() {
 
       account()->requestItemReassignment(new_prb, this);
       account()->requestItemExpand({this}, true);
-
-      new_prb->updateCounts(true);
     }
     catch (const ApplicationException& ex) {
       new_prb->deleteLater();
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
                            {tr("Not allowed"),
-                            tr("Cannot create label: %1.").arg(ex.message()),
+                            tr("Problem when creating probe: %1.").arg(ex.message()),
                             QSystemTrayIcon::MessageIcon::Critical});
     }
   }

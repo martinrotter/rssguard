@@ -44,6 +44,8 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void deleteProbe(const QSqlDatabase& db, Search* probe);
     static void updateProbe(const QSqlDatabase& db, Search* probe);
 
+    // TODO: podsud hotovo zkontrolovano včetně všech použití.
+
     // Read & unread & important articles.
     static void markProbeReadUnread(const QSqlDatabase& db, Search* probe, RootItem::ReadStatus read);
     static void markAllLabelledMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
