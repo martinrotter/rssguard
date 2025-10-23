@@ -93,7 +93,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
       auto msg = convertArticle(q);
       QStringList label_ids = q.value(8).toString().split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts);
 
-      for (const QString& label_id : label_ids) {
+      for (const QString& label_id : std::as_const(label_ids)) {
         auto* target_lbl = lbls.value(label_id);
 
         if (target_lbl != nullptr) {
@@ -127,9 +127,13 @@ void QuiteRssImport::importLabels(const QList<Label*>& labels) {
   QSqlDatabase db = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
   for (Label* lbl : labels) {
-    DatabaseQueries::createLabel(db, lbl, m_account->accountId());
-
-    m_account->requestItemReassignment(lbl, m_account->labelsNode());
+    try {
+      DatabaseQueries::createLabel(db, lbl, m_account->accountId());
+      m_account->requestItemReassignment(lbl, m_account->labelsNode());
+    }
+    catch (const SqlException& ex) {
+      qCriticalNN << LOGSEC_STANDARD << "Failed to import quiterss label" << NONQUOTE_W_SPACE_DOT(lbl->title());
+    }
   }
 
   m_account->requestItemExpand({m_account->labelsNode()}, true);
