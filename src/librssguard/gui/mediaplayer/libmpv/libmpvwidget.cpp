@@ -106,7 +106,7 @@ void LibMpvWidget::onMpvRedraw(void* ctx) {
 }
 
 void LibMpvWidget::initializeGL() {
-  mpv_opengl_init_params gl_init_params[1] = {get_proc_address, nullptr};
+  mpv_opengl_init_params gl_init_params[1] = {{get_proc_address, nullptr}};
   mpv_render_param display{MPV_RENDER_PARAM_INVALID, nullptr};
 
 #if QT_VERSION_MAJOR == 6 && defined(Q_OS_UNIX) && !defined(Q_OS_DARWIN)
