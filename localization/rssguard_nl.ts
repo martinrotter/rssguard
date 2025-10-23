@@ -203,7 +203,7 @@ Om te zien wat er NIEUW is in deze versie: klik op deze melding.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
       <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
-      <translation>Alle overmatige artikelen worden automatisch verwijderd door de applicatie, meestal nadat een bepaalde feed is opgehaald. Artikelen zijn volledig gewist (inclusief artikelen uit de prullenbak) uit de interne database of worden gewoon verplaatst naar de prullenbak.</translation>
+      <translation>Alle overmatige artikelen worden automatisch verwijderd door de applicatie, meestal nadat een bepaalde feed is opgehaald. Artikelen zijn volledig gewist (inclusief artikelen uit de prullenbak) uit de interne databank of worden gewoon verplaatst naar de prullenbak.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
@@ -2236,7 +2236,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="278"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="662"/>
       <source>Switch fullscreen mode.</source>
-      <translation>Schakel naar scherm vullende mode.</translation>
+      <translation>Schakel naar schermvullende mode.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="286"/>
@@ -2260,7 +2260,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="300"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="670"/>
       <source>Fetch selected feeds</source>
-      <translation>Ophalen geselecteerde feeds</translation>
+      <translation>Geselecteerde feeds ophalen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="321"/>
@@ -2631,7 +2631,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="639"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="755"/>
       <source>&amp;Cleanup database</source>
-      <translation>&amp;Database opschonen</translation>
+      <translation>&amp;Databank opschonen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="647"/>
@@ -2895,7 +2895,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="149"/>
       <source>Cannot cleanup database</source>
-      <translation>Kan database niet opschonen</translation>
+      <translation>Kan databank niet opschonen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="150"/>
@@ -6389,7 +6389,7 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="407"/>
       <source>Some feeds threw an error when fetching articles.</source>
-      <translation>Sommige feeds hebben een fout veroorzaakt bij het ophalen van artikelen.</translation>
+      <translation>Bij het ophalen van sommige feeds ging iets mis.</translation>
     </message>
   </context>
   <context>
@@ -7251,11 +7251,11 @@ Disadvantages:
  • application startup and shutdown can take little longer (max. 2 seconds).
 
 Authors of this application are NOT responsible for lost data.</source>
-      <translation>Gebruik van in-geheugen werken met de database heeft verschillen voor en nadelen. Verzeker je er van dat je deze begrijpt voor je dit inschakelt.
+      <translation>Gebruik van in-geheugen werken met de databank heeft verschillen voor en nadelen. Verzeker je er van dat je deze begrijpt voor je dit inschakelt.
 
 Voordelen:
  • hogere snelheid voor lijsten/berichten manipulatie (zeker met duizenden berichten zichtbaar),
- • hele database in RAM, dus minder actie naar de tragere opslagsystemen.
+ • hele databank in RAM, dus minder actie naar de tragere opslagsystemen.
 
 Nadelen:
  • als de applicatie crashed raak je de laatste wijzigingen kwijt
@@ -7267,13 +7267,13 @@ Makers van de applicatie zijn niet verantwoordelijk voor dataverlies.</translati
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="17"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsdatabase.h" line="214"/>
       <source>Database driver</source>
-      <translation>Databasedriver</translation>
+      <translation>Databankdriver</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="52"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsdatabase.h" line="215"/>
       <source>Use in-memory database as the working database</source>
-      <translation>Gebruik de database die in het geheugen geladen is als hoofddatabase</translation>
+      <translation>Gebruik de databank die in het geheugen geladen is als hoofddatabank</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="81"/>
@@ -8323,7 +8323,7 @@ Omschrijving: %3</translation>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="399"/>
       <source>SQLite (embedded database)</source>
-      <translation>SQLite (ingesloten databank)</translation>
+      <translation>SQLite (standaard databank)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="413"/>
