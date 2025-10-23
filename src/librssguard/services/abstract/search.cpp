@@ -99,6 +99,9 @@ void Search::markAsReadUnread(RootItem::ReadStatus status) {
     cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
   }
 
+  // TODO: projit tyhle volání a nahradit kod vyše obecným voláním onBefore, onAfter
+  // rozmyslet jakej parametr se bude předávat, jestli jen seznam custom ID zpráv
+  // nebo seznam message objektů
   // service->onBeforeSetMessagesRead(this, {}, status);
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
