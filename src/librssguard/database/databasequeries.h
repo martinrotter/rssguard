@@ -118,8 +118,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QHash<QString, QStringList> bagsOfMessages(const QSqlDatabase& db, const QList<Label*>& labels);
     static QStringList customIdsOfMessagesFromLabel(const QSqlDatabase& db,
                                                     Label* label,
-                                                    RootItem::ReadStatus target_read,
-                                                    bool* ok = nullptr);
+                                                    RootItem::ReadStatus target_read);
     static QStringList customIdsOfMessagesFromProbe(const QSqlDatabase& db,
                                                     Search* probe,
                                                     RootItem::ReadStatus target_read);

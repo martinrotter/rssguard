@@ -2131,6 +2131,27 @@ void DatabaseQueries::storeAccountTree(const QSqlDatabase& db,
   }
 }
 
+void DatabaseQueries::markProbeReadUnread(const QSqlDatabase& db, Search* probe, RootItem::ReadStatus read) {
+  QSqlQuery q(db);
+
+  q.setForwardOnly(true);
+  q.prepare(QSL("UPDATE Messages SET is_read = :read "
+                "WHERE "
+                "    is_deleted = 0 AND "
+                "    is_pdeleted = 0 AND "
+                "    account_id = :account_id AND "
+                "    (title REGEXP :fltr OR contents REGEXP :fltr);"));
+  q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
+  q.bindValue(QSL(":account_id"), probe->account()->accountId());
+  q.bindValue(QSL(":fltr"), probe->filter());
+
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
+  }
+
+  DatabaseFactory::logLastExecutedQuery(q);
+}
+
 QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& db,
                                                             RootItem::ReadStatus target_read,
                                                             int account_id,
@@ -2162,28 +2183,32 @@ QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& 
 
 QStringList DatabaseQueries::customIdsOfMessagesFromLabel(const QSqlDatabase& db,
                                                           Label* label,
-                                                          RootItem::ReadStatus target_read,
-                                                          bool* ok) {
+                                                          RootItem::ReadStatus target_read) {
   QSqlQuery q(db);
   QStringList ids;
-
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages "
+
+  q.prepare(QSL("SELECT Messages.custom_id "
+                "FROM Messages "
                 "WHERE "
-                "    is_read = :read AND "
-                "    is_deleted = 0 AND "
-                "    is_pdeleted = 0 AND "
-                "    account_id = :account_id AND "
-                "    labels LIKE :label;"));
+                "  Messages.is_read = :read AND "
+                "  Messages.is_deleted = 0 AND "
+                "  Messages.is_pdeleted = 0 AND "
+                "  Messages.account_id = :account_id AND "
+                "  EXISTS ("
+                "    SELECT 1 "
+                "    FROM LabelsInMessages "
+                "    WHERE "
+                "      LabelsInMessages.label = :label_id AND "
+                "      LabelsInMessages.account_id = Messages.account_id AND "
+                "      LabelsInMessages.message = Messages.id);"));
+
   q.bindValue(QSL(":account_id"), label->account()->accountId());
-  q.bindValue(QSL(":label"), QSL("%.%1.%").arg(label->customId()));
+  q.bindValue(QSL(":label_id"), label->id());
   q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
 
-  if (ok != nullptr) {
-    *ok = q.exec();
-  }
-  else {
-    q.exec();
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
   }
 
   DatabaseFactory::logLastExecutedQuery(q);
@@ -2193,27 +2218,6 @@ QStringList DatabaseQueries::customIdsOfMessagesFromLabel(const QSqlDatabase& db
   }
 
   return ids;
-}
-
-void DatabaseQueries::markProbeReadUnread(const QSqlDatabase& db, Search* probe, RootItem::ReadStatus read) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("UPDATE Messages SET is_read = :read "
-                "WHERE "
-                "    is_deleted = 0 AND "
-                "    is_pdeleted = 0 AND "
-                "    account_id = :account_id AND "
-                "    (title REGEXP :fltr OR contents REGEXP :fltr);"));
-  q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
-  q.bindValue(QSL(":account_id"), probe->account()->accountId());
-  q.bindValue(QSL(":fltr"), probe->filter());
-
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
 }
 
 QStringList DatabaseQueries::customIdsOfMessagesFromProbe(const QSqlDatabase& db,
