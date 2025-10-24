@@ -505,7 +505,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="103"/>
       <source>Save attachment %1</source>
-      <translation type="unfinished">Save attachment %1</translation>
+      <translation>添付ファイル %1 を保存</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="119"/>
@@ -627,11 +627,11 @@ Active message filters: %2
 Status: %3
 Source: %4
 Item custom ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: %4
-Item custom ID: %5</translation>
+      <translation>自動更新ステータス: %1
+アクティブなメッセージフィルター: %2
+ステータス: %3
+ソース: %4
+アイテムのカスタムID: %5</translation>
     </message>
   </context>
   <context>
@@ -1083,13 +1083,13 @@ Item custom ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="259"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="309"/>
       <source>Cannot clear items</source>
-      <translation type="unfinished">Cannot clear items</translation>
+      <translation>アイテムを消去できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="260"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="310"/>
       <source>Failed to clear items: %1.</source>
-      <translation type="unfinished">Failed to clear items: %1.</translation>
+      <translation>アイテムを消去できませんでした: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
@@ -1099,12 +1099,12 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="284"/>
       <source>Cannot purge feeds</source>
-      <translation type="unfinished">Cannot purge feeds</translation>
+      <translation>フィードを削除できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="285"/>
       <source>Failed to purge feeds: %1.</source>
-      <translation type="unfinished">Failed to purge feeds: %1.</translation>
+      <translation>フィードを削除できませんでした: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="344"/>
@@ -1171,19 +1171,19 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="520"/>
       <source>Failed to delete selected item: %1.</source>
-      <translation type="unfinished">Failed to delete selected item: %1.</translation>
+      <translation>選択したアイテムを削除できませんでした: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="603"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="625"/>
       <source>Cannot mark item read unread</source>
-      <translation type="unfinished">Cannot mark item read unread</translation>
+      <translation>アイテムを既読または未読にできません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="604"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="626"/>
       <source>Failed to mark item read or unread: %1.</source>
-      <translation type="unfinished">Failed to mark item read or unread: %1.</translation>
+      <translation>アイテムを既読または未読にできませんでした: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="638"/>
@@ -2901,7 +2901,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
       <source>Script output</source>
-      <translation type="unfinished">Script output</translation>
+      <translation>スクリプト出力</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="60"/>
@@ -4237,7 +4237,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="13"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>ラベル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="21"/>
@@ -4247,12 +4247,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="67"/>
       <source>Cannot change labels</source>
-      <translation type="unfinished">Cannot change labels</translation>
+      <translation>ラベルを変更できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="68"/>
       <source>Failed to (de)assign label to/from article: %1.</source>
-      <translation type="unfinished">Failed to (de)assign label to/from article: %1.</translation>
+      <translation>記事へのラベルの割り当て (解除) ができませんでした: %1</translation>
     </message>
   </context>
   <context>
@@ -4977,7 +4977,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="504"/>
       <source>Has attachments</source>
-      <translation type="unfinished">Has attachments</translation>
+      <translation>添付ファイルあり</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
@@ -5062,7 +5062,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="512"/>
       <source>Indication of attachments presence within the article.</source>
-      <translation type="unfinished">Indication of attachments presence within the article.</translation>
+      <translation>記事内に添付ファイルが存在するか表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="513"/>
@@ -6585,7 +6585,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="81"/>
       <source>Problem when creating probe: %1.</source>
-      <translation type="unfinished">Problem when creating probe: %1.</translation>
+      <translation>プローブ作成時の問題: %1</translation>
     </message>
   </context>
   <context>
@@ -6593,22 +6593,22 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="107"/>
       <source>Cannot update label</source>
-      <translation type="unfinished">Cannot update label</translation>
+      <translation>ラベルを更新できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="108"/>
       <source>Failed to update label with new information: %1.</source>
-      <translation type="unfinished">Failed to update label with new information: %1.</translation>
+      <translation>新しい情報でラベルを更新できませんでした: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="142"/>
       <source>Cannot update probe item</source>
-      <translation type="unfinished">Cannot update probe item</translation>
+      <translation>プローブアイテムを更新できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="143"/>
       <source>Failed to update selected probe: %1.</source>
-      <translation type="unfinished">Failed to update selected probe: %1.</translation>
+      <translation>選択したプローブの更新ができませんでした: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="153"/>
@@ -8052,11 +8052,11 @@ Use raw XML saving: %4
 Fetch article comments: %5
 HTTP/2: %6
 </source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
+      <translation>エンコーディング: %1
+タイプ: %2
+後処理スクリプト: %3
+生のXML保存を使用: %4
+記事のコメントを取得: %5
 HTTP/2: %6
 </translation>
     </message>
