@@ -132,6 +132,9 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     // This is the place to make some other changes like updating
     // some ONLINE service or something.
 
+    virtual void onBeforeSetMessagesRead(RootItem* selected_item,
+                                         const QStringList& message_custom_ids,
+                                         ReadStatus read);
     virtual void onBeforeSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);
     virtual void onAfterSetMessagesRead(RootItem* selected_item, const QList<Message>& messages, ReadStatus read);
 
@@ -183,9 +186,6 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
 
     // Removes all/read only messages from given underlying feeds.
     void cleanFeeds(const QList<Feed*>& items, bool clean_read_only);
-
-    // Marks all messages from feeds read/unread.
-    void markFeedsReadUnread(const QList<Feed*>& items, ReadStatus read);
 
     // Obvious methods to wrap signals.
     void itemChanged(const QList<RootItem*>& items);

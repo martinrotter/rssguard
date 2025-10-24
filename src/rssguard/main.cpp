@@ -35,6 +35,10 @@ int main(int argc, char* argv[]) {
   qputenv("QT_QPA_PLATFORM", "windows:darkmode=0");
 #endif
 
+#if !defined(NDEBUG)
+  qputenv("QT_DEBUG_PLUGINS", "1");
+#endif
+
   // High DPI stuff.
 #if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
   auto high_dpi_existing_env = qgetenv("QT_ENABLE_HIGHDPI_SCALING");

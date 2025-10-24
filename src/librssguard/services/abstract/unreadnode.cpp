@@ -45,17 +45,12 @@ void UnreadNode::markAsReadUnread(RootItem::ReadStatus status) {
   }
 
   ServiceRoot* service = account();
-  auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
+  auto article_custom_ids = service->customIDSOfMessagesForItem(this, status);
 
-  if (cache != nullptr) {
-    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
-  }
-
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::markUnreadMessagesRead(database, service->accountId());
-  service->updateCounts(false);
-  service->itemChanged(service->getSubTree<RootItem>());
+  service->onBeforeSetMessagesRead(this, article_custom_ids, status);
+  DatabaseQueries::markUnreadMessagesRead(qApp->database()->driver()->connection(metaObject()->className()),
+                                          service->accountId());
+  service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read
                                          ? FeedsModel::ExternalDataChange::MarkedRead

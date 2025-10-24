@@ -170,7 +170,7 @@ void MessagePreviewer::markMessageAsUnread() {
 
 void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
   if (!m_root.isNull()) {
-    m_root->account()->onBeforeSetMessagesRead(m_root.data(), {m_message}, read);
+    m_root->account()->onBeforeSetMessagesRead(m_root.data(), {m_message.m_customId}, read);
     DatabaseQueries::markMessagesReadUnread(qApp->database()
                                               ->driver()
                                               ->connection(objectName(),

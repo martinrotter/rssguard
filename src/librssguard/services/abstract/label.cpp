@@ -108,17 +108,13 @@ void Label::cleanMessages(bool clear_only_read) {
 
 void Label::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
-  auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
+  auto article_custom_ids = service->customIDSOfMessagesForItem(this, status);
 
-  if (cache != nullptr) {
-    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
-  }
-
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::markLabelledMessagesReadUnread(database, this, status);
-  service->updateCounts(false);
-  service->itemChanged(service->getSubTree<RootItem>());
+  service->onBeforeSetMessagesRead(this, article_custom_ids, status);
+  DatabaseQueries::markLabelledMessagesReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
+                                                  this,
+                                                  status);
+  service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read
                                          ? FeedsModel::ExternalDataChange::MarkedRead

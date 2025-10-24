@@ -93,24 +93,11 @@ QString Search::additionalTooltip() const {
 
 void Search::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
-  auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
+  auto article_custom_ids = service->customIDSOfMessagesForItem(this, status);
 
-  if (cache != nullptr) {
-    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
-  }
-
-  // TODO: projit tyhle volání a nahradit kod vyše obecným voláním onBefore, onAfter
-  // rozmyslet jakej parametr se bude předávat, jestli jen seznam custom ID zpráv
-  // nebo seznam message objektů
-  service->onBeforeSetMessagesRead(this, {}, status);
-
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  DatabaseQueries::markProbeReadUnread(database, this, status);
-
+  service->onBeforeSetMessagesRead(this, article_custom_ids, status);
+  DatabaseQueries::markProbeReadUnread(qApp->database()->driver()->connection(metaObject()->className()), this, status);
   service->onAfterSetMessagesRead(this, {}, status);
-
-  service->updateCounts(false);
-  service->itemChanged(service->getSubTree<RootItem>());
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read
                                          ? FeedsModel::ExternalDataChange::MarkedRead

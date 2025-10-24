@@ -224,13 +224,18 @@ void Feed::cleanMessages(bool clean_read_only) {
 
 void Feed::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
-  auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
+  auto article_custom_ids = service->customIDSOfMessagesForItem(this, status);
 
-  if (cache != nullptr) {
-    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
-  }
-
-  service->markFeedsReadUnread({this}, status);
+  service->onBeforeSetMessagesRead(this, article_custom_ids, status);
+  DatabaseQueries::markFeedsReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
+                                       service->textualFeedIds({this}),
+                                       service->accountId(),
+                                       status);
+  service->onAfterSetMessagesRead(this, {}, status);
+  service->informOthersAboutDataChange(this,
+                                       status == RootItem::ReadStatus::Read
+                                         ? FeedsModel::ExternalDataChange::MarkedRead
+                                         : FeedsModel::ExternalDataChange::MarkedUnread);
 }
 
 QString Feed::getAutoUpdateStatusDescription() const {

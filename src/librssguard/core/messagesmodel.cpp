@@ -884,7 +884,7 @@ void MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
 
   const Message& message = messageForRow(row_index);
 
-  m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, {message}, read);
+  m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, {message.m_customId}, read);
 
   // Rewrite "visible" data in the model.
   bool working_change = setData(index(row_index, MSG_MDL_READ_INDEX), int(read));
@@ -895,7 +895,7 @@ void MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
     return;
   }
 
-  DatabaseQueries::markMessagesReadUnread(m_db, QStringList() << QString::number(message.m_id), read);
+  DatabaseQueries::markMessagesReadUnread(m_db, {QString::number(message.m_id)}, read);
   m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, {message}, read);
 }
 

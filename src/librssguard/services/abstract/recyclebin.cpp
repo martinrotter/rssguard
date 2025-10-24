@@ -57,17 +57,14 @@ QList<QAction*> RecycleBin::contextMenuFeedsList() {
 }
 
 void RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   ServiceRoot* service = account();
-  auto* cache = dynamic_cast<CacheForServiceRoot*>(service);
+  auto article_custom_ids = service->customIDSOfMessagesForItem(this, status);
 
-  if (cache != nullptr) {
-    cache->addMessageStatesToCache(service->customIDSOfMessagesForItem(this, status), status);
-  }
-
-  DatabaseQueries::markBinReadUnread(database, service->accountId(), status);
-  updateCounts(false);
-  service->itemChanged(QList<RootItem*>() << this);
+  service->onBeforeSetMessagesRead(this, article_custom_ids, status);
+  DatabaseQueries::markBinReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
+                                     service->accountId(),
+                                     status);
+  service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read
                                          ? FeedsModel::ExternalDataChange::MarkedRead
