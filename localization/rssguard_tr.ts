@@ -18,37 +18,31 @@
     <name>AccountDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_accountdetails.h" line="78"/>
       <source>Form</source>
       <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_accountdetails.h" line="79"/>
       <source>Display additional nodes</source>
       <translation>Ek düğümleri göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_accountdetails.h" line="80"/>
       <source>Important</source>
       <translation>Önemli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="33"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_accountdetails.h" line="81"/>
       <source>Unread</source>
       <translation>Okunmamış</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
       <source>Labels</source>
       <translation>Etiketler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
       <source>Probes</source>
       <translation>Sorgular</translation>
     </message>
@@ -56,57 +50,57 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1085"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1083"/>
       <source>Application is already running.</source>
       <translation>Uygulama zaten çalışıyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="509"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="507"/>
       <source>Output directory is not writable.</source>
       <translation>Çıkış dizinine yazılamıyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="517"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="515"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>Ayarlar dosyasının çıkış dizinine geçirilmesi başarısız oldu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="532"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="530"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Veritabanı geri yüklenimi başlatılmadı. Çıkış dizininin yazılabilir olduğundan emin olun.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="539"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="537"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Ayarların geri yüklemesi yapılamadı. Çıkış dizininin yazılabilir olduğundan emin olun.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1103"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1101"/>
       <source>Cannot add feed</source>
       <translation>Akış eklenemedi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1104"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1102"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Akış eklenemedi çünkü ekleyebilecek aktif bir hesap bulunmuyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="975"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="973"/>
       <source>Unread articles fetched</source>
       <translation>Okunmamış yazılar bulundu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="300"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="298"/>
       <source>Go to changelog</source>
       <translation>Değişiklik günlüğüne git</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="294"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="292"/>
       <source>Welcome</source>
       <translation>Hoş geldiniz</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="295"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="293"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -116,7 +110,7 @@ version by clicking this popup notification.</source>
 Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyin.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1084"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1082"/>
       <source>Already running</source>
       <translation>Zaten çalışıyor</translation>
     </message>
@@ -125,73 +119,61 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
     <name>ArticleAmountControl</name>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="256"/>
       <source>Form</source>
       <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="261"/>
       <source>Ignoring old articles</source>
       <translation>Eski yazıların yok sayılması</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
       <source>Add articles with any date into the database</source>
       <translation>Veri tabanına her tarihten yazı eklensin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
       <source>Avoid adding articles before this date/time into the database</source>
       <translation>Bu tarih ve saatten önceki yazılar veri tabanına eklenmesin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="259"/>
       <source>Absolute date/time</source>
       <translation>Tam tarih/saat bilgisi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="260"/>
       <source>Relative time</source>
       <translation>Göreceli zaman</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="267"/>
       <source>Limiting amount of articles in feeds</source>
       <translation>Akışlardaki yazı adedinin sınırlanması</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="262"/>
       <source>Customize article limits</source>
       <translation>Makale sınırlarını özelleştirin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
       <source>In database, keep</source>
       <translation>Veri tabanında şunları tut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="264"/>
       <source>Do not remove important articles</source>
       <translation>Önemli yazıları kaldırma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="265"/>
       <source>Do not remove unread articles</source>
       <translation>Okunmamış yazıları kaldırma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articleamountcontrol.h" line="266"/>
       <source>Just move articles to recycle bin, do not purge them</source>
       <translation>Yazıları silmeden geri dönüşüm kutusuna taşı</translation>
     </message>
@@ -223,42 +205,36 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
     <name>ArticleListNotification</name>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="66"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articlelistnotification.h" line="142"/>
       <source>...</source>
       <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articlelistnotification.h" line="144"/>
       <source>Go to previous page</source>
       <translation>Önceki sayfaya git</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="94"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articlelistnotification.h" line="147"/>
       <source>Go to next page</source>
       <translation>Sonraki sayfaya git</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="101"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articlelistnotification.h" line="150"/>
       <source>Open article in article list</source>
       <translation>Makeleyi yazı listesinde aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="108"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articlelistnotification.h" line="153"/>
       <source>Open article in web browser</source>
       <translation>Makeleyi web tarayıcıda aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="122"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_articlelistnotification.h" line="156"/>
       <source>Mark all articles as read</source>
       <translation>Tüm yazıları okunmuş olarak işaretle</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="94"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="95"/>
       <source>%n feeds fetched</source>
       <translation>
         <numerusform>%n akıştan veri alındı</numerusform>
@@ -270,25 +246,21 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
     <name>AuthenticationDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_authenticationdetails.h" line="122"/>
       <source>Form</source>
       <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_authenticationdetails.h" line="125"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
       <translation>GMail beslemeleri dahil olmak üzere bazı beslemeler kimlik doğrulama gerektirir. BASIC, NTLM-2 ve DIGEST-MD5 kimlik doğrulama şemaları desteklenir.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_authenticationdetails.h" line="127"/>
       <source>Credentials</source>
       <translation>Kimlik bilgileri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="25"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_authenticationdetails.h" line="123"/>
       <source>Authentication type</source>
       <translation>Kimlik doğrulama yöntemi</translation>
     </message>
@@ -296,14 +268,12 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="60"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="100"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_authenticationdetails.h" line="128"/>
       <source>Username</source>
       <translation>Kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="73"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_authenticationdetails.h" line="129"/>
       <source>Password</source>
       <translation>Şifre</translation>
     </message>
@@ -369,7 +339,7 @@ Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyi
   <context>
     <name>BaseToastNotification</name>
     <message>
-      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="46"/>
+      <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="52"/>
       <source>Close this notification</source>
       <translation>Bu bildirimi kapat</translation>
     </message>
@@ -402,52 +372,52 @@ Devre dışı bırakılmış besleme sayısı: %3</translation>
   <context>
     <name>DatabaseCleaner</name>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="75"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="76"/>
       <source>Shrinking database file...</source>
       <translation>Veri tabanı dosyası daraltılıyor...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="81"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="82"/>
       <source>Database file shrinked...</source>
       <translation>Veri tabanı dosyası daraltıldı...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="45"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="44"/>
       <source>Recycle bin purged...</source>
       <translation>Geri dönüşüm kutusu temizlendi...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="39"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="38"/>
       <source>Purging recycle bin...</source>
       <translation>Geri dönüşüm kutusu temizleniyor...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="27"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="26"/>
       <source>Removing read articles...</source>
       <translation>Okunan yazılar kaldırılıyor...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="33"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="32"/>
       <source>Read articles purged...</source>
       <translation>Okunan yazılar siliniyor...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="51"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="50"/>
       <source>Removing old articles...</source>
       <translation>Eski yazılar kaldırılıyor...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="57"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="56"/>
       <source>Old articles purged...</source>
       <translation>Eski yazılar siliniyor...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="63"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="62"/>
       <source>Removing starred articles...</source>
       <translation>Yıldızlı yazılar kaldırılıyor...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="69"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="68"/>
       <source>Starred articles purged...</source>
       <translation>Yıldızlı yazılar silindi...</translation>
     </message>
@@ -481,17 +451,17 @@ Devre dışı bırakılmış besleme sayısı: %3</translation>
   <context>
     <name>DynamicShortcutsWidget</name>
     <message>
-      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="127"/>
+      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="108"/>
       <source>Duplicate shortcut</source>
       <translation>Yinelenen kısayol</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="128"/>
+      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="109"/>
       <source>There is another action which has the same shortcut assigned.</source>
       <translation>Aynı kısayolun atandığı başka bir eylem daha var.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="129"/>
+      <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="110"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
       <translation>Yeni kısayol atamasını tutmak ve önceki kısayolu temizlemek istiyor musunuz?</translation>
     </message>
@@ -535,8 +505,8 @@ Devre dışı bırakılmış besleme sayısı: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="103"/>
-      <source>Save attachmen %1</source>
-      <translation/>
+      <source>Save attachment %1</source>
+      <translation type="unfinished">Save attachment %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="119"/>
@@ -596,33 +566,33 @@ Devre dışı bırakılmış besleme sayısı: %3</translation>
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="259"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="261"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>global ayarları kullanır, ancak makalelerin global olarak otomatik içe aktarılması devre dışı bırakılır</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="283"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="285"/>
       <source>no errors</source>
       <translation>hata yok</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="289"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="291"/>
       <source>authentication error</source>
       <translation>kimlik doğrulama hatası</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="294"/>
       <source>network error</source>
       <translation>ağ hatası</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="245"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="247"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>makalelerin otomatik içe aktarılmasını kullanmaz</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="256"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="258"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>Genel ayarları kullanır (%n dakika sonra makalelerin otomatik alınmasına geçilecek)</numerusform>
@@ -630,7 +600,7 @@ Devre dışı bırakılmış besleme sayısı: %3</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="270"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="272"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -639,32 +609,32 @@ Devre dışı bırakılmış besleme sayısı: %3</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="286"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="288"/>
       <source>has new articles</source>
       <translation>yeni yazılar var</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="295"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="297"/>
       <source>parsing error</source>
       <translation>çözümleme hatası</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="298"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="300"/>
       <source>error</source>
       <translation>hata</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="368"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="371"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
-Source: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
-Item ID: %5</source>
-      <translation>Otomatik güncelleme durumu: %1
-Etkin mesaj süzgeçleri: %2
-Durum: %3
-Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
-Öge kimliği: %5</translation>
+Source: %4
+Item custom ID: %5</source>
+      <translation type="unfinished">Auto-update status: %1
+Active message filters: %2
+Status: %3
+Source: %4
+Item custom ID: %5</translation>
     </message>
   </context>
   <context>
@@ -678,32 +648,32 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
   <context>
     <name>FeedMessageViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="32"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="33"/>
       <source>Toolbar for feeds</source>
       <translation>Akış için araç çubuğu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="34"/>
       <source>Toolbar for articles</source>
       <translation>Makaleler için araç çubuğu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="245"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="246"/>
       <source>Filtered feed list</source>
       <translation>Süzülmüş akış listesi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="246"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="247"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
       <translation>Beslemeniz, besleme listesinden filtrelendiği için makale listesinden makale seçilemiyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="262"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="263"/>
       <source>Filtered article list</source>
       <translation>Süzülmüş makale listesi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="263"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="264"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
       <translation>Makale listeniz süzülmüş veya makale silindiği için seçilemiyor.</translation>
     </message>
@@ -1048,51 +1018,52 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
   <context>
     <name>FeedsView</name>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="292"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="322"/>
       <source>Cannot edit item</source>
       <translation/>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="423"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="453"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="519"/>
       <source>Cannot delete item</source>
       <translation>Öğe silinemiyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1070"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1123"/>
       <source>Context menu for empty space</source>
       <translation>Boş alan için bağlam menüsü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="293"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="323"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
       <translation>Başka bir kritik işlem devam ettiği için seçilen öğe düzenlenemiyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="424"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="454"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
       <translation/>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="946"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1000"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="999"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1053"/>
       <source>Context menu for categories</source>
       <translation>Kategoriler için bağlam menüsü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="242"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="259"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="274"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="462"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="269"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="294"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="492"/>
       <source>Are you sure?</source>
       <translation>Emin misiniz?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1080"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1133"/>
       <source>Context menu for other items</source>
       <translation>Diğer elemanlar için bağlam menüsü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1124"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1177"/>
       <source>Context menu for regex query</source>
       <translation>Regex sorgusu için bağlam menüsü</translation>
     </message>
@@ -1108,65 +1079,87 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="243"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="275"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="295"/>
       <source>Do you really want to clean all articles from selected items?</source>
       <translation>Seçilen ögelerdeki tüm makaleleri gerçekten temizlemek istiyor musunuz?</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="259"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="309"/>
+      <source>Cannot clear items</source>
+      <translation type="unfinished">Cannot clear items</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="260"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="310"/>
+      <source>Failed to clear items: %1.</source>
+      <translation type="unfinished">Failed to clear items: %1.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
       <translation>Seçilen tüm akışlardan yıldızsız makaleleri gerçekten temizlemek istiyor musunuz?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="314"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="324"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="342"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="359"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="284"/>
+      <source>Cannot purge feeds</source>
+      <translation type="unfinished">Cannot purge feeds</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="285"/>
+      <source>Failed to purge feeds: %1.</source>
+      <translation type="unfinished">Failed to purge feeds: %1.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="344"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="354"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="372"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="389"/>
       <source>Cannot edit items</source>
       <translation>Bazı elemanlar düzenlenemiyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="315"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="345"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
       <translation>Seçili öğeler düzenlenemez. Bu henüz desteklenmiyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="325"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="355"/>
       <source>%1 does not support batch editing of multiple accounts.</source>
       <translation>%1 den fazla hesabın toplu olarak düzenlenmesini desteklemiyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="343"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="373"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
       <translation>%1, birden fazla hesaptan gelen öğelerin toplu düzenlemesini desteklenmiyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="360"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="390"/>
       <source>%1 does not support batch editing of items of varying types.</source>
       <translation>%1 farklı türdeki öğelerin toplu düzenlenmesini desteklemez.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="370"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="400"/>
       <source>Cannot edit some items</source>
       <translation>Bazı şeyler düzenlenemiyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="371"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="401"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
       <translation>Seçilen öğelerin bazıları düzenlenemez. Geri kalanları düzenlemeye devam edin.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="452"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="482"/>
       <source>Some items won&apos;t be deleted</source>
       <translation>Bazı öğeler&apos;t silinmeyecek.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="453"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="483"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
       <translation>Seçilen bazı şeyler mümkün olmadığından silinmeyecek.</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="460"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="490"/>
       <source>Deleting %n items</source>
       <translation>
         <numerusform>%n öğe siliniyor</numerusform>
@@ -1174,7 +1167,7 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="461"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="491"/>
       <source>You are about to completely delete %n items.</source>
       <translation>
         <numerusform>%n öğesini tamamen silmek üzeresiniz.</numerusform>
@@ -1182,32 +1175,49 @@ Kaynak: &lt;a href=&quot;%4&quot;&gt;%4&lt;/a&gt;
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="578"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="520"/>
+      <source>Failed to delete selected item: %1.</source>
+      <translation type="unfinished">Failed to delete selected item: %1.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="603"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="625"/>
+      <source>Cannot mark item read unread</source>
+      <translation type="unfinished">Cannot mark item read unread</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="604"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="626"/>
+      <source>Failed to mark item read or unread: %1.</source>
+      <translation type="unfinished">Failed to mark item read or unread: %1.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="638"/>
       <source>Mark everything as read</source>
       <translation>Her şeyi okundu olarak işaretle</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="579"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="639"/>
       <source>Do you really want to mark everything as read?</source>
       <translation>Her şeyi okundu olarak işaretlemek istediğinizden emin misiniz?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="687"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="747"/>
       <source>Context menu for recycle bins</source>
       <translation>Geridönüşüm kutuları için bağlam menüsü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="708"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="768"/>
       <source>Context menu for accounts</source>
       <translation>Hesaplar için bağlam menüsü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1101"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1154"/>
       <source>Context menu for label</source>
       <translation>Etiket için bağlam menüsü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1049"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1102"/>
       <source>Context menu for important articles</source>
       <translation>Önemli makaleler için bağlam menüsü</translation>
     </message>
@@ -1281,37 +1291,31 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="93"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formabout.h" line="219"/>
       <source>&amp;Copy info to clipboard</source>
       <translation>&amp;Bilgileri panoya kopyala</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="112"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formabout.h" line="221"/>
       <source>Information</source>
       <translation>Bilgi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="160"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formabout.h" line="222"/>
       <source>Licenses</source>
       <translation>Lisans</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="177"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formabout.h" line="224"/>
       <source>Changelog</source>
       <translation>Değişim günlüğü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="212"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formabout.h" line="223"/>
       <source>Changelog page is available only in English language.</source>
       <translation>Değişim günlüğü sayfası yalnızca İngilizce dilinde mevcuttur.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="220"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formabout.h" line="225"/>
       <source>Resources</source>
       <translation>Kaynaklar</translation>
     </message>
@@ -1343,7 +1347,6 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     <name>FormAddAccount</name>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaddaccount.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formaddaccount.h" line="73"/>
       <source>Add new account</source>
       <translation>Yeni hesap ekle</translation>
     </message>
@@ -1356,12 +1359,12 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <translation>Yeni alıcı ekle.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="187"/>
+      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="183"/>
       <source>E-mail NOT sent</source>
       <translation>E-posta gönderilmedi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="188"/>
+      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="184"/>
       <source>Your e-mail message wasn&apos;t sent.</source>
       <translation>E-posta iletiniz gönderilmedi.</translation>
     </message>
@@ -1528,55 +1531,46 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="142"/>
       <source>Backup database/settings</source>
       <translation>Veritabanını/ayarları yedekle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="20"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="143"/>
       <source>Output directory</source>
       <translation>Çıktı klasörü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="144"/>
       <source>&amp;Select directory</source>
       <translation>Dizin seçin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="145"/>
       <source>Backup properties</source>
       <translation>Yedekleme özellikleri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="49"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="146"/>
       <source>Items to backup</source>
       <translation>Yedeklenecek öğeler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="56"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="147"/>
       <source>Database</source>
       <translation>Veri tabanı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="66"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="148"/>
       <source>Settings</source>
       <translation>Ayarlar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="76"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="149"/>
       <source>Backup name</source>
       <translation>Yedek adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="89"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="150"/>
       <source>Operation results</source>
       <translation>İşlem sonuçları</translation>
     </message>
@@ -1668,37 +1662,31 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formcategorydetails.h" line="180"/>
       <source>Parent category</source>
       <translation>Üst kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formcategorydetails.h" line="182"/>
       <source>Select parent item for your category.</source>
       <translation>Kategori için üst öğeyi seçin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="61"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formcategorydetails.h" line="184"/>
       <source>Title</source>
       <translation>Başlık</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="81"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formcategorydetails.h" line="185"/>
       <source>Description</source>
       <translation>Açıklama</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="101"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formcategorydetails.h" line="186"/>
       <source>Icon</source>
       <translation>Simge</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="125"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formcategorydetails.h" line="188"/>
       <source>Select icon for your category.</source>
       <translation>Kategoriniz için ikon seçin.</translation>
     </message>
@@ -1706,7 +1694,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
   <context>
     <name>FormDatabaseCleanup</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="64"/>
+      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="61"/>
       <source> day(s)</source>
       <translation>
         <numerusform> gün</numerusform>
@@ -1714,96 +1702,79 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="38"/>
+      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="35"/>
       <source>I am ready.</source>
       <translation>Hazırım.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="84"/>
-      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="85"/>
+      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="81"/>
+      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="82"/>
       <source>Database cleanup is running.</source>
       <translation>Veritabanı temizliği çalışıyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="99"/>
-      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="100"/>
+      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="95"/>
+      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="96"/>
       <source>Database cleanup is completed.</source>
       <translation>Veritabanı temizliği tamamlandı.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="104"/>
-      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="105"/>
-      <source>Database cleanup failed.</source>
-      <translation>Veritabanı temizleme başarısız oldu.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="113"/>
+      <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="103"/>
       <source>unknown</source>
       <translation>bilinmeyen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="188"/>
       <source>Cleanup database</source>
       <translation>Veritabanını temizle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="189"/>
       <source>Cleanup settings</source>
       <translation>Ayarları temizle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
       <source>Optimize database file</source>
       <translation>Veritabanı dosyasını optimize et</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="191"/>
       <source>Remove all read articles</source>
       <translation>Okunan tüm makaleleri kaldır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="53"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="192"/>
       <source>Remove all articles from recycle bin</source>
       <translation>Tüm makaleleri geri dönüşüm kutusundan kaldırın</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="193"/>
       <source>Remove all articles older than</source>
       <translation>'den eski tüm makaleleri kaldırın</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
       <source>Remove all starred articles</source>
       <translation>Yıldızlı tüm makaleleri kaldır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="195"/>
       <source>Database information</source>
       <translation>Veri tabanı bilgileri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="102"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="196"/>
       <source>Total data size</source>
       <translation>Toplam veri boyutu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="197"/>
       <source>Database type</source>
       <translation>Veri tabanı türü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="139"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formdatabasecleanup.h" line="198"/>
       <source>Progress</source>
       <translation>İlerleme</translation>
     </message>
@@ -2023,47 +1994,32 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <translation>Akış özellikleri kaydedilemiyor</translation>
     </message>
     <message>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formfeeddetails.h" line="213"/>
-      <source>Articles</source>
-      <translation>Makaleler</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
       <source>Common</source>
       <translation type="unfinished">Common</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formfeeddetails.h" line="209"/>
       <source>Auto-downloading of articles</source>
       <translation>Otomatik makale indirme</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formfeeddetails.h" line="211"/>
       <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
       <translation>Bu akışın yazıları için otomatik indirme stratejisini seçin. Varsayılan strateji, yeni yazıların uygulama ayarlarında belirlenen zaman aralıklarıyla indirileceği anlamına gelir.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="117"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formfeeddetails.h" line="216"/>
       <source>Right-to-left behavior</source>
       <translation>Sağdan sola davranış</translation>
     </message>
     <message>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formfeeddetails.h" line="217"/>
-      <source>Miscellaneous</source>
-      <translation>Çeşitli</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="101"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formfeeddetails.h" line="215"/>
       <source>Disable this feed</source>
       <translation>Bu akışı devre dışı bırak</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formfeeddetails.h" line="214"/>
       <source>Ignore notifications for this feed</source>
       <translation>Bu akış için bildirimleri görmezden gel</translation>
     </message>
@@ -2107,12 +2063,12 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="413"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="399"/>
       <source>No possible actions</source>
       <translation>Olası eylem yok</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="372"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="358"/>
       <source>No recycle bin</source>
       <translation>Geri dönüşüm kutusu yok</translation>
     </message>
@@ -2133,481 +2089,401 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="808"/>
       <source>&amp;File</source>
       <translation>&amp;Dosya</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="63"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="809"/>
       <source>&amp;Help</source>
       <translation>&amp;Yardım</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="74"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="810"/>
       <source>&amp;View</source>
       <translation>&amp;Görünüm</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="78"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="811"/>
       <source>Show/hide</source>
       <translation>Göster/Gizle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="106"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="813"/>
       <source>&amp;Tools</source>
       <translation>&amp;Araçlar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="115"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="814"/>
       <source>F&amp;eeds</source>
       <translation>&amp;Akışlar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="119"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="815"/>
       <source>&amp;Add item</source>
       <translation>&amp;Öge ekle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="124"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="816"/>
       <source>&amp;Move</source>
       <translation>&amp;Taşı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="168"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="817"/>
       <source>Art&amp;icles</source>
       <translation>Art&amp;icles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="200"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="819"/>
       <source>&amp;Accounts</source>
       <translation>&amp;Hesaplar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="233"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="648"/>
       <source>&amp;Quit</source>
       <translation>&amp;Çıkış</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="236"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="650"/>
       <source>Quit the application.</source>
       <translation>Uygulamadan çıkın.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="247"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="652"/>
       <source>&amp;Settings</source>
       <translation>&amp;Ayarlar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="250"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="654"/>
       <source>Display settings of the application.</source>
       <translation>Uygulamanın görüntüleme ayarları.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="258"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="656"/>
       <source>&amp;About application</source>
       <translation>&amp;Uygulama hakkında</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="261"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="658"/>
       <source>Displays extra info about this application.</source>
       <translation>Bu uygulama hakkındaki ek bilgileri görüntüler.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="275"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="660"/>
       <source>&amp;Fullscreen</source>
       <translation>&amp;Tam ekran</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="278"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="662"/>
       <source>Switch fullscreen mode.</source>
       <translation>Tam ekran kipini değiştirin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="286"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="664"/>
       <source>&amp;Fetch all</source>
       <translation>&amp;Tümünü çek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="289"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="666"/>
       <source>Fetch all feeds</source>
       <translation>Tüm akışları çek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="297"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="668"/>
       <source>Fetch &amp;selected</source>
       <translation>&amp;Seçileni çek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="300"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="670"/>
       <source>Fetch selected feeds</source>
       <translation>Seçilen akışları çek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="321"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="674"/>
       <source>Mark articles &amp;read</source>
       <translation>Yazıları &amp;okundu olarak işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="324"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="676"/>
       <source>Mark selected articles read</source>
       <translation>Makale(leri) okunmuş olarak işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="332"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="678"/>
       <source>Mark articles &amp;unread</source>
       <translation>Seçili makaleleri okunmuş olarak işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="335"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="680"/>
       <source>Mark selected articles unread</source>
       <translation>Makale(leri) okunmuş olarak işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="343"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="682"/>
       <source>Switch &amp;importance</source>
       <translation>Önem&amp;ini değiştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="346"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="684"/>
       <source>Switch importance of selected articles</source>
       <translation>Seçili yazıların önemini değiştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="357"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="688"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
       <translation>Seçili öğelerdeki tüm yazıları (filtreler olmadan) okundu olarak işaretle.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="368"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="692"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
       <translation>Seçili öğelerdeki tüm yazıları (filtreler olmadan) okunmadı olarak işaretle.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="376"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="694"/>
       <source>&amp;Delete articles</source>
       <translation>&amp;Makaleleri sil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="308"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="672"/>
       <source>&amp;Edit selected items</source>
       <translation>&amp;Seçili öğeleri düzenle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="89"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="812"/>
       <source>&amp;Focus</source>
       <translation type="unfinished">&amp;Focus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="193"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="818"/>
       <source>&amp;Recycle bins</source>
       <translation>&amp;Geri Dönüşüm</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="208"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="820"/>
       <source>Tabs</source>
       <translation>Sekmeler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="313"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="673"/>
       <source>&amp;Delete selected items</source>
       <translation>&amp;Seçili öğeleri sil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="354"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="686"/>
       <source>Mark selected items &amp;read</source>
       <translation>Seçili öğeleri &amp;okundu olarak işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="365"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="690"/>
       <source>Mark selected items &amp;unread</source>
       <translation>Seçili öğeleri ok&amp;unmadı olarak işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="384"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="695"/>
       <source>&amp;Clean selected items</source>
       <translation>Seçili öğeleri &amp;temizle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="387"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="697"/>
       <source>Deletes all messages from selected items.</source>
       <translation>Seçili öğelerdeki tüm yazıları siler.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="395"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="699"/>
       <source>Open in &amp;external browser</source>
       <translation>Harici tarayıcıda aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="398"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="701"/>
       <source>Open selected articles in external browser</source>
       <translation>Seçili makaleleri dış tarayıcıda aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="406"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="703"/>
       <source>Open in &amp;internal browser</source>
       <translation>Dahili tarayıcıda aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="409"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="705"/>
       <source>Open selected articles in internal browser</source>
       <translation>Seçili makaleleri iç tarayıcıda aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="420"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="707"/>
       <source>No actions available</source>
       <translation>Mevcut eylem yok</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="423"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="709"/>
       <source>No actions are available right now.</source>
       <translation>Şu anda kullanılabilir bir eylem yok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="431"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="711"/>
       <source>&amp;Mark all read</source>
       <translation>&amp;Tümünü okundu olarak işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="434"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="713"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
       <translation>Tüm öğelerdeki tüm yazıları okundu olarak işaretler. Bu işlem, ileti filtrelerini dikkate almaz.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="445"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="715"/>
       <source>Switch main window visibility</source>
       <translation>Ana pencere görünürlüğünü değiştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="448"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="717"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
       <translation>Ana pencereyi görünürse gizler ve gizliyse gösterir.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="462"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="719"/>
       <source>&amp;Feed list</source>
       <translation>&amp;Akış Listesi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="465"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="721"/>
       <source>Hides or shows the list of feeds/categories.</source>
       <translation>Akış/kategori listesini gizler veya gösterir.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="473"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="723"/>
       <source>&amp;Clean all</source>
       <translation>&amp;Tümünü temizle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="476"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="725"/>
       <source>Deletes all messages from all items.</source>
       <translation>Tüm ögelerdeki tüm mesajları siler.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="484"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="727"/>
       <source>&amp;Next item</source>
       <translation>&amp;Sonraki öge</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="492"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="728"/>
       <source>&amp;Previous item</source>
       <translation>&amp;Önceki öge</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="500"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="729"/>
       <source>&amp;Next article</source>
       <translation>&amp;Sonraki yazı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="508"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="730"/>
       <source>&amp;Previous article</source>
       <translation>&amp;Önceki makale</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="516"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="731"/>
       <source>Check for &amp;updates</source>
       <translation>&amp;Güncelleştirmeleri denetle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="519"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="733"/>
       <source>Check if new update for the application is available for download.</source>
       <translation>Uygulama için indirilebilir yeni bir güncelleme olup olmadığını denetler.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="533"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="735"/>
       <source>&amp;Main menu</source>
       <translation>&amp;Ana menü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="536"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="737"/>
       <source>Hides or displays the main menu.</source>
       <translation>Ana menüyü gizler veya gösterir.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="544"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="739"/>
       <source>Report a &amp;bug...</source>
       <translation>Hata &amp;bildir...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="555"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="740"/>
       <source>&amp;Toolbars</source>
       <translation>&amp;Araç çubukları</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="558"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="742"/>
       <source>Switch visibility of main toolbars.</source>
       <translation>Ana araç çubuklarının görünürlüğünü açar/kapatır.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="572"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="744"/>
       <source>&amp;List headers</source>
       <translation>&amp;Liste başlıkları</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="580"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="745"/>
       <source>&amp;Donate...</source>
       <translation>&amp;Bağış...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="588"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="746"/>
       <source>Display &amp;documentation</source>
       <translation>Görüntüleme ve dokümantasyon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="596"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="747"/>
       <source>&amp;Restart</source>
       <translation>&amp;Yeniden başlat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="604"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="748"/>
       <source>&amp;Restore settings</source>
       <translation>&amp;Ayarları geri yükle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="612"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="749"/>
       <source>&amp;Backup settings</source>
       <translation>&amp;Yedekleme seçenekleri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="620"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="750"/>
       <source>Switch layout</source>
       <translation>Yerleşimi değiştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="869"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="789"/>
       <source>Focus feed search box</source>
       <translation type="unfinished">Focus feed search box</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="874"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Focus article search box</source>
       <translation type="unfinished">Focus article search box</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="879"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="791"/>
       <source>Scroll &amp;up preview</source>
       <translation>Önizlemeyi &amp;yukarı kaydır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="884"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="792"/>
       <source>Scroll &amp;down preview</source>
       <translation>Önizlemeyi &amp;aşağı kaydır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="938"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="804"/>
       <source>Reload &amp;skin</source>
       <translation>&amp;Temayı yeniden yükle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="943"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="805"/>
       <source>Focus &amp;feed list</source>
       <translation type="unfinished">Focus &amp;feed list</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>Focus &amp;article list</source>
       <translation type="unfinished">Focus &amp;article list</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="953"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="807"/>
       <source>Focus article &amp;preview</source>
       <translation type="unfinished">Focus article &amp;preview</translation>
     </message>
@@ -2618,278 +2494,233 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="628"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="751"/>
       <source>Send via e-mail</source>
       <translation>E-postayla gönder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="631"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="753"/>
       <source>Send selected articles via e-mail</source>
       <translation>Seçili makaleleri e-postayla gönder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="639"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="755"/>
       <source>&amp;Cleanup database</source>
       <translation>&amp;Veritabanını temizle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="647"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="756"/>
       <source>&amp;Expand/collapse selected item</source>
       <translation>Seçili öğeyi &amp;genişlet/daralt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="655"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="757"/>
       <source>&amp;Add account</source>
       <translation>&amp;Hesap Ekle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="663"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="758"/>
       <source>&amp;Restore articles</source>
       <translation>Yazıları &amp;geri yükle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="671"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="759"/>
       <source>&amp;Restore all recycle bins</source>
       <translation>Tüm geri dönüşüm kutularını &amp;geri yükle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="679"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="760"/>
       <source>&amp;Empty all recycle bins</source>
       <translation>Tüm geri dönüşüm kutularını &amp;boşalt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="687"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="761"/>
       <source>Next &amp;unread article</source>
       <translation>Sonraki &amp;okunmamış makale</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="701"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="762"/>
       <source>Status bar</source>
       <translation>Durum Çubuğu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="709"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="763"/>
       <source>&amp;Edit selected account</source>
       <translation>&amp;Seçili hesabı düzenle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="717"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="764"/>
       <source>&amp;Delete selected account</source>
       <translation>&amp;Seçili hesabı sil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="730"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="318"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="766"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="304"/>
       <source>Add new category</source>
       <translation>Yeni kategori ekle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="735"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="767"/>
       <source>Stop ongoing fetching</source>
       <translation>Devam eden çekmeyi durdur</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="743"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="768"/>
       <source>Close all tabs</source>
       <translation>Tüm sekmeleri kapat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="748"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="769"/>
       <source>Close all tabs except current</source>
       <translation>Mevcut sekme hariç tümünü kapat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="753"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="770"/>
       <source>Go to &amp;next tab</source>
       <translation>So&amp;nraki sekmeye git</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="758"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="771"/>
       <source>Go to &amp;previous tab</source>
       <translation>&amp;Önceki sekmeye git</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="766"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="772"/>
       <source>&amp;Enable article preview</source>
       <translation>Yazı önizlemeyi &amp;etkinleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="771"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="773"/>
       <source>&amp;Copy URL of selected item</source>
       <translation>Seçili öğenin URL'sini &amp;kopyala</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="776"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="774"/>
       <source>Article &amp;filters</source>
       <translation>Makale &amp;süzgeçleri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="784"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="775"/>
       <source>&amp;Show tree expanders</source>
       <translation>Dallanmayı &amp;göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="789"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="776"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
       <translation>&amp;Özel otomatik indirme ilkesi ile akış çekin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="797"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="777"/>
       <source>Alternate row colors in lists</source>
       <translation>Listelerde satır renklerini değiştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="805"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="778"/>
       <source>Automatically &amp;expand item when selected</source>
       <translation>Seçildiğinde öğeyi otomatik olarak &amp;genişlet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="816"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="779"/>
       <source>Message viewer toolbars</source>
       <translation>Mesaj görüntüleyici araç çubukları</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="821"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="780"/>
       <source>Expand/collapse selected item &amp;recursively</source>
       <translation>Seçimi &amp;alt ögeleriye birlikte genişlet/daralt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="826"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="781"/>
       <source>Close &amp;current tab</source>
       <translation>Mevcut sekmeyi &amp;kapat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="831"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="782"/>
       <source>&amp;Copy URLs of selected articles</source>
       <translation>Seçili yazıların URL'lerini &amp;kopyala</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="839"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="783"/>
       <source>&amp;Sort alphabetically</source>
       <translation>Alfabetik olarak &amp;sırala</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="844"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="784"/>
       <source>Move &amp;up</source>
       <translation>&amp;Yukarı Taşı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="849"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="785"/>
       <source>Move to &amp;top</source>
       <translation>En üste taşı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="786"/>
       <source>Move &amp;down</source>
       <translation>Aşağı taşı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="787"/>
       <source>Move to &amp;bottom</source>
       <translation>En alta taşı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="864"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>Display application &amp;log</source>
       <translation>Uygulama &amp;günlüğünü görüntüle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="889"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="793"/>
       <source>Rearrange &amp;subcategories alphabetically</source>
       <translation>&amp;Alt kategorileri alfabetik olarak yeniden düzenle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="894"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="794"/>
       <source>Rearrange &amp;feeds alphabetically</source>
       <translation>&amp;Akışları alfabetik olarak yeniden düzenle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="902"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="795"/>
       <source>You must add new account first</source>
       <translation>Önce yeni hesap eklemelisiniz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="905"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="797"/>
       <source>You must add new account first.</source>
       <translation>Önce yeni hesap eklemelisiniz.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="910"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="799"/>
       <source>Edit &amp;child feeds</source>
       <translation>&amp;Alt akışları düzenle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="915"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="800"/>
       <source>Edit child feeds (&amp;recursive)</source>
       <translation>Alt akışları düzenle (&amp;yinelemeli)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="920"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="801"/>
       <source>Play in &amp;media player</source>
       <translation>&amp;Medya oynatıcıda oynat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="928"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="802"/>
       <source>&amp;Pause automatic feed fetching</source>
       <translation>&amp;Otomatik akış çekmeyi duraklat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="933"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="803"/>
       <source>&amp;Purge selected feeds</source>
       <translation>Seçili akışları &amp;kalıcı olarak sil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="725"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="328"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmain.h" line="765"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="314"/>
       <source>Add new feed</source>
       <translation>Yeni akış ekle</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="379"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="365"/>
       <source>No actions possible</source>
       <translation>Olası eylem yok</translation>
     </message>
@@ -2904,37 +2735,37 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <translation>Veritabanı temizlenemiyor, çünkü başka bir kritik işlem devam ediyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="469"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="455"/>
       <source>Play in media player</source>
       <translation>Medya Oynatıcıda Oynat</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="470"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="456"/>
       <source>(not supported)</source>
       <translation>(desteklenmiyor)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="536"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="522"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Önce açık olan pencereleri kapatın.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="782"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="786"/>
       <source>Skin reloaded</source>
       <translation>Tema yeniden yüklendi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="783"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="787"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
       <translation>Bu özelliğin yalnızca tema hatası ayıklama için olduğunu unutmayın. Her şeyin doğru şekilde yüklenmesi için uygulamayı yeniden başlatın.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="450"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="436"/>
       <source>Fetching common data</source>
       <translation>Ortak(genel) verileri çekmek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="535"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="521"/>
       <source>Close dialogs</source>
       <translation>Pencereleri kapat</translation>
     </message>
@@ -2942,225 +2773,198 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
   <context>
     <name>FormMessageFiltersManager</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="544"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="557"/>
       <source>Cannot find &apos;clang-format&apos;</source>
       <translation>&apos;clang-format&apos; bulunamadı.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="545"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="558"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
       <translation>Betik biçimlendirilmedi, çünkü &apos;clang-format&apos; aracı bulunamadı.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="326"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="563"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="327"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="576"/>
       <source>Error</source>
       <translation>Hata</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="564"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="577"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
       <translation>Betik biçimlendirilmedi, çünkü &apos;clang-format&apos; aracı hata verdi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="573"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="586"/>
       <source>Beautifier was running for too long time</source>
       <translation>Biçimlendirici çok uzun süre çalıştı.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="574"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="587"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation>Betik biçimlendirilmedi, &apos;clang-format&apos; yüklü mü?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="327"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="328"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
       <translation>Yeni filtre kaydedilemiyor, hata: &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="265"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="266"/>
       <source>Context menu</source>
       <translation>Bağlam menüsü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="267"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="268"/>
       <source>Filter articles like this</source>
       <translation>Bunun gibi yazıları filtrele</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="314"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="315"/>
       <source>New article filter</source>
       <translation>Yeni yazı filtresi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="283"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="284"/>
       <source>Are you sure?</source>
       <translation>Emin misiniz?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="284"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="285"/>
       <source>Do you really want to remove selected filter?</source>
       <translation>Seçilen süzgeci gerçekten kaldırmak istiyor musunuz?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="412"/>
       <source>Article filters</source>
       <translation>Makale süzgeçleri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="57"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="414"/>
       <source>New filter</source>
       <translation>Yeni filtre</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="67"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="418"/>
       <source>Remove filter</source>
       <translation>Filtreyi kaldır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="70"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="420"/>
       <source>Remove</source>
       <translation>Kaldır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="77"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="422"/>
       <source>Enable filter</source>
       <translation>Filtreyi etkinleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="80"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="424"/>
       <source>Enable</source>
       <translation>Etkinleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="103"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="426"/>
       <source>Move filter up</source>
       <translation>Filtreyi aşağı taşı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="106"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="428"/>
       <source>Up</source>
       <translation>Yukarı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="113"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="430"/>
       <source>Move filter down</source>
       <translation>Filtreyi aşağı taşı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="116"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="432"/>
       <source>Down</source>
       <translation>Aşağı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="127"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="433"/>
       <source>&amp;Check all</source>
       <translation>&amp;Tümünü işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="134"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="434"/>
       <source>&amp;Uncheck all</source>
       <translation>&amp;Tümünün işaretini kaldır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="219"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="441"/>
       <source>&amp;Documentation</source>
       <translation>&amp;Belgelendirme</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="294"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="445"/>
       <source>Details</source>
       <translation>Ayrıntılar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="354"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="444"/>
       <source>DB ID &amp; Custom ID</source>
       <translation>Veritabanı ID &amp; Özel ID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="448"/>
-      <source>Script otput</source>
-      <translation type="unfinished">Script otput</translation>
+      <source>Script output</source>
+      <translation type="unfinished">Script output</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="60"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="416"/>
       <source>&amp;New filter</source>
       <translation>&amp;Yeni süzgeç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="157"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="435"/>
       <source>Article filter details</source>
       <translation>Makale süzgeç ayrıntıları</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="169"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="436"/>
       <source>Title of article filter</source>
       <translation>Makale süzgeci başlığı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="184"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="437"/>
       <source>Your JavaScript-based article filtering logic</source>
       <translation>JavaScript tabanlı yazı filtreleme</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="198"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="438"/>
       <source>&amp;Test</source>
       <translation>&amp;Test</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="205"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="439"/>
       <source>Process checked feeds</source>
       <translation>İşaretli akışları işle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="212"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="440"/>
       <source>&amp;Beautify</source>
       <translation>&amp;Biçimlendir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="253"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="447"/>
       <source>Existing articles</source>
       <translation>Var olan makaleler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="300"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="442"/>
       <source>URL</source>
       <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="317"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="443"/>
       <source>Author</source>
       <translation>Yazar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="362"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="446"/>
       <source>Contents</source>
       <translation>İçerikler</translation>
     </message>
@@ -3169,14 +2973,8 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     <name>FormProgressWorker</name>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formprogressworker.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formprogressworker.h" line="72"/>
       <source>Dialog</source>
       <translation>Pencere</translation>
-    </message>
-    <message>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formprogressworker.h" line="73"/>
-      <source>TextLabel</source>
-      <translation>Metin Etiketi</translation>
     </message>
   </context>
   <context>
@@ -3219,37 +3017,31 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="134"/>
       <source>Restore database/settings</source>
       <translation>Veritabanını/ayarları geri yükle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="33"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="135"/>
       <source>Operation results</source>
       <translation>İşlem sonuçları</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="59"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="136"/>
       <source>Source directory</source>
       <translation>Kaynak klasörü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="65"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="137"/>
       <source>&amp;Select directory</source>
       <translation>Dizin seçin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="82"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="138"/>
       <source>Restore database</source>
       <translation>Veritabanını geri yükle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="100"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="139"/>
       <source>Restore settings</source>
       <translation>Ayarları geri yükle</translation>
     </message>
@@ -3299,7 +3091,6 @@ Manuel olarak yeniden başlatmanız gerekiyor.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formsettings.h" line="76"/>
       <source>Settings</source>
       <translation>Ayarlar</translation>
     </message>
@@ -3715,37 +3506,31 @@ You can install it now.</source>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formupdate.h" line="154"/>
       <source>Check for updates</source>
       <translation>Güncelleştirmeleri denetle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="20"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formupdate.h" line="155"/>
       <source>Current release</source>
       <translation>Şimdiki sürüm</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="34"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formupdate.h" line="157"/>
       <source>Available release</source>
       <translation>Mevcut sürüm</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="48"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formupdate.h" line="159"/>
       <source>Status</source>
       <translation>Durum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="69"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formupdate.h" line="160"/>
       <source>Changelog</source>
       <translation>Değişim günlüğü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="125"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_formupdate.h" line="161"/>
       <source>Available files</source>
       <translation>Mevcut dosyalar</translation>
     </message>
@@ -4449,7 +4234,6 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <name>ItemDetails</name>
     <message>
       <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_itemdetails.h" line="85"/>
       <source>Form</source>
       <translation>Form</translation>
     </message>
@@ -4457,19 +4241,24 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>LabelsMenu</name>
     <message>
-      <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="18"/>
-      <source>Add labels</source>
-      <translation type="unfinished">Add labels</translation>
+      <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="13"/>
+      <source>Labels</source>
+      <translation type="unfinished">Labels</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="18"/>
-      <source>Remove labels</source>
-      <translation type="unfinished">Remove labels</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="24"/>
+      <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="21"/>
       <source>No labels found</source>
       <translation>Etiketler bulunamadı</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="67"/>
+      <source>Cannot change labels</source>
+      <translation type="unfinished">Cannot change labels</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="68"/>
+      <source>Failed to (de)assign label to/from article: %1.</source>
+      <translation type="unfinished">Failed to (de)assign label to/from article: %1.</translation>
     </message>
   </context>
   <context>
@@ -4490,23 +4279,23 @@ Giriş jetonları geçerlilik sonu: %2</translation>
       <translation type="unfinished">Number of labels: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="85"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="108"/>
       <source>New label</source>
       <translation>Yeni etiket</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="111"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="134"/>
       <source>Cannot create label: %1.</source>
       <translation type="unfinished">Cannot create label: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="119"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="142"/>
       <source>This account does not allow you to create labels.</source>
       <translation>Bu hesapta etiket oluşturamazsınız.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="110"/>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="118"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="133"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="141"/>
       <source>Not allowed</source>
       <translation>İzin Verilmiyor</translation>
     </message>
@@ -4514,112 +4303,112 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>LibMpvBackend</name>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="140"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="141"/>
       <source>File loaded</source>
       <translation>Dosya yüklendi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="196"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="197"/>
       <source>App restart required</source>
       <translation>Uygulamanın yeniden başlatılması gerekli</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="199"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="200"/>
       <source>Out of memory</source>
       <translation>Bellek tükendi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="202"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="203"/>
       <source>Not initialized yet</source>
       <translation>Henüz başlatılmadı</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="205"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="206"/>
       <source>Invalid parameter</source>
       <translation>Geçersiz parametre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="208"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="209"/>
       <source>Option not found</source>
       <translation>Seçenek bulunamadı</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="211"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="212"/>
       <source>Option badly formatted</source>
       <translation>Seçenek biçimlendirme hatası</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="214"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="215"/>
       <source>Cannot set option</source>
       <translation>Seçenek ayarlanamıyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="217"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="218"/>
       <source>Property does not existing</source>
       <translation>Özellik mevcut değil.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="220"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="221"/>
       <source>Property badly formatted</source>
       <translation>Özellik hatalı biçimlendirilmiş.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="223"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="224"/>
       <source>Property N/A</source>
       <translation>Özellik: Yok</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="226"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="227"/>
       <source>Cannot set property</source>
       <translation>Özellik ayarlanamıyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="230"/>
       <source>Cannot run command</source>
       <translation>Komut çalıştırılamıyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="232"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="233"/>
       <source>Loading failed</source>
       <translation>Yükleme başarısız oldu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="235"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="236"/>
       <source>Cannot initialize audio</source>
       <translation>Ses başlatılamıyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="238"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="239"/>
       <source>Cannot initialize video</source>
       <translation>Video başlatılamıyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="241"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="242"/>
       <source>Not a media file</source>
       <translation>Medya dosyası değil</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="244"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="245"/>
       <source>Unknown file format</source>
       <translation>Bilinmeyen dosya biçimi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="247"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="248"/>
       <source>Unsupported file format</source>
       <translation>Desteklenmeyen dosya biçimi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="251"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="252"/>
       <source>Unknown error (%1)</source>
       <translation>Bilinmeyen hata (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="270"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="271"/>
       <source>Stopped</source>
       <translation>Durdu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="276"/>
+      <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="277"/>
       <source>File ended</source>
       <translation>Dosya bitti</translation>
     </message>
@@ -4864,61 +4653,51 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <name>MediaPlayer</name>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_mediaplayer.h" line="143"/>
       <source>Form</source>
       <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="65"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_mediaplayer.h" line="145"/>
       <source>Play/pause</source>
       <translation>Oynat/duraklat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="72"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_mediaplayer.h" line="148"/>
       <source>Stop</source>
       <translation>Dur</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="79"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_mediaplayer.h" line="151"/>
       <source>Speed</source>
       <translation>Hız</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="107"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_mediaplayer.h" line="154"/>
       <source>Progress</source>
       <translation>İlerleme</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="117"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_mediaplayer.h" line="157"/>
       <source>Duration</source>
       <translation>Süre</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="124"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_mediaplayer.h" line="160"/>
       <source>Mute/unmute</source>
       <translation>Sessize al/Sesi aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="137"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_mediaplayer.h" line="163"/>
       <source>Volume</source>
       <translation>Ses</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="156"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_mediaplayer.h" line="166"/>
       <source>Download</source>
       <translation>İndir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="163"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_mediaplayer.h" line="169"/>
       <source>Switch fullscreen mode</source>
       <translation>Tam ekran moduna geç</translation>
     </message>
@@ -4997,29 +4776,24 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>MessagePreviewer</name>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="29"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="30"/>
       <source>Mark article read</source>
       <translation>Yazıyı okundu olarak işaretle</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="34"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="35"/>
       <source>Mark article unread</source>
       <translation>Yazıyı okunmadı olarak işaretle</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="39"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="40"/>
       <source>Switch article importance</source>
       <translation>Makale önemini değiştir</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="44"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="46"/>
       <source>Show all labels</source>
       <translation type="unfinished">Show all labels</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="182"/>
-      <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
     </message>
   </context>
   <context>
@@ -5033,47 +4807,47 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>MessagesForFiltersModel</name>
     <message>
-      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="15"/>
+      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="16"/>
       <source>Read</source>
       <translation>Okundu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="15"/>
+      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="16"/>
       <source>Important</source>
       <translation>Önemli</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="15"/>
+      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="16"/>
       <source>Title</source>
       <translation>Başlık</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="16"/>
+      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="17"/>
       <source>Score</source>
       <translation>Puan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="15"/>
+      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="16"/>
       <source>Date</source>
       <translation>Tarih</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="15"/>
+      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="16"/>
       <source>Result</source>
       <translation>Sonuç</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="15"/>
+      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="16"/>
       <source>Trash</source>
       <translation>Çöp Kutusu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="63"/>
+      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="64"/>
       <source>true</source>
       <translation>Doğru</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="64"/>
+      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="65"/>
       <source>false</source>
       <translation>Yanlış</translation>
     </message>
@@ -5081,97 +4855,82 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>MessagesModel</name>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="498"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
       <source>Id</source>
       <translation>Kimlik</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="498"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
       <source>Read</source>
       <translation>Okundu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="498"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
       <source>Deleted</source>
       <translation>Silindi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="498"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
       <source>Important</source>
       <translation>Önemli</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="503"/>
       <source>Feed</source>
       <translation>Akış</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="499"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="502"/>
       <source>Title</source>
       <translation>Başlık</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="499"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="502"/>
       <source>Author</source>
       <translation>Yazar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="499"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="502"/>
       <source>Contents</source>
       <translation>İçerikler</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="498"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
       <source>Permanently deleted</source>
       <translation>Kalıcı olarak silindi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="500"/>
-      <source>Attachments</source>
-      <translation>Ekler</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
-      <source>List of attachments.</source>
-      <translation>Eklerin listesi.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="500"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="503"/>
       <source>Account ID</source>
       <translation>Hesap Kimliği</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="500"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="503"/>
       <source>Custom ID</source>
       <translation>Özel Kimlik</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="500"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="503"/>
       <source>Custom hash</source>
       <translation>Özel hash</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="499"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="502"/>
       <source>Feed ID</source>
       <translation>Akış Kimliği</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
-      <source>Has enclosures</source>
-      <translation/>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="500"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="503"/>
       <source>Score</source>
       <translation>Puan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="499"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="502"/>
       <source>Date</source>
       <translation>Tarih</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="358"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="361"/>
       <source>Loading of articles failed, maybe messages could not be downloaded.</source>
       <translation>Yazı yüklemesi başarısız oldu, muhtemelen iletiler indirilemedi.</translation>
     </message>
@@ -5206,138 +4965,123 @@ Giriş jetonları geçerlilik sonu: %2</translation>
       <translation type="unfinished">cannot set model data for column %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="460"/>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="493"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="463"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="496"/>
       <source>article with row %1 not found</source>
       <translation type="unfinished">article with row %1 not found</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="499"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="502"/>
       <source>URL</source>
       <translation>URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
-      <source>RTL</source>
-      <translation>RTL</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="504"/>
       <source>Assigned labels</source>
       <translation>Atanan Etiketler</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
-      <source>Assigned label IDs</source>
-      <translation>Atanan Etiket Kimlikleri</translation>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="504"/>
+      <source>Has attachments</source>
+      <translation type="unfinished">Has attachments</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="503"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
       <source>ID of the article.</source>
       <translation>Yazının Kimliği</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="503"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
       <source>Is article read?</source>
       <translation>Makale okunmuş mu?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="503"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
       <source>Is article important?</source>
       <translation>Makale önemli mi?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="504"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
       <source>Is article deleted?</source>
       <translation>Makale silinmiş mi?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="504"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
       <source>Is article permanently deleted from recycle bin?</source>
       <translation>Yazı geri dönüşüm kutusundan kalıcı olarak silindi mi?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="505"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="508"/>
       <source>ID of feed which this article belongs to.</source>
       <translation>Bu yazının ait olduğu akışın kimliği</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="505"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="508"/>
       <source>Title of the article.</source>
       <translation>Yazının Başlığı</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="509"/>
       <source>Url of the article.</source>
       <translation>Yazının URL'si</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="509"/>
       <source>Author of the article.</source>
       <translation>Makalenin yazarı.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="509"/>
       <source>Creation date of the article.</source>
       <translation>Makalenin oluşturulma tarihi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="510"/>
       <source>Contents of the article.</source>
       <translation>Makalenin içerikleri.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="510"/>
       <source>Score of the article.</source>
       <translation>Yazının Puanı</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="508"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="510"/>
       <source>Account ID of the article.</source>
       <translation>Yazının Hesap Kimliği</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="508"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="511"/>
       <source>Custom ID of the article.</source>
       <translation>Yazının Özel Kimliği</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="509"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="511"/>
       <source>Custom hash of the article.</source>
       <translation>Yazının Özel Hash'i</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="509"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="512"/>
       <source>Name of feed of the article.</source>
       <translation>Yazının ait olduğu akışın adı</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="510"/>
-      <source>Indication of enclosures presence within the article.</source>
-      <translation>Yazı içindeki eklentilerin varlığının göstergesi</translation>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="512"/>
+      <source>Indication of attachments presence within the article.</source>
+      <translation type="unfinished">Indication of attachments presence within the article.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="510"/>
-      <source>Layout direction of the article</source>
-      <translation>Yazının yerleşim yönü</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="511"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="513"/>
       <source>Labels assigned to the article.</source>
       <translation>Yazıya atanan etiketler</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="511"/>
-      <source>Label IDs assigned to the article.</source>
-      <translation>Yazıya atanan etiket kimlikleri</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="619"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="609"/>
       <source>article model column %1 is out of range</source>
       <translation type="unfinished">article model column %1 is out of range</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="643"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="633"/>
       <source>%n months ago</source>
       <translation>
         <numerusform>%n ay önce</numerusform>
@@ -5345,7 +5089,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="647"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="637"/>
       <source>%n weeks ago</source>
       <translation>
         <numerusform>%n hafta önce</numerusform>
@@ -5353,7 +5097,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="651"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="641"/>
       <source>%n days ago</source>
       <translation>
         <numerusform>%n gün önce</numerusform>
@@ -5361,12 +5105,12 @@ Giriş jetonları geçerlilik sonu: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="655"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="645"/>
       <source>yesterday</source>
       <translation>dün</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="659"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="649"/>
       <source>%n hours ago</source>
       <translation>
         <numerusform>%n saat önce</numerusform>
@@ -5374,7 +5118,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="663"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="653"/>
       <source>%n minutes ago</source>
       <translation>
         <numerusform>%n dakika önce</numerusform>
@@ -5382,12 +5126,12 @@ Giriş jetonları geçerlilik sonu: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="666"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="656"/>
       <source>just now</source>
       <translation>hemen şimdi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="357"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="360"/>
       <source>Loading of articles from item &apos;%1&apos; failed</source>
       <translation>&apos;%1&apos; öğesinden yazı yüklemesi başarısız oldu.</translation>
     </message>
@@ -5529,12 +5273,12 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="699"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="697"/>
       <source>Problem with starting external e-mail client</source>
       <translation>Harici e-posta istemcisi başlatılırken sorun oluştu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="700"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="698"/>
       <source>External e-mail client could not be started.</source>
       <translation>Harici e-posta istemcisi başlatılamadı.</translation>
     </message>
@@ -5544,22 +5288,22 @@ Giriş jetonları geçerlilik sonu: %2</translation>
       <translation>Dış araçla aç</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="669"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="667"/>
       <source>No URL</source>
       <translation>URL yok</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="670"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="668"/>
       <source>Article cannot be played in media player as it has no URL</source>
       <translation>URL'si olmadığı için yazı medya oynatıcıda oynatılamıyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="906"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="904"/>
       <source>Cannot run external tool</source>
       <translation>Dış araç çalıştırılamıyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="907"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="905"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>&apos;%1&apos; dış aracı çalıştırılamadı.</translation>
     </message>
@@ -5711,49 +5455,41 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_networkproxydetails.h" line="162"/>
       <source>Form</source>
       <translation>Form</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="23"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_networkproxydetails.h" line="163"/>
       <source>Host</source>
       <translation>Sunucu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="41"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_networkproxydetails.h" line="164"/>
       <source>Hostname or IP of your proxy server</source>
       <translation>Proxy sunucunuzun sunucu adı veya IP adresi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_networkproxydetails.h" line="165"/>
       <source>Port</source>
       <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="76"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_networkproxydetails.h" line="166"/>
       <source>Username</source>
       <translation>Kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_networkproxydetails.h" line="167"/>
       <source>Your username for proxy server authentication</source>
       <translation>Proxy sunucusu kimlik doğrulaması için kullanıcı adınız</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_networkproxydetails.h" line="168"/>
       <source>Password</source>
       <translation>Parola</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_networkproxydetails.h" line="169"/>
       <source>Your password for proxy server authentication</source>
       <translation>Proxy sunucusu kimlik doğrulaması için parolanız</translation>
     </message>
@@ -5764,7 +5500,6 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_networkproxydetails.h" line="170"/>
       <source>Type</source>
       <extracomment>Proxy server type.</extracomment>
       <translation>Tür</translation>
@@ -5923,7 +5658,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>NextcloudServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="136"/>
+      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="135"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
       <translation>Akış listesi alınamıyor, ağ hatası: &apos;%1&apos;</translation>
     </message>
@@ -5969,12 +5704,12 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>QLiteHtmlArticleViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="169"/>
+      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="168"/>
       <source>Context menu for article viewer</source>
       <translation>Makale görüntüleyici için içerik menüsü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="171"/>
+      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="170"/>
       <source>Copy</source>
       <translation>Kopyala</translation>
     </message>
@@ -6062,72 +5797,62 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly, sizin için önemli olan konuları ve trendleri özel bir şekilde düzenleyebileceğiniz ve araştırabileceğiniz güvenli bir alandır.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2978"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2741"/>
       <source>cannot move item of kind %1</source>
       <translation type="unfinished">cannot move item of kind %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="3137"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2900"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Yazı filtresi eklenemiyor, çünkü mevcut veritabanı son eklenen satırın kimliğini döndüremiyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="138"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="136"/>
       <source>Fetching articles right now</source>
       <translation>Şu anda yazılar alınıyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="141"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="139"/>
       <source>Login data refreshed</source>
       <translation>Giriş bilgileri yenilendi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="147"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="145"/>
       <source>New %1 version is available</source>
       <translation>Yeni %1 sürümü mevcut.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="150"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="148"/>
       <source>Miscellaneous events</source>
       <translation>Çeşitli olaylar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="153"/>
-      <source>Node.js - package(s) updated</source>
-      <translation>Node.js - paket(ler)i güncellendi</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="156"/>
-      <source>Node.js - package(s) failed to update</source>
-      <translation>Node.js - paket(ler)i güncellenemedi</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="159"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="151"/>
       <source>Error when fetching articles</source>
       <translation>Yazılar alınırken hata oluştu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="162"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="154"/>
       <source>Unknown event</source>
       <translation>Bilinmeyen olay</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="135"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="133"/>
       <source>New (unread) articles fetched</source>
       <translation>Yeni (okunmamış) makaleler çekildi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="33"/>
+      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="32"/>
       <source>XML problem: %1</source>
       <translation>XML sorunu: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="43"/>
+      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="42"/>
       <source>JSON problem: %1</source>
       <translation>JSON sorunu: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="455"/>
+      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="454"/>
       <source>Comments</source>
       <translation>Yorumlar</translation>
     </message>
@@ -6146,7 +5871,7 @@ Desteklenen okuyucular listesi:</translation>
       <translation>ve muhtemelen diğerleri.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="144"/>
+      <location filename="../src/librssguard/miscellaneous/notification.cpp" line="142"/>
       <source>Login failed</source>
       <translation>Giriş başarısız.</translation>
     </message>
@@ -6475,42 +6200,42 @@ Desteklenen okuyucular listesi:</translation>
   <context>
     <name>QuiteRssImport</name>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="27"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="28"/>
       <source>Select QuiteRSS database file</source>
       <translation>QuiteRSS veritabanı dosyasını seçin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="30"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="31"/>
       <source>QuiteRSS DB files (%1)</source>
       <translation>QuiteRSS veritabanı dosyaları (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="55"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="56"/>
       <source>Import data from QuiteRSS</source>
       <translation type="unfinished">Import data from QuiteRSS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="62"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="63"/>
       <source>Imported articles from %1 feeds...</source>
       <translation type="unfinished">Imported articles from %1 feeds...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="158"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="159"/>
       <source>skipping article, it has no title and no URL</source>
       <translation type="unfinished">skipping article, it has no title and no URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="295"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="296"/>
       <source>Unnamed item</source>
       <translation>Adsız öğe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="412"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="413"/>
       <source>missing QuiteRSS tables %1</source>
       <translation>eksik QuiteRSS tabloları %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="417"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="418"/>
       <source>metadata version 17 was expected</source>
       <translation>üst veri sürüm 17 bekleniyordu</translation>
     </message>
@@ -6533,12 +6258,12 @@ Desteklenen okuyucular listesi:</translation>
       <translation>Geri dönüşüm kutusunu boşalt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="107"/>
+      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="90"/>
       <source>Are you sure?</source>
       <translation>Emin misiniz?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="108"/>
+      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="91"/>
       <source>Do you really want to empty your recycle bin?</source>
       <translation>Geri dönüşüm kutunuzu gerçekten boşaltmak istiyor musunuz?</translation>
     </message>
@@ -6738,7 +6463,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>RootItem</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="144"/>
+      <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="122"/>
       <source>%n unread article(s).</source>
       <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
       <translation>
@@ -6778,22 +6503,22 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>ScrollableMenu</name>
     <message>
-      <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="73"/>
+      <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="69"/>
       <source>Go &amp;up</source>
       <translation type="unfinished">Go &amp;up</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="74"/>
+      <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="70"/>
       <source>Go &amp;down</source>
       <translation type="unfinished">Go &amp;down</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="119"/>
+      <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="116"/>
       <source>%1 %2/%3</source>
       <translation type="unfinished">%1 %2/%3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="120"/>
+      <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="117"/>
       <source>Page</source>
       <translation type="unfinished">Page</translation>
     </message>
@@ -6801,7 +6526,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>Search</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/search.cpp" line="111"/>
+      <location filename="../src/librssguard/services/abstract/search.cpp" line="91"/>
       <source>Regular expression: %1</source>
       <translation>Düzenli ifade: %1</translation>
     </message>
@@ -6833,19 +6558,16 @@ Giriş jetonları geçerlilik sonu: %2</translation>
     <name>SearchTextWidget</name>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="32"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_searchtextwidget.h" line="69"/>
       <source>Search text</source>
       <translation>Metin ara</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_searchtextwidget.h" line="71"/>
       <source>Find previous occurence</source>
       <translation>Önceki eşleşmeyi bul</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="49"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_searchtextwidget.h" line="75"/>
       <source>Find next occurence</source>
       <translation>Sonraki eşleşmeyi bul</translation>
     </message>
@@ -6863,45 +6585,65 @@ Giriş jetonları geçerlilik sonu: %2</translation>
       <translation>Tüm kalıcı düzenli ifade sorgularınızı burada görebilirsiniz.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="54"/>
+      <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="48"/>
       <source>New regex query</source>
       <translation>Yeni düzenli ifade sorgusu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="88"/>
+      <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="80"/>
       <source>Not allowed</source>
       <translation>İzin Verilmiyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="89"/>
-      <source>Cannot create label: %1.</source>
-      <translation type="unfinished">Cannot create label: %1.</translation>
+      <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="81"/>
+      <source>Problem when creating probe: %1.</source>
+      <translation type="unfinished">Problem when creating probe: %1.</translation>
     </message>
   </context>
   <context>
     <name>ServiceRoot</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="138"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="107"/>
+      <source>Cannot update label</source>
+      <translation type="unfinished">Cannot update label</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="108"/>
+      <source>Failed to update label with new information: %1.</source>
+      <translation type="unfinished">Failed to update label with new information: %1.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="142"/>
+      <source>Cannot update probe item</source>
+      <translation type="unfinished">Cannot update probe item</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="143"/>
+      <source>Failed to update selected probe: %1.</source>
+      <translation type="unfinished">Failed to update selected probe: %1.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="153"/>
       <source>Unsupported</source>
       <translation>Desteklenmiyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="138"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="153"/>
       <source>This is not suppported (yet).</source>
       <translation>Bu (henüz) desteklenmiyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="195"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="205"/>
       <source>Synchronize folders &amp;&amp; other items</source>
       <translation>Klasörleri &amp;&amp; diğer öğeleri senkronize et</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="204"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="214"/>
       <source>Synchronize article cache</source>
       <translation>Yazı önbelleğini senkronize et</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="371"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="370"/>
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
@@ -6910,12 +6652,12 @@ Kategori sayısı: %2
 Devre dışı bırakılmış besleme sayısı: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="752"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="739"/>
       <source>Error when fetching list of feeds</source>
       <translation>Besleme listesi çekilirken hata</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="753"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="740"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>&apos;%1&apos; hesabı için beslemeler ve kategoriler çekilemedi, hata: %2</translation>
     </message>
@@ -6966,65 +6708,53 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="343"/>
       <source>Network</source>
       <translation>Ağ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="341"/>
       <source>Enable HTTP/2</source>
       <translation>HTTP/2'yi etkinleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="342"/>
       <source>Custom User-Agent</source>
       <translation>Özel Kullanıcı Aracısı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="357"/>
       <source>External web browser</source>
       <translation>Harici web tarayıcısı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="51"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="344"/>
       <source>Always open hyperlinks in external web browser</source>
       <translation>Köprüleri daima harici internet tarayıcısında açın</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="71"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="185"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="346"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="359"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;İşaretli değilse, sistem genelindeki varsayılan web tarayıcısı kullanılır.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="74"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="348"/>
       <source>Use custom external web browser</source>
       <translation>Özel harici web tarayıcısı kullan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="86"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="349"/>
       <source>Web browser executable</source>
       <translation>Web tarayıcısı çalıştırılabilir dosyası</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="98"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="350"/>
       <source>Executable file of web browser</source>
       <translation>Web tarayıcısının çalıştırılabilir dosyası</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="111"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="228"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="351"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="364"/>
       <source>&amp;Browse</source>
       <translation>&amp;Tarayıcı</translation>
     </message>
@@ -7032,30 +6762,23 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="120"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="237"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="49"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="352"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="365"/>
       <source>Parameters</source>
       <translation>Parametreler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="130"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="247"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="353"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="366"/>
       <source>Parameters passed to executable</source>
       <translation>Çalıştırılabilir dosyaya aktarılan parametreler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="137"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="254"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="354"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="367"/>
       <source>Use sample arguments for</source>
       <translation>Örnek parametreleri kullan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="151"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="355"/>
       <source>Select browser</source>
       <translation>Tarayıcı seç</translation>
     </message>
@@ -7066,31 +6789,26 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="166"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="370"/>
       <source>External e-mail client</source>
       <translation>Harici e-posta istemcisi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="188"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="361"/>
       <source>Use custom external e-mail client</source>
       <translation>Özel harici e-posta istemcisi kullan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="200"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="362"/>
       <source>E-mail client executable</source>
       <translation>E-posta istemcisi çalıştırılabilir dosyası</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="215"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="363"/>
       <source>Executable file of e-mail client</source>
       <translation>E-posta istemcisinin çalıştırılabilir dosyası</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="268"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="368"/>
       <source>Select client</source>
       <translation>İstemci seç</translation>
     </message>
@@ -7105,25 +6823,21 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="283"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="374"/>
       <source>External tools</source>
       <translation>Dış araçlar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="318"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="371"/>
       <source>&amp;Add tool</source>
       <translation>&amp;Araç ekle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="328"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="372"/>
       <source>&amp;Edit selected tool</source>
       <translation>Seçili aracı &amp;düzenle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="338"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsbrowsermail.h" line="373"/>
       <source>&amp;Delete selected tool</source>
       <translation>&amp;Seçili aracı sil</translation>
     </message>
@@ -7257,49 +6971,41 @@ Bu uygulamanın yazarları kayıp verilerden sorumlu değildir.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="17"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsdatabase.h" line="214"/>
       <source>Database driver</source>
       <translation>Veri tabanı sürücüsü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="52"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsdatabase.h" line="215"/>
       <source>Use in-memory database as the working database</source>
       <translation>Çalışan veri tabanı olarak bellek içi veri tabanını kullan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="81"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsdatabase.h" line="216"/>
       <source>Hostname</source>
       <translation>Ana bilgisayar adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="96"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsdatabase.h" line="217"/>
       <source>Port</source>
       <translation>Port</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="127"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsdatabase.h" line="218"/>
       <source>Working database</source>
       <translation>Veri tabanı çalışıyor</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="137"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsdatabase.h" line="219"/>
       <source>Username</source>
       <translation>Kullanıcı adı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="150"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsdatabase.h" line="220"/>
       <source>Password</source>
       <translation>Şifre</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="165"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsdatabase.h" line="221"/>
       <source>Test setup</source>
       <translation>Test kurulumu</translation>
     </message>
@@ -7380,69 +7086,57 @@ This can tremendously speed up the application if you have hundreds of thousands
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="618"/>
       <source>Feed fetching</source>
       <translation>Akış çek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="609"/>
       <source>Fetch all articles on startup with initial delay of</source>
       <translation>Başlangıçta, tüm makaleleri ilk gecikme sonrasında çekin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="610"/>
       <source>Auto-fetch articles for all feeds every</source>
       <translation>Tüm akışlar için yazıları şu sıklıkta otomatik al</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="611"/>
       <source>Only auto-fetch articles if application is unfocused</source>
       <translation>Yazıları sadece uygulama odakta değilken otomatik al</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="613"/>
       <source>Feed connection timeout</source>
       <translation>Akış bağlantısı zaman aşımı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="615"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
       <translation>Bağlantı zaman aşımı, akış için yeni iletileri indirmeye ayrılan süredir. Bu süre aşılırsa indirme işlemi iptal edilir.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="617"/>
       <source> ms</source>
       <translation>ms</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="612"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
       <translation>Çok hızlı otomatik alma aralıklarını destekle (10 saniyenin altında)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="629"/>
       <source>Feeds list</source>
       <translation>Akış listesi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="481"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="619"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="646"/>
       <source>Row height</source>
       <translation>Satır yüksekliği</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="175"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="620"/>
       <source>Feed list font</source>
       <translation>Akış listesi yazı tipi</translation>
     </message>
@@ -7450,9 +7144,6 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="187"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="392"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="646"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="621"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="639"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="653"/>
       <source>Font preview</source>
       <translation>Yazı tipi önizlemesi</translation>
     </message>
@@ -7460,99 +7151,81 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="197"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="402"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="656"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="622"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="640"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="654"/>
       <source>&amp;Change font</source>
       <translation>&amp;Yazı tipini değiştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="222"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="623"/>
       <source>Article count format</source>
       <translation>Yazı sayısı biçimi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="251"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="624"/>
       <source>Hide article counts if there are no unread articles</source>
       <translation>Okunmamış yazı yoksa yazı sayılarını gizle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="258"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="625"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
       <translation>Akış/yazı listesi için sadece temel klavye kısayollarına izin ver</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="265"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="626"/>
       <source>Display tooltips for feeds and articles</source>
       <translation>Akışlar ve yazılar için araç ipuçlarını göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="272"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="627"/>
       <source>Strikethrough disabled feed titles</source>
       <translation>Devre dışı bırakılmış akış başlıklarının üzerini çiz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="279"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="628"/>
       <source>Update feed list during feed fetching</source>
       <translation>Akışlar alınırken akış listesini güncelle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="287"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="642"/>
       <source>Articles</source>
       <translation>Makaleler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="293"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="630"/>
       <source>Remove all read articles from all feeds on application exit</source>
       <translation>Uygulamadan çıkarken yayınlardan okunan tüm makaleleri kaldır</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="632"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
       <translation>Yeni makaleler getirilirken makale gövdesindeki değişiklikleri görmezden gel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="328"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="635"/>
       <source>Internal article viewer</source>
       <translation>İç makale görüntüleyici</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="430"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="641"/>
       <source>Mark existing article unread when its updated version is fetched from the feed</source>
       <translation>Güncellenmiş sürümü kaynaktan alındığında mevcut makaleyi okunmadı olarak işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="444"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="643"/>
       <source>Unread article icon type</source>
       <translation>Okunmamış yazı ikon türü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="565"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="649"/>
       <source>Use custom date/time format for dates-only</source>
       <translation>Sadece tarihler için özel tarih/zaman biçimi kullan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="689"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="655"/>
       <source>Upon article selection, mark as read</source>
       <translation>Yazı seçildiğinde okundu olarak işaretle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="696"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="656"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
       <translation>Seçili tüm akışlar sağdan sola ise yazı listesini de sağdan sola düzene geçir</translation>
     </message>
@@ -7563,85 +7236,71 @@ This can tremendously speed up the application if you have hundreds of thousands
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="321"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="634"/>
       <source>Bring application window to front once article is opened in external web browser</source>
       <translation>Yazı harici bir web tarayıcısında açıldığında uygulama penceresini öne getir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="386"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="638"/>
       <source>Article browser font</source>
       <translation>Yazı görüntüleyici yazı tipi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="314"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="633"/>
       <source>Fixup date/time of articles which are in the future</source>
       <translation>Gelecekteki makalelerin tarih/saatini düzelt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="334"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="636"/>
       <source>Display attachments directly in article</source>
       <translation>Ekleri doğrudan makalede göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="300"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="631"/>
       <source>Keep article viewer always visible</source>
       <translation>Yazı görüntüleyiciyi her zaman görünür tut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="343"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="637"/>
       <source>Limit height of attachments</source>
       <translation>Eklerin boyunu sınırla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="438"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="657"/>
       <source>Articles list</source>
       <translation>Makaleler Listesi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="457"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="644"/>
       <source>Keep article selection in the middle of the article list viewport</source>
       <translation>Yazı seçimini, yazı listesi görünüm alanının ortasında tut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="464"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="645"/>
       <source>Enable multiline items</source>
       <translation>Çok satırlı öğeleri etkinleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="510"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="647"/>
       <source>Top/bottom row padding</source>
       <translation>Üst/alt satır dolgusu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="539"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="648"/>
       <source>Use custom date/time format</source>
       <translation>Özel tarih/zaman biçimi kullan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="591"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="650"/>
       <source>Custom date/time format for today&apos;s articles</source>
       <translation>Bugünün yazıları için özel tarih/zaman biçimi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="634"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="652"/>
       <source>Article list font</source>
       <translation>Makale listesi yazı tipi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="617"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="651"/>
       <source>Show relative time for articles not older than</source>
       <translation>Şu süreden daha yeni olan makaleler için göreceli zamanı göster:</translation>
     </message>
@@ -7660,13 +7319,11 @@ This can tremendously speed up the application if you have hundreds of thousands
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="17"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgeneral.h" line="58"/>
       <source>Launch %1 on operating system startup</source>
       <translation>İşletim sistemi açıldığında %1'ı başlat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgeneral.h" line="59"/>
       <source>Check for %1 updates on application startup</source>
       <translation>Uygulama başlangıcında %1 güncellemelerini denetle</translation>
     </message>
@@ -7757,79 +7414,66 @@ Açıklama: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="361"/>
       <source>Icons &amp;&amp; skins</source>
       <translation>İkonlar &amp;&amp; temalar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="33"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="357"/>
       <source>Icon theme</source>
       <translation>İkon teması</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="46"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="358"/>
       <source>Style</source>
       <translation>Stil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="69"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="360"/>
       <source>Skin</source>
       <translation>Tema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="123"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="366"/>
       <source>Application font</source>
       <translation>Uygulama yazı tipi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="135"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="362"/>
       <source>Customize global font</source>
       <translation>Genel yazı tipini özelleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="147"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="363"/>
       <source>Font preview</source>
       <translation>Yazı tipi önizlemesi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="157"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="364"/>
       <source>&amp;Change font</source>
       <translation>&amp;Yazı tipini değiştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="175"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="368"/>
       <source>Custom skin colors</source>
       <translation>Özel tema renkleri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="184"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="367"/>
       <source>Customize predefined colors</source>
       <translation>Önceden tanımlanmış renkleri özelleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="290"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="377"/>
       <source>Window</source>
       <translation>Pencere</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="208"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="369"/>
       <source>Tray icon</source>
       <translation>Sistem tepsisi ikonu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="220"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="370"/>
       <source>Use monochrome icon</source>
       <translation>Tek renkli ikon kullan</translation>
     </message>
@@ -7837,87 +7481,71 @@ Açıklama: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="227"/>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="260"/>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="296"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="371"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="375"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="378"/>
       <source>Display count of unread messages</source>
       <translation>Okunmamış yazı sayısını göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="234"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="372"/>
       <source>Hide main window when it is minimized</source>
       <translation>Simge durumuna küçültüldüğünde ana pencereyi gizle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="59"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="359"/>
       <source>Use skin colors</source>
       <translation>Tema renklerini kullan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="167"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="365"/>
       <source>Enable application-wide font anti-aliasing</source>
       <translation>Uygulama genelinde yazı tipi kenar yumuşatmayı etkinleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="196"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="379"/>
       <source>Tray area &amp;&amp; taskbar &amp;&amp; window</source>
       <translation>Bildirim alanı &amp;&amp; görev çubuğu &amp;&amp; pencere</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="244"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="373"/>
       <source>Use colored icon when there are unread articles</source>
       <translation>Okunmamış yazılar olduğunda renkli ikon kullan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="254"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="374"/>
       <source>Taskbar</source>
       <translation>Görev çubuğu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="270"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="376"/>
       <source>Start application minimized (or hidden if configured)</source>
       <translation>Uygulamayı simge durumunda (veya yapılandırıldıysa gizli) başlat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="307"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="385"/>
       <source>Tabs</source>
       <translation>Sekmeler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="319"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="380"/>
       <source>Close tabs with</source>
       <translation>... ile sekmeleri kapatın</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="325"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="381"/>
       <source>Middle mouse button single-click</source>
       <translation>Orta fare düğmesi tek tıklama</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="332"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="382"/>
       <source>Left mouse button double-click</source>
       <translation>Sol fare düğmesi çift tıklama</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="342"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="383"/>
       <source>Open new tabs with left mouse button double-click on tab bar</source>
       <translation>Sekme çubuğuna sol fare tuşuyla çift tıklayarak yeni sekmeler aç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="349"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgui.h" line="384"/>
       <source>Hide tab bar if just one tab is visible</source>
       <translation>Sadece bir sekme görünür durumdaysa sekme çubuğunu gizle</translation>
     </message>
@@ -7986,19 +7614,16 @@ Açıklama: %3</translation>
     <name>SettingsMediaPlayer</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="17"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsmediaplayer.h" line="114"/>
       <source>Backend</source>
       <translation>Arka uç</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="36"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsmediaplayer.h" line="115"/>
       <source>Use custom MPV configuration folder</source>
       <translation>Özel MPV yapılandırma klasörü kullan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsmediaplayer.h" line="116"/>
       <source>Browse</source>
       <translation>Gözat</translation>
     </message>
@@ -8037,55 +7662,46 @@ Açıklama: %3</translation>
     <name>SettingsNotifications</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsnotifications.h" line="199"/>
       <source>Enable notifications</source>
       <translation>Bildirimleri etkinleştir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="37"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsnotifications.h" line="200"/>
       <source>Balloon notifications type</source>
       <translation>Balon bildirimleri türü</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="43"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsnotifications.h" line="201"/>
       <source>Native notifications (tray icon must be enabled)</source>
       <translation>Yerel bildirimler (sistem tepsisi ikonu etkin olmalıdır)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="50"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsnotifications.h" line="202"/>
       <source>Custom notifications</source>
       <translation>Özel bildirimler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="66"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsnotifications.h" line="203"/>
       <source>Position</source>
       <translation>Konum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="79"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsnotifications.h" line="204"/>
       <source>Width</source>
       <translation>En</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="102"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsnotifications.h" line="205"/>
       <source>Margins</source>
       <translation>Kenar boşlukları</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="122"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsnotifications.h" line="206"/>
       <source>Screen</source>
       <translation>Ekran</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="156"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsnotifications.h" line="208"/>
       <source>Opacity</source>
       <translation>Opaklık</translation>
     </message>
@@ -8110,12 +7726,12 @@ Açıklama: %3</translation>
       <translation>%1 (Wayland üzerinde desteklenmiyor)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="137"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="138"/>
       <source>How do I look?</source>
       <translation>Nasıl gözüküyorum?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="138"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="139"/>
       <source>Just testing new notifications settings. That&apos;s all.</source>
       <translation>Sadece yeni bildirim ayarları test ediliyor. Hepsi bu kadar.</translation>
     </message>
@@ -8132,37 +7748,31 @@ Açıklama: %3</translation>
     <name>SettingsToolbars</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="23"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingstoolbars.h" line="157"/>
       <source>Button style</source>
       <translation>Düğme stili</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="36"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingstoolbars.h" line="158"/>
       <source>Icon size</source>
       <translation>Simge boyutu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="62"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingstoolbars.h" line="159"/>
       <source>Toolbar editor</source>
       <translation>Araç çubuğu düzenleyici</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="76"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingstoolbars.h" line="160"/>
       <source>Toolbar for feeds list</source>
       <translation>Kaynak listesi için araç çubuğu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="81"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingstoolbars.h" line="161"/>
       <source>Toolbar for articles list</source>
       <translation>Makale listesi için araç çubuğu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="86"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_settingstoolbars.h" line="162"/>
       <source>Statusbar</source>
       <translation>Durum çubuğu</translation>
     </message>
@@ -8172,37 +7782,32 @@ Açıklama: %3</translation>
       <translation>= varsayılan simge boyutu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="74"/>
-      <source>Select new font</source>
-      <translation>Yeni yazı tipi seç</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="112"/>
+      <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="97"/>
       <source>Icon only</source>
       <translation>Yalnızca simge</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="113"/>
+      <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="98"/>
       <source>Text only</source>
       <translation>Yalnızca metin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="114"/>
+      <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="99"/>
       <source>Text beside icon</source>
       <translation>Simgenin yanında metin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="115"/>
+      <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="100"/>
       <source>Text under icon</source>
       <translation>Simgenin altında metin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingstoolbars.cpp" line="101"/>
       <source>Follow OS style</source>
       <translation>İşletim sistemi stilini kullan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingstoolbars.h" line="35"/>
+      <location filename="../src/librssguard/gui/settings/settingstoolbars.h" line="32"/>
       <source>Toolbars</source>
       <translation>Araç çubukları</translation>
     </message>
@@ -8239,49 +7844,41 @@ Açıklama: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="23"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_singlenotificationeditor.h" line="136"/>
       <source>Balloon notification</source>
       <translation>Balon bildirimi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="30"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_singlenotificationeditor.h" line="137"/>
       <source>Show dialogs</source>
       <translation>Diyalogları göster</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="37"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_singlenotificationeditor.h" line="138"/>
       <source>Play sound</source>
       <translation>Ses çal</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="65"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_singlenotificationeditor.h" line="139"/>
       <source>Sound</source>
       <translation>Ses</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="77"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_singlenotificationeditor.h" line="140"/>
       <source>Full path to your WAV sound file</source>
       <translation>WAV ses dosyanızın tam yolu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="84"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_singlenotificationeditor.h" line="141"/>
       <source>&amp;Browse</source>
       <translation>&amp;Gözat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="91"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_singlenotificationeditor.h" line="142"/>
       <source>&amp;Play</source>
       <translation>&amp;Oynat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="110"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_singlenotificationeditor.h" line="143"/>
       <source>Volume</source>
       <translation>Ses seviyesi</translation>
     </message>
@@ -8414,103 +8011,91 @@ Bu durumda, bu beslemeleri alırken biraz zaman boşlukları ayarlamanız gereki
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="93"/>
-      <source>Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: %4
-HTTP/2: %6
-Item ID: %5
-</source>
-      <translation>Otomatik güncelleme durumu: %1
-Aktif ileti filtreleri: %2
-Durum: %3
-Kaynak: %4
-HTTP/2: %5
-Öğe Kimliği: %6</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="108"/>
-      <source>Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5</source>
-      <translation>Kodlama: %1
-Tür: %2
-İşlem sonrası betiği: %3
-Ham XML kaydetmeyi kullan: %4
-Makale yorumlarını al: %5</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="116"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="117"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="88"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="89"/>
       <source>yes</source>
       <translation>evet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="116"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="117"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="88"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="89"/>
       <source>no</source>
       <translation>hayır</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="251"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="219"/>
       <source>Script</source>
       <translation>Betik</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="254"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="222"/>
       <source>Local file</source>
       <translation>Yerel dosya</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="484"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="452"/>
       <source>uses application setting</source>
       <translation>uygulama ayarlarını kullanır</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="487"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="455"/>
       <source>enabled</source>
       <translation>etkin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="490"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="458"/>
       <source>disabled</source>
       <translation>devre dışı</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="493"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="461"/>
       <source>unknown state</source>
       <translation>bilinmeyen durum</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="257"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="225"/>
       <source>Unknown</source>
       <translation>Bilinmiyor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="296"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="79"/>
+      <source>Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4
+Fetch article comments: %5
+HTTP/2: %6
+</source>
+      <translation type="unfinished">Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4
+Fetch article comments: %5
+HTTP/2: %6
+</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="264"/>
       <source>Cannot save data for feed: %1</source>
       <translation>%1 akışı için veri kaydedilemiyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="467"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="435"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation>Akış taşınamıyor, ayrıntılı bilgi hata ayıklama günlüğüne kaydedildi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="295"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="263"/>
       <source>Cannot save feed data</source>
       <translation>Akış verisi kaydedilemiyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="425"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="393"/>
       <source>feed format not recognized</source>
       <translation>Akış biçimi tanınmıyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="466"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="434"/>
       <source>Cannot move feed</source>
       <translation>Akış taşınamıyor.</translation>
     </message>
@@ -9045,27 +8630,27 @@ Okunmamış haberler: %2</translation>
   <context>
     <name>TabWidget</name>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="136"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="128"/>
       <source>Feeds</source>
       <translation>Beslemeler</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="44"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="45"/>
       <source>Displays main menu.</source>
       <translation>Ana menüyü gösterir.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="55"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="56"/>
       <source>Main menu</source>
       <translation>Ana menü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="233"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="225"/>
       <source>Media player</source>
       <translation>Medya oynatıcı</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="138"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="130"/>
       <source>Browse your feeds and articles</source>
       <translation>Akışlarınıza ve yazılarınıza göz atın</translation>
     </message>
@@ -9141,61 +8726,51 @@ Okunmamış haberler: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="32"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_toolbareditor.h" line="185"/>
       <source>Activated actions</source>
       <translation>Etkinleştirilmiş eylemler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="39"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_toolbareditor.h" line="186"/>
       <source>Available actions</source>
       <translation>Mevcut eylemler</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="76"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_toolbareditor.h" line="188"/>
       <source>Move action up</source>
       <translation>Eylemi yukarı taşı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="89"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_toolbareditor.h" line="191"/>
       <source>Move action down</source>
       <translation>Eylemi aşağı taşı</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="109"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_toolbareditor.h" line="194"/>
       <source>Insert separator</source>
       <translation>Ayırıcı ekle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="122"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_toolbareditor.h" line="197"/>
       <source>Insert spacer</source>
       <translation>Boşluk ekle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="142"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_toolbareditor.h" line="200"/>
       <source>Add selected action</source>
       <translation>Seçili eylemi ekle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="155"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_toolbareditor.h" line="203"/>
       <source>Delete selected action</source>
       <translation>Seçili eylemi sil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="168"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_toolbareditor.h" line="206"/>
       <source>Delete all actions</source>
       <translation>Tüm eylemleri sil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="181"/>
-      <location filename="../build/Desktop-Debug/src/librssguard/ui_toolbareditor.h" line="209"/>
       <source>Reset toolbar</source>
       <translation>Araç çubuğunu sıfırla</translation>
     </message>
@@ -9427,7 +9002,7 @@ Okunmamış haberler: %2</translation>
   <context>
     <name>TtRssFeed</name>
     <message>
-      <location filename="../src/librssguard-ttrss/src/ttrssfeed.cpp" line="47"/>
+      <location filename="../src/librssguard-ttrss/src/ttrssfeed.cpp" line="44"/>
       <source>Share to published</source>
       <translation>Herkese aç</translation>
     </message>
