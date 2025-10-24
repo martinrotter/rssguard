@@ -187,23 +187,17 @@ void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
 
 void MessagePreviewer::switchMessageImportance(bool checked) {
   if (!m_root.isNull()) {
-    m_root->account()->onBeforeSwitchMessageImportance(m_root.data(),
-                                                       QList<ImportanceChange>()
-                                                         << ImportanceChange(m_message,
-                                                                             m_message.m_isImportant
-                                                                               ? RootItem::Importance::NotImportant
-                                                                               : RootItem::Importance::Important));
+    auto ch =
+      ImportanceChange(m_message,
+                       m_message.m_isImportant ? RootItem::Importance::NotImportant : RootItem::Importance::Important);
+
+    m_root->account()->onBeforeSwitchMessageImportance(m_root.data(), {ch});
     DatabaseQueries::switchMessagesImportance(qApp->database()
                                                 ->driver()
                                                 ->connection(objectName(),
                                                              DatabaseDriver::DesiredStorageType::FromSettings),
                                               {QString::number(m_message.m_id)});
-    m_root->account()->onAfterSwitchMessageImportance(m_root.data(),
-                                                      QList<ImportanceChange>()
-                                                        << ImportanceChange(m_message,
-                                                                            m_message.m_isImportant
-                                                                              ? RootItem::Importance::NotImportant
-                                                                              : RootItem::Importance::Important));
+    m_root->account()->onAfterSwitchMessageImportance(m_root.data(), {ch});
     emit markMessageImportant(m_message.m_id,
                               checked ? RootItem::Importance::Important : RootItem::Importance::NotImportant);
 

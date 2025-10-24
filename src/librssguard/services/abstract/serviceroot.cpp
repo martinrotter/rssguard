@@ -259,24 +259,21 @@ void ServiceRoot::updateCounts(bool including_total_count) {
   }
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  bool ok;
-  auto counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count, &ok);
+  auto counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count);
 
-  if (ok) {
-    for (Feed* feed : feeds) {
-      if (counts.contains(feed->id())) {
-        feed->setCountOfUnreadMessages(counts.value(feed->id()).m_unread);
+  for (Feed* feed : feeds) {
+    if (counts.contains(feed->id())) {
+      feed->setCountOfUnreadMessages(counts.value(feed->id()).m_unread);
 
-        if (including_total_count) {
-          feed->setCountOfAllMessages(counts.value(feed->id()).m_total);
-        }
+      if (including_total_count) {
+        feed->setCountOfAllMessages(counts.value(feed->id()).m_total);
       }
-      else {
-        feed->setCountOfUnreadMessages(0);
+    }
+    else {
+      feed->setCountOfUnreadMessages(0);
 
-        if (including_total_count) {
-          feed->setCountOfAllMessages(0);
-        }
+      if (including_total_count) {
+        feed->setCountOfAllMessages(0);
       }
     }
   }
@@ -1162,8 +1159,7 @@ void ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
 void ServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
   Q_UNUSED(feeds)
 
-  updateCounts(true);
-  itemChanged(getSubTree<RootItem>());
+  refreshAfterArticlesChange({}, false, false, true);
 }
 
 QNetworkProxy ServiceRoot::networkProxyForItem(RootItem* item) const {

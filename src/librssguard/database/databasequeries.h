@@ -4,6 +4,7 @@
 #define DATABASEQUERIES_H
 
 #include "definitions/typedefs.h"
+#include "exceptions/sqlexception.h"
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -44,8 +45,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void deleteProbe(const QSqlDatabase& db, Search* probe);
     static void updateProbe(const QSqlDatabase& db, Search* probe);
 
-    // TODO: podsud hotovo zkontrolovano včetně všech použití.
-
     // Read & unread & important articles.
     static void markProbeReadUnread(const QSqlDatabase& db, Search* probe, RootItem::ReadStatus read);
     static void markAllLabelledMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
@@ -85,21 +84,15 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QMap<int, ArticleCounts> getMessageCountsForCategory(const QSqlDatabase& db,
                                                                 const QString& custom_id,
                                                                 int account_id,
-                                                                bool include_total_counts,
-                                                                bool* ok = nullptr);
+                                                                bool include_total_counts);
     static QMap<int, ArticleCounts> getMessageCountsForAccount(const QSqlDatabase& db,
                                                                int account_id,
-                                                               bool include_total_counts,
-                                                               bool* ok = nullptr);
-    static ArticleCounts getMessageCountsForFeed(const QSqlDatabase& db,
-                                                 int feed_id,
-                                                 int account_id,
-                                                 bool* ok = nullptr);
+                                                               bool include_total_counts);
+    static ArticleCounts getMessageCountsForFeed(const QSqlDatabase& db, int feed_id, int account_id);
     static ArticleCounts getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id);
-    static ArticleCounts getMessageCountsForProbe(const QSqlDatabase& db, Search* probe, int account_id);
     static QMap<int, ArticleCounts> getMessageCountsForAllLabels(const QSqlDatabase& db, int account_id);
     static ArticleCounts getImportantMessageCounts(const QSqlDatabase& db, int account_id);
-    static int getUnreadMessageCounts(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static int getUnreadMessageCounts(const QSqlDatabase& db, int account_id);
     static ArticleCounts getMessageCountsForBin(const QSqlDatabase& db, int account_id);
 
     // Get messages (for newspaper view for example).
@@ -124,31 +117,29 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                                     RootItem::ReadStatus target_read);
     static QStringList customIdsOfImportantMessages(const QSqlDatabase& db,
                                                     RootItem::ReadStatus target_read,
-                                                    int account_id,
-                                                    bool* ok = nullptr);
-    static QStringList customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+                                                    int account_id);
+    static QStringList customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id);
     static QStringList customIdsOfMessagesFromAccount(const QSqlDatabase& db,
                                                       RootItem::ReadStatus target_read,
-                                                      int account_id,
-                                                      bool* ok = nullptr);
+                                                      int account_id);
     static QStringList customIdsOfMessagesFromBin(const QSqlDatabase& db,
                                                   RootItem::ReadStatus target_read,
-                                                  int account_id,
-                                                  bool* ok = nullptr);
+                                                  int account_id);
     static QStringList customIdsOfMessagesFromFeed(const QSqlDatabase& db,
                                                    int feed_id,
                                                    RootItem::ReadStatus target_read,
-                                                   int account_id,
-                                                   bool* ok = nullptr);
+                                                   int account_id);
 
     // Common account methods.
     template <typename T>
-    static QList<ServiceRoot*> getAccounts(const QSqlDatabase& db, const QString& code, bool* ok = nullptr);
+    static QList<ServiceRoot*> getAccounts(const QSqlDatabase& db, const QString& code);
 
     template <typename Categ, typename Fee>
     static void loadRootFromDatabase(ServiceRoot* root);
-    static bool storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
+    static void storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
+
+    // TODO: pokračovat
 
     // Returns counts of updated messages <unread, all>.
     static UpdatedArticles updateMessages(QSqlDatabase& db,
@@ -230,7 +221,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
 };
 
 template <typename T>
-QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const QString& code, bool* ok) {
+QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const QString& code) {
   QSqlQuery query(db);
   QList<ServiceRoot*> roots;
 
@@ -255,18 +246,12 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const Q
 
       roots.append(root);
     }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
   }
   else {
-    qWarningNN << LOGSEC_DB << "Loading of accounts with code" << QUOTE_W_SPACE(code)
-               << "failed with error:" << QUOTE_W_SPACE_DOT(query.lastError().text());
+    qCriticalNN << LOGSEC_DB << "Loading of accounts with code" << QUOTE_W_SPACE(code)
+                << "failed with error:" << QUOTE_W_SPACE_DOT(query.lastError().text());
 
-    if (ok != nullptr) {
-      *ok = false;
-    }
+    throw SqlException(query.lastError());
   }
 
   return roots;

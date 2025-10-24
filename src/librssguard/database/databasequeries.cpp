@@ -4,7 +4,6 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/globals.h"
-#include "exceptions/sqlexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -826,9 +825,7 @@ void DatabaseQueries::purgeRecycleBin(const QSqlDatabase& db) {
 QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db,
                                                                       const QString& custom_id,
                                                                       int account_id,
-                                                                      bool include_total_counts,
-                                                                      bool* ok) {
-  QMap<int, ArticleCounts> counts;
+                                                                      bool include_total_counts) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -852,6 +849,8 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSql
   if (q.exec()) {
     DatabaseFactory::logLastExecutedQuery(q);
 
+    QMap<int, ArticleCounts> counts;
+
     while (q.next()) {
       int feed_id = q.value(0).toInt();
       ArticleCounts ac;
@@ -865,24 +864,16 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSql
       counts.insert(feed_id, ac);
     }
 
-    if (ok != nullptr) {
-      *ok = true;
-    }
+    return counts;
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
+    throw SqlException(q.lastError());
   }
-
-  return counts;
 }
 
 QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAccount(const QSqlDatabase& db,
                                                                      int account_id,
-                                                                     bool include_total_counts,
-                                                                     bool* ok) {
-  QMap<int, ArticleCounts> counts;
+                                                                     bool include_total_counts) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -903,6 +894,8 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAccount(const QSqlD
   if (q.exec()) {
     DatabaseFactory::logLastExecutedQuery(q);
 
+    QMap<int, ArticleCounts> counts;
+
     while (q.next()) {
       int feed_id = q.value(0).toInt();
       ArticleCounts ac;
@@ -916,20 +909,14 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAccount(const QSqlD
       counts.insert(feed_id, ac);
     }
 
-    if (ok != nullptr) {
-      *ok = true;
-    }
+    return counts;
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
+    throw SqlException(q.lastError());
   }
-
-  return counts;
 }
 
-ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, int feed_id, int account_id, bool* ok) {
+ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, int feed_id, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -942,10 +929,6 @@ ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, i
   if (q.exec() && q.next()) {
     DatabaseFactory::logLastExecutedQuery(q);
 
-    if (ok != nullptr) {
-      *ok = true;
-    }
-
     ArticleCounts ac;
 
     ac.m_total = q.value(0).toInt();
@@ -954,11 +937,7 @@ ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, i
     return ac;
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-
-    return {};
+    throw SqlException(q.lastError());
   }
 }
 
@@ -987,35 +966,6 @@ ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, 
     DatabaseFactory::logLastExecutedQuery(q);
 
     ArticleCounts ac;
-    ac.m_total = q.value(0).toInt();
-    ac.m_unread = ac.m_total - q.value(1).toInt();
-
-    return ac;
-  }
-  else {
-    throw SqlException(q.lastError());
-  }
-}
-
-ArticleCounts DatabaseQueries::getMessageCountsForProbe(const QSqlDatabase& db, Search* probe, int account_id) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) FROM Messages "
-                "WHERE "
-                "  is_deleted = 0 AND "
-                "  is_pdeleted = 0 AND "
-                "  account_id = :account_id AND "
-                "  (title REGEXP :fltr OR contents REGEXP :fltr);"));
-
-  q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":fltr"), probe->filter());
-
-  if (q.exec() && q.next()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    ArticleCounts ac;
-
     ac.m_total = q.value(0).toInt();
     ac.m_unread = ac.m_total - q.value(1).toInt();
 
@@ -1085,7 +1035,7 @@ ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db,
   }
 }
 
-int DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_id, bool* ok) {
+int DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1097,18 +1047,10 @@ int DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_
   if (q.exec() && q.next()) {
     DatabaseFactory::logLastExecutedQuery(q);
 
-    if (ok != nullptr) {
-      *ok = true;
-    }
-
     return q.value(0).toInt();
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-
-    return 0;
+    throw SqlException(q.lastError());
   }
 }
 
@@ -1250,7 +1192,10 @@ QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::
 
   q.bindValue(QSL(":account_id"), feed->account()->accountId());
   q.bindValue(QSL(":feed"), feed->id());
-  q.exec();
+
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
+  }
 
   DatabaseFactory::logLastExecutedQuery(q);
 
@@ -1266,15 +1211,23 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages "
+  q.prepare(QSL("SELECT Messages.custom_id "
+                "FROM Messages "
                 "WHERE "
-                "  account_id = :account_id AND "
-                "  labels LIKE :label;"));
+                "  Messages.account_id = :account_id AND "
+                "  EXISTS ("
+                "    SELECT 1 FROM LabelsInMessages "
+                "    WHERE LabelsInMessages.message = Messages.id "
+                "      AND LabelsInMessages.label = :label_id "
+                "      AND LabelsInMessages.account_id = Messages.account_id);"));
 
   for (const Label* lbl : labels) {
-    q.bindValue(QSL(":label"), QSL("%.%1.%").arg(lbl->customId()));
+    q.bindValue(QSL(":label_id"), lbl->id());
     q.bindValue(QSL(":account_id"), lbl->account()->accountId());
-    q.exec();
+
+    if (!q.exec()) {
+      throw SqlException(q.lastError());
+    }
 
     DatabaseFactory::logLastExecutedQuery(q);
 
@@ -2154,8 +2107,7 @@ void DatabaseQueries::markProbeReadUnread(const QSqlDatabase& db, Search* probe,
 
 QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& db,
                                                             RootItem::ReadStatus target_read,
-                                                            int account_id,
-                                                            bool* ok) {
+                                                            int account_id) {
   QSqlQuery q(db);
   QStringList ids;
 
@@ -2165,11 +2117,8 @@ QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& 
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
 
-  if (ok != nullptr) {
-    *ok = q.exec();
-  }
-  else {
-    q.exec();
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
   }
 
   DatabaseFactory::logLastExecutedQuery(q);
@@ -2253,8 +2202,7 @@ QStringList DatabaseQueries::customIdsOfMessagesFromProbe(const QSqlDatabase& db
 
 QStringList DatabaseQueries::customIdsOfImportantMessages(const QSqlDatabase& db,
                                                           RootItem::ReadStatus target_read,
-                                                          int account_id,
-                                                          bool* ok) {
+                                                          int account_id) {
   QSqlQuery q(db);
   QStringList ids;
 
@@ -2266,11 +2214,8 @@ QStringList DatabaseQueries::customIdsOfImportantMessages(const QSqlDatabase& db
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
 
-  if (ok != nullptr) {
-    *ok = q.exec();
-  }
-  else {
-    q.exec();
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
   }
 
   DatabaseFactory::logLastExecutedQuery(q);
@@ -2282,7 +2227,7 @@ QStringList DatabaseQueries::customIdsOfImportantMessages(const QSqlDatabase& db
   return ids;
 }
 
-QStringList DatabaseQueries::customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id, bool* ok) {
+QStringList DatabaseQueries::customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
   QStringList ids;
 
@@ -2291,11 +2236,8 @@ QStringList DatabaseQueries::customIdsOfUnreadMessages(const QSqlDatabase& db, i
                 "WHERE is_read = 0 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
 
-  if (ok != nullptr) {
-    *ok = q.exec();
-  }
-  else {
-    q.exec();
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
   }
 
   DatabaseFactory::logLastExecutedQuery(q);
@@ -2309,8 +2251,7 @@ QStringList DatabaseQueries::customIdsOfUnreadMessages(const QSqlDatabase& db, i
 
 QStringList DatabaseQueries::customIdsOfMessagesFromBin(const QSqlDatabase& db,
                                                         RootItem::ReadStatus target_read,
-                                                        int account_id,
-                                                        bool* ok) {
+                                                        int account_id) {
   QSqlQuery q(db);
   QStringList ids;
 
@@ -2320,11 +2261,8 @@ QStringList DatabaseQueries::customIdsOfMessagesFromBin(const QSqlDatabase& db,
   q.bindValue(QSL(":account_id"), account_id);
   q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
 
-  if (ok != nullptr) {
-    *ok = q.exec();
-  }
-  else {
-    q.exec();
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
   }
 
   DatabaseFactory::logLastExecutedQuery(q);
@@ -2339,8 +2277,7 @@ QStringList DatabaseQueries::customIdsOfMessagesFromBin(const QSqlDatabase& db,
 QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
                                                          int feed_id,
                                                          RootItem::ReadStatus target_read,
-                                                         int account_id,
-                                                         bool* ok) {
+                                                         int account_id) {
   QSqlQuery q(db);
   QStringList ids;
 
@@ -2352,11 +2289,8 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
   q.bindValue(QSL(":feed"), feed_id);
   q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
 
-  if (ok != nullptr) {
-    *ok = q.exec();
-  }
-  else {
-    q.exec();
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
   }
 
   DatabaseFactory::logLastExecutedQuery(q);
@@ -3166,38 +3100,36 @@ QMultiMap<int, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& d
   return filters_in_feeds;
 }
 
-bool DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id) {
-  QSqlQuery query(db);
+void DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id) {
+  QSqlQuery q(db);
 
-  query.prepare(QSL("SELECT custom_data FROM Accounts WHERE id = :id;"));
-  query.bindValue(QSL(":id"), account_id);
+  q.prepare(QSL("SELECT custom_data FROM Accounts WHERE id = :id;"));
+  q.bindValue(QSL(":id"), account_id);
 
-  if (!query.exec() || !query.next()) {
+  if (!q.exec() || !q.next()) {
     qWarningNN << LOGSEC_OAUTH << "Cannot fetch custom data column for storing of OAuth tokens, because of error:"
-               << QUOTE_W_SPACE_DOT(query.lastError().text());
-    return false;
+               << QUOTE_W_SPACE_DOT(q.lastError().text());
+    throw SqlException(q.lastError());
   }
 
-  DatabaseFactory::logLastExecutedQuery(query);
+  DatabaseFactory::logLastExecutedQuery(q);
 
-  QVariantHash custom_data = deserializeCustomData(query.value(0).toString());
+  QVariantHash custom_data = deserializeCustomData(q.value(0).toString());
 
   custom_data[QSL("refresh_token")] = refresh_token;
 
-  query.clear();
-  query.prepare(QSL("UPDATE Accounts SET custom_data = :custom_data WHERE id = :id;"));
-  query.bindValue(QSL(":custom_data"), serializeCustomData(custom_data));
-  query.bindValue(QSL(":id"), account_id);
+  q.clear();
+  q.prepare(QSL("UPDATE Accounts SET custom_data = :custom_data WHERE id = :id;"));
+  q.bindValue(QSL(":custom_data"), serializeCustomData(custom_data));
+  q.bindValue(QSL(":id"), account_id);
 
-  if (!query.exec()) {
+  if (!q.exec()) {
     qWarningNN << LOGSEC_OAUTH
-               << "Cannot store OAuth tokens, because of error:" << QUOTE_W_SPACE_DOT(query.lastError().text());
-    return false;
+               << "Cannot store OAuth tokens, because of error:" << QUOTE_W_SPACE_DOT(q.lastError().text());
+    throw SqlException(q.lastError());
   }
-  else {
-    DatabaseFactory::logLastExecutedQuery(query);
-    return true;
-  }
+
+  DatabaseFactory::logLastExecutedQuery(q);
 }
 
 QString DatabaseQueries::unnulifyString(const QString& str) {
