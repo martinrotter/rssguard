@@ -118,15 +118,20 @@ bool TextFactory::couldBeHtml(const QString& string) {
 }
 
 QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_format) {
-  QString input_date = date_time.simplified()
-                         .replace(QSL("GMT"), QSL("+0000"))
-                         .replace(QSL("UTC"), QSL("+0000"))
-                         .replace(QSL("UT"), QSL("+0000"))
-                         .replace(QSL("EDT"), QSL("-0400"))
-                         .replace(QSL("EST"), QSL("-0500"))
-                         .replace(QSL("PDT"), QSL("-0700"))
-                         .replace(QSL("PST"), QSL("-0800"))
-                         .replace(QRegularExpression(QSL("\\.(\\d{3})\\d{3}")), QSL(".\\1"));
+  static QMap<QString, QString> tz_offsets = {
+    {"GMT", "+0000"},  {"UTC", "+0000"},  {"UT", "+0000"},  {"BST", "+0100"}, {"CEST", "+0200"}, {"CET", "+0100"},
+    {"EEST", "+0300"}, {"EET", "+0200"},  {"EDT", "-0400"}, {"EST", "-0500"}, {"CDT", "-0500"},  {"CST", "-0600"},
+    {"MDT", "-0600"},  {"MST", "-0700"},  {"PDT", "-0700"}, {"PST", "-0800"}, {"AKDT", "-0800"}, {"AKST", "-0900"},
+    {"HST", "-1000"},  {"IST", "+0530"},  {"JST", "+0900"}, {"KST", "+0900"}, {"AEST", "+1000"}, {"AEDT", "+1100"},
+    {"ACST", "+0930"}, {"ACDT", "+1030"}, {"AWST", "+0800"}};
+
+  QString input_date = date_time.simplified();
+
+  for (auto it = tz_offsets.cbegin(); it != tz_offsets.cend(); ++it) {
+    input_date.replace(it.key(), it.value());
+  }
+
+  input_date.replace(QRegularExpression(QSL("\\.(\\d{3})\\d+")), QSL(".\\1"));
 
   if (input_date.isEmpty()) {
     return QDateTime();
