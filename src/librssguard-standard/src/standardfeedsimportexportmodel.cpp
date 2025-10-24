@@ -70,6 +70,10 @@ bool FeedsImportExportModel::exportToOMPL20(QByteArray& result, bool export_icon
   opml_document.appendChild(opml_document.createElement(QSL("opml")));
   opml_document.documentElement().setAttribute(QSL("version"), QSL("2.0"));
 
+#if QT_VERSION_MAJOR == 5
+  opml_document.documentElement().setAttribute(QSL("xmlns:rssguard"), QSL(APP_URL));
+#endif
+
   QDomElement elem_opml_head = opml_document.createElement(QSL("head"));
   QDomElement elem_opml_title = opml_document.createElement(QSL("title"));
   QDomText text_opml_title = opml_document.createTextNode(QSL(APP_NAME));

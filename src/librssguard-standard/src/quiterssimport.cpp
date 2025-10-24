@@ -132,7 +132,7 @@ void QuiteRssImport::importLabels(const QList<Label*>& labels) {
       m_account->requestItemReassignment(lbl, m_account->labelsNode());
     }
     catch (const SqlException& ex) {
-      qCriticalNN << LOGSEC_STANDARD << "Failed to import quiterss label" << NONQUOTE_W_SPACE_DOT(lbl->title());
+      qCriticalNN << LOGSEC_STANDARD << "Failed to import quiterss label:" << QUOTE_W_SPACE_DOT(ex.message());
     }
   }
 

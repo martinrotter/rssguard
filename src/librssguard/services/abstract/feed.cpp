@@ -222,11 +222,6 @@ void Feed::cleanMessages(bool clean_read_only) {
   account()->cleanFeeds({this}, clean_read_only);
 }
 
-// TODO:
-// - projit všechny ::markAsReadUnread metody a přidat volání account::onBeforeMessageRead.... a onAfterMessageRead...
-// to same clean....
-
-// TODO: prověřit všechna volání všech metod z databasequeries a přejít na používání vyjimek
 void Feed::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
   auto* cache = dynamic_cast<CacheForServiceRoot*>(service);

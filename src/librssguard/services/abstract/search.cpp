@@ -102,13 +102,12 @@ void Search::markAsReadUnread(RootItem::ReadStatus status) {
   // TODO: projit tyhle volání a nahradit kod vyše obecným voláním onBefore, onAfter
   // rozmyslet jakej parametr se bude předávat, jestli jen seznam custom ID zpráv
   // nebo seznam message objektů
-  // service->onBeforeSetMessagesRead(this, {}, status);
+  service->onBeforeSetMessagesRead(this, {}, status);
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
   DatabaseQueries::markProbeReadUnread(database, this, status);
 
-  // service->onAfterSetMessagesRead(this, {}, status);
+  service->onAfterSetMessagesRead(this, {}, status);
 
   service->updateCounts(false);
   service->itemChanged(service->getSubTree<RootItem>());

@@ -172,26 +172,13 @@ void FeedsModel::reloadCountsOfWholeModel() {
   notifyWithCounts();
 }
 
-void FeedsModel::removeItem(const QModelIndex& index) {
-  if (index.isValid()) {
-    RootItem* deleting_item = itemForIndex(index);
-    QModelIndex parent_index = index.parent();
-    RootItem* parent_item = deleting_item->parent();
-
-    beginRemoveRows(parent_index, index.row(), index.row());
-    parent_item->removeChild(deleting_item);
-    endRemoveRows();
-    deleting_item->deleteLater();
-    notifyWithCounts();
-  }
-}
-
 void FeedsModel::removeItem(RootItem* deleting_item) {
   if (deleting_item != nullptr) {
     QModelIndex index = indexForItem(deleting_item);
     QModelIndex parent_index = index.parent();
     RootItem* parent_item = deleting_item->parent();
 
+    deleting_item->setDeleting(true);
     beginRemoveRows(parent_index, index.row(), index.row());
     parent_item->removeChild(deleting_item);
     endRemoveRows();
@@ -201,7 +188,6 @@ void FeedsModel::removeItem(RootItem* deleting_item) {
     }
 
     delete deleting_item;
-    // deleting_item->deleteLater();
 
     notifyWithCounts();
   }

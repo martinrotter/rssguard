@@ -393,37 +393,37 @@ bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source
 }
 
 void FeedsProxyModel::initializeFilters() {
-  m_filters[FeedListFilter::ShowEmpty] = [this](const RootItem* item) {
+  m_filters[FeedListFilter::ShowEmpty] = [](const RootItem* item) {
     return item->countOfAllMessages() == 0;
   };
 
-  m_filters[FeedListFilter::ShowNonEmpty] = [this](const RootItem* item) {
+  m_filters[FeedListFilter::ShowNonEmpty] = [](const RootItem* item) {
     return item->countOfAllMessages() != 0;
   };
 
-  m_filters[FeedListFilter::ShowQuiet] = [this](const RootItem* item) {
+  m_filters[FeedListFilter::ShowQuiet] = [](const RootItem* item) {
     Feed* feed = item->toFeed();
 
     return feed != nullptr && feed->isQuiet();
   };
 
-  m_filters[FeedListFilter::ShowSwitchedOff] = [this](const RootItem* item) {
+  m_filters[FeedListFilter::ShowSwitchedOff] = [](const RootItem* item) {
     Feed* feed = item->toFeed();
 
     return feed != nullptr && feed->isSwitchedOff();
   };
 
-  m_filters[FeedListFilter::ShowUnread] = [this](const RootItem* item) {
+  m_filters[FeedListFilter::ShowUnread] = [](const RootItem* item) {
     return item->countOfUnreadMessages() > 0;
   };
 
-  m_filters[FeedListFilter::ShowWithArticleFilters] = [this](const RootItem* item) {
+  m_filters[FeedListFilter::ShowWithArticleFilters] = [](const RootItem* item) {
     Feed* feed = item->toFeed();
 
     return feed != nullptr && !feed->messageFilters().isEmpty();
   };
 
-  m_filters[FeedListFilter::ShowWithError] = [this](const RootItem* item) {
+  m_filters[FeedListFilter::ShowWithError] = [](const RootItem* item) {
     Feed* feed = item->toFeed();
 
     return feed != nullptr &&
@@ -431,7 +431,7 @@ void FeedsProxyModel::initializeFilters() {
             feed->status() == Feed::Status::OtherError || feed->status() == Feed::Status::ParsingError);
   };
 
-  m_filters[FeedListFilter::ShowWithNewArticles] = [this](const RootItem* item) {
+  m_filters[FeedListFilter::ShowWithNewArticles] = [](const RootItem* item) {
     Feed* feed = item->toFeed();
 
     return feed != nullptr && feed->status() == Feed::Status::NewMessages;
@@ -449,7 +449,7 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
 
   const RootItem* item = m_sourceModel->itemForIndex(idx);
 
-  if (m_selectedItem == item) {
+  if (m_selectedItem != nullptr && m_selectedItem == item) {
     return true;
   }
 
@@ -518,14 +518,11 @@ void FeedsProxyModel::setSelectedItem(const RootItem* selected_item) {
   auto* previous_selected_item = m_selectedItem;
   m_selectedItem = selected_item;
 
-  // TODO: test this thoroughly on linux
-  if (previous_selected_item != nullptr) {
+  if (previous_selected_item != nullptr && !previous_selected_item->isAboutToBeDeleted()) {
     auto source_idx = m_sourceModel->indexForItem(previous_selected_item);
 
     if (source_idx.isValid()) {
-      // QTimer::singleShot(0, m_sourceModel, [&]() {
       m_sourceModel->reloadChangedLayout({source_idx});
-      //});
     }
   }
 }

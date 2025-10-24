@@ -221,6 +221,11 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     int sortOrder() const;
     void setSortOrder(int sort_order);
 
+    bool deleting() const;
+    void setDeleting(bool deleting);
+
+    bool isAboutToBeDeleted() const;
+
   private:
     RootItem::Kind m_kind;
     int m_id;
@@ -233,6 +238,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     int m_sortOrder;
     QList<RootItem*> m_childItems;
     RootItem* m_parentItem;
+    bool m_deleting;
 };
 
 template <typename T>

@@ -17,7 +17,7 @@
 RootItem::RootItem(RootItem* parent_item)
   : QObject(nullptr), m_kind(RootItem::Kind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QString()), m_title(QString()),
     m_description(QString()), m_creationDate(QDateTime::currentDateTimeUtc()), m_keepOnTop(false),
-    m_sortOrder(NO_PARENT_CATEGORY), m_childItems(QList<RootItem*>()), m_parentItem(parent_item) {}
+    m_sortOrder(NO_PARENT_CATEGORY), m_childItems(QList<RootItem*>()), m_parentItem(parent_item), m_deleting(false) {}
 
 RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setTitle(other.title());
@@ -34,6 +34,7 @@ RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setParent(other.parent());
   setCreationDate(other.creationDate());
   setDescription(other.description());
+  setDeleting(other.deleting());
 }
 
 RootItem::~RootItem() {
@@ -557,6 +558,28 @@ int RootItem::sortOrder() const {
 
 void RootItem::setSortOrder(int sort_order) {
   m_sortOrder = sort_order;
+}
+
+bool RootItem::deleting() const {
+  return m_deleting;
+}
+
+void RootItem::setDeleting(bool deleting) {
+  m_deleting = deleting;
+}
+
+bool RootItem::isAboutToBeDeleted() const {
+  const RootItem* check = this;
+
+  while (check != nullptr && check->kind() != RootItem::Kind::Root) {
+    if (check->deleting()) {
+      return true;
+    }
+
+    check = check->parent();
+  }
+
+  return false;
 }
 
 bool RootItem::removeChild(int index) {

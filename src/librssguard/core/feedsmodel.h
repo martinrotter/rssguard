@@ -103,9 +103,6 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     // Adds given service root account.
     bool addServiceAccount(ServiceRoot* root, bool freshly_activated);
 
-    // Removes item with given index.
-    // NOTE: Also deletes item from memory.
-    void removeItem(const QModelIndex& index);
     void removeItem(RootItem* deleting_item);
 
     // Recycle bins operations.
