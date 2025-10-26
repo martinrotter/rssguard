@@ -836,7 +836,6 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item, ReadStatus t
         break;
     }
 
-    qDebugNN << LOGSEC_CORE << "Custom IDs of messages for some operation are:" << QUOTE_W_SPACE_DOT(list);
     return list;
   }
 }

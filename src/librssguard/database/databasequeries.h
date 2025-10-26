@@ -52,13 +52,14 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
     static void markUnreadMessagesRead(const QSqlDatabase& db, int account_id);
     static void markMessagesReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read);
-    static void markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance);
     static void markFeedsReadUnread(const QSqlDatabase& db,
                                     const QStringList& ids,
                                     int account_id,
                                     RootItem::ReadStatus read);
     static void markBinReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
     static void markAccountReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
+
+    static void markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance);
     static void switchMessagesImportance(const QSqlDatabase& db, const QStringList& ids);
 
     // Delete & restore articles.
@@ -206,9 +207,11 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QStringList getAllGmailRecipients(const QSqlDatabase& db, int account_id);
 
   private:
-    static void purgeMessagesByCondition(const QSqlDatabase& db,
-                                         const QString& where_clause,
-                                         const QMap<QString, QVariant>& bindValues = QMap<QString, QVariant>());
+    static void markMessagesByCondition(const QSqlDatabase& db,
+                                        const QString& condition,
+                                        RootItem::ReadStatus read,
+                                        int account_id = 0);
+    static void purgeMessagesByCondition(const QSqlDatabase& db, const QString& where_clause);
     static void cleanMessagesByCondition(const QSqlDatabase& db,
                                          const QString& where_clause,
                                          bool clean_read_only,
