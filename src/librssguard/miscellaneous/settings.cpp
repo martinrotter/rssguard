@@ -390,6 +390,14 @@ DVALUE(char*) GUI::StyleDef = APP_STYLE_DEFAULT;
 // General.
 DKEY General::ID = "main";
 
+DKEY General::DisableDebugOutput = "disable_debug_output";
+
+#if !defined(NDEBUG)
+DVALUE(bool) General::DisableDebugOutputDef = false;
+#else
+DVALUE(bool) General::DisableDebugOutputDef = true;
+#endif
+
 DKEY General::UpdateOnStartup = "update_on_start";
 DVALUE(bool) General::UpdateOnStartupDef = false;
 

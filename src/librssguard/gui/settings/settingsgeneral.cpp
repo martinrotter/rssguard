@@ -7,6 +7,8 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
 
+#include "ui_settingsgeneral.h"
+
 SettingsGeneral::SettingsGeneral(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_ui(nullptr) {}
 
@@ -20,6 +22,7 @@ void SettingsGeneral::loadUi() {
   m_ui->m_checkForUpdatesOnStart->setVisible(false);
 #endif
 
+  connect(m_ui->m_checkDisableDebugOutput, &QCheckBox::STATE_CHANGED, this, &SettingsGeneral::dirtifySettings);
   connect(m_ui->m_checkAutostart, &QCheckBox::STATE_CHANGED, this, &SettingsGeneral::dirtifySettings);
   connect(m_ui->m_checkForUpdatesOnStart, &QCheckBox::STATE_CHANGED, this, &SettingsGeneral::dirtifySettings);
 
@@ -38,6 +41,10 @@ QIcon SettingsGeneral::icon() const {
 
 void SettingsGeneral::loadSettings() {
   onBeginLoadSettings();
+
+  m_ui->m_checkDisableDebugOutput
+    ->setChecked(settings()->value(GROUP(General), SETTING(General::DisableDebugOutput)).toBool());
+
   m_ui->m_checkForUpdatesOnStart
     ->setChecked(settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool());
 
@@ -73,6 +80,9 @@ void SettingsGeneral::saveSettings() {
     qApp->system()->setAutoStartStatus(SystemFactory::AutoStartStatus::Disabled);
   }
 
+  settings()->setValue(GROUP(General), General::DisableDebugOutput, m_ui->m_checkDisableDebugOutput->isChecked());
   settings()->setValue(GROUP(General), General::UpdateOnStartup, m_ui->m_checkForUpdatesOnStart->isChecked());
   onEndSaveSettings();
+
+  qApp->updateCliDebugStatus();
 }

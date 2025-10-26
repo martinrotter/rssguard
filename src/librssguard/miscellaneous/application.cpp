@@ -72,6 +72,8 @@
 #endif
 #endif
 
+bool s_disableDebug = false;
+
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
   : SingleApplication(id, argc, argv), m_rawCliArgs(raw_cli_args), m_updateFeedsLock(new Mutex()) {
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
@@ -202,6 +204,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   QTimer::singleShot(30000, system(), &SystemFactory::checkForUpdatesOnStartup);
 
   setupWorkHorsePool();
+  updateCliDebugStatus();
 
 #if QT_VERSION >= 0x060100 // Qt >= 6.1.0
   QSslSocket::setActiveBackend(QSL("openssl"));
@@ -233,12 +236,18 @@ Application::~Application() {
   qDebugNN << LOGSEC_CORE << "Destroying Application instance.";
 }
 
-bool s_disableDebug = false;
+void Application::updateCliDebugStatus() {
+  if (m_cmdParser.isSet(QSL(CLI_NSTDOUTERR_SHORT)) ||
+      settings()->value(GROUP(General), SETTING(General::DisableDebugOutput)).toBool()) {
+    qWarningNN << LOGSEC_CORE << "Disabling any/some stdout/stderr outputs.";
+    s_disableDebug = true;
+  }
+}
 
 void Application::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg) {
 #ifndef QT_NO_DEBUG_OUTPUT
 
-  if (!s_disableDebug) {
+  if (s_disableDebug && (type == QtMsgType::QtDebugMsg || type == QtMsgType::QtInfoMsg)) {
     return;
   }
 
@@ -1146,11 +1155,6 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
     qDebugNN << LOGSEC_CORE << "Explicitly allowing this instance to run.";
   }
 
-  if (m_cmdParser.isSet(QSL(CLI_NSTDOUTERR_SHORT))) {
-    s_disableDebug = true;
-    qDebugNN << LOGSEC_CORE << "Disabling any stdout/stderr outputs.";
-  }
-
   custom_ua = m_cmdParser.value(QSL(CLI_USERAGENT_SHORT));
 }
 
@@ -1180,8 +1184,9 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                                             QSL("Allow running of multiple application instances."));
   QCommandLineOption disable_only_debug({QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG)},
                                         QSL("Disable just \"debug\" output."));
-  QCommandLineOption disable_debug({QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG)},
-                                   QSL("Completely disable stdout/stderr outputs."));
+  QCommandLineOption
+    disable_debug({QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG)},
+                  QSL("Disable DEBUG stdout/stderr outputs but keep more serious warnings and errors."));
   QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)},
                                   QSL("Force some application style."),
                                   QSL("style-name"));

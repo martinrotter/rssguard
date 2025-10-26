@@ -5,7 +5,9 @@
 
 #include "gui/settings/settingspanel.h"
 
-#include "ui_settingsgeneral.h"
+namespace Ui {
+  class SettingsGeneral;
+}
 
 class SettingsGeneral : public SettingsPanel {
     Q_OBJECT

@@ -605,7 +605,7 @@ void FilterApp::showNotification(const QString& title, const QString& text) {
 }
 
 void FilterApp::log(const QString& message) {
-  qDebugNN << LOGSEC_ARTICLEFILTER << message;
+  qWarningNN << LOGSEC_ARTICLEFILTER << message;
   emit logged(message);
 }
 

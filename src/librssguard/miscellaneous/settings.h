@@ -420,6 +420,9 @@ namespace Network {
 namespace General {
   KEY ID;
 
+  KEY DisableDebugOutput;
+  VALUE(bool) DisableDebugOutputDef;
+
   KEY UpdateOnStartup;
   VALUE(bool) UpdateOnStartupDef;
 
