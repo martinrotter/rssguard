@@ -30,11 +30,11 @@ void UnreadNode::cleanMessages(bool clean_read_only) {
   }
 
   ServiceRoot* service = account();
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  DatabaseQueries::cleanUnreadMessages(database, service->accountId());
-  service->updateCounts(true);
-  service->itemChanged(service->getSubTree<RootItem>());
+  service->onBeforeMessagesDelete(this, {});
+  DatabaseQueries::cleanUnreadMessages(qApp->database()->driver()->connection(metaObject()->className()),
+                                       service->accountId());
+  service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
 

@@ -5,7 +5,6 @@
 #include "database/databasequeries.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 
 ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
@@ -30,11 +29,12 @@ void ImportantNode::updateCounts(bool including_total_count) {
 
 void ImportantNode::cleanMessages(bool clean_read_only) {
   ServiceRoot* service = account();
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  DatabaseQueries::cleanImportantMessages(database, clean_read_only, service->accountId());
-  service->updateCounts(true);
-  service->itemChanged(service->getSubTree<RootItem>());
+  service->onBeforeMessagesDelete(this, {});
+  DatabaseQueries::cleanImportantMessages(qApp->database()->driver()->connection(metaObject()->className()),
+                                          clean_read_only,
+                                          service->accountId());
+  service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
 

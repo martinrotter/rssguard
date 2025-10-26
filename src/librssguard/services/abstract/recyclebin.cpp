@@ -6,7 +6,6 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
 
 RecycleBin::RecycleBin(RootItem* parent_item) : RootItem(parent_item), m_totalCount(0), m_unreadCount(0) {
@@ -72,13 +71,14 @@ void RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
 }
 
 void RecycleBin::cleanMessages(bool clear_only_read) {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  ServiceRoot* parent_root = account();
+  ServiceRoot* service = account();
 
-  DatabaseQueries::purgeMessagesFromBin(database, clear_only_read, parent_root->accountId());
-  updateCounts(true);
-  parent_root->itemChanged({this});
-  parent_root->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
+  service->onBeforeMessagesDelete(this, {});
+  DatabaseQueries::purgeMessagesFromBin(qApp->database()->driver()->connection(metaObject()->className()),
+                                        clear_only_read,
+                                        service->accountId());
+  service->onAfterMessagesDelete(this, {});
+  service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
 
 void RecycleBin::empty() {

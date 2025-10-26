@@ -6,7 +6,6 @@
 #include "database/databasequeries.h"
 #include "definitions/globals.h"
 #include "miscellaneous/application.h"
-#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/gui/formaddeditlabel.h"
 #include "services/abstract/serviceroot.h"
 
@@ -98,11 +97,12 @@ void Label::setCountOfUnreadMessages(int unreadCount) {
 
 void Label::cleanMessages(bool clear_only_read) {
   ServiceRoot* service = account();
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-  DatabaseQueries::cleanLabelledMessages(database, clear_only_read, this);
-  service->updateCounts(true);
-  service->itemChanged(service->getSubTree<RootItem>());
+  service->onBeforeMessagesDelete(this, {});
+  DatabaseQueries::cleanLabelledMessages(qApp->database()->driver()->connection(metaObject()->className()),
+                                         clear_only_read,
+                                         this);
+  service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
 

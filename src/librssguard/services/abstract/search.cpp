@@ -5,7 +5,6 @@
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "miscellaneous/application.h"
-#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/gui/formaddeditprobe.h"
 #include "services/abstract/serviceroot.h"
 
@@ -77,18 +76,19 @@ void Search::setCountOfUnreadMessages(int unreadCount) {
   m_unreadCount = unreadCount;
 }
 
-void Search::cleanMessages(bool clear_only_read) {
-  ServiceRoot* service = account();
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::cleanProbedMessages(database, clear_only_read, this);
-  service->updateCounts(true);
-  service->itemChanged(service->getSubTree<RootItem>());
-  service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
-}
-
 QString Search::additionalTooltip() const {
   return tr("Regular expression: %1").arg(QSL("<code>%1</code>").arg(filter()));
+}
+
+void Search::cleanMessages(bool clear_only_read) {
+  ServiceRoot* service = account();
+
+  service->onBeforeMessagesDelete(this, {});
+  DatabaseQueries::cleanProbedMessages(qApp->database()->driver()->connection(metaObject()->className()),
+                                       clear_only_read,
+                                       this);
+  service->onAfterMessagesDelete(this, {});
+  service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
 
 void Search::markAsReadUnread(RootItem::ReadStatus status) {

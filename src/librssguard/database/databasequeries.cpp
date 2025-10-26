@@ -1818,42 +1818,38 @@ void DatabaseQueries::deleteAccountData(const QSqlDatabase& db,
   }
 }
 
-bool DatabaseQueries::cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label) {
+void DatabaseQueries::cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label) {
   QSqlQuery q(db);
-
   q.setForwardOnly(true);
 
+  QString sql = QSL("UPDATE Messages "
+                    "SET is_deleted = 1 "
+                    "WHERE "
+                    "  is_deleted = 0 AND "
+                    "  is_pdeleted = 0 AND "
+                    "  account_id = :account_id AND "
+                    "  id IN ("
+                    "    SELECT message "
+                    "    FROM LabelsInMessages "
+                    "    WHERE label = :label_id AND account_id = :account_id"
+                    "  )");
+
   if (clean_read_only) {
-    q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
-                  "WHERE "
-                  "  is_deleted = 0 AND "
-                  "  is_pdeleted = 0 AND "
-                  "  is_read = 1 AND "
-                  "  account_id = :account_id AND "
-                  "  labels LIKE :label;"));
-  }
-  else {
-    q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
-                  "WHERE "
-                  "  is_deleted = 0 AND "
-                  "  is_pdeleted = 0 AND "
-                  "  account_id = :account_id AND "
-                  "  labels LIKE :label;"));
+    sql += QSL(" AND is_read = 1");
   }
 
-  q.bindValue(QSL(":deleted"), 1);
+  sql += QL1C(';');
+
+  q.prepare(sql);
+
   q.bindValue(QSL(":account_id"), label->account()->accountId());
-  q.bindValue(QSL(":label"), QSL("%.%1.%").arg(label->customId()));
+  q.bindValue(QSL(":label_id"), label->id());
 
   if (!q.exec()) {
-    qWarningNN << LOGSEC_DB << "Cleaning of labelled messages failed:" << QUOTE_W_SPACE_DOT(q.lastError().text());
-    return false;
+    throw SqlException(q.lastError());
   }
-  else {
-    DatabaseFactory::logLastExecutedQuery(q);
 
-    return true;
-  }
+  DatabaseFactory::logLastExecutedQuery(q);
 }
 
 void DatabaseQueries::cleanProbedMessages(const QSqlDatabase& db, bool clean_read_only, Search* probe) {
@@ -1862,7 +1858,7 @@ void DatabaseQueries::cleanProbedMessages(const QSqlDatabase& db, bool clean_rea
   q.setForwardOnly(true);
 
   if (clean_read_only) {
-    q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
+    q.prepare(QSL("UPDATE Messages SET is_deleted = 1 "
                   "WHERE "
                   "  is_deleted = 0 AND "
                   "  is_pdeleted = 0 AND "
@@ -1871,7 +1867,7 @@ void DatabaseQueries::cleanProbedMessages(const QSqlDatabase& db, bool clean_rea
                   "  (title REGEXP :fltr OR contents REGEXP :fltr);"));
   }
   else {
-    q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
+    q.prepare(QSL("UPDATE Messages SET is_deleted = 1 "
                   "WHERE "
                   "  is_deleted = 0 AND "
                   "  is_pdeleted = 0 AND "
@@ -1879,7 +1875,6 @@ void DatabaseQueries::cleanProbedMessages(const QSqlDatabase& db, bool clean_rea
                   "  (title REGEXP :fltr OR contents REGEXP :fltr);"));
   }
 
-  q.bindValue(QSL(":deleted"), 1);
   q.bindValue(QSL(":account_id"), probe->account()->accountId());
   q.bindValue(QSL(":fltr"), probe->filter());
 
@@ -1890,85 +1885,78 @@ void DatabaseQueries::cleanProbedMessages(const QSqlDatabase& db, bool clean_rea
   DatabaseFactory::logLastExecutedQuery(q);
 }
 
-bool DatabaseQueries::cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id) {
+void DatabaseQueries::cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id) {
   QSqlQuery q(db);
-
   q.setForwardOnly(true);
+
+  QString sql = "UPDATE Messages "
+                "SET is_deleted = 1 "
+                "WHERE is_important = 1 "
+                "  AND is_deleted = 0 "
+                "  AND is_pdeleted = 0 "
+                "  AND account_id = :account_id";
 
   if (clean_read_only) {
-    q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
-                  "WHERE is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1 AND account_id = "
-                  ":account_id;"));
-  }
-  else {
-    q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
-                  "WHERE is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
+    sql += QSL(" AND is_read = 1");
   }
 
-  q.bindValue(QSL(":deleted"), 1);
-  q.bindValue(QSL(":account_id"), account_id);
+  sql += QL1C(';');
+
+  q.prepare(sql);
+  q.bindValue(":account_id", account_id);
 
   if (!q.exec()) {
-    qWarningNN << LOGSEC_DB << "Cleaning of important messages failed: '" << q.lastError().text() << "'.";
-    return false;
+    throw SqlException(q.lastError());
   }
-  else {
-    DatabaseFactory::logLastExecutedQuery(q);
 
-    return true;
-  }
+  DatabaseFactory::logLastExecutedQuery(q);
 }
 
-bool DatabaseQueries::cleanUnreadMessages(const QSqlDatabase& db, int account_id) {
+void DatabaseQueries::cleanUnreadMessages(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("UPDATE Messages SET is_deleted = :deleted "
+  q.prepare(QSL("UPDATE Messages SET is_deleted = 1 "
                 "WHERE is_deleted = 0 AND is_pdeleted = 0 AND is_read = 0 AND account_id = :account_id;"));
 
-  q.bindValue(QSL(":deleted"), 1);
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
-    qWarningNN << LOGSEC_DB << "Cleaning of unread messages failed: '" << q.lastError().text() << "'.";
-    return false;
+    throw SqlException(q.lastError());
   }
-  else {
-    DatabaseFactory::logLastExecutedQuery(q);
 
-    return true;
-  }
+  DatabaseFactory::logLastExecutedQuery(q);
 }
 
-bool DatabaseQueries::cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id) {
-  QSqlQuery q(db);
+void DatabaseQueries::cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id) {
+  if (ids.isEmpty()) {
+    return;
+  }
 
+  QSqlQuery q(db);
   q.setForwardOnly(true);
 
+  QString sql = QSL("UPDATE Messages SET is_deleted = 1 "
+                    "WHERE feed IN (%1) "
+                    "  AND is_deleted = 0 "
+                    "  AND is_pdeleted = 0 "
+                    "  AND account_id = :account_id")
+                  .arg(ids.join(QSL(", ")));
+
   if (clean_read_only) {
-    q.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                      "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND is_read = 1 AND account_id = "
-                      ":account_id;")
-                .arg(ids.join(QSL(", "))));
-  }
-  else {
-    q.prepare(QString("UPDATE Messages SET is_deleted = :deleted "
-                      "WHERE feed IN (%1) AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;")
-                .arg(ids.join(QSL(", "))));
+    sql += QSL(" AND is_read = 1");
   }
 
-  q.bindValue(QSL(":deleted"), 1);
-  q.bindValue(QSL(":account_id"), account_id);
+  sql += QL1C(';');
+
+  q.prepare(sql);
+  q.bindValue(":account_id", account_id);
 
   if (!q.exec()) {
-    qWarningNN << LOGSEC_DB << "Cleaning of feeds failed: '" << q.lastError().text() << "'.";
-    return false;
+    throw SqlException(q.lastError());
   }
-  else {
-    DatabaseFactory::logLastExecutedQuery(q);
 
-    return true;
-  }
+  DatabaseFactory::logLastExecutedQuery(q);
 }
 
 bool DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id) {

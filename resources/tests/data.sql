@@ -49,7 +49,7 @@ SELECT
   NULL
 FROM feeds;
 
--- 4️⃣ Labels (600) with random human-readable names and hex colors
+-- 4️⃣ Labels (600)
 WITH RECURSIVE lbls(id) AS (
   SELECT 1
   UNION ALL
@@ -64,7 +64,10 @@ SELECT
   1
 FROM lbls;
 
--- 5️⃣ Messages (300,000) with long contents and ~10% deleted
+-- Function: sample HTML content generator
+-- (You can inline or refer to an external table; here we inline logic)
+
+-- 5️⃣ Messages (300,000) with long HTML contents (including <img> tags)
 WITH RECURSIVE msgs(id) AS (
   SELECT 1
   UNION ALL
@@ -95,18 +98,23 @@ SELECT
   CASE WHEN abs(random()) % 10 = 0 THEN 1 ELSE 0 END,
   0,
   (abs(random()) % 1000) + 1,
-  'Article ' || id || ' ' || substr('Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elit Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua', (abs(random()) % 400) + 1, 15),
+  'Article ' || id || ' ' || substr('Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elit Sed Do Eiusmod Tempor', (abs(random()) % 200) + 1, 15),
   'https://example.com/article/' || id,
   'Author ' || ((abs(random()) % 500) + 1),
   (strftime('%s','now') - (abs(random()) % 31536000)),
-  -- Long contents: 3–5 lorem paragraphs
-  (substr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum.', (abs(random()) % 500) + 1, 120)
-   || '\n\n' ||
-   substr('Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh.', (abs(random()) % 500) + 1, 120)
-   || '\n\n' ||
-   substr('Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum.', (abs(random()) % 500) + 1, 120)
-   || '\n\n' ||
-   substr('Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque volutpat condimentum velit.', (abs(random()) % 500) + 1, 120)),
+  
+  -- contents: multiple HTML paragraphs + image tags + random word "RANDOM"
+  (
+    '<html><body>' ||
+    '<h1>Heading ' || id || '</h1>' ||
+    '<p>' || substr('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.', (abs(random()) % 200) + 1, 120) || '</p>' ||
+    '<p>' || substr('Suspendisse potenti. In faucibus massa arcu, vitae cursus mi hendrerit nec. Nulla facilisi.', (abs(random()) % 200) + 1, 120) || '</p>' ||
+    '<p><img src="https://via.placeholder.com/150?text=Img' || id || '" alt="img' || id || '"/></p>' ||
+    '<p>' || 'Some random text with RANDOM marker and more content. ' || substr('Curabitur suscipit suscipit tellus. Phasellus viverra nulla ut metus varius laoreet.', (abs(random()) % 200) + 1, 120) || '</p>' ||
+    '<footer>Footer RANDOM</footer>' ||
+    '</body></html>'
+  ),
+  
   NULL,
   (abs(random()) % 101),
   1,
@@ -114,7 +122,7 @@ SELECT
   hex(abs(random()) % 9223372036854775807)
 FROM msgs;
 
--- 6️⃣ LabelsInMessages (~30% coverage)
+-- 6️⃣ LabelsInMessages (~30%)
 WITH RECURSIVE attempts(n) AS (
   SELECT 1
   UNION ALL
@@ -128,23 +136,25 @@ SELECT
 FROM attempts
 WHERE (abs(random()) % 100) < 30;
 
--- 7️⃣ Probes (~50) to match words in article contents/titles
+-- 7️⃣ Probes (now 100) — we ensure some common words like "RANDOM", "Heading", etc.
 WITH RECURSIVE probe_ids(id) AS (
   SELECT 1
   UNION ALL
-  SELECT id + 1 FROM probe_ids WHERE id < 50
+  SELECT id + 1 FROM probe_ids WHERE id < 100
 )
 INSERT INTO Probes (id, name, color, fltr, account_id)
 SELECT
   id,
   'Probe ' || id,
   '#' || printf('%02X', abs(random()) % 256) || printf('%02X', abs(random()) % 256) || printf('%02X', abs(random()) % 256),
-  CASE abs(random()) % 5
-    WHEN 0 THEN 'Lorem'
-    WHEN 1 THEN 'Dolor'
-    WHEN 2 THEN 'Ipsum'
-    WHEN 3 THEN 'Tempor'
-    ELSE 'Consectetur'
+  CASE
+    WHEN id % 10 = 0 THEN 'RANDOM'            -- some probes look for the word "RANDOM" in contents
+    WHEN id % 10 = 1 THEN 'Heading'           -- some look for "Heading"
+    WHEN id % 10 = 2 THEN 'img[0-9]+'         -- regex matching img + digits
+    WHEN id % 10 = 3 THEN 'Footer'            -- footer text
+    WHEN id % 10 = 4 THEN 'Author [0-9]+'     -- match author in title/metadata
+    WHEN id % 10 = 5 THEN 'Lorem ipsum'        -- common lorem phrase
+    ELSE substr('Consectetur|Adipiscing|Curabitur|Phasellus|Nulla', (abs(random()) % 40) + 1, 10)
   END,
   1
 FROM probe_ids;
