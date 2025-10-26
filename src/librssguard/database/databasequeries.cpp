@@ -1248,10 +1248,8 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
                                                 Feed* feed,
                                                 bool force_update,
                                                 bool force_insert,
-                                                QMutex* db_mutex,
-                                                bool* ok) {
+                                                QMutex* db_mutex) {
   if (messages.isEmpty()) {
-    *ok = true;
     return {};
   }
 
@@ -1706,10 +1704,6 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
                 << "Failed to set custom ID for all messages:" << QUOTE_W_SPACE_DOT(fixup_custom_ids_error.text());
   }
 
-  if (ok != nullptr) {
-    *ok = true;
-  }
-
   return updated_messages;
 }
 
@@ -1736,12 +1730,12 @@ void DatabaseQueries::purgeMessagesFromBin(const QSqlDatabase& db, bool clear_on
   }
 }
 
-bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, ServiceRoot* account) {
+void DatabaseQueries::deleteAccount(const QSqlDatabase& db, ServiceRoot* account) {
   moveItem(account, false, true, {}, db);
 
-  QSqlQuery query(db);
+  QSqlQuery q(db);
 
-  query.setForwardOnly(true);
+  q.setForwardOnly(true);
   QStringList queries;
 
   queries << QSL("DELETE FROM MessageFiltersInFeeds WHERE account_id = :account_id;")
@@ -1753,30 +1747,25 @@ bool DatabaseQueries::deleteAccount(const QSqlDatabase& db, ServiceRoot* account
           << QSL("DELETE FROM Probes WHERE account_id = :account_id;")
           << QSL("DELETE FROM Accounts WHERE id = :account_id;");
 
-  for (const QString& q : std::as_const(queries)) {
-    query.prepare(q);
-    query.bindValue(QSL(":account_id"), account->accountId());
+  for (const QString& q_str : std::as_const(queries)) {
+    q.prepare(q_str);
+    q.bindValue(QSL(":account_id"), account->accountId());
 
-    if (!query.exec()) {
-      qCriticalNN << LOGSEC_DB << "Removing of account from DB failed, this is critical: '" << query.lastError().text()
-                  << "'.";
-      return false;
+    if (!q.exec()) {
+      throw SqlException(q.lastError());
     }
     else {
-      DatabaseFactory::logLastExecutedQuery(query);
+      DatabaseFactory::logLastExecutedQuery(q);
 
-      query.finish();
+      q.finish();
     }
   }
-
-  return true;
 }
 
-bool DatabaseQueries::deleteAccountData(const QSqlDatabase& db,
+void DatabaseQueries::deleteAccountData(const QSqlDatabase& db,
                                         int account_id,
                                         bool delete_messages_too,
                                         bool delete_labels_too) {
-  bool result = true;
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1784,36 +1773,49 @@ bool DatabaseQueries::deleteAccountData(const QSqlDatabase& db,
   if (delete_messages_too) {
     q.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id;"));
     q.bindValue(QSL(":account_id"), account_id);
-    result &= q.exec();
+
+    if (!q.exec()) {
+      throw SqlException(q.lastError());
+    }
 
     q.prepare(QSL("DELETE FROM LabelsInMessages WHERE account_id = :account_id;"));
     q.bindValue(QSL(":account_id"), account_id);
-    result &= q.exec();
+
+    if (!q.exec()) {
+      throw SqlException(q.lastError());
+    }
 
     DatabaseFactory::logLastExecutedQuery(q);
   }
 
   q.prepare(QSL("DELETE FROM Feeds WHERE account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
-  result &= q.exec();
+
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
+  }
 
   DatabaseFactory::logLastExecutedQuery(q);
 
   q.prepare(QSL("DELETE FROM Categories WHERE account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
-  result &= q.exec();
+
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
+  }
 
   DatabaseFactory::logLastExecutedQuery(q);
 
   if (delete_labels_too) {
     q.prepare(QSL("DELETE FROM Labels WHERE account_id = :account_id;"));
     q.bindValue(QSL(":account_id"), account_id);
-    result &= q.exec();
+
+    if (!q.exec()) {
+      throw SqlException(q.lastError());
+    }
 
     DatabaseFactory::logLastExecutedQuery(q);
   }
-
-  return result;
 }
 
 bool DatabaseQueries::cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label) {

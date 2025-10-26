@@ -237,11 +237,14 @@ bool s_disableDebug = false;
 
 void Application::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg) {
 #ifndef QT_NO_DEBUG_OUTPUT
-  QString console_message = qFormatLogMessage(type, context, msg);
 
   if (!s_disableDebug) {
-    std::cerr << console_message.toStdString() << std::endl;
+    return;
   }
+
+  QString console_message = qFormatLogMessage(type, context, msg);
+
+  std::cerr << console_message.toStdString() << std::endl;
 
   if (qApp != nullptr) {
     qApp->displayLogMessageInDialog(console_message);

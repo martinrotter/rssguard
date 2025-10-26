@@ -141,24 +141,24 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
 
     // TODO: pokračovat
 
-    // Returns counts of updated messages <unread, all>.
     static UpdatedArticles updateMessages(QSqlDatabase& db,
                                           QList<Message>& messages,
                                           Feed* feed,
                                           bool force_update,
                                           bool force_insert,
-                                          QMutex* db_mutex,
-                                          bool* ok = nullptr);
-    static bool deleteAccount(const QSqlDatabase& db, ServiceRoot* account);
-    static bool deleteAccountData(const QSqlDatabase& db,
+                                          QMutex* db_mutex);
+    static void deleteAccount(const QSqlDatabase& db, ServiceRoot* account);
+    static void deleteAccountData(const QSqlDatabase& db,
                                   int account_id,
                                   bool delete_messages_too,
                                   bool delete_labels_too);
+
     static bool cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label);
     static void cleanProbedMessages(const QSqlDatabase& db, bool clean_read_only, Search* probe);
     static bool cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static bool cleanUnreadMessages(const QSqlDatabase& db, int account_id);
     static bool cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
+
     static void storeAccountTree(const QSqlDatabase& db,
                                  RootItem* tree_root,
                                  int next_feed_id,

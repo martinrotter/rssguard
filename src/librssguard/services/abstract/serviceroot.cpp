@@ -1266,11 +1266,9 @@ UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
   if (!messages.isEmpty()) {
-    bool ok = false;
-
     qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
 
-    updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, false, db_mutex, &ok);
+    updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, false, db_mutex);
   }
   else {
     qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());

@@ -425,6 +425,13 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       }
     }
   }
+  catch (const SqlException& sql_ex) {
+    qCriticalNN << LOGSEC_NETWORK << "SQL error when fetching feed:"
+                << "message:" << QUOTE_W_SPACE_DOT(sql_ex.message());
+
+    m_results.appendErroredFeed(feed, sql_ex.message());
+    feed->setStatus(Feed::Status::SqlError, sql_ex.message());
+  }
   catch (const ApplicationException& app_ex) {
     qCriticalNN << LOGSEC_NETWORK << "Unknown error when fetching feed:"
                 << "message:" << QUOTE_W_SPACE_DOT(app_ex.message());

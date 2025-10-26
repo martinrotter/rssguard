@@ -115,8 +115,12 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
   if (msgs.isEmpty()) {
     return;
   }
-
-  DatabaseQueries::updateMessages(rssguard_db, msgs, feed, false, true, &m_dbMutex);
+  try {
+    DatabaseQueries::updateMessages(rssguard_db, msgs, feed, false, true, &m_dbMutex);
+  }
+  catch (const ApplicationException& ex) {
+    qWarningNN << LOGSEC_STANDARD << "Article import from quiterss failed:" << QUOTE_W_SPACE_DOT(ex.message());
+  }
 }
 
 void QuiteRssImport::importLabels(const QList<Label*>& labels) {

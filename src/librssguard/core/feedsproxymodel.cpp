@@ -428,7 +428,8 @@ void FeedsProxyModel::initializeFilters() {
 
     return feed != nullptr &&
            (feed->status() == Feed::Status::AuthError || feed->status() == Feed::Status::NetworkError ||
-            feed->status() == Feed::Status::OtherError || feed->status() == Feed::Status::ParsingError);
+            feed->status() == Feed::Status::SqlError || feed->status() == Feed::Status::OtherError ||
+            feed->status() == Feed::Status::ParsingError);
   };
 
   m_filters[FeedListFilter::ShowWithNewArticles] = [](const RootItem* item) {

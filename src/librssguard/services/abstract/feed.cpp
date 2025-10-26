@@ -61,6 +61,7 @@ QVariant Feed::data(int column, int role) const {
         case Status::NetworkError:
         case Status::ParsingError:
         case Status::AuthError:
+        case Status::SqlError:
         case Status::OtherError:
           return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgSelectedError);
 
@@ -98,6 +99,7 @@ QVariant Feed::data(int column, int role) const {
         case Status::NetworkError:
         case Status::ParsingError:
         case Status::AuthError:
+        case Status::SqlError:
         case Status::OtherError:
           return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError);
 
@@ -289,6 +291,9 @@ QString Feed::getStatusDescription() const {
 
     case Status::AuthError:
       return tr("authentication error");
+
+    case Status::SqlError:
+      return tr("SQL database error");
 
     case Status::NetworkError:
       return tr("network error");
