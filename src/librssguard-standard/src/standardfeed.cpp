@@ -441,9 +441,9 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
 }
 
 void StandardFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::deleteFeed(database, this, account()->accountId());
+  DatabaseQueries::deleteFeed(qApp->database()->driver()->connection(metaObject()->className()),
+                              this,
+                              account()->accountId());
 }
 
 QString StandardFeed::getHttpDescription() const {

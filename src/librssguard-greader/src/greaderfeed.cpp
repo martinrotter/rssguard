@@ -34,8 +34,8 @@ void GreaderFeed::deleteItem() {
   serviceRoot()->requestItemRemoval(this);
 }
 
-bool GreaderFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  return DatabaseQueries::deleteFeed(database, this, serviceRoot()->accountId());
+void GreaderFeed::removeItself() {
+  DatabaseQueries::deleteFeed(qApp->database()->driver()->connection(metaObject()->className()),
+                              this,
+                              serviceRoot()->accountId());
 }

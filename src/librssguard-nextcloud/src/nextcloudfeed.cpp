@@ -21,10 +21,10 @@ void NextcloudFeed::deleteItem() {
   serviceRoot()->requestItemRemoval(this);
 }
 
-bool NextcloudFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  return DatabaseQueries::deleteFeed(database, this, serviceRoot()->accountId());
+void NextcloudFeed::removeItself() {
+  DatabaseQueries::deleteFeed(qApp->database()->driver()->connection(metaObject()->className()),
+                              this,
+                              serviceRoot()->accountId());
 }
 
 NextcloudServiceRoot* NextcloudFeed::serviceRoot() const {

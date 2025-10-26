@@ -17,7 +17,7 @@ class NextcloudFeed : public Feed {
     virtual void deleteItem();
 
   private:
-    bool removeItself();
+    void removeItself();
     NextcloudServiceRoot* serviceRoot() const;
 };
 

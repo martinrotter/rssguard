@@ -20,7 +20,7 @@ class GreaderFeed : public Feed {
 
   private:
     GreaderServiceRoot* serviceRoot() const;
-    bool removeItself();
+    void removeItself();
 };
 
 #endif // TTRSSFEED_H

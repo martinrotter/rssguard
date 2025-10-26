@@ -1959,7 +1959,7 @@ void DatabaseQueries::cleanFeeds(const QSqlDatabase& db, const QStringList& ids,
   DatabaseFactory::logLastExecutedQuery(q);
 }
 
-bool DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id) {
+void DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -1969,15 +1969,10 @@ bool DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& 
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
-    qWarningNN << LOGSEC_DB
-               << "Removing of leftover message filter assignments failed:" << QUOTE_W_SPACE_DOT(q.lastError().text());
-    return false;
+    throw SqlException(q.lastError());
   }
-  else {
-    DatabaseFactory::logLastExecutedQuery(q);
 
-    return true;
-  }
+  DatabaseFactory::logLastExecutedQuery(q);
 }
 
 void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id) {
@@ -2000,9 +1995,8 @@ void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db, int 
   if (!q.exec()) {
     throw SqlException(q.lastError());
   }
-  else {
-    DatabaseFactory::logLastExecutedQuery(q);
-  }
+
+  DatabaseFactory::logLastExecutedQuery(q);
 }
 
 void DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_id) {
@@ -2017,9 +2011,8 @@ void DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
   if (!q.exec()) {
     throw SqlException(q.lastError());
   }
-  else {
-    DatabaseFactory::logLastExecutedQuery(q);
-  }
+
+  DatabaseFactory::logLastExecutedQuery(q);
 }
 
 void DatabaseQueries::storeAccountTree(const QSqlDatabase& db,
@@ -2567,14 +2560,8 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
   DatabaseFactory::logLastExecutedQuery(q);
 }
 
-bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account_id) {
-  try {
-    moveItem(feed, false, true, {}, db);
-  }
-  catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_DB << "Failed to move feed:" << QUOTE_W_SPACE_DOT(ex.message());
-    return false;
-  }
+void DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account_id) {
+  moveItem(feed, false, true, {}, db);
 
   QSqlQuery q(db);
 
@@ -2583,7 +2570,7 @@ bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account
   q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
-    return false;
+    throw SqlException(q.lastError());
   }
 
   DatabaseQueries::purgeLeftoverLabelAssignments(db, account_id);
@@ -2594,10 +2581,14 @@ bool DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account
   q.bindValue(QSL(":custom_id"), feed->customId());
   q.bindValue(QSL(":account_id"), account_id);
 
-  return q.exec() && purgeLeftoverMessageFilterAssignments(db, account_id);
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
+  }
+
+  purgeLeftoverMessageFilterAssignments(db, account_id);
 }
 
-bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, Category* category) {
+void DatabaseQueries::deleteCategory(const QSqlDatabase& db, Category* category) {
   moveItem(category, false, true, {}, db);
 
   QSqlQuery q(db);
@@ -2607,7 +2598,9 @@ bool DatabaseQueries::deleteCategory(const QSqlDatabase& db, Category* category)
   q.prepare(QSL("DELETE FROM Categories WHERE id = :category;"));
   q.bindValue(QSL(":category"), category->id());
 
-  return q.exec();
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
+  }
 }
 
 void DatabaseQueries::moveItem(RootItem* item,
@@ -2831,7 +2824,10 @@ MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const Q
 
   QSqlQuery q(db);
 
-  q.exec(QSL("SELECT COUNT(*) FROM MessageFilters;"));
+  if (!q.exec(QSL("SELECT COUNT(*) FROM MessageFilters;"))) {
+    throw SqlException(q.lastError());
+  }
+
   q.next();
 
   DatabaseFactory::logLastExecutedQuery(q);
@@ -2842,7 +2838,10 @@ MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const Q
   q.bindValue(QSL(":name"), title);
   q.bindValue(QSL(":script"), script);
   q.bindValue(QSL(":ordr"), new_ordr);
-  q.exec();
+
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
+  }
 
   DatabaseFactory::logLastExecutedQuery(q);
 
@@ -2855,7 +2854,7 @@ MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const Q
   return fltr;
 }
 
-void DatabaseQueries::removeMessageFilter(const QSqlDatabase& db, int filter_id, bool* ok) {
+void DatabaseQueries::removeMessageFilter(const QSqlDatabase& db, int filter_id) {
   QSqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM MessageFilters WHERE id = :id;"));
@@ -2863,21 +2862,14 @@ void DatabaseQueries::removeMessageFilter(const QSqlDatabase& db, int filter_id,
   q.bindValue(QSL(":id"), filter_id);
   q.setForwardOnly(true);
 
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
+  }
 
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
+  DatabaseFactory::logLastExecutedQuery(q);
 }
 
-void DatabaseQueries::removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id, bool* ok) {
+void DatabaseQueries::removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id) {
   QSqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM MessageFiltersInFeeds WHERE filter = :filter;"));
@@ -2885,21 +2877,14 @@ void DatabaseQueries::removeMessageFilterAssignments(const QSqlDatabase& db, int
   q.bindValue(QSL(":filter"), filter_id);
   q.setForwardOnly(true);
 
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
+  }
 
-    if (ok != nullptr) {
-      *ok = true;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
+  DatabaseFactory::logLastExecutedQuery(q);
 }
 
-QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db, bool* ok) {
+QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db) {
   QSqlQuery q(db);
   QList<MessageFilter*> filters;
 
@@ -2919,25 +2904,15 @@ QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db,
 
       filters.append(filter);
     }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
+    throw SqlException(q.lastError());
   }
 
   return filters;
 }
 
-void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db,
-                                                int feed_id,
-                                                int filter_id,
-                                                int account_id,
-                                                bool* ok) {
+void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db, int feed_id, int filter_id, int account_id) {
   QSqlQuery q(db);
 
   q.prepare(QSL("SELECT COUNT(*) FROM MessageFiltersInFeeds "
@@ -2953,12 +2928,11 @@ void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db,
     auto already_included_count = q.value(0).toInt();
 
     if (already_included_count > 0) {
-      if (ok != nullptr) {
-        *ok = true;
-      }
-
       return;
     }
+  }
+  else {
+    throw SqlException(q.lastError());
   }
 
   q.prepare(QSL("INSERT INTO MessageFiltersInFeeds (filter, feed, account_id) "
@@ -2969,19 +2943,13 @@ void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db,
 
   if (q.exec()) {
     DatabaseFactory::logLastExecutedQuery(q);
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
+    throw SqlException(q.lastError());
   }
 }
 
-void DatabaseQueries::updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter, bool* ok) {
+void DatabaseQueries::updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter) {
   QSqlQuery q(db);
 
   q.prepare(QSL("UPDATE MessageFilters SET name = :name, script = :script, is_enabled = :is_enabled, ordr = :ordr "
@@ -2996,23 +2964,13 @@ void DatabaseQueries::updateMessageFilter(const QSqlDatabase& db, MessageFilter*
 
   if (q.exec()) {
     DatabaseFactory::logLastExecutedQuery(q);
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
+    throw SqlException(q.lastError());
   }
 }
 
-void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db,
-                                                  int feed_id,
-                                                  int filter_id,
-                                                  int account_id,
-                                                  bool* ok) {
+void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db, int feed_id, int filter_id, int account_id) {
   QSqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM MessageFiltersInFeeds "
@@ -3025,15 +2983,9 @@ void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db,
 
   if (q.exec()) {
     DatabaseFactory::logLastExecutedQuery(q);
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
+    throw SqlException(q.lastError());
   }
 }
 
@@ -3061,7 +3013,7 @@ QStringList DatabaseQueries::getAllGmailRecipients(const QSqlDatabase& db, int a
   return rec;
 }
 
-QMultiMap<int, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& db, int account_id, bool* ok) {
+QMultiMap<int, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
   QMultiMap<int, int> filters_in_feeds;
 
@@ -3076,15 +3028,9 @@ QMultiMap<int, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& d
     while (q.next()) {
       filters_in_feeds.insert(q.value(1).toInt(), q.value(0).toInt());
     }
-
-    if (ok != nullptr) {
-      *ok = true;
-    }
   }
   else {
-    if (ok != nullptr) {
-      *ok = false;
-    }
+    throw SqlException(q.lastError());
   }
 
   return filters_in_feeds;

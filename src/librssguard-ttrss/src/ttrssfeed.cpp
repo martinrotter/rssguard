@@ -27,7 +27,8 @@ void TtRssFeed::deleteItem() {
   TtRssUnsubscribeFeedResponse response =
     serviceRoot()->network()->unsubscribeFeed(customNumericId(), account()->networkProxy());
 
-  if (response.code() == QSL(UFF_OK) && removeItself()) {
+  if (response.code() == QSL(UFF_OK)) {
+    removeItself();
     serviceRoot()->requestItemRemoval(this);
   }
   else {
@@ -52,8 +53,8 @@ QList<QAction*> TtRssFeed::contextMenuFeedsList() {
   return menu;
 }
 
-bool TtRssFeed::removeItself() {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  return DatabaseQueries::deleteFeed(database, this, serviceRoot()->accountId());
+void TtRssFeed::removeItself() {
+  DatabaseQueries::deleteFeed(qApp->database()->driver()->connection(metaObject()->className()),
+                              this,
+                              serviceRoot()->accountId());
 }

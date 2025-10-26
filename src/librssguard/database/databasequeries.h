@@ -157,7 +157,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void cleanUnreadMessages(const QSqlDatabase& db, int account_id);
     static void cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
 
-    // TODO: pokračovat?
     static void storeAccountTree(const QSqlDatabase& db,
                                  RootItem* tree_root,
                                  int next_feed_id,
@@ -169,20 +168,19 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                     int new_parent_id,
                                     int new_feed_id = 0);
     static void createOverwriteCategory(const QSqlDatabase& db, Category* category, int account_id, int new_parent_id);
-    static bool deleteFeed(const QSqlDatabase& db, Feed* feed, int account_id);
-    static bool deleteCategory(const QSqlDatabase& db, Category* category);
+    static void deleteFeed(const QSqlDatabase& db, Feed* feed, int account_id);
+    static void deleteCategory(const QSqlDatabase& db, Category* category);
 
     template <typename T>
-    static Assignment getCategories(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
+    static Assignment getCategories(const QSqlDatabase& db, int account_id);
 
     template <typename T>
-    static Assignment getFeeds(const QSqlDatabase& db,
-                               const QList<MessageFilter*>& global_filters,
-                               int account_id,
-                               bool* ok = nullptr);
+    static Assignment getFeeds(const QSqlDatabase& db, const QList<MessageFilter*>& global_filters, int account_id);
 
     // Item order methods.
     static void moveItem(RootItem* item, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db);
+
+    // TODO: pokračovat, metody přepsány, zkontrolovat použití a odchycení výjimek
 
     // Message filters operators.
     static void moveMessageFilter(QList<MessageFilter*> all_filters,
@@ -191,24 +189,16 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                   bool move_bottom,
                                   int move_index,
                                   const QSqlDatabase& db);
-    static bool purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id);
+    static void purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id);
     static void purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id = -1);
     static MessageFilter* addMessageFilter(const QSqlDatabase& db, const QString& title, const QString& script);
-    static void removeMessageFilter(const QSqlDatabase& db, int filter_id, bool* ok = nullptr);
-    static void removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id, bool* ok = nullptr);
-    static QList<MessageFilter*> getMessageFilters(const QSqlDatabase& db, bool* ok = nullptr);
-    static void assignMessageFilterToFeed(const QSqlDatabase& db,
-                                          int feed_id,
-                                          int filter_id,
-                                          int account_id,
-                                          bool* ok = nullptr);
-    static void updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter, bool* ok = nullptr);
-    static QMultiMap<int, int> messageFiltersInFeeds(const QSqlDatabase& db, int account_id, bool* ok = nullptr);
-    static void removeMessageFilterFromFeed(const QSqlDatabase& db,
-                                            int feed_id,
-                                            int filter_id,
-                                            int account_id,
-                                            bool* ok = nullptr);
+    static void removeMessageFilter(const QSqlDatabase& db, int filter_id);
+    static void removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id);
+    static QList<MessageFilter*> getMessageFilters(const QSqlDatabase& db);
+    static void assignMessageFilterToFeed(const QSqlDatabase& db, int feed_id, int filter_id, int account_id);
+    static void updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter);
+    static QMultiMap<int, int> messageFiltersInFeeds(const QSqlDatabase& db, int account_id);
+    static void removeMessageFilterFromFeed(const QSqlDatabase& db, int feed_id, int filter_id, int account_id);
 
     // Gmail account.
     static QStringList getAllGmailRecipients(const QSqlDatabase& db, int account_id);
@@ -257,52 +247,42 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const Q
 }
 
 template <typename T>
-Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id, bool* ok) {
+Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id) {
   Assignment categories;
 
   // Obtain data for categories from the database.
-  QSqlQuery query_categories(db);
+  QSqlQuery q(db);
 
-  query_categories.setForwardOnly(true);
-  query_categories.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
-  query_categories.bindValue(QSL(":account_id"), account_id);
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
 
-  if (!query_categories.exec()) {
-    qFatal("Query for obtaining categories failed. Error message: '%s'.",
-           qPrintable(query_categories.lastError().text()));
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = true;
-    }
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
   }
 
-  DatabaseFactory::logLastExecutedQuery(query_categories);
+  DatabaseFactory::logLastExecutedQuery(q);
 
-  while (query_categories.next()) {
+  while (q.next()) {
     AssignmentItem pair;
 
-    pair.first = query_categories.value(CAT_DB_PARENT_ID_INDEX).toInt();
+    pair.first = q.value(CAT_DB_PARENT_ID_INDEX).toInt();
     pair.second = new T();
 
     auto* cat = static_cast<Category*>(pair.second);
 
-    cat->setId(query_categories.value(CAT_DB_ID_INDEX).toInt());
-    cat->setSortOrder(query_categories.value(CAT_DB_ORDER_INDEX).toInt());
-    cat->setCustomId(query_categories.value(CAT_DB_CUSTOM_ID_INDEX).toString());
+    cat->setId(q.value(CAT_DB_ID_INDEX).toInt());
+    cat->setSortOrder(q.value(CAT_DB_ORDER_INDEX).toInt());
+    cat->setCustomId(q.value(CAT_DB_CUSTOM_ID_INDEX).toString());
 
     if (cat->customId().isEmpty()) {
       cat->setCustomId(QString::number(cat->id()));
     }
 
-    cat->setTitle(query_categories.value(CAT_DB_TITLE_INDEX).toString());
-    cat->setDescription(query_categories.value(CAT_DB_DESCRIPTION_INDEX).toString());
-    cat->setCreationDate(TextFactory::parseDateTime(query_categories.value(CAT_DB_DCREATED_INDEX).value<qint64>()));
-    cat->setIcon(qApp->icons()->fromByteArray(query_categories.value(CAT_DB_ICON_INDEX).toByteArray()));
+    cat->setTitle(q.value(CAT_DB_TITLE_INDEX).toString());
+    cat->setDescription(q.value(CAT_DB_DESCRIPTION_INDEX).toString());
+    cat->setCreationDate(TextFactory::parseDateTime(q.value(CAT_DB_DCREATED_INDEX).value<qint64>()));
+    cat->setIcon(qApp->icons()->fromByteArray(q.value(CAT_DB_ICON_INDEX).toByteArray()));
 
     categories << pair;
   }
@@ -313,65 +293,55 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
 template <typename T>
 Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
                                      const QList<MessageFilter*>& global_filters,
-                                     int account_id,
-                                     bool* ok) {
+                                     int account_id) {
   Assignment feeds;
 
   // All categories are now loaded.
-  QSqlQuery query(db);
+  QSqlQuery q(db);
   auto filters_in_feeds = messageFiltersInFeeds(db, account_id);
 
-  query.setForwardOnly(true);
-  query.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
-  query.bindValue(QSL(":account_id"), account_id);
+  q.setForwardOnly(true);
+  q.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
 
-  if (!query.exec()) {
-    qFatal("Query for obtaining feeds failed. Error message: '%s'.", qPrintable(query.lastError().text()));
-
-    if (ok != nullptr) {
-      *ok = false;
-    }
-  }
-  else {
-    if (ok != nullptr) {
-      *ok = true;
-    }
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
   }
 
-  DatabaseFactory::logLastExecutedQuery(query);
+  DatabaseFactory::logLastExecutedQuery(q);
 
-  while (query.next()) {
+  while (q.next()) {
     AssignmentItem pair;
 
-    pair.first = query.value(FDS_DB_CATEGORY_INDEX).toInt();
+    pair.first = q.value(FDS_DB_CATEGORY_INDEX).toInt();
 
     Feed* feed = new T();
 
     // Load common data.
-    feed->setTitle(query.value(FDS_DB_TITLE_INDEX).toString());
-    feed->setId(query.value(FDS_DB_ID_INDEX).toInt());
-    feed->setSortOrder(query.value(FDS_DB_ORDER_INDEX).toInt());
-    feed->setSource(query.value(FDS_DB_SOURCE_INDEX).toString());
-    feed->setCustomId(query.value(FDS_DB_CUSTOM_ID_INDEX).toString());
+    feed->setTitle(q.value(FDS_DB_TITLE_INDEX).toString());
+    feed->setId(q.value(FDS_DB_ID_INDEX).toInt());
+    feed->setSortOrder(q.value(FDS_DB_ORDER_INDEX).toInt());
+    feed->setSource(q.value(FDS_DB_SOURCE_INDEX).toString());
+    feed->setCustomId(q.value(FDS_DB_CUSTOM_ID_INDEX).toString());
 
     if (feed->customId().isEmpty()) {
       feed->setCustomId(QString::number(feed->id()));
     }
 
-    feed->setDescription(QString::fromUtf8(query.value(FDS_DB_DESCRIPTION_INDEX).toByteArray()));
-    feed->setCreationDate(TextFactory::parseDateTime(query.value(FDS_DB_DCREATED_INDEX).value<qint64>()));
-    feed->setIcon(qApp->icons()->fromByteArray(query.value(FDS_DB_ICON_INDEX).toByteArray()));
-    feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(query.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
-    feed->setAutoUpdateInterval(query.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
-    feed->setIsSwitchedOff(query.value(FDS_DB_IS_OFF_INDEX).toBool());
-    feed->setIsQuiet(query.value(FDS_DB_IS_QUIET_INDEX).toBool());
-    feed->setRtlBehavior(query.value(FDS_DB_IS_RTL_INDEX).value<RtlBehavior>());
+    feed->setDescription(QString::fromUtf8(q.value(FDS_DB_DESCRIPTION_INDEX).toByteArray()));
+    feed->setCreationDate(TextFactory::parseDateTime(q.value(FDS_DB_DCREATED_INDEX).value<qint64>()));
+    feed->setIcon(qApp->icons()->fromByteArray(q.value(FDS_DB_ICON_INDEX).toByteArray()));
+    feed->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(q.value(FDS_DB_UPDATE_TYPE_INDEX).toInt()));
+    feed->setAutoUpdateInterval(q.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
+    feed->setIsSwitchedOff(q.value(FDS_DB_IS_OFF_INDEX).toBool());
+    feed->setIsQuiet(q.value(FDS_DB_IS_QUIET_INDEX).toBool());
+    feed->setRtlBehavior(q.value(FDS_DB_IS_RTL_INDEX).value<RtlBehavior>());
 
     Feed::ArticleIgnoreLimit art;
 
-    art.m_addAnyArticlesToDb = query.value(FDS_DB_ADD_ANY_DATETIME_ARTICLES_INDEX).toBool();
+    art.m_addAnyArticlesToDb = q.value(FDS_DB_ADD_ANY_DATETIME_ARTICLES_INDEX).toBool();
 
-    qint64 time_to_avoid = query.value(FDS_DB_DATETIME_TO_AVOID_INDEX).value<qint64>();
+    qint64 time_to_avoid = q.value(FDS_DB_DATETIME_TO_AVOID_INDEX).value<qint64>();
 
     if (time_to_avoid > 10000) {
       art.m_dtToAvoid = TextFactory::parseDateTime(time_to_avoid);
@@ -380,18 +350,14 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
       art.m_hoursToAvoid = time_to_avoid;
     }
 
-    art.m_customizeLimitting = query.value(FDS_DB_KEEP_CUSTOMIZE).toBool();
-    art.m_keepCountOfArticles = query.value(FDS_DB_KEEP_ARTICLES_COUNT).toInt();
-    art.m_doNotRemoveUnread = query.value(FDS_DB_KEEP_UNREAD_ARTICLES).toBool();
-    art.m_doNotRemoveStarred = query.value(FDS_DB_KEEP_STARRED_ARTICLES).toBool();
-    art.m_moveToBinDontPurge = query.value(FDS_DB_RECYCLE_ARTICLES).toBool();
+    art.m_customizeLimitting = q.value(FDS_DB_KEEP_CUSTOMIZE).toBool();
+    art.m_keepCountOfArticles = q.value(FDS_DB_KEEP_ARTICLES_COUNT).toInt();
+    art.m_doNotRemoveUnread = q.value(FDS_DB_KEEP_UNREAD_ARTICLES).toBool();
+    art.m_doNotRemoveStarred = q.value(FDS_DB_KEEP_STARRED_ARTICLES).toBool();
+    art.m_moveToBinDontPurge = q.value(FDS_DB_RECYCLE_ARTICLES).toBool();
 
     feed->setArticleIgnoreLimit(art);
-
-    qDebugNN << LOGSEC_CORE << "Custom ID of feed when loading from DB is" << QUOTE_W_SPACE_DOT(feed->customId());
-
-    // Load custom data.
-    feed->setCustomDatabaseData(deserializeCustomData(query.value(FDS_DB_CUSTOM_DATA_INDEX).toString()));
+    feed->setCustomDatabaseData(deserializeCustomData(q.value(FDS_DB_CUSTOM_DATA_INDEX).toString()));
 
     if (filters_in_feeds.contains(feed->id())) {
       auto all_filters_for_this_feed = filters_in_feeds.values(feed->id());

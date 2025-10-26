@@ -19,7 +19,7 @@ class TtRssFeed : public Feed {
 
   private:
     TtRssServiceRoot* serviceRoot() const;
-    bool removeItself();
+    void removeItself();
 
   private:
     QAction* m_actionShareToPublished;
