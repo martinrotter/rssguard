@@ -193,7 +193,7 @@ void MessagesModel::fetchMoreArticles(int batch_size) {
       m_messages.append(more_messages);
       endInsertRows();
 
-      qApp->showGuiMessage(Notification::Event::NoEvent,
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
                            GuiMessage(QString(),
                                       tr("Loaded extra %1 articles in %2 miliseconds")
                                         .arg(QString::number(more_messages.size()), QString::number(tmr.elapsed()))),
@@ -248,7 +248,7 @@ void MessagesModel::fetchInitialArticles(int batch_size) {
   endResetModel();
 
   if (!m_messages.isEmpty()) {
-    qApp->showGuiMessage(Notification::Event::NoEvent,
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          GuiMessage(QString(),
                                     tr("Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, "
                                        "%5 "

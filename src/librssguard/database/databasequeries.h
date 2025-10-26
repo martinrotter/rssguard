@@ -73,12 +73,14 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                                const Feed::ArticleIgnoreLimit& app_setup);
     static void purgeFeedArticles(const QSqlDatabase& database, const QList<Feed*>& feeds);
     static void purgeMessage(const QSqlDatabase& db, int message_id);
+
     static void purgeImportantMessages(const QSqlDatabase& db);
     static void purgeReadMessages(const QSqlDatabase& db);
     static void purgeOldMessages(const QSqlDatabase& db, int older_than_days);
     static void purgeRecycleBin(const QSqlDatabase& db);
-    static void purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id);
     static void purgeLeftoverMessages(const QSqlDatabase& db, int account_id);
+
+    static void purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id);
 
     // Counts of unread/all messages.
     static QMap<int, ArticleCounts> getMessageCountsForCategory(const QSqlDatabase& db,
@@ -204,6 +206,9 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QStringList getAllGmailRecipients(const QSqlDatabase& db, int account_id);
 
   private:
+    static void purgeMessagesByCondition(const QSqlDatabase& db,
+                                         const QString& where_clause,
+                                         const QMap<QString, QVariant>& bindValues = QMap<QString, QVariant>());
     static void cleanMessagesByCondition(const QSqlDatabase& db,
                                          const QString& where_clause,
                                          bool clean_read_only,

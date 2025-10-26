@@ -729,97 +729,55 @@ void DatabaseQueries::purgeFeedArticles(const QSqlDatabase& database, const QLis
   }
 }
 
-void DatabaseQueries::purgeMessage(const QSqlDatabase& db, int message_id) {
+void DatabaseQueries::purgeMessagesByCondition(const QSqlDatabase& db,
+                                               const QString& where_clause,
+                                               const QMap<QString, QVariant>& bindValues) {
   QSqlQuery q(db);
-
   q.setForwardOnly(true);
-  q.prepare(QSL("DELETE FROM Messages WHERE id = :id;"));
-  q.bindValue(QSL(":id"), message_id);
 
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
+  QString sql = QSL("DELETE FROM Messages WHERE %1;").arg(where_clause);
+  q.prepare(sql);
+
+  for (auto it = bindValues.constBegin(); it != bindValues.constEnd(); ++it) {
+    q.bindValue(it.key(), it.value());
   }
-  else {
+
+  if (!q.exec()) {
     throw SqlException(q.lastError());
   }
+
+  DatabaseFactory::logLastExecutedQuery(q);
+}
+
+void DatabaseQueries::purgeMessage(const QSqlDatabase& db, int message_id) {
+  purgeMessagesByCondition(db, QSL("id = %1").arg(message_id));
 }
 
 void DatabaseQueries::purgeImportantMessages(const QSqlDatabase& db) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("DELETE FROM Messages WHERE is_important = 1 AND is_deleted = :is_deleted;"));
-
-  // Remove only messages which are NOT in recycle bin.
-  q.bindValue(QSL(":is_deleted"), 0);
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-  }
-  else {
-    throw SqlException(q.lastError());
-  }
+  purgeMessagesByCondition(db, QSL("is_important = 1 AND is_deleted = 0"));
 }
 
 void DatabaseQueries::purgeReadMessages(const QSqlDatabase& db) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("DELETE FROM Messages "
-                "WHERE is_important = :is_important AND is_deleted = :is_deleted AND is_read = :is_read;"));
-  q.bindValue(QSL(":is_read"), 1);
-
-  // Remove only messages which are NOT in recycle bin.
-  q.bindValue(QSL(":is_deleted"), 0);
-
-  // Remove only messages which are NOT starred.
-  q.bindValue(QSL(":is_important"), 0);
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-  }
-  else {
-    throw SqlException(q.lastError());
-  }
+  purgeMessagesByCondition(db, QSL("is_important = 0 AND is_deleted = 0 AND is_read = 1"));
 }
 
 void DatabaseQueries::purgeOldMessages(const QSqlDatabase& db, int older_than_days) {
-  QSqlQuery q(db);
   const qint64 since_epoch = older_than_days == 0
                                ? QDateTime::currentDateTimeUtc().addYears(10).toMSecsSinceEpoch()
                                : QDateTime::currentDateTimeUtc().addDays(-older_than_days).toMSecsSinceEpoch();
 
-  q.setForwardOnly(true);
-  q.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND date_created < :date_created;"));
-  q.bindValue(QSL(":date_created"), since_epoch);
-
-  // Remove only messages which are NOT starred.
-  q.bindValue(QSL(":is_important"), 0);
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-  }
-  else {
-    throw SqlException(q.lastError());
-  }
+  purgeMessagesByCondition(db, QSL("is_important = 0 AND date_created < %1").arg(since_epoch));
 }
 
 void DatabaseQueries::purgeRecycleBin(const QSqlDatabase& db) {
-  QSqlQuery q(db);
+  purgeMessagesByCondition(db, QSL("is_important = 0 AND is_deleted = 1"));
+}
 
-  q.setForwardOnly(true);
-  q.prepare(QSL("DELETE FROM Messages WHERE is_important = :is_important AND is_deleted = :is_deleted;"));
-  q.bindValue(QSL(":is_deleted"), 1);
-
-  // Remove only messages which are NOT starred.
-  q.bindValue(QSL(":is_important"), 0);
-
-  if (q.exec()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-  }
-  else {
-    throw SqlException(q.lastError());
-  }
+void DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_id) {
+  purgeMessagesByCondition(db,
+                           QSL("account_id = %1 AND "
+                               "feed NOT IN (SELECT id FROM Feeds WHERE account_id = %1)")
+                             .arg(account_id));
 }
 
 QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db,
@@ -1910,22 +1868,6 @@ void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db, int 
     q.prepare(QSL("DELETE FROM LabelsInMessages "
                   "WHERE message NOT IN (SELECT id FROM Messages);"));
   }
-
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
-}
-
-void DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_id) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("DELETE FROM Messages "
-                "WHERE account_id = :account_id AND feed NOT IN (SELECT id FROM Feeds WHERE account_id = "
-                ":account_id);"));
-  q.bindValue(QSL(":account_id"), account_id);
 
   if (!q.exec()) {
     throw SqlException(q.lastError());

@@ -12,8 +12,7 @@ class Application;
 class Notification {
   public:
     enum class Event {
-      // Is here to provide "empty" events - events which should
-      // not trigger any notifications.
+      // This should not really be used.
       NoEvent = 0,
 
       // Used for many events which happen throught application lifecycle.
