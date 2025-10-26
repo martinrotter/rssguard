@@ -204,6 +204,11 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QStringList getAllGmailRecipients(const QSqlDatabase& db, int account_id);
 
   private:
+    static void cleanMessagesByCondition(const QSqlDatabase& db,
+                                         const QString& where_clause,
+                                         bool clean_read_only,
+                                         int account_id);
+
     static QString unnulifyString(const QString& str);
 
     explicit DatabaseQueries() = default;
