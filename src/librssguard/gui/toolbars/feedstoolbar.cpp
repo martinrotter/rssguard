@@ -85,7 +85,7 @@ QList<QAction*> FeedsToolBar::convertActions(const QStringList& actions) {
       auto* action = new QWidgetAction(this);
 
       action->setDefaultWidget(spacer);
-      action->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
+      action->setIcon(qApp->icons()->fromTheme(QSL("go-jump")));
       action->setProperty("type", SPACER_ACTION_NAME);
       action->setProperty("name", tr("Toolbar spacer"));
       spec_actions.append(action);

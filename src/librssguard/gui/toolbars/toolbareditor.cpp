@@ -177,8 +177,10 @@ void ToolBarEditor::insertSpacer() {
 
   item->setIcon(qApp->icons()->fromTheme(QSL("go-jump")));
   item->setData(Qt::ItemDataRole::UserRole, SPACER_ACTION_NAME);
+
   m_ui->m_listActivatedActions->insertItem(current_row + 1, item);
   m_ui->m_listActivatedActions->setCurrentRow(current_row + 1);
+
   emit setupChanged();
 }
 
