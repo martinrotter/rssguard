@@ -373,8 +373,35 @@ void DatabaseQueries::deleteProbe(const QSqlDatabase& db, Search* probe) {
   DatabaseFactory::logLastExecutedQuery(q);
 }
 
+QStringList DatabaseQueries::customIdsOfMessagesByCondition(const QSqlDatabase& db,
+                                                            const QString& condition,
+                                                            const QVariantMap& bindings) {
+  QString sql = QSL("SELECT custom_id FROM Messages WHERE %1;").arg(condition);
+  QSqlQuery q(db);
+
+  if (!q.prepare(sql)) {
+    throw SqlException(q.lastError());
+  }
+
+  for (auto it = bindings.constBegin(); it != bindings.constEnd(); ++it) {
+    q.bindValue(it.key(), it.value());
+  }
+
+  if (!q.exec()) {
+    throw SqlException(q.lastError());
+  }
+
+  QStringList ids;
+
+  while (q.next()) {
+    ids << q.value(0).toString();
+  }
+
+  return ids;
+}
+
 void DatabaseQueries::markMessagesByCondition(const QSqlDatabase& db,
-                                              const QString& condition,
+                                              const QString& where_clause,
                                               RootItem::ReadStatus read,
                                               int account_id) {
   QSqlQuery q(db);
@@ -387,8 +414,8 @@ void DatabaseQueries::markMessagesByCondition(const QSqlDatabase& db,
     sql += QSL(" AND account_id = :account_id");
   }
 
-  if (!condition.isEmpty()) {
-    sql += QSL(" AND (%1)").arg(condition);
+  if (!where_clause.isEmpty()) {
+    sql += QSL(" AND (%1)").arg(where_clause);
   }
 
   sql += QL1C(';');
@@ -1882,201 +1909,103 @@ void DatabaseQueries::storeAccountTree(const QSqlDatabase& db,
   }
 }
 
-QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& db,
-                                                            RootItem::ReadStatus target_read,
-                                                            int account_id) {
-  QSqlQuery q(db);
-  QStringList ids;
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages "
-                "WHERE is_read = :read AND is_pdeleted = 0 AND account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
-
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
-
-  while (q.next()) {
-    ids.append(q.value(0).toString());
-  }
-
-  return ids;
-}
-
 QStringList DatabaseQueries::customIdsOfMessagesFromLabel(const QSqlDatabase& db,
                                                           Label* label,
-                                                          RootItem::ReadStatus target_read) {
-  QSqlQuery q(db);
-  QStringList ids;
-  q.setForwardOnly(true);
+                                                          RootItem::ReadStatus read) {
+  QString cond = QSL("EXISTS ("
+                     "  SELECT 1 FROM LabelsInMessages "
+                     "  WHERE LabelsInMessages.label = :label AND LabelsInMessages.message = Messages.id) AND "
+                     "Messages.account_id = :account AND "
+                     "Messages.is_deleted = 0 AND "
+                     "Messages.is_pdeleted = 0 AND Messages.is_read = :read");
 
-  q.prepare(QSL("SELECT Messages.custom_id "
-                "FROM Messages "
-                "WHERE "
-                "  Messages.is_read = :read AND "
-                "  Messages.is_deleted = 0 AND "
-                "  Messages.is_pdeleted = 0 AND "
-                "  Messages.account_id = :account_id AND "
-                "  EXISTS ("
-                "    SELECT 1 "
-                "    FROM LabelsInMessages "
-                "    WHERE "
-                "      LabelsInMessages.label = :label_id AND "
-                "      LabelsInMessages.account_id = Messages.account_id AND "
-                "      LabelsInMessages.message = Messages.id);"));
-
-  q.bindValue(QSL(":account_id"), label->account()->accountId());
-  q.bindValue(QSL(":label_id"), label->id());
-  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
-
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
-
-  while (q.next()) {
-    ids.append(q.value(0).toString());
-  }
-
-  return ids;
-}
-
-QStringList DatabaseQueries::customIdsOfMessagesFromProbe(const QSqlDatabase& db,
-                                                          Search* probe,
-                                                          RootItem::ReadStatus target_read) {
-  QSqlQuery q(db);
-  QStringList ids;
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages "
-                "WHERE "
-                "    is_read = :read AND "
-                "    is_deleted = 0 AND "
-                "    is_pdeleted = 0 AND "
-                "    account_id = :account_id AND "
-                "    (title REGEXP :fltr OR contents REGEXP :fltr);"));
-  q.bindValue(QSL(":account_id"), probe->account()->accountId());
-  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
-  q.bindValue(QSL(":fltr"), probe->filter());
-
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
-
-  while (q.next()) {
-    ids.append(q.value(0).toString());
-  }
-
-  return ids;
-}
-
-QStringList DatabaseQueries::customIdsOfImportantMessages(const QSqlDatabase& db,
-                                                          RootItem::ReadStatus target_read,
-                                                          int account_id) {
-  QSqlQuery q(db);
-  QStringList ids;
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages "
-                "WHERE "
-                "is_read = :read AND is_important = 1 AND is_deleted = 0 AND "
-                "is_pdeleted = 0 AND account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
-
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
-
-  while (q.next()) {
-    ids.append(q.value(0).toString());
-  }
-
-  return ids;
-}
-
-QStringList DatabaseQueries::customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id) {
-  QSqlQuery q(db);
-  QStringList ids;
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages "
-                "WHERE is_read = 0 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
-
-  while (q.next()) {
-    ids.append(q.value(0).toString());
-  }
-
-  return ids;
-}
-
-QStringList DatabaseQueries::customIdsOfMessagesFromBin(const QSqlDatabase& db,
-                                                        RootItem::ReadStatus target_read,
-                                                        int account_id) {
-  QSqlQuery q(db);
-  QStringList ids;
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages "
-                "WHERE is_read = :read AND is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
-
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
-
-  while (q.next()) {
-    ids.append(q.value(0).toString());
-  }
-
-  return ids;
+  return customIdsOfMessagesByCondition(db,
+                                        cond,
+                                        {{QSL(":label"), label->id()},
+                                         {QSL(":account"), label->account()->accountId()},
+                                         {QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0}});
 }
 
 QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
                                                          int feed_id,
-                                                         RootItem::ReadStatus target_read,
-                                                         int account_id) {
-  QSqlQuery q(db);
-  QStringList ids;
+                                                         RootItem::ReadStatus read,
+                                                         int acc_id) {
+  QString cond = QSL("Messages.feed = :feed"
+                     " AND Messages.account_id = :acc_id"
+                     " AND Messages.is_deleted = 0"
+                     " AND Messages.is_pdeleted = 0"
+                     " AND Messages.is_read = :read");
 
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT custom_id FROM Messages "
-                "WHERE is_read = :read AND is_deleted = 0 AND "
-                "is_pdeleted = 0 AND feed = :feed AND account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":feed"), feed_id);
-  q.bindValue(QSL(":read"), target_read == RootItem::ReadStatus::Read ? 0 : 1);
+  return customIdsOfMessagesByCondition(db,
+                                        cond,
+                                        {{QSL(":feed"), feed_id},
+                                         {QSL(":acc_id"), acc_id},
+                                         {QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0}});
+}
 
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
+QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& db,
+                                                            RootItem::ReadStatus read,
+                                                            int acc_id) {
+  QString cond = QSL("Messages.account_id = :acc_id"
+                     " AND Messages.is_deleted = 0"
+                     " AND Messages.is_pdeleted = 0"
+                     " AND Messages.is_read = :read");
 
-  DatabaseFactory::logLastExecutedQuery(q);
+  return customIdsOfMessagesByCondition(db,
+                                        cond,
+                                        {{QSL(":acc_id"), acc_id},
+                                         {QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0}});
+}
 
-  while (q.next()) {
-    ids.append(q.value(0).toString());
-  }
+QStringList DatabaseQueries::customIdsOfImportantMessages(const QSqlDatabase& db,
+                                                          RootItem::ReadStatus read,
+                                                          int acc_id) {
+  QString cond = QSL("Messages.account_id = :acc_id"
+                     " AND Messages.is_important = 1"
+                     " AND Messages.is_deleted = 0"
+                     " AND Messages.is_pdeleted = 0"
+                     " AND Messages.is_read = :read");
 
-  return ids;
+  return customIdsOfMessagesByCondition(db,
+                                        cond,
+                                        {{QSL(":acc_id"), acc_id},
+                                         {QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0}});
+}
+
+QStringList DatabaseQueries::customIdsOfUnreadMessages(const QSqlDatabase& db, int acc_id) {
+  QString cond = QSL("Messages.account_id = :acc_id"
+                     " AND Messages.is_read = 0"
+                     " AND Messages.is_deleted = 0"
+                     " AND Messages.is_pdeleted = 0");
+
+  return customIdsOfMessagesByCondition(db, cond, {{QSL(":acc_id"), acc_id}});
+}
+
+QStringList DatabaseQueries::customIdsOfMessagesFromBin(const QSqlDatabase& db, RootItem::ReadStatus read, int acc_id) {
+  QString cond = QSL("Messages.account_id = :acc_id"
+                     " AND Messages.is_deleted = 1"
+                     " AND Messages.is_read = :read");
+
+  return customIdsOfMessagesByCondition(db,
+                                        cond,
+                                        {{QSL(":acc_id"), acc_id},
+                                         {QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0}});
+}
+
+QStringList DatabaseQueries::customIdsOfMessagesFromProbe(const QSqlDatabase& db,
+                                                          Search* probe,
+                                                          RootItem::ReadStatus read) {
+  QString cond = QSL("(Messages.title REGEXP :fltr OR Messages.contents REGEXP :fltr)"
+                     " AND Messages.account_id = :acc_id"
+                     " AND Messages.is_deleted = 0"
+                     " AND Messages.is_pdeleted = 0"
+                     " AND Messages.is_read = :read");
+
+  return customIdsOfMessagesByCondition(db,
+                                        cond,
+                                        {{QSL(":fltr"), probe->filter()},
+                                         {QSL(":acc_id"), probe->account()->accountId()},
+                                         {QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0}});
 }
 
 void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db,

@@ -208,8 +208,11 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QStringList getAllGmailRecipients(const QSqlDatabase& db, int account_id);
 
   private:
+    static QStringList customIdsOfMessagesByCondition(const QSqlDatabase& db,
+                                                      const QString& condition,
+                                                      const QVariantMap& bindings = {});
     static void markMessagesByCondition(const QSqlDatabase& db,
-                                        const QString& condition,
+                                        const QString& where_clause,
                                         RootItem::ReadStatus read,
                                         int account_id = 0);
     static void purgeMessagesByCondition(const QSqlDatabase& db, const QString& where_clause);
