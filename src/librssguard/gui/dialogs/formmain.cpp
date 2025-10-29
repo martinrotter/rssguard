@@ -159,7 +159,6 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSettings;
   actions << m_ui->m_actionRestoreDatabaseSettings;
   actions << m_ui->m_actionBackupDatabaseSettings;
-  actions << m_ui->m_actionRestart;
   actions << m_ui->m_actionQuit;
 
 #if !defined(Q_OS_MACOS)
@@ -555,7 +554,6 @@ void FormMain::setupIcons() {
   // Setup icons of this main window.
   m_ui->m_actionSettings->setIcon(icon_theme_factory->fromTheme(QSL("emblem-system"), QSL("applications-system")));
   m_ui->m_actionQuit->setIcon(icon_theme_factory->fromTheme(QSL("application-exit")));
-  m_ui->m_actionRestart->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme(QSL("help-about")));
   m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme(QSL("system-upgrade")));
   m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
@@ -760,7 +758,6 @@ void FormMain::createConnections() {
   connect(m_ui->m_actionRestoreDatabaseSettings, &QAction::triggered, this, &FormMain::restoreDatabaseSettings);
   connect(m_ui->m_actionQuit, &QAction::triggered, qApp, &Application::quit);
   connect(m_ui->m_actionServiceAdd, &QAction::triggered, this, &FormMain::showAddAccountDialog);
-  connect(m_ui->m_actionRestart, &QAction::triggered, qApp, &Application::restart);
 
   // Menu "View" connections.
   connect(m_ui->m_actionSwitchFeedsList,
@@ -1085,10 +1082,6 @@ void FormMain::restoreDatabaseSettings() {
   FormRestoreDatabaseSettings form(*this);
 
   form.exec();
-
-  if (form.shouldRestart()) {
-    qApp->restart();
-  }
 }
 
 void FormMain::changeEvent(QEvent* event) {

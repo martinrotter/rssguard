@@ -110,7 +110,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_notifications = new NotificationFactory(this);
   m_toastNotifications =
     (!isWayland() && m_notifications->useToastNotifications()) ? new ToastNotificationsManager(this) : nullptr;
-  m_shouldRestart = false;
 
 #if defined(Q_OS_WIN)
   m_windowsTaskBar = nullptr;
@@ -791,19 +790,6 @@ void Application::onAboutToQuit() {
   }
 
   settings()->sync();
-
-  // Now, we can check if application should just quit or restart itself.
-  if (m_shouldRestart) {
-    finish();
-    qDebugNN << LOGSEC_CORE << "Killing local peer connection to allow another instance to start.";
-
-    if (QProcess::startDetached(QDir::toNativeSeparators(applicationFilePath()), arguments().mid(1))) {
-      qDebugNN << LOGSEC_CORE << "New application instance was started.";
-    }
-    else {
-      qCriticalNN << LOGSEC_CORE << "New application instance was not started successfully.";
-    }
-  }
 }
 
 void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_unread_messages) {
@@ -946,11 +932,6 @@ void Application::setupFont() {
                                                          QFont::StyleStrategy::NoSubpixelAntialias));
 
   QApplication::setFont(fon);
-}
-
-void Application::restart() {
-  m_shouldRestart = true;
-  quit();
 }
 
 void Application::onFeedUpdatesStarted() {

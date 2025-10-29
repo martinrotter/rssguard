@@ -7,19 +7,14 @@
 #include "gui/guiutilities.h"
 #include "miscellaneous/iconfactory.h"
 
-FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDialog(&parent), m_shouldRestart(false) {
+FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDialog(&parent) {
   m_ui.setupUi(this);
-  m_btnRestart = m_ui.m_buttonBox->addButton(tr("Restart"), QDialogButtonBox::ButtonRole::ActionRole);
   m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning,
                               tr("No operation executed yet."),
                               tr("No operation executed yet."));
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-import")));
 
-  connect(m_btnRestart, &QPushButton::clicked, this, [=]() {
-    m_shouldRestart = true;
-    close();
-  });
   connect(m_ui.m_btnSelectFolder, &QPushButton::clicked, this, [this]() {
     selectFolder();
   });
@@ -48,7 +43,6 @@ void FormRestoreDatabaseSettings::performRestoration() {
                                   m_ui.m_listSettings->currentRow() >= 0
                                     ? m_ui.m_listSettings->currentItem()->data(Qt::UserRole).toString()
                                     : QString());
-    m_btnRestart->setEnabled(true);
     m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                 tr("Restoration was initiated. Restart to proceed."),
                                 tr("You need to restart application for restoration process to finish."));
@@ -61,7 +55,6 @@ void FormRestoreDatabaseSettings::performRestoration() {
 }
 
 void FormRestoreDatabaseSettings::checkOkButton() {
-  m_btnRestart->setEnabled(false);
   m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)
     ->setEnabled(!m_ui.m_lblSelectFolder->label()->text().isEmpty() &&
                  ((m_ui.m_groupDatabase->isChecked() && m_ui.m_listDatabase->currentRow() >= 0) ||

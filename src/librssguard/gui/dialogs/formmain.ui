@@ -55,7 +55,6 @@
     <addaction name="m_actionRestoreDatabaseSettings"/>
     <addaction name="m_actionBackupDatabaseSettings"/>
     <addaction name="separator"/>
-    <addaction name="m_actionRestart"/>
     <addaction name="m_actionQuit"/>
    </widget>
    <widget class="QMenu" name="m_menuHelp">
@@ -586,14 +585,6 @@
   <action name="m_actionDisplayDocs">
    <property name="text">
     <string>Display &amp;documentation</string>
-   </property>
-   <property name="shortcut">
-    <string notr="true"/>
-   </property>
-  </action>
-  <action name="m_actionRestart">
-   <property name="text">
-    <string>&amp;Restart</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>

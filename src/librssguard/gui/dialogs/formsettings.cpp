@@ -103,20 +103,13 @@ void FormSettings::applySettings() {
   if (!panels_for_restart.isEmpty()) {
     const QStringList changed_settings_description =
       panels_for_restart.replaceInStrings(QRegularExpression(QSL("^")), QSL(" \u2022 "));
-    const QMessageBox::StandardButton clicked_button =
-      MsgBox::show(this,
-                   QMessageBox::Icon::Question,
-                   tr("Critical settings were changed"),
-                   tr("Some critical settings were changed and will be applied after the application gets restarted. "
-                      "\n\nYou have to restart manually."),
-                   tr("Do you want to restart now?"),
-                   tr("Changed categories of settings:\n%1.").arg(changed_settings_description.join(QSL(",\n"))),
-                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                   QMessageBox::StandardButton::Yes);
-
-    if (clicked_button == QMessageBox::Yes) {
-      qApp->restart();
-    }
+    MsgBox::show(this,
+                 QMessageBox::Icon::Question,
+                 tr("Critical settings were changed"),
+                 tr("Some critical settings were changed and will be applied after the application gets restarted. "
+                    "\n\nYou have to restart manually."),
+                 {},
+                 tr("Changed categories of settings:\n%1.").arg(changed_settings_description.join(QSL(",\n"))));
   }
 
   m_btnApply->setEnabled(false);

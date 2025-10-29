@@ -181,9 +181,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     static void performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg);
 
   public slots:
-    // Restarts the application.
-    void restart();
-
     void setupFont();
     void reloadCurrentSkin(bool replace_existing_qss);
 
@@ -259,7 +256,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     NotificationFactory* m_notifications;
     ToastNotificationsManager* m_toastNotifications;
     QThreadPool* m_workHorsePool;
-    bool m_shouldRestart;
     bool m_firstRunEver;
     bool m_firstRunCurrentVersion;
     QString m_customDataFolder;
