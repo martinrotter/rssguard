@@ -1930,11 +1930,11 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
                                                          int feed_id,
                                                          RootItem::ReadStatus read,
                                                          int acc_id) {
-  QString cond = QSL("Messages.feed = :feed"
-                     " AND Messages.account_id = :acc_id"
-                     " AND Messages.is_deleted = 0"
-                     " AND Messages.is_pdeleted = 0"
-                     " AND Messages.is_read = :read");
+  QString cond = QSL("Messages.feed = :feed AND "
+                     "Messages.account_id = :acc_id AND "
+                     "Messages.is_deleted = 0 AND "
+                     "Messages.is_pdeleted = 0 AND "
+                     "Messages.is_read = :read");
 
   return customIdsOfMessagesByCondition(db,
                                         cond,
@@ -1946,10 +1946,10 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeed(const QSqlDatabase& db,
 QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& db,
                                                             RootItem::ReadStatus read,
                                                             int acc_id) {
-  QString cond = QSL("Messages.account_id = :acc_id"
-                     " AND Messages.is_deleted = 0"
-                     " AND Messages.is_pdeleted = 0"
-                     " AND Messages.is_read = :read");
+  QString cond = QSL("Messages.account_id = :acc_id AND "
+                     "Messages.is_deleted = 0 AND "
+                     "Messages.is_pdeleted = 0 AND "
+                     "Messages.is_read = :read");
 
   return customIdsOfMessagesByCondition(db,
                                         cond,

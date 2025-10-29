@@ -628,6 +628,12 @@ if(QT_VERSION_MAJOR EQUAL 6)
   )
 endif()
 
+if(WIN32)
+  target_link_libraries(rssguard PUBLIC
+    Qt${QT_VERSION_MAJOR}::GuiPrivate
+  )
+endif()
+
 if(WIN32 AND NOT BUILD_WITH_QT6)
   target_link_libraries(rssguard PUBLIC
     Qt${QT_VERSION_MAJOR}::WinExtras
