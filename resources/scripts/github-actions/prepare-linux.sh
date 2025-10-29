@@ -5,7 +5,7 @@ set -eux
 ARCH="$(uname -m)"
 EXTRA_PACKAGES="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/get-debloated-pkgs.sh"
 
-pacman -Syu --noconfirm archlinux-keyring
+pacman -S --noconfirm archlinux-keyring
 
 pacman -Syu --noconfirm  \
     appstream            \
