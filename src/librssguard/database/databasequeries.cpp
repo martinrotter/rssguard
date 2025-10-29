@@ -857,29 +857,56 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAccount(const QSqlD
   }
 }
 
-ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, int feed_id, int account_id) {
+ArticleCounts DatabaseQueries::messageCountsByCondition(const QSqlDatabase& db,
+                                                        const QString& where_clause,
+                                                        const QVariantMap& bindings) {
   QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) FROM Messages "
-                "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
-
-  q.bindValue(QSL(":feed"), feed_id);
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (q.exec() && q.next()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    ArticleCounts ac;
-
-    ac.m_total = q.value(0).toInt();
-    ac.m_unread = ac.m_total - q.value(1).toInt();
-
-    return ac;
+  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) "
+                "FROM Messages "
+                "WHERE %1;")
+              .arg(where_clause));
+  for (auto it = bindings.cbegin(); it != bindings.cend(); ++it) {
+    q.bindValue(it.key(), it.value());
   }
-  else {
+
+  if (!q.exec()) {
     throw SqlException(q.lastError());
   }
+
+  DatabaseFactory::logLastExecutedQuery(q);
+
+  ArticleCounts res;
+
+  if (q.next()) {
+    res.m_total = q.value(0).toInt();
+    res.m_unread = res.m_total - q.value(1).toInt();
+  }
+
+  return res;
+}
+
+ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, int feed_id, int account_id) {
+  return messageCountsByCondition(db,
+                                  QSL("is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :acc"),
+                                  {{QSL(":feed"), feed_id}, {QSL(":acc"), account_id}});
+}
+
+ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int account_id) {
+  return messageCountsByCondition(db,
+                                  QSL("is_deleted = 0 AND is_pdeleted = 0 AND is_important = 1 AND account_id = :acc"),
+                                  {{QSL(":acc"), account_id}});
+}
+
+ArticleCounts DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_id) {
+  return messageCountsByCondition(db,
+                                  QSL("is_deleted = 0 AND is_pdeleted = 0 AND is_read = 0 AND account_id = :acc"),
+                                  {{QSL(":acc"), account_id}});
+}
+
+ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, int account_id) {
+  return messageCountsByCondition(db,
+                                  QSL("is_deleted = 1 AND is_pdeleted = 0 AND account_id = :acc"),
+                                  {{QSL(":acc"), account_id}});
 }
 
 ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id) {
@@ -950,78 +977,6 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const QSq
   }
 
   return results;
-}
-
-ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int account_id) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) FROM Messages "
-                "WHERE is_important = 1 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = "
-                ":account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (q.exec() && q.next()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    ArticleCounts ac;
-
-    ac.m_total = q.value(0).toInt();
-    ac.m_unread = ac.m_total - q.value(1).toInt();
-
-    return ac;
-  }
-  else {
-    throw SqlException(q.lastError());
-  }
-}
-
-ArticleCounts DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_id) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT COUNT(*) FROM Messages "
-                "WHERE is_read = 0 AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id;"));
-
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (q.exec() && q.next()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    ArticleCounts counts;
-
-    counts.m_total = q.value(0).toInt();
-    counts.m_unread = counts.m_total;
-
-    return counts;
-  }
-  else {
-    throw SqlException(q.lastError());
-  }
-}
-
-ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, int account_id) {
-  QSqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) FROM Messages "
-                "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
-
-  q.bindValue(QSL(":account_id"), account_id);
-
-  if (q.exec() && q.next()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
-    ArticleCounts ac;
-
-    ac.m_total = q.value(0).toInt();
-    ac.m_unread = ac.m_total - q.value(1).toInt();
-
-    return ac;
-  }
-  else {
-    throw SqlException(q.lastError());
-  }
 }
 
 QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& db,
