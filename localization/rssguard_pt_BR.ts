@@ -39,7 +39,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>Etiquetas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
@@ -197,7 +197,7 @@ versão, clicando nesta notificação popup.</translation>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="175"/>
       <source>newest article(s)</source>
       <translation type="unfinished">
-        <numerusform>artigo(s) mais recente(s)</numerusform>
+        <numerusform>artigo(s) mais recentes</numerusform>
         <numerusform>newest article(s)</numerusform>
       </translation>
     </message>
@@ -238,7 +238,7 @@ versão, clicando nesta notificação popup.</translation>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="95"/>
       <source>%n feeds fetched</source>
       <translation type="unfinished">
-        <numerusform>%n fontes atualizadas</numerusform>
+        <numerusform>%n Fontes atualizadas</numerusform>
         <numerusform>%n feeds fetched</numerusform>
       </translation>
     </message>
@@ -517,7 +517,7 @@ Número de fontes desativadas: %3</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="147"/>
       <source>Downloaded %1 kB...</source>
-      <translation type="unfinished">Downloaded %1 kB...</translation>
+      <translation>Baixando %1 kB...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="158"/>
@@ -1088,13 +1088,13 @@ Item custom ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="259"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="309"/>
       <source>Cannot clear items</source>
-      <translation type="unfinished">Cannot clear items</translation>
+      <translation>Não é possível limpar itens</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="260"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="310"/>
       <source>Failed to clear items: %1.</source>
-      <translation type="unfinished">Failed to clear items: %1.</translation>
+      <translation>Falha ao limpar itens: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
@@ -1178,7 +1178,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="520"/>
       <source>Failed to delete selected item: %1.</source>
-      <translation type="unfinished">Failed to delete selected item: %1.</translation>
+      <translation>Falha ao deletar o ‘item’ selecionado: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="603"/>
@@ -1190,7 +1190,7 @@ Item custom ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="604"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="626"/>
       <source>Failed to mark item read or unread: %1.</source>
-      <translation type="unfinished">Failed to mark item read or unread: %1.</translation>
+      <translation>Falha ao marcar ‘item’ como lido ou não lido: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="638"/>
@@ -1996,7 +1996,7 @@ Pasta raiz de temas de ícones -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
       <source>Common</source>
-      <translation type="unfinished">Common</translation>
+      <translation>comum</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
@@ -2752,7 +2752,7 @@ Pasta raiz de temas de ícones -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="786"/>
       <source>Skin reloaded</source>
-      <translation type="unfinished">Skin reloaded</translation>
+      <translation>Estilo recarregado</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="787"/>
@@ -2841,47 +2841,47 @@ Pasta raiz de temas de ícones -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="57"/>
       <source>New filter</source>
-      <translation type="unfinished">New filter</translation>
+      <translation>Novo filtro</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="67"/>
       <source>Remove filter</source>
-      <translation type="unfinished">Remove filter</translation>
+      <translation>Remover filtro</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="70"/>
       <source>Remove</source>
-      <translation type="unfinished">Remove</translation>
+      <translation>Remover</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="77"/>
       <source>Enable filter</source>
-      <translation type="unfinished">Enable filter</translation>
+      <translation>Habilitar filtro</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="80"/>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Habilitar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="103"/>
       <source>Move filter up</source>
-      <translation type="unfinished">Move filter up</translation>
+      <translation>Mover filtro para cima</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="106"/>
       <source>Up</source>
-      <translation type="unfinished">Up</translation>
+      <translation>Cima</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="113"/>
       <source>Move filter down</source>
-      <translation type="unfinished">Move filter down</translation>
+      <translation>Mover filtro para baixo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="116"/>
       <source>Down</source>
-      <translation type="unfinished">Down</translation>
+      <translation>Baixo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="127"/>
@@ -2896,22 +2896,22 @@ Pasta raiz de temas de ícones -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="219"/>
       <source>&amp;Documentation</source>
-      <translation type="unfinished">&amp;Documentation</translation>
+      <translation>&amp;Documentação</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="294"/>
       <source>Details</source>
-      <translation type="unfinished">Details</translation>
+      <translation>Detalhes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="354"/>
       <source>DB ID &amp; Custom ID</source>
-      <translation type="unfinished">DB ID &amp; Custom ID</translation>
+      <translation>DB ID e ID personalizado</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
       <source>Script output</source>
-      <translation type="unfinished">Script output</translation>
+      <translation>Saída do script</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="60"/>
@@ -3111,7 +3111,7 @@ Você precisa reiniciar manualmente.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>Experimental</translation>
     </message>
   </context>
   <context>
@@ -3330,7 +3330,7 @@ Você precisa reiniciar manualmente.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="62"/>
       <source>Auth</source>
-      <translation type="unfinished">Auth</translation>
+      <translation>Autenticação</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
@@ -3545,12 +3545,12 @@ Você pode instalar agora.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="268"/>
       <source>Line is too short for valid protocol</source>
-      <translation type="unfinished">Line is too short for valid protocol</translation>
+      <translation>A linha é muito curta para um protocolo válido</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="273"/>
       <source>response too large!</source>
-      <translation type="unfinished">response too large!</translation>
+      <translation>Resposta muito grande!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="282"/>
