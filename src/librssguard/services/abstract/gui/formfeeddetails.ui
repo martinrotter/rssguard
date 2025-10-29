@@ -159,14 +159,14 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TimeSpinBox</class>
-   <extends>QDoubleSpinBox</extends>
-   <header>timespinbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>MultiFeedEditCheckBox</class>
    <extends>QCheckBox</extends>
    <header>multifeededitcheckbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TimeSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>timespinbox.h</header>
   </customwidget>
   <customwidget>
    <class>ArticleAmountControl</class>

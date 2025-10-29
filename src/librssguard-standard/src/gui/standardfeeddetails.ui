@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>505</width>
-    <height>520</height>
+    <height>460</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -145,6 +145,9 @@
    <item row="4" column="1">
     <widget class="QComboBox" name="m_cmbSourceType"/>
    </item>
+   <item row="5" column="0">
+    <widget class="MultiFeedEditCheckBox" name="m_mcbSource"/>
+   </item>
    <item row="5" column="1">
     <widget class="TextEditWithStatus" name="m_txtSource" native="true">
      <property name="minimumSize">
@@ -225,7 +228,7 @@
         </sizepolicy>
        </property>
        <property name="layoutDirection">
-        <enum>Qt::LayoutDirection::RightToLeft</enum>
+        <enum>Qt::RightToLeft</enum>
        </property>
       </widget>
      </item>
@@ -275,20 +278,20 @@
       </size>
      </property>
      <property name="popupMode">
-      <enum>QToolButton::ToolButtonPopupMode::InstantPopup</enum>
+      <enum>QToolButton::InstantPopup</enum>
      </property>
      <property name="autoRaise">
       <bool>false</bool>
      </property>
      <property name="arrowType">
-      <enum>Qt::ArrowType::NoArrow</enum>
+      <enum>Qt::NoArrow</enum>
      </property>
     </widget>
    </item>
    <item row="11" column="0" colspan="2">
-    <spacer name="verticalSpacer">
+    <spacer name="verticalSpacer_2">
      <property name="orientation">
-      <enum>Qt::Orientation::Vertical</enum>
+      <enum>Qt::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -297,9 +300,6 @@
       </size>
      </property>
     </spacer>
-   </item>
-   <item row="5" column="0">
-    <widget class="MultiFeedEditCheckBox" name="m_mcbSource"/>
    </item>
   </layout>
  </widget>
