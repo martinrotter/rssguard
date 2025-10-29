@@ -467,10 +467,7 @@ void SettingsFeedsMessages::saveSettings() {
     registry_key.setValue(QSL("ForegroundFlashCount"), 3);
     registry_key.setValue(QSL("ForegroundLockTimeout"), 0);
 
-    MsgBox::show(this,
-                 QMessageBox::Icon::Warning,
-                 tr("PC restart needed"),
-                 tr("Your PC needs to be restarted to make some of enabled features fully working."));
+    requireRestart();
   }
 #endif
 

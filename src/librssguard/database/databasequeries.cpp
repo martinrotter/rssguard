@@ -1394,7 +1394,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
           query_update.bindValue(QSL(":id"), id_existing_message);
 
           if (query_update.exec()) {
-            DatabaseFactory::logLastExecutedQuery(query_update);
+            // DatabaseFactory::logLastExecutedQuery(query_update);
 
             qDebugNN << LOGSEC_DB << "Overwriting message with title" << QUOTE_W_SPACE(message.m_title) << "URL"
                      << QUOTE_W_SPACE(message.m_url) << "in DB.";
