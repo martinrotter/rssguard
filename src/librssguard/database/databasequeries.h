@@ -193,7 +193,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                   int move_index,
                                   const QSqlDatabase& db);
     static void purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id);
-    static void purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id = -1);
+    static void purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id = 0);
     static MessageFilter* addMessageFilter(const QSqlDatabase& db, const QString& title, const QString& script);
     static void removeMessageFilter(const QSqlDatabase& db, int filter_id);
     static void removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id);
