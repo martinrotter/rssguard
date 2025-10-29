@@ -7,7 +7,6 @@
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/messagebox.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
