@@ -85,7 +85,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
 
     // Counts of unread/all messages.
     static QMap<int, ArticleCounts> getMessageCountsForCategory(const QSqlDatabase& db,
-                                                                const QString& custom_id,
+                                                                int category_id,
                                                                 int account_id,
                                                                 bool include_total_counts);
     static QMap<int, ArticleCounts> getMessageCountsForAccount(const QSqlDatabase& db,
@@ -95,7 +95,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static ArticleCounts getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id);
     static QMap<int, ArticleCounts> getMessageCountsForAllLabels(const QSqlDatabase& db, int account_id);
     static ArticleCounts getImportantMessageCounts(const QSqlDatabase& db, int account_id);
-    static int getUnreadMessageCounts(const QSqlDatabase& db, int account_id);
+    static ArticleCounts getUnreadMessageCounts(const QSqlDatabase& db, int account_id);
     static ArticleCounts getMessageCountsForBin(const QSqlDatabase& db, int account_id);
 
     // Get messages (for newspaper view for example).
@@ -183,8 +183,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
 
     // Item order methods.
     static void moveItem(RootItem* item, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db);
-
-    // TODO: pokračovat, metody přepsány, zkontrolovat použití a odchycení výjimek
 
     // Message filters operators.
     static void moveMessageFilter(QList<MessageFilter*> all_filters,

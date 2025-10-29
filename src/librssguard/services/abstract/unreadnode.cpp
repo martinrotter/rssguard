@@ -21,7 +21,7 @@ void UnreadNode::updateCounts(bool including_total_count) {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();
 
-  m_totalCount = m_unreadCount = DatabaseQueries::getUnreadMessageCounts(database, account_id);
+  m_totalCount = m_unreadCount = DatabaseQueries::getUnreadMessageCounts(database, account_id).m_total;
 }
 
 void UnreadNode::cleanMessages(bool clean_read_only) {

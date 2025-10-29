@@ -35,7 +35,7 @@ void Category::updateCounts(bool including_total_count) {
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   auto counts =
-    DatabaseQueries::getMessageCountsForCategory(database, customId(), account()->accountId(), including_total_count);
+    DatabaseQueries::getMessageCountsForCategory(database, id(), account()->accountId(), including_total_count);
 
   for (Feed* feed : feeds) {
     if (counts.contains(feed->id())) {

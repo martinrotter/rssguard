@@ -764,7 +764,7 @@ void DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
 }
 
 QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db,
-                                                                      const QString& custom_id,
+                                                                      int category_id,
                                                                       int account_id,
                                                                       bool include_total_counts) {
   QSqlQuery q(db);
@@ -784,7 +784,7 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSql
                   "GROUP BY feed;"));
   }
 
-  q.bindValue(QSL(":category"), custom_id);
+  q.bindValue(QSL(":category"), category_id);
   q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
@@ -976,7 +976,7 @@ ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db,
   }
 }
 
-int DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_id) {
+ArticleCounts DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
@@ -988,7 +988,12 @@ int DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_
   if (q.exec() && q.next()) {
     DatabaseFactory::logLastExecutedQuery(q);
 
-    return q.value(0).toInt();
+    ArticleCounts counts;
+
+    counts.m_total = q.value(0).toInt();
+    counts.m_unread = counts.m_total;
+
+    return counts;
   }
   else {
     throw SqlException(q.lastError());
