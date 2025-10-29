@@ -426,10 +426,7 @@ void FeedsProxyModel::initializeFilters() {
   m_filters[FeedListFilter::ShowWithError] = [](const RootItem* item) {
     Feed* feed = item->toFeed();
 
-    return feed != nullptr &&
-           (feed->status() == Feed::Status::AuthError || feed->status() == Feed::Status::NetworkError ||
-            feed->status() == Feed::Status::SqlError || feed->status() == Feed::Status::OtherError ||
-            feed->status() == Feed::Status::ParsingError);
+    return feed != nullptr && Feed::isErrorStatus(feed->status());
   };
 
   m_filters[FeedListFilter::ShowWithNewArticles] = [](const RootItem* item) {
