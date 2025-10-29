@@ -53,7 +53,7 @@ if ($use_qt5 -eq "ON") {
   $with_qt6 = "OFF"
 }
 else {
-  $qt_version = "6.9.3"
+  $qt_version = "6.10.0"
   $qt_arch_base = "msvc2022_64"
 
   $use_libmpv = "ON"
