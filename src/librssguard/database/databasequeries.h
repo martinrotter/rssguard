@@ -112,6 +112,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static int highestPrimaryIdLabels(const QSqlDatabase& db);
     static QStringList bagOfMessages(const QSqlDatabase& db, ServiceRoot::BagOfMessages bag, const Feed* feed);
     static QHash<QString, QStringList> bagsOfMessages(const QSqlDatabase& db, const QList<Label*>& labels);
+
     static QStringList customIdsOfMessagesFromLabel(const QSqlDatabase& db,
                                                     Label* label,
                                                     RootItem::ReadStatus target_read);
