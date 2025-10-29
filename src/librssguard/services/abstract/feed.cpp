@@ -172,6 +172,15 @@ Feed::Status Feed::status() const {
   return m_status;
 }
 
+bool Feed::isErrorStatus(Feed::Status status) {
+  if (status == Feed::Status::Fetching || status == Feed::Status::NewMessages || status == Feed::Status::Normal) {
+    return false;
+  }
+  else {
+    return true;
+  }
+}
+
 void Feed::setStatus(Feed::Status status, const QString& status_text) {
   m_status = status;
   m_statusString = status_text;

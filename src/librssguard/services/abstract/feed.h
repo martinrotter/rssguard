@@ -111,6 +111,8 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     const ArticleIgnoreLimit& articleIgnoreLimit() const;
     void setArticleIgnoreLimit(const ArticleIgnoreLimit& ignore_limit);
 
+    static bool isErrorStatus(Feed::Status status);
+
   public slots:
     virtual void updateCounts(bool including_total_count);
 

@@ -243,6 +243,8 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
         if (feed_lookup.add_errored_feeds) {
           // Feed guessing failed, add like regular feed anyway.
           new_feed = new StandardFeed();
+          new_feed->setStatus(Feed::Status::OtherError);
+
           fillFeedFromFeedLookupData(new_feed, feed_lookup);
         }
         else {

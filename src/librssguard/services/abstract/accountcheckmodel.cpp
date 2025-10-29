@@ -4,6 +4,8 @@
 
 #include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/skinfactory.h"
 #include "services/abstract/feed.h"
 
 AccountCheckModel::AccountCheckModel(QObject* parent)
@@ -181,6 +183,11 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
   }
   else if (role == Qt::ItemDataRole::EditRole) {
     return QVariant::fromValue(item);
+  }
+  else if (role == Qt::ItemDataRole::ForegroundRole) {
+    if (item->kind() == RootItem::Kind::Feed && Feed::isErrorStatus(item->toFeed()->status())) {
+      return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError);
+    }
   }
   else if (role == Qt::ItemDataRole::DisplayRole) {
     switch (item->kind()) {

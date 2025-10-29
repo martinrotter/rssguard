@@ -16,10 +16,10 @@ struct FeedLookup {
     RootItem* parent;
     QVariantMap custom_data;
     QString url;
-    bool fetch_metadata_online;
-    bool do_not_fetch_titles;
-    bool do_not_fetch_icons;
-    bool add_errored_feeds;
+    bool fetch_metadata_online = true;
+    bool do_not_fetch_titles = false;
+    bool do_not_fetch_icons = false;
+    bool add_errored_feeds = true;
     QNetworkProxy custom_proxy;
     QString post_process_script;
 };
