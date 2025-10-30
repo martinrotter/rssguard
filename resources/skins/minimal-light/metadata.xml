@@ -22,6 +22,7 @@
   <style-palette>
     <group id="All">
       <color role="WindowText">#000000</color>
+      <color role="ButtonText">#000000</color>
       <color role="Window">#efefef</color>
   
       <color role="Light">#ffffff</color>
