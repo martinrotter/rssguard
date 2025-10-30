@@ -3,10 +3,9 @@
 #include "gui/settings/settingsfeedsmessages.h"
 
 #include "core/feedsmodel.h"
-#include "definitions/definitions.h"
+#include "definitions/globals.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
-#include "gui/messagebox.h"
 #include "gui/reusable/timespinbox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
@@ -15,7 +14,6 @@
 
 #include <QFontDialog>
 #include <QLocale>
-#include <QMetaEnum>
 #include <QStringList>
 
 SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent)
@@ -55,12 +53,11 @@ void SettingsFeedsMessages::loadUi() {
                                                    "performance of article list with big number of articles."),
                                                 true);
 
-  QMetaEnum enumer = QMetaEnum::fromType<MessagesModel::MessageUnreadIcon>();
+  auto unread_icons = enumToStrings<MessagesModel::MessageUnreadIcon>();
 
-  for (int i = 0; i < enumer.keyCount(); i++) {
-    auto en = MessagesModel::MessageUnreadIcon(enumer.value(i));
-
-    m_ui->m_cmbUnreadIconType->addItem(MessagesModel::descriptionOfUnreadIcon(en), int(en));
+  for (const auto& unread_icon : unread_icons) {
+    m_ui->m_cmbUnreadIconType->addItem(MessagesModel::descriptionOfUnreadIcon(unread_icon.first),
+                                       int(unread_icon.first));
   }
 
   m_ui->m_cmbArticleMarkingPolicy->addItem(tr("immediately"), int(MessagesView::ArticleMarkingPolicy::MarkImmediately));

@@ -5,29 +5,26 @@
 #include "src/definitions.h"
 #include "src/greadernetwork.h"
 
-#include <librssguard/definitions/definitions.h>
+#include <librssguard/definitions/globals.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/network-web/oauth2service.h>
 #include <librssguard/network-web/webfactory.h>
 
-#include <QMetaEnum>
 #include <QVariantHash>
 
 GreaderAccountDetails::GreaderAccountDetails(QWidget* parent) : QWidget(parent), m_oauth(nullptr), m_lastProxy({}) {
   m_ui.setupUi(this);
 
-  QMetaEnum me = QMetaEnum::fromType<GreaderServiceRoot::Service>();
+  auto services = enumToStrings<GreaderServiceRoot::Service>();
 
-  for (int i = 0; i < me.keyCount(); i++) {
-    GreaderServiceRoot::Service serv = static_cast<GreaderServiceRoot::Service>(me.value(i));
-
-    auto ico = qApp->icons()->miscIcon(QString(me.key(i)).toLower());
+  for (const auto& serv : services) {
+    auto ico = qApp->icons()->miscIcon(serv.second.toLower());
 
     m_ui.m_cmbService->addItem(ico.availableSizes().isEmpty() ? qApp->icons()->miscIcon(QSL("google")) : ico,
-                               GreaderServiceRoot::serviceToString(serv),
-                               QVariant::fromValue(serv));
+                               GreaderServiceRoot::serviceToString(serv.first),
+                               QVariant::fromValue(serv.first));
   }
 
   m_ui.m_dateNewerThan->setMinimumDate(QDate(2000, 1, 1));

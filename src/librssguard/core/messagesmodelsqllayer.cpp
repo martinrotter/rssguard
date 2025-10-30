@@ -64,14 +64,19 @@ void MessagesModelSqlLayer::addSortState(int column, Qt::SortOrder order, bool i
     m_sortColumns.append(column);
     m_sortOrders.append(order);
 
-    qDebugNN << LOGSEC_MESSAGEMODEL << "CTRL is pressed while sorting articles - sorting with multicolumn mode.";
+    qDebugNN << LOGSEC_MESSAGEMODEL << "CTRL is pressed while sorting articles - sorting in backwards mode.";
   }
   else {
     m_sortColumns.prepend(column);
     m_sortOrders.prepend(order);
 
-    qDebugNN << LOGSEC_MESSAGEMODEL << "CTRL is NOT pressed while sorting articles - sorting with standard mode.";
+    qDebugNN << LOGSEC_MESSAGEMODEL << "CTRL is NOT pressed while sorting articles - sorting in standard mode.";
   }
+}
+
+void MessagesModelSqlLayer::clearSortStates() {
+  m_sortColumns.clear();
+  m_sortOrders.clear();
 }
 
 void MessagesModelSqlLayer::setFilter(const QString& filter) {

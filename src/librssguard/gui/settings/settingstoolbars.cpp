@@ -15,8 +15,6 @@
 
 #include <QDropEvent>
 #include <QFontDialog>
-#include <QMetaEnum>
-#include <QMetaObject>
 #include <QStyleFactory>
 
 SettingsToolbars::SettingsToolbars(Settings* settings, QWidget* parent)

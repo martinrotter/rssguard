@@ -3,8 +3,9 @@
 #include "gui/settings/settingsgui.h"
 
 #include "core/feedsmodel.h"
+#include "core/messagesmodel.h"
+#include "definitions/globals.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/feedmessageviewer.h"
 #include "gui/reusable/colortoolbutton.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/systemtrayicon.h"
@@ -16,8 +17,6 @@
 
 #include <QDropEvent>
 #include <QFontDialog>
-#include <QMetaEnum>
-#include <QMetaObject>
 #include <QStyleFactory>
 
 SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent), m_ui(nullptr) {}
@@ -297,30 +296,28 @@ void SettingsGui::loadSettings() {
   m_ui->m_gbCustomSkinColors
     ->setChecked(settings()->value(GROUP(CustomSkinColors), SETTING(CustomSkinColors::Enabled)).toBool());
 
-  const QMetaObject& mo = SkinEnums::staticMetaObject;
-  QMetaEnum enumer = mo.enumerator(mo.indexOfEnumerator(QSL("PaletteColors").toLocal8Bit().constData()));
+  auto palette_enums = enumToStrings<SkinEnums::PaletteColors>();
+  int row = 0;
 
-  for (int i = 0, row = 0; i < enumer.keyCount(); i++, row++) {
-    SkinEnums::PaletteColors pal = SkinEnums::PaletteColors(enumer.value(i));
-
+  for (const auto& palette_enum : palette_enums) {
     auto* clr_btn = new ColorToolButton(this);
     auto* rst_btn = new PlainToolButton(this);
 
     rst_btn->setToolTip(tr("Fetch color from activated skin"));
     rst_btn->setIcon(qApp->icons()->fromTheme(QSL("edit-reset")));
 
-    QColor clr = settings()->value(GROUP(CustomSkinColors), enumer.key(i)).toString();
+    QColor clr = settings()->value(GROUP(CustomSkinColors), palette_enum.second).toString();
 
     if (!clr.isValid()) {
-      clr = qApp->skins()->colorForModel(pal).value<QColor>();
+      clr = qApp->skins()->colorForModel(palette_enum.first).value<QColor>();
     }
 
-    rst_btn->setObjectName(QString::number(enumer.value(i)));
+    rst_btn->setObjectName(QString::number(int(palette_enum.first)));
 
     connect(rst_btn, &PlainToolButton::clicked, this, &SettingsGui::resetCustomSkinColor);
     connect(clr_btn, &ColorToolButton::colorChanged, this, &SettingsGui::dirtifySettings);
 
-    clr_btn->setObjectName(QString::number(enumer.value(i)));
+    clr_btn->setObjectName(QString::number(int(palette_enum.first)));
     clr_btn->setColor(clr);
 
     auto* lay = new QHBoxLayout();
@@ -331,11 +328,11 @@ void SettingsGui::loadSettings() {
     m_ui->m_layoutCustomColors
       ->setWidget(row,
                   QFormLayout::ItemRole::LabelRole,
-                  new QLabel(TextFactory::
-                               capitalizeFirstLetter(SkinEnums::
-                                                       palleteColorText(SkinEnums::PaletteColors(enumer.value(i)))),
+                  new QLabel(TextFactory::capitalizeFirstLetter(SkinEnums::palleteColorText(palette_enum.first)),
                              this));
     m_ui->m_layoutCustomColors->setLayout(row, QFormLayout::ItemRole::FieldRole, lay);
+
+    row++;
   }
 
   onEndLoadSettings();
@@ -358,12 +355,12 @@ void SettingsGui::saveSettings() {
   // Save custom skin colors.
   settings()->setValue(GROUP(CustomSkinColors), CustomSkinColors::Enabled, m_ui->m_gbCustomSkinColors->isChecked());
 
-  const QMetaObject& mo = SkinEnums::staticMetaObject;
-  QMetaEnum enumer = mo.enumerator(mo.indexOfEnumerator(QSL("PaletteColors").toLocal8Bit().constData()));
   auto children = m_ui->m_gbCustomSkinColors->findChildren<ColorToolButton*>();
 
   for (const ColorToolButton* clr : children) {
-    settings()->setValue(GROUP(CustomSkinColors), enumer.valueToKey(clr->objectName().toInt()), clr->color().name());
+    auto pal = SkinEnums::PaletteColors(clr->objectName().toInt());
+
+    settings()->setValue(GROUP(CustomSkinColors), enumToString<SkinEnums::PaletteColors>(pal), clr->color().name());
   }
 
   // Save tray icon.

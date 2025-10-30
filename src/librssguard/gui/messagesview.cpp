@@ -131,6 +131,8 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
   // Restore sort attributes.
   int saved_sort_count = obj[QSL("sort_count")].toInt();
 
+  m_sourceModel->clearSortStates();
+
   for (int i = saved_sort_count - 1; i > 0; i--) {
     auto col = obj[QSL("sort_%1_column").arg(i)].toInt();
     auto ordr = Qt::SortOrder(obj[QSL("sort_%1_order").arg(i)].toInt());

@@ -2,6 +2,7 @@
 
 #include "gui/settings/settingsnotifications.h"
 
+#include "definitions/globals.h"
 #include "gui/notifications/notificationseditor.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -9,7 +10,6 @@
 #include "miscellaneous/settings.h"
 
 #include <QDir>
-#include <QMetaEnum>
 #include <QScreen>
 
 SettingsNotifications::SettingsNotifications(Settings* settings, QWidget* parent)
@@ -71,13 +71,10 @@ void SettingsNotifications::loadSettings() {
   m_ui->m_sbScreen->setMinimum(-1);
   m_ui->m_sbScreen->setMaximum(QGuiApplication::screens().size() - 1);
 
-  QMetaEnum enm = QMetaEnum::fromType<ToastNotificationsManager::NotificationPosition>();
+  auto poss = enumToStrings<ToastNotificationsManager::NotificationPosition>();
 
-  for (int i = 0; i < enm.keyCount(); i++) {
-    m_ui->m_cbCustomNotificationsPosition
-      ->addItem(ToastNotificationsManager::
-                  textForPosition(ToastNotificationsManager::NotificationPosition(enm.value(i))),
-                enm.value(i));
+  for (const auto& pos : poss) {
+    m_ui->m_cbCustomNotificationsPosition->addItem(ToastNotificationsManager::textForPosition(pos.first), pos.first);
   }
 
   // Load fancy notification settings.

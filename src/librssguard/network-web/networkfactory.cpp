@@ -2,13 +2,11 @@
 
 #include "network-web/networkfactory.h"
 
-#include "definitions/definitions.h"
-#include "miscellaneous/textfactory.h"
+#include "definitions/globals.h"
 #include "network-web/downloader.h"
 
 #include <QEventLoop>
 #include <QIcon>
-#include <QMetaEnum>
 #include <QPixmap>
 #include <QRegularExpression>
 #include <QTextDocument>
@@ -168,12 +166,10 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
       //: Network status.
       return tr("content not found");
 
-    default: {
-      QMetaEnum enumer = QMetaEnum::fromType<QNetworkReply::NetworkError>();
+    default:
 
       //: Network status.
-      return tr("unknown error (%1)").arg(enumer.valueToKey(error_code));
-    }
+      return enumToString(error_code);
   }
 }
 

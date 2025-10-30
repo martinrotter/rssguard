@@ -2,6 +2,7 @@
 
 #include "miscellaneous/skinfactory.h"
 
+#include "definitions/globals.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/domdocument.h"
 #include "miscellaneous/settings.h"
@@ -10,8 +11,6 @@
 #include <QDir>
 #include <QDomElement>
 #include <QFontDatabase>
-#include <QMetaEnum>
-#include <QMetaObject>
 #include <QProcessEnvironment>
 #include <QStyle>
 #include <QStyleFactory>
@@ -348,13 +347,11 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       // Obtain color palette.
       QHash<SkinEnums::PaletteColors, QColor> palette;
       QDomNodeList colors_of_palette = skin_node.namedItem(QSL("palette")).toElement().elementsByTagName(QSL("color"));
-      const QMetaObject& mo = SkinEnums::staticMetaObject;
-      QMetaEnum enumer = mo.enumerator(mo.indexOfEnumerator(QSL("PaletteColors").toLocal8Bit().constData()));
 
       for (int i = 0; i < colors_of_palette.size(); i++) {
         QDomElement elem_clr = colors_of_palette.item(i).toElement();
         QString en_val = elem_clr.attribute(QSL("key"));
-        SkinEnums::PaletteColors key = SkinEnums::PaletteColors(enumer.keyToValue(en_val.toLatin1()));
+        auto key = stringToEnum<SkinEnums::PaletteColors>(en_val);
         QColor value = elem_clr.text();
 
         if (value.isValid()) {
@@ -374,6 +371,7 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       QDomElement style_palette_root = skin_node.namedItem(QSL("style-palette")).toElement();
 
       if (!style_palette_root.isNull()) {
+        // NOTE: We avoid stringToEnum() for performance reasons here.
         QMetaEnum enumerp = QMetaEnum::fromType<QPalette::ColorGroup>();
         QMetaEnum enumerx = QMetaEnum::fromType<QPalette::ColorRole>();
         QMetaEnum enumery = QMetaEnum::fromType<Qt::BrushStyle>();
@@ -524,9 +522,7 @@ QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool use_skin_colors
     bool enabled = qApp->settings()->value(GROUP(CustomSkinColors), SETTING(CustomSkinColors::Enabled)).toBool();
 
     if (enabled) {
-      const QMetaObject& mo = SkinEnums::staticMetaObject;
-      QMetaEnum enumer = mo.enumerator(mo.indexOfEnumerator(QSL("PaletteColors").toLocal8Bit().constData()));
-      QColor custom_clr = qApp->settings()->value(GROUP(CustomSkinColors), enumer.valueToKey(int(type))).toString();
+      QColor custom_clr = qApp->settings()->value(GROUP(CustomSkinColors), enumToString(type)).toString();
 
       if (custom_clr.isValid()) {
         return custom_clr;
