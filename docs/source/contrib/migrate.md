@@ -2,7 +2,7 @@ Migrating User Data
 ===================
 RSS Guard automatically migrates all your user data if you upgrade to a newer minor version, for example if you update from `3.7.5` to `3.9.1`.
 
-If you decide to upgrade to a new major version, for example from `3.x.x` to `4.x.x`, then existing user data cannot be used. Major versions declared as non-backwards compatible, so such data transition is not supported.
+If you decide to upgrade to a new major version, for example from `3.x.x` to `4.x.x`, then existing user data cannot be used. Major versions are usually backwards incompatible.
 
 ## Migrate `4.x -> 5.x`
 ```{danger}
