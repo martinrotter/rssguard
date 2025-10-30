@@ -5,14 +5,12 @@ RSS Guard automatically migrates all your user data if you upgrade to a newer mi
 If you decide to upgrade to a new major version, for example from `3.x.x` to `4.x.x`, then existing user data cannot be used. Major versions declared as non-backwards compatible, so such data transition is not supported.
 
 ## Migrate `4.x -> 5.x`
-RSS Guard `5.x` is fully backwards compatible with RSS Guard `4.x`. All you need to do is to copy all your user data file into RSS Guard 5 folders.
-
-```{attention}
-The opposite migration from `5.x` to `4.x` is however not possible. Manual database edits would have to be made.
+```{danger}
+RSS Guard `5.x` is NOT backwards compatible with RSS Guard `4.x`. There were many many changes made to DB layer of the application so fully automatic migration is not quite possible.
 ```
 
 ## Migrate `3.9.2 -> 4.x`
-```{danger}
+```{attention}
 Only proceed if you consider yourself a SQL power user, and you know what you are doing!
 
 Make sure that last RSS Guard `3.x.x` version you used with your data was the latest `3.9.2`.
