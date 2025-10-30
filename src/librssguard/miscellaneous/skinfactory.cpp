@@ -396,7 +396,7 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
             Qt::BrushStyle brush =
               Qt::BrushStyle(enumery.keyToValue(color_nd.toElement().attribute(QSL("brush")).toLatin1()));
 
-            groups.insert(group, QPair<QPalette::ColorRole, QPair<QColor, Qt::BrushStyle>>(role, {color, brush}));
+            groups.insert(group, {role, {color, brush}});
           }
         }
 
@@ -421,6 +421,18 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
 
       try {
         auto custom_css = loadSkinFile(skin_folder_no_sep, QSL("html_style.css"), real_base_skin_folder);
+
+        // TODO: pokračovat, přepsat loadovani skinu tak, aby se do Skin.m_stylePalette rovnou ukladalo QPalette
+        // a tedy extractPalette nebylo potřeba,
+        // pak se zamyslet zda tedy do CSS souboru skinu minimal nepřidat palette(Text) atd na patřična mista
+        /*
+        auto target_palette =
+          (skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool())
+            ? skin.extractPalette()
+            : qApp->palette();
+
+        custom_css = replacePaletteInCss(custom_css, target_palette);
+*/
 
         skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL(SKIN_STYLE_PLACEHOLDER), custom_css);
       }
@@ -483,6 +495,36 @@ QString SkinFactory::loadSkinFile(const QString& skin_folder,
   }
 
   throw ApplicationException(tr("file %1 not found").arg(file_name));
+}
+
+QString SkinFactory::replacePaletteInCss(const QString& css, const QPalette& palette) const {
+  static QRegularExpression re(QSL("palette\\((\\w+)\\)"));
+  const std::function<QString(const QRegularExpressionMatch&)>& replacer =
+    [&palette](const QRegularExpressionMatch& match) {
+      auto role = stringToEnum<QPalette::ColorRole>(match.captured(1));
+      auto color = palette.color(QPalette::ColorGroup::All, role);
+
+      return color.isValid() ? color.name() : QSL("#000000");
+    };
+
+  QString result;
+  int last_pos = 0;
+  QRegularExpressionMatchIterator it = re.globalMatch(css);
+
+  while (it.hasNext()) {
+    QRegularExpressionMatch match = it.next();
+
+    // Append text before the match.
+    result += css.mid(last_pos, match.capturedStart() - last_pos);
+
+    // Append lambda-generated replacement.
+    result += replacer(match);
+    last_pos = match.capturedEnd();
+  }
+
+  // Append remaining text after the last match.
+  result += css.mid(last_pos);
+  return result;
 }
 
 QString SkinFactory::currentStyle() const {

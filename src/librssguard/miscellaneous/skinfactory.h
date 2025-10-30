@@ -117,9 +117,10 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     QString currentStyle() const;
 
   private:
-    // Loads the skin from given skin_data.
     void loadSkinFromData(const Skin& skin, bool replace_existing_qss);
+
     QString loadSkinFile(const QString& skin_folder, const QString& file_name, const QString& base_folder) const;
+    QString replacePaletteInCss(const QString& css, const QPalette& palette) const;
 
     // Holds name of the current skin.
     Skin m_currentSkin;
