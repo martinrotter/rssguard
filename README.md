@@ -36,7 +36,7 @@ RSS Guard includes native support for the [Gemini](https://geminiprotocol.net) p
 
 ---
 
-![RSS Guard Screenshot](resources/graphics/official_pictures/main-window-linux.png)
+![RSS Guard Screenshot](https://raw.githubusercontent.com/martinrotter/rssguard/d1198081416301868b91cfb1e9159962f758b6c6/resources/graphics/official_pictures/main-window-linux.png)
 
 ---
 
