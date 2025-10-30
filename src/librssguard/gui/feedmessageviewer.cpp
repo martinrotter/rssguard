@@ -99,7 +99,10 @@ void FeedMessageViewer::loadSize() {
   }
   else {
     // Set default sort column.
-    m_messagesView->header()->setSortIndicator(MSG_MDL_TITLE_INDEX, Qt::SortOrder::DescendingOrder);
+    m_messagesView->adjustSort(MSG_MDL_TITLE_INDEX, Qt::SortOrder::AscendingOrder, false, false);
+    m_messagesView->adjustSort(MSG_MDL_DCREATED_INDEX, Qt::SortOrder::DescendingOrder, false, false);
+
+    // m_messagesView->header()->setSortIndicator(MSG_MDL_TITLE_INDEX, Qt::SortOrder::DescendingOrder);
   }
 }
 
