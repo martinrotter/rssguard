@@ -403,8 +403,8 @@ void FeedReader::onFeedUpdatesFinished(FeedDownloadResults updated_feeds) {
 
   if (!updated_feeds.erroredFeeds().isEmpty()) {
     qApp->showGuiMessage(Notification::Event::ArticlesFetchingError,
-                         {QObject::tr("Some feeds have error"),
-                          QObject::tr("Some feeds threw an error when fetching articles."),
+                         {tr("Some feeds have errors"),
+                          tr("Some feeds threw an error when fetching articles."),
                           QSystemTrayIcon::MessageIcon::Warning});
   }
 
