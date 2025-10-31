@@ -466,8 +466,7 @@ static QCursor toQCursor(const QString& c) {
     return {Qt::CursorShape::ArrowCursor};
   }
 
-  qWarningNN << LOGSEC_HTMLVIEWER << "Unknown cursor property:" << QUOTE_W_SPACE_DOT(c);
-  return {Qt::ArrowCursor};
+  return {Qt::CursorShape::ArrowCursor};
 }
 
 bool Selection::isValid() const {
