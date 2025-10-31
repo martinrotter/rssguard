@@ -670,7 +670,7 @@ void DocumentContainer::draw_text(litehtml::uint_ptr hdc,
 
   painter->setFont(toQFont(fnt));
   painter->setPen(toQColor(color));
-  painter->drawText(toQRect(pos), 0, QString::fromUtf8(text));
+  painter->drawText(toQRect(pos), Qt::TextFlag::TextDontClip, QString::fromUtf8(text));
 }
 
 litehtml::pixel_t DocumentContainer::pt_to_px(float pt) const {
