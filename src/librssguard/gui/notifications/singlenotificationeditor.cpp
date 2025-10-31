@@ -10,7 +10,7 @@
 #include <QFileSystemModel>
 
 SingleNotificationEditor::SingleNotificationEditor(const Notification& notification, QWidget* parent)
-  : QGroupBox(parent), m_notificationEvent(Notification::Event::NoEvent) {
+  : QGroupBox(parent), m_notificationEvent(Notification::Event::GeneralEvent) {
   m_ui.setupUi(this);
 
 #if defined(Q_OS_OS2)

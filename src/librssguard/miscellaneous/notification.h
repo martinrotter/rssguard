@@ -12,9 +12,6 @@ class Application;
 class Notification {
   public:
     enum class Event {
-      // This should not really be used.
-      NoEvent = 0,
-
       // Used for many events which happen throught application lifecycle.
       GeneralEvent = 1,
 
@@ -39,7 +36,7 @@ class Notification {
       ArticlesFetchingError = 7
     };
 
-    explicit Notification(Event event = Event::NoEvent,
+    explicit Notification(Event event = Event::GeneralEvent,
                           bool balloon = false,
                           bool dialog = false,
                           bool play_sound = true,

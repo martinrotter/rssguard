@@ -302,9 +302,9 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
                installed_db_schema);
       }
 
-      qDebugNN << LOGSEC_DB << "File-based SQLite database connection '" << connection_name << "' to file '"
-               << QDir::toNativeSeparators(database.databaseName()) << "' seems to be established.";
-      qDebugNN << LOGSEC_DB << "File-based SQLite database has version '" << installed_db_schema << "'.";
+      qDebugNN << LOGSEC_DB << "File-based SQLite database connection" << QUOTE_W_SPACE(connection_name) << "to file"
+               << QUOTE_W_SPACE(QDir::toNativeSeparators(database.databaseName())) << "seems to be established.";
+      qDebugNN << LOGSEC_DB << "File-based SQLite database has version" << QUOTE_W_SPACE_DOT(installed_db_schema);
     }
     else {
       query_db.next();
@@ -368,6 +368,7 @@ void SqliteDriver::setPragmas(QSqlQuery& query) {
   query.exec(QSL("PRAGMA count_changes = OFF"));
   query.exec(QSL("PRAGMA temp_store = MEMORY"));
   query.exec(QSL("PRAGMA synchronous = OFF"));
+  query.exec(QSL("PRAGMA busy_timeout = 100"));
   query.exec(QSL("PRAGMA journal_mode = MEMORY"));
 }
 
