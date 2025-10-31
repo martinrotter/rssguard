@@ -135,7 +135,7 @@ void SettingsGui::updateSkinOptions() {
   }
 
   const Skin skin = it->data(0, Qt::ItemDataRole::UserRole).value<Skin>();
-  const bool skin_has_palette_or_css = !skin.m_stylePalette.isEmpty() || !skin.m_rawData.isEmpty();
+  const bool skin_has_palette_or_css = skin.hasPalette() || !skin.m_rawData.isEmpty();
   const bool skin_forces_palette = skin.m_forcedSkinColors;
   const bool skin_forces_style = !skin.m_forcedStyles.isEmpty();
 

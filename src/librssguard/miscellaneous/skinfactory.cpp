@@ -158,13 +158,12 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
     skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool();
 
   if (m_useSkinColors && isStyleGoodForAlternativeStylePalette(m_currentStyle)) {
-    if (!skin.m_stylePalette.isEmpty()) {
+    if (skin.hasPalette()) {
       qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
 
-      QPalette pal = skin.extractPalette();
-
-      QToolTip::setPalette(pal);
-      qApp->setPalette(pal);
+      QToolTip::setPalette(skin.m_stylePalette);
+      QApplication::setPalette(skin.m_stylePalette);
+      QGuiApplication::setPalette(skin.m_stylePalette);
     }
     // NOTE: Very hacky way of avoiding automatic "dark mode"
     // palettes in some styles. Also in light mode,
@@ -375,8 +374,7 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
         QMetaEnum enumerp = QMetaEnum::fromType<QPalette::ColorGroup>();
         QMetaEnum enumerx = QMetaEnum::fromType<QPalette::ColorRole>();
         QMetaEnum enumery = QMetaEnum::fromType<Qt::BrushStyle>();
-
-        QMultiHash<QPalette::ColorGroup, QPair<QPalette::ColorRole, QPair<QColor, Qt::BrushStyle>>> groups;
+        QPalette pal;
 
         QDomNodeList groups_of_palette = style_palette_root.elementsByTagName(QSL("group"));
 
@@ -393,14 +391,21 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
             QColor color(color_nd.toElement().text());
             QPalette::ColorRole role =
               QPalette::ColorRole(enumerx.keyToValue(color_nd.toElement().attribute(QSL("role")).toLatin1()));
-            Qt::BrushStyle brush =
-              Qt::BrushStyle(enumery.keyToValue(color_nd.toElement().attribute(QSL("brush")).toLatin1()));
 
-            groups.insert(group, {role, {color, brush}});
+            int brush_val = enumery.keyToValue(color_nd.toElement().attribute(QSL("brush")).toLatin1());
+
+            if (brush_val >= 0) {
+              Qt::BrushStyle brush = Qt::BrushStyle(brush_val);
+              pal.setBrush(group, role, QBrush(color, brush));
+            }
+            else {
+              pal.setColor(group, role, color);
+            }
           }
         }
 
-        skin.m_stylePalette = groups;
+        skin.m_hasStylePalette = true;
+        skin.m_stylePalette = pal;
       }
 
       // Free resources.
@@ -421,18 +426,13 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
 
       try {
         auto custom_css = loadSkinFile(skin_folder_no_sep, QSL("html_style.css"), real_base_skin_folder);
-
-        // TODO: pokračovat, přepsat loadovani skinu tak, aby se do Skin.m_stylePalette rovnou ukladalo QPalette
-        // a tedy extractPalette nebylo potřeba,
-        // pak se zamyslet zda tedy do CSS souboru skinu minimal nepřidat palette(Text) atd na patřična mista
-        /*
         auto target_palette =
-          (skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool())
-            ? skin.extractPalette()
+          ((skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool()) &&
+           skin.hasPalette())
+            ? skin.m_stylePalette
             : qApp->palette();
 
         custom_css = replacePaletteInCss(custom_css, target_palette);
-*/
 
         skin.m_layoutMarkupWrapper = skin.m_layoutMarkupWrapper.replace(QSL(SKIN_STYLE_PLACEHOLDER), custom_css);
       }
@@ -559,6 +559,10 @@ uint qHash(const SkinEnums::PaletteColors& key) {
   return uint(key);
 }
 
+bool Skin::hasPalette() const {
+  return m_hasStylePalette;
+}
+
 QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool use_skin_colors, bool ignore_custom_colors) const {
   if (!ignore_custom_colors) {
     bool enabled = qApp->settings()->value(GROUP(CustomSkinColors), SETTING(CustomSkinColors::Enabled)).toBool();
@@ -573,31 +577,6 @@ QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool use_skin_colors
   }
 
   return (use_skin_colors && m_colorPalette.contains(type)) ? m_colorPalette[type] : QVariant();
-}
-
-QPalette Skin::extractPalette() const {
-  QPalette pal;
-  QList<QPalette::ColorGroup> groups = m_stylePalette.keys();
-
-  if (groups.contains(QPalette::ColorGroup::All)) {
-    groups.removeAll(QPalette::ColorGroup::All);
-    groups.insert(0, QPalette::ColorGroup::All);
-  }
-
-  for (QPalette::ColorGroup grp : groups) {
-    auto roles = m_stylePalette.values(grp);
-
-    for (const auto& rl : roles) {
-      if (rl.second.second <= 0) {
-        pal.setColor(grp, rl.first, rl.second.first);
-      }
-      else {
-        pal.setBrush(grp, rl.first, QBrush(rl.second.first, rl.second.second));
-      }
-    }
-  }
-
-  return pal;
 }
 
 QString SkinEnums::palleteColorText(PaletteColors col) {
