@@ -489,6 +489,10 @@ void MessagesView::mousePressEvent(QMouseEvent* event) {
       break;
     }
 
+    case Qt::MouseButton::MiddleButton: {
+      openSelectedMessagesInternally();
+    }
+
     default:
       break;
   }
