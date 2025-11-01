@@ -317,7 +317,6 @@ static Qt::PenStyle borderPenStyle(litehtml::border_style style) {
       return Qt::PenStyle::SolidLine;
   }
 
-  qWarningNN << LOGSEC_HTMLVIEWER << "Unsupported border style:" << QUOTE_W_SPACE_DOT(style);
   return Qt::PenStyle::SolidLine;
 }
 
@@ -1131,9 +1130,6 @@ void DocumentContainer::draw_image(litehtml::uint_ptr hdc,
         x += layer.origin_box.width;
       }
     }
-  }
-  else {
-    qWarningNN << LOGSEC_HTMLVIEWER << "Unsupported background repeat " << QUOTE_W_SPACE_DOT(layer.repeat);
   }
 
   painter->restore();
