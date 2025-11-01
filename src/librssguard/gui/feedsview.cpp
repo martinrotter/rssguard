@@ -1237,6 +1237,7 @@ void FeedsView::setupAppearance() {
   }
 
   header()->setStretchLastSection(true);
+  header()->setCascadingSectionResizes(false);
   header()->setSectionsMovable(false);
 
   setUniformRowHeights(true);
