@@ -1,15 +1,5 @@
-set(APPDATA_NAME_REGULAR ${APP_NAME})
-set(APPDATA_NAME_LITE "${APP_NAME} Lite")
-set(APPDATA_SUMMARY_REGULAR "Simple, yet powerful news feed reader")
-set(APPDATA_SUMMARY_LITE "${APPDATA_SUMMARY_REGULAR} (no built-in web browser)")
-
-if(NO_LITE)
-  set(APPDATA_NAME "${APPDATA_NAME_REGULAR}")
-  set(APPDATA_SUMMARY "${APPDATA_SUMMARY_REGULAR}")
-else()
-  set(APPDATA_NAME "${APPDATA_NAME_LITE}")
-  set(APPDATA_SUMMARY "${APPDATA_SUMMARY_LITE}")
-endif()
+set(APPDATA_NAME "${APP_NAME}")
+set(APPDATA_SUMMARY "Simple, yet powerful news feed reader")
 
 configure_file(
   rssguard.desktop.in
