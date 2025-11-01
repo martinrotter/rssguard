@@ -33,8 +33,9 @@ bool DomDocument::setContent(const QString& text,
                              int* error_column) {
   auto text_modified = QString(text)
                          .trimmed()
-                         .replace("&shy;", QString())
-                         .replace(" & ", " &amp; ")
+                         .replace(QSL("&shy;"), QString())
+                         .replace(QSL("&rsquo;"), QSL("\'"))
+                         .replace(QSL(" & "), QSL(" &amp; "))
                          .replace(QChar::SpecialCharacter::Null, QString());
 
   // Remove all forbidden characters per XML official format, see https://www.w3.org/TR/xml11/#charsets.
