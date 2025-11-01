@@ -100,7 +100,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
     auto roots = feeds_per_root.uniqueKeys();
     QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
-    for (auto* rt : roots) {
+    for (auto* rt : std::as_const(roots)) {
       auto fds = scrambleFeedsWithSameHost(feeds_per_root.values(rt));
 
       QHash<QString, QStringList> per_acc_tags;
@@ -113,7 +113,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
 
         // This account has activated intelligent downloading of messages.
         // Prepare bags.
-        for (Feed* fd : fds) {
+        for (Feed* fd : std::as_const(fds)) {
           QHash<ServiceRoot::BagOfMessages, QStringList> per_feed_states;
 
           per_feed_states.insert(ServiceRoot::BagOfMessages::Read,
@@ -136,7 +136,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
         }
       }
       else {
-        for (Feed* fd : fds) {
+        for (Feed* fd : std::as_const(fds)) {
           FeedUpdateRequest fu;
 
           fu.account = rt;

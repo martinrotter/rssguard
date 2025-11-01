@@ -48,7 +48,7 @@ QList<QSharedPointer<MessageEnclosure>> Enclosures::decodeEnclosuresFromString(c
   QList<QSharedPointer<MessageEnclosure>> enclosures;
   QJsonArray enc_arr = enc_doc.array();
 
-  for (const QJsonValue& enc_val : enc_arr) {
+  for (const auto& enc_val : std::as_const(enc_arr)) {
     const QJsonObject& enc_obj = enc_val.toObject();
 
     MessageEnclosure* enclosure = new MessageEnclosure();
