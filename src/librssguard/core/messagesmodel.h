@@ -5,6 +5,7 @@
 
 #include "core/message.h"
 #include "core/messagesmodelsqllayer.h"
+#include "services/abstract/label.h"
 #include "services/abstract/rootitem.h"
 
 #include <QAbstractTableModel>
