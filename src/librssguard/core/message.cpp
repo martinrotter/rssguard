@@ -142,7 +142,7 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
               .remove(QChar(65279));
 
   // Sanitize author.
-  m_author = qApp->web()->stripTags(WebFactory::unescapeHtml(m_author));
+  m_author = qApp->web()->stripTags(WebFactory::unescapeHtml(m_author)).trimmed();
 
   // Remove NUL (0) bytes.
   m_contents = m_contents.remove(reg_nul);
