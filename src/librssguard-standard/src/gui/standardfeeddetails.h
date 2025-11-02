@@ -57,8 +57,8 @@ class StandardFeedDetails : public QWidget {
     void onUseDefaultIcon();
 
   private:
-    void prepareForNewFeed(RootItem* parent_to_select, const QString& url);
-    void setExistingFeed(StandardFeed* feed);
+    void prepareForNewFeed(ServiceRoot* account, RootItem* parent_to_select, const QString& url);
+    void setExistingFeed(ServiceRoot* account, StandardFeed* feed);
     void loadCategories(const QList<Category*>& categories, RootItem* root_item);
 
   private:

@@ -244,10 +244,10 @@ void FormStandardFeedDetails::loadFeedData() {
   if (m_creatingNew) {
     // auto processed_url = qApp->web()->processFeedUriScheme(m_urlToProcess);
 
-    m_standardFeedDetails->prepareForNewFeed(m_parentToSelect, m_urlToProcess);
+    m_standardFeedDetails->prepareForNewFeed(m_serviceRoot, m_parentToSelect, m_urlToProcess);
   }
   else {
-    m_standardFeedDetails->setExistingFeed(std_feed);
+    m_standardFeedDetails->setExistingFeed(m_serviceRoot, std_feed);
     m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->setChecked(std_feed->dontUseRawXmlSaving());
     m_standardFeedExpDetails->m_ui.m_cbFetchComments->setChecked(std_feed->fetchCommentsEnabled());
     m_networkDetails->setHttp2Status(std_feed->http2Status());

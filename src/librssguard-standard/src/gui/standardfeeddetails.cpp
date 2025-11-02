@@ -407,8 +407,8 @@ void StandardFeedDetails::setNetworkDetails(StandardFeedNetworkDetails* network_
   m_networkDetails = network_details;
 }
 
-void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QString& url) {
-  m_account = parent_to_select->account();
+void StandardFeedDetails::prepareForNewFeed(ServiceRoot* account, RootItem* parent_to_select, const QString& url) {
+  m_account = account;
 
   // Make sure that "default" icon is used as the default option for new
   // feed.
@@ -445,8 +445,8 @@ void StandardFeedDetails::prepareForNewFeed(RootItem* parent_to_select, const QS
   m_ui.m_txtSource->textEdit()->selectAll();
 }
 
-void StandardFeedDetails::setExistingFeed(StandardFeed* feed) {
-  m_account = feed->account();
+void StandardFeedDetails::setExistingFeed(ServiceRoot* account, StandardFeed* feed) {
+  m_account = account;
 
   m_ui.m_cmbSourceType->setCurrentIndex(m_ui.m_cmbSourceType->findData(QVariant::fromValue(feed->sourceType())));
   m_ui.m_cmbParentCategory->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue(feed->parent())));
