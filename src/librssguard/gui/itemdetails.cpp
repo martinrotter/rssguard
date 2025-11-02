@@ -11,10 +11,11 @@
 
 ItemDetails::ItemDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
-  m_ui.m_scrollInfo->setStyleSheet(QSL("background-color: transparent; border: 0px solid transparent;"));
-  m_ui.m_lblInfo->setContextMenuPolicy(Qt::ContextMenuPolicy::NoContextMenu);
 
-  connect(m_ui.m_lblInfo, &QLabel::linkActivated, this, [](const QString& link) {
+  m_ui.m_txtDetails->setAutoFillBackground(false);
+  m_ui.m_txtDetails->viewport()->setAutoFillBackground(false);
+
+  connect(m_ui.m_txtDetails, &QTextBrowser::anchorClicked, this, [](const QUrl& link) {
     qApp->web()->openUrlInExternalBrowser(link);
   });
 }
@@ -22,11 +23,15 @@ ItemDetails::ItemDetails(QWidget* parent) : QWidget(parent) {
 ItemDetails::~ItemDetails() {}
 
 void ItemDetails::loadItemDetails(RootItem* item) {
-  m_ui.m_scrollInfo->verticalScrollBar()->triggerAction(QAbstractSlider::SliderAction::SliderToMinimum);
+  m_ui.m_txtDetails->verticalScrollBar()->triggerAction(QAbstractSlider::SliderAction::SliderToMinimum);
 
   if (item == nullptr) {
-    m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH).scaled(16, 16));
-    m_ui.m_lblInfo->setText(QSL("<b>%1</b>").arg(QSL(APP_LONG_NAME)));
+    m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH)
+                                .scaled(32,
+                                        32,
+                                        Qt::AspectRatioMode::KeepAspectRatio,
+                                        Qt::TransformationMode::SmoothTransformation));
+    m_ui.m_txtDetails->setText(QSL("<b>%1</b>").arg(QSL(APP_LONG_NAME)));
   }
   else {
     QString tool_tip = QSL("<b>%1</b>").arg(item->title());
@@ -41,7 +46,7 @@ void ItemDetails::loadItemDetails(RootItem* item) {
       tool_tip += QL1S("<br/><br/>") + extra_tooltip.replace(QSL("\n"), QSL("<br/>"));
     }
 
-    m_ui.m_lblIcon->setPixmap(item->fullIcon().pixmap({16, 16}));
-    m_ui.m_lblInfo->setText(tool_tip);
+    m_ui.m_lblIcon->setPixmap(item->fullIcon().pixmap({32, 32}));
+    m_ui.m_txtDetails->setText(tool_tip);
   }
 }
