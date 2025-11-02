@@ -646,7 +646,7 @@ Aantal uitgeschakelde feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
       <source>SQL database error</source>
-      <translation type="unfinished">SQL database error</translation>
+      <translation>SQL databank fout</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
@@ -731,12 +731,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="406"/>
       <source>Some feeds have errors</source>
-      <translation type="unfinished">Some feeds have errors</translation>
+      <translation>Sommige feeds bevatten een fout</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="407"/>
       <source>Some feeds threw an error when fetching articles.</source>
-      <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
+      <translation>Bij het ophalen van sommige feeds ging iets mis.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="101"/>
@@ -7657,7 +7657,7 @@ Dit kan de applicatie enorm versnellen als je honderdduizenden artikelen hebt, m
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="44"/>
       <location filename="../build/Desktop-Debug/src/librssguard/ui_settingsgeneral.h" line="66"/>
       <source>Disable CLI debug output (but keep more serious warnings enabled)</source>
-      <translation type="unfinished">Disable CLI debug output (but keep more serious warnings enabled)</translation>
+      <translation>CLI debug uitvoer uitschakelen (maar meer serieuze waarschuwingen ingeschakeld houden)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="30"/>
