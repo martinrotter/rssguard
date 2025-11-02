@@ -244,11 +244,8 @@
 #define APP_LOCAL_ICON_THEME_FOLDER "icons"
 #define APP_NO_THEME                ""
 
-#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+// Use OS default style everywhere.
 #define APP_STYLE_DEFAULT APP_NO_THEME
-#else
-#define APP_STYLE_DEFAULT "Fusion"
-#endif
 
 // Column indexes for the model.
 #define MSG_MDL_ID_INDEX          0

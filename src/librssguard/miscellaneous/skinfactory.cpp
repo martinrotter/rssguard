@@ -147,7 +147,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
     }
     else {
       // Default style is set. Just use what is already set.
-      m_currentStyle = {};
+      m_currentStyle = QString();
 
       qDebugNN << LOGSEC_GUI << "Using default style:" << QUOTE_W_SPACE_DOT(qApp->style()->objectName());
     }
