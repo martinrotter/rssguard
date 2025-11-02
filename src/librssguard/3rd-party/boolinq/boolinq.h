@@ -4,6 +4,7 @@
 
 #include <functional>
 #include <tuple>
+#include <type_traits>
 
 #include <algorithm>
 #include <deque>
@@ -207,7 +208,7 @@ namespace boolinq {
           );
       }
 
-      template<typename F, typename _TRet = typename std::result_of<F(T, int)>::type>
+      template<typename F, typename _TRet = std::invoke_result_t<F, T, int>>
       Linq<std::tuple<Linq<S, T>, int>, _TRet> select_i(F apply) const
       {
         return Linq<std::tuple<Linq<S, T>, int>, _TRet>(
@@ -221,7 +222,7 @@ namespace boolinq {
           );
       }
 
-      template<typename F, typename _TRet = typename std::result_of<F(T)>::type>
+      template<typename F, typename _TRet = std::invoke_result_t<F, T>>
       Linq<std::tuple<Linq<S, T>, int>, _TRet> select(F apply) const
       {
         return select_i([apply](T value, int /*index*/) {
@@ -261,7 +262,7 @@ namespace boolinq {
 
       template<
         typename F,
-        typename _TRet = typename std::result_of<F(T, int)>::type,
+        typename _TRet = std::invoke_result_t<F, T, int>,
         typename _TRetVal = typename _TRet::value_type
         >
       Linq<std::tuple<Linq<S, T>, _TRet, int, bool>, _TRetVal> selectMany_i(F apply) const
@@ -293,7 +294,7 @@ namespace boolinq {
 
       template<
         typename F,
-        typename _TRet = typename std::result_of<F(T)>::type,
+        typename _TRet = std::invoke_result_t<F, T>,
         typename _TRetVal = typename _TRet::value_type
         >
       Linq<std::tuple<Linq<S, T>, _TRet, int, bool>, _TRetVal> selectMany(F apply) const
@@ -305,7 +306,7 @@ namespace boolinq {
 
       template<
         typename F,
-        typename _TKey = typename std::result_of<F(T)>::type,
+        typename _TKey = std::invoke_result_t<F, T>,
         typename _TValue = Linq<std::tuple<Linq<S, T>, int>, T>     // where(predicate)
         >
       Linq<std::tuple<Linq<S, T>, Linq<S, T>, std::unordered_set<_TKey>>, std::pair<_TKey, _TValue>> groupBy(F apply) const
@@ -329,7 +330,7 @@ namespace boolinq {
           );
       }
 
-      template<typename F, typename _TRet = typename std::result_of<F(T)>::type>
+      template<typename F, typename _TRet = std::invoke_result_t<F, T>>
       Linq<std::tuple<Linq<S, T>, std::unordered_set<_TRet>>, T> distinct(F transform) const
       {
         return Linq<std::tuple<Linq<S, T>, std::unordered_set<_TRet>>, T>(
@@ -433,7 +434,7 @@ namespace boolinq {
         return start;
       }
 
-      template<typename F, typename _TRet = typename std::result_of<F(T)>::type>
+      template<typename F, typename _TRet = std::invoke_result_t<F, T>>
       _TRet sum(F transform) const
       {
         return aggregate<_TRet>(_TRet(), [transform](_TRet accumulator, T value) {
@@ -449,7 +450,7 @@ namespace boolinq {
       });
       }
 
-      template<typename F, typename _TRet = typename std::result_of<F(T)>::type>
+      template<typename F, typename _TRet = std::invoke_result_t<F, T>>
       _TRet avg(F transform) const
       {
         int count = 0;
