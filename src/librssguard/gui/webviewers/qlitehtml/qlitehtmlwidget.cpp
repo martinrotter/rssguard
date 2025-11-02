@@ -54,10 +54,6 @@ QLiteHtmlWidget::QLiteHtmlWidget(QWidget* parent) : QAbstractScrollArea(parent) 
       Qt::ConnectionType::QueuedConnection);
   });
 
-  m_documentContainer.setClipboardCallback([this](bool yes) {
-    emit copyAvailable(yes);
-  });
-
   m_documentContainer.setMasterCss(QString::fromUtf8(IOFactory::readFile(QSL(":/litehtml/master.css"))));
 
   QString user_styles_path =
@@ -376,15 +372,6 @@ void QLiteHtmlWidget::leaveEvent(QEvent* event) {
   }
 
   setHightlightedLink(QUrl());
-}
-
-void QLiteHtmlWidget::contextMenuEvent(QContextMenuEvent* event) {
-  QPointF viewport_pos;
-  QPointF pos;
-
-  htmlPos(event->pos(), &viewport_pos, &pos);
-
-  emit contextMenuRequested(event->pos(), m_documentContainer.linkAt(pos, viewport_pos));
 }
 
 static QAbstractSlider::SliderAction getSliderAction(int key) {

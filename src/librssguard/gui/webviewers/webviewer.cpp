@@ -9,6 +9,7 @@
 #include "miscellaneous/settings.h"
 #include "network-web/webfactory.h"
 
+#include <QClipboard>
 #include <QFileIconProvider>
 #include <QTimer>
 
@@ -49,10 +50,22 @@ QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {
 void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* event) {
   // Setup the menu.
   m_contextMenuData = provideContextMenuData(event);
-  specific_menu->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, true);
   initializeCommonMenuItems();
 
   // Add common items.
+  auto* act_copy_link =
+    new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), QObject::tr("Copy link"), specific_menu);
+  act_copy_link->setEnabled(m_contextMenuData.m_linkUrl.isValid());
+
+  QObject::connect(act_copy_link, &QAction::triggered, specific_menu, [this]() {
+    auto* clip = QGuiApplication::clipboard();
+
+    if (clip != nullptr) {
+      clip->setText(m_contextMenuData.m_linkUrl.toString());
+    }
+  });
+
+  specific_menu->addAction(act_copy_link);
   specific_menu->addSeparator();
   specific_menu->addAction(m_actionSaveHtml.data());
   specific_menu->addSeparator();

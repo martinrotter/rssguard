@@ -21,8 +21,8 @@ QLiteHtmlArticleViewer::QLiteHtmlArticleViewer(QWidget* parent) : QLiteHtmlWidge
   setFrameShadow(QFrame::Shadow::Plain);
   // setFontAntialiasing(true);
 
-  horizontalScrollBar()->setSingleStep(5);
-  verticalScrollBar()->setSingleStep(5);
+  // horizontalScrollBar()->setSingleStep(5);
+  // verticalScrollBar()->setSingleStep(5);
 
   // NOTE: This is called explicitly to set initial value.
   documentContainer()->setLoadExternalResources(WebViewer::loadExternalResources());
@@ -167,7 +167,7 @@ void QLiteHtmlArticleViewer::contextMenuEvent(QContextMenuEvent* event) {
 
   auto* menu = new QMenu(tr("Context menu for article viewer"), this);
   auto sel_text = selectedText();
-  auto* act_copy = new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), tr("Copy"), this);
+  auto* act_copy = new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), tr("Copy text"), menu);
 
   act_copy->setShortcut(QKeySequence(QKeySequence::StandardKey::Copy));
   act_copy->setEnabled(!sel_text.isEmpty());
@@ -180,23 +180,8 @@ void QLiteHtmlArticleViewer::contextMenuEvent(QContextMenuEvent* event) {
     }
   });
 
+  menu->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, true);
   menu->addAction(act_copy);
-
-  /*
-  if (m_actionEnableResources.isNull()) {
-    m_actionEnableResources.reset(new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
-                                              tr("Enable external resources"),
-                                              this));
-
-    m_actionEnableResources.data()->setCheckable(true);
-    m_actionEnableResources.data()->setChecked(resourcesEnabled());
-
-    connect(m_actionEnableResources.data(), &QAction::toggled, this, &TextBrowserViewer::enableResources);
-  }
-
- menu->addAction(m_actionEnableResources.data());
-
-  */
 
   WebViewer::processContextMenu(menu, event);
   QLiteHtmlWidget::processContextMenu(menu, event);

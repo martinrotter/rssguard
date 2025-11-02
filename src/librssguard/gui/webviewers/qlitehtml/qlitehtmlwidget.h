@@ -54,8 +54,6 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
   signals:
     void linkClicked(const QUrl& url);
     void linkHighlighted(const QUrl& url);
-    void copyAvailable(bool available);
-    void contextMenuRequested(const QPoint& pos, const QUrl& url);
 
   protected:
     virtual void paintEvent(QPaintEvent* event);
@@ -65,7 +63,6 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     virtual void mouseReleaseEvent(QMouseEvent* event);
     virtual void mouseDoubleClickEvent(QMouseEvent* event);
     virtual void leaveEvent(QEvent* event);
-    virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual void keyPressEvent(QKeyEvent* event);
 
   protected:
