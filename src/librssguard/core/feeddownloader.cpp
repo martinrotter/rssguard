@@ -184,17 +184,19 @@ bool FeedDownloader::checkIfFeedOverloaded(Feed* feed) const {
 }
 
 FeedUpdateResult FeedDownloader::updateThreadedFeed(const FeedUpdateRequest& fd) {
-  if (m_erroredAccounts.contains(fd.account)) {
-    // This feed is errored because its account errored when preparing feed update.
-    ApplicationException root_ex = m_erroredAccounts.value(fd.account);
+  if (!m_stopCacheSynchronization) {
+    if (m_erroredAccounts.contains(fd.account)) {
+      // This feed is errored because its account errored when preparing feed update.
+      ApplicationException root_ex = m_erroredAccounts.value(fd.account);
 
-    skipFeedUpdateWithError(fd.account, fd.feed, root_ex);
-  }
-  else {
-    updateOneFeed(fd.account, fd.feed, fd.stated_messages, fd.tagged_messages);
-  }
+      skipFeedUpdateWithError(fd.account, fd.feed, root_ex);
+    }
+    else {
+      updateOneFeed(fd.account, fd.feed, fd.stated_messages, fd.tagged_messages);
+    }
 
-  fd.feed->setLastUpdated(QDateTime::currentDateTimeUtc());
+    fd.feed->setLastUpdated(QDateTime::currentDateTimeUtc());
+  }
 
   FeedUpdateResult res;
 
