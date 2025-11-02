@@ -205,12 +205,18 @@ FeedUpdateResult FeedDownloader::updateThreadedFeed(const FeedUpdateRequest& fd)
 
 void FeedDownloader::skipFeedUpdateWithError(ServiceRoot* acc, Feed* feed, const ApplicationException& ex) {
   const FeedFetchException* fetch_ex = dynamic_cast<const FeedFetchException*>(&ex);
+  const bool update_feed_list =
+    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
 
   if (fetch_ex != nullptr) {
     feed->setStatus(fetch_ex->feedStatus(), fetch_ex->message());
   }
   else {
     feed->setStatus(Feed::Status::OtherError, ex.message());
+  }
+
+  if (acc != nullptr && update_feed_list) {
+    acc->itemChanged({feed});
   }
 }
 
@@ -227,13 +233,9 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                                    Feed* feed,
                                    const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                    const QHash<QString, QStringList>& tagged_messages) {
-  // NOTE: Now, we need to make "good enough" decision here.
-  // If user fetches very small amount of feeds, feed to count recalculations feed by feed.
-  // On the other hand, if user does by feed update, it makes sense to update
-  // whole account counts globally as it is faster (less SQL queries).
+  // NOTE: This has negative performance impact when fetching bigger number of feeds.
   const bool update_feed_list =
-    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool() &&
-    m_feeds.size() <= 25;
+    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
 
   if (checkIfFeedOverloaded(feed)) {
     qWarningNN << LOGSEC_CORE << "Feed with source" << QUOTE_W_SPACE(feed->source())
