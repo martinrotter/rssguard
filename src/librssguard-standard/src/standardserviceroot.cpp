@@ -621,7 +621,7 @@ int StandardServiceRoot::spacingSameHostsRequests() const {
 }
 
 void StandardServiceRoot::setSpacingSameHostsRequests(int spacing) {
-  m_spacingSameHostsRequests = spacing;
+  m_spacingSameHostsRequests = qMin(spacing, MAX_SPACING_SECONDS);
 }
 
 void StandardServiceRoot::addNewCategory(RootItem* selected_item) {

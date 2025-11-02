@@ -21,8 +21,7 @@
 #include <QString>
 #include <QtConcurrentMap>
 
-FeedDownloader::FeedDownloader()
-  : QObject(), m_isCacheSynchronizationRunning(false), m_stopCacheSynchronization(false) {
+FeedDownloader::FeedDownloader() : QObject(), m_isCacheSynchronizationRunning(false), m_stopFetching(false) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
 
   connect(&m_watcherLookup, &QFutureWatcher<FeedUpdateResult>::resultReadyAt, this, [=](int idx) {
@@ -51,10 +50,8 @@ void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>&
              << QUOTE_W_SPACE_DOT(getThreadID());
     cache->saveAllCachedData(false);
 
-    if (m_stopCacheSynchronization) {
+    if (m_stopFetching) {
       qWarningNN << LOGSEC_FEEDDOWNLOADER << "Aborting cache synchronization.";
-
-      m_stopCacheSynchronization = false;
       break;
     }
   }
@@ -71,6 +68,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
   m_erroredAccounts.clear();
   m_results.clear();
   m_feeds.clear();
+  m_stopFetching = false;
 
   if (feeds.isEmpty()) {
     qWarningNN << LOGSEC_FEEDDOWNLOADER << "No feeds to update in worker thread, aborting update.";
@@ -184,7 +182,7 @@ bool FeedDownloader::checkIfFeedOverloaded(Feed* feed) const {
 }
 
 FeedUpdateResult FeedDownloader::updateThreadedFeed(const FeedUpdateRequest& fd) {
-  if (!m_stopCacheSynchronization) {
+  if (!m_stopFetching) {
     if (m_erroredAccounts.contains(fd.account)) {
       // This feed is errored because its account errored when preparing feed update.
       ApplicationException root_ex = m_erroredAccounts.value(fd.account);
@@ -223,7 +221,7 @@ void FeedDownloader::skipFeedUpdateWithError(ServiceRoot* acc, Feed* feed, const
 }
 
 void FeedDownloader::stopRunningUpdate() {
-  m_stopCacheSynchronization = true;
+  m_stopFetching = true;
 
   m_watcherLookup.cancel();
   m_watcherLookup.waitForFinished();
@@ -388,6 +386,10 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
     removeDuplicateMessages(msgs);
     removeTooOldMessages(feed, msgs);
+
+    if (m_stopFetching) {
+      return;
+    }
 
     tmr.restart();
     auto updated_messages = acc->updateMessages(msgs, feed, false, update_feed_list, nullptr);

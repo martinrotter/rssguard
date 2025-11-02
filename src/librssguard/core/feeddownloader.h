@@ -89,7 +89,7 @@ class FeedDownloader : public QObject {
 
   private:
     bool m_isCacheSynchronizationRunning;
-    bool m_stopCacheSynchronization;
+    bool m_stopFetching;
     QMutex m_mutexDb;
     QHash<ServiceRoot*, ApplicationException> m_erroredAccounts;
     QList<FeedUpdateRequest> m_feeds = {};

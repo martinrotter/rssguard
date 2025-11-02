@@ -9,6 +9,8 @@
 
 #define ADVANCED_FEED_ADD_DIALOG_CODE 64
 
+#define MAX_SPACING_SECONDS 120
+
 #define RSS_REGEX_MATCHER      "<link[^>]+type=\"application\\/(?:rss\\+xml)\"[^>]*>"
 #define RSS_HREF_REGEX_MATCHER "href=\"([^\"]+)\""
 

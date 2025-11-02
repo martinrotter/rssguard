@@ -2,6 +2,7 @@
 
 #include "src/gui/standardaccountdetails.h"
 
+#include "src/definitions.h"
 #include "src/standardserviceentrypoint.h"
 
 #include <librssguard/3rd-party/boolinq/boolinq.h>
@@ -12,6 +13,7 @@
 
 StandardAccountDetails::StandardAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
+  m_ui.m_spinFeedSpacing->setMaximum(MAX_SPACING_SECONDS);
 
   QMenu* icon_menu = new QMenu(tr("Icon selection"), this);
   auto* action_load_icon_from_file =
