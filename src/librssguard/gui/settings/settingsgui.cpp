@@ -169,7 +169,7 @@ void SettingsGui::loadSettings() {
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool());
 
   // Load settings of icon theme.
-  const QString current_theme = qApp->icons()->currentIconTheme();
+  const QString current_icon_theme = qApp->icons()->currentIconTheme();
   auto icons = qApp->icons()->installedIconThemes();
 
   for (const QString& icon_theme_name : std::as_const(icons)) {
@@ -202,12 +202,12 @@ void SettingsGui::loadSettings() {
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnWindow)).toBool());
 
   // Mark active icon theme.
-  if (current_theme == QL1S(APP_NO_THEME)) {
+  if (current_icon_theme == QL1S(APP_NO_THEME)) {
     // Because "no icon theme" lies at the index 0.
     m_ui->m_cmbIconTheme->setCurrentIndex(0);
   }
   else {
-    m_ui->m_cmbIconTheme->setCurrentText(current_theme);
+    m_ui->m_cmbIconTheme->setCurrentText(current_icon_theme);
   }
 
   // Load styles.

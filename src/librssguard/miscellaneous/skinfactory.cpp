@@ -139,10 +139,17 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
         }
       }
     }
-    else {
-      qDebugNN << LOGSEC_GUI << "Setting style:" << QUOTE_W_SPACE_DOT(style_name);
+    else if (!style_name.isEmpty()) {
       qApp->setStyle(style_name);
       m_currentStyle = style_name;
+
+      qDebugNN << LOGSEC_GUI << "Setting style:" << QUOTE_W_SPACE_DOT(m_currentStyle);
+    }
+    else {
+      // Default style is set. Just use what is already set.
+      m_currentStyle = {};
+
+      qDebugNN << LOGSEC_GUI << "Using default style:" << QUOTE_W_SPACE_DOT(qApp->style()->objectName());
     }
   }
   else {
@@ -150,8 +157,9 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
     m_currentStyle = qApp->style()->objectName();
 
     qWarningNN << LOGSEC_GUI << "Respecting forced style(s):\n"
-               << "  QT_STYLE_OVERRIDE: " QUOTE_NO_SPACE(env_forced_style) << "\n"
-               << "  CLI (-style): " QUOTE_NO_SPACE(cli_forced_style);
+               << "  QT_STYLE_OVERRIDE:" << QUOTE_W_SPACE(env_forced_style) << "\n"
+               << "  CLI (-style):" << QUOTE_W_SPACE(cli_forced_style) << "\n"
+               << "  current style:" << QUOTE_W_SPACE_DOT(m_currentStyle);
   }
 
   m_useSkinColors =

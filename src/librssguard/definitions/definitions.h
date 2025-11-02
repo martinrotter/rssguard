@@ -230,8 +230,6 @@
 #define APP_SKIN_DEFAULT       "minimal-light"
 #define APP_SKIN_METADATA_FILE "metadata.xml"
 
-#define APP_STYLE_DEFAULT "Fusion"
-
 #if defined(FORCE_BUNDLE_ICONS)
 // Forcibly bundle icons.
 #define APP_ICON_THEME_DEFAULT "Breeze"
@@ -245,6 +243,12 @@
 
 #define APP_LOCAL_ICON_THEME_FOLDER "icons"
 #define APP_NO_THEME                ""
+
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+#define APP_STYLE_DEFAULT APP_NO_THEME
+#else
+#define APP_STYLE_DEFAULT "Fusion"
+#endif
 
 // Column indexes for the model.
 #define MSG_MDL_ID_INDEX          0
