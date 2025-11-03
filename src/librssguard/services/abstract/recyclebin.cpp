@@ -57,7 +57,7 @@ QList<QAction*> RecycleBin::contextMenuFeedsList() {
 
 void RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
-  auto article_custom_ids = service->customIDSOfMessagesForItem(this, status);
+  auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
   DatabaseQueries::markBinReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
@@ -74,7 +74,7 @@ void RecycleBin::cleanMessages(bool clear_only_read) {
   ServiceRoot* service = account();
 
   service->onBeforeMessagesDelete(this, {});
-  DatabaseQueries::purgeMessagesFromBin(qApp->database()->driver()->connection(metaObject()->className()),
+  DatabaseQueries::cleanBin(qApp->database()->driver()->connection(metaObject()->className()),
                                         clear_only_read,
                                         service->accountId());
   service->onAfterMessagesDelete(this, {});

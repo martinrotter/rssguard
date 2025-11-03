@@ -29,6 +29,9 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QString serializeCustomData(const QVariantHash& data);
     static QVariantHash deserializeCustomData(const QString& data);
 
+    // Universal where clauses for item types.
+    static QString whereClauseBin(int account_id);
+
     // Labels
     static void deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static void assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
@@ -80,8 +83,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void purgeOldMessages(const QSqlDatabase& db, int older_than_days);
     static void purgeRecycleBin(const QSqlDatabase& db);
     static void purgeLeftoverMessages(const QSqlDatabase& db, int account_id);
-
-    static void purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id);
 
     // Counts of unread/all messages.
     static QMap<int, ArticleCounts> getMessageCountsForCategory(const QSqlDatabase& db,
@@ -151,18 +152,23 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                           bool force_update,
                                           bool force_insert,
                                           QMutex* db_mutex);
+
+    // Delete account.
     static void deleteAccount(const QSqlDatabase& db, ServiceRoot* account);
     static void deleteAccountData(const QSqlDatabase& db,
                                   int account_id,
                                   bool delete_messages_too,
                                   bool delete_labels_too);
 
+    // Clean articles (move to recycle bin).
     static void cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label);
     static void cleanProbedMessages(const QSqlDatabase& db, bool clean_read_only, Search* probe);
     static void cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static void cleanUnreadMessages(const QSqlDatabase& db, int account_id);
     static void cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
+    static void cleanBin(const QSqlDatabase& db, bool clear_only_read, int account_id);
 
+    // Operate feeds/categories.
     static void storeAccountTree(const QSqlDatabase& db,
                                  RootItem* tree_root,
                                  int next_feed_id,

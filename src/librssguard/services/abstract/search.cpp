@@ -93,7 +93,7 @@ void Search::cleanMessages(bool clear_only_read) {
 
 void Search::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
-  auto article_custom_ids = service->customIDSOfMessagesForItem(this, status);
+  auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
   DatabaseQueries::markProbeReadUnread(qApp->database()->driver()->connection(metaObject()->className()), this, status);

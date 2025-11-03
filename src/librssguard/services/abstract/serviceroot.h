@@ -207,7 +207,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     // only IDs when the change makes sense.
     // NOTE: Importance is not dealt here because it was not needed
     // yet.
-    QStringList customIDSOfMessagesForItem(RootItem* item,
+    QStringList customIDsOfMessagesForItem(RootItem* item,
                                            RootItem::ReadStatus target_read = RootItem::ReadStatus::Unknown);
 
     void performInitialAssembly(const Assignment& categories,

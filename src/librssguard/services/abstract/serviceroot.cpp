@@ -155,7 +155,7 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
 
 void ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
-  auto article_custom_ids = service->customIDSOfMessagesForItem(this, status);
+  auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
   DatabaseQueries::markAccountReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
@@ -762,7 +762,7 @@ RootItem* ServiceRoot::obtainNewTreeForSyncIn() const {
   return nullptr;
 }
 
-QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item, ReadStatus target_read) {
+QStringList ServiceRoot::customIDsOfMessagesForItem(RootItem* item, ReadStatus target_read) {
   if (item->account() != this) {
     // Not item from this account.
     return {};
@@ -777,7 +777,7 @@ QStringList ServiceRoot::customIDSOfMessagesForItem(RootItem* item, ReadStatus t
         auto chi = item->childItems();
 
         for (RootItem* child : std::as_const(chi)) {
-          list.append(customIDSOfMessagesForItem(child, target_read));
+          list.append(customIDsOfMessagesForItem(child, target_read));
         }
 
         return list;
@@ -889,8 +889,7 @@ void ServiceRoot::setAccountId(int account_id) {
 
 bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
   if (item->kind() == RootItem::Kind::Bin) {
-    model->setFilter(QSL("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
-                       .arg(QString::number(accountId())));
+    model->setFilter(DatabaseQueries::whereClauseBin(accountId()));
   }
   else if (item->kind() == RootItem::Kind::Important) {
     model->setFilter(QSL("Messages.is_important = 1 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "

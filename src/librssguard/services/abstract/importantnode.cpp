@@ -40,7 +40,7 @@ void ImportantNode::cleanMessages(bool clean_read_only) {
 
 void ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
-  auto article_custom_ids = service->customIDSOfMessagesForItem(this, status);
+  auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
   DatabaseQueries::markImportantMessagesReadUnread(qApp->database()->driver()->connection(metaObject()->className()),

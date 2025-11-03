@@ -68,6 +68,11 @@ QVariantHash DatabaseQueries::deserializeCustomData(const QString& data) {
   }
 }
 
+QString DatabaseQueries::whereClauseBin(int account_id) {
+  return QSL("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
+    .arg(QString::number(account_id));
+}
+
 void DatabaseQueries::purgeLabelAssignments(const QSqlDatabase& db, Label* label) {
   QSqlQuery q(db);
 
@@ -493,10 +498,8 @@ void DatabaseQueries::markBinReadUnread(const QSqlDatabase& db, int account_id, 
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("UPDATE Messages SET is_read = :read "
-                "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
+  q.prepare(QSL("UPDATE Messages SET is_read = :read WHERE %1;").arg(whereClauseBin(account_id)));
   q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
-  q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec()) {
     DatabaseFactory::logLastExecutedQuery(q);
@@ -585,9 +588,7 @@ void DatabaseQueries::restoreBin(const QSqlDatabase& db, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("UPDATE Messages SET is_deleted = 0 "
-                "WHERE is_deleted = 1 AND is_pdeleted = 0 AND account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
+  q.prepare(QSL("UPDATE Messages SET is_deleted = 0 WHERE %1;").arg(whereClauseBin(account_id)));
 
   if (q.exec()) {
     DatabaseFactory::logLastExecutedQuery(q);
@@ -904,9 +905,7 @@ ArticleCounts DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, in
 }
 
 ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, int account_id) {
-  return messageCountsByCondition(db,
-                                  QSL("is_deleted = 1 AND is_pdeleted = 0 AND account_id = :acc"),
-                                  {{QSL(":acc"), account_id}});
+  return messageCountsByCondition(db, whereClauseBin(account_id));
 }
 
 ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id) {
@@ -1584,17 +1583,16 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
   return updated_messages;
 }
 
-void DatabaseQueries::purgeMessagesFromBin(const QSqlDatabase& db, bool clear_only_read, int account_id) {
+void DatabaseQueries::cleanBin(const QSqlDatabase& db, bool clear_only_read, int account_id) {
   QSqlQuery q(db);
 
   q.setForwardOnly(true);
 
   if (clear_only_read) {
-    q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_read = 1 AND is_deleted = 1 AND account_id = "
-                  ":account_id;"));
+    q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_read = 1 AND %1;").arg(whereClauseBin(account_id)));
   }
   else {
-    q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_deleted = 1 AND account_id = :account_id;"));
+    q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE %1;").arg(whereClauseBin(account_id)));
   }
 
   q.bindValue(QSL(":account_id"), account_id);
@@ -1927,14 +1925,9 @@ QStringList DatabaseQueries::customIdsOfUnreadMessages(const QSqlDatabase& db, i
 QStringList DatabaseQueries::customIdsOfMessagesFromBin(const QSqlDatabase& db,
                                                         RootItem::ReadStatus read,
                                                         int account_id) {
-  QString cond = QSL("Messages.account_id = :acc_id AND "
-                     "Messages.is_deleted = 1 AND "
-                     "Messages.is_read = :read");
+  QString cond = QSL("Messages.is_read = :read AND %1").arg(whereClauseBin(account_id));
 
-  return customIdsOfMessagesByCondition(db,
-                                        cond,
-                                        {{QSL(":acc_id"), account_id},
-                                         {QSL(":read"), read == RootItem::ReadStatus::Read ? 0 : 1}});
+  return customIdsOfMessagesByCondition(db, cond, {{QSL(":read"), read == RootItem::ReadStatus::Read ? 0 : 1}});
 }
 
 QStringList DatabaseQueries::customIdsOfMessagesFromProbe(const QSqlDatabase& db,
