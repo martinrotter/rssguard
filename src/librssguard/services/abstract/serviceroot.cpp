@@ -892,33 +892,17 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     model->setFilter(DatabaseQueries::whereClauseBin(accountId()));
   }
   else if (item->kind() == RootItem::Kind::Important) {
-    model->setFilter(QSL("Messages.is_important = 1 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
-                         "Messages.account_id = %1")
-                       .arg(QString::number(accountId())));
+    model->setFilter(DatabaseQueries::whereClauseImportantArticles(accountId()));
   }
   else if (item->kind() == RootItem::Kind::Unread) {
-    model->setFilter(QSL("Messages.is_read = 0 AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
-                         "Messages.account_id = %1")
-                       .arg(QString::number(accountId())));
+    model->setFilter(DatabaseQueries::whereClauseUnreadArticles(accountId()));
   }
   else if (item->kind() == RootItem::Kind::Probe) {
-    item->updateCounts(true);
-    itemChanged({item});
-
-    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
-                         "(Messages.title REGEXP '%2' OR Messages.contents REGEXP '%2')")
-                       .arg(QString::number(accountId()), item->toProbe()->filter()));
+    model->setFilter(DatabaseQueries::whereClauseProbe(item->toProbe(), accountId()));
   }
   else if (item->kind() == RootItem::Kind::Label) {
     // Show messages with particular label.
-    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
-                         "EXISTS (SELECT 1 "
-                         "FROM LabelsInMessages "
-                         "WHERE "
-                         "  LabelsInMessages.label = %2 AND "
-                         "  LabelsInMessages.account_id = %1 AND "
-                         "  LabelsInMessages.message = Messages.id)")
-                       .arg(QString::number(accountId()), QString::number(item->id())));
+    model->setFilter(DatabaseQueries::whereClauseLabel(item->id(), accountId()));
   }
   else if (item->kind() == RootItem::Kind::Labels) {
     // Show messages with any label.

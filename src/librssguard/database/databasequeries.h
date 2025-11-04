@@ -31,6 +31,10 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
 
     // Universal where clauses for item types.
     static QString whereClauseBin(int account_id);
+    static QString whereClauseImportantArticles(int account_id);
+    static QString whereClauseUnreadArticles(int account_id);
+    static QString whereClauseProbe(Search* probe, int account_id);
+    static QString whereClauseLabel(int label_id, int account_id);
 
     // Labels
     static void deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);

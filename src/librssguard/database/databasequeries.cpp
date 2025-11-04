@@ -73,6 +73,43 @@ QString DatabaseQueries::whereClauseBin(int account_id) {
     .arg(QString::number(account_id));
 }
 
+QString DatabaseQueries::whereClauseImportantArticles(int account_id) {
+  return QSL("Messages.is_important = 1 AND "
+             "Messages.is_deleted = 0 AND "
+             "Messages.is_pdeleted = 0 AND "
+             "Messages.account_id = %1")
+    .arg(QString::number(account_id));
+}
+
+QString DatabaseQueries::whereClauseUnreadArticles(int account_id) {
+  return QSL("Messages.is_read = 0 AND "
+             "Messages.is_deleted = 0 AND "
+             "Messages.is_pdeleted = 0 AND "
+             "Messages.account_id = %1")
+    .arg(QString::number(account_id));
+}
+
+QString DatabaseQueries::whereClauseProbe(Search* probe, int account_id) {
+  return QSL("Messages.is_deleted = 0 AND "
+             "Messages.is_pdeleted = 0 AND "
+             "Messages.account_id = %1 AND "
+             "(Messages.title REGEXP '%2' OR Messages.contents REGEXP '%2')")
+    .arg(QString::number(account_id), probe->filter());
+}
+
+QString DatabaseQueries::whereClauseLabel(int label_id, int account_id) {
+  return QSL("Messages.is_deleted = 0 AND "
+             "Messages.is_pdeleted = 0 AND "
+             "Messages.account_id = %1 AND "
+             "EXISTS (SELECT 1 "
+             "FROM LabelsInMessages "
+             "WHERE "
+             "  LabelsInMessages.label = %2 AND "
+             "  LabelsInMessages.account_id = %1 AND "
+             "  LabelsInMessages.message = Messages.id)")
+    .arg(QString::number(account_id), QString::number(label_id));
+}
+
 void DatabaseQueries::purgeLabelAssignments(const QSqlDatabase& db, Label* label) {
   QSqlQuery q(db);
 
@@ -893,9 +930,7 @@ ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, i
 }
 
 ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int account_id) {
-  return messageCountsByCondition(db,
-                                  QSL("is_deleted = 0 AND is_pdeleted = 0 AND is_important = 1 AND account_id = :acc"),
-                                  {{QSL(":acc"), account_id}});
+  return messageCountsByCondition(db, whereClauseImportantArticles(account_id));
 }
 
 ArticleCounts DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_id) {
@@ -1747,7 +1782,7 @@ void DatabaseQueries::cleanLabelledMessages(const QSqlDatabase& db, bool clean_r
 
 void DatabaseQueries::cleanProbedMessages(const QSqlDatabase& db, bool clean_read_only, Search* probe) {
   cleanMessagesByCondition(db,
-                           QSL("WHERE title REGEXP '%1' OR contents REGEXP '%1'")
+                           QSL("title REGEXP '%1' OR contents REGEXP '%1'")
                              .arg(probe->filter().replace(QSL("'"), QSL("''"))),
                            clean_read_only,
                            probe->account()->accountId());
@@ -1901,16 +1936,9 @@ QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& 
 QStringList DatabaseQueries::customIdsOfImportantMessages(const QSqlDatabase& db,
                                                           RootItem::ReadStatus read,
                                                           int account_id) {
-  QString cond = QSL("Messages.account_id = :acc_id AND "
-                     "Messages.is_important = 1 AND "
-                     "Messages.is_deleted = 0 AND "
-                     "Messages.is_pdeleted = 0 AND "
-                     "Messages.is_read = :read");
+  QString cond = QSL("%1 AND Messages.is_read = :read").arg(whereClauseImportantArticles(account_id));
 
-  return customIdsOfMessagesByCondition(db,
-                                        cond,
-                                        {{QSL(":acc_id"), account_id},
-                                         {QSL(":read"), read == RootItem::ReadStatus::Read ? 0 : 1}});
+  return customIdsOfMessagesByCondition(db, cond, {{QSL(":read"), read == RootItem::ReadStatus::Read ? 0 : 1}});
 }
 
 QStringList DatabaseQueries::customIdsOfUnreadMessages(const QSqlDatabase& db, int account_id) {
