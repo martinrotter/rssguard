@@ -35,6 +35,9 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QString whereClauseUnreadArticles(int account_id);
     static QString whereClauseProbe(Search* probe, int account_id);
     static QString whereClauseLabel(int label_id, int account_id);
+    static QString whereClauseLabels(int account_id);
+    static QString whereClauseAccount(int account_id);
+    static QString whereClauseFeeds(const QStringList& feed_ids, int account_id);
 
     // Labels
     static void deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);

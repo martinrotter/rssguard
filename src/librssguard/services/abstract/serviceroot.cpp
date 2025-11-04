@@ -901,43 +901,24 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     model->setFilter(DatabaseQueries::whereClauseProbe(item->toProbe(), accountId()));
   }
   else if (item->kind() == RootItem::Kind::Label) {
-    // Show messages with particular label.
     model->setFilter(DatabaseQueries::whereClauseLabel(item->id(), accountId()));
   }
   else if (item->kind() == RootItem::Kind::Labels) {
-    // Show messages with any label.
-    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1 AND "
-                         "EXISTS (SELECT 1 "
-                         "FROM LabelsInMessages "
-                         "WHERE "
-                         "  LabelsInMessages.account_id = %1 AND "
-                         "  LabelsInMessages.message = Messages.id)")
-                       .arg(QString::number(accountId())));
+    model->setFilter(DatabaseQueries::whereClauseLabels(accountId()));
   }
   else if (item->kind() == RootItem::Kind::ServiceRoot) {
-    model->setFilter(QSL("Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
-                       .arg(QString::number(accountId())));
-
-    qDebugNN << LOGSEC_CORE << "Displaying messages from account:" << QUOTE_W_SPACE_DOT(accountId());
+    model->setFilter(DatabaseQueries::whereClauseAccount(accountId()));
   }
   else if (item->kind() == RootItem::Kind::Probes) {
     model->setFilter(QSL(DEFAULT_SQL_MESSAGES_FILTER));
 
-    qWarningNN << LOGSEC_CORE << "Showing of all regex queries combined is not supported.";
+    qWarningNN << LOGSEC_CORE << "Showing of all queries combined is not supported.";
   }
   else {
     QList<Feed*> children = item->getSubTreeFeeds();
-    QString filter_clause = textualFeedIds(children).join(QSL(", "));
+    QStringList feed_ids = textualFeedIds(children);
 
-    if (filter_clause.isEmpty()) {
-      filter_clause = QSL("NULL");
-    }
-
-    model->setFilter(QSL("Messages.feed IN (%1) AND Messages.is_deleted = 0 AND Messages.is_pdeleted = 0 AND "
-                         "Messages.account_id = %2")
-                       .arg(filter_clause, QString::number(accountId())));
-
-    qDebugNN << LOGSEC_CORE << "Displaying messages from feeds IDs:" << QUOTE_W_SPACE(filter_clause);
+    model->setFilter(DatabaseQueries::whereClauseFeeds(feed_ids, accountId()));
   }
 
   return true;

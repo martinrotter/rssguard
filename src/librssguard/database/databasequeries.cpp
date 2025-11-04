@@ -69,8 +69,7 @@ QVariantHash DatabaseQueries::deserializeCustomData(const QString& data) {
 }
 
 QString DatabaseQueries::whereClauseBin(int account_id) {
-  return QSL("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1")
-    .arg(QString::number(account_id));
+  return QSL("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1").arg(account_id);
 }
 
 QString DatabaseQueries::whereClauseImportantArticles(int account_id) {
@@ -78,7 +77,7 @@ QString DatabaseQueries::whereClauseImportantArticles(int account_id) {
              "Messages.is_deleted = 0 AND "
              "Messages.is_pdeleted = 0 AND "
              "Messages.account_id = %1")
-    .arg(QString::number(account_id));
+    .arg(account_id);
 }
 
 QString DatabaseQueries::whereClauseUnreadArticles(int account_id) {
@@ -86,7 +85,7 @@ QString DatabaseQueries::whereClauseUnreadArticles(int account_id) {
              "Messages.is_deleted = 0 AND "
              "Messages.is_pdeleted = 0 AND "
              "Messages.account_id = %1")
-    .arg(QString::number(account_id));
+    .arg(account_id);
 }
 
 QString DatabaseQueries::whereClauseProbe(Search* probe, int account_id) {
@@ -104,10 +103,31 @@ QString DatabaseQueries::whereClauseLabel(int label_id, int account_id) {
              "EXISTS (SELECT 1 "
              "FROM LabelsInMessages "
              "WHERE "
-             "  LabelsInMessages.label = %2 AND "
+             "  %2 "
              "  LabelsInMessages.account_id = %1 AND "
              "  LabelsInMessages.message = Messages.id)")
-    .arg(QString::number(account_id), QString::number(label_id));
+    .arg(QString::number(account_id), label_id > 0 ? QSL("LabelsInMessages.label = %1 AND").arg(label_id) : QString());
+}
+
+QString DatabaseQueries::whereClauseLabels(int account_id) {
+  return whereClauseLabel(0, account_id);
+}
+
+QString DatabaseQueries::whereClauseAccount(int account_id) {
+  return QSL("Messages.is_deleted = 0 AND "
+             "Messages.is_pdeleted = 0 AND "
+             "Messages.account_id = %1")
+    .arg(account_id);
+}
+
+QString DatabaseQueries::whereClauseFeeds(const QStringList& feed_ids, int account_id) {
+  QString filter_clause = feed_ids.isEmpty() ? QSL("NULL") : feed_ids.join(QSL(", "));
+
+  return QSL("Messages.feed IN (%1) AND "
+             "Messages.is_deleted = 0 AND "
+             "Messages.is_pdeleted = 0 AND "
+             "Messages.account_id = %2")
+    .arg(filter_clause, QString::number(account_id));
 }
 
 void DatabaseQueries::purgeLabelAssignments(const QSqlDatabase& db, Label* label) {
