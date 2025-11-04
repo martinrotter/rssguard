@@ -746,8 +746,8 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
   return rows_deleted > 0;
 }
 
-void DatabaseQueries::purgeFeedArticles(const QSqlDatabase& database, const QList<Feed*>& feeds) {
-  QSqlQuery q(database);
+void DatabaseQueries::purgeFeedArticles(const QSqlDatabase& db, const QList<Feed*>& feeds) {
+  QSqlQuery q(db);
 
   auto feed_clauses = boolinq::from(feeds)
                         .select([](Feed* feed) {
@@ -2699,24 +2699,24 @@ void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db, int fe
 }
 
 QStringList DatabaseQueries::getAllGmailRecipients(const QSqlDatabase& db, int account_id) {
-  QSqlQuery query(db);
+  QSqlQuery q(db);
   QStringList rec;
 
-  query.prepare(QSL("SELECT DISTINCT author "
-                    "FROM Messages "
-                    "WHERE account_id = :account_id AND author IS NOT NULL AND author != '' "
-                    "ORDER BY lower(author) ASC;"));
-  query.bindValue(QSL(":account_id"), account_id);
+  q.prepare(QSL("SELECT DISTINCT author "
+                "FROM Messages "
+                "WHERE account_id = :account_id AND author IS NOT NULL AND author != '' "
+                "ORDER BY lower(author) ASC;"));
+  q.bindValue(QSL(":account_id"), account_id);
 
-  if (query.exec()) {
-    DatabaseFactory::logLastExecutedQuery(query);
+  if (q.exec()) {
+    DatabaseFactory::logLastExecutedQuery(q);
 
-    while (query.next()) {
-      rec.append(query.value(0).toString());
+    while (q.next()) {
+      rec.append(q.value(0).toString());
     }
   }
   else {
-    qWarningNN << LOGSEC_GMAIL << "Query for all recipients failed: '" << query.lastError().text() << "'.";
+    qWarningNN << LOGSEC_GMAIL << "Query for all recipients failed: '" << q.lastError().text() << "'.";
   }
 
   return rec;

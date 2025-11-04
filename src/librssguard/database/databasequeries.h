@@ -82,7 +82,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                                const Feed* feed,
                                                const Feed::ArticleIgnoreLimit& feed_setup,
                                                const Feed::ArticleIgnoreLimit& app_setup);
-    static void purgeFeedArticles(const QSqlDatabase& database, const QList<Feed*>& feeds);
+    static void purgeFeedArticles(const QSqlDatabase& db, const QList<Feed*>& feeds);
     static void purgeMessage(const QSqlDatabase& db, int message_id);
 
     static void purgeImportantMessages(const QSqlDatabase& db);

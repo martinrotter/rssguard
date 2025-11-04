@@ -27,6 +27,8 @@ set(SOURCES
   database/mariadbdriver.h
   database/sqlitedriver.cpp
   database/sqlitedriver.h
+  database/sqlquery.cpp
+  database/sqlquery.h
   definitions/definitions.h
   definitions/globals.cpp
   definitions/globals.h
