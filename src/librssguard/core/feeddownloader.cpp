@@ -7,6 +7,7 @@
 #include "definitions/definitions.h"
 #include "exceptions/feedfetchexception.h"
 #include "exceptions/filteringexception.h"
+#include "exceptions/sqlexception.h"
 #include "filtering/filteringsystem.h"
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"

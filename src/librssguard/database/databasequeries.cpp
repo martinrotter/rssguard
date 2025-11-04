@@ -5,6 +5,7 @@
 #include "3rd-party/boolinq/boolinq.h"
 #include "database/sqlquery.h"
 #include "definitions/globals.h"
+#include "exceptions/sqlexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -463,11 +464,8 @@ void DatabaseQueries::markMessagesReadUnread(const QSqlDatabase& db,
   markMessagesByCondition(db, QSL("id IN (%1)").arg(ids.join(QSL(", "))), read);
 }
 
-void DatabaseQueries::markFeedsReadUnread(const QSqlDatabase& db,
-                                          const QStringList& ids,
-                                          int account_id,
-                                          RootItem::ReadStatus read) {
-  markMessagesByCondition(db, QSL("feed IN (%1)").arg(ids.join(QSL(", "))), read, account_id);
+void DatabaseQueries::markFeedsReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read) {
+  markMessagesByCondition(db, QSL("feed IN (%1)").arg(ids.join(QSL(", "))), read);
 }
 
 void DatabaseQueries::markBinReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {

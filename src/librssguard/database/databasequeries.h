@@ -4,7 +4,6 @@
 #define DATABASEQUERIES_H
 
 #include "definitions/typedefs.h"
-#include "exceptions/sqlexception.h"
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -62,10 +61,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void markImportantMessagesReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
     static void markUnreadMessagesRead(const QSqlDatabase& db, int account_id);
     static void markMessagesReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read);
-    static void markFeedsReadUnread(const QSqlDatabase& db,
-                                    const QStringList& ids,
-                                    int account_id,
-                                    RootItem::ReadStatus read);
+    static void markFeedsReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read);
     static void markBinReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
     static void markAccountReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read);
 

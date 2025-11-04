@@ -240,7 +240,6 @@ void Feed::markAsReadUnread(RootItem::ReadStatus status) {
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
   DatabaseQueries::markFeedsReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
                                        service->textualFeedIds({this}),
-                                       service->accountId(),
                                        status);
   service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
