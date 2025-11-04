@@ -168,6 +168,10 @@ void ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
                                          : FeedsModel::ExternalDataChange::MarkedUnread);
 }
 
+void ServiceRoot::cleanMessages(bool clean_read_only) {
+  cleanFeeds(getSubTreeFeeds(), clean_read_only);
+}
+
 QList<QAction*> ServiceRoot::addItemMenu() {
   return QList<QAction*>();
 }

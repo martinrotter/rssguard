@@ -66,6 +66,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     virtual void deleteItem();
     virtual void editItems(const QList<RootItem*>& items);
     virtual void markAsReadUnread(ReadStatus status);
+    virtual void cleanMessages(bool clean_read_only);
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
     virtual LabelOperation supportedLabelOperations() const;
