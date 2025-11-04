@@ -241,7 +241,7 @@ CustomMessagePreviewer* ServiceRoot::customMessagePreviewer() {
   return nullptr;
 }
 
-void ServiceRoot::updateCounts(bool including_total_count) {
+void ServiceRoot::updateCounts() {
   QList<Feed*> feeds;
   auto str = getSubTree<RootItem>();
 
@@ -250,11 +250,11 @@ void ServiceRoot::updateCounts(bool including_total_count) {
       feeds.append(child->toFeed());
     }
     else if (child->kind() == RootItem::Kind::Unread) {
-      child->updateCounts(true);
+      child->updateCounts();
     }
     else if (child->kind() != RootItem::Kind::Label && child->kind() != RootItem::Kind::Category &&
              child->kind() != RootItem::Kind::ServiceRoot && child->kind() != RootItem::Kind::Probe) {
-      child->updateCounts(including_total_count);
+      child->updateCounts();
     }
   }
 
@@ -263,22 +263,16 @@ void ServiceRoot::updateCounts(bool including_total_count) {
   }
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  auto counts = DatabaseQueries::getMessageCountsForAccount(database, accountId(), including_total_count);
+  auto counts = DatabaseQueries::getMessageCountsForAccount(database, accountId());
 
   for (Feed* feed : feeds) {
     if (counts.contains(feed->id())) {
       feed->setCountOfUnreadMessages(counts.value(feed->id()).m_unread);
-
-      if (including_total_count) {
-        feed->setCountOfAllMessages(counts.value(feed->id()).m_total);
-      }
+      feed->setCountOfAllMessages(counts.value(feed->id()).m_total);
     }
     else {
       feed->setCountOfUnreadMessages(0);
-
-      if (including_total_count) {
-        feed->setCountOfAllMessages(0);
-      }
+      feed->setCountOfAllMessages(0);
     }
   }
 }
@@ -291,7 +285,7 @@ void ServiceRoot::completelyRemoveAllData() {
   // Purge old data from SQL and clean all model items.
   cleanAllItemsFromModel(true);
   removeOldAccountFromDatabase(true, true);
-  updateCounts(true);
+  updateCounts();
   itemChanged({this});
   informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
@@ -731,7 +725,7 @@ void ServiceRoot::syncIn() {
     new_tree->clearChildren();
     new_tree->deleteLater();
 
-    updateCounts(true);
+    updateCounts();
     informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::AccountSyncedIn);
   }
   catch (const ApplicationException& ex) {
@@ -759,7 +753,7 @@ void ServiceRoot::performInitialAssembly(const Assignment& categories,
   labelsNode()->loadLabels(labels);
   probesNode()->loadProbes(probes);
 
-  updateCounts(true);
+  updateCounts();
 }
 
 RootItem* ServiceRoot::obtainNewTreeForSyncIn() const {
@@ -990,7 +984,7 @@ void ServiceRoot::onAfterSwitchMessageImportance(RootItem* selected_item, const 
   auto in = importantNode();
 
   if (in != nullptr) {
-    in->updateCounts(true);
+    in->updateCounts();
     itemChanged({in});
   }
 }
@@ -1019,7 +1013,7 @@ void ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*>& labe
   Q_UNUSED(assign)
 
   for (Label* lbl : labels) {
-    lbl->updateCounts(true);
+    lbl->updateCounts();
   };
 
   auto list = boolinq::from(labels)
@@ -1036,12 +1030,9 @@ void ServiceRoot::onBeforeMessagesRestoredFromBin(RootItem* selected_item, const
   Q_UNUSED(messages)
 }
 
-void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
-                                             bool refresh_bin,
-                                             bool refresh_only_bin,
-                                             bool including_total_counts) {
+void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages, bool refresh_bin, bool refresh_only_bin) {
   if (refresh_only_bin) {
-    m_recycleBin->updateCounts(true);
+    m_recycleBin->updateCounts();
     itemChanged({m_recycleBin});
   }
   else {
@@ -1055,7 +1046,7 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
                       .toStdVector();
 
     if (feed_ids.empty() || feed_ids.size() > 20) {
-      updateCounts(including_total_counts);
+      updateCounts();
       itemChanged({getSubTree<RootItem>()});
     }
     else {
@@ -1063,7 +1054,7 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
 
       for (int feed_id : feed_ids) {
         auto* fd = feeds_hashed.value(feed_id);
-        fd->updateCounts(including_total_counts);
+        fd->updateCounts();
 
         to_update << fd;
       }
@@ -1071,12 +1062,12 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
       if (m_importantNode != nullptr && msgs_linq.any([](const Message& msg) {
             return msg.m_isImportant;
           })) {
-        m_importantNode->updateCounts(including_total_counts);
+        m_importantNode->updateCounts();
         to_update << m_importantNode;
       }
 
       if (m_unreadNode != nullptr) {
-        m_unreadNode->updateCounts(true);
+        m_unreadNode->updateCounts();
         to_update << m_unreadNode;
       }
 
@@ -1090,14 +1081,14 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
 
         for (Label* lbl : msg_lbls) {
           if (lbl != nullptr) {
-            lbl->updateCounts(including_total_counts);
+            lbl->updateCounts();
             to_update << lbl;
           }
         }
       }
 
       if (refresh_bin) {
-        m_recycleBin->updateCounts(including_total_counts);
+        m_recycleBin->updateCounts();
         to_update << m_recycleBin;
       }
 
@@ -1107,29 +1098,23 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages,
 }
 
 void ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {
-  refreshAfterArticlesChange(messages, true, false, true);
+  refreshAfterArticlesChange(messages, true, false);
 }
 
 void ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages) {
-  refreshAfterArticlesChange(messages,
-                             true,
-                             selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin,
-                             true);
+  refreshAfterArticlesChange(messages, true, selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin);
 }
 
 void ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
                                          const QList<Message>& messages,
                                          RootItem::ReadStatus read) {
-  refreshAfterArticlesChange(messages,
-                             true,
-                             selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin,
-                             false);
+  refreshAfterArticlesChange(messages, true, selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin);
 }
 
 void ServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
   Q_UNUSED(feeds)
 
-  refreshAfterArticlesChange({}, false, false, true);
+  refreshAfterArticlesChange({}, false, false);
 }
 
 QNetworkProxy ServiceRoot::networkProxyForItem(RootItem* item) const {
@@ -1251,26 +1236,26 @@ UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
     QMutexLocker lck(db_mutex);
 
     // Something was added or updated in the DB, update numbers.
-    feed->updateCounts(true);
+    feed->updateCounts();
 
     if (recycleBin() != nullptr) {
-      recycleBin()->updateCounts(true);
+      recycleBin()->updateCounts();
     }
 
     if (importantNode() != nullptr) {
-      importantNode()->updateCounts(true);
+      importantNode()->updateCounts();
     }
 
     if (unreadNode() != nullptr) {
-      unreadNode()->updateCounts(true);
+      unreadNode()->updateCounts();
     }
 
     if (labelsNode() != nullptr) {
-      labelsNode()->updateCounts(true);
+      labelsNode()->updateCounts();
     }
 
     if (probesNode() != nullptr) {
-      probesNode()->updateCounts(true);
+      probesNode()->updateCounts();
     }
   }
 

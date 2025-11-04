@@ -12,7 +12,7 @@ class RSSGUARD_DLLSPEC Category : public RootItem {
     explicit Category(RootItem* parent = nullptr);
     explicit Category(const Category& other);
 
-    virtual void updateCounts(bool including_total_count);
+    virtual void updateCounts();
     virtual void cleanMessages(bool clean_read_only);
     virtual void markAsReadUnread(ReadStatus status);
     virtual QString additionalTooltip() const;

@@ -28,15 +28,12 @@ int RecycleBin::countOfAllMessages() const {
   return m_totalCount;
 }
 
-void RecycleBin::updateCounts(bool update_total_count) {
+void RecycleBin::updateCounts() {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   auto ac = DatabaseQueries::getMessageCountsForBin(database, account()->accountId());
 
   m_unreadCount = ac.m_unread;
-
-  if (update_total_count) {
-    m_totalCount = ac.m_total;
-  }
+  m_totalCount = ac.m_total;
 }
 
 QList<QAction*> RecycleBin::contextMenuFeedsList() {
@@ -75,8 +72,8 @@ void RecycleBin::cleanMessages(bool clear_only_read) {
 
   service->onBeforeMessagesDelete(this, {});
   DatabaseQueries::cleanBin(qApp->database()->driver()->connection(metaObject()->className()),
-                                        clear_only_read,
-                                        service->accountId());
+                            clear_only_read,
+                            service->accountId());
   service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
@@ -101,7 +98,7 @@ void RecycleBin::restore() {
   ServiceRoot* parent_root = account();
 
   DatabaseQueries::restoreBin(database, parent_root->accountId());
-  parent_root->updateCounts(true);
+  parent_root->updateCounts();
   parent_root->itemChanged(parent_root->getSubTree<RootItem>());
   parent_root->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::RecycleBinRestored);
 }

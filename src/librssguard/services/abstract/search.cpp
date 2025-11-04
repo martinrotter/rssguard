@@ -53,9 +53,7 @@ void Search::deleteItem() {
   account()->requestItemRemoval(this);
 }
 
-void Search::updateCounts(bool including_total_count) {
-  Q_UNUSED(including_total_count)
-
+void Search::updateCounts() {
   setCountOfAllMessages(-1);
   setCountOfUnreadMessages(-1);
 }

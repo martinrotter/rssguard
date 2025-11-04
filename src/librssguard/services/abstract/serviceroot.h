@@ -61,7 +61,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
 
     virtual FormAccountDetails* accountSetupDialog() const;
     virtual void onDatabaseCleanup();
-    virtual void updateCounts(bool including_total_count);
+    virtual void updateCounts();
     virtual bool canBeDeleted() const;
     virtual void deleteItem();
     virtual void editItems(const QList<RootItem*>& items);
@@ -259,10 +259,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void itemRemovalRequested(RootItem* item);
 
   private:
-    void refreshAfterArticlesChange(const QList<Message>& messages,
-                                    bool refresh_bin,
-                                    bool refresh_only_bin,
-                                    bool including_total_counts);
+    void refreshAfterArticlesChange(const QList<Message>& messages, bool refresh_bin, bool refresh_only_bin);
 
     void resortAccountTree(RootItem* tree,
                            const QMap<QString, QVariantMap>& custom_category_data,

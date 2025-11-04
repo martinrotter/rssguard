@@ -84,9 +84,9 @@ void RootItem::cleanMessages(bool clear_only_read) {
   }
 }
 
-void RootItem::updateCounts(bool including_total_count) {
+void RootItem::updateCounts() {
   for (RootItem* child : std::as_const(m_childItems)) {
-    child->updateCounts(including_total_count);
+    child->updateCounts();
   }
 }
 

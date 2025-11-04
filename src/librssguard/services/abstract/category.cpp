@@ -16,7 +16,7 @@ Category::Category(const Category& other) : RootItem(other) {
   setKind(RootItem::Kind::Category);
 }
 
-void Category::updateCounts(bool including_total_count) {
+void Category::updateCounts() {
   QList<Feed*> feeds;
   auto str = childItems();
 
@@ -25,7 +25,7 @@ void Category::updateCounts(bool including_total_count) {
       feeds.append(child->toFeed());
     }
     else if (child->kind() == RootItem::Kind::Category) {
-      child->updateCounts(including_total_count);
+      child->updateCounts();
     }
   }
 
@@ -34,16 +34,12 @@ void Category::updateCounts(bool including_total_count) {
   }
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  auto counts =
-    DatabaseQueries::getMessageCountsForCategory(database, id(), account()->accountId(), including_total_count);
+  auto counts = DatabaseQueries::getMessageCountsForCategory(database, id(), account()->accountId());
 
   for (Feed* feed : feeds) {
     if (counts.contains(feed->id())) {
       feed->setCountOfUnreadMessages(counts.value(feed->id()).m_unread);
-
-      if (including_total_count) {
-        feed->setCountOfAllMessages(counts.value(feed->id()).m_total);
-      }
+      feed->setCountOfAllMessages(counts.value(feed->id()).m_total);
     }
   }
 }

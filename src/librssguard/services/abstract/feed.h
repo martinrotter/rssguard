@@ -114,7 +114,7 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     static bool isErrorStatus(Feed::Status status);
 
   public slots:
-    virtual void updateCounts(bool including_total_count);
+    virtual void updateCounts();
 
   protected:
     QString getAutoUpdateStatusDescription() const;

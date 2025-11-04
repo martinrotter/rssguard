@@ -394,7 +394,7 @@ void FeedReader::onFeedUpdatesFinished(FeedDownloadResults updated_feeds) {
   if (!update_feed_list) {
     // NOTE: Counts were not updated during feed fetching, update them now.
     for (auto* acc : updated_feeds.updatedAccounts()) {
-      acc->updateCounts(true);
+      acc->updateCounts();
     }
   }
 

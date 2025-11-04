@@ -166,7 +166,7 @@ int FeedsModel::countOfUnreadMessages() const {
 }
 
 void FeedsModel::reloadCountsOfWholeModel() {
-  m_rootItem->updateCounts(true);
+  m_rootItem->updateCounts();
   reloadWholeLayout();
   notifyWithCounts();
 }
@@ -183,7 +183,7 @@ void FeedsModel::removeItem(RootItem* deleting_item) {
     endRemoveRows();
 
     if (deleting_item->kind() != RootItem::Kind::ServiceRoot) {
-      deleting_item->account()->updateCounts(true);
+      deleting_item->account()->updateCounts();
     }
 
     delete deleting_item;

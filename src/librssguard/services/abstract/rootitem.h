@@ -98,7 +98,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
 
     // Reloads current counts of articles in this item from DB and
     // sets.
-    virtual void updateCounts(bool including_total_count);
+    virtual void updateCounts();
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
     virtual Qt::ItemFlags additionalFlags() const;

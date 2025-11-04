@@ -64,7 +64,7 @@ void QuiteRssImport::import() {
       return tr("Imported articles from %1 feeds...").arg(progress);
     });
 
-  m_account->updateCounts(true);
+  m_account->updateCounts();
   m_account->itemChanged(m_account->getSubTree<RootItem>());
 
   delete feed_tree;

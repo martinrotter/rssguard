@@ -205,10 +205,8 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
       filtering.filterRun().setIndexOfCurrentFilter(0);
 
       // We process messages of the feed.
-      QList<Message> msgs = DatabaseQueries::getUndeletedMessagesForFeed(database,
-                                                                         it->id(),
-                                                                         account->labelsNode()->getHashedLabels(),
-                                                                         account->accountId());
+      QList<Message> msgs =
+        DatabaseQueries::getUndeletedMessagesForFeed(database, it->id(), account->labelsNode()->getHashedLabels());
       QList<Message> read_msgs, important_msgs;
 
       for (int i = 0; i < msgs.size(); i++) {

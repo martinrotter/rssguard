@@ -15,9 +15,7 @@ UnreadNode::UnreadNode(RootItem* parent_item) : RootItem(parent_item) {
   setDescription(tr("You can find all unread articles here."));
 }
 
-void UnreadNode::updateCounts(bool including_total_count) {
-  Q_UNUSED(including_total_count)
-
+void UnreadNode::updateCounts() {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();
 

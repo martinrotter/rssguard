@@ -420,12 +420,11 @@ void FormMessageFiltersManager::displayMessagesOfFeed() {
 
   if (item != nullptr) {
     QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-    int account_id = item->account()->accountId();
     QList<Message> msgs;
     auto labels = item->account()->labelsNode()->getHashedLabels();
 
     for (Feed* feed : item->getSubTreeFeeds()) {
-      msgs.append(DatabaseQueries::getUndeletedMessagesForFeed(database, feed->id(), labels, account_id));
+      msgs.append(DatabaseQueries::getUndeletedMessagesForFeed(database, feed->id(), labels));
     }
 
     m_msgModel->setMessages(msgs);
@@ -443,8 +442,8 @@ void FormMessageFiltersManager::loadAccount(ServiceRoot* account) {
   if (account != nullptr) {
     QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
     m_msgModel->setMessages(DatabaseQueries::getUndeletedMessagesForAccount(database,
-                                                                            account->labelsNode()->getHashedLabels(),
-                                                                            account->accountId()));
+                                                                            account->accountId(),
+                                                                            account->labelsNode()->getHashedLabels()));
   }
   else {
     m_msgModel->setMessages({});

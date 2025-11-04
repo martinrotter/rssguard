@@ -45,26 +45,20 @@ void LabelsNode::markAsReadUnread(RootItem::ReadStatus status) {
                                          : FeedsModel::ExternalDataChange::MarkedUnread);
 }
 
-void LabelsNode::updateCounts(bool including_total_count) {
+void LabelsNode::updateCounts() {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();
   auto acc = DatabaseQueries::getMessageCountsForAllLabels(database, account_id);
 
   for (Label* lbl : labels()) {
     if (!acc.contains(lbl->id())) {
-      if (including_total_count) {
-        lbl->setCountOfAllMessages(0);
-      }
-
+      lbl->setCountOfAllMessages(0);
       lbl->setCountOfUnreadMessages(0);
     }
     else {
       auto ac = acc.value(lbl->id());
 
-      if (including_total_count) {
-        lbl->setCountOfAllMessages(ac.m_total);
-      }
-
+      lbl->setCountOfAllMessages(ac.m_total);
       lbl->setCountOfUnreadMessages(ac.m_unread);
     }
   }

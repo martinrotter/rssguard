@@ -18,7 +18,7 @@ class RSSGUARD_DLLSPEC RecycleBin : public RootItem {
     virtual void cleanMessages(bool clear_only_read);
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
-    virtual void updateCounts(bool update_total_count);
+    virtual void updateCounts();
 
   public slots:
     virtual void empty();

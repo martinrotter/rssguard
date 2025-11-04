@@ -30,7 +30,7 @@ class RSSGUARD_DLLSPEC Label : public RootItem {
     virtual bool canBeEdited() const;
     virtual bool canBeDeleted() const;
     virtual void deleteItem();
-    virtual void updateCounts(bool including_total_count);
+    virtual void updateCounts();
 
   public slots:
     void assignToMessage(const Message& msg, bool reload_feeds_model = true);

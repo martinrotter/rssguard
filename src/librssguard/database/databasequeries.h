@@ -90,15 +90,10 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     // Counts of unread/all messages.
     static QMap<int, ArticleCounts> getMessageCountsForCategory(const QSqlDatabase& db,
                                                                 int category_id,
-                                                                int account_id,
-                                                                bool include_total_counts);
-    static QMap<int, ArticleCounts> getMessageCountsForAccount(const QSqlDatabase& db,
-                                                               int account_id,
-                                                               bool include_total_counts);
-
+                                                                int account_id);
+    static QMap<int, ArticleCounts> getMessageCountsForAccount(const QSqlDatabase& db, int account_id);
     static ArticleCounts getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id);
     static QMap<int, ArticleCounts> getMessageCountsForAllLabels(const QSqlDatabase& db, int account_id);
-
     static ArticleCounts getMessageCountsForFeed(const QSqlDatabase& db, int feed_id, int account_id);
     static ArticleCounts getImportantMessageCounts(const QSqlDatabase& db, int account_id);
     static ArticleCounts getUnreadMessageCounts(const QSqlDatabase& db, int account_id);
@@ -106,12 +101,11 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
 
     // Get messages (for newspaper view for example).
     static QList<Message> getUndeletedMessagesForAccount(const QSqlDatabase& db,
-                                                         const QHash<QString, Label*>& labels,
-                                                         int account_id);
+                                                         int account_id,
+                                                         const QHash<QString, Label*>& labels);
     static QList<Message> getUndeletedMessagesForFeed(const QSqlDatabase& db,
                                                       int feed_id,
-                                                      const QHash<QString, Label*>& labels,
-                                                      int account_id);
+                                                      const QHash<QString, Label*>& labels);
 
     // Custom ID accumulators.
     static int highestPrimaryIdFeeds(const QSqlDatabase& db);

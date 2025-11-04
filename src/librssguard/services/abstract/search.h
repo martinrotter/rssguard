@@ -34,7 +34,7 @@ class RSSGUARD_DLLSPEC Search : public RootItem {
     virtual bool canBeEdited() const;
     virtual bool canBeDeleted() const;
     virtual void deleteItem();
-    virtual void updateCounts(bool including_total_count);
+    virtual void updateCounts();
 
   private:
     QString m_filter;

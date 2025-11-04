@@ -53,15 +53,12 @@ void Label::deleteItem() {
   account()->requestItemRemoval(this);
 }
 
-void Label::updateCounts(bool including_total_count) {
+void Label::updateCounts() {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();
   auto ac = DatabaseQueries::getMessageCountsForLabel(database, this, account_id);
 
-  if (including_total_count) {
-    setCountOfAllMessages(ac.m_total);
-  }
-
+  setCountOfAllMessages(ac.m_total);
   setCountOfUnreadMessages(ac.m_unread);
 }
 
