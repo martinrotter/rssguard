@@ -911,7 +911,7 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     model->setFilter(DatabaseQueries::whereClauseLabels(accountId()));
   }
   else if (item->kind() == RootItem::Kind::ServiceRoot) {
-    model->setFilter(DatabaseQueries::whereClauseAccount(accountId()));
+    model->setFilter(DatabaseQueries::whereClauseAccount(false, accountId()));
   }
   else if (item->kind() == RootItem::Kind::Probes) {
     model->setFilter(QSL(DEFAULT_SQL_MESSAGES_FILTER));
@@ -922,7 +922,7 @@ bool ServiceRoot::loadMessagesForItem(RootItem* item, MessagesModel* model) {
     QList<Feed*> children = item->getSubTreeFeeds();
     QStringList feed_ids = textualFeedIds(children);
 
-    model->setFilter(DatabaseQueries::whereClauseFeeds(feed_ids, accountId()));
+    model->setFilter(DatabaseQueries::whereClauseFeeds(feed_ids));
   }
 
   return true;

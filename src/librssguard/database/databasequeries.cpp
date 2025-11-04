@@ -95,7 +95,7 @@ QString DatabaseQueries::whereClauseProbe(Search* probe, int account_id) {
              "Messages.is_pdeleted = 0 AND "
              "Messages.account_id = %1 AND "
              "(Messages.title REGEXP '%2' OR Messages.contents REGEXP '%2')")
-    .arg(QString::number(account_id), probe->filter());
+    .arg(QString::number(account_id), probe->filter().replace(QSL("'"), QSL("''")));
 }
 
 QString DatabaseQueries::whereClauseLabel(int label_id, int account_id) {
@@ -115,21 +115,34 @@ QString DatabaseQueries::whereClauseLabels(int account_id) {
   return whereClauseLabel(0, account_id);
 }
 
-QString DatabaseQueries::whereClauseAccount(int account_id) {
-  return QSL("Messages.is_deleted = 0 AND "
+QString DatabaseQueries::whereClauseAccount(bool including_deleted, int account_id) {
+  return QSL("%2 "
              "Messages.is_pdeleted = 0 AND "
              "Messages.account_id = %1")
-    .arg(account_id);
+    .arg(QString::number(account_id), including_deleted ? QString() : QSL("Messages.is_deleted = 0 AND"));
 }
 
-QString DatabaseQueries::whereClauseFeeds(const QStringList& feed_ids, int account_id) {
-  QString filter_clause = feed_ids.isEmpty() ? QSL("NULL") : feed_ids.join(QSL(", "));
+QString DatabaseQueries::whereClauseFeeds(const QStringList& feed_ids) {
+  QString filter_clause;
 
-  return QSL("Messages.feed IN (%1) AND "
+  switch (feed_ids.size()) {
+    case 0:
+      filter_clause = QSL("Messages.feed IN (NULL)");
+      break;
+
+    case 1:
+      filter_clause = QSL("Messages.feed = %1").arg(feed_ids.first());
+      break;
+
+    default:
+      filter_clause = QSL("Messages.feed IN (%1)").arg(feed_ids.join(QSL(", ")));
+      break;
+  }
+
+  return QSL("%1 AND "
              "Messages.is_deleted = 0 AND "
-             "Messages.is_pdeleted = 0 AND "
-             "Messages.account_id = %2")
-    .arg(filter_clause, QString::number(account_id));
+             "Messages.is_pdeleted = 0")
+    .arg(filter_clause);
 }
 
 void DatabaseQueries::purgeLabelAssignments(const QSqlDatabase& db, Label* label) {
@@ -390,72 +403,39 @@ QStringList DatabaseQueries::customIdsOfMessagesByCondition(const QSqlDatabase& 
 
 void DatabaseQueries::markMessagesByCondition(const QSqlDatabase& db,
                                               const QString& where_clause,
-                                              RootItem::ReadStatus read,
-                                              int account_id) {
+                                              RootItem::ReadStatus read) {
   SqlQuery q(db);
   q.setForwardOnly(true);
 
-  QString sql = QSL("UPDATE Messages SET is_read = :read "
-                    "WHERE is_deleted = 0 AND is_pdeleted = 0");
-
-  if (account_id > 0) {
-    sql += QSL(" AND account_id = :account_id");
-  }
-
-  if (!where_clause.isEmpty()) {
-    sql += QSL(" AND (%1)").arg(where_clause);
-  }
-
-  sql += QL1C(';');
+  QString sql = QSL("UPDATE Messages SET is_read = :read WHERE %1;").arg(where_clause);
 
   q.prepare(sql);
   q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
-
-  if (account_id > 0) {
-    q.bindValue(":account_id", account_id);
-  }
-
   q.exec();
 }
 
 void DatabaseQueries::markProbeReadUnread(const QSqlDatabase& db, Search* probe, RootItem::ReadStatus read) {
-  markMessagesByCondition(db,
-                          QSL("title REGEXP '%1' OR contents REGEXP '%1'")
-                            .arg(probe->filter().replace(QSL("'"), QSL("''"))),
-                          read,
-                          probe->account()->accountId());
+  markMessagesByCondition(db, whereClauseProbe(probe, probe->account()->accountId()), read);
 }
 
 void DatabaseQueries::markAllLabelledMessagesReadUnread(const QSqlDatabase& db,
                                                         int account_id,
                                                         RootItem::ReadStatus read) {
-  markMessagesByCondition(db,
-                          QSL("EXISTS ("
-                              "  SELECT 1 "
-                              "  FROM LabelsInMessages lim "
-                              "  WHERE lim.account_id = Messages.account_id AND lim.message = Messages.id)"),
-                          read,
-                          account_id);
+  markMessagesByCondition(db, whereClauseLabels(account_id), read);
 }
 
 void DatabaseQueries::markLabelledMessagesReadUnread(const QSqlDatabase& db, Label* label, RootItem::ReadStatus read) {
-  markMessagesByCondition(db,
-                          QSL("id IN (SELECT message FROM LabelsInMessages "
-                              "WHERE label = %1 AND account_id = %2)")
-                            .arg(label->id())
-                            .arg(label->account()->accountId()),
-                          read,
-                          label->account()->accountId());
+  markMessagesByCondition(db, whereClauseLabel(label->id(), label->account()->accountId()), read);
 }
 
 void DatabaseQueries::markImportantMessagesReadUnread(const QSqlDatabase& db,
                                                       int account_id,
                                                       RootItem::ReadStatus read) {
-  markMessagesByCondition(db, QSL("is_important = 1"), read, account_id);
+  markMessagesByCondition(db, whereClauseImportantArticles(account_id), read);
 }
 
 void DatabaseQueries::markUnreadMessagesRead(const QSqlDatabase& db, int account_id) {
-  markMessagesByCondition(db, QSL("is_read = 0"), RootItem::ReadStatus::Read, account_id);
+  markMessagesByCondition(db, whereClauseUnreadArticles(account_id), RootItem::ReadStatus::Read);
 }
 
 void DatabaseQueries::markMessagesReadUnread(const QSqlDatabase& db,
@@ -465,28 +445,15 @@ void DatabaseQueries::markMessagesReadUnread(const QSqlDatabase& db,
 }
 
 void DatabaseQueries::markFeedsReadUnread(const QSqlDatabase& db, const QStringList& ids, RootItem::ReadStatus read) {
-  markMessagesByCondition(db, QSL("feed IN (%1)").arg(ids.join(QSL(", "))), read);
+  markMessagesByCondition(db, whereClauseFeeds(ids), read);
 }
 
 void DatabaseQueries::markBinReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
-  SqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("UPDATE Messages SET is_read = :read WHERE %1;").arg(whereClauseBin(account_id)));
-  q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
-
-  q.exec();
+  markMessagesByCondition(db, whereClauseBin(account_id), read);
 }
 
 void DatabaseQueries::markAccountReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
-  SqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("UPDATE Messages SET is_read = :read WHERE is_pdeleted = 0 AND account_id = :account_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":read"), read == RootItem::ReadStatus::Read ? 1 : 0);
-
-  q.exec();
+  markMessagesByCondition(db, whereClauseAccount(true, account_id), read);
 }
 
 void DatabaseQueries::markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance) {
@@ -563,10 +530,10 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
   q.prepare(QSL("SELECT Messages.date_created "
                 "FROM Messages "
                 "WHERE "
-                "  Messages.account_id = :account_id AND "
                 "  Messages.feed = :feed AND "
                 "  Messages.is_deleted = 0 AND "
-                "  Messages.is_pdeleted = 0 "
+                "  Messages.is_pdeleted = 0 AND "
+                "  Messages.account_id = :account_id "
                 "ORDER BY Messages.date_created DESC "
                 "LIMIT 1 OFFSET :offset;"));
 
@@ -584,10 +551,10 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
     q.prepare(QSL("UPDATE Messages "
                   "SET is_deleted = 1 "
                   "WHERE "
-                  "  Messages.account_id = :account_id AND "
                   "  Messages.feed = :feed AND "
                   "  Messages.is_deleted = 0 AND "
                   "  Messages.is_pdeleted = 0 AND "
+                  "  Messages.account_id = :account_id AND "
                   "  Messages.is_important != :is_important AND "
                   "  Messages.is_read != :is_read AND "
                   "  Messages.date_created < :stamp"));

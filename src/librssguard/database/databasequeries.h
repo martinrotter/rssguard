@@ -35,8 +35,8 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QString whereClauseProbe(Search* probe, int account_id);
     static QString whereClauseLabel(int label_id, int account_id);
     static QString whereClauseLabels(int account_id);
-    static QString whereClauseAccount(int account_id);
-    static QString whereClauseFeeds(const QStringList& feed_ids, int account_id);
+    static QString whereClauseAccount(bool including_deleted, int account_id);
+    static QString whereClauseFeeds(const QStringList& feed_ids);
 
     // Labels
     static void deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
@@ -223,10 +223,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QStringList customIdsOfMessagesByCondition(const QSqlDatabase& db,
                                                       const QString& condition,
                                                       const QVariantMap& bindings = {});
-    static void markMessagesByCondition(const QSqlDatabase& db,
-                                        const QString& where_clause,
-                                        RootItem::ReadStatus read,
-                                        int account_id = 0);
+    static void markMessagesByCondition(const QSqlDatabase& db, const QString& where_clause, RootItem::ReadStatus read);
     static void purgeMessagesByCondition(const QSqlDatabase& db, const QString& where_clause);
     static void cleanMessagesByCondition(const QSqlDatabase& db,
                                          const QString& where_clause,

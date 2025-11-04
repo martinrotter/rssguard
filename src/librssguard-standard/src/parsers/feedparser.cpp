@@ -18,8 +18,7 @@
 FeedParser::FeedParser() {}
 
 FeedParser::FeedParser(QString data, DataType is_xml)
-  : m_dataType(is_xml), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")),
-    m_fetchComments(false) {
+  : m_dataType(is_xml), m_data(data), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")), m_fetchComments(false) {
   if (m_data.isEmpty()) {
     return;
   }
