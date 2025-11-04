@@ -77,27 +77,6 @@ DatabaseDriver* DatabaseFactory::driverForType(DatabaseDriver::DriverType d) con
   });
 }
 
-void DatabaseFactory::logLastExecutedQuery(const QSqlQuery& query) {
-  QString str = query.lastQuery();
-
-#if QT_VERSION_MAJOR == 5
-  QMapIterator<QString, QVariant> it(query.boundValues());
-
-  while (it.hasNext()) {
-    it.next();
-
-    if (it.value().type() == QVariant::Type::Char || it.value().type() == QVariant::Type::String) {
-      str.replace(it.key(), QSL("'%1'").arg(it.value().toString()));
-    }
-    else {
-      str.replace(it.key(), it.value().toString());
-    }
-  }
-#endif
-
-  qDebugNN << LOGSEC_DB << "Executed query:\n" << str;
-}
-
 QString DatabaseFactory::escapeQuery(const QString& query) {
   return QString(query).replace(QSL("'"), QSL("''"));
 

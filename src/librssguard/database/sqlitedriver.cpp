@@ -29,9 +29,9 @@ bool SqliteDriver::vacuumDatabase() {
   saveDatabase();
   database = connection(objectName(), DatabaseDriver::DesiredStorageType::StrictlyFileBased);
 
-  QSqlQuery query_vacuum(database);
+  SqlQuery query_vacuum(database);
 
-  return query_vacuum.exec(QSL("PRAGMA optimize")) && query_vacuum.exec(QSL("VACUUM"));
+  return query_vacuum.exec(QSL("PRAGMA optimize;"), false) && query_vacuum.exec(QSL("VACUUM;"), false);
 }
 
 QString SqliteDriver::ddlFilePrefix() const {
@@ -156,7 +156,7 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name, DesiredSto
                << QUOTE_W_SPACE(database.databaseName()) << "seems to be established.";
     }
 
-    QSqlQuery query_db(database);
+    SqlQuery query_db(database);
 
     query_db.setForwardOnly(true);
     setPragmas(query_db);
@@ -309,15 +309,15 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
   if (in_memory) {
     // Loading messages from file-based database.
     QSqlDatabase file_database = connection(objectName(), DatabaseDriver::DesiredStorageType::StrictlyFileBased);
-    QSqlQuery copy_contents(database);
+    SqlQuery copy_contents(database);
 
     // Attach database.
-    copy_contents.exec(QSL("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()));
+    copy_contents.exec(QSL("ATTACH DATABASE '%1' AS 'storage';").arg(file_database.databaseName()), false);
 
     // Copy all stuff.
     QStringList tables;
 
-    if (copy_contents.exec(QSL("SELECT name FROM storage.sqlite_master WHERE type = 'table';"))) {
+    if (copy_contents.exec(QSL("SELECT name FROM storage.sqlite_master WHERE type = 'table';"), false)) {
       while (copy_contents.next()) {
         tables.append(copy_contents.value(0).toString());
       }
@@ -333,7 +333,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
     qDebugNN << LOGSEC_DB << "Copying data from file-based database into working in-memory database.";
 
     // Detach database and finish.
-    copy_contents.exec(QSL("DETACH 'storage'"));
+    copy_contents.exec(QSL("DETACH 'storage'"), false);
 
     file_database.close();
     QSqlDatabase::removeDatabase(file_database.connectionName());
@@ -355,23 +355,23 @@ QString SqliteDriver::databaseFilePath() const {
 }
 
 void SqliteDriver::setPragmas(QSqlQuery& query) {
-  query.exec(QSL("PRAGMA encoding = \"UTF-8\""));
-  query.exec(QSL("PRAGMA page_size = 32768"));
-  query.exec(QSL("PRAGMA cache_size = 32768"));
-  query.exec(QSL("PRAGMA mmap_size = 100000000"));
-  query.exec(QSL("PRAGMA count_changes = OFF"));
-  query.exec(QSL("PRAGMA temp_store = MEMORY"));
-  query.exec(QSL("PRAGMA synchronous = OFF"));
-  query.exec(QSL("PRAGMA busy_timeout = 100"));
-  query.exec(QSL("PRAGMA journal_mode = MEMORY"));
+  query.exec(QSL("PRAGMA encoding = \"UTF-8\";"));
+  query.exec(QSL("PRAGMA page_size = 32768;"));
+  query.exec(QSL("PRAGMA cache_size = 32768;"));
+  query.exec(QSL("PRAGMA mmap_size = 100000000;"));
+  query.exec(QSL("PRAGMA count_changes = OFF;"));
+  query.exec(QSL("PRAGMA temp_store = MEMORY;"));
+  query.exec(QSL("PRAGMA synchronous = OFF;"));
+  query.exec(QSL("PRAGMA busy_timeout = 100;"));
+  query.exec(QSL("PRAGMA journal_mode = MEMORY;"));
 }
 
 qint64 SqliteDriver::databaseDataSize() {
   QSqlDatabase database = connection(metaObject()->className(), DatabaseDriver::DesiredStorageType::FromSettings);
   qint64 result = 1;
-  QSqlQuery query(database);
+  SqlQuery query(database);
 
-  if (query.exec(QSL("PRAGMA page_count;"))) {
+  if (query.exec(QSL("PRAGMA page_count;"), false)) {
     query.next();
     result *= query.value(0).value<qint64>();
   }
@@ -379,7 +379,7 @@ qint64 SqliteDriver::databaseDataSize() {
     return 0;
   }
 
-  if (query.exec(QSL("PRAGMA page_size;"))) {
+  if (query.exec(QSL("PRAGMA page_size;"), false)) {
     query.next();
     result *= query.value(0).value<qint64>();
   }

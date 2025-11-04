@@ -7,11 +7,14 @@
 
 class RSSGUARD_DLLSPEC SqlQuery : public QSqlQuery {
   public:
-    explicit SqlQuery(const QString& query = QString(), const QSqlDatabase& db = QSqlDatabase());
+    explicit SqlQuery(const QString& query, const QSqlDatabase& db) = delete;
     explicit SqlQuery(const QSqlDatabase& db);
 
     bool exec(bool throw_ex = true);
     bool exec(const QString& query, bool throw_ex = true);
+
+  private:
+    void logQuery();
 };
 
 #endif // SQLQUERY_H

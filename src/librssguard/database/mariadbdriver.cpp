@@ -31,10 +31,12 @@ MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostnam
   database.setDatabaseName(w_database);
 
   if (database.open() && !database.lastError().isValid()) {
-    QSqlQuery query(QSL("SELECT version();"), database);
+    SqlQuery q(database);
 
-    if (!query.lastError().isValid() && query.next()) {
-      qDebugNN << LOGSEC_DB << "Checked MySQL database, version is" << QUOTE_W_SPACE_DOT(query.value(0).toString());
+    q.exec(QSL("SELECT version();"), false);
+
+    if (!q.lastError().isValid() && q.next()) {
+      qDebugNN << LOGSEC_DB << "Checked MySQL database, version is" << QUOTE_W_SPACE_DOT(q.value(0).toString());
 
       // Connection succeeded, clean up the mess and return OK status.
       database.close();
@@ -104,9 +106,10 @@ DatabaseDriver::DriverType MariaDbDriver::driverType() const {
 
 bool MariaDbDriver::vacuumDatabase() {
   QSqlDatabase database = connection(objectName());
-  QSqlQuery query_vacuum(database);
+  SqlQuery query_vacuum(database);
 
-  return query_vacuum.exec(QSL("OPTIMIZE TABLE Feeds;")) && query_vacuum.exec(QSL("OPTIMIZE TABLE Messages;"));
+  return query_vacuum.exec(QSL("OPTIMIZE TABLE Feeds;"), false) &&
+         query_vacuum.exec(QSL("OPTIMIZE TABLE Messages;"), false);
 }
 
 bool MariaDbDriver::saveDatabase() {
@@ -270,7 +273,7 @@ QSqlDatabase MariaDbDriver::connection(const QString& connection_name,
                << QUOTE_W_SPACE(QDir::toNativeSeparators(database.databaseName())) << "seems to be established.";
     }
 
-    QSqlQuery query_db(database);
+    SqlQuery query_db(database);
 
     query_db.setForwardOnly(true);
     setPragmas(query_db);

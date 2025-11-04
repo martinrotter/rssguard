@@ -42,25 +42,15 @@ QString DatabaseDriver::limitOffset(int limit, int offset) const {
 }
 
 void DatabaseDriver::setForeignKeyChecksEnabled(const QSqlDatabase& db) {
-  QSqlQuery query(foreignKeysEnable(), db);
+  SqlQuery q(db);
 
-  if (query.lastError().isValid()) {
-    throw ApplicationException(query.lastError().text());
-  }
-  else {
-    DatabaseFactory::logLastExecutedQuery(query);
-  }
+  q.exec(foreignKeysEnable());
 }
 
 void DatabaseDriver::setForeignKeyChecksDisabled(const QSqlDatabase& db) {
-  QSqlQuery query(foreignKeysDisable(), db);
+  QSqlQuery q(db);
 
-  if (query.lastError().isValid()) {
-    throw ApplicationException(query.lastError().text());
-  }
-  else {
-    DatabaseFactory::logLastExecutedQuery(query);
-  }
+  q.exec(foreignKeysDisable());
 }
 
 void DatabaseDriver::updateDatabaseSchema(SqlQuery& query, int source_db_schema_version, const QString& database_name) {

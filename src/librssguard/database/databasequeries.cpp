@@ -1335,7 +1335,10 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
 
       if (!vals.isEmpty()) {
         QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
-        SqlQuery bulk_query(final_bulk, db);
+        SqlQuery bulk_query(db);
+
+        bulk_query.exec(final_bulk, false);
+
         auto bulk_error = bulk_query.lastError();
 
         if (bulk_error.isValid()) {
@@ -1429,10 +1432,13 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
     }
   }
 
-  SqlQuery fixup_custom_ids_query(QSL("UPDATE Messages "
-                                         "SET custom_id = id "
-                                         "WHERE custom_id IS NULL OR custom_id = '';"),
-                                     db);
+  SqlQuery fixup_custom_ids_query(db);
+
+  fixup_custom_ids_query.exec(QSL("UPDATE Messages "
+                                  "SET custom_id = id "
+                                  "WHERE custom_id IS NULL OR custom_id = '';"),
+                              false);
+
   QSqlError fixup_custom_ids_error = fixup_custom_ids_query.lastError();
 
   if (fixup_custom_ids_error.isValid()) {
