@@ -8,6 +8,7 @@
 #include "src/standardserviceroot.h"
 
 #include <librssguard/database/databasequeries.h>
+#include <librssguard/database/sqlquery.h>
 #include <librssguard/exceptions/sqlexception.h>
 #include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/gui/dialogs/formprogressworker.h>
@@ -77,7 +78,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
   QList<Message> msgs;
 
   // Load articles and migrate them to RSS Guard.
-  QSqlQuery q(quiterss_db);
+  SqlQuery q(quiterss_db);
   int quiterss_id = feed->property("quiterss_id").toInt();
 
   q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href, read, starred, label "
@@ -85,8 +86,6 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
                 "WHERE feedId = :feed_id;"));
   q.bindValue(QSL(":feed_id"), quiterss_id);
   q.exec();
-
-  DatabaseFactory::logLastExecutedQuery(q);
 
   while (q.next()) {
     try {
@@ -275,21 +274,17 @@ RootItem* QuiteRssImport::extractFeedsAndCategories(const QSqlDatabase& db) cons
 
   roots.insert(0, root);
 
-  QSqlQuery q(db);
+  SqlQuery q(db);
 
-  if (!q.exec(QSL("SELECT id, "
-                  "  text, "
-                  "  title, "
-                  "  description, "
-                  "  xmlUrl, "
-                  "  image, "
-                  "  parentId "
-                  "FROM feeds "
-                  "ORDER BY xmlUrl ASC, parentId ASC;"))) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
+  q.exec(QSL("SELECT id, "
+             "  text, "
+             "  title, "
+             "  description, "
+             "  xmlUrl, "
+             "  image, "
+             "  parentId "
+             "FROM feeds "
+             "ORDER BY xmlUrl ASC, parentId ASC;"));
 
   while (q.next()) {
     int id = q.value(QSL("id")).toInt();
@@ -353,13 +348,9 @@ RootItem* QuiteRssImport::extractFeedsAndCategories(const QSqlDatabase& db) cons
 
 QList<Label*> QuiteRssImport::extractLabels(const QSqlDatabase& db) const {
   QList<Label*> lbls;
-  QSqlQuery q(db);
+  SqlQuery q(db);
 
-  if (!q.exec(QSL("SELECT id, name FROM labels;"))) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
+  q.exec(QSL("SELECT id, name FROM labels;"));
 
   while (q.next()) {
     QString id = q.value(0).toString();
@@ -393,13 +384,9 @@ QIcon QuiteRssImport::decodeBase64Icon(const QString& base64) const {
 }
 
 void QuiteRssImport::checkIfQuiteRss(const QSqlDatabase& db) const {
-  QSqlQuery q(db);
+  SqlQuery q(db);
 
-  if (!q.exec(QSL("SELECT name FROM sqlite_master WHERE type='table';"))) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
+  q.exec(QSL("SELECT name FROM sqlite_master WHERE type='table';"));
 
   QStringList tables = QStringList{QSL("feeds"),
                                    QSL("news"),
@@ -421,12 +408,11 @@ void QuiteRssImport::checkIfQuiteRss(const QSqlDatabase& db) const {
     throw ApplicationException(tr("missing QuiteRSS tables %1").arg(tables.join(QSL(", "))));
   }
 
-  if (!q.exec(QSL("SELECT value FROM info WHERE name = \"version\";")) || !q.next() ||
-      q.value(0).toString() != QSL("17")) {
+  q.exec(QSL("SELECT value FROM info WHERE name = \"version\";"));
+
+  if (!q.next() || q.value(0).toString() != QSL("17")) {
     throw ApplicationException(tr("metadata version 17 was expected"));
   }
-
-  DatabaseFactory::logLastExecutedQuery(q);
 }
 
 QSqlDatabase QuiteRssImport::dbConnection(const QString& db_file, const QString& connection_name) const {

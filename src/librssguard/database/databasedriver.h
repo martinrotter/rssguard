@@ -3,9 +3,10 @@
 #ifndef DATABASEDRIVER_H
 #define DATABASEDRIVER_H
 
+#include "database/sqlquery.h"
+
 #include <QObject>
 #include <QSqlDatabase>
-#include <QSqlQuery>
 
 class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
     Q_OBJECT
@@ -60,9 +61,8 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
                                       DatabaseDriver::DesiredStorageType::FromSettings) = 0;
 
   protected:
-    void updateDatabaseSchema(QSqlQuery& query, int source_db_schema_version, const QString& database_name = {});
-
-    void setSchemaVersion(QSqlQuery& query, int new_schema_version, bool empty_table);
+    void updateDatabaseSchema(SqlQuery& query, int source_db_schema_version, const QString& database_name = {});
+    void setSchemaVersion(SqlQuery& query, int new_schema_version, bool empty_table);
 
     QStringList prepareScript(const QString& base_sql_folder,
                               const QString& sql_file,

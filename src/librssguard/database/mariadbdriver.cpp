@@ -139,17 +139,16 @@ bool MariaDbDriver::finishRestoration() {
 
 qint64 MariaDbDriver::databaseDataSize() {
   QSqlDatabase database = connection(metaObject()->className());
-  QSqlQuery query(database);
+  SqlQuery query(database);
 
   query.prepare("SELECT Round(Sum(data_length + index_length), 1) "
                 "FROM information_schema.tables "
                 "WHERE table_schema = :db "
                 "GROUP BY table_schema;");
   query.bindValue(QSL(":db"), database.databaseName());
+  query.exec();
 
-  if (query.exec() && query.next()) {
-    DatabaseFactory::logLastExecutedQuery(query);
-
+  if (query.next()) {
     return query.value(0).value<qint64>();
   }
   else {
@@ -172,13 +171,13 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
     throw ApplicationException(database.lastError().text());
   }
   else {
-    QSqlQuery query_db(database);
+    SqlQuery query_db(database);
 
     query_db.setForwardOnly(true);
     setPragmas(query_db);
 
-    if (!query_db.exec(QSL("USE %1").arg(database_name)) ||
-        !query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
+    if (!query_db.exec(QSL("USE %1").arg(database_name), false) ||
+        !query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"), false)) {
       // If no "rssguard" database exists or schema version is wrong, then initialize it.
       qWarningNN << LOGSEC_DB << "Error occurred. MySQL database is not initialized. Initializing now.";
 
@@ -187,12 +186,6 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
 
         for (const QString& statement : statements) {
           query_db.exec(statement);
-
-          if (query_db.lastError().isValid()) {
-            throw ApplicationException(query_db.lastError().text());
-          }
-
-          DatabaseFactory::logLastExecutedQuery(query_db);
         }
 
         setSchemaVersion(query_db, QSL(APP_DB_SCHEMA_VERSION).toInt(), true);

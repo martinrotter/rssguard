@@ -132,7 +132,7 @@ QString DatabaseQueries::whereClauseFeeds(const QStringList& feed_ids, int accou
 }
 
 void DatabaseQueries::purgeLabelAssignments(const QSqlDatabase& db, Label* label) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM LabelsInMessages "
@@ -146,7 +146,7 @@ void DatabaseQueries::purgeLabelAssignments(const QSqlDatabase& db, Label* label
 }
 
 void DatabaseQueries::deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM LabelsInMessages "
@@ -163,7 +163,7 @@ void DatabaseQueries::deassignLabelFromMessage(const QSqlDatabase& db, Label* la
 
 void DatabaseQueries::assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
   bool is_sqlite = db.driverName() == QSL(APP_DB_SQLITE_DRIVER);
-  LoggedQuery q(db);
+  SqlQuery q(db);
   QString insert_cmd;
 
   q.setForwardOnly(true);
@@ -187,7 +187,7 @@ void DatabaseQueries::assignLabelToMessage(const QSqlDatabase& db, Label* label,
 }
 
 void DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   // Remove everything first.
   q.setForwardOnly(true);
@@ -217,7 +217,7 @@ void DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<La
 
 QList<Label*> DatabaseQueries::getLabelsForAccount(const QSqlDatabase& db, int account_id) {
   QList<Label*> labels;
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT * FROM Labels WHERE account_id = :account_id;"));
@@ -238,7 +238,7 @@ QList<Label*> DatabaseQueries::getLabelsForAccount(const QSqlDatabase& db, int a
 }
 
 void DatabaseQueries::updateLabel(const QSqlDatabase& db, Label* label) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Labels SET name = :name, color = :color "
@@ -254,7 +254,7 @@ void DatabaseQueries::updateLabel(const QSqlDatabase& db, Label* label) {
 void DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
   purgeLabelAssignments(db, label);
 
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM Labels WHERE id = :id AND account_id = :account_id;"));
@@ -265,7 +265,7 @@ void DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
 }
 
 void DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int account_id, int new_label_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
 
@@ -299,7 +299,7 @@ void DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
 }
 
 void DatabaseQueries::updateProbe(const QSqlDatabase& db, Search* probe) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Probes SET name = :name, fltr = :fltr, color = :color "
@@ -314,7 +314,7 @@ void DatabaseQueries::updateProbe(const QSqlDatabase& db, Search* probe) {
 }
 
 void DatabaseQueries::createProbe(const QSqlDatabase& db, Search* probe, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("INSERT INTO Probes (name, color, fltr, account_id) "
@@ -332,7 +332,7 @@ void DatabaseQueries::createProbe(const QSqlDatabase& db, Search* probe, int acc
 
 QList<Search*> DatabaseQueries::getProbesForAccount(const QSqlDatabase& db, int account_id) {
   QList<Search*> probes;
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT * FROM Probes WHERE account_id = :account_id;"));
@@ -354,7 +354,7 @@ QList<Search*> DatabaseQueries::getProbesForAccount(const QSqlDatabase& db, int 
 }
 
 void DatabaseQueries::deleteProbe(const QSqlDatabase& db, Search* probe) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM Probes WHERE id = :id AND account_id = :account_id;"));
@@ -368,7 +368,7 @@ QStringList DatabaseQueries::customIdsOfMessagesByCondition(const QSqlDatabase& 
                                                             const QString& condition,
                                                             const QVariantMap& bindings) {
   QString sql = QSL("SELECT custom_id FROM Messages WHERE %1;").arg(condition);
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.prepare(sql);
 
@@ -391,7 +391,7 @@ void DatabaseQueries::markMessagesByCondition(const QSqlDatabase& db,
                                               const QString& where_clause,
                                               RootItem::ReadStatus read,
                                               int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
   q.setForwardOnly(true);
 
   QString sql = QSL("UPDATE Messages SET is_read = :read "
@@ -471,7 +471,7 @@ void DatabaseQueries::markFeedsReadUnread(const QSqlDatabase& db,
 }
 
 void DatabaseQueries::markBinReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages SET is_read = :read WHERE %1;").arg(whereClauseBin(account_id)));
@@ -481,7 +481,7 @@ void DatabaseQueries::markBinReadUnread(const QSqlDatabase& db, int account_id, 
 }
 
 void DatabaseQueries::markAccountReadUnread(const QSqlDatabase& db, int account_id, RootItem::ReadStatus read) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages SET is_read = :read WHERE is_pdeleted = 0 AND account_id = :account_id;"));
@@ -492,7 +492,7 @@ void DatabaseQueries::markAccountReadUnread(const QSqlDatabase& db, int account_
 }
 
 void DatabaseQueries::markMessageImportant(const QSqlDatabase& db, int id, RootItem::Importance importance) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages SET is_important = :important WHERE id = :id;"));
@@ -503,7 +503,7 @@ void DatabaseQueries::markMessageImportant(const QSqlDatabase& db, int id, RootI
 }
 
 void DatabaseQueries::switchMessagesImportance(const QSqlDatabase& db, const QStringList& ids) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages SET is_important = NOT is_important WHERE id IN (%1);").arg(ids.join(QSL(", "))));
@@ -512,7 +512,7 @@ void DatabaseQueries::switchMessagesImportance(const QSqlDatabase& db, const QSt
 }
 
 void DatabaseQueries::permanentlyDeleteMessages(const QSqlDatabase& db, const QStringList& ids) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE id IN (%1);").arg(ids.join(QSL(", "))));
@@ -521,7 +521,7 @@ void DatabaseQueries::permanentlyDeleteMessages(const QSqlDatabase& db, const QS
 }
 
 void DatabaseQueries::deleteOrRestoreMessagesToFromBin(const QSqlDatabase& db, const QStringList& ids, bool deleted) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages SET is_deleted = %2, is_pdeleted = %3 WHERE id IN (%1);")
@@ -531,7 +531,7 @@ void DatabaseQueries::deleteOrRestoreMessagesToFromBin(const QSqlDatabase& db, c
 }
 
 void DatabaseQueries::restoreBin(const QSqlDatabase& db, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("UPDATE Messages SET is_deleted = 0 WHERE %1;").arg(whereClauseBin(account_id)));
@@ -559,7 +559,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
   }
 
   // We find datetime stamp of oldest article which will be NOT moved/removed.
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT Messages.date_created "
@@ -622,7 +622,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
 }
 
 void DatabaseQueries::purgeFeedArticles(const QSqlDatabase& db, const QList<Feed*>& feeds) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   auto feed_clauses = boolinq::from(feeds)
                         .select([](Feed* feed) {
@@ -647,7 +647,7 @@ void DatabaseQueries::purgeFeedArticles(const QSqlDatabase& db, const QList<Feed
 }
 
 void DatabaseQueries::purgeMessagesByCondition(const QSqlDatabase& db, const QString& where_clause) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
   q.setForwardOnly(true);
 
   QString sql = QSL("DELETE FROM Messages WHERE %1;").arg(where_clause);
@@ -691,7 +691,7 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSql
                                                                       int category_id,
                                                                       int account_id,
                                                                       bool include_total_counts) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
 
@@ -733,7 +733,7 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSql
 QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAccount(const QSqlDatabase& db,
                                                                      int account_id,
                                                                      bool include_total_counts) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
 
@@ -772,7 +772,7 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAccount(const QSqlD
 ArticleCounts DatabaseQueries::messageCountsByCondition(const QSqlDatabase& db,
                                                         const QString& where_clause,
                                                         const QVariantMap& bindings) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
   q.prepare(QSL("SELECT COUNT(*), SUM(is_read) "
                 "FROM Messages "
                 "WHERE %1;")
@@ -814,7 +814,7 @@ ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, in
 }
 
 ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
   q.setForwardOnly(true);
 
   // Count total and read messages using EXISTS for label.
@@ -845,7 +845,7 @@ ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, 
 }
 
 QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const QSqlDatabase& db, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT lim.label, COUNT(*), SUM(CASE WHEN m.is_read = 0 THEN 1 ELSE 0 END) "
@@ -879,7 +879,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForFeed(const QSqlDatabase& 
                                                             const QHash<QString, Label*>& labels,
                                                             int account_id) {
   QList<Message> messages;
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT %1 "
@@ -903,7 +903,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
                                                                const QHash<QString, Label*>& labels,
                                                                int account_id) {
   QList<Message> messages;
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT %1 "
@@ -922,7 +922,7 @@ QList<Message> DatabaseQueries::getUndeletedMessagesForAccount(const QSqlDatabas
 }
 
 int DatabaseQueries::highestPrimaryIdFeeds(const QSqlDatabase& db) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.exec(QSL("SELECT MAX(id) FROM Feeds;"));
   q.next();
@@ -931,7 +931,7 @@ int DatabaseQueries::highestPrimaryIdFeeds(const QSqlDatabase& db) {
 }
 
 int DatabaseQueries::highestPrimaryIdLabels(const QSqlDatabase& db) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.exec(QSL("SELECT MAX(id) FROM Labels;"));
   q.next();
@@ -941,7 +941,7 @@ int DatabaseQueries::highestPrimaryIdLabels(const QSqlDatabase& db) {
 
 QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::BagOfMessages bag, const Feed* feed) {
   QStringList ids;
-  LoggedQuery q(db);
+  SqlQuery q(db);
   QString query;
 
   q.setForwardOnly(true);
@@ -1008,11 +1008,11 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
 
   if (!force_insert) {
     // Prepare queries.
-    LoggedQuery query_select_with_url(db);
-    LoggedQuery query_select_with_custom_id(db);
-    LoggedQuery query_select_with_custom_id_for_feed(db);
-    LoggedQuery query_select_with_id(db);
-    LoggedQuery query_update(db);
+    SqlQuery query_select_with_url(db);
+    SqlQuery query_select_with_custom_id(db);
+    SqlQuery query_select_with_custom_id_for_feed(db);
+    SqlQuery query_select_with_id(db);
+    SqlQuery query_update(db);
 
     // Here we have query which will check for existence of the "same" message in given feed.
     // The two message are the "same" if:
@@ -1335,7 +1335,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
 
       if (!vals.isEmpty()) {
         QString final_bulk = bulk_insert.arg(vals.join(QSL(", ")));
-        LoggedQuery bulk_query(final_bulk, db);
+        SqlQuery bulk_query(final_bulk, db);
         auto bulk_error = bulk_query.lastError();
 
         if (bulk_error.isValid()) {
@@ -1429,7 +1429,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
     }
   }
 
-  LoggedQuery fixup_custom_ids_query(QSL("UPDATE Messages "
+  SqlQuery fixup_custom_ids_query(QSL("UPDATE Messages "
                                          "SET custom_id = id "
                                          "WHERE custom_id IS NULL OR custom_id = '';"),
                                      db);
@@ -1444,7 +1444,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
 }
 
 void DatabaseQueries::cleanBin(const QSqlDatabase& db, bool clear_only_read, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
 
@@ -1463,7 +1463,7 @@ void DatabaseQueries::cleanBin(const QSqlDatabase& db, bool clear_only_read, int
 void DatabaseQueries::deleteAccount(const QSqlDatabase& db, ServiceRoot* account) {
   moveItem(account, false, true, {}, db);
 
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
 
@@ -1491,7 +1491,7 @@ void DatabaseQueries::deleteAccountData(const QSqlDatabase& db,
                                         int account_id,
                                         bool delete_messages_too,
                                         bool delete_labels_too) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
 
@@ -1529,7 +1529,7 @@ void DatabaseQueries::cleanMessagesByCondition(const QSqlDatabase& db,
                                                const QString& where_clause,
                                                bool clean_read_only,
                                                int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
   q.setForwardOnly(true);
 
   QString sql = QSL("UPDATE Messages SET is_deleted = 1 "
@@ -1582,7 +1582,7 @@ void DatabaseQueries::cleanProbedMessages(const QSqlDatabase& db, bool clean_rea
 }
 
 void DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("DELETE FROM MessageFiltersInFeeds "
@@ -1594,7 +1594,7 @@ void DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& 
 }
 
 void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
   q.setForwardOnly(true);
 
   if (account_id > 0) {
@@ -1763,7 +1763,7 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db,
                                               Category* category,
                                               int account_id,
                                               int new_parent_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
   int next_sort_order;
 
   if (category->id() <= 0 || (category->parent() != nullptr && category->parent()->id() != new_parent_id)) {
@@ -1830,7 +1830,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db,
                                           int account_id,
                                           int new_parent_id,
                                           int new_feed_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
   int next_sort_order;
 
   if (feed->id() <= 0 || (feed->parent() != nullptr && feed->parent()->id() != new_parent_id)) {
@@ -1953,7 +1953,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db,
 }
 
 void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   if (account->accountId() <= 0) {
     // We need to insert account and generate sort order first.
@@ -2002,7 +2002,7 @@ void DatabaseQueries::createOverwriteAccount(const QSqlDatabase& db, ServiceRoot
 void DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account_id) {
   moveItem(feed, false, true, {}, db);
 
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM Messages WHERE feed = :feed AND account_id = :account_id;"));
   q.bindValue(QSL(":feed"), feed->id());
@@ -2025,7 +2025,7 @@ void DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account
 void DatabaseQueries::deleteCategory(const QSqlDatabase& db, Category* category) {
   moveItem(category, false, true, {}, db);
 
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   // Remove this category from database.
   q.setForwardOnly(true);
@@ -2062,7 +2062,7 @@ void DatabaseQueries::moveItem(RootItem* item,
     return;
   }
 
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   if (move_top) {
     move_index = 0;
@@ -2175,7 +2175,7 @@ void DatabaseQueries::moveMessageFilter(QList<MessageFilter*> all_filters,
     return;
   }
 
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   if (move_top) {
     move_index = 0;
@@ -2236,7 +2236,7 @@ MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const Q
                                            "inserted row ID."));
   }
 
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.exec(QSL("SELECT COUNT(*) FROM MessageFilters;"));
   q.next();
@@ -2260,7 +2260,7 @@ MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const Q
 }
 
 void DatabaseQueries::removeMessageFilter(const QSqlDatabase& db, int filter_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM MessageFilters WHERE id = :id;"));
 
@@ -2271,7 +2271,7 @@ void DatabaseQueries::removeMessageFilter(const QSqlDatabase& db, int filter_id)
 }
 
 void DatabaseQueries::removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM MessageFiltersInFeeds WHERE filter = :filter;"));
 
@@ -2282,7 +2282,7 @@ void DatabaseQueries::removeMessageFilterAssignments(const QSqlDatabase& db, int
 }
 
 QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
   QList<MessageFilter*> filters;
 
   q.setForwardOnly(true);
@@ -2305,7 +2305,7 @@ QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db)
 }
 
 void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db, int feed_id, int filter_id, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.prepare(QSL("SELECT COUNT(*) FROM MessageFiltersInFeeds "
                 "WHERE filter = :filter AND feed = :feed AND account_id = :account_id;"));
@@ -2335,7 +2335,7 @@ void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db, int feed
 }
 
 void DatabaseQueries::updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.prepare(QSL("UPDATE MessageFilters SET name = :name, script = :script, is_enabled = :is_enabled, ordr = :ordr "
                 "WHERE id = :id;"));
@@ -2351,7 +2351,7 @@ void DatabaseQueries::updateMessageFilter(const QSqlDatabase& db, MessageFilter*
 }
 
 void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db, int feed_id, int filter_id, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM MessageFiltersInFeeds "
                 "WHERE filter = :filter AND feed = :feed AND account_id = :account_id;"));
@@ -2365,7 +2365,7 @@ void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db, int fe
 }
 
 QStringList DatabaseQueries::getAllGmailRecipients(const QSqlDatabase& db, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
   QStringList rec;
 
   q.prepare(QSL("SELECT DISTINCT author "
@@ -2384,7 +2384,7 @@ QStringList DatabaseQueries::getAllGmailRecipients(const QSqlDatabase& db, int a
 }
 
 QMultiMap<int, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& db, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
   QMultiMap<int, int> filters_in_feeds;
 
   q.prepare(QSL("SELECT filter, feed FROM MessageFiltersInFeeds WHERE account_id = :account_id;"));
@@ -2401,7 +2401,7 @@ QMultiMap<int, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& d
 }
 
 void DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id) {
-  LoggedQuery q(db);
+  SqlQuery q(db);
 
   q.prepare(QSL("SELECT custom_data FROM Accounts WHERE id = :id;"));
   q.bindValue(QSL(":id"), account_id);

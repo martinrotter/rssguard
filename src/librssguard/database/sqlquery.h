@@ -5,10 +5,10 @@
 
 #include <QSqlQuery>
 
-class RSSGUARD_DLLSPEC LoggedQuery : public QSqlQuery {
+class RSSGUARD_DLLSPEC SqlQuery : public QSqlQuery {
   public:
-    explicit LoggedQuery(const QString& query = QString(), const QSqlDatabase& db = QSqlDatabase());
-    explicit LoggedQuery(const QSqlDatabase& db);
+    explicit SqlQuery(const QString& query = QString(), const QSqlDatabase& db = QSqlDatabase());
+    explicit SqlQuery(const QSqlDatabase& db);
 
     bool exec(bool throw_ex = true);
     bool exec(const QString& query, bool throw_ex = true);

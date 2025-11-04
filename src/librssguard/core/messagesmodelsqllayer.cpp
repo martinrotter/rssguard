@@ -3,9 +3,9 @@
 #include "core/messagesmodelsqllayer.h"
 
 #include "database/databasequeries.h"
+#include "database/sqlquery.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
-#include "exceptions/sqlexception.h"
 #include "miscellaneous/application.h"
 
 MessagesModelSqlLayer::MessagesModelSqlLayer() : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)) {
@@ -103,15 +103,10 @@ QList<Message> MessagesModelSqlLayer::fetchMessages(const QHash<QString, Label*>
   }
 
   QString statemnt = selectStatement(limit, offset, additional_article_id);
-  QSqlQuery q(m_db);
+  SqlQuery q(m_db);
 
   q.setForwardOnly(true);
-
-  if (!q.exec(statemnt)) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
+  q.exec(statemnt);
 
   while (q.next()) {
     msgs.append(Message::fromSqlQuery(q, labels));

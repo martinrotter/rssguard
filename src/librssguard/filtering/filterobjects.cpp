@@ -315,7 +315,7 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
 
 bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   // Check database according to duplication attribute_check.
-  QSqlQuery q(m_system->database());
+  SqlQuery q(m_system->database());
   QStringList where_clauses;
   QVector<QPair<QString, QVariant>> bind_values;
 
@@ -373,9 +373,7 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
     q.bindValue(bind.first, bind.second);
   }
 
-  if (q.exec() && q.next()) {
-    DatabaseFactory::logLastExecutedQuery(q);
-
+  if (q.exec(false) && q.next()) {
     if (q.value(0).toInt() > 0) {
       // Whoops, we have the "same" message in database.
       qDebugNN << LOGSEC_CORE << "Message" << QUOTE_W_SPACE(title()) << "was identified as duplicate by filter script.";

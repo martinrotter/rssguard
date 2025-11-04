@@ -235,11 +235,8 @@ Application::~Application() {
 }
 
 void Application::updateCliDebugStatus() {
-  if (m_cmdParser.isSet(QSL(CLI_NSTDOUTERR_SHORT)) ||
-      settings()->value(GROUP(General), SETTING(General::DisableDebugOutput)).toBool()) {
-    qWarningNN << LOGSEC_CORE << "Disabling any/some stdout/stderr outputs.";
-    s_disableDebug = true;
-  }
+  s_disableDebug = m_cmdParser.isSet(QSL(CLI_NSTDOUTERR_SHORT)) ||
+                   settings()->value(GROUP(General), SETTING(General::DisableDebugOutput)).toBool();
 }
 
 void Application::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg) {

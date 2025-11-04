@@ -5,11 +5,11 @@
 #include "database/databasefactory.h"
 #include "exceptions/sqlexception.h"
 
-LoggedQuery::LoggedQuery(const QString& query, const QSqlDatabase& db) : QSqlQuery(query, db) {}
+SqlQuery::SqlQuery(const QString& query, const QSqlDatabase& db) : QSqlQuery(query, db) {}
 
-LoggedQuery::LoggedQuery(const QSqlDatabase& db) : QSqlQuery(db) {}
+SqlQuery::SqlQuery(const QSqlDatabase& db) : QSqlQuery(db) {}
 
-bool LoggedQuery::exec(bool throw_ex) {
+bool SqlQuery::exec(bool throw_ex) {
   const bool ok = QSqlQuery::exec();
 
   DatabaseFactory::logLastExecutedQuery(*this);
@@ -21,7 +21,7 @@ bool LoggedQuery::exec(bool throw_ex) {
   return ok;
 }
 
-bool LoggedQuery::exec(const QString& query, bool throw_ex) {
+bool SqlQuery::exec(const QString& query, bool throw_ex) {
   const bool ok = QSqlQuery::exec(query);
 
   DatabaseFactory::logLastExecutedQuery(*this);

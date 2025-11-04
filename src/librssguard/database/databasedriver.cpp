@@ -63,9 +63,7 @@ void DatabaseDriver::setForeignKeyChecksDisabled(const QSqlDatabase& db) {
   }
 }
 
-void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
-                                          int source_db_schema_version,
-                                          const QString& database_name) {
+void DatabaseDriver::updateDatabaseSchema(SqlQuery& query, int source_db_schema_version, const QString& database_name) {
   const int current_version = QSL(APP_DB_SCHEMA_VERSION).toInt();
 
   while (source_db_schema_version != current_version) {
@@ -77,11 +75,7 @@ void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
                                                  database_name);
 
     for (const QString& statement : statements) {
-      if (!query.exec(statement) && query.lastError().isValid()) {
-        throw ApplicationException(query.lastError().text());
-      }
-
-      DatabaseFactory::logLastExecutedQuery(query);
+      query.exec(statement);
     }
 
     // Increment the version.
@@ -94,7 +88,7 @@ void DatabaseDriver::updateDatabaseSchema(QSqlQuery& query,
   setSchemaVersion(query, current_version, false);
 }
 
-void DatabaseDriver::setSchemaVersion(QSqlQuery& query, int new_schema_version, bool empty_table) {
+void DatabaseDriver::setSchemaVersion(SqlQuery& query, int new_schema_version, bool empty_table) {
   if (!query.prepare(empty_table
                        ? QSL("INSERT INTO Information VALUES ('schema_version', :schema_version);")
                        : QSL("UPDATE Information SET inf_value = :schema_version WHERE inf_key = 'schema_version';"))) {
@@ -102,12 +96,7 @@ void DatabaseDriver::setSchemaVersion(QSqlQuery& query, int new_schema_version, 
   }
 
   query.bindValue(QSL(":schema_version"), QString::number(new_schema_version));
-
-  if (!query.exec()) {
-    throw ApplicationException(query.lastError().text());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(query);
+  query.exec();
 }
 
 QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,

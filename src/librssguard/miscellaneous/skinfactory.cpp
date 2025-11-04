@@ -268,6 +268,7 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
                            .replace(QSL("%article_title%"), message.m_title)
                            .replace(QSL("%article_author%"),
                                     message.m_author.isEmpty() ? tr("unknown author") : message.m_author)
+                           .replace(QSL("%article_feed%"), message.m_feedTitle)
                            .replace(QSL("%article_author_full%"),
                                     tr("Written by ") +
                                       (message.m_author.isEmpty() ? tr("unknown author") : message.m_author))

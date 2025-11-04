@@ -236,13 +236,13 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
     qFatal("SQLite database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
   }
   else {
-    QSqlQuery query_db(database);
+    SqlQuery query_db(database);
 
     query_db.setForwardOnly(true);
     setPragmas(query_db);
 
     // Sample query which checks for existence of tables.
-    if (!query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"))) {
+    if (!query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"), false)) {
       qWarningNN << LOGSEC_DB << "SQLite database is not initialized. Initializing now.";
 
       try {
@@ -250,12 +250,6 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
 
         for (const QString& statement : statements) {
           query_db.exec(statement);
-
-          if (query_db.lastError().isValid()) {
-            throw ApplicationException(query_db.lastError().text());
-          }
-
-          DatabaseFactory::logLastExecutedQuery(query_db);
         }
 
         setSchemaVersion(query_db, QSL(APP_DB_SCHEMA_VERSION).toInt(), true);

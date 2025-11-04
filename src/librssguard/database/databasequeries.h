@@ -244,36 +244,28 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
 
 template <typename T>
 QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const QString& code) {
-  QSqlQuery query(db);
+  SqlQuery query(db);
   QList<ServiceRoot*> roots;
 
-  if (query.exec(QSL("SELECT * FROM Accounts WHERE type = '%1';").arg(code))) {
-    DatabaseFactory::logLastExecutedQuery(query);
+  query.exec(QSL("SELECT * FROM Accounts WHERE type = '%1';").arg(code));
 
-    while (query.next()) {
-      ServiceRoot* root = new T();
+  while (query.next()) {
+    ServiceRoot* root = new T();
 
-      // Load common data.
-      root->setAccountId(query.value(QSL("id")).toInt());
-      root->setSortOrder(query.value(QSL("ordr")).toInt());
+    // Load common data.
+    root->setAccountId(query.value(QSL("id")).toInt());
+    root->setSortOrder(query.value(QSL("ordr")).toInt());
 
-      QNetworkProxy proxy(QNetworkProxy::ProxyType(query.value(QSL("proxy_type")).toInt()),
-                          query.value(QSL("proxy_host")).toString(),
-                          query.value(QSL("proxy_port")).toInt(),
-                          query.value(QSL("proxy_username")).toString(),
-                          TextFactory::decrypt(query.value(QSL("proxy_password")).toString()));
+    QNetworkProxy proxy(QNetworkProxy::ProxyType(query.value(QSL("proxy_type")).toInt()),
+                        query.value(QSL("proxy_host")).toString(),
+                        query.value(QSL("proxy_port")).toInt(),
+                        query.value(QSL("proxy_username")).toString(),
+                        TextFactory::decrypt(query.value(QSL("proxy_password")).toString()));
 
-      root->setNetworkProxy(proxy);
-      root->setCustomDatabaseData(deserializeCustomData(query.value(QSL("custom_data")).toString()));
+    root->setNetworkProxy(proxy);
+    root->setCustomDatabaseData(deserializeCustomData(query.value(QSL("custom_data")).toString()));
 
-      roots.append(root);
-    }
-  }
-  else {
-    qCriticalNN << LOGSEC_DB << "Loading of accounts with code" << QUOTE_W_SPACE(code)
-                << "failed with error:" << QUOTE_W_SPACE_DOT(query.lastError().text());
-
-    throw SqlException(query.lastError());
+    roots.append(root);
   }
 
   return roots;
@@ -284,17 +276,13 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
   Assignment categories;
 
   // Obtain data for categories from the database.
-  QSqlQuery q(db);
+  SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
 
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
+  q.exec();
 
   while (q.next()) {
     AssignmentItem pair;
@@ -330,18 +318,14 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
   Assignment feeds;
 
   // All categories are now loaded.
-  QSqlQuery q(db);
+  SqlQuery q(db);
   auto filters_in_feeds = messageFiltersInFeeds(db, account_id);
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
 
-  if (!q.exec()) {
-    throw SqlException(q.lastError());
-  }
-
-  DatabaseFactory::logLastExecutedQuery(q);
+  q.exec();
 
   while (q.next()) {
     AssignmentItem pair;
