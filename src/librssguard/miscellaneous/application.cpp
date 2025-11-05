@@ -241,7 +241,6 @@ void Application::updateCliDebugStatus() {
 
 void Application::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg) {
 #ifndef QT_NO_DEBUG_OUTPUT
-
   if (s_disableDebug && (type == QtMsgType::QtDebugMsg || type == QtMsgType::QtInfoMsg)) {
     return;
   }

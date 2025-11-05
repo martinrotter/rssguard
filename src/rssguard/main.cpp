@@ -13,6 +13,8 @@
 #endif
 
 #if defined(Q_OS_WIN)
+#include <Windows.h>
+
 #if QT_VERSION_MAJOR == 5
 #include <QtPlatformHeaders/QWindowsWindowFunctions>
 #else
@@ -24,6 +26,13 @@
 #include <QTextCodec>
 
 int main(int argc, char* argv[]) {
+#if defined(Q_OS_WIN)
+  if (AttachConsole(ATTACH_PARENT_PROCESS)) {
+    freopen("CONOUT$", "w", stdout);
+    freopen("CONOUT$", "w", stderr);
+  }
+#endif
+
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
 
   // NOTE: https://github.com/martinrotter/rssguard/issues/1118
