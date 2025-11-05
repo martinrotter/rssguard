@@ -652,7 +652,7 @@ void DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
                              .arg(account_id));
 }
 
-QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db, const QStringList& ids) {
+QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForFeeds(const QSqlDatabase& db, const QStringList& ids) {
   SqlQuery q(db);
 
   q.setForwardOnly(true);

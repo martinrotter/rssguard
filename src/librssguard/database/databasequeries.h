@@ -88,7 +88,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void purgeLeftoverMessages(const QSqlDatabase& db, int account_id);
 
     // Counts of unread/all messages.
-    static QMap<int, ArticleCounts> getMessageCountsForCategory(const QSqlDatabase& db, const QStringList& ids);
+    static QMap<int, ArticleCounts> getMessageCountsForFeeds(const QSqlDatabase& db, const QStringList& ids);
     static QMap<int, ArticleCounts> getMessageCountsForAccount(const QSqlDatabase& db, int account_id);
     static ArticleCounts getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id);
     static QMap<int, ArticleCounts> getMessageCountsForAllLabels(const QSqlDatabase& db, int account_id);

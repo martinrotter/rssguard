@@ -249,9 +249,6 @@ void ServiceRoot::updateCounts() {
     if (child->kind() == RootItem::Kind::Feed) {
       feeds.append(child->toFeed());
     }
-    else if (child->kind() == RootItem::Kind::Unread) {
-      child->updateCounts();
-    }
     else if (child->kind() != RootItem::Kind::Label && child->kind() != RootItem::Kind::Category &&
              child->kind() != RootItem::Kind::ServiceRoot && child->kind() != RootItem::Kind::Probe) {
       child->updateCounts();

@@ -13,35 +13,7 @@
 #endif
 
 #if defined(Q_OS_WIN)
-#include <io.h>
-
 #include <Windows.h>
-
-bool isStderrRedirected() {
-  HANDLE h = GetStdHandle(STD_ERROR_HANDLE);
-  if (h == nullptr || h == INVALID_HANDLE_VALUE) {
-    return true; // No stderr handle -> definitely redirected or detached
-  }
-
-  DWORD fileType = GetFileType(h);
-  if (fileType == FILE_TYPE_UNKNOWN && GetLastError() != NO_ERROR) {
-    return true; // invalid handle
-  }
-
-  if (fileType == FILE_TYPE_CHAR) {
-    // Character device, probably a console
-    DWORD mode;
-    if (GetConsoleMode(h, &mode)) {
-      return false; // it's a real console
-    }
-    else {
-      return true; // character device but not console, redirected (e.g. pipe)
-    }
-  }
-
-  // Anything else (disk file, pipe, socket) → redirected
-  return true;
-}
 
 #if QT_VERSION_MAJOR == 5
 #include <QtPlatformHeaders/QWindowsWindowFunctions>
@@ -55,7 +27,8 @@ bool isStderrRedirected() {
 
 int main(int argc, char* argv[]) {
 #if defined(Q_OS_WIN)
-  if (!isStderrRedirected() && AttachConsole(ATTACH_PARENT_PROCESS)) {
+  // NOTE: Attaches console on Windows so that when RSS Guard is launched from console, stderr and stdout are visible.
+  if (AttachConsole(ATTACH_PARENT_PROCESS)) {
     freopen("CONOUT$", "w", stdout);
     freopen("CONOUT$", "w", stderr);
   }
@@ -71,10 +44,6 @@ int main(int argc, char* argv[]) {
   // NOTE: Turn off dark mode detection on Windows.
   qputenv("QT_QPA_PLATFORM", "windows:darkmode=0");
 #endif
-
-  // #if !defined(NDEBUG)
-  //   qputenv("QT_DEBUG_PLUGINS", "1");
-  // #endif
 
   // High DPI stuff.
 #if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
