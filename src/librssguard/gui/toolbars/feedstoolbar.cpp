@@ -224,19 +224,19 @@ void FeedsToolBar::initializeFilter() {
                   QSL("feedlist_new_articles"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show feeds with error"),
+                  tr("Show feeds with errors"),
                   fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowWithError),
                   QSL("feedlist_with_error"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show switched off feeds"),
+                  tr("Show disabled feeds"),
                   fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowSwitchedOff),
                   QSL("feedlist_switched_off"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show quiet feeds"),
+                  tr("Show feeds with ignore notifications"),
                   fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowQuiet),
                   QSL("feedlist_quiet"));

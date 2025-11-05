@@ -97,8 +97,8 @@ void Label::cleanMessages(bool clear_only_read) {
 
   service->onBeforeMessagesDelete(this, {});
   DatabaseQueries::cleanLabelledMessages(qApp->database()->driver()->connection(metaObject()->className()),
-                                         clear_only_read,
-                                         this);
+                                         this,
+                                         clear_only_read);
   service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }

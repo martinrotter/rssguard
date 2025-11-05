@@ -128,8 +128,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                                   int account_id);
     static QStringList customIdsOfMessagesFromFeed(const QSqlDatabase& db,
                                                    int feed_id,
-                                                   RootItem::ReadStatus target_read,
-                                                   int account_id);
+                                                   RootItem::ReadStatus target_read);
 
     // Common account methods.
     template <typename T>
@@ -155,11 +154,11 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                   bool delete_labels_too);
 
     // Clean articles (move to recycle bin).
-    static void cleanLabelledMessages(const QSqlDatabase& db, bool clean_read_only, Label* label);
-    static void cleanProbedMessages(const QSqlDatabase& db, bool clean_read_only, Search* probe);
+    static void cleanLabelledMessages(const QSqlDatabase& db, Label* label, bool clean_read_only);
+    static void cleanProbedMessages(const QSqlDatabase& db, Search* probe, bool clean_read_only);
     static void cleanImportantMessages(const QSqlDatabase& db, bool clean_read_only, int account_id);
     static void cleanUnreadMessages(const QSqlDatabase& db, int account_id);
-    static void cleanFeeds(const QSqlDatabase& db, const QStringList& ids, bool clean_read_only, int account_id);
+    static void cleanFeeds(const QSqlDatabase& db, const QStringList& feed_ids, bool clean_read_only);
     static void cleanBin(const QSqlDatabase& db, bool clear_only_read, int account_id);
 
     // Operate feeds/categories.
@@ -217,10 +216,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                                       const QVariantMap& bindings = {});
     static void markMessagesByCondition(const QSqlDatabase& db, const QString& where_clause, RootItem::ReadStatus read);
     static void purgeMessagesByCondition(const QSqlDatabase& db, const QString& where_clause);
-    static void cleanMessagesByCondition(const QSqlDatabase& db,
-                                         const QString& where_clause,
-                                         bool clean_read_only,
-                                         int account_id);
+    static void cleanMessagesByCondition(const QSqlDatabase& db, const QString& where_clause, bool clean_read_only);
 
     static QString unnulifyString(const QString& str);
 

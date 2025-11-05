@@ -341,8 +341,7 @@ void ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
   service->onBeforeMessagesDelete(this, {});
   DatabaseQueries::cleanFeeds(qApp->database()->driver()->connection(metaObject()->className()),
                               textualFeedIds(items),
-                              clean_read_only,
-                              accountId());
+                              clean_read_only);
   service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
@@ -809,7 +808,7 @@ QStringList ServiceRoot::customIDsOfMessagesForItem(RootItem* item, ReadStatus t
       case RootItem::Kind::Feed: {
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-        list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->id(), target_read, accountId());
+        list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->id(), target_read);
         break;
       }
 
