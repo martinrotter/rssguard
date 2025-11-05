@@ -441,19 +441,15 @@ namespace Proxy {
   VALUE(QNetworkProxy::ProxyType) TypeDef;
 
   KEY Host;
-
   VALUE(QString) HostDef;
 
   KEY Username;
-
   VALUE(QString) UsernameDef;
 
   KEY Password;
-
   VALUE(QString) PasswordDef;
 
   KEY Port;
-
   VALUE(int) PortDef;
 } // namespace Proxy
 
@@ -461,32 +457,22 @@ namespace Proxy {
 namespace Database {
   KEY ID;
 
-  KEY UseInMemory;
-
-  VALUE(bool) UseInMemoryDef;
-
   KEY MySQLHostname;
-
   VALUE(QString) MySQLHostnameDef;
 
   KEY MySQLUsername;
-
   VALUE(QString) MySQLUsernameDef;
 
   KEY MySQLPassword;
-
   VALUE(QString) MySQLPasswordDef;
 
   KEY MySQLPort;
-
   VALUE(int) MySQLPortDef;
 
   KEY MySQLDatabase;
-
   VALUE(char*) MySQLDatabaseDef;
 
   KEY ActiveDriver;
-
   VALUE(char*) ActiveDriverDef;
 } // namespace Database
 

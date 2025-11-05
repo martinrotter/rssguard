@@ -34,15 +34,14 @@ class MariaDbDriver : public DatabaseDriver {
     virtual DriverType driverType() const;
     virtual bool vacuumDatabase();
     virtual bool saveDatabase();
+    virtual QString version();
     virtual void backupDatabase(const QString& backup_folder, const QString& backup_name);
     virtual bool initiateRestoration(const QString& database_package_file);
     virtual bool finishRestoration();
     virtual qint64 databaseDataSize();
     virtual QString foreignKeysEnable() const;
     virtual QString foreignKeysDisable() const;
-    virtual QSqlDatabase connection(const QString& connection_name,
-                                    DatabaseDriver::DesiredStorageType desired_type =
-                                      DatabaseDriver::DesiredStorageType::FromSettings);
+    virtual QSqlDatabase connection(const QString& connection_name);
     virtual QString autoIncrementPrimaryKey() const;
     virtual QString blob() const;
     virtual QString text() const;

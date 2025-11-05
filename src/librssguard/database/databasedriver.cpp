@@ -15,12 +15,10 @@
 
 DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent) {}
 
-QSqlDatabase DatabaseDriver::threadSafeConnection(const QString& connection_name, DesiredStorageType desired_type) {
+QSqlDatabase DatabaseDriver::threadSafeConnection(const QString& connection_name) {
   qlonglong thread_id = getThreadID();
   bool is_main_thread = QThread::currentThread() == qApp->thread();
-
-  QSqlDatabase database =
-    connection(is_main_thread ? connection_name : QSL("db_connection_%1").arg(thread_id), desired_type);
+  QSqlDatabase database = connection(is_main_thread ? connection_name : QSL("db_connection_%1").arg(thread_id));
 
   return database;
 }

@@ -28,8 +28,7 @@ void DatabaseFactory::removeConnection(const QString& connection_name) {
 }
 
 void DatabaseFactory::determineDriver() {
-  m_allDbDrivers = {
-    new SqliteDriver(qApp->settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool(), this)};
+  m_allDbDrivers = {new SqliteDriver(this)};
 
   if (QSqlDatabase::isDriverAvailable(QSL(APP_DB_MYSQL_DRIVER))) {
     m_allDbDrivers.append(new MariaDbDriver(this));

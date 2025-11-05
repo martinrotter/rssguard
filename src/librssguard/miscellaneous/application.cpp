@@ -3,13 +3,6 @@
 #include "miscellaneous/application.h"
 
 #include "3rd-party/boolinq/boolinq.h"
-
-#if defined(SYSTEM_SQLITE3)
-#include <sqlite3.h>
-#else
-#include "3rd-party/sqlite/sqlite3.h"
-#endif
-
 #include "core/feedsmodel.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"
@@ -209,7 +202,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #endif
 
   qDebugNN << LOGSEC_CORE << "Platform:" << QUOTE_W_SPACE_DOT(QGuiApplication::platformName());
-  qDebugNN << LOGSEC_CORE << "SQLite version:" << QUOTE_W_SPACE_DOT(SQLITE_VERSION);
+  qDebugNN << LOGSEC_CORE << "DB version:" << QUOTE_W_SPACE_DOT(qApp->database()->driver()->version());
 
 #if QT_VERSION >= 0x060100 // Qt >= 6.1.0
   qDebugNN << LOGSEC_CORE << "OpenSSL backends:" << QUOTE_W_SPACE_DOT(QSslSocket::availableBackends());

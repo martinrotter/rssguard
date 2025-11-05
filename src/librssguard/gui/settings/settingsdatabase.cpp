@@ -28,32 +28,12 @@ void SettingsDatabase::loadUi() {
                                        "feeds or messages."),
                                     false);
 
-  m_ui->m_lblSqliteInMemoryWarnings
-    ->setHelpText(tr("Usage of in-memory working database has several advantages "
-                     "and pitfalls. Make sure that you are familiar with these "
-                     "before you turn this feature on.\n"
-                     "\n"
-                     "Advantages:\n"
-                     " \u2022 higher speed for feed/message manipulations "
-                     "(especially with thousands of messages displayed),\n"
-                     " \u2022 whole database stored in RAM, thus your hard drive can "
-                     "rest more.\n"
-                     "\n"
-                     "Disadvantages:\n"
-                     " \u2022 if application crashes, your changes from last session are lost,\n"
-                     " \u2022 application startup and shutdown can take little longer "
-                     "(max. 2 seconds).\n"
-                     "\n"
-                     "Authors of this application are NOT responsible for lost data."),
-                  true);
-
   m_ui->m_txtMysqlPassword->lineEdit()->setPasswordMode(true);
 
   connect(m_ui->m_cmbDatabaseDriver,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
           &SettingsDatabase::dirtifySettings);
-  connect(m_ui->m_checkSqliteUseInMemoryDatabase, &QCheckBox::toggled, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlDatabase->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlHostname->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
   connect(m_ui->m_txtMysqlPassword->lineEdit(), &QLineEdit::textChanged, this, &SettingsDatabase::dirtifySettings);
@@ -84,7 +64,6 @@ void SettingsDatabase::loadUi() {
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
           &SettingsDatabase::requireRestart);
-  connect(m_ui->m_checkSqliteUseInMemoryDatabase, &QCheckBox::toggled, this, &SettingsDatabase::requireRestart);
   connect(m_ui->m_spinMysqlPort, &QSpinBox::editingFinished, this, &SettingsDatabase::requireRestart);
   connect(m_ui->m_txtMysqlHostname->lineEdit(), &BaseLineEdit::textEdited, this, &SettingsDatabase::requireRestart);
   connect(m_ui->m_txtMysqlPassword->lineEdit(), &BaseLineEdit::textEdited, this, &SettingsDatabase::requireRestart);
@@ -179,10 +158,6 @@ void SettingsDatabase::loadSettings() {
 
   m_ui->m_cmbDatabaseDriver->addItem(lite_driver->humanDriverType(), lite_driver->qtDriverCode());
 
-  // Load in-memory database status.
-  m_ui->m_checkSqliteUseInMemoryDatabase
-    ->setChecked(settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool());
-
   auto* mysq_driver = qApp->database()->driverForType(DatabaseDriver::DriverType::MySQL);
 
   if (mysq_driver != nullptr) {
@@ -223,17 +198,10 @@ void SettingsDatabase::loadSettings() {
 void SettingsDatabase::saveSettings() {
   onBeginSaveSettings();
 
-  // Setup in-memory database status.
-  const bool original_inmemory = settings()->value(GROUP(Database), SETTING(Database::UseInMemory)).toBool();
-  const bool new_inmemory = m_ui->m_checkSqliteUseInMemoryDatabase->isChecked();
-
   // Save data storage settings.
   QString original_db_driver = settings()->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString();
   QString selected_db_driver =
     m_ui->m_cmbDatabaseDriver->itemData(m_ui->m_cmbDatabaseDriver->currentIndex()).toString();
-
-  // Save SQLite.
-  settings()->setValue(GROUP(Database), Database::UseInMemory, new_inmemory);
 
   if (QSqlDatabase::isDriverAvailable(QSL(APP_DB_MYSQL_DRIVER))) {
     // Save MySQL.
@@ -245,10 +213,5 @@ void SettingsDatabase::saveSettings() {
   }
 
   settings()->setValue(GROUP(Database), Database::ActiveDriver, selected_db_driver);
-
-  if (original_db_driver != selected_db_driver || original_inmemory != new_inmemory) {
-    requireRestart();
-  }
-
   onEndSaveSettings();
 }

@@ -428,9 +428,6 @@ DVALUE(int) Proxy::PortDef = 80;
 // Database.
 DKEY Database::ID = "database";
 
-DKEY Database::UseInMemory = "use_in_memory_db";
-DVALUE(bool) Database::UseInMemoryDef = false;
-
 DKEY Database::MySQLHostname = "mysql_hostname";
 DVALUE(QString) Database::MySQLHostnameDef = QString();
 

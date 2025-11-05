@@ -18,18 +18,9 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
       MySQL
     };
 
-    // Describes what type of database user wants.
-    enum class DesiredStorageType {
-      StrictlyFileBased,
-      StrictlyInMemory,
-      FromSettings
-    };
-
     explicit DatabaseDriver(QObject* parent = nullptr);
 
-    QSqlDatabase threadSafeConnection(const QString& connection_name,
-                                      DatabaseDriver::DesiredStorageType desired_type =
-                                        DatabaseDriver::DesiredStorageType::FromSettings);
+    QSqlDatabase threadSafeConnection(const QString& connection_name);
 
     // API.
     virtual QString location() const = 0;
@@ -41,6 +32,7 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
     virtual QString blob() const = 0;
     virtual QString text() const = 0;
     virtual QString collateNocase() const = 0;
+    virtual QString version() = 0;
 
     virtual QString foreignKeysEnable() const = 0;
     virtual QString foreignKeysDisable() const = 0;
@@ -56,9 +48,7 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
     virtual bool initiateRestoration(const QString& database_package_file) = 0;
     virtual bool finishRestoration() = 0;
     virtual qint64 databaseDataSize() = 0;
-    virtual QSqlDatabase connection(const QString& connection_name,
-                                    DatabaseDriver::DesiredStorageType desired_type =
-                                      DatabaseDriver::DesiredStorageType::FromSettings) = 0;
+    virtual QSqlDatabase connection(const QString& connection_name) = 0;
 
   protected:
     void updateDatabaseSchema(SqlQuery& query, int source_db_schema_version, const QString& database_name = {});

@@ -499,27 +499,6 @@ list(APPEND SOURCES
   3rd-party/boolinq/boolinq.h
 )
 
-# Add sqlite.
-if(USE_SYSTEM_SQLITE)
-  find_package(SQLite3)
-
-  if(SQLite3_FOUND)
-    # Include directory and library are linked to below.
-    message(STATUS "Using system SQLite3 ${SQLite3_VERSION}.")
-  else()
-    message(FATAL_ERROR "System SQLite3 not detected. Set USE_SYSTEM_SQLITE=OFF if you want to build with bundled SQLite3.")
-  endif()
-else()
-  message(STATUS "Using bundled SQLite3.")
-
-  list(APPEND SOURCES
-    3rd-party/sqlite/sqlite3.c
-    3rd-party/sqlite/sqlite3.h
-  )
-
-  set(CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} -DSQLITE_THREADSAFE=1 -DSQLITE_ENABLE_COLUMN_METADATA=1")
-endif()
-
 # Add SimpleCrypt.
 list(APPEND SOURCES
   3rd-party/sc/simplecrypt.cpp

@@ -22,7 +22,6 @@
 #   BUILD_WITH_QT6 - Build either with Qt 6 or Qt 5.
 #   BUILD_MSYS2 - Build RSS Guard for MSYS2 distribution, this particularly
 #                 enables relevant MSYS2 FHS tweaks.
-#   USE_SYSTEM_SQLITE - Use system-wide SQLite3 library and header file. Defaults to "ON".
 #   NO_UPDATE_CHECK - Disable automatic checking for new application updates.
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
@@ -113,7 +112,6 @@ endif()
 # Global compilation switches.
 option(BUILD_WITH_QT6 "Build application with Qt 6." ON)
 option(BUILD_MSYS2 "Build application for MSYS2 ecosystem." OFF)
-option(USE_SYSTEM_SQLITE "Use system-wide SQLite3 library." ON)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)." OFF)
 option(FORCE_COLORED_OUTPUT "Always produce ANSI-colored output (GCC/Clang only)." OFF)
 option(LOAD_PLUGINS_FROM_PARENT "Force loading of plugin libraries from parent folder." OFF)

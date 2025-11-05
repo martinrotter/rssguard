@@ -51,7 +51,7 @@ int main(int argc, char* argv[]) {
   // NOTE: https://bugreports.qt.io/browse/QTBUG-117612
   qputenv("QT_DISABLE_AUDIO_PREPARE", "1");
 
-#if defined(Q_OS_WIN)
+#if defined(Q_OS_WIN) && QT_VERSION_MAJOR > 5
   // NOTE: Turn off dark mode detection on Windows.
   qputenv("QT_QPA_PLATFORM", "windows:darkmode=0");
 #endif

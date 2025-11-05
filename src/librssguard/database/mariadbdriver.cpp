@@ -116,6 +116,16 @@ bool MariaDbDriver::saveDatabase() {
   return true;
 }
 
+QString MariaDbDriver::version() {
+  QSqlDatabase database = connection(metaObject()->className());
+  SqlQuery q(database);
+
+  q.exec(QSL("SELECT VERSION();"));
+  q.next();
+
+  return q.value(0).toString();
+}
+
 QString MariaDbDriver::foreignKeysEnable() const {
   return QSL("SET FOREIGN_KEY_CHECKS=1;");
 }
@@ -235,10 +245,7 @@ void MariaDbDriver::setPragmas(QSqlQuery& query) {
   query.exec(QSL("SET CHARACTER SET utf8mb4;"));
 }
 
-QSqlDatabase MariaDbDriver::connection(const QString& connection_name,
-                                       DatabaseDriver::DesiredStorageType desired_type) {
-  Q_UNUSED(desired_type)
-
+QSqlDatabase MariaDbDriver::connection(const QString& connection_name) {
   if (!m_databaseInitialized) {
     // Return initialized database.
     return initializeDatabase(connection_name);
