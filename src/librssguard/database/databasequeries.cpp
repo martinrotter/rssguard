@@ -652,18 +652,14 @@ void DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
                              .arg(account_id));
 }
 
-QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db,
-                                                                      int category_id,
-                                                                      int account_id) {
+QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForCategory(const QSqlDatabase& db, const QStringList& ids) {
   SqlQuery q(db);
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT feed, SUM(NOT is_read), COUNT(*) FROM Messages "
-                "WHERE feed IN (SELECT id FROM Feeds WHERE category = :category AND account_id = :account_id) "
-                "AND is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
-                "GROUP BY feed;"));
-  q.bindValue(QSL(":category"), category_id);
-  q.bindValue(QSL(":account_id"), account_id);
+                "WHERE %1 "
+                "GROUP BY feed;")
+              .arg(whereClauseFeeds(ids)));
   q.exec();
 
   QMap<int, ArticleCounts> counts;
@@ -686,9 +682,9 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAccount(const QSqlD
 
   q.setForwardOnly(true);
   q.prepare(QSL("SELECT feed, SUM(NOT is_read), COUNT(*) FROM Messages "
-                "WHERE is_deleted = 0 AND is_pdeleted = 0 AND account_id = :account_id "
-                "GROUP BY feed;"));
-  q.bindValue(QSL(":account_id"), account_id);
+                "WHERE %1 "
+                "GROUP BY feed;")
+              .arg(whereClauseAccount(false, account_id)));
   q.exec();
 
   QMap<int, ArticleCounts> counts;

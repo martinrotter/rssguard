@@ -17,24 +17,14 @@ Category::Category(const Category& other) : RootItem(other) {
 }
 
 void Category::updateCounts() {
-  QList<Feed*> feeds;
-  auto str = childItems();
-
-  for (RootItem* child : std::as_const(str)) {
-    if (child->kind() == RootItem::Kind::Feed) {
-      feeds.append(child->toFeed());
-    }
-    else if (child->kind() == RootItem::Kind::Category) {
-      child->updateCounts();
-    }
-  }
+  QList<Feed*> feeds = getSubTreeFeeds();
 
   if (feeds.isEmpty()) {
     return;
   }
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  auto counts = DatabaseQueries::getMessageCountsForCategory(database, id(), account()->accountId());
+  auto counts = DatabaseQueries::getMessageCountsForCategory(database, account()->textualFeedIds(feeds));
 
   for (Feed* feed : feeds) {
     if (counts.contains(feed->id())) {
