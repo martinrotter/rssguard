@@ -379,9 +379,9 @@ void DatabaseQueries::deleteProbe(const QSqlDatabase& db, Search* probe) {
 }
 
 QStringList DatabaseQueries::customIdsOfMessagesByCondition(const QSqlDatabase& db,
-                                                            const QString& condition,
+                                                            const QString& where_clause,
                                                             const QVariantMap& bindings) {
-  QString sql = QSL("SELECT custom_id FROM Messages WHERE %1;").arg(condition);
+  QString sql = QSL("SELECT custom_id FROM Messages WHERE %1;").arg(where_clause);
   SqlQuery q(db);
 
   q.prepare(sql);
@@ -653,135 +653,77 @@ void DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_
 }
 
 QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForFeeds(const QSqlDatabase& db, const QStringList& ids) {
+  auto res = messageCountsByCondition(db, whereClauseFeeds(ids), true);
+  return res;
+}
+
+QMap<int, ArticleCounts> DatabaseQueries::messageCountsByCondition(const QSqlDatabase& db,
+                                                                   const QString& where_clause,
+                                                                   bool group_by_feed,
+                                                                   const QVariantMap& bindings) {
   SqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT feed, SUM(NOT is_read), COUNT(*) FROM Messages "
-                "WHERE %1 "
-                "GROUP BY feed;")
-              .arg(whereClauseFeeds(ids)));
-  q.exec();
-
-  QMap<int, ArticleCounts> counts;
-
-  while (q.next()) {
-    int feed_id = q.value(0).toInt();
-    ArticleCounts ac;
-
-    ac.m_unread = q.value(1).toInt();
-    ac.m_total = q.value(2).toInt();
-
-    counts.insert(feed_id, ac);
-  }
-
-  return counts;
-}
-
-QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAccount(const QSqlDatabase& db, int account_id) {
-  SqlQuery q(db);
-
-  q.setForwardOnly(true);
-  q.prepare(QSL("SELECT feed, SUM(NOT is_read), COUNT(*) FROM Messages "
-                "WHERE %1 "
-                "GROUP BY feed;")
-              .arg(whereClauseAccount(false, account_id)));
-  q.exec();
-
-  QMap<int, ArticleCounts> counts;
-
-  while (q.next()) {
-    int feed_id = q.value(0).toInt();
-    ArticleCounts ac;
-
-    ac.m_unread = q.value(1).toInt();
-    ac.m_total = q.value(2).toInt();
-
-    counts.insert(feed_id, ac);
-  }
-
-  return counts;
-}
-
-ArticleCounts DatabaseQueries::messageCountsByCondition(const QSqlDatabase& db,
-                                                        const QString& where_clause,
-                                                        const QVariantMap& bindings) {
-  SqlQuery q(db);
-  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) "
+  q.prepare(QSL("SELECT feed, COUNT(*), SUM(NOT is_read) "
                 "FROM Messages "
-                "WHERE %1;")
-              .arg(where_clause));
+                "WHERE %1 %2;")
+              .arg(where_clause, group_by_feed ? QSL("GROUP BY feed") : QString()));
+
   for (auto it = bindings.cbegin(); it != bindings.cend(); ++it) {
     q.bindValue(it.key(), it.value());
   }
 
   q.exec();
 
-  ArticleCounts res;
+  QMap<int, ArticleCounts> res;
 
-  if (q.next()) {
-    res.m_total = q.value(0).toInt();
-    res.m_unread = res.m_total - q.value(1).toInt();
+  while (q.next()) {
+    ArticleCounts res_one;
+
+    res_one.m_total = q.value(1).toInt();
+    res_one.m_unread = q.value(2).toInt();
+
+    res.insert(q.value(0).toInt(), res_one);
   }
 
   return res;
 }
 
-ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, int feed_id, int account_id) {
-  return messageCountsByCondition(db,
-                                  QSL("is_deleted = 0 AND is_pdeleted = 0 AND feed = :feed AND account_id = :acc"),
-                                  {{QSL(":feed"), feed_id}, {QSL(":acc"), account_id}});
+ArticleCounts DatabaseQueries::getMessageCountsForFeed(const QSqlDatabase& db, int feed_id) {
+  auto res = messageCountsByCondition(db, whereClauseFeeds({QString::number(feed_id)}), false);
+
+  return res.first();
 }
 
 ArticleCounts DatabaseQueries::getImportantMessageCounts(const QSqlDatabase& db, int account_id) {
-  return messageCountsByCondition(db, whereClauseImportantArticles(account_id));
+  auto res = messageCountsByCondition(db, whereClauseImportantArticles(account_id), false);
+
+  return res.first();
 }
 
 ArticleCounts DatabaseQueries::getUnreadMessageCounts(const QSqlDatabase& db, int account_id) {
-  return messageCountsByCondition(db,
-                                  QSL("is_deleted = 0 AND is_pdeleted = 0 AND is_read = 0 AND account_id = :acc"),
-                                  {{QSL(":acc"), account_id}});
+  auto res = messageCountsByCondition(db, whereClauseUnreadArticles(account_id), false);
+
+  return res.first();
 }
 
 ArticleCounts DatabaseQueries::getMessageCountsForBin(const QSqlDatabase& db, int account_id) {
-  return messageCountsByCondition(db, whereClauseBin(account_id));
+  auto res = messageCountsByCondition(db, whereClauseBin(account_id), false);
+
+  return res.first();
 }
 
 ArticleCounts DatabaseQueries::getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id) {
-  SqlQuery q(db);
-  q.setForwardOnly(true);
+  auto res = messageCountsByCondition(db, whereClauseLabel(label->id(), account_id), false);
 
-  // Count total and read messages using EXISTS for label.
-  q.prepare(QSL("SELECT COUNT(*), SUM(is_read) "
-                "FROM Messages m "
-                "WHERE m.is_deleted = 0 "
-                "  AND m.is_pdeleted = 0 "
-                "  AND m.account_id = :account_id "
-                "  AND EXISTS ("
-                "    SELECT 1 "
-                "    FROM LabelsInMessages lim "
-                "    WHERE"
-                "      lim.label = :label_id AND "
-                "      lim.account_id = m.account_id AND "
-                "      lim.message = m.id);"));
-
-  q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":label_id"), label->id());
-
-  q.exec();
-  q.next();
-
-  ArticleCounts ac;
-  ac.m_total = q.value(0).toInt();
-  ac.m_unread = ac.m_total - q.value(1).toInt();
-
-  return ac;
+  return res.first();
 }
 
 QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const QSqlDatabase& db, int account_id) {
   SqlQuery q(db);
 
   q.setForwardOnly(true);
-  q.prepare(QSL("SELECT lim.label, COUNT(*), SUM(CASE WHEN m.is_read = 0 THEN 1 ELSE 0 END) "
+  q.prepare(QSL("SELECT lim.label, COUNT(*), SUM(NOT m.is_read) "
                 "FROM LabelsInMessages lim "
                 "JOIN Messages m "
                 "  ON m.id = lim.message AND m.account_id = lim.account_id "

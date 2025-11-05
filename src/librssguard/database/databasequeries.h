@@ -89,10 +89,9 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
 
     // Counts of unread/all messages.
     static QMap<int, ArticleCounts> getMessageCountsForFeeds(const QSqlDatabase& db, const QStringList& ids);
-    static QMap<int, ArticleCounts> getMessageCountsForAccount(const QSqlDatabase& db, int account_id);
     static ArticleCounts getMessageCountsForLabel(const QSqlDatabase& db, Label* label, int account_id);
     static QMap<int, ArticleCounts> getMessageCountsForAllLabels(const QSqlDatabase& db, int account_id);
-    static ArticleCounts getMessageCountsForFeed(const QSqlDatabase& db, int feed_id, int account_id);
+    static ArticleCounts getMessageCountsForFeed(const QSqlDatabase& db, int feed_id);
     static ArticleCounts getImportantMessageCounts(const QSqlDatabase& db, int account_id);
     static ArticleCounts getUnreadMessageCounts(const QSqlDatabase& db, int account_id);
     static ArticleCounts getMessageCountsForBin(const QSqlDatabase& db, int account_id);
@@ -209,11 +208,12 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QStringList getAllGmailRecipients(const QSqlDatabase& db, int account_id);
 
   private:
-    static ArticleCounts messageCountsByCondition(const QSqlDatabase& db,
-                                                  const QString& where_clause,
-                                                  const QVariantMap& bindings = {});
+    static QMap<int, ArticleCounts> messageCountsByCondition(const QSqlDatabase& db,
+                                                             const QString& where_clause,
+                                                             bool group_by_feed,
+                                                             const QVariantMap& bindings = {});
     static QStringList customIdsOfMessagesByCondition(const QSqlDatabase& db,
-                                                      const QString& condition,
+                                                      const QString& where_clause,
                                                       const QVariantMap& bindings = {});
     static void markMessagesByCondition(const QSqlDatabase& db, const QString& where_clause, RootItem::ReadStatus read);
     static void purgeMessagesByCondition(const QSqlDatabase& db, const QString& where_clause);

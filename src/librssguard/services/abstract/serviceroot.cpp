@@ -260,7 +260,7 @@ void ServiceRoot::updateCounts() {
   }
 
   QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-  auto counts = DatabaseQueries::getMessageCountsForAccount(database, accountId());
+  auto counts = DatabaseQueries::getMessageCountsForFeeds(database, textualFeedIds(feeds));
 
   for (Feed* feed : feeds) {
     if (counts.contains(feed->id())) {
