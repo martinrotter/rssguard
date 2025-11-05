@@ -29,8 +29,19 @@ int main(int argc, char* argv[]) {
 #if defined(Q_OS_WIN)
   // NOTE: Attaches console on Windows so that when RSS Guard is launched from console, stderr and stdout are visible.
   if (AttachConsole(ATTACH_PARENT_PROCESS)) {
-    freopen("CONOUT$", "w", stdout);
-    freopen("CONOUT$", "w", stderr);
+    FILE* fp = nullptr;
+
+    // Redirect stdout.
+    if (freopen_s(&fp, "CONOUT$", "w", stdout) != 0) {
+      fp = nullptr;
+    }
+
+    // Redirect stderr.
+    if (freopen_s(&fp, "CONOUT$", "w", stderr) != 0) {
+      fp = nullptr;
+    }
+
+    SetConsoleOutputCP(CP_UTF8);
   }
 #endif
 
