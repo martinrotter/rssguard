@@ -327,6 +327,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name, bo
     }
 
     for (const QString& table : tables) {
+      copy_contents.exec(QSL("DELETE FROM main.%1").arg(table));
       copy_contents.exec(QSL("INSERT INTO main.%1 SELECT * FROM storage.%1;").arg(table));
     }
 
@@ -355,15 +356,24 @@ QString SqliteDriver::databaseFilePath() const {
 }
 
 void SqliteDriver::setPragmas(QSqlQuery& query) {
-  query.exec(QSL("PRAGMA encoding = \"UTF-8\";"));
-  query.exec(QSL("PRAGMA page_size = 32768;"));
-  query.exec(QSL("PRAGMA cache_size = 32768;"));
-  query.exec(QSL("PRAGMA mmap_size = 100000000;"));
-  query.exec(QSL("PRAGMA count_changes = OFF;"));
-  query.exec(QSL("PRAGMA temp_store = MEMORY;"));
-  query.exec(QSL("PRAGMA synchronous = OFF;"));
-  query.exec(QSL("PRAGMA busy_timeout = 100;"));
-  query.exec(QSL("PRAGMA journal_mode = MEMORY;"));
+  // Core setup.
+  query.exec(QSL("PRAGMA encoding = 'UTF-8';"));
+
+  // Performance-related settings.
+  query.exec(QSL("PRAGMA journal_mode = WAL;"));        // Enables concurrent reads/writes.
+  query.exec(QSL("PRAGMA synchronous = NORMAL;"));      // Fast but safe for most crashes.
+  query.exec(QSL("PRAGMA temp_store = MEMORY;"));       // Temp tables in memory.
+  query.exec(QSL("PRAGMA mmap_size = 300000000;"));     // Memory-map first ~300MB of DB.
+  query.exec(QSL("PRAGMA cache_size = -65536;"));       // Use ~64 MB of page cache (-N = KB).
+  query.exec(QSL("PRAGMA page_size = 32768;"));         // Large pages = fewer I/O ops.
+  query.exec(QSL("PRAGMA locking_mode = NORMAL;"));     // Default (EXCLUSIVE can starve readers).
+  query.exec(QSL("PRAGMA temp_store_directory = '';")); // Use system temp directory.
+
+  // Reliability & responsiveness.
+  query.exec(QSL("PRAGMA busy_timeout = 5000;"));       // Wait up to 5s when DB is busy.
+  query.exec(QSL("PRAGMA foreign_keys = ON;"));         // Enforce foreign key constraints.
+  query.exec(QSL("PRAGMA count_changes = OFF;"));       // Disable row count tracking overhead.
+  query.exec(QSL("PRAGMA wal_autocheckpoint = 1000;")); // Checkpoint WAL after ~1000 pages.
 }
 
 qint64 SqliteDriver::databaseDataSize() {
