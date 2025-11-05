@@ -20,13 +20,13 @@ ShortcutCatcher::ShortcutCatcher(QWidget* parent)
   m_btnReset = new PlainToolButton(this);
   m_btnReset->setIcon(qApp->icons()->fromTheme(QSL("document-revert")));
   m_btnReset->setFocusPolicy(Qt::FocusPolicy::NoFocus);
-  m_btnReset->setToolTip(tr("Reset to original shortcut."));
+  m_btnReset->setToolTip(tr("Undo shortcut"));
 
   // Create clear button.
   m_btnClear = new PlainToolButton(this);
   m_btnClear->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
   m_btnClear->setFocusPolicy(Qt::FocusPolicy::NoFocus);
-  m_btnClear->setToolTip(tr("Clear current shortcut."));
+  m_btnClear->setToolTip(tr("Clear current shortcut"));
 
   // Clear main shortcut catching button.
   m_shortcutBox = new QKeySequenceEdit(this);
