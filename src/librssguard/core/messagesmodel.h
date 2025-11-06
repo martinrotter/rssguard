@@ -114,9 +114,9 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
   public slots:
     void fetchAllArticles();
 
-    bool setMessageImportantById(int id, RootItem::Importance important);
-    bool setMessageReadById(int id, RootItem::ReadStatus read);
-    bool setMessageLabelsById(int id, const QList<Label*>& labels);
+    bool setMessageImportantById(int article_id, RootItem::Importance important);
+    bool setMessageReadById(int article_id, RootItem::ReadStatus read);
+    bool setMessageLabelsById(const QList<int>& article_ids, const QList<QList<Label*>>& labels);
 
   private:
     QString formatLabels(const QList<Label*>& labels) const;

@@ -185,7 +185,6 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
   else {
     SqlQuery query_db(database);
 
-    query_db.setForwardOnly(true);
     setPragmas(query_db);
 
     if (!query_db.exec(QSL("USE %1").arg(database_name), false) ||
@@ -281,7 +280,6 @@ QSqlDatabase MariaDbDriver::connection(const QString& connection_name) {
 
     SqlQuery query_db(database);
 
-    query_db.setForwardOnly(true);
     setPragmas(query_db);
 
     return database;

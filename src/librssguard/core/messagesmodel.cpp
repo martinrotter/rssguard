@@ -366,11 +366,11 @@ void MessagesModel::loadMessages(RootItem* item, bool keep_additional_article_id
   fetchInitialArticles();
 }
 
-bool MessagesModel::setMessageImportantById(int id, RootItem::Importance important) {
+bool MessagesModel::setMessageImportantById(int article_id, RootItem::Importance important) {
   for (int i = 0; i < rowCount(); i++) {
     int found_id = data(i, MSG_MDL_ID_INDEX).toInt();
 
-    if (found_id == id) {
+    if (found_id == article_id) {
       return setData(index(i, MSG_MDL_IMPORTANT_INDEX), int(important));
     }
   }
@@ -448,6 +448,7 @@ void MessagesModel::reloadChangedLayout(const QModelIndexList& indices) {
     if (a.row() == b.row()) {
       return a.column() < b.column();
     }
+
     return a.row() < b.row();
   });
 
@@ -899,11 +900,11 @@ void MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
   m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, {message}, read);
 }
 
-bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
+bool MessagesModel::setMessageReadById(int article_id, RootItem::ReadStatus read) {
   for (int i = 0; i < rowCount(); i++) {
     int found_id = data(i, MSG_MDL_ID_INDEX).toInt();
 
-    if (found_id == id) {
+    if (found_id == article_id) {
       bool set = setData(index(i, MSG_MDL_READ_INDEX), int(read));
       return set;
     }
@@ -912,17 +913,32 @@ bool MessagesModel::setMessageReadById(int id, RootItem::ReadStatus read) {
   return false;
 }
 
-bool MessagesModel::setMessageLabelsById(int id, const QList<Label*>& labels) {
-  for (int i = 0; i < rowCount(); i++) {
-    int found_id = data(i, MSG_MDL_ID_INDEX).toInt();
+bool MessagesModel::setMessageLabelsById(const QList<int>& article_ids, const QList<QList<Label*>>& labels) {
+  QModelIndexList changed_indices;
+  changed_indices.reserve(article_ids.size());
 
-    if (found_id == id) {
-      bool set = setData(index(i, MSG_MDL_LABELS), QVariant::fromValue(labels));
-      return set;
+  blockSignals(true);
+
+  for (int i = 0; i < rowCount(); i++) {
+    auto idx_id = index(i, MSG_MDL_ID_INDEX);
+    auto idx_lbls = index(i, MSG_MDL_LABELS);
+
+    int found_id = data(idx_id).toInt();
+    int idx_article = article_ids.indexOf(found_id);
+
+    if (idx_article >= 0) {
+      setData(idx_lbls, QVariant::fromValue(labels.at(idx_article)));
+      changed_indices.append(idx_lbls);
     }
   }
 
-  return false;
+  blockSignals(false);
+
+  if (!changed_indices.isEmpty()) {
+    reloadChangedLayout(changed_indices);
+  }
+
+  return true;
 }
 
 QString MessagesModel::formatLabels(const QList<Label*>& labels) const {

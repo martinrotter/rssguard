@@ -76,7 +76,6 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name) {
 
     SqlQuery query_db(database);
 
-    query_db.setForwardOnly(true);
     setPragmas(query_db);
 
     return database;
@@ -142,7 +141,6 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name) {
   else {
     SqlQuery query_db(database);
 
-    query_db.setForwardOnly(true);
     setPragmas(query_db);
 
     // Sample query which checks for existence of tables.

@@ -863,19 +863,16 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
     //   3) they have same AUTHOR AND,
     //   4) they have same TITLE.
     // NOTE: This only applies to messages from standard RSS/ATOM/JSON feeds without ID/GUID.
-    query_select_with_url.setForwardOnly(true);
     query_select_with_url.prepare(QSL("SELECT id, date_created, is_read, is_important, contents, feed FROM Messages "
                                       "WHERE feed = :feed AND title = :title AND url = :url AND author = :author AND "
                                       "account_id = :account_id;"));
 
     // When we have custom ID of the message which is service-specific (synchronized services).
-    query_select_with_custom_id.setForwardOnly(true);
     query_select_with_custom_id
       .prepare(QSL("SELECT id, date_created, is_read, is_important, contents, feed, title, author FROM Messages "
                    "WHERE custom_id = :custom_id AND account_id = :account_id;"));
 
     // We have custom ID of message, but it is feed-specific not service-specific (standard RSS/ATOM/JSON).
-    query_select_with_custom_id_for_feed.setForwardOnly(true);
     query_select_with_custom_id_for_feed
       .prepare(QSL("SELECT id, date_created, is_read, is_important, contents, title, author FROM Messages "
                    "WHERE feed = :feed AND custom_id = :custom_id AND account_id = :account_id;"));
@@ -883,13 +880,11 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
     // In some case, messages are already stored in the DB and they all have primary DB ID.
     // This is particularly the case when user runs some message filter manually on existing messages
     // of some feed.
-    query_select_with_id.setForwardOnly(true);
     query_select_with_id
       .prepare(QSL("SELECT date_created, is_read, is_important, contents, feed, title, author FROM Messages "
                    "WHERE id = :id AND account_id = :account_id;"));
 
     // Used to update existing messages.
-    query_update.setForwardOnly(true);
     query_update.prepare(QSL("UPDATE Messages "
                              "SET title = :title, is_read = :is_read, is_important = :is_important, is_deleted = "
                              ":is_deleted, url = :url, author = :author, score = :score, date_created = :date_created, "
