@@ -85,7 +85,12 @@ void Search::setCountOfUnreadMessages(int unreadCount) {
 }
 
 QString Search::additionalTooltip() const {
-  return tr("Regular expression: %1").arg(QSL("<code>%1</code>").arg(filter()));
+  if (m_type == Type::Regex) {
+    return tr("Regular expression: %1").arg(QSL("<code>%1</code>").arg(filter()));
+  }
+  else {
+    return tr("SQL 'WHERE' clause: %1").arg(QSL("<code>%1</code>").arg(filter()));
+  }
 }
 
 void Search::cleanMessages(bool clear_only_read) {
