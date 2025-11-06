@@ -13,8 +13,6 @@
 #endif
 
 #if defined(Q_OS_WIN)
-#include <Windows.h>
-
 #if QT_VERSION_MAJOR == 5
 #include <QtPlatformHeaders/QWindowsWindowFunctions>
 #else
@@ -26,6 +24,8 @@
 #include <QTextCodec>
 
 int main(int argc, char* argv[]) {
+  /*
+   * This is disabled because it has bad side effects - not working redirection etc.
 #if defined(Q_OS_WIN)
   // NOTE: Attaches console on Windows so that when RSS Guard is launched from console, stderr and stdout are visible.
   if (AttachConsole(ATTACH_PARENT_PROCESS)) {
@@ -44,6 +44,7 @@ int main(int argc, char* argv[]) {
     SetConsoleOutputCP(CP_UTF8);
   }
 #endif
+  */
 
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
 
