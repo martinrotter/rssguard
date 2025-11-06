@@ -12,17 +12,14 @@ FormAddEditProbe::FormAddEditProbe(QWidget* parent) : QDialog(parent), m_editabl
   m_ui.m_txtName->lineEdit()->setPlaceholderText(tr("Name for your query"));
   m_ui.m_txtFilter->lineEdit()->setPlaceholderText(tr("Regular expression"));
 
-  m_ui.m_help->setHelpText(
-    tr("What is regular expression?"),
-    tr(
-      "A regular expression (shortened as regex or regexp) is a sequence of characters that "
-      R"(specifies a match pattern in text. See more <a href="https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference">info</a>.)"),
-    false,
-    true);
+  m_ui.m_help->setHelpText(tr("You can use regular expression or SQL WHERE clause to perform totally custom article "
+                              "queries in the database. See more details in application documentation."),
+                           false,
+                           true);
 
   connect(m_ui.m_txtName->lineEdit(), &QLineEdit::textChanged, this, [this](const QString& text) {
     if (text.isEmpty()) {
-      m_ui.m_txtName->setStatus(LineEditWithStatus::StatusType::Error, tr("Regex query name cannot be empty."));
+      m_ui.m_txtName->setStatus(LineEditWithStatus::StatusType::Error, tr("Query name cannot be empty."));
     }
     else {
       m_ui.m_txtName->setStatus(LineEditWithStatus::StatusType::Ok, tr("Perfect!"));
@@ -31,9 +28,9 @@ FormAddEditProbe::FormAddEditProbe(QWidget* parent) : QDialog(parent), m_editabl
 
   connect(m_ui.m_txtFilter->lineEdit(), &QLineEdit::textChanged, this, [this](const QString& text) {
     if (text.isEmpty()) {
-      m_ui.m_txtFilter->setStatus(LineEditWithStatus::StatusType::Error, tr("Regular expression cannot be empty."));
+      m_ui.m_txtFilter->setStatus(LineEditWithStatus::StatusType::Error, tr("Filter cannot be empty."));
     }
-    else if (!QRegularExpression(text).isValid()) {
+    else if (m_ui.m_rbTypeRegex->isChecked() && !QRegularExpression(text).isValid()) {
       m_ui.m_txtFilter->setStatus(LineEditWithStatus::StatusType::Error, tr("Regular expression is not well-formed."));
     }
     else {
@@ -46,7 +43,7 @@ FormAddEditProbe::FormAddEditProbe(QWidget* parent) : QDialog(parent), m_editabl
 }
 
 Search* FormAddEditProbe::execForAdd() {
-  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("tag-new")), tr("Create new regex query"));
+  GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("tag-new")), tr("Create new query"));
 
   m_ui.m_btnColor->setRandomColor();
   m_ui.m_txtName->lineEdit()->setText(tr("Hot stuff"));
@@ -56,6 +53,7 @@ Search* FormAddEditProbe::execForAdd() {
 
   if (exit_code == QDialog::DialogCode::Accepted) {
     return new Search(m_ui.m_txtName->lineEdit()->text(),
+                      m_ui.m_rbTypeRegex->isChecked() ? Search::Type::Regex : Search::Type::SqlWhereClause,
                       m_ui.m_txtFilter->lineEdit()->text(),
                       m_ui.m_btnColor->color());
   }
@@ -67,10 +65,11 @@ Search* FormAddEditProbe::execForAdd() {
 bool FormAddEditProbe::execForEdit(Search* prb) {
   GuiUtilities::applyDialogProperties(*this,
                                       qApp->icons()->fromTheme(QSL("tag-properties")),
-                                      tr("Edit regex query '%1'").arg(prb->title()));
+                                      tr("Edit query '%1'").arg(prb->title()));
 
   m_editableProbe = prb;
 
+  m_ui.m_rbTypeSqlClause->setChecked(prb->type() == Search::Type::SqlWhereClause);
   m_ui.m_btnColor->setColor(prb->color());
   m_ui.m_txtName->lineEdit()->setText(prb->title());
   m_ui.m_txtFilter->lineEdit()->setText(prb->filter());
@@ -79,6 +78,7 @@ bool FormAddEditProbe::execForEdit(Search* prb) {
   auto exit_code = exec();
 
   if (exit_code == QDialog::DialogCode::Accepted) {
+    m_editableProbe->setType(m_ui.m_rbTypeRegex->isChecked() ? Search::Type::Regex : Search::Type::SqlWhereClause);
     m_editableProbe->setColor(m_ui.m_btnColor->color());
     m_editableProbe->setFilter(m_ui.m_txtFilter->lineEdit()->text());
     m_editableProbe->setTitle(m_ui.m_txtName->lineEdit()->text());

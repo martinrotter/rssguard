@@ -11,14 +11,16 @@
 #include <QPainter>
 #include <QPainterPath>
 
-Search::Search(const QString& name, const QString& filter, const QColor& color, RootItem* parent_item)
+Search::Search(const QString& name, Type type, const QString& filter, const QColor& color, RootItem* parent_item)
   : Search(parent_item) {
+  setType(type);
   setColor(color);
   setTitle(name);
   setFilter(filter);
 }
 
-Search::Search(RootItem* parent_item) : RootItem(parent_item), m_totalCount(-1), m_unreadCount(-1) {
+Search::Search(RootItem* parent_item)
+  : RootItem(parent_item), m_type(Type::Regex), m_totalCount(-1), m_unreadCount(-1) {
   setKind(RootItem::Kind::Probe);
 }
 
@@ -56,6 +58,14 @@ void Search::deleteItem() {
 void Search::updateCounts() {
   setCountOfAllMessages(-1);
   setCountOfUnreadMessages(-1);
+}
+
+Search::Type Search::type() const {
+  return m_type;
+}
+
+void Search::setType(Type type) {
+  m_type = type;
 }
 
 QString Search::filter() const {

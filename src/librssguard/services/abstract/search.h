@@ -14,7 +14,16 @@ class RSSGUARD_DLLSPEC Search : public RootItem {
     Q_PROPERTY(QColor color READ color)
 
   public:
-    explicit Search(const QString& name, const QString& filter, const QColor& color, RootItem* parent_item = nullptr);
+    enum class Type {
+      Regex = 0,
+      SqlWhereClause = 1
+    };
+
+    explicit Search(const QString& name,
+                    Type type,
+                    const QString& filter,
+                    const QColor& color,
+                    RootItem* parent_item = nullptr);
     explicit Search(RootItem* parent_item = nullptr);
 
     QColor color() const;
@@ -36,7 +45,11 @@ class RSSGUARD_DLLSPEC Search : public RootItem {
     virtual void deleteItem();
     virtual void updateCounts();
 
+    Type type() const;
+    void setType(Type kind);
+
   private:
+    Type m_type;
     QString m_filter;
     QColor m_color;
     int m_totalCount = -1;

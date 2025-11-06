@@ -91,11 +91,16 @@ QString DatabaseQueries::whereClauseUnreadArticles(int account_id) {
 }
 
 QString DatabaseQueries::whereClauseProbe(Search* probe, int account_id) {
-  return QSL("Messages.is_deleted = 0 AND "
-             "Messages.is_pdeleted = 0 AND "
-             "Messages.account_id = %1 AND "
-             "(Messages.title REGEXP '%2' OR Messages.contents REGEXP '%2')")
-    .arg(QString::number(account_id), DatabaseFactory::escapeQuery(probe->filter()));
+  if (probe->type() == Search::Type::Regex) {
+    return QSL("Messages.is_deleted = 0 AND "
+               "Messages.is_pdeleted = 0 AND "
+               "Messages.account_id = %1 AND "
+               "(Messages.title REGEXP '%2' OR Messages.contents REGEXP '%2')")
+      .arg(QString::number(account_id), DatabaseFactory::escapeQuery(probe->filter()));
+  }
+  else {
+    return QSL("(%2) AND Messages.account_id = %1").arg(QString::number(account_id), probe->filter());
+  }
 }
 
 QString DatabaseQueries::whereClauseLabel(int label_id, int account_id) {
@@ -306,9 +311,10 @@ void DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
 void DatabaseQueries::updateProbe(const QSqlDatabase& db, Search* probe) {
   SqlQuery q(db);
 
-  q.prepare(QSL("UPDATE Probes SET name = :name, fltr = :fltr, color = :color "
+  q.prepare(QSL("UPDATE Probes SET name = :name, type = :type, fltr = :fltr, color = :color "
                 "WHERE id = :id AND account_id = :account_id;"));
   q.bindValue(QSL(":name"), probe->title());
+  q.bindValue(QSL(":type"), int(probe->type()));
   q.bindValue(QSL(":fltr"), probe->filter());
   q.bindValue(QSL(":color"), probe->color().name());
   q.bindValue(QSL(":id"), probe->id());
@@ -320,9 +326,10 @@ void DatabaseQueries::updateProbe(const QSqlDatabase& db, Search* probe) {
 void DatabaseQueries::createProbe(const QSqlDatabase& db, Search* probe, int account_id) {
   SqlQuery q(db);
 
-  q.prepare(QSL("INSERT INTO Probes (name, color, fltr, account_id) "
-                "VALUES (:name, :color, :fltr, :account_id);"));
+  q.prepare(QSL("INSERT INTO Probes (name, type, color, fltr, account_id) "
+                "VALUES (:name, :type, :color, :fltr, :account_id);"));
   q.bindValue(QSL(":name"), probe->title());
+  q.bindValue(QSL(":type"), int(probe->type()));
   q.bindValue(QSL(":fltr"), probe->filter());
   q.bindValue(QSL(":color"), probe->color().name());
   q.bindValue(QSL(":account_id"), account_id);
@@ -343,6 +350,7 @@ QList<Search*> DatabaseQueries::getProbesForAccount(const QSqlDatabase& db, int 
 
   while (q.next()) {
     Search* prob = new Search(q.value(QSL("name")).toString(),
+                              Search::Type(q.value(QSL("type")).toInt()),
                               q.value(QSL("fltr")).toString(),
                               QColor(q.value(QSL("color")).toString()));
 
