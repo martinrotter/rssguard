@@ -18,7 +18,7 @@ class LabelsMenu : public ScrollableMenu {
     void setLabels(const QList<Label*>& labels);
 
   signals:
-    void setModelArticleLabelIds(const QList<int>& article_ids, const QList<QList<Label*>>& labels);
+    void setModelArticleLabelIds(const QList<Message>& msgs);
 
   private slots:
     void changeLabelAssignment(bool assign);

@@ -45,12 +45,6 @@ void LabelsMenu::changeLabelAssignment(bool assign) {
 
   if (origin != nullptr && lbl != nullptr) {
     try {
-      QList<int> article_ids;
-      QList<QList<Label*>> article_labels;
-
-      article_ids.reserve(m_messages.size());
-      article_labels.reserve(m_messages.size());
-
       for (auto& msg : m_messages) {
         // NOTE: To avoid duplicates.
         msg.m_assignedLabels.removeAll(lbl);
@@ -63,13 +57,10 @@ void LabelsMenu::changeLabelAssignment(bool assign) {
           lbl->deassignFromMessage(msg, false);
           msg.m_assignedLabels.removeOne(lbl);
         }
-
-        article_ids.append(msg.m_id);
-        article_labels.append(msg.m_assignedLabels);
       }
 
       lbl->account()->onAfterLabelMessageAssignmentChanged({lbl}, m_messages, assign);
-      emit setModelArticleLabelIds(article_ids, article_labels);
+      emit setModelArticleLabelIds(m_messages);
     }
     catch (const ApplicationException& ex) {
       qCriticalNN << LOGSEC_CORE << "Failed to (de)assign label to/from article:" << NONQUOTE_W_SPACE_DOT(ex.message());

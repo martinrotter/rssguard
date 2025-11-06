@@ -913,21 +913,27 @@ bool MessagesModel::setMessageReadById(int article_id, RootItem::ReadStatus read
   return false;
 }
 
-bool MessagesModel::setMessageLabelsById(const QList<int>& article_ids, const QList<QList<Label*>>& labels) {
+bool MessagesModel::setMessageLabelsById(const QList<Message>& msgs) {
+  QMap<int, Message> hashed_msgs;
+
+  for (const auto& msg : msgs) {
+    hashed_msgs.insert(msg.m_id, msg);
+  }
+
   QModelIndexList changed_indices;
-  changed_indices.reserve(article_ids.size());
+  changed_indices.reserve(msgs.size());
 
   blockSignals(true);
 
   for (int i = 0; i < rowCount(); i++) {
     auto idx_id = index(i, MSG_MDL_ID_INDEX);
     auto idx_lbls = index(i, MSG_MDL_LABELS);
-
     int found_id = data(idx_id).toInt();
-    int idx_article = article_ids.indexOf(found_id);
 
-    if (idx_article >= 0) {
-      setData(idx_lbls, QVariant::fromValue(labels.at(idx_article)));
+    if (hashed_msgs.contains(found_id)) {
+      auto article = hashed_msgs.value(found_id);
+
+      setData(idx_lbls, QVariant::fromValue(article.m_assignedLabels));
       changed_indices.append(idx_lbls);
     }
   }

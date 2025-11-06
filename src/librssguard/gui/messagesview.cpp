@@ -555,8 +555,8 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
   QTreeView::selectionChanged(selected, deselected);
 }
 
-void MessagesView::onArticleLabelIdsChanged(const QList<int>& article_ids, const QList<QList<Label*>>& labels) {
-  m_sourceModel->setMessageLabelsById(article_ids, labels);
+void MessagesView::onArticleLabelIdsChanged(const QList<Message>& msgs) {
+  m_sourceModel->setMessageLabelsById(msgs);
   QModelIndex current_index = selectionModel()->currentIndex();
 
   if (current_index.isValid()) {
