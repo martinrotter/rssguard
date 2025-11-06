@@ -18,7 +18,6 @@
 #include <QJsonObject>
 #include <QMultiMap>
 #include <QSqlError>
-#include <QSqlQuery>
 
 class RSSGUARD_DLLSPEC DatabaseQueries {
   public:
@@ -126,9 +125,9 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QStringList customIdsOfMessagesFromBin(const QSqlDatabase& db,
                                                   RootItem::ReadStatus target_read,
                                                   int account_id);
-    static QStringList customIdsOfMessagesFromFeed(const QSqlDatabase& db,
-                                                   int feed_id,
-                                                   RootItem::ReadStatus target_read);
+    static QStringList customIdsOfMessagesFromFeeds(const QSqlDatabase& db,
+                                                    const QStringList& ids,
+                                                    RootItem::ReadStatus target_read);
 
     // Common account methods.
     template <typename T>
@@ -259,7 +258,6 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
   // Obtain data for categories from the database.
   SqlQuery q(db);
 
-  q.setForwardOnly(true);
   q.prepare(QSL("SELECT * FROM Categories WHERE account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
 
@@ -302,7 +300,6 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
   SqlQuery q(db);
   auto filters_in_feeds = messageFiltersInFeeds(db, account_id);
 
-  q.setForwardOnly(true);
   q.prepare(QSL("SELECT * FROM Feeds WHERE account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
 

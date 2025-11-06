@@ -363,7 +363,7 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   qDebugNN << LOGSEC_ARTICLEFILTER
            << "Prepared query for MSG duplicate identification is:" << QUOTE_W_SPACE_DOT(full_query);
 
-  q.setForwardOnly(true);
+
   q.prepare(full_query);
 
   for (const auto& bind : bind_values) {

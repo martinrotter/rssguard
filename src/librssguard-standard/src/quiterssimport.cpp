@@ -142,7 +142,7 @@ void QuiteRssImport::importLabels(const QList<Label*>& labels) {
   m_account->requestItemExpand({m_account->labelsNode()}, true);
 }
 
-Message QuiteRssImport::convertArticle(const QSqlQuery& rec) const {
+Message QuiteRssImport::convertArticle(const SqlQuery& rec) const {
   Message msg;
   QString dt_format = QSL("yyyy-MM-ddTHH:mm:ss");
 

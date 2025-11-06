@@ -8,13 +8,10 @@
 #include "exceptions/applicationexception.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
-#include "miscellaneous/textfactory.h"
 
 #include <QDir>
 #include <QSqlDriver>
-#include <QSqlQuery>
 #include <QSqlResult>
 #include <QVariant>
 
@@ -23,7 +20,7 @@ DatabaseFactory::DatabaseFactory(QObject* parent) : QObject(parent), m_dbDriver(
 }
 
 void DatabaseFactory::removeConnection(const QString& connection_name) {
-  qDebugNN << LOGSEC_DB << "Removing database connection '" << connection_name << "'.";
+  qDebugNN << LOGSEC_DB << "Removing database connection" << QUOTE_W_SPACE_DOT(connection_name);
   QSqlDatabase::removeDatabase(connection_name);
 }
 
@@ -46,7 +43,7 @@ void DatabaseFactory::determineDriver() {
 
   // Try to setup connection and fallback to SQLite.
   try {
-    m_dbDriver->connection(QSL("DatabaseFactory"));
+    m_dbDriver->connection(metaObject()->className());
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_DB << "Failed to reach connection to DB source:" << QUOTE_W_SPACE_DOT(ex.message());
@@ -78,8 +75,6 @@ DatabaseDriver* DatabaseFactory::driverForType(DatabaseDriver::DriverType d) con
 
 QString DatabaseFactory::escapeQuery(const QString& query) {
   return QString(query).replace(QSL("'"), QSL("''"));
-
-  //.replace(QSL("\""), QSL("\\\""));
 }
 
 DatabaseDriver::DriverType DatabaseFactory::activeDatabaseDriver() const {

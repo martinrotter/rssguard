@@ -175,7 +175,7 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   }
 }
 
-Message Message::fromSqlQuery(const QSqlQuery& record, const QHash<QString, Label*>& labels) {
+Message Message::fromSqlQuery(const SqlQuery& record, const QHash<QString, Label*>& labels) {
   Message message;
 
   message.m_id = record.value(MSG_DB_ID_INDEX).toInt();

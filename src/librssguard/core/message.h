@@ -5,11 +5,11 @@
 
 // #include "definitions/definitions.h"
 
+#include "database/sqlquery.h"
 #include "services/abstract/feedrtlbehavior.h"
 
 #include <QDataStream>
 #include <QDateTime>
-#include <QSqlQuery>
 #include <QSqlRecord>
 #include <QStringList>
 
@@ -73,7 +73,7 @@ class RSSGUARD_DLLSPEC Message {
 
     void sanitize(const Feed* feed, bool fix_future_datetimes);
 
-    static Message fromSqlQuery(const QSqlQuery& record, const QHash<QString, Label*>& labels);
+    static Message fromSqlQuery(const SqlQuery& record, const QHash<QString, Label*>& labels);
     static QList<Label*> decodeLabelCustomIds(const QHash<QString, Label*>& labels, const QStringList& custom_ids);
 
   public:

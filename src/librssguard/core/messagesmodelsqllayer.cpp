@@ -105,7 +105,7 @@ QList<Message> MessagesModelSqlLayer::fetchMessages(const QHash<QString, Label*>
   QString statemnt = selectStatement(limit, offset, additional_article_id);
   SqlQuery q(m_db);
 
-  q.setForwardOnly(true);
+
   q.exec(statemnt);
 
   while (q.next()) {

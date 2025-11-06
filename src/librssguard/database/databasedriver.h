@@ -12,7 +12,6 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
     Q_OBJECT
 
   public:
-    // Describes available types of database backend.
     enum class DriverType {
       SQLite,
       MySQL
@@ -21,6 +20,9 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
     explicit DatabaseDriver(QObject* parent = nullptr);
 
     QSqlDatabase threadSafeConnection(const QString& connection_name);
+
+    void setForeignKeyChecksEnabled(const QSqlDatabase& db);
+    void setForeignKeyChecksDisabled(const QSqlDatabase& db);
 
     // API.
     virtual QString location() const = 0;
@@ -33,15 +35,9 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
     virtual QString text() const = 0;
     virtual QString collateNocase() const = 0;
     virtual QString version() = 0;
-
     virtual QString foreignKeysEnable() const = 0;
     virtual QString foreignKeysDisable() const = 0;
-
     virtual QString limitOffset(int limit, int offset = 0) const;
-
-    void setForeignKeyChecksEnabled(const QSqlDatabase& db);
-    void setForeignKeyChecksDisabled(const QSqlDatabase& db);
-
     virtual bool vacuumDatabase() = 0;
     virtual bool saveDatabase() = 0;
     virtual void backupDatabase(const QString& backup_folder, const QString& backup_name) = 0;

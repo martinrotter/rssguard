@@ -9,7 +9,6 @@
 
 #include <QDir>
 #include <QSqlError>
-#include <QSqlQuery>
 
 MariaDbDriver::MariaDbDriver(QObject* parent) : DatabaseDriver(parent), m_databaseInitialized(false) {}
 
@@ -240,7 +239,7 @@ QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
   return database;
 }
 
-void MariaDbDriver::setPragmas(QSqlQuery& query) {
+void MariaDbDriver::setPragmas(SqlQuery& query) {
   query.exec(QSL("SET NAMES 'utf8mb4';"));
   query.exec(QSL("SET CHARACTER SET utf8mb4;"));
 }

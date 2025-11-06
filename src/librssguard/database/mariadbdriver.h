@@ -53,7 +53,7 @@ class MariaDbDriver : public DatabaseDriver {
   private:
     QSqlDatabase initializeDatabase(const QString& connection_name);
 
-    void setPragmas(QSqlQuery& query);
+    void setPragmas(SqlQuery& query);
 
   private:
     bool m_databaseInitialized;

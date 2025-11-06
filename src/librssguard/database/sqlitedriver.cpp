@@ -8,7 +8,6 @@
 #include <QDir>
 #include <QSqlDriver>
 #include <QSqlError>
-#include <QSqlQuery>
 
 SqliteDriver::SqliteDriver(QObject* parent)
   : DatabaseDriver(parent), m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QSL(APP_DB_SQLITE_PATH)),
@@ -216,7 +215,7 @@ QString SqliteDriver::databaseFilePath() const {
   return m_databaseFilePath + QDir::separator() + APP_DB_SQLITE_FILE;
 }
 
-void SqliteDriver::setPragmas(QSqlQuery& query) {
+void SqliteDriver::setPragmas(SqlQuery& query) {
   query.exec(QSL("PRAGMA encoding = \"UTF-8\";"));
   query.exec(QSL("PRAGMA page_size = 32768;"));
   query.exec(QSL("PRAGMA cache_size = 32768;"));

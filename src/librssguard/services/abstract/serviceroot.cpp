@@ -766,8 +766,7 @@ QStringList ServiceRoot::customIDsOfMessagesForItem(RootItem* item, ReadStatus t
 
     switch (item->kind()) {
       case RootItem::Kind::Labels:
-      case RootItem::Kind::Probes:
-      case RootItem::Kind::Category: {
+      case RootItem::Kind::Probes: {
         auto chi = item->childItems();
 
         for (RootItem* child : std::as_const(chi)) {
@@ -805,10 +804,18 @@ QStringList ServiceRoot::customIDsOfMessagesForItem(RootItem* item, ReadStatus t
         break;
       }
 
+      case RootItem::Kind::Category: {
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+        list =
+          DatabaseQueries::customIdsOfMessagesFromFeeds(database, textualFeedIds(item->getSubTreeFeeds()), target_read);
+        break;
+      }
+
       case RootItem::Kind::Feed: {
         QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
-        list = DatabaseQueries::customIdsOfMessagesFromFeed(database, item->id(), target_read);
+        list = DatabaseQueries::customIdsOfMessagesFromFeeds(database, {QString::number(item->id())}, target_read);
         break;
       }
 

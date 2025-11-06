@@ -24,7 +24,7 @@ class QuiteRssImport : public QObject {
   private:
     void importArticles(StandardFeed* feed, const QMap<QString, Label*>& lbls);
     void importLabels(const QList<Label*>& labels);
-    Message convertArticle(const QSqlQuery& rec) const;
+    Message convertArticle(const SqlQuery& rec) const;
     QMap<QString, Label*> hashLabels(const QList<Label*>& labels) const;
     QList<StandardFeed*> importTree(const QSqlDatabase& db, RootItem* root) const;
     RootItem* extractFeedsAndCategories(const QSqlDatabase& db) const;

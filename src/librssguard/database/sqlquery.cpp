@@ -5,7 +5,9 @@
 #include "definitions/definitions.h"
 #include "exceptions/sqlexception.h"
 
-SqlQuery::SqlQuery(const QSqlDatabase& db) : QSqlQuery(db) {}
+SqlQuery::SqlQuery(const QSqlDatabase& db) : QSqlQuery(db) {
+  setForwardOnly(true);
+}
 
 bool SqlQuery::exec(bool throw_ex) {
   const bool ok = QSqlQuery::exec();

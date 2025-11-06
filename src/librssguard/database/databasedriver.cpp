@@ -2,7 +2,7 @@
 
 #include "database/databasedriver.h"
 
-#include "database/databasefactory.h"
+#include "database/sqlquery.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/iofactory.h"
@@ -10,7 +10,6 @@
 
 #include <QDir>
 #include <QSqlError>
-#include <QSqlQuery>
 #include <QThread>
 
 DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent) {}
@@ -46,7 +45,7 @@ void DatabaseDriver::setForeignKeyChecksEnabled(const QSqlDatabase& db) {
 }
 
 void DatabaseDriver::setForeignKeyChecksDisabled(const QSqlDatabase& db) {
-  QSqlQuery q(db);
+  SqlQuery q(db);
 
   q.exec(foreignKeysDisable());
 }

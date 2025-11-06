@@ -33,7 +33,7 @@ class SqliteDriver : public DatabaseDriver {
 
   private:
     QSqlDatabase initializeDatabase(const QString& connection_name);
-    void setPragmas(QSqlQuery& query);
+    void setPragmas(SqlQuery& query);
     QString databaseFilePath() const;
 
   private:
