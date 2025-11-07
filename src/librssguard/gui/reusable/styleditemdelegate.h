@@ -11,8 +11,11 @@
 #include <QStyleOptionViewItem>
 #endif
 
+class QTreeView;
+
 class StyledItemDelegate : public QStyledItemDelegate {
     Q_OBJECT
+    Q_PROPERTY(qreal flashProgress READ flashProgress WRITE setFlashProgress NOTIFY flashProgressChanged)
 
   public:
     explicit StyledItemDelegate(int height_row, int padding_row, QObject* parent = nullptr);
@@ -20,7 +23,19 @@ class StyledItemDelegate : public QStyledItemDelegate {
     virtual void paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const;
     virtual QSize sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const;
 
+    void flashItem(const QModelIndex& index, QTreeView* view);
+
+    qreal flashProgress() const;
+    void setFlashProgress(qreal v);
+
+  signals:
+    void flashProgressChanged();
+
   private:
+    QRect rowRectForIndex(QTreeView* view, const QModelIndex& idx) const;
+
+    QModelIndex m_index;
+    qreal m_flashProgress;
     int m_rowHeight;
     int m_rowPadding;
 };

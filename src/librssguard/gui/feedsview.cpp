@@ -33,7 +33,10 @@ FeedsView::FeedsView(QWidget* parent)
   : BaseTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
     m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuEmptySpace(nullptr),
     m_contextMenuOtherItems(nullptr), m_contextMenuLabel(nullptr), m_contextMenuProbe(nullptr),
-    m_dontSaveExpandState(false) {
+    m_dontSaveExpandState(false),
+    m_delegate(new StyledItemDelegate(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt(),
+                                      -1,
+                                      this)) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -1230,6 +1233,23 @@ void FeedsView::restoreHeaderState(const QByteArray& dta) {
   header()->resizeSection(header()->logicalIndex(header()->count() - 1), 1);
 }
 
+void FeedsView::revealItem(RootItem* item) {
+  auto idx = m_proxyModel->mapFromSource(m_sourceModel->indexForItem(item));
+
+  if (idx.isValid()) {
+    scrollTo(idx, QTreeView::ScrollHint::PositionAtCenter);
+    // selectionModel()->setCurrentIndex(idx, QItemSelectionModel::SelectionFlag::NoUpdate);
+    // setFocus();
+    m_delegate->flashItem(idx, this);
+  }
+  else {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Feed filtered out"),
+                                    tr("Your feed is probably filtered out and cannot be revealed."),
+                                    QSystemTrayIcon::MessageIcon::Warning));
+  }
+}
+
 void FeedsView::setupAppearance() {
   // Setup column resize strategies.
   for (int i = 0; i < header()->count(); i++) {
@@ -1255,9 +1275,7 @@ void FeedsView::setupAppearance() {
   setDragDropMode(QAbstractItemView::DragDropMode::InternalMove);
   setRootIsDecorated(false);
   setSelectionMode(QAbstractItemView::SelectionMode::ExtendedSelection);
-  setItemDelegate(new StyledItemDelegate(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt(),
-                                         -1,
-                                         this));
+  setItemDelegate(m_delegate);
 }
 
 void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {

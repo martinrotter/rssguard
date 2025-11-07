@@ -318,6 +318,8 @@ void FeedMessageViewer::createConnections() {
   connect(m_feedsView, &FeedsView::itemSelected, m_messagesView, &MessagesView::loadItem);
   connect(m_feedsView, &FeedsView::requestViewNextUnreadMessage, m_messagesView, &MessagesView::selectNextUnreadItem);
 
+  connect(m_messagesView, &MessagesView::selectInFeedsView, m_feedsView, &FeedsView::revealItem);
+
   // State of many messages is changed, then we need
   // to reload selections.
   connect(m_feedsView->sourceModel(),

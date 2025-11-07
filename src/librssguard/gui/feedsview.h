@@ -13,6 +13,7 @@
 class FeedsProxyModel;
 class Feed;
 class Category;
+class StyledItemDelegate;
 
 class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     Q_OBJECT
@@ -46,6 +47,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void restoreHeaderState(const QByteArray& dta);
 
   public slots:
+    void revealItem(RootItem* item);
     void copyUrlOfSelectedFeeds() const;
     void sortByColumn(int column, Qt::SortOrder order);
 
@@ -154,6 +156,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     bool m_dontSaveExpandState;
     QList<QPair<QModelIndex, bool>> m_delayedItemExpansions;
     QTimer m_expansionDelayer;
+    StyledItemDelegate* m_delegate;
 };
 
 inline FeedsProxyModel* FeedsView::model() const {

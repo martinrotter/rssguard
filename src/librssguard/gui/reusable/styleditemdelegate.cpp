@@ -5,8 +5,12 @@
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
 
+#include <QPainter>
+#include <QPropertyAnimation>
+#include <QTreeView>
+
 StyledItemDelegate::StyledItemDelegate(int height_row, int padding_row, QObject* parent)
-  : QStyledItemDelegate(parent), m_rowHeight(height_row), m_rowPadding(padding_row) {}
+  : QStyledItemDelegate(parent), m_flashProgress(0.0), m_rowHeight(height_row), m_rowPadding(padding_row) {}
 
 void StyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
   QStyleOptionViewItem item_option(option);
@@ -31,6 +35,19 @@ void StyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
   }
 
   QStyledItemDelegate::paint(painter, item_option, index);
+
+  if (m_index.isValid() && index.parent() == m_index.parent() && index.row() == m_index.row() &&
+      m_flashProgress >= 0.0) {
+    qDebugNN << "paint " << m_flashProgress;
+
+    const QTreeView* tree = qobject_cast<const QTreeView*>(option.widget);
+    QRect rowRect(0, option.rect.top(), tree->viewport()->width(), option.rect.height());
+
+    QColor c = QColor(255, 30, 30, static_cast<int>(180 * m_flashProgress));
+    painter->save();
+    painter->fillRect(rowRect, c);
+    painter->restore();
+  }
 }
 
 QSize StyledItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QModelIndex& index) const {
@@ -49,4 +66,48 @@ QSize StyledItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
   }
 
   return new_hint;
+}
+
+void StyledItemDelegate::flashItem(const QModelIndex& index, QTreeView* view) {
+  m_index = index;
+
+  QPropertyAnimation* anim = new QPropertyAnimation(this, "flashProgress");
+
+  anim->setStartValue(1.0);
+  anim->setEndValue(0.0);
+  anim->setDuration(3000);
+  anim->setEasingCurve(QEasingCurve::Type::OutCubic);
+
+  connect(anim, &QPropertyAnimation::finished, anim, &QObject::deleteLater);
+  connect(anim, &QPropertyAnimation::finished, this, [view, this]() {
+    view->viewport()->update(rowRectForIndex(view, m_index));
+    m_index = QModelIndex();
+  });
+  connect(anim, &QPropertyAnimation::valueChanged, view, [view, this]() {
+    if (m_index.isValid()) {
+      view->viewport()->update(rowRectForIndex(view, m_index));
+    }
+  });
+
+  anim->start(QAbstractAnimation::DeletionPolicy::DeleteWhenStopped);
+}
+
+qreal StyledItemDelegate::flashProgress() const {
+  return m_flashProgress;
+}
+
+void StyledItemDelegate::setFlashProgress(qreal v) {
+  m_flashProgress = v;
+  emit flashProgressChanged();
+}
+
+QRect StyledItemDelegate::rowRectForIndex(QTreeView* view, const QModelIndex& idx) const {
+  const QRect cell_rect = view->visualRect(idx);
+
+  if (!cell_rect.isValid()) {
+    return QRect();
+  }
+
+  QRect row_rect(0, cell_rect.top(), view->viewport()->width(), cell_rect.height());
+  return row_rect;
 }
