@@ -47,6 +47,8 @@ class MessagesView : public BaseTreeView {
     void restoreHeaderState(const QByteArray& dta);
 
   public slots:
+    void goToMotherFeed();
+
     void copyUrlOfSelectedArticles() const;
 
     // Called after data got changed externally
@@ -111,6 +113,7 @@ class MessagesView : public BaseTreeView {
     void playLinkInMediaPlayer(const QString& link);
 #endif
 
+    void selectInFeedsView(RootItem* item);
     void openSingleMessageInNewTab(RootItem* root, const Message& message);
 
     // Notify others about message selections.

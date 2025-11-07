@@ -180,6 +180,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionSendMessageViaEmail;
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
   actions << m_ui->m_actionOpenSelectedMessagesInternally;
+  actions << m_ui->m_actionGoToMotherFeed;
   actions << m_ui->m_actionPlaySelectedArticlesInMediaPlayer;
   actions << m_ui->m_actionAlternateColorsInLists;
   actions << m_ui->m_actionPauseFeedFetching;
@@ -460,6 +461,7 @@ void FormMain::updateMessageButtonsAvailability() {
 
   m_ui->m_actionOpenSelectedMessagesInternally->setEnabled(one_message_selected);
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setEnabled(atleast_one_message_selected);
+  m_ui->m_actionGoToMotherFeed->setEnabled(one_message_selected);
   m_ui->m_actionCopyUrlSelectedArticles->setEnabled(atleast_one_message_selected);
   m_ui->m_actionSendMessageViaEmail->setEnabled(one_message_selected);
   m_ui->m_actionSwitchImportanceOfSelectedMessages->setEnabled(atleast_one_message_selected);
@@ -603,6 +605,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-important")));
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
+  m_ui->m_actionGoToMotherFeed->setIcon(icon_theme_factory->fromTheme(QSL("go-jump")));
   m_ui->m_actionPlaySelectedArticlesInMediaPlayer->setIcon(icon_theme_factory->fromTheme(QSL("player_play"),
                                                                                          QSL("media-playback-start")));
   m_ui->m_actionSendMessageViaEmail->setIcon(icon_theme_factory->fromTheme(QSL("mail-send")));
@@ -895,6 +898,11 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
           &MessagesView::openSelectedMessagesInternally);
+
+  connect(m_ui->m_actionGoToMotherFeed,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::goToMotherFeed);
 
   connect(m_ui->m_actionSendMessageViaEmail,
           &QAction::triggered,

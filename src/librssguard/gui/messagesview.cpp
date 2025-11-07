@@ -153,6 +153,22 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
   }
 }
 
+void MessagesView::goToMotherFeed() {
+  if (selectionModel()->selectedRows().size() == 1) {
+    const Message message =
+      m_sourceModel->messageForRow(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
+
+    Feed* feed = m_sourceModel->feedById(message.m_feedId);
+
+    if (feed == nullptr) {
+      return;
+    }
+
+    // TODO: pokračovat
+    emit selectInFeedsView(feed);
+  }
+}
+
 void MessagesView::copyUrlOfSelectedArticles() const {
   const QModelIndexList selected_indexes = selectionModel()->selectedRows();
 
@@ -440,6 +456,7 @@ void MessagesView::initializeContextMenu() {
   m_contextMenu->addActions({qApp->mainForm()->m_ui->m_actionSendMessageViaEmail,
                              qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally,
                              qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally,
+                             qApp->mainForm()->m_ui->m_actionGoToMotherFeed,
                              qApp->mainForm()->m_ui->m_actionPlaySelectedArticlesInMediaPlayer,
                              qApp->mainForm()->m_ui->m_actionCopyUrlSelectedArticles,
                              qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead,

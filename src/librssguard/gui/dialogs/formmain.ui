@@ -45,7 +45,7 @@
      <x>0</x>
      <y>0</y>
      <width>1296</width>
-     <height>22</height>
+     <height>30</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -170,6 +170,7 @@
     <addaction name="separator"/>
     <addaction name="m_actionOpenSelectedSourceArticlesExternally"/>
     <addaction name="m_actionOpenSelectedMessagesInternally"/>
+    <addaction name="m_actionGoToMotherFeed"/>
     <addaction name="m_actionPlaySelectedArticlesInMediaPlayer"/>
     <addaction name="m_actionSendMessageViaEmail"/>
     <addaction name="separator"/>
@@ -238,7 +239,7 @@
     <string notr="true">Ctrl+Q</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::QuitRole</enum>
+    <enum>QAction::MenuRole::QuitRole</enum>
    </property>
   </action>
   <action name="m_actionSettings">
@@ -263,7 +264,7 @@
     <string notr="true"/>
    </property>
    <property name="menuRole">
-    <enum>QAction::AboutRole</enum>
+    <enum>QAction::MenuRole::AboutRole</enum>
    </property>
   </action>
   <action name="m_actionFullscreen">
@@ -947,6 +948,11 @@
   <action name="m_actionLoadAllArticles">
    <property name="text">
     <string>&amp;Load all remaining articles</string>
+   </property>
+  </action>
+  <action name="m_actionGoToMotherFeed">
+   <property name="text">
+    <string>Go to mother &amp;feed</string>
    </property>
   </action>
  </widget>

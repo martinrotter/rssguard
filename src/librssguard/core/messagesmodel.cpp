@@ -396,6 +396,10 @@ RootItem* MessagesModel::loadedItem() const {
   return m_selectedItem;
 }
 
+Feed* MessagesModel::feedById(int id) const {
+  return m_hashedFeeds.value(id);
+}
+
 void MessagesModel::updateDateFormat() {
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()) {
     m_customDateFormat = qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString();
@@ -819,7 +823,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
           QVariant dta = data(idx_feedid, Qt::ItemDataRole::EditRole);
           int feed_id = dta.toInt();
 
-          auto* fd = m_hashedFeeds.value(feed_id);
+          auto* fd = feedById(feed_id);
 
           if (fd == nullptr) {
             return qApp->icons()->fromTheme(QSL("application-rss+xml"));
@@ -962,7 +966,7 @@ QString MessagesModel::formatLabels(const QList<Label*>& labels) const {
 }
 
 void MessagesModel::fillComputedMessageData(Message* msg) {
-  auto* fd = m_hashedFeeds.value(msg->m_feedId);
+  auto* fd = feedById(msg->m_feedId);
 
   msg->m_rtlBehavior = fd != nullptr ? fd->rtlBehavior() : msg->m_rtlBehavior;
   msg->m_feedTitle = fd != nullptr ? fd->title() : msg->m_feedTitle;

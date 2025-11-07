@@ -65,6 +65,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     RootItem::Importance messageImportance(int row_index) const;
 
     RootItem* loadedItem() const;
+    Feed* feedById(int id) const;
 
     // Loads messages of given feeds.
     void loadMessages(RootItem* item, bool keep_additional_article_id = false);
