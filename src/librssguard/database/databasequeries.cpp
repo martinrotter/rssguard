@@ -1426,16 +1426,19 @@ void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db, int 
   SqlQuery q(db);
 
   if (account_id > 0) {
-    // Delete leftover assignments for a specific account.
     q.prepare(QSL("DELETE FROM LabelsInMessages "
-                  "WHERE account_id = :account_id "
-                  "AND message NOT IN (SELECT id FROM Messages WHERE account_id = :account_id);"));
+                  "WHERE account_id = :account_id AND "
+                  "  ( "
+                  "    message NOT IN (SELECT id FROM Messages WHERE account_id = :account_id) OR "
+                  "    label NOT IN (SELECT id FROM Labels  WHERE account_id = :account_id) "
+                  "  );"));
     q.bindValue(QSL(":account_id"), account_id);
   }
   else {
-    // Delete leftover assignments for all accounts.
     q.prepare(QSL("DELETE FROM LabelsInMessages "
-                  "WHERE message NOT IN (SELECT id FROM Messages);"));
+                  "WHERE "
+                  "  message NOT IN (SELECT id FROM Messages) OR "
+                  "  label NOT IN (SELECT id FROM Labels);"));
   }
 
   q.exec();
