@@ -302,6 +302,7 @@ void FeedMessageViewer::createConnections() {
           &MessagePreviewer::markMessageRead,
           m_messagesView->sourceModel(),
           &MessagesModel::setMessageReadById);
+  connect(m_messagesBrowser, &MessagePreviewer::revealFeed, m_messagesView, &MessagesView::goToMotherFeed);
   connect(m_messagesBrowser,
           &MessagePreviewer::markMessageImportant,
           m_messagesView->sourceModel(),

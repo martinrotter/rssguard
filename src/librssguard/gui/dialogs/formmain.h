@@ -14,6 +14,7 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     Q_OBJECT
 
     friend class TabWidget;
+    friend class WebBrowser;
     friend class MessagesView;
     friend class FeedsView;
 

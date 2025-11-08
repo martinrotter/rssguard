@@ -164,7 +164,6 @@ void MessagesView::goToMotherFeed() {
       return;
     }
 
-    // TODO: pokračovat
     emit selectInFeedsView(feed);
   }
 }

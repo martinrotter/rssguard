@@ -31,6 +31,12 @@ void MessagePreviewer::createConnections() {
           &QAction::triggered,
           this,
           &MessagePreviewer::markMessageAsRead);
+  connect(m_actionRevealFeed =
+            m_toolBar->addAction(qApp->icons()->fromTheme(QSL("application-rss+xml"), QSL("go-jump")),
+                                 tr("Reveal feed")),
+          &QAction::triggered,
+          this,
+          &MessagePreviewer::revealFeed);
   connect(m_actionMarkUnread =
             m_toolBar->addAction(qApp->icons()->fromTheme(QSL("mail-mark-unread")), tr("Mark article unread")),
           &QAction::triggered,

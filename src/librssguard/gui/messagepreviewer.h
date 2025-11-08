@@ -32,7 +32,7 @@ class MessagePreviewer : public TabContent {
 
     virtual WebBrowser* webBrowser() const;
 
-    LabelsMenu *menuLabels() const;
+    LabelsMenu* menuLabels() const;
 
   public slots:
     void setToolbarsVisible(bool visible);
@@ -48,6 +48,7 @@ class MessagePreviewer : public TabContent {
     void switchMessageImportance(bool checked);
 
   signals:
+    void revealFeed();
     void markMessageRead(int id, RootItem::ReadStatus read);
     void markMessageImportant(int id, RootItem::Importance important);
 
@@ -69,6 +70,7 @@ class MessagePreviewer : public TabContent {
     QAction* m_actionMarkUnread;
     QAction* m_actionSwitchImportance;
     QAction* m_actionShowAllLabels;
+    QAction* m_actionRevealFeed;
     LabelsMenu* m_menuLabels;
     QAction* m_separator;
     QList<QAction*> m_btnLabels;
