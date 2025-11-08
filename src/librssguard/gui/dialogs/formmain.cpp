@@ -605,7 +605,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-important")));
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
-  m_ui->m_actionGoToMotherFeed->setIcon(icon_theme_factory->fromTheme(QSL("go-jump")));
+  m_ui->m_actionGoToMotherFeed->setIcon(icon_theme_factory->fromTheme(QSL("application-rss+xml"), QSL("go-jump")));
   m_ui->m_actionPlaySelectedArticlesInMediaPlayer->setIcon(icon_theme_factory->fromTheme(QSL("player_play"),
                                                                                          QSL("media-playback-start")));
   m_ui->m_actionSendMessageViaEmail->setIcon(icon_theme_factory->fromTheme(QSL("mail-send")));

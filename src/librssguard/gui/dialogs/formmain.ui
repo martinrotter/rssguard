@@ -45,7 +45,7 @@
      <x>0</x>
      <y>0</y>
      <width>1296</width>
-     <height>30</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="m_menuFile">
@@ -239,7 +239,7 @@
     <string notr="true">Ctrl+Q</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::QuitRole</enum>
+    <enum>QAction::QuitRole</enum>
    </property>
   </action>
   <action name="m_actionSettings">
@@ -264,7 +264,7 @@
     <string notr="true"/>
    </property>
    <property name="menuRole">
-    <enum>QAction::MenuRole::AboutRole</enum>
+    <enum>QAction::AboutRole</enum>
    </property>
   </action>
   <action name="m_actionFullscreen">
@@ -952,7 +952,7 @@
   </action>
   <action name="m_actionGoToMotherFeed">
    <property name="text">
-    <string>Go to mother &amp;feed</string>
+    <string>Reveal &amp;feed</string>
    </property>
   </action>
  </widget>

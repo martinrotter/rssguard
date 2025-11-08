@@ -4,13 +4,17 @@
 
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/skinfactory.h"
 
 #include <QPainter>
 #include <QPropertyAnimation>
 #include <QTreeView>
 
 StyledItemDelegate::StyledItemDelegate(int height_row, int padding_row, QObject* parent)
-  : QStyledItemDelegate(parent), m_flashProgress(0.0), m_rowHeight(height_row), m_rowPadding(padding_row) {}
+  : QStyledItemDelegate(parent),
+    m_flashColor(qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgInteresting).value<QColor>()),
+    m_flashProgress(0.0), m_rowHeight(height_row), m_rowPadding(padding_row) {}
 
 void StyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& option, const QModelIndex& index) const {
   QStyleOptionViewItem item_option(option);
@@ -36,14 +40,19 @@ void StyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 
   QStyledItemDelegate::paint(painter, item_option, index);
 
-  if (m_index.isValid() && index.parent() == m_index.parent() && index.row() == m_index.row() &&
+  if (m_flashIndex.isValid() && index.parent() == m_flashIndex.parent() && index.row() == m_flashIndex.row() &&
       m_flashProgress >= 0.0) {
-    qDebugNN << "paint " << m_flashProgress;
-
     const QTreeView* tree = qobject_cast<const QTreeView*>(option.widget);
     QRect rowRect(0, option.rect.top(), tree->viewport()->width(), option.rect.height());
 
-    QColor c = QColor(255, 30, 30, static_cast<int>(180 * m_flashProgress));
+    QColor c = m_flashColor;
+
+    if (!c.isValid()) {
+      c = Qt::GlobalColor::red;
+    }
+
+    c.setAlpha(180 * m_flashProgress);
+
     painter->save();
     painter->fillRect(rowRect, c);
     painter->restore();
@@ -69,7 +78,7 @@ QSize StyledItemDelegate::sizeHint(const QStyleOptionViewItem& option, const QMo
 }
 
 void StyledItemDelegate::flashItem(const QModelIndex& index, QTreeView* view) {
-  m_index = index;
+  m_flashIndex = index;
 
   QPropertyAnimation* anim = new QPropertyAnimation(this, "flashProgress");
 
@@ -80,12 +89,12 @@ void StyledItemDelegate::flashItem(const QModelIndex& index, QTreeView* view) {
 
   connect(anim, &QPropertyAnimation::finished, anim, &QObject::deleteLater);
   connect(anim, &QPropertyAnimation::finished, this, [view, this]() {
-    view->viewport()->update(rowRectForIndex(view, m_index));
-    m_index = QModelIndex();
+    m_flashIndex = QModelIndex();
+    view->viewport()->update(rowRectForIndex(view, m_flashIndex));
   });
   connect(anim, &QPropertyAnimation::valueChanged, view, [view, this]() {
-    if (m_index.isValid()) {
-      view->viewport()->update(rowRectForIndex(view, m_index));
+    if (m_flashIndex.isValid()) {
+      view->viewport()->update(rowRectForIndex(view, m_flashIndex));
     }
   });
 

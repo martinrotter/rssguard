@@ -34,7 +34,8 @@ class StyledItemDelegate : public QStyledItemDelegate {
   private:
     QRect rowRectForIndex(QTreeView* view, const QModelIndex& idx) const;
 
-    QModelIndex m_index;
+    QColor m_flashColor;
+    QModelIndex m_flashIndex;
     qreal m_flashProgress;
     int m_rowHeight;
     int m_rowPadding;
