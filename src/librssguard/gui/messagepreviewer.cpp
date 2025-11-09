@@ -26,17 +26,20 @@
 void MessagePreviewer::createConnections() {
   installEventFilter(this);
 
-  connect(m_actionMarkRead =
-            m_toolBar->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")), tr("Mark article read")),
-          &QAction::triggered,
-          this,
-          &MessagePreviewer::markMessageAsRead);
   connect(m_actionRevealFeed =
             m_toolBar->addAction(qApp->icons()->fromTheme(QSL("application-rss+xml"), QSL("go-jump")),
                                  tr("Reveal feed")),
           &QAction::triggered,
           this,
           &MessagePreviewer::revealFeed);
+
+  m_toolBar->addSeparator();
+
+  connect(m_actionMarkRead =
+            m_toolBar->addAction(qApp->icons()->fromTheme(QSL("mail-mark-read")), tr("Mark article read")),
+          &QAction::triggered,
+          this,
+          &MessagePreviewer::markMessageAsRead);
   connect(m_actionMarkUnread =
             m_toolBar->addAction(qApp->icons()->fromTheme(QSL("mail-mark-unread")), tr("Mark article unread")),
           &QAction::triggered,
@@ -48,8 +51,11 @@ void MessagePreviewer::createConnections() {
           this,
           &MessagePreviewer::switchMessageImportance);
 
+  m_toolBar->addSeparator();
+
   m_actionShowAllLabels =
     m_toolBar->addAction(qApp->icons()->fromTheme(QSL("tag"), QSL("tag-edit")), tr("Show all labels"));
+
   m_actionShowAllLabels->setMenu(m_menuLabels = new LabelsMenu(this));
   qobject_cast<QToolButton*>(m_toolBar->widgetForAction(m_actionShowAllLabels))
     ->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
