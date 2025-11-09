@@ -54,18 +54,9 @@ void DynamicShortcutsWidget::populate(QList<QAction*> actions) {
     auto act_text = action->text().remove(QSL("&"));
     auto act_toolt = action->toolTip();
 
-    if (act_toolt.isEmpty() || act_text == act_toolt) {
-      action_label->setText(act_text);
-    }
-    else {
-      action_label->setText(act_toolt);
-      // action_label->setText(QSL("%1 (%2)").arg(act_text, act_toolt));
-    }
-
+    action_label->setText(act_text.isEmpty() ? act_toolt : act_text);
     action_label->setToolTip(action->toolTip());
     action_label->setWordWrap(true);
-
-    // action_label->setSizePolicy(QSizePolicy::Maximum, QSizePolicy::Preferred);
 
     auto* action_icon = new QLabel(this);
 

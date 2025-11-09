@@ -27,7 +27,7 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
   : TabContent(parent), m_layout(new QVBoxLayout(this)), m_toolBar(new QToolBar(tr("Navigation panel"), this)),
     m_webView(viewer), m_searchWidget(new SearchTextWidget(this)),
     m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
-                                            tr("Open this website in system web browser"),
+                                            tr("Open in system web browser"),
                                             this)),
 #if defined(ENABLE_MEDIAPLAYER)
     m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
