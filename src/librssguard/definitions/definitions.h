@@ -129,14 +129,11 @@
 #define CLI_USERAGENT_SHORT "u"
 #define CLI_USERAGENT_LONG  "user-agent"
 
-#define CLI_NSTDOUTERR_SHORT "n"
-#define CLI_NSTDOUTERR_LONG  "no-standard-output"
-
 #define CLI_STYLE_SHORT "t"
 #define CLI_STYLE_LONG  "style"
 
-#define CLI_NDEBUG_SHORT "g"
-#define CLI_NDEBUG_LONG  "no-debug-output"
+#define CLI_DEBUG_SHORT "g"
+#define CLI_DEBUG_LONG  "debug"
 
 #define CLI_QUIT_INSTANCE "q"
 #define CLI_IS_RUNNING    "a"

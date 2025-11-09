@@ -228,7 +228,7 @@ Application::~Application() {
 }
 
 void Application::updateCliDebugStatus() {
-  s_disableDebug = m_cmdParser.isSet(QSL(CLI_NSTDOUTERR_SHORT)) ||
+  s_disableDebug = !m_cmdParser.isSet(QSL(CLI_DEBUG_SHORT)) &&
                    settings()->value(GROUP(General), SETTING(General::DisableDebugOutput)).toBool();
 }
 
@@ -1096,10 +1096,6 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
     qCriticalNN << LOGSEC_CORE << m_cmdParser.errorText();
   }
 
-  if (m_cmdParser.isSet(QSL(CLI_NDEBUG_SHORT))) {
-    QLoggingCategory::setFilterRules(QSL("*.debug=false"));
-  }
-
   if (!m_cmdParser.value(QSL(CLI_DAT_SHORT)).isEmpty()) {
     auto data_folder = QDir::toNativeSeparators(m_cmdParser.value(QSL(CLI_DAT_SHORT)));
 
@@ -1151,11 +1147,7 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                        QSL("user-data-folder"));
   QCommandLineOption disable_singleinstance({QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG)},
                                             QSL("Allow running of multiple application instances."));
-  QCommandLineOption disable_only_debug({QSL(CLI_NDEBUG_SHORT), QSL(CLI_NDEBUG_LONG)},
-                                        QSL("Disable just \"debug\" output."));
-  QCommandLineOption
-    disable_debug({QSL(CLI_NSTDOUTERR_SHORT), QSL(CLI_NSTDOUTERR_LONG)},
-                  QSL("Disable DEBUG stdout/stderr outputs but keep more serious warnings and errors."));
+  QCommandLineOption debug_output({QSL(CLI_DEBUG_SHORT), QSL(CLI_DEBUG_LONG)}, QSL("Enable \"debug\" CLI output."));
   QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)},
                                   QSL("Force some application style."),
                                   QSL("style-name"));
@@ -1172,8 +1164,7 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                      version,
                      custom_data_folder,
                      disable_singleinstance,
-                     disable_only_debug,
-                     disable_debug,
+                     debug_output,
                      forced_style,
                      custom_ua,
                      custom_threads});
