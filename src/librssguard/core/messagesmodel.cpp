@@ -524,10 +524,11 @@ bool MessagesModel::lazyLoading() const {
 
 Qt::ItemFlags MessagesModel::flags(const QModelIndex& index) const {
   if (index.isValid()) {
-    return Qt::ItemIsSelectable | Qt::ItemIsEnabled | Qt::ItemIsEditable | Qt::ItemNeverHasChildren;
+    return Qt::ItemFlag::ItemIsSelectable | Qt::ItemFlag::ItemIsEnabled | Qt::ItemFlag::ItemIsEditable |
+           Qt::ItemFlag::ItemNeverHasChildren;
   }
   else {
-    return Qt::NoItemFlags;
+    return Qt::ItemFlag::NoItemFlags;
   }
 }
 

@@ -452,6 +452,9 @@ DKEY Keyboard::ID = "keyboard";
 // Notifications.
 DKEY Notifications::ID = "notifications";
 
+// External tools.
+DKEY ExternalTools::ID = "external_tools";
+
 // Web browser.
 DKEY Browser::ID = "browser";
 
@@ -478,9 +481,6 @@ DVALUE(QString) Browser::CustomExternalEmailExecutableDef = QString();
 
 DKEY Browser::CustomExternalEmailArguments = "external_email_arguments";
 DVALUE(char*) Browser::CustomExternalEmailArgumentsDef = "";
-
-DKEY Browser::ExternalTools = "external_tools";
-DVALUE(QStringList) Browser::ExternalToolsDef = QStringList();
 
 // Categories.
 DKEY CategoriesExpandStates::ID = "categories_expand_states";

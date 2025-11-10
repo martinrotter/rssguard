@@ -486,6 +486,11 @@ namespace Notifications {
   KEY ID;
 }
 
+// External tools.
+namespace ExternalTools {
+  KEY ID;
+}
+
 // Web browser.
 namespace Browser {
   KEY ID;
@@ -510,9 +515,6 @@ namespace Browser {
 
   KEY CustomExternalEmailExecutable;
   VALUE(QString) CustomExternalEmailExecutableDef;
-
-  KEY ExternalTools;
-  VALUE(QStringList) ExternalToolsDef;
 
   KEY CustomExternalEmailArguments;
   VALUE(char*) CustomExternalEmailArgumentsDef;

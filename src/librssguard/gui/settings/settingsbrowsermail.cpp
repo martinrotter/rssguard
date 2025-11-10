@@ -46,8 +46,9 @@ void SettingsBrowserMail::loadUi() {
   m_ui->m_btnAddTool->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
   m_ui->m_btnEditTool->setIcon(qApp->icons()->fromTheme(QSL("document-edit")));
   m_ui->m_btnDeleteTool->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
-  m_ui->m_listTools->setHeaderLabels(QStringList() << tr("Executable") << tr("Parameters"));
+  m_ui->m_listTools->setHeaderLabels({tr("Name"), tr("Executable"), tr("Parameters")});
   m_ui->m_listTools->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
+  m_ui->m_listTools->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
 
   connect(m_ui->m_cbEnableHttp2, &QCheckBox::STATE_CHANGED, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_checkOpenLinksInExternal, &QCheckBox::STATE_CHANGED, this, &SettingsBrowserMail::dirtifySettings);
@@ -81,7 +82,6 @@ void SettingsBrowserMail::loadUi() {
   connect(m_ui->m_btnAddTool, &QPushButton::clicked, this, &SettingsBrowserMail::addExternalTool);
   connect(m_ui->m_btnEditTool, &QPushButton::clicked, this, &SettingsBrowserMail::editSelectedExternalTool);
   connect(m_ui->m_btnDeleteTool, &QPushButton::clicked, this, &SettingsBrowserMail::deleteSelectedExternalTool);
-  connect(m_ui->m_listTools, &QTreeWidget::itemDoubleClicked, m_ui->m_btnEditTool, &QPushButton::click);
   connect(m_ui->m_listTools,
           &QTreeWidget::currentItemChanged,
           this,
@@ -91,6 +91,7 @@ void SettingsBrowserMail::loadUi() {
             m_ui->m_btnDeleteTool->setEnabled(current != nullptr);
             m_ui->m_btnEditTool->setEnabled(current != nullptr);
           });
+  connect(m_ui->m_listTools, &QTreeWidget::itemChanged, this, &SettingsBrowserMail::dirtifySettings);
 
   SettingsPanel::loadUi();
 }
@@ -130,10 +131,10 @@ void SettingsBrowserMail::selectBrowserExecutable() {
 
 QVector<ExternalTool> SettingsBrowserMail::externalTools() const {
   QVector<ExternalTool> list;
-  list.reserve(m_ui->m_listTools->topLevelItemCount());
 
   for (int i = 0; i < m_ui->m_listTools->topLevelItemCount(); i++) {
-    list.append(m_ui->m_listTools->topLevelItem(i)->data(0, Qt::ItemDataRole::UserRole).value<ExternalTool>());
+    auto* it = m_ui->m_listTools->topLevelItem(i);
+    list.append(ExternalTool(it->text(0), it->text(1), it->text(2)));
   }
 
   return list;
@@ -141,10 +142,9 @@ QVector<ExternalTool> SettingsBrowserMail::externalTools() const {
 
 void SettingsBrowserMail::setExternalTools(const QList<ExternalTool>& list) {
   for (const ExternalTool& tool : list) {
-    QTreeWidgetItem* item =
-      new QTreeWidgetItem(m_ui->m_listTools, QStringList() << tool.executable() << tool.parameters());
+    QTreeWidgetItem* item = new QTreeWidgetItem(m_ui->m_listTools, {tool.name(), tool.executable(), tool.parameters()});
 
-    item->setData(0, Qt::ItemDataRole::UserRole, QVariant::fromValue(tool));
+    item->setFlags(item->flags() | Qt::ItemFlag::ItemIsEditable);
 
     m_ui->m_listTools->addTopLevelItem(item);
   }
@@ -265,12 +265,12 @@ void SettingsBrowserMail::saveSettings() {
 
 void SettingsBrowserMail::addExternalTool() {
   try {
-    auto tool = tweakExternalTool(ExternalTool(qApp->homeFolder(), {}));
+    auto exec = askForExecutable(QString());
     QTreeWidgetItem* item =
-      new QTreeWidgetItem(m_ui->m_listTools,
-                          QStringList() << QDir::toNativeSeparators(tool.executable()) << tool.parameters());
+      new QTreeWidgetItem(m_ui->m_listTools, {tr("New tool"), QDir::toNativeSeparators(exec), QSL("")});
 
-    item->setData(0, Qt::ItemDataRole::UserRole, QVariant::fromValue(tool));
+    item->setFlags(item->flags() | Qt::ItemFlag::ItemIsEditable);
+
     m_ui->m_listTools->addTopLevelItem(item);
   }
   catch (const ApplicationException&) {
@@ -278,11 +278,11 @@ void SettingsBrowserMail::addExternalTool() {
   }
 }
 
-ExternalTool SettingsBrowserMail::tweakExternalTool(const ExternalTool& tool) const {
+QString SettingsBrowserMail::askForExecutable(const QString& old_exec) const {
   QString executable_file = FileDialog::openFileName(window(),
                                                      tr("Select external tool"),
-                                                     QFileInfo(tool.executable()).absolutePath(),
-                                                     QFileInfo(tool.executable()).fileName(),
+                                                     QFileInfo(old_exec).absolutePath(),
+                                                     QFileInfo(old_exec).fileName(),
 #if defined(Q_OS_WIN)
                                                      tr("Executables (*.*)"),
 #else
@@ -291,22 +291,7 @@ ExternalTool SettingsBrowserMail::tweakExternalTool(const ExternalTool& tool) co
                                                      nullptr,
                                                      GENERAL_REMEMBERED_PATH);
 
-  if (!executable_file.isEmpty()) {
-    executable_file = QDir::toNativeSeparators(executable_file);
-    bool ok;
-    QString parameters = QInputDialog::getText(window(),
-                                               tr("Enter parameters"),
-                                               tr("Enter (optional) parameters:"),
-                                               QLineEdit::EchoMode::Normal,
-                                               tool.parameters(),
-                                               &ok);
-
-    if (ok) {
-      return ExternalTool(executable_file, parameters);
-    }
-  }
-
-  throw ApplicationException();
+  return QDir::toNativeSeparators(executable_file);
 }
 
 void SettingsBrowserMail::editSelectedExternalTool() {
@@ -316,18 +301,13 @@ void SettingsBrowserMail::editSelectedExternalTool() {
     return;
   }
 
-  auto ext_tool = cur_it->data(0, Qt::ItemDataRole::UserRole).value<ExternalTool>();
+  QString new_exec = askForExecutable(m_ui->m_listTools->currentItem()->text(1));
 
-  try {
-    ext_tool = tweakExternalTool(ext_tool);
+  if (new_exec.isEmpty()) {
+    return;
+  }
 
-    m_ui->m_listTools->currentItem()->setText(0, ext_tool.executable());
-    m_ui->m_listTools->currentItem()->setText(1, ext_tool.parameters());
-    m_ui->m_listTools->currentItem()->setData(0, Qt::ItemDataRole::UserRole, QVariant::fromValue(ext_tool));
-  }
-  catch (const ApplicationException&) {
-    // NOTE: Tool adding cancelled.
-  }
+  m_ui->m_listTools->currentItem()->setText(1, new_exec);
 }
 
 void SettingsBrowserMail::deleteSelectedExternalTool() {

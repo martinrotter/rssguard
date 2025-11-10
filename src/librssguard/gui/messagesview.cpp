@@ -422,7 +422,10 @@ void MessagesView::initializeContextMenu() {
   menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 
   for (const ExternalTool& tool : std::as_const(tools)) {
-    QAction* act_tool = new QAction(QFileInfo(tool.executable()).fileName(), menu_ext_tools);
+    QAction* act_tool =
+      new QAction(QFileInfo(tool.name().simplified().isEmpty() ? tool.executable() : tool.name().simplified())
+                    .fileName(),
+                  menu_ext_tools);
 
     act_tool->setIcon(icon_provider.icon(QFileInfo(tool.executable())));
     act_tool->setToolTip(tool.executable());

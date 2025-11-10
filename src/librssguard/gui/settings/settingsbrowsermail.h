@@ -33,7 +33,7 @@ class SettingsBrowserMail : public SettingsPanel {
     void selectEmailExecutable();
 
   private:
-    ExternalTool tweakExternalTool(const ExternalTool& tool) const;
+    QString askForExecutable(const QString& old_exec) const;
 
   private:
     QVector<ExternalTool> externalTools() const;

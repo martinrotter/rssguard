@@ -10,22 +10,29 @@
 #include <utility>
 
 #include <QDir>
+#include <QJsonObject>
 #include <QObject>
 
 void ExternalTool::sanitizeParameters() {
   m_executable = QDir::toNativeSeparators(m_executable);
 }
 
-ExternalTool::ExternalTool(const ExternalTool& other) : ExternalTool(other.executable(), other.parameters()) {}
+ExternalTool::ExternalTool(const ExternalTool& other)
+  : ExternalTool(other.name(), other.executable(), other.parameters()) {}
 
-ExternalTool::ExternalTool(QString executable, QString parameters)
-  : m_executable(std::move(executable)), m_parameters(std::move(parameters)) {
+ExternalTool::ExternalTool(QString name, QString executable, QString parameters)
+  : m_name(std::move(name)), m_executable(std::move(executable)), m_parameters(std::move(parameters)) {
   sanitizeParameters();
 }
 
-QString ExternalTool::toString() {
-  sanitizeParameters();
-  return m_executable + EXTERNAL_TOOL_SEPARATOR + m_parameters;
+QByteArray ExternalTool::toString() {
+  QJsonObject obj;
+
+  obj[QSL("name")] = name();
+  obj[QSL("exe")] = executable();
+  obj[QSL("params")] = parameters();
+
+  return QJsonDocument(obj).toJson(QJsonDocument::JsonFormat::Compact);
 }
 
 QString ExternalTool::executable() const {
@@ -36,39 +43,42 @@ QString ExternalTool::parameters() const {
   return m_parameters;
 }
 
-ExternalTool ExternalTool::fromString(const QString& str) {
-  QStringList outer = str.split(QSL(EXTERNAL_TOOL_SEPARATOR));
+ExternalTool ExternalTool::fromString(const QByteArray& str) {
+  auto json = QJsonDocument::fromJson(str);
+  auto obj = json.object();
+  ExternalTool tool(obj[QSL("name")].toString(), obj[QSL("exe")].toString(), obj[QSL("params")].toString());
 
-  if (outer.size() != 2) {
-    throw ApplicationException(QObject::tr("Passed external tool representation is not valid."));
-  }
-  else {
-    const QString& executable = outer.at(0);
-    const QString& parameters = outer.at(1);
-
-    return ExternalTool(executable, parameters);
-  }
+  return tool;
 }
 
 QList<ExternalTool> ExternalTool::toolsFromSettings() {
-  QStringList tools_encoded = qApp->settings()->value(GROUP(Browser), SETTING(Browser::ExternalTools)).toStringList();
+  QStringList keys = qApp->settings()->allKeys(GROUP(ExternalTools));
   QList<ExternalTool> tools;
 
-  for (const QString& tool_encoded : tools_encoded) {
-    tools.append(ExternalTool::fromString(tool_encoded));
+  for (const QString& key : keys) {
+    auto data = qApp->settings()->value(GROUP(ExternalTools), key).toByteArray();
+
+    if (data.isEmpty()) {
+      continue;
+    }
+
+    tools.append(ExternalTool::fromString(data));
   }
 
   return tools;
 }
 
 void ExternalTool::setToolsToSettings(QVector<ExternalTool>& tools) {
-  QStringList encode;
+  int i = 0;
 
   for (ExternalTool tool : tools) {
-    encode.append(tool.toString());
+    auto data = tool.toString();
+    qApp->settings()->setValue(GROUP(ExternalTools), QString::number(i++), data);
   }
+}
 
-  qApp->settings()->setValue(GROUP(Browser), Browser::ExternalTools, encode);
+QString ExternalTool::name() const {
+  return m_name;
 }
 
 bool ExternalTool::run(const QString& target) {
