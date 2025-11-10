@@ -15,6 +15,7 @@ class FormLog : public QDialog {
     virtual ~FormLog();
 
   public slots:
+    void clearLog();
     void appendLogMessage(const QString& message);
 
   private:

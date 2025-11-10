@@ -14,10 +14,10 @@
    <item row="1" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="m_btnBox">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Close</set>
+      <set>QDialogButtonBox::StandardButton::Close|QDialogButtonBox::StandardButton::Discard</set>
      </property>
     </widget>
    </item>
