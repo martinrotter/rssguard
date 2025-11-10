@@ -6,8 +6,8 @@
   <description>Simple and good-looking light skin.</description>
 
   <palette>
-    <color key="FgInteresting">#2E1B0A</color>
-    <color key="FgSelectedInteresting">#4B2713</color>
+    <color key="FgInteresting">#2A7BD4</color>
+    <color key="FgSelectedInteresting">#155A9E</color>
     <color key="FgNewMessages">#3b8a5a</color>
     <color key="FgSelectedNewMessages">#1f7a45</color>
     <color key="FgError">#e74c3c</color>

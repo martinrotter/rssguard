@@ -767,9 +767,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     case HIGHLIGHTED_FOREGROUND_TITLE_ROLE: {
       if (Globals::hasFlag(m_messageHighlighter, MessageHighlighter::HighlightImportant)) {
         QModelIndex idx_important = index(idx.row(), MSG_MDL_IMPORTANT_INDEX);
-        QVariant dta = data(idx_important, Qt::ItemDataRole::EditRole);
+        bool is_important = data(idx_important, Qt::ItemDataRole::EditRole).toBool();
 
-        if (dta.toBool()) {
+        if (!is_important) {
           return qApp->skins()->colorForModel(role == Qt::ItemDataRole::ForegroundRole
                                                 ? SkinEnums::PaletteColors::FgInteresting
                                                 : SkinEnums::PaletteColors::FgSelectedInteresting);
@@ -778,9 +778,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
 
       if (Globals::hasFlag(m_messageHighlighter, MessageHighlighter::HighlightUnread)) {
         QModelIndex idx_read = index(idx.row(), MSG_MDL_READ_INDEX);
-        QVariant dta = data(idx_read, Qt::ItemDataRole::EditRole);
+        bool is_read = data(idx_read, Qt::ItemDataRole::EditRole).toBool();
 
-        if (dta.toBool()) {
+        if (!is_read) {
           return qApp->skins()->colorForModel(role == Qt::ItemDataRole::ForegroundRole
                                                 ? SkinEnums::PaletteColors::FgInteresting
                                                 : SkinEnums::PaletteColors::FgSelectedInteresting);
