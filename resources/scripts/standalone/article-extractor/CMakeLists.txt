@@ -1,12 +1,4 @@
-find_program(GO_EXECUTABLE
-  NAMES go go.exe
-  HINTS
-    /usr/local/bin
-    /opt/homebrew/bin
-    /usr/bin
-    /usr/local/go/bin
-    /usr/local/sbin
-)
+set(GO_EXECUTABLE "go")
 
 set(OUTPUT_BINARY "${CMAKE_BINARY_DIR}/src/rssguard/rssguard-article-extractor")
 
