@@ -235,7 +235,12 @@ if ($use_libmpv -eq "ON") {
 }
 
 # Build and copy article-extractor.
-. "$old_pwd\resources\scripts\standalone\article-extractor\build.ps1"
+$build_pwd = $pwd.Path
+
+cd "$old_pwd\resources\scripts\standalone\article-extractor"
+. ".\build.ps1"
+cd "$build_pwd"
+
 Copy-Item -Path "$old_pwd\resources\scripts\standalone\article-extractor\rssguard-article-extractor" -Destination ".\app\"  -Verbose
 
 # Remove unneeded files.
