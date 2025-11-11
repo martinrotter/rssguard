@@ -55,7 +55,7 @@ else
   QTVERSION="6.9.3"
   QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
-  brew install aqtinstall
+  brew install aqtinstall go
 
   echo "Qt bin directory is: $QTBIN"
   echo "Qt will be installed to: $QTPATH"

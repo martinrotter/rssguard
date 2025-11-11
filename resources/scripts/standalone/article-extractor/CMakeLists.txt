@@ -1,4 +1,4 @@
-set(GO_EXECUTABLE "go")
+find_program(GO_EXECUTABLE go REQUIRED)
 
 set(OUTPUT_BINARY "${CMAKE_BINARY_DIR}/src/rssguard/rssguard-article-extractor")
 
