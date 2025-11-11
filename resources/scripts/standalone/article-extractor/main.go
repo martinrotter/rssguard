@@ -10,11 +10,11 @@ import (
 	"os"
 	"strings"
 
-	"github.com/go-shiori/go-readability"
+	"codeberg.org/readeck/go-readability"
 	"golang.org/x/net/html"
 )
 
-// embedImages replaces all <img src="URL"> with base64-embedded images
+// embedImages replaces all <img src="URL"> with base64-embedded images.
 func embedImages(htmlContent string) (string, error) {
 	doc, err := html.Parse(strings.NewReader(htmlContent))
 	if err != nil {
@@ -51,27 +51,27 @@ func embedImages(htmlContent string) (string, error) {
 }
 
 func main() {
-	// CLI flags
+	// CLI flags.
 	plainText := flag.Bool("t", false, "Output plain text instead of HTML")
 	embedImgs := flag.Bool("b", false, "Embed images as base64")
 	flag.Parse()
 
 	if flag.NArg() < 1 {
-		fmt.Println("Usage: article-downloader [options] <url>")
+		fmt.Println("Usage: rssguard-article-extractor [options] <url>")
 		flag.PrintDefaults()
 		os.Exit(1)
 	}
 
 	urlStr := flag.Arg(0)
 
-	// Parse URL
+	// Parse URL.
 	parsedURL, err := url.Parse(urlStr)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Invalid URL: %v\n", err)
 		os.Exit(1)
 	}
 
-	// Download webpage
+	// Download webpage.
 	resp, err := http.Get(urlStr)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error fetching URL: %v\n", err)
@@ -79,7 +79,7 @@ func main() {
 	}
 	defer resp.Body.Close()
 
-	// Parse article
+	// Parse article.
 	article, err := readability.FromReader(resp.Body, parsedURL)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error parsing article: %v\n", err)
@@ -100,6 +100,5 @@ func main() {
 		}
 	}
 
-	// Print result to stdout
-	fmt.Printf("Title: %s\n\n%s", article.Title, output)
+	fmt.Printf("%s", output)
 }

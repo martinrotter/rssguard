@@ -3,7 +3,7 @@ module rssguard-article-extractor
 go 1.25.3
 
 require (
-	github.com/go-shiori/go-readability v0.0.0-20250217085726-9f5bf5ca7612
+	codeberg.org/readeck/go-readability v0.0.0-20251031135857-1d11bda81b3a
 	golang.org/x/net v0.46.0
 )
 

@@ -1,1 +1,0 @@
-go build -ldflags="-s -w" -o rssguard-article-extractor main.go
