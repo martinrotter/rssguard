@@ -335,5 +335,8 @@ add_subdirectory(src/librssguard-ttrss)
 add_subdirectory(src/librssguard-reddit)
 add_subdirectory(src/librssguard-nextcloud)
 
+# Additional programs.
+add_subdirectory(resources/scripts/standalone/article-extractor)
+
 # GUI executable.
 add_subdirectory(src/rssguard)

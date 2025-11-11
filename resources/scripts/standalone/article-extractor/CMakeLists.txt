@@ -1,0 +1,23 @@
+find_program(GO_EXECUTABLE go REQUIRED)
+
+set(OUTPUT_BINARY "${CMAKE_CURRENT_BINARY_DIR}/rssguard-article-extractor")
+
+add_custom_command(
+  OUTPUT ${OUTPUT_BINARY}
+  COMMAND ${GO_EXECUTABLE} build -ldflags="-s -w" -o "${OUTPUT_BINARY}" "main.go"
+  DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/main.go
+  WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+  COMMENT "Building Go tool: rssguard-article-extractor"
+)
+
+add_custom_target(rssguard_article_extractor ALL DEPENDS "${OUTPUT_BINARY}")
+add_dependencies(rssguard rssguard_article_extractor)
+
+if((WIN32 AND NOT BUILD_MSYS2) OR OS2)
+  install(FILES ${OUTPUT_BINARY} DESTINATION .)
+elseif((MINGW AND BUILD_MSYS2) OR (UNIX AND NOT APPLE))
+  include (GNUInstallDirs)
+  install(FILES ${OUTPUT_BINARY} DESTINATION ${CMAKE_INSTALL_BINDIR})
+elseif(APPLE)
+  install(FILES ${OUTPUT_BINARY} DESTINATION Contents/MacOS)
+endif()

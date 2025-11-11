@@ -234,15 +234,6 @@ if ($use_libmpv -eq "ON") {
   Copy-Item -Path "$ytdlp_path" -Destination ".\app\"
 }
 
-# Build and copy article-extractor.
-$build_pwd = $pwd.Path
-
-cd "$old_pwd\resources\scripts\standalone\article-extractor"
-. ".\build.ps1"
-cd "$build_pwd"
-
-Copy-Item -Path "$old_pwd\resources\scripts\standalone\article-extractor\rssguard-article-extractor" -Destination ".\app\"  -Verbose
-
 # Remove unneeded files.
 Remove-Item -Verbose ".\app\sqldrivers\qsqlodbc.dll"
 Remove-Item -Verbose ".\app\sqldrivers\qsqlpsql.dll"
