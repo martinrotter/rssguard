@@ -17,6 +17,7 @@ pacman -Syu --noconfirm  \
     gcc-libs             \
     git                  \
     glibc                \
+    go                   \
     gtk3                 \
     libheif              \
     libglvnd             \
