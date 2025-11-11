@@ -157,6 +157,13 @@ void FeedReader::showMessageFiltersManager() {
   m_messagesModel->reloadWholeLayout();
 }
 
+QString FeedReader::getFullArticle(const QUrl& url) const {
+  static QString article_extractor = qApp->applicationDirPath() + QDir::separator() + QSL("rssguard-article-extractor");
+  const QString output = IOFactory::startProcessGetOutput(article_extractor, {url.toString()});
+
+  return output;
+}
+
 void FeedReader::updateAutoUpdateStatus() {
   // Restore global intervals.
   // NOTE: Specific per-feed interval are left intact.

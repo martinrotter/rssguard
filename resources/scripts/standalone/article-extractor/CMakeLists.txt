@@ -1,6 +1,14 @@
-find_program(GO_EXECUTABLE go REQUIRED)
+find_program(GO_EXECUTABLE
+  NAMES go go.exe
+  HINTS
+    /usr/local/bin
+    /opt/homebrew/bin
+    /usr/bin
+    /usr/local/go/bin
+    /usr/local/sbin
+)
 
-set(OUTPUT_BINARY "${CMAKE_CURRENT_BINARY_DIR}/rssguard-article-extractor")
+set(OUTPUT_BINARY "${CMAKE_BINARY_DIR}/src/rssguard/rssguard-article-extractor")
 
 add_custom_command(
   OUTPUT ${OUTPUT_BINARY}
