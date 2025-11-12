@@ -90,25 +90,18 @@ if [ $is_linux = true ]; then
   echo 'Validating AppStream metadata...'
   appstreamcli validate "$prefix/share/metainfo/$app_id.metainfo.xml"
   
-  URUNTIME="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/uruntime2appimage.sh"
   SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
   
   export DESKTOP=$prefix/share/applications/io.github.martinrotter.rssguard.desktop
   export DEPLOY_OPENGL=1
+  export OUTPUT_APPIMAGE=1
 
   echo "Desktop file: $DESKTOP"
 
   wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
   chmod +x ./quick-sharun
 
-  wget --retry-connrefused --tries=30 "$URUNTIME" -O ./uruntime2appimage
-  chmod +x ./uruntime2appimage
-
-  #mkdir -p "./AppDir/shared/lib/qt6/plugins/sqldrivers"
-  #cp -v -R "/usr/lib/qt6/plugins/sqldrivers" "./AppDir/shared/lib/qt6/plugins/"
-
   ./quick-sharun /usr/bin/rssguard /usr/lib/rssguard/*
-  ./uruntime2appimage
 
   set -- *.AppImage
 else
