@@ -80,7 +80,7 @@
 #define DOWNLOAD_TIMEOUT             30000
 #define MESSAGES_VIEW_DEFAULT_COL    100
 #define MESSAGES_VIEW_MINIMUM_COL    16
-#define FEEDS_VIEW_COLUMN_COUNT      2
+#define FEEDS_VIEW_COLUMN_COUNT      3
 #define DEFAULT_DAYS_TO_DELETE_MSG   14
 #define ELLIPSIS_LENGTH              3
 #define DEFAULT_AUTO_UPDATE_INTERVAL 900  // In seconds.
@@ -321,7 +321,8 @@
 
 // Indexes of columns for feed models.
 #define FDS_MODEL_TITLE_INDEX  0
-#define FDS_MODEL_COUNTS_INDEX 1
+#define FDS_MODEL_ID_INDEX     1
+#define FDS_MODEL_COUNTS_INDEX 2
 
 #if defined(Q_OS_LINUX)
 #define OS_ID "Linux"

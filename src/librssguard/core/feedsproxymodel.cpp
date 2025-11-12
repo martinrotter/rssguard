@@ -477,9 +477,6 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
 
   bool should_show = QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
 
-  // if (item->kind() == RootItem::Kind::Feed) {
-  //   const Feed* feed = item->toFeed();
-
   for (FeedListFilter val : m_filterKeys) {
     if (Globals::hasFlag(m_filter, val)) {
       // This particular filter is enabled.
@@ -495,7 +492,6 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
     // Some filter is enabled but this item does not meet it.
     return false;
   }
-  //}
 
   return should_show;
 }

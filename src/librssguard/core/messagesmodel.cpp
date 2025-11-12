@@ -1164,7 +1164,9 @@ void MessagesModel::markArticleDataReadUnread(bool read) {
 }
 
 QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int role) const {
-  Q_UNUSED(orientation)
+  if (orientation != Qt::Orientation::Horizontal) {
+    return QVariant();
+  }
 
   switch (role) {
     case Qt::ItemDataRole::DisplayRole:

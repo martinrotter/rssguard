@@ -42,12 +42,13 @@ MessagesView::MessagesView(QWidget* parent)
   setModel(m_proxyModel);
   setupAppearance();
   setupArticleMarkingPolicy();
+
   header()->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
   connect(header(), &QHeaderView::customContextMenuRequested, this, [=](QPoint point) {
     TreeViewColumnsMenu mm(header());
     mm.exec(header()->mapToGlobal(point));
   });
-  connect(&m_delayedArticleMarker, &QTimer::timeout, this, &MessagesView::markSelectedMessagesReadDelayed);
+
   reloadFontSettings();
 }
 
@@ -298,6 +299,7 @@ void MessagesView::reactOnExternalDataChange(RootItem* item, FeedsModel::Externa
 }
 
 void MessagesView::createConnections() {
+  connect(&m_delayedArticleMarker, &QTimer::timeout, this, &MessagesView::markSelectedMessagesReadDelayed);
   connect(this, &MessagesView::doubleClicked, this, &MessagesView::openSelectedSourceMessagesExternally);
 
   // Adjust columns when layout gets changed.

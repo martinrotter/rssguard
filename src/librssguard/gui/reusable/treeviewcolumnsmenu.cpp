@@ -14,7 +14,9 @@ void TreeViewColumnsMenu::prepareMenu() {
   QHeaderView* header_view = header();
 
   for (int i = 0; i < header_view->count(); i++) {
-    QAction* act = addAction(header_view->model()->headerData(i, Qt::Horizontal, Qt::EditRole).toString());
+    QAction* act = addAction(header_view->model()
+                               ->headerData(i, Qt::Orientation::Horizontal, Qt::ItemDataRole::EditRole)
+                               .toString());
 
     act->setData(i);
     act->setCheckable(true);

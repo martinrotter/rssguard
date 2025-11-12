@@ -111,6 +111,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     virtual void drawRow(QPainter* painter, const QStyleOptionViewItem& options, const QModelIndex& index) const;
 
   private slots:
+    void adjustColumns();
     void onIndexExpanded(const QModelIndex& idx);
     void onIndexCollapsed(const QModelIndex& idx);
 
@@ -134,7 +135,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     QMenu* initializeContextMenuCategories(RootItem* clicked_item);
     QMenu* initializeContextMenuFeeds(RootItem* clicked_item);
     QMenu* initializeContextMenuImportant(RootItem* clicked_item);
-    QMenu* initializeContextMenuEmptySpace();
     QMenu* initializeContextMenuOtherItem(RootItem* clicked_item);
     QMenu* initializeContextMenuLabel(RootItem* clicked_item);
     QMenu* initializeContextMenuProbe(RootItem* clicked_item);
@@ -147,7 +147,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     QMenu* m_contextMenuCategories;
     QMenu* m_contextMenuFeeds;
     QMenu* m_contextMenuImportant;
-    QMenu* m_contextMenuEmptySpace;
     QMenu* m_contextMenuOtherItems;
     QMenu* m_contextMenuLabel;
     QMenu* m_contextMenuProbe;
@@ -157,6 +156,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     QList<QPair<QModelIndex, bool>> m_delayedItemExpansions;
     QTimer m_expansionDelayer;
     StyledItemDelegate* m_delegate;
+    bool m_columnsAdjusted;
 };
 
 inline FeedsProxyModel* FeedsView::model() const {

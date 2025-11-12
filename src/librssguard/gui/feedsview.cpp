@@ -9,6 +9,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/styleditemdelegate.h"
+#include "gui/reusable/treeviewcolumnsmenu.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
@@ -31,12 +32,12 @@
 
 FeedsView::FeedsView(QWidget* parent)
   : BaseTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
-    m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuEmptySpace(nullptr),
-    m_contextMenuOtherItems(nullptr), m_contextMenuLabel(nullptr), m_contextMenuProbe(nullptr),
-    m_dontSaveExpandState(false),
+    m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuOtherItems(nullptr),
+    m_contextMenuLabel(nullptr), m_contextMenuProbe(nullptr), m_dontSaveExpandState(false),
     m_delegate(new StyledItemDelegate(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt(),
                                       -1,
-                                      this)) {
+                                      this)),
+    m_columnsAdjusted(false) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -44,6 +45,7 @@ FeedsView::FeedsView(QWidget* parent)
   m_proxyModel = qApp->feedReader()->feedsProxyModel();
 
   // Connections.
+  connect(header(), &QHeaderView::geometriesChanged, this, &FeedsView::adjustColumns);
   connect(&m_expansionDelayer, &QTimer::timeout, this, &FeedsView::reloadDelayedExpansions);
   connect(m_sourceModel, &FeedsModel::itemExpandRequested, this, &FeedsView::onItemExpandRequested);
   connect(m_sourceModel, &FeedsModel::itemExpandStateSaveRequested, this, &FeedsView::onItemExpandStateSaveRequested);
@@ -55,6 +57,12 @@ FeedsView::FeedsView(QWidget* parent)
   connect(m_proxyModel, &FeedsProxyModel::indexNotFilteredOutAnymore, this, &FeedsView::reloadItemExpandState);
   connect(this, &FeedsView::expanded, this, &FeedsView::onIndexExpanded);
   connect(this, &FeedsView::collapsed, this, &FeedsView::onIndexCollapsed);
+
+  header()->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
+  connect(header(), &QHeaderView::customContextMenuRequested, this, [=](QPoint point) {
+    TreeViewColumnsMenu mm(header());
+    mm.exec(header()->mapToGlobal(point));
+  });
 
   setModel(m_proxyModel);
   setupAppearance();
@@ -1121,16 +1129,6 @@ QMenu* FeedsView::initializeContextMenuImportant(RootItem* clicked_item) {
   return m_contextMenuImportant;
 }
 
-QMenu* FeedsView::initializeContextMenuEmptySpace() {
-  if (m_contextMenuEmptySpace == nullptr) {
-    m_contextMenuEmptySpace = new QMenu(tr("Context menu for empty space"), this);
-    m_contextMenuEmptySpace->addMenu(qApp->mainForm()->m_ui->m_menuAddItem);
-    m_contextMenuEmptySpace->addSeparator();
-  }
-
-  return m_contextMenuEmptySpace;
-}
-
 QMenu* FeedsView::initializeContextMenuOtherItem(RootItem* clicked_item) {
   if (m_contextMenuOtherItems == nullptr) {
     m_contextMenuOtherItems = new QMenu(tr("Context menu for other items"), this);
@@ -1206,6 +1204,7 @@ QByteArray FeedsView::saveHeaderState() const {
   // Store column attributes.
   for (int i = 0; i < header()->count(); i++) {
     obj[QSL("header_%1_size").arg(i)] = header()->sectionSize(i);
+    obj[QSL("header_%1_hidden").arg(i)] = header()->isSectionHidden(i);
   }
 
   return QJsonDocument(obj).toJson(QJsonDocument::JsonFormat::Compact);
@@ -1223,8 +1222,10 @@ void FeedsView::restoreHeaderState(const QByteArray& dta) {
   // Restore column attributes.
   for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
     int ss = obj[QSL("header_%1_size").arg(i)].toInt();
+    bool ish = obj[QSL("header_%1_hidden").arg(i)].toBool();
 
     header()->resizeSection(i, ss);
+    header()->setSectionHidden(i, ish);
   }
 
   // All columns are resizeable but last one is set to auto-stretch to fill remaining
@@ -1251,11 +1252,6 @@ void FeedsView::revealItem(RootItem* item) {
 }
 
 void FeedsView::setupAppearance() {
-  // Setup column resize strategies.
-  for (int i = 0; i < header()->count(); i++) {
-    header()->setSectionResizeMode(i, QHeaderView::ResizeMode::Interactive);
-  }
-
   header()->setStretchLastSection(true);
   header()->setCascadingSectionResizes(false);
   header()->setSectionsMovable(false);
@@ -1335,8 +1331,8 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
     }
   }
   else {
-    // Display menu for empty space.
-    initializeContextMenuEmptySpace()->exec(event->globalPos());
+    TreeViewColumnsMenu menu(header());
+    menu.exec(event->globalPos());
   }
 }
 
@@ -1373,4 +1369,20 @@ void FeedsView::drawRow(QPainter* painter, const QStyleOptionViewItem& options, 
   opts.decorationAlignment = Qt::AlignmentFlag::AlignLeft | Qt::AlignmentFlag::AlignVCenter;
 
   BaseTreeView::drawRow(painter, opts, index);
+}
+
+void FeedsView::adjustColumns() {
+  qDebugNN << LOGSEC_GUI << "Feeds list header geometries changed.";
+
+  if (header()->count() > 0 && !m_columnsAdjusted) {
+    m_columnsAdjusted = true;
+
+    // Setup column resize strategies.
+    for (int i = 0; i < header()->count(); i++) {
+      header()->setSectionResizeMode(i, QHeaderView::ResizeMode::Interactive);
+    }
+
+    // Hide columns.
+    hideColumn(FDS_MODEL_ID_INDEX);
+  }
 }

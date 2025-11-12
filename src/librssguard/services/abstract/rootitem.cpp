@@ -133,6 +133,9 @@ QVariant RootItem::data(int column, int role) const {
       if (column == FDS_MODEL_TITLE_INDEX) {
         return m_title;
       }
+      else if (column == FDS_MODEL_ID_INDEX) {
+        return id();
+      }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         return countOfUnreadMessages();
       }
@@ -143,6 +146,9 @@ QVariant RootItem::data(int column, int role) const {
     case Qt::ItemDataRole::DisplayRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         return sanitizedTitle();
+      }
+      else if (column == FDS_MODEL_ID_INDEX) {
+        return id() < 0 ? QVariant() : id();
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         int count_unread = countOfUnreadMessages();

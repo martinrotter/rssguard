@@ -34,9 +34,10 @@ FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_rootItem
   m_countsIcon = qApp->icons()->fromTheme(QSL("mail-mark-unread"));
 
   // : Title text in the feed list header.
-  m_headerData << tr("Title");
-  m_tooltipData << /*: Feed list header "titles" column tooltip.*/ tr("Titles of feeds/categories.")
-                << /*: Feed list header "counts" column tooltip.*/ tr("Counts of unread/all mesages.");
+  m_headerData = {tr("Title"), tr("Item ID"), tr("Article counts")};
+  m_tooltipData = {tr("Titles of feeds/categories."),
+                   tr("Database ID of each item."),
+                   tr("Counts of unread/all mesages.")};
 
   setupFonts();
   setupBehaviorDuringFetching();
@@ -87,18 +88,22 @@ Qt::ItemFlags FeedsModel::flags(const QModelIndex& index) const {
 }
 
 QVariant FeedsModel::headerData(int section, Qt::Orientation orientation, int role) const {
-  if (orientation != Qt::Horizontal) {
+  if (orientation != Qt::Orientation::Horizontal) {
     return QVariant();
   }
 
   switch (role) {
-    case Qt::ItemDataRole::DisplayRole:
-      if (section == FDS_MODEL_TITLE_INDEX) {
-        return m_headerData.at(FDS_MODEL_TITLE_INDEX);
-      }
-      else {
+    case Qt::ItemDataRole::DisplayRole: {
+      if (section == FDS_MODEL_COUNTS_INDEX) {
         return QVariant();
       }
+      else {
+        return m_headerData.at(section);
+      }
+    }
+
+    case Qt::ItemDataRole::EditRole:
+      return m_headerData.at(section);
 
     case Qt::ItemDataRole::ToolTipRole:
       return m_tooltipData.at(section);
