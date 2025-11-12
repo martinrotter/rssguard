@@ -185,6 +185,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionAlternateColorsInLists;
   actions << m_ui->m_actionPauseFeedFetching;
   actions << m_ui->m_actionMessagePreviewEnabled;
+  actions << m_ui->m_actionEnableDisableFeeds;
   actions << m_ui->m_actionMarkAllItemsRead;
   actions << m_ui->m_actionMarkSelectedItemsAsRead;
   actions << m_ui->m_actionMarkSelectedItemsAsUnread;
@@ -483,6 +484,8 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionBackupDatabaseSettings->setEnabled(!critical_action_running);
   m_ui->m_actionCleanupDatabase->setEnabled(!critical_action_running);
   m_ui->m_actionClearSelectedItems->setEnabled(anything_selected);
+  m_ui->m_actionEnableDisableFeeds->setEnabled(!critical_action_running &&
+                                               (feed_selected || category_selected || service_selected));
   m_ui->m_actionPurgeSelectedItems->setEnabled(feed_selected || category_selected || service_selected);
   m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && anything_selected);
   m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && anything_selected);
@@ -908,6 +911,10 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
           &MessagesView::sendSelectedMessageViaEmail);
+  connect(m_ui->m_actionEnableDisableFeeds,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->feedsView(),
+          &FeedsView::enableDisableSelectedFeeds);
   connect(m_ui->m_actionMarkAllItemsRead,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->feedsView(),

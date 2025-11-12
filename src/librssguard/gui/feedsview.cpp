@@ -299,6 +299,21 @@ void FeedsView::purgeSelectedFeeds() {
   }
 }
 
+void FeedsView::enableDisableSelectedFeeds() {
+  auto feeds = selectedFeeds(true);
+
+  for (Feed* feed : feeds) {
+    feed->setIsSwitchedOff(!feed->isSwitchedOff());
+
+    DatabaseQueries::createOverwriteFeed(qApp->database()->driver()->connection(metaObject()->className()),
+                                         feed,
+                                         feed->account()->accountId(),
+                                         feed->parent()->id());
+  }
+
+  m_sourceModel->reloadWholeLayout();
+}
+
 void FeedsView::clearAllItems() {
   if (MsgBox::show(nullptr,
                    QMessageBox::Icon::Question,

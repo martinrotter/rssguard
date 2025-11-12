@@ -157,6 +157,7 @@
     <addaction name="m_actionClearAllItems"/>
     <addaction name="separator"/>
     <addaction name="m_actionCopyUrlSelectedFeed"/>
+    <addaction name="m_actionEnableDisableFeeds"/>
     <addaction name="m_actionMarkSelectedItemsAsRead"/>
     <addaction name="m_actionMarkSelectedItemsAsUnread"/>
     <addaction name="m_actionPurgeSelectedItems"/>
@@ -239,7 +240,7 @@
     <string notr="true">Ctrl+Q</string>
    </property>
    <property name="menuRole">
-    <enum>QAction::QuitRole</enum>
+    <enum>QAction::MenuRole::QuitRole</enum>
    </property>
   </action>
   <action name="m_actionSettings">
@@ -264,7 +265,7 @@
     <string notr="true"/>
    </property>
    <property name="menuRole">
-    <enum>QAction::AboutRole</enum>
+    <enum>QAction::MenuRole::AboutRole</enum>
    </property>
   </action>
   <action name="m_actionFullscreen">
@@ -953,6 +954,11 @@
   <action name="m_actionGoToMotherFeed">
    <property name="text">
     <string>Reveal &amp;feed</string>
+   </property>
+  </action>
+  <action name="m_actionEnableDisableFeeds">
+   <property name="text">
+    <string>&amp;Enable/disable selected feeds</string>
    </property>
   </action>
  </widget>
