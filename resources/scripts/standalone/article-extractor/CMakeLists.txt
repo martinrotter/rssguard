@@ -4,9 +4,9 @@ set(OUTPUT_BINARY "${CMAKE_BINARY_DIR}/src/rssguard/rssguard-article-extractor")
 
 if(WIN32)
   set(GO_FLAGS "-ldflags=\"-s -w\"")
-else
-  set(GO_FLAGS " ")
-endif
+else()
+  set(GO_FLAGS "")
+endif()
 
 add_custom_command(
   OUTPUT ${OUTPUT_BINARY}
