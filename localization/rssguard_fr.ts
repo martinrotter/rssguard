@@ -666,11 +666,11 @@ Active message filters: %2
 Status: %3
 Source: %4
 Item custom ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
+      <translation>Statut de l&apos;obtention d&apos;articles automatique: %1
+Filtres d&apos;articles attribués: %2
+Statut: %3
 Source: %4
-Item custom ID: %5</translation>
+Identifiant d&apos;élément: %5</translation>
     </message>
   </context>
   <context>
@@ -1553,7 +1553,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="68"/>
       <source>Edit query &apos;%1&apos;</source>
-      <translation type="unfinished">Edit query &apos;%1&apos;</translation>
+      <translation>Modifier la requête &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -2393,7 +2393,7 @@ comme &amp;non-lus</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="88"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
       <source>&amp;Focus</source>
-      <translation type="unfinished">&amp;Focus</translation>
+      <translation>&amp;Focus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="193"/>
@@ -2631,13 +2631,13 @@ de la fenêtre principale</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="861"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
       <source>Focus feed search box</source>
-      <translation type="unfinished">Focus feed search box</translation>
+      <translation>Mettre en focus la barre de recherche des flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="866"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Focus article search box</source>
-      <translation type="unfinished">Focus article search box</translation>
+      <translation>Mettre en focus la barre de recherche</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="871"/>
@@ -2661,25 +2661,25 @@ de la fenêtre principale</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="935"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="805"/>
       <source>Focus &amp;feed list</source>
-      <translation type="unfinished">Focus &amp;feed list</translation>
+      <translation>Mettre en focus la &amp;liste de flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="940"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>Focus &amp;article list</source>
-      <translation type="unfinished">Focus &amp;article list</translation>
+      <translation>Mettre en focus la &amp;liste d'articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="945"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="807"/>
       <source>Focus article &amp;preview</source>
-      <translation type="unfinished">Focus article &amp;preview</translation>
+      <translation>Mettre en focus la &amp;prévisualisation d'article</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="950"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
       <source>&amp;Load all remaining articles</source>
-      <translation type="unfinished">&amp;Load all remaining articles</translation>
+      <translation>&amp;Charger tous les articles restants</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="955"/>
@@ -4545,7 +4545,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="69"/>
       <source>Failed to (de)assign label to/from article: %1.</source>
-      <translation type="unfinished">Failed to (de)assign label to/from article: %1.</translation>
+      <translation>Impossible de dé-assigner l'étiquette à/depuis l'article: %1.</translation>
     </message>
   </context>
   <context>
@@ -4563,7 +4563,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="30"/>
       <source>Number of labels: %1</source>
-      <translation type="unfinished">Number of labels: %1</translation>
+      <translation>Nombre d'étiquettes : %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="98"/>
@@ -5254,23 +5254,23 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="198"/>
       <source>Loaded extra %1 articles in %2 miliseconds</source>
-      <translation type="unfinished">Loaded extra %1 articles in %2 miliseconds</translation>
+      <translation>Articles supplémentaires %1 chargés en %2 milisecondes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="253"/>
       <source>Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, %5 ms to fill dynamic data)</source>
-      <translation type="unfinished">Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, %5 ms to fill dynamic data)</translation>
+      <translation>%1 articles chargés en %2 ms (%3 ms pour vider le cache, %4 ms pour le transfert de données DB, %5 ms pour remplir les données dynamiques)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
       <source>cannot set model data for column %1</source>
-      <translation type="unfinished">cannot set model data for column %1</translation>
+      <translation>impossible de définir les données du modèle pour la colonne %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="468"/>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
       <source>article with row %1 not found</source>
-      <translation type="unfinished">article with row %1 not found</translation>
+      <translation>article avec la ligne %1 introuvable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
@@ -5370,7 +5370,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="517"/>
       <source>Indication of attachments presence within the article.</source>
-      <translation type="unfinished">Indication of attachments presence within the article.</translation>
+      <translation>Indication de la présence de pièces-jointes dans les articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="518"/>
@@ -5380,7 +5380,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="615"/>
       <source>article model column %1 is out of range</source>
-      <translation type="unfinished">article model column %1 is out of range</translation>
+      <translation>la colonne de modèle d'article %1 est en dehors des limites</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="639"/>
@@ -6833,7 +6833,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/search.cpp" line="92"/>
       <source>SQL &apos;WHERE&apos; clause: %1</source>
-      <translation type="unfinished">SQL &apos;WHERE&apos; clause: %1</translation>
+      <translation>Clause SQL &apos;WHERE&apos; : %1</translation>
     </message>
   </context>
   <context>
@@ -6928,7 +6928,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="143"/>
       <source>Failed to update selected probe: %1.</source>
-      <translation type="unfinished">Failed to update selected probe: %1.</translation>
+      <translation>Échec de la mise à jour de la sonde sélectionnée : %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="153"/>
@@ -7108,7 +7108,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="341"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="375"/>
       <source>&amp;Edit tool path</source>
-      <translation type="unfinished">&amp;Edit tool path</translation>
+      <translation>&amp;Modifier le chemin de l'outil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="34"/>
@@ -7345,9 +7345,9 @@ File filter for external e-mail selection dialog.</extracomment>
       <source>If enabled then %1 loads articles into article list on demand as you scroll throught the list.
 
 This can tremendously speed up the application if you have hundreds of thousands articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</source>
-      <translation type="unfinished">If enabled then %1 loads articles into article list on demand as you scroll throught the list.
+      <translation>Si activé, alors %1 charge les articles dans la liste d'articles sur commande pendant que vous scrollez la liste.
 
-This can tremendously speed up the application if you have hundreds of thousands articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</translation>
+Ceci peut accélerer de façon très significative l'appli si vous avez des centaines de milliers d'articles, mais peut entraver votre filtrage d'articles parce que pas tous les articles sont chargés, du coup votre filtrage pourrait ne pas agir comme prévu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
@@ -7569,7 +7569,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="703"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="670"/>
       <source>Use articles lazy-loading</source>
-      <translation type="unfinished">Use articles lazy-loading</translation>
+      <translation>Utiliser le chargement paresseux des articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="321"/>
@@ -7684,7 +7684,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="44"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="66"/>
       <source>Disable CLI debug output (but keep more serious warnings enabled)</source>
-      <translation type="unfinished">Disable CLI debug output (but keep more serious warnings enabled)</translation>
+      <translation>Désactiver la sortie de débogage CLI (mais garder les avertissements plus sérieux activés)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="30"/>
@@ -8223,12 +8223,12 @@ Déscription: %3</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="23"/>
       <source>Undo shortcut</source>
-      <translation type="unfinished">Undo shortcut</translation>
+      <translation>Annuler le raccourci</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="29"/>
       <source>Clear current shortcut</source>
-      <translation type="unfinished">Clear current shortcut</translation>
+      <translation>Effacer le raccourci actuel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="35"/>
@@ -8495,13 +8495,13 @@ Fetch article comments: %5
 HTTP/2: %6
 Fetch full articles: %7 (plain text only: %8)
 </source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
-HTTP/2: %6
-Fetch full articles: %7 (plain text only: %8)
+      <translation>Encodage : %1
+Type : %2
+Script de post-traitement : %3
+Utiliser la sauvegarde XML brute : %4
+Récupérer les commentaires d'article : %5
+HTTP/2 : %6
+Récupérer les articles complets : %7 (texte brut uniquement : %8)
 </translation>
     </message>
     <message>
@@ -8832,12 +8832,12 @@ Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vo
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="54"/>
       <source>Fetch full articles</source>
-      <translation type="unfinished">Fetch full articles</translation>
+      <translation>Récupérer les articles complets</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="64"/>
       <source>Fetch in plain text</source>
-      <translation type="unfinished">Fetch in plain text</translation>
+      <translation>Récupérer en texte brut</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="94"/>
@@ -8879,7 +8879,7 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="73"/>
       <source>HTTP headers</source>
-      <translation type="unfinished">HTTP headers</translation>
+      <translation>En-têtes HTTP</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="91"/>
@@ -8889,22 +8889,22 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="26"/>
       <source>Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</source>
-      <translation type="unfinished">Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</translation>
+      <translation>Entrez chaque paire d'entêtes HTTP clé/valeur sur une ligne séparée. Notez que tous les espaces sont significatifs et que les noms d'entêtes sont sensibles à la différence minuscule-majuscules. Aussi, assurez-vous de séparer la clé de la valeur par &apos;=&apos;, comme l'exemple ci-dessous:</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="34"/>
       <source>Use application settings</source>
-      <translation type="unfinished">Use application settings</translation>
+      <translation>Utiliser les paramètres de l'application</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="36"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Activé</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="37"/>
       <source>Disabled</source>
-      <translation type="unfinished">Disabled</translation>
+      <translation>Désactivé</translation>
     </message>
   </context>
   <context>
@@ -9542,7 +9542,7 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open in system web browser</source>
-      <translation type="unfinished">Open in system web browser</translation>
+      <translation>Ouvrir dans le navigateur web système</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="34"/>
