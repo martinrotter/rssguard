@@ -302,6 +302,10 @@ void FeedsView::purgeSelectedFeeds() {
 void FeedsView::enableDisableSelectedFeeds() {
   auto feeds = selectedFeeds(true);
 
+  if (feeds.isEmpty()) {
+    return;
+  }
+
   for (Feed* feed : feeds) {
     feed->setIsSwitchedOff(!feed->isSwitchedOff());
 
