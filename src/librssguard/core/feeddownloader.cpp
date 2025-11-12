@@ -270,7 +270,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
   try {
     QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-    QList<Message> msgs = feed->account()->obtainNewMessages(feed, stated_messages, tagged_messages);
+    QList<Message> msgs = acc->obtainNewMessages(feed, stated_messages, tagged_messages);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded" << NONQUOTE_W_SPACE(msgs.size()) << "messages for feed ID"
              << QUOTE_W_SPACE_COMMA(feed->customId()) << "operation took" << NONQUOTE_W_SPACE(tmr.nsecsElapsed() / 1000)
@@ -306,7 +306,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       tmr.restart();
 
       // Perform per-message filtering.
-      FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles, database, feed, feed->account());
+      FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles, database, feed, acc);
       filtering.filterRun().setTotalCountOfFilters(feed_filters_enabled_list.size());
 
       qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000
@@ -618,6 +618,8 @@ void FeedDownloadResults::appendErroredFeed(Feed* feed, const QString& error) {
 void FeedDownloadResults::clear() {
   m_updatedFeeds.clear();
   m_erroredFeeds.clear();
+  m_updatedAccounts.clear();
+  m_feedRequests.clear();
 }
 
 QList<FeedUpdateRequest> FeedDownloadResults::feedRequests() const {

@@ -25,6 +25,8 @@
 #include <QAbstractItemModelTester>
 #endif
 
+#define ARTICLE_EXTRACTOR_NAME "rssguard-article-extractor"
+
 FeedReader::FeedReader(QObject* parent)
   : QObject(parent), m_autoUpdateTimer(new QTimer(this)), m_feedDownloader(nullptr), m_feedFetchingPaused(false) {
   m_feedsModel = new FeedsModel(this);
@@ -157,9 +159,16 @@ void FeedReader::showMessageFiltersManager() {
   m_messagesModel->reloadWholeLayout();
 }
 
-QString FeedReader::getFullArticle(const QUrl& url) const {
-  static QString article_extractor = qApp->applicationDirPath() + QDir::separator() + QSL("rssguard-article-extractor");
-  const QString output = IOFactory::startProcessGetOutput(article_extractor, {url.toString()});
+QString FeedReader::getFullArticle(const QUrl& url, bool plain_text_only) const {
+  static QString article_extractor = qApp->applicationDirPath() + QDir::separator() + QSL(ARTICLE_EXTRACTOR_NAME);
+
+  QStringList params = {url.toString()};
+
+  if (plain_text_only) {
+    params.prepend(QSL("-t"));
+  }
+
+  const QString output = IOFactory::startProcessGetOutput(article_extractor, params);
 
   return output;
 }

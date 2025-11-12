@@ -50,6 +50,8 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_http2Status = NetworkFactory::Http2Status::DontSet;
   m_fetchCommentsEnabled = false;
   m_useAccountProxy = true;
+  m_fetchFullArticles = false;
+  m_fetchFullArticlesInPlainText = false;
 }
 
 StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
@@ -66,6 +68,8 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_http2Status = other.http2Status();
   m_proxy = other.networkProxy();
   m_useAccountProxy = other.useAccountProxy();
+  m_fetchFullArticles = other.fetchFullArticles();
+  m_fetchFullArticlesInPlainText = other.fetchFullArticlesInPlainText();
 }
 
 QList<QAction*> StandardFeed::contextMenuFeedsList() {
@@ -81,13 +85,16 @@ QString StandardFeed::additionalTooltip() const {
             "Post-processing script: %3\n"
             "Use raw XML saving: %4\n"
             "Fetch article comments: %5\n"
-            "HTTP/2: %6\n")
+            "HTTP/2: %6\n"
+            "Fetch full articles: %7 (plain text only: %8)\n")
            .arg(encoding(),
                 StandardFeed::typeToString(type()),
                 m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
                 !dontUseRawXmlSaving() ? tr("yes") : tr("no"),
                 fetchCommentsEnabled() ? tr("yes") : tr("no"),
-                getHttpDescription());
+                getHttpDescription(),
+                fetchFullArticles() ? tr("yes") : tr("no"),
+                fetchFullArticlesInPlainText() ? tr("yes") : tr("no"));
 }
 
 NetworkFactory::Http2Status StandardFeed::http2Status() const {
@@ -151,6 +158,9 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("http2_status")] = int(http2Status());
   data[QSL("use_account_proxy")] = useAccountProxy();
 
+  data[QSL("fetch_full_articles")] = fetchFullArticles();
+  data[QSL("fetch_full_articles_plain_text")] = fetchFullArticlesInPlainText();
+
   data[QSL("proxy_type")] = int(networkProxy().type());
   data[QSL("proxy_host")] = networkProxy().hostName();
   data[QSL("proxy_port")] = networkProxy().port();
@@ -172,6 +182,9 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setDontUseRawXmlSaving(data[QSL("dont_use_raw_xml_saving")].toBool());
   setHttpHeaders(data[QSL("http_headers")].toHash());
   setHttp2Status(NetworkFactory::Http2Status(data[QSL("http2_status")].toInt()));
+
+  setFetchFullArticles(data[QSL("fetch_full_articles")].toBool());
+  setFetchFullArticlesInPlainText(data[QSL("fetch_full_articles_plain_text")].toBool());
 
   setUseAccountProxy(data[QSL("use_account_proxy")].toBool());
 
@@ -460,6 +473,22 @@ QString StandardFeed::getHttpDescription() const {
     default:
       return tr("unknown state");
   }
+}
+
+bool StandardFeed::fetchFullArticlesInPlainText() const {
+  return m_fetchFullArticlesInPlainText;
+}
+
+void StandardFeed::setFetchFullArticlesInPlainText(bool fetch_full_articles_in_plain_text) {
+  m_fetchFullArticlesInPlainText = fetch_full_articles_in_plain_text;
+}
+
+bool StandardFeed::fetchFullArticles() const {
+  return m_fetchFullArticles;
+}
+
+void StandardFeed::setFetchFullArticles(bool fetch_full_articles) {
+  m_fetchFullArticles = fetch_full_articles;
 }
 
 QNetworkProxy StandardFeed::networkProxy() const {

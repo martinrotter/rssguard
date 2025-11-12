@@ -363,7 +363,6 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   qDebugNN << LOGSEC_ARTICLEFILTER
            << "Prepared query for MSG duplicate identification is:" << QUOTE_W_SPACE_DOT(full_query);
 
-
   q.prepare(full_query);
 
   for (const auto& bind : bind_values) {
@@ -383,6 +382,33 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   }
 
   return false;
+}
+
+bool FilterMessage::fetchFullContents(bool plain_text_only) {
+  QUrl url = m_message->m_url;
+
+  if (!url.isValid() || url.isEmpty()) {
+    qWarningNN << LOGSEC_CORE << "Cannot call article extractor with empty or invalid URL.";
+    return false;
+  }
+
+  try {
+    QString full_contents = qApp->feedReader()->getFullArticle(url, plain_text_only);
+
+    if (full_contents.simplified().isEmpty()) {
+      qWarningNN << LOGSEC_CORE << "Empty contents returned from article extractor for URL"
+                 << QUOTE_W_SPACE_DOT(m_message->m_url);
+      return false;
+    }
+
+    setContents(full_contents);
+    return true;
+  }
+  catch (const ApplicationException& ex) {
+    qWarningNN << LOGSEC_CORE << "Error" << QUOTE_W_SPACE(ex.message()) << "when calling article extractor for URL"
+               << QUOTE_W_SPACE_DOT(m_message->m_url);
+    return false;
+  }
 }
 
 QList<Label*> FilterMessage::assignedLabels() const {

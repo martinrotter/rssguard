@@ -10,7 +10,7 @@ endif()
 
 add_custom_command(
   OUTPUT ${OUTPUT_BINARY}
-  COMMAND ${GO_EXECUTABLE} build ${GO_FLAGS} -o "${OUTPUT_BINARY}" "main.go"
+  COMMAND ${GO_EXECUTABLE} build ${GO_FLAGS} -o "${OUTPUT_BINARY}" -v "main.go"
   DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/main.go
   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
   COMMENT "Building Go tool: rssguard-article-extractor"

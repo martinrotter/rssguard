@@ -133,7 +133,13 @@ class StandardFeed : public Feed {
     void setUseAccountProxy(bool use);
 
     QNetworkProxy networkProxy() const;
-    void setNetworkProxy(const QNetworkProxy &new_proxy);
+    void setNetworkProxy(const QNetworkProxy& new_proxy);
+
+    bool fetchFullArticles() const;
+    void setFetchFullArticles(bool fetch_full_articles);
+
+    bool fetchFullArticlesInPlainText() const;
+    void setFetchFullArticlesInPlainText(bool fetch_full_articles_in_plain_text);
 
   public slots:
     void fetchMetadataForItself();
@@ -164,6 +170,9 @@ class StandardFeed : public Feed {
     // NOTE: All other proxy types are covered by QNetworkProxy, escpecially no proxy, system proxy and application
     // proxy.
     bool m_useAccountProxy;
+
+    bool m_fetchFullArticles;
+    bool m_fetchFullArticlesInPlainText;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)

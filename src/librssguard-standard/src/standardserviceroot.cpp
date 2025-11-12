@@ -456,6 +456,27 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   qDebugNN << LOGSEC_STANDARD << "XML parsing for feed" << QUOTE_W_SPACE(f->title()) << "took"
            << NONQUOTE_W_SPACE(tmr.elapsed()) << "ms.";
 
+  if (f->fetchFullArticles()) {
+    for (Message& msg : messages) {
+      QUrl url = msg.m_url;
+
+      if (!url.isValid() || url.isEmpty()) {
+        qWarningNN << LOGSEC_STANDARD << "Cannot call article extractor with empty or invalid URL.";
+        continue;
+      }
+
+      QString full_contents = qApp->feedReader()->getFullArticle(url, f->fetchFullArticlesInPlainText());
+
+      if (full_contents.simplified().isEmpty()) {
+        qWarningNN << LOGSEC_STANDARD << "Empty contents returned from article extractor for URL"
+                   << QUOTE_W_SPACE_DOT(msg.m_url);
+        continue;
+      }
+
+      msg.m_contents = full_contents;
+    }
+  }
+
   if (!parser->dateTimeFormat().isEmpty()) {
     f->setDateTimeFormat(parser->dateTimeFormat());
   }

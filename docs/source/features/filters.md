@@ -79,12 +79,15 @@ Here is the complete reference documentation of all functions and properties ava
 | `addEnclosure(String url, String mime_type)`                                  | `void`       | Adds multimedia attachment to the article.
 | `removeEnclosure(int index)`                                                  | `Boolean`    | Removes one enclosures from the article, according to index (starting from zero). Returns `true` if enclosure exists and was removed.
 | `removeAllEnclosures()`                                                       | `void`       | Removes all enclosures from the article.
+| `fetchFullContents(Boolean plain_text_only)`                                  | `Boolean`    | Fetches FULL article contents (plain text or HTML) for the article. [^1]
 | `isAlreadyInDatabase(DuplicityCheck criteria)`                                | `Boolean`    | Allows you to check if SAME message is already stored in the RSS Guard's DB.
 | `isAlreadyInDatabaseWinkler(DuplicityCheck criteria, Number threshold = 0.1)` | `Boolean`    | Allows you to check if SIMILAR message is already stored in the RSS Guard's DB using Jaro-Winkler edit distance algorithm.
 | `assignLabel(String label_id)`                                                | `Boolean`    | Assigns label to the message. The `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | `deassignLabel(String label_id)`                                              | `Boolean`    | Removes label from the message. The `String` value is the `customId` property of `Label` type. See its API reference for relevant info.
 | `deassignAllLabels()`                                                         | `void`       | Removes all labels from messages.
 | `exportCategoriesToLabels(Boolean assign_to_message)`                         | `void`       | Creates RSS Guard labels for all categories of this message. Also optionally assigns the message to those labels.
+
+[^1]: Note that fetching of full article content can have two important consequences. It could be slow so it can slow down whole feed fetching process. So use this function sparingly. Also, the overall size of the database will grow if you have many full articles stored in it.
 
 ### `app`
 
@@ -269,6 +272,21 @@ function filterMessage() {
   }
 
   return Msg.Accept;
+}
+```
+
+```js
+/*
+ * Check if similar article is present in database and if it is not
+ * then fetch FULL article contents for it.
+ */
+function filterMessage() {
+  if (!msg.isAlreadyInDatabaseWinkler(Msg.SameTitle, 0.05)) {
+    msg.fetchFullContents(false);
+    return Msg.Accept;
+  } else {
+    return Msg.Ignore;
+  }
 }
 ```
 

@@ -78,6 +78,8 @@ class FilterMessage : public QObject {
     Q_INVOKABLE bool isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double threshold = 0.1) const;
     Q_INVOKABLE bool isAlreadyInDatabase(DuplicityCheck criteria) const;
 
+    Q_INVOKABLE bool fetchFullContents(bool plain_text_only);
+
     // Adds given label to list of assigned labels to this message.
     // Returns true if label was assigned now or if the message already has it assigned.
     Q_INVOKABLE bool assignLabel(const QString& label_custom_id) const;

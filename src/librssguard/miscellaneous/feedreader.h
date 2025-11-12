@@ -43,7 +43,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
 
     void showMessageFiltersManager();
 
-    QString getFullArticle(const QUrl& url) const;
+    QString getFullArticle(const QUrl& url, bool plain_text_only) const;
 
     // True if feed update is running right now.
     bool isFeedUpdateRunning() const;

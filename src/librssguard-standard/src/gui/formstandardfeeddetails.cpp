@@ -160,6 +160,12 @@ void FormStandardFeedDetails::apply() {
       std_feed->setFetchCommentsEnabled(m_standardFeedExpDetails->m_ui.m_cbFetchComments->isChecked());
     }
 
+    if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbFetchFullArticles)) {
+      std_feed->setFetchFullArticles(m_standardFeedExpDetails->m_ui.m_cbFetchFullArticles->isChecked());
+      std_feed->setFetchFullArticlesInPlainText(m_standardFeedExpDetails->m_ui.m_cbFetchFullArticlesPlainTextOnly
+                                                  ->isChecked());
+    }
+
     std_feed->setCreationDate(QDateTime::currentDateTime());
     std_feed->setLastEtag({});
 
@@ -210,6 +216,9 @@ void FormStandardFeedDetails::loadFeedData() {
     m_standardFeedExpDetails->m_ui.m_mcbFetchComments
       ->addActionWidget(m_standardFeedExpDetails->m_ui.m_cbFetchComments);
 
+    m_standardFeedExpDetails->m_ui.m_mcbFetchFullArticles
+      ->addActionWidget(m_standardFeedExpDetails->m_ui.m_wdgFetchFullArticles);
+
     m_networkDetails->m_ui.m_mcbNetworkProxy->addActionWidget(m_networkDetails->m_ui.m_wdgNetworkProxy);
 
     m_networkDetails->m_ui.m_wdgAuthentication->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthType"))
@@ -248,8 +257,13 @@ void FormStandardFeedDetails::loadFeedData() {
   }
   else {
     m_standardFeedDetails->setExistingFeed(m_serviceRoot, std_feed);
+
     m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->setChecked(std_feed->dontUseRawXmlSaving());
     m_standardFeedExpDetails->m_ui.m_cbFetchComments->setChecked(std_feed->fetchCommentsEnabled());
+    m_standardFeedExpDetails->m_ui.m_cbFetchFullArticles->setChecked(std_feed->fetchFullArticles());
+    m_standardFeedExpDetails->m_ui.m_cbFetchFullArticlesPlainTextOnly
+      ->setChecked(std_feed->fetchFullArticlesInPlainText());
+
     m_networkDetails->setHttp2Status(std_feed->http2Status());
   }
 }
