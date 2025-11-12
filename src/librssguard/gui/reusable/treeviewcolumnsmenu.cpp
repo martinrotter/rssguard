@@ -28,11 +28,12 @@ void TreeViewColumnsMenu::prepareMenu() {
 
 void TreeViewColumnsMenu::actionTriggered(bool toggle) {
   auto* send_act = qobject_cast<QAction*>(sender());
+  int section = send_act->data().toInt();
 
-  header()->setSectionHidden(send_act->data().toInt(), !send_act->isChecked());
+  header()->setSectionHidden(section, !send_act->isChecked());
 
-  if (send_act->isChecked() && header()->sectionSize(send_act->data().toInt()) < 10) {
-    header()->resizeSection(send_act->data().toInt(), MESSAGES_VIEW_DEFAULT_COL);
+  if (send_act->isChecked() && header()->sectionSize(send_act->data().toInt()) < header()->minimumSectionSize()) {
+    header()->resizeSection(section, header()->minimumSectionSize());
   }
 
   Q_UNUSED(toggle)

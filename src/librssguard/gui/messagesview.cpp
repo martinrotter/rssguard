@@ -352,9 +352,6 @@ void MessagesView::setupAppearance() {
   header()->setCascadingSectionResizes(false);
   header()->setStretchLastSection(true);
 
-  // verticalScrollBar()->setPageStep(20000);
-  // verticalScrollBar()->setSingleStep(20000);
-
   adjustColumns();
 }
 
