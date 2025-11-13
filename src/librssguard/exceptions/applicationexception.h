@@ -5,15 +5,20 @@
 
 #include <QString>
 
+#define THROW_EX(type, msg) throw type((msg), __FILE__, __LINE__)
+
 class RSSGUARD_DLLSPEC ApplicationException {
   public:
-    explicit ApplicationException(QString message = {});
+    explicit ApplicationException(const QString& message = {}, const QString& file = {}, int line = 0);
     virtual ~ApplicationException();
 
     QString message() const;
 
   protected:
     void setMessage(const QString& message);
+
+  private:
+    QString processException(const QString& message, const QString& file, int line);
 
   private:
     QString m_message;

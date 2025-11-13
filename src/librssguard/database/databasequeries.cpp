@@ -1571,7 +1571,7 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db,
     q.exec();
 
     if (!q.next()) {
-      throw SqlException(q.lastError());
+      THROW_EX(SqlException, q.lastError());
     }
 
     next_sort_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
@@ -1640,7 +1640,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db,
     q.exec();
 
     if (!q.next()) {
-      throw SqlException(q.lastError());
+      THROW_EX(SqlException, q.lastError());
     }
 
     next_sort_order = (q.value(0).isNull() ? -1 : q.value(0).toInt()) + 1;
@@ -2116,7 +2116,7 @@ void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db, int feed
     }
   }
   else {
-    throw SqlException(q.lastError());
+    THROW_EX(SqlException, q.lastError());
   }
 
   q.prepare(QSL("INSERT INTO MessageFiltersInFeeds (filter, feed, account_id) "
@@ -2200,7 +2200,7 @@ void DatabaseQueries::storeNewOauthTokens(const QSqlDatabase& db, const QString&
   q.exec();
 
   if (!q.next()) {
-    throw SqlException(q.lastError());
+    THROW_EX(SqlException, q.lastError());
   }
 
   QVariantHash custom_data = deserializeCustomData(q.value(0).toString());

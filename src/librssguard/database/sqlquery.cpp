@@ -15,7 +15,7 @@ bool SqlQuery::exec(bool throw_ex) {
   logQuery();
 
   if (!ok && throw_ex) {
-    throw SqlException(lastError());
+    THROW_EX(SqlException, lastError());
   }
 
   return ok;

@@ -9,7 +9,7 @@
 
 class RSSGUARD_DLLSPEC SqlException : public ApplicationException {
   public:
-    explicit SqlException(const QSqlError& error);
+    explicit SqlException(const QSqlError& error, const QString& file = QString(), int line = 0);
 
   private:
     QString messageForError(const QSqlError& error) const;
