@@ -359,10 +359,6 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   }
 
   QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
-
-  qDebugNN << LOGSEC_ARTICLEFILTER
-           << "Prepared query for MSG duplicate identification is:" << QUOTE_W_SPACE_DOT(full_query);
-
   q.prepare(full_query);
 
   for (const auto& bind : bind_values) {

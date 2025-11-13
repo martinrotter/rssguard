@@ -4,7 +4,8 @@
 
 #include "definitions/definitions.h"
 
-SqlException::SqlException(const QSqlError& error) : ApplicationException(messageForError(error)) {}
+SqlException::SqlException(const QSqlError& error, const QString& file, int line)
+  : ApplicationException(messageForError(error), file, line) {}
 
 QString SqlException::messageForError(const QSqlError& error) const {
   if (!error.isValid()) {
