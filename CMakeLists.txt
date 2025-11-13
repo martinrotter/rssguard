@@ -206,12 +206,14 @@ if(UNIX AND NOT APPLE)
   list(APPEND QT_COMPONENTS DBus)
 endif()
 
+set(QT_NO_PRIVATE_MODULE_WARNING ON)
+
 if(BUILD_WITH_QT6)
   find_package(QT NAMES Qt6)
-  find_package(Qt6 ${QT6_MIN_VERSION} COMPONENTS ${QT_COMPONENTS} Core5Compat REQUIRED)
+  find_package(Qt6 ${QT6_MIN_VERSION} REQUIRED ${QT_COMPONENTS} Core5Compat OPTIONAL_COMPONENTS GuiPrivate)
 else()
   find_package(QT NAMES Qt5)
-  find_package(Qt5 ${QT5_MIN_VERSION} COMPONENTS ${QT_COMPONENTS} REQUIRED)
+  find_package(Qt5 ${QT5_MIN_VERSION} REQUIRED ${QT_COMPONENTS})
 
   if(Qt5Core_VERSION VERSION_LESS 5.15.0)
     # Compatibility macros.
