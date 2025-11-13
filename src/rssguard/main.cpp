@@ -23,6 +23,23 @@
 #include <QSettings>
 #include <QTextCodec>
 
+void exception_handler() {
+  try {
+    throw;
+  }
+  catch (const ApplicationException& app_ex) {
+    qCriticalNN << "Unhandled application exception:" << QUOTE_W_SPACE_DOT(app_ex.message());
+  }
+  catch (const std::exception& std_ex) {
+    qCriticalNN << "Unhandled exception:" << QUOTE_W_SPACE_DOT(std_ex.what());
+  }
+  catch (...) {
+    qCriticalNN << "Unhandled unknown exception.";
+  }
+
+  std::abort();
+}
+
 int main(int argc, char* argv[]) {
   /*
    * This is disabled because it has bad side effects - not working redirection etc.
@@ -45,6 +62,8 @@ int main(int argc, char* argv[]) {
   }
 #endif
   */
+
+  std::set_terminate(exception_handler);
 
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
 
