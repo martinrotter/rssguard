@@ -2674,7 +2674,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="961"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
       <source>&amp;Enable/disable selected feeds</source>
-      <translation type="unfinished">&amp;Enable/disable selected feeds</translation>
+      <translation>選択したフィードを有効/無効にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="621"/>
@@ -8812,7 +8812,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="24"/>
       <source>Turning this setting ON will fetch full source articles for this feed. Note that this will slow down feed fetching and also can make your database considerably bigger.</source>
-      <translation type="unfinished">Turning this setting ON will fetch full source articles for this feed. Note that this will slow down feed fetching and also can make your database considerably bigger.</translation>
+      <translation>この設定をオンにすると、このフィードの完全なソース記事が取得されます。ただし、これによりフィードの取得速度が低下し、データベースのサイズがかなり大きくなる可能性があることに注意してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="28"/>
