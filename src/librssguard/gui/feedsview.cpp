@@ -1135,17 +1135,18 @@ QMenu* FeedsView::baseContextMenu(const QList<RootItem*>& selected_items) {
   if (kinds.all([](RootItem::Kind knd) {
         return knd == RootItem::Kind::ServiceRoot || knd == RootItem::Kind::Category;
       })) {
+    action_sections[QSL("3")].append({qApp->mainForm()->m_ui->m_actionEditChildFeeds,
+                                      qApp->mainForm()->m_ui->m_actionEditChildFeedsRecursive});
+
     if (cat_add) {
-      action_sections[QSL("3")].append({qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem});
+      action_sections[QSL("4")].append({qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem});
     }
 
     if (feed_add) {
-      action_sections[QSL("3")].append({qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem});
+      action_sections[QSL("4")].append({qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem});
     }
 
-    action_sections[QSL("4")].append({qApp->mainForm()->m_ui->m_actionEditChildFeeds,
-                                      qApp->mainForm()->m_ui->m_actionEditChildFeedsRecursive,
-                                      qApp->mainForm()->m_ui->m_actionRearrangeCategories,
+    action_sections[QSL("5")].append({qApp->mainForm()->m_ui->m_actionRearrangeCategories,
                                       qApp->mainForm()->m_ui->m_actionRearrangeFeeds});
   }
 
@@ -1159,23 +1160,23 @@ QMenu* FeedsView::baseContextMenu(const QList<RootItem*>& selected_items) {
   if (items_linq.all([](RootItem* item) {
         return item->childCount() > 0;
       })) {
-    action_sections[QSL("5")].append(QList<QAction*>{
+    action_sections[QSL("6")].append(QList<QAction*>{
       qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
       qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
     });
   }
 
+  action_sections[QSL("7")].append(QList<QAction*>{qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
+                                                   qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread});
+
   if (!alphabetic_sort && kinds.all([](RootItem::Kind knd) {
         return knd == RootItem::Kind::ServiceRoot || knd == RootItem::Kind::Feed || knd == RootItem::Kind::Category;
       })) {
-    action_sections[QSL("6")].append({qApp->mainForm()->m_ui->m_actionFeedMoveUp,
+    action_sections[QSL("5")].append({qApp->mainForm()->m_ui->m_actionFeedMoveUp,
                                       qApp->mainForm()->m_ui->m_actionFeedMoveDown,
                                       qApp->mainForm()->m_ui->m_actionFeedMoveTop,
                                       qApp->mainForm()->m_ui->m_actionFeedMoveBottom});
   }
-
-  action_sections[QSL("7")].append(QList<QAction*>{qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
-                                                   qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread});
 
   for (auto it = action_sections.cbegin(); it != action_sections.cend(); ++it) {
     menu->addActions(it.value());
