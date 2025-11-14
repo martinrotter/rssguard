@@ -36,24 +36,6 @@ void RecycleBin::updateCounts() {
   m_totalCount = ac.m_total;
 }
 
-/*
-QList<QAction*> RecycleBin::contextMenuFeedsList() {
-  if (m_contextMenu.isEmpty()) {
-    QAction* restore_action =
-      new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Restore recycle bin"), this);
-    QAction* empty_action = new QAction(qApp->icons()->fromTheme(QSL("edit-clear")), tr("Empty recycle bin"), this);
-
-    connect(restore_action, &QAction::triggered, this, &RecycleBin::restore);
-    connect(empty_action, &QAction::triggered, this, &RecycleBin::empty);
-
-    m_contextMenu.append(restore_action);
-    m_contextMenu.append(empty_action);
-  }
-
-  return m_contextMenu;
-}
-*/
-
 void RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
   auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);

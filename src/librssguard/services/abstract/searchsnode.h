@@ -15,8 +15,6 @@ class RSSGUARD_DLLSPEC SearchsNode : public RootItem {
     QList<Search*> probes() const;
     void loadProbes(const QList<Search*>& probes);
 
-    // virtual QList<QAction*> contextMenuFeedsList();
-
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
 
@@ -24,9 +22,6 @@ class RSSGUARD_DLLSPEC SearchsNode : public RootItem {
 
   public slots:
     void createProbe();
-
-  private:
-    QAction* m_actProbeNew;
 };
 
 #endif // SEARCHSNODE_H

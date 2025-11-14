@@ -52,12 +52,6 @@ QString RootItem::additionalTooltip() const {
   return QString();
 }
 
-/*
-QList<QAction*> RootItem::contextMenuFeedsList() {
-  return {};
-}
-*/
-
 bool RootItem::canBeEdited() const {
   return false;
 }

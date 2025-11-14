@@ -11,7 +11,7 @@
 #include "services/abstract/gui/formaddeditprobe.h"
 #include "services/abstract/serviceroot.h"
 
-SearchsNode::SearchsNode(RootItem* parent_item) : RootItem(parent_item), m_actProbeNew(nullptr) {
+SearchsNode::SearchsNode(RootItem* parent_item) : RootItem(parent_item) {
   setKind(RootItem::Kind::Probes);
   setId(ID_PROBES);
   setIcon(qApp->icons()->fromTheme(QSL("system-search")));
@@ -42,18 +42,6 @@ QList<Search*> SearchsNode::probes() const {
 
   return FROM_STD_LIST(QList<Search*>, list);
 }
-
-/*
-QList<QAction*> SearchsNode::,contextMenuFeedsList() {
-  if (m_actProbeNew == nullptr) {
-    m_actProbeNew = new QAction(qApp->icons()->fromTheme(QSL("system-search")), tr("New query"), this);
-
-    connect(m_actProbeNew, &QAction::triggered, this, &SearchsNode::createProbe);
-  }
-
-  return QList<QAction*>{m_actProbeNew};
-}
-*/
 
 int SearchsNode::countOfUnreadMessages() const {
   return -1;

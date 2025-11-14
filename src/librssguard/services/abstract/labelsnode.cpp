@@ -92,19 +92,6 @@ QList<Label*> LabelsNode::labels() const {
   return FROM_STD_LIST(QList<Label*>, list);
 }
 
-/*
-QList<QAction*> LabelsNode::contextMenuFeedsList() {
-  if (m_actLabelNew == nullptr) {
-    // Initialize it all.
-    m_actLabelNew = new QAction(qApp->icons()->fromTheme(QSL("tag-new")), tr("New label"), this);
-
-    connect(m_actLabelNew, &QAction::triggered, this, &LabelsNode::createLabel);
-  }
-
-  return QList<QAction*>{m_actLabelNew};
-}
-*/
-
 void LabelsNode::createLabel() {
   if (Globals::hasFlag(account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Adding)) {
     FormAddEditLabel frm(qApp->mainFormWidget());

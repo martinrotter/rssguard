@@ -65,11 +65,6 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     virtual QString hashCode() const;
     virtual QString additionalTooltip() const;
 
-    // Returns list of specific actions which can be done with the item.
-    // Do not include general actions here like actions: Mark as read, Update, ...
-    // NOTE: Ownership of returned actions is not switched to caller, free them when needed.
-    // virtual QList<QAction*> contextMenuFeedsList();
-
     // Can properties of this item be edited?
     virtual bool canBeEdited() const;
 

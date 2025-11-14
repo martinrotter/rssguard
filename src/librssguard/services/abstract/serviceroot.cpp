@@ -193,6 +193,45 @@ QList<QAction*> ServiceRoot::contextMenuFeedsList(const QList<RootItem*>& select
       case RootItem::Kind::ServiceRoot:
         return serviceMenu();
 
+      case RootItem::Kind::Probes: {
+        if (m_contextMenuProbes.isEmpty()) {
+          auto* probe_new = new QAction(qApp->icons()->fromTheme(QSL("system-search")), tr("New query"), m_probesNode);
+
+          connect(probe_new, &QAction::triggered, m_probesNode, &SearchsNode::createProbe);
+          m_contextMenuProbes.append(probe_new);
+        }
+
+        return m_contextMenuProbes;
+      }
+
+      case RootItem::Kind::Bin: {
+        if (m_contextMenuBin.isEmpty()) {
+          QAction* restore_action =
+            new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Restore recycle bin"), this);
+          QAction* empty_action = new QAction(qApp->icons()->fromTheme(QSL("edit-clear")), tr("Empty recycle bin"), this);
+
+          connect(restore_action, &QAction::triggered, m_recycleBin, &RecycleBin::restore);
+          connect(empty_action, &QAction::triggered, m_recycleBin, &RecycleBin::empty);
+          m_contextMenuBin.append(restore_action);
+          m_contextMenuBin.append(empty_action);
+        }
+
+        return m_contextMenuBin;
+      }
+
+      case RootItem::Kind::Labels: {
+        if (m_contextMenuLabels.isEmpty()) {
+          // Initialize it all.
+          auto* label_new = new QAction(qApp->icons()->fromTheme(QSL("tag-new")), tr("New label"), this);
+
+          connect(label_new, &QAction::triggered, m_labelsNode, &LabelsNode::createLabel);
+          m_contextMenuLabels.append(label_new);
+        }
+
+        return m_contextMenuLabels;
+      }
+
+
       default:
         return {};
     }

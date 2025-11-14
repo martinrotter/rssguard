@@ -293,6 +293,9 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     bool m_nodeShowImportant;
     bool m_nodeShowLabels;
     bool m_nodeShowProbes;
+    QList<QAction*> m_contextMenuProbes;
+    QList<QAction*> m_contextMenuBin;
+    QList<QAction*> m_contextMenuLabels;
 };
 
 #if QT_VERSION_MAJOR == 6
