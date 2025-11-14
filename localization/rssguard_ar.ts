@@ -6,12 +6,12 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="195"/>
       <source>(category)</source>
-      <translation type="unfinished">(category)</translation>
+      <translation>(فئة)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="198"/>
       <source>(feed)</source>
-      <translation type="unfinished">(feed)</translation>
+      <translation>(تغذية)</translation>
     </message>
   </context>
   <context>
@@ -20,7 +20,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="78"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>نموذج</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
