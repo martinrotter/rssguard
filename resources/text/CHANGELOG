@@ -2,13 +2,13 @@
 -----
 Released on: 2025-09-06
 
-This is first release of brand new 5.x RSS Guard line. DB files from RSS Guard 4.x line are NOT compatible with this release because massive DB layer overhaul was done. DB layer is now much more powerful, much more maintainable and in many cases much much faster.
+This is the first release of the brand-new 5.x RSS Guard line. Database files from the RSS Guard 4.x line is NOT compatible with this release because a massive overhaul of the database layer was performed. The database layer is now significantly more powerful, more maintainable, and in many cases, much faster.
 
-Changes, improvements and fixes were done across whole RSS Guard codebase with hundreds and hundreds of commits. Nearly every single source code file was touched. Almost 50 tickets were solved.
+Changes, improvements and fixes were done across the entire RSS Guard codebase with hundreds and hundreds of commits. Nearly every single source code file was touched. Almost 50 tickets were solved.
 
 https://github.com/martinrotter/rssguard/milestone/39?closed=1
 
-Also, make sure to go through documentation which was revised and refreshed.
+Also, make sure to go through the documentation, which has been revised and refreshed.
 
 https://rssguard.readthedocs.io/en/stable
 
@@ -17,39 +17,39 @@ Many features which are not "typical" for RSS feed reader application were remov
 That said, many other features were added, including great enhancements for article filtering. See the full list of changes below.
 
 Added:
-* New built-in ability to fetch FULL articles for your feeds. It is switchable in feed details dialog and you can even set to fetch plain text only version of your full articles. The feature is also available as a function for your article filters so you can call this feature selectively depending on conditions etc. The functionality itself is coded in extra binary named `rssguard-article-scraper` which you can also use externally. (#1783)
-* QuiteRSS import was added. Right click any account item in feed list and you will see it. It imports categories, feeds, articles and labels. (#1707)
+* New built-in ability to fetch FULL articles for your feeds. It is switchable in feed details dialog and you can even set to fetch plain text only version of your full articles. The feature is also available as a function for your article filters so you can call this feature selectively depending on conditions etc. The functionality itself is coded in extra binary named `rssguard-article-scraper` which you can also use externally. This tools requires Go compiler for building. (#1783)
+* QuiteRSS import was added. Right-click any account item in feed list and you will see it. It imports categories, feeds, articles and labels. (#1707)
 * AppImages are back and better than before. They are available both in Qt 5 and Qt 6 versions. (#1808)
 * Added main menu action to enable/disable feed. Can be also of course assigned to keyboard shortcut. (#755)
 * Application log dialog has "Clear" button. (#1902)
-* New main menu and article list context menu item "Reveal feed" which flashes the feed to which displayed article belongs to. (#1903)
-* Feed list has new column "Item ID" which is hidden by default. Allows to filter feeds by their ID. (#966)
-* External tools settings were redesigned and external tools now can be named. (#839)
+* New main menu and article list context menu item "Reveal feed" which highlights the feed that the displayed article belongs to. (#1903)
+* Feed list has new column "Item ID" which is hidden by default. Allows filtering feeds by their ID. (#966)
+* External tools settings were redesigned and external tools can now be named. (#839)
 * New support for "RSS comments" specifications which is now per-feed configurable. (#878)
-* Enclosures/attachments now can be browsed/added/removed via article filters. (#1024)
+* Enclosures and attachments now can now be browsed, added, or removed via article filters. (#1024)
 * Network proxy is now configurable even on a per-feed basis. So now we have per-feed, per-account and app-wide configuration options. (#417)
 * New main menu items for focusing article preview, article list and feed list. (#1872)
 * Added scrollable/paginated context menus where it makes sense. (#971)
 * Turkish localization. (#1856)
 * Default user data directory on Linux now does not contain spaces. (#1852)
-* Article filters now can be reordered. (#908)
-* You can see number of disabled feeds in category/account details. (#1714)
-* `Article filters` dialog was enhanced so now you can actually see which article properties are tweaked by the filter when testing the filter. Also, many other UI-related things were updated for that dialog. (#323, #1044, #1792, #1793)
+* Article filters can now be reordered. (#908)
+* You can see the number of disabled feeds in category/account details. (#1714)
+* `Article filters` dialog was enhanced, allowing you to see which article properties are tweaked by the filter when testing the filter. Also, many other UI-related things were updated for that dialog. (#323, #1044, #1792, #1793)
 * Category specifications are now supported for RSS, ATOM, RDF and JSON. It is also possible to work with these categories in article filters and convert them to labels. (#746)
 * Feed list has initial focus when launching the app. (#1673)
-* It is possible to turn anti-aliasing on/off for the whole app, or for article preview font or for article preview shapes. (#1432)
+* It is possible to turn anti-aliasing on or off for the whole app, or for article preview font or for article preview shapes. (#1432)
 * It is possible to hide number of unread articles in main taskbar. (#1454)
 * Confirmation added when marking everything as read or cleaning. (#1771)
 * New ability to tweak application-wide font. (#1798)
-* Article enclosures are now de-duplified for each incoming article. (#1782)
+* Article enclosures are now de-duplicated for each incoming article. (#1782)
 
 Fixed:
-* Logic and core code around labels was completely refactored, resulting in better label management and UI experience. (#1212)
-* Rewritten some logic in media player, fixing some bugs along the way. (#1887)
+* Logic and core code around labels has been completely refactored, resulting in better label management and UI experience. (#1212)
+* Some logic was rewritten in media player, fixing some bugs along the way. (#1887)
 * Fixed the behavior of sample notification. (#1886)
 * `Accept-Language` HTTP header is explicitly set to RSS Guard active locale. (#1870)¨
 * Cannot create duplicate labels anymore. (#972)
-* Some fixes around toolbar buttons not working. (#1834)
+* Some fixes around toolbar buttons that were not working. (#1834)
 * Fixed handling of article URLs with custom ports. (#1802)
 * Fixed handling of some XML entities. (#1770)
 * Focus rectangle properly shown in feed and article list. (#1760)
