@@ -13,7 +13,7 @@ class RSSGUARD_DLLSPEC RecycleBin : public RootItem {
     virtual ~RecycleBin() = default;
 
     virtual QString additionalTooltip() const;
-    virtual QList<QAction*> contextMenuFeedsList();
+    // virtual QList<QAction*> contextMenuFeedsList();
     virtual void markAsReadUnread(ReadStatus status);
     virtual void cleanMessages(bool clear_only_read);
     virtual int countOfUnreadMessages() const;

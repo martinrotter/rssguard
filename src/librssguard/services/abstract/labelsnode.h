@@ -17,7 +17,7 @@ class RSSGUARD_DLLSPEC LabelsNode : public RootItem {
 
     virtual void markAsReadUnread(RootItem::ReadStatus status);
     virtual QString additionalTooltip() const;
-    virtual QList<QAction*> contextMenuFeedsList();
+    // virtual QList<QAction*> contextMenuFeedsList();
     virtual void updateCounts();
 
     Label* labelByCustomId(const QString& custom_id);

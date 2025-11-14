@@ -36,6 +36,7 @@ void TtRssFeed::deleteItem() {
   }
 }
 
+/*
 QList<QAction*> TtRssFeed::contextMenuFeedsList() {
   auto menu = Feed::contextMenuFeedsList();
 
@@ -52,6 +53,7 @@ QList<QAction*> TtRssFeed::contextMenuFeedsList() {
 
   return menu;
 }
+*/
 
 void TtRssFeed::removeItself() {
   DatabaseQueries::deleteFeed(qApp->database()->driver()->connection(metaObject()->className()),

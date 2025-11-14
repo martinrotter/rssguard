@@ -180,19 +180,27 @@ RecycleBin* ServiceRoot::recycleBin() const {
   return m_recycleBin;
 }
 
-QList<QAction*> ServiceRoot::contextMenuFeedsList() {
-  auto specific = serviceMenu();
-  auto base = RootItem::contextMenuFeedsList();
+QList<QAction*> ServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items) {
+  auto items_linq = boolinq::from(selected_items);
+  auto kinds = items_linq
+                 .select([](RootItem* it) {
+                   return it->kind();
+                 })
+                 .distinct();
 
-  if (!specific.isEmpty()) {
-    auto* act_sep = new QAction(this);
+  if (kinds.count() == 1) {
+    switch (selected_items.first()->kind()) {
+      case RootItem::Kind::ServiceRoot:
+        return serviceMenu();
 
-    act_sep->setSeparator(true);
-    base.append(act_sep);
-    base.append(specific);
+      default:
+        return {};
+    }
+  }
+  else {
   }
 
-  return base;
+  return {};
 }
 
 QList<QAction*> ServiceRoot::contextMenuMessagesList(const QList<Message>& messages) {

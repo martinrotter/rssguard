@@ -15,7 +15,7 @@ class TtRssFeed : public Feed {
 
     virtual bool canBeDeleted() const;
     virtual void deleteItem();
-    virtual QList<QAction*> contextMenuFeedsList();
+    // virtual QList<QAction*> contextMenuFeedsList();
 
   private:
     TtRssServiceRoot* serviceRoot() const;

@@ -92,6 +92,7 @@ QList<Label*> LabelsNode::labels() const {
   return FROM_STD_LIST(QList<Label*>, list);
 }
 
+/*
 QList<QAction*> LabelsNode::contextMenuFeedsList() {
   if (m_actLabelNew == nullptr) {
     // Initialize it all.
@@ -102,6 +103,7 @@ QList<QAction*> LabelsNode::contextMenuFeedsList() {
 
   return QList<QAction*>{m_actLabelNew};
 }
+*/
 
 void LabelsNode::createLabel() {
   if (Globals::hasFlag(account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Adding)) {

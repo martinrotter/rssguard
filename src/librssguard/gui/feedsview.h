@@ -131,14 +131,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     QModelIndex nextUnreadItem(const QModelIndex& default_row);
 
     // Initializes context menus.
-    QMenu* initializeContextMenuBin(RootItem* clicked_item);
-    QMenu* initializeContextMenuService(RootItem* clicked_item);
-    QMenu* initializeContextMenuCategories(RootItem* clicked_item);
-    QMenu* initializeContextMenuFeeds(RootItem* clicked_item);
-    QMenu* initializeContextMenuImportant(RootItem* clicked_item);
-    QMenu* initializeContextMenuOtherItem(RootItem* clicked_item);
-    QMenu* initializeContextMenuLabel(RootItem* clicked_item);
-    QMenu* initializeContextMenuProbe(RootItem* clicked_item);
+    QMenu* baseContextMenu(const QList<RootItem*>& selected_items);
 
     void setupAppearance();
     void saveExpandStates(RootItem* item);

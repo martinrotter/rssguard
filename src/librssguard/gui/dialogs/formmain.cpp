@@ -346,7 +346,7 @@ void FormMain::updateRecycleBinMenu() {
 
   auto srts = qApp->feedReader()->feedsModel()->serviceRoots();
 
-  for (const ServiceRoot* activated_root : std::as_const(srts)) {
+  for (ServiceRoot* activated_root : std::as_const(srts)) {
     QMenu* root_menu = new QMenu(activated_root->title(), m_ui->m_menuRecycleBin);
 
     root_menu->setIcon(activated_root->icon());
@@ -361,7 +361,7 @@ void FormMain::updateRecycleBinMenu() {
       no_action->setEnabled(false);
       root_menu->addAction(no_action);
     }
-    else if ((context_menu = bin->contextMenuFeedsList()).isEmpty()) {
+    else if ((context_menu = activated_root->contextMenuFeedsList({bin})).isEmpty()) {
       QAction* no_action =
         new QAction(qApp->icons()->fromTheme(QSL("dialog-error")), tr("No actions possible"), m_ui->m_menuRecycleBin);
 

@@ -42,7 +42,7 @@ class StandardFeed : public Feed {
     explicit StandardFeed(RootItem* parent_item = nullptr);
     explicit StandardFeed(const StandardFeed& other);
 
-    virtual QList<QAction*> contextMenuFeedsList();
+    // virtual QList<QAction*> contextMenuFeedsList();
     virtual QString additionalTooltip() const;
     virtual bool canBeDeleted() const;
     virtual void deleteItem();

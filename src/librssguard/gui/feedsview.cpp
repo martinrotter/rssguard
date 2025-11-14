@@ -772,81 +772,6 @@ QModelIndex FeedsView::nextUnreadItem(const QModelIndex& default_row) {
   return QModelIndex();
 }
 
-QMenu* FeedsView::initializeContextMenuBin(RootItem* clicked_item) {
-  if (m_contextMenuBin == nullptr) {
-    m_contextMenuBin = new QMenu(tr("Context menu for recycle bins"), this);
-  }
-  else {
-    m_contextMenuBin->clear();
-  }
-
-  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
-
-  m_contextMenuBin->addActions({qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
-                                qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread});
-
-  if (!specific_actions.isEmpty()) {
-    m_contextMenuBin->addSeparator();
-    m_contextMenuBin->addActions(specific_actions);
-  }
-
-  return m_contextMenuBin;
-}
-
-QMenu* FeedsView::initializeContextMenuService(RootItem* clicked_item) {
-  if (m_contextMenuService == nullptr) {
-    m_contextMenuService = new QMenu(tr("Context menu for accounts"), this);
-  }
-  else {
-    m_contextMenuService->clear();
-  }
-
-  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
-
-  m_contextMenuService->addActions({qApp->mainForm()->m_ui->m_actionUpdateSelectedItems,
-                                    qApp->mainForm()->m_ui->m_actionEditSelectedItem,
-                                    qApp->mainForm()->m_ui->m_actionEditChildFeeds,
-                                    qApp->mainForm()->m_ui->m_actionEditChildFeedsRecursive,
-                                    qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
-                                    qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
-                                    qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
-                                    qApp->mainForm()->m_ui->m_actionRearrangeCategories,
-                                    qApp->mainForm()->m_ui->m_actionRearrangeFeeds,
-                                    qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
-                                    qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
-                                    qApp->mainForm()->m_ui->m_actionDeleteSelectedItem});
-
-  auto cat_add = clicked_item->account()->supportsCategoryAdding();
-  auto feed_add = clicked_item->account()->supportsFeedAdding();
-
-  if (cat_add || feed_add) {
-    m_contextMenuService->addSeparator();
-  }
-
-  if (cat_add) {
-    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem);
-  }
-
-  if (feed_add) {
-    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
-  }
-
-  if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool()) {
-    m_contextMenuService->addSeparator();
-    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveUp);
-    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveDown);
-    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveTop);
-    m_contextMenuService->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveBottom);
-  }
-
-  if (!specific_actions.isEmpty()) {
-    m_contextMenuService->addSeparator();
-    m_contextMenuService->addActions(specific_actions);
-  }
-
-  return m_contextMenuService;
-}
-
 void FeedsView::switchVisibility() {
   setVisible(!isVisible());
 }
@@ -1024,197 +949,6 @@ void FeedsView::reloadItemExpandState(const QModelIndex& source_idx) {
   m_expansionDelayer.start(600);
 }
 
-QMenu* FeedsView::initializeContextMenuCategories(RootItem* clicked_item) {
-  if (m_contextMenuCategories == nullptr) {
-    m_contextMenuCategories = new QMenu(tr("Context menu for categories"), this);
-  }
-  else {
-    m_contextMenuCategories->clear();
-  }
-
-  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
-
-  m_contextMenuCategories->addActions({qApp->mainForm()->m_ui->m_actionUpdateSelectedItems,
-                                       qApp->mainForm()->m_ui->m_actionEditSelectedItem,
-                                       qApp->mainForm()->m_ui->m_actionEditChildFeeds,
-                                       qApp->mainForm()->m_ui->m_actionEditChildFeedsRecursive,
-                                       qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed,
-                                       qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
-                                       qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
-                                       qApp->mainForm()->m_ui->m_actionRearrangeCategories,
-                                       qApp->mainForm()->m_ui->m_actionRearrangeFeeds,
-                                       qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
-                                       qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread,
-                                       qApp->mainForm()->m_ui->m_actionDeleteSelectedItem});
-
-  auto cat_add = clicked_item->account()->supportsCategoryAdding();
-  auto feed_add = clicked_item->account()->supportsFeedAdding();
-
-  if (cat_add || feed_add) {
-    m_contextMenuCategories->addSeparator();
-  }
-
-  if (cat_add) {
-    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem);
-  }
-
-  if (feed_add) {
-    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
-  }
-
-  if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool()) {
-    m_contextMenuCategories->addSeparator();
-    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveUp);
-    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveDown);
-    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveTop);
-    m_contextMenuCategories->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveBottom);
-  }
-
-  if (!specific_actions.isEmpty()) {
-    m_contextMenuCategories->addSeparator();
-    m_contextMenuCategories->addActions(specific_actions);
-  }
-
-  return m_contextMenuCategories;
-}
-
-QMenu* FeedsView::initializeContextMenuFeeds(RootItem* clicked_item) {
-  if (m_contextMenuFeeds == nullptr) {
-    m_contextMenuFeeds = new QMenu(tr("Context menu for categories"), this);
-  }
-  else {
-    m_contextMenuFeeds->clear();
-  }
-
-  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
-
-  m_contextMenuFeeds->addActions(QList<QAction*>() << qApp->mainForm()->m_ui->m_actionUpdateSelectedItems
-                                                   << qApp->mainForm()->m_ui->m_actionEditSelectedItem
-                                                   << qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed
-                                                   << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead
-                                                   << qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread
-                                                   << qApp->mainForm()->m_ui->m_actionPurgeSelectedItems
-                                                   << qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
-
-  auto cat_add = clicked_item->account()->supportsCategoryAdding();
-  auto feed_add = clicked_item->account()->supportsFeedAdding();
-
-  if (cat_add || feed_add) {
-    m_contextMenuFeeds->addSeparator();
-  }
-
-  if (cat_add) {
-    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem);
-  }
-
-  if (feed_add) {
-    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
-  }
-
-  if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool()) {
-    m_contextMenuFeeds->addSeparator();
-    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveUp);
-    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveDown);
-    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveTop);
-    m_contextMenuFeeds->addAction(qApp->mainForm()->m_ui->m_actionFeedMoveBottom);
-  }
-
-  if (!specific_actions.isEmpty()) {
-    m_contextMenuFeeds->addSeparator();
-    m_contextMenuFeeds->addActions(specific_actions);
-  }
-
-  return m_contextMenuFeeds;
-}
-
-QMenu* FeedsView::initializeContextMenuImportant(RootItem* clicked_item) {
-  if (m_contextMenuImportant == nullptr) {
-    m_contextMenuImportant = new QMenu(tr("Context menu for important articles"), this);
-  }
-  else {
-    m_contextMenuImportant->clear();
-  }
-
-  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
-
-  m_contextMenuImportant->addActions({qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
-                                      qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread});
-
-  if (!specific_actions.isEmpty()) {
-    m_contextMenuImportant->addSeparator();
-    m_contextMenuImportant->addActions(specific_actions);
-  }
-
-  return m_contextMenuImportant;
-}
-
-QMenu* FeedsView::initializeContextMenuOtherItem(RootItem* clicked_item) {
-  if (m_contextMenuOtherItems == nullptr) {
-    m_contextMenuOtherItems = new QMenu(tr("Context menu for other items"), this);
-  }
-  else {
-    m_contextMenuOtherItems->clear();
-  }
-
-  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
-
-  if (!specific_actions.isEmpty()) {
-    m_contextMenuOtherItems->addSeparator();
-    m_contextMenuOtherItems->addActions(specific_actions);
-  }
-  else {
-    m_contextMenuOtherItems->addAction(qApp->mainForm()->m_ui->m_actionNoActions);
-  }
-
-  return m_contextMenuOtherItems;
-}
-
-QMenu* FeedsView::initializeContextMenuLabel(RootItem* clicked_item) {
-  if (m_contextMenuLabel == nullptr) {
-    m_contextMenuLabel = new QMenu(tr("Context menu for label"), this);
-  }
-  else {
-    m_contextMenuLabel->clear();
-  }
-
-  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
-
-  m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionEditSelectedItem);
-  m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead);
-  m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
-  m_contextMenuLabel->addAction(qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
-
-  if (!specific_actions.isEmpty()) {
-    m_contextMenuLabel->addSeparator();
-    m_contextMenuLabel->addActions(specific_actions);
-  }
-
-  return m_contextMenuLabel;
-}
-
-QMenu* FeedsView::initializeContextMenuProbe(RootItem* clicked_item) {
-  if (m_contextMenuProbe == nullptr) {
-    m_contextMenuProbe = new QMenu(tr("Context menu for query"), this);
-  }
-  else {
-    m_contextMenuProbe->clear();
-  }
-
-  QList<QAction*> specific_actions = clicked_item->contextMenuFeedsList();
-
-  m_contextMenuProbe->addAction(qApp->mainForm()->m_ui->m_actionEditSelectedItem);
-  m_contextMenuProbe->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead);
-  m_contextMenuProbe->addAction(qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread);
-  m_contextMenuProbe->addAction(qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
-
-  if (!specific_actions.isEmpty()) {
-    m_contextMenuProbe->addSeparator();
-    m_contextMenuProbe->addActions(specific_actions);
-  }
-
-  return m_contextMenuProbe;
-}
-
 QByteArray FeedsView::saveHeaderState() const {
   QJsonObject obj;
 
@@ -1319,40 +1053,139 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
   const QModelIndex clicked_index = indexAt(event->pos());
 
   if (clicked_index.isValid()) {
-    const QModelIndex mapped_index = model()->mapToSource(clicked_index);
-    RootItem* clicked_item = sourceModel()->itemForIndex(mapped_index);
+    auto items = selectedItems();
 
-    if (clicked_item->kind() == RootItem::Kind::Category) {
-      // Display context menu for categories.
-      initializeContextMenuCategories(clicked_item)->exec(event->globalPos());
+    if (items.isEmpty()) {
+      return;
     }
-    else if (clicked_item->kind() == RootItem::Kind::Feed) {
-      // Display context menu for feeds.
-      initializeContextMenuFeeds(clicked_item)->exec(event->globalPos());
+
+    auto items_linq = boolinq::from(items);
+    auto accounts = items_linq
+                      .select([](RootItem* it) {
+                        return it->account();
+                      })
+                      .distinct();
+
+    if (accounts.count() > 1) {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage(tr("Not supported"),
+                                      tr("Context menus with items from more than one account are not supported."),
+                                      QSystemTrayIcon::MessageIcon::Critical),
+                           GuiMessageDestination(true, true));
+      return;
     }
-    else if (clicked_item->kind() == RootItem::Kind::Important || clicked_item->kind() == RootItem::Kind::Unread) {
-      initializeContextMenuImportant(clicked_item)->exec(event->globalPos());
+
+    auto account = accounts.first();
+    auto kinds = items_linq
+                   .select([](RootItem* it) {
+                     return it->kind();
+                   })
+                   .distinct();
+
+    QMenu* base_menu = baseContextMenu(items);
+    auto service_specific_items = account->contextMenuFeedsList(items);
+
+    if (!service_specific_items.isEmpty()) {
+      base_menu->addSection(account->fullIcon(), account->title());
+      base_menu->addActions(service_specific_items);
     }
-    else if (clicked_item->kind() == RootItem::Kind::Bin) {
-      initializeContextMenuBin(clicked_item)->exec(event->globalPos());
-    }
-    else if (clicked_item->kind() == RootItem::Kind::ServiceRoot) {
-      initializeContextMenuService(clicked_item)->exec(event->globalPos());
-    }
-    else if (clicked_item->kind() == RootItem::Kind::Label) {
-      initializeContextMenuLabel(clicked_item)->exec(event->globalPos());
-    }
-    else if (clicked_item->kind() == RootItem::Kind::Probe) {
-      initializeContextMenuProbe(clicked_item)->exec(event->globalPos());
-    }
-    else {
-      initializeContextMenuOtherItem(clicked_item)->exec(event->globalPos());
-    }
+
+    base_menu->exec(event->globalPos());
   }
   else {
     TreeViewColumnsMenu menu(header());
     menu.exec(event->globalPos());
   }
+}
+
+QMenu* FeedsView::baseContextMenu(const QList<RootItem*>& selected_items) {
+  QMenu* menu = new QMenu(tr("Menu for feed list"), this);
+  auto items_linq = boolinq::from(selected_items);
+  ServiceRoot* account = selected_items.first()->account();
+  auto kinds = items_linq
+                 .select([](RootItem* it) {
+                   return it->kind();
+                 })
+                 .distinct();
+  auto cat_add = account->supportsCategoryAdding();
+  auto feed_add = account->supportsFeedAdding();
+  bool alphabetic_sort = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool();
+
+  QMap<QString, QList<QAction*>> action_sections;
+
+  if (kinds.all([](RootItem::Kind knd) {
+        return knd == RootItem::Kind::ServiceRoot || knd == RootItem::Kind::Feed || knd == RootItem::Kind::Category;
+      })) {
+    // Accounts, categories, feeds can be fetched.
+    action_sections[QSL("1")].append({qApp->mainForm()->m_ui->m_actionUpdateSelectedItems});
+  }
+
+  if (items_linq.all([](RootItem* item) {
+        return item->canBeEdited();
+      })) {
+    action_sections[QSL("2")].append({qApp->mainForm()->m_ui->m_actionEditSelectedItem});
+  }
+
+  if (items_linq.all([](RootItem* item) {
+        return item->canBeDeleted();
+      })) {
+    action_sections[QSL("2")].append({qApp->mainForm()->m_ui->m_actionDeleteSelectedItem});
+  }
+
+  if (kinds.all([](RootItem::Kind knd) {
+        return knd == RootItem::Kind::ServiceRoot || knd == RootItem::Kind::Category;
+      })) {
+    if (cat_add) {
+      action_sections[QSL("3")].append({qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem});
+    }
+
+    if (feed_add) {
+      action_sections[QSL("3")].append({qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem});
+    }
+
+    action_sections[QSL("4")].append({qApp->mainForm()->m_ui->m_actionEditChildFeeds,
+                                      qApp->mainForm()->m_ui->m_actionEditChildFeedsRecursive,
+                                      qApp->mainForm()->m_ui->m_actionRearrangeCategories,
+                                      qApp->mainForm()->m_ui->m_actionRearrangeFeeds});
+  }
+
+  if (kinds.all([](RootItem::Kind knd) {
+        return knd == RootItem::Kind::ServiceRoot || knd == RootItem::Kind::Feed || knd == RootItem::Kind::Category;
+      })) {
+    action_sections[QSL("2")].append(QList<QAction*>{qApp->mainForm()->m_ui->m_actionPurgeSelectedItems,
+                                                     qApp->mainForm()->m_ui->m_actionCopyUrlSelectedFeed});
+  }
+
+  if (items_linq.all([](RootItem* item) {
+        return item->childCount() > 0;
+      })) {
+    action_sections[QSL("5")].append(QList<QAction*>{
+      qApp->mainForm()->m_ui->m_actionExpandCollapseItem,
+      qApp->mainForm()->m_ui->m_actionExpandCollapseItemRecursively,
+    });
+  }
+
+  if (!alphabetic_sort && kinds.all([](RootItem::Kind knd) {
+        return knd == RootItem::Kind::ServiceRoot || knd == RootItem::Kind::Feed || knd == RootItem::Kind::Category;
+      })) {
+    action_sections[QSL("6")].append({qApp->mainForm()->m_ui->m_actionFeedMoveUp,
+                                      qApp->mainForm()->m_ui->m_actionFeedMoveDown,
+                                      qApp->mainForm()->m_ui->m_actionFeedMoveTop,
+                                      qApp->mainForm()->m_ui->m_actionFeedMoveBottom});
+  }
+
+  action_sections[QSL("7")].append(QList<QAction*>{qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsRead,
+                                                   qApp->mainForm()->m_ui->m_actionMarkSelectedItemsAsUnread});
+
+  for (auto it = action_sections.cbegin(); it != action_sections.cend(); ++it) {
+    menu->addActions(it.value());
+
+    if (it + 1 != action_sections.cend()) {
+      menu->addSeparator();
+    }
+  }
+
+  return menu;
 }
 
 void FeedsView::mouseDoubleClickEvent(QMouseEvent* event) {

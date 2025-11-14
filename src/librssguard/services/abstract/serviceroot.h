@@ -24,6 +24,7 @@ class MessagesModel;
 class CustomMessagePreviewer;
 class CacheForServiceRoot;
 class FormAccountDetails;
+class QMenu;
 
 // THIS IS the root node of the service.
 // NOTE: The root usually contains some core functionality of the
@@ -90,7 +91,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     virtual QList<QAction*> addItemMenu();
 
     // NOTE: Caller does NOT take ownership of created menu/actions!
-    virtual QList<QAction*> contextMenuFeedsList();
+    virtual QList<QAction*> contextMenuFeedsList(const QList<RootItem*>& selected_items);
 
     // NOTE: Caller does NOT take ownership of created menu/actions!
     virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);

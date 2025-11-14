@@ -43,7 +43,8 @@ QList<Search*> SearchsNode::probes() const {
   return FROM_STD_LIST(QList<Search*>, list);
 }
 
-QList<QAction*> SearchsNode::contextMenuFeedsList() {
+/*
+QList<QAction*> SearchsNode::,contextMenuFeedsList() {
   if (m_actProbeNew == nullptr) {
     m_actProbeNew = new QAction(qApp->icons()->fromTheme(QSL("system-search")), tr("New query"), this);
 
@@ -52,6 +53,7 @@ QList<QAction*> SearchsNode::contextMenuFeedsList() {
 
   return QList<QAction*>{m_actProbeNew};
 }
+*/
 
 int SearchsNode::countOfUnreadMessages() const {
   return -1;

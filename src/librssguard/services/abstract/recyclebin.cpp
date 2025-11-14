@@ -36,6 +36,7 @@ void RecycleBin::updateCounts() {
   m_totalCount = ac.m_total;
 }
 
+/*
 QList<QAction*> RecycleBin::contextMenuFeedsList() {
   if (m_contextMenu.isEmpty()) {
     QAction* restore_action =
@@ -51,6 +52,7 @@ QList<QAction*> RecycleBin::contextMenuFeedsList() {
 
   return m_contextMenu;
 }
+*/
 
 void RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
