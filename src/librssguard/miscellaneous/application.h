@@ -125,7 +125,11 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     QWidget* mainFormWidget();
     SystemTrayIcon* trayIcon();
     NotificationFactory* notifications() const;
+
+#if QT_VERSION_MAJOR > 5
     QThreadPool* workHorsePool() const;
+#endif
+
     ToastNotificationsManager* toastNotifications() const;
 
     QIcon desktopAwareIcon() const;
@@ -255,7 +259,11 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     DatabaseFactory* m_database;
     NotificationFactory* m_notifications;
     ToastNotificationsManager* m_toastNotifications;
+
+#if QT_VERSION_MAJOR > 5
     QThreadPool* m_workHorsePool;
+#endif
+
     bool m_firstRunEver;
     bool m_firstRunCurrentVersion;
     QString m_customDataFolder;

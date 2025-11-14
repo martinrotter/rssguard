@@ -94,7 +94,10 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   m_localization->loadActiveLanguage();
 
+#if QT_VERSION_MAJOR > 5
   m_workHorsePool = new QThreadPool(this);
+#endif
+
   m_webFactory = new WebFactory(this);
   m_system = new SystemFactory(this);
   m_skins = new SkinFactory(this);
@@ -388,9 +391,11 @@ ToastNotificationsManager* Application::toastNotifications() const {
   return m_toastNotifications;
 }
 
+#if QT_VERSION_MAJOR > 5
 QThreadPool* Application::workHorsePool() const {
   return m_workHorsePool;
 }
+#endif
 
 QStringList Application::rawCliArgs() const {
   return m_rawCliArgs;
@@ -993,30 +998,38 @@ void Application::setupCustomDataFolder(const QString& data_folder) {
 void Application::setupWorkHorsePool() {
   auto ideal_th_count = QThread::idealThreadCount();
   int custom_threads = m_cmdParser.value(QSL(CLI_THREADS)).toInt();
+  int max_th_count = 0;
 
   if (custom_threads > 0) {
-    m_workHorsePool->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, custom_threads));
+    max_th_count = std::min(MAX_THREADPOOL_THREADS, custom_threads);
   }
   else if (ideal_th_count > 1) {
-    m_workHorsePool->setMaxThreadCount((std::min)(MAX_THREADPOOL_THREADS, 2 * ideal_th_count));
+    max_th_count = std::min(MAX_THREADPOOL_THREADS, 2 * ideal_th_count);
   }
+
+  QThreadPool* pool;
+
+#if QT_VERSION_MAJOR == 5
+  pool = QThreadPool::globalInstance();
+#else
+  pool = m_workHorsePool;
+#endif
+
+  // NOTE: Qt 5 sadly does not allow to specify custom thread pool for
+  // QtConcurrent::mapped() method, so we have to use global thread pool
+  // there.
+  if (max_th_count > 0) {
+    pool->setMaxThreadCount(max_th_count);
+  }
+
+  // NOTE: Do not expire threads so that their IDs are not reused.
+  // This fixes cross-thread QSqlDatabase access.
+  pool->setExpiryTimeout(-1);
 
 #if QT_VERSION >= 0x060200 // Qt >= 6.2.0
   // Avoid competing with interactive processes/threads by running the
   // worker pool at a very low priority
-  m_workHorsePool->setThreadPriority(QThread::Priority::LowestPriority);
-#endif
-
-  // NOTE: Do not expire threads so that their IDs are not reused.
-  // This fixes cross-thread QSqlDatabase access.
-  m_workHorsePool->setExpiryTimeout(-1);
-
-#if QT_VERSION_MAJOR == 5
-  // NOTE: Qt 5 sadly does not allow to specify custom thread pool for
-  // QtConcurrent::mapped() method, so we have to use global thread pool
-  // there.
-  QThreadPool::globalInstance()->setMaxThreadCount(m_workHorsePool->maxThreadCount());
-  QThreadPool::globalInstance()->setExpiryTimeout(m_workHorsePool->expiryTimeout());
+  pool->setThreadPriority(QThread::Priority::LowestPriority);
 #endif
 }
 

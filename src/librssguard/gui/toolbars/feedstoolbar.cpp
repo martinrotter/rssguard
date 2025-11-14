@@ -236,7 +236,7 @@ void FeedsToolBar::initializeFilter() {
                   QSL("feedlist_switched_off"));
   addActionToMenu(m_menuMessageFilter,
                   qApp->icons()->fromTheme(QSL("mail-mark-read")),
-                  tr("Show feeds with ignore notifications"),
+                  tr("Show feeds with ignored notifications"),
                   fl,
                   QVariant::fromValue(FeedsProxyModel::FeedListFilter::ShowQuiet),
                   QSL("feedlist_quiet"));
