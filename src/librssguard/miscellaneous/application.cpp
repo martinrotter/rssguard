@@ -1000,11 +1000,12 @@ void Application::setupWorkHorsePool() {
   int custom_threads = m_cmdParser.value(QSL(CLI_THREADS)).toInt();
   int max_th_count = 0;
 
+  // NOTE: Parenthesises are there to fix std::min build.
   if (custom_threads > 0) {
-    max_th_count = std::min(MAX_THREADPOOL_THREADS, custom_threads);
+    max_th_count = (std::min)(MAX_THREADPOOL_THREADS, custom_threads);
   }
   else if (ideal_th_count > 1) {
-    max_th_count = std::min(MAX_THREADPOOL_THREADS, 2 * ideal_th_count);
+    max_th_count = (std::min)(MAX_THREADPOOL_THREADS, 2 * ideal_th_count);
   }
 
   QThreadPool* pool;

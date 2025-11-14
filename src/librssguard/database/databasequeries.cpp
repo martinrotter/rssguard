@@ -831,7 +831,6 @@ QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::
 QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& db, const QList<Label*>& labels) {
   QHash<QString, QStringList> ids;
 
-  // TODO: TEST
   for (Label* lbl : labels) {
     QStringList ids_one_label = customIdsOfMessagesFromLabel(db, lbl, RootItem::ReadStatus::Unknown);
 
