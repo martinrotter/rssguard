@@ -43,7 +43,9 @@ class StandardServiceRoot : public ServiceRoot {
                                              const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages);
 
-    QList<QAction*> serviceMenu();
+    virtual QList<QAction*> serviceMenu();
+    virtual QList<QAction*> contextMenuFeedsList(const QList<RootItem*>& selected_items);
+
     QList<QAction*> getContextMenuForFeed(StandardFeed* feed);
 
     void spaceHost(const QString& host, const QString& url);
@@ -69,6 +71,8 @@ class StandardServiceRoot : public ServiceRoot {
     void exportFeeds();
 
   private:
+    void fetchMetadataForAllFeeds(const QList<Feed*>& feeds);
+
     // Takes structure residing under given root item and adds feeds/categories from
     // it to active structure.
     // NOTE: This is used for import/export of the model.

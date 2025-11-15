@@ -485,6 +485,41 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   return messages;
 }
 
+QList<QAction *> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem *> &selected_items){
+  auto base_menu = ServiceRoot::contextMenuFeedsList(selected_items);
+  auto items_linq = boolinq::from(selected_items);
+  QList<QAction*> my_menu;
+
+  if (items_linq.all([](RootItem* it) {
+        return it->kind() == RootItem::Kind::Feed || it->kind() == RootItem::Kind::Category;
+      })) {
+    // All selected items are feeds
+    auto all_feeds_std = items_linq.selectMany([](RootItem* it) {
+                                     auto subtree = it->getSubTreeFeeds(true);
+                                     return boolinq::from(subtree);
+                               }).distinct().toStdList();
+    auto all_feeds = FROM_STD_LIST(QList<Feed*>, all_feeds_std);
+    auto* action_metadata =
+      new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("emblem-downloads")), tr("Fetch metadata"), this);
+
+    my_menu.append(action_metadata);
+
+    connect(action_metadata, &QAction::triggered, this, [this, all_feeds]() {
+      fetchMetadataForAllFeeds(all_feeds);
+    });
+  }
+
+  if (!my_menu.isEmpty()) {
+    auto* sep = new QAction(this);
+    sep->setSeparator(true);
+
+    base_menu.append(sep);
+    base_menu.append(my_menu);
+  }
+
+  return base_menu;
+}
+
 QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed* feed) {
   if (m_feedContextMenu.isEmpty()) {
     // Initialize.
@@ -688,6 +723,12 @@ void StandardServiceRoot::exportFeeds() {
 
   form.data()->setMode(FeedsImportExportModel::Mode::Export);
   form.data()->exec();
+}
+
+void StandardServiceRoot::fetchMetadataForAllFeeds(const QList<Feed *> &feeds) {
+  for (Feed* feed : feeds) {
+    qobject_cast<StandardFeed*>(feed)->fetchMetadataForItself();
+  }
 }
 
 QList<QAction*> StandardServiceRoot::serviceMenu() {

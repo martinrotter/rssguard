@@ -187,8 +187,15 @@ QString JsonParser::jsonMessageUrl(const QJsonObject& msg_element) const {
 }
 
 QString JsonParser::jsonMessageDescription(const QJsonObject& msg_element) const {
-  return msg_element.contains(QSL("content_html")) ? msg_element[QSL("content_html")].toString()
-                                                   : msg_element[QSL("content_text")].toString();
+  QString content = msg_element.contains(QSL("content_html")) ? msg_element[QSL("content_html")].toString()
+                                                              : msg_element[QSL("content_text")].toString();
+
+  if (content.simplified().isEmpty()) {
+    return msg_element[QSL("summary")].toString();
+  }
+  else {
+    return content;
+  }
 }
 
 QString JsonParser::jsonMessageAuthor(const QJsonObject& msg_element) const {
@@ -222,7 +229,7 @@ QList<QSharedPointer<MessageEnclosure>> JsonParser::jsonMessageEnclosures(const 
     QJsonObject att_obj = att.toObject();
 
     enc.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(att_obj[QSL("url")].toString(),
-                                                       att_obj[QSL("mime_type")].toString())));
+                                                                     att_obj[QSL("mime_type")].toString())));
   }
 
   return enc;
