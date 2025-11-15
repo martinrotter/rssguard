@@ -388,7 +388,7 @@ void FormMain::updateAccountsMenu() {
 
   auto srts = qApp->feedReader()->feedsModel()->serviceRoots();
 
-  for (ServiceRoot* activated_root : srts) {
+  for (ServiceRoot* activated_root : std::as_const(srts)) {
     QMenu* root_menu = new QMenu(activated_root->title(), m_ui->m_menuAccounts);
 
     root_menu->setIcon(activated_root->icon());

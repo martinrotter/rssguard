@@ -1086,7 +1086,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
     auto service_specific_items = account->contextMenuFeedsList(items);
 
     if (!service_specific_items.isEmpty()) {
-      base_menu->addSection(account->fullIcon(), account->title());
+      base_menu->addSeparator();
       base_menu->addActions(service_specific_items);
     }
 

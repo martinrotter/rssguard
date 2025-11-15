@@ -908,8 +908,6 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
       QString title_existing_message;
       QString author_existing_message;
 
-      QMutexLocker lck(db_mutex);
-
       if (message.m_id > 0) {
         // We recognize directly existing message.
         // NOTE: Particularly for manual message filter execution.
@@ -1134,9 +1132,9 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
   if (!msgs_to_insert.isEmpty()) {
     QMutexLocker lck(db_mutex);
 
-    if (!db.transaction()) {
+    /*if (!db.transaction()) {
       qFatal("transaction failed");
-    }
+    }*/
 
     QString bulk_insert = QSL("INSERT INTO Messages "
                               "(feed, title, is_read, is_important, is_deleted, url, author, score, date_created, "
@@ -1222,9 +1220,10 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
       }
     }
 
+    /*
     if (!db.commit()) {
       qFatal("transaction failed");
-    }
+    }*/
   }
 
   const bool uses_online_labels =

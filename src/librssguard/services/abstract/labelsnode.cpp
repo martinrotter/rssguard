@@ -12,7 +12,7 @@
 #include "services/abstract/gui/formaddeditlabel.h"
 #include "services/abstract/serviceroot.h"
 
-LabelsNode::LabelsNode(RootItem* parent_item) : RootItem(parent_item), m_actLabelNew(nullptr) {
+LabelsNode::LabelsNode(RootItem* parent_item) : RootItem(parent_item) {
   setKind(RootItem::Kind::Labels);
   setId(ID_LABELS);
   setIcon(qApp->icons()->fromTheme(QSL("tag-folder"), QSL("emblem-favorite")));
