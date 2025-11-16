@@ -267,13 +267,13 @@ void StandardFeed::fetchMetadataForItself() {
 
     metadata.first->deleteLater();
 
-    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+    QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
     DatabaseQueries::createOverwriteFeed(database, this, account()->accountId(), parent()->id());
-    serviceRoot()->itemChanged({this});
   }
   catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_DB << "Cannot overwrite feed:" << QUOTE_W_SPACE_DOT(ex.message());
+    setStatus(Feed::Status::OtherError, ex.message());
+    qCriticalNN << LOGSEC_DB << "Cannot save feed after metadata fetch:" << QUOTE_W_SPACE_DOT(ex.message());
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("Cannot save feed data"),
                           tr("Cannot save data for feed: %1").arg(ex.message()),

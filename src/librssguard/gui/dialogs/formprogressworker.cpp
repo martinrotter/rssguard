@@ -2,6 +2,9 @@
 
 #include "gui/dialogs/formprogressworker.h"
 
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
+
 #include "ui_formprogressworker.h"
 
 #include <QKeyEvent>
@@ -12,10 +15,10 @@ FormProgressWorker::FormProgressWorker(QWidget* parent) : QDialog(parent), m_ui(
 
   setWindowFlags(Qt::WindowType::Dialog | Qt::WindowType::WindowTitleHint | Qt::WindowType::CustomizeWindowHint);
 
-  connect(m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Cancel),
-          &QPushButton::clicked,
-          this,
-          &FormProgressWorker::requestCancellation);
+  m_btnCancel = m_ui->m_btnBox->addButton(tr("&Cancel"), QDialogButtonBox::ButtonRole::NoRole);
+  m_btnCancel->setIcon(qApp->icons()->fromTheme(QSL("dialog-cancel")));
+
+  connect(m_btnCancel, &QPushButton::clicked, this, &FormProgressWorker::requestCancellation);
 }
 
 FormProgressWorker::~FormProgressWorker() {
@@ -23,7 +26,8 @@ FormProgressWorker::~FormProgressWorker() {
 }
 
 void FormProgressWorker::requestCancellation() {
-  m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Cancel)->setEnabled(false), emit cancelRequested();
+  m_btnCancel->setEnabled(false);
+  emit cancelRequested();
 }
 
 void FormProgressWorker::changeProgressRange(int from, int to) {
@@ -52,8 +56,7 @@ void FormProgressWorker::onCanceled() {
 }
 
 void FormProgressWorker::setCancelEnabled(bool visible) {
-  m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Cancel)->blockSignals(!visible);
-  m_ui->m_btnBox->button(QDialogButtonBox::StandardButton::Cancel)->setEnabled(visible);
+  m_btnCancel->setEnabled(visible);
 }
 
 void FormProgressWorker::keyPressEvent(QKeyEvent* event) {
@@ -70,9 +73,9 @@ int FormProgressWorker::doSingleWork(const QString& title,
   setWindowTitle(title);
 
   QFutureWatcher<void> wat_fut;
-  QFuture<void> fut = QtConcurrent::run(work_functor, std::ref(wat_fut));
+  m_future = QtConcurrent::run(work_functor, std::ref(wat_fut));
 
-  setupFuture(fut, wat_fut, label_functor);
+  setupFuture(m_future, wat_fut, label_functor);
   return exec();
 }
 
@@ -86,6 +89,16 @@ void FormProgressWorker::setupFuture(QFuture<void>& future,
   });
   connect(&watcher, &QFutureWatcher<void>::finished, this, &FormProgressWorker::onFinished);
   connect(&watcher, &QFutureWatcher<void>::canceled, this, &FormProgressWorker::onCanceled);
+  connect(this, &FormProgressWorker::cancelRequested, &watcher, &QFutureWatcher<void>::cancel);
 
   watcher.setFuture(future);
+}
+
+void FormProgressWorker::closeEvent(QCloseEvent* event) {
+  if (m_future.isRunning()) {
+    event->ignore();
+  }
+  else {
+    event->accept();
+  }
 }

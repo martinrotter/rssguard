@@ -32,6 +32,7 @@ class RSSGUARD_DLLSPEC FormProgressWorker : public QDialog {
                std::function<QString(int)> label_functor);
 
   protected:
+    virtual void closeEvent(QCloseEvent* event) override;
     virtual void keyPressEvent(QKeyEvent* event) override;
 
   signals:
@@ -53,6 +54,8 @@ class RSSGUARD_DLLSPEC FormProgressWorker : public QDialog {
 
   private:
     Ui::FormProgressWorker* m_ui;
+    QPushButton* m_btnCancel;
+    QFuture<void> m_future;
 };
 
 template <class TInput>
@@ -64,10 +67,10 @@ inline int FormProgressWorker::doWork(const QString& title,
   setCancelEnabled(can_cancel);
   setWindowTitle(title);
 
-  QFuture<void> fut = QtConcurrent::map(input, work_functor);
+  m_future = QtConcurrent::map(input, work_functor);
   QFutureWatcher<void> wat_fut;
 
-  setupFuture(fut, wat_fut, label_functor);
+  setupFuture(m_future, wat_fut, label_functor);
   return exec();
 }
 

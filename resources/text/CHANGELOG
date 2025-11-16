@@ -22,6 +22,7 @@ Added:
 * AppImages are back and better than before. They are available both in Qt 5 and Qt 6 versions. (#1808)
 * Added main menu action to enable/disable feed. Can be also of course assigned to keyboard shortcut. (#755)
 * Application log dialog has "Clear" button. (#1902)
+* "Fetch metadata" is now threaded and works if multiple feeds are selected at once.
 * New main menu and article list context menu item "Reveal feed" which highlights the feed that the displayed article belongs to. (#1903)
 * Feed list has new column "Item ID" which is hidden by default. Allows filtering feeds by their ID. (#966)
 * External tools settings were redesigned and external tools can now be named. (#839)

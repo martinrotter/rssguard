@@ -46,8 +46,6 @@ class StandardServiceRoot : public ServiceRoot {
     virtual QList<QAction*> serviceMenu();
     virtual QList<QAction*> contextMenuFeedsList(const QList<RootItem*>& selected_items);
 
-    QList<QAction*> getContextMenuForFeed(StandardFeed* feed);
-
     void spaceHost(const QString& host, const QString& url);
     void resetHostSpacing(const QString& host, const QDateTime& next_dt);
 
@@ -77,9 +75,6 @@ class StandardServiceRoot : public ServiceRoot {
     // it to active structure.
     // NOTE: This is used for import/export of the model.
     bool mergeImportExportModel(FeedsImportExportModel* model, RootItem* target_root_node, QString& output_message);
-
-    QPointer<StandardFeed> m_feedForMetadata = {};
-    QList<QAction*> m_feedContextMenu = {};
 
     int m_spacingSameHostsRequests;
     QHash<QString, QDateTime> m_spacingHosts;

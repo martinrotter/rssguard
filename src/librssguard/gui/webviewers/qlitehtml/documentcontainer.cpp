@@ -315,9 +315,10 @@ static Qt::PenStyle borderPenStyle(litehtml::border_style style) {
 
     case litehtml::border_style::border_style_solid:
       return Qt::PenStyle::SolidLine;
-  }
 
-  return Qt::PenStyle::SolidLine;
+    default:
+      return Qt::PenStyle::SolidLine;
+  }
 }
 
 static QPen borderToQPen(litehtml::border border) {

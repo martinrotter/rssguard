@@ -1053,7 +1053,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
   const QModelIndex clicked_index = indexAt(event->pos());
 
   if (clicked_index.isValid()) {
-    auto items = selectedItems();
+    const auto items = selectedItems();
 
     if (items.isEmpty()) {
       return;

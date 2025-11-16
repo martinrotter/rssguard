@@ -24,6 +24,7 @@
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/exceptions/scriptexception.h>
+#include <librssguard/gui/dialogs/formprogressworker.h>
 #include <librssguard/gui/messagebox.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
@@ -48,9 +49,7 @@ StandardServiceRoot::StandardServiceRoot(RootItem* parent) : ServiceRoot(parent)
   setDescription(tr("This is the obligatory service account for standard RSS/RDF/ATOM feeds."));
 }
 
-StandardServiceRoot::~StandardServiceRoot() {
-  qDeleteAll(m_feedContextMenu);
-}
+StandardServiceRoot::~StandardServiceRoot() {}
 
 QNetworkProxy StandardServiceRoot::networkProxyForItem(RootItem* item) const {
   if (item != nullptr && item->kind() == RootItem::Kind::Feed) {
@@ -485,27 +484,35 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   return messages;
 }
 
-QList<QAction *> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem *> &selected_items){
+QList<QAction*> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items) {
   auto base_menu = ServiceRoot::contextMenuFeedsList(selected_items);
   auto items_linq = boolinq::from(selected_items);
   QList<QAction*> my_menu;
 
   if (items_linq.all([](RootItem* it) {
-        return it->kind() == RootItem::Kind::Feed || it->kind() == RootItem::Kind::Category;
+        return it->kind() == RootItem::Kind::ServiceRoot || it->kind() == RootItem::Kind::Feed ||
+               it->kind() == RootItem::Kind::Category;
       })) {
-    // All selected items are feeds
-    auto all_feeds_std = items_linq.selectMany([](RootItem* it) {
-                                     auto subtree = it->getSubTreeFeeds(true);
-                                     return boolinq::from(subtree);
-                               }).distinct().toStdList();
+    // All selected items are feeds-containing.
+    auto all_feeds_std = items_linq
+                           .selectMany([](RootItem* it) {
+                             auto stree = it->getSubTreeFeeds(true);
+                             return boolinq::from(stree);
+                           })
+                           .where([](RootItem* it) {
+                             return it != nullptr;
+                           })
+                           .distinct()
+                           .toStdList();
     auto all_feeds = FROM_STD_LIST(QList<Feed*>, all_feeds_std);
     auto* action_metadata =
       new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("emblem-downloads")), tr("Fetch metadata"), this);
 
     my_menu.append(action_metadata);
 
-    connect(action_metadata, &QAction::triggered, this, [this, all_feeds]() {
+    connect(action_metadata, &QAction::triggered, this, [this, all_feeds, selected_items]() {
       fetchMetadataForAllFeeds(all_feeds);
+      itemChanged(selected_items);
     });
   }
 
@@ -518,24 +525,6 @@ QList<QAction *> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem 
   }
 
   return base_menu;
-}
-
-QList<QAction*> StandardServiceRoot::getContextMenuForFeed(StandardFeed* feed) {
-  if (m_feedContextMenu.isEmpty()) {
-    // Initialize.
-    auto* action_metadata =
-      new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("emblem-downloads")), tr("Fetch metadata"), this);
-
-    m_feedContextMenu.append(action_metadata);
-
-    connect(action_metadata, &QAction::triggered, this, [this]() {
-      m_feedForMetadata->fetchMetadataForItself();
-    });
-  }
-
-  m_feedForMetadata = feed;
-
-  return m_feedContextMenu;
 }
 
 QVariantHash StandardServiceRoot::customDatabaseData() const {
@@ -725,10 +714,21 @@ void StandardServiceRoot::exportFeeds() {
   form.data()->exec();
 }
 
-void StandardServiceRoot::fetchMetadataForAllFeeds(const QList<Feed *> &feeds) {
-  for (Feed* feed : feeds) {
-    qobject_cast<StandardFeed*>(feed)->fetchMetadataForItself();
-  }
+void StandardServiceRoot::fetchMetadataForAllFeeds(const QList<Feed*>& feeds) {
+  FormProgressWorker worker(qApp->mainFormWidget());
+
+  worker.doWork<Feed*>(
+    tr("Fetching metadata for %n feeds", nullptr, feeds.size()),
+    true,
+    feeds,
+    [](Feed* fd) {
+      if (fd != nullptr) {
+        qobject_cast<StandardFeed*>(fd)->fetchMetadataForItself();
+      }
+    },
+    [](int progress) {
+      return tr("Fetched %n feeds...", nullptr, progress);
+    });
 }
 
 QList<QAction*> StandardServiceRoot::serviceMenu() {
