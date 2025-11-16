@@ -494,17 +494,17 @@ QList<QAction*> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem*>
                it->kind() == RootItem::Kind::Category;
       })) {
     // All selected items are feeds-containing.
-    auto all_feeds_std = items_linq
-                           .selectMany([](RootItem* it) {
-                             auto stree = it->getSubTreeFeeds(true);
-                             return boolinq::from(stree);
-                           })
-                           .where([](RootItem* it) {
-                             return it != nullptr;
-                           })
-                           .distinct()
-                           .toStdList();
-    auto all_feeds = FROM_STD_LIST(QList<Feed*>, all_feeds_std);
+    QSet<Feed*> all_feeds_set;
+
+    for (RootItem* it : selected_items) {
+      auto subtree = it->getSubTreeFeeds(true);
+
+      for (Feed* fd : subtree) {
+        all_feeds_set.insert(fd);
+      }
+    }
+
+    auto all_feeds = QList<Feed*>(all_feeds_set.begin(), all_feeds_set.end());
     auto* action_metadata =
       new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("emblem-downloads")), tr("Fetch metadata"), this);
 

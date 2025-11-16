@@ -227,6 +227,8 @@ set(SOURCES
   miscellaneous/notificationfactory.h
   miscellaneous/pluginfactory.cpp
   miscellaneous/pluginfactory.h
+  miscellaneous/qtlinq.cpp
+  miscellaneous/qtlinq.h
   miscellaneous/regexfactory.cpp
   miscellaneous/regexfactory.h
   miscellaneous/settings.cpp
