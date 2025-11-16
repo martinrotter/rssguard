@@ -29,6 +29,7 @@
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/miscellaneous/mutex.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/services/abstract/gui/formcategorydetails.h>
@@ -486,7 +487,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
 QList<QAction*> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items) {
   auto base_menu = ServiceRoot::contextMenuFeedsList(selected_items);
-  auto items_linq = boolinq::from(selected_items);
+  auto items_linq = qlinq::from(selected_items);
   QList<QAction*> my_menu;
 
   if (items_linq.all([](RootItem* it) {
@@ -494,17 +495,12 @@ QList<QAction*> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem*>
                it->kind() == RootItem::Kind::Category;
       })) {
     // All selected items are feeds-containing.
-    QSet<Feed*> all_feeds_set;
+    auto all_feeds = items_linq
+                       .selectMany([](RootItem* it) {
+                         return it->getSubTreeFeeds(true);
+                       })
+                       .toList();
 
-    for (RootItem* it : selected_items) {
-      auto subtree = it->getSubTreeFeeds(true);
-
-      for (Feed* fd : subtree) {
-        all_feeds_set.insert(fd);
-      }
-    }
-
-    auto all_feeds = QList<Feed*>(all_feeds_set.begin(), all_feeds_set.end());
     auto* action_metadata =
       new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("emblem-downloads")), tr("Fetch metadata"), this);
 
