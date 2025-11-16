@@ -2,7 +2,7 @@
 
 #include "core/feedsmodel.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
@@ -307,7 +307,7 @@ QModelIndex FeedsModel::indexForItem(const RootItem* item) const {
 }
 
 bool FeedsModel::hasAnyFeedNewMessages() const {
-  return boolinq::from(m_rootItem->getSubTreeFeeds()).any([](const Feed* feed) {
+  return qlinq::from(m_rootItem->getSubTreeFeeds()).any([](const Feed* feed) {
     return feed->status() == Feed::Status::NewMessages;
   });
 }

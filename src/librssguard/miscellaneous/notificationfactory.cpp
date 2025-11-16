@@ -2,7 +2,7 @@
 
 #include "miscellaneous/notificationfactory.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
@@ -28,7 +28,7 @@ Notification NotificationFactory::notificationForEvent(Notification::Event event
     return Notification();
   }
 
-  auto good_n = boolinq::from(m_notifications).where([event](const Notification& n) {
+  auto good_n = qlinq::from(m_notifications).where([event](const Notification& n) {
     return n.event() == event;
   });
 

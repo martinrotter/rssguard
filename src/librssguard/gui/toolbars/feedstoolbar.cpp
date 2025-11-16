@@ -2,11 +2,11 @@
 
 #include "gui/toolbars/feedstoolbar.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "core/feedsproxymodel.h"
 #include "gui/reusable/nonclosablemenu.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 
 #include <QWidgetAction>
@@ -112,16 +112,16 @@ inline FeedsProxyModel::FeedListFilter operator|(FeedsProxyModel::FeedListFilter
 void FeedsToolBar::handleMessageFilterChange(QAction* action) {
   FeedsProxyModel::FeedListFilter task =
     action == nullptr ? FeedsProxyModel::FeedListFilter(0) : action->data().value<FeedsProxyModel::FeedListFilter>();
-  std::list<QAction*> checked_tasks_std = boolinq::from(m_menuMessageFilter->actions())
-                                            .where([](QAction* act) {
-                                              return act->isChecked();
-                                            })
-                                            .toStdList();
+  auto checked_tasks = qlinq::from(m_menuMessageFilter->actions())
+                         .where([](QAction* act) {
+                           return act->isChecked();
+                         })
+                         .toList();
 
-  if (task == FeedsProxyModel::FeedListFilter::NoFiltering || checked_tasks_std.empty()) {
+  if (task == FeedsProxyModel::FeedListFilter::NoFiltering || checked_tasks.isEmpty()) {
     task = FeedsProxyModel::FeedListFilter::NoFiltering;
 
-    checked_tasks_std.clear();
+    checked_tasks.clear();
 
     // Uncheck everything.
     m_menuMessageFilter->blockSignals(true);
@@ -135,21 +135,19 @@ void FeedsToolBar::handleMessageFilterChange(QAction* action) {
   else {
     task = FeedsProxyModel::FeedListFilter(0);
 
-    for (QAction* tsk : checked_tasks_std) {
+    for (QAction* tsk : checked_tasks) {
       task = task | tsk->data().value<FeedsProxyModel::FeedListFilter>();
     }
   }
 
-  m_btnMessageFilter->setDefaultAction(checked_tasks_std.empty() ? m_menuMessageFilter->actions().constFirst()
-                                                                 : checked_tasks_std.front());
+  m_btnMessageFilter->setDefaultAction(checked_tasks.isEmpty() ? m_menuMessageFilter->actions().constFirst()
+                                                               : checked_tasks.first());
 
-  if (checked_tasks_std.size() > 1) {
-    drawNumberOfCriterias(m_btnMessageFilter, int(checked_tasks_std.size()));
+  if (checked_tasks.size() > 1) {
+    drawNumberOfCriterias(m_btnMessageFilter, int(checked_tasks.size()));
   }
 
-  saveToolButtonSelection(QSL(FILTER_ACTION_NAME),
-                          GUI::FeedsToolbarActions,
-                          FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
+  saveToolButtonSelection(QSL(FILTER_ACTION_NAME), GUI::FeedsToolbarActions, checked_tasks);
   emit feedFilterChanged(task);
 }
 

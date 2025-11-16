@@ -2,7 +2,7 @@
 
 #include "gui/reusable/searchlineedit.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -90,14 +90,14 @@ SearchLineEdit::SearchLineEdit(const QString& save_identification,
 }
 
 void SearchLineEdit::startSearch() {
-  SearchMode mode = SearchMode(boolinq::from(m_actionGroupModes->actions())
+  SearchMode mode = SearchMode(qlinq::from(m_actionGroupModes->actions())
                                  .first([](const QAction* act) {
                                    return act->isChecked();
                                  })
                                  ->data()
                                  .toInt());
 
-  int custom_criteria = boolinq::from(m_actionGroupChoices->actions())
+  int custom_criteria = qlinq::from(m_actionGroupChoices->actions())
                           .first([](const QAction* act) {
                             return act->isChecked();
                           })

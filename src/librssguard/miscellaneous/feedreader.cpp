@@ -2,7 +2,7 @@
 
 #include "miscellaneous/feedreader.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "core/feeddownloader.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
@@ -320,7 +320,7 @@ void FeedReader::executeNextAutoUpdate() {
     (qApp->mainFormWidget()->isActiveWindow() || QApplication::activeModalWidget() != nullptr) &&
     m_globalAutoUpdateOnlyUnfocused;
   auto roots = qApp->feedReader()->feedsModel()->serviceRoots();
-  std::list<CacheForServiceRoot*> full_caches = boolinq::from(roots)
+  std::list<CacheForServiceRoot*> full_caches = qlinq::from(roots)
                                                   .select([](ServiceRoot* root) -> CacheForServiceRoot* {
                                                     auto* cache = root->toCache();
 
@@ -389,7 +389,7 @@ void FeedReader::executeNextAutoUpdate() {
     // Request update for given feeds.
     updateFeeds(feeds_for_update);
 
-    if (boolinq::from(feeds_for_update).any([](const Feed* fd) {
+    if (qlinq::from(feeds_for_update).any([](const Feed* fd) {
           return !fd->isQuiet();
         })) {
       // NOTE: OSD/bubble informing about performing of scheduled update can be shown now.

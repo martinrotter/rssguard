@@ -2,7 +2,6 @@
 
 #include "gui/dialogs/formmessagefiltersmanager.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "exceptions/filteringexception.h"
 #include "filtering/filteringsystem.h"
@@ -15,6 +14,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/accountcheckmodel.h"
 #include "services/abstract/feed.h"
@@ -295,11 +295,9 @@ void FormMessageFiltersManager::removeSelectedFilter() {
 void FormMessageFiltersManager::loadFilters() {
   auto flt = m_reader->messageFilters();
 
-  auto flt_ordered = boolinq::from(flt)
-                       .orderBy([](MessageFilter* f) {
-                         return f->sortOrder();
-                       })
-                       .toStdList();
+  auto flt_ordered = qlinq::from(flt).orderBy([](MessageFilter* f) {
+    return f->sortOrder();
+  });
 
   for (auto* fltr : std::as_const(flt_ordered)) {
     auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);

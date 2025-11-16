@@ -2,7 +2,7 @@
 
 #include "gui/feedsview.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
 #include "definitions/definitions.h"
@@ -90,7 +90,7 @@ QList<Feed*> FeedsView::selectedFeeds(bool recursive) const {
     feeds.append(it->getSubTreeFeeds(recursive));
   }
 
-  auto std_feeds = boolinq::from(feeds).distinct().toStdList();
+  auto std_feeds = qlinq::from(feeds).distinct().toStdList();
 
   return FROM_STD_LIST(QList<Feed*>, std_feeds);
 }
@@ -109,7 +109,7 @@ RootItem* FeedsView::selectedItem() const {
       return selected_item;
     }
 
-    auto selected_items = boolinq::from(selected_rows)
+    auto selected_items = qlinq::from(selected_rows)
                             .select([this](const QModelIndex& idx) {
                               return m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
                             })
@@ -129,7 +129,7 @@ RootItem* FeedsView::selectedItem() const {
 QList<RootItem*> FeedsView::selectedItems() const {
   const QModelIndexList selected_rows = selectionModel()->selectedRows();
 
-  auto selected_items = boolinq::from(selected_rows)
+  auto selected_items = qlinq::from(selected_rows)
                           .select([this](const QModelIndex& idx) {
                             return m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
                           })
@@ -362,7 +362,7 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
     return;
   }
 
-  auto std_editable_items = boolinq::from(items)
+  auto std_editable_items = qlinq::from(items)
                               .where([](RootItem* it) {
                                 return it->canBeEdited();
                               })
@@ -390,7 +390,7 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
   }
 
   // We also check if items are from single account, if not we end.
-  std::list<ServiceRoot*> distinct_accounts = boolinq::from(std_editable_items)
+  std::list<ServiceRoot*> distinct_accounts = qlinq::from(std_editable_items)
                                                 .select([](RootItem* it) {
                                                   return it->account();
                                                 })
@@ -407,7 +407,7 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
     return;
   }
 
-  std::list<RootItem::Kind> distinct_types = boolinq::from(std_editable_items)
+  std::list<RootItem::Kind> distinct_types = qlinq::from(std_editable_items)
                                                .select([](RootItem* it) {
                                                  return it->kind();
                                                })
@@ -442,7 +442,7 @@ void FeedsView::editChildFeeds() {
   auto items = selectedFeeds(false);
 
   if (!items.isEmpty()) {
-    auto root_items = boolinq::from(items)
+    auto root_items = qlinq::from(items)
                         .select([](Feed* fd) {
                           return fd;
                         })
@@ -456,7 +456,7 @@ void FeedsView::editRecursiveFeeds() {
   auto items = selectedFeeds(true);
 
   if (!items.isEmpty()) {
-    auto root_items = boolinq::from(items)
+    auto root_items = qlinq::from(items)
                         .select([](Feed* fd) {
                           return fd;
                         })
@@ -496,7 +496,7 @@ void FeedsView::deleteSelectedItem() {
   */
 
   QList<RootItem*> selected_items = selectedItems();
-  auto std_deletable_items = boolinq::from(selected_items)
+  auto std_deletable_items = qlinq::from(selected_items)
                                .where([](RootItem* it) {
                                  return it->canBeDeleted();
                                })
@@ -528,7 +528,7 @@ void FeedsView::deleteSelectedItem() {
     return;
   }
 
-  auto std_pointed_items = boolinq::from(std_deletable_items)
+  auto std_pointed_items = qlinq::from(std_deletable_items)
                              .select([](RootItem* it) {
                                return QPointer<RootItem>(it);
                              })
@@ -560,7 +560,7 @@ void FeedsView::deleteSelectedItem() {
 
 void FeedsView::moveSelectedItemUp() {
   auto its = selectedItems();
-  auto std_its = boolinq::from(its)
+  auto std_its = qlinq::from(its)
                    .orderBy([](RootItem* it) {
                      return it->sortOrder();
                    })
@@ -575,7 +575,7 @@ void FeedsView::moveSelectedItemUp() {
 
 void FeedsView::moveSelectedItemDown() {
   auto its = selectedItems();
-  auto std_its = boolinq::from(its)
+  auto std_its = qlinq::from(its)
                    .orderBy([](RootItem* it) {
                      return it->sortOrder();
                    })
@@ -1059,7 +1059,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
       return;
     }
 
-    auto items_linq = boolinq::from(items);
+    auto items_linq = qlinq::from(items);
     auto accounts = items_linq
                       .select([](RootItem* it) {
                         return it->account();
@@ -1100,7 +1100,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
 
 QMenu* FeedsView::baseContextMenu(const QList<RootItem*>& selected_items) {
   QMenu* menu = new QMenu(tr("Menu for feed list"), this);
-  auto items_linq = boolinq::from(selected_items);
+  auto items_linq = qlinq::from(selected_items);
   ServiceRoot* account = selected_items.first()->account();
   auto kinds = items_linq
                  .select([](RootItem* it) {

@@ -2,7 +2,7 @@
 
 #include "miscellaneous/application.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "core/feedsmodel.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"
@@ -312,7 +312,7 @@ bool Application::isAlreadyRunning() {
 
 QStringList Application::builtinSounds() const {
   auto builtin_sounds = QDir(QSL(SOUNDS_BUILTIN_DIRECTORY)).entryInfoList(QDir::Filter::Files, QDir::SortFlag::Name);
-  auto iter = boolinq::from(builtin_sounds)
+  auto iter = qlinq::from(builtin_sounds)
                 .select([](const QFileInfo& i) {
                   return i.absoluteFilePath();
                 })
@@ -951,7 +951,7 @@ void Application::onFeedUpdatesProgress(const Feed* feed, int current, int total
 
 void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   auto fds = results.updatedFeeds().keys();
-  bool some_unquiet_feed = boolinq::from(fds).any([](Feed* fd) {
+  bool some_unquiet_feed = qlinq::from(fds).any([](Feed* fd) {
     return !fd->isQuiet();
   });
 
@@ -1084,7 +1084,7 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
 
   for (const QString& msg : std::as_const(messages)) {
     // Application was running, and someone wants to add new feed.
-    ServiceRoot* rt = boolinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
+    ServiceRoot* rt = qlinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
       return root->supportsFeedAdding();
     });
 

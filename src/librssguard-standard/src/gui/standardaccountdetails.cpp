@@ -5,7 +5,7 @@
 #include "src/definitions.h"
 #include "src/standardserviceentrypoint.h"
 
-#include <librssguard/3rd-party/boolinq/boolinq.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 
@@ -46,7 +46,7 @@ StandardAccountDetails::StandardAccountDetails(QWidget* parent) : QWidget(parent
 
 void StandardAccountDetails::onLoadIconFromFile() {
   auto supported_formats = QImageReader::supportedImageFormats();
-  auto prefixed_formats = boolinq::from(supported_formats)
+  auto prefixed_formats = qlinq::from(supported_formats)
                             .select([](const QByteArray& frmt) {
                               return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
                             })

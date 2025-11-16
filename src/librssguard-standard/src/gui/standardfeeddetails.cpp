@@ -5,7 +5,7 @@
 #include "src/definitions.h"
 #include "src/gui/standardfeednetworkdetails.h"
 
-#include <librssguard/3rd-party/boolinq/boolinq.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/exceptions/scriptexception.h>
@@ -375,7 +375,7 @@ void StandardFeedDetails::onPostProcessScriptChanged(const QString& new_pp) {
 
 void StandardFeedDetails::onLoadIconFromFile() {
   auto supported_formats = QImageReader::supportedImageFormats();
-  auto prefixed_formats = boolinq::from(supported_formats)
+  auto prefixed_formats = qlinq::from(supported_formats)
                             .select([](const QByteArray& frmt) {
                               return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
                             })
@@ -465,7 +465,7 @@ void StandardFeedDetails::loadCategories(const QList<Category*>& categories, Roo
   QList<Category*> cats;
 
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool()) {
-    auto sorted = boolinq::from(categories)
+    auto sorted = qlinq::from(categories)
                     .orderBy([](Category* cat) {
                       return cat->title().toLower();
                     })

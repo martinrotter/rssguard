@@ -2,7 +2,7 @@
 
 #include "services/abstract/serviceroot.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "core/messagesmodel.h"
 #include "database/databasequeries.h"
 #include "definitions/globals.h"
@@ -46,7 +46,7 @@ void ServiceRoot::deleteItem() {
 
 void ServiceRoot::editItems(const QList<RootItem*>& items) {
   // Feed editing.
-  auto std_feeds = boolinq::from(items)
+  auto std_feeds = qlinq::from(items)
                      .select([](RootItem* it) {
                        return qobject_cast<Feed*>(it);
                      })
@@ -63,7 +63,7 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
   }
 
   // Category editing.
-  auto std_categories = boolinq::from(items)
+  auto std_categories = qlinq::from(items)
                           .select([](RootItem* it) {
                             return qobject_cast<Category*>(it);
                           })
@@ -80,7 +80,7 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
   }
 
   // Label editing.
-  auto std_labels = boolinq::from(items)
+  auto std_labels = qlinq::from(items)
                       .select([](RootItem* it) {
                         return qobject_cast<Label*>(it);
                       })
@@ -115,7 +115,7 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
   }
 
   // Probe editing.
-  auto std_probes = boolinq::from(items)
+  auto std_probes = qlinq::from(items)
                       .select([](RootItem* it) {
                         return qobject_cast<Search*>(it);
                       })
@@ -181,7 +181,7 @@ RecycleBin* ServiceRoot::recycleBin() const {
 }
 
 QList<QAction*> ServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items) {
-  auto items_linq = boolinq::from(selected_items);
+  auto items_linq = qlinq::from(selected_items);
   auto kinds = items_linq
                  .select([](RootItem* it) {
                    return it->kind();
@@ -1050,7 +1050,7 @@ void ServiceRoot::onBeforeLabelMessageAssignmentChanged(const QList<Label*>& lab
   auto cache = dynamic_cast<CacheForServiceRoot*>(this);
 
   if (cache != nullptr) {
-    boolinq::from(labels).for_each([cache, messages, assign](Label* lbl) {
+    qlinq::from(labels).for_each([cache, messages, assign](Label* lbl) {
       cache->addLabelsAssignmentsToCache(messages, lbl, assign);
     });
   }
@@ -1066,7 +1066,7 @@ void ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*>& labe
     lbl->updateCounts();
   };
 
-  auto list = boolinq::from(labels)
+  auto list = qlinq::from(labels)
                 .select([](Label* lbl) {
                   return lbl;
                 })
@@ -1087,7 +1087,7 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages, boo
   }
   else {
     auto feeds_hashed = getPrimaryIdHashedSubTreeFeeds();
-    auto msgs_linq = boolinq::from(messages);
+    auto msgs_linq = qlinq::from(messages);
     auto feed_ids = msgs_linq
                       .select([](const Message& msg) {
                         return msg.m_feedId;
@@ -1124,7 +1124,7 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages, boo
       if (m_labelsNode != nullptr) {
         auto msg_lbls = msgs_linq
                           .selectMany([](const Message& msg) {
-                            return boolinq::from(msg.m_assignedLabels);
+                            return qlinq::from(msg.m_assignedLabels);
                           })
                           .distinct()
                           .toStdVector();

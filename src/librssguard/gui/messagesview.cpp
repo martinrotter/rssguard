@@ -2,7 +2,6 @@
 
 #include "gui/messagesview.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "core/feedsmodel.h"
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
@@ -15,6 +14,7 @@
 #include "gui/toolbars/messagestoolbar.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/feedreader.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "network-web/webfactory.h"
 #include "qnamespace.h"
@@ -404,13 +404,13 @@ void MessagesView::initializeContextMenu() {
   if (m_sourceModel->loadedItem() != nullptr) {
     QModelIndexList selected_indexes = selectionModel()->selectedRows();
     const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
-    auto rows = boolinq::from(mapped_indexes)
+    auto rows = qlinq::from(mapped_indexes)
                   .select([](const QModelIndex& idx) {
                     return idx.row();
                   })
-                  .toStdList();
+                  .toList();
 
-    selected_messages = m_sourceModel->messagesAt(FROM_STD_LIST(QList<int>, rows));
+    selected_messages = m_sourceModel->messagesAt(rows);
   }
 
   // External tools.

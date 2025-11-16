@@ -2,11 +2,11 @@
 
 #include "services/abstract/feed.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/gui/formfeeddetails.h"
@@ -369,12 +369,11 @@ QString Feed::additionalTooltip() const {
     stat += QSL(" (%1)").arg(m_statusString);
   }
 
-  auto std_fltrs = boolinq::from(m_messageFilters)
-                     .select([](const QPointer<MessageFilter>& pn) {
-                       return pn->name();
-                     })
-                     .toStdList();
-  QStringList fltrs = FROM_STD_LIST(QStringList, std_fltrs);
+  auto fltrs = qlinq::from(m_messageFilters)
+                 .select([](const QPointer<MessageFilter>& pn) {
+                   return pn->name();
+                 })
+                 .toList();
   QString source_str = QUrl(m_source).isValid() ? QSL("<a href=\"%1\">%1</a>").arg(m_source) : m_source;
 
   return tr("Auto-update status: %1\n"

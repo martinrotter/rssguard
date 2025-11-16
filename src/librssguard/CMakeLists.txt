@@ -495,11 +495,6 @@ if(MSVC)
   add_compile_options(/wd4244 /wd4267 /permissive- /utf-8)
 endif()
 
-# Add boolinq.
-list(APPEND SOURCES
-  3rd-party/boolinq/boolinq.h
-)
-
 # Add SimpleCrypt.
 list(APPEND SOURCES
   3rd-party/sc/simplecrypt.cpp

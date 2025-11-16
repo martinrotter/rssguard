@@ -10,7 +10,7 @@
 #include "src/ttrssnetworkfactory.h"
 #include "src/ttrssserviceentrypoint.h"
 
-#include <librssguard/3rd-party/boolinq/boolinq.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/exceptions/networkexception.h>
@@ -42,13 +42,13 @@ void TtRssServiceRoot::start(bool freshly_activated) {
 
     auto lbls = labelsNode()->labels();
 
-    boolinq::from(lbls).for_each([](Label* lbl) {
+    qlinq::from(lbls).for_each([](Label* lbl) {
       if (lbl->customNumericId() == TTRSS_PUBLISHED_LABEL_ID) {
         lbl->setKeepOnTop(true);
       }
     });
 
-    boolinq::from(childItems()).for_each([](RootItem* child) {
+    qlinq::from(childItems()).for_each([](RootItem* child) {
       if (child->kind() == RootItem::Kind::Feed && child->customNumericId() == TTRSS_PUBLISHED_FEED_ID) {
         child->setKeepOnTop(true);
       }

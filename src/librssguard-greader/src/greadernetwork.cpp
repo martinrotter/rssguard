@@ -5,7 +5,7 @@
 #include "src/definitions.h"
 #include "src/greaderfeed.h"
 
-#include <librssguard/3rd-party/boolinq/boolinq.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedfetchexception.h>
@@ -309,7 +309,7 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
   }
 
   // Add prefetched messages.
-  auto iter = boolinq::from(msgs);
+  auto iter = qlinq::from(msgs);
   QMutexLocker mtx(&m_mutexPrefetchedMessages);
 
   for (int i = 0; i < m_prefetchedMessages.size(); i++) {
@@ -542,7 +542,7 @@ QList<Message> GreaderNetwork::itemContents(ServiceRoot* root,
         full_url += QSL("&c=%1").arg(continuation);
       }
 
-      std::list inp = boolinq::from(batch_ids)
+      std::list inp = qlinq::from(batch_ids)
                         .select([this](const QString& id) {
                           return QSL("i=%1").arg(m_service == GreaderServiceRoot::Service::TheOldReader
                                                    ? id
@@ -1106,7 +1106,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
         message.m_isImportant = true;
       }
       else if (category.contains(QSL("label"))) {
-        Label* label = boolinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([category](Label* lbl) {
+        Label* label = qlinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([category](Label* lbl) {
           return lbl->customId() == category;
         });
 

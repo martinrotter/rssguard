@@ -2,7 +2,6 @@
 
 #include "core/feeddownloader.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/feedfetchexception.h"
@@ -11,6 +10,7 @@
 #include "filtering/filteringsystem.h"
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/thread.h"
 #include "services/abstract/cacheforserviceroot.h"
@@ -291,23 +291,21 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
     QMutexLocker lck(&m_mutexDb);
     QList<QPointer<MessageFilter>> feed_filters = feed->messageFilters();
-    auto feed_filters_enabled = boolinq::from(feed_filters)
+    auto feed_filters_enabled = qlinq::from(feed_filters)
                                   .where([](const QPointer<MessageFilter>& fltr) {
                                     return !fltr.isNull() && fltr->enabled();
                                   })
                                   .orderBy([](const QPointer<MessageFilter>& fltr) {
                                     return fltr->sortOrder();
                                   })
-                                  .toStdList();
-    QList<QPointer<MessageFilter>> feed_filters_enabled_list =
-      FROM_STD_LIST(QList<QPointer<MessageFilter>>, feed_filters_enabled);
+                                  .toList();
 
-    if (!feed_filters_enabled_list.isEmpty()) {
+    if (!feed_filters_enabled.isEmpty()) {
       tmr.restart();
 
       // Perform per-message filtering.
       FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles, database, feed, acc);
-      filtering.filterRun().setTotalCountOfFilters(feed_filters_enabled_list.size());
+      filtering.filterRun().setTotalCountOfFilters(feed_filters_enabled.size());
 
       qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000
                << " microseconds.";
@@ -324,13 +322,13 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
         bool remove_msg = false;
 
-        for (int j = 0; j < feed_filters_enabled_list.size(); j++) {
-          QPointer<MessageFilter> filter = feed_filters_enabled_list.at(j);
+        for (int j = 0; j < feed_filters_enabled.size(); j++) {
+          QPointer<MessageFilter> filter = feed_filters_enabled.at(j);
 
           if (filter.isNull()) {
             qCriticalNN << LOGSEC_FEEDDOWNLOADER
                         << "Article filter was probably deleted, removing its pointer from list of filters.";
-            feed_filters_enabled_list.removeAt(j--);
+            feed_filters_enabled.removeAt(j--);
             continue;
           }
 

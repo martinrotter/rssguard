@@ -2,7 +2,6 @@
 
 #include "services/abstract/gui/formcategorydetails.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
@@ -10,6 +9,7 @@
 #include "gui/guiutilities.h"
 #include "gui/reusable/baselineedit.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "services/abstract/category.h"
 #include "services/abstract/gui/multifeededitcheckbox.h"
 #include "services/abstract/rootitem.h"
@@ -187,13 +187,12 @@ void FormCategoryDetails::onDescriptionChanged(const QString& new_description) {
 
 void FormCategoryDetails::onLoadIconFromFile() {
   auto supported_formats = QImageReader::supportedImageFormats();
-  auto prefixed_formats = boolinq::from(supported_formats)
-                            .select([](const QByteArray& frmt) {
-                              return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
-                            })
-                            .toStdList();
+  auto list_formats = qlinq::from(supported_formats)
+                        .select([](const QByteArray& frmt) {
+                          return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
+                        })
+                        .toList();
 
-  QStringList list_formats = FROM_STD_LIST(QStringList, prefixed_formats);
   QString fil = FileDialog::openFileName(this,
                                          tr("Select icon file for the category"),
                                          qApp->homeFolder(),

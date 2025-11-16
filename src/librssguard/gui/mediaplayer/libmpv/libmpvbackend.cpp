@@ -2,7 +2,7 @@
 
 #include "gui/mediaplayer/libmpv/libmpvbackend.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "definitions/definitions.h"
 #include "gui/mediaplayer/libmpv/libmpvwidget.h"
 #include "gui/mediaplayer/libmpv/qthelper.h"
@@ -291,7 +291,7 @@ void LibMpvBackend::processEndFile(mpv_event_end_file* end_file) {
 
 void LibMpvBackend::processTracks(const QJsonDocument& json) {
   QVariantList vars = json.array().toVariantList();
-  auto linq = boolinq::from(vars);
+  auto linq = qlinq::from(vars);
 
   bool any_audio_track = linq.any([](const QVariant& var) {
     return var.toHash().value("type") == QSL("audio");

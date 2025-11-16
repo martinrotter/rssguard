@@ -2,7 +2,7 @@
 
 #include "services/abstract/labelsnode.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/globals.h"
@@ -67,7 +67,7 @@ void LabelsNode::updateCounts() {
 Label* LabelsNode::labelByCustomId(const QString& custom_id) {
   auto chi = childItems();
 
-  return qobject_cast<Label*>(boolinq::from(chi).firstOrDefault([custom_id](RootItem* it) {
+  return qobject_cast<Label*>(qlinq::from(chi).firstOrDefault([custom_id](RootItem* it) {
     return it->customId() == custom_id;
   }));
 }
@@ -83,7 +83,7 @@ QHash<QString, Label*> LabelsNode::getHashedLabels() const {
 }
 
 QList<Label*> LabelsNode::labels() const {
-  auto list = boolinq::from(childItems())
+  auto list = qlinq::from(childItems())
                 .select([](RootItem* it) {
                   return static_cast<Label*>(it);
                 })

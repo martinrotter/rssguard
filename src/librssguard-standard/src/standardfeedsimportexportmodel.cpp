@@ -7,7 +7,7 @@
 #include "src/standardfeed.h"
 #include "src/standardserviceroot.h"
 
-#include <librssguard/3rd-party/boolinq/boolinq.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/miscellaneous/application.h>
@@ -30,7 +30,7 @@ FeedsImportExportModel::FeedsImportExportModel(StandardServiceRoot* account, QOb
 
   connect(&m_watcherLookup, &QFutureWatcher<bool>::finished, this, [=]() {
     auto res = m_watcherLookup.future().results();
-    int number_error = boolinq::from(res).count(false);
+    int number_error = qlinq::from(res).count(false);
 
     emit layoutAboutToBeChanged();
     setRootItem(m_newRoot);

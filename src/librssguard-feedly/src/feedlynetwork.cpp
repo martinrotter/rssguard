@@ -5,7 +5,7 @@
 #include "src/definitions.h"
 #include "src/feedlyserviceroot.h"
 
-#include <librssguard/3rd-party/boolinq/boolinq.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/application.h>
@@ -128,7 +128,7 @@ void FeedlyNetwork::untagEntries(const QString& tag_id, const QStringList& msg_c
 
     i += FEEDLY_UNTAG_BATCH_SIZE;
 
-    auto ids = boolinq::from(msg_batch)
+    auto ids = qlinq::from(msg_batch)
                  .select([](const QString& msg_id) {
                    return QString(QUrl::toPercentEncoding(msg_id));
                  })
@@ -459,7 +459,7 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
       const QJsonObject& enc_obj = enc.toObject();
       const QString& enc_href = enc_obj[QSL("href")].toString();
 
-      if (!boolinq::from(message.m_enclosures)
+      if (!qlinq::from(message.m_enclosures)
              .any([enc_href](const QSharedPointer<MessageEnclosure>& existing_enclosure) {
                return existing_enclosure->url() == enc_href;
              })) {
@@ -481,7 +481,7 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
         // NOTE: We don't do anything with "global read" tag.
       }
       else {
-        Label* label = boolinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([tag_id](Label* lbl) {
+        Label* label = qlinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([tag_id](Label* lbl) {
           return lbl->customId() == tag_id;
         });
 

@@ -25,11 +25,6 @@
     "components": "MRichTextEditor"
   },
   {
-    "title": "MIT License",
-    "file": "COPYING_BOOLINQ",
-    "components": "boolinq"
-  },
-  {
     "title": "GNU GPL v3.0 + Qt Company GPL Exception 1.0",
     "file": "COPYING_QT",
     "components": "Qt"

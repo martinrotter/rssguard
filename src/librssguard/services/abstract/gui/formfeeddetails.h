@@ -3,7 +3,7 @@
 #ifndef FORMFEEDDETAILS_H
 #define FORMFEEDDETAILS_H
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "definitions/definitions.h"
 
 #include <QDialog>
@@ -105,7 +105,7 @@ inline T* FormFeedDetails::feed() const {
 
 template <class T>
 inline QList<T*> FormFeedDetails::feeds() const {
-  std::list<T*> std_fds = boolinq::from(m_feeds)
+  std::list<T*> std_fds = qlinq::from(m_feeds)
                             .select([](Feed* fd) {
                               return qobject_cast<T*>(fd);
                             })

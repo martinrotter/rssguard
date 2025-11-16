@@ -2,8 +2,8 @@
 
 #include "gui/reusable/jssyntaxhighlighter.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
+#include "miscellaneous/qtlinq.h"
 
 JsSyntaxHighlighter::JsSyntaxHighlighter(QTextDocument* parent) : QSyntaxHighlighter(parent) {
   HighlightingRule rule;
@@ -11,14 +11,9 @@ JsSyntaxHighlighter::JsSyntaxHighlighter(QTextDocument* parent) : QSyntaxHighlig
   m_keywordFormat.setForeground(Qt::GlobalColor::magenta);
   m_keywordFormat.setFontWeight(QFont::Weight::Bold);
 
-  QStringList keywords = jsKeywords();
-  auto std_keywords = boolinq::from(keywords.begin(), keywords.end())
-                        .select([](const QString& kw) {
-                          return QSL("\\b%1\\b").arg(kw);
-                        })
-                        .toStdList();
-
-  keywords = FROM_STD_LIST(QStringList, std_keywords);
+  auto keywords = qlinq::from(jsKeywords()).select([](const QString& kw) {
+    return QSL("\\b%1\\b").arg(kw);
+  });
 
   for (const QString& pattern : std::as_const(keywords)) {
     rule.m_pattern = QRegularExpression(pattern);

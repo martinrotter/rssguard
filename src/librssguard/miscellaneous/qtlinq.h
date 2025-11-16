@@ -4,6 +4,7 @@
 
 #include <algorithm>
 #include <optional>
+#include <stdexcept>
 #include <type_traits>
 #include <utility>
 
@@ -182,7 +183,7 @@ namespace qlinq {
         return true;
       }
 
-      // min: return smallest element (requires operator< on T)
+      // min: return smallest element (requires operator< on T).
       std::optional<T> min() const {
         if (_data.isEmpty()) {
           return std::nullopt;
@@ -199,7 +200,7 @@ namespace qlinq {
         return *best;
       }
 
-      // min with key selector (like LINQ's MinBy)
+      // min with key selector (like LINQ's MinBy).
       template <typename KeySelector>
       std::optional<T> min(KeySelector keySelector) const {
         if (_data.isEmpty()) {
@@ -260,15 +261,6 @@ namespace qlinq {
         return *best;
       }
 
-      // firstOrDefault: optional first element.
-      std::optional<T> firstOrDefault() const {
-        if (_data.isEmpty()) {
-          return std::nullopt;
-        }
-
-        return _data.first();
-      }
-
       // count(value) – count occurrences of a specific value.
       int count(const T& value) const {
         int c = 0;
@@ -315,6 +307,36 @@ namespace qlinq {
           total += selector(item);
         }
         return total;
+      }
+
+      // first(): return first element, throw if empty.
+      T first() const {
+        if (_data.isEmpty()) {
+          throw std::runtime_error("qlinq::first() called on an empty sequence");
+        }
+
+        return _data.first();
+      }
+
+      // first(predicate): return first matching element, throw if not found.
+      template <typename Pred>
+      T first(Pred pred) const {
+        for (const auto& item : _data) {
+          if (pred(item)) {
+            return item;
+          }
+        }
+
+        throw std::runtime_error("qlinq::first(predicate) found no matching element");
+      }
+
+      // firstOrDefault: optional first element.
+      std::optional<T> firstOrDefault() const {
+        if (_data.isEmpty()) {
+          return std::nullopt;
+        }
+
+        return _data.first();
       }
 
       // firstOrDefault: optional first element matching predicate.

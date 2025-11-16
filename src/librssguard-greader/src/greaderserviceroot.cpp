@@ -37,7 +37,7 @@ FormAccountDetails* GreaderServiceRoot::accountSetupDialog() const {
 }
 
 void GreaderServiceRoot::editItems(const QList<RootItem*>& items) {
-  auto feeds = boolinq::from(items)
+  auto feeds = qlinq::from(items)
                  .select([](RootItem* it) {
                    return qobject_cast<Feed*>(it);
                  })

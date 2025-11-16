@@ -2,8 +2,8 @@
 
 #include "core/message.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/feed.h"
@@ -205,17 +205,15 @@ QList<Label*> Message::decodeLabelCustomIds(const QHash<QString, Label*>& labels
     return {};
   }
 
-  auto std_labels_list = boolinq::from(custom_ids)
-                           .select([&](const QString& custom_id) {
-                             return labels.value(custom_id);
-                           })
-                           .where([](Label* lbl) {
-                             return lbl != nullptr;
-                           })
-                           .distinct()
-                           .toStdList();
-
-  QList<Label*> labels_list = FROM_STD_LIST(QList<Label*>, std_labels_list);
+  auto labels_list = qlinq::from(custom_ids)
+                       .select([&](const QString& custom_id) {
+                         return labels.value(custom_id);
+                       })
+                       .where([](Label* lbl) {
+                         return lbl != nullptr;
+                       })
+                       .distinct()
+                       .toList();
 
   return labels_list;
 }

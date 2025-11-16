@@ -2,9 +2,9 @@
 
 #include "filtering/filteringsystem.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "exceptions/filteringexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/qtlinq.h"
 #include "services/abstract/labelsnode.h"
 
 FilteringSystem::FilteringSystem(FiteringUseCase mode,
@@ -41,12 +41,11 @@ void FilteringSystem::pushMessageStatesToServices(QList<Message>& read_msgs,
 
   if (!important_msgs.isEmpty()) {
     // Now we push new read states to the service.
-    auto list = boolinq::from(important_msgs)
-                  .select([](const Message& msg) {
-                    return ImportanceChange(msg, RootItem::Importance::Important);
-                  })
-                  .toStdList();
-    QList<ImportanceChange> chngs = FROM_STD_LIST(QList<ImportanceChange>, list);
+    auto chngs = qlinq::from(important_msgs)
+                   .select([](const Message& msg) {
+                     return ImportanceChange(msg, RootItem::Importance::Important);
+                   })
+                   .toList();
 
     account->onBeforeSwitchMessageImportance(item, chngs);
   }

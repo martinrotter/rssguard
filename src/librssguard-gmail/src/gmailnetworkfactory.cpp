@@ -5,12 +5,12 @@
 #include "src/definitions.h"
 #include "src/gmailserviceroot.h"
 
-#include <librssguard/3rd-party/boolinq/boolinq.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>
@@ -527,7 +527,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   msg.m_rawContents = QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact);
 
   auto active_labels = m_service->labelsNode() != nullptr ? m_service->labelsNode()->labels() : QList<Label*>();
-  auto active_labels_linq = boolinq::from(active_labels);
+  auto active_labels_linq = qlinq::from(active_labels);
 
   for (const QVariant& label : std::as_const(labelids)) {
     QString lbl = label.toString();

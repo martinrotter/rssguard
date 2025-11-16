@@ -2,10 +2,10 @@
 
 #include "gui/toolbars/messagestoolbar.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 #include "gui/reusable/nonclosablemenu.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 
 #include <chrono>
@@ -121,14 +121,14 @@ inline MessagesModel::MessageHighlighter operator|(MessagesModel::MessageHighlig
 
 void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
   MessagesModel::MessageHighlighter task = action->data().value<MessagesModel::MessageHighlighter>();
-  std::list<QAction*> checked_tasks_std = boolinq::from(m_menuMessageHighlighter->actions())
-                                            .where([](QAction* act) {
-                                              return act->isChecked();
-                                            })
-                                            .toStdList();
+  auto checked_tasks = qlinq::from(m_menuMessageHighlighter->actions())
+                         .where([](QAction* act) {
+                           return act->isChecked();
+                         })
+                         .toList();
 
-  if (task == MessagesModel::MessageHighlighter::NoHighlighting || checked_tasks_std.empty()) {
-    checked_tasks_std.clear();
+  if (task == MessagesModel::MessageHighlighter::NoHighlighting || checked_tasks.isEmpty()) {
+    checked_tasks.clear();
 
     // Uncheck everything.
     m_menuMessageHighlighter->blockSignals(true);
@@ -142,21 +142,19 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
   else {
     task = MessagesModel::MessageHighlighter(0);
 
-    for (QAction* tsk : checked_tasks_std) {
+    for (QAction* tsk : checked_tasks) {
       task = task | tsk->data().value<MessagesModel::MessageHighlighter>();
     }
   }
 
-  m_btnMessageHighlighter->setDefaultAction(checked_tasks_std.empty() ? m_menuMessageHighlighter->actions().constFirst()
-                                                                      : checked_tasks_std.front());
+  m_btnMessageHighlighter->setDefaultAction(checked_tasks.isEmpty() ? m_menuMessageHighlighter->actions().constFirst()
+                                                                    : checked_tasks.first());
 
-  if (checked_tasks_std.size() > 1) {
-    drawNumberOfCriterias(m_btnMessageHighlighter, int(checked_tasks_std.size()));
+  if (checked_tasks.size() > 1) {
+    drawNumberOfCriterias(m_btnMessageHighlighter, int(checked_tasks.size()));
   }
 
-  saveToolButtonSelection(QSL(HIGHLIGHTER_ACTION_NAME),
-                          GUI::MessagesToolbarDefaultButtons,
-                          FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
+  saveToolButtonSelection(QSL(HIGHLIGHTER_ACTION_NAME), GUI::MessagesToolbarDefaultButtons, checked_tasks);
   emit messageHighlighterChanged(task);
 }
 
@@ -164,16 +162,16 @@ void MessagesToolBar::handleMessageFilterChange(QAction* action) {
   MessagesProxyModel::MessageListFilter task = action == nullptr
                                                  ? MessagesProxyModel::MessageListFilter(0)
                                                  : action->data().value<MessagesProxyModel::MessageListFilter>();
-  std::list<QAction*> checked_tasks_std = boolinq::from(m_menuMessageFilter->actions())
-                                            .where([](QAction* act) {
-                                              return act->isChecked();
-                                            })
-                                            .toStdList();
+  auto checked_tasks = qlinq::from(m_menuMessageFilter->actions())
+                         .where([](QAction* act) {
+                           return act->isChecked();
+                         })
+                         .toList();
 
-  if (task == MessagesProxyModel::MessageListFilter::NoFiltering || checked_tasks_std.empty()) {
+  if (task == MessagesProxyModel::MessageListFilter::NoFiltering || checked_tasks.isEmpty()) {
     task = MessagesProxyModel::MessageListFilter::NoFiltering;
 
-    checked_tasks_std.clear();
+    checked_tasks.clear();
 
     // Uncheck everything.
     m_menuMessageFilter->blockSignals(true);
@@ -187,21 +185,19 @@ void MessagesToolBar::handleMessageFilterChange(QAction* action) {
   else {
     task = MessagesProxyModel::MessageListFilter(0);
 
-    for (QAction* tsk : checked_tasks_std) {
+    for (QAction* tsk : checked_tasks) {
       task = task | tsk->data().value<MessagesProxyModel::MessageListFilter>();
     }
   }
 
-  m_btnMessageFilter->setDefaultAction(checked_tasks_std.empty() ? m_menuMessageFilter->actions().constFirst()
-                                                                 : checked_tasks_std.front());
+  m_btnMessageFilter->setDefaultAction(checked_tasks.isEmpty() ? m_menuMessageFilter->actions().constFirst()
+                                                               : checked_tasks.first());
 
-  if (checked_tasks_std.size() > 1) {
-    drawNumberOfCriterias(m_btnMessageFilter, int(checked_tasks_std.size()));
+  if (checked_tasks.size() > 1) {
+    drawNumberOfCriterias(m_btnMessageFilter, int(checked_tasks.size()));
   }
 
-  saveToolButtonSelection(QSL(FILTER_ACTION_NAME),
-                          GUI::MessagesToolbarDefaultButtons,
-                          FROM_STD_LIST(QList<QAction*>, checked_tasks_std));
+  saveToolButtonSelection(QSL(FILTER_ACTION_NAME), GUI::MessagesToolbarDefaultButtons, checked_tasks);
   emit messageFilterChanged(task);
 }
 

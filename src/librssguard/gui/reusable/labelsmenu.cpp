@@ -2,9 +2,9 @@
 
 #include "gui/reusable/labelsmenu.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/qtlinq.h"
 
 #include <QCheckBox>
 #include <QKeyEvent>
@@ -24,17 +24,16 @@ void LabelsMenu::setLabels(const QList<Label*>& labels) {
     setActions({act_not_labels}, false);
   }
   else {
-    auto lbls =
-      boolinq::from(labels)
+    m_labelActions =
+      qlinq::from(labels)
         .select([this](Label* label) {
           return labelAction(label);
         })
         .orderBy([](const QAction* label_action) {
           return QSL("%1%2").arg(label_action->isChecked() ? QSL("0") : QSL("1"), label_action->text().toLower());
         })
-        .toStdList();
+        .toList();
 
-    m_labelActions = FROM_STD_LIST(QList<QAction*>, lbls);
     setActions(m_labelActions, false);
   }
 }
@@ -77,7 +76,7 @@ QAction* LabelsMenu::labelAction(Label* label) {
   auto* act = new LabelAction(label, this);
 
   act->setCheckable(true);
-  act->setChecked(act->isCheckable() && boolinq::from(m_messages).all([&](const Message& msg) {
+  act->setChecked(act->isCheckable() && qlinq::from(m_messages).all([&](const Message& msg) {
     return msg.m_assignedLabels.contains(label);
   }));
 

@@ -2,12 +2,12 @@
 
 #include "database/databasefactory.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "database/mariadbdriver.h"
 #include "database/sqlitedriver.h"
 #include "exceptions/applicationexception.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 
 #include <QDir>
@@ -33,9 +33,11 @@ void DatabaseFactory::determineDriver() {
 
   const QString db_driver = qApp->settings()->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString();
 
-  m_dbDriver = boolinq::from(m_allDbDrivers).firstOrDefault([db_driver](DatabaseDriver* driv) {
-    return QString::compare(driv->qtDriverCode(), db_driver, Qt::CaseSensitivity::CaseInsensitive) == 0;
-  });
+  m_dbDriver = qlinq::from(m_allDbDrivers)
+                 .firstOrDefault([db_driver](DatabaseDriver* driv) {
+                   return QString::compare(driv->qtDriverCode(), db_driver, Qt::CaseSensitivity::CaseInsensitive) == 0;
+                 })
+                 .value_or(nullptr);
 
   if (m_dbDriver == nullptr) {
     qFatal("DB driver for '%s' was not found.", qPrintable(db_driver));
@@ -56,7 +58,7 @@ void DatabaseFactory::determineDriver() {
                       "Falling back to SQLite.")
                      .arg(ex.message()));
 
-      m_dbDriver = boolinq::from(m_allDbDrivers).first([](DatabaseDriver* driv) {
+      m_dbDriver = qlinq::from(m_allDbDrivers).first([](DatabaseDriver* driv) {
         return driv->driverType() == DatabaseDriver::DriverType::SQLite;
       });
     }
@@ -68,9 +70,11 @@ DatabaseDriver* DatabaseFactory::driver() const {
 }
 
 DatabaseDriver* DatabaseFactory::driverForType(DatabaseDriver::DriverType d) const {
-  return boolinq::from(m_allDbDrivers).firstOrDefault([d](DatabaseDriver* driv) {
-    return driv->driverType() == d;
-  });
+  return qlinq::from(m_allDbDrivers)
+    .firstOrDefault([d](DatabaseDriver* driv) {
+      return driv->driverType() == d;
+    })
+    .value_or(nullptr);
 }
 
 QString DatabaseFactory::escapeQuery(const QString& query) {

@@ -2,9 +2,9 @@
 
 #include "gui/notifications/notificationseditor.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
 #include "gui/notifications/singlenotificationeditor.h"
+#include "miscellaneous/qtlinq.h"
 
 #include <QVBoxLayout>
 
@@ -15,7 +15,7 @@ NotificationsEditor::NotificationsEditor(QWidget* parent) : QWidget(parent), m_l
 
 void NotificationsEditor::loadNotifications(const QList<Notification>& notifications) {
   auto all_events = Notification::allEvents();
-  auto notif = boolinq::from(notifications);
+  auto notif = qlinq::from(notifications);
 
   for (auto ev : all_events) {
     if (notif.any([ev](auto n) {
@@ -49,11 +49,11 @@ void NotificationsEditor::loadNotifications(const QList<Notification>& notificat
 }
 
 QList<Notification> NotificationsEditor::allNotifications() const {
-  auto lst = boolinq::from(findChildren<SingleNotificationEditor*>())
+  auto lst = qlinq::from(findChildren<SingleNotificationEditor*>())
                .select([](const SingleNotificationEditor* ed) {
                  return ed->notification();
                })
-               .toStdList();
+               .toList();
 
-  return FROM_STD_LIST(QList<Notification>, lst);
+  return lst;
 }

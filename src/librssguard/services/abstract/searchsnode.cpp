@@ -2,7 +2,7 @@
 
 #include "services/abstract/searchsnode.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "exceptions/applicationexception.h"
@@ -28,13 +28,13 @@ void SearchsNode::loadProbes(const QList<Search*>& probes) {
 Search* SearchsNode::probeById(const QString& custom_id) {
   auto chi = childItems();
 
-  return qobject_cast<Search*>(boolinq::from(chi).firstOrDefault([custom_id](RootItem* it) {
+  return qobject_cast<Search*>(qlinq::from(chi).firstOrDefault([custom_id](RootItem* it) {
     return it->customId() == custom_id;
   }));
 }
 
 QList<Search*> SearchsNode::probes() const {
-  auto list = boolinq::from(childItems())
+  auto list = qlinq::from(childItems())
                 .select([](RootItem* it) {
                   return static_cast<Search*>(it);
                 })

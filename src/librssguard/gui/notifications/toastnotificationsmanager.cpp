@@ -2,7 +2,7 @@
 
 #include "gui/notifications/toastnotificationsmanager.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "gui/notifications/articlelistnotification.h"
 #include "gui/notifications/basetoastnotification.h"
 #include "gui/notifications/toastnotification.h"
@@ -282,7 +282,7 @@ void ToastNotificationsManager::removeOutOfBoundsNotifications(int height_to_res
 
   int available_height = screen->availableSize().height();
 
-  while (boolinq::from(m_activeNotifications).sum([this](BaseToastNotification* notif) {
+  while (qlinq::from(m_activeNotifications).sum([this](BaseToastNotification* notif) {
     return notif->height() + m_margins;
   }) + height_to_reserve >
          available_height) {

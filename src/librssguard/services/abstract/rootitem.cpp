@@ -2,7 +2,7 @@
 
 #include "services/abstract/rootitem.h"
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -202,7 +202,7 @@ bool RootItem::performDragDropChange(RootItem* target_item) {
 }
 
 int RootItem::countOfUnreadMessages() const {
-  return boolinq::from(m_childItems).sum([](RootItem* it) {
+  return qlinq::from(m_childItems).sum([](RootItem* it) {
     return (it->kind() == RootItem::Kind::Bin || it->kind() == RootItem::Kind::Important ||
             it->kind() == RootItem::Kind::Unread || it->kind() == RootItem::Kind::Labels ||
             it->kind() == RootItem::Kind::Probes)
@@ -212,7 +212,7 @@ int RootItem::countOfUnreadMessages() const {
 }
 
 int RootItem::countOfAllMessages() const {
-  return boolinq::from(m_childItems).sum([](RootItem* it) {
+  return qlinq::from(m_childItems).sum([](RootItem* it) {
     return (it->kind() == RootItem::Kind::Bin || it->kind() == RootItem::Kind::Important ||
             it->kind() == RootItem::Kind::Unread || it->kind() == RootItem::Kind::Labels ||
             it->kind() == RootItem::Kind::Probes)
@@ -635,7 +635,7 @@ RootItem::Kind operator&(RootItem::Kind a, RootItem::Kind b) {
 }
 
 QList<RootItem*> RootItem::childItems(Kind kind) const {
-  auto linq = boolinq::from(m_childItems)
+  auto linq = qlinq::from(m_childItems)
                 .where([=](RootItem* it) {
                   return it->kind() == kind;
                 })

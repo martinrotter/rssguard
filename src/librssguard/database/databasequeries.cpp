@@ -2,12 +2,12 @@
 
 #include "database/databasequeries.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "database/sqlquery.h"
 #include "definitions/globals.h"
 #include "exceptions/sqlexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "services/abstract/category.h"
 
@@ -577,7 +577,7 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
 void DatabaseQueries::purgeFeedArticles(const QSqlDatabase& db, const QList<Feed*>& feeds) {
   SqlQuery q(db);
 
-  auto feed_clauses = boolinq::from(feeds)
+  auto feed_clauses = qlinq::from(feeds)
                         .select([](Feed* feed) {
                           return QSL("("
                                      "Messages.feed = %1 AND "
@@ -586,15 +586,11 @@ void DatabaseQueries::purgeFeedArticles(const QSqlDatabase& db, const QList<Feed
                                      ")")
                             .arg(QString::number(feed->id()), QString::number(feed->account()->accountId()));
                         })
-                        .toStdList();
+                        .toList();
 
-  qDebugNN << feed_clauses;
-
-  QStringList feed_str_clauses = FROM_STD_LIST(QStringList, feed_clauses);
-  QString feed_clause = feed_str_clauses.join(QSL(" OR "));
+  QString feed_clause = feed_clauses.join(QSL(" OR "));
 
   q.prepare(QSL("DELETE FROM Messages WHERE %1;").arg(feed_clause));
-
   q.exec();
 }
 
@@ -1841,7 +1837,7 @@ void DatabaseQueries::moveItem(RootItem* item,
   }
 
   auto neighbors = item->parent()->childItems();
-  int max_sort_order = boolinq::from(neighbors)
+  int max_sort_order = qlinq::from(neighbors)
                          .select([=](RootItem* it) {
                            return it->kind() == item->kind() ? it->sortOrder() : 0;
                          })
@@ -1927,7 +1923,7 @@ void DatabaseQueries::moveItem(RootItem* item,
 
   // Fix live sort orders.
   if (item->sortOrder() > move_index) {
-    boolinq::from(neighbors)
+    qlinq::from(neighbors)
       .where([=](RootItem* it) {
         return it->kind() == item->kind() && it->sortOrder() < move_high && it->sortOrder() >= move_low;
       })
@@ -1936,7 +1932,7 @@ void DatabaseQueries::moveItem(RootItem* item,
       });
   }
   else {
-    boolinq::from(neighbors)
+    qlinq::from(neighbors)
       .where([=](RootItem* it) {
         return it->kind() == item->kind() && it->sortOrder() > move_low && it->sortOrder() <= move_high;
       })
@@ -1954,7 +1950,7 @@ void DatabaseQueries::moveMessageFilter(QList<MessageFilter*> all_filters,
                                         bool move_bottom,
                                         int move_index,
                                         const QSqlDatabase& db) {
-  int max_sort_order = boolinq::from(all_filters)
+  int max_sort_order = qlinq::from(all_filters)
                          .select([=](MessageFilter* it) {
                            return it->sortOrder();
                          })
@@ -2004,7 +2000,7 @@ void DatabaseQueries::moveMessageFilter(QList<MessageFilter*> all_filters,
 
   // Fix live sort orders.
   if (filter->sortOrder() > move_index) {
-    boolinq::from(all_filters)
+    qlinq::from(all_filters)
       .where([=](MessageFilter* it) {
         return it->sortOrder() < move_high && it->sortOrder() >= move_low;
       })
@@ -2013,7 +2009,7 @@ void DatabaseQueries::moveMessageFilter(QList<MessageFilter*> all_filters,
       });
   }
   else {
-    boolinq::from(all_filters)
+    qlinq::from(all_filters)
       .where([=](MessageFilter* it) {
         return it->sortOrder() > move_low && it->sortOrder() <= move_high;
       })

@@ -5,7 +5,7 @@
 #include "src/definitions.h"
 #include "src/ttrssfeed.h"
 
-#include <librssguard/3rd-party/boolinq/boolinq.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/miscellaneous/application.h>
@@ -1034,7 +1034,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
   QList<Message> messages;
   auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
   auto json_msgs = m_rawContent[QSL("content")].toArray();
-  auto* published_lbl = boolinq::from(active_labels).firstOrDefault([](const Label* lbl) {
+  auto* published_lbl = qlinq::from(active_labels).firstOrDefault([](const Label* lbl) {
     return lbl->customNumericId() == TTRSS_PUBLISHED_LABEL_ID;
   });
 
@@ -1058,7 +1058,7 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
     for (const QJsonValue& lbl_val : std::as_const(json_labels)) {
       QString lbl_custom_id = QString::number(lbl_val.toArray().at(0).toInt());
       Label* label =
-        boolinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([lbl_custom_id](Label* lbl) {
+        qlinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([lbl_custom_id](Label* lbl) {
           return lbl->customId() == lbl_custom_id;
         });
 

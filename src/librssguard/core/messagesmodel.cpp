@@ -2,13 +2,13 @@
 
 #include "core/messagesmodel.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
 #include "gui/messagesview.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/textfactory.h"
@@ -953,15 +953,14 @@ bool MessagesModel::setMessageLabelsById(const QList<Message>& msgs) {
 }
 
 QString MessagesModel::formatLabels(const QList<Label*>& labels) const {
-  auto label_titles_std = boolinq::from(labels)
-                            .select([](const Label* label) {
-                              return label != nullptr ? label->title() : QString();
-                            })
-                            .where([](const QString& title) {
-                              return !title.isEmpty();
-                            })
-                            .toStdList();
-  QStringList label_titles = FROM_STD_LIST(QStringList, label_titles_std);
+  auto label_titles = qlinq::from(labels)
+                        .select([](const Label* label) {
+                          return label != nullptr ? label->title() : QString();
+                        })
+                        .where([](const QString& title) {
+                          return !title.isEmpty();
+                        })
+                        .toList();
 
   return label_titles.join(QL1C(','));
 }

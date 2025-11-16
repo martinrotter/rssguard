@@ -2,7 +2,6 @@
 
 #include "filtering/filterobjects.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
@@ -10,6 +9,7 @@
 #include "filtering/filteringsystem.h"
 #include "miscellaneous/domdocument.h"
 #include "miscellaneous/iofactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/labelsnode.h"
 
@@ -24,13 +24,13 @@ void FilterMessage::setMessage(Message* message) {
 }
 
 bool FilterMessage::assignLabel(const QString& label_custom_id) const {
-  Label* lbl = boolinq::from(m_system->availableLabels()).firstOrDefault([label_custom_id](Label* lbl) {
+  auto lbl = qlinq::from(m_system->availableLabels()).firstOrDefault([label_custom_id](Label* lbl) {
     return lbl->customId() == label_custom_id;
   });
 
-  if (lbl != nullptr) {
+  if (lbl.has_value()) {
     if (!m_message->m_assignedLabels.contains(lbl)) {
-      m_message->m_assignedLabels.append(lbl);
+      m_message->m_assignedLabels.append(lbl.value());
     }
 
     return true;
@@ -41,12 +41,12 @@ bool FilterMessage::assignLabel(const QString& label_custom_id) const {
 }
 
 bool FilterMessage::deassignLabel(const QString& label_custom_id) const {
-  Label* lbl = boolinq::from(m_message->m_assignedLabels).firstOrDefault([label_custom_id](Label* lbl) {
+  auto lbl = qlinq::from(m_message->m_assignedLabels).firstOrDefault([label_custom_id](Label* lbl) {
     return lbl->customId() == label_custom_id;
   });
 
-  if (lbl != nullptr) {
-    m_message->m_assignedLabels.removeAll(lbl);
+  if (lbl.has_value()) {
+    m_message->m_assignedLabels.removeAll(lbl.value());
     return true;
   }
   else {
@@ -413,24 +413,24 @@ QList<Label*> FilterMessage::assignedLabels() const {
 
 QList<MessageCategory*> FilterMessage::categories() const {
   auto cats = m_message->m_categories;
-  auto std_cats = boolinq::from(cats)
-                    .select([](const QSharedPointer<MessageCategory>& cat) {
-                      return cat.data();
-                    })
-                    .toStdList();
+  auto categories = qlinq::from(cats)
+                      .select([](const QSharedPointer<MessageCategory>& cat) {
+                        return cat.data();
+                      })
+                      .toList();
 
-  return FROM_STD_LIST(QList<MessageCategory*>, std_cats);
+  return categories;
 }
 
 QList<MessageEnclosure*> FilterMessage::enclosures() const {
-  auto cats = m_message->m_enclosures;
-  auto std_cats = boolinq::from(cats)
-                    .select([](const QSharedPointer<MessageEnclosure>& cat) {
-                      return cat.data();
-                    })
-                    .toStdList();
+  auto enc = m_message->m_enclosures;
+  auto enclosures = qlinq::from(enc)
+                      .select([](const QSharedPointer<MessageEnclosure>& cat) {
+                        return cat.data();
+                      })
+                      .toList();
 
-  return FROM_STD_LIST(QList<MessageEnclosure*>, std_cats);
+  return enclosures;
 }
 
 bool FilterMessage::hasEnclosures() const {
@@ -568,15 +568,15 @@ void FilterUtils::setSystem(FilteringSystem* sys) {
 }
 
 QString FilterAccount::findLabel(const QString& label_title) const {
-  Label* found_lbl = boolinq::from(m_system->availableLabels()).firstOrDefault([label_title](Label* lbl) {
+  auto found_lbl = qlinq::from(m_system->availableLabels()).firstOrDefault([label_title](Label* lbl) {
     return lbl->title().toLower() == label_title.toLower();
   });
 
-  if (found_lbl == nullptr) {
+  if (!found_lbl.has_value()) {
     qWarningNN << LOGSEC_CORE << "Label with title" << QUOTE_W_SPACE(label_title) << "not found.";
   }
 
-  return found_lbl != nullptr ? found_lbl->customId() : QString();
+  return found_lbl.has_value() ? found_lbl.value()->customId() : QString();
 }
 
 QString FilterAccount::createLabel(const QString& label_title, const QString& hex_color) {

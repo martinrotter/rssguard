@@ -3,7 +3,7 @@
 #ifndef FORMCATEGORYDETAILS_H
 #define FORMCATEGORYDETAILS_H
 
-#include "3rd-party/boolinq/boolinq.h"
+#include "miscellaneous/qtlinq.h"
 #include "definitions/definitions.h"
 
 #include <QDialog>
@@ -106,7 +106,7 @@ inline T* FormCategoryDetails::category() const {
 
 template <class T>
 inline QList<T*> FormCategoryDetails::categories() const {
-  std::list<T*> std_cats = boolinq::from(m_categories)
+  std::list<T*> std_cats = qlinq::from(m_categories)
                              .select([](Category* fd) {
                                return qobject_cast<T*>(fd);
                              })

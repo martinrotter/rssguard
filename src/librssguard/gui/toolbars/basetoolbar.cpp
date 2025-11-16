@@ -2,8 +2,8 @@
 
 #include "gui/toolbars/basetoolbar.h"
 
-#include "3rd-party/boolinq/boolinq.h"
 #include "definitions/definitions.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 
 #include <QFont>
@@ -84,12 +84,11 @@ void BaseToolBar::saveToolButtonSelection(const QString& button_name,
                                           const QString& setting_name,
                                           const QList<QAction*>& actions) const {
   QStringList action_names = savedActions();
-  auto opts_list = boolinq::from(actions)
-                     .select([](const QAction* act) {
-                       return act->objectName();
-                     })
-                     .toStdList();
-  QStringList opts = FROM_STD_LIST(QStringList, opts_list);
+  QStringList opts = qlinq::from(actions)
+                       .select([](const QAction* act) {
+                         return act->objectName();
+                       })
+                       .toList();
 
   for (QString& action_name : action_names) {
     if (action_name.startsWith(button_name)) {
