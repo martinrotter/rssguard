@@ -260,7 +260,7 @@ namespace qlinq {
         return *best;
       }
 
-      // firstOrDefault: optional first element matching predicate.
+      // firstOrDefault: optional first element.
       std::optional<T> firstOrDefault() const {
         if (_data.isEmpty()) {
           return std::nullopt;
@@ -269,6 +269,55 @@ namespace qlinq {
         return _data.first();
       }
 
+      // count(value) – count occurrences of a specific value.
+      int count(const T& value) const {
+        int c = 0;
+        for (const auto& item : _data) {
+          if (item == value) {
+            ++c;
+          }
+        }
+        return c;
+      }
+
+      // for_each – apply a lambda to every element.
+      template <typename Func>
+      void for_each(Func func) const {
+        for (const auto& item : _data) {
+          func(item);
+        }
+      }
+
+      // distinct – remove duplicate elements (requires operator==).
+      Query<T> distinct() const {
+        QList<T> result;
+        for (const auto& item : _data) {
+          if (!result.contains(item)) {
+            result.append(item);
+          }
+        }
+        return Query<T>(std::move(result));
+      }
+
+      // reverse – return elements in reversed order.
+      Query<T> reverse() const {
+        QList<T> result = _data;
+        std::reverse(result.begin(), result.end());
+        return Query<T>(std::move(result));
+      }
+
+      // sum(selector) – sum values produced by selector.
+      template <typename Selector>
+      auto sum(Selector selector) const -> typename std::decay<decltype(selector(std::declval<T>()))>::type {
+        using R = typename std::decay<decltype(selector(std::declval<T>()))>::type;
+        R total{};
+        for (const auto& item : _data) {
+          total += selector(item);
+        }
+        return total;
+      }
+
+      // firstOrDefault: optional first element matching predicate.
       template <typename Pred>
       std::optional<T> firstOrDefault(Pred pred) const {
         for (const auto& item : _data) {

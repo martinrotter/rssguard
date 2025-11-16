@@ -12,7 +12,6 @@
 #include "src/parsers/sitemapparser.h"
 #include "src/standardfeed.h"
 
-#include <librssguard/3rd-party/boolinq/boolinq.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/gui/guiutilities.h>
 #include <librssguard/miscellaneous/application.h>

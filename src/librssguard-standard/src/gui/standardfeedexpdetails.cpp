@@ -2,7 +2,6 @@
 
 #include "src/gui/standardfeedexpdetails.h"
 
-#include <librssguard/3rd-party/boolinq/boolinq.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/exceptions/scriptexception.h>

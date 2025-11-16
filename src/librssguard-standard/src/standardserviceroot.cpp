@@ -142,22 +142,21 @@ FormAccountDetails* StandardServiceRoot::accountSetupDialog() const {
 }
 
 void StandardServiceRoot::editItems(const QList<RootItem*>& items) {
-  auto std_feeds = boolinq::from(items)
+  auto std_feeds = qlinq::from(items)
                      .select([](RootItem* it) {
                        return qobject_cast<Feed*>(it);
                      })
                      .where([](Feed* fd) {
                        return fd != nullptr;
-                     })
-                     .toStdList();
+                     });
 
-  if (!std_feeds.empty()) {
+  if (!std_feeds.isEmpty()) {
     QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
                                                                                      nullptr,
                                                                                      {},
                                                                                      qApp->mainFormWidget()));
 
-    form_pointer->addEditFeed<StandardFeed>(FROM_STD_LIST(QList<Feed*>, std_feeds));
+    form_pointer->addEditFeed<StandardFeed>(std_feeds.toList());
     return;
   }
 
