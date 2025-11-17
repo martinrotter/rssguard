@@ -5,9 +5,9 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/dialogs/formupdate.h"
 #include "miscellaneous/application.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
+#include "qtlinq/qtlinq.h"
 
 #if defined(Q_OS_WIN)
 #include <QSettings>
@@ -169,18 +169,16 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
       try {
         QString desktop_file_contents = QString::fromUtf8(IOFactory::readFile(source_autostart_desktop_file));
 
-        QStringList args = qApp->rawCliArgs();
-        auto std_args = qlinq::from(args.begin(), args.end())
-                          .select([](const QString& arg) {
-                            if (arg.contains(QL1S(" ")) && !arg.startsWith(QL1S("\""))) {
-                              return QSL("\"%1\"").arg(arg);
-                            }
-                            else {
-                              return arg;
-                            }
-                          })
-                          .toStdList();
-        args = FROM_STD_LIST(QStringList, std_args);
+        QStringList args = qlinq::from(qApp->rawCliArgs())
+                             .select([](const QString& arg) {
+                               if (arg.contains(QL1S(" ")) && !arg.startsWith(QL1S("\""))) {
+                                 return QSL("\"%1\"").arg(arg);
+                               }
+                               else {
+                                 return arg;
+                               }
+                             })
+                             .toList();
 
 #if defined(IS_FLATPAK_BUILD)
         const QString flatpak_run = QSL("flatpak run %1").arg(APP_REVERSE_NAME);
