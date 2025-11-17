@@ -368,10 +368,8 @@
 // Source code specific enhancements.
 //
 #if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
-#define FROM_STD_LIST(x, y)    (x(y.begin(), y.end()))
 #define FROM_LIST_TO_SET(x, y) (x(y.begin(), y.end()))
 #else
-#define FROM_STD_LIST(x, y)    (x::fromStdList(y))
 #define FROM_LIST_TO_SET(x, y) (x::fromList(y))
 #endif
 
