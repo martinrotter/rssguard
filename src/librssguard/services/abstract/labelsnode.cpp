@@ -2,13 +2,13 @@
 
 #include "services/abstract/labelsnode.h"
 
-#include "miscellaneous/qtlinq.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/globals.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "services/abstract/gui/formaddeditlabel.h"
 #include "services/abstract/serviceroot.h"
 
@@ -67,9 +67,11 @@ void LabelsNode::updateCounts() {
 Label* LabelsNode::labelByCustomId(const QString& custom_id) {
   auto chi = childItems();
 
-  return qobject_cast<Label*>(qlinq::from(chi).firstOrDefault([custom_id](RootItem* it) {
-    return it->customId() == custom_id;
-  }));
+  return qobject_cast<Label*>(qlinq::from(chi)
+                                .firstOrDefault([custom_id](RootItem* it) {
+                                  return it->customId() == custom_id;
+                                })
+                                .value_or(nullptr));
 }
 
 QHash<QString, Label*> LabelsNode::getHashedLabels() const {
@@ -83,13 +85,11 @@ QHash<QString, Label*> LabelsNode::getHashedLabels() const {
 }
 
 QList<Label*> LabelsNode::labels() const {
-  auto list = qlinq::from(childItems())
-                .select([](RootItem* it) {
-                  return static_cast<Label*>(it);
-                })
-                .toStdList();
-
-  return FROM_STD_LIST(QList<Label*>, list);
+  return qlinq::from(childItems())
+    .select([](RootItem* it) {
+      return static_cast<Label*>(it);
+    })
+    .toList();
 }
 
 void LabelsNode::createLabel() {

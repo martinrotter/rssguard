@@ -2,7 +2,6 @@
 
 #include "miscellaneous/feedreader.h"
 
-#include "miscellaneous/qtlinq.h"
 #include "core/feeddownloader.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
@@ -13,6 +12,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/pluginfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceentrypoint.h"
@@ -320,25 +320,24 @@ void FeedReader::executeNextAutoUpdate() {
     (qApp->mainFormWidget()->isActiveWindow() || QApplication::activeModalWidget() != nullptr) &&
     m_globalAutoUpdateOnlyUnfocused;
   auto roots = qApp->feedReader()->feedsModel()->serviceRoots();
-  std::list<CacheForServiceRoot*> full_caches = qlinq::from(roots)
-                                                  .select([](ServiceRoot* root) -> CacheForServiceRoot* {
-                                                    auto* cache = root->toCache();
+  auto full_caches = qlinq::from(roots)
+                       .select([](ServiceRoot* root) -> CacheForServiceRoot* {
+                         auto* cache = root->toCache();
 
-                                                    if (cache != nullptr) {
-                                                      return cache;
-                                                    }
-                                                    else {
-                                                      return nullptr;
-                                                    }
-                                                  })
-                                                  .where([](CacheForServiceRoot* cache) {
-                                                    return cache != nullptr && !cache->isEmpty();
-                                                  })
-                                                  .toStdList();
+                         if (cache != nullptr) {
+                           return cache;
+                         }
+                         else {
+                           return nullptr;
+                         }
+                       })
+                       .where([](CacheForServiceRoot* cache) {
+                         return cache != nullptr && !cache->isEmpty();
+                       });
 
   // Skip this round of auto-updating, but only if user disabled it when main window is active
   // and there are no caches to synchronize.
-  if ((m_feedFetchingPaused || disable_update_with_window) && full_caches.empty()) {
+  if ((m_feedFetchingPaused || disable_update_with_window) && full_caches.isEmpty()) {
     qDebugNN << LOGSEC_CORE << "Delaying scheduled feed auto-download for some time since window "
              << "is focused and updates while focused are disabled by the "
              << "user (or paused) and all account caches are empty.";
@@ -357,9 +356,8 @@ void FeedReader::executeNextAutoUpdate() {
   qApp->feedUpdateLock()->unlock();
 
   // Resynchronize caches.
-  if (!full_caches.empty()) {
-    QList<CacheForServiceRoot*> caches = FROM_STD_LIST(QList<CacheForServiceRoot*>, full_caches);
-
+  if (!full_caches.isEmpty()) {
+    QList<CacheForServiceRoot*> caches = full_caches.toList();
     synchronizeMessageData(caches);
   }
 

@@ -2,7 +2,6 @@
 
 #include "gui/feedsview.h"
 
-#include "miscellaneous/qtlinq.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
 #include "definitions/definitions.h"
@@ -12,6 +11,7 @@
 #include "gui/reusable/treeviewcolumnsmenu.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/feed.h"
@@ -83,16 +83,12 @@ void FeedsView::setSortingEnabled(bool enable) {
 }
 
 QList<Feed*> FeedsView::selectedFeeds(bool recursive) const {
-  auto its = selectedItems();
-  QList<Feed*> feeds;
-
-  for (RootItem* it : its) {
-    feeds.append(it->getSubTreeFeeds(recursive));
-  }
-
-  auto std_feeds = qlinq::from(feeds).distinct().toStdList();
-
-  return FROM_STD_LIST(QList<Feed*>, std_feeds);
+  return qlinq::from(selectedItems())
+    .selectMany([recursive](RootItem* it) {
+      return it->getSubTreeFeeds(recursive);
+    })
+    .distinct()
+    .toList();
 }
 
 RootItem* FeedsView::selectedItem() const {
@@ -109,11 +105,9 @@ RootItem* FeedsView::selectedItem() const {
       return selected_item;
     }
 
-    auto selected_items = qlinq::from(selected_rows)
-                            .select([this](const QModelIndex& idx) {
-                              return m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
-                            })
-                            .toStdList();
+    auto selected_items = qlinq::from(selected_rows).select([this](const QModelIndex& idx) {
+      return m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
+    });
 
     RootItem* current_item = m_sourceModel->itemForIndex(m_proxyModel->mapToSource(current_row));
 
@@ -121,7 +115,7 @@ RootItem* FeedsView::selectedItem() const {
       return current_item;
     }
     else {
-      return selected_items.front();
+      return selected_items.first();
     }
   }
 }
@@ -129,13 +123,11 @@ RootItem* FeedsView::selectedItem() const {
 QList<RootItem*> FeedsView::selectedItems() const {
   const QModelIndexList selected_rows = selectionModel()->selectedRows();
 
-  auto selected_items = qlinq::from(selected_rows)
-                          .select([this](const QModelIndex& idx) {
-                            return m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
-                          })
-                          .toStdList();
-
-  return FROM_STD_LIST(QList<RootItem*>, selected_items);
+  return qlinq::from(selected_rows)
+    .select([this](const QModelIndex& idx) {
+      return m_sourceModel->itemForIndex(m_proxyModel->mapToSource(idx));
+    })
+    .toList();
 }
 
 void FeedsView::copyUrlOfSelectedFeeds() const {
@@ -362,14 +354,13 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
     return;
   }
 
-  auto std_editable_items = qlinq::from(items)
-                              .where([](RootItem* it) {
-                                return it->canBeEdited();
-                              })
-                              .distinct()
-                              .toStdList();
+  auto editable_items = qlinq::from(items)
+                          .where([](RootItem* it) {
+                            return it->canBeEdited();
+                          })
+                          .distinct();
 
-  if (std_editable_items.empty()) {
+  if (editable_items.isEmpty()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("Cannot edit items"),
                           tr("Selected items cannot be edited. This is not supported (yet)."),
@@ -379,7 +370,7 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
     return;
   }
 
-  if (std_editable_items.front()->kind() == RootItem::Kind::ServiceRoot && std_editable_items.size() > 1) {
+  if (editable_items.first()->kind() == RootItem::Kind::ServiceRoot && editable_items.size() > 1) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("Cannot edit items"),
                           tr("%1 does not support batch editing of multiple accounts.").arg(QSL(APP_NAME)),
@@ -390,12 +381,11 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
   }
 
   // We also check if items are from single account, if not we end.
-  std::list<ServiceRoot*> distinct_accounts = qlinq::from(std_editable_items)
-                                                .select([](RootItem* it) {
-                                                  return it->account();
-                                                })
-                                                .distinct()
-                                                .toStdList();
+  auto distinct_accounts = editable_items
+                             .select([](RootItem* it) {
+                               return it->account();
+                             })
+                             .distinct();
 
   if (distinct_accounts.size() != 1) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -407,12 +397,11 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
     return;
   }
 
-  std::list<RootItem::Kind> distinct_types = qlinq::from(std_editable_items)
-                                               .select([](RootItem* it) {
-                                                 return it->kind();
-                                               })
-                                               .distinct()
-                                               .toStdList();
+  auto distinct_types = editable_items
+                          .select([](RootItem* it) {
+                            return it->kind();
+                          })
+                          .distinct();
 
   if (distinct_types.size() != 1) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -424,7 +413,7 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
     return;
   }
 
-  if (qsizetype(std_editable_items.size()) < items.size()) {
+  if (editable_items.size() < items.size()) {
     // Some items are not editable.
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("Cannot edit some items"),
@@ -432,7 +421,7 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
                           QSystemTrayIcon::MessageIcon::Warning});
   }
 
-  distinct_accounts.front()->editItems(FROM_STD_LIST(QList<RootItem*>, std_editable_items));
+  distinct_accounts.first()->editItems(editable_items.toList());
 
   // Changes are done, unlock the update master lock.
   qApp->feedUpdateLock()->unlock();
@@ -442,13 +431,9 @@ void FeedsView::editChildFeeds() {
   auto items = selectedFeeds(false);
 
   if (!items.isEmpty()) {
-    auto root_items = qlinq::from(items)
-                        .select([](Feed* fd) {
-                          return fd;
-                        })
-                        .toStdList();
+    auto root_items = qlinq::from(items).ofType<RootItem*>().toList();
 
-    editItems(FROM_STD_LIST(QList<RootItem*>, root_items));
+    editItems(root_items);
   }
 }
 

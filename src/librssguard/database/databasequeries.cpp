@@ -1838,10 +1838,10 @@ void DatabaseQueries::moveItem(RootItem* item,
 
   auto neighbors = item->parent()->childItems();
   int max_sort_order = qlinq::from(neighbors)
-                         .select([=](RootItem* it) {
+                         .max([=](RootItem* it) {
                            return it->kind() == item->kind() ? it->sortOrder() : 0;
                          })
-                         .max();
+                         .value_or(0);
 
   if ((!move_top && !move_bottom && item->sortOrder() == move_index) || /* Item is already sorted OK. */
       (!move_top && !move_bottom &&
@@ -1950,11 +1950,12 @@ void DatabaseQueries::moveMessageFilter(QList<MessageFilter*> all_filters,
                                         bool move_bottom,
                                         int move_index,
                                         const QSqlDatabase& db) {
+  // TODO: otestovat Max()
   int max_sort_order = qlinq::from(all_filters)
-                         .select([=](MessageFilter* it) {
+                         .max([=](MessageFilter* it) {
                            return it->sortOrder();
                          })
-                         .max();
+                         .value_or(0);
 
   if ((!move_top && !move_bottom && filter->sortOrder() == move_index) || /* Item is already sorted OK. */
       (!move_top && !move_bottom &&

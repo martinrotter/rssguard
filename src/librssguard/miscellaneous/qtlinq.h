@@ -51,12 +51,43 @@ namespace qlinq {
         return _data;
       }
 
+      int size() const {
+        return _data.size();
+      }
+
       int count() const {
         return _data.size();
       }
 
       bool isEmpty() const {
         return _data.isEmpty();
+      }
+
+      // ofType<U> : filters elements where dynamic_cast<U>(item) succeeds.
+      template <typename U>
+      Query<U> ofType() const {
+        QList<U> result;
+
+        for (const auto& item : _data) {
+          if constexpr (std::is_pointer<T>::value && std::is_pointer<U>::value) {
+            // Pointer → pointer conversion via dynamic_cast
+            if (auto casted = dynamic_cast<typename std::remove_pointer<U>::type*>(item)) {
+              result.append(casted);
+            }
+          }
+          else if constexpr (std::is_pointer<T>::value && !std::is_pointer<U>::value) {
+            // Pointer → reference type not allowed
+            static_assert(!std::is_pointer<U>::value, "ofType<U>() requires U to be a pointer when T is a pointer");
+          }
+          else {
+            // Non-pointer conversion: use typeid
+            if (typeid(item) == typeid(U)) {
+              result.append(static_cast<U>(item));
+            }
+          }
+        }
+
+        return Query<U>(std::move(result));
       }
 
       // where: filter items.
@@ -200,9 +231,31 @@ namespace qlinq {
         return *best;
       }
 
+      // min(selector): return the minimum selector value (not the element).
+      template <typename KeySelector>
+      auto min(KeySelector keySelector) const
+        -> std::optional<typename std::decay<decltype(keySelector(std::declval<T>()))>::type> {
+        using R = typename std::decay<decltype(keySelector(std::declval<T>()))>::type;
+
+        if (_data.isEmpty()) {
+          return std::nullopt;
+        }
+
+        std::optional<R> bestValue;
+        for (const auto& item : _data) {
+          R k = keySelector(item);
+
+          if (!bestValue.has_value() || k < *bestValue) {
+            bestValue = k;
+          }
+        }
+
+        return bestValue;
+      }
+
       // min with key selector (like LINQ's MinBy).
       template <typename KeySelector>
-      std::optional<T> min(KeySelector keySelector) const {
+      std::optional<T> minBy(KeySelector keySelector) const {
         if (_data.isEmpty()) {
           return std::nullopt;
         }
@@ -239,9 +292,31 @@ namespace qlinq {
         return *best;
       }
 
+      // max(selector): return the maximum selector value (not the element).
+      template <typename KeySelector>
+      auto max(KeySelector keySelector) const
+        -> std::optional<typename std::decay<decltype(keySelector(std::declval<T>()))>::type> {
+        using R = typename std::decay<decltype(keySelector(std::declval<T>()))>::type;
+
+        if (_data.isEmpty()) {
+          return std::nullopt;
+        }
+
+        std::optional<R> bestValue;
+        for (const auto& item : _data) {
+          R k = keySelector(item);
+
+          if (!bestValue.has_value() || *bestValue < k) {
+            bestValue = k;
+          }
+        }
+
+        return bestValue;
+      }
+
       // max with key selector (like LINQ's MaxBy).
       template <typename KeySelector>
-      std::optional<T> max(KeySelector keySelector) const {
+      std::optional<T> maxBy(KeySelector keySelector) const {
         if (_data.isEmpty()) {
           return std::nullopt;
         }
