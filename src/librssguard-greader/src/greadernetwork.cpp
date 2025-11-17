@@ -5,12 +5,12 @@
 #include "src/definitions.h"
 #include "src/greaderfeed.h"
 
-#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/network-web/oauth2service.h>
@@ -542,20 +542,19 @@ QList<Message> GreaderNetwork::itemContents(ServiceRoot* root,
         full_url += QSL("&c=%1").arg(continuation);
       }
 
-      std::list inp = qlinq::from(batch_ids)
-                        .select([this](const QString& id) {
-                          return QSL("i=%1").arg(m_service == GreaderServiceRoot::Service::TheOldReader
-                                                   ? id
-                                                   : QUrl::toPercentEncoding(id));
-                        })
-                        .toStdList();
-      QStringList inp_s = FROM_STD_LIST(QStringList, inp);
+      auto inp = qlinq::from(batch_ids)
+                   .select([this](const QString& id) {
+                     return QSL("i=%1").arg(m_service == GreaderServiceRoot::Service::TheOldReader
+                                              ? id
+                                              : QUrl::toPercentEncoding(id));
+                   })
+                   .toList();
 
       if (m_service == GreaderServiceRoot::Service::Reedah || m_service == GreaderServiceRoot::Service::Miniflux) {
-        inp_s.append(tokenParameter());
+        inp.append(tokenParameter());
       }
 
-      QByteArray input = inp_s.join(QSL("&")).toUtf8();
+      QByteArray input = inp.join(QSL("&")).toUtf8();
       QByteArray output_stream;
       auto result_stream =
         NetworkFactory::performNetworkOperation(full_url,
@@ -882,7 +881,7 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
     // Save credentials.
     auto lines = QString::fromUtf8(output).replace(QSL("\r"), QString()).split('\n');
 
-    for (const QString& line : lines) {
+    for (const QString& line : std::as_const(lines)) {
       int eq = line.indexOf('=');
 
       if (eq > 0) {
@@ -1036,7 +1035,7 @@ QStringList GreaderNetwork::decodeItemIds(const QString& stream_json_data, QStri
   continuation = json_doc.object()[QSL("continuation")].toString();
   ids.reserve(json.count());
 
-  for (const QJsonValue& id : json) {
+  for (const QJsonValue& id : std::as_const(json)) {
     ids.append(id.toObject()[QSL("id")].toString());
   }
 
@@ -1055,7 +1054,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
   continuation = json_doc.object()[QSL("continuation")].toString();
   messages.reserve(json.count());
 
-  for (const QJsonValue& obj : json) {
+  for (const QJsonValue& obj : std::as_const(json)) {
     auto message_obj = obj.toObject();
     Message message;
 
@@ -1075,7 +1074,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
     auto enclosures = message_obj[QSL("enclosure")].toArray();
     auto categories = message_obj[QSL("categories")].toArray();
 
-    for (const QJsonValue& alt : alternates) {
+    for (const QJsonValue& alt : std::as_const(alternates)) {
       auto alt_obj = alt.toObject();
       QString mime = alt_obj[QSL("type")].toString();
       QString href = alt_obj[QSL("href")].toString();
@@ -1088,7 +1087,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
       }
     }
 
-    for (const QJsonValue& enc : enclosures) {
+    for (const QJsonValue& enc : std::as_const(enclosures)) {
       auto enc_obj = enc.toObject();
       QString mime = enc_obj[QSL("type")].toString();
       QString href = enc_obj[QSL("href")].toString();
@@ -1096,7 +1095,7 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
       message.m_enclosures.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(href, mime)));
     }
 
-    for (const QJsonValue& cat : categories) {
+    for (const QJsonValue& cat : std::as_const(categories)) {
       QString category = cat.toString();
 
       if (category.endsWith(QSL(GREADER_API_STATE_READ))) {
@@ -1106,13 +1105,13 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
         message.m_isImportant = true;
       }
       else if (category.contains(QSL("label"))) {
-        Label* label = qlinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([category](Label* lbl) {
+        auto label = qlinq::from(active_labels).firstOrDefault([category](Label* lbl) {
           return lbl->customId() == category;
         });
 
-        if (label != nullptr) {
+        if (label.has_value()) {
           // We found live Label object for our assigned label.
-          message.m_assignedLabels.append(label);
+          message.m_assignedLabels.append(label.value());
         }
       }
     }

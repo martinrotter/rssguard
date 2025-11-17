@@ -2,12 +2,12 @@
 
 #include "services/abstract/searchsnode.h"
 
-#include "miscellaneous/qtlinq.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "services/abstract/gui/formaddeditprobe.h"
 #include "services/abstract/serviceroot.h"
 
@@ -28,19 +28,19 @@ void SearchsNode::loadProbes(const QList<Search*>& probes) {
 Search* SearchsNode::probeById(const QString& custom_id) {
   auto chi = childItems();
 
-  return qobject_cast<Search*>(qlinq::from(chi).firstOrDefault([custom_id](RootItem* it) {
-    return it->customId() == custom_id;
-  }));
+  return qobject_cast<Search*>(qlinq::from(chi)
+                                 .firstOrDefault([custom_id](RootItem* it) {
+                                   return it->customId() == custom_id;
+                                 })
+                                 .value_or(nullptr));
 }
 
 QList<Search*> SearchsNode::probes() const {
-  auto list = qlinq::from(childItems())
-                .select([](RootItem* it) {
-                  return static_cast<Search*>(it);
-                })
-                .toStdList();
+  auto list = qlinq::from(childItems()).select([](RootItem* it) {
+    return static_cast<Search*>(it);
+  });
 
-  return FROM_STD_LIST(QList<Search*>, list);
+  return list.toList();
 }
 
 int SearchsNode::countOfUnreadMessages() const {

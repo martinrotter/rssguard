@@ -5,11 +5,11 @@
 #include "src/definitions.h"
 #include "src/ttrssfeed.h"
 
-#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>
@@ -924,7 +924,7 @@ RootItem* TtRssGetFeedsCategoriesResponse::feedsCategories(TtRssNetworkFactory* 
     QVector<QPair<RootItem*, QJsonValue>> pairs;
     pairs.reserve(items_to_process.size());
 
-    for (const QJsonValue& item : items_to_process) {
+    for (const QJsonValue& item : std::as_const(items_to_process)) {
       pairs.append(QPair<RootItem*, QJsonValue>(parent, item));
     }
 
@@ -1033,8 +1033,9 @@ TtRssGetArticleResponse::~TtRssGetArticleResponse() = default;
 QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
   QList<Message> messages;
   auto active_labels = root->labelsNode() != nullptr ? root->labelsNode()->labels() : QList<Label*>();
+  auto labels_linq = qlinq::from(active_labels);
   auto json_msgs = m_rawContent[QSL("content")].toArray();
-  auto* published_lbl = qlinq::from(active_labels).firstOrDefault([](const Label* lbl) {
+  auto published_lbl = labels_linq.firstOrDefault([](const Label* lbl) {
     return lbl->customNumericId() == TTRSS_PUBLISHED_LABEL_ID;
   });
 
@@ -1048,22 +1049,21 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
     message.m_contents = mapped[QSL("content")].toString();
     message.m_rawContents = QJsonDocument(mapped).toJson(QJsonDocument::JsonFormat::Compact);
 
-    if (published_lbl != nullptr && mapped[QSL("published")].toBool()) {
+    if (published_lbl.has_value() && mapped[QSL("published")].toBool()) {
       // Article is published, set label.
-      message.m_assignedLabels.append(published_lbl);
+      message.m_assignedLabels.append(published_lbl.value());
     }
 
     auto json_labels = mapped[QSL("labels")].toArray();
 
     for (const QJsonValue& lbl_val : std::as_const(json_labels)) {
       QString lbl_custom_id = QString::number(lbl_val.toArray().at(0).toInt());
-      Label* label =
-        qlinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([lbl_custom_id](Label* lbl) {
-          return lbl->customId() == lbl_custom_id;
-        });
+      auto label = labels_linq.firstOrDefault([lbl_custom_id](Label* lbl) {
+        return lbl->customId() == lbl_custom_id;
+      });
 
-      if (label != nullptr) {
-        message.m_assignedLabels.append(label);
+      if (label.has_value()) {
+        message.m_assignedLabels.append(label.value());
       }
       else {
         qWarningNN << LOGSEC_TTRSS << "Label with custom ID" << QUOTE_W_SPACE(lbl_custom_id)

@@ -5,9 +5,9 @@
 #include "src/definitions.h"
 #include "src/standardserviceentrypoint.h"
 
-#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 
 #include <QImageReader>
 
@@ -46,18 +46,15 @@ StandardAccountDetails::StandardAccountDetails(QWidget* parent) : QWidget(parent
 
 void StandardAccountDetails::onLoadIconFromFile() {
   auto supported_formats = QImageReader::supportedImageFormats();
-  auto prefixed_formats = qlinq::from(supported_formats)
-                            .select([](const QByteArray& frmt) {
-                              return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
-                            })
-                            .toStdList();
+  auto list_formats = qlinq::from(supported_formats).select([](const QByteArray& frmt) {
+    return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
+  });
 
-  QStringList list_formats = FROM_STD_LIST(QStringList, prefixed_formats);
   QString fil = FileDialog::openFileName(this,
                                          tr("Select icon file for the account"),
                                          qApp->homeFolder(),
                                          {},
-                                         tr("Images (%1)").arg(list_formats.join(QL1C(' '))),
+                                         tr("Images (%1)").arg(list_formats.toList().join(QL1C(' '))),
                                          nullptr,
                                          GENERAL_REMEMBERED_PATH);
 

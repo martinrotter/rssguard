@@ -2,7 +2,6 @@
 
 #include "miscellaneous/application.h"
 
-#include "miscellaneous/qtlinq.h"
 #include "core/feedsmodel.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"
@@ -23,6 +22,7 @@
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/notificationfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
@@ -312,14 +312,11 @@ bool Application::isAlreadyRunning() {
 
 QStringList Application::builtinSounds() const {
   auto builtin_sounds = QDir(QSL(SOUNDS_BUILTIN_DIRECTORY)).entryInfoList(QDir::Filter::Files, QDir::SortFlag::Name);
-  auto iter = qlinq::from(builtin_sounds)
-                .select([](const QFileInfo& i) {
-                  return i.absoluteFilePath();
-                })
-                .toStdList();
-  auto descs = FROM_STD_LIST(QStringList, iter);
+  auto builtin_sounds_paths = qlinq::from(builtin_sounds).select([](const QFileInfo& i) {
+    return i.absoluteFilePath();
+  });
 
-  return descs;
+  return builtin_sounds_paths.toList();
 }
 
 FeedReader* Application::feedReader() {
@@ -1084,12 +1081,12 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
 
   for (const QString& msg : std::as_const(messages)) {
     // Application was running, and someone wants to add new feed.
-    ServiceRoot* rt = qlinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
+    auto rt = qlinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
       return root->supportsFeedAdding();
     });
 
-    if (rt != nullptr) {
-      rt->addNewFeed(nullptr, msg);
+    if (rt.has_value()) {
+      rt.value()->addNewFeed(nullptr, msg);
     }
     else {
       showGuiMessage(Notification::Event::GeneralEvent,

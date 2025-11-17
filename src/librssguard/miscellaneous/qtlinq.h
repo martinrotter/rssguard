@@ -70,17 +70,17 @@ namespace qlinq {
 
         for (const auto& item : _data) {
           if constexpr (std::is_pointer<T>::value && std::is_pointer<U>::value) {
-            // Pointer → pointer conversion via dynamic_cast
+            // Pointer → pointer conversion via dynamic_cast.
             if (auto casted = dynamic_cast<typename std::remove_pointer<U>::type*>(item)) {
               result.append(casted);
             }
           }
           else if constexpr (std::is_pointer<T>::value && !std::is_pointer<U>::value) {
-            // Pointer → reference type not allowed
+            // Pointer → reference type not allowed.
             static_assert(!std::is_pointer<U>::value, "ofType<U>() requires U to be a pointer when T is a pointer");
           }
           else {
-            // Non-pointer conversion: use typeid
+            // Non-pointer conversion: use typeid.
             if (typeid(item) == typeid(U)) {
               result.append(static_cast<U>(item));
             }

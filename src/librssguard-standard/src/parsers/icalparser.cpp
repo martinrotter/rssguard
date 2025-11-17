@@ -4,11 +4,11 @@
 
 #include "src/definitions.h"
 
-#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedrecognizedbutfailedexception.h>
 #include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 
@@ -292,17 +292,19 @@ QVariant IcalendarComponent::getPropertyValue(const QString& property_name, QStr
   }
 
   QStringList keys = m_properties.keys();
-  auto linq = qlinq::from(keys.begin(), keys.end());
-  QString found_key = linq.firstOrDefault([&](const QString& ky) {
-    int index_sep = ky.indexOf(';');
-    bool res = ky.startsWith(property_name) && index_sep == property_name.size();
+  auto linq = qlinq::from(keys);
+  QString found_key = linq
+                        .firstOrDefault([&](const QString& ky) {
+                          int index_sep = ky.indexOf(';');
+                          bool res = ky.startsWith(property_name) && index_sep == property_name.size();
 
-    if (res) {
-      property_modifier = ky.mid(index_sep + 1);
-    }
+                          if (res) {
+                            property_modifier = ky.mid(index_sep + 1);
+                          }
 
-    return res;
-  });
+                          return res;
+                        })
+                        .value_or(QString());
 
   return m_properties.value(found_key);
 }

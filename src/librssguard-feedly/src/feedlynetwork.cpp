@@ -5,10 +5,10 @@
 #include "src/definitions.h"
 #include "src/feedlyserviceroot.h"
 
-#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/network-web/webfactory.h>
@@ -128,12 +128,10 @@ void FeedlyNetwork::untagEntries(const QString& tag_id, const QStringList& msg_c
 
     i += FEEDLY_UNTAG_BATCH_SIZE;
 
-    auto ids = qlinq::from(msg_batch)
-                 .select([](const QString& msg_id) {
-                   return QString(QUrl::toPercentEncoding(msg_id));
-                 })
-                 .toStdList();
-    QString final_url = target_url + FROM_STD_LIST(QStringList, ids).join(',');
+    auto ids = qlinq::from(msg_batch).select([](const QString& msg_id) {
+      return QString(QUrl::toPercentEncoding(msg_id));
+    });
+    QString final_url = target_url + ids.toList().join(',');
     auto result = NetworkFactory::performNetworkOperation(final_url,
                                                           timeout,
                                                           {},
@@ -481,12 +479,12 @@ QList<Message> FeedlyNetwork::decodeStreamContents(const QByteArray& stream_cont
         // NOTE: We don't do anything with "global read" tag.
       }
       else {
-        Label* label = qlinq::from(active_labels.begin(), active_labels.end()).firstOrDefault([tag_id](Label* lbl) {
+        auto label = qlinq::from(active_labels).firstOrDefault([tag_id](Label* lbl) {
           return lbl->customId() == tag_id;
         });
 
-        if (label != nullptr) {
-          message.m_assignedLabels.append(label);
+        if (label.has_value()) {
+          message.m_assignedLabels.append(label.value());
         }
         else {
           qCriticalNN << LOGSEC_FEEDLY << "Failed to find live Label object for tag" << QUOTE_W_SPACE_DOT(tag_id);

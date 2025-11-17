@@ -2,13 +2,13 @@
 
 #include "services/abstract/serviceroot.h"
 
-#include "miscellaneous/qtlinq.h"
 #include "core/messagesmodel.h"
 #include "database/databasequeries.h"
 #include "definitions/globals.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
@@ -46,53 +46,31 @@ void ServiceRoot::deleteItem() {
 
 void ServiceRoot::editItems(const QList<RootItem*>& items) {
   // Feed editing.
-  auto std_feeds = qlinq::from(items)
-                     .select([](RootItem* it) {
-                       return qobject_cast<Feed*>(it);
-                     })
-                     .where([](Feed* fd) {
-                       return fd != nullptr;
-                     })
-                     .toStdList();
+  // TODO: TEST
+  auto feeds = qlinq::from(items).ofType<Feed*>();
 
-  if (!std_feeds.empty()) {
+  if (!feeds.isEmpty()) {
     QScopedPointer<FormFeedDetails> form_pointer(new FormFeedDetails(this, qApp->mainFormWidget()));
-
-    form_pointer->addEditFeed<Feed>(FROM_STD_LIST(QList<Feed*>, std_feeds));
+    form_pointer->addEditFeed<Feed>(feeds.toList());
     return;
   }
 
   // Category editing.
-  auto std_categories = qlinq::from(items)
-                          .select([](RootItem* it) {
-                            return qobject_cast<Category*>(it);
-                          })
-                          .where([](Category* fd) {
-                            return fd != nullptr;
-                          })
-                          .toStdList();
+  auto categories = qlinq::from(items).ofType<Category*>();
 
-  if (!std_categories.empty()) {
+  if (!categories.isEmpty()) {
     QScopedPointer<FormCategoryDetails> form_pointer(new FormCategoryDetails(this, nullptr, qApp->mainFormWidget()));
-
-    form_pointer->addEditCategory<Category>(FROM_STD_LIST(QList<Category*>, std_categories));
+    form_pointer->addEditCategory<Category>(categories.toList());
     return;
   }
 
   // Label editing.
-  auto std_labels = qlinq::from(items)
-                      .select([](RootItem* it) {
-                        return qobject_cast<Label*>(it);
-                      })
-                      .where([](Label* fd) {
-                        return fd != nullptr;
-                      })
-                      .toStdList();
+  auto labels = qlinq::from(items).ofType<Label*>();
 
-  if (std_labels.size() == 1) {
+  if (labels.size() == 1) {
     // Support editing labels one by one.
     FormAddEditLabel form(qApp->mainFormWidget());
-    Label* lbl = std_labels.front();
+    Label* lbl = labels.first();
 
     if (form.execForEdit(lbl)) {
       QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
@@ -115,19 +93,12 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
   }
 
   // Probe editing.
-  auto std_probes = qlinq::from(items)
-                      .select([](RootItem* it) {
-                        return qobject_cast<Search*>(it);
-                      })
-                      .where([](Search* fd) {
-                        return fd != nullptr;
-                      })
-                      .toStdList();
+  auto probes = qlinq::from(items).ofType<Search*>();
 
-  if (std_probes.size() == 1) {
+  if (probes.size() == 1) {
     // Support editing probes one by one.
     FormAddEditProbe form(qApp->mainFormWidget());
-    Search* probe = std_probes.front();
+    Search* probe = probes.first();
 
     if (form.execForEdit(probe)) {
       QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
@@ -208,7 +179,8 @@ QList<QAction*> ServiceRoot::contextMenuFeedsList(const QList<RootItem*>& select
         if (m_contextMenuBin.isEmpty()) {
           QAction* restore_action =
             new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Restore recycle bin"), this);
-          QAction* empty_action = new QAction(qApp->icons()->fromTheme(QSL("edit-clear")), tr("Empty recycle bin"), this);
+          QAction* empty_action =
+            new QAction(qApp->icons()->fromTheme(QSL("edit-clear")), tr("Empty recycle bin"), this);
 
           connect(restore_action, &QAction::triggered, m_recycleBin, &RecycleBin::restore);
           connect(empty_action, &QAction::triggered, m_recycleBin, &RecycleBin::empty);
@@ -230,7 +202,6 @@ QList<QAction*> ServiceRoot::contextMenuFeedsList(const QList<RootItem*>& select
 
         return m_contextMenuLabels;
       }
-
 
       default:
         return {};
@@ -1066,13 +1037,8 @@ void ServiceRoot::onAfterLabelMessageAssignmentChanged(const QList<Label*>& labe
     lbl->updateCounts();
   };
 
-  auto list = qlinq::from(labels)
-                .select([](Label* lbl) {
-                  return lbl;
-                })
-                .toStdList();
-
-  account()->itemChanged(FROM_STD_LIST(QList<RootItem*>, list));
+  auto list = qlinq::from(labels).ofType<RootItem*>();
+  account()->itemChanged(list.toList());
 }
 
 void ServiceRoot::onBeforeMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {
@@ -1092,10 +1058,9 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages, boo
                       .select([](const Message& msg) {
                         return msg.m_feedId;
                       })
-                      .distinct()
-                      .toStdVector();
+                      .distinct();
 
-    if (feed_ids.empty() || feed_ids.size() > 20) {
+    if (feed_ids.isEmpty() || feed_ids.size() > 20) {
       updateCounts();
       itemChanged({getSubTree<RootItem>()});
     }
@@ -1122,12 +1087,12 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages, boo
       }
 
       if (m_labelsNode != nullptr) {
+        // TODO: TEST
         auto msg_lbls = msgs_linq
                           .selectMany([](const Message& msg) {
                             return qlinq::from(msg.m_assignedLabels);
                           })
-                          .distinct()
-                          .toStdVector();
+                          .distinct();
 
         for (Label* lbl : msg_lbls) {
           if (lbl != nullptr) {

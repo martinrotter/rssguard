@@ -2,9 +2,9 @@
 
 #include "services/abstract/rootitem.h"
 
-#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
@@ -635,11 +635,9 @@ RootItem::Kind operator&(RootItem::Kind a, RootItem::Kind b) {
 }
 
 QList<RootItem*> RootItem::childItems(Kind kind) const {
-  auto linq = qlinq::from(m_childItems)
-                .where([=](RootItem* it) {
-                  return it->kind() == kind;
-                })
-                .toStdList();
+  auto linq = qlinq::from(m_childItems).where([=](RootItem* it) {
+    return it->kind() == kind;
+  });
 
-  return FROM_STD_LIST(QList<RootItem*>, linq);
+  return linq.toList();
 }

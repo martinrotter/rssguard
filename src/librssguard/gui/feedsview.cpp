@@ -134,7 +134,7 @@ void FeedsView::copyUrlOfSelectedFeeds() const {
   auto feeds = selectedFeeds(true);
   QStringList urls;
 
-  for (const auto* feed : feeds) {
+  for (const auto* feed : std::as_const(feeds)) {
     if (!feed->source().isEmpty()) {
       urls << feed->source();
     }
@@ -298,7 +298,7 @@ void FeedsView::enableDisableSelectedFeeds() {
     return;
   }
 
-  for (Feed* feed : feeds) {
+  for (Feed* feed : std::as_const(feeds)) {
     feed->setIsSwitchedOff(!feed->isSwitchedOff());
 
     DatabaseQueries::createOverwriteFeed(qApp->database()->driver()->connection(metaObject()->className()),
@@ -441,13 +441,9 @@ void FeedsView::editRecursiveFeeds() {
   auto items = selectedFeeds(true);
 
   if (!items.isEmpty()) {
-    auto root_items = qlinq::from(items)
-                        .select([](Feed* fd) {
-                          return fd;
-                        })
-                        .toStdList();
+    auto root_items = qlinq::from(items).ofType<RootItem*>().toList();
 
-    editItems(FROM_STD_LIST(QList<RootItem*>, root_items));
+    editItems(root_items);
   }
 }
 
@@ -481,18 +477,16 @@ void FeedsView::deleteSelectedItem() {
   */
 
   QList<RootItem*> selected_items = selectedItems();
-  auto std_deletable_items = qlinq::from(selected_items)
-                               .where([](RootItem* it) {
-                                 return it->canBeDeleted();
-                               })
-                               .toStdList();
+  auto deletable_items = qlinq::from(selected_items).where([](RootItem* it) {
+    return it->canBeDeleted();
+  });
 
-  if (std_deletable_items.empty()) {
+  if (deletable_items.isEmpty()) {
     qApp->feedUpdateLock()->unlock();
     return;
   }
 
-  if (qsizetype(std_deletable_items.size()) < selected_items.size()) {
+  if (deletable_items.size() < selected_items.size()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          GuiMessage(tr("Some items won't be deleted"),
                                     tr("Some selected items will not be deleted, because they cannot be deleted."),
@@ -502,8 +496,8 @@ void FeedsView::deleteSelectedItem() {
   // Ask user first.
   if (MsgBox::show(qApp->mainFormWidget(),
                    QMessageBox::Icon::Question,
-                   tr("Deleting %n items", nullptr, int(std_deletable_items.size())),
-                   tr("You are about to completely delete %n items.", nullptr, int(std_deletable_items.size())),
+                   tr("Deleting %n items", nullptr, int(deletable_items.size())),
+                   tr("You are about to completely delete %n items.", nullptr, int(deletable_items.size())),
                    tr("Are you sure?"),
                    QString(),
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
@@ -513,14 +507,12 @@ void FeedsView::deleteSelectedItem() {
     return;
   }
 
-  auto std_pointed_items = qlinq::from(std_deletable_items)
-                             .select([](RootItem* it) {
-                               return QPointer<RootItem>(it);
-                             })
-                             .toStdList();
+  auto pointed_items = deletable_items.select([](RootItem* it) {
+    return QPointer<RootItem>(it);
+  });
 
   try {
-    for (const QPointer<RootItem>& pnt : std_pointed_items) {
+    for (const QPointer<RootItem>& pnt : pointed_items) {
       if (pnt.isNull()) {
         continue;
       }
@@ -544,14 +536,11 @@ void FeedsView::deleteSelectedItem() {
 }
 
 void FeedsView::moveSelectedItemUp() {
-  auto its = selectedItems();
-  auto std_its = qlinq::from(its)
-                   .orderBy([](RootItem* it) {
-                     return it->sortOrder();
-                   })
-                   .toStdList();
+  auto its = qlinq::from(selectedItems()).orderBy([](RootItem* it) {
+    return it->sortOrder();
+  });
 
-  for (RootItem* it : std_its) {
+  for (RootItem* it : its) {
     m_sourceModel->changeSortOrder(it, false, false, it->sortOrder() - 1);
   }
 
@@ -559,15 +548,11 @@ void FeedsView::moveSelectedItemUp() {
 }
 
 void FeedsView::moveSelectedItemDown() {
-  auto its = selectedItems();
-  auto std_its = qlinq::from(its)
-                   .orderBy([](RootItem* it) {
-                     return it->sortOrder();
-                   })
-                   .reverse()
-                   .toStdList();
+  auto its = qlinq::from(selectedItems()).orderByDescending([](RootItem* it) {
+    return it->sortOrder();
+  });
 
-  for (RootItem* it : std_its) {
+  for (RootItem* it : its) {
     m_sourceModel->changeSortOrder(it, false, false, it->sortOrder() + 1);
   }
 
@@ -887,7 +872,7 @@ void FeedsView::saveExpandStates(RootItem* item) {
                                             RootItem::Kind::Labels | RootItem::Kind::Probes);
 
   // Iterate all categories and save their expand statuses.
-  for (const RootItem* it : items) {
+  for (const RootItem* it : std::as_const(items)) {
     const QString setting_name = it->hashCode();
     QModelIndex source_index = sourceModel()->indexForItem(it);
     QModelIndex visible_index = model()->mapFromSource(source_index);

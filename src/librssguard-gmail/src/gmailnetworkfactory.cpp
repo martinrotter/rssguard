@@ -183,7 +183,7 @@ QList<RootItem*> GmailNetworkFactory::labels(bool only_user_labels, const QNetwo
   QJsonObject obj = QJsonDocument::fromJson(output).object();
   QJsonArray lbls_arr = obj[QSL("labels")].toArray();
 
-  for (const QJsonValue& lbl_val : lbls_arr) {
+  for (const QJsonValue& lbl_val : std::as_const(lbls_arr)) {
     QJsonObject lbl_obj = lbl_val.toObject();
 
     if (only_user_labels && lbl_obj[QSL("type")].toString() != QSL(GMAIL_LABEL_TYPE_USER)) {
@@ -539,12 +539,12 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
       msg.m_isImportant = true;
     }
     else {
-      auto* active_lb = active_labels_linq.firstOrDefault([lbl](Label* lb) {
+      auto active_lb = active_labels_linq.firstOrDefault([lbl](Label* lb) {
         return lb->customId() == lbl;
       });
 
-      if (active_lb != nullptr) {
-        msg.m_assignedLabels.append(active_lb);
+      if (active_lb.has_value()) {
+        msg.m_assignedLabels.append(active_lb.value());
       }
     }
   }
@@ -671,7 +671,7 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
     QMap<QString, QString> result;
     auto json_headers = doc.object()[QSL("payload")].toObject()[QSL("headers")].toArray();
 
-    for (const auto& header : json_headers) {
+    for (const auto& header : std::as_const(json_headers)) {
       QJsonObject obj_header = header.toObject();
 
       result.insert(obj_header[QSL("name")].toString(), obj_header[QSL("value")].toString());
@@ -767,7 +767,7 @@ QStringList GmailNetworkFactory::decodeLiteMessages(const QString& messages_json
   next_page_token = top_object[QSL("nextPageToken")].toString();
   message_ids.reserve(json_msgs.count());
 
-  for (const QJsonValue& obj : json_msgs) {
+  for (const QJsonValue& obj : std::as_const(json_msgs)) {
     auto message_obj = obj.toObject();
 
     message_ids << message_obj[QSL("id")].toString();

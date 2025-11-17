@@ -5,12 +5,12 @@
 #include "src/definitions.h"
 #include "src/gui/standardfeednetworkdetails.h"
 
-#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/exceptions/scriptexception.h>
 #include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>
@@ -375,18 +375,15 @@ void StandardFeedDetails::onPostProcessScriptChanged(const QString& new_pp) {
 
 void StandardFeedDetails::onLoadIconFromFile() {
   auto supported_formats = QImageReader::supportedImageFormats();
-  auto prefixed_formats = qlinq::from(supported_formats)
-                            .select([](const QByteArray& frmt) {
-                              return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
-                            })
-                            .toStdList();
+  auto list_formats = qlinq::from(supported_formats).select([](const QByteArray& frmt) {
+    return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
+  });
 
-  QStringList list_formats = FROM_STD_LIST(QStringList, prefixed_formats);
   QString fil = FileDialog::openFileName(this,
                                          tr("Select icon file for the feed"),
                                          qApp->homeFolder(),
                                          {},
-                                         tr("Images (%1)").arg(list_formats.join(QL1C(' '))),
+                                         tr("Images (%1)").arg(list_formats.toList().join(QL1C(' '))),
                                          nullptr,
                                          GENERAL_REMEMBERED_PATH);
 
@@ -465,13 +462,11 @@ void StandardFeedDetails::loadCategories(const QList<Category*>& categories, Roo
   QList<Category*> cats;
 
   if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::SortAlphabetically)).toBool()) {
-    auto sorted = qlinq::from(categories)
-                    .orderBy([](Category* cat) {
-                      return cat->title().toLower();
-                    })
-                    .toStdList();
-
-    cats = FROM_STD_LIST(QList<Category*>, sorted);
+    cats = qlinq::from(categories)
+             .orderBy([](Category* cat) {
+               return cat->title().toLower();
+             })
+             .toList();
   }
   else {
     cats = categories;
@@ -479,7 +474,7 @@ void StandardFeedDetails::loadCategories(const QList<Category*>& categories, Roo
 
   m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue(root_item));
 
-  for (Category* category : cats) {
+  for (Category* category : std::as_const(cats)) {
     m_ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue(category));
   }
 }
