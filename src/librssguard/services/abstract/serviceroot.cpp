@@ -8,7 +8,7 @@
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"

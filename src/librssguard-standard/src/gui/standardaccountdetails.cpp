@@ -7,7 +7,7 @@
 
 #include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/miscellaneous/iconfactory.h>
-#include <librssguard/miscellaneous/qtlinq.h>
+#include <qtlinq/qtlinq.h>
 
 #include <QImageReader>
 

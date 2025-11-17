@@ -14,7 +14,7 @@
 #include "gui/toolbars/messagestoolbar.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/feedreader.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "network-web/webfactory.h"
 #include "qnamespace.h"

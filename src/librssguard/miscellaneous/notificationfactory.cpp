@@ -2,7 +2,7 @@
 
 #include "miscellaneous/notificationfactory.h"
 
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"

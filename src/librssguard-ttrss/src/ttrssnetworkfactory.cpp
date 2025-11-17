@@ -9,7 +9,7 @@
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
-#include <librssguard/miscellaneous/qtlinq.h>
+#include <qtlinq/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>

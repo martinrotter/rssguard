@@ -10,3 +10,6 @@
 [submodule "src/librssguard/3rd-party/litehtml"]
 	path = src/librssguard/3rd-party/litehtml
 	url = https://github.com/litehtml/litehtml.git
+[submodule "src/librssguard/3rd-party/qtlinq"]
+	path = src/librssguard/3rd-party/qtlinq
+	url = https://github.com/martinrotter/qtlinq.git

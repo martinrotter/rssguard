@@ -4,7 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "gui/notifications/singlenotificationeditor.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 
 #include <QVBoxLayout>
 

@@ -7,7 +7,7 @@
 #include "src/standardfeed.h"
 #include "src/standardserviceroot.h"
 
-#include <librssguard/miscellaneous/qtlinq.h>
+#include <qtlinq/qtlinq.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/miscellaneous/application.h>

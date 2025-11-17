@@ -2,7 +2,7 @@
 
 #include "gui/mediaplayer/libmpv/libmpvbackend.h"
 
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "definitions/definitions.h"
 #include "gui/mediaplayer/libmpv/libmpvwidget.h"
 #include "gui/mediaplayer/libmpv/qthelper.h"

@@ -5,7 +5,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/dialogs/formupdate.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
 

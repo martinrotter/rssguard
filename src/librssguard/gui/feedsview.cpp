@@ -11,7 +11,7 @@
 #include "gui/reusable/treeviewcolumnsmenu.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/feed.h"

@@ -10,7 +10,7 @@
 #include "filtering/filteringsystem.h"
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/thread.h"
 #include "services/abstract/cacheforserviceroot.h"

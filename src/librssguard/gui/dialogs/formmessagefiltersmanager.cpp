@@ -14,7 +14,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/accountcheckmodel.h"
 #include "services/abstract/feed.h"

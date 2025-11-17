@@ -2,7 +2,7 @@
 
 #include "gui/notifications/toastnotificationsmanager.h"
 
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "gui/notifications/articlelistnotification.h"
 #include "gui/notifications/basetoastnotification.h"
 #include "gui/notifications/toastnotification.h"

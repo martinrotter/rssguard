@@ -227,7 +227,6 @@ set(SOURCES
   miscellaneous/notificationfactory.h
   miscellaneous/pluginfactory.cpp
   miscellaneous/pluginfactory.h
-  miscellaneous/qtlinq.h
   miscellaneous/regexfactory.cpp
   miscellaneous/regexfactory.h
   miscellaneous/settings.cpp
@@ -404,6 +403,9 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
 
   message(STATUS "Found libmpv: ${LibMPV_LIBRARIES}.")
 endif()
+
+# qtling.
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/qtlinq/include)
 
 # QLitehtml-based HTML viewer.
 list(APPEND SOURCES

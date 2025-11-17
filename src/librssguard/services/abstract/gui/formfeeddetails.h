@@ -3,8 +3,7 @@
 #ifndef FORMFEEDDETAILS_H
 #define FORMFEEDDETAILS_H
 
-#include "definitions/definitions.h"
-#include "miscellaneous/qtlinq.h"
+#include <qtlinq/qtlinq.h>
 
 #include <QDialog>
 

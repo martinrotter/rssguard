@@ -22,7 +22,7 @@
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/notificationfactory.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"

@@ -12,6 +12,8 @@ function(prepare_rssguard_plugin plugin_target_name)
     list(APPEND SOURCES "${CMAKE_BINARY_DIR}/rssguard.rc")
   endif()
 
+  include_directories(${CMAKE_SOURCE_DIR}/src/librssguard/3rd-party/qtlinq/include)
+
   add_library(${PLUGIN_TARGET} SHARED ${SOURCES} ${QM_FILES})
 
   target_link_libraries(${plugin_target_name} PUBLIC

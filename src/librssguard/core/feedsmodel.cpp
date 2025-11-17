@@ -2,7 +2,6 @@
 
 #include "core/feedsmodel.h"
 
-#include "miscellaneous/qtlinq.h"
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
@@ -10,6 +9,7 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceentrypoint.h"

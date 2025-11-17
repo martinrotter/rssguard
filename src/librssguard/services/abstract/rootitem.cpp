@@ -4,7 +4,7 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"

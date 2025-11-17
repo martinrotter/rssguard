@@ -4,7 +4,7 @@
 
 #include "exceptions/filteringexception.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/labelsnode.h"
 
 FilteringSystem::FilteringSystem(FiteringUseCase mode,

@@ -2,7 +2,7 @@
 
 #include "gui/reusable/searchlineedit.h"
 
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"

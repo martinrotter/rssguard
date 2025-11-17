@@ -8,13 +8,13 @@
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/application.h>
-#include <librssguard/miscellaneous/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/network-web/webfactory.h>
 #include <librssguard/services/abstract/category.h>
 #include <librssguard/services/abstract/label.h>
 #include <librssguard/services/abstract/labelsnode.h>
+#include <qtlinq/qtlinq.h>
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
 #include <librssguard/network-web/oauth2service.h>

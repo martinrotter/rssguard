@@ -9,8 +9,8 @@
 #include "filtering/filteringsystem.h"
 #include "miscellaneous/domdocument.h"
 #include "miscellaneous/iofactory.h"
-#include "miscellaneous/qtlinq.h"
 #include "miscellaneous/textfactory.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/labelsnode.h"
 
 #include <QHostInfo>
@@ -29,7 +29,7 @@ bool FilterMessage::assignLabel(const QString& label_custom_id) const {
   });
 
   if (lbl.has_value()) {
-    if (!m_message->m_assignedLabels.contains(lbl)) {
+    if (!m_message->m_assignedLabels.contains(lbl.value())) {
       m_message->m_assignedLabels.append(lbl.value());
     }
 

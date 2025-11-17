@@ -9,7 +9,7 @@
 #include "gui/guiutilities.h"
 #include "gui/reusable/baselineedit.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/category.h"
 #include "services/abstract/gui/multifeededitcheckbox.h"
 #include "services/abstract/rootitem.h"

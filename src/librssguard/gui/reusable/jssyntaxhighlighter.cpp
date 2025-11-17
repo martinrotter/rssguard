@@ -3,7 +3,7 @@
 #include "gui/reusable/jssyntaxhighlighter.h"
 
 #include "definitions/definitions.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 
 JsSyntaxHighlighter::JsSyntaxHighlighter(QTextDocument* parent) : QSyntaxHighlighter(parent) {
   HighlightingRule rule;

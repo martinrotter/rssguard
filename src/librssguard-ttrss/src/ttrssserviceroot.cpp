@@ -10,7 +10,7 @@
 #include "src/ttrssnetworkfactory.h"
 #include "src/ttrssserviceentrypoint.h"
 
-#include <librssguard/miscellaneous/qtlinq.h>
+#include <qtlinq/qtlinq.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/exceptions/networkexception.h>

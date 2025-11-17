@@ -12,7 +12,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/pluginfactory.h"
-#include "miscellaneous/qtlinq.h"
+#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceentrypoint.h"
