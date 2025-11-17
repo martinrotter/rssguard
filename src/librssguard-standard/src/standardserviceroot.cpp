@@ -29,10 +29,10 @@
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/miscellaneous/mutex.h>
-#include <qtlinq/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/services/abstract/gui/formcategorydetails.h>
+#include <qtlinq/qtlinq.h>
 
 #if defined(ENABLE_COMPRESSED_SITEMAP)
 #include "src/3rd-party/qcompressor/qcompressor.h"
@@ -142,21 +142,15 @@ FormAccountDetails* StandardServiceRoot::accountSetupDialog() const {
 }
 
 void StandardServiceRoot::editItems(const QList<RootItem*>& items) {
-  auto std_feeds = qlinq::from(items)
-                     .select([](RootItem* it) {
-                       return qobject_cast<Feed*>(it);
-                     })
-                     .where([](Feed* fd) {
-                       return fd != nullptr;
-                     });
+  auto feeds = qlinq::from(items).ofType<Feed*>();
 
-  if (!std_feeds.isEmpty()) {
+  if (!feeds.isEmpty()) {
     QScopedPointer<FormStandardFeedDetails> form_pointer(new FormStandardFeedDetails(this,
                                                                                      nullptr,
                                                                                      {},
                                                                                      qApp->mainFormWidget()));
 
-    form_pointer->addEditFeed<StandardFeed>(std_feeds.toList());
+    form_pointer->addEditFeed<StandardFeed>(feeds.toList());
     return;
   }
 
