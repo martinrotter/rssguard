@@ -58,12 +58,12 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1064"/>
       <source>Application is already running.</source>
-      <translation>Die Anwendung läuft bereits.</translation>
+      <translation>Anwendung wird bereits ausgeführt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="506"/>
       <source>Output directory is not writable.</source>
-      <translation>Das Ausgabeverzeichnis ist nicht beschreibbar.</translation>
+      <translation>Ausgabeverzeichnis ist schreibgeschützt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="514"/>
@@ -877,7 +877,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="182"/>
       <source>Access token is okay.</source>
-      <translation>Zugangs-Token ist ok.</translation>
+      <translation>Zugangs-Token ist in Ordnung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="153"/>
@@ -1008,7 +1008,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="179"/>
       <source>Search feeds</source>
-      <translation>Suche Freunde</translation>
+      <translation>Feeds durchsuchen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="187"/>
