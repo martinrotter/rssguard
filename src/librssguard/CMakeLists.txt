@@ -404,9 +404,6 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
   message(STATUS "Found libmpv: ${LibMPV_LIBRARIES}.")
 endif()
 
-# qtling.
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/qtlinq/include)
-
 # QLitehtml-based HTML viewer.
 list(APPEND SOURCES
   # gumbo
@@ -545,6 +542,12 @@ target_include_directories(rssguard
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/notifications
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/toolbars
   ${CMAKE_CURRENT_SOURCE_DIR}/gui/richtexteditor
+)
+
+# qtlinq
+target_include_directories(rssguard
+  PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/qtlinq/include
 )
 
 target_compile_definitions(rssguard
