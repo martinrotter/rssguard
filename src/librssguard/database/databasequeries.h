@@ -185,7 +185,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void moveItem(RootItem* item, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db);
 
     // Message filters operators.
-    static void moveMessageFilter(QList<MessageFilter*> all_filters,
+    static void moveMessageFilter(const QList<MessageFilter*>& all_filters,
                                   MessageFilter* filter,
                                   bool move_top,
                                   bool move_bottom,

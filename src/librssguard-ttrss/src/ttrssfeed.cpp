@@ -36,25 +36,6 @@ void TtRssFeed::deleteItem() {
   }
 }
 
-/*
-QList<QAction*> TtRssFeed::contextMenuFeedsList() {
-  auto menu = Feed::contextMenuFeedsList();
-
-  if (customNumericId() == TTRSS_PUBLISHED_FEED_ID) {
-    if (m_actionShareToPublished == nullptr) {
-      m_actionShareToPublished =
-        new QAction(qApp->icons()->fromTheme(QSL("emblem-shared")), tr("Share to published"), this);
-
-      connect(m_actionShareToPublished, &QAction::triggered, serviceRoot(), &TtRssServiceRoot::shareToPublished);
-    }
-
-    menu.append(m_actionShareToPublished);
-  }
-
-  return menu;
-}
-*/
-
 void TtRssFeed::removeItself() {
   DatabaseQueries::deleteFeed(qApp->database()->driver()->connection(metaObject()->className()),
                               this,

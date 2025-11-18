@@ -7,8 +7,8 @@
 #include "exceptions/sqlexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/category.h"
 
 #include <QSqlDriver>
@@ -1944,13 +1944,12 @@ void DatabaseQueries::moveItem(RootItem* item,
   item->setSortOrder(move_index);
 }
 
-void DatabaseQueries::moveMessageFilter(QList<MessageFilter*> all_filters,
+void DatabaseQueries::moveMessageFilter(const QList<MessageFilter*>& all_filters,
                                         MessageFilter* filter,
                                         bool move_top,
                                         bool move_bottom,
                                         int move_index,
                                         const QSqlDatabase& db) {
-  // TODO: otestovat Max()
   int max_sort_order = qlinq::from(all_filters)
                          .max([=](MessageFilter* it) {
                            return it->sortOrder();

@@ -45,7 +45,8 @@
 #include <QTextCodec>
 #include <QThread>
 
-StandardServiceRoot::StandardServiceRoot(RootItem* parent) : ServiceRoot(parent), m_spacingSameHostsRequests(0) {
+StandardServiceRoot::StandardServiceRoot(RootItem* parent)
+  : ServiceRoot(parent), m_spacingSameHostsRequests(0), m_actionFetchMetadata(nullptr) {
   setIcon(StandardServiceEntryPoint().icon());
   setDescription(tr("This is the obligatory service account for standard RSS/RDF/ATOM feeds."));
 }
@@ -494,12 +495,14 @@ QList<QAction*> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem*>
                        })
                        .toList();
 
-    auto* action_metadata =
-      new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("emblem-downloads")), tr("Fetch metadata"), this);
+    if (m_actionFetchMetadata == nullptr) {
+      m_actionFetchMetadata =
+        new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("emblem-downloads")), tr("Fetch metadata"), this);
+    }
 
-    my_menu.append(action_metadata);
-
-    connect(action_metadata, &QAction::triggered, this, [this, all_feeds, selected_items]() {
+    my_menu.append(m_actionFetchMetadata);
+    m_actionFetchMetadata->disconnect();
+    connect(m_actionFetchMetadata, &QAction::triggered, this, [this, all_feeds, selected_items]() {
       fetchMetadataForAllFeeds(all_feeds);
       itemChanged(selected_items);
     });

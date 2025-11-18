@@ -46,7 +46,6 @@ void ServiceRoot::deleteItem() {
 
 void ServiceRoot::editItems(const QList<RootItem*>& items) {
   // Feed editing.
-  // TODO: TEST
   auto feeds = qlinq::from(items).ofType<Feed*>();
 
   if (!feeds.isEmpty()) {
@@ -1087,7 +1086,6 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages, boo
       }
 
       if (m_labelsNode != nullptr) {
-        // TODO: TEST
         auto msg_lbls = msgs_linq
                           .selectMany([](const Message& msg) {
                             return qlinq::from(msg.m_assignedLabels);

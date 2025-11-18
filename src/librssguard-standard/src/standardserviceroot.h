@@ -79,6 +79,7 @@ class StandardServiceRoot : public ServiceRoot {
     int m_spacingSameHostsRequests;
     QHash<QString, QDateTime> m_spacingHosts;
     QMutex m_spacingMutex;
+    QAction* m_actionFetchMetadata;
 };
 
 #endif // STANDARDSERVICEROOT_H

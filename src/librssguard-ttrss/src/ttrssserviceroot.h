@@ -30,6 +30,7 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual FormAccountDetails* accountSetupDialog() const;
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
+    virtual QList<QAction*> contextMenuFeedsList(const QList<RootItem*>& selected_items);
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
     virtual QString additionalTooltip() const;
     virtual void saveAllCachedData(bool ignore_errors);
@@ -56,6 +57,7 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
   private:
     TtRssNetworkFactory* m_network;
+    QAction* m_actionSharePublished;
 };
 
 #endif // TTRSSSERVICEROOT_H

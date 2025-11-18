@@ -72,12 +72,6 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_fetchFullArticlesInPlainText = other.fetchFullArticlesInPlainText();
 }
 
-/*
-QList<QAction*> StandardFeed::contextMenuFeedsList() {
-  return serviceRoot()->getContextMenuForFeed(this);
-}
-*/
-
 QString StandardFeed::additionalTooltip() const {
   QString base_tooltip = Feed::additionalTooltip();
 

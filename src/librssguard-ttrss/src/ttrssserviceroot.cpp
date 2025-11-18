@@ -10,7 +10,6 @@
 #include "src/ttrssnetworkfactory.h"
 #include "src/ttrssserviceentrypoint.h"
 
-#include <qtlinq/qtlinq.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/exceptions/networkexception.h>
@@ -19,11 +18,13 @@
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/services/abstract/labelsnode.h>
+#include <qtlinq/qtlinq.h>
 
 #include <QPair>
 #include <QSqlTableModel>
 
-TtRssServiceRoot::TtRssServiceRoot(RootItem* parent) : ServiceRoot(parent), m_network(new TtRssNetworkFactory()) {
+TtRssServiceRoot::TtRssServiceRoot(RootItem* parent)
+  : ServiceRoot(parent), m_network(new TtRssNetworkFactory()), m_actionSharePublished(nullptr) {
   setIcon(TtRssServiceEntryPoint().icon());
 }
 
@@ -97,6 +98,31 @@ bool TtRssServiceRoot::supportsFeedAdding() const {
 
 bool TtRssServiceRoot::supportsCategoryAdding() const {
   return false;
+}
+
+QList<QAction*> TtRssServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items) {
+  auto base_menu = ServiceRoot::contextMenuFeedsList(selected_items);
+
+  if (selected_items.size() == 1) {
+    auto* first = selected_items.first();
+
+    if (first->kind() == RootItem::Kind::Feed) {
+      auto* feed = qobject_cast<TtRssFeed*>(first);
+
+      if (feed->customNumericId() == TTRSS_PUBLISHED_FEED_ID) {
+        if (m_actionSharePublished == nullptr) {
+          m_actionSharePublished =
+            new QAction(qApp->icons()->fromTheme(QSL("emblem-shared")), tr("Share to published"), this);
+        }
+
+        m_actionSharePublished->disconnect();
+        connect(m_actionSharePublished, &QAction::triggered, this, &TtRssServiceRoot::shareToPublished);
+        base_menu.append(m_actionSharePublished);
+      }
+    }
+  }
+
+  return base_menu;
 }
 
 void TtRssServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
