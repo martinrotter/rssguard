@@ -133,7 +133,7 @@ void QLiteHtmlArticleViewer::setHtml(const QString& html, const QUrl& url, RootI
   emit pageUrlChanged(url);
 }
 
-ContextMenuData QLiteHtmlArticleViewer::provideContextMenuData(QContextMenuEvent* event) const {
+ContextMenuData QLiteHtmlArticleViewer::provideContextMenuData(QContextMenuEvent* event) {
   ContextMenuData c;
   QPointF viewport_pos;
   QPointF pos;
@@ -144,6 +144,20 @@ ContextMenuData QLiteHtmlArticleViewer::provideContextMenuData(QContextMenuEvent
 
   if (!anchor.isEmpty()) {
     c.m_linkUrl = anchor;
+  }
+
+  QString img_anchor = documentContainer()->imgLinkAt(pos, viewport_pos).toString();
+
+  if (!img_anchor.isEmpty()) {
+    c.m_imgLinkUrl = img_anchor;
+
+    auto img = documentContainer()
+                 ->handleExternalResource(DocumentContainer::RequestType::ImageDisplay, c.m_imgLinkUrl)
+                 .value<QPixmap>();
+
+    if (!img.isNull()) {
+      c.m_img = img;
+    }
   }
 
   return c;

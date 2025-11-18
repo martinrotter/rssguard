@@ -44,7 +44,7 @@ class RSSGUARD_DLLSPEC QLiteHtmlArticleViewer : public QLiteHtmlWidget, public W
     virtual void setZoomFactor(qreal zoom_factor);
 
   protected:
-    virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) const;
+    virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event);
 
   signals:
     void pageTitleChanged(const QString& new_title);

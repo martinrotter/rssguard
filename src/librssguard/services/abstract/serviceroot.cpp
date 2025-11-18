@@ -120,7 +120,9 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
   }
 
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                       {tr("Unsupported"), tr("This is not suppported (yet)."), QSystemTrayIcon::MessageIcon::Warning});
+                       {tr("Unsupported"),
+                        tr("This is not suppported (yet)."),
+                        QSystemTrayIcon::MessageIcon::Critical});
 }
 
 void ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {

@@ -8,9 +8,11 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "network-web/webfactory.h"
+#include "qtlinq/qtlinq.h"
 
 #include <QClipboard>
 #include <QFileIconProvider>
+#include <QImageWriter>
 #include <QTimer>
 
 WebViewer::WebViewer() {
@@ -66,6 +68,66 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   });
 
   specific_menu->addAction(act_copy_link);
+
+  auto* act_copy_img_link = new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
+                                        QObject::tr("Copy image link"),
+                                        specific_menu);
+  act_copy_img_link->setEnabled(m_contextMenuData.m_imgLinkUrl.isValid());
+
+  QObject::connect(act_copy_img_link, &QAction::triggered, specific_menu, [this]() {
+    auto* clip = QGuiApplication::clipboard();
+
+    if (clip != nullptr) {
+      clip->setText(m_contextMenuData.m_imgLinkUrl.toString());
+    }
+  });
+
+  specific_menu->addAction(act_copy_img_link);
+
+  auto* act_copy_img = new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
+                                   QObject::tr("Copy image"),
+                                   specific_menu);
+  act_copy_img->setEnabled(!m_contextMenuData.m_img.isNull());
+
+  QObject::connect(act_copy_img, &QAction::triggered, specific_menu, [this]() {
+    auto* clip = QGuiApplication::clipboard();
+
+    if (clip != nullptr) {
+      clip->setPixmap(m_contextMenuData.m_img);
+    }
+  });
+
+  specific_menu->addAction(act_copy_img);
+
+  auto* act_save_img = new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("document-save-as")),
+                                   QObject::tr("Save image"),
+                                   specific_menu);
+  act_save_img->setEnabled(!m_contextMenuData.m_img.isNull());
+
+  QObject::connect(act_save_img, &QAction::triggered, specific_menu, [this]() {
+    auto supported_formats = QImageWriter::supportedImageFormats();
+    auto list_formats = qlinq::from(supported_formats)
+                          .select([](const QByteArray& frmt) {
+                            return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
+                          })
+                          .toList();
+
+    QString selected_filter;
+    auto filename = FileDialog::saveFileName(qApp->mainFormWidget(),
+                                             QObject::tr("Save image"),
+                                             qApp->documentsFolder(),
+                                             QObject::tr("image.%1").arg(QSL("png")),
+                                             QObject::tr("Images (%1)").arg(list_formats.join(QL1C(' '))),
+                                             &selected_filter,
+                                             GENERAL_REMEMBERED_PATH);
+
+    if (!filename.isEmpty()) {
+      m_contextMenuData.m_img.save(filename);
+    }
+  });
+
+  specific_menu->addAction(act_save_img);
+
   specific_menu->addSeparator();
   specific_menu->addAction(m_actionSaveHtml.data());
   specific_menu->addSeparator();

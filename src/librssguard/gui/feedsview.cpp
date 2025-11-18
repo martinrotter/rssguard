@@ -11,9 +11,9 @@
 #include "gui/reusable/treeviewcolumnsmenu.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/gui/formaccountdetails.h"
 #include "services/abstract/rootitem.h"
@@ -364,16 +364,6 @@ void FeedsView::editItems(const QList<RootItem*>& items) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("Cannot edit items"),
                           tr("Selected items cannot be edited. This is not supported (yet)."),
-                          QSystemTrayIcon::MessageIcon::Critical});
-
-    qApp->feedUpdateLock()->unlock();
-    return;
-  }
-
-  if (editable_items.first()->kind() == RootItem::Kind::ServiceRoot && editable_items.size() > 1) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         {tr("Cannot edit items"),
-                          tr("%1 does not support batch editing of multiple accounts.").arg(QSL(APP_NAME)),
                           QSystemTrayIcon::MessageIcon::Critical});
 
     qApp->feedUpdateLock()->unlock();

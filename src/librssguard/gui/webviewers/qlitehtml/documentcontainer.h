@@ -176,7 +176,10 @@ class DocumentContainer : public QObject, litehtml::document_container {
 
     Downloader* downloader() const;
 
-    QUrl linkAt(QPointF document_pos, QPointF viewportPos) const;
+    QVariant handleExternalResource(DocumentContainer::RequestType type, const QUrl& url);
+
+    QUrl imgLinkAt(QPointF document_pos, QPointF viewport_pos) const;
+    QUrl linkAt(QPointF document_pos, QPointF viewport_pos) const;
 
     QString caption() const;
     QString selectedText() const;
@@ -228,7 +231,6 @@ class DocumentContainer : public QObject, litehtml::document_container {
 
   private slots:
     void downloadNextExternalResource();
-    QVariant handleExternalResource(DocumentContainer::RequestType type, const QUrl& url);
     void onResourceDownloadCompleted(const QUrl& url,
                                      QNetworkReply::NetworkError status,
                                      int http_code,

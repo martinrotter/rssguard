@@ -1559,6 +1559,32 @@ QVector<QRectF> DocumentContainer::leaveEvent() {
   return {};
 }
 
+QUrl DocumentContainer::imgLinkAt(QPointF document_pos, QPointF viewport_pos) const {
+  if (!m_document) {
+    return {};
+  }
+
+  const char* href = nullptr;
+
+  deepestChildAtPoint(m_document->root(), document_pos, viewport_pos, [&href](const litehtml::element::ptr& e) {
+    if (e && e->tag() == litehtml::_img_) {
+      href = e->get_attr("src", "");
+
+      if (href) {
+        return true;
+      }
+    }
+
+    return false; /*continue*/
+  });
+
+  if (href) {
+    return resolveUrl(QString::fromUtf8(href), m_baseUrl);
+  }
+
+  return {};
+}
+
 QUrl DocumentContainer::linkAt(QPointF document_pos, QPointF viewport_pos) const {
   if (!m_document) {
     return {};
