@@ -113,8 +113,8 @@ Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
       <translation>Willkommen bei %1.
 
-Bitte überprüfen Sie die Neuerungen dieser Version
-klicken Sie auf diese Benachrichtigung.</translation>
+Bitte überprüfen Sie die in dieser Version enthaltene Neuerungen
+durch Klicken auf diese Benachrichtigung.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1063"/>
@@ -420,7 +420,7 @@ Anzahl der deaktivierten Feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="38"/>
       <source>Purging recycle bin...</source>
-      <translation>Papierkorb leeren...</translation>
+      <translation>Leere Papierkorb...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="26"/>
@@ -847,7 +847,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="148"/>
       <source>Login was successful.</source>
-      <translation>Login erfolgreich,</translation>
+      <translation>Anmeldung erfolgreich.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="34"/>
