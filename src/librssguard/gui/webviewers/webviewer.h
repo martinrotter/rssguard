@@ -19,6 +19,7 @@ struct ContextMenuData {
     QUrl m_linkUrl;
     QUrl m_imgLinkUrl;
     QPixmap m_img;
+    QString m_selectedText;
 };
 
 #define ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH 0.97

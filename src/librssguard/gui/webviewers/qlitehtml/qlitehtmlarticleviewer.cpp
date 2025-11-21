@@ -160,6 +160,8 @@ ContextMenuData QLiteHtmlArticleViewer::provideContextMenuData(QContextMenuEvent
     }
   }
 
+  c.m_selectedText = selectedText();
+
   return c;
 }
 
@@ -180,22 +182,8 @@ void QLiteHtmlArticleViewer::contextMenuEvent(QContextMenuEvent* event) {
   event->accept();
 
   auto* menu = new QMenu(tr("Context menu for article viewer"), this);
-  auto sel_text = selectedText();
-  auto* act_copy = new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), tr("Copy text"), menu);
-
-  act_copy->setShortcut(QKeySequence(QKeySequence::StandardKey::Copy));
-  act_copy->setEnabled(!sel_text.isEmpty());
-
-  connect(act_copy, &QAction::triggered, this, [sel_text]() {
-    auto* clip = QGuiApplication::clipboard();
-
-    if (clip != nullptr) {
-      clip->setText(sel_text);
-    }
-  });
 
   menu->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, true);
-  menu->addAction(act_copy);
 
   WebViewer::processContextMenu(menu, event);
   QLiteHtmlWidget::processContextMenu(menu, event);

@@ -55,6 +55,22 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   initializeCommonMenuItems();
 
   // Add common items.
+  auto* act_copy_text =
+    new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), QObject::tr("Copy text"), specific_menu);
+
+  act_copy_text->setShortcut(QKeySequence(QKeySequence::StandardKey::Copy));
+  act_copy_text->setEnabled(!m_contextMenuData.m_selectedText.isEmpty());
+
+  QObject::connect(act_copy_text, &QAction::triggered, specific_menu, [this]() {
+    auto* clip = QGuiApplication::clipboard();
+
+    if (clip != nullptr) {
+      clip->setText(m_contextMenuData.m_selectedText);
+    }
+  });
+
+  specific_menu->addAction(act_copy_text);
+
   auto* act_copy_link =
     new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), QObject::tr("Copy link"), specific_menu);
   act_copy_link->setEnabled(m_contextMenuData.m_linkUrl.isValid());
@@ -68,6 +84,7 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   });
 
   specific_menu->addAction(act_copy_link);
+  specific_menu->addSeparator();
 
   auto* act_copy_img_link = new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
                                         QObject::tr("Copy image link"),
