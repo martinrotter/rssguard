@@ -49,62 +49,59 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
   }
 }
 
-void FormAddEditEmail::execForAdd() {
-  addRecipientRow()->setFocus();
-  exec();
-}
+void FormAddEditEmail::show(FormAddEditEmail::Mode mode, Message* original_message) {
+  if (mode != Mode::SendNew) {
+    m_originalMessage = original_message;
+    m_ui.m_txtSubject->setText(QSL("%1: %2").arg(mode == Mode::Reply ? QSL("Re") : QSL("Fwd"),
+                                                 m_originalMessage->m_title));
+    m_ui.m_txtSubject->setEnabled(false);
+    m_ui.m_txtMessage->setFocus();
 
-void FormAddEditEmail::execForReply(Message* original_message) {
-  m_originalMessage = original_message;
+    QString message_header = messageHeader(mode, original_message);
 
-  m_ui.m_txtSubject->setText(QSL("Re: %1").arg(m_originalMessage->m_title));
-  m_ui.m_txtSubject->setEnabled(false);
-  m_ui.m_txtMessage->setFocus();
+    m_ui.m_txtMessage->setText(QSL("<br/>") + message_header + QSL("<br/>") + m_originalMessage->m_contents);
+    m_ui.m_txtMessage->editor()->moveCursor(QTextCursor::MoveOperation::Start);
 
-  m_ui.m_txtMessage->setText(m_originalMessage->m_contents);
-  m_ui.m_txtMessage->editor()->moveCursor(QTextCursor::MoveOperation::Start);
-  m_ui.m_txtMessage->editor()->insertHtml(QSL("<p>"
-                                              "---------- Original message ----------"
-                                              "</p><br/>"));
-  m_ui.m_txtMessage->editor()->moveCursor(QTextCursor::MoveOperation::Start);
-
-  try {
-    auto from_header =
-      m_root->network()->getMessageMetadata(original_message->m_customId, {QSL("FROM")}, m_root->networkProxy());
-    addRecipientRow(from_header.value(QSL("From")));
-  }
-  catch (const ApplicationException& ex) {
-    qWarningNN << LOGSEC_GMAIL << "Failed to get message metadata:" << QUOTE_W_SPACE_DOT(ex.message());
+    if (mode == Mode::Reply) {
+      try {
+        auto from_header =
+          m_root->network()->getMessageMetadata(original_message->m_customId, {QSL("FROM")}, m_root->networkProxy());
+        addRecipientRow(from_header.value(QSL("From")));
+      }
+      catch (const ApplicationException& ex) {
+        qWarningNN << LOGSEC_GMAIL << "Failed to get message metadata:" << QUOTE_W_SPACE_DOT(ex.message());
+      }
+    }
   }
 
-  exec();
+  addRecipientRow()->setFocus();
+  QDialog::exec();
 }
 
-void FormAddEditEmail::execForForward(Message* original_message) {
-  m_originalMessage = original_message;
+QString FormAddEditEmail::messageHeader(Mode mode, Message* original_message) {
+  if (mode == Mode::Reply) {
+    return QSL("<pre>"
+               "---------- %1 ----------"
+               "</pre>")
+      .arg(tr("Original message"));
+  }
+  else {
+    const QString to_header =
+      m_root->network()->getMessageMetadata(original_message->m_customId, {QSL("TO")}, m_root->networkProxy())["To"];
 
-  m_ui.m_txtSubject->setText(QSL("Fwd: %1").arg(m_originalMessage->m_title));
-  m_ui.m_txtSubject->setEnabled(false);
-  m_ui.m_txtMessage->setFocus();
-
-  const QString to_header =
-    m_root->network()->getMessageMetadata(original_message->m_customId, {QSL("TO")}, m_root->networkProxy())["To"];
-
-  const QString forward_header =
-    QSL("<pre>"
-        "---------- Forwarded message ---------<br/>"
-        "From: %1<br/>"
-        "Date: %2<br/>"
-        "Subject: %3<br/>"
-        "To: %4"
-        "</pre><br/>")
-      .arg(m_originalMessage->m_author, m_originalMessage->m_created.toString(), m_originalMessage->m_title, to_header);
-
-  m_ui.m_txtMessage->setText(forward_header + m_originalMessage->m_contents);
-  m_ui.m_txtMessage->editor()->moveCursor(QTextCursor::MoveOperation::Start);
-
-  addRecipientRow()->setFocus();
-  exec();
+    return QSL("<pre>"
+               "---------- %1 ---------<br/>"
+               "From: %2<br/>"
+               "Date: %3<br/>"
+               "Subject: %4<br/>"
+               "To: %5"
+               "</pre>")
+      .arg(tr("Forwarded message"),
+           m_originalMessage->m_author,
+           m_originalMessage->m_created.toString(),
+           m_originalMessage->m_title,
+           to_header);
+  }
 }
 
 void FormAddEditEmail::removeRecipientRow() {

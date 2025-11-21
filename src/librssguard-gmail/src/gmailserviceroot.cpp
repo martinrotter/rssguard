@@ -33,7 +33,7 @@ void GmailServiceRoot::updateTitle() {
 }
 
 void GmailServiceRoot::replyToEmail() {
-  FormAddEditEmail(this, qApp->mainFormWidget()).execForReply(&m_replyToMessage);
+  FormAddEditEmail(this, qApp->mainFormWidget()).show(FormAddEditEmail::Mode::Reply, &m_replyToMessage);
 }
 
 RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
@@ -67,7 +67,7 @@ RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
 }
 
 void GmailServiceRoot::writeNewEmail() {
-  FormAddEditEmail(this, qApp->mainFormWidget()).execForAdd();
+  FormAddEditEmail(this, qApp->mainFormWidget()).show(FormAddEditEmail::Mode::SendNew);
 }
 
 QVariantHash GmailServiceRoot::customDatabaseData() const {

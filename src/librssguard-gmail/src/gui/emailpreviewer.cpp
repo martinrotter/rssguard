@@ -88,11 +88,11 @@ void EmailPreviewer::loadExtraMessageData() {
 }
 
 void EmailPreviewer::replyToEmail() {
-  FormAddEditEmail(m_account, window()).execForReply(&m_message);
+  FormAddEditEmail(m_account, window()).show(FormAddEditEmail::Mode::Reply, &m_message);
 }
 
 void EmailPreviewer::forwardEmail() {
-  FormAddEditEmail(m_account, window()).execForForward(&m_message);
+  FormAddEditEmail(m_account, window()).show(FormAddEditEmail::Mode::Forward, &m_message);
 }
 
 void EmailPreviewer::downloadAttachment(QAction* act) {

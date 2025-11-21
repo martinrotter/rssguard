@@ -28,7 +28,7 @@ append_icon_theme_files() {
 
 main() {
   local ROOT_FOLDER="$(pwd)"
-  local ROOT_SRC_FOLDER="$(pwd)/src/librssguard"
+  local ROOT_SRC_FOLDER="$(pwd)/src"
   local RESOURCES_FOLDER="$ROOT_FOLDER/resources"
   local THEMES_FOLDER="$RESOURCES_FOLDER/graphics"
 

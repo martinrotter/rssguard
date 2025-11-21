@@ -15,19 +15,24 @@ class FormAddEditEmail : public QDialog {
     Q_OBJECT
 
   public:
+    enum class Mode {
+      SendNew,
+      Reply,
+      Forward
+    };
+
     explicit FormAddEditEmail(GmailServiceRoot* root, QWidget* parent = nullptr);
 
   public slots:
-    void execForAdd();
-    void execForReply(Message* original_message);
-    void execForForward(Message* original_message);
+    void show(FormAddEditEmail::Mode mode, Message* original_message = nullptr);
 
   private slots:
     void removeRecipientRow();
     void onOkClicked();
-    EmailRecipientControl* addRecipientRow(const QString& recipient = QString());
 
   private:
+    EmailRecipientControl* addRecipientRow(const QString& recipient = QString());
+    QString messageHeader(Mode mode, Message* original_message);
     QList<EmailRecipientControl*> recipientControls() const;
 
   private:
