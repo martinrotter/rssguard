@@ -1077,19 +1077,19 @@ QMenu* FeedsView::baseContextMenu(const QList<RootItem*>& selected_items) {
         return knd == RootItem::Kind::ServiceRoot || knd == RootItem::Kind::Feed || knd == RootItem::Kind::Category;
       })) {
     // Accounts, categories, feeds can be fetched.
-    action_sections[QSL("1")].append({qApp->mainForm()->m_ui->m_actionUpdateSelectedItems});
+    action_sections[QSL("1")].append(qApp->mainForm()->m_ui->m_actionUpdateSelectedItems);
   }
 
   if (items_linq.all([](RootItem* item) {
         return item->canBeEdited();
       })) {
-    action_sections[QSL("2")].append({qApp->mainForm()->m_ui->m_actionEditSelectedItem});
+    action_sections[QSL("2")].append(qApp->mainForm()->m_ui->m_actionEditSelectedItem);
   }
 
   if (items_linq.all([](RootItem* item) {
         return item->canBeDeleted();
       })) {
-    action_sections[QSL("2")].append({qApp->mainForm()->m_ui->m_actionDeleteSelectedItem});
+    action_sections[QSL("2")].append(qApp->mainForm()->m_ui->m_actionDeleteSelectedItem);
   }
 
   if (kinds.all([](RootItem::Kind knd) {
@@ -1099,11 +1099,11 @@ QMenu* FeedsView::baseContextMenu(const QList<RootItem*>& selected_items) {
                                       qApp->mainForm()->m_ui->m_actionEditChildFeedsRecursive});
 
     if (cat_add) {
-      action_sections[QSL("4")].append({qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem});
+      action_sections[QSL("4")].append(qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem);
     }
 
     if (feed_add) {
-      action_sections[QSL("4")].append({qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem});
+      action_sections[QSL("4")].append(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
     }
 
     action_sections[QSL("5")].append({qApp->mainForm()->m_ui->m_actionRearrangeCategories,
@@ -1141,7 +1141,10 @@ QMenu* FeedsView::baseContextMenu(const QList<RootItem*>& selected_items) {
   for (auto it = action_sections.cbegin(); it != action_sections.cend(); ++it) {
     menu->addActions(it.value());
 
-    if (it + 1 != action_sections.cend()) {
+    auto next = it;
+    ++next;
+
+    if (next != action_sections.cend()) {
       menu->addSeparator();
     }
   }

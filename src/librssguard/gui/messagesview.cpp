@@ -742,6 +742,64 @@ void MessagesView::markSelectedMessagesUnread() {
   setSelectedMessagesReadStatus(RootItem::ReadStatus::Unread);
 }
 
+void MessagesView::markArticlesFromToReadUnread(int row_from, int row_to, RootItem::ReadStatus read) {
+  if (row_to < 0 || row_from >= m_proxyModel->rowCount()) {
+    return;
+  }
+
+  QModelIndexList article_idxs;
+
+  for (int i = row_from; i <= row_to; i++) {
+    article_idxs.append(m_proxyModel->index(i, MSG_MDL_TITLE_INDEX));
+  }
+
+  m_sourceModel->setBatchMessagesRead(article_idxs, read);
+}
+
+void MessagesView::markMessagesAboveRead() {
+  if (selectionModel()->selectedRows().size() != 1) {
+    return;
+  }
+
+  int row_from = 0;
+  int row_to = selectionModel()->selectedRows().first().row() - 1;
+
+  markArticlesFromToReadUnread(row_from, row_to, RootItem::ReadStatus::Read);
+}
+
+void MessagesView::markMessagesBelowRead() {
+  if (selectionModel()->selectedRows().size() != 1) {
+    return;
+  }
+
+  int row_from = selectionModel()->selectedRows().first().row() + 1;
+  int row_to = m_proxyModel->rowCount() - 1;
+
+  markArticlesFromToReadUnread(row_from, row_to, RootItem::ReadStatus::Read);
+}
+
+void MessagesView::markMessagesAboveUnread() {
+  if (selectionModel()->selectedRows().size() != 1) {
+    return;
+  }
+
+  int row_from = 0;
+  int row_to = selectionModel()->selectedRows().first().row() - 1;
+
+  markArticlesFromToReadUnread(row_from, row_to, RootItem::ReadStatus::Unread);
+}
+
+void MessagesView::markMessagesBelowUnread() {
+  if (selectionModel()->selectedRows().size() != 1) {
+    return;
+  }
+
+  int row_from = selectionModel()->selectedRows().first().row() + 1;
+  int row_to = m_proxyModel->rowCount() - 1;
+
+  markArticlesFromToReadUnread(row_from, row_to, RootItem::ReadStatus::Unread);
+}
+
 void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   const QModelIndexList selected_indexes = selectionModel()->selectedRows();
 

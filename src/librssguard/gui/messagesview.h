@@ -72,9 +72,14 @@ class MessagesView : public BaseTreeView {
     void setSelectedMessagesReadStatus(RootItem::ReadStatus read);
     void markSelectedMessagesRead();
     void markSelectedMessagesUnread();
+    void markMessagesAboveRead();
+    void markMessagesBelowRead();
+    void markMessagesAboveUnread();
+    void markMessagesBelowUnread();
     void switchSelectedMessagesImportance();
     void deleteSelectedMessages();
     void restoreSelectedMessages();
+    void markArticlesFromToReadUnread(int row_from, int row_to, RootItem::ReadStatus read);
 
     void selectNextItem();
     void selectPreviousItem();

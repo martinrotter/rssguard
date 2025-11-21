@@ -197,6 +197,10 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionShowTreeBranches;
   actions << m_ui->m_actionAutoExpandItemsWhenSelected;
   actions << m_ui->m_actionLoadAllArticles;
+  actions << m_ui->m_actionMarkArticlesAboveRead;
+  actions << m_ui->m_actionMarkArticlesBelowRead;
+  actions << m_ui->m_actionMarkArticlesAboveUnread;
+  actions << m_ui->m_actionMarkArticlesBelowUnread;
   actions << m_ui->m_actionMarkSelectedMessagesAsRead;
   actions << m_ui->m_actionMarkSelectedMessagesAsUnread;
   actions << m_ui->m_actionSwitchImportanceOfSelectedMessages;
@@ -448,6 +452,10 @@ void FormMain::updateMessageButtonsAvailability() {
   const bool atleast_one_message_selected =
     !tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().isEmpty();
 
+  m_ui->m_actionMarkArticlesBelowUnread->setEnabled(one_message_selected);
+  m_ui->m_actionMarkArticlesAboveUnread->setEnabled(one_message_selected);
+  m_ui->m_actionMarkArticlesBelowRead->setEnabled(one_message_selected);
+  m_ui->m_actionMarkArticlesAboveRead->setEnabled(one_message_selected);
   m_ui->m_actionDeleteSelectedMessages->setEnabled(atleast_one_message_selected);
   m_ui->m_actionRestoreSelectedMessages->setEnabled(atleast_one_message_selected);
   m_ui->m_actionMarkSelectedMessagesAsRead->setEnabled(atleast_one_message_selected);
@@ -603,6 +611,12 @@ void FormMain::setupIcons() {
   m_ui->m_actionCopyUrlSelectedFeed->setIcon(icon_theme_factory->fromTheme(QSL("edit-copy")));
   m_ui->m_actionCopyUrlSelectedArticles->setIcon(icon_theme_factory->fromTheme(QSL("edit-copy")));
   m_ui->m_actionMarkAllItemsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
+
+  m_ui->m_actionMarkArticlesAboveRead->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up"), QSL("go-up")));
+  m_ui->m_actionMarkArticlesAboveUnread->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up"), QSL("go-up")));
+  m_ui->m_actionMarkArticlesBelowRead->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down"), QSL("go-down")));
+  m_ui->m_actionMarkArticlesBelowUnread->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down"), QSL("go-down")));
+
   m_ui->m_actionMarkSelectedItemsAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedItemsAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
@@ -885,6 +899,22 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
           &MessagesView::markSelectedMessagesRead);
+  connect(m_ui->m_actionMarkArticlesAboveRead,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::markMessagesAboveRead);
+  connect(m_ui->m_actionMarkArticlesBelowRead,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::markMessagesBelowRead);
+  connect(m_ui->m_actionMarkArticlesAboveUnread,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::markMessagesAboveUnread);
+  connect(m_ui->m_actionMarkArticlesBelowUnread,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::markMessagesBelowUnread);
   connect(m_ui->m_actionMarkSelectedMessagesAsUnread,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
@@ -911,9 +941,12 @@ void FormMain::createConnections() {
           tabWidget()->feedMessageViewer()->messagesView(),
           &MessagesView::editFeedOfSelectedMessage);
 
-  connect(m_ui->m_actionGoToMotherFeed, &QAction::triggered, tabWidget()->feedMessageViewer()->messagesView(), [this]() {
-    tabWidget()->feedMessageViewer()->messagesView()->goToMotherFeed(false);
-  });
+  connect(m_ui->m_actionGoToMotherFeed,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          [this]() {
+            tabWidget()->feedMessageViewer()->messagesView()->goToMotherFeed(false);
+          });
 
   connect(m_ui->m_actionSendMessageViaEmail,
           &QAction::triggered,

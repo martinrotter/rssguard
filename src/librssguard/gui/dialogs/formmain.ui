@@ -183,7 +183,11 @@
     <addaction name="separator"/>
     <addaction name="m_actionCopyUrlSelectedArticles"/>
     <addaction name="m_actionMarkSelectedMessagesAsRead"/>
+    <addaction name="m_actionMarkArticlesAboveRead"/>
+    <addaction name="m_actionMarkArticlesBelowRead"/>
     <addaction name="m_actionMarkSelectedMessagesAsUnread"/>
+    <addaction name="m_actionMarkArticlesAboveUnread"/>
+    <addaction name="m_actionMarkArticlesBelowUnread"/>
     <addaction name="m_actionSwitchImportanceOfSelectedMessages"/>
     <addaction name="m_actionDeleteSelectedMessages"/>
     <addaction name="m_actionRestoreSelectedMessages"/>
@@ -965,6 +969,26 @@
   <action name="m_actionEditFeedOfSelectedArticle">
    <property name="text">
     <string>Edit &amp;feed of selected article</string>
+   </property>
+  </action>
+  <action name="m_actionMarkArticlesAboveRead">
+   <property name="text">
+    <string>Mark articles &amp;above read</string>
+   </property>
+  </action>
+  <action name="m_actionMarkArticlesBelowRead">
+   <property name="text">
+    <string>Mark articles &amp;below read</string>
+   </property>
+  </action>
+  <action name="m_actionMarkArticlesAboveUnread">
+   <property name="text">
+    <string>Mark articles &amp;above unread</string>
+   </property>
+  </action>
+  <action name="m_actionMarkArticlesBelowUnread">
+   <property name="text">
+    <string>Mark articles &amp;below unread</string>
    </property>
   </action>
  </widget>
