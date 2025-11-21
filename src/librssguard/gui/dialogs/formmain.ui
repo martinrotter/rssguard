@@ -172,6 +172,7 @@
     <addaction name="m_actionOpenSelectedSourceArticlesExternally"/>
     <addaction name="m_actionOpenSelectedMessagesInternally"/>
     <addaction name="m_actionGoToMotherFeed"/>
+    <addaction name="m_actionEditFeedOfSelectedArticle"/>
     <addaction name="m_actionPlaySelectedArticlesInMediaPlayer"/>
     <addaction name="m_actionSendMessageViaEmail"/>
     <addaction name="separator"/>
@@ -959,6 +960,11 @@
   <action name="m_actionEnableDisableFeeds">
    <property name="text">
     <string>&amp;Enable/disable selected feeds</string>
+   </property>
+  </action>
+  <action name="m_actionEditFeedOfSelectedArticle">
+   <property name="text">
+    <string>Edit &amp;feed of selected article</string>
    </property>
   </action>
  </widget>

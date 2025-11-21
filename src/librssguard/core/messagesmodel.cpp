@@ -8,10 +8,11 @@
 #include "gui/messagesview.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "qtlinq/qtlinq.h"
+#include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/textfactory.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
@@ -398,6 +399,45 @@ RootItem* MessagesModel::loadedItem() const {
 
 Feed* MessagesModel::feedById(int id) const {
   return m_hashedFeeds.value(id);
+}
+
+void MessagesModel::editFeedOfMessage(const Message& msg) {
+  auto* fd = m_hashedFeeds.value(msg.m_feedId);
+
+  if (fd == nullptr) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Feed not found"),
+                                    tr("Feed cannot be edited because it was not found, this is weird."),
+                                    QSystemTrayIcon::MessageIcon::Critical));
+  }
+
+  else if (!fd->canBeEdited()) {
+    qApp
+      ->showGuiMessage(Notification::Event::GeneralEvent,
+                       {tr("Cannot edit feed"),
+                        tr("The feed cannot be edited because this particular feed (or account) does not support it."),
+                        QSystemTrayIcon::MessageIcon::Warning});
+  }
+  else if (!qApp->feedUpdateLock()->tryLock()) {
+    // Lock was not obtained because
+    // it is used probably by feed updater or application
+    // is quitting.
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot edit feed"),
+                          tr("The feed cannot be edited because another critical operation is ongoing."),
+                          QSystemTrayIcon::MessageIcon::Warning});
+  }
+  else {
+    fd->account()->editItems({fd});
+    qApp->feedUpdateLock()->unlock();
+
+    // NOTE: Feed title or other data could be changed.
+    for (Message& msg : m_messages) {
+      fillComputedMessageData(&msg);
+    }
+
+    reloadChangedLayout({index(0, MSG_MDL_FEED_TITLE_INDEX), index(rowCount() - 1, MSG_MDL_FEED_TITLE_INDEX)});
+  }
 }
 
 void MessagesModel::updateDateFormat() {

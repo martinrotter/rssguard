@@ -14,10 +14,10 @@
 #include "gui/toolbars/messagestoolbar.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/feedreader.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "network-web/webfactory.h"
 #include "qnamespace.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/labelsnode.h"
 #include "services/abstract/serviceroot.h"
 
@@ -154,19 +154,25 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
   }
 }
 
-void MessagesView::goToMotherFeed() {
+void MessagesView::goToMotherFeed(bool edit_feed_also) {
   if (selectionModel()->selectedRows().size() == 1) {
     const Message message =
       m_sourceModel->messageForRow(m_proxyModel->mapToSource(selectionModel()->selectedRows().at(0)).row());
 
     Feed* feed = m_sourceModel->feedById(message.m_feedId);
 
-    if (feed == nullptr) {
-      return;
+    if (feed != nullptr) {
+      emit selectInFeedsView(feed);
     }
 
-    emit selectInFeedsView(feed);
+    if (edit_feed_also) {
+      m_sourceModel->editFeedOfMessage(message);
+    }
   }
+}
+
+void MessagesView::editFeedOfSelectedMessage() {
+  goToMotherFeed(true);
 }
 
 void MessagesView::copyUrlOfSelectedArticles() const {
@@ -458,6 +464,7 @@ void MessagesView::initializeContextMenu() {
                              qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally,
                              qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally,
                              qApp->mainForm()->m_ui->m_actionGoToMotherFeed,
+                             qApp->mainForm()->m_ui->m_actionEditFeedOfSelectedArticle,
                              qApp->mainForm()->m_ui->m_actionPlaySelectedArticlesInMediaPlayer,
                              qApp->mainForm()->m_ui->m_actionCopyUrlSelectedArticles,
                              qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead,
