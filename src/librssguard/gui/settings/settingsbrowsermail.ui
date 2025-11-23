@@ -309,9 +309,6 @@
          <property name="columnCount">
           <number>4</number>
          </property>
-         <property name="supportedDragActions">
-          <set>Qt::DropAction::IgnoreAction</set>
-         </property>
          <column>
           <property name="text">
            <string notr="true">1</string>
