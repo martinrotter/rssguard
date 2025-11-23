@@ -10,7 +10,7 @@ class ExternalTool {
   public:
     explicit ExternalTool() = default;
     ExternalTool(const ExternalTool& other);
-    explicit ExternalTool(QString name, QString executable, QString parameters);
+    explicit ExternalTool(QString name, QString executable, QString parameters, QString domain);
 
     QString executable() const;
     QString parameters() const;
@@ -21,14 +21,18 @@ class ExternalTool {
     QByteArray toString();
 
   public:
+    static std::optional<ExternalTool> toolForDomain(const QList<ExternalTool>& tools, const QString& domain);
     static ExternalTool fromString(const QByteArray& str);
     static QList<ExternalTool> toolsFromSettings();
     static void setToolsToSettings(QVector<ExternalTool>& tools);
+
+    QString domain() const;
 
   private:
     QString m_name;
     QString m_executable;
     QString m_parameters;
+    QString m_domain;
 
     void sanitizeParameters();
 };

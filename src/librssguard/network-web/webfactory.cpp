@@ -2,8 +2,10 @@
 
 #include "network-web/webfactory.h"
 
+#include "definitions/definitions.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/externaltool.h"
 #include "miscellaneous/settings.h"
 
 #include <QDesktopServices>
@@ -35,10 +37,26 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
   }
 }
 
-bool WebFactory::openUrlInExternalBrowser(const QUrl& url) const {
+bool WebFactory::openUrlInExternalBrowser(const QUrl& url, bool use_external_tools) const {
   QString my_url = url.toString(QUrl::ComponentFormattingOption::FullyEncoded);
 
   qDebugNN << LOGSEC_NETWORK << "We are trying to open URL" << QUOTE_W_SPACE_DOT(my_url);
+
+  if (use_external_tools && !url.host().isEmpty()) {
+    auto tools = ExternalTool::toolsFromSettings();
+    auto tool_for_domain = ExternalTool::toolForDomain(tools, url.host());
+
+    if (tool_for_domain.has_value()) {
+      auto found_tool_for_domain = tool_for_domain.value();
+      qDebugNN << LOGSEC_NETWORK << "Opening URL via external tool" << QUOTE_W_SPACE_DOT(found_tool_for_domain.name());
+      found_tool_for_domain.run(my_url);
+      return true;
+    }
+    else {
+      qWarningNN << LOGSEC_NETWORK
+                 << "External tool valid for the given URL was not found. Falling back to external web browser.";
+    }
+  }
 
   bool result = false;
 
@@ -489,4 +507,8 @@ QString WebFactory::customUserAgent() const {
 
 void WebFactory::setCustomUserAgent(const QString& user_agent) {
   m_customUserAgent = user_agent;
+}
+
+bool WebFactory::openUrlInExternalBrowser(const QUrl& url) const {
+  return openUrlInExternalBrowser(url, false);
 }

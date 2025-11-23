@@ -34,6 +34,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 
   public slots:
     bool openUrlInExternalBrowser(const QUrl& url) const;
+    bool openUrlInExternalBrowser(const QUrl& url, bool use_external_tools) const;
 
   private:
     static QMap<QString, char16_t> generateUnescapes();

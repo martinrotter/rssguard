@@ -677,7 +677,7 @@ void MessagesView::openSelectedSourceMessagesExternally() {
     QString link = m_sourceModel->messageForRow(m_proxyModel->mapToSource(index).row())
                      .m_url.replace(QRegularExpression(QSL("[\\t\\n]")), QString());
 
-    qApp->web()->openUrlInExternalBrowser(link);
+    qApp->web()->openUrlInExternalBrowser(link, true);
   }
 
   if (qApp->settings()

@@ -211,13 +211,12 @@ int TabWidget::addSingleMessageView(RootItem* root, const Message& message) {
 
 #if defined(ENABLE_MEDIAPLAYER)
 int TabWidget::addMediaPlayer(const QString& url, bool make_active) {
-  // #if defined(ENABLE_MEDIAPLAYER_LIBMPV)
-  // QQuickWindow::setGraphicsApi(QSGRendererInterface::GraphicsApi::OpenGL);
-  // #endif
-
   auto* player = new MediaPlayer(this);
 
-  connect(player, &MediaPlayer::urlDownloadRequested, qApp->web(), &WebFactory::openUrlInExternalBrowser);
+  connect(player,
+          &MediaPlayer::urlDownloadRequested,
+          qApp->web(),
+          QOverload<const QUrl&>::of(&WebFactory::openUrlInExternalBrowser));
   connect(player, &MediaPlayer::closed, this, &TabWidget::closeTabWithSender);
 
   int index = addTab(player,

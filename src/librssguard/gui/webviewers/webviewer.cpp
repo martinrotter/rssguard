@@ -225,7 +225,7 @@ void WebViewer::openClickedLinkInExternalBrowser() {
   if (context_url.isValid()) {
     const QUrl resolved_url = (url().isValid() && context_url.isRelative()) ? url().resolved(context_url) : context_url;
 
-    qApp->web()->openUrlInExternalBrowser(resolved_url.toString());
+    qApp->web()->openUrlInExternalBrowser(resolved_url.toString(), true);
 
     if (qApp->settings()
           ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))

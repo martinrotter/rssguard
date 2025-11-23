@@ -36,7 +36,10 @@ void SettingsLocalization::loadUi() {
   m_ui->m_lblHelp->setText(tr(R"(Help us to improve %1 <a href="%2">translations</a>.)")
                              .arg(QSL(APP_NAME), QSL("https://crowdin.com/project/rssguard")));
 
-  connect(m_ui->m_lblHelp, &QLabel::linkActivated, qApp->web(), &WebFactory::openUrlInExternalBrowser);
+  connect(m_ui->m_lblHelp,
+          &QLabel::linkActivated,
+          qApp->web(),
+          QOverload<const QUrl&>::of(&WebFactory::openUrlInExternalBrowser));
 
   // Setup languages.
   m_ui->m_treeLanguages->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);

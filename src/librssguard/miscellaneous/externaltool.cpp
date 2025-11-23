@@ -3,9 +3,9 @@
 #include "miscellaneous/externaltool.h"
 
 #include "definitions/definitions.h"
-#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
 
 #include <utility>
 
@@ -18,10 +18,11 @@ void ExternalTool::sanitizeParameters() {
 }
 
 ExternalTool::ExternalTool(const ExternalTool& other)
-  : ExternalTool(other.name(), other.executable(), other.parameters()) {}
+  : ExternalTool(other.name(), other.executable(), other.parameters(), other.domain()) {}
 
-ExternalTool::ExternalTool(QString name, QString executable, QString parameters)
-  : m_name(std::move(name)), m_executable(std::move(executable)), m_parameters(std::move(parameters)) {
+ExternalTool::ExternalTool(QString name, QString executable, QString parameters, QString domain)
+  : m_name(std::move(name)), m_executable(std::move(executable)), m_parameters(std::move(parameters)),
+    m_domain(std::move(domain)) {
   sanitizeParameters();
 }
 
@@ -31,8 +32,22 @@ QByteArray ExternalTool::toString() {
   obj[QSL("name")] = name();
   obj[QSL("exe")] = executable();
   obj[QSL("params")] = parameters();
+  obj[QSL("domain")] = domain();
 
   return QJsonDocument(obj).toJson(QJsonDocument::JsonFormat::Compact);
+}
+
+std::optional<ExternalTool> ExternalTool::toolForDomain(const QList<ExternalTool>& tools, const QString& domain) {
+  if (tools.isEmpty() || domain.isEmpty()) {
+    return std::nullopt;
+  }
+
+  const QString cleaned_domain = domain.startsWith(QSL("www.")) ? domain.mid(4) : domain;
+  auto linq = qlinq::from(tools);
+
+  return linq.firstOrDefault([&cleaned_domain](const ExternalTool& tool) {
+    return tool.domain() == cleaned_domain;
+  });
 }
 
 QString ExternalTool::executable() const {
@@ -46,7 +61,10 @@ QString ExternalTool::parameters() const {
 ExternalTool ExternalTool::fromString(const QByteArray& str) {
   auto json = QJsonDocument::fromJson(str);
   auto obj = json.object();
-  ExternalTool tool(obj[QSL("name")].toString(), obj[QSL("exe")].toString(), obj[QSL("params")].toString());
+  ExternalTool tool(obj[QSL("name")].toString(),
+                    obj[QSL("exe")].toString(),
+                    obj[QSL("params")].toString(),
+                    obj[QSL("domain")].toString());
 
   return tool;
 }
@@ -55,7 +73,7 @@ QList<ExternalTool> ExternalTool::toolsFromSettings() {
   QStringList keys = qApp->settings()->allKeys(GROUP(ExternalTools));
   QList<ExternalTool> tools;
 
-  for (const QString& key : keys) {
+  for (const QString& key : std::as_const(keys)) {
     auto data = qApp->settings()->value(GROUP(ExternalTools), key).toByteArray();
 
     if (data.isEmpty()) {
@@ -75,6 +93,10 @@ void ExternalTool::setToolsToSettings(QVector<ExternalTool>& tools) {
     auto data = tool.toString();
     qApp->settings()->setValue(GROUP(ExternalTools), QString::number(i++), data);
   }
+}
+
+QString ExternalTool::domain() const {
+  return m_domain;
 }
 
 QString ExternalTool::name() const {

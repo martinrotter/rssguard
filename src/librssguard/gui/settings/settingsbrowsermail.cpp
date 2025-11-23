@@ -46,7 +46,7 @@ void SettingsBrowserMail::loadUi() {
   m_ui->m_btnAddTool->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
   m_ui->m_btnEditTool->setIcon(qApp->icons()->fromTheme(QSL("document-edit")));
   m_ui->m_btnDeleteTool->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
-  m_ui->m_listTools->setHeaderLabels({tr("Name"), tr("Executable"), tr("Parameters")});
+  m_ui->m_listTools->setHeaderLabels({tr("Name"), tr("Executable"), tr("Parameters"), tr("Domain")});
   m_ui->m_listTools->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_listTools->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
 
@@ -134,7 +134,7 @@ QVector<ExternalTool> SettingsBrowserMail::externalTools() const {
 
   for (int i = 0; i < m_ui->m_listTools->topLevelItemCount(); i++) {
     auto* it = m_ui->m_listTools->topLevelItem(i);
-    list.append(ExternalTool(it->text(0), it->text(1), it->text(2)));
+    list.append(ExternalTool(it->text(0), it->text(1), it->text(2), it->text(3)));
   }
 
   return list;
@@ -142,7 +142,8 @@ QVector<ExternalTool> SettingsBrowserMail::externalTools() const {
 
 void SettingsBrowserMail::setExternalTools(const QList<ExternalTool>& list) {
   for (const ExternalTool& tool : list) {
-    QTreeWidgetItem* item = new QTreeWidgetItem(m_ui->m_listTools, {tool.name(), tool.executable(), tool.parameters()});
+    QTreeWidgetItem* item =
+      new QTreeWidgetItem(m_ui->m_listTools, {tool.name(), tool.executable(), tool.parameters(), tool.domain()});
 
     item->setFlags(item->flags() | Qt::ItemFlag::ItemIsEditable);
 

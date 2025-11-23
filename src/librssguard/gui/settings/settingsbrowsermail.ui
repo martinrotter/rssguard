@@ -303,8 +303,14 @@
          <property name="allColumnsShowFocus">
           <bool>true</bool>
          </property>
+         <property name="expandsOnDoubleClick">
+          <bool>false</bool>
+         </property>
          <property name="columnCount">
-          <number>3</number>
+          <number>4</number>
+         </property>
+         <property name="supportedDragActions">
+          <set>Qt::DropAction::IgnoreAction</set>
          </property>
          <column>
           <property name="text">
@@ -319,6 +325,11 @@
          <column>
           <property name="text">
            <string notr="true">3</string>
+          </property>
+         </column>
+         <column>
+          <property name="text">
+           <string notr="true">4</string>
           </property>
          </column>
         </widget>

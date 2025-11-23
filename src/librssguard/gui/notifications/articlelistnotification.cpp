@@ -133,7 +133,7 @@ void ArticleListNotification::openArticleInWebBrowser() {
   markAsRead(fd, {msg});
   emit dataChangeNotificationTriggered(fd, FeedsModel::ExternalDataChange::MarkedRead);
 
-  qApp->web()->openUrlInExternalBrowser(msg.m_url);
+  qApp->web()->openUrlInExternalBrowser(msg.m_url, true);
 
   if (m_newMessages.size() == 1 && m_newMessages.value(m_newMessages.keys().at(0)).size() == 1) {
     // We only have 1 message in 1 feed.

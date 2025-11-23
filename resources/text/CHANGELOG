@@ -28,6 +28,7 @@ Added:
 * New main menu and article list context menu item "Reveal feed" which highlights the feed that the displayed article belongs to. (#1903)
 * Feed list has new column "Item ID" which is hidden by default. Allows filtering feeds by their ID. (#966)
 * External tools settings were redesigned and external tools can now be named. (#839)
+* External tools now can be registered as default opening tool for domains. (#844)
 * Ability to mark article above/below selected article as read/unread. (#244)
 * New support for "RSS comments" specifications which is now per-feed configurable. (#878)
 * Enclosures and attachments now can now be browsed, added, or removed via article filters. (#1024)

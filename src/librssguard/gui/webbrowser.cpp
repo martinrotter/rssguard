@@ -251,7 +251,7 @@ void WebBrowser::onLinkClicked(const QUrl& url) {
     qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
 
   if (open_externally_now) {
-    qApp->web()->openUrlInExternalBrowser(url.toString());
+    qApp->web()->openUrlInExternalBrowser(url.toString(), true);
 
     if (qApp->settings()
           ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
