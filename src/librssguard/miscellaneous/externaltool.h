@@ -3,6 +3,8 @@
 #ifndef EXTERNALTOOL_H
 #define EXTERNALTOOL_H
 
+#include <optional>
+
 #include <QMetaType>
 #include <QStringList>
 
