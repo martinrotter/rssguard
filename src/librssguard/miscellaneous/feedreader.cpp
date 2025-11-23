@@ -12,8 +12,8 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/pluginfactory.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceentrypoint.h"
 #include "services/abstract/serviceroot.h"
@@ -84,25 +84,22 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
 }
 
 void FeedReader::updateFeeds(const QList<Feed*>& feeds, bool update_switched_off_too) {
-  auto my_feeds = feeds;
-
-  if (!update_switched_off_too) {
-    for (int i = 0; i < my_feeds.size(); i++) {
-      if (my_feeds.at(i)->isSwitchedOff()) {
-        my_feeds.removeAt(i--);
-      }
-    }
-  }
-
-  if (my_feeds.isEmpty()) {
-    return;
-  }
-
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("Cannot fetch articles at this point"),
                           tr("You cannot fetch new articles now because another critical operation is ongoing."),
                           QSystemTrayIcon::MessageIcon::Warning});
+    return;
+  }
+
+  auto my_feeds = update_switched_off_too ? feeds
+                                          : qlinq::from(feeds)
+                                              .where([](const Feed* feed) {
+                                                return !feed->isSwitchedOff();
+                                              })
+                                              .toList();
+
+  if (my_feeds.isEmpty()) {
     return;
   }
 

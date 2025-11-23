@@ -1154,6 +1154,8 @@ QMenu* FeedsView::baseContextMenu(const QList<RootItem*>& selected_items) {
 
 void FeedsView::mouseDoubleClickEvent(QMouseEvent* event) {
   QTreeView::mouseDoubleClickEvent(event);
+
+  updateSelectedItems();
 }
 
 void FeedsView::saveSortState(int column, Qt::SortOrder order) {
