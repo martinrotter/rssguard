@@ -416,11 +416,17 @@ void QuiteRssImport::checkIfQuiteRss(const QSqlDatabase& db) const {
 }
 
 QSqlDatabase QuiteRssImport::dbConnection(const QString& db_file, const QString& connection_name) const {
-  QSqlDatabase db = QSqlDatabase::addDatabase(QSL(APP_DB_SQLITE_DRIVER), connection_name);
+  QSqlDatabase db;
 
-  db.setDatabaseName(db_file);
+  if (QSqlDatabase::contains(connection_name)) {
+    db = QSqlDatabase::database(connection_name);
+  }
+  else {
+    db = QSqlDatabase::addDatabase(QSL(APP_DB_SQLITE_DRIVER), connection_name);
+    db.setDatabaseName(db_file);
+  }
 
-  if (!db.open()) {
+  if (!db.isOpen() && !db.open()) {
     throw ApplicationException(db.lastError().text());
   }
 

@@ -88,8 +88,8 @@ class FeedDownloader : public QObject {
     FeedUpdateResult updateThreadedFeed(const FeedUpdateRequest& fd);
 
   private:
-    bool m_isCacheSynchronizationRunning;
-    bool m_stopFetching;
+    std::atomic<bool> m_isCacheSynchronizationRunning;
+    std::atomic<bool> m_stopFetching;
     QMutex m_mutexDb;
     QHash<ServiceRoot*, ApplicationException> m_erroredAccounts;
     QList<FeedUpdateRequest> m_feeds = {};
