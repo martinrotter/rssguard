@@ -56,57 +56,57 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1064"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1075"/>
       <source>Application is already running.</source>
       <translation>Az alkalmazás már fut.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="506"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="508"/>
       <source>Output directory is not writable.</source>
       <translation>A kimeneti könyvtár nem írható.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="514"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="516"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>A beállításokat tartalmazó fájl kimeneti könyvtárba történő másolása sikertelen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="529"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="531"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Az adatbázis helyreállítása nem indult el. Győződjön meg arról, hogy a kimeneti könyvtár írható.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="536"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="538"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>A beállítások helyreállítása nem indult el. Győződjön meg arról, hogy a kimeneti könyvtár írható.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1082"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1093"/>
       <source>Cannot add feed</source>
       <translation>Hírforrás hozzáadása sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1083"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1094"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>A hírforrás nem adható hozzá, mivel nincs aktív felhasználói fiók aminek engedélyezett a hírforrások felvétele.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="954"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="956"/>
       <source>Unread articles fetched</source>
       <translation>Az olvasatlan cikkek sikeresen lekérve</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="297"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="300"/>
       <source>Go to changelog</source>
       <translation>Változási napló megtekintése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="291"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="294"/>
       <source>Welcome</source>
       <translation>Üdvözöljük</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="292"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="295"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -118,7 +118,7 @@ található új funkciókat erre a popup ablakra
 való kattintással.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1063"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1074"/>
       <source>Already running</source>
       <translation>Már fut</translation>
     </message>
@@ -457,12 +457,12 @@ Number of disabled feeds: %3</translation>
   <context>
     <name>DatabaseFactory</name>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="54"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="56"/>
       <source>Cannot connect to database</source>
       <translation>Adatbázis csatlakozás sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="55"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="57"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
       <translation>A megadott adatbázishoz való csatlakozás sikertelen a következő hibával: &apos;%1&apos;. Visszalépés az SQLite adatbázisra.</translation>
     </message>
@@ -470,12 +470,12 @@ Number of disabled feeds: %3</translation>
   <context>
     <name>DiscoveredFeedsModel</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="309"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="308"/>
       <source>Title</source>
       <translation>Cím</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="309"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="308"/>
       <source>Type</source>
       <translation>Típus</translation>
     </message>
@@ -661,7 +661,7 @@ Number of disabled feeds: %3</translation>
       <translation>hiba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="380"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="379"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -718,12 +718,12 @@ Item custom ID: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="397"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="392"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Néhány hírforrás cikkeinek automatikus letöltése</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="398"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="393"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation type="unfinished">
         <numerusform>%n hírforráshoz fogok automatikusan új cikkeket letölteni.</numerusform>
@@ -731,22 +731,22 @@ Item custom ID: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="422"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="417"/>
       <source>Some feeds have errors</source>
       <translation type="unfinished">Some feeds have errors</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="423"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="418"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="103"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="89"/>
       <source>Cannot fetch articles at this point</source>
       <translation type="unfinished">Cannot fetch articles at this point</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="104"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="90"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
       <translation>Jelenleg nem tud új cikkeket letölteni, mivel más kritikus művelet van folyamatban.</translation>
     </message>
@@ -894,28 +894,28 @@ Item custom ID: %5</translation>
   <context>
     <name>FeedlyNetwork</name>
     <message>
-      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="720"/>
+      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="718"/>
       <source>Feedly: authentication error</source>
       <translation>Feedly: hitelesítési hiba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="721"/>
+      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="719"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
       <translation>Kattintson ide az ismételt bejelentkezéshez. Hiba: &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="735"/>
+      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="733"/>
       <source>Feedly: authorization denied</source>
       <translation>Feedly: hitelesítési hiba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="736"/>
+      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="734"/>
       <source>Click this to login again.</source>
       <translation>Kattintson ide az ismételt belépéshez.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="724"/>
-      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="739"/>
+      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="722"/>
+      <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="737"/>
       <source>Login</source>
       <translation>Belépés</translation>
     </message>
@@ -997,82 +997,82 @@ Item custom ID: %5</translation>
       <translation>Eszköztárak közötti térköz</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="174"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="172"/>
       <source>Everywhere</source>
       <translation>Mindenhol</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="175"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="173"/>
       <source>Titles only</source>
       <translation>Csak címek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="179"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="177"/>
       <source>Search feeds</source>
       <translation>Hírforrások keresése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="187"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="185"/>
       <source>Feeds search box</source>
       <translation>Hírforrások keresőmezője</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="197"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="195"/>
       <source>Menu for filtering feeds</source>
       <translation type="unfinished">Menu for filtering feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="199"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="197"/>
       <source>(feed list)</source>
       <translation type="unfinished">(feed list)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="203"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="201"/>
       <source>No extra filtering</source>
       <translation>Nincs extra szűrés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="209"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="207"/>
       <source>Show unread items</source>
       <translation type="unfinished">Show unread items</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="215"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="213"/>
       <source>Show non-empty items</source>
       <translation type="unfinished">Show non-empty items</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="221"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="219"/>
       <source>Show feeds with new articles</source>
       <translation type="unfinished">Show feeds with new articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="227"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="225"/>
       <source>Show feeds with errors</source>
       <translation type="unfinished">Show feeds with errors</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="233"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="231"/>
       <source>Show disabled feeds</source>
       <translation type="unfinished">Show disabled feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="239"/>
-      <source>Show feeds with ignore notifications</source>
-      <translation type="unfinished">Show feeds with ignore notifications</translation>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="237"/>
+      <source>Show feeds with ignored notifications</source>
+      <translation type="unfinished">Show feeds with ignored notifications</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="245"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="243"/>
       <source>Show feeds with article filters</source>
       <translation type="unfinished">Show feeds with article filters</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="251"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="249"/>
       <source>Display all feeds</source>
       <translation type="unfinished">Display all feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="261"/>
+      <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="259"/>
       <source>Feed list filter</source>
       <translation type="unfinished">Feed list filter</translation>
     </message>
@@ -1080,138 +1080,121 @@ Item custom ID: %5</translation>
   <context>
     <name>FeedsView</name>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="352"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="344"/>
       <source>Cannot edit item</source>
       <translation>Az elem nem szerkeszthető</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="483"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="549"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="454"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="516"/>
       <source>Cannot delete item</source>
       <translation>Az elem nem törölhető</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="353"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="345"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
       <translation>A kiválasztott elem szerkesztése nem lehetséges, mivel más kritikus művelet van folyamatban.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="484"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="455"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
       <translation>A kiválasztott elem nem törölhető, mivel más kritikus művelet van folyamatban.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1029"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1083"/>
-      <source>Context menu for categories</source>
-      <translation>Kategóriák helyi menüje</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="253"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="280"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="324"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="522"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="245"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="272"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="316"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="491"/>
       <source>Are you sure?</source>
       <translation>Biztos benne?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1153"/>
-      <source>Context menu for other items</source>
-      <translation>Egyéb elemek helyi menüje</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="180"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="172"/>
       <source>Selected account does not support adding of new feeds.</source>
       <translation>A kiválasztott fiók nem támogatja új hírforrások hozzáadását.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="198"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="190"/>
       <source>Selected account does not support adding of new categories.</source>
       <translation>A kiválasztott fiók nem támogatja új kategóriák hozzáadását.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="254"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="325"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="246"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="317"/>
       <source>Do you really want to clean all articles from selected items?</source>
       <translation>Biztos, hogy minden cikket törölni kíván a kiválaszott elemekből?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="339"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="262"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="331"/>
       <source>Cannot clear items</source>
       <translation type="unfinished">Cannot clear items</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="340"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="263"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="332"/>
       <source>Failed to clear items: %1.</source>
       <translation type="unfinished">Failed to clear items: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="281"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="273"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
       <translation type="unfinished">Do you really want to purge all non-starred articles from selected feeds?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="295"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="287"/>
       <source>Cannot purge feeds</source>
       <translation type="unfinished">Cannot purge feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="296"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="288"/>
       <source>Failed to purge feeds: %1.</source>
       <translation type="unfinished">Failed to purge feeds: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="374"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="384"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="402"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="419"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="365"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="382"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="398"/>
       <source>Cannot edit items</source>
       <translation>Az elemek nem szerkeszthetőek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="375"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="366"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
       <translation>A kiválasztott elemek nem szerkeszthetőek. Ez (még) nem támogatott funkció.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="385"/>
-      <source>%1 does not support batch editing of multiple accounts.</source>
-      <translation>A %1 nem támogatja a több fiók kötegelt szerkesztését.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="403"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="383"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
       <translation>A %1 nem támogatja a több fiókból származó elemek kötegelt szerkesztését.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="420"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="399"/>
       <source>%1 does not support batch editing of items of varying types.</source>
       <translation>A %1 nem támogatja a különböző típusú elemek kötegelt szerkesztését.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="430"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="409"/>
       <source>Cannot edit some items</source>
       <translation>Néhány elem nem szerkeszthető</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="431"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="410"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
       <translation>A kiválasztott elemek némelyike nem szerkeszthető. A többi szerkesztése fog megtörténni.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="512"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="481"/>
       <source>Some items won&apos;t be deleted</source>
       <translation>Néhány elem nem kerül törlésre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="513"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="482"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
       <translation>Néhány elem nem kerül törlésre, mert nem törölhetőek.</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="520"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="489"/>
       <source>Deleting %n items</source>
       <translation type="unfinished">
         <numerusform>%n számú elem törlése</numerusform>
@@ -1219,7 +1202,7 @@ Item custom ID: %5</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="521"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="490"/>
       <source>You are about to completely delete %n items.</source>
       <translation>
         <numerusform>Arra készült hogy teljesen töröljön %n elemet.</numerusform>
@@ -1227,70 +1210,60 @@ Item custom ID: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="550"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="517"/>
       <source>Failed to delete selected item: %1.</source>
       <translation type="unfinished">Failed to delete selected item: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="633"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="655"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="593"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="615"/>
       <source>Cannot mark item read unread</source>
       <translation type="unfinished">Cannot mark item read unread</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="634"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="656"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="594"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="616"/>
       <source>Failed to mark item read or unread: %1.</source>
       <translation type="unfinished">Failed to mark item read or unread: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="668"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="628"/>
       <source>Mark everything as read</source>
       <translation type="unfinished">Mark everything as read</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="669"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="629"/>
       <source>Do you really want to mark everything as read?</source>
       <translation type="unfinished">Do you really want to mark everything as read?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="777"/>
-      <source>Context menu for recycle bins</source>
-      <translation>Lomtárak helyi menüje</translation>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1031"/>
+      <source>Not supported</source>
+      <translation type="unfinished">Not supported</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="798"/>
-      <source>Context menu for accounts</source>
-      <translation>Fiókok helyi menüje</translation>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1032"/>
+      <source>Context menus with items from more than one account are not supported.</source>
+      <translation type="unfinished">Context menus with items from more than one account are not supported.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1174"/>
-      <source>Context menu for label</source>
-      <translation>Címkék helyi menü</translation>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1062"/>
+      <source>Menu for feed list</source>
+      <translation type="unfinished">Menu for feed list</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1197"/>
-      <source>Context menu for query</source>
-      <translation type="unfinished">Context menu for query</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1267"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="961"/>
       <source>Feed filtered out</source>
       <translation type="unfinished">Feed filtered out</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1268"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="962"/>
       <source>Your feed is probably filtered out and cannot be revealed.</source>
       <translation type="unfinished">Your feed is probably filtered out and cannot be revealed.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1132"/>
-      <source>Context menu for important articles</source>
-      <translation>Fontos cikkek helyi menüje</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="179"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="197"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="171"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="189"/>
       <source>Not supported by account</source>
       <translation>A fiók által nem támogatott funkció</translation>
     </message>
@@ -1432,12 +1405,22 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>Új címzett hozzáadása.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="183"/>
+      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="86"/>
+      <source>Original message</source>
+      <translation type="unfinished">Original message</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="99"/>
+      <source>Forwarded message</source>
+      <translation type="unfinished">Forwarded message</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="180"/>
       <source>E-mail NOT sent</source>
       <translation>Az e-mail nem került elküldésre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="184"/>
+      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="181"/>
       <source>Your e-mail message wasn&apos;t sent.</source>
       <translation>Az e-mail nem került elküldésre.</translation>
     </message>
@@ -1696,47 +1679,47 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>A leírás rendben van.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="198"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="197"/>
       <source>Select icon file for the category</source>
       <translation>Kérem válasszon ikon fájlt a kategóriához</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="201"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="200"/>
       <source>Images (%1)</source>
       <translation>Képek (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="219"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="218"/>
       <source>Category title</source>
       <translation>Kategória címe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="220"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="219"/>
       <source>Set title for your category.</source>
       <translation>Írja be a kategória címét.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="221"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="220"/>
       <source>Category description</source>
       <translation>Kategória leírása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="222"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="221"/>
       <source>Set description for your category.</source>
       <translation>Írja be a kategória leírását.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="228"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="227"/>
       <source>Icon selection</source>
       <translation>Ikon kiválasztása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="230"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="229"/>
       <source>Load icon from file...</source>
       <translation>Ikon betöltése fájlból...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="232"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="231"/>
       <source>Use default icon from icon theme</source>
       <translation>Az alapértelmezett ikon használata az ikon témából</translation>
     </message>
@@ -1939,37 +1922,37 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>&amp;Kijelölt hírforrások importálása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="42"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="41"/>
       <source>Switch to &amp;advanced mode</source>
       <translation>Váltás &amp;haladó módra</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="44"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="43"/>
       <source>Close this dialog and display dialog for adding individual feeds with advanced options.</source>
       <translation>Ezen ablak bezárása és egy új megnyitása egyedi hírforrások hozzáadásához speciális beállításokkal.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="126"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="125"/>
       <source>Cannot discover feeds</source>
       <translation>Hírforrások felfedezése sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="127"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="126"/>
       <source>Error: %1</source>
       <translation>Hiba: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="205"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="204"/>
       <source>URL is valid.</source>
       <translation>Érvényes URL.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="208"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="207"/>
       <source>URL is NOT valid.</source>
       <translation>Érvénytelen URL.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="276"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="275"/>
       <source>No title</source>
       <translation>Nincs cím</translation>
     </message>
@@ -2171,12 +2154,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="400"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="405"/>
       <source>No possible actions</source>
       <translation>Nincs lehetséges művelet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="359"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="364"/>
       <source>No recycle bin</source>
       <translation>Nincs lomtár</translation>
     </message>
@@ -2197,770 +2180,800 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="840"/>
       <source>&amp;File</source>
       <translation>&amp;Fájl</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="62"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="841"/>
       <source>&amp;Help</source>
       <translation>&amp;Segítség</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="73"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="842"/>
       <source>&amp;View</source>
       <translation>&amp;Nézet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="77"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="843"/>
       <source>Show/hide</source>
       <translation>Megjelenítés/elrejtés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="820"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="845"/>
       <source>&amp;Tools</source>
       <translation>&amp;Eszközök</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="846"/>
       <source>F&amp;eeds</source>
       <translation>&amp;Hírforrások</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="118"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="822"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="847"/>
       <source>&amp;Add item</source>
       <translation>&amp;Elem hozzáadása</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="123"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="848"/>
       <source>&amp;Move</source>
       <translation>&amp;Áthelyezés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="168"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="824"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="849"/>
       <source>Art&amp;icles</source>
       <translation>&amp;Cikkek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="201"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="826"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="206"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="851"/>
       <source>&amp;Accounts</source>
       <translation>&amp;Fiókok</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="234"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="653"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="239"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="673"/>
       <source>&amp;Quit</source>
       <translation>&amp;Kilépés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="237"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="655"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="242"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="675"/>
       <source>Quit the application.</source>
       <translation>Kilépés az applikációból.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="248"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="657"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="253"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="677"/>
       <source>&amp;Settings</source>
       <translation>&amp;Beállítások</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="251"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="659"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="256"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="679"/>
       <source>Display settings of the application.</source>
       <translation>Az applikáció beállításainak megjelenítése.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="259"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="661"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="264"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="681"/>
       <source>&amp;About application</source>
       <translation>&amp;Az applikációról</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="262"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="663"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="683"/>
       <source>Displays extra info about this application.</source>
       <translation>Kiegészítő információk megjelenítése az applikációról.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="276"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="665"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="685"/>
       <source>&amp;Fullscreen</source>
       <translation>&amp;Teljes képernyő</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="279"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="667"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="284"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="687"/>
       <source>Switch fullscreen mode.</source>
       <translation>Váltás teljes képernyős módra.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="287"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="669"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="689"/>
       <source>&amp;Fetch all</source>
       <translation>&amp;Összes frissítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="290"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="671"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="295"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="691"/>
       <source>Fetch all feeds</source>
       <translation>Összes hírforrás frissítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="298"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="673"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="303"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="693"/>
       <source>Fetch &amp;selected</source>
       <translation>&amp;Kiválasztott frissítésse</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="301"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="675"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="306"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="695"/>
       <source>Fetch selected feeds</source>
       <translation>Kiválasztott hírforrások frissítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="322"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="679"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="327"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="699"/>
       <source>Mark articles &amp;read</source>
       <translation>Cikkeket &amp;olvasottnak jelöl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="325"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="681"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="330"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="701"/>
       <source>Mark selected articles read</source>
       <translation>A kiválasztott cikkeket olvasottnak jelöli</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="333"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="683"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="338"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="703"/>
       <source>Mark articles &amp;unread</source>
       <translation>Cikkeket &amp;olvasatlannak jelöl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="336"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="685"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="341"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="705"/>
       <source>Mark selected articles unread</source>
       <translation>A kiválasztott cikkeket olvasatlannak jelöli</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="344"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="687"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="349"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="707"/>
       <source>Switch &amp;importance</source>
       <translation>&amp;Fontosság beállítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="347"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="689"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="352"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="709"/>
       <source>Switch importance of selected articles</source>
       <translation>A kiválasztott cikkek fontosságának megváltoztatása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="358"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="693"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="363"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="713"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
       <translation>A kiválasztott elemek minden üzenetének (szűrők nélkül) olvasottá állítása.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="369"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="697"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="374"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="717"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
       <translation>A kiválasztott elemek minden üzenetének (szűrők nélkül) olvasatlanná állítása.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="377"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="699"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="719"/>
       <source>&amp;Delete articles</source>
       <translation>Cikekk &amp;törlése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="309"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="677"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="314"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="697"/>
       <source>&amp;Edit selected items</source>
       <translation>Kiválasztott elemek &amp;szerkesztése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="88"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="844"/>
       <source>&amp;Focus</source>
       <translation/>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="194"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="199"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="850"/>
       <source>&amp;Recycle bins</source>
       <translation type="unfinished">&amp;Recycle bins</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="209"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="214"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="852"/>
       <source>Tabs</source>
       <translation>Fülek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="314"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="678"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="319"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="698"/>
       <source>&amp;Delete selected items</source>
       <translation>Kiválasztott elemek &amp;törlése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="355"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="691"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="360"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="711"/>
       <source>Mark selected items &amp;read</source>
       <translation>A kiválasztott elemek &amp;olvasottnak jelölése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="366"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="695"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="371"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="715"/>
       <source>Mark selected items &amp;unread</source>
       <translation>A kiválasztott elemek &amp;olvasatlannak jelölése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="385"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="700"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="720"/>
       <source>&amp;Clean selected items</source>
       <translation>A kiválasztott elemek &amp;megtisztítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="388"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="702"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="393"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="722"/>
       <source>Deletes all messages from selected items.</source>
       <translation>Minden üzenetet töröl a kiválasztott elemekből.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="396"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="704"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="724"/>
       <source>Open in &amp;external browser</source>
       <translation>Megnyitás &amp;külső böngészőben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="399"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="706"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="404"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="726"/>
       <source>Open selected articles in external browser</source>
       <translation>A kiválasztott cikkek mengnyitása külső böngészőben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="407"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="708"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="412"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="728"/>
       <source>Open in &amp;internal browser</source>
       <translation>Megnyitás a &amp;beépített böntészőben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="410"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="710"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="415"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="730"/>
       <source>Open selected articles in internal browser</source>
       <translation>A kiválasztott cikkek megnyitása a beépített böngészőben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="421"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="712"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="426"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="732"/>
       <source>No actions available</source>
       <translation>Nincs elérhető művelet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="424"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="714"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="429"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="734"/>
       <source>No actions are available right now.</source>
       <translation>Jelenleg nincs elérhető művelet.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="432"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="716"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="736"/>
       <source>&amp;Mark all read</source>
       <translation>Mindent olvasottnak &amp;jelöl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="435"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="718"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="738"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
       <translation>Minden elem minden üzenetét olvasottnak jelöl. Ez a funkció nem veszi figyelembe a fiók üzenet szűrőinek beálíltásait.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="446"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="720"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="451"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="740"/>
       <source>Switch main window visibility</source>
       <translation>A főablak láthatóságának megváltoztatása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="449"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="722"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="742"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
       <translation>Elrejti a főblakot ha látható, vagy megjeleníti ha rejtett.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="463"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="724"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="744"/>
       <source>&amp;Feed list</source>
       <translation>&amp;Hírforrás lista</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="466"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="726"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
       <source>Hides or shows the list of feeds/categories.</source>
       <translation>A hírforrások/kategóriák listájának elrejtése vagy megjelenítése.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="474"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="728"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="479"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="748"/>
       <source>&amp;Clean all</source>
       <translation>Összes &amp;tisztítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="477"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="730"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="482"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="750"/>
       <source>Deletes all messages from all items.</source>
       <translation>Minden elem minden üzenetét törli.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="485"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="732"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="490"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="752"/>
       <source>&amp;Next item</source>
       <translation>&amp;Következő elem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="493"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="733"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="498"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="753"/>
       <source>&amp;Previous item</source>
       <translation>&amp;Előző elem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="501"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="734"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="506"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="754"/>
       <source>&amp;Next article</source>
       <translation>&amp;Következő cikk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="509"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="514"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="755"/>
       <source>&amp;Previous article</source>
       <translation>&amp;Előző cikk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="517"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="736"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="522"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="756"/>
       <source>Check for &amp;updates</source>
       <translation>&amp;Frissítések keresése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="520"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="738"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="525"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="758"/>
       <source>Check if new update for the application is available for download.</source>
       <translation>Ellenőrizze, hogy rendelkezésre áll-e letölthető új frissítés.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="534"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="740"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="539"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="760"/>
       <source>&amp;Main menu</source>
       <translation>&amp;Főmenü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="537"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="742"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="542"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="762"/>
       <source>Hides or displays the main menu.</source>
       <translation>A főmenü megjelenítése vagy elrejtése.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="545"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="744"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="550"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="764"/>
       <source>Report a &amp;bug...</source>
       <translation>&amp;Hiba jelentése...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="556"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="745"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="561"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="765"/>
       <source>&amp;Toolbars</source>
       <translation>&amp;Eszköztárak</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="559"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="747"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="564"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="767"/>
       <source>Switch visibility of main toolbars.</source>
       <translation>Fő eszköztárak láthatóságának beállítása.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="573"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="749"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="769"/>
       <source>&amp;List headers</source>
       <translation>&amp;Lista fejlécek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="581"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="750"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
       <source>&amp;Donate...</source>
       <translation>&amp;Támogatás...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="589"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="751"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="594"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="771"/>
       <source>Display &amp;documentation</source>
       <translation>&amp;Dokumentáció megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="597"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="752"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="602"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="772"/>
       <source>&amp;Restore settings</source>
       <translation>&amp;Beállítások visszaállítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="605"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="753"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="610"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
       <source>&amp;Backup settings</source>
       <translation>&amp;Biztonsági mentés beállításai</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="613"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="754"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="618"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="774"/>
       <source>Switch layout</source>
       <translation>Megjelenítés váltása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="862"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="793"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="813"/>
       <source>Focus feed search box</source>
       <translation type="unfinished">Focus feed search box</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="872"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
       <source>Focus article search box</source>
       <translation type="unfinished">Focus article search box</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="872"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="795"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
       <source>Scroll &amp;up preview</source>
       <translation type="unfinished">Scroll &amp;up preview</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="882"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
       <source>Scroll &amp;down preview</source>
       <translation type="unfinished">Scroll &amp;down preview</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="931"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
       <source>Reload &amp;skin</source>
       <translation type="unfinished">Reload &amp;skin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="809"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="941"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="829"/>
       <source>Focus &amp;feed list</source>
       <translation type="unfinished">Focus &amp;feed list</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="941"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="810"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="946"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="830"/>
       <source>Focus &amp;article list</source>
       <translation type="unfinished">Focus &amp;article list</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="946"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="811"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="951"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="831"/>
       <source>Focus article &amp;preview</source>
       <translation type="unfinished">Focus article &amp;preview</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="951"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="956"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="832"/>
       <source>&amp;Load all remaining articles</source>
       <translation type="unfinished">&amp;Load all remaining articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="956"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="813"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="961"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="833"/>
       <source>Reveal &amp;feed</source>
       <translation type="unfinished">Reveal &amp;feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="961"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="966"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="834"/>
       <source>&amp;Enable/disable selected feeds</source>
       <translation type="unfinished">&amp;Enable/disable selected feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="621"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="755"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="971"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="835"/>
+      <source>Edit &amp;feed of selected article</source>
+      <translation type="unfinished">Edit &amp;feed of selected article</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="976"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="836"/>
+      <source>Mark articles &amp;above read</source>
+      <translation type="unfinished">Mark articles &amp;above read</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="981"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="837"/>
+      <source>Mark articles &amp;below read</source>
+      <translation type="unfinished">Mark articles &amp;below read</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="986"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="838"/>
+      <source>Mark articles &amp;above unread</source>
+      <translation type="unfinished">Mark articles &amp;above unread</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="991"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="839"/>
+      <source>Mark articles &amp;below unread</source>
+      <translation type="unfinished">Mark articles &amp;below unread</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="626"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="775"/>
       <source>Send via e-mail</source>
       <translation>Küldés e-mailben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="624"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="757"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
       <source>Send selected articles via e-mail</source>
       <translation>A kiválasztott cikkek küldése e-mailben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="632"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="759"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="637"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="779"/>
       <source>&amp;Cleanup database</source>
       <translation>Adatbázis &amp;tisztítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="640"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="760"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="645"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
       <source>&amp;Expand/collapse selected item</source>
       <translation>Kiválasztott elemek &amp;összecsukása/kinyitása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="648"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="761"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="781"/>
       <source>&amp;Add account</source>
       <translation>Fiók &amp;hozzáadása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="656"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="762"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="661"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
       <source>&amp;Restore articles</source>
       <translation>Cikkek &amp;visszaállítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="664"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="763"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="669"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="783"/>
       <source>&amp;Restore all recycle bins</source>
       <translation>Összes lomtár &amp;visszaállítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="672"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="764"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="677"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="784"/>
       <source>&amp;Empty all recycle bins</source>
       <translation>Összes lomtár &amp;ürítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="680"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="765"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="685"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="785"/>
       <source>Next &amp;unread article</source>
       <translation>Következő &amp;olvasatlan cikk</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="694"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="766"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="699"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
       <source>Status bar</source>
       <translation>Állapotsor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="702"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="767"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="707"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="787"/>
       <source>&amp;Edit selected account</source>
       <translation>Kiválasztott fiók &amp;szerkesztése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="710"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="768"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="715"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>&amp;Delete selected account</source>
       <translation>Kiválasztott fiók &amp;törlése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="723"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="305"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="728"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="310"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Add new category</source>
       <translation>Új kategória hozzáadása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="728"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="771"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="733"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="791"/>
       <source>Stop ongoing fetching</source>
       <translation>Folyamatban lévő frissítés leállítása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="736"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="772"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="741"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
       <source>Close all tabs</source>
       <translation>Összes fül bezárása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="741"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="746"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="793"/>
       <source>Close all tabs except current</source>
       <translation>Összes fül bezárása a jelenlegin kívül</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="746"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="774"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="751"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
       <source>Go to &amp;next tab</source>
       <translation>Átlépés a &amp;következő fülre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="751"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="775"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="795"/>
       <source>Go to &amp;previous tab</source>
       <translation>&amp;Előző fülre lépés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="759"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="776"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
       <source>&amp;Enable article preview</source>
       <translation>Cikk előnézet &amp;engedélyezése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="769"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
       <source>&amp;Copy URL of selected item</source>
       <translation>A kiválasztott elem URL-jének &amp;másolása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="769"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="778"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="774"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
       <source>Article &amp;filters</source>
       <translation>Cikk &amp;szűrők</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="777"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="779"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="782"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
       <source>&amp;Show tree expanders</source>
       <translation type="unfinished">&amp;Show tree expanders</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="782"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="787"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
       <translation type="unfinished">Fetch feeds with &amp;custom auto-download policy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="790"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="781"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="795"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="801"/>
       <source>Alternate row colors in lists</source>
       <translation>Sorok váltakozó színezése listákban</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="798"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="803"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
       <source>Automatically &amp;expand item when selected</source>
       <translation>Az elem automatikus &amp;kinyitása amikor kiválasztásra kerül</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="809"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="783"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="814"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="803"/>
       <source>Message viewer toolbars</source>
       <translation>Üzenet megtekintő eszköztárak</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="814"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="784"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="819"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
       <source>Expand/collapse selected item &amp;recursively</source>
       <translation type="unfinished">Expand/collapse selected item &amp;recursively</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="819"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="785"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="824"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="805"/>
       <source>Close &amp;current tab</source>
       <translation>&amp;Aktuális fül bezárása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="824"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="829"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>&amp;Copy URLs of selected articles</source>
       <translation>A kiválasztott cikkek URL-jeinek &amp;másolása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="832"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="787"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="837"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="807"/>
       <source>&amp;Sort alphabetically</source>
       <translation>&amp;Rendezés ABC sorrendbe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="837"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="842"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
       <source>Move &amp;up</source>
       <translation>Mozgatás &amp;felfelé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="842"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="847"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="809"/>
       <source>Move to &amp;top</source>
       <translation>Mozgatás a &amp;tetejére</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="847"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="852"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="810"/>
       <source>Move &amp;down</source>
       <translation>Mozgatás &amp;lefelé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="852"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="791"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="857"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="811"/>
       <source>Move to &amp;bottom</source>
       <translation>Mozgatás az &amp;aljára</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="857"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="862"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
       <source>Display application &amp;log</source>
       <translation>Applikáció &amp;naplójának megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="882"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
       <source>Rearrange &amp;subcategories alphabetically</source>
       <translation>Az &amp;alkategóriák ABC sorrendbe rendezése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="892"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
       <source>Rearrange &amp;feeds alphabetically</source>
       <translation>&amp;Hírforrások ABC sorrendbe rendezése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="895"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="900"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
       <source>You must add new account first</source>
       <translation>Előbb hozzá kell adni egy új fiókot</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="898"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="801"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="903"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
       <source>You must add new account first.</source>
       <translation>Előbb hozzá kell adni egy új fiókot.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="903"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="803"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="908"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
       <source>Edit &amp;child feeds</source>
       <translation type="unfinished">Edit &amp;child feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="908"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="913"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="824"/>
       <source>Edit child feeds (&amp;recursive)</source>
       <translation type="unfinished">Edit child feeds (&amp;recursive)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="913"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="805"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="918"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
       <source>Play in &amp;media player</source>
       <translation>Lejátszás a &amp;médialejátszóban</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="921"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="926"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="826"/>
       <source>&amp;Pause automatic feed fetching</source>
       <translation type="unfinished">&amp;Pause automatic feed fetching</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="926"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="807"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="931"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
       <source>&amp;Purge selected feeds</source>
       <translation type="unfinished">&amp;Purge selected feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="718"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="315"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="769"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="723"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="320"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
       <source>Add new feed</source>
       <translation>Új hírforrás hozzáadása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="366"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="371"/>
       <source>No actions possible</source>
       <translation>Nincs elérhető művelet</translation>
     </message>
@@ -2975,37 +2988,37 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>Adatbázis tisztítása sikertelen mivel egy másik kritikus folyamat fut.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="456"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="465"/>
       <source>Play in media player</source>
       <translation>Lejátszás a médialejátszóban</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="457"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="466"/>
       <source>(not supported)</source>
       <translation>(nem támogatott)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="526"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="536"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Előbb zárja be a megnyitott párbeszédpaneleket.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="789"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="807"/>
       <source>Skin reloaded</source>
       <translation type="unfinished">Skin reloaded</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="790"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="808"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
       <translation type="unfinished">Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="437"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="442"/>
       <source>Fetching common data</source>
       <translation>Gyakori adatok lekérése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="525"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="535"/>
       <source>Close dialogs</source>
       <translation>Párbeszédpanelek bezárása</translation>
     </message>
@@ -3013,38 +3026,38 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormMessageFiltersManager</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="556"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="554"/>
       <source>Cannot find &apos;clang-format&apos;</source>
       <translation type="unfinished">Cannot find &apos;clang-format&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="557"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="555"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
       <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool was not found.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="327"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="575"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="325"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="573"/>
       <source>Error</source>
       <translation>Hiba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="576"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="574"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
       <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool thrown error.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="585"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="583"/>
       <source>Beautifier was running for too long time</source>
       <translation type="unfinished">Beautifier was running for too long time</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="586"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="584"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation type="unfinished">Script was not beautified, is &apos;clang-format&apos; installed?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="328"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="326"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
       <translation type="unfinished">Cannot save new filter, error: &apos;%1&apos;.</translation>
     </message>
@@ -3059,7 +3072,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>Ehhez hasonló cikkek szűrése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="315"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="313"/>
       <source>New article filter</source>
       <translation>Új cikk szűrő</translation>
     </message>
@@ -3243,6 +3256,11 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formprogressworker.h" line="74"/>
       <source>Dialog</source>
       <translation type="unfinished">Dialog</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formprogressworker.cpp" line="18"/>
+      <source>&amp;Cancel</source>
+      <translation type="unfinished">&amp;Cancel</translation>
     </message>
   </context>
   <context>
@@ -4362,34 +4380,34 @@ Belépési token lejárata: %2</translation>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="424"/>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="457"/>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="521"/>
-      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="593"/>
-      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="659"/>
+      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="592"/>
+      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="658"/>
       <source>login failed</source>
       <translation>sikertelen bejelentkezés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1217"/>
+      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1216"/>
       <source>Inoreader: authentication error</source>
       <translation>Inoreader: hitelesítési hiba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1218"/>
+      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1217"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
       <translation>Kattintson ide az ismételt bejelentkezéshez. Hiba: &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1230"/>
+      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1229"/>
       <source>Inoreader: authorization denied</source>
       <translation>Inoreader: hitelesítés visszautasítva</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1231"/>
+      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1230"/>
       <source>Click this to login again.</source>
       <translation>Kattintson ide az ismételt belépéshez.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1221"/>
-      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1234"/>
+      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1220"/>
+      <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1233"/>
       <source>Login</source>
       <translation>Belépés</translation>
     </message>
@@ -4397,75 +4415,75 @@ Belépési token lejárata: %2</translation>
   <context>
     <name>GreaderServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="156"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="149"/>
       <source>Other services</source>
       <translation>Egyéb szolgáltatások</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="161"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="193"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="154"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="186"/>
       <source>OPML 2.0 files (*.opml *.xml)</source>
       <translation>OPML 2.0 fájlok (*.opml *.xml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="163"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="156"/>
       <source>Select file for feeds import</source>
       <translation>Válasszon egy fájlt a hírforrások importálásához</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="178"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="210"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="171"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="203"/>
       <source>Done</source>
       <translation>Kész</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="179"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="172"/>
       <source>Data imported successfully. Reloading feed tree.</source>
       <translation>Az adatok importálása sikeres. Hírforrás-fa újratöltése.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="186"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="179"/>
       <source>Cannot import feeds</source>
       <translation>Hírforrások importálása sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="187"/>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="216"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="180"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="209"/>
       <source>Error: %1</source>
       <translation>Hiba: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="195"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="188"/>
       <source>Select file for feeds export</source>
       <translation>Válasszon fájlt a hírforrások exportálásához</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="210"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="203"/>
       <source>Data exported successfully.</source>
       <translation>Adatok exportálása sikeres.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="215"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="208"/>
       <source>Cannot export feeds</source>
       <translation>Hírforrások importálása sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="272"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="265"/>
       <source>Export feeds</source>
       <translation>Hírforrások exportálása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="273"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="266"/>
       <source>Import feeds</source>
       <translation>Hírforrások importálása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="373"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="366"/>
       <source>Cannot add item</source>
       <translation>Az elem hozzáadása sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="374"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="367"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Hírforrás hozzáadása sikertelen, mivel más kritikus művelet van folyamatban.</translation>
     </message>
@@ -4526,12 +4544,12 @@ Belépési token lejárata: %2</translation>
       <translation>Nem találhatóak címkék</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="68"/>
+      <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="67"/>
       <source>Cannot change labels</source>
       <translation type="unfinished">Cannot change labels</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="69"/>
+      <location filename="../src/librssguard/gui/reusable/labelsmenu.cpp" line="68"/>
       <source>Failed to (de)assign label to/from article: %1.</source>
       <translation type="unfinished">Failed to (de)assign label to/from article: %1.</translation>
     </message>
@@ -4554,23 +4572,18 @@ Belépési token lejárata: %2</translation>
       <translation type="unfinished">Number of labels: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="98"/>
-      <source>New label</source>
-      <translation>Új címke</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="124"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="113"/>
       <source>Cannot create label: %1.</source>
       <translation type="unfinished">Cannot create label: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="132"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="121"/>
       <source>This account does not allow you to create labels.</source>
       <translation>Ez a fiók nem engedélyezi a címkék létrehozását.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="123"/>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="131"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="112"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="120"/>
       <source>Not allowed</source>
       <translation>Nem engedélyezett</translation>
     </message>
@@ -5145,233 +5158,259 @@ Belépési token lejárata: %2</translation>
   <context>
     <name>MessagesModel</name>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="545"/>
       <source>Id</source>
       <translation>Azonosító</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="545"/>
       <source>Read</source>
       <translation>Olvasott</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="545"/>
       <source>Deleted</source>
       <translation>Törölt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="545"/>
       <source>Important</source>
       <translation>Fontos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="508"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="547"/>
       <source>Feed</source>
       <translation>Hírforrás</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
       <source>Title</source>
       <translation>Cím</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
       <source>Author</source>
       <translation>Szerző</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
       <source>Contents</source>
       <translation>Tartalom</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="506"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="545"/>
       <source>Permanently deleted</source>
       <translation>Véglegesen törölt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="508"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="547"/>
       <source>Account ID</source>
       <translation>Fiók azonosító</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="508"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="547"/>
       <source>Custom ID</source>
       <translation>Egyedi azonosító</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="508"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="547"/>
       <source>Custom hash</source>
       <translation type="unfinished">Custom hash</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
       <source>Feed ID</source>
       <translation>Hírforrás azonosító</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="508"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="547"/>
       <source>Score</source>
       <translation type="unfinished">Score</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
       <source>Date</source>
       <translation>Dátum</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="361"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="362"/>
       <source>Loading of articles failed, maybe messages could not be downloaded.</source>
       <translation type="unfinished">Loading of articles failed, maybe messages could not be downloaded.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="139"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="140"/>
       <source>dot</source>
       <translation>pont</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="142"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="143"/>
       <source>envelope</source>
       <translation>boríték</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="145"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="146"/>
       <source>feed icon</source>
       <translation>hírforrás ikon</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="198"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="199"/>
       <source>Loaded extra %1 articles in %2 miliseconds</source>
       <translation type="unfinished">Loaded extra %1 articles in %2 miliseconds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="253"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="254"/>
       <source>Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, %5 ms to fill dynamic data)</source>
       <translation type="unfinished">Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, %5 ms to fill dynamic data)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="306"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="307"/>
       <source>cannot set model data for column %1</source>
       <translation type="unfinished">cannot set model data for column %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="468"/>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="501"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="409"/>
+      <source>Feed not found</source>
+      <translation type="unfinished">Feed not found</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="410"/>
+      <source>Feed cannot be edited because it was not found, this is weird.</source>
+      <translation type="unfinished">Feed cannot be edited because it was not found, this is weird.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="416"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="425"/>
+      <source>Cannot edit feed</source>
+      <translation type="unfinished">Cannot edit feed</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="417"/>
+      <source>The feed cannot be edited because this particular feed (or account) does not support it.</source>
+      <translation type="unfinished">The feed cannot be edited because this particular feed (or account) does not support it.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="426"/>
+      <source>The feed cannot be edited because another critical operation is ongoing.</source>
+      <translation type="unfinished">The feed cannot be edited because another critical operation is ongoing.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="540"/>
       <source>article with row %1 not found</source>
       <translation type="unfinished">article with row %1 not found</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
       <source>URL</source>
       <translation>URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="509"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="548"/>
       <source>Assigned labels</source>
       <translation>Csatolt címkék</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="509"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="548"/>
       <source>Has attachments</source>
       <translation type="unfinished">Has attachments</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="511"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="550"/>
       <source>ID of the article.</source>
       <translation>A cikk azonosítója.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="511"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="550"/>
       <source>Is article read?</source>
       <translation>Olvasott cikk?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="511"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="550"/>
       <source>Is article important?</source>
       <translation>Fontos cikk?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="512"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="551"/>
       <source>Is article deleted?</source>
       <translation>Törölt cikk?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="512"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="551"/>
       <source>Is article permanently deleted from recycle bin?</source>
       <translation>A cikk véglegesen törlésre került a lomtárból?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="513"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="552"/>
       <source>ID of feed which this article belongs to.</source>
       <translation>A hírforrás azonosítója, amelyhez ez a cikk tartozik.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="513"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="552"/>
       <source>Title of the article.</source>
       <translation>A cikk címe.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="514"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="553"/>
       <source>Url of the article.</source>
       <translation>A cikk URL-je.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="514"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="553"/>
       <source>Author of the article.</source>
       <translation>A cikk szerzője.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="514"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="553"/>
       <source>Creation date of the article.</source>
       <translation type="unfinished">Creation date of the article.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="515"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="554"/>
       <source>Contents of the article.</source>
       <translation type="unfinished">Contents of the article.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="515"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="554"/>
       <source>Score of the article.</source>
       <translation type="unfinished">Score of the article.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="515"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="554"/>
       <source>Account ID of the article.</source>
       <translation>A cikkhez tartozó fiók azonosító.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="516"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="555"/>
       <source>Custom ID of the article.</source>
       <translation>A cikkhez tartozó egyedi azonosító.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="516"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="555"/>
       <source>Custom hash of the article.</source>
       <translation type="unfinished">Custom hash of the article.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="517"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="556"/>
       <source>Name of feed of the article.</source>
       <translation>A cikket tartalmazó hírforrás neve.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="517"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="556"/>
       <source>Indication of attachments presence within the article.</source>
       <translation type="unfinished">Indication of attachments presence within the article.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="518"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="557"/>
       <source>Labels assigned to the article.</source>
       <translation>A cikkhez csatolt címkék.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="615"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="654"/>
       <source>article model column %1 is out of range</source>
       <translation type="unfinished">article model column %1 is out of range</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="639"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="678"/>
       <source>%n months ago</source>
       <translation type="unfinished">
         <numerusform>%n hónappal ezelőtt</numerusform>
@@ -5379,7 +5418,7 @@ Belépési token lejárata: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="643"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="682"/>
       <source>%n weeks ago</source>
       <translation type="unfinished">
         <numerusform>%n héttel ezelőtt</numerusform>
@@ -5387,7 +5426,7 @@ Belépési token lejárata: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="647"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="686"/>
       <source>%n days ago</source>
       <translation type="unfinished">
         <numerusform>%n nappal ezelőtt</numerusform>
@@ -5395,12 +5434,12 @@ Belépési token lejárata: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="651"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="690"/>
       <source>yesterday</source>
       <translation>tegnap</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="655"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="694"/>
       <source>%n hours ago</source>
       <translation type="unfinished">
         <numerusform>%n órával ezelőtt</numerusform>
@@ -5408,7 +5447,7 @@ Belépési token lejárata: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="659"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="698"/>
       <source>%n minutes ago</source>
       <translation type="unfinished">
         <numerusform>%n perccel ezelőtt</numerusform>
@@ -5416,12 +5455,12 @@ Belépési token lejárata: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="662"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="701"/>
       <source>just now</source>
       <translation>épp most</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="360"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="361"/>
       <source>Loading of articles from item &apos;%1&apos; failed</source>
       <translation type="unfinished">Loading of articles from item &apos;%1&apos; failed</translation>
     </message>
@@ -5429,7 +5468,7 @@ Belépési token lejárata: %2</translation>
   <context>
     <name>MessagesToolBar</name>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="235"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="231"/>
       <source>No extra highlighting</source>
       <translation type="unfinished">No extra highlighting</translation>
     </message>
@@ -5439,123 +5478,123 @@ Belépési token lejárata: %2</translation>
       <translation>Eszköztárak közötti térköz</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="211"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="207"/>
       <source>Everywhere</source>
       <translation>Mindenhol</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="212"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="208"/>
       <source>Titles only</source>
       <translation>Csak címek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="216"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="212"/>
       <source>Search articles</source>
       <translation>Cikkek keresése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="223"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="219"/>
       <source>Article search box</source>
       <translation type="unfinished">Article search box</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="225"/>
       <source>Menu for highlighting articles</source>
       <translation type="unfinished">Menu for highlighting articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="231"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="227"/>
       <source>(article list)</source>
       <translation type="unfinished">(article list)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="241"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="237"/>
       <source>Highlight unread articles</source>
       <translation type="unfinished">Highlight unread articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="247"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="243"/>
       <source>Highlight important articles</source>
       <translation type="unfinished">Highlight important articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="252"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="248"/>
       <source>Menu for filtering articles</source>
       <translation type="unfinished">Menu for filtering articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="256"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="252"/>
       <source>No extra filtering</source>
       <translation>Nincs extra szűrés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="262"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="258"/>
       <source>Show unread articles</source>
       <translation>Olvasatlan cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="268"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="264"/>
       <source>Show read articles</source>
       <translation type="unfinished">Show read articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="274"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="270"/>
       <source>Show important articles</source>
       <translation>Fontos cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="280"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="276"/>
       <source>Show today&apos;s articles</source>
       <translation>Mai cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="286"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="282"/>
       <source>Show yesterday&apos;s articles</source>
       <translation>Tegnapi cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="292"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="288"/>
       <source>Show articles in last 24 hours</source>
       <translation>Cikkek az elmúlt 24 órából</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="298"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="294"/>
       <source>Show articles in last 48 hours</source>
       <translation>Cikkek az elmúlt 48 órából</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="304"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="300"/>
       <source>Show this week&apos;s articles</source>
       <translation>Eheti cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="310"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="306"/>
       <source>Show last week&apos;s articles</source>
       <translation>Múlt heti cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="316"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="312"/>
       <source>Show articles with attachments</source>
       <translation>Melléklettel rendelkező cikkek megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="322"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="318"/>
       <source>Show articles with some score</source>
       <translation type="unfinished">Show articles with some score</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="328"/>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="335"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="324"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="331"/>
       <source>Display all articles</source>
       <translation>Minden cikk megjelenítése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="345"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="341"/>
       <source>Article highlighter</source>
       <translation type="unfinished">Article highlighter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="351"/>
+      <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="347"/>
       <source>Article list filter</source>
       <translation type="unfinished">Article list filter</translation>
     </message>
@@ -5563,47 +5602,47 @@ Belépési token lejárata: %2</translation>
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="724"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="731"/>
       <source>Problem with starting external e-mail client</source>
       <translation>Probléma merült fel a külső e-mail kliens indítása során</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="725"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="732"/>
       <source>External e-mail client could not be started.</source>
       <translation>Külső e-mail kliens nem indítható.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="418"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="424"/>
       <source>Open with external tool</source>
       <translation>Megnyitás külső eszközzel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="694"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="701"/>
       <source>No URL</source>
       <translation>Nincs URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="695"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="702"/>
       <source>Article cannot be played in media player as it has no URL</source>
       <translation type="unfinished">Article cannot be played in media player as it has no URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="931"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="996"/>
       <source>Cannot run external tool</source>
       <translation>Külső eszköz indítása sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="932"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="997"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation type="unfinished">External tool &apos;%1&apos; could not be started.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="438"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="444"/>
       <source>No external tools activated</source>
       <translation type="unfinished">No external tools activated</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="398"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="404"/>
       <source>Context menu for articles</source>
       <translation>Cikkek helyi menüje</translation>
     </message>
@@ -5997,14 +6036,9 @@ Belépési token lejárata: %2</translation>
   <context>
     <name>QLiteHtmlArticleViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="168"/>
+      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="184"/>
       <source>Context menu for article viewer</source>
       <translation type="unfinished">Context menu for article viewer</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="170"/>
-      <source>Copy text</source>
-      <translation type="unfinished">Copy text</translation>
     </message>
   </context>
   <context>
@@ -6028,7 +6062,7 @@ Belépési token lejárata: %2</translation>
   <context>
     <name>QObject</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="600"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="598"/>
       <source>
 
 + %n other feeds.</source>
@@ -6042,7 +6076,7 @@ Belépési token lejárata: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="88"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="89"/>
       <source>Load initial set of feeds</source>
       <translation type="unfinished">Load initial set of feeds</translation>
     </message>
@@ -6065,12 +6099,12 @@ At least API level %1 is required.</translation>
       <translation type="unfinished">The News app is an RSS/Atom feed aggregator. It is part of Nextcloud suite. This plugin implements %1 API.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="265"/>
+      <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="260"/>
       <source>New version available</source>
       <translation>Új verzió elérhető</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="266"/>
+      <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="261"/>
       <source>Click the bubble for more information.</source>
       <translation>Kattintson a buborékra további információkért.</translation>
     </message>
@@ -6089,12 +6123,12 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1891"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1885"/>
       <source>cannot move item of kind %1</source>
       <translation type="unfinished">cannot move item of kind %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2032"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2026"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation type="unfinished">Cannot insert article filter, because current database cannot return last inserted row ID.</translation>
     </message>
@@ -6306,47 +6340,78 @@ A támogatott olvasók listája:</translation>
       <translation type="unfinished">not a Sitemap</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="57"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="59"/>
+      <source>Copy text</source>
+      <translation type="unfinished">Copy text</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="75"/>
       <source>Copy link</source>
       <translation type="unfinished">Copy link</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="85"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="90"/>
+      <source>Copy image link</source>
+      <translation type="unfinished">Copy image link</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="105"/>
+      <source>Copy image</source>
+      <translation type="unfinished">Copy image</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="120"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="134"/>
+      <source>Save image</source>
+      <translation type="unfinished">Save image</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="136"/>
+      <source>image.%1</source>
+      <translation type="unfinished">image.%1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="137"/>
+      <source>Images (%1)</source>
+      <translation>Képek (%1)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="164"/>
       <source>Open with external tool</source>
       <translation>Megnyitás külső eszközzel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="119"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="198"/>
       <source>Save article in HTML format</source>
       <translation type="unfinished">Save article in HTML format</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="122"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="201"/>
       <source>HTML files (*.htm *.html)</source>
       <translation type="unfinished">HTML files (*.htm *.html)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="167"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="246"/>
       <source>Load external resources</source>
       <translation type="unfinished">Load external resources</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="169"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="248"/>
       <source>Save article as...</source>
       <translation type="unfinished">Save article as...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="171"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="250"/>
       <source>Open in external browser</source>
       <translation>Megnyitás külső böngészőben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="174"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="253"/>
       <source>Play in media player</source>
       <translation>Lejátszás a médialejátszóban</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="177"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="256"/>
       <source>(not supported)</source>
       <translation>(nem támogatott)</translation>
     </message>
@@ -6535,22 +6600,12 @@ A támogatott olvasók listája:</translation>
       <translation>Lomtár</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="42"/>
-      <source>Restore recycle bin</source>
-      <translation>Lomtár visszaállítása</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="43"/>
-      <source>Empty recycle bin</source>
-      <translation>Lomtár kiürítése</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="84"/>
+      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="68"/>
       <source>Are you sure?</source>
       <translation>Biztos benne?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="85"/>
+      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="69"/>
       <source>Do you really want to empty your recycle bin?</source>
       <translation>Biztos, hogy ki szeretné üríteni a lomtárat?</translation>
     </message>
@@ -6750,7 +6805,7 @@ Belépési token lejárata: %2</translation>
   <context>
     <name>RootItem</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="123"/>
+      <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="119"/>
       <source>%n unread article(s).</source>
       <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
       <translation type="unfinished">
@@ -6880,17 +6935,12 @@ Belépési token lejárata: %2</translation>
       <translation type="unfinished">You can see all your permanent queries here.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="48"/>
-      <source>New query</source>
-      <translation type="unfinished">New query</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="80"/>
+      <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="70"/>
       <source>Not allowed</source>
       <translation>Nem engedélyezett</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="81"/>
+      <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="71"/>
       <source>Problem when creating probe: %1.</source>
       <translation type="unfinished">Problem when creating probe: %1.</translation>
     </message>
@@ -6898,47 +6948,67 @@ Belépési token lejárata: %2</translation>
   <context>
     <name>ServiceRoot</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="107"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="84"/>
       <source>Cannot update label</source>
       <translation type="unfinished">Cannot update label</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="108"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="85"/>
       <source>Failed to update label with new information: %1.</source>
       <translation type="unfinished">Failed to update label with new information: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="142"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="112"/>
       <source>Cannot update probe item</source>
       <translation type="unfinished">Cannot update probe item</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="143"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="113"/>
       <source>Failed to update selected probe: %1.</source>
       <translation type="unfinished">Failed to update selected probe: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="153"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="123"/>
       <source>Unsupported</source>
       <translation>Nem támogatott</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="153"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="124"/>
       <source>This is not suppported (yet).</source>
       <translation>Ez (még) nem támogatott.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="207"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="170"/>
+      <source>New query</source>
+      <translation type="unfinished">New query</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="182"/>
+      <source>Restore recycle bin</source>
+      <translation type="unfinished">Restore recycle bin</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="184"/>
+      <source>Empty recycle bin</source>
+      <translation type="unfinished">Empty recycle bin</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="198"/>
+      <source>New label</source>
+      <translation type="unfinished">New label</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="226"/>
       <source>Synchronize folders &amp;&amp; other items</source>
       <translation type="unfinished">Synchronize folders &amp;&amp; other items</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="216"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="235"/>
       <source>Synchronize article cache</source>
       <translation type="unfinished">Synchronize article cache</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="362"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="381"/>
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
@@ -6947,12 +7017,12 @@ Number of categories: %2
 Number of disabled feeds: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="731"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="750"/>
       <source>Error when fetching list of feeds</source>
       <translation>Hiba lépett fel a hírforrások listájának frissítése közben</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="732"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="751"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>A &apos;%1&apos; fiók hírforrásai és kategóriái nem kerültek frissítésre, hiba: %2</translation>
     </message>
@@ -6960,14 +7030,24 @@ Number of disabled feeds: %3</translation>
   <context>
     <name>SettingsBrowserMail</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="117"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="43"/>
+      <source>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain.</source>
+      <translation type="unfinished">On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
+      <source>Domain</source>
+      <translation type="unfinished">Domain</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="119"/>
       <source>Select web browser executable</source>
       <translation type="unfinished">Select web browser executable</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="122"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="166"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="289"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="124"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="169"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="292"/>
       <source>Executables (*)</source>
       <extracomment>File filter for external browser selection dialog.
 ----------
@@ -6975,125 +7055,125 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation type="unfinished">Executables (*)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="124"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="168"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="287"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="126"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="171"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="290"/>
       <source>Executables (*.*)</source>
       <translation type="unfinished">Executables (*.*)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="161"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="164"/>
       <source>Select e-mail executable</source>
       <translation type="unfinished">Select e-mail executable</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="185"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="188"/>
       <source>Opera 12 or older</source>
       <translation>Opera 12 vagy újabb</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="49"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
       <source>Executable</source>
       <translation type="unfinished">Executable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="346"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="348"/>
       <source>Network</source>
       <translation>Hálózat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="344"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="346"/>
       <source>Enable HTTP/2</source>
       <translation>HTTP/2 engedélyezése</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="345"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="347"/>
       <source>Custom User-Agent</source>
       <translation type="unfinished">Custom User-Agent</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="360"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="362"/>
       <source>External web browser</source>
       <translation>Külső web böngésző</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="51"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="347"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="349"/>
       <source>Always open hyperlinks in external web browser</source>
       <translation>A hivatkozások mindig külső böngészőben kerüljenek megnyitásra</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="71"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="185"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="349"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="362"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="351"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="364"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ha nincs kiválasztva akkor a rendszer alapértelmezett böngészője kerül használatra.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="74"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="351"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="353"/>
       <source>Use custom external web browser</source>
       <translation>Egyedi külső webböngésző használata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="86"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="352"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="354"/>
       <source>Web browser executable</source>
       <translation type="unfinished">Web browser executable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="98"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="353"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="355"/>
       <source>Executable file of web browser</source>
       <translation type="unfinished">Executable file of web browser</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="111"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="228"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="354"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="367"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="356"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="369"/>
       <source>&amp;Browse</source>
       <translation>&amp;Böngészés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="120"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="237"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="49"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="355"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="368"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="357"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="370"/>
       <source>Parameters</source>
       <translation>Paraméterek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="130"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="247"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="356"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="369"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="358"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="371"/>
       <source>Parameters passed to executable</source>
       <translation type="unfinished">Parameters passed to executable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="137"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="254"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="357"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="370"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="359"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="372"/>
       <source>Use sample arguments for</source>
       <translation type="unfinished">Use sample arguments for</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="151"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="358"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="360"/>
       <source>Select browser</source>
       <translation>Böngésző kiválasztása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="341"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="375"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="349"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="377"/>
       <source>&amp;Edit tool path</source>
       <translation type="unfinished">&amp;Edit tool path</translation>
     </message>
@@ -7104,31 +7184,31 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="166"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="373"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="375"/>
       <source>External e-mail client</source>
       <translation>Külső e-mail kliens</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="188"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="364"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="366"/>
       <source>Use custom external e-mail client</source>
       <translation>Külső e-mail kliens használata</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="200"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="365"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="367"/>
       <source>E-mail client executable</source>
       <translation type="unfinished">E-mail client executable</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="215"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="366"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="368"/>
       <source>Executable file of e-mail client</source>
       <translation type="unfinished">Executable file of e-mail client</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="268"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="371"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="373"/>
       <source>Select client</source>
       <translation>Kliens kiválasztása</translation>
     </message>
@@ -7143,39 +7223,34 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="283"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="377"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="379"/>
       <source>External tools</source>
       <translation>Külső eszközök</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="331"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="374"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="339"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="376"/>
       <source>&amp;Add tool</source>
       <translation>Eszköz &amp;hozzáadása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="351"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="376"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="359"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="378"/>
       <source>&amp;Delete selected tool</source>
       <translation>Kiválasztott eszköz &amp;törlése</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="43"/>
-      <source>On this page, you can setup a list of external tools which can open URLs.</source>
-      <translation>Ezen az oldalon olyan külső eszközök listája állítható be, amelyek képesek URL-ek megnyitására.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="49"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
       <source>Name</source>
       <translation>Név</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="270"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="273"/>
       <source>New tool</source>
       <translation type="unfinished">New tool</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="283"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="286"/>
       <source>Select external tool</source>
       <translation>Külső eszköz kiválasztása</translation>
     </message>
@@ -7953,29 +8028,29 @@ Leírás: %3</translation>
       <translation type="unfinished">Help us to improve %1 &lt;a href=&quot;%2&quot;&gt;translations&lt;/a&gt;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="116"/>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="117"/>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="122"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="119"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="120"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="125"/>
       <source>Big thanks to all translators!</source>
       <translation>Nagy köszönet minden fordítónak!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="121"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="124"/>
       <source>Translations provided by: %1</source>
       <translation>A fordításokban közreműködtek:</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="207"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="210"/>
       <source>Translators needed!</source>
       <translation>Fordítók kerestetnek!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="208"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="211"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
       <translation>A &apos;%1&apos; fordítás még nincs kész és bárki segíthet a %2 fordításában, amit nagyon szívesen fogadunk.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="210"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="213"/>
       <source>Do you want to help with the translation now?</source>
       <translation>Szeretne most segíteni a fordítással?</translation>
     </message>
@@ -8368,22 +8443,22 @@ If that is the case, then you need to set some time gaps when fetching those fee
 If that is the case, then you need to set some time gaps when fetching those feeds.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="57"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="54"/>
       <source>Select icon file for the account</source>
       <translation type="unfinished">Select icon file for the account</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="60"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="57"/>
       <source>Images (%1)</source>
       <translation>Képek (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="75"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="72"/>
       <source> = no spacing</source>
       <translation type="unfinished"> = no spacing</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="78"/>
+      <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="75"/>
       <source> seconds</source>
       <translation type="unfinished">
         <numerusform> seconds</numerusform>
@@ -8407,73 +8482,73 @@ If that is the case, then you need to set some time gaps when fetching those fee
   <context>
     <name>StandardFeed</name>
     <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="89"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="90"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="92"/>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="93"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="94"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="96"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="97"/>
       <source>yes</source>
       <translation>igen</translation>
     </message>
     <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="89"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="90"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="92"/>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="93"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="94"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="96"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="97"/>
       <source>no</source>
       <translation>nem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="232"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="228"/>
       <source>Script</source>
       <translation type="unfinished">Script</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="235"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="231"/>
       <source>Local file</source>
       <translation>Helyi fájl</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="465"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="461"/>
       <source>uses application setting</source>
       <translation type="unfinished">uses application setting</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="468"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="464"/>
       <source>enabled</source>
       <translation type="unfinished">enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="471"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="467"/>
       <source>disabled</source>
       <translation type="unfinished">disabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="474"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="470"/>
       <source>unknown state</source>
       <translation type="unfinished">unknown state</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="238"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="234"/>
       <source>Unknown</source>
       <translation>Ismeretlen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="277"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="273"/>
       <source>Cannot save data for feed: %1</source>
       <translation type="unfinished">Cannot save data for feed: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="448"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="444"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation type="unfinished">Cannot move feed, detailed information was logged via debug log.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="276"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="272"/>
       <source>Cannot save feed data</source>
       <translation type="unfinished">Cannot save feed data</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="83"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="79"/>
       <source>Encoding: %1
 Type: %2
 Post-processing script: %3
@@ -8492,12 +8567,12 @@ Fetch full articles: %7 (plain text only: %8)
 </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="406"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="402"/>
       <source>feed format not recognized</source>
       <translation type="unfinished">feed format not recognized</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="447"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="443"/>
       <source>Cannot move feed</source>
       <translation>Hírforrás áthelyezése sikertelen</translation>
     </message>
@@ -8650,12 +8725,12 @@ Fetch full articles: %7 (plain text only: %8)
       <translation type="unfinished">File does not exist.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="386"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="383"/>
       <source>Select icon file for the feed</source>
       <translation type="unfinished">Select icon file for the feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="389"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="386"/>
       <source>Images (%1)</source>
       <translation>Képek (%1)</translation>
     </message>
@@ -8832,12 +8907,12 @@ Also, you can post-process generated feed data with yet another script if you wi
       <translation type="unfinished">Fetch comments for articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="24"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="23"/>
       <source>Turning this setting ON will fetch full source articles for this feed. Note that this will slow down feed fetching and also can make your database considerably bigger.</source>
       <translation type="unfinished">Turning this setting ON will fetch full source articles for this feed. Note that this will slow down feed fetching and also can make your database considerably bigger.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="28"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="27"/>
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
@@ -8846,7 +8921,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="33"/>
       <source>This enables fetching of embedded article comments. Note that if the feed has many articles and each of them has comments, then the whole feed fetching can be much much slower with this option enabled.</source>
       <translation type="unfinished">This enables fetching of embedded article comments. Note that if the feed has many articles and each of them has comments, then the whole feed fetching can be much much slower with this option enabled.</translation>
     </message>
@@ -8879,22 +8954,22 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation>Hitelesítés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="26"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="25"/>
       <source>Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</source>
       <translation type="unfinished">Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="34"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="33"/>
       <source>Use application settings</source>
       <translation type="unfinished">Use application settings</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="36"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="35"/>
       <source>Enabled</source>
       <translation type="unfinished">Enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="37"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="36"/>
       <source>Disabled</source>
       <translation type="unfinished">Disabled</translation>
     </message>
@@ -8910,77 +8985,93 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="91"/>
       <source>Do you want to load initial set of feeds?</source>
       <translation type="unfinished">Do you want to load initial set of feeds?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="118"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="119"/>
       <source>Error when loading initial feeds</source>
       <translation type="unfinished">Error when loading initial feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="492"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="500"/>
       <source>Fetch metadata</source>
       <translation type="unfinished">Fetch metadata</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="682"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="698"/>
       <source>Error during file import</source>
       <translation type="unfinished">Error during file import</translation>
     </message>
+    <message numerus="yes">
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="713"/>
+      <source>Fetching metadata for %n feeds</source>
+      <translation type="unfinished">
+        <numerusform>Fetching metadata for %n feeds</numerusform>
+        <numerusform>Fetching metadata for %n feeds</numerusform>
+      </translation>
+    </message>
+    <message numerus="yes">
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="722"/>
+      <source>Fetched %n feeds...</source>
+      <translation type="unfinished">
+        <numerusform>Fetched %n feeds...</numerusform>
+        <numerusform>Fetched %n feeds...</numerusform>
+      </translation>
+    </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="697"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="730"/>
       <source>Export feeds</source>
       <translation>Hírforrások exportálása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="698"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="731"/>
       <source>Import feeds</source>
       <translation>Hírforrások importálása</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="700"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="733"/>
       <source>Import from QuiteRSS</source>
       <translation type="unfinished">Import from QuiteRSS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="89"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
       <source>This new account does not include any feeds. You can now add default set of feeds.</source>
       <translation type="unfinished">This new account does not include any feeds. You can now add default set of feeds.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="48"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="51"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
       <translation type="unfinished">This is the obligatory service account for standard RSS/RDF/ATOM feeds.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="188"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="182"/>
       <source>Cannot add item</source>
       <translation type="unfinished">Cannot add item</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="189"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="183"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation type="unfinished">Cannot add feed because another critical operation is ongoing.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="654"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="670"/>
       <source>Cannot add category</source>
       <translation type="unfinished">Cannot add category</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="655"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="671"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
       <translation type="unfinished">Cannot add category because another critical operation is ongoing.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="634"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="650"/>
       <source>Import was completely successful.</source>
       <translation type="unfinished">Import was completely successful.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="631"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="647"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
       <translation type="unfinished">Some feeds/categories were not imported due to error, check debug log for more details.</translation>
     </message>
@@ -9006,17 +9097,17 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
   <context>
     <name>SystemFactory</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="229"/>
+      <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="224"/>
       <source>anonymous</source>
       <translation type="unfinished">anonymous</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="324"/>
+      <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="319"/>
       <source> bytes</source>
       <translation type="unfinished"> bytes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="269"/>
+      <location filename="../src/librssguard/miscellaneous/systemfactory.cpp" line="264"/>
       <source>See new version info</source>
       <translation type="unfinished">See new version info</translation>
     </message>
@@ -9062,7 +9153,7 @@ Unread news: %2</translation>
       <translation>Főmenü</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/tabwidget.cpp" line="225"/>
+      <location filename="../src/librssguard/gui/tabwidget.cpp" line="224"/>
       <source>Media player</source>
       <translation>Médialejátszó</translation>
     </message>
@@ -9427,14 +9518,6 @@ Unread news: %2</translation>
     </message>
   </context>
   <context>
-    <name>TtRssFeed</name>
-    <message>
-      <location filename="../src/librssguard-ttrss/src/ttrssfeed.cpp" line="45"/>
-      <source>Share to published</source>
-      <translation type="unfinished">Share to published</translation>
-    </message>
-  </context>
-  <context>
     <name>TtRssFeedDetails</name>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="11"/>
@@ -9485,17 +9568,22 @@ Unread news: %2</translation>
   <context>
     <name>TtRssServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="108"/>
+      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="115"/>
+      <source>Share to published</source>
+      <translation type="unfinished">Share to published</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="134"/>
       <source>Cannot add item</source>
       <translation>Az elem hozzáadása sikertelen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="109"/>
+      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="135"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Hírforrás hozzáadása sikertelen, mivel más kritikus művelet van folyamatban.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="373"/>
+      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="399"/>
       <source>Username: %1
 Server: %2
 Last error: %3
@@ -9506,7 +9594,7 @@ Legutóbbi hiba: %3
 Legutóbbi belépés: %4</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="417"/>
+      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="443"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
       <translation>hírforrás lista lekérése sikertelen, hálózati hiba &apos;%1&apos;</translation>
     </message>
@@ -9551,12 +9639,12 @@ Legutóbbi belépés: %4</translation>
   <context>
     <name>WebFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="68"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="86"/>
       <source>Navigate to website manually</source>
       <translation type="unfinished">Navigate to website manually</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="69"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="87"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
       <translation type="unfinished">%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</translation>
     </message>
