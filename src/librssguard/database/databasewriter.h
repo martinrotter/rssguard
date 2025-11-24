@@ -15,8 +15,8 @@ class DatabaseWriter : public QObject {
     Q_OBJECT
   public:
     struct WriteResult {
-        bool success;
-        QSqlError error;
+        bool m_success;
+        QSqlError m_error;
     };
 
     explicit DatabaseWriter(QObject* parent = nullptr);
@@ -30,17 +30,16 @@ class DatabaseWriter : public QObject {
 
   private:
     struct Job {
-        std::function<WriteResult(const QSqlDatabase&)> func;
-        WriteResult result;
-        bool done = false;
-        QWaitCondition doneCond;
+        std::function<WriteResult(const QSqlDatabase&)> m_func;
+        WriteResult m_result;
+        bool m_done = false;
+        QWaitCondition m_doneCond;
     };
 
-    QThread workerThread;
-
-    QMutex queueMutex;
-    QWaitCondition queueNotEmpty;
-    QQueue<Job*> jobQueue;
-
     void runJob(Job* job);
+
+    QThread m_workerThread;
+    QMutex m_queueMutex;
+    QWaitCondition m_queueNotEmpty;
+    QQueue<Job*> m_jobQueue;
 };
