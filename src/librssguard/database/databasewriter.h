@@ -1,5 +1,4 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
-
 #pragma once
 
 #include <functional>
@@ -7,8 +6,8 @@
 #include <QMutex>
 #include <QObject>
 #include <QQueue>
+#include <QSqlDatabase>
 #include <QSqlError>
-#include <QSqlQuery>
 #include <QThread>
 #include <QWaitCondition>
 
@@ -17,22 +16,21 @@ class DatabaseWriter : public QObject {
   public:
     struct WriteResult {
         bool success;
-        QString error;
+        QSqlError error;
     };
 
     explicit DatabaseWriter(QObject* parent = nullptr);
     ~DatabaseWriter();
 
-    // Blocking write
-    WriteResult execWrite(const QString& sql, const QVariantList& params = {});
+    // New API: Blocking execution of arbitrary DB work
+    WriteResult execWrite(std::function<WriteResult(const QSqlDatabase&)> func);
 
   private slots:
     void writerLoop();
 
   private:
     struct Job {
-        QString sql;
-        QVariantList params;
+        std::function<WriteResult(const QSqlDatabase&)> func;
         WriteResult result;
         bool done = false;
         QWaitCondition doneCond;

@@ -3,11 +3,9 @@
 #include "database/databasewriter.h"
 
 #include "database/databasedriver.h"
-#include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 
 #include <QDebug>
-#include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
 
@@ -17,12 +15,13 @@ DatabaseWriter::DatabaseWriter(QObject* parent) : QObject(parent) {
   workerThread.start();
   moveToThread(&workerThread);
 
+  // Create connection inside writer thread
   QMetaObject::invokeMethod(this, []() {
-    // NOTE: Initialize connection.
     qApp->database()->driver()->connection(CONNECTION_NAME);
   });
 
-  QMetaObject::invokeMethod(this, "writerLoop", Qt::ConnectionType::QueuedConnection);
+  // Start writer loop
+  QMetaObject::invokeMethod(this, "writerLoop", Qt::QueuedConnection);
 }
 
 DatabaseWriter::~DatabaseWriter() {
@@ -30,28 +29,24 @@ DatabaseWriter::~DatabaseWriter() {
   workerThread.wait();
 }
 
-DatabaseWriter::WriteResult DatabaseWriter::execWrite(const QString& sql, const QVariantList& params) {
+DatabaseWriter::WriteResult DatabaseWriter::execWrite(std::function<WriteResult(const QSqlDatabase&)> func) {
   Job job;
-  job.sql = sql;
-  job.params = params;
+  job.func = func;
 
-  // Add job to queue.
   {
     QMutexLocker locker(&queueMutex);
     jobQueue.enqueue(&job);
     queueNotEmpty.wakeOne();
   }
 
-  // Block until job finishes.
-  QMutex localMutex;
-
-  localMutex.lock();
+  QMutex local;
+  local.lock();
 
   while (!job.done) {
-    job.doneCond.wait(&localMutex);
+    job.doneCond.wait(&local);
   }
 
-  localMutex.unlock();
+  local.unlock();
 
   return job.result;
 }
@@ -81,19 +76,10 @@ void DatabaseWriter::writerLoop() {
 void DatabaseWriter::runJob(Job* job) {
   QSqlDatabase db = qApp->database()->driver()->connection(CONNECTION_NAME);
 
-  SqlQuery query(db);
-  query.prepare(job->sql);
+  // Execute user function
+  job->result = job->func(db);
 
-  for (int i = 0; i < job->params.size(); ++i) {
-    query.bindValue(i, job->params[i]);
-  }
-
-  bool ok = query.exec();
-
-  job->result.success = ok;
-  job->result.error = ok ? QString() : query.lastError().text();
-
-  // Mark job complete.
+  // Notify waiting thread
   job->done = true;
   job->doneCond.wakeOne();
 }
