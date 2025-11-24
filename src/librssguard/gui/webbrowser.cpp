@@ -247,19 +247,14 @@ void WebBrowser::onLinkHovered(const QUrl& url) {
 }
 
 void WebBrowser::onLinkClicked(const QUrl& url) {
-  bool open_externally_now =
-    qApp->settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool();
+  qApp->web()->openUrlInExternalBrowser(url.toString(), true);
 
-  if (open_externally_now) {
-    qApp->web()->openUrlInExternalBrowser(url.toString(), true);
-
-    if (qApp->settings()
-          ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
-          .toBool()) {
-      QTimer::singleShot(1000, qApp, []() {
-        qApp->mainForm()->display();
-      });
-    }
+  if (qApp->settings()
+        ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
+        .toBool()) {
+    QTimer::singleShot(1000, qApp, []() {
+      qApp->mainForm()->display();
+    });
   }
 }
 

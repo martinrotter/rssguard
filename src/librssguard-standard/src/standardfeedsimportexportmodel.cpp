@@ -7,12 +7,12 @@
 #include "src/standardfeed.h"
 #include "src/standardserviceroot.h"
 
-#include <qtlinq/qtlinq.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/domdocument.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <qtlinq/qtlinq.h>
 
 #include <QDomAttr>
 #include <QDomElement>
@@ -259,7 +259,6 @@ bool FeedsImportExportModel::produceFeed(const FeedLookup& feed_lookup) {
 
     QMutexLocker mtx(&m_mtxLookup);
     feed_lookup.parent->appendChild(new_feed);
-
     return true;
   }
   catch (const ApplicationException& ex) {

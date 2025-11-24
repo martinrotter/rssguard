@@ -45,26 +45,6 @@
        <string>External web browser</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_2">
-       <item row="1" column="0">
-        <widget class="QCheckBox" name="m_checkOpenLinksInExternal">
-         <property name="text">
-          <string>Always open hyperlinks in external web browser</string>
-         </property>
-        </widget>
-       </item>
-       <item row="2" column="0" colspan="2">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item row="0" column="0" colspan="2">
         <widget class="QGroupBox" name="m_grpCustomExternalBrowser">
          <property name="toolTip">
@@ -158,6 +138,19 @@
           </item>
          </layout>
         </widget>
+       </item>
+       <item row="1" column="0" colspan="2">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </widget>
@@ -404,7 +397,6 @@
   <tabstop>m_btnExternalBrowserExecutable</tabstop>
   <tabstop>m_txtExternalBrowserArguments</tabstop>
   <tabstop>m_cmbExternalBrowserPreset</tabstop>
-  <tabstop>m_checkOpenLinksInExternal</tabstop>
   <tabstop>m_grpCustomExternalEmail</tabstop>
   <tabstop>m_txtExternalEmailExecutable</tabstop>
   <tabstop>m_btnExternalEmailExecutable</tabstop>

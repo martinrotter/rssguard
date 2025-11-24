@@ -461,9 +461,6 @@ DKEY Browser::ID = "browser";
 DKEY Browser::LoadExternalResources = "load_external_resources";
 DVALUE(bool) Browser::LoadExternalResourcesDef = true;
 
-DKEY Browser::OpenLinksInExternalBrowserRightAway = "open_link_externally_wo_confirmation";
-DVALUE(bool) Browser::OpenLinksInExternalBrowserRightAwayDef = true;
-
 DKEY Browser::CustomExternalBrowserEnabled = "custom_external_browser";
 DVALUE(bool) Browser::CustomExternalBrowserEnabledDef = false;
 

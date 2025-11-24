@@ -498,9 +498,6 @@ namespace Browser {
   KEY LoadExternalResources;
   VALUE(bool) LoadExternalResourcesDef;
 
-  KEY OpenLinksInExternalBrowserRightAway;
-  VALUE(bool) OpenLinksInExternalBrowserRightAwayDef;
-
   KEY CustomExternalBrowserEnabled;
   VALUE(bool) CustomExternalBrowserEnabledDef;
 

@@ -51,7 +51,6 @@ void SettingsBrowserMail::loadUi() {
   m_ui->m_listTools->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
 
   connect(m_ui->m_cbEnableHttp2, &QCheckBox::STATE_CHANGED, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_ui->m_checkOpenLinksInExternal, &QCheckBox::STATE_CHANGED, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_proxyDetails, &NetworkProxyDetails::changed, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_grpCustomExternalBrowser, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_grpCustomExternalEmail, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
@@ -178,8 +177,6 @@ void SettingsBrowserMail::loadSettings() {
   onBeginLoadSettings();
 
   m_ui->m_cbEnableHttp2->setChecked(settings()->value(GROUP(Network), SETTING(Network::EnableHttp2)).toBool());
-  m_ui->m_checkOpenLinksInExternal
-    ->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::OpenLinksInExternalBrowserRightAway)).toBool());
   m_ui->m_txtUserAgent->setText(settings()->value(GROUP(Network), SETTING(Network::CustomUserAgent)).toString());
 
   // Load settings of web browser GUI.
@@ -219,10 +216,6 @@ void SettingsBrowserMail::saveSettings() {
 
   settings()->setValue(GROUP(Network), Network::EnableHttp2, m_ui->m_cbEnableHttp2->isChecked());
   settings()->setValue(GROUP(Network), Network::CustomUserAgent, m_ui->m_txtUserAgent->text());
-
-  settings()->setValue(GROUP(Browser),
-                       Browser::OpenLinksInExternalBrowserRightAway,
-                       m_ui->m_checkOpenLinksInExternal->isChecked());
 
   // Save settings of GUI of web browser.
   settings()->setValue(GROUP(Browser),
