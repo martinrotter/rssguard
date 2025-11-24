@@ -219,10 +219,10 @@ void SqliteDriver::setPragmas(SqlQuery& query) {
   query.exec(QSL("PRAGMA cache_size = 32768;"));
   query.exec(QSL("PRAGMA mmap_size = 100000000;"));
   query.exec(QSL("PRAGMA count_changes = OFF;"));
-  query.exec(QSL("PRAGMA temp_store = MEMORY;"));
   query.exec(QSL("PRAGMA synchronous = OFF;"));
-  query.exec(QSL("PRAGMA busy_timeout = 100;"));
+  query.exec(QSL("PRAGMA temp_store = MEMORY;"));
   query.exec(QSL("PRAGMA journal_mode = MEMORY;"));
+  query.exec(QSL("PRAGMA busy_timeout = 1000;"));
 }
 
 qint64 SqliteDriver::databaseDataSize() {

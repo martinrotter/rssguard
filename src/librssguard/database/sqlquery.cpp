@@ -9,6 +9,18 @@ SqlQuery::SqlQuery(const QSqlDatabase& db) : QSqlQuery(db) {
   setForwardOnly(true);
 }
 
+bool SqlQuery::exec(const QString& query, bool throw_ex) {
+  const bool ok = QSqlQuery::exec(query);
+
+  logQuery();
+
+  if (!ok && throw_ex) {
+    THROW_EX(SqlException, lastError());
+  }
+
+  return ok;
+}
+
 bool SqlQuery::exec(bool throw_ex) {
   const bool ok = QSqlQuery::exec();
 
@@ -40,16 +52,4 @@ void SqlQuery::logQuery() {
 #endif
 
   qDebugNN << LOGSEC_DB << "Executed query:\n" << str;
-}
-
-bool SqlQuery::exec(const QString& query, bool throw_ex) {
-  const bool ok = QSqlQuery::exec(query);
-
-  logQuery();
-
-  if (!ok && throw_ex) {
-    throw SqlException(lastError());
-  }
-
-  return ok;
 }

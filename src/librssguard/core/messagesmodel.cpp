@@ -410,7 +410,6 @@ void MessagesModel::editFeedOfMessage(const Message& msg) {
                                     tr("Feed cannot be edited because it was not found, this is weird."),
                                     QSystemTrayIcon::MessageIcon::Critical));
   }
-
   else if (!fd->canBeEdited()) {
     qApp
       ->showGuiMessage(Notification::Event::GeneralEvent,

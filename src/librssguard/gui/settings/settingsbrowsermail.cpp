@@ -40,7 +40,9 @@ void SettingsBrowserMail::loadUi() {
                                                " \u2022 %2 - body of selected message."),
                                             false);
 
-  m_ui->m_lblToolInfo->setHelpText(tr("On this page, you can setup a list of external tools which can open URLs."),
+  m_ui->m_lblToolInfo->setHelpText(tr("On this page, you can setup a list of external tools which can open URLs. If "
+                                      "you setup domain (without leading \"www.\") then the tool will be directly used "
+                                      "to open all clicked links from that domain."),
                                    false);
 
   m_ui->m_btnAddTool->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
