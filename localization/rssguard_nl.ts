@@ -1057,7 +1057,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="237"/>
       <source>Show feeds with ignored notifications</source>
-      <translation type="unfinished">Show feeds with ignored notifications</translation>
+      <translation>Toon feeds met genegeerde meldingen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="243"/>
@@ -1237,17 +1237,17 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1031"/>
       <source>Not supported</source>
-      <translation type="unfinished">Not supported</translation>
+      <translation>Niet ondersteund</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1032"/>
       <source>Context menus with items from more than one account are not supported.</source>
-      <translation type="unfinished">Context menus with items from more than one account are not supported.</translation>
+      <translation>Context menu's met items van meer dan één account worden niet ondersteund.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1062"/>
       <source>Menu for feed list</source>
-      <translation type="unfinished">Menu for feed list</translation>
+      <translation>Menu voor feedlijst</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="961"/>
@@ -1405,12 +1405,12 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="86"/>
       <source>Original message</source>
-      <translation type="unfinished">Original message</translation>
+      <translation>Oorspronkelijk bericht</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="99"/>
       <source>Forwarded message</source>
-      <translation type="unfinished">Forwarded message</translation>
+      <translation>Doorgestuurd bericht</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="180"/>
@@ -2672,31 +2672,31 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="971"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="835"/>
       <source>Edit &amp;feed of selected article</source>
-      <translation type="unfinished">Edit &amp;feed of selected article</translation>
+      <translation>Bewerk &amp;feed van geselecteerd artikel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="976"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="836"/>
       <source>Mark articles &amp;above read</source>
-      <translation type="unfinished">Mark articles &amp;above read</translation>
+      <translation>Markeer &amp;bovenstaande artikelen gelezen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="981"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="837"/>
       <source>Mark articles &amp;below read</source>
-      <translation type="unfinished">Mark articles &amp;below read</translation>
+      <translation>Markeer &amp;onderstaande artikelen gelezen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="986"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="838"/>
       <source>Mark articles &amp;above unread</source>
-      <translation type="unfinished">Mark articles &amp;above unread</translation>
+      <translation>Markeer &amp;bovenstaande artikelen ongelezen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="991"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="839"/>
       <source>Mark articles &amp;below unread</source>
-      <translation type="unfinished">Mark articles &amp;below unread</translation>
+      <translation>Markeer &amp;onderstaande artikelen ongelezen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="626"/>
@@ -3258,7 +3258,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formprogressworker.cpp" line="18"/>
       <source>&amp;Cancel</source>
-      <translation type="unfinished">&amp;Cancel</translation>
+      <translation>&amp;Annuleren</translation>
     </message>
   </context>
   <context>
@@ -5270,28 +5270,28 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="409"/>
       <source>Feed not found</source>
-      <translation type="unfinished">Feed not found</translation>
+      <translation>Feed niet gevonden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="410"/>
       <source>Feed cannot be edited because it was not found, this is weird.</source>
-      <translation type="unfinished">Feed cannot be edited because it was not found, this is weird.</translation>
+      <translation>Feed kan niet worden bewerkt omdat het niet is gevonden, dit is raar.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="416"/>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="425"/>
       <source>Cannot edit feed</source>
-      <translation type="unfinished">Cannot edit feed</translation>
+      <translation>Kan feed niet bewerken</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="417"/>
       <source>The feed cannot be edited because this particular feed (or account) does not support it.</source>
-      <translation type="unfinished">The feed cannot be edited because this particular feed (or account) does not support it.</translation>
+      <translation>De feed kan niet worden bewerkt omdat deze specifieke feed (of account) deze niet ondersteunt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="426"/>
       <source>The feed cannot be edited because another critical operation is ongoing.</source>
-      <translation type="unfinished">The feed cannot be edited because another critical operation is ongoing.</translation>
+      <translation>Het geselecteerde item kan niet worden bewerkt omdat er een andere kritieke operatie wordt uitgevoerd.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
@@ -6342,7 +6342,7 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="59"/>
       <source>Copy text</source>
-      <translation type="unfinished">Copy text</translation>
+      <translation>Tekst kopiëren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="75"/>
@@ -6352,23 +6352,23 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="90"/>
       <source>Copy image link</source>
-      <translation type="unfinished">Copy image link</translation>
+      <translation>Kopieer afbeeldingslink</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="105"/>
       <source>Copy image</source>
-      <translation type="unfinished">Copy image</translation>
+      <translation>Afbeelding kopiëren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="120"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="134"/>
       <source>Save image</source>
-      <translation type="unfinished">Save image</translation>
+      <translation>Afbeelding opslaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="136"/>
       <source>image.%1</source>
-      <translation type="unfinished">image.%1</translation>
+      <translation>afbeelding.%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="137"/>
@@ -6980,22 +6980,22 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="170"/>
       <source>New query</source>
-      <translation type="unfinished">New query</translation>
+      <translation>Nieuwe zoekopdracht</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="182"/>
       <source>Restore recycle bin</source>
-      <translation type="unfinished">Restore recycle bin</translation>
+      <translation>Prullenbak herstellen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="184"/>
       <source>Empty recycle bin</source>
-      <translation type="unfinished">Empty recycle bin</translation>
+      <translation>Prullenbak legen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="198"/>
       <source>New label</source>
-      <translation type="unfinished">New label</translation>
+      <translation>Nieuw label</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="226"/>
@@ -7032,12 +7032,12 @@ Aantal uitgeschakelde feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="43"/>
       <source>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain.</source>
-      <translation type="unfinished">On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain.</translation>
+      <translation>Op deze pagina kunt u een lijst met externe tools instellen die URL's kunnen openen. Als u het domein (zonder vooroploop &quot;www.&quot;) opgeeft dan zal de tool direct worden gebruikt om alle geklikt links van dat domein te openen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
       <source>Domain</source>
-      <translation type="unfinished">Domain</translation>
+      <translation>Domein</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="119"/>
@@ -9006,17 +9006,17 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="713"/>
       <source>Fetching metadata for %n feeds</source>
-      <translation type="unfinished">
-        <numerusform>Fetching metadata for %n feeds</numerusform>
-        <numerusform>Fetching metadata for %n feeds</numerusform>
+      <translation>
+        <numerusform>Ophalen metadata voor %n feeds</numerusform>
+        <numerusform>Ophalen metadata voor %n feeds</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="722"/>
       <source>Fetched %n feeds...</source>
-      <translation type="unfinished">
-        <numerusform>Fetched %n feeds...</numerusform>
-        <numerusform>Fetched %n feeds...</numerusform>
+      <translation>
+        <numerusform>%n feeds opgehaald...</numerusform>
+        <numerusform>%n feeds opgehaald...</numerusform>
       </translation>
     </message>
     <message>
@@ -9570,7 +9570,7 @@ Ongelezen nieuws: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="115"/>
       <source>Share to published</source>
-      <translation type="unfinished">Share to published</translation>
+      <translation>Delen naar gepubliceerd</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="134"/>

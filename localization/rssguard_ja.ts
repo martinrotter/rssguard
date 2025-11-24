@@ -1053,7 +1053,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="237"/>
       <source>Show feeds with ignored notifications</source>
-      <translation type="unfinished">Show feeds with ignored notifications</translation>
+      <translation>無視された通知を含むフィードを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="243"/>
@@ -1231,17 +1231,17 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1031"/>
       <source>Not supported</source>
-      <translation type="unfinished">Not supported</translation>
+      <translation>サポートされていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1032"/>
       <source>Context menus with items from more than one account are not supported.</source>
-      <translation type="unfinished">Context menus with items from more than one account are not supported.</translation>
+      <translation>複数のアカウントのアイテムを含むコンテキストメニューはサポートされていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1062"/>
       <source>Menu for feed list</source>
-      <translation type="unfinished">Menu for feed list</translation>
+      <translation>フィードリストのメニュー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="961"/>
@@ -1399,12 +1399,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="86"/>
       <source>Original message</source>
-      <translation type="unfinished">Original message</translation>
+      <translation>元のメッセージ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="99"/>
       <source>Forwarded message</source>
-      <translation type="unfinished">Forwarded message</translation>
+      <translation>転送されたメッセージ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="180"/>
@@ -2663,31 +2663,31 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="971"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="835"/>
       <source>Edit &amp;feed of selected article</source>
-      <translation type="unfinished">Edit &amp;feed of selected article</translation>
+      <translation>選択した記事のフィードを編集</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="976"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="836"/>
       <source>Mark articles &amp;above read</source>
-      <translation type="unfinished">Mark articles &amp;above read</translation>
+      <translation>上の記事を既読にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="981"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="837"/>
       <source>Mark articles &amp;below read</source>
-      <translation type="unfinished">Mark articles &amp;below read</translation>
+      <translation>下の記事を既読にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="986"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="838"/>
       <source>Mark articles &amp;above unread</source>
-      <translation type="unfinished">Mark articles &amp;above unread</translation>
+      <translation>上の記事を未読にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="991"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="839"/>
       <source>Mark articles &amp;below unread</source>
-      <translation type="unfinished">Mark articles &amp;below unread</translation>
+      <translation>下の記事を未読にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="626"/>
@@ -3249,7 +3249,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formprogressworker.cpp" line="18"/>
       <source>&amp;Cancel</source>
-      <translation type="unfinished">&amp;Cancel</translation>
+      <translation>キャンセル</translation>
     </message>
   </context>
   <context>
@@ -5260,28 +5260,28 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="409"/>
       <source>Feed not found</source>
-      <translation type="unfinished">Feed not found</translation>
+      <translation>フィードが見つかりません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="410"/>
       <source>Feed cannot be edited because it was not found, this is weird.</source>
-      <translation type="unfinished">Feed cannot be edited because it was not found, this is weird.</translation>
+      <translation>フィードが見つからなかったため編集できません。これは奇妙です</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="416"/>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="425"/>
       <source>Cannot edit feed</source>
-      <translation type="unfinished">Cannot edit feed</translation>
+      <translation>フィードを編集できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="417"/>
       <source>The feed cannot be edited because this particular feed (or account) does not support it.</source>
-      <translation type="unfinished">The feed cannot be edited because this particular feed (or account) does not support it.</translation>
+      <translation>この特定のフィード (またはアカウント) はフィード編集をサポートしていないため、フィードを編集できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="426"/>
       <source>The feed cannot be edited because another critical operation is ongoing.</source>
-      <translation type="unfinished">The feed cannot be edited because another critical operation is ongoing.</translation>
+      <translation>別の重要な操作が実行中であるため、フィードを編集できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
@@ -6324,7 +6324,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="59"/>
       <source>Copy text</source>
-      <translation type="unfinished">Copy text</translation>
+      <translation>テキストをコピー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="75"/>
@@ -6334,23 +6334,23 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="90"/>
       <source>Copy image link</source>
-      <translation type="unfinished">Copy image link</translation>
+      <translation>画像のリンクをコピー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="105"/>
       <source>Copy image</source>
-      <translation type="unfinished">Copy image</translation>
+      <translation>画像をコピー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="120"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="134"/>
       <source>Save image</source>
-      <translation type="unfinished">Save image</translation>
+      <translation>画像を保存</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="136"/>
       <source>image.%1</source>
-      <translation type="unfinished">image.%1</translation>
+      <translation>画像 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="137"/>
@@ -6960,22 +6960,22 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="170"/>
       <source>New query</source>
-      <translation type="unfinished">New query</translation>
+      <translation>新しいクエリ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="182"/>
       <source>Restore recycle bin</source>
-      <translation type="unfinished">Restore recycle bin</translation>
+      <translation>ゴミ箱を復元</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="184"/>
       <source>Empty recycle bin</source>
-      <translation type="unfinished">Empty recycle bin</translation>
+      <translation>ごみ箱を空にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="198"/>
       <source>New label</source>
-      <translation type="unfinished">New label</translation>
+      <translation>新しいラベル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="226"/>
@@ -7012,12 +7012,12 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="43"/>
       <source>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain.</source>
-      <translation type="unfinished">On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain.</translation>
+      <translation>このページでは、URLを開くことができる外部ツールのリストを設定できます。ドメイン（先頭の &quot;www.&quot; なし）を設定すると、そのドメインからクリックされたすべてのリンクをツールが直接開きます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
       <source>Domain</source>
-      <translation type="unfinished">Domain</translation>
+      <translation>ドメイン</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="119"/>
@@ -8985,15 +8985,17 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="713"/>
       <source>Fetching metadata for %n feeds</source>
-      <translation type="unfinished">
-        <numerusform>Fetching metadata for %n feeds</numerusform>
+      <translation>
+        <numerusform>1
+%n 個のフィードのメタデータを取得しています</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="722"/>
       <source>Fetched %n feeds...</source>
-      <translation type="unfinished">
-        <numerusform>Fetched %n feeds...</numerusform>
+      <translation>
+        <numerusform>1
+%n 個のフィードを取得しました…</numerusform>
       </translation>
     </message>
     <message>
@@ -9542,7 +9544,7 @@ Unread news: %2</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="115"/>
       <source>Share to published</source>
-      <translation type="unfinished">Share to published</translation>
+      <translation>公開済みを共有</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="134"/>
