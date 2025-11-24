@@ -6,8 +6,8 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/gui/formfeeddetails.h"
 #include "services/abstract/serviceroot.h"
@@ -207,7 +207,10 @@ bool Feed::removeUnwantedArticles(QSqlDatabase& db) {
   Feed::ArticleIgnoreLimit app_setup = Feed::ArticleIgnoreLimit::fromSettings();
 
   bool removed = DatabaseQueries::removeUnwantedArticlesFromFeed(db, this, feed_setup, app_setup);
-  DatabaseQueries::purgeLeftoverLabelAssignments(db, account()->accountId());
+
+  if (removed) {
+    DatabaseQueries::purgeLeftoverLabelAssignments(db, account()->accountId());
+  }
 
   return removed;
 }

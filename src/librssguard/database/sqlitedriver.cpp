@@ -214,15 +214,14 @@ QString SqliteDriver::databaseFilePath() const {
 }
 
 void SqliteDriver::setPragmas(SqlQuery& query) {
-  query.exec(QSL("PRAGMA encoding = \"UTF-8\";"));
+  query.exec(QSL("PRAGMA encoding = 'UTF-8';"));
   query.exec(QSL("PRAGMA page_size = 32768;"));
   query.exec(QSL("PRAGMA cache_size = 32768;"));
   query.exec(QSL("PRAGMA mmap_size = 100000000;"));
-  query.exec(QSL("PRAGMA count_changes = OFF;"));
   query.exec(QSL("PRAGMA synchronous = OFF;"));
   query.exec(QSL("PRAGMA temp_store = MEMORY;"));
-  query.exec(QSL("PRAGMA journal_mode = MEMORY;"));
-  query.exec(QSL("PRAGMA busy_timeout = 1000;"));
+  query.exec(QSL("PRAGMA journal_mode = WAL;"));
+  query.exec(QSL("PRAGMA busy_timeout = 5000;"));
 }
 
 qint64 SqliteDriver::databaseDataSize() {
