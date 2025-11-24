@@ -10,9 +10,9 @@
 #include "filtering/filteringsystem.h"
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/thread.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/labelsnode.h"
@@ -403,7 +403,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     }
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << updated_messages.m_unread.size() << " unread messages and"
-             << NONQUOTE_W_SPACE(updated_messages.m_all.size()) "total messages for feed"
+             << NONQUOTE_W_SPACE(updated_messages.m_all.size()) << "total messages for feed"
              << QUOTE_W_SPACE(feed->customId()) << "stored in DB.";
 
     m_results.appendUpdatedFeed(feed, updated_messages.m_unread);
