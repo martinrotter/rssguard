@@ -15,6 +15,7 @@ bool SqlQuery::exec(const QString& query, bool throw_ex) {
   logQuery();
 
   if (!ok && throw_ex) {
+    qCriticalNN << LOGSEC_DB << "SQL exception:" << QUOTE_W_SPACE_DOT(lastError().text());
     THROW_EX(SqlException, lastError());
   }
 
@@ -27,6 +28,7 @@ bool SqlQuery::exec(bool throw_ex) {
   logQuery();
 
   if (!ok && throw_ex) {
+    qCriticalNN << LOGSEC_DB << "SQL exception:" << QUOTE_W_SPACE_DOT(lastError().text());
     THROW_EX(SqlException, lastError());
   }
 
