@@ -776,7 +776,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="110"/>
       <source>&amp;Login</source>
-      <translation>ログイン(&amp;L)</translation>
+      <translation>ログイン</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="51"/>
@@ -1596,7 +1596,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="144"/>
       <source>&amp;Select directory</source>
-      <translation>ディレクトリを選択(&amp;S)</translation>
+      <translation>ディレクトリを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
@@ -3307,7 +3307,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="65"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="137"/>
       <source>&amp;Select directory</source>
-      <translation>ディレクトリを選択(&amp;S)</translation>
+      <translation>ディレクトリを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="82"/>
@@ -3977,7 +3977,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="134"/>
       <source>&amp;Login</source>
-      <translation>ログイン(&amp;L)</translation>
+      <translation>ログイン</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="163"/>
@@ -4296,7 +4296,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="270"/>
       <source>&amp;Test setup</source>
-      <translation>テストセットアップ(&amp;T)</translation>
+      <translation>テストセットアップ</translation>
     </message>
   </context>
   <context>
@@ -5862,7 +5862,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="127"/>
       <source>&amp;Test setup</source>
-      <translation>テストセットアップ(&amp;T)</translation>
+      <translation>テストセットアップ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="162"/>
@@ -6644,7 +6644,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="134"/>
       <source>&amp;Login</source>
-      <translation>ログイン(&amp;L)</translation>
+      <translation>ログイン</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="163"/>
@@ -8323,7 +8323,7 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="84"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="141"/>
       <source>&amp;Browse</source>
-      <translation>参照(&amp;B)</translation>
+      <translation>参照</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="91"/>
@@ -8986,16 +8986,14 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="713"/>
       <source>Fetching metadata for %n feeds</source>
       <translation>
-        <numerusform>1
-%n 個のフィードのメタデータを取得しています</numerusform>
+        <numerusform>%n 個のフィードのメタデータを取得しています</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="722"/>
       <source>Fetched %n feeds...</source>
       <translation>
-        <numerusform>1
-%n 個のフィードを取得しました…</numerusform>
+        <numerusform>%n 個のフィードを取得しました…</numerusform>
       </translation>
     </message>
     <message>
