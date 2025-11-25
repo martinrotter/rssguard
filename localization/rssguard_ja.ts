@@ -8986,16 +8986,14 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="713"/>
       <source>Fetching metadata for %n feeds</source>
       <translation>
-        <numerusform>1
-%n 個のフィードのメタデータを取得しています</numerusform>
+        <numerusform>%n 個のフィードのメタデータを取得しています</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="722"/>
       <source>Fetched %n feeds...</source>
       <translation>
-        <numerusform>1
-%n 個のフィードを取得しました…</numerusform>
+        <numerusform>%n 個のフィードを取得しました…</numerusform>
       </translation>
     </message>
     <message>
