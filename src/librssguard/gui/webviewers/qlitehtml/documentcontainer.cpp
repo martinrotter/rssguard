@@ -1906,7 +1906,7 @@ void DocumentContainer::downloadNextExternalResource() {
     return;
   }
 
-  auto url = m_pendingExternalResources.first().toString();
+  auto url = m_pendingExternalResources.first().toString(QUrl::ComponentFormattingOption::FullyEncoded);
 
   m_downloader->downloadFile(url, 3000);
   qDebugNN << LOGSEC_HTMLVIEWER << "Downloading external resources" << QUOTE_W_SPACE_DOT(url);
