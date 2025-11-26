@@ -1058,7 +1058,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="237"/>
       <source>Show feeds with ignored notifications</source>
-      <translation type="unfinished">Show feeds with ignored notifications</translation>
+      <translation>Show feeds with ignored notifications</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="243"/>
@@ -1238,17 +1238,17 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1031"/>
       <source>Not supported</source>
-      <translation type="unfinished">Not supported</translation>
+      <translation>Not supported</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1032"/>
       <source>Context menus with items from more than one account are not supported.</source>
-      <translation type="unfinished">Context menus with items from more than one account are not supported.</translation>
+      <translation>Context menus with items from more than one account are not supported.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1062"/>
       <source>Menu for feed list</source>
-      <translation type="unfinished">Menu for feed list</translation>
+      <translation>Menu for feed list</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="961"/>
@@ -1406,12 +1406,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="86"/>
       <source>Original message</source>
-      <translation type="unfinished">Original message</translation>
+      <translation>Original message</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="99"/>
       <source>Forwarded message</source>
-      <translation type="unfinished">Forwarded message</translation>
+      <translation>Forwarded message</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="180"/>
@@ -2667,37 +2667,37 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="966"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="834"/>
       <source>&amp;Enable/disable selected feeds</source>
-      <translation type="unfinished">&amp;Enable/disable selected feeds</translation>
+      <translation>&amp;Enable/disable selected feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="971"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="835"/>
       <source>Edit &amp;feed of selected article</source>
-      <translation type="unfinished">Edit &amp;feed of selected article</translation>
+      <translation>Edit &amp;feed of selected article</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="976"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="836"/>
       <source>Mark articles &amp;above read</source>
-      <translation type="unfinished">Mark articles &amp;above read</translation>
+      <translation>Mark articles &amp;above as read</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="981"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="837"/>
       <source>Mark articles &amp;below read</source>
-      <translation type="unfinished">Mark articles &amp;below read</translation>
+      <translation>Mark articles &amp;below as read</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="986"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="838"/>
       <source>Mark articles &amp;above unread</source>
-      <translation type="unfinished">Mark articles &amp;above unread</translation>
+      <translation>Mark articles &amp;above as unread</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="991"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="839"/>
       <source>Mark articles &amp;below unread</source>
-      <translation type="unfinished">Mark articles &amp;below unread</translation>
+      <translation>Mark articles &amp;below as unread</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="626"/>
@@ -3259,7 +3259,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formprogressworker.cpp" line="18"/>
       <source>&amp;Cancel</source>
-      <translation type="unfinished">&amp;Cancel</translation>
+      <translation>&amp;Cancel</translation>
     </message>
   </context>
   <context>
@@ -5271,28 +5271,28 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="409"/>
       <source>Feed not found</source>
-      <translation type="unfinished">Feed not found</translation>
+      <translation>Feed not found</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="410"/>
       <source>Feed cannot be edited because it was not found, this is weird.</source>
-      <translation type="unfinished">Feed cannot be edited because it was not found, this is weird.</translation>
+      <translation>Feed cannot be edited because it was not found, this is weird.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="416"/>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="425"/>
       <source>Cannot edit feed</source>
-      <translation type="unfinished">Cannot edit feed</translation>
+      <translation>Cannot edit feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="417"/>
       <source>The feed cannot be edited because this particular feed (or account) does not support it.</source>
-      <translation type="unfinished">The feed cannot be edited because this particular feed (or account) does not support it.</translation>
+      <translation>The feed cannot be edited because this particular feed (or account) does not support it.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="426"/>
       <source>The feed cannot be edited because another critical operation is ongoing.</source>
-      <translation type="unfinished">The feed cannot be edited because another critical operation is ongoing.</translation>
+      <translation>The feed cannot be edited because another critical operation is ongoing.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
@@ -6343,7 +6343,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="59"/>
       <source>Copy text</source>
-      <translation type="unfinished">Copy text</translation>
+      <translation>Copy text</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="75"/>
@@ -6353,23 +6353,23 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="90"/>
       <source>Copy image link</source>
-      <translation type="unfinished">Copy image link</translation>
+      <translation>Copy image link</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="105"/>
       <source>Copy image</source>
-      <translation type="unfinished">Copy image</translation>
+      <translation>Copy image</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="120"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="134"/>
       <source>Save image</source>
-      <translation type="unfinished">Save image</translation>
+      <translation>Save image</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="136"/>
       <source>image.%1</source>
-      <translation type="unfinished">image.%1</translation>
+      <translation>Image.%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="137"/>
@@ -6981,22 +6981,22 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="170"/>
       <source>New query</source>
-      <translation type="unfinished">New query</translation>
+      <translation>New query</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="182"/>
       <source>Restore recycle bin</source>
-      <translation type="unfinished">Restore recycle bin</translation>
+      <translation>Restore recycle bin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="184"/>
       <source>Empty recycle bin</source>
-      <translation type="unfinished">Empty recycle bin</translation>
+      <translation>Empty recycle bin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="198"/>
       <source>New label</source>
-      <translation type="unfinished">New label</translation>
+      <translation>New label</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="226"/>
@@ -7033,12 +7033,12 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="43"/>
       <source>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain.</source>
-      <translation type="unfinished">On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain.</translation>
+      <translation>On this page, you can setup a list of external tools which can open URLs. If you setup a domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
       <source>Domain</source>
-      <translation type="unfinished">Domain</translation>
+      <translation>Domain</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="119"/>
@@ -8910,7 +8910,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="23"/>
       <source>Turning this setting ON will fetch full source articles for this feed. Note that this will slow down feed fetching and also can make your database considerably bigger.</source>
-      <translation type="unfinished">Turning this setting ON will fetch full source articles for this feed. Note that this will slow down feed fetching and also can make your database considerably bigger.</translation>
+      <translation>Turning this setting ON will fetch full source articles for this feed. Note that this will slow down feed fetching and also can make your database considerably bigger.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="27"/>
@@ -9571,7 +9571,7 @@ Unread news: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="115"/>
       <source>Share to published</source>
-      <translation type="unfinished">Share to published</translation>
+      <translation>Share to published</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="134"/>
