@@ -58,8 +58,8 @@ void WebBrowser::bindWebView() {
 
   auto* qobj_viewer = dynamic_cast<QObject*>(m_webView);
 
-  connect(qobj_viewer, SIGNAL(linkMouseHighlighted(QUrl)), this, SLOT(onLinkHovered(QUrl)));
-  connect(qobj_viewer, SIGNAL(linkClicked(QUrl)), this, SLOT(onLinkClicked(QUrl)));
+  connect(qobj_viewer, SIGNAL(linkMouseHighlighted(QUrl)), this, SLOT(onLinkMouseHighlighted(QUrl)));
+  connect(qobj_viewer, SIGNAL(linkMouseClicked(QUrl)), this, SLOT(onLinkMouseClicked(QUrl)));
   connect(qobj_viewer, SIGNAL(pageTitleChanged(QString)), this, SLOT(onTitleChanged(QString)));
   connect(qobj_viewer, SIGNAL(pageIconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
   connect(qobj_viewer, SIGNAL(loadingStarted()), this, SLOT(onLoadingStarted()));
@@ -238,7 +238,7 @@ void WebBrowser::onIconChanged(const QIcon& icon) {
   emit iconChanged(m_index, icon);
 }
 
-void WebBrowser::onLinkHovered(const QUrl& url) {
+void WebBrowser::onLinkMouseHighlighted(const QUrl& url) {
   qDebugNN << LOGSEC_GUI << "Hovered link:" << QUOTE_W_SPACE_DOT(url);
 
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -246,7 +246,7 @@ void WebBrowser::onLinkHovered(const QUrl& url) {
                        {false, false, true});
 }
 
-void WebBrowser::onLinkClicked(const QUrl& url) {
+void WebBrowser::onLinkMouseClicked(const QUrl& url) {
   qApp->web()->openUrlInExternalBrowser(url.toString(), true);
 
   if (qApp->settings()
