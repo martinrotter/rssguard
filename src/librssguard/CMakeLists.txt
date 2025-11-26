@@ -23,6 +23,8 @@ set(SOURCES
   database/databasefactory.h
   database/databasequeries.cpp
   database/databasequeries.h
+  database/databasewriter.cpp
+  database/databasewriter.h
   database/mariadbdriver.cpp
   database/mariadbdriver.h
   database/sqlitedriver.cpp

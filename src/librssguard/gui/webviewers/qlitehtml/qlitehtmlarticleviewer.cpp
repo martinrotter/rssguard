@@ -28,7 +28,7 @@ QLiteHtmlArticleViewer::QLiteHtmlArticleViewer(QWidget* parent) : QLiteHtmlWidge
   documentContainer()->setLoadExternalResources(WebViewer::loadExternalResources());
 
   connect(this, &QLiteHtmlWidget::linkHighlighted, this, &QLiteHtmlArticleViewer::linkMouseHighlighted);
-  connect(this, &QLiteHtmlWidget::linkClicked, this, &QLiteHtmlArticleViewer::linkClicked);
+  connect(this, &QLiteHtmlWidget::linkClicked, this, &QLiteHtmlArticleViewer::linkMouseClicked);
 }
 
 QLiteHtmlArticleViewer::~QLiteHtmlArticleViewer() {}

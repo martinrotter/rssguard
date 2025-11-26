@@ -51,7 +51,7 @@ class RSSGUARD_DLLSPEC QLiteHtmlArticleViewer : public QLiteHtmlWidget, public W
     void pageUrlChanged(const QUrl& url);
     void pageIconChanged(const QIcon&);
     void linkMouseHighlighted(const QUrl& url);
-    void linkClicked(const QUrl& url);
+    void linkMouseClicked(const QUrl& url);
     void loadingStarted();
     void loadingProgress(int progress);
     void loadingFinished(bool success);

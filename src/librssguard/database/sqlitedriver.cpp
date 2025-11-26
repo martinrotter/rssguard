@@ -259,7 +259,7 @@ QString SqliteDriver::version() {
 }
 
 QString SqliteDriver::humanDriverType() const {
-  return tr("SQLite (embedded database)");
+  return QSL("SQLite");
 }
 
 QString SqliteDriver::qtDriverCode() const {
