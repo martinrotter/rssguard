@@ -22,3 +22,4 @@ aqtinstall.log
 build-dir/
 build/
 docs/build
+go.sum
