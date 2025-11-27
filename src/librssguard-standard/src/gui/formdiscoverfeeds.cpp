@@ -333,12 +333,13 @@ void FormDiscoverFeeds::closeEvent(QCloseEvent* event) {
 RootItem* DiscoveredFeedsModel::removeItem(RootItem* it) {
   auto idx = indexForItem(it);
 
-  if (it == nullptr || it == m_rootItem || it->parent() == nullptr) {
+  if (!idx.isValid() || it == nullptr || it == m_rootItem || it->parent() == nullptr) {
     return nullptr;
   }
 
   beginRemoveRows(idx.parent(), idx.row(), idx.row());
   it->parent()->removeChild(it);
+  removeCheckState(it);
   endRemoveRows();
 
   return it;

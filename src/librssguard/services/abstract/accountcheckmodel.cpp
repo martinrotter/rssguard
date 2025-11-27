@@ -4,8 +4,8 @@
 
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/skinfactory.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/feed.h"
 
 AccountCheckModel::AccountCheckModel(QObject* parent)
@@ -311,6 +311,12 @@ QList<RootItem*> AccountCheckModel::checkedItems() const {
                .toList();
 
   return res;
+}
+
+void AccountCheckModel::removeCheckState(RootItem* item) {
+  for (RootItem* it : item->getSubTree<RootItem>()) {
+    m_checkStates.remove(it);
+  }
 }
 
 bool AccountCheckModel::isItemChecked(RootItem* item) const {

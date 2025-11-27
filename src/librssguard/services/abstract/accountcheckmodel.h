@@ -27,6 +27,8 @@ class RSSGUARD_DLLSPEC AccountCheckModel : public QAbstractItemModel {
 
     QList<RootItem*> checkedItems() const;
 
+    void removeCheckState(RootItem* item);
+
     bool isItemChecked(RootItem* item) const;
     bool setItemChecked(RootItem* item, Qt::CheckState check);
 
