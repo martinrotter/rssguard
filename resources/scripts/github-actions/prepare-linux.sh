@@ -12,6 +12,7 @@ pacman -S --noconfirm archlinux-keyring
 pacman -Syu --noconfirm  \
     appstream            \
     base-devel           \
+    bubblewrap           \
     cmake                \
     curl                 \
     gcc-libs             \
