@@ -1,6 +1,7 @@
 package main
 
 import (
+	"bytes"
 	"encoding/base64"
 	"flag"
 	"fmt"
@@ -10,7 +11,7 @@ import (
 	"os"
 	"strings"
 
-	"codeberg.org/readeck/go-readability"
+	"codeberg.org/readeck/go-readability/v2"
 	"golang.org/x/net/html"
 )
 
@@ -87,10 +88,14 @@ func main() {
 	}
 
 	var output string
+	var content bytes.Buffer
+
 	if *plainText {
-		output = article.TextContent
+		article.RenderText(&content)
+		output = content.String()
 	} else {
-		output = article.Content
+		article.RenderHTML(&content)
+		output = content.String()
 		if *embedImgs {
 			output, err = embedImages(output)
 			if err != nil {
