@@ -60,6 +60,6 @@ echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"
 wget --retry-connrefused --tries=30 "$EXTRA_PACKAGES" -O ./get-debloated-pkgs.sh
 chmod +x ./get-debloated-pkgs.sh
-./get-debloated-pkgs.sh --add-mesa --prefer-nano opus-mini
+./get-debloated-pkgs.sh --add-mesa --prefer-nano opus-mini librsvg-mini gdk-pixbuf2-mini
 
 #pacman -Q rssguard | awk '{print $2; exit}' > ~/version
