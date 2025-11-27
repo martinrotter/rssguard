@@ -519,8 +519,6 @@ void FeedsView::deleteSelectedItem() {
                          GuiMessageDestination(true, true));
   }
 
-  // m_proxyModel->invalidate();
-
   // Changes are done, unlock the update master lock.
   qApp->feedUpdateLock()->unlock();
 }
@@ -749,7 +747,7 @@ void FeedsView::drawBranches(QPainter* painter, const QRect& rect, const QModelI
   }
 }
 
-void FeedsView::filterItems(SearchLineEdit::SearchMode mode,
+void FeedsView::searchItems(SearchLineEdit::SearchMode mode,
                             Qt::CaseSensitivity sensitivity,
                             int custom_criteria,
                             const QString& phrase) {

@@ -286,7 +286,7 @@ void FeedMessageViewer::onMessageRemoved(RootItem* root) {
 void FeedMessageViewer::createConnections() {
   // Filtering & searching.
   connect(m_toolBarMessages, &MessagesToolBar::searchCriteriaChanged, m_messagesView, &MessagesView::searchMessages);
-  connect(m_toolBarFeeds, &FeedsToolBar::searchCriteriaChanged, m_feedsView, &FeedsView::filterItems);
+  connect(m_toolBarFeeds, &FeedsToolBar::searchCriteriaChanged, m_feedsView, &FeedsView::searchItems);
   connect(m_toolBarMessages,
           &MessagesToolBar::messageHighlighterChanged,
           m_messagesView,

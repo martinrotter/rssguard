@@ -93,7 +93,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void switchVisibility();
 
     void changeFilter(FeedsProxyModel::FeedListFilter filter);
-    void filterItems(SearchLineEdit::SearchMode mode,
+    void searchItems(SearchLineEdit::SearchMode mode,
                      Qt::CaseSensitivity sensitivity,
                      int custom_criteria,
                      const QString& phrase);

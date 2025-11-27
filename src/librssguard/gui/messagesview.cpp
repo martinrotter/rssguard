@@ -667,6 +667,10 @@ void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
   // explicitly, then yes, we need to do something.
   m_proxyModel->invalidate();
 
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       GuiMessage(tr("Filtering changed"),
+                                  tr("%n article(s) left after filtering change", nullptr, m_proxyModel->rowCount())),
+                       GuiMessageDestination(false, false, true));
   reactOnExternalDataChange(m_sourceModel->loadedItem(), FeedsModel::ExternalDataChange::ListFilterChanged);
 }
 
@@ -971,6 +975,11 @@ void MessagesView::searchMessages(SearchLineEdit::SearchMode mode,
                ? QAbstractItemView::ScrollHint::PositionAtCenter
                : QAbstractItemView::ScrollHint::EnsureVisible);
   }
+
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       GuiMessage(tr("Filtering changed"),
+                                  tr("%n article(s) left after filtering change", nullptr, m_proxyModel->rowCount())),
+                       GuiMessageDestination(false, false, true));
 }
 
 void MessagesView::highlightMessages(MessagesModel::MessageHighlighter highlighter) {
