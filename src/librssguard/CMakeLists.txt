@@ -408,6 +408,17 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
   message(STATUS "Found libmpv: ${LibMPV_LIBRARIES}.")
 endif()
 
+if(ENABLE_ICU)
+  find_library(ICUDT_LIB
+    NAMES "icudt"
+    HINTS "${ICU_ROOT}" "${ICU_ROOT}/bin64" "${ICU_ROOT}/lib64"
+    NO_CACHE
+    REQUIRED
+  )
+
+  message(STATUS "Found ICUdt: ${ICUDT_LIB}.")
+endif()
+
 # QLitehtml-based HTML viewer.
 list(APPEND SOURCES
   # gumbo
@@ -658,6 +669,23 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
 
   target_link_libraries(rssguard PUBLIC
     ${LibMPV_LIBRARIES}
+  )
+endif()
+
+if(ENABLE_ICU)
+  target_compile_definitions(rssguard
+    PRIVATE
+
+    HAS_ICU
+  )
+
+  target_include_directories(rssguard AFTER
+    PRIVATE
+    ${ICU_INCLUDE_DIRS}
+  )
+
+  target_link_libraries(rssguard PUBLIC
+    ${ICU_LIBRARIES}
   )
 endif()
 

@@ -19,6 +19,7 @@ pacman -Syu --noconfirm  \
     glibc                \
     go                   \
     gtk3                 \
+    icu                  \
     libheif              \
     libglvnd             \
     libxcb               \
@@ -42,7 +43,6 @@ pacman -Syu --noconfirm  \
     qt5-tools            \
     qt5-wayland          \
     qt5-svg              \
-    qt6-5compat          \
     qt6-base             \
     qt6-declarative      \
     qt6-imageformats     \

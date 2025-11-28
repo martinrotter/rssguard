@@ -26,6 +26,7 @@
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
 #   ENABLE_TESTS - Enables some tests.
+#   ENABLE_ICU - Enable direct ICU dependency, used to convert among text encodings.
 #   ENABLE_MEDIAPLAYER_QTMULTIMEDIA - Enable media player (QtMultimedia/ffmpeg implementation).
 #   ENABLE_MEDIAPLAYER_LIBMPV - Enable media player (libmpv implementation). Use "LibMPV_ROOT" variable to specify
 #                               base libmpv directory.
@@ -121,6 +122,7 @@ option(NO_UPDATE_CHECK "Disable automatic checking for new application updates."
 option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
 option(ENABLE_TESTS "Enable some tests." OFF)
+option(ENABLE_ICU "Enable ICU." OFF)
 option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap feeds. Requires zlib." OFF)
 option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." OFF)
 option(ENABLE_MEDIAPLAYER_LIBMPV "Enable built-in media player. Requires libmpv library." ON)
@@ -172,6 +174,12 @@ if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
 
   list(APPEND QT_COMPONENTS OpenGL MultimediaWidgets)
   add_compile_definitions(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
+endif()
+
+if(ENABLE_ICU)
+  if(WIN32 AND NOT ICU_ROOT)
+    set(ICU_ROOT "${CMAKE_SOURCE_DIR}/resources/scripts/icu")
+  endif()
 endif()
 
 if(ENABLE_MEDIAPLAYER_LIBMPV)
