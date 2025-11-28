@@ -47,6 +47,7 @@ if ($use_qt5 -eq "ON") {
   $qt_version = "5.15.17"
   $qt_arch_base = "msvc2019_64"
 
+  $use_icu = "OFF"
   $use_libmpv = "OFF"
   $use_qtmultimedia = "ON"
 
@@ -56,6 +57,7 @@ else {
   $qt_version = "6.9.3"
   $qt_arch_base = "msvc2022_64"
 
+  $use_icu = "ON"
   $use_libmpv = "ON"
   $use_qtmultimedia = "OFF"
 
@@ -103,6 +105,7 @@ if ($use_libmpv -eq "ON") {
 
 $cmake_path = "$old_pwd\cmake-$cmake_version-windows-x86_64\bin\cmake.exe"
 $zlib_path = "$old_pwd\zlib-$zlib_version"
+$icu_path = "$old_pwd\resources\scripts\icu"
 $libmpv_path = "$old_pwd\mpv"
 $ytdlp_path = "$old_pwd\$ytdlp_output"
 
@@ -189,7 +192,7 @@ cd "$old_pwd"
 mkdir "rssguard-build"
 cd "rssguard-build"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_ICU="$use_icu" -DICU_ROOT="$icu_path" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
@@ -226,6 +229,12 @@ if ($git_tag -match "devbuild") {
         Copy-Item -Path $source_file -Destination ".\app\plugins\" -Force -Verbose
     }
   }
+}
+
+if ($use_icu -eq "ON") {
+  # Copy ICU libs.
+  Copy-Item -Path "$icu_path\icudt*.dll" -Destination ".\app\"
+  Copy-Item -Path "$icu_path\icuuc*.dll" -Destination ".\app\"
 }
 
 if ($use_libmpv -eq "ON") {
