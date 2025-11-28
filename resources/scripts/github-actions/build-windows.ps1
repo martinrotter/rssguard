@@ -233,14 +233,14 @@ if ($git_tag -match "devbuild") {
 
 if ($use_icu -eq "ON") {
   # Copy ICU libs.
-  Copy-Item -Path "$icu_path\icudt*.dll" -Destination ".\app\"
-  Copy-Item -Path "$icu_path\icuuc*.dll" -Destination ".\app\"
+  Copy-Item -Path "$icu_path\icudt*.dll" -Destination ".\app\" -Verbose
+  Copy-Item -Path "$icu_path\icuuc*.dll" -Destination ".\app\" -Verbose
 }
 
 if ($use_libmpv -eq "ON") {
   # Copy libmpv and yt-dlp.
-  Copy-Item -Path "$libmpv_path\libmpv*.dll" -Destination ".\app\"
-  Copy-Item -Path "$ytdlp_path" -Destination ".\app\"
+  Copy-Item -Path "$libmpv_path\libmpv*.dll" -Destination ".\app\" -Verbose
+  Copy-Item -Path "$ytdlp_path" -Destination ".\app\" -Verbose
 }
 
 # Remove unneeded files.

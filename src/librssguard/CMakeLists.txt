@@ -411,7 +411,7 @@ endif()
 if(ENABLE_ICU)
   find_package(ICU
     REQUIRED
-    COMPONENTS uc i18n data
+    COMPONENTS uc data
   )
 endif()
 
@@ -659,7 +659,6 @@ if(ENABLE_ICU)
 
   target_link_libraries(rssguard PRIVATE
     ICU::uc
-    ICU::i18n
     ICU::data
   )
 endif()
