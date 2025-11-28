@@ -181,6 +181,10 @@ if(ENABLE_ICU)
     set(ICU_ROOT "${CMAKE_SOURCE_DIR}/resources/scripts/icu")
   endif()
 
+  if(APPLE AND NOT ICU_ROOT)
+    set(ICU_ROOT "/opt/homebrew/opt/icu4c")
+  endif()
+
   add_compile_definitions(HAS_ICU)
 endif()
 
