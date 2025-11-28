@@ -233,8 +233,8 @@ if ($git_tag -match "devbuild") {
 
 if ($use_icu -eq "ON") {
   # Copy ICU libs.
-  Copy-Item -Path "$icu_path\icudt*.dll" -Destination ".\app\" -Verbose
-  Copy-Item -Path "$icu_path\icuuc*.dll" -Destination ".\app\" -Verbose
+  Copy-Item -Path "$icu_path\bin64\icudt*.dll" -Destination ".\app\" -Verbose
+  Copy-Item -Path "$icu_path\bin64\icuuc*.dll" -Destination ".\app\" -Verbose
 }
 
 if ($use_libmpv -eq "ON") {
