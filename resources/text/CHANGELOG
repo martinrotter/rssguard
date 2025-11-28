@@ -24,6 +24,7 @@ Added:
 * Qt 5 version of RSS Guard on Windows uses custom-built Qt libraries with lower memory footprint and less dependencies.
 * Added main menu action to enable/disable feed. Can be also of course assigned to keyboard shortcut. (#755)
 * Application log dialog has "Clear" button. (#1902)
+* Dependency on Qt "5compat" library is now removed and feed encoding conversions are handled either by simplified "QStringConverter" feature or full-blown ICU library, depending on RSS Guard build type and OS.
 * "Fetch metadata" is now threaded and works if multiple feeds are selected at once.
 * New main menu and article list context menu item "Reveal feed" which highlights the feed that the displayed article belongs to. (#1903)
 * Feed list has new column "Item ID" which is hidden by default. Allows filtering feeds by their ID. (#966)
