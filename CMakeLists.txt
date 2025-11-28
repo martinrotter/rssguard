@@ -180,6 +180,8 @@ if(ENABLE_ICU)
   if(WIN32 AND NOT ICU_ROOT)
     set(ICU_ROOT "${CMAKE_SOURCE_DIR}/resources/scripts/icu")
   endif()
+
+  add_compile_definitions(HAS_ICU)
 endif()
 
 if(ENABLE_MEDIAPLAYER_LIBMPV)

@@ -409,14 +409,10 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
 endif()
 
 if(ENABLE_ICU)
-  find_library(ICUDT_LIB
-    NAMES "icudt"
-    HINTS "${ICU_ROOT}" "${ICU_ROOT}/bin64" "${ICU_ROOT}/lib64"
-    NO_CACHE
+  find_package(ICU
     REQUIRED
+    COMPONENTS uc i18n data
   )
-
-  message(STATUS "Found ICUdt: ${ICUDT_LIB}.")
 endif()
 
 # QLitehtml-based HTML viewer.
@@ -590,23 +586,6 @@ target_include_directories(rssguard
 #target_compile_definitions(rssguard PRIVATE WINVER=0x0602 _WIN32_WINNT=0x0602
 #    WIN32_LEAN_AND_MEAN)
 
-if(SQLite3_FOUND)
-  target_include_directories(rssguard AFTER
-    PRIVATE
-    ${SQLite3_INCLUDE_DIRS}
-  )
-
-  target_compile_definitions(rssguard
-    PRIVATE
-
-    SYSTEM_SQLITE3
-  )
-
-  target_link_libraries(rssguard PRIVATE
-    ${SQLite3_LIBRARIES}
-  )
-endif()
-
 # Qt.
 target_link_libraries(rssguard PUBLIC
   Qt${QT_VERSION_MAJOR}::Core
@@ -673,19 +652,15 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
 endif()
 
 if(ENABLE_ICU)
-  target_compile_definitions(rssguard
-    PRIVATE
-
-    HAS_ICU
-  )
-
   target_include_directories(rssguard AFTER
     PRIVATE
     ${ICU_INCLUDE_DIRS}
   )
 
-  target_link_libraries(rssguard PUBLIC
-    ${ICU_LIBRARIES}
+  target_link_libraries(rssguard PRIVATE
+    ICU::uc
+    ICU::i18n
+    ICU::data
   )
 endif()
 

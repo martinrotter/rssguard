@@ -46,8 +46,11 @@ class RSSGUARD_DLLSPEC TextFactory {
     static QStringList availableEncodings();
 
   private:
+    static QStringList availableEncodingsInit();
+
     static quint64 initializeSecretEncryptionKey();
     static quint64 generateSecretEncryptionKey();
+
     static quint64 s_encryptionKey;
 };
 

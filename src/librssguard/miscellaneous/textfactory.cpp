@@ -459,7 +459,26 @@ QString TextFactory::shorten(const QString& input, int text_length_limit) {
 
 QString TextFactory::fromEncoding(const QByteArray& data, const QString& encoding) {
 #if defined(HAS_ICU)
+  UErrorCode status = U_ZERO_ERROR;
+  QByteArray enc = encoding.toUtf8();
+  UConverter* conv = ucnv_open(enc.constData(), &status);
+  if (U_FAILURE(status)) {
+    return {};
+  }
 
+  // First pass: size
+  int32_t needed = ucnv_toUChars(conv, nullptr, 0, data.constData(), data.size(), &status);
+  if (status != U_BUFFER_OVERFLOW_ERROR) {
+    ucnv_close(conv);
+    return {};
+  }
+
+  status = U_ZERO_ERROR;
+  QString out(needed, Qt::Uninitialized);
+  ucnv_toUChars(conv, reinterpret_cast<UChar*>(out.data()), needed, data.constData(), data.size(), &status);
+  ucnv_close(conv);
+
+  return U_SUCCESS(status) ? out : QString{};
 #elif QT_VERSION_MAJOR == 5
   auto* codec = QTextCodec::codecForName(encoding.toLocal8Bit());
   return codec->toUnicode(data);
@@ -471,7 +490,30 @@ QString TextFactory::fromEncoding(const QByteArray& data, const QString& encodin
 
 QByteArray TextFactory::toEncoding(const QString& str, const QString& encoding) {
 #if defined(HAS_ICU)
+  UErrorCode status = U_ZERO_ERROR;
+  UConverter* conv = ucnv_open(encoding.toUtf8().constData(), &status);
+  if (U_FAILURE(status)) {
+    return {};
+  }
 
+  const UChar* u = reinterpret_cast<const UChar*>(str.utf16());
+  int32_t srcLen = str.size();
+
+  // First pass: determine buffer size
+  int32_t bytesNeeded = ucnv_fromUChars(conv, nullptr, 0, u, srcLen, &status);
+
+  if (status != U_BUFFER_OVERFLOW_ERROR) {
+    ucnv_close(conv);
+    return {};
+  }
+
+  // Second pass: actual conversion
+  status = U_ZERO_ERROR;
+  QByteArray out(bytesNeeded, Qt::Uninitialized);
+  ucnv_fromUChars(conv, out.data(), bytesNeeded, u, srcLen, &status);
+
+  ucnv_close(conv);
+  return U_SUCCESS(status) ? out : QByteArray();
 #elif QT_VERSION_MAJOR == 5
   auto* codec = QTextCodec::codecForName(encoding.toLocal8Bit());
   return codec->fromUnicode(str);
@@ -482,14 +524,43 @@ QByteArray TextFactory::toEncoding(const QString& str, const QString& encoding) 
 }
 
 QStringList TextFactory::availableEncodings() {
+  static QStringList enc = availableEncodingsInit();
+
+  return enc;
+}
+
+QStringList TextFactory::availableEncodingsInit() {
 #if defined(HAS_ICU)
   QStringList out;
+  QSet<QString> seen;
+
+  UErrorCode status = U_ZERO_ERROR;
   int32_t count = ucnv_countAvailable();
 
-  out.reserve(count);
-
   for (int32_t i = 0; i < count; ++i) {
-    out.append(QString::fromUtf8(ucnv_getAvailableName(i)));
+    const char* canonical = ucnv_getAvailableName(i);
+
+    QString canonStr = QString::fromUtf8(canonical);
+    if (!seen.contains(canonStr)) {
+      out.append(canonStr);
+      seen.insert(canonStr);
+    }
+
+    // --- Add all aliases ---
+    status = U_ZERO_ERROR;
+    int32_t aliasCount = ucnv_countAliases(canonical, &status);
+
+    if (U_SUCCESS(status)) {
+      for (int32_t j = 0; j < aliasCount; ++j) {
+        auto* c_alias = ucnv_getAlias(canonical, j, &status);
+        auto alias = QString::fromLocal8Bit(c_alias);
+
+        if (!seen.contains(alias)) {
+          out.append(alias);
+          seen.insert(alias);
+        }
+      }
+    }
   }
 
   return out;
