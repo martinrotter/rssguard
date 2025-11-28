@@ -8,6 +8,20 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
+
+#if defined(HAS_ICU)
+// Direct ICU.
+#include <unicode/ucnv.h>
+#elif QT_VERSION_MAJOR == 5
+// Use QTextCodec on Qt 5.
+#include <QTextCodec>
+#else
+// Use QStringConverter on Qt 6+.
+#include <QStringConverter>
+#include <QStringDecoder>
+#include <QStringEncoder>
+#endif
 
 #include <QDir>
 #include <QLocale>
@@ -441,6 +455,55 @@ QString TextFactory::shorten(const QString& input, int text_length_limit) {
   else {
     return input;
   }
+}
+
+QString TextFactory::fromEncoding(const QByteArray& data, const QString& encoding) {
+#if defined(HAS_ICU)
+
+#elif QT_VERSION_MAJOR == 5
+  auto* codec = QTextCodec::codecForName(encoding.toLocal8Bit());
+  return codec->toUnicode(data);
+#else
+  auto decoder = QStringDecoder(encoding);
+  return decoder.decode(data);
+#endif
+}
+
+QByteArray TextFactory::toEncoding(const QString& str, const QString& encoding) {
+#if defined(HAS_ICU)
+
+#elif QT_VERSION_MAJOR == 5
+  auto* codec = QTextCodec::codecForName(encoding.toLocal8Bit());
+  return codec->fromUnicode(str);
+#else
+  auto encoder = QStringEncoder(encoding);
+  return encoder.encode(str);
+#endif
+}
+
+QStringList TextFactory::availableEncodings() {
+#if defined(HAS_ICU)
+  QStringList out;
+  int32_t count = ucnv_countAvailable();
+
+  out.reserve(count);
+
+  for (int32_t i = 0; i < count; ++i) {
+    out.append(QString::fromUtf8(ucnv_getAvailableName(i)));
+  }
+
+  return out;
+#elif QT_VERSION_MAJOR == 5
+  const auto codecs = QTextCodec::availableCodecs();
+
+  return qlinq::from(codecs)
+    .select([](const QByteArray& codec) {
+      return QString::fromLocal8Bit(codec);
+    })
+    .toList();
+#else
+  return QStringConverter::availableCodecs();
+#endif
 }
 
 quint64 TextFactory::initializeSecretEncryptionKey() {

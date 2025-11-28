@@ -25,6 +25,7 @@
 #include <cstring>
 #include <fstream>
 #include <iostream>
+#include <librssguard/miscellaneous/textfactory.h>
 #include <random>
 #include <sstream>
 #include <stdexcept>
@@ -32,29 +33,21 @@
 
 #include <QDateTime>
 #include <QLocale>
-#include <QTextCodec>
 
 using namespace std;
 
 namespace Mimesis {
   static const string base64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
   static const signed char base64_inverse[256] = {
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63,
-    52, 53, 54, 55, 56, 57, 58, 59, 60, 61, -1, -1, -1, -1, -1, -1,
-    -1, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14,
-    15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, -1, -1, -1, -1, -1,
-    -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40,
-    41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
-    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 62, -1, -1, -1, 63, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61,
+    -1, -1, -1, -1, -1, -1, -1, 0,  1,  2,  3,  4,  5,  6,  7,  8,  9,  10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
+    22, 23, 24, 25, -1, -1, -1, -1, -1, -1, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44,
+    45, 46, 47, 48, 49, 50, 51, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
+    -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
   };
 
   string base64_encode(string_view in) {
@@ -67,14 +60,15 @@ namespace Mimesis {
     const uint8_t* uin = (const uint8_t*)in.data();
 
     for (i = 0; i < (in.size() / 3) * 3; i += 3) {
-      out.push_back(base64[                         (uin[i + 0] >> 2)]);
+      out.push_back(base64[(uin[i + 0] >> 2)]);
       out.push_back(base64[(uin[i + 0] << 4 & 63) | (uin[i + 1] >> 4)]);
       out.push_back(base64[(uin[i + 1] << 2 & 63) | (uin[i + 2] >> 6)]);
-      out.push_back(base64[(uin[i + 2] << 0 & 63)                    ]);
+      out.push_back(base64[(uin[i + 2] << 0 & 63)]);
     }
 
-    while (i++ < in.size())
+    while (i++ < in.size()) {
       out.push_back('=');
+    }
 
     return out;
   }
@@ -88,20 +82,22 @@ namespace Mimesis {
     int i = 0;
     uint32_t triplet = 0;
 
-    for(uint8_t c: in) {
+    for (uint8_t c : in) {
       auto d = base64_inverse[c];
 
       if (d == -1) {
-        if (c == '=')
+        if (c == '=') {
           break;
-        else
+        }
+        else {
           continue;
+        }
       }
 
       triplet <<= 6;
       triplet |= d;
 
-      if((i & 3) == 3) {
+      if ((i & 3) == 3) {
         out.push_back(static_cast<char>(triplet >> 16));
         out.push_back(static_cast<char>(triplet >> 8));
         out.push_back(static_cast<char>(triplet));
@@ -110,11 +106,11 @@ namespace Mimesis {
       i++;
     }
 
-    if((i & 3) == 3) {
+    if ((i & 3) == 3) {
       out.push_back(static_cast<char>(triplet >> 10));
       out.push_back(static_cast<char>(triplet >> 2));
     }
-    else if((i & 3) == 2) {
+    else if ((i & 3) == 2) {
       out.push_back(static_cast<char>(triplet >> 4));
     }
 
@@ -124,22 +120,25 @@ namespace Mimesis {
   static std::random_device rnd;
 
   static string unquote(const string& str) {
-    if (str.empty() || str[0] != '"')
+    if (str.empty() || str[0] != '"') {
       return str;
+    }
 
     string unquoted;
     int quotes_wanted = 2;
 
-    for (auto&& c: str) {
+    for (auto&& c : str) {
       if (c == '"') {
-        if (--quotes_wanted)
+        if (--quotes_wanted) {
           continue;
+        }
 
         break;
       }
 
-      if (c == '\\')
+      if (c == '\\') {
         continue;
+      }
 
       unquoted.push_back(c);
     }
@@ -150,22 +149,25 @@ namespace Mimesis {
   static string quote(const string& str) {
     bool do_quote = false;
 
-    for (auto&& c: str) {
-      if (isalnum(c) || strchr("!#$%&'*+-/=?^_`{|}~", c))
+    for (auto&& c : str) {
+      if (isalnum(c) || strchr("!#$%&'*+-/=?^_`{|}~", c)) {
         continue;
+      }
 
       do_quote = true;
       break;
     }
 
-    if (!do_quote)
+    if (!do_quote) {
       return str;
+    }
 
     string quoted = "\"";
 
-    for (auto&& c: str) {
-      if (c == '\"' || c == '\\')
+    for (auto&& c : str) {
+      if (c == '\"' || c == '\\') {
         quoted.push_back('\\');
+      }
 
       quoted.push_back(c);
     }
@@ -176,34 +178,43 @@ namespace Mimesis {
   }
 
   static bool streqi(const string& a, const string& b) {
-    if (a.size() != b.size())
+    if (a.size() != b.size()) {
       return false;
+    }
 
-    for (size_t i = 0; i < a.size(); i++)
-      if (tolower(a[i]) != tolower(b[i]))
+    for (size_t i = 0; i < a.size(); i++) {
+      if (tolower(a[i]) != tolower(b[i])) {
         return false;
+      }
+    }
 
     return true;
   }
 
   static bool streqi(const string& a, size_t offset_a, size_t len_a, const string& b) {
-    if (min(a.size() - offset_a, len_a) != b.size())
+    if (min(a.size() - offset_a, len_a) != b.size()) {
       return false;
+    }
 
-    for (size_t i = 0; i < len_a; i++)
-      if (tolower(a[i + offset_a]) != tolower(b[i]))
+    for (size_t i = 0; i < len_a; i++) {
+      if (tolower(a[i + offset_a]) != tolower(b[i])) {
         return false;
+      }
+    }
 
     return true;
   }
 
   static bool streqi(const string& a, size_t offset_a, size_t len_a, const string& b, size_t offset_b, size_t len_b) {
-    if (min(a.size() - offset_a, len_a) != min(b.size() - offset_b, len_b))
+    if (min(a.size() - offset_a, len_a) != min(b.size() - offset_b, len_b)) {
       return false;
+    }
 
-    for (size_t i = 0; i < min(a.size() - offset_a, len_a); i++)
-      if (tolower(a[i + offset_a]) != tolower(b[i + offset_b]))
+    for (size_t i = 0; i < min(a.size() - offset_a, len_a); i++) {
+      if (tolower(a[i + offset_a]) != tolower(b[i + offset_b])) {
         return false;
+      }
+    }
 
     return true;
   }
@@ -211,28 +222,33 @@ namespace Mimesis {
   static string generate_boundary() {
     unsigned int nonce[24 / sizeof(unsigned int)];
 
-    for (auto& val: nonce)
+    for (auto& val : nonce) {
       val = rnd();
+    }
 
     return base64_encode(string_view(reinterpret_cast<char*>(nonce), sizeof nonce));
   }
 
   static bool is_boundary(const std::string& line, const std::string& boundary) {
-    if (boundary.empty())
+    if (boundary.empty()) {
       return false;
+    }
 
-    if (line.compare(0, 2, "--"))
+    if (line.compare(0, 2, "--")) {
       return false;
+    }
 
-    if (line.compare(2, boundary.size(), boundary))
+    if (line.compare(2, boundary.size(), boundary)) {
       return false;
+    }
 
     return true;
   }
 
   static bool is_final_boundary(const std::string& line, const std::string& boundary) {
-    if (line.compare(2 + boundary.size(), 2, "--"))
+    if (line.compare(2 + boundary.size(), 2, "--")) {
       return false;
+    }
 
     return is_boundary(line, boundary);
   }
@@ -241,19 +257,23 @@ namespace Mimesis {
     auto a_slash = a.find('/');
     auto b_slash = b.find('/');
 
-    if (a_slash == string::npos || b_slash == string::npos)
+    if (a_slash == string::npos || b_slash == string::npos) {
       return streqi(a, 0, a_slash, b, 0, b_slash);
-    else
+    }
+    else {
       return streqi(a, b);
+    }
   }
 
   static void set_value(string& str, const string& value) {
     size_t semicolon = str.find(';');
 
-    if (semicolon == string::npos)
+    if (semicolon == string::npos) {
       str = value;
-    else
+    }
+    else {
       str.replace(0, semicolon, value);
+    }
   }
 
   static string get_value(const string& str) {
@@ -265,29 +285,34 @@ namespace Mimesis {
     size_t end = string::npos;
 
     // Find a semicolon, which marks the start of a parameter.
-    while((start = str.find(';', start)) != string::npos) {
+    while ((start = str.find(';', start)) != string::npos) {
       start++;
-      while (isspace(str[start]))
+      while (isspace(str[start])) {
         start++;
+      }
 
       if (!streqi(str, start, parameter.size(), parameter)) {
         // It's not the wanted parameter.
         start = str.find('=', start);
-        while (isspace(str[start]))
+        while (isspace(str[start])) {
           start++;
+        }
 
-        if (str[start] != '=')
+        if (str[start] != '=') {
           continue;
+        }
 
-        while (isspace(str[start]))
+        while (isspace(str[start])) {
           start++;
+        }
 
         // If it's a quoted parameter, skip over the quoted text.
         if (str[start] == '"') {
           start++;
           while (start < str.size() && str[start] != '"') {
-            if (str[start] == '\\' && str.size() > start - 1)
+            if (str[start] == '\\' && str.size() > start - 1) {
               start++;
+            }
 
             start++;
           }
@@ -298,30 +323,35 @@ namespace Mimesis {
 
       // Skip until we get to the value.
       start += parameter.size();
-      while (isspace(str[start]))
+      while (isspace(str[start])) {
         start++;
+      }
 
-      if (str[start] != '=')
+      if (str[start] != '=') {
         continue;
+      }
 
       start++;
-      while (isspace(str[start]))
+      while (isspace(str[start])) {
         start++;
+      }
 
       end = start;
       if (str[end] == '"') {
         // It's a quoted parameter.
         end++;
         while (end < str.size() && str[end] != '"') {
-          if (str[end] == '\\' && str.size() > end - 1)
+          if (str[end] == '\\' && str.size() > end - 1) {
             end++;
+          }
 
           end++;
         }
       }
       else {
-        while (end < str.size() && str[end] != ';' && !isspace(str[end]))
+        while (end < str.size() && str[end] != ';' && !isspace(str[end])) {
           end++;
+        }
       }
 
       break;
@@ -335,10 +365,12 @@ namespace Mimesis {
     auto start = range.first;
     auto end = range.second;
 
-    if (start == string::npos)
+    if (start == string::npos) {
       str += "; " + parameter + "=" + quote(value);
-    else
+    }
+    else {
       str.replace(start, end - start, quote(value));
+    }
   }
 
   static string get_parameter(const string& str, const string& parameter) {
@@ -346,27 +378,19 @@ namespace Mimesis {
     auto start = range.first;
     auto end = range.second;
 
-    if (start == string::npos)
+    if (start == string::npos) {
       return {};
+    }
 
     return unquote(str.substr(start, end - start));
   }
 
-  static const string ending[2] = { "\n", "\r\n" };
+  static const string ending[2] = {"\n", "\r\n"};
 
-  Part::Part() :
-    headers(),
-    preamble(),
-    body(),
-    epilogue(),
-    parts(),
-    boundary(),
-    multipart(false),
-    crlf(true),
-    message(false)
-  {}
+  Part::Part()
+    : headers(), preamble(), body(), epilogue(), parts(), boundary(), multipart(false), crlf(true), message(false) {}
 
-// Loading and saving a whole MIME message
+  // Loading and saving a whole MIME message
 
   string Part::load(istream& in, const string& parent_boundary) {
     string line;
@@ -374,8 +398,9 @@ namespace Mimesis {
     int nlf = 0;
 
     while (getline(in, line)) {
-      if (is_boundary(line, parent_boundary))
+      if (is_boundary(line, parent_boundary)) {
         return line;
+      }
 
       if (line.size() && line.back() == '\r') {
         ncrlf++;
@@ -385,12 +410,14 @@ namespace Mimesis {
         nlf++;
       }
 
-      if (line.empty())
+      if (line.empty()) {
         break;
+      }
 
       if (isspace(line[0])) {
-        if (headers.empty())
+        if (headers.empty()) {
           throw runtime_error("invalid header line");
+        }
 
         headers.back().second.append(line);
         continue;
@@ -414,16 +441,19 @@ namespace Mimesis {
         }
       }
 
-      if (colon == 0 || colon == string::npos)
+      if (colon == 0 || colon == string::npos) {
         throw runtime_error("invalid header line");
+      }
 
-      if (line[colon] != ':')
+      if (line[colon] != ':') {
         continue;
+      }
 
       auto start = colon + 1;
 
-      while (start < line.size() && isspace(line[start]))
+      while (start < line.size() && isspace(line[start])) {
         start++;
+      }
 
       // Empty header values are allowed for most fields.
 
@@ -439,8 +469,9 @@ namespace Mimesis {
 
     if (types_match(get_value(content_type), "multipart")) {
       boundary = get_parameter(content_type, "boundary");
-      if (boundary.empty())
+      if (boundary.empty()) {
         throw runtime_error("multipart but no boundary specified");
+      }
 
       multipart = true;
     }
@@ -450,8 +481,9 @@ namespace Mimesis {
 
     if (!multipart) {
       while (getline(in, line)) {
-        if (is_boundary(line, parent_boundary))
+        if (is_boundary(line, parent_boundary)) {
           return line;
+        }
 
         line.push_back('\n');
         body.append(line);
@@ -459,11 +491,13 @@ namespace Mimesis {
     }
     else {
       while (getline(in, line)) {
-        if (is_boundary(line, parent_boundary))
+        if (is_boundary(line, parent_boundary)) {
           return line;
+        }
 
-        if (is_boundary(line, boundary))
+        if (is_boundary(line, boundary)) {
           break;
+        }
 
         line.push_back('\n');
         preamble.append(line);
@@ -473,24 +507,28 @@ namespace Mimesis {
         parts.emplace_back();
         string last_line = parts.back().load(in, boundary);
 
-        if (!is_boundary(last_line, boundary))
+        if (!is_boundary(last_line, boundary)) {
           throw runtime_error("invalid boundary");
+        }
 
-        if (is_final_boundary(last_line, boundary))
+        if (is_final_boundary(last_line, boundary)) {
           break;
+        }
       }
 
       while (getline(in, line)) {
-        if (is_boundary(line, parent_boundary))
+        if (is_boundary(line, parent_boundary)) {
           return line;
+        }
 
         line.push_back('\n');
         epilogue.append(line);
       }
     }
 
-    if (in.bad())
+    if (in.bad()) {
       throw runtime_error("error reading message");
+    }
 
     return {};
   }
@@ -498,15 +536,16 @@ namespace Mimesis {
   void Part::save(ostream& out) const {
     bool has_headers = false;
 
-    for (auto& header: headers) {
+    for (auto& header : headers) {
       if (!header.second.empty()) {
         out << header.first << ": " << header.second << ending[crlf];
         has_headers = true;
       }
     }
 
-    if (message && !has_headers)
+    if (message && !has_headers) {
       throw runtime_error("no headers specified");
+    }
 
     out << ending[crlf];
 
@@ -515,7 +554,7 @@ namespace Mimesis {
     }
     else {
       out << preamble;
-      for (auto& part: parts) {
+      for (auto& part : parts) {
         out << "--" << boundary << ending[crlf];
         part.save(out);
       }
@@ -528,8 +567,9 @@ namespace Mimesis {
   void Part::load(const string& filename) {
     ifstream in(filename);
 
-    if (!in.is_open())
+    if (!in.is_open()) {
       throw runtime_error("could not open message file");
+    }
 
     load(in);
   }
@@ -537,13 +577,15 @@ namespace Mimesis {
   void Part::save(const string& filename) const {
     ofstream out(filename);
 
-    if (!out.is_open())
+    if (!out.is_open()) {
       throw runtime_error("could not open message file");
+    }
 
     save(out);
     out.close();
-    if (out.fail())
+    if (out.fail()) {
       throw runtime_error("could not write message file");
+    }
   }
 
   void Part::from_string(const string& data) {
@@ -563,28 +605,31 @@ namespace Mimesis {
     crlf = value;
   }
 
-// Low-level access
+  // Low-level access
 
   string charset_decode(const string& charset, string_view in) {
-    QTextCodec* custom_codec = QTextCodec::codecForName(charset.c_str());
-    auto unic = custom_codec->toUnicode(string(in).c_str());
+    // Convert input bytes to QString using your central encoding handler.
+    QString unic = TextFactory::fromEncoding(QByteArray(in.data(), int(in.size())), QString::fromStdString(charset));
 
-    std::string utf8_text = unic.toUtf8().constData();
-
-    return utf8_text;
+    // Convert QString → UTF-8 std::string.
+    QByteArray utf8 = unic.toUtf8();
+    return std::string(utf8.constData(), utf8.size());
   }
 
   string Part::get_body() const {
     string result;
     auto encoding = get_header_value("Content-Transfer-Encoding");
 
-    if (streqi(encoding, "quoted-printable"))
+    if (streqi(encoding, "quoted-printable")) {
       result = quoted_printable_decode(body);
+    }
 
-    if (streqi(encoding, "base64"))
+    if (streqi(encoding, "base64")) {
       result = base64_decode(body);
-    else
+    }
+    else {
       result = body;
+    }
 
     if (is_mime_type("text")) {
       auto charset = get_header_parameter("Content-Type", "charset");
@@ -650,35 +695,40 @@ namespace Mimesis {
   }
 
   void Part::set_body(const string& value) {
-    if (multipart)
+    if (multipart) {
       throw runtime_error("Cannot set body of a multipart message");
+    }
 
     body = value;
   }
 
   void Part::set_preamble(const string& value) {
-    if (!multipart)
+    if (!multipart) {
       throw runtime_error("Cannot set preamble of a non-multipart message");
+    }
 
     preamble = value;
   }
 
   void Part::set_epilogue(const string& value) {
-    if (!multipart)
+    if (!multipart) {
       throw runtime_error("Cannot set epilogue of a non-multipart message");
+    }
 
     epilogue = value;
   }
 
   void Part::set_boundary(const std::string& value) {
     boundary = value;
-    if (has_mime_type())
+    if (has_mime_type()) {
       set_header_parameter("Content-Type", "boundary", boundary);
+    }
   }
 
   void Part::set_parts(const vector<Part>& value) {
-    if (!multipart)
+    if (!multipart) {
       throw runtime_error("Cannot set parts of a non-multipart message");
+    }
 
     parts = value;
   }
@@ -701,29 +751,34 @@ namespace Mimesis {
     body.clear();
   }
 
-// Header manipulation
+  // Header manipulation
 
   static bool iequals(const string& a, const string& b) {
-    if (a.size() != b.size())
+    if (a.size() != b.size()) {
       return false;
+    }
 
-    for (size_t i = 0; i < a.size(); ++i)
-      if (tolower(a[i]) != tolower(b[i]))
+    for (size_t i = 0; i < a.size(); ++i) {
+      if (tolower(a[i]) != tolower(b[i])) {
         return false;
+      }
+    }
 
     return true;
   }
 
   string Part::get_header(const string& field) const {
-    for (const auto& header: headers)
-      if (iequals(header.first, field))
+    for (const auto& header : headers) {
+      if (iequals(header.first, field)) {
         return header.second;
+      }
+    }
 
     return {};
   }
 
   void Part::set_header(const string& field, const string& value) {
-    for (auto& header: headers) {
+    for (auto& header : headers) {
       if (iequals(header.first, field)) {
         header.second = value;
         return;
@@ -734,18 +789,22 @@ namespace Mimesis {
   }
 
   string& Part::operator[](const string& field) {
-    for (auto& header: headers)
-      if (iequals(header.first, field))
+    for (auto& header : headers) {
+      if (iequals(header.first, field)) {
         return header.second;
+      }
+    }
 
     append_header(field, {});
     return headers.back().second;
   }
 
   const string& Part::operator[](const string& field) const {
-    for (auto& header: headers)
-      if (iequals(header.first, field))
+    for (auto& header : headers) {
+      if (iequals(header.first, field)) {
         return header.second;
+      }
+    }
 
     static string empty_string;
 
@@ -761,9 +820,12 @@ namespace Mimesis {
   }
 
   void Part::erase_header(const string& field) {
-    headers.erase(remove_if(begin(headers), end(headers), [&](pair<string, string>& header) {
-      return header.first == field;
-    }), end(headers));
+    headers.erase(remove_if(begin(headers),
+                            end(headers),
+                            [&](pair<string, string>& header) {
+                              return header.first == field;
+                            }),
+                  end(headers));
   }
 
   void Part::clear_headers() {
@@ -779,7 +841,7 @@ namespace Mimesis {
   }
 
   void Part::set_header_value(const string& field, const string& value) {
-    for (auto& header: headers) {
+    for (auto& header : headers) {
       if (iequals(header.first, field)) {
         set_value(header.second, value);
         return;
@@ -790,7 +852,7 @@ namespace Mimesis {
   }
 
   void Part::set_header_parameter(const string& field, const string& parameter, const string& value) {
-    for (auto& header: headers) {
+    for (auto& header : headers) {
       if (iequals(header.first, field)) {
         set_parameter(header.second, parameter, value);
         return;
@@ -801,7 +863,6 @@ namespace Mimesis {
   }
 
   static string get_date_string(const chrono::system_clock::time_point& date = chrono::system_clock::now()) {
-
     QLocale loc("C");
     QDateTime dat;
 
@@ -842,7 +903,7 @@ namespace Mimesis {
     set_header("Date", get_date_string(date));
   }
 
-// Part manipulation
+  // Part manipulation
 
   Part& Part::append_part(const Part& part) {
     parts.push_back(part);
@@ -860,8 +921,9 @@ namespace Mimesis {
 
   void Part::make_multipart(const string& subtype, const string& suggested_boundary) {
     if (multipart) {
-      if (is_multipart(subtype))
+      if (is_multipart(subtype)) {
         return;
+      }
 
       Part part;
 
@@ -879,8 +941,9 @@ namespace Mimesis {
     else {
       multipart = true;
 
-      if (message)
+      if (message) {
         set_header("MIME-Version", "1.0");
+      }
 
       if (!body.empty()) {
         auto& part = append_part();
@@ -892,26 +955,30 @@ namespace Mimesis {
       }
     }
 
-    if (!suggested_boundary.empty())
+    if (!suggested_boundary.empty()) {
       set_boundary(suggested_boundary);
+    }
 
-    if (boundary.empty())
+    if (boundary.empty()) {
       boundary = generate_boundary();
+    }
 
     set_header("Content-Type", "multipart/" + subtype + "; boundary=" + boundary);
   }
 
   bool Part::flatten() {
-    if (!multipart)
+    if (!multipart) {
       return true;
+    }
 
     if (parts.empty()) {
       multipart = false;
       return true;
     }
 
-    if (parts.size() > 1)
+    if (parts.size() > 1) {
       return false;
+    }
 
     auto& part = parts.front();
 
@@ -930,7 +997,7 @@ namespace Mimesis {
     return true;
   }
 
-// Body and attachments
+  // Body and attachments
 
   string Part::get_mime_type() const {
     return get_header_value("Content-Type");
@@ -950,21 +1017,25 @@ namespace Mimesis {
 
   const Part* Part::get_first_matching_part(function<bool(const Part&)> predicate) const {
     if (!multipart) {
-      if (headers.empty() && body.empty())
+      if (headers.empty() && body.empty()) {
         return nullptr;
+      }
 
-      if (is_attachment())
+      if (is_attachment()) {
         return nullptr;
+      }
     }
 
-    if (predicate(*this))
+    if (predicate(*this)) {
       return this;
+    }
 
-    for (auto& part: parts) {
+    for (auto& part : parts) {
       auto result = part.get_first_matching_part(predicate);
 
-      if (result)
+      if (result) {
         return result;
+      }
     }
 
     return nullptr;
@@ -992,10 +1063,12 @@ namespace Mimesis {
   string Part::get_first_matching_body(const string& type) const {
     const auto& part = get_first_matching_part(type);
 
-    if (part)
+    if (part) {
       return part->get_body();
-    else
+    }
+    else {
       return {};
+    }
   }
 
   Part& Part::set_alternative(const string& subtype, const string& text) {
@@ -1027,12 +1100,11 @@ namespace Mimesis {
 
       // If there is already a multipart/alternative with text, use that one.
       part = get_first_matching_part([](const Part& part) {
-        return part.is_multipart("alternative")
-        && !part.parts.empty()
-        && part.get_first_matching_part("text");
+        return part.is_multipart("alternative") && !part.parts.empty() && part.get_first_matching_part("text");
       });
-      if (part)
+      if (part) {
         part = &part->append_part();
+      }
 
       // If there is already inline text, make it multipart/alternative.
 
@@ -1042,8 +1114,9 @@ namespace Mimesis {
       }
 
       // Otherwise, assume we're multipart/mixed.
-      if (!part)
+      if (!part) {
         part = &prepend_part();
+      }
     }
 
     part->set_header("Content-Type", type);
@@ -1107,8 +1180,9 @@ namespace Mimesis {
     if (!multipart && body.empty()) {
       set_header("Content-Type", type.empty() ? "text/plain" : type);
       set_header("Content-Disposition", "attachment");
-      if (!filename.empty())
+      if (!filename.empty()) {
         set_header_parameter("Content-Disposition", "filename", filename);
+      }
 
       body = data;
       return *this;
@@ -1119,8 +1193,9 @@ namespace Mimesis {
 
     part.set_header("Content-Type", type.empty() ? "text/plain" : type);
     part.set_header("Content-Disposition", "attachment");
-    if (!filename.empty())
+    if (!filename.empty()) {
       part.set_header_parameter("Content-Disposition", "filename", filename);
+    }
 
     part.set_body(data);
     return part;
@@ -1130,8 +1205,9 @@ namespace Mimesis {
     auto& part = attach("", type, filename);
     char buffer[4096];
 
-    while (in.read(buffer, sizeof(buffer)))
+    while (in.read(buffer, sizeof(buffer))) {
       part.body.append(buffer, sizeof(buffer));
+    }
 
     part.body.append(buffer, in.gcount());
     return part;
@@ -1145,7 +1221,7 @@ namespace Mimesis {
       return attachments;
     }
 
-    for (auto& part: parts) {
+    for (auto& part : parts) {
       auto sub = part.get_attachments();
 
       attachments.insert(end(attachments), begin(sub), end(sub));
@@ -1155,15 +1231,20 @@ namespace Mimesis {
   }
 
   void Part::simplify() {
-    if (!multipart)
+    if (!multipart) {
       return;
+    }
 
-    for (auto& part: parts)
+    for (auto& part : parts) {
       part.simplify();
+    }
 
-    parts.erase(remove_if(begin(parts), end(parts), [&](Part& part) {
-      return part.headers.empty() && part.body.empty();
-    }), end(parts));
+    parts.erase(remove_if(begin(parts),
+                          end(parts),
+                          [&](Part& part) {
+                            return part.headers.empty() && part.body.empty();
+                          }),
+                end(parts));
 
     if (parts.empty()) {
       if (message) {
@@ -1194,8 +1275,9 @@ namespace Mimesis {
       }
     }
     else {
-      for (auto& part: parts)
+      for (auto& part : parts) {
         part.clear_attachments();
+      }
 
       simplify();
     }
@@ -1205,13 +1287,14 @@ namespace Mimesis {
     bool cleared = false;
     Part* part;
 
-    while((part = get_first_matching_part(type))) {
+    while ((part = get_first_matching_part(type))) {
       part->clear();
       cleared = true;
     }
 
-    if (cleared)
+    if (cleared) {
       simplify();
+    }
   }
 
   void Part::clear_text() {
@@ -1239,28 +1322,30 @@ namespace Mimesis {
   }
 
   bool Part::has_attachments() const {
-    if (is_attachment())
+    if (is_attachment()) {
       return true;
+    }
 
-    for (auto& part: parts)
-      if (part.has_attachments())
+    for (auto& part : parts) {
+      if (part.has_attachments()) {
         return true;
+      }
+    }
 
     return false;
   }
 
-// RFC2822 messages
+  // RFC2822 messages
 
   Message::Message() {
     message = true;
   }
 
-// Comparison
+  // Comparison
 
   bool operator==(const Part& lhs, const Part& rhs) {
-    return lhs.crlf == rhs.crlf && lhs.multipart == rhs.multipart &&
-           lhs.preamble == rhs.preamble && lhs.body == rhs.body &&
-           lhs.epilogue == rhs.epilogue && lhs.boundary == rhs.boundary &&
+    return lhs.crlf == rhs.crlf && lhs.multipart == rhs.multipart && lhs.preamble == rhs.preamble &&
+           lhs.body == rhs.body && lhs.epilogue == rhs.epilogue && lhs.boundary == rhs.boundary &&
            lhs.headers == rhs.headers && lhs.parts == rhs.parts;
   }
 
@@ -1268,4 +1353,4 @@ namespace Mimesis {
     return !(lhs == rhs);
   }
 
-}
+} // namespace Mimesis

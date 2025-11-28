@@ -3,10 +3,10 @@
 #include "miscellaneous/domdocument.h"
 
 #include "definitions/definitions.h"
+#include "miscellaneous/textfactory.h"
 #include "miscellaneous/xmlencodingdetector.h"
 
 #include <QRegularExpression>
-#include <QTextCodec>
 
 DomDocument::DomDocument() : QDomDocument() {}
 
@@ -16,15 +16,7 @@ bool DomDocument::setContent(const QByteArray& data,
                              int* error_line,
                              int* error_column) {
   QString xml_data_encoding = XmlEncodingDetector::detectXmlEncoding(data);
-  QTextCodec* codec = QTextCodec::codecForName(xml_data_encoding.toLocal8Bit());
-  QString decoded_xml_data;
-
-  if (codec == nullptr) {
-    decoded_xml_data = QString::fromUtf8(data);
-  }
-  else {
-    decoded_xml_data = codec->toUnicode(data);
-  }
+  QString decoded_xml_data = TextFactory::fromEncoding(data, xml_data_encoding);
 
   return setContent(decoded_xml_data, namespace_processing, error_msg, error_line, error_column);
 }

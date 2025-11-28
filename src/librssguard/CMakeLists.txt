@@ -608,12 +608,6 @@ target_link_libraries(rssguard PUBLIC
   Qt${QT_VERSION_MAJOR}::Concurrent
 )
 
-if(QT_VERSION_MAJOR EQUAL 6)
-  target_link_libraries(rssguard PUBLIC
-    Qt${QT_VERSION_MAJOR}::Core5Compat
-  )
-endif()
-
 if(WIN32)
   target_link_libraries(rssguard PUBLIC
     Qt${QT_VERSION_MAJOR}::GuiPrivate

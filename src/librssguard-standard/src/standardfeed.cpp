@@ -33,7 +33,6 @@
 #include <QProcessEnvironment>
 #include <QScopedPointer>
 #include <QStringLiteral>
-#include <QTextCodec>
 #include <QVariant>
 #include <QXmlStreamReader>
 

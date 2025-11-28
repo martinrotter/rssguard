@@ -31,7 +31,7 @@ string quoted_printable_decode(string_view in) {
   int decode = 0;
   uint8_t val = 0;
 
-  for (auto&& c: in) {
+  for (auto&& c : in) {
     if (decode) {
       if (c >= '0' && c <= '9') {
         val <<= 4;
@@ -48,14 +48,17 @@ string quoted_printable_decode(string_view in) {
         continue;
       }
 
-      if (decode == 0)
+      if (decode == 0) {
         out.push_back(static_cast<char>(val));
+      }
     }
     else {
-      if (c == '=')
+      if (c == '=') {
         decode = 2;
-      else
+      }
+      else {
         out.push_back(c);
+      }
     }
   }
 

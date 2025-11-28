@@ -32,14 +32,14 @@ namespace Mimesis {
   std::string base64_decode(std::string_view in);
 
   class Part {
-    std::vector<std::pair<std::string, std::string>> headers;
-    std::string preamble;
-    std::string body;
-    std::string epilogue;
-    std::vector<Part> parts;
-    std::string boundary;
-    bool multipart;
-    bool crlf;
+      std::vector<std::pair<std::string, std::string>> headers;
+      std::string preamble;
+      std::string body;
+      std::string epilogue;
+      std::vector<Part> parts;
+      std::string boundary;
+      bool multipart;
+      bool crlf;
 
     protected:
       bool message;
@@ -101,7 +101,8 @@ namespace Mimesis {
       void set_header_value(const std::string& field, const std::string& value);
       void set_header_parameter(const std::string& field, const std::string& paramter, const std::string& value);
 
-      void add_received(const std::string& domain, const std::chrono::system_clock::time_point& date = std::chrono::system_clock::now());
+      void add_received(const std::string& domain,
+                        const std::chrono::system_clock::time_point& date = std::chrono::system_clock::now());
       void generate_msgid(const std::string& domain);
       void set_date(const std::chrono::system_clock::time_point& date = std::chrono::system_clock::now());
 
@@ -168,7 +169,7 @@ namespace Mimesis {
   bool operator==(const Part& lhs, const Part& rhs);
   bool operator!=(const Part& lhs, const Part& rhs);
 
-}
+} // namespace Mimesis
 
 inline std::ostream& operator<<(std::ostream& out, const Mimesis::Part& part) {
   part.save(out);

@@ -17,7 +17,6 @@
 #include <QNetworkReply>
 #include <QPair>
 #include <QPushButton>
-#include <QTextCodec>
 
 FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
   : QDialog(parent), m_ui(new Ui::FormFeedDetails()), m_serviceRoot(service_root) {

@@ -13,7 +13,6 @@
 #include <QImageReader>
 #include <QMenu>
 #include <QMimeData>
-#include <QTextCodec>
 #include <QtGlobal>
 
 StandardFeedExpDetails::StandardFeedExpDetails(QWidget* parent) : QWidget(parent) {

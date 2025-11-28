@@ -21,7 +21,10 @@
 #endif
 
 #include <QSettings>
+
+#if QT_VERSION_MAJOR == 5
 #include <QTextCodec>
+#endif
 
 void exception_handler() {
   try {

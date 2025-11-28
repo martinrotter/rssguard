@@ -21,7 +21,6 @@
 #include <QInputDialog>
 #include <QMenu>
 #include <QMimeData>
-#include <QTextCodec>
 #include <QtGlobal>
 
 StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
@@ -64,19 +63,14 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
                           QVariant::fromValue(int(StandardFeed::Type::Sitemap)));
 
   // Load available encodings.
-  const QList<QByteArray> encodings = QTextCodec::availableCodecs();
-  QStringList encoded_encodings;
-
-  for (const QByteArray& encoding : encodings) {
-    encoded_encodings.append(encoding);
-  }
+  auto encodings = TextFactory::availableEncodings();
 
   // Sort encodings and add them.
-  std::sort(encoded_encodings.begin(), encoded_encodings.end(), [](const QString& lhs, const QString& rhs) {
+  std::sort(encodings.begin(), encodings.end(), [](const QString& lhs, const QString& rhs) {
     return lhs.toLower() < rhs.toLower();
   });
 
-  m_ui.m_cmbEncoding->addItems(encoded_encodings);
+  m_ui.m_cmbEncoding->addItems(encodings);
 
   // Setup menu & actions for icon selection.
   m_iconMenu = new QMenu(tr("Icon selection"), this);

@@ -42,7 +42,6 @@
 #include <QElapsedTimer>
 #include <QSqlTableModel>
 #include <QStack>
-#include <QTextCodec>
 #include <QThread>
 
 StandardServiceRoot::StandardServiceRoot(RootItem* parent)
@@ -261,7 +260,6 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   StandardFeed* f = static_cast<StandardFeed*>(feed);
   QString host = QUrl(f->source()).host();
   QByteArray feed_contents;
-  QString formatted_feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -367,17 +365,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     }
   }
 
-  // Encode obtained data for further parsing.
-  QTextCodec* codec = QTextCodec::codecForName(f->encoding().toLocal8Bit());
-
-  if (codec == nullptr) {
-    // No suitable codec for this encoding was found.
-    // Use UTF-8.
-    formatted_feed_contents = QString::fromUtf8(feed_contents);
-  }
-  else {
-    formatted_feed_contents = codec->toUnicode(feed_contents);
-  }
+  QString formatted_feed_contents = TextFactory::fromEncoding(feed_contents, f->encoding());
 
   // Feed data are downloaded and encoded.
   // Parse data and obtain messages.

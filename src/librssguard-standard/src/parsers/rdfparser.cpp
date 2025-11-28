@@ -10,8 +10,6 @@
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/miscellaneous/xmlencodingdetector.h>
 
-#include <QTextCodec>
-
 RdfParser::RdfParser(const QString& data)
   : FeedParser(data), m_rdfNamespace(QSL("http://www.w3.org/1999/02/22-rdf-syntax-ns#")),
     m_rssNamespace(QSL("http://purl.org/rss/1.0/")), m_rssCoNamespace(QSL("http://purl.org/rss/1.0/modules/content/")),
@@ -173,16 +171,8 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
 
 QPair<StandardFeed*, QList<IconLocation>> RdfParser::guessFeed(const QByteArray& content,
                                                                const NetworkResult& network_res) const {
-  QString xml_contents_encoded;
   QString encoding = XmlEncodingDetector::detectXmlEncoding(content);
-  QTextCodec* custom_codec = QTextCodec::codecForName(encoding.toLocal8Bit());
-
-  if (custom_codec != nullptr) {
-    xml_contents_encoded = custom_codec->toUnicode(content);
-  }
-  else {
-    xml_contents_encoded = QString::fromUtf8(content);
-  }
+  QString xml_contents_encoded = TextFactory::fromEncoding(content, encoding);
 
   // Feed XML was obtained, guess it now.
   DomDocument xml_document;

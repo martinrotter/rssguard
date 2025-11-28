@@ -12,7 +12,6 @@
 #include <librssguard/miscellaneous/xmlencodingdetector.h>
 #include <librssguard/network-web/networkfactory.h>
 
-#include <QTextCodec>
 #include <QTextStream>
 
 RssParser::RssParser(const QString& data)
@@ -174,16 +173,8 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
 
 QPair<StandardFeed*, QList<IconLocation>> RssParser::guessFeed(const QByteArray& content,
                                                                const NetworkResult& network_res) const {
-  QString xml_contents_encoded;
   QString encoding = XmlEncodingDetector::detectXmlEncoding(content);
-  QTextCodec* custom_codec = QTextCodec::codecForName(encoding.toLocal8Bit());
-
-  if (custom_codec != nullptr) {
-    xml_contents_encoded = custom_codec->toUnicode(content);
-  }
-  else {
-    xml_contents_encoded = QString::fromUtf8(content);
-  }
+  QString xml_contents_encoded = TextFactory::fromEncoding(content, encoding);
 
   // Feed XML was obtained, guess it now.
   DomDocument xml_document;

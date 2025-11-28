@@ -15,7 +15,6 @@
 #include <QImageReader>
 #include <QMenu>
 #include <QMimeData>
-#include <QTextCodec>
 #include <QtGlobal>
 
 StandardFeedNetworkDetails::StandardFeedNetworkDetails(QWidget* parent) : QWidget(parent) {

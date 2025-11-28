@@ -41,6 +41,10 @@ class RSSGUARD_DLLSPEC TextFactory {
     // Shortens input string according to given length limit.
     static QString shorten(const QString& input, int text_length_limit = TEXT_TITLE_LIMIT);
 
+    static QString fromEncoding(const QByteArray& data, const QString& encoding);
+    static QByteArray toEncoding(const QString& str, const QString& encoding);
+    static QStringList availableEncodings();
+
   private:
     static quint64 initializeSecretEncryptionKey();
     static quint64 generateSecretEncryptionKey();

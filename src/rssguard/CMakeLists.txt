@@ -24,12 +24,6 @@ target_link_libraries(app PUBLIC
   rssguard
 )
 
-if(QT_VERSION_MAJOR EQUAL 6)
-  target_link_libraries(app PUBLIC
-    Qt${QT_VERSION_MAJOR}::Core5Compat
-  )
-endif()
-
 if(APPLE)
   set_target_properties(app PROPERTIES
     MACOSX_BUNDLE FALSE

@@ -15,7 +15,6 @@
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/miscellaneous/xmlencodingdetector.h>
 
-#include <QTextCodec>
 #include <QTextStream>
 
 SitemapParser::SitemapParser(const QString& data) : FeedParser(data) {}
@@ -166,16 +165,8 @@ QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteAr
     uncompressed_content = content;
   }
 
-  QString xml_contents_encoded;
   QString encoding = XmlEncodingDetector::detectXmlEncoding(content);
-  QTextCodec* custom_codec = QTextCodec::codecForName(encoding.toLocal8Bit());
-
-  if (custom_codec != nullptr) {
-    xml_contents_encoded = custom_codec->toUnicode(uncompressed_content);
-  }
-  else {
-    xml_contents_encoded = QString::fromUtf8(uncompressed_content);
-  }
+  QString xml_contents_encoded = TextFactory::fromEncoding(content, encoding);
 
   // Feed XML was obtained, guess it now.
   DomDocument xml_document;
