@@ -9,7 +9,7 @@ class RSSGUARD_DLLSPEC DomDocument : public QDomDocument {
   public:
     explicit DomDocument();
 
-    bool setContent(const QByteArray& text,
+    bool setContent(const QByteArray& data,
                     bool namespace_processing,
                     QString* error_msg = nullptr,
                     int* error_line = nullptr,
@@ -19,8 +19,6 @@ class RSSGUARD_DLLSPEC DomDocument : public QDomDocument {
                     QString* error_msg = nullptr,
                     int* error_line = nullptr,
                     int* error_column = nullptr);
-
-    static QString extractEncoding(const QByteArray& xml_data);
 };
 
 #endif // DOMDOCUMENT_H

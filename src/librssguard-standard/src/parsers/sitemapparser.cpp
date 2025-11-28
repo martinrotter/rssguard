@@ -13,6 +13,7 @@
 #include <librssguard/exceptions/feedrecognizedbutfailedexception.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
+#include <librssguard/miscellaneous/xmlencodingdetector.h>
 
 #include <QTextCodec>
 #include <QTextStream>
@@ -165,17 +166,9 @@ QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteAr
     uncompressed_content = content;
   }
 
-  QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);
   QString xml_contents_encoded;
-  QString enc = DomDocument::extractEncoding(content);
-
-  if (!enc.isEmpty()) {
-    // Some "encoding" attribute was found get the encoding
-    // out of it.
-    xml_schema_encoding = enc;
-  }
-
-  QTextCodec* custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
+  QString encoding = XmlEncodingDetector::detectXmlEncoding(content);
+  QTextCodec* custom_codec = QTextCodec::codecForName(encoding.toLocal8Bit());
 
   if (custom_codec != nullptr) {
     xml_contents_encoded = custom_codec->toUnicode(uncompressed_content);
@@ -213,7 +206,7 @@ QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteAr
   auto* feed = new StandardFeed();
   QList<IconLocation> icon_possible_locations;
 
-  feed->setEncoding(xml_schema_encoding);
+  feed->setEncoding(encoding);
   feed->setType(StandardFeed::Type::Sitemap);
   feed->setTitle(network_res.m_url.toString());
   feed->setSource(network_res.m_url.toString());

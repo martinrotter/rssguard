@@ -245,6 +245,8 @@ set(SOURCES
   miscellaneous/textfactory.h
   miscellaneous/thread.cpp
   miscellaneous/thread.h
+  miscellaneous/xmlencodingdetector.cpp
+  miscellaneous/xmlencodingdetector.h
   network-web/gemini/geminiclient.cpp
   network-web/gemini/geminiclient.h
   network-web/gemini/geminiparser.cpp

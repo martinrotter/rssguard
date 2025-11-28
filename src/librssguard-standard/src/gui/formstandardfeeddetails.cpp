@@ -251,9 +251,8 @@ void FormStandardFeedDetails::loadFeedData() {
   m_networkDetails->loadHttpHeaders(std_feed->httpHeaders());
 
   if (m_creatingNew) {
-    // auto processed_url = qApp->web()->processFeedUriScheme(m_urlToProcess);
-
     m_standardFeedDetails->prepareForNewFeed(m_serviceRoot, m_parentToSelect, m_urlToProcess);
+    m_standardFeedExpDetails->m_ui.m_cbFetchFullArticles->setChecked(false);
   }
   else {
     m_standardFeedDetails->setExistingFeed(m_serviceRoot, std_feed);

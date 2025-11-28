@@ -8,6 +8,7 @@
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
+#include <librssguard/miscellaneous/xmlencodingdetector.h>
 
 #include <QTextCodec>
 
@@ -172,17 +173,9 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
 
 QPair<StandardFeed*, QList<IconLocation>> RdfParser::guessFeed(const QByteArray& content,
                                                                const NetworkResult& network_res) const {
-  QString xml_schema_encoding = QSL(DEFAULT_FEED_ENCODING);
   QString xml_contents_encoded;
-  QString enc = DomDocument::extractEncoding(content);
-
-  if (!enc.isEmpty()) {
-    // Some "encoding" attribute was found get the encoding
-    // out of it.
-    xml_schema_encoding = enc;
-  }
-
-  QTextCodec* custom_codec = QTextCodec::codecForName(xml_schema_encoding.toLocal8Bit());
+  QString encoding = XmlEncodingDetector::detectXmlEncoding(content);
+  QTextCodec* custom_codec = QTextCodec::codecForName(encoding.toLocal8Bit());
 
   if (custom_codec != nullptr) {
     xml_contents_encoded = custom_codec->toUnicode(content);
@@ -212,7 +205,7 @@ QPair<StandardFeed*, QList<IconLocation>> RdfParser::guessFeed(const QByteArray&
   auto* feed = new StandardFeed();
   QList<IconLocation> icon_possible_locations;
 
-  feed->setEncoding(xml_schema_encoding);
+  feed->setEncoding(encoding);
   feed->setType(StandardFeed::Type::Rdf);
   feed->setSource(network_res.m_url.toString());
 

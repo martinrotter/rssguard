@@ -2,26 +2,29 @@
 
 #include "miscellaneous/domdocument.h"
 
-#include "miscellaneous/iofactory.h"
+#include "definitions/definitions.h"
+#include "miscellaneous/xmlencodingdetector.h"
 
 #include <QRegularExpression>
-#include <QXmlInputSource>
-
-class XmlInputSource : public QXmlInputSource {
-  public:
-    virtual QString fromRawData(const QByteArray& data, bool beginning) {
-      return QXmlInputSource::fromRawData(data, beginning);
-    }
-};
+#include <QTextCodec>
 
 DomDocument::DomDocument() : QDomDocument() {}
 
-bool DomDocument::setContent(const QByteArray& text,
+bool DomDocument::setContent(const QByteArray& data,
                              bool namespace_processing,
                              QString* error_msg,
                              int* error_line,
                              int* error_column) {
-  QString decoded_xml_data = XmlInputSource().fromRawData(text, true);
+  QString xml_data_encoding = XmlEncodingDetector::detectXmlEncoding(data);
+  QTextCodec* codec = QTextCodec::codecForName(xml_data_encoding.toLocal8Bit());
+  QString decoded_xml_data;
+
+  if (codec == nullptr) {
+    decoded_xml_data = QString::fromUtf8(data);
+  }
+  else {
+    decoded_xml_data = codec->toUnicode(data);
+  }
 
   return setContent(decoded_xml_data, namespace_processing, error_msg, error_line, error_column);
 }
@@ -67,13 +70,4 @@ bool DomDocument::setContent(const QString& text,
 #else
   return QDomDocument::setContent(text_modified, namespace_processing, error_msg, error_line, error_column);
 #endif
-}
-
-QString DomDocument::extractEncoding(const QByteArray& xml_data) {
-  QString enc =
-    QRegularExpression(QSL("encoding=\"([A-Z0-9\\-]+)\""), QRegularExpression::PatternOption::CaseInsensitiveOption)
-      .match(xml_data)
-      .captured(1);
-
-  return enc;
 }
