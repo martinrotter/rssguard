@@ -55,7 +55,8 @@ else
   QTVERSION="6.9.3"
   QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
-  brew install aqtinstall go icu4c
+  brew install aqtinstall go
+  brew reinstall icu4c@78
 
   echo "Qt bin directory is: $QTBIN"
   echo "Qt will be installed to: $QTPATH"
