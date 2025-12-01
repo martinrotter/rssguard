@@ -1,6 +1,6 @@
 module rssguard-article-extractor
 
-go 1.25.3
+go 1.24
 
 require (
 	codeberg.org/readeck/go-readability/v2 v2.1.0

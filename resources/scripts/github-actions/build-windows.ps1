@@ -8,6 +8,8 @@ $git_revlist = git rev-list --tags --max-count=1
 $git_tag = git describe --tags $git_revlist
 $git_revision = git rev-parse --short HEAD
 $old_pwd = $pwd.Path
+$is_devbuild = $git_tag -match "devbuild"
+$devbuild_opt = if ($is_devbuild) { "ON" } else { "OFF" }
 
 $7za = "$old_pwd\resources\scripts\7za\7za.exe"
 $nsis = "$old_pwd\resources\scripts\nsis\makensis.exe"
@@ -192,7 +194,7 @@ cd "$old_pwd"
 mkdir "rssguard-build"
 cd "rssguard-build"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DENABLE_ICU="$use_icu" -DICU_ROOT="$icu_path" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="ON" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DIS_DEVBUILD="$devbuild_opt" -DENABLE_ICU="$use_icu" -DICU_ROOT="$icu_path" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
@@ -215,7 +217,7 @@ Copy-Item -Path "$qt_sqldrivers_path\plugins\sqldrivers\qsqlmysql.dll" -Destinat
 # Copy zlib.
 Copy-Item -Path "$zlib_path\zlib1.dll" -Destination ".\app\"
 
-if ($git_tag -match "devbuild") {
+if ($is_devbuild) {
   # Copy debug symbols.
   Copy-Item -Path ".\src\librssguard\rssguard.pdb" -Destination ".\app\" -Verbose
 

@@ -572,6 +572,18 @@ QStringList TextFactory::availableEncodingsInit() {
       return QString::fromLocal8Bit(codec);
     })
     .toList();
+#elif QT_VERSION < 0x060700 // Qt < 6.7.0
+  static QStringList supported_encodings = {QSL("UTF-8"),
+                                            QSL("UTF-16"),
+                                            QSL("UTF-16BE"),
+                                            QSL("UTF-16LE"),
+                                            QSL("UTF-32"),
+                                            QSL("UTF-32BE"),
+                                            QSL("UTF-32LE"),
+                                            QSL("ISO-8859-1"),
+                                            QSL("System")};
+
+  return supported_encodings;
 #else
   return QStringConverter::availableCodecs();
 #endif

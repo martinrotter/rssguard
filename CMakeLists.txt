@@ -82,7 +82,6 @@ set(APP_DONATE_URL "https://github.com/sponsors/martinrotter")
 set(APP_VERSION "5.0.0")
 
 set(APP_URL "https://github.com/martinrotter/rssguard")
-set(APP_URL_DOCUMENTATION "https://rssguard.readthedocs.io")
 set(APP_URL_ISSUES_NEW "https://github.com/martinrotter/rssguard/issues/new/choose")
 
 set(TYPEINFO "????")
@@ -113,6 +112,7 @@ if(APPLE)
 endif()
 
 # Global compilation switches.
+option(IS_DEVBUILD "Building as development build." ON)
 option(BUILD_WITH_QT6 "Build application with Qt 6." ON)
 option(BUILD_MSYS2 "Build application for MSYS2 ecosystem." OFF)
 option(UPDATE_TRANSLATIONS "Call lupdate to update translation files from source (Qt 6 only)." OFF)
@@ -128,6 +128,14 @@ option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap fee
 option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." OFF)
 option(ENABLE_MEDIAPLAYER_LIBMPV "Enable built-in media player. Requires libmpv library." ON)
 option(MEDIAPLAYER_FORCE_OPENGL "Use opengl-based render API with libmpv." ON)
+
+if(IS_DEVBUILD)
+  message(STATUS "Build as development build.")
+  set(APP_URL_DOCUMENTATION "https://rssguard.readthedocs.io/en/latest")
+else()
+  message(STATUS "Building as release build.")
+  set(APP_URL_DOCUMENTATION "https://rssguard.readthedocs.io/en/stable")
+endif()
 
 # Import Qt libraries.
 set(QT6_MIN_VERSION 6.3.0)
