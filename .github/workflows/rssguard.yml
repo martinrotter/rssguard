@@ -34,7 +34,7 @@ jobs:
     container: ${{ matrix.cont }}
     strategy:
       matrix:
-        os: [windows-2022, ubuntu-24.04, macos-15]
+        os: [windows-2022, ubuntu-24.04, macos-15-large]
         use_qt5: ["ON", "OFF"]
         include:
           - os: windows-2022
@@ -43,11 +43,11 @@ jobs:
           - os: ubuntu-24.04
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
             cont: ghcr.io/pkgforge-dev/archlinux:latest
-          - os: macos-15
+          - os: macos-15-large
             script_name: ./resources/scripts/github-actions/build-linux-mac.sh
             cont: null
         exclude:
-          - os: macos-15
+          - os: macos-15-large
             use_qt5: "ON"
     steps:
       - name: Checkout source code
