@@ -565,7 +565,7 @@ QStringList TextFactory::availableEncodingsInit() {
 
   return out;
 #elif QT_VERSION_MAJOR == 5
-  const auto codecs = QTextCodec::availableCodecs();
+  auto codecs = QTextCodec::availableCodecs();
 
   return qlinq::from(codecs)
     .select([](const QByteArray& codec) {
@@ -573,15 +573,15 @@ QStringList TextFactory::availableEncodingsInit() {
     })
     .toList();
 #elif QT_VERSION < 0x060700 // Qt < 6.7.0
-  static QStringList supported_encodings = {QSL("UTF-8"),
-                                            QSL("UTF-16"),
-                                            QSL("UTF-16BE"),
-                                            QSL("UTF-16LE"),
-                                            QSL("UTF-32"),
-                                            QSL("UTF-32BE"),
-                                            QSL("UTF-32LE"),
-                                            QSL("ISO-8859-1"),
-                                            QSL("System")};
+  QStringList supported_encodings = {QSL("UTF-8"),
+                                     QSL("UTF-16"),
+                                     QSL("UTF-16BE"),
+                                     QSL("UTF-16LE"),
+                                     QSL("UTF-32"),
+                                     QSL("UTF-32BE"),
+                                     QSL("UTF-32LE"),
+                                     QSL("ISO-8859-1"),
+                                     QSL("System")};
 
   return supported_encodings;
 #else
