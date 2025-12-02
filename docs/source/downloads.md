@@ -17,7 +17,7 @@ On Windows, there are some ways of installing RSS Guard:
 
 ```{note}
 Official RSS Guard Windows packages come in two flavors:
-* `win7` - built with Qt version 5, uses `QtMultimedia` for [media player](features/mediaplayer), smaller installation size, smaller memory footprint
+* `win7` - built with Qt version 5, uses `QtMultimedia` for [media player](features/mediaplayer), smaller installation size, smaller memory footprint, you can use this flavor even on newer Windows without any problems
 * `win10` - built with Qt version 6, uses `libmpv` for media player (can play almost everything), bigger installation size
 ```
 
@@ -31,12 +31,6 @@ Note that some MSVC runtime libraries are bundled with RSS Guard but sometimes y
 
 ### Linux
 Best way is to use official distribution packages if your distribution offers those.
-
-```{attention}
-RSS Guard used to be available in `AppImage` format for Linux. The support for this format was dropped because `AppImage` lacks proper support and up-to-date build tools and has some undocumented quirks.
-
-It is recommended to either use native packages for your distribution, compile by yourself or stick to `Flatpak` RSS Guard [packages](https://flathub.org/apps/search?q=rssguard).
-```
 
 ### Mac OS X
 `DMG` packages are provided for Mac users.
