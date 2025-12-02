@@ -50,7 +50,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
       <source>Probes</source>
-      <translation>Kyselyt</translation>
+      <translation>Tiedustelut</translation>
     </message>
   </context>
   <context>
@@ -58,7 +58,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1075"/>
       <source>Application is already running.</source>
-      <translation>Sovellus on jo käynnissä</translation>
+      <translation>Sovellus on jo käynnissä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="508"/>
@@ -311,12 +311,12 @@ napsauttamalla tätä ilmoitusta.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="16"/>
       <source>Set username to access the feed.</source>
-      <translation>Aseta käyttäjätunnus voidaksesi käyttää syötettä.</translation>
+      <translation>Aseta käyttäjätunnus, jotta voit käyttää syötettä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="18"/>
       <source>Set password to access the feed.</source>
-      <translation>Aseta salasana voidaksesi käyttää syötettä.</translation>
+      <translation>Aseta salasana, jotta voit käyttää syötettä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
@@ -392,7 +392,7 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="14"/>
       <source>Click me to change color!</source>
-      <translation>Napsauta vaihtaaksesi väriä!</translation>
+      <translation>Vaihda väriä napsauttamalla tätä!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="19"/>
@@ -463,7 +463,7 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="57"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation>Yhteyttä tietokantaan ei muodostettu. Virhe: &apos;%1&apos;. Palataan SQLite-tietokantaan.</translation>
+      <translation>Yhteyttä tietokantaan ei muodostettu. Virhe: %1. Palataan SQLite-tietokantaan.</translation>
     </message>
   </context>
   <context>
@@ -558,7 +558,7 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="159"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation>Liitettä ei voi ladata, koska et ole kirjautunut sisään</translation>
+      <translation>Liitettä ei voi ladata, koska et ole kirjautunut sisään.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="165"/>
@@ -761,7 +761,7 @@ Kohteen mukautettu tunnus: %5</translation>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="27"/>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="28"/>
       <source>Developer access token</source>
-      <translation>Kehittäjän pääsypoletti</translation>
+      <translation>Kehittäjän käyttöoikeustunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="36"/>
@@ -842,7 +842,7 @@ Kohteen mukautettu tunnus: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="149"/>
       <source>Access granted.</source>
-      <translation>Käyttöoikeus myönnetty</translation>
+      <translation>Käyttöoikeus myönnetty.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="148"/>
@@ -862,22 +862,22 @@ Kohteen mukautettu tunnus: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="162"/>
       <source>Username cannot be empty.</source>
-      <translation>Käyttäjätunnus ei voi olla tyhjä.</translation>
+      <translation>Käyttäjätunnusta ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="165"/>
       <source>Username is okay.</source>
-      <translation>Käyttäjätunnus on OK.</translation>
+      <translation>Käyttäjätunnus on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="179"/>
       <source>Access token is empty.</source>
-      <translation>Pääsypoletti on tyhjä.</translation>
+      <translation>Käyttöoikeustunnus on tyhjä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="182"/>
       <source>Access token is okay.</source>
-      <translation>Pääsypoletti on OK.</translation>
+      <translation>Käyttöoikeustunnus on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="153"/>
@@ -900,7 +900,7 @@ Kohteen mukautettu tunnus: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="719"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation>Napsauta kirjautuaksesi uudelleen. Virhe on: &apos;%1&apos;</translation>
+      <translation>Kirjaudu uudelleen napsauttamalla tätä. Virhe on: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="733"/>
@@ -910,7 +910,7 @@ Kohteen mukautettu tunnus: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="734"/>
       <source>Click this to login again.</source>
-      <translation>Napsauta tätä kirjautuaksesi uudelleen.</translation>
+      <translation>Kirjaudu uudelleen napsauttamalla tätä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="722"/>
@@ -934,7 +934,7 @@ Kohteen mukautettu tunnus: %5</translation>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="427"/>
       <source>Category </source>
-      <translation>Luokka</translation>
+      <translation>Luokka </translation>
     </message>
   </context>
   <context>
@@ -957,7 +957,7 @@ Kohteen mukautettu tunnus: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="38"/>
       <source>Titles of feeds/categories.</source>
-      <translation>Syötteiden/luokkien nimet</translation>
+      <translation>Syötteiden/luokkien nimet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="30"/>
@@ -1431,7 +1431,7 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.ui" line="46"/>
       <source>Contents of your e-mail message</source>
-      <translation>Sähköpostiviestin sisältö.</translation>
+      <translation>Sähköpostiviestin sisältö</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.ui" line="63"/>
@@ -1449,12 +1449,12 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="14"/>
       <source>Name for your label</source>
-      <translation>Nimikkeen nimi</translation>
+      <translation>Tunnisteen nimi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="20"/>
       <source>Label&apos;s name cannot be empty.</source>
-      <translation>Nimikkeen nimi ei voi olla tyhjä.</translation>
+      <translation>Tunnisteen nimeä ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="23"/>
@@ -1469,12 +1469,12 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="29"/>
       <source>Create new label</source>
-      <translation>Luo uusi nimike</translation>
+      <translation>Luo uusi tunniste</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="48"/>
       <source>Edit label &apos;%1&apos;</source>
-      <translation>Muokkaa nimikettä &apos;%1&apos;</translation>
+      <translation>Muokkaa tunnistetta &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
@@ -1560,12 +1560,12 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="93"/>
       <source>Backup name cannot be empty.</source>
-      <translation>Varmuuskopion nimi ei voi olla tyhjä.</translation>
+      <translation>Varmuuskopion nimeä ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="96"/>
       <source>Backup name looks okay.</source>
-      <translation>Varmuuskopion nimi näyttää olevan kunnossa.</translation>
+      <translation>Varmuuskopion nimi näyttää olevan oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="68"/>
@@ -1770,8 +1770,8 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="61"/>
       <source> day(s)</source>
       <translation>
-        <numerusform>päivä</numerusform>
-        <numerusform>päivää</numerusform>
+        <numerusform> päivä</numerusform>
+        <numerusform> päivää</numerusform>
       </translation>
     </message>
     <message>
@@ -1873,7 +1873,7 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
       <source>URL</source>
-      <translation>URL-osoite</translation>
+      <translation>Verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="42"/>
@@ -1943,12 +1943,12 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="204"/>
       <source>URL is valid.</source>
-      <translation>URL kelpaa.</translation>
+      <translation>Verkko-osoite on kelvollinen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="207"/>
       <source>URL is NOT valid.</source>
-      <translation>URL EI kelpaa.</translation>
+      <translation>Verkko-osoite EI ole kelvollinen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="275"/>
@@ -2818,7 +2818,7 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="769"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
       <source>&amp;Copy URL of selected item</source>
-      <translation>&amp;Kopioi valitun kohteen URL</translation>
+      <translation>&amp;Kopioi valitun kohteen verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="774"/>
@@ -2872,7 +2872,7 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="829"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>&amp;Copy URLs of selected articles</source>
-      <translation>&amp;Kopioi valittujen artikkelien URL-osoitteet</translation>
+      <translation>&amp;Kopioi valittujen artikkelien verkko-osoitteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="837"/>
@@ -3032,7 +3032,7 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="555"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
-      <translation>Komentosarjaa ei siistitty, koska clang-format-työkalua ei löytynyt. </translation>
+      <translation>Komentosarjaa ei siistitty, koska clang-format-työkalua ei löytynyt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="325"/>
@@ -3068,7 +3068,7 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="268"/>
       <source>Filter articles like this</source>
-      <translation>Suodata tällaiset artikkelit.</translation>
+      <translation>Suodata tällaiset artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="313"/>
@@ -3233,7 +3233,7 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="300"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="442"/>
       <source>URL</source>
-      <translation>URL-osoite</translation>
+      <translation>Verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="317"/>
@@ -3402,7 +3402,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="40"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="41"/>
       <source>No file is selected.</source>
-      <translation>Tiedostoa ei ole valittu</translation>
+      <translation>Tiedostoa ei ole valittu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="44"/>
@@ -3523,13 +3523,13 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="350"/>
       <source>Cannot write into destination file: &apos;%1&apos;.</source>
-      <translation>Kohdetiedostoon kirjoittaminen ei onnistu: &apos;%1&apos;.</translation>
+      <translation>Kohdetiedostoon kirjoittaminen ei onnistu: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="173"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="223"/>
       <source>TXT files [one URL per line] (*.txt)</source>
-      <translation>TXT-tiedostot [yksi URL/rivi] (*.txt)</translation>
+      <translation>TXT-tiedostot [yksi verkko-osoite riviä kohden] (*.txt)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="78"/>
@@ -3650,7 +3650,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="72"/>
       <source>Enter valid URL.</source>
-      <translation>Anna kelvollinen URL.</translation>
+      <translation>Anna kelvollinen verkko-osoite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.ui" line="17"/>
@@ -3660,7 +3660,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.ui" line="56"/>
       <source>URL</source>
-      <translation>URL-osoite</translation>
+      <translation>Verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.ui" line="66"/>
@@ -3862,7 +3862,7 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="359"/>
       <source>Invalid URL for redirection!</source>
-      <translation>Virheellinen URL uudelleenohjaukseen!</translation>
+      <translation>Virheellinen verkko-osoite uudelleenohjaukseen!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="436"/>
@@ -3932,12 +3932,12 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="17"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-      <translation>On myös valmiita OAuth-suojaustunnuksia, joten asiakastunnusta/salasanaa ei ole pakko antaa, mutta on erittäin suositeltavaa luoda oma tunnus, sillä valmiilla tunnuksilla on tietyt käyttökiintiöt. Jos haluat käyttää valmiita tunnuksia, jätä nämä kentät tyhjiksi ja muista jättää uudelleenohjaus-URL oletusarvoiseksi.</translation>
+      <translation>On myös valmiita OAuth-suojaustunnuksia, joten asiakastunnusta/salasanaa ei ole pakko antaa, mutta on erittäin suositeltavaa luoda oma tunnus, sillä valmiilla tunnuksilla on tietyt käyttökiintiöt. Jos haluat käyttää valmiita tunnuksia, jätä nämä kentät tyhjiksi ja muista jättää uudelleenohjauksen verkko-osoite oletusarvoiseksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="24"/>
       <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-      <translation>Sinun on annettava asiakastunnuksesi/salasanasi ja oikea uudelleenohjaus-URL.</translation>
+      <translation>Sinun on annettava asiakastunnuksesi/salasanasi ja oikea uudelleenohjauksen verkko-osoite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="83"/>
@@ -3972,7 +3972,7 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="65"/>
       <source>Redirect URL</source>
-      <translation>Uudelleenohjauksen URL-osoite</translation>
+      <translation>Uudelleenohjauksen verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="80"/>
@@ -4000,12 +4000,12 @@ Voit asentaa sen nyt.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="480"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation>Napsauta kirjautuaksesi uudelleen. Virhe on: &apos;%1&apos;</translation>
+      <translation>Kirjaudu uudelleen napsauttamalla tätä. Virhe on: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="493"/>
       <source>Click this to login again.</source>
-      <translation>Napsauta tätä kirjautuaksesi uudelleen.</translation>
+      <translation>Kirjaudu uudelleen napsauttamalla tätä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="566"/>
@@ -4110,7 +4110,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="38"/>
       <source>URL of your server, without any service-specific path</source>
-      <translation>Palvelimen URL-osoite ilman palvelukohtaista polkua</translation>
+      <translation>Palvelimen verkko-osoite ilman palvelukohtaista polkua</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="40"/>
@@ -4125,7 +4125,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="199"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation>Verkkovirhe: &apos;%1&apos;.</translation>
+      <translation>Verkkovirhe: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="200"/>
@@ -4145,17 +4145,17 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="212"/>
       <source>Username cannot be empty.</source>
-      <translation>Käyttäjätunnus ei voi olla tyhjä.</translation>
+      <translation>Käyttäjätunnusta ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="215"/>
       <source>Username is okay.</source>
-      <translation>Käyttäjätunnus on OK.</translation>
+      <translation>Käyttäjätunnus on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="223"/>
       <source>Password cannot be empty.</source>
-      <translation>Salasana ei voi olla tyhjä.</translation>
+      <translation>Salasanaa ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="226"/>
@@ -4165,12 +4165,12 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="234"/>
       <source>URL cannot be empty.</source>
-      <translation>URL-osoite ei voi olla tyhjä.</translation>
+      <translation>Verkko-osoitetta ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="237"/>
       <source>URL is okay.</source>
-      <translation>URL on oikein.</translation>
+      <translation>Verkko-osoite on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="43"/>
@@ -4190,7 +4190,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="65"/>
       <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-      <translation>Sinun on annettava asiakastunnus/salasana ja oikea uudelleenohjauksen URL-osoite.</translation>
+      <translation>Sinun on annettava asiakastunnus/salasana ja oikea uudelleenohjauksen verkko-osoite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="106"/>
@@ -4241,7 +4241,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="27"/>
       <source>URL</source>
-      <translation>URL-osoite</translation>
+      <translation>Verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="40"/>
@@ -4296,7 +4296,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="218"/>
       <source>Redirect URL</source>
-      <translation>Uudelleenohjauksen URL-osoite</translation>
+      <translation>Uudelleenohjauksen verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="233"/>
@@ -4329,7 +4329,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="46"/>
       <source>URL</source>
-      <translation>URL-osoite</translation>
+      <translation>Verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="62"/>
@@ -4339,27 +4339,27 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="13"/>
       <source>Full feed URL including scheme</source>
-      <translation>Syötteen koko URL-osoite skeemoineen</translation>
+      <translation>Syötteen koko verkko-osoite skeemoineen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="14"/>
       <source>Provide URL for your feed.</source>
-      <translation>Anna syötteen URL-osoite.</translation>
+      <translation>Anna syötteen verkko-osoite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="26"/>
       <source>The URL is ok.</source>
-      <translation>URL-osoite on OK.</translation>
+      <translation>Verkko-osoite on OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="32"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>URL-osoite ei ole vakiomuotoinen. Onko osoitteen alussa &quot;http://&quot; tai &quot;https://&quot;?</translation>
+      <translation>Verkko-osoite ei ole vakiomuotoinen. Varmista, että osoitteen alussa on etuliite http:// tai https://.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="36"/>
       <source>The URL is empty.</source>
-      <translation>URL-osoite on tyhjä.</translation>
+      <translation>Verkko-osoite on tyhjä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="42"/>
@@ -4393,7 +4393,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1217"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation>Napsauta kirjautuaksesi uudelleen. Virhe on: &apos;%1&apos;</translation>
+      <translation>Kirjaudu uudelleen napsauttamalla tätä. Virhe on: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1229"/>
@@ -4403,7 +4403,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1230"/>
       <source>Click this to login again.</source>
-      <translation>Napsauta tätä kirjautuaksesi uudelleen.</translation>
+      <translation>Kirjaudu uudelleen napsauttamalla tätä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1220"/>
@@ -4559,7 +4559,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="19"/>
       <source>Labels</source>
-      <translation>Nimikkeet</translation>
+      <translation>Tunnisteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="20"/>
@@ -4658,7 +4658,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="233"/>
       <source>Loading failed</source>
-      <translation>Lataus epäonnistui.</translation>
+      <translation>Lataus epäonnistui</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="236"/>
@@ -4896,7 +4896,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="319"/>
       <source>Link URL:</source>
-      <translation>Linkin URL:</translation>
+      <translation>Linkin verkko-osoite:</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="637"/>
@@ -5302,7 +5302,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
       <source>URL</source>
-      <translation>URL-osoite</translation>
+      <translation>Verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="548"/>
@@ -5352,7 +5352,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="553"/>
       <source>Url of the article.</source>
-      <translation>Artikkelin URL-osoite.</translation>
+      <translation>Artikkelin verkko-osoite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="553"/>
@@ -5619,12 +5619,12 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="701"/>
       <source>No URL</source>
-      <translation>Ei URL-osoitetta</translation>
+      <translation>Ei verkko-osoitetta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="702"/>
       <source>Article cannot be played in media player as it has no URL</source>
-      <translation>Artikkelia ei voi toistaa mediasoittimessa, koska sillä ei ole URL-osoitetta</translation>
+      <translation>Artikkelia ei voi toistaa mediasoittimessa, koska sillä ei ole verkko-osoitetta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="996"/>
@@ -5842,7 +5842,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="19"/>
       <source>URL</source>
-      <translation>URL-osoite</translation>
+      <translation>Verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="34"/>
@@ -5902,7 +5902,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="22"/>
       <source>URL of your Nextcloud server, without any API path</source>
-      <translation>Nextcloud-palvelimesi URL-osoite ilman API-polkua</translation>
+      <translation>Nextcloud-palvelimesi verkko-osoite ilman API-polkua</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="24"/>
@@ -5927,7 +5927,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="74"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation>Verkkovirhe: &apos;%1&apos;.</translation>
+      <translation>Verkkovirhe: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="75"/>
@@ -5954,22 +5954,22 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="93"/>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="94"/>
       <source>Unspecified error, did you enter correct URL?</source>
-      <translation>Määrittelemätön virhe. Annoitko oikean URL:n?</translation>
+      <translation>Määrittelemätön virhe. Annoitko oikean verkko-osoitteen?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="102"/>
       <source>Username cannot be empty.</source>
-      <translation>Käyttäjätunnus ei voi olla tyhjä.</translation>
+      <translation>Käyttäjätunnusta ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="105"/>
       <source>Username is okay.</source>
-      <translation>Käyttäjätunnus on OK.</translation>
+      <translation>Käyttäjätunnus on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="113"/>
       <source>Password cannot be empty.</source>
-      <translation>Salasana ei voi olla tyhjä.</translation>
+      <translation>Salasanaa ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="116"/>
@@ -5979,12 +5979,12 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="124"/>
       <source>URL cannot be empty.</source>
-      <translation>URL-osoite ei voi olla tyhjä.</translation>
+      <translation>Verkko-osoitetta ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="127"/>
       <source>URL is okay.</source>
-      <translation>URL on oikein.</translation>
+      <translation>Verkko-osoite on oikein.</translation>
     </message>
   </context>
   <context>
@@ -5992,7 +5992,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="135"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-      <translation>ei voi noutaa syöteluetteloa - verkkovirhe &apos;%1&apos;</translation>
+      <translation>ei voi noutaa syöteluetteloa - verkkovirhe %1</translation>
     </message>
   </context>
   <context>
@@ -6000,17 +6000,17 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="90"/>
       <source>Click here to login.</source>
-      <translation>Napsauta tästä kirjautuaksesi.</translation>
+      <translation>Kirjaudu napsauttamalla tätä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="220"/>
       <source>Logging in via OAuth 2.0...</source>
-      <translation>Kirjaudutaan OAuth 2.0:n avulla...</translation>
+      <translation>Kirjaudutaan OAuth 2.0:n kautta...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="221"/>
       <source>Refreshing login tokens for &apos;%1&apos;...</source>
-      <translation>Päivitetään kirjautumistunnuksia kohteelle &apos;%1&apos;...</translation>
+      <translation>Päivitetään kirjautumistunnuksia kohteelle %1...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="89"/>
@@ -6306,7 +6306,7 @@ Tuetut lukuohjelmat:</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="127"/>
       <source>JSON error &apos;%1&apos;</source>
-      <translation>JSON-virhe &apos;%1&apos;</translation>
+      <translation>JSON-virhe %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="131"/>
@@ -6388,7 +6388,7 @@ Tuetut lukuohjelmat:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="201"/>
       <source>HTML files (*.htm *.html)</source>
-      <translation>HTML-tiedostot (*.htm  ja *.html)</translation>
+      <translation>HTML-tiedostot (*.htm ja *.html)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="246"/>
@@ -6418,7 +6418,7 @@ Tuetut lukuohjelmat:</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="70"/>
       <source>iCalendar error &apos;%1&apos;</source>
-      <translation>iCalendarin virhe &apos;%1&apos;</translation>
+      <translation>iCalendarin virhe %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="84"/>
@@ -6612,14 +6612,14 @@ Tuetut lukuohjelmat:</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="16"/>
       <source>Recycle bin contains all deleted articles from all feeds.</source>
-      <translation>Roskakorissa on kaikista syötteistä poistetut artikkelit</translation>
+      <translation>Roskakorissa on kaikista syötteistä poistetut artikkelit.</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="20"/>
       <source>%n deleted article(s).</source>
       <translation>
-        <numerusform>%n poistettu(a) artikkeli(a).</numerusform>
-        <numerusform>%n poistettu(a) artikkeli(a).</numerusform>
+        <numerusform>%n poistettu artikkeli.</numerusform>
+        <numerusform>%n poistettua artikkelia.</numerusform>
       </translation>
     </message>
   </context>
@@ -6648,7 +6648,7 @@ Tuetut lukuohjelmat:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="65"/>
       <source>Redirect URL</source>
-      <translation>Uudelleenohjauksen URL-osoite</translation>
+      <translation>Uudelleenohjauksen verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="80"/>
@@ -6673,7 +6673,7 @@ Tuetut lukuohjelmat:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="15"/>
       <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-      <translation>Sinun on annettava asiakastunnus/salasana ja oikea uudelleenohjauksen URL-osoite.</translation>
+      <translation>Sinun on annettava asiakastunnus/salasana ja oikea uudelleenohjauksen verkko-osoite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="18"/>
@@ -6763,7 +6763,7 @@ Tuetut lukuohjelmat:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="307"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation>Napsauta kirjautuaksesi uudelleen. Virhe on: &apos;%1&apos;</translation>
+      <translation>Kirjaudu uudelleen napsauttamalla. Virhe on: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="310"/>
@@ -6779,7 +6779,7 @@ Tuetut lukuohjelmat:</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="320"/>
       <source>Click this to login again.</source>
-      <translation>Napsauta tätä kirjautuaksesi uudelleen.</translation>
+      <translation>Kirjaudu uudelleen napsauttamalla tätä.</translation>
     </message>
   </context>
   <context>
@@ -6809,8 +6809,8 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       <source>%n unread article(s).</source>
       <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
       <translation>
-        <numerusform>%n lukematon(ta) artikkeli(a).</numerusform>
-        <numerusform>%n lukematon(ta) artikkeli(a).</numerusform>
+        <numerusform>%n lukematon artikkeli.</numerusform>
+        <numerusform>%n lukematonta artikkelia.</numerusform>
       </translation>
     </message>
   </context>
@@ -6942,7 +6942,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="71"/>
       <source>Problem when creating probe: %1.</source>
-      <translation>Ongelma luotaessa kyselyä: %1.</translation>
+      <translation>Ongelma luotaessa tiedustelua: %1.</translation>
     </message>
   </context>
   <context>
@@ -6960,12 +6960,12 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="112"/>
       <source>Cannot update probe item</source>
-      <translation>Kyselykohdetta ei voi päivittää</translation>
+      <translation>Tiedustelukohdetta ei voi päivittää</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="113"/>
       <source>Failed to update selected probe: %1.</source>
-      <translation>Valittua kyselyä ei voi päivittää: %1.</translation>
+      <translation>Valittua tiedustelua ei voi päivittää: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="123"/>
@@ -7024,7 +7024,7 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="751"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
-      <translation>Tilin &apos;%1&apos; syötteitä ja luokkia ei noudettu; virhe: %2</translation>
+      <translation>Tilin %1 syötteitä ja luokkia ei noudettu; virhe: %2</translation>
     </message>
   </context>
   <context>
@@ -7180,7 +7180,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="34"/>
       <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-      <translation>Huomaathan, että &quot;%1&quot; (ilman lainausmerkkejä) on valitun viestin URL-osoitteen paikkamerkki.</translation>
+      <translation>Huomaathan, että &quot;%1&quot; (ilman lainausmerkkejä) on valitun viestin verkko-osoitteen paikkamerkki.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="166"/>
@@ -8037,7 +8037,7 @@ Kuvaus: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="124"/>
       <source>Translations provided by: %1</source>
-      <translation>Käänntäjä(t): %1</translation>
+      <translation>Kääntäjä(t): %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="210"/>
@@ -8364,7 +8364,7 @@ Kuvaus: %3</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="273"/>
       <source>Written by </source>
-      <translation>Kirjoittanut</translation>
+      <translation>Kirjoittanut </translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="270"/>
@@ -8411,7 +8411,7 @@ Kuvaus: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="49"/>
       <source>Select icon for your account.</source>
-      <translation>Valitse tilillesi kuvake</translation>
+      <translation>Valitse tilillesi kuvake.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="59"/>
@@ -8677,7 +8677,7 @@ Nouda koko artikkelit: %7 (pelkkä teksti -muoto: %8)
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="305"/>
       <source>Feed name is ok.</source>
-      <translation>Syötteen nimi on OK.</translation>
+      <translation>Syötteen nimi on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="308"/>
@@ -8697,17 +8697,17 @@ Nouda koko artikkelit: %7 (pelkkä teksti -muoto: %8)
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="325"/>
       <source>The URL is ok.</source>
-      <translation>URL-osoite on OK.</translation>
+      <translation>Verkko-osoite on OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="329"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>Verkko-osoite ei ole vakiomuotoinen. Varmiste, että osoitteen alussa on etuliite http:// tai https://.</translation>
+      <translation>Verkko-osoite ei ole vakiomuotoinen. Varmista, että osoitteen alussa on etuliite http:// tai https://.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="333"/>
       <source>The URL is empty.</source>
-      <translation>URL-osoite on tyhjä.</translation>
+      <translation>Verkko-osoite on tyhjä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="342"/>
@@ -8956,7 +8956,7 @@ Tästä asetuksesta voi olla hyötyä muokkaamatonta XML:ää jäsenneltäessä,
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="25"/>
       <source>Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</source>
-      <translation>Anna kukin avain-/arvo-HTTP-tunnistepari omalle rivilleen. Huomaathan, että kaikki välilyönnit otetaan huomioon, ja että tunnisteiden nimien kirjasinkoolla on merkitystä. Muista myös erottaa avain arvosta merkinnällä &apos;=&apos;, kuten alla olevassa esimerkissä:</translation>
+      <translation>Anna kukin avain-/arvo-HTTP-tunnistepari omalle rivilleen. Huomaathan, että kaikki välilyönnit otetaan huomioon, ja että tunnisteiden nimien kirjasinkoolla on merkitystä. Muista myös erottaa avain arvosta merkinnällä &quot;=&quot;, kuten alla olevassa esimerkissä:</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="33"/>
@@ -9311,7 +9311,7 @@ Lukemattomia uutisia: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="16"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.&lt;br/&gt;&lt;br/&gt;Also, make sure to install &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin to your server instance.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.&lt;br/&gt;&lt;br/&gt;Also, make sure to install &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt; TT-RSS plugin to your server instance.</translation>
+      <translation>Jos valitset älykkään synkronoinnin, vain ei vielä noudetut tai päivitetyt artikkelit ladataan. Verkkoyhteyttä käytetään huomattavasti vähemmän ja synkronointi nopeutuu merkittävästi, mutta syötteiden ensimmäinen noutokerta voi kestää kauan, jos syötteessä on paljon artikkeleja..&lt;br/&gt;&lt;br/&gt;Muista myös asentaa &lt;a href=&quot;https://www.google.com&quot;&gt;api_newsplus&lt;/a&gt;-TT-RSS-lisäosa palvelinesiintymääsi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="26"/>
@@ -9341,7 +9341,7 @@ Lukemattomia uutisia: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="33"/>
       <source>URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</source>
-      <translation type="unfinished">URL of your TT-RSS instance WITHOUT trailing &quot;/api/&quot; string</translation>
+      <translation>TT-RSS-esiintymäsi verkko-osoite ILMAN lopussa olevaa &quot;/api/&quot;-merkkijonoa</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="35"/>
@@ -9357,7 +9357,7 @@ Lukemattomia uutisia: %2</translation>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="93"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="94"/>
       <source>API access on selected server is not enabled.</source>
-      <translation type="unfinished">API access on selected server is not enabled.</translation>
+      <translation>Käyttöä APIn kautta ei ole otettu käyttöön valitulla palvelimella.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="98"/>
@@ -9380,7 +9380,7 @@ Lukemattomia uutisia: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="112"/>
       <source>Selected Tiny Tiny RSS server is running unsupported version of API.</source>
-      <translation type="unfinished">Selected Tiny Tiny RSS server is running unsupported version of API.</translation>
+      <translation>Valittu Tiny Tiny RSS -palvelin käyttää API-versiota, jota ei tueta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="119"/>
@@ -9390,33 +9390,33 @@ Lukemattomia uutisia: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="125"/>
       <source>Network error: &apos;%1&apos;.</source>
-      <translation>Verkkovirhe: &apos;%1&apos;.</translation>
+      <translation>Verkkovirhe: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="126"/>
       <source>Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</source>
-      <translation type="unfinished">Network error, have you entered correct Tiny Tiny RSS API endpoint and password?</translation>
+      <translation>Verkkovirhe. Oletko antanut oikean Tiny Tiny RSS API -päätepisteen ja -salasanan?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="130"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="131"/>
       <source>Unspecified error, did you enter correct URL?</source>
-      <translation>Määrittelemätön virhe. Annoitko oikean URL:n?</translation>
+      <translation>Määrittelemätön virhe. Annoitko oikean verkko-osoitteen?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="139"/>
       <source>Username cannot be empty.</source>
-      <translation>Käyttäjätunnus ei voi olla tyhjä.</translation>
+      <translation>Käyttäjätunnusta ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="142"/>
       <source>Username is okay.</source>
-      <translation>Käyttäjätunnus on OK.</translation>
+      <translation>Käyttäjätunnus on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="150"/>
       <source>Password cannot be empty.</source>
-      <translation>Salasana ei voi olla tyhjä.</translation>
+      <translation>Salasanaa ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="153"/>
@@ -9426,7 +9426,7 @@ Lukemattomia uutisia: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="163"/>
       <source>Username is ok or it is not needed.</source>
-      <translation type="unfinished">Username is ok or it is not needed.</translation>
+      <translation>Käyttäjänimi ei kelpaa tai sitä ei tarvita.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="164"/>
@@ -9446,22 +9446,22 @@ Lukemattomia uutisia: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="181"/>
       <source>URL cannot be empty.</source>
-      <translation>URL-osoite ei voi olla tyhjä.</translation>
+      <translation>Verkko-osoitetta ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="184"/>
       <source>URL should NOT end with &quot;/api/&quot;.</source>
-      <translation type="unfinished">URL should NOT end with &quot;/api/&quot;.</translation>
+      <translation>Verkko-osoitteen lopussa EI saa olla &quot;/api/&quot;-merkkijonoa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="187"/>
       <source>URL is okay.</source>
-      <translation>URL on oikein.</translation>
+      <translation>Verkko-osoite on oikein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="32"/>
       <source>URL</source>
-      <translation>URL-osoite</translation>
+      <translation>Verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="84"/>
@@ -9522,27 +9522,27 @@ Lukemattomia uutisia: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="11"/>
       <source>Full feed URL including scheme</source>
-      <translation type="unfinished">Full feed URL including scheme</translation>
+      <translation>Syötteen koko verkko-osoite skeemoineen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="12"/>
       <source>Provide URL for your feed.</source>
-      <translation>Anna syötteen URL-osoite.</translation>
+      <translation>Anna syötteen verkko-osoite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="21"/>
       <source>The URL is ok.</source>
-      <translation>URL-osoite on OK.</translation>
+      <translation>Verkko-osoite on OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="27"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
-      <translation>Verkko-osoite ei ole vakiomuotoinen. Varmiste, että osoitteen alussa on etuliite http:// tai https://.</translation>
+      <translation>Verkko-osoite ei ole vakiomuotoinen. Varmista, että osoitteen alussa on etuliite http:// tai https://.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.cpp" line="31"/>
       <source>The URL is empty.</source>
-      <translation>URL-osoite on tyhjä.</translation>
+      <translation>Verkko-osoite on tyhjä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="14"/>
@@ -9562,7 +9562,7 @@ Lukemattomia uutisia: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="46"/>
       <source>URL</source>
-      <translation>URL-osoite</translation>
+      <translation>Verkko-osoite</translation>
     </message>
   </context>
   <context>
@@ -9570,7 +9570,7 @@ Lukemattomia uutisia: %2</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="115"/>
       <source>Share to published</source>
-      <translation type="unfinished">Share to published</translation>
+      <translation>Jaa julkaistuun</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="134"/>
@@ -9596,7 +9596,7 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="443"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-      <translation>ei voi noutaa syöteluetteloa - verkkovirhe &apos;%1&apos;</translation>
+      <translation>ei voi noutaa syöteluetteloa - verkkovirhe %1</translation>
     </message>
   </context>
   <context>
@@ -9622,7 +9622,7 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open in system web browser</source>
-      <translation type="unfinished">Open in system web browser</translation>
+      <translation>Avaa järjestelmän selaimessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="34"/>
@@ -9641,12 +9641,12 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="86"/>
       <source>Navigate to website manually</source>
-      <translation type="unfinished">Navigate to website manually</translation>
+      <translation>Siirry sivustolle manuaalisesti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="87"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
-      <translation type="unfinished">%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</translation>
+      <translation>%1 ei pystynyt käynnistämään verkkoselainta annetulla verkko-osoitteella. Sinun on avattava alla oleva sivuston osoite manuaalisesti.</translation>
     </message>
   </context>
 </TS>
