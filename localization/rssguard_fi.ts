@@ -537,17 +537,17 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="103"/>
       <source>Save attachment %1</source>
-      <translation type="unfinished">Save attachment %1</translation>
+      <translation>Tallenna liite %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="119"/>
       <source>Download attachment</source>
-      <translation type="unfinished">Download attachment</translation>
+      <translation>Lataa liite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="147"/>
       <source>Downloaded %1 kB...</source>
-      <translation type="unfinished">Downloaded %1 kB...</translation>
+      <translation>Ladattu %1 kt...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="158"/>
@@ -626,7 +626,7 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="264"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation type="unfinished">
-        <numerusform>käyttää yleisiä asetuksia (%n minuuttia seuraavaan automaattiseen artikkelien noutoon)</numerusform>
+        <numerusform>käyttää yleisiä asetuksia (%n minuutti[a] seuraavaan automaattiseen artikkelien noutoon)</numerusform>
         <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
       </translation>
     </message>
@@ -635,7 +635,7 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation type="unfinished">
-        <numerusform>käyttää erityisasetuksia (%n minuuttia seuraavaan automaattiseen uusien artikkelien noutoon)</numerusform>
+        <numerusform>käyttää erityisasetuksia (%n minuutti[a] seuraavaan automaattiseen uusien artikkelien noutoon)</numerusform>
         <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
       </translation>
     </message>
@@ -647,7 +647,7 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="300"/>
       <source>SQL database error</source>
-      <translation type="unfinished">SQL database error</translation>
+      <translation>SQL-tietokantavirhe</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="306"/>
@@ -666,11 +666,11 @@ Active message filters: %2
 Status: %3
 Source: %4
 Item custom ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: %4
-Item custom ID: %5</translation>
+      <translation>Automaattisen päivityksen tila: %1
+Aktiiviset viestisuodattimet: %2
+Tila: %3
+Lähde: %4
+Kohteen mukautettu tunnus: %5</translation>
     </message>
   </context>
   <context>
@@ -732,12 +732,12 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="417"/>
       <source>Some feeds have errors</source>
-      <translation type="unfinished">Some feeds have errors</translation>
+      <translation>Joissakin syötteissä on virheitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="418"/>
       <source>Some feeds threw an error when fetching articles.</source>
-      <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
+      <translation>Jotkin syötteet ilmoittivat virheestä artikkeleja noudettaessa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="89"/>
@@ -947,12 +947,12 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="37"/>
       <source>Item ID</source>
-      <translation type="unfinished">Item ID</translation>
+      <translation>Kohteen tunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="37"/>
       <source>Article counts</source>
-      <translation type="unfinished">Article counts</translation>
+      <translation>Artikkelimäärät</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="38"/>
@@ -967,7 +967,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="39"/>
       <source>Database ID of each item.</source>
-      <translation type="unfinished">Database ID of each item.</translation>
+      <translation>Eri kohteiden tietokantatunnukset.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="40"/>
@@ -1048,12 +1048,12 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="225"/>
       <source>Show feeds with errors</source>
-      <translation type="unfinished">Show feeds with errors</translation>
+      <translation>Näytä virheelliset syötteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="231"/>
       <source>Show disabled feeds</source>
-      <translation type="unfinished">Show disabled feeds</translation>
+      <translation>Näytä käytöstä poistetut syötteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="237"/>
