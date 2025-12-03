@@ -22,9 +22,9 @@
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/notificationfactory.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
 #include "network-web/webfactory.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/serviceroot.h"
 
 #include <iostream>
@@ -1143,9 +1143,12 @@ void Application::displayLog() {
             m_logForm,
             &FormLog::appendLogMessage,
             Qt::ConnectionType::QueuedConnection);
+    connect(m_logForm, &FormLog::finished, this, [this]() {
+      m_logForm->deleteLater();
+      m_logForm = nullptr;
+    });
   }
 
-  m_logForm->close();
   m_logForm->show();
 }
 

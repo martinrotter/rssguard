@@ -18,6 +18,10 @@ class FormLog : public QDialog {
     void clearLog();
     void appendLogMessage(const QString& message);
 
+  protected:
+    virtual void closeEvent(QCloseEvent* event);
+    virtual void keyPressEvent(QKeyEvent* event);
+
   private:
     Ui::FormLog m_ui;
 };

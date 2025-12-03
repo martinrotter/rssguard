@@ -17,10 +17,11 @@ FormLog::FormLog(QWidget* parent) : QDialog(parent) {
                                       tr("Application log"));
 
   setWindowFlags(Qt::WindowType::WindowMinimizeButtonHint | windowFlags());
-  connect(m_ui.m_btnBox->button(QDialogButtonBox::StandardButton::Discard),
-          &QPushButton::clicked,
-          this,
-          &FormLog::clearLog);
+
+  auto* btn_discard = m_ui.m_btnBox->button(QDialogButtonBox::StandardButton::Discard);
+
+  btn_discard->setIcon(qApp->icons()->fromTheme(QSL("edit-clear")));
+  connect(btn_discard, &QPushButton::clicked, this, &FormLog::clearLog);
 }
 
 FormLog::~FormLog() {}
@@ -31,5 +32,19 @@ void FormLog::clearLog() {
 
 void FormLog::appendLogMessage(const QString& message) {
   m_ui.m_txtLog->appendPlainText(message);
-  m_ui.m_txtLog->verticalScrollBar()->setValue(m_ui.m_txtLog->verticalScrollBar()->maximum());
+  m_ui.m_txtLog->verticalScrollBar()->triggerAction(QAbstractSlider::SliderAction::SliderToMaximum);
+}
+
+void FormLog::closeEvent(QCloseEvent* event) {
+  reject();
+  QDialog::closeEvent(event);
+}
+
+void FormLog::keyPressEvent(QKeyEvent* event) {
+  if (event->matches(QKeySequence::StandardKey::Cancel)) {
+    close();
+  }
+  else {
+    QDialog::keyPressEvent(event);
+  }
 }
