@@ -980,7 +980,7 @@ Kohteen mukautettu tunnus: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="275"/>
       <source>Cannot perform drag &amp; drop operation</source>
-      <translation>Raahaa ja pudota -toimintoa ei voi suorittaa</translation>
+      <translation>Veto- ja pudotustoimintoa ei voi suorittaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="276"/>
@@ -3685,7 +3685,7 @@ downloaded successfully.</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="87"/>
       <source>New release available.</source>
-      <translation>Uusi julkaisu saatavilla.</translation>
+      <translation>Uusi versio saatavilla.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="69"/>
@@ -3695,14 +3695,14 @@ downloaded successfully.</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="96"/>
       <source>No new release available.</source>
-      <translation>Ei uutta julkaisua saatavilla.</translation>
+      <translation>Uutta versiota ei ole saatavilla.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="97"/>
       <source>This release is not newer than
 currently installed one.</source>
-      <translation>Tämä julkaisu ei ole uudempi
-kuin asennettuna oleva.</translation>
+      <translation>Tämä versio ei ole uudempi
+kuin asennettu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="32"/>
@@ -3800,13 +3800,13 @@ Voit asentaa sen nyt.</translation>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="155"/>
       <source>Current release</source>
-      <translation>Nykyinen julkaisu</translation>
+      <translation>Nykyinen versio</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="34"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="157"/>
       <source>Available release</source>
-      <translation>Saatavilla oleva julkaisu</translation>
+      <translation>Saatavilla oleva versio</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="48"/>
