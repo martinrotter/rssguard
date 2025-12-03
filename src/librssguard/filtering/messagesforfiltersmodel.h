@@ -57,6 +57,9 @@ class MessagesForFiltersModel : public QAbstractTableModel {
 
     // Key is integer position of the message within the list of messages.
     QMap<int, FilterMessage::FilteringAction> m_filteringDecisions{};
+
+    QColor m_colorOk;
+    QColor m_colorError;
 };
 
 #endif // MESSAGESFORFILTERSMODEL_H

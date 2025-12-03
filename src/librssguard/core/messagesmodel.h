@@ -52,6 +52,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
     virtual Qt::ItemFlags flags(const QModelIndex& index) const;
 
+    QList<Message> messages() const;
     const Message& messageForRow(int row) const;
     Message& messageForRow(int row);
     int rowForMessage(int message_id) const;

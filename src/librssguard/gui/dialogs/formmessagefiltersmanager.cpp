@@ -2,6 +2,7 @@
 
 #include "gui/dialogs/formmessagefiltersmanager.h"
 
+#include "core/messagesmodel.h"
 #include "database/databasequeries.h"
 #include "exceptions/filteringexception.h"
 #include "filtering/filteringsystem.h"
@@ -14,8 +15,8 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
-#include "qtlinq/qtlinq.h"
 #include "network-web/webfactory.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/accountcheckmodel.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/labelsnode.h"
@@ -60,7 +61,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
 
   m_ui.m_btnUp->setIcon(qApp->icons()->fromTheme(QSL("arrow-up"), QSL("go-up")));
   m_ui.m_btnDown->setIcon(qApp->icons()->fromTheme(QSL("arrow-down"), QSL("go-down")));
-  m_ui.m_btnEnable->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start"), QSL("kmplayer")));
+  m_ui.m_btnEnable->setIcon(qApp->icons()->fromTheme(QSL("dialog-ok"), QSL("media-playback-start")));
 
   m_ui.m_txtScript->setFont(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont));
   m_ui.m_tbMessageContents->setFont(QFontDatabase::systemFont(QFontDatabase::SystemFont::FixedFont));
@@ -112,7 +113,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   connect(m_ui.m_treeFeeds->selectionModel(),
           &QItemSelectionModel::selectionChanged,
           this,
-          &FormMessageFiltersManager::displayMessagesOfFeed);
+          &FormMessageFiltersManager::onFeedChanged);
   connect(m_ui.m_btnRunOnMessages, &QPushButton::clicked, this, &FormMessageFiltersManager::processCheckedFeeds);
   connect(m_ui.m_treeExistingMessages,
           &QTreeView::customContextMenuRequested,
@@ -219,7 +220,7 @@ void FormMessageFiltersManager::displaySelectedMessageDetails(const QModelIndex&
     */
   }
   else {
-    Message* msg = m_msgModel->messageForRow(idx.row());
+    const Message* msg = m_msgModel->messageForRow(idx.row());
 
     m_ui.m_tbMessageUrl->setText(msg->m_url);
     m_ui.m_tbMessageContents->setPlainText(msg->m_contents);
@@ -357,7 +358,7 @@ void FormMessageFiltersManager::loadFilter() {
   auto* acc = selectedAccount();
 
   updateFilterOptions(filter);
-  loadAccount(acc);
+  // loadAccount(acc);
   showFilter(filter);
   loadFilterFeedAssignments(filter, acc);
 }
@@ -410,22 +411,17 @@ void FormMessageFiltersManager::processCheckedFeeds() {
     m_ui.m_twMessages->setCurrentIndex(1);
   }
 
-  displayMessagesOfFeed();
+  onFeedChanged();
 }
 
-void FormMessageFiltersManager::displayMessagesOfFeed() {
+void FormMessageFiltersManager::onFeedChanged() {
   auto* item = selectedCategoryFeed();
 
   if (item != nullptr) {
-    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-    QList<Message> msgs;
-    auto labels = item->account()->labelsNode()->getHashedLabels();
+    MessagesModel loader;
+    loader.loadMessages(item);
 
-    for (Feed* feed : item->getSubTreeFeeds()) {
-      msgs.append(DatabaseQueries::getUndeletedMessagesForFeed(database, feed->id(), labels));
-    }
-
-    m_msgModel->setMessages(msgs);
+    m_msgModel->setMessages(loader.messages());
   }
   else {
     m_msgModel->setMessages({});
@@ -438,10 +434,10 @@ void FormMessageFiltersManager::loadAccount(ServiceRoot* account) {
   m_feedsModel->setRootItem(account, false, true);
 
   if (account != nullptr) {
-    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-    m_msgModel->setMessages(DatabaseQueries::getUndeletedMessagesForAccount(database,
-                                                                            account->accountId(),
-                                                                            account->labelsNode()->getHashedLabels()));
+    MessagesModel loader;
+    loader.loadMessages(account);
+
+    m_msgModel->setMessages(loader.messages());
   }
   else {
     m_msgModel->setMessages({});
@@ -456,12 +452,13 @@ void FormMessageFiltersManager::loadFilterFeedAssignments(MessageFilter* filter,
   }
 
   m_loadingFilter = true;
+
   auto stf = account->getSubTreeFeeds();
 
   for (auto* feed : std::as_const(stf)) {
-    if (feed->messageFilters().contains(filter)) {
-      m_feedsModel->sourceModel()->setItemChecked(feed, Qt::CheckState::Checked);
-    }
+    m_feedsModel->sourceModel()->setItemChecked(feed,
+                                                feed->messageFilters().contains(filter) ? Qt::CheckState::Checked
+                                                                                        : Qt::CheckState::Unchecked);
   }
 
   m_loadingFilter = false;

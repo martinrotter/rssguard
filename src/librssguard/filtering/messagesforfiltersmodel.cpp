@@ -15,11 +15,17 @@
 MessagesForFiltersModel::MessagesForFiltersModel(QObject* parent) : QAbstractTableModel(parent) {
   m_headerData << tr("Result") << tr("Read") << tr("Important") << tr("Trash") << tr("Title") << tr("Date")
                << tr("Score");
+
+  m_colorOk = qApp->skins()->colorForModel(SkinEnums::PaletteColors::Allright).value<QColor>();
+  m_colorError = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError).value<QColor>();
 }
 
 void MessagesForFiltersModel::setMessages(const QList<Message>& messages) {
+  emit layoutAboutToBeChanged();
+
   m_filteringDecisions.clear();
   m_messages.clear();
+  m_messages.reserve(messages.size());
 
   for (const Message& msg : messages) {
     MessageBackupAndOriginal msg_tuple;
@@ -29,7 +35,6 @@ void MessagesForFiltersModel::setMessages(const QList<Message>& messages) {
     m_messages.append(msg_tuple);
   }
 
-  emit layoutAboutToBeChanged();
   emit layoutChanged();
 }
 
@@ -70,11 +75,11 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
         if (m_filteringDecisions.contains(index.row())) {
           switch (m_filteringDecisions.value(index.row())) {
             case FilterMessage::FilteringAction::Accept:
-              return qApp->skins()->colorForModel(SkinEnums::PaletteColors::Allright);
+              return m_colorOk;
 
             case FilterMessage::FilteringAction::Ignore:
             case FilterMessage::FilteringAction::Purge:
-              return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError);
+              return m_colorError;
 
             default:
               break;
@@ -82,7 +87,7 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
         }
       }
       else {
-        QVariant interest = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError);
+        QVariant interest = m_colorError;
         Message msg_original = m_messages[index.row()].m_original;
 
         switch (index.column()) {

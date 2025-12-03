@@ -275,6 +275,8 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
   QList<Message> msgs;
 
   try {
+    // TODO: Do not call repeatedly? Maybe get articles once
+    // and reuse them for whole run.
     if (Globals::hasFlag(criteria, DuplicityCheck::AllFeedsSameAccount)) {
       msgs = DatabaseQueries::getUndeletedMessagesForAccount(m_system->database(), m_system->filterAccount().id(), {});
     }

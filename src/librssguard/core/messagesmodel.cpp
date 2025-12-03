@@ -557,6 +557,10 @@ void MessagesModel::setupHeaderData() {
                 << tr("Labels assigned to the article.");
 }
 
+QList<Message> MessagesModel::messages() const {
+  return m_messages;
+}
+
 bool MessagesModel::lazyLoading() const {
   return m_lazyLoading;
 }

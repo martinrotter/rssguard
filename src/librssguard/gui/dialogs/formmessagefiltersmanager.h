@@ -44,23 +44,16 @@ class FormMessageFiltersManager : public QDialog {
     void loadFilter();
     void loadFilters();
     void testFilter();
-    void displayMessagesOfFeed();
     void processCheckedFeeds();
-
-    // Load feeds/categories tree.
-    void loadAccount(ServiceRoot* account);
-
-    // Load checkmarks according to already active assignments.
-    void loadFilterFeedAssignments(MessageFilter* filter, ServiceRoot* account);
-
+    void onFeedChanged();
     void onAccountChanged();
     void onFeedChecked(RootItem* item, Qt::CheckState state);
 
-    // Display filter title/contents.
-    void showFilter(MessageFilter* filter);
-
   private:
     void updateItemFromFilter(QListWidgetItem* item, MessageFilter* filter);
+    void loadFilterFeedAssignments(MessageFilter* filter, ServiceRoot* account);
+    void showFilter(MessageFilter* filter);
+    void loadAccount(ServiceRoot* account);
     void loadAccounts();
     void beautifyScript();
     void updateFilterOptions(MessageFilter* filter);
