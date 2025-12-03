@@ -8,12 +8,13 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
-#include "qtlinq/qtlinq.h"
 
 #if defined(HAS_ICU)
 // Direct ICU.
 #include <unicode/ucnv.h>
 #elif QT_VERSION_MAJOR == 5
+#include "qtlinq/qtlinq.h"
+
 // Use QTextCodec on Qt 5.
 #include <QTextCodec>
 #else
