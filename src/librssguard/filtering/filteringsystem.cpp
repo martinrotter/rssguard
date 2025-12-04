@@ -96,19 +96,13 @@ FilterMessage::FilteringAction FilteringSystem::filterMessage(const MessageFilte
   QJSValue filter_func = m_engine.evaluate(qApp->replaceUserDataFolderPlaceholder(filter.script(), true));
 
   if (filter_func.isError()) {
-    QJSValue::ErrorType error = filter_func.errorType();
-    QString message = filter_func.toString();
-
-    throw FilteringException(error, message);
+    throw FilteringException(filter_func);
   }
 
   auto filter_output = m_engine.evaluate(QSL("filterMessage()"));
 
   if (filter_output.isError()) {
-    QJSValue::ErrorType error = filter_output.errorType();
-    QString message = filter_output.toString();
-
-    throw FilteringException(error, message);
+    throw FilteringException(filter_output);
   }
 
   return FilterMessage::FilteringAction(filter_output.toInt());

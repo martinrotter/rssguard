@@ -9,11 +9,13 @@
 
 class RSSGUARD_DLLSPEC FilteringException : public ApplicationException {
   public:
-    explicit FilteringException(QJSValue::ErrorType js_error, QString message = QString());
+    explicit FilteringException(const QJSValue& js_error, const QString& message = QString());
 
     QJSValue::ErrorType errorType() const;
 
   private:
+    QString decodeError(const QJSValue& js_error, const QString &message);
+
     QJSValue::ErrorType m_errorType;
 };
 
