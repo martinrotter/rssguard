@@ -88,7 +88,7 @@
     </layout>
    </item>
    <item row="2" column="1">
-    <widget class="LineEditWithStatus" name="m_txtDescription" native="true"/>
+    <widget class="TextEditWithStatus" name="m_txtDescription" native="true"/>
    </item>
    <item row="3" column="0">
     <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -180,6 +180,12 @@
    <class>MultiFeedEditCheckBox</class>
    <extends>QCheckBox</extends>
    <header>multifeededitcheckbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TextEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>texteditwithstatus.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>

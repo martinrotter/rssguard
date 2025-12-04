@@ -43,10 +43,9 @@ void FormCategoryDetails::createConnections() {
   // General connections.
   connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormCategoryDetails::apply);
   connect(m_ui->m_txtTitle->lineEdit(), &BaseLineEdit::textChanged, this, &FormCategoryDetails::onTitleChanged);
-  connect(m_ui->m_txtDescription->lineEdit(),
-          &BaseLineEdit::textChanged,
-          this,
-          &FormCategoryDetails::onDescriptionChanged);
+  connect(m_ui->m_txtDescription->textEdit(), &QPlainTextEdit::textChanged, this, [this]() {
+    onDescriptionChanged(m_ui->m_txtDescription->textEdit()->toPlainText());
+  });
 
   // Icon connections.
   connect(m_actionLoadIconFromFile, &QAction::triggered, this, &FormCategoryDetails::onLoadIconFromFile);
@@ -112,7 +111,7 @@ void FormCategoryDetails::loadCategoryData() {
   }
 
   m_ui->m_txtTitle->lineEdit()->setText(cat->title());
-  m_ui->m_txtDescription->lineEdit()->setText(cat->description());
+  m_ui->m_txtDescription->textEdit()->setPlainText(cat->description());
   m_ui->m_btnIcon->setIcon(cat->icon());
 
   m_ui->m_txtTitle->lineEdit()->setFocus();
@@ -129,7 +128,7 @@ void FormCategoryDetails::apply() {
     }
 
     if (isChangeAllowed(m_ui->m_mcbDescription)) {
-      cat->setDescription(m_ui->m_txtDescription->lineEdit()->text());
+      cat->setDescription(m_ui->m_txtDescription->textEdit()->toPlainText());
     }
 
     if (isChangeAllowed(m_ui->m_mcbIcon)) {
@@ -217,8 +216,8 @@ void FormCategoryDetails::initialize() {
   // Set text boxes.
   m_ui->m_txtTitle->lineEdit()->setPlaceholderText(tr("Category title"));
   m_ui->m_txtTitle->lineEdit()->setToolTip(tr("Set title for your category."));
-  m_ui->m_txtDescription->lineEdit()->setPlaceholderText(tr("Category description"));
-  m_ui->m_txtDescription->lineEdit()->setToolTip(tr("Set description for your category."));
+  m_ui->m_txtDescription->textEdit()->setPlaceholderText(tr("Category description"));
+  m_ui->m_txtDescription->textEdit()->setToolTip(tr("Set description for your category."));
 
   // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);
@@ -235,8 +234,8 @@ void FormCategoryDetails::initialize() {
 
   // Setup tab order.
   setTabOrder(m_ui->m_cmbParentCategory, m_ui->m_txtTitle->lineEdit());
-  setTabOrder(m_ui->m_txtTitle->lineEdit(), m_ui->m_txtDescription->lineEdit());
-  setTabOrder(m_ui->m_txtDescription->lineEdit(), m_ui->m_btnIcon);
+  setTabOrder(m_ui->m_txtTitle->lineEdit(), m_ui->m_txtDescription->textEdit());
+  setTabOrder(m_ui->m_txtDescription->textEdit(), m_ui->m_btnIcon);
   setTabOrder(m_ui->m_btnIcon, m_ui->m_buttonBox);
   m_ui->m_txtTitle->lineEdit()->setFocus(Qt::FocusReason::TabFocusReason);
 }

@@ -159,6 +159,8 @@ set(SOURCES
   gui/reusable/styleditemdelegate.h
   gui/reusable/timespinbox.cpp
   gui/reusable/timespinbox.h
+  gui/reusable/texteditwithstatus.cpp
+  gui/reusable/texteditwithstatus.h
   gui/reusable/treeviewcolumnsmenu.cpp
   gui/reusable/treeviewcolumnsmenu.h
   gui/reusable/widgetwithstatus.cpp
