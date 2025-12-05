@@ -10,12 +10,12 @@
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/application.h>
-#include <qtlinq/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/network-web/oauth2service.h>
 #include <librssguard/services/abstract/labelsnode.h>
+#include <qtlinq/qtlinq.h>
 
 #include <QHttpMultiPart>
 #include <QJsonArray>
@@ -131,7 +131,7 @@ void GmailNetworkFactory::initializeOauth() {
             Q_UNUSED(expires_in)
             Q_UNUSED(access_token)
 
-            if (m_service != nullptr && !refresh_token.isEmpty()) {
+            if (m_service != nullptr && m_service->accountId() > 0 && !refresh_token.isEmpty()) {
               QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
               DatabaseQueries::storeNewOauthTokens(database, refresh_token, m_service->accountId());
