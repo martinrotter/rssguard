@@ -42,7 +42,7 @@
       <item row="0" column="1">
        <widget class="LabelWithStatus" name="m_lblSelectFile" native="true">
         <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
        </widget>
       </item>
@@ -165,7 +165,7 @@
       <item row="1" column="3">
        <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -241,7 +241,7 @@
       <item row="0" column="0">
        <widget class="LabelWithStatus" name="m_lblResult" native="true">
         <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
        </widget>
       </item>
@@ -258,7 +258,7 @@
    <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -271,10 +271,10 @@
    <item>
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Close|QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::StandardButton::Close|QDialogButtonBox::StandardButton::Ok</set>
      </property>
     </widget>
    </item>
@@ -290,7 +290,7 @@
   <customwidget>
    <class>TextEditWithStatus</class>
    <extends>QWidget</extends>
-   <header>lineeditwithstatus.h</header>
+   <header>texteditwithstatus.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

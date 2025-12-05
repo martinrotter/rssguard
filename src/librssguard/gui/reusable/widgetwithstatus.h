@@ -24,7 +24,7 @@ class RSSGUARD_DLLSPEC WidgetWithStatus : public QWidget {
 
     explicit WidgetWithStatus(QWidget* parent);
 
-    void setStatus(StatusType status, const QString& tooltip_text);
+    void setStatus(StatusType status, const QString& text);
     StatusType status() const;
 
   protected:

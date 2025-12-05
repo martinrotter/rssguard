@@ -18,5 +18,10 @@ TextEditWithStatus::TextEditWithStatus(QWidget* parent) : WidgetWithStatus(paren
 
   // Compose the layout.
   m_layout->addWidget(m_wdgInput);
-  m_layout->addWidget(m_btnStatus);
+  m_layout->addWidget(m_btnStatus, 0, Qt::AlignmentFlag::AlignTop);
+}
+
+void TextEditWithStatus::setText(StatusType status, const QString& text) {
+  textEdit()->setPlainText(text);
+  WidgetWithStatus::setStatus(status, text);
 }

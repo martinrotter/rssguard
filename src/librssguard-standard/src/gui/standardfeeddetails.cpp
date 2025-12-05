@@ -9,6 +9,7 @@
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/exceptions/scriptexception.h>
 #include <librssguard/gui/dialogs/filedialog.h>
+#include <librssguard/gui/reusable/lineeditwithstatus.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
@@ -37,6 +38,7 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   m_ui.m_txtSource->textEdit()->setToolTip(tr("Full feed source identifier which can be URL."));
   m_ui.m_txtPostProcessScript->textEdit()->setPlaceholderText(tr("Full command to execute"));
   m_ui.m_txtPostProcessScript->textEdit()->setToolTip(tr("You can enter full command including interpreter here."));
+  m_ui.m_lblFetchMetadata->textEdit()->setReadOnly(true);
 
   // Add source types.
   m_ui.m_cmbSourceType->addItem(StandardFeed::sourceTypeToString(StandardFeed::SourceType::Url),
@@ -91,10 +93,7 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   m_ui.m_txtSource->textEdit()->setFocus(Qt::FocusReason::TabFocusReason);
 
   // Set feed metadata fetch label.
-  m_ui.m_lblFetchMetadata->label()->setWordWrap(true);
-  m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Information,
-                                     tr("No metadata fetched so far."),
-                                     tr("No metadata fetched so far."));
+  m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Information, tr("No metadata fetched so far."));
 
   connect(m_ui.m_txtTitle->lineEdit(), &BaseLineEdit::textChanged, this, &StandardFeedDetails::onTitleChanged);
   connect(m_ui.m_txtDescription->lineEdit(),
@@ -203,27 +202,19 @@ void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
 
     // Icon or whole feed was guessed.
     m_ui.m_btnIcon->setIcon(metadata.first->icon());
-    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
-                                       tr("Icon fetched successfully."),
-                                       tr("Icon metadata fetched."));
+    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Ok, tr("Icon fetched successfully."));
 
     // Remove temporary feed object.
     metadata.first->deleteLater();
   }
   catch (const ScriptException& ex) {
-    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr("Script failed: %1").arg(ex.message()),
-                                       tr("No icon fetched."));
+    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Error, tr("Script failed: %1").arg(ex.message()));
   }
   catch (const NetworkException& ex) {
-    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr("Network error: %1").arg(ex.message()),
-                                       tr("No icon fetched."));
+    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Error, tr("Network error: %1").arg(ex.message()));
   }
   catch (const ApplicationException& ex) {
-    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr("Error: %1").arg(ex.message()),
-                                       tr("No icon fetched."));
+    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Error, tr("Error: %1").arg(ex.message()));
   }
 }
 
@@ -270,27 +261,19 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
                                                                        Qt::MatchFlag::MatchFixedString));
     }
 
-    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Ok,
-                                       tr("All metadata fetched successfully."),
-                                       tr("Feed and icon metadata fetched."));
+    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Ok, tr("All metadata fetched successfully."));
 
     // Remove temporary feed object.
     metadata.first->deleteLater();
   }
   catch (const ScriptException& ex) {
-    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr("Script failed: %1").arg(ex.message()),
-                                       tr("Script failed: %1").arg(ex.message()));
+    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Error, tr("Script failed: %1").arg(ex.message()));
   }
   catch (const NetworkException& ex) {
-    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr("Network error: %1").arg(ex.message()),
-                                       tr("Network error: %1").arg(ex.message()));
+    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Error, tr("Network error: %1").arg(ex.message()));
   }
   catch (const ApplicationException& ex) {
-    m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
-                                       tr("Error: %1").arg(ex.message()),
-                                       tr("Error: %1").arg(ex.message()));
+    m_ui.m_lblFetchMetadata->setText(WidgetWithStatus::StatusType::Error, tr("Error: %1").arg(ex.message()));
   }
 }
 

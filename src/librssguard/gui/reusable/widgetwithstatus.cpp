@@ -25,7 +25,7 @@ WidgetWithStatus::WidgetWithStatus(QWidget* parent) : QWidget(parent), m_wdgInpu
   setStatus(StatusType::Information, {});
 }
 
-void WidgetWithStatus::setStatus(WidgetWithStatus::StatusType status, const QString& tooltip_text) {
+void WidgetWithStatus::setStatus(WidgetWithStatus::StatusType status, const QString& text) {
   m_status = status;
 
   switch (status) {
@@ -58,5 +58,5 @@ void WidgetWithStatus::setStatus(WidgetWithStatus::StatusType status, const QStr
   }
 
   // Setup the tooltip text.
-  m_btnStatus->setToolTip(tooltip_text);
+  m_btnStatus->setToolTip(text);
 }

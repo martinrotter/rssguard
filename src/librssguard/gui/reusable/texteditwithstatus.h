@@ -13,12 +13,14 @@ class RSSGUARD_DLLSPEC TextEditWithStatus : public WidgetWithStatus {
   public:
     explicit TextEditWithStatus(QWidget* parent = nullptr);
 
+    void setText(StatusType status, const QString& text);
+
     // Access to line edit.
     QPlainTextEdit* textEdit() const;
 };
 
 inline QPlainTextEdit* TextEditWithStatus::textEdit() const {
-  return static_cast<QPlainTextEdit*>(m_wdgInput);
+  return qobject_cast<QPlainTextEdit*>(m_wdgInput);
 }
 
 #endif // TEXTEDITWITHSTATUS_H

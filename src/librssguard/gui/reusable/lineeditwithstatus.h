@@ -6,8 +6,6 @@
 #include "gui/reusable/baselineedit.h"
 #include "gui/reusable/widgetwithstatus.h"
 
-#include "texteditwithstatus.h"
-
 #include <QPlainTextEdit>
 
 class RSSGUARD_DLLSPEC LineEditWithStatus : public WidgetWithStatus {
@@ -23,9 +21,5 @@ class RSSGUARD_DLLSPEC LineEditWithStatus : public WidgetWithStatus {
 inline BaseLineEdit* LineEditWithStatus::lineEdit() const {
   return static_cast<BaseLineEdit*>(m_wdgInput);
 }
-
-
-
-
 
 #endif // LINEEDITWITHSTATUS_H

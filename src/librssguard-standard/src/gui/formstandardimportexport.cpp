@@ -158,10 +158,10 @@ void FormStandardImportExport::onParsingProgress(int completed, int total) {
 
 void FormStandardImportExport::onPostProcessScriptChanged(const QString& new_pp) {
   if (QRegularExpression(QSL(SCRIPT_SOURCE_TYPE_REGEXP)).match(new_pp).hasMatch() || !new_pp.simplified().isEmpty()) {
-    m_ui->m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("Command is ok."));
+    m_ui->m_txtPostProcessScript->setStatus(WidgetWithStatus::StatusType::Ok, tr("Command is ok."));
   }
   else {
-    m_ui->m_txtPostProcessScript->setStatus(LineEditWithStatus::StatusType::Ok, tr("Command is empty."));
+    m_ui->m_txtPostProcessScript->setStatus(WidgetWithStatus::StatusType::Ok, tr("Command is empty."));
   }
 }
 
