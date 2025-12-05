@@ -280,17 +280,17 @@ void StandardFeedDetails::guessFeed(StandardFeed::SourceType source_type,
   catch (const ScriptException& ex) {
     m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
                                        tr("Script failed: %1").arg(ex.message()),
-                                       tr("No metadata fetched."));
+                                       tr("Script failed: %1").arg(ex.message()));
   }
   catch (const NetworkException& ex) {
     m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
                                        tr("Network error: %1").arg(ex.message()),
-                                       tr("No metadata fetched."));
+                                       tr("Network error: %1").arg(ex.message()));
   }
   catch (const ApplicationException& ex) {
     m_ui.m_lblFetchMetadata->setStatus(WidgetWithStatus::StatusType::Error,
                                        tr("Error: %1").arg(ex.message()),
-                                       tr("No metadata fetched."));
+                                       tr("Error: %1").arg(ex.message()));
   }
 }
 

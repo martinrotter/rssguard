@@ -328,7 +328,7 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
     // account->resetHostSpacing(host);
 
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
-      throw NetworkException(network_result.m_networkError, QString::fromUtf8(feed_contents));
+      throw NetworkException(network_result.m_networkError);
     }
   }
   else if (source_type == StandardFeed::SourceType::LocalFile) {

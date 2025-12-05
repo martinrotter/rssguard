@@ -3,11 +3,18 @@
 #include "gui/reusable/labelwithstatus.h"
 
 #include "gui/reusable/plaintoolbutton.h"
+#include "miscellaneous/application.h"
+#include "network-web/webfactory.h"
 
 #include <QHBoxLayout>
 
 LabelWithStatus::LabelWithStatus(QWidget* parent) : WidgetWithStatus(parent) {
-  m_wdgInput = new QLabel(this);
+  auto* lbl = new QLabel(this);
+
+  lbl->setTextInteractionFlags(Qt::TextInteractionFlag::TextBrowserInteraction);
+  connect(lbl, &QLabel::linkActivated, qApp->web(), QOverload<const QUrl&>::of(&WebFactory::openUrlInExternalBrowser));
+
+  m_wdgInput = lbl;
 
   // Set correct size for the tool button.
   int label_height = m_wdgInput->sizeHint().height() * 1.2;
