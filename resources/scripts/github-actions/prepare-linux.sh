@@ -48,7 +48,6 @@ pacman -Syu --noconfirm  \
     qt6-imageformats     \
     qt6-multimedia       \
     qt6-tools            \
-    qt6-wayland          \
     qt6-svg              \
     qt6ct                \
     sqlite               \
