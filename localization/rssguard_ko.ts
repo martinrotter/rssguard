@@ -20,7 +20,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="78"/>
       <source>Form</source>
-      <translation>양식</translation>
+      <translation>서식</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
@@ -58,7 +58,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1075"/>
       <source>Application is already running.</source>
-      <translation type="unfinished">Application is already running.</translation>
+      <translation>애플리케이션이 이미 실행 중입니다.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="508"/>
