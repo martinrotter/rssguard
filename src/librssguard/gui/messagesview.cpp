@@ -538,6 +538,11 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
   qDebugNN << LOGSEC_GUI << "Current row changed - proxy" << QUOTE_W_SPACE(current_index) << "and source"
            << QUOTE_W_SPACE_DOT(mapped_current_index);
 
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       GuiMessage(tr("%n selected articles(s)", nullptr, selected_rows.size()),
+                                  tr("%n selected articles(s)", nullptr, selected_rows.size())),
+                       GuiMessageDestination(false, false, true));
+
   if (mapped_current_index.isValid() && selected_rows.size() == 1) {
     Message message = m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row());
 
