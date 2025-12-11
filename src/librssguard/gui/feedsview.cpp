@@ -31,9 +31,7 @@
 #include <QTimer>
 
 FeedsView::FeedsView(QWidget* parent)
-  : BaseTreeView(parent), m_contextMenuService(nullptr), m_contextMenuBin(nullptr), m_contextMenuCategories(nullptr),
-    m_contextMenuFeeds(nullptr), m_contextMenuImportant(nullptr), m_contextMenuOtherItems(nullptr),
-    m_contextMenuLabel(nullptr), m_contextMenuProbe(nullptr), m_dontSaveExpandState(false),
+  : BaseTreeView(parent), m_dontSaveExpandState(false),
     m_delegate(new StyledItemDelegate(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt(),
                                       -1,
                                       this)),
@@ -1045,12 +1043,6 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
     }
 
     auto account = accounts.first();
-    auto kinds = items_linq
-                   .select([](RootItem* it) {
-                     return it->kind();
-                   })
-                   .distinct();
-
     QMenu* base_menu = baseContextMenu(items);
     auto service_specific_items = account->contextMenuFeedsList(items);
 
@@ -1087,6 +1079,14 @@ QMenu* FeedsView::baseContextMenu(const QList<RootItem*>& selected_items) {
       })) {
     // Accounts, categories, feeds can be fetched.
     action_sections[QSL("1")].append(qApp->mainForm()->m_ui->m_actionUpdateSelectedItems);
+
+    if (cat_add) {
+      action_sections[QSL("4")].append(qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem);
+    }
+
+    if (feed_add) {
+      action_sections[QSL("4")].append(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
+    }
   }
 
   if (items_linq.all([](RootItem* item) {
@@ -1106,14 +1106,6 @@ QMenu* FeedsView::baseContextMenu(const QList<RootItem*>& selected_items) {
       })) {
     action_sections[QSL("3")].append({qApp->mainForm()->m_ui->m_actionEditChildFeeds,
                                       qApp->mainForm()->m_ui->m_actionEditChildFeedsRecursive});
-
-    if (cat_add) {
-      action_sections[QSL("4")].append(qApp->mainForm()->m_ui->m_actionAddCategoryIntoSelectedItem);
-    }
-
-    if (feed_add) {
-      action_sections[QSL("4")].append(qApp->mainForm()->m_ui->m_actionAddFeedIntoSelectedItem);
-    }
 
     action_sections[QSL("5")].append({qApp->mainForm()->m_ui->m_actionRearrangeCategories,
                                       qApp->mainForm()->m_ui->m_actionRearrangeFeeds});

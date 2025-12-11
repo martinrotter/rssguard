@@ -208,8 +208,6 @@ QList<QAction*> ServiceRoot::contextMenuFeedsList(const QList<RootItem*>& select
         return {};
     }
   }
-  else {
-  }
 
   return {};
 }

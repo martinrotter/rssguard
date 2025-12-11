@@ -136,14 +136,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void setupAppearance();
     void saveExpandStates(RootItem* item);
 
-    QMenu* m_contextMenuService;
-    QMenu* m_contextMenuBin;
-    QMenu* m_contextMenuCategories;
-    QMenu* m_contextMenuFeeds;
-    QMenu* m_contextMenuImportant;
-    QMenu* m_contextMenuOtherItems;
-    QMenu* m_contextMenuLabel;
-    QMenu* m_contextMenuProbe;
     FeedsModel* m_sourceModel;
     FeedsProxyModel* m_proxyModel;
     bool m_dontSaveExpandState;
