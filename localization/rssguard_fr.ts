@@ -9026,17 +9026,17 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="713"/>
       <source>Fetching metadata for %n feeds</source>
-      <translation type="unfinished">
-        <numerusform>Récupération des métadonnées pour les flux %n</numerusform>
-        <numerusform>Fetching metadata for %n feeds</numerusform>
+      <translation>
+        <numerusform>Récupération des métadonnées de %n flux </numerusform>
+        <numerusform>Récupération des métadonnées de %n flux </numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="722"/>
       <source>Fetched %n feeds...</source>
-      <translation type="unfinished">
-        <numerusform>Flux %n récupérés...</numerusform>
-        <numerusform>Fetched %n feeds...</numerusform>
+      <translation>
+        <numerusform>%n flux récupéré...</numerusform>
+        <numerusform>%n flux récupérés...</numerusform>
       </translation>
     </message>
     <message>
