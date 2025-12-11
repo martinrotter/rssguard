@@ -9008,7 +9008,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="713"/>
       <source>Fetching metadata for %n feeds</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>Fetching metadata for %n feeds</numerusform>
         <numerusform>Fetching metadata for %n feeds</numerusform>
       </translation>
@@ -9016,7 +9016,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="722"/>
       <source>Fetched %n feeds...</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>Fetched %n feeds...</numerusform>
         <numerusform>Fetched %n feeds...</numerusform>
       </translation>
