@@ -37,7 +37,7 @@ FeedsView::FeedsView(QWidget* parent)
     m_delegate(new StyledItemDelegate(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HeightRowFeeds)).toInt(),
                                       -1,
                                       this)),
-    m_columnsAdjusted(false) {
+    m_columnsAdjusted(false), m_ignoreItemSelectionChange(false) {
   setObjectName(QSL("FeedsView"));
 
   // Allocate models.
@@ -953,6 +953,13 @@ void FeedsView::revealItem(RootItem* item) {
     // selectionModel()->setCurrentIndex(idx, QItemSelectionModel::SelectionFlag::NoUpdate);
     // setFocus();
     m_delegate->flashItem(idx, this);
+
+    m_ignoreItemSelectionChange = true;
+    setCurrentIndex(idx);
+    selectionModel()->select(idx,
+                             QItemSelectionModel::SelectionFlag::Rows |
+                               QItemSelectionModel::SelectionFlag::ClearAndSelect);
+    m_ignoreItemSelectionChange = false;
   }
   else {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -990,6 +997,10 @@ void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSele
 
   RootItem* selected_item = selectedItem();
   m_proxyModel->setSelectedItem(selected_item);
+
+  if (m_ignoreItemSelectionChange) {
+    return;
+  }
 
   emit itemSelected(selected_item);
 

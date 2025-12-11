@@ -832,8 +832,8 @@ void FormMain::createConnections() {
           &TabWidget::closeAllTabsExceptCurrent);
   connect(m_ui->m_actionTabsCloseAll, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabs);
   connect(m_ui->m_actionTabsCloseCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeCurrentTab);
-  connect(tabWidget()->feedMessageViewer()->feedsView(),
-          &FeedsView::itemSelected,
+  connect(tabWidget()->feedMessageViewer()->feedsView()->selectionModel(),
+          &QItemSelectionModel::selectionChanged,
           this,
           &FormMain::updateFeedButtonsAvailability);
   connect(qApp->feedUpdateLock(), &Mutex::locked, this, &FormMain::updateFeedButtonsAvailability);

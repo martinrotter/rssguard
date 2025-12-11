@@ -151,6 +151,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     QTimer m_expansionDelayer;
     StyledItemDelegate* m_delegate;
     bool m_columnsAdjusted;
+    bool m_ignoreItemSelectionChange;
 };
 
 inline FeedsProxyModel* FeedsView::model() const {

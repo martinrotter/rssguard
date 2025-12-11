@@ -40,8 +40,7 @@ void StyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 
   QStyledItemDelegate::paint(painter, item_option, index);
 
-  if (m_flashIndex.isValid() && index.parent() == m_flashIndex.parent() && index.row() == m_flashIndex.row() &&
-      m_flashProgress >= 0.0) {
+  if (m_flashProgress > 0.0 && m_flashIndex.isValid() && index == m_flashIndex) {
     const QTreeView* tree = qobject_cast<const QTreeView*>(option.widget);
     QRect rowRect(0, option.rect.top(), tree->viewport()->width(), option.rect.height());
 
@@ -84,14 +83,20 @@ void StyledItemDelegate::flashItem(const QModelIndex& index, QTreeView* view) {
 
   anim->setStartValue(1.0);
   anim->setEndValue(0.0);
-  anim->setDuration(3000);
-  anim->setEasingCurve(QEasingCurve::Type::OutCubic);
+  anim->setDuration(1000);
+  anim->setEasingCurve(QEasingCurve::Type::OutBounce);
 
-  connect(anim, &QPropertyAnimation::finished, anim, &QObject::deleteLater);
-  connect(anim, &QPropertyAnimation::finished, this, [view, this]() {
-    m_flashIndex = QModelIndex();
-    view->viewport()->update(rowRectForIndex(view, m_flashIndex));
-  });
+  connect(qApp, &QApplication::aboutToQuit, anim, &QPropertyAnimation::stop);
+  connect(view->model(), &QAbstractItemModel::layoutAboutToBeChanged, anim, &QPropertyAnimation::stop);
+  connect(anim,
+          &QPropertyAnimation::stateChanged,
+          this,
+          [view, this](QAbstractAnimation::State new_state, QAbstractAnimation::State old_state) {
+            if (new_state == QAbstractAnimation::State::Stopped) {
+              m_flashIndex = QModelIndex();
+              view->viewport()->update();
+            }
+          });
   connect(anim, &QPropertyAnimation::valueChanged, view, [view, this]() {
     if (m_flashIndex.isValid()) {
       view->viewport()->update(rowRectForIndex(view, m_flashIndex));
