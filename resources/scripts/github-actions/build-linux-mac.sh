@@ -110,8 +110,6 @@ else
   mv "$prefix/Contents/MacOS/librssguard.dylib" "$prefix/Contents/Frameworks/"
   install_name_tool -id @rpath/librssguard.dylib "$prefix/Contents/Frameworks/librssguard.dylib"
 
-  find "$prefix" -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
-
   otool -L "$prefix/Contents/Frameworks/librssguard.dylib"
   otool -L "$prefix/Contents/MacOS/rssguard"
 
@@ -120,6 +118,8 @@ else
 
   otool -L "$prefix/Contents/Frameworks/librssguard.dylib"
   otool -L "$prefix/Contents/MacOS/rssguard"
+
+  find "$prefix" -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 
   set -- *.dmg
 fi
