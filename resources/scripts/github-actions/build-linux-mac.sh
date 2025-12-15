@@ -106,10 +106,15 @@ if [ $is_linux = true ]; then
 
   set -- *.AppImage
 else
-  # Fix .dylib linking.
-  install_name_tool -add_rpath "@executable_path/../Frameworks" "$prefix/Contents/MacOS/rssguard"
+  mkdir -p "RSS Guard.app/Contents/Frameworks"
+  mv "$prefix/Contents/MacOS/librssguard.dylib" "$prefix/Contents/Frameworks/"
 
-  otool -L "$prefix/Contents/MacOS/librssguard.dylib"
+  find "$prefix" -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
+
+  # Fix .dylib linking.
+  #install_name_tool -add_rpath "@executable_path/../Frameworks" "$prefix/Contents/MacOS/rssguard"
+
+  otool -L "$prefix/Contents/Frameworks/librssguard.dylib"
   otool -L "$prefix/Contents/MacOS/rssguard"
   
   # Try to self-sign the app.
