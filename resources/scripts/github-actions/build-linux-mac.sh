@@ -106,8 +106,10 @@ if [ $is_linux = true ]; then
 
   set -- *.AppImage
 else
-  mkdir -p "RSS Guard.app/Contents/Frameworks"
+  mkdir -p "$prefix/Contents/Frameworks"
   mv "$prefix/Contents/MacOS/librssguard.dylib" "$prefix/Contents/Frameworks/"
+
+  install_name_tool -id @rpath/librssguard.dylib "$prefix/Contents/Frameworks/librssguard.dylib"
 
   find "$prefix" -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 
