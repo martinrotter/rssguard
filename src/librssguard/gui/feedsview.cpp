@@ -238,14 +238,15 @@ void FeedsView::updateSelectedItems() {
 }
 
 void FeedsView::clearSelectedItems() {
-  if (MsgBox::show(nullptr,
+  if (MsgBox::show({},
                    QMessageBox::Icon::Question,
                    tr("Are you sure?"),
                    tr("Do you really want to clean all articles from selected items?"),
                    {},
                    {},
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                   QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+                   QMessageBox::StandardButton::Yes,
+                   QSL("clear_selected_feeds")) != QMessageBox::StandardButton::Yes) {
     return;
   }
 
@@ -265,14 +266,15 @@ void FeedsView::clearSelectedItems() {
 }
 
 void FeedsView::purgeSelectedFeeds() {
-  if (MsgBox::show(nullptr,
+  if (MsgBox::show({},
                    QMessageBox::Icon::Question,
                    tr("Are you sure?"),
                    tr("Do you really want to purge all non-starred articles from selected feeds?"),
                    {},
                    {},
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                   QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+                   QMessageBox::StandardButton::Yes,
+                   QSL("purge_selected_feeds")) != QMessageBox::StandardButton::Yes) {
     return;
   }
 
@@ -296,6 +298,21 @@ void FeedsView::enableDisableSelectedFeeds() {
     return;
   }
 
+  auto resp = feeds.size() == 1 ? QMessageBox::StandardButton::Yes
+                                : MsgBox::show({},
+                                               QMessageBox::Icon::Question,
+                                               tr("Enable or disable feeds"),
+                                               tr("You selected multiple feeds to enable/disable them."),
+                                               tr("Do you really want to enable or disable selected feeds?"),
+                                               {},
+                                               QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                                               QMessageBox::StandardButton::Yes,
+                                               QSL("enable_disable_feeds"));
+
+  if (resp != QMessageBox::StandardButton::Yes) {
+    return;
+  }
+
   for (Feed* feed : std::as_const(feeds)) {
     feed->setIsSwitchedOff(!feed->isSwitchedOff());
 
@@ -309,14 +326,15 @@ void FeedsView::enableDisableSelectedFeeds() {
 }
 
 void FeedsView::clearAllItems() {
-  if (MsgBox::show(nullptr,
+  if (MsgBox::show({},
                    QMessageBox::Icon::Question,
                    tr("Are you sure?"),
                    tr("Do you really want to clean all articles from selected items?"),
                    {},
                    {},
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                   QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+                   QMessageBox::StandardButton::Yes,
+                   QSL("clear_all_feeds")) != QMessageBox::StandardButton::Yes) {
     return;
   }
 
@@ -482,14 +500,15 @@ void FeedsView::deleteSelectedItem() {
   }
 
   // Ask user first.
-  if (MsgBox::show(qApp->mainFormWidget(),
+  if (MsgBox::show({},
                    QMessageBox::Icon::Question,
                    tr("Deleting %n items", nullptr, int(deletable_items.size())),
                    tr("You are about to completely delete %n items.", nullptr, int(deletable_items.size())),
                    tr("Are you sure?"),
                    QString(),
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                   QMessageBox::StandardButton::No) == QMessageBox::StandardButton::No) {
+                   QMessageBox::StandardButton::Yes,
+                   QSL("delete_selected_items")) == QMessageBox::StandardButton::No) {
     // User refused.
     qApp->feedUpdateLock()->unlock();
     return;
@@ -616,26 +635,18 @@ void FeedsView::markAllItemsReadStatus(RootItem::ReadStatus read) {
 }
 
 void FeedsView::markAllItemsRead() {
-  bool dont_show_again = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::DontAskWhenMarkinAllRead)).toBool();
+  auto res = MsgBox::show({},
+                          QMessageBox::Icon::Question,
+                          tr("Mark everything as read"),
+                          tr("Do you really want to mark everything as read?"),
+                          {},
+                          {},
+                          QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                          QMessageBox::StandardButton::Yes,
+                          QSL("mark_everything_read"));
 
-  if (!dont_show_again) {
-    auto res = MsgBox::show(nullptr,
-                            QMessageBox::Icon::Question,
-                            tr("Mark everything as read"),
-                            tr("Do you really want to mark everything as read?"),
-                            QString(),
-                            QString(),
-                            QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                            QMessageBox::StandardButton::No,
-                            &dont_show_again);
-
-    if (dont_show_again) {
-      qApp->settings()->setValue(GROUP(Feeds), Feeds::DontAskWhenMarkinAllRead, dont_show_again);
-    }
-
-    if (res != QMessageBox::StandardButton::Yes) {
-      return;
-    }
+  if (res != QMessageBox::StandardButton::Yes) {
+    return;
   }
 
   markAllItemsReadStatus(RootItem::ReadStatus::Read);

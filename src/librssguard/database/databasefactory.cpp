@@ -7,8 +7,8 @@
 #include "exceptions/applicationexception.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
 
 #include <QDir>
 #include <QSqlDriver>
@@ -51,7 +51,7 @@ void DatabaseFactory::determineDriver() {
     qCriticalNN << LOGSEC_DB << "Failed to reach connection to DB source:" << QUOTE_W_SPACE_DOT(ex.message());
 
     if (m_dbDriver->driverType() != DatabaseDriver::DriverType::SQLite) {
-      MsgBox::show(nullptr,
+      MsgBox::show({},
                    QMessageBox::Icon::Critical,
                    tr("Cannot connect to database"),
                    tr("Connection to your database was not established with error: '%1'. "

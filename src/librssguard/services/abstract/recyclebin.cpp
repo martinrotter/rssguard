@@ -63,14 +63,15 @@ void RecycleBin::cleanMessages(bool clear_only_read) {
 }
 
 void RecycleBin::empty() {
-  if (MsgBox::show(nullptr,
+  if (MsgBox::show({},
                    QMessageBox::Icon::Question,
                    tr("Are you sure?"),
                    tr("Do you really want to empty your recycle bin?"),
                    {},
                    {},
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
-                   QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+                   QMessageBox::StandardButton::Yes,
+                   QSL("clear_bin")) != QMessageBox::StandardButton::Yes) {
     return;
   }
 

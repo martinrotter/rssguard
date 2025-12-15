@@ -83,12 +83,12 @@ void StandardServiceRoot::start(bool freshly_activated) {
 
   if (freshly_activated && getSubTreeFeeds().isEmpty()) {
     // In other words, if there are no feeds or categories added.
-    if (MsgBox::show(qApp->mainFormWidget(),
+    if (MsgBox::show({},
                      QMessageBox::Question,
                      QObject::tr("Load initial set of feeds"),
                      tr("This new account does not include any feeds. You can now add default set of feeds."),
                      tr("Do you want to load initial set of feeds?"),
-                     QString(),
+                     {},
                      QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
       QString target_opml_file = APP_INITIAL_FEEDS_PATH + QDir::separator() + FEED_INITIAL_OPML_PATTERN;
       QString current_locale = qApp->localization()->loadedLanguage();
@@ -113,10 +113,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
         }
       }
       catch (ApplicationException& ex) {
-        MsgBox::show(qApp->mainFormWidget(),
-                     QMessageBox::Critical,
-                     tr("Error when loading initial feeds"),
-                     ex.message());
+        MsgBox::show({}, QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
       }
     }
     else {
@@ -683,7 +680,7 @@ void StandardServiceRoot::importFromQuiteRss() {
     QuiteRssImport(this, this).import();
   }
   catch (const ApplicationException& ex) {
-    MsgBox::show(nullptr, QMessageBox::Icon::Critical, tr("Error during file import"), ex.message());
+    MsgBox::show({}, QMessageBox::Icon::Critical, tr("Error during file import"), ex.message());
   }
 }
 

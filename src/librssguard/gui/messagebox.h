@@ -12,14 +12,6 @@ class RSSGUARD_DLLSPEC MsgBox : public QMessageBox {
     Q_OBJECT
 
   public:
-    // Constructors and destructors.
-    explicit MsgBox(QWidget* parent = nullptr);
-
-    // Custom icon setting.
-    void setIcon(Icon icon);
-
-    static void setCheckBox(QMessageBox* msg_box, const QString& text, bool* data);
-
     // Displays custom message box.
     static QMessageBox::StandardButton show(QWidget* parent,
                                             QMessageBox::Icon icon,
@@ -29,10 +21,19 @@ class RSSGUARD_DLLSPEC MsgBox : public QMessageBox {
                                             const QString& detailed_text = QString(),
                                             QMessageBox::StandardButtons buttons = QMessageBox::Ok,
                                             QMessageBox::StandardButton default_button = QMessageBox::Ok,
-                                            bool* dont_show_again = nullptr,
+                                            const QString& dont_show_again_id = {},
                                             const QString& functor_heading = {},
                                             const std::function<void()>& functor = nullptr);
     static QIcon iconForStatus(QMessageBox::Icon status);
+
+  private:
+    explicit MsgBox(QWidget* parent = nullptr);
+
+    static bool isDontShowAgain(const QString& dont_show_again_id);
+    static void setDontShowAgain(const QString& dont_show_again_id, bool dont_show_again);
+
+    void setIcon(Icon icon);
+    void setCheckBox(const QString& text, bool* data);
 };
 
 #endif // MESSAGEBOX_H

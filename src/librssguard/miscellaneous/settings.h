@@ -38,6 +38,10 @@ namespace FileDialogPaths {
   KEY ID;
 }
 
+namespace MessageBoxDontShows {
+  KEY ID;
+}
+
 namespace VideoPlayer {
   KEY ID;
 

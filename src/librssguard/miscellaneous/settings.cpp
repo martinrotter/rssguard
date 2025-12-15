@@ -13,6 +13,7 @@
 
 DKEY FileDialogPaths::ID = "file_dialog_paths";
 DKEY DialogGeometries::ID = "dialog_geometries";
+DKEY MessageBoxDontShows::ID = "msg_box_dont_show";
 
 // Media player.
 KEY VideoPlayer::ID = "media_player";

@@ -569,7 +569,7 @@ void FormMessageFiltersManager::beautifyScript() {
                    QMessageBox::Icon::Critical,
                    tr("Error"),
                    tr("Script was not beautified, because 'clang-format' tool thrown error."),
-                   QString(),
+                   {},
                    err);
     }
   }

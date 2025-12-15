@@ -674,7 +674,7 @@ void Application::showGuiMessageCore(Notification::Event event,
 
   if (show_dialog && (dest.m_messageBox || msg.m_type == QSystemTrayIcon::MessageIcon::Critical)) {
     // Tray icon or OSD is not available, display simple text box.
-    MsgBox::show(parent == nullptr ? mainFormWidget() : parent,
+    MsgBox::show(parent,
                  QMessageBox::Icon(msg.m_type),
                  msg.m_title,
                  msg.m_message,

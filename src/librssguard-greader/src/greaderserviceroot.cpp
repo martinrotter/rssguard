@@ -166,7 +166,7 @@ void GreaderServiceRoot::importFeeds() {
 
   try {
     m_network->subscriptionImport(IOFactory::readFile(selected_file), networkProxy());
-    MsgBox::show(qApp->mainFormWidget(),
+    MsgBox::show({},
                  QMessageBox::Icon::Information,
                  tr("Done"),
                  tr("Data imported successfully. Reloading feed tree."));
@@ -174,10 +174,7 @@ void GreaderServiceRoot::importFeeds() {
     syncIn();
   }
   catch (const ApplicationException& ex) {
-    MsgBox::show(qApp->mainFormWidget(),
-                 QMessageBox::Icon::Critical,
-                 tr("Cannot import feeds"),
-                 tr("Error: %1").arg(ex.message()));
+    MsgBox::show({}, QMessageBox::Icon::Critical, tr("Cannot import feeds"), tr("Error: %1").arg(ex.message()));
   }
 }
 
@@ -200,13 +197,10 @@ void GreaderServiceRoot::exportFeeds() {
     QByteArray data = m_network->subscriptionExport(networkProxy());
     IOFactory::writeFile(selected_file, data);
 
-    MsgBox::show(qApp->mainFormWidget(), QMessageBox::Icon::Information, tr("Done"), tr("Data exported successfully."));
+    MsgBox::show({}, QMessageBox::Icon::Information, tr("Done"), tr("Data exported successfully."));
   }
   catch (const ApplicationException& ex) {
-    MsgBox::show(qApp->mainFormWidget(),
-                 QMessageBox::Icon::Critical,
-                 tr("Cannot export feeds"),
-                 tr("Error: %1").arg(ex.message()));
+    MsgBox::show({}, QMessageBox::Icon::Critical, tr("Cannot export feeds"), tr("Error: %1").arg(ex.message()));
   }
 }
 

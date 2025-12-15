@@ -2,8 +2,10 @@
 
 #include "gui/messagebox.h"
 
+#include "definitions/globals.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/settings.h"
 
 #include <QCheckBox>
 #include <QDialogButtonBox>
@@ -11,8 +13,20 @@
 #include <QStyle>
 #include <QtGlobal>
 
-MsgBox::MsgBox(QWidget* parent) : QMessageBox(parent) {
-  // setAttribute(Qt::WA_WindowPropagation, true);
+MsgBox::MsgBox(QWidget* parent) : QMessageBox(parent) {}
+
+bool MsgBox::isDontShowAgain(const QString& dont_show_again_id) {
+  if (dont_show_again_id.isEmpty()) {
+    return false;
+  }
+
+  return qApp->settings()->value(GROUP(MessageBoxDontShows), dont_show_again_id).toBool();
+}
+
+void MsgBox::setDontShowAgain(const QString& dont_show_again_id, bool dont_show_again) {
+  if (!dont_show_again_id.isEmpty()) {
+    qApp->settings()->setValue(GROUP(MessageBoxDontShows), dont_show_again_id, dont_show_again);
+  }
 }
 
 void MsgBox::setIcon(QMessageBox::Icon icon) {
@@ -23,16 +37,18 @@ void MsgBox::setIcon(QMessageBox::Icon icon) {
   setIconPixmap(iconForStatus(icon).pixmap(icon_size, icon_size));
 }
 
-void MsgBox::setCheckBox(QMessageBox* msg_box, const QString& text, bool* data) {
+void MsgBox::setCheckBox(const QString& text, bool* data) {
   // Add "don't show this again checkbox.
-  auto* check_box = new QCheckBox(msg_box);
+  auto* check_box = new QCheckBox(this);
 
   check_box->setChecked(*data);
   check_box->setText(text);
+
   connect(check_box, &QCheckBox::toggled, [=](bool checked) {
     *data = checked;
   });
-  msg_box->setCheckBox(check_box);
+
+  QMessageBox::setCheckBox(check_box);
 }
 
 QIcon MsgBox::iconForStatus(QMessageBox::Icon status) {
@@ -62,9 +78,13 @@ QMessageBox::StandardButton MsgBox::show(QWidget* parent,
                                          const QString& detailed_text,
                                          QMessageBox::StandardButtons buttons,
                                          QMessageBox::StandardButton default_button,
-                                         bool* dont_show_again,
+                                         const QString& dont_show_again_id,
                                          const QString& functor_heading,
                                          const std::function<void()>& functor) {
+  if (MsgBox::isDontShowAgain(dont_show_again_id)) {
+    return default_button;
+  }
+
   if (parent == nullptr) {
     parent = qApp->mainFormWidget();
   }
@@ -81,8 +101,10 @@ QMessageBox::StandardButton MsgBox::show(QWidget* parent,
   msg_box.setStandardButtons(buttons);
   msg_box.setDefaultButton(default_button);
 
-  if (dont_show_again != nullptr) {
-    MsgBox::setCheckBox(&msg_box, tr("Do not show this dialog again."), dont_show_again);
+  bool dont_show_again = false;
+
+  if (!dont_show_again_id.isEmpty()) {
+    msg_box.setCheckBox(tr("Do not show again"), &dont_show_again);
   }
 
   if (functor) {
@@ -92,8 +114,13 @@ QMessageBox::StandardButton MsgBox::show(QWidget* parent,
             functor);
   }
 
-  // Display it.
-  if (msg_box.exec() == -1) {
+  auto dialog_res = msg_box.exec();
+
+  if (dont_show_again) {
+    MsgBox::setDontShowAgain(dont_show_again_id, dont_show_again);
+  }
+
+  if (dialog_res == -1) {
     return QMessageBox::StandardButton::Cancel;
   }
   else {
