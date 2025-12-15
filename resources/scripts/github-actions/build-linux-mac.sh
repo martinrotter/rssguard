@@ -108,22 +108,18 @@ if [ $is_linux = true ]; then
 else
   mkdir -p "$prefix/Contents/Frameworks"
   mv "$prefix/Contents/MacOS/librssguard.dylib" "$prefix/Contents/Frameworks/"
-
   install_name_tool -id @rpath/librssguard.dylib "$prefix/Contents/Frameworks/librssguard.dylib"
 
   find "$prefix" -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 
-  # Fix .dylib linking.
-  #install_name_tool -add_rpath "@executable_path/../Frameworks" "$prefix/Contents/MacOS/rssguard"
+  otool -L "$prefix/Contents/Frameworks/librssguard.dylib"
+  otool -L "$prefix/Contents/MacOS/rssguard"
+
+  # Deploy to DMG.
+  macdeployqt "$prefix" -dmg -verbose=2
 
   otool -L "$prefix/Contents/Frameworks/librssguard.dylib"
   otool -L "$prefix/Contents/MacOS/rssguard"
-  
-  # Try to self-sign the app.
-  #codesign -v --deep -fs - "$prefix"
-
-  # Deploy to DMG.
-  macdeployqt "$prefix" -dmg
 
   set -- *.dmg
 fi
