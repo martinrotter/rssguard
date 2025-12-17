@@ -470,7 +470,7 @@ Number of disabled feeds: %3</source>
       <location filename="../src/librssguard/database/databasewriter.cpp" line="51"/>
       <location filename="../src/librssguard/database/databasewriter.cpp" line="84"/>
       <source>database writer is stopping</source>
-      <translation type="unfinished">database writer is stopping</translation>
+      <translation>データベースライターが停止しています</translation>
     </message>
   </context>
   <context>
@@ -1157,17 +1157,17 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
       <source>Enable or disable feeds</source>
-      <translation type="unfinished">Enable or disable feeds</translation>
+      <translation>フィードを有効または無効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="305"/>
       <source>You selected multiple feeds to enable/disable them.</source>
-      <translation type="unfinished">You selected multiple feeds to enable/disable them.</translation>
+      <translation>複数のフィードを選択して有効化/無効化</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="306"/>
       <source>Do you really want to enable or disable selected feeds?</source>
-      <translation type="unfinished">Do you really want to enable or disable selected feeds?</translation>
+      <translation>選択したフィードを本当に有効または無効にしますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="381"/>
@@ -5629,22 +5629,22 @@ Login tokens expiration: %2</source>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="542"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="543"/>
       <source>%n selected articles(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n selected articles(s)</numerusform>
+      <translation>
+        <numerusform>%n 件の選択された記事</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="676"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="985"/>
       <source>Filtering changed</source>
-      <translation type="unfinished">Filtering changed</translation>
+      <translation>フィルタリングが変更されました</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/messagesview.cpp" line="677"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="986"/>
       <source>%n article(s) left after filtering change</source>
-      <translation type="unfinished">
-        <numerusform>%n article(s) left after filtering change</numerusform>
+      <translation>
+        <numerusform>フィルタリングの変更後、%n 件の記事が残っています</numerusform>
       </translation>
     </message>
     <message>
@@ -5683,7 +5683,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/messagebox.cpp" line="107"/>
       <source>Do not show again</source>
-      <translation type="unfinished">Do not show again</translation>
+      <translation>再度表示しない</translation>
     </message>
   </context>
   <context>
@@ -6493,9 +6493,9 @@ List of supported readers:</source>
       <source>%1
 line: %2
 stack: %3</source>
-      <translation type="unfinished">%1
-line: %2
-stack: %3</translation>
+      <translation>%1
+行: %2
+スタック: %3</translation>
     </message>
   </context>
   <context>
