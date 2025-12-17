@@ -33,6 +33,7 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual void start(bool freshly_activated);
     virtual QString code() const;
     virtual QList<QAction*> serviceMenu();
+    virtual QString additionalTooltip() const;
     virtual void saveAllCachedData(bool ignore_errors);
     virtual LabelOperation supportedLabelOperations() const;
     virtual bool supportsFeedAdding() const;
