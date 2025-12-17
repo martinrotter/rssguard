@@ -18,13 +18,14 @@
 #     cmake --build .
 #     cmake --install .
 #
-# Variables:
+# Configure options:
 #   BUILD_WITH_QT6 - Build either with Qt 6 or Qt 5.
 #   BUILD_MSYS2 - Build RSS Guard for MSYS2 distribution, this particularly
 #                 enables relevant MSYS2 FHS tweaks.
 #   NO_UPDATE_CHECK - Disable automatic checking for new application updates.
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
+#   RUN_GO_MOD_TIDY - Runs "go mod tidy" when bundling Go-based plugins.
 #   ENABLE_TESTS - Enables some tests.
 #   ENABLE_ICU - Enable direct ICU dependency, used to convert among text encodings.
 #   ENABLE_MEDIAPLAYER_QTMULTIMEDIA - Enable media player (QtMultimedia/ffmpeg implementation).
@@ -121,6 +122,7 @@ option(LOAD_PLUGINS_FROM_PARENT "Force loading of plugin libraries from parent f
 option(REVISION_FROM_GIT "Get revision using `git rev-parse`." ON)
 option(NO_UPDATE_CHECK "Disable automatic checking for new application updates." OFF)
 option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
+option(RUN_GO_MOD_TIDY "Runs 'go mod tidy' when bundling Go-based plugins." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
 option(ENABLE_TESTS "Enable some tests." OFF)
 option(ENABLE_ICU "Enable ICU." OFF)
