@@ -56,9 +56,19 @@ jobs:
 
       - name: Create full source tarball
         run: |
-          git submodule foreach --recursive 'git clean -xfd'
-          git clean -xfd
-          tar --exclude-vcs --exclude=.github -czf "${TAR_NAME}" .
+          TMPDIR="$(mktemp -d)"
+
+          # Main repository
+          git archive --format=tar HEAD | tar -x -C "${TMPDIR}"
+
+          # Submodules (recursive)
+          git submodule foreach --recursive '
+            mkdir -p "${TMPDIR}/${path}" &&
+            git archive --format=tar HEAD | tar -x -C "${TMPDIR}/${path}"
+          '
+
+          # Final compressed tarball
+          tar -czf "${TAR_NAME}" -C "${TMPDIR}" . 
 
       - name: Upload source tarball
         uses: actions/upload-artifact@v4
