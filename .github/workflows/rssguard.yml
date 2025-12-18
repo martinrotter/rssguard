@@ -57,6 +57,7 @@ jobs:
       - name: Create full source tarball
         run: |
           TMPDIR="$(mktemp -d)"
+          export TMPDIR
 
           # Main repository
           git archive --format=tar HEAD | tar -x -C "${TMPDIR}"
