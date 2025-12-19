@@ -556,11 +556,7 @@ bool GmailNetworkFactory::fillFullMessage(Message& msg, const QJsonObject& json,
   msg.m_url = QSL("https://mail.google.com/mail/u/0/#all/%1").arg(msg.m_customId);
 
   msg.m_createdFromFeed = true;
-  msg.m_created = TextFactory::parseDateTime(headers[QSL("Date")], &m_dateTimeFormat);
-
-  if (!msg.m_created.isValid()) {
-    msg.m_created = TextFactory::parseDateTime(headers[QSL("date")], &m_dateTimeFormat);
-  }
+  msg.m_created = TextFactory::parseDateTime(json["internalDate"].toString().toLongLong());
 
   if (msg.m_title.isEmpty()) {
     msg.m_title = tr("No subject");
