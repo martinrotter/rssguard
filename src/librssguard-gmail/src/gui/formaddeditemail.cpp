@@ -73,8 +73,10 @@ void FormAddEditEmail::show(FormAddEditEmail::Mode mode, Message* original_messa
       }
     }
   }
+  else {
+    addRecipientRow()->setFocus();
+  }
 
-  addRecipientRow()->setFocus();
   QDialog::exec();
 }
 
