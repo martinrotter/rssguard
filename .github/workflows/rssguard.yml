@@ -57,6 +57,7 @@ jobs:
       - name: Create full source tarball
         run: |
           TMPDIR="$(mktemp -d)/rssguard-${VERSION}"
+          mkdir -p "${TMPDIR}"          
           export TMPDIR
 
           # Main repository
