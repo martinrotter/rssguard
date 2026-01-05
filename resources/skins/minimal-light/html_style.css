@@ -13,6 +13,30 @@ p {
   padding: 0em;
 }
 
+.article h1 {
+  font-size: 1.5em;
+}
+
+.article h2 {
+  font-size: 1.3em;
+}
+
+.article h3 {
+  font-size: 1.25em;
+}
+
+.article h4 {
+  font-size: 1.15em;
+}
+
+.article h5 {
+  font-size: 1.05em;
+}
+
+.article h6 {
+  font-size: 1.02em;
+}
+
 .article h1,
 .article h2,
 .article h3,
@@ -37,7 +61,7 @@ p {
 .article-urls-strip {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  line-height: 2.2;
+  line-height: 2.0;
 }
 
 .article-url {

@@ -6,7 +6,6 @@
 #include "core/message.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/rootitem.h"
-#include "src/3rd-party/mimesis/mimesis.hpp"
 
 #include <QNetworkReply>
 #include <QObject>

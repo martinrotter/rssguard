@@ -6,6 +6,7 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/settings.h"
 #include "services/abstract/serviceroot.h"
 
 #include <QBuffer>
@@ -19,13 +20,8 @@ QLiteHtmlArticleViewer::QLiteHtmlArticleViewer(QWidget* parent) : QLiteHtmlWidge
   viewport()->setAutoFillBackground(false);
   setFrameShape(QFrame::Shape::NoFrame);
   setFrameShadow(QFrame::Shadow::Plain);
-  // setFontAntialiasing(true);
 
-  // horizontalScrollBar()->setSingleStep(5);
-  // verticalScrollBar()->setSingleStep(5);
-
-  // NOTE: This is called explicitly to set initial value.
-  documentContainer()->setLoadExternalResources(WebViewer::loadExternalResources());
+  setLoadExternalResources(qApp->settings()->value(GROUP(Browser), SETTING(Browser::LoadExternalResources)).toBool());
 
   connect(this, &QLiteHtmlWidget::linkHighlighted, this, &QLiteHtmlArticleViewer::linkMouseHighlighted);
   connect(this, &QLiteHtmlWidget::linkClicked, this, &QLiteHtmlArticleViewer::linkMouseClicked);
