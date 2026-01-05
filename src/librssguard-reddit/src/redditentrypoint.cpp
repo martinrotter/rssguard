@@ -30,7 +30,7 @@ QList<ServiceRoot*> RedditEntryPoint::initializeSubtree() const {
 }
 
 QString RedditEntryPoint::name() const {
-  return QObject::tr("Reddit (WIP, no real functionality yet)");
+  return QSL("Reddit");
 }
 
 QString RedditEntryPoint::code() const {

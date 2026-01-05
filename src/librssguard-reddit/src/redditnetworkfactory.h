@@ -14,7 +14,17 @@ class RootItem;
 class RedditServiceRoot;
 class OAuth2Service;
 
-struct Subreddit {};
+struct RedditComment {
+    QString id;
+    QString parentId;
+    QString author;
+    QString bodyHtml;
+    QString bodyText;
+    QDateTime created;
+    int score = 0;
+
+    QList<RedditComment> replies;
+};
 
 class RedditNetworkFactory : public QObject {
     Q_OBJECT
@@ -47,6 +57,20 @@ class RedditNetworkFactory : public QObject {
 
   private:
     void initializeOauth();
+
+    QJsonArray fetchMoreChildren(const QString& link_fullname,
+                                 const QStringList& children_ids,
+                                 const QNetworkProxy& proxy);
+    QList<RedditComment> parseCommentTree(const QJsonArray& children,
+                                          const QString& link_fullname,
+                                          const QNetworkProxy& proxy);
+    QList<RedditComment> commentsTree(const QString& subreddit, const QString& post_id, const QNetworkProxy& proxy);
+    QString commentsTreeToHtml(const QList<RedditComment>& comments,
+                               const QString& post_title,
+                               const QString& post_url);
+    QString cleanScOnOff(const QString& html);
+    void renderCommentHtml(const RedditComment& c, QString& html, int depth);
+    RedditComment commentFromJson(const QJsonObject& data);
 
   private:
     RedditServiceRoot* m_service;

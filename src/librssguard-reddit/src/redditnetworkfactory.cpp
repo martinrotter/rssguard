@@ -14,12 +14,15 @@
 #include "src/redditserviceroot.h"
 #include "src/redditsubscription.h"
 
+#include <librssguard/network-web/webfactory.h>
+
 #include <QHttpMultiPart>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QRegularExpression>
 #include <QUrl>
+#include <QUrlQuery>
 
 RedditNetworkFactory::RedditNetworkFactory(QObject* parent)
   : QObject(parent), m_service(nullptr), m_username(QString()), m_batchSize(REDDIT_DEFAULT_BATCH_SIZE),
@@ -213,6 +216,214 @@ QList<Feed*> RedditNetworkFactory::subreddits(const QNetworkProxy& custom_proxy)
   return subs;
 }
 
+RedditComment RedditNetworkFactory::commentFromJson(const QJsonObject& data) {
+  RedditComment c;
+
+  c.id = data["id"].toString();
+  c.parentId = data["parent_id"].toString();
+  c.author = data["author"].toString();
+  c.bodyHtml = cleanScOnOff(data["body_html"].toString());
+  c.bodyText = data["body"].toString();
+  c.score = data["score"].toInt();
+
+  c.created = TextFactory::parseDateTime(1000 * data["created_utc"].toVariant().toLongLong());
+
+  return c;
+}
+
+QJsonArray RedditNetworkFactory::fetchMoreChildren(const QString& link_fullname,
+                                                   const QStringList& children_ids,
+                                                   const QNetworkProxy& proxy) {
+  if (children_ids.isEmpty()) {
+    return {};
+  }
+
+  QList<QPair<QByteArray, QByteArray>> headers;
+  headers.append({QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), m_oauth2->bearer().toLocal8Bit()});
+
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  QString url = QSL("https://oauth.reddit.com/api/morechildren?");
+  QUrlQuery query;
+
+  query.addQueryItem(QSL("api_type"), QSL("json"));
+  query.addQueryItem(QSL("link_id"), link_fullname);
+  query.addQueryItem(QSL("children"), children_ids.join(','));
+  query.addQueryItem(QSL("raw_json"), QSL("1"));
+
+  url += query.toString();
+
+  QByteArray output;
+
+  auto result = NetworkFactory::performNetworkOperation(url,
+                                                        timeout,
+                                                        {},
+                                                        output,
+                                                        QNetworkAccessManager::GetOperation,
+                                                        headers,
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        proxy)
+                  .m_networkError;
+
+  if (result != QNetworkReply::NoError) {
+    throw NetworkException(result, output);
+  }
+
+  QJsonDocument doc = QJsonDocument::fromJson(output);
+  return doc["json"].toObject()["data"].toObject()["things"].toArray();
+}
+
+QList<RedditComment> RedditNetworkFactory::parseCommentTree(const QJsonArray& children,
+                                                            const QString& link_fullname,
+                                                            const QNetworkProxy& proxy) {
+  QList<RedditComment> result;
+
+  for (const QJsonValue& val : children) {
+    QJsonObject obj = val.toObject();
+    QString kind = obj["kind"].toString();
+    QJsonObject data = obj["data"].toObject();
+
+    if (kind == QSL("t1")) {
+      RedditComment c = commentFromJson(data);
+
+      if (data["replies"].isObject()) {
+        auto replyChildren = data["replies"].toObject()["data"].toObject()["children"].toArray();
+
+        c.replies = parseCommentTree(replyChildren, link_fullname, proxy);
+      }
+
+      result.append(c);
+    }
+    else if (kind == QSL("more")) {
+      QStringList ids;
+      for (const QJsonValue& id : data["children"].toArray()) {
+        ids.append(id.toString());
+      }
+
+      // Fetch missing comments
+      QJsonArray expanded = fetchMoreChildren(link_fullname, ids, proxy);
+
+      // Recursively parse fetched comments
+      auto expandedComments = parseCommentTree(expanded, link_fullname, proxy);
+
+      result.append(expandedComments);
+    }
+  }
+
+  return result;
+}
+
+QList<RedditComment> RedditNetworkFactory::commentsTree(const QString& subreddit,
+                                                        const QString& post_id,
+                                                        const QNetworkProxy& proxy) {
+  if (m_oauth2->bearer().isEmpty()) {
+    throw ApplicationException(tr("you are not logged in"));
+  }
+
+  QList<QPair<QByteArray, QByteArray>> headers;
+  headers.append({QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), m_oauth2->bearer().toLocal8Bit()});
+
+  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  QByteArray output;
+
+  QString url = QSL("https://oauth.reddit.com/r/%1/comments/%2?limit=0&raw_json=1").arg(subreddit, post_id);
+
+  auto result = NetworkFactory::performNetworkOperation(url,
+                                                        timeout,
+                                                        {},
+                                                        output,
+                                                        QNetworkAccessManager::GetOperation,
+                                                        headers,
+                                                        false,
+                                                        {},
+                                                        {},
+                                                        proxy)
+                  .m_networkError;
+
+  if (result != QNetworkReply::NoError) {
+    throw NetworkException(result, output);
+  }
+
+  QJsonDocument doc = QJsonDocument::fromJson(output);
+  if (!doc.isArray()) {
+    throw ApplicationException(tr("Invalid Reddit response"));
+  }
+
+  QJsonArray root = doc.array();
+  if (root.size() < 2) {
+    return {};
+  }
+
+  // ✅ CORRECT way
+  QString link_fullname = QSL("t3_") + post_id;
+
+  QJsonArray initialComments = root.at(1).toObject()["data"].toObject()["children"].toArray();
+
+  return parseCommentTree(initialComments, link_fullname, proxy);
+}
+
+void RedditNetworkFactory::renderCommentHtml(const RedditComment& c, QString& html, int depth) {
+  const int indent_px = depth * 4;
+
+  html += QSL("<div style=\""
+              "  margin-left: %1px;"
+              "  border-left: 1px solid #ccc;"
+              "  padding-left: 8px;"
+              "  margin-top: 8px;"
+              "\">")
+            .arg(indent_px);
+
+  // Header.
+  html += QSL("<div style=\"font-size: 0.9em; color: #555;\">"
+              "<b>%1</b> · %2 · score %3"
+              "</div>")
+            .arg(c.author.toHtmlEscaped(), c.created.toString(Qt::ISODate), QString::number(c.score));
+
+  // Body.
+  if (!c.bodyHtml.isEmpty()) {
+    html += QSL("<div class=\"comment-body\">%1</div>").arg(c.bodyHtml);
+  }
+  else {
+    html += QSL("<div class=\"comment-body\"><pre>%1</pre></div>").arg(c.bodyText.toHtmlEscaped());
+  }
+
+  // Replies.
+  for (const RedditComment& reply : c.replies) {
+    renderCommentHtml(reply, html, depth + 1);
+  }
+
+  html += QSL("</div>");
+}
+
+QString RedditNetworkFactory::commentsTreeToHtml(const QList<RedditComment>& comments,
+                                                 const QString& post_title,
+                                                 const QString& post_url) {
+  QString html = QSL("<hr>");
+
+  if (comments.isEmpty()) {
+    html += QSL("<i>No comments.</i>");
+  }
+  else {
+    for (const RedditComment& c : comments) {
+      renderCommentHtml(c, html, 0);
+    }
+  }
+
+  return html;
+}
+
+QString RedditNetworkFactory::cleanScOnOff(const QString& html) {
+  static QRegularExpression sc_on_off(QSL("(<|&lt;)!-- ?SC_(ON|OFF) ?--(>|&gt;) ?"));
+
+  QString loc_html = html;
+  loc_html.remove(sc_on_off);
+
+  return loc_html;
+}
+
 QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetworkProxy& custom_proxy) {
   QString bearer = m_oauth2->bearer().toLocal8Bit();
 
@@ -264,7 +475,7 @@ QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetwork
       after = root_doc["data"].toObject()["after"].toString();
 
       for (const QJsonValue& sub_val : root_doc["data"].toObject()["children"].toArray()) {
-        const auto msg_obj = sub_val.toObject()["data"].toObject();
+        const auto msg_obj = sub_val.toObject().value("data").toObject();
 
         Message new_msg;
 
@@ -272,17 +483,20 @@ QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetwork
         new_msg.m_title = msg_obj["title"].toString();
         new_msg.m_author = msg_obj["author"].toString();
         new_msg.m_createdFromFeed = true;
-        new_msg.m_created = QDateTime::fromSecsSinceEpoch(msg_obj["created_utc"].toVariant().toLongLong(),
-#if QT_VERSION >= 0x060700 // Qt >= 6.7.0
-                                                          QTimeZone::utc());
-#else
-                                                          Qt::TimeSpec::UTC);
-#endif
+        new_msg.m_created = TextFactory::parseDateTime(1000 * msg_obj["created_utc"].toVariant().toLongLong());
         new_msg.m_url = QSL("https://reddit.com") + msg_obj["permalink"].toString();
-        new_msg.m_contents =
-          msg_obj["description_html"]
-            .toString(); // když prazdny, je poustnutej třeba obrazek či odkaz?, viz property "post_hint"?
         new_msg.m_rawContents = QJsonDocument(msg_obj).toJson(QJsonDocument::JsonFormat::Compact);
+
+        new_msg.m_contents = WebFactory::unescapeHtml(msg_obj["selftext_html"].toString());
+
+        if (new_msg.m_contents.isEmpty() && msg_obj.contains(QSL("url"))) {
+          // NOTE: Post does not have text, maybe URL?
+          new_msg.m_contents = QSL("<a href=\"%1\">%2</a>")
+                                 .arg(msg_obj.value(QSL("url")).toString(), msg_obj.value(QSL("domain")).toString());
+        }
+
+        auto cmnts = commentsTree(msg_obj.value(QSL("subreddit")).toString(), new_msg.m_customId, custom_proxy);
+        new_msg.m_contents += commentsTreeToHtml(cmnts, new_msg.m_title, new_msg.m_url);
 
         msgs.append(new_msg);
       }
