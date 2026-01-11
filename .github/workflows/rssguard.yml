@@ -113,7 +113,7 @@ jobs:
           python-version: "3.13"
 
       - name: Prepare Linux environment
-        run: chmod +x ./resources/scripts/github-actions/prepare-linux.sh && ./resources/scripts/github-actions/prepare-linux.sh
+        run: ./resources/scripts/github-actions/prepare-linux.sh
         if: matrix.os == 'ubuntu-24.04'
 
       - name: Checkout source code submodules
