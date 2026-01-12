@@ -86,6 +86,7 @@ jobs:
     runs-on: "${{ matrix.os }}"
     container: ${{ matrix.cont }}
     strategy:
+      fail-fast: false
       matrix:
         os: [windows-2022, ubuntu-24.04, macos-15]
         use_qt5: ["ON", "OFF"]
@@ -181,4 +182,5 @@ jobs:
           artifactErrorsFailBuild: true
           artifacts: artifacts/*/*
           draft: true
+
 
