@@ -103,7 +103,7 @@ if [ $is_linux = true ]; then
   wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
   chmod +x ./quick-sharun
 
-  ./quick-sharun /usr/bin/rssguard /usr/lib/rssguard/*
+  ./quick-sharun /usr/*/rssguard*
 
   set -- *.AppImage
 else
