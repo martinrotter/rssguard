@@ -47,6 +47,7 @@
     </screenshot>
   </screenshots>
   <url type="homepage">https://github.com/martinrotter/rssguard</url>
+  <url type="vcs-browser">https://github.com/martinrotter/rssguard</url>
   <url type="help">https://rssguard.readthedocs.io</url>
   <url type="bugtracker">https://github.com/martinrotter/rssguard/issues</url>
   <url type="donation">https://github.com/sponsors/martinrotter</url>
