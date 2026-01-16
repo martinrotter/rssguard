@@ -19,7 +19,7 @@ if [[ "$os" == *"ubuntu"* ]]; then
   is_linux=true
   os_id="linux64"
   image_suffix="AppImage"
-  prefix="/usr/local/rssguard"
+  prefix="/usr"
 
   libmpv="ON"
   qtmultimedia="OFF"
@@ -102,7 +102,7 @@ if [ $is_linux = true ]; then
   wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
   chmod +x ./quick-sharun
 
-  ./quick-sharun "$prefix"/*/*
+  ./quick-sharun /usr/bin/rssguard /usr/lib/rssguard/*
 
   set -- *.AppImage
 else
