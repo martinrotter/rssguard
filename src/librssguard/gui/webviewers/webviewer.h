@@ -38,6 +38,7 @@ class WebViewer {
     //   3. Viewer must set WebBrowser to be event filter at some point.
     virtual void bindToBrowser(WebBrowser* browser) = 0;
 
+    // Called when network settings are changed app-wide.
     virtual void reloadNetworkSettings() = 0;
 
     // Perform inline search.

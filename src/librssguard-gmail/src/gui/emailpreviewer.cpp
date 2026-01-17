@@ -30,9 +30,7 @@ EmailPreviewer::EmailPreviewer(GmailServiceRoot* account, QWidget* parent)
   m_ui.m_btnReply->setIcon(qApp->icons()->fromTheme(QSL("mail-reply-sender")));
 
   QMenu* menu_attachments = new QMenu(this);
-
   m_ui.m_btnAttachments->setMenu(menu_attachments);
-
   m_webView->setToolBarVisible(false);
 
   connect(menu_attachments, &QMenu::triggered, this, &EmailPreviewer::downloadAttachment);
@@ -57,7 +55,7 @@ void EmailPreviewer::clear() {
 
 void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item) {
   m_message = msg;
-  m_webView->loadMessage({msg}, selected_item);
+  m_webView->setHtml(msg.m_contents, m_webView->viewer()->urlForMessage(msg, selected_item), selected_item);
 
   m_ui.m_tbFrom->setText(msg.m_author);
   m_ui.m_tbSubject->setText(msg.m_title);

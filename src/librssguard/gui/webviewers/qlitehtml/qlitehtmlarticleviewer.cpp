@@ -56,15 +56,11 @@ void QLiteHtmlArticleViewer::clear() {
 }
 
 void QLiteHtmlArticleViewer::loadMessage(const Message& message, RootItem* root) {
-  emit loadingStarted();
-
   auto url = urlForMessage(message, root);
   auto html = htmlForMessage(message, root);
 
   // NOTE: Sadly, litehtml does not really support RTL, therefore RTL is not supported here either.
   setHtml(html, url, root);
-
-  emit loadingFinished(true);
 }
 
 QString QLiteHtmlArticleViewer::htmlForMessage(const Message& message, RootItem* root) const {
@@ -117,6 +113,8 @@ void QLiteHtmlArticleViewer::setZoomFactor(qreal zoom_factor) {
 }
 
 void QLiteHtmlArticleViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
+  emit loadingStarted();
+
   m_root = root;
 
   documentContainer()->setNetworkProxy(m_root == nullptr ? QNetworkProxy()
@@ -127,6 +125,7 @@ void QLiteHtmlArticleViewer::setHtml(const QString& html, const QUrl& url, RootI
 
   emit pageTitleChanged(QLiteHtmlWidget::title());
   emit pageUrlChanged(url);
+  emit loadingFinished(true);
 }
 
 ContextMenuData QLiteHtmlArticleViewer::provideContextMenuData(QContextMenuEvent* event) {
