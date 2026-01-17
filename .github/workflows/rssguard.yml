@@ -73,7 +73,7 @@ jobs:
           tar -czf "${TAR_NAME}" -C "${TMPDIR}/.." "$(basename "${TMPDIR}")"
 
       - name: Upload source tarball
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: source-tarball
           path: ${{ env.TAR_NAME }}
@@ -130,7 +130,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload binaries
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: RSS_Guard-${{ runner.os }}-Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}
           path: |
