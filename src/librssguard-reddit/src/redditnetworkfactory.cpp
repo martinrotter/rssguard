@@ -366,7 +366,7 @@ QList<RedditComment> RedditNetworkFactory::commentsTree(const QString& subreddit
 }
 
 void RedditNetworkFactory::renderCommentHtml(const RedditComment& c, QString& html, int depth) {
-  const int indent_px = depth * 4;
+  const int indent_px = 4;
 
   html += QSL("<div style=\""
               "  margin-left: %1px;"
