@@ -458,6 +458,11 @@ QString TextFactory::shorten(const QString& input, int text_length_limit) {
   }
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> e41f7828f (fix divers)
 QString TextFactory::fromEncoding(const QByteArray& data, const QString& encoding) {
 #if defined(HAS_ICU)
   UErrorCode status = U_ZERO_ERROR;
@@ -483,6 +488,12 @@ QString TextFactory::fromEncoding(const QByteArray& data, const QString& encodin
 #elif QT_VERSION_MAJOR == 5
   auto* codec = QTextCodec::codecForName(encoding.toLocal8Bit());
   return codec->toUnicode(data);
+<<<<<<< HEAD
+=======
+#elif QT_VERSION_MAJOR == 6
+  auto decoder = QStringDecoder(QStringConverter::Utf8);
+  return decoder.decode(data);
+>>>>>>> e41f7828f (fix divers)
 #else
   auto decoder = QStringDecoder(encoding);
   return decoder.decode(data);
@@ -518,6 +529,12 @@ QByteArray TextFactory::toEncoding(const QString& str, const QString& encoding) 
 #elif QT_VERSION_MAJOR == 5
   auto* codec = QTextCodec::codecForName(encoding.toLocal8Bit());
   return codec->fromUnicode(str);
+<<<<<<< HEAD
+=======
+#elif QT_VERSION_MAJOR == 6
+  auto encoder = QStringEncoder(QStringConverter::Utf8);
+  return encoder.encode(str);
+>>>>>>> e41f7828f (fix divers)
 #else
   auto encoder = QStringEncoder(encoding);
   return encoder.encode(str);
@@ -590,6 +607,10 @@ QStringList TextFactory::availableEncodingsInit() {
 #endif
 }
 
+<<<<<<< HEAD
+=======
+>>>>>>> e14f31b91 (fix compilation on QT6)
+>>>>>>> e41f7828f (fix divers)
 quint64 TextFactory::initializeSecretEncryptionKey() {
   if (s_encryptionKey == 0x0) {
     // Check if file with encryption key exists.
