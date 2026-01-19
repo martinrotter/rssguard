@@ -49,6 +49,10 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void loadMessage(const Message& message, RootItem* root);
     void setToolBarVisible(bool visible);
 
+  protected slots:
+    virtual void onLinkMouseHighlighted(const QUrl& url);
+    virtual void onLinkMouseClicked(const QUrl& url);
+
   protected:
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
@@ -67,9 +71,6 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
-
-    void onLinkMouseHighlighted(const QUrl& url);
-    void onLinkMouseClicked(const QUrl& url);
 
   signals:
     void iconChanged(int index, const QIcon& icon);

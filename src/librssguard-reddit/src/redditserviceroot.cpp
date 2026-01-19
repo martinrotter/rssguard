@@ -72,6 +72,16 @@ QList<Message> RedditServiceRoot::obtainNewMessages(Feed* feed,
   return messages;
 }
 
+CustomMessagePreviewer* RedditServiceRoot::customMessagePreviewer() {
+  if (m_threadPreview.isNull()) {
+    m_threadPreview = new ThreadPreviewer(this);
+  }
+
+  m_threadPreview->webBrowser()->reloadZoomFactor();
+
+  return m_threadPreview.data();
+}
+
 bool RedditServiceRoot::isSyncable() const {
   return true;
 }

@@ -32,6 +32,26 @@ void GmailServiceRoot::updateTitle() {
   setTitle(TextFactory::extractUsernameFromEmail(m_network->username()) + QSL(" (Gmail)"));
 }
 
+QStringList GmailServiceRoot::getAllGmailRecipients(const QSqlDatabase& db) {
+  int account_id = accountId();
+  SqlQuery q(db);
+  QStringList rec;
+
+  q.prepare(QSL("SELECT DISTINCT author "
+                "FROM Messages "
+                "WHERE account_id = :account_id AND author IS NOT NULL AND author != '' "
+                "ORDER BY lower(author) ASC;"));
+  q.bindValue(QSL(":account_id"), account_id);
+
+  q.exec();
+
+  while (q.next()) {
+    rec.append(q.value(0).toString());
+  }
+
+  return rec;
+}
+
 void GmailServiceRoot::replyToEmail() {
   FormAddEditEmail(this, qApp->mainFormWidget()).show(FormAddEditEmail::Mode::Reply, &m_replyToMessage);
 }

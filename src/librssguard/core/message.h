@@ -92,7 +92,7 @@ class RSSGUARD_DLLSPEC Message {
     int m_accountId;
     int m_id;
     QString m_customId;
-    QString m_customHash;
+    QString m_customData;
     bool m_isRead;
     bool m_isImportant;
     bool m_isDeleted;

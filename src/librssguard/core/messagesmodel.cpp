@@ -544,7 +544,7 @@ const Message& MessagesModel::messageForRow(int row) const {
 void MessagesModel::setupHeaderData() {
   m_headerData << tr("Id") << tr("Read") << tr("Important") << tr("Deleted") << tr("Permanently deleted")
                << tr("Feed ID") << tr("Title") << tr("URL") << tr("Author") << tr("Date") << tr("Contents")
-               << tr("Score") << tr("Account ID") << tr("Custom ID") << tr("Custom hash") << tr("Feed")
+               << tr("Score") << tr("Account ID") << tr("Custom ID") << tr("Custom data") << tr("Feed")
                << tr("Has attachments") << tr("Assigned labels");
 
   m_tooltipData << tr("ID of the article.") << tr("Is article read?") << tr("Is article important?")
@@ -552,7 +552,7 @@ void MessagesModel::setupHeaderData() {
                 << tr("ID of feed which this article belongs to.") << tr("Title of the article.")
                 << tr("Url of the article.") << tr("Author of the article.") << tr("Creation date of the article.")
                 << tr("Contents of the article.") << tr("Score of the article.") << tr("Account ID of the article.")
-                << tr("Custom ID of the article.") << tr("Custom hash of the article.")
+                << tr("Custom ID of the article.") << tr("Custom account-specific data of the article.")
                 << tr("Name of feed of the article.") << tr("Indication of attachments presence within the article.")
                 << tr("Labels assigned to the article.");
 }
@@ -642,8 +642,8 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         case MSG_MDL_CUSTOM_ID_INDEX:
           return msg.m_customId;
 
-        case MSG_MDL_CUSTOM_HASH_INDEX:
-          return msg.m_customHash;
+        case MSG_MDL_CUSTOM_DATA_INDEX:
+          return msg.m_customData;
 
         case MSG_MDL_FEED_TITLE_INDEX:
           return msg.m_feedTitle;

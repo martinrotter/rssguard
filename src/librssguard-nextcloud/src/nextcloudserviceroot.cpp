@@ -108,7 +108,7 @@ void NextcloudServiceRoot::saveAllCachedData(bool ignore_errors) {
 
       for (const Message& msg : messages) {
         feed_ids.append(hashed_feeds.value(msg.m_feedId)->customId());
-        guid_hashes.append(msg.m_customHash);
+        guid_hashes.append(msg.m_customData);
       }
 
       auto res = network()->markMessagesStarred(key, feed_ids, guid_hashes, networkProxy());

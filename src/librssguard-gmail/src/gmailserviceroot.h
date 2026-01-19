@@ -19,6 +19,8 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     GmailNetworkFactory* network() const;
 
+    QStringList getAllGmailRecipients(const QSqlDatabase& db);
+
     virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
     virtual QList<QAction*> serviceMenu();
     virtual bool isSyncable() const;
@@ -57,7 +59,5 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     QAction* m_actionReply;
     Message m_replyToMessage;
 };
-
-
 
 #endif // GMAILSERVICEROOT_H

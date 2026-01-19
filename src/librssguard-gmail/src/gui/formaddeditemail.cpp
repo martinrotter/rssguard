@@ -39,9 +39,9 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
           this,
           &FormAddEditEmail::onOkClicked);
 
-  QSqlDatabase db = qApp->database()->driver()->connection(QSL("FormAddEditEmail"));
+  QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
-  m_possibleRecipients = DatabaseQueries::getAllGmailRecipients(db, m_root->accountId());
+  m_possibleRecipients = m_root->getAllGmailRecipients(db);
   auto ctrls = recipientControls();
 
   for (auto* rec : std::as_const(ctrls)) {

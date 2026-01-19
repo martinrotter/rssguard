@@ -30,7 +30,7 @@ MessagesModelSqlLayer::MessagesModelSqlLayer() : m_filter(QSL(DEFAULT_SQL_MESSAG
   m_orderByNames.append(QSL("Messages.score"));
   m_orderByNames.append(QSL("Messages.account_id"));
   m_orderByNames.append(QSL("Messages.custom_id"));
-  m_orderByNames.append(QSL("Messages.custom_hash"));
+  m_orderByNames.append(QSL("Messages.custom_data"));
   m_orderByNames.append(QSL("msg_labels"));
 }
 
@@ -105,7 +105,6 @@ QList<Message> MessagesModelSqlLayer::fetchMessages(const QHash<QString, Label*>
   QString statemnt = selectStatement(limit, offset, additional_article_id);
   SqlQuery q(m_db);
 
-
   q.exec(statemnt);
 
   while (q.next()) {
@@ -166,8 +165,8 @@ int MessagesModelSqlLayer::mapColumnToDatabase(int column) const {
     case MSG_MDL_CUSTOM_ID_INDEX:
       return MSG_DB_CUSTOM_ID_INDEX;
 
-    case MSG_MDL_CUSTOM_HASH_INDEX:
-      return MSG_DB_CUSTOM_HASH_INDEX;
+    case MSG_MDL_CUSTOM_DATA_INDEX:
+      return MSG_DB_CUSTOM_DATA_INDEX;
 
     case MSG_MDL_LABELS:
       return MSG_DB_LABELS_IDS;

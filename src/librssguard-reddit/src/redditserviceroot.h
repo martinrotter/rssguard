@@ -5,6 +5,7 @@
 
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceroot.h"
+#include "src/gui/threadpreviewer.h"
 
 class RedditNetworkFactory;
 
@@ -31,6 +32,7 @@ class RedditServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QList<Message> obtainNewMessages(Feed* feed,
                                              const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                              const QHash<QString, QStringList>& tagged_messages);
+    virtual CustomMessagePreviewer* customMessagePreviewer();
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
@@ -39,9 +41,8 @@ class RedditServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     void updateTitle();
 
   private:
+    QPointer<ThreadPreviewer> m_threadPreview;
     RedditNetworkFactory* m_network;
 };
-
-
 
 #endif // REDDITSERVICEROOT_H

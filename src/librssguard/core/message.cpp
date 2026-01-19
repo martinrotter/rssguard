@@ -3,9 +3,9 @@
 #include "core/message.h"
 
 #include "miscellaneous/application.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/label.h"
 
@@ -78,7 +78,7 @@ QString Enclosures::encodeEnclosuresToString(const QList<QSharedPointer<MessageE
 }
 
 Message::Message() {
-  m_title = m_url = m_feedCustomId = m_author = m_contents = m_rawContents = m_feedTitle = m_customId = m_customHash =
+  m_title = m_url = m_feedCustomId = m_author = m_contents = m_rawContents = m_feedTitle = m_customId = m_customData =
     QL1S("");
   m_accountId = m_id = m_feedId = 0;
   m_score = 0.0;
@@ -96,7 +96,7 @@ Message::Message(const Message& other) {
   m_feedCustomId = other.m_feedCustomId;
   m_feedTitle = other.m_feedTitle;
   m_customId = other.m_customId;
-  m_customHash = other.m_customHash;
+  m_customData = other.m_customData;
   m_created = other.m_created;
   m_createdFromFeed = other.m_createdFromFeed;
   m_insertedUpdated = other.m_insertedUpdated;
@@ -193,7 +193,7 @@ Message Message::fromSqlQuery(const SqlQuery& record, const QHash<QString, Label
   message.m_score = record.value(MSG_DB_SCORE_INDEX).toDouble();
   message.m_accountId = record.value(MSG_DB_ACCOUNT_ID_INDEX).toInt();
   message.m_customId = record.value(MSG_DB_CUSTOM_ID_INDEX).toString();
-  message.m_customHash = record.value(MSG_DB_CUSTOM_HASH_INDEX).toString();
+  message.m_customData = record.value(MSG_DB_CUSTOM_DATA_INDEX).toString();
   message.m_assignedLabels =
     decodeLabelCustomIds(labels, record.value(MSG_DB_LABELS_IDS).toString().split(',', SPLIT_BEHAVIOR::SkipEmptyParts));
 
@@ -219,7 +219,7 @@ QList<Label*> Message::decodeLabelCustomIds(const QHash<QString, Label*>& labels
 }
 
 QDataStream& operator<<(QDataStream& out, const Message& my_obj) {
-  out << my_obj.m_accountId << my_obj.m_customHash << my_obj.m_customId << my_obj.m_feedId << my_obj.m_feedCustomId
+  out << my_obj.m_accountId << my_obj.m_customData << my_obj.m_customId << my_obj.m_feedId << my_obj.m_feedCustomId
       << my_obj.m_id << my_obj.m_isImportant << my_obj.m_isRead << my_obj.m_isDeleted << my_obj.m_isPdeleted
       << my_obj.m_score << my_obj.m_rtlBehavior;
 
@@ -228,7 +228,7 @@ QDataStream& operator<<(QDataStream& out, const Message& my_obj) {
 
 QDataStream& operator>>(QDataStream& in, Message& my_obj) {
   int account_id;
-  QString custom_hash;
+  QString custom_data;
   QString custom_id;
   int feed_id;
   int id;
@@ -240,11 +240,11 @@ QDataStream& operator>>(QDataStream& in, Message& my_obj) {
   double score;
   QString feed_custom_id;
 
-  in >> account_id >> custom_hash >> custom_id >> feed_id >> feed_custom_id >> id >> is_important >> is_read >>
+  in >> account_id >> custom_data >> custom_id >> feed_id >> feed_custom_id >> id >> is_important >> is_read >>
     is_deleted >> is_pdeleted >> score >> is_rtl;
 
   my_obj.m_accountId = account_id;
-  my_obj.m_customHash = custom_hash;
+  my_obj.m_customData = custom_data;
   my_obj.m_customId = custom_id;
   my_obj.m_feedId = feed_id;
   my_obj.m_feedCustomId = feed_custom_id;

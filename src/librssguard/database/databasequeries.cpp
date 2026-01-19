@@ -33,7 +33,7 @@ QStringList initMessageTableAttributes() {
   field_names.append(QSL("Messages.score"));
   field_names.append(QSL("Messages.account_id"));
   field_names.append(QSL("Messages.custom_id"));
-  field_names.append(QSL("Messages.custom_hash"));
+  field_names.append(QSL("Messages.custom_data"));
   field_names.append(QSL("("
                          "SELECT GROUP_CONCAT(Labels.custom_id) "
                          "FROM LabelsInMessages lim "
@@ -1134,7 +1134,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
 
     QString bulk_insert = QSL("INSERT INTO Messages "
                               "(feed, title, is_read, is_important, is_deleted, url, author, score, date_created, "
-                              "contents, enclosures, custom_id, custom_hash, account_id) "
+                              "contents, enclosures, custom_id, custom_data, account_id) "
                               "VALUES %1;");
 
     for (int i = 0; i < msgs_to_insert.size(); i += 1000) {
@@ -1153,7 +1153,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
 
         vals.append(QSL("\n(:feed, ':title', :is_read, :is_important, :is_deleted, "
                         "':url', ':author', :score, :date_created, ':contents', ':enclosures', "
-                        "':custom_id', ':custom_hash', :account_id)")
+                        "':custom_id', ':custom_data', :account_id)")
                       .replace(QSL(":feed"), QString::number(feed_id))
                       .replace(QSL(":title"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_title)))
                       .replace(QSL(":is_read"), QString::number(int(msg->m_isRead)))
@@ -1166,7 +1166,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
                       .replace(QSL(":enclosures"),
                                DatabaseFactory::escapeQuery(Enclosures::encodeEnclosuresToString(msg->m_enclosures)))
                       .replace(QSL(":custom_id"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_customId)))
-                      .replace(QSL(":custom_hash"), unnulifyString(msg->m_customHash))
+                      .replace(QSL(":custom_data"), unnulifyString(msg->m_customData))
                       .replace(QSL(":score"), QString::number(msg->m_score))
                       .replace(QSL(":account_id"), QString::number(account_id)));
       }
@@ -2148,25 +2148,6 @@ void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db, int fe
   q.bindValue(QSL(":account_id"), account_id);
 
   q.exec();
-}
-
-QStringList DatabaseQueries::getAllGmailRecipients(const QSqlDatabase& db, int account_id) {
-  SqlQuery q(db);
-  QStringList rec;
-
-  q.prepare(QSL("SELECT DISTINCT author "
-                "FROM Messages "
-                "WHERE account_id = :account_id AND author IS NOT NULL AND author != '' "
-                "ORDER BY lower(author) ASC;"));
-  q.bindValue(QSL(":account_id"), account_id);
-
-  q.exec();
-
-  while (q.next()) {
-    rec.append(q.value(0).toString());
-  }
-
-  return rec;
 }
 
 QMultiMap<int, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& db, int account_id) {

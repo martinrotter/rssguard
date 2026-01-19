@@ -73,7 +73,7 @@ CREATE TABLE Messages (
   score           REAL            NOT NULL DEFAULT 0.0 CHECK (score >= 0.0 AND score <= 100.0),
   account_id      INTEGER         NOT NULL,
   custom_id       VARCHAR(250),
-  custom_hash     VARCHAR(100),
+  custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */
 
   FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE NO ACTION, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, because NO ACTION is synonym for RESTRICT. */
   FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE

@@ -37,7 +37,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QString whereClauseAccount(bool including_deleted, int account_id);
     static QString whereClauseFeeds(const QStringList& feed_ids);
 
-    // Labels
+    // Labels.
     static void deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static void assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static void setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
@@ -47,7 +47,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void createLabel(const QSqlDatabase& db, Label* label, int account_id, int new_label_id = 0);
     static void purgeLabelAssignments(const QSqlDatabase& db, Label* label);
 
-    // Probes
+    // Probes.
     static void createProbe(const QSqlDatabase& db, Search* probe, int account_id);
     static QList<Search*> getProbesForAccount(const QSqlDatabase& db, int account_id);
     static void deleteProbe(const QSqlDatabase& db, Search* probe);
@@ -201,9 +201,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter);
     static QMultiMap<int, int> messageFiltersInFeeds(const QSqlDatabase& db, int account_id);
     static void removeMessageFilterFromFeed(const QSqlDatabase& db, int feed_id, int filter_id, int account_id);
-
-    // Gmail account.
-    static QStringList getAllGmailRecipients(const QSqlDatabase& db, int account_id);
 
   private:
     static QMap<int, ArticleCounts> messageCountsByCondition(const QSqlDatabase& db,

@@ -76,6 +76,11 @@ void RedditNetworkFactory::initializeOauth() {
           });
 }
 
+QString RedditNetworkFactory::prefixedSubredditToBare(const QString& subr) const {
+  QString subr_edit = subr;
+  return subr_edit.remove(QSL("/r/")).remove(QL1C('/'));
+}
+
 bool RedditNetworkFactory::downloadOnlyUnreadMessages() const {
   return m_downloadOnlyUnreadMessages;
 }
@@ -216,7 +221,7 @@ QList<Feed*> RedditNetworkFactory::subreddits(const QNetworkProxy& custom_proxy)
   return subs;
 }
 
-RedditComment RedditNetworkFactory::commentFromJson(const QJsonObject& data) {
+RedditComment RedditNetworkFactory::commentFromJson(const QJsonObject& data) const {
   RedditComment c;
 
   c.id = data["id"].toString();
@@ -233,7 +238,7 @@ RedditComment RedditNetworkFactory::commentFromJson(const QJsonObject& data) {
 
 QJsonArray RedditNetworkFactory::fetchMoreChildren(const QString& link_fullname,
                                                    const QStringList& children_ids,
-                                                   const QNetworkProxy& proxy) {
+                                                   const QNetworkProxy& proxy) const {
   if (children_ids.isEmpty()) {
     return {};
   }
@@ -277,7 +282,7 @@ QJsonArray RedditNetworkFactory::fetchMoreChildren(const QString& link_fullname,
 
 QList<RedditComment> RedditNetworkFactory::parseCommentTree(const QJsonArray& children,
                                                             const QString& link_fullname,
-                                                            const QNetworkProxy& proxy) {
+                                                            const QNetworkProxy& proxy) const {
   QList<RedditComment> result;
 
   for (const QJsonValue& val : children) {
@@ -317,7 +322,7 @@ QList<RedditComment> RedditNetworkFactory::parseCommentTree(const QJsonArray& ch
 
 QList<RedditComment> RedditNetworkFactory::commentsTree(const QString& subreddit,
                                                         const QString& post_id,
-                                                        const QNetworkProxy& proxy) {
+                                                        const QNetworkProxy& proxy) const {
   if (m_oauth2->bearer().isEmpty()) {
     throw ApplicationException(tr("you are not logged in"));
   }
@@ -365,7 +370,7 @@ QList<RedditComment> RedditNetworkFactory::commentsTree(const QString& subreddit
   return parseCommentTree(initialComments, link_fullname, proxy);
 }
 
-void RedditNetworkFactory::renderCommentHtml(const RedditComment& c, QString& html, int depth) {
+void RedditNetworkFactory::renderCommentHtml(const RedditComment& c, QString& html, int depth) const {
   const int indent_px = 4;
 
   html += QSL("<div style=\""
@@ -400,7 +405,7 @@ void RedditNetworkFactory::renderCommentHtml(const RedditComment& c, QString& ht
 
 QString RedditNetworkFactory::commentsTreeToHtml(const QList<RedditComment>& comments,
                                                  const QString& post_title,
-                                                 const QString& post_url) {
+                                                 const QString& post_url) const {
   QString html = QSL("<hr>");
 
   if (comments.isEmpty()) {
@@ -415,7 +420,7 @@ QString RedditNetworkFactory::commentsTreeToHtml(const QList<RedditComment>& com
   return html;
 }
 
-QString RedditNetworkFactory::cleanScOnOff(const QString& html) {
+QString RedditNetworkFactory::cleanScOnOff(const QString& html) const {
   static QRegularExpression sc_on_off(QSL("(<|&lt;)!-- ?SC_(ON|OFF) ?--(>|&gt;) ?"));
 
   QString loc_html = html;
@@ -486,7 +491,6 @@ QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetwork
         new_msg.m_created = TextFactory::parseDateTime(1000 * msg_obj["created_utc"].toVariant().toLongLong());
         new_msg.m_url = QSL("https://reddit.com") + msg_obj["permalink"].toString();
         new_msg.m_rawContents = QJsonDocument(msg_obj).toJson(QJsonDocument::JsonFormat::Compact);
-
         new_msg.m_contents = WebFactory::unescapeHtml(msg_obj["selftext_html"].toString());
 
         if (new_msg.m_contents.isEmpty() && msg_obj.contains(QSL("url"))) {
@@ -495,8 +499,8 @@ QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetwork
                                  .arg(msg_obj.value(QSL("url")).toString(), msg_obj.value(QSL("domain")).toString());
         }
 
-        auto cmnts = commentsTree(msg_obj.value(QSL("subreddit")).toString(), new_msg.m_customId, custom_proxy);
-        new_msg.m_contents += commentsTreeToHtml(cmnts, new_msg.m_title, new_msg.m_url);
+        // auto cmnts = commentsTree(msg_obj.value(QSL("subreddit")).toString(), new_msg.m_customId, custom_proxy);
+        // new_msg.m_contents += commentsTreeToHtml(cmnts, new_msg.m_title, new_msg.m_url);
 
         msgs.append(new_msg);
       }

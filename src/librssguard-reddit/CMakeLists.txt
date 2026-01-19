@@ -7,6 +7,8 @@ set(SOURCES
   src/gui/formeditredditaccount.h
   src/gui/redditaccountdetails.cpp
   src/gui/redditaccountdetails.h
+  src/gui/threadpreviewer.cpp
+  src/gui/threadpreviewer.h
   src/redditcategory.cpp
   src/redditcategory.h
   src/redditentrypoint.cpp
@@ -26,6 +28,7 @@ set(SOURCES
 
 set(UI_FILES
   src/gui/redditaccountdetails.ui 
+  src/gui/threadpreviewer.ui
 )
 
 prepare_rssguard_plugin(${PLUGIN_TARGET})

@@ -603,7 +603,7 @@ QList<Message> NextcloudGetMessagesResponse::messages() const {
     msg.m_created = TextFactory::parseDateTime(message_map[QSL("pubDate")].toDouble() * 1000);
     msg.m_createdFromFeed = true;
     msg.m_customId = message_map[QSL("id")].toVariant().toString();
-    msg.m_customHash = message_map[QSL("guidHash")].toString();
+    msg.m_customData = message_map[QSL("guidHash")].toString();
     msg.m_rawContents = QJsonDocument(message_map).toJson(QJsonDocument::JsonFormat::Compact);
 
     // In case body is empty, check for content in mediaDescription if item is available.
