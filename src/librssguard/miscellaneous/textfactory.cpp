@@ -484,7 +484,9 @@ QString TextFactory::fromEncoding(const QByteArray& data, const QString& encodin
   auto* codec = QTextCodec::codecForName(encoding.toLocal8Bit());
   return codec->toUnicode(data);
 #else
-  auto decoder = QStringDecoder(encoding);
+  auto c_encoding_ascii = encoding.toLocal8Bit();
+  auto c_encoding = c_encoding_ascii.constData();
+  auto decoder = QStringDecoder(c_encoding);
   return decoder.decode(data);
 #endif
 }
@@ -519,7 +521,9 @@ QByteArray TextFactory::toEncoding(const QString& str, const QString& encoding) 
   auto* codec = QTextCodec::codecForName(encoding.toLocal8Bit());
   return codec->fromUnicode(str);
 #else
-  auto encoder = QStringEncoder(encoding);
+  auto c_encoding_ascii = encoding.toLocal8Bit();
+  auto c_encoding = c_encoding_ascii.constData();
+  auto encoder = QStringEncoder(c_encoding);
   return encoder.encode(str);
 #endif
 }
