@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Check script syntax
         run: bash -n ./resources/scripts/github-actions/build-linux-mac.sh
@@ -34,7 +34,7 @@ jobs:
 
     steps:
       - name: Checkout source code with submodules
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: recursive
@@ -73,7 +73,7 @@ jobs:
           tar -czf "${TAR_NAME}" -C "${TMPDIR}/.." "$(basename "${TMPDIR}")"
 
       - name: Upload source tarball
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: source-tarball
           path: ${{ env.TAR_NAME }}
@@ -105,10 +105,10 @@ jobs:
             use_qt5: "ON"
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.13"
 
@@ -117,7 +117,7 @@ jobs:
         if: matrix.os == 'ubuntu-24.04'
 
       - name: Checkout source code submodules
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
           submodules: true
@@ -130,7 +130,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload binaries
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: RSS_Guard-${{ runner.os }}-Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}
           path: |
@@ -150,7 +150,7 @@ jobs:
 
     steps:
       - name: Download binaries and source tarball
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           path: artifacts
 
