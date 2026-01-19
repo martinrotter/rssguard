@@ -472,7 +472,7 @@ Number of disabled feeds: %3</translation>
       <location filename="../src/librssguard/database/databasewriter.cpp" line="51"/>
       <location filename="../src/librssguard/database/databasewriter.cpp" line="84"/>
       <source>database writer is stopping</source>
-      <translation type="unfinished">database writer is stopping</translation>
+      <translation>database writer is stopping</translation>
     </message>
   </context>
   <context>
@@ -1162,17 +1162,17 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
       <source>Enable or disable feeds</source>
-      <translation type="unfinished">Enable or disable feeds</translation>
+      <translation>Enable or disable feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="305"/>
       <source>You selected multiple feeds to enable/disable them.</source>
-      <translation type="unfinished">You selected multiple feeds to enable/disable them.</translation>
+      <translation>You selected multiple feeds to enable/disable.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="306"/>
       <source>Do you really want to enable or disable selected feeds?</source>
-      <translation type="unfinished">Do you really want to enable or disable selected feeds?</translation>
+      <translation>Do you really want to enable or disable selected feeds?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="381"/>
@@ -5645,7 +5645,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="542"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="543"/>
       <source>%n selected articles(s)</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>%n selected articles(s)</numerusform>
         <numerusform>%n selected articles(s)</numerusform>
       </translation>
@@ -5654,15 +5654,15 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="676"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="985"/>
       <source>Filtering changed</source>
-      <translation type="unfinished">Filtering changed</translation>
+      <translation>Filtering changed</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/messagesview.cpp" line="677"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="986"/>
       <source>%n article(s) left after filtering change</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>%n article(s) left after filtering change</numerusform>
-        <numerusform>%n article(s) left after filtering change</numerusform>
+        <numerusform>%n articles left after filtering change</numerusform>
       </translation>
     </message>
     <message>
@@ -5701,7 +5701,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagebox.cpp" line="107"/>
       <source>Do not show again</source>
-      <translation type="unfinished">Do not show again</translation>
+      <translation>Do not show again</translation>
     </message>
   </context>
   <context>
@@ -6514,7 +6514,7 @@ List of supported readers:</translation>
       <source>%1
 line: %2
 stack: %3</source>
-      <translation type="unfinished">%1
+      <translation>%1
 line: %2
 stack: %3</translation>
     </message>
