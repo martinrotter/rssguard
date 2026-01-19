@@ -212,12 +212,6 @@ QList<Feed*> RedditNetworkFactory::subreddits(const QNetworkProxy& custom_proxy)
   }
   while (!after.isEmpty());
 
-  // posty dle jmena redditu
-  // https://oauth.reddit.com/<SUBREDDIT>/new
-  //
-  // komenty pro post dle id postu
-  // https://oauth.reddit.com/<SUBREDDIT>/comments/<ID-POSTU>
-
   return subs;
 }
 
@@ -272,7 +266,7 @@ QJsonArray RedditNetworkFactory::fetchMoreChildren(const QString& link_fullname,
                                                         proxy)
                   .m_networkError;
 
-  if (result != QNetworkReply::NoError) {
+  if (result != QNetworkReply::NetworkError::NoError) {
     throw NetworkException(result, output);
   }
 
@@ -294,26 +288,24 @@ QList<RedditComment> RedditNetworkFactory::parseCommentTree(const QJsonArray& ch
       RedditComment c = commentFromJson(data);
 
       if (data["replies"].isObject()) {
-        auto replyChildren = data["replies"].toObject()["data"].toObject()["children"].toArray();
+        auto reply_children = data["replies"].toObject()["data"].toObject()["children"].toArray();
 
-        c.replies = parseCommentTree(replyChildren, link_fullname, proxy);
+        c.replies = parseCommentTree(reply_children, link_fullname, proxy);
       }
 
       result.append(c);
     }
     else if (kind == QSL("more")) {
       QStringList ids;
+
       for (const QJsonValue& id : data["children"].toArray()) {
         ids.append(id.toString());
       }
 
-      // Fetch missing comments
       QJsonArray expanded = fetchMoreChildren(link_fullname, ids, proxy);
+      auto expanded_comments = parseCommentTree(expanded, link_fullname, proxy);
 
-      // Recursively parse fetched comments
-      auto expandedComments = parseCommentTree(expanded, link_fullname, proxy);
-
-      result.append(expandedComments);
+      result.append(expanded_comments);
     }
   }
 
@@ -331,11 +323,8 @@ QList<RedditComment> RedditNetworkFactory::commentsTree(const QString& subreddit
   headers.append({QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), m_oauth2->bearer().toLocal8Bit()});
 
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-
   QByteArray output;
-
   QString url = QSL("https://oauth.reddit.com/r/%1/comments/%2?limit=0&raw_json=1").arg(subreddit, post_id);
-
   auto result = NetworkFactory::performNetworkOperation(url,
                                                         timeout,
                                                         {},
@@ -348,26 +337,26 @@ QList<RedditComment> RedditNetworkFactory::commentsTree(const QString& subreddit
                                                         proxy)
                   .m_networkError;
 
-  if (result != QNetworkReply::NoError) {
+  if (result != QNetworkReply::NetworkError::NoError) {
     throw NetworkException(result, output);
   }
 
   QJsonDocument doc = QJsonDocument::fromJson(output);
+
   if (!doc.isArray()) {
     throw ApplicationException(tr("Invalid Reddit response"));
   }
 
   QJsonArray root = doc.array();
+
   if (root.size() < 2) {
     return {};
   }
 
-  // ✅ CORRECT way
   QString link_fullname = QSL("t3_") + post_id;
+  QJsonArray initial_comments = root.at(1).toObject()["data"].toObject()["children"].toArray();
 
-  QJsonArray initialComments = root.at(1).toObject()["data"].toObject()["children"].toArray();
-
-  return parseCommentTree(initialComments, link_fullname, proxy);
+  return parseCommentTree(initial_comments, link_fullname, proxy);
 }
 
 void RedditNetworkFactory::renderCommentHtml(const RedditComment& c, QString& html, int depth) const {
