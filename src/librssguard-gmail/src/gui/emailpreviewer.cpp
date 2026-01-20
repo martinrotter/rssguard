@@ -34,8 +34,8 @@ EmailPreviewer::EmailPreviewer(GmailServiceRoot* account, QWidget* parent)
   m_webView->setToolBarVisible(false);
 
   connect(menu_attachments, &QMenu::triggered, this, &EmailPreviewer::downloadAttachment);
-  connect(m_ui.m_btnReply, &QToolButton::clicked, this, &EmailPreviewer::replyToEmail);
-  connect(m_ui.m_btnForward, &QToolButton::clicked, this, &EmailPreviewer::forwardEmail);
+  connect(m_ui.m_btnReply, &QPushButton::clicked, this, &EmailPreviewer::replyToEmail);
+  connect(m_ui.m_btnForward, &QPushButton::clicked, this, &EmailPreviewer::forwardEmail);
 
   connect(&m_tmrLoadExtraMessageData, &QTimer::timeout, this, &EmailPreviewer::loadExtraMessageData);
 }

@@ -36,7 +36,7 @@
      <item>
       <spacer name="horizontalSpacer">
        <property name="orientation">
-        <enum>Qt::Horizontal</enum>
+        <enum>Qt::Orientation::Horizontal</enum>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
@@ -47,35 +47,23 @@
       </spacer>
      </item>
      <item>
-      <widget class="QToolButton" name="m_btnAttachments">
+      <widget class="QPushButton" name="m_btnAttachments">
        <property name="text">
         <string>&amp;Attachments</string>
        </property>
-       <property name="popupMode">
-        <enum>QToolButton::InstantPopup</enum>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextBesideIcon</enum>
-       </property>
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="m_btnReply">
+      <widget class="QPushButton" name="m_btnReply">
        <property name="text">
         <string>&amp;Reply</string>
        </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextBesideIcon</enum>
-       </property>
       </widget>
      </item>
      <item>
-      <widget class="QToolButton" name="m_btnForward">
+      <widget class="QPushButton" name="m_btnForward">
        <property name="text">
         <string>&amp;Forward</string>
-       </property>
-       <property name="toolButtonStyle">
-        <enum>Qt::ToolButtonTextBesideIcon</enum>
        </property>
       </widget>
      </item>
