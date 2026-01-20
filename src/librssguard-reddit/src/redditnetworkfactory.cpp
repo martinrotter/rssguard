@@ -483,9 +483,17 @@ QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetwork
         new_msg.m_contents = WebFactory::unescapeHtml(msg_obj["selftext_html"].toString());
 
         if (new_msg.m_contents.isEmpty() && msg_obj.contains(QSL("url"))) {
-          // NOTE: Post does not have text, maybe URL?
-          new_msg.m_contents = QSL("<a href=\"%1\">%2</a>")
-                                 .arg(msg_obj.value(QSL("url")).toString(), msg_obj.value(QSL("domain")).toString());
+          auto post_domain = msg_obj.value(QSL("domain")).toString();
+
+          if (post_domain == QSL("i.redd.it")) {
+            // Post does not have text, likely picture?
+            new_msg.m_contents = QSL("<a href=\"%1\"><img style=\"max-width: 100%;\" src=\"%1\"></a>")
+                                   .arg(msg_obj.value(QSL("url")).toString());
+          }
+          else {
+            // Post does not have text, maybe URL?
+            new_msg.m_contents = QSL("<a href=\"%1\">%2</a>").arg(msg_obj.value(QSL("url")).toString(), post_domain);
+          }
         }
 
         // auto cmnts = commentsTree(msg_obj.value(QSL("subreddit")).toString(), new_msg.m_customId, custom_proxy);
