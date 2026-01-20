@@ -103,6 +103,10 @@ ThreadWebBrowser::ThreadWebBrowser(WebViewer* viewer, QWidget* parent) : WebBrow
 
 ThreadWebBrowser::~ThreadWebBrowser() {}
 
-void ThreadWebBrowser::onLinkMouseHighlighted(const QUrl& url) {}
+void ThreadWebBrowser::onLinkMouseHighlighted(const QUrl& url) {
+  WebBrowser::onLinkMouseHighlighted(url);
+}
 
-void ThreadWebBrowser::onLinkMouseClicked(const QUrl& url) {}
+void ThreadWebBrowser::onLinkMouseClicked(const QUrl& url) {
+  WebBrowser::onLinkMouseClicked(url);
+}
