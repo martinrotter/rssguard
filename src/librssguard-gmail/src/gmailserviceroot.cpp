@@ -37,17 +37,24 @@ QStringList GmailServiceRoot::getAllGmailRecipients(const QSqlDatabase& db) {
   SqlQuery q(db);
   QStringList rec;
 
-  q.prepare(QSL("SELECT DISTINCT author "
+  q.prepare(QSL("SELECT author "
                 "FROM Messages "
-                "WHERE account_id = :account_id AND author IS NOT NULL AND author != '' "
-                "ORDER BY lower(author) ASC;"));
+                "WHERE account_id = :account_id;"));
   q.bindValue(QSL(":account_id"), account_id);
-
   q.exec();
 
   while (q.next()) {
-    rec.append(q.value(0).toString());
+    auto aut = q.value(0).toString();
+
+    if (aut.isEmpty()) {
+      continue;
+    }
+
+    rec.append(aut);
   }
+
+  rec.removeDuplicates();
+  rec.sort(Qt::CaseSensitivity::CaseInsensitive);
 
   return rec;
 }

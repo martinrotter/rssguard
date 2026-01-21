@@ -947,11 +947,6 @@ void FeedsView::restoreHeaderState(const QByteArray& dta) {
     header()->resizeSection(i, ss);
     header()->setSectionHidden(i, ish);
   }
-
-  // All columns are resizeable but last one is set to auto-stretch to fill remaining
-  // space. Sometimes this column is saved as too wide and causes
-  // horizontal scrollbar to appear. Therefore downsize it.
-  header()->resizeSection(header()->logicalIndex(header()->count() - 1), 1);
 }
 
 void FeedsView::revealItem(RootItem* item) {
@@ -979,7 +974,7 @@ void FeedsView::revealItem(RootItem* item) {
 }
 
 void FeedsView::setupAppearance() {
-  header()->setStretchLastSection(true);
+  header()->setStretchLastSection(false);
   header()->setCascadingSectionResizes(false);
   header()->setSectionsMovable(false);
 
@@ -1213,10 +1208,14 @@ void FeedsView::adjustColumns() {
 
     // Setup column resize strategies.
     for (int i = 0; i < header()->count(); i++) {
+      if (i == FDS_MODEL_TITLE_INDEX) {
+        continue;
+      }
+
       header()->setSectionResizeMode(i, QHeaderView::ResizeMode::Interactive);
     }
 
-    // Hide columns.
+    header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
     hideColumn(FDS_MODEL_ID_INDEX);
   }
 }

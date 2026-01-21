@@ -124,11 +124,6 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
     }
   }
 
-  // All columns are resizeable but last one is set to auto-stretch to fill remaining
-  // space. Sometimes this column is saved as too wide and causes
-  // horizontal scrollbar to appear. Therefore downsize it.
-  header()->resizeSection(header()->logicalIndex(last_visible_column), 1);
-
   // Restore sort attributes.
   int saved_sort_count = obj[QSL("sort_count")].toInt();
 
@@ -356,7 +351,7 @@ void MessagesView::setupAppearance() {
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
   header()->setFirstSectionMovable(true);
   header()->setCascadingSectionResizes(false);
-  header()->setStretchLastSection(true);
+  header()->setStretchLastSection(false);
 
   adjustColumns();
 }
@@ -1024,8 +1019,14 @@ void MessagesView::adjustColumns() {
 
     // Setup column resize strategies.
     for (int i = 0; i < header()->count(); i++) {
+      if (i == MSG_MDL_TITLE_INDEX) {
+        continue;
+      }
+
       header()->setSectionResizeMode(i, QHeaderView::ResizeMode::Interactive);
     }
+
+    header()->setSectionResizeMode(MSG_MDL_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
 
     // Hide columns.
     hideColumn(MSG_MDL_ID_INDEX);

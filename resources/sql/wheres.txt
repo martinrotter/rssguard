@@ -1,0 +1,86 @@
+* - used in GROUP BY
+
+Messages
+========
+
+account_id                                                                        # getAllGmailRecipients, getMessageCountsForAllLabels, deleteAccount
+is_deleted, is_pdeleted, account_id                                               # whereClauseBin, whereClauseAccount, getMessageCountsForAllLabels, whereClauseLabel, whereClauseLabels
+is_pdeleted, account_id                                                           # whereClauseAccount
+is_important, is_deleted, is_pdeleted, account_id                                 # whereClauseImportantArticles
+is_read, is_deleted, is_pdeleted, account_id                                      # whereClauseUnreadArticles, cleanUnreadMessages, cleanBin, customIdsOfMessagesFromAccount, customIdsOfUnreadMessages, customIdsOfMessagesFromBin                  
+is_deleted, is_pdeleted, account_id, title, contents                              # whereClauseProbe
+feed                                                                              # whereClauseFeeds
+is_deleted, is_pdeleted, account_id, is_read                                      # customIdsOfMessagesFromLabel, cleanLabelledMessages
+feed, is_read                                                                     # customIdsOfMessagesFromFeeds, cleanFeeds
+is_important, is_deleted, is_pdeleted, account_id, is_read                        # customIdsOfImportantMessages, cleanImportantMessages
+is_deleted, is_pdeleted, account_id, title, contents, is_read                     # customIdsOfMessagesFromProbe, cleanProbedMessages
+id                                                                                # markMessageImportant, switchMessagesImportance, permanentlyDeleteMessages, deleteOrRestoreMessagesToFromBin, purgeMessage, getMessageCountsForAllLabels
+feed, is_deleted, is_pdeleted, account_id                                         # removeUnwantedArticlesFromFeed
+feed, is_deleted, is_pdeleted, account_id, is_important, is_read, date_created    # removeUnwantedArticlesFromFeed
+account_id, feed, is_deleted, is_important, date_created                          # removeUnwantedArticlesFromFeed
+account_id, feed, is_deleted, is_read, date_created                               # removeUnwantedArticlesFromFeed
+feed, account_id, is_important                                                    # purgeFeedArticles
+is_important, is_deleted                                                          # purgeImportantMessages, purgeRecycleBin
+is_read, is_deleted, is_important                                                 # purgeReadMessages
+is_important, date_created                                                        # purgeOldMessages
+account_id, feed                                                                  # purgeLeftoverMessages
+is_read, feed, account_id                                                         # bagOfMessages
+is_important, feed, account_id                                                    # bagOfMessages
+feed, title, url, author, account_id                                              # updateMessages
+custom_id, account_id                                                             # updateMessages
+feed, custom_id, account_id                                                       # updateMessages
+id, account_id                                                                    # updateMessages
+custom_id                                                                         # updateMessages
+feed, account_id                                                                  # deleteFeed
+
+Labels
+======
+id                # initMessageTableAttributes
+account_id        # getLabelsForAccount, deleteAccount
+id, account_id    # updateLabel, deleteLabel
+custom_id         # createLabel
+
+LabelsInMessages
+================
+label, account_id, message                # whereClauseLabel
+account_id, message                       # whereClauseLabels
+label                                     # initMessageTableAttributes, getMessageCountsForAllLabels
+label, account_id                         # purgeLabelAssignments
+message, label, account_id                # deassignLabelFromMessage
+message, account_id                       # setLabelsForMessage
+message                                   # getMessageCountsForAllLabels
+account_id                                # getMessageCountsForAllLabels, deleteAccount
+account_id, message, label                # purgeLeftoverLabelAssignments
+message, label                            # purgeLeftoverLabelAssignments
+
+MessageFiltersInFeeds
+=====================
+account_id                  # deleteAccount, messageFiltersInFeeds
+account_id, feed            # purgeLeftoverMessageFilterAssignments
+filter                      # removeMessageFilterAssignments
+filter, feed, account_id    # assignMessageFilterToFeed, removeMessageFilterFromFeed
+
+Probes
+======
+id, account_id    # updateProbe, deleteProbe
+account_id        # getProbesForAccount
+
+
+Categories
+==========
+account_id                    # deleteAccount
+accunt_id, parent_id          # createOverwriteCategory
+id                            # createOverwriteCategory, deleteCategory
+account_id, parent_id, ordr   # moveItem
+
+Feeds
+=====
+id                            # purgeLeftoverMessages, createOverwriteFeed
+account_id                    # deleteAccount
+account_id, category          # createOverwriteFeed
+custom_id, account_id         # deleteFeed
+account_id, category, ordr    # moveItem
+
+MessageFilters
+==============
+ordr              # moveMessageFilter
