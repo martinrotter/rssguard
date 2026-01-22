@@ -459,6 +459,10 @@ QString TextFactory::shorten(const QString& input, int text_length_limit) {
 }
 
 QString TextFactory::fromEncoding(const QByteArray& data, const QString& encoding) {
+  if (encoding.isEmpty()) {
+    return QString::fromUtf8(data);
+  }
+
 #if defined(HAS_ICU)
   UErrorCode status = U_ZERO_ERROR;
   QByteArray enc = encoding.toUtf8();
