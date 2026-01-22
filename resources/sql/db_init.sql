@@ -145,7 +145,7 @@ CREATE INDEX idx_Mfif3 ON MessageFiltersInFeeds (filter);
 -- !
 CREATE INDEX idx_Labels1 ON Labels (account_id);
 -- !
-CREATE INDEX idx_Labels2 ON Labels (account_id, custom_id);
+CREATE INDEX idx_Labels2 ON Labels (custom_id);
 -- !
 -- !
 CREATE INDEX idx_Lim1 ON LabelsInMessages (message);

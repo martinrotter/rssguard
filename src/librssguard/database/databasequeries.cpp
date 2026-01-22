@@ -254,12 +254,12 @@ QList<Label*> DatabaseQueries::getLabelsForAccount(const QSqlDatabase& db, int a
 void DatabaseQueries::updateLabel(const QSqlDatabase& db, Label* label) {
   SqlQuery q(db);
 
-  q.prepare(QSL("UPDATE Labels SET name = :name, color = :color "
-                "WHERE id = :id AND account_id = :account_id;"));
+  q.prepare(QSL("UPDATE Labels "
+                "SET name = :name, color = :color "
+                "WHERE id = :id;"));
   q.bindValue(QSL(":name"), label->title());
   q.bindValue(QSL(":color"), label->color().name());
   q.bindValue(QSL(":id"), label->id());
-  q.bindValue(QSL(":account_id"), label->account()->accountId());
 
   q.exec();
 }
@@ -269,9 +269,8 @@ void DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
 
   SqlQuery q(db);
 
-  q.prepare(QSL("DELETE FROM Labels WHERE id = :id AND account_id = :account_id;"));
+  q.prepare(QSL("DELETE FROM Labels WHERE id = :id;"));
   q.bindValue(QSL(":id"), label->id());
-  q.bindValue(QSL(":account_id"), label->account()->accountId());
 
   q.exec();
 }

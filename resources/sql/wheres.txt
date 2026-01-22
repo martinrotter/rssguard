@@ -35,9 +35,8 @@ feed, account_id                                                                
 
 Labels
 ======
-id                # initMessageTableAttributes
+id                # initMessageTableAttributes, updateLabel, deleteLabel
 account_id        # getLabelsForAccount, deleteAccount
-id, account_id    # updateLabel, deleteLabel
 custom_id         # createLabel
 
 LabelsInMessages
