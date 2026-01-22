@@ -316,6 +316,7 @@ RootItem* QuiteRssImport::extractFeedsAndCategories(const QSqlDatabase& db) cons
       StandardFeed* fd = new StandardFeed(root);
 
       fd->setSource(xml_url);
+      fd->setEncoding(QSL(DEFAULT_FEED_ENCODING));
       fd->setType(xml_url.contains(QSL("atom")) ? StandardFeed::Type::Atom10 : StandardFeed::Type::Rss2X);
 
       new_item = fd;
