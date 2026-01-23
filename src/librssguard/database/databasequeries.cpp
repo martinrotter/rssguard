@@ -38,7 +38,7 @@ QStringList initMessageTableAttributes() {
                          "SELECT GROUP_CONCAT(Labels.custom_id) "
                          "FROM LabelsInMessages lim "
                          "JOIN Labels ON lim.label = Labels.id "
-                         "WHERE lim.message = Messages.id AND lim.account_id = Messages.account_id "
+                         "WHERE lim.message = Messages.id"
                          ") AS msg_labels"));
 
   return field_names;
@@ -111,7 +111,6 @@ QString DatabaseQueries::whereClauseLabel(int label_id, int account_id) {
              "FROM LabelsInMessages "
              "WHERE "
              "  %2 "
-             "  LabelsInMessages.account_id = %1 AND "
              "  LabelsInMessages.message = Messages.id)")
     .arg(QString::number(account_id), label_id > 0 ? QSL("LabelsInMessages.label = %1 AND").arg(label_id) : QString());
 }
@@ -150,31 +149,15 @@ QString DatabaseQueries::whereClauseFeeds(const QStringList& feed_ids) {
     .arg(filter_clause);
 }
 
-void DatabaseQueries::purgeLabelAssignments(const QSqlDatabase& db, Label* label) {
-  SqlQuery q(db);
-
-  q.prepare(QSL("DELETE FROM LabelsInMessages "
-                "WHERE "
-                "  LabelsInMessages.label = :label AND "
-                "  LabelsInMessages.account_id = :account_id;"));
-  q.bindValue(QSL(":label"), label->id());
-  q.bindValue(QSL(":account_id"), label->account()->accountId());
-
-  q.exec();
-}
-
 void DatabaseQueries::deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
   SqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM LabelsInMessages "
                 "WHERE "
-                "  LabelsInMessages.message = :message AND "
                 "  LabelsInMessages.label = :label AND "
-                "  LabelsInMessages.account_id = :account_id;"));
+                "  LabelsInMessages.message = :message;"));
   q.bindValue(QSL(":message"), msg.m_id);
   q.bindValue(QSL(":label"), label->id());
-  q.bindValue(QSL(":account_id"), msg.m_accountId);
-
   q.exec();
 }
 
@@ -190,14 +173,12 @@ void DatabaseQueries::assignLabelToMessage(const QSqlDatabase& db, Label* label,
     insert_cmd = QSL("INSERT IGNORE");
   }
 
-  q.prepare(QSL("%1 INTO LabelsInMessages (message, label, account_id) "
-                "VALUES (:message, :label, :account_id);")
+  q.prepare(QSL("%1 INTO LabelsInMessages (message, label) "
+                "VALUES (:message, :label);")
               .arg(insert_cmd));
 
   q.bindValue(QSL(":message"), msg.m_id);
   q.bindValue(QSL(":label"), label->id());
-  q.bindValue(QSL(":account_id"), label->account()->accountId());
-
   q.exec();
 }
 
@@ -206,21 +187,19 @@ void DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<La
 
   // Remove everything first.
   q.prepare(QSL("DELETE FROM LabelsInMessages "
-                "WHERE LabelsInMessages.message = :message AND LabelsInMessages.account_id = :account_id;"));
+                "WHERE LabelsInMessages.message = :message;"));
   q.bindValue(QSL(":message"), msg.m_id);
-  q.bindValue(QSL(":account_id"), msg.m_accountId);
-
   q.exec();
 
   // Insert new label associations (if any).
   if (!labels.isEmpty()) {
-    QString sql = QSL("INSERT INTO LabelsInMessages (message, label, account_id) VALUES ");
+    QString sql = QSL("INSERT INTO LabelsInMessages (message, label) VALUES ");
     QStringList values;
 
     values.reserve(labels.size());
 
     for (const Label* lbl : labels) {
-      values << QSL("(%1, %2, %3)").arg(msg.m_id).arg(lbl->id()).arg(msg.m_accountId);
+      values << QSL("(%1, %2)").arg(msg.m_id).arg(lbl->id());
     }
 
     sql += values.join(QSL(", ")) + QL1C(';');
@@ -264,8 +243,6 @@ void DatabaseQueries::updateLabel(const QSqlDatabase& db, Label* label) {
 }
 
 void DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
-  purgeLabelAssignments(db, label);
-
   SqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM Labels WHERE id = :id;"));
@@ -708,7 +685,7 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const QSq
   q.prepare(QSL("SELECT lim.label, COUNT(*), SUM(NOT m.is_read) "
                 "FROM LabelsInMessages lim "
                 "JOIN Messages m "
-                "  ON m.id = lim.message AND m.account_id = lim.account_id "
+                "  ON m.id = lim.message "
                 "WHERE"
                 "  m.is_deleted = 0 AND m.is_pdeleted = 0 AND m.account_id = :account_id "
                 "GROUP BY lim.label;"));
@@ -1409,8 +1386,8 @@ void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db) {
 
   q.prepare(QSL("DELETE FROM LabelsInMessages "
                 "WHERE "
-                "  message NOT IN (SELECT id FROM Messages) OR "
-                "  label NOT IN (SELECT id FROM Labels);"));
+                "  label NOT IN (SELECT id FROM Labels) OR "
+                "  message NOT IN (SELECT id FROM Messages);"));
   q.exec();
 }
 
@@ -2012,7 +1989,7 @@ MessageFilter* DatabaseQueries::addMessageFilter(const QSqlDatabase& db, const Q
 
   int new_ordr = q.value(0).toInt();
 
-  q.prepare(QSL("INSERT INTO MessageFilters (name, script, ordr) VALUES(:name, :script, :ordr);"));
+  q.prepare(QSL("INSERT INTO MessageFilters (name, script, ordr) VALUES (:name, :script, :ordr);"));
   q.bindValue(QSL(":name"), title);
   q.bindValue(QSL(":script"), script);
   q.bindValue(QSL(":ordr"), new_ordr);
@@ -2032,19 +2009,7 @@ void DatabaseQueries::removeMessageFilter(const QSqlDatabase& db, int filter_id)
   SqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM MessageFilters WHERE id = :id;"));
-
   q.bindValue(QSL(":id"), filter_id);
-
-  q.exec();
-}
-
-void DatabaseQueries::removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id) {
-  SqlQuery q(db);
-
-  q.prepare(QSL("DELETE FROM MessageFiltersInFeeds WHERE filter = :filter;"));
-
-  q.bindValue(QSL(":filter"), filter_id);
-
   q.exec();
 }
 
@@ -2053,7 +2018,6 @@ QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db)
   QList<MessageFilter*> filters;
 
   q.prepare(QSL("SELECT id, name, script, is_enabled, ordr FROM MessageFilters;"));
-
   q.exec();
 
   while (q.next()) {
@@ -2091,7 +2055,7 @@ void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db, int feed
   }
 
   q.prepare(QSL("INSERT INTO MessageFiltersInFeeds (filter, feed) "
-                "VALUES(:filter, :feed);"));
+                "VALUES (:filter, :feed);"));
 
   q.bindValue(QSL(":filter"), filter_id);
   q.bindValue(QSL(":feed"), feed_id);
@@ -2134,7 +2098,6 @@ QMultiMap<int, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& d
                 "FROM MessageFiltersInFeeds "
                 "WHERE feed IN (SELECT id FROM Feeds WHERE account_id = :account_id);"));
   q.bindValue(QSL(":account_id"), account_id);
-
   q.exec();
 
   while (q.next()) {

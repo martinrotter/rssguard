@@ -36,33 +36,21 @@ id                # initMessageTableAttributes, updateLabel, deleteLabel
 account_id        # getLabelsForAccount, deleteAccount
 custom_id         # createLabel
 
-LabelsInMessages
+LabelsInMessages (done)
 ================
-label, account_id, message                # whereClauseLabel
-account_id, message                       # whereClauseLabels
-label                                     # initMessageTableAttributes, getMessageCountsForAllLabels
-label, account_id                         # purgeLabelAssignments
-message, label, account_id                # deassignLabelFromMessage
-message, account_id                       # setLabelsForMessage
-message                                   # getMessageCountsForAllLabels
-account_id                                # getMessageCountsForAllLabels, deleteAccount
-account_id, message, label                # purgeLeftoverLabelAssignments
-message, label                            # purgeLeftoverLabelAssignments
+label, message                # whereClauseLabel
+message                       # whereClauseLabels
+label                         # initMessageTableAttributes, getMessageCountsForAllLabels
+label                         # purgeLabelAssignments
+label, message                # deassignLabelFromMessage
+message                       # setLabelsForMessage
+message                       # getMessageCountsForAllLabels
+label, message                # purgeLeftoverLabelAssignments
 
-návrh
-=====
-message
-label
-account_id
-message, label, account
-
-
-MessageFiltersInFeeds 
+MessageFiltersInFeeds (done)
 =====================
-account_id                  # deleteAccount, messageFiltersInFeeds
-account_id, feed            # purgeLeftoverMessageFilterAssignments
-filter                      # removeMessageFilterAssignments
-filter, feed, account_id    # assignMessageFilterToFeed, removeMessageFilterFromFeed
+feed            # purgeLeftoverMessageFilterAssignments
+filter, feed    # assignMessageFilterToFeed, removeMessageFilterFromFeed
 
 Probes (done)
 ======
