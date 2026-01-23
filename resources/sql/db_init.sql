@@ -94,7 +94,6 @@ CREATE TABLE MessageFiltersInFeeds (
   
   FOREIGN KEY (filter)      REFERENCES MessageFilters (id)  ON DELETE CASCADE,
   FOREIGN KEY (feed)        REFERENCES Feeds (id)           ON DELETE CASCADE, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise article filter assignments would be deleted. */
-  FOREIGN KEY (account_id)  REFERENCES Accounts (id)        ON DELETE CASCADE
 );
 -- !
 CREATE TABLE Labels (
@@ -136,11 +135,9 @@ CREATE TABLE Probes (
 CREATE INDEX idx_Probes1 ON Probes (account_id);
 -- !
 -- !
-CREATE INDEX idx_Mfif1 ON MessageFiltersInFeeds (account_id);
+CREATE INDEX idx_Mfif1 ON MessageFiltersInFeeds (feed);
 -- !
-CREATE INDEX idx_Mfif2 ON MessageFiltersInFeeds (feed);
--- !
-CREATE INDEX idx_Mfif3 ON MessageFiltersInFeeds (filter);
+CREATE INDEX idx_Mfif2 ON MessageFiltersInFeeds (filter);
 -- !
 -- !
 CREATE INDEX idx_Labels1 ON Labels (account_id);

@@ -1312,14 +1312,8 @@ void DatabaseQueries::deleteAccount(const QSqlDatabase& db, ServiceRoot* account
 
   QStringList queries;
 
-  queries << QSL("DELETE FROM MessageFiltersInFeeds WHERE account_id = :account_id;")
-          << QSL("DELETE FROM Messages WHERE account_id = :account_id;")
-          << QSL("DELETE FROM Feeds WHERE account_id = :account_id;")
-          << QSL("DELETE FROM Categories WHERE account_id = :account_id;")
-          << QSL("DELETE FROM LabelsInMessages WHERE account_id = :account_id;")
-          << QSL("DELETE FROM Labels WHERE account_id = :account_id;")
-          << QSL("DELETE FROM Probes WHERE account_id = :account_id;")
-          << QSL("DELETE FROM Accounts WHERE id = :account_id;");
+  // NOTE: We manually remove only from Accounts table, everything else just cascades.
+  queries << QSL("DELETE FROM Accounts WHERE id = :account_id;");
 
   for (const QString& q_str : std::as_const(queries)) {
     q.prepare(q_str);
@@ -1338,11 +1332,6 @@ void DatabaseQueries::deleteAccountData(const QSqlDatabase& db,
 
   if (delete_messages_too) {
     q.prepare(QSL("DELETE FROM Messages WHERE account_id = :account_id;"));
-    q.bindValue(QSL(":account_id"), account_id);
-
-    q.exec();
-
-    q.prepare(QSL("DELETE FROM LabelsInMessages WHERE account_id = :account_id;"));
     q.bindValue(QSL(":account_id"), account_id);
 
     q.exec();
@@ -1407,36 +1396,21 @@ void DatabaseQueries::cleanProbedMessages(const QSqlDatabase& db, Search* probe,
   cleanMessagesByCondition(db, whereClauseProbe(probe, probe->account()->accountId()), clean_read_only);
 }
 
-void DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id) {
+void DatabaseQueries::purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db) {
   SqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM MessageFiltersInFeeds "
-                "WHERE account_id = :account_id AND "
-                "feed NOT IN (SELECT id FROM Feeds WHERE account_id = :account_id);"));
-  q.bindValue(QSL(":account_id"), account_id);
-
+                "WHERE feed NOT IN (SELECT id FROM Feeds);"));
   q.exec();
 }
 
-void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id) {
+void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db) {
   SqlQuery q(db);
 
-  if (account_id > 0) {
-    q.prepare(QSL("DELETE FROM LabelsInMessages "
-                  "WHERE account_id = :account_id AND "
-                  "  ( "
-                  "    message NOT IN (SELECT id FROM Messages WHERE account_id = :account_id) OR "
-                  "    label NOT IN (SELECT id FROM Labels  WHERE account_id = :account_id) "
-                  "  );"));
-    q.bindValue(QSL(":account_id"), account_id);
-  }
-  else {
-    q.prepare(QSL("DELETE FROM LabelsInMessages "
-                  "WHERE "
-                  "  message NOT IN (SELECT id FROM Messages) OR "
-                  "  label NOT IN (SELECT id FROM Labels);"));
-  }
-
+  q.prepare(QSL("DELETE FROM LabelsInMessages "
+                "WHERE "
+                "  message NOT IN (SELECT id FROM Messages) OR "
+                "  label NOT IN (SELECT id FROM Labels);"));
   q.exec();
 }
 
@@ -1811,19 +1785,10 @@ void DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account
 
   SqlQuery q(db);
 
-  q.prepare(QSL("DELETE FROM Messages WHERE feed = :feed;"));
-  q.bindValue(QSL(":feed"), feed->id());
-
-  q.exec();
-
-  purgeLeftoverLabelAssignments(db, account_id);
-
   q.prepare(QSL("DELETE FROM Feeds WHERE id = :feed;"));
   q.bindValue(QSL(":feed"), feed->id());
 
   q.exec();
-
-  purgeLeftoverMessageFilterAssignments(db, account_id);
 }
 
 void DatabaseQueries::deleteCategory(const QSqlDatabase& db, Category* category) {
@@ -2109,11 +2074,10 @@ void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db, int feed
   SqlQuery q(db);
 
   q.prepare(QSL("SELECT COUNT(*) FROM MessageFiltersInFeeds "
-                "WHERE filter = :filter AND feed = :feed AND account_id = :account_id;"));
+                "WHERE filter = :filter AND feed = :feed;"));
 
   q.bindValue(QSL(":filter"), filter_id);
   q.bindValue(QSL(":feed"), feed_id);
-  q.bindValue(QSL(":account_id"), account_id);
 
   if (q.exec() && q.next()) {
     auto already_included_count = q.value(0).toInt();
@@ -2150,15 +2114,14 @@ void DatabaseQueries::updateMessageFilter(const QSqlDatabase& db, MessageFilter*
   q.exec();
 }
 
-void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db, int feed_id, int filter_id, int account_id) {
+void DatabaseQueries::removeMessageFilterFromFeed(const QSqlDatabase& db, int feed_id, int filter_id) {
   SqlQuery q(db);
 
   q.prepare(QSL("DELETE FROM MessageFiltersInFeeds "
-                "WHERE filter = :filter AND feed = :feed AND account_id = :account_id;"));
+                "WHERE filter = :filter AND feed = :feed;"));
 
   q.bindValue(QSL(":filter"), filter_id);
   q.bindValue(QSL(":feed"), feed_id);
-  q.bindValue(QSL(":account_id"), account_id);
 
   q.exec();
 }
@@ -2167,7 +2130,9 @@ QMultiMap<int, int> DatabaseQueries::messageFiltersInFeeds(const QSqlDatabase& d
   SqlQuery q(db);
   QMultiMap<int, int> filters_in_feeds;
 
-  q.prepare(QSL("SELECT filter, feed FROM MessageFiltersInFeeds WHERE account_id = :account_id;"));
+  q.prepare(QSL("SELECT filter, feed "
+                "FROM MessageFiltersInFeeds "
+                "WHERE feed IN (SELECT id FROM Feeds WHERE account_id = :account_id);"));
   q.bindValue(QSL(":account_id"), account_id);
 
   q.exec();
