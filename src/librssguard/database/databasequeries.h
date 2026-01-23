@@ -45,7 +45,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void updateLabel(const QSqlDatabase& db, Label* label);
     static void deleteLabel(const QSqlDatabase& db, Label* label);
     static void createLabel(const QSqlDatabase& db, Label* label, int account_id, int new_label_id = 0);
-    static void purgeLabelAssignments(const QSqlDatabase& db, Label* label);
 
     // Probes.
     static void createProbe(const QSqlDatabase& db, Search* probe, int account_id);
@@ -198,7 +197,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void purgeLeftoverLabelAssignments(const QSqlDatabase& db);
     static MessageFilter* addMessageFilter(const QSqlDatabase& db, const QString& title, const QString& script);
     static void removeMessageFilter(const QSqlDatabase& db, int filter_id);
-    static void removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id);
     static QList<MessageFilter*> getMessageFilters(const QSqlDatabase& db);
     static void assignMessageFilterToFeed(const QSqlDatabase& db, int feed_id, int filter_id);
     static void updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter);
