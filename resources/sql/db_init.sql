@@ -159,18 +159,12 @@ CREATE INDEX idx_Lim4 ON LabelsInMessages (label, account_id, message);
 -- !
 CREATE INDEX idx_Categories1 ON Categories (account_id);
 -- !
-CREATE INDEX idx_Categories2 ON Categories (parent_id);
--- !
-CREATE INDEX idx_Categories3 ON Categories (account_id, ordr);
+CREATE INDEX idx_Categories2 ON Categories (account_id, parent_id, ordr);
 -- !
 -- !
 CREATE INDEX idx_Feeds1 ON Feeds (account_id);
 -- !
-CREATE INDEX idx_Feeds2 ON Feeds (category);
--- !
-CREATE INDEX idx_Feeds3 ON Feeds (custom_id);
--- !
-CREATE INDEX idx_Feeds4 ON Feeds (account_id, ordr);
+CREATE INDEX idx_Feeds2 ON Feeds (account_id, category, ordr);
 -- !
 -- !
 CREATE INDEX idx_Messages1 ON Messages (account_id);
