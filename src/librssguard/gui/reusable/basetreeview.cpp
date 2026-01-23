@@ -43,8 +43,8 @@ void BaseTreeView::wheelEvent(QWheelEvent* event) {
     m_lastWheelTime = now;
 
     // If scrolling quickly, boost speed; otherwise decay.
-    if (dt < 120) {                                               // <120 ms between wheel events → user scrolling fast
-      m_scrollSpeedFactor = qMin(m_scrollSpeedFactor * 1.3, 8.0); // accelerate up to 6×
+    if (dt < 120) {                                                // <120 ms between wheel events → user scrolling fast
+      m_scrollSpeedFactor = qMin(m_scrollSpeedFactor * 1.15, 5.0); // accelerate up to 6×
     }
     else {
       m_scrollSpeedFactor = qMax(m_scrollSpeedFactor * 0.6, 1.0); // slowly return to normal

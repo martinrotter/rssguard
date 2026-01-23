@@ -1489,6 +1489,20 @@ void DatabaseQueries::storeAccountTree(const QSqlDatabase& db,
   }
 }
 
+QStringList DatabaseQueries::customIdsOfMessagesFromLabels(const QSqlDatabase& db,
+                                                           RootItem::ReadStatus target_read,
+                                                           int account_id) {
+  QString cond = whereClauseLabel(0, account_id);
+  QMap<QString, QVariant> bindings;
+
+  if (target_read != RootItem::ReadStatus::Unknown) {
+    cond += QSL(" AND Messages.is_read = :read");
+    bindings[QSL(":read")] = target_read == RootItem::ReadStatus::Read ? 0 : 1;
+  }
+
+  return customIdsOfMessagesByCondition(db, cond, bindings);
+}
+
 QStringList DatabaseQueries::customIdsOfMessagesFromLabel(const QSqlDatabase& db,
                                                           Label* label,
                                                           RootItem::ReadStatus read) {

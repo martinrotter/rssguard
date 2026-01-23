@@ -782,7 +782,13 @@ QStringList ServiceRoot::customIDsOfMessagesForItem(RootItem* item, ReadStatus t
     QStringList list;
 
     switch (item->kind()) {
-      case RootItem::Kind::Labels:
+      case RootItem::Kind::Labels: {
+        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+
+        list = DatabaseQueries::customIdsOfMessagesFromLabels(database, target_read, accountId());
+        break;
+      }
+
       case RootItem::Kind::Probes: {
         auto chi = item->childItems();
 
@@ -790,7 +796,7 @@ QStringList ServiceRoot::customIDsOfMessagesForItem(RootItem* item, ReadStatus t
           list.append(customIDsOfMessagesForItem(child, target_read));
         }
 
-        return list;
+        break;
       }
 
       case RootItem::Kind::Label: {

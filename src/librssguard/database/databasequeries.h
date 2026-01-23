@@ -109,6 +109,9 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QStringList bagOfMessages(const QSqlDatabase& db, ServiceRoot::BagOfMessages bag, const Feed* feed);
     static QHash<QString, QStringList> bagsOfMessages(const QSqlDatabase& db, const QList<Label*>& labels);
 
+    static QStringList customIdsOfMessagesFromLabels(const QSqlDatabase& db,
+                                                     RootItem::ReadStatus target_read,
+                                                     int account_id);
     static QStringList customIdsOfMessagesFromLabel(const QSqlDatabase& db,
                                                     Label* label,
                                                     RootItem::ReadStatus target_read);
