@@ -207,11 +207,6 @@ bool Feed::removeUnwantedArticles(QSqlDatabase& db) {
   Feed::ArticleIgnoreLimit app_setup = Feed::ArticleIgnoreLimit::fromSettings();
 
   bool removed = DatabaseQueries::removeUnwantedArticlesFromFeed(db, this, feed_setup, app_setup);
-
-  if (removed) {
-    DatabaseQueries::purgeLeftoverLabelAssignments(db, account()->accountId());
-  }
-
   return removed;
 }
 

@@ -252,7 +252,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
     }
   }
 
-  DatabaseQueries::purgeLeftoverLabelAssignments(database, account->accountId());
+  DatabaseQueries::purgeLeftoverLabelAssignments(database);
 }
 
 void MessagesForFiltersModel::testFilter(MessageFilter* filter, FilteringSystem* engine) {

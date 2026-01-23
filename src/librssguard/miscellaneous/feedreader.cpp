@@ -265,16 +265,14 @@ void FeedReader::assignMessageFilterToFeed(Feed* feed, MessageFilter* filter) {
   feed->appendMessageFilter(filter);
   DatabaseQueries::assignMessageFilterToFeed(qApp->database()->driver()->connection(metaObject()->className()),
                                              feed->id(),
-                                             filter->id(),
-                                             feed->account()->accountId());
+                                             filter->id());
 }
 
 void FeedReader::removeMessageFilterToFeedAssignment(Feed* feed, MessageFilter* filter) {
   feed->removeMessageFilter(filter);
   DatabaseQueries::removeMessageFilterFromFeed(qApp->database()->driver()->connection(metaObject()->className()),
                                                feed->id(),
-                                               filter->id(),
-                                               feed->account()->accountId());
+                                               filter->id());
 }
 
 void FeedReader::updateAllFeeds() {
