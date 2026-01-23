@@ -1808,18 +1808,15 @@ void DatabaseQueries::deleteFeed(const QSqlDatabase& db, Feed* feed, int account
 
   SqlQuery q(db);
 
-  q.prepare(QSL("DELETE FROM Messages WHERE feed = :feed AND account_id = :account_id;"));
+  q.prepare(QSL("DELETE FROM Messages WHERE feed = :feed;"));
   q.bindValue(QSL(":feed"), feed->id());
-  q.bindValue(QSL(":account_id"), account_id);
 
   q.exec();
 
   purgeLeftoverLabelAssignments(db, account_id);
 
-  // Remove feed itself.
-  q.prepare(QSL("DELETE FROM Feeds WHERE custom_id = :custom_id AND account_id = :account_id;"));
-  q.bindValue(QSL(":custom_id"), feed->customId());
-  q.bindValue(QSL(":account_id"), account_id);
+  q.prepare(QSL("DELETE FROM Feeds WHERE id = :feed;"));
+  q.bindValue(QSL(":feed"), feed->id());
 
   q.exec();
 

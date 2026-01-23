@@ -9,7 +9,7 @@ is_pdeleted, account_id                                                         
 is_important, is_deleted, is_pdeleted, account_id                                 # whereClauseImportantArticles
 is_read, is_deleted, is_pdeleted, account_id                                      # whereClauseUnreadArticles, cleanUnreadMessages, cleanBin, customIdsOfMessagesFromAccount, customIdsOfUnreadMessages, customIdsOfMessagesFromBin                  
 is_deleted, is_pdeleted, account_id, title, contents                              # whereClauseProbe
-feed                                                                              # whereClauseFeeds
+feed                                                                              # whereClauseFeeds, deleteFeed
 is_deleted, is_pdeleted, account_id, is_read                                      # customIdsOfMessagesFromLabel, cleanLabelledMessages
 feed, is_read                                                                     # customIdsOfMessagesFromFeeds, cleanFeeds
 is_important, is_deleted, is_pdeleted, account_id, is_read                        # customIdsOfImportantMessages, cleanImportantMessages
@@ -31,9 +31,8 @@ custom_id, account_id                                                           
 feed, custom_id, account_id                                                       # updateMessages
 id, account_id                                                                    # updateMessages
 custom_id                                                                         # updateMessages
-feed, account_id                                                                  # deleteFeed
 
-Labels
+Labels (done)
 ======
 id                # initMessageTableAttributes, updateLabel, deleteLabel
 account_id        # getLabelsForAccount, deleteAccount
@@ -52,32 +51,39 @@ account_id                                # getMessageCountsForAllLabels, delete
 account_id, message, label                # purgeLeftoverLabelAssignments
 message, label                            # purgeLeftoverLabelAssignments
 
-MessageFiltersInFeeds
+návrh
+=====
+message
+label
+account_id
+message, label, account
+
+
+MessageFiltersInFeeds 
 =====================
 account_id                  # deleteAccount, messageFiltersInFeeds
 account_id, feed            # purgeLeftoverMessageFilterAssignments
 filter                      # removeMessageFilterAssignments
 filter, feed, account_id    # assignMessageFilterToFeed, removeMessageFilterFromFeed
 
-Probes
+Probes (done)
 ======
 id, account_id    # updateProbe, deleteProbe
 account_id        # getProbesForAccount
 
 
-Categories
+Categories (done)
 ==========
 account_id                    # deleteAccount
-accunt_id, parent_id          # createOverwriteCategory
+account_id, parent_id         # createOverwriteCategory
 id                            # createOverwriteCategory, deleteCategory
 account_id, parent_id, ordr   # moveItem
 
-Feeds
+Feeds (done)
 =====
-id                            # purgeLeftoverMessages, createOverwriteFeed
+id                            # purgeLeftoverMessages, createOverwriteFeed, deleteFeed
 account_id                    # deleteAccount
 account_id, category          # createOverwriteFeed
-custom_id, account_id         # deleteFeed
 account_id, category, ordr    # moveItem
 
 MessageFilters
