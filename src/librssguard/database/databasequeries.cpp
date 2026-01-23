@@ -205,7 +205,6 @@ void DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<La
   SqlQuery q(db);
 
   // Remove everything first.
-
   q.prepare(QSL("DELETE FROM LabelsInMessages "
                 "WHERE LabelsInMessages.message = :message AND LabelsInMessages.account_id = :account_id;"));
   q.bindValue(QSL(":message"), msg.m_id);
@@ -576,21 +575,25 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
 void DatabaseQueries::purgeFeedArticles(const QSqlDatabase& db, const QList<Feed*>& feeds) {
   SqlQuery q(db);
 
-  auto feed_clauses = qlinq::from(feeds)
-                        .select([](Feed* feed) {
-                          return QSL("("
-                                     "Messages.feed = %1 AND "
-                                     "Messages.account_id = %2 AND "
-                                     "Messages.is_important = 0"
-                                     ")")
-                            .arg(QString::number(feed->id()), QString::number(feed->account()->accountId()));
-                        })
-                        .toList();
+  auto linq = qlinq::from(feeds);
 
-  QString feed_clause = feed_clauses.join(QSL(" OR "));
+  auto feeds_grouped = linq.groupBy([](Feed* feed) {
+    return feed->account()->accountId();
+  });
 
-  q.prepare(QSL("DELETE FROM Messages WHERE %1;").arg(feed_clause));
-  q.exec();
+  for (auto it = feeds_grouped.begin(); it != feeds_grouped.end(); it++) {
+    auto account_id = it.key();
+    auto feeds = it.value();
+
+    if (feeds.isEmpty()) {
+      continue;
+    }
+
+    auto feeds_ids = feeds.first()->account()->textualFeedIds(feeds);
+
+    q.exec(QSL("DELETE FROM Messages WHERE is_important = 0 AND feed IN (%2) AND account_id = %1;")
+             .arg(QString::number(account_id), feeds_ids.join(QSL(", "))));
+  }
 }
 
 void DatabaseQueries::purgeMessagesByCondition(const QSqlDatabase& db, const QString& where_clause) {

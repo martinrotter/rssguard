@@ -75,7 +75,6 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name) {
     }
 
     SqlQuery query_db(database);
-
     setPragmas(query_db);
 
     return database;
@@ -140,7 +139,6 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name) {
   }
   else {
     SqlQuery query_db(database);
-
     setPragmas(query_db);
 
     // Sample query which checks for existence of tables.
@@ -214,6 +212,7 @@ QString SqliteDriver::databaseFilePath() const {
 }
 
 void SqliteDriver::setPragmas(SqlQuery& query) {
+  query.exec(foreignKeysEnable());
   query.exec(QSL("PRAGMA encoding = 'UTF-8';"));
   query.exec(QSL("PRAGMA page_size = 32768;"));
   query.exec(QSL("PRAGMA cache_size = 32768;"));

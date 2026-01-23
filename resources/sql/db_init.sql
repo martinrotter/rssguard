@@ -75,7 +75,7 @@ CREATE TABLE Messages (
   custom_id       VARCHAR(250),
   custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */
 
-  FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE NO ACTION, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, because NO ACTION is synonym for RESTRICT. */
+  FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE CASCADE, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise its local messages would be deleted. */
   FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE
 );
 -- !
@@ -93,7 +93,7 @@ CREATE TABLE MessageFiltersInFeeds (
   account_id  INTEGER         NOT NULL,
   
   FOREIGN KEY (filter)      REFERENCES MessageFilters (id)  ON DELETE CASCADE,
-  FOREIGN KEY (feed)        REFERENCES Feeds (id)           ON DELETE NO ACTION, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, because NO ACTION is synonym for RESTRICT. */
+  FOREIGN KEY (feed)        REFERENCES Feeds (id)           ON DELETE CASCADE, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise article filter assignments would be deleted. */
   FOREIGN KEY (account_id)  REFERENCES Accounts (id)        ON DELETE CASCADE
 );
 -- !
@@ -115,7 +115,7 @@ CREATE TABLE LabelsInMessages (
 
   UNIQUE (account_id, message, label),
   FOREIGN KEY (message)     REFERENCES Messages (id)  ON DELETE CASCADE,
-  FOREIGN KEY (label)       REFERENCES Labels (id)    ON DELETE NO ACTION, /* You need to temporarily disable foreign checks for MariaDB when refreshing labels, because NO ACTION is synonym for RESTRICT. */
+  FOREIGN KEY (label)       REFERENCES Labels (id)    ON DELETE CASCADE, /* You need to temporarily disable foreign checks for MariaDB when refreshing labels, otherwise label-article assignments would be deleted. */
   FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE
 );
 -- !
