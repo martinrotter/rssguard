@@ -710,8 +710,8 @@ void ServiceRoot::syncIn() {
     // We have new feed, some feeds were maybe removed,
     // so remove left over messages and filter assignments.
     DatabaseQueries::purgeLeftoverMessages(db, accountId());
-    DatabaseQueries::purgeLeftoverMessageFilterAssignments(db, accountId());
-    DatabaseQueries::purgeLeftoverLabelAssignments(db, accountId());
+    DatabaseQueries::purgeLeftoverMessageFilterAssignments(db);
+    DatabaseQueries::purgeLeftoverLabelAssignments(db);
 
     qApp->database()->driver()->setForeignKeyChecksEnabled(db);
 
