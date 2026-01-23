@@ -2,7 +2,6 @@
 
 Messages
 ========
-
 account_id                                                                        # getAllGmailRecipients, getMessageCountsForAllLabels, deleteAccount
 is_deleted, is_pdeleted, account_id                                               # whereClauseBin, whereClauseAccount, getMessageCountsForAllLabels, whereClauseLabel, whereClauseLabels
 is_pdeleted, account_id                                                           # whereClauseAccount
@@ -19,13 +18,12 @@ feed, is_deleted, is_pdeleted, account_id                                       
 feed, is_deleted, is_pdeleted, account_id, is_important, is_read, date_created    # removeUnwantedArticlesFromFeed
 account_id, feed, is_deleted, is_important, date_created                          # removeUnwantedArticlesFromFeed
 account_id, feed, is_deleted, is_read, date_created                               # removeUnwantedArticlesFromFeed
-feed, account_id, is_important                                                    # purgeFeedArticles
 is_important, is_deleted                                                          # purgeImportantMessages, purgeRecycleBin
 is_read, is_deleted, is_important                                                 # purgeReadMessages
 is_important, date_created                                                        # purgeOldMessages
 account_id, feed                                                                  # purgeLeftoverMessages
 is_read, feed, account_id                                                         # bagOfMessages
-is_important, feed, account_id                                                    # bagOfMessages
+is_important, feed, account_id                                                    # bagOfMessages, purgeFeedArticles
 feed, title, url, author, account_id                                              # updateMessages
 custom_id, account_id                                                             # updateMessages
 feed, custom_id, account_id                                                       # updateMessages
