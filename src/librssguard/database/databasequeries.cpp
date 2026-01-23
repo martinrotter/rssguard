@@ -2070,7 +2070,7 @@ QList<MessageFilter*> DatabaseQueries::getMessageFilters(const QSqlDatabase& db)
   return filters;
 }
 
-void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db, int feed_id, int filter_id, int account_id) {
+void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db, int feed_id, int filter_id) {
   SqlQuery q(db);
 
   q.prepare(QSL("SELECT COUNT(*) FROM MessageFiltersInFeeds "
@@ -2090,11 +2090,11 @@ void DatabaseQueries::assignMessageFilterToFeed(const QSqlDatabase& db, int feed
     THROW_EX(SqlException, q.lastError());
   }
 
-  q.prepare(QSL("INSERT INTO MessageFiltersInFeeds (filter, feed, account_id) "
-                "VALUES(:filter, :feed, :account_id);"));
+  q.prepare(QSL("INSERT INTO MessageFiltersInFeeds (filter, feed) "
+                "VALUES(:filter, :feed);"));
+
   q.bindValue(QSL(":filter"), filter_id);
   q.bindValue(QSL(":feed"), feed_id);
-  q.bindValue(QSL(":account_id"), account_id);
 
   q.exec();
 }
