@@ -38,13 +38,13 @@ custom_id         # createLabel
 
 LabelsInMessages (done)
 ================
-label, message                # whereClauseLabel
 message                       # whereClauseLabels
-label                         # initMessageTableAttributes, getMessageCountsForAllLabels
-label                         # purgeLabelAssignments
-label, message                # deassignLabelFromMessage
 message                       # setLabelsForMessage
 message                       # getMessageCountsForAllLabels
+label                         # initMessageTableAttributes, getMessageCountsForAllLabels
+label                         # purgeLabelAssignments
+label, message                # whereClauseLabel
+label, message                # deassignLabelFromMessage
 label, message                # purgeLeftoverLabelAssignments
 
 MessageFiltersInFeeds (done)
