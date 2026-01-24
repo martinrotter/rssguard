@@ -1,33 +1,30 @@
-* - used in GROUP BY
-
-Messages
+Messages (done)
 ========
-account_id                                                                        # getAllGmailRecipients, getMessageCountsForAllLabels, deleteAccount
-is_deleted, is_pdeleted, account_id                                               # whereClauseBin, whereClauseAccount, getMessageCountsForAllLabels, whereClauseLabel, whereClauseLabels
-is_pdeleted, account_id                                                           # whereClauseAccount
-is_important, is_deleted, is_pdeleted, account_id                                 # whereClauseImportantArticles
-is_read, is_deleted, is_pdeleted, account_id                                      # whereClauseUnreadArticles, cleanUnreadMessages, cleanBin, customIdsOfMessagesFromAccount, customIdsOfUnreadMessages, customIdsOfMessagesFromBin                  
-is_deleted, is_pdeleted, account_id, title, contents                              # whereClauseProbe
+account_id, is_deleted, is_pdeleted                                               # whereClauseLabel, whereClauseLabels, whereClauseBin, whereClauseAccount, getMessageCountsForAllLabels
+account_id, is_deleted, is_pdeleted, is_read                                      # whereClauseUnreadArticles, cleanBin, customIdsOfMessagesFromLabel, customIdsOfMessagesFromBin, customIdsOfMessagesFromAccount
+account_id, is_deleted, is_pdeleted, title, contents, is_read                     # whereClauseProbe, customIdsOfMessagesFromProbe, cleanProbedMessages
+account_id, is_pdeleted                                                           # whereClauseAccount
+
+is_important, account_id, is_deleted, is_pdeleted                                 # whereClauseImportantArticles, cleanImportantMessages
+is_important, account_id, is_deleted, is_pdeleted, is_read                        # customIdsOfImportantMessages, cleanImportantMessages
+
 feed                                                                              # whereClauseFeeds, deleteFeed
-is_deleted, is_pdeleted, account_id, is_read                                      # customIdsOfMessagesFromLabel, cleanLabelledMessages
-feed, is_read                                                                     # customIdsOfMessagesFromFeeds, cleanFeeds
-is_important, is_deleted, is_pdeleted, account_id, is_read                        # customIdsOfImportantMessages, cleanImportantMessages
-is_deleted, is_pdeleted, account_id, title, contents, is_read                     # customIdsOfMessagesFromProbe, cleanProbedMessages
-id                                                                                # markMessageImportant, switchMessagesImportance, permanentlyDeleteMessages, deleteOrRestoreMessagesToFromBin, purgeMessage, getMessageCountsForAllLabels
-feed, is_deleted, is_pdeleted, account_id                                         # removeUnwantedArticlesFromFeed
-feed, is_deleted, is_pdeleted, account_id, is_important, is_read, date_created    # removeUnwantedArticlesFromFeed
-account_id, feed, is_deleted, is_important, date_created                          # removeUnwantedArticlesFromFeed
-account_id, feed, is_deleted, is_read, date_created                               # removeUnwantedArticlesFromFeed
+account_id                                                                        # getAllGmailRecipients, getMessageCountsForAllLabels, deleteAccount
+id                                                                                # markMessageImportant, switchMessagesImportance, permanentlyDeleteMessages, deleteOrRestoreMessagesToFromBin, purgeMessage, getMessageCountsForAllLabels, updateMessages
+
+feed, is_deleted, is_pdeleted                                                     # removeUnwantedArticlesFromFeed
+feed, is_deleted, is_pdeleted, is_important, is_read, date_created                # removeUnwantedArticlesFromFeed
+feed, is_deleted, is_important, date_created                                      # removeUnwantedArticlesFromFeed
+feed, is_deleted, is_read, date_created                                           # removeUnwantedArticlesFromFeed
 is_important, is_deleted                                                          # purgeImportantMessages, purgeRecycleBin
-is_read, is_deleted, is_important                                                 # purgeReadMessages
+is_important, is_deleted, is_read                                                 # purgeReadMessages
 is_important, date_created                                                        # purgeOldMessages
-account_id, feed                                                                  # purgeLeftoverMessages
-is_read, feed, account_id                                                         # bagOfMessages
-is_important, feed, account_id                                                    # bagOfMessages, purgeFeedArticles
-feed, title, url, author, account_id                                              # updateMessages
+feed, account_id                                                                  # purgeLeftoverMessages
+feed, is_read                                                                     # customIdsOfMessagesFromFeeds, cleanFeeds, bagOfMessages
+feed, is_important                                                                # bagOfMessages, purgeFeedArticles
+feed, title, url, author                                                          # updateMessages
 custom_id, account_id                                                             # updateMessages
-feed, custom_id, account_id                                                       # updateMessages
-id, account_id                                                                    # updateMessages
+custom_id, feed                                                                   # updateMessages
 custom_id                                                                         # updateMessages
 
 Labels (done)
