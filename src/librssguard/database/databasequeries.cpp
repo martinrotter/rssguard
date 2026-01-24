@@ -71,42 +71,42 @@ QVariantHash DatabaseQueries::deserializeCustomData(const QString& data) {
 }
 
 QString DatabaseQueries::whereClauseBin(int account_id) {
-  return QSL("Messages.is_deleted = 1 AND Messages.is_pdeleted = 0 AND Messages.account_id = %1").arg(account_id);
+  return QSL("Messages.account_id = %1 AND Messages.is_deleted = 1 AND Messages.is_pdeleted = 0").arg(account_id);
 }
 
 QString DatabaseQueries::whereClauseImportantArticles(int account_id) {
   return QSL("Messages.is_important = 1 AND "
+             "Messages.account_id = %1 AND "
              "Messages.is_deleted = 0 AND "
-             "Messages.is_pdeleted = 0 AND "
-             "Messages.account_id = %1")
+             "Messages.is_pdeleted = 0")
     .arg(account_id);
 }
 
 QString DatabaseQueries::whereClauseUnreadArticles(int account_id) {
-  return QSL("Messages.is_read = 0 AND "
+  return QSL("Messages.account_id = %1 AND "
              "Messages.is_deleted = 0 AND "
              "Messages.is_pdeleted = 0 AND "
-             "Messages.account_id = %1")
+             "Messages.is_read = 0")
     .arg(account_id);
 }
 
 QString DatabaseQueries::whereClauseProbe(Search* probe, int account_id) {
   if (probe->type() == Search::Type::Regex) {
-    return QSL("Messages.is_deleted = 0 AND "
+    return QSL("Messages.account_id = %1 AND "
+               "Messages.is_deleted = 0 AND "
                "Messages.is_pdeleted = 0 AND "
-               "Messages.account_id = %1 AND "
                "(Messages.title REGEXP '%2' OR Messages.contents REGEXP '%2')")
       .arg(QString::number(account_id), DatabaseFactory::escapeQuery(probe->filter()));
   }
   else {
-    return QSL("(%2) AND Messages.account_id = %1").arg(QString::number(account_id), probe->filter());
+    return QSL("Messages.account_id = %1 AND (%2)").arg(QString::number(account_id), probe->filter());
   }
 }
 
 QString DatabaseQueries::whereClauseLabel(int label_id, int account_id) {
-  return QSL("Messages.is_deleted = 0 AND "
+  return QSL("Messages.account_id = %1 AND "
+             "Messages.is_deleted = 0 AND "
              "Messages.is_pdeleted = 0 AND "
-             "Messages.account_id = %1 AND "
              "EXISTS (SELECT 1 "
              "FROM LabelsInMessages "
              "WHERE "
@@ -120,9 +120,9 @@ QString DatabaseQueries::whereClauseLabels(int account_id) {
 }
 
 QString DatabaseQueries::whereClauseAccount(bool including_deleted, int account_id) {
-  return QSL("%2 "
-             "Messages.is_pdeleted = 0 AND "
-             "Messages.account_id = %1")
+  return QSL("Messages.account_id = %1 AND "
+             "%2 "
+             "Messages.is_pdeleted = 0")
     .arg(QString::number(account_id), including_deleted ? QString() : QSL("Messages.is_deleted = 0 AND"));
 }
 
@@ -495,14 +495,12 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
                 "WHERE "
                 "  Messages.feed = :feed AND "
                 "  Messages.is_deleted = 0 AND "
-                "  Messages.is_pdeleted = 0 AND "
-                "  Messages.account_id = :account_id "
+                "  Messages.is_pdeleted = 0 "
                 "ORDER BY Messages.date_created DESC "
                 "LIMIT 1 OFFSET :offset;"));
 
   q.bindValue(QSL(":offset"), amount_to_keep - 1);
   q.bindValue(QSL(":feed"), feed->id());
-  q.bindValue(QSL(":account_id"), feed->account()->accountId());
 
   q.exec();
   q.next();
@@ -517,7 +515,6 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
                   "  Messages.feed = :feed AND "
                   "  Messages.is_deleted = 0 AND "
                   "  Messages.is_pdeleted = 0 AND "
-                  "  Messages.account_id = :account_id AND "
                   "  Messages.is_important != :is_important AND "
                   "  Messages.is_read != :is_read AND "
                   "  Messages.date_created < :stamp"));
@@ -526,7 +523,6 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
     // We purge all older articles.
     q.prepare(QSL("DELETE FROM Messages "
                   "WHERE "
-                  "  Messages.account_id = :account_id AND "
                   "  Messages.feed = :feed AND "
                   "  (Messages.is_deleted = 1 OR Messages.is_important != :is_important) AND "
                   "  (Messages.is_deleted = 1 OR Messages.is_read != :is_read) AND "
@@ -537,7 +533,6 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
   q.bindValue(QSL(":is_read"), dont_remove_unread ? 0 : 2);
   q.bindValue(QSL(":feed"), feed->id());
   q.bindValue(QSL(":stamp"), last_kept_stamp);
-  q.bindValue(QSL(":account_id"), feed->account()->accountId());
 
   q.exec();
 
@@ -552,25 +547,13 @@ bool DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
 void DatabaseQueries::purgeFeedArticles(const QSqlDatabase& db, const QList<Feed*>& feeds) {
   SqlQuery q(db);
 
-  auto linq = qlinq::from(feeds);
-
-  auto feeds_grouped = linq.groupBy([](Feed* feed) {
-    return feed->account()->accountId();
-  });
-
-  for (auto it = feeds_grouped.begin(); it != feeds_grouped.end(); it++) {
-    auto account_id = it.key();
-    auto feeds = it.value();
-
-    if (feeds.isEmpty()) {
-      continue;
-    }
-
-    auto feeds_ids = feeds.first()->account()->textualFeedIds(feeds);
-
-    q.exec(QSL("DELETE FROM Messages WHERE is_important = 0 AND feed IN (%2) AND account_id = %1;")
-             .arg(QString::number(account_id), feeds_ids.join(QSL(", "))));
+  if (feeds.isEmpty()) {
+    return;
   }
+
+  auto feeds_ids = feeds.first()->account()->textualFeedIds(feeds);
+
+  q.exec(QSL("DELETE FROM Messages WHERE feed IN (%1) AND is_important = 0;").arg(feeds_ids.join(QSL(", "))));
 }
 
 void DatabaseQueries::purgeMessagesByCondition(const QSqlDatabase& db, const QString& where_clause) {
@@ -591,7 +574,7 @@ void DatabaseQueries::purgeImportantMessages(const QSqlDatabase& db) {
 }
 
 void DatabaseQueries::purgeReadMessages(const QSqlDatabase& db) {
-  purgeMessagesByCondition(db, QSL("is_read = 1 AND is_deleted = 0 AND is_important = 0"));
+  purgeMessagesByCondition(db, QSL("is_important = 0 AND is_deleted = 0 AND is_read = 1"));
 }
 
 void DatabaseQueries::purgeOldMessages(const QSqlDatabase& db, int older_than_days) {
@@ -608,8 +591,8 @@ void DatabaseQueries::purgeRecycleBin(const QSqlDatabase& db) {
 
 void DatabaseQueries::purgeLeftoverMessages(const QSqlDatabase& db, int account_id) {
   purgeMessagesByCondition(db,
-                           QSL("account_id = %1 AND "
-                               "feed NOT IN (SELECT id FROM Feeds WHERE account_id = %1)")
+                           QSL("feed NOT IN (SELECT id FROM Feeds WHERE account_id = %1) AND "
+                               "account_id = %1")
                              .arg(account_id));
 }
 
@@ -687,7 +670,7 @@ QMap<int, ArticleCounts> DatabaseQueries::getMessageCountsForAllLabels(const QSq
                 "JOIN Messages m "
                 "  ON m.id = lim.message "
                 "WHERE"
-                "  m.is_deleted = 0 AND m.is_pdeleted = 0 AND m.account_id = :account_id "
+                "  m.account_id = :account_id AND m.is_deleted = 0 AND m.is_pdeleted = 0 "
                 "GROUP BY lim.label;"));
 
   q.bindValue(QSL(":account_id"), account_id);
@@ -788,10 +771,9 @@ QStringList DatabaseQueries::bagOfMessages(const QSqlDatabase& db, ServiceRoot::
 
   q.prepare(QSL("SELECT custom_id "
                 "FROM Messages "
-                "WHERE %1 AND feed = :feed AND account_id = :account_id;")
+                "WHERE feed = :feed AND %1;")
               .arg(query));
 
-  q.bindValue(QSL(":account_id"), feed->account()->accountId());
   q.bindValue(QSL(":feed"), feed->id());
 
   q.exec();
@@ -846,8 +828,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
     //   4) they have same TITLE.
     // NOTE: This only applies to messages from standard RSS/ATOM/JSON feeds without ID/GUID.
     query_select_with_url.prepare(QSL("SELECT id, date_created, is_read, is_important, contents, feed FROM Messages "
-                                      "WHERE feed = :feed AND title = :title AND url = :url AND author = :author AND "
-                                      "account_id = :account_id;"));
+                                      "WHERE feed = :feed AND title = :title AND url = :url AND author = :author;"));
 
     // When we have custom ID of the message which is service-specific (synchronized services).
     query_select_with_custom_id
@@ -857,14 +838,14 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
     // We have custom ID of message, but it is feed-specific not service-specific (standard RSS/ATOM/JSON).
     query_select_with_custom_id_for_feed
       .prepare(QSL("SELECT id, date_created, is_read, is_important, contents, title, author FROM Messages "
-                   "WHERE feed = :feed AND custom_id = :custom_id AND account_id = :account_id;"));
+                   "WHERE custom_id = :custom_id AND feed = :feed;"));
 
     // In some case, messages are already stored in the DB and they all have primary DB ID.
     // This is particularly the case when user runs some message filter manually on existing messages
     // of some feed.
     query_select_with_id
       .prepare(QSL("SELECT date_created, is_read, is_important, contents, feed, title, author FROM Messages "
-                   "WHERE id = :id AND account_id = :account_id;"));
+                   "WHERE id = :id;"));
 
     // Used to update existing messages.
     query_update.prepare(QSL("UPDATE Messages "
@@ -887,7 +868,6 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
         // We recognize directly existing message.
         // NOTE: Particularly for manual message filter execution.
         query_select_with_id.bindValue(QSL(":id"), message.m_id);
-        query_select_with_id.bindValue(QSL(":account_id"), account_id);
 
         qDebugNN << LOGSEC_DB << "Checking if message with primary ID" << QUOTE_W_SPACE(message.m_id)
                  << "is present in DB.";
@@ -920,7 +900,6 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
         query_select_with_url.bindValue(QSL(":title"), unnulifyString(message.m_title));
         query_select_with_url.bindValue(QSL(":url"), unnulifyString(message.m_url));
         query_select_with_url.bindValue(QSL(":author"), unnulifyString(message.m_author));
-        query_select_with_url.bindValue(QSL(":account_id"), account_id);
 
         qDebugNN << LOGSEC_DB << "Checking if message with title " << QUOTE_NO_SPACE(message.m_title) << ", url"
                  << QUOTE_W_SPACE(message.m_url) << "and author" << QUOTE_W_SPACE(message.m_author)
@@ -980,7 +959,6 @@ UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
         else {
           // Custom IDs are feed-specific.
           // NOTE: This concerns articles with ID/GUID from standard RSS/ATOM/JSON feeds.
-          query_select_with_custom_id_for_feed.bindValue(QSL(":account_id"), account_id);
           query_select_with_custom_id_for_feed.bindValue(QSL(":feed"), feed_id);
           query_select_with_custom_id_for_feed.bindValue(QSL(":custom_id"), unnulifyString(message.m_customId));
 
@@ -1271,13 +1249,11 @@ void DatabaseQueries::cleanBin(const QSqlDatabase& db, bool clear_only_read, int
   SqlQuery q(db);
 
   if (clear_only_read) {
-    q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE is_read = 1 AND %1;").arg(whereClauseBin(account_id)));
+    q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE %1 AND is_read = 1;").arg(whereClauseBin(account_id)));
   }
   else {
     q.prepare(QSL("UPDATE Messages SET is_pdeleted = 1 WHERE %1;").arg(whereClauseBin(account_id)));
   }
-
-  q.bindValue(QSL(":account_id"), account_id);
 
   q.exec();
 }
@@ -1482,7 +1458,7 @@ QStringList DatabaseQueries::customIdsOfMessagesFromFeeds(const QSqlDatabase& db
 QStringList DatabaseQueries::customIdsOfMessagesFromAccount(const QSqlDatabase& db,
                                                             RootItem::ReadStatus read,
                                                             int account_id) {
-  QString cond = QSL("Messages.is_read = :read AND %1").arg(whereClauseAccount(false, account_id));
+  QString cond = QSL("%1 AND Messages.is_read = :read").arg(whereClauseAccount(false, account_id));
 
   return customIdsOfMessagesByCondition(db, cond, {{QSL(":read"), read == RootItem::ReadStatus::Read ? 0 : 1}});
 }
@@ -1504,7 +1480,7 @@ QStringList DatabaseQueries::customIdsOfUnreadMessages(const QSqlDatabase& db, i
 QStringList DatabaseQueries::customIdsOfMessagesFromBin(const QSqlDatabase& db,
                                                         RootItem::ReadStatus read,
                                                         int account_id) {
-  QString cond = QSL("Messages.is_read = :read AND %1").arg(whereClauseBin(account_id));
+  QString cond = QSL("%1 AND Messages.is_read = :read").arg(whereClauseBin(account_id));
 
   return customIdsOfMessagesByCondition(db, cond, {{QSL(":read"), read == RootItem::ReadStatus::Read ? 0 : 1}});
 }
