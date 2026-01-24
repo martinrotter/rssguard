@@ -476,7 +476,7 @@ Liczba kanałów wyłączonych: %3</translation>
       <location filename="../src/librssguard/database/databasewriter.cpp" line="51"/>
       <location filename="../src/librssguard/database/databasewriter.cpp" line="84"/>
       <source>database writer is stopping</source>
-      <translation type="unfinished">database writer is stopping</translation>
+      <translation>pisarz bazy danych się zatrzymuje</translation>
     </message>
   </context>
   <context>
@@ -550,17 +550,17 @@ Liczba kanałów wyłączonych: %3</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="103"/>
       <source>Save attachment %1</source>
-      <translation type="unfinished">Save attachment %1</translation>
+      <translation>Zapisz załącznik %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="119"/>
       <source>Download attachment</source>
-      <translation type="unfinished">Download attachment</translation>
+      <translation>Pobierz załącznik</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="147"/>
       <source>Downloaded %1 kB...</source>
-      <translation type="unfinished">Downloaded %1 kB...</translation>
+      <translation>Pobrano %1 kB...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="158"/>
@@ -664,7 +664,7 @@ Liczba kanałów wyłączonych: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="303"/>
       <source>SQL database error</source>
-      <translation type="unfinished">SQL database error</translation>
+      <translation>Błąd bazy danych SQL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="309"/>
@@ -695,7 +695,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="246"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
-      <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
+      <translation>kanał jest wy trybie odnowienia sieci bo stworzył zbyt wiele żądań sieciowych</translation>
     </message>
   </context>
   <context>
@@ -741,11 +741,11 @@ Item custom ID: %5</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="393"/>
       <source>I will auto-download new articles for %n feed(s).</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>Automatycznie pobiorę nowe artykuły dla %n kanału(ów).</numerusform>
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
+        <numerusform>Automatycznie pobiorę nowe artykuły dla %n kanałów.</numerusform>
+        <numerusform>Automatycznie pobiorę nowe artykuły dla %n kanałów.</numerusform>
+        <numerusform>Automatycznie pobiorę nowe artykuły dla %n kanałów.</numerusform>
       </translation>
     </message>
     <message>
@@ -756,7 +756,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="418"/>
       <source>Some feeds threw an error when fetching articles.</source>
-      <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
+      <translation>Niektóre kanały rzuciły błąd podczas pobierania artykułów.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="89"/>
@@ -1062,7 +1062,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="219"/>
       <source>Show feeds with new articles</source>
-      <translation type="unfinished">Show feeds with new articles</translation>
+      <translation>Pokaż kanały z nowymi artykułami</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="225"/>
@@ -1082,7 +1082,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="243"/>
       <source>Show feeds with article filters</source>
-      <translation type="unfinished">Show feeds with article filters</translation>
+      <translation>Pokaż kanały z filtrami artykułów</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="249"/>
@@ -2114,7 +2114,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="197"/>
       <source>Right-to-left (only in article viewer)</source>
-      <translation type="unfinished">Right-to-left (only in article viewer)</translation>
+      <translation>Prawa do lewej (tylko w przeglądarce artykułów)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="170"/>
