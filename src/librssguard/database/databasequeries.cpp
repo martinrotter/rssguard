@@ -75,10 +75,10 @@ QString DatabaseQueries::whereClauseBin(int account_id) {
 }
 
 QString DatabaseQueries::whereClauseImportantArticles(int account_id) {
-  return QSL("Messages.is_important = 1 AND "
-             "Messages.account_id = %1 AND "
+  return QSL("Messages.account_id = %1 AND "
              "Messages.is_deleted = 0 AND "
-             "Messages.is_pdeleted = 0")
+             "Messages.is_pdeleted = 0 AND "
+             "Messages.is_important = 1")
     .arg(account_id);
 }
 
