@@ -188,7 +188,10 @@ void FormStandardImportExport::selectExportFile(bool without_dialog) {
                                              GENERAL_REMEMBERED_PATH);
   }
   else {
-    selected_file = the_file;
+    auto base_folder = FileDialog::storedFolder(GENERAL_REMEMBERED_PATH, qApp->documentsFolder());
+    auto full_file = QDir(base_folder).filePath(the_file);
+
+    selected_file = full_file;
     selected_filter = filter_opml20;
   }
 
