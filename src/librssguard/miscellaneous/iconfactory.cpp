@@ -40,7 +40,7 @@ QIcon IconFactory::fromByteArray(QByteArray array) {
   buffer.open(QIODevice::OpenModeFlag::ReadOnly);
   QDataStream in(&buffer);
 
-  in.setVersion(QDataStream::Version::Qt_4_7);
+  in.setVersion(QDataStream::Version::Qt_5_15);
   in >> icon;
   buffer.close();
   return icon;
@@ -57,7 +57,7 @@ QByteArray IconFactory::toByteArray(const QIcon& icon) {
   buffer.open(QIODevice::OpenModeFlag::WriteOnly);
   QDataStream out(&buffer);
 
-  out.setVersion(QDataStream::Version::Qt_4_7);
+  out.setVersion(QDataStream::Version::Qt_5_15);
   out << icon;
   buffer.close();
   return array.toBase64();
