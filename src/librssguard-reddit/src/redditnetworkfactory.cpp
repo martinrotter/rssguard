@@ -68,7 +68,7 @@ void RedditNetworkFactory::initializeOauth() {
             Q_UNUSED(expires_in)
             Q_UNUSED(access_token)
 
-            if (m_service != nullptr && !refresh_token.isEmpty()) {
+            if (m_service != nullptr && m_service->accountId() > 0 && !refresh_token.isEmpty()) {
               QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
               DatabaseQueries::storeNewOauthTokens(database, refresh_token, m_service->accountId());
@@ -204,6 +204,9 @@ QList<Feed*> RedditNetworkFactory::subreddits(const QNetworkProxy& custom_proxy)
             NetworkFactory::downloadIcon({{icon_url, true}}, timeout, icon, headers, custom_proxy) ==
               QNetworkReply::NetworkError::NoError) {
           new_sub->setIcon(icon);
+        }
+        else {
+          int a = 5;
         }
 
         subs.append(new_sub);
@@ -494,6 +497,12 @@ QList<Message> RedditNetworkFactory::hot(const QString& sub_name, const QNetwork
             // Post does not have text, maybe URL?
             new_msg.m_contents = QSL("<a href=\"%1\">%2</a>").arg(msg_obj.value(QSL("url")).toString(), post_domain);
           }
+        }
+
+        auto flair_text = msg_obj.value(QSL("link_flair_text")).toString();
+
+        if (!flair_text.isEmpty()) {
+          new_msg.m_categories.append(QSharedPointer<MessageCategory>(new MessageCategory(flair_text)));
         }
 
         // auto cmnts = commentsTree(msg_obj.value(QSL("subreddit")).toString(), new_msg.m_customId, custom_proxy);

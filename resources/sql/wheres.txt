@@ -5,8 +5,8 @@ account_id, is_deleted, is_pdeleted, is_read                                    
 account_id, is_deleted, is_pdeleted, title, contents, is_read                     # whereClauseProbe, customIdsOfMessagesFromProbe, cleanProbedMessages
 account_id, is_pdeleted                                                           # whereClauseAccount
 
-is_important, account_id, is_deleted, is_pdeleted                                 # whereClauseImportantArticles, cleanImportantMessages
-is_important, account_id, is_deleted, is_pdeleted, is_read                        # customIdsOfImportantMessages, cleanImportantMessages
+account_id, is_deleted, is_pdeleted, is_important                                 # whereClauseImportantArticles, cleanImportantMessages
+account_id, is_deleted, is_pdeleted, is_important, is_read                        # customIdsOfImportantMessages, cleanImportantMessages
 
 feed                                                                              # whereClauseFeeds, deleteFeed
 account_id                                                                        # getAllGmailRecipients, getMessageCountsForAllLabels, deleteAccount

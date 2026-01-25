@@ -161,16 +161,12 @@ CREATE INDEX idx_Feeds1 ON Feeds (account_id);
 CREATE INDEX idx_Feeds2 ON Feeds (account_id, category, ordr);
 -- !
 -- !
-CREATE INDEX idx_Messages1 ON Messages (account_id);
+CREATE INDEX idx_Messages1 ON Messages (account_id, is_deleted, is_pdeleted, is_read);
 -- !
-CREATE INDEX idx_Messages2 ON Messages (feed);
+CREATE INDEX idx_Messages2 ON Messages (account_id, is_deleted, is_pdeleted, is_important);
 -- !
-CREATE INDEX idx_Messages3 ON Messages (custom_id);
+CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted);
 -- !
-CREATE INDEX idx_Messages4 ON Messages (account_id, is_deleted, is_pdeleted, is_read);
+CREATE INDEX idx_Messages4 ON Messages (custom_id, account_id, feed);
 -- !
-CREATE INDEX idx_Messages5 ON Messages (account_id, is_deleted, is_pdeleted, is_important);
--- !
-CREATE INDEX idx_Messages6 ON Messages (is_important, account_id, is_deleted, is_pdeleted, is_read);
--- !
-CREATE INDEX idx_Messages7 ON Messages (feed, is_deleted);
+CREATE INDEX idx_Messages5 ON Messages (feed, account_id);
