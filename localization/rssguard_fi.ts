@@ -63,17 +63,17 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="508"/>
       <source>Output directory is not writable.</source>
-      <translation>Kohdekansioon ei voi kirjoittaa.</translation>
+      <translation>Kohdehakemistoon ei voi kirjoittaa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="516"/>
       <source>Settings file not copied to output directory successfully.</source>
-      <translation>Asetustiedoston kopiointi kohdekansioon epäonnistui.</translation>
+      <translation>Asetustiedoston kopiointi kohdehakemistoon epäonnistui.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="531"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>Tietokannan palautusta ei aloitettu. Varmista, että kohdekansioon voi kirjoittaa.</translation>
+      <translation>Tietokannan palautusta ei aloitettu. Varmista, että kohdehakemistoon voi kirjoittaa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="538"/>
@@ -472,7 +472,7 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
       <location filename="../src/librssguard/database/databasewriter.cpp" line="51"/>
       <location filename="../src/librssguard/database/databasewriter.cpp" line="84"/>
       <source>database writer is stopping</source>
-      <translation type="unfinished">database writer is stopping</translation>
+      <translation>tietokantatallenninta pysäytetään</translation>
     </message>
   </context>
   <context>
@@ -1162,17 +1162,17 @@ Kohteen mukautettu tunnus: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
       <source>Enable or disable feeds</source>
-      <translation type="unfinished">Enable or disable feeds</translation>
+      <translation>Salli tai estä syötteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="305"/>
       <source>You selected multiple feeds to enable/disable them.</source>
-      <translation type="unfinished">You selected multiple feeds to enable/disable them.</translation>
+      <translation>Olet valinnut useita sallittavia/estettäviä syötteitä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="306"/>
       <source>Do you really want to enable or disable selected feeds?</source>
-      <translation type="unfinished">Do you really want to enable or disable selected feeds?</translation>
+      <translation>Haluatko varmasti sallia tai estää valitut syötteet?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="381"/>
@@ -5644,24 +5644,24 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="542"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="543"/>
       <source>%n selected articles(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n selected articles(s)</numerusform>
-        <numerusform>%n selected articles(s)</numerusform>
+      <translation>
+        <numerusform>%n valittu(a) artikkeli(a)</numerusform>
+        <numerusform>%n valittua artikkelia</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="676"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="985"/>
       <source>Filtering changed</source>
-      <translation type="unfinished">Filtering changed</translation>
+      <translation>Suodatusta on muutettu</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/messagesview.cpp" line="677"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="986"/>
       <source>%n article(s) left after filtering change</source>
-      <translation type="unfinished">
-        <numerusform>%n article(s) left after filtering change</numerusform>
-        <numerusform>%n article(s) left after filtering change</numerusform>
+      <translation>
+        <numerusform>%n artikkeli jäljellä suodatuksen muutoksen jälkeen</numerusform>
+        <numerusform>%n artikkelia jäljellä suodatuksen muutoksen jälkeen</numerusform>
       </translation>
     </message>
     <message>
@@ -5700,7 +5700,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagebox.cpp" line="107"/>
       <source>Do not show again</source>
-      <translation type="unfinished">Do not show again</translation>
+      <translation>Älä näytä uudelleen</translation>
     </message>
   </context>
   <context>
@@ -6513,9 +6513,9 @@ Tuetut lukuohjelmat:</translation>
       <source>%1
 line: %2
 stack: %3</source>
-      <translation type="unfinished">%1
-line: %2
-stack: %3</translation>
+      <translation>%1
+rivi: %2
+pino: %3</translation>
     </message>
   </context>
   <context>
@@ -8434,7 +8434,7 @@ Kuvaus: %3</translation>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="276"/>
       <source>Database file not copied to output directory successfully.</source>
-      <translation>Tietokantatiedoston kopiointi kohdekansioon epäonnistui.</translation>
+      <translation>Tietokantatiedoston kopiointi kohdehakemistoon epäonnistui.</translation>
     </message>
   </context>
   <context>
