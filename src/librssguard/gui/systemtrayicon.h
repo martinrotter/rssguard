@@ -42,8 +42,9 @@ class DbusTrayStatusController {
 
     QString service() const {
       auto iface = QDBusConnection::sessionBus().interface();
+      const QStringList services = iface->registeredServiceNames();
 
-      for (const QString& s : iface->registeredServiceNames()) {
+      for (const QString& s : services) {
         if (s.startsWith(QSL("org.kde.StatusNotifierItem"))) {
           return s;
         }
