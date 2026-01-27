@@ -42,6 +42,9 @@
      <property name="toolTip">
       <string>Select parent item for your category.</string>
      </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QComboBox::SizeAdjustPolicy::AdjustToMinimumContentsLengthWithIcon</enum>
+     </property>
      <property name="iconSize">
       <size>
        <width>13</width>
@@ -171,6 +174,12 @@
  </widget>
  <customwidgets>
   <customwidget>
+   <class>TextEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>texteditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
@@ -180,12 +189,6 @@
    <class>MultiFeedEditCheckBox</class>
    <extends>QCheckBox</extends>
    <header>multifeededitcheckbox.h</header>
-  </customwidget>
-  <customwidget>
-   <class>TextEditWithStatus</class>
-   <extends>QWidget</extends>
-   <header>texteditwithstatus.h</header>
-   <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>

@@ -518,7 +518,6 @@ void FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
   auto database = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::purgeFeedArticles(database, feeds);
-  DatabaseQueries::purgeLeftoverLabelAssignments(database);
 
   QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
 

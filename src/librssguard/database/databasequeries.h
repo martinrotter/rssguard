@@ -45,7 +45,6 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void updateLabel(const QSqlDatabase& db, Label* label);
     static void deleteLabel(const QSqlDatabase& db, Label* label);
     static void createLabel(const QSqlDatabase& db, Label* label, int account_id, int new_label_id = 0);
-    static void purgeLabelAssignments(const QSqlDatabase& db, Label* label);
 
     // Probes.
     static void createProbe(const QSqlDatabase& db, Search* probe, int account_id);
@@ -194,16 +193,15 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
                                   bool move_bottom,
                                   int move_index,
                                   const QSqlDatabase& db);
-    static void purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db, int account_id);
-    static void purgeLeftoverLabelAssignments(const QSqlDatabase& db, int account_id = 0);
+    static void purgeLeftoverMessageFilterAssignments(const QSqlDatabase& db);
+    static void purgeLeftoverLabelAssignments(const QSqlDatabase& db);
     static MessageFilter* addMessageFilter(const QSqlDatabase& db, const QString& title, const QString& script);
     static void removeMessageFilter(const QSqlDatabase& db, int filter_id);
-    static void removeMessageFilterAssignments(const QSqlDatabase& db, int filter_id);
     static QList<MessageFilter*> getMessageFilters(const QSqlDatabase& db);
-    static void assignMessageFilterToFeed(const QSqlDatabase& db, int feed_id, int filter_id, int account_id);
+    static void assignMessageFilterToFeed(const QSqlDatabase& db, int feed_id, int filter_id);
     static void updateMessageFilter(const QSqlDatabase& db, MessageFilter* filter);
     static QMultiMap<int, int> messageFiltersInFeeds(const QSqlDatabase& db, int account_id);
-    static void removeMessageFilterFromFeed(const QSqlDatabase& db, int feed_id, int filter_id, int account_id);
+    static void removeMessageFilterFromFeed(const QSqlDatabase& db, int feed_id, int filter_id);
 
   private:
     static QMap<int, ArticleCounts> messageCountsByCondition(const QSqlDatabase& db,

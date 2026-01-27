@@ -118,6 +118,9 @@
        <property name="toolTip">
         <string>Select parent item for your feed.</string>
        </property>
+       <property name="sizeAdjustPolicy">
+        <enum>QComboBox::SizeAdjustPolicy::AdjustToMinimumContentsLengthWithIcon</enum>
+       </property>
        <property name="iconSize">
         <size>
          <width>12</width>

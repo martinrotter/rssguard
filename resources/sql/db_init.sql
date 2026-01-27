@@ -12,7 +12,7 @@ CREATE TABLE Accounts (
   proxy_port      INTEGER,
   proxy_username  TEXT,
   proxy_password  TEXT,
-  custom_data     TEXT   /* Custom column for (serialized) custom account-specific data. */
+  custom_data     TEXT /* Custom column for (serialized) custom account-specific data. */
 );
 -- !
 CREATE TABLE Categories (
@@ -75,13 +75,13 @@ CREATE TABLE Messages (
   custom_id       VARCHAR(250),
   custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */
 
-  FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE NO ACTION, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, because NO ACTION is synonym for RESTRICT. */
+  FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE CASCADE, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise its local messages would be deleted. */
   FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE
 );
 -- !
 CREATE TABLE MessageFilters (
   id                  $$,
-  name                VARCHAR(400)    NOT NULL CHECK (name != ''),
+  name                VARCHAR(400)    NOT NULL UNIQUE CHECK (name != ''),
   script              TEXT            NOT NULL CHECK (script != ''),
   is_enabled          INTEGER         NOT NULL DEFAULT 1 CHECK (is_enabled >= 0 AND is_enabled <= 1),
   ordr                INTEGER         NOT NULL CHECK (ordr >= 0)
@@ -90,11 +90,10 @@ CREATE TABLE MessageFilters (
 CREATE TABLE MessageFiltersInFeeds (
   filter      INTEGER         NOT NULL,
   feed        INTEGER         NOT NULL,
-  account_id  INTEGER         NOT NULL,
   
+  UNIQUE (filter, feed),
   FOREIGN KEY (filter)      REFERENCES MessageFilters (id)  ON DELETE CASCADE,
-  FOREIGN KEY (feed)        REFERENCES Feeds (id)           ON DELETE NO ACTION, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, because NO ACTION is synonym for RESTRICT. */
-  FOREIGN KEY (account_id)  REFERENCES Accounts (id)        ON DELETE CASCADE
+  FOREIGN KEY (feed)        REFERENCES Feeds (id)           ON DELETE CASCADE /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise article filter assignments would be deleted. */
 );
 -- !
 CREATE TABLE Labels (
@@ -111,12 +110,10 @@ CREATE TABLE Labels (
 CREATE TABLE LabelsInMessages (
   message     INTEGER       NOT NULL,
   label       INTEGER       NOT NULL,
-  account_id  INTEGER       NOT NULL,
 
-  UNIQUE (account_id, message, label),
+  UNIQUE (message, label),
   FOREIGN KEY (message)     REFERENCES Messages (id)  ON DELETE CASCADE,
-  FOREIGN KEY (label)       REFERENCES Labels (id)    ON DELETE NO ACTION, /* You need to temporarily disable foreign checks for MariaDB when refreshing labels, because NO ACTION is synonym for RESTRICT. */
-  FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE
+  FOREIGN KEY (label)       REFERENCES Labels (id)    ON DELETE CASCADE /* You need to temporarily disable foreign checks for MariaDB when refreshing labels, otherwise label-article assignments would be deleted. */
 );
 -- !
 CREATE TABLE Probes (
@@ -132,15 +129,14 @@ CREATE TABLE Probes (
 );
 -- !
 -- !
--- !
 CREATE INDEX idx_Probes1 ON Probes (account_id);
 -- !
 -- !
-CREATE INDEX idx_Mfif1 ON MessageFiltersInFeeds (account_id);
+CREATE INDEX idx_Mfif1 ON MessageFiltersInFeeds (feed);
 -- !
-CREATE INDEX idx_Mfif2 ON MessageFiltersInFeeds (feed);
+CREATE INDEX idx_Mfif2 ON MessageFiltersInFeeds (filter);
 -- !
-CREATE INDEX idx_Mfif3 ON MessageFiltersInFeeds (filter);
+CREATE INDEX idx_Mfif3 ON MessageFiltersInFeeds (filter, feed);
 -- !
 -- !
 CREATE INDEX idx_Labels1 ON Labels (account_id);
@@ -150,11 +146,9 @@ CREATE INDEX idx_Labels2 ON Labels (custom_id);
 -- !
 CREATE INDEX idx_Lim1 ON LabelsInMessages (message);
 -- !
-CREATE INDEX idx_Lim2 ON LabelsInMessages (label, account_id);
+CREATE INDEX idx_Lim2 ON LabelsInMessages (label);
 -- !
-CREATE INDEX idx_Lim3 ON LabelsInMessages (account_id, message);
--- !
-CREATE INDEX idx_Lim4 ON LabelsInMessages (label, account_id, message);
+CREATE INDEX idx_Lim3 ON LabelsInMessages (label, message);
 -- !
 -- !
 CREATE INDEX idx_Categories1 ON Categories (account_id);
@@ -167,18 +161,12 @@ CREATE INDEX idx_Feeds1 ON Feeds (account_id);
 CREATE INDEX idx_Feeds2 ON Feeds (account_id, category, ordr);
 -- !
 -- !
-CREATE INDEX idx_Messages1 ON Messages (account_id);
+CREATE INDEX idx_Messages1 ON Messages (account_id, is_deleted, is_pdeleted, is_read);
 -- !
-CREATE INDEX idx_Messages2 ON Messages (feed);
+CREATE INDEX idx_Messages2 ON Messages (account_id, is_deleted, is_pdeleted, is_important);
 -- !
-CREATE INDEX idx_Messages3 ON Messages (custom_id);
+CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted);
 -- !
-CREATE INDEX idx_Messages4 ON Messages (feed, is_deleted, is_pdeleted, account_id);
+CREATE INDEX idx_Messages4 ON Messages (custom_id, account_id, feed);
 -- !
-CREATE INDEX idx_Messages5 ON Messages (is_deleted, is_pdeleted, account_id, feed);
--- !
-CREATE INDEX idx_Messages6 ON Messages (is_important, is_deleted, is_pdeleted, account_id);
--- !
-CREATE INDEX idx_Messages7 ON Messages (is_read, is_deleted, is_pdeleted, account_id);
--- !
-CREATE INDEX idx_Messages8 ON Messages (is_deleted, is_pdeleted, account_id, date_created);
+CREATE INDEX idx_Messages5 ON Messages (feed, account_id);

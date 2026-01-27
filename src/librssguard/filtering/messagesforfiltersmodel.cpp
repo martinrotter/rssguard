@@ -251,8 +251,6 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
       it->account()->updateMessages(msgs, it->toFeed(), true, true, nullptr);
     }
   }
-
-  DatabaseQueries::purgeLeftoverLabelAssignments(database, account->accountId());
 }
 
 void MessagesForFiltersModel::testFilter(MessageFilter* filter, FilteringSystem* engine) {
