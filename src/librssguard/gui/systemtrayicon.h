@@ -30,11 +30,51 @@ class TrayIconMenu : public QMenu {
 
 #endif
 
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
+
+class DbusTrayStatusController {
+  public:
+    bool available() const {
+      return QDBusConnection::sessionBus().interface()->isServiceRegistered(QSL("org.kde.StatusNotifierWatcher"));
+    }
+
+    QString service() const {
+      auto iface = QDBusConnection::sessionBus().interface();
+
+      for (const QString& s : iface->registeredServiceNames()) {
+        if (s.startsWith(QSL("org.kde.StatusNotifierItem"))) {
+          return s;
+        }
+      }
+
+      return {};
+    }
+
+    void setStatus(const QString& status) {
+      QString s = service();
+
+      if (s.isEmpty()) {
+        return;
+      }
+
+      QDBusMessage msg = QDBusMessage::createMethodCall(s,
+                                                        QSL("/StatusNotifierItem"),
+                                                        QSL("org.freedesktop.DBus.Properties"),
+                                                        QSL("Set"));
+
+      msg << QSL("org.freedesktop.StatusNotifierItem") << QSL("Status") << QVariant::fromValue(QDBusVariant(status));
+
+      QDBusConnection::sessionBus().send(msg);
+    }
+};
+#endif
+
 class SystemTrayIcon : public QSystemTrayIcon {
     Q_OBJECT
 
   public:
-    // Constructors and destructors.
     explicit SystemTrayIcon(const QString& normal_icon, const QString& plain_icon, FormMain* parent = nullptr);
     virtual ~SystemTrayIcon();
 

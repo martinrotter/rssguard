@@ -97,6 +97,14 @@ void SystemTrayIcon::show() {
 void SystemTrayIcon::setNumber(int number, bool any_feed_has_new_unread_messages) {
   Q_UNUSED(any_feed_has_new_unread_messages)
 
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+  DbusTrayStatusController tray;
+
+  if (tray.available()) {
+    tray.setStatus((number > 0 || any_feed_has_new_unread_messages) ? QSL("Passive") : QSL("NeedsAttention"));
+  }
+#endif
+
   if (number <= 0 || !qApp->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool()) {
     // Either no unread messages or numbers in tray icon are disabled.
     setToolTip(QSL(APP_LONG_NAME));
