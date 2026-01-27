@@ -44,19 +44,7 @@ label, message                # whereClauseLabel
 label, message                # deassignLabelFromMessage
 label, message                # purgeLeftoverLabelAssignments
 
-<<<<<<< HEAD
-návrh
-=====
-message
-label
-account_id
-message, label, account
-
-
-MessageFiltersInFeeds 
-=======
 MessageFiltersInFeeds (done)
->>>>>>> e6a2c2be3adb4c7a6628233385d07d61761e21ec
 =====================
 feed            # purgeLeftoverMessageFilterAssignments
 filter, feed    # assignMessageFilterToFeed, removeMessageFilterFromFeed
