@@ -74,7 +74,6 @@
 #define TEXT_TOOLTIP_LIMIT           50
 #define RESELECT_MESSAGE_THRESSHOLD  500
 #define ICON_SIZE_SETTINGS           16
-#define TRAY_ICON_BUBBLE_TIMEOUT     20000
 #define MSG_DATETIME_DIFF_THRESSHOLD 1000 * 120 // In seconds.
 #define CLOSE_LOCK_TIMEOUT           500
 #define DOWNLOAD_TIMEOUT             30000

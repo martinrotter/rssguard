@@ -16,6 +16,7 @@
 #include "gui/toolbars/feedstoolbar.h"
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/toolbars/statusbar.h"
+#include "gui/tray/qttrayicon.h"
 #include "gui/webviewers/qlitehtml/qlitehtmlarticleviewer.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
@@ -541,21 +542,30 @@ void Application::restoreDatabaseSettings(bool restore_database,
   }
 }
 
-SystemTrayIcon* Application::trayIcon() {
+TrayIcon* Application::trayIcon() {
   if (m_trayIcon == nullptr) {
+    QPixmap tray_icon;
+    QPixmap tray_icon_plain;
+
     if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool()) {
       if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool()) {
-        m_trayIcon = new SystemTrayIcon(APP_ICON_MONO_PATH, APP_ICON_PLAIN_PATH, m_mainForm);
+        tray_icon = QPixmap(APP_ICON_MONO_PATH);
+        tray_icon_plain = QPixmap(APP_ICON_PLAIN_PATH);
       }
       else {
-        m_trayIcon = new SystemTrayIcon(APP_ICON_MONO_PATH, APP_ICON_MONO_PLAIN_PATH, m_mainForm);
+        tray_icon = QPixmap(APP_ICON_MONO_PATH);
+        tray_icon_plain = QPixmap(APP_ICON_MONO_PLAIN_PATH);
       }
     }
     else {
-      m_trayIcon = new SystemTrayIcon(APP_ICON_PATH, APP_ICON_PLAIN_PATH, m_mainForm);
+      tray_icon = QPixmap(APP_ICON_PATH);
+      tray_icon_plain = QPixmap(APP_ICON_PLAIN_PATH);
     }
 
-    connect(m_trayIcon, &SystemTrayIcon::shown, m_feedReader->feedsModel(), &FeedsModel::notifyWithCounts);
+    m_trayIcon = new QtTrayIcon(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, m_mainForm);
+    m_trayIcon->setContextMenu(m_mainForm->trayMenu());
+
+    connect(m_trayIcon, &TrayIcon::shown, m_feedReader->feedsModel(), &FeedsModel::notifyWithCounts);
   }
 
   return m_trayIcon;
@@ -574,7 +584,7 @@ QIcon Application::desktopAwareIcon() const {
 
 void Application::showTrayIcon() {
   // Display tray icon if it is enabled and available.
-  if (SystemTrayIcon::isSystemTrayDesired()) {
+  if (TrayIcon::isSystemTrayDesired()) {
     qDebugNN << LOGSEC_GUI << "User wants to have tray icon.";
 
     // Delay avoids race conditions and tray icon is properly displayed.
@@ -588,9 +598,11 @@ void Application::showTrayIcon() {
 #endif
       this,
       [=]() {
-        if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
+        if (trayIcon()->isAvailable()) {
           qWarningNN << LOGSEC_GUI << "Tray icon is available, showing now.";
           trayIcon()->show();
+
+          QGuiApplication::setQuitOnLastWindowClosed(false);
         }
         else {
           m_feedReader->feedsModel()->notifyWithCounts();
@@ -625,7 +637,7 @@ void Application::deleteTrayIcon() {
     m_trayIcon = nullptr;
 
     // Make sure that application quits when last window is closed.
-    setQuitOnLastWindowClosed(true);
+    QGuiApplication::setQuitOnLastWindowClosed(true);
   }
 }
 
@@ -658,12 +670,12 @@ void Application::showGuiMessageCore(Notification::Event event,
         // Toasts are enabled.
         m_toastNotifications->showNotification(event, msg, action);
       }
-      else if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
+      else if (TrayIcon::isSystemTrayDesired() && m_trayIcon->isAvailable()) {
         // Use tray icon balloons (which are implemented as native notifications on most systems.
         trayIcon()->showMessage(msg.m_title.simplified().isEmpty() ? Notification::nameForEvent(notification.event())
                                                                    : msg.m_title,
                                 msg.m_message,
-                                msg.m_type,
+                                QtTrayIcon::convertIcon(msg.m_type),
                                 TRAY_ICON_BUBBLE_TIMEOUT,
                                 std::move(action.m_action));
       }
@@ -782,15 +794,16 @@ void Application::onAboutToQuit() {
 }
 
 void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_unread_messages) {
+  Q_UNUSED(any_feed_has_new_unread_messages)
+
   if (m_trayIcon != nullptr) {
-    m_trayIcon->setNumber(unread_messages, any_feed_has_new_unread_messages);
+    m_trayIcon->setNumber(unread_messages);
   }
 
   // Use Qt function to set "badge" number directly in some cases.
 #if defined(Q_OS_MACOS) && QT_VERSION >= 0x060500 // Qt >= 6.5.0
   qApp->setBadgeNumber(unread_messages);
-#else
-#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+#elif defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   // Use D-Bus "LauncherEntry" service on Linux.
   bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
   QDBusMessage signal = QDBusMessage::createSignal(QSL("/"), QSL("com.canonical.Unity.LauncherEntry"), QSL("Update"));
@@ -838,7 +851,6 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
   else {
     qCriticalNN << LOGSEC_GUI << "Main form not set for setting numbers.";
   }
-#endif
 #endif
 
   if (m_mainForm != nullptr) {

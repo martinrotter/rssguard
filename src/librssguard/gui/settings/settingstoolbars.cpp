@@ -4,7 +4,6 @@
 
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
-#include "gui/systemtrayicon.h"
 #include "gui/tabwidget.h"
 #include "gui/toolbars/feedstoolbar.h"
 #include "gui/toolbars/messagestoolbar.h"

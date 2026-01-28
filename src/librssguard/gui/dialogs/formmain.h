@@ -23,7 +23,7 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     virtual ~FormMain();
 
     // Returns menu for the tray icon.
-    QMenu* trayMenu() const;
+    TrayIconMenu* trayMenu();
 
     // Returns global tab widget.
     TabWidget* tabWidget() const;
@@ -81,12 +81,10 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     void windowResized(const QSize& new_size);
 
   private:
-    void prepareMenus();
     void createConnections();
     void setupIcons();
 
     QScopedPointer<Ui::FormMain> m_ui;
-    QMenu* m_trayMenu;
     QWidgetAction* m_actionToolbarMainMenu;
     StatusBar* m_statusBar;
 };

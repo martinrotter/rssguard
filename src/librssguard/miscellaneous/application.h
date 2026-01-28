@@ -6,7 +6,7 @@
 #include "core/feeddownloader.h"
 #include "database/databasefactory.h"
 #include "definitions/definitions.h"
-#include "gui/systemtrayicon.h"
+#include "gui/tray/trayicon.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/localization.h"
@@ -19,6 +19,7 @@
 
 #include <QCommandLineParser>
 #include <QList>
+#include <QSystemTrayIcon>
 
 #if defined(qApp)
 #undef qApp
@@ -123,7 +124,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     Mutex* feedUpdateLock();
     FormMain* mainForm();
     QWidget* mainFormWidget();
-    SystemTrayIcon* trayIcon();
+    TrayIcon* trayIcon();
     NotificationFactory* notifications() const;
 
 #if QT_VERSION_MAJOR > 5
@@ -249,7 +250,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     QList<QAction*> m_userActions;
     FormMain* m_mainForm;
     FormLog* m_logForm;
-    SystemTrayIcon* m_trayIcon;
+    TrayIcon* m_trayIcon;
     Settings* m_settings;
     WebFactory* m_webFactory;
     SystemFactory* m_system;

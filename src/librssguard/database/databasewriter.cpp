@@ -13,15 +13,18 @@
 #define CONNECTION_NAME QSL("db_writer")
 
 DatabaseWriter::DatabaseWriter(QObject* parent) : QObject(parent) {
-  m_guiDispatcher = qApp; // ensure callbacks land in the main GUI thread
+  m_guiDispatcher = qApp;
 
   m_workerThread.start();
   moveToThread(&m_workerThread);
 
-  // Create the DB connection inside the writer thread
-  QMetaObject::invokeMethod(this, []() {
-    qApp->database()->driver()->connection(CONNECTION_NAME);
-  });
+  // Create the DB connection inside the writer thread.
+  QMetaObject::invokeMethod(
+    this,
+    []() {
+      qApp->database()->driver()->connection(CONNECTION_NAME);
+    },
+    Qt::ConnectionType::QueuedConnection);
 
   // Start the main job loop in the writer thread
   QMetaObject::invokeMethod(this, "writerLoop", Qt::ConnectionType::QueuedConnection);
@@ -79,7 +82,6 @@ void DatabaseWriter::execWriteAsync(const std::function<void(const QSqlDatabase&
     QMutexLocker locker(&m_queueMutex);
 
     if (m_stop) {
-      // Writer is shutting down — return failure immediately
       WriteResult res;
       res.m_exception = ApplicationException(tr("database writer is stopping"));
 
@@ -139,12 +141,12 @@ void DatabaseWriter::runJob(Job* job) {
   }
 
   if (job->m_blocking) {
-    // Synchronous call
+    // Synchronous call.
     job->m_done = true;
     job->m_doneCond.wakeOne();
   }
   else {
-    // Async: deliver callback in GUI thread
+    // Async: deliver callback in GUI thread.
     if (job->m_callback) {
       WriteResult resultCopy = job->m_result;
 

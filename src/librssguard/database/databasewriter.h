@@ -17,6 +17,7 @@
 
 class DatabaseWriter : public QObject {
     Q_OBJECT
+
   public:
     struct WriteResult {
         std::optional<ApplicationException> m_exception;
@@ -25,11 +26,12 @@ class DatabaseWriter : public QObject {
     explicit DatabaseWriter(QObject* parent = nullptr);
     ~DatabaseWriter();
 
-    // Blocking execution of arbitrary DB work
+    // Blocking execution of arbitrary DB work.
     WriteResult execWrite(const std::function<void(const QSqlDatabase&)>& func);
 
-    // Asynchronous execution of arbitrary DB work
-    // NOTE: callback always runs in the GUI thread
+    // Asynchronous execution of arbitrary DB work.
+    //
+    // NOTE: Callback always runs in the GUI thread.
     void execWriteAsync(const std::function<void(const QSqlDatabase&)>& func,
                         const std::function<void(const WriteResult&)>& callback = {});
 
@@ -55,6 +57,6 @@ class DatabaseWriter : public QObject {
     QWaitCondition m_queueNotEmpty;
     QQueue<Job*> m_jobQueue;
 
-    QObject* m_guiDispatcher = nullptr; // used for delivering callbacks in GUI thread
+    QObject* m_guiDispatcher = nullptr;
     std::atomic_bool m_stop{false};
 };

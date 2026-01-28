@@ -17,11 +17,11 @@
 #include "gui/messagepreviewer.h"
 #include "gui/messagesview.h"
 #include "gui/reusable/searchlineedit.h"
-#include "gui/systemtrayicon.h"
 #include "gui/tabbar.h"
 #include "gui/toolbars/feedstoolbar.h"
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/toolbars/statusbar.h"
+#include "gui/tray/trayicon.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
@@ -49,7 +49,7 @@
 #include <QWindow>
 
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
-  : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_trayMenu(nullptr), m_statusBar(nullptr) {
+  : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_statusBar(nullptr) {
   qDebugNN << LOGSEC_GUI << "Creating main application form in thread:" << QUOTE_W_SPACE_DOT(getThreadID());
   // setAttribute(Qt::WA_WindowPropagation, true);
   m_ui->setupUi(this);
@@ -93,8 +93,10 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   // even if main menu is not visible.
   addActions(qApp->userAndExtraActions());
 
-  // Prepare main window and tabs.
-  prepareMenus();
+#if defined(Q_OS_MACOS)
+  m_ui->m_actionSwitchMainMenu->setVisible(false);
+  m_ui->m_actionFullscreen->setVisible(false);
+#endif
 
   // Prepare tabs.
   tabWidget()->feedMessageViewer()->feedsToolBar()->loadSavedActions();
@@ -116,8 +118,22 @@ FormMain::~FormMain() {
   qDebugNN << LOGSEC_GUI << "Destroying FormMain instance.";
 }
 
-QMenu* FormMain::trayMenu() const {
-  return m_trayMenu;
+TrayIconMenu* FormMain::trayMenu() {
+  // Setup menu for tray icon.
+  auto* tray_menu = new TrayIconMenu(QSL(APP_NAME), this);
+
+  // Add needed items to the menu.
+  tray_menu->addAction(m_ui->m_actionUpdateAllItems);
+  tray_menu->addAction(m_ui->m_actionMarkAllItemsRead);
+  tray_menu->addSeparator();
+
+  tray_menu->addAction(m_ui->m_actionSwitchMainWindow);
+  tray_menu->addAction(m_ui->m_actionSettings);
+  tray_menu->addAction(m_ui->m_actionQuit);
+
+  qDebugNN << LOGSEC_GUI << "Creating tray icon menu.";
+
+  return tray_menu;
 }
 
 TabWidget* FormMain::tabWidget() const {
@@ -248,33 +264,6 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_actionToolbarMainMenu;
 
   return actions;
-}
-
-void FormMain::prepareMenus() {
-  // Setup menu for tray icon.
-  if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
-#if defined(Q_OS_WIN)
-    m_trayMenu = new TrayIconMenu(QSL(APP_NAME), this);
-#else
-    m_trayMenu = new QMenu(QSL(APP_NAME), this);
-#endif
-
-    // Add needed items to the menu.
-    m_trayMenu->addAction(m_ui->m_actionUpdateAllItems);
-    m_trayMenu->addAction(m_ui->m_actionMarkAllItemsRead);
-    m_trayMenu->addSeparator();
-
-    m_trayMenu->addAction(m_ui->m_actionSwitchMainWindow);
-    m_trayMenu->addAction(m_ui->m_actionSettings);
-    m_trayMenu->addAction(m_ui->m_actionQuit);
-
-    qDebugNN << LOGSEC_GUI << "Creating tray icon menu.";
-  }
-
-#if defined(Q_OS_MACOS)
-  m_ui->m_actionSwitchMainMenu->setVisible(false);
-  m_ui->m_actionFullscreen->setVisible(false);
-#endif
 }
 
 void FormMain::switchFullscreenMode() {
@@ -529,7 +518,7 @@ void FormMain::updateFeedButtonsAvailability() {
 
 void FormMain::switchVisibility(bool force_hide) {
   if (force_hide || (isVisible() && !isMinimized())) {
-    if (SystemTrayIcon::isSystemTrayDesired() && SystemTrayIcon::isSystemTrayAreaAvailable()) {
+    if (TrayIcon::isSystemTrayDesired() && qApp->trayIcon()->isAvailable()) {
       if (QApplication::activeModalWidget() != nullptr) {
         qApp->showGuiMessage(Notification::Event::GeneralEvent,
                              {tr("Close dialogs"),
@@ -1143,8 +1132,8 @@ void FormMain::restoreDatabaseSettings() {
 void FormMain::changeEvent(QEvent* event) {
   switch (event->type()) {
     case QEvent::Type::WindowStateChange: {
-      if (Globals::hasFlag(windowState(), Qt::WindowState::WindowMinimized) && SystemTrayIcon::isSystemTrayDesired() &&
-          SystemTrayIcon::isSystemTrayAreaAvailable() &&
+      if (Globals::hasFlag(windowState(), Qt::WindowState::WindowMinimized) && TrayIcon::isSystemTrayDesired() &&
+          qApp->trayIcon()->isAvailable() &&
           qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideMainWindowWhenMinimized)).toBool()) {
         event->ignore();
 

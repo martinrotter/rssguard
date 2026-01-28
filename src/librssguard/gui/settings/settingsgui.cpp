@@ -8,9 +8,9 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/reusable/colortoolbutton.h"
 #include "gui/reusable/plaintoolbutton.h"
-#include "gui/systemtrayicon.h"
 #include "gui/tabwidget.h"
 #include "gui/toolbars/statusbar.h"
+#include "gui/tray/trayicon.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -158,7 +158,7 @@ void SettingsGui::loadSettings() {
   // Load settings of tray icon.
   m_ui->m_grpTray->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UseTrayIcon)).toBool());
 
-  if (!SystemTrayIcon::isSystemTrayAreaAvailable()) {
+  if (!qApp->trayIcon()->isAvailable()) {
     m_ui->m_grpTray->setTitle(m_ui->m_grpTray->title() + QL1C(' ') +
                               tr("(Your OS does not support tray icons at the moment.)"));
     m_ui->m_grpTray->setEnabled(false);
@@ -364,7 +364,7 @@ void SettingsGui::saveSettings() {
   }
 
   // Save tray icon.
-  if (SystemTrayIcon::isSystemTrayAreaAvailable()) {
+  if (qApp->trayIcon()->isAvailable()) {
     settings()->setValue(GROUP(GUI), GUI::UseTrayIcon, m_ui->m_grpTray->isChecked());
 
     if (m_ui->m_grpTray->isChecked()) {

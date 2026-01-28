@@ -187,8 +187,10 @@ set(SOURCES
   gui/settings/settingsshortcuts.h
   gui/settings/settingstoolbars.cpp
   gui/settings/settingstoolbars.h
-  gui/systemtrayicon.cpp
-  gui/systemtrayicon.h
+  gui/tray/qttrayicon.cpp
+  gui/tray/qttrayicon.h
+  gui/tray/trayicon.cpp
+  gui/tray/trayicon.h
   gui/tabbar.cpp
   gui/tabbar.h
   gui/tabcontent.cpp
