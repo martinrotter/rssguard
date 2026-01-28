@@ -565,6 +565,9 @@ TrayIcon* Application::trayIcon() {
     m_trayIcon = new QtTrayIcon(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, m_mainForm);
     m_trayIcon->setContextMenu(m_mainForm->trayMenu());
 
+    connect(m_trayIcon, &TrayIcon::activated, m_mainForm, [this]() {
+      m_mainForm->switchVisibility();
+    });
     connect(m_trayIcon, &TrayIcon::shown, m_feedReader->feedsModel(), &FeedsModel::notifyWithCounts);
   }
 
