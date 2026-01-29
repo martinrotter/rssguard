@@ -37,6 +37,7 @@ void TrayIcon::setNumber(int number) {
     // Either no unread messages or numbers in tray icon are disabled.
     setToolTip(QSL(APP_LONG_NAME));
     setPixmap(m_normalIcon);
+    setStatus(TrayIcon::Status::Passive);
   }
   else {
     setToolTip(tr("%1\nUnread news: %2").arg(QSL(APP_LONG_NAME), QString::number(number)));
@@ -86,6 +87,7 @@ void TrayIcon::setNumber(int number) {
     tray_painter.end();
 
     setPixmap(background);
+    setStatus(TrayIcon::Status::NeedsAttention);
   }
 }
 

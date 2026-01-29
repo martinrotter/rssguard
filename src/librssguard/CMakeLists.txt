@@ -187,6 +187,8 @@ set(SOURCES
   gui/settings/settingsshortcuts.h
   gui/settings/settingstoolbars.cpp
   gui/settings/settingstoolbars.h
+  gui/tray/dbustrayicon.cpp
+  gui/tray/dbustrayicon.h
   gui/tray/qttrayicon.cpp
   gui/tray/qttrayicon.h
   gui/tray/trayicon.cpp
