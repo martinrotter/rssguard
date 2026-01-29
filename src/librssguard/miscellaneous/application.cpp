@@ -567,7 +567,7 @@ TrayIcon* Application::trayIcon() {
     }
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-    m_trayIcon = new TrayIconStatusNotifier(QSL(APP_LOW_NAME), QSL(APP_NAME), "dialog-warning", m_mainForm);
+    m_trayIcon = new TrayIconStatusNotifier(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, m_mainForm);
 
     if (!m_trayIcon->isAvailable()) {
       delete m_trayIcon;

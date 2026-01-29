@@ -37,7 +37,8 @@ class TrayIconStatusNotifier : public TrayIcon {
   public:
     explicit TrayIconStatusNotifier(const QString& id,
                                     const QString& title,
-                                    const QString& icon_name,
+                                    const QPixmap& normal_icon,
+                                    const QPixmap& plain_icon,
                                     QObject* parent = nullptr);
     ~TrayIconStatusNotifier() override;
 
@@ -96,8 +97,6 @@ class TrayIconStatusNotifier : public TrayIcon {
     void onServiceOwnerChanged(const QString& service, const QString& oldOwner, const QString& newOwner);
 
   private:
-    QString m_dbusId;
-    QString m_dbusTitle;
     QString m_dbusService;
     QString m_dbusPath;
     QString m_iconName;

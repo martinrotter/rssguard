@@ -28,10 +28,11 @@ const QDBusArgument& operator>>(const QDBusArgument& argument, DBusToolTipStruct
 
 TrayIconStatusNotifier::TrayIconStatusNotifier(const QString& id,
                                                const QString& title,
-                                               const QString& icon_name,
+                                               const QPixmap& normal_icon,
+                                               const QPixmap& plain_icon,
                                                QObject* parent)
-  : TrayIcon(id, title, QPixmap(), QPixmap(), parent), m_dbusId(id), m_dbusTitle(title), m_iconName(icon_name),
-    m_toolTip(title), m_status(Status::Active), m_menu(nullptr), m_watcher(nullptr), m_registered(false) {
+  : TrayIcon(id, title, normal_icon, plain_icon, parent), m_iconName("dialog-information"), m_toolTip(title),
+    m_status(Status::Active), m_menu(nullptr), m_watcher(nullptr), m_registered(false) {
   // Create unique DBus service and path
   m_dbusService =
     QString("org.kde.StatusNotifierItem-%1-%2").arg(QCoreApplication::applicationPid()).arg(++s_instanceCounter);
@@ -108,6 +109,7 @@ void TrayIconStatusNotifier::showMessage(const QString& title,
   }
 
   QString iconName;
+
   switch (icon) {
     case MessageSeverity::Information:
       iconName = QStringLiteral("dialog-information");
@@ -124,7 +126,7 @@ void TrayIconStatusNotifier::showMessage(const QString& title,
   }
 
   notifications.call(QStringLiteral("Notify"),
-                     m_dbusTitle,
+                     m_title,
                      uint(0),
                      iconName,
                      title,
@@ -164,6 +166,10 @@ void TrayIconStatusNotifier::Activate(int x, int y) {
 
 void TrayIconStatusNotifier::ContextMenu(int x, int y) {
   if (m_menu) {
+    if (m_menu->isVisible()) {
+      m_menu->hide();
+    }
+
     m_menu->popup(QPoint(x, y));
   }
 }

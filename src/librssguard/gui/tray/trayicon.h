@@ -75,7 +75,7 @@ class TrayIcon : public QObject {
     void activated();
     void messageClicked();
 
-  private:
+  protected:
     QString m_id;
     QString m_title;
     QPixmap m_normalIcon;
