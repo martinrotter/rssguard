@@ -1,8 +1,9 @@
-// trayiconstatusnotifier.h
+// For license of this file, see <project-root-folder>/LICENSE.md.
+
 #ifndef TRAYICONSTATUSNOTIFIER_H
 #define TRAYICONSTATUSNOTIFIER_H
 
-#include "trayicon.h"
+#include "gui/tray/trayicon.h"
 
 #include <QDBusArgument>
 #include <QDBusConnection>
@@ -11,7 +12,7 @@ class QDBusServiceWatcher;
 
 struct DBusToolTipStruct {
     QString icon;
-    QList<QVariantList> image; // Simplified - empty for now
+    QList<QVariantList> image; // Simplified - empty for now.
     QString title;
     QString description;
 };
@@ -43,22 +44,22 @@ class TrayIconStatusNotifier : public TrayIcon {
     ~TrayIconStatusNotifier() override;
 
     // TrayIcon interface implementation
-    void setToolTip(const QString& tool_tip) override;
-    void setPixmap(const QPixmap& icon) override;
-    void setStatus(Status status) override;
-    void setContextMenu(TrayIconMenu* menu) override;
-    void showMessage(const QString& title,
-                     const QString& message,
-                     MessageSeverity icon = MessageSeverity::Information,
-                     int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT,
-                     const std::function<void()>& message_clicked_callback = nullptr) override;
-    bool isAvailable() const override;
+    virtual void setToolTip(const QString& tool_tip);
+    virtual void setPixmap(const QPixmap& icon);
+    virtual void setStatus(Status status);
+    virtual void setContextMenu(TrayIconMenu* menu);
+    virtual void showMessage(const QString& title,
+                             const QString& message,
+                             MessageSeverity icon = MessageSeverity::Information,
+                             int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT,
+                             const std::function<void()>& message_clicked_callback = nullptr);
+    virtual bool isAvailable() const;
 
   public slots:
     void show() override;
     void hide() override;
 
-    // DBus methods
+  public slots:
     void Activate(int x, int y);
     void ContextMenu(int x, int y);
 
@@ -70,23 +71,29 @@ class TrayIconStatusNotifier : public TrayIcon {
     void NewStatus(const QString& status);
 
   private:
-    // DBus property getters
+    // DBus property getters.
     QString category() const {
       return QStringLiteral("ApplicationStatus");
     }
+
     QString id() const {
       return m_dbusId;
     }
+
     QString title() const {
       return m_dbusTitle;
     }
+
     QString status() const;
+
     int windowId() const {
       return 0;
     }
+
     QString iconName() const {
       return m_iconName;
     }
+
     DBusToolTipStruct toolTip() const;
 
     // Helper methods

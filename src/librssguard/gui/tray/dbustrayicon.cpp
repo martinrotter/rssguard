@@ -1,4 +1,5 @@
-// trayiconstatusnotifier.cpp
+// For license of this file, see <project-root-folder>/LICENSE.md.
+
 #include "gui/tray/dbustrayicon.h"
 
 #include <qdbusmetatype.h>

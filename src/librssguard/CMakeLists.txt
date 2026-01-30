@@ -187,8 +187,6 @@ set(SOURCES
   gui/settings/settingsshortcuts.h
   gui/settings/settingstoolbars.cpp
   gui/settings/settingstoolbars.h
-  gui/tray/dbustrayicon.cpp
-  gui/tray/dbustrayicon.h
   gui/tray/qttrayicon.cpp
   gui/tray/qttrayicon.h
   gui/tray/trayicon.cpp
@@ -373,6 +371,13 @@ if(ENABLE_MEDIAPLAYER)
 
   list(APPEND UI_FILES
     gui/mediaplayer/mediaplayer.ui
+  )
+endif()
+
+if(UNIX AND NOT APPLE)
+  list(APPEND SOURCES
+    gui/tray/dbustrayicon.cpp
+    gui/tray/dbustrayicon.h
   )
 endif()
 

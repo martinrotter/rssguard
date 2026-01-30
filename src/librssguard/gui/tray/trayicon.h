@@ -59,6 +59,7 @@ class TrayIcon : public QObject {
 
     virtual bool isAvailable() const = 0;
 
+  public:
     // Common API.
     void setNumber(int number = 0);
 
