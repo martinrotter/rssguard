@@ -181,7 +181,7 @@
     <addaction name="m_actionSelectNextUnreadMessage"/>
     <addaction name="m_actionLoadAllArticles"/>
     <addaction name="separator"/>
-    <addaction name="m_actionCopyUrlSelectedArticles"/>
+    <addaction name="m_actionCopyDataOfSelectedArticles"/>
     <addaction name="m_actionMarkSelectedMessagesAsRead"/>
     <addaction name="m_actionMarkArticlesAboveRead"/>
     <addaction name="m_actionMarkArticlesBelowRead"/>
@@ -824,9 +824,9 @@
     <string>Close &amp;current tab</string>
    </property>
   </action>
-  <action name="m_actionCopyUrlSelectedArticles">
+  <action name="m_actionCopyDataOfSelectedArticles">
    <property name="text">
-    <string>&amp;Copy URLs of selected articles</string>
+    <string>&amp;Copy data to clipboard</string>
    </property>
   </action>
   <action name="m_actionSortFeedsAlphabetically">

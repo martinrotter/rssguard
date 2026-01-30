@@ -586,6 +586,50 @@ QList<Message> MessagesModel::messagesAt(const QList<int>& row_indices) const {
   return msgs;
 }
 
+QString escapeCsv(const QString& value) {
+  bool needs_quoting = value.contains(QL1C(',')) || value.contains(QL1C(';')) || value.contains(QL1C('"')) ||
+                       value.contains(QL1C('\n')) || value.contains(QL1C('\r'));
+
+  if (!needs_quoting) {
+    return value;
+  }
+
+  QString escaped = value;
+
+  escaped.replace(QSL("\""), QSL("\"\""));
+  escaped.replace(QSL("\r\n"), QSL("\n")).replace(QSL("\r"), QSL("\n")).replace(QSL("\n"), QSL("\r\n"));
+
+  return QSL("\"%1\"").arg(escaped);
+}
+
+QString MessagesModel::formattedDataOfArticles(const QString& line_pattern,
+                                               bool escape_csv,
+                                               const QModelIndexList& selection) const {
+  QString csv;
+  int column_count = columnCount();
+
+  for (const QModelIndex& article_idx : selection) {
+    auto article_pattern = line_pattern;
+
+    for (int clmn = 0; clmn < column_count; clmn++) {
+      auto placeholder = QSL("%%1%").arg(clmn);
+
+      if (!line_pattern.contains(placeholder)) {
+        continue;
+      }
+
+      auto real_value = data(index(article_idx.row(), clmn), Qt::ItemDataRole::EditRole).toString();
+
+      article_pattern.replace(placeholder, escape_csv ? escapeCsv(real_value) : real_value);
+    }
+
+    csv.append(article_pattern);
+    csv.append(QSL("\r\n"));
+  }
+
+  return csv;
+}
+
 QVariant MessagesModel::data(int row, int column, int role) const {
   return data(index(row, column), role);
 }

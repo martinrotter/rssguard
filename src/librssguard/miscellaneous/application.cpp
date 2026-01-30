@@ -28,6 +28,10 @@
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/serviceroot.h"
 
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+#include "gui/tray/dbustrayicon.h"
+#endif
+
 #include <iostream>
 
 #include <QLoggingCategory>
@@ -562,8 +566,19 @@ TrayIcon* Application::trayIcon() {
       tray_icon_plain = QPixmap(APP_ICON_PLAIN_PATH);
     }
 
+#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+    m_trayIcon = new TrayIconStatusNotifier(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, m_mainForm);
+
+    if (!m_trayIcon->isAvailable()) {
+      delete m_trayIcon;
+      m_trayIcon = new QtTrayIcon(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, m_mainForm);
+    }
+#else
     m_trayIcon = new QtTrayIcon(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, m_mainForm);
+#endif
+
     m_trayIcon->setContextMenu(m_mainForm->trayMenu());
+    m_trayIcon->setToolTip(QSL(APP_NAME));
 
     connect(m_trayIcon, &TrayIcon::activated, m_mainForm, [this]() {
       m_mainForm->switchVisibility();

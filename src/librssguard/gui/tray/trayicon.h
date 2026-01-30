@@ -59,6 +59,7 @@ class TrayIcon : public QObject {
 
     virtual bool isAvailable() const = 0;
 
+  public:
     // Common API.
     void setNumber(int number = 0);
 
@@ -75,7 +76,7 @@ class TrayIcon : public QObject {
     void activated();
     void messageClicked();
 
-  private:
+  protected:
     QString m_id;
     QString m_title;
     QPixmap m_normalIcon;

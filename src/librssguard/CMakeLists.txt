@@ -81,6 +81,8 @@ set(SOURCES
   gui/dialogs/formprogressworker.h
   gui/dialogs/formlog.cpp
   gui/dialogs/formlog.h
+  gui/dialogs/formcopyarticledata.cpp
+  gui/dialogs/formcopyarticledata.h
   gui/dialogs/formmain.cpp
   gui/dialogs/formmain.h
   gui/dialogs/formmessagefiltersmanager.cpp
@@ -326,6 +328,7 @@ set(UI_FILES
   gui/dialogs/formabout.ui
   gui/dialogs/formaddaccount.ui
   gui/dialogs/formbackupdatabasesettings.ui
+  gui/dialogs/formcopyarticledata.ui
   gui/dialogs/formdatabasecleanup.ui
   gui/dialogs/formlog.ui
   gui/dialogs/formmain.ui
@@ -371,6 +374,13 @@ if(ENABLE_MEDIAPLAYER)
 
   list(APPEND UI_FILES
     gui/mediaplayer/mediaplayer.ui
+  )
+endif()
+
+if(UNIX AND NOT APPLE)
+  list(APPEND SOURCES
+    gui/tray/dbustrayicon.cpp
+    gui/tray/dbustrayicon.h
   )
 endif()
 

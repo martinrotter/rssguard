@@ -110,6 +110,12 @@ DVALUE(bool) Messages::DisplayEnclosuresInMessageDef = false;
 DKEY Messages::AvoidOldArticles = "avoid_old_articles";
 DVALUE(bool) Messages::AvoidOldArticlesDef = false;
 
+DKEY Messages::CopyArticlePattern = "copy_article_pattern";
+DVALUE(QString) Messages::CopyArticlePatternDef = QSL("%6% - %8%");
+
+DKEY Messages::CopyArticleEscapeCsv = "copy_article_escape_csv";
+DVALUE(bool) Messages::CopyArticleEscapeCsvDef = false;
+
 DKEY Messages::FontAa = "font_aa";
 DVALUE(bool) Messages::FontAaDef = true;
 
