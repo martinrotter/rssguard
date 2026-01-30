@@ -178,9 +178,14 @@ void FeedsModel::reloadCountsOfWholeModel() {
 
 void FeedsModel::removeItem(RootItem* deleting_item) {
   if (deleting_item != nullptr) {
+    RootItem* parent_item = deleting_item->parent();
+
+    if (parent_item == nullptr) {
+      return;
+    }
+
     QModelIndex index = indexForItem(deleting_item);
     QModelIndex parent_index = index.parent();
-    RootItem* parent_item = deleting_item->parent();
 
     deleting_item->setDeleting(true);
     beginRemoveRows(parent_index, index.row(), index.row());
@@ -453,6 +458,10 @@ void FeedsModel::emptyAllBins() {
 }
 
 void FeedsModel::changeSortOrder(RootItem* item, bool move_top, bool move_bottom, int new_sort_order) {
+  if (item == nullptr) {
+    return;
+  }
+
   QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::moveItem(item, move_top, move_bottom, new_sort_order, db);
