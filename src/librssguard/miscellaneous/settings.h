@@ -129,6 +129,12 @@ namespace Messages {
   KEY AvoidOldArticles;
   VALUE(bool) AvoidOldArticlesDef;
 
+  KEY CopyArticlePattern;
+  VALUE(QString) CopyArticlePatternDef;
+
+  KEY CopyArticleEscapeCsv;
+  VALUE(bool) CopyArticleEscapeCsvDef;
+
   KEY FontAa;
   VALUE(bool) FontAaDef;
 

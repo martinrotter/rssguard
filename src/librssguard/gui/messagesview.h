@@ -50,7 +50,7 @@ class MessagesView : public BaseTreeView {
     void goToMotherFeed(bool edit_feed_also);
     void editFeedOfSelectedMessage();
 
-    void copyUrlOfSelectedArticles() const;
+    void copyDataOfSelectedArticles() const;
 
     // Called after data got changed externally
     // and it needs to be reloaded to the view.

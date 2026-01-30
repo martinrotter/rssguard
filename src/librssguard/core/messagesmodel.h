@@ -60,6 +60,10 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
 
     QList<Message> messagesAt(const QList<int>& row_indices) const;
 
+    QString formattedDataOfArticles(const QString& line_pattern,
+                                    bool escape_csv,
+                                    const QModelIndexList& selection) const;
+
     QVariant data(int row, int column, int role = Qt::ItemDataRole::EditRole) const;
 
     int messageId(int row_index) const;
