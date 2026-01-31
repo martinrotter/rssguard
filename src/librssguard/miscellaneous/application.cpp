@@ -577,6 +577,7 @@ TrayIcon* Application::trayIcon() {
     m_trayIcon = new QtTrayIcon(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, m_mainForm);
 #endif
 
+    m_trayIcon->setMainWindow(m_mainForm);
     m_trayIcon->setContextMenu(m_mainForm->trayMenu());
     m_trayIcon->setToolTip(QSL(APP_NAME));
 

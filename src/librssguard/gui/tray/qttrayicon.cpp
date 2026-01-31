@@ -94,6 +94,10 @@ bool QtTrayIcon::isAvailable() const {
   return QSystemTrayIcon::isSystemTrayAvailable() && QSystemTrayIcon::supportsMessages();
 }
 
+void QtTrayIcon::setMainWindow(QWidget* main_window) {
+  // NOTE: Not supported or needed.
+}
+
 void QtTrayIcon::show() {
   trayIcon()->show();
   emit shown();

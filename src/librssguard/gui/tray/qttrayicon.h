@@ -33,6 +33,7 @@ class QtTrayIcon : public TrayIcon {
                              int milliseconds_timeout_hint,
                              const std::function<void()>& message_clicked_callback);
     virtual bool isAvailable() const;
+    virtual void setMainWindow(QWidget* main_window);
 
   public slots:
     virtual void show();

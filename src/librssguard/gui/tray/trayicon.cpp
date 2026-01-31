@@ -40,7 +40,7 @@ void TrayIcon::setNumber(int number) {
     setStatus(TrayIcon::Status::Passive);
   }
   else {
-    setToolTip(tr("%1\nUnread news: %2").arg(QSL(APP_LONG_NAME), QString::number(number)));
+    setToolTip(tr("Unread news: %1").arg(QString::number(number)));
     QPixmap background(m_plainIcon);
     QPainter tray_painter;
 
@@ -87,7 +87,7 @@ void TrayIcon::setNumber(int number) {
     tray_painter.end();
 
     setPixmap(background);
-    setStatus(TrayIcon::Status::NeedsAttention);
+    setStatus(TrayIcon::Status::Active);
   }
 }
 

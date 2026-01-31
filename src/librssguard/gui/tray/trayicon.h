@@ -50,6 +50,7 @@ class TrayIcon : public QObject {
     virtual void setPixmap(const QPixmap& icon) = 0;
     virtual void setStatus(Status status) = 0;
     virtual void setContextMenu(TrayIconMenu* menu) = 0;
+    virtual void setMainWindow(QWidget* main_window) = 0;
 
     virtual void showMessage(const QString& title,
                              const QString& message,

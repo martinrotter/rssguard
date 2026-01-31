@@ -10,9 +10,23 @@
 
 class QDBusServiceWatcher;
 
+struct DBusImageStruct {
+    int width;
+    int height;
+    QByteArray data;
+};
+
+Q_DECLARE_METATYPE(DBusImageStruct)
+
+QDBusArgument& operator<<(QDBusArgument& argument, const DBusImageStruct& image);
+const QDBusArgument& operator>>(const QDBusArgument& argument, DBusImageStruct& image);
+
+typedef QList<DBusImageStruct> DBusImageVector;
+Q_DECLARE_METATYPE(DBusImageVector)
+
 struct DBusToolTipStruct {
     QString icon;
-    QList<QVariantList> image; // Simplified - empty for now.
+    DBusImageVector image; // Simplified - empty for now.
     QString title;
     QString description;
 };
@@ -32,7 +46,7 @@ class TrayIconStatusNotifier : public TrayIcon {
     Q_PROPERTY(QString Title READ title)
     Q_PROPERTY(QString Status READ status)
     Q_PROPERTY(int WindowId READ windowId)
-    Q_PROPERTY(QString IconName READ iconName)
+    Q_PROPERTY(DBusImageVector IconPixmap READ iconPixmap)
     Q_PROPERTY(DBusToolTipStruct ToolTip READ toolTip)
 
   public:
@@ -41,7 +55,7 @@ class TrayIconStatusNotifier : public TrayIcon {
                                     const QPixmap& normal_icon,
                                     const QPixmap& plain_icon,
                                     QObject* parent = nullptr);
-    ~TrayIconStatusNotifier() override;
+    virtual ~TrayIconStatusNotifier() override;
 
     // TrayIcon interface implementation
     virtual void setToolTip(const QString& tool_tip);
@@ -54,6 +68,7 @@ class TrayIconStatusNotifier : public TrayIcon {
                              int milliseconds_timeout_hint = TRAY_ICON_BUBBLE_TIMEOUT,
                              const std::function<void()>& message_clicked_callback = nullptr);
     virtual bool isAvailable() const;
+    virtual void setMainWindow(QWidget* main_window);
 
   public slots:
     void show() override;
@@ -64,7 +79,6 @@ class TrayIconStatusNotifier : public TrayIcon {
     void ContextMenu(int x, int y);
 
   signals:
-    // DBus signals
     void NewTitle();
     void NewIcon();
     void NewToolTip();
@@ -72,28 +86,12 @@ class TrayIconStatusNotifier : public TrayIcon {
 
   private:
     // DBus property getters.
-    QString category() const {
-      return QStringLiteral("ApplicationStatus");
-    }
-
-    QString id() const {
-      return m_dbusId;
-    }
-
-    QString title() const {
-      return m_dbusTitle;
-    }
-
+    QString category() const;
+    QString id() const;
+    QString title() const;
     QString status() const;
-
-    int windowId() const {
-      return 0;
-    }
-
-    QString iconName() const {
-      return m_iconName;
-    }
-
+    int windowId() const;
+    DBusImageVector iconPixmap() const;
     DBusToolTipStruct toolTip() const;
 
     // Helper methods
@@ -106,13 +104,13 @@ class TrayIconStatusNotifier : public TrayIcon {
   private:
     QString m_dbusService;
     QString m_dbusPath;
-    QString m_iconName;
+    QPixmap m_currentIcon;
     QString m_toolTip;
     Status m_status;
     TrayIconMenu* m_menu;
-
     QDBusServiceWatcher* m_watcher;
     bool m_registered;
+    int m_windowId;
 
     static int s_instanceCounter;
 };
