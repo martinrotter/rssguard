@@ -377,13 +377,6 @@ if(ENABLE_MEDIAPLAYER)
   )
 endif()
 
-if(UNIX AND NOT APPLE)
-  list(APPEND SOURCES
-    gui/tray/dbustrayicon.cpp
-    gui/tray/dbustrayicon.h
-  )
-endif()
-
 if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
   list(APPEND SOURCES
     gui/mediaplayer/qtmultimedia/qtmultimediabackend.cpp

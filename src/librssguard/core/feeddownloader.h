@@ -8,6 +8,7 @@
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 
+#include <QException>
 #include <QFutureWatcher>
 #include <QHash>
 #include <QObject>
