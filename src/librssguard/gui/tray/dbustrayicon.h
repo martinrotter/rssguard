@@ -26,7 +26,7 @@ Q_DECLARE_METATYPE(DBusImageVector)
 
 struct DBusToolTipStruct {
     QString icon;
-    DBusImageVector image; // Simplified - empty for now.
+    DBusImageVector image;
     QString title;
     QString description;
 };
