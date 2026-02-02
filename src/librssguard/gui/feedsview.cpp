@@ -977,6 +977,8 @@ void FeedsView::setupAppearance() {
   header()->setStretchLastSection(false);
   header()->setCascadingSectionResizes(false);
   header()->setSectionsMovable(false);
+  header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
+  header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
 
   setUniformRowHeights(true);
   setAnimated(true);

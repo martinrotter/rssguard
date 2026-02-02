@@ -260,18 +260,17 @@ void SettingsBrowserMail::saveSettings() {
 }
 
 void SettingsBrowserMail::addExternalTool() {
-  try {
-    auto exec = askForExecutable(QString());
-    QTreeWidgetItem* item =
-      new QTreeWidgetItem(m_ui->m_listTools, {tr("New tool"), QDir::toNativeSeparators(exec), QSL("")});
+#if defined(IS_FLATPAK_BUILD)
+  QString exec;
+#else
+  QString exec = askForExecutable(QString());
+#endif
 
-    item->setFlags(item->flags() | Qt::ItemFlag::ItemIsEditable);
+  QTreeWidgetItem* item =
+    new QTreeWidgetItem(m_ui->m_listTools, {tr("New tool"), QDir::toNativeSeparators(exec), QSL("")});
 
-    m_ui->m_listTools->addTopLevelItem(item);
-  }
-  catch (const ApplicationException&) {
-    // NOTE: Tool adding cancelled.
-  }
+  item->setFlags(item->flags() | Qt::ItemFlag::ItemIsEditable);
+  m_ui->m_listTools->addTopLevelItem(item);
 }
 
 QString SettingsBrowserMail::askForExecutable(const QString& old_exec) const {
