@@ -2,8 +2,6 @@
 
 #include "gui/reusable/treeviewcolumnsmenu.h"
 
-#include "definitions/definitions.h"
-
 #include <QHeaderView>
 
 TreeViewColumnsMenu::TreeViewColumnsMenu(QHeaderView* parent) : NonClosableMenu(parent) {
@@ -22,21 +20,21 @@ void TreeViewColumnsMenu::prepareMenu() {
     act->setCheckable(true);
     act->setChecked(!header_view->isSectionHidden(i));
 
-    connect(act, &QAction::triggered, this, &TreeViewColumnsMenu::actionTriggered);
+    connect(act, &QAction::triggered, this, &TreeViewColumnsMenu::showHideColumn);
   }
 }
 
-void TreeViewColumnsMenu::actionTriggered(bool toggle) {
+void TreeViewColumnsMenu::showHideColumn(bool toggle) {
+  Q_UNUSED(toggle)
+
   auto* send_act = qobject_cast<QAction*>(sender());
   int section = send_act->data().toInt();
 
   header()->setSectionHidden(section, !send_act->isChecked());
 
-  if (send_act->isChecked() && header()->sectionSize(send_act->data().toInt()) < header()->minimumSectionSize()) {
-    header()->resizeSection(section, header()->minimumSectionSize());
+  if (send_act->isChecked() && header()->sectionSize(send_act->data().toInt()) < header()->defaultSectionSize()) {
+    header()->resizeSection(section, header()->defaultSectionSize());
   }
-
-  Q_UNUSED(toggle)
 }
 
 QHeaderView* TreeViewColumnsMenu::header() {

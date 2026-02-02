@@ -99,7 +99,11 @@ QString DatabaseQueries::whereClauseProbe(Search* probe, int account_id) {
       .arg(QString::number(account_id), DatabaseFactory::escapeQuery(probe->filter()));
   }
   else {
-    return QSL("Messages.account_id = %1 AND (%2)").arg(QString::number(account_id), probe->filter());
+    return QSL("Messages.account_id = %1 AND "
+               "Messages.is_deleted = 0 AND "
+               "Messages.is_pdeleted = 0 AND "
+               "(%2)")
+      .arg(QString::number(account_id), probe->filter());
   }
 }
 

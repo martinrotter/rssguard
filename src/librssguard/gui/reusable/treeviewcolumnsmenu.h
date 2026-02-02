@@ -13,7 +13,7 @@ class TreeViewColumnsMenu : public NonClosableMenu {
 
   private slots:
     void prepareMenu();
-    void actionTriggered(bool toggle);
+    void showHideColumn(bool toggle);
 
   private:
     QHeaderView* header();
