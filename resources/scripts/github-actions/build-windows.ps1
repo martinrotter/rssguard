@@ -46,8 +46,8 @@ $ProgressPreference = 'SilentlyContinue'
 # Get and prepare needed dependencies.
 if ($use_qt5 -eq "ON") {
   $qt_version_base = "5.15"
-  $qt_version = "5.15.17"
-  $qt_arch_base = "msvc2019_64"
+  $qt_version = "5.15.18"
+  $qt_arch_base = "msvc2022_64"
 
   $use_icu = "OFF"
   $use_libmpv = "OFF"
@@ -56,7 +56,7 @@ if ($use_qt5 -eq "ON") {
   $with_qt6 = "OFF"
 }
 else {
-  $qt_version = "6.10.1"
+  $qt_version = "6.10.2"
   $qt_arch_base = "msvc2022_64"
 
   $use_icu = "ON"
@@ -124,7 +124,7 @@ if ($is_qt_6) {
 }
 else {
   # Download Qt 5 and store in the same folder structure as Qt 6 from aqtinstall.
-  $qt5_root_folder = "qt-$qt_version-dynamic-msvc2019-x86_64"
+  $qt5_root_folder = "qt-$qt_version-dynamic-msvc2022-x86_64"
   $qt5_link = "https://github.com/martinrotter/qt-minimalistic-builds/releases/download/$qt_version/$qt5_root_folder.7z"
   $qt5_output = "qt5.zip"
 

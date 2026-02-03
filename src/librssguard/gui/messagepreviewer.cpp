@@ -59,6 +59,13 @@ void MessagePreviewer::createConnections() {
   m_actionShowAllLabels->setMenu(m_menuLabels = new LabelsMenu(this));
   qobject_cast<QToolButton*>(m_toolBar->widgetForAction(m_actionShowAllLabels))
     ->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
+
+  connect(m_menuLabels, &LabelsMenu::setModelArticleLabelIds, this, [this](const QList<Message>& msgs) {
+    // Update live-object label assignment data when changed from labels menu.
+    if (msgs.size() == 1 && m_message.m_id == msgs.constFirst().m_id) {
+      m_message.m_assignedLabels = msgs.constFirst().m_assignedLabels;
+    }
+  });
 }
 
 MessagePreviewer::MessagePreviewer(QWidget* parent)
@@ -182,12 +189,13 @@ void MessagePreviewer::markMessageAsUnread() {
 
 void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
   if (!m_root.isNull()) {
+    m_message.m_isRead = read == RootItem::ReadStatus::Read;
+
     m_root->account()->onBeforeSetMessagesRead(m_root.data(), {m_message.m_customId}, read);
     DatabaseQueries::markMessagesReadUnread(qApp->database()->driver()->connection(objectName()),
                                             {QString::number(m_message.m_id)},
                                             read);
     m_root->account()->onAfterSetMessagesRead(m_root.data(), {m_message}, read);
-    m_message.m_isRead = read == RootItem::ReadStatus::Read;
     emit markMessageRead(m_message.m_id, read);
 
     updateButtons();
@@ -200,14 +208,14 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
       ImportanceChange(m_message,
                        m_message.m_isImportant ? RootItem::Importance::NotImportant : RootItem::Importance::Important);
 
+    m_message.m_isImportant = checked;
+
     m_root->account()->onBeforeSwitchMessageImportance(m_root.data(), {ch});
     DatabaseQueries::switchMessagesImportance(qApp->database()->driver()->connection(objectName()),
                                               {QString::number(m_message.m_id)});
     m_root->account()->onAfterSwitchMessageImportance(m_root.data(), {ch});
     emit markMessageImportant(m_message.m_id,
                               checked ? RootItem::Importance::Important : RootItem::Importance::NotImportant);
-
-    m_message.m_isImportant = checked;
   }
 }
 

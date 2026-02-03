@@ -4,8 +4,8 @@
 
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/label.h"
@@ -149,7 +149,9 @@ QVariant RootItem::data(int column, int role) const {
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         int count_unread = countOfUnreadMessages();
 
-        if (count_unread <= 0 && qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool()) {
+        if (count_unread <= 0 && qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool() &&
+            kind() != RootItem::Kind::Label && kind() != RootItem::Kind::Labels && kind() != RootItem::Kind::Unread &&
+            kind() != RootItem::Kind::Important) {
           return QString();
         }
         else {

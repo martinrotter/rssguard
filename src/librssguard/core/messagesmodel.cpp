@@ -485,18 +485,48 @@ void MessagesModel::reloadChangedLayout(const QModelIndexList& indices) {
     return;
   }
 
-  auto idxs = indices;
+  // Group indices by row
+  QMap<int, QPair<int, int>> row_ranges; // row -> (minCol, maxCol)
+  for (const QModelIndex& idx : indices) {
+    int row = idx.row();
+    int col = idx.column();
 
-  std::sort(idxs.begin(), idxs.end(), [](const QModelIndex& a, const QModelIndex& b) {
-    if (a.row() == b.row()) {
-      return a.column() < b.column();
+    if (!row_ranges.contains(row)) {
+      row_ranges[row] = {col, col};
     }
+    else {
+      row_ranges[row].first = qMin(row_ranges[row].first, col);
+      row_ranges[row].second = qMax(row_ranges[row].second, col);
+    }
+  }
 
-    return a.row() < b.row();
-  });
+  QList<int> rows = row_ranges.keys();
+  std::sort(rows.begin(), rows.end());
 
-  emit dataChanged(idxs.constFirst(), idxs.constLast());
-  // emit dataChanged(index(idx_low.row(), 0), index(idx_high.row(), columnCount() - 1));
+  for (int i = 1, block_start = 0; i <= rows.size(); i++) {
+    // Check if we reached end or found a gap
+    if (i == rows.size() || rows[i] != rows[i - 1] + 1) {
+      int startRow = rows[block_start];
+      int endRow = rows[i - 1];
+
+      // Find min/max columns across the block
+      int min_col = row_ranges[startRow].first;
+      int max_col = row_ranges[startRow].second;
+
+      for (int j = block_start + 1; j < i; ++j) {
+        min_col = qMin(min_col, row_ranges[rows[j]].first);
+        max_col = qMax(max_col, row_ranges[rows[j]].second);
+      }
+
+      qDebugNN << LOGSEC_MESSAGEMODEL << "Continuous block of changed indexes in article model:";
+      qDebugNN << LOGSEC_MESSAGEMODEL << "  rows:" << startRow << ":" << endRow;
+      qDebugNN << LOGSEC_MESSAGEMODEL << "  cols:" << min_col << ":" << max_col;
+
+      emit dataChanged(index(startRow, min_col), index(endRow, max_col));
+
+      block_start = i;
+    }
+  }
 }
 
 Message& MessagesModel::messageForRow(int row) {
