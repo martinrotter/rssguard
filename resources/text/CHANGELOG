@@ -1,10 +1,10 @@
 5.0.0
 -----
-Released on: 2025-09-06
+Released on: 2026-03-01
 
-This is the first release of the brand-new 5.x RSS Guard line. Database files from the RSS Guard 4.x line is NOT compatible with this release because a massive overhaul of the database layer was performed. The database layer is now significantly more powerful, more maintainable, and in many cases, much faster.
+This is the first release of the brand-new 5.x RSS Guard line. Database files from the RSS Guard 4.x line are NOT compatible with this release because a massive overhaul of the database layer was performed. The database layer is now significantly more powerful, more maintainable, and in many cases, much faster.
 
-Changes, improvements and fixes were done across the entire RSS Guard codebase with hundreds and hundreds of commits. Nearly every single source code file was touched. Almost 50 tickets were solved.
+Changes, improvements and fixes were done across the entire RSS Guard codebase with hundreds and hundreds of commits. Nearly every single source code file was touched. 50+ tickets were solved.
 
 https://github.com/martinrotter/rssguard/milestone/39?closed=1
 
@@ -24,6 +24,8 @@ Added:
 * Qt 5 version of RSS Guard on Windows uses custom-built Qt libraries with lower memory footprint and less dependencies.
 * Added main menu action to enable/disable feed. Can be also of course assigned to keyboard shortcut. (#755)
 * Application log dialog has "Clear" button. (#1902)
+* Ability to copy selected article(s) data in a custom format. (#1591)
+* Reddit plugin got many enhancements, including option of fetching full comments.
 * Dependency on Qt "5compat" library is now removed and feed encoding conversions are handled either by simplified "QStringConverter" feature or full-blown ICU library, depending on RSS Guard build type and OS.
 * "Fetch metadata" is now threaded and works if multiple feeds are selected at once.
 * New main menu and article list context menu item "Reveal feed" which highlights the feed that the displayed article belongs to. (#1903)
