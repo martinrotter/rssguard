@@ -5436,7 +5436,7 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="555"/>
       <source>Custom account-specific data of the article.</source>
-      <translation type="unfinished">Custom account-specific data of the article.</translation>
+      <translation>Aangepaste account-specifieke gegevens van dit artikel.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="556"/>
@@ -6836,7 +6836,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="350"/>
       <source>Invalid Reddit response</source>
-      <translation type="unfinished">Invalid Reddit response</translation>
+      <translation>Ongeldig Reddit antwoord</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="530"/>
@@ -9204,17 +9204,17 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
     <message>
       <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.ui" line="35"/>
       <source>Fetch &amp;comments</source>
-      <translation type="unfinished">Fetch &amp;comments</translation>
+      <translation>&amp;Reacties ophalen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.cpp" line="84"/>
       <source>Fetching comments</source>
-      <translation type="unfinished">Fetching comments</translation>
+      <translation>Reacties ophalen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.cpp" line="94"/>
       <source>Fetching comments for &apos;%1&apos;...</source>
-      <translation type="unfinished">Fetching comments for &apos;%1&apos;...</translation>
+      <translation>Ophalen van reacties voor &apos;%1&apos;...</translation>
     </message>
   </context>
   <context>
@@ -9352,7 +9352,7 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
     <message>
       <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="43"/>
       <source>Unread news: %1</source>
-      <translation type="unfinished">Unread news: %1</translation>
+      <translation>Ongelezen nieuws: %1</translation>
     </message>
   </context>
   <context>
