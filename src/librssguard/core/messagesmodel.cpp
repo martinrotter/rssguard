@@ -480,13 +480,14 @@ void MessagesModel::reloadWholeLayout() {
   emit layoutChanged();
 }
 
-void MessagesModel::reloadChangedLayout(const QModelIndexList& indices) {
+void MessagesModel::reloadChangedLayout(const QModelIndexList& indices, bool reload_full_row) {
   if (indices.isEmpty()) {
     return;
   }
 
-  // Group indices by row
+  // Group indices by row.
   QMap<int, QPair<int, int>> row_ranges; // row -> (minCol, maxCol)
+
   for (const QModelIndex& idx : indices) {
     int row = idx.row();
     int col = idx.column();
@@ -501,28 +502,39 @@ void MessagesModel::reloadChangedLayout(const QModelIndexList& indices) {
   }
 
   QList<int> rows = row_ranges.keys();
+  int col_count = columnCount();
+
   std::sort(rows.begin(), rows.end());
 
   for (int i = 1, block_start = 0; i <= rows.size(); i++) {
-    // Check if we reached end or found a gap
+    // Check if we reached end or found a gap.
     if (i == rows.size() || rows[i] != rows[i - 1] + 1) {
-      int startRow = rows[block_start];
-      int endRow = rows[i - 1];
+      int start_row = rows[block_start];
+      int end_row = rows[i - 1];
 
-      // Find min/max columns across the block
-      int min_col = row_ranges[startRow].first;
-      int max_col = row_ranges[startRow].second;
+      // Find min/max columns across the block.
+      int min_col;
+      int max_col;
 
-      for (int j = block_start + 1; j < i; ++j) {
-        min_col = qMin(min_col, row_ranges[rows[j]].first);
-        max_col = qMax(max_col, row_ranges[rows[j]].second);
+      if (reload_full_row) {
+        min_col = 0;
+        max_col = col_count - 1;
+      }
+      else {
+        min_col = row_ranges[start_row].first;
+        max_col = row_ranges[start_row].second;
+
+        for (int j = block_start + 1; j < i; ++j) {
+          min_col = qMin(min_col, row_ranges[rows[j]].first);
+          max_col = qMax(max_col, row_ranges[rows[j]].second);
+        }
       }
 
       qDebugNN << LOGSEC_MESSAGEMODEL << "Continuous block of changed indexes in article model:";
-      qDebugNN << LOGSEC_MESSAGEMODEL << "  rows:" << startRow << ":" << endRow;
+      qDebugNN << LOGSEC_MESSAGEMODEL << "  rows:" << start_row << ":" << end_row;
       qDebugNN << LOGSEC_MESSAGEMODEL << "  cols:" << min_col << ":" << max_col;
 
-      emit dataChanged(index(startRow, min_col), index(endRow, max_col));
+      emit dataChanged(index(start_row, min_col), index(end_row, max_col));
 
       block_start = i;
     }
@@ -1188,7 +1200,7 @@ void MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
   }
 
   blockSignals(false);
-  reloadChangedLayout(changed_indices);
+  reloadChangedLayout(changed_indices, true);
 
   m_selectedItem->account()->onBeforeMessagesDelete(m_selectedItem, msgs);
 
@@ -1228,7 +1240,7 @@ void MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
   }
 
   blockSignals(false);
-  reloadChangedLayout(changed_indices);
+  reloadChangedLayout(changed_indices, true);
 
   m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, msgs, read);
   DatabaseQueries::markMessagesReadUnread(m_db, message_ids, read);
@@ -1264,7 +1276,7 @@ void MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
   }
 
   blockSignals(false);
-  reloadChangedLayout(changed_indices);
+  reloadChangedLayout(changed_indices, true);
 
   m_selectedItem->account()->onBeforeMessagesRestoredFromBin(m_selectedItem, msgs);
   DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, false);
@@ -1276,7 +1288,7 @@ void MessagesModel::markArticleDataReadUnread(bool read) {
     msg.m_isRead = read;
   }
 
-  reloadChangedLayout({index(0, 0), index(rowCount() - 1, columnCount() - 1)});
+  reloadWholeLayout();
 }
 
 QVariant MessagesModel::headerData(int section, Qt::Orientation orientation, int role) const {

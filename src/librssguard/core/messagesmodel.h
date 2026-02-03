@@ -83,7 +83,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     void updateFeedIconsDisplay();
     void reloadLazyLoading();
     void reloadWholeLayout();
-    void reloadChangedLayout(const QModelIndexList& indices);
+    void reloadChangedLayout(const QModelIndexList& indices, bool reload_full_row = false);
 
     // SINGLE message manipulators.
     void switchMessageImportance(int row_index);
