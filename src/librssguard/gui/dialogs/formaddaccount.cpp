@@ -33,6 +33,11 @@ FormAddAccount::~FormAddAccount() {
 void FormAddAccount::addSelectedAccount() {
   accept();
   ServiceEntryPoint* point = selectedEntryPoint();
+
+  if (point == nullptr) {
+    return;
+  }
+
   ServiceRoot* new_root = point->createNewRoot();
 
   if (new_root != nullptr) {
@@ -52,9 +57,14 @@ void FormAddAccount::showAccountDetails() {
 }
 
 ServiceEntryPoint* FormAddAccount::selectedEntryPoint() const {
-  return reinterpret_cast<ServiceEntryPoint*>(m_ui->m_listEntryPoints->currentItem()
-                                                ->data(Qt::ItemDataRole::UserRole)
-                                                .value<intptr_t>());
+  auto* itm = m_ui->m_listEntryPoints->currentItem();
+
+  if (itm == nullptr) {
+    return nullptr;
+  }
+  else {
+    return reinterpret_cast<ServiceEntryPoint*>(itm->data(Qt::ItemDataRole::UserRole).value<intptr_t>());
+  }
 }
 
 void FormAddAccount::loadEntryPoints() {

@@ -70,7 +70,7 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
   QString bool_false = tr("false");
 
   switch (role) {
-    case Qt::ItemDataRole::ForegroundRole: {
+    case Qt::ItemDataRole::BackgroundRole: {
       if (index.column() == MFM_MODEL_RESULT) {
         if (m_filteringDecisions.contains(index.row())) {
           switch (m_filteringDecisions.value(index.row())) {
@@ -86,7 +86,12 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
           }
         }
       }
-      else {
+
+      break;
+    }
+
+    case Qt::ItemDataRole::ForegroundRole: {
+      if (index.column() != MFM_MODEL_RESULT) {
         QVariant interest = m_colorError;
         Message msg_original = m_messages[index.row()].m_original;
 
