@@ -153,15 +153,9 @@ else {
 $qt_qmake = "$qt_path\$qt_version\$qt_arch_base\bin\qmake.exe"
 $env:PATH = "$qt_path\$qt_version\$qt_arch_base\bin\;" + $env:PATH
 
-if ($is_qt_6) {
-  # Download openssl 3.x.
-  aqt install-tool -O "$qt_path" windows desktop tools_opensslv3_x64 qt.tools.opensslv3.win_x64
-  $openssl_base_path = "$qt_path\Tools\OpenSSLv3\Win_x64"
-}
-else {
-  # Use openssl already bundled.
-  $openssl_base_path = "$qt_path\$qt_version\$qt_arch_base"
-}
+# Download openssl 3.x.
+aqt install-tool -O "$qt_path" windows desktop tools_opensslv3_x64 qt.tools.opensslv3.win_x64
+$openssl_base_path = "$qt_path\Tools\OpenSSLv3\Win_x64"
 
 # Build dependencies.
 
