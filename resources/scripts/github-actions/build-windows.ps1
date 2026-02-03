@@ -114,11 +114,11 @@ $ytdlp_path = "$old_pwd\$ytdlp_output"
 # Download Qt itself.
 $qt_path = "$old_pwd\qt"
 
-if ($is_qt_6) {
-  # Install "aqtinstall" from its master branch to have latest code.
-  pip3 install -U pip
-  pip3 install -I git+https://github.com/miurahr/aqtinstall
+# Install "aqtinstall" from its master branch to have latest code.
+pip3 install -U pip
+pip3 install -I git+https://github.com/miurahr/aqtinstall
 
+if ($is_qt_6) {
   aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtimageformats qtmultimedia qt5compat
   aqt install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
 }
