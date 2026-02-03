@@ -159,12 +159,8 @@ if ($is_qt_6) {
   $openssl_base_path = "$qt_path\Tools\OpenSSLv3\Win_x64"
 }
 else {
-  # Download openssl 1.x from external source.
-  $openssl_link = "https://download.firedaemon.com/FireDaemon-OpenSSL/openssl-1.1.1w.zip";
-  $openssl_output = "openssl.zip"
-  Invoke-WebRequest -Uri "$openssl_link" -OutFile "$openssl_output"
-  & "$7za" x $openssl_output
-  $openssl_base_path = "$pwd\openssl-1.1\x64"
+  # Use openssl already bundled.
+  $openssl_base_path = "$qt_path\$qt_version\$qt_arch_base"
 }
 
 # Build dependencies.
@@ -204,18 +200,18 @@ cd ".."
 
 # Copy OpenSSL.
 if ($is_qt_6) {
-  Copy-Item -Path "$qt_path\$qt_version\$qt_arch_base\plugins\tls\qopensslbackend.dll" -Destination ".\app\tls\"
+  Copy-Item -Path "$qt_path\$qt_version\$qt_arch_base\plugins\tls\qopensslbackend.dll" -Destination ".\app\tls\" -Verbose
 }
 
-Copy-Item -Path "$openssl_base_path\bin\libcrypto*.dll" -Destination ".\app\"
-Copy-Item -Path "$openssl_base_path\bin\libssl*.dll" -Destination ".\app\"
+Copy-Item -Path "$openssl_base_path\bin\libcrypto*.dll" -Destination ".\app\" -Verbose
+Copy-Item -Path "$openssl_base_path\bin\libssl*.dll" -Destination ".\app\" -Verbose
 
 # Copy MySQL.
-Copy-Item -Path "$maria_path\lib\libmariadb.dll" -Destination ".\app\"
-Copy-Item -Path "$qt_sqldrivers_path\plugins\sqldrivers\qsqlmysql.dll" -Destination ".\app\sqldrivers\" -Force
+Copy-Item -Path "$maria_path\lib\libmariadb.dll" -Destination ".\app\" -Verbose
+Copy-Item -Path "$qt_sqldrivers_path\plugins\sqldrivers\qsqlmysql.dll" -Destination ".\app\sqldrivers\" -Force -Verbose
 
 # Copy zlib.
-Copy-Item -Path "$zlib_path\zlib1.dll" -Destination ".\app\"
+Copy-Item -Path "$zlib_path\zlib1.dll" -Destination ".\app\" -Verbose
 
 if ($is_devbuild) {
   # Copy debug symbols.
