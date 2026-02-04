@@ -31,11 +31,11 @@ void GreaderFeed::deleteItem() {
                                              {},
                                              serviceRoot()->networkProxy());
   removeItself();
-  serviceRoot()->requestItemRemoval(this);
+  serviceRoot()->requestItemRemoval(this, false);
 }
 
 void GreaderFeed::removeItself() {
-  DatabaseQueries::deleteFeed(qApp->database()->driver()->connection(metaObject()->className()),
+  DatabaseQueries::deleteFeed(qApp->database()->driver()->threadSafeConnection(metaObject()->className()),
                               this,
                               serviceRoot()->accountId());
 }

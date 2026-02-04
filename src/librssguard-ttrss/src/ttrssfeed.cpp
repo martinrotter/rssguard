@@ -29,7 +29,7 @@ void TtRssFeed::deleteItem() {
 
   if (response.code() == QSL(UFF_OK)) {
     removeItself();
-    serviceRoot()->requestItemRemoval(this);
+    serviceRoot()->requestItemRemoval(this, false);
   }
   else {
     throw ApplicationException(response.toString());
@@ -37,7 +37,7 @@ void TtRssFeed::deleteItem() {
 }
 
 void TtRssFeed::removeItself() {
-  DatabaseQueries::deleteFeed(qApp->database()->driver()->connection(metaObject()->className()),
+  DatabaseQueries::deleteFeed(qApp->database()->driver()->threadSafeConnection(metaObject()->className()),
                               this,
                               serviceRoot()->accountId());
 }

@@ -50,7 +50,7 @@ void Label::deleteItem() {
   QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
 
   DatabaseQueries::deleteLabel(db, this);
-  account()->requestItemRemoval(this);
+  account()->requestItemRemoval(this, false);
 }
 
 void Label::updateCounts() {

@@ -22,7 +22,7 @@ void Category::updateCounts() {
     return;
   }
 
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   auto counts = DatabaseQueries::getMessageCountsForFeeds(database, account()->textualFeedIds(feeds));
 
   for (Feed* feed : feeds) {

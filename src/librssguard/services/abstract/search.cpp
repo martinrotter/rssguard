@@ -50,9 +50,9 @@ bool Search::canBeDeleted() const {
 }
 
 void Search::deleteItem() {
-  QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
+  QSqlDatabase db = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   DatabaseQueries::deleteProbe(db, this);
-  account()->requestItemRemoval(this);
+  account()->requestItemRemoval(this, false);
 }
 
 void Search::updateCounts() {

@@ -6,6 +6,7 @@
 #include "core/feedsproxymodel.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
+#include "gui/dialogs/formprogressworker.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/styleditemdelegate.h"
 #include "gui/reusable/treeviewcolumnsmenu.h"
@@ -514,11 +515,36 @@ void FeedsView::deleteSelectedItem() {
     return;
   }
 
-  auto pointed_items = deletable_items.select([](RootItem* it) {
-    return QPointer<RootItem>(it);
-  });
+  auto pointed_items = deletable_items
+                         .select([](RootItem* it) {
+                           return QPointer<RootItem>(it);
+                         })
+                         .toList();
 
   try {
+    /*
+    FormProgressWorker worker(qApp->mainFormWidget());
+
+    worker.doSingleWork(
+      tr("Deleting %n items", nullptr, pointed_items.size()),
+      true,
+      [&](QFutureWatcher<void>& rprt) {
+        int progress = 0;
+        emit rprt.progressRangeChanged(0, pointed_items.size() - 1);
+        for (const QPointer<RootItem>& pnt : pointed_items) {
+          if (pnt.isNull()) {
+            continue;
+          }
+
+          pnt->deleteItem();
+          emit rprt.progressValueChanged(++progress);
+        }
+      },
+      [](int progress) {
+        return tr("Deleted %n items...", nullptr, progress);
+      });
+    */
+
     for (const QPointer<RootItem>& pnt : pointed_items) {
       if (pnt.isNull()) {
         continue;
@@ -526,6 +552,8 @@ void FeedsView::deleteSelectedItem() {
 
       pnt->deleteItem();
     }
+
+    m_sourceModel->reloadCountsOfWholeModel();
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_CORE << "Failed to delete item:" << NONQUOTE_W_SPACE_DOT(ex.message());

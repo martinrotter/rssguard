@@ -37,11 +37,11 @@ ServiceRoot::ServiceRoot(RootItem* parent)
 ServiceRoot::~ServiceRoot() {}
 
 void ServiceRoot::deleteItem() {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
   DatabaseQueries::deleteAccount(database, this);
   stop();
-  requestItemRemoval(this);
+  requestItemRemoval(this, false);
 }
 
 void ServiceRoot::editItems(const QList<RootItem*>& items) {
@@ -276,7 +276,7 @@ void ServiceRoot::updateCounts() {
     return;
   }
 
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   auto counts = DatabaseQueries::getMessageCountsForFeeds(database, textualFeedIds(feeds));
 
   for (Feed* feed : feeds) {
@@ -317,7 +317,7 @@ void ServiceRoot::cleanAllItemsFromModel(bool clean_labels_too) {
     if (top_level_item->kind() != RootItem::Kind::Bin && top_level_item->kind() != RootItem::Kind::Important &&
         top_level_item->kind() != RootItem::Kind::Unread && top_level_item->kind() != RootItem::Kind::Probes &&
         top_level_item->kind() != RootItem::Kind::Labels) {
-      requestItemRemoval(top_level_item);
+      requestItemRemoval(top_level_item, false);
     }
   }
 
@@ -325,7 +325,7 @@ void ServiceRoot::cleanAllItemsFromModel(bool clean_labels_too) {
     auto lbl_chi = labelsNode()->childItems();
 
     for (RootItem* lbl : std::as_const(lbl_chi)) {
-      requestItemRemoval(lbl);
+      requestItemRemoval(lbl, false);
     }
   }
 }
@@ -458,8 +458,8 @@ void ServiceRoot::requestItemsReassignment(const QList<RootItem*>& items, RootIt
   }
 }
 
-void ServiceRoot::requestItemRemoval(RootItem* item) {
-  emit itemRemovalRequested(item);
+void ServiceRoot::requestItemRemoval(RootItem* item, bool reload_counts) {
+  emit itemRemovalRequested(item, reload_counts);
 }
 
 void ServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
@@ -1051,7 +1051,12 @@ void ServiceRoot::onBeforeMessagesRestoredFromBin(RootItem* selected_item, const
   Q_UNUSED(messages)
 }
 
-void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages, bool refresh_bin, bool refresh_only_bin) {
+void ServiceRoot::refreshAfterArticlesChange(const QList<Feed*>& feeds,
+                                             const QList<Message>& messages,
+                                             bool refresh_bin,
+                                             bool refresh_only_bin) {
+  Q_UNUSED(feeds)
+
   if (refresh_only_bin) {
     m_recycleBin->updateCounts();
     itemChanged({m_recycleBin});
@@ -1117,23 +1122,29 @@ void ServiceRoot::refreshAfterArticlesChange(const QList<Message>& messages, boo
 }
 
 void ServiceRoot::onAfterMessagesRestoredFromBin(RootItem* selected_item, const QList<Message>& messages) {
-  refreshAfterArticlesChange(messages, true, false);
+  refreshAfterArticlesChange({}, messages, true, false);
 }
 
 void ServiceRoot::onAfterMessagesDelete(RootItem* selected_item, const QList<Message>& messages) {
-  refreshAfterArticlesChange(messages, true, selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin);
+  refreshAfterArticlesChange({},
+                             messages,
+                             true,
+                             selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin);
 }
 
 void ServiceRoot::onAfterSetMessagesRead(RootItem* selected_item,
                                          const QList<Message>& messages,
                                          RootItem::ReadStatus read) {
-  refreshAfterArticlesChange(messages, true, selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin);
+  refreshAfterArticlesChange({},
+                             messages,
+                             true,
+                             selected_item != nullptr && selected_item->kind() == RootItem::Kind::Bin);
 }
 
 void ServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
   Q_UNUSED(feeds)
 
-  refreshAfterArticlesChange({}, false, false);
+  refreshAfterArticlesChange({}, {}, false, false);
 }
 
 QNetworkProxy ServiceRoot::networkProxyForItem(RootItem* item) const {

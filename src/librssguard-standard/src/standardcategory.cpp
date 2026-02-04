@@ -50,7 +50,7 @@ bool StandardCategory::canBeDeleted() const {
 
 void StandardCategory::deleteItem() {
   removeItself();
-  serviceRoot()->requestItemRemoval(this);
+  serviceRoot()->requestItemRemoval(this, false);
 }
 
 void StandardCategory::removeItself() {
@@ -68,7 +68,7 @@ void StandardCategory::removeItself() {
   }
 
   // Children are removed, remove this standard category too.
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
   DatabaseQueries::deleteCategory(database, this);
 }

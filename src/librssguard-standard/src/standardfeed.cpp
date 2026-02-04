@@ -110,7 +110,7 @@ StandardServiceRoot* StandardFeed::serviceRoot() const {
 
 void StandardFeed::deleteItem() {
   removeItself();
-  serviceRoot()->requestItemRemoval(this);
+  serviceRoot()->requestItemRemoval(this, false);
 }
 
 NetworkFactory::NetworkAuthentication StandardFeed::protection() const {
@@ -445,7 +445,7 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
 }
 
 void StandardFeed::removeItself() {
-  DatabaseQueries::deleteFeed(qApp->database()->driver()->connection(metaObject()->className()),
+  DatabaseQueries::deleteFeed(qApp->database()->driver()->threadSafeConnection(metaObject()->className()),
                               this,
                               account()->accountId());
 }

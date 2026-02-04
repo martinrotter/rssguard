@@ -196,7 +196,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void requestItemExpandStateSave(RootItem* subtree_root);
     void requestItemReassignment(RootItem* item, RootItem* new_parent, bool blocking = false);
     void requestItemsReassignment(const QList<RootItem*>& items, RootItem* new_parent);
-    void requestItemRemoval(RootItem* item);
+    void requestItemRemoval(RootItem* item, bool reload_counts);
 
     // Some message/feed attribute selectors.
     QStringList textualFeedIds(const QList<Feed*>& feeds) const;
@@ -257,10 +257,13 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
 
     void itemBlockingReassignmentRequested(RootItem* item, RootItem* new_parent);
     void itemReassignmentRequested(RootItem* item, RootItem* new_parent);
-    void itemRemovalRequested(RootItem* item);
+    void itemRemovalRequested(RootItem* item, bool reload_counts);
 
   private:
-    void refreshAfterArticlesChange(const QList<Message>& messages, bool refresh_bin, bool refresh_only_bin);
+    void refreshAfterArticlesChange(const QList<Feed*>& feeds,
+                                    const QList<Message>& messages,
+                                    bool refresh_bin,
+                                    bool refresh_only_bin);
 
     void resortAccountTree(RootItem* tree,
                            const QMap<QString, QVariantMap>& custom_category_data,

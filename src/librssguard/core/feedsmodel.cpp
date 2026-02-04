@@ -176,7 +176,7 @@ void FeedsModel::reloadCountsOfWholeModel() {
   notifyWithCounts();
 }
 
-void FeedsModel::removeItem(RootItem* deleting_item) {
+void FeedsModel::removeItem(RootItem* deleting_item, bool reload_counts) {
   if (deleting_item != nullptr) {
     RootItem* parent_item = deleting_item->parent();
 
@@ -192,7 +192,7 @@ void FeedsModel::removeItem(RootItem* deleting_item) {
     parent_item->removeChild(deleting_item);
     endRemoveRows();
 
-    if (deleting_item->kind() != RootItem::Kind::ServiceRoot) {
+    if (reload_counts && deleting_item->kind() != RootItem::Kind::ServiceRoot) {
       deleting_item->account()->updateCounts();
     }
 
@@ -413,10 +413,7 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
   endInsertRows();
 
   // Connect.
-  connect(root,
-          &ServiceRoot::itemRemovalRequested,
-          this,
-          static_cast<void (FeedsModel::*)(RootItem*)>(&FeedsModel::removeItem));
+  connect(root, &ServiceRoot::itemRemovalRequested, this, &FeedsModel::removeItem);
   connect(root, &ServiceRoot::itemReassignmentRequested, this, &FeedsModel::reassignNodeToNewParent);
   connect(root,
           &ServiceRoot::itemBlockingReassignmentRequested,
