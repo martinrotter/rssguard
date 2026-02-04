@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>407</width>
-    <height>357</height>
+    <height>360</height>
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout">
@@ -33,6 +33,9 @@
    </item>
    <item row="2" column="0" colspan="2">
     <widget class="QGroupBox" name="m_gbNotificationsType">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
      <property name="title">
       <string>Balloon notifications type</string>
      </property>

@@ -575,7 +575,67 @@ void FeedDownloader::removeTooOldMessages(Feed* feed, QList<Message>& msgs) {
 }
 
 QList<Feed*> FeedDownloader::scrambleFeedsWithSameHost(const QList<Feed*>& feeds) const {
-  return feeds;
+  if (feeds.size() <= 2) {
+    return feeds;
+  }
+
+  // Group feeds by host.
+  QHash<QString, QList<Feed*>> feeds_by_host;
+  feeds_by_host.reserve(feeds.size() / 2); // Reasonable initial capacity.
+
+  for (Feed* feed : feeds) {
+    QString source = feed->source();
+
+    // Extract host from URL quickly.
+    QString host;
+    int schemeEnd = source.indexOf("://");
+    if (schemeEnd != -1) {
+      int hostStart = schemeEnd + 3;
+      int hostEnd = source.indexOf('/', hostStart);
+      host = (hostEnd != -1) ? source.mid(hostStart, hostEnd - hostStart) : source.mid(hostStart);
+    }
+    else {
+      // No scheme, treat entire source as host.
+      int hostEnd = source.indexOf('/');
+      host = (hostEnd != -1) ? source.left(hostEnd) : source;
+    }
+
+    feeds_by_host[host].append(feed);
+  }
+
+  // If all feeds are from the same host or all different hosts, return original.
+  if (feeds_by_host.size() == 1 || feeds_by_host.size() == feeds.size()) {
+    return feeds;
+  }
+
+  // Distribute feeds evenly using round-robin.
+  QList<Feed*> result;
+  result.reserve(feeds.size());
+
+  // Create list of iterators for each host group.
+  QList<QPair<QString, int>> host_indices;
+  host_indices.reserve(feeds_by_host.size());
+
+  for (auto it = feeds_by_host.constBegin(); it != feeds_by_host.constEnd(); ++it) {
+    host_indices.append({it.key(), 0});
+  }
+
+  // Round-robin distribution.
+  int total_added = 0;
+
+  while (total_added < feeds.size()) {
+    for (auto& pair : host_indices) {
+      const QList<Feed*>& host_feeds = feeds_by_host[pair.first];
+
+      if (pair.second < host_feeds.size()) {
+        result.append(host_feeds[pair.second]);
+        pair.second++;
+        total_added++;
+      }
+    }
+  }
+
+  return result;
 }
 
 QString FeedDownloadResults::overview(int how_many_feeds) const {

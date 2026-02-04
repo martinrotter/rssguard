@@ -706,6 +706,8 @@ void StandardServiceRoot::fetchMetadataForAllFeeds(const QList<Feed*>& feeds) {
     [](int progress) {
       return tr("Fetched %n feeds...", nullptr, progress);
     });
+
+  itemChanged(qlinq::from(feeds).ofType<RootItem*>().toList());
 }
 
 QList<QAction*> StandardServiceRoot::serviceMenu() {

@@ -267,10 +267,6 @@ void StandardFeed::fetchMetadataForItself() {
   catch (const ApplicationException& ex) {
     setStatus(Feed::Status::OtherError, ex.message());
     qCriticalNN << LOGSEC_DB << "Cannot save feed after metadata fetch:" << QUOTE_W_SPACE_DOT(ex.message());
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         {tr("Cannot save feed data"),
-                          tr("Cannot save data for feed: %1").arg(ex.message()),
-                          QSystemTrayIcon::MessageIcon::Critical});
   }
 }
 
