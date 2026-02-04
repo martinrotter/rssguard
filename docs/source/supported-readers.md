@@ -18,7 +18,7 @@ When it comes to online web-based feed readers, these are supported:
 | Gmail             | ✅ | ✅ | ✅ | ✅
 | Google Reader API [^4] | ✅ | ✅ | ✅ | ✅ (only for Inoreader)
 | Nextcloud News    | ✅ | ❌ | ❌ | ❌
-| Reddit [^5]       | ❌ | ❌ | ❌ | ❌
+| Reddit            | ❌ | ❌ | ❌ | ✅
 | Tiny Tiny RSS     | ✅ | ✅ | ✅ | ❌
 
 [^1]: Some plugins support next-gen intelligent synchronization algorithm (ISA) which has some benefits, as it usually offers superior synchronization speed, and transfers much less data over your network connection.
@@ -30,5 +30,3 @@ When it comes to online web-based feed readers, these are supported:
 [^3]: [OAuth](https://en.wikipedia.org/wiki/OAuth) is a secure way of authenticating users in online applications.
 
 [^4]: Tested services are: Bazqux, FreshRSS, Inoreader, Miniflux, Reedah, TheOldReader.
-
-[^5]: Reddit is still Work-In-Progress.
