@@ -4,3 +4,4 @@ You can support author of RSS Guard via donations, here are the specific places 
 * Github Sponsors - [https://github.com/sponsors/martinrotter](https://github.com/sponsors/martinrotter)
 * Liberapay - [https://liberapay.com/martinrotter](https://liberapay.com/martinrotter)
 * Patreon - [https://www.patreon.com/c/martinrotter](https://www.patreon.com/c/martinrotter)
+* BTC Wallet - bc1qc29vazm5akncs4ywgdu0kje4r8jtzfjfdxtzpa
