@@ -1208,6 +1208,7 @@ QString Application::customDataFolder() const {
 }
 
 bool Application::event(QEvent* event) {
+#if QT_VERSION_MAJOR >= 6 && defined(Q_OS_WIN)
   if (event->type() == QEvent::Type::Quit) {
     closeAllWindows();
 
@@ -1222,6 +1223,7 @@ bool Application::event(QEvent* event) {
     return QCoreApplication::event(event);
     */
   }
+#endif
 
   return QApplication::event(event);
 }
