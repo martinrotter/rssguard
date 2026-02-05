@@ -69,6 +69,9 @@ jobs:
             git archive --format=tar HEAD | tar -x -C "${TMPDIR}/${path}"
           '
 
+          # Include go modules.
+          ( cd "${TMPDIR}" && go mod vendor )
+
           # Final compressed tarball
           tar -czf "${TAR_NAME}" -C "${TMPDIR}/.." "$(basename "${TMPDIR}")"
 
