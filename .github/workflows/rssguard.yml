@@ -70,7 +70,7 @@ jobs:
           '
 
           # Include go modules.
-          ( cd "${TMPDIR}" && go mod vendor )
+          ( cd "${TMPDIR}/resources/scripts/standalone/article-extractor" && go mod vendor )
 
           # Final compressed tarball
           tar -czf "${TAR_NAME}" -C "${TMPDIR}/.." "$(basename "${TMPDIR}")"
