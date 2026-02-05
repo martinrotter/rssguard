@@ -769,7 +769,7 @@ void FormMain::createConnections() {
   // Menu "File" connections.
   connect(m_ui->m_actionBackupDatabaseSettings, &QAction::triggered, this, &FormMain::backupDatabaseSettings);
   connect(m_ui->m_actionRestoreDatabaseSettings, &QAction::triggered, this, &FormMain::restoreDatabaseSettings);
-  connect(m_ui->m_actionQuit, &QAction::triggered, qApp, &Application::quit);
+  connect(m_ui->m_actionQuit, &QAction::triggered, qApp, &Application::quit, Qt::ConnectionType::QueuedConnection);
   connect(m_ui->m_actionServiceAdd, &QAction::triggered, this, &FormMain::showAddAccountDialog);
 
   // Menu "View" connections.

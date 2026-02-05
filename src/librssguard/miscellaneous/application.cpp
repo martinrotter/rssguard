@@ -1206,3 +1206,22 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
 QString Application::customDataFolder() const {
   return QDir::toNativeSeparators(m_customDataFolder);
 }
+
+bool Application::event(QEvent* event) {
+  if (event->type() == QEvent::Type::Quit) {
+    closeAllWindows();
+
+    /*
+    for (auto* w : topLevelWidgets()) {
+      w->close();
+    }
+    */
+
+    /*
+    event->accept();
+    return QCoreApplication::event(event);
+    */
+  }
+
+  return QApplication::event(event);
+}

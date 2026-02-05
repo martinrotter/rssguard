@@ -88,6 +88,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     explicit Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args);
     virtual ~Application();
 
+    virtual bool event(QEvent* event);
+
     void updateCliDebugStatus();
     void reactOnForeignNotifications();
     void hideOrShowMainForm();

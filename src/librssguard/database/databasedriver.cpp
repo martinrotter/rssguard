@@ -17,7 +17,8 @@ DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent) {}
 QSqlDatabase DatabaseDriver::threadSafeConnection(const QString& connection_name) {
   qlonglong thread_id = getThreadID();
   bool is_main_thread = QThread::currentThread() == qApp->thread();
-  QSqlDatabase database = connection(is_main_thread ? connection_name : QSL("db_connection_%1").arg(thread_id));
+  QSqlDatabase database =
+    connection(is_main_thread ? connection_name : QSL("%1_%2").arg(connection_name, QString::number(thread_id)));
 
   return database;
 }

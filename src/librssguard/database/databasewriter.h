@@ -17,21 +17,29 @@
 
 class DatabaseWriter : public QObject {
     Q_OBJECT
-
   public:
     struct WriteResult {
         std::optional<ApplicationException> m_exception;
     };
 
     explicit DatabaseWriter(QObject* parent = nullptr);
-    ~DatabaseWriter();
+    virtual ~DatabaseWriter();
 
-    // Blocking execution of arbitrary DB work.
-    WriteResult execWrite(const std::function<void(const QSqlDatabase&)>& func);
-
-    // Asynchronous execution of arbitrary DB work.
+    // Blocking execution of reading DB work.
     //
-    // NOTE: Callback always runs in the GUI thread.
+    // Just straigtly executes the work on calling thread.
+    void execRead(const std::function<void(const QSqlDatabase&)>& func);
+
+    // Blocking execution of writing DB work.
+    //
+    // Executes the work on worker thread and waits for its completion.
+    void execWrite(const std::function<void(const QSqlDatabase&)>& func);
+
+    // Asynchronous execution of writing DB work.
+    //
+    // Executes the work on worker thread and does not wait for its completion.
+    //
+    // NOTE: Completion callback always runs in the main application thread.
     void execWriteAsync(const std::function<void(const QSqlDatabase&)>& func,
                         const std::function<void(const WriteResult&)>& callback = {});
 
@@ -42,10 +50,10 @@ class DatabaseWriter : public QObject {
     struct Job {
         std::function<void(const QSqlDatabase&)> m_func;
         std::function<void(const WriteResult&)> m_callback;
-
         WriteResult m_result;
         bool m_done = false;
         bool m_blocking = false;
+        QMutex m_doneMutex;
         QWaitCondition m_doneCond;
     };
 
@@ -56,7 +64,6 @@ class DatabaseWriter : public QObject {
     QMutex m_queueMutex;
     QWaitCondition m_queueNotEmpty;
     QQueue<Job*> m_jobQueue;
-
     QObject* m_guiDispatcher = nullptr;
     std::atomic_bool m_stop{false};
 };
