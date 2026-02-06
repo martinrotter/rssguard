@@ -2,6 +2,7 @@
 
 #include "database/databasefactory.h"
 
+#include "database/databaseworker.h"
 #include "database/mariadbdriver.h"
 #include "database/sqlitedriver.h"
 #include "exceptions/applicationexception.h"
@@ -15,7 +16,8 @@
 #include <QSqlResult>
 #include <QVariant>
 
-DatabaseFactory::DatabaseFactory(QObject* parent) : QObject(parent), m_dbDriver(nullptr) {
+DatabaseFactory::DatabaseFactory(QObject* parent)
+  : QObject(parent), m_dbDriver(nullptr), m_dbWorker(new DatabaseWorker(this)) {
   determineDriver();
 }
 
@@ -83,4 +85,8 @@ QString DatabaseFactory::escapeQuery(const QString& query) {
 
 DatabaseDriver::DriverType DatabaseFactory::activeDatabaseDriver() const {
   return m_dbDriver->driverType();
+}
+
+DatabaseWorker* DatabaseFactory::worker() const {
+  return m_dbWorker;
 }
