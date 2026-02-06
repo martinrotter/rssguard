@@ -7,12 +7,8 @@
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/labelsnode.h"
 
-FilteringSystem::FilteringSystem(FiteringUseCase mode,
-                                 QSqlDatabase& db,
-                                 Feed* feed,
-                                 ServiceRoot* account,
-                                 QObject* parent)
-  : QObject(parent), m_mode(mode), m_db(db), m_feed(feed), m_account(account) {
+FilteringSystem::FilteringSystem(FiteringUseCase mode, Feed* feed, ServiceRoot* account, QObject* parent)
+  : QObject(parent), m_mode(mode), m_feed(feed), m_account(account) {
   initializeEngine();
 
   m_availableLabels =
@@ -162,10 +158,6 @@ FilteringSystem::FiteringUseCase FilteringSystem::mode() const {
 
 QList<Label*>& FilteringSystem::availableLabels() {
   return m_availableLabels;
-}
-
-QSqlDatabase& FilteringSystem::database() {
-  return m_db;
 }
 
 ServiceRoot* FilteringSystem::account() const {

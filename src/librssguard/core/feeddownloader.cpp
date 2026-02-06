@@ -97,7 +97,6 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
     synchronizeAccountCaches(caches.values(), false);
 
     auto roots = feeds_per_root.uniqueKeys();
-    QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
 
     for (auto* rt : std::as_const(roots)) {
       auto fds = scrambleFeedsWithSameHost(feeds_per_root.values(rt));
@@ -108,19 +107,23 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
       // Obtain lists of local IDs.
       if (rt->wantsBaggedIdsOfExistingMessages()) {
         // Tags per account.
-        per_acc_tags = DatabaseQueries::bagsOfMessages(database, rt->labelsNode()->labels());
+        per_acc_tags = qApp->database()->worker()->read<QHash<QString, QStringList>>([&](const QSqlDatabase& db) {
+          return DatabaseQueries::bagsOfMessages(db, rt->labelsNode()->labels());
+        });
 
         // This account has activated intelligent downloading of messages.
         // Prepare bags.
         for (Feed* fd : std::as_const(fds)) {
           QHash<ServiceRoot::BagOfMessages, QStringList> per_feed_states;
 
-          per_feed_states.insert(ServiceRoot::BagOfMessages::Read,
-                                 DatabaseQueries::bagOfMessages(database, ServiceRoot::BagOfMessages::Read, fd));
-          per_feed_states.insert(ServiceRoot::BagOfMessages::Unread,
-                                 DatabaseQueries::bagOfMessages(database, ServiceRoot::BagOfMessages::Unread, fd));
-          per_feed_states.insert(ServiceRoot::BagOfMessages::Starred,
-                                 DatabaseQueries::bagOfMessages(database, ServiceRoot::BagOfMessages::Starred, fd));
+          qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+            per_feed_states.insert(ServiceRoot::BagOfMessages::Read,
+                                   DatabaseQueries::bagOfMessages(db, ServiceRoot::BagOfMessages::Read, fd));
+            per_feed_states.insert(ServiceRoot::BagOfMessages::Unread,
+                                   DatabaseQueries::bagOfMessages(db, ServiceRoot::BagOfMessages::Unread, fd));
+            per_feed_states.insert(ServiceRoot::BagOfMessages::Starred,
+                                   DatabaseQueries::bagOfMessages(db, ServiceRoot::BagOfMessages::Starred, fd));
+          });
 
           per_acc_states.insert(fd->customId(), per_feed_states);
 
@@ -269,7 +272,6 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
   tmr.start();
 
   try {
-    QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
     QList<Message> msgs = acc->obtainNewMessages(feed, stated_messages, tagged_messages);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Downloaded" << NONQUOTE_W_SPACE(msgs.size()) << "messages for feed ID"
@@ -304,7 +306,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       tmr.restart();
 
       // Perform per-message filtering.
-      FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles, database, feed, acc);
+      FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles, feed, acc);
       filtering.filterRun().setTotalCountOfFilters(feed_filters_enabled.size());
 
       qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000

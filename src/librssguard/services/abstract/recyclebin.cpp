@@ -30,7 +30,9 @@ int RecycleBin::countOfAllMessages() const {
 
 void RecycleBin::updateCounts() {
   QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  auto ac = DatabaseQueries::getMessageCountsForBin(database, account()->accountId());
+  auto ac = qApp->database()->worker()->read<ArticleCounts>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getMessageCountsForBin(database, account()->accountId());
+  });
 
   m_unreadCount = ac.m_unread;
   m_totalCount = ac.m_total;
@@ -41,9 +43,11 @@ void RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-  DatabaseQueries::markBinReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
-                                     service->accountId(),
-                                     status);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markBinReadUnread(db, service->accountId(), status);
+  });
+
   service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read
@@ -55,9 +59,11 @@ void RecycleBin::cleanMessages(bool clear_only_read) {
   ServiceRoot* service = account();
 
   service->onBeforeMessagesDelete(this, {});
-  DatabaseQueries::cleanBin(qApp->database()->driver()->connection(metaObject()->className()),
-                            clear_only_read,
-                            service->accountId());
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::cleanBin(db, clear_only_read, service->accountId());
+  });
+
   service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
@@ -79,10 +85,12 @@ void RecycleBin::empty() {
 }
 
 void RecycleBin::restore() {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   ServiceRoot* parent_root = account();
 
-  DatabaseQueries::restoreBin(database, parent_root->accountId());
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::restoreBin(db, parent_root->accountId());
+  });
+
   parent_root->updateCounts();
   parent_root->itemChanged(parent_root->getSubTree<RootItem>());
   parent_root->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::RecycleBinRestored);

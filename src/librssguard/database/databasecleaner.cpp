@@ -18,7 +18,6 @@ void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
 
   const int difference = 99 / 12;
   int progress = 0;
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   if (which_data.m_removeReadMessages) {
     progress += difference;
@@ -26,7 +25,7 @@ void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
     emit purgeProgress(progress, tr("Removing read articles..."));
 
     // Remove read messages.
-    purgeReadMessages(database);
+    purgeReadMessages();
     progress += difference;
 
     emit purgeProgress(progress, tr("Read articles purged..."));
@@ -38,7 +37,7 @@ void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
     emit purgeProgress(progress, tr("Purging recycle bin..."));
 
     // Remove read messages.
-    purgeRecycleBin(database);
+    purgeRecycleBin();
     progress += difference;
 
     emit purgeProgress(progress, tr("Recycle bin purged..."));
@@ -50,7 +49,7 @@ void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
     emit purgeProgress(progress, tr("Removing old articles..."));
 
     // Remove old messages.
-    purgeOldMessages(database, which_data.m_barrierForRemovingOldMessagesInDays);
+    purgeOldMessages(which_data.m_barrierForRemovingOldMessagesInDays);
     progress += difference;
 
     emit purgeProgress(progress, tr("Old articles purged..."));
@@ -62,7 +61,7 @@ void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
     emit purgeProgress(progress, tr("Removing starred articles..."));
 
     // Remove old messages.
-    purgeStarredMessages(database);
+    purgeStarredMessages();
     progress += difference;
 
     emit purgeProgress(progress, tr("Starred articles purged..."));
@@ -83,18 +82,26 @@ void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
   emit purgeFinished();
 }
 
-void DatabaseCleaner::purgeStarredMessages(const QSqlDatabase& database) {
-  DatabaseQueries::purgeImportantMessages(database);
+void DatabaseCleaner::purgeStarredMessages() {
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::purgeImportantMessages(db);
+  });
 }
 
-void DatabaseCleaner::purgeReadMessages(const QSqlDatabase& database) {
-  DatabaseQueries::purgeReadMessages(database);
+void DatabaseCleaner::purgeReadMessages() {
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::purgeReadMessages(db);
+  });
 }
 
-void DatabaseCleaner::purgeOldMessages(const QSqlDatabase& database, int days) {
-  DatabaseQueries::purgeOldMessages(database, days);
+void DatabaseCleaner::purgeOldMessages(int days) {
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::purgeOldMessages(db, days);
+  });
 }
 
-void DatabaseCleaner::purgeRecycleBin(const QSqlDatabase& database) {
-  DatabaseQueries::purgeRecycleBin(database);
+void DatabaseCleaner::purgeRecycleBin() {
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::purgeRecycleBin(db);
+  });
 }

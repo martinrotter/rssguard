@@ -24,9 +24,9 @@ ServiceRoot* RedditEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> RedditEntryPoint::initializeSubtree() const {
-  QSqlDatabase database = qApp->database()->driver()->connection(QSL("RedditEntryPoint"));
-
-  return DatabaseQueries::getAccounts<RedditServiceRoot>(database, code());
+  return qApp->database()->worker()->read<QList<ServiceRoot*>>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getAccounts<RedditServiceRoot>(db, code());
+  });
 }
 
 QString RedditEntryPoint::name() const {

@@ -47,8 +47,7 @@ ServiceRoot* TtRssServiceEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> TtRssServiceEntryPoint::initializeSubtree() const {
-  // Check DB if standard account is enabled.
-  QSqlDatabase database = qApp->database()->driver()->connection(QSL("TtRssServiceEntryPoint"));
-
-  return DatabaseQueries::getAccounts<TtRssServiceRoot>(database, code());
+  return qApp->database()->worker()->read<QList<ServiceRoot*>>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getAccounts<TtRssServiceRoot>(db, code());
+  });
 }

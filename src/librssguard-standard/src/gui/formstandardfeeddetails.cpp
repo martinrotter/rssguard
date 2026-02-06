@@ -85,7 +85,6 @@ void FormStandardFeedDetails::onTitleChanged(const QString& title) {
 void FormStandardFeedDetails::apply() {
   FormFeedDetails::apply();
 
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   RootItem* parent = m_standardFeedDetails->m_ui.m_cmbParentCategory->currentData().value<RootItem*>();
   StandardFeed::Type type =
     static_cast<StandardFeed::Type>(m_standardFeedDetails->m_ui.m_cmbType
@@ -179,7 +178,9 @@ void FormStandardFeedDetails::apply() {
     }
 
     try {
-      DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), new_parent_id);
+      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        DatabaseQueries::createOverwriteFeed(db, std_feed, m_serviceRoot->accountId(), new_parent_id);
+      });
     }
     catch (const ApplicationException& ex) {
       qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));

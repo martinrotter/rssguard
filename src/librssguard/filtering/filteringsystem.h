@@ -8,7 +8,6 @@
 
 #include <QJSEngine>
 #include <QObject>
-#include <QSqlDatabase>
 
 class FilteringSystem : public QObject {
     Q_OBJECT
@@ -19,11 +18,7 @@ class FilteringSystem : public QObject {
       ExistingArticles
     };
 
-    explicit FilteringSystem(FiteringUseCase mode,
-                             QSqlDatabase& db,
-                             Feed* feed,
-                             ServiceRoot* account,
-                             QObject* parent = nullptr);
+    explicit FilteringSystem(FiteringUseCase mode, Feed* feed, ServiceRoot* account, QObject* parent = nullptr);
 
     void setMessage(Message* message);
 
@@ -40,7 +35,6 @@ class FilteringSystem : public QObject {
 
     QJSEngine& engine();
     FilterMessage& message();
-    QSqlDatabase& database();
     Feed* feed() const;
     ServiceRoot* account() const;
     QList<Label*>& availableLabels();
@@ -54,7 +48,6 @@ class FilteringSystem : public QObject {
 
   private:
     FiteringUseCase m_mode;
-    QSqlDatabase m_db;
     Feed* m_feed;
     ServiceRoot* m_account;
     QList<Label*> m_availableLabels;

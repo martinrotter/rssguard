@@ -192,9 +192,11 @@ void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
     m_message.m_isRead = read == RootItem::ReadStatus::Read;
 
     m_root->account()->onBeforeSetMessagesRead(m_root.data(), {m_message.m_customId}, read);
-    DatabaseQueries::markMessagesReadUnread(qApp->database()->driver()->connection(objectName()),
-                                            {QString::number(m_message.m_id)},
-                                            read);
+
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::markMessagesReadUnread(db, {QString::number(m_message.m_id)}, read);
+    });
+
     m_root->account()->onAfterSetMessagesRead(m_root.data(), {m_message}, read);
     emit markMessageRead(m_message.m_id, read);
 
@@ -211,8 +213,11 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
     m_message.m_isImportant = checked;
 
     m_root->account()->onBeforeSwitchMessageImportance(m_root.data(), {ch});
-    DatabaseQueries::switchMessagesImportance(qApp->database()->driver()->connection(objectName()),
-                                              {QString::number(m_message.m_id)});
+
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::switchMessagesImportance(db, {QString::number(m_message.m_id)});
+    });
+
     m_root->account()->onAfterSwitchMessageImportance(m_root.data(), {ch});
     emit markMessageImportant(m_message.m_id,
                               checked ? RootItem::Importance::Important : RootItem::Importance::NotImportant);

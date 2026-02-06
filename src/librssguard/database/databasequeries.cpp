@@ -801,7 +801,7 @@ QHash<QString, QStringList> DatabaseQueries::bagsOfMessages(const QSqlDatabase& 
   return ids;
 }
 
-UpdatedArticles DatabaseQueries::updateMessages(QSqlDatabase& db,
+UpdatedArticles DatabaseQueries::updateMessages(const QSqlDatabase& db,
                                                 QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,

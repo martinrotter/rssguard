@@ -23,9 +23,9 @@ ServiceRoot* GreaderEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> GreaderEntryPoint::initializeSubtree() const {
-  QSqlDatabase database = qApp->database()->driver()->connection(QSL("GreaderEntryPoint"));
-
-  return DatabaseQueries::getAccounts<GreaderServiceRoot>(database, code());
+  return qApp->database()->worker()->read<QList<ServiceRoot*>>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getAccounts<GreaderServiceRoot>(db, code());
+  });
 }
 
 QString GreaderEntryPoint::name() const {

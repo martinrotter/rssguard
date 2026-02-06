@@ -8,7 +8,6 @@
 #include <QList>
 #include <QMap>
 #include <QPair>
-#include <QSqlDatabase>
 
 struct SortColumnsAndOrders {
     QList<int> m_columns;
@@ -32,8 +31,6 @@ class MessagesModelSqlLayer {
                                  int limit,
                                  int offset,
                                  int additional_article_id = -1) const;
-
-    QSqlDatabase m_db;
 
   private:
     QString selectStatement(int limit, int offset, int additional_article_id = -1) const;

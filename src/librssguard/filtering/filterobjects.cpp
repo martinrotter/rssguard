@@ -278,10 +278,14 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
     // TODO: Do not call repeatedly? Maybe get articles once
     // and reuse them for whole run.
     if (Globals::hasFlag(criteria, DuplicityCheck::AllFeedsSameAccount)) {
-      msgs = DatabaseQueries::getUndeletedMessagesForAccount(m_system->database(), m_system->filterAccount().id(), {});
+      msgs = qApp->database()->worker()->read<QList<Message>>([&](const QSqlDatabase& db) {
+        return DatabaseQueries::getUndeletedMessagesForAccount(db, m_system->filterAccount().id(), {});
+      });
     }
     else {
-      msgs = DatabaseQueries::getUndeletedMessagesForFeed(m_system->database(), feedId(), {});
+      msgs = qApp->database()->worker()->read<QList<Message>>([&](const QSqlDatabase& db) {
+        return DatabaseQueries::getUndeletedMessagesForFeed(db, feedId(), {});
+      });
     }
   }
   catch (const ApplicationException& ex) {
@@ -314,7 +318,6 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
 
 bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   // Check database according to duplication attribute_check.
-  SqlQuery q(m_system->database());
   QStringList where_clauses;
   QVector<QPair<QString, QVariant>> bind_values;
 
@@ -361,25 +364,31 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   }
 
   QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
-  q.prepare(full_query);
+  bool res = qApp->database()->worker()->read<bool>([&](const QSqlDatabase& db) {
+    SqlQuery q(db);
+    q.prepare(full_query);
 
-  for (const auto& bind : bind_values) {
-    q.bindValue(bind.first, bind.second);
-  }
-
-  if (q.exec(false) && q.next()) {
-    if (q.value(0).toInt() > 0) {
-      // Whoops, we have the "same" message in database.
-      qDebugNN << LOGSEC_CORE << "Message" << QUOTE_W_SPACE(title()) << "was identified as duplicate by filter script.";
-      return true;
+    for (const auto& bind : bind_values) {
+      q.bindValue(bind.first, bind.second);
     }
-  }
-  else if (q.lastError().isValid()) {
-    qWarningNN << LOGSEC_CORE << "Error when checking for duplicate messages via filtering system, error:"
-               << QUOTE_W_SPACE_DOT(q.lastError().text());
-  }
 
-  return false;
+    if (q.exec(false) && q.next()) {
+      if (q.value(0).toInt() > 0) {
+        // Whoops, we have the "same" message in database.
+        qDebugNN << LOGSEC_CORE << "Message" << QUOTE_W_SPACE(title())
+                 << "was identified as duplicate by filter script.";
+        return true;
+      }
+    }
+    else if (q.lastError().isValid()) {
+      qWarningNN << LOGSEC_CORE << "Error when checking for duplicate messages via filtering system, error:"
+                 << QUOTE_W_SPACE_DOT(q.lastError().text());
+    }
+
+    return false;
+  });
+
+  return res;
 }
 
 bool FilterMessage::fetchFullContents(bool plain_text_only) {
@@ -600,9 +609,11 @@ QString FilterAccount::createLabel(const QString& label_title, const QString& he
     auto rnd_color = TextFactory::generateRandomColor();
 
     new_lbl = new Label(label_title, hex_color.isEmpty() ? rnd_color : hex_color);
-    QSqlDatabase db = m_system->database();
 
-    DatabaseQueries::createLabel(db, new_lbl, m_system->account()->accountId());
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createLabel(db, new_lbl, m_system->account()->accountId());
+    });
+
     m_system->account()->requestItemReassignment(new_lbl, m_system->account()->labelsNode(), true);
     m_system->availableLabels().append(new_lbl);
 

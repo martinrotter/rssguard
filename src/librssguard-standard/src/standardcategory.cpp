@@ -23,10 +23,11 @@ Qt::ItemFlags StandardCategory::additionalFlags() const {
 }
 
 bool StandardCategory::performDragDropChange(RootItem* target_item) {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
   try {
-    DatabaseQueries::createOverwriteCategory(database, this, account()->accountId(), target_item->id());
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createOverwriteCategory(db, this, account()->accountId(), target_item->id());
+    });
+
     serviceRoot()->requestItemReassignment(this, target_item);
     return true;
   }
@@ -68,7 +69,7 @@ void StandardCategory::removeItself() {
   }
 
   // Children are removed, remove this standard category too.
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-
-  DatabaseQueries::deleteCategory(database, this);
+  qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+    DatabaseQueries::deleteCategory(db, this);
+  });
 }

@@ -120,7 +120,6 @@ void FormCategoryDetails::loadCategoryData() {
 void FormCategoryDetails::apply() {
   QList<Category*> cats = categories<Category>();
   RootItem* parent = m_ui->m_cmbParentCategory->currentData().value<RootItem*>();
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   for (Category* cat : cats) {
     if (isChangeAllowed(m_ui->m_mcbTitle)) {
@@ -145,7 +144,9 @@ void FormCategoryDetails::apply() {
     }
 
     try {
-      DatabaseQueries::createOverwriteCategory(database, cat, m_serviceRoot->accountId(), new_parent_id);
+      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        DatabaseQueries::createOverwriteCategory(db, cat, m_serviceRoot->accountId(), new_parent_id);
+      });
     }
     catch (const ApplicationException& ex) {
       qFatal("Cannot save category: '%s'.", qPrintable(ex.message()));

@@ -10,12 +10,12 @@
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/application.h>
-#include <qtlinq/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/network-web/oauth2service.h>
 #include <librssguard/network-web/webfactory.h>
 #include <librssguard/services/abstract/labelsnode.h>
+#include <qtlinq/qtlinq.h>
 
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -1253,9 +1253,9 @@ void GreaderNetwork::initializeOauth() {
             Q_UNUSED(access_token)
 
             if (m_root != nullptr && m_root->accountId() > 0 && !refresh_token.isEmpty()) {
-              QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-              DatabaseQueries::storeNewOauthTokens(database, refresh_token, m_root->accountId());
+              qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+                DatabaseQueries::storeNewOauthTokens(db, refresh_token, m_root->accountId());
+              });
             }
           });
 }

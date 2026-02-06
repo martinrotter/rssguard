@@ -39,13 +39,12 @@ void QuiteRssImport::import() {
   }
 
   QSqlDatabase quiterss_db = dbConnection(m_dbFile, QSL("quiterss"));
-  QSqlDatabase rssguard_db = qApp->database()->driver()->connection(metaObject()->className());
 
   checkIfQuiteRss(quiterss_db);
 
   RootItem* feed_tree = extractFeedsAndCategories(quiterss_db);
   QList<Label*> labels = extractLabels(quiterss_db);
-  QList<StandardFeed*> imported_feeds = importTree(rssguard_db, feed_tree);
+  QList<StandardFeed*> imported_feeds = importTree(feed_tree);
 
   importLabels(labels);
 
@@ -74,7 +73,6 @@ void QuiteRssImport::import() {
 
 void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Label*>& lbls) {
   QSqlDatabase quiterss_db = dbConnection(m_dbFile, QSL("quiterss_%1").arg(getThreadID()));
-  QSqlDatabase rssguard_db = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   QList<Message> msgs;
 
   // Load articles and migrate them to RSS Guard.
@@ -114,8 +112,11 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
   if (msgs.isEmpty()) {
     return;
   }
+
   try {
-    DatabaseQueries::updateMessages(rssguard_db, msgs, feed, false, true, &m_dbMutex);
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::updateMessages(db, msgs, feed, false, true, &m_dbMutex);
+    });
   }
   catch (const ApplicationException& ex) {
     qWarningNN << LOGSEC_STANDARD << "Article import from quiterss failed:" << QUOTE_W_SPACE_DOT(ex.message());
@@ -127,11 +128,12 @@ void QuiteRssImport::importLabels(const QList<Label*>& labels) {
     return;
   }
 
-  QSqlDatabase db = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-
   for (Label* lbl : labels) {
     try {
-      DatabaseQueries::createLabel(db, lbl, m_account->accountId());
+      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        DatabaseQueries::createLabel(db, lbl, m_account->accountId());
+      });
+
       m_account->requestItemReassignment(lbl, m_account->labelsNode());
     }
     catch (const SqlException& ex) {
@@ -183,7 +185,7 @@ QMap<QString, Label*> QuiteRssImport::hashLabels(const QList<Label*>& labels) co
   return map;
 }
 
-QList<StandardFeed*> QuiteRssImport::importTree(const QSqlDatabase& db, RootItem* root) const {
+QList<StandardFeed*> QuiteRssImport::importTree(RootItem* root) const {
   QList<StandardFeed*> feeds;
   QStack<RootItem*> original_parents;
   QStack<RootItem*> new_parents;
@@ -208,7 +210,10 @@ QList<StandardFeed*> QuiteRssImport::importTree(const QSqlDatabase& db, RootItem
         new_category->clearChildren();
 
         try {
-          DatabaseQueries::createOverwriteCategory(db, new_category, m_account->accountId(), target_parent->id());
+          qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+            DatabaseQueries::createOverwriteCategory(db, new_category, m_account->accountId(), target_parent->id());
+          });
+
           m_account->requestItemReassignment(new_category, target_parent);
 
           original_parents.push(new_category);
@@ -253,7 +258,10 @@ QList<StandardFeed*> QuiteRssImport::importTree(const QSqlDatabase& db, RootItem
         new_feed->setProperty("quiterss_id", source_feed->property("quiterss_id"));
 
         try {
-          DatabaseQueries::createOverwriteFeed(db, new_feed, m_account->accountId(), target_parent->id());
+          qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+            DatabaseQueries::createOverwriteFeed(db, new_feed, m_account->accountId(), target_parent->id());
+          });
+
           m_account->requestItemReassignment(new_feed, target_parent);
           feeds.append(new_feed);
         }

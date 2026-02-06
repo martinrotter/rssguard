@@ -206,7 +206,11 @@ bool Feed::removeUnwantedArticles(QSqlDatabase& db) {
   Feed::ArticleIgnoreLimit feed_setup = articleIgnoreLimit();
   Feed::ArticleIgnoreLimit app_setup = Feed::ArticleIgnoreLimit::fromSettings();
 
-  bool removed = DatabaseQueries::removeUnwantedArticlesFromFeed(db, this, feed_setup, app_setup);
+  // TODO: testovat
+  bool removed = qApp->database()->worker()->write<bool>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::removeUnwantedArticlesFromFeed(db, this, feed_setup, app_setup);
+  });
+
   return removed;
 }
 
@@ -216,8 +220,9 @@ void Feed::appendMessageFilter(MessageFilter* filter) {
 }
 
 void Feed::updateCounts() {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  auto fc = DatabaseQueries::getMessageCountsForFeed(database, id());
+  auto fc = qApp->database()->worker()->read<ArticleCounts>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getMessageCountsForFeed(db, id());
+  });
 
   setCountOfAllMessages(fc.m_total);
   setCountOfUnreadMessages(fc.m_unread);
@@ -232,9 +237,11 @@ void Feed::markAsReadUnread(RootItem::ReadStatus status) {
   auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-  DatabaseQueries::markFeedsReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
-                                       service->textualFeedIds({this}),
-                                       status);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markFeedsReadUnread(db, service->textualFeedIds({this}), status);
+  });
+
   service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read
