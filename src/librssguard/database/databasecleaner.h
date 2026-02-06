@@ -31,10 +31,10 @@ class DatabaseCleaner : public QObject {
     void purgeDatabaseData(CleanerOrders which_data);
 
   private:
-    void purgeStarredMessages(const QSqlDatabase& database);
-    void purgeReadMessages(const QSqlDatabase& database);
-    void purgeOldMessages(const QSqlDatabase& database, int days);
-    void purgeRecycleBin(const QSqlDatabase& database);
+    void purgeStarredMessages();
+    void purgeReadMessages();
+    void purgeOldMessages(int days);
+    void purgeRecycleBin();
 };
 
 #endif // DATABASECLEANER_H

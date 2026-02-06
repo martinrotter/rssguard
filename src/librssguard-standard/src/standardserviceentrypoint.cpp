@@ -44,8 +44,9 @@ ServiceRoot* StandardServiceEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> StandardServiceEntryPoint::initializeSubtree() const {
-  // Check DB if standard account is enabled.
-  QSqlDatabase database = qApp->database()->driver()->connection(QSL("StandardServiceEntryPoint"));
+  auto acc = qApp->database()->worker()->read<QList<ServiceRoot*>>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getAccounts<StandardServiceRoot>(db, code());
+  });
 
-  return DatabaseQueries::getAccounts<StandardServiceRoot>(database, code());
+  return acc;
 }

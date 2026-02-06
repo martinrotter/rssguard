@@ -16,9 +16,10 @@ ImportantNode::ImportantNode(RootItem* parent_item) : RootItem(parent_item) {
 }
 
 void ImportantNode::updateCounts() {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();
-  auto ac = DatabaseQueries::getImportantMessageCounts(database, account_id);
+  auto ac = qApp->database()->worker()->read<ArticleCounts>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getImportantMessageCounts(db, account_id);
+  });
 
   m_totalCount = ac.m_total;
   m_unreadCount = ac.m_unread;
@@ -28,9 +29,11 @@ void ImportantNode::cleanMessages(bool clean_read_only) {
   ServiceRoot* service = account();
 
   service->onBeforeMessagesDelete(this, {});
-  DatabaseQueries::cleanImportantMessages(qApp->database()->driver()->connection(metaObject()->className()),
-                                          clean_read_only,
-                                          service->accountId());
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::cleanImportantMessages(db, clean_read_only, service->accountId());
+  });
+
   service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
@@ -40,9 +43,10 @@ void ImportantNode::markAsReadUnread(RootItem::ReadStatus status) {
   auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-  DatabaseQueries::markImportantMessagesReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
-                                                   service->accountId(),
-                                                   status);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markImportantMessagesReadUnread(db, service->accountId(), status);
+  });
 
   service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,

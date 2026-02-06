@@ -3,14 +3,11 @@
 #include "core/messagesmodelsqllayer.h"
 
 #include "database/databasequeries.h"
-#include "database/sqlquery.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
 #include "miscellaneous/application.h"
 
 MessagesModelSqlLayer::MessagesModelSqlLayer() : m_filter(QSL(DEFAULT_SQL_MESSAGES_FILTER)) {
-  m_db = qApp->database()->driver()->connection(QSL("MessagesModel"));
-
   // Used in <x>: SELECT <x1>, <x2> FROM ....;
   m_fieldNames = DatabaseQueries::messageTableAttributes();
 
@@ -103,15 +100,18 @@ QList<Message> MessagesModelSqlLayer::fetchMessages(const QHash<QString, Label*>
   }
 
   QString statemnt = selectStatement(limit, offset, additional_article_id);
-  SqlQuery q(m_db);
 
-  q.exec(statemnt);
+  qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+    SqlQuery q(db);
 
-  while (q.next()) {
-    msgs.append(Message::fromSqlQuery(q, labels));
-  }
+    q.exec(statemnt);
 
-  q.finish();
+    while (q.next()) {
+      msgs.append(Message::fromSqlQuery(q, labels));
+    }
+
+    q.finish();
+  });
 
   return msgs;
 }

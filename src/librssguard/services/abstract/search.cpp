@@ -50,8 +50,10 @@ bool Search::canBeDeleted() const {
 }
 
 void Search::deleteItem() {
-  QSqlDatabase db = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  DatabaseQueries::deleteProbe(db, this);
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::deleteProbe(db, this);
+  });
+
   account()->requestItemRemoval(this, false);
 }
 
@@ -97,9 +99,11 @@ void Search::cleanMessages(bool clear_only_read) {
   ServiceRoot* service = account();
 
   service->onBeforeMessagesDelete(this, {});
-  DatabaseQueries::cleanProbedMessages(qApp->database()->driver()->connection(metaObject()->className()),
-                                       this,
-                                       clear_only_read);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::cleanProbedMessages(db, this, clear_only_read);
+  });
+
   service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
@@ -109,7 +113,11 @@ void Search::markAsReadUnread(RootItem::ReadStatus status) {
   auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-  DatabaseQueries::markProbeReadUnread(qApp->database()->driver()->connection(metaObject()->className()), this, status);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markProbeReadUnread(db, this, status);
+  });
+
   service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read

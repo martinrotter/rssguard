@@ -260,9 +260,9 @@ void StandardFeed::fetchMetadataForItself() {
 
     metadata.first->deleteLater();
 
-    QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-
-    DatabaseQueries::createOverwriteFeed(database, this, account()->accountId(), parent()->id());
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createOverwriteFeed(db, this, account()->accountId(), parent()->id());
+    });
   }
   catch (const ApplicationException& ex) {
     setStatus(Feed::Status::OtherError, ex.message());
@@ -424,10 +424,11 @@ Qt::ItemFlags StandardFeed::additionalFlags() const {
 }
 
 bool StandardFeed::performDragDropChange(RootItem* target_item) {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
   try {
-    DatabaseQueries::createOverwriteFeed(database, this, account()->accountId(), target_item->id());
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createOverwriteFeed(db, this, account()->accountId(), target_item->id());
+    });
+
     serviceRoot()->requestItemReassignment(this, target_item);
     return true;
   }
@@ -445,9 +446,9 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
 }
 
 void StandardFeed::removeItself() {
-  DatabaseQueries::deleteFeed(qApp->database()->driver()->threadSafeConnection(metaObject()->className()),
-                              this,
-                              account()->accountId());
+  qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+    DatabaseQueries::deleteFeed(db, this, account()->accountId());
+  });
 }
 
 QString StandardFeed::getHttpDescription() const {

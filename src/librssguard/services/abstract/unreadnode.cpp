@@ -16,10 +16,11 @@ UnreadNode::UnreadNode(RootItem* parent_item) : RootItem(parent_item) {
 }
 
 void UnreadNode::updateCounts() {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();
 
-  m_totalCount = m_unreadCount = DatabaseQueries::getUnreadMessageCounts(database, account_id).m_total;
+  m_totalCount = m_unreadCount = qApp->database()->worker()->read<int>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getUnreadMessageCounts(db, account_id).m_total;
+  });
 }
 
 void UnreadNode::cleanMessages(bool clean_read_only) {
@@ -30,8 +31,11 @@ void UnreadNode::cleanMessages(bool clean_read_only) {
   ServiceRoot* service = account();
 
   service->onBeforeMessagesDelete(this, {});
-  DatabaseQueries::cleanUnreadMessages(qApp->database()->driver()->connection(metaObject()->className()),
-                                       service->accountId());
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::cleanUnreadMessages(db, service->accountId());
+  });
+
   service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
@@ -46,8 +50,11 @@ void UnreadNode::markAsReadUnread(RootItem::ReadStatus status) {
   auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-  DatabaseQueries::markUnreadMessagesRead(qApp->database()->driver()->connection(metaObject()->className()),
-                                          service->accountId());
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markUnreadMessagesRead(db, service->accountId());
+  });
+
   service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read

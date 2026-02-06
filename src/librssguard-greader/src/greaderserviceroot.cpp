@@ -227,7 +227,10 @@ bool GreaderServiceRoot::wantsBaggedIdsOfExistingMessages() const {
 
 void GreaderServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadRootFromDatabase<Category, GreaderFeed>(this);
+    qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+      DatabaseQueries::loadRootFromDatabase<Category, GreaderFeed>(db, this);
+    });
+
     loadCacheFromFile();
   }
 

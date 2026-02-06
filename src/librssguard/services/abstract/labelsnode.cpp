@@ -35,9 +35,11 @@ void LabelsNode::markAsReadUnread(RootItem::ReadStatus status) {
   auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-  DatabaseQueries::markAllLabelledMessagesReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
-                                                     service->accountId(),
-                                                     status);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markAllLabelledMessagesReadUnread(db, service->accountId(), status);
+  });
+
   service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read
@@ -46,9 +48,11 @@ void LabelsNode::markAsReadUnread(RootItem::ReadStatus status) {
 }
 
 void LabelsNode::updateCounts() {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();
-  auto acc = DatabaseQueries::getMessageCountsForAllLabels(database, account_id);
+
+  auto acc = qApp->database()->worker()->read<QMap<int, ArticleCounts>>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getMessageCountsForAllLabels(db, account_id);
+  });
 
   for (Label* lbl : labels()) {
     if (!acc.contains(lbl->id())) {
@@ -98,10 +102,10 @@ void LabelsNode::createLabel() {
     Label* new_lbl = frm.execForAdd();
 
     if (new_lbl != nullptr) {
-      QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
-
       try {
-        DatabaseQueries::createLabel(db, new_lbl, account()->accountId());
+        qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+          DatabaseQueries::createLabel(db, new_lbl, account()->accountId());
+        });
 
         account()->requestItemReassignment(new_lbl, this);
         account()->requestItemExpand({this}, true);

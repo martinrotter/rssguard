@@ -37,7 +37,7 @@ void TtRssFeed::deleteItem() {
 }
 
 void TtRssFeed::removeItself() {
-  DatabaseQueries::deleteFeed(qApp->database()->driver()->threadSafeConnection(metaObject()->className()),
-                              this,
-                              serviceRoot()->accountId());
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::deleteFeed(db, this, serviceRoot()->accountId());
+  });
 }

@@ -160,9 +160,11 @@ void ArticleListNotification::markAsRead(Feed* feed, const QList<Message>& artic
   }
 
   acc->onBeforeSetMessagesRead(feed, articles, RootItem::ReadStatus::Read);
-  auto db = qApp->database()->driver()->connection(metaObject()->className());
 
-  DatabaseQueries::markMessagesReadUnread(db, message_ids, RootItem::ReadStatus::Read);
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markMessagesReadUnread(db, message_ids, RootItem::ReadStatus::Read);
+  });
+
   acc->onAfterSetMessagesRead(feed, articles, RootItem::ReadStatus::Read);
 }
 

@@ -22,8 +22,9 @@ void Category::updateCounts() {
     return;
   }
 
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  auto counts = DatabaseQueries::getMessageCountsForFeeds(database, account()->textualFeedIds(feeds));
+  auto counts = qApp->database()->worker()->read<QMap<int, ArticleCounts>>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getMessageCountsForFeeds(db, account()->textualFeedIds(feeds));
+  });
 
   for (Feed* feed : feeds) {
     if (counts.contains(feed->id())) {
@@ -42,9 +43,11 @@ void Category::markAsReadUnread(RootItem::ReadStatus status) {
   auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-  DatabaseQueries::markFeedsReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
-                                       service->textualFeedIds(getSubTreeFeeds()),
-                                       status);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markFeedsReadUnread(db, service->textualFeedIds(getSubTreeFeeds()), status);
+  });
+
   service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read

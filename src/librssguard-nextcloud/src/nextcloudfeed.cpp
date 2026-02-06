@@ -22,9 +22,9 @@ void NextcloudFeed::deleteItem() {
 }
 
 void NextcloudFeed::removeItself() {
-  DatabaseQueries::deleteFeed(qApp->database()->driver()->threadSafeConnection(metaObject()->className()),
-                              this,
-                              serviceRoot()->accountId());
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::deleteFeed(db, this, serviceRoot()->accountId());
+  });
 }
 
 NextcloudServiceRoot* NextcloudFeed::serviceRoot() const {

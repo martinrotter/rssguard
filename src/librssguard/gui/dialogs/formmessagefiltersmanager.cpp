@@ -179,22 +179,24 @@ bool FormMessageFiltersManager::eventFilter(QObject* watched, QEvent* event) {
 
 void FormMessageFiltersManager::moveFilterDown() {
   auto* filter = selectedFilter();
-  auto db = qApp->database()->driver()->connection(metaObject()->className());
-
   auto row = m_ui.m_listFilters->currentRow();
 
-  DatabaseQueries::moveMessageFilter(m_reader->messageFilters(), filter, false, false, filter->sortOrder() + 1, db);
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::moveMessageFilter(m_reader->messageFilters(), filter, false, false, filter->sortOrder() + 1, db);
+  });
+
   m_ui.m_listFilters->insertItem(row + 1, m_ui.m_listFilters->takeItem(row));
   m_ui.m_listFilters->setCurrentRow(row + 1);
 }
 
 void FormMessageFiltersManager::moveFilterUp() {
   auto* filter = selectedFilter();
-  auto db = qApp->database()->driver()->connection(metaObject()->className());
-
   auto row = m_ui.m_listFilters->currentRow();
 
-  DatabaseQueries::moveMessageFilter(m_reader->messageFilters(), filter, false, false, filter->sortOrder() - 1, db);
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::moveMessageFilter(m_reader->messageFilters(), filter, false, false, filter->sortOrder() - 1, db);
+  });
+
   m_ui.m_listFilters->insertItem(row - 1, m_ui.m_listFilters->takeItem(row));
   m_ui.m_listFilters->setCurrentRow(row - 1);
 }
@@ -369,9 +371,7 @@ void FormMessageFiltersManager::testFilter() {
 
   // Perform per-message filtering.
   auto* selected_fd_cat = selectedCategoryFeed();
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
   FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles,
-                            database,
                             selected_fd_cat->kind() == RootItem::Kind::Feed ? selected_fd_cat->toFeed() : nullptr,
                             selectedAccount());
 

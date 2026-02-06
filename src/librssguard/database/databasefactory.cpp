@@ -2,7 +2,6 @@
 
 #include "database/databasefactory.h"
 
-#include "database/databaseworker.h"
 #include "database/mariadbdriver.h"
 #include "database/sqlitedriver.h"
 #include "exceptions/applicationexception.h"
@@ -17,7 +16,7 @@
 #include <QVariant>
 
 DatabaseFactory::DatabaseFactory(QObject* parent)
-  : QObject(parent), m_dbDriver(nullptr), m_dbWorker(new DatabaseWorker(this)) {
+  : QObject(parent), m_dbDriver(nullptr), m_dbWorker(new DatabaseWorker()) {
   determineDriver();
 }
 

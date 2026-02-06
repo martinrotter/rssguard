@@ -1030,7 +1030,10 @@ void MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
     return;
   }
 
-  DatabaseQueries::markMessagesReadUnread(m_db, {QString::number(message.m_id)}, read);
+  qApp->database()->worker()->write([&message, &read](const QSqlDatabase& db) {
+    DatabaseQueries::markMessagesReadUnread(db, {QString::number(message.m_id)}, read);
+  });
+
   m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, {message}, read);
 }
 
@@ -1123,7 +1126,10 @@ void MessagesModel::switchMessageImportance(int row_index) {
   }
 
   // Commit changes.
-  DatabaseQueries::markMessageImportant(m_db, message.m_id, next_importance);
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markMessageImportant(db, message.m_id, next_importance);
+  });
+
   m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem,
                                                             QList<QPair<Message, RootItem::Importance>>() << pair);
 }
@@ -1163,7 +1169,11 @@ void MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
   reloadChangedLayout(changed_indices);
 
   m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem, message_states);
-  DatabaseQueries::switchMessagesImportance(m_db, message_ids);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::switchMessagesImportance(db, message_ids);
+  });
+
   m_selectedItem->account()->onAfterSwitchMessageImportance(m_selectedItem, message_states);
 }
 
@@ -1205,10 +1215,14 @@ void MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
   m_selectedItem->account()->onBeforeMessagesDelete(m_selectedItem, msgs);
 
   if (m_selectedItem->kind() != RootItem::Kind::Bin) {
-    DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, true);
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::deleteOrRestoreMessagesToFromBin(db, message_ids, true);
+    });
   }
   else {
-    DatabaseQueries::permanentlyDeleteMessages(m_db, message_ids);
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::permanentlyDeleteMessages(db, message_ids);
+    });
   }
 
   m_selectedItem->account()->onAfterMessagesDelete(m_selectedItem, msgs);
@@ -1243,7 +1257,11 @@ void MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootIt
   reloadChangedLayout(changed_indices, true);
 
   m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, msgs, read);
-  DatabaseQueries::markMessagesReadUnread(m_db, message_ids, read);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markMessagesReadUnread(db, message_ids, read);
+  });
+
   m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, msgs, read);
 }
 
@@ -1279,7 +1297,11 @@ void MessagesModel::setBatchMessagesRestored(const QModelIndexList& messages) {
   reloadChangedLayout(changed_indices, true);
 
   m_selectedItem->account()->onBeforeMessagesRestoredFromBin(m_selectedItem, msgs);
-  DatabaseQueries::deleteOrRestoreMessagesToFromBin(m_db, message_ids, false);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::deleteOrRestoreMessagesToFromBin(db, message_ids, false);
+  });
+
   m_selectedItem->account()->onAfterMessagesRestoredFromBin(m_selectedItem, msgs);
 }
 

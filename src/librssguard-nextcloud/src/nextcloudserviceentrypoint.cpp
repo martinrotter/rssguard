@@ -24,9 +24,9 @@ ServiceRoot* NextcloudServiceEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> NextcloudServiceEntryPoint::initializeSubtree() const {
-  QSqlDatabase database = qApp->database()->driver()->connection(QSL("NextcloudServiceEntryPoint"));
-
-  return DatabaseQueries::getAccounts<NextcloudServiceRoot>(database, code());
+  return qApp->database()->worker()->read<QList<ServiceRoot*>>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getAccounts<NextcloudServiceRoot>(db, code());
+  });
 }
 
 QString NextcloudServiceEntryPoint::name() const {

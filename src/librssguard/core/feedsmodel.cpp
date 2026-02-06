@@ -459,9 +459,9 @@ void FeedsModel::changeSortOrder(RootItem* item, bool move_top, bool move_bottom
     return;
   }
 
-  QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::moveItem(item, move_top, move_bottom, new_sort_order, db);
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::moveItem(item, move_top, move_bottom, new_sort_order, db);
+  });
 }
 
 void FeedsModel::sortDirectDescendants(RootItem* item, RootItem::Kind kind_to_sort) {
@@ -521,9 +521,9 @@ void FeedsModel::markItemCleared(RootItem* item, bool clean_read_only) {
 }
 
 void FeedsModel::purgeArticles(const QList<Feed*>& feeds) {
-  auto database = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::purgeFeedArticles(database, feeds);
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::purgeFeedArticles(db, feeds);
+  });
 
   QMultiHash<ServiceRoot*, Feed*> feeds_per_root;
 

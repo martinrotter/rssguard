@@ -291,7 +291,6 @@ bool FeedsProxyModel::dropMimeData(const QMimeData* data,
       }
 
       if (order_change) {
-        auto db = qApp->database()->driver()->connection(metaObject()->className());
         RootItem* place_above_item = m_sourceModel->itemForIndex(mapToSource(index(row, 0, parent)));
         int target_sort_order = place_above_item->sortOrder();
 
@@ -304,7 +303,9 @@ bool FeedsProxyModel::dropMimeData(const QMimeData* data,
           target_sort_order--;
         }
 
-        DatabaseQueries::moveItem(dragged_item, false, false, target_sort_order, db);
+        qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+          DatabaseQueries::moveItem(dragged_item, false, false, target_sort_order, db);
+        });
       }
 
       invalidate();
