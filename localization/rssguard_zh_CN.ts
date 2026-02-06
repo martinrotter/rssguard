@@ -1785,23 +1785,23 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formcopyarticledata.ui" line="30"/>
       <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formcopyarticledata.h" line="73"/>
       <source>Article data copy pattern</source>
-      <translation type="unfinished">Article data copy pattern</translation>
+      <translation>文章数据复制模式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formcopyarticledata.ui" line="40"/>
       <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formcopyarticledata.h" line="74"/>
       <source>Escape values for CSV usage</source>
-      <translation type="unfinished">Escape values for CSV usage</translation>
+      <translation>将数据转义用于 CSV</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formcopyarticledata.cpp" line="15"/>
       <source>Copy article data</source>
-      <translation type="unfinished">Copy article data</translation>
+      <translation>复制文章数据</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formcopyarticledata.cpp" line="29"/>
       <source>These placeholders are replaced by real article data of selected articles. Each article is placed on its own line.</source>
-      <translation type="unfinished">These placeholders are replaced by real article data of selected articles. Each article is placed on its own line.</translation>
+      <translation>这些占位符被选定文章的真实文章数据所替代。每篇文章都放置在自己的一行上。</translation>
     </message>
   </context>
   <context>
@@ -2645,7 +2645,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="829"/>
       <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>&amp;Copy data to clipboard</source>
-      <translation type="unfinished">&amp;Copy data to clipboard</translation>
+      <translation>复制数据到剪贴板(&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
@@ -5338,7 +5338,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="547"/>
       <source>Custom data</source>
-      <translation type="unfinished">Custom data</translation>
+      <translation>自定义数据</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="548"/>
@@ -5423,7 +5423,7 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="555"/>
       <source>Custom account-specific data of the article.</source>
-      <translation type="unfinished">Custom account-specific data of the article.</translation>
+      <translation>自定义文章的账户特定数据。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="556"/>
@@ -6812,7 +6812,7 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="350"/>
       <source>Invalid Reddit response</source>
-      <translation type="unfinished">Invalid Reddit response</translation>
+      <translation>无效的 Reddit 响应</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="530"/>
@@ -9176,17 +9176,17 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.ui" line="35"/>
       <source>Fetch &amp;comments</source>
-      <translation type="unfinished">Fetch &amp;comments</translation>
+      <translation>获取评论(&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.cpp" line="84"/>
       <source>Fetching comments</source>
-      <translation type="unfinished">Fetching comments</translation>
+      <translation>正在获取评论</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.cpp" line="94"/>
       <source>Fetching comments for &apos;%1&apos;...</source>
-      <translation type="unfinished">Fetching comments for &apos;%1&apos;...</translation>
+      <translation>正在获取 &apos;%1&apos; 的评论；……</translation>
     </message>
   </context>
   <context>
@@ -9320,7 +9320,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="43"/>
       <source>Unread news: %1</source>
-      <translation type="unfinished">Unread news: %1</translation>
+      <translation>未读新闻: %1</translation>
     </message>
   </context>
   <context>
