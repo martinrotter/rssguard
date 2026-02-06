@@ -7,8 +7,9 @@
 
 DatabaseWorker::DatabaseWorker() : QObject() {
   moveToThread(&m_writeThread);
-  connect(this, &DatabaseWorker::executeWrite, this, &DatabaseWorker::onExecuteWrite, Qt::BlockingQueuedConnection);
   m_writeThread.start();
+
+  connect(this, &DatabaseWorker::executeWrite, this, &DatabaseWorker::onExecuteWrite, Qt::BlockingQueuedConnection);
   m_readThreadPool.setMaxThreadCount(8);
   m_readThreadPool.setExpiryTimeout(-1);
 }
