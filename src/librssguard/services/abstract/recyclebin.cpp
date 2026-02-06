@@ -29,9 +29,8 @@ int RecycleBin::countOfAllMessages() const {
 }
 
 void RecycleBin::updateCounts() {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   auto ac = qApp->database()->worker()->read<ArticleCounts>([&](const QSqlDatabase& db) {
-    return DatabaseQueries::getMessageCountsForBin(database, account()->accountId());
+    return DatabaseQueries::getMessageCountsForBin(db, account()->accountId());
   });
 
   m_unreadCount = ac.m_unread;

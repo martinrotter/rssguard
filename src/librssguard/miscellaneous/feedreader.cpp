@@ -231,9 +231,7 @@ void FeedReader::loadSavedMessageFilters() {
 
 MessageFilter* FeedReader::addMessageFilter(const QString& title, const QString& script) {
   auto* fltr = qApp->database()->worker()->read<MessageFilter*>([&](const QSqlDatabase& db) {
-    return DatabaseQueries::addMessageFilter(qApp->database()->driver()->connection(metaObject()->className()),
-                                             title,
-                                             script);
+    return DatabaseQueries::addMessageFilter(db, title, script);
   });
 
   m_messageFilters.append(fltr);

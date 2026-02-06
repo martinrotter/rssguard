@@ -37,9 +37,10 @@ ServiceRoot::ServiceRoot(RootItem* parent)
 ServiceRoot::~ServiceRoot() {}
 
 void ServiceRoot::deleteItem() {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::deleteAccount(db, this);
+  });
 
-  DatabaseQueries::deleteAccount(database, this);
   stop();
   requestItemRemoval(this, false);
 }
@@ -72,10 +73,10 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
     Label* lbl = labels.first();
 
     if (form.execForEdit(lbl)) {
-      QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
-
       try {
-        DatabaseQueries::updateLabel(db, lbl);
+        qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+          DatabaseQueries::updateLabel(db, lbl);
+        });
         itemChanged({lbl});
       }
       catch (const ApplicationException& ex) {
@@ -100,10 +101,10 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
     Search* probe = probes.first();
 
     if (form.execForEdit(probe)) {
-      QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
-
       try {
-        DatabaseQueries::updateProbe(db, probe);
+        qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+          DatabaseQueries::updateProbe(db, probe);
+        });
         itemChanged({probe});
       }
       catch (const ApplicationException& ex) {
@@ -130,9 +131,11 @@ void ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
   auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-  DatabaseQueries::markAccountReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
-                                         service->accountId(),
-                                         status);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markAccountReadUnread(db, service->accountId(), status);
+  });
+
   service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read
@@ -276,8 +279,9 @@ void ServiceRoot::updateCounts() {
     return;
   }
 
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-  auto counts = DatabaseQueries::getMessageCountsForFeeds(database, textualFeedIds(feeds));
+  auto counts = qApp->database()->worker()->read<QMap<int, ArticleCounts>>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getMessageCountsForFeeds(db, textualFeedIds(feeds));
+  });
 
   for (Feed* feed : feeds) {
     if (counts.contains(feed->id())) {
@@ -298,16 +302,14 @@ bool ServiceRoot::canBeDeleted() const {
 void ServiceRoot::completelyRemoveAllData() {
   // Purge old data from SQL and clean all model items.
   cleanAllItemsFromModel(true);
-  removeOldAccountFromDatabase(true, true);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::deleteAccountData(db, accountId(), true, true);
+  });
+
   updateCounts();
   itemChanged({this});
   informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
-}
-
-void ServiceRoot::removeOldAccountFromDatabase(bool delete_messages_too, bool delete_labels_too) {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::deleteAccountData(database, accountId(), delete_messages_too, delete_labels_too);
 }
 
 void ServiceRoot::cleanAllItemsFromModel(bool clean_labels_too) {
@@ -356,9 +358,11 @@ void ServiceRoot::cleanFeeds(const QList<Feed*>& items, bool clean_read_only) {
   ServiceRoot* service = account();
 
   service->onBeforeMessagesDelete(this, {});
-  DatabaseQueries::cleanFeeds(qApp->database()->driver()->connection(metaObject()->className()),
-                              textualFeedIds(items),
-                              clean_read_only);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::cleanFeeds(db, textualFeedIds(items), clean_read_only);
+  });
+
   service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
@@ -387,10 +391,10 @@ QString ServiceRoot::additionalTooltip() const {
 }
 
 void ServiceRoot::saveAccountDataToDatabase() {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
   try {
-    DatabaseQueries::createOverwriteAccount(database, this);
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createOverwriteAccount(db, this);
+    });
   }
   catch (const ApplicationException& ex) {
     qFatal("Account was not saved into database: '%s'.", qPrintable(ex.message()));
@@ -680,40 +684,41 @@ void ServiceRoot::syncIn() {
     // Remove stuff.
     cleanAllItemsFromModel(uses_remote_labels);
 
-    // NOTE: We need these primary IDs because - all feed/article/label foreign keys
-    // are realised via physical database ID (not custom ID, this is due to performance).
-    // We need to re-use all existing IDs to retain proper foreign key relations to articles and labels.
-    // So we need to make sure that temporarily vacant ID is not taken by newly created feed or label.
-    QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
-    int next_primary_id_feeds = DatabaseQueries::highestPrimaryIdFeeds(db) + 1;
-    int next_primary_id_labels = DatabaseQueries::highestPrimaryIdLabels(db) + 1;
-
-    qApp->database()->driver()->setForeignKeyChecksDisabled(db);
-
-    removeOldAccountFromDatabase(false, uses_remote_labels);
-
-    // Re-sort items to accomodate current sort order.
-    resortAccountTree(new_tree, categories_custom_data, feed_custom_data);
-
-    // Restore some local settings to feeds etc.
-    restoreCustomCategoriesData(categories_custom_data, new_tree->getHashedSubTreeCategories());
-    restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
-    restoreCustomLabelsData(label_custom_data,
-                            dynamic_cast<LabelsNode*>(new_tree->getItemFromSubTree([](const RootItem* it) {
-                              return it->kind() == RootItem::Kind::Labels;
-                            })));
-
-    // Model is clean, now store new tree into DB and
-    // set primary IDs of the items.
-    DatabaseQueries::storeAccountTree(db, new_tree, next_primary_id_feeds, next_primary_id_labels, accountId());
-
     // We have new feed, some feeds were maybe removed,
     // so remove leftover messages and filter assignments.
-    DatabaseQueries::purgeLeftoverMessages(db, accountId());
-    DatabaseQueries::purgeLeftoverMessageFilterAssignments(db);
-    DatabaseQueries::purgeLeftoverLabelAssignments(db);
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      // NOTE: We need these primary IDs because - all feed/article/label foreign keys
+      // are realised via physical database ID (not custom ID, this is due to performance).
+      // We need to re-use all existing IDs to retain proper foreign key relations to articles and labels.
+      // So we need to make sure that temporarily vacant ID is not taken by newly created feed or label.
+      int next_primary_id_feeds = DatabaseQueries::highestPrimaryIdFeeds(db) + 1;
+      int next_primary_id_labels = DatabaseQueries::highestPrimaryIdLabels(db) + 1;
 
-    qApp->database()->driver()->setForeignKeyChecksEnabled(db);
+      qApp->database()->driver()->setForeignKeyChecksDisabled(db);
+
+      DatabaseQueries::deleteAccountData(db, accountId(), false, uses_remote_labels);
+
+      // Re-sort items to accomodate current sort order.
+      resortAccountTree(new_tree, categories_custom_data, feed_custom_data);
+
+      // Restore some local settings to feeds etc.
+      restoreCustomCategoriesData(categories_custom_data, new_tree->getHashedSubTreeCategories());
+      restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
+      restoreCustomLabelsData(label_custom_data,
+                              dynamic_cast<LabelsNode*>(new_tree->getItemFromSubTree([](const RootItem* it) {
+                                return it->kind() == RootItem::Kind::Labels;
+                              })));
+
+      // Model is clean, now store new tree into DB and
+      // set primary IDs of the items.
+      DatabaseQueries::storeAccountTree(db, new_tree, next_primary_id_feeds, next_primary_id_labels, accountId());
+
+      DatabaseQueries::purgeLeftoverMessages(db, accountId());
+      DatabaseQueries::purgeLeftoverMessageFilterAssignments(db);
+      DatabaseQueries::purgeLeftoverLabelAssignments(db);
+
+      qApp->database()->driver()->setForeignKeyChecksEnabled(db);
+    });
 
     auto chi = new_tree->childItems();
 
@@ -783,9 +788,9 @@ QStringList ServiceRoot::customIDsOfMessagesForItem(RootItem* item, ReadStatus t
 
     switch (item->kind()) {
       case RootItem::Kind::Labels: {
-        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-        list = DatabaseQueries::customIdsOfMessagesFromLabels(database, target_read, accountId());
+        list = qApp->database()->worker()->read<QStringList>([&](const QSqlDatabase& db) {
+          return DatabaseQueries::customIdsOfMessagesFromLabels(db, target_read, accountId());
+        });
         break;
       }
 
@@ -800,59 +805,61 @@ QStringList ServiceRoot::customIDsOfMessagesForItem(RootItem* item, ReadStatus t
       }
 
       case RootItem::Kind::Label: {
-        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-        list = DatabaseQueries::customIdsOfMessagesFromLabel(database, item->toLabel(), target_read);
+        list = qApp->database()->worker()->read<QStringList>([&](const QSqlDatabase& db) {
+          return DatabaseQueries::customIdsOfMessagesFromLabel(db, item->toLabel(), target_read);
+        });
         break;
       }
 
       case RootItem::Kind::Probe: {
-        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-        list = DatabaseQueries::customIdsOfMessagesFromProbe(database, item->toProbe(), target_read);
+        list = qApp->database()->worker()->read<QStringList>([&](const QSqlDatabase& db) {
+          return DatabaseQueries::customIdsOfMessagesFromProbe(db, item->toProbe(), target_read);
+        });
         break;
       }
 
       case RootItem::Kind::ServiceRoot: {
-        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-        list = DatabaseQueries::customIdsOfMessagesFromAccount(database, target_read, accountId());
+        list = qApp->database()->worker()->read<QStringList>([&](const QSqlDatabase& db) {
+          return DatabaseQueries::customIdsOfMessagesFromAccount(db, target_read, accountId());
+        });
         break;
       }
 
       case RootItem::Kind::Bin: {
-        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-        list = DatabaseQueries::customIdsOfMessagesFromBin(database, target_read, accountId());
+        list = qApp->database()->worker()->read<QStringList>([&](const QSqlDatabase& db) {
+          return DatabaseQueries::customIdsOfMessagesFromBin(db, target_read, accountId());
+        });
         break;
       }
 
       case RootItem::Kind::Category: {
-        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
+        list = qApp->database()->worker()->read<QStringList>([&](const QSqlDatabase& db) {
+          return DatabaseQueries::customIdsOfMessagesFromFeeds(db,
+                                                               textualFeedIds(item->getSubTreeFeeds()),
+                                                               target_read);
+        });
 
-        list =
-          DatabaseQueries::customIdsOfMessagesFromFeeds(database, textualFeedIds(item->getSubTreeFeeds()), target_read);
         break;
       }
 
       case RootItem::Kind::Feed: {
-        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-        list = DatabaseQueries::customIdsOfMessagesFromFeeds(database, {QString::number(item->id())}, target_read);
+        list = qApp->database()->worker()->read<QStringList>([&](const QSqlDatabase& db) {
+          return DatabaseQueries::customIdsOfMessagesFromFeeds(db, {QString::number(item->id())}, target_read);
+        });
         break;
       }
 
       case RootItem::Kind::Important: {
-        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-        list = DatabaseQueries::customIdsOfImportantMessages(database, target_read, accountId());
+        list = qApp->database()->worker()->read<QStringList>([&](const QSqlDatabase& db) {
+          return DatabaseQueries::customIdsOfImportantMessages(db, target_read, accountId());
+        });
         break;
       }
 
       case RootItem::Kind::Unread: {
-        QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-        list = DatabaseQueries::customIdsOfUnreadMessages(database, accountId());
+        list = qApp->database()->worker()->read<QStringList>([&](const QSqlDatabase& db) {
+          return DatabaseQueries::customIdsOfUnreadMessages(db, accountId());
+        });
         break;
       }
 
@@ -1248,18 +1255,16 @@ UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
                                             bool recalculate_counts,
                                             QMutex* db_mutex) {
   UpdatedArticles updated_messages;
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-
   if (!messages.isEmpty()) {
     qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
 
-    updated_messages = DatabaseQueries::updateMessages(database, messages, feed, force_update, false, db_mutex);
+    updated_messages = DatabaseQueries::updateMessages(messages, feed, force_update, false, db_mutex);
   }
   else {
     qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());
   }
 
-  bool anything_removed = feed->removeUnwantedArticles(database);
+  bool anything_removed = feed->removeUnwantedArticles();
 
   if (recalculate_counts &&
       (anything_removed || !updated_messages.m_unread.isEmpty() || !updated_messages.m_all.isEmpty())) {

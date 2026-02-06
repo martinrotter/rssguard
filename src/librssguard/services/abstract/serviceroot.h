@@ -240,7 +240,6 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
 
     // Removes all messages/categories/feeds which are
     // associated with this account.
-    void removeOldAccountFromDatabase(bool delete_messages_too, bool delete_labels_too);
     void cleanAllItemsFromModel(bool clean_labels_too);
     void appendCommonNodes();
 
