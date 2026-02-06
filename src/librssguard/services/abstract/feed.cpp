@@ -202,7 +202,7 @@ void Feed::setRtlBehavior(RtlBehavior rtl) {
   m_rtlBehavior = rtl;
 }
 
-bool Feed::removeUnwantedArticles(QSqlDatabase& db) {
+bool Feed::removeUnwantedArticles() {
   Feed::ArticleIgnoreLimit feed_setup = articleIgnoreLimit();
   Feed::ArticleIgnoreLimit app_setup = Feed::ArticleIgnoreLimit::fromSettings();
 
