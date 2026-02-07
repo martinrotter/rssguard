@@ -24,6 +24,7 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/notificationfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/thread.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/serviceroot.h"
@@ -216,6 +217,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   qDebugNN << LOGSEC_CORE << "OpenSSL supported:" << QUOTE_W_SPACE_DOT(QSslSocket::supportsSsl());
   qDebugNN << LOGSEC_CORE << "Global thread pool has"
            << NONQUOTE_W_SPACE(QThreadPool::globalInstance()->maxThreadCount()) << "threads.";
+  qDebugNN << LOGSEC_CORE << "Main thread ID:" << QUOTE_W_SPACE_DOT(getThreadID());
 }
 
 Application::~Application() {

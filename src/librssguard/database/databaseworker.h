@@ -4,6 +4,7 @@
 #define DBWORKER_H
 
 #include "definitions/definitions.h"
+#include "miscellaneous/thread.h"
 
 #include <functional>
 
@@ -32,12 +33,6 @@ class RSSGUARD_DLLSPEC DatabaseWorker : public QObject {
     T write(const std::function<T(const QSqlDatabase&)>& func);
     void write(const DbWriteFn& func);
 
-  signals:
-    void executeWrite(const DbWriteFn& func);
-
-  private slots:
-    void onExecuteWrite(const DbWriteFn& func);
-
   private:
     QSqlDatabase connectionForReading() const;
     QSqlDatabase connectionForWriting() const;
@@ -50,18 +45,18 @@ class RSSGUARD_DLLSPEC DatabaseWorker : public QObject {
 
 template <typename T>
 inline T DatabaseWorker::write(const std::function<T(const QSqlDatabase&)>& func) {
-  if (!m_dbWriter.isValid()) {
-    qDebugNN << LOGSEC_DB << "DB write setup job in thread" << NONQUOTE_W_SPACE_DOT(QThread::currentThreadId());
-    m_dbWriter = connectionForWriting();
-  }
-
-  qDebugNN << LOGSEC_DB << "DB write job in thread" << NONQUOTE_W_SPACE_DOT(QThread::currentThreadId());
-
   T res;
 
   QMetaObject::invokeMethod(
     this,
     [&]() {
+      if (!m_dbWriter.isValid()) {
+        qDebugNN << LOGSEC_DB << "DB write setup job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
+        m_dbWriter = connectionForWriting();
+      }
+
+      qDebugNN << LOGSEC_DB << "DB write job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
+
       res = func(m_dbWriter);
     },
     Qt::ConnectionType::BlockingQueuedConnection);
@@ -72,9 +67,10 @@ inline T DatabaseWorker::write(const std::function<T(const QSqlDatabase&)>& func
 template <typename T>
 inline T DatabaseWorker::read(const std::function<T(const QSqlDatabase&)>& func) {
   QFuture<T> future = QtConcurrent::run(&m_readThreadPool, [&]() -> T {
-    qDebugNN << LOGSEC_DB << "DB read job (with return) in thread" << NONQUOTE_W_SPACE_DOT(QThread::currentThreadId());
+    qDebugNN << LOGSEC_DB << "DB read job (with return) in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
 
     auto connection = connectionForReading();
+
     return func(connection);
   });
 
