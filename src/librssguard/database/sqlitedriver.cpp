@@ -62,7 +62,7 @@ QSqlDatabase SqliteDriver::connection(const QString& connection_name) {
       const QDir db_path(m_databaseFilePath);
       QFile db_file(db_path.absoluteFilePath(QSL(APP_DB_SQLITE_FILE)));
 
-      database.setConnectOptions(QSL("QSQLITE_ENABLE_SHARED_CACHE;QSQLITE_ENABLE_REGEXP"));
+      database.setConnectOptions(QSL("QSQLITE_ENABLE_REGEXP"));
       database.setDatabaseName(db_file.fileName());
     }
 
@@ -131,7 +131,7 @@ QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name) {
 
   QSqlDatabase database = QSqlDatabase::addDatabase(QSL(APP_DB_SQLITE_DRIVER), connection_name);
 
-  database.setConnectOptions(QSL("QSQLITE_ENABLE_SHARED_CACHE;QSQLITE_ENABLE_REGEXP"));
+  database.setConnectOptions(QSL("QSQLITE_ENABLE_REGEXP"));
   database.setDatabaseName(db_file_name);
 
   if (!database.open()) {
