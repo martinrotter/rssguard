@@ -1200,6 +1200,8 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
               updated_messages.m_all.append(*msg);
             }
           }
+
+          bulk_query.finish();
         }
       }
     });
@@ -1275,6 +1277,8 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
       qCriticalNN << LOGSEC_DB
                   << "Failed to set custom ID for all messages:" << QUOTE_W_SPACE_DOT(fixup_custom_ids_error.text());
     }
+
+    fixup_custom_ids_query.finish();
   });
 
   return updated_messages;

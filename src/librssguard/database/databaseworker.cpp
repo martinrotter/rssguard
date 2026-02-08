@@ -20,6 +20,8 @@ DatabaseWorker::~DatabaseWorker() {
 }
 
 void DatabaseWorker::read(const DbReadFn& func) {
+  QMutexLocker lck(&m_mutex);
+
   QFuture<void> future = QtConcurrent::run(&m_readThreadPool, [&]() {
     qDebugNN << LOGSEC_DB << "DB read job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
 
@@ -31,6 +33,8 @@ void DatabaseWorker::read(const DbReadFn& func) {
 }
 
 void DatabaseWorker::write(const DbWriteFn& func) {
+  QMutexLocker lck(&m_mutex);
+
   QMetaObject::invokeMethod(
     this,
     [&]() {
