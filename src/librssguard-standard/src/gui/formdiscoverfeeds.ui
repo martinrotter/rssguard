@@ -237,10 +237,6 @@
   </customwidget>
  </customwidgets>
  <tabstops>
-  <tabstop>m_btnDiscover</tabstop>
-  <tabstop>m_tvFeeds</tabstop>
-  <tabstop>m_btnAddIndividually</tabstop>
-  <tabstop>m_cmbParentCategory</tabstop>
  </tabstops>
  <resources/>
  <connections>

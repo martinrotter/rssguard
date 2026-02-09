@@ -38,9 +38,21 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
                new JsonParser({}),
                new SitemapParser({})};
 
-  m_btnGoAdvanced = m_ui.m_buttonBox->addButton(tr("Switch to &advanced mode"), QDialogButtonBox::ButtonRole::NoRole);
+  m_btnGoAdvanced = m_ui.m_buttonBox->addButton(tr("Switch to advanced &mode"), QDialogButtonBox::ButtonRole::NoRole);
   m_btnGoAdvanced
     ->setToolTip(tr("Close this dialog and display dialog for adding individual feeds with advanced options."));
+
+  setTabOrder({m_ui.m_txtUrl->lineEdit(),
+               m_ui.m_btnDiscover,
+               m_ui.m_cbDiscoverRecursive,
+               m_ui.m_cmbParentCategory,
+               m_ui.m_btnSelecAll,
+               m_ui.m_btnSelectNone,
+               m_ui.m_tvFeeds,
+               m_ui.m_btnAddIndividually,
+               m_ui.m_btnImportSelected,
+               m_btnGoAdvanced,
+               m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel)});
 
   m_ui.m_btnSelecAll->setIcon(qApp->icons()->fromTheme(QSL("dialog-yes"), QSL("edit-select-all")));
   m_ui.m_btnSelectNone->setIcon(qApp->icons()->fromTheme(QSL("dialog-no"), QSL("edit-select-none")));
