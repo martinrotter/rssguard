@@ -9,6 +9,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "network-web/downloader.h"
+#include "network-web/webfactory.h"
 
 #include <algorithm>
 
@@ -563,7 +564,7 @@ QRectF Selection::boundingRect() const {
 DocumentContainer::DocumentContainer()
   : m_placeholderImage(qApp->icons()->miscPixmap(QSL("image-placeholder"))),
     m_placeholderImageError(qApp->icons()->miscPixmap(QSL("image-placeholder-error"))), m_loadExternalResources(false),
-    m_downloader(new Downloader(this)) {
+    m_dataFileCacheFolder(qApp->web()->webCacheFolder()), m_downloader(new Downloader(this)) {
   m_timerForPendingExternalResources.setSingleShot(true);
   m_timerForPendingExternalResources.setInterval(100);
   connect(&m_timerForPendingExternalResources,
@@ -573,6 +574,19 @@ DocumentContainer::DocumentContainer()
 
   m_timerRerender.setSingleShot(true);
   m_timerRerender.setInterval(500);
+
+  if (!m_dataFileCacheFolder.isEmpty()) {
+    bool created_cache_folder = QDir().mkpath(m_dataFileCacheFolder);
+
+    if (created_cache_folder) {
+      qDebugNN << LOGSEC_HTMLVIEWER
+               << "Created or reused HTML viewer cache folder:" << QUOTE_W_SPACE_DOT(m_dataFileCacheFolder);
+    }
+    else {
+      qCriticalNN << LOGSEC_HTMLVIEWER
+                  << "Failed to create or reuse HTML viewer cache folder:" << QUOTE_W_SPACE_DOT(m_dataFileCacheFolder);
+    }
+  }
 
   connect(m_downloader, &Downloader::completed, this, &DocumentContainer::onResourceDownloadCompleted);
 }
@@ -861,17 +875,7 @@ void DocumentContainer::onResourceDownloadCompleted(const QUrl& url,
                                                     QNetworkReply::NetworkError status,
                                                     int http_code,
                                                     const QByteArray& contents) {
-  QPixmap px;
-  px.loadFromData(contents);
-
-  if (!px.isNull()) {
-    qDebugNN << LOGSEC_HTMLVIEWER << "Inserting image" << QUOTE_W_SPACE(url.toString()) << "to cache.";
-    m_dataCache.insert(url, px);
-  }
-  else {
-    m_dataCache.insert(url, m_placeholderImageError);
-  }
-
+  saveExternalResourceToFileCache(url, contents);
   m_pendingExternalResources.removeOne(url);
 
   if (status != QNetworkReply::NetworkError::NoError) {
@@ -887,9 +891,51 @@ void DocumentContainer::onResourceDownloadCompleted(const QUrl& url,
   }
 }
 
+void DocumentContainer::saveExternalResourceToFileCache(const QUrl& url, const QByteArray& data) {
+  if (!url.isValid()) {
+    return;
+  }
+
+  QString folder = m_dataFileCacheFolder + QDir::separator() + url.host() + QDir::separator();
+  QString filename = folder + generateExternalResourceCachedFilename(url);
+
+  QDir().mkdir(folder);
+
+  qDebugNN << LOGSEC_HTMLVIEWER << "Saving file for" << QUOTE_W_SPACE(url.toString()) << "to cache.";
+  IOFactory::writeFile(filename, data);
+}
+
+QByteArray DocumentContainer::getExternalResourceFromFileCache(const QUrl& url) const {
+  if (!url.isValid()) {
+    throw ApplicationException(tr("invalid URL cannot be used to load file from cache"));
+  }
+
+  QString folder = m_dataFileCacheFolder + QDir::separator() + url.host() + QDir::separator();
+  QString filename = folder + generateExternalResourceCachedFilename(url);
+
+  QDir().mkdir(folder);
+
+  return IOFactory::readFile(filename);
+}
+
+QString DocumentContainer::generateExternalResourceCachedFilename(const QUrl& url) const {
+  QByteArray hash = QCryptographicHash::hash(url.toString().toUtf8(), QCryptographicHash::Algorithm::Md5);
+  return hash.toHex();
+}
+
 QVariant DocumentContainer::handleExternalResource(DocumentContainer::RequestType type, const QUrl& url) {
   qDebugNN << LOGSEC_HTMLVIEWER << "Request for external resource" << QUOTE_W_SPACE(url.toString()) << "of type"
            << QUOTE_W_SPACE_DOT(int(type));
+
+  try {
+    QByteArray resource_from_file_cache = getExternalResourceFromFileCache(url);
+
+    qDebugNN << LOGSEC_HTMLVIEWER << "Loading file for" << QUOTE_W_SPACE(url.toString()) << "from cache.";
+    return resource_from_file_cache;
+  }
+  catch (const ApplicationException&) {
+    // NOTE: File is not in file cache. Just continue.
+  }
 
   if (!loadExternalResources()) {
     if (type == DocumentContainer::RequestType::ImageDisplay || type == DocumentContainer::RequestType::ImageDownload) {
@@ -900,11 +946,6 @@ QVariant DocumentContainer::handleExternalResource(DocumentContainer::RequestTyp
       // NOTE: Probably empty CSS.
       return QByteArray();
     }
-  }
-
-  if (m_dataCache.contains(url)) {
-    qDebugNN << LOGSEC_HTMLVIEWER << "Loading data" << QUOTE_W_SPACE(url.toString()) << "from cache.";
-    return m_dataCache.value(url);
   }
 
   if (type == DocumentContainer::RequestType::ImageDisplay) {
@@ -948,7 +989,7 @@ QVariant DocumentContainer::handleExternalResource(DocumentContainer::RequestTyp
   switch (type) {
     case DocumentContainer::RequestType::CssDownload:
     default:
-      m_dataCache.insert(url, data);
+      saveExternalResourceToFileCache(url, data);
       return data;
   }
 }
@@ -1845,8 +1886,23 @@ void DocumentContainer::setMasterCss(const QString& master_css) {
 
 QPixmap DocumentContainer::getPixmap(const QString& image_url, const QString& base_url) {
   const QUrl url = resolveUrl(image_url, base_url);
+  QVariant data = handleExternalResource(RequestType::ImageDisplay, url);
 
-  return handleExternalResource(RequestType::ImageDisplay, url).value<QPixmap>();
+  if (data.canConvert<QPixmap>()) {
+    return data.value<QPixmap>();
+  }
+  else {
+    QByteArray pixmap_data = data.toByteArray();
+    QPixmap px;
+
+    if (!px.loadFromData(pixmap_data)) {
+      // IOFactory::writeFile("test", pixmap_data);
+      qCriticalNN << LOGSEC_HTMLVIEWER << "Failed to decode image loaded from file cache for URL"
+                  << QUOTE_W_SPACE_DOT(url.toString());
+    }
+
+    return px;
+  }
 }
 
 QString DocumentContainer::serifFont() const {

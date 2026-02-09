@@ -137,12 +137,12 @@ class DocumentContainer : public QObject, litehtml::document_container {
     };
 
     enum class RequestType {
-      // Data handler has to return (placeholder or the actual) QPixmap (can be async).
+      // Data handler has to return (placeholder or the actual) image data (can be async).
       // So the image is either directly downloaded and returned or download
       // is started asynchronously and placeholder is returned in the meantime.
       ImageDownload,
 
-      // Data handler has to return QPixmap (only sync).
+      // Data handler has to return image data (only sync).
       // No downloading is performed and cached image is returned.
       ImageDisplay,
 
@@ -177,6 +177,7 @@ class DocumentContainer : public QObject, litehtml::document_container {
     Downloader* downloader() const;
 
     QVariant handleExternalResource(DocumentContainer::RequestType type, const QUrl& url);
+    QPixmap getPixmap(const QString& image_url, const QString& base_url);
 
     QUrl imgLinkAt(QPointF document_pos, QPointF viewport_pos) const;
     QUrl linkAt(QPointF document_pos, QPointF viewport_pos) const;
@@ -237,11 +238,13 @@ class DocumentContainer : public QObject, litehtml::document_container {
                                      const QByteArray& contents);
 
   private:
+    void saveExternalResourceToFileCache(const QUrl& url, const QByteArray& data);
+    QByteArray getExternalResourceFromFileCache(const QUrl& url) const;
+    QString generateExternalResourceCachedFilename(const QUrl& url) const;
+
     void drawRectWithLambda(litehtml::uint_ptr hdc,
                             const litehtml::background_layer& layer,
                             std::function<void(QPainter*)> lmbd);
-
-    QPixmap getPixmap(const QString& image_url, const QString& base_url);
 
     QString serifFont() const;
     QString sansSerifFont() const;
@@ -277,8 +280,8 @@ class DocumentContainer : public QObject, litehtml::document_container {
 
     QPixmap m_placeholderImage;
     QPixmap m_placeholderImageError;
-    QHash<QUrl, QVariant> m_dataCache;
     bool m_loadExternalResources;
+    QString m_dataFileCacheFolder;
 
     Downloader* m_downloader;
 

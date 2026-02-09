@@ -162,7 +162,7 @@ QByteArray IOFactory::readFile(const QString& file_path) {
   QFile input_file(file_path);
   QByteArray input_data;
 
-  if (input_file.open(QIODevice::Text | QIODevice::Unbuffered | QIODevice::ReadOnly)) {
+  if (input_file.open(QIODevice::OpenModeFlag::ReadOnly)) {
     input_data = input_file.readAll();
     input_file.close();
     return input_data;
@@ -184,7 +184,7 @@ void IOFactory::debugWriteFile(const QString& file_path, const QByteArray& data)
 void IOFactory::writeFile(const QString& file_path, const QByteArray& data) {
   QFile input_file(file_path);
 
-  if (input_file.open(QIODevice::WriteOnly)) {
+  if (input_file.open(QIODevice::OpenModeFlag::WriteOnly)) {
     input_file.write(data);
     input_file.close();
   }

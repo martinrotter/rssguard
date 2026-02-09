@@ -146,9 +146,7 @@ ContextMenuData QLiteHtmlArticleViewer::provideContextMenuData(QContextMenuEvent
   if (!img_anchor.isEmpty()) {
     c.m_imgLinkUrl = img_anchor;
 
-    auto img = documentContainer()
-                 ->handleExternalResource(DocumentContainer::RequestType::ImageDisplay, c.m_imgLinkUrl)
-                 .value<QPixmap>();
+    auto img = documentContainer()->getPixmap(c.m_imgLinkUrl.toString(), QString());
 
     if (!img.isNull()) {
       c.m_img = img;

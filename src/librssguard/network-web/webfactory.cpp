@@ -9,6 +9,7 @@
 #include "miscellaneous/settings.h"
 
 #include <QDesktopServices>
+#include <QDir>
 #include <QElapsedTimer>
 #include <QProcess>
 #include <QUrl>
@@ -99,6 +100,12 @@ QString WebFactory::stripTags(QString text) {
   static QRegularExpression reg_tags(QSL("<[^>]*>"));
 
   return text.remove(reg_tags);
+}
+
+QString WebFactory::webCacheFolder() const {
+  QString cache_folder = qApp->userDataFolder() + QDir::separator() + QSL("web") + QDir::separator() + QSL("cache");
+
+  return cache_folder;
 }
 
 QString WebFactory::unescapeHtml(const QString& html) {

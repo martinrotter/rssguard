@@ -20,6 +20,8 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     // Strips "<....>" (HTML, XML) tags from given text.
     QString stripTags(QString text);
 
+    QString webCacheFolder() const;
+
     // HTML entity unescaping. This method
     // converts both HTML entity names and numbers to UTF-8 string.
     static QString unescapeHtml(const QString& html);
