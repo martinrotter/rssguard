@@ -209,7 +209,7 @@
 // Keep this in sync with schema versions declared in SQL initialization code.
 #define APP_DB_SCHEMA_VERSION                "1"
 #define APP_DB_UPDATE_FILE_PATTERN           "db_update_%1_%2_%3.sql"
-#define APP_DB_COMMENT_SPLIT                 "-- !\n"
+#define APP_DB_COMMENT_SPLIT                 "-- !\r?\n"
 #define APP_DB_INCLUDE_PLACEHOLDER           "!!"
 #define APP_DB_NAME_PLACEHOLDER              "##"
 #define APP_DB_AUTO_INC_PRIM_KEY_PLACEHOLDER "$$"
