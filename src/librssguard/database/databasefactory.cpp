@@ -66,6 +66,10 @@ void DatabaseFactory::determineDriver() {
   }
 }
 
+DatabaseWorker* DatabaseFactory::worker() const {
+  return m_dbWorker.data();
+}
+
 DatabaseDriver* DatabaseFactory::driver() const {
   return m_dbDriver;
 }

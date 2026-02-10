@@ -41,13 +41,11 @@ class RSSGUARD_DLLSPEC DatabaseWorker : public QObject {
     QThreadPool m_readThreadPool;
     QThread m_writeThread;
     QSqlDatabase m_dbWriter;
-    QMutex m_mutex;
 };
 
 template <typename T>
 inline T DatabaseWorker::write(const std::function<T(const QSqlDatabase&)>& func) {
   T res;
-  QMutexLocker lck(&m_mutex);
 
   QMetaObject::invokeMethod(
     this,
@@ -68,8 +66,6 @@ inline T DatabaseWorker::write(const std::function<T(const QSqlDatabase&)>& func
 
 template <typename T>
 inline T DatabaseWorker::read(const std::function<T(const QSqlDatabase&)>& func) {
-  QMutexLocker lck(&m_mutex);
-
   QFuture<T> future = QtConcurrent::run(&m_readThreadPool, [&]() -> T {
     qDebugNN << LOGSEC_DB << "DB read job (with return) in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
 
