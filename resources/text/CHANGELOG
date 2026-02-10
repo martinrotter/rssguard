@@ -19,6 +19,7 @@ That said, many other features were added, including great enhancements for arti
 Added:
 * New built-in ability to fetch FULL articles for your feeds. It is switchable in feed details dialog and you can even set to fetch plain text only version of your full articles. The feature is also available as a function for your article filters so you can call this feature selectively depending on conditions etc. The functionality itself is coded in extra binary named `rssguard-article-scraper` which you can also use externally. This tools requires Go compiler for building. (#1783)
 * QuiteRSS import was added. Right-click any account item in feed list and you will see it. It imports categories, feeds, articles and labels. (#1707)
+* Redesigned application icon, thanks to RonnyTNL for the initial designs.
 * AppImages are back and better than before. They are available both in Qt 5 and Qt 6 versions. (#1808)
 * Added two brand new simplistic default skins.
 * Qt 5 version of RSS Guard on Windows uses custom-built Qt libraries with lower memory footprint and less dependencies.

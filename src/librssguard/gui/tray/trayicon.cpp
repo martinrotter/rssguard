@@ -45,15 +45,7 @@ void TrayIcon::setNumber(int number) {
     QPainter tray_painter;
 
     tray_painter.begin(&background);
-
-    if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool() &&
-        !qApp->settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool()) {
-      tray_painter.setPen(Qt::GlobalColor::white);
-    }
-    else {
-      tray_painter.setPen(Qt::GlobalColor::white);
-    }
-
+    tray_painter.setPen(Qt::GlobalColor::white);
     tray_painter.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
     tray_painter.setRenderHint(QPainter::RenderHint::TextAntialiasing, false);
 
@@ -63,23 +55,27 @@ void TrayIcon::setNumber(int number) {
 
     if (number > 99999) {
       num_txt = QChar(8734);
-      m_font.setPixelSize(background.width() * 0.78);
     }
     else if (number > 999) {
       num_txt = QSL("%1k").arg(int(number / 1000));
-      m_font.setPixelSize(background.width() * 0.43);
-    }
-    else if (number > 99) {
-      num_txt = QString::number(number);
-      m_font.setPixelSize(background.width() * 0.43);
-    }
-    else if (number > 9) {
-      num_txt = QString::number(number);
-      m_font.setPixelSize(background.width() * 0.56);
     }
     else {
       num_txt = QString::number(number);
-      m_font.setPixelSize(background.width() * 0.78);
+    }
+
+    switch (num_txt.size()) {
+      case 3:
+        m_font.setPixelSize(background.width() * 0.48);
+        break;
+
+      case 2:
+        m_font.setPixelSize(background.width() * 0.65);
+        break;
+
+      case 1:
+      default:
+        m_font.setPixelSize(background.width() * 0.8);
+        break;
     }
 
     tray_painter.setFont(m_font);

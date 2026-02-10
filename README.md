@@ -51,7 +51,6 @@ Every contribution helps make RSS Guard better for everyone.
 ## 🙏 Acknowledgments
 
 **Contributed graphics:**  
-* RSS Guard logo — [Siddharth Yadav](mailto:illustrationdesignsid@gmail.com), [@Siddharth_yd](https://www.instagram.com/siddharth_yd/)  
 * Flag icons — [IconDrawer](http://www.icondrawer.com)
 
 ---
