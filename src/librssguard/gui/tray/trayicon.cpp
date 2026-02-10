@@ -51,11 +51,11 @@ void TrayIcon::setNumber(int number) {
       tray_painter.setPen(Qt::GlobalColor::white);
     }
     else {
-      tray_painter.setPen(Qt::GlobalColor::black);
+      tray_painter.setPen(Qt::GlobalColor::white);
     }
 
     tray_painter.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
-    tray_painter.setRenderHint(QPainter::RenderHint::TextAntialiasing, true);
+    tray_painter.setRenderHint(QPainter::RenderHint::TextAntialiasing, false);
 
     // Numbers with more than 5 digits won't be readable, display
     // infinity symbol in that case.
