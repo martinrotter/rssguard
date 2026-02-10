@@ -575,17 +575,15 @@ DocumentContainer::DocumentContainer()
   m_timerRerender.setSingleShot(true);
   m_timerRerender.setInterval(500);
 
-  if (!m_dataFileCacheFolder.isEmpty()) {
-    bool created_cache_folder = QDir().mkpath(m_dataFileCacheFolder);
+  bool created_cache_folder = QDir().mkpath(m_dataFileCacheFolder);
 
-    if (created_cache_folder) {
-      qDebugNN << LOGSEC_HTMLVIEWER
-               << "Created or reused HTML viewer cache folder:" << QUOTE_W_SPACE_DOT(m_dataFileCacheFolder);
-    }
-    else {
-      qCriticalNN << LOGSEC_HTMLVIEWER
-                  << "Failed to create or reuse HTML viewer cache folder:" << QUOTE_W_SPACE_DOT(m_dataFileCacheFolder);
-    }
+  if (created_cache_folder) {
+    qDebugNN << LOGSEC_HTMLVIEWER
+             << "Created or reused HTML viewer cache folder:" << QUOTE_W_SPACE_DOT(m_dataFileCacheFolder);
+  }
+  else {
+    qCriticalNN << LOGSEC_HTMLVIEWER
+                << "Failed to create or reuse HTML viewer cache folder:" << QUOTE_W_SPACE_DOT(m_dataFileCacheFolder);
   }
 
   connect(m_downloader, &Downloader::completed, this, &DocumentContainer::onResourceDownloadCompleted);

@@ -42,17 +42,16 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
   m_btnGoAdvanced
     ->setToolTip(tr("Close this dialog and display dialog for adding individual feeds with advanced options."));
 
-  setTabOrder({m_ui.m_txtUrl->lineEdit(),
-               m_ui.m_btnDiscover,
-               m_ui.m_cbDiscoverRecursive,
-               m_ui.m_cmbParentCategory,
-               m_ui.m_btnSelecAll,
-               m_ui.m_btnSelectNone,
-               m_ui.m_tvFeeds,
-               m_ui.m_btnAddIndividually,
-               m_ui.m_btnImportSelected,
-               m_btnGoAdvanced,
-               m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel)});
+  setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_btnDiscover);
+  setTabOrder(m_ui.m_btnDiscover, m_ui.m_cbDiscoverRecursive);
+  setTabOrder(m_ui.m_cbDiscoverRecursive, m_ui.m_cmbParentCategory);
+  setTabOrder(m_ui.m_cmbParentCategory, m_ui.m_btnSelecAll);
+  setTabOrder(m_ui.m_btnSelecAll, m_ui.m_btnSelectNone);
+  setTabOrder(m_ui.m_btnSelectNone, m_ui.m_tvFeeds);
+  setTabOrder(m_ui.m_tvFeeds, m_ui.m_btnAddIndividually);
+  setTabOrder(m_ui.m_btnAddIndividually, m_ui.m_btnImportSelected);
+  setTabOrder(m_ui.m_btnImportSelected, m_btnGoAdvanced);
+  setTabOrder(m_btnGoAdvanced, m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Cancel));
 
   m_ui.m_btnSelecAll->setIcon(qApp->icons()->fromTheme(QSL("dialog-yes"), QSL("edit-select-all")));
   m_ui.m_btnSelectNone->setIcon(qApp->icons()->fromTheme(QSL("dialog-no"), QSL("edit-select-none")));
