@@ -1,4 +1,4 @@
-# RSS Guard
+# <img width="22px" src="https://github.com/martinrotter/rssguard/blob/master/resources/graphics/rssguard.png?raw=true" /> RSS Guard
 
 [![Total downloads](https://img.shields.io/github/downloads/martinrotter/rssguard/total.svg?maxAge=360)](https://somsubhra.github.io/github-release-stats/?username=martinrotter&repository=rssguard&search=0)
 [![Version](https://img.shields.io/github/release/martinrotter/rssguard.svg?maxAge=360)](https://raw.githubusercontent.com/martinrotter/rssguard/master/resources/text/CHANGELOG)
@@ -57,4 +57,5 @@ Every contribution helps make RSS Guard better for everyone.
 ---
 
 © 2011–2025 Martin Rotter. RSS Guard is open-source software licensed under the [GNU GPLv3](LICENSE.md).
+
 
