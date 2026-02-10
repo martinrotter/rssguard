@@ -53,11 +53,8 @@ void TrayIcon::setNumber(int number) {
     // infinity symbol in that case.
     QString num_txt;
 
-    if (number > 99999) {
+    if (number >= 100) {
       num_txt = QChar(8734);
-    }
-    else if (number > 999) {
-      num_txt = QSL("%1k").arg(int(number / 1000));
     }
     else {
       num_txt = QString::number(number);
