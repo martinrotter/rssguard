@@ -1,6 +1,7 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
 #include "gui/tray/qttrayicon.h"
+
 #include <chrono>
 
 using namespace std::chrono_literals;
@@ -36,7 +37,7 @@ TrayIcon::MessageSeverity QtTrayIcon::convertIcon(QSystemTrayIcon::MessageIcon i
       return TrayIcon::MessageSeverity::Critical;
   }
 
-  // Fallback (should never happen unless Qt adds new enum values)
+  // Fallback (should never happen unless Qt adds new enum values).
   return TrayIcon::MessageSeverity::Information;
 }
 
