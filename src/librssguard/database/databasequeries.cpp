@@ -809,8 +809,7 @@ struct UpdateMessageInfo {
 UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,
-                                                bool force_insert,
-                                                QMutex* db_mutex) {
+                                                bool force_insert) {
   if (messages.isEmpty()) {
     return {};
   }

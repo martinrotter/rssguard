@@ -1252,13 +1252,12 @@ ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRo
 UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
                                             Feed* feed,
                                             bool force_update,
-                                            bool recalculate_counts,
-                                            QMutex* db_mutex) {
+                                            bool recalculate_counts) {
   UpdatedArticles updated_messages;
   if (!messages.isEmpty()) {
     qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
 
-    updated_messages = DatabaseQueries::updateMessages(messages, feed, force_update, false, db_mutex);
+    updated_messages = DatabaseQueries::updateMessages(messages, feed, force_update, false);
   }
   else {
     qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());
@@ -1268,8 +1267,6 @@ UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
 
   if (recalculate_counts &&
       (anything_removed || !updated_messages.m_unread.isEmpty() || !updated_messages.m_all.isEmpty())) {
-    QMutexLocker lck(db_mutex);
-
     // Something was added or updated in the DB, update numbers.
     feed->updateCounts();
 

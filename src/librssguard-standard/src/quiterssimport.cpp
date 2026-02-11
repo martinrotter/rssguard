@@ -114,7 +114,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
   }
 
   try {
-    DatabaseQueries::updateMessages(msgs, feed, false, true, &m_dbMutex);
+    DatabaseQueries::updateMessages(msgs, feed, false, true);
   }
   catch (const ApplicationException& ex) {
     qWarningNN << LOGSEC_STANDARD << "Article import from quiterss failed:" << QUOTE_W_SPACE_DOT(ex.message());

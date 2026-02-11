@@ -5,7 +5,6 @@
 
 #include <librssguard/core/message.h>
 
-#include <QMutex>
 #include <QObject>
 #include <QSqlDatabase>
 
@@ -38,7 +37,6 @@ class QuiteRssImport : public QObject {
   private:
     StandardServiceRoot* m_account;
     QString m_dbFile;
-    QMutex m_dbMutex;
 };
 
 #endif // QUITERSSIMPORT_H

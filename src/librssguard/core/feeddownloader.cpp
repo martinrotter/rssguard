@@ -393,7 +393,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     }
 
     tmr.restart();
-    auto updated_messages = acc->updateMessages(msgs, feed, false, update_feed_list, nullptr);
+    auto updated_messages = acc->updateMessages(msgs, feed, false, update_feed_list);
 
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Updating messages in DB took" << NONQUOTE_W_SPACE(tmr.nsecsElapsed() / 1000)
              << "microseconds.";
