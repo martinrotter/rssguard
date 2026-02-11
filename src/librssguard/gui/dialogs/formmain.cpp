@@ -69,6 +69,10 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   main_menu->addMenu(m_ui->m_menuTools);
   main_menu->addMenu(m_ui->m_menuHelp);
 
+#if defined(NO_UPDATE_CHECK)
+  m_ui->m_actionCheckForUpdates->setVisible(false);
+#endif
+
   QToolButton* btn_main_menu = new QToolButton(this);
 
   btn_main_menu->setToolTip(tr("Open main menu"));
