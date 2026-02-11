@@ -110,7 +110,7 @@ void QtTrayIcon::hide() {
 
 QSystemTrayIcon* QtTrayIcon::trayIcon() {
   if (m_trayIcon == nullptr) {
-    m_trayIcon = new QSystemTrayIcon(this);
+    m_trayIcon = new QSystemTrayIcon(m_normalIcon, this);
 
     connect(m_trayIcon, &QSystemTrayIcon::activated, this, [this](QSystemTrayIcon::ActivationReason reason) {
       if (m_tmrDoubleFire.isActive()) {
