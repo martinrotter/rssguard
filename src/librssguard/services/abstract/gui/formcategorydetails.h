@@ -46,12 +46,9 @@ class RSSGUARD_DLLSPEC FormCategoryDetails : public QDialog {
     virtual void apply();
 
   private slots:
-
-    // Trigerred when title/description changes.
     void onTitleChanged(const QString& new_title);
     void onDescriptionChanged(const QString& new_description);
 
-    // Icon selectors.
     void onLoadIconFromFile();
     void onUseDefaultIcon();
 

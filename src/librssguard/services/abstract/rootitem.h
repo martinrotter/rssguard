@@ -139,6 +139,8 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     QList<RootItem*> getSubTree(RootItem::Kind kind_of_item) const;
     QList<Category*> getSubTreeCategories() const;
 
+    QList<QIcon> getSubTreeIcons() const;
+
     RootItem* getItemFromSubTree(std::function<bool(const RootItem*)> tester) const;
 
     // Returns list of categories complemented by their own integer primary ID.

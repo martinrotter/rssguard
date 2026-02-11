@@ -261,6 +261,17 @@ QList<Category*> RootItem::getSubTreeCategories() const {
   });
 }
 
+QList<QIcon> RootItem::getSubTreeIcons() const {
+  return qlinq::from(getSubTree<RootItem>())
+    .select([](const auto* c) {
+      return c->fullIcon();
+    })
+    .distinctBy([](const auto& i) {
+      return IconFactory::iconGuid(i);
+    })
+    .toList();
+}
+
 RootItem* RootItem::getItemFromSubTree(std::function<bool(const RootItem*)> tester) const {
   QList<RootItem*> children;
   QList<RootItem*> traversable_items;

@@ -90,6 +90,7 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   m_iconMenu->addAction(m_actionLoadIconFromFile);
   m_iconMenu->addAction(m_actionUseDefaultIcon);
   m_ui.m_btnIcon->setMenu(m_iconMenu);
+
   m_ui.m_txtSource->textEdit()->setFocus(Qt::FocusReason::TabFocusReason);
 
   // Set feed metadata fetch label.
@@ -384,6 +385,13 @@ void StandardFeedDetails::setNetworkDetails(StandardFeedNetworkDetails* network_
 void StandardFeedDetails::prepareForNewFeed(ServiceRoot* account, RootItem* parent_to_select, const QString& url) {
   m_account = account;
 
+  auto icons = account->getSubTreeIcons();
+  auto* icons_selection = IconFactory::iconSelectionMenu(m_iconMenu, icons, [this](const QIcon& icon) {
+    m_ui.m_btnIcon->setIcon(icon);
+  });
+
+  m_iconMenu->addAction(icons_selection);
+
   // Make sure that "default" icon is used as the default option for new
   // feed.
   m_actionUseDefaultIcon->trigger();
@@ -421,6 +429,13 @@ void StandardFeedDetails::prepareForNewFeed(ServiceRoot* account, RootItem* pare
 
 void StandardFeedDetails::setExistingFeed(ServiceRoot* account, StandardFeed* feed) {
   m_account = account;
+
+  auto icons = account->getSubTreeIcons();
+  auto* icons_selection = IconFactory::iconSelectionMenu(m_iconMenu, icons, [this](const QIcon& icon) {
+    m_ui.m_btnIcon->setIcon(icon);
+  });
+
+  m_iconMenu->addAction(icons_selection);
 
   m_ui.m_cmbSourceType->setCurrentIndex(m_ui.m_cmbSourceType->findData(QVariant::fromValue(feed->sourceType())));
   m_ui.m_cmbParentCategory->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue(feed->parent())));
