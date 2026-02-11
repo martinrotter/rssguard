@@ -79,9 +79,7 @@ void StandardServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
 }
 
 void StandardServiceRoot::start(bool freshly_activated) {
-  qApp->database()->worker()->read([&](const QSqlDatabase& db) {
-    DatabaseQueries::loadRootFromDatabase<StandardCategory, StandardFeed>(db, this);
-  });
+  DatabaseQueries::loadRootFromDatabase<StandardCategory, StandardFeed>(this);
 
   if (freshly_activated && getSubTreeFeeds().isEmpty()) {
     // In other words, if there are no feeds or categories added.

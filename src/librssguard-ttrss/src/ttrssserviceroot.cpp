@@ -38,11 +38,7 @@ ServiceRoot::LabelOperation TtRssServiceRoot::supportedLabelOperations() const {
 
 void TtRssServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    qApp->database()->worker()->read([&](const QSqlDatabase& db) {
-      DatabaseQueries::loadRootFromDatabase<Category, TtRssFeed>(db, this);
-    });
-
-    loadCacheFromFile();
+    DatabaseQueries::loadRootFromDatabase<Category, TtRssFeed>(this);
 
     auto lbls = labelsNode()->labels();
 

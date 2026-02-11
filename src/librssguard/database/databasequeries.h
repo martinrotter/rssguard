@@ -136,7 +136,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QList<ServiceRoot*> getAccounts(const QSqlDatabase& db, const QString& code);
 
     template <typename Categ, typename Fee>
-    static void loadRootFromDatabase(const QSqlDatabase& db, ServiceRoot* root);
+    static void loadRootFromDatabase(ServiceRoot* root);
     static void storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
@@ -370,13 +370,25 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
 }
 
 template <typename Categ, typename Fee>
-void DatabaseQueries::loadRootFromDatabase(const QSqlDatabase& db, ServiceRoot* root) {
-  Assignment categories = DatabaseQueries::getCategories<Categ>(db, root->accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<Fee>(db, qApp->feedReader()->messageFilters(), root->accountId());
-  auto labels = DatabaseQueries::getLabelsForAccount(db, root->accountId());
-  auto probes = DatabaseQueries::getProbesForAccount(db, root->accountId());
+void DatabaseQueries::loadRootFromDatabase(ServiceRoot* root) {
+  Assignment categories, feeds;
+  QList<Label*> labels;
+  QList<Search*> probes;
+
+  qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+    categories = DatabaseQueries::getCategories<Categ>(db, root->accountId());
+    feeds = DatabaseQueries::getFeeds<Fee>(db, qApp->feedReader()->messageFilters(), root->accountId());
+    labels = DatabaseQueries::getLabelsForAccount(db, root->accountId());
+    probes = DatabaseQueries::getProbesForAccount(db, root->accountId());
+  });
 
   root->performInitialAssembly(categories, feeds, labels, probes);
+
+  auto* cached_account = dynamic_cast<CacheForServiceRoot*>(root);
+
+  if (cached_account != nullptr) {
+    cached_account->loadCacheFromFile();
+  }
 }
 
 #endif // DATABASEQUERIES_H

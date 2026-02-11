@@ -22,12 +22,11 @@ class RSSGUARD_DLLSPEC DatabaseFactory : public QObject {
     // Returns identification of currently active database driver.
     DatabaseDriver::DriverType activeDatabaseDriver() const;
 
+    DatabaseWorker* worker() const;
     DatabaseDriver* driver() const;
     DatabaseDriver* driverForType(DatabaseDriver::DriverType d) const;
 
     static QString escapeQuery(const QString& query);
-
-    DatabaseWorker* worker() const;
 
   private:
     void determineDriver();
