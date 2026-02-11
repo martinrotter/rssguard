@@ -47,26 +47,29 @@ bool Label::canBeDeleted() const {
 }
 
 void Label::deleteItem() {
-  QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::deleteLabel(db, this);
+  });
 
-  DatabaseQueries::deleteLabel(db, this);
   account()->requestItemRemoval(this, false);
 }
 
 void Label::updateCounts() {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
   int account_id = account()->accountId();
-  auto ac = DatabaseQueries::getMessageCountsForLabel(database, this, account_id);
+  auto ac = qApp->database()->worker()->read<ArticleCounts>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getMessageCountsForLabel(db, this, account_id);
+  });
 
   setCountOfAllMessages(ac.m_total);
   setCountOfUnreadMessages(ac.m_unread);
 }
 
 void Label::assignToMessage(const Message& msg, bool reload_feeds_model) {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-
   account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, true);
-  DatabaseQueries::assignLabelToMessage(database, this, msg);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::assignLabelToMessage(db, this, msg);
+  });
 
   if (reload_feeds_model) {
     account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
@@ -74,10 +77,11 @@ void Label::assignToMessage(const Message& msg, bool reload_feeds_model) {
 }
 
 void Label::deassignFromMessage(const Message& msg, bool reload_feeds_model) {
-  QSqlDatabase database = qApp->database()->driver()->threadSafeConnection(metaObject()->className());
-
   account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, false);
-  DatabaseQueries::deassignLabelFromMessage(database, this, msg);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::deassignLabelFromMessage(db, this, msg);
+  });
 
   if (reload_feeds_model) {
     account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
@@ -96,9 +100,11 @@ void Label::cleanMessages(bool clear_only_read) {
   ServiceRoot* service = account();
 
   service->onBeforeMessagesDelete(this, {});
-  DatabaseQueries::cleanLabelledMessages(qApp->database()->driver()->connection(metaObject()->className()),
-                                         this,
-                                         clear_only_read);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::cleanLabelledMessages(db, this, clear_only_read);
+  });
+
   service->onAfterMessagesDelete(this, {});
   service->informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::DatabaseCleaned);
 }
@@ -108,9 +114,11 @@ void Label::markAsReadUnread(RootItem::ReadStatus status) {
   auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
 
   service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-  DatabaseQueries::markLabelledMessagesReadUnread(qApp->database()->driver()->connection(metaObject()->className()),
-                                                  this,
-                                                  status);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::markLabelledMessagesReadUnread(db, this, status);
+  });
+
   service->onAfterSetMessagesRead(this, {}, status);
   service->informOthersAboutDataChange(this,
                                        status == RootItem::ReadStatus::Read

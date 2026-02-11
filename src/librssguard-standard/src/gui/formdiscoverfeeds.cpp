@@ -254,10 +254,11 @@ void FormDiscoverFeeds::importSelectedFeeds() {
   for (RootItem* it : m_discoveredModel->checkedItems()) {
     Feed* std_feed = it->toFeed();
     RootItem* parent = targetParent();
-    QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
     try {
-      DatabaseQueries::createOverwriteFeed(database, std_feed, m_serviceRoot->accountId(), parent->id());
+      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        DatabaseQueries::createOverwriteFeed(db, std_feed, m_serviceRoot->accountId(), parent->id());
+      });
 
       m_discoveredModel->removeItem(std_feed);
       m_serviceRoot->requestItemReassignment(std_feed, parent);

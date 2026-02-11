@@ -39,7 +39,6 @@ ServiceRoot::LabelOperation TtRssServiceRoot::supportedLabelOperations() const {
 void TtRssServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
     DatabaseQueries::loadRootFromDatabase<Category, TtRssFeed>(this);
-    loadCacheFromFile();
 
     auto lbls = labelsNode()->labels();
 

@@ -317,10 +317,9 @@ void FeedsView::enableDisableSelectedFeeds() {
   for (Feed* feed : std::as_const(feeds)) {
     feed->setIsSwitchedOff(!feed->isSwitchedOff());
 
-    DatabaseQueries::createOverwriteFeed(qApp->database()->driver()->connection(metaObject()->className()),
-                                         feed,
-                                         feed->account()->accountId(),
-                                         feed->parent()->id());
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createOverwriteFeed(db, feed, feed->account()->accountId(), feed->parent()->id());
+    });
   }
 
   m_sourceModel->reloadWholeLayout();

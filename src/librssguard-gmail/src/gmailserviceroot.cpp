@@ -218,7 +218,6 @@ bool GmailServiceRoot::supportsCategoryAdding() const {
 void GmailServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
     DatabaseQueries::loadRootFromDatabase<Category, Feed>(this);
-    loadCacheFromFile();
   }
 
   updateTitle();

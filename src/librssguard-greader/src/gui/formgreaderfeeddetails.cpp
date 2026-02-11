@@ -73,8 +73,9 @@ void FormGreaderFeedDetails::apply() {
 
   if (!m_isBatchEdit) {
     try {
-      QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-      DatabaseQueries::createOverwriteFeed(database, fd, m_serviceRoot->accountId(), parent->id());
+      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        DatabaseQueries::createOverwriteFeed(db, fd, m_serviceRoot->accountId(), parent->id());
+      });
     }
     catch (const ApplicationException& ex) {
       qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));

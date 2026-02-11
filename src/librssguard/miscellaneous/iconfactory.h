@@ -22,6 +22,10 @@ class RSSGUARD_DLLSPEC IconFactory : public QObject {
     // Generates round icon of given color.
     static QIcon generateIcon(const QColor& color);
 
+    static QUuid iconGuid(const QIcon& icon);
+
+    static QAction* iconSelectionMenu(QMenu *menu, const QList<QIcon>& icons, const std::function<void (QIcon)> &handler);
+
     // Used to store/retrieve QIcons from/to Base64-encoded
     // byte array.
     static QIcon fromByteArray(QByteArray array);

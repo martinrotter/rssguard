@@ -228,7 +228,6 @@ bool GreaderServiceRoot::wantsBaggedIdsOfExistingMessages() const {
 void GreaderServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
     DatabaseQueries::loadRootFromDatabase<Category, GreaderFeed>(this);
-    loadCacheFromFile();
   }
 
   updateTitleIcon();

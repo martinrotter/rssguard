@@ -3,29 +3,14 @@
 #include "database/databaseworker.h"
 
 #include "database/databasedriver.h"
-#include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 
-#include <QtConcurrent>
-
-#define CONNECTION_READ  QSL("dbreader")
-#define CONNECTION_WRITE QSL("dbwriter")
-
-DatabaseWorker::DatabaseWorker(QObject* parent) : QObject(parent) {
+DatabaseWorker::DatabaseWorker() : QObject() {
   moveToThread(&m_writeThread);
-  connect(this, &DatabaseWorker::executeWrite, this, &DatabaseWorker::onExecuteWrite, Qt::BlockingQueuedConnection);
   m_writeThread.start();
+
   m_readThreadPool.setMaxThreadCount(8);
   m_readThreadPool.setExpiryTimeout(-1);
-
-  QMetaObject::invokeMethod(
-    this,
-    [this]() {
-      qDebugNN << LOGSEC_DB << "DB write setup job in thread" << NONQUOTE_W_SPACE_DOT(QThread::currentThreadId());
-
-      m_dbWriter = qApp->database()->driver()->connection(CONNECTION_WRITE);
-    },
-    Qt::ConnectionType::BlockingQueuedConnection);
 }
 
 DatabaseWorker::~DatabaseWorker() {
@@ -34,23 +19,36 @@ DatabaseWorker::~DatabaseWorker() {
   m_writeThread.wait();
 }
 
-void DatabaseWorker::read(const std::function<void(QSqlDatabase)>& func) {
+void DatabaseWorker::read(const DbReadFn& func) {
   QFuture<void> future = QtConcurrent::run(&m_readThreadPool, [&]() {
-    qDebugNN << LOGSEC_DB << "DB read job in thread" << NONQUOTE_W_SPACE_DOT(QThread::currentThreadId());
+    qDebugNN << LOGSEC_DB << "DB read job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
 
-    auto connection = qApp->database()->driver()->threadSafeConnection(CONNECTION_READ);
+    auto connection = connectionForReading();
     func(connection);
   });
 
   future.waitForFinished();
 }
 
-void DatabaseWorker::write(const std::function<void(QSqlDatabase)>& func) {
-  emit executeWrite(func);
+void DatabaseWorker::write(const DbWriteFn& func) {
+  QMetaObject::invokeMethod(
+    this,
+    [&]() {
+      if (!m_dbWriter.isValid()) {
+        qDebugNN << LOGSEC_DB << "DB write setup job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
+        m_dbWriter = connectionForWriting();
+      }
+
+      qDebugNN << LOGSEC_DB << "DB write job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
+      func(m_dbWriter);
+    },
+    Qt::ConnectionType::BlockingQueuedConnection);
 }
 
-void DatabaseWorker::onExecuteWrite(const std::function<void(QSqlDatabase)>& func) {
-  qDebugNN << LOGSEC_DB << "DB write job in thread" << NONQUOTE_W_SPACE_DOT(QThread::currentThreadId());
+QSqlDatabase DatabaseWorker::connectionForReading() const {
+  return qApp->database()->driver()->threadSafeConnection(CONNECTION_READ);
+}
 
-  func(m_dbWriter);
+QSqlDatabase DatabaseWorker::connectionForWriting() const {
+  return qApp->database()->driver()->connection(CONNECTION_WRITE);
 }

@@ -22,8 +22,10 @@
 #include <QLineEdit>
 #include <QMenu>
 #include <QPushButton>
+#include <QScrollArea>
 #include <QTextEdit>
 #include <QToolButton>
+#include <QWidgetAction>
 
 FormCategoryDetails::FormCategoryDetails(ServiceRoot* service_root, RootItem* parent_to_select, QWidget* parent)
   : QDialog(parent), m_serviceRoot(service_root), m_parentToSelect(parent_to_select) {
@@ -120,7 +122,6 @@ void FormCategoryDetails::loadCategoryData() {
 void FormCategoryDetails::apply() {
   QList<Category*> cats = categories<Category>();
   RootItem* parent = m_ui->m_cmbParentCategory->currentData().value<RootItem*>();
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
 
   for (Category* cat : cats) {
     if (isChangeAllowed(m_ui->m_mcbTitle)) {
@@ -145,7 +146,9 @@ void FormCategoryDetails::apply() {
     }
 
     try {
-      DatabaseQueries::createOverwriteCategory(database, cat, m_serviceRoot->accountId(), new_parent_id);
+      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        DatabaseQueries::createOverwriteCategory(db, cat, m_serviceRoot->accountId(), new_parent_id);
+      });
     }
     catch (const ApplicationException& ex) {
       qFatal("Cannot save category: '%s'.", qPrintable(ex.message()));
@@ -230,6 +233,13 @@ void FormCategoryDetails::initialize() {
     new QAction(qApp->icons()->fromTheme(QSL("folder")), tr("Use default icon from icon theme"), this);
   m_iconMenu->addAction(m_actionLoadIconFromFile);
   m_iconMenu->addAction(m_actionUseDefaultIcon);
+
+  auto icons = m_serviceRoot->getSubTreeIcons();
+  auto* icons_selection = IconFactory::iconSelectionMenu(m_iconMenu, icons, [this](const QIcon& icon) {
+    m_ui->m_btnIcon->setIcon(icon);
+  });
+
+  m_iconMenu->addAction(icons_selection);
   m_ui->m_btnIcon->setMenu(m_iconMenu);
 
   // Setup tab order.

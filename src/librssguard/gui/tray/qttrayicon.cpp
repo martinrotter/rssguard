@@ -2,6 +2,10 @@
 
 #include "gui/tray/qttrayicon.h"
 
+#include <chrono>
+
+using namespace std::chrono_literals;
+
 QtTrayIcon::QtTrayIcon(const QString& id,
                        const QString& title,
                        const QPixmap& normal_icon,
@@ -9,7 +13,7 @@ QtTrayIcon::QtTrayIcon(const QString& id,
                        QObject* parent)
   : TrayIcon(id, title, normal_icon, plain_icon, parent), m_trayIcon(nullptr) {
   m_tmrDoubleFire.setSingleShot(true);
-  m_tmrDoubleFire.setInterval(100);
+  m_tmrDoubleFire.setInterval(100ms);
 }
 
 QtTrayIcon::~QtTrayIcon() {
@@ -33,7 +37,7 @@ TrayIcon::MessageSeverity QtTrayIcon::convertIcon(QSystemTrayIcon::MessageIcon i
       return TrayIcon::MessageSeverity::Critical;
   }
 
-  // Fallback (should never happen unless Qt adds new enum values)
+  // Fallback (should never happen unless Qt adds new enum values).
   return TrayIcon::MessageSeverity::Information;
 }
 
@@ -110,7 +114,7 @@ void QtTrayIcon::hide() {
 
 QSystemTrayIcon* QtTrayIcon::trayIcon() {
   if (m_trayIcon == nullptr) {
-    m_trayIcon = new QSystemTrayIcon(this);
+    m_trayIcon = new QSystemTrayIcon(m_normalIcon, this);
 
     connect(m_trayIcon, &QSystemTrayIcon::activated, this, [this](QSystemTrayIcon::ActivationReason reason) {
       if (m_tmrDoubleFire.isActive()) {

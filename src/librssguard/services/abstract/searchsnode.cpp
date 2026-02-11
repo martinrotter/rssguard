@@ -56,10 +56,10 @@ void SearchsNode::createProbe() {
   Search* new_prb = frm.execForAdd();
 
   if (new_prb != nullptr) {
-    QSqlDatabase db = qApp->database()->driver()->connection(metaObject()->className());
-
     try {
-      DatabaseQueries::createProbe(db, new_prb, account()->accountId());
+      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        DatabaseQueries::createProbe(db, new_prb, account()->accountId());
+      });
 
       account()->requestItemReassignment(new_prb, this);
       account()->requestItemExpand({this}, true);

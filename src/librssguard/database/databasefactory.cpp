@@ -15,7 +15,8 @@
 #include <QSqlResult>
 #include <QVariant>
 
-DatabaseFactory::DatabaseFactory(QObject* parent) : QObject(parent), m_dbDriver(nullptr) {
+DatabaseFactory::DatabaseFactory(QObject* parent)
+  : QObject(parent), m_dbDriver(nullptr), m_dbWorker(new DatabaseWorker()) {
   determineDriver();
 }
 
@@ -63,6 +64,10 @@ void DatabaseFactory::determineDriver() {
       });
     }
   }
+}
+
+DatabaseWorker* DatabaseFactory::worker() const {
+  return m_dbWorker.data();
 }
 
 DatabaseDriver* DatabaseFactory::driver() const {

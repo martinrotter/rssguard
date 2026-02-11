@@ -23,9 +23,11 @@ ServiceRoot* FeedlyEntryPoint::createNewRoot() const {
 }
 
 QList<ServiceRoot*> FeedlyEntryPoint::initializeSubtree() const {
-  QSqlDatabase database = qApp->database()->driver()->connection(QSL("FeedlyEntryPoint"));
+  auto acc = qApp->database()->worker()->read<QList<ServiceRoot*>>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getAccounts<FeedlyServiceRoot>(db, code());
+  });
 
-  return DatabaseQueries::getAccounts<FeedlyServiceRoot>(database, code());
+  return acc;
 }
 
 QString FeedlyEntryPoint::name() const {

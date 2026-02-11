@@ -57,7 +57,6 @@ bool NextcloudServiceRoot::supportsCategoryAdding() const {
 void NextcloudServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
     DatabaseQueries::loadRootFromDatabase<Category, NextcloudFeed>(this);
-    loadCacheFromFile();
   }
 
   updateTitle();

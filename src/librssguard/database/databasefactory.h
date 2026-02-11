@@ -4,11 +4,11 @@
 #define DATABASEFACTORY_H
 
 #include "database/databasedriver.h"
+#include "database/databaseworker.h"
 
 #include <QObject>
+#include <QPointer>
 #include <QSqlDatabase>
-
-class DatabaseWorker;
 
 class RSSGUARD_DLLSPEC DatabaseFactory : public QObject {
     Q_OBJECT
@@ -22,6 +22,7 @@ class RSSGUARD_DLLSPEC DatabaseFactory : public QObject {
     // Returns identification of currently active database driver.
     DatabaseDriver::DriverType activeDatabaseDriver() const;
 
+    DatabaseWorker* worker() const;
     DatabaseDriver* driver() const;
     DatabaseDriver* driverForType(DatabaseDriver::DriverType d) const;
 
@@ -32,6 +33,7 @@ class RSSGUARD_DLLSPEC DatabaseFactory : public QObject {
 
     QList<DatabaseDriver*> m_allDbDrivers;
     DatabaseDriver* m_dbDriver;
+    QPointer<DatabaseWorker> m_dbWorker;
 };
 
 #endif // DATABASEFACTORY_H

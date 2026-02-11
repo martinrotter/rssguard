@@ -140,12 +140,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
-    static UpdatedArticles updateMessages(QSqlDatabase& db,
-                                          QList<Message>& messages,
-                                          Feed* feed,
-                                          bool force_update,
-                                          bool force_insert,
-                                          QMutex* db_mutex);
+    static UpdatedArticles updateMessages(QList<Message>& messages, Feed* feed, bool force_update, bool force_insert);
 
     // Delete account.
     static void deleteAccount(const QSqlDatabase& db, ServiceRoot* account);
@@ -372,13 +367,24 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
 
 template <typename Categ, typename Fee>
 void DatabaseQueries::loadRootFromDatabase(ServiceRoot* root) {
-  QSqlDatabase database = qApp->database()->driver()->connection(root->metaObject()->className());
-  Assignment categories = DatabaseQueries::getCategories<Categ>(database, root->accountId());
-  Assignment feeds = DatabaseQueries::getFeeds<Fee>(database, qApp->feedReader()->messageFilters(), root->accountId());
-  auto labels = DatabaseQueries::getLabelsForAccount(database, root->accountId());
-  auto probes = DatabaseQueries::getProbesForAccount(database, root->accountId());
+  Assignment categories, feeds;
+  QList<Label*> labels;
+  QList<Search*> probes;
+
+  qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+    categories = DatabaseQueries::getCategories<Categ>(db, root->accountId());
+    feeds = DatabaseQueries::getFeeds<Fee>(db, qApp->feedReader()->messageFilters(), root->accountId());
+    labels = DatabaseQueries::getLabelsForAccount(db, root->accountId());
+    probes = DatabaseQueries::getProbesForAccount(db, root->accountId());
+  });
 
   root->performInitialAssembly(categories, feeds, labels, probes);
+
+  auto* cached_account = dynamic_cast<CacheForServiceRoot*>(root);
+
+  if (cached_account != nullptr) {
+    cached_account->loadCacheFromFile();
+  }
 }
 
 #endif // DATABASEQUERIES_H

@@ -220,8 +220,9 @@ void FeedReader::loadSavedMessageFilters() {
   // Load all message filters from database.
   // All plugin services will hook active filters to
   // all feeds.
-  m_messageFilters =
-    DatabaseQueries::getMessageFilters(qApp->database()->driver()->connection(metaObject()->className()));
+  m_messageFilters = qApp->database()->worker()->read<QList<MessageFilter*>>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::getMessageFilters(db);
+  });
 
   for (auto* filter : std::as_const(m_messageFilters)) {
     filter->setParent(this);
@@ -229,8 +230,9 @@ void FeedReader::loadSavedMessageFilters() {
 }
 
 MessageFilter* FeedReader::addMessageFilter(const QString& title, const QString& script) {
-  auto* fltr =
-    DatabaseQueries::addMessageFilter(qApp->database()->driver()->connection(metaObject()->className()), title, script);
+  auto* fltr = qApp->database()->worker()->read<MessageFilter*>([&](const QSqlDatabase& db) {
+    return DatabaseQueries::addMessageFilter(db, title, script);
+  });
 
   m_messageFilters.append(fltr);
   return fltr;
@@ -245,10 +247,10 @@ void FeedReader::removeMessageFilter(MessageFilter* filter) {
   }
 
   // Remove from DB.
-  auto db = qApp->database()->driver()->connection(metaObject()->className());
-
-  DatabaseQueries::moveMessageFilter(m_messageFilters, filter, false, true, {}, db);
-  DatabaseQueries::removeMessageFilter(db, filter->id());
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::moveMessageFilter(m_messageFilters, filter, false, true, {}, db);
+    DatabaseQueries::removeMessageFilter(db, filter->id());
+  });
 
   m_messageFilters.removeAll(filter);
 
@@ -257,21 +259,23 @@ void FeedReader::removeMessageFilter(MessageFilter* filter) {
 }
 
 void FeedReader::updateMessageFilter(MessageFilter* filter) {
-  DatabaseQueries::updateMessageFilter(qApp->database()->driver()->connection(metaObject()->className()), filter);
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::updateMessageFilter(db, filter);
+  });
 }
 
 void FeedReader::assignMessageFilterToFeed(Feed* feed, MessageFilter* filter) {
   feed->appendMessageFilter(filter);
-  DatabaseQueries::assignMessageFilterToFeed(qApp->database()->driver()->connection(metaObject()->className()),
-                                             feed->id(),
-                                             filter->id());
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::assignMessageFilterToFeed(db, feed->id(), filter->id());
+  });
 }
 
 void FeedReader::removeMessageFilterToFeedAssignment(Feed* feed, MessageFilter* filter) {
   feed->removeMessageFilter(filter);
-  DatabaseQueries::removeMessageFilterFromFeed(qApp->database()->driver()->connection(metaObject()->className()),
-                                               feed->id(),
-                                               filter->id());
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::removeMessageFilterFromFeed(db, feed->id(), filter->id());
+  });
 }
 
 void FeedReader::updateAllFeeds() {

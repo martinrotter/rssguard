@@ -70,10 +70,9 @@ void FormFeedDetails::apply() {
     }
 
     if (!m_creatingNew) {
-      // We need to make sure that common data are saved.
-      QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
-      DatabaseQueries::createOverwriteFeed(database, fd, m_serviceRoot->accountId(), fd->parent()->id());
+      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        DatabaseQueries::createOverwriteFeed(db, fd, m_serviceRoot->accountId(), fd->parent()->id());
+      });
     }
   }
 

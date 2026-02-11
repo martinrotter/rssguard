@@ -116,7 +116,6 @@ bool RedditServiceRoot::supportsCategoryAdding() const {
 void RedditServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
     DatabaseQueries::loadRootFromDatabase<RedditCategory, RedditSubscription>(this);
-    loadCacheFromFile();
   }
 
   updateTitle();

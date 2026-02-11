@@ -205,18 +205,18 @@ Qt::ItemFlags MessagesForFiltersModel::flags(const QModelIndex& index) const {
 }
 
 void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* account, const QList<RootItem*>& checked) {
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
   for (RootItem* it : checked) {
     if (it->kind() == RootItem::Kind::Feed) {
-      FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles, database, it->toFeed(), account);
+      FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles, it->toFeed(), account);
 
       filtering.filterRun().setTotalCountOfFilters(1);
       filtering.filterRun().setIndexOfCurrentFilter(0);
 
       // We process messages of the feed.
-      QList<Message> msgs =
-        DatabaseQueries::getUndeletedMessagesForFeed(database, it->id(), account->labelsNode()->getHashedLabels());
+      QList<Message> msgs = qApp->database()->worker()->read<QList<Message>>([&](const QSqlDatabase& db) {
+        return DatabaseQueries::getUndeletedMessagesForFeed(db, it->id(), account->labelsNode()->getHashedLabels());
+      });
+
       QList<Message> read_msgs, important_msgs;
 
       for (int i = 0; i < msgs.size(); i++) {
@@ -232,7 +232,9 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
           remove_msg = true;
 
           // Purge the message completely and remove leftovers.
-          DatabaseQueries::purgeMessage(database, msg_filtered->m_id);
+          qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+            DatabaseQueries::purgeMessage(db, msg_filtered->m_id);
+          });
         }
         else if (result == FilterMessage::FilteringAction::Ignore) {
           remove_msg = true;
@@ -253,7 +255,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
       filtering.pushMessageStatesToServices(read_msgs, important_msgs, it, account);
 
       // Update messages in DB and reload selection.
-      it->account()->updateMessages(msgs, it->toFeed(), true, true, nullptr);
+      it->account()->updateMessages(msgs, it->toFeed(), true, true);
     }
   }
 }

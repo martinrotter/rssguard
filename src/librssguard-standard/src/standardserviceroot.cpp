@@ -543,8 +543,6 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
   new_parents.push(model->sourceModel()->rootItem());
   bool some_feed_category_error = false;
 
-  QSqlDatabase database = qApp->database()->driver()->connection(metaObject()->className());
-
   // Iterate all new items we would like to merge into current model.
   while (!new_parents.isEmpty()) {
     RootItem* target_parent = original_parents.pop();
@@ -567,10 +565,13 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
         new_category->clearChildren();
 
         try {
-          DatabaseQueries::createOverwriteCategory(database,
-                                                   new_category,
-                                                   target_root_node->account()->accountId(),
-                                                   target_parent->id());
+          qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+            DatabaseQueries::createOverwriteCategory(db,
+                                                     new_category,
+                                                     target_root_node->account()->accountId(),
+                                                     target_parent->id());
+          });
+
           requestItemReassignment(new_category, target_parent);
 
           original_parents.push(new_category);
@@ -614,10 +615,13 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
         auto* new_feed = new StandardFeed(*source_feed);
 
         try {
-          DatabaseQueries::createOverwriteFeed(database,
-                                               new_feed,
-                                               target_root_node->account()->accountId(),
-                                               target_parent->id());
+          qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+            DatabaseQueries::createOverwriteFeed(db,
+                                                 new_feed,
+                                                 target_root_node->account()->accountId(),
+                                                 target_parent->id());
+          });
+
           requestItemReassignment(new_feed, target_parent);
         }
         catch (const ApplicationException& ex) {

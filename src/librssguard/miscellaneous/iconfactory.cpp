@@ -6,7 +6,11 @@
 #include "miscellaneous/settings.h"
 
 #include <QBuffer>
+#include <QGridLayout>
 #include <QPainter>
+#include <QScrollArea>
+#include <QToolButton>
+#include <QWidgetAction>
 
 IconFactory::IconFactory(QObject* parent) : QObject(parent) {}
 
@@ -26,6 +30,79 @@ QIcon IconFactory::generateIcon(const QColor& color) {
   paint.drawEllipse(pxm.rect().marginsRemoved(QMargins(2, 2, 2, 2)));
 
   return pxm;
+}
+
+QUuid IconFactory::iconGuid(const QIcon& icon) {
+  QPixmap pixmap = icon.pixmap({32, 32});
+  QImage image = pixmap.toImage();
+
+  image = image.convertToFormat(QImage::Format_ARGB32);
+
+  const uchar* bits = image.constBits();
+  int byte_count = image.sizeInBytes();
+
+  QByteArray pixel_data(reinterpret_cast<const char*>(bits), byte_count);
+  QByteArray hash = QCryptographicHash::hash(pixel_data, QCryptographicHash::Algorithm::Md5);
+
+  QUuid guid = QUuid::fromRfc4122(hash);
+  return guid;
+}
+
+QAction* IconFactory::iconSelectionMenu(QMenu* menu,
+                                        const QList<QIcon>& icons,
+                                        const std::function<void(QIcon)>& handler) {
+  QWidgetAction* w_a = new QWidgetAction(menu);
+  QScrollArea* scroll_area = new QScrollArea();
+
+  scroll_area->setWidgetResizable(true);
+  scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+  scroll_area->setVerticalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAsNeeded);
+  scroll_area->setFrameShape(QFrame::Shape::NoFrame);
+  scroll_area->setFixedHeight(200); // Limit height to trigger scrolling.
+
+  QWidget* container = new QWidget();
+  QGridLayout* grid = new QGridLayout(container);
+
+  grid->setSpacing(2);
+  grid->setContentsMargins(4, 4, 4, 4);
+
+  connect(menu, &QMenu::aboutToShow, grid, [=]() {
+    if (!grid->isEmpty()) {
+      return;
+    }
+
+    int col = 0, row = 0;
+
+    for (const auto& icon : icons) {
+      if (icon.isNull()) {
+        continue;
+      }
+
+      QToolButton* btn = new QToolButton();
+
+      btn->setIcon(icon);
+      btn->setIconSize(QSize(28, 28));
+      btn->setAutoRaise(true);
+      btn->setFixedSize(32, 32);
+
+      connect(btn, &QToolButton::clicked, w_a, [=]() {
+        menu->close();
+        handler(btn->icon());
+      });
+
+      grid->addWidget(btn, row, col);
+
+      if (++col >= 5) { // 5 icons per row.
+        col = 0;
+        row++;
+      }
+    }
+  });
+
+  scroll_area->setWidget(container);
+  w_a->setDefaultWidget(scroll_area);
+
+  return w_a;
 }
 
 QIcon IconFactory::fromByteArray(QByteArray array) {
