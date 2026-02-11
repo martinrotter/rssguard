@@ -1,6 +1,9 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
 #include "gui/tray/qttrayicon.h"
+#include <chrono>
+
+using namespace std::chrono_literals;
 
 QtTrayIcon::QtTrayIcon(const QString& id,
                        const QString& title,
@@ -9,7 +12,7 @@ QtTrayIcon::QtTrayIcon(const QString& id,
                        QObject* parent)
   : TrayIcon(id, title, normal_icon, plain_icon, parent), m_trayIcon(nullptr) {
   m_tmrDoubleFire.setSingleShot(true);
-  m_tmrDoubleFire.setInterval(100);
+  m_tmrDoubleFire.setInterval(100ms);
 }
 
 QtTrayIcon::~QtTrayIcon() {
