@@ -606,9 +606,9 @@ QString FilterAccount::createLabel(const QString& label_title, const QString& he
   Label* new_lbl = nullptr;
 
   try {
-    auto rnd_color = TextFactory::generateRandomColor();
+    auto icon_color = IconFactory::generateIcon(hex_color.isEmpty() ? TextFactory::generateRandomColor() : hex_color);
 
-    new_lbl = new Label(label_title, hex_color.isEmpty() ? rnd_color : hex_color);
+    new_lbl = new Label(label_title, icon_color);
 
     qApp->database()->worker()->write([&](const QSqlDatabase& db) {
       DatabaseQueries::createLabel(db, new_lbl, m_system->account()->accountId());

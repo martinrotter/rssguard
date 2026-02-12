@@ -52,9 +52,6 @@ class StandardFeedDetails : public QWidget {
     void onDescriptionChanged(const QString& new_description);
     void onUrlChanged(const QString& new_url);
     void onPostProcessScriptChanged(const QString& new_pp);
-    void onLoadIconFromFile();
-    void onLoadIconFromUrl();
-    void onUseDefaultIcon();
 
   private:
     void prepareForNewFeed(ServiceRoot* account, RootItem* parent_to_select, const QString& url);
@@ -64,10 +61,6 @@ class StandardFeedDetails : public QWidget {
   private:
     ServiceRoot* m_account;
     Ui::StandardFeedDetails m_ui;
-    QMenu* m_iconMenu{};
-    QAction* m_actionLoadIconFromFile{};
-    QAction* m_actionLoadIconFromUrl{};
-    QAction* m_actionUseDefaultIcon{};
     QAction* m_actionFetchIcon{};
     StandardFeedNetworkDetails* m_networkDetails = nullptr;
 };

@@ -234,7 +234,7 @@
     </layout>
    </item>
    <item row="10" column="1">
-    <widget class="QToolButton" name="m_btnIcon">
+    <widget class="ColorIconToolButton" name="m_btnIcon">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -258,15 +258,6 @@
        <width>20</width>
        <height>20</height>
       </size>
-     </property>
-     <property name="popupMode">
-      <enum>QToolButton::ToolButtonPopupMode::InstantPopup</enum>
-     </property>
-     <property name="autoRaise">
-      <bool>false</bool>
-     </property>
-     <property name="arrowType">
-      <enum>Qt::ArrowType::NoArrow</enum>
      </property>
     </widget>
    </item>
@@ -300,12 +291,6 @@
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>HelpSpoiler</class>
-   <extends>QWidget</extends>
-   <header>helpspoiler.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
@@ -315,6 +300,17 @@
    <class>MultiFeedEditCheckBox</class>
    <extends>QCheckBox</extends>
    <header>multifeededitcheckbox.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ColorIconToolButton</class>
+   <extends>QToolButton</extends>
+   <header>colortoolbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

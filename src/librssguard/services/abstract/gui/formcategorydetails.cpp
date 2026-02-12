@@ -48,10 +48,6 @@ void FormCategoryDetails::createConnections() {
   connect(m_ui->m_txtDescription->textEdit(), &QPlainTextEdit::textChanged, this, [this]() {
     onDescriptionChanged(m_ui->m_txtDescription->textEdit()->toPlainText());
   });
-
-  // Icon connections.
-  connect(m_actionLoadIconFromFile, &QAction::triggered, this, &FormCategoryDetails::onLoadIconFromFile);
-  connect(m_actionUseDefaultIcon, &QAction::triggered, this, &FormCategoryDetails::onUseDefaultIcon);
 }
 
 bool FormCategoryDetails::isChangeAllowed(MultiFeedEditCheckBox* mcb) const {
@@ -82,7 +78,7 @@ void FormCategoryDetails::loadCategoryData() {
 
     // Make sure that "default" icon is used as the default option for new
     // categories.
-    m_actionUseDefaultIcon->trigger();
+    m_ui->m_btnIcon->setIcon(QIcon());
 
     // Load parent from suggested item.
     if (m_parentToSelect != nullptr) {
@@ -187,31 +183,6 @@ void FormCategoryDetails::onDescriptionChanged(const QString& new_description) {
   }
 }
 
-void FormCategoryDetails::onLoadIconFromFile() {
-  auto supported_formats = QImageReader::supportedImageFormats();
-  auto list_formats = qlinq::from(supported_formats)
-                        .select([](const QByteArray& frmt) {
-                          return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
-                        })
-                        .toList();
-
-  QString fil = FileDialog::openFileName(this,
-                                         tr("Select icon file for the category"),
-                                         qApp->homeFolder(),
-                                         {},
-                                         tr("Images (%1)").arg(list_formats.join(QL1C(' '))),
-                                         nullptr,
-                                         GENERAL_REMEMBERED_PATH);
-
-  if (!fil.isEmpty()) {
-    m_ui->m_btnIcon->setIcon(QIcon(fil));
-  }
-}
-
-void FormCategoryDetails::onUseDefaultIcon() {
-  m_ui->m_btnIcon->setIcon(QIcon());
-}
-
 void FormCategoryDetails::initialize() {
   m_ui.reset(new Ui::FormCategoryDetails());
   m_ui->setupUi(this);
@@ -226,21 +197,10 @@ void FormCategoryDetails::initialize() {
   m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);
 
   // Setup menu & actions for icon selection.
-  m_iconMenu = new QMenu(tr("Icon selection"), this);
-  m_actionLoadIconFromFile =
-    new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")), tr("Load icon from file..."), this);
-  m_actionUseDefaultIcon =
-    new QAction(qApp->icons()->fromTheme(QSL("folder")), tr("Use default icon from icon theme"), this);
-  m_iconMenu->addAction(m_actionLoadIconFromFile);
-  m_iconMenu->addAction(m_actionUseDefaultIcon);
-
   auto icons = m_serviceRoot->getSubTreeIcons();
-  auto* icons_selection = IconFactory::iconSelectionMenu(m_iconMenu, icons, [this](const QIcon& icon) {
-    m_ui->m_btnIcon->setIcon(icon);
-  });
-
-  m_iconMenu->addAction(icons_selection);
-  m_ui->m_btnIcon->setMenu(m_iconMenu);
+  m_ui->m_btnIcon->setAdditionalIcons(icons);
+  m_ui->m_btnIcon->setDefaultIcon(QIcon());
+  m_ui->m_btnIcon->setColorOnlyMode(false);
 
   // Setup tab order.
   setTabOrder(m_ui->m_cmbParentCategory, m_ui->m_txtTitle->lineEdit());

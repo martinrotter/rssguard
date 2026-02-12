@@ -49,9 +49,6 @@ class RSSGUARD_DLLSPEC FormCategoryDetails : public QDialog {
     void onTitleChanged(const QString& new_title);
     void onDescriptionChanged(const QString& new_description);
 
-    void onLoadIconFromFile();
-    void onUseDefaultIcon();
-
   private:
     void createConnections();
     void initialize();
@@ -65,9 +62,6 @@ class RSSGUARD_DLLSPEC FormCategoryDetails : public QDialog {
     QScopedPointer<Ui::FormCategoryDetails> m_ui;
     QList<Category*> m_categories;
     ServiceRoot* m_serviceRoot;
-    QMenu* m_iconMenu{};
-    QAction* m_actionLoadIconFromFile{};
-    QAction* m_actionUseDefaultIcon{};
     RootItem* m_parentToSelect;
     bool m_creatingNew;
     bool m_isBatchEdit;

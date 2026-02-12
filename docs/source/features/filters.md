@@ -209,7 +209,6 @@ Here is the complete reference documentation of all functions and properties ava
 | :---          | :---      | :---:     | ---
 | `title`       | `String`  | ✅         | Label name.
 | `customId`    | `String`  | ✅         | Service-specific ID of the label. The ID is used as a unique identifier for label. It is useful if you want to assign/unassign the message label.
-| `color`       | `Color`   | ✅         | Label color. See the type `color` documentation in [Qt docs](https://doc.qt.io/qt-6/qml-color.html).
 
 ```{attention}
 The `msg` attributes are synchronized with service even if you return `Purge` or `Ignore`. In other words, even if the filter ignores the article, you can still tweak its properties, and they will be synchronized back to your server.

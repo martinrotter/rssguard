@@ -6,11 +6,14 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/label.h"
+#include "services/abstract/serviceroot.h"
 
 #include <QPushButton>
 
 FormAddEditLabel::FormAddEditLabel(QWidget* parent) : QDialog(parent), m_editableLabel(nullptr) {
   m_ui.setupUi(this);
+
+  m_ui.m_btnColor->setColorOnlyMode(false);
   m_ui.m_txtName->lineEdit()->setPlaceholderText(tr("Name for your label"));
 
   connect(m_ui.m_txtName->lineEdit(), &QLineEdit::textChanged, this, [this](const QString& text) {
@@ -25,9 +28,10 @@ FormAddEditLabel::FormAddEditLabel(QWidget* parent) : QDialog(parent), m_editabl
   });
 }
 
-Label* FormAddEditLabel::execForAdd() {
+Label* FormAddEditLabel::execForAdd(ServiceRoot* account) {
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("tag-new")), tr("Create new label"));
 
+  m_ui.m_btnColor->setAdditionalIcons(account->getSubTreeIcons());
   m_ui.m_btnColor->setRandomColor();
   m_ui.m_txtName->lineEdit()->setText(tr("Hot stuff"));
   m_ui.m_txtName->setFocus();
@@ -35,7 +39,7 @@ Label* FormAddEditLabel::execForAdd() {
   auto exit_code = exec();
 
   if (exit_code == QDialog::DialogCode::Accepted) {
-    return new Label(m_ui.m_txtName->lineEdit()->text(), m_ui.m_btnColor->color());
+    return new Label(m_ui.m_txtName->lineEdit()->text(), m_ui.m_btnColor->icon());
   }
   else {
     return nullptr;
@@ -48,14 +52,16 @@ bool FormAddEditLabel::execForEdit(Label* lbl) {
                                       tr("Edit label '%1'").arg(lbl->title()));
 
   m_editableLabel = lbl;
-  m_ui.m_btnColor->setColor(lbl->color());
+
+  m_ui.m_btnColor->setAdditionalIcons(lbl->account()->getSubTreeIcons());
+  m_ui.m_btnColor->setIcon(lbl->icon());
   m_ui.m_txtName->lineEdit()->setText(lbl->title());
   m_ui.m_txtName->setFocus();
 
   auto exit_code = exec();
 
   if (exit_code == QDialog::DialogCode::Accepted) {
-    m_editableLabel->setColor(m_ui.m_btnColor->color());
+    m_editableLabel->setIcon(m_ui.m_btnColor->icon());
     m_editableLabel->setTitle(m_ui.m_txtName->lineEdit()->text());
     return true;
   }

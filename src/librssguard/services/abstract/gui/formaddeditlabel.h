@@ -12,6 +12,7 @@ namespace Ui {
 }
 
 class Label;
+class ServiceRoot;
 
 class RSSGUARD_DLLSPEC FormAddEditLabel : public QDialog {
     Q_OBJECT
@@ -20,7 +21,7 @@ class RSSGUARD_DLLSPEC FormAddEditLabel : public QDialog {
     explicit FormAddEditLabel(QWidget* parent = nullptr);
 
   public slots:
-    Label* execForAdd();
+    Label* execForAdd(ServiceRoot* account);
     bool execForEdit(Label* lbl);
 
   private:

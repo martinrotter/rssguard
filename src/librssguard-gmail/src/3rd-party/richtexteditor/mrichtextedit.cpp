@@ -168,7 +168,7 @@ MRichTextEdit::MRichTextEdit(QWidget* parent) : QWidget(parent) {
   // text foreground color
   m_ui.f_fgcolor->setAlternateColor(m_ui.f_textedit->textColor());
   m_ui.f_fgcolor->setColor(m_ui.f_textedit->textColor());
-  connect(m_ui.f_fgcolor, &ColorToolButton::colorChanged, this, &MRichTextEdit::textFgColor);
+  connect(m_ui.f_fgcolor, &ColorIconToolButton::colorChanged, this, &MRichTextEdit::textFgColor);
 
   // text background color
   auto bg_col = m_ui.f_textedit->textBackgroundColor();
@@ -177,7 +177,7 @@ MRichTextEdit::MRichTextEdit(QWidget* parent) : QWidget(parent) {
 
   m_ui.f_bgcolor->setAlternateColor(bg_col);
   m_ui.f_bgcolor->setColor(bg_col);
-  connect(m_ui.f_bgcolor, &ColorToolButton::colorChanged, this, &MRichTextEdit::textBgColor);
+  connect(m_ui.f_bgcolor, &ColorIconToolButton::colorChanged, this, &MRichTextEdit::textBgColor);
 
   // images
   connect(m_ui.f_image, &PlainToolButton::clicked, this, &MRichTextEdit::insertImage);

@@ -300,7 +300,7 @@ void SettingsGui::loadSettings() {
   int row = 0;
 
   for (const auto& palette_enum : palette_enums) {
-    auto* clr_btn = new ColorToolButton(this);
+    auto* clr_btn = new ColorIconToolButton(this);
     auto* rst_btn = new PlainToolButton(this);
 
     rst_btn->setToolTip(tr("Fetch color from activated skin"));
@@ -315,10 +315,10 @@ void SettingsGui::loadSettings() {
     rst_btn->setObjectName(QString::number(int(palette_enum.first)));
 
     connect(rst_btn, &PlainToolButton::clicked, this, &SettingsGui::resetCustomSkinColor);
-    connect(clr_btn, &ColorToolButton::colorChanged, this, &SettingsGui::dirtifySettings);
+    connect(clr_btn, &ColorIconToolButton::colorChanged, this, &SettingsGui::dirtifySettings);
 
     clr_btn->setObjectName(QString::number(int(palette_enum.first)));
-    clr_btn->setColor(clr);
+    clr_btn->setColor(clr, false);
 
     auto* lay = new QHBoxLayout();
 
@@ -339,7 +339,7 @@ void SettingsGui::loadSettings() {
 }
 
 void SettingsGui::resetCustomSkinColor() {
-  auto* clr_btn = m_ui->m_gbCustomSkinColors->findChild<ColorToolButton*>(sender()->objectName());
+  auto* clr_btn = m_ui->m_gbCustomSkinColors->findChild<ColorIconToolButton*>(sender()->objectName());
   SkinEnums::PaletteColors pal = SkinEnums::PaletteColors(sender()->objectName().toInt());
 
   clr_btn->setColor(qApp->skins()->colorForModel(pal, true).value<QColor>());
@@ -355,9 +355,9 @@ void SettingsGui::saveSettings() {
   // Save custom skin colors.
   settings()->setValue(GROUP(CustomSkinColors), CustomSkinColors::Enabled, m_ui->m_gbCustomSkinColors->isChecked());
 
-  auto children = m_ui->m_gbCustomSkinColors->findChildren<ColorToolButton*>();
+  auto children = m_ui->m_gbCustomSkinColors->findChildren<ColorIconToolButton*>();
 
-  for (const ColorToolButton* clr : children) {
+  for (const ColorIconToolButton* clr : children) {
     auto pal = SkinEnums::PaletteColors(clr->objectName().toInt());
 
     settings()->setValue(GROUP(CustomSkinColors), enumToString<SkinEnums::PaletteColors>(pal), clr->color().name());

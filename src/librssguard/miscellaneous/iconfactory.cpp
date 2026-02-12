@@ -66,38 +66,32 @@ QAction* IconFactory::iconSelectionMenu(QMenu* menu,
   grid->setSpacing(2);
   grid->setContentsMargins(4, 4, 4, 4);
 
-  connect(menu, &QMenu::aboutToShow, grid, [=]() {
-    if (!grid->isEmpty()) {
-      return;
+  int col = 0, row = 0;
+
+  for (const auto& icon : icons) {
+    if (icon.isNull()) {
+      continue;
     }
 
-    int col = 0, row = 0;
+    QToolButton* btn = new QToolButton();
 
-    for (const auto& icon : icons) {
-      if (icon.isNull()) {
-        continue;
-      }
+    btn->setIcon(icon);
+    btn->setIconSize(QSize(28, 28));
+    btn->setAutoRaise(true);
+    btn->setFixedSize(32, 32);
 
-      QToolButton* btn = new QToolButton();
+    connect(btn, &QToolButton::clicked, w_a, [=]() {
+      menu->close();
+      handler(btn->icon());
+    });
 
-      btn->setIcon(icon);
-      btn->setIconSize(QSize(28, 28));
-      btn->setAutoRaise(true);
-      btn->setFixedSize(32, 32);
+    grid->addWidget(btn, row, col);
 
-      connect(btn, &QToolButton::clicked, w_a, [=]() {
-        menu->close();
-        handler(btn->icon());
-      });
-
-      grid->addWidget(btn, row, col);
-
-      if (++col >= 5) { // 5 icons per row.
-        col = 0;
-        row++;
-      }
+    if (++col >= 4) { // 4 icons per row.
+      col = 0;
+      row++;
     }
-  });
+  }
 
   scroll_area->setWidget(container);
   w_a->setDefaultWidget(scroll_area);

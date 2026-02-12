@@ -364,7 +364,7 @@ QList<Label*> QuiteRssImport::extractLabels(const QSqlDatabase& db) const {
     QString name = q.value(1).toString();
 
     if (!id.isEmpty() && !name.isEmpty()) {
-      Label* lbl = new Label(name, TextFactory::generateColorFromText(name), nullptr);
+      Label* lbl = new Label(name, IconFactory::generateIcon(TextFactory::generateColorFromText(name)), nullptr);
 
       lbl->setCustomId(id);
       lbls.append(lbl);

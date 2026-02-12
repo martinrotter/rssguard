@@ -99,7 +99,7 @@ QList<Label*> LabelsNode::labels() const {
 void LabelsNode::createLabel() {
   if (Globals::hasFlag(account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Adding)) {
     FormAddEditLabel frm(qApp->mainFormWidget());
-    Label* new_lbl = frm.execForAdd();
+    Label* new_lbl = frm.execForAdd(account());
 
     if (new_lbl != nullptr) {
       try {

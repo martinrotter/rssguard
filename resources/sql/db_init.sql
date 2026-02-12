@@ -99,7 +99,7 @@ CREATE TABLE MessageFiltersInFeeds (
 CREATE TABLE Labels (
   id                  $$,
   name                VARCHAR(200)    NOT NULL CHECK (name != ''),
-  color               VARCHAR(7),
+  icon                ^^,   
   custom_id           VARCHAR(200),
   account_id          INTEGER         NOT NULL,
   

@@ -9,7 +9,6 @@
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
-#include <qtlinq/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>
@@ -18,6 +17,7 @@
 #include <librssguard/services/abstract/labelsnode.h>
 #include <librssguard/services/abstract/rootitem.h>
 #include <librssguard/services/abstract/serviceroot.h>
+#include <qtlinq/qtlinq.h>
 
 #include <QJsonArray>
 #include <QJsonDocument>
@@ -1168,7 +1168,8 @@ QList<RootItem*> TtRssGetLabelsResponse::labels() const {
   //
   // This label solves situation 1). 2) is solved in other way (creating static system feed).
   QString published_caption = QSL("[SYSTEM] ") + QObject::tr("Published articles");
-  auto* published_lbl = new Label(published_caption, TextFactory::generateColorFromText(published_caption));
+  auto* published_lbl =
+    new Label(published_caption, IconFactory::generateIcon(TextFactory::generateColorFromText(published_caption)));
 
   published_lbl->setKeepOnTop(true);
   published_lbl->setCustomId(QString::number(TTRSS_PUBLISHED_LABEL_ID));
@@ -1176,7 +1177,8 @@ QList<RootItem*> TtRssGetLabelsResponse::labels() const {
 
   for (const QJsonValue& lbl_val : std::as_const(json_labels)) {
     QJsonObject lbl_obj = lbl_val.toObject();
-    Label* lbl = new Label(lbl_obj[QSL("caption")].toString(), QColor(lbl_obj[QSL("fg_color")].toString()));
+    Label* lbl = new Label(lbl_obj[QSL("caption")].toString(),
+                           IconFactory::generateIcon(QColor(lbl_obj[QSL("fg_color")].toString())));
 
     lbl->setCustomId(QString::number(lbl_obj[QSL("id")].toInt()));
     labels.append(lbl);

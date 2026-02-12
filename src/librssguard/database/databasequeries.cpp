@@ -222,7 +222,8 @@ QList<Label*> DatabaseQueries::getLabelsForAccount(const QSqlDatabase& db, int a
   q.exec();
 
   while (q.next()) {
-    Label* lbl = new Label(q.value(QSL("name")).toString(), QColor(q.value(QSL("color")).toString()));
+    Label* lbl =
+      new Label(q.value(QSL("name")).toString(), qApp->icons()->fromByteArray(q.value(QSL("icon")).toByteArray()));
 
     lbl->setId(q.value(QSL("id")).toInt());
     lbl->setCustomId(q.value(QSL("custom_id")).toString());
@@ -237,10 +238,10 @@ void DatabaseQueries::updateLabel(const QSqlDatabase& db, Label* label) {
   SqlQuery q(db);
 
   q.prepare(QSL("UPDATE Labels "
-                "SET name = :name, color = :color "
+                "SET name = :name, icon = :icon "
                 "WHERE id = :id;"));
   q.bindValue(QSL(":name"), label->title());
-  q.bindValue(QSL(":color"), label->color().name());
+  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(label->icon()));
   q.bindValue(QSL(":id"), label->id());
 
   q.exec();
@@ -259,17 +260,17 @@ void DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
   SqlQuery q(db);
 
   if (new_label_id > 0) {
-    q.prepare(QSL("INSERT INTO Labels (id, name, color, custom_id, account_id) "
-                  "VALUES (:id, :name, :color, :custom_id, :account_id);"));
+    q.prepare(QSL("INSERT INTO Labels (id, name, icon, custom_id, account_id) "
+                  "VALUES (:id, :name, :icon, :custom_id, :account_id);"));
     q.bindValue(QSL(":id"), new_label_id);
   }
   else {
-    q.prepare(QSL("INSERT INTO Labels (name, color, custom_id, account_id) "
-                  "VALUES (:name, :color, :custom_id, :account_id);"));
+    q.prepare(QSL("INSERT INTO Labels (name, icon, custom_id, account_id) "
+                  "VALUES (:name, :icon, :custom_id, :account_id);"));
   }
 
   q.bindValue(QSL(":name"), label->title());
-  q.bindValue(QSL(":color"), label->color().name());
+  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(label->icon()));
   q.bindValue(QSL(":custom_id"), label->customId());
   q.bindValue(QSL(":account_id"), account_id);
   q.exec();

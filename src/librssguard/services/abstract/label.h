@@ -10,15 +10,9 @@
 class RSSGUARD_DLLSPEC Label : public RootItem {
     Q_OBJECT
 
-    // Added for message filtering with labels.
-    Q_PROPERTY(QColor color READ color)
-
   public:
-    explicit Label(const QString& name, const QColor& color, RootItem* parent_item = nullptr);
+    explicit Label(const QString& name, const QIcon& icon, RootItem* parent_item = nullptr);
     explicit Label(RootItem* parent_item = nullptr);
-
-    QColor color() const;
-    void setColor(const QColor& color);
 
     void setCountOfAllMessages(int totalCount);
     void setCountOfUnreadMessages(int unreadCount);
@@ -37,7 +31,6 @@ class RSSGUARD_DLLSPEC Label : public RootItem {
     void deassignFromMessage(const Message& msg, bool reload_feeds_model = true);
 
   private:
-    QColor m_color;
     int m_totalCount{};
     int m_unreadCount{};
 };

@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1100</width>
+    <width>1102</width>
     <height>406</height>
    </rect>
   </property>
@@ -50,7 +50,7 @@
       <item>
        <widget class="QComboBox" name="f_paragraph">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Paragraph formatting</string>
@@ -63,7 +63,7 @@
       <item>
        <widget class="Line" name="line_4">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
@@ -73,7 +73,7 @@
          <bool>false</bool>
         </property>
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="text">
          <string>Undo</string>
@@ -92,7 +92,7 @@
          <bool>false</bool>
         </property>
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="text">
          <string>Redo</string>
@@ -108,7 +108,7 @@
       <item>
        <widget class="PlainToolButton" name="f_cut">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="text">
          <string>Cut</string>
@@ -124,7 +124,7 @@
       <item>
        <widget class="PlainToolButton" name="f_copy">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="text">
          <string>Copy</string>
@@ -140,7 +140,7 @@
       <item>
        <widget class="PlainToolButton" name="f_paste">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Paste (CTRL+V)</string>
@@ -159,14 +159,14 @@
       <item>
        <widget class="Line" name="line">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
       <item>
        <widget class="PlainToolButton" name="f_link">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Link (CTRL+L)</string>
@@ -188,14 +188,14 @@
       <item>
        <widget class="Line" name="line_3">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
       <item>
        <widget class="PlainToolButton" name="f_bold">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string notr="true">Bold (CTRL+B)</string>
@@ -217,7 +217,7 @@
       <item>
        <widget class="PlainToolButton" name="f_italic">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Italic (CTRL+I)</string>
@@ -239,7 +239,7 @@
       <item>
        <widget class="PlainToolButton" name="f_underline">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Underline (CTRL+U)</string>
@@ -271,14 +271,14 @@
       <item>
        <widget class="Line" name="line_5">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
       <item>
        <widget class="PlainToolButton" name="f_list_bullet">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Bullet list (CTRL+-)</string>
@@ -300,7 +300,7 @@
       <item>
        <widget class="PlainToolButton" name="f_list_ordered">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Ordered list (CTRL+=)</string>
@@ -322,7 +322,7 @@
       <item>
        <widget class="PlainToolButton" name="f_indent_dec">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Decrease indentation (CTRL+,)</string>
@@ -341,7 +341,7 @@
       <item>
        <widget class="PlainToolButton" name="f_indent_inc">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Increase indentation (CTRL+.)</string>
@@ -360,12 +360,12 @@
       <item>
        <widget class="Line" name="line_2">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="ColorToolButton" name="f_fgcolor">
+       <widget class="ColorIconToolButton" name="f_fgcolor">
         <property name="minimumSize">
          <size>
           <width>16</width>
@@ -379,7 +379,7 @@
          </size>
         </property>
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Text foreground color</string>
@@ -393,7 +393,7 @@
        </widget>
       </item>
       <item>
-       <widget class="ColorToolButton" name="f_bgcolor">
+       <widget class="ColorIconToolButton" name="f_bgcolor">
         <property name="minimumSize">
          <size>
           <width>16</width>
@@ -407,7 +407,7 @@
          </size>
         </property>
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Text background color</string>
@@ -423,7 +423,7 @@
       <item>
        <widget class="QComboBox" name="f_fontsize">
         <property name="focusPolicy">
-         <enum>Qt::ClickFocus</enum>
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
         </property>
         <property name="toolTip">
          <string>Font size</string>
@@ -436,7 +436,7 @@
       <item>
        <widget class="Line" name="line_6">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Orientation::Vertical</enum>
         </property>
        </widget>
       </item>
@@ -446,7 +446,7 @@
       <item>
        <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -491,7 +491,7 @@
    <item>
     <widget class="MTextEdit" name="f_textedit">
      <property name="autoFormatting">
-      <set>QTextEdit::AutoNone</set>
+      <set>QTextEdit::AutoFormattingFlag::AutoNone</set>
      </property>
      <property name="tabChangesFocus">
       <bool>true</bool>
@@ -502,7 +502,7 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>ColorToolButton</class>
+   <class>ColorIconToolButton</class>
    <extends>QToolButton</extends>
    <header>colortoolbutton.h</header>
   </customwidget>

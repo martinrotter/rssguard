@@ -12,22 +12,13 @@
 #include <QPainter>
 #include <QPainterPath>
 
-Label::Label(const QString& name, const QColor& color, RootItem* parent_item) : Label(parent_item) {
-  setColor(color);
+Label::Label(const QString& name, const QIcon& icon, RootItem* parent_item) : Label(parent_item) {
+  setIcon(icon);
   setTitle(name);
 }
 
 Label::Label(RootItem* parent_item) : RootItem(parent_item) {
   setKind(RootItem::Kind::Label);
-}
-
-QColor Label::color() const {
-  return m_color;
-}
-
-void Label::setColor(const QColor& color) {
-  setIcon(IconFactory::generateIcon(color));
-  m_color = color;
 }
 
 int Label::countOfUnreadMessages() const {

@@ -75,21 +75,12 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   m_ui.m_cmbEncoding->addItems(encodings);
 
   // Setup menu & actions for icon selection.
-  m_iconMenu = new QMenu(tr("Icon selection"), this);
-  m_actionLoadIconFromFile =
-    new QAction(qApp->icons()->fromTheme(QSL("image-x-generic")), tr("Select icon from file..."), this);
-  m_actionLoadIconFromUrl = new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads"), QSL("download")),
-                                        tr("Download icon from URL..."),
-                                        this);
-  m_actionUseDefaultIcon =
-    new QAction(qApp->icons()->fromTheme(QSL("application-rss+xml")), tr("Use default icon from icon theme"), this);
   m_actionFetchIcon =
     new QAction(qApp->icons()->fromTheme(QSL("emblem-downloads"), QSL("download")), tr("Fetch icon from feed"), this);
-  m_iconMenu->addAction(m_actionFetchIcon);
-  m_iconMenu->addAction(m_actionLoadIconFromUrl);
-  m_iconMenu->addAction(m_actionLoadIconFromFile);
-  m_iconMenu->addAction(m_actionUseDefaultIcon);
-  m_ui.m_btnIcon->setMenu(m_iconMenu);
+
+  m_ui.m_btnIcon->setDefaultIcon(QIcon());
+  m_ui.m_btnIcon->setColorOnlyMode(false);
+  m_ui.m_btnIcon->appendExtraAction(m_actionFetchIcon);
 
   m_ui.m_txtSource->textEdit()->setFocus(Qt::FocusReason::TabFocusReason);
 
@@ -110,9 +101,6 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   connect(m_ui.m_txtPostProcessScript->textEdit(), &QPlainTextEdit::textChanged, this, [this]() {
     onPostProcessScriptChanged(m_ui.m_txtPostProcessScript->textEdit()->toPlainText());
   });
-  connect(m_actionLoadIconFromFile, &QAction::triggered, this, &StandardFeedDetails::onLoadIconFromFile);
-  connect(m_actionUseDefaultIcon, &QAction::triggered, this, &StandardFeedDetails::onUseDefaultIcon);
-  connect(m_actionLoadIconFromUrl, &QAction::triggered, this, &StandardFeedDetails::onLoadIconFromUrl);
 
   setTabOrder(m_ui.m_cmbParentCategory, m_ui.m_cmbType);
   setTabOrder(m_ui.m_cmbType, m_ui.m_cmbEncoding);
@@ -136,48 +124,6 @@ StandardFeedDetails::StandardFeedDetails(QWidget* parent) : QWidget(parent) {
   onDescriptionChanged({});
   onUrlChanged({});
   onPostProcessScriptChanged({});
-}
-
-void StandardFeedDetails::onLoadIconFromUrl() {
-  bool ok = false;
-  QString src = qApp->clipboard()->text().simplified().replace(QRegularExpression("\\r|\\n"), QString());
-
-  if (src.isEmpty() && sourceType() == StandardFeed::SourceType::Url) {
-    src = m_ui.m_txtSource->textEdit()->toPlainText();
-  }
-
-  QString url = QInputDialog::getText(window(),
-                                      tr("Enter URL"),
-                                      tr("Enter direct URL pointing to the image"),
-                                      QLineEdit::EchoMode::Normal,
-                                      src,
-                                      &ok);
-
-  if (!ok || url.isEmpty()) {
-    return;
-  }
-
-  QList<IconLocation> icon_loc = {IconLocation(url, true), IconLocation(url, false)};
-  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QPixmap pixmap;
-
-  if (NetworkFactory::downloadIcon(icon_loc,
-                                   timeout,
-                                   pixmap,
-                                   {},
-                                   m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy()
-                                     ? m_account->networkProxy()
-                                     : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy()) ==
-      QNetworkReply::NetworkError::NoError) {
-    m_ui.m_btnIcon->setIcon(QIcon(pixmap));
-  }
-  else {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         GuiMessage(tr("Icon not fetched"),
-                                    tr("Icon was not fetched due to network error."),
-                                    QSystemTrayIcon::MessageIcon::Critical),
-                         GuiMessageDestination(true, true));
-  }
 }
 
 void StandardFeedDetails::guessIconOnly(StandardFeed::SourceType source_type,
@@ -351,29 +297,6 @@ void StandardFeedDetails::onPostProcessScriptChanged(const QString& new_pp) {
   }
 }
 
-void StandardFeedDetails::onLoadIconFromFile() {
-  auto supported_formats = QImageReader::supportedImageFormats();
-  auto list_formats = qlinq::from(supported_formats).select([](const QByteArray& frmt) {
-    return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
-  });
-
-  QString fil = FileDialog::openFileName(this,
-                                         tr("Select icon file for the feed"),
-                                         qApp->homeFolder(),
-                                         {},
-                                         tr("Images (%1)").arg(list_formats.toList().join(QL1C(' '))),
-                                         nullptr,
-                                         GENERAL_REMEMBERED_PATH);
-
-  if (!fil.isEmpty()) {
-    m_ui.m_btnIcon->setIcon(QIcon(fil));
-  }
-}
-
-void StandardFeedDetails::onUseDefaultIcon() {
-  m_ui.m_btnIcon->setIcon(QIcon());
-}
-
 StandardFeed::SourceType StandardFeedDetails::sourceType() const {
   return m_ui.m_cmbSourceType->currentData().value<StandardFeed::SourceType>();
 }
@@ -385,16 +308,11 @@ void StandardFeedDetails::setNetworkDetails(StandardFeedNetworkDetails* network_
 void StandardFeedDetails::prepareForNewFeed(ServiceRoot* account, RootItem* parent_to_select, const QString& url) {
   m_account = account;
 
-  auto icons = account->getSubTreeIcons();
-  auto* icons_selection = IconFactory::iconSelectionMenu(m_iconMenu, icons, [this](const QIcon& icon) {
-    m_ui.m_btnIcon->setIcon(icon);
-  });
-
-  m_iconMenu->addAction(icons_selection);
-
-  // Make sure that "default" icon is used as the default option for new
-  // feed.
-  m_actionUseDefaultIcon->trigger();
+  m_ui.m_btnIcon->setProxy(m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy()
+                             ? m_account->networkProxy()
+                             : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy());
+  m_ui.m_btnIcon->setAdditionalIcons(account->getSubTreeIcons());
+  m_ui.m_btnIcon->setIcon(QIcon());
 
   int default_encoding_index = m_ui.m_cmbEncoding->findText(QSL(DEFAULT_FEED_ENCODING));
 
@@ -430,12 +348,10 @@ void StandardFeedDetails::prepareForNewFeed(ServiceRoot* account, RootItem* pare
 void StandardFeedDetails::setExistingFeed(ServiceRoot* account, StandardFeed* feed) {
   m_account = account;
 
-  auto icons = account->getSubTreeIcons();
-  auto* icons_selection = IconFactory::iconSelectionMenu(m_iconMenu, icons, [this](const QIcon& icon) {
-    m_ui.m_btnIcon->setIcon(icon);
-  });
-
-  m_iconMenu->addAction(icons_selection);
+  m_ui.m_btnIcon->setProxy(m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy()
+                             ? m_account->networkProxy()
+                             : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy());
+  m_ui.m_btnIcon->setAdditionalIcons(account->getSubTreeIcons());
 
   m_ui.m_cmbSourceType->setCurrentIndex(m_ui.m_cmbSourceType->findData(QVariant::fromValue(feed->sourceType())));
   m_ui.m_cmbParentCategory->setCurrentIndex(m_ui.m_cmbParentCategory->findData(QVariant::fromValue(feed->parent())));
