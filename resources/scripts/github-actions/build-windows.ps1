@@ -69,7 +69,7 @@ else {
 $is_qt_6 = $qt_version.StartsWith("6")
 $qt_arch = "win64_" + $qt_arch_base
 
-$maria_version = "11.8.5"
+$maria_version = "11.8.6"
 $maria_link = "https://archive.mariadb.org/mariadb-$maria_version/winx64-packages/mariadb-$maria_version-winx64.zip"
 $maria_output = "maria.zip"
 
