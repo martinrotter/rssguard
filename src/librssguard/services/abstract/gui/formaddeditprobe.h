@@ -12,6 +12,7 @@ namespace Ui {
 }
 
 class Search;
+class ServiceRoot;
 
 class RSSGUARD_DLLSPEC FormAddEditProbe : public QDialog {
     Q_OBJECT
@@ -20,7 +21,7 @@ class RSSGUARD_DLLSPEC FormAddEditProbe : public QDialog {
     explicit FormAddEditProbe(QWidget* parent = nullptr);
 
   public slots:
-    Search* execForAdd();
+    Search* execForAdd(ServiceRoot* account);
     bool execForEdit(Search* prb);
 
   private:

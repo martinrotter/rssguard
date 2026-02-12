@@ -291,12 +291,12 @@ void DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
 void DatabaseQueries::updateProbe(const QSqlDatabase& db, Search* probe) {
   SqlQuery q(db);
 
-  q.prepare(QSL("UPDATE Probes SET name = :name, type = :type, fltr = :fltr, color = :color "
+  q.prepare(QSL("UPDATE Probes SET name = :name, type = :type, fltr = :fltr, icon = :icon "
                 "WHERE id = :id AND account_id = :account_id;"));
   q.bindValue(QSL(":name"), probe->title());
   q.bindValue(QSL(":type"), int(probe->type()));
   q.bindValue(QSL(":fltr"), probe->filter());
-  q.bindValue(QSL(":color"), probe->color().name());
+  q.bindValue(QSL(":icon"), IconFactory::toByteArray(probe->icon()));
   q.bindValue(QSL(":id"), probe->id());
   q.bindValue(QSL(":account_id"), probe->account()->accountId());
 
@@ -306,12 +306,12 @@ void DatabaseQueries::updateProbe(const QSqlDatabase& db, Search* probe) {
 void DatabaseQueries::createProbe(const QSqlDatabase& db, Search* probe, int account_id) {
   SqlQuery q(db);
 
-  q.prepare(QSL("INSERT INTO Probes (name, type, color, fltr, account_id) "
-                "VALUES (:name, :type, :color, :fltr, :account_id);"));
+  q.prepare(QSL("INSERT INTO Probes (name, type, icon, fltr, account_id) "
+                "VALUES (:name, :type, :icon, :fltr, :account_id);"));
   q.bindValue(QSL(":name"), probe->title());
   q.bindValue(QSL(":type"), int(probe->type()));
   q.bindValue(QSL(":fltr"), probe->filter());
-  q.bindValue(QSL(":color"), probe->color().name());
+  q.bindValue(QSL(":icon"), IconFactory::toByteArray(probe->icon()));
   q.bindValue(QSL(":account_id"), account_id);
 
   q.exec();
@@ -332,7 +332,7 @@ QList<Search*> DatabaseQueries::getProbesForAccount(const QSqlDatabase& db, int 
     Search* prob = new Search(q.value(QSL("name")).toString(),
                               Search::Type(q.value(QSL("type")).toInt()),
                               q.value(QSL("fltr")).toString(),
-                              QColor(q.value(QSL("color")).toString()));
+                              IconFactory::fromByteArray(q.value(QSL("icon")).toByteArray()));
 
     prob->setId(q.value(QSL("id")).toInt());
     prob->setCustomId(QString::number(prob->id()));

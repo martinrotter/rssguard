@@ -119,7 +119,7 @@ CREATE TABLE LabelsInMessages (
 CREATE TABLE Probes (
   id                  $$,
   name                VARCHAR(200)    NOT NULL CHECK (name != ''),
-  color               VARCHAR(7),
+  icon                ^^,
   type                INTEGER         NOT NULL CHECK (type >= 0),
   fltr                TEXT            NOT NULL CHECK (fltr != ''), /* Regular expression or SQL WHERE clause. */
   account_id          INTEGER         NOT NULL,

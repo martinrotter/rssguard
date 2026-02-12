@@ -10,9 +10,6 @@
 class RSSGUARD_DLLSPEC Search : public RootItem {
     Q_OBJECT
 
-    // Added for message filtering with labels.
-    Q_PROPERTY(QColor color READ color)
-
   public:
     enum class Type {
       Regex = 0,
@@ -22,12 +19,9 @@ class RSSGUARD_DLLSPEC Search : public RootItem {
     explicit Search(const QString& name,
                     Type type,
                     const QString& filter,
-                    const QColor& color,
+                    const QIcon& icon,
                     RootItem* parent_item = nullptr);
     explicit Search(RootItem* parent_item = nullptr);
-
-    QColor color() const;
-    void setColor(const QColor& color);
 
     QString filter() const;
     void setFilter(const QString& new_filter);
@@ -51,7 +45,6 @@ class RSSGUARD_DLLSPEC Search : public RootItem {
   private:
     Type m_type;
     QString m_filter;
-    QColor m_color;
     int m_totalCount = -1;
     int m_unreadCount = -1;
 };

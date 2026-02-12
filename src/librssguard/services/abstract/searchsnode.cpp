@@ -53,7 +53,7 @@ int SearchsNode::countOfAllMessages() const {
 
 void SearchsNode::createProbe() {
   FormAddEditProbe frm(qApp->mainFormWidget());
-  Search* new_prb = frm.execForAdd();
+  Search* new_prb = frm.execForAdd(account());
 
   if (new_prb != nullptr) {
     try {

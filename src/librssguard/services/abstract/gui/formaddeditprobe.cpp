@@ -9,6 +9,8 @@
 
 FormAddEditProbe::FormAddEditProbe(QWidget* parent) : QDialog(parent), m_editableProbe(nullptr) {
   m_ui.setupUi(this);
+
+  m_ui.m_btnColor->setColorOnlyMode(false);
   m_ui.m_txtName->lineEdit()->setPlaceholderText(tr("Name for your query"));
   m_ui.m_txtFilter->lineEdit()->setPlaceholderText(tr("Regular expression"));
 
@@ -42,9 +44,10 @@ FormAddEditProbe::FormAddEditProbe(QWidget* parent) : QDialog(parent), m_editabl
   emit m_ui.m_txtFilter->lineEdit()->textChanged({});
 }
 
-Search* FormAddEditProbe::execForAdd() {
+Search* FormAddEditProbe::execForAdd(ServiceRoot* account) {
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("tag-new")), tr("Create new query"));
 
+  m_ui.m_btnColor->setAdditionalIcons(account->getSubTreeIcons());
   m_ui.m_btnColor->setRandomColor();
   m_ui.m_txtName->lineEdit()->setText(tr("Hot stuff"));
   m_ui.m_txtFilter->setFocus();
@@ -55,7 +58,7 @@ Search* FormAddEditProbe::execForAdd() {
     return new Search(m_ui.m_txtName->lineEdit()->text(),
                       m_ui.m_rbTypeRegex->isChecked() ? Search::Type::Regex : Search::Type::SqlWhereClause,
                       m_ui.m_txtFilter->lineEdit()->text(),
-                      m_ui.m_btnColor->color());
+                      m_ui.m_btnColor->icon());
   }
   else {
     return nullptr;
@@ -69,8 +72,9 @@ bool FormAddEditProbe::execForEdit(Search* prb) {
 
   m_editableProbe = prb;
 
+  m_ui.m_btnColor->setAdditionalIcons(prb->account()->getSubTreeIcons());
   m_ui.m_rbTypeSqlClause->setChecked(prb->type() == Search::Type::SqlWhereClause);
-  m_ui.m_btnColor->setColor(prb->color());
+  m_ui.m_btnColor->setIcon(prb->icon());
   m_ui.m_txtName->lineEdit()->setText(prb->title());
   m_ui.m_txtFilter->lineEdit()->setText(prb->filter());
   m_ui.m_txtFilter->setFocus();
@@ -79,7 +83,7 @@ bool FormAddEditProbe::execForEdit(Search* prb) {
 
   if (exit_code == QDialog::DialogCode::Accepted) {
     m_editableProbe->setType(m_ui.m_rbTypeRegex->isChecked() ? Search::Type::Regex : Search::Type::SqlWhereClause);
-    m_editableProbe->setColor(m_ui.m_btnColor->color());
+    m_editableProbe->setIcon(m_ui.m_btnColor->icon());
     m_editableProbe->setFilter(m_ui.m_txtFilter->lineEdit()->text());
     m_editableProbe->setTitle(m_ui.m_txtName->lineEdit()->text());
     return true;

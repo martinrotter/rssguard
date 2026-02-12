@@ -11,10 +11,10 @@
 #include <QPainter>
 #include <QPainterPath>
 
-Search::Search(const QString& name, Type type, const QString& filter, const QColor& color, RootItem* parent_item)
+Search::Search(const QString& name, Type type, const QString& filter, const QIcon& icon, RootItem* parent_item)
   : Search(parent_item) {
   setType(type);
-  setColor(color);
+  setIcon(icon);
   setTitle(name);
   setFilter(filter);
 }
@@ -22,15 +22,6 @@ Search::Search(const QString& name, Type type, const QString& filter, const QCol
 Search::Search(RootItem* parent_item)
   : RootItem(parent_item), m_type(Type::Regex), m_totalCount(-1), m_unreadCount(-1) {
   setKind(RootItem::Kind::Probe);
-}
-
-QColor Search::color() const {
-  return m_color;
-}
-
-void Search::setColor(const QColor& color) {
-  setIcon(IconFactory::generateIcon(color));
-  m_color = color;
 }
 
 int Search::countOfUnreadMessages() const {
