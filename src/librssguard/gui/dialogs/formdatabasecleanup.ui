@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>444</width>
-    <height>359</height>
+    <height>390</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,7 +23,7 @@
       <item row="4" column="0" colspan="3">
        <widget class="QCheckBox" name="m_checkShrink">
         <property name="text">
-         <string>Optimize database file</string>
+         <string>Optimize and fix database file</string>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -70,7 +70,7 @@
       <item row="5" column="2">
        <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Horizontal</enum>
+         <enum>Qt::Orientation::Horizontal</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -142,7 +142,7 @@
       <item>
        <widget class="LabelWithStatus" name="m_lblResult" native="true">
         <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
        </widget>
       </item>
@@ -155,7 +155,7 @@
    <item>
     <spacer name="verticalSpacer">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -168,10 +168,10 @@
    <item>
     <widget class="QDialogButtonBox" name="m_btnBox">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Close|QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::StandardButton::Close|QDialogButtonBox::StandardButton::Ok</set>
      </property>
     </widget>
    </item>

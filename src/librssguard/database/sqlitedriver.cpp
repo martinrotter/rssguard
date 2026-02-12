@@ -29,7 +29,8 @@ bool SqliteDriver::vacuumDatabase() {
 
   SqlQuery query_vacuum(database);
 
-  return query_vacuum.exec(QSL("PRAGMA optimize;"), false) && query_vacuum.exec(QSL("VACUUM;"), false);
+  return query_vacuum.exec(QSL("REINDEX;"), false) && query_vacuum.exec(QSL("PRAGMA optimize;"), false) &&
+         query_vacuum.exec(QSL("VACUUM;"), false);
 }
 
 QString SqliteDriver::ddlFilePrefix() const {
