@@ -26,6 +26,13 @@ RSS Guard Documentation!
 
    contrib/*
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Troubleshooting
+   :glob:
+
+   troubleshooting/*
+
 Indices and tables
 ------------------
 
