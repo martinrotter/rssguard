@@ -390,62 +390,62 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="23"/>
       <source>Click me!</source>
-      <translation type="unfinished">Click me!</translation>
+      <translation>クリック！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="67"/>
       <source>Select new color</source>
-      <translation type="unfinished">Select new color</translation>
+      <translation>新しい色を選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="85"/>
       <source>Enter URL</source>
-      <translation type="unfinished">Enter URL</translation>
+      <translation>URL を入力</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="86"/>
       <source>Enter direct URL pointing to the image</source>
-      <translation type="unfinished">Enter direct URL pointing to the image</translation>
+      <translation>画像への直リンク（URL）を入力</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="109"/>
       <source>Icon not fetched</source>
-      <translation type="unfinished">Icon not fetched</translation>
+      <translation>アイコンを取得できませんでした</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="110"/>
       <source>Icon was not fetched due to network error.</source>
-      <translation type="unfinished">Icon was not fetched due to network error.</translation>
+      <translation>ネットワークエラーのためアイコンを取得できませんでした</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="125"/>
       <source>Select icon file</source>
-      <translation type="unfinished">Select icon file</translation>
+      <translation>アイコンファイルを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="128"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>画像 (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="140"/>
       <source>Select new &amp;color...</source>
-      <translation type="unfinished">Select new &amp;color...</translation>
+      <translation>新しい色を選択…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="149"/>
       <source>Load icon from &amp;file...</source>
-      <translation type="unfinished">Load icon from &amp;file...</translation>
+      <translation>ファイルからアイコンを読み込み…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="154"/>
       <source>Download icon from &amp;URL...</source>
-      <translation type="unfinished">Download icon from &amp;URL...</translation>
+      <translation>URL からアイコンをダウンロード…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="159"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>アイコンテーマのデフォルトアイコンを使用する</translation>
     </message>
   </context>
   <context>
@@ -532,7 +532,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="908"/>
       <source>invalid URL cannot be used to load file from cache</source>
-      <translation type="unfinished">invalid URL cannot be used to load file from cache</translation>
+      <translation>無効な URL はキャッシュからファイルを読み込むために使用できません</translation>
     </message>
   </context>
   <context>
@@ -1876,7 +1876,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
       <source>Optimize and fix database file</source>
-      <translation type="unfinished">Optimize and fix database file</translation>
+      <translation>データベースファイルを最適化して修正する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
@@ -1987,7 +1987,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="41"/>
       <source>Switch to advanced &amp;mode</source>
-      <translation type="unfinished">Switch to advanced &amp;mode</translation>
+      <translation>詳細モードに切り替え</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="43"/>
@@ -3168,13 +3168,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="66"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="453"/>
       <source>&amp;Import</source>
-      <translation type="unfinished">&amp;Import</translation>
+      <translation>インポート</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="76"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="457"/>
       <source>Export</source>
-      <translation type="unfinished">Export</translation>
+      <translation>エクスポート</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="106"/>
@@ -6466,7 +6466,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="131"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>画像 (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="158"/>
@@ -8520,7 +8520,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="22"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>アイコンテーマのデフォルトアイコンを使用する</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="33"/>
@@ -8539,7 +8539,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="57"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>画像 (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="72"/>
@@ -8578,13 +8578,13 @@ Use raw XML saving: %4
 Fetch article comments: %5
 HTTP/2: %6
 Fetch full articles: %7 (plain text only: %8)</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
+      <translation>エンコーディング: %1
+タイプ: %2
+後処理スクリプト: %3
+生のXML保存を使用: %4
+記事のコメントを取得: %5
 HTTP/2: %6
-Fetch full articles: %7 (plain text only: %8)</translation>
+記事全文を取得: %7 (プレーンテキストのみ: %8)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="88"/>
