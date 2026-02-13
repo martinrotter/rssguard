@@ -21,28 +21,64 @@ DatabaseDriver::DriverType SqliteDriver::driverType() const {
   return DriverType::SQLite;
 }
 
-bool SqliteDriver::vacuumDatabase() {
-  QSqlDatabase database;
+qint64 SqliteDriver::databaseDataSize() {
+  return qApp->database()->worker()->read<qint64>([&](const QSqlDatabase& db) {
+    qint64 result = 1;
+    SqlQuery query(db);
 
-  saveDatabase();
-  database = connection(objectName());
+    if (query.exec(QSL("PRAGMA page_count;"), false)) {
+      query.next();
+      result *= query.value(0).value<qint64>();
+    }
+    else {
+      return qint64(0);
+    }
 
-  SqlQuery query_vacuum(database);
+    if (query.exec(QSL("PRAGMA page_size;"), false)) {
+      query.next();
+      result *= query.value(0).value<qint64>();
+    }
+    else {
+      return qint64(0);
+    }
 
-  return query_vacuum.exec(QSL("REINDEX;"), false) && query_vacuum.exec(QSL("PRAGMA optimize;"), false) &&
-         query_vacuum.exec(QSL("VACUUM;"), false);
+    return result;
+  });
 }
 
-QString SqliteDriver::ddlFilePrefix() const {
-  return QSL("sqlite");
+QString SqliteDriver::version() {
+  return qApp->database()->worker()->read<QString>([&](const QSqlDatabase& db) {
+    SqlQuery q(db);
+
+    q.exec(QSL("SELECT sqlite_version();"));
+    q.next();
+
+    return q.value(0).toString();
+  });
 }
 
 bool SqliteDriver::saveDatabase() {
   // Perform WAL checkpoint.
-  QSqlDatabase database = connection(objectName());
-  SqlQuery query_vacuum(database);
+  return qApp->database()->worker()->write<bool>([&](const QSqlDatabase& db) {
+    SqlQuery query_vacuum(db);
 
-  return query_vacuum.exec(QSL("PRAGMA wal_checkpoint(TRUNCATE);"), false);
+    return query_vacuum.exec(QSL("PRAGMA wal_checkpoint(TRUNCATE);"));
+  });
+}
+
+bool SqliteDriver::vacuumDatabase() {
+  saveDatabase();
+
+  return qApp->database()->worker()->write<bool>([&](const QSqlDatabase& db) {
+    SqlQuery query_vacuum(db);
+
+    return query_vacuum.exec(QSL("REINDEX;"), false) && query_vacuum.exec(QSL("PRAGMA optimize;"), false) &&
+           query_vacuum.exec(QSL("VACUUM;"), false);
+  });
+}
+
+QString SqliteDriver::ddlFilePrefix() const {
+  return QSL("sqlite");
 }
 
 QSqlDatabase SqliteDriver::connection(const QString& connection_name) {
@@ -225,40 +261,6 @@ void SqliteDriver::setPragmas(SqlQuery& query) {
   query.exec(QSL("PRAGMA temp_store = MEMORY;"));
   query.exec(QSL("PRAGMA journal_mode = WAL;"));
   query.exec(QSL("PRAGMA busy_timeout = 5000;"));
-}
-
-qint64 SqliteDriver::databaseDataSize() {
-  QSqlDatabase database = connection(metaObject()->className());
-  qint64 result = 1;
-  SqlQuery query(database);
-
-  if (query.exec(QSL("PRAGMA page_count;"), false)) {
-    query.next();
-    result *= query.value(0).value<qint64>();
-  }
-  else {
-    return 0;
-  }
-
-  if (query.exec(QSL("PRAGMA page_size;"), false)) {
-    query.next();
-    result *= query.value(0).value<qint64>();
-  }
-  else {
-    return 0;
-  }
-
-  return result;
-}
-
-QString SqliteDriver::version() {
-  QSqlDatabase database = connection(metaObject()->className());
-  SqlQuery q(database);
-
-  q.exec(QSL("SELECT sqlite_version();"));
-  q.next();
-
-  return q.value(0).toString();
 }
 
 QString SqliteDriver::humanDriverType() const {
