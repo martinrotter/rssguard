@@ -50,6 +50,8 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   m_ui.m_treeFeeds->setIndentation(FEEDS_VIEW_INDENTATION);
   m_ui.m_treeFeeds->setModel(m_feedsModel);
 
+  m_ui.m_btnImport->setIcon(qApp->icons()->fromTheme(QSL("document-import")));
+  m_ui.m_btnExport->setIcon(qApp->icons()->fromTheme(QSL("document-export")));
   m_ui.m_btnCheckAll->setIcon(qApp->icons()->fromTheme(QSL("dialog-yes"), QSL("edit-select-all")));
   m_ui.m_btnUncheckAll->setIcon(qApp->icons()->fromTheme(QSL("dialog-no"), QSL("edit-select-none")));
   m_ui.m_btnAddNew->setIcon(qApp->icons()->fromTheme(QSL("list-add")));

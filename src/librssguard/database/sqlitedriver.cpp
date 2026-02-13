@@ -38,8 +38,11 @@ QString SqliteDriver::ddlFilePrefix() const {
 }
 
 bool SqliteDriver::saveDatabase() {
-  // TODO: Perform WAL checkpoint.
-  return true;
+  // Perform WAL checkpoint.
+  QSqlDatabase database = connection(objectName());
+  SqlQuery query_vacuum(database);
+
+  return query_vacuum.exec(QSL("PRAGMA wal_checkpoint(TRUNCATE);"), false);
 }
 
 QSqlDatabase SqliteDriver::connection(const QString& connection_name) {

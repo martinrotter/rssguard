@@ -19,9 +19,15 @@
      <property name="orientation">
       <enum>Qt::Orientation::Horizontal</enum>
      </property>
+     <property name="handleWidth">
+      <number>1</number>
+     </property>
      <widget class="QSplitter" name="splitter">
       <property name="orientation">
        <enum>Qt::Orientation::Vertical</enum>
+      </property>
+      <property name="handleWidth">
+       <number>1</number>
       </property>
       <widget class="QWidget" name="layoutWidget">
        <layout class="QGridLayout" name="gridLayout">
@@ -51,6 +57,39 @@
         </item>
         <item row="1" column="0">
          <layout class="QHBoxLayout" name="horizontalLayout_6">
+          <item>
+           <widget class="QToolButton" name="m_btnImport">
+            <property name="toolTip">
+             <string>New filter</string>
+            </property>
+            <property name="text">
+             <string>&amp;Import</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QToolButton" name="m_btnExport">
+            <property name="toolTip">
+             <string>New filter</string>
+            </property>
+            <property name="text">
+             <string>Export</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>40</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
           <item>
            <widget class="QToolButton" name="m_btnAddNew">
             <property name="toolTip">
@@ -299,6 +338,9 @@
               <property name="text">
                <string>URL</string>
               </property>
+              <property name="buddy">
+               <cstring>m_tbMessageUrl</cstring>
+              </property>
              </widget>
             </item>
             <item row="0" column="1">
@@ -319,6 +361,9 @@
              <widget class="QLabel" name="label_2">
               <property name="text">
                <string>Author</string>
+              </property>
+              <property name="buddy">
+               <cstring>m_tbMessageAuthor</cstring>
               </property>
              </widget>
             </item>
@@ -356,6 +401,9 @@
              <widget class="QLabel" name="label_3">
               <property name="text">
                <string>DB ID &amp; Custom ID</string>
+              </property>
+              <property name="buddy">
+               <cstring>m_tbMessageDbId</cstring>
               </property>
              </widget>
             </item>
@@ -427,10 +475,15 @@
  </customwidgets>
  <tabstops>
   <tabstop>m_listFilters</tabstop>
-  <tabstop>m_btnAddNew</tabstop>
-  <tabstop>m_btnRemoveSelected</tabstop>
   <tabstop>m_cmbAccounts</tabstop>
   <tabstop>m_treeFeeds</tabstop>
+  <tabstop>m_btnImport</tabstop>
+  <tabstop>m_btnExport</tabstop>
+  <tabstop>m_btnAddNew</tabstop>
+  <tabstop>m_btnRemoveSelected</tabstop>
+  <tabstop>m_btnEnable</tabstop>
+  <tabstop>m_btnUp</tabstop>
+  <tabstop>m_btnDown</tabstop>
   <tabstop>m_btnCheckAll</tabstop>
   <tabstop>m_btnUncheckAll</tabstop>
   <tabstop>m_txtTitle</tabstop>
@@ -441,6 +494,13 @@
   <tabstop>m_btnDetailedHelp</tabstop>
   <tabstop>m_twMessages</tabstop>
   <tabstop>m_treeExistingMessages</tabstop>
+  <tabstop>m_twDetails</tabstop>
+  <tabstop>m_tbMessageUrl</tabstop>
+  <tabstop>m_tbMessageAuthor</tabstop>
+  <tabstop>m_tbMessageDbId</tabstop>
+  <tabstop>m_tbMessageCustomId</tabstop>
+  <tabstop>m_tbMessageContents</tabstop>
+  <tabstop>m_txtErrors</tabstop>
  </tabstops>
  <resources/>
  <connections>
