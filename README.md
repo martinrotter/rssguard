@@ -55,6 +55,7 @@ Every contribution helps make RSS Guard better for everyone.
 
 ---
 
-© 2011–2025 Martin Rotter. RSS Guard is open-source software licensed under the [GNU GPLv3](LICENSE.md).
+© 2011–2026 Martin Rotter. RSS Guard is open-source software licensed under the [GNU GPLv3](LICENSE.md).
+
 
 
