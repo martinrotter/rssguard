@@ -60,6 +60,7 @@ Fixed:
 * Fixed the behavior of sample notification. (#1886)
 * `Accept-Language` HTTP header is explicitly set to RSS Guard active locale. (#1870)¨
 * Cannot create duplicate labels anymore. (#972)
+* Properly HTML-escape feed title in some places. (#2010)
 * Some fixes around toolbar buttons that were not working. (#1834)
 * Fixed handling of article URLs with custom ports. (#1802)
 * Fixed handling of some XML entities. (#1770)
