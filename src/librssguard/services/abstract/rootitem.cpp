@@ -100,16 +100,16 @@ QVariant RootItem::data(int column, int role) const {
   switch (role) {
     case Qt::ItemDataRole::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
-        QString tool_tip = QSL("<b>%1</b>").arg(m_title);
+        QString tool_tip = QSL("<h2><b>%1</b></h2>").arg(m_title.toHtmlEscaped());
 
         if (!m_description.isEmpty()) {
-          tool_tip += QL1S("\n") + m_description;
+          tool_tip += QSL("<p>%1</p>").arg(m_description);
         }
 
         QString extra_tooltip = additionalTooltip();
 
         if (!extra_tooltip.isEmpty()) {
-          tool_tip += QL1S("\n\n") + extra_tooltip;
+          tool_tip += QSL("<p>%1</p>").arg(extra_tooltip);
         }
 
         return tool_tip.replace(QSL("\n"), QSL("<br />"));

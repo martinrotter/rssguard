@@ -651,7 +651,11 @@ QString FeedDownloadResults::overview(int how_many_feeds) const {
       continue;
     }
 
+#if defined(Q_OS_LINUX)
+    result.append(fd->title().toHtmlEscaped() + QSL(": ") + QString::number(msgs.size()));
+#else
     result.append(fd->title() + QSL(": ") + QString::number(msgs.size()));
+#endif
   }
 
   QString res_str = result.join(QSL("\n"));

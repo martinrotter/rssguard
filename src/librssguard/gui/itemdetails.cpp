@@ -27,26 +27,16 @@ void ItemDetails::loadItemDetails(RootItem* item) {
 
   if (item == nullptr) {
     m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH)
-                                .scaled(32,
-                                        32,
+                                .scaled(48,
+                                        48,
                                         Qt::AspectRatioMode::KeepAspectRatio,
                                         Qt::TransformationMode::SmoothTransformation));
     m_ui.m_txtDetails->setText(QSL("<b>%1</b>").arg(QSL(APP_LONG_NAME)));
   }
   else {
-    QString tool_tip = QSL("<b>%1</b>").arg(item->title());
-    QString desc = item->description();
-    QString extra_tooltip = item->additionalTooltip();
+    QString tool_tip = item->data(FDS_MODEL_TITLE_INDEX, Qt::ItemDataRole::ToolTipRole).toString();
 
-    if (!desc.isEmpty()) {
-      tool_tip += QL1S("<br/><br/>") + desc.replace(QSL("\n"), QSL("<br/>"));
-    }
-
-    if (!extra_tooltip.isEmpty()) {
-      tool_tip += QL1S("<br/><br/>") + extra_tooltip.replace(QSL("\n"), QSL("<br/>"));
-    }
-
-    m_ui.m_lblIcon->setPixmap(item->fullIcon().pixmap({32, 32}));
+    m_ui.m_lblIcon->setPixmap(item->fullIcon().pixmap({48, 48}));
     m_ui.m_txtDetails->setText(tool_tip);
   }
 }

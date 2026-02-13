@@ -272,7 +272,7 @@ QString GreaderServiceRoot::additionalTooltip() const {
   QString source_str = QUrl(m_network->baseUrl()).isValid() ? QSL("<a href=\"%1\">%1</a>").arg(m_network->baseUrl())
                                                             : m_network->baseUrl();
 
-  return QSL("%1\n\n").arg(source_str) + ServiceRoot::additionalTooltip();
+  return source_str + QSL("\n\n") + ServiceRoot::additionalTooltip();
 }
 
 void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {

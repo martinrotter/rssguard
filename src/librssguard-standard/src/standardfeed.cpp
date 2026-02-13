@@ -81,7 +81,7 @@ QString StandardFeed::additionalTooltip() const {
             "Use raw XML saving: %4\n"
             "Fetch article comments: %5\n"
             "HTTP/2: %6\n"
-            "Fetch full articles: %7 (plain text only: %8)\n")
+            "Fetch full articles: %7 (plain text only: %8)")
            .arg(encoding(),
                 StandardFeed::typeToString(type()),
                 m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
