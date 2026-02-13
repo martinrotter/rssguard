@@ -46,6 +46,7 @@ class RSSGUARD_DLLSPEC DatabaseWorker : public QObject {
 template <typename T>
 inline T DatabaseWorker::write(const std::function<T(const QSqlDatabase&)>& func) {
   T res;
+  std::exception_ptr eptr = nullptr;
 
   QMetaObject::invokeMethod(
     this,
@@ -57,9 +58,18 @@ inline T DatabaseWorker::write(const std::function<T(const QSqlDatabase&)>& func
 
       qDebugNN << LOGSEC_DB << "DB write job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
 
-      res = func(m_dbWriter);
+      try {
+        res = func(m_dbWriter);
+      }
+      catch (...) {
+        eptr = std::current_exception();
+      }
     },
     Qt::ConnectionType::BlockingQueuedConnection);
+
+  if (eptr) {
+    std::rethrow_exception(eptr);
+  }
 
   return res;
 }

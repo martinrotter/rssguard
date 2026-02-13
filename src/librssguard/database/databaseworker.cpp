@@ -31,6 +31,8 @@ void DatabaseWorker::read(const DbReadFn& func) {
 }
 
 void DatabaseWorker::write(const DbWriteFn& func) {
+  std::exception_ptr eptr = nullptr;
+
   QMetaObject::invokeMethod(
     this,
     [&]() {
@@ -40,9 +42,19 @@ void DatabaseWorker::write(const DbWriteFn& func) {
       }
 
       qDebugNN << LOGSEC_DB << "DB write job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
-      func(m_dbWriter);
+
+      try {
+        func(m_dbWriter);
+      }
+      catch (...) {
+        eptr = std::current_exception();
+      }
     },
     Qt::ConnectionType::BlockingQueuedConnection);
+
+  if (eptr) {
+    std::rethrow_exception(eptr);
+  }
 }
 
 QSqlDatabase DatabaseWorker::connectionForReading() const {

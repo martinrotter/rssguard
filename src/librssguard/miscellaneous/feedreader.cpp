@@ -145,6 +145,25 @@ QDateTime FeedReader::lastAutoUpdate() const {
   return m_lastAutoUpdate;
 }
 
+QByteArray FeedReader::exportMessageFilters() const {
+  QJsonArray arr;
+  auto flt = messageFilters();
+  auto flt_ordered = qlinq::from(flt).orderBy([](MessageFilter* f) {
+    return f->sortOrder();
+  });
+
+  for (auto* fltr : std::as_const(flt_ordered)) {
+    QJsonObject obj;
+
+    obj.insert(QSL("name"), fltr->name());
+    obj.insert(QSL("script"), fltr->script());
+
+    arr.append(obj);
+  }
+
+  return QJsonDocument(arr).toJson(QJsonDocument::JsonFormat::Indented);
+}
+
 void FeedReader::showMessageFiltersManager() {
   FormMessageFiltersManager manager(qApp->feedReader(),
                                     qApp->feedReader()->feedsModel()->serviceRoots(),

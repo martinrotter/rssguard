@@ -9,6 +9,7 @@
 #include "filtering/filterobjects.h"
 #include "filtering/messagefilter.h"
 #include "filtering/messagesforfiltersmodel.h"
+#include "gui/dialogs/filedialog.h"
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/jssyntaxhighlighter.h"
@@ -85,6 +86,9 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   m_ui.m_treeExistingMessages->header()->setSectionResizeMode(MFM_MODEL_TITLE, QHeaderView::ResizeMode::Stretch);
   m_ui.m_treeExistingMessages->header()->setSectionsMovable(false);
   m_ui.m_treeExistingMessages->header()->setStretchLastSection(false);
+
+  connect(m_ui.m_btnExport, &QToolButton::clicked, this, &FormMessageFiltersManager::exportFilters);
+  connect(m_ui.m_btnImport, &QToolButton::clicked, this, &FormMessageFiltersManager::importFilters);
 
   connect(m_ui.m_btnDown, &QToolButton::clicked, this, &FormMessageFiltersManager::moveFilterDown);
   connect(m_ui.m_btnUp, &QToolButton::clicked, this, &FormMessageFiltersManager::moveFilterUp);
@@ -177,6 +181,35 @@ bool FormMessageFiltersManager::eventFilter(QObject* watched, QEvent* event) {
   }
 
   return false;
+}
+
+void FormMessageFiltersManager::importFilters() {}
+
+void FormMessageFiltersManager::exportFilters() {
+  const QString filter = tr("Article filter files (*.json)");
+  const QString selected_file = FileDialog::saveFileName(qApp->mainFormWidget(),
+                                                         tr("Select file article filters export"),
+                                                         qApp->documentsFolder(),
+                                                         QSL("filters.json"),
+                                                         filter,
+                                                         nullptr,
+                                                         GENERAL_REMEMBERED_PATH);
+
+  if (selected_file.isEmpty()) {
+    return;
+  }
+
+  auto exported = m_reader->exportMessageFilters();
+
+  try {
+    IOFactory::writeFile(selected_file, exported);
+  }
+  catch (const ApplicationException& ex) {
+    MsgBox::show(this,
+                 QMessageBox::Icon::Critical,
+                 tr("Error"),
+                 tr("Cannot export filters, error: '%1'.").arg(ex.message()));
+  }
 }
 
 void FormMessageFiltersManager::moveFilterDown() {
@@ -314,14 +347,19 @@ void FormMessageFiltersManager::loadFilters() {
 
 void FormMessageFiltersManager::addNewFilter(const QString& filter_script) {
   try {
+    auto fltr_names = qlinq::from(m_reader->messageFilters())
+                        .select([](const MessageFilter* fl) {
+                          return fl->name();
+                        })
+                        .toList();
+
     auto* fltr =
-      m_reader->addMessageFilter(tr("New article filter"),
+      m_reader->addMessageFilter(TextFactory::ensureUniqueName(tr("New article filter"), fltr_names),
                                  filter_script.isEmpty() ? QSL("function filterMessage() { return Msg.Accept; }")
                                                          : filter_script);
     auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);
 
     it->setData(Qt::ItemDataRole::UserRole, QVariant::fromValue<MessageFilter*>(fltr));
-
     m_ui.m_listFilters->setCurrentRow(m_ui.m_listFilters->count() - 1);
   }
   catch (const ApplicationException& ex) {

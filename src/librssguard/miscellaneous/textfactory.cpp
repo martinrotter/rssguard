@@ -132,6 +132,21 @@ bool TextFactory::couldBeHtml(const QString& string) {
   return tag_exp.match(sstring).hasMatch() || Qt::mightBeRichText(sstring);
 }
 
+QString TextFactory::ensureUniqueName(const QString& name, const QStringList& names, const QString& append_format) {
+  if (!names.contains(name)) {
+    return name;
+  }
+
+  QString tmp_name = name;
+  int i = 1;
+
+  while (names.contains(tmp_name)) {
+    tmp_name = name + append_format.arg(i++);
+  }
+
+  return tmp_name;
+}
+
 QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_format) {
   static const QList<QPair<QString, QString>> tz_offsets = {
     {"UTC", "+0000"},  {"GMT", "+0000"},  {"UT", "+0000"},  {"BST", "+0100"}, {"CEST", "+0200"}, {"CET", "+0100"},

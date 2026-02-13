@@ -23,6 +23,10 @@ class RSSGUARD_DLLSPEC TextFactory {
 
     static bool couldBeHtml(const QString& string);
 
+    static QString ensureUniqueName(const QString& name,
+                                    const QStringList& names,
+                                    const QString& append_format = QSL("(%1)"));
+
     // Tries to parse input textual date/time representation.
     // Returns invalid date/time if processing fails.
     // NOTE: This method tries to always return time in UTC.

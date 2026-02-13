@@ -60,7 +60,7 @@
           <item>
            <widget class="QToolButton" name="m_btnImport">
             <property name="toolTip">
-             <string>New filter</string>
+             <string>Import filters</string>
             </property>
             <property name="text">
              <string>&amp;Import</string>
@@ -70,7 +70,7 @@
           <item>
            <widget class="QToolButton" name="m_btnExport">
             <property name="toolTip">
-             <string>New filter</string>
+             <string>Export filters</string>
             </property>
             <property name="text">
              <string>Export</string>

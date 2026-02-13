@@ -32,6 +32,8 @@ class FormMessageFiltersManager : public QDialog {
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
+    void importFilters();
+    void exportFilters();
     void moveFilterDown();
     void moveFilterUp();
     void openDocs();
