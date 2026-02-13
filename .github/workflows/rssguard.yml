@@ -41,17 +41,15 @@ jobs:
 
       - name: Determine version and tarball name
         run: |
-          if [[ "${GITHUB_REF}" == refs/tags/* ]]; then
+          # This GitHub Actions run was triggered by pushing a tag that starts with a number, so assume it's a stable release.
+          if [[ "$GITHUB_REF" =~ ^refs/tags/[0-9] ]]; then
             VERSION="${GITHUB_REF#refs/tags/}"
           else
-            VERSION="devbuild5"
+            VERSION="dev-$(git rev-parse --short HEAD)"
           fi
-
-          SHORT_SHA="$(git rev-parse --short HEAD)"
-          TAR_NAME="rssguard-${VERSION}-${SHORT_SHA}-src.tar.gz"
+          TAR_NAME="rssguard-${VERSION}-src.tar.gz"
 
           echo "VERSION=${VERSION}" >> $GITHUB_ENV
-          echo "SHORT_SHA=${SHORT_SHA}" >> $GITHUB_ENV
           echo "TAR_NAME=${TAR_NAME}" >> $GITHUB_ENV
 
       - name: Create full source tarball
