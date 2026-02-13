@@ -138,6 +138,23 @@ FormAccountDetails* StandardServiceRoot::accountSetupDialog() const {
   return new FormEditStandardAccount(qApp->mainFormWidget());
 }
 
+void StandardServiceRoot::updateItemTitle(RootItem* item, const QString& new_title) {
+  if (item->kind() == RootItem::Kind::Category) {
+    item->setTitle(new_title);
+
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createOverwriteCategory(db, item->toCategory(), accountId(), item->parent()->id());
+    });
+  }
+  else if (item->kind() == RootItem::Kind::Feed) {
+    item->setTitle(new_title);
+
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createOverwriteFeed(db, item->toFeed(), accountId(), item->parent()->id());
+    });
+  }
+}
+
 void StandardServiceRoot::editItems(const QList<RootItem*>& items) {
   auto feeds = qlinq::from(items).ofType<Feed*>();
 
@@ -199,8 +216,8 @@ void StandardServiceRoot::addNewFeed(RootItem* selected_item, const QString& url
   qApp->feedUpdateLock()->unlock();
 }
 
-Qt::ItemFlags StandardServiceRoot::additionalFlags() const {
-  return ServiceRoot::additionalFlags() | Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsDropEnabled;
+Qt::ItemFlags StandardServiceRoot::additionalFlags(int column) const {
+  return ServiceRoot::additionalFlags(column) | Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsDropEnabled;
 }
 
 void StandardServiceRoot::spaceHost(const QString& host, const QString& url) {

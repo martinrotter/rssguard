@@ -32,6 +32,7 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
 
     // Model implementation.
     virtual QVariant data(const QModelIndex& index, int role) const;
+    virtual bool setData(const QModelIndex& index, const QVariant& value, int role);
 
     // Drag & drop.
     virtual QMimeData* mimeData(const QModelIndexList& indexes) const;

@@ -419,8 +419,13 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
   return {feed, network_result};
 }
 
-Qt::ItemFlags StandardFeed::additionalFlags() const {
-  return Feed::additionalFlags() | Qt::ItemFlag::ItemIsDragEnabled;
+Qt::ItemFlags StandardFeed::additionalFlags(int column) const {
+  if (column == FDS_MODEL_TITLE_INDEX) {
+    return Feed::additionalFlags(column) | Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsEditable;
+  }
+  else {
+    return Feed::additionalFlags(column) | Qt::ItemFlag::ItemIsDragEnabled;
+  }
 }
 
 bool StandardFeed::performDragDropChange(RootItem* target_item) {

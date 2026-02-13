@@ -1013,7 +1013,7 @@ void FeedsView::setupAppearance() {
   setItemsExpandable(true);
   setAutoExpandDelay(800);
   setExpandsOnDoubleClick(true);
-  setEditTriggers(QAbstractItemView::EditTrigger::NoEditTriggers);
+  setEditTriggers(QAbstractItemView::EditTrigger::DoubleClicked | QAbstractItemView::EditTrigger::EditKeyPressed);
   setIndentation(FEEDS_VIEW_INDENTATION);
   setAcceptDrops(true);
   viewport()->setAcceptDrops(true);

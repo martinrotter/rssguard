@@ -395,7 +395,8 @@ QString Feed::additionalTooltip() const {
          customId());
 }
 
-Qt::ItemFlags Feed::additionalFlags() const {
+Qt::ItemFlags Feed::additionalFlags(int column) const {
+  Q_UNUSED(column)
   return Qt::ItemFlag::ItemNeverHasChildren;
 }
 

@@ -96,7 +96,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     virtual void updateCounts();
     virtual int row() const;
     virtual QVariant data(int column, int role) const;
-    virtual Qt::ItemFlags additionalFlags() const;
+    virtual Qt::ItemFlags additionalFlags(int column) const;
     virtual bool performDragDropChange(RootItem* target_item);
 
     // Each item offers "counts" of messages.

@@ -45,6 +45,11 @@ void ServiceRoot::deleteItem() {
   requestItemRemoval(this, false);
 }
 
+void ServiceRoot::updateItemTitle(RootItem* item, const QString& new_title) {
+  Q_UNUSED(item)
+  Q_UNUSED(new_title)
+}
+
 void ServiceRoot::editItems(const QList<RootItem*>& items) {
   // Feed editing.
   auto feeds = qlinq::from(items).ofType<Feed*>();

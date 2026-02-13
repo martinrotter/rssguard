@@ -27,6 +27,7 @@ class StandardServiceRoot : public ServiceRoot {
 
     virtual QNetworkProxy networkProxyForItem(RootItem* item) const;
     virtual FormAccountDetails* accountSetupDialog() const;
+    virtual void updateItemTitle(RootItem* item, const QString& new_title);
     virtual void onDatabaseCleanup();
     virtual void onAfterFeedsPurged(const QList<Feed*>& feeds);
     virtual void start(bool freshly_activated);
@@ -36,7 +37,7 @@ class StandardServiceRoot : public ServiceRoot {
     virtual void editItems(const QList<RootItem*>& items);
     virtual bool supportsFeedAdding() const;
     virtual bool supportsCategoryAdding() const;
-    virtual Qt::ItemFlags additionalFlags() const;
+    virtual Qt::ItemFlags additionalFlags(int column) const;
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual QList<Message> obtainNewMessages(Feed* feed,

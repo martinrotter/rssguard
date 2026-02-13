@@ -18,8 +18,14 @@ StandardServiceRoot* StandardCategory::serviceRoot() const {
   return qobject_cast<StandardServiceRoot*>(account());
 }
 
-Qt::ItemFlags StandardCategory::additionalFlags() const {
-  return Category::additionalFlags() | Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsDropEnabled;
+Qt::ItemFlags StandardCategory::additionalFlags(int column) const {
+  if (column == FDS_MODEL_TITLE_INDEX) {
+    return Category::additionalFlags(column) | Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsDropEnabled |
+           Qt::ItemFlag::ItemIsEditable;
+  }
+  else {
+    return Category::additionalFlags(column) | Qt::ItemFlag::ItemIsDragEnabled | Qt::ItemFlag::ItemIsDropEnabled;
+  }
 }
 
 bool StandardCategory::performDragDropChange(RootItem* target_item) {

@@ -187,7 +187,9 @@ QVariant RootItem::data(int column, int role) const {
   }
 }
 
-Qt::ItemFlags RootItem::additionalFlags() const {
+Qt::ItemFlags RootItem::additionalFlags(int column) const {
+  Q_UNUSED(column)
+
   if (m_kind == RootItem::Kind::Root) {
     return Qt::ItemFlag::ItemIsDropEnabled;
   }

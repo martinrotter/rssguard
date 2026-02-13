@@ -82,7 +82,7 @@ Qt::ItemFlags FeedsModel::flags(const QModelIndex& index) const {
   const RootItem* item_for_index = itemForIndex(index);
 
   Qt::ItemFlags base_flags = QAbstractItemModel::flags(index);
-  Qt::ItemFlags additional_flags = item_for_index->additionalFlags();
+  Qt::ItemFlags additional_flags = item_for_index->additionalFlags(index.column());
 
   return base_flags | additional_flags;
 }
@@ -572,4 +572,21 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
     default:
       return itemForIndex(index)->data(index.column(), role);
   }
+}
+
+bool FeedsModel::setData(const QModelIndex& index, const QVariant& value, int role) {
+  auto* it = itemForIndex(index);
+
+  if (!it->canBeEdited() || index.column() != FDS_MODEL_TITLE_INDEX || value.isNull() || !value.isValid()) {
+    return false;
+  }
+
+  auto new_title = value.toString().trimmed();
+
+  if (new_title.isEmpty()) {
+    return false;
+  }
+
+  it->account()->updateItemTitle(it, new_title);
+  return true;
 }

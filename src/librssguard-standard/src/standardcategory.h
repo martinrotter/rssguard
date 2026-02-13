@@ -16,7 +16,7 @@ class StandardCategory : public Category {
 
     StandardServiceRoot* serviceRoot() const;
 
-    virtual Qt::ItemFlags additionalFlags() const;
+    virtual Qt::ItemFlags additionalFlags(int column) const;
     virtual bool performDragDropChange(RootItem* target_item);
     virtual bool canBeEdited() const;
     virtual bool canBeDeleted() const;
