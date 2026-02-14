@@ -41,4 +41,7 @@ class SqliteDriver : public DatabaseDriver {
     bool m_databaseInitialized;
 };
 
+private:
+    QTimer *m_checkpointTimer = nullptr;
+
 #endif // SQLITEDRIVER_H
