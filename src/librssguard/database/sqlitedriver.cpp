@@ -8,6 +8,7 @@
 #include <QDir>
 #include <QSqlDriver>
 #include <QSqlError>
+#include <QTimer>
 
 SqliteDriver::SqliteDriver(QObject* parent)
   : DatabaseDriver(parent), m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QSL(APP_DB_SQLITE_PATH)),
@@ -304,4 +305,40 @@ QString SqliteDriver::text() const {
 
 QString SqliteDriver::collateNocase() const {
   return QSL("COLLATE NOCASE");
+}
+
+SqliteDriver::SqliteDriver(QObject* parent)
+    : DatabaseDriver(parent),
+      m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QSL(APP_DB_SQLITE_PATH)),
+      m_databaseInitialized(false)
+{
+    // ---------- NUOVO BLOCCO ----------
+    // Timer che ogni ora esegue il checkpoint del WAL
+    m_walCheckpointTimer = new QTimer(this);
+    m_walCheckpointTimer->setInterval(60 * 60 * 1000);   // 1 h = 3 600 000 ms
+    m_walCheckpointTimer->setSingleShot(false);        // ripetuto
+
+    // Quando il timer scade, chiamiamo saveDatabase()
+    connect(m_walCheckpointTimer, &QTimer::timeout, this, [this]() {
+        qDebugNN << LOGSEC_DB << "Eseguo checkpoint periodico del WAL (1 h).";
+        // saveDatabase() restituisce bool, ma qui ci interessa solo l’effetto collaterale
+        bool ok = this->saveDatabase();
+        if (!ok) {
+            qWarningNN << LOGSEC_DB << "Checkpoint periodico del WAL non riuscito.";
+        }
+    });
+
+QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name) {
+    // … codice esistente …
+
+    m_databaseInitialized = true;
+
+    // ---------- AVVIO DEL TIMER ----------
+    if (m_walCheckpointTimer && !m_walCheckpointTimer->isActive()) {
+        m_walCheckpointTimer->start();
+        qDebugNN << LOGSEC_DB << "Timer di checkpoint WAL avviato (intervallo 1 h).";
+    }
+    // -------------------------------------
+
+    return database;
 }
