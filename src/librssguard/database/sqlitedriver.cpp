@@ -8,6 +8,7 @@
 #include <QDir>
 #include <QSqlDriver>
 #include <QSqlError>
+#include <QTimer>
 
 SqliteDriver::SqliteDriver(QObject* parent)
   : DatabaseDriver(parent), m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QSL(APP_DB_SQLITE_PATH)),
@@ -304,4 +305,29 @@ QString SqliteDriver::text() const {
 
 QString SqliteDriver::collateNocase() const {
   return QSL("COLLATE NOCASE");
+}
+
+SqliteDriver::SqliteDriver(QObject* parent)
+    : DatabaseDriver(parent),
+      m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QSL(APP_DB_SQLITE_PATH)),
+      m_databaseInitialized(false)
+{
+    // ---------- NUOVO ----------
+    // Crea il timer (viene allocato sullo stesso thread del driver)
+    m_checkpointTimer = new QTimer(this);
+    // 1 ora = 3 600 000 ms
+    m_checkpointTimer->setInterval(3'600'000);
+    // Quando scade il timeout, esegui il checkpoint
+    connect(m_checkpointTimer, &QTimer::timeout, this, [this]() {
+        // Salva il database (esegue PRAGMA wal_checkpoint(TRUNCATE))
+        bool ok = saveDatabase();
+        if (!ok) {
+            qWarningNN << LOGSEC_DB << "Automatic WAL checkpoint failed.";
+        } else {
+            qDebugNN << LOGSEC_DB << "Automatic WAL checkpoint performed.";
+        }
+    });
+    // Avvia il timer
+    m_checkpointTimer->start();
+    // ---------------------------
 }
