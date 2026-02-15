@@ -18,37 +18,37 @@
     <name>AccountDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_accountdetails.h" line="78"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="78"/>
       <source>Form</source>
       <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_accountdetails.h" line="79"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="79"/>
       <source>Display additional nodes</source>
       <translation>Näytä muut solmut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_accountdetails.h" line="80"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="80"/>
       <source>Important</source>
       <translation>Tärkeä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="33"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_accountdetails.h" line="81"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="81"/>
       <source>Unread</source>
       <translation>Lukematon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
       <source>Labels</source>
       <translation>Tunnisteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
       <source>Probes</source>
       <translation>Tiedustelut</translation>
     </message>
@@ -56,57 +56,57 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1091"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1093"/>
       <source>Application is already running.</source>
       <translation>Sovellus on jo käynnissä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="509"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="511"/>
       <source>Output directory is not writable.</source>
       <translation>Kohdehakemistoon ei voi kirjoittaa.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="517"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="519"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>Asetustiedoston kopiointi kohdehakemistoon epäonnistui.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="532"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="534"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Tietokannan palautusta ei aloitettu. Varmista, että kohdehakemistoon voi kirjoittaa.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="539"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="541"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Asetusten palauttamista ei aloitettu. Varmista, että kohdehakemistoon voi tallentaa.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1109"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1111"/>
       <source>Cannot add feed</source>
       <translation>Syötettä ei voi lisätä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1110"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1112"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Syötettä ei voi lisätä, sillä sellaista tiliä ei ole, jolle voitaisiin lisätä syötteitä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="972"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="974"/>
       <source>Unread articles fetched</source>
       <translation>Lukemattomat artikkelit noudettu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="301"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="303"/>
       <source>Go to changelog</source>
       <translation>Siirry muutoslokiin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="295"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="297"/>
       <source>Welcome</source>
       <translation>Tervetuloa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="296"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="298"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -117,7 +117,7 @@ Tutustu tähän versioon sisältyviin UUSIIN ominaisuuksiin
 napsauttamalla tätä ilmoitusta.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1090"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1092"/>
       <source>Already running</source>
       <translation>Jo käynnissä</translation>
     </message>
@@ -126,73 +126,73 @@ napsauttamalla tätä ilmoitusta.</translation>
     <name>ArticleAmountControl</name>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="256"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="256"/>
       <source>Form</source>
       <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="261"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="261"/>
       <source>Ignoring old articles</source>
       <translation>Ohitetaan vanhat artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
       <source>Add articles with any date into the database</source>
       <translation>Lisää minkä tahansa päivämäärän artikkelit tietokantaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
       <source>Avoid adding articles before this date/time into the database</source>
       <translation>Älä lisää ennen tätä päivämäärää/aikaa julkaistuja artikkeleja tietokantaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="259"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="259"/>
       <source>Absolute date/time</source>
       <translation>Absoluuttinen päivämäärä/aika</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="260"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="260"/>
       <source>Relative time</source>
       <translation>Suhteellinen aika</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="267"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="267"/>
       <source>Limiting amount of articles in feeds</source>
       <translation>Syötteissä olevien artikkelien määrän rajoittaminen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="262"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="262"/>
       <source>Customize article limits</source>
       <translation>Mukauta artikkelien rajoituksia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
       <source>In database, keep</source>
       <translation>Säilytä tietokannassa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="264"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="264"/>
       <source>Do not remove important articles</source>
       <translation>Älä poista tärkeitä artikkeleja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="265"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="265"/>
       <source>Do not remove unread articles</source>
       <translation>Älä poista lukemattomia artikkeleja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articleamountcontrol.h" line="266"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="266"/>
       <source>Just move articles to recycle bin, do not purge them</source>
       <translation>Siirrä artikkelit roskakoriin äläkä poista niitä pysyvästi</translation>
     </message>
@@ -224,37 +224,37 @@ napsauttamalla tätä ilmoitusta.</translation>
     <name>ArticleListNotification</name>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="66"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articlelistnotification.h" line="142"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="142"/>
       <source>...</source>
       <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articlelistnotification.h" line="144"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="144"/>
       <source>Go to previous page</source>
       <translation>Siirry edelliselle sivulle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="94"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articlelistnotification.h" line="147"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="147"/>
       <source>Go to next page</source>
       <translation>Siirry seuraavalle sivulle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="101"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articlelistnotification.h" line="150"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="150"/>
       <source>Open article in article list</source>
       <translation>Avaa artikkeli artikkeliluettelossa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="108"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articlelistnotification.h" line="153"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="153"/>
       <source>Open article in web browser</source>
       <translation>Avaa artikkeli selaimessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="122"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_articlelistnotification.h" line="156"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="156"/>
       <source>Mark all articles as read</source>
       <translation>Merkitse kaikki artikkelit luetuiksi</translation>
     </message>
@@ -271,25 +271,25 @@ napsauttamalla tätä ilmoitusta.</translation>
     <name>AuthenticationDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_authenticationdetails.h" line="122"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="122"/>
       <source>Form</source>
       <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_authenticationdetails.h" line="125"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="125"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
       <translation>Jotkin syötteet, esimerkiksi GMail, edellyttävät todennusta. BASIC-, NTLM-2- ja DIGEST-MD5-todentamisjärjestelmiä tuetaan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_authenticationdetails.h" line="127"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="127"/>
       <source>Credentials</source>
       <translation>Tunnistetiedot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="25"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_authenticationdetails.h" line="123"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="123"/>
       <source>Authentication type</source>
       <translation>Todennustyyppi</translation>
     </message>
@@ -297,14 +297,14 @@ napsauttamalla tätä ilmoitusta.</translation>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="60"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="15"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="100"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_authenticationdetails.h" line="128"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="128"/>
       <source>Username</source>
       <translation>Käyttäjätunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="73"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_authenticationdetails.h" line="129"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="129"/>
       <source>Password</source>
       <translation>Salasana</translation>
     </message>
@@ -378,7 +378,7 @@ napsauttamalla tätä ilmoitusta.</translation>
   <context>
     <name>Category</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/category.cpp" line="56"/>
+      <location filename="../src/librssguard/services/abstract/category.cpp" line="59"/>
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
@@ -388,67 +388,117 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
     </message>
   </context>
   <context>
-    <name>ColorToolButton</name>
+    <name>ColorIconToolButton</name>
     <message>
-      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="14"/>
-      <source>Click me to change color!</source>
-      <translation>Vaihda väriä napsauttamalla tätä!</translation>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="23"/>
+      <source>Click me!</source>
+      <translation type="unfinished">Click me!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="19"/>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="67"/>
       <source>Select new color</source>
-      <translation>Valitse uusi väri</translation>
+      <translation type="unfinished">Select new color</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="85"/>
+      <source>Enter URL</source>
+      <translation type="unfinished">Enter URL</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="86"/>
+      <source>Enter direct URL pointing to the image</source>
+      <translation type="unfinished">Enter direct URL pointing to the image</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="109"/>
+      <source>Icon not fetched</source>
+      <translation type="unfinished">Icon not fetched</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="110"/>
+      <source>Icon was not fetched due to network error.</source>
+      <translation type="unfinished">Icon was not fetched due to network error.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="125"/>
+      <source>Select icon file</source>
+      <translation type="unfinished">Select icon file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="128"/>
+      <source>Images (%1)</source>
+      <translation type="unfinished">Images (%1)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="140"/>
+      <source>Select new &amp;color...</source>
+      <translation type="unfinished">Select new &amp;color...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="149"/>
+      <source>Load icon from &amp;file...</source>
+      <translation type="unfinished">Load icon from &amp;file...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="154"/>
+      <source>Download icon from &amp;URL...</source>
+      <translation type="unfinished">Download icon from &amp;URL...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="159"/>
+      <source>Use default icon from icon theme</source>
+      <translation type="unfinished">Use default icon from icon theme</translation>
     </message>
   </context>
   <context>
     <name>DatabaseCleaner</name>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="74"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="73"/>
       <source>Shrinking database file...</source>
       <translation>Kutistetaan tietokantatiedosto...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="80"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="79"/>
       <source>Database file shrinked...</source>
       <translation>Tietokantatiedosto kutistettu...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="44"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="43"/>
       <source>Recycle bin purged...</source>
       <translation>Roskakori tyhjennetty...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="38"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="37"/>
       <source>Purging recycle bin...</source>
       <translation>Tyhjennetään roskakoria...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="26"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="25"/>
       <source>Removing read articles...</source>
       <translation>Poistetaan luetut artikkelit...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="32"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="31"/>
       <source>Read articles purged...</source>
       <translation>Luetut artikkelit tyhjennetty...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="50"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="49"/>
       <source>Removing old articles...</source>
       <translation>Poistetaan vanhat artikkelit...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="56"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="55"/>
       <source>Old articles purged...</source>
       <translation>Vanhat artikkelit tyhjennetty...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="62"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="61"/>
       <source>Removing starred articles...</source>
       <translation>Poistetaan tähdellä merkittyjä artikkeleja...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasecleaner.cpp" line="68"/>
+      <location filename="../src/librssguard/database/databasecleaner.cpp" line="67"/>
       <source>Starred articles purged...</source>
       <translation>Tähdellä merkityt artikkelit tyhjennetty...</translation>
     </message>
@@ -456,36 +506,35 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
   <context>
     <name>DatabaseFactory</name>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="56"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="57"/>
       <source>Cannot connect to database</source>
       <translation>Tietokantaan ei voi yhdistää</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="57"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
       <translation>Yhteyttä tietokantaan ei muodostettu. Virhe: %1. Palataan SQLite-tietokantaan.</translation>
     </message>
   </context>
   <context>
-    <name>DatabaseWriter</name>
-    <message>
-      <location filename="../src/librssguard/database/databasewriter.cpp" line="54"/>
-      <location filename="../src/librssguard/database/databasewriter.cpp" line="86"/>
-      <source>database writer is stopping</source>
-      <translation>tietokantatallenninta pysäytetään</translation>
-    </message>
-  </context>
-  <context>
     <name>DiscoveredFeedsModel</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="308"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="320"/>
       <source>Title</source>
       <translation>Otsikko</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="308"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="320"/>
       <source>Type</source>
       <translation>Tyyppi</translation>
+    </message>
+  </context>
+  <context>
+    <name>DocumentContainer</name>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="908"/>
+      <source>invalid URL cannot be used to load file from cache</source>
+      <translation type="unfinished">invalid URL cannot be used to load file from cache</translation>
     </message>
   </context>
   <context>
@@ -606,33 +655,33 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="265"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="272"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>käyttää yleisasetuksia, mutta artikkelien yleinen automaatinen nouto on poistettu käytöstä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="289"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="296"/>
       <source>no errors</source>
       <translation>ei virheitä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="295"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
       <source>authentication error</source>
       <translation>tunnistautumisvirhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="301"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="308"/>
       <source>network error</source>
       <translation>verkkovirhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="251"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="258"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>ei käytä artikkelien automaattista noutoa</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="262"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="269"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>käyttää yleisiä asetuksia (%n minuutti seuraavaan automaattiseen artikkelien noutoon)</numerusform>
@@ -640,7 +689,7 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="276"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="283"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -649,27 +698,27 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="292"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
       <source>has new articles</source>
       <translation>sisältää uusia artikkeleja</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="298"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
       <source>SQL database error</source>
       <translation>SQL-tietokantavirhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="304"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
       <source>parsing error</source>
       <translation>jäsennysvirhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="307"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="314"/>
       <source>error</source>
       <translation>virhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="377"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="384"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -685,7 +734,7 @@ Kohteen mukautettu tunnus: %5</translation>
   <context>
     <name>FeedDownloader</name>
     <message>
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="246"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="249"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
       <translation>syöte on verkon jäähdytystilassa, koska verkkopyyntöjä on liikaa</translation>
     </message>
@@ -726,12 +775,12 @@ Kohteen mukautettu tunnus: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="389"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="393"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Joidenkin syötteiden artikkelien automaattinen lataus aloitetaan</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="390"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="394"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>Lataan uudet artikkelit automaattisesti %n syötteelle.</numerusform>
@@ -739,12 +788,12 @@ Kohteen mukautettu tunnus: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="414"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="418"/>
       <source>Some feeds have errors</source>
       <translation>Joissakin syötteissä on virheitä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="415"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="419"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation>Jotkin syötteet ilmoittivat virheestä artikkeleja noudettaessa.</translation>
     </message>
@@ -1094,7 +1143,7 @@ Kohteen mukautettu tunnus: %5</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="470"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="533"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="560"/>
       <source>Cannot delete item</source>
       <translation>Tietuetta ei voi poistaa</translation>
     </message>
@@ -1109,68 +1158,68 @@ Kohteen mukautettu tunnus: %5</translation>
       <translation>Valittua kohdetta ei voi poistaa, koska toinen tärkeä toiminto on kesken.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="243"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="244"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="272"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="331"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="507"/>
       <source>Are you sure?</source>
       <translation>Oletko varma?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="170"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="171"/>
       <source>Selected account does not support adding of new feeds.</source>
       <translation>Valittu tili ei tue uusien syötteiden lisäämistä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="188"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="189"/>
       <source>Selected account does not support adding of new categories.</source>
       <translation>Valittu tili ei tue uusien luokkien lisäämistä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="244"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="245"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="332"/>
       <source>Do you really want to clean all articles from selected items?</source>
       <translation>Haluatko varmasti poistaa kaikki artikkelit valituista kohteista?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="262"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="347"/>
       <source>Cannot clear items</source>
       <translation>Kohteita ei voi poistaa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="262"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="263"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="348"/>
       <source>Failed to clear items: %1.</source>
       <translation>Kohteiden poistaminen epäonnistui: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="272"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="273"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
       <translation>Haluatko varmasti poistaa pysyvästi kaikki muut kuin tähdellä merkityt artikkelit valituista syötteistä?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="287"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="288"/>
       <source>Cannot purge feeds</source>
       <translation>Syötteitä ei voi tyhjentää</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="288"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="289"/>
       <source>Failed to purge feeds: %1.</source>
       <translation>Syötteiden tyhjentäminen epäonnistui: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="305"/>
       <source>Enable or disable feeds</source>
       <translation>Salli tai estä syötteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="305"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="306"/>
       <source>You selected multiple feeds to enable/disable them.</source>
       <translation>Olet valinnut useita sallittavia/estettäviä syötteitä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="306"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="307"/>
       <source>Do you really want to enable or disable selected feeds?</source>
       <translation>Haluatko varmasti sallia tai estää valitut syötteet?</translation>
     </message>
@@ -1233,60 +1282,60 @@ Kohteen mukautettu tunnus: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="534"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="561"/>
       <source>Failed to delete selected item: %1.</source>
       <translation>Valittua kohdetta ei voitu poistaa: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="608"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="630"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="635"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="657"/>
       <source>Cannot mark item read unread</source>
       <translation>Kohdetta ei voi merkitä luetuksi tai lukemattomaksi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="609"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="631"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="636"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="658"/>
       <source>Failed to mark item read or unread: %1.</source>
       <translation>Kohteen merkitseminen luetuksi tai lukemattomaksi epäonnistui: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="640"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="667"/>
       <source>Mark everything as read</source>
       <translation>Merkitse kaikki luetuiksi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="641"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="668"/>
       <source>Do you really want to mark everything as read?</source>
       <translation>Haluatko varmasti merkitä kaikki luetuiksi?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1044"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1073"/>
       <source>Not supported</source>
       <translation>Ei tueta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1045"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1074"/>
       <source>Context menus with items from more than one account are not supported.</source>
       <translation>Useammalta kuin yhdeltä tililtä peräisin olevia kohteita sisältäviä tilannekohtaisia valikoita ei tueta.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1069"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1098"/>
       <source>Menu for feed list</source>
       <translation>Syöteluettelon valikko</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="970"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="997"/>
       <source>Feed filtered out</source>
       <translation>Syöte suodatettu pois näkyvistä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="971"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="998"/>
       <source>Your feed is probably filtered out and cannot be revealed.</source>
       <translation>Syötteesi on todennäköisesti suodatettu pois näkyvistä, eikä sitä voi näyttää.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="169"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="187"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="170"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="188"/>
       <source>Not supported by account</source>
       <translation>Tili ei tue tätä</translation>
     </message>
@@ -1353,37 +1402,37 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="93"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formabout.h" line="219"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="219"/>
       <source>&amp;Copy info to clipboard</source>
       <translation>&amp;Kopioi tiedot leikepöydälle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="112"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formabout.h" line="221"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="221"/>
       <source>Information</source>
       <translation>Tiedot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="160"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formabout.h" line="222"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="222"/>
       <source>Licenses</source>
       <translation>Lisenssit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="177"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formabout.h" line="224"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="224"/>
       <source>Changelog</source>
       <translation>Muutosloki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="212"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formabout.h" line="223"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="223"/>
       <source>Changelog page is available only in English language.</source>
       <translation>Muutoslokin sivu on saatavilla vain englanninkielisenä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="220"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formabout.h" line="225"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="225"/>
       <source>Resources</source>
       <translation>Resurssit</translation>
     </message>
@@ -1415,7 +1464,7 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     <name>FormAddAccount</name>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaddaccount.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formaddaccount.h" line="73"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formaddaccount.h" line="73"/>
       <source>Add new account</source>
       <translation>Lisää uusi tili</translation>
     </message>
@@ -1423,27 +1472,27 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormAddEditEmail</name>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="30"/>
+      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="29"/>
       <source>Add new recipient.</source>
       <translation>Lisää uusi vastaanottaja.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="88"/>
+      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="87"/>
       <source>Original message</source>
       <translation>Alkuperäinen viesti</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="101"/>
+      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="100"/>
       <source>Forwarded message</source>
       <translation>Välitetty viesti</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="182"/>
+      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="181"/>
       <source>E-mail NOT sent</source>
       <translation>Sähköpostia EI lähetetty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="183"/>
+      <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="182"/>
       <source>Your e-mail message wasn&apos;t sent.</source>
       <translation>Sähköpostiviestiäsi ei lähetetty.</translation>
     </message>
@@ -1471,32 +1520,32 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormAddEditLabel</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="14"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="17"/>
       <source>Name for your label</source>
       <translation>Tunnisteen nimi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="20"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="23"/>
       <source>Label&apos;s name cannot be empty.</source>
       <translation>Tunnisteen nimeä ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="23"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="26"/>
       <source>Perfect!</source>
       <translation>Hienoa!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="32"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="36"/>
       <source>Hot stuff</source>
       <translation>Kuumaa kamaa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="29"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="32"/>
       <source>Create new label</source>
       <translation>Luo uusi tunniste</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="48"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="52"/>
       <source>Edit label &apos;%1&apos;</source>
       <translation>Muokkaa tunnistetta &apos;%1&apos;</translation>
     </message>
@@ -1504,61 +1553,61 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormAddEditProbe</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="12"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="14"/>
       <source>Name for your query</source>
       <translation>Nimeä kysely</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.ui" line="19"/>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="13"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formaddeditprobe.h" line="112"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="15"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formaddeditprobe.h" line="112"/>
       <source>Regular expression</source>
       <translation>Säännöllinen lauseke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.ui" line="29"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formaddeditprobe.h" line="113"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formaddeditprobe.h" line="113"/>
       <source>SQL WHERE clause</source>
       <translation>SQL WHERE -lauseke</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="25"/>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="37"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="27"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="39"/>
       <source>Perfect!</source>
       <translation>Hienoa!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="15"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>You can use regular expression or SQL WHERE clause to perform totally custom article queries in the database. See more details in application documentation.</source>
       <translation>Voit tehdä tietokantaan täysin mukautettuja artikkelikyselyitä säännöllisillä lausekkeilla tai SQL WHERE -lausekkeilla. Saat lisätietoja sovelluksen ohjeista.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="22"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="24"/>
       <source>Query name cannot be empty.</source>
       <translation>Kyselyn nimeä ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="31"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="33"/>
       <source>Filter cannot be empty.</source>
       <translation>Suodatinta ei saa jättää tyhjäksi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="34"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="36"/>
       <source>Regular expression is not well-formed.</source>
       <translation>Säännöllistä lauseketta ei ole muotoiltu oikein.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="46"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="48"/>
       <source>Create new query</source>
       <translation>Luo uusi kysely</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="49"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="52"/>
       <source>Hot stuff</source>
       <translation>Kuumaa kamaa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="68"/>
+      <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="71"/>
       <source>Edit query &apos;%1&apos;</source>
       <translation>Muokkaa kyselyä &apos;%1&apos;</translation>
     </message>
@@ -1613,55 +1662,55 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="142"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="142"/>
       <source>Backup database/settings</source>
       <translation>Varmuuskopioi tietokanta/asetukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="20"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="143"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="143"/>
       <source>Output directory</source>
       <translation>Kohdehakemisto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="144"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="144"/>
       <source>&amp;Select directory</source>
       <translation>&amp;Valitse kansio</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="145"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="145"/>
       <source>Backup properties</source>
       <translation>Varmuuskopion ominaisuudet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="49"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="146"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="146"/>
       <source>Items to backup</source>
       <translation>Varmuuskopioitavat asiat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="56"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="147"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="147"/>
       <source>Database</source>
       <translation>Tietokanta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="66"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="148"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="148"/>
       <source>Settings</source>
       <translation>Asetukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="76"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="149"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="149"/>
       <source>Backup name</source>
       <translation>Varmuuskopion nimi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="89"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="150"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="150"/>
       <source>Operation results</source>
       <translation>Toimenpiteen tulokset</translation>
     </message>
@@ -1669,12 +1718,12 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormCategoryDetails</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="79"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="77"/>
       <source>Add new category</source>
       <translation>Lisää uusi luokka</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="107"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="105"/>
       <source>Edit %n categories</source>
       <translation>
         <numerusform>Muokkaa %n luokkaa</numerusform>
@@ -1682,108 +1731,83 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="170"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="169"/>
       <source>Category name is ok.</source>
       <translation>Luokan nimi on OK.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="174"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="173"/>
       <source>Category name is too short.</source>
       <translation>Luokan nimi on liian lyhyt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="180"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="179"/>
       <source>Description is empty.</source>
       <translation>Kuvaus on tyhjä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="183"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="182"/>
       <source>The description is ok.</source>
       <translation>Kuvaus on OK.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="196"/>
-      <source>Select icon file for the category</source>
-      <translation>Valitse kuvaketiedosto luokalle</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="199"/>
-      <source>Images (%1)</source>
-      <translation>Kuvat (%1)</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="217"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="191"/>
       <source>Category title</source>
       <translation>Luokan otsikko</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="218"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="192"/>
       <source>Set title for your category.</source>
       <translation>Anna luokalle nimi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="219"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="193"/>
       <source>Category description</source>
       <translation>Luokan kuvaus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="220"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
       <source>Set description for your category.</source>
       <translation>Aseta kuvaus luokalle.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="226"/>
-      <source>Icon selection</source>
-      <translation>Kuvakkeen valinta</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="228"/>
-      <source>Load icon from file...</source>
-      <translation>Lataa kuvake tiedostosta...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="230"/>
-      <source>Use default icon from icon theme</source>
-      <translation>Käytä kuvaketeeman oletuskuvaketta</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="102"/>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="100"/>
       <source>Edit &quot;%1&quot;</source>
       <translation>Muokkaa &quot;%1&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formcategorydetails.h" line="182"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="179"/>
       <source>Parent category</source>
       <translation>Pääluokka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formcategorydetails.h" line="184"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="181"/>
       <source>Select parent item for your category.</source>
       <translation>Valitse ylätason kohde luokasta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="64"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formcategorydetails.h" line="186"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="183"/>
       <source>Title</source>
       <translation>Otsikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="84"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formcategorydetails.h" line="187"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="184"/>
       <source>Description</source>
       <translation>Kuvaus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="104"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formcategorydetails.h" line="188"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="185"/>
       <source>Icon</source>
       <translation>Kuvake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="128"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formcategorydetails.h" line="190"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="187"/>
       <source>Select icon for your category.</source>
       <translation>Valitse kuvake luokalle.</translation>
     </message>
@@ -1792,13 +1816,13 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     <name>FormCopyArticleData</name>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formcopyarticledata.ui" line="30"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formcopyarticledata.h" line="73"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcopyarticledata.h" line="73"/>
       <source>Article data copy pattern</source>
       <translation type="unfinished">Article data copy pattern</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formcopyarticledata.ui" line="40"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formcopyarticledata.h" line="74"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcopyarticledata.h" line="74"/>
       <source>Escape values for CSV usage</source>
       <translation type="unfinished">Escape values for CSV usage</translation>
     </message>
@@ -1847,67 +1871,67 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formdatabasecleanup.h" line="188"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="188"/>
       <source>Cleanup database</source>
       <translation>Siivoa tietokanta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formdatabasecleanup.h" line="189"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="189"/>
       <source>Cleanup settings</source>
       <translation>Poistoasetukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
-      <source>Optimize database file</source>
-      <translation>Optimoi tietokantatiedosto</translation>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
+      <source>Optimize and fix database file</source>
+      <translation type="unfinished">Optimize and fix database file</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formdatabasecleanup.h" line="191"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="191"/>
       <source>Remove all read articles</source>
       <translation>Poista kaikki luetut artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="53"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formdatabasecleanup.h" line="192"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="192"/>
       <source>Remove all articles from recycle bin</source>
       <translation>Poista kaikki artikkelit roskakorista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formdatabasecleanup.h" line="193"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="193"/>
       <source>Remove all articles older than</source>
       <translation>Poista kaikki artikkelit, jotka ovat vanhempia kuin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
       <source>Remove all starred articles</source>
       <translation>Poista kaikki tähdellä merkityt artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formdatabasecleanup.h" line="195"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="195"/>
       <source>Database information</source>
       <translation>Tietokannan tiedot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="102"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formdatabasecleanup.h" line="196"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="196"/>
       <source>Total data size</source>
       <translation>Tietojen koko yhteensä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formdatabasecleanup.h" line="197"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="197"/>
       <source>Database type</source>
       <translation>Tietokannan tyyppi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="139"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formdatabasecleanup.h" line="198"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="198"/>
       <source>Progress</source>
       <translation>Edistyminen</translation>
     </message>
@@ -1971,8 +1995,8 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="41"/>
-      <source>Switch to &amp;advanced mode</source>
-      <translation>Siirry &amp;edistyneeseen tilaan</translation>
+      <source>Switch to advanced &amp;mode</source>
+      <translation type="unfinished">Switch to advanced &amp;mode</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="43"/>
@@ -1980,27 +2004,27 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
       <translation>Sulje tämä valintaikkuna ja näytä valintaikkuna yksittäisten syötteiden lisäämiseen lisäasetuksilla.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="125"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="136"/>
       <source>Cannot discover feeds</source>
       <translation>Syötteitä ei voi etsiä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="126"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="137"/>
       <source>Error: %1</source>
       <translation>Virhe: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="204"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="215"/>
       <source>URL is valid.</source>
       <translation>Verkko-osoite on kelvollinen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="207"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="218"/>
       <source>URL is NOT valid.</source>
       <translation>Verkko-osoite EI ole kelvollinen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="275"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="287"/>
       <source>No title</source>
       <translation>Ei otsikkoa</translation>
     </message>
@@ -2064,22 +2088,22 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormFeedDetails</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="138"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="137"/>
       <source>Add new feed</source>
       <translation>Lisää uusi syöte</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="171"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="170"/>
       <source>Cannot save changes: %1</source>
       <translation>Muutoksia ei voi tallentaa: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="142"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="141"/>
       <source>Edit &quot;%1&quot;</source>
       <translation>Muokkaa &quot;%1&quot;</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="147"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="146"/>
       <source>Edit %n feeds</source>
       <translation>
         <numerusform>Muokkaa %n syötettä</numerusform>
@@ -2087,78 +2111,78 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="186"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="185"/>
       <source>Fetch articles using global interval</source>
       <translation>Nouda artikkelit yleistä aikaväliä noudattaen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="188"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="187"/>
       <source>Fetch articles every</source>
       <translation>Nouda artikkelit joka</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="190"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="189"/>
       <source>Disable auto-fetching of articles</source>
       <translation>Poista käytöstä artikkelien automaattinen noutaminen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="193"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="192"/>
       <source>Left-to-right</source>
       <translation>Vasemmalta oikealle</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="194"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="193"/>
       <source>Right-to-left (everywhere)</source>
       <translation>Oikealta vasemmalle (kaikkialla)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="195"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="194"/>
       <source>Right-to-left (everywhere except feed list)</source>
       <translation>Oikealta vasemmalle (muualla kuin syöteluettelossa)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="197"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
       <source>Right-to-left (only in article viewer)</source>
       <translation>Oikealta vasemmalle (vain artikkelien lukuikkunassa)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="170"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="169"/>
       <source>Cannot save feed properties</source>
       <translation>Syötteen ominaisuuksia ei voi tallentaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="24"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formfeeddetails.h" line="210"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="210"/>
       <source>Common</source>
       <translation>Yleiset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="50"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formfeeddetails.h" line="203"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="203"/>
       <source>Auto-downloading of articles</source>
       <translation>Artikkelien automaattinen lataaminen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formfeeddetails.h" line="205"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="205"/>
       <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
       <translation>Valitse tämän syötteen viestien automaattisen latauksen periaate. Oletusperiaate tarkoittaa, että syötteen uudet viestit ladataan sovellusasetuksissa määritellyin välein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="117"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formfeeddetails.h" line="209"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="209"/>
       <source>Right-to-left behavior</source>
       <translation>Oikealta vasemmalle -toimintatapa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="101"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formfeeddetails.h" line="208"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="208"/>
       <source>Disable this feed</source>
       <translation>Poista tämä syöte käytöstä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formfeeddetails.h" line="207"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="207"/>
       <source>Ignore notifications for this feed</source>
       <translation>Ohita tämän syötteen ilmoitukset</translation>
     </message>
@@ -2186,7 +2210,7 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
       <translation>Virhe: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="94"/>
+      <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="95"/>
       <source>General</source>
       <translation>Yleiset</translation>
     </message>
@@ -2202,12 +2226,12 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="394"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="398"/>
       <source>No possible actions</source>
       <translation>Ei mahdollisia toimintoja</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="353"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="357"/>
       <source>No recycle bin</source>
       <translation>Ei roskakoria</translation>
     </message>
@@ -2217,856 +2241,856 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
       <translation>Päävalikko</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="74"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="78"/>
       <source>Open main menu</source>
       <translation>Avaa päävalikko</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="82"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="86"/>
       <source>Open &amp;main menu</source>
       <translation>Avaa &amp;päävalikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="840"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="840"/>
       <source>&amp;File</source>
       <translation>&amp;Tiedosto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="62"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="841"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="841"/>
       <source>&amp;Help</source>
       <translation>&amp;Ohje</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="73"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="842"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="842"/>
       <source>&amp;View</source>
       <translation>&amp;Näytä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="77"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="843"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="843"/>
       <source>Show/hide</source>
       <translation>Näytä/piilota</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="845"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="845"/>
       <source>&amp;Tools</source>
       <translation>T&amp;yökalut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="846"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="846"/>
       <source>F&amp;eeds</source>
       <translation>S&amp;yötteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="118"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="847"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="847"/>
       <source>&amp;Add item</source>
       <translation>&amp;Lisää tietue</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="123"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="848"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="848"/>
       <source>&amp;Move</source>
       <translation>&amp;Siirrä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="168"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="849"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="849"/>
       <source>Art&amp;icles</source>
       <translation>Art&amp;ikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="206"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="851"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="851"/>
       <source>&amp;Accounts</source>
       <translation>&amp;Tilit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="239"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="673"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="673"/>
       <source>&amp;Quit</source>
       <translation>&amp;Lopeta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="242"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="675"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="675"/>
       <source>Quit the application.</source>
       <translation>Lopeta sovellus.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="253"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="677"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="677"/>
       <source>&amp;Settings</source>
       <translation>&amp;Asetukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="256"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="679"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="679"/>
       <source>Display settings of the application.</source>
       <translation>Näytä sovelluksen asetukset.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="264"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="681"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="681"/>
       <source>&amp;About application</source>
       <translation>&amp;Tietoja sovelluksesta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="683"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="683"/>
       <source>Displays extra info about this application.</source>
       <translation>Näyttää lisätietoja tästä sovelluksesta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="685"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="685"/>
       <source>&amp;Fullscreen</source>
       <translation>&amp;Koko näyttö</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="284"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="687"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="687"/>
       <source>Switch fullscreen mode.</source>
       <translation>Vaihda koko näytön tilaan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="689"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="689"/>
       <source>&amp;Fetch all</source>
       <translation>&amp;Nouda kaikki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="295"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="691"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="691"/>
       <source>Fetch all feeds</source>
       <translation>Nouda kaikki syötteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="303"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="693"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="693"/>
       <source>Fetch &amp;selected</source>
       <translation>Nouda &amp;valitut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="306"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="695"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="695"/>
       <source>Fetch selected feeds</source>
       <translation>Nouda valitut syötteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="327"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="699"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="699"/>
       <source>Mark articles &amp;read</source>
       <translation>Merkitse artikkelit &amp;luetuiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="330"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="701"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="701"/>
       <source>Mark selected articles read</source>
       <translation>Merkitse valitut artikkelut luetuiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="338"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="703"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="703"/>
       <source>Mark articles &amp;unread</source>
       <translation>Merkitse artikkelit l&amp;ukemattomiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="341"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="705"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="705"/>
       <source>Mark selected articles unread</source>
       <translation>Merkitse valitut artikkelit luetuiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="349"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="707"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="707"/>
       <source>Switch &amp;importance</source>
       <translation>Vaihda &amp;tärkeyttä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="352"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="709"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="709"/>
       <source>Switch importance of selected articles</source>
       <translation>Muuta valittujen artikkelien tärkeysasetusta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="363"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="713"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="713"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
       <translation>Merkitse kaikki valittujen kohteiden viestit (ilman viestisuodattimia) luetuiksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="374"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="717"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="717"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
       <translation>Merkitse kaikki valittujen kohteiden viestit (ilman viestisuodattimia) lukemattomiksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="719"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="719"/>
       <source>&amp;Delete articles</source>
       <translation>&amp;Poista artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="314"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="697"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="697"/>
       <source>&amp;Edit selected items</source>
       <translation>&amp;Muokkaa valittuja kohteita</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="88"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="844"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="844"/>
       <source>&amp;Focus</source>
       <translation>&amp;Kohdista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="199"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="850"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="850"/>
       <source>&amp;Recycle bins</source>
       <translation>&amp;Roskakorit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="214"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="852"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="852"/>
       <source>Tabs</source>
       <translation>Välilehdet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="319"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="698"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="698"/>
       <source>&amp;Delete selected items</source>
       <translation>&amp;Poista valitut kohteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="360"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="711"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="711"/>
       <source>Mark selected items &amp;read</source>
       <translation>Merkitse valitut kohteet &amp;luetuiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="371"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="715"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="715"/>
       <source>Mark selected items &amp;unread</source>
       <translation>Merkitse valitut kohteet l&amp;ukemattomiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="720"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="720"/>
       <source>&amp;Clean selected items</source>
       <translation>&amp;Poista valitut kohteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="393"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="722"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="722"/>
       <source>Deletes all messages from selected items.</source>
       <translation>Poistaa kaikki viestit valituista kohteista.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="724"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="724"/>
       <source>Open in &amp;external browser</source>
       <translation>Avaa &amp;erillisessä selaimessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="404"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="726"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="726"/>
       <source>Open selected articles in external browser</source>
       <translation>Avaa valitut artikkelit erillisessä selaimessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="412"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="728"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="728"/>
       <source>Open in &amp;internal browser</source>
       <translation>Avaa &amp;sisäisessä selaimessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="415"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="730"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="730"/>
       <source>Open selected articles in internal browser</source>
       <translation>Avaa valitut artikkelit sisäisessä selaimessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="426"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="732"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="732"/>
       <source>No actions available</source>
       <translation>Ei toimintoja saatavilla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="429"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="734"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="734"/>
       <source>No actions are available right now.</source>
       <translation>Toimintoja ei ole saatavilla juuri nyt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="736"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="736"/>
       <source>&amp;Mark all read</source>
       <translation>Merkitse &amp;kaikki luetuiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="738"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="738"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
       <translation>Merkitsee kaikkien kohteiden kaikki viestit luetuiksi. Toiminto ei ota viestisuodattimia huomioon.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="451"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="740"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="740"/>
       <source>Switch main window visibility</source>
       <translation>Vaihda pääikkunan näkyvyyttä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="742"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="742"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
       <translation>Piilottaa pääikkunan jos se on näkyvissä, palauttaa näkyviin jos pääikkuna on piilossa.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="744"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="744"/>
       <source>&amp;Feed list</source>
       <translation>Sy&amp;ötelista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="746"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
       <source>Hides or shows the list of feeds/categories.</source>
       <translation>Piilottaa tai näyttää syöteluettelon/luokat.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="479"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="748"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="748"/>
       <source>&amp;Clean all</source>
       <translation>&amp;Poista kaikki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="482"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="750"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="750"/>
       <source>Deletes all messages from all items.</source>
       <translation>Poistaa kaikki viestit kaikista kohteista.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="490"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="752"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="752"/>
       <source>&amp;Next item</source>
       <translation>&amp;Seuraava kohde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="498"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="753"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="753"/>
       <source>&amp;Previous item</source>
       <translation>&amp;Edellinen kohde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="506"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="754"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="754"/>
       <source>&amp;Next article</source>
       <translation>&amp;Seuraava artikkeli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="514"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="755"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="755"/>
       <source>&amp;Previous article</source>
       <translation>&amp;Edellinen artikkeli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="522"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="756"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="756"/>
       <source>Check for &amp;updates</source>
       <translation>Ta&amp;rkista päivitykset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="525"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="758"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="758"/>
       <source>Check if new update for the application is available for download.</source>
       <translation>Tarkista onko sovelluspäivitystä tarjolla ladattavaksi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="539"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="760"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="760"/>
       <source>&amp;Main menu</source>
       <translation>&amp;Päävalikko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="542"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="762"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="762"/>
       <source>Hides or displays the main menu.</source>
       <translation>Piilottaa tai näyttää päävalikon.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="550"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="764"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="764"/>
       <source>Report a &amp;bug...</source>
       <translation>Ilmoita &amp;ongelmasta...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="561"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="765"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="765"/>
       <source>&amp;Toolbars</source>
       <translation>Ty&amp;ökalupalkit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="564"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="767"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="767"/>
       <source>Switch visibility of main toolbars.</source>
       <translation>Vaihda päätyökalupalkkien näkyvyyttä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="769"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="769"/>
       <source>&amp;List headers</source>
       <translation>&amp;Luetteloi otsikot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="770"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
       <source>&amp;Donate...</source>
       <translation>&amp;Lahjoita...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="594"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="771"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="771"/>
       <source>Display &amp;documentation</source>
       <translation>Näytä &amp;dokumentaatio</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="602"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="772"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="772"/>
       <source>&amp;Restore settings</source>
       <translation>&amp;Palauta asetukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="610"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="773"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
       <source>&amp;Backup settings</source>
       <translation>&amp;Varmuuskopioi asetukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="618"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="774"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="774"/>
       <source>Switch layout</source>
       <translation>Vaihda asettelua</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="829"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="806"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>&amp;Copy data to clipboard</source>
       <translation type="unfinished">&amp;Copy data to clipboard</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="813"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="813"/>
       <source>Focus feed search box</source>
       <translation>Kohdista syötteiden hakuruutuun</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="872"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="814"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
       <source>Focus article search box</source>
       <translation>Kohdista artikkelien hakuruutuun</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="815"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
       <source>Scroll &amp;up preview</source>
       <translation>&amp;Ylösvierityksen esikatselu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="882"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="816"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
       <source>Scroll &amp;down preview</source>
       <translation>&amp;Alasvierityksen esikatselu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="828"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
       <source>Reload &amp;skin</source>
       <translation>Lataa &amp;ulkoasu uudelleen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="941"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="829"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="829"/>
       <source>Focus &amp;feed list</source>
       <translation>Kohdista s%yöteluetteloon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="946"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="830"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="830"/>
       <source>Focus &amp;article list</source>
       <translation>Kohdista &amp;artikkeliluetteloon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="951"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="831"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="831"/>
       <source>Focus article &amp;preview</source>
       <translation>Kohdista artikkelin &amp;esikatseluun</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="956"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="832"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="832"/>
       <source>&amp;Load all remaining articles</source>
       <translation>&amp;Lataa kaikki jäljellä olevat artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="961"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="833"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="833"/>
       <source>Reveal &amp;feed</source>
       <translation>Näytä s&amp;yöte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="966"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="834"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="834"/>
       <source>&amp;Enable/disable selected feeds</source>
       <translation>&amp;Ota valitut syötteet käyttöön / pois käytöstä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="971"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="835"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="835"/>
       <source>Edit &amp;feed of selected article</source>
       <translation>Muokkaa valitun artikkelin s&amp;yötettä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="976"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="836"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="836"/>
       <source>Mark articles &amp;above read</source>
       <translation>Merkitse yllä olev&amp;at artikkelit luetuiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="981"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="837"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="837"/>
       <source>Mark articles &amp;below read</source>
       <translation>Merkitse alla ol&amp;evat artikkelit luetuiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="986"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="838"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="838"/>
       <source>Mark articles &amp;above unread</source>
       <translation>Merkitse yllä olev&amp;at artikkelit lukemattomiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="991"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="839"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="839"/>
       <source>Mark articles &amp;below unread</source>
       <translation>Merkitse alla ol&amp;evat artikkelit lukemattomiksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="626"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="775"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="775"/>
       <source>Send via e-mail</source>
       <translation>Lähetä sähköpostitse</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="777"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
       <source>Send selected articles via e-mail</source>
       <translation>Lähetä valitut artikkelit sähköpostitse</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="637"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="779"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="779"/>
       <source>&amp;Cleanup database</source>
       <translation>&amp;Siivoa tietokanta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="645"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="780"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
       <source>&amp;Expand/collapse selected item</source>
       <translation>&amp;Laajenna/supista valittu tietue</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="781"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="781"/>
       <source>&amp;Add account</source>
       <translation>&amp;Lisää tili</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="661"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="782"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
       <source>&amp;Restore articles</source>
       <translation>&amp;Palauta artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="669"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="783"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="783"/>
       <source>&amp;Restore all recycle bins</source>
       <translation>&amp;Palauta kaikki roskakorit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="677"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="784"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="784"/>
       <source>&amp;Empty all recycle bins</source>
       <translation>&amp;Tyhjennä kaikki roskakorit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="685"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="785"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="785"/>
       <source>Next &amp;unread article</source>
       <translation>Seuraava &amp;lukematon artikkeli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="699"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="786"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
       <source>Status bar</source>
       <translation>Tilapalkki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="707"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="787"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="787"/>
       <source>&amp;Edit selected account</source>
       <translation>&amp;Muokkaa valittua tiliä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="715"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="788"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>&amp;Delete selected account</source>
       <translation>&amp;Poista valittu tili</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="728"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="299"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="790"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="303"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Add new category</source>
       <translation>Lisää uusi luokka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="733"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="791"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="791"/>
       <source>Stop ongoing fetching</source>
       <translation>Pysäytä jatkuva haku</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="741"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="792"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
       <source>Close all tabs</source>
       <translation>Sulje kaikki välilehdet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="746"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="793"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="793"/>
       <source>Close all tabs except current</source>
       <translation>Sulje kaikki välilehdet paitsi nykyinen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="751"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="794"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
       <source>Go to &amp;next tab</source>
       <translation>Siirry &amp;seuraavaan välilehteen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="795"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="795"/>
       <source>Go to &amp;previous tab</source>
       <translation>Siirry &amp;edelliseen välilehteen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="796"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
       <source>&amp;Enable article preview</source>
       <translation>&amp;Käytä artikkelin esikatselua</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="769"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="797"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
       <source>&amp;Copy URL of selected item</source>
       <translation>&amp;Kopioi valitun kohteen verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="774"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="798"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
       <source>Article &amp;filters</source>
       <translation>Artikkelisuo&amp;dattimet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="782"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="799"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
       <source>&amp;Show tree expanders</source>
       <translation>&amp;Näytä hakemistopuiden laajentimet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="787"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="800"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
       <translation>Nouda s&amp;yötteet automaattilatauskäytännöllä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="795"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="801"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="801"/>
       <source>Alternate row colors in lists</source>
       <translation>Vaihtoehtoiset rivivärit listoissa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="803"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="802"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
       <source>Automatically &amp;expand item when selected</source>
       <translation>Laaj&amp;enna valitut kohteet automaattisesti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="814"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="803"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="803"/>
       <source>Message viewer toolbars</source>
       <translation>Viestinäkymän työkalupalkit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="819"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="804"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
       <source>Expand/collapse selected item &amp;recursively</source>
       <translation>Laajenna/supista valittu kohde &amp;rekursiivisesti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="824"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="805"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="805"/>
       <source>Close &amp;current tab</source>
       <translation>Sulje &amp;nykyinen välilehti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="837"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="807"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="807"/>
       <source>&amp;Sort alphabetically</source>
       <translation>Järje&amp;stä aakkosittain</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="842"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="808"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
       <source>Move &amp;up</source>
       <translation>Siirrä &amp;ylöspäin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="847"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="809"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="809"/>
       <source>Move to &amp;top</source>
       <translation>Siirrä ylimmä&amp;ksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="852"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="810"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="810"/>
       <source>Move &amp;down</source>
       <translation>Siirrä &amp;alaspäin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="857"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="811"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="811"/>
       <source>Move to &amp;bottom</source>
       <translation>Siirrä ali&amp;mmaksi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="862"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="812"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
       <source>Display application &amp;log</source>
       <translation>Näytä sovelluksen &amp;loki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="817"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
       <source>Rearrange &amp;subcategories alphabetically</source>
       <translation>Järjestä alaluokat uudelleen aakkosjärje&amp;stykseen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="892"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="818"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
       <source>Rearrange &amp;feeds alphabetically</source>
       <translation>Järjestä sy&amp;ötteet uudelleen aakkosjärjestykseen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="900"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="819"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
       <source>You must add new account first</source>
       <translation>Sinun on ensin lisättävä uusi tili</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="903"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="821"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
       <source>You must add new account first.</source>
       <translation>Sinun on ensin lisättävä uusi tili.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="908"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="823"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
       <source>Edit &amp;child feeds</source>
       <translation>Muokkaa alisyötteit&amp;ä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="913"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="824"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="824"/>
       <source>Edit child feeds (&amp;recursive)</source>
       <translation>Muokkaa alisyötteitä (&amp;rekursiivisesti)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="918"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="825"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
       <source>Play in &amp;media player</source>
       <translation>Toista &amp;mediasoittimessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="926"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="826"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="826"/>
       <source>&amp;Pause automatic feed fetching</source>
       <translation>&amp;Keskeytä syötteiden automaattinen nouto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="931"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="827"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
       <source>&amp;Purge selected feeds</source>
       <translation>&amp;Poista valitut syötteet pysyvästi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="723"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="309"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmain.h" line="789"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="313"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
       <source>Add new feed</source>
       <translation>Lisää uusi syöte</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="360"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="364"/>
       <source>No actions possible</source>
       <translation>Toiminnot eivät ole mahdollisia</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="165"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="169"/>
       <source>Cannot cleanup database</source>
       <translation>Tietokantaa ei voi siivota</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="166"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="170"/>
       <source>Cannot cleanup database, because another critical action is running.</source>
       <translation>Tietokantaa ei voi siivota, koska toinen kriittinen toiminto on käynnissä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="454"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="458"/>
       <source>Play in media player</source>
       <translation>Toista mediasoittimessa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="455"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="459"/>
       <source>(not supported)</source>
       <translation>(ei tueta)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="525"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="529"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Sulje ensin avatut modaali-ikkunat.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="796"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="800"/>
       <source>Skin reloaded</source>
       <translation>Ulkoasu ladattu uudelleen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="797"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="801"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
       <translation>Huomaathan, että tämä toiminto on tarkoitettu vain ulkoasujen vianetsintään. Käynnistä sovellus uudelleen, jotta kaikki kohteet latautuisivat oikein.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="431"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="435"/>
       <source>Fetching common data</source>
       <translation>Noudetaan yhteisiä tietoja</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="524"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="528"/>
       <source>Close dialogs</source>
       <translation>Sulje valintaikkunat</translation>
     </message>
@@ -3074,225 +3098,241 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormMessageFiltersManager</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="551"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="553"/>
       <source>Cannot find &apos;clang-format&apos;</source>
       <translation>clang-format-työkalua ei löytynyt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="552"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="554"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
       <translation>Komentosarjaa ei siistitty, koska clang-format-työkalua ei löytynyt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="326"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="570"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="330"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="572"/>
       <source>Error</source>
       <translation>Virhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="571"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="573"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
       <translation>Komentosarjaa ei siistitty, koska clang-format-työkalu ilmoitti virheestä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="580"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="582"/>
       <source>Beautifier was running for too long time</source>
       <translation>Kaunistustoiminto oli käynnissä liian kauan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="581"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="583"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation>Komentosarjaa ei siistitty. Onko clang-format asennettu?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="327"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="331"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
       <translation>Uutta suodatinta ei voi tallentaa; virhe: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="267"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="271"/>
       <source>Context menu</source>
       <translation>Pikavalikko</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="269"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="273"/>
       <source>Filter articles like this</source>
       <translation>Suodata tällaiset artikkelit</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="314"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="318"/>
       <source>New article filter</source>
       <translation>Uusi artikkelisuodatin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="285"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="289"/>
       <source>Are you sure?</source>
       <translation>Oletko varma?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="286"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="290"/>
       <source>Do you really want to remove selected filter?</source>
       <translation>Haluatko varmasti poistaa valitun suodattimen?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="412"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="449"/>
       <source>Article filters</source>
       <translation>Artikkelisuodattimet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="57"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="414"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="63"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="73"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="96"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="451"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="455"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="459"/>
       <source>New filter</source>
       <translation>Uusi suodatin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="67"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="418"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="66"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="453"/>
+      <source>&amp;Import</source>
+      <translation type="unfinished">&amp;Import</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="76"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="457"/>
+      <source>Export</source>
+      <translation type="unfinished">Export</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="106"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="463"/>
       <source>Remove filter</source>
       <translation>Poista suodatin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="70"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="420"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="109"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="465"/>
       <source>Remove</source>
       <translation>Poista</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="77"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="422"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="116"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="467"/>
       <source>Enable filter</source>
       <translation>Ota suodatin käyttöön</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="80"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="424"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="119"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="469"/>
       <source>Enable</source>
       <translation>Ota käyttöön</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="103"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="426"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="142"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="471"/>
       <source>Move filter up</source>
       <translation>Siirrä suodatinta ylöspäin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="106"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="428"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="145"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="473"/>
       <source>Up</source>
       <translation>Ylöspäin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="113"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="430"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="475"/>
       <source>Move filter down</source>
       <translation>Siirrä suodatinta alaspäin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="116"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="432"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="155"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="477"/>
       <source>Down</source>
       <translation>Alas</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="127"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="433"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="166"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="478"/>
       <source>&amp;Check all</source>
       <translation>&amp;Merkitse kaikki</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="134"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="434"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="173"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="479"/>
       <source>&amp;Uncheck all</source>
       <translation>&amp;Poista merkintä kaikista</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="219"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="441"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="258"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="486"/>
       <source>&amp;Documentation</source>
       <translation>&amp;Ohjeet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="294"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="445"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="333"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="490"/>
       <source>Details</source>
       <translation>Tiedot</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="354"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="444"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="403"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="489"/>
       <source>DB ID &amp; Custom ID</source>
       <translation>Tietokantatunnus ja mukautettu tunnus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="380"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="448"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="432"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="493"/>
       <source>Script output</source>
       <translation>Komentosarjan tuotos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="60"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="416"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="99"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="461"/>
       <source>&amp;New filter</source>
       <translation>&amp;Uusi suodatin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="157"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="435"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="196"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="480"/>
       <source>Article filter details</source>
       <translation>Artikkelisuodattimen tiedot</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="169"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="436"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="208"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="481"/>
       <source>Title of article filter</source>
       <translation>Artikkelisuodattimen nimi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="184"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="437"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="223"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="482"/>
       <source>Your JavaScript-based article filtering logic</source>
       <translation>JavaScript-pohjainen artikkelinsuodatuslogiikka</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="198"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="438"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="237"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="483"/>
       <source>&amp;Test</source>
       <translation>&amp;Testi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="205"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="439"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="244"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="484"/>
       <source>Process checked feeds</source>
       <translation>Käsittele tarkistetut syötteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="212"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="440"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="251"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="485"/>
       <source>&amp;Beautify</source>
       <translation>&amp;Kaunista</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="253"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="447"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="292"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="492"/>
       <source>Existing articles</source>
       <translation>Nykyiset artikkelit</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="300"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="442"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="339"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="487"/>
       <source>URL</source>
       <translation>Verkko-osoite</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="317"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="443"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="363"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="488"/>
       <source>Author</source>
       <translation>Tekijä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="362"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="446"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="414"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="491"/>
       <source>Contents</source>
       <translation>Sisältö</translation>
     </message>
@@ -3301,7 +3341,7 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     <name>FormProgressWorker</name>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formprogressworker.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formprogressworker.h" line="79"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formprogressworker.h" line="79"/>
       <source>Dialog</source>
       <translation>Valintaikkuna</translation>
     </message>
@@ -3346,37 +3386,37 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="134"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="134"/>
       <source>Restore database/settings</source>
       <translation>Palauta tietokanta/asetukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="33"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="135"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="135"/>
       <source>Operation results</source>
       <translation>Toimenpiteen tulokset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="59"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="136"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="136"/>
       <source>Source directory</source>
       <translation>Lähdekansio</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="65"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="137"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="137"/>
       <source>&amp;Select directory</source>
       <translation>&amp;Valitse kansio</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="82"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="138"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="138"/>
       <source>Restore database</source>
       <translation>Palauta tietokanta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="100"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="139"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="139"/>
       <source>Restore settings</source>
       <translation>Palauta asetukset</translation>
     </message>
@@ -3422,7 +3462,7 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formsettings.h" line="76"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formsettings.h" line="76"/>
       <source>Settings</source>
       <translation>Asetukset</translation>
     </message>
@@ -3841,37 +3881,37 @@ Voit asentaa sen nyt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formupdate.h" line="154"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="154"/>
       <source>Check for updates</source>
       <translation>Tarkista päivitykset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="20"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formupdate.h" line="155"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="155"/>
       <source>Current release</source>
       <translation>Nykyinen versio</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="34"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formupdate.h" line="157"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="157"/>
       <source>Available release</source>
       <translation>Saatavilla oleva versio</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="48"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formupdate.h" line="159"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="159"/>
       <source>Status</source>
       <translation>Tila</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="69"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formupdate.h" line="160"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="160"/>
       <source>Changelog</source>
       <translation>Muutosloki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="125"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_formupdate.h" line="161"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="161"/>
       <source>Available files</source>
       <translation>Saatavilla olevat tiedostot</translation>
     </message>
@@ -4047,22 +4087,22 @@ Voit asentaa sen nyt.</translation>
   <context>
     <name>GmailNetworkFactory</name>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="480"/>
+      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="481"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
       <translation>Kirjaudu uudelleen napsauttamalla tätä. Virhe on: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="493"/>
+      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="494"/>
       <source>Click this to login again.</source>
       <translation>Kirjaudu uudelleen napsauttamalla tätä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="562"/>
+      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="563"/>
       <source>No subject</source>
       <translation>Ei aihetta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="479"/>
+      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="480"/>
       <source>Gmail: authentication error</source>
       <translation>Gmail: tunnistautumisvirhe</translation>
     </message>
@@ -4072,24 +4112,24 @@ Voit asentaa sen nyt.</translation>
       <translation>tunnisteluettelon lataus epäonnistui</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="431"/>
+      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="432"/>
       <source>failed to download IDs of e-mail messages</source>
       <translation>sähköpostiviestien tunnisteiden lataus epäonnistui</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="492"/>
+      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="493"/>
       <source>Gmail: authorization denied</source>
       <translation>Gmail: valtuutus evätty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="443"/>
-      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="643"/>
+      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="444"/>
+      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="644"/>
       <source>you are not logged in</source>
       <translation>et ole sisäänkirjautuneena</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="483"/>
-      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="496"/>
+      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="484"/>
+      <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="497"/>
       <source>Login</source>
       <translation>Kirjaudu</translation>
     </message>
@@ -4122,19 +4162,19 @@ Voit asentaa sen nyt.</translation>
       <translation>Vastaa tähän sähköpostiviestiin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="250"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="249"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
       <translation>Todennustila: %1
 Kirjautumistunnusten vanhentuminen: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="252"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="251"/>
       <source>logged-in</source>
       <translation>kirjautunut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="252"/>
+      <location filename="../src/librssguard-gmail/src/gmailserviceroot.cpp" line="251"/>
       <source>NOT logged-in</source>
       <translation>EI kirjautunut</translation>
     </message>
@@ -4517,22 +4557,22 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       <translation>Syötteitä ei voi viedä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="259"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="258"/>
       <source>Export feeds</source>
       <translation>Vie syötteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="260"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="259"/>
       <source>Import feeds</source>
       <translation>Tuo syötteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="367"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="366"/>
       <source>Cannot add item</source>
       <translation>Tietuetta ei voi lisätä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="368"/>
+      <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="367"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Syötettä ei voi lisätä, koska toinen tärkeä toiminto on kesken.</translation>
     </message>
@@ -4575,7 +4615,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <name>ItemDetails</name>
     <message>
       <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_itemdetails.h" line="64"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_itemdetails.h" line="64"/>
       <source>Form</source>
       <translation>Lomake</translation>
     </message>
@@ -4621,18 +4661,18 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       <translation>Tunnisteiden määrä: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="113"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="117"/>
       <source>Cannot create label: %1.</source>
       <translation>Tunnistetta ei voi luoda: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="121"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="125"/>
       <source>This account does not allow you to create labels.</source>
       <translation>Tällä tilillä ei saa luoda tunnisteita.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="112"/>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="120"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="116"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="124"/>
       <source>Not allowed</source>
       <translation>Ei sallittu</translation>
     </message>
@@ -4990,61 +5030,61 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <name>MediaPlayer</name>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_mediaplayer.h" line="143"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="143"/>
       <source>Form</source>
       <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="65"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_mediaplayer.h" line="145"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="145"/>
       <source>Play/pause</source>
       <translation>Toista/tauko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="72"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_mediaplayer.h" line="148"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="148"/>
       <source>Stop</source>
       <translation>Pysäytä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="79"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_mediaplayer.h" line="151"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="151"/>
       <source>Speed</source>
       <translation>Nopeus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="107"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_mediaplayer.h" line="154"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="154"/>
       <source>Progress</source>
       <translation>Edistyminen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="117"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_mediaplayer.h" line="157"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="157"/>
       <source>Duration</source>
       <translation>Kesto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="124"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_mediaplayer.h" line="160"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="160"/>
       <source>Mute/unmute</source>
       <translation>Mykistä / poista mykistys</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="137"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_mediaplayer.h" line="163"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="163"/>
       <source>Volume</source>
       <translation>Äänenvoimakkuus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="156"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_mediaplayer.h" line="166"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="166"/>
       <source>Download</source>
       <translation>Lataa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="163"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_mediaplayer.h" line="169"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="169"/>
       <source>Switch fullscreen mode</source>
       <translation>Siirry kokonäyttötilaan</translation>
     </message>
@@ -5207,72 +5247,72 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
   <context>
     <name>MessagesModel</name>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="545"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="587"/>
       <source>Id</source>
       <translation>Tunnus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="545"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="587"/>
       <source>Read</source>
       <translation>Lue</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="545"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="587"/>
       <source>Deleted</source>
       <translation>Poistettu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="545"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="587"/>
       <source>Important</source>
       <translation>Tärkeä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="547"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
       <source>Feed</source>
       <translation>Syöte</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
       <source>Title</source>
       <translation>Otsikko</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
       <source>Author</source>
       <translation>Tekijä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
       <source>Contents</source>
       <translation>Sisältö</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="545"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="587"/>
       <source>Permanently deleted</source>
       <translation>Poistettu pysyvästi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="547"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
       <source>Account ID</source>
       <translation>Tilin tunnus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="547"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
       <source>Custom ID</source>
       <translation>Mukautettu tunnus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
       <source>Feed ID</source>
       <translation>Syötteen tunnus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="547"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
       <source>Score</source>
       <translation>Tulos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
       <source>Date</source>
       <translation>Päivämäärä</translation>
     </message>
@@ -5338,128 +5378,128 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       <translation>Syötettä ei voi muokata, koska toinen tärkeä toiminto on käynnissä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="507"/>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="540"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="549"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="582"/>
       <source>article with row %1 not found</source>
       <translation>artikkelia, jossa on rivi %1, ei löytynyt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="546"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
       <source>URL</source>
       <translation>Verkko-osoite</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="547"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
       <source>Custom data</source>
       <translation type="unfinished">Custom data</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="548"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="590"/>
       <source>Assigned labels</source>
       <translation>Annetut tunnisteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="548"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="590"/>
       <source>Has attachments</source>
       <translation>Sisältää liitteitä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="550"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="592"/>
       <source>ID of the article.</source>
       <translation>Artikkelin tunniste.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="550"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="592"/>
       <source>Is article read?</source>
       <translation>Onko artikkeli luettu?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="550"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="592"/>
       <source>Is article important?</source>
       <translation>Onko artikkeli tärkeä?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="551"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="593"/>
       <source>Is article deleted?</source>
       <translation>Onko artikkeli poistettu?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="551"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="593"/>
       <source>Is article permanently deleted from recycle bin?</source>
       <translation>Onko artikkeli poistettu pysyvästi roskakorista?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="552"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="594"/>
       <source>ID of feed which this article belongs to.</source>
       <translation>Sen syötteen tunnus, johon tämä artikkeli kuuluu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="552"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="594"/>
       <source>Title of the article.</source>
       <translation>Artikkelin otsikko.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="553"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="595"/>
       <source>Url of the article.</source>
       <translation>Artikkelin verkko-osoite.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="553"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="595"/>
       <source>Author of the article.</source>
       <translation>Artikkelin kirjoittaja.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="553"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="595"/>
       <source>Creation date of the article.</source>
       <translation>Artikkelin luontipäivä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="554"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="596"/>
       <source>Contents of the article.</source>
       <translation>Artikkelin sisältö.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="554"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="596"/>
       <source>Score of the article.</source>
       <translation>Artikkelin pisteytys.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="554"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="596"/>
       <source>Account ID of the article.</source>
       <translation>Artikkelin tilin tunnus.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="555"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="597"/>
       <source>Custom ID of the article.</source>
       <translation>Artikkelin mukautettu tunnus.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="555"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="597"/>
       <source>Custom account-specific data of the article.</source>
       <translation type="unfinished">Custom account-specific data of the article.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="556"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="598"/>
       <source>Name of feed of the article.</source>
       <translation>Artikkelin syötteen nimi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="556"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="598"/>
       <source>Indication of attachments presence within the article.</source>
       <translation>Merkki liitteistä artikkelissa.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="557"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="599"/>
       <source>Labels assigned to the article.</source>
       <translation>Artikkeliin liitetyt tunnisteet.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="702"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="744"/>
       <source>article model column %1 is out of range</source>
       <translation>artikkelin mallisarake %1 on alueen ulkopuolella</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="726"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="768"/>
       <source>%n months ago</source>
       <translation>
         <numerusform>%n kuukausi sitten</numerusform>
@@ -5467,7 +5507,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="730"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="772"/>
       <source>%n weeks ago</source>
       <translation>
         <numerusform>%n viikko sitten</numerusform>
@@ -5475,7 +5515,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="734"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="776"/>
       <source>%n days ago</source>
       <translation>
         <numerusform>%n päivä sitten</numerusform>
@@ -5483,12 +5523,12 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="738"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="780"/>
       <source>yesterday</source>
       <translation>eilen</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="742"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="784"/>
       <source>%n hours ago</source>
       <translation>
         <numerusform>%n tunti sitten</numerusform>
@@ -5496,7 +5536,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="746"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="788"/>
       <source>%n minutes ago</source>
       <translation>
         <numerusform>%n minuutti sitten</numerusform>
@@ -5504,7 +5544,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="749"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="791"/>
       <source>just now</source>
       <translation>nyt</translation>
     </message>
@@ -5851,49 +5891,49 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_networkproxydetails.h" line="162"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="162"/>
       <source>Form</source>
       <translation>Lomake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="23"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_networkproxydetails.h" line="163"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="163"/>
       <source>Host</source>
       <translation>Palvelin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="41"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_networkproxydetails.h" line="164"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="164"/>
       <source>Hostname or IP of your proxy server</source>
       <translation>Välityspalvelimen isäntänimi tai IP-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="48"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_networkproxydetails.h" line="165"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="165"/>
       <source>Port</source>
       <translation>Portti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="76"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_networkproxydetails.h" line="166"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="166"/>
       <source>Username</source>
       <translation>Käyttäjätunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_networkproxydetails.h" line="167"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="167"/>
       <source>Your username for proxy server authentication</source>
       <translation>Käyttäjätunnuksesi välityspalvelintodennukselle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_networkproxydetails.h" line="168"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="168"/>
       <source>Password</source>
       <translation>Salasana</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_networkproxydetails.h" line="169"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="169"/>
       <source>Your password for proxy server authentication</source>
       <translation>Salasanasi välityspalvelintodennukselle</translation>
     </message>
@@ -5904,7 +5944,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="146"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_networkproxydetails.h" line="170"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="170"/>
       <source>Type</source>
       <extracomment>Proxy server type.</extracomment>
       <translation>Tyyppi</translation>
@@ -6063,7 +6103,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
   <context>
     <name>NextcloudServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="135"/>
+      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="134"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
       <translation>ei voi noutaa syöteluetteloa - verkkovirhe %1</translation>
     </message>
@@ -6109,7 +6149,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
   <context>
     <name>QLiteHtmlArticleViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="179"/>
+      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="177"/>
       <source>Context menu for article viewer</source>
       <translation>Tilannekohtainen valikko artikkelien lukuikkunalle</translation>
     </message>
@@ -6135,7 +6175,7 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
   <context>
     <name>QObject</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="598"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="664"/>
       <source>
 
 + %n other feeds.</source>
@@ -6187,7 +6227,7 @@ Vähintään API-taso %1 on pakollinen.</translation>
       <translation>Yksinkertainen Gmail-integrointi JSON-APIlla. Soveltuu myös sähköpostien lähettämiseen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/feedlyentrypoint.cpp" line="40"/>
+      <location filename="../src/librssguard-feedly/src/feedlyentrypoint.cpp" line="42"/>
       <source>Keep up with the topics and trends you care about, without the overwhelm.
 
 Feedly is a secure space where you can privately organize and research the topics and trends that matter to you.</source>
@@ -6196,12 +6236,12 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly on turvallinen sovellus, jossa voit järjestää ja tutustua haluamiisi aiheisiin ja trendeihin.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1814"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1853"/>
       <source>cannot move item of kind %1</source>
       <translation>tyypin %1 kohdetta ei voi siirtää</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1955"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1994"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Artikkelisuodatinta ei voi lisätä, koska nykyinen tietokanta ei pysty tuottamaan viimeisimmän lisätyn rivin tunnusta.</translation>
     </message>
@@ -6446,7 +6486,7 @@ Tuetut lukuohjelmat:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="131"/>
       <source>Images (%1)</source>
-      <translation>Kuvat (%1)</translation>
+      <translation type="unfinished">Images (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="158"/>
@@ -6639,12 +6679,12 @@ pino: %3</translation>
       <translation>QuiteRSS-tietokantatiedostot (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="57"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="56"/>
       <source>Import data from QuiteRSS</source>
       <translation>Tuo tietoja QuiteRSS:stä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="64"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="63"/>
       <source>Imported articles from %1 feeds...</source>
       <translation>Tuotiin artikkelit %1 syötteestä...</translation>
     </message>
@@ -6654,17 +6694,17 @@ pino: %3</translation>
       <translation>ohitetaan artikkeli, koska sillä ei ole otsikkoa eikä verkko-osoitetta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="299"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="305"/>
       <source>Unnamed item</source>
       <translation>Nimetön kohde</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="409"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="415"/>
       <source>missing QuiteRSS tables %1</source>
       <translation>puuttuvat QuiteRSS-taulukot %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="415"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="421"/>
       <source>metadata version 17 was expected</source>
       <translation>metadataversiota 17 odotettiin</translation>
     </message>
@@ -6677,12 +6717,12 @@ pino: %3</translation>
       <translation>Roskakori</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="68"/>
+      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="73"/>
       <source>Are you sure?</source>
       <translation>Oletko varma?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="69"/>
+      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="74"/>
       <source>Do you really want to empty your recycle bin?</source>
       <translation>Haluatko varmasti tyhjentää roskakorin?</translation>
     </message>
@@ -6868,19 +6908,19 @@ pino: %3</translation>
   <context>
     <name>RedditServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="140"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="139"/>
       <source>Authentication status: %1
 Login tokens expiration: %2</source>
       <translation>Todennustila: %1
 Kirjautumistunnusten vanhentuminen: %2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="142"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="141"/>
       <source>logged-in</source>
       <translation>kirjautunut</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="142"/>
+      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="141"/>
       <source>NOT logged-in</source>
       <translation>EI kirjautunut</translation>
     </message>
@@ -6951,12 +6991,12 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
   <context>
     <name>Search</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/search.cpp" line="89"/>
+      <location filename="../src/librssguard/services/abstract/search.cpp" line="82"/>
       <source>Regular expression: %1</source>
       <translation>Säännöllinen lauseke: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/search.cpp" line="92"/>
+      <location filename="../src/librssguard/services/abstract/search.cpp" line="85"/>
       <source>SQL &apos;WHERE&apos; clause: %1</source>
       <translation>SQL WHERE -lauseke: %1</translation>
     </message>
@@ -6988,19 +7028,19 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     <name>SearchTextWidget</name>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="32"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_searchtextwidget.h" line="69"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="69"/>
       <source>Search text</source>
       <translation>Etsi tekstiä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_searchtextwidget.h" line="71"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="71"/>
       <source>Find previous occurence</source>
       <translation>Etsi edellinen esiintymä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="49"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_searchtextwidget.h" line="75"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="75"/>
       <source>Find next occurence</source>
       <translation>Etsi seuraava esiintymä</translation>
     </message>
@@ -7031,67 +7071,67 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
   <context>
     <name>ServiceRoot</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="84"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="90"/>
       <source>Cannot update label</source>
       <translation>Tunnistetta ei voi päivittää</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="85"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="91"/>
       <source>Failed to update label with new information: %1.</source>
       <translation>Tunnisteen päivittäminen uusilla tiedoilla epäonnistui: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="112"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="118"/>
       <source>Cannot update probe item</source>
       <translation>Tiedustelukohdetta ei voi päivittää</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="113"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="119"/>
       <source>Failed to update selected probe: %1.</source>
       <translation>Valittua tiedustelua ei voi päivittää: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="123"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="129"/>
       <source>Unsupported</source>
       <translation>Ei tueta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="124"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="130"/>
       <source>This is not suppported (yet).</source>
       <translation>Tätä ei tueta (vielä).</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="170"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="178"/>
       <source>New query</source>
       <translation>Uusi kysely</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="182"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="190"/>
       <source>Restore recycle bin</source>
       <translation>Palauta roskakori</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="184"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="192"/>
       <source>Empty recycle bin</source>
       <translation>Tyhjennä roskakori</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="198"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="206"/>
       <source>New label</source>
       <translation>Uusi tunniste</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="224"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="232"/>
       <source>Synchronize folders &amp;&amp; other items</source>
       <translation>Synkronoi kansiot ja muut kohteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="233"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="241"/>
       <source>Synchronize article cache</source>
       <translation>Synkronoi artikkelien välimuisti</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="379"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="388"/>
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
@@ -7100,12 +7140,12 @@ Luokkien määrä: %2
 Käytöstä poistettujen syötteiden määrä: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="748"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="758"/>
       <source>Error when fetching list of feeds</source>
       <translation>Syöteluetteloa noudettaessa tapahtui virhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="749"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="759"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>Tilin %1 syötteitä ja luokkia ei noudettu; virhe: %2</translation>
     </message>
@@ -7130,7 +7170,7 @@ Käytöstä poistettujen syötteiden määrä: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="123"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="168"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="285"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="284"/>
       <source>Executables (*)</source>
       <extracomment>File filter for external browser selection dialog.
 ----------
@@ -7140,7 +7180,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="125"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="170"/>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="283"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="282"/>
       <source>Executables (*.*)</source>
       <translation>Suoritustiedostot (*.*)</translation>
     </message>
@@ -7161,59 +7201,59 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="21"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="341"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="341"/>
       <source>Network</source>
       <translation>Verkko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="339"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="339"/>
       <source>Enable HTTP/2</source>
       <translation>Ota HTTP/2 Käyttöön</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="34"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="340"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="340"/>
       <source>Custom User-Agent</source>
       <translation>Mukautettu käyttäjäagentti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="45"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="354"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="354"/>
       <source>External web browser</source>
       <translation>Erillinen verkkoselain</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="51"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="178"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="343"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="356"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="343"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="356"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Jos tätä ei valita, järjestelmän oletusselainta käytetään.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="54"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="345"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="345"/>
       <source>Use custom external web browser</source>
       <translation>Käytä mukautettua erillistä verkkoselainta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="66"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="346"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="346"/>
       <source>Web browser executable</source>
       <translation>Verkkoselaimen suoritustiedosto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="78"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="347"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="347"/>
       <source>Executable file of web browser</source>
       <translation>Selaimen suoritustiedosto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="91"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="221"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="348"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="361"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="348"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="361"/>
       <source>&amp;Browse</source>
       <translation>&amp;Selaa</translation>
     </message>
@@ -7221,36 +7261,36 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="100"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="230"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="349"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="362"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="349"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="362"/>
       <source>Parameters</source>
       <translation>Parametrit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="110"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="240"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="350"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="363"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="350"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="363"/>
       <source>Parameters passed to executable</source>
       <translation>Suoritustiedostot välitettävät parametrit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="117"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="247"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="351"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="364"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="351"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="364"/>
       <source>Use sample arguments for</source>
       <translation>Käytä esimerkkiargumentteja kohteelle</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="131"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="352"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="352"/>
       <source>Select browser</source>
       <translation>Valitse selain</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="342"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="369"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="369"/>
       <source>&amp;Edit tool path</source>
       <translation>&amp;Muokkaa työkalun polkua</translation>
     </message>
@@ -7261,31 +7301,31 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="159"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="367"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="367"/>
       <source>External e-mail client</source>
       <translation>Erillinen sähköpostisovellus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="181"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="358"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="358"/>
       <source>Use custom external e-mail client</source>
       <translation>Käytä erillistä sähköpostisovellusta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="193"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="359"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="359"/>
       <source>E-mail client executable</source>
       <translation>Sähköpostisovelluksen suoritustiedosto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="208"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="360"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="360"/>
       <source>Executable file of e-mail client</source>
       <translation>Sähköpostisovelluksen suoritustiedosto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="261"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="365"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="365"/>
       <source>Select client</source>
       <translation>Valitse asiakas</translation>
     </message>
@@ -7300,19 +7340,19 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="276"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="371"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="371"/>
       <source>External tools</source>
       <translation>Erilliset työkalut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="332"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="368"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="368"/>
       <source>&amp;Add tool</source>
       <translation>&amp;Lisää työkalu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="352"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsbrowsermail.h" line="370"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="370"/>
       <source>&amp;Delete selected tool</source>
       <translation>&amp;Poista valittu työkalu</translation>
     </message>
@@ -7322,12 +7362,12 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Nimi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="266"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="270"/>
       <source>New tool</source>
       <translation>Uusi työkalu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="279"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="278"/>
       <source>Select external tool</source>
       <translation>Valitse erillinen työkalu</translation>
     </message>
@@ -7421,43 +7461,43 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="17"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsdatabase.h" line="201"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="201"/>
       <source>Database driver</source>
       <translation>Tietokannan ajuri</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="71"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsdatabase.h" line="202"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="202"/>
       <source>Hostname</source>
       <translation>Isäntänimi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="86"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsdatabase.h" line="203"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="203"/>
       <source>Port</source>
       <translation>Portti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="117"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsdatabase.h" line="204"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="204"/>
       <source>Working database</source>
       <translation>Työskentelytietokanta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="127"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsdatabase.h" line="205"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="205"/>
       <source>Username</source>
       <translation>Käyttäjätunnus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="140"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsdatabase.h" line="206"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="206"/>
       <source>Password</source>
       <translation>Salasana</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="155"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsdatabase.h" line="207"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="207"/>
       <source>Test setup</source>
       <translation>Testaa asetuksia</translation>
     </message>
@@ -7528,69 +7568,69 @@ Tämä voi nopeuttaa sovellusta merkittävästi, jos artikkeleja on satojatuhans
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="631"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="631"/>
       <source>Feed fetching</source>
       <translation>Syötteiden nouto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="622"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="622"/>
       <source>Fetch all articles on startup with initial delay of</source>
       <translation>Nouda kaikki artikkelit käynnistettäessä käynnistysviiveellä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="623"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="623"/>
       <source>Auto-fetch articles for all feeds every</source>
       <translation>Nouda syötteiden artikkelit automaattisesti joka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="624"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="624"/>
       <source>Only auto-fetch articles if application is unfocused</source>
       <translation>Nouda artikkelit automaattisesti vain, jos sovellus on passiivisena</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="626"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="626"/>
       <source>Feed connection timeout</source>
       <translation>Syötteen yhteyden aikakatkaisu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="628"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="628"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
       <translation>Yhteyden aikakatkaisu tarkoittaa syötteen uusien viestien lataamisväliä. Kun kyseinen aika on kulunut umpeen, lataus keskeytetään.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="630"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="630"/>
       <source> ms</source>
       <translation> ms</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="625"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="625"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
       <translation>Tukee erittäin lyhyitä automaattisen noudon aikavälejä (alle 10 sekuntia)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="642"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="642"/>
       <source>Feeds list</source>
       <translation>Syöteluettelo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="481"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="632"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="659"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="632"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="659"/>
       <source>Row height</source>
       <translation>Rivin korkeus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="175"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="633"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="633"/>
       <source>Feed list font</source>
       <translation>Syötelistan fontti</translation>
     </message>
@@ -7598,9 +7638,9 @@ Tämä voi nopeuttaa sovellusta merkittävästi, jos artikkeleja on satojatuhans
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="187"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="392"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="646"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="634"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="652"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="666"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="634"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="652"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="666"/>
       <source>Font preview</source>
       <translation>Fontin esikatselu</translation>
     </message>
@@ -7608,189 +7648,189 @@ Tämä voi nopeuttaa sovellusta merkittävästi, jos artikkeleja on satojatuhans
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="197"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="402"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="656"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="635"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="653"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="667"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="635"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="653"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="667"/>
       <source>&amp;Change font</source>
       <translation>&amp;Vaihda fontti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="222"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="636"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="636"/>
       <source>Article count format</source>
       <translation>Artikkelimäärän muoto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="251"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="637"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="637"/>
       <source>Hide article counts if there are no unread articles</source>
       <translation>Piilota artikkelimäärä, jos lukemattomia artikkeleja ei ole</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="258"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="638"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="638"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
       <translation>Salli syöte-/artikkeliluettelossa vain tavallisimmat pikakomennot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="265"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="639"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="639"/>
       <source>Display tooltips for feeds and articles</source>
       <translation>Näytä syötteille ja artikkeleille vain työkaluvihjeitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="272"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="640"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="640"/>
       <source>Strikethrough disabled feed titles</source>
       <translation>Yliviivaa käytöstä poistetut syötteiden otsikot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="279"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="641"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="641"/>
       <source>Update feed list during feed fetching</source>
       <translation>Päivitä syöteluettelo noutamisen aikana</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="287"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="655"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="655"/>
       <source>Articles</source>
       <translation>Artikkelit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="293"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="643"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="643"/>
       <source>Remove all read articles from all feeds on application exit</source>
       <translation>Poista kaikki luetut artikkelit kaikista syötteistä, kun sovellus suljetaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="645"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="645"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
       <translation>Ohita artikkelin runkoon tehdyt muutokset, kun uusia artikkeleja noudetaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="328"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="648"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="648"/>
       <source>Internal article viewer</source>
       <translation>Sisäinen lukuikkuna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="430"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="654"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="654"/>
       <source>Mark existing article unread when its updated version is fetched from the feed</source>
       <translation>Merkitse olemassa oleva artikkeli lukemattomaksi, kun sen päivitetty versio noudetaan syötteestä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="444"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="656"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="656"/>
       <source>Unread article icon type</source>
       <translation>Lukemattomien artikkelien kuvaketyyppi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="565"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="662"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="662"/>
       <source>Use custom date/time format for dates-only</source>
       <translation>Käytä mukautettua päivämäärän ja ajan muotoa vain päivämäärille</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="689"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="668"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="668"/>
       <source>Upon article selection, mark as read</source>
       <translation>Merkitse artikkeli luetuksi, kun se valitaan</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="696"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="669"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="669"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
       <translation>Muuta artikkeliluettelo RTL-muotoon, jos kaikki valitut syötteet ovat RTL-muotoisia</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="703"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="670"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="670"/>
       <source>Use articles lazy-loading</source>
       <translation>Käytä artikkelien hidasta latausta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="321"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="647"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="647"/>
       <source>Bring application window to front once article is opened in external web browser</source>
       <translation>Tuo sovellusikkuna eteen, kun artikkeli avataan ulkoisessa selaimessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="386"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="651"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="651"/>
       <source>Article browser font</source>
       <translation>Artikkeliselaimen kirjasintyyppi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="314"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="646"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="646"/>
       <source>Fixup date/time of articles which are in the future</source>
       <translation>Korjaa tulevaisuuteen merkittyjen artikkelien päivämäärä/kellonaika</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="334"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="649"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="649"/>
       <source>Display attachments directly in article</source>
       <translation>Näytä liitteet suoraan artikkelissa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="300"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="644"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="644"/>
       <source>Keep article viewer always visible</source>
       <translation>Pidä artikkelien lukuikkuna aina näkyvissä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="343"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="650"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="650"/>
       <source>Limit height of attachments</source>
       <translation>Rajoita liitteiden korkeutta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="438"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="671"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="671"/>
       <source>Articles list</source>
       <translation>Artikkeliluettelo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="457"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="657"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="657"/>
       <source>Keep article selection in the middle of the article list viewport</source>
       <translation>Pidä artikkelinvalinta artikkeliluettelonäkymän keskellä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="464"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="658"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="658"/>
       <source>Enable multiline items</source>
       <translation>Ota moniriviset kohteet käyttöön</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="510"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="660"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="660"/>
       <source>Top/bottom row padding</source>
       <translation>Ylä- tai alarivin täyttö</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="539"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="661"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="661"/>
       <source>Use custom date/time format</source>
       <translation>Käytä mukautettua päivämäärän ja ajan muotoa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="591"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="663"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="663"/>
       <source>Custom date/time format for today&apos;s articles</source>
       <translation>Mukautettu päivämäärän ja ajan muoto tämän päivän artikkeleille</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="634"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="665"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="665"/>
       <source>Article list font</source>
       <translation>Artikkeliluettelon kirjasintyyppi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="617"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="664"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="664"/>
       <source>Show relative time for articles not older than</source>
       <translation>Näytä suhteellinen aika artikkeleille, joiden enimmäisikä on</translation>
     </message>
@@ -7809,19 +7849,19 @@ Tämä voi nopeuttaa sovellusta merkittävästi, jos artikkeleja on satojatuhans
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="17"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgeneral.h" line="64"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="64"/>
       <source>Launch %1 on operating system startup</source>
       <translation>Käynnistä %1 kun käyttöjärjestelmä käynnistyy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="24"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgeneral.h" line="65"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="65"/>
       <source>Check for %1 updates on application startup</source>
       <translation>Tarkista %1-päivitykset sovellusta käynnistettäessä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="44"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgeneral.h" line="66"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="66"/>
       <source>Disable CLI debug output (but keep more serious warnings enabled)</source>
       <translation>Poista CLI-virheidenkorjauksen tuotokset käytöstä (mutta pidä vakavammat varoitukset käytössä)</translation>
     </message>
@@ -7912,79 +7952,79 @@ Kuvaus: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="361"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="361"/>
       <source>Icons &amp;&amp; skins</source>
       <translation>Kuvakkeet &amp;&amp; ulkoasut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="33"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="357"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="357"/>
       <source>Icon theme</source>
       <translation>Kuvaketeema</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="46"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="358"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="358"/>
       <source>Style</source>
       <translation>Tyyli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="69"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="360"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="360"/>
       <source>Skin</source>
       <translation>Ulkoasu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="123"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="366"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="366"/>
       <source>Application font</source>
       <translation>Sovelluksen kirjasintyyppi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="135"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="362"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="362"/>
       <source>Customize global font</source>
       <translation>Mukauta yleinen kirjasintyyppi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="147"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="363"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="363"/>
       <source>Font preview</source>
       <translation>Fontin esikatselu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="157"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="364"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="364"/>
       <source>&amp;Change font</source>
       <translation>&amp;Vaihda fontti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="175"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="368"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="368"/>
       <source>Custom skin colors</source>
       <translation>Mukautetut ulkoasuvärit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="184"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="367"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="367"/>
       <source>Customize predefined colors</source>
       <translation>Mukauta esiasetetut värit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="290"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="377"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="377"/>
       <source>Window</source>
       <translation>Ikkuna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="208"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="369"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="369"/>
       <source>Tray icon</source>
       <translation>Ilmoitusalueen kuvake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="220"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="370"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="370"/>
       <source>Use monochrome icon</source>
       <translation>Käytä mustavalkoista kuvaketta</translation>
     </message>
@@ -7992,87 +8032,87 @@ Kuvaus: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="227"/>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="260"/>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="296"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="371"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="375"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="378"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="371"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="375"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="378"/>
       <source>Display count of unread messages</source>
       <translation>Näytä lukemattomien viestien määrä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="234"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="372"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="372"/>
       <source>Hide main window when it is minimized</source>
       <translation>Piilota pääikkuna kun se pienennetään</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="59"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="359"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="359"/>
       <source>Use skin colors</source>
       <translation>Käytä ulkoasun värejä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="167"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="365"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="365"/>
       <source>Enable application-wide font anti-aliasing</source>
       <translation>Ota kirjasinten sahalaitaisuuden poisto käyttöön kaikkialla sovelluksessa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="196"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="379"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="379"/>
       <source>Tray area &amp;&amp; taskbar &amp;&amp; window</source>
       <translation>Ilmaisinalue &amp;&amp; tehtäväpalkki &amp;&amp; ikkuna</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="244"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="373"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="373"/>
       <source>Use colored icon when there are unread articles</source>
       <translation>Käytä värillistä kuvaketta, jos artikkeleja on lukematta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="254"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="374"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="374"/>
       <source>Taskbar</source>
       <translation>Tehtäväpalkki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="270"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="376"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="376"/>
       <source>Start application minimized (or hidden if configured)</source>
       <translation>Käynnistä sovellus pienennettynä (tai piilotettuna, jos tämä toiminto on aktivoitu asetuksissa)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="307"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="385"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="385"/>
       <source>Tabs</source>
       <translation>Välilehdet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="319"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="380"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="380"/>
       <source>Close tabs with</source>
       <translation>Sulje välilehdet käyttämällä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="325"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="381"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="381"/>
       <source>Middle mouse button single-click</source>
       <translation>Hiiren keskinäppäimen napautus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="332"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="382"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="382"/>
       <source>Left mouse button double-click</source>
       <translation>Vasemman hiirenpainikkeen kaksoisnapsautus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="342"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="383"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="383"/>
       <source>Open new tabs with left mouse button double-click on tab bar</source>
       <translation>Avaa uusia välilehtiä hiiren vasemman painikkeen tuplanapsautuksella välilehtipalkissa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="349"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsgui.h" line="384"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="384"/>
       <source>Hide tab bar if just one tab is visible</source>
       <translation>Piilota välilehtipalkki, jos vain yksi välilehti on näkyvissä</translation>
     </message>
@@ -8141,19 +8181,19 @@ Kuvaus: %3</translation>
     <name>SettingsMediaPlayer</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="17"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsmediaplayer.h" line="114"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="114"/>
       <source>Backend</source>
       <translation>Taustajärjestelmä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="36"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsmediaplayer.h" line="115"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="115"/>
       <source>Use custom MPV configuration folder</source>
       <translation>Käytä mukautettua MPV-asetuskansiota</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.ui" line="48"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsmediaplayer.h" line="116"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsmediaplayer.h" line="116"/>
       <source>Browse</source>
       <translation>Selaa</translation>
     </message>
@@ -8192,55 +8232,55 @@ Kuvaus: %3</translation>
     <name>SettingsNotifications</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="17"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsnotifications.h" line="199"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="200"/>
       <source>Enable notifications</source>
       <translation>Käytä ilmoituksia</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="37"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsnotifications.h" line="200"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="40"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="201"/>
       <source>Balloon notifications type</source>
       <translation>Kuplatyyppinen ilmoitus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="43"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsnotifications.h" line="201"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="46"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="202"/>
       <source>Native notifications (tray icon must be enabled)</source>
       <translation>Alkuperäiset ilmoitukset (ilmaisinalueen kuvakkeen on oltava käytössä)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="50"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsnotifications.h" line="202"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="53"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="203"/>
       <source>Custom notifications</source>
       <translation>Mukautetut ilmoitukset</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="66"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsnotifications.h" line="203"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="69"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="204"/>
       <source>Position</source>
       <translation>Paikka</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="79"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsnotifications.h" line="204"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="82"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="205"/>
       <source>Width</source>
       <translation>Leveys</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="102"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsnotifications.h" line="205"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="105"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="206"/>
       <source>Margins</source>
       <translation>Reunukset</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="122"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsnotifications.h" line="206"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="125"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="207"/>
       <source>Screen</source>
       <translation>Näyttö</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="156"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingsnotifications.h" line="208"/>
+      <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="159"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="209"/>
       <source>Opacity</source>
       <translation>Läpinäkyvyys</translation>
     </message>
@@ -8287,37 +8327,37 @@ Kuvaus: %3</translation>
     <name>SettingsToolbars</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="23"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingstoolbars.h" line="157"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="157"/>
       <source>Button style</source>
       <translation>Painikkeen tyyli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="36"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingstoolbars.h" line="158"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="158"/>
       <source>Icon size</source>
       <translation>Kuvakkeen koko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="62"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingstoolbars.h" line="159"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="159"/>
       <source>Toolbar editor</source>
       <translation>Työkalupalkin muokkain</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="76"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingstoolbars.h" line="160"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="160"/>
       <source>Toolbar for feeds list</source>
       <translation>Syöteluettelon työkalupalkki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="81"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingstoolbars.h" line="161"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="161"/>
       <source>Toolbar for articles list</source>
       <translation>Artikkeliluettelon työkalupalkki</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.ui" line="86"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_settingstoolbars.h" line="162"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingstoolbars.h" line="162"/>
       <source>Statusbar</source>
       <translation>Tilapalkki</translation>
     </message>
@@ -8389,49 +8429,49 @@ Kuvaus: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="23"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_singlenotificationeditor.h" line="136"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="136"/>
       <source>Balloon notification</source>
       <translation>Ilmoituskupla</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="30"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_singlenotificationeditor.h" line="137"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="137"/>
       <source>Show dialogs</source>
       <translation>Näytä valintaikkunat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="37"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_singlenotificationeditor.h" line="138"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="138"/>
       <source>Play sound</source>
       <translation>Toista ääni</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="65"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_singlenotificationeditor.h" line="139"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="139"/>
       <source>Sound</source>
       <translation>Ääni</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="77"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_singlenotificationeditor.h" line="140"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="140"/>
       <source>Full path to your WAV sound file</source>
       <translation>Koko polku WAV-äänitiedostoon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="84"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_singlenotificationeditor.h" line="141"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="141"/>
       <source>&amp;Browse</source>
       <translation>&amp;Selaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="91"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_singlenotificationeditor.h" line="142"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="142"/>
       <source>&amp;Play</source>
       <translation>&amp;Toista</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.ui" line="110"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_singlenotificationeditor.h" line="143"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_singlenotificationeditor.h" line="143"/>
       <source>Volume</source>
       <translation>Äänenvoimakkuus</translation>
     </message>
@@ -8458,7 +8498,7 @@ Kuvaus: %3</translation>
   <context>
     <name>SqliteDriver</name>
     <message>
-      <location filename="../src/librssguard/database/sqlitedriver.cpp" line="275"/>
+      <location filename="../src/librssguard/database/sqlitedriver.cpp" line="279"/>
       <source>Database file not copied to output directory successfully.</source>
       <translation>Tietokantatiedoston kopiointi kohdehakemistoon epäonnistui.</translation>
     </message>
@@ -8503,7 +8543,7 @@ Kuvaus: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="22"/>
       <source>Use default icon from icon theme</source>
-      <translation>Käytä kuvaketeeman oletuskuvaketta</translation>
+      <translation type="unfinished">Use default icon from icon theme</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="33"/>
@@ -8522,7 +8562,7 @@ Jos näin käy, sinun on asetetttava näiden syötteiden noutamiselle jotkin aik
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="57"/>
       <source>Images (%1)</source>
-      <translation>Kuvat (%1)</translation>
+      <translation type="unfinished">Images (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="72"/>
@@ -8541,18 +8581,35 @@ Jos näin käy, sinun on asetetttava näiden syötteiden noutamiselle jotkin aik
   <context>
     <name>StandardCategory</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="37"/>
+      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="44"/>
       <source>Cannot save data for category, detailed information was logged via debug log.</source>
       <translation>Luokan tietoja ei voi tallentaa. Tarkat tiedot on tallennettu virheidenkorjauslokiin.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="36"/>
+      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="43"/>
       <source>Cannot save category data</source>
       <translation>Luokkatietoja ei voida tallentaa</translation>
     </message>
   </context>
   <context>
     <name>StandardFeed</name>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="78"/>
+      <source>Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4
+Fetch article comments: %5
+HTTP/2: %6
+Fetch full articles: %7 (plain text only: %8)</source>
+      <translation type="unfinished">Encoding: %1
+Type: %2
+Post-processing script: %3
+Use raw XML saving: %4
+Fetch article comments: %5
+HTTP/2: %6
+Fetch full articles: %7 (plain text only: %8)</translation>
+    </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="88"/>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="89"/>
@@ -8580,22 +8637,22 @@ Jos näin käy, sinun on asetetttava näiden syötteiden noutamiselle jotkin aik
       <translation>Paikallinen tiedosto</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="460"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="462"/>
       <source>uses application setting</source>
       <translation>käyttää sovelluksen asetusta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="463"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="465"/>
       <source>enabled</source>
       <translation>käytössä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="466"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="468"/>
       <source>disabled</source>
       <translation>poissa käytöstä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="469"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="471"/>
       <source>unknown state</source>
       <translation>tuntematon tila</translation>
     </message>
@@ -8605,46 +8662,17 @@ Jos näin käy, sinun on asetetttava näiden syötteiden noutamiselle jotkin aik
       <translation>Tuntematon</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="272"/>
-      <source>Cannot save data for feed: %1</source>
-      <translation>Seuraavan syötteen tietoja ei voida tallentaa: %1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="443"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="445"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation>Syötettä ei voida siirtää. Saat lisätietoja virheidenkorjauslokista.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="271"/>
-      <source>Cannot save feed data</source>
-      <translation>Syötteen tietoja ei voida tallentaa</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="78"/>
-      <source>Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
-HTTP/2: %6
-Fetch full articles: %7 (plain text only: %8)
-</source>
-      <translation>Merkistö: %1
-Tyyppi: %2
-Jälkikäsittelyskripti: %3
-Tallenna muokkaamaton XML: %4
-Nouda artikkelien kommentit: %5
-HTTP/2: %6
-Nouda koko artikkelit: %7 (pelkkä teksti -muoto: %8)
-</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="401"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="397"/>
       <source>feed format not recognized</source>
       <translation>syötteen muotoa ei tunnisteta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="442"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="444"/>
       <source>Cannot move feed</source>
       <translation>Syötettä ei voi siirtää</translation>
     </message>
@@ -8672,114 +8700,74 @@ Nouda koko artikkelit: %7 (pelkkä teksti -muoto: %8)
       <translation>Aseta kuvaus syötteelle.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="78"/>
-      <source>Icon selection</source>
-      <translation>Kuvakkeen valinta</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="85"/>
-      <source>Use default icon from icon theme</source>
-      <translation>Käytä kuvaketeeman oletuskuvaketta</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="87"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="79"/>
       <source>Fetch icon from feed</source>
       <translation>Nouda kuvake syötteestä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="96"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="88"/>
       <source>No metadata fetched so far.</source>
       <translation>Metatietoja ei ole vielä noudettu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="149"/>
-      <source>Enter URL</source>
-      <translation>Anna verkko-osoite</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="150"/>
-      <source>Enter direct URL pointing to the image</source>
-      <translation>Anna kuvaan suoraan osoittava verkko-osoite</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="175"/>
-      <source>Icon not fetched</source>
-      <translation>Kuvaketta ei noudettu</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="176"/>
-      <source>Icon was not fetched due to network error.</source>
-      <translation>Kuvaketta ei noudettu verkkovirheen vuoksi.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="205"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="152"/>
       <source>Icon fetched successfully.</source>
       <translation>Kuvake noudettu onnistuneesti.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="264"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="211"/>
       <source>All metadata fetched successfully.</source>
       <translation>Kaikki metatiedot noudettu onnistuneesti.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="282"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="229"/>
       <source>Feed name is ok.</source>
       <translation>Syötteen nimi on oikein.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="285"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="232"/>
       <source>Feed name is too short.</source>
       <translation>Syötteen nimi on liian lyhyt.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="291"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="238"/>
       <source>Description is empty.</source>
       <translation>Kuvaus on tyhjä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="294"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="241"/>
       <source>The description is ok.</source>
       <translation>Kuvaus on OK.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="302"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="249"/>
       <source>The URL is ok.</source>
       <translation>Verkko-osoite on OK.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="306"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="253"/>
       <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
       <translation>Verkko-osoite ei ole vakiomuotoinen. Varmista, että osoitteen alussa on etuliite http:// tai https://.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="310"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="257"/>
       <source>The URL is empty.</source>
       <translation>Verkko-osoite on tyhjä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="319"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="266"/>
       <source>Source is ok.</source>
       <translation>Lähde on OK.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="329"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="276"/>
       <source>File exists.</source>
       <translation>Tiedosto on jo olemassa.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="332"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="279"/>
       <source>File does not exist.</source>
       <translation>Tiedostoa ei ole olemassa.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="360"/>
-      <source>Select icon file for the feed</source>
-      <translation>Valitse kuvake syötteelle</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="363"/>
-      <source>Images (%1)</source>
-      <translation>Kuvat (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="37"/>
@@ -8802,52 +8790,42 @@ Nouda koko artikkelit: %7 (pelkkä teksti -muoto: %8)
       <translation>Voit syöttää koko komennon komentotulkkeineen tähän.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="80"/>
-      <source>Select icon from file...</source>
-      <translation>Valitse kuvake tiedostosta...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="82"/>
-      <source>Download icon from URL...</source>
-      <translation>Lataa kuvake verkko-osoitteesta...</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="339"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="286"/>
       <source>The source is ok.</source>
       <translation>Lähde on OK.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="346"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="293"/>
       <source>Command is ok.</source>
       <translation>Komento on oikein.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="211"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="270"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="158"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="217"/>
       <source>Script failed: %1</source>
       <translation>Komentosarja epäonnistui: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="214"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="273"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="161"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="220"/>
       <source>Network error: %1</source>
       <translation>Verkkovirhe: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="217"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="276"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="322"/>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="349"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="164"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="223"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="269"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="296"/>
       <source>Error: %1</source>
       <translation>Virhe: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="126"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="115"/>
       <source>What is post-processing script?</source>
       <translation>Mitä jälkikäsittelyskriptit ovat?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="127"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="116"/>
       <source>You can use URL as a source of your feed or you can produce your feed with custom script.
 
 Also, you can post-process generated feed data with yet another script if you wish. These are advanced features and make sure to read the documentation before your use them.</source>
@@ -8906,7 +8884,7 @@ Voit myös halutessasi jälkikäsitellä luotuja syötetietoja jollakin toisella
       <translation>Jälkikäsittelyskripti</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="289"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="280"/>
       <source>Fetch metadata</source>
       <translation>Hae metatiedot</translation>
     </message>
@@ -9037,17 +9015,17 @@ Tästä asetuksesta voi olla hyötyä muokkaamatonta XML:ää jäsenneltäessä,
       <translation>Virhe ladattaessa alkusyötteitä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="485"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="502"/>
       <source>Fetch metadata</source>
       <translation>Hae metatiedot</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="683"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="704"/>
       <source>Error during file import</source>
       <translation>Virhe tiedoston tuonnin yhteydessä</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="698"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="719"/>
       <source>Fetching metadata for %n feeds</source>
       <translation>
         <numerusform>Haetaan %n syötteen metatietoja</numerusform>
@@ -9055,7 +9033,7 @@ Tästä asetuksesta voi olla hyötyä muokkaamatonta XML:ää jäsenneltäessä,
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="707"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="728"/>
       <source>Fetched %n feeds...</source>
       <translation>
         <numerusform>%n syöte noudettiin...</numerusform>
@@ -9063,17 +9041,17 @@ Tästä asetuksesta voi olla hyötyä muokkaamatonta XML:ää jäsenneltäessä,
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="715"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="738"/>
       <source>Export feeds</source>
       <translation>Vie syötteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="716"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="739"/>
       <source>Import feeds</source>
       <translation>Tuo syötteet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="718"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="741"/>
       <source>Import from QuiteRSS</source>
       <translation>Tuo QuiteRSS:stä</translation>
     </message>
@@ -9088,32 +9066,32 @@ Tästä asetuksesta voi olla hyötyä muokkaamatonta XML:ää jäsenneltäessä,
       <translation>Tämä on pakollinen palvelutili tavallisille RSS-/RDF-/ATOM-syötteille.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="178"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="195"/>
       <source>Cannot add item</source>
       <translation>Tietuetta ei voi lisätä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="179"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="196"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Syötettä ei voi lisätä, koska toinen tärkeä toiminto on kesken.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="655"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="676"/>
       <source>Cannot add category</source>
       <translation>Luokkaa ei voi lisätä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="656"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
       <source>Cannot add category because another critical operation is ongoing.</source>
       <translation>Luokkaa ei voi lisätä, koska toinen tärkeä toiminto on kesken.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="635"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="656"/>
       <source>Import was completely successful.</source>
       <translation>Tuonti onnistui täysin.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="632"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="653"/>
       <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
       <translation>Joitakin syötteitä/luokkia ei tuotu virheen vuoksi. Tarkista tiedot virhelokista.</translation>
     </message>
@@ -9289,61 +9267,61 @@ Tästä asetuksesta voi olla hyötyä muokkaamatonta XML:ää jäsenneltäessä,
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="32"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_toolbareditor.h" line="185"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="185"/>
       <source>Activated actions</source>
       <translation>Aktivoidut toiminnot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="39"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_toolbareditor.h" line="186"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="186"/>
       <source>Available actions</source>
       <translation>Saatavilla olevat toiminnot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="76"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_toolbareditor.h" line="188"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="188"/>
       <source>Move action up</source>
       <translation>Siirrä toiminto ylös</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="89"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_toolbareditor.h" line="191"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="191"/>
       <source>Move action down</source>
       <translation>Siirrä toiminto alas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="109"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_toolbareditor.h" line="194"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="194"/>
       <source>Insert separator</source>
       <translation>Lisää erotin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="122"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_toolbareditor.h" line="197"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="197"/>
       <source>Insert spacer</source>
       <translation>Lisää erotin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="142"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_toolbareditor.h" line="200"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="200"/>
       <source>Add selected action</source>
       <translation>Lisää valittu toiminto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="155"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_toolbareditor.h" line="203"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="203"/>
       <source>Delete selected action</source>
       <translation>Poista valittu toiminto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="168"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_toolbareditor.h" line="206"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="206"/>
       <source>Delete all actions</source>
       <translation>Poista kaikki toiminnot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="181"/>
-      <location filename="../build/Desktop_Qt6-Debug/src/librssguard/ui_toolbareditor.h" line="209"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_toolbareditor.h" line="209"/>
       <source>Reset toolbar</source>
       <translation>Nollaa työkalupalkki</translation>
     </message>
@@ -9631,22 +9609,22 @@ Tästä asetuksesta voi olla hyötyä muokkaamatonta XML:ää jäsenneltäessä,
   <context>
     <name>TtRssServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="115"/>
+      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="114"/>
       <source>Share to published</source>
       <translation>Jaa julkaistuun</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="134"/>
+      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="133"/>
       <source>Cannot add item</source>
       <translation>Tietuetta ei voi lisätä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="135"/>
+      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="134"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Syötettä ei voi lisätä, koska toinen tärkeä toiminto on kesken.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="399"/>
+      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="398"/>
       <source>Username: %1
 Server: %2
 Last error: %3
@@ -9657,7 +9635,7 @@ Viimeisin virhe: %3
 Viimeisin kirjautuminen: %4</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="443"/>
+      <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="442"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
       <translation>ei voi noutaa syöteluetteloa - verkkovirhe %1</translation>
     </message>
@@ -9702,12 +9680,12 @@ Viimeisin kirjautuminen: %4</translation>
   <context>
     <name>WebFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="86"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="87"/>
       <source>Navigate to website manually</source>
       <translation>Siirry sivustolle manuaalisesti</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="87"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="88"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
       <translation>%1 ei pystynyt käynnistämään verkkoselainta annetulla verkko-osoitteella. Sinun on avattava alla oleva sivuston osoite manuaalisesti.</translation>
     </message>
