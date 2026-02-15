@@ -6,12 +6,12 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="195"/>
       <source>(category)</source>
-      <translation type="unfinished">(category)</translation>
+      <translation>(kategorija)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="198"/>
       <source>(feed)</source>
-      <translation type="unfinished">(feed)</translation>
+      <translation>(feed)</translation>
     </message>
   </context>
   <context>
@@ -20,7 +20,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="78"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
@@ -38,19 +38,19 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="33"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="81"/>
       <source>Unread</source>
-      <translation type="unfinished">Unread</translation>
+      <translation>Nepročitano</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>Oznake</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
       <source>Probes</source>
-      <translation type="unfinished">Probes</translation>
+      <translation>Probaj</translation>
     </message>
   </context>
   <context>
@@ -58,52 +58,52 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1093"/>
       <source>Application is already running.</source>
-      <translation type="unfinished">Application is already running.</translation>
+      <translation>Aplikacija je već pokrenuta.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="511"/>
       <source>Output directory is not writable.</source>
-      <translation type="unfinished">Output directory is not writable.</translation>
+      <translation>U izlazni folder nije moguće snimati.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="519"/>
       <source>Settings file not copied to output directory successfully.</source>
-      <translation type="unfinished">Settings file not copied to output directory successfully.</translation>
+      <translation>Fajl sa podešavanjima nije kopiran u izlazni folder uspešno.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="534"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation type="unfinished">Database restoration was not initiated. Make sure that output directory is writable.</translation>
+      <translation>Obnova baze podataka nije pokrenuta. Pobrini se da je taj direktorijžum za izlaz upisiv.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="541"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation type="unfinished">Settings restoration was not initiated. Make sure that output directory is writable.</translation>
+      <translation>Setovanje za restoraciju nije inicijalizovano. Budite sigurni da je izlazni folder sposoban za upisivanje.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1111"/>
       <source>Cannot add feed</source>
-      <translation type="unfinished">Cannot add feed</translation>
+      <translation>Nemoće je dodati feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1112"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation type="unfinished">Feed cannot be added because there is no active account which can add feeds.</translation>
+      <translation>Feed se nemože dodati zato što tamo nema aktivnog naloga kojem može da se doda feed.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="974"/>
       <source>Unread articles fetched</source>
-      <translation type="unfinished">Unread articles fetched</translation>
+      <translation>Nepročitani članci</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="303"/>
       <source>Go to changelog</source>
-      <translation type="unfinished">Go to changelog</translation>
+      <translation>Idi na changelog</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="297"/>
       <source>Welcome</source>
-      <translation type="unfinished">Welcome</translation>
+      <translation>Dobrodošli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="298"/>
@@ -111,15 +111,12 @@
 
 Please, check NEW stuff included in this
 version by clicking this popup notification.</source>
-      <translation type="unfinished">Welcome to %1.
-
-Please, check NEW stuff included in this
-version by clicking this popup notification.</translation>
+      <translation>Dobrodošli u %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1092"/>
       <source>Already running</source>
-      <translation type="unfinished">Already running</translation>
+      <translation>Već pokrenuto</translation>
     </message>
   </context>
   <context>
@@ -128,95 +125,95 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="256"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="36"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="261"/>
       <source>Ignoring old articles</source>
-      <translation type="unfinished">Ignoring old articles</translation>
+      <translation>Ignoriši stare objave</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
       <source>Add articles with any date into the database</source>
-      <translation type="unfinished">Add articles with any date into the database</translation>
+      <translation>Dodaj objave sa bilo kojim datumom u bazu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation type="unfinished">Avoid adding articles before this date/time into the database</translation>
+      <translation>Izbegni dodavanje objava pre ovog datuma/vremena u bazu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="259"/>
       <source>Absolute date/time</source>
-      <translation type="unfinished">Absolute date/time</translation>
+      <translation>Datum/vreme</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="92"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="260"/>
       <source>Relative time</source>
-      <translation type="unfinished">Relative time</translation>
+      <translation>Relativno vreme</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="170"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="267"/>
       <source>Limiting amount of articles in feeds</source>
-      <translation type="unfinished">Limiting amount of articles in feeds</translation>
+      <translation>Ograničavanje broja članaka u feedovima</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="181"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="262"/>
       <source>Customize article limits</source>
-      <translation type="unfinished">Customize article limits</translation>
+      <translation>Prilagodite limite članaka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="210"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="263"/>
       <source>In database, keep</source>
-      <translation type="unfinished">In database, keep</translation>
+      <translation>U bazi, zadržite</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="224"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="264"/>
       <source>Do not remove important articles</source>
-      <translation type="unfinished">Do not remove important articles</translation>
+      <translation>Ne uklanjajte važne članke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="231"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="265"/>
       <source>Do not remove unread articles</source>
-      <translation type="unfinished">Do not remove unread articles</translation>
+      <translation>Ne uklanjajte nepročitane članke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="266"/>
       <source>Just move articles to recycle bin, do not purge them</source>
-      <translation type="unfinished">Just move articles to recycle bin, do not purge them</translation>
+      <translation>Samo premestite artikle u kantu za reciklažu, nemojte ih čistiti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</translation>
+      <translation>Postavljanje bilo kakvih ograničenja ovde će navesti %1 da ignoriše neke dolazne članke. Logika radi NAKON bilo kojeg filtera članka, tako da čak i ako vaš filter prihvati određeni članak, on se i dalje može ignorisati i ne dodati u bazu podataka.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
       <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
-      <translation type="unfinished">All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</translation>
+      <translation>Svi višak članci automatski se uklanjaju od strane aplikacije, obično nakon što se određeni feed dostignut. Članci se ili potpuno brišu (uključujući artikle iz korpe za otpatke) iz interne baze podataka ili se jednostavno premeštaju u kantu za reciklažu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
       <source>all articles</source>
-      <translation type="unfinished">all articles</translation>
+      <translation>Svi članci</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="175"/>
       <source>newest article(s)</source>
       <translation type="unfinished">
-        <numerusform>newest article(s)</numerusform>
-        <numerusform>newest article(s)</numerusform>
+        <numerusform>noviji članak</numerusform>
+        <numerusform>noviji članci</numerusform>
         <numerusform>newest article(s)</numerusform>
       </translation>
     </message>
@@ -227,45 +224,45 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="66"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="142"/>
       <source>...</source>
-      <translation type="unfinished">...</translation>
+      <translation>...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="87"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="144"/>
       <source>Go to previous page</source>
-      <translation type="unfinished">Go to previous page</translation>
+      <translation>Idi na prethodnu stranicu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="94"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="147"/>
       <source>Go to next page</source>
-      <translation type="unfinished">Go to next page</translation>
+      <translation>Idi na sledeću stranicu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="101"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="150"/>
       <source>Open article in article list</source>
-      <translation type="unfinished">Open article in article list</translation>
+      <translation>Otvori članak na listi članaka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="108"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="153"/>
       <source>Open article in web browser</source>
-      <translation type="unfinished">Open article in web browser</translation>
+      <translation>Otvori članak u web browseru</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.ui" line="122"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articlelistnotification.h" line="156"/>
       <source>Mark all articles as read</source>
-      <translation type="unfinished">Mark all articles as read</translation>
+      <translation>Obeleži sve članke kao pročitane</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="95"/>
       <source>%n feeds fetched</source>
       <translation type="unfinished">
+        <numerusform>%n feedova koji su došli</numerusform>
         <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
+        <numerusform>%n feedova koji su došli</numerusform>
       </translation>
     </message>
   </context>
@@ -275,25 +272,25 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="122"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="125"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Neki feedovi zahtevaju autentifikaciju, uključujući GMail feedove. Podržane su šeme autentifikacije BASIC, NTLM-2 i DIGEST-MD5.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="127"/>
       <source>Credentials</source>
-      <translation type="unfinished">Credentials</translation>
+      <translation>Dozvole</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="25"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="123"/>
       <source>Authentication type</source>
-      <translation type="unfinished">Authentication type</translation>
+      <translation>Tip autentifikacije</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="60"/>
@@ -301,64 +298,64 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="100"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="128"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Korisničko ime</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="73"/>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="129"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lozinka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="16"/>
       <source>Set username to access the feed.</source>
-      <translation type="unfinished">Set username to access the feed.</translation>
+      <translation>Definiši korisničko ime za pristup obaveštenju</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="18"/>
       <source>Set password to access the feed.</source>
-      <translation type="unfinished">Set password to access the feed.</translation>
+      <translation>Definiši korisničko ime za pristup obaveštenju</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
       <source>No authentication</source>
-      <translation type="unfinished">No authentication</translation>
+      <translation>Nema potvrde identiteta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="22"/>
       <source>HTTP Basic</source>
-      <translation type="unfinished">HTTP Basic</translation>
+      <translation>HTTP Basic</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="25"/>
       <source>Token</source>
-      <translation type="unfinished">Token</translation>
+      <translation>Token</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="74"/>
       <source>Username/token is ok or it is not needed.</source>
-      <translation type="unfinished">Username/token is ok or it is not needed.</translation>
+      <translation>Korisničko ime/token je u redu ili nije potreban.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="75"/>
       <source>Username/token is empty.</source>
-      <translation type="unfinished">Username/token is empty.</translation>
+      <translation>Korisničko ime/token je prazan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="97"/>
       <source>Access token</source>
-      <translation type="unfinished">Access token</translation>
+      <translation>Pristup tokenu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="84"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>Šifra je u redu ili nije potrebna.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="84"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Šifra je prazna.</translation>
     </message>
   </context>
   <context>
@@ -366,7 +363,7 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/baselineedit.cpp" line="13"/>
       <source>Show/hide the password</source>
-      <translation type="unfinished">Show/hide the password</translation>
+      <translation>Prikaži/sakrij šifru</translation>
     </message>
   </context>
   <context>
@@ -374,7 +371,7 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/notifications/basetoastnotification.cpp" line="52"/>
       <source>Close this notification</source>
-      <translation type="unfinished">Close this notification</translation>
+      <translation>Zatvori informaciju</translation>
     </message>
   </context>
   <context>
@@ -384,9 +381,9 @@ version by clicking this popup notification.</translation>
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2
-Number of disabled feeds: %3</translation>
+      <translation>Broj feedova: %1
+Broj kategorija: %2
+Broj onemogućenih feedova: %3</translation>
     </message>
   </context>
   <context>
@@ -394,62 +391,62 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="23"/>
       <source>Click me!</source>
-      <translation type="unfinished">Click me!</translation>
+      <translation>Klikni me!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="67"/>
       <source>Select new color</source>
-      <translation type="unfinished">Select new color</translation>
+      <translation>Izaberi novu boju</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="85"/>
       <source>Enter URL</source>
-      <translation type="unfinished">Enter URL</translation>
+      <translation>Unesite URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="86"/>
       <source>Enter direct URL pointing to the image</source>
-      <translation type="unfinished">Enter direct URL pointing to the image</translation>
+      <translation>Unesite direktni URL do slike</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="109"/>
       <source>Icon not fetched</source>
-      <translation type="unfinished">Icon not fetched</translation>
+      <translation>Ikona nije prikazana</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="110"/>
       <source>Icon was not fetched due to network error.</source>
-      <translation type="unfinished">Icon was not fetched due to network error.</translation>
+      <translation>Ikona nije prikazana zbog mrežne greške.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="125"/>
       <source>Select icon file</source>
-      <translation type="unfinished">Select icon file</translation>
+      <translation>Izaberi fajl ikone</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="128"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Slike (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="140"/>
       <source>Select new &amp;color...</source>
-      <translation type="unfinished">Select new &amp;color...</translation>
+      <translation>Izaberi novu &amp;color...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="149"/>
       <source>Load icon from &amp;file...</source>
-      <translation type="unfinished">Load icon from &amp;file...</translation>
+      <translation>Učitaj ikonu iz &amp;file...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="154"/>
       <source>Download icon from &amp;URL...</source>
-      <translation type="unfinished">Download icon from &amp;URL...</translation>
+      <translation>Skini ikonu sa &amp;URL...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="159"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Koristi podrazumevanu ikonu iz šeme ikona</translation>
     </message>
   </context>
   <context>
@@ -457,52 +454,52 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="73"/>
       <source>Shrinking database file...</source>
-      <translation type="unfinished">Shrinking database file...</translation>
+      <translation>Očisti bazu podataka...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="79"/>
       <source>Database file shrinked...</source>
-      <translation type="unfinished">Database file shrinked...</translation>
+      <translation>Baza podataka je očišćena...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="43"/>
       <source>Recycle bin purged...</source>
-      <translation type="unfinished">Recycle bin purged...</translation>
+      <translation>Ispražnjena je kanta za đubre...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="37"/>
       <source>Purging recycle bin...</source>
-      <translation type="unfinished">Purging recycle bin...</translation>
+      <translation>Ispražnjena je kanta za đubre...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="25"/>
       <source>Removing read articles...</source>
-      <translation type="unfinished">Removing read articles...</translation>
+      <translation>Brisanje pročitanih vesti...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="31"/>
       <source>Read articles purged...</source>
-      <translation type="unfinished">Read articles purged...</translation>
+      <translation>Pročitani feedovi se brišu...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="49"/>
       <source>Removing old articles...</source>
-      <translation type="unfinished">Removing old articles...</translation>
+      <translation>Brisanje starih vesti...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="55"/>
       <source>Old articles purged...</source>
-      <translation type="unfinished">Old articles purged...</translation>
+      <translation>Stare vesti u obrisane..</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="61"/>
       <source>Removing starred articles...</source>
-      <translation type="unfinished">Removing starred articles...</translation>
+      <translation>Brisanje obeleženih vesti...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="67"/>
       <source>Starred articles purged...</source>
-      <translation type="unfinished">Starred articles purged...</translation>
+      <translation>Obeležene vesti su obrisane...</translation>
     </message>
   </context>
   <context>
@@ -510,12 +507,12 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="57"/>
       <source>Cannot connect to database</source>
-      <translation type="unfinished">Cannot connect to database</translation>
+      <translation>Nemogu da se konektujem na bazu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
       <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</translation>
+      <translation>Veza sa vašom bazom podataka nije uspostavljena sa greškom: &apos;%1&apos;. Vraćam se na SQLite.</translation>
     </message>
   </context>
   <context>
@@ -523,12 +520,12 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="320"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="320"/>
       <source>Type</source>
-      <translation type="unfinished">Type</translation>
+      <translation>Tip</translation>
     </message>
   </context>
   <context>
@@ -536,7 +533,7 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="908"/>
       <source>invalid URL cannot be used to load file from cache</source>
-      <translation type="unfinished">invalid URL cannot be used to load file from cache</translation>
+      <translation>nevažeći URL se ne može koristiti za učitavanje datoteke iz keša</translation>
     </message>
   </context>
   <context>
@@ -544,17 +541,17 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="99"/>
       <source>Duplicate shortcut</source>
-      <translation type="unfinished">Duplicate shortcut</translation>
+      <translation>Duplirani shortcut</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="100"/>
       <source>There is another action which has the same shortcut assigned.</source>
-      <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
+      <translation>Postoji još jedna akcija kojoj je dodeljena ista prečica.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="101"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
-      <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
+      <translation>Želiš li zadržati novu prečicu i očistiti prethodnu?</translation>
     </message>
   </context>
   <context>
@@ -562,68 +559,68 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="20"/>
       <source>From</source>
-      <translation type="unfinished">From</translation>
+      <translation>Od</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="52"/>
       <source>&amp;Attachments</source>
-      <translation type="unfinished">&amp;Attachments</translation>
+      <translation>&amp;Priložene datoteke</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="59"/>
       <source>&amp;Reply</source>
-      <translation type="unfinished">&amp;Reply</translation>
+      <translation>&amp;Odgovori</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="66"/>
       <source>&amp;Forward</source>
-      <translation type="unfinished">&amp;Forward</translation>
+      <translation>&amp;Prosledi</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="75"/>
       <source>Subject</source>
-      <translation type="unfinished">Subject</translation>
+      <translation>Naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.ui" line="92"/>
       <source>To</source>
-      <translation type="unfinished">To</translation>
+      <translation>Za</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="101"/>
       <source>Save attachment %1</source>
-      <translation type="unfinished">Save attachment %1</translation>
+      <translation>Snimi dodatak %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="117"/>
       <source>Download attachment</source>
-      <translation type="unfinished">Download attachment</translation>
+      <translation>Preuzmite prilog</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="145"/>
       <source>Downloaded %1 kB...</source>
-      <translation type="unfinished">Downloaded %1 kB...</translation>
+      <translation>Preuzeto %1 kB...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="156"/>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="162"/>
       <source>Cannot download attachment</source>
-      <translation type="unfinished">Cannot download attachment</translation>
+      <translation>Ne mogu preuzeti prilog</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="157"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because you are not logged-in.</translation>
+      <translation>Prilog se ne može preuzeti jer niste prijavljeni.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="163"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because some general error happened.</translation>
+      <translation>Prilog se ne može preuzeti jer se desila neka opšta greška.</translation>
     </message>
   </context>
   <context>
@@ -631,27 +628,27 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="38"/>
       <source>To</source>
-      <translation type="unfinished">To</translation>
+      <translation>Za</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="39"/>
       <source>Cc</source>
-      <translation type="unfinished">Cc</translation>
+      <translation>Cc</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="40"/>
       <source>Bcc</source>
-      <translation type="unfinished">Bcc</translation>
+      <translation>Bcc</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="41"/>
       <source>Reply-to</source>
-      <translation type="unfinished">Reply-to</translation>
+      <translation>Odgovor-za</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailrecipientcontrol.cpp" line="28"/>
       <source>E-mail address</source>
-      <translation type="unfinished">E-mail address</translation>
+      <translation>E-mail adresa</translation>
     </message>
   </context>
   <context>
@@ -659,36 +656,36 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="272"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
-      <translation type="unfinished">uses global settings, but global auto-fetching of articles is disabled</translation>
+      <translation>koristi globalna podešavanja, ali je globalno automatsko skidanje članaka onemogućeno</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="296"/>
       <source>no errors</source>
-      <translation type="unfinished">no errors</translation>
+      <translation>nema grešaka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
       <source>authentication error</source>
-      <translation type="unfinished">authentication error</translation>
+      <translation>greška autentifikacije</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="308"/>
       <source>network error</source>
-      <translation type="unfinished">network error</translation>
+      <translation>greška mreže</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="258"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
-      <translation type="unfinished">does not use auto-fetching of articles</translation>
+      <translation>ne koristi automatski download članaka</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="269"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
-      <translation type="unfinished">
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
-        <numerusform>uses global settings (%n minute(s) to next auto-fetch of articles)</numerusform>
+      <translation>
+        <numerusform>koristi globalna podešavanja (%n minuta(s) do sledećeg automatskog učitavanja članaka)</numerusform>
+        <numerusform>koristi globalna podešavanja (%n minuta(s) do sledećeg automatskog učitavanja članaka)</numerusform>
+        <numerusform>koristi globalna podešavanja (%n minuta(s) do sledećeg automatskog učitavanja članaka)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -696,30 +693,30 @@ Number of disabled feeds: %3</translation>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation type="unfinished">
+        <numerusform>koristi specifična podešavanja (%n minuta(s) do sledećeg automatskog učitavanja novih članaka)</numerusform>
         <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
-        <numerusform>uses specific settings (%n minute(s) to next auto-fetching of new articles)</numerusform>
+        <numerusform>koristi specifična podešavanja (%n minuta(s) do sledećeg automatskog učitavanja novih članaka)</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
       <source>has new articles</source>
-      <translation type="unfinished">has new articles</translation>
+      <translation>ima novih članaka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
       <source>SQL database error</source>
-      <translation type="unfinished">SQL database error</translation>
+      <translation>greška u SQL bazi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
       <source>parsing error</source>
-      <translation type="unfinished">parsing error</translation>
+      <translation>greška u odvajanju</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="314"/>
       <source>error</source>
-      <translation type="unfinished">error</translation>
+      <translation>greška</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="384"/>
@@ -728,11 +725,11 @@ Active message filters: %2
 Status: %3
 Source: %4
 Item custom ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
+      <translation>Status automatskog ažuriranja: %1
+Aktivni filteri poruka: %2
 Status: %3
-Source: %4
-Item custom ID: %5</translation>
+Izvor: %4
+Prilagođeni ID predmeta: %5</translation>
     </message>
   </context>
   <context>
@@ -740,7 +737,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="249"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
-      <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
+      <translation>Feed je u stanju mirovanja zbog prevelikog broja mrežnih zahteva</translation>
     </message>
   </context>
   <context>
@@ -748,32 +745,32 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="33"/>
       <source>Toolbar for feeds</source>
-      <translation type="unfinished">Toolbar for feeds</translation>
+      <translation>Alatna traka za feedove</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="34"/>
       <source>Toolbar for articles</source>
-      <translation type="unfinished">Toolbar for articles</translation>
+      <translation>Alatna traka za članke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="249"/>
       <source>Filtered feed list</source>
-      <translation type="unfinished">Filtered feed list</translation>
+      <translation>Filtrirana lista feedova</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="250"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
-      <translation type="unfinished">Cannot select article in article list as your feed is filtered out from feed list.</translation>
+      <translation>Ne možete birati članak u listi članaka jer je vaš feed filtriran sa liste sadržaja.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="266"/>
       <source>Filtered article list</source>
-      <translation type="unfinished">Filtered article list</translation>
+      <translation>Filtrirana lista članaka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="267"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
-      <translation type="unfinished">Cannot select article as it seems your article list is filtered or the article was deleted.</translation>
+      <translation>Ne mogu odabrati članak jer izgleda da je vaša lista članaka filtrirana ili je članak obrisan.</translation>
     </message>
   </context>
   <context>
@@ -781,36 +778,36 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="393"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
-      <translation type="unfinished">Starting auto-download of some feeds&apos; articles</translation>
+      <translation>Pokretanje automatskog preuzimanja nekih članaka iz feedova&apos; </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="394"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation type="unfinished">
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
-        <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
+        <numerusform>Automatski ću preuzeti novi članak za %n feed(ove).</numerusform>
+        <numerusform>Automatski ću preuzimati nove članke za %n feed(ove).</numerusform>
         <numerusform>I will auto-download new articles for %n feed(s).</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="418"/>
       <source>Some feeds have errors</source>
-      <translation type="unfinished">Some feeds have errors</translation>
+      <translation>Neki članci imaju greške</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="419"/>
       <source>Some feeds threw an error when fetching articles.</source>
-      <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
+      <translation>Neki feedovi su pravili grešku prilikom učitavanja članaka.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="89"/>
       <source>Cannot fetch articles at this point</source>
-      <translation type="unfinished">Cannot fetch articles at this point</translation>
+      <translation>Trenutno ne mogu učitati članke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="90"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
-      <translation type="unfinished">You cannot fetch new articles now because another critical operation is ongoing.</translation>
+      <translation>Ne možete sada preuzimati nove članke jer je u toku još jedna kritična operacija.</translation>
     </message>
   </context>
   <context>
@@ -818,139 +815,139 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="17"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Korisničko ime</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="27"/>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="28"/>
       <source>Developer access token</source>
-      <translation type="unfinished">Developer access token</translation>
+      <translation>Token za pristup programerima</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="36"/>
       <source>Get token</source>
-      <translation type="unfinished">Get token</translation>
+      <translation>Uzmi token</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="58"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Inteligentni algoritam sinhronizacije</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="70"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Preuzmite samo najnovije X članke po feedu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="110"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Logovanje</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.ui" line="51"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Preuzmite samo nepročitane članke</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="27"/>
       <source>Username for your account</source>
-      <translation type="unfinished">Username for your account</translation>
+      <translation>Korisničko ime za vaš nalog</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="30"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Test još nije urađen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="31"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Ovde su prikazani rezultati testa konekcije.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="39"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation type="unfinished">Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</translation>
+      <translation>Vaš %1 ne nudi zvaničnu podršku za Feedly, zato se morate autorizovati putem posebnog autorizacijskog koda nazvanog "developer access token&quot;". Ovi tokeni obično važe samo 1 mesec i dozvoljavaju samo 250 API poziva dnevno.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="52"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</translation>
+      <translation>Ako odaberete inteligentnu sinhronizaciju, tada se preuzimaju samo članci koji još nisu skinuti ili ažurirani. Korištenje mreže je znatno smanjeno, a ukupna brzina sinhronizacije znatno poboljšana, ali prvo skidanje može biti sporo ako vaš feed sadrži veliki broj članaka.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="95"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Niste dozvolili pristup.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="96"/>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="104"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Došlo je do greške tokom testiranja.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="103"/>
       <source>There is error. %1</source>
-      <translation type="unfinished">There is error. %1</translation>
+      <translation>Došlo je do greške %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="117"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Uspešno testirano. Možda ćete biti pozvani da se ponovo prijavite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="118"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Vaš pristup je odobren.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="149"/>
       <source>Access granted.</source>
-      <translation type="unfinished">Access granted.</translation>
+      <translation>Pristup odobren.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="148"/>
       <source>Login was successful.</source>
-      <translation type="unfinished">Login was successful.</translation>
+      <translation>Pristup odobren.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="34"/>
       <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-      <translation type="unfinished">Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</translation>
+      <translation>Tvoj %1 build ima zvaničnu podršku za Feedly. Ne morate koristiti  &quot;"developer access token&quot;". Zato možete ostaviti odgovarajuće polje prazno.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="154"/>
       <source>Some problems.</source>
-      <translation type="unfinished">Some problems.</translation>
+      <translation>Neki problem.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="162"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Korisničlo ime ne može biti prazno.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="165"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Korisničko ime je uredu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="179"/>
       <source>Access token is empty.</source>
-      <translation type="unfinished">Access token is empty.</translation>
+      <translation>Pristupni token je prazan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="182"/>
       <source>Access token is okay.</source>
-      <translation type="unfinished">Access token is okay.</translation>
+      <translation>Pristupni token je u redu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="153"/>
       <source>Error: &apos;%1&apos;</source>
-      <translation type="unfinished">Error: &apos;%1&apos;</translation>
+      <translation>Greška: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="47"/>
       <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-      <translation type="unfinished">Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</translation>
+      <translation>Pazite da ne preuzimate previše članaka, jer Feedly trajno kešira SVE članke iz feeda, pa možete završiti sa hiljadama članaka koje ionako nikada nećete pročitati.</translation>
     </message>
   </context>
   <context>
@@ -958,28 +955,28 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="718"/>
       <source>Feedly: authentication error</source>
-      <translation type="unfinished">Feedly: authentication error</translation>
+      <translation>Feedly: greška autentifikacije</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="719"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Kliknite na ovo da se ponovo prijavite. Greška je: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="733"/>
       <source>Feedly: authorization denied</source>
-      <translation type="unfinished">Feedly: authorization denied</translation>
+      <translation>Feedly: odobrenje odbijeno</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="734"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Kliknite na ovo da se ponovo prijavite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="722"/>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="737"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Prijava</translation>
     </message>
   </context>
   <context>
@@ -987,17 +984,17 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="336"/>
       <source>OPML document contains errors</source>
-      <translation type="unfinished">OPML document contains errors</translation>
+      <translation>OPML dokument sadrži greške</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="341"/>
       <source>this is likely not OPML document</source>
-      <translation type="unfinished">this is likely not OPML document</translation>
+      <translation>ovo verovatno nije OPML dokument</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="426"/>
       <source>Category </source>
-      <translation type="unfinished">Category </translation>
+      <translation>Kategorija </translation>
     </message>
   </context>
   <context>
@@ -1005,37 +1002,37 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="37"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="37"/>
       <source>Item ID</source>
-      <translation type="unfinished">Item ID</translation>
+      <translation>ID predmeta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="37"/>
       <source>Article counts</source>
-      <translation type="unfinished">Article counts</translation>
+      <translation>Broj članaka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="38"/>
       <source>Titles of feeds/categories.</source>
-      <translation type="unfinished">Titles of feeds/categories.</translation>
+      <translation>Naslovi feedova/kategorija.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="30"/>
       <source>Root</source>
-      <translation type="unfinished">Root</translation>
+      <translation>Root</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="39"/>
       <source>Database ID of each item.</source>
-      <translation type="unfinished">Database ID of each item.</translation>
+      <translation>ID baze podataka za svaki predmet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="40"/>
       <source>Counts of unread/all mesages.</source>
-      <translation type="unfinished">Counts of unread/all mesages.</translation>
+      <translation>Broj nepročitane/sve poruke.</translation>
     </message>
   </context>
   <context>
@@ -1043,12 +1040,12 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="275"/>
       <source>Cannot perform drag &amp; drop operation</source>
-      <translation type="unfinished">Cannot perform drag &amp; drop operation</translation>
+      <translation>Ne može se izvršiti operacija povlačenja i ispuštanja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="276"/>
       <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-      <translation type="unfinished">You can&apos;t transfer dragged item into different account, this is not supported.</translation>
+      <translation>Ne možete &apos; preneti prevučeni predmet na drugi račun, to nije podržano.</translation>
     </message>
   </context>
   <context>
@@ -1056,87 +1053,87 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="90"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Toolbar distancer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="172"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>Svuda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="173"/>
       <source>Titles only</source>
-      <translation type="unfinished">Titles only</translation>
+      <translation>Samo naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="177"/>
       <source>Search feeds</source>
-      <translation type="unfinished">Search feeds</translation>
+      <translation>Pretraži feedove</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="185"/>
       <source>Feeds search box</source>
-      <translation type="unfinished">Feeds search box</translation>
+      <translation>Pretraživač naslova</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="195"/>
       <source>Menu for filtering feeds</source>
-      <translation type="unfinished">Menu for filtering feeds</translation>
+      <translation>Meni za filtriranje naslova</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="197"/>
       <source>(feed list)</source>
-      <translation type="unfinished">(feed list)</translation>
+      <translation>(feed lista)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="201"/>
       <source>No extra filtering</source>
-      <translation type="unfinished">No extra filtering</translation>
+      <translation>Nema dodatnog filtriranja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="207"/>
       <source>Show unread items</source>
-      <translation type="unfinished">Show unread items</translation>
+      <translation>Prikaži nepročitane stavke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="213"/>
       <source>Show non-empty items</source>
-      <translation type="unfinished">Show non-empty items</translation>
+      <translation>Prikaži neprazne stavke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="219"/>
       <source>Show feeds with new articles</source>
-      <translation type="unfinished">Show feeds with new articles</translation>
+      <translation>Prikaži feedove sa novim člancima</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="225"/>
       <source>Show feeds with errors</source>
-      <translation type="unfinished">Show feeds with errors</translation>
+      <translation>Prikaži feedove sa greškama</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="231"/>
       <source>Show disabled feeds</source>
-      <translation type="unfinished">Show disabled feeds</translation>
+      <translation>Prikaži onemogućene feedove</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="237"/>
       <source>Show feeds with ignored notifications</source>
-      <translation type="unfinished">Show feeds with ignored notifications</translation>
+      <translation>Prikaži feedove sa ignorisanim obaveštenjima</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="243"/>
       <source>Show feeds with article filters</source>
-      <translation type="unfinished">Show feeds with article filters</translation>
+      <translation>Prikaži feedove sa filterima za članke</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="249"/>
       <source>Display all feeds</source>
-      <translation type="unfinished">Display all feeds</translation>
+      <translation>Prikaži sve feedove</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="259"/>
       <source>Feed list filter</source>
-      <translation type="unfinished">Feed list filter</translation>
+      <translation>Filter feed liste</translation>
     </message>
   </context>
   <context>
@@ -1144,23 +1141,23 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="360"/>
       <source>Cannot edit item</source>
-      <translation type="unfinished">Cannot edit item</translation>
+      <translation>Ne može se uređivati stavka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="470"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="560"/>
       <source>Cannot delete item</source>
-      <translation type="unfinished">Cannot delete item</translation>
+      <translation>Ne može se obrisati predmet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="361"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
-      <translation type="unfinished">Selected item cannot be edited because another critical operation is ongoing.</translation>
+      <translation>Odabrana stavka se ne može uređivati jer je u toku druga kritična operacija.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="471"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
-      <translation type="unfinished">Selected item cannot be deleted because another critical operation is ongoing.</translation>
+      <translation>Odabrana stavka ne može biti obrisana jer je u toku druga kritična operacija.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="244"/>
@@ -1168,12 +1165,12 @@ Item custom ID: %5</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="331"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="507"/>
       <source>Are you sure?</source>
-      <translation type="unfinished">Are you sure?</translation>
+      <translation>Da li ste sigurni?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="171"/>
       <source>Selected account does not support adding of new feeds.</source>
-      <translation type="unfinished">Selected account does not support adding of new feeds.</translation>
+      <translation>Odabrani nalog ne podržava dodavanje novih feedova.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="189"/>
@@ -1516,7 +1513,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.ui" line="63"/>
       <source>Subject</source>
-      <translation type="unfinished">Subject</translation>
+      <translation>Naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.ui" line="73"/>
@@ -1799,7 +1796,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="64"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="183"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="84"/>
@@ -1842,7 +1839,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formcopyarticledata.cpp" line="29"/>
       <source>These placeholders are replaced by real article data of selected articles. Each article is placed on its own line.</source>
-      <translation type="unfinished">These placeholders are replaced by real article data of selected articles. Each article is placed on its own line.</translation>
+      <translation>Ovi privremeni sadržaji zamjenjuju se stvarnim podacima odabranih članaka. Svaki članak je postavljen na svoju posebnu liniju.</translation>
     </message>
   </context>
   <context>
@@ -1850,99 +1847,99 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="61"/>
       <source> day(s)</source>
-      <translation type="unfinished">
-        <numerusform> day(s)</numerusform>
-        <numerusform> day(s)</numerusform>
-        <numerusform> day(s)</numerusform>
+      <translation>
+        <numerusform> dan</numerusform>
+        <numerusform> dana</numerusform>
+        <numerusform>dana</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="35"/>
       <source>I am ready.</source>
-      <translation type="unfinished">I am ready.</translation>
+      <translation>Spreman sam.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="81"/>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="82"/>
       <source>Database cleanup is running.</source>
-      <translation type="unfinished">Database cleanup is running.</translation>
+      <translation>Čišćenje baze podataka.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="95"/>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="96"/>
       <source>Database cleanup is completed.</source>
-      <translation type="unfinished">Database cleanup is completed.</translation>
+      <translation>Čišćenje baze podataka je završeno.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="103"/>
       <source>unknown</source>
-      <translation type="unfinished">unknown</translation>
+      <translation>nepoznato</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="188"/>
       <source>Cleanup database</source>
-      <translation type="unfinished">Cleanup database</translation>
+      <translation>Očisti bazu podataka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="189"/>
       <source>Cleanup settings</source>
-      <translation type="unfinished">Cleanup settings</translation>
+      <translation>Podešavanja čišćenja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
       <source>Optimize and fix database file</source>
-      <translation type="unfinished">Optimize and fix database file</translation>
+      <translation>Optimizacija i popravljanje datoteke baze podataka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="191"/>
       <source>Remove all read articles</source>
-      <translation type="unfinished">Remove all read articles</translation>
+      <translation>Brisanje pročitanih vesti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="53"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="192"/>
       <source>Remove all articles from recycle bin</source>
-      <translation type="unfinished">Remove all articles from recycle bin</translation>
+      <translation>Uklonite sve artikle iz korpe za reciklažu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="193"/>
       <source>Remove all articles older than</source>
-      <translation type="unfinished">Remove all articles older than</translation>
+      <translation>Uklonite sve članke starije od</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
       <source>Remove all starred articles</source>
-      <translation type="unfinished">Remove all starred articles</translation>
+      <translation>Brisanje obeleženih vesti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="195"/>
       <source>Database information</source>
-      <translation type="unfinished">Database information</translation>
+      <translation>Informacije o bazi podataka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="102"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="196"/>
       <source>Total data size</source>
-      <translation type="unfinished">Total data size</translation>
+      <translation>Ukupna veličina podataka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="119"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="197"/>
       <source>Database type</source>
-      <translation type="unfinished">Database type</translation>
+      <translation>Tip baze podataka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="139"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="198"/>
       <source>Progress</source>
-      <translation type="unfinished">Progress</translation>
+      <translation>Naprеdovanje</translation>
     </message>
   </context>
   <context>
@@ -1950,92 +1947,92 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="14"/>
       <source>Discover feeds</source>
-      <translation type="unfinished">Discover feeds</translation>
+      <translation>Nađi feedove</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
       <source>URL</source>
-      <translation type="unfinished">URL</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="42"/>
       <source>Discover!</source>
-      <translation type="unfinished">Discover!</translation>
+      <translation>Pronalaženje!</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="51"/>
       <source>Recursive discovery (can take some time for bigger websites)</source>
-      <translation type="unfinished">Recursive discovery (can take some time for bigger websites)</translation>
+      <translation>Rekurzivno otkrivanje (može potrajati neko vreme za veće web stranice)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="77"/>
       <source>Discovered feeds</source>
-      <translation type="unfinished">Discovered feeds</translation>
+      <translation>Otkriveni feedovi</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
       <source>Target parent category</source>
-      <translation type="unfinished">Target parent category</translation>
+      <translation>Ciljna kategorija roditelja</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
       <source>Select parent item for your feed.</source>
-      <translation type="unfinished">Select parent item for your feed.</translation>
+      <translation>Odaberite roditeljsku stavku za svoj feed.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="128"/>
       <source>Select &amp;all</source>
-      <translation type="unfinished">Select &amp;all</translation>
+      <translation>Izaberi &amp;sve</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="135"/>
       <source>&amp;Unselect all</source>
-      <translation type="unfinished">&amp;Unselect all</translation>
+      <translation>&amp;Poništi sve označeno</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="190"/>
       <source>Add single feed with advanced details</source>
-      <translation type="unfinished">Add single feed with advanced details</translation>
+      <translation>Dodajte pojedinačni feed sa naprednim detaljima</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="197"/>
       <source>&amp;Import checked feeds</source>
-      <translation type="unfinished">&amp;Import checked feeds</translation>
+      <translation>&amp;Učitaj obeležene naslove</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="41"/>
       <source>Switch to advanced &amp;mode</source>
-      <translation type="unfinished">Switch to advanced &amp;mode</translation>
+      <translation>Prebaci na napredni &amp;režim</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="43"/>
       <source>Close this dialog and display dialog for adding individual feeds with advanced options.</source>
-      <translation type="unfinished">Close this dialog and display dialog for adding individual feeds with advanced options.</translation>
+      <translation>Zatvorite ovaj dijalog i prikažite dijalog za dodavanje pojedinačnih feedova sa naprednim opcijama.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="136"/>
       <source>Cannot discover feeds</source>
-      <translation type="unfinished">Cannot discover feeds</translation>
+      <translation>Ne mogu otkriti feedove</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="137"/>
       <source>Error: %1</source>
-      <translation type="unfinished">Error: %1</translation>
+      <translation>Greška: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="215"/>
       <source>URL is valid.</source>
-      <translation type="unfinished">URL is valid.</translation>
+      <translation>URL je pogrešan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="218"/>
       <source>URL is NOT valid.</source>
-      <translation type="unfinished">URL is NOT valid.</translation>
+      <translation>URL nije ispravan.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="287"/>
       <source>No title</source>
-      <translation type="unfinished">No title</translation>
+      <translation>Bеz naslova</translation>
     </message>
   </context>
   <context>
@@ -2043,7 +2040,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/formeditfeedlyaccount.cpp" line="17"/>
       <source>Service setup</source>
-      <translation type="unfinished">Service setup</translation>
+      <translation>Podešanje opcija</translation>
     </message>
   </context>
   <context>
@@ -2051,7 +2048,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formeditgmailaccount.cpp" line="14"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Podizanje servera</translation>
     </message>
   </context>
   <context>
@@ -2059,7 +2056,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formeditgreaderaccount.cpp" line="14"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Podešavanje podizanja</translation>
     </message>
   </context>
   <context>
@@ -2067,7 +2064,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/formeditnextcloudaccount.cpp" line="14"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Postavljanje servera</translation>
     </message>
   </context>
   <context>
@@ -2075,7 +2072,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/formeditredditaccount.cpp" line="13"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Podizanje servera</translation>
     </message>
   </context>
   <context>
@@ -2091,7 +2088,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formeditttrssaccount.cpp" line="13"/>
       <source>Server setup</source>
-      <translation type="unfinished">Server setup</translation>
+      <translation>Podizanje servera</translation>
     </message>
   </context>
   <context>
@@ -3161,7 +3158,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="289"/>
       <source>Are you sure?</source>
-      <translation type="unfinished">Are you sure?</translation>
+      <translation>Da li ste sigurni?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="290"/>
@@ -3754,7 +3751,7 @@ You have to restart manually.</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.ui" line="17"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.ui" line="56"/>
@@ -3773,7 +3770,7 @@ You have to restart manually.</translation>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="66"/>
       <source>unknown</source>
       <extracomment>Unknown release.</extracomment>
-      <translation type="unfinished">unknown</translation>
+      <translation>nepoznato</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="70"/>
@@ -4001,23 +3998,23 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="75"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Niste dozvolili pristup.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="76"/>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="84"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Došlo je do greške tokom testiranja.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="89"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Uspešno testirano. Možda ćete biti pozvani da se ponovo prijavite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="90"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Vaš pristup je odobren.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="124"/>
@@ -4052,7 +4049,7 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="17"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Korisničko ime</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="33"/>
@@ -4082,17 +4079,17 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="110"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Preuzmite samo najnovije X članke po feedu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="134"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Logovanje</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Preuzmite samo nepročitane članke</translation>
     </message>
   </context>
   <context>
@@ -4100,12 +4097,12 @@ You can install it now.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="481"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Kliknite na ovo da se ponovo prijavite. Greška je: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="494"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Kliknite na ovo da se ponovo prijavite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="563"/>
@@ -4142,7 +4139,7 @@ You can install it now.</translation>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="484"/>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="497"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Prijava</translation>
     </message>
   </context>
   <context>
@@ -4205,7 +4202,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="37"/>
       <source>Username for your account</source>
-      <translation type="unfinished">Username for your account</translation>
+      <translation>Korisničko ime za vaš nalog</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="38"/>
@@ -4215,12 +4212,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="40"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Test još nije urađen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="41"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Ovde su prikazani rezultati testa konekcije.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="199"/>
@@ -4245,12 +4242,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="212"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Korisničlo ime ne može biti prazno.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="215"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Korisničko ime je uredu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="223"/>
@@ -4280,7 +4277,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="49"/>
       <source>If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</source>
-      <translation type="unfinished">If you select intelligent synchronization, then only not-yet-fetched or updated articles are downloaded. Network usage is greatly reduced and overall synchronization speed is greatly improved, but first feed fetching could be slow anyway if your feed contains huge number of articles.</translation>
+      <translation>Ako odaberete inteligentnu sinhronizaciju, tada se preuzimaju samo članci koji još nisu skinuti ili ažurirani. Korištenje mreže je znatno smanjeno, a ukupna brzina sinhronizacije znatno poboljšana, ali prvo skidanje može biti sporo ako vaš feed sadrži veliki broj članaka.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="58"/>
@@ -4295,28 +4292,28 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="106"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Niste dozvolili pristup.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="107"/>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="115"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Došlo je do greške tokom testiranja.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="114"/>
       <source>There is error. %1</source>
-      <translation type="unfinished">There is error. %1</translation>
+      <translation>Došlo je do greške %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="120"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Uspešno testirano. Možda ćete biti pozvani da se ponovo prijavite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="121"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Vaš pristup je odobren.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="155"/>
@@ -4346,12 +4343,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="40"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Preuzmite samo nepročitane članke</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="47"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Inteligentni algoritam sinhronizacije</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="56"/>
@@ -4361,7 +4358,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="74"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Preuzmite samo najnovije X članke po feedu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="95"/>
@@ -4371,12 +4368,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="101"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Korisničko ime</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="145"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lozinka</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="186"/>
@@ -4414,7 +4411,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
@@ -4434,7 +4431,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="62"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.cpp" line="13"/>
@@ -4493,7 +4490,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1217"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Kliknite na ovo da se ponovo prijavite. Greška je: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1229"/>
@@ -4503,13 +4500,13 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1230"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Kliknite na ovo da se ponovo prijavite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1220"/>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1233"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Prijava</translation>
     </message>
   </context>
   <context>
@@ -4628,7 +4625,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/itemdetails.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_itemdetails.h" line="64"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
   </context>
   <context>
@@ -5043,7 +5040,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="143"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="65"/>
@@ -5067,7 +5064,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="107"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_mediaplayer.h" line="154"/>
       <source>Progress</source>
-      <translation type="unfinished">Progress</translation>
+      <translation>Naprеdovanje</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/mediaplayer.ui" line="117"/>
@@ -5222,7 +5219,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="16"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="17"/>
@@ -5285,7 +5282,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
@@ -5580,17 +5577,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="94"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Toolbar distancer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="207"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>Svuda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="208"/>
       <source>Titles only</source>
-      <translation type="unfinished">Titles only</translation>
+      <translation>Samo naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="212"/>
@@ -5866,7 +5863,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="157"/>
       <source>no errors</source>
       <extracomment>Network status.</extracomment>
-      <translation type="unfinished">no errors</translation>
+      <translation>nema grešaka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="101"/>
@@ -5911,7 +5908,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="162"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="23"/>
@@ -5935,7 +5932,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="76"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="166"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Korisničko ime</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="92"/>
@@ -5947,7 +5944,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="168"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lozinka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
@@ -5978,17 +5975,17 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="34"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Preuzmite samo nepročitane članke</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="43"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Preuzmite samo najnovije X članke po feedu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="81"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Neki feedovi zahtevaju autentifikaciju, uključujući GMail feedove. Podržane su šeme autentifikacije BASIC, NTLM-2 i DIGEST-MD5.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="84"/>
@@ -5998,12 +5995,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="96"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Korisničko ime</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="109"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lozinka</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="127"/>
@@ -6038,12 +6035,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="24"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Test još nije urađen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="25"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Ovde su prikazani rezultati testa konekcije.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="32"/>
@@ -6090,12 +6087,12 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="102"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Korisničlo ime ne može biti prazno.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="105"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Korisničko ime je uredu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="113"/>
@@ -6161,7 +6158,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="93"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Prijava</translation>
     </message>
   </context>
   <context>
@@ -6507,7 +6504,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="131"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Slike (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="158"/>
@@ -6740,7 +6737,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="73"/>
       <source>Are you sure?</source>
-      <translation type="unfinished">Are you sure?</translation>
+      <translation>Da li ste sigurni?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="74"/>
@@ -6767,7 +6764,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="17"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Korisničko ime</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="33"/>
@@ -6797,17 +6794,17 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="110"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Preuzmite samo najnovije X članke po feedu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="134"/>
       <source>&amp;Login</source>
-      <translation type="unfinished">&amp;Login</translation>
+      <translation>&amp;Logovanje</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="163"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Preuzmite samo nepročitane članke</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="15"/>
@@ -6838,13 +6835,13 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="64"/>
       <source>You did not grant access.</source>
-      <translation type="unfinished">You did not grant access.</translation>
+      <translation>Niste dozvolili pristup.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="65"/>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="73"/>
       <source>There was error during testing.</source>
-      <translation type="unfinished">There was error during testing.</translation>
+      <translation>Došlo je do greške tokom testiranja.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="72"/>
@@ -6854,12 +6851,12 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="78"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation type="unfinished">Tested successfully. You may be prompted to login once more.</translation>
+      <translation>Uspešno testirano. Možda ćete biti pozvani da se ponovo prijavite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="79"/>
       <source>Your access was approved.</source>
-      <translation type="unfinished">Your access was approved.</translation>
+      <translation>Vaš pristup je odobren.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="111"/>
@@ -6908,13 +6905,13 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="531"/>
       <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation type="unfinished">Click this to login again. Error is: &apos;%1&apos;</translation>
+      <translation>Kliknite na ovo da se ponovo prijavite. Greška je: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="534"/>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="547"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Prijava</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="543"/>
@@ -6924,7 +6921,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="544"/>
       <source>Click this to login again.</source>
-      <translation type="unfinished">Click this to login again.</translation>
+      <translation>Kliknite na ovo da se ponovo prijavite.</translation>
     </message>
   </context>
   <context>
@@ -7158,9 +7155,9 @@ Login tokens expiration: %2</translation>
       <source>Number of feeds: %1
 Number of categories: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of categories: %2
-Number of disabled feeds: %3</translation>
+      <translation>Broj feedova: %1
+Broj kategorija: %2
+Broj onemogućenih feedova: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="758"/>
@@ -7435,7 +7432,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="120"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Šifra je prazna.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="123"/>
@@ -7510,13 +7507,13 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="127"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="205"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Korisničko ime</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="140"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="206"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lozinka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="155"/>
@@ -8532,12 +8529,12 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="20"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="33"/>
@@ -8567,7 +8564,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="22"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Koristi podrazumevanu ikonu iz šeme ikona</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="33"/>
@@ -8586,7 +8583,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="57"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Slike (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="72"/>
@@ -8861,7 +8858,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
@@ -8891,7 +8888,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="99"/>
       <source>Title</source>
-      <translation type="unfinished">Title</translation>
+      <translation>Naslov</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="119"/>
@@ -8929,7 +8926,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="25"/>
@@ -8976,7 +8973,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="37"/>
@@ -9138,7 +9135,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard/gui/toolbars/statusbar.cpp" line="116"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Toolbar distancer</translation>
     </message>
   </context>
   <context>
@@ -9205,7 +9202,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.ui" line="35"/>
@@ -9294,7 +9291,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.cpp" line="176"/>
       <source>Toolbar spacer</source>
-      <translation type="unfinished">Toolbar spacer</translation>
+      <translation>Toolbar distancer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/toolbareditor.ui" line="32"/>
@@ -9418,12 +9415,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="35"/>
       <source>No test done yet.</source>
-      <translation type="unfinished">No test done yet.</translation>
+      <translation>Test još nije urađen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="36"/>
       <source>Here, results of connection test are shown.</source>
-      <translation type="unfinished">Here, results of connection test are shown.</translation>
+      <translation>Ovde su prikazani rezultati testa konekcije.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="93"/>
@@ -9478,12 +9475,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="139"/>
       <source>Username cannot be empty.</source>
-      <translation type="unfinished">Username cannot be empty.</translation>
+      <translation>Korisničlo ime ne može biti prazno.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="142"/>
       <source>Username is okay.</source>
-      <translation type="unfinished">Username is okay.</translation>
+      <translation>Korisničko ime je uredu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="150"/>
@@ -9508,12 +9505,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="173"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>Šifra je u redu ili nije potrebna.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="174"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>Šifra je prazna.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="181"/>
@@ -9538,17 +9535,17 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="84"/>
       <source>Download unread articles only</source>
-      <translation type="unfinished">Download unread articles only</translation>
+      <translation>Preuzmite samo nepročitane članke</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="49"/>
       <source>Only download newest X articles per feed</source>
-      <translation type="unfinished">Only download newest X articles per feed</translation>
+      <translation>Preuzmite samo najnovije X članke po feedu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="91"/>
       <source>Intelligent synchronization algorithm</source>
-      <translation type="unfinished">Intelligent synchronization algorithm</translation>
+      <translation>Inteligentni algoritam sinhronizacije</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="98"/>
@@ -9559,7 +9556,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="105"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="149"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation type="unfinished">Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</translation>
+      <translation>Neki feedovi zahtevaju autentifikaciju, uključujući GMail feedove. Podržane su šeme autentifikacije BASIC, NTLM-2 i DIGEST-MD5.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="108"/>
@@ -9570,13 +9567,13 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="120"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="167"/>
       <source>Username</source>
-      <translation type="unfinished">Username</translation>
+      <translation>Korisničko ime</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="133"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="180"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>Lozinka</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="152"/>
@@ -9619,7 +9616,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="14"/>
       <source>Form</source>
-      <translation type="unfinished">Form</translation>
+      <translation>Forma</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
