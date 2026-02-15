@@ -67,6 +67,7 @@
 #endif
 #endif
 
+QFile* s_fileLog;
 bool s_disableDebug = false;
 
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
@@ -83,6 +84,17 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   QString custom_ua;
 
   parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);
+
+  s_fileLog = m_cmdParser.isSet(QSL(CLI_LOG_SHORT)) ? new QFile(m_cmdParser.value(QSL(CLI_LOG_SHORT)), this) : nullptr;
+
+  if (s_fileLog != nullptr) {
+    bool log_opened = s_fileLog->open(QIODevice::OpenModeFlag::WriteOnly | QIODevice::OpenModeFlag::Unbuffered);
+
+    if (!log_opened) {
+      qWarningNN << LOGSEC_CORE << "Cannot open log file" << QUOTE_W_SPACE(m_cmdParser.value(QSL(CLI_LOG_SHORT)))
+                 << "for writing.";
+    }
+  }
 
   qInstallMessageHandler(performLogging);
 
@@ -247,6 +259,10 @@ void Application::performLogging(QtMsgType type, const QMessageLogContext& conte
   QString console_message = qFormatLogMessage(type, context, msg);
 
   std::cerr << console_message.toStdString() << std::endl;
+
+  if (s_fileLog != nullptr) {
+    s_fileLog->write(console_message.toUtf8());
+  }
 
   if (qApp != nullptr) {
     qApp->displayLogMessageInDialog(console_message);
@@ -1179,6 +1195,8 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                        QSL("user-data-folder"));
   QCommandLineOption disable_singleinstance({QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG)},
                                             QSL("Allow running of multiple application instances."));
+  QCommandLineOption log_to_file({QSL(CLI_LOG_SHORT), QSL(CLI_LOG_LONG)},
+                                 QSL("Log application standard/error output to file."));
   QCommandLineOption debug_output({QSL(CLI_DEBUG_SHORT), QSL(CLI_DEBUG_LONG)}, QSL("Enable \"debug\" CLI output."));
   QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)},
                                   QSL("Force some application style."),
@@ -1197,6 +1215,7 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                      custom_data_folder,
                      disable_singleinstance,
                      debug_output,
+                     log_to_file,
                      forced_style,
                      custom_ua,
                      custom_threads});
