@@ -26,13 +26,13 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="79"/>
       <source>Display additional nodes</source>
-      <translation type="unfinished">Display additional nodes</translation>
+      <translation>Prikaži dodatne linkove</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="26"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="80"/>
       <source>Important</source>
-      <translation type="unfinished">Important</translation>
+      <translation>Važno</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="33"/>
