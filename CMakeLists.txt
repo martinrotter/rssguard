@@ -275,6 +275,9 @@ if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
   )
 
   message(STATUS "Detected git revision: '${APP_REVISION}'.")
+else()
+  message(STATUS "No git revision found, assuming stable build.")
+  set(APP_REVISION "stable")
 endif()
 
 set(APP_LOW_NAME "${CMAKE_PROJECT_NAME}")
