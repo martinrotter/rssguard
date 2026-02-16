@@ -226,6 +226,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void setupWorkHorsePool();
     void determineFirstRuns();
     void eliminateFirstRuns();
+    void initializeFileBasedLogging();
     void displayLogMessageInDialog(const QString& message);
 
   private:

@@ -14,9 +14,7 @@
 
 IconFactory::IconFactory(QObject* parent) : QObject(parent) {}
 
-IconFactory::~IconFactory() {
-  qDebugNN << LOGSEC_GUI << "Destroying IconFactory instance.";
-}
+IconFactory::~IconFactory() {}
 
 QIcon IconFactory::generateIcon(const QColor& color) {
   QPixmap pxm(64, 64);

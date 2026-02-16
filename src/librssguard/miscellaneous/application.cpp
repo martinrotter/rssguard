@@ -67,7 +67,7 @@
 #endif
 #endif
 
-QFile* s_fileLog;
+QFile* s_fileLog = nullptr;
 bool s_disableDebug = false;
 
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
@@ -84,18 +84,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   QString custom_ua;
 
   parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);
-
-  s_fileLog = m_cmdParser.isSet(QSL(CLI_LOG_SHORT)) ? new QFile(m_cmdParser.value(QSL(CLI_LOG_SHORT)), this) : nullptr;
-
-  if (s_fileLog != nullptr) {
-    bool log_opened = s_fileLog->open(QIODevice::OpenModeFlag::WriteOnly | QIODevice::OpenModeFlag::Unbuffered);
-
-    if (!log_opened) {
-      qWarningNN << LOGSEC_CORE << "Cannot open log file" << QUOTE_W_SPACE(m_cmdParser.value(QSL(CLI_LOG_SHORT)))
-                 << "for writing.";
-    }
-  }
-
   qInstallMessageHandler(performLogging);
 
   m_feedReader = nullptr;
@@ -104,6 +92,9 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_logForm = nullptr;
   m_trayIcon = nullptr;
   m_settings = Settings::setupSettings(this);
+
+  initializeFileBasedLogging();
+
   m_localization = new Localization(this);
 
   m_localization->loadActiveLanguage();
@@ -256,12 +247,14 @@ void Application::performLogging(QtMsgType type, const QMessageLogContext& conte
     return;
   }
 
+  static QByteArray newl = TextFactory::newline().toLocal8Bit();
   QString console_message = qFormatLogMessage(type, context, msg);
 
   std::cerr << console_message.toStdString() << std::endl;
 
-  if (s_fileLog != nullptr) {
+  if (!QCoreApplication::closingDown() && s_fileLog != nullptr) {
     s_fileLog->write(console_message.toUtf8());
+    s_fileLog->write(newl);
   }
 
   if (qApp != nullptr) {
@@ -395,6 +388,38 @@ DatabaseFactory* Application::database() {
 void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), General::FirstRun, false);
   settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, false);
+}
+
+void Application::initializeFileBasedLogging() {
+  if (!m_cmdParser.isSet(QSL(CLI_LOG_SHORT))) {
+    s_fileLog = nullptr;
+    return;
+  }
+
+  QString log_file = m_cmdParser.value(QSL(CLI_LOG_SHORT)).trimmed();
+
+  if (log_file.isEmpty()) {
+    QString automatic_log_folder = userDataFolder() + QDir::separator() + QSL("logs");
+    QString automatic_log_file = automatic_log_folder + QDir::separator() +
+                                 QSL("%1_%2.log")
+                                   .arg(QSL(APP_LOW_NAME))
+                                   .arg(QDateTime::currentDateTimeUtc().date().weekNumber(), 2, 10, QChar('0'));
+
+    QDir().mkpath(automatic_log_folder);
+
+    s_fileLog = new QFile(automatic_log_file, this);
+  }
+  else {
+    s_fileLog = new QFile(log_file, this);
+  }
+
+  bool log_opened = s_fileLog->open(QIODevice::OpenModeFlag::WriteOnly | QIODevice::OpenModeFlag::Append |
+                                    QIODevice::OpenModeFlag::Unbuffered);
+
+  if (!log_opened) {
+    qWarningNN << LOGSEC_CORE << "Cannot open log file" << QUOTE_W_SPACE(m_cmdParser.value(QSL(CLI_LOG_SHORT)))
+               << "for writing.";
+  }
 }
 
 void Application::displayLogMessageInDialog(const QString& message) {
@@ -1196,7 +1221,9 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
   QCommandLineOption disable_singleinstance({QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG)},
                                             QSL("Allow running of multiple application instances."));
   QCommandLineOption log_to_file({QSL(CLI_LOG_SHORT), QSL(CLI_LOG_LONG)},
-                                 QSL("Log application standard/error output to file."));
+                                 QSL("Log application standard/error output to file. When empty string is provided as "
+                                     "argument, then the log file will be stored in user data folder."),
+                                 QSL("log-file-name"));
   QCommandLineOption debug_output({QSL(CLI_DEBUG_SHORT), QSL(CLI_DEBUG_LONG)}, QSL("Enable \"debug\" CLI output."));
   QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)},
                                   QSL("Force some application style."),
