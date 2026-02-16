@@ -13,8 +13,11 @@ Options:
                                  single instance application mode.
   -s, --no-single-instance       Allow running of multiple application
                                  instances.
-  -g, --no-debug-output          Disable just "debug" output.
-  -n, --no-standard-output       Completely disable stdout/stderr outputs.
+  -g, --debug                    Enable "debug" CLI output.
+  -l, --log <log-file-name>      Log application standard/error output to file.
+                                 When empty string is provided as argument, then
+                                 the log file will be stored in user data
+                                 folder.
   -t, --style <style-name>       Force some application style.
   -u, --user-agent <user-agent>  User custom User-Agent HTTP header for all
                                  network requests. This option takes precedence
