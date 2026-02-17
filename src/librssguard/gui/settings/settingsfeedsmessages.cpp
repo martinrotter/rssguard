@@ -46,7 +46,7 @@ void SettingsFeedsMessages::loadUi() {
                   true);
   m_ui->m_helpCountsFeedsFormat
     ->setHelpText(tr("Enter format for count of articles displayed next to each "
-                     "feed/category in feed list. Use \"%all\" and \"%unread\" strings "
+                     "feed/folder in feed list. Use \"%all\" and \"%unread\" strings "
                      "which are placeholders for the actual count of all (or unread) articles."),
                   false);
   m_ui->m_helpMultilineArticleList->setHelpText(tr("Note that enabling this might have drastic consequences on "

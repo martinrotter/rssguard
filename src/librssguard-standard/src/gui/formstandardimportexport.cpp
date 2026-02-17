@@ -74,7 +74,7 @@ void FormStandardImportExport::setMode(FeedsImportExportModel::Mode mode) {
       m_ui->m_lblRootNode->setVisible(false);
       m_ui->m_groupFetchMetadata->setVisible(false);
       m_ui->m_groupFile->setTitle(tr("Destination file"));
-      m_ui->m_groupFeeds->setTitle(tr("Source feeds && categories"));
+      m_ui->m_groupFeeds->setTitle(tr("Source feeds && folders"));
       m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setText(tr("&Export to file"));
       setWindowTitle(tr("Export feeds"));
       setWindowIcon(qApp->icons()->fromTheme(QSL("document-export")));
@@ -85,7 +85,7 @@ void FormStandardImportExport::setMode(FeedsImportExportModel::Mode mode) {
     case FeedsImportExportModel::Mode::Import: {
       m_ui->m_cbExportIcons->setVisible(false);
       m_ui->m_groupFile->setTitle(tr("Source file"));
-      m_ui->m_groupFeeds->setTitle(tr("Target feeds && categories"));
+      m_ui->m_groupFeeds->setTitle(tr("Target feeds && folders"));
       m_ui->m_groupFeeds->setDisabled(true);
       m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setText(tr("&Import from file"));
       m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);

@@ -192,7 +192,7 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
   else if (role == Qt::ItemDataRole::DisplayRole) {
     switch (item->kind()) {
       case RootItem::Kind::Category:
-        return QVariant(item->data(index.column(), role).toString() + QSL(" ") + tr("(category)"));
+        return QVariant(item->data(index.column(), role).toString() + QSL(" ") + tr("(folder)"));
 
       case RootItem::Kind::Feed:
         return QVariant(item->data(index.column(), role).toString() + QSL(" ") + tr("(feed)"));

@@ -468,7 +468,7 @@
     <string>&amp;Feed list</string>
    </property>
    <property name="toolTip">
-    <string>Hides or shows the list of feeds/categories.</string>
+    <string>Hides or shows the list of feeds/folders.</string>
    </property>
    <property name="shortcut">
     <string notr="true">L</string>
@@ -725,7 +725,7 @@
   </action>
   <action name="m_actionAddCategoryIntoSelectedItem">
    <property name="text">
-    <string>Add new category</string>
+    <string>Add new folder</string>
    </property>
   </action>
   <action name="m_actionStopRunningItemsUpdate">
@@ -884,7 +884,7 @@
   </action>
   <action name="m_actionRearrangeCategories">
    <property name="text">
-    <string>Rearrange &amp;subcategories alphabetically</string>
+    <string>Rearrange &amp;subfolders alphabetically</string>
    </property>
   </action>
   <action name="m_actionRearrangeFeeds">

@@ -650,7 +650,7 @@ bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,
   }
 
   if (some_feed_category_error) {
-    output_message = tr("Some feeds/categories were not imported due to error, check debug log for more details.");
+    output_message = tr("Some feeds/folders were not imported due to error, check debug log for more details.");
   }
   else {
     output_message = tr("Import was completely successful.");
@@ -673,8 +673,8 @@ void StandardServiceRoot::addNewCategory(RootItem* selected_item) {
     // it is used probably by feed updater or application
     // is quitting.
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         {tr("Cannot add category"),
-                          tr("Cannot add category because another critical operation is ongoing."),
+                         {tr("Cannot add folder"),
+                          tr("Cannot add folder because another critical operation is ongoing."),
                           QSystemTrayIcon::MessageIcon::Warning});
 
     // Thus, cannot delete and quit the method.

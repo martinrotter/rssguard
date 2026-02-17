@@ -28,7 +28,7 @@
      <item>
       <widget class="QLabel" name="m_lblParentCategory">
        <property name="text">
-        <string>Parent category</string>
+        <string>Parent folder</string>
        </property>
        <property name="buddy">
         <cstring>m_cmbParentCategory</cstring>
@@ -40,7 +40,7 @@
    <item row="0" column="1">
     <widget class="QComboBox" name="m_cmbParentCategory">
      <property name="toolTip">
-      <string>Select parent item for your category.</string>
+      <string>Select parent item for your folder.</string>
      </property>
      <property name="sizeAdjustPolicy">
       <enum>QComboBox::SizeAdjustPolicy::AdjustToMinimumContentsLengthWithIcon</enum>
@@ -125,7 +125,7 @@
       </size>
      </property>
      <property name="toolTip">
-      <string>Select icon for your category.</string>
+      <string>Select icon for your folder.</string>
      </property>
      <property name="text">
       <string notr="true"/>

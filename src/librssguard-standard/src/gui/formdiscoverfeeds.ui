@@ -80,7 +80,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="m_lblParentCategory">
         <property name="text">
-         <string>Target parent category</string>
+         <string>Target parent folder</string>
         </property>
         <property name="buddy">
          <cstring>m_cmbParentCategory</cstring>

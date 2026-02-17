@@ -22,7 +22,7 @@
      <item>
       <widget class="QLabel" name="m_lblParentCategory">
        <property name="text">
-        <string>Parent category</string>
+        <string>Parent folder</string>
        </property>
        <property name="buddy">
         <cstring>m_cmbParentCategory</cstring>

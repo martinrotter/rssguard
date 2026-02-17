@@ -57,7 +57,7 @@ void Category::markAsReadUnread(RootItem::ReadStatus status) {
 
 QString Category::additionalTooltip() const {
   return tr("Number of feeds: %1\n"
-            "Number of categories: %2\n"
+            "Number of folders: %2\n"
             "Number of disabled feeds: %3")
     .arg(QString::number(getSubTreeFeeds().size()),
          QString::number(getSubTreeCategories().size() - 1),

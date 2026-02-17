@@ -300,7 +300,7 @@ void FormMain::updateAddItemMenu() {
 
     if (activated_root->supportsCategoryAdding()) {
       QAction* action_new_category =
-        new QAction(qApp->icons()->fromTheme(QSL("folder")), tr("Add new category"), m_ui->m_menuAddItem);
+        new QAction(qApp->icons()->fromTheme(QSL("folder")), tr("Add new folder"), m_ui->m_menuAddItem);
 
       root_menu->addAction(action_new_category);
       connect(action_new_category, &QAction::triggered, activated_root, [activated_root]() {

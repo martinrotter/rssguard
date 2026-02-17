@@ -423,7 +423,7 @@ void FeedsImportExportModel::importAsOPML20(const QByteArray& data,
             category_title = child_element.attribute(QSL("title"));
 
             if (category_title.isEmpty()) {
-              category_title = tr("Category ") + QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch());
+              category_title = tr("Folder ") + QString::number(QDateTime::currentDateTime().toMSecsSinceEpoch());
             }
           }
 

@@ -74,7 +74,7 @@ void FormCategoryDetails::loadCategoryData() {
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot, cat);
 
   if (m_creatingNew) {
-    GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("folder")), tr("Add new category"));
+    GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("folder")), tr("Add new folder"));
 
     // Make sure that "default" icon is used as the default option for new
     // categories.
@@ -102,7 +102,7 @@ void FormCategoryDetails::loadCategoryData() {
     else {
       GuiUtilities::applyDialogProperties(*this,
                                           qApp->icons()->fromTheme(QSL("folder")),
-                                          tr("Edit %n categories", nullptr, m_categories.size()));
+                                          tr("Edit %n folders", nullptr, m_categories.size()));
     }
 
     m_ui->m_cmbParentCategory->setCurrentIndex(m_ui->m_cmbParentCategory->findData(QVariant::fromValue(cat->parent())));
@@ -166,11 +166,11 @@ void FormCategoryDetails::apply() {
 void FormCategoryDetails::onTitleChanged(const QString& new_title) {
   if (!new_title.simplified().isEmpty()) {
     m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(true);
-    m_ui->m_txtTitle->setStatus(WidgetWithStatus::StatusType::Ok, tr("Category name is ok."));
+    m_ui->m_txtTitle->setStatus(WidgetWithStatus::StatusType::Ok, tr("Folder name is ok."));
   }
   else {
     m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);
-    m_ui->m_txtTitle->setStatus(WidgetWithStatus::StatusType::Error, tr("Category name is too short."));
+    m_ui->m_txtTitle->setStatus(WidgetWithStatus::StatusType::Error, tr("Folder name is too short."));
   }
 }
 
@@ -188,10 +188,10 @@ void FormCategoryDetails::initialize() {
   m_ui->setupUi(this);
 
   // Set text boxes.
-  m_ui->m_txtTitle->lineEdit()->setPlaceholderText(tr("Category title"));
+  m_ui->m_txtTitle->lineEdit()->setPlaceholderText(tr("Folder title"));
   m_ui->m_txtTitle->lineEdit()->setToolTip(tr("Set title for your category."));
-  m_ui->m_txtDescription->textEdit()->setPlaceholderText(tr("Category description"));
-  m_ui->m_txtDescription->textEdit()->setToolTip(tr("Set description for your category."));
+  m_ui->m_txtDescription->textEdit()->setPlaceholderText(tr("Folder description"));
+  m_ui->m_txtDescription->textEdit()->setToolTip(tr("Set description for your folder."));
 
   // Setup button box.
   m_ui->m_buttonBox->button(QDialogButtonBox::StandardButton::Ok)->setEnabled(false);

@@ -186,7 +186,7 @@ void FeedsView::addCategoryIntoSelectedAccount() {
     else {
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
                            {tr("Not supported by account"),
-                            tr("Selected account does not support adding of new categories."),
+                            tr("Selected account does not support adding of new folders."),
                             QSystemTrayIcon::MessageIcon::Warning});
     }
   }
