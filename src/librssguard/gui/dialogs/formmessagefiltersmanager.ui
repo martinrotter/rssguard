@@ -208,6 +208,18 @@
         <string>Article filter details</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_3">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>6</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
         <item>
          <widget class="QLineEdit" name="m_txtTitle">
           <property name="sizePolicy">
@@ -304,6 +316,18 @@
         <string>Existing articles</string>
        </attribute>
        <layout class="QVBoxLayout" name="verticalLayout_4">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>6</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
         <item>
          <widget class="QTreeView" name="m_treeExistingMessages">
           <property name="sizePolicy">
@@ -345,6 +369,18 @@
             <string>Details</string>
            </attribute>
            <layout class="QFormLayout" name="formLayout">
+            <property name="leftMargin">
+             <number>6</number>
+            </property>
+            <property name="topMargin">
+             <number>6</number>
+            </property>
+            <property name="rightMargin">
+             <number>6</number>
+            </property>
+            <property name="bottomMargin">
+             <number>6</number>
+            </property>
             <item row="0" column="0">
              <widget class="QLabel" name="label">
               <property name="text">
@@ -426,6 +462,18 @@
             <string>Contents</string>
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout_4">
+            <property name="leftMargin">
+             <number>6</number>
+            </property>
+            <property name="topMargin">
+             <number>6</number>
+            </property>
+            <property name="rightMargin">
+             <number>6</number>
+            </property>
+            <property name="bottomMargin">
+             <number>6</number>
+            </property>
             <item>
              <widget class="QPlainTextEdit" name="m_tbMessageContents">
               <property name="readOnly">
@@ -444,6 +492,18 @@
         <string>Script output</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_3">
+        <property name="leftMargin">
+         <number>6</number>
+        </property>
+        <property name="topMargin">
+         <number>6</number>
+        </property>
+        <property name="rightMargin">
+         <number>6</number>
+        </property>
+        <property name="bottomMargin">
+         <number>6</number>
+        </property>
         <item>
          <widget class="QTextEdit" name="m_txtErrors">
           <property name="sizePolicy">
