@@ -5,8 +5,8 @@
     <name>AccountCheckModel</name>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="195"/>
-      <source>(category)</source>
-      <translation>(kategori)</translation>
+      <source>(folder)</source>
+      <translation type="unfinished">(folder)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="198"/>
@@ -44,7 +44,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>Etiketter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
@@ -56,57 +56,57 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1093"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1134"/>
       <source>Application is already running.</source>
       <translation>Programmet är redan startat.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="511"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="552"/>
       <source>Output directory is not writable.</source>
       <translation>Utdatamappen är inte skrivbar.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="519"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>Inställningsfilen kopierades inte till utdatamappen.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="534"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="575"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Databasåterställning startades inte. Tillse att utdatamappen är skrivbar.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="541"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="582"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Inställningsåterställning startades inte. Tillse att utdatamappen är skrivbar.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1111"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1152"/>
       <source>Cannot add feed</source>
       <translation>Kan inte lägga till flödet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1112"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1153"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Flödet kan inte läggas till eftersom det saknas ett aktivt konto som kan lägga till flöden.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="974"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1015"/>
       <source>Unread articles fetched</source>
       <translation>Olästa artiklar hämtades</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="303"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="312"/>
       <source>Go to changelog</source>
       <translation>Gå till ändringsloggen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="297"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="306"/>
       <source>Welcome</source>
       <translation>Välkommen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="298"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="307"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -117,7 +117,7 @@ Kolla in NYA grejer i den här versionen
 genom att klicka på denna popup-avisering.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1092"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1133"/>
       <source>Already running</source>
       <translation>Körs redan</translation>
     </message>
@@ -261,9 +261,9 @@ genom att klicka på denna popup-avisering.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="95"/>
       <source>%n feeds fetched</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>%n flöden hämtade</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
+        <numerusform>%n flöden hämtade</numerusform>
       </translation>
     </message>
   </context>
@@ -380,11 +380,11 @@ genom att klicka på denna popup-avisering.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="59"/>
       <source>Number of feeds: %1
-Number of categories: %2
+Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation>Antal flöden: %1
-Antal kategorier: %2
-Antal inaktiverade flöden: %3</translation>
+      <translation type="unfinished">Number of feeds: %1
+Number of folders: %2
+Number of disabled feeds: %3</translation>
     </message>
   </context>
   <context>
@@ -392,62 +392,62 @@ Antal inaktiverade flöden: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="23"/>
       <source>Click me!</source>
-      <translation type="unfinished">Click me!</translation>
+      <translation>Klicka här!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="67"/>
       <source>Select new color</source>
-      <translation type="unfinished">Select new color</translation>
+      <translation>Välj ny färg</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="85"/>
       <source>Enter URL</source>
-      <translation type="unfinished">Enter URL</translation>
+      <translation>Ange URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="86"/>
       <source>Enter direct URL pointing to the image</source>
-      <translation type="unfinished">Enter direct URL pointing to the image</translation>
+      <translation>Ange direkt-URL som pekar mot bilden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="109"/>
       <source>Icon not fetched</source>
-      <translation type="unfinished">Icon not fetched</translation>
+      <translation>Ikon hämtades inte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="110"/>
       <source>Icon was not fetched due to network error.</source>
-      <translation type="unfinished">Icon was not fetched due to network error.</translation>
+      <translation>Ikon hämtas inte på grund av nätverksfel.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="125"/>
       <source>Select icon file</source>
-      <translation type="unfinished">Select icon file</translation>
+      <translation>Välj ikonfil</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="128"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Bilder (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="140"/>
       <source>Select new &amp;color...</source>
-      <translation type="unfinished">Select new &amp;color...</translation>
+      <translation>Välj ny &amp;färg...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="149"/>
       <source>Load icon from &amp;file...</source>
-      <translation type="unfinished">Load icon from &amp;file...</translation>
+      <translation>Hämta ikon från &amp;fil...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="154"/>
       <source>Download icon from &amp;URL...</source>
-      <translation type="unfinished">Download icon from &amp;URL...</translation>
+      <translation>Ladda ner ikon från &amp;URL...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="159"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Använd standardikon från ikontemat</translation>
     </message>
   </context>
   <context>
@@ -534,7 +534,7 @@ Antal inaktiverade flöden: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="908"/>
       <source>invalid URL cannot be used to load file from cache</source>
-      <translation type="unfinished">invalid URL cannot be used to load file from cache</translation>
+      <translation>ogiltig URL kan inte användas för att hämta fil från cache</translation>
     </message>
   </context>
   <context>
@@ -547,12 +547,12 @@ Antal inaktiverade flöden: %3</translation>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="100"/>
       <source>There is another action which has the same shortcut assigned.</source>
-      <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
+      <translation>Det finns en annan åtgärd som har samma genväg tilldelad.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="101"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
-      <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
+      <translation>Vill du behålla den nya genvägstilldelningen och rensa bort den föregående?</translation>
     </message>
   </context>
   <context>
@@ -595,17 +595,17 @@ Antal inaktiverade flöden: %3</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="101"/>
       <source>Save attachment %1</source>
-      <translation type="unfinished">Save attachment %1</translation>
+      <translation>Spara bilaga %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="117"/>
       <source>Download attachment</source>
-      <translation type="unfinished">Download attachment</translation>
+      <translation>Ladda ner bilaga</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="145"/>
       <source>Downloaded %1 kB...</source>
-      <translation type="unfinished">Downloaded %1 kB...</translation>
+      <translation>Laddade ner %1 kB...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="156"/>
@@ -705,7 +705,7 @@ Antal inaktiverade flöden: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
       <source>SQL database error</source>
-      <translation type="unfinished">SQL database error</translation>
+      <translation>SQL-databasfel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
@@ -724,11 +724,11 @@ Active message filters: %2
 Status: %3
 Source: %4
 Item custom ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
+      <translation>Status för autouppdatering: %1
+Aktiva artikelfilter: %2
 Status: %3
-Source: %4
-Item custom ID: %5</translation>
+Källa: %4
+Artikell-ID: %5</translation>
     </message>
   </context>
   <context>
@@ -775,13 +775,13 @@ Item custom ID: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="393"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="430"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Startar automatisk nedladdning av vissa flöden&apos;
 artiklar</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="394"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="431"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>Jag kommer automatiskt ladda ner nya artiklar för %n flöde(n).</numerusform>
@@ -789,12 +789,12 @@ artiklar</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="418"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="455"/>
       <source>Some feeds have errors</source>
       <translation type="unfinished">Some feeds have errors</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="419"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="456"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
     </message>
@@ -992,8 +992,8 @@ artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="426"/>
-      <source>Category </source>
-      <translation>Kategori </translation>
+      <source>Folder </source>
+      <translation type="unfinished">Folder </translation>
     </message>
   </context>
   <context>
@@ -1154,6 +1154,11 @@ artiklar</translation>
       <translation>Markerat objekt kan inte redigeras, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="189"/>
+      <source>Selected account does not support adding of new folders.</source>
+      <translation type="unfinished">Selected account does not support adding of new folders.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="471"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
       <translation>Markerat objekt kan inte tas bort, eftersom en annan kritisk åtgärd pågår.</translation>
@@ -1170,11 +1175,6 @@ artiklar</translation>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="171"/>
       <source>Selected account does not support adding of new feeds.</source>
       <translation>Det valda kontot stöder inte tillägg av nya flöden.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="189"/>
-      <source>Selected account does not support adding of new categories.</source>
-      <translation>Det valda kontot stöder inte tillägg av nya kategorier.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="245"/>
@@ -1720,26 +1720,26 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <name>FormCategoryDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="77"/>
-      <source>Add new category</source>
-      <translation>Lägg till ny kategori</translation>
+      <source>Add new folder</source>
+      <translation type="unfinished">Add new folder</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="105"/>
-      <source>Edit %n categories</source>
+      <source>Edit %n folders</source>
       <translation type="unfinished">
-        <numerusform>Redigera %n kategorier</numerusform>
-        <numerusform>Edit %n categories</numerusform>
+        <numerusform>Edit %n folders</numerusform>
+        <numerusform>Edit %n folders</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="169"/>
-      <source>Category name is ok.</source>
-      <translation>Kategorinamnet är ok.</translation>
+      <source>Folder name is ok.</source>
+      <translation type="unfinished">Folder name is ok.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="173"/>
-      <source>Category name is too short.</source>
-      <translation>Kategorinamnet är för kort.</translation>
+      <source>Folder name is too short.</source>
+      <translation type="unfinished">Folder name is too short.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="179"/>
@@ -1753,23 +1753,23 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="191"/>
-      <source>Category title</source>
-      <translation>Kategorinamn</translation>
+      <source>Folder title</source>
+      <translation type="unfinished">Folder title</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="193"/>
+      <source>Folder description</source>
+      <translation type="unfinished">Folder description</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
+      <source>Set description for your folder.</source>
+      <translation type="unfinished">Set description for your folder.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="192"/>
       <source>Set title for your category.</source>
       <translation>Ange namnet på din kategori.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="193"/>
-      <source>Category description</source>
-      <translation>Kategoribeskrivning</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
-      <source>Set description for your category.</source>
-      <translation>Beskriv din kategori.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="100"/>
@@ -1779,14 +1779,14 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="179"/>
-      <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <source>Parent folder</source>
+      <translation type="unfinished">Parent folder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="181"/>
-      <source>Select parent item for your category.</source>
-      <translation>Välj överordnad mapp för kategorin.</translation>
+      <source>Select parent item for your folder.</source>
+      <translation type="unfinished">Select parent item for your folder.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="64"/>
@@ -1809,8 +1809,8 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="128"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="187"/>
-      <source>Select icon for your category.</source>
-      <translation>Välj ikon för kategorin.</translation>
+      <source>Select icon for your folder.</source>
+      <translation type="unfinished">Select icon for your folder.</translation>
     </message>
   </context>
   <context>
@@ -1966,8 +1966,8 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
-      <source>Target parent category</source>
-      <translation type="unfinished">Target parent category</translation>
+      <source>Target parent folder</source>
+      <translation type="unfinished">Target parent folder</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
@@ -2558,12 +2558,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>&amp;Flödeslista</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
-      <source>Hides or shows the list of feeds/categories.</source>
-      <translation>Dölj/Visa listan med flöden/kategorier.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="479"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="748"/>
       <source>&amp;Clean all</source>
@@ -2678,6 +2672,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>Växla layout</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="728"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="303"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
+      <source>Add new folder</source>
+      <translation type="unfinished">Add new folder</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="829"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>&amp;Copy data to clipboard</source>
@@ -2706,6 +2707,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
       <source>Scroll &amp;down preview</source>
       <translation type="unfinished">Scroll &amp;down preview</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
+      <source>Rearrange &amp;subfolders alphabetically</source>
+      <translation type="unfinished">Rearrange &amp;subfolders alphabetically</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
@@ -2786,6 +2793,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>Skicka via e-post</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
+      <source>Hides or shows the list of feeds/folders.</source>
+      <translation type="unfinished">Hides or shows the list of feeds/folders.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
       <source>Send selected articles via e-mail</source>
@@ -2850,13 +2863,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>&amp;Delete selected account</source>
       <translation>&amp;Ta bort markerat konto</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="728"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="303"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
-      <source>Add new category</source>
-      <translation>Lägg till ny kategori</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="733"/>
@@ -2985,12 +2991,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation type="unfinished">Display application &amp;log</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
-      <source>Rearrange &amp;subcategories alphabetically</source>
-      <translation type="unfinished">Rearrange &amp;subcategories alphabetically</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="892"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
       <source>Rearrange &amp;feeds alphabetically</source>
@@ -3099,241 +3099,269 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormMessageFiltersManager</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="553"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="616"/>
       <source>Cannot find &apos;clang-format&apos;</source>
       <translation>Kan inte hitta &quot;clang-format&quot;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="554"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="617"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
       <translation>Skriptet har inte förskönats, eftersom verktyget &quot;clang-format&quot; inte hittades.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="330"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="572"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="206"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="233"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="393"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="635"/>
       <source>Error</source>
       <translation>Fel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="573"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="186"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="212"/>
+      <source>Article filter files (*.json)</source>
+      <translation type="unfinished">Article filter files (*.json)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="188"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="214"/>
+      <source>Select file article filters export</source>
+      <translation type="unfinished">Select file article filters export</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="207"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="234"/>
+      <source>Cannot export filters, error: &apos;%1&apos;.</source>
+      <translation type="unfinished">Cannot export filters, error: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="636"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
       <translation>Skriptet har inte förskönats, eftersom ett fel inträffat i verktyget &quot;clang-format&quot; .</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="582"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="645"/>
       <source>Beautifier was running for too long time</source>
       <translation>Försköningsverktyget arbetade för länge</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="583"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="646"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation>Skriptet har inte förskönats, är &quot;clang-format&quot; installerat?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="331"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="394"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
       <translation>Kan inte spara nytt filter, fel: &quot;%1&quot;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="271"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="327"/>
       <source>Context menu</source>
       <translation>Kontextmeny</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="273"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="329"/>
       <source>Filter articles like this</source>
       <translation>Filtrera artiklar så här</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="318"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="382"/>
       <source>New article filter</source>
       <translation>Nytt artikelfilter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="289"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="345"/>
       <source>Are you sure?</source>
       <translation>Är du säker?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="290"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="346"/>
       <source>Do you really want to remove selected filter?</source>
       <translation>Är du säker på att du vill ta bort valt filter?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="449"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="474"/>
       <source>Article filters</source>
       <translation>Artikelfilter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="63"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="73"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="96"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="451"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="455"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="459"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="108"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="484"/>
       <source>New filter</source>
       <translation type="unfinished">New filter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="66"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="453"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="78"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="478"/>
       <source>&amp;Import</source>
       <translation type="unfinished">&amp;Import</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="76"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="457"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="75"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="476"/>
+      <source>Import filters</source>
+      <translation type="unfinished">Import filters</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="85"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="480"/>
+      <source>Export filters</source>
+      <translation type="unfinished">Export filters</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="88"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="482"/>
       <source>Export</source>
       <translation type="unfinished">Export</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="106"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="463"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="118"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="488"/>
       <source>Remove filter</source>
       <translation type="unfinished">Remove filter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="109"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="465"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="490"/>
       <source>Remove</source>
       <translation type="unfinished">Remove</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="116"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="467"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="128"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="492"/>
       <source>Enable filter</source>
       <translation type="unfinished">Enable filter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="119"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="469"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="131"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="494"/>
       <source>Enable</source>
       <translation type="unfinished">Enable</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="142"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="471"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="154"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="496"/>
       <source>Move filter up</source>
       <translation type="unfinished">Move filter up</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="145"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="473"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="157"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="498"/>
       <source>Up</source>
       <translation type="unfinished">Up</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="475"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="164"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="500"/>
       <source>Move filter down</source>
       <translation type="unfinished">Move filter down</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="155"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="477"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="167"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="502"/>
       <source>Down</source>
       <translation type="unfinished">Down</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="166"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="478"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="178"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="503"/>
       <source>&amp;Check all</source>
       <translation>&amp;Markera alla</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="173"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="479"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="185"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="504"/>
       <source>&amp;Uncheck all</source>
       <translation>&amp;Avmarkera alla</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="258"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="486"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="297"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="511"/>
       <source>&amp;Documentation</source>
       <translation type="unfinished">&amp;Documentation</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="333"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="490"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="402"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="515"/>
       <source>Details</source>
       <translation type="unfinished">Details</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="403"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="489"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="484"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="514"/>
       <source>DB ID &amp; Custom ID</source>
       <translation type="unfinished">DB ID &amp; Custom ID</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="432"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="493"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="525"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="518"/>
       <source>Script output</source>
       <translation type="unfinished">Script output</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="99"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="461"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="111"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="486"/>
       <source>&amp;New filter</source>
       <translation>&amp;Nytt filter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="196"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="480"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="223"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="505"/>
       <source>Article filter details</source>
       <translation>Artikelfilterdetaljer</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="208"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="481"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="247"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="506"/>
       <source>Title of article filter</source>
       <translation>Namn på artikelfilter</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="223"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="482"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="262"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="507"/>
       <source>Your JavaScript-based article filtering logic</source>
       <translation>Din javascript-baserade artikelfiltreringslogik</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="237"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="483"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="276"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="508"/>
       <source>&amp;Test</source>
       <translation>&amp;Testa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="244"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="484"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="283"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="509"/>
       <source>Process checked feeds</source>
       <translation>Bearbeta markerade flöden</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="251"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="485"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="290"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="510"/>
       <source>&amp;Beautify</source>
       <translation>&amp;Försköna</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="292"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="492"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="349"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="517"/>
       <source>Existing articles</source>
       <translation>Befintliga artiklar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="339"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="487"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="420"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="512"/>
       <source>URL</source>
       <translation>URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="363"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="488"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="444"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="513"/>
       <source>Author</source>
       <translation>Författare</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="414"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="491"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="495"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="516"/>
       <source>Contents</source>
       <translation>Innehåll</translation>
     </message>
@@ -3506,11 +3534,6 @@ Du måste starta om manuellt.</translation>
       <translation>Målfil</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="77"/>
-      <source>Source feeds &amp;&amp; categories</source>
-      <translation>Källflöden &amp;&amp; -kategorier</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="79"/>
       <source>Export feeds</source>
       <translation>Exportera flöden</translation>
@@ -3519,11 +3542,6 @@ Du måste starta om manuellt.</translation>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="87"/>
       <source>Source file</source>
       <translation>Källfil</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="88"/>
-      <source>Target feeds &amp;&amp; categories</source>
-      <translation>Målflöden &amp;&amp; -kategorier</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="95"/>
@@ -3575,6 +3593,16 @@ Du måste starta om manuellt.</translation>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="37"/>
       <source>Here you can enter script executaion line, including interpreter.</source>
       <translation>Här kan du ange skriptexekveringsrad, inklusive tolk.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="77"/>
+      <source>Source feeds &amp;&amp; folders</source>
+      <translation type="unfinished">Source feeds &amp;&amp; folders</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="88"/>
+      <source>Target feeds &amp;&amp; folders</source>
+      <translation type="unfinished">Target feeds &amp;&amp; folders</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="138"/>
@@ -4408,8 +4436,8 @@ Inloggningstoken upphör: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
-      <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <source>Parent folder</source>
+      <translation type="unfinished">Parent folder</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
@@ -6386,17 +6414,17 @@ List of supported readers:</translation>
       <translation type="unfinished">bottom-right</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="434"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="449"/>
       <source>escape sequence not completed</source>
       <translation type="unfinished">escape sequence not completed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="438"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="453"/>
       <source>closing &quot; is missing</source>
       <translation type="unfinished">closing &quot; is missing</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="442"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="457"/>
       <source>closing &apos; is missing</source>
       <translation type="unfinished">closing &apos; is missing</translation>
     </message>
@@ -6487,7 +6515,7 @@ List of supported readers:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="131"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Bilder (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="158"/>
@@ -7134,11 +7162,11 @@ Inloggningstoken upphör: %2</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="388"/>
       <source>Number of feeds: %1
-Number of categories: %2
+Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation>Antal flöden: %1
-Antal kategorier: %2
-Antal inaktiverade flöden: %3</translation>
+      <translation type="unfinished">Number of feeds: %1
+Number of folders: %2
+Number of disabled feeds: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="758"/>
@@ -7516,11 +7544,6 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Välj nytt teckensnitt</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="48"/>
-      <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-      <translation type="unfinished">Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="40"/>
       <source>If enabled then %1 loads articles into article list on demand as you scroll throught the list.
 
@@ -7528,6 +7551,11 @@ This can tremendously speed up the application if you have hundreds of thousands
       <translation type="unfinished">If enabled then %1 loads articles into article list on demand as you scroll throught the list.
 
 This can tremendously speed up the application if you have hundreds of thousands articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="48"/>
+      <source>Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
+      <translation type="unfinished">Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
@@ -8499,7 +8527,7 @@ Description: %3</translation>
   <context>
     <name>SqliteDriver</name>
     <message>
-      <location filename="../src/librssguard/database/sqlitedriver.cpp" line="279"/>
+      <location filename="../src/librssguard/database/sqlitedriver.cpp" line="281"/>
       <source>Database file not copied to output directory successfully.</source>
       <translation>Databasfilen kopierades inte till utdatamappen.</translation>
     </message>
@@ -8544,7 +8572,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="22"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Använd standardikon från ikontemat</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="33"/>
@@ -8563,7 +8591,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="57"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Bilder (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="72"/>
@@ -8582,14 +8610,14 @@ If that is the case, then you need to set some time gaps when fetching those fee
   <context>
     <name>StandardCategory</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="44"/>
-      <source>Cannot save data for category, detailed information was logged via debug log.</source>
-      <translation>Kan inte spara data för kategori, detaljerad information loggades i felsökningsloggen.</translation>
+      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="43"/>
+      <source>Cannot save folder data</source>
+      <translation type="unfinished">Cannot save folder data</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="43"/>
-      <source>Cannot save category data</source>
-      <translation type="unfinished">Cannot save category data</translation>
+      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="44"/>
+      <source>Cannot save data for folder, detailed information was logged via debug log.</source>
+      <translation type="unfinished">Cannot save data for folder, detailed information was logged via debug log.</translation>
     </message>
   </context>
   <context>
@@ -8840,11 +8868,6 @@ Also, you can post-process generated feed data with yet another script if you wi
       <translation>Form</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
-      <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="37"/>
       <source>Select parent item for your feed.</source>
       <translation>Välj övergripande objekt för ditt flöde.</translation>
@@ -8893,6 +8916,11 @@ Also, you can post-process generated feed data with yet another script if you wi
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="227"/>
       <source>Icon</source>
       <translation>Ikon</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
+      <source>Parent folder</source>
+      <translation type="unfinished">Parent folder</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="251"/>
@@ -9021,6 +9049,21 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation>Hämta metadata</translation>
     </message>
     <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="653"/>
+      <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
+      <translation type="unfinished">Some feeds/folders were not imported due to error, check debug log for more details.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="676"/>
+      <source>Cannot add folder</source>
+      <translation type="unfinished">Cannot add folder</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
+      <source>Cannot add folder because another critical operation is ongoing.</source>
+      <translation type="unfinished">Cannot add folder because another critical operation is ongoing.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="704"/>
       <source>Error during file import</source>
       <translation type="unfinished">Error during file import</translation>
@@ -9077,24 +9120,9 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation>Kan inte lägga till flöde, eftersom en annan kritisk åtgärd pågår.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="676"/>
-      <source>Cannot add category</source>
-      <translation>Kan inte lägga till kategori</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
-      <source>Cannot add category because another critical operation is ongoing.</source>
-      <translation>Kan inte lägga till kategori, eftersom en annan kritisk åtgärd pågår.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="656"/>
       <source>Import was completely successful.</source>
       <translation>Importen slutfördes korrekt.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="653"/>
-      <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-      <translation>Vissa flöden/kategorier importerades inte på grund av något fel, kolla loggen för mer information.</translation>
     </message>
   </context>
   <context>
@@ -9593,8 +9621,8 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
-      <source>Parent category</source>
-      <translation type="unfinished">Parent category</translation>
+      <source>Parent folder</source>
+      <translation type="unfinished">Parent folder</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="30"/>
