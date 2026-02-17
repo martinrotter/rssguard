@@ -20,7 +20,6 @@
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/accountcheckmodel.h"
 #include "services/abstract/feed.h"
-#include "services/abstract/labelsnode.h"
 
 #include <QDateTime>
 #include <QJSEngine>
@@ -183,7 +182,31 @@ bool FormMessageFiltersManager::eventFilter(QObject* watched, QEvent* event) {
   return false;
 }
 
-void FormMessageFiltersManager::importFilters() {}
+void FormMessageFiltersManager::importFilters() {
+  const QString filter = tr("Article filter files (*.json)");
+  const QString selected_file = FileDialog::openFileName(qApp->mainFormWidget(),
+                                                         tr("Select file article filters export"),
+                                                         qApp->documentsFolder(),
+                                                         QSL("filters.json"),
+                                                         filter,
+                                                         nullptr,
+                                                         GENERAL_REMEMBERED_PATH);
+
+  if (selected_file.isEmpty() || !QFile::exists(selected_file)) {
+    return;
+  }
+
+  try {
+    m_reader->importMessageFilters(IOFactory::readFile(selected_file));
+    loadFilters();
+  }
+  catch (const ApplicationException& ex) {
+    MsgBox::show(this,
+                 QMessageBox::Icon::Critical,
+                 tr("Error"),
+                 tr("Cannot export filters, error: '%1'.").arg(ex.message()));
+  }
+}
 
 void FormMessageFiltersManager::exportFilters() {
   const QString filter = tr("Article filter files (*.json)");
@@ -336,6 +359,8 @@ void FormMessageFiltersManager::loadFilters() {
   auto flt_ordered = qlinq::from(flt).orderBy([](MessageFilter* f) {
     return f->sortOrder();
   });
+
+  m_ui.m_listFilters->clear();
 
   for (auto* fltr : std::as_const(flt_ordered)) {
     auto* it = new QListWidgetItem(fltr->name(), m_ui.m_listFilters);

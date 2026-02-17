@@ -26,6 +26,7 @@ Added:
 * Qt 5 version of RSS Guard on Windows uses custom-built Qt libraries with lower memory footprint and less dependencies.
 * Added main menu action to enable/disable feed. Can be also of course assigned to keyboard shortcut. (#755)
 * Application log dialog has `Clear` button. (#1902)
+* Article filters can be exported/imported. (#1911)
 * Ability to fast rename feeds and folders with `F2` keyboard shortcut. (#1998)
 * Ability to copy selected article(s) data in a custom format. (#1591)
 * Reddit plugin got many enhancements, including option of fetching full comments.
