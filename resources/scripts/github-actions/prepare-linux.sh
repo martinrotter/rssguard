@@ -49,6 +49,7 @@ pacman -Syu --noconfirm  \
     qt6-tools            \
     qt6-svg              \
     qt6ct                \
+    sndio                \
     sqlite               \
     wget                 \
     xorg-server-xvfb     \
