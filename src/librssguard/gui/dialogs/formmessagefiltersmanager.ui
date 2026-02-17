@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Article filters</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_5">
+  <layout class="QVBoxLayout" name="verticalLayout_7">
    <item>
     <widget class="QSplitter" name="splitter_2">
      <property name="orientation">
@@ -203,11 +203,8 @@
         </item>
        </layout>
       </widget>
-      <widget class="QGroupBox" name="m_gbDetails">
-       <property name="title">
-        <string>Article filter details</string>
-       </property>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
+      <widget class="QWidget" name="verticalLayoutWidget_2">
+       <layout class="QVBoxLayout" name="verticalLayout_6">
         <property name="leftMargin">
          <number>6</number>
         </property>
@@ -221,304 +218,343 @@
          <number>6</number>
         </property>
         <item>
-         <widget class="QLineEdit" name="m_txtTitle">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
+         <widget class="QGroupBox" name="m_gbDetails">
+          <property name="title">
+           <string>Article filter details</string>
           </property>
-          <property name="placeholderText">
-           <string>Title of article filter</string>
-          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_3">
+           <property name="leftMargin">
+            <number>6</number>
+           </property>
+           <property name="topMargin">
+            <number>6</number>
+           </property>
+           <property name="rightMargin">
+            <number>6</number>
+           </property>
+           <property name="bottomMargin">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLineEdit" name="m_txtTitle">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="placeholderText">
+              <string>Title of article filter</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
+              <widget class="QPlainTextEdit" name="m_txtScript">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>1</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="placeholderText">
+                <string>Your JavaScript-based article filtering logic</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="SearchTextWidget" name="m_searchWidget" native="true"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QPushButton" name="m_btnTest">
+               <property name="text">
+                <string>&amp;Test</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="m_btnRunOnMessages">
+               <property name="text">
+                <string>Process checked feeds</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="m_btnBeautify">
+               <property name="text">
+                <string>&amp;Beautify</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="m_btnDetailedHelp">
+               <property name="text">
+                <string>&amp;Documentation</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_3">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </widget>
-        </item>
-        <item>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <widget class="QPlainTextEdit" name="m_txtScript">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-              <horstretch>0</horstretch>
-              <verstretch>1</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="placeholderText">
-             <string>Your JavaScript-based article filtering logic</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="SearchTextWidget" name="m_searchWidget" native="true"/>
-          </item>
-         </layout>
-        </item>
-        <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_2">
-          <item>
-           <widget class="QPushButton" name="m_btnTest">
-            <property name="text">
-             <string>&amp;Test</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="m_btnRunOnMessages">
-            <property name="text">
-             <string>Process checked feeds</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="m_btnBeautify">
-            <property name="text">
-             <string>&amp;Beautify</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QPushButton" name="m_btnDetailedHelp">
-            <property name="text">
-             <string>&amp;Documentation</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <spacer name="horizontalSpacer_3">
-            <property name="orientation">
-             <enum>Qt::Orientation::Horizontal</enum>
-            </property>
-            <property name="sizeHint" stdset="0">
-             <size>
-              <width>40</width>
-              <height>20</height>
-             </size>
-            </property>
-           </spacer>
-          </item>
-         </layout>
         </item>
        </layout>
       </widget>
      </widget>
-     <widget class="QTabWidget" name="m_twMessages">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>1</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="m_tabExistingMessages">
-       <attribute name="title">
-        <string>Existing articles</string>
-       </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
-        <property name="leftMargin">
-         <number>6</number>
-        </property>
-        <property name="topMargin">
-         <number>6</number>
-        </property>
-        <property name="rightMargin">
-         <number>6</number>
-        </property>
-        <property name="bottomMargin">
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QTreeView" name="m_treeExistingMessages">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>1</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="showDropIndicator" stdset="0">
-           <bool>false</bool>
-          </property>
-          <property name="rootIsDecorated">
-           <bool>false</bool>
-          </property>
-          <property name="uniformRowHeights">
-           <bool>true</bool>
-          </property>
-          <property name="itemsExpandable">
-           <bool>false</bool>
-          </property>
-          <property name="sortingEnabled">
-           <bool>true</bool>
-          </property>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <property name="leftMargin">
+        <number>6</number>
+       </property>
+       <property name="topMargin">
+        <number>6</number>
+       </property>
+       <property name="rightMargin">
+        <number>6</number>
+       </property>
+       <property name="bottomMargin">
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QTabWidget" name="m_twMessages">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="m_tabExistingMessages">
+          <attribute name="title">
+           <string>Existing articles</string>
+          </attribute>
+          <layout class="QVBoxLayout" name="verticalLayout_4">
+           <property name="leftMargin">
+            <number>6</number>
+           </property>
+           <property name="topMargin">
+            <number>6</number>
+           </property>
+           <property name="rightMargin">
+            <number>6</number>
+           </property>
+           <property name="bottomMargin">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QTreeView" name="m_treeExistingMessages">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>1</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="showDropIndicator" stdset="0">
+              <bool>false</bool>
+             </property>
+             <property name="rootIsDecorated">
+              <bool>false</bool>
+             </property>
+             <property name="uniformRowHeights">
+              <bool>true</bool>
+             </property>
+             <property name="itemsExpandable">
+              <bool>false</bool>
+             </property>
+             <property name="sortingEnabled">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTabWidget" name="m_twDetails">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>1</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="currentIndex">
+              <number>0</number>
+             </property>
+             <widget class="QWidget" name="tab">
+              <attribute name="title">
+               <string>Details</string>
+              </attribute>
+              <layout class="QFormLayout" name="formLayout">
+               <property name="leftMargin">
+                <number>6</number>
+               </property>
+               <property name="topMargin">
+                <number>6</number>
+               </property>
+               <property name="rightMargin">
+                <number>6</number>
+               </property>
+               <property name="bottomMargin">
+                <number>6</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label">
+                 <property name="text">
+                  <string>URL</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>m_tbMessageUrl</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QLineEdit" name="m_tbMessageUrl">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QLineEdit" name="m_tbMessageAuthor">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_2">
+                 <property name="text">
+                  <string>Author</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>m_tbMessageAuthor</cstring>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <layout class="QHBoxLayout" name="horizontalLayout_5">
+                 <item>
+                  <widget class="QLineEdit" name="m_tbMessageDbId">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QLineEdit" name="m_tbMessageCustomId">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>6</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_3">
+                 <property name="text">
+                  <string>DB ID &amp; Custom ID</string>
+                 </property>
+                 <property name="buddy">
+                  <cstring>m_tbMessageDbId</cstring>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+             <widget class="QWidget" name="tab_2">
+              <attribute name="title">
+               <string>Contents</string>
+              </attribute>
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <property name="leftMargin">
+                <number>6</number>
+               </property>
+               <property name="topMargin">
+                <number>6</number>
+               </property>
+               <property name="rightMargin">
+                <number>6</number>
+               </property>
+               <property name="bottomMargin">
+                <number>6</number>
+               </property>
+               <item>
+                <widget class="QPlainTextEdit" name="m_tbMessageContents">
+                 <property name="readOnly">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
          </widget>
-        </item>
-        <item>
-         <widget class="QTabWidget" name="m_twDetails">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>1</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="currentIndex">
-           <number>0</number>
-          </property>
-          <widget class="QWidget" name="tab">
-           <attribute name="title">
-            <string>Details</string>
-           </attribute>
-           <layout class="QFormLayout" name="formLayout">
-            <property name="leftMargin">
-             <number>6</number>
-            </property>
-            <property name="topMargin">
-             <number>6</number>
-            </property>
-            <property name="rightMargin">
-             <number>6</number>
-            </property>
-            <property name="bottomMargin">
-             <number>6</number>
-            </property>
-            <item row="0" column="0">
-             <widget class="QLabel" name="label">
-              <property name="text">
-               <string>URL</string>
-              </property>
-              <property name="buddy">
-               <cstring>m_tbMessageUrl</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="0" column="1">
-             <widget class="QLineEdit" name="m_tbMessageUrl">
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="1">
-             <widget class="QLineEdit" name="m_tbMessageAuthor">
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-            <item row="1" column="0">
-             <widget class="QLabel" name="label_2">
-              <property name="text">
-               <string>Author</string>
-              </property>
-              <property name="buddy">
-               <cstring>m_tbMessageAuthor</cstring>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="1">
-             <layout class="QHBoxLayout" name="horizontalLayout_5">
-              <item>
-               <widget class="QLineEdit" name="m_tbMessageDbId">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                  <horstretch>1</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QLineEdit" name="m_tbMessageCustomId">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                  <horstretch>6</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="readOnly">
-                 <bool>true</bool>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item row="2" column="0">
-             <widget class="QLabel" name="label_3">
-              <property name="text">
-               <string>DB ID &amp; Custom ID</string>
-              </property>
-              <property name="buddy">
-               <cstring>m_tbMessageDbId</cstring>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
-          <widget class="QWidget" name="tab_2">
-           <attribute name="title">
-            <string>Contents</string>
-           </attribute>
-           <layout class="QHBoxLayout" name="horizontalLayout_4">
-            <property name="leftMargin">
-             <number>6</number>
-            </property>
-            <property name="topMargin">
-             <number>6</number>
-            </property>
-            <property name="rightMargin">
-             <number>6</number>
-            </property>
-            <property name="bottomMargin">
-             <number>6</number>
-            </property>
-            <item>
-             <widget class="QPlainTextEdit" name="m_tbMessageContents">
-              <property name="readOnly">
-               <bool>true</bool>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
+         <widget class="QWidget" name="m_tabScriptOutput">
+          <attribute name="title">
+           <string>Script output</string>
+          </attribute>
+          <layout class="QHBoxLayout" name="horizontalLayout_3">
+           <property name="leftMargin">
+            <number>6</number>
+           </property>
+           <property name="topMargin">
+            <number>6</number>
+           </property>
+           <property name="rightMargin">
+            <number>6</number>
+           </property>
+           <property name="bottomMargin">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QTextEdit" name="m_txtErrors">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>1</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </widget>
-        </item>
-       </layout>
-      </widget>
-      <widget class="QWidget" name="m_tabScriptOutput">
-       <attribute name="title">
-        <string>Script output</string>
-       </attribute>
-       <layout class="QHBoxLayout" name="horizontalLayout_3">
-        <property name="leftMargin">
-         <number>6</number>
-        </property>
-        <property name="topMargin">
-         <number>6</number>
-        </property>
-        <property name="rightMargin">
-         <number>6</number>
-        </property>
-        <property name="bottomMargin">
-         <number>6</number>
-        </property>
-        <item>
-         <widget class="QTextEdit" name="m_txtErrors">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-            <horstretch>0</horstretch>
-            <verstretch>1</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="readOnly">
-           <bool>true</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
-      </widget>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
