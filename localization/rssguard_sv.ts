@@ -6,7 +6,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="195"/>
       <source>(folder)</source>
-      <translation type="unfinished">(folder)</translation>
+      <translation>(mapp)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="198"/>
@@ -382,9 +382,9 @@ genom att klicka på denna popup-avisering.</translation>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of folders: %2
-Number of disabled feeds: %3</translation>
+      <translation>Antal flöden: %1
+Antal mappar: %2
+Antal inaktiverade flöden: %3</translation>
     </message>
   </context>
   <context>
@@ -736,7 +736,7 @@ Artikell-ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="249"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
-      <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
+      <translation>flödet är i nätverksavkylningsläge på grund av för många nätverksförfrågningar</translation>
     </message>
   </context>
   <context>
@@ -791,12 +791,12 @@ artiklar</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="455"/>
       <source>Some feeds have errors</source>
-      <translation type="unfinished">Some feeds have errors</translation>
+      <translation>Några flöden har fel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="456"/>
       <source>Some feeds threw an error when fetching articles.</source>
-      <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
+      <translation>Vissa flöden visade upp ett fel när artiklar hämtades.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="89"/>
@@ -946,7 +946,7 @@ artiklar</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="47"/>
       <source>Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</source>
-      <translation type="unfinished">Beware of downloading too many articles, because Feedly permanently caches ALL articles of the feed, so you might end up with thousands of articles which you will never read anyway.</translation>
+      <translation>Akta dig för att ladda ner för många artiklar, eftersom Feedly permanent cachar ALLA artiklar i flödet, så du kan sluta med tusentals artiklar som du ändå aldrig kommer att läsa.</translation>
     </message>
   </context>
   <context>
@@ -975,7 +975,7 @@ artiklar</translation>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="722"/>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="737"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Användarnamn</translation>
     </message>
   </context>
   <context>
@@ -983,17 +983,17 @@ artiklar</translation>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="336"/>
       <source>OPML document contains errors</source>
-      <translation type="unfinished">OPML document contains errors</translation>
+      <translation>OPML-dokumentet innehåller fel</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="341"/>
       <source>this is likely not OPML document</source>
-      <translation type="unfinished">this is likely not OPML document</translation>
+      <translation>detta är sannolikt inte ett OPML-dokument</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="426"/>
       <source>Folder </source>
-      <translation type="unfinished">Folder </translation>
+      <translation>Mapp </translation>
     </message>
   </context>
   <context>
@@ -1006,12 +1006,12 @@ artiklar</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="37"/>
       <source>Item ID</source>
-      <translation type="unfinished">Item ID</translation>
+      <translation>Objekt-ID</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="37"/>
       <source>Article counts</source>
-      <translation type="unfinished">Article counts</translation>
+      <translation>Antal artiklar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="38"/>
@@ -1026,7 +1026,7 @@ artiklar</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="39"/>
       <source>Database ID of each item.</source>
-      <translation type="unfinished">Database ID of each item.</translation>
+      <translation>Databas-ID för varje objekt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="40"/>
@@ -1057,12 +1057,12 @@ artiklar</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="172"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>Överallt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="173"/>
       <source>Titles only</source>
-      <translation type="unfinished">Titles only</translation>
+      <translation>Endast titlar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="177"/>
@@ -4160,7 +4160,7 @@ Du kan installera det nu.</translation>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="484"/>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="497"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Användarnamn</translation>
     </message>
   </context>
   <context>
@@ -4527,7 +4527,7 @@ Inloggningstoken upphör: %2</translation>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1220"/>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1233"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Användarnamn</translation>
     </message>
   </context>
   <context>
@@ -5598,12 +5598,12 @@ Inloggningstoken upphör: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="207"/>
       <source>Everywhere</source>
-      <translation type="unfinished">Everywhere</translation>
+      <translation>Överallt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="208"/>
       <source>Titles only</source>
-      <translation type="unfinished">Titles only</translation>
+      <translation>Endast titlar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="212"/>
@@ -6172,7 +6172,7 @@ Inloggningstoken upphör: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="93"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Användarnamn</translation>
     </message>
   </context>
   <context>
@@ -6921,7 +6921,7 @@ stack: %3</translation>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="534"/>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="547"/>
       <source>Login</source>
-      <translation type="unfinished">Login</translation>
+      <translation>Användarnamn</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="543"/>
@@ -7164,9 +7164,9 @@ Inloggningstoken upphör: %2</translation>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of folders: %2
-Number of disabled feeds: %3</translation>
+      <translation>Antal flöden: %1
+Antal mappar: %2
+Antal inaktiverade flöden: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="758"/>
