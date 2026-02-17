@@ -6,7 +6,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="195"/>
       <source>(folder)</source>
-      <translation type="unfinished">(folder)</translation>
+      <translation>(dossier)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="198"/>
@@ -382,9 +382,9 @@ version en cliquant sur cette notification.</translation>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of folders: %2
-Number of disabled feeds: %3</translation>
+      <translation>Nombre de flux : %1
+Nombre de catégories : %2
+Nombre de flux désactivés : %3</translation>
     </message>
   </context>
   <context>
@@ -392,62 +392,62 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="23"/>
       <source>Click me!</source>
-      <translation type="unfinished">Click me!</translation>
+      <translation>Cliquez ici !</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="67"/>
       <source>Select new color</source>
-      <translation type="unfinished">Select new color</translation>
+      <translation>Sélectionner une nouvelle couleur</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="85"/>
       <source>Enter URL</source>
-      <translation type="unfinished">Enter URL</translation>
+      <translation>Saisir l'URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="86"/>
       <source>Enter direct URL pointing to the image</source>
-      <translation type="unfinished">Enter direct URL pointing to the image</translation>
+      <translation>Entrez l'URL directe de l'image</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="109"/>
       <source>Icon not fetched</source>
-      <translation type="unfinished">Icon not fetched</translation>
+      <translation>Icône non obtenue</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="110"/>
       <source>Icon was not fetched due to network error.</source>
-      <translation type="unfinished">Icon was not fetched due to network error.</translation>
+      <translation>L'icône n'a pas été obtenue en raison d'une erreur réseau.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="125"/>
       <source>Select icon file</source>
-      <translation type="unfinished">Select icon file</translation>
+      <translation>Sélectionner un fichier d'icône</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="128"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Images (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="140"/>
       <source>Select new &amp;color...</source>
-      <translation type="unfinished">Select new &amp;color...</translation>
+      <translation>Sélectionner une nouvelle &amp;couleur...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="149"/>
       <source>Load icon from &amp;file...</source>
-      <translation type="unfinished">Load icon from &amp;file...</translation>
+      <translation>Charger l&apos;icône depuis un fichier...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="154"/>
       <source>Download icon from &amp;URL...</source>
-      <translation type="unfinished">Download icon from &amp;URL...</translation>
+      <translation>Télécharger l'icône à partir d'une l'URL...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="159"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Utiliser l’icône par défaut du thème d’icônes</translation>
     </message>
   </context>
   <context>
@@ -534,7 +534,7 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="908"/>
       <source>invalid URL cannot be used to load file from cache</source>
-      <translation type="unfinished">invalid URL cannot be used to load file from cache</translation>
+      <translation>URL invalide, ne peut pas être utilisée pour charger le fichier depuis le cache</translation>
     </message>
   </context>
   <context>
@@ -992,7 +992,7 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="426"/>
       <source>Folder </source>
-      <translation type="unfinished">Folder </translation>
+      <translation>Dossier </translation>
     </message>
   </context>
   <context>
@@ -1155,7 +1155,7 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="189"/>
       <source>Selected account does not support adding of new folders.</source>
-      <translation type="unfinished">Selected account does not support adding of new folders.</translation>
+      <translation>Le compte sélectionné ne supporte pas l&apos;ajout de nouveaux dossiers.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="471"/>
@@ -1720,25 +1720,25 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="77"/>
       <source>Add new folder</source>
-      <translation type="unfinished">Add new folder</translation>
+      <translation>Ajouter un nouveau dossier</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="105"/>
       <source>Edit %n folders</source>
-      <translation type="unfinished">
-        <numerusform>Edit %n folders</numerusform>
-        <numerusform>Edit %n folders</numerusform>
+      <translation>
+        <numerusform>Modifier %n dossier</numerusform>
+        <numerusform>Modifier %n dossiers</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="169"/>
       <source>Folder name is ok.</source>
-      <translation type="unfinished">Folder name is ok.</translation>
+      <translation>Le nom du dossier est correct.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="173"/>
       <source>Folder name is too short.</source>
-      <translation type="unfinished">Folder name is too short.</translation>
+      <translation>Le nom du dossier est trop court.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="179"/>
@@ -1753,17 +1753,17 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="191"/>
       <source>Folder title</source>
-      <translation type="unfinished">Folder title</translation>
+      <translation>Titre du dossier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="193"/>
       <source>Folder description</source>
-      <translation type="unfinished">Folder description</translation>
+      <translation>Description du dossier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
       <source>Set description for your folder.</source>
-      <translation type="unfinished">Set description for your folder.</translation>
+      <translation>Définir la description de votre dossier.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="192"/>
@@ -1779,13 +1779,13 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="179"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Dossier parent</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="181"/>
       <source>Select parent item for your folder.</source>
-      <translation type="unfinished">Select parent item for your folder.</translation>
+      <translation>Sélectionnez l'élément parent pour votre dossier.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="64"/>
@@ -1809,7 +1809,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="128"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="187"/>
       <source>Select icon for your folder.</source>
-      <translation type="unfinished">Select icon for your folder.</translation>
+      <translation>Sélectionner une icône pour votre dossier.</translation>
     </message>
   </context>
   <context>
@@ -1818,23 +1818,23 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formcopyarticledata.ui" line="30"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcopyarticledata.h" line="73"/>
       <source>Article data copy pattern</source>
-      <translation type="unfinished">Article data copy pattern</translation>
+      <translation>Modèle de copie des données de l'article</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formcopyarticledata.ui" line="40"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcopyarticledata.h" line="74"/>
       <source>Escape values for CSV usage</source>
-      <translation type="unfinished">Escape values for CSV usage</translation>
+      <translation>Échapper les valeurs pour utilisation CSV</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formcopyarticledata.cpp" line="15"/>
       <source>Copy article data</source>
-      <translation type="unfinished">Copy article data</translation>
+      <translation>Copier les données de l'article</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formcopyarticledata.cpp" line="29"/>
       <source>These placeholders are replaced by real article data of selected articles. Each article is placed on its own line.</source>
-      <translation type="unfinished">These placeholders are replaced by real article data of selected articles. Each article is placed on its own line.</translation>
+      <translation>Ces textes de substitution sont remplacés par les vraies données d'article des articles sélectionnés. Chaque article est placé sur sa propre ligne.</translation>
     </message>
   </context>
   <context>
@@ -1885,7 +1885,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="26"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="190"/>
       <source>Optimize and fix database file</source>
-      <translation type="unfinished">Optimize and fix database file</translation>
+      <translation>Optimiser et réparer le fichier de base de données</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="36"/>
@@ -1966,7 +1966,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
       <source>Target parent folder</source>
-      <translation type="unfinished">Target parent folder</translation>
+      <translation>Dossier parent cible</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
@@ -1996,7 +1996,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="41"/>
       <source>Switch to advanced &amp;mode</source>
-      <translation type="unfinished">Switch to advanced &amp;mode</translation>
+      <translation>Mode &amp;avancé</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="43"/>
@@ -2682,13 +2682,13 @@ de la fenêtre principale</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="303"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Add new folder</source>
-      <translation type="unfinished">Add new folder</translation>
+      <translation>Ajouter un nouveau dossier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="829"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>&amp;Copy data to clipboard</source>
-      <translation type="unfinished">&amp;Copy data to clipboard</translation>
+      <translation>&amp;Copier les données dans le presse-papiers</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
@@ -2718,7 +2718,7 @@ de la fenêtre principale</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
       <source>Rearrange &amp;subfolders alphabetically</source>
-      <translation type="unfinished">Rearrange &amp;subfolders alphabetically</translation>
+      <translation>Réorganiser les sous-catégories par ordre alphabétique</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
@@ -2802,7 +2802,7 @@ de la fenêtre principale</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
       <source>Hides or shows the list of feeds/folders.</source>
-      <translation type="unfinished">Hides or shows the list of feeds/folders.</translation>
+      <translation>Cacher ou montrer la liste des flux/catégories</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
@@ -3135,19 +3135,19 @@ nouveau flux</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="186"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="212"/>
       <source>Article filter files (*.json)</source>
-      <translation type="unfinished">Article filter files (*.json)</translation>
+      <translation>Fichiers de filtres d'articles (*.json)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="188"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="214"/>
       <source>Select file article filters export</source>
-      <translation type="unfinished">Select file article filters export</translation>
+      <translation>Sélectionnez le fichier export des filtres d'articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="207"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="234"/>
       <source>Cannot export filters, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot export filters, error: &apos;%1&apos;.</translation>
+      <translation>Impossible d'exporter les filtres, erreur : &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="636"/>
@@ -3210,25 +3210,25 @@ nouveau flux</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="78"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="478"/>
       <source>&amp;Import</source>
-      <translation type="unfinished">&amp;Import</translation>
+      <translation>&amp;Importer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="75"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="476"/>
       <source>Import filters</source>
-      <translation type="unfinished">Import filters</translation>
+      <translation>Importer des filtres</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="85"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="480"/>
       <source>Export filters</source>
-      <translation type="unfinished">Export filters</translation>
+      <translation>Exporter des filtres</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="88"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="482"/>
       <source>Export</source>
-      <translation type="unfinished">Export</translation>
+      <translation>Exporter</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="118"/>
@@ -3612,12 +3612,12 @@ Vous devez redémarrer manuellement.</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="77"/>
       <source>Source feeds &amp;&amp; folders</source>
-      <translation type="unfinished">Source feeds &amp;&amp; folders</translation>
+      <translation>Flux-source(s) &amp;&amp; dossier(s)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="88"/>
       <source>Target feeds &amp;&amp; folders</source>
-      <translation type="unfinished">Target feeds &amp;&amp; folders</translation>
+      <translation>Flux cible(s) &amp;&amp; dossier(s)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="138"/>
@@ -4453,7 +4453,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Dossier parent</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
@@ -5436,7 +5436,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
       <source>Custom data</source>
-      <translation type="unfinished">Custom data</translation>
+      <translation>Données personnalisées</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="590"/>
@@ -5521,7 +5521,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="597"/>
       <source>Custom account-specific data of the article.</source>
-      <translation type="unfinished">Custom account-specific data of the article.</translation>
+      <translation>Données spécifiques à un compte personnalisé de l'article.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="598"/>
@@ -6532,7 +6532,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="131"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Images (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="158"/>
@@ -6922,7 +6922,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="350"/>
       <source>Invalid Reddit response</source>
-      <translation type="unfinished">Invalid Reddit response</translation>
+      <translation>Réponse Reddit invalide</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="530"/>
@@ -7181,9 +7181,9 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of folders: %2
-Number of disabled feeds: %3</translation>
+      <translation>Nombre de flux : %1
+Nombre de catégories : %2
+Nombre de flux désactivés : %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="758"/>
@@ -7572,7 +7572,7 @@ Ceci peut accélerer de façon très significative l'appli si vous avez des cent
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="48"/>
       <source>Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-      <translation type="unfinished">Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</translation>
+      <translation>Entrez un format pour le compteur d'articles affiché à côté de chaque flux/catégorie dans la liste des flux. Utiliser &quot;%tous&quot; et &quot;%non-lus&quot;, qui sont des remplaçants pour le compteur actuel de tous les articles (ou ceux non-lus).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
@@ -8589,7 +8589,7 @@ Déscription: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="22"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Utiliser l’icône par défaut du thème d’icônes</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="33"/>
@@ -8608,7 +8608,7 @@ Si c'est le cas, alors vous devez définir des intervalles de temps lors de la r
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="57"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Images (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="72"/>
@@ -8629,12 +8629,12 @@ Si c'est le cas, alors vous devez définir des intervalles de temps lors de la r
     <message>
       <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="43"/>
       <source>Cannot save folder data</source>
-      <translation type="unfinished">Cannot save folder data</translation>
+      <translation>Impossible de sauvegarder les données du dossier</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="44"/>
       <source>Cannot save data for folder, detailed information was logged via debug log.</source>
-      <translation type="unfinished">Cannot save data for folder, detailed information was logged via debug log.</translation>
+      <translation>Impossible d&apos;enregistrer les données pour la catégorie, des infos détaillées ont été enregistrées via le log débug.</translation>
     </message>
   </context>
   <context>
@@ -8648,13 +8648,14 @@ Use raw XML saving: %4
 Fetch article comments: %5
 HTTP/2: %6
 Fetch full articles: %7 (plain text only: %8)</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
-HTTP/2: %6
-Fetch full articles: %7 (plain text only: %8)</translation>
+      <translation>Encodage : %1
+Type : %2
+Script de post-traitement : %3
+Utiliser la sauvegarde XML brute : %4
+Obtenir les commentaires d'article : %5
+HTTP/2 : %6
+Obtenir les articles complets : %7 (texte brut uniquement : %8)
+</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="88"/>
@@ -8937,7 +8938,7 @@ Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vo
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Dossier parent</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="251"/>
@@ -9068,17 +9069,17 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="653"/>
       <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
-      <translation type="unfinished">Some feeds/folders were not imported due to error, check debug log for more details.</translation>
+      <translation>Certains flux/categories n&apos;ont pas pu être importés à cause d&apos;une erreur, veuillez consulter le log débug pour plus de détails.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="676"/>
       <source>Cannot add folder</source>
-      <translation type="unfinished">Cannot add folder</translation>
+      <translation>Impossible d'ajouter le dossier</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
       <source>Cannot add folder because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot add folder because another critical operation is ongoing.</translation>
+      <translation>Impossible d&apos;ajouter le dossier car une autre opération critique est en cours.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="704"/>
@@ -9229,17 +9230,17 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.ui" line="35"/>
       <source>Fetch &amp;comments</source>
-      <translation type="unfinished">Fetch &amp;comments</translation>
+      <translation>Obtenir les %commentaires</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.cpp" line="84"/>
       <source>Fetching comments</source>
-      <translation type="unfinished">Fetching comments</translation>
+      <translation>Récupération des commentaires en cours..</translation>
     </message>
     <message>
       <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.cpp" line="94"/>
       <source>Fetching comments for &apos;%1&apos;...</source>
-      <translation type="unfinished">Fetching comments for &apos;%1&apos;...</translation>
+      <translation>Récupération des commentaires en cours pour &apos;%1&apos;...</translation>
     </message>
   </context>
   <context>
@@ -9377,7 +9378,7 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="43"/>
       <source>Unread news: %1</source>
-      <translation type="unfinished">Unread news: %1</translation>
+      <translation>Actualités non lues : %1</translation>
     </message>
   </context>
   <context>
@@ -9639,7 +9640,7 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>Dossier parent</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="30"/>
