@@ -45,6 +45,8 @@ set(SOURCES
   src/standardserviceroot.h
   src/quiterssimport.cpp
   src/quiterssimport.h
+  src/rssguard4import.cpp
+  src/rssguard4import.h
 )
 
 set(UI_FILES

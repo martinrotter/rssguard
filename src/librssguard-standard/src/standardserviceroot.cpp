@@ -85,15 +85,17 @@ void StandardServiceRoot::start(bool freshly_activated) {
     // In other words, if there are no feeds or categories added.
     MsgBox::
       show({},
-           QMessageBox::Icon::Question,
+           QMessageBox::Icon::Warning,
            tr("First steps"),
            tr("This new profile does not include any feeds. You have some options you can take now. What do you "
               "want to do?"),
 
-           tr("Import from QuiteRSS: All feeds, articles and labels are imported. Only latest database file "
+           tr("Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file "
               "version from newest available QuiteRSS is supported.\n\n"
-              "Import from RSS Guard: Only standard RSS/ATOM feeds, articles, labels and queries are imported. Article "
-              "filters are imported too. Only latest database file "
+              "Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are "
+              "imported. Article "
+              "filters are imported too. Article filters assignments are NOT migrated. Make sure to assign them again "
+              "after the migration. Only latest database file "
               "version from newest RSS Guard 4.x is supported.\n\n"
               "Load from OPML file: Standard OPML 2.0 file import.\n\n"
               "Load default feeds: Will load small set of various interesting feeds."),
@@ -116,8 +118,7 @@ void StandardServiceRoot::start(bool freshly_activated) {
             MsgBox::CustomBoxAction{tr("Load &default feeds"), [this]() {
                                       loadDefaultFeeds();
                                     }}});
-  }
-  else {
+
     requestItemExpand({this}, true);
   }
 }
