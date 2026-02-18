@@ -276,30 +276,31 @@ QList<StandardFeed*> RssGuard4Import::importTree(RootItem* root) const {
 RootItem* RssGuard4Import::extractFeedsAndCategories(const QSqlDatabase& db) const {
   RootItem* root = new RootItem();
   SqlQuery q(db);
+  /*
+    q.exec(QSL("SELECT"
+               "  id, "
+               "  parent_id, "
+               "  title, "
+               "  description, "
+               "  icon"
+               "FROM Categories "
+               "ORDER parent_id ASC;"));
 
-  q.exec(QSL("SELECT"
-             "  id, "
-             "  parent_id, "
-             "  title, "
-             "  description, "
-             "  icon"
-             "FROM Categories "
-             "ORDER parent_id ASC;"));
+    while (q.next()) {
+      int id = q.value(QSL("id")).toInt();
+      int pid = q.value(QSL("parent_id")).toInt();
+      QString title = q.value(QSL("title")).toString();
+      QString description = q.value(QSL("title")).toString();
+      QString image = q.value(QSL("image")).toString();
+      StandardCategory* cat = new StandardCategory(root);
 
-  while (q.next()) {
-    int id = q.value(QSL("id")).toInt();
-    int pid = q.value(QSL("parent_id")).toInt();
-    QString title = q.value(QSL("title")).toString();
-    QString description = q.value(QSL("title")).toString();
-    QString image = q.value(QSL("image")).toString();
-    StandardCategory* cat = new StandardCategory(root);
+      new_item = cat;
 
-    new_item = cat;
-
-    new_item->setProperty("quiterss_id", id);
-    new_item->setTitle(title);
-    new_item->setDescription(description);
-  }
+      new_item->setProperty("quiterss_id", id);
+      new_item->setTitle(title);
+      new_item->setDescription(description);
+    }
+    */
 
   return root;
 }

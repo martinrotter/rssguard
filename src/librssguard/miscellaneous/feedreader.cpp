@@ -100,6 +100,7 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds, bool update_switched_off
                                               .toList();
 
   if (my_feeds.isEmpty()) {
+    qApp->feedUpdateLock()->unlock();
     return;
   }
 
