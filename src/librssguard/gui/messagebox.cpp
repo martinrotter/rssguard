@@ -2,7 +2,6 @@
 
 #include "gui/messagebox.h"
 
-#include "definitions/globals.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -79,8 +78,7 @@ QMessageBox::StandardButton MsgBox::show(QWidget* parent,
                                          QMessageBox::StandardButtons buttons,
                                          QMessageBox::StandardButton default_button,
                                          const QString& dont_show_again_id,
-                                         const QString& functor_heading,
-                                         const std::function<void()>& functor) {
+                                         const QList<CustomBoxAction>& custom_actions) {
   if (MsgBox::isDontShowAgain(dont_show_again_id)) {
     return default_button;
   }
@@ -107,11 +105,11 @@ QMessageBox::StandardButton MsgBox::show(QWidget* parent,
     msg_box.setCheckBox(tr("Do not show again"), &dont_show_again);
   }
 
-  if (functor) {
-    connect(msg_box.addButton(functor_heading, QMessageBox::ButtonRole::HelpRole),
+  for (const CustomBoxAction& act : custom_actions) {
+    connect(msg_box.addButton(act.m_title, QMessageBox::ButtonRole::HelpRole),
             &QPushButton::clicked,
             &msg_box,
-            functor);
+            act.m_function);
   }
 
   auto dialog_res = msg_box.exec();

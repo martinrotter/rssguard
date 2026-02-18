@@ -743,8 +743,7 @@ void Application::showGuiMessageCore(Notification::Event event,
                  QMessageBox::StandardButton::Ok,
                  QMessageBox::StandardButton::Ok,
                  {},
-                 action.m_title,
-                 action.m_action);
+                 {MsgBox::CustomBoxAction{action.m_title, action.m_action}});
   }
   else if (dest.m_statusBar && mainForm()->statusBar() != nullptr && mainForm()->statusBar()->isVisible()) {
     mainForm()->statusBar()->showMessage(msg.m_message, 20000);

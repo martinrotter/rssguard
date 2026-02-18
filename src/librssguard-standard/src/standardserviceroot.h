@@ -65,8 +65,10 @@ class StandardServiceRoot : public ServiceRoot {
     void addNewCategory(RootItem* selected_item);
 
   private slots:
+    void loadDefaultFeeds();
     void importFeeds();
     void importFromQuiteRss();
+    void importFromRssGuard4();
     void exportFeeds();
 
   private:

@@ -83,42 +83,42 @@ void StandardServiceRoot::start(bool freshly_activated) {
 
   if (freshly_activated && getSubTreeFeeds().isEmpty()) {
     // In other words, if there are no feeds or categories added.
-    if (MsgBox::show({},
-                     QMessageBox::Question,
-                     QObject::tr("Load initial set of feeds"),
-                     tr("This new account does not include any feeds. You can now add default set of feeds."),
-                     tr("Do you want to load initial set of feeds?"),
-                     {},
-                     QMessageBox::Yes | QMessageBox::No) == QMessageBox::Yes) {
-      QString target_opml_file = APP_INITIAL_FEEDS_PATH + QDir::separator() + FEED_INITIAL_OPML_PATTERN;
-      QString current_locale = qApp->localization()->loadedLanguage();
-      QString file_to_load;
+    MsgBox::
+      show({},
+           QMessageBox::Icon::Question,
+           tr("First steps"),
+           tr("This new profile does not include any feeds. You have some options you can take now. What do you "
+              "want to do?"),
 
-      if (QFile::exists(target_opml_file.arg(current_locale))) {
-        file_to_load = target_opml_file.arg(current_locale);
-      }
-      else if (QFile::exists(target_opml_file.arg(QSL(DEFAULT_LOCALE)))) {
-        file_to_load = target_opml_file.arg(QSL(DEFAULT_LOCALE));
-      }
-
-      FeedsImportExportModel model(this);
-      QString output_msg;
-
-      try {
-        model.importAsOPML20(IOFactory::readFile(file_to_load), false, false, false);
-        model.checkAllItems();
-
-        if (mergeImportExportModel(&model, this, output_msg)) {
-          requestItemExpand(getSubTree<RootItem>(), true);
-        }
-      }
-      catch (ApplicationException& ex) {
-        MsgBox::show({}, QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
-      }
-    }
-    else {
-      requestItemExpand({this}, true);
-    }
+           tr("Import from QuiteRSS: All feeds, articles and labels are imported. Only latest database file "
+              "version from newest available QuiteRSS is supported.\n\n"
+              "Import from RSS Guard: Only standard RSS/ATOM feeds, articles, labels and queries are imported. Article "
+              "filters are imported too. Only latest database file "
+              "version from newest RSS Guard 4.x is supported.\n\n"
+              "Load from OPML file: Standard OPML 2.0 file import.\n\n"
+              "Load default feeds: Will load small set of various interesting feeds."),
+           {},
+           QMessageBox::StandardButton::Ignore,
+           QMessageBox::StandardButton::Ignore,
+           {},
+           {MsgBox::CustomBoxAction{tr("Import from &QuiteRSS"),
+                                    [this]() {
+                                      importFromQuiteRss();
+                                    }},
+            MsgBox::CustomBoxAction{tr("Import from &RSS Guard 4.x"),
+                                    [this]() {
+                                      importFromRssGuard4();
+                                    }},
+            MsgBox::CustomBoxAction{tr("Load from &OPML file"),
+                                    [this]() {
+                                      importFeeds();
+                                    }},
+            MsgBox::CustomBoxAction{tr("Load &default feeds"), [this]() {
+                                      loadDefaultFeeds();
+                                    }}});
+  }
+  else {
+    requestItemExpand({this}, true);
   }
 }
 
@@ -689,6 +689,34 @@ void StandardServiceRoot::addNewCategory(RootItem* selected_item) {
   qApp->feedUpdateLock()->unlock();
 }
 
+void StandardServiceRoot::loadDefaultFeeds() {
+  QString target_opml_file = APP_INITIAL_FEEDS_PATH + QDir::separator() + FEED_INITIAL_OPML_PATTERN;
+  QString current_locale = qApp->localization()->loadedLanguage();
+  QString file_to_load;
+
+  if (QFile::exists(target_opml_file.arg(current_locale))) {
+    file_to_load = target_opml_file.arg(current_locale);
+  }
+  else if (QFile::exists(target_opml_file.arg(QSL(DEFAULT_LOCALE)))) {
+    file_to_load = target_opml_file.arg(QSL(DEFAULT_LOCALE));
+  }
+
+  FeedsImportExportModel model(this);
+  QString output_msg;
+
+  try {
+    model.importAsOPML20(IOFactory::readFile(file_to_load), false, false, false);
+    model.checkAllItems();
+
+    if (mergeImportExportModel(&model, this, output_msg)) {
+      requestItemExpand(getSubTree<RootItem>(), true);
+    }
+  }
+  catch (ApplicationException& ex) {
+    MsgBox::show({}, QMessageBox::Critical, tr("Error when loading initial feeds"), ex.message());
+  }
+}
+
 void StandardServiceRoot::importFeeds() {
   QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainFormWidget()));
 
@@ -704,6 +732,8 @@ void StandardServiceRoot::importFromQuiteRss() {
     MsgBox::show({}, QMessageBox::Icon::Critical, tr("Error during file import"), ex.message());
   }
 }
+
+void StandardServiceRoot::importFromRssGuard4() {}
 
 void StandardServiceRoot::exportFeeds() {
   QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainFormWidget()));

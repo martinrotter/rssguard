@@ -12,6 +12,11 @@ class RSSGUARD_DLLSPEC MsgBox : public QMessageBox {
     Q_OBJECT
 
   public:
+    struct CustomBoxAction {
+        QString m_title;
+        std::function<void()> m_function;
+    };
+
     // Displays custom message box.
     static QMessageBox::StandardButton show(QWidget* parent,
                                             QMessageBox::Icon icon,
@@ -22,8 +27,7 @@ class RSSGUARD_DLLSPEC MsgBox : public QMessageBox {
                                             QMessageBox::StandardButtons buttons = QMessageBox::Ok,
                                             QMessageBox::StandardButton default_button = QMessageBox::Ok,
                                             const QString& dont_show_again_id = {},
-                                            const QString& functor_heading = {},
-                                            const std::function<void()>& functor = nullptr);
+                                            const QList<CustomBoxAction>& custom_actions = {});
     static QIcon iconForStatus(QMessageBox::Icon status);
 
   private:
