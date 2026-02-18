@@ -5,8 +5,8 @@
     <name>AccountCheckModel</name>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="195"/>
-      <source>(category)</source>
-      <translation>(カテゴリー)</translation>
+      <source>(folder)</source>
+      <translation>(フォルダ)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="198"/>
@@ -56,57 +56,57 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1093"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1134"/>
       <source>Application is already running.</source>
       <translation>アプリケーションは既に実行されています。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="511"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="552"/>
       <source>Output directory is not writable.</source>
       <translation>出力ディレクトリは書き込み可能ではありません。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="519"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>設定ファイルが出力ディレクトリに正常にコピーされませんでした。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="534"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="575"/>
       <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>データベースの復元が開始されませんでした。出力ディレクトリが書き込み可能であることを確認してください。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="541"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="582"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>データベースの復元が開始されませんでした。出力ディレクトリが書き込み可能であることを確認してください。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1111"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1152"/>
       <source>Cannot add feed</source>
       <translation>フィードを追加できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1112"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1153"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>フィードを追加できる有効なアカウントがないため、フィードを追加できません。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="974"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1015"/>
       <source>Unread articles fetched</source>
       <translation>未読の記事を取得しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="303"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="312"/>
       <source>Go to changelog</source>
       <translation>更新履歴に移動</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="297"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="306"/>
       <source>Welcome</source>
       <translation>ようこそ</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="298"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="307"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -116,7 +116,7 @@ version by clicking this popup notification.</source>
 このバージョンに含まれる新しいものは、ポップアップ通知をクリックして確認してください。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1092"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1133"/>
       <source>Already running</source>
       <translation>既に実行中です</translation>
     </message>
@@ -378,10 +378,10 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/services/abstract/category.cpp" line="59"/>
       <source>Number of feeds: %1
-Number of categories: %2
+Number of folders: %2
 Number of disabled feeds: %3</source>
       <translation>フィード数: %1
-カテゴリ数: %2
+フォルダ数: %2
 無効化されたフィード数: %3</translation>
     </message>
   </context>
@@ -771,24 +771,24 @@ Item custom ID: %5</source>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="393"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="430"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>いくつかのフィードの記事の自動ダウンロードを開始</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="394"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="431"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>%n 個のフィードの新しい記事を自動ダウンロードします</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="418"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="455"/>
       <source>Some feeds have errors</source>
       <translation>一部のフィードにエラーがあります</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="419"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="456"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation>一部のフィードで、記事の取得時にエラーが発生しました</translation>
     </message>
@@ -986,8 +986,8 @@ Item custom ID: %5</source>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="426"/>
-      <source>Category </source>
-      <translation>カテゴリー </translation>
+      <source>Folder </source>
+      <translation>フォルダ </translation>
     </message>
   </context>
   <context>
@@ -1148,6 +1148,11 @@ Item custom ID: %5</source>
       <translation>別の重要な操作が進行中のため、選択したアイテムを編集できません</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="189"/>
+      <source>Selected account does not support adding of new folders.</source>
+      <translation>選択したアカウントは新しいフォルダの追加をサポートしていません</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="471"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
       <translation>別の重要な操作が進行中のため、選択したアイテムを削除できません</translation>
@@ -1164,11 +1169,6 @@ Item custom ID: %5</source>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="171"/>
       <source>Selected account does not support adding of new feeds.</source>
       <translation>選択したアカウントは、新しいフィードの追加をサポートしていません</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="189"/>
-      <source>Selected account does not support adding of new categories.</source>
-      <translation>選択したアカウントは、新しいカテゴリの追加をサポートしていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="245"/>
@@ -1712,25 +1712,25 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <name>FormCategoryDetails</name>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="77"/>
-      <source>Add new category</source>
-      <translation>新しいカテゴリーを追加</translation>
+      <source>Add new folder</source>
+      <translation>新しいフォルダを追加</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="105"/>
-      <source>Edit %n categories</source>
+      <source>Edit %n folders</source>
       <translation>
-        <numerusform>%n 個のカテゴリーを編集</numerusform>
+        <numerusform>%n フォルダを編集</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="169"/>
-      <source>Category name is ok.</source>
-      <translation>カテゴリー名はOKです</translation>
+      <source>Folder name is ok.</source>
+      <translation>フォルダ名はOKです</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="173"/>
-      <source>Category name is too short.</source>
-      <translation>カテゴリ名が短すぎます。</translation>
+      <source>Folder name is too short.</source>
+      <translation>フォルダ名が短すぎます</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="179"/>
@@ -1744,23 +1744,23 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="191"/>
-      <source>Category title</source>
-      <translation>カテゴリータイトル</translation>
+      <source>Folder title</source>
+      <translation>フォルダタイトル</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="193"/>
+      <source>Folder description</source>
+      <translation>フォルダの説明</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
+      <source>Set description for your folder.</source>
+      <translation>フォルダの説明を設定します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="192"/>
       <source>Set title for your category.</source>
       <translation>カテゴリーのタイトルを設定してください</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="193"/>
-      <source>Category description</source>
-      <translation>カテゴリーの説明</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
-      <source>Set description for your category.</source>
-      <translation>カテゴリーの説明を設定してください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="100"/>
@@ -1770,14 +1770,14 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="179"/>
-      <source>Parent category</source>
-      <translation>親カテゴリー</translation>
+      <source>Parent folder</source>
+      <translation>親フォルダ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="181"/>
-      <source>Select parent item for your category.</source>
-      <translation>カテゴリーの親アイテムを選択してください。</translation>
+      <source>Select parent item for your folder.</source>
+      <translation>フォルダの親アイテムを選択します</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="64"/>
@@ -1800,8 +1800,8 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="128"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="187"/>
-      <source>Select icon for your category.</source>
-      <translation>カテゴリーのアイコンを選択してください</translation>
+      <source>Select icon for your folder.</source>
+      <translation>フォルダーのアイコンを選択します</translation>
     </message>
   </context>
   <context>
@@ -1956,8 +1956,8 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
-      <source>Target parent category</source>
-      <translation>対象となる親カテゴリー</translation>
+      <source>Target parent folder</source>
+      <translation>対象の親フォルダ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
@@ -2547,12 +2547,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>フィードリスト</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
-      <source>Hides or shows the list of feeds/categories.</source>
-      <translation>フィードリストの表示を切り替えます</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="479"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="748"/>
       <source>&amp;Clean all</source>
@@ -2667,6 +2661,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>レイアウトの切り替え</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="728"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="303"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
+      <source>Add new folder</source>
+      <translation>新しいフォルダを追加</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="829"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>&amp;Copy data to clipboard</source>
@@ -2695,6 +2696,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
       <source>Scroll &amp;down preview</source>
       <translation>プレビューを下へスクロール</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
+      <source>Rearrange &amp;subfolders alphabetically</source>
+      <translation>サブフォルダをアルファベット順に並べ替える</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
@@ -2775,6 +2782,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>Eメールで送信</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
+      <source>Hides or shows the list of feeds/folders.</source>
+      <translation>フィード/フォルダのリストを非表示または表示します</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
       <source>Send selected articles via e-mail</source>
@@ -2839,13 +2852,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>&amp;Delete selected account</source>
       <translation>選択したアカウントを削除</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="728"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="303"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
-      <source>Add new category</source>
-      <translation>新しいカテゴリーを追加</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="733"/>
@@ -2974,12 +2980,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>アプリケーションのログを表示</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
-      <source>Rearrange &amp;subcategories alphabetically</source>
-      <translation>サブカテゴリーをアルファベット順に並べ替える</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="892"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
       <source>Rearrange &amp;feeds alphabetically</source>
@@ -3088,241 +3088,269 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
   <context>
     <name>FormMessageFiltersManager</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="553"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="616"/>
       <source>Cannot find &apos;clang-format&apos;</source>
       <translation>&apos;clang-format&apos; が見つかりません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="554"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="617"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
       <translation>&apos;clang-format&apos; ツールが見つからなかったため、スクリプトは整形されませんでした</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="330"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="572"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="206"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="233"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="393"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="635"/>
       <source>Error</source>
       <translation>エラー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="573"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="186"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="212"/>
+      <source>Article filter files (*.json)</source>
+      <translation>記事フィルターファイル (*.json)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="188"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="214"/>
+      <source>Select file article filters export</source>
+      <translation>ファイル記事フィルターを選択してエクスポート</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="207"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="234"/>
+      <source>Cannot export filters, error: &apos;%1&apos;.</source>
+      <translation>フィルターをエクスポートできません。エラー: &apos;%1&apos;</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="636"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
       <translation>&apos;clang-format&apos; ツールがエラーをスローしたため、スクリプトは整形されませんでした</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="582"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="645"/>
       <source>Beautifier was running for too long time</source>
       <translation>整形の時間が長すぎました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="583"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="646"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation>スクリプトが整形されていませんが、 &apos;clang-format&apos; はインストールされていますか？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="331"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="394"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
       <translation>新しいフィルターを保存できません。 エラー: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="271"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="327"/>
       <source>Context menu</source>
       <translation>コンテキストメニュー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="273"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="329"/>
       <source>Filter articles like this</source>
       <translation>このような記事をフィルタリングする</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="318"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="382"/>
       <source>New article filter</source>
       <translation>新しい記事フィルター</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="289"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="345"/>
       <source>Are you sure?</source>
       <translation>よろしいですか?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="290"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="346"/>
       <source>Do you really want to remove selected filter?</source>
       <translation>選択したフィルターを本当に削除しますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="14"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="449"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="474"/>
       <source>Article filters</source>
       <translation>記事フィルター</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="63"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="73"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="96"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="451"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="455"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="459"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="108"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="484"/>
       <source>New filter</source>
       <translation>新しいフィルター</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="66"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="453"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="78"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="478"/>
       <source>&amp;Import</source>
       <translation>インポート</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="76"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="457"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="75"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="476"/>
+      <source>Import filters</source>
+      <translation>フィルターをインポート</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="85"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="480"/>
+      <source>Export filters</source>
+      <translation>フィルターをエクスポート</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="88"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="482"/>
       <source>Export</source>
       <translation>エクスポート</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="106"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="463"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="118"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="488"/>
       <source>Remove filter</source>
       <translation>フィルターを削除</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="109"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="465"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="490"/>
       <source>Remove</source>
       <translation>削除</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="116"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="467"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="128"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="492"/>
       <source>Enable filter</source>
       <translation>フィルターを有効にする</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="119"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="469"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="131"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="494"/>
       <source>Enable</source>
       <translation>有効</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="142"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="471"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="154"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="496"/>
       <source>Move filter up</source>
       <translation>フィルターを上に移動</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="145"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="473"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="157"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="498"/>
       <source>Up</source>
       <translation>上へ</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="152"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="475"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="164"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="500"/>
       <source>Move filter down</source>
       <translation>フィルターを下に移動</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="155"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="477"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="167"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="502"/>
       <source>Down</source>
       <translation>下へ</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="166"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="478"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="178"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="503"/>
       <source>&amp;Check all</source>
       <translation>すべてチェック</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="173"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="479"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="185"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="504"/>
       <source>&amp;Uncheck all</source>
       <translation>すべて解除</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="258"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="486"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="297"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="511"/>
       <source>&amp;Documentation</source>
       <translation>ドキュメント</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="333"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="490"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="402"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="515"/>
       <source>Details</source>
       <translation>詳細</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="403"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="489"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="484"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="514"/>
       <source>DB ID &amp; Custom ID</source>
       <translation>DB ID &amp; カスタムID</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="432"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="493"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="525"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="518"/>
       <source>Script output</source>
       <translation>スクリプト出力</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="99"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="461"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="111"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="486"/>
       <source>&amp;New filter</source>
       <translation>新しいフィルター</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="196"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="480"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="223"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="505"/>
       <source>Article filter details</source>
       <translation>記事フィルターの詳細</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="208"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="481"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="247"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="506"/>
       <source>Title of article filter</source>
       <translation>記事フィルターのタイトル</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="223"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="482"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="262"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="507"/>
       <source>Your JavaScript-based article filtering logic</source>
       <translation>JavaScriptベースの記事フィルタリングロジックです</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="237"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="483"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="276"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="508"/>
       <source>&amp;Test</source>
       <translation>テスト</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="244"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="484"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="283"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="509"/>
       <source>Process checked feeds</source>
       <translation>チェック済みフィードを処理</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="251"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="485"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="290"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="510"/>
       <source>&amp;Beautify</source>
       <translation>自動整形</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="292"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="492"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="349"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="517"/>
       <source>Existing articles</source>
       <translation>既存の記事</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="339"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="487"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="420"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="512"/>
       <source>URL</source>
       <translation>URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="363"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="488"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="444"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="513"/>
       <source>Author</source>
       <translation>投稿者</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="414"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="491"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="495"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="516"/>
       <source>Contents</source>
       <translation>内容</translation>
     </message>
@@ -3495,11 +3523,6 @@ You have to restart manually.</source>
       <translation>保存先ファイル</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="77"/>
-      <source>Source feeds &amp;&amp; categories</source>
-      <translation>ソースフィードとカテゴリー</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="79"/>
       <source>Export feeds</source>
       <translation>フィードをエクスポート</translation>
@@ -3508,11 +3531,6 @@ You have to restart manually.</source>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="87"/>
       <source>Source file</source>
       <translation>ソースファイル</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="88"/>
-      <source>Target feeds &amp;&amp; categories</source>
-      <translation>ターゲットフィードとカテゴリー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="95"/>
@@ -3564,6 +3582,16 @@ You have to restart manually.</source>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="37"/>
       <source>Here you can enter script executaion line, including interpreter.</source>
       <translation>ここでは、インタプリタを含むスクリプトの実行行を入力できます</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="77"/>
+      <source>Source feeds &amp;&amp; folders</source>
+      <translation>ソースフィード &amp; フォルダ</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="88"/>
+      <source>Target feeds &amp;&amp; folders</source>
+      <translation>対象フィード &amp; フォルダ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="138"/>
@@ -4397,8 +4425,8 @@ Login tokens expiration: %2</source>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
-      <source>Parent category</source>
-      <translation>親カテゴリー</translation>
+      <source>Parent folder</source>
+      <translation>親フォルダ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
@@ -6365,17 +6393,17 @@ List of supported readers:</source>
       <translation>右下</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="434"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="449"/>
       <source>escape sequence not completed</source>
       <translation>エスケープシーケンスが完了していません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="438"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="453"/>
       <source>closing &quot; is missing</source>
       <translation>&quot; がありません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="442"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="457"/>
       <source>closing &apos; is missing</source>
       <translation>&apos; がありません</translation>
     </message>
@@ -7111,10 +7139,10 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="388"/>
       <source>Number of feeds: %1
-Number of categories: %2
+Number of folders: %2
 Number of disabled feeds: %3</source>
       <translation>フィード数: %1
-カテゴリ数: %2
+フォルダ数: %2
 無効化されたフィード数: %3</translation>
     </message>
     <message>
@@ -7493,11 +7521,6 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>新しいフォントを選択</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="48"/>
-      <source>Enter format for count of articles displayed next to each feed/category in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-      <translation>フィードリストの各フィード/カテゴリーの横に表示される記事数のフォーマットを入力します。&quot;%all&quot; と &quot;%unread&quot; の文字列を使用します。これは、すべて (あるいは未読) の記事をカウントするプレースホルダです。</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="40"/>
       <source>If enabled then %1 loads articles into article list on demand as you scroll throught the list.
 
@@ -7505,6 +7528,11 @@ This can tremendously speed up the application if you have hundreds of thousands
       <translation>有効にすると、%1 はリストをスクロールするときに、必要に応じて記事を記事リストに読み込みます。
 
 数十万の記事がある場合、これによりアプリケーションの速度が大幅に向上しますが、すべての記事が読み込まれないため、記事リストのフィルタリングが妨げられ、フィルタリングが適切に行われない可能性があります。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="48"/>
+      <source>Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
+      <translation>フィードリスト内の各フィード/フォルダの隣に表示される記事数のフォーマットを入力します。 &quot;%all&quot; および &quot;%unread&quot; の文字列を使用します。これらは、すべての（または未読の）記事の実際の数を示すプレースホルダです。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
@@ -8475,7 +8503,7 @@ Description: %3</source>
   <context>
     <name>SqliteDriver</name>
     <message>
-      <location filename="../src/librssguard/database/sqlitedriver.cpp" line="279"/>
+      <location filename="../src/librssguard/database/sqlitedriver.cpp" line="281"/>
       <source>Database file not copied to output directory successfully.</source>
       <translation>データベースファイルが出力ディレクトリに正常にコピーされませんでした</translation>
     </message>
@@ -8557,14 +8585,14 @@ If that is the case, then you need to set some time gaps when fetching those fee
   <context>
     <name>StandardCategory</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="44"/>
-      <source>Cannot save data for category, detailed information was logged via debug log.</source>
-      <translation>カテゴリーのデータを保存できません。詳細情報はデバッグログに記録されました</translation>
+      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="43"/>
+      <source>Cannot save folder data</source>
+      <translation>フォルダデータを保存できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="43"/>
-      <source>Cannot save category data</source>
-      <translation>カテゴリーデータを保存できません</translation>
+      <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="44"/>
+      <source>Cannot save data for folder, detailed information was logged via debug log.</source>
+      <translation>フォルダのデータを保存できません。詳細情報はデバッグログに記録されました。</translation>
     </message>
   </context>
   <context>
@@ -8815,11 +8843,6 @@ Also, you can post-process generated feed data with yet another script if you wi
       <translation>Form</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
-      <source>Parent category</source>
-      <translation>親カテゴリー</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="37"/>
       <source>Select parent item for your feed.</source>
       <translation>フィードの親アイテムを選択します</translation>
@@ -8868,6 +8891,11 @@ Also, you can post-process generated feed data with yet another script if you wi
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="227"/>
       <source>Icon</source>
       <translation>アイコン</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
+      <source>Parent folder</source>
+      <translation>親フォルダ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="251"/>
@@ -8996,6 +9024,21 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation>メタデータを取得</translation>
     </message>
     <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="653"/>
+      <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
+      <translation>エラーのため一部のフィード/フォルダがインポートされませんでした。詳細についてはデバッグログを確認してください。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="676"/>
+      <source>Cannot add folder</source>
+      <translation>フォルダを追加できません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
+      <source>Cannot add folder because another critical operation is ongoing.</source>
+      <translation>別の重要な操作が進行中のため、フォルダを追加できません。</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="704"/>
       <source>Error during file import</source>
       <translation>ファイルのインポート中にエラーが発生しました</translation>
@@ -9050,24 +9093,9 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation>別の重要な作業が進行中のため、フィードを追加できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="676"/>
-      <source>Cannot add category</source>
-      <translation>カテゴリを追加できません</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
-      <source>Cannot add category because another critical operation is ongoing.</source>
-      <translation>別の重要な作業が進行中のため、カテゴリーを追加できません</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="656"/>
       <source>Import was completely successful.</source>
       <translation>インポートは完全に成功しました</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="653"/>
-      <source>Some feeds/categories were not imported due to error, check debug log for more details.</source>
-      <translation>一部のフィード/カテゴリーがエラーによりインポートされませんでした。詳細についてはデバッグログを確認してください</translation>
     </message>
   </context>
   <context>
@@ -9562,8 +9590,8 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
-      <source>Parent category</source>
-      <translation>親カテゴリー</translation>
+      <source>Parent folder</source>
+      <translation>親フォルダ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="30"/>
