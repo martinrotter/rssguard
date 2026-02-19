@@ -777,14 +777,18 @@ QList<QAction*> StandardServiceRoot::serviceMenu() {
     auto* action_import_feeds = new QAction(qApp->icons()->fromTheme(QSL("document-import")), tr("Import feeds"), this);
     auto* action_import_quiterss =
       new QAction(qApp->icons()->fromTheme(QSL("document-import")), tr("Import from QuiteRSS"), this);
+    auto* action_import_rssguard4 =
+      new QAction(qApp->icons()->fromTheme(QSL("document-import")), tr("Import from RSS Guard 4.x"), this);
 
     connect(action_export_feeds, &QAction::triggered, this, &StandardServiceRoot::exportFeeds);
     connect(action_import_feeds, &QAction::triggered, this, &StandardServiceRoot::importFeeds);
     connect(action_import_quiterss, &QAction::triggered, this, &StandardServiceRoot::importFromQuiteRss);
+    connect(action_import_rssguard4, &QAction::triggered, this, &StandardServiceRoot::importFromRssGuard4);
 
     m_serviceMenu.append(action_export_feeds);
     m_serviceMenu.append(action_import_feeds);
     m_serviceMenu.append(action_import_quiterss);
+    m_serviceMenu.append(action_import_rssguard4);
   }
 
   return m_serviceMenu;

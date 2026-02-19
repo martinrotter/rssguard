@@ -1169,7 +1169,7 @@ QList<RootItem*> TtRssGetLabelsResponse::labels() const {
   // This label solves situation 1). 2) is solved in other way (creating static system feed).
   QString published_caption = QSL("[SYSTEM] ") + QObject::tr("Published articles");
   auto* published_lbl =
-    new Label(published_caption, IconFactory::generateIcon(TextFactory::generateColorFromText(published_caption)));
+    new Label(published_caption, IconFactory::fromColor(TextFactory::generateColorFromText(published_caption)));
 
   published_lbl->setKeepOnTop(true);
   published_lbl->setCustomId(QString::number(TTRSS_PUBLISHED_LABEL_ID));
@@ -1178,7 +1178,7 @@ QList<RootItem*> TtRssGetLabelsResponse::labels() const {
   for (const QJsonValue& lbl_val : std::as_const(json_labels)) {
     QJsonObject lbl_obj = lbl_val.toObject();
     Label* lbl = new Label(lbl_obj[QSL("caption")].toString(),
-                           IconFactory::generateIcon(QColor(lbl_obj[QSL("fg_color")].toString())));
+                           IconFactory::fromColor(QColor(lbl_obj[QSL("fg_color")].toString())));
 
     lbl->setCustomId(QString::number(lbl_obj[QSL("id")].toInt()));
     labels.append(lbl);

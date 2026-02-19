@@ -38,7 +38,7 @@ QColor ColorIconToolButton::color() const {
 void ColorIconToolButton::setColor(const QColor& color, bool inform_about_changes) {
   m_color = color;
 
-  setIcon(IconFactory::generateIcon(color), inform_about_changes);
+  setIcon(IconFactory::fromColor(color), inform_about_changes);
 
   if (inform_about_changes) {
     emit colorChanged(m_color);
@@ -136,7 +136,7 @@ void ColorIconToolButton::askForIcon() {
 
 void ColorIconToolButton::updateMenu() {
   m_menu->clear();
-  m_menu->addAction(IconFactory::generateIcon(m_color),
+  m_menu->addAction(IconFactory::fromColor(m_color),
                     tr("Select new &color..."),
                     this,
                     &ColorIconToolButton::askForColor);

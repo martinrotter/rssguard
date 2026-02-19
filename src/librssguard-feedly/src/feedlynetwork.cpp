@@ -676,7 +676,7 @@ QList<RootItem*> FeedlyNetwork::tags() {
     }
 
     QString plain_name = tag_obj[QSL("label")].toString();
-    auto* new_lbl = new Label(plain_name, IconFactory::generateIcon(TextFactory::generateColorFromText(name_id)));
+    auto* new_lbl = new Label(plain_name, IconFactory::fromColor(TextFactory::generateColorFromText(name_id)));
 
     new_lbl->setCustomId(name_id);
     lbls.append(new_lbl);

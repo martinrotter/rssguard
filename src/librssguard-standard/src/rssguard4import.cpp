@@ -10,6 +10,7 @@
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/database/sqlquery.h>
 #include <librssguard/exceptions/sqlexception.h>
+#include <librssguard/filtering/messagefilter.h>
 #include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/gui/dialogs/formprogressworker.h>
 #include <librssguard/miscellaneous/application.h>
@@ -17,6 +18,7 @@
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/miscellaneous/thread.h>
 #include <librssguard/services/abstract/labelsnode.h>
+#include <librssguard/services/abstract/searchsnode.h>
 
 #include <QSqlError>
 #include <QStack>
@@ -44,9 +46,14 @@ void RssGuard4Import::import() {
 
   RootItem* feed_tree = extractFeedsAndCategories(rssguard4_db);
   QList<Label*> labels = extractLabels(rssguard4_db);
+  QList<MessageFilter*> filters = extractFilters(rssguard4_db);
+  QList<Search*> probes = extractProbes(rssguard4_db);
+
   QList<StandardFeed*> imported_feeds = importTree(feed_tree);
 
   importLabels(labels);
+  importFilters(filters);
+  importProbes(probes);
 
   QMap<QString, Label*> hashed_labels = hashLabels(labels);
   FormProgressWorker d(qApp->mainFormWidget());
@@ -65,6 +72,7 @@ void RssGuard4Import::import() {
   m_account->updateCounts();
   m_account->itemChanged(m_account->getSubTree<RootItem>());
 
+  qDeleteAll(filters);
   delete feed_tree;
 
   closeDbConnection(rssguard4_db);
@@ -157,21 +165,29 @@ void RssGuard4Import::importLabels(const QList<Label*>& labels) {
   m_account->requestItemExpand({m_account->labelsNode()}, true);
 }
 
-Message RssGuard4Import::convertArticle(const SqlQuery& rec) const {
-  /*
-   *            "0  Messages.is_read, "
-                "1  Messages.is_important, "
-                "2  Messages.is_deleted, "
-                "3  Messages.is_pdeleted, "
-                "4  Messages.title, "
-                "5  Messages.url, "
-                "6  Messages.author, "
-                "7  Messages.date_created, "
-                "8  Messages.contents, "
-                "9  Messages.enclosures, "
-                "10 Messages.score, "
-                "11 Messages.labels "*/
+void RssGuard4Import::importFilters(const QList<MessageFilter*>& filters) {
+  for (MessageFilter* lbl : filters) {
+    qApp->feedReader()->addMessageFilter(lbl->name(), lbl->script());
+  }
+}
 
+void RssGuard4Import::importProbes(const QList<Search*>& probes) {
+  if (probes.isEmpty()) {
+    return;
+  }
+
+  for (Search* prob : probes) {
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createProbe(db, prob, m_account->accountId());
+    });
+
+    m_account->requestItemReassignment(prob, m_account->probesNode());
+  }
+
+  m_account->requestItemExpand({m_account->probesNode()}, true);
+}
+
+Message RssGuard4Import::convertArticle(const SqlQuery& rec) const {
   Message msg;
 
   msg.m_createdFromFeed = true;
@@ -397,13 +413,54 @@ QList<Label*> RssGuard4Import::extractLabels(const QSqlDatabase& db) const {
     int account_id = q.value(3).toInt();
 
     if (!id.isEmpty() && !name.isEmpty()) {
-      Label* lbl = new Label(name, IconFactory::generateIcon(QColor(hex_color)), nullptr);
+      Label* lbl = new Label(name, IconFactory::fromColor(QColor(hex_color)), nullptr);
 
       lbl->setProperty("db_id", id);
       lbl->setProperty("account_id", account_id);
       lbl->setCustomId(id);
       lbls.append(lbl);
     }
+  }
+
+  return lbls;
+}
+
+QList<MessageFilter*> RssGuard4Import::extractFilters(const QSqlDatabase& db) const {
+  QList<MessageFilter*> lbls;
+  SqlQuery q(db);
+
+  q.exec(QSL("SELECT name, script "
+             "FROM MessageFilters;"));
+
+  while (q.next()) {
+    auto* fltr = new MessageFilter();
+    fltr->setEnabled(true);
+    fltr->setName(q.value(0).toString());
+    fltr->setScript(q.value(1).toString());
+
+    lbls.append(fltr);
+  }
+
+  return lbls;
+}
+
+QList<Search*> RssGuard4Import::extractProbes(const QSqlDatabase& db) const {
+  QList<Search*> lbls;
+  SqlQuery q(db);
+
+  q.exec(QSL("SELECT "
+             "  Probes.name, "
+             "  Probes.color, "
+             "  Probes.fltr "
+             "FROM Probes "
+             "JOIN Accounts ac ON ac.id = Probes.account_id AND ac.type = 'std-rss';"));
+
+  while (q.next()) {
+    QString name = q.value(0).toString();
+    QString hex_color = q.value(1).toString();
+    QString fltr = q.value(2).toString();
+
+    lbls.append(new Search(name, Search::Type::Regex, fltr, IconFactory::fromColor(hex_color)));
   }
 
   return lbls;

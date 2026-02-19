@@ -192,7 +192,7 @@ QList<RootItem*> GmailNetworkFactory::labels(bool only_user_labels, const QNetwo
 
     Label* lbl =
       new Label(lbl_obj[QSL("name")].toString(),
-                IconFactory::generateIcon(TextFactory::generateColorFromText(lbl_obj[QSL("name")].toString())));
+                IconFactory::fromColor(TextFactory::generateColorFromText(lbl_obj[QSL("name")].toString())));
 
     lbl->setCustomId(lbl_obj[QSL("id")].toString());
     lbls.append(lbl);

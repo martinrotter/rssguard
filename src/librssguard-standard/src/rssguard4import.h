@@ -9,6 +9,8 @@
 #include <QSqlDatabase>
 
 class RootItem;
+class Search;
+class MessageFilter;
 class StandardFeed;
 class StandardServiceRoot;
 
@@ -23,11 +25,15 @@ class RssGuard4Import : public QObject {
   private:
     void importArticles(StandardFeed* feed, const QMap<QString, Label*>& lbls);
     void importLabels(const QList<Label*>& labels);
+    void importFilters(const QList<MessageFilter*>& filters);
+    void importProbes(const QList<Search*>& probes);
     Message convertArticle(const SqlQuery& rec) const;
     QMap<QString, Label*> hashLabels(const QList<Label*>& labels) const;
     QList<StandardFeed*> importTree(RootItem* root) const;
     RootItem* extractFeedsAndCategories(const QSqlDatabase& db) const;
     QList<Label*> extractLabels(const QSqlDatabase& db) const;
+    QList<MessageFilter*> extractFilters(const QSqlDatabase& db) const;
+    QList<Search*> extractProbes(const QSqlDatabase& db) const;
     QIcon decodeBase64Icon(const QString& base64) const;
 
     void checkIfRssGuard4(const QSqlDatabase& db) const;

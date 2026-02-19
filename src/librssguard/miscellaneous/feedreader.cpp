@@ -171,12 +171,7 @@ void FeedReader::importMessageFilters(const QByteArray& data) {
 
   for (const QJsonValue& json_fltr_val : arr) {
     const QJsonObject& json_fltr = json_fltr_val.toObject();
-    const QString name = TextFactory::ensureUniqueName(json_fltr.value(QSL("name")).toString(),
-                                                       qlinq::from(messageFilters())
-                                                         .select([](const MessageFilter* fl) {
-                                                           return fl->name();
-                                                         })
-                                                         .toList());
+    const QString name = json_fltr.value(QSL("name")).toString();
     const QString script = json_fltr.value(QSL("script")).toString();
 
     addMessageFilter(name, script);
@@ -268,8 +263,16 @@ void FeedReader::loadSavedMessageFilters() {
 }
 
 MessageFilter* FeedReader::addMessageFilter(const QString& title, const QString& script) {
+  auto fltr_names = qlinq::from(m_messageFilters)
+                      .select([](const MessageFilter* fl) {
+                        return fl->name();
+                      })
+                      .toList();
+
+  auto unique_title = TextFactory::ensureUniqueName(title, fltr_names);
+
   auto* fltr = qApp->database()->worker()->write<MessageFilter*>([&](const QSqlDatabase& db) {
-    return DatabaseQueries::addMessageFilter(db, title, script);
+    return DatabaseQueries::addMessageFilter(db, unique_title, script);
   });
 
   m_messageFilters.append(fltr);

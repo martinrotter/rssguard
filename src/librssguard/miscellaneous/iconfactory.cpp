@@ -16,7 +16,7 @@ IconFactory::IconFactory(QObject* parent) : QObject(parent) {}
 
 IconFactory::~IconFactory() {}
 
-QIcon IconFactory::generateIcon(const QColor& color) {
+QIcon IconFactory::fromColor(const QColor& color) {
   QPixmap pxm(64, 64);
 
   pxm.fill(Qt::GlobalColor::transparent);

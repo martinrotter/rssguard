@@ -20,7 +20,7 @@ class RSSGUARD_DLLSPEC IconFactory : public QObject {
     virtual ~IconFactory();
 
     // Generates round icon of given color.
-    static QIcon generateIcon(const QColor& color);
+    static QIcon fromColor(const QColor& color);
 
     static QUuid iconGuid(const QIcon& icon);
 

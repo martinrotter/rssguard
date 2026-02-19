@@ -131,7 +131,7 @@ void SettingsLocalization::langMetadataDownloaded(const QUrl& url,
         QColor col_translated = QColor::fromHsv(perc_translated, 200, 230);
 
         it->setText(2, QSL("%1 %").arg(perc_translated > 0 ? QString::number(perc_translated) : QSL("?")));
-        it->setIcon(2, IconFactory::generateIcon(col_translated));
+        it->setIcon(2, IconFactory::fromColor(col_translated));
       }
     }
     else {
@@ -173,7 +173,7 @@ void SettingsLocalization::loadSettings() {
     item->setText(2, QSL("? %"));
 
     item->setIcon(0, qApp->icons()->miscIcon(QSL(FLAG_ICON_SUBFOLDER) + QDir::separator() + language.m_code));
-    item->setIcon(2, IconFactory::generateIcon(Qt::GlobalColor::blue));
+    item->setIcon(2, IconFactory::fromColor(Qt::GlobalColor::blue));
   }
 
   m_ui->m_treeLanguages->sortByColumn(0, Qt::SortOrder::AscendingOrder);

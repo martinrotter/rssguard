@@ -322,12 +322,14 @@ void RootItem::assembleCategories(const Assignment& categories) {
   // Add top-level categories.
   while (!editable_categories.isEmpty()) {
     for (int i = 0; i < editable_categories.size(); i++) {
-      if (assignments.contains(editable_categories.at(i).first)) {
+      auto cat = editable_categories.at(i);
+
+      if (assignments.contains(cat.first)) {
         // Parent category of this category is already added.
-        assignments.value(editable_categories.at(i).first)->appendChild(editable_categories.at(i).second);
+        assignments.value(cat.first)->appendChild(cat.second);
 
         // Now, added category can be parent for another categories, add it.
-        assignments.insert(editable_categories.at(i).second->id(), editable_categories.at(i).second);
+        assignments.insert(cat.second->id(), cat.second);
 
         // Remove the category from the list, because it was
         // added to the final collection.

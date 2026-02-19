@@ -606,7 +606,7 @@ QString FilterAccount::createLabel(const QString& label_title, const QString& he
   Label* new_lbl = nullptr;
 
   try {
-    auto icon_color = IconFactory::generateIcon(hex_color.isEmpty() ? TextFactory::generateRandomColor() : hex_color);
+    auto icon_color = IconFactory::fromColor(hex_color.isEmpty() ? TextFactory::generateRandomColor() : hex_color);
 
     new_lbl = new Label(label_title, icon_color);
 

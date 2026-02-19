@@ -756,7 +756,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
     }
     else if (label[QSL("type")] == QSL("tag")) {
       QString plain_name = QRegularExpression(".+\\/([^\\/]+)").match(label_id).captured(1);
-      auto* new_lbl = new Label(plain_name, IconFactory::generateIcon(TextFactory::generateColorFromText(label_id)));
+      auto* new_lbl = new Label(plain_name, IconFactory::fromColor(TextFactory::generateColorFromText(label_id)));
 
       new_lbl->setCustomId(label_id);
       lbls.append(new_lbl);
@@ -767,7 +767,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
       if (!cats.contains(label_id)) {
         // This stream is not a category, it is label, bitches!
         QString plain_name = QRegularExpression(QSL(".+\\/([^\\/]+)")).match(label_id).captured(1);
-        auto* new_lbl = new Label(plain_name, IconFactory::generateIcon(TextFactory::generateColorFromText(label_id)));
+        auto* new_lbl = new Label(plain_name, IconFactory::fromColor(TextFactory::generateColorFromText(label_id)));
 
         new_lbl->setCustomId(label_id);
         lbls.append(new_lbl);
