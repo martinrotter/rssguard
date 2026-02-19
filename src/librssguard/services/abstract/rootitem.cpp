@@ -295,6 +295,49 @@ RootItem* RootItem::getItemFromSubTree(std::function<bool(const RootItem*)> test
   return nullptr;
 }
 
+void RootItem::assembleFeeds(const Assignment& feeds) {
+  QHash<int, Category*> categories = getSubTreeCategoriesForAssemble();
+
+  for (const AssignmentItem& feed : feeds) {
+    if (feed.first == NO_PARENT_CATEGORY) {
+      // This is top-level feed, add it to the root item.
+      appendChild(feed.second);
+    }
+    else if (categories.contains(feed.first)) {
+      // This feed belongs to this category.
+      categories.value(feed.first)->appendChild(feed.second);
+    }
+    else {
+      qWarningNN << LOGSEC_CORE << "Feed" << QUOTE_W_SPACE(feed.second->title()) << "is loose, skipping it.";
+    }
+  }
+}
+
+void RootItem::assembleCategories(const Assignment& categories) {
+  Assignment editable_categories = categories;
+  QHash<int, RootItem*> assignments;
+
+  assignments.insert(NO_PARENT_CATEGORY, this);
+
+  // Add top-level categories.
+  while (!editable_categories.isEmpty()) {
+    for (int i = 0; i < editable_categories.size(); i++) {
+      if (assignments.contains(editable_categories.at(i).first)) {
+        // Parent category of this category is already added.
+        assignments.value(editable_categories.at(i).first)->appendChild(editable_categories.at(i).second);
+
+        // Now, added category can be parent for another categories, add it.
+        assignments.insert(editable_categories.at(i).second->id(), editable_categories.at(i).second);
+
+        // Remove the category from the list, because it was
+        // added to the final collection.
+        editable_categories.removeAt(i);
+        i--;
+      }
+    }
+  }
+}
+
 QHash<int, Category*> RootItem::getSubTreeCategoriesForAssemble() const {
   QHash<int, Category*> children;
   QList<RootItem*> traversable_items;

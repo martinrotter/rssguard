@@ -173,10 +173,12 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void deleteCategory(const QSqlDatabase& db, Category* category);
 
     template <typename T>
-    static Assignment getCategories(const QSqlDatabase& db, int account_id);
+    static RootItem::Assignment getCategories(const QSqlDatabase& db, int account_id);
 
     template <typename T>
-    static Assignment getFeeds(const QSqlDatabase& db, const QList<MessageFilter*>& global_filters, int account_id);
+    static RootItem::Assignment getFeeds(const QSqlDatabase& db,
+                                         const QList<MessageFilter*>& global_filters,
+                                         int account_id);
 
     // Item order methods.
     static void moveItem(RootItem* item, bool move_top, bool move_bottom, int move_index, const QSqlDatabase& db);
@@ -245,8 +247,8 @@ QList<ServiceRoot*> DatabaseQueries::getAccounts(const QSqlDatabase& db, const Q
 }
 
 template <typename T>
-Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id) {
-  Assignment categories;
+RootItem::Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id) {
+  RootItem::Assignment categories;
 
   // Obtain data for categories from the database.
   SqlQuery q(db);
@@ -257,7 +259,7 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
   q.exec();
 
   while (q.next()) {
-    AssignmentItem pair;
+    RootItem::AssignmentItem pair;
 
     pair.first = q.value(CAT_DB_PARENT_ID_INDEX).toInt();
     pair.second = new T();
@@ -284,10 +286,10 @@ Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int account_id
 }
 
 template <typename T>
-Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
-                                     const QList<MessageFilter*>& global_filters,
-                                     int account_id) {
-  Assignment feeds;
+RootItem::Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
+                                               const QList<MessageFilter*>& global_filters,
+                                               int account_id) {
+  RootItem::Assignment feeds;
 
   // All categories are now loaded.
   SqlQuery q(db);
@@ -299,7 +301,7 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
   q.exec();
 
   while (q.next()) {
-    AssignmentItem pair;
+    RootItem::AssignmentItem pair;
 
     pair.first = q.value(FDS_DB_CATEGORY_INDEX).toInt();
 
@@ -367,7 +369,7 @@ Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
 
 template <typename Categ, typename Fee>
 void DatabaseQueries::loadRootFromDatabase(ServiceRoot* root) {
-  Assignment categories, feeds;
+  RootItem::Assignment categories, feeds;
   QList<Label*> labels;
   QList<Search*> probes;
 

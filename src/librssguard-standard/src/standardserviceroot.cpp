@@ -14,6 +14,7 @@
 #include "src/parsers/rssparser.h"
 #include "src/parsers/sitemapparser.h"
 #include "src/quiterssimport.h"
+#include "src/rssguard4import.h"
 #include "src/standardcategory.h"
 #include "src/standardfeed.h"
 #include "src/standardfeedsimportexportmodel.h"
@@ -81,14 +82,13 @@ void StandardServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
 void StandardServiceRoot::start(bool freshly_activated) {
   DatabaseQueries::loadRootFromDatabase<StandardCategory, StandardFeed>(this);
 
-  if (freshly_activated && getSubTreeFeeds().isEmpty()) {
+  if (getSubTreeFeeds().isEmpty()) {
     // In other words, if there are no feeds or categories added.
     MsgBox::
       show({},
            QMessageBox::Icon::Warning,
            tr("First steps"),
-           tr("This new profile does not include any feeds. You have some options you can take now. What do you "
-              "want to do?"),
+           tr("This new profile does not include any feeds. What do you want to do?"),
 
            tr("Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file "
               "version from newest available QuiteRSS is supported.\n\n"
@@ -734,7 +734,14 @@ void StandardServiceRoot::importFromQuiteRss() {
   }
 }
 
-void StandardServiceRoot::importFromRssGuard4() {}
+void StandardServiceRoot::importFromRssGuard4() {
+  try {
+    RssGuard4Import(this, this).import();
+  }
+  catch (const ApplicationException& ex) {
+    MsgBox::show({}, QMessageBox::Icon::Critical, tr("Error during file import"), ex.message());
+  }
+}
 
 void StandardServiceRoot::exportFeeds() {
   QScopedPointer<FormStandardImportExport> form(new FormStandardImportExport(this, qApp->mainFormWidget()));

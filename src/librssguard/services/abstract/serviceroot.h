@@ -240,10 +240,6 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void cleanAllItemsFromModel(bool clean_labels_too);
     void appendCommonNodes();
 
-    // Takes lists of feeds/categories and assembles them into the tree structure.
-    void assembleCategories(const Assignment& categories);
-    void assembleFeeds(const Assignment& feeds);
-
   signals:
     void proxyChanged(QNetworkProxy proxy);
     void dataChanged(QList<RootItem*> items);

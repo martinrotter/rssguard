@@ -49,11 +49,10 @@ void RssGuard4Import::import() {
   importLabels(labels);
 
   QMap<QString, Label*> hashed_labels = hashLabels(labels);
-
   FormProgressWorker d(qApp->mainFormWidget());
 
   d.doWork<StandardFeed*>(
-    tr("Import data from QuiteRSS"),
+    tr("Import data from RSS Guard 4.x"),
     true,
     imported_feeds,
     [&](StandardFeed* fd) {
@@ -72,23 +71,37 @@ void RssGuard4Import::import() {
 }
 
 void RssGuard4Import::importArticles(StandardFeed* feed, const QMap<QString, Label*>& lbls) {
-  QSqlDatabase quiterss_db = dbConnection(m_dbFile, QSL("quiterss_%1").arg(getThreadID()));
+  QSqlDatabase rssguard4_db = dbConnection(m_dbFile, QSL("rssguard4_%1").arg(getThreadID()));
   QList<Message> msgs;
 
   // Load articles and migrate them to RSS Guard.
-  SqlQuery q(quiterss_db);
-  int quiterss_id = feed->property("quiterss_id").toInt();
+  SqlQuery q(rssguard4_db);
+  int db_id = feed->property("db_id").toInt();
+  int account_id = feed->property("account_id").toInt();
 
-  q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href, read, starred, label "
-                "FROM news "
-                "WHERE feedId = :feed_id;"));
-  q.bindValue(QSL(":feed_id"), quiterss_id);
+  q.prepare(QSL("SELECT "
+                "  Messages.is_read, "
+                "  Messages.is_important, "
+                "  Messages.is_deleted, "
+                "  Messages.is_pdeleted, "
+                "  Messages.title, "
+                "  Messages.url, "
+                "  Messages.author, "
+                "  Messages.date_created, "
+                "  Messages.contents, "
+                "  Messages.enclosures, "
+                "  Messages.score, "
+                "  Messages.labels "
+                "FROM Messages "
+                "WHERE Messages.account_id = :account_id AND Messages.feed = :feed_id;"));
+  q.bindValue(QSL(":account_id"), account_id);
+  q.bindValue(QSL(":feed_id"), QString::number(db_id));
   q.exec();
 
   while (q.next()) {
     try {
       auto msg = convertArticle(q);
-      QStringList label_ids = q.value(8).toString().split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts);
+      QStringList label_ids = q.value(11).toString().split(QL1C('.'), SPLIT_BEHAVIOR::SkipEmptyParts);
 
       for (const QString& label_id : std::as_const(label_ids)) {
         auto* target_lbl = lbls.value(label_id);
@@ -127,6 +140,8 @@ void RssGuard4Import::importLabels(const QList<Label*>& labels) {
   }
 
   for (Label* lbl : labels) {
+    // lbl->setId(NO_PARENT_CATEGORY);
+
     try {
       qApp->database()->worker()->write([&](const QSqlDatabase& db) {
         DatabaseQueries::createLabel(db, lbl, m_account->accountId());
@@ -143,23 +158,34 @@ void RssGuard4Import::importLabels(const QList<Label*>& labels) {
 }
 
 Message RssGuard4Import::convertArticle(const SqlQuery& rec) const {
+  /*
+   *            "0  Messages.is_read, "
+                "1  Messages.is_important, "
+                "2  Messages.is_deleted, "
+                "3  Messages.is_pdeleted, "
+                "4  Messages.title, "
+                "5  Messages.url, "
+                "6  Messages.author, "
+                "7  Messages.date_created, "
+                "8  Messages.contents, "
+                "9  Messages.enclosures, "
+                "10 Messages.score, "
+                "11 Messages.labels "*/
+
   Message msg;
-  QString dt_format = QSL("yyyy-MM-ddTHH:mm:ss");
 
-  msg.m_created = QDateTime::currentDateTime();
-  msg.m_customId = rec.value(QSL("guid")).toString();
-  msg.m_author = rec.value(QSL("author_name")).toString();
-  msg.m_url = rec.value(QSL("link_href")).toString();
-  msg.m_title = rec.value(QSL("title")).toString();
-  msg.m_contents = rec.value(QSL("description")).toString();
-  msg.m_isImportant = rec.value(QSL("starred")).toBool();
-  msg.m_isRead = rec.value(QSL("read")).toBool();
-  msg.m_created = TextFactory::parseDateTime(rec.value(QSL("published")).toString(), &dt_format);
-  msg.m_createdFromFeed = !msg.m_created.isNull();
-
-  if (!msg.m_createdFromFeed) {
-    msg.m_created = QDateTime::currentDateTimeUtc();
-  }
+  msg.m_createdFromFeed = true;
+  msg.m_created = TextFactory::parseDateTime(rec.value(7).value<qint64>());
+  msg.m_author = rec.value(6).toString();
+  msg.m_url = rec.value(5).toString();
+  msg.m_title = rec.value(4).toString();
+  msg.m_contents = rec.value(8).toString();
+  msg.m_isImportant = rec.value(1).toBool();
+  msg.m_isRead = rec.value(0).toBool();
+  msg.m_isDeleted = rec.value(2).toBool();
+  msg.m_isPdeleted = rec.value(3).toBool();
+  msg.m_enclosures = Enclosures::decodeEnclosuresFromString(rec.value(9).toString());
+  msg.m_score = rec.value(10).toDouble();
 
   if (msg.m_title.trimmed().isEmpty()) {
     if (msg.m_url.trimmed().isEmpty()) {
@@ -199,6 +225,8 @@ QList<StandardFeed*> RssGuard4Import::importTree(RootItem* root) const {
     auto sour_chi = source_parent->childItems();
 
     for (RootItem* source_item : std::as_const(sour_chi)) {
+      source_item->setId(NO_PARENT_CATEGORY);
+
       if (source_item->kind() == RootItem::Kind::Category) {
         auto* source_category = qobject_cast<StandardCategory*>(source_item);
         auto* new_category = new StandardCategory(*source_category);
@@ -252,8 +280,9 @@ QList<StandardFeed*> RssGuard4Import::importTree(RootItem* root) const {
 
         auto* new_feed = new StandardFeed(*source_feed);
 
-        // NOTE: Copy QuiteRSS DB ID.
-        new_feed->setProperty("quiterss_id", source_feed->property("quiterss_id"));
+        // NOTE: Copy IDs.
+        new_feed->setProperty("db_id", source_feed->property("db_id"));
+        new_feed->setProperty("account_id", source_feed->property("account_id"));
 
         try {
           qApp->database()->worker()->write([&](const QSqlDatabase& db) {
@@ -276,31 +305,79 @@ QList<StandardFeed*> RssGuard4Import::importTree(RootItem* root) const {
 RootItem* RssGuard4Import::extractFeedsAndCategories(const QSqlDatabase& db) const {
   RootItem* root = new RootItem();
   SqlQuery q(db);
-  /*
-    q.exec(QSL("SELECT"
-               "  id, "
-               "  parent_id, "
-               "  title, "
-               "  description, "
-               "  icon"
-               "FROM Categories "
-               "ORDER parent_id ASC;"));
+  RootItem::Assignment cats, fds;
 
-    while (q.next()) {
-      int id = q.value(QSL("id")).toInt();
-      int pid = q.value(QSL("parent_id")).toInt();
-      QString title = q.value(QSL("title")).toString();
-      QString description = q.value(QSL("title")).toString();
-      QString image = q.value(QSL("image")).toString();
-      StandardCategory* cat = new StandardCategory(root);
+  // Categories.
+  q.exec(QSL("SELECT"
+             "  Categories.account_id, "
+             "  Categories.id, "
+             "  Categories.parent_id, "
+             "  Categories.title, "
+             "  Categories.description, "
+             "  Categories.icon "
+             "FROM Categories "
+             "JOIN Accounts ac ON ac.id = Categories.account_id AND ac.type = 'std-rss' "
+             "ORDER BY parent_id ASC;"));
 
-      new_item = cat;
+  while (q.next()) {
+    int account_id = q.value(QSL("account_id")).toInt();
+    int id = q.value(QSL("id")).toInt();
+    int pid = q.value(QSL("parent_id")).toInt();
+    QString title = q.value(QSL("title")).toString();
+    QString description = q.value(QSL("title")).toString();
+    QByteArray image = q.value(QSL("icon")).toByteArray();
+    StandardCategory* cat = new StandardCategory();
 
-      new_item->setProperty("quiterss_id", id);
-      new_item->setTitle(title);
-      new_item->setDescription(description);
-    }
-    */
+    cat->setId(id);
+    cat->setProperty("db_id", id);
+    cat->setProperty("account_id", account_id);
+    cat->setTitle(title);
+    cat->setDescription(description);
+    cat->setIcon(IconFactory::fromByteArray(image));
+
+    cats.append({pid, cat});
+  }
+
+  root->assembleCategories(cats);
+
+  // Feeds.
+  q.exec(QSL("SELECT"
+             "  Feeds.account_id, "
+             "  Feeds.id, "
+             "  Feeds.category, "
+             "  Feeds.custom_data, "
+             "  Feeds.title, "
+             "  Feeds.description, "
+             "  Feeds.icon, "
+             "  Feeds.source "
+             "FROM Feeds "
+             "JOIN Accounts ac ON ac.id = Feeds.account_id AND ac.type = 'std-rss' "
+             "ORDER BY Feeds.ordr ASC;"));
+
+  while (q.next()) {
+    int account_id = q.value(QSL("account_id")).toInt();
+    int id = q.value(QSL("id")).toInt();
+    int pid = q.value(QSL("category")).toInt();
+    QString title = q.value(QSL("title")).toString();
+    QString source = q.value(QSL("source")).toString();
+    QString description = q.value(QSL("title")).toString();
+    QByteArray image = q.value(QSL("icon")).toByteArray();
+    QString custom_data = q.value(QSL("custom_data")).toString();
+    StandardFeed* fd = new StandardFeed();
+
+    fd->setId(id);
+    fd->setProperty("db_id", id);
+    fd->setProperty("account_id", account_id);
+    fd->setTitle(title);
+    fd->setDescription(description);
+    fd->setSource(source);
+    fd->setIcon(IconFactory::fromByteArray(image));
+    fd->setCustomDatabaseData(DatabaseQueries::deserializeCustomData(custom_data));
+
+    fds.append({pid, fd});
+  }
+
+  root->assembleFeeds(fds);
 
   return root;
 }
@@ -309,15 +386,21 @@ QList<Label*> RssGuard4Import::extractLabels(const QSqlDatabase& db) const {
   QList<Label*> lbls;
   SqlQuery q(db);
 
-  q.exec(QSL("SELECT id, name FROM labels;"));
+  q.exec(QSL("SELECT Labels.id, Labels.name, Labels.color, Labels.account_id "
+             "FROM Labels "
+             "JOIN Accounts ac ON ac.id = Labels.account_id AND ac.type = 'std-rss';"));
 
   while (q.next()) {
     QString id = q.value(0).toString();
     QString name = q.value(1).toString();
+    QString hex_color = q.value(2).toString();
+    int account_id = q.value(3).toInt();
 
     if (!id.isEmpty() && !name.isEmpty()) {
-      Label* lbl = new Label(name, IconFactory::generateIcon(TextFactory::generateColorFromText(name)), nullptr);
+      Label* lbl = new Label(name, IconFactory::generateIcon(QColor(hex_color)), nullptr);
 
+      lbl->setProperty("db_id", id);
+      lbl->setProperty("account_id", account_id);
       lbl->setCustomId(id);
       lbls.append(lbl);
     }
@@ -347,20 +430,11 @@ void RssGuard4Import::checkIfRssGuard4(const QSqlDatabase& db) const {
 
   q.exec(QSL("SELECT name FROM sqlite_master WHERE type='table';"));
 
-  QStringList tables = QStringList{QSL("feeds"),
-                                   QSL("news"),
-                                   QSL("feeds_ex"),
-                                   QSL("news_ex"),
-                                   QSL("filters"),
-                                   QSL("filterconditions"),
-                                   QSL("filteractions"),
-                                   QSL("filters_ex"),
-                                   QSL("labels"),
-                                   QSL("passwords"),
-                                   QSL("info")};
+  QStringList tables =
+    QStringList{QSL("Categories"), QSL("Feeds"), QSL("Labels"), QSL("MessageFilters"), QSL("Messages"), QSL("Probes")};
 
   while (q.next()) {
-    tables.removeOne(q.value(0).toString().toLower());
+    tables.removeOne(q.value(0).toString());
   }
 
   if (!tables.isEmpty()) {

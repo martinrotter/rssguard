@@ -206,9 +206,9 @@ void MessagePreviewer::markMessageAsReadUnread(RootItem::ReadStatus read) {
 
 void MessagePreviewer::switchMessageImportance(bool checked) {
   if (!m_root.isNull()) {
-    auto ch =
-      ImportanceChange(m_message,
-                       m_message.m_isImportant ? RootItem::Importance::NotImportant : RootItem::Importance::Important);
+    auto ch = RootItem::ImportanceChange(m_message,
+                                         m_message.m_isImportant ? RootItem::Importance::NotImportant
+                                                                 : RootItem::Importance::Important);
 
     m_message.m_isImportant = checked;
 

@@ -39,7 +39,7 @@ void FilteringSystem::pushMessageStatesToServices(QList<Message>& read_msgs,
     // Now we push new read states to the service.
     auto chngs = qlinq::from(important_msgs)
                    .select([](const Message& msg) {
-                     return ImportanceChange(msg, RootItem::Importance::Important);
+                     return RootItem::ImportanceChange(msg, RootItem::Importance::Important);
                    })
                    .toList();
 

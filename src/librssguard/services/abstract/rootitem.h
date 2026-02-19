@@ -57,6 +57,11 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
       Probe = 1024
     };
 
+    // First item here represents ID (int, primary key) of the parent item.
+    using Assignment = QList<QPair<int, RootItem*>>;
+    using AssignmentItem = QPair<int, RootItem*>;
+    using ImportanceChange = QPair<Message, RootItem::Importance>;
+
     // Constructors and destructors.
     explicit RootItem(RootItem* parent_item = nullptr);
     explicit RootItem(const RootItem& other);
@@ -157,6 +162,10 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     QList<Feed*> getSubTreeFeeds(bool recursive = true) const;
     QList<Feed*> getSubTreeAutoFetchingWithManualIntervalsFeeds() const;
     QList<Feed*> getSubAutoFetchingEnabledFeeds() const;
+
+    // Takes lists of feeds/categories and assembles them into the tree structure.
+    void assembleCategories(const Assignment& categories);
+    void assembleFeeds(const Assignment& feeds);
 
     // Returns the service root node which is direct or indirect parent of current item.
     ServiceRoot* account() const;
