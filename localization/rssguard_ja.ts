@@ -6943,17 +6943,17 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="31"/>
       <source>Select RSS Guard 4.x database file</source>
-      <translation type="unfinished">Select RSS Guard 4.x database file</translation>
+      <translation>RSS Guard 4.x データベース ファイルを選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="34"/>
       <source>RSS Guard 4.x DB files (%1)</source>
-      <translation type="unfinished">RSS Guard 4.x DB files (%1)</translation>
+      <translation>RSS Guard 4.x DB ファイル (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="62"/>
       <source>Import data from RSS Guard 4.x</source>
-      <translation type="unfinished">Import data from RSS Guard 4.x</translation>
+      <translation>RSS Guard 4.x からデータをインポート</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="69"/>
@@ -6968,12 +6968,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="498"/>
       <source>missing RSS Guard 4.x tables %1</source>
-      <translation type="unfinished">missing RSS Guard 4.x tables %1</translation>
+      <translation>RSS Guard 4.x テーブル %1 が見つかりません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="504"/>
       <source>metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</source>
-      <translation type="unfinished">metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</translation>
+      <translation>メタデータバージョン10が想定されていましたが、お使いのDBファイルは古いRSS Guard 4.xから取得されました</translation>
     </message>
   </context>
   <context>
@@ -9054,12 +9054,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
       <source>First steps</source>
-      <translation type="unfinished">First steps</translation>
+      <translation>最初のステップ</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="91"/>
       <source>This new profile does not include any feeds. What do you want to do?</source>
-      <translation type="unfinished">This new profile does not include any feeds. What do you want to do?</translation>
+      <translation>この新しいプロファイルにはフィードが含まれていません。どうしますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="93"/>
@@ -9070,33 +9070,33 @@ Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only
 Load from OPML file: Standard OPML 2.0 file import.
 
 Load default feeds: Will load small set of various interesting feeds.</source>
-      <translation type="unfinished">Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
+      <translation>RSS Guard 4.xからのインポート: 標準のRSS/ATOMフィード、フォルダ、記事、ラベル、クエリのみがインポートされます。記事フィルターもインポートされますが、古い構文でインポートされます。移行後にフィルターを再確認し、修正する必要があります。記事フィルターの割り当ては移行されませんので、移行後に必ず再度割り当ててください。サポートされるのは、最新のRSS Guard 4.xの最新バージョンのデータベースファイルのみです。
 
-Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
+QuiteRSSからのインポート：すべてのフィード、フォルダ、記事、ラベルがインポートされます。サポートされるのは、最新のQuiteRSSの最新バージョンのデータベースファイルのみです。
 
-Load from OPML file: Standard OPML 2.0 file import.
+OPMLファイルからの読み込み：標準のOPML 2.0ファイルをインポートします。
 
-Load default feeds: Will load small set of various interesting feeds.</translation>
+デフォルトフィードの読み込み：様々な興味深いフィードの小さなセットを読み込みます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="106"/>
       <source>Import from &amp;RSS Guard 4.x</source>
-      <translation type="unfinished">Import from &amp;RSS Guard 4.x</translation>
+      <translation>RSS Guard 4.x からインポート</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="110"/>
       <source>Import from &amp;QuiteRSS</source>
-      <translation type="unfinished">Import from &amp;QuiteRSS</translation>
+      <translation>QuiteRSSからインポート</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="114"/>
       <source>Load from &amp;OPML file</source>
-      <translation type="unfinished">Load from &amp;OPML file</translation>
+      <translation>OPMLファイルから読み込む</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="118"/>
       <source>Load &amp;default feeds</source>
-      <translation type="unfinished">Load &amp;default feeds</translation>
+      <translation>デフォルトフィードを読み込む</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="654"/>
@@ -9151,7 +9151,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="781"/>
       <source>Import from RSS Guard 4.x</source>
-      <translation type="unfinished">Import from RSS Guard 4.x</translation>
+      <translation>RSS Guard 4.x からインポート</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="51"/>
