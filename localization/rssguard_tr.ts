@@ -56,7 +56,7 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1134"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1133"/>
       <source>Application is already running.</source>
       <translation>Uygulama zaten çalışıyor.</translation>
     </message>
@@ -81,17 +81,17 @@
       <translation>Ayarların geri yüklemesi yapılamadı. Çıkış dizininin yazılabilir olduğundan emin olun.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1152"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1151"/>
       <source>Cannot add feed</source>
       <translation>Akış eklenemedi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1153"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1152"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Akış eklenemedi çünkü ekleyebilecek aktif bir hesap bulunmuyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1015"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1014"/>
       <source>Unread articles fetched</source>
       <translation>Okunmamış yazılar bulundu</translation>
     </message>
@@ -116,7 +116,7 @@ version by clicking this popup notification.</source>
 Lütfen bu bildirim penceresine tıklayarak bu versiyondaki yenilikleri inceleyin.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1133"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1132"/>
       <source>Already running</source>
       <translation>Zaten çalışıyor</translation>
     </message>
@@ -774,12 +774,12 @@ Item custom ID: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="430"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="434"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Bazı beslemelerin makalelerinin otomatik indirilmeye&apos; başlanıyor.</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="431"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="435"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>%n akış için yeni makaleler otomatik olarak indirilecek.</numerusform>
@@ -787,12 +787,12 @@ Item custom ID: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="455"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="459"/>
       <source>Some feeds have errors</source>
       <translation type="unfinished">Some feeds have errors</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="456"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="460"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
     </message>
@@ -3098,20 +3098,20 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
   <context>
     <name>FormMessageFiltersManager</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="616"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="610"/>
       <source>Cannot find &apos;clang-format&apos;</source>
       <translation>&apos;clang-format&apos; bulunamadı.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="617"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="611"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
       <translation>Betik biçimlendirilmedi, çünkü &apos;clang-format&apos; aracı bulunamadı.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="206"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="233"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="393"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="635"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="387"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="629"/>
       <source>Error</source>
       <translation>Hata</translation>
     </message>
@@ -3134,22 +3134,22 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <translation type="unfinished">Cannot export filters, error: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="636"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="630"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
       <translation>Betik biçimlendirilmedi, çünkü &apos;clang-format&apos; aracı hata verdi.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="645"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="639"/>
       <source>Beautifier was running for too long time</source>
       <translation>Biçimlendirici çok uzun süre çalıştı.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="646"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="640"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation>Betik biçimlendirilmedi, &apos;clang-format&apos; yüklü mü?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="394"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="388"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
       <translation>Yeni filtre kaydedilemiyor, hata: &apos;%1&apos;</translation>
     </message>
@@ -3164,7 +3164,7 @@ Kaynak kodunu %5 internet sitesi üzeriden edinebilirsiniz.&lt;br&gt;&lt;br&gt;&
       <translation>Bunun gibi yazıları filtrele</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="382"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="376"/>
       <source>New article filter</source>
       <translation>Yeni yazı filtresi</translation>
     </message>
@@ -5787,7 +5787,7 @@ Giriş jetonları geçerlilik sonu: %2</translation>
   <context>
     <name>MsgBox</name>
     <message>
-      <location filename="../src/librssguard/gui/messagebox.cpp" line="107"/>
+      <location filename="../src/librssguard/gui/messagebox.cpp" line="105"/>
       <source>Do not show again</source>
       <translation type="unfinished">Do not show again</translation>
     </message>
@@ -6207,11 +6207,6 @@ Giriş jetonları geçerlilik sonu: %2</translation>
         <numerusform>+ %n diğer akış.</numerusform>
         <numerusform>+ %n diğer akış.</numerusform>
       </translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="88"/>
-      <source>Load initial set of feeds</source>
-      <translation>İlk akış setini yükle</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceentrypoint.cpp" line="24"/>
@@ -6955,6 +6950,44 @@ Giriş jetonları geçerlilik sonu: %2</translation>
         <numerusform>%n okunmamış yazı.</numerusform>
         <numerusform>%n okunmamış yazılar</numerusform>
       </translation>
+    </message>
+  </context>
+  <context>
+    <name>RssGuard4Import</name>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="31"/>
+      <source>Select RSS Guard 4.x database file</source>
+      <translation type="unfinished">Select RSS Guard 4.x database file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="34"/>
+      <source>RSS Guard 4.x DB files (%1)</source>
+      <translation type="unfinished">RSS Guard 4.x DB files (%1)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="62"/>
+      <source>Import data from RSS Guard 4.x</source>
+      <translation type="unfinished">Import data from RSS Guard 4.x</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="69"/>
+      <source>Imported articles from %1 feeds...</source>
+      <translation type="unfinished">Imported articles from %1 feeds...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="208"/>
+      <source>skipping article, it has no title and no URL</source>
+      <translation type="unfinished">skipping article, it has no title and no URL</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="498"/>
+      <source>missing RSS Guard 4.x tables %1</source>
+      <translation type="unfinished">missing RSS Guard 4.x tables %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="504"/>
+      <source>metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</source>
+      <translation type="unfinished">metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</translation>
     </message>
   </context>
   <context>
@@ -8984,12 +9017,12 @@ Bu ayar, beslemenin ham XML ayrıştırılması çok yavaş olduğunda kullanı�
       <translation>Ağ vekili</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="73"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="82"/>
       <source>HTTP headers</source>
       <translation type="unfinished">HTTP headers</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="91"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="100"/>
       <source>Authentication</source>
       <translation>Kimlik doğrulama</translation>
     </message>
@@ -9025,42 +9058,85 @@ Bu ayar, beslemenin ham XML ayrıştırılması çok yavaş olduğunda kullanı�
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
-      <source>Do you want to load initial set of feeds?</source>
-      <translation>İlk akış setini yüklemek istiyor musunuz?</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="116"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="717"/>
       <source>Error when loading initial feeds</source>
       <translation>İlk akışlar yüklenirken hata oluştu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="502"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="503"/>
       <source>Fetch metadata</source>
       <translation>Üst verileri çek</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="653"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
+      <source>First steps</source>
+      <translation type="unfinished">First steps</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="91"/>
+      <source>This new profile does not include any feeds. What do you want to do?</source>
+      <translation type="unfinished">This new profile does not include any feeds. What do you want to do?</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="93"/>
+      <source>Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
+
+Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
+
+Load from OPML file: Standard OPML 2.0 file import.
+
+Load default feeds: Will load small set of various interesting feeds.</source>
+      <translation type="unfinished">Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
+
+Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
+
+Load from OPML file: Standard OPML 2.0 file import.
+
+Load default feeds: Will load small set of various interesting feeds.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="106"/>
+      <source>Import from &amp;RSS Guard 4.x</source>
+      <translation type="unfinished">Import from &amp;RSS Guard 4.x</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="110"/>
+      <source>Import from &amp;QuiteRSS</source>
+      <translation type="unfinished">Import from &amp;QuiteRSS</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="114"/>
+      <source>Load from &amp;OPML file</source>
+      <translation type="unfinished">Load from &amp;OPML file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="118"/>
+      <source>Load &amp;default feeds</source>
+      <translation type="unfinished">Load &amp;default feeds</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="654"/>
       <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
       <translation type="unfinished">Some feeds/folders were not imported due to error, check debug log for more details.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="676"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
       <source>Cannot add folder</source>
       <translation type="unfinished">Cannot add folder</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="678"/>
       <source>Cannot add folder because another critical operation is ongoing.</source>
       <translation type="unfinished">Cannot add folder because another critical operation is ongoing.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="704"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="733"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="742"/>
       <source>Error during file import</source>
       <translation>Dosya içeri aktarımı sırasında hata</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="719"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="757"/>
       <source>Fetching metadata for %n feeds</source>
       <translation type="unfinished">
         <numerusform>Fetching metadata for %n feeds</numerusform>
@@ -9068,7 +9144,7 @@ Bu ayar, beslemenin ham XML ayrıştırılması çok yavaş olduğunda kullanı�
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="728"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="766"/>
       <source>Fetched %n feeds...</source>
       <translation type="unfinished">
         <numerusform>Fetched %n feeds...</numerusform>
@@ -9076,42 +9152,42 @@ Bu ayar, beslemenin ham XML ayrıştırılması çok yavaş olduğunda kullanı�
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="738"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="776"/>
       <source>Export feeds</source>
       <translation>Beslemeleri dışa aktar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="739"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="777"/>
       <source>Import feeds</source>
       <translation>Beslemeleri içe aktar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="741"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="779"/>
       <source>Import from QuiteRSS</source>
       <translation>QuiteRSS'ten içeri aktar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="89"/>
-      <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-      <translation>Bu yeni hesap herhangi bir besleme içermez. Artık varsayılan besleme kümesi ekleyebilirsiniz.</translation>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="781"/>
+      <source>Import from RSS Guard 4.x</source>
+      <translation type="unfinished">Import from RSS Guard 4.x</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="50"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="51"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
       <translation>Bu, standart RSS/RDF/ATOM beslemeleri için gerekli hizmet hesabıdır.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="195"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="196"/>
       <source>Cannot add item</source>
       <translation>Öğe eklenemiyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="196"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="197"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Başka bir kritik işlem devam ettiği için akış eklenemiyor.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="656"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="657"/>
       <source>Import was completely successful.</source>
       <translation>İçe aktarma işlemi tamamen başarılı oldu.</translation>
     </message>
