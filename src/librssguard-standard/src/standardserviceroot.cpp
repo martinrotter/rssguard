@@ -90,26 +90,26 @@ void StandardServiceRoot::start(bool freshly_activated) {
            tr("First steps"),
            tr("This new profile does not include any feeds. What do you want to do?"),
 
-           tr("Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file "
-              "version from newest available QuiteRSS is supported.\n\n"
-              "Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are "
-              "imported. Article "
-              "filters are imported too. Article filters assignments are NOT migrated. Make sure to assign them again "
-              "after the migration. Only latest database file "
+           tr("Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are "
+              "imported. Article filters are imported too but with old syntax. You have to double check and fix them "
+              "after the migration. Article filters assignments are NOT migrated. Make sure to "
+              "assign them again after the migration. Only latest database file "
               "version from newest RSS Guard 4.x is supported.\n\n"
+              "Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file "
+              "version from newest available QuiteRSS is supported.\n\n"
               "Load from OPML file: Standard OPML 2.0 file import.\n\n"
               "Load default feeds: Will load small set of various interesting feeds."),
            {},
            QMessageBox::StandardButton::Ignore,
            QMessageBox::StandardButton::Ignore,
            {},
-           {MsgBox::CustomBoxAction{tr("Import from &QuiteRSS"),
-                                    [this]() {
-                                      importFromQuiteRss();
-                                    }},
-            MsgBox::CustomBoxAction{tr("Import from &RSS Guard 4.x"),
+           {MsgBox::CustomBoxAction{tr("Import from &RSS Guard 4.x"),
                                     [this]() {
                                       importFromRssGuard4();
+                                    }},
+            MsgBox::CustomBoxAction{tr("Import from &QuiteRSS"),
+                                    [this]() {
+                                      importFromQuiteRss();
                                     }},
             MsgBox::CustomBoxAction{tr("Load from &OPML file"),
                                     [this]() {
