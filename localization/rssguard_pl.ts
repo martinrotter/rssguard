@@ -538,7 +538,7 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="908"/>
       <source>invalid URL cannot be used to load file from cache</source>
-      <translation type="unfinished">invalid URL cannot be used to load file from cache</translation>
+      <translation>niepoprawny adres URL nie może być użyty do załadowania pliku z pamięci podręcznej</translation>
     </message>
   </context>
   <context>
@@ -1582,7 +1582,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.ui" line="29"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formaddeditprobe.h" line="113"/>
       <source>SQL WHERE clause</source>
-      <translation type="unfinished">SQL WHERE clause</translation>
+      <translation>Klauzula SQL WHERE</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="27"/>
