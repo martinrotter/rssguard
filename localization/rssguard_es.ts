@@ -56,7 +56,7 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1134"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1133"/>
       <source>Application is already running.</source>
       <translation>La aplicación ya está en ejecución.</translation>
     </message>
@@ -81,17 +81,17 @@
       <translation>Fue imposible iniciar la restauración de la configuración. Verifique que la carpeta de salida tiene permisos de escritura.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1152"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1151"/>
       <source>Cannot add feed</source>
       <translation>Imposible añadir la fuente</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1153"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1152"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Imposible agregar la fuente porque se carece de una cuenta activa que pueda agregar fuentes.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1015"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1014"/>
       <source>Unread articles fetched</source>
       <translation>Artículos sin leer obtenidos</translation>
     </message>
@@ -117,7 +117,7 @@ Por favor, consulte las NUEVAS funciones incluidas en esta
 versión pulsando en esta notificación emergente.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1133"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1132"/>
       <source>Already running</source>
       <translation>Ya está ejecutándose</translation>
     </message>
@@ -775,12 +775,12 @@ Item custom ID: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="430"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="434"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Inicio de la descarga automática de artículos de algunas fuentes</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="431"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="435"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>Se descargarán automáticamente nuevos artículos para %n fuente(s).</numerusform>
@@ -788,12 +788,12 @@ Item custom ID: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="455"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="459"/>
       <source>Some feeds have errors</source>
       <translation type="unfinished">Some feeds have errors</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="456"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="460"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
     </message>
@@ -3098,20 +3098,20 @@ Carpeta base de temas de iconos -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormMessageFiltersManager</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="616"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="610"/>
       <source>Cannot find &apos;clang-format&apos;</source>
       <translation>Imposible encontrar &apos;clang-format&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="617"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="611"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
       <translation>Se omitió embellecer la secuencia de comandos porque fue imposible la herramienta &apos;clang-format&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="206"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="233"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="393"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="635"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="387"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="629"/>
       <source>Error</source>
       <translation>Error</translation>
     </message>
@@ -3134,22 +3134,22 @@ Carpeta base de temas de iconos -&gt; &quot;%6&quot;</translation>
       <translation type="unfinished">Cannot export filters, error: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="636"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="630"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
       <translation>Se omitió embellecer la secuencia de comandos, debido a que la herramienta &apos;clang-format&apos; arrojó error.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="645"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="639"/>
       <source>Beautifier was running for too long time</source>
       <translation>El embellecedor estuvo funcionando durante demasiado tiempo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="646"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="640"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation>Se omitió embellecer la secuencia de comandos, ¿está instalado &apos;clang-format&apos;?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="394"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="388"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
       <translation>Imposible guardar nuevo filtro, error: &apos;%1&apos;.</translation>
     </message>
@@ -3164,7 +3164,7 @@ Carpeta base de temas de iconos -&gt; &quot;%6&quot;</translation>
       <translation>Filtrar artículos como éste</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="382"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="376"/>
       <source>New article filter</source>
       <translation>Nuevo filtro de artículo</translation>
     </message>
@@ -5791,7 +5791,7 @@ Expiración de identificadores de acceso: %2</translation>
   <context>
     <name>MsgBox</name>
     <message>
-      <location filename="../src/librssguard/gui/messagebox.cpp" line="107"/>
+      <location filename="../src/librssguard/gui/messagebox.cpp" line="105"/>
       <source>Do not show again</source>
       <translation type="unfinished">Do not show again</translation>
     </message>
@@ -6215,11 +6215,6 @@ Expiración de identificadores de acceso: %2</translation>
 
 + %n fuentes restantes.</numerusform>
       </translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="88"/>
-      <source>Load initial set of feeds</source>
-      <translation>Cargar conjunto inicial de fuentes</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceentrypoint.cpp" line="24"/>
@@ -6963,6 +6958,44 @@ Expiración de identificadores de acceso: %2</translation>
         <numerusform>%n artículo(s) sin leer.</numerusform>
         <numerusform>%n articulo(s) sin leer</numerusform>
       </translation>
+    </message>
+  </context>
+  <context>
+    <name>RssGuard4Import</name>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="31"/>
+      <source>Select RSS Guard 4.x database file</source>
+      <translation type="unfinished">Select RSS Guard 4.x database file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="34"/>
+      <source>RSS Guard 4.x DB files (%1)</source>
+      <translation type="unfinished">RSS Guard 4.x DB files (%1)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="62"/>
+      <source>Import data from RSS Guard 4.x</source>
+      <translation type="unfinished">Import data from RSS Guard 4.x</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="69"/>
+      <source>Imported articles from %1 feeds...</source>
+      <translation type="unfinished">Imported articles from %1 feeds...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="208"/>
+      <source>skipping article, it has no title and no URL</source>
+      <translation type="unfinished">skipping article, it has no title and no URL</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="498"/>
+      <source>missing RSS Guard 4.x tables %1</source>
+      <translation type="unfinished">missing RSS Guard 4.x tables %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="504"/>
+      <source>metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</source>
+      <translation type="unfinished">metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</translation>
     </message>
   </context>
   <context>
@@ -8994,12 +9027,12 @@ Este ajuste es útil cuando el proesamiento XML en bruto de la fuente es lento, 
       <translation>Proxy de la red</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="73"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="82"/>
       <source>HTTP headers</source>
       <translation type="unfinished">HTTP headers</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="91"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="100"/>
       <source>Authentication</source>
       <translation>Autenticación</translation>
     </message>
@@ -9035,42 +9068,85 @@ Este ajuste es útil cuando el proesamiento XML en bruto de la fuente es lento, 
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
-      <source>Do you want to load initial set of feeds?</source>
-      <translation>¿Quiere cargar el conjunto inicial de fuentes?</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="116"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="717"/>
       <source>Error when loading initial feeds</source>
       <translation>Se presentó un error al cargar las fuentes iniciales</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="502"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="503"/>
       <source>Fetch metadata</source>
       <translation>Obtener metadatos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="653"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
+      <source>First steps</source>
+      <translation type="unfinished">First steps</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="91"/>
+      <source>This new profile does not include any feeds. What do you want to do?</source>
+      <translation type="unfinished">This new profile does not include any feeds. What do you want to do?</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="93"/>
+      <source>Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
+
+Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
+
+Load from OPML file: Standard OPML 2.0 file import.
+
+Load default feeds: Will load small set of various interesting feeds.</source>
+      <translation type="unfinished">Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
+
+Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
+
+Load from OPML file: Standard OPML 2.0 file import.
+
+Load default feeds: Will load small set of various interesting feeds.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="106"/>
+      <source>Import from &amp;RSS Guard 4.x</source>
+      <translation type="unfinished">Import from &amp;RSS Guard 4.x</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="110"/>
+      <source>Import from &amp;QuiteRSS</source>
+      <translation type="unfinished">Import from &amp;QuiteRSS</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="114"/>
+      <source>Load from &amp;OPML file</source>
+      <translation type="unfinished">Load from &amp;OPML file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="118"/>
+      <source>Load &amp;default feeds</source>
+      <translation type="unfinished">Load &amp;default feeds</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="654"/>
       <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
       <translation type="unfinished">Some feeds/folders were not imported due to error, check debug log for more details.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="676"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
       <source>Cannot add folder</source>
       <translation type="unfinished">Cannot add folder</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="678"/>
       <source>Cannot add folder because another critical operation is ongoing.</source>
       <translation type="unfinished">Cannot add folder because another critical operation is ongoing.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="704"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="733"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="742"/>
       <source>Error during file import</source>
       <translation type="unfinished">Error during file import</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="719"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="757"/>
       <source>Fetching metadata for %n feeds</source>
       <translation type="unfinished">
         <numerusform>Fetching metadata for %n feeds</numerusform>
@@ -9078,7 +9154,7 @@ Este ajuste es útil cuando el proesamiento XML en bruto de la fuente es lento, 
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="728"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="766"/>
       <source>Fetched %n feeds...</source>
       <translation type="unfinished">
         <numerusform>Fetched %n feeds...</numerusform>
@@ -9086,42 +9162,42 @@ Este ajuste es útil cuando el proesamiento XML en bruto de la fuente es lento, 
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="738"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="776"/>
       <source>Export feeds</source>
       <translation>Exportar fuentes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="739"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="777"/>
       <source>Import feeds</source>
       <translation>Importar fuentes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="741"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="779"/>
       <source>Import from QuiteRSS</source>
       <translation type="unfinished">Import from QuiteRSS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="89"/>
-      <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-      <translation>Esta nueva cuenta carece de fuentes. Puede añadirle ahora el conjunto predeterminado de fuentes.</translation>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="781"/>
+      <source>Import from RSS Guard 4.x</source>
+      <translation type="unfinished">Import from RSS Guard 4.x</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="50"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="51"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
       <translation>Esta es la cuenta de servicio obligatoria para las fuentes RSS/RDF/ATOM estándar.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="195"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="196"/>
       <source>Cannot add item</source>
       <translation>Imposible añadir elementos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="196"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="197"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>Imposible posible añadir la fuente debido a que otra operación crítica está en ejecución.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="656"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="657"/>
       <source>Import was completely successful.</source>
       <translation>La importación fue totalmente satisfactoria.</translation>
     </message>

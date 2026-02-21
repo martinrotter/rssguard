@@ -6,7 +6,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="195"/>
       <source>(folder)</source>
-      <translation type="unfinished">(folder)</translation>
+      <translation>(文件夹)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="198"/>
@@ -56,7 +56,7 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1134"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1133"/>
       <source>Application is already running.</source>
       <translation>应用程序已经在运行。</translation>
     </message>
@@ -81,17 +81,17 @@
       <translation>未启动设置恢复。请确保输出目录可写。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1152"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1151"/>
       <source>Cannot add feed</source>
       <translation>无法添加订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1153"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1152"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>由于没有活跃的账户可以添加订阅源，因此无法添加订阅源。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1015"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1014"/>
       <source>Unread articles fetched</source>
       <translation>已获取未读文章</translation>
     </message>
@@ -116,7 +116,7 @@ version by clicking this popup notification.</source>
 请点击此弹出通知，查看此版本所包含的新功能。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1133"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1132"/>
       <source>Already running</source>
       <translation>已在运行</translation>
     </message>
@@ -379,9 +379,9 @@ version by clicking this popup notification.</source>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of folders: %2
-Number of disabled feeds: %3</translation>
+      <translation>订阅源数： %1
+文件夹数： %2
+停用的订阅源数： %3</translation>
     </message>
   </context>
   <context>
@@ -770,24 +770,24 @@ Item custom ID: %5</source>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="430"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="434"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>开始自动下载某些订阅源的文章</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="431"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="435"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>我将为 %n 个订阅源自动下载新文章。</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="455"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="459"/>
       <source>Some feeds have errors</source>
       <translation>部分订阅源存在错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="456"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="460"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation>部分订阅源在获取文章时发生错误。</translation>
     </message>
@@ -986,7 +986,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="426"/>
       <source>Folder </source>
-      <translation type="unfinished">Folder </translation>
+      <translation>文件夹 </translation>
     </message>
   </context>
   <context>
@@ -1149,7 +1149,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="189"/>
       <source>Selected account does not support adding of new folders.</source>
-      <translation type="unfinished">Selected account does not support adding of new folders.</translation>
+      <translation>所选账户不支持添加新文件夹。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="471"/>
@@ -1712,24 +1712,24 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="77"/>
       <source>Add new folder</source>
-      <translation type="unfinished">Add new folder</translation>
+      <translation>添加新文件夹</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="105"/>
       <source>Edit %n folders</source>
-      <translation type="unfinished">
-        <numerusform>Edit %n folders</numerusform>
+      <translation>
+        <numerusform>编辑 %n 个文件夹</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="169"/>
       <source>Folder name is ok.</source>
-      <translation type="unfinished">Folder name is ok.</translation>
+      <translation>文件夹名称没问题。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="173"/>
       <source>Folder name is too short.</source>
-      <translation type="unfinished">Folder name is too short.</translation>
+      <translation>文件夹名称太短。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="179"/>
@@ -1744,17 +1744,17 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="191"/>
       <source>Folder title</source>
-      <translation type="unfinished">Folder title</translation>
+      <translation>文件夹标题</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="193"/>
       <source>Folder description</source>
-      <translation type="unfinished">Folder description</translation>
+      <translation>文件夹描述</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="194"/>
       <source>Set description for your folder.</source>
-      <translation type="unfinished">Set description for your folder.</translation>
+      <translation>设置文件夹描述。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="192"/>
@@ -1770,13 +1770,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="179"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>主文件夹</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="181"/>
       <source>Select parent item for your folder.</source>
-      <translation type="unfinished">Select parent item for your folder.</translation>
+      <translation>选择文件夹主项目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="64"/>
@@ -1800,7 +1800,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="128"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="187"/>
       <source>Select icon for your folder.</source>
-      <translation type="unfinished">Select icon for your folder.</translation>
+      <translation>选择文件夹图标。</translation>
     </message>
   </context>
   <context>
@@ -1956,12 +1956,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
       <source>Target parent folder</source>
-      <translation type="unfinished">Target parent folder</translation>
+      <translation>目标主文件夹</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
       <source>Select parent item for your feed.</source>
-      <translation>为 Feed 选择上级项目。</translation>
+      <translation>为 Feed 选择主项目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="128"/>
@@ -2664,7 +2664,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="303"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Add new folder</source>
-      <translation type="unfinished">Add new folder</translation>
+      <translation>添加新文件夹</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="829"/>
@@ -2700,7 +2700,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
       <source>Rearrange &amp;subfolders alphabetically</source>
-      <translation type="unfinished">Rearrange &amp;subfolders alphabetically</translation>
+      <translation>按字母顺序重新排列子文件夹 (&amp;S)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
@@ -2784,7 +2784,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
       <source>Hides or shows the list of feeds/folders.</source>
-      <translation type="unfinished">Hides or shows the list of feeds/folders.</translation>
+      <translation>隐藏或显示源/文件夹列表。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
@@ -3087,20 +3087,20 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
   <context>
     <name>FormMessageFiltersManager</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="616"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="610"/>
       <source>Cannot find &apos;clang-format&apos;</source>
       <translation>找不到 &apos;clang-format&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="617"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="611"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
       <translation>脚本未被美化，因为找不到 &apos;clang-format&apos; 工具。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="206"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="233"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="393"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="635"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="387"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="629"/>
       <source>Error</source>
       <translation>错误</translation>
     </message>
@@ -3108,37 +3108,37 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="186"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="212"/>
       <source>Article filter files (*.json)</source>
-      <translation type="unfinished">Article filter files (*.json)</translation>
+      <translation>文章过滤器文件(*.json)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="188"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="214"/>
       <source>Select file article filters export</source>
-      <translation type="unfinished">Select file article filters export</translation>
+      <translation>选择文章过滤器导出文件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="207"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="234"/>
       <source>Cannot export filters, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot export filters, error: &apos;%1&apos;.</translation>
+      <translation>无法导出过滤器，错误： &apos;%1&apos;。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="636"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="630"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
       <translation>脚本未被美化，因为 &apos;clang-format&apos; 工具抛出了错误。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="645"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="639"/>
       <source>Beautifier was running for too long time</source>
       <translation>美化时间过长</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="646"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="640"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation>脚本未被美化，是否安装了&apos;clang-format&apos;？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="394"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="388"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
       <translation>不能保存新的过滤器，错误：&apos;%1&apos;。</translation>
     </message>
@@ -3153,7 +3153,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>筛选这样的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="382"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="376"/>
       <source>New article filter</source>
       <translation>新的文章过滤器</translation>
     </message>
@@ -3189,13 +3189,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="75"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="476"/>
       <source>Import filters</source>
-      <translation type="unfinished">Import filters</translation>
+      <translation>导入过滤器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="85"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="480"/>
       <source>Export filters</source>
-      <translation type="unfinished">Export filters</translation>
+      <translation>导出过滤器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="88"/>
@@ -3586,12 +3586,12 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="77"/>
       <source>Source feeds &amp;&amp; folders</source>
-      <translation type="unfinished">Source feeds &amp;&amp; folders</translation>
+      <translation>源订阅源和文件夹</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="88"/>
       <source>Target feeds &amp;&amp; folders</source>
-      <translation type="unfinished">Target feeds &amp;&amp; folders</translation>
+      <translation>目标订阅源和文件夹</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="138"/>
@@ -3681,7 +3681,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="119"/>
       <source>Select parent item for your feed.</source>
-      <translation>为 Feed 选择上级项目。</translation>
+      <translation>为 Feed 选择主项目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="140"/>
@@ -4423,12 +4423,12 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="20"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>主文件夹</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation>为 Feed 选择上级项目。</translation>
+      <translation>为 Feed 选择主项目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="46"/>
@@ -5771,7 +5771,7 @@ Token 过期时间：%2</translation>
   <context>
     <name>MsgBox</name>
     <message>
-      <location filename="../src/librssguard/gui/messagebox.cpp" line="107"/>
+      <location filename="../src/librssguard/gui/messagebox.cpp" line="105"/>
       <source>Do not show again</source>
       <translation>不再显示</translation>
     </message>
@@ -6192,11 +6192,6 @@ Token 过期时间：%2</translation>
 
 + %n 其它 Feeds。</numerusform>
       </translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="88"/>
-      <source>Load initial set of feeds</source>
-      <translation>载入预设的 Feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceentrypoint.cpp" line="24"/>
@@ -6941,6 +6936,44 @@ Token 过期时间：%2</translation>
     </message>
   </context>
   <context>
+    <name>RssGuard4Import</name>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="31"/>
+      <source>Select RSS Guard 4.x database file</source>
+      <translation type="unfinished">Select RSS Guard 4.x database file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="34"/>
+      <source>RSS Guard 4.x DB files (%1)</source>
+      <translation type="unfinished">RSS Guard 4.x DB files (%1)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="62"/>
+      <source>Import data from RSS Guard 4.x</source>
+      <translation type="unfinished">Import data from RSS Guard 4.x</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="69"/>
+      <source>Imported articles from %1 feeds...</source>
+      <translation>导入了来自 %1 个源的文章……</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="208"/>
+      <source>skipping article, it has no title and no URL</source>
+      <translation>正跳过文章, 它没有标题和 URL</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="498"/>
+      <source>missing RSS Guard 4.x tables %1</source>
+      <translation type="unfinished">missing RSS Guard 4.x tables %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="504"/>
+      <source>metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</source>
+      <translation type="unfinished">metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</translation>
+    </message>
+  </context>
+  <context>
     <name>ScriptException</name>
     <message>
       <location filename="../src/librssguard/exceptions/scriptexception.cpp" line="24"/>
@@ -7138,9 +7171,9 @@ Token 过期时间：%2</translation>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of folders: %2
-Number of disabled feeds: %3</translation>
+      <translation>订阅源数： %1
+文件夹数： %2
+停用的订阅源数： %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="758"/>
@@ -7529,7 +7562,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="48"/>
       <source>Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-      <translation type="unfinished">Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</translation>
+      <translation>输入源列表中每个源/文件夹旁显示的文章数量的格式。 &quot;%all&quot; 和 &quot;%unread&quot; 分别代表所有文章(或未读文章) 实际数目的占位符。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
@@ -8584,12 +8617,12 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="43"/>
       <source>Cannot save folder data</source>
-      <translation type="unfinished">Cannot save folder data</translation>
+      <translation>无法保存文件夹数据</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardcategory.cpp" line="44"/>
       <source>Cannot save data for folder, detailed information was logged via debug log.</source>
-      <translation type="unfinished">Cannot save data for folder, detailed information was logged via debug log.</translation>
+      <translation>不能保存文件夹的数据，详细信息通过调试日志记录下来了。</translation>
     </message>
   </context>
   <context>
@@ -8842,7 +8875,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="37"/>
       <source>Select parent item for your feed.</source>
-      <translation>为 Feed 选择上级项目。</translation>
+      <translation>为 Feed 选择主项目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="61"/>
@@ -8892,7 +8925,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="25"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>主文件夹</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="251"/>
@@ -8965,12 +8998,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation>代理网络</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="73"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="82"/>
       <source>HTTP headers</source>
       <translation>HTTP 标头</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="91"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="100"/>
       <source>Authentication</source>
       <translation>身份认证</translation>
     </message>
@@ -9006,91 +9039,134 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
-      <source>Do you want to load initial set of feeds?</source>
-      <translation>你想要载入预设的 Feeds 集吗？</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="116"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="717"/>
       <source>Error when loading initial feeds</source>
       <translation>载入预设 Feeds 时出错</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="502"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="503"/>
       <source>Fetch metadata</source>
       <translation>获取元数据</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="653"/>
-      <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
-      <translation type="unfinished">Some feeds/folders were not imported due to error, check debug log for more details.</translation>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
+      <source>First steps</source>
+      <translation type="unfinished">First steps</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="676"/>
-      <source>Cannot add folder</source>
-      <translation type="unfinished">Cannot add folder</translation>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="91"/>
+      <source>This new profile does not include any feeds. What do you want to do?</source>
+      <translation type="unfinished">This new profile does not include any feeds. What do you want to do?</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="93"/>
+      <source>Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
+
+Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
+
+Load from OPML file: Standard OPML 2.0 file import.
+
+Load default feeds: Will load small set of various interesting feeds.</source>
+      <translation type="unfinished">Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
+
+Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
+
+Load from OPML file: Standard OPML 2.0 file import.
+
+Load default feeds: Will load small set of various interesting feeds.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="106"/>
+      <source>Import from &amp;RSS Guard 4.x</source>
+      <translation type="unfinished">Import from &amp;RSS Guard 4.x</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="110"/>
+      <source>Import from &amp;QuiteRSS</source>
+      <translation type="unfinished">Import from &amp;QuiteRSS</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="114"/>
+      <source>Load from &amp;OPML file</source>
+      <translation type="unfinished">Load from &amp;OPML file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="118"/>
+      <source>Load &amp;default feeds</source>
+      <translation type="unfinished">Load &amp;default feeds</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="654"/>
+      <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
+      <translation>由于错误，一些Feeds/文件夹没有被导入，查看调试日志了解更多细节。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
-      <source>Cannot add folder because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot add folder because another critical operation is ongoing.</translation>
+      <source>Cannot add folder</source>
+      <translation>无法添加文件夹</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="704"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="678"/>
+      <source>Cannot add folder because another critical operation is ongoing.</source>
+      <translation>另一项关键操作正在进行中，无法添加文件夹。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="733"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="742"/>
       <source>Error during file import</source>
       <translation>导入文件期间出错</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="719"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="757"/>
       <source>Fetching metadata for %n feeds</source>
       <translation>
         <numerusform>正在获取 %n 个源的元数据</numerusform>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="728"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="766"/>
       <source>Fetched %n feeds...</source>
       <translation>
         <numerusform>获取了 %n 个源……</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="738"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="776"/>
       <source>Export feeds</source>
       <translation>导出 Feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="739"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="777"/>
       <source>Import feeds</source>
       <translation>导入 Feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="741"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="779"/>
       <source>Import from QuiteRSS</source>
       <translation>从 QuiteRSS 导入</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="89"/>
-      <source>This new account does not include any feeds. You can now add default set of feeds.</source>
-      <translation>新账户不包含任何 Feeds，你现在可以添加预设的 Feeds 集合。</translation>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="781"/>
+      <source>Import from RSS Guard 4.x</source>
+      <translation type="unfinished">Import from RSS Guard 4.x</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="50"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="51"/>
       <source>This is the obligatory service account for standard RSS/RDF/ATOM feeds.</source>
       <translation>这是标准 RSS/RDF/ATOM 源的必备服务账户。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="195"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="196"/>
       <source>Cannot add item</source>
       <translation>无法添加项目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="196"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="197"/>
       <source>Cannot add feed because another critical operation is ongoing.</source>
       <translation>另一项关键操作正在执行，无法添加 Feed。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="656"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="657"/>
       <source>Import was completely successful.</source>
       <translation>导入成功。</translation>
     </message>
@@ -9588,12 +9664,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="20"/>
       <source>Parent folder</source>
-      <translation type="unfinished">Parent folder</translation>
+      <translation>主文件夹</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation>为 Feed 选择上级项目。</translation>
+      <translation>为 Feed 选择主项目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="46"/>
