@@ -624,7 +624,7 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="157"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
-      <translation type="unfinished">Attachment cannot be downloaded because you are not logged-in.</translation>
+      <translation/>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="163"/>
