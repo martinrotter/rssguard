@@ -380,9 +380,13 @@ void StandardFeedDetails::loadCategories(const QList<Category*>& categories, Roo
     cats = categories;
   }
 
-  m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(), root_item->title(), QVariant::fromValue(root_item));
+  m_ui.m_cmbParentCategory->addItem(root_item->fullIcon(),
+                                    TextFactory::shorten(root_item->title()),
+                                    QVariant::fromValue(root_item));
 
   for (Category* category : std::as_const(cats)) {
-    m_ui.m_cmbParentCategory->addItem(category->fullIcon(), category->title(), QVariant::fromValue(category));
+    m_ui.m_cmbParentCategory->addItem(category->fullIcon(),
+                                      TextFactory::shorten(category->title()),
+                                      QVariant::fromValue(category));
   }
 }
