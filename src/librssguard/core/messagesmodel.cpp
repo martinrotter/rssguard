@@ -1084,6 +1084,27 @@ bool MessagesModel::setMessageLabelsById(const QList<Message>& msgs) {
   return true;
 }
 
+void MessagesModel::updateSourceArticle(const Message& msg) {
+  QList<Message> msgs = {msg};
+
+  try {
+    DatabaseQueries::updateMessages(msgs, feedById(msg.m_feedId), true, false);
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_MESSAGEMODEL << "Failed to update source article:" << QUOTE_W_SPACE_DOT(ex.message());
+    return;
+  }
+
+  auto msg_idx = rowForMessage(msg.m_id);
+
+  if (msg_idx < 0 || msg_idx >= m_messages.size()) {
+    return;
+  }
+
+  m_messages[msg_idx] = msg;
+  reloadChangedLayout({indexForMessage(msg.m_id)}, true);
+}
+
 QString MessagesModel::formatLabels(const QList<Label*>& labels) const {
   auto label_titles = qlinq::from(labels)
                         .select([](const Label* label) {

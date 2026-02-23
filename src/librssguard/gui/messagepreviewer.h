@@ -48,6 +48,7 @@ class MessagePreviewer : public TabContent {
     void switchMessageImportance(bool checked);
 
   signals:
+    void articleTweaked(const Message& msg);
     void revealFeed();
     void markMessageRead(int id, RootItem::ReadStatus read);
     void markMessageImportant(int id, RootItem::Importance important);

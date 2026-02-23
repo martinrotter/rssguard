@@ -126,6 +126,8 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     bool setMessageReadById(int article_id, RootItem::ReadStatus read);
     bool setMessageLabelsById(const QList<Message>& msgs);
 
+    void updateSourceArticle(const Message& msg);
+
   private:
     QString formatLabels(const QList<Label*>& labels) const;
 

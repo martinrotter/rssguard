@@ -302,6 +302,10 @@ void FeedMessageViewer::createConnections() {
           &MessagePreviewer::markMessageRead,
           m_messagesView->sourceModel(),
           &MessagesModel::setMessageReadById);
+  connect(m_messagesBrowser,
+          &MessagePreviewer::articleTweaked,
+          m_messagesView->sourceModel(),
+          &MessagesModel::updateSourceArticle);
   connect(m_messagesBrowser, &MessagePreviewer::revealFeed, m_messagesView, [this]() {
     m_messagesView->goToMotherFeed(false);
   });

@@ -96,6 +96,7 @@ void ThreadPreviewer::fetchComments() {
 
   if (res == QDialog::DialogCode::Accepted) {
     loadMessage(m_message, m_selectedItem);
+    emit articleTweaked(m_message);
   }
 }
 

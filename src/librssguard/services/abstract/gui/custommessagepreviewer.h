@@ -21,6 +21,9 @@ class RSSGUARD_DLLSPEC CustomMessagePreviewer : public TabContent {
 
     // Displays the message.
     virtual void loadMessage(const Message& msg, RootItem* selected_item) = 0;
+
+  signals:
+    void articleTweaked(const Message& msg);
 };
 
 #endif // CUSTOMMESSAGEPREVIEWER_H

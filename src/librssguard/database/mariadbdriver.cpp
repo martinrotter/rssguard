@@ -153,7 +153,7 @@ qint64 MariaDbDriver::databaseDataSize() {
   QSqlDatabase database = connection(metaObject()->className());
   SqlQuery query(database);
 
-  query.prepare("SELECT Round(Sum(data_length + index_length), 1) "
+  query.prepare("SELECT ROUND(SUM(data_length + index_length), 1) "
                 "FROM information_schema.tables "
                 "WHERE table_schema = :db "
                 "GROUP BY table_schema;");

@@ -156,6 +156,12 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
       CustomMessagePreviewer* custom_previewer = root->account()->customMessagePreviewer();
 
       if (custom_previewer != nullptr) {
+        connect(custom_previewer,
+                &CustomMessagePreviewer::articleTweaked,
+                this,
+                &MessagePreviewer::articleTweaked,
+                Qt::ConnectionType::UniqueConnection);
+
         auto* current_custom_previewer = m_viewerLayout->widget(INDEX_CUSTOM);
 
         if (current_custom_previewer != nullptr) {
