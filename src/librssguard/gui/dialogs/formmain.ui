@@ -128,6 +128,31 @@
      <addaction name="m_actionFeedMoveTop"/>
      <addaction name="m_actionFeedMoveBottom"/>
     </widget>
+    <widget class="QMenu" name="m_menuSort">
+     <property name="title">
+      <string>&amp;Sort</string>
+     </property>
+     <addaction name="m_actionSortFeedsAlphabetically"/>
+     <addaction name="m_actionRearrangeCategories"/>
+     <addaction name="m_actionRearrangeFeeds"/>
+    </widget>
+    <widget class="QMenu" name="m_menuExpandCollapse">
+     <property name="title">
+      <string>&amp;Expand/collapse</string>
+     </property>
+     <addaction name="m_actionAutoExpandItemsWhenSelected"/>
+     <addaction name="m_actionShowTreeBranches"/>
+     <addaction name="m_actionExpandCollapseItem"/>
+     <addaction name="m_actionExpandCollapseItemRecursively"/>
+    </widget>
+    <widget class="QMenu" name="m_menuEditItems">
+     <property name="title">
+      <string>&amp;Edit items</string>
+     </property>
+     <addaction name="m_actionEditSelectedItem"/>
+     <addaction name="m_actionEditChildFeeds"/>
+     <addaction name="m_actionEditChildFeedsRecursive"/>
+    </widget>
     <addaction name="m_actionUpdateAllItems"/>
     <addaction name="m_actionUpdateSelectedItems"/>
     <addaction name="m_actionUpdateSelectedItemsWithCustomTimers"/>
@@ -135,19 +160,11 @@
     <addaction name="m_actionPauseFeedFetching"/>
     <addaction name="separator"/>
     <addaction name="m_menuAddItem"/>
-    <addaction name="m_actionEditSelectedItem"/>
-    <addaction name="m_actionEditChildFeeds"/>
-    <addaction name="m_actionEditChildFeedsRecursive"/>
+    <addaction name="m_menuEditItems"/>
     <addaction name="m_actionDeleteSelectedItem"/>
     <addaction name="separator"/>
-    <addaction name="m_actionSortFeedsAlphabetically"/>
-    <addaction name="m_actionRearrangeCategories"/>
-    <addaction name="m_actionRearrangeFeeds"/>
-    <addaction name="separator"/>
-    <addaction name="m_actionAutoExpandItemsWhenSelected"/>
-    <addaction name="m_actionShowTreeBranches"/>
-    <addaction name="m_actionExpandCollapseItem"/>
-    <addaction name="m_actionExpandCollapseItemRecursively"/>
+    <addaction name="m_menuSort"/>
+    <addaction name="m_menuExpandCollapse"/>
     <addaction name="m_menuFeedsMove"/>
     <addaction name="separator"/>
     <addaction name="m_actionSelectNextItem"/>

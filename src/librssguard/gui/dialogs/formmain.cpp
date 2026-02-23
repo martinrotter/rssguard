@@ -585,6 +585,10 @@ void FormMain::setupIcons() {
   m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
 
   // Feeds/messages.
+  m_ui->m_menuEditItems->setIcon(icon_theme_factory->fromTheme(QSL("document-edit")));
+  m_ui->m_menuSort->setIcon(icon_theme_factory->fromTheme(QSL("view-sort"), QSL("sort-name")));
+  m_ui->m_menuExpandCollapse->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
+
   m_ui->m_menuAddItem->setIcon(icon_theme_factory->fromTheme(QSL("list-add")));
   m_ui->m_actionStopRunningItemsUpdate->setIcon(icon_theme_factory->fromTheme(QSL("process-stop")));
   m_ui->m_actionPauseFeedFetching->setIcon(icon_theme_factory->fromTheme(QSL("media-playback-pause"),
@@ -628,7 +632,12 @@ void FormMain::setupIcons() {
   m_ui->m_actionSelectNextMessage->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down")));
   m_ui->m_actionSelectPreviousMessage->setIcon(icon_theme_factory->fromTheme(QSL("arrow-up")));
   m_ui->m_actionSelectNextUnreadMessage->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
-  m_ui->m_actionSortFeedsAlphabetically->setIcon(icon_theme_factory->fromTheme(QSL("format-text-bold")));
+
+  m_ui->m_actionRearrangeCategories->setIcon(icon_theme_factory->fromTheme(QSL("view-sort"), QSL("playlist-sort")));
+  m_ui->m_actionRearrangeFeeds->setIcon(icon_theme_factory->fromTheme(QSL("view-sort"), QSL("playlist-sort")));
+
+  m_ui->m_actionSortFeedsAlphabetically->setIcon(icon_theme_factory->fromTheme(QSL("sort-name"),
+                                                                               QSL("format-text-bold")));
   m_ui->m_actionExpandCollapseItem->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
   m_ui->m_actionExpandCollapseItemRecursively->setIcon(icon_theme_factory->fromTheme(QSL("format-indent-more")));
   m_ui->m_actionRestoreSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("view-refresh")));
