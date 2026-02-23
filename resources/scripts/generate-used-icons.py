@@ -53,7 +53,7 @@ def index_theme(theme_dir: Path, root: Path):
 
         icon_name = file.stem
 
-        # Only keep first occurrence (mimics bash "break")
+        # Only keep first occurrence (mimics bash "break").
         if icon_name not in index:
             rel = file.relative_to(root / "resources")
             index[icon_name] = rel.as_posix()
@@ -75,14 +75,14 @@ def main():
     for theme in icon_themes:
         theme_dir = themes_root / theme
 
-        # Index theme ONCE
+        # Index theme ONCE.
         theme_index = index_theme(theme_dir, root)
 
         for icon in icon_names:
             if icon in theme_index:
                 print(f"    <file>./{theme_index[icon]}</file>")
 
-        # Always include index.theme
+        # Always include index.theme.
         index_path = (theme_dir / "index.theme").relative_to(root / "resources")
         print(f"    <file>./{index_path.as_posix()}</file>")
 
