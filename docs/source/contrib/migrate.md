@@ -6,7 +6,7 @@ If you decide to upgrade to a new major version, for example from `3.x.x` to `4.
 
 ## Migrate `4.x -> 5.x`
 ```{danger}
-RSS Guard `5.x` is NOT compatible with RSS Guard `4.x`. There were many many changes made to DB layer of the application so fully automatic migration is not quite possible.
+RSS Guard `5.x` is NOT reallz compatible with RSS Guard `4.x`. There is a migration option displayed when RSS Guard 5 is started for the first time. This migration migrates folders, feeds, article, article filters, labels and queries. Article filter feed assignments are not migrated along with some other things, for technical reasons. 
 ```
 
 ## Migrate `3.9.2 -> 4.x`

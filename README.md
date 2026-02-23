@@ -18,7 +18,6 @@ Beyond standard feeds, RSS Guard integrates seamlessly with many popular **onlin
 * [Gmail](https://developers.google.com/gmail/api)
 * Google Reader API services — [Bazqux](https://bazqux.com), [FreshRSS](https://freshrss.org), [Inoreader](https://www.inoreader.com), [Miniflux](https://miniflux.app), [Reedah](http://reedah.com), [The Old Reader](https://theoldreader.com), and others
 * [Nextcloud News](https://apps.nextcloud.com/apps/news)
-* [Reddit](https://www.reddit.com/)
 * [Tiny Tiny RSS](https://tt-rss.org)
 
 ---

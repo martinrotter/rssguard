@@ -20,6 +20,7 @@ Added:
 * New built-in ability to fetch FULL articles for your feeds. It is switchable in feed details dialog and you can even set to fetch plain text only version of your full articles. The feature is also available as a function for your article filters so you can call this feature selectively depending on conditions etc. The functionality itself is coded in extra binary named `rssguard-article-scraper` which you can also use externally. This tools requires Go compiler for building. (#1783)
 * QuiteRSS import was added. Right-click any account item in feed list and you will see it. It imports categories, feeds, articles and labels. (#1707)
 * Labels and regex queries (probes) now can have icons.
+* Reddit plugin is now removed because Reddit shuts down class REST API access.
 * Redesigned application icon, thanks to RonnyTNL for the initial designs.
 * AppImages are back and better than before. They are available both in Qt 5 and Qt 6 versions. (#1808)
 * Added two brand new simplistic default skins.
@@ -29,7 +30,6 @@ Added:
 * Article filters can be exported/imported. (#1911)
 * Ability to fast rename feeds and folders with `F2` keyboard shortcut. (#1998)
 * Ability to copy selected article(s) data in a custom format. (#1591)
-* Reddit plugin got many enhancements, including option of fetching full comments.
 * Dependency on Qt `5compat` library is now removed and feed encoding conversions are handled either by simplified "QStringConverter" feature or full-blown ICU library, depending on RSS Guard build type and OS.
 * `Fetch metadata` is now threaded and works if multiple feeds are selected at once.
 * New main menu and article list context menu item `Reveal feed` which highlights the feed that the displayed article belongs to. (#1903)
