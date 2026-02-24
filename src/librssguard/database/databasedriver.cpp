@@ -136,12 +136,6 @@ void DatabaseDriver::updateDatabaseSchema(QSqlDatabase& db, const QString& datab
     int installed_db_schema = query_db.value(0).toString().toInt();
 
     if (installed_db_schema < lowest_version) {
-      // This database comes from older major RSS Guard version.
-      MsgBox::show(nullptr,
-                   QMessageBox::Icon::Critical,
-                   tr("Cannot use this DB file"),
-                   tr("The database file you provided cannot be used because it comes from old major version of %1.")
-                     .arg(QSL(APP_NAME)));
       throw ApplicationException(tr("this database file cannot be used because it comes from old major app version"));
     }
 

@@ -52,16 +52,23 @@ void DatabaseFactory::determineDriver() {
     qCriticalNN << LOGSEC_DB << "Failed to reach connection to DB source:" << QUOTE_W_SPACE_DOT(ex.message());
 
     if (m_dbDriver->driverType() != DatabaseDriver::DriverType::SQLite) {
-      MsgBox::show({},
+      MsgBox::show(nullptr,
                    QMessageBox::Icon::Critical,
                    tr("Cannot connect to database"),
-                   tr("Connection to your database was not established with error: '%1'. "
+                   tr("Connection to your database was not established with error: %1. "
                       "Falling back to SQLite.")
                      .arg(ex.message()));
 
       m_dbDriver = qlinq::from(m_allDbDrivers).first([](DatabaseDriver* driv) {
         return driv->driverType() == DatabaseDriver::DriverType::SQLite;
       });
+    }
+    else {
+      MsgBox::show(nullptr,
+                   QMessageBox::Icon::Critical,
+                   tr("Cannot connect to database"),
+                   tr("Connection to your database was not established with error: %1.").arg(ex.message()));
+      qFatal("Connection to the database was not established with error: %s.", qPrintable(ex.message()));
     }
   }
 }
