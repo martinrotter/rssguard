@@ -68,6 +68,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     void removeMessageFilterToFeedAssignment(Feed* feed, MessageFilter* filter);
 
   public slots:
+    void updateAllFeedsOnStartup();
     void updateAllFeeds();
     void updateManuallyIntervaledFeeds();
     void stopRunningFeedUpdate();

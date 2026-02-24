@@ -60,6 +60,7 @@ Fixed:
 * Logic and core code around labels has been completely refactored, resulting in better label management and UI experience. (#1212)
 * Some logic was rewritten in media player, fixing some bugs along the way. (#1887)
 * Fixed the behavior of sample notification. (#1886)
+* Feeds are fetched on the startup (when configured) even if auto-fetching is paused. (#2023)
 * `Accept-Language` HTTP header is explicitly set to RSS Guard active locale. (#1870)¨
 * Cannot create duplicate labels anymore. (#972)
 * Properly HTML-escape feed title in some places. (#2010)

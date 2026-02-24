@@ -45,14 +45,22 @@ FeedReader::FeedReader(QObject* parent)
     qDebugNN << LOGSEC_CORE << "Requesting update for all feeds on application startup.";
     QTimer::singleShot(qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateStartupDelay)).toDouble() * 1000,
                        this,
-                       [this]() {
-                         updateFeeds(m_feedsModel->rootItem()->getSubAutoFetchingEnabledFeeds());
-                         connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
-                       });
+                       &FeedReader::updateAllFeedsOnStartup);
   }
   else {
     connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
   }
+}
+
+void FeedReader::updateAllFeedsOnStartup() {
+  if (!m_feedFetchingPaused) {
+    updateFeeds(m_feedsModel->rootItem()->getSubAutoFetchingEnabledFeeds());
+  }
+  else {
+    qWarningNN << LOGSEC_CORE << "Feed fetch on startup is skipped, because fetching is paused.";
+  }
+
+  connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
 }
 
 FeedReader::~FeedReader() {
