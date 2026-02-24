@@ -11,6 +11,7 @@ class SqliteDriver : public DatabaseDriver {
   public:
     explicit SqliteDriver(QObject* parent = nullptr);
 
+    virtual QSqlDatabase connection(const QString& connection_name);
     virtual QString location() const;
     virtual DriverType driverType() const;
     virtual bool vacuumDatabase();
@@ -18,7 +19,6 @@ class SqliteDriver : public DatabaseDriver {
     virtual bool saveDatabase();
     virtual bool initiateRestoration(const QString& database_package_file);
     virtual bool finishRestoration();
-    virtual QSqlDatabase connection(const QString& connection_name);
     virtual qint64 databaseDataSize();
     virtual QString version();
     virtual QString humanDriverType() const;

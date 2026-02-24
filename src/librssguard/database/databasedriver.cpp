@@ -5,6 +5,7 @@
 #include "database/sqlquery.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "gui/messagebox.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/thread.h"
 
@@ -54,6 +55,17 @@ void DatabaseDriver::setForeignKeyChecksDisabled(const QSqlDatabase& db) {
 
 void DatabaseDriver::updateDatabaseSchema(SqlQuery& query, int source_db_schema_version, const QString& database_name) {
   const int current_version = QSL(APP_DB_SCHEMA_VERSION).toInt();
+  const int lowest_version = QSL(APP_DB_SCHEMA_FIRST_VERSION).toInt();
+
+  if (source_db_schema_version < lowest_version) {
+    // This database comes from older major RSS Guard version.
+    MsgBox::show(nullptr,
+                 QMessageBox::Icon::Critical,
+                 tr("Cannot use this DB file"),
+                 tr("The database file you provided cannot be used because it comes from old major version of %1.")
+                   .arg(QSL(APP_NAME)));
+    throw ApplicationException(tr("this database file cannot be used because it comes from old major app version"));
+  }
 
   while (source_db_schema_version != current_version) {
     const QStringList statements = prepareScript(APP_SQL_PATH,
