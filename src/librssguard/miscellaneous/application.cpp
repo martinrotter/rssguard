@@ -261,7 +261,7 @@ void Application::performLogging(QtMsgType type, const QMessageLogContext& conte
     qApp->displayLogMessageInDialog(console_message);
   }
   if (type == QtMsgType::QtFatalMsg) {
-    qApp->exit(EXIT_FAILURE);
+    std::exit(EXIT_FAILURE);
   }
 #else
   Q_UNUSED(type)

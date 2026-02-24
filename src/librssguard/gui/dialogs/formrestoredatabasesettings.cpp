@@ -10,7 +10,7 @@
 FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDialog(&parent) {
   m_ui.setupUi(this);
   m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Warning,
-                              tr("No operation executed yet."),
+                              tr("Only %1 %2 backups are supported.").arg(QSL(APP_NAME), QSL(APP_VERSION_MAJOR)),
                               tr("No operation executed yet."));
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("document-import")));

@@ -68,7 +68,9 @@ void DatabaseFactory::determineDriver() {
                    QMessageBox::Icon::Critical,
                    tr("Cannot connect to database"),
                    tr("Connection to your database was not established with error: %1.").arg(ex.message()));
-      qFatal("Connection to the database was not established with error: %s.", qPrintable(ex.message()));
+      // qApp->exit(EXIT_SUCCESS);
+      // qFatal("Connection to the database was not established with error: %s.", qPrintable(ex.message()));
+      std::exit(EXIT_FAILURE);
     }
   }
 }
