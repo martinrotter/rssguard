@@ -571,10 +571,7 @@ void Application::restoreDatabaseSettings(bool restore_database,
                                           const QString& source_database_file_path,
                                           const QString& source_settings_file_path) {
   if (restore_database) {
-    if (!qApp->database()->driver()->initiateRestoration(source_database_file_path)) {
-      throw ApplicationException(tr("Database restoration was not initiated. Make sure that output directory is "
-                                    "writable."));
-    }
+    qApp->database()->driver()->initiateRestoration(source_database_file_path);
   }
 
   if (restore_settings) {

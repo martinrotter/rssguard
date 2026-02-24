@@ -14,7 +14,7 @@
 #include <QSqlError>
 #include <QThread>
 
-DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent) {}
+DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent), m_databaseInitialized(false) {}
 
 QSqlDatabase DatabaseDriver::threadSafeConnection(const QString& connection_name) {
   qlonglong thread_id = getThreadID();
@@ -41,6 +41,58 @@ QString DatabaseDriver::limitOffset(int limit, int offset) const {
   }
 }
 
+QSqlDatabase DatabaseDriver::connection(const QString& connection_name) {
+  QSqlDatabase database;
+
+  if (!m_databaseInitialized) {
+    finishRestoration();
+    beforeAddDatabase();
+
+    database = QSqlDatabase::addDatabase(qtDriverCode(), connection_name);
+
+    afterAddDatabase(database, false);
+
+    if (!database.isOpen() && !database.open()) {
+      qFatal("Database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
+    }
+
+    updateDatabaseSchema(database, databaseName());
+    m_databaseInitialized = true;
+  }
+  else {
+    if (QSqlDatabase::contains(connection_name)) {
+      database = QSqlDatabase::database(connection_name);
+    }
+    else {
+      database = QSqlDatabase::addDatabase(qtDriverCode(), connection_name);
+      afterAddDatabase(database, true);
+    }
+
+    if (!database.isOpen() && !database.open()) {
+      qFatal("Database was NOT opened. Delivered error message: '%s'.", qPrintable(database.lastError().text()));
+    }
+    else {
+      qDebugNN << LOGSEC_DB << "Database connection" << QUOTE_W_SPACE(connection_name) << "to DB"
+               << QUOTE_W_SPACE(database.databaseName()) << "seems to be established.";
+    }
+
+    SqlQuery query_db(database);
+    setPragmas(query_db);
+  }
+
+  return database;
+}
+
+void DatabaseDriver::beforeAddDatabase() {}
+
+void DatabaseDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialized) {
+  Q_UNUSED(database)
+}
+
+void DatabaseDriver::setPragmas(SqlQuery& query) {
+  Q_UNUSED(query)
+}
+
 void DatabaseDriver::setForeignKeyChecksEnabled(const QSqlDatabase& db) {
   SqlQuery q(db);
 
@@ -53,40 +105,84 @@ void DatabaseDriver::setForeignKeyChecksDisabled(const QSqlDatabase& db) {
   q.exec(foreignKeysDisable());
 }
 
-void DatabaseDriver::updateDatabaseSchema(SqlQuery& query, int source_db_schema_version, const QString& database_name) {
-  const int current_version = QSL(APP_DB_SCHEMA_VERSION).toInt();
-  const int lowest_version = QSL(APP_DB_SCHEMA_FIRST_VERSION).toInt();
+void DatabaseDriver::updateDatabaseSchema(QSqlDatabase& db, const QString& database_name) {
+  SqlQuery query_db(db);
+  setPragmas(query_db);
 
-  if (source_db_schema_version < lowest_version) {
-    // This database comes from older major RSS Guard version.
-    MsgBox::show(nullptr,
-                 QMessageBox::Icon::Critical,
-                 tr("Cannot use this DB file"),
-                 tr("The database file you provided cannot be used because it comes from old major version of %1.")
-                   .arg(QSL(APP_NAME)));
-    throw ApplicationException(tr("this database file cannot be used because it comes from old major app version"));
-  }
+  // Sample query which checks for existence of tables.
+  if (!query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"), false)) {
+    qWarningNN << LOGSEC_DB << "Database is not initialized. Initializing now.";
 
-  while (source_db_schema_version != current_version) {
-    const QStringList statements = prepareScript(APP_SQL_PATH,
-                                                 QSL(APP_DB_UPDATE_FILE_PATTERN)
-                                                   .arg(ddlFilePrefix(),
-                                                        QString::number(source_db_schema_version),
-                                                        QString::number(source_db_schema_version + 1)),
-                                                 database_name);
+    try {
+      const QStringList statements =
+        prepareScript(APP_SQL_PATH, QSL(APP_DB_INIT_FILE_PATTERN).arg(ddlFilePrefix()), database_name);
 
-    for (const QString& statement : statements) {
-      query.exec(statement);
+      for (const QString& statement : statements) {
+        query_db.exec(statement);
+      }
+
+      setSchemaVersion(query_db, QSL(APP_DB_SCHEMA_VERSION).toInt(), true);
+    }
+    catch (const ApplicationException& ex) {
+      qFatal("Error when running SQL scripts: %s.", qPrintable(ex.message()));
     }
 
-    // Increment the version.
-    qDebugNN << LOGSEC_DB << "Updating database schema " << QUOTE_W_SPACE(source_db_schema_version) << "->"
-             << QUOTE_W_SPACE_DOT(source_db_schema_version + 1);
-
-    source_db_schema_version++;
+    qDebugNN << LOGSEC_DB << "DB backend should be ready now.";
   }
+  else {
+    query_db.next();
+    const int current_version = QSL(APP_DB_SCHEMA_VERSION).toInt();
+    const int lowest_version = QSL(APP_DB_SCHEMA_FIRST_VERSION).toInt();
+    int installed_db_schema = query_db.value(0).toString().toInt();
 
-  setSchemaVersion(query, current_version, false);
+    if (installed_db_schema < lowest_version) {
+      // This database comes from older major RSS Guard version.
+      MsgBox::show(nullptr,
+                   QMessageBox::Icon::Critical,
+                   tr("Cannot use this DB file"),
+                   tr("The database file you provided cannot be used because it comes from old major version of %1.")
+                     .arg(QSL(APP_NAME)));
+      throw ApplicationException(tr("this database file cannot be used because it comes from old major app version"));
+    }
+
+    if (installed_db_schema < current_version) {
+      try {
+        while (installed_db_schema != current_version) {
+          const QStringList statements = prepareScript(APP_SQL_PATH,
+                                                       QSL(APP_DB_UPDATE_FILE_PATTERN)
+                                                         .arg(ddlFilePrefix(),
+                                                              QString::number(installed_db_schema),
+                                                              QString::number(installed_db_schema + 1)),
+                                                       database_name);
+
+          for (const QString& statement : statements) {
+            query_db.exec(statement);
+          }
+
+          // Increment the version.
+          qDebugNN << LOGSEC_DB << "Updating database schema " << QUOTE_W_SPACE(installed_db_schema) << "->"
+                   << QUOTE_W_SPACE_DOT(installed_db_schema + 1);
+
+          installed_db_schema++;
+        }
+
+        setSchemaVersion(query_db, current_version, false);
+
+        qDebugNN << LOGSEC_DB << "Database schema was updated from" << QUOTE_W_SPACE(installed_db_schema) << "to"
+                 << QUOTE_W_SPACE(APP_DB_SCHEMA_VERSION) << "successully.";
+      }
+      catch (const ApplicationException& ex) {
+        qFatal("Error when updating DB schema from %d: %s.", installed_db_schema, qPrintable(ex.message()));
+      }
+    }
+    else if (installed_db_schema > current_version) {
+      // NOTE: We have too new database version, likely from newer
+      // RSS Guard. Abort.
+      qFatal("Database schema is too new. Application requires <= %d but %d is installed.",
+             current_version,
+             installed_db_schema);
+    }
+  }
 }
 
 void DatabaseDriver::setSchemaVersion(SqlQuery& query, int new_schema_version, bool empty_table) {

@@ -11,14 +11,14 @@ class SqliteDriver : public DatabaseDriver {
   public:
     explicit SqliteDriver(QObject* parent = nullptr);
 
-    virtual QSqlDatabase connection(const QString& connection_name);
     virtual QString location() const;
     virtual DriverType driverType() const;
-    virtual bool vacuumDatabase();
+    virtual void vacuumDatabase();
     virtual QString ddlFilePrefix() const;
-    virtual bool saveDatabase();
-    virtual bool initiateRestoration(const QString& database_package_file);
-    virtual bool finishRestoration();
+    virtual void saveDatabase();
+    virtual void initiateRestoration(const QString& database_package_file);
+    virtual void finishRestoration();
+    virtual QString databaseName() const;
     virtual qint64 databaseDataSize();
     virtual QString version();
     virtual QString humanDriverType() const;
@@ -31,14 +31,17 @@ class SqliteDriver : public DatabaseDriver {
     virtual QString text() const;
     virtual QString collateNocase() const;
 
+  protected:
+    virtual void beforeAddDatabase();
+    virtual void afterAddDatabase(QSqlDatabase& database, bool was_initialized);
+    virtual void setPragmas(SqlQuery& query);
+    virtual void updateDatabaseSchema(QSqlDatabase& db, const QString& database_name = {});
+
   private:
-    QSqlDatabase initializeDatabase(const QString& connection_name);
-    void setPragmas(SqlQuery& query);
     QString databaseFilePath() const;
 
   private:
     QString m_databaseFilePath;
-    bool m_databaseInitialized;
 };
 
 #endif // SQLITEDRIVER_H

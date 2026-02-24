@@ -10,8 +10,7 @@
 #include <QSqlError>
 
 SqliteDriver::SqliteDriver(QObject* parent)
-  : DatabaseDriver(parent), m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QSL(APP_DB_SQLITE_PATH)),
-    m_databaseInitialized(false) {}
+  : DatabaseDriver(parent), m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QSL(APP_DB_SQLITE_PATH)) {}
 
 QString SqliteDriver::location() const {
   return QDir::toNativeSeparators(m_databaseFilePath);
@@ -57,23 +56,24 @@ QString SqliteDriver::version() {
   });
 }
 
-bool SqliteDriver::saveDatabase() {
+void SqliteDriver::saveDatabase() {
   // Perform WAL checkpoint.
-  return qApp->database()->worker()->write<bool>([&](const QSqlDatabase& db) {
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
     SqlQuery query_vacuum(db);
 
-    return query_vacuum.exec(QSL("PRAGMA wal_checkpoint(TRUNCATE);"));
+    query_vacuum.exec(QSL("PRAGMA wal_checkpoint(TRUNCATE);"));
   });
 }
 
-bool SqliteDriver::vacuumDatabase() {
+void SqliteDriver::vacuumDatabase() {
   saveDatabase();
 
-  return qApp->database()->worker()->write<bool>([&](const QSqlDatabase& db) {
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
     SqlQuery query_vacuum(db);
 
-    return query_vacuum.exec(QSL("REINDEX;"), false) && query_vacuum.exec(QSL("PRAGMA optimize;"), false) &&
-           query_vacuum.exec(QSL("VACUUM;"), false);
+    query_vacuum.exec(QSL("REINDEX;"));
+    query_vacuum.exec(QSL("PRAGMA optimize;"));
+    query_vacuum.exec(QSL("VACUUM;"));
   });
 }
 
@@ -81,52 +81,14 @@ QString SqliteDriver::ddlFilePrefix() const {
   return QSL("sqlite");
 }
 
-QSqlDatabase SqliteDriver::connection(const QString& connection_name) {
-  if (!m_databaseInitialized) {
-    return initializeDatabase(connection_name);
-  }
-  else {
-    // No need to initialize.
-    QSqlDatabase database;
-
-    if (QSqlDatabase::contains(connection_name)) {
-      qDebugNN << LOGSEC_DB << "SQLite connection" << QUOTE_W_SPACE(connection_name) << "is already active.";
-
-      // This database connection was added previously, no need to
-      // setup its properties.
-      database = QSqlDatabase::database(connection_name);
-    }
-    else {
-      database = QSqlDatabase::addDatabase(QSL(APP_DB_SQLITE_DRIVER), connection_name);
-
-      const QDir db_path(m_databaseFilePath);
-      QFile db_file(db_path.absoluteFilePath(QSL(APP_DB_SQLITE_FILE)));
-
-      database.setConnectOptions(QSL("QSQLITE_ENABLE_REGEXP"));
-      database.setDatabaseName(db_file.fileName());
-    }
-
-    if (!database.isOpen() && !database.open()) {
-      qFatal("SQLite database was NOT opened. Delivered error message: '%s'.", qPrintable(database.lastError().text()));
-    }
-    else {
-      qDebugNN << LOGSEC_DB << "SQLite database connection" << QUOTE_W_SPACE(connection_name) << "to file"
-               << QUOTE_W_SPACE(database.databaseName()) << "seems to be established.";
-    }
-
-    SqlQuery query_db(database);
-    setPragmas(query_db);
-
-    return database;
+void SqliteDriver::initiateRestoration(const QString& database_package_file) {
+  if (!IOFactory::copyFile(database_package_file,
+                           m_databaseFilePath + QDir::separator() + BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE)) {
+    throw ApplicationException(tr("cannot copy backup SQLite file"));
   }
 }
 
-bool SqliteDriver::initiateRestoration(const QString& database_package_file) {
-  return IOFactory::copyFile(database_package_file,
-                             m_databaseFilePath + QDir::separator() + BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE);
-}
-
-bool SqliteDriver::finishRestoration() {
+void SqliteDriver::finishRestoration() {
   const QString backup_database_file =
     m_databaseFilePath + QDir::separator() + BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE;
 
@@ -140,111 +102,64 @@ bool SqliteDriver::finishRestoration() {
     }
     else {
       qCriticalNN << LOGSEC_DB << "Database file was NOT restored due to error when copying the file.";
-      return false;
     }
   }
-
-  return true;
 }
 
-QSqlDatabase SqliteDriver::initializeDatabase(const QString& connection_name) {
-  finishRestoration();
-
-  QString db_file_name;
-
-  // Prepare file paths.
+void SqliteDriver::beforeAddDatabase() {
   const QDir db_path(m_databaseFilePath);
-  QFile db_file(db_path.absoluteFilePath(QSL(APP_DB_SQLITE_FILE)));
 
-  // Check if database directory exists.
   if (!db_path.exists()) {
     if (!db_path.mkpath(db_path.absolutePath())) {
-      // Failure when create database file path.
-      qFatal("Directory '%s' for SQLite database file '%s' was NOT created."
+      qFatal("Directory '%s' for SQLite database file was NOT created."
              "This is HUGE problem.",
-             qPrintable(db_path.absolutePath()),
-             qPrintable(db_file.symLinkTarget()));
+             qPrintable(db_path.absolutePath()));
     }
   }
+}
 
-  db_file_name = db_file.fileName();
+QString SqliteDriver::databaseName() const {
+  return m_databaseFilePath + QDir::separator() + QSL(APP_DB_SQLITE_FILE);
+}
 
-  QSqlDatabase database = QSqlDatabase::addDatabase(QSL(APP_DB_SQLITE_DRIVER), connection_name);
+void SqliteDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialized) {
+  Q_UNUSED(was_initialized)
+
+  QString db_file_name = databaseName();
 
   database.setConnectOptions(QSL("QSQLITE_ENABLE_REGEXP"));
   database.setDatabaseName(db_file_name);
+}
 
-  if (!database.open()) {
-    qFatal("SQLite database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
-  }
-  else {
-    SqlQuery query_db(database);
-    setPragmas(query_db);
+void SqliteDriver::updateDatabaseSchema(QSqlDatabase& db, const QString& database_name) {
+  SqlQuery query_db(db);
 
-    // Sample query which checks for existence of tables.
-    if (!query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"), false)) {
-      qWarningNN << LOGSEC_DB << "SQLite database is not initialized. Initializing now.";
+  if (query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"), false)) {
+    query_db.next();
+    const int installed_db_schema = query_db.value(0).toString().toInt();
 
-      try {
-        const QStringList statements = prepareScript(APP_SQL_PATH, QSL(APP_DB_SQLITE_INIT));
-
-        for (const QString& statement : statements) {
-          query_db.exec(statement);
-        }
-
-        setSchemaVersion(query_db, QSL(APP_DB_SCHEMA_VERSION).toInt(), true);
+    if (installed_db_schema > QSL(APP_DB_SCHEMA_FIRST_VERSION).toInt() &&
+        installed_db_schema < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
+      // Now, it would be good to create backup of SQLite DB file.
+      if (IOFactory::copyFile(databaseFilePath(), databaseFilePath() + QSL("-v%1.bak").arg(installed_db_schema))) {
+        qDebugNN << LOGSEC_DB << "Creating backup of SQLite DB file.";
       }
-      catch (const ApplicationException& ex) {
-        qFatal("Error when running SQL scripts: %s.", qPrintable(ex.message()));
+      else {
+        qFatal("Creation of backup SQLite DB file failed.");
       }
-
-      qDebugNN << LOGSEC_DB << "SQLite database backend should be ready now.";
-    }
-    else {
-      query_db.next();
-      const int installed_db_schema = query_db.value(0).toString().toInt();
-
-      if (installed_db_schema < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
-        // Now, it would be good to create backup of SQLite DB file.
-        if (IOFactory::copyFile(databaseFilePath(), databaseFilePath() + QSL("-v%1.bak").arg(installed_db_schema))) {
-          qDebugNN << LOGSEC_DB << "Creating backup of SQLite DB file.";
-        }
-        else {
-          qFatal("Creation of backup SQLite DB file failed.");
-        }
-
-        try {
-          updateDatabaseSchema(query_db, installed_db_schema);
-
-          // NOTE: SQLite recommends to run ANALYZE after DB schema is updated.
-          if (!query_db.exec(QSL("PRAGMA optimize"))) {
-            qWarningNN << LOGSEC_DB << "Failed to ANALYZE updated DB schema.";
-          }
-
-          qDebugNN << LOGSEC_DB << "Database schema was updated from" << QUOTE_W_SPACE(installed_db_schema) << "to"
-                   << QUOTE_W_SPACE(APP_DB_SCHEMA_VERSION) << "successully.";
-        }
-        catch (const ApplicationException& ex) {
-          qFatal("Error when updating DB schema from %d: %s.", installed_db_schema, qPrintable(ex.message()));
-        }
-      }
-      else if (installed_db_schema > QSL(APP_DB_SCHEMA_VERSION).toInt()) {
-        // NOTE: We have too new database version, likely from newer
-        // RSS Guard. Abort.
-        qFatal("Database schema is too new. Application requires <= %d but %d is installed.",
-               QSL(APP_DB_SCHEMA_VERSION).toInt(),
-               installed_db_schema);
-      }
-
-      qDebugNN << LOGSEC_DB << "File-based SQLite database connection" << QUOTE_W_SPACE(connection_name) << "to file"
-               << QUOTE_W_SPACE(QDir::toNativeSeparators(database.databaseName())) << "seems to be established.";
-      qDebugNN << LOGSEC_DB << "File-based SQLite database has version" << QUOTE_W_SPACE_DOT(installed_db_schema);
     }
   }
 
-  m_databaseInitialized = true;
+  query_db.finish();
 
-  return database;
+  DatabaseDriver::updateDatabaseSchema(db, database_name);
+
+  // NOTE: SQLite recommends to run ANALYZE after DB schema is updated.
+  if (!query_db.exec(QSL("PRAGMA optimize;"), false)) {
+    qWarningNN << LOGSEC_DB << "Failed to ANALYZE updated DB schema.";
+  }
+
+  query_db.finish();
 }
 
 QString SqliteDriver::databaseFilePath() const {

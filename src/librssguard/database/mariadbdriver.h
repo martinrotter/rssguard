@@ -32,16 +32,16 @@ class MariaDbDriver : public DatabaseDriver {
     virtual QString qtDriverCode() const;
     virtual QString ddlFilePrefix() const;
     virtual DriverType driverType() const;
-    virtual bool vacuumDatabase();
-    virtual bool saveDatabase();
+    virtual void vacuumDatabase();
+    virtual void saveDatabase();
+    virtual QString databaseName() const;
     virtual QString version();
     virtual void backupDatabase(const QString& backup_folder, const QString& backup_name);
-    virtual bool initiateRestoration(const QString& database_package_file);
-    virtual bool finishRestoration();
+    virtual void initiateRestoration(const QString& database_package_file);
+    virtual void finishRestoration();
     virtual qint64 databaseDataSize();
     virtual QString foreignKeysEnable() const;
     virtual QString foreignKeysDisable() const;
-    virtual QSqlDatabase connection(const QString& connection_name);
     virtual QString autoIncrementPrimaryKey() const;
     virtual QString blob() const;
     virtual QString text() const;
@@ -50,13 +50,10 @@ class MariaDbDriver : public DatabaseDriver {
 
     QString interpretErrorCode(MariaDbError error_code) const;
 
-  private:
-    QSqlDatabase initializeDatabase(const QString& connection_name);
-
-    void setPragmas(SqlQuery& query);
-
-  private:
-    bool m_databaseInitialized;
+  protected:
+    virtual void beforeAddDatabase();
+    virtual void afterAddDatabase(QSqlDatabase& database, bool was_initialized);
+    virtual void setPragmas(SqlQuery& query);
 };
 
 #endif // MARIADBDRIVER_H

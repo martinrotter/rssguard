@@ -195,23 +195,22 @@
 #define PLACEHOLDER_ALL_COUNTS    "%all"
 
 #define BACKUP_NAME_SETTINGS   "config"
-#define BACKUP_SUFFIX_SETTINGS ".ini.backup"
+#define BACKUP_SUFFIX_SETTINGS ".ini.backup5"
 #define BACKUP_NAME_DATABASE   "database"
-#define BACKUP_SUFFIX_DATABASE ".db.backup"
+#define BACKUP_SUFFIX_DATABASE ".db.backup5"
 
 #define APP_DB_MYSQL_DRIVER "QMYSQL"
-#define APP_DB_MYSQL_INIT   "db_init_mysql.sql"
 #define APP_DB_MYSQL_TEST   "MySQLTest"
 #define APP_DB_MYSQL_PORT   3306
 
 #define APP_DB_SQLITE_DRIVER "QSQLITE"
-#define APP_DB_SQLITE_INIT   "db_init_sqlite.sql"
 #define APP_DB_SQLITE_PATH   "database"
 #define APP_DB_SQLITE_FILE   "database.db"
 
 // Keep this in sync with schema versions declared in SQL initialization code.
 #define APP_DB_SCHEMA_VERSION                "100"
 #define APP_DB_SCHEMA_FIRST_VERSION          "100"
+#define APP_DB_INIT_FILE_PATTERN             "db_init_%1.sql"
 #define APP_DB_UPDATE_FILE_PATTERN           "db_update_%1_%2_%3.sql"
 #define APP_DB_COMMENT_SPLIT                 "-- !\r?\n"
 #define APP_DB_INCLUDE_PLACEHOLDER           "!!"

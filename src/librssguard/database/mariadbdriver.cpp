@@ -3,14 +3,14 @@
 #include "database/mariadbdriver.h"
 
 #include "definitions/definitions.h"
-#include "exceptions/applicationexception.h"
+#include "exceptions/sqlexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 
 #include <QDir>
 #include <QSqlError>
 
-MariaDbDriver::MariaDbDriver(QObject* parent) : DatabaseDriver(parent), m_databaseInitialized(false) {}
+MariaDbDriver::MariaDbDriver(QObject* parent) : DatabaseDriver(parent) {}
 
 QString MariaDbDriver::ddlFilePrefix() const {
   return QSL("mysql");
@@ -67,7 +67,7 @@ MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostnam
 
 QString MariaDbDriver::location() const {
   return QSL("%1/%2").arg(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString(),
-                          qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString());
+                          databaseName());
 }
 
 QString MariaDbDriver::interpretErrorCode(MariaDbDriver::MariaDbError error_code) const {
@@ -103,26 +103,28 @@ DatabaseDriver::DriverType MariaDbDriver::driverType() const {
   return DatabaseDriver::DriverType::MySQL;
 }
 
-bool MariaDbDriver::vacuumDatabase() {
-  QSqlDatabase database = connection(objectName());
-  SqlQuery query_vacuum(database);
+void MariaDbDriver::vacuumDatabase() {
+  saveDatabase();
 
-  return query_vacuum.exec(QSL("OPTIMIZE TABLE Feeds;"), false) &&
-         query_vacuum.exec(QSL("OPTIMIZE TABLE Messages;"), false);
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    SqlQuery query_vacuum(db);
+
+    query_vacuum.exec(QSL("OPTIMIZE TABLE Feeds;"));
+    query_vacuum.exec(QSL("OPTIMIZE TABLE Messages;"));
+  });
 }
 
-bool MariaDbDriver::saveDatabase() {
-  return true;
-}
+void MariaDbDriver::saveDatabase() {}
 
 QString MariaDbDriver::version() {
-  QSqlDatabase database = connection(metaObject()->className());
-  SqlQuery q(database);
+  return qApp->database()->worker()->read<QString>([&](const QSqlDatabase& db) {
+    SqlQuery q(db);
 
-  q.exec(QSL("SELECT VERSION();"));
-  q.next();
+    q.exec(QSL("SELECT VERSION();"));
+    q.next();
 
-  return q.value(0).toString();
+    return q.value(0).toString();
+  });
 }
 
 QString MariaDbDriver::foreignKeysEnable() const {
@@ -140,14 +142,11 @@ void MariaDbDriver::backupDatabase(const QString& backup_folder, const QString& 
   saveDatabase();
 }
 
-bool MariaDbDriver::initiateRestoration(const QString& database_package_file) {
+void MariaDbDriver::initiateRestoration(const QString& database_package_file) {
   Q_UNUSED(database_package_file)
-  return true;
 }
 
-bool MariaDbDriver::finishRestoration() {
-  return true;
-}
+void MariaDbDriver::finishRestoration() {}
 
 qint64 MariaDbDriver::databaseDataSize() {
   QSqlDatabase database = connection(metaObject()->className());
@@ -168,122 +167,44 @@ qint64 MariaDbDriver::databaseDataSize() {
   }
 }
 
-QSqlDatabase MariaDbDriver::initializeDatabase(const QString& connection_name) {
-  // Folders are created. Create new QSqlDatabase object.
-  QSqlDatabase database = QSqlDatabase::addDatabase(QSL(APP_DB_MYSQL_DRIVER), connection_name);
-  const QString database_name = qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString();
+void MariaDbDriver::setPragmas(SqlQuery& query) {
+  query.exec(QSL("SET NAMES 'utf8mb4';"));
+  query.exec(QSL("SET CHARACTER SET utf8mb4;"));
+}
+
+void MariaDbDriver::beforeAddDatabase() {}
+
+QString MariaDbDriver::databaseName() const {
+  return qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString();
+}
+
+void MariaDbDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialized) {
+  const QString database_name = databaseName();
 
   database.setHostName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
   database.setPort(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
   database.setUserName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
   database.setPassword(qApp->settings()->password(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
 
-  if (!database.open()) {
-    // NOTE: In this case throw exception and fallback SQL backend will be used.
-    throw ApplicationException(database.lastError().text());
-  }
-  else {
+  if (!was_initialized) {
+    if (!database.open()) {
+      THROW_EX(SqlException, database.lastError());
+    }
+
+    // Ensure the DB exists.
     SqlQuery query_db(database);
 
-    setPragmas(query_db);
+    if (!query_db.exec(QSL("USE %1;").arg(database_name), false)) {
+      const QStringList statements =
+        prepareScript(APP_SQL_PATH, QSL(APP_DB_INIT_FILE_PATTERN).arg(ddlFilePrefix()), database_name);
 
-    if (!query_db.exec(QSL("USE %1").arg(database_name), false) ||
-        !query_db.exec(QSL("SELECT inf_value FROM Information WHERE inf_key = 'schema_version'"), false)) {
-      // If no "rssguard" database exists or schema version is wrong, then initialize it.
-      qWarningNN << LOGSEC_DB << "Error occurred. MySQL database is not initialized. Initializing now.";
-
-      try {
-        const QStringList statements = prepareScript(APP_SQL_PATH, QSL(APP_DB_MYSQL_INIT), database_name);
-
-        for (const QString& statement : statements) {
-          query_db.exec(statement);
-        }
-
-        setSchemaVersion(query_db, QSL(APP_DB_SCHEMA_VERSION).toInt(), true);
-      }
-      catch (const ApplicationException& ex) {
-        qFatal("Error when running SQL scripts: %s.", qPrintable(ex.message()));
-      }
-
-      qDebugNN << LOGSEC_DB << "MySQL database backend should be ready now.";
+      // Only create DB, exec "CREATE DATABASE" command.
+      query_db.exec(statements.at(1));
+      query_db.finish();
     }
-    else {
-      // Database was previously initialized. Now just check the schema version.
-      query_db.next();
-      const int installed_db_schema = query_db.value(0).toString().toInt();
-
-      if (installed_db_schema < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
-        try {
-          updateDatabaseSchema(query_db, installed_db_schema, database_name);
-          qDebugNN << LOGSEC_DB << "Database schema was updated from" << QUOTE_W_SPACE(installed_db_schema) << "to"
-                   << QUOTE_W_SPACE(APP_DB_SCHEMA_VERSION) << "successully.";
-        }
-        catch (const ApplicationException& ex) {
-          qFatal("Error when updating DB schema from %d: %s.", installed_db_schema, qPrintable(ex.message()));
-        }
-      }
-      else if (installed_db_schema > QSL(APP_DB_SCHEMA_VERSION).toInt()) {
-        // NOTE: We have too new database version, likely from newer
-        // RSS Guard. Abort.
-        qFatal("Database schema is too new. Application requires <= %d but %d is installed.",
-               QSL(APP_DB_SCHEMA_VERSION).toInt(),
-               installed_db_schema);
-      }
-    }
-
-    query_db.finish();
   }
 
-  m_databaseInitialized = true;
-  return database;
-}
-
-void MariaDbDriver::setPragmas(SqlQuery& query) {
-  query.exec(QSL("SET NAMES 'utf8mb4';"));
-  query.exec(QSL("SET CHARACTER SET utf8mb4;"));
-}
-
-QSqlDatabase MariaDbDriver::connection(const QString& connection_name) {
-  if (!m_databaseInitialized) {
-    // Return initialized database.
-    return initializeDatabase(connection_name);
-  }
-  else {
-    QSqlDatabase database;
-
-    if (QSqlDatabase::contains(connection_name)) {
-      qDebugNN << LOGSEC_DB << "MySQL connection '" << connection_name << "' is already active.";
-
-      // This database connection was added previously, no need to
-      // setup its properties.
-      database = QSqlDatabase::database(connection_name);
-    }
-    else {
-      // Database connection with this name does not exist
-      // yet, add it and set it up.
-      database = QSqlDatabase::addDatabase(QSL(APP_DB_MYSQL_DRIVER), connection_name);
-      database.setHostName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
-      database.setPort(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
-      database.setUserName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLUsername)).toString());
-      database.setPassword(qApp->settings()->password(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
-      database.setDatabaseName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLDatabase)).toString());
-    }
-
-    if (!database.isOpen() && !database.open()) {
-      // NOTE: In this case throw exception and fallback SQL backend will be used.
-      throw ApplicationException(database.lastError().text());
-    }
-    else {
-      qDebugNN << LOGSEC_DB << "MySQL database connection" << QUOTE_W_SPACE(connection_name) << "to file"
-               << QUOTE_W_SPACE(QDir::toNativeSeparators(database.databaseName())) << "seems to be established.";
-    }
-
-    SqlQuery query_db(database);
-
-    setPragmas(query_db);
-
-    return database;
-  }
+  database.setDatabaseName(database_name);
 }
 
 QString MariaDbDriver::autoIncrementPrimaryKey() const {
