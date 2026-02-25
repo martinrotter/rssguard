@@ -151,6 +151,15 @@ void FormStandardFeedDetails::apply() {
       std_feed->setDontUseRawXmlSaving(m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->isChecked());
     }
 
+    if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbPublishedInsteadOfUpdated)) {
+      std_feed
+        ->setPublishedInsteadOfUpdatedTime(static_cast<
+                                           StandardFeed::ArticleDateTimeBehavior>(m_standardFeedExpDetails->m_ui
+                                                                                    .m_cmbPublishedInsteadOfUpdated
+                                                                                    ->currentData()
+                                                                                    .toInt()));
+    }
+
     if (isChangeAllowed(m_networkDetails->m_ui.m_mcbEnableHttp2)) {
       std_feed->setHttp2Status(m_networkDetails->http2Status());
     }
@@ -212,6 +221,8 @@ void FormStandardFeedDetails::loadFeedData() {
 
     m_standardFeedDetails->m_ui.m_btnFetchMetadata->setEnabled(false);
 
+    m_standardFeedExpDetails->m_ui.m_mcbPublishedInsteadOfUpdated
+      ->addActionWidget(m_standardFeedExpDetails->m_ui.m_cmbPublishedInsteadOfUpdated);
     m_standardFeedExpDetails->m_ui.m_mcbDontUseRawXml
       ->addActionWidget(m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml);
     m_standardFeedExpDetails->m_ui.m_mcbFetchComments
@@ -253,11 +264,17 @@ void FormStandardFeedDetails::loadFeedData() {
 
   if (m_creatingNew) {
     m_standardFeedDetails->prepareForNewFeed(m_serviceRoot, m_parentToSelect, m_urlToProcess);
+    m_standardFeedExpDetails->m_ui.m_cmbPublishedInsteadOfUpdated
+      ->setCurrentIndex(m_standardFeedExpDetails->m_ui.m_cmbPublishedInsteadOfUpdated
+                          ->findData(int(StandardFeed::ArticleDateTimeBehavior::Published)));
     m_standardFeedExpDetails->m_ui.m_cbFetchFullArticles->setChecked(false);
   }
   else {
     m_standardFeedDetails->setExistingFeed(m_serviceRoot, std_feed);
 
+    m_standardFeedExpDetails->m_ui.m_cmbPublishedInsteadOfUpdated
+      ->setCurrentIndex(m_standardFeedExpDetails->m_ui.m_cmbPublishedInsteadOfUpdated
+                          ->findData(int(std_feed->publishedInsteadOfUpdatedTime())));
     m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->setChecked(std_feed->dontUseRawXmlSaving());
     m_standardFeedExpDetails->m_ui.m_cbFetchComments->setChecked(std_feed->fetchCommentsEnabled());
     m_standardFeedExpDetails->m_ui.m_cbFetchFullArticles->setChecked(std_feed->fetchFullArticles());

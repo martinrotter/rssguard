@@ -55,6 +55,9 @@ class FeedParser {
     bool fetchComments() const;
     void setFetchComments(bool cmnts);
 
+    StandardFeed::ArticleDateTimeBehavior articleDateMode() const;
+    void setArticleDateMode(StandardFeed::ArticleDateTimeBehavior mode);
+
   protected:
     virtual QString feedAuthor() const;
 
@@ -67,7 +70,7 @@ class FeedParser {
     virtual QDateTime xmlMessageDateCreated(const QDomElement& msg_element);
     virtual QString xmlMessageId(const QDomElement& msg_element) const;
     virtual QList<QSharedPointer<MessageEnclosure>> xmlMessageEnclosures(const QDomElement& msg_element) const;
-    virtual QList<QSharedPointer<MessageCategory> > xmlMessageCategories(const QDomElement& msg_element) const;
+    virtual QList<QSharedPointer<MessageCategory>> xmlMessageCategories(const QDomElement& msg_element) const;
     virtual QString xmlMessageRawContents(const QDomElement& msg_element) const;
 
     // JSON.
@@ -90,7 +93,7 @@ class FeedParser {
     virtual QString objMessageAuthor(const QVariant& msg_element) const;
     virtual QDateTime objMessageDateCreated(const QVariant& msg_element);
     virtual QString objMessageId(const QVariant& msg_element) const;
-    virtual QList<QSharedPointer<MessageEnclosure> > objMessageEnclosures(const QVariant& msg_element) const;
+    virtual QList<QSharedPointer<MessageEnclosure>> objMessageEnclosures(const QVariant& msg_element) const;
     virtual QList<MessageCategory*> objMessageCategories(const QVariant& msg_element) const;
     virtual QString objMessageRawContents(const QVariant& msg_element) const;
 
@@ -105,6 +108,7 @@ class FeedParser {
                                  bool only_first) const;
 
     QString formatComments(const QList<FeedComment>& comments) const;
+    QDateTime decideArticleDate(const QString& published, const QString& updated);
 
   protected:
     std::function<QByteArray(QUrl)> m_resourceHandler;
@@ -116,6 +120,7 @@ class FeedParser {
     QString m_mrssNamespace;
     bool m_dontUseRawXmlSaving;
     bool m_fetchComments;
+    StandardFeed::ArticleDateTimeBehavior m_articleDateMode;
 };
 
 #endif // FEEDPARSER_H

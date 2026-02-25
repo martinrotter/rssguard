@@ -16,9 +16,6 @@ class RSSGUARD_DLLSPEC DatabaseFactory : public QObject {
   public:
     explicit DatabaseFactory(QObject* parent = nullptr);
 
-    // Removes connection.
-    void removeConnection(const QString& connection_name = {});
-
     // Returns identification of currently active database driver.
     DatabaseDriver::DriverType activeDatabaseDriver() const;
 

@@ -53,7 +53,7 @@ QSqlDatabase DatabaseDriver::connection(const QString& connection_name) {
     afterAddDatabase(database, false);
 
     if (!database.isOpen() && !database.open()) {
-      qFatal("Database was NOT opened. Delivered error message: '%s'", qPrintable(database.lastError().text()));
+      qFatal("Database was NOT opened. Delivered error message: %s", qPrintable(database.lastError().text()));
     }
 
     updateDatabaseSchema(database, databaseName());
@@ -69,11 +69,7 @@ QSqlDatabase DatabaseDriver::connection(const QString& connection_name) {
     }
 
     if (!database.isOpen() && !database.open()) {
-      qFatal("Database was NOT opened. Delivered error message: '%s'.", qPrintable(database.lastError().text()));
-    }
-    else {
-      qDebugNN << LOGSEC_DB << "Database connection" << QUOTE_W_SPACE(connection_name) << "to DB"
-               << QUOTE_W_SPACE(database.databaseName()) << "seems to be established.";
+      qFatal("Database was NOT opened. Delivered error message: %s.", qPrintable(database.lastError().text()));
     }
 
     SqlQuery query_db(database);
@@ -139,6 +135,13 @@ void DatabaseDriver::updateDatabaseSchema(QSqlDatabase& db, const QString& datab
       throw ApplicationException(tr("this database file cannot be used because it comes from old major app version"));
     }
 
+    if (installed_db_schema > current_version) {
+      // NOTE: We have too new database version, likely from newer
+      // RSS Guard. Abort.
+      throw ApplicationException(tr("database schema is too new, application requires <= %1 but %2 is installed")
+                                   .arg(QString::number(current_version), QString::number(installed_db_schema)));
+    }
+
     if (installed_db_schema < current_version) {
       try {
         while (installed_db_schema != current_version) {
@@ -154,27 +157,18 @@ void DatabaseDriver::updateDatabaseSchema(QSqlDatabase& db, const QString& datab
           }
 
           // Increment the version.
-          qDebugNN << LOGSEC_DB << "Updating database schema " << QUOTE_W_SPACE(installed_db_schema) << "->"
-                   << QUOTE_W_SPACE_DOT(installed_db_schema + 1);
+          qDebugNN << LOGSEC_DB << "Updating database schema " << NONQUOTE_W_SPACE(installed_db_schema) << "->"
+                   << NONQUOTE_W_SPACE_DOT(installed_db_schema + 1);
 
           installed_db_schema++;
         }
 
         setSchemaVersion(query_db, current_version, false);
-
-        qDebugNN << LOGSEC_DB << "Database schema was updated from" << QUOTE_W_SPACE(installed_db_schema) << "to"
-                 << QUOTE_W_SPACE(APP_DB_SCHEMA_VERSION) << "successully.";
+        qDebugNN << LOGSEC_DB << "Database schema was updated to latest version successully.";
       }
       catch (const ApplicationException& ex) {
         qFatal("Error when updating DB schema from %d: %s.", installed_db_schema, qPrintable(ex.message()));
       }
-    }
-    else if (installed_db_schema > current_version) {
-      // NOTE: We have too new database version, likely from newer
-      // RSS Guard. Abort.
-      qFatal("Database schema is too new. Application requires <= %d but %d is installed.",
-             current_version,
-             installed_db_schema);
     }
   }
 }

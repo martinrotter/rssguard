@@ -305,19 +305,15 @@ QString RssParser::xmlMessageAuthor(const QDomElement& msg_element) const {
 }
 
 QDateTime RssParser::xmlMessageDateCreated(const QDomElement& msg_element) {
-  QDateTime date_created =
-    TextFactory::parseDateTime(msg_element.namedItem(QSL("pubDate")).toElement().text(), &m_dateTimeFormat);
+  QString published = msg_element.namedItem(QSL("pubDate")).toElement().text();
 
-  if (date_created.isNull()) {
-    date_created = TextFactory::parseDateTime(msg_element.namedItem(QSL("date")).toElement().text(), &m_dateTimeFormat);
+  if (published.trimmed().isEmpty()) {
+    published = msg_element.namedItem(QSL("date")).toElement().text();
   }
 
-  if (date_created.isNull()) {
-    date_created =
-      TextFactory::parseDateTime(msg_element.namedItem(QSL("dc:modified")).toElement().text(), &m_dateTimeFormat);
-  }
+  QString updated = msg_element.namedItem(QSL("dc:modified")).toElement().text();
 
-  return date_created;
+  return decideArticleDate(published, updated);
 }
 
 QString RssParser::xmlMessageId(const QDomElement& msg_element) const {

@@ -420,6 +420,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       break;
   }
 
+  parser->setArticleDateMode(f->publishedInsteadOfUpdatedTime());
   parser->setFetchComments(f->fetchCommentsEnabled());
   parser->setResourceHandler([&](const QUrl& url) {
     QByteArray resource;

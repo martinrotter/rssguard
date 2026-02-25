@@ -187,7 +187,7 @@ void MariaDbDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialize
   database.setPassword(qApp->settings()->password(GROUP(Database), SETTING(Database::MySQLPassword)).toString());
 
   if (!was_initialized) {
-    if (!database.open()) {
+    if (!database.isOpen() && !database.open()) {
       THROW_EX(SqlException, database.lastError());
     }
 
@@ -195,11 +195,13 @@ void MariaDbDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialize
     SqlQuery query_db(database);
 
     if (!query_db.exec(QSL("USE %1;").arg(database_name), false)) {
-      const QStringList statements =
-        prepareScript(APP_SQL_PATH, QSL(APP_DB_INIT_FILE_PATTERN).arg(ddlFilePrefix()), database_name);
+      const QString create_db = QSL("CREATE DATABASE IF NOT EXISTS %1 "
+                                    "CHARACTER SET utf8mb4 "
+                                    "COLLATE utf8mb4_unicode_ci;")
+                                  .arg(database_name);
 
       // Only create DB, exec "CREATE DATABASE" command.
-      query_db.exec(statements.at(1));
+      query_db.exec(create_db);
       query_db.finish();
     }
   }

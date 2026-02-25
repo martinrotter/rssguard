@@ -39,6 +39,11 @@ class StandardFeed : public Feed {
       iCalendar = 6
     };
 
+    enum class ArticleDateTimeBehavior {
+      Published = 0, // Use original published date of article if available.
+      Updated = 1    // Use updated date of article if article is update if available.
+    };
+
     explicit StandardFeed(RootItem* parent_item = nullptr);
     explicit StandardFeed(const StandardFeed& other);
 
@@ -140,6 +145,9 @@ class StandardFeed : public Feed {
     bool fetchFullArticlesInPlainText() const;
     void setFetchFullArticlesInPlainText(bool fetch_full_articles_in_plain_text);
 
+    ArticleDateTimeBehavior publishedInsteadOfUpdatedTime() const;
+    void setPublishedInsteadOfUpdatedTime(ArticleDateTimeBehavior published);
+
   public slots:
     void fetchMetadataForItself();
 
@@ -172,6 +180,8 @@ class StandardFeed : public Feed {
 
     bool m_fetchFullArticles;
     bool m_fetchFullArticlesInPlainText;
+
+    ArticleDateTimeBehavior m_publishedInsteadOfUpdatedTime;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)

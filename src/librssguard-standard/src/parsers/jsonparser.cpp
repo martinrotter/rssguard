@@ -211,10 +211,10 @@ QString JsonParser::jsonMessageAuthor(const QJsonObject& msg_element) const {
 }
 
 QDateTime JsonParser::jsonMessageDateCreated(const QJsonObject& msg_element) {
-  return TextFactory::parseDateTime(msg_element.contains(QSL("date_modified"))
-                                      ? msg_element[QSL("date_modified")].toString()
-                                      : msg_element[QSL("date_published")].toString(),
-                                    &m_dateTimeFormat);
+  QString published = msg_element[QSL("date_published")].toString();
+  QString updated = msg_element[QSL("date_modified")].toString();
+
+  return decideArticleDate(published, updated);
 }
 
 QString JsonParser::jsonMessageId(const QJsonObject& msg_element) const {

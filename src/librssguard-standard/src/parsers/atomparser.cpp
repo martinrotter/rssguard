@@ -444,13 +444,14 @@ QString AtomParser::xmlMessageDescription(const QDomElement& msg_element) const 
 }
 
 QDateTime AtomParser::xmlMessageDateCreated(const QDomElement& msg_element) {
+  QString published = xmlTextsFromPath(msg_element, m_atomNamespace, QSL("published"), true).join(QSL(", "));
   QString updated = xmlTextsFromPath(msg_element, m_atomNamespace, QSL("updated"), true).join(QSL(", "));
 
-  if (updated.simplified().isEmpty()) {
+  if (updated.trimmed().isEmpty()) {
     updated = xmlTextsFromPath(msg_element, m_atomNamespace, QSL("modified"), true).join(QSL(", "));
   }
 
-  return TextFactory::parseDateTime(updated, &m_dateTimeFormat);
+  return decideArticleDate(published, updated);
 }
 
 QString AtomParser::xmlMessageId(const QDomElement& msg_element) const {

@@ -148,14 +148,18 @@ QString TextFactory::ensureUniqueName(const QString& name, const QStringList& na
 }
 
 QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_format) {
+  QString input_date = date_time.simplified();
+
+  if (input_date.isEmpty()) {
+    return QDateTime();
+  }
+
   static const QList<QPair<QString, QString>> tz_offsets = {
     {"UTC", "+0000"},  {"GMT", "+0000"},  {"UT", "+0000"},  {"BST", "+0100"}, {"CEST", "+0200"}, {"CET", "+0100"},
     {"EEST", "+0300"}, {"EET", "+0200"},  {"EDT", "-0400"}, {"EST", "-0500"}, {"CDT", "-0500"},  {"CST", "-0600"},
     {"MDT", "-0600"},  {"MST", "-0700"},  {"PDT", "-0700"}, {"PST", "-0800"}, {"AKDT", "-0800"}, {"AKST", "-0900"},
     {"HST", "-1000"},  {"IST", "+0530"},  {"JST", "+0900"}, {"KST", "+0900"}, {"AEST", "+1000"}, {"AEDT", "+1100"},
     {"ACST", "+0930"}, {"ACDT", "+1030"}, {"AWST", "+0800"}};
-
-  QString input_date = date_time.simplified();
 
   for (const auto& tz : tz_offsets) {
     if (input_date.contains(tz.first)) {

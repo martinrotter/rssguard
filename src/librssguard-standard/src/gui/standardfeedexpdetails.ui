@@ -97,6 +97,23 @@
      </item>
     </layout>
    </item>
+   <item row="6" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbPublishedInsteadOfUpdated"/>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string>Article date preference</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="m_cmbPublishedInsteadOfUpdated"/>
+     </item>
+    </layout>
+   </item>
    <item row="1" column="0" colspan="2">
     <widget class="HelpSpoiler" name="m_helpDontUseRawXml" native="true"/>
    </item>
@@ -105,6 +122,9 @@
    </item>
    <item row="3" column="0" colspan="2">
     <widget class="HelpSpoiler" name="m_helpFetchFullArticles" native="true"/>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_helpArticleDatePreference" native="true"/>
    </item>
   </layout>
  </widget>
@@ -129,6 +149,8 @@
   <tabstop>m_cbFetchFullArticlesPlainTextOnly</tabstop>
   <tabstop>m_mcbFetchComments</tabstop>
   <tabstop>m_cbFetchComments</tabstop>
+  <tabstop>m_mcbPublishedInsteadOfUpdated</tabstop>
+  <tabstop>m_cmbPublishedInsteadOfUpdated</tabstop>
  </tabstops>
  <resources/>
  <connections>

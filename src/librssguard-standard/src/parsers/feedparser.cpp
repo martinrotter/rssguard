@@ -8,6 +8,7 @@
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/miscellaneous/iofactory.h>
+#include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/webfactory.h>
 #include <utility>
 
@@ -18,7 +19,8 @@
 FeedParser::FeedParser() {}
 
 FeedParser::FeedParser(QString data, DataType is_xml)
-  : m_dataType(is_xml), m_data(data), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")), m_fetchComments(false) {
+  : m_dataType(is_xml), m_data(data), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")), m_fetchComments(false),
+    m_articleDateMode(StandardFeed::ArticleDateTimeBehavior::Published) {
   if (m_data.isEmpty()) {
     return;
   }
@@ -392,7 +394,7 @@ QStringList FeedParser::xmlTextsFromPath(const QDomElement& element,
                                          const QString& namespace_uri,
                                          const QString& xml_path,
                                          bool only_first) const {
-  QStringList paths = xml_path.split('/');
+  QStringList paths = xml_path.split(QL1C('/'));
   QStringList result;
   QList<QDomElement> current_elements;
 
@@ -451,6 +453,45 @@ QString FeedParser::formatComments(const QList<FeedComment>& comments) const {
              "%3"
              "</div>")
     .arg(QObject::tr("Comments"), QString::number(comments.size()), comments_markup.join(QL1C('\n')));
+}
+
+QDateTime FeedParser::decideArticleDate(const QString& published, const QString& updated) {
+  QString final;
+
+  switch (m_articleDateMode) {
+    case StandardFeed::ArticleDateTimeBehavior::Updated: {
+      if (!updated.trimmed().isEmpty()) {
+        final = updated;
+      }
+      else {
+        final = published;
+      }
+
+      break;
+    }
+
+    case StandardFeed::ArticleDateTimeBehavior::Published:
+    default: {
+      if (!published.trimmed().isEmpty()) {
+        final = published;
+      }
+      else {
+        final = updated;
+      }
+
+      break;
+    }
+  }
+
+  return TextFactory::parseDateTime(final, &m_dateTimeFormat);
+}
+
+StandardFeed::ArticleDateTimeBehavior FeedParser::articleDateMode() const {
+  return m_articleDateMode;
+}
+
+void FeedParser::setArticleDateMode(StandardFeed::ArticleDateTimeBehavior mode) {
+  m_articleDateMode = mode;
 }
 
 bool FeedParser::fetchComments() const {

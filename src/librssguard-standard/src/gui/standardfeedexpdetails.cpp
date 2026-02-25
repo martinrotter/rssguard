@@ -2,6 +2,8 @@
 
 #include "src/gui/standardfeedexpdetails.h"
 
+#include "src/standardfeed.h"
+
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/exceptions/scriptexception.h>
@@ -33,4 +35,14 @@ StandardFeedExpDetails::StandardFeedExpDetails(QWidget* parent) : QWidget(parent
                                            "has many articles and each of them has comments, then the whole feed "
                                            "fetching can be much much slower with this option enabled."),
                                         true);
+
+  m_ui.m_helpArticleDatePreference
+    ->setHelpText(tr("This decides whether 'Published' or 'Updated' timestamp is used when deciding the date and time "
+                     "of each article."),
+                  false);
+
+  m_ui.m_cmbPublishedInsteadOfUpdated->addItem(tr("Use 'Published' date"),
+                                               int(StandardFeed::ArticleDateTimeBehavior::Published));
+  m_ui.m_cmbPublishedInsteadOfUpdated->addItem(tr("Use 'Updated' date"),
+                                               int(StandardFeed::ArticleDateTimeBehavior::Updated));
 }

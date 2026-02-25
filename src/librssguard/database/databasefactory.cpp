@@ -20,11 +20,6 @@ DatabaseFactory::DatabaseFactory(QObject* parent)
   determineDriver();
 }
 
-void DatabaseFactory::removeConnection(const QString& connection_name) {
-  qDebugNN << LOGSEC_DB << "Removing database connection" << QUOTE_W_SPACE_DOT(connection_name);
-  QSqlDatabase::removeDatabase(connection_name);
-}
-
 void DatabaseFactory::determineDriver() {
   m_allDbDrivers = {new SqliteDriver(this)};
 
@@ -46,7 +41,7 @@ void DatabaseFactory::determineDriver() {
 
   // Try to setup connection and fallback to SQLite.
   try {
-    m_dbDriver->connection(metaObject()->className());
+    m_dbDriver->connection(QSL("DatabaseFactory"));
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_DB << "Failed to reach connection to DB source:" << QUOTE_W_SPACE_DOT(ex.message());
