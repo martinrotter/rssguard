@@ -503,12 +503,12 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="135"/>
       <source>this database file cannot be used because it comes from old major app version</source>
-      <translation type="unfinished">this database file cannot be used because it comes from old major app version</translation>
+      <translation>ce fichier de base de données ne peut pas être utilisé car il provient de l'ancienne version majeure de l'application</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="141"/>
       <source>database schema is too new, application requires &lt;= %1 but %2 is installed</source>
-      <translation type="unfinished">database schema is too new, application requires &lt;= %1 but %2 is installed</translation>
+      <translation>le schéma de la base de données est trop nouveau, l'application nécessite &lt;= %1 mais %2 est installé</translation>
     </message>
   </context>
   <context>
@@ -522,12 +522,12 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="53"/>
       <source>Connection to your database was not established with error: %1. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: %1. Falling back to SQLite.</translation>
+      <translation>La connexion à votre base de données n'a pas été établie avec l'erreur: %1. Retour à SQLite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="65"/>
       <source>Connection to your database was not established with error: %1.</source>
-      <translation type="unfinished">Connection to your database was not established with error: %1.</translation>
+      <translation>La connexion à votre base de données n'a pas été établie avec l'erreur : %1.</translation>
     </message>
   </context>
   <context>
@@ -2473,7 +2473,7 @@ comme &amp;non-lus</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="150"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="862"/>
       <source>&amp;Edit items</source>
-      <translation type="unfinished">&amp;Edit items</translation>
+      <translation>&amp;Editer les éléments</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="216"/>
@@ -3424,7 +3424,7 @@ nouveau flux</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="13"/>
       <source>Only %1 %2 backups are supported.</source>
-      <translation type="unfinished">Only %1 %2 backups are supported.</translation>
+      <translation>Seules les sauvegardes %1 %2 sont prises en charge.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="14"/>
@@ -6396,7 +6396,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="600"/>
       <source>errored items</source>
-      <translation>éléments érronés</translation>
+      <translation>éléments erronés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="603"/>
@@ -6821,7 +6821,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="31"/>
       <source>Select RSS Guard 4.x database file</source>
-      <translation type="unfinished">Select RSS Guard 4.x database file</translation>
+      <translation>Sélectionner le fichier de base de données RSS Guard 4.x</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="34"/>
@@ -6831,7 +6831,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="62"/>
       <source>Import data from RSS Guard 4.x</source>
-      <translation type="unfinished">Import data from RSS Guard 4.x</translation>
+      <translation>Importer les données depuis RSS Guard 4.x</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="69"/>
@@ -8417,7 +8417,7 @@ Déscription: %3</translation>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="87"/>
       <source>cannot copy backup SQLite file</source>
-      <translation type="unfinished">cannot copy backup SQLite file</translation>
+      <translation>ne peut pas copier le fichier de sauvegarde SQLite</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="196"/>
@@ -8960,12 +8960,12 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
       <source>First steps</source>
-      <translation type="unfinished">First steps</translation>
+      <translation>Premiers pas</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="91"/>
       <source>This new profile does not include any feeds. What do you want to do?</source>
-      <translation type="unfinished">This new profile does not include any feeds. What do you want to do?</translation>
+      <translation>Ce nouveau profil n'inclut aucun flux. Que voulez-vous faire ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="93"/>
@@ -8987,22 +8987,22 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="106"/>
       <source>Import from &amp;RSS Guard 4.x</source>
-      <translation type="unfinished">Import from &amp;RSS Guard 4.x</translation>
+      <translation>Importer depuis &amp;RSS Guard 4.x</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="110"/>
       <source>Import from &amp;QuiteRSS</source>
-      <translation type="unfinished">Import from &amp;QuiteRSS</translation>
+      <translation>Importer depuis &amp;QuiteRSS</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="114"/>
       <source>Load from &amp;OPML file</source>
-      <translation type="unfinished">Load from &amp;OPML file</translation>
+      <translation>Charger depuis un fichier &amp;OPML</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="118"/>
       <source>Load &amp;default feeds</source>
-      <translation type="unfinished">Load &amp;default feeds</translation>
+      <translation>Charger les flux par &amp;défaut</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="655"/>
@@ -9059,7 +9059,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="782"/>
       <source>Import from RSS Guard 4.x</source>
-      <translation type="unfinished">Import from RSS Guard 4.x</translation>
+      <translation>Importer depuis RSS Guard 4.x</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="51"/>
