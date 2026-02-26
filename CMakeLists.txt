@@ -188,18 +188,6 @@ if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
   add_compile_definitions(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)
 endif()
 
-if(ENABLE_ICU)
-  if(WIN32 AND NOT ICU_ROOT)
-    set(ICU_ROOT "${CMAKE_SOURCE_DIR}/resources/scripts/icu")
-  endif()
-
-  if(APPLE AND NOT ICU_ROOT)
-    set(ICU_ROOT "/opt/homebrew/opt/icu4c")
-  endif()
-
-  add_compile_definitions(HAS_ICU)
-endif()
-
 if(ENABLE_MEDIAPLAYER_LIBMPV)
   message(STATUS "Enabling libmpv media player backend.")
 
@@ -227,6 +215,18 @@ if(ENABLE_MEDIAPLAYER_QTMULTIMEDIA OR ENABLE_MEDIAPLAYER_LIBMPV)
   add_compile_definitions(ENABLE_MEDIAPLAYER)
 else()
   message(STATUS "Media player feature is disabled.")
+endif()
+
+if(ENABLE_ICU)
+  if(WIN32 AND NOT ICU_ROOT)
+    set(ICU_ROOT "${CMAKE_SOURCE_DIR}/resources/scripts/icu")
+  endif()
+
+  if(APPLE AND NOT ICU_ROOT)
+    set(ICU_ROOT "/opt/homebrew/opt/icu4c")
+  endif()
+
+  add_compile_definitions(HAS_ICU)
 endif()
 
 if(UNIX AND NOT APPLE)
