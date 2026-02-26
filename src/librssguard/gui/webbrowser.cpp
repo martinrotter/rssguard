@@ -28,9 +28,9 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
     m_webView(viewer), m_searchWidget(new SearchTextWidget(this)),
     m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                             tr("Open in system web browser"),
-                                            this)),
+                                            this))
 #if defined(ENABLE_MEDIAPLAYER)
-    m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
+    , m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
                                               tr("Play in media player"),
                                               this))
 #endif
