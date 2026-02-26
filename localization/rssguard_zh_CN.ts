@@ -56,7 +56,7 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1133"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1130"/>
       <source>Application is already running.</source>
       <translation>应用程序已经在运行。</translation>
     </message>
@@ -71,27 +71,22 @@
       <translation>设置文件未成功复制到输出目录。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="575"/>
-      <source>Database restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>未启动数据库恢复。请确保输出目录可写。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="582"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="579"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>未启动设置恢复。请确保输出目录可写。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1151"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1148"/>
       <source>Cannot add feed</source>
       <translation>无法添加订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1152"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1149"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>由于没有活跃的账户可以添加订阅源，因此无法添加订阅源。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1014"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1011"/>
       <source>Unread articles fetched</source>
       <translation>已获取未读文章</translation>
     </message>
@@ -116,7 +111,7 @@ version by clicking this popup notification.</source>
 请点击此弹出通知，查看此版本所包含的新功能。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1132"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1129"/>
       <source>Already running</source>
       <translation>已在运行</translation>
     </message>
@@ -501,16 +496,35 @@ Number of disabled feeds: %3</source>
     </message>
   </context>
   <context>
+    <name>DatabaseDriver</name>
+    <message>
+      <location filename="../src/librssguard/database/databasedriver.cpp" line="135"/>
+      <source>this database file cannot be used because it comes from old major app version</source>
+      <translation type="unfinished">this database file cannot be used because it comes from old major app version</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/database/databasedriver.cpp" line="141"/>
+      <source>database schema is too new, application requires &lt;= %1 but %2 is installed</source>
+      <translation type="unfinished">database schema is too new, application requires &lt;= %1 but %2 is installed</translation>
+    </message>
+  </context>
+  <context>
     <name>DatabaseFactory</name>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="57"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="52"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="64"/>
       <source>Cannot connect to database</source>
       <translation>无法连接到数据库</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="58"/>
-      <source>Connection to your database was not established with error: &apos;%1&apos;. Falling back to SQLite.</source>
-      <translation>您的数据库连接未建立，错误为：&apos;%1&apos;。退回到 SQLite。</translation>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="53"/>
+      <source>Connection to your database was not established with error: %1. Falling back to SQLite.</source>
+      <translation type="unfinished">Connection to your database was not established with error: %1. Falling back to SQLite.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="65"/>
+      <source>Connection to your database was not established with error: %1.</source>
+      <translation type="unfinished">Connection to your database was not established with error: %1.</translation>
     </message>
   </context>
   <context>
@@ -770,34 +784,34 @@ Item custom ID: %5</source>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="434"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="442"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>开始自动下载某些订阅源的文章</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="435"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="443"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>我将为 %n 个订阅源自动下载新文章。</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="459"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="467"/>
       <source>Some feeds have errors</source>
       <translation>部分订阅源存在错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="460"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="468"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation>部分订阅源在获取文章时发生错误。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="89"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="97"/>
       <source>Cannot fetch articles at this point</source>
       <translation>目前无法获取文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="90"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="98"/>
       <source>You cannot fetch new articles now because another critical operation is ongoing.</source>
       <translation>因为另一个关键操作正在进行，所以暂时无法获取新文章。</translation>
     </message>
@@ -2052,14 +2066,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     </message>
   </context>
   <context>
-    <name>FormEditRedditAccount</name>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/formeditredditaccount.cpp" line="13"/>
-      <source>Server setup</source>
-      <translation>服务器配置</translation>
-    </message>
-  </context>
-  <context>
     <name>FormEditStandardAccount</name>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formeditstandardaccount.cpp" line="13"/>
@@ -2241,795 +2247,813 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="840"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="851"/>
       <source>&amp;File</source>
       <translation>文件 (&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="62"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="841"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="852"/>
       <source>&amp;Help</source>
       <translation>帮助 (&amp;H)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="73"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="842"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="853"/>
       <source>&amp;View</source>
       <translation>查看 (&amp;V)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="77"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="843"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="854"/>
       <source>Show/hide</source>
       <translation>显示/隐藏</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="845"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="856"/>
       <source>&amp;Tools</source>
       <translation>工具 (&amp;T)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="114"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="846"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="857"/>
       <source>F&amp;eeds</source>
       <translation>订阅源 (&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="118"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="847"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="858"/>
       <source>&amp;Add item</source>
       <translation>添加项目 (&amp;A)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="123"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="848"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="859"/>
       <source>&amp;Move</source>
       <translation>移动 (&amp;M)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="168"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="849"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="185"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="863"/>
       <source>Art&amp;icles</source>
       <translation>文章 (&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="206"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="851"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="223"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="865"/>
       <source>&amp;Accounts</source>
       <translation>账户 (&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="239"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="673"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="256"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="684"/>
       <source>&amp;Quit</source>
       <translation>退出 (&amp;Q)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="242"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="675"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="259"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="686"/>
       <source>Quit the application.</source>
       <translation>退出应用程序。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="253"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="677"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="270"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="688"/>
       <source>&amp;Settings</source>
       <translation>设置 (&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="256"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="679"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="273"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="690"/>
       <source>Display settings of the application.</source>
       <translation>显示应用程序的设置。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="264"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="681"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="692"/>
       <source>&amp;About application</source>
       <translation>关于应用程序 (&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="683"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="284"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="694"/>
       <source>Displays extra info about this application.</source>
       <translation>显示此应用程序的额外信息。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="685"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="298"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="696"/>
       <source>&amp;Fullscreen</source>
       <translation>全屏 (&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="284"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="687"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="301"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="698"/>
       <source>Switch fullscreen mode.</source>
       <translation>切换到全屏模式。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="689"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="309"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="700"/>
       <source>&amp;Fetch all</source>
       <translation>获取全部 (&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="295"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="691"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="312"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="702"/>
       <source>Fetch all feeds</source>
       <translation>获取所有订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="303"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="693"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="320"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="704"/>
       <source>Fetch &amp;selected</source>
       <translation>获取所选 (&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="306"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="695"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="323"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="706"/>
       <source>Fetch selected feeds</source>
       <translation>获取所选的订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="327"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="699"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="344"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="710"/>
       <source>Mark articles &amp;read</source>
       <translation>标记文章为已读 (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="330"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="701"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="347"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="712"/>
       <source>Mark selected articles read</source>
       <translation>标记所选文章为已读</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="338"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="703"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="355"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="714"/>
       <source>Mark articles &amp;unread</source>
       <translation>标记文章为未读 (&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="341"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="705"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="358"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="716"/>
       <source>Mark selected articles unread</source>
       <translation>标记所选文章为未读</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="349"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="707"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="366"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="718"/>
       <source>Switch &amp;importance</source>
       <translation>切换重要性 (&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="352"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="709"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="369"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="720"/>
       <source>Switch importance of selected articles</source>
       <translation>切换所选文章的重要性</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="363"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="713"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="380"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="724"/>
       <source>Mark all messages (without message filters) from selected items as read.</source>
       <translation>将所选项中的所有消息（不包括消息过滤器）标记为已读。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="374"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="717"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="391"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="728"/>
       <source>Mark all messages (without message filters) from selected items as unread.</source>
       <translation>将所选项中的所有消息（不包括消息过滤器）标记为未读。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="382"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="719"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="399"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="730"/>
       <source>&amp;Delete articles</source>
       <translation>删除文章 (&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="314"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="697"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="331"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="708"/>
       <source>&amp;Edit selected items</source>
       <translation>编辑所选项目 (&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="88"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="844"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="855"/>
       <source>&amp;Focus</source>
       <translation>聚焦(&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="199"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="850"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="133"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="860"/>
+      <source>&amp;Sort</source>
+      <translation type="unfinished">&amp;Sort</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="141"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="861"/>
+      <source>&amp;Expand/collapse</source>
+      <translation type="unfinished">&amp;Expand/collapse</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="150"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="862"/>
+      <source>&amp;Edit items</source>
+      <translation type="unfinished">&amp;Edit items</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="216"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="864"/>
       <source>&amp;Recycle bins</source>
       <translation>回收站(&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="214"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="852"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="231"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="866"/>
       <source>Tabs</source>
       <translation>标签页</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="319"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="698"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="336"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="709"/>
       <source>&amp;Delete selected items</source>
       <translation>删除所选项目 (&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="360"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="711"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="377"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="722"/>
       <source>Mark selected items &amp;read</source>
       <translation>标记所选项目为已读 (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="371"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="715"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="388"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="726"/>
       <source>Mark selected items &amp;unread</source>
       <translation>标记所选项目为未读 (&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="390"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="720"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="407"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="731"/>
       <source>&amp;Clean selected items</source>
       <translation>清除所选项目 (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="393"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="722"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="410"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="733"/>
       <source>Deletes all messages from selected items.</source>
       <translation>删除所选项目中所有消息。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="401"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="724"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="418"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
       <source>Open in &amp;external browser</source>
       <translation>用外部浏览器打开 (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="404"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="726"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="421"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="737"/>
       <source>Open selected articles in external browser</source>
       <translation>用外部浏览器打开选定的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="412"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="728"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="429"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="739"/>
       <source>Open in &amp;internal browser</source>
       <translation>用内部浏览器打开 (&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="415"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="730"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="432"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="741"/>
       <source>Open selected articles in internal browser</source>
       <translation>用内部浏览器打开选定的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="426"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="732"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="443"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="743"/>
       <source>No actions available</source>
       <translation>没有可用操作</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="429"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="734"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="446"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="745"/>
       <source>No actions are available right now.</source>
       <translation>目前没有可用操作。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="437"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="736"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="747"/>
       <source>&amp;Mark all read</source>
       <translation>标记所有为已读 (&amp;M)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="738"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="457"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="749"/>
       <source>Marks all messages in all items read. This does not take message filters into account.</source>
       <translation>将所有项目中的消息标记为已读，不考虑消息过滤器。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="451"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="740"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="751"/>
       <source>Switch main window visibility</source>
       <translation>切换主窗口的可见性</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="742"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="753"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
       <translation>主窗口可见时将其隐藏，反之则显示。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="744"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="485"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="755"/>
       <source>&amp;Feed list</source>
       <translation>订阅源列表 (&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="479"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="748"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="496"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="759"/>
       <source>&amp;Clean all</source>
       <translation>清除所有 (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="482"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="750"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="499"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="761"/>
       <source>Deletes all messages from all items.</source>
       <translation>删除所有项目中的消息。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="490"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="752"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="507"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="763"/>
       <source>&amp;Next item</source>
       <translation>下一个项目 (&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="498"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="753"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="515"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="764"/>
       <source>&amp;Previous item</source>
       <translation>上一个项目 (&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="506"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="754"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="523"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="765"/>
       <source>&amp;Next article</source>
       <translation>下一篇文章 (&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="514"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="755"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="531"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="766"/>
       <source>&amp;Previous article</source>
       <translation>上一篇文章 (&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="522"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="756"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="539"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="767"/>
       <source>Check for &amp;updates</source>
       <translation>检查更新 (&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="525"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="758"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="542"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="769"/>
       <source>Check if new update for the application is available for download.</source>
       <translation>检查是否有新的应用更新可供下载。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="539"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="760"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="556"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="771"/>
       <source>&amp;Main menu</source>
       <translation>主菜单 (&amp;M)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="542"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="762"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="559"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
       <source>Hides or displays the main menu.</source>
       <translation>隐藏或显示主菜单。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="550"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="764"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="567"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="775"/>
       <source>Report a &amp;bug...</source>
       <translation>报告错误 (&amp;B)…</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="561"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="765"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="776"/>
       <source>&amp;Toolbars</source>
       <translation>工具栏 (&amp;T)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="564"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="767"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="581"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="778"/>
       <source>Switch visibility of main toolbars.</source>
       <translation>切换主工具栏的可见性。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="769"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="595"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
       <source>&amp;List headers</source>
       <translation>列表标题 (&amp;L)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="586"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="603"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="781"/>
       <source>&amp;Donate...</source>
       <translation>捐赠 (&amp;D)…</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="594"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="771"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="611"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
       <source>Display &amp;documentation</source>
       <translation>查看文档 (&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="602"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="772"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="619"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="783"/>
       <source>&amp;Restore settings</source>
       <translation>恢复设置 (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="610"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="627"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="784"/>
       <source>&amp;Backup settings</source>
       <translation>备份设置 (&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="618"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="774"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="635"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="785"/>
       <source>Switch layout</source>
       <translation>切换布局</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="728"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="745"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="303"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="801"/>
       <source>Add new folder</source>
       <translation>添加新文件夹</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="829"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="846"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
       <source>&amp;Copy data to clipboard</source>
       <translation>复制数据到剪贴板(&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="867"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="813"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="884"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="824"/>
       <source>Focus feed search box</source>
       <translation>聚焦订阅源搜索框</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="872"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="889"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
       <source>Focus article search box</source>
       <translation>聚焦文章搜索框</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="877"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="894"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="826"/>
       <source>Scroll &amp;up preview</source>
       <translation>向上滚动预览(&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="882"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="899"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
       <source>Scroll &amp;down preview</source>
       <translation>向下滚动预览(&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="887"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="904"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
       <source>Rearrange &amp;subfolders alphabetically</source>
       <translation>按字母顺序重新排列子文件夹 (&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="953"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="839"/>
       <source>Reload &amp;skin</source>
       <translation>重新加载皮肤(&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="941"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="829"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="958"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="840"/>
       <source>Focus &amp;feed list</source>
       <translation>聚焦订阅源列表(&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="946"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="830"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="963"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="841"/>
       <source>Focus &amp;article list</source>
       <translation>聚焦文章列表(&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="951"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="831"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="968"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="842"/>
       <source>Focus article &amp;preview</source>
       <translation>聚焦文章预览(&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="956"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="832"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="973"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="843"/>
       <source>&amp;Load all remaining articles</source>
       <translation>加载所有剩余文章(&amp;L)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="961"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="833"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="978"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="844"/>
       <source>Reveal &amp;feed</source>
       <translation>显示订阅源(&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="966"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="834"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="983"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="845"/>
       <source>&amp;Enable/disable selected feeds</source>
       <translation>启用/禁用选定的源(&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="971"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="835"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="988"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="846"/>
       <source>Edit &amp;feed of selected article</source>
       <translation>编辑选定文章的源(&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="976"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="836"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="993"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="847"/>
       <source>Mark articles &amp;above read</source>
       <translation>将上方文章标记为已读(&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="981"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="837"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="998"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="848"/>
       <source>Mark articles &amp;below read</source>
       <translation>将下方文章标记为已读(&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="986"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="838"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1003"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="849"/>
       <source>Mark articles &amp;above unread</source>
       <translation>将上方文章标记为未读(&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="991"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="839"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1008"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="850"/>
       <source>Mark articles &amp;below unread</source>
       <translation>将下方文章标记为未读(&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="626"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="775"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="643"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
       <source>Send via e-mail</source>
       <translation>通过电子邮件发送</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="471"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="488"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="757"/>
       <source>Hides or shows the list of feeds/folders.</source>
       <translation>隐藏或显示源/文件夹列表。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="629"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="646"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>Send selected articles via e-mail</source>
       <translation>通过电子邮件发送选定的文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="637"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="779"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="654"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>&amp;Cleanup database</source>
       <translation>清理数据库 (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="645"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="662"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="791"/>
       <source>&amp;Expand/collapse selected item</source>
       <translation>展开/收起所选项目 (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="781"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="670"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
       <source>&amp;Add account</source>
       <translation>添加账户 (&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="661"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="678"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="793"/>
       <source>&amp;Restore articles</source>
       <translation>恢复文章 (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="669"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="783"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="686"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
       <source>&amp;Restore all recycle bins</source>
       <translation>还原所有回收站 (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="677"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="784"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="694"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="795"/>
       <source>&amp;Empty all recycle bins</source>
       <translation>清空所有回收站 (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="685"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="785"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="702"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
       <source>Next &amp;unread article</source>
       <translation>下一篇未读文章 (&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="699"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="716"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
       <source>Status bar</source>
       <translation>状态栏</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="707"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="787"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="724"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
       <source>&amp;Edit selected account</source>
       <translation>编辑所选账户 (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="715"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="732"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
       <source>&amp;Delete selected account</source>
       <translation>删除所选账户 (&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="733"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="791"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="750"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
       <source>Stop ongoing fetching</source>
       <translation>停止持续获取</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="741"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="758"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="803"/>
       <source>Close all tabs</source>
       <translation>关闭所有标签页</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="746"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="793"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="763"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
       <source>Close all tabs except current</source>
       <translation>关闭其他标签页</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="751"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="768"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="805"/>
       <source>Go to &amp;next tab</source>
       <translation>跳转到下一个标签页 (&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="795"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="773"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>Go to &amp;previous tab</source>
       <translation>跳转到上一个标签页 (&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="764"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="781"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="807"/>
       <source>&amp;Enable article preview</source>
       <translation>启用文章预览 (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="769"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="786"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
       <source>&amp;Copy URL of selected item</source>
       <translation>复制所选项目的 URL (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="774"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="791"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="809"/>
       <source>Article &amp;filters</source>
       <translation>文章筛选 (&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="782"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="799"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="810"/>
       <source>&amp;Show tree expanders</source>
       <translation>显示树状扩展 (&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="787"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="804"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="811"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
       <translation>用自定义自动下载策略获取 Feeds (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="795"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="801"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="812"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
       <source>Alternate row colors in lists</source>
       <translation>列表交替显示行颜色</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="803"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="820"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="813"/>
       <source>Automatically &amp;expand item when selected</source>
       <translation>当选择时自动展开项目 (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="814"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="803"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="831"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
       <source>Message viewer toolbars</source>
       <translation>消息查看器工具栏</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="819"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="836"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
       <source>Expand/collapse selected item &amp;recursively</source>
       <translation>递归展开/折叠所选项目 (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="824"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="805"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="841"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
       <source>Close &amp;current tab</source>
       <translation>关闭当前标签页 (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="837"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="807"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="854"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
       <source>&amp;Sort alphabetically</source>
       <translation>按字母顺序排序 (&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="842"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="859"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
       <source>Move &amp;up</source>
       <translation>向上移动 (&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="847"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="809"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="864"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="820"/>
       <source>Move to &amp;top</source>
       <translation>移至顶部 (&amp;T)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="852"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="810"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="869"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
       <source>Move &amp;down</source>
       <translation>向下移动 (&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="857"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="811"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="874"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="822"/>
       <source>Move to &amp;bottom</source>
       <translation>移至底部 (&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="862"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="879"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
       <source>Display application &amp;log</source>
       <translation>显示应用程序日志 (&amp;L)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="892"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="909"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="829"/>
       <source>Rearrange &amp;feeds alphabetically</source>
       <translation>按字母顺序重新排列订阅源 (&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="900"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="917"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="830"/>
       <source>You must add new account first</source>
       <translation>你必须首先添加新账户</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="903"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="920"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="832"/>
       <source>You must add new account first.</source>
       <translation>你必须首先添加新账户。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="908"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="925"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="834"/>
       <source>Edit &amp;child feeds</source>
       <translation>编辑子订阅源 (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="913"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="824"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="930"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="835"/>
       <source>Edit child feeds (&amp;recursive)</source>
       <translation>递归编辑子订阅源 (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="918"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="935"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="836"/>
       <source>Play in &amp;media player</source>
       <translation>在媒体播放器中播放</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="926"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="826"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="943"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="837"/>
       <source>&amp;Pause automatic feed fetching</source>
       <translation>暂停自动订阅源获取(&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="931"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="948"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="838"/>
       <source>&amp;Purge selected feeds</source>
       <translation>清空所选订阅源(&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="723"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="740"/>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="313"/>
-      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
+      <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
       <source>Add new feed</source>
       <translation>添加新订阅源</translation>
     </message>
@@ -3064,12 +3088,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>请先关闭已打开的模式对话框。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="800"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="809"/>
       <source>Skin reloaded</source>
       <translation>重新加载了皮肤</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="801"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="810"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
       <translation>注意此功能只是为了皮肤调试目的。重启程序让一切正确加载。</translation>
     </message>
@@ -3372,6 +3396,10 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <name>FormRestoreDatabaseSettings</name>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="13"/>
+      <source>Only %1 %2 backups are supported.</source>
+      <translation type="unfinished">Only %1 %2 backups are supported.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="14"/>
       <source>No operation executed yet.</source>
       <translation>尚未执行任何操作。</translation>
@@ -6281,17 +6309,17 @@ Feedly是一个安全的空间，你可以私密组织和研究对你而言重�
       <translation>新的（未读）文章获取</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="31"/>
+      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="33"/>
       <source>XML problem: %1</source>
       <translation>XML问题：%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="41"/>
+      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="43"/>
       <source>JSON problem: %1</source>
       <translation>JSON问题：%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="453"/>
+      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="455"/>
       <source>Comments</source>
       <translation>评论</translation>
     </message>
@@ -6385,17 +6413,17 @@ List of supported readers:</source>
       <translation>右下</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="449"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="453"/>
       <source>escape sequence not completed</source>
       <translation>转义序列未完成</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="453"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="457"/>
       <source>closing &quot; is missing</source>
       <translation>缺少关闭的 &quot;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="457"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="461"/>
       <source>closing &apos; is missing</source>
       <translation>缺少关闭的 &apos;</translation>
     </message>
@@ -6547,11 +6575,6 @@ List of supported readers:</source>
       <location filename="../src/librssguard-standard/src/standardserviceentrypoint.cpp" line="25"/>
       <source>This service offers integration with standard online RSS/RDF/ATOM/JSON/Sitemap/iCalendar feeds and podcasts.</source>
       <translation>这项服务提供 RSS/RDF/ATOM/JSON 订阅和播客的集成。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditentrypoint.cpp" line="41"/>
-      <source>Simplistic Reddit client.</source>
-      <translation>简化的 Reddit 客户端。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="17"/>
@@ -6737,191 +6760,6 @@ stack: %3</source>
       <translation>
         <numerusform>已删除了%n篇文章(s)。</numerusform>
       </translation>
-    </message>
-  </context>
-  <context>
-    <name>RedditAccountDetails</name>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="17"/>
-      <source>Username</source>
-      <translation>用户名</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="33"/>
-      <source>OAuth 2.0 settings</source>
-      <translation>OAuth 2.0 设置</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="39"/>
-      <source>Client ID</source>
-      <translation>账户ID</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="52"/>
-      <source>Client secret</source>
-      <translation>账户密码</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="65"/>
-      <source>Redirect URL</source>
-      <translation>重定向 URL</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="80"/>
-      <source>Get my credentials</source>
-      <translation>获取我的证书</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="110"/>
-      <source>Only download newest X articles per feed</source>
-      <translation>仅下载每个订阅源的最新 X 篇文章</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="134"/>
-      <source>&amp;Login</source>
-      <translation>登录 (&amp;L)</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.ui" line="163"/>
-      <source>Download unread articles only</source>
-      <translation>仅下载未读文章</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="15"/>
-      <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-      <translation>你必须填写你的账户ID/密码，也要填写正确的重定向URL。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="18"/>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="19"/>
-      <source>Not tested yet.</source>
-      <translation>尚未测试。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="21"/>
-      <source>User-visible username</source>
-      <translation>显示的用户名</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="55"/>
-      <source>No username entered.</source>
-      <translation>用户名未输入。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="58"/>
-      <source>Some username entered.</source>
-      <translation>用户名已输入。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="64"/>
-      <source>You did not grant access.</source>
-      <translation>你没有授予访问权限。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="65"/>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="73"/>
-      <source>There was error during testing.</source>
-      <translation>测试时发生了错误。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="72"/>
-      <source>There is error: %1</source>
-      <translation>出现错误：%1</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="78"/>
-      <source>Tested successfully. You may be prompted to login once more.</source>
-      <translation>测试成功。你可能需要再次登录。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="79"/>
-      <source>Your access was approved.</source>
-      <translation>权限申请已被批准。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="111"/>
-      <source>Preconfigured client ID/secret will be used.</source>
-      <translation>将使用预先配置好的账户ID/密码。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="113"/>
-      <source>Empty value is entered.</source>
-      <translation>未输入。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/redditaccountdetails.cpp" line="117"/>
-      <source>Some value is entered.</source>
-      <translation>已输入。</translation>
-    </message>
-  </context>
-  <context>
-    <name>RedditCategory</name>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditcategory.cpp" line="17"/>
-      <source>Subscriptions</source>
-      <translation>订阅</translation>
-    </message>
-  </context>
-  <context>
-    <name>RedditNetworkFactory</name>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="104"/>
-      <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="140"/>
-      <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="322"/>
-      <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="428"/>
-      <source>you are not logged in</source>
-      <translation>您尚未登录</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="350"/>
-      <source>Invalid Reddit response</source>
-      <translation>无效的 Reddit 响应</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="530"/>
-      <source>Reddit: authentication error</source>
-      <translation>Reddit: 身份认证错误</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="531"/>
-      <source>Click this to login again. Error is: &apos;%1&apos;</source>
-      <translation>点此重新登录，报错：&apos;%1&apos;</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="534"/>
-      <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="547"/>
-      <source>Login</source>
-      <translation>登录</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="543"/>
-      <source>Reddit: authorization denied</source>
-      <translation>Reddit: 身份认证被拒</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditnetworkfactory.cpp" line="544"/>
-      <source>Click this to login again.</source>
-      <translation>点此重新登录。</translation>
-    </message>
-  </context>
-  <context>
-    <name>RedditServiceRoot</name>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="139"/>
-      <source>Authentication status: %1
-Login tokens expiration: %2</source>
-      <translation>认证状态：%1
-Token 过期时间：%2</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="141"/>
-      <source>logged-in</source>
-      <translation>已登录</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/redditserviceroot.cpp" line="141"/>
-      <source>NOT logged-in</source>
-      <translation>未登录</translation>
     </message>
   </context>
   <context>
@@ -8533,7 +8371,12 @@ Description: %3</source>
   <context>
     <name>SqliteDriver</name>
     <message>
-      <location filename="../src/librssguard/database/sqlitedriver.cpp" line="281"/>
+      <location filename="../src/librssguard/database/sqlitedriver.cpp" line="87"/>
+      <source>cannot copy backup SQLite file</source>
+      <translation type="unfinished">cannot copy backup SQLite file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/database/sqlitedriver.cpp" line="196"/>
       <source>Database file not copied to output directory successfully.</source>
       <translation>数据库文件未能成功复制到输出目录。</translation>
     </message>
@@ -8628,7 +8471,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="78"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="80"/>
       <source>Encoding: %1
 Type: %2
 Post-processing script: %3
@@ -8645,68 +8488,68 @@ HTTP/2: %6
 获取完整文章： %7 （仅纯文本：%8)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="88"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="89"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="90"/>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="91"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="92"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="93"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="94"/>
       <source>yes</source>
       <translation>是</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="88"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="89"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="90"/>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="91"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="92"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="93"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="94"/>
       <source>no</source>
       <translation>否</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="227"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="234"/>
       <source>Script</source>
       <translation>脚本</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="230"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="237"/>
       <source>Local file</source>
       <translation>本地文件</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="462"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="469"/>
       <source>uses application setting</source>
       <translation>使用程序设置</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="465"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="472"/>
       <source>enabled</source>
       <translation>已启用</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="468"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="475"/>
       <source>disabled</source>
       <translation>已停用</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="471"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="478"/>
       <source>unknown state</source>
       <translation>未知状态</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="233"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="240"/>
       <source>Unknown</source>
       <translation>不详</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="445"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="452"/>
       <source>Cannot move feed, detailed information was logged via debug log.</source>
       <translation>不能移动feed，详细信息记录在调试日志中。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="397"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="404"/>
       <source>feed format not recognized</source>
       <translation>不识别的订阅源格式</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="444"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="451"/>
       <source>Cannot move feed</source>
       <translation>不能移动feed</translation>
     </message>
@@ -8878,47 +8721,47 @@ Also, you can post-process generated feed data with yet another script if you wi
       <translation>为 Feed 选择主项目。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="61"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="58"/>
       <source>Type</source>
       <translation>类型</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="75"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="72"/>
       <source>Select type of the standard feed.</source>
       <translation>选择标准 Feed 的类型。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="85"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="82"/>
       <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
       <translation>选择标准 Feed 的编码，如果你不确定，请选择 &quot;UTF-8&quot;。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="99"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="96"/>
       <source>Title</source>
       <translation>名称</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="119"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="116"/>
       <source>Description</source>
       <translation>描述</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="139"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="136"/>
       <source>Source</source>
       <translation>来源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="178"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="175"/>
       <source>Post-processing script</source>
       <translation>后处理脚本</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="280"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="277"/>
       <source>Fetch metadata</source>
       <translation>获取元数据</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="227"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="224"/>
       <source>Icon</source>
       <translation>图标</translation>
     </message>
@@ -8928,7 +8771,7 @@ Also, you can post-process generated feed data with yet another script if you wi
       <translation>主文件夹</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="251"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="248"/>
       <source>Select icon for your feed.</source>
       <translation>为你的 Feed 选择图标。</translation>
     </message>
@@ -8961,12 +8804,17 @@ Also, you can post-process generated feed data with yet another script if you wi
       <translation>获取文章评论</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="22"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="108"/>
+      <source>Article date preference</source>
+      <translation type="unfinished">Article date preference</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="24"/>
       <source>Turning this setting ON will fetch full source articles for this feed. Note that this will slow down feed fetching and also can make your database considerably bigger.</source>
       <translation>打开此设置会获取此订阅源的完整源文章。 注意，这会降低订阅源获取速度，也会使数据库大得多。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="26"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="28"/>
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
@@ -8975,9 +8823,24 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
 此设置在解析订阅源的原始 XML 非常缓慢时有用，对于有很长内容的订阅源会发生这种情况。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="32"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
       <source>This enables fetching of embedded article comments. Note that if the feed has many articles and each of them has comments, then the whole feed fetching can be much much slower with this option enabled.</source>
       <translation>这让程序能取得内嵌的文章评论。注意如果订阅源有很多文章，而且每一篇都有评论，那么启用这个选项会极大减慢获取整个订阅源的整体速度。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="40"/>
+      <source>This decides whether &apos;Published&apos; or &apos;Updated&apos; timestamp is used when deciding the date and time of each article.</source>
+      <translation type="unfinished">This decides whether &apos;Published&apos; or &apos;Updated&apos; timestamp is used when deciding the date and time of each article.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="44"/>
+      <source>Use &apos;Published&apos; date</source>
+      <translation type="unfinished">Use &apos;Published&apos; date</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="46"/>
+      <source>Use &apos;Updated&apos; date</source>
+      <translation type="unfinished">Use &apos;Updated&apos; date</translation>
     </message>
   </context>
   <context>
@@ -9039,12 +8902,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="717"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="718"/>
       <source>Error when loading initial feeds</source>
       <translation>载入预设 Feeds 时出错</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="503"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="504"/>
       <source>Fetch metadata</source>
       <translation>获取元数据</translation>
     </message>
@@ -9096,57 +8959,57 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       <translation type="unfinished">Load &amp;default feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="654"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="655"/>
       <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
       <translation>由于错误，一些Feeds/文件夹没有被导入，查看调试日志了解更多细节。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="678"/>
       <source>Cannot add folder</source>
       <translation>无法添加文件夹</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="678"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="679"/>
       <source>Cannot add folder because another critical operation is ongoing.</source>
       <translation>另一项关键操作正在进行中，无法添加文件夹。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="733"/>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="742"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="734"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="743"/>
       <source>Error during file import</source>
       <translation>导入文件期间出错</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="757"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="758"/>
       <source>Fetching metadata for %n feeds</source>
       <translation>
         <numerusform>正在获取 %n 个源的元数据</numerusform>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="766"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="767"/>
       <source>Fetched %n feeds...</source>
       <translation>
         <numerusform>获取了 %n 个源……</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="776"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="777"/>
       <source>Export feeds</source>
       <translation>导出 Feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="777"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="778"/>
       <source>Import feeds</source>
       <translation>导入 Feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="779"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="780"/>
       <source>Import from QuiteRSS</source>
       <translation>从 QuiteRSS 导入</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="781"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="782"/>
       <source>Import from RSS Guard 4.x</source>
       <translation type="unfinished">Import from RSS Guard 4.x</translation>
     </message>
@@ -9166,7 +9029,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       <translation>另一项关键操作正在执行，无法添加 Feed。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="657"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="658"/>
       <source>Import was completely successful.</source>
       <translation>导入成功。</translation>
     </message>
@@ -9246,29 +9109,6 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="130"/>
       <source>Browse your feeds and articles</source>
       <translation>浏览你的Feeds和文章</translation>
-    </message>
-  </context>
-  <context>
-    <name>ThreadPreviewer</name>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.ui" line="14"/>
-      <source>Form</source>
-      <translation>表单</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.ui" line="35"/>
-      <source>Fetch &amp;comments</source>
-      <translation>获取评论(&amp;C)</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.cpp" line="84"/>
-      <source>Fetching comments</source>
-      <translation>正在获取评论</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-reddit/src/gui/threadpreviewer.cpp" line="94"/>
-      <source>Fetching comments for &apos;%1&apos;...</source>
-      <translation>正在获取 &apos;%1&apos; 的评论；……</translation>
     </message>
   </context>
   <context>
