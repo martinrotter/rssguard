@@ -899,7 +899,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         QModelIndex idx_important = index(idx.row(), MSG_MDL_IMPORTANT_INDEX);
         bool is_important = data(idx_important, Qt::ItemDataRole::EditRole).toBool();
 
-        if (!is_important) {
+        if (is_important) {
           return qApp->skins()->colorForModel(role == Qt::ItemDataRole::ForegroundRole
                                                 ? SkinEnums::PaletteColors::FgInteresting
                                                 : SkinEnums::PaletteColors::FgSelectedInteresting);
