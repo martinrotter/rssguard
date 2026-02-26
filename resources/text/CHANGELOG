@@ -12,6 +12,10 @@ Also, make sure to go through the documentation, which has been revised and refr
 
 https://rssguard.readthedocs.io/en/stable
 
+Donations are also very much welcomed, see more on the link below.
+
+https://rssguard.readthedocs.io/en/stable/donations.html
+
 Many features which are not "typical" for RSS feed reader application were removed, including (but not limited to) QtWebEngine component, AdBlock and file downloader.
 
 That said, many other features were added, including great enhancements for article filtering. See the full list of changes below.
