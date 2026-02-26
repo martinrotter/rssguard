@@ -1,6 +1,6 @@
 5.0.0
 -----
-Released on: 2026-03-01
+Released on: 2026-02-26
 
 This is the first release of the brand-new 5.x RSS Guard line. Database files from the RSS Guard 4.x line are NOT compatible with this release because a massive overhaul of the database layer was performed. The database layer is now significantly more powerful, more maintainable, and in many cases, much faster.
 
