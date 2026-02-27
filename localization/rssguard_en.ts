@@ -6459,7 +6459,7 @@ List of supported readers:</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="194"/>
+        <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="192"/>
         <source>not a RSS feed</source>
         <translation type="unfinished"></translation>
     </message>

@@ -890,7 +890,7 @@ void DocumentContainer::onResourceDownloadCompleted(const QUrl& url,
 }
 
 void DocumentContainer::saveExternalResourceToFileCache(const QUrl& url, const QByteArray& data) {
-  if (!url.isValid()) {
+  if (!url.isValid() || data.isEmpty()) {
     return;
   }
 
@@ -913,7 +913,14 @@ QByteArray DocumentContainer::getExternalResourceFromFileCache(const QUrl& url) 
 
   QDir().mkdir(folder);
 
-  return IOFactory::readFile(filename);
+  auto file_data = IOFactory::readFile(filename);
+
+  if (file_data.isEmpty()) {
+    QFile::remove(filename);
+    throw ApplicationException(tr("file for %1 is not available in cache").arg(url.toString()));
+  }
+
+  return file_data;
 }
 
 QString DocumentContainer::generateExternalResourceCachedFilename(const QUrl& url) const {
@@ -984,12 +991,8 @@ QVariant DocumentContainer::handleExternalResource(DocumentContainer::RequestTyp
                << QUOTE_W_SPACE_DOT(res.m_networkError);
   }
 
-  switch (type) {
-    case DocumentContainer::RequestType::CssDownload:
-    default:
-      saveExternalResourceToFileCache(url, data);
-      return data;
-  }
+  saveExternalResourceToFileCache(url, data);
+  return data;
 }
 
 QNetworkProxy DocumentContainer::networkProxy() const {
