@@ -66,12 +66,12 @@ void TrayIcon::setNumber(int number) {
         break;
 
       case 2:
-        m_font.setPixelSize(background.width() * 0.65);
+        m_font.setPixelSize(background.width() * 0.79);
         break;
 
       case 1:
       default:
-        m_font.setPixelSize(background.width() * 0.8);
+        m_font.setPixelSize(background.width() * 0.88);
         break;
     }
 
