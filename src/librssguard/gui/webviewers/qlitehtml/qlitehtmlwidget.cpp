@@ -5,12 +5,14 @@
 
 #include "gui/webviewers/qlitehtml/qlitehtmlwidget.h"
 
+#include "definitions/globals.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 
 #include <QDebug>
+#include <QDrag>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QScrollBar>
@@ -314,13 +316,32 @@ void QLiteHtmlWidget::mouseMoveEvent(QMouseEvent* event) {
 
   htmlPos(event->pos(), &viewport_pos, &pos);
 
-  const QVector<QRectF> areas = m_documentContainer.mouseMoveEvent(pos, viewport_pos);
-
-  for (const QRectF& r : areas) {
-    viewport()->update(fromVirtual(r.translated(-scrollPosition())).toRect());
+  if (Globals::hasFlag(event->buttons(), Qt::MouseButton::LeftButton) && !m_pressedUrl.isEmpty() &&
+      ((pos - m_dragStartPos).manhattanLength() >= QApplication::startDragDistance())) {
+    startLinkDrag(m_pressedUrl);
+    m_pressedUrl = QUrl();
   }
+  else {
+    const QVector<QRectF> areas = m_documentContainer.mouseMoveEvent(pos, viewport_pos);
 
-  updateHightlightedLink();
+    for (const QRectF& r : areas) {
+      viewport()->update(fromVirtual(r.translated(-scrollPosition())).toRect());
+    }
+
+    updateHightlightedLink();
+  }
+}
+
+void QLiteHtmlWidget::startLinkDrag(const QUrl& url) {
+  QDrag* drag = new QDrag(this);
+
+  QMimeData* mimeData = new QMimeData;
+  mimeData->setUrls({url});          // sets text/uri-list
+  mimeData->setText(url.toString()); // fallback
+
+  drag->setMimeData(mimeData);
+
+  drag->exec(Qt::CopyAction);
 }
 
 void QLiteHtmlWidget::mousePressEvent(QMouseEvent* event) {
@@ -328,6 +349,21 @@ void QLiteHtmlWidget::mousePressEvent(QMouseEvent* event) {
   QPointF pos;
 
   htmlPos(event->pos(), &viewport_pos, &pos);
+
+  if (event->button() == Qt::MouseButton::LeftButton) {
+    m_dragStartPos = pos;
+    QUrl href = m_documentContainer.linkAt(pos, viewport_pos);
+
+    if (!href.isEmpty()) {
+      m_pressedUrl = href;
+
+      // NOTE: Only start the dragging, do not modify selections.
+      return;
+    }
+    else {
+      m_pressedUrl = QUrl();
+    }
+  }
 
   const QVector<QRectF> areas = m_documentContainer.mousePressEvent(pos, viewport_pos, event->button());
 
