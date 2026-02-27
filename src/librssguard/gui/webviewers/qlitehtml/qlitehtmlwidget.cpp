@@ -316,7 +316,7 @@ void QLiteHtmlWidget::mouseMoveEvent(QMouseEvent* event) {
 
   htmlPos(event->pos(), &viewport_pos, &pos);
 
-  if (Globals::hasFlag(event->buttons(), Qt::MouseButton::LeftButton) && !m_pressedUrl.isEmpty() &&
+  if (Globals::hasFlag(event->buttons(), Qt::MouseButton::MiddleButton) && !m_pressedUrl.isEmpty() &&
       ((pos - m_dragStartPos).manhattanLength() >= QApplication::startDragDistance())) {
     startLinkDrag(m_pressedUrl);
     m_pressedUrl = QUrl();
@@ -334,14 +334,12 @@ void QLiteHtmlWidget::mouseMoveEvent(QMouseEvent* event) {
 
 void QLiteHtmlWidget::startLinkDrag(const QUrl& url) {
   QDrag* drag = new QDrag(this);
+  QMimeData* mimeData = new QMimeData();
 
-  QMimeData* mimeData = new QMimeData;
-  mimeData->setUrls({url});          // sets text/uri-list
-  mimeData->setText(url.toString()); // fallback
-
+  mimeData->setUrls({url});
+  mimeData->setText(url.toString());
   drag->setMimeData(mimeData);
-
-  drag->exec(Qt::CopyAction);
+  drag->exec(Qt::DropAction::CopyAction);
 }
 
 void QLiteHtmlWidget::mousePressEvent(QMouseEvent* event) {
@@ -350,15 +348,12 @@ void QLiteHtmlWidget::mousePressEvent(QMouseEvent* event) {
 
   htmlPos(event->pos(), &viewport_pos, &pos);
 
-  if (event->button() == Qt::MouseButton::LeftButton) {
+  if (event->button() == Qt::MouseButton::MiddleButton) {
     m_dragStartPos = pos;
     QUrl href = m_documentContainer.linkAt(pos, viewport_pos);
 
     if (!href.isEmpty()) {
       m_pressedUrl = href;
-
-      // NOTE: Only start the dragging, do not modify selections.
-      return;
     }
     else {
       m_pressedUrl = QUrl();
