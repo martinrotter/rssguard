@@ -99,7 +99,8 @@ void RssGuard4Import::importArticles(StandardFeed* feed, const QMap<QString, Lab
                 "  Messages.contents, "
                 "  Messages.enclosures, "
                 "  Messages.score, "
-                "  Messages.labels "
+                "  Messages.labels, "
+                "  Messages.custom_id "
                 "FROM Messages "
                 "WHERE Messages.account_id = :account_id AND Messages.feed = :feed_id;"));
   q.bindValue(QSL(":account_id"), account_id);
@@ -200,6 +201,7 @@ Message RssGuard4Import::convertArticle(const SqlQuery& rec) const {
   msg.m_isRead = rec.value(0).toBool();
   msg.m_isDeleted = rec.value(2).toBool();
   msg.m_isPdeleted = rec.value(3).toBool();
+  msg.m_customId = rec.value(12).toString();
   msg.m_enclosures = Enclosures::decodeEnclosuresFromString(rec.value(9).toString());
   msg.m_score = rec.value(10).toDouble();
 
