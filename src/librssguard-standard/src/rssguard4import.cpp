@@ -367,7 +367,20 @@ RootItem* RssGuard4Import::extractFeedsAndCategories(const QSqlDatabase& db) con
              "  Feeds.title, "
              "  Feeds.description, "
              "  Feeds.icon, "
-             "  Feeds.source "
+             "  Feeds.source, "
+             ""
+             "  Feeds.update_type, "
+             "  Feeds.update_interval, "
+             "  Feeds.is_off, "
+             "  Feeds.is_quiet, "
+             "  Feeds.is_rtl, "
+             "  Feeds.add_any_datetime_articles, "
+             "  Feeds.datetime_to_avoid, "
+             "  Feeds.keep_article_customize, "
+             "  Feeds.keep_article_count, "
+             "  Feeds.keep_unread_articles, "
+             "  Feeds.keep_starred_articles, "
+             "  Feeds.recycle_articles "
              "FROM Feeds "
              "JOIN Accounts ac ON ac.id = Feeds.account_id AND ac.type = 'std-rss' "
              "ORDER BY Feeds.ordr ASC;"));
@@ -381,6 +394,7 @@ RootItem* RssGuard4Import::extractFeedsAndCategories(const QSqlDatabase& db) con
     QString description = q.value(QSL("title")).toString();
     QByteArray image = q.value(QSL("icon")).toByteArray();
     QString custom_data = q.value(QSL("custom_data")).toString();
+
     StandardFeed* fd = new StandardFeed();
 
     fd->setId(id);
@@ -390,6 +404,33 @@ RootItem* RssGuard4Import::extractFeedsAndCategories(const QSqlDatabase& db) con
     fd->setDescription(description);
     fd->setSource(source);
     fd->setIcon(IconFactory::fromByteArray(image));
+
+    fd->setAutoUpdateType(static_cast<Feed::AutoUpdateType>(q.value(QSL("update_type")).toInt()));
+    fd->setAutoUpdateInterval(q.value(QSL("update_interval")).toInt());
+    fd->setIsSwitchedOff(q.value(QSL("is_off")).toBool());
+    fd->setIsQuiet(q.value(QSL("is_quiet")).toBool());
+    fd->setRtlBehavior(q.value(QSL("is_rtl")).value<RtlBehavior>());
+
+    Feed::ArticleIgnoreLimit art;
+
+    art.m_addAnyArticlesToDb = q.value(QSL("add_any_datetime_articles")).toBool();
+
+    qint64 time_to_avoid = q.value(QSL("datetime_to_avoid")).value<qint64>();
+
+    if (time_to_avoid > 10000) {
+      art.m_dtToAvoid = TextFactory::parseDateTime(time_to_avoid);
+    }
+    else {
+      art.m_hoursToAvoid = time_to_avoid;
+    }
+
+    art.m_customizeLimitting = q.value(QSL("keep_article_customize")).toBool();
+    art.m_keepCountOfArticles = q.value(QSL("keep_article_count")).toInt();
+    art.m_doNotRemoveUnread = q.value(QSL("keep_unread_articles")).toBool();
+    art.m_doNotRemoveStarred = q.value(QSL("keep_starred_articles")).toBool();
+    art.m_moveToBinDontPurge = q.value(QSL("recycle_articles")).toBool();
+
+    fd->setArticleIgnoreLimit(art);
     fd->setCustomDatabaseData(DatabaseQueries::deserializeCustomData(custom_data));
 
     fds.append({pid, fd});
