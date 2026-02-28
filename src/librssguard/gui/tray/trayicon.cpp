@@ -53,7 +53,7 @@ void TrayIcon::setNumber(int number) {
     // infinity symbol in that case.
     QString num_txt;
 
-    if (number >= 100) {
+    if (number >= 1000) {
       num_txt = QChar(8734);
     }
     else {
@@ -62,7 +62,7 @@ void TrayIcon::setNumber(int number) {
 
     switch (num_txt.size()) {
       case 3:
-        m_font.setPixelSize(background.width() * 0.48);
+        m_font.setPixelSize(background.width() * 0.55);
         break;
 
       case 2:
