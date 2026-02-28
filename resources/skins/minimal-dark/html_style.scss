@@ -1,10 +1,11 @@
 @charset "utf-8";
 
 // How to compile:
-//   scss --sourcemap=none --style=expanded html_style.scss html_style.css
+//   sass --no-source-map html_style.scss html_style.css
 
 // Colors.
 $text_color: #ddd;
+$bg_color: #222;
 $heading_color: #eee;
 
 $link_body_color: #87bdd0;
