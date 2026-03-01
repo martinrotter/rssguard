@@ -6,7 +6,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="195"/>
       <source>(folder)</source>
-      <translation type="unfinished">(folder)</translation>
+      <translation>(폴더)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="198"/>
@@ -63,7 +63,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="552"/>
       <source>Output directory is not writable.</source>
-      <translation type="unfinished">Output directory is not writable.</translation>
+      <translation>출력 디렉토리는 쓰기가 가능하지 않습니다.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
@@ -78,7 +78,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1148"/>
       <source>Cannot add feed</source>
-      <translation type="unfinished">Cannot add feed</translation>
+      <translation>피드를 추가할 수 없습니다</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1149"/>
@@ -88,7 +88,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1011"/>
       <source>Unread articles fetched</source>
-      <translation type="unfinished">Unread articles fetched</translation>
+      <translation>읽지 않은 기사를 가져왔습니다</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="312"/>
@@ -299,7 +299,7 @@ version by clicking this popup notification.</translation>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="17"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="129"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>패스워드</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="16"/>
@@ -309,7 +309,7 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="18"/>
       <source>Set password to access the feed.</source>
-      <translation type="unfinished">Set password to access the feed.</translation>
+      <translation>피드에 접근하기 위한 패스워드를 설정해 주세요.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="20"/>
@@ -344,12 +344,12 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="84"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>비밀번호는 맞거나 필요가 없습니다.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.cpp" line="84"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>비밀번호가 비어있습니다.</translation>
     </message>
   </context>
   <context>
@@ -357,7 +357,7 @@ version by clicking this popup notification.</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/baselineedit.cpp" line="13"/>
       <source>Show/hide the password</source>
-      <translation type="unfinished">Show/hide the password</translation>
+      <translation>비밀번호의 표시/비표시</translation>
     </message>
   </context>
   <context>
@@ -4412,7 +4412,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="145"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>패스워드</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="186"/>
@@ -5969,7 +5969,7 @@ Login tokens expiration: %2</translation>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="99"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_networkproxydetails.h" line="168"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>패스워드</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="118"/>
@@ -6025,7 +6025,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="109"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>패스워드</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="127"/>
@@ -6465,7 +6465,7 @@ List of supported readers:</translation>
       <translation type="unfinished">not an RDF feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="194"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="192"/>
       <source>not a RSS feed</source>
       <translation type="unfinished">not a RSS feed</translation>
     </message>
@@ -7290,7 +7290,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="120"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>비밀번호가 비어있습니다.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="123"/>
@@ -7371,7 +7371,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="140"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsdatabase.h" line="206"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>패스워드</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.ui" line="155"/>
@@ -9392,12 +9392,12 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="173"/>
       <source>Password is ok or it is not needed.</source>
-      <translation type="unfinished">Password is ok or it is not needed.</translation>
+      <translation>비밀번호는 맞거나 필요가 없습니다.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="174"/>
       <source>Password is empty.</source>
-      <translation type="unfinished">Password is empty.</translation>
+      <translation>비밀번호가 비어있습니다.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.cpp" line="181"/>
@@ -9460,7 +9460,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="133"/>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="180"/>
       <source>Password</source>
-      <translation type="unfinished">Password</translation>
+      <translation>패스워드</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssaccountdetails.ui" line="152"/>
