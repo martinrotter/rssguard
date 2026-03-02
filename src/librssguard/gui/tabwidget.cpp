@@ -196,6 +196,7 @@ int TabWidget::addSingleMessageView(RootItem* root, const Message& message) {
   auto* browser = new MessagePreviewer(this);
   auto* msg_mdl = qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel();
 
+  connect(browser, &MessagePreviewer::articleTweaked, msg_mdl, &MessagesModel::updateSourceArticle);
   connect(browser, &MessagePreviewer::markMessageRead, msg_mdl, &MessagesModel::setMessageReadById);
   connect(browser, &MessagePreviewer::markMessageImportant, msg_mdl, &MessagesModel::setMessageImportantById);
   connect(browser->menuLabels(), &LabelsMenu::setModelArticleLabelIds, msg_mdl, &MessagesModel::setMessageLabelsById);
