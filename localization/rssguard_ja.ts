@@ -551,7 +551,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="920"/>
       <source>file for %1 is not available in cache</source>
-      <translation type="unfinished">file for %1 is not available in cache</translation>
+      <translation>%1 のファイルはキャッシュ内に存在しません</translation>
     </message>
   </context>
   <context>
@@ -2808,7 +2808,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1014"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="855"/>
       <source>&amp;Fetch full contents</source>
-      <translation type="unfinished">&amp;Fetch full contents</translation>
+      <translation>完全な内容を取得</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="644"/>
@@ -5242,7 +5242,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="56"/>
       <source>Fetch full contents</source>
-      <translation type="unfinished">Fetch full contents</translation>
+      <translation>完全な内容を取得</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="64"/>
@@ -5608,13 +5608,13 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1265"/>
       <source>Fetch full article contents</source>
-      <translation type="unfinished">Fetch full article contents</translation>
+      <translation>記事全文を取得</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1283"/>
       <source>Fetched %n article(s)...</source>
-      <translation type="unfinished">
-        <numerusform>Fetched %n article(s)...</numerusform>
+      <translation>
+        <numerusform>%n 件の記事を取得しました…</numerusform>
       </translation>
     </message>
     <message>
@@ -7060,7 +7060,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="44"/>
       <source>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
-      <translation type="unfinished">On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</translation>
+      <translation>このページでは、URLを開くことができる外部ツールのリストを設定できます。ドメイン（先頭の &quot;www.&quot; を除く）を設定すると、そのドメインからクリックされたすべてのリンクをツールで直接開きます。複数のドメインを指定する場合は、&apos;,&apos; で区切ってください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="52"/>
