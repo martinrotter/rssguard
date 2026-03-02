@@ -2,10 +2,11 @@ img {
   max-width: 98%;
 }
 
+/*
 body {
-  background-color: #eee;
+  background-color: $bg_color;
 }
-
+*/
 p {
   margin-top: 0.4em;
   margin-bottom: 0.4em;
@@ -58,14 +59,14 @@ p {
 }
 
 .article-body a:hover {
-  color: rgb(136.7266949153, 194.1737288136, 213.7733050847);
+  color: #89c2d6;
   text-decoration: underline;
 }
 
 .article-urls-strip {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  line-height: 2;
+  line-height: 2.0;
 }
 
 .article-url {
@@ -78,7 +79,7 @@ p {
 }
 
 .article-url:hover {
-  background-color: rgb(255, 76.5, 76.5);
+  background-color: #ff4d4d;
   color: white;
 }
 
@@ -93,7 +94,7 @@ p {
 }
 
 .article-enclosure-url:hover {
-  background-color: rgb(101.6160714286, 174.5669642857, 198.8839285714);
+  background-color: #66afc7;
   color: white;
 }
 

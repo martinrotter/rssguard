@@ -6,8 +6,8 @@
 #include "gui/reusable/nonclosablemenu.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
 
 #include <QWidgetAction>
 
@@ -27,6 +27,7 @@ QList<QAction*> FeedsToolBar::availableActions() const {
 
   available_actions.append(m_actionSearchMessages);
   available_actions.append(m_actionMessageFilter);
+  available_actions.append(extraActions());
 
   return available_actions;
 }

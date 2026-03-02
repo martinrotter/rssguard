@@ -50,6 +50,7 @@ QList<QAction*> StatusBar::availableActions() const {
 
   // Now, add placeholder actions for custom stuff.
   actions << m_barProgressDownloadAction << m_barProgressFeedsAction;
+  actions.append(extraActions());
 
   return actions;
 }

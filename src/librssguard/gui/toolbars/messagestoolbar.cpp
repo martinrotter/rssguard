@@ -5,8 +5,8 @@
 #include "definitions/definitions.h"
 #include "gui/reusable/nonclosablemenu.h"
 #include "miscellaneous/iconfactory.h"
-#include "qtlinq/qtlinq.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
 
 #include <chrono>
 
@@ -26,6 +26,7 @@ QList<QAction*> MessagesToolBar::availableActions() const {
   available_actions.append(m_actionSearchMessages);
   available_actions.append(m_actionMessageHighlighter);
   available_actions.append(m_actionMessageFilter);
+  available_actions.append(extraActions());
 
   return available_actions;
 }

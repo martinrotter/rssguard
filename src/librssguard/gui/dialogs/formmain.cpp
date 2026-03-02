@@ -91,10 +91,6 @@ FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   });
 
   setStatusBar(m_statusBar = new StatusBar(this));
-
-  // Add these actions to the list of actions of the main window.
-  // This allows to use actions via shortcuts
-  // even if main menu is not visible.
   addActions(qApp->userAndExtraActions());
 
 #if defined(Q_OS_MACOS)
