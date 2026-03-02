@@ -2,11 +2,11 @@
 
 #include "gui/reusable/searchlineedit.h"
 
-#include "qtlinq/qtlinq.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
 
 #include <QActionGroup>
 #include <QTimer>

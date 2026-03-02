@@ -12,7 +12,6 @@ BaseLineEdit::BaseLineEdit(QWidget* parent)
   : QLineEdit(parent), m_actShowPassword(new QAction(qApp->icons()->fromTheme(QSL("dialog-password")),
                                                      tr("Show/hide the password"),
                                                      this)) {
-
   connect(m_actShowPassword, &QAction::triggered, this, [this]() {
     setEchoMode(echoMode() == QLineEdit::EchoMode::Password ? QLineEdit::EchoMode::Normal
                                                             : QLineEdit::EchoMode::Password);
@@ -27,6 +26,11 @@ BaseLineEdit::BaseLineEdit(QWidget* parent)
 }
 
 BaseLineEdit::~BaseLineEdit() {}
+
+void BaseLineEdit::focusInEvent(QFocusEvent* event) {
+  QLineEdit::focusInEvent(event);
+  QTimer::singleShot(100, this, &BaseLineEdit::selectAll);
+}
 
 void BaseLineEdit::setPasswordMode(bool is_password) {
   if (is_password) {

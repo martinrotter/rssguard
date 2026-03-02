@@ -18,7 +18,8 @@ class RSSGUARD_DLLSPEC BaseLineEdit : public QLineEdit {
     void submit(const QString& text);
 
   protected:
-    void keyPressEvent(QKeyEvent* event);
+    virtual void keyPressEvent(QKeyEvent* event);
+    virtual void focusInEvent(QFocusEvent* event);
 
   signals:
     void submitted(const QString& text);
