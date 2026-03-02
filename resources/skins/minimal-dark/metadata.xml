@@ -28,14 +28,14 @@
       <color role="Mid">#292c2e</color>
       <color role="Shadow">#292c2e</color>
       <color role="Light">#56575c</color>
-      <color role="Highlight">#add8e6</color>
+      <color role="Highlight">#617996</color>
 
       <color role="Window">#303030</color>
       <color role="Button">#2C2D30</color>
 
       <color role="Text">#D9D9D9</color>
       <color role="BrightText">#2F3134</color>
-      <color role="HighlightedText">#000000</color>
+      <color role="HighlightedText">#ffffff</color>
       <color role="PlaceholderText">#A7A7A7</color>
       <color role="ToolTipText">#D8D8D8</color>
       <color role="ButtonText">#E7E7E7</color>
