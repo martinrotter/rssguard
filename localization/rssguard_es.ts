@@ -1320,7 +1320,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="667"/>
       <source>Mark everything as read</source>
-      <translation type="unfinished">Mark everything as read</translation>
+      <translation>Marcar todo como leído</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="668"/>
