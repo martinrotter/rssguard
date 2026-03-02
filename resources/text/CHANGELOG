@@ -1,3 +1,22 @@
+5.0.1
+-----
+Released on: 2026-03-03
+
+This release contains some nice fixes and little enhancements from previous version. Thanks for your patience.
+
+Added:
+* All text is selected when focusing search textbox. (#2061)
+* Filtering of feed list now takes much more feed data into account like URL, description, etc. (#2059)
+* External tools can be made default for multiple domains. Just separate them with ',' (no spaces). (#2057)
+* Added menu item "Fetch full contents" which can be triggered from main menu, article list context menu or article preview. This function downloads full contents of the article from its URL and stores it into the DB so that you can read the full article later. This feature should work for majority of websites, but will not work on websites which are behind anti-DDoS protections or heavy cookie-fied. (#2055)
+* You now can drag URLs from article HTML preview to outside of RSS Guard. (#2032)
+
+Fixed:
+* Quick note for #2044. If you use dark desktop environment scheme, then use `minimal-dark` skin, please. This one is specifically tailored for dark environments.
+* Article automatic limit/control and article custom IDs are now also migrated from RSS Guard 4.x. (#2042)
+* All menu items can be now properly assigned to shortcuts and added to toolbars. (#2040)
+* Fix the bug in loading article pictures when going offline/online and vice versa. (#2033)
+
 5.0.0
 -----
 Released on: 2026-02-26
