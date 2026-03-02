@@ -1269,12 +1269,17 @@ void MessagesModel::fetchFullArticleContents(const QModelIndexList& articles) {
       emit rprt.progressRangeChanged(0, msgs.size());
 
       for (Message& msg : msgs) {
-        msg.m_contents = qApp->feedReader()->getFullArticle(msg.m_url, false);
+        try {
+          msg.m_contents = qApp->feedReader()->getFullArticle(msg.m_url, false);
 
-        QList<Message> sub_msgs = {msg};
+          QList<Message> sub_msgs = {msg};
 
-        updateSourceArticle(msg);
-        DatabaseQueries::updateMessages(sub_msgs, feedById(msg.m_feedId), true, false);
+          updateSourceArticle(msg);
+          DatabaseQueries::updateMessages(sub_msgs, feedById(msg.m_feedId), true, false);
+        }
+        catch (const ApplicationException& ex) {
+          qCriticalNN << LOGSEC_CORE << "Cannot fetch full article" << QUOTE_W_SPACE_DOT(ex.message());
+        }
 
         emit rprt.progressValueChanged(++prog);
       }

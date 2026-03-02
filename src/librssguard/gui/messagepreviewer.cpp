@@ -244,10 +244,18 @@ void MessagePreviewer::fetchFullMessageContents() {
 
   Message msg_new(m_message);
 
-  msg_new.m_contents = qApp->feedReader()->getFullArticle(m_message.m_url, false);
-
-  loadMessage(msg_new, m_root);
-  emit articleTweaked(m_message);
+  try {
+    msg_new.m_contents = qApp->feedReader()->getFullArticle(m_message.m_url, false);
+    loadMessage(msg_new, m_root);
+    emit articleTweaked(m_message);
+  }
+  catch (const ApplicationException& ex) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Fetching failed"),
+                                    tr("Article cannot be fetched: %1.").arg(ex.message()),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true));
+  }
 }
 
 void MessagePreviewer::updateButtons() {
