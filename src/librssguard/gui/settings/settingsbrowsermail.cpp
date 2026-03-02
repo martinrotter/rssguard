@@ -135,7 +135,10 @@ QVector<ExternalTool> SettingsBrowserMail::externalTools() const {
 
   for (int i = 0; i < m_ui->m_listTools->topLevelItemCount(); i++) {
     auto* it = m_ui->m_listTools->topLevelItem(i);
-    list.append(ExternalTool(it->text(0), it->text(1), it->text(2), it->text(3)));
+    list.append(ExternalTool(it->text(0),
+                             it->text(1),
+                             it->text(2),
+                             it->text(3).split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts)));
   }
 
   return list;
@@ -144,7 +147,8 @@ QVector<ExternalTool> SettingsBrowserMail::externalTools() const {
 void SettingsBrowserMail::setExternalTools(const QList<ExternalTool>& list) {
   for (const ExternalTool& tool : list) {
     QTreeWidgetItem* item =
-      new QTreeWidgetItem(m_ui->m_listTools, {tool.name(), tool.executable(), tool.parameters(), tool.domain()});
+      new QTreeWidgetItem(m_ui->m_listTools,
+                          {tool.name(), tool.executable(), tool.parameters(), tool.domains().join(QL1C(','))});
 
     item->setFlags(item->flags() | Qt::ItemFlag::ItemIsEditable);
 
@@ -264,10 +268,13 @@ void SettingsBrowserMail::addExternalTool() {
   QString exec;
 #else
   QString exec = askForExecutable(QString());
-#endif
 
+  if (exec.isEmpty()) {
+    return;
+  }
+#endif
   QTreeWidgetItem* item =
-    new QTreeWidgetItem(m_ui->m_listTools, {tr("New tool"), QDir::toNativeSeparators(exec), QSL("")});
+    new QTreeWidgetItem(m_ui->m_listTools, {QFileInfo(exec).baseName(), QDir::toNativeSeparators(exec), QSL("")});
 
   item->setFlags(item->flags() | Qt::ItemFlag::ItemIsEditable);
   m_ui->m_listTools->addTopLevelItem(item);

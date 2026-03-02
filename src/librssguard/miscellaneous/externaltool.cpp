@@ -18,11 +18,11 @@ void ExternalTool::sanitizeParameters() {
 }
 
 ExternalTool::ExternalTool(const ExternalTool& other)
-  : ExternalTool(other.name(), other.executable(), other.parameters(), other.domain()) {}
+  : ExternalTool(other.name(), other.executable(), other.parameters(), other.domains()) {}
 
-ExternalTool::ExternalTool(QString name, QString executable, QString parameters, QString domain)
+ExternalTool::ExternalTool(QString name, QString executable, QString parameters, QStringList domains)
   : m_name(std::move(name)), m_executable(std::move(executable)), m_parameters(std::move(parameters)),
-    m_domain(std::move(domain)) {
+    m_domains(std::move(domains)) {
   sanitizeParameters();
 }
 
@@ -32,7 +32,7 @@ QByteArray ExternalTool::toString() {
   obj[QSL("name")] = name();
   obj[QSL("exe")] = executable();
   obj[QSL("params")] = parameters();
-  obj[QSL("domain")] = domain();
+  obj[QSL("domain")] = domains().join(QL1C(','));
 
   return QJsonDocument(obj).toJson(QJsonDocument::JsonFormat::Compact);
 }
@@ -46,7 +46,7 @@ std::optional<ExternalTool> ExternalTool::toolForDomain(const QList<ExternalTool
   auto linq = qlinq::from(tools);
 
   return linq.firstOrDefault([&cleaned_domain](const ExternalTool& tool) {
-    return tool.domain() == cleaned_domain;
+    return tool.domains().contains(cleaned_domain, Qt::CaseSensitivity::CaseInsensitive);
   });
 }
 
@@ -64,7 +64,7 @@ ExternalTool ExternalTool::fromString(const QByteArray& str) {
   ExternalTool tool(obj[QSL("name")].toString(),
                     obj[QSL("exe")].toString(),
                     obj[QSL("params")].toString(),
-                    obj[QSL("domain")].toString());
+                    obj[QSL("domain")].toString().split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts));
 
   return tool;
 }
@@ -95,8 +95,8 @@ void ExternalTool::setToolsToSettings(QVector<ExternalTool>& tools) {
   }
 }
 
-QString ExternalTool::domain() const {
-  return m_domain;
+QStringList ExternalTool::domains() const {
+  return m_domains;
 }
 
 QString ExternalTool::name() const {

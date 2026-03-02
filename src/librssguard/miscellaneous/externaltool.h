@@ -12,11 +12,12 @@ class ExternalTool {
   public:
     explicit ExternalTool() = default;
     ExternalTool(const ExternalTool& other);
-    explicit ExternalTool(QString name, QString executable, QString parameters, QString domain);
+    explicit ExternalTool(QString name, QString executable, QString parameters, QStringList domains);
 
     QString executable() const;
     QString parameters() const;
     QString name() const;
+    QStringList domains() const;
 
     bool run(const QString& target);
 
@@ -28,13 +29,11 @@ class ExternalTool {
     static QList<ExternalTool> toolsFromSettings();
     static void setToolsToSettings(QVector<ExternalTool>& tools);
 
-    QString domain() const;
-
   private:
     QString m_name;
     QString m_executable;
     QString m_parameters;
-    QString m_domain;
+    QStringList m_domains;
 
     void sanitizeParameters();
 };
