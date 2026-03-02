@@ -7052,24 +7052,24 @@ Number of disabled feeds: %3</source>
 <context>
     <name>SettingsBrowserMail</name>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="43"/>
-        <source>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain.</source>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="44"/>
+        <source>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="52"/>
         <source>Domain</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="118"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="119"/>
         <source>Select web browser executable</source>
         <translation type="unfinished">Select web browser executable</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="123"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="168"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="284"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="124"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="173"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="292"/>
         <source>Executables (*)</source>
         <extracomment>File filter for external browser selection dialog.
 ----------
@@ -7077,24 +7077,24 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished">Executables (*)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="125"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="170"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="282"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="126"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="175"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="290"/>
         <source>Executables (*.*)</source>
         <translation type="unfinished">Executables (*.*)</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="163"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="168"/>
         <source>Select e-mail executable</source>
         <translation type="unfinished">Select e-mail executable</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="185"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="190"/>
         <source>Opera 12 or older</source>
         <translation type="unfinished">Opera 12 or older</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="52"/>
         <source>Executable</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7159,7 +7159,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="100"/>
         <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="230"/>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="52"/>
         <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="349"/>
         <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="362"/>
         <source>Parameters</source>
@@ -7254,17 +7254,12 @@ File filter for external e-mail selection dialog.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="51"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="52"/>
         <source>Name</source>
         <translation type="unfinished">Name</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="270"/>
-        <source>New tool</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="278"/>
+        <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="286"/>
         <source>Select external tool</source>
         <translation type="unfinished"></translation>
     </message>
