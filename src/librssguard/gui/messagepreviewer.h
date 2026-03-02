@@ -46,6 +46,7 @@ class MessagePreviewer : public TabContent {
     void markMessageAsUnread();
     void markMessageAsReadUnread(RootItem::ReadStatus read);
     void switchMessageImportance(bool checked);
+    void fetchFullMessageContents();
 
   signals:
     void articleTweaked(const Message& msg);
@@ -72,6 +73,7 @@ class MessagePreviewer : public TabContent {
     QAction* m_actionSwitchImportance;
     QAction* m_actionShowAllLabels;
     QAction* m_actionRevealFeed;
+    QAction* m_actionFetchFullContents;
     LabelsMenu* m_menuLabels;
     QAction* m_separator;
     QList<QAction*> m_btnLabels;

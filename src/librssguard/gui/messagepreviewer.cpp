@@ -51,6 +51,13 @@ void MessagePreviewer::createConnections() {
           this,
           &MessagePreviewer::switchMessageImportance);
 
+  connect(m_actionFetchFullContents =
+            m_toolBar->addAction(qApp->icons()->fromTheme(QSL("download"), QSL("browser-download")),
+                                 tr("Fetch full contents")),
+          &QAction::triggered,
+          this,
+          &MessagePreviewer::fetchFullMessageContents);
+
   m_toolBar->addSeparator();
 
   m_actionShowAllLabels =
@@ -142,7 +149,7 @@ void MessagePreviewer::showItemDetails(RootItem* item) {
 void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
   m_toolBar->setVisible(m_toolbarVisible);
 
-  bool same_message = message.m_id == m_message.m_id && m_root == root;
+  bool same_message = message.m_id == m_message.m_id && message.m_contents == m_message.m_contents && m_root == root;
 
   m_message = message;
   m_root = root;
@@ -228,6 +235,19 @@ void MessagePreviewer::switchMessageImportance(bool checked) {
     emit markMessageImportant(m_message.m_id,
                               checked ? RootItem::Importance::Important : RootItem::Importance::NotImportant);
   }
+}
+
+void MessagePreviewer::fetchFullMessageContents() {
+  if (m_message.m_url.trimmed().isEmpty()) {
+    return;
+  }
+
+  Message msg_new(m_message);
+
+  msg_new.m_contents = qApp->feedReader()->getFullArticle(m_message.m_url, false);
+
+  loadMessage(msg_new, m_root);
+  emit articleTweaked(m_message);
 }
 
 void MessagePreviewer::updateButtons() {

@@ -5,6 +5,7 @@
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
+#include "gui/dialogs/formprogressworker.h"
 #include "gui/messagesview.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -1247,6 +1248,40 @@ void MessagesModel::setBatchMessagesDeleted(const QModelIndexList& messages) {
   }
 
   m_selectedItem->account()->onAfterMessagesDelete(m_selectedItem, msgs);
+}
+
+void MessagesModel::fetchFullArticleContents(const QModelIndexList& articles) {
+  FormProgressWorker d(qApp->mainFormWidget());
+  QList<Message> msgs = qlinq::from(articles)
+                          .where([this](const QModelIndex& idx) {
+                            return !data(idx.row(), MSG_MDL_URL_INDEX).toString().trimmed().isEmpty();
+                          })
+                          .select([this](const QModelIndex& idx) {
+                            return messageForRow(idx.row());
+                          })
+                          .toList();
+
+  d.doSingleWork(
+    tr("Fetch full article contents"),
+    false,
+    [&](QFutureWatcher<void>& rprt) {
+      int prog = 0;
+      emit rprt.progressRangeChanged(0, msgs.size());
+
+      for (Message& msg : msgs) {
+        msg.m_contents = qApp->feedReader()->getFullArticle(msg.m_url, false);
+
+        QList<Message> sub_msgs = {msg};
+
+        updateSourceArticle(msg);
+        DatabaseQueries::updateMessages(sub_msgs, feedById(msg.m_feedId), true, false);
+
+        emit rprt.progressValueChanged(++prog);
+      }
+    },
+    [](int progress) {
+      return tr("Fetched %n article(s)...", nullptr, progress);
+    });
 }
 
 void MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootItem::ReadStatus read) {

@@ -150,6 +150,27 @@ void MessagesView::restoreHeaderState(const QByteArray& dta) {
   }
 }
 
+void MessagesView::fetchFullSelectedArticles() {
+  const QModelIndexList selected_indexes = selectionModel()->selectedRows();
+
+  if (selected_indexes.isEmpty()) {
+    return;
+  }
+
+  const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+
+  m_sourceModel->fetchFullArticleContents(mapped_indexes);
+
+  const QModelIndex current_index = selectionModel()->currentIndex();
+
+  if (current_index.isValid() && selected_indexes.size() == 1) {
+    requestArticleDisplay(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()));
+  }
+  else {
+    requestArticleHiding();
+  }
+}
+
 void MessagesView::goToMotherFeed(bool edit_feed_also) {
   if (selectionModel()->selectedRows().size() == 1) {
     const Message message =
@@ -462,6 +483,7 @@ void MessagesView::initializeContextMenu() {
   m_contextMenu->addActions({qApp->mainForm()->m_ui->m_actionSendMessageViaEmail,
                              qApp->mainForm()->m_ui->m_actionOpenSelectedSourceArticlesExternally,
                              qApp->mainForm()->m_ui->m_actionOpenSelectedMessagesInternally,
+                             qApp->mainForm()->m_ui->m_actionFetchFullSelectedArticles,
                              qApp->mainForm()->m_ui->m_actionGoToMotherFeed,
                              qApp->mainForm()->m_ui->m_actionEditFeedOfSelectedArticle,
                              qApp->mainForm()->m_ui->m_actionPlaySelectedArticlesInMediaPlayer,

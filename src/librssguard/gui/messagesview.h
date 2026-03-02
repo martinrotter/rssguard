@@ -47,6 +47,7 @@ class MessagesView : public BaseTreeView {
     void restoreHeaderState(const QByteArray& dta);
 
   public slots:
+    void fetchFullSelectedArticles();
     void goToMotherFeed(bool edit_feed_also);
     void editFeedOfSelectedMessage();
 

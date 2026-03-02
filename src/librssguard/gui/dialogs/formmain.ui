@@ -191,6 +191,7 @@
     <addaction name="m_actionGoToMotherFeed"/>
     <addaction name="m_actionEditFeedOfSelectedArticle"/>
     <addaction name="m_actionPlaySelectedArticlesInMediaPlayer"/>
+    <addaction name="m_actionFetchFullSelectedArticles"/>
     <addaction name="m_actionSendMessageViaEmail"/>
     <addaction name="separator"/>
     <addaction name="m_actionSelectNextMessage"/>
@@ -1006,6 +1007,11 @@
   <action name="m_actionMarkArticlesBelowUnread">
    <property name="text">
     <string>Mark articles &amp;below unread</string>
+   </property>
+  </action>
+  <action name="m_actionFetchFullSelectedArticles">
+   <property name="text">
+    <string>&amp;Fetch full contents</string>
    </property>
   </action>
  </widget>

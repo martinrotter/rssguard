@@ -30,7 +30,8 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
                                             tr("Open in system web browser"),
                                             this))
 #if defined(ENABLE_MEDIAPLAYER)
-    , m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
+    ,
+    m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
                                               tr("Play in media player"),
                                               this))
 #endif

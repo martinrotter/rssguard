@@ -44,6 +44,8 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     void fetchInitialArticles(int batch_size = BATCH_SIZE);
     void fetchMoreArticles(int batch_size = BATCH_SIZE);
 
+    void fetchFullArticleContents(const QModelIndexList& articles);
+
     // Model implementation.
     virtual int rowCount(const QModelIndex& parent = QModelIndex()) const;
     virtual int columnCount(const QModelIndex& parent = QModelIndex()) const;

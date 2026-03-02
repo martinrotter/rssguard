@@ -197,6 +197,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
   actions << m_ui->m_actionOpenSelectedMessagesInternally;
   actions << m_ui->m_actionGoToMotherFeed;
+  actions << m_ui->m_actionFetchFullSelectedArticles;
   actions << m_ui->m_actionEditFeedOfSelectedArticle;
   actions << m_ui->m_actionPlaySelectedArticlesInMediaPlayer;
   actions << m_ui->m_actionAlternateColorsInLists;
@@ -459,6 +460,7 @@ void FormMain::updateMessageButtonsAvailability() {
 #endif
 
   m_ui->m_actionOpenSelectedMessagesInternally->setEnabled(one_message_selected);
+  m_ui->m_actionFetchFullSelectedArticles->setEnabled(atleast_one_message_selected);
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setEnabled(atleast_one_message_selected);
   m_ui->m_actionGoToMotherFeed->setEnabled(one_message_selected);
   m_ui->m_actionEditFeedOfSelectedArticle->setEnabled(one_message_selected);
@@ -615,6 +617,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedMessagesAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionSwitchImportanceOfSelectedMessages->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-important")));
+  m_ui->m_actionFetchFullSelectedArticles->setIcon(icon_theme_factory->fromTheme(QSL("download"),
+                                                                                 QSL("browser-download")));
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
   m_ui->m_actionGoToMotherFeed->setIcon(icon_theme_factory->fromTheme(QSL("application-rss+xml"), QSL("go-jump")));
@@ -938,6 +942,11 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
           &MessagesView::editFeedOfSelectedMessage);
+
+  connect(m_ui->m_actionFetchFullSelectedArticles,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::fetchFullSelectedArticles);
 
   connect(m_ui->m_actionGoToMotherFeed,
           &QAction::triggered,
