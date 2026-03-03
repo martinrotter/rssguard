@@ -177,12 +177,16 @@ void IconFactory::setCurrentIconTheme(const QString& theme_name) {
 }
 
 QString IconFactory::currentIconTheme() const {
-  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::IconTheme)).toString();
+  return qApp->settings()
+    ->value(GROUP(GUI),
+            GUI::IconTheme,
+            SkinFactory::isOsDarkModeEnabled() ? APP_ICON_THEME_DARK_DEFAULT : APP_ICON_THEME_DEFAULT)
+    .toString();
 }
 
 void IconFactory::loadCurrentIconTheme() {
   const QStringList installed_themes = installedIconThemes();
-  const QString theme_name_from_settings = qApp->settings()->value(GROUP(GUI), SETTING(GUI::IconTheme)).toString();
+  const QString theme_name_from_settings = currentIconTheme();
 
   if (QIcon::themeName() == theme_name_from_settings) {
     qDebugNN << LOGSEC_GUI << "Icon theme" << QUOTE_W_SPACE(theme_name_from_settings) << "already loaded.";

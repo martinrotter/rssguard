@@ -403,10 +403,8 @@ namespace GUI {
   VALUE(Qt::SortOrder) DefaultSortOrderFeedsDef;
 
   KEY IconTheme;
-  VALUE(char*) IconThemeDef;
 
   KEY Skin;
-  VALUE(char*) SkinDef;
 
   KEY Style;
   VALUE(char*) StyleDef;

@@ -97,6 +97,8 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
 
     bool isStyleGoodForAlternativeStylePalette(const QString& style_name) const;
 
+    static bool isOsDarkModeEnabled();
+
     // Returns the name of the skin, that should be activated
     // after application restart.
     QString selectedSkinName() const;

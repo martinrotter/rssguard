@@ -227,17 +227,21 @@
 
 #define APP_SKIN_USER_FOLDER   "skins"
 #define APP_SKIN_DEFAULT       "minimal-light"
+#define APP_SKIN_DEFAULT_DARK  "minimal-dark"
 #define APP_SKIN_METADATA_FILE "metadata.xml"
 
 #if defined(FORCE_BUNDLE_ICONS)
 // Forcibly bundle icons.
-#define APP_ICON_THEME_DEFAULT "Breeze"
+#define APP_ICON_THEME_DEFAULT      "Breeze"
+#define APP_ICON_THEME_DARK_DEFAULT "Breeze Dark"
 #elif defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
 // Do not force default icon theme on Linux.
-#define APP_ICON_THEME_DEFAULT ""
+#define APP_ICON_THEME_DEFAULT      ""
+#define APP_ICON_THEME_DARK_DEFAULT ""
 #else
 // Use some default theme otherwise.
-#define APP_ICON_THEME_DEFAULT "Breeze"
+#define APP_ICON_THEME_DEFAULT      "Breeze"
+#define APP_ICON_THEME_DARK_DEFAULT "Breeze Dark"
 #endif
 
 #define APP_LOCAL_ICON_THEME_FOLDER "icons"

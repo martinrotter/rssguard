@@ -293,11 +293,9 @@ void Application::loadDynamicShortcuts() {
 }
 
 void Application::offerPolls() const {
-  /*
   if (isFirstRunCurrentVersion()) {
-    qApp->web()->openUrlInExternalBrowser(QSL("https://forms.gle/3CZm95W6vrBLfi5K9"));
+    qApp->web()->openUrlInExternalBrowser(QSL("https://forms.gle/1dCgqi2p1TEGn73d8"));
   }
-  */
 }
 
 void Application::offerChanges() const {

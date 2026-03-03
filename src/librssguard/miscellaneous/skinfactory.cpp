@@ -213,8 +213,32 @@ QString SkinFactory::customSkinBaseFolder() const {
   return qApp->userDataFolder() + QDir::separator() + APP_SKIN_USER_FOLDER;
 }
 
+#if defined(Q_OS_WIN)
+bool isWindowsDarkMode() {
+  QSettings settings(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize"),
+                     QSettings::Format::NativeFormat);
+  QVariant value = settings.value(QSL("AppsUseLightTheme"));
+
+  return !value.isValid() ? false : (value.toInt() == 0);
+}
+#endif
+
+bool SkinFactory::isOsDarkModeEnabled() {
+#if defined(Q_OS_WIN)
+  return isWindowsDarkMode();
+#elif QT_VERSION >= 0x060500 // Qt >= 6.5.0
+  return qApp->styleHints()->colorScheme() == Qt::ColorScheme::Dark;
+#else
+  return false;
+#endif
+}
+
 QString SkinFactory::selectedSkinName() const {
-  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::Skin)).toString();
+  bool is_dark = isOsDarkModeEnabled();
+
+  return qApp->settings()
+    ->value(GROUP(GUI), GUI::Skin, is_dark ? QSL(APP_SKIN_DEFAULT_DARK) : QSL(APP_SKIN_DEFAULT))
+    .toString();
 }
 
 QString SkinFactory::prepareHtml(const QString& inner_html) {

@@ -2,7 +2,13 @@
 -----
 Released on: 2026-03-03
 
+PLEASE, read the text below!
+
 This release contains some nice fixes and little enhancements from previous version. Thanks for your patience.
+
+For users with dark desktop themes -> make sure to switch to `minimal-dark` skin in your RSS Guard settings. This skin is specifically tailored for users who use dark desktop themes.
+
+As for the discussion around now-removed `QtWebEngine` and web browsing capabilities. There is argument that RSS Guard now cannot display "full" articles. Wrong. There is a setting in `Experimental` section of feed details dialog which can enable fetching full articles, even optionally in plain text format. Also, see below as this feature was even enhanced in this latest app version. I do not plan re-introducing web browsing capabilities because there are technical and (mainly) security implications which I want to avoid at all costs. RSS Guard provides ways to read full articles and if anyone wants to go to source website, just click the link and use the website in dedicated web browser which provides you with right tools to elevate your security in the online environment.
 
 Added:
 * All text is selected when focusing search textbox. (#2061)
@@ -12,7 +18,7 @@ Added:
 * You now can drag URLs from article HTML preview to outside of RSS Guard. (#2032)
 
 Fixed:
-* Quick note for #2044. If you use dark desktop environment scheme, then use `minimal-dark` skin, please. This one is specifically tailored for dark environments.
+* Quick note for #2044. If you use dark desktop environment scheme, then again, use `minimal-dark` skin, please. This one is specifically tailored for dark environments. I added a tweak to make `minimal-dark` (and `Breeze Dark`) default skin for users with dark desktop themes. This only applies when RSS Guard is started with clean config and also is supported only on some platforms.
 * Article automatic limit/control and article custom IDs are now also migrated from RSS Guard 4.x. (#2042)
 * All menu items can be now properly assigned to shortcuts and added to toolbars. (#2040)
 * Fix the bug in loading article pictures when going offline/online and vice versa. (#2033)
