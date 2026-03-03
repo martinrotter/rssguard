@@ -501,12 +501,12 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="135"/>
       <source>this database file cannot be used because it comes from old major app version</source>
-      <translation type="unfinished">this database file cannot be used because it comes from old major app version</translation>
+      <translation>目前資料庫檔無法再用，因為它只在舊主要版使用</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="141"/>
       <source>database schema is too new, application requires &lt;= %1 but %2 is installed</source>
-      <translation type="unfinished">database schema is too new, application requires &lt;= %1 but %2 is installed</translation>
+      <translation>資料庫結構太新，應用程式需要 &lt;= %1，但安裝的卻是 %2</translation>
     </message>
   </context>
   <context>
@@ -520,12 +520,12 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="53"/>
       <source>Connection to your database was not established with error: %1. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: %1. Falling back to SQLite.</translation>
+      <translation>無法建立連線到您的資料庫，錯誤為: %1。退回到 SQLite。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="65"/>
       <source>Connection to your database was not established with error: %1.</source>
-      <translation type="unfinished">Connection to your database was not established with error: %1.</translation>
+      <translation>無法建立連線到您的資料庫，錯誤為: %1。</translation>
     </message>
   </context>
   <context>
@@ -546,12 +546,12 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="908"/>
       <source>invalid URL cannot be used to load file from cache</source>
-      <translation type="unfinished">invalid URL cannot be used to load file from cache</translation>
+      <translation>無法使用無效的 URL，來從暫存檔載入檔案</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="920"/>
       <source>file for %1 is not available in cache</source>
-      <translation type="unfinished">file for %1 is not available in cache</translation>
+      <translation>%1 的檔案不在暫存檔中</translation>
     </message>
   </context>
   <context>
@@ -559,17 +559,17 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="99"/>
       <source>Duplicate shortcut</source>
-      <translation type="unfinished">Duplicate shortcut</translation>
+      <translation>重複指派快鍵</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="100"/>
       <source>There is another action which has the same shortcut assigned.</source>
-      <translation type="unfinished">There is another action which has the same shortcut assigned.</translation>
+      <translation>再一次指派相同的快鍵。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/dynamicshortcutswidget.cpp" line="101"/>
       <source>Do you want to keep the new shortcut assignment and clear the previous shortcut?</source>
-      <translation type="unfinished">Do you want to keep the new shortcut assignment and clear the previous shortcut?</translation>
+      <translation>保留新的快鍵指派，刪除舊的指派嗎？</translation>
     </message>
   </context>
   <context>
@@ -612,7 +612,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="101"/>
       <source>Save attachment %1</source>
-      <translation type="unfinished">Save attachment %1</translation>
+      <translation>儲存附件 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="117"/>
@@ -622,7 +622,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="145"/>
       <source>Downloaded %1 kB...</source>
-      <translation type="unfinished">Downloaded %1 kB...</translation>
+      <translation>已下載 %1 kB……</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="156"/>
@@ -739,11 +739,11 @@ Active message filters: %2
 Status: %3
 Source: %4
 Item custom ID: %5</source>
-      <translation type="unfinished">Auto-update status: %1
-Active message filters: %2
-Status: %3
-Source: %4
-Item custom ID: %5</translation>
+      <translation>自動更新之狀態: %1
+使用的訊息篩選規則: %2
+狀態: %3
+來源: %4
+項目 ID: %5</translation>
     </message>
   </context>
   <context>
@@ -1135,7 +1135,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="244"/>
       <source>Show feeds with article filters</source>
-      <translation>顯示帶有文章篩選器的文源</translation>
+      <translation>顯示帶有文章篩選規則的文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="250"/>
@@ -1145,7 +1145,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="260"/>
       <source>Feed list filter</source>
-      <translation>文源清單篩選器</translation>
+      <translation>文源清單篩選規則</translation>
     </message>
   </context>
   <context>
@@ -1247,7 +1247,7 @@ Item custom ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="382"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
-      <translation>無法編輯所選項目。(尚)未支援這個。</translation>
+      <translation>無法編輯所選多個項目。(尚)未支援這個。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="399"/>
@@ -3000,7 +3000,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
       <source>Move &amp;down</source>
-      <translation>移下(&amp;B)</translation>
+      <translation>移下(&amp;D)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="875"/>
@@ -3267,7 +3267,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="154"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="496"/>
       <source>Move filter up</source>
-      <translation>將篩選器上移</translation>
+      <translation>將篩選規則上移</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="157"/>
@@ -3279,7 +3279,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="164"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="500"/>
       <source>Move filter down</source>
-      <translation>將篩選器下移</translation>
+      <translation>將篩選規則下移</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="167"/>
