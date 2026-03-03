@@ -209,7 +209,7 @@ quitMe:
 notRunning:
   ; Here remove all files, but skip "data" folder.
   Push "$INSTDIR"
-  Push "data4"
+  Push "data5"
   Call un.RmDirsButOne
   
   ; Remove top-level files.
@@ -270,4 +270,5 @@ FunctionEnd
 Function .onInit
   IntOp $0 ${SF_SELECTED} | ${SF_RO}
   SectionSetFlags ${Core} $0
+
 FunctionEnd
