@@ -109,7 +109,8 @@ void MessagesProxyModel::initializeFilters() {
   };
 
   m_filters[MessageListFilter::ShowOnlyWithScore] = [this](int msg_row_index) {
-    const int msg_score = m_sourceModel->data(msg_row_index, MSG_MDL_SCORE_INDEX, Qt::ItemDataRole::EditRole).toDouble();
+    const int msg_score =
+      m_sourceModel->data(msg_row_index, MSG_MDL_SCORE_INDEX, Qt::ItemDataRole::EditRole).toDouble();
 
     return msg_score > MSG_SCORE_MIN;
   };
@@ -146,21 +147,6 @@ QModelIndex MessagesProxyModel::getNextPreviousUnreadItemIndex(int default_row) 
   }
 
   return next_index;
-}
-
-QModelIndex MessagesProxyModel::indexFromMessage(const Message& msg) const {
-  for (int i = 0; i < rowCount(); i++) {
-    auto idx = index(i, 0);
-    auto id =
-      m_sourceModel->data(m_sourceModel->index(mapToSource(idx).row(), MSG_MDL_ID_INDEX), Qt::ItemDataRole::EditRole)
-        .toInt();
-
-    if (id == msg.m_id) {
-      return idx;
-    }
-  }
-
-  return QModelIndex();
 }
 
 QModelIndex MessagesProxyModel::getNextUnreadItemIndex(int default_row, int max_row) const {

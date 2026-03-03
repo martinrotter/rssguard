@@ -256,10 +256,12 @@ void FeedMessageViewer::loadMessageToFeedAndArticleList(Feed* feed, const Messag
 
   m_feedsView->setExpanded(idx_map, true);
   m_feedsView->setCurrentIndex(idx_map);
+
   QCoreApplication::processEvents();
 
-  auto idx_map_msg = m_messagesView->model()->indexFromMessage(message);
-  auto msg_is_visible = !m_messagesView->isRowHidden(idx_map_msg.row(), idx_map_msg);
+  auto idx_map_msg =
+    m_messagesView->model()->mapFromSource(m_messagesView->sourceModel()->indexForMessage(message.m_id));
+  auto msg_is_visible = !m_messagesView->isRowHidden(idx_map_msg.row(), QModelIndex());
 
   if (!idx_map_msg.isValid() || !msg_is_visible) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -272,6 +274,7 @@ void FeedMessageViewer::loadMessageToFeedAndArticleList(Feed* feed, const Messag
   }
 
   m_messagesView->setCurrentIndex(idx_map_msg);
+  m_messagesView->scrollTo(idx_map_msg, QAbstractItemView::ScrollHint::PositionAtCenter);
 }
 
 void FeedMessageViewer::onMessageRemoved(RootItem* root) {

@@ -4,8 +4,10 @@
 
 #include "definitions/definitions.h"
 
+SqlException::SqlException(Type type, const QString& message) : ApplicationException(message), m_type(type) {}
+
 SqlException::SqlException(const QSqlError& error, const QString& file, int line)
-  : ApplicationException(messageForError(error), file, line) {}
+  : ApplicationException(messageForError(error), file, line), m_type(Type::GeneralError) {}
 
 QString SqlException::messageForError(const QSqlError& error) const {
   if (!error.isValid()) {
@@ -20,4 +22,12 @@ QString SqlException::messageForError(const QSqlError& error) const {
   else {
     return QSL("%1/%2").arg(error_code, error.text());
   }
+}
+
+SqlException::Type SqlException::type() const {
+  return m_type;
+}
+
+void SqlException::setType(Type type) {
+  m_type = type;
 }

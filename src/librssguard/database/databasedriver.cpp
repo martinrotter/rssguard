@@ -5,6 +5,7 @@
 #include "database/sqlquery.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "exceptions/sqlexception.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/thread.h"
@@ -132,7 +133,8 @@ void DatabaseDriver::updateDatabaseSchema(QSqlDatabase& db, const QString& datab
     int installed_db_schema = query_db.value(0).toString().toInt();
 
     if (installed_db_schema < lowest_version) {
-      throw ApplicationException(tr("this database file cannot be used because it comes from old major app version"));
+      throw SqlException(SqlException::Type::TooOldIncompatibleDbSchema,
+                         tr("this database file cannot be used because it comes from old major app version"));
     }
 
     if (installed_db_schema > current_version) {
