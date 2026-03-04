@@ -23,8 +23,8 @@ BrandingText "${APP_NAME}"
 SetCompressor /SOLID /FINAL lzma
 
 ; Default installation folder.
-InstallDir "C:\${APP_NAME}"
-InstallDirRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "InstallLocation"
+InstallDir "C:\${APP_NAME} ${APP_VERSION_MAJOR}"
+InstallDirRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "InstallLocation"
 
 ; Require administrator access.
 RequestExecutionLevel admin
@@ -132,12 +132,12 @@ NotInstalled:
   WriteUninstaller "$INSTDIR\Uninstall.exe"
 
   ; Add to Add/Remove programs.
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "DisplayName" "${APP_NAME}"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "DisplayIcon" "$INSTDIR\${EXE_NAME}"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "DisplayVersion" "${APP_VERSION}"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "InstallLocation" "$INSTDIR"
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
-  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "DisplayName" "${APP_NAME}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "DisplayIcon" "$INSTDIR\${EXE_NAME}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "DisplayVersion" "${APP_VERSION}"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "InstallLocation" "$INSTDIR"
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "UninstallString" "$\"$INSTDIR\Uninstall.exe$\""
+  WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
 
   ; Open documentation.
   ExecShell "open" "https://rssguard.readthedocs.io/en/stable"
@@ -209,7 +209,7 @@ quitMe:
 notRunning:
   ; Here remove all files, but skip "data" folder.
   Push "$INSTDIR"
-  Push "data5"
+  Push "data${APP_VERSION_MAJOR}"
   Call un.RmDirsButOne
   
   ; Remove top-level files.
@@ -218,10 +218,10 @@ notRunning:
   ; Remove directory itself if empty.
   RMDir "$INSTDIR"
     
-  RMDir /r "$SMPROGRAMS\${APP_NAME}"  
+  RMDir /r "$SMPROGRAMS\${APP_NAME}"
   Delete "$DESKTOP\${APP_NAME}.lnk"
   DeleteRegKey HKCU "Software\${APP_NAME}"
-  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}"
+  DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME} ${APP_VERSION_MAJOR}"
 SectionEnd
 
 ;--------------------------------
