@@ -135,6 +135,7 @@
      <addaction name="m_actionSortFeedsAlphabetically"/>
      <addaction name="m_actionRearrangeCategories"/>
      <addaction name="m_actionRearrangeFeeds"/>
+     <addaction name="separator"/>
      <addaction name="m_actionFeedMoveUp"/>
      <addaction name="m_actionFeedMoveDown"/>
      <addaction name="m_actionFeedMoveTop"/>

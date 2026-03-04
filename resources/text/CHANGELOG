@@ -8,8 +8,11 @@ PLEASE, read the text below!
 
 I kept the survey open for 5.0.2 release as well, so that everyone can fill it. Here is the link: https://forms.gle/1dCgqi2p1TEGn73d8
 
+I will remove the survey auto-open for next release. I will also create a response document to respond to all questions asked in the survey. It will open automatically in one of upcoming versions.
+
 Fixed:
 * Official RSS Guard installers for versions 5.0.0 and 5.0.1 contained a bug which removed user data on uninstallation by mistake. Read the above notice for more details. (#2077)
+* Missing menu items in main menu `Feeds -> Sort` submenu.
 
 5.0.1
 -----
