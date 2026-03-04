@@ -140,7 +140,7 @@ NotInstalled:
   WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${APP_NAME}" "QuietUninstallString" "$\"$INSTDIR\Uninstall.exe$\" /S"
 
   ; Open documentation.
-  ExecShell "open" "https://rssguard.readthedocs.io/en/stable/downloads.html#windows"
+  ExecShell "open" "https://rssguard.readthedocs.io/en/stable"
 SectionEnd
 
 SectionGroup /e "Plugins"
