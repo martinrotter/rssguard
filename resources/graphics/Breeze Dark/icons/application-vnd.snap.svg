@@ -1,0 +1,16 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <linearGradient id="linearGradient4850" x1="58" x2="58" y1="393.95328" y2="324.65894" gradientTransform="matrix(1.0000005 0 0 .84587337 -47.000023 -272.73453)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fff" stop-opacity="0" offset="0"/>
+            <stop stop-color="#fff" stop-opacity=".2" offset="1"/>
+        </linearGradient>
+    </defs>
+    <g shape-rendering="auto">
+        <rect x="7" y="10.999992" width="49.999977" height="49.999977" color="#000000" color-rendering="auto" fill="#59786a" image-rendering="auto" solid-color="#000000" style="isolation:auto;mix-blend-mode:normal"/>
+        <rect x="7" y="59.999992" width="50" height="1.0000085" color="#000000" color-rendering="auto" image-rendering="auto" opacity=".25" solid-color="#000000" style="isolation:auto;mix-blend-mode:normal"/>
+        <rect x="7" y="10.999992" width="50" height="1.0000085" color="#000000" color-rendering="auto" fill="#fff" image-rendering="auto" opacity=".5" solid-color="#000000" style="isolation:auto;mix-blend-mode:normal"/>
+    </g>
+    <path d="m40 12v2h2v-2zm2 2v2h2v-2zm0 2h-2v2h2zm0 2v2h2v-2zm0 2h-2v2h2zm0 2v2h2v-2zm0 2h-2v2h2zm-2 3v4h1v4h2v-4h1v-4zm1 1h2v2h-2z" fill="#fff" opacity=".75"/>
+    <path class="ColorScheme-Text" d="m10 40 9.5 9v-6zm10 3 8 3.666666-2-3.666666zm0 0.556639v5.443361l3.84615-3.666667zm-2.487288 4.443361-6.512712 9 8-7.5z" color="#232629" fill="#fff" opacity=".75"/>
+    <rect x="7" y="11" width="50" height="49.999977" color="#000000" color-rendering="auto" fill="url(#linearGradient4850)" image-rendering="auto" opacity=".552" shape-rendering="auto" solid-color="#000000" style="isolation:auto;mix-blend-mode:normal"/>
+</svg>

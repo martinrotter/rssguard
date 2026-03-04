@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="32" height="32">
+    <style type="text/css" id="current-color-scheme">
+        .ColorScheme-NegativeText {
+            color:#da4453;
+        }
+    </style>
+    <g id="plasmavault_error" transform="translate(0,1e-06)">
+        <path id="rect4230" d="m0-1e-6h32.000004v32h-32.000004z" fill="none"/>
+        <path id="path875" d="m4 4v24h24v-21h-11l-3-3zm1 1h8.585938l2.207031 2.2070312-5.792969 5.7929688h-5zm16 8a4 4 0 0 1 4 4v3h2v7h-12v-7h2v-3a4 4 0 0 1 4-4zm0 1a3.0003099 3 0 0 0-3 3v3h6v-3a3.0003099 3 0 0 0-3-3z" class="ColorScheme-NegativeText" fill="currentColor"/>
+    </g>
+</svg>

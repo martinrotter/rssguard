@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="24" height="24" viewBox="0 0 24 24">
+  <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#31363b;
+      }
+      .ColorScheme-Background {
+        color:#eff0f1;
+      }
+      .ColorScheme-Accent {
+        color:#3daee9;
+      }
+      .ColorScheme-ButtonText {
+        color:#31363b;
+      }
+      </style>
+  <g transform="translate(1,1)">
+    <g id="ime-punctuation-halfwidth" transform="translate(154,-59.999974) translate(-154,-110)">
+      <rect style="fill:none;fill-opacity:1;stroke:none" id="rect4231" width="22" height="22" x="-2.4709701e-09" y="170"/>
+      <circle r="1.5" style="fill:currentColor;fill-opacity:1;stroke:none" class="ColorScheme-Text" id="ellipse4233" cx="7.5" cy="180.5"/>
+      <path id="circle4235" d="m 14.5,178.99997 a 1.5,1.5 0 0 0 -1.5,1.5 1.5,1.5 0 0 0 1.5,1.5 1.5,1.5 0 0 0 0.04688,-0.002 c -0.53325,0.93921 -1.34766,1.60156 -1.34766,1.60156 l 0.60156,0.80078 c 0,0 1.96734,-1.42635 2.16211,-3.57226 A 1.5,1.5 0 0 0 16,180.49997 a 1.5,1.5 0 0 0 -1.5,-1.5 z" style="fill:currentColor;fill-opacity:1;stroke:none" class="ColorScheme-Text"/>
+    </g>
+  </g>
+</svg>

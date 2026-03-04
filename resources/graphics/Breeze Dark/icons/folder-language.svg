@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- style definitions -->
+  <defs>
+    <style type="text/css" id="current-color-scheme">.ColorScheme-Accent { color: #3daee9; } .ColorScheme-Text { color: #fcfcfc; } </style>
+  </defs>
+
+  <!-- folder bg -->
+  <path style="fill:currentColor" class="ColorScheme-Accent" d="m6 9v21h-1v57h86v-63h-1v-9h-42l-6-6z"/>
+
+  <!-- folder fg -->
+  <path d="m6 9v21h27l6-6h51v-9h-42l-6-6z" fill-opacity=".33"/>
+
+  <!-- folder highlight -->
+  <path d="m42 9 5 7h43v-1h-42zm-3 15-6 6h-28v1h29z" fill="#fff" fill-opacity=".2"/>
+
+  <!-- folder shadow -->
+  <path d="m39 24-7 5h-26v1h27zm-34 62v1h86v-1z" fill-opacity=".2"/>
+
+  <!-- wén, A -->
+  <path d="m43.740234 42.219-1.439453.417969 1.414063 3.21289h-8.964844v1.300782h13.646484c-.471738 2.365186-2.214924 5.175364-4.484375 7.68164-1.759573-1.945991-3.26136-4.17592-4.412109-6.582031l-1.25 1c1.203122 2.320306 2.880812 4.613737 4.673828 6.621094-2.313807 2.317057-5.012486 4.252055-7.423828 5.128906l.5 1.5c1.601216 0 4.90148-2.428187 7.927734-5.548828 2.441834 2.534973 4.972394 4.472436 6.746094 5.214844l.90625-1.570313c-2.421542-1.130525-4.679061-2.743598-6.660156-4.707031 2.648773-2.929636 4.896759-6.262584 5.304687-8.738281h3.025391v-1.300782h-8.455078zm11.986328 12.03125-6.576171 16.75h1.970703l2.076172-5.142578h6.605468l2.076172 5.142578h1.970703l-6.576171-16.75zm.75 2h.04688l2.835937 8.306641h-5.71875z" style="fill:currentColor;fill-opacity:0.6" class="ColorScheme-Text"/>
+    
+</svg>

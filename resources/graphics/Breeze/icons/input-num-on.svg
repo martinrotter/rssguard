@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="32" height="32">
+    <style type="text/css" id="current-color-scheme">.ColorScheme-Text {
+        color:#31363b;
+      }
+      .ColorScheme-Background {
+        color:#eff0f1;
+      }
+      .ColorScheme-Accent {
+        color:#3daee9;
+      }
+      .ColorScheme-ButtonText {
+        color:#31363b;
+      }
+    </style>
+    <g id="input-num-on" transform="translate(19,79.999986) translate(-38,-192)">
+        <rect x="19" y="112" width="32" height="32" opacity=".00100002"/>
+        <path class="ColorScheme-Text" d="m25 116v20l10 4 10-4v-20h-1zm1 1h18v16h-18zm9 3v2h-2v1h2v6h-2v1h5v-1h-2v-9zm-9 14h18v1h-18z" fill="currentColor"/>
+    </g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+  <defs id="defs3051">
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#232629;
+      }
+      .ColorScheme-Accent {
+        color:#3daee9;
+      }
+      </style>
+  </defs>
+ <path 
+    style="fill:currentColor;fill-opacity:0.5;stroke:none" 
+	d="M 2 3 L 2 6 L 10 6 L 10 11 L 13 11 L 13 3 L 2 3 z "
+	class="ColorScheme-Text"
+    />
+ <path 
+    style="fill:currentColor;fill-opacity:1;stroke:none" 
+	d="M 2 2 L 2 3 L 13 3 L 13 11 L 14 11 L 14 2 L 2 2 z M 2 6 L 2 7 L 9 7 L 9 11 L 10 11 L 10 6 L 2 6 z "
+	class="ColorScheme-Text"
+    />
+  <path
+    style="fill:currentColor;fill-opacity:1;stroke:none" 
+     d="M 5.2 8.7 L 4.5 9.4 L 6.1 11 L 2 11 L 2 12 L 6.1 12 L 4.5 13.6 L 5.2 14.3 L 7.3 12.2 L 8 11.5 L 5.2 8.7 z "
+	class="ColorScheme-Accent"
+     />
+</svg>

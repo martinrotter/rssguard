@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" xmlns="http://www.w3.org/2000/svg">
+    <style id="current-color-scheme" type="text/css">.ColorScheme-NegativeText {
+            color:#da4453;
+        }</style>
+    <path class="ColorScheme-NegativeText" d="M3 10v12h25v-3c.554 0 1-.446 1-1v-4c0-.554-.446-1-1-1v-3zm1 1h23v10H4z" style="fill:currentColor;fill-opacity:1;stroke:none"/>
+</svg>

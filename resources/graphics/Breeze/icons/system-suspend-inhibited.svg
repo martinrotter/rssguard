@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" version="1.1" viewBox="0 0 24 24" width="24" height="24">
+  <defs>
+    <style id="current-color-scheme" type="text/css">
+          .ColorScheme-Text { color: #232629; }
+          .ColorScheme-NegativeText { color: #da4453; }
+        </style>
+  </defs>
+  <g transform="translate(1,1)">
+    <g fill="currentColor">
+      <path class="ColorScheme-Text" d="M17 15.586V11h-2V7a4 4 0 0 0-7.81-1.224l.835.835A3 3 0 0 1 14 7v4h-1.586l1 1h.911a.675.675 0 0 1 .477 1.152l-.134.101z" style="fill:currentColor"/>
+      <path class="ColorScheme-Text" d="m11.549 12.963.927.927-1.124.842-.154.116A.675.675 0 0 0 11.675 16h2.91L17 18.414V19H5v-8h2V8.414l1 1V11h1.586L11 12.414v.549zm-.747 2.19A.675.675 0 0 0 10.325 14H7v.963h2.714l-2.362 1.769-.154.116A.675.675 0 0 0 7.675 18H11v-.963H8.286l2.362-1.769z" clip-rule="evenodd" fill-rule="evenodd" style="fill:currentColor"/>
+      <path class="ColorScheme-Text" d="M13.623 15.037h-1.337l.764-.573z" style="fill:currentColor"/>
+      <path class="ColorScheme-NegativeText" d="m18.647 19.354-16-16 .707-.708 16 16z" clip-rule="evenodd" fill-rule="evenodd" style="fill:currentColor"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48">
+ <style id="current-color-scheme" type="text/css">.ColorScheme-Text { color: #fcfcfc; } </style>
+ <g id="weather-snow-day-symbolic" class="ColorScheme-Text" stroke-linejoin="bevel">
+  <path id="line12" d="m1 19h5" fill="none" stroke="currentColor" stroke-width="2"/>
+  <use transform="rotate(36,17,19)" href="#line12"/>
+  <use transform="rotate(72,17,19)" href="#line12"/>
+  <use transform="rotate(108,17,19)" href="#line12"/>
+  <use transform="rotate(-36,17,19)" href="#line12"/>
+  <path id="sun" d="m9.4 23.83a9 9 0 0 1 9.94-13.52" stroke="currentColor" stroke-width="2" fill="none"/>
+  <path id="snowflake1" d="m12 32.5 0.86052 1.5h1.7376l-0.90486 1.5 0.90486 1.5h-1.7284l-0.86965 1.4937-0.84804-1.5h-1.75l0.90485-1.5-0.90485-1.5h1.7333z" fill="currentColor"/>
+  <use id="use5" transform="translate(8)" href="#snowflake1"/>
+  <use id="use6" transform="translate(16)" href="#snowflake1"/>
+  <use id="use7" transform="translate(24)" href="#snowflake1"/>
+  <use id="use8" transform="translate(-4,5.5)" href="#snowflake1"/>
+  <use id="use9" transform="translate(4,5.5)" href="#snowflake1"/>
+  <use id="use10" transform="translate(12,5.5)" href="#snowflake1"/>
+  <use id="use11" transform="translate(20,5.5)" href="#snowflake1"/>
+  <path id="cloud" d="m27 31 h 5 a 7 7 0 0 0 0.95 -13.92 a 9 9 0 0 0 -8.95-8.08 a 9 9 0 0 0 -8.36 12.31 a 5 5 0 1 0 -1.63 9.69h2 z" fill="none" stroke="currentColor" stroke-width="2"/>
+ </g>
+</svg>

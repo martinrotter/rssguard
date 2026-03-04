@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48" height="48" version="1.1" viewBox="0 0 12.7 12.7" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="linearGradient967" x1="24" x2="24" y1="318.58539" y2="131.68687" gradientTransform="matrix(3.7795277,0,0,3.6895388,0,-918.42522)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#da4453" offset="0"/>
+   <stop stop-color="#fcfcfc" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient2591" x1="26" x2="26" y1="-2.3248892" y2="36.339279" gradientTransform="matrix(3.7795277,0,0,3.6895388,0,-918.42522)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#da4453" offset="0"/>
+   <stop stop-color="#da4453" stop-opacity=".07522124" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient2617" x1="10.219758" x2="10.219758" y1="12.866261" y2="31.200516" gradientTransform="matrix(.9999956 0 0 1 5.9646627 4.9530272)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#da4453" offset="0"/>
+   <stop stop-color="#da4453" stop-opacity="0" offset="1"/>
+  </linearGradient>
+ </defs>
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <g transform="matrix(.26458217 0 0 .26458332 5.1009547e-5 9.3397921)">
+  <g transform="translate(0,-35.300002)">
+   <rect x="4" y="3.9999998" width="40" height="40" rx="6" ry="6" fill="#34495e" style="paint-order:stroke fill markers"/>
+   <path transform="scale(.26458333)" d="m37.794922 15.117188c-12.56315 0-22.677734 10.114584-22.677734 22.677734v102.04688c0 12.56315 10.114584 22.67773 22.677734 22.67773h105.82617c12.56315 0 22.67774-10.11458 22.67774-22.67773v-102.04688c0-12.56315-10.11459-22.677734-22.67774-22.677734z" fill="#34495e" style="paint-order:markers fill stroke"/>
+   <path transform="scale(.26458333)" d="m37.794922 15.117188c-12.56315 0-22.677734 10.114584-22.677734 22.677734v102.04688c0 12.56315 10.114584 22.67773 22.677734 22.67773h105.82617c12.56315 0 22.67774-10.11458 22.67774-22.67773v-102.04688c0-12.56315-10.11459-22.677734-22.67774-22.677734z" fill="url(#linearGradient967)" style="paint-order:markers fill stroke"/>
+   <g>
+    <path transform="matrix(1.0000044,0,0,1.0000001,-1.9279284e-4,-1.4166931e-6)" d="m10.099609 4c-3.378718 0-6.099609 2.6760007-6.099609 6v14h40v-14c0-3.3239993-2.720891-6-6.099609-6z" fill="url(#linearGradient2591)" style="paint-order:normal"/>
+    <path transform="matrix(1.0000044,0,0,1.0000001,-1.9279284e-4,-1.4166931e-6)" d="m19.566406 11.173828-1.361328 8.617188-4.535156-4.535157-3.449219 12.371094 15.371094 15.373047h11.779297l0.113281-0.107422 0.107422 0.107422h0.408203c3.323985 0 6-2.676 6-6v-15.414062l-6.330078-6.330079-0.441406 1.580079-5.66211-5.66211-1.361328 8.617188-4.535156-4.535157-0.441406 1.580079z" fill="url(#linearGradient2617)" style="paint-order:normal"/>
+    <g transform="translate(0,3.0000021)" fill="#da4453">
+     <rect x="21.999905" y="14" width="4.0000176" height="19.999998" ry=".99999976" style="paint-order:normal"/>
+     <rect x="15.999877" y="9.9999981" width="4.0000176" height="20" ry="1.0000015" style="paint-order:normal"/>
+     <rect x="27.999929" y="9.9999981" width="4.0000176" height="20" ry="1.0000015" style="paint-order:normal"/>
+     <rect x="33.999958" y="13.999998" width="4.0000176" height="11.000001" ry="1.0000017" style="paint-order:normal"/>
+     <rect x="9.9998512" y="13.999998" width="4.0000176" height="11.000001" ry="1.0000017" style="paint-order:normal"/>
+    </g>
+   </g>
+   <g transform="translate(0,1.0000023)" fill="#fcfcfc">
+    <rect x="21.999905" y="14" width="4.0000176" height="19.999998" ry=".99999976" style="paint-order:normal"/>
+    <rect x="15.999877" y="9.9999981" width="4.0000176" height="20" ry="1.0000015" style="paint-order:normal"/>
+    <rect x="27.999929" y="9.9999981" width="4.0000176" height="20" ry="1.0000015" style="paint-order:normal"/>
+    <rect x="33.999958" y="13.999998" width="4.0000176" height="11.000001" ry="1.0000017" style="paint-order:normal"/>
+    <rect x="9.9998512" y="13.999998" width="4.0000176" height="11.000001" ry="1.0000017" style="paint-order:normal"/>
+   </g>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg version="1.1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" width="48" height="48">
+ <style id="current-color-scheme" type="text/css">.ColorScheme-Text { color: #fcfcfc; } </style>
+ <g fill="none" stroke="currentColor" stroke-width="2" class="ColorScheme-Text" stroke-linejoin="bevel">
+  <path d="m28 16v-0.57812c0-2.493-2.007-4.5-4.5-4.5h-6c-2.493 0-4.5 2.007-4.5 4.5v0.5h-2c-3.878 0-7 3.122-7 7s3.122 7 7 7h2.5"/>
+  <path d="m28 16a10.01 10.01 0 0 1 9.8497 8.2309 8.008 8.008 0 0 1 6.1663 7.7851 8.008 8.008 0 0 1-8.008 8.008h-18.018a6.006 6.006 0 0 1-6.006-6.006 6.006 6.006 0 0 1 6.006-6.006 6.006 6.006 0 0 1 0.21506 0.0121 10.01 10.01 0 0 1-0.21506-2.0137 10.01 10.01 0 0 1 10.01-10.01z" fill="currentColor"/>
+  <path d="m20 11s2.5-3 6-3h7.5c1.5 0 5.5 2 5.5 6 5.8099 0.82999 6.4532 7.1711 2.7875 9.8749-0.75085 0.55383-1.3098 0.71247-2.4149 0.88248"/>
+ </g>
+</svg>

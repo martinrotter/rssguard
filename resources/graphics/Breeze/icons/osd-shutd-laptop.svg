@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="128" height="128">
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#7B7C7E;
+      }
+      .ColorScheme-Background{
+        color:#EFF0F1;
+      }
+      .ColorScheme-Accent{
+        color:#3DAEE6;
+      }
+      .ColorScheme-ButtonText {
+        color:#7B7C7E;
+      }
+</style>
+    <g style="fill:none" id="osd-shutd-laptop">
+      <rect id="rect4291" height="128" width="128" x="0" y="0" style="fill:none"/>
+      <path style="color:#7b7c7e;fill:currentColor;fill-opacity:1;fill-rule:evenodd;stroke:none" d="m -77,-43 0,33 1,0 0,-32 68,0 0,41 -41,0 0,1 2,0 0,8 -2,0 0,1 20,0 0,-1 -8,0 0,-8 30,0 0,-42.998047 L -77,-43 Z m 2,2 0,31 1,0 0,-30 64,0 0,36 -39,0 0,1 40,0 0,-38 -66,0 z m -46,33 0,43 30,0 0,8 -8,0 0,1 26,0 0,-1 -8,0 0,-8 30,0 0,-42.9980469 L -121,-8 Z m 1,1 68,0 0,41 -68,0 0,-41 z m 1,1 0,38 66,0 0,-38 -66,0 z m 1,1 64,0 0,36 -64,0 0,-36 z m 72,5 8,0 0,8 -8,0 0,-8 z m -44,35 8,0 0,8 -8,0 0,-8 z" transform="translate(128,64)" id="path4295" inkscape:connector-curvature="0" class="ColorScheme-Text"/>
+      <path id="path4303" d="M 53.748,64.0001 50.1875,67.5626 42.082,75.6681 32.6992,66.2872 32.582,66.17 30.4141,64.002 29,65.4161 l 2.7363,2.7344 0.8262,0.8261 8.1055,8.1055 -9.3828,9.3828 -2.2852,2.2852 1.4141,1.4141 2.7363,-2.7364 0.8262,-0.8261 8.1054,-8.1055 11.668,11.666 1.4121,-1.4121 0.002,-0.002 -11.6679,-11.666 9.498,-9.5 2.168,-2.168 L 53.7501,64.002 53.748,64 l 0,1e-4 z" inkscape:connector-curvature="0" style="fill:#da4453"/>
+      <path id="path4309" d="m 70,30 32,0 0,24 -32,0 0,-24 z m 6,23 25,0 0,-15 -25,0 0,15 z m 25,-16 0,-1 -30,0 0,1 30,0 z m -30,1 4,0 0,15 -4,0 0,-15 z m 21,-5 c 0,-0.5523 -0.4477,-1 -1,-1 -0.5523,0 -1,0.4477 -1,1 0,0.5522 0.4477,1 1,1 0.5523,0 1,-0.4478 1,-1 z m 4,0 c 0,-0.5523 -0.4477,-1 -1,-1 -0.5523,0 -1,0.4477 -1,1 0,0.5522 0.4477,1 1,1 0.5523,0 1,-0.4478 1,-1 z m 4,0 c 0,-0.5523 -0.4477,-1 -1,-1 -0.5523,0 -1,0.4477 -1,1 0,0.5522 0.4477,1 1,1 0.5523,0 1,-0.4478 1,-1 z" inkscape:connector-curvature="0" style="fill:currentColor;fill-opacity:1;fill-rule:evenodd;stroke:none" class="ColorScheme-Accent"/>
+    </g>
+</svg>

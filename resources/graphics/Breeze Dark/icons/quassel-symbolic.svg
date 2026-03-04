@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="22" height="22">
+    <style type="text/css" id="current-color-scheme">.ColorScheme-Accent { color: #3DAEE6; } .ColorScheme-Background { color: #2a2e32; } .ColorScheme-ButtonText { color: #7B7C7E; } .ColorScheme-Text { color: #fcfcfc; } </style>
+    <g id="quassel" transform="translate(-1,-1)">
+    <rect y="1" x="1" height="22" width="22" id="rect3881" style="fill:#ffffff;fill-opacity:0.01000001;stroke:none"/>
+    <path style="fill:currentColor;fill-opacity:1;stroke:none" d="m 11,3 c -4.418278,0 -8,3.581722 -8,8 0,4.418278 3.581722,8 8,8 4.418278,0 8,-3.581722 8,-8 0,-4.418278 -3.581722,-8 -8,-8 z m 0,1 c 3.865993,0 7,3.1340068 7,7 0,3.865993 -3.134007,7 -7,7 C 7.1340068,18 4,14.865993 4,11 4,7.1340068 7.1340068,4 11,4 z m 2,7 c -1.656854,0 -3,1.343146 -3,3 0,1.656854 1.343146,3 3,3 1.656854,0 3,-1.343146 3,-3 0,-1.656854 -1.343146,-3 -3,-3 z" transform="translate(1,1)" id="path2999" class="ColorScheme-Text" inkscape:connector-curvature="0"/>
+  </g>
+</svg>

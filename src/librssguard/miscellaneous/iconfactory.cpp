@@ -163,11 +163,11 @@ QIcon IconFactory::miscIcon(const QString& name) {
 }
 
 void IconFactory::setupSearchPaths() {
-  auto paths = QIcon::themeSearchPaths();
+  QStringList paths = {APP_THEME_PATH,
+                       qApp->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER,
+                       qApp->applicationDirPath() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER};
 
-  paths << APP_THEME_PATH << qApp->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER
-        << qApp->applicationDirPath() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER;
-
+  paths.append(QIcon::themeSearchPaths());
   QIcon::setThemeSearchPaths(paths);
   qDebugNN << LOGSEC_GUI << "Available icon theme paths: " << paths;
 }

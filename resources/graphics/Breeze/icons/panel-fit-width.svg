@@ -1,0 +1,25 @@
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" width="24" height="24" version="1.1" id="svg7" sodipodi:docname="zoom-fit-width.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" viewBox="0 0 24 24">
+  <defs id="defs11"/>
+  <sodipodi:namedview id="namedview9" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" showgrid="false" inkscape:zoom="35.136364" inkscape:cx="9.4773609" inkscape:cy="10.98577" inkscape:window-width="1920" inkscape:window-height="1011" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="svg7"/>
+  <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#31363b;
+      }
+      .ColorScheme-Background {
+        color:#eff0f1;
+      }
+      .ColorScheme-Accent {
+        color:#3daee9;
+      }
+      .ColorScheme-ButtonText {
+        color:#31363b;
+      }
+      </style>
+  <g transform="translate(1,1)">
+    <g transform="rotate(90,320.02038,67.484667)" id="zoom-fit-width">
+      <path style="fill:currentColor;fill-opacity:1;stroke:none" d="m 253.5232,366.50504 v 1 h 10 10 v -1 z m 10,1 -3,3 h 2 v 3.1875 c -1.15834,0.41552 -2,1.51119 -2,2.8125 0,1.30132 0.84166,2.39699 2,2.8125 v 3.1875 h -2 l 3,3 3,-3 h -2 v -3.1875 c 1.15835,-0.41551 2,-1.51118 2,-2.8125 0,-1.30131 -0.84165,-2.39698 -2,-2.8125 v -3.1875 h 2 z m 0,18 h -10 v 1 h 20 v -1 z m 0,-11 c 1.10457,0 2,0.89543 2,2 0,1.10457 -0.89543,2 -2,2 -1.10456,0 -2,-0.89543 -2,-2 0,-1.10457 0.89544,-2 2,-2 z" id="path3823" inkscape:connector-curvature="0" class="ColorScheme-Text"/>
+      <circle style="fill:currentColor;fill-opacity:1;stroke:none" id="path3825" transform="translate(252.5232,365.50504)" cx="11.012515" cy="11.000004" r="1" class="ColorScheme-Text"/>
+      <rect style="fill:#566060;fill-opacity:0;stroke:none" id="rect3827" width="22" height="22" x="0.012515" y="4e-06" transform="translate(252.5232,365.50504)"/>
+    </g>
+  </g>
+</svg>

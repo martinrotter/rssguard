@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32" height="32" version="1.1" xmlns="http://www.w3.org/2000/svg">
+ <style id="current-color-scheme" type="text/css">.ColorScheme-Text { color: #232629; }</style>
+ <defs>
+  <linearGradient id="linearGradient18" x1="22" x2="22" y1="1" y2="17" gradientTransform="translate(0,1)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#f00" offset="0"/>
+   <stop stop-color="#860000" offset="1"/>
+  </linearGradient>
+ </defs>
+ <path class="ColorScheme-Text" fill="currentColor" d="m18.426 6.7695c-1.593 0.86101-3.6605 2.0886-5.6602 3.8926-2.0124 1.8154-3.9107 4.1728-5.2012 7.2363-0.51101 1.2131-0.92082 2.5243-1.207 3.9414-0.084157-0.32056-0.16781-0.628-0.25391-0.92383-0.57612-1.9796-1.2442-3.4806-2.4004-4.627-0.18814-0.18611-0.44239-0.29006-0.70703-0.28906-0.26576 0.0011-0.52017 0.1079-0.70703 0.29688-0.38827 0.39266-0.38478 1.0257 0.00781 1.4141 0.81149 0.80458 1.3507 1.9218 1.8867 3.7637 0.52521 1.8047 1.0268 4.2558 1.7949 7.5488 0.039231 1.3402 2.039 1.3154 2.0449-0.02539 0.32677-4.103 1.5581-7.0645 3.082-9.1699 1.5173-2.0963 3.376-3.419 5.1133-4.2344 1.749-0.82085 3.4452-1.1578 4.6641-1.2031"/>
+ <circle cx="22" cy="10" r="8" fill="url(#linearGradient18)" stroke-width="1.6" style="paint-order:markers stroke fill"/>
+</svg>

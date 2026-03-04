@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- style definitions -->
+  <defs>
+    <style type="text/css" id="current-color-scheme">.ColorScheme-Accent { color: #3daee9; } .ColorScheme-Text { color: #fcfcfc; } </style>
+  </defs>
+
+  <!-- folder bg -->
+  <path style="fill:currentColor" class="ColorScheme-Accent" d="m6 9v21h-1v57h86v-63h-1v-9h-42l-6-6z"/>
+
+  <!-- folder fg -->
+  <path d="m6 9v21h27l6-6h51v-9h-42l-6-6z" fill-opacity=".33"/>
+
+  <!-- folder highlight -->
+  <path d="m42 9 5 7h43v-1h-42zm-3 15-6 6h-28v1h29z" fill="#fff" fill-opacity=".2"/>
+
+  <!-- folder shadow -->
+  <path d="m39 24-7 5h-26v1h27zm-34 62v1h86v-1z" fill-opacity=".2"/>
+
+  <!-- git branches -->
+  <path d="m52 40.75-6.25 3.5 6.25 3.5v-3c2.999997 0 5 2.250003 5 5v16.306641a2.5 2.5 0 0 0 -2 2.443359 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0 -2-2.449219v-16.300781c0-3.749996-3.250003-6-6-6zm-11.5 1.25a2.5 2.5 0 0 0 -2.5 2.5 2.5 2.5 0 0 0 2 2.443359v19.113282a2.5 2.5 0 0 0 -2 2.443359 2.5 2.5 0 0 0 2.5 2.5 2.5 2.5 0 0 0 2.5-2.5 2.5 2.5 0 0 0 -2-2.449219v-19.107422a2.5 2.5 0 0 0 2-2.443359 2.5 2.5 0 0 0 -2.5-2.5zm10.75.25v4l-4-2zm-10.75.75a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1 -1.5 1.5 1.5 1.5 0 0 1 -1.5-1.5 1.5 1.5 0 0 1 1.5-1.5zm0 24a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1 -1.5 1.5 1.5 1.5 0 0 1 -1.5-1.5 1.5 1.5 0 0 1 1.5-1.5zm17 0a1.5 1.5 0 0 1 1.5 1.5 1.5 1.5 0 0 1 -1.5 1.5 1.5 1.5 0 0 1 -1.5-1.5 1.5 1.5 0 0 1 1.5-1.5z" style="fill:currentColor;fill-opacity:0.6" class="ColorScheme-Text"/>
+
+</svg>

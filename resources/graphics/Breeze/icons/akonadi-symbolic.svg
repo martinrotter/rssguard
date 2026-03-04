@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="32" height="32">
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#31363b;
+      }
+      </style>
+    <g id="akonadi" transform="translate(-22,0)">
+    <path id="path12" class="ColorScheme-Text" d="M 38 4 A 12 3 0 0 0 26 7 L 26 25 A 12 3 0 0 0 38 28 A 12 3 0 0 0 50 25 L 50 19 L 50 13 L 50 7 A 12 3 0 0 0 38 4 z M 38 5 A 11 2 0 0 1 49 7 A 11 2 0 0 1 38 9 A 11 2 0 0 1 27 7 A 11 2 0 0 1 38 5 z M 49 8.1914062 L 49 13 A 11 2 0 0 1 38 15 A 11 2 0 0 1 27 13 L 27 8.1953125 A 12 3 0 0 0 38 10 A 12 3 0 0 0 49 8.1914062 z M 49 14.191406 L 49 19 A 11 2 0 0 1 38 21 A 11 2 0 0 1 27 19 L 27 14.195312 A 12 3 0 0 0 38 16 A 12 3 0 0 0 49 14.191406 z M 49 20.191406 L 49 25 A 11 2 0 0 1 38 27 A 11 2 0 0 1 27 25 L 27 20.195312 A 12 3 0 0 0 38 22 A 12 3 0 0 0 49 20.191406 z " style="fill:currentColor;fill-opacity:1;stroke:none"/>
+  </g>
+</svg>

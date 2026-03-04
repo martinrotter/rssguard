@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48">
+ <style id="current-color-scheme" type="text/css">
+  .ColorScheme-Text {
+    color:#232629;
+  }
+ </style>
+ <g id="weather-clear-night-symbolic">
+  <path class="ColorScheme-Text" d="m36 33 a13 13 0 0 1 -14 -24  a15 15 1 1 0 14 24 z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="miter"/>
+ </g>
+</svg>

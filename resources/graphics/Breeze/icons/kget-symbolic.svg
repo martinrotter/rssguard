@@ -1,0 +1,23 @@
+<svg xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" width="24" height="24" version="1.1" id="svg6" sodipodi:docname="kget.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" viewBox="0 0 24 24">
+  <defs id="defs10"/>
+  <sodipodi:namedview id="namedview8" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" showgrid="false" inkscape:zoom="35.136364" inkscape:cx="9.4773609" inkscape:cy="10.98577" inkscape:window-width="1920" inkscape:window-height="1011" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="svg6"/>
+  <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#31363b;
+      }
+      .ColorScheme-Background {
+        color:#eff0f1;
+      }
+      .ColorScheme-Accent {
+        color:#3daee9;
+      }
+      .ColorScheme-ButtonText {
+        color:#31363b;
+      }
+      </style>
+  <g transform="translate(1,1)">
+    <g id="kget" transform="translate(-326,-534.36218)">
+      <path id="rect4170" transform="translate(326,534.36218)" d="m 9,3 v 1 4 1 2 h 1 V 4 h 2 v 7 h 1 V 9 8 4 3 Z M 6.7578125,10.34375 6.0507812,11.050781 11,16 15.949219,11.050781 15.242188,10.34375 11,14.585938 Z M 5,17 v 2 h 1 10 1 v -2 h -1 v 1 H 6 v -1 z" style="opacity:1;fill:currentColor;fill-opacity:1;stroke:none;stroke-width:2.8;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.550265" inkscape:connector-curvature="0" class="ColorScheme-Text"/>
+    </g>
+  </g>
+</svg>

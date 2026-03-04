@@ -1,0 +1,42 @@
+<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- style definitions -->
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#232629;
+      }
+      .ColorScheme-Accent {
+        color:#3daee9;
+      }
+    </style>
+  </defs>
+
+  <!-- folder bg -->
+  <path
+    fill="#f89406"
+    d="m6 9v21h-1v57h86v-63h-1v-9h-42l-6-6z" />
+
+  <!-- folder fg -->
+  <path
+    d="m6 9v21h27l6-6h51v-9h-42l-6-6z"
+    fill-opacity=".33" />
+
+  <!-- folder highlight -->
+  <path
+    d="m42 9 5 7h43v-1h-42zm-3 15-6 6h-28v1h29z"
+    fill="#fff"
+    fill-opacity=".2" />
+
+  <!-- folder shadow -->
+  <path
+    d="m39 24-7 5h-26v1h27zm-34 62v1h86v-1z"
+    fill-opacity=".2" />
+
+  <!-- rss icon -->
+  <path
+    d="m36.25 41v5c12.749987-.00096 22.75096 10.000013 22.75 22.75h5v-.75c0-15.999984-11.000016-27-27-27zm1 1c14.852098 0 25.75 10.897902 25.75 25.75h-3c0-11.999988-10.750012-22.75-22.75-22.75zm-1 9v5c7.999992 0 12.75 4.750008 12.75 12.75h5v-.75c0-10.499989-6.500011-17-17-17zm1 1c9.49999 0 15.75 6.25001 15.75 15.75h-3c0-7.499992-5.250008-12.75-12.75-12.75zm2.25 9a4.5 4.5 0 0 0 -4.5 4.5 4.5 4.5 0 0 0 4.5 4.5 4.5 4.5 0 0 0 4.5-4.5 4.5 4.5 0 0 0 -4.5-4.5zm0 1a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1 -3.5 3.5 3.5 3.5 0 0 1 -3.5-3.5 3.5 3.5 0 0 1 3.5-3.5z"
+    style="fill:currentColor;fill-opacity:0.6"
+    class="ColorScheme-Text" />
+
+</svg>

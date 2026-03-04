@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64" height="64" version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <linearGradient id="a" x2="0" y1="3" y2="61" gradientTransform="matrix(1 0 0-1 0 64)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#cf000f" offset="0"/>
+   <stop stop-color="#d91e18" offset="1"/>
+  </linearGradient>
+  <linearGradient id="b" x2="0" y1="61" y2="47" gradientTransform="matrix(1 0 0-1 0 64)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#fb9fa2" offset="0"/>
+   <stop stop-color="#fb7d80" offset="1"/>
+  </linearGradient>
+  <linearGradient id="c" x1="40" x2="54" y1="17" y2="31" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#383e51" offset="0"/>
+   <stop stop-color="#655c6f" stop-opacity="0" offset="1"/>
+  </linearGradient>
+ </defs>
+ <path d="m10 61v-58h30l14 14v44h-14z" fill="url(#a)"/>
+ <g transform="scale(1,-1)">
+  <rect x="10" y="-4" width="30" height="1" fill="#fff" fill-opacity=".412"/>
+  <rect x="10" y="-61" width="44" height="1" fill="#2e3132" fill-opacity=".294"/>
+ </g>
+ <g fill-rule="evenodd">
+  <path d="m54 17-14-14v14z" fill="url(#b)"/>
+  <path d="m40 17 14 14v-14z" fill="url(#c)" opacity=".2"/>
+ </g>
+ <path class="ColorScheme-Text" d="m32 21.333s-3.25 4.3194-13 5.4028c0 0 0 15.167 13 20.597 13-5.4306 13-20.597 13-20.597-9.75-1.0834-13-5.4028-13-5.4028zm0 7.5834c1.7949 0 3.25 1.455 3.25 3.25 0 1.3462-0.83092 2.4858-1.9974 2.9791l0.91406 4.6041h-4.3333l0.91406-4.6041c-1.1665-0.49335-1.9974-1.633-1.9974-2.9791 0-1.795 1.4551-3.25 3.25-3.25z" color="#232629" fill="#fcbcbe"/>
+</svg>

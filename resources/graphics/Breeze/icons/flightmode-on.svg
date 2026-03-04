@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="24" height="24" viewBox="0 0 24 24">
+  <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#31363b;
+      }
+      .ColorScheme-Background {
+        color:#eff0f1;
+      }
+      .ColorScheme-Accent {
+        color:#3498db;
+      }
+      .ColorScheme-ButtonText {
+        color:#31363b;
+      }
+      .ColorScheme-NegativeText{
+        color:#e74c3c;
+      }
+      </style>
+  <g transform="translate(1,1)">
+    <g transform="translate(-21,0) translate(66,1.33227e-15)" id="flightmode-on">
+      <rect style="opacity:1;fill:none;fill-opacity:1;stroke:none" id="rect4528" width="22" height="22" x="-45" y="-1.3322676e-15"/>
+      <path class="ColorScheme-Text" id="path4467" transform="translate(21,0)" d="M -58 3 C -60.761424 3 -63 5.2385763 -63 8 L -62 8 C -62 5.790861 -60.209139 4 -58 4 L -58 3 z M -55 3 C -55 3 -56 3 -56 6 L -56 8.5 L -57.099609 9.0507812 L -57.099609 9 L -57.900391 9 L -57.900391 9.3007812 L -58 9.3007812 L -58 9.5 L -60 10.5 L -60 10 L -60.099609 10 L -60.099609 9.6992188 L -60.900391 9.6992188 L -60.900391 10 L -61 10 L -61 11 L -63 12 L -63 13 L -60.808594 12.726562 L -60.699219 13 L -60.550781 13 L -60.158203 12.644531 L -57.40625 12.300781 L -57.300781 12.300781 L -57.294922 12.287109 L -56 12.125 L -56 15 C -56 15.487991 -55.75948 15.971967 -55.515625 16.34375 L -58 18 L -58 19 L -55 18 L -52 19 L -52 18 L -54.484375 16.34375 C -54.24052 15.971967 -54 15.487991 -54 15 L -54 12.125 L -52.705078 12.287109 L -52.699219 12.300781 L -52.59375 12.300781 L -49.841797 12.644531 L -49.699219 13 L -49.300781 13 L -49.191406 12.726562 L -47 13 L -47 12 L -49 11 L -49 10 L -49.099609 10 L -49.099609 9.6992188 L -49.900391 9.6992188 L -49.900391 10 L -50 10 L -50 10.5 L -52 9.5 L -52 9.3007812 L -52.099609 9.3007812 L -52.099609 9 L -52.900391 9 L -52.900391 9.0507812 L -54 8.5 L -54 6 C -54 3 -55 3 -55 3 z M -58 5 C -59.656854 5 -61 6.3431458 -61 8 L -60 8 C -60 6.8954305 -59.104569 6 -58 6 L -58 5 z M -58 7 C -58 7 -59 7 -59 8 L -58 8 L -58 7 z " style="fill:currentColor;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"/>
+    </g>
+  </g>
+</svg>

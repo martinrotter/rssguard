@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48">
+ <style id="current-color-scheme" type="text/css">.ColorScheme-Text { color: #fcfcfc; } </style>
+ <g id="weather-freezing-rain-day-symbolic" stroke-linejoin="bevel">
+  <path class="ColorScheme-Text" id="cloud" d="m36.95 17.08a 9 9 0 0 0 -8.95-8.08 a 9 9 0 0 0 -8.36 12.31 a 5 5 0 1 0 -1.63 9.69h18a 7 7 0 0 0 0.95 -13.92 z" fill="none" stroke="currentColor" stroke-width="2"/>
+  <g id="diamond" fill="currentColor" class="ColorScheme-Text">
+   <path d="m16 33-3 3 3 3 3-3z"/>
+   <path d="m32 33-3 3 3 3 3-3z"/>
+   <path d="m20 39-3 3 3 3 3-3z"/>
+   <path d="m36 39-3 3 3 3 3-3z"/>
+  </g>
+  <g id="drops" fill="currentColor" class="ColorScheme-Text">
+   <path d="m26.6 40.58a2 2 0 0 0 0 2.8284 2 2 0 0 0 2.8284 0 2 2 0 0 0 0-2.8284l-1.4142-1.4142z"/>
+   <path d="m10.58 40.58a2 2 0 0 0 0 2.8284 2 2 0 0 0 2.8284 0 2 2 0 0 0 0-2.8284l-1.4142-1.4142z"/>
+   <path d="m38.58 34.58a2 2 0 0 0 0 2.8284 2 2 0 0 0 2.8284 0 2 2 0 0 0 0-2.8284l-1.4142-1.4142z"/>
+   <path d="m22.58 34.58a2 2 0 0 0 0 2.8284 2 2 0 0 0 2.8284 0 2 2 0 0 0 0-2.8284l-1.4142-1.4142z"/>
+   <path id="path3" class="ColorScheme-Text" d="m12.9 25.5 A9 9 0 0 1 21.6 11.15" stroke="currentColor" stroke-linecap="round" stroke-width="2" fill="none"/>
+   <path d="m4 20h5" fill="none" stroke="currentColor" stroke-width="2" id="sunfrd" class="ColorScheme-Text"/>
+   <use transform="rotate( 36,20,20)" href="#sunfrd"/>
+   <use transform="rotate( 72,20,20)" href="#sunfrd"/>
+   <use transform="rotate(108,20,20)" href="#sunfrd"/>
+   <use transform="rotate(-36,20,20)" href="#sunfrd"/>
+  </g>
+ </g>
+</svg>

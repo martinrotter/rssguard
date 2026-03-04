@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="svg8" width="64" height="64" version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+ <defs id="defs4">
+  <linearGradient id="a" x1="40" x2="54" y1="17" y2="31" gradientUnits="userSpaceOnUse">
+   <stop id="stop1" stop-color="#060606" offset="0"/>
+   <stop id="stop2" stop-opacity="0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="b" x2="0" y1="392.36" y2="336.36" gradientTransform="translate(-108,-332.36)" gradientUnits="userSpaceOnUse">
+   <stop id="stop3" stop-color="#fff" stop-opacity="0" offset="0"/>
+   <stop id="stop4" stop-color="#fff" stop-opacity=".2" offset="1"/>
+  </linearGradient>
+ </defs>
+ <path id="path8" d="m10 3v58h44l-1e-6 -44-15.172-14z" fill="#ccc" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+ <g id="g4" fill="#fff">
+  <rect id="rect4" transform="scale(1-1)" x="10" y="-4" width="30" height="1" color="#000000" color-rendering="auto" image-rendering="auto" opacity=".5" shape-rendering="auto" text-rendering="auto"/>
+  <path id="path4" d="m54 17-14-14v14z" fill-rule="evenodd" opacity=".5"/>
+ </g>
+ <path id="path5" d="m40 17 14 14v-14z" fill="url(#a)" fill-rule="evenodd" opacity=".2"/>
+ <g id="g8" color-rendering="auto" image-rendering="auto" shape-rendering="auto" text-rendering="auto">
+  <path id="path6" d="m32.135 23c-0.20708-0.0026-0.4142 6.74e-4 -0.62109 0.0098-5.882 0.26457-10.514 5.1069-10.514 10.99l-2e-3 7-1.9176-2.0874-0.65625 0.69531 2.8863 3.1636 0.18945 0.2207 0.1875-0.2207 2.888-3.16v-0.0039l-0.65425-0.69337-1.9212 2.0858v-7c-2.19e-4 -5.3476 4.2102-9.7491 9.5566-9.9902 5.4657-0.23735 10.109 3.9547 10.426 9.4121l0.017578 0.57812c-4.96e-4 5.4661-4.3934 9.919-9.8633 9.998-1.4283 0.01263-2.8428-0.28039-4.1484-0.85938v1.0859c1.3248 0.52469 2.739 0.78736 4.1641 0.77344 6.0162-0.088001 10.847-4.986 10.848-10.998l-0.01758-0.63672c-0.33395-5.7635-5.0703-10.288-10.848-10.363zm-1.1445 3v9h8.0059v-1h-7.0059v-8z" opacity=".5"/>
+  <g id="g7" color="#000000">
+   <path id="path7" d="m10 60v1h44v-1z" opacity=".25"/>
+   <path id="use7" d="m10 61v-58h28.828l15.172 14v44z" fill="url(#b)"/>
+  </g>
+ </g>
+</svg>

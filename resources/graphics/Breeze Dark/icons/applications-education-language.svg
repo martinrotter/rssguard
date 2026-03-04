@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 32 32">
+  <g clip-path="url(#a)">
+    <path fill="url(#b)" d="M32 2H0v28h32z"/>
+    <path fill="url(#c)" d="M0 2v28h32V2H1.333zm2 2h28v24H2z"/>
+    <path fill="#AA7F41" d="M32 29H0v1h32z"/>
+    <path fill="#AA7F41" fill-opacity=".498" d="M2 3.955V28h28V3.955zM3 5h26v22H3z"/>
+    <path fill="#F2F2F2" d="M5.375 18v-1h9.25v1zM6 22v-1h8v1zm-1 3v1h10v-1z"/>
+    <path fill="#F2F2F2" fill-rule="evenodd" d="m7.53 15 3.4-9h1.22l3.4 9H14.5l-1-3H9.579l-1 3zm2.466-4 1.543-4.15L13.084 11zM18 6v9h2.5c1.999 0 3.697-.285 3.697-2.55 0-1.166-.409-1.94-1.847-2.268.824-.16 1.56-.612 1.56-1.724C23.91 6.216 22.35 6 20.5 6zm1.007 1h2.198c.674 0 1.624.234 1.624 1.458 0 1.116-.822 1.386-1.624 1.386h-2.198zM19 10.844h2.5c.5 0 1.618.357 1.618 1.41 0 1-.413 1.746-1.913 1.746H19zM17 17v10h1v-.997h8V27h1V17zm3 2v-1h-2v7h8v-1s0-1 .05-1.285c0 0-.7.563-1.9.285-.556-.129-1.15-.364-1.15-1.84V18h-2v2c0 2-.283 2.767-2 3.37l-.178-1C19.945 21.94 20 21.7 20 19m4-1h2v2c0 1.509-.103 1.953-.886 2.073-.964.147-1.114-.287-1.114-.786z" clip-rule="evenodd"/>
+  </g>
+  <defs>
+    <linearGradient id="b" x1="33.333" x2="-1.255" y1="30" y2="3.647" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#343B40"/>
+      <stop offset="1" stop-color="#555E63"/>
+    </linearGradient>
+    <linearGradient id="c" x1="16" x2="16" y1="30" y2="2" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BD8D48"/>
+      <stop offset="1" stop-color="#E8B971"/>
+    </linearGradient>
+    <clipPath id="a">
+      <path fill="#fff" d="M0 0h32v32H0z"/>
+    </clipPath>
+  </defs>
+</svg>

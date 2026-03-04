@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg8" version="1.1" viewBox="0 0 24 24" width="24" height="24">
+  <defs id="defs3051">
+    <style type="text/css" id="current-color-scheme">
+        .ColorScheme-Text {            color:#232629;        }
+        .ColorScheme-Accent {            color:#3daee9;        }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+    <path id="rect4602" d="m3 3v8h8v-8h-8zm1 1h6v6h-6v-6zm8 0.0722656v1.0117188a6 6 0 0 1 4.171875 2.9160156h-2.171875v1h4v-1-3h-1v2.4277344a7 7 0 0 0-5-3.3554688zm-8 8.9277344v1 3h1v-2.423828a7 7 0 0 0 6 3.423828v-1a6 6 0 0 1-5.171875-3h2.171875v-1h-4z" class="ColorScheme-Text" fill="currentColor" style="paint-order:markers fill stroke"/>
+    <path id="path4722" d="m15 11a4 4 0 0 0-4 4 4 4 0 0 0 0.847656 2.445312l0.708985-0.708984a3 3 0 0 1-0.556641-1.736328 3 3 0 0 1 3-3 3 3 0 0 1 1.738281 0.554688l0.712891-0.712891a4 4 0 0 0-2.451172-0.841797zm3.158203 1.548828-0.712891 0.712891a3 3 0 0 1 0.554688 1.738281 3 3 0 0 1-3 3 3 3 0 0 1-1.736328-0.556641l-0.708984 0.708985a4 4 0 0 0 2.445312 0.847656 4 4 0 0 0 4-4 4 4 0 0 0-0.841797-2.451172z" class="ColorScheme-Accent" fill="currentColor" style="paint-order:markers fill stroke"/>
+  </g>
+</svg>

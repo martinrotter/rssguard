@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12" height="12" version="1.1" id="svg6" sodipodi:docname="mobile-task-switcher.svg" inkscape:version="1.2.2 (b0a8486541, 2022-12-01)" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <defs id="defs10"/>
+  <namedview id="namedview8" pagecolor="#ffffff" bordercolor="#000000" borderopacity="0.25" inkscape:showpageshadow="2" inkscape:pageopacity="0.0" inkscape:pagecheckerboard="0" inkscape:deskcolor="#d1d1d1" showgrid="true" inkscape:zoom="64.403252" inkscape:cx="5.1705464" inkscape:cy="6.0090134" inkscape:window-width="1920" inkscape:window-height="1011" inkscape:window-x="0" inkscape:window-y="0" inkscape:window-maximized="1" inkscape:current-layer="svg6"/>
+  <style type="text/css" id="current-color-scheme">.ColorScheme-Text { color: #fcfcfc; } </style>
+  <g id="mobile-task-switcher" transform="matrix(3.7803186,0,0,3.7803186,-2.0051041,-2.0025493)" class="ColorScheme-Text" fill="currentColor">
+    <path class="ColorScheme-Text" d="m 1.0815353,0.5297303 c -0.30537362,0 -0.55112919,0.24575557 -0.55112919,0.5511292 v 2.0727416 c 0,0.3053733 0.24575557,0.5511292 0.55112919,0.5511292 h 2.0727416 c 0.3053734,0 0.5511292,-0.2457559 0.5511292,-0.5511292 V 1.0808595 c 0,-0.30537363 -0.2457558,-0.5511292 -0.5511292,-0.5511292 z m 0.064595,0.32995387 h 1.9466512 c 0.1571218,0 0.2834453,0.126582 0.2834453,0.28370373 v 1.9497516 c 0,0.1571218 -0.1263235,0.2837038 -0.2834453,0.2837038 H 1.1461307 c -0.15712152,0 -0.28370352,-0.126582 -0.28370352,-0.2837038 V 1.1433879 c 0,-0.15712173 0.126582,-0.28370373 0.28370312,-0.28370373 z" stroke-opacity="0" stroke-width="0.132292" id="path3"/>
+  </g>
+</svg>

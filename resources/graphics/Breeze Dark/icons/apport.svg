@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="32" height="32">
+    <style type="text/css" id="current-color-scheme">.ColorScheme-Text { color: #fcfcfc; } </style>
+    <g id="apport" transform="translate(-22,0)">
+    <path id="path12" class="ColorScheme-Text" d="M 26 4 L 26 28 L 50 28 L 50 4 L 26 4 z M 27 5 L 49 5 L 49 27 L 27 27 L 27 5 z M 29 7 L 29 9 L 31 9 L 31 7 L 29 7 z M 31 9 L 31 12 L 34 12 L 34 9 L 31 9 z M 34 9 L 36 9 L 36 7 L 34 7 L 34 9 z M 34 12 L 34 14 L 36 14 L 36 12 L 34 12 z M 31 12 L 29 12 L 29 14 L 31 14 L 31 12 z M 40 7 L 40 9 L 42 9 L 42 7 L 40 7 z M 42 9 L 42 12 L 45 12 L 45 9 L 42 9 z M 45 9 L 47 9 L 47 7 L 45 7 L 45 9 z M 45 12 L 45 14 L 47 14 L 47 12 L 45 12 z M 42 12 L 40 12 L 40 14 L 42 14 L 42 12 z M 34 17 L 34 19 L 42 19 L 42 17 L 34 17 z M 42 19 L 42 21 L 44 21 L 44 19 L 42 19 z M 44 21 L 44 23 L 46 23 L 46 21 L 44 21 z M 34 19 L 32 19 L 32 21 L 34 21 L 34 19 z M 32 21 L 30 21 L 30 23 L 32 23 L 32 21 z " style="fill:currentColor;fill-opacity:1;stroke:none"/>
+    <path id="path14" d="M 22 0 L 22 32 L 54 32 L 54 0 L 22 0 z " style="opacity:1;fill:none"/>
+  </g>
+</svg>

@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+  <!--
+SPDX-FileCopyrightText: 2024 Carl Schwan <carl@carlschwan.eu>
+SPDX-License-Identifier: LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+-->
+  <defs>
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#232629;
+      }
+      </style>
+  </defs>
+  <g transform="translate(1,1)">
+    <path style="fill:currentColor;fill-opacity:1;stroke:none" d="m 18.000327,11 v 6.999918 L 4,18.000082 V 3.9998357 l 7,-1.643e-4 v -1 L 3,2.9998357 V 19.000082 l 16.000327,-1.64e-4 V 11 m -5,-7.0003284 3.2832,0.00969 -8.3438606,8.3440854 0.7071072,0.707107 8.3438604,-8.3440856 0.0097,3.2832031 h 1 l -7e-6,-5 -5,-10e-8" class="ColorScheme-Text"/>
+  </g>
+</svg>

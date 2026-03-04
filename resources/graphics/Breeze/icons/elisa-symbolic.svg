@@ -1,0 +1,8 @@
+<svg id="svg2" fill="none" version="1.1" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+    <style id="current-color-scheme" type="text/css">.ColorScheme-Text {
+  color:#232629;
+}</style>
+    <path id="path2" class="ColorScheme-Text" d="m15.748536 16.915853c-2.531733 0-4.584147 2.052414-4.584147 4.584147s2.052414 4.584147 4.584147 4.584147h16.502928c2.531733 0 4.584147-2.052414 4.584147-4.584147s-2.052414-4.584147-4.584147-4.584147zm-2.750488 4.584147c0-1.519003 1.231485-2.750488 2.750488-2.750488s2.750488 1.231485 2.750488 2.750488-1.231485 2.750488-2.750488 2.750488-2.750488-1.231485-2.750488-2.750488zm16.502928 0c0-1.519003 1.231485-2.750488 2.750488-2.750488s2.750488 1.231485 2.750488 2.750488-1.231485 2.750488-2.750488 2.750488-2.750488-1.231485-2.750488-2.750488z" clip-rule="evenodd" fill="currentColor" fill-rule="evenodd" stroke-width="1.83366"/>
+    <rect id="rect2" x="4" y="9" width="40" height="30" ry="5" fill="none" stroke="#232629" stroke-linecap="round" stroke-width="2.5"/>
+    <rect id="rect3" x="4" y="9" width="40" height="25" ry="5" fill="none" stroke="#232629" stroke-linecap="round" stroke-width="2.5"/>
+</svg>

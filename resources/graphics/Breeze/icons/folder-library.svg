@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <defs id="defs3051">
+    <style type="text/css" id="current-color-scheme">
+      .ColorScheme-Text {
+        color:#232629;
+      }
+      .ColorScheme-Accent {
+        color:#3daee9;
+      }
+      </style>
+  </defs>
+ <path
+     style="fill:currentColor"
+     d="M 6 9 L 6 30 L 5 30 L 5 87 L 91 87 L 91 24 L 90 24 L 90 15 L 48 15 L 42 9 L 6 9 z "
+     class="ColorScheme-Accent"
+     />
+ <path
+     style="fill-opacity:0.33"
+     d="M 6 9 L 6 30 L 33 30 L 39 24 L 90 24 L 90 15 L 48 15 L 42 9 L 6 9 z "
+     />
+ <path
+     style="fill:#ffffff;fill-opacity:0.2"
+     d="M 42 9 L 47 16 L 90 16 L 90 15 L 48 15 L 42 9 z M 39 24 L 33 30 L 5 30 L 5 31 L 34 31 L 39 24 z "
+     />
+ <path
+     style="fill-opacity:0.2;fill-rule:evenodd"
+     d="M 39 24 L 32 29 L 6 29 L 6 30 L 33 30 L 39 24 z M 5 86 L 5 87 L 91 87 L 91 86 L 5 86 z "
+     class="ColorScheme-Text"
+     />
+ <path
+     style="fill:currentColor;fill-opacity:0.6;stroke:none"
+     d="M 49,41 33,49.6 V 50 51 h 1 v 19 h -1 v 1 H 65 V 70 H 64 V 51 h 1 V 50 49.6 Z M 49,42.1 63.7,50 H 34.3 Z M 35,51 h 3 v 19 h -3 z m 4,0 h 3 v 19 h -3 z m 4,0 H 55 V 70 H 52 V 60 h -6 v 10 h -3 z m 13,0 h 3 v 19 h -3 z m 4,0 h 3 v 19 h -3 z"
+     class="ColorScheme-Text"
+     />
+</svg>

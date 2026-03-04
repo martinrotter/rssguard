@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="24" height="24" viewBox="0 0 24 24">
+  <style type="text/css" id="current-color-scheme">.ColorScheme-Text {
+            color:#232629;
+        }
+        .ColorScheme-Background {
+            color:#eff0f1;
+        }
+        .ColorScheme-PositiveText {
+            color:#27ae60;
+        }
+        .ColorScheme-NeutralText {
+            color:#f67400;
+        }
+        .ColorScheme-NegativeText {
+            color:#da4453;
+        }</style>
+  <g transform="translate(1,1)">
+    <g id="22-22-preferences-desktop-display-randr" transform="translate(-1,-1)">
+      <rect id="rect3832" x="1" y="1" width="22" height="22" fill-opacity="0"/>
+      <path id="rect7235" class="ColorScheme-Text" d="m7 19h10v1h-10zm3-2h4v2h-4zm-6-13v13h16v-13zm1 1h14v9h-14z" fill="currentColor"/>
+      <path id="rect3018" class="ColorScheme-Text" d="m6 9 4 4h-4z" fill="currentColor"/>
+      <path id="path3028" class="ColorScheme-Text" d="m18 10-4-4h4z" fill="currentColor"/>
+    </g>
+  </g>
+</svg>

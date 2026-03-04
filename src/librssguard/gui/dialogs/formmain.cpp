@@ -591,10 +591,9 @@ void FormMain::setupIcons() {
   m_ui->m_actionStopRunningItemsUpdate->setIcon(icon_theme_factory->fromTheme(QSL("process-stop")));
   m_ui->m_actionPauseFeedFetching->setIcon(icon_theme_factory->fromTheme(QSL("media-playback-pause"),
                                                                          QSL("player_pause")));
-  m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("download"), QSL("browser-download")));
-  m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("download"), QSL("browser-download")));
-  m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setIcon(icon_theme_factory->fromTheme(QSL("download"),
-                                                                                           QSL("browser-download")));
+  m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("download-all"), QSL("download")));
+  m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("download")));
+  m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setIcon(icon_theme_factory->fromTheme(QSL("download")));
   m_ui->m_actionClearSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionPurgeSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
   m_ui->m_actionClearAllItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));

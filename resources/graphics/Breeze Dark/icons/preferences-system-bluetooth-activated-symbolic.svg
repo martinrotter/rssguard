@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="32" height="32">
+    <style type="text/css" id="current-color-scheme">.ColorScheme-Background { color: #2a2e32; } .ColorScheme-NegativeText { color: #da4453; } .ColorScheme-NeutralText { color: #f67400; } .ColorScheme-PositiveText { color: #27ae60; } .ColorScheme-Text { color: #fcfcfc; } </style>
+    <g id="preferences-system-bluetooth-activated" transform="translate(44,94) translate(-71,-116)">
+        <path id="path4424" class="ColorScheme-Text" d="m43 26v10.998047l-5.998047-5.998047-0.705078 0.705078 6.292969 6.294922-6.292969 6.294922 0.705078 0.705078 5.998047-5.998047v10.998047h1.002l5.998-5.998047v-0.003906l-5.998047-5.998047 5.998047-5.998047v-0.003906l-5.998047-5.998047h-1.001953zm1 1.410156 4.587891 4.589844-4.587891 4.589844v-9.179688zm-14 9.589844a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1zm6 0a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1zm14 0a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1zm6 0a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1zm-12 2.410156 4.587891 4.589844-4.587891 4.589844v-9.179688z" fill="currentColor"/>
+    </g>
+</svg>

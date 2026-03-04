@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="svg20" fill="none" width="48" height="48" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <style id="current-color-scheme" type="text/css">.ColorScheme-Text { color: #fcfcfc; } </style>
+    <path fill="currentColor" class="ColorScheme-Text" id="path1" d="M 42,6 V 42 H 14 V 34 H 6 V 6 Z M 4,4 c 7.6e-4,9.805 0,30 0,30 L 14,44 H 44 V 4 Z"/>
+    <path fill="currentColor" class="ColorScheme-Text" id="path2" d="M 28 16 L 16.008 27.992 L 16.004 27.992 L 16.004 32.002 L 20.014 32.002 L 20.014 31.998 L 32.006 20.006 L 32.004 20.004 L 32.006 20.002 L 28.006 16.002 L 28.004 16.004 Z M 26.002 19.412 L 28.592 22.002 L 21.004 29.59 L 21.004 28 L 19.004 28 L 19.004 26.41 Z M 18.004 27.41 L 18.004 29 L 20.004 29 L 20.004 30.59 L 19.594 31 L 18.004 31 L 17.004 30 L 17.004 28.41 Z M 23.004 31 L 22.004 32 L 32.004 32 L 32.004 31 Z"/>
+</svg>

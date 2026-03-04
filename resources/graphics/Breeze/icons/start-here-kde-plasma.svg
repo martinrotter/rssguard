@@ -1,0 +1,23 @@
+<svg id="svg18" version="1.1" viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs id="defs5455">
+        <style type="text/css" id="current-color-scheme">
+            .ColorScheme-Text {
+                color:#3b3f42;
+            }
+        </style>
+        <linearGradient id="linearGradient4434" x1="439.57144" x2="429.57144" y1="502.798" y2="512.79803" gradientTransform="translate(-1.3269125e-7 .6666664)" gradientUnits="userSpaceOnUse">
+            <stop id="stop4328" offset="0"/>
+            <stop id="stop4330" stop-opacity="0" offset="1"/>
+        </linearGradient>
+    </defs>
+    <g id="layer1" transform="translate(-384.57144,-483.798)">
+        <g id="g855" transform="matrix(1.5000005,0,0,1.5000005,-192.28588,-241.89921)">
+            <path id="path4422" style="fill:currentColor" d="m425.23807 489.13134-6 6 11.33336 11.33336-11.33337 11.33326 6 6 17.33337-17.33326z" fill-rule="evenodd"
+            class="ColorScheme-Text" />
+            <rect id="rect4119" x="399.90475" y="489.79797" width="6.6666646" height="6.6666646" rx="3.3333328" fill="#fa8865" stroke-width="1.06666"/>
+            <rect id="rect4308" x="390.57138" y="509.13129" width="9.3333302" height="9.3333302" rx="4.6666498" fill="#63c605" stroke-width="1.03704"/>
+            <rect id="rect4312" x="403.90472" y="528.46466" width="13.333329" height="13.333329" rx="6.6666651" fill="#1b89f3" stroke-width="1.02564"/>
+            <path id="path4426" d="m423.57143 513.4647 6 6 7-7-6-6z" fill="url(#linearGradient4434)" fill-rule="evenodd" opacity=".9"/>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="32" height="32">
+    <style type="text/css" id="current-color-scheme">.ColorScheme-Accent { color: #3daee9; } .ColorScheme-Background { color: #2a2e32; } .ColorScheme-ButtonText { color: #31363b; } .ColorScheme-Text { color: #fcfcfc; } </style>
+    <g id="input-keyboard-battery" transform="translate(-332,-428.36237) translate(-38,-128)">
+        <rect x="370" y="556.36237" width="32" height="32" ry="0" fill="none"/>
+        <path class="ColorScheme-Text" transform="translate(332,428.36237)" d="m44 132v20l10 4 10-4v-11h-1v8h-18v-16h14v-1zm18 0-2 5h2v3l2-5h-2zm-8.59375 4-4.40625 10h1.300781l1.322266-3h4.722656l1.349609 3h1.304688l-4.5-10zm0.552734 1.69531 1.9375 4.30469h-3.833984zm-8.958984 12.30469h18v1h-18z" fill="currentColor"/>
+    </g>
+</svg>

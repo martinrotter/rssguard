@@ -1,0 +1,46 @@
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <linearGradient id="c" gradientUnits="userSpaceOnUse" x1="4" x2="4" y1="3" y2="45">
+        <stop offset="0" stop-color="#c6cdd1"/>
+        <stop offset="1" stop-color="#e0e5e7"/>
+        </linearGradient>
+    <linearGradient id="d" gradientUnits="userSpaceOnUse" x1="4" x2="4" y1="3" y2="45">
+        <stop offset="0" stop-color="#292c2f"/>
+        <stop offset="1" stop-opacity="0"/>
+        </linearGradient>
+    <linearGradient id="a" gradientUnits="userSpaceOnUse" x1="4" x2="4" y1="4" y2="45">
+        <stop offset="0" stop-color="#21c9fb"/>
+        <stop offset="1" stop-color="#1a86f2"/>
+        </linearGradient>
+  <path
+     style="fill:url(#c)"
+     d="M 0 4 L 0 44 L 48 44 L 48 4 L 0 4 z "
+     />
+  <path
+     style="opacity:0.2;fill:url(#d)"
+     d="M 46.5 12.57 L 1.5 41.14 L 4.5 44 L 48 44 L 48 14 L 46.5 12.57 z "
+     />
+  <path
+     style="fill:#566069"
+     d="M 0 4 L 0 9.7 L 48 9.7 L 48 4 L 0 4 z "
+     />
+  <path
+     style="fill:#3daee9"
+     d="M 0 9.7 L 0 11.14 L 48 11.14 L 48 9.7 L 0 9.7 z "
+     />
+  <path
+     style="fill:#ffffff"
+     d="M 1.5 12.57 L 1.5 41.14 L 46.5 41.14 L 46.5 12.57 L 1.5 12.57 z "
+     />
+  <path
+     style="fill:#eff0f1"
+     d="M 45 5.4 C 44.17 5.4 43.5 6. 43.5 6.86 C 43.5 7.65 44.169 8.3 45 8.3 C 45.831 8.3 46.5 7.65 46.5 6.86 C 46.5 6. 45.831 5.4 45 5.4 z "
+     />
+  <path
+     style="opacity:0.2;fill:url(#d)"
+     d="M 21.15 17.26 A 6.9 6.94 0. 0 0 14.5 22.4 A 6.9 6.94 0. 0 0 14.9 27.17 L 14 28 L 30 44 L 48 44 L 48 38 L 25.8 17.4 L 24.8 18.3 A 6.9 6.94 0. 0 0 23 17.5 A 6.9 6.94 0. 0 0 21.15 17.26 z "
+     />
+  <path
+     style="fill:url(#a)"
+     d="M 21.25,16 C 16.68,16 13,19.68 13,24.25 c 0,4.57 3.68,8.25 8.25,8.25 1.95,0 3.74258,-0.68 5.15,-1.8 L 33.7,38 35,36.7 27.7,29.4 C 28.82,28 29.5,26.2 29.5,24.25 29.5,19.68 25.82,16 21.25,16 Z m 0,1.8 c 3.55,0 6.417001,2.86 6.4,6.4 0,3.55 -2.86,6.4 -6.42,6.4 -3.55,0 -6.4,-2.86 -6.4,-6.4 0,-3.55 2.86,-6.4 6.4,-6.4 z"
+     />
+</svg>

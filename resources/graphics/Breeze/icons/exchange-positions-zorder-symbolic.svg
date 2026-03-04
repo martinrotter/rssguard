@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg8" version="1.1" viewBox="0 0 24 24" width="24" height="24">
+  <defs id="defs3051">
+    <style type="text/css" id="current-color-scheme">
+        .ColorScheme-Text {            color:#232629;        }
+        .ColorScheme-Accent {            color:#3daee9;        }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+    <path id="rect1708" d="m3 3v8h8v-8h-8zm1 1h6v6h-6v-6zm8 0.0722656v1.0117188a6 6 0 0 1 4.171875 2.9160156h-2.171875v1h4v-1-3h-1v2.4277344a7 7 0 0 0-5-3.3554688zm-8 8.9277344v1 3h1v-2.423828a7 7 0 0 0 6 3.423828v-1a6 6 0 0 1-5.171875-3h2.171875v-1h-4z" class="ColorScheme-Text" fill="currentColor" stroke-linecap="square" style="paint-order:markers fill stroke"/>
+    <path id="rect3451" d="m16.5 9.7929688-2.353516 2.3535152-0.353515 0.353516 0.707031 0.707031 0.353516-0.353515 1.146484-1.146485v3.292969h1v-3.292969l1.146484 1.146485 0.353516 0.353515 0.707031-0.707031-0.353515-0.353516-2.353516-2.3535152zm-2.5 4.2070312v3.292969l-1.146484-1.146485-0.353516-0.353515-0.707031 0.707031 0.353515 0.353516 2.353516 2.353515 2.353516-2.353515 0.353515-0.353516-0.707031-0.707031-0.353516 0.353515-1.146484 1.146485v-3.292969h-1z" class="ColorScheme-Accent" fill="currentColor" stroke-linecap="square" style="paint-order:markers fill stroke"/>
+  </g>
+</svg>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" width="32" height="32">
+    <style type="text/css" id="current-color-scheme">.ColorScheme-Text {
+        color:#31363b;
+      }
+      .ColorScheme-Background {
+        color:#eff0f1;
+      }
+      .ColorScheme-Accent {
+        color:#3daee9;
+      }
+      .ColorScheme-ButtonText {
+        color:#31363b;
+      }
+    </style>
+    <g id="input-combo-on" transform="translate(19,111.99999) translate(-38,-224)">
+        <rect x="19" y="112" width="32" height="32" opacity=".00100002"/>
+        <path class="ColorScheme-Text" d="m25 116v20l10 4 10-4v-20h-1zm1 1h18v16h-18zm0 17h18v1h-18zm6.40625-12.99999-4.40625 10h1.30078l1.32227-3h4.72265l1.34961 3h1.30469l-4.5-10zm0.55273 1.69531 1.9375 4.30469h-3.83398zm7.04102-3.69531v1.8h-2v0.9h2v5.4h-2v0.9h5v-0.9h-2v-8.1z" fill="currentColor"/>
+    </g>
+</svg>

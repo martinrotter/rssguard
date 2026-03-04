@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48">
+ <style id="current-color-scheme" type="text/css">.ColorScheme-Text { color: #fcfcfc; } </style>
+ <g id="weather-clear-wind-symbolic">
+  <g id="sun">
+   <path id="line12" class="ColorScheme-Text" d="m4 24h6" fill="none" stroke="currentColor" stroke-width="2"/>
+   <use id="use1" transform="rotate( 36 24 24)" href="#line12"/>
+   <use id="use2" transform="rotate( 72 24 24)" href="#line12"/>
+   <use id="use3" transform="rotate(108 24 24)" href="#line12"/>
+   <use id="use4" transform="rotate(144 24 24)" href="#line12"/>
+   <use id="use5" transform="rotate(180 24 24)" href="#line12"/>
+   <use id="use6" transform="rotate(-36 24 24)" href="#line12"/>
+   <g id="g5" fill="none">
+    <path id="path5" class="ColorScheme-Text" d="m15.5 31 a11 11 0 1 1 19.5 -8" stroke="currentColor" stroke-width="2"/>
+   </g>
+  </g>
+   <path id="wind1" class="ColorScheme-Text" d="m22 32 h11 a3 3 0 1 0 -3 -3" stroke="currentColor" stroke-width="2" fill="none"/>
+   <path id="wind2" class="ColorScheme-Text" d="m19 35 h22 a3 3 0 1 0 -3 -3" stroke="currentColor" stroke-width="2" fill="none"/>
+   <path id="wind3" class="ColorScheme-Text" d="m21 38 h12 a3 3 0 1 1 -3 3" stroke="currentColor" stroke-width="2" fill="none"/>
+ </g>
+</svg>

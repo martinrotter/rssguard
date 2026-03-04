@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24" width="24" height="24">
+  <style id="current-color-scheme" type="text/css">.ColorScheme-Text { color: #fcfcfc; } </style>
+  <g transform="translate(1,1)">
+    <g class="ColorScheme-Text" transform="matrix(-1,0,0,1,22,0)" fill="currentColor">
+      <path d="M 14.324219,7.28125 13.785156,8.1425781 A 4,4 0 0 1 15,11 4,4 0 0 1 13.789062,13.861328 l 0.539063,0.863281 A 5,5 0 0 0 16,11 5,5 0 0 0 14.324219,7.28125 Z"/>
+      <path d="m 13.865234,3.5371094 -0.24414,0.9765625 A 7,7 0 0 1 18,11 7,7 0 0 1 13.619141,17.478516 l 0.24414,0.974609 A 8,8 0 0 0 19,11 8,8 0 0 0 13.865234,3.5371094 Z" fill-opacity=".35"/>
+      <path d="m3.0000005 8h2v6h-2z" fill-rule="evenodd"/>
+      <path d="m6.0000005 14 5.0000005 5h0.999999v-16h-1l-4.9999995 5z"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48">
+  <style id="current-color-scheme" type="text/css">
+  .ColorScheme-Text {
+    color:#232629;
+  }
+  </style>
+ <g id="weather-few-clouds-wind-night-symbolic" class="ColorScheme-Text" fill="none" stroke-linejoin="bevel">
+  <path class="ColorScheme-Text" d="m19.4 31a13 13 0 0 1-3.9-12m-5.4 0a15 15 1 0 0 8.3 18.9m-2.17-26.9a13 13 0 0 1 5.9-2a13 13 0 0 0 -3.6 3" stroke="currentColor" stroke-width="2"/>
+  <rect x="5" y="11" width="15" height="8" rx="4.5" ry="4.5" stroke="currentColor" stroke-width="2"/>
+   <path id="wind1" class="ColorScheme-Text" d="m22 32 h11 a3 3 0 1 0 -3 -3" stroke="currentColor" stroke-width="2" fill="none"/>
+   <path id="wind2" class="ColorScheme-Text" d="m19 35 h22 a3 3 0 1 0 -3 -3" stroke="currentColor" stroke-width="2" fill="none"/>
+   <path id="wind3" class="ColorScheme-Text" d="m21 38 h12 a3 3 0 1 1 -3 3"  stroke="currentColor" stroke-width="2" fill="none"/>
+ </g>
+</svg>

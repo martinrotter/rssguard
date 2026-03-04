@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- style definitions -->
+  <defs>
+    <style type="text/css" id="current-color-scheme">.ColorScheme-Accent { color: #3daee9; } .ColorScheme-Text { color: #fcfcfc; } </style>
+  </defs>
+
+  <!-- folder bg -->
+  <path fill="#9bd916" d="m6 9v21h-1v57h86v-63h-1v-9h-42l-6-6z"/>
+
+  <!-- folder fg -->
+  <path d="m6 9v21h27l6-6h51v-9h-42l-6-6z" fill-opacity=".33"/>
+
+  <!-- folder highlight -->
+  <path d="m42 9 5 7h43v-1h-42zm-3 15-6 6h-28v1h29z" fill="#fff" fill-opacity=".2"/>
+
+  <!-- folder shadow -->
+  <path d="m39 24-7 5h-26v1h27zm-34 62v1h86v-1z" fill-opacity=".2"/>
+
+  <!-- android logo -->
+  <path d="m33.5 44c-.127809 0-.255582.04855-.353516.146484-.195868.195868-.195868.511163 0 .707032l4.138672 4.138672c-2.048738 2.434732-3.285156 5.576747-3.285156 9.007812v10h28v-10c0-3.431065-1.236418-6.57308-3.285156-9.007812l4.138672-4.138672c.195867-.195869.195867-.511164 0-.707032-.097934-.097934-.225707-.146484-.353516-.146484-.127808-.000001-.255586.048554-.353516.146484l-4.103515 4.103516c-2.544137-2.620154-6.102401-4.25-10.042969-4.25s-7.498832 1.629846-10.042969 4.25l-4.103515-4.103516c-.097935-.097934-.225708-.146485-.353516-.146484zm14.5 1c7.191525 0 13 5.808475 13 13v9h-26v-9c0-7.191525 5.808475-13 13-13zm-6 7a2 2 0 0 0 -2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 -2-2zm12 0a2 2 0 0 0 -2 2 2 2 0 0 0 2 2 2 2 0 0 0 2-2 2 2 0 0 0 -2-2z" style="fill:currentColor;fill-opacity:0.6" class="ColorScheme-Text"/>
+</svg>

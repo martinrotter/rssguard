@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48" height="48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <metadata>
+  <rdf:RDF>
+   <cc:Work rdf:about="">
+    <dc:format>image/svg+xml</dc:format>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:title/>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <linearGradient id="a" x1="428.81601" x2="388.86499" y1="547.63397" y2="499.67899" gradientTransform="translate(-384.57,-499.8)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#bdc3c7" offset="0"/>
+   <stop stop-color="#eff0f1" offset="1"/>
+  </linearGradient>
+  <linearGradient id="c" x1="406.501" x2="419.974" y1="527.014" y2="539.825" gradientTransform="translate(-391.5697,-499.8)" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#292c2f" offset="0"/>
+   <stop stop-opacity="0" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient70363" x1="24" x2="24" y1="37" y2="12" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#2c3e50" offset="0"/>
+   <stop stop-color="#34495e" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient70391" x1="24" x2="24" y1="51" y2="4" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#7f8c8d" stop-opacity="0" offset="0"/>
+   <stop stop-color="#7f8c8d" offset="1"/>
+  </linearGradient>
+  <linearGradient id="linearGradient70552" x1="18.474609" x2="34" y1="13" y2="28.525391" gradientUnits="userSpaceOnUse" xlink:href="#c"/>
+  <linearGradient id="linearGradient70571" x1="7" x2="11.933349" y1="37" y2="41.93335" gradientTransform="translate(0,-30)" gradientUnits="userSpaceOnUse" xlink:href="#c"/>
+  <linearGradient id="linearGradient70575" x1="7" x2="11.933349" y1="37" y2="41.93335" gradientTransform="translate(32,-30)" gradientUnits="userSpaceOnUse" xlink:href="#c"/>
+  <linearGradient id="linearGradient70579" x1="7" x2="11.933349" y1="37" y2="41.93335" gradientTransform="translate(32)" gradientUnits="userSpaceOnUse" xlink:href="#c"/>
+  <linearGradient id="linearGradient70596" x1="7" x2="11.933349" y1="37" y2="41.93335" gradientUnits="userSpaceOnUse" xlink:href="#c"/>
+ </defs>
+ <rect x="4" y="4" width="40" height="40" rx="6" ry="6" fill="#95a5a6"/>
+ <rect x="4" y="4" width="40" height="39" rx="6" ry="6" fill="url(#a)"/>
+ <path d="m14 11v2h-4v1h4v6h-4v1h4v6h-4v1h4v6h-4v1h27v-1h-3v-6h3v-1h-3v-6h3v-1h-3v-6h3v-1h-3v-2h-3v2h-12.525391l-1.474609-2zm5.210938 3h11.789062v6h-7.369141zm-2.210938 3 2.333333 3h-2.333333zm0 4h3.111111l4.666667 6h-7.777778zm7.369141 0h6.630859v6h-2.210938zm-7.369141 7h8.555556l4.666666 6h-13.222222zm12.525391 0h1.474609v2z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="url(#linearGradient70391)" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+ <path d="m17 11-3 24 8 8h16c3.324 0 6-2.676 6-6v-16l-10-10-1.888672 15.111328z" fill="url(#linearGradient70552)" opacity=".2" style="paint-order:normal"/>
+ <path d="m14 11v24h3v-18l14 18h3v-24h-3v19l-14-19z" color="#000000" color-rendering="auto" dominant-baseline="auto" fill="url(#linearGradient70363)" image-rendering="auto" shape-rendering="auto" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+ <path d="M 8.9101562,36.15625 C 5.7730665,36.120739 6.4299,38.124337 6.2753906,39.691406 L 9.5625,42.978516 C 9.7074832,42.988908 9.8522793,43 10,43 h 6.398438 L 9.5898438,36.191406 C 9.3456152,36.170185 9.1192956,36.158617 8.9101562,36.15625 Z" fill="url(#linearGradient70596)" opacity=".2" style="paint-order:normal"/>
+ <path d="m6.2759847 9.6911024 9.6564173 9.6564176 4.507504-2.306142-10.849888-10.849888c-3.9076571-0.339541-3.149223 1.828071-3.314033 3.499612z" fill="url(#linearGradient70571)" opacity=".2" style="paint-order:normal"/>
+ <path d="m40.910156 6.15625c-3.137089-0.0355108-2.480256 1.9680866-2.634765 3.5351562l5.724609 5.7246098v-5.416016c0-0.5653399-0.083678-1.1090794-0.228516-1.6269531l-2.18164-2.1816407c-0.244229-0.0212213-0.470548-0.0327888-0.679688-0.0351562z" fill="url(#linearGradient70575)" opacity=".2" style="paint-order:normal"/>
+ <path d="m40.910156 36.15625c-3.137089-0.03551-2.480256 1.968087-2.634765 3.535156l2.58789 2.587891c1.468659-0.795024 2.557063-2.187469 2.960938-3.853516l-2.234375-2.234375c-0.244229-0.02122-0.470548-0.03279-0.679688-0.03516z" fill="url(#linearGradient70579)" opacity=".2" style="paint-order:normal"/>
+ <g fill="#2c3e50">
+  <path d="m7 6c-0.554 0-1 0.446-1 1v2c0 0.554 0.446 1 1 1h2c0.554 0 1-0.446 1-1v-2c0-0.554-0.446-1-1-1zm0 1h2v2h-2z" style="paint-order:normal"/>
+  <path d="m39 6c-0.554 0-1 0.446-1 1v2c0 0.554 0.446 1 1 1h2c0.554 0 1-0.446 1-1v-2c0-0.554-0.446-1-1-1zm0 1h2v2h-2z" style="paint-order:normal"/>
+  <path d="m7 36c-0.554 0-1 0.446-1 1v2c0 0.554 0.446 1 1 1h2c0.554 0 1-0.446 1-1v-2c0-0.554-0.446-1-1-1zm0 1h2v2h-2z" style="paint-order:normal"/>
+  <path d="m39 36c-0.554 0-1 0.446-1 1v2c0 0.554 0.446 1 1 1h2c0.554 0 1-0.446 1-1v-2c0-0.554-0.446-1-1-1zm0 1h2v2h-2z" style="paint-order:normal"/>
+ </g>
+ <g fill="#2c3e50" shape-rendering="auto" stroke-dashoffset="531.55225">
+  <path d="m7 13v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  <path d="m7 21v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  <path d="m7 29v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  <g transform="rotate(90,8.5,38.5)">
+   <path d="m7 12v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+   <path d="m7 21v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+   <path d="m7 30v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  </g>
+  <g transform="rotate(90,23.5,23.5)">
+   <path d="m7 12v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+   <path d="m7 21v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+   <path d="m7 30v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  </g>
+  <g transform="translate(32)">
+   <path d="m7 13v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+   <path d="m7 21v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+   <path d="m7 29v4h2v-4z" color="#000000" color-rendering="auto" dominant-baseline="auto" image-rendering="auto" opacity=".5" solid-color="#000000" style="font-feature-settings:normal;font-variant-alternates:normal;font-variant-caps:normal;font-variant-ligatures:normal;font-variant-numeric:normal;font-variant-position:normal;isolation:auto;mix-blend-mode:normal;paint-order:normal;shape-padding:0;text-decoration-color:#000000;text-decoration-line:none;text-decoration-style:solid;text-indent:0;text-orientation:mixed;text-transform:none;white-space:normal"/>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,49 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    <path id="headband_bottom" d="m30.9 10a20.86 20.86 0 0 0-20.9 20.9v1c0-7.3 3.72-13.71 9.38-17.45 0.3 0.2 0.68 0.29 1 0.47 0.31 0.19 0.66 0.3 0.99 0.47 0.32-0.17 0.62-0.37 0.96-0.52h-0.02a20.86 20.86 0 0 1 8.59-1.87h2.18c3.08 0 5.98 0.68 8.6 1.86h-0.02c0.34 0.16 0.64 0.36 0.96 0.53 0.33-0.17 0.68-0.28 1-0.47 0.3-0.18 0.69-0.27 1-0.47a20.85 20.85 0 0 1 9.38 17.46v-1c0-11.59-9.32-20.91-20.9-20.91z" fill="url(#headband_bottom)"/>
+    <path id="headband_top" d="m32 6c-13.3 0-24 10.7-24 24v7a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-9c0-11.08 8.92-20 20-20s20 8.92 20 20v9a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-7c0-13.3-10.7-24-24-24z" fill="url(#headband_top)"/>
+    <path id="headband_top_shadow" d="m32 7c-11.08 0-20 8.92-20 20v1c0-11.08 8.92-20 20-20s20 8.92 20 20v-1c0-11.08-8.92-20-20-20zm-24 29v1a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zm44 0v1a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-1a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z" fill="#1a89f3"/>
+
+    <path id="earcups" d="m 16,36 c 0,0 -3,2e-6 -3,2 0,0 -2,5 -5,5 -0.5522847,0 -1,0.447715 -1,1 v 6 c 0,0.55 0.45,1 1,1 2,0 5,5 5,5 0,2 3,2 3,2 h 1 c 0,0 3,-2e-6 3,-2 V 38 c 0,-2 -3,-2 -3,-2 z m 31,0 c 0,0 -3,2e-6 -3,2 v 18 c 0,2 3,2 3,2 h 1 c 0,0 3,-2e-6 3,-2 0,0 2,-5 5,-5 0.55,0 1,-0.447715 1,-1 v -6 c 0,-0.55 -0.447715,-1 -1,-1 -3,0 -5,-5 -5,-5 0,-2 -3,-2 -3,-2 z" fill="url(#earcups)"/>
+    <path id="left_earcup_gradient" d="m14 36.46v21.07c-0.55-0.29-1-0.76-1-1.53 0 0-2-5-5-5a1 1 0 0 1-1-1v-6a1 1 0 0 1 1-1c3 0 5-5 5-5 0-0.77 0.45-1.24 1-1.54z" fill="url(#left_earcup_gradient)" fill-rule="evenodd"/>
+    <path id="right_earcup_gradient" d="m 50,36.46 v 21.07 c 0.55,-0.29 1,-0.76 1,-1.53 0,0 2,-5 5,-5 a 1,1 0 0 0 1,-1 v -6 a 1,1 0 0 0 -1,-1 c -3,0 -5,-5 -5,-5 0,-0.77 -0.45,-1.24 -1,-1.54 z" fill="url(#right_earcup_gradient)" fill-rule="evenodd"/>
+    <path id="earcups_shadow" d="m 7,49 v 1 c 0,0.55 0.45,1 1,1 2,0 5,5 5,5 0,2 3,2 3,2 h 1 c 0,0 3,-2e-6 3,-2 v -1 c 0,2 -3,2 -3,2 h -1 c 0,0 -3,-2e-6 -3,-2 0,0 -2,-5 -5,-5 -0.5522847,0 -1,-0.447715 -1,-1 z m 50,0 c 0,0.55 -0.447715,1 -1,1 -3,0 -5,5 -5,5 0,2 -3,2 -3,2 h -1 c 0,0 -3,-2e-6 -3,-2 v 1 c 0,2 3,2 3,2 h 1 c 0,0 3,-2e-6 3,-2 0,0 2,-5 5,-5 0.55,0 1,-0.447715 1,-1 z" fill="#1c1e20"/>
+    <path id="earcup_headband_adjustment" d="m9 38v4h2v-4h-2zm44 0v4h2v-4h-2z" fill="#8ca5ad"/>
+    <path id="earcup_earpad_holder" d="m 14,36.470703 c -0.55,0.29 -1,0.759298 -1,1.5 v 18 c 0,0.77 0.450001,1.239297 1,1.5 z m 36.01,0 v 21.058594 c 0.54,-0.29 1,-0.759298 1,-1.5 V 38 c 0,-0.77 -0.460001,-1.239297 -1,-1.5 z" fill="#afc0c6"/>
+    <path id="earcup_headband_holder" d="m10 41c-0.554 0-1 0.45-1 1v11c0 0.55 0.4460006 1 1 1 0.55 0 1-0.45 1-1v-11c0-0.55-0.45-1-1-1zm44 0c-0.55 0-1 0.45-1 1v11c0 0.55 0.45 1 1 1s1-0.45 1-1v-11c0-0.55-0.45-1-1-1z" fill="#afc0c6"/>
+
+    <path id="circles_decoration" d="m10 46a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1zm44 0a1 1 0 0 0-1 1 1 1 0 0 0 1 1 1 1 0 0 0 1-1 1 1 0 0 0-1-1z" fill="#2b2d30"/>
+
+    <path id="microphone_body" d="m59 46c0-1.5-1-2-2-2l-4e-4 5.5c0 1.93292-1.5 3.5-5.5 3.5h-12.5v2.00001h13c4.5 0 6.5-2.5 6.5-4.5 0.5004-0.5 0.5004-1.75179 0.5004-2.5z" fill="url(#microphone_body)"/>
+    <path id="microphone_filter" d="m35 52h4c1.108 0 2 0.892 2 2s-0.892 2-2 2h-4c-1.108 0-2-0.892-2-2s0.892-2 2-2z" fill="url(#microphone_filter)"/>
+    <path id="microphone_headband_shadow" d="m 32,11 -1,2 h 2 z m 1,2 h 0.09961 c 1.2,0 2.400548,0.110547 3.560547,0.310547 L 36,12 35,13 34,12 Z m -2,0 -1,-1 -1,1 -1,-1 -0.660156,1.310547 C 28.5,13.110547 29.690157,13 30.910156,13 Z m 3,41.5 -0.527344,0.791016 C 33.839524,55.724515 34.387561,56 35,56 Z m 1,1.5 h 2 l -1,-1.5 z m 2,0 h 2 l -1,-1.5 z m 2,0 c 0.612429,0 1.160474,-0.275485 1.527344,-0.708984 L 40,54.5 Z" fill="#1c1e20" fill-rule="evenodd"/>
+
+    <defs>
+        <linearGradient id="headband_bottom" x2="0" y1="16" y2="6" gradientUnits="userSpaceOnUse" xlink:href="#dark"/>
+        <linearGradient id="earcups" x2="0" y1="58" y2="36" gradientTransform="matrix(-1,0,0,1,63,0)" gradientUnits="userSpaceOnUse" xlink:href="#dark"/>
+        <linearGradient id="microphone_filter" x1="32" x2="32" y1="56" y2="52" gradientUnits="userSpaceOnUse" xlink:href="#dark"/>
+        <linearGradient id="dark">
+            <stop stop-color="#2a2c2f" offset="0"/>
+            <stop stop-color="#424649" offset="1"/>
+        </linearGradient>
+
+        <linearGradient id="headband_top" x2="0" y1="28" y2="6" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#197cf1" offset="0"/>
+            <stop stop-color="#20bcfa" offset="1"/>
+        </linearGradient>
+
+        <linearGradient id="left_earcup_gradient" x1="56" x2="49" y1="37" y2="44" gradientTransform="matrix(-1,0,0,1,63,0)" gradientUnits="userSpaceOnUse" xlink:href="#earcup_gradient"/>
+        <linearGradient id="right_earcup_gradient" x1="49" x2="56" y1="37" y2="44" gradientUnits="userSpaceOnUse" xlink:href="#earcup_gradient"/>
+        <linearGradient id="earcup_gradient">
+            <stop stop-color="#292c2f" offset="0"/>
+            <stop stop-opacity="0" offset="1"/>
+        </linearGradient>
+
+        <linearGradient id="microphone_body" x1="15.5" x2="15.5" y2="11" gradientTransform="translate(32,44)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#636D74" offset="0"/>
+            <stop stop-color="#333B41" offset=".48"/>
+            <stop stop-color="#3A454E" offset=".65"/>
+            <stop stop-color="#636D74" offset=".8"/>
+        </linearGradient>
+    </defs>
+</svg>

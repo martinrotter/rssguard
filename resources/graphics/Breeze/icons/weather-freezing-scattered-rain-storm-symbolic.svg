@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="48" height="48">
+ <style id="current-color-scheme" type="text/css">.ColorScheme-Text {
+    color:#232629;
+  }</style>
+ <g id="weather-freezing-scattered-rain-storm-symbolic" class="ColorScheme-Text" stroke-linejoin="bevel">
+  <path id="lightning" d="m25.415 22  -3.4145 9 3.2442 0l-5.2442 13l0.3171 0l 9.6829-15h-3.841l3.841-7z" fill="currentColor"/>
+  <path d="m33 37-3 3 3 3 3-3z" class="ColorScheme-Text" fill="currentColor" />
+  <path d="m17 32-3 3 3 3 3-3z" class="ColorScheme-Text" fill="currentColor" />
+  <path d="m 9 38 a2 2.0711 0 0 0 0 2.9289 2 2.0711 0 0 0 2.8284 0 2 2.0711 0 0 0 0-2.9289l-1.4142-1.4645z" stroke-width="1.0176" class="ColorScheme-Text" fill="currentColor"/>
+  <path d="m37 34 a2 2.0711 0 0 0 0 2.9289 2 2.0711 0 0 0 2.8284 0 2 2.0711 0 0 0 0-2.9289l-1.4142-1.4645z" stroke-width="1.0176" class="ColorScheme-Text" fill="currentColor"/>
+  <path id="cloud" d="m31 30 h 5 a 7 7 0 0 0 0.95 -13.92 a 9 9 0 0 0 -8.95-8.08 a 9 9 0 0 0 -8.36 12.31 a 5 5 0 1 0 -1.63 9.69h2 " fill="none" stroke="currentColor" stroke-width="2"/>
+ </g>
+</svg>

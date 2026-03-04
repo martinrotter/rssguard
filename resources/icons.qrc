@@ -1,228 +1,230 @@
 <RCC>
   <qresource prefix="/">
-    <file>./graphics/Breeze/actions/22/application-exit.svg</file>
-    <file>./graphics/Breeze/mimetypes/22/application-rss+xml.svg</file>
-    <file>./graphics/Breeze/categories/32/applications-internet.svg</file>
-    <file>./graphics/Breeze/categories/32/applications-office.svg</file>
-    <file>./graphics/Breeze/categories/32/applications-science.svg</file>
-    <file>./graphics/Breeze/categories/32/applications-system.svg</file>
-    <file>./graphics/Breeze/actions/22/arrow-down.svg</file>
-    <file>./graphics/Breeze/actions/22/arrow-down-double.svg</file>
-    <file>./graphics/Breeze/actions/22/arrow-left.svg</file>
-    <file>./graphics/Breeze/actions/22/arrow-right.svg</file>
-    <file>./graphics/Breeze/actions/22/arrow-up.svg</file>
-    <file>./graphics/Breeze/actions/22/arrow-up-double.svg</file>
-    <file>./graphics/Breeze/status/22/audio-volume-muted.svg</file>
-    <file>./graphics/Breeze/actions/22/call-start.svg</file>
-    <file>./graphics/Breeze/actions/22/configure-shortcuts.svg</file>
-    <file>./graphics/Breeze/actions/22/dialog-cancel.svg</file>
-    <file>./graphics/Breeze/actions/22/dialog-close.svg</file>
-    <file>./graphics/Breeze/status/22/dialog-error.svg</file>
-    <file>./graphics/Breeze/status/22/dialog-information.svg</file>
-    <file>./graphics/Breeze/actions/22/dialog-ok.svg</file>
-    <file>./graphics/Breeze/status/22/dialog-password.svg</file>
-    <file>./graphics/Breeze/status/22/dialog-question.svg</file>
-    <file>./graphics/Breeze/status/22/dialog-warning.svg</file>
-    <file>./graphics/Breeze/actions/22/document-edit.svg</file>
-    <file>./graphics/Breeze/actions/22/document-export.svg</file>
-    <file>./graphics/Breeze/actions/22/document-import.svg</file>
-    <file>./graphics/Breeze/actions/22/document-open.svg</file>
-    <file>./graphics/Breeze/actions/22/document-revert.svg</file>
-    <file>./graphics/Breeze/actions/22/document-save-as.svg</file>
-    <file>./graphics/Breeze/actions/22/download.svg</file>
-    <file>./graphics/Breeze/actions/22/draw-freehand.svg</file>
-    <file>./graphics/Breeze/actions/22/draw-line.svg</file>
-    <file>./graphics/Breeze/actions/22/draw-star.svg</file>
-    <file>./graphics/Breeze/actions/22/edit-clear.svg</file>
-    <file>./graphics/Breeze/actions/22/edit-copy.svg</file>
-    <file>./graphics/Breeze/actions/22/edit-cut.svg</file>
-    <file>./graphics/Breeze/actions/22/edit-paste.svg</file>
-    <file>./graphics/Breeze/actions/22/edit-redo.svg</file>
-    <file>./graphics/Breeze/actions/22/edit-reset.svg</file>
-    <file>./graphics/Breeze/actions/22/edit-select-all.svg</file>
-    <file>./graphics/Breeze/actions/22/edit-select-none.svg</file>
-    <file>./graphics/Breeze/actions/22/edit-undo.svg</file>
-    <file>./graphics/Breeze/emblems/22/emblem-favorite.svg</file>
-    <file>./graphics/Breeze/emblems/22/emblem-shared.svg</file>
-    <file>./graphics/Breeze/places/22/folder.svg</file>
-    <file>./graphics/Breeze/places/22/folder-database.svg</file>
-    <file>./graphics/Breeze/actions/22/format-indent-less.svg</file>
-    <file>./graphics/Breeze/actions/22/format-indent-more.svg</file>
-    <file>./graphics/Breeze/actions/22/format-justify-fill.svg</file>
-    <file>./graphics/Breeze/actions/22/format-list-ordered.svg</file>
-    <file>./graphics/Breeze/actions/22/format-list-unordered.svg</file>
-    <file>./graphics/Breeze/actions/22/format-text-bold.svg</file>
-    <file>./graphics/Breeze/actions/22/format-text-color.svg</file>
-    <file>./graphics/Breeze/actions/22/format-text-italic.svg</file>
-    <file>./graphics/Breeze/actions/22/format-text-strikethrough.svg</file>
-    <file>./graphics/Breeze/actions/22/format-text-underline.svg</file>
-    <file>./graphics/Breeze/actions/22/go-down.svg</file>
-    <file>./graphics/Breeze/actions/22/go-home.svg</file>
-    <file>./graphics/Breeze/actions/22/go-jump.svg</file>
-    <file>./graphics/Breeze/actions/22/go-next.svg</file>
-    <file>./graphics/Breeze/actions/22/go-previous.svg</file>
-    <file>./graphics/Breeze/actions/22/go-up.svg</file>
-    <file>./graphics/Breeze/actions/22/gtk-cancel.svg</file>
-    <file>./graphics/Breeze/actions/22/gtk-close.svg</file>
-    <file>./graphics/Breeze/actions/22/gtk-edit.svg</file>
-    <file>./graphics/Breeze/actions/22/help-about.svg</file>
-    <file>./graphics/Breeze/actions/22/help-contents.svg</file>
-    <file>./graphics/Breeze/mimetypes/22/image-x-generic.svg</file>
-    <file>./graphics/Breeze/actions/22/insert-link.svg</file>
-    <file>./graphics/Breeze/actions/22/insert-page-break.svg</file>
-    <file>./graphics/Breeze/actions/22/internet-services.svg</file>
-    <file>./graphics/Breeze/apps/48/kmplayer.svg</file>
-    <file>./graphics/Breeze/mimetypes/22/libreoffice-database.svg</file>
-    <file>./graphics/Breeze/actions/22/list-add.svg</file>
-    <file>./graphics/Breeze/actions/22/list-remove.svg</file>
-    <file>./graphics/Breeze/actions/22/mail-attachment.svg</file>
-    <file>./graphics/Breeze/actions/22/mail-forward.svg</file>
-    <file>./graphics/Breeze/actions/symbolic/mail-inbox-symbolic.svg</file>
-    <file>./graphics/Breeze/actions/22/mail-mark-important.svg</file>
-    <file>./graphics/Breeze/actions/22/mail-mark-junk.svg</file>
-    <file>./graphics/Breeze/actions/22/mail-mark-read.svg</file>
-    <file>./graphics/Breeze/actions/22/mail-mark-unread.svg</file>
-    <file>./graphics/Breeze/actions/22/mail-message-new.svg</file>
-    <file>./graphics/Breeze/actions/22/mail-reply-sender.svg</file>
-    <file>./graphics/Breeze/actions/22/mail-send.svg</file>
-    <file>./graphics/Breeze/actions/22/mail-sent.svg</file>
-    <file>./graphics/Breeze/actions/22/media-playback-pause.svg</file>
-    <file>./graphics/Breeze/actions/22/media-playback-start.svg</file>
-    <file>./graphics/Breeze/actions/22/media-playback-stop.svg</file>
-    <file>./graphics/Breeze/actions/22/notifications.svg</file>
-    <file>./graphics/Breeze/actions/22/player-volume.svg</file>
-    <file>./graphics/Breeze/actions/22/player-volume-muted.svg</file>
-    <file>./graphics/Breeze/actions/22/playlist-sort.svg</file>
-    <file>./graphics/Breeze/actions/22/process-stop.svg</file>
-    <file>./graphics/Breeze/actions/22/sort-name.svg</file>
-    <file>./graphics/Breeze/actions/22/system-search.svg</file>
-    <file>./graphics/Breeze/actions/22/system-upgrade.svg</file>
-    <file>./graphics/Breeze/actions/22/tag.svg</file>
-    <file>./graphics/Breeze/actions/22/tag-edit.svg</file>
-    <file>./graphics/Breeze/actions/22/tag-folder.svg</file>
-    <file>./graphics/Breeze/actions/22/tag-new.svg</file>
-    <file>./graphics/Breeze/actions/22/tag-properties.svg</file>
-    <file>./graphics/Breeze/mimetypes/22/text-x-gettext-translation.svg</file>
-    <file>./graphics/Breeze/places/22/user-trash.svg</file>
-    <file>./graphics/Breeze/actions/22/view-fullscreen.svg</file>
-    <file>./graphics/Breeze/actions/22/view-list-details.svg</file>
-    <file>./graphics/Breeze/actions/22/view-refresh.svg</file>
-    <file>./graphics/Breeze/actions/22/view-restore.svg</file>
-    <file>./graphics/Breeze/actions/22/view-sort.svg</file>
-    <file>./graphics/Breeze/actions/22/viewimage.svg</file>
-    <file>./graphics/Breeze/actions/22/window-close.svg</file>
+    <file>./graphics/Breeze/icons/application-exit.svg</file>
+    <file>./graphics/Breeze/icons/application-rss+xml.svg</file>
+    <file>./graphics/Breeze/icons/applications-internet.svg</file>
+    <file>./graphics/Breeze/icons/applications-office.svg</file>
+    <file>./graphics/Breeze/icons/applications-science.svg</file>
+    <file>./graphics/Breeze/icons/applications-system.svg</file>
+    <file>./graphics/Breeze/icons/arrow-down.svg</file>
+    <file>./graphics/Breeze/icons/arrow-down-double.svg</file>
+    <file>./graphics/Breeze/icons/arrow-left.svg</file>
+    <file>./graphics/Breeze/icons/arrow-right.svg</file>
+    <file>./graphics/Breeze/icons/arrow-up.svg</file>
+    <file>./graphics/Breeze/icons/arrow-up-double.svg</file>
+    <file>./graphics/Breeze/icons/audio-volume-muted.svg</file>
+    <file>./graphics/Breeze/icons/call-start.svg</file>
+    <file>./graphics/Breeze/icons/configure-shortcuts.svg</file>
+    <file>./graphics/Breeze/icons/dialog-cancel.svg</file>
+    <file>./graphics/Breeze/icons/dialog-close.svg</file>
+    <file>./graphics/Breeze/icons/dialog-error.svg</file>
+    <file>./graphics/Breeze/icons/dialog-information.svg</file>
+    <file>./graphics/Breeze/icons/dialog-ok.svg</file>
+    <file>./graphics/Breeze/icons/dialog-password.svg</file>
+    <file>./graphics/Breeze/icons/dialog-question.svg</file>
+    <file>./graphics/Breeze/icons/dialog-warning.svg</file>
+    <file>./graphics/Breeze/icons/document-edit.svg</file>
+    <file>./graphics/Breeze/icons/document-export.svg</file>
+    <file>./graphics/Breeze/icons/document-import.svg</file>
+    <file>./graphics/Breeze/icons/document-open.svg</file>
+    <file>./graphics/Breeze/icons/document-revert.svg</file>
+    <file>./graphics/Breeze/icons/document-save-as.svg</file>
+    <file>./graphics/Breeze/icons/download.svg</file>
+    <file>./graphics/Breeze/icons/download-all.svg</file>
+    <file>./graphics/Breeze/icons/draw-freehand.svg</file>
+    <file>./graphics/Breeze/icons/draw-line.svg</file>
+    <file>./graphics/Breeze/icons/draw-star.svg</file>
+    <file>./graphics/Breeze/icons/edit-clear.svg</file>
+    <file>./graphics/Breeze/icons/edit-copy.svg</file>
+    <file>./graphics/Breeze/icons/edit-cut.svg</file>
+    <file>./graphics/Breeze/icons/edit-paste.svg</file>
+    <file>./graphics/Breeze/icons/edit-redo.svg</file>
+    <file>./graphics/Breeze/icons/edit-reset.svg</file>
+    <file>./graphics/Breeze/icons/edit-select-all.svg</file>
+    <file>./graphics/Breeze/icons/edit-select-none.svg</file>
+    <file>./graphics/Breeze/icons/edit-undo.svg</file>
+    <file>./graphics/Breeze/icons/emblem-favorite.svg</file>
+    <file>./graphics/Breeze/icons/emblem-shared.svg</file>
+    <file>./graphics/Breeze/icons/folder.svg</file>
+    <file>./graphics/Breeze/icons/folder-database.svg</file>
+    <file>./graphics/Breeze/icons/format-indent-less.svg</file>
+    <file>./graphics/Breeze/icons/format-indent-more.svg</file>
+    <file>./graphics/Breeze/icons/format-justify-fill.svg</file>
+    <file>./graphics/Breeze/icons/format-list-ordered.svg</file>
+    <file>./graphics/Breeze/icons/format-list-unordered.svg</file>
+    <file>./graphics/Breeze/icons/format-text-bold.svg</file>
+    <file>./graphics/Breeze/icons/format-text-color.svg</file>
+    <file>./graphics/Breeze/icons/format-text-italic.svg</file>
+    <file>./graphics/Breeze/icons/format-text-strikethrough.svg</file>
+    <file>./graphics/Breeze/icons/format-text-underline.svg</file>
+    <file>./graphics/Breeze/icons/go-down.svg</file>
+    <file>./graphics/Breeze/icons/go-home.svg</file>
+    <file>./graphics/Breeze/icons/go-jump.svg</file>
+    <file>./graphics/Breeze/icons/go-next.svg</file>
+    <file>./graphics/Breeze/icons/go-previous.svg</file>
+    <file>./graphics/Breeze/icons/go-up.svg</file>
+    <file>./graphics/Breeze/icons/gtk-cancel.svg</file>
+    <file>./graphics/Breeze/icons/gtk-close.svg</file>
+    <file>./graphics/Breeze/icons/gtk-edit.svg</file>
+    <file>./graphics/Breeze/icons/help-about.svg</file>
+    <file>./graphics/Breeze/icons/help-contents.svg</file>
+    <file>./graphics/Breeze/icons/image-x-generic.svg</file>
+    <file>./graphics/Breeze/icons/insert-link.svg</file>
+    <file>./graphics/Breeze/icons/insert-page-break.svg</file>
+    <file>./graphics/Breeze/icons/internet-services.svg</file>
+    <file>./graphics/Breeze/icons/kmplayer.svg</file>
+    <file>./graphics/Breeze/icons/libreoffice-database.svg</file>
+    <file>./graphics/Breeze/icons/list-add.svg</file>
+    <file>./graphics/Breeze/icons/list-remove.svg</file>
+    <file>./graphics/Breeze/icons/mail-attachment.svg</file>
+    <file>./graphics/Breeze/icons/mail-forward.svg</file>
+    <file>./graphics/Breeze/icons/mail-inbox-symbolic.svg</file>
+    <file>./graphics/Breeze/icons/mail-mark-important.svg</file>
+    <file>./graphics/Breeze/icons/mail-mark-junk.svg</file>
+    <file>./graphics/Breeze/icons/mail-mark-read.svg</file>
+    <file>./graphics/Breeze/icons/mail-mark-unread.svg</file>
+    <file>./graphics/Breeze/icons/mail-message-new.svg</file>
+    <file>./graphics/Breeze/icons/mail-reply-sender.svg</file>
+    <file>./graphics/Breeze/icons/mail-send.svg</file>
+    <file>./graphics/Breeze/icons/mail-sent.svg</file>
+    <file>./graphics/Breeze/icons/media-playback-pause.svg</file>
+    <file>./graphics/Breeze/icons/media-playback-start.svg</file>
+    <file>./graphics/Breeze/icons/media-playback-stop.svg</file>
+    <file>./graphics/Breeze/icons/notifications.svg</file>
+    <file>./graphics/Breeze/icons/player-volume.svg</file>
+    <file>./graphics/Breeze/icons/player-volume-muted.svg</file>
+    <file>./graphics/Breeze/icons/playlist-sort.svg</file>
+    <file>./graphics/Breeze/icons/process-stop.svg</file>
+    <file>./graphics/Breeze/icons/sort-name.svg</file>
+    <file>./graphics/Breeze/icons/system-search.svg</file>
+    <file>./graphics/Breeze/icons/system-upgrade.svg</file>
+    <file>./graphics/Breeze/icons/tag.svg</file>
+    <file>./graphics/Breeze/icons/tag-edit.svg</file>
+    <file>./graphics/Breeze/icons/tag-folder.svg</file>
+    <file>./graphics/Breeze/icons/tag-new.svg</file>
+    <file>./graphics/Breeze/icons/tag-properties.svg</file>
+    <file>./graphics/Breeze/icons/text-x-gettext-translation.svg</file>
+    <file>./graphics/Breeze/icons/user-trash.svg</file>
+    <file>./graphics/Breeze/icons/view-fullscreen.svg</file>
+    <file>./graphics/Breeze/icons/view-list-details.svg</file>
+    <file>./graphics/Breeze/icons/view-refresh.svg</file>
+    <file>./graphics/Breeze/icons/view-restore.svg</file>
+    <file>./graphics/Breeze/icons/view-sort.svg</file>
+    <file>./graphics/Breeze/icons/viewimage.svg</file>
+    <file>./graphics/Breeze/icons/window-close.svg</file>
     <file>./graphics/Breeze/index.theme</file>
-    <file>./graphics/Breeze Dark/actions/22/application-exit.svg</file>
-    <file>./graphics/Breeze Dark/mimetypes/22/application-rss+xml.svg</file>
-    <file>./graphics/Breeze Dark/categories/32/applications-internet.svg</file>
-    <file>./graphics/Breeze Dark/categories/32/applications-office.svg</file>
-    <file>./graphics/Breeze Dark/categories/32/applications-science.svg</file>
-    <file>./graphics/Breeze Dark/categories/32/applications-system.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/arrow-down.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/arrow-down-double.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/arrow-left.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/arrow-right.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/arrow-up.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/arrow-up-double.svg</file>
-    <file>./graphics/Breeze Dark/status/22/audio-volume-muted.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/call-start.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/configure-shortcuts.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/dialog-cancel.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/dialog-close.svg</file>
-    <file>./graphics/Breeze Dark/status/22/dialog-error.svg</file>
-    <file>./graphics/Breeze Dark/status/22/dialog-information.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/dialog-ok.svg</file>
-    <file>./graphics/Breeze Dark/status/22/dialog-password.svg</file>
-    <file>./graphics/Breeze Dark/status/22/dialog-question.svg</file>
-    <file>./graphics/Breeze Dark/status/22/dialog-warning.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/document-edit.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/document-export.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/document-import.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/document-open.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/document-revert.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/document-save-as.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/download.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/draw-freehand.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/draw-line.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/draw-star.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/edit-clear.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/edit-copy.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/edit-cut.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/edit-paste.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/edit-redo.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/edit-reset.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/edit-select-all.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/edit-select-none.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/edit-undo.svg</file>
-    <file>./graphics/Breeze Dark/emblems/22/emblem-favorite.svg</file>
-    <file>./graphics/Breeze Dark/emblems/22/emblem-shared.svg</file>
-    <file>./graphics/Breeze Dark/places/22/folder.svg</file>
-    <file>./graphics/Breeze Dark/places/22/folder-database.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-indent-less.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-indent-more.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-justify-fill.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-list-ordered.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-list-unordered.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-text-bold.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-text-color.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-text-italic.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-text-strikethrough.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/format-text-underline.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/go-down.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/go-home.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/go-jump.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/go-next.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/go-previous.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/go-up.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/gtk-cancel.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/gtk-close.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/gtk-edit.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/help-about.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/help-contents.svg</file>
-    <file>./graphics/Breeze Dark/mimetypes/22/image-x-generic.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/insert-link.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/insert-page-break.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/internet-services.svg</file>
-    <file>./graphics/Breeze Dark/apps/48/kmplayer.svg</file>
-    <file>./graphics/Breeze Dark/mimetypes/22/libreoffice-database.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/list-add.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/list-remove.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/mail-attachment.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/mail-forward.svg</file>
-    <file>./graphics/Breeze Dark/actions/symbolic/mail-inbox-symbolic.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/mail-mark-important.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/mail-mark-junk.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/mail-mark-read.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/mail-mark-unread.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/mail-message-new.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/mail-reply-sender.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/mail-send.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/mail-sent.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/media-playback-pause.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/media-playback-start.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/media-playback-stop.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/notifications.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/player-volume.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/player-volume-muted.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/playlist-sort.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/process-stop.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/sort-name.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/system-search.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/system-upgrade.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/tag.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/tag-edit.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/tag-folder.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/tag-new.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/tag-properties.svg</file>
-    <file>./graphics/Breeze Dark/mimetypes/22/text-x-gettext-translation.svg</file>
-    <file>./graphics/Breeze Dark/places/22/user-trash.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/view-fullscreen.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/view-list-details.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/view-refresh.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/view-restore.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/view-sort.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/viewimage.svg</file>
-    <file>./graphics/Breeze Dark/actions/22/window-close.svg</file>
+    <file>./graphics/Breeze Dark/icons/application-exit.svg</file>
+    <file>./graphics/Breeze Dark/icons/application-rss+xml.svg</file>
+    <file>./graphics/Breeze Dark/icons/applications-internet.svg</file>
+    <file>./graphics/Breeze Dark/icons/applications-office.svg</file>
+    <file>./graphics/Breeze Dark/icons/applications-science.svg</file>
+    <file>./graphics/Breeze Dark/icons/applications-system.svg</file>
+    <file>./graphics/Breeze Dark/icons/arrow-down.svg</file>
+    <file>./graphics/Breeze Dark/icons/arrow-down-double.svg</file>
+    <file>./graphics/Breeze Dark/icons/arrow-left.svg</file>
+    <file>./graphics/Breeze Dark/icons/arrow-right.svg</file>
+    <file>./graphics/Breeze Dark/icons/arrow-up.svg</file>
+    <file>./graphics/Breeze Dark/icons/arrow-up-double.svg</file>
+    <file>./graphics/Breeze Dark/icons/audio-volume-muted.svg</file>
+    <file>./graphics/Breeze Dark/icons/call-start.svg</file>
+    <file>./graphics/Breeze Dark/icons/configure-shortcuts.svg</file>
+    <file>./graphics/Breeze Dark/icons/dialog-cancel.svg</file>
+    <file>./graphics/Breeze Dark/icons/dialog-close.svg</file>
+    <file>./graphics/Breeze Dark/icons/dialog-error.svg</file>
+    <file>./graphics/Breeze Dark/icons/dialog-information.svg</file>
+    <file>./graphics/Breeze Dark/icons/dialog-ok.svg</file>
+    <file>./graphics/Breeze Dark/icons/dialog-password.svg</file>
+    <file>./graphics/Breeze Dark/icons/dialog-question.svg</file>
+    <file>./graphics/Breeze Dark/icons/dialog-warning.svg</file>
+    <file>./graphics/Breeze Dark/icons/document-edit.svg</file>
+    <file>./graphics/Breeze Dark/icons/document-export.svg</file>
+    <file>./graphics/Breeze Dark/icons/document-import.svg</file>
+    <file>./graphics/Breeze Dark/icons/document-open.svg</file>
+    <file>./graphics/Breeze Dark/icons/document-revert.svg</file>
+    <file>./graphics/Breeze Dark/icons/document-save-as.svg</file>
+    <file>./graphics/Breeze Dark/icons/download.svg</file>
+    <file>./graphics/Breeze Dark/icons/download-all.svg</file>
+    <file>./graphics/Breeze Dark/icons/draw-freehand.svg</file>
+    <file>./graphics/Breeze Dark/icons/draw-line.svg</file>
+    <file>./graphics/Breeze Dark/icons/draw-star.svg</file>
+    <file>./graphics/Breeze Dark/icons/edit-clear.svg</file>
+    <file>./graphics/Breeze Dark/icons/edit-copy.svg</file>
+    <file>./graphics/Breeze Dark/icons/edit-cut.svg</file>
+    <file>./graphics/Breeze Dark/icons/edit-paste.svg</file>
+    <file>./graphics/Breeze Dark/icons/edit-redo.svg</file>
+    <file>./graphics/Breeze Dark/icons/edit-reset.svg</file>
+    <file>./graphics/Breeze Dark/icons/edit-select-all.svg</file>
+    <file>./graphics/Breeze Dark/icons/edit-select-none.svg</file>
+    <file>./graphics/Breeze Dark/icons/edit-undo.svg</file>
+    <file>./graphics/Breeze Dark/icons/emblem-favorite.svg</file>
+    <file>./graphics/Breeze Dark/icons/emblem-shared.svg</file>
+    <file>./graphics/Breeze Dark/icons/folder.svg</file>
+    <file>./graphics/Breeze Dark/icons/folder-database.svg</file>
+    <file>./graphics/Breeze Dark/icons/format-indent-less.svg</file>
+    <file>./graphics/Breeze Dark/icons/format-indent-more.svg</file>
+    <file>./graphics/Breeze Dark/icons/format-justify-fill.svg</file>
+    <file>./graphics/Breeze Dark/icons/format-list-ordered.svg</file>
+    <file>./graphics/Breeze Dark/icons/format-list-unordered.svg</file>
+    <file>./graphics/Breeze Dark/icons/format-text-bold.svg</file>
+    <file>./graphics/Breeze Dark/icons/format-text-color.svg</file>
+    <file>./graphics/Breeze Dark/icons/format-text-italic.svg</file>
+    <file>./graphics/Breeze Dark/icons/format-text-strikethrough.svg</file>
+    <file>./graphics/Breeze Dark/icons/format-text-underline.svg</file>
+    <file>./graphics/Breeze Dark/icons/go-down.svg</file>
+    <file>./graphics/Breeze Dark/icons/go-home.svg</file>
+    <file>./graphics/Breeze Dark/icons/go-jump.svg</file>
+    <file>./graphics/Breeze Dark/icons/go-next.svg</file>
+    <file>./graphics/Breeze Dark/icons/go-previous.svg</file>
+    <file>./graphics/Breeze Dark/icons/go-up.svg</file>
+    <file>./graphics/Breeze Dark/icons/gtk-cancel.svg</file>
+    <file>./graphics/Breeze Dark/icons/gtk-close.svg</file>
+    <file>./graphics/Breeze Dark/icons/gtk-edit.svg</file>
+    <file>./graphics/Breeze Dark/icons/help-about.svg</file>
+    <file>./graphics/Breeze Dark/icons/help-contents.svg</file>
+    <file>./graphics/Breeze Dark/icons/image-x-generic.svg</file>
+    <file>./graphics/Breeze Dark/icons/insert-link.svg</file>
+    <file>./graphics/Breeze Dark/icons/insert-page-break.svg</file>
+    <file>./graphics/Breeze Dark/icons/internet-services.svg</file>
+    <file>./graphics/Breeze Dark/icons/kmplayer.svg</file>
+    <file>./graphics/Breeze Dark/icons/libreoffice-database.svg</file>
+    <file>./graphics/Breeze Dark/icons/list-add.svg</file>
+    <file>./graphics/Breeze Dark/icons/list-remove.svg</file>
+    <file>./graphics/Breeze Dark/icons/mail-attachment.svg</file>
+    <file>./graphics/Breeze Dark/icons/mail-forward.svg</file>
+    <file>./graphics/Breeze Dark/icons/mail-inbox-symbolic.svg</file>
+    <file>./graphics/Breeze Dark/icons/mail-mark-important.svg</file>
+    <file>./graphics/Breeze Dark/icons/mail-mark-junk.svg</file>
+    <file>./graphics/Breeze Dark/icons/mail-mark-read.svg</file>
+    <file>./graphics/Breeze Dark/icons/mail-mark-unread.svg</file>
+    <file>./graphics/Breeze Dark/icons/mail-message-new.svg</file>
+    <file>./graphics/Breeze Dark/icons/mail-reply-sender.svg</file>
+    <file>./graphics/Breeze Dark/icons/mail-send.svg</file>
+    <file>./graphics/Breeze Dark/icons/mail-sent.svg</file>
+    <file>./graphics/Breeze Dark/icons/media-playback-pause.svg</file>
+    <file>./graphics/Breeze Dark/icons/media-playback-start.svg</file>
+    <file>./graphics/Breeze Dark/icons/media-playback-stop.svg</file>
+    <file>./graphics/Breeze Dark/icons/notifications.svg</file>
+    <file>./graphics/Breeze Dark/icons/player-volume.svg</file>
+    <file>./graphics/Breeze Dark/icons/player-volume-muted.svg</file>
+    <file>./graphics/Breeze Dark/icons/playlist-sort.svg</file>
+    <file>./graphics/Breeze Dark/icons/process-stop.svg</file>
+    <file>./graphics/Breeze Dark/icons/sort-name.svg</file>
+    <file>./graphics/Breeze Dark/icons/system-search.svg</file>
+    <file>./graphics/Breeze Dark/icons/system-upgrade.svg</file>
+    <file>./graphics/Breeze Dark/icons/tag.svg</file>
+    <file>./graphics/Breeze Dark/icons/tag-edit.svg</file>
+    <file>./graphics/Breeze Dark/icons/tag-folder.svg</file>
+    <file>./graphics/Breeze Dark/icons/tag-new.svg</file>
+    <file>./graphics/Breeze Dark/icons/tag-properties.svg</file>
+    <file>./graphics/Breeze Dark/icons/text-x-gettext-translation.svg</file>
+    <file>./graphics/Breeze Dark/icons/user-trash.svg</file>
+    <file>./graphics/Breeze Dark/icons/view-fullscreen.svg</file>
+    <file>./graphics/Breeze Dark/icons/view-list-details.svg</file>
+    <file>./graphics/Breeze Dark/icons/view-refresh.svg</file>
+    <file>./graphics/Breeze Dark/icons/view-restore.svg</file>
+    <file>./graphics/Breeze Dark/icons/view-sort.svg</file>
+    <file>./graphics/Breeze Dark/icons/viewimage.svg</file>
+    <file>./graphics/Breeze Dark/icons/window-close.svg</file>
     <file>./graphics/Breeze Dark/index.theme</file>
   </qresource>
 </RCC>

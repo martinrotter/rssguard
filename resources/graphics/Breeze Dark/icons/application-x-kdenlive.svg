@@ -1,0 +1,20 @@
+<svg version="1.1" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <linearGradient id="a" x1="40" x2="54" y1="17" y2="31" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#060606" offset="0"/>
+            <stop stop-opacity="0" offset="1"/>
+        </linearGradient>
+        <linearGradient id="b" x2="0" y1="392.36" y2="336.36" gradientTransform="translate(384,822)" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fff" stop-opacity="0" offset="0"/>
+            <stop stop-color="#fff" stop-opacity=".2" offset="1"/>
+        </linearGradient>
+        <path id="c" d="m442 1215.36v-58h30l14 14v44h-14z"/>
+    </defs>
+    <use transform="translate(-432,-1154.36)" width="100%" height="100%" fill="#2a6288" xlink:href="#c"/>
+    <rect transform="scale(1,-1)" x="10" y="-3.9999855" width="30" height="1" color="#000000" color-rendering="auto" fill="#fff" image-rendering="auto" opacity=".5" shape-rendering="auto"/>
+    <rect transform="scale(1,-1)" x="10" y="-60.999985" width="44" height="1" color="#000000" color-rendering="auto" image-rendering="auto" opacity=".25" shape-rendering="auto"/>
+    <path d="m54 17-14-14v14z" fill="#fff" fill-rule="evenodd" opacity=".5"/>
+    <path d="m40 17 14 14v-14z" fill="url(#a)" fill-rule="evenodd" opacity=".1"/>
+    <path d="m28.857422 22 2.859375 3.765625 0.019528 18.234375h1.121093v-18.240234l2.857422-3.759766h-3.429687zm0 5.078125v1.126953h1.714844v-1.126953zm6.876953 1.128907c-0.280582 0.0168-0.580784 0.290153-0.580078 0.593749l-0.01172 8.962891c0 0.404826 0.536839 0.758071 0.843749 0.517578l5.783204-4.498047c0.308915-0.237522 0.308209-0.794628 0-1.033203l-5.773436-4.466797c-0.07705-0.05959-0.166198-0.08172-0.259766-0.07617zm-8.591797 1.126952v1.128906h3.429688v-1.128906zm-2.857421 2.25586v1.128906h6.287109v-1.128906zm-2.285157 2.255859v1.128907h8.572266v-1.128907zm2.285157 2.257813v1.126953h6.287109v-1.126953zm2.857421 2.255859v1.128907h3.429688v-1.128907z" fill="#fff" opacity=".75" stroke-width=".791635"/>
+    <use transform="translate(-432,-1154.36)" width="100%" height="100%" fill="url(#b)" xlink:href="#c"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="svg6" version="1.1" viewBox="0 0 24 24" width="24" height="24">
+  <defs id="defs3051">
+    <style type="text/css" id="current-color-scheme">
+        .ColorScheme-Text {            color:#232629;        }
+        .ColorScheme-Accent {            color:#3daee9;        }
+    </style>
+  </defs>
+  <g transform="translate(1,1)">
+    <path id="path986" d="m11 3a8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 4.892578-1.693359l3.400391 3.40039a1 1 0 0 0 1.414062 0 1 1 0 0 0 0-1.414062l-3.40039-3.400391a8 8 0 0 0 1.693359-4.892578 8 8 0 0 0-8-8zm0 1a7 7 0 0 1 7 7 7 7 0 0 1-7 7 7 7 0 0 1-7-7 7 7 0 0 1 7-7z" class="ColorScheme-Text" fill="currentColor" stroke-linecap="round" style="-inkscape-stroke:none;paint-order:markers stroke fill"/>
+    <g id="text364" transform="translate(5.6848533,1.8691559)" class="ColorScheme-Accent" fill="currentColor" stroke-linecap="square" stroke-width="2.4" style="paint-order:markers stroke fill;white-space:pre" aria-label="2">
+      <path id="path313" d="m7.7765148 13.144475h-4.9227362v-0.842971l1.8912817-2.058796q1.0537142-1.1509796 1.3887412-1.7129605 0.3350271-0.5673845 0.3350271-1.2482459 0-0.6106138-0.3458344-0.9618518-0.3404307-0.3566417-0.9240262-0.3566417-0.864586 0-1.7183646 0.7403017l-0.5511735-0.6430358q1.0375031-0.9294299 2.2803454-0.9294299 1.0483104 0 1.6535206 0.5727882 0.6052101 0.5727882 0.6052101 1.5400437 0 0.6430358-0.318816 1.3184935-0.3188161 0.6754578-1.5724657 2.0263735l-1.518429 1.615695v0.04323h3.7177195z"/>
+    </g>
+  </g>
+</svg>
