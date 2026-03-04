@@ -1270,7 +1270,7 @@ void MessagesModel::fetchFullArticleContents(const QModelIndexList& articles) {
 
       for (Message& msg : msgs) {
         try {
-          msg.m_contents = qApp->feedReader()->getFullArticle(msg.m_url, false);
+          msg.m_contents = FeedReader::getFullArticle(msg.m_url, false);
 
           QList<Message> sub_msgs = {msg};
 

@@ -197,8 +197,9 @@ void FeedReader::showMessageFiltersManager() {
   m_messagesModel->reloadWholeLayout();
 }
 
-QString FeedReader::getFullArticle(const QUrl& url, bool plain_text_only) const {
-  static QString article_extractor = qApp->applicationDirPath() + QDir::separator() + QSL(ARTICLE_EXTRACTOR_NAME);
+QString FeedReader::getFullArticle(const QUrl& url, bool plain_text_only) {
+  static QString article_extractor =
+    QCoreApplication::applicationDirPath() + QDir::separator() + QSL(ARTICLE_EXTRACTOR_NAME);
 
   QStringList params = {url.toString()};
 
@@ -206,7 +207,11 @@ QString FeedReader::getFullArticle(const QUrl& url, bool plain_text_only) const 
     params.prepend(QSL("-t"));
   }
 
-  const QString output = IOFactory::startProcessGetOutput(article_extractor, params);
+  const QString output = IOFactory::startProcessGetOutput(article_extractor, params).trimmed();
+
+  if (output.isEmpty()) {
+    throw ApplicationException(tr("full article content is empty, likely due to required cookies or other problem"));
+  }
 
   return output;
 }

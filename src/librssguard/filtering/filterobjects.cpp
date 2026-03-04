@@ -400,7 +400,7 @@ bool FilterMessage::fetchFullContents(bool plain_text_only) {
   }
 
   try {
-    QString full_contents = qApp->feedReader()->getFullArticle(url, plain_text_only);
+    QString full_contents = FeedReader::getFullArticle(url, plain_text_only);
 
     if (full_contents.simplified().isEmpty()) {
       qWarningNN << LOGSEC_CORE << "Empty contents returned from article extractor for URL"

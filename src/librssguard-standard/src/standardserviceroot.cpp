@@ -463,7 +463,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
         continue;
       }
 
-      QString full_contents = qApp->feedReader()->getFullArticle(url, f->fetchFullArticlesInPlainText());
+      QString full_contents = FeedReader::getFullArticle(url, f->fetchFullArticlesInPlainText());
 
       if (full_contents.simplified().isEmpty()) {
         qWarningNN << LOGSEC_STANDARD << "Empty contents returned from article extractor for URL"
