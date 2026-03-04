@@ -12,38 +12,17 @@ import (
 	"strings"
 	"time"
 
+	"github.com/gocolly/colly/v2"
+
 	"codeberg.org/readeck/go-readability/v2"
 	"golang.org/x/net/html"
 )
 
-// HTTP client with timeout
-var client = &http.Client{
+var httpClient = &http.Client{
 	Timeout: 30 * time.Second,
 }
 
-// fetchURL downloads a URL and validates HTTP status
-func fetchURL(u string) (*http.Response, error) {
-	req, err := http.NewRequest("GET", u, nil)
-	if err != nil {
-		return nil, err
-	}
-
-	req.Header.Set("User-Agent", "curl/7.54")
-
-	resp, err := client.Do(req)
-	if err != nil {
-		return nil, err
-	}
-
-	if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-		resp.Body.Close()
-		return nil, fmt.Errorf("unexpected HTTP status: %s", resp.Status)
-	}
-
-	return resp, nil
-}
-
-// embedImages replaces all <img src="URL"> with base64 embedded images
+// embedImages replaces all <img src="URL"> with base64 embedded images.
 func embedImages(htmlContent string) (string, error) {
 	doc, err := html.Parse(strings.NewReader(htmlContent))
 	if err != nil {
@@ -52,13 +31,21 @@ func embedImages(htmlContent string) (string, error) {
 
 	var traverse func(*html.Node)
 	traverse = func(n *html.Node) {
+
 		if n.Type == html.ElementNode && n.Data == "img" {
 			for i, attr := range n.Attr {
-				if attr.Key == "src" &&
-					(strings.HasPrefix(attr.Val, "http://") || strings.HasPrefix(attr.Val, "https://")) {
 
-					resp, err := fetchURL(attr.Val)
+				if attr.Key == "src" &&
+					(strings.HasPrefix(attr.Val, "http://") ||
+						strings.HasPrefix(attr.Val, "https://")) {
+
+					resp, err := httpClient.Get(attr.Val)
 					if err != nil {
+						continue
+					}
+
+					if resp.StatusCode < 200 || resp.StatusCode >= 300 {
+						resp.Body.Close()
 						continue
 					}
 
@@ -90,7 +77,7 @@ func embedImages(htmlContent string) (string, error) {
 }
 
 func main() {
-	// CLI flags
+
 	plainText := flag.Bool("t", false, "Output plain text instead of HTML")
 	embedImgs := flag.Bool("b", false, "Embed images as base64")
 	flag.Parse()
@@ -103,23 +90,42 @@ func main() {
 
 	urlStr := flag.Arg(0)
 
-	// Parse URL
 	parsedURL, err := url.Parse(urlStr)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Invalid URL: %v\n", err)
 		os.Exit(1)
 	}
 
-	// Download webpage
-	resp, err := fetchURL(urlStr)
+	var pageHTML []byte
+
+	collector := colly.NewCollector(
+		colly.UserAgent("curl/7.54"),
+	)
+
+	collector.SetRequestTimeout(30 * time.Second)
+
+	collector.OnResponse(func(r *colly.Response) {
+
+		if r.StatusCode < 200 || r.StatusCode >= 300 {
+			fmt.Fprintf(os.Stderr, "HTTP error: %d\n", r.StatusCode)
+			os.Exit(1)
+		}
+
+		pageHTML = r.Body
+	})
+
+	collector.OnError(func(r *colly.Response, err error) {
+		fmt.Fprintf(os.Stderr, "Request failed: %v\n", err)
+		os.Exit(1)
+	})
+
+	err = collector.Visit(urlStr)
 	if err != nil {
-		fmt.Fprintf(os.Stderr, "Error fetching URL: %v\n", err)
+		fmt.Fprintf(os.Stderr, "Error visiting URL: %v\n", err)
 		os.Exit(1)
 	}
-	defer resp.Body.Close()
 
-	// Parse article
-	article, err := readability.FromReader(resp.Body, parsedURL)
+	article, err := readability.FromReader(bytes.NewReader(pageHTML), parsedURL)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error parsing article: %v\n", err)
 		os.Exit(1)
@@ -129,18 +135,23 @@ func main() {
 	var content bytes.Buffer
 
 	if *plainText {
+
 		article.RenderText(&content)
 		output = content.String()
+
 	} else {
+
 		article.RenderHTML(&content)
 		output = content.String()
 
 		if *embedImgs {
+
 			output, err = embedImages(output)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Error embedding images: %v\n", err)
 				os.Exit(1)
 			}
+
 		}
 	}
 
