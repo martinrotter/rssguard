@@ -189,7 +189,7 @@ version by clicking this popup notification.</source>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="238"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="266"/>
       <source>Just move articles to recycle bin, do not purge them</source>
-      <translation>只移文章到資源回收筒，不清除</translation>
+      <translation>只將文章移到資源回收筒，不清除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
@@ -751,7 +751,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="249"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
-      <translation type="unfinished">feed is in network cooldown mode due to making too many network requests</translation>
+      <translation>發出過多網路請求後，文源進入冷卻模式</translation>
     </message>
   </context>
   <context>
@@ -804,12 +804,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="467"/>
       <source>Some feeds have errors</source>
-      <translation type="unfinished">Some feeds have errors</translation>
+      <translation>某些文源出錯</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="468"/>
       <source>Some feeds threw an error when fetching articles.</source>
-      <translation type="unfinished">Some feeds threw an error when fetching articles.</translation>
+      <translation>抓取文章時，某些文源擲回錯誤。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="97"/>
@@ -1169,7 +1169,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="189"/>
       <source>Selected account does not support adding of new folders.</source>
-      <translation type="unfinished">Selected account does not support adding of new folders.</translation>
+      <translation>所選帳號不支援新增資料夾。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="471"/>
@@ -1199,43 +1199,43 @@ Item custom ID: %5</source>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="262"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="347"/>
       <source>Cannot clear items</source>
-      <translation type="unfinished">Cannot clear items</translation>
+      <translation>無法刪除項目</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="263"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="348"/>
       <source>Failed to clear items: %1.</source>
-      <translation type="unfinished">Failed to clear items: %1.</translation>
+      <translation>無法刪除項目: %1。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="273"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
-      <translation type="unfinished">Do you really want to purge all non-starred articles from selected feeds?</translation>
+      <translation>真的要從所選文源移除所有未加星號的文章？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="288"/>
       <source>Cannot purge feeds</source>
-      <translation type="unfinished">Cannot purge feeds</translation>
+      <translation>無法移除文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="289"/>
       <source>Failed to purge feeds: %1.</source>
-      <translation type="unfinished">Failed to purge feeds: %1.</translation>
+      <translation>無法清除文源: %1。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="305"/>
       <source>Enable or disable feeds</source>
-      <translation type="unfinished">Enable or disable feeds</translation>
+      <translation>啟用或停用文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="306"/>
       <source>You selected multiple feeds to enable/disable them.</source>
-      <translation type="unfinished">You selected multiple feeds to enable/disable them.</translation>
+      <translation>啟用或停用所選多重文源。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="307"/>
       <source>Do you really want to enable or disable selected feeds?</source>
-      <translation type="unfinished">Do you really want to enable or disable selected feeds?</translation>
+      <translation>真的想要啟用或停用所選多重文源？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="381"/>
@@ -1296,54 +1296,54 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="561"/>
       <source>Failed to delete selected item: %1.</source>
-      <translation type="unfinished">Failed to delete selected item: %1.</translation>
+      <translation>無法刪除所選項目: %1。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="635"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="657"/>
       <source>Cannot mark item read unread</source>
-      <translation type="unfinished">Cannot mark item read unread</translation>
+      <translation>無法標示項目成已讀或未讀</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="636"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="658"/>
       <source>Failed to mark item read or unread: %1.</source>
-      <translation type="unfinished">Failed to mark item read or unread: %1.</translation>
+      <translation>無法標示項目成已讀或未讀: %1。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="667"/>
       <source>Mark everything as read</source>
-      <translation type="unfinished">Mark everything as read</translation>
+      <translation>全部標示成已讀</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="668"/>
       <source>Do you really want to mark everything as read?</source>
-      <translation type="unfinished">Do you really want to mark everything as read?</translation>
+      <translation>真的想要將全部標示成已讀？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1073"/>
       <source>Not supported</source>
-      <translation type="unfinished">Not supported</translation>
+      <translation>未支援</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1074"/>
       <source>Context menus with items from more than one account are not supported.</source>
-      <translation type="unfinished">Context menus with items from more than one account are not supported.</translation>
+      <translation>不支援多帳號都有的項目的脈絡功能表。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1098"/>
       <source>Menu for feed list</source>
-      <translation type="unfinished">Menu for feed list</translation>
+      <translation>文源清單功能表</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="997"/>
       <source>Feed filtered out</source>
-      <translation type="unfinished">Feed filtered out</translation>
+      <translation>篩選出的文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="998"/>
       <source>Your feed is probably filtered out and cannot be revealed.</source>
-      <translation type="unfinished">Your feed is probably filtered out and cannot be revealed.</translation>
+      <translation>文源可能篩選出，而無法顯示。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="170"/>
@@ -1386,16 +1386,16 @@ Item custom ID: %5</source>
 Settings file (%4) -&gt; &quot;%3&quot;
 Skins base folder -&gt; &quot;%5&quot;
 Icon themes base folder -&gt; &quot;%6&quot;</source>
-      <translation type="unfinished">User data folder (&quot;%2&quot;) -&gt; &quot;%1&quot;
+      <translation>使用者資料夾 (&quot;%2&quot;) -&gt; &quot;%1&quot;
 
-Settings file (%4) -&gt; &quot;%3&quot;
-Skins base folder -&gt; &quot;%5&quot;
-Icon themes base folder -&gt; &quot;%6&quot;</translation>
+設定檔 (%4) -&gt; &quot;%3&quot;
+外觀資料庫的資料夾 -&gt; &quot;%5&quot;
+圖示主題資料庫的資料夾 -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="124"/>
       <source>&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (compiled against %6)</source>
-      <translation type="unfinished">&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (compiled against %6)</translation>
+      <translation>&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;版本:&lt;/b&gt; %1 (組建於 %2/%3)&lt;br/&gt;&lt;b&gt;後續修改:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (編譯用 %6)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="137"/>
@@ -1491,12 +1491,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="87"/>
       <source>Original message</source>
-      <translation type="unfinished">Original message</translation>
+      <translation>原始訊息</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="100"/>
       <source>Forwarded message</source>
-      <translation type="unfinished">Forwarded message</translation>
+      <translation>轉傳的訊息</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="181"/>
@@ -1580,7 +1580,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.ui" line="29"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formaddeditprobe.h" line="113"/>
       <source>SQL WHERE clause</source>
-      <translation type="unfinished">SQL WHERE clause</translation>
+      <translation>SQL WHERE 子句</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="27"/>
@@ -2447,13 +2447,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="88"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="860"/>
       <source>&amp;Focus</source>
-      <translation type="unfinished">&amp;Focus</translation>
+      <translation>焦點(&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="133"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="865"/>
       <source>&amp;Sort</source>
-      <translation type="unfinished">&amp;Sort</translation>
+      <translation>排序(&amp;S)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="141"/>
@@ -2465,7 +2465,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="150"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="867"/>
       <source>&amp;Edit items</source>
-      <translation type="unfinished">&amp;Edit items</translation>
+      <translation>編輯項目(&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="217"/>
@@ -3181,7 +3181,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="327"/>
       <source>Context menu</source>
-      <translation>右鍵功能表</translation>
+      <translation>脈絡功能表</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="329"/>
@@ -3219,13 +3219,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="78"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="478"/>
       <source>&amp;Import</source>
-      <translation type="unfinished">&amp;Import</translation>
+      <translation>匯入(&amp;I)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="75"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="476"/>
       <source>Import filters</source>
-      <translation type="unfinished">Import filters</translation>
+      <translation>匯入篩選規則</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="85"/>
@@ -3321,7 +3321,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="525"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="518"/>
       <source>Script output</source>
-      <translation type="unfinished">Script output</translation>
+      <translation>隨譯即行碼之輸出</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="111"/>
@@ -3401,7 +3401,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formprogressworker.cpp" line="18"/>
       <source>&amp;Cancel</source>
-      <translation type="unfinished">&amp;Cancel</translation>
+      <translation>取消(&amp;C)</translation>
     </message>
   </context>
   <context>
@@ -3539,7 +3539,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
       <source>Experimental</source>
-      <translation type="unfinished">Experimental</translation>
+      <translation>實驗功能</translation>
     </message>
   </context>
   <context>
@@ -5826,7 +5826,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="424"/>
       <source>Context menu for articles</source>
-      <translation>文章的右鍵功能表</translation>
+      <translation>文章的脈絡功能表</translation>
     </message>
   </context>
   <context>
@@ -6220,7 +6220,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp" line="177"/>
       <source>Context menu for article viewer</source>
-      <translation type="unfinished">Context menu for article viewer</translation>
+      <translation>文章檢視器的脈絡功能表</translation>
     </message>
   </context>
   <context>
