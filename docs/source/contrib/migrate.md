@@ -6,10 +6,12 @@ If you decide to upgrade to a new major version, for example from `3.x.x` to `4.
 
 ## Migrate `4.x -> 5.x`
 ```{danger}
-RSS Guard `5.x` is NOT really compatible with RSS Guard `4.x`. Double check all your data after the migration. Also note that only classis RSS/ATOM feeds are migrated, synchronized services are not. Also skins and other user data is not migrated.
+RSS Guard `5.x` is NOT really compatible with RSS Guard `4.x`. Double check all your data after the migration. Also note that only classis `RSS/ATOM` feeds are migrated, synchronized services are not. Also skins and other user data is not migrated.
 ```
 
-There is a migration option displayed when RSS Guard 5 is started for the first time. This migration migrates folders, feeds, article, article filters, labels and queries. Article filter feed assignments are not migrated along with some other things, for technical reasons.
+There is a migration option displayed when you add classic `RSS/ATOM` profile/account. So when starting RSS Guard 5 with empty data and prompted to add first account, then select `RSS/ATOM` and proceed until you see the migration dialog.
+
+This migration migrates folders, feeds, article, article filters, labels and queries. Article filter feed assignments are not migrated along with some other things, for technical reasons.
 
 You can also trigger the migration manually:
 1. Add standard RSS/ATOM account/profile via menu `Accounts -> Add account`.

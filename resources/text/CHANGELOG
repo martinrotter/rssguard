@@ -4,6 +4,18 @@ Released on: 2026-03-03
 
 PLEASE, read the text below!
 
+**If you have 5.0.0 or 5.0.1 installed via installer (.exe) then MAKE SURE TO BACKUP your `data5` folder manually before you perform an upgrade. These installers have bug and they delete your user data folder by mistake!**
+
+I kept the survey open for 5.0.2 release as well, so that everyone can fill it. Here is the link: https://forms.gle/1dCgqi2p1TEGn73d8
+
+
+
+5.0.1
+-----
+Released on: 2026-03-03
+
+PLEASE, read the text below!
+
 This release contains some nice fixes and little enhancements from previous version. Thanks for your patience.
 
 For users with dark desktop themes -> make sure to switch to `minimal-dark` skin in your RSS Guard settings. This skin is specifically tailored for users who use dark desktop themes.
