@@ -135,6 +135,10 @@
      <addaction name="m_actionSortFeedsAlphabetically"/>
      <addaction name="m_actionRearrangeCategories"/>
      <addaction name="m_actionRearrangeFeeds"/>
+     <addaction name="m_actionFeedMoveUp"/>
+     <addaction name="m_actionFeedMoveDown"/>
+     <addaction name="m_actionFeedMoveTop"/>
+     <addaction name="m_actionFeedMoveBottom"/>
     </widget>
     <widget class="QMenu" name="m_menuExpandCollapse">
      <property name="title">
