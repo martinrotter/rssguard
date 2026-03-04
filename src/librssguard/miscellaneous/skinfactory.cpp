@@ -261,7 +261,7 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
 
   if (root == nullptr || root->account()->displaysEnclosures()) {
     for (const QSharedPointer<MessageEnclosure>& enclosure : message.m_enclosures) {
-      QString enc_url = QUrl::fromPercentEncoding(enclosure->url().toUtf8());
+      QString enc_url = QUrl(enclosure->url()).toString();
 
       enclosures += QString(skin.m_enclosureMarkup)
                       .replace(QSL("%enclosure_url%"), enc_url)
