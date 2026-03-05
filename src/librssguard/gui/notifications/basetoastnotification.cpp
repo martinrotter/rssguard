@@ -75,8 +75,8 @@ void BaseToastNotification::stopTimedClosing() {
 
 void BaseToastNotification::setupTimedClosing(bool want_shorter_timeout) {
   if (m_timerId < 0) {
-    m_timerId = startTimer(want_shorter_timeout ? NOTIFICATION_SHORT_TIMEOUT : NOTIFICATIONS_TIMEOUT);
-
+    auto timeout_ms = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsDuration)).toInt() * 1000;
+    m_timerId = startTimer(want_shorter_timeout ? int(timeout_ms / 2) : timeout_ms);
     qDebugNN << LOGSEC_NOTIFICATIONS << "Starting timed closing for notification.";
   }
 }

@@ -43,6 +43,10 @@ void SettingsNotifications::loadUi() {
   connect(m_ui->m_rbNativeNotifications, &QRadioButton::toggled, this, &SettingsNotifications::dirtifySettings);
   connect(m_ui->m_rbNativeNotifications, &QRadioButton::toggled, this, &SettingsNotifications::requireRestart);
 
+  connect(m_ui->m_sbDuration,
+          QOverload<int>::of(&QSpinBox::valueChanged),
+          this,
+          &SettingsNotifications::dirtifySettings);
   connect(m_ui->m_sbScreen, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
   connect(m_ui->m_sbMargin, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
   connect(m_ui->m_sbWidth, QOverload<int>::of(&QSpinBox::valueChanged), this, &SettingsNotifications::dirtifySettings);
@@ -94,6 +98,7 @@ void SettingsNotifications::loadSettings() {
       ->setChecked(!settings()->value(GROUP(GUI), SETTING(GUI::UseToastNotifications)).toBool());
   }
 
+  m_ui->m_sbDuration->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsDuration)).toInt());
   m_ui->m_sbScreen->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsScreen)).toInt());
   m_ui->m_sbWidth->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsWidth)).toInt());
   m_ui->m_sbMargin->setValue(settings()->value(GROUP(GUI), SETTING(GUI::ToastNotificationsMargin)).toInt());
@@ -116,6 +121,7 @@ void SettingsNotifications::saveSettings() {
   qApp->notifications()->save(m_ui->m_editor->allNotifications(), settings());
 
   settings()->setValue(GROUP(GUI), GUI::UseToastNotifications, m_ui->m_rbCustomNotifications->isChecked());
+  settings()->setValue(GROUP(GUI), GUI::ToastNotificationsDuration, m_ui->m_sbDuration->value());
   settings()->setValue(GROUP(GUI), GUI::ToastNotificationsScreen, m_ui->m_sbScreen->value());
   settings()->setValue(GROUP(GUI), GUI::ToastNotificationsWidth, m_ui->m_sbWidth->value());
   settings()->setValue(GROUP(GUI), GUI::ToastNotificationsMargin, m_ui->m_sbMargin->value());

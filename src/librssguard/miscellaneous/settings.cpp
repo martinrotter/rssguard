@@ -315,6 +315,9 @@ DKEY GUI::ToastNotificationsPosition = "toast_notifications_position";
 DVALUE(ToastNotificationsManager::NotificationPosition)
 GUI::ToastNotificationsPositionDef = ToastNotificationsManager::NotificationPosition::BottomRight;
 
+DKEY GUI::ToastNotificationsDuration = "toast_notifications_duration";
+DVALUE(int) GUI::ToastNotificationsDurationDef = NOTIFICATIONS_TIMEOUT;
+
 DKEY GUI::ToastNotificationsScreen = "toast_notifications_screen";
 DVALUE(int) GUI::ToastNotificationsScreenDef = -1;
 

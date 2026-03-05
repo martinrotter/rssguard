@@ -266,6 +266,9 @@ namespace GUI {
   KEY ToastNotificationsPosition;
   VALUE(ToastNotificationsManager::NotificationPosition) ToastNotificationsPositionDef;
 
+  KEY ToastNotificationsDuration;
+  VALUE(int) ToastNotificationsDurationDef;
+
   KEY ToastNotificationsScreen;
   VALUE(int) ToastNotificationsScreenDef;
 
