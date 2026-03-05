@@ -390,7 +390,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="67"/>
       <source>Select new color</source>
-      <translation>挑選新色</translation>
+      <translation>選定新色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="85"/>
@@ -415,7 +415,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="125"/>
       <source>Select icon file</source>
-      <translation>挑選圖示檔</translation>
+      <translation>選定圖示檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="128"/>
@@ -425,7 +425,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="140"/>
       <source>Select new &amp;color...</source>
-      <translation>挑選新色(&amp;C)……</translation>
+      <translation>選定新色(&amp;C)……</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="149"/>
@@ -1343,7 +1343,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="998"/>
       <source>Your feed is probably filtered out and cannot be revealed.</source>
-      <translation>文源可能篩選出，而無法顯示。</translation>
+      <translation>可能篩選出了文源，卻無法顯示。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="170"/>
@@ -1665,7 +1665,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="79"/>
       <source>Select destination directory</source>
-      <translation>挑選目標目錄</translation>
+      <translation>選定目標目錄</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="87"/>
@@ -1688,7 +1688,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="144"/>
       <source>&amp;Select directory</source>
-      <translation>挑選目錄(&amp;S)</translation>
+      <translation>選定目錄(&amp;S)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
@@ -1796,7 +1796,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="43"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="181"/>
       <source>Select parent item for your folder.</source>
-      <translation>為資料夾挑選上層項目。</translation>
+      <translation>為資料夾選定上層項目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="64"/>
@@ -1820,7 +1820,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="128"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="187"/>
       <source>Select icon for your folder.</source>
-      <translation>為資料夾挑選圖示。</translation>
+      <translation>為資料夾選定圖示。</translation>
     </message>
   </context>
   <context>
@@ -1981,7 +1981,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
       <source>Select parent item for your feed.</source>
-      <translation>為文源挑選上層項目。</translation>
+      <translation>為文源選定上層項目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="128"/>
@@ -2167,7 +2167,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="205"/>
       <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
-      <translation>為此文源的文章挑選自動下載的策略。自動下載的預設規則是，文源的新文章會以應用程式設定中設定的時間間格自動下載。</translation>
+      <translation>為此文源的文章選定自動下載的策略。自動下載的預設規則是，文源的新文章會以應用程式設定中設定的時間間格自動下載。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="117"/>
@@ -2958,7 +2958,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="821"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
       <source>Automatically &amp;expand item when selected</source>
-      <translation>挑選時自動展開項目(&amp;E)</translation>
+      <translation>選定時自動展開項目(&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="832"/>
@@ -3150,7 +3150,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="188"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="214"/>
       <source>Select file article filters export</source>
-      <translation>挑選文章篩選規則檔以匯出</translation>
+      <translation>選定文章篩選規則檔以匯出</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="207"/>
@@ -3434,7 +3434,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="71"/>
       <source>Select source directory</source>
-      <translation>挑選來源目錄</translation>
+      <translation>選定來源目錄</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="79"/>
@@ -3463,7 +3463,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="65"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formrestoredatabasesettings.h" line="137"/>
       <source>&amp;Select directory</source>
-      <translation>挑選目錄(&amp;S)</translation>
+      <translation>選定目錄(&amp;S)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.ui" line="82"/>
@@ -3548,7 +3548,7 @@ You have to restart manually.</source>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="40"/>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="41"/>
       <source>No file is selected.</source>
-      <translation>未挑選檔案。</translation>
+      <translation>未選定檔案。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="44"/>
@@ -3589,7 +3589,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="183"/>
       <source>Select file for feeds export</source>
-      <translation>挑選文源的匯出檔</translation>
+      <translation>選定文源的匯出檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="216"/>
@@ -3600,7 +3600,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="235"/>
       <source>Select file for feeds import</source>
-      <translation>挑選檔案以匯入文源</translation>
+      <translation>選定檔案以匯入文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="142"/>
@@ -3691,7 +3691,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="38"/>
       <source>&amp;Select file</source>
-      <translation>挑選檔案(&amp;S)</translation>
+      <translation>選定檔案(&amp;S)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="55"/>
@@ -3721,7 +3721,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="119"/>
       <source>Select parent item for your feed.</source>
-      <translation>為文源挑選上層項目。</translation>
+      <translation>為文源選定上層項目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="140"/>
@@ -4472,7 +4472,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation>為文源挑選上層項目。</translation>
+      <translation>為文源選定上層項目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="46"/>
@@ -4576,7 +4576,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="156"/>
       <source>Select file for feeds import</source>
-      <translation>挑選檔案以匯入文源</translation>
+      <translation>選定檔案以匯入文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="171"/>
@@ -4603,7 +4603,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="185"/>
       <source>Select file for feeds export</source>
-      <translation>挑選文源的匯出檔</translation>
+      <translation>選定文源的匯出檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="200"/>
@@ -5049,7 +5049,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="637"/>
       <source>Select an image</source>
-      <translation>挑選一圖像</translation>
+      <translation>選定一圖像</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="640"/>
@@ -6612,7 +6612,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="17"/>
       <source>Select existing folder</source>
-      <translation>挑選既有的資料夾</translation>
+      <translation>選定既有的資料夾</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="43"/>
@@ -6622,7 +6622,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/filedialog.cpp" line="67"/>
       <source>Select existing file</source>
-      <translation>挑選既有的檔案</translation>
+      <translation>選定既有的檔案</translation>
     </message>
     <message>
       <location filename="../src/librssguard/exceptions/filteringexception.cpp" line="17"/>
@@ -6727,7 +6727,7 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="29"/>
       <source>Select QuiteRSS database file</source>
-      <translation type="unfinished">Select QuiteRSS database file</translation>
+      <translation>選定 QuiteRSS 資料庫檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="32"/>
@@ -6737,27 +6737,27 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="56"/>
       <source>Import data from QuiteRSS</source>
-      <translation type="unfinished">Import data from QuiteRSS</translation>
+      <translation>從 QuiteRSS 匯入資料</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="63"/>
       <source>Imported articles from %1 feeds...</source>
-      <translation type="unfinished">Imported articles from %1 feeds...</translation>
+      <translation>從 %1 文源匯入文章……</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="166"/>
       <source>skipping article, it has no title and no URL</source>
-      <translation type="unfinished">skipping article, it has no title and no URL</translation>
+      <translation>正跳過文章，因為它沒標題與URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="305"/>
       <source>Unnamed item</source>
-      <translation type="unfinished">Unnamed item</translation>
+      <translation>未命名的項目</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="415"/>
       <source>missing QuiteRSS tables %1</source>
-      <translation type="unfinished">missing QuiteRSS tables %1</translation>
+      <translation>不見 QuiteRSS 資料表 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="421"/>
@@ -6811,7 +6811,7 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="31"/>
       <source>Select RSS Guard 4.x database file</source>
-      <translation type="unfinished">Select RSS Guard 4.x database file</translation>
+      <translation>選定 RSS Guard 4.x 資料庫檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="34"/>
@@ -6821,22 +6821,22 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="62"/>
       <source>Import data from RSS Guard 4.x</source>
-      <translation type="unfinished">Import data from RSS Guard 4.x</translation>
+      <translation>從 RSS Guard 4.x 匯入資料</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="69"/>
       <source>Imported articles from %1 feeds...</source>
-      <translation type="unfinished">Imported articles from %1 feeds...</translation>
+      <translation>從 %1 文源匯入文章……</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="210"/>
       <source>skipping article, it has no title and no URL</source>
-      <translation type="unfinished">skipping article, it has no title and no URL</translation>
+      <translation>正跳過文章，因為它沒標題與URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="541"/>
       <source>missing RSS Guard 4.x tables %1</source>
-      <translation type="unfinished">missing RSS Guard 4.x tables %1</translation>
+      <translation>不見 RSS Guard 4.x 資料表 %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="547"/>
@@ -6877,22 +6877,22 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="69"/>
       <source>Go &amp;up</source>
-      <translation type="unfinished">Go &amp;up</translation>
+      <translation>上移(&amp;U)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="70"/>
       <source>Go &amp;down</source>
-      <translation type="unfinished">Go &amp;down</translation>
+      <translation>下移(&amp;D)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="116"/>
       <source>%1 %2/%3</source>
-      <translation type="unfinished">%1 %2/%3</translation>
+      <translation>%1 %2/%3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="117"/>
       <source>Page</source>
-      <translation type="unfinished">Page</translation>
+      <translation>頁</translation>
     </message>
   </context>
   <context>
@@ -6905,7 +6905,7 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/search.cpp" line="85"/>
       <source>SQL &apos;WHERE&apos; clause: %1</source>
-      <translation type="unfinished">SQL &apos;WHERE&apos; clause: %1</translation>
+      <translation>SQL &apos;WHERE&apos; 子句: %1</translation>
     </message>
   </context>
   <context>
@@ -6957,12 +6957,12 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="18"/>
       <source>Queries</source>
-      <translation type="unfinished">Queries</translation>
+      <translation>查詢</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
       <source>You can see all your permanent queries here.</source>
-      <translation type="unfinished">You can see all your permanent queries here.</translation>
+      <translation>此處可一覽全部恆常查詢。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="70"/>
@@ -6972,7 +6972,7 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="71"/>
       <source>Problem when creating probe: %1.</source>
-      <translation type="unfinished">Problem when creating probe: %1.</translation>
+      <translation>建立探測時出現後面問題: %1。</translation>
     </message>
   </context>
   <context>
@@ -6980,22 +6980,22 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="90"/>
       <source>Cannot update label</source>
-      <translation type="unfinished">Cannot update label</translation>
+      <translation>無法更新標籤</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="91"/>
       <source>Failed to update label with new information: %1.</source>
-      <translation type="unfinished">Failed to update label with new information: %1.</translation>
+      <translation>無法以後面新資訊更新標籤: %1。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="118"/>
       <source>Cannot update probe item</source>
-      <translation type="unfinished">Cannot update probe item</translation>
+      <translation>無法更新探測項目</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="119"/>
       <source>Failed to update selected probe: %1.</source>
-      <translation type="unfinished">Failed to update selected probe: %1.</translation>
+      <translation>無法更新所選探測: %1。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="129"/>
@@ -7010,7 +7010,7 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="178"/>
       <source>New query</source>
-      <translation type="unfinished">New query</translation>
+      <translation>新查詢</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="190"/>
@@ -7072,7 +7072,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="119"/>
       <source>Select web browser executable</source>
-      <translation>挑選網路瀏覽器的可執行檔</translation>
+      <translation>選定網路瀏覽器的可執行檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="124"/>
@@ -7094,7 +7094,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="168"/>
       <source>Select e-mail executable</source>
-      <translation>挑選郵件客戶端的可執行檔</translation>
+      <translation>選定郵件客戶端的可執行檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="190"/>
@@ -7193,7 +7193,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="131"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="352"/>
       <source>Select browser</source>
-      <translation>挑選瀏覽器</translation>
+      <translation>選定瀏覽器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="342"/>
@@ -7234,7 +7234,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="261"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="365"/>
       <source>Select client</source>
-      <translation>挑選客戶端</translation>
+      <translation>選定客戶端</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="38"/>
@@ -7271,7 +7271,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="286"/>
       <source>Select external tool</source>
-      <translation>挑選外部工具</translation>
+      <translation>選定外部工具</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="32"/>
@@ -7414,7 +7414,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="293"/>
       <source>Select new font</source>
-      <translation>挑選新字型</translation>
+      <translation>選定新字型</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="40"/>
@@ -7638,7 +7638,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="689"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="668"/>
       <source>Upon article selection, mark as read</source>
-      <translation>於挑選文章，標示成已讀</translation>
+      <translation>於選定文章，標示成已讀</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="696"/>
@@ -7798,7 +7798,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="116"/>
       <source>Select new font</source>
-      <translation>挑選新字型</translation>
+      <translation>選定新字型</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="218"/>
@@ -8122,7 +8122,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.cpp" line="80"/>
       <source>Select folder for your MPV configuration</source>
-      <translation>挑選選 MPV 設定之資料夾</translation>
+      <translation>選定選 MPV 設定之資料夾</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsmediaplayer.h" line="33"/>
@@ -8322,7 +8322,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="50"/>
       <source>Select sound file</source>
-      <translation>挑選聲音檔</translation>
+      <translation>選定聲音檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/singlenotificationeditor.cpp" line="53"/>
@@ -8430,7 +8430,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="49"/>
       <source>Select icon for your account.</source>
-      <translation>挑選帳號圖示。</translation>
+      <translation>選定帳號圖示。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.ui" line="59"/>
@@ -8440,7 +8440,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="18"/>
       <source>Icon selection</source>
-      <translation>圖示挑選</translation>
+      <translation>圖示選定</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="20"/>
@@ -8464,7 +8464,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="54"/>
       <source>Select icon file for the account</source>
-      <translation>挑選帳號圖示檔</translation>
+      <translation>選定帳號圖示檔</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="57"/>
@@ -8745,7 +8745,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="37"/>
       <source>Select parent item for your feed.</source>
-      <translation>挑選文源帳號的上層項目。</translation>
+      <translation>選定文源帳號的上層項目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="58"/>
@@ -8755,12 +8755,12 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="72"/>
       <source>Select type of the standard feed.</source>
-      <translation>挑選標準文源的類型。</translation>
+      <translation>選定標準文源的類型。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="82"/>
       <source>Select encoding of the standard feed. If you are unsure about the encoding, then select &quot;UTF-8&quot; encoding.</source>
-      <translation>挑選標準文源的編碼。如不確定，就選 &quot;UTF-8&quot;。</translation>
+      <translation>選定標準文源的編碼。如不確定，就選 &quot;UTF-8&quot;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="96"/>
@@ -8800,7 +8800,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="248"/>
       <source>Select icon for your feed.</source>
-      <translation>挑選文源圖示。</translation>
+      <translation>選定文源圖示。</translation>
     </message>
   </context>
   <context>
@@ -9536,7 +9536,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="30"/>
       <source>Select parent item for your feed.</source>
-      <translation>挑選文源上層項目。</translation>
+      <translation>選定文源上層項目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/ttrssfeeddetails.ui" line="46"/>
