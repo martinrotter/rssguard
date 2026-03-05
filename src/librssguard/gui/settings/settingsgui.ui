@@ -6,15 +6,9 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>685</width>
+    <width>607</width>
     <height>394</height>
    </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
@@ -55,6 +49,12 @@
        </item>
        <item row="2" column="1">
         <widget class="QCheckBox" name="m_checkForceAlternativePalette">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="text">
           <string>Use skin colors</string>
          </property>
@@ -75,6 +75,12 @@
        </item>
        <item row="4" column="1">
         <widget class="QTreeWidget" name="m_treeSkins">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="iconSize">
           <size>
            <width>16</width>
@@ -103,19 +109,6 @@
          </column>
         </widget>
        </item>
-       <item row="5" column="0" colspan="2">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>643</width>
-           <height>97</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
       </layout>
      </widget>
      <widget class="QWidget" name="m_tabAppFont">
@@ -123,6 +116,13 @@
        <string>Application font</string>
       </attribute>
       <layout class="QFormLayout" name="formLayout_7">
+       <item row="1" column="0">
+        <widget class="QCheckBox" name="m_checkFontAntialiasing">
+         <property name="text">
+          <string>Enable application-wide font anti-aliasing</string>
+         </property>
+        </widget>
+       </item>
        <item row="0" column="0">
         <widget class="QGroupBox" name="m_gbAppFont">
          <property name="sizePolicy">
@@ -159,13 +159,6 @@
            </widget>
           </item>
          </layout>
-        </widget>
-       </item>
-       <item row="1" column="0">
-        <widget class="QCheckBox" name="m_checkFontAntialiasing">
-         <property name="text">
-          <string>Enable application-wide font anti-aliasing</string>
-         </property>
         </widget>
        </item>
       </layout>

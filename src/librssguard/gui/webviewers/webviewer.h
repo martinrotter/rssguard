@@ -45,6 +45,10 @@ class WebViewer {
     // NOTE: When text is empty, cancel search.
     virtual void findText(const QString& text, bool backwards) = 0;
 
+    // Asynchronously loads url.
+    // If URL is non-valid, clears the view.
+    virtual void loadUrl(const QUrl& url) = 0;
+
     // Set static HTML into the viewer.
     virtual void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr) = 0;
 

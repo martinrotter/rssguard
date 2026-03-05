@@ -183,3 +183,35 @@ void QLiteHtmlArticleViewer::contextMenuEvent(QContextMenuEvent* event) {
 
   menu->popup(event->globalPos());
 }
+
+void QLiteHtmlArticleViewer::loadUrl(const QUrl& url) {
+  if (!url.isValid()) {
+    clear();
+    return;
+  }
+
+  Downloader* dwnld = new Downloader(this);
+
+  connect(dwnld,
+          &Downloader::completed,
+          this,
+          [this](const QUrl& url, QNetworkReply::NetworkError status, int http_code, QByteArray contents) {
+            auto* loader = qobject_cast<Downloader*>(sender());
+
+            if (loader != nullptr) {
+              loader->deleteLater();
+            }
+
+            if (status == QNetworkReply::NetworkError::NoError) {
+              setHtml(QString::fromUtf8(contents), url);
+            }
+            else if (!contents.isEmpty()) {
+              setHtml(qApp->skins()->prepareHtml(QString::fromUtf8(contents)), url);
+            }
+            else {
+              clear();
+            }
+          });
+
+  dwnld->downloadFile(url.toString());
+}
