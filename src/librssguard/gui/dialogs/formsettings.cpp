@@ -12,6 +12,7 @@
 #include "gui/settings/settingsgui.h"
 #include "gui/settings/settingslocalization.h"
 #include "gui/settings/settingsmediaplayer.h"
+#include "gui/settings/settingsnetwork.h"
 #include "gui/settings/settingsnotifications.h"
 #include "gui/settings/settingsshortcuts.h"
 #include "gui/settings/settingstoolbars.h"
@@ -42,15 +43,16 @@ FormSettings::FormSettings(QWidget& parent) : QDialog(&parent), m_settings(*qApp
   connect(m_ui.m_listSettings, &QListWidget::currentRowChanged, this, &FormSettings::openSettingsCategory);
 
   addSettingsPanel(new SettingsGeneral(&m_settings, this));
+  addSettingsPanel(new SettingsLocalization(&m_settings, this));
   addSettingsPanel(new SettingsDatabase(&m_settings, this));
+  addSettingsPanel(new SettingsNetwork(&m_settings, this));
+  addSettingsPanel(new SettingsFeedsMessages(&m_settings, this));
+  addSettingsPanel(new SettingsNotifications(&m_settings, this));
   addSettingsPanel(new SettingsGui(&m_settings, this));
   addSettingsPanel(new SettingsToolbars(&m_settings, this));
-  addSettingsPanel(new SettingsNotifications(&m_settings, this));
-  addSettingsPanel(new SettingsLocalization(&m_settings, this));
   addSettingsPanel(new SettingsShortcuts(&m_settings, this));
   addSettingsPanel(new SettingsBrowserMail(&m_settings, this));
   addSettingsPanel(new SettingsMediaPlayer(&m_settings, this));
-  addSettingsPanel(new SettingsFeedsMessages(&m_settings, this));
 
   m_ui.m_listSettings->setMaximumWidth(m_ui.m_listSettings->sizeHintForColumn(0) +
                                        6 * m_ui.m_listSettings->frameWidth());

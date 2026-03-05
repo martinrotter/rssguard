@@ -2,7 +2,6 @@
 
 #include "gui/settings/settingsbrowsermail.h"
 
-#include "exceptions/applicationexception.h"
 #include "gui/dialogs/filedialog.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
@@ -23,13 +22,7 @@ SettingsBrowserMail::SettingsBrowserMail(Settings* settings, QWidget* parent)
 
 void SettingsBrowserMail::loadUi() {
   m_ui = new Ui::SettingsBrowserMail();
-  m_proxyDetails = new NetworkProxyDetails(this);
-
   m_ui->setupUi(this);
-
-  m_proxyDetails->setup(false, false);
-
-  m_ui->m_tabBrowserProxy->insertTab(1, m_proxyDetails, tr("Network proxy"));
 
   m_ui->m_lblExternalBrowserInfo->setHelpText(tr("Note that \"%1\" (without quotation marks) "
                                                  "is placeholder for URL of selected message."),
@@ -53,17 +46,12 @@ void SettingsBrowserMail::loadUi() {
   m_ui->m_listTools->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::ResizeToContents);
   m_ui->m_listTools->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::Stretch);
 
-  connect(m_ui->m_cbEnableHttp2, &QCheckBox::STATE_CHANGED, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_proxyDetails, &NetworkProxyDetails::changed, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_grpCustomExternalBrowser, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_grpCustomExternalEmail, &QGroupBox::toggled, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtExternalBrowserArguments, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtExternalBrowserExecutable, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtExternalEmailArguments, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
   connect(m_ui->m_txtExternalEmailExecutable, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
-
-  connect(m_ui->m_txtUserAgent, &QLineEdit::textChanged, this, &SettingsBrowserMail::dirtifySettings);
-  connect(m_ui->m_txtUserAgent, &QLineEdit::textChanged, this, &SettingsBrowserMail::requireRestart);
 
   connect(m_ui->m_cmbExternalBrowserPreset,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
@@ -105,7 +93,7 @@ SettingsBrowserMail::~SettingsBrowserMail() {
 }
 
 QIcon SettingsBrowserMail::icon() const {
-  return qApp->icons()->fromTheme(QSL("applications-internet"), QSL("internet-services"));
+  return qApp->icons()->fromTheme(QSL("tools"), QSL("application-x-executable"));
 }
 
 void SettingsBrowserMail::changeDefaultBrowserArguments(int index) {
@@ -183,9 +171,6 @@ void SettingsBrowserMail::selectEmailExecutable() {
 void SettingsBrowserMail::loadSettings() {
   onBeginLoadSettings();
 
-  m_ui->m_cbEnableHttp2->setChecked(settings()->value(GROUP(Network), SETTING(Network::EnableHttp2)).toBool());
-  m_ui->m_txtUserAgent->setText(settings()->value(GROUP(Network), SETTING(Network::CustomUserAgent)).toString());
-
   // Load settings of web browser GUI.
   m_ui->m_cmbExternalBrowserPreset->addItem(tr("Opera 12 or older"), QSL("-nosession %1"));
   m_ui->m_txtExternalBrowserExecutable
@@ -204,25 +189,12 @@ void SettingsBrowserMail::loadSettings() {
   m_ui->m_grpCustomExternalEmail
     ->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool());
 
-  // Load the settings.
-  QNetworkProxy::ProxyType selected_proxy_type =
-    static_cast<QNetworkProxy::ProxyType>(settings()->value(GROUP(Proxy), SETTING(Proxy::Type)).toInt());
-
-  m_proxyDetails->setProxy(QNetworkProxy(selected_proxy_type,
-                                         settings()->value(GROUP(Proxy), SETTING(Proxy::Host)).toString(),
-                                         settings()->value(GROUP(Proxy), SETTING(Proxy::Port)).toInt(),
-                                         settings()->value(GROUP(Proxy), SETTING(Proxy::Username)).toString(),
-                                         settings()->password(GROUP(Proxy), SETTING(Proxy::Password)).toString()));
-
   setExternalTools(ExternalTool::toolsFromSettings());
   onEndLoadSettings();
 }
 
 void SettingsBrowserMail::saveSettings() {
   onBeginSaveSettings();
-
-  settings()->setValue(GROUP(Network), Network::EnableHttp2, m_ui->m_cbEnableHttp2->isChecked());
-  settings()->setValue(GROUP(Network), Network::CustomUserAgent, m_ui->m_txtUserAgent->text());
 
   // Save settings of GUI of web browser.
   settings()->setValue(GROUP(Browser),
@@ -246,20 +218,8 @@ void SettingsBrowserMail::saveSettings() {
                        Browser::CustomExternalEmailEnabled,
                        m_ui->m_grpCustomExternalEmail->isChecked());
 
-  auto proxy = m_proxyDetails->proxy();
-
-  settings()->setValue(GROUP(Proxy), Proxy::Type, int(proxy.type()));
-  settings()->setValue(GROUP(Proxy), Proxy::Host, proxy.hostName());
-  settings()->setValue(GROUP(Proxy), Proxy::Username, proxy.user());
-  settings()->setPassword(GROUP(Proxy), Proxy::Password, proxy.password());
-  settings()->setValue(GROUP(Proxy), Proxy::Port, proxy.port());
-
   auto tools = externalTools();
-
   ExternalTool::setToolsToSettings(tools);
-
-  qApp->web()->updateProxy();
-  qApp->mainForm()->tabWidget()->feedMessageViewer()->webBrowser()->viewer()->reloadNetworkSettings();
 
   onEndSaveSettings();
 }

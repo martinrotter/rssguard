@@ -2,7 +2,9 @@
   <qresource prefix="/">
     <file>./graphics/Breeze/icons/application-exit.svg</file>
     <file>./graphics/Breeze/icons/application-rss+xml.svg</file>
+    <file>./graphics/Breeze/icons/application-x-executable.svg</file>
     <file>./graphics/Breeze/icons/applications-internet.svg</file>
+    <file>./graphics/Breeze/icons/applications-network.svg</file>
     <file>./graphics/Breeze/icons/applications-office.svg</file>
     <file>./graphics/Breeze/icons/applications-science.svg</file>
     <file>./graphics/Breeze/icons/applications-system.svg</file>
@@ -104,6 +106,7 @@
     <file>./graphics/Breeze/icons/tag-new.svg</file>
     <file>./graphics/Breeze/icons/tag-properties.svg</file>
     <file>./graphics/Breeze/icons/text-x-gettext-translation.svg</file>
+    <file>./graphics/Breeze/icons/tools.svg</file>
     <file>./graphics/Breeze/icons/user-trash.svg</file>
     <file>./graphics/Breeze/icons/view-fullscreen.svg</file>
     <file>./graphics/Breeze/icons/view-list-details.svg</file>
@@ -115,7 +118,9 @@
     <file>./graphics/Breeze/index.theme</file>
     <file>./graphics/Breeze Dark/icons/application-exit.svg</file>
     <file>./graphics/Breeze Dark/icons/application-rss+xml.svg</file>
+    <file>./graphics/Breeze Dark/icons/application-x-executable.svg</file>
     <file>./graphics/Breeze Dark/icons/applications-internet.svg</file>
+    <file>./graphics/Breeze Dark/icons/applications-network.svg</file>
     <file>./graphics/Breeze Dark/icons/applications-office.svg</file>
     <file>./graphics/Breeze Dark/icons/applications-science.svg</file>
     <file>./graphics/Breeze Dark/icons/applications-system.svg</file>
@@ -217,6 +222,7 @@
     <file>./graphics/Breeze Dark/icons/tag-new.svg</file>
     <file>./graphics/Breeze Dark/icons/tag-properties.svg</file>
     <file>./graphics/Breeze Dark/icons/text-x-gettext-translation.svg</file>
+    <file>./graphics/Breeze Dark/icons/tools.svg</file>
     <file>./graphics/Breeze Dark/icons/user-trash.svg</file>
     <file>./graphics/Breeze Dark/icons/view-fullscreen.svg</file>
     <file>./graphics/Breeze Dark/icons/view-list-details.svg</file>

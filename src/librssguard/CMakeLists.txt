@@ -181,6 +181,8 @@ set(SOURCES
   gui/settings/settingslocalization.h
   gui/settings/settingsmediaplayer.cpp
   gui/settings/settingsmediaplayer.h
+  gui/settings/settingsnetwork.cpp
+  gui/settings/settingsnetwork.h
   gui/settings/settingsnotifications.cpp
   gui/settings/settingsnotifications.h
   gui/settings/settingspanel.cpp
@@ -351,6 +353,7 @@ set(UI_FILES
   gui/settings/settingsgui.ui
   gui/settings/settingslocalization.ui
   gui/settings/settingsmediaplayer.ui
+  gui/settings/settingsnetwork.ui
   gui/settings/settingsnotifications.ui
   gui/settings/settingsshortcuts.ui
   gui/settings/settingstoolbars.ui

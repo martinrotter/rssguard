@@ -8,8 +8,6 @@
 
 #include "ui_settingsbrowsermail.h"
 
-class NetworkProxyDetails;
-
 class SettingsBrowserMail : public SettingsPanel {
     Q_OBJECT
 
@@ -39,12 +37,11 @@ class SettingsBrowserMail : public SettingsPanel {
     QVector<ExternalTool> externalTools() const;
     void setExternalTools(const QList<ExternalTool>& list);
 
-    NetworkProxyDetails* m_proxyDetails;
     Ui::SettingsBrowserMail* m_ui;
 };
 
 inline QString SettingsBrowserMail::title() const {
-  return tr("Network & web & tools");
+  return tr("External apps & tools");
 }
 
 #endif // SETTINGSBROWSERMAIL_H
