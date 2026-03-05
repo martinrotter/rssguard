@@ -84,6 +84,7 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     // Access to root item.
     RootItem* rootItem() const;
 
+    void setupCountsAlignment();
     void setupBehaviorDuringFetching();
     void setupFonts();
     void informAboutDatabaseCleanup();
@@ -167,6 +168,7 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     QFont m_boldFont;
     QFont m_normalStrikedFont;
     QFont m_boldStrikedFont;
+    Qt::AlignmentFlag m_countsAlignment;
 };
 
 #endif // FEEDSMODEL_H

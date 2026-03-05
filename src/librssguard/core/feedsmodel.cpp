@@ -40,6 +40,7 @@ FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_rootItem
                    tr("Counts of unread/all mesages.")};
 
   setupFonts();
+  setupCountsAlignment();
   setupBehaviorDuringFetching();
 }
 
@@ -321,6 +322,10 @@ RootItem* FeedsModel::rootItem() const {
   return m_rootItem;
 }
 
+void FeedsModel::setupCountsAlignment() {
+  m_countsAlignment = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountAlignment)).value<Qt::AlignmentFlag>();
+}
+
 void FeedsModel::setupBehaviorDuringFetching() {
   m_updateDuringFetching = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool();
 
@@ -566,6 +571,14 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
     case Qt::ItemDataRole::ToolTipRole:
       // NOTE: Fall-down to "default" if condition not met.
       if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
+        return QVariant();
+      }
+
+    case Qt::ItemDataRole::TextAlignmentRole:
+      if (index.column() == FDS_MODEL_COUNTS_INDEX) {
+        return m_countsAlignment;
+      }
+      else {
         return QVariant();
       }
 

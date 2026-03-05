@@ -45,6 +45,9 @@ DVALUE(int) Feeds::UpdateTimeoutDef = DOWNLOAD_TIMEOUT;
 DKEY Feeds::CountFormat = "count_format";
 DVALUE(char*) Feeds::CountFormatDef = "%unread-%all";
 
+DKEY Feeds::CountAlignment = "count_alignment";
+DVALUE(Qt::AlignmentFlag) Feeds::CountAlignmentDef = Qt::AlignmentFlag::AlignCenter;
+
 DKEY Feeds::EnableTooltipsFeedsMessages = "show_tooltips";
 DVALUE(bool) Feeds::EnableTooltipsFeedsMessagesDef = true;
 

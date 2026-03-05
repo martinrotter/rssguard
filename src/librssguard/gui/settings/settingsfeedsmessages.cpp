@@ -29,6 +29,10 @@ void SettingsFeedsMessages::loadUi() {
   m_ui = new Ui::SettingsFeedsMessages();
   m_ui->setupUi(this);
 
+  m_ui->m_cmbCountsAlignment->addItem(tr("Left"), Qt::AlignmentFlag::AlignLeft);
+  m_ui->m_cmbCountsAlignment->addItem(tr("Center"), Qt::AlignmentFlag::AlignCenter);
+  m_ui->m_cmbCountsAlignment->addItem(tr("Right"), Qt::AlignmentFlag::AlignRight);
+
   m_ui->m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
   m_ui->m_spinStartupUpdateDelay->setMode(TimeSpinBox::Mode::MinutesSeconds);
 
@@ -97,6 +101,10 @@ void SettingsFeedsMessages::loadUi() {
   });
 
   connect(m_ui->m_cmbArticleMarkingPolicy,
+          QOverload<int>::of(&QComboBox::currentIndexChanged),
+          this,
+          &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cmbCountsAlignment,
           QOverload<int>::of(&QComboBox::currentIndexChanged),
           this,
           &SettingsFeedsMessages::dirtifySettings);
@@ -378,6 +386,11 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_cbShowEnclosuresDirectly
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool());
 
+  m_ui->m_cmbCountsAlignment
+    ->setCurrentIndex(m_ui->m_cmbCountsAlignment->findData(qApp->settings()
+                                                             ->value(GROUP(Feeds), SETTING(Feeds::CountAlignment))
+                                                             .value<Qt::AlignmentFlag>()));
+
   m_ui->m_cbFixupArticleDatetime
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::FixupFutureArticleDateTimes)).toBool());
 
@@ -432,6 +445,10 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages),
                        Messages::ArticleMarkOnSelection,
                        m_ui->m_cmbArticleMarkingPolicy->currentData().toInt());
+
+  qApp->settings()->setValue(GROUP(Feeds),
+                             Feeds::CountAlignment,
+                             m_ui->m_cmbCountsAlignment->currentData().value<Qt::AlignmentFlag>());
 
   settings()->setValue(GROUP(Messages),
                        Messages::ArticleMarkOnSelectionDelay,
@@ -543,6 +560,7 @@ void SettingsFeedsMessages::saveSettings() {
   qApp->mainForm()->tabWidget()->feedMessageViewer()->loadMessageViewerFonts();
 
   qApp->feedReader()->updateAutoUpdateStatus();
+  qApp->feedReader()->feedsModel()->setupCountsAlignment();
   qApp->feedReader()->feedsModel()->setupBehaviorDuringFetching();
   qApp->feedReader()->feedsModel()->reloadWholeLayout();
 

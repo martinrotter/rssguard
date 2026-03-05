@@ -7,14 +7,14 @@
     <x>0</x>
     <y>0</y>
     <width>570</width>
-    <height>531</height>
+    <height>488</height>
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <item>
     <widget class="QTabWidget" name="m_tabFeedsMessages">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
@@ -204,7 +204,7 @@
          <item>
           <spacer name="horizontalSpacer_2">
            <property name="orientation">
-            <enum>Qt::Horizontal</enum>
+            <enum>Qt::Orientation::Horizontal</enum>
            </property>
            <property name="sizeHint" stdset="0">
             <size>
@@ -242,43 +242,56 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
-        <widget class="HelpSpoiler" name="m_helpCountsFeedsFormat" native="true"/>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>Article count alignment</string>
+         </property>
+         <property name="buddy">
+          <cstring>m_cmbCountsAlignment</cstring>
+         </property>
+        </widget>
        </item>
-       <item row="4" column="0" colspan="2">
+       <item row="4" column="1">
+        <widget class="QComboBox" name="m_cmbCountsAlignment"/>
+       </item>
+       <item row="6" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbHideCountsIfNoUnread">
          <property name="text">
           <string>Hide article counts if there are no unread articles</string>
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="2">
+       <item row="7" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbUpdateFeedListDuringFetching">
+         <property name="text">
+          <string>Update feed list during feed fetching</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbListsRestrictedShortcuts">
          <property name="text">
           <string>Allow only basic keyboard shortcuts for feed/article list</string>
          </property>
         </widget>
        </item>
-       <item row="7" column="0" colspan="2">
+       <item row="9" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkShowTooltips">
          <property name="text">
           <string>Display tooltips for feeds and articles</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="0" colspan="2">
+       <item row="11" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbStrikethroughDisabledFeeds">
          <property name="text">
           <string>Strikethrough disabled feed titles</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbUpdateFeedListDuringFetching">
-         <property name="text">
-          <string>Update feed list during feed fetching</string>
-         </property>
-        </widget>
+       <item row="3" column="0" colspan="2">
+        <widget class="HelpSpoiler" name="m_helpCountsFeedsFormat" native="true"/>
        </item>
       </layout>
      </widget>
@@ -366,7 +379,7 @@
             <item>
              <spacer name="horizontalSpacer_3">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -409,7 +422,7 @@
             <item>
              <spacer name="horizontalSpacer">
               <property name="orientation">
-               <enum>Qt::Horizontal</enum>
+               <enum>Qt::Orientation::Horizontal</enum>
               </property>
               <property name="sizeHint" stdset="0">
                <size>
@@ -750,6 +763,7 @@
   <tabstop>m_spinHeightRowsFeeds</tabstop>
   <tabstop>m_btnChangeFeedListFont</tabstop>
   <tabstop>m_cmbCountsFeedList</tabstop>
+  <tabstop>m_cmbCountsAlignment</tabstop>
   <tabstop>m_cbHideCountsIfNoUnread</tabstop>
   <tabstop>m_cbUpdateFeedListDuringFetching</tabstop>
   <tabstop>m_cbListsRestrictedShortcuts</tabstop>
@@ -783,6 +797,7 @@
   <tabstop>m_cmbMessagesDateTimeFormatForDatesOnly</tabstop>
   <tabstop>m_cmbArticleMarkingPolicy</tabstop>
   <tabstop>m_spinArticleMarkingPolicy</tabstop>
+  <tabstop>m_checkArticleListLazyLoading</tabstop>
  </tabstops>
  <resources/>
  <connections>

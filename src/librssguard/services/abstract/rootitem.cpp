@@ -174,14 +174,6 @@ QVariant RootItem::data(int column, int role) const {
         return QVariant();
       }
 
-    case Qt::ItemDataRole::TextAlignmentRole:
-      if (column == FDS_MODEL_COUNTS_INDEX) {
-        return Qt::AlignmentFlag::AlignCenter;
-      }
-      else {
-        return QVariant();
-      }
-
     default:
       return QVariant();
   }

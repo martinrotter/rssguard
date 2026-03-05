@@ -62,6 +62,9 @@ namespace Feeds {
   KEY CountFormat;
   VALUE(char*) CountFormatDef;
 
+  KEY CountAlignment;
+  VALUE(Qt::AlignmentFlag) CountAlignmentDef;
+
   KEY EnableTooltipsFeedsMessages;
   VALUE(bool) EnableTooltipsFeedsMessagesDef;
 
