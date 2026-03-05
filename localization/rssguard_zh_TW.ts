@@ -5423,7 +5423,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="411"/>
       <source>Feed cannot be edited because it was not found, this is weird.</source>
-      <translation type="unfinished">Feed cannot be edited because it was not found, this is weird.</translation>
+      <translation>無法編輯文源，因為找不到，蠻怪的。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="417"/>
@@ -5550,7 +5550,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="599"/>
       <source>Indication of attachments presence within the article.</source>
-      <translation type="unfinished">Indication of attachments presence within the article.</translation>
+      <translation>文章內有附件之指示。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="600"/>
@@ -5560,7 +5560,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="745"/>
       <source>article model column %1 is out of range</source>
-      <translation type="unfinished">article model column %1 is out of range</translation>
+      <translation>文章模型欄 %1 的值超出範圍</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="769"/>
@@ -5610,7 +5610,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1265"/>
       <source>Fetch full article contents</source>
-      <translation type="unfinished">Fetch full article contents</translation>
+      <translation>抓取完整的文章內容</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1283"/>
@@ -5695,7 +5695,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="265"/>
       <source>Show read articles</source>
-      <translation type="unfinished">Show read articles</translation>
+      <translation>顯示已讀文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="271"/>
@@ -5788,7 +5788,7 @@ Login tokens expiration: %2</source>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="697"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="1006"/>
       <source>Filtering changed</source>
-      <translation type="unfinished">Filtering changed</translation>
+      <translation>篩選已變更</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/messagesview.cpp" line="698"/>
@@ -5834,7 +5834,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/messagebox.cpp" line="105"/>
       <source>Do not show again</source>
-      <translation type="unfinished">Do not show again</translation>
+      <translation>不要再顯示</translation>
     </message>
   </context>
   <context>
@@ -5946,7 +5946,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="30"/>
       <source>Account proxy</source>
-      <translation type="unfinished">Account proxy</translation>
+      <translation>帳號的代理伺服器</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="33"/>
@@ -5956,7 +5956,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="33"/>
       <source>Use global app setting</source>
-      <translation type="unfinished">Use global app setting</translation>
+      <translation>使用應用程式的全局設定</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
@@ -6228,17 +6228,17 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlwidget.cpp" line="78"/>
       <source>Font antialiasing</source>
-      <translation type="unfinished">Font antialiasing</translation>
+      <translation>字型平滑化</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlwidget.cpp" line="85"/>
       <source>Shape antialiasing</source>
-      <translation type="unfinished">Shape antialiasing</translation>
+      <translation>形狀平滑化</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlwidget.cpp" line="443"/>
       <source>Advanced</source>
-      <translation type="unfinished">Advanced</translation>
+      <translation>進階設定</translation>
     </message>
   </context>
   <context>
@@ -6299,7 +6299,7 @@ Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。<
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1853"/>
       <source>cannot move item of kind %1</source>
-      <translation type="unfinished">cannot move item of kind %1</translation>
+      <translation>無法移動 %1 類的項目</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasequeries.cpp" line="1994"/>
@@ -6329,7 +6329,7 @@ Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。<
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="151"/>
       <source>Error when fetching articles</source>
-      <translation type="unfinished">Error when fetching articles</translation>
+      <translation>抓取文章時出錯</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="154"/>
@@ -6470,7 +6470,7 @@ List of supported readers:</source>
       <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="183"/>
       <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="185"/>
       <source>XML is not well-formed, %1, line %2, column %3</source>
-      <translation type="unfinished">XML is not well-formed, %1, line %2, column %3</translation>
+      <translation>XML 有違規格式， %1，在橫行 %2，直欄 %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="317"/>
@@ -6557,7 +6557,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="192"/>
       <source>Save article in HTML format</source>
-      <translation type="unfinished">Save article in HTML format</translation>
+      <translation>以 HTML 格式儲存文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="195"/>
@@ -6629,9 +6629,9 @@ List of supported readers:</source>
       <source>%1
 line: %2
 stack: %3</source>
-      <translation type="unfinished">%1
-line: %2
-stack: %3</translation>
+      <translation>%1
+行: %2
+堆疊: %3</translation>
     </message>
   </context>
   <context>
