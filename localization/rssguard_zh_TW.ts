@@ -2808,7 +2808,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1014"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="855"/>
       <source>&amp;Fetch full contents</source>
-      <translation>抓取完整內容(&amp;F)</translation>
+      <translation>下載完整內容(&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="644"/>
@@ -3696,17 +3696,17 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="55"/>
       <source>Fetch online metadata</source>
-      <translation>取得線上屬性資料</translation>
+      <translation>線上下載屬性資料</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="64"/>
       <source>Do not fetch titles</source>
-      <translation>不抓標題</translation>
+      <translation>不下載標題</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="71"/>
       <source>Do not fetch icons</source>
-      <translation>不要抓取圖示</translation>
+      <translation>不下載圖示</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.ui" line="78"/>
@@ -5244,7 +5244,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="56"/>
       <source>Fetch full contents</source>
-      <translation>抓取完整內容</translation>
+      <translation>下載完整內容</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="64"/>
@@ -5610,7 +5610,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1265"/>
       <source>Fetch full article contents</source>
-      <translation>抓取完整的文章內容</translation>
+      <translation>下載完整的文章內容</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1283"/>
@@ -7049,12 +7049,12 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="758"/>
       <source>Error when fetching list of feeds</source>
-      <translation>取得文源清單時出錯</translation>
+      <translation>下載文源清單時出錯</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="759"/>
       <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
-      <translation>未取得帳號 &apos;%1&apos; 的文源 &amp; 分類，錯誤為: %2</translation>
+      <translation>未下載帳號 &apos;%1&apos; 的文源 &amp; 分類，錯誤為: %2</translation>
     </message>
   </context>
   <context>
@@ -7067,7 +7067,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="52"/>
       <source>Domain</source>
-      <translation type="unfinished">Domain</translation>
+      <translation>網域</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="119"/>
@@ -7471,13 +7471,13 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="631"/>
       <source>Feed fetching</source>
-      <translation>文源抓取</translation>
+      <translation>從文源下載中</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="622"/>
       <source>Fetch all articles on startup with initial delay of</source>
-      <translation>於 RSS Guard 啟動時，延遲指定的時間，下載全部文章</translation>
+      <translation>RSS Guard 啟動時，以指定的初始延遲，下載全部文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
@@ -7513,8 +7513,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="625"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
-      <translation>支援非常短的自動抓取的間隔
-(低於十秒)</translation>
+      <translation>支援非常短的自動下載的間隔 (低於十秒)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
@@ -7590,7 +7589,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="279"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="641"/>
       <source>Update feed list during feed fetching</source>
-      <translation>於抓取文源時更新文源清單</translation>
+      <translation>從文源下載時更新文源清單</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="287"/>
@@ -7608,7 +7607,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="307"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="645"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
-      <translation>抓取新文章時，忽略文章正文的變更</translation>
+      <translation>下載新文章時，忽略文章正文的變更</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="328"/>
@@ -8296,7 +8295,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingstoolbars.h" line="32"/>
       <source>Toolbars</source>
-      <translation type="unfinished">Toolbars</translation>
+      <translation>工具列</translation>
     </message>
   </context>
   <context>
@@ -8304,7 +8303,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="23"/>
       <source>Undo shortcut</source>
-      <translation type="unfinished">Undo shortcut</translation>
+      <translation>撤回快鍵</translation>
     </message>
     <message>
       <location filename="../src/librssguard/dynamic-shortcuts/shortcutcatcher.cpp" line="29"/>
@@ -8618,12 +8617,12 @@ Fetch full articles: %7 (plain text only: %8)</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="152"/>
       <source>Icon fetched successfully.</source>
-      <translation>成功取得圖示。</translation>
+      <translation>成功下載圖示。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="211"/>
       <source>All metadata fetched successfully.</source>
-      <translation>成功取得全部屬性資料。</translation>
+      <translation>成功下載全部屬性資料。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="229"/>
@@ -8785,7 +8784,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="277"/>
       <source>Fetch metadata</source>
-      <translation>取得屬性資料</translation>
+      <translation>下載屬性資料</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.ui" line="224"/>
@@ -8845,7 +8844,7 @@ Also, you can post-process generated feed data with yet another script if you wi
       <source>Turning this setting ON might bring considerable performance boost when fetching this feed, but only in some very specific conditions.
 
 This setting is useful when raw XML parsing of the feed is very slow, this happens for feed which do have very long contents.</source>
-      <translation>啟用此設定，抓取此文源，只在非常特定的條件下，可能會提升相當的效能。
+      <translation>啟用此設定，從此文源下載，只在非常特定的條件下，可能會提升相當的效能。
 
 此文源的 raw XML 解析非常慢時，且文源真的有很長的內容，此設定才有用。</translation>
     </message>
@@ -8936,7 +8935,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="504"/>
       <source>Fetch metadata</source>
-      <translation>抓取屬性資料</translation>
+      <translation>下載屬性資料</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
@@ -9010,7 +9009,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="758"/>
       <source>Fetching metadata for %n feeds</source>
       <translation>
-        <numerusform>抓取 %n 個文源的屬性資料</numerusform>
+        <numerusform>下載 %n 個文源的屬性資料</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -9033,12 +9032,12 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="780"/>
       <source>Import from QuiteRSS</source>
-      <translation type="unfinished">Import from QuiteRSS</translation>
+      <translation>從 QuiteRSS 匯入</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="782"/>
       <source>Import from RSS Guard 4.x</source>
-      <translation type="unfinished">Import from RSS Guard 4.x</translation>
+      <translation>從 RSS Guard 4.x 匯入</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="51"/>
@@ -9269,7 +9268,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="43"/>
       <source>Unread news: %1</source>
-      <translation type="unfinished">Unread news: %1</translation>
+      <translation>未讀新聞: %1</translation>
     </message>
   </context>
   <context>
@@ -9601,7 +9600,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open in system web browser</source>
-      <translation type="unfinished">Open in system web browser</translation>
+      <translation>於系統網頁瀏覽器開啟</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="35"/>
