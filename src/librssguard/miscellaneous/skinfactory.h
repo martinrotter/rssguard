@@ -129,7 +129,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     Skin m_currentSkin;
     QString m_currentStyle;
     bool m_styleIsFrozen;
-    bool m_useSkinColors;
+    bool m_forcedSkinColors;
 };
 
 inline Skin SkinFactory::currentSkin() const {

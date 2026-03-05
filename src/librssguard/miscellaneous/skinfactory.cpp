@@ -18,7 +18,7 @@
 #include <QTextDocument>
 #include <QToolTip>
 
-SkinFactory::SkinFactory(QObject* parent) : QObject(parent), m_styleIsFrozen(false), m_useSkinColors(false) {}
+SkinFactory::SkinFactory(QObject* parent) : QObject(parent), m_styleIsFrozen(false), m_forcedSkinColors(false) {}
 
 void SkinFactory::loadCurrentSkin(bool replace_existing_qss) {
   QList<QString> skin_names_to_try = {selectedSkinName(), QSL(APP_SKIN_DEFAULT)};
@@ -47,11 +47,11 @@ void SkinFactory::loadCurrentSkin(bool replace_existing_qss) {
 }
 
 QVariant SkinFactory::colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors) const {
-  return m_currentSkin.colorForModel(type, m_useSkinColors, ignore_custom_colors);
+  return m_currentSkin.colorForModel(type, m_forcedSkinColors, ignore_custom_colors);
 }
 
 bool SkinFactory::isStyleGoodForAlternativeStylePalette(const QString& style_name) const {
-  static QRegularExpression re = QRegularExpression(QSL("^(fusion|windows|windowsvista|windows11|qt[56]ct-style)$"));
+  static QRegularExpression re = QRegularExpression(QSL("^(fusion|windows|windows11|qt[56]ct-style)$"));
 
   return re.match(style_name.toLower()).hasMatch();
 }
@@ -162,10 +162,12 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
                << "  current style:" << QUOTE_W_SPACE_DOT(m_currentStyle);
   }
 
-  m_useSkinColors =
+  m_forcedSkinColors =
     skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool();
 
-  if (m_useSkinColors && isStyleGoodForAlternativeStylePalette(m_currentStyle)) {
+  QString actual_current_style = m_currentStyle.isEmpty() ? qApp->style()->objectName() : m_currentStyle;
+
+  if (m_forcedSkinColors && isStyleGoodForAlternativeStylePalette(actual_current_style)) {
     if (skin.hasPalette()) {
       qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
 
@@ -188,7 +190,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
 
   QString qss_to_set = skin.m_rawForcedData;
 
-  if (m_useSkinColors && !skin.m_rawData.isEmpty()) {
+  if (m_forcedSkinColors && !skin.m_rawData.isEmpty()) {
     if (qApp->styleSheet().simplified().isEmpty()) {
       qss_to_set += QSL("\r\n") + skin.m_rawData;
     }
@@ -234,11 +236,7 @@ bool SkinFactory::isOsDarkModeEnabled() {
 }
 
 QString SkinFactory::selectedSkinName() const {
-  bool is_dark = isOsDarkModeEnabled();
-
-  return qApp->settings()
-    ->value(GROUP(GUI), GUI::Skin, is_dark ? QSL(APP_SKIN_DEFAULT_DARK) : QSL(APP_SKIN_DEFAULT))
-    .toString();
+  return qApp->settings()->value(GROUP(GUI), GUI::Skin, QSL(APP_SKIN_DEFAULT)).toString();
 }
 
 QString SkinFactory::prepareHtml(const QString& inner_html) {

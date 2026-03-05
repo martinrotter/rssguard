@@ -177,11 +177,7 @@ void IconFactory::setCurrentIconTheme(const QString& theme_name) {
 }
 
 QString IconFactory::currentIconTheme() const {
-  return qApp->settings()
-    ->value(GROUP(GUI),
-            GUI::IconTheme,
-            SkinFactory::isOsDarkModeEnabled() ? APP_ICON_THEME_DARK_DEFAULT : APP_ICON_THEME_DEFAULT)
-    .toString();
+  return qApp->settings()->value(GROUP(GUI), GUI::IconTheme, QSL(APP_ICON_THEME_DEFAULT)).toString();
 }
 
 void IconFactory::loadCurrentIconTheme() {
