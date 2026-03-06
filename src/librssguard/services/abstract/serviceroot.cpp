@@ -448,10 +448,6 @@ void ServiceRoot::requestItemExpand(const QList<RootItem*>& items, bool expand) 
   emit itemExpandRequested(items, expand);
 }
 
-void ServiceRoot::requestItemExpandStateSave(RootItem* subtree_root) {
-  emit itemExpandStateSaveRequested(subtree_root);
-}
-
 void ServiceRoot::requestItemReassignment(RootItem* item, RootItem* new_parent, bool blocking) {
   if (blocking) {
     emit itemBlockingReassignmentRequested(item, new_parent);

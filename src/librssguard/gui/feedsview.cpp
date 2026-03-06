@@ -47,7 +47,6 @@ FeedsView::FeedsView(QWidget* parent)
   connect(header(), &QHeaderView::geometriesChanged, this, &FeedsView::adjustColumns);
   connect(&m_expansionDelayer, &QTimer::timeout, this, &FeedsView::reloadDelayedExpansions);
   connect(m_sourceModel, &FeedsModel::itemExpandRequested, this, &FeedsView::onItemExpandRequested);
-  connect(m_sourceModel, &FeedsModel::itemExpandStateSaveRequested, this, &FeedsView::onItemExpandStateSaveRequested);
   connect(header(), &QHeaderView::sortIndicatorChanged, this, &FeedsView::saveSortState);
   connect(m_proxyModel,
           &FeedsProxyModel::requireItemValidationAfterDragDrop,
@@ -880,29 +879,6 @@ void FeedsView::reloadDelayedExpansions() {
 
   m_dontSaveExpandState = false;
   m_delayedItemExpansions.clear();
-}
-
-void FeedsView::onItemExpandStateSaveRequested(RootItem* item) {
-  saveExpandStates(item);
-}
-
-void FeedsView::saveAllExpandStates() {
-  saveExpandStates(sourceModel()->rootItem());
-}
-
-void FeedsView::saveExpandStates(RootItem* item) {
-  Settings* settings = qApp->settings();
-  QList<RootItem*> items = item->getSubTree(RootItem::Kind::Category | RootItem::Kind::ServiceRoot |
-                                            RootItem::Kind::Labels | RootItem::Kind::Probes);
-
-  // Iterate all categories and save their expand statuses.
-  for (const RootItem* it : std::as_const(items)) {
-    const QString setting_name = it->hashCode();
-    QModelIndex source_index = sourceModel()->indexForItem(it);
-    QModelIndex visible_index = model()->mapFromSource(source_index);
-
-    settings->setValue(GROUP(CategoriesExpandStates), setting_name, isExpanded(visible_index));
-  }
 }
 
 void FeedsView::loadAllExpandStates() {

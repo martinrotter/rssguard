@@ -147,10 +147,6 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
     // Emitted if any item requested that any view should expand it.
     void itemExpandRequested(QList<RootItem*> items, bool expand);
 
-    // Emitted if any item requested that its expand states should be explicitly saved.
-    // NOTE: Normally expand states are saved when application quits.
-    void itemExpandStateSaveRequested(RootItem* subtree_root);
-
     // Emitted to notify article model about external data change.
     // Article model will reload article, refresh selected article etc.
     //

@@ -428,7 +428,6 @@ bool FeedsModel::addServiceAccount(ServiceRoot* root, bool freshly_activated) {
   connect(root, &ServiceRoot::dataChanged, this, &FeedsModel::onItemDataChanged);
   connect(root, &ServiceRoot::dataChangeNotificationTriggered, this, &FeedsModel::dataChangeNotificationTriggered);
   connect(root, &ServiceRoot::itemExpandRequested, this, &FeedsModel::itemExpandRequested);
-  connect(root, &ServiceRoot::itemExpandStateSaveRequested, this, &FeedsModel::itemExpandStateSaveRequested);
 
   root->start(freshly_activated);
 

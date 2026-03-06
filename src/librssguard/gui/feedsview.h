@@ -40,7 +40,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     QList<RootItem*> selectedItems() const;
 
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
-    void saveAllExpandStates();
     void loadAllExpandStates();
 
     QByteArray saveHeaderState() const;
@@ -124,7 +123,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     void saveSortState(int column, Qt::SortOrder order);
     void validateItemAfterDragDrop(const QModelIndex& source_index);
     void onItemExpandRequested(const QList<RootItem*>& items, bool exp);
-    void onItemExpandStateSaveRequested(RootItem* item);
 
   private:
     QModelIndex nextPreviousUnreadItem(const QModelIndex& default_row);
@@ -134,7 +132,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     QMenu* baseContextMenu(const QList<RootItem*>& selected_items);
 
     void setupAppearance();
-    void saveExpandStates(RootItem* item);
 
     FeedsModel* m_sourceModel;
     FeedsProxyModel* m_proxyModel;
