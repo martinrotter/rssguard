@@ -300,7 +300,7 @@ void Application::offerPolls() const {
   */
 }
 
-void Application::offerChanges() const {
+void Application::offerChanges() {
   if (isFirstRunCurrentVersion()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          {tr("Welcome"),
@@ -309,9 +309,9 @@ void Application::offerChanges() const {
                             .arg(QSL(APP_LONG_NAME)),
                           QSystemTrayIcon::MessageIcon::Information},
                          {},
-                         {tr("Go to changelog"), [] {
-                            FormAbout(true, qApp->mainForm()).exec();
-                          }});
+                         GuiAction(tr("Go to changelog"), qApp->mainForm(), [] {
+                           FormAbout(true, qApp->mainForm()).exec();
+                         }));
   }
 }
 

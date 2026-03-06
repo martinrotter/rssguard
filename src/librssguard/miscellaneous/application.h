@@ -72,10 +72,11 @@ Q_DECLARE_METATYPE(GuiMessageDestination)
 
 struct GuiAction {
   public:
-    GuiAction(QString title = {}, const std::function<void()>& action = nullptr)
-      : m_title(std::move(title)), m_action(action) {}
+    GuiAction(QString title = {}, QObject* target = nullptr, const std::function<void()>& action = nullptr)
+      : m_title(std::move(title)), m_target(target), m_action(action) {}
 
     QString m_title;
+    QObject* m_target;
     std::function<void()> m_action;
 };
 
@@ -95,7 +96,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void hideOrShowMainForm();
     void loadDynamicShortcuts();
     void offerPolls() const;
-    void offerChanges() const;
+    void offerChanges();
 
     bool isAlreadyRunning();
     QStringList builtinSounds() const;

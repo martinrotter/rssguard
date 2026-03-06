@@ -90,7 +90,7 @@ QString OAuth2Service::bearer() {
                           tr("Click here to login."),
                           QSystemTrayIcon::MessageIcon::Critical},
                          {},
-                         {tr("Login"), [this]() {
+                         {tr("Login"), this, [this]() {
                             login();
                           }});
     return {};

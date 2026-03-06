@@ -1217,7 +1217,7 @@ void GreaderNetwork::onTokensError(const QString& error, const QString& error_de
                         tr("Click this to login again. Error is: '%1'").arg(error_description),
                         QSystemTrayIcon::MessageIcon::Critical},
                        {},
-                       {tr("Login"), [this]() {
+                       {tr("Login"), this, [this]() {
                           m_oauth->setAccessToken(QString());
                           m_oauth->setRefreshToken(QString());
                           m_oauth->login();
@@ -1230,7 +1230,7 @@ void GreaderNetwork::onAuthFailed() {
                         tr("Click this to login again."),
                         QSystemTrayIcon::MessageIcon::Critical},
                        {},
-                       {tr("Login"), [this]() {
+                       {tr("Login"), this, [this]() {
                           m_oauth->login();
                         }});
 }

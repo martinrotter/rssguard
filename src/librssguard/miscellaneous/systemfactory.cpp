@@ -261,7 +261,7 @@ void SystemFactory::checkForUpdatesOnStartup() {
                                                QObject::tr("Click the bubble for more information."),
                                                QSystemTrayIcon::Information},
                                               {},
-                                              {tr("See new version info"), [] {
+                                              {tr("See new version info"), qApp->mainForm(), [] {
                                                  FormUpdate(qApp->mainForm()).exec();
                                                }});
                        }

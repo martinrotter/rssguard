@@ -190,9 +190,8 @@ QList<RootItem*> GmailNetworkFactory::labels(bool only_user_labels, const QNetwo
       continue;
     }
 
-    Label* lbl =
-      new Label(lbl_obj[QSL("name")].toString(),
-                IconFactory::fromColor(TextFactory::generateColorFromText(lbl_obj[QSL("name")].toString())));
+    Label* lbl = new Label(lbl_obj[QSL("name")].toString(),
+                           IconFactory::fromColor(TextFactory::generateColorFromText(lbl_obj[QSL("name")].toString())));
 
     lbl->setCustomId(lbl_obj[QSL("id")].toString());
     lbls.append(lbl);
@@ -481,7 +480,7 @@ void GmailNetworkFactory::onTokensError(const QString& error, const QString& err
                         tr("Click this to login again. Error is: '%1'").arg(error_description),
                         QSystemTrayIcon::MessageIcon::Critical},
                        {},
-                       {tr("Login"), [this]() {
+                       {tr("Login"), this, [this]() {
                           m_oauth2->setAccessToken(QString());
                           m_oauth2->setRefreshToken(QString());
                           m_oauth2->login();
@@ -494,7 +493,7 @@ void GmailNetworkFactory::onAuthFailed() {
                         tr("Click this to login again."),
                         QSystemTrayIcon::MessageIcon::Critical},
                        {},
-                       {tr("Login"), [this]() {
+                       {tr("Login"), this, [this]() {
                           m_oauth2->login();
                         }});
 }
