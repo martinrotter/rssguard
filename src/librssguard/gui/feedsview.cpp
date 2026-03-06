@@ -792,33 +792,35 @@ void FeedsView::searchItems(SearchLineEdit::SearchMode mode,
     m_dontSaveExpandState = false;
   }
 
-  qDebugNN << LOGSEC_GUI << "Running search of feeds with pattern" << QUOTE_W_SPACE_DOT(phrase);
+  QTimer::singleShot(200, this, [=]() {
+    qDebugNN << LOGSEC_GUI << "Running search of feeds with pattern" << QUOTE_W_SPACE_DOT(phrase);
 
-  switch (mode) {
-    case SearchLineEdit::SearchMode::Wildcard:
-      m_proxyModel->setFilterRegularExpression(QRegularExpression::wildcardToRegularExpression(phrase));
-      break;
+    switch (mode) {
+      case SearchLineEdit::SearchMode::Wildcard:
+        m_proxyModel->setFilterRegularExpression(QRegularExpression::wildcardToRegularExpression(phrase));
+        break;
 
-    case SearchLineEdit::SearchMode::RegularExpression:
-      m_proxyModel->setFilterRegularExpression(QRegularExpression(phrase));
-      break;
+      case SearchLineEdit::SearchMode::RegularExpression:
+        m_proxyModel->setFilterRegularExpression(QRegularExpression(phrase));
+        break;
 
-    case SearchLineEdit::SearchMode::FixedString:
-    default:
-      m_proxyModel->setFilterRegularExpression(QRegularExpression::escape(phrase));
-      break;
-  }
+      case SearchLineEdit::SearchMode::FixedString:
+      default:
+        m_proxyModel->setFilterRegularExpression(QRegularExpression::escape(phrase));
+        break;
+    }
 
-  m_proxyModel->setFilterCaseSensitivity(sensitivity);
+    m_proxyModel->setFilterCaseSensitivity(sensitivity);
 
-  BaseToolBar::SearchFields where_search = BaseToolBar::SearchFields(custom_criteria);
+    BaseToolBar::SearchFields where_search = BaseToolBar::SearchFields(custom_criteria);
 
-  m_proxyModel->setFilterKeyColumn(where_search == BaseToolBar::SearchFields::SearchTitleOnly ? FDS_MODEL_TITLE_INDEX
-                                                                                              : -1);
+    m_proxyModel->setFilterKeyColumn(where_search == BaseToolBar::SearchFields::SearchTitleOnly ? FDS_MODEL_TITLE_INDEX
+                                                                                                : -1);
 
-  if (phrase.isEmpty()) {
-    loadAllExpandStates();
-  }
+    if (phrase.isEmpty()) {
+      loadAllExpandStates();
+    }
+  });
 }
 
 void FeedsView::toggleFeedSortingMode(bool sort_alphabetically) {
@@ -869,11 +871,11 @@ void FeedsView::reloadDelayedExpansions() {
 
   auto expansions = m_delayedItemExpansions;
 
-  for (const QPair<QModelIndex, bool>& exp : expansions) {
-    auto idx = m_proxyModel->mapFromSource(exp.first);
+  for (const QModelIndex& idx : expansions) {
+    auto idx_src = m_proxyModel->mapFromSource(idx);
 
-    if (idx.isValid()) {
-      setExpanded(idx, exp.second);
+    if (idx_src.isValid()) {
+      setExpanded(idx_src, true);
     }
   }
 
@@ -905,18 +907,12 @@ void FeedsView::loadAllExpandStates() {
 void FeedsView::reloadItemExpandState(const QModelIndex& source_idx) {
   //  Model requests to expand some items as they are visible and there is
   //  a filter active, so they maybe were not visible before.
-  RootItem* it = m_sourceModel->itemForIndex(source_idx);
-
-  if (it == nullptr) {
+  if (!source_idx.isValid()) {
     return;
   }
 
-  const QString setting_name = it->hashCode();
-  const bool expand =
-    qApp->settings()->value(GROUP(CategoriesExpandStates), setting_name, it->childCount() > 0).toBool();
-
-  m_delayedItemExpansions.append({source_idx, expand});
-  m_expansionDelayer.start(600);
+  m_delayedItemExpansions.insert(source_idx);
+  m_expansionDelayer.start(100);
 }
 
 QByteArray FeedsView::saveHeaderState() const {

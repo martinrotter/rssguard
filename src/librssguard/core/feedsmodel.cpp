@@ -567,17 +567,17 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
       return itemForIndex(index)->data(index.column(), role);
     }
 
-    case Qt::ItemDataRole::ToolTipRole:
-      // NOTE: Fall-down to "default" if condition not met.
-      if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
-        return QVariant();
-      }
-
     case Qt::ItemDataRole::TextAlignmentRole:
       if (index.column() == FDS_MODEL_COUNTS_INDEX) {
         return m_countsAlignment;
       }
       else {
+        return QVariant();
+      }
+
+    case Qt::ItemDataRole::ToolTipRole:
+      // NOTE: Fall-down to "default" if condition not met.
+      if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::EnableTooltipsFeedsMessages)).toBool()) {
         return QVariant();
       }
 

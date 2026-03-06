@@ -136,7 +136,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     FeedsModel* m_sourceModel;
     FeedsProxyModel* m_proxyModel;
     bool m_dontSaveExpandState;
-    QList<QPair<QModelIndex, bool>> m_delayedItemExpansions;
+    QSet<QModelIndex> m_delayedItemExpansions;
     QTimer m_expansionDelayer;
     StyledItemDelegate* m_delegate;
     bool m_columnsAdjusted;
