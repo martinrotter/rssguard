@@ -797,16 +797,16 @@ void FeedsView::searchItems(SearchLineEdit::SearchMode mode,
 
   switch (mode) {
     case SearchLineEdit::SearchMode::Wildcard:
-      m_proxyModel->setFilterWildcard(phrase);
+      m_proxyModel->setFilterRegularExpression(QRegularExpression::wildcardToRegularExpression(phrase));
       break;
 
     case SearchLineEdit::SearchMode::RegularExpression:
-      m_proxyModel->setFilterRegularExpression(phrase);
+      m_proxyModel->setFilterRegularExpression(QRegularExpression(phrase));
       break;
 
     case SearchLineEdit::SearchMode::FixedString:
     default:
-      m_proxyModel->setFilterFixedString(phrase);
+      m_proxyModel->setFilterRegularExpression(QRegularExpression::escape(phrase));
       break;
   }
 
