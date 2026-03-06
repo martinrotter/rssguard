@@ -553,7 +553,7 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="920"/>
       <source>file for %1 is not available in cache</source>
-      <translation type="unfinished">file for %1 is not available in cache</translation>
+      <translation>le fichier pour %1 n'est pas disponible dans le cache</translation>
     </message>
   </context>
   <context>
@@ -2466,13 +2466,13 @@ comme &amp;non-lus</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="133"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="865"/>
       <source>&amp;Sort</source>
-      <translation type="unfinished">&amp;Sort</translation>
+      <translation>&amp;Trier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="141"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="866"/>
       <source>&amp;Expand/collapse</source>
-      <translation type="unfinished">&amp;Expand/collapse</translation>
+      <translation>&amp;Agrandir/réduire</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="150"/>
@@ -2825,7 +2825,7 @@ de la fenêtre principale</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1014"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="855"/>
       <source>&amp;Fetch full contents</source>
-      <translation type="unfinished">&amp;Fetch full contents</translation>
+      <translation>&amp;Récupérer le contenu complet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="644"/>
@@ -5269,7 +5269,7 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="56"/>
       <source>Fetch full contents</source>
-      <translation type="unfinished">Fetch full contents</translation>
+      <translation>Récupérer le contenu complet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="64"/>
@@ -5640,14 +5640,14 @@ Expiration de jetons d&apos;authentification: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1265"/>
       <source>Fetch full article contents</source>
-      <translation type="unfinished">Fetch full article contents</translation>
+      <translation>Récupérer le contenu complet de l'article</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1283"/>
       <source>Fetched %n article(s)...</source>
-      <translation type="unfinished">
-        <numerusform>Fetched %n article(s)...</numerusform>
-        <numerusform>Fetched %n article(s)...</numerusform>
+      <translation>
+        <numerusform>%n articles obtenus...</numerusform>
+        <numerusform>%n articles obtenus...</numerusform>
       </translation>
     </message>
     <message>
@@ -6855,7 +6855,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="34"/>
       <source>RSS Guard 4.x DB files (%1)</source>
-      <translation type="unfinished">RSS Guard 4.x DB files (%1)</translation>
+      <translation>Fichiers base de données RSS Guard 4.x (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="62"/>
@@ -6875,12 +6875,12 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="541"/>
       <source>missing RSS Guard 4.x tables %1</source>
-      <translation type="unfinished">missing RSS Guard 4.x tables %1</translation>
+      <translation>tables %1 RSS Guard 4.x manquantes</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="547"/>
       <source>metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</source>
-      <translation type="unfinished">metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</translation>
+      <translation>la version 10 des métadonnées était attendue, votre fichier de base de données provient d'une version RSS Guard 4.x trop vieille</translation>
     </message>
   </context>
   <context>
@@ -7101,7 +7101,7 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="44"/>
       <source>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
-      <translation type="unfinished">On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</translation>
+      <translation>Sur cette page, vous pouvez configurer une liste d’outils externes qui peuvent ouvrir des URL. Si vous configurez un domaine (sans &quot;www.&quot;) alors l'outil sera directement utilisé pour ouvrir tous les liens cliqués à partir de ce domaine. Vous pouvez séparer plusieurs domaines avec &apos;,&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="52"/>
@@ -8876,7 +8876,7 @@ Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vo
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="108"/>
       <source>Article date preference</source>
-      <translation type="unfinished">Article date preference</translation>
+      <translation>Préférence de la date de l'article</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="24"/>
@@ -8900,17 +8900,17 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="40"/>
       <source>This decides whether &apos;Published&apos; or &apos;Updated&apos; timestamp is used when deciding the date and time of each article.</source>
-      <translation type="unfinished">This decides whether &apos;Published&apos; or &apos;Updated&apos; timestamp is used when deciding the date and time of each article.</translation>
+      <translation>Ceci détermine si un horodatage &apos;Publié&apos; ou &apos;Mis(e) à jour&apos; est utilisé lors de la décision de la date et de l'heure de chaque article.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="44"/>
       <source>Use &apos;Published&apos; date</source>
-      <translation type="unfinished">Use &apos;Published&apos; date</translation>
+      <translation>Utiliser la date &apos;Publiée&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="46"/>
       <source>Use &apos;Updated&apos; date</source>
-      <translation type="unfinished">Use &apos;Updated&apos; date</translation>
+      <translation>Utiliser la date &apos;Mis(e) à jour&apos;</translation>
     </message>
   </context>
   <context>
@@ -9000,13 +9000,13 @@ Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only
 Load from OPML file: Standard OPML 2.0 file import.
 
 Load default feeds: Will load small set of various interesting feeds.</source>
-      <translation type="unfinished">Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
+      <translation>Importer depuis RSS Guard 4.x: Seuls les flux RSS/ATOM standards, les dossiers, les articles, les étiquettes et les requêtes sont importés. Les filtres d'article sont importés mais avec une ancienne syntaxe. Vous devez vérifier et les corriger après la migration. Les attributions des filtres d'articles ne sont PAS migrées. Assurez-vous de les attribués à nouveau après la migration. Seule la dernière version du fichier de base de données à partir du plus récent RSS Guard 4.x est pris en charge.
 
-Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
+Importation depuis QuiteRSS: Tous les flux, dossiers, articles et étiquettes sont importés. Seule la dernière version de fichier de base de données provenant de la dernière version disponible de QuiteRSS est supportée.
 
-Load from OPML file: Standard OPML 2.0 file import.
+Chargement à partir du fichier OPML : Import de fichier standard OPML 2.0 .
 
-Load default feeds: Will load small set of various interesting feeds.</translation>
+Charger les flux par défaut : Un petit ensemble de différents flux intéressants sera chargé.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="106"/>
