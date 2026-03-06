@@ -786,39 +786,38 @@ void FeedsView::searchItems(SearchLineEdit::SearchMode mode,
                             Qt::CaseSensitivity sensitivity,
                             int custom_criteria,
                             const QString& phrase) {
-  if (!phrase.isEmpty()) {
-    m_dontSaveExpandState = true;
-    expandAll();
-    m_dontSaveExpandState = false;
+  qDebugNN << LOGSEC_GUI << "Running search of feeds with pattern" << QUOTE_W_SPACE_DOT(phrase);
+
+  switch (mode) {
+    case SearchLineEdit::SearchMode::Wildcard:
+      m_proxyModel->setFilterRegularExpression(QRegularExpression::wildcardToRegularExpression(phrase));
+      break;
+
+    case SearchLineEdit::SearchMode::RegularExpression:
+      m_proxyModel->setFilterRegularExpression(QRegularExpression(phrase));
+      break;
+
+    case SearchLineEdit::SearchMode::FixedString:
+    default:
+      m_proxyModel->setFilterRegularExpression(QRegularExpression::escape(phrase));
+      break;
   }
 
+  m_proxyModel->setFilterCaseSensitivity(sensitivity);
+
+  BaseToolBar::SearchFields where_search = BaseToolBar::SearchFields(custom_criteria);
+
+  m_proxyModel->setFilterKeyColumn(where_search == BaseToolBar::SearchFields::SearchTitleOnly ? FDS_MODEL_TITLE_INDEX
+                                                                                              : -1);
+
   QTimer::singleShot(200, this, [=]() {
-    qDebugNN << LOGSEC_GUI << "Running search of feeds with pattern" << QUOTE_W_SPACE_DOT(phrase);
-
-    switch (mode) {
-      case SearchLineEdit::SearchMode::Wildcard:
-        m_proxyModel->setFilterRegularExpression(QRegularExpression::wildcardToRegularExpression(phrase));
-        break;
-
-      case SearchLineEdit::SearchMode::RegularExpression:
-        m_proxyModel->setFilterRegularExpression(QRegularExpression(phrase));
-        break;
-
-      case SearchLineEdit::SearchMode::FixedString:
-      default:
-        m_proxyModel->setFilterRegularExpression(QRegularExpression::escape(phrase));
-        break;
-    }
-
-    m_proxyModel->setFilterCaseSensitivity(sensitivity);
-
-    BaseToolBar::SearchFields where_search = BaseToolBar::SearchFields(custom_criteria);
-
-    m_proxyModel->setFilterKeyColumn(where_search == BaseToolBar::SearchFields::SearchTitleOnly ? FDS_MODEL_TITLE_INDEX
-                                                                                                : -1);
-
     if (phrase.isEmpty()) {
       loadAllExpandStates();
+    }
+    else {
+      m_dontSaveExpandState = true;
+      expandAll();
+      m_dontSaveExpandState = false;
     }
   });
 }
