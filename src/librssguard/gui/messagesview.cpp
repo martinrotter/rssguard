@@ -710,6 +710,11 @@ void MessagesView::openSelectedSourceMessagesExternally() {
     qApp->web()->openUrlInExternalBrowser(link, true);
   }
 
+  if (!selectionModel()->selectedRows().isEmpty() &&
+      qApp->settings()->value(GROUP(Messages), SETTING(Messages::MarkReadAfterOpenedExtInt)).toBool()) {
+    QTimer::singleShot(0, this, &MessagesView::markSelectedMessagesRead);
+  }
+
   if (qApp->settings()
         ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
         .toBool()) {
@@ -744,6 +749,10 @@ void MessagesView::openSelectedMessagesInternally() {
   auto rws = selectionModel()->selectedRows();
 
   if (!rws.isEmpty()) {
+    if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::MarkReadAfterOpenedExtInt)).toBool()) {
+      markSelectedMessagesRead();
+    }
+
     auto msg = m_sourceModel->messageForRow(m_proxyModel->mapToSource(rws.first()).row());
 
     emit openSingleMessageInNewTab(m_sourceModel->loadedItem(), msg);
