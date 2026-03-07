@@ -323,7 +323,8 @@ RootItem* FeedsModel::rootItem() const {
 }
 
 void FeedsModel::setupCountsAlignment() {
-  m_countsAlignment = Qt::AlignmentFlag(qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountAlignment)).toInt());
+  m_countsAlignment = Qt::AlignmentFlag(int(Qt::AlignmentFlag::AlignVCenter) |
+                                        qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::CountAlignment)).toInt());
 }
 
 void FeedsModel::setupBehaviorDuringFetching() {
