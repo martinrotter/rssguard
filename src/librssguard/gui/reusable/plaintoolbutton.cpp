@@ -3,6 +3,7 @@
 #include "gui/reusable/plaintoolbutton.h"
 
 #include <QAction>
+#include <QGuiApplication>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPainterPath>
@@ -48,7 +49,7 @@ void PlainToolButton::paintEvent(QPaintEvent* e) {
     path.lineTo(triangle_origin + QPointF(triangle_width / 2.0, triangle_height));
     path.lineTo(triangle_origin);
 
-    p.fillPath(path, qApp->palette().color(QPalette::ColorRole::Text));
+    p.fillPath(path, QGuiApplication::palette().color(QPalette::ColorRole::Text));
   }
 }
 
