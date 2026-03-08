@@ -1252,7 +1252,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="399"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
-      <translation>%1 不支援批次編輯來自多個帳號的項目。</translation>
+      <translation>%1 不支援批次編輯分屬不同帳號的項目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="415"/>
@@ -1290,7 +1290,7 @@ Item custom ID: %5</source>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="506"/>
       <source>You are about to completely delete %n items.</source>
       <translation>
-        <numerusform>將完全刪除 %n 項。</numerusform>
+        <numerusform>將完全刪除 %n 項目。</numerusform>
       </translation>
     </message>
     <message>
@@ -1328,7 +1328,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1074"/>
       <source>Context menus with items from more than one account are not supported.</source>
-      <translation>不支援多帳號都有的項目的脈絡功能表。</translation>
+      <translation>不支援分屬不同帳號的項目的脈絡功能表。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1098"/>
@@ -1349,7 +1349,7 @@ Item custom ID: %5</source>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="170"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="188"/>
       <source>Not supported by account</source>
-      <translation>帳戶不支援</translation>
+      <translation>帳號不支援</translation>
     </message>
   </context>
   <context>
@@ -1491,12 +1491,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="87"/>
       <source>Original message</source>
-      <translation>原始文訊</translation>
+      <translation>原始訊息</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="100"/>
       <source>Forwarded message</source>
-      <translation>轉傳的文訊</translation>
+      <translation>轉發的訊息</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="181"/>
@@ -1591,7 +1591,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>You can use regular expression or SQL WHERE clause to perform totally custom article queries in the database. See more details in application documentation.</source>
-      <translation>您可使用類型式或 SQL WHERE 來自訂查詢資料庫內的文章。細節請參考應用城市的說明文件。</translation>
+      <translation>您可使用類型式或 SQL WHERE 來自訂查詢資料庫內的文章。細節請參考應用程式的說明文件。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="24"/>
@@ -1913,13 +1913,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="193"/>
       <source>Remove all articles older than</source>
-      <translation>移除全部超過指定時間的已讀文章</translation>
+      <translation>移除所有超過指定時間的已讀文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
       <source>Remove all starred articles</source>
-      <translation>移除全部星號標示的文章</translation>
+      <translation>移除所有星號標示的文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
@@ -1996,7 +1996,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="190"/>
       <source>Add single feed with advanced details</source>
-      <translation>連帶進階細節加入單個文源</translation>
+      <translation>加入單個文源連同其進階細節</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="197"/>
