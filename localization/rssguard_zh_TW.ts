@@ -63,17 +63,17 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="552"/>
       <source>Output directory is not writable.</source>
-      <translation>輸出目錄是無法寫入。</translation>
+      <translation>無法寫入輸出的目錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
       <source>Settings file not copied to output directory successfully.</source>
-      <translation>設定檔複製到輸出目錄失敗。</translation>
+      <translation>無法複製設定檔到輸出的目錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="579"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>未復原設定。請確認輸出目錄可寫入。</translation>
+      <translation>未復原設定。請確認可寫入輸出的目錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1148"/>
@@ -135,13 +135,13 @@ version by clicking this popup notification.</source>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
       <source>Add articles with any date into the database</source>
-      <translation>無論日期，將文章加入資料庫</translation>
+      <translation>無視日期，將文章加入資料庫</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation>於此日期/時間之前的文章，避免加入資料庫</translation>
+      <translation>此日期/時間之前的文章，不加入資料庫</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
@@ -194,12 +194,12 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation>於此設限可限制 %1 去丟掉一些抓下的文章。此機制在文章篩選規則篩選後才運作。如此，即使溫張篩選規則已經接收特定的文章，此機制仍可事後丟掉，不加入資料庫。</translation>
+      <translation>於此設限，可令 %1 額外丟掉一些下載的文章。此機制在文章篩選規則篩選後才運作。如此，即使文章篩選規則已經接收特定的文章，此機制仍可事後丟掉，不加入資料庫。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
       <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
-      <translation>所有多出來的文章會被自動移除。會在抓取特定的文源之後移除。文章要嘛會從內在資料庫完全清除(包括從資源回收筒中清除)，要嘛只是從資源回收筒中清除。</translation>
+      <translation>從特定的文源下載之後，會自動移除所有多出來的文章。要嘛會從內在資料庫完全清除(包括從資源回收筒中清除)，要嘛只是從資源回收筒中清除。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
@@ -6418,12 +6418,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
       <source>User-published articles</source>
-      <translation>使用者發行的文章</translation>
+      <translation>使用者發布的文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1170"/>
       <source>Published articles</source>
-      <translation>發行的文章</translation>
+      <translation>發布的文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/notifications/toastnotificationsmanager.cpp" line="18"/>
@@ -7289,7 +7289,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="25"/>
       <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-      <translation>注意，所用的 MySQL 伺服器的速度和所用的連線媒介的延遲，會大大影響此應用程式的最終效能。慢的資料庫連線會降低瀏覽文源或消息時的速度。</translation>
+      <translation>注意，所用的 MySQL 伺服器的速度和所用的連線媒介的延遲，會大大影響此應用程式的最終效能。慢的資料庫連線會降低瀏覽文源或文章時的速度。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="102"/>
@@ -7501,7 +7501,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="628"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-      <translation>連線逾時是為下載新消息而留的一段時間。如果超過這段時間，就會中斷下載。</translation>
+      <translation>連線逾時是為下載新文訊而留的一段時間。如果超過這段時間，就會中斷下載。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
@@ -7697,7 +7697,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="457"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="657"/>
       <source>Keep article selection in the middle of the article list viewport</source>
-      <translation>使所選消息在消息清單居中</translation>
+      <translation>使所選文章在文章清單窗居中</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="464"/>
@@ -7937,7 +7937,7 @@ Description: %3</source>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="375"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="378"/>
       <source>Display count of unread messages</source>
-      <translation>顯示未讀消息數</translation>
+      <translation>顯示未讀文訊數</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="234"/>
@@ -7967,7 +7967,7 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="244"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="373"/>
       <source>Use colored icon when there are unread articles</source>
-      <translation type="unfinished">Use colored icon when there are unread articles</translation>
+      <translation>有未讀文章則用有色的圖示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="254"/>
@@ -8198,7 +8198,7 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="32"/>
       <source>Note that native notifications might have some OS-dependent limitations. For example Windows OS is known to limit the amount of notification originating from each app during short span of time.</source>
-      <translation type="unfinished">Note that native notifications might have some OS-dependent limitations. For example Windows OS is known to limit the amount of notification originating from each app during short span of time.</translation>
+      <translation>注意，本機的通知可能會有來自 OS 的限制。例如已知 Windows OS 會限制應用程式於短時間內跳出的通知量。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.cpp" line="90"/>
@@ -8456,9 +8456,9 @@ Description: %3</source>
       <source>When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
 
 If that is the case, then you need to set some time gaps when fetching those feeds.</source>
-      <translation type="unfinished">When you fetch many feeds from same website/host, then %1 could be (likely temporarily) banned for making too many network requests at once.
+      <translation>於同一網站或伺服器的文源下載太多文章時，%1 可能會 (像是暫時) 禁止一次提出太多下載請求。
 
-If that is the case, then you need to set some time gaps when fetching those feeds.</translation>
+若然，就得設定從文源分批下載文章的時間間隔。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="54"/>
@@ -8473,7 +8473,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="72"/>
       <source> = no spacing</source>
-      <translation type="unfinished"> = no spacing</translation>
+      <translation> = 無間隔</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="75"/>
@@ -8837,7 +8837,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="24"/>
       <source>Turning this setting ON will fetch full source articles for this feed. Note that this will slow down feed fetching and also can make your database considerably bigger.</source>
-      <translation type="unfinished">Turning this setting ON will fetch full source articles for this feed. Note that this will slow down feed fetching and also can make your database considerably bigger.</translation>
+      <translation>用此設定就會從文源下載完整文章內容。注意，這會降低下載速度，資料庫也變得相當大。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="28"/>
@@ -8851,22 +8851,22 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
       <source>This enables fetching of embedded article comments. Note that if the feed has many articles and each of them has comments, then the whole feed fetching can be much much slower with this option enabled.</source>
-      <translation type="unfinished">This enables fetching of embedded article comments. Note that if the feed has many articles and each of them has comments, then the whole feed fetching can be much much slower with this option enabled.</translation>
+      <translation>這啟用下載內嵌的文章評註。注意，若文源內的文章太多，且每篇都有評註，那麼啟用後整個下載會拖很久。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="40"/>
       <source>This decides whether &apos;Published&apos; or &apos;Updated&apos; timestamp is used when deciding the date and time of each article.</source>
-      <translation type="unfinished">This decides whether &apos;Published&apos; or &apos;Updated&apos; timestamp is used when deciding the date and time of each article.</translation>
+      <translation>決定採用&apos;發布&apos;或&apos;更新&apos;的時戳，來設定每篇文章的日期、時間。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="44"/>
       <source>Use &apos;Published&apos; date</source>
-      <translation type="unfinished">Use &apos;Published&apos; date</translation>
+      <translation>使用 &apos;發布&apos; 日期</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="46"/>
       <source>Use &apos;Updated&apos; date</source>
-      <translation type="unfinished">Use &apos;Updated&apos; date</translation>
+      <translation>使用 &apos;更新&apos; 日期</translation>
     </message>
   </context>
   <context>
@@ -8899,7 +8899,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="24"/>
       <source>Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</source>
-      <translation type="unfinished">Enter each key/value HTTP header pair on separate line. Note that all spaces are significant and that header names are case-sensitive. Also, make sure to separate key from value with &apos;=&apos;, like the example below:</translation>
+      <translation>每一 HTTP 標頭鍵/值只能用一行輸入。注意，每一空格都有意義，且標頭名稱的大小寫有別。同時也使用 &apos;=&apos; 來分開鍵與值，如下例所示:</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="32"/>
@@ -8922,7 +8922,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceentrypoint.cpp" line="20"/>
       <source>Local RSS/RDF/ATOM/JSON</source>
-      <translation type="unfinished">Local RSS/RDF/ATOM/JSON</translation>
+      <translation>本機 RSS/RDF/ATOM/JSON</translation>
     </message>
   </context>
   <context>
@@ -8940,12 +8940,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
       <source>First steps</source>
-      <translation type="unfinished">First steps</translation>
+      <translation>第一步</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="91"/>
       <source>This new profile does not include any feeds. What do you want to do?</source>
-      <translation type="unfinished">This new profile does not include any feeds. What do you want to do?</translation>
+      <translation>這個新組態檔未含文源。您想做什麼呢？</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="93"/>
@@ -8956,13 +8956,13 @@ Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only
 Load from OPML file: Standard OPML 2.0 file import.
 
 Load default feeds: Will load small set of various interesting feeds.</source>
-      <translation type="unfinished">Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
+      <translation>從 RSS Guard 4.x 匯入: 只匯入 RSS/ATOM 文源、資料夾、文章、標籤 與查詢。文章篩選規則也會匯入，不過是舊語法。遷移後，您得檢查兩遍來修改它們。文章篩選規則的指派不會隨著遷移。請於遷移後自行確認有指派。只支援最新的 RSS Guard 4.x 的最新版資料庫檔。
 
-Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
+從 QuiteRSS 匯入: 匯入所有文源、資料夾、文章、標籤。只支援最新的 QuiteRSS 的最新版資料庫檔。
 
-Load from OPML file: Standard OPML 2.0 file import.
+從 OPML 匯入: 支援匯入標準 OPML 2.0 檔。
 
-Load default feeds: Will load small set of various interesting feeds.</translation>
+載入預設文源: 會載入多元而少量的文源。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="106"/>
@@ -8987,7 +8987,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="655"/>
       <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
-      <translation type="unfinished">Some feeds/folders were not imported due to error, check debug log for more details.</translation>
+      <translation>出錯而沒能匯入某些文源/資料夾，請查看 debug log 以得細節。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="678"/>
@@ -9015,8 +9015,8 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="767"/>
       <source>Fetched %n feeds...</source>
-      <translation type="unfinished">
-        <numerusform>Fetched %n feeds...</numerusform>
+      <translation>
+        <numerusform>從 %n 個文源下載……</numerusform>
       </translation>
     </message>
     <message>
@@ -9548,7 +9548,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="114"/>
       <source>Share to published</source>
-      <translation type="unfinished">Share to published</translation>
+      <translation>分享到已發布的</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="133"/>
