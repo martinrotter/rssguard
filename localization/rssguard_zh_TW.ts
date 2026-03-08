@@ -63,7 +63,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="552"/>
       <source>Output directory is not writable.</source>
-      <translation>輸出目錄是無法寫入。</translation>
+      <translation>無法將輸出寫入相關目錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
