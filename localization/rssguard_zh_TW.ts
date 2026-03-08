@@ -83,7 +83,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1149"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
-      <translation>無法加入文源，因為無使用的、可加入文源的帳號。</translation>
+      <translation>無法加入文源，因為無使用中、可加入文源的帳號。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1011"/>
@@ -256,7 +256,7 @@ version by clicking this popup notification.</source>
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="95"/>
       <source>%n feeds fetched</source>
       <translation>
-        <numerusform>%n 個抓到的文源</numerusform>
+        <numerusform>%n 個下載過的文源</numerusform>
       </translation>
     </message>
   </context>
@@ -272,7 +272,7 @@ version by clicking this popup notification.</source>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="125"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation>包括 Gmail 新聞源在內的一些新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 認證架構。</translation>
+      <translation>包括 Gmail 文源在內的一些文源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 認證架構。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
@@ -375,9 +375,9 @@ version by clicking this popup notification.</source>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation>文源量: %1
-資料夾量: %2
-停用的文源量: %3</translation>
+      <translation>文源數: %1
+資料夾數: %2
+停用的文源數: %3</translation>
     </message>
   </context>
   <context>
@@ -405,12 +405,12 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="109"/>
       <source>Icon not fetched</source>
-      <translation>未抓到圖示</translation>
+      <translation>未下載圖示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="110"/>
       <source>Icon was not fetched due to network error.</source>
-      <translation>因網路問題，未抓到圖示。</translation>
+      <translation>因網路問題，未下載圖示。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="125"/>
@@ -425,17 +425,17 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="140"/>
       <source>Select new &amp;color...</source>
-      <translation>選定新色(&amp;C)……</translation>
+      <translation>選定新色(&amp;C)…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="149"/>
       <source>Load icon from &amp;file...</source>
-      <translation>從檔案載入圖示(&amp;F)……</translation>
+      <translation>從檔案載入圖示(&amp;F)…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="154"/>
       <source>Download icon from &amp;URL...</source>
-      <translation>從 &amp;URL 下載圖示……</translation>
+      <translation>從 &amp;URL 下載圖示…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="159"/>
@@ -546,7 +546,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="908"/>
       <source>invalid URL cannot be used to load file from cache</source>
-      <translation>無法使用無效的 URL，來從暫存檔載入檔案</translation>
+      <translation>無法用無效的 URL 從暫存檔載入檔案</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="920"/>
@@ -622,7 +622,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="145"/>
       <source>Downloaded %1 kB...</source>
-      <translation>已下載 %1 kB……</translation>
+      <translation>已下載 %1 kB…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="156"/>
@@ -809,7 +809,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="468"/>
       <source>Some feeds threw an error when fetching articles.</source>
-      <translation>抓取文章時，某些文源擲回錯誤。</translation>
+      <translation>下載文章時，某些文源擲回錯誤。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="97"/>
@@ -878,7 +878,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="39"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation>您的 %1 沒有 Feedly 的正式支援。，因此您一定得使用 &quot;開發者存取權碼&quot; 作為您的認證碼。這碼只有一個月的效期，而且每天的 API 呼叫只到 250 次。</translation>
+      <translation>您的 %1 沒有 Feedly 的正式支援，因此您一定得使用 &quot;開發者存取權碼&quot; 作為您的認證碼。這碼只有一個月的效期，而且每天的 API 呼叫至多 250 次。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="52"/>
@@ -924,7 +924,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="34"/>
       <source>Your %1 build has official Feedly support. You do not have to use &quot;developer access token&quot;. You can therefore leave corresponding field empty.</source>
-      <translation>Feedly 支援 %1 組件。不必使用 &quot;developer access token&quot;.。所以可將對應的欄位留白。</translation>
+      <translation>Feedly 支援 %1 組件。不必使用 &quot;開發者存取權碼&quot;.。所以可將對應的欄位留白。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="154"/>
@@ -967,7 +967,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="718"/>
       <source>Feedly: authentication error</source>
-      <translation>Feedly: 認可錯誤</translation>
+      <translation>Feedly: 認證錯誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="719"/>
@@ -977,7 +977,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="733"/>
       <source>Feedly: authorization denied</source>
-      <translation>Feedly: 認可被拒</translation>
+      <translation>Feedly: 認證被拒</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="734"/>
@@ -996,7 +996,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="336"/>
       <source>OPML document contains errors</source>
-      <translation>OPML 文件有錯誤</translation>
+      <translation>OPML 文件有誤</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="341"/>
@@ -1024,7 +1024,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="37"/>
       <source>Article counts</source>
-      <translation>文章數量</translation>
+      <translation>文章數</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="38"/>
@@ -1252,7 +1252,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="399"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
-      <translation>%1 不支援批次編輯來自多個帳號的項目。</translation>
+      <translation>%1 不支援批次編輯分屬不同帳號的項目。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="415"/>
@@ -1290,7 +1290,7 @@ Item custom ID: %5</source>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="506"/>
       <source>You are about to completely delete %n items.</source>
       <translation>
-        <numerusform>將完全刪除 %n 項。</numerusform>
+        <numerusform>將完全刪除 %n 項目。</numerusform>
       </translation>
     </message>
     <message>
@@ -1328,7 +1328,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1074"/>
       <source>Context menus with items from more than one account are not supported.</source>
-      <translation>不支援多帳號都有的項目的脈絡功能表。</translation>
+      <translation>不支援分屬不同帳號的項目的脈絡功能表。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="1098"/>
@@ -1349,7 +1349,7 @@ Item custom ID: %5</source>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="170"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="188"/>
       <source>Not supported by account</source>
-      <translation>帳戶不支援</translation>
+      <translation>帳號不支援</translation>
     </message>
   </context>
   <context>
@@ -1491,12 +1491,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="87"/>
       <source>Original message</source>
-      <translation>原始文訊</translation>
+      <translation>原始訊息</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="100"/>
       <source>Forwarded message</source>
-      <translation>轉傳的文訊</translation>
+      <translation>轉發的訊息</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="181"/>
@@ -1591,7 +1591,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="17"/>
       <source>You can use regular expression or SQL WHERE clause to perform totally custom article queries in the database. See more details in application documentation.</source>
-      <translation>您可使用類型式或 SQL WHERE 來自訂查詢資料庫內的文章。細節請參考應用城市的說明文件。</translation>
+      <translation>您可使用類型式或 SQL WHERE 來自訂查詢資料庫內的文章。細節請參考應用程式的說明文件。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="24"/>
@@ -1913,13 +1913,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="63"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="193"/>
       <source>Remove all articles older than</source>
-      <translation>移除全部超過指定時間的已讀文章</translation>
+      <translation>移除所有超過指定時間的已讀文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
       <source>Remove all starred articles</source>
-      <translation>移除全部星號標示的文章</translation>
+      <translation>移除所有星號標示的文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
@@ -1996,7 +1996,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="190"/>
       <source>Add single feed with advanced details</source>
-      <translation>連帶進階細節加入單個文源</translation>
+      <translation>加入單個文源連同其進階細節</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="197"/>
@@ -5616,7 +5616,7 @@ Login tokens expiration: %2</source>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1283"/>
       <source>Fetched %n article(s)...</source>
       <translation>
-        <numerusform>抓取了 %n 文章……</numerusform>
+        <numerusform>抓取了 %n 文章…</numerusform>
       </translation>
     </message>
     <message>
@@ -6039,7 +6039,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="81"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation>包括 Gmail 新聞源在內的一些新聞源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 認證架構。</translation>
+      <translation>包括 Gmail 文源在內的一些文源，需要認證。本程式支援 BASIC, NTLM-2 和 DIGEST-MD5 認證架構。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="84"/>
@@ -6572,7 +6572,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="242"/>
       <source>Save article as...</source>
-      <translation>文章另存為……</translation>
+      <translation>文章另存為…</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="244"/>
@@ -6742,7 +6742,7 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="63"/>
       <source>Imported articles from %1 feeds...</source>
-      <translation>從 %1 文源匯入文章……</translation>
+      <translation>從 %1 文源匯入文章…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="166"/>
@@ -6826,7 +6826,7 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="69"/>
       <source>Imported articles from %1 feeds...</source>
-      <translation>從 %1 文源匯入文章……</translation>
+      <translation>從 %1 文源匯入文章…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="210"/>
@@ -7042,9 +7042,9 @@ stack: %3</source>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation>文源量: %1
-資料夾量: %2
-停用的文源量: %3</translation>
+      <translation>文源數: %1
+資料夾數: %2
+停用的文源數: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="758"/>
@@ -9016,7 +9016,7 @@ Load default feeds: Will load small set of various interesting feeds.</source>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="767"/>
       <source>Fetched %n feeds...</source>
       <translation>
-        <numerusform>從 %n 個文源下載……</numerusform>
+        <numerusform>從 %n 個文源下載…</numerusform>
       </translation>
     </message>
     <message>
