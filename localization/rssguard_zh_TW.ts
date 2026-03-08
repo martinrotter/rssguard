@@ -63,17 +63,17 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="552"/>
       <source>Output directory is not writable.</source>
-      <translation>無法將輸出寫入相關目錄。</translation>
+      <translation>無法寫入輸出的目錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="560"/>
       <source>Settings file not copied to output directory successfully.</source>
-      <translation>設定檔複製到輸出目錄失敗。</translation>
+      <translation>無法複製設定檔到輸出的目錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="579"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
-      <translation>未復原設定。請確認輸出目錄可寫入。</translation>
+      <translation>未復原設定。請確認可寫入輸出的目錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="1148"/>
@@ -135,13 +135,13 @@ version by clicking this popup notification.</source>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="47"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="257"/>
       <source>Add articles with any date into the database</source>
-      <translation>無論日期，將文章加入資料庫</translation>
+      <translation>無視日期，將文章加入資料庫</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="76"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_articleamountcontrol.h" line="258"/>
       <source>Avoid adding articles before this date/time into the database</source>
-      <translation>於此日期/時間之前的文章，避免加入資料庫</translation>
+      <translation>此日期/時間之前的文章，不加入資料庫</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.ui" line="85"/>
@@ -194,12 +194,12 @@ version by clicking this popup notification.</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation>於此設限可限制 %1 去丟掉一些抓下的文章。此機制在文章篩選規則篩選後才運作。如此，即使溫張篩選規則已經接收特定的文章，此機制仍可事後丟掉，不加入資料庫。</translation>
+      <translation>於此設限，可令 %1 額外丟掉一些下載的文章。此機制在文章篩選規則篩選後才運作。如此，即使文章篩選規則已經接收特定的文章，此機制仍可事後丟掉，不加入資料庫。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
       <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
-      <translation>所有多出來的文章會被自動移除。會在抓取特定的文源之後移除。文章要嘛會從內在資料庫完全清除(包括從資源回收筒中清除)，要嘛只是從資源回收筒中清除。</translation>
+      <translation>從特定的文源下載之後，會自動移除所有多出來的文章。要嘛會從內在資料庫完全清除(包括從資源回收筒中清除)，要嘛只是從資源回收筒中清除。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
