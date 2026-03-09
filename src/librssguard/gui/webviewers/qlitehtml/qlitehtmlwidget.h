@@ -80,7 +80,7 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     void updateHightlightedLink();
     void setHightlightedLink(const QUrl& url);
 
-    void startLinkDrag(const QUrl& url);
+    void startDataDrag(const QVariant& data);
 
     QString m_html;
     QUrl m_url;
@@ -92,5 +92,5 @@ class QLiteHtmlWidget : public QAbstractScrollArea {
     QScopedPointer<QAction> m_actionShapeAntialiasing;
 
     QPointF m_dragStartPos;
-    QUrl m_pressedUrl;
+    QVariant m_draggedData;
 };

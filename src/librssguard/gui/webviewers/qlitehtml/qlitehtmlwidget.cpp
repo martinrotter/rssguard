@@ -316,10 +316,10 @@ void QLiteHtmlWidget::mouseMoveEvent(QMouseEvent* event) {
 
   htmlPos(event->pos(), &viewport_pos, &pos);
 
-  if (Globals::hasFlag(event->buttons(), Qt::MouseButton::MiddleButton) && !m_pressedUrl.isEmpty() &&
+  if (Globals::hasFlag(event->buttons(), Qt::MouseButton::MiddleButton) && !m_draggedData.isNull() &&
       ((pos - m_dragStartPos).manhattanLength() >= QApplication::startDragDistance())) {
-    startLinkDrag(m_pressedUrl);
-    m_pressedUrl = QUrl();
+    startDataDrag(m_draggedData);
+    m_draggedData.clear();
   }
   else {
     const QVector<QRectF> areas = m_documentContainer.mouseMoveEvent(pos, viewport_pos);
@@ -332,13 +332,16 @@ void QLiteHtmlWidget::mouseMoveEvent(QMouseEvent* event) {
   }
 }
 
-void QLiteHtmlWidget::startLinkDrag(const QUrl& url) {
+void QLiteHtmlWidget::startDataDrag(const QVariant& data) {
   QDrag* drag = new QDrag(this);
-  QMimeData* mimeData = new QMimeData();
+  QMimeData* mime_data = new QMimeData();
 
-  mimeData->setUrls({url});
-  mimeData->setText(url.toString());
-  drag->setMimeData(mimeData);
+  if (data.canConvert<QUrl>()) {
+    mime_data->setUrls({data.toUrl()});
+  }
+
+  mime_data->setText(data.toString());
+  drag->setMimeData(mime_data);
   drag->exec(Qt::DropAction::CopyAction);
 }
 
@@ -353,10 +356,17 @@ void QLiteHtmlWidget::mousePressEvent(QMouseEvent* event) {
     QUrl href = m_documentContainer.linkAt(pos, viewport_pos);
 
     if (!href.isEmpty()) {
-      m_pressedUrl = href;
+      m_draggedData = href;
     }
     else {
-      m_pressedUrl = QUrl();
+      auto selected_text = selectedText();
+
+      if (!selected_text.isEmpty()) {
+        m_draggedData = selected_text;
+      }
+      else {
+        m_draggedData.clear();
+      }
     }
   }
 
