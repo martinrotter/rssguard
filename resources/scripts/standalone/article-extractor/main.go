@@ -16,7 +16,6 @@ import (
 	"github.com/gocolly/colly/v2"
 
 	"codeberg.org/readeck/go-readability/v2"
-	"golang.org/x/net/html"
 	"golang.org/x/net/proxy"
 )
 
@@ -34,70 +33,6 @@ type InputConfig struct {
 	Proxy   *ProxyConfig `json:"proxy"`
 }
 
-// embedImages replaces all <img src="URL"> with base64 embedded images.
-func embedImages(htmlContent string, client *http.Client, headers []Header) (string, error) {
-	doc, err := html.Parse(strings.NewReader(htmlContent))
-	if err != nil {
-		return "", err
-	}
-
-	var traverse func(*html.Node)
-
-	traverse = func(n *html.Node) {
-		if n.Type == html.ElementNode && n.Data == "img" {
-			for i, attr := range n.Attr {
-				if attr.Key == "src" &&
-					(strings.HasPrefix(attr.Val, "http://") ||
-						strings.HasPrefix(attr.Val, "https://")) {
-
-					req, err := http.NewRequest("GET", attr.Val, nil)
-					if err != nil {
-						continue
-					}
-
-					for _, h := range headers {
-						for k, v := range h {
-							req.Header.Set(k, v)
-						}
-					}
-
-					resp, err := client.Do(req)
-					if err != nil {
-						continue
-					}
-
-					if resp.StatusCode < 200 || resp.StatusCode >= 300 {
-						resp.Body.Close()
-						continue
-					}
-
-					data, err := io.ReadAll(resp.Body)
-					resp.Body.Close()
-					if err != nil {
-						continue
-					}
-
-					mimeType := http.DetectContentType(data)
-					base64Str := base64.StdEncoding.EncodeToString(data)
-
-					n.Attr[i].Val = "data:" + mimeType + ";base64," + base64Str
-				}
-			}
-		}
-
-		for c := n.FirstChild; c != nil; c = c.NextSibling {
-			traverse(c)
-		}
-	}
-
-	traverse(doc)
-
-	var b strings.Builder
-	html.Render(&b, doc)
-
-	return b.String(), nil
-}
-
 func main() {
 
 	plainText := flag.Bool("t", false, "Output plain text instead of HTML")
@@ -111,22 +46,19 @@ func main() {
 	}
 
 	urlStr := flag.Arg(0)
-	parsedURL, err := url.Parse(urlStr)
 
+	parsedURL, err := url.Parse(urlStr)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Invalid URL: %v\n", err)
 		os.Exit(1)
 	}
 
-	// Read JSON configuration from stdin
+	// read JSON config
 	var cfg InputConfig
 
-	stat, _ := os.Stdin.Stat()
-	if (stat.Mode() & os.ModeCharDevice) == 0 {
-		stdinData, err := io.ReadAll(os.Stdin)
-		if err == nil && len(stdinData) > 0 {
-			json.Unmarshal(stdinData, &cfg)
-		}
+	if fi, _ := os.Stdin.Stat(); fi.Size() > 0 {
+		stdinData, _ := io.ReadAll(os.Stdin)
+		json.Unmarshal(stdinData, &cfg)
 	}
 
 	var pageHTML []byte
@@ -137,7 +69,7 @@ func main() {
 
 	collector.SetRequestTimeout(30 * time.Second)
 
-	// Apply custom headers if provided
+	// apply headers
 	if len(cfg.Headers) > 0 {
 		collector.OnRequest(func(r *colly.Request) {
 			for _, h := range cfg.Headers {
@@ -148,12 +80,12 @@ func main() {
 		})
 	}
 
-	// HTTP client used for image downloads
+	// http client for images
 	imageClient := &http.Client{
 		Timeout: 30 * time.Second,
 	}
 
-	// Apply proxy configuration if provided
+	// proxy setup
 	if cfg.Proxy != nil && cfg.Proxy.Address != "" {
 
 		switch strings.ToLower(cfg.Proxy.Type) {
@@ -215,6 +147,42 @@ func main() {
 		}
 	}
 
+	imageMap := map[string]string{}
+
+	// download images
+	if *embedImgs {
+
+		collector.OnHTML("img[src]", func(e *colly.HTMLElement) {
+			src := e.Attr("src")
+			resolvedSrc := src
+
+			if !strings.HasPrefix(src, "http") {
+				resolvedSrc = e.Request.AbsoluteURL(src)
+			}
+
+			if _, ok := imageMap[src]; ok {
+				return
+			}
+
+			resp, err := imageClient.Get(resolvedSrc)
+			if err != nil {
+				return
+			}
+
+			data, err := io.ReadAll(resp.Body)
+			resp.Body.Close()
+			if err != nil {
+				return
+			}
+
+			mime := http.DetectContentType(data)
+
+			base64Str := base64.StdEncoding.EncodeToString(data)
+
+			imageMap[src] = "data:" + mime + ";base64," + base64Str
+		})
+	}
+
 	collector.OnResponse(func(r *colly.Response) {
 
 		if r.StatusCode < 200 || r.StatusCode >= 300 {
@@ -236,7 +204,17 @@ func main() {
 		os.Exit(1)
 	}
 
-	article, err := readability.FromReader(bytes.NewReader(pageHTML), parsedURL)
+	htmlStr := string(pageHTML)
+
+	// replace image URLs
+	if *embedImgs {
+
+		for k, v := range imageMap {
+			htmlStr = strings.ReplaceAll(htmlStr, k, v)
+		}
+	}
+
+	article, err := readability.FromReader(strings.NewReader(htmlStr), parsedURL)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error parsing article: %v\n", err)
 		os.Exit(1)
@@ -254,15 +232,6 @@ func main() {
 
 		article.RenderHTML(&content)
 		output = content.String()
-
-		if *embedImgs {
-
-			output, err = embedImages(output, imageClient, cfg.Headers)
-			if err != nil {
-				fmt.Fprintf(os.Stderr, "Error embedding images: %v\n", err)
-				os.Exit(1)
-			}
-		}
 	}
 
 	fmt.Print(output)
