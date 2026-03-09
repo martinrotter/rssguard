@@ -909,7 +909,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="118"/>
       <source>Your access was approved.</source>
-      <translation>您的存取已被批准。</translation>
+      <translation>您的存取已批准。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="149"/>
@@ -2044,7 +2044,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/formeditfeedlyaccount.cpp" line="17"/>
       <source>Service setup</source>
-      <translation>服務設立</translation>
+      <translation>服務設定</translation>
     </message>
   </context>
   <context>
@@ -2052,7 +2052,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formeditgmailaccount.cpp" line="14"/>
       <source>Server setup</source>
-      <translation>伺服器設立</translation>
+      <translation>伺服器設定</translation>
     </message>
   </context>
   <context>
@@ -2060,7 +2060,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/formeditgreaderaccount.cpp" line="14"/>
       <source>Server setup</source>
-      <translation>伺服器設立</translation>
+      <translation>伺服器設定</translation>
     </message>
   </context>
   <context>
@@ -2068,7 +2068,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/formeditnextcloudaccount.cpp" line="14"/>
       <source>Server setup</source>
-      <translation>伺服器設立</translation>
+      <translation>伺服器設定</translation>
     </message>
   </context>
   <context>
@@ -2084,7 +2084,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formeditttrssaccount.cpp" line="13"/>
       <source>Server setup</source>
-      <translation>伺服器設立</translation>
+      <translation>伺服器設定</translation>
     </message>
   </context>
   <context>
