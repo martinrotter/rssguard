@@ -7,6 +7,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/settings.h"
+#include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/gui/formfeeddetails.h"
@@ -111,6 +112,75 @@ QVariant Feed::data(int column, int role) const {
     default:
       return RootItem::data(column, role);
   }
+}
+
+QJsonObject proxyToJson(const QNetworkProxy& proxy) {
+  QJsonObject obj;
+
+  switch (proxy.type()) {
+    case QNetworkProxy::Socks5Proxy:
+      obj.insert(QSL("type"), QSL("socks5"));
+      break;
+
+    case QNetworkProxy::HttpProxy:
+    default:
+      obj.insert(QSL("type"), QSL("http"));
+      break;
+  }
+
+  obj.insert(QSL("address"), QSL("%1:%2").arg(proxy.hostName(), QString::number(proxy.port())));
+
+  if (!proxy.user().isEmpty()) {
+    obj.insert(QSL("username"), proxy.user());
+  }
+
+  if (!proxy.password().isEmpty()) {
+    obj.insert(QSL("password"), proxy.password());
+  }
+
+  return obj;
+}
+
+QJsonObject Feed::articleExtractorSettings() {
+  QJsonObject obj;
+
+  // User-agent.
+  auto custom_ua = QString::fromLocal8Bit(HTTP_COMPLETE_USERAGENT);
+
+  if (custom_ua.isEmpty()) {
+    custom_ua = qApp->web()->customUserAgent();
+  }
+
+  if (!custom_ua.isEmpty()) {
+    obj.insert(QSL("headers"),
+               QJsonObject({{QSL(HTTP_HEADERS_USER_AGENT), custom_ua},
+                            {QSL(HTTP_HEADERS_ACCEPT_LANGUAGE),
+                             qApp->localization()->loadedLocale().name().replace(QL1C('_'), QL1C('-'))}}));
+  }
+
+  // Proxy.
+  auto specific_proxy = account()->networkProxyForItem(this);
+
+  if (specific_proxy.type() == QNetworkProxy::ProxyType::HttpProxy ||
+      specific_proxy.type() == QNetworkProxy::ProxyType::Socks5Proxy) {
+    // Feed or account proxy.
+    obj.insert(QSL("proxy"), proxyToJson(specific_proxy));
+  }
+  else if (specific_proxy.type() == QNetworkProxy::ProxyType::NoProxy) {
+    // No proxy.
+  }
+  else {
+    // App proxy.
+    const QNetworkProxy::ProxyType app_wide_proxy_type =
+      static_cast<QNetworkProxy::ProxyType>(qApp->settings()->value(GROUP(Proxy), SETTING(Proxy::Type)).toInt());
+
+    if (app_wide_proxy_type == QNetworkProxy::ProxyType::HttpProxy ||
+        app_wide_proxy_type == QNetworkProxy::ProxyType::Socks5Proxy) {
+      obj.insert(QSL("proxy"), proxyToJson(QNetworkProxy::applicationProxy()));
+    }
+  }
+
+  return obj;
 }
 
 int Feed::autoUpdateInterval() const {

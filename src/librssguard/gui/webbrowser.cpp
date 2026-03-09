@@ -128,7 +128,6 @@ void WebBrowser::playCurrentSiteInMediaPlayer() {
 
 void WebBrowser::clear(bool also_hide) {
   m_webView->clear();
-  m_message = Message();
 
   if (also_hide) {
     hide();
@@ -136,23 +135,17 @@ void WebBrowser::clear(bool also_hide) {
 }
 
 void WebBrowser::setHtml(const QString& html, const QUrl& url, RootItem* root) {
-  // NOTE: We need to reload zoom factor here because
-  // it could be changed
   reloadZoomFactor();
 
+  m_searchWidget->hide();
   m_webView->setHtml(html, url, root);
 }
 
 void WebBrowser::loadMessage(const Message& message, RootItem* root) {
-  m_message = message;
-  m_root = root;
+  reloadZoomFactor();
 
-  if (!m_root.isNull()) {
-    reloadZoomFactor();
-
-    m_searchWidget->hide();
-    m_webView->loadMessage(message, root);
-  }
+  m_searchWidget->hide();
+  m_webView->loadMessage(message, root);
 }
 
 bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {

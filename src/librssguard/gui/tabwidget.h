@@ -70,7 +70,7 @@ class TabWidget : public QTabWidget {
     void closeAllTabs();
     void closeCurrentTab();
 
-    int addSingleMessageView(RootItem* root, const Message& message);
+    int addSingleMessageView(RootItem* root, const Message& message, Feed* feed);
 
 #if defined(ENABLE_MEDIAPLAYER)
     int addMediaPlayer(const QString& url, bool make_active);

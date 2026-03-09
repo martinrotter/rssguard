@@ -7,6 +7,7 @@
 #include "gui/tabcontent.h"
 
 class RootItem;
+class Feed;
 
 class RSSGUARD_DLLSPEC CustomMessagePreviewer : public TabContent {
     Q_OBJECT
@@ -20,7 +21,7 @@ class RSSGUARD_DLLSPEC CustomMessagePreviewer : public TabContent {
     virtual void clear() = 0;
 
     // Displays the message.
-    virtual void loadMessage(const Message& msg, RootItem* selected_item) = 0;
+    virtual void loadMessage(const Message& msg, RootItem* selected_item, Feed* feed) = 0;
 
   signals:
     void articleTweaked(const Message& msg);

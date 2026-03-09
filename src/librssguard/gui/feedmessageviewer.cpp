@@ -227,12 +227,12 @@ void FeedMessageViewer::respondToMainWindowResizes() {
   connect(qApp->mainForm(), &FormMain::windowResized, this, &FeedMessageViewer::onMessageSplitterResized);
 }
 
-void FeedMessageViewer::displayMessage(const Message& message, RootItem* root) {
+void FeedMessageViewer::displayMessage(const Message& message, RootItem* selected_item, Feed* feed) {
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::EnableMessagePreview)).toBool()) {
-    m_messagesBrowser->loadMessage(message, root);
+    m_messagesBrowser->loadMessage(message, selected_item, feed);
   }
   else if (m_articleViewerAlwaysVisible) {
-    m_messagesBrowser->showItemDetails(root);
+    m_messagesBrowser->showItemDetails(selected_item);
   }
   else {
     m_messagesBrowser->clear();

@@ -75,7 +75,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
   private slots:
     void onFeedSplitterResized();
     void onMessageSplitterResized();
-    void displayMessage(const Message& message, RootItem* root);
+    void displayMessage(const Message& message, RootItem* selected_item, Feed* feed);
     void onMessageRemoved(RootItem* root);
 
   private:

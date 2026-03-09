@@ -53,7 +53,9 @@ void EmailPreviewer::clear() {
   m_webView->clear(false);
 }
 
-void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item) {
+void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item, Feed* feed) {
+  Q_UNUSED(feed)
+
   m_message = msg;
   m_webView->setHtml(msg.m_contents, m_webView->viewer()->urlForMessage(msg, selected_item), selected_item);
 

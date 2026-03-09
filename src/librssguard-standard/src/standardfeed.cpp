@@ -457,6 +457,23 @@ bool StandardFeed::performDragDropChange(RootItem* target_item) {
   }
 }
 
+QJsonObject StandardFeed::articleExtractorSettings() {
+  QJsonObject obj = Feed::articleExtractorSettings();
+
+  if (!m_httpHeaders.isEmpty()) {
+    QJsonObject headers = obj.value(QSL("headers")).toObject();
+
+    for (auto i = m_httpHeaders.cbegin(), end = m_httpHeaders.cend(); i != end; ++i) {
+      headers.insert(i.key(), i.value().toString());
+    }
+
+    obj.remove(QSL("headers"));
+    obj.insert(QSL("headers"), headers);
+  }
+
+  return obj;
+}
+
 void StandardFeed::removeItself() {
   qApp->database()->worker()->read([&](const QSqlDatabase& db) {
     DatabaseQueries::deleteFeed(db, this, account()->accountId());

@@ -65,7 +65,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     void assignMessageFilterToFeed(Feed* feed, MessageFilter* filter);
     void removeMessageFilterToFeedAssignment(Feed* feed, MessageFilter* filter);
 
-    static QString getFullArticle(const QUrl& url, bool plain_text_only);
+    static QString getFullArticle(Feed* feed, const QUrl& url, bool plain_text_only);
 
   public slots:
     void updateAllFeedsOnStartup();

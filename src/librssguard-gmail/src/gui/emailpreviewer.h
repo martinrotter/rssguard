@@ -21,7 +21,7 @@ class EmailPreviewer : public CustomMessagePreviewer {
 
     virtual WebBrowser* webBrowser() const;
     virtual void clear();
-    virtual void loadMessage(const Message& msg, RootItem* selected_item);
+    virtual void loadMessage(const Message& msg, RootItem* selected_item, Feed* feed);
 
   private slots:
     void loadExtraMessageData();

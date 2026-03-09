@@ -54,6 +54,7 @@ class StandardFeed : public Feed {
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual Qt::ItemFlags additionalFlags(int column) const;
     virtual bool performDragDropChange(RootItem* target_item);
+    virtual QJsonObject articleExtractorSettings();
 
     // Other getters/setters.
     Type type() const;

@@ -22,8 +22,6 @@ import (
 
 const DefaultUserAgent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0 Safari/537.36"
 
-type Header map[string]string
-
 type ProxyConfig struct {
 	Type     string `json:"type"`
 	Address  string `json:"address"`
@@ -32,8 +30,8 @@ type ProxyConfig struct {
 }
 
 type InputConfig struct {
-	Headers []Header     `json:"headers"`
-	Proxy   *ProxyConfig `json:"proxy"`
+	Headers map[string]string `json:"headers"`
+	Proxy   *ProxyConfig      `json:"proxy"`
 }
 
 func readConfigFromStdin() InputConfig {
@@ -52,28 +50,24 @@ func readConfigFromStdin() InputConfig {
 }
 
 func resolveUserAgent(cfg InputConfig) string {
-	userAgent := DefaultUserAgent
-
-	for _, h := range cfg.Headers {
-		if ua, ok := h["User-Agent"]; ok {
-			userAgent = ua
-		}
+	if ua, ok := cfg.Headers["User-Agent"]; ok {
+		return ua
 	}
 
-	return userAgent
+	return DefaultUserAgent
 }
 
-func applyHeaders(r *colly.Request, headers []Header, userAgent string) {
+func applyHeaders(r *colly.Request, headers map[string]string, userAgent string) {
+
 	r.Headers.Set("User-Agent", userAgent)
 
-	for _, h := range headers {
-		for k, v := range h {
-			r.Headers.Set(k, v)
-		}
+	for k, v := range headers {
+		r.Headers.Set(k, v)
 	}
 }
 
-func setupCollector(userAgent string, headers []Header) *colly.Collector {
+func setupCollector(userAgent string, headers map[string]string) *colly.Collector {
+
 	collector := colly.NewCollector(
 		colly.UserAgent(userAgent),
 	)
@@ -88,12 +82,15 @@ func setupCollector(userAgent string, headers []Header) *colly.Collector {
 }
 
 func setupProxy(cfg InputConfig, collector *colly.Collector, imageClient *http.Client) {
+
 	if cfg.Proxy == nil || cfg.Proxy.Address == "" {
 		return
 	}
 
 	switch strings.ToLower(cfg.Proxy.Type) {
+
 	case "http":
+
 		proxyURL := "http://" + cfg.Proxy.Address
 
 		if cfg.Proxy.Username != "" {
@@ -120,6 +117,7 @@ func setupProxy(cfg InputConfig, collector *colly.Collector, imageClient *http.C
 		imageClient.Transport = transport
 
 	case "socks5":
+
 		var auth *proxy.Auth
 
 		if cfg.Proxy.Username != "" {
@@ -151,9 +149,11 @@ func setupProxy(cfg InputConfig, collector *colly.Collector, imageClient *http.C
 }
 
 func fetchPage(urlStr string, collector *colly.Collector) []byte {
+
 	var pageHTML []byte
 
 	collector.OnResponse(func(r *colly.Response) {
+
 		if r.StatusCode < 200 || r.StatusCode >= 300 {
 			fmt.Fprintf(os.Stderr, "HTTP error: %d\n", r.StatusCode)
 			os.Exit(1)
@@ -178,6 +178,7 @@ func fetchPage(urlStr string, collector *colly.Collector) []byte {
 }
 
 func extractArticle(pageHTML []byte, parsedURL *url.URL) readability.Article {
+
 	article, err := readability.FromReader(bytes.NewReader(pageHTML), parsedURL)
 
 	if err != nil {
@@ -189,6 +190,7 @@ func extractArticle(pageHTML []byte, parsedURL *url.URL) readability.Article {
 }
 
 func renderArticle(article readability.Article, plainText bool) string {
+
 	var content bytes.Buffer
 
 	if plainText {
@@ -200,7 +202,8 @@ func renderArticle(article readability.Article, plainText bool) string {
 	return content.String()
 }
 
-func downloadImage(src string, client *http.Client, headers []Header, userAgent string) string {
+func downloadImage(src string, client *http.Client, headers map[string]string, userAgent string) string {
+
 	req, err := http.NewRequest("GET", src, nil)
 
 	if err != nil {
@@ -209,10 +212,8 @@ func downloadImage(src string, client *http.Client, headers []Header, userAgent 
 
 	req.Header.Set("User-Agent", userAgent)
 
-	for _, h := range headers {
-		for k, v := range h {
-			req.Header.Set(k, v)
-		}
+	for k, v := range headers {
+		req.Header.Set(k, v)
 	}
 
 	resp, err := client.Do(req)
@@ -239,7 +240,8 @@ func downloadImage(src string, client *http.Client, headers []Header, userAgent 
 	return "data:" + mimeType + ";base64," + base64Str
 }
 
-func embedImages(htmlContent string, client *http.Client, headers []Header, userAgent string) (string, error) {
+func embedImages(htmlContent string, client *http.Client, headers map[string]string, userAgent string) (string, error) {
+
 	doc, err := html.Parse(strings.NewReader(htmlContent))
 
 	if err != nil {
@@ -249,8 +251,11 @@ func embedImages(htmlContent string, client *http.Client, headers []Header, user
 	var traverse func(*html.Node)
 
 	traverse = func(n *html.Node) {
+
 		if n.Type == html.ElementNode && n.Data == "img" {
+
 			for i, attr := range n.Attr {
+
 				if attr.Key == "src" &&
 					(strings.HasPrefix(attr.Val, "http://") ||
 						strings.HasPrefix(attr.Val, "https://")) {
@@ -291,6 +296,7 @@ func main() {
 	}
 
 	urlStr := flag.Arg(0)
+
 	parsedURL, err := url.Parse(urlStr)
 
 	if err != nil {
@@ -299,6 +305,7 @@ func main() {
 	}
 
 	cfg := readConfigFromStdin()
+
 	userAgent := resolveUserAgent(cfg)
 
 	imageClient := &http.Client{
@@ -310,10 +317,13 @@ func main() {
 	setupProxy(cfg, collector, imageClient)
 
 	pageHTML := fetchPage(urlStr, collector)
+
 	article := extractArticle(pageHTML, parsedURL)
+
 	output := renderArticle(article, *plainText)
 
 	if *embedImgs {
+
 		output, err = embedImages(output, imageClient, cfg.Headers, userAgent)
 
 		if err != nil {

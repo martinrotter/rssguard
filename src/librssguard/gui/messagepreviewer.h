@@ -39,7 +39,7 @@ class MessagePreviewer : public TabContent {
     void clear();
 
     void showItemDetails(RootItem* item);
-    void loadMessage(const Message& message, RootItem* root);
+    void loadMessage(const Message& message, RootItem* root, Feed* feed);
 
   private slots:
     void markMessageAsRead();
@@ -68,6 +68,7 @@ class MessagePreviewer : public TabContent {
     WebBrowser* m_msgBrowser;
     Message m_message;
     QPointer<RootItem> m_root;
+    QPointer<Feed> m_feed;
     QAction* m_actionMarkRead;
     QAction* m_actionMarkUnread;
     QAction* m_actionSwitchImportance;

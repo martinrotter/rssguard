@@ -192,7 +192,7 @@ void TabWidget::closeCurrentTab() {
   closeTab(currentIndex());
 }
 
-int TabWidget::addSingleMessageView(RootItem* root, const Message& message) {
+int TabWidget::addSingleMessageView(RootItem* root, const Message& message, Feed* feed) {
   auto* browser = new MessagePreviewer(this);
   auto* msg_mdl = qApp->mainForm()->tabWidget()->feedMessageViewer()->messagesView()->sourceModel();
 
@@ -203,8 +203,8 @@ int TabWidget::addSingleMessageView(RootItem* root, const Message& message) {
 
   int index = addTab(browser, root->fullIcon(), message.m_title, TabBar::TabType::Closable);
 
-  QTimer::singleShot(500, browser, [browser, root, message]() {
-    browser->loadMessage(message, root);
+  QTimer::singleShot(500, browser, [=]() {
+    browser->loadMessage(message, root, feed);
   });
 
   return index;

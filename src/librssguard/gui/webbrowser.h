@@ -92,9 +92,6 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 #if defined(ENABLE_MEDIAPLAYER)
     QAction* m_actionPlayPageInMediaPlayer;
 #endif
-
-    Message m_message;
-    QPointer<RootItem> m_root;
 };
 
 inline WebBrowser* WebBrowser::webBrowser() const {

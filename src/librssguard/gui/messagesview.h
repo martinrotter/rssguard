@@ -121,11 +121,11 @@ class MessagesView : public BaseTreeView {
 #endif
 
     void selectInFeedsView(RootItem* item);
-    void openSingleMessageInNewTab(RootItem* root, const Message& message);
+    void openSingleMessageInNewTab(RootItem* root, const Message& message, Feed* feed);
 
     // Notify others about message selections.
-    void currentMessageChanged(Message message, RootItem* root);
-    void currentMessageRemoved(RootItem* root);
+    void currentMessageChanged(Message message, RootItem* selected_item, Feed* feed);
+    void currentMessageRemoved(RootItem* selected_item);
     void reachedEndOfList();
 
   private:

@@ -133,6 +133,7 @@ void MessagePreviewer::clear() {
   m_msgBrowser->clear(false);
   hide();
   m_root.clear();
+  m_feed.clear();
   m_message = Message();
 }
 
@@ -140,18 +141,20 @@ void MessagePreviewer::showItemDetails(RootItem* item) {
   m_toolBar->setVisible(false);
   m_message = Message();
   m_root = item;
+  m_feed.clear();
 
   ensureItemDetailsVisible();
   m_itemDetails->loadItemDetails(item);
   show();
 }
 
-void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
+void MessagePreviewer::loadMessage(const Message& message, RootItem* root, Feed* feed) {
   m_toolBar->setVisible(m_toolbarVisible);
 
   bool same_message = message.m_id == m_message.m_id && message.m_contents == m_message.m_contents && m_root == root;
 
   m_message = message;
+  m_feed = feed;
   m_root = root;
 
   if (!m_root.isNull()) {
@@ -182,7 +185,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root) {
         }
 
         m_viewerLayout->setCurrentIndex(INDEX_CUSTOM);
-        custom_previewer->loadMessage(message, root);
+        custom_previewer->loadMessage(message, root, feed);
       }
       else {
         ensureDefaultBrowserVisible();
@@ -245,8 +248,8 @@ void MessagePreviewer::fetchFullMessageContents() {
   Message msg_new(m_message);
 
   try {
-    msg_new.m_contents = FeedReader::getFullArticle(m_message.m_url, false);
-    loadMessage(msg_new, m_root);
+    msg_new.m_contents = FeedReader::getFullArticle(m_feed, m_message.m_url, false);
+    loadMessage(msg_new, m_root, m_feed);
     emit articleTweaked(m_message);
   }
   catch (const ApplicationException& ex) {

@@ -620,7 +620,7 @@ void MessagesView::onArticleLabelIdsChanged(const QList<Message>& msgs) {
 
 void MessagesView::requestArticleDisplay(const Message& msg) {
   m_sourceModel->setAdditionalArticleId(msg.m_id);
-  emit currentMessageChanged(msg, m_sourceModel->loadedItem());
+  emit currentMessageChanged(msg, m_sourceModel->loadedItem(), m_sourceModel->feedById(msg.m_feedId));
 }
 
 void MessagesView::requestArticleHiding() {
@@ -755,7 +755,7 @@ void MessagesView::openSelectedMessagesInternally() {
 
     auto msg = m_sourceModel->messageForRow(m_proxyModel->mapToSource(rws.first()).row());
 
-    emit openSingleMessageInNewTab(m_sourceModel->loadedItem(), msg);
+    emit openSingleMessageInNewTab(m_sourceModel->loadedItem(), msg, m_sourceModel->feedById(msg.m_feedId));
   }
 }
 
