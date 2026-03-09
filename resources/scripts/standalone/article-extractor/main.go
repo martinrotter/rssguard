@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"encoding/base64"
+	"encoding/json"
 	"flag"
 	"fmt"
 	"io"
@@ -16,10 +17,25 @@ import (
 
 	"codeberg.org/readeck/go-readability/v2"
 	"golang.org/x/net/html"
+	"golang.org/x/net/proxy"
 )
 
 var httpClient = &http.Client{
 	Timeout: 30 * time.Second,
+}
+
+type Header map[string]string
+
+type ProxyConfig struct {
+	Type     string `json:"type"`
+	Address  string `json:"address"`
+	Username string `json:"username"`
+	Password string `json:"password"`
+}
+
+type InputConfig struct {
+	Headers []Header     `json:"headers"`
+	Proxy   *ProxyConfig `json:"proxy"`
 }
 
 // embedImages replaces all <img src="URL"> with base64 embedded images.
@@ -89,11 +105,22 @@ func main() {
 	}
 
 	urlStr := flag.Arg(0)
-
 	parsedURL, err := url.Parse(urlStr)
+
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Invalid URL: %v\n", err)
 		os.Exit(1)
+	}
+
+	// Read JSON configuration from stdin
+	var cfg InputConfig
+
+	stat, _ := os.Stdin.Stat()
+	if (stat.Mode() & os.ModeCharDevice) == 0 {
+		stdinData, err := io.ReadAll(os.Stdin)
+		if err == nil && len(stdinData) > 0 {
+			json.Unmarshal(stdinData, &cfg)
+		}
 	}
 
 	var pageHTML []byte
@@ -103,6 +130,71 @@ func main() {
 	)
 
 	collector.SetRequestTimeout(30 * time.Second)
+
+	// Apply custom headers if provided
+	if len(cfg.Headers) > 0 {
+		collector.OnRequest(func(r *colly.Request) {
+			for _, h := range cfg.Headers {
+				for k, v := range h {
+					r.Headers.Set(k, v)
+				}
+			}
+		})
+	}
+
+	// Apply proxy configuration if provided
+	if cfg.Proxy != nil && cfg.Proxy.Address != "" {
+
+		switch strings.ToLower(cfg.Proxy.Type) {
+
+		case "http":
+
+			proxyURL := "http://" + cfg.Proxy.Address
+
+			if cfg.Proxy.Username != "" {
+				proxyURL = fmt.Sprintf(
+					"http://%s:%s@%s",
+					cfg.Proxy.Username,
+					cfg.Proxy.Password,
+					cfg.Proxy.Address,
+				)
+			}
+
+			err := collector.SetProxy(proxyURL)
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "Proxy error: %v\n", err)
+				os.Exit(1)
+			}
+
+		case "socks5":
+
+			var auth *proxy.Auth
+			if cfg.Proxy.Username != "" {
+				auth = &proxy.Auth{
+					User:     cfg.Proxy.Username,
+					Password: cfg.Proxy.Password,
+				}
+			}
+
+			dialer, err := proxy.SOCKS5(
+				"tcp",
+				cfg.Proxy.Address,
+				auth,
+				proxy.Direct,
+			)
+
+			if err != nil {
+				fmt.Fprintf(os.Stderr, "SOCKS5 proxy error: %v\n", err)
+				os.Exit(1)
+			}
+
+			transport := &http.Transport{
+				Dial: dialer.Dial,
+			}
+
+			collector.WithTransport(transport)
+		}
+	}
 
 	collector.OnResponse(func(r *colly.Response) {
 
@@ -151,7 +243,6 @@ func main() {
 				fmt.Fprintf(os.Stderr, "Error embedding images: %v\n", err)
 				os.Exit(1)
 			}
-
 		}
 	}
 
