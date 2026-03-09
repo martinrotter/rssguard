@@ -127,6 +127,7 @@ NotInstalled:
   
   ; Install core application files.
   File /r /x "rssguard-*.*" "${BINARY_TREE}\"
+  File "${BINARY_TREE}\rssguard-article-extractor"
 
   ; Create uninstaller.
   WriteUninstaller "$INSTDIR\Uninstall.exe"

@@ -119,8 +119,11 @@ bool IOFactory::setupProcess(QProcess& process,
       break;
   }
 
-  if (started && !stdin_data.isEmpty()) {
-    process.write(stdin_data.toUtf8());
+  if (started) {
+    if (!stdin_data.isEmpty()) {
+      process.write(stdin_data.toUtf8());
+    }
+
     process.closeWriteChannel();
   }
 
