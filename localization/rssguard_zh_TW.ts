@@ -909,7 +909,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="118"/>
       <source>Your access was approved.</source>
-      <translation>您的存取已被批准。</translation>
+      <translation>您的存取已批准。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="149"/>
