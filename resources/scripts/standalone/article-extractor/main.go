@@ -20,10 +20,6 @@ import (
 	"golang.org/x/net/proxy"
 )
 
-var httpClient = &http.Client{
-	Timeout: 30 * time.Second,
-}
-
 type Header map[string]string
 
 type ProxyConfig struct {
@@ -39,23 +35,33 @@ type InputConfig struct {
 }
 
 // embedImages replaces all <img src="URL"> with base64 embedded images.
-func embedImages(htmlContent string) (string, error) {
+func embedImages(htmlContent string, client *http.Client, headers []Header) (string, error) {
 	doc, err := html.Parse(strings.NewReader(htmlContent))
 	if err != nil {
 		return "", err
 	}
 
 	var traverse func(*html.Node)
-	traverse = func(n *html.Node) {
 
+	traverse = func(n *html.Node) {
 		if n.Type == html.ElementNode && n.Data == "img" {
 			for i, attr := range n.Attr {
-
 				if attr.Key == "src" &&
 					(strings.HasPrefix(attr.Val, "http://") ||
 						strings.HasPrefix(attr.Val, "https://")) {
 
-					resp, err := httpClient.Get(attr.Val)
+					req, err := http.NewRequest("GET", attr.Val, nil)
+					if err != nil {
+						continue
+					}
+
+					for _, h := range headers {
+						for k, v := range h {
+							req.Header.Set(k, v)
+						}
+					}
+
+					resp, err := client.Do(req)
 					if err != nil {
 						continue
 					}
@@ -142,6 +148,11 @@ func main() {
 		})
 	}
 
+	// HTTP client used for image downloads
+	imageClient := &http.Client{
+		Timeout: 30 * time.Second,
+	}
+
 	// Apply proxy configuration if provided
 	if cfg.Proxy != nil && cfg.Proxy.Address != "" {
 
@@ -166,9 +177,16 @@ func main() {
 				os.Exit(1)
 			}
 
+			u, _ := url.Parse(proxyURL)
+
+			imageClient.Transport = &http.Transport{
+				Proxy: http.ProxyURL(u),
+			}
+
 		case "socks5":
 
 			var auth *proxy.Auth
+
 			if cfg.Proxy.Username != "" {
 				auth = &proxy.Auth{
 					User:     cfg.Proxy.Username,
@@ -193,6 +211,7 @@ func main() {
 			}
 
 			collector.WithTransport(transport)
+			imageClient.Transport = transport
 		}
 	}
 
@@ -238,7 +257,7 @@ func main() {
 
 		if *embedImgs {
 
-			output, err = embedImages(output)
+			output, err = embedImages(output, imageClient, cfg.Headers)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Error embedding images: %v\n", err)
 				os.Exit(1)
