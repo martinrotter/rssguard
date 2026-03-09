@@ -503,12 +503,12 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="135"/>
       <source>this database file cannot be used because it comes from old major app version</source>
-      <translation type="unfinished">this database file cannot be used because it comes from old major app version</translation>
+      <translation>this database file cannot be used because it comes from a major app version that is too old</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="141"/>
       <source>database schema is too new, application requires &lt;= %1 but %2 is installed</source>
-      <translation type="unfinished">database schema is too new, application requires &lt;= %1 but %2 is installed</translation>
+      <translation>database schema is too new, application requires &lt;= %1 but %2 is installed</translation>
     </message>
   </context>
   <context>
@@ -522,12 +522,12 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="53"/>
       <source>Connection to your database was not established with error: %1. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: %1. Falling back to SQLite.</translation>
+      <translation>Connection to your database was not established with error: %1. Falling back to SQLite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="65"/>
       <source>Connection to your database was not established with error: %1.</source>
-      <translation type="unfinished">Connection to your database was not established with error: %1.</translation>
+      <translation>Connection to your database was not established with error: %1.</translation>
     </message>
   </context>
   <context>
@@ -553,7 +553,7 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qlitehtml/documentcontainer.cpp" line="920"/>
       <source>file for %1 is not available in cache</source>
-      <translation type="unfinished">file for %1 is not available in cache</translation>
+      <translation>file for %1 is not available in cache</translation>
     </message>
   </context>
   <context>
@@ -2463,19 +2463,19 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="133"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="865"/>
       <source>&amp;Sort</source>
-      <translation type="unfinished">&amp;Sort</translation>
+      <translation>&amp;Sort</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="141"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="866"/>
       <source>&amp;Expand/collapse</source>
-      <translation type="unfinished">&amp;Expand/collapse</translation>
+      <translation>&amp;Expand/collapse</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="150"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="867"/>
       <source>&amp;Edit items</source>
-      <translation type="unfinished">&amp;Edit items</translation>
+      <translation>&amp;Edit items</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="217"/>
@@ -2818,7 +2818,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1014"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="855"/>
       <source>&amp;Fetch full contents</source>
-      <translation type="unfinished">&amp;Fetch full contents</translation>
+      <translation>&amp;Fetch full contents</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="644"/>
@@ -3419,7 +3419,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="13"/>
       <source>Only %1 %2 backups are supported.</source>
-      <translation type="unfinished">Only %1 %2 backups are supported.</translation>
+      <translation>Only %1 %2 backups are supported.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="14"/>
@@ -5253,7 +5253,7 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="56"/>
       <source>Fetch full contents</source>
-      <translation type="unfinished">Fetch full contents</translation>
+      <translation>Fetch full contents</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="64"/>
@@ -5624,14 +5624,14 @@ Login tokens expiration: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1265"/>
       <source>Fetch full article contents</source>
-      <translation type="unfinished">Fetch full article contents</translation>
+      <translation>Fetch full article contents</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1283"/>
       <source>Fetched %n article(s)...</source>
-      <translation type="unfinished">
-        <numerusform>Fetched %n article(s)...</numerusform>
-        <numerusform>Fetched %n article(s)...</numerusform>
+      <translation>
+        <numerusform>Fetched %n article...</numerusform>
+        <numerusform>Fetched %n articles...</numerusform>
       </translation>
     </message>
     <message>
@@ -6833,17 +6833,17 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="31"/>
       <source>Select RSS Guard 4.x database file</source>
-      <translation type="unfinished">Select RSS Guard 4.x database file</translation>
+      <translation>Select RSS Guard 4.x database file</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="34"/>
       <source>RSS Guard 4.x DB files (%1)</source>
-      <translation type="unfinished">RSS Guard 4.x DB files (%1)</translation>
+      <translation>RSS Guard 4.x DB files (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="62"/>
       <source>Import data from RSS Guard 4.x</source>
-      <translation type="unfinished">Import data from RSS Guard 4.x</translation>
+      <translation>Import data from RSS Guard 4.x</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="69"/>
@@ -6858,12 +6858,12 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="541"/>
       <source>missing RSS Guard 4.x tables %1</source>
-      <translation type="unfinished">missing RSS Guard 4.x tables %1</translation>
+      <translation>missing RSS Guard 4.x tables %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="547"/>
       <source>metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</source>
-      <translation type="unfinished">metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</translation>
+      <translation>metadata version 10 was expected, your DB file comes from an RSS Guard 4.x version that is too old</translation>
     </message>
   </context>
   <context>
@@ -7084,7 +7084,7 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="44"/>
       <source>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
-      <translation type="unfinished">On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</translation>
+      <translation>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="52"/>
@@ -8424,7 +8424,7 @@ Description: %3</translation>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="87"/>
       <source>cannot copy backup SQLite file</source>
-      <translation type="unfinished">cannot copy backup SQLite file</translation>
+      <translation>cannot copy backup SQLite file</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/sqlitedriver.cpp" line="196"/>
@@ -8858,7 +8858,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="108"/>
       <source>Article date preference</source>
-      <translation type="unfinished">Article date preference</translation>
+      <translation>Article date preference</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="24"/>
@@ -8882,17 +8882,17 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="40"/>
       <source>This decides whether &apos;Published&apos; or &apos;Updated&apos; timestamp is used when deciding the date and time of each article.</source>
-      <translation type="unfinished">This decides whether &apos;Published&apos; or &apos;Updated&apos; timestamp is used when deciding the date and time of each article.</translation>
+      <translation>This decides whether a &apos;Published&apos; or &apos;Updated&apos; timestamp is used when deciding the date and time of each article.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="44"/>
       <source>Use &apos;Published&apos; date</source>
-      <translation type="unfinished">Use &apos;Published&apos; date</translation>
+      <translation>Use &apos;Published&apos; date</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="46"/>
       <source>Use &apos;Updated&apos; date</source>
-      <translation type="unfinished">Use &apos;Updated&apos; date</translation>
+      <translation>Use &apos;Updated&apos; date</translation>
     </message>
   </context>
   <context>
@@ -8966,12 +8966,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="90"/>
       <source>First steps</source>
-      <translation type="unfinished">First steps</translation>
+      <translation>First steps</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="91"/>
       <source>This new profile does not include any feeds. What do you want to do?</source>
-      <translation type="unfinished">This new profile does not include any feeds. What do you want to do?</translation>
+      <translation>This new profile does not include any feeds. What do you want to do?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="93"/>
@@ -8982,7 +8982,7 @@ Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only
 Load from OPML file: Standard OPML 2.0 file import.
 
 Load default feeds: Will load small set of various interesting feeds.</source>
-      <translation type="unfinished">Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
+      <translation>Import from RSS Guard 4.x: Only standard RSS/ATOM feeds, folders, articles, labels and queries are imported. Article filters are imported too but with old syntax. You have to double check and fix them after the migration. Article filters assignments are NOT migrated. Make sure to assign them again after the migration. Only latest database file version from newest RSS Guard 4.x is supported.
 
 Import from QuiteRSS: All feeds, folders, articles and labels are imported. Only latest database file version from newest available QuiteRSS is supported.
 
@@ -8993,22 +8993,22 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="106"/>
       <source>Import from &amp;RSS Guard 4.x</source>
-      <translation type="unfinished">Import from &amp;RSS Guard 4.x</translation>
+      <translation>Import from &amp;RSS Guard 4.x</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="110"/>
       <source>Import from &amp;QuiteRSS</source>
-      <translation type="unfinished">Import from &amp;QuiteRSS</translation>
+      <translation>Import from &amp;QuiteRSS</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="114"/>
       <source>Load from &amp;OPML file</source>
-      <translation type="unfinished">Load from &amp;OPML file</translation>
+      <translation>Load from &amp;OPML file</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="118"/>
       <source>Load &amp;default feeds</source>
-      <translation type="unfinished">Load &amp;default feeds</translation>
+      <translation>Load &amp;default feeds</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="655"/>
@@ -9065,7 +9065,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="782"/>
       <source>Import from RSS Guard 4.x</source>
-      <translation type="unfinished">Import from RSS Guard 4.x</translation>
+      <translation>Import from RSS Guard 4.x</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="51"/>

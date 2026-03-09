@@ -149,7 +149,9 @@ QVariant RootItem::data(int column, int role) const {
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         int count_unread = countOfUnreadMessages();
 
-        if (count_unread <= 0 && qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool()) {
+        if (kind() != RootItem::Kind::Label && kind() != RootItem::Kind::Labels &&
+            kind() != RootItem::Kind::Important && count_unread <= 0 &&
+            qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool()) {
           return QString();
         }
         else {

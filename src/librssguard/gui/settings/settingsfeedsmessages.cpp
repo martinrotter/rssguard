@@ -130,6 +130,7 @@ void SettingsFeedsMessages::loadUi() {
           this,
           &SettingsFeedsMessages::requireRestart);
 
+  connect(m_ui->m_checkMarkReadAfterOpenExtInt, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbArticleViewerAlwaysVisible, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkMessagesDateTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -337,6 +338,10 @@ void SettingsFeedsMessages::loadSettings() {
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool());
   m_ui->m_cbListsRestrictedShortcuts
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::OnlyBasicShortcutsInLists)).toBool());
+
+  m_ui->m_checkMarkReadAfterOpenExtInt
+    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::MarkReadAfterOpenedExtInt)).toBool());
+
   m_ui->m_cbHideCountsIfNoUnread
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool());
   m_ui->m_cmbUnreadIconType
@@ -463,6 +468,10 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages), Messages::ArticleListPadding, m_ui->m_spinPaddingRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowMessages, m_ui->m_spinHeightRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowFeeds, m_ui->m_spinHeightRowsFeeds->value());
+
+  settings()->setValue(GROUP(Messages),
+                       Messages::MarkReadAfterOpenedExtInt,
+                       m_ui->m_checkMarkReadAfterOpenExtInt->isChecked());
 
   settings()->setValue(GROUP(Feeds),
                        Feeds::UpdateFeedListDuringFetching,

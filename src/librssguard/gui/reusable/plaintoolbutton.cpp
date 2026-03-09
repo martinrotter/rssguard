@@ -3,6 +3,7 @@
 #include "gui/reusable/plaintoolbutton.h"
 
 #include <QAction>
+#include <QGuiApplication>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPainterPath>
@@ -15,6 +16,10 @@ PlainToolButton::PlainToolButton(QWidget* parent) : QToolButton(parent), m_paddi
 void PlainToolButton::paintEvent(QPaintEvent* e) {
   Q_UNUSED(e)
   QPainter p(this);
+
+  p.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
+  p.setRenderHint(QPainter::RenderHint::Antialiasing, true);
+
   QRect rect(QPoint(0, 0), size());
 
   // Set padding.
@@ -35,16 +40,16 @@ void PlainToolButton::paintEvent(QPaintEvent* e) {
     // Draw "dropdown" triangle.
     QPainterPath path;
 
-    const int triangle_width = int(rect.width() * 0.4);
-    const int triangle_height = int(triangle_width * 0.5);
-    const auto triangle_origin = rect.bottomRight() - QPoint(triangle_width, triangle_height);
+    const auto triangle_width = rect.width() * 0.35;
+    const auto triangle_height = triangle_width * 0.4;
+    const auto triangle_origin = QPointF(rect.bottomRight()) - QPointF(triangle_width, triangle_height);
 
     path.moveTo(triangle_origin);
-    path.lineTo(QPoint(rect.right(), triangle_origin.y()));
-    path.lineTo(triangle_origin + QPoint(triangle_width / 2, triangle_height));
+    path.lineTo(QPointF(rect.right(), triangle_origin.y()));
+    path.lineTo(triangle_origin + QPointF(triangle_width / 2.0, triangle_height));
     path.lineTo(triangle_origin);
 
-    p.fillPath(path, QBrush(Qt::GlobalColor::black));
+    p.fillPath(path, QGuiApplication::palette().color(QPalette::ColorRole::Text));
   }
 }
 

@@ -225,6 +225,9 @@ namespace Messages {
   KEY MarkUnreadOnUpdated;
   VALUE(bool) MarkUnreadOnUpdatedDef;
 
+  KEY MarkReadAfterOpenedExtInt;
+  VALUE(bool) MarkReadAfterOpenedExtIntDef;
+
   KEY UnreadIconType;
   VALUE(int) UnreadIconTypeDef;
 
