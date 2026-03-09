@@ -1674,7 +1674,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="79"/>
       <source>Select destination directory</source>
-      <translation>選定目標目錄</translation>
+      <translation>選擇目標目錄</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.cpp" line="87"/>
@@ -2384,7 +2384,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="326"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="713"/>
       <source>Fetch &amp;selected</source>
-      <translation>下載所選(&amp;S)</translation>
+      <translation>從所選下載(&amp;S)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="329"/>
@@ -2570,13 +2570,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="474"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="760"/>
       <source>Switch main window visibility</source>
-      <translation>切換主視窗的便視性</translation>
+      <translation>隱藏/顯示主視窗</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="477"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="762"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
-      <translation>主窗顯示時隱藏它；主窗隱藏時顯示它</translation>
+      <translation>隱藏顯示的主視窗；或顯示隱藏的主視窗。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="491"/>
@@ -2660,7 +2660,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="587"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="787"/>
       <source>Switch visibility of main toolbars.</source>
-      <translation>切換主工具列的可見性</translation>
+      <translation>隱藏/顯示主工具列。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="601"/>
@@ -2715,13 +2715,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="890"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="833"/>
       <source>Focus feed search box</source>
-      <translation>焦點到文源搜尋框</translation>
+      <translation>焦點到文源搜尋列</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="895"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="834"/>
       <source>Focus article search box</source>
-      <translation>焦點到文章搜尋框</translation>
+      <translation>焦點到文章搜尋列</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="900"/>
@@ -2751,19 +2751,19 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="964"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="849"/>
       <source>Focus &amp;feed list</source>
-      <translation>焦點到文源清單(&amp;F)</translation>
+      <translation>焦點到文源清單框(&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="969"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="850"/>
       <source>Focus &amp;article list</source>
-      <translation>焦點到文章清單(&amp;A)</translation>
+      <translation>焦點到文章清單框(&amp;A)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="974"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="851"/>
       <source>Focus article &amp;preview</source>
-      <translation>焦點到文章預覽(&amp;P)</translation>
+      <translation>焦點到文章預覽框(&amp;P)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="979"/>
@@ -2793,25 +2793,25 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="999"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="856"/>
       <source>Mark articles &amp;above read</source>
-      <translation>標示上面文章成已讀(&amp;A)</translation>
+      <translation>標示以上文章成已讀(&amp;A)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1004"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="857"/>
       <source>Mark articles &amp;below read</source>
-      <translation>標示下面文章成已讀(&amp;B)</translation>
+      <translation>標示以下文章成已讀(&amp;B)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1009"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="858"/>
       <source>Mark articles &amp;above unread</source>
-      <translation>標示上面文章成未讀(&amp;A)</translation>
+      <translation>標示以上文章成未讀(&amp;A)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1014"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="859"/>
       <source>Mark articles &amp;below unread</source>
-      <translation>標示下面文章成未讀(&amp;B)</translation>
+      <translation>標示以下文章成未讀(&amp;B)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1019"/>
@@ -3063,7 +3063,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="949"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="846"/>
       <source>&amp;Pause automatic feed fetching</source>
-      <translation>暫停自動抓取文源(&amp;P)</translation>
+      <translation>暫停自動從文源下載(&amp;P)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="954"/>
@@ -3185,7 +3185,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="388"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
-      <translation>無法儲存新篩選規則，錯誤: &apos;%1&apos;。</translation>
+      <translation>無法儲存新篩選規則，錯誤為: &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="327"/>
@@ -3786,7 +3786,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="23"/>
       <source>Share note to &quot;Published&quot; feed</source>
-      <translation>分享評註到已發佈的文源</translation>
+      <translation>分享評註到&quot;已發布的&quot;文源</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.cpp" line="52"/>
@@ -5635,7 +5635,7 @@ Login tokens expiration: %2</source>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="1288"/>
       <source>Fetched %n article(s)...</source>
       <translation>
-        <numerusform>抓取了 %n 文章…</numerusform>
+        <numerusform>下載了 %n 篇文章…</numerusform>
       </translation>
     </message>
     <message>
@@ -6348,7 +6348,7 @@ Feedly 是個能私密組織、研究與您關切的議題與趨勢的所在。<
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="151"/>
       <source>Error when fetching articles</source>
-      <translation>抓取文章時出錯</translation>
+      <translation>下載文章時出錯</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="154"/>
@@ -8670,7 +8670,7 @@ HTTP/2: %6
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="79"/>
       <source>Fetch icon from feed</source>
-      <translation>從文源取得圖示</translation>
+      <translation>從文源下載圖示</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeeddetails.cpp" line="88"/>
