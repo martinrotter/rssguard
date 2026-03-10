@@ -400,7 +400,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="86"/>
       <source>Enter direct URL pointing to the image</source>
-      <translation>輸入圖片的直接 URL</translation>
+      <translation>輸入圖像的直接 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="109"/>
@@ -420,7 +420,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="128"/>
       <source>Images (%1)</source>
-      <translation>圖片 (%1)</translation>
+      <translation>圖像 (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="140"/>
@@ -1094,7 +1094,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="186"/>
       <source>Feeds search box</source>
-      <translation>文源搜尋框</translation>
+      <translation>文源搜尋列</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/feedstoolbar.cpp" line="196"/>
@@ -4617,7 +4617,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="200"/>
       <source>Data exported successfully.</source>
-      <translation>資料成功繪出。</translation>
+      <translation>資料成功匯出。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greaderserviceroot.cpp" line="203"/>
@@ -4726,7 +4726,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="30"/>
       <source>Number of labels: %1</source>
-      <translation>標簽數量: %1</translation>
+      <translation>標籤數量: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="117"/>
@@ -4780,7 +4780,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="212"/>
       <source>Option badly formatted</source>
-      <translation>選項格式壞</translation>
+      <translation>選項用了壞格式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="215"/>
@@ -4795,12 +4795,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="221"/>
       <source>Property badly formatted</source>
-      <translation>選項格式壞</translation>
+      <translation>屬性用了壞格式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="224"/>
       <source>Property N/A</source>
-      <translation>屬性無法得到</translation>
+      <translation>屬性不適用</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="227"/>
@@ -4938,22 +4938,22 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="284"/>
       <source>Bullet list (CTRL+-)</source>
-      <translation>清單項目號 (CTRL+-)</translation>
+      <translation>項目符號清單 (CTRL+-)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="287"/>
       <source>Bullet list</source>
-      <translation>清單項目符號</translation>
+      <translation>項目符號清單</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="306"/>
       <source>Ordered list (CTRL+=)</source>
-      <translation>清單項目序號 (CTRL+=)</translation>
+      <translation>項目序號清單 (CTRL+=)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="309"/>
       <source>Ordered list</source>
-      <translation>清單項目序號</translation>
+      <translation>項目序號清單</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="328"/>
@@ -5076,7 +5076,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="79"/>
       <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
-      <translation>所選資料庫並不(尚未)存在。會建立。沒問題。</translation>
+      <translation>所選資料庫並不(尚未)存在。會建立。沒事。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/mariadbdriver.cpp" line="84"/>
@@ -5367,7 +5367,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
       <source>Contents</source>
-      <translation>擷文</translation>
+      <translation>內容</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
@@ -5422,12 +5422,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="200"/>
       <source>Loaded extra %1 articles in %2 miliseconds</source>
-      <translation>以 %2 毫秒載入了額外 %1 篇文章</translation>
+      <translation>以 %2 毫秒額外載入了 %1 篇文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="255"/>
       <source>Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, %5 ms to fill dynamic data)</source>
-      <translation>%2 毫秒載入了額外 %1 篇文章 (%3 毫秒清除暫存；%4 毫秒傳送資料庫資料、%5 毫秒填入動態資料)</translation>
+      <translation>%2 毫秒額外載入了 %1 篇文章 (%3 毫秒清除暫存；%4 毫秒傳送資料庫資料、%5 毫秒填入動態資料)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="308"/>
@@ -5539,7 +5539,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="597"/>
       <source>Contents of the article.</source>
-      <translation>文章的擷文。</translation>
+      <translation>文章的內容。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="597"/>
@@ -5559,7 +5559,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="598"/>
       <source>Custom account-specific data of the article.</source>
-      <translation>自訂文章的帳號指定資料。</translation>
+      <translation>自訂文章的帳號特定資料。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="599"/>
@@ -5569,12 +5569,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="599"/>
       <source>Indication of attachments presence within the article.</source>
-      <translation>文章內有附件之指示。</translation>
+      <translation>文章內有附件之標示。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="600"/>
       <source>Labels assigned to the article.</source>
-      <translation>配定給文章的標籤</translation>
+      <translation>指派給文章的標籤。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="745"/>
@@ -5674,7 +5674,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="220"/>
       <source>Article search box</source>
-      <translation>文章搜尋框</translation>
+      <translation>文章搜尋列</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/toolbars/messagestoolbar.cpp" line="226"/>
@@ -5861,7 +5861,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/multifeededitcheckbox.cpp" line="6"/>
       <source>Apply this to all edited feeds.</source>
-      <translation>套用此至所有編輯過的文源</translation>
+      <translation>套用此至所有編輯過的文源。</translation>
     </message>
   </context>
   <context>
@@ -5906,7 +5906,7 @@ Login tokens expiration: %2</source>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="137"/>
       <source>temporary failure</source>
       <extracomment>Network status.</extracomment>
-      <translation>網路臨時故障</translation>
+      <translation>網路暫時故障</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/networkfactory.cpp" line="142"/>
@@ -6545,28 +6545,28 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="84"/>
       <source>Copy image link</source>
-      <translation>複製圖片連結</translation>
+      <translation>複製圖像連結</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="99"/>
       <source>Copy image</source>
-      <translation>複製圖片</translation>
+      <translation>複製圖像</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="114"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="128"/>
       <source>Save image</source>
-      <translation>儲存圖片</translation>
+      <translation>儲存圖像</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="130"/>
       <source>image.%1</source>
-      <translation>圖片 (%1</translation>
+      <translation>圖像 (%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="131"/>
       <source>Images (%1)</source>
-      <translation>圖片 (%1)</translation>
+      <translation>圖像 (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="158"/>
@@ -8531,7 +8531,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="57"/>
       <source>Images (%1)</source>
-      <translation>圖片 (%1)</translation>
+      <translation>圖像 (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="72"/>
