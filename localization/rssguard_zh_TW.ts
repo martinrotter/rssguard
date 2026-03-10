@@ -93,7 +93,7 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="312"/>
       <source>Go to changelog</source>
-      <translation>前往檢視變更紀錄</translation>
+      <translation>前往檢視異動紀錄</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="306"/>
@@ -1366,7 +1366,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="119"/>
       <source>Changelog not found.</source>
-      <translation>找不到變更紀錄。</translation>
+      <translation>找不到異動紀錄。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="26"/>
@@ -1443,13 +1443,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="177"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="224"/>
       <source>Changelog</source>
-      <translation>變更紀錄</translation>
+      <translation>異動紀錄</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="212"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formabout.h" line="223"/>
       <source>Changelog page is available only in English language.</source>
-      <translation>變更紀錄只有英文版。</translation>
+      <translation>異動紀錄只有英文版。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.ui" line="220"/>
@@ -3821,7 +3821,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-ttrss/src/gui/formttrssnote.ui" line="66"/>
       <source>Content</source>
-      <translation>擷文</translation>
+      <translation>內容</translation>
     </message>
   </context>
   <context>
@@ -3975,7 +3975,7 @@ You can install it now.</source>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="69"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formupdate.h" line="160"/>
       <source>Changelog</source>
-      <translation>異動日誌</translation>
+      <translation>異動紀錄</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.ui" line="125"/>
@@ -4019,7 +4019,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="359"/>
       <source>Invalid URL for redirection!</source>
-      <translation>無效的轉向 URL！</translation>
+      <translation>無效的重新導向 URL！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/gemini/geminiclient.cpp" line="436"/>
@@ -4089,7 +4089,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="17"/>
       <source>There are some preconfigured OAuth tokens so you do not have to fill in your client ID/secret, but it is strongly recommended to obtain your own as it preconfigured tokens have limited global usage quota. If you wish to use preconfigured tokens, simply leave those fields empty and make sure to leave default value of redirect URL.</source>
-      <translation>有一些預先設定的 OAuth 存取權碼，使得不必輸入客戶端 ID/秘密。但是強烈建議取得自己的。因為預先設定的存取權碼會限制全局使用的額度。如想使用預先設定的存取權碼，就將這些欄位留白，確認未更動預設的重導向網址。</translation>
+      <translation>有一些預先設定的 OAuth 存取權碼，使得不必輸入客戶端 ID/秘密。但是強烈建議取得您自己的。因為預先設定的存取權碼會限制全局使用的額度。如想使用預先設定的存取權碼，就將這些欄位留白，確認未更動預設的重新導向網址。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="24"/>
@@ -4129,7 +4129,7 @@ You can install it now.</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="65"/>
       <source>Redirect URL</source>
-      <translation>重導向 URL</translation>
+      <translation>重新導向 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.ui" line="80"/>
@@ -4347,7 +4347,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="65"/>
       <source>You have to fill in your client ID/secret and also fill in correct redirect URL.</source>
-      <translation>必須輸入客戶端 ID/秘密，與正確的重導向網址。</translation>
+      <translation>必須輸入客戶端 ID/秘密，與正確的重新導向網址。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.cpp" line="106"/>
@@ -4453,7 +4453,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="218"/>
       <source>Redirect URL</source>
-      <translation>重導向 URL</translation>
+      <translation>重新導向 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="233"/>
@@ -6226,7 +6226,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="345"/>
       <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
-      <translation>無法開始 OAuth 重導向聽取器。也許您的權限還不夠高。</translation>
+      <translation>無法開始 OAuth 重新導向聽取器。也許您的權限還不夠高。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="93"/>
