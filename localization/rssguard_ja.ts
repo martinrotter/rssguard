@@ -522,9 +522,9 @@ Number of disabled feeds: %3</source>
       <source>Connection to your database was not established with error: %1. 
 
 Maybe change used database name in settings and try again. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: %1. 
+      <translation>データベースへの接続がエラー: %1 により確立されませんでした。
 
-Maybe change used database name in settings and try again. Falling back to SQLite.</translation>
+設定でデータベース名を変更して、もう一度お試しください。SQLite にフォールバックします。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="66"/>
@@ -796,7 +796,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="213"/>
       <source>full article content is empty, likely due to required cookies or other problem</source>
-      <translation type="unfinished">full article content is empty, likely due to required cookies or other problem</translation>
+      <translation>記事の全文が空です。必要なCookieまたはその他の問題が原因である可能性があります</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="447"/>
@@ -3543,7 +3543,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="33"/>
       <source>Network</source>
-      <translation type="unfinished">Network</translation>
+      <translation>ネットワーク</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardfeeddetails.cpp" line="34"/>
@@ -5261,12 +5261,12 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="254"/>
       <source>Fetching failed</source>
-      <translation type="unfinished">Fetching failed</translation>
+      <translation>取得に失敗しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="255"/>
       <source>Article cannot be fetched: %1.</source>
-      <translation type="unfinished">Article cannot be fetched: %1.</translation>
+      <translation>記事を取得できません: %1</translation>
     </message>
   </context>
   <context>
@@ -7275,7 +7275,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="44"/>
       <source>External apps &amp; tools</source>
-      <translation type="unfinished">External apps &amp; tools</translation>
+      <translation>外部アプリ＆ツール</translation>
     </message>
   </context>
   <context>
@@ -7422,17 +7422,17 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="32"/>
       <source>Left</source>
-      <translation type="unfinished">Left</translation>
+      <translation>左寄せ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="33"/>
       <source>Center</source>
-      <translation type="unfinished">Center</translation>
+      <translation>中央</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="34"/>
       <source>Right</source>
-      <translation type="unfinished">Right</translation>
+      <translation>右寄せ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
@@ -7574,7 +7574,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="248"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="659"/>
       <source>Article count alignment</source>
-      <translation type="unfinished">Article count alignment</translation>
+      <translation>記事数の配置</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="261"/>
@@ -7604,7 +7604,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="733"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="694"/>
       <source>Mark articles read after they are opened externally (in browser) or internally (in new tab)</source>
-      <translation type="unfinished">Mark articles read after they are opened externally (in browser) or internally (in new tab)</translation>
+      <translation>記事を外部（ブラウザ）または内部（新しいタブ）で開いた後に既読としてマークする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="268"/>
@@ -8157,19 +8157,19 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.h" line="31"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="81"/>
       <source>Network</source>
-      <translation type="unfinished">Network</translation>
+      <translation>ネットワーク</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="27"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="79"/>
       <source>Enable HTTP/2</source>
-      <translation type="unfinished">Enable HTTP/2</translation>
+      <translation>HTTP/2を有効にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="34"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="80"/>
       <source>Custom User-Agent</source>
-      <translation type="unfinished">Custom User-Agent</translation>
+      <translation>カスタムユーザーエージェント</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="32"/>
@@ -8238,7 +8238,7 @@ Description: %3</source>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnotifications.h" line="227"/>
       <source> s</source>
       <extracomment>Seconds.</extracomment>
-      <translation type="unfinished"> s</translation>
+      <translation> 秒</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnotifications.ui" line="182"/>
@@ -8942,7 +8942,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="37"/>
       <source>Enable HTTP/2</source>
-      <translation type="unfinished">Enable HTTP/2</translation>
+      <translation>HTTP/2を有効にする</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="51"/>
