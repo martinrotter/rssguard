@@ -56,7 +56,7 @@ class NextcloudGetFeedsCategoriesResponse : public NextcloudResponse {
     // Returns tree of feeds/categories.
     // Top-level root of the tree is not needed here.
     // Returned items do not have primary IDs assigned.
-    RootItem* feedsCategories(bool obtain_icons) const;
+    RootItem* feedsCategories() const;
 
   private:
     QString m_contentCategories;
@@ -99,6 +99,7 @@ class NextcloudNetworkFactory {
     bool deleteFeed(const QString& feed_id, const QNetworkProxy& custom_proxy);
     bool createFeed(const QString& url, int parent_id, const QNetworkProxy& custom_proxy);
     bool renameFeed(const QString& new_name, const QString& custom_feed_id, const QNetworkProxy& custom_proxy);
+    void obtainIcons(const QList<Feed*>& feeds, const QNetworkProxy& custom_proxy);
 
     // Get messages for given feed.
     NextcloudGetMessagesResponse getMessages(int feed_id, const QNetworkProxy& custom_proxy);
@@ -133,6 +134,7 @@ class NextcloudNetworkFactory {
     QString m_urlFeedsUpdate;
     QString m_urlDeleteFeed;
     QString m_urlRenameFeed;
+    QString m_urlFavIcon;
 };
 
 #endif // NEXTCLOUDNETWORKFACTORY_H

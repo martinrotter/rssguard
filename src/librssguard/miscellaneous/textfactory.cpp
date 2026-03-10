@@ -47,7 +47,7 @@ QString TextFactory::extractUsernameFromEmail(const QString& email_address) {
 }
 
 QColor TextFactory::generateColorFromText(const QString& text) {
-  // Compute a stable hash of the input string (MD5 works fine).
+  // Compute a stable hash of the input string (MD4 works fine).
   QByteArray hash = QCryptographicHash::hash(text.toUtf8(), QCryptographicHash::Algorithm::Md4);
 
   // Use first 3 bytes of the hash for RGB components.

@@ -203,6 +203,14 @@ void MessagesModel::fetchMoreArticles(int batch_size) {
     }
   }
   catch (const ApplicationException& ex) {
+    if (m_selectedItem->kind() == RootItem::Kind::Probe) {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage(tr("Error in query"),
+                                      tr("There is something wrong with your query: %1").arg(ex.message()),
+                                      QSystemTrayIcon::MessageIcon::Critical),
+                           GuiMessageDestination(true, true));
+    }
+
     qCriticalNN << LOGSEC_MESSAGEMODEL << "Error when querying for more articles:" << QUOTE_W_SPACE_DOT(ex.message());
     m_canFetchMoreArticles = false;
   }
@@ -242,6 +250,14 @@ void MessagesModel::fetchInitialArticles(int batch_size) {
     tmr.restart();
   }
   catch (const ApplicationException& ex) {
+    if (m_selectedItem->kind() == RootItem::Kind::Probe) {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage(tr("Error in query"),
+                                      tr("There is something wrong with your query: %1").arg(ex.message()),
+                                      QSystemTrayIcon::MessageIcon::Critical),
+                           GuiMessageDestination(true, true));
+    }
+
     qCriticalNN << LOGSEC_MESSAGEMODEL << "Error when setting new msg view query:" << QUOTE_W_SPACE_DOT(ex.message());
     m_canFetchMoreArticles = false;
     m_messages.clear();

@@ -12,7 +12,15 @@ ApplicationException::ApplicationException(const QString& message, const QString
 ApplicationException::~ApplicationException() {}
 
 QString ApplicationException::message() const {
-  return m_message;
+  return m_message.isEmpty() ? QString(what()) : m_message;
+}
+
+void ApplicationException::raise() const {
+  throw *this;
+}
+
+ApplicationException* ApplicationException::clone() const {
+  return new ApplicationException(*this);
 }
 
 void ApplicationException::setMessage(const QString& message) {

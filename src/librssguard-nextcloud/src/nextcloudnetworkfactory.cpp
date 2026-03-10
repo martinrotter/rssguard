@@ -49,6 +49,7 @@ void NextcloudNetworkFactory::setUrl(const QString& url) {
   m_urlFeedsUpdate = m_fixedUrl + NEXTCLOUD_API_PATH + "feeds/update?userId=%1&feedId=%2";
   m_urlDeleteFeed = m_fixedUrl + NEXTCLOUD_API_PATH + "feeds/%1";
   m_urlRenameFeed = m_fixedUrl + NEXTCLOUD_API_PATH + "feeds/%1/rename";
+  m_urlFavIcon = m_fixedUrl + NEXTCLOUD_API_PATH + "favicon";
 }
 
 bool NextcloudNetworkFactory::forceServerSideUpdate() const {
@@ -503,7 +504,73 @@ NextcloudGetFeedsCategoriesResponse::NextcloudGetFeedsCategoriesResponse(QNetwor
 
 NextcloudGetFeedsCategoriesResponse::~NextcloudGetFeedsCategoriesResponse() = default;
 
-RootItem* NextcloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons) const {
+void NextcloudNetworkFactory::obtainIcons(const QList<Feed*>& feeds, const QNetworkProxy& custom_proxy) {
+  QList<QPair<QByteArray, QByteArray>> headers = {
+    NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
+                                            m_authUsername,
+                                            m_authPassword)};
+  auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+
+  QtConcurrent::blockingMap(
+#if QT_VERSION_MAJOR > 5
+    qApp->workHorsePool(),
+#endif
+    feeds,
+    [&](Feed* fd) {
+      if (!fd->source().isEmpty()) {
+        QString hashed_url =
+          QCryptographicHash::hash(fd->source().toUtf8(), QCryptographicHash::Algorithm::Md5).toHex();
+        QByteArray icon_data;
+        auto network_res = NetworkFactory::performNetworkOperation(QSL("%1/%2").arg(m_urlFavIcon, hashed_url),
+                                                                   timeout,
+                                                                   QByteArray(),
+                                                                   icon_data,
+                                                                   QNetworkAccessManager::Operation::GetOperation,
+                                                                   headers);
+
+        if (network_res.m_networkError == QNetworkReply::NetworkError::NoError) {
+          // Icon downloaded, set it up.
+          QPixmap icon_pixmap;
+
+          icon_pixmap.loadFromData(icon_data);
+          fd->setIcon(QIcon(icon_pixmap));
+        }
+        else {
+          qCriticalNN << LOGSEC_NEXTCLOUD << "Failed to fetch icon for" << QUOTE_W_SPACE_DOT(fd->source());
+        }
+      }
+    });
+
+  /*
+  for (Feed* fd : feeds) {
+    if (!fd->source().isEmpty()) {
+      QString hashed_url = QCryptographicHash::hash(fd->source().toUtf8(), QCryptographicHash::Algorithm::Md5).toHex();
+      QByteArray icon_data;
+      auto network_res = NetworkFactory::performNetworkOperation(QSL("%1/%2").arg(m_urlFavIcon, hashed_url),
+                                                                 qApp->settings()
+                                                                   ->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout))
+                                                                   .toInt(),
+                                                                 QByteArray(),
+                                                                 icon_data,
+                                                                 QNetworkAccessManager::Operation::GetOperation,
+                                                                 headers);
+
+      if (network_res.m_networkError == QNetworkReply::NetworkError::NoError) {
+        // Icon downloaded, set it up.
+        QPixmap icon_pixmap;
+
+        icon_pixmap.loadFromData(icon_data);
+        fd->setIcon(QIcon(icon_pixmap));
+      }
+      else {
+        qCriticalNN << LOGSEC_NEXTCLOUD << "Failed to fetch icon for" << QUOTE_W_SPACE_DOT(fd->source());
+      }
+    }
+  }
+  */
+}
+
+RootItem* NextcloudGetFeedsCategoriesResponse::feedsCategories() const {
   auto* parent = new RootItem();
   QMap<QString, RootItem*> cats;
 
@@ -531,30 +598,10 @@ RootItem* NextcloudGetFeedsCategoriesResponse::feedsCategories(bool obtain_icons
   for (const QJsonValue& fed : std::as_const(json_feeds)) {
     QJsonObject item = fed.toObject();
     auto* feed = new NextcloudFeed();
-
-    if (obtain_icons) {
-      QString icon_path = item[QSL("faviconLink")].toString();
-
-      if (!icon_path.isEmpty()) {
-        QByteArray icon_data;
-
-        if (NetworkFactory::performNetworkOperation(icon_path,
-                                                    DOWNLOAD_TIMEOUT,
-                                                    QByteArray(),
-                                                    icon_data,
-                                                    QNetworkAccessManager::Operation::GetOperation)
-              .m_networkError == QNetworkReply::NetworkError::NoError) {
-          // Icon downloaded, set it up.
-          QPixmap icon_pixmap;
-
-          icon_pixmap.loadFromData(icon_data);
-          feed->setIcon(QIcon(icon_pixmap));
-        }
-      }
-    }
+    QString feed_url = item[QSL("url")].toString();
 
     feed->setCustomId(QString::number(item[QSL("id")].toInt()));
-    feed->setSource(item[QSL("url")].toString());
+    feed->setSource(feed_url);
 
     if (feed->source().isEmpty()) {
       feed->setSource(item[QSL("link")].toString());

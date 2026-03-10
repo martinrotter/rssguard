@@ -127,7 +127,10 @@ RootItem* NextcloudServiceRoot::obtainNewTreeForSyncIn() const {
   NextcloudGetFeedsCategoriesResponse feed_cats_response = m_network->feedsCategories(networkProxy());
 
   if (feed_cats_response.networkError() == QNetworkReply::NetworkError::NoError) {
-    return feed_cats_response.feedsCategories(true);
+    auto* tree = feed_cats_response.feedsCategories();
+
+    m_network->obtainIcons(tree->getSubTreeFeeds(), networkProxy());
+    return tree;
   }
   else {
     throw NetworkException(feed_cats_response.networkError(),
