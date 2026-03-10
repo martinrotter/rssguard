@@ -2316,7 +2316,7 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="123"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="869"/>
       <source>&amp;Move</source>
-      <translation>&amp;Verschiebe</translation>
+      <translation>&amp;Verschieben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="190"/>
@@ -2406,7 +2406,7 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="350"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="719"/>
       <source>Mark articles &amp;read</source>
-      <translation>Markiere Artikel als &amp;gelesen</translation>
+      <translation>Artikel als &amp;gelesen markieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="353"/>
@@ -2418,7 +2418,7 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="361"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="723"/>
       <source>Mark articles &amp;unread</source>
-      <translation>Markiere Artikel als &amp;ungelesen</translation>
+      <translation>Artikel als &amp;ungelesen markieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="364"/>
@@ -2430,13 +2430,13 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="372"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="727"/>
       <source>Switch &amp;importance</source>
-      <translation>Wechsle &amp;Wichtigkeit</translation>
+      <translation>&amp;Wichtigkeit ändern</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="375"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="729"/>
       <source>Switch importance of selected articles</source>
-      <translation>Wechsle die Wichtigkeit des ausgewählten Artikels</translation>
+      <translation>Wichtigkeit der ausgewählten Artikel ändern</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="386"/>
@@ -2508,13 +2508,13 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="383"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="731"/>
       <source>Mark selected items &amp;read</source>
-      <translation>Markiere ausgewählte Einträge als &amp;gelesen</translation>
+      <translation>Ausgewählte Elemente als &amp;gelesen markieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="394"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
       <source>Mark selected items &amp;unread</source>
-      <translation>Markiere ausgewählte Einträge als &amp;ungelesen</translation>
+      <translation>Ausgewählte Elemente als &amp;ungelesen markieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="413"/>
@@ -2580,7 +2580,7 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="474"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="760"/>
       <source>Switch main window visibility</source>
-      <translation>Wechsle die Sichtbarkeit des Hauptfensters</translation>
+      <translation>Sichtbarkeit des Hauptfensters ändern</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="477"/>
@@ -2706,7 +2706,7 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="641"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
       <source>Switch layout</source>
-      <translation>Wechsle das Layout</translation>
+      <translation>Layout ändern</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="751"/>
@@ -3007,25 +3007,25 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="865"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
       <source>Move &amp;up</source>
-      <translation>Verschiebe nach &amp;oben</translation>
+      <translation>Nach &amp;oben verschieben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="829"/>
       <source>Move to &amp;top</source>
-      <translation>Verschiebe zur &amp;Spitze</translation>
+      <translation>Zum &amp;Anfang verschieben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="875"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="830"/>
       <source>Move &amp;down</source>
-      <translation>Verschiebe nach &amp;unten</translation>
+      <translation>Nach &amp;unten verschieben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="880"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="831"/>
       <source>Move to &amp;bottom</source>
-      <translation>Verschiebe zum &amp;Boden</translation>
+      <translation>Ans &amp;Ende verschieben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="885"/>
@@ -4185,7 +4185,7 @@ Sie können es jetzt installieren.</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="180"/>
       <source>failed to download list of labels</source>
-      <translation>Konnte Liste der Laben nicht herunterladen</translation>
+      <translation>konnte Liste der Labels nicht herunterladen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gmailnetworkfactory.cpp" line="431"/>
@@ -4956,7 +4956,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="306"/>
       <source>Ordered list (CTRL+=)</source>
-      <translation>Geordnete Liste (Strg+=)</translation>
+      <translation>Sortierte Liste (Strg+=)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.ui" line="309"/>
@@ -5246,17 +5246,17 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="39"/>
       <source>Mark article read</source>
-      <translation>als gelesen markieren</translation>
+      <translation>Artikel als gelesen markieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="44"/>
       <source>Mark article unread</source>
-      <translation>als ungelesen markieren</translation>
+      <translation>Artikel als ungelesen markieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="49"/>
       <source>Switch article importance</source>
-      <translation>Wechsle Wichtigkeit des Artikels</translation>
+      <translation>Wichtigkeit des Artikels ändern</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="56"/>
@@ -7573,7 +7573,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="675"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="689"/>
       <source>Font preview</source>
-      <translation>Vorschau der Schrift</translation>
+      <translation>Schriftarten-Vorschau</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="197"/>
@@ -7679,7 +7679,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="702"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="691"/>
       <source>Upon article selection, mark as read</source>
-      <translation>Nach Auswahl des Artikels als gelesen markieren</translation>
+      <translation>Nach der Artikelauswahl als gelesen markieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="709"/>
@@ -7933,7 +7933,7 @@ Beschreibung: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="147"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="364"/>
       <source>Font preview</source>
-      <translation>Vorschau der Schrift</translation>
+      <translation>Schriftart-Vorschau</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="157"/>
@@ -9664,7 +9664,7 @@ Letzte Anmeldung am: %4</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="442"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
-      <translation>Kann Liste der Feeds nicht laden, Netzwerkfehler &apos;%1&apos;</translation>
+      <translation>Liste der Feeds kann nicht abgerufen werden, Netzwerkfehler &apos;%1&apos;</translation>
     </message>
   </context>
   <context>
