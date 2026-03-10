@@ -79,7 +79,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
   SqlQuery q(quiterss_db);
   int quiterss_id = feed->property("quiterss_id").toInt();
 
-  q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href, read, starred, label "
+  q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href, read, starred, deleted, label "
                 "FROM news "
                 "WHERE feedId = :feed_id;"));
   q.bindValue(QSL(":feed_id"), quiterss_id);
@@ -154,6 +154,7 @@ Message QuiteRssImport::convertArticle(const SqlQuery& rec) const {
   msg.m_contents = rec.value(QSL("description")).toString();
   msg.m_isImportant = rec.value(QSL("starred")).toBool();
   msg.m_isRead = rec.value(QSL("read")).toBool();
+  msg.m_isDeleted = rec.value(QSL("deleted")).toBool();
   msg.m_created = TextFactory::parseDateTime(rec.value(QSL("published")).toString(), &dt_format);
   msg.m_createdFromFeed = !msg.m_created.isNull();
 
