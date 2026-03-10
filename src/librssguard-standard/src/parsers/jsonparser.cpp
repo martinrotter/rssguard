@@ -27,6 +27,9 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
     return base_result;
   }
 
+  QList<QPair<QByteArray, QByteArray>> headers = {
+    {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Json).toLocal8Bit()}};
+
   QString my_url = url.toString();
   QList<StandardFeed*> feeds;
 
@@ -41,7 +44,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
                                                      {},
                                                      data,
                                                      QNetworkAccessManager::Operation::GetOperation,
-                                                     {},
+                                                     headers,
                                                      {},
                                                      {},
                                                      {},
@@ -87,7 +90,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
                                                          {},
                                                          data,
                                                          QNetworkAccessManager::Operation::GetOperation,
-                                                         {},
+                                                         headers,
                                                          {},
                                                          {},
                                                          {},

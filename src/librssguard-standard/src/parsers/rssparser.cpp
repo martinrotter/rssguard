@@ -34,6 +34,9 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
   // 3. Test "URL/feed" endpoint.
   // 4. Test "URL/rss" endpoint.
 
+  QList<QPair<QByteArray, QByteArray>> headers = {
+    {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Rss2X).toLocal8Bit()}};
+
   // Download URL.
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray data;
@@ -42,7 +45,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
                                                      {},
                                                      data,
                                                      QNetworkAccessManager::Operation::GetOperation,
-                                                     {},
+                                                     headers,
                                                      {},
                                                      {},
                                                      {},
@@ -88,7 +91,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
                                                          {},
                                                          data,
                                                          QNetworkAccessManager::Operation::GetOperation,
-                                                         {},
+                                                         headers,
                                                          {},
                                                          {},
                                                          {},
@@ -121,7 +124,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
                                                 {},
                                                 data,
                                                 QNetworkAccessManager::Operation::GetOperation,
-                                                {},
+                                                headers,
                                                 {},
                                                 {},
                                                 {},
@@ -148,7 +151,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
                                                 {},
                                                 data,
                                                 QNetworkAccessManager::Operation::GetOperation,
-                                                {},
+                                                headers,
                                                 {},
                                                 {},
                                                 {},

@@ -24,6 +24,9 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
     return base_result;
   }
 
+  QList<QPair<QByteArray, QByteArray>> headers = {
+    {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Rdf).toLocal8Bit()}};
+
   QString my_url = url.toString();
   QList<StandardFeed*> feeds;
 
@@ -40,7 +43,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
                                                      {},
                                                      data,
                                                      QNetworkAccessManager::Operation::GetOperation,
-                                                     {},
+                                                     headers,
                                                      {},
                                                      {},
                                                      {},
@@ -86,7 +89,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
                                                          {},
                                                          data,
                                                          QNetworkAccessManager::Operation::GetOperation,
-                                                         {},
+                                                         headers,
                                                          {},
                                                          {},
                                                          {},
@@ -119,7 +122,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
                                                 {},
                                                 data,
                                                 QNetworkAccessManager::Operation::GetOperation,
-                                                {},
+                                                headers,
                                                 {},
                                                 {},
                                                 {},
@@ -146,7 +149,7 @@ QList<StandardFeed*> RdfParser::discoverFeeds(ServiceRoot* root, const QUrl& url
                                                 {},
                                                 data,
                                                 QNetworkAccessManager::Operation::GetOperation,
-                                                {},
+                                                headers,
                                                 {},
                                                 {},
                                                 {},

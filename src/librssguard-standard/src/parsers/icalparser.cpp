@@ -8,9 +8,9 @@
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedrecognizedbutfailedexception.h>
 #include <librssguard/miscellaneous/application.h>
-#include <qtlinq/qtlinq.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
+#include <qtlinq/qtlinq.h>
 
 IcalParser::IcalParser(const QString& data)
   : FeedParser(data, DataType::Other), m_iCalendar(Icalendar(m_data.toUtf8())) {}
@@ -24,6 +24,9 @@ QList<StandardFeed*> IcalParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
     return base_result;
   }
 
+  QList<QPair<QByteArray, QByteArray>> headers = {
+    {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::iCalendar).toLocal8Bit()}};
+
   QString my_url = url.toString();
 
   // Test direct URL for a feed.
@@ -34,7 +37,7 @@ QList<StandardFeed*> IcalParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
                                                      {},
                                                      data,
                                                      QNetworkAccessManager::Operation::GetOperation,
-                                                     {},
+                                                     headers,
                                                      {},
                                                      {},
                                                      {},

@@ -666,6 +666,32 @@ QByteArray StandardFeed::runScriptProcess(const QStringList& cmd_args,
   }
 }
 
+QString StandardFeed::idealHttpAcceptForFeedType(Type type) {
+  switch (type) {
+    case Type::Rss0X:
+    case Type::Rss2X:
+      return QSL("application/rss+xml, application/xml;q=0.9, text/xml;q=0.8");
+
+    case Type::Rdf:
+      return QSL("application/rdf+xml, application/xml;q=0.9, text/xml;q=0.8");
+
+    case Type::Atom10:
+      return QSL("application/atom+xml, application/xml;q=0.9, text/xml;q=0.8");
+
+    case Type::Json:
+      return QSL("application/feed+json, application/json;q=0.9");
+
+    case Type::Sitemap:
+      return QSL("application/xml, text/xml;q=0.9");
+
+    case Type::iCalendar:
+      return QSL("text/calendar, application/ics;q=0.9");
+
+    default:
+      return QSL("*/*");
+  }
+}
+
 QList<QPair<QByteArray, QByteArray>> StandardFeed::httpHeadersToList(const QVariantHash& headers) {
   QList<QPair<QByteArray, QByteArray>> hdrs_list;
 

@@ -36,6 +36,9 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
     }
   }
 
+  QList<QPair<QByteArray, QByteArray>> headers = {
+    {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Sitemap).toLocal8Bit()}};
+
   QStringList to_process_sitemaps;
   int sitemap_index_limit = 2;
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
@@ -67,7 +70,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
                                                        {},
                                                        data,
                                                        QNetworkAccessManager::Operation::GetOperation,
-                                                       {},
+                                                       headers,
                                                        {},
                                                        {},
                                                        {},
@@ -116,7 +119,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
                                                        {},
                                                        data,
                                                        QNetworkAccessManager::Operation::GetOperation,
-                                                       {},
+                                                       headers,
                                                        {},
                                                        {},
                                                        {},

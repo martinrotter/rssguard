@@ -116,6 +116,8 @@ class StandardFeed : public Feed {
                                        bool provide_input,
                                        const QString& input = {});
 
+    static QString idealHttpAcceptForFeedType(Type type);
+
     static QList<QPair<QByteArray, QByteArray>> httpHeadersToList(const QVariantHash& headers);
 
     QString lastEtag() const;

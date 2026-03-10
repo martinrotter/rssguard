@@ -276,14 +276,15 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   QString host = QUrl(f->source()).host();
   QByteArray feed_contents;
   int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QList<QPair<QByteArray, QByteArray>> headers;
+  QList<QPair<QByteArray, QByteArray>> headers = {
+    {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(f->type()).toLocal8Bit()}};
 
   if (f->sourceType() == StandardFeed::SourceType::Url) {
     spaceHost(host, f->source());
 
     qDebugNN << LOGSEC_STANDARD << "Downloading URL" << QUOTE_W_SPACE(feed->source()) << "to obtain feed data.";
 
-    headers = StandardFeed::httpHeadersToList(f->httpHeaders());
+    headers << StandardFeed::httpHeadersToList(f->httpHeaders());
     headers << NetworkFactory::generateBasicAuthHeader(f->protection(), f->username(), f->password());
 
     if (!f->lastEtag().isEmpty()) {

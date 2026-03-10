@@ -46,6 +46,9 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   // 6. If URL is Youtube, find channel ID.
   // 7. If URL is reddit, append ".rss".
 
+  QList<QPair<QByteArray, QByteArray>> headers = {
+    {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Atom10).toLocal8Bit()}};
+
   // Download URL.
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray data;
@@ -54,7 +57,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
                                                      {},
                                                      data,
                                                      QNetworkAccessManager::Operation::GetOperation,
-                                                     {},
+                                                     headers,
                                                      {},
                                                      {},
                                                      {},
@@ -102,7 +105,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
                                                          {},
                                                          data,
                                                          QNetworkAccessManager::Operation::GetOperation,
-                                                         {},
+                                                         headers,
                                                          {},
                                                          {},
                                                          {},
@@ -132,7 +135,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
                                                 {},
                                                 data,
                                                 QNetworkAccessManager::Operation::GetOperation,
-                                                {},
+                                                headers,
                                                 {},
                                                 {},
                                                 {},
@@ -159,7 +162,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
                                                 {},
                                                 data,
                                                 QNetworkAccessManager::Operation::GetOperation,
-                                                {},
+                                                headers,
                                                 {},
                                                 {},
                                                 {},
@@ -196,7 +199,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
                                                     {},
                                                     data,
                                                     QNetworkAccessManager::Operation::GetOperation,
-                                                    {},
+                                                    headers,
                                                     {},
                                                     {},
                                                     {},
@@ -238,7 +241,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
                                                     {},
                                                     data,
                                                     QNetworkAccessManager::Operation::GetOperation,
-                                                    {},
+                                                    headers,
                                                     {},
                                                     {},
                                                     {},
@@ -270,7 +273,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
                                                   {},
                                                   data,
                                                   QNetworkAccessManager::Operation::GetOperation,
-                                                  {},
+                                                  headers,
                                                   {},
                                                   {},
                                                   {},
