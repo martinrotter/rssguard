@@ -150,8 +150,8 @@ Message QuiteRssImport::convertArticle(const SqlQuery& rec) const {
   msg.m_customId = rec.value(QSL("guid")).toString();
   msg.m_author = rec.value(QSL("author_name")).toString();
   msg.m_url = rec.value(QSL("link_href")).toString();
-  msg.m_title = rec.value(QSL("title")).toString();
-  msg.m_contents = rec.value(QSL("description")).toString();
+  msg.m_title = rec.value(QSL("title")).toString().replace(QSL("\0"), QString());
+  msg.m_contents = rec.value(QSL("description")).toString().replace(QSL("\0"), QString());
   msg.m_isImportant = rec.value(QSL("starred")).toBool();
   msg.m_isRead = rec.value(QSL("read")).toBool();
   msg.m_isDeleted = rec.value(QSL("deleted")).toBool();

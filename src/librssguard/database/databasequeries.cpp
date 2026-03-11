@@ -1167,7 +1167,9 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
           auto bulk_error = bulk_query.lastError();
 
           if (bulk_error.isValid()) {
-            QString txt = bulk_error.text() + bulk_error.databaseText() + bulk_error.driverText();
+            QString txt = bulk_error.text();
+
+            IOFactory::writeFile("a.sql", final_bulk.toUtf8());
 
             qCriticalNN << LOGSEC_DB << "Failed bulk insert of articles:" << QUOTE_W_SPACE_DOT(txt);
           }
