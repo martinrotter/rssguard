@@ -517,10 +517,33 @@ void NextcloudNetworkFactory::obtainIcons(const QList<Feed*>& feeds, const QNetw
 #endif
     feeds,
     [&](Feed* fd) {
+      QString favicon_direct = fd->property("favicon").toString();
+      QByteArray icon_data;
+
+      if (!favicon_direct.isEmpty()) {
+        auto network_res = NetworkFactory::performNetworkOperation(favicon_direct,
+                                                                   timeout,
+                                                                   QByteArray(),
+                                                                   icon_data,
+                                                                   QNetworkAccessManager::Operation::GetOperation,
+                                                                   headers);
+
+        if (network_res.m_networkError == QNetworkReply::NetworkError::NoError) {
+          // Icon downloaded, set it up.
+          QPixmap icon_pixmap;
+
+          icon_pixmap.loadFromData(icon_data);
+          fd->setIcon(QIcon(icon_pixmap));
+          return;
+        }
+        else {
+          qCriticalNN << LOGSEC_NEXTCLOUD << "Failed to fetch direct icon for" << QUOTE_W_SPACE_DOT(fd->source());
+        }
+      }
+
       if (!fd->source().isEmpty()) {
         QString hashed_url =
           QCryptographicHash::hash(fd->source().toUtf8(), QCryptographicHash::Algorithm::Md5).toHex();
-        QByteArray icon_data;
         auto network_res = NetworkFactory::performNetworkOperation(QSL("%1/%2").arg(m_urlFavIcon, hashed_url),
                                                                    timeout,
                                                                    QByteArray(),
@@ -607,6 +630,7 @@ RootItem* NextcloudGetFeedsCategoriesResponse::feedsCategories() const {
       feed->setSource(item[QSL("link")].toString());
     }
 
+    feed->setProperty("favicon", item[QSL("faviconLink")].toString());
     feed->setTitle(item[QSL("title")].toString());
 
     if (feed->title().isEmpty()) {
