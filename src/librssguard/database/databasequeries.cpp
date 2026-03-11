@@ -70,6 +70,10 @@ QVariantHash DatabaseQueries::deserializeCustomData(const QString& data) {
   }
 }
 
+void DatabaseQueries::storeFeedCustomData(const QSqlDatabase& db, Feed* feed) {
+  storeCustomData(db, QSL("Feeds"), feed->id(), feed->customDatabaseData());
+}
+
 QString DatabaseQueries::whereClauseBin(int account_id) {
   return QSL("Messages.account_id = %1 AND Messages.is_deleted = 1 AND Messages.is_pdeleted = 0").arg(account_id);
 }
@@ -1724,6 +1728,22 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db,
 
   q.bindValue(QSL(":custom_data"), serialized_custom_data);
 
+  q.exec();
+}
+
+void DatabaseQueries::storeCustomData(const QSqlDatabase& db,
+                                      const QString& table,
+                                      int item_id,
+                                      const QVariantHash& data) {
+  QString serialized_custom_data = serializeCustomData(data);
+  SqlQuery q(db);
+
+  q.prepare(QSL("UPDATE %1 "
+                "SET custom_data = :custom_data "
+                "WHERE id = :id;")
+              .arg(table));
+  q.bindValue(QSL(":id"), item_id);
+  q.bindValue(QSL(":custom_data"), serialized_custom_data);
   q.exec();
 }
 

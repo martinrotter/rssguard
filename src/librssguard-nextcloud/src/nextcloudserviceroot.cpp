@@ -103,14 +103,13 @@ void NextcloudServiceRoot::saveAllCachedData(bool ignore_errors) {
     QList<Message> messages = j.value();
 
     if (!messages.isEmpty()) {
-      QStringList feed_ids, guid_hashes;
+      QStringList article_ids;
 
       for (const Message& msg : messages) {
-        feed_ids.append(hashed_feeds.value(msg.m_feedId)->customId());
-        guid_hashes.append(msg.m_customData);
+        article_ids.append(msg.m_customId);
       }
 
-      auto res = network()->markMessagesStarred(key, feed_ids, guid_hashes, networkProxy());
+      auto res = network()->markMessagesStarred(key, article_ids, networkProxy());
 
       if (!ignore_errors && res.m_networkError != QNetworkReply::NetworkError::NoError) {
         addMessageStatesToCache(messages, key);
@@ -169,12 +168,11 @@ QList<Message> NextcloudServiceRoot::obtainNewMessages(Feed* feed,
   Q_UNUSED(stated_messages)
   Q_UNUSED(tagged_messages)
 
-  NextcloudGetMessagesResponse messages = network()->getMessages(feed->customNumericId(), networkProxy());
-
-  if (messages.networkError() != QNetworkReply::NetworkError::NoError) {
-    throw FeedFetchException(Feed::Status::NetworkError);
+  try {
+    auto messages = network()->getMessages(feed->customNumericId(), networkProxy());
+    return messages;
   }
-  else {
-    return messages.messages();
+  catch (const NetworkException& netEx) {
+    throw FeedFetchException(Feed::Status::NetworkError, netEx.message());
   }
 }

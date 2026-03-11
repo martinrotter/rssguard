@@ -49,12 +49,16 @@ void TrayIcon::setNumber(int number) {
     tray_painter.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
     tray_painter.setRenderHint(QPainter::RenderHint::TextAntialiasing, false);
 
-    // Numbers with more than 5 digits won't be readable, display
+    // Numbers with more than 3 digits won't be readable, display
     // infinity symbol in that case.
     QString num_txt;
 
-    if (number >= 1000) {
+    if (number >= 100000) {
       num_txt = QChar(8734);
+    }
+    else if (number >= 1000) {
+      // For example 15k.
+      num_txt = QSL("%1k").arg(number / 1000);
     }
     else {
       num_txt = QString::number(number);

@@ -27,6 +27,9 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QString serializeCustomData(const QVariantHash& data);
     static QVariantHash deserializeCustomData(const QString& data);
 
+    static void storeFeedCustomData(const QSqlDatabase& db, Feed* feed);
+    static void storeCustomData(const QSqlDatabase& db, const QString& table, int item_id, const QVariantHash& data);
+
     // Universal where clauses for item types.
     static QString whereClauseBin(int account_id);
     static QString whereClauseImportantArticles(int account_id);

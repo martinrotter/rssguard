@@ -5,7 +5,8 @@
 #include "network-web/networkfactory.h"
 
 NetworkException::NetworkException(QNetworkReply::NetworkError error, const QString& message)
-  : ApplicationException(message.simplified().isEmpty() ? NetworkFactory::networkErrorText(error) : message),
+  : ApplicationException(message.simplified().isEmpty() ? NetworkFactory::networkErrorText(error)
+                                                        : message.simplified()),
     m_networkError(error) {}
 
 QNetworkReply::NetworkError NetworkException::networkError() const {

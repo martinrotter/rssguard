@@ -5,6 +5,7 @@
 #include "src/definitions.h"
 #include "src/nextcloudfeed.h"
 
+#include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
@@ -204,15 +205,7 @@ bool NextcloudNetworkFactory::createFeed(const QString& url, int parent_id, cons
   QJsonObject json;
 
   json[QSL("url")] = url;
-
-  auto nextcloud_version = status(custom_proxy).version();
-
-  if (SystemFactory::isVersionEqualOrNewer(nextcloud_version, QSL("15.1.0"))) {
-    json[QSL("folderId")] = parent_id == 0 ? QJsonValue(QJsonValue::Type::Null) : parent_id;
-  }
-  else {
-    json[QSL("folderId")] = parent_id;
-  }
+  json[QSL("folderId")] = parent_id == 0 ? QJsonValue(QJsonValue::Type::Null) : parent_id;
 
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -286,7 +279,7 @@ bool NextcloudNetworkFactory::renameFeed(const QString& new_name,
   }
 }
 
-NextcloudGetMessagesResponse NextcloudNetworkFactory::getMessages(int feed_id, const QNetworkProxy& custom_proxy) {
+QList<Message> NextcloudNetworkFactory::getMessages(int feed_id, const QNetworkProxy& custom_proxy) {
   if (forceServerSideUpdate()) {
     triggerFeedUpdate(feed_id, custom_proxy);
   }
@@ -316,14 +309,74 @@ NextcloudGetMessagesResponse NextcloudNetworkFactory::getMessages(int feed_id, c
                                             {},
                                             {},
                                             custom_proxy);
-  NextcloudGetMessagesResponse msgs_response(network_reply.m_networkError, QString::fromUtf8(result_raw));
 
-  if (network_reply.m_networkError != QNetworkReply::NoError) {
-    qCriticalNN << LOGSEC_NEXTCLOUD << "Obtaining messages failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
+  if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(network_reply.m_networkError, QString::fromUtf8(result_raw));
   }
 
-  return msgs_response;
+  QList<Message> msgs;
+  QJsonDocument result_json = QJsonDocument::fromJson(result_raw);
+  auto json_items = result_json[QSL("items")].toArray();
+
+  for (const QJsonValue& message : std::as_const(json_items)) {
+    QJsonObject message_map = message.toObject();
+    Message msg;
+
+    msg.m_author = message_map[QSL("author")].toString();
+    msg.m_contents = message_map[QSL("body")].toString();
+    msg.m_created = TextFactory::parseDateTime(message_map[QSL("pubDate")].toDouble() * 1000);
+    msg.m_createdFromFeed = true;
+    msg.m_customId = message_map[QSL("id")].toVariant().toString();
+    msg.m_rawContents = QJsonDocument(message_map).toJson(QJsonDocument::JsonFormat::Compact);
+
+    // In case body is empty, check for content in mediaDescription if item is available.
+    if (msg.m_contents.isEmpty() && !message_map[QSL("mediaDescription")].isUndefined()) {
+      msg.m_contents = message_map[QSL("mediaDescription")].toString();
+    }
+
+    // Check for mediaThumbnail and append as first enclosure to be viewed in internal viewer.
+    if (!message_map[QSL("mediaThumbnail")].isUndefined()) {
+      MessageEnclosure* enclosure =
+        new MessageEnclosure(message_map[QSL("mediaThumbnail")].toString(), QSL("image/jpg"));
+
+      msg.m_enclosures.append(QSharedPointer<MessageEnclosure>(enclosure));
+    }
+
+    QString enclosure_link = message_map[QSL("enclosureLink")].toString();
+
+    if (!enclosure_link.isEmpty()) {
+      MessageEnclosure* enclosure = new MessageEnclosure();
+
+      enclosure->setMimeType(message_map[QSL("enclosureMime")].toString());
+      enclosure->setUrl(enclosure_link);
+
+      if (enclosure->mimeType().isEmpty()) {
+        enclosure->setMimeType(QSL("image/png"));
+      }
+
+      if (!message_map[QSL("enclosureMime")].toString().isEmpty() ||
+          !enclosure_link.startsWith(QSL("https://www.youtube.com/v/"))) {
+        msg.m_enclosures.append(QSharedPointer<MessageEnclosure>(enclosure));
+      }
+    }
+
+    msg.m_isImportant = message_map[QSL("starred")].toBool();
+    msg.m_isRead = !message_map[QSL("unread")].toBool();
+    msg.m_title = message_map[QSL("title")].toString();
+    msg.m_url = message_map[QSL("url")].toString();
+
+    if (msg.m_title.simplified().isEmpty()) {
+      msg.m_title = message_map[QSL("mediaDescription")].toString();
+    }
+
+    if (msg.m_title.simplified().isEmpty()) {
+      msg.m_title = msg.m_url;
+    }
+
+    msgs.append(msg);
+  }
+
+  return msgs;
 }
 
 QNetworkReply::NetworkError NextcloudNetworkFactory::triggerFeedUpdate(int feed_id, const QNetworkProxy& custom_proxy) {
@@ -376,7 +429,7 @@ NetworkResult NextcloudNetworkFactory::markMessagesRead(RootItem::ReadStatus sta
     ids.append(QJsonValue(id.toInt()));
   }
 
-  json[QSL("items")] = ids;
+  json[QSL("itemIds")] = ids;
 
   QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -393,7 +446,7 @@ NetworkResult NextcloudNetworkFactory::markMessagesRead(RootItem::ReadStatus sta
                                                    .toInt(),
                                                  QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
                                                  output,
-                                                 QNetworkAccessManager::Operation::PutOperation,
+                                                 QNetworkAccessManager::Operation::PostOperation,
                                                  headers,
                                                  false,
                                                  {},
@@ -402,8 +455,7 @@ NetworkResult NextcloudNetworkFactory::markMessagesRead(RootItem::ReadStatus sta
 }
 
 NetworkResult NextcloudNetworkFactory::markMessagesStarred(RootItem::Importance importance,
-                                                           const QStringList& feed_ids,
-                                                           const QStringList& guid_hashes,
+                                                           const QStringList& custom_ids,
                                                            const QNetworkProxy& custom_proxy) {
   QJsonObject json;
   QJsonArray ids;
@@ -416,15 +468,11 @@ NetworkResult NextcloudNetworkFactory::markMessagesStarred(RootItem::Importance 
     final_url = m_fixedUrl + NEXTCLOUD_API_PATH + "items/unstar/multiple";
   }
 
-  for (int i = 0; i < feed_ids.size(); i++) {
-    QJsonObject item;
-
-    item[QSL("feedId")] = feed_ids.at(i);
-    item[QSL("guidHash")] = guid_hashes.at(i);
-    ids.append(item);
+  for (const QString& custom_id : custom_ids) {
+    ids.append(custom_id.toInt());
   }
 
-  json[QSL("items")] = ids;
+  json[QSL("itemIds")] = ids;
 
   QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -441,7 +489,7 @@ NetworkResult NextcloudNetworkFactory::markMessagesStarred(RootItem::Importance 
                                                    .toInt(),
                                                  QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
                                                  output,
-                                                 QNetworkAccessManager::Operation::PutOperation,
+                                                 QNetworkAccessManager::Operation::PostOperation,
                                                  headers,
                                                  false,
                                                  {},
@@ -653,76 +701,4 @@ RootItem* NextcloudGetFeedsCategoriesResponse::feedsCategories() const {
   }
 
   return parent;
-}
-
-NextcloudGetMessagesResponse::NextcloudGetMessagesResponse(QNetworkReply::NetworkError response,
-                                                           const QString& raw_content)
-  : NextcloudResponse(response, raw_content) {}
-
-NextcloudGetMessagesResponse::~NextcloudGetMessagesResponse() = default;
-
-QList<Message> NextcloudGetMessagesResponse::messages() const {
-  QList<Message> msgs;
-  auto json_items = m_rawContent[QSL("items")].toArray();
-
-  for (const QJsonValue& message : std::as_const(json_items)) {
-    QJsonObject message_map = message.toObject();
-    Message msg;
-
-    msg.m_author = message_map[QSL("author")].toString();
-    msg.m_contents = message_map[QSL("body")].toString();
-    msg.m_created = TextFactory::parseDateTime(message_map[QSL("pubDate")].toDouble() * 1000);
-    msg.m_createdFromFeed = true;
-    msg.m_customId = message_map[QSL("id")].toVariant().toString();
-    msg.m_customData = message_map[QSL("guidHash")].toString();
-    msg.m_rawContents = QJsonDocument(message_map).toJson(QJsonDocument::JsonFormat::Compact);
-
-    // In case body is empty, check for content in mediaDescription if item is available.
-    if (msg.m_contents.isEmpty() && !message_map[QSL("mediaDescription")].isUndefined()) {
-      msg.m_contents = message_map[QSL("mediaDescription")].toString();
-    }
-
-    // Check for mediaThumbnail and append as first enclosure to be viewed in internal viewer.
-    if (!message_map[QSL("mediaThumbnail")].isUndefined()) {
-      MessageEnclosure* enclosure =
-        new MessageEnclosure(message_map[QSL("mediaThumbnail")].toString(), QSL("image/jpg"));
-
-      msg.m_enclosures.append(QSharedPointer<MessageEnclosure>(enclosure));
-    }
-
-    QString enclosure_link = message_map[QSL("enclosureLink")].toString();
-
-    if (!enclosure_link.isEmpty()) {
-      MessageEnclosure* enclosure = new MessageEnclosure();
-
-      enclosure->setMimeType(message_map[QSL("enclosureMime")].toString());
-      enclosure->setUrl(enclosure_link);
-
-      if (enclosure->mimeType().isEmpty()) {
-        enclosure->setMimeType(QSL("image/png"));
-      }
-
-      if (!message_map[QSL("enclosureMime")].toString().isEmpty() ||
-          !enclosure_link.startsWith(QSL("https://www.youtube.com/v/"))) {
-        msg.m_enclosures.append(QSharedPointer<MessageEnclosure>(enclosure));
-      }
-    }
-
-    msg.m_isImportant = message_map[QSL("starred")].toBool();
-    msg.m_isRead = !message_map[QSL("unread")].toBool();
-    msg.m_title = message_map[QSL("title")].toString();
-    msg.m_url = message_map[QSL("url")].toString();
-
-    if (msg.m_title.simplified().isEmpty()) {
-      msg.m_title = message_map[QSL("mediaDescription")].toString();
-    }
-
-    if (msg.m_title.simplified().isEmpty()) {
-      msg.m_title = msg.m_url;
-    }
-
-    msgs.append(msg);
-  }
-
-  return msgs;
 }

@@ -28,14 +28,6 @@ class NextcloudResponse {
     bool m_emptyString;
 };
 
-class NextcloudGetMessagesResponse : public NextcloudResponse {
-  public:
-    explicit NextcloudGetMessagesResponse(QNetworkReply::NetworkError response, const QString& raw_content = QString());
-    virtual ~NextcloudGetMessagesResponse();
-
-    QList<Message> messages() const;
-};
-
 class NextcloudStatusResponse : public NextcloudResponse {
   public:
     explicit NextcloudStatusResponse(QNetworkReply::NetworkError response, const QString& raw_content = QString());
@@ -43,8 +35,6 @@ class NextcloudStatusResponse : public NextcloudResponse {
 
     QString version() const;
 };
-
-class RootItem;
 
 class NextcloudGetFeedsCategoriesResponse : public NextcloudResponse {
   public:
@@ -102,7 +92,7 @@ class NextcloudNetworkFactory {
     void obtainIcons(const QList<Feed*>& feeds, const QNetworkProxy& custom_proxy);
 
     // Get messages for given feed.
-    NextcloudGetMessagesResponse getMessages(int feed_id, const QNetworkProxy& custom_proxy);
+    QList<Message> getMessages(int feed_id, const QNetworkProxy& custom_proxy);
 
     // Misc methods.
     QNetworkReply::NetworkError triggerFeedUpdate(int feed_id, const QNetworkProxy& custom_proxy);
@@ -112,8 +102,7 @@ class NextcloudNetworkFactory {
                                    const QNetworkProxy& custom_proxy);
 
     NetworkResult markMessagesStarred(RootItem::Importance importance,
-                                      const QStringList& feed_ids,
-                                      const QStringList& guid_hashes,
+                                      const QStringList& custom_ids,
                                       const QNetworkProxy& custom_proxy);
 
   private:
