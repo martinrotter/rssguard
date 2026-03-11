@@ -77,7 +77,7 @@ void NextcloudNetworkFactory::setAuthPassword(const QString& auth_password) {
   m_authPassword = auth_password;
 }
 
-NextcloudStatusResponse NextcloudNetworkFactory::status(const QNetworkProxy& custom_proxy) {
+QString NextcloudNetworkFactory::status(const QNetworkProxy& custom_proxy) {
   QByteArray result_raw;
   QList<QPair<QByteArray, QByteArray>> headers;
 
@@ -99,20 +99,20 @@ NextcloudStatusResponse NextcloudNetworkFactory::status(const QNetworkProxy& cus
                                             {},
                                             {},
                                             custom_proxy);
-  NextcloudStatusResponse status_response(network_reply.m_networkError, QString::fromUtf8(result_raw));
-
   qDebugNN << LOGSEC_NEXTCLOUD << "Raw status data is:" << QUOTE_W_SPACE_DOT(result_raw);
 
-  if (network_reply.m_networkError != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD << "Obtaining status info failed with error"
                 << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
+    throw NetworkException(network_reply.m_networkError);
   }
 
-  return status_response;
+  QJsonDocument json = QJsonDocument::fromJson(result_raw);
+  return json[QSL("version")].toString();
 }
 
-NextcloudGetFeedsCategoriesResponse NextcloudNetworkFactory::feedsCategories(const QNetworkProxy& custom_proxy) {
-  QByteArray result_raw;
+RootItem* NextcloudNetworkFactory::feedsCategories(const QNetworkProxy& custom_proxy) {
+  QByteArray content_categories;
   QList<QPair<QByteArray, QByteArray>> headers;
 
   headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, NEXTCLOUD_CONTENT_TYPE_JSON);
@@ -126,7 +126,7 @@ NextcloudGetFeedsCategoriesResponse NextcloudNetworkFactory::feedsCategories(con
                                               ->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout))
                                               .toInt(),
                                             QByteArray(),
-                                            result_raw,
+                                            content_categories,
                                             QNetworkAccessManager::Operation::GetOperation,
                                             headers,
                                             false,
@@ -134,21 +134,21 @@ NextcloudGetFeedsCategoriesResponse NextcloudNetworkFactory::feedsCategories(con
                                             {},
                                             custom_proxy);
 
-  if (network_reply.m_networkError != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD << "Obtaining of categories failed with error"
                 << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
-    return NextcloudGetFeedsCategoriesResponse(network_reply.m_networkError);
+    throw NetworkException(network_reply.m_networkError, QString::fromUtf8(content_categories));
   }
 
-  QString content_categories = QString::fromUtf8(result_raw);
-
   // Now, obtain feeds.
+  QByteArray content_feeds;
+
   network_reply = NetworkFactory::performNetworkOperation(m_urlFeeds,
                                                           qApp->settings()
                                                             ->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout))
                                                             .toInt(),
                                                           QByteArray(),
-                                                          result_raw,
+                                                          content_feeds,
                                                           QNetworkAccessManager::Operation::GetOperation,
                                                           headers,
                                                           false,
@@ -156,15 +156,71 @@ NextcloudGetFeedsCategoriesResponse NextcloudNetworkFactory::feedsCategories(con
                                                           {},
                                                           custom_proxy);
 
-  if (network_reply.m_networkError != QNetworkReply::NoError) {
+  if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
     qCriticalNN << LOGSEC_NEXTCLOUD << "Obtaining of feeds failed with error"
                 << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
-    return NextcloudGetFeedsCategoriesResponse(network_reply.m_networkError);
+    throw NetworkException(network_reply.m_networkError, content_feeds);
   }
 
-  QString content_feeds = QString::fromUtf8(result_raw);
+  auto* parent = new RootItem();
+  QMap<QString, RootItem*> cats;
 
-  return NextcloudGetFeedsCategoriesResponse(network_reply.m_networkError, content_categories, content_feeds);
+  // Top-level feed have "folderId" set to "0" or JSON "null" value.
+  cats.insert(QSL("0"), parent);
+
+  // Process categories first, then process feeds.
+  auto json_folders = QJsonDocument::fromJson(content_categories).object()[QSL("folders")].toArray();
+
+  for (const QJsonValue& cat : std::as_const(json_folders)) {
+    QJsonObject item = cat.toObject();
+    auto* category = new Category();
+
+    category->setTitle(item[QSL("name")].toString());
+    category->setCustomId(QString::number(item[QSL("id")].toInt()));
+    cats.insert(category->customId(), category);
+
+    // All categories in Nextcloud are top-level.
+    parent->appendChild(category);
+  }
+
+  // We have categories added, now add all feeds.
+  auto json_feeds = QJsonDocument::fromJson(content_feeds).object()[QSL("feeds")].toArray();
+
+  for (const QJsonValue& fed : std::as_const(json_feeds)) {
+    QJsonObject item = fed.toObject();
+    auto* feed = new NextcloudFeed();
+    QString feed_url = item[QSL("url")].toString();
+
+    feed->setCustomId(QString::number(item[QSL("id")].toInt()));
+    feed->setSource(feed_url);
+
+    if (feed->source().isEmpty()) {
+      feed->setSource(item[QSL("link")].toString());
+    }
+
+    feed->setProperty("favicon", item[QSL("faviconLink")].toString());
+    feed->setTitle(item[QSL("title")].toString());
+
+    if (feed->title().isEmpty()) {
+      if (feed->source().isEmpty()) {
+        // We cannot add feed which has no title and no url to RSS Guard!!!
+        qCriticalNN << LOGSEC_NEXTCLOUD << "Skipping feed with custom ID" << QUOTE_W_SPACE(feed->customId())
+                    << "from adding to RSS Guard because it has no title and url.";
+        continue;
+      }
+      else {
+        feed->setTitle(feed->source());
+      }
+    }
+
+    // NOTE: Starting with News 15.1.0, top-level feeds do not have parent folder ID 0, but JSON "null".
+    // Luckily, if folder ID is not convertible to int, then default 0 value is returned.
+    cats.value(QString::number(item[QSL("folderId")].toInt(0)))->appendChild(feed);
+    qDebugNN << LOGSEC_NEXTCLOUD << "Custom ID of next fetched processed feed is"
+             << QUOTE_W_SPACE_DOT(feed->customId());
+  }
+
+  return parent;
 }
 
 bool NextcloudNetworkFactory::deleteFeed(const QString& feed_id, const QNetworkProxy& custom_proxy) {
@@ -513,45 +569,6 @@ void NextcloudNetworkFactory::setDownloadOnlyUnreadMessages(bool dowload_only_un
   m_downloadOnlyUnreadMessages = dowload_only_unread_messages;
 }
 
-NextcloudResponse::NextcloudResponse(QNetworkReply::NetworkError response, const QString& raw_content)
-  : m_networkError(response), m_rawContent(QJsonDocument::fromJson(raw_content.toUtf8()).object()),
-    m_emptyString(raw_content.isEmpty()) {}
-
-NextcloudResponse::~NextcloudResponse() = default;
-
-bool NextcloudResponse::isLoaded() const {
-  return !m_emptyString && !m_rawContent.isEmpty();
-}
-
-QString NextcloudResponse::toString() const {
-  return QJsonDocument(m_rawContent).toJson(QJsonDocument::JsonFormat::Compact);
-}
-
-QNetworkReply::NetworkError NextcloudResponse::networkError() const {
-  return m_networkError;
-}
-
-NextcloudStatusResponse::NextcloudStatusResponse(QNetworkReply::NetworkError response, const QString& raw_content)
-  : NextcloudResponse(response, raw_content) {}
-
-NextcloudStatusResponse::~NextcloudStatusResponse() = default;
-
-QString NextcloudStatusResponse::version() const {
-  if (isLoaded()) {
-    return m_rawContent[QSL("version")].toString();
-  }
-  else {
-    return QString();
-  }
-}
-
-NextcloudGetFeedsCategoriesResponse::NextcloudGetFeedsCategoriesResponse(QNetworkReply::NetworkError response,
-                                                                         QString raw_categories,
-                                                                         QString raw_feeds)
-  : NextcloudResponse(response), m_contentCategories(std::move(raw_categories)), m_contentFeeds(std::move(raw_feeds)) {}
-
-NextcloudGetFeedsCategoriesResponse::~NextcloudGetFeedsCategoriesResponse() = default;
-
 void NextcloudNetworkFactory::obtainIcons(const QList<Feed*>& feeds, const QNetworkProxy& custom_proxy) {
   QList<QPair<QByteArray, QByteArray>> headers = {
     NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
@@ -611,94 +628,4 @@ void NextcloudNetworkFactory::obtainIcons(const QList<Feed*>& feeds, const QNetw
         }
       }
     });
-
-  /*
-  for (Feed* fd : feeds) {
-    if (!fd->source().isEmpty()) {
-      QString hashed_url = QCryptographicHash::hash(fd->source().toUtf8(), QCryptographicHash::Algorithm::Md5).toHex();
-      QByteArray icon_data;
-      auto network_res = NetworkFactory::performNetworkOperation(QSL("%1/%2").arg(m_urlFavIcon, hashed_url),
-                                                                 qApp->settings()
-                                                                   ->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout))
-                                                                   .toInt(),
-                                                                 QByteArray(),
-                                                                 icon_data,
-                                                                 QNetworkAccessManager::Operation::GetOperation,
-                                                                 headers);
-
-      if (network_res.m_networkError == QNetworkReply::NetworkError::NoError) {
-        // Icon downloaded, set it up.
-        QPixmap icon_pixmap;
-
-        icon_pixmap.loadFromData(icon_data);
-        fd->setIcon(QIcon(icon_pixmap));
-      }
-      else {
-        qCriticalNN << LOGSEC_NEXTCLOUD << "Failed to fetch icon for" << QUOTE_W_SPACE_DOT(fd->source());
-      }
-    }
-  }
-  */
-}
-
-RootItem* NextcloudGetFeedsCategoriesResponse::feedsCategories() const {
-  auto* parent = new RootItem();
-  QMap<QString, RootItem*> cats;
-
-  // Top-level feed have "folderId" set to "0" or JSON "null" value.
-  cats.insert(QSL("0"), parent);
-
-  // Process categories first, then process feeds.
-  auto json_folders = QJsonDocument::fromJson(m_contentCategories.toUtf8()).object()[QSL("folders")].toArray();
-
-  for (const QJsonValue& cat : std::as_const(json_folders)) {
-    QJsonObject item = cat.toObject();
-    auto* category = new Category();
-
-    category->setTitle(item[QSL("name")].toString());
-    category->setCustomId(QString::number(item[QSL("id")].toInt()));
-    cats.insert(category->customId(), category);
-
-    // All categories in Nextcloud are top-level.
-    parent->appendChild(category);
-  }
-
-  // We have categories added, now add all feeds.
-  auto json_feeds = QJsonDocument::fromJson(m_contentFeeds.toUtf8()).object()[QSL("feeds")].toArray();
-
-  for (const QJsonValue& fed : std::as_const(json_feeds)) {
-    QJsonObject item = fed.toObject();
-    auto* feed = new NextcloudFeed();
-    QString feed_url = item[QSL("url")].toString();
-
-    feed->setCustomId(QString::number(item[QSL("id")].toInt()));
-    feed->setSource(feed_url);
-
-    if (feed->source().isEmpty()) {
-      feed->setSource(item[QSL("link")].toString());
-    }
-
-    feed->setProperty("favicon", item[QSL("faviconLink")].toString());
-    feed->setTitle(item[QSL("title")].toString());
-
-    if (feed->title().isEmpty()) {
-      if (feed->source().isEmpty()) {
-        // We cannot add feed which has no title and no url to RSS Guard!!!
-        qCriticalNN << LOGSEC_NEXTCLOUD << "Skipping feed with custom ID" << QUOTE_W_SPACE(feed->customId())
-                    << "from adding to RSS Guard because it has no title and url.";
-        continue;
-      }
-      else {
-        feed->setTitle(feed->source());
-      }
-    }
-
-    // NOTE: Starting with News 15.1.0, top-level feeds do not have parent folder ID 0, but JSON "null".
-    // Luckily, if folder ID is not convertible to int, then default 0 value is returned.
-    cats.value(QString::number(item[QSL("folderId")].toInt(0)))->appendChild(feed);
-    qDebugNN << LOGSEC_NEXTCLOUD << "Custom ID of next fetched processed feed is"
-             << QUOTE_W_SPACE_DOT(feed->customId());
-  }
-
-  return parent;
 }

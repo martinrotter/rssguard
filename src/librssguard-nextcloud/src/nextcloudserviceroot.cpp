@@ -123,18 +123,10 @@ void NextcloudServiceRoot::updateTitle() {
 }
 
 RootItem* NextcloudServiceRoot::obtainNewTreeForSyncIn() const {
-  NextcloudGetFeedsCategoriesResponse feed_cats_response = m_network->feedsCategories(networkProxy());
+  auto* feed_cats = m_network->feedsCategories(networkProxy());
+  m_network->obtainIcons(feed_cats->getSubTreeFeeds(), networkProxy());
 
-  if (feed_cats_response.networkError() == QNetworkReply::NetworkError::NoError) {
-    auto* tree = feed_cats_response.feedsCategories();
-
-    m_network->obtainIcons(tree->getSubTreeFeeds(), networkProxy());
-    return tree;
-  }
-  else {
-    throw NetworkException(feed_cats_response.networkError(),
-                           tr("cannot get list of feeds, network error '%1'").arg(feed_cats_response.networkError()));
-  }
+  return feed_cats;
 }
 
 QVariantHash NextcloudServiceRoot::customDatabaseData() const {

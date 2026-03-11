@@ -6,6 +6,7 @@
 #include "src/nextcloudnetworkfactory.h"
 
 #include <librssguard/definitions/definitions.h>
+#include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/systemfactory.h>
 
 NextcloudAccountDetails::NextcloudAccountDetails(QWidget* parent) : QWidget(parent) {
@@ -24,17 +25,14 @@ NextcloudAccountDetails::NextcloudAccountDetails(QWidget* parent) : QWidget(pare
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
 
-  connect(m_ui.m_spinLimitMessages,
-          QOverload<int>::of(&QSpinBox::valueChanged),
-          this,
-          [=](int value) {
-            if (value <= 0) {
-              m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
-            }
-            else {
-              m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("articles"));
-            }
-          });
+  connect(m_ui.m_spinLimitMessages, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
+    if (value <= 0) {
+      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("= unlimited"));
+    }
+    else {
+      m_ui.m_spinLimitMessages->setSuffix(QSL(" ") + tr("articles"));
+    }
+  });
 
   connect(m_ui.m_txtPassword->lineEdit(),
           &BaseLineEdit::textChanged,
@@ -66,32 +64,31 @@ void NextcloudAccountDetails::performTest(const QNetworkProxy& custom_proxy) {
   factory.setUrl(m_ui.m_txtUrl->lineEdit()->text());
   factory.setForceServerSideUpdate(m_ui.m_checkServerSideUpdate->isChecked());
 
-  NextcloudStatusResponse result = factory.status(custom_proxy);
+  try {
+    auto result = factory.status(custom_proxy);
 
-  if (result.networkError() != QNetworkReply::NetworkError::NoError) {
-    m_ui.m_lblTestResult
-      ->setStatus(WidgetWithStatus::StatusType::Error,
-                  tr("Network error: '%1'.").arg(NetworkFactory::networkErrorText(result.networkError())),
-                  tr("Network error, have you entered correct Nextcloud endpoint and password?"));
-  }
-  else if (result.isLoaded()) {
-    if (!SystemFactory::isVersionEqualOrNewer(result.version(), QSL(NEXTCLOUD_MIN_VERSION))) {
-      m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                      tr("Installed version: %1, required at least: %2.")
-                                        .arg(result.version(), QSL(NEXTCLOUD_MIN_VERSION)),
-                                      tr("Selected Nextcloud News server is running unsupported version."));
+    if (!SystemFactory::isVersionEqualOrNewer(result, QSL(NEXTCLOUD_MIN_VERSION))) {
+      m_ui.m_lblTestResult
+        ->setStatus(WidgetWithStatus::StatusType::Error,
+                    tr("Installed version: %1, required at least: %2.").arg(result, QSL(NEXTCLOUD_MIN_VERSION)),
+                    tr("Selected Nextcloud News server is running unsupported version."));
     }
     else {
-      m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Ok,
-                                      tr("Installed version: %1, required at least: %2.")
-                                        .arg(result.version(), QSL(NEXTCLOUD_MIN_VERSION)),
-                                      tr("Nextcloud News server is okay."));
+      m_ui.m_lblTestResult
+        ->setStatus(WidgetWithStatus::StatusType::Ok,
+                    tr("Installed version: %1, required at least: %2.").arg(result, QSL(NEXTCLOUD_MIN_VERSION)),
+                    tr("Nextcloud News server is okay."));
     }
   }
-  else {
+  catch (const NetworkException& netEx) {
     m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
-                                    tr("Unspecified error, did you enter correct URL?"),
-                                    tr("Unspecified error, did you enter correct URL?"));
+                                    tr("Network error: '%1'.").arg(netEx.message()),
+                                    tr("Network error, have you entered correct Nextcloud endpoint and password?"));
+  }
+  catch (const ApplicationException& ex) {
+    m_ui.m_lblTestResult->setStatus(WidgetWithStatus::StatusType::Error,
+                                    tr("Unspecified error: '%1'.").arg(ex.message()),
+                                    tr("Unspecified error, have you entered correct Nextcloud endpoint and password?"));
   }
 }
 

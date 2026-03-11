@@ -13,46 +13,6 @@
 #include <QNetworkReply>
 #include <QString>
 
-class NextcloudResponse {
-  public:
-    explicit NextcloudResponse(QNetworkReply::NetworkError response, const QString& raw_content = QString());
-    virtual ~NextcloudResponse();
-
-    bool isLoaded() const;
-    QString toString() const;
-    QNetworkReply::NetworkError networkError() const;
-
-  protected:
-    QNetworkReply::NetworkError m_networkError;
-    QJsonObject m_rawContent;
-    bool m_emptyString;
-};
-
-class NextcloudStatusResponse : public NextcloudResponse {
-  public:
-    explicit NextcloudStatusResponse(QNetworkReply::NetworkError response, const QString& raw_content = QString());
-    virtual ~NextcloudStatusResponse();
-
-    QString version() const;
-};
-
-class NextcloudGetFeedsCategoriesResponse : public NextcloudResponse {
-  public:
-    explicit NextcloudGetFeedsCategoriesResponse(QNetworkReply::NetworkError response,
-                                                 QString raw_categories = QString(),
-                                                 QString raw_feeds = QString());
-    virtual ~NextcloudGetFeedsCategoriesResponse();
-
-    // Returns tree of feeds/categories.
-    // Top-level root of the tree is not needed here.
-    // Returned items do not have primary IDs assigned.
-    RootItem* feedsCategories() const;
-
-  private:
-    QString m_contentCategories;
-    QString m_contentFeeds;
-};
-
 class NextcloudNetworkFactory {
   public:
     explicit NextcloudNetworkFactory();
@@ -80,10 +40,10 @@ class NextcloudNetworkFactory {
     // Operations.
 
     // Get version info.
-    NextcloudStatusResponse status(const QNetworkProxy& custom_proxy);
+    QString status(const QNetworkProxy& custom_proxy);
 
     // Get feeds & categories (used for sync-in).
-    NextcloudGetFeedsCategoriesResponse feedsCategories(const QNetworkProxy& custom_proxy);
+    RootItem* feedsCategories(const QNetworkProxy& custom_proxy);
 
     // Feed operations.
     bool deleteFeed(const QString& feed_id, const QNetworkProxy& custom_proxy);
