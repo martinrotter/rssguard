@@ -49,8 +49,8 @@
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
-      <source>Probes</source>
-      <translation>Sondas</translation>
+      <source>Queries</source>
+      <translation>Consultas</translation>
     </message>
   </context>
   <context>
@@ -616,33 +616,33 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       <translation>Para</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="101"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="103"/>
       <source>Save attachment %1</source>
       <translation>Salvar anexo %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="117"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="119"/>
       <source>Download attachment</source>
       <translation>Transferir anexo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="145"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="147"/>
       <source>Downloaded %1 kB...</source>
       <translation>Baixado %1 kB...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="156"/>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="162"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="158"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="164"/>
       <source>Cannot download attachment</source>
       <translation>Impossível transferir o anexo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="157"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="159"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
       <translation>Impossível transferir o anexo, não iniciou sessão.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="163"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="165"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
       <translation>Impossível transferir o anexo, ocorreu um erro geral.</translation>
     </message>
@@ -678,33 +678,33 @@ Maybe change used database name in settings and try again. Falling back to SQLit
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="272"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="342"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>usa as definições globais, mas a obtenção automática global de artigos está desactivada</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="296"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="366"/>
       <source>no errors</source>
       <translation>sem erros</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="302"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="372"/>
       <source>authentication error</source>
       <translation>erro de autenticação</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="308"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="378"/>
       <source>network error</source>
       <translation>erro de rede</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="258"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="328"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>não usa a obtenção automática de artigos</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="269"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="339"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>usa as definições globais (%n minuto até à obtenção automática de artigos)</numerusform>
@@ -712,7 +712,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="283"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="353"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -721,27 +721,27 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="299"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="369"/>
       <source>has new articles</source>
       <translation>tem novos artigos</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="305"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="375"/>
       <source>SQL database error</source>
       <translation>Erro de banco de dados SQL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="311"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="381"/>
       <source>parsing error</source>
       <translation>erro de análise</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="314"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="384"/>
       <source>error</source>
       <translation>erro</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="384"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="454"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -799,17 +799,17 @@ ID do item: %5
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="213"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="215"/>
       <source>full article content is empty, likely due to required cookies or other problem</source>
       <translation type="unfinished">full article content is empty, likely due to required cookies or other problem</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="447"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="449"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>A iniciar a transferência de alguns artigos de canais</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="448"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="450"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>Serão transferidos novos artigos de %n canal.</numerusform>
@@ -817,12 +817,12 @@ ID do item: %5
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="472"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="474"/>
       <source>Some feeds have errors</source>
       <translation>Alguns feeds têm erros</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="473"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="475"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation>Alguns feeds emitiram um erro ao obter artigos.</translation>
     </message>
@@ -4666,12 +4666,12 @@ Expiração: %2</translation>
   <context>
     <name>IOFactory</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="171"/>
+      <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="174"/>
       <source>Cannot open file &apos;%1&apos; for reading.</source>
       <translation>Impossível abrir o ficheiro "%1" para leitura.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="192"/>
+      <location filename="../src/librssguard/miscellaneous/iofactory.cpp" line="195"/>
       <source>Cannot open file &apos;%1&apos; for writting.</source>
       <translation>Impossível abrir o ficheiro "%1" para escrita.</translation>
     </message>
@@ -5271,12 +5271,12 @@ Expiração: %2</translation>
       <translation>Mostrar todas as etiquetas</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="254"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="257"/>
       <source>Fetching failed</source>
       <translation type="unfinished">Fetching failed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="255"/>
+      <location filename="../src/librssguard/gui/messagepreviewer.cpp" line="258"/>
       <source>Article cannot be fetched: %1.</source>
       <translation type="unfinished">Article cannot be fetched: %1.</translation>
     </message>
@@ -5340,77 +5340,77 @@ Expiração: %2</translation>
   <context>
     <name>MessagesModel</name>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="604"/>
       <source>Id</source>
       <translation>ID</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="604"/>
       <source>Read</source>
       <translation>Lida</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="604"/>
       <source>Deleted</source>
       <translation>Excluída</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="604"/>
       <source>Important</source>
       <translation>Importante</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="590"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="606"/>
       <source>Feed</source>
       <translation>Canal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="605"/>
       <source>Title</source>
       <translation>Título</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="605"/>
       <source>Author</source>
       <translation>Autor</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="605"/>
       <source>Contents</source>
       <translation>Conteúdo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="588"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="604"/>
       <source>Permanently deleted</source>
       <translation>Eliminada permanentemente</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="590"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="606"/>
       <source>Account ID</source>
       <translation>ID da conta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="590"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="606"/>
       <source>Custom ID</source>
       <translation>ID personalizado</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="605"/>
       <source>Feed ID</source>
       <translation>ID do canal</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="590"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="606"/>
       <source>Score</source>
       <translation>Pontuação</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="605"/>
       <source>Date</source>
       <translation>Data</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="363"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="379"/>
       <source>Loading of articles failed, maybe messages could not be downloaded.</source>
       <translation>Falha ao carregar os artigos, talvez as mensagens não tenham sido transferidas.</translation>
     </message>
@@ -5435,164 +5435,176 @@ Expiração: %2</translation>
       <translation>Carregados extra artigos %1 em %2 milissegundos</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="208"/>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="255"/>
+      <source>Error in query</source>
+      <translation type="unfinished">Error in query</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="209"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="256"/>
+      <source>There is something wrong with your query: %1</source>
+      <translation type="unfinished">There is something wrong with your query: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="271"/>
       <source>Loaded %1 articles in %2 ms (%3 ms to clear cache, %4 ms for DB data transfer, %5 ms to fill dynamic data)</source>
       <translation>Artigos %1 carregados em %2 ms (%3 ms para limpar o cache, %4 ms para transferência de dados do BD, %5 ms para preencher dados dinâmicos)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="308"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="324"/>
       <source>cannot set model data for column %1</source>
       <translation>não é possível definir dados do modelo para a coluna %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="410"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="426"/>
       <source>Feed not found</source>
       <translation>Feed não encontrado</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="411"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="427"/>
       <source>Feed cannot be edited because it was not found, this is weird.</source>
       <translation>Feed não pode ser editado porque não foi encontrado, isto é estranho.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="417"/>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="426"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="433"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="442"/>
       <source>Cannot edit feed</source>
       <translation>Não é possível editar o item</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="418"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="434"/>
       <source>The feed cannot be edited because this particular feed (or account) does not support it.</source>
       <translation>O feed não pode ser editado porque esta fonte de notícias (ou conta) não o suporta.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="427"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="443"/>
       <source>The feed cannot be edited because another critical operation is ongoing.</source>
       <translation>Impossível adicionar o canal por estar em curso outra operação crítica.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="550"/>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="583"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="566"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="599"/>
       <source>article with row %1 not found</source>
       <translation>artigo com linha %1 não foi encontrado</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="589"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="605"/>
       <source>URL</source>
       <translation>URL </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="590"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="606"/>
       <source>Custom data</source>
       <translation>Dados personalizados</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="591"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="607"/>
       <source>Assigned labels</source>
       <translation>Etiquetas atribuídas</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="591"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="607"/>
       <source>Has attachments</source>
       <translation>Contém anexo(s)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="593"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="609"/>
       <source>ID of the article.</source>
       <translation>ID do artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="593"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="609"/>
       <source>Is article read?</source>
       <translation>O artigo foi lido?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="593"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="609"/>
       <source>Is article important?</source>
       <translation>O artigo é importante?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="594"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="610"/>
       <source>Is article deleted?</source>
       <translation>O artigo foi eliminado?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="594"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="610"/>
       <source>Is article permanently deleted from recycle bin?</source>
       <translation>O artigo foi eliminado permanentemente da reciclagem?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="595"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="611"/>
       <source>ID of feed which this article belongs to.</source>
       <translation>ID do canal ao qual este artigo pertence.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="595"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="611"/>
       <source>Title of the article.</source>
       <translation>Título do artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="596"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="612"/>
       <source>Url of the article.</source>
       <translation>URL do artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="596"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="612"/>
       <source>Author of the article.</source>
       <translation>Autor do artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="596"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="612"/>
       <source>Creation date of the article.</source>
       <translation>Data de criação do artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="597"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="613"/>
       <source>Contents of the article.</source>
       <translation>Conteúdo do artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="597"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="613"/>
       <source>Score of the article.</source>
       <translation>Pontuação do artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="597"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="613"/>
       <source>Account ID of the article.</source>
       <translation>ID da conta do artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="598"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="614"/>
       <source>Custom ID of the article.</source>
       <translation>ID personalizado do artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="598"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="614"/>
       <source>Custom account-specific data of the article.</source>
       <translation>Dados personalizados de conta específicos do artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="599"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="615"/>
       <source>Name of feed of the article.</source>
       <translation>Nome do canal do artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="599"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="615"/>
       <source>Indication of attachments presence within the article.</source>
       <translation>Indicação da presença de anexos no artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="600"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="616"/>
       <source>Labels assigned to the article.</source>
       <translation>Etiquetas atribuídas ao artigo.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="745"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="761"/>
       <source>article model column %1 is out of range</source>
       <translation>coluna do modelo de artigo %1 está fora do intervalo</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="769"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="785"/>
       <source>%n months ago</source>
       <translation>
         <numerusform>%n mês atrás</numerusform>
@@ -5600,7 +5612,7 @@ Expiração: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="773"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="789"/>
       <source>%n weeks ago</source>
       <translation>
         <numerusform>%n semana atrás</numerusform>
@@ -5608,7 +5620,7 @@ Expiração: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="777"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="793"/>
       <source>%n days ago</source>
       <translation>
         <numerusform>%n dia atrás</numerusform>
@@ -5616,12 +5628,12 @@ Expiração: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="781"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="797"/>
       <source>yesterday</source>
       <translation>ontem</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="785"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="801"/>
       <source>%n hours ago</source>
       <translation>
         <numerusform>%n hora atrás</numerusform>
@@ -5629,7 +5641,7 @@ Expiração: %2</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="789"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="805"/>
       <source>%n minutes ago</source>
       <translation>
         <numerusform>%n minuto atrás</numerusform>
@@ -5637,17 +5649,17 @@ Expiração: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="792"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="808"/>
       <source>just now</source>
       <translation>agora mesmo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="1265"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="1281"/>
       <source>Fetch full article contents</source>
       <translation type="unfinished">Fetch full article contents</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="1288"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="1304"/>
       <source>Fetched %n article(s)...</source>
       <translation type="unfinished">
         <numerusform>Fetched %n article(s)...</numerusform>
@@ -5655,7 +5667,7 @@ Expiração: %2</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="362"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="378"/>
       <source>Loading of articles from item &apos;%1&apos; failed</source>
       <translation>Falha ao carregar artigos do item "%1"</translation>
     </message>
@@ -6209,7 +6221,7 @@ Expiração: %2</translation>
   <context>
     <name>NextcloudServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="134"/>
+      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="137"/>
       <source>cannot get list of feeds, network error &apos;%1&apos;</source>
       <translation>impossível obter lista de canais, erro de rede "%1"</translation>
     </message>
@@ -6273,7 +6285,7 @@ Expiração: %2</translation>
       <translation>Suavização de forma</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlwidget.cpp" line="443"/>
+      <location filename="../src/librssguard/gui/webviewers/qlitehtml/qlitehtmlwidget.cpp" line="453"/>
       <source>Advanced</source>
       <translation>Avançado</translation>
     </message>
@@ -6501,55 +6513,55 @@ Lista de leitores suportados:</translation>
       <translation>plica de fecho em falta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="177"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="180"/>
       <source>XML is not well-formed, %1</source>
       <translation>XML mal formatado, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="308"/>
-      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="183"/>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="185"/>
+      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="311"/>
+      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="186"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="188"/>
       <source>XML is not well-formed, %1, line %2, column %3</source>
       <translation>XML não está bem formatado, %1, linha %2, coluna %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="317"/>
+      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="320"/>
       <source>not an ATOM feed</source>
       <translation>não é um canal ATOM</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="127"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="130"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>Erro JSON &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="131"/>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="163"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="134"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="166"/>
       <source>not a JSON feed</source>
       <translation>não é um canal JSON</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="192"/>
+      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="195"/>
       <source>not an RDF feed</source>
       <translation>não é um canal RDF</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="192"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="195"/>
       <source>not a RSS feed</source>
       <translation>não é um canal RSS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="161"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="164"/>
       <source>support for gzipped sitemaps is not enabled</source>
       <translation>suporte para mapas de página comprimidos (gzip) inactivo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="190"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="193"/>
       <source>sitemap indices are not supported</source>
       <translation>índices do mapa de página não suportados</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="194"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="197"/>
       <source>not a Sitemap</source>
       <translation>não é um mapa de página</translation>
     </message>
@@ -6630,17 +6642,17 @@ Lista de leitores suportados:</translation>
       <translation>(não suportado)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="70"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="73"/>
       <source>iCalendar error &apos;%1&apos;</source>
       <translation>Erro iCalendar &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="84"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="87"/>
       <source>not an iCalendar</source>
       <translation>não é um iCalendar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="193"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="196"/>
       <source>required iCal data are missing</source>
       <translation>dados iCal requeridos em falta</translation>
     </message>
@@ -6785,22 +6797,22 @@ stack: %3</translation>
       <translation>Artigos importados de feeds %1...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="166"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="167"/>
       <source>skipping article, it has no title and no URL</source>
       <translation>ignorando o artigo, não tem título nem URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="305"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="306"/>
       <source>Unnamed item</source>
       <translation>Item sem nome</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="415"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="416"/>
       <source>missing QuiteRSS tables %1</source>
       <translation>faltando tabelas QuiteRSS %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="421"/>
+      <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="422"/>
       <source>metadata version 17 was expected</source>
       <translation>metadados versão 17 era esperado</translation>
     </message>
@@ -8630,22 +8642,22 @@ Fetch full articles: %7 (plain text only: %8)</translation>
       <translation>Ficheiro local</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="469"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="486"/>
       <source>uses application setting</source>
       <translation type="unfinished">uses application setting</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="472"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="489"/>
       <source>enabled</source>
       <translation type="unfinished">enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="475"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="492"/>
       <source>disabled</source>
       <translation type="unfinished">disabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="478"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="495"/>
       <source>unknown state</source>
       <translation type="unfinished">unknown state</translation>
     </message>
@@ -9018,12 +9030,12 @@ Esta configuração é útil quando a análise de XML bruto do canal é muito le
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="718"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="719"/>
       <source>Error when loading initial feeds</source>
       <translation>Erro ao carregar canais iniciais</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="504"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="505"/>
       <source>Fetch metadata</source>
       <translation>Obter metadados</translation>
     </message>
@@ -9075,28 +9087,28 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       <translation type="unfinished">Load &amp;default feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="655"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="656"/>
       <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
       <translation type="unfinished">Some feeds/folders were not imported due to error, check debug log for more details.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="678"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="679"/>
       <source>Cannot add folder</source>
       <translation type="unfinished">Cannot add folder</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="679"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="680"/>
       <source>Cannot add folder because another critical operation is ongoing.</source>
       <translation type="unfinished">Cannot add folder because another critical operation is ongoing.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="734"/>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="743"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="735"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="744"/>
       <source>Error during file import</source>
       <translation type="unfinished">Error during file import</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="758"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="759"/>
       <source>Fetching metadata for %n feeds</source>
       <translation type="unfinished">
         <numerusform>Fetching metadata for %n feeds</numerusform>
@@ -9104,7 +9116,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="767"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="768"/>
       <source>Fetched %n feeds...</source>
       <translation type="unfinished">
         <numerusform>Fetched %n feeds...</numerusform>
@@ -9112,22 +9124,22 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="777"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="778"/>
       <source>Export feeds</source>
       <translation>Exportar canais</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="778"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="779"/>
       <source>Import feeds</source>
       <translation>Importar canais</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="780"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="781"/>
       <source>Import from QuiteRSS</source>
       <translation type="unfinished">Import from QuiteRSS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="782"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="783"/>
       <source>Import from RSS Guard 4.x</source>
       <translation type="unfinished">Import from RSS Guard 4.x</translation>
     </message>
@@ -9147,7 +9159,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       <translation>Impossível adicionar canais por estar em curso outra operação crítica.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="658"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="659"/>
       <source>Import was completely successful.</source>
       <translation>A importação foi bem sucedida.</translation>
     </message>
@@ -9704,7 +9716,7 @@ Servidor: %2
       <translation>Abrir no reprodutor multimédia</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="231"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="224"/>
       <source>No title</source>
       <extracomment>Webbrowser tab title when no title is available.</extracomment>
       <translation>Sem título</translation>
