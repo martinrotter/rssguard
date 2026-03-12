@@ -355,8 +355,9 @@
 #define APP_SQL_PATH   QSL(":/sql")
 #define APP_INFO_PATH  QSL(":/text")
 
-#define APP_ICON_PATH       QSL(":/graphics/rssguard.png")
-#define APP_ICON_PLAIN_PATH QSL(":/graphics/rssguard_plain.png")
+#define APP_ICON_SCALABLE_PATH QSL(":/graphics/rssguard.svg")
+#define APP_ICON_PATH          QSL(":/graphics/rssguard.png")
+#define APP_ICON_PLAIN_PATH    QSL(":/graphics/rssguard_plain.png")
 
 #define APP_ICON_MONO_PATH       QSL(":/graphics/rssguard_mono.png")
 #define APP_ICON_MONO_PLAIN_PATH QSL(":/graphics/rssguard_plain_mono.png")
