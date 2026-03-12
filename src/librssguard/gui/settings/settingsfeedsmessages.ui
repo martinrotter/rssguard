@@ -14,7 +14,7 @@
    <item>
     <widget class="QTabWidget" name="m_tabFeedsMessages">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
@@ -262,28 +262,28 @@
          </property>
         </widget>
        </item>
-       <item row="7" column="0" colspan="2">
+       <item row="8" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbUpdateFeedListDuringFetching">
          <property name="text">
           <string>Update feed list during feed fetching</string>
          </property>
         </widget>
        </item>
-       <item row="8" column="0" colspan="2">
+       <item row="9" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbListsRestrictedShortcuts">
          <property name="text">
           <string>Allow only basic keyboard shortcuts for feed/article list</string>
          </property>
         </widget>
        </item>
-       <item row="9" column="0" colspan="2">
+       <item row="10" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkShowTooltips">
          <property name="text">
           <string>Display tooltips for feeds and articles</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="0" colspan="2">
+       <item row="12" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbStrikethroughDisabledFeeds">
          <property name="text">
           <string>Strikethrough disabled feed titles</string>
@@ -292,6 +292,16 @@
        </item>
        <item row="3" column="0" colspan="2">
         <widget class="HelpSpoiler" name="m_helpCountsFeedsFormat" native="true"/>
+       </item>
+       <item row="7" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_cbHideCountsIfNoUnreadLabelImportant">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
+         <property name="text">
+          <string>Also hide article counts from labels and important articles</string>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>
@@ -772,6 +782,7 @@
   <tabstop>m_cmbCountsFeedList</tabstop>
   <tabstop>m_cmbCountsAlignment</tabstop>
   <tabstop>m_cbHideCountsIfNoUnread</tabstop>
+  <tabstop>m_cbHideCountsIfNoUnreadLabelImportant</tabstop>
   <tabstop>m_cbUpdateFeedListDuringFetching</tabstop>
   <tabstop>m_cbListsRestrictedShortcuts</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
@@ -822,6 +833,22 @@
     <hint type="destinationlabel">
      <x>206</x>
      <y>236</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>m_cbHideCountsIfNoUnread</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>m_cbHideCountsIfNoUnreadLabelImportant</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>283</x>
+     <y>321</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>283</x>
+     <y>347</y>
     </hint>
    </hints>
   </connection>

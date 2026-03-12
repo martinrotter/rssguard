@@ -139,6 +139,7 @@ jobs:
             ./rssguard-build/rssguard-*win*.7z
             ./rssguard-build/rssguard-*mac64.dmg
             ./rssguard-build/rssguard-*linux64.AppImage
+            ./rssguard-build/rssguard-*linux64.AppImage.zsync
 
   dist-binaries:
     name: distribute-binaries

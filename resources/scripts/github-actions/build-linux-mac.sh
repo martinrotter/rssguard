@@ -99,11 +99,15 @@ if [ $is_linux = true ]; then
   
   SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
   
+  export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|${image_full_name}.zsync"
+  export VERSION=$git_tag
   export ICON=$prefix/share/icons/hicolor/512x512/apps/$app_id.png
   export DESKTOP=$prefix/share/applications/$app_id.desktop
   export DEPLOY_OPENGL=1
   export OUTPUT_APPIMAGE=1
 
+  echo "Upinfo: $UPINFO"
+  echo "Version: $VERSION"
   echo "Desktop file: $DESKTOP"
 
   wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
@@ -133,4 +137,11 @@ fi
 
 image_generated_name="$1"
 mv "$image_generated_name" "$image_full_name"
+
+if [ $is_linux = true ]; then
+  set -- *.AppImage.zsync
+  zsync_name="$1"
+  mv "$zsync_name" "${image_full_name}.zsync"
+fi
+
 ls
