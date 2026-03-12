@@ -117,7 +117,7 @@ ${IfThen} $9 < 6 ${|} MessageBox mb_iconstop `ExecWaitJob "${_exec}" failed!` ${
 
 ; Installer sections.
 Section "!Core" Core
-	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION 'Make sure to manually backup all your "data*" user data folders NOW. Are you sure you want to continue?' IDOK Continue IDCANCEL QuitMe
+	MessageBox MB_YESNO|MB_ICONEXCLAMATION 'Make sure to manually backup all your "data*" user data folders NOW. Are you sure you want to continue?' IDYES Continue IDNO QuitMe
 
 QuitMe:
   Abort
