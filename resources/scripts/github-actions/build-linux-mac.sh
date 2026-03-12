@@ -99,7 +99,7 @@ if [ $is_linux = true ]; then
   
   SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
   
-  export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|${image_full_name}.zsync"
+  export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|rssguard-*-${qt_id}-${os_id}.${image_suffix}.zsync"
   export VERSION=$git_tag
   export ICON=$prefix/share/icons/hicolor/512x512/apps/$app_id.png
   export DESKTOP=$prefix/share/applications/$app_id.desktop
