@@ -87,6 +87,9 @@ DVALUE(bool) Feeds::ShowTreeBranchesDef = true;
 DKEY Feeds::HideCountsIfNoUnread = "hide_counts_if_no_unread";
 DVALUE(bool) Feeds::HideCountsIfNoUnreadDef = false;
 
+DKEY Feeds::AlwaysShowCountsLabelsImportant = "hide_counts_if_no_unread_labels_important";
+DVALUE(bool) Feeds::AlwaysShowCountsLabelsImportantDef = false;
+
 DKEY Feeds::UpdateFeedListDuringFetching = "update_feed_list_during_fetching";
 DVALUE(bool) Feeds::UpdateFeedListDuringFetchingDef = false;
 

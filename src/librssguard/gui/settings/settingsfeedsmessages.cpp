@@ -117,6 +117,7 @@ void SettingsFeedsMessages::loadUi() {
   connect(m_ui->m_cbListsRestrictedShortcuts, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cmbIgnoreContentsChanges, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbHideCountsIfNoUnread, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cbAlwaysShowCountsLabelImportant, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdate, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkSwitchArticleListRtl, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbUpdateFeedListDuringFetching, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -344,6 +345,9 @@ void SettingsFeedsMessages::loadSettings() {
 
   m_ui->m_cbHideCountsIfNoUnread
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::HideCountsIfNoUnread)).toBool());
+  m_ui->m_cbAlwaysShowCountsLabelImportant
+    ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::AlwaysShowCountsLabelsImportant)).toBool());
+
   m_ui->m_cmbUnreadIconType
     ->setCurrentIndex(m_ui->m_cmbUnreadIconType
                         ->findData(settings()->value(GROUP(Messages), SETTING(Messages::UnreadIconType)).toInt()));
@@ -478,6 +482,9 @@ void SettingsFeedsMessages::saveSettings() {
                        m_ui->m_cbUpdateFeedListDuringFetching->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::OnlyBasicShortcutsInLists, m_ui->m_cbListsRestrictedShortcuts->isChecked());
 
+  settings()->setValue(GROUP(Feeds),
+                       Feeds::AlwaysShowCountsLabelsImportant,
+                       m_ui->m_cbAlwaysShowCountsLabelImportant->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::HideCountsIfNoUnread, m_ui->m_cbHideCountsIfNoUnread->isChecked());
   settings()->setValue(GROUP(Messages), Messages::UnreadIconType, m_ui->m_cmbUnreadIconType->currentData().toInt());
 

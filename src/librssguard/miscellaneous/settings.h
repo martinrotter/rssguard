@@ -104,6 +104,9 @@ namespace Feeds {
   KEY HideCountsIfNoUnread;
   VALUE(bool) HideCountsIfNoUnreadDef;
 
+  KEY AlwaysShowCountsLabelsImportant;
+  VALUE(bool) AlwaysShowCountsLabelsImportantDef;
+
   KEY UpdateFeedListDuringFetching;
   VALUE(bool) UpdateFeedListDuringFetchingDef;
 

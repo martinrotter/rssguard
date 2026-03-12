@@ -14,7 +14,7 @@
    <item>
     <widget class="QTabWidget" name="m_tabFeedsMessages">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="m_tabFeeds">
       <attribute name="title">
@@ -294,12 +294,12 @@
         <widget class="HelpSpoiler" name="m_helpCountsFeedsFormat" native="true"/>
        </item>
        <item row="7" column="0" colspan="2">
-        <widget class="QCheckBox" name="m_cbHideCountsIfNoUnreadLabelImportant">
+        <widget class="QCheckBox" name="m_cbAlwaysShowCountsLabelImportant">
          <property name="enabled">
           <bool>false</bool>
          </property>
          <property name="text">
-          <string>Also hide article counts from labels and important articles</string>
+          <string>Also always show article counts from labels and important articles</string>
          </property>
         </widget>
        </item>
@@ -782,7 +782,7 @@
   <tabstop>m_cmbCountsFeedList</tabstop>
   <tabstop>m_cmbCountsAlignment</tabstop>
   <tabstop>m_cbHideCountsIfNoUnread</tabstop>
-  <tabstop>m_cbHideCountsIfNoUnreadLabelImportant</tabstop>
+  <tabstop>m_cbAlwaysShowCountsLabelImportant</tabstop>
   <tabstop>m_cbUpdateFeedListDuringFetching</tabstop>
   <tabstop>m_cbListsRestrictedShortcuts</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
@@ -839,7 +839,7 @@
   <connection>
    <sender>m_cbHideCountsIfNoUnread</sender>
    <signal>toggled(bool)</signal>
-   <receiver>m_cbHideCountsIfNoUnreadLabelImportant</receiver>
+   <receiver>m_cbAlwaysShowCountsLabelImportant</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
