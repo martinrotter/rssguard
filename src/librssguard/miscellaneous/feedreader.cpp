@@ -58,6 +58,10 @@ void FeedReader::updateAllFeedsOnStartup() {
   }
   else {
     qWarningNN << LOGSEC_CORE << "Feed fetch on startup is skipped, because fetching is paused.";
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Not fetched on startup"),
+                                    tr("Fetching of feeds on app startup was skipped because auto-fetching is paused."),
+                                    QSystemTrayIcon::MessageIcon::Warning));
   }
 
   connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
