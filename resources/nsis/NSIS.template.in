@@ -117,15 +117,15 @@ ${IfThen} $9 < 6 ${|} MessageBox mb_iconstop `ExecWaitJob "${_exec}" failed!` ${
 
 ; Installer sections.
 Section "!Core" Core
-	MessageBox MB_YESNO|MB_ICONEXCLAMATION 'Make sure to manually backup all your "data*" user data folders NOW. Are you sure you want to continue?' IDYES Continue IDNO QuitMe
+  IfFileExists $INSTDIR\Uninstall.exe Uninstall NotInstalled
+  
+Uninstall:
+	MessageBox MB_YESNO|MB_ICONEXCLAMATION 'Make sure to manually backup all your "data*" user data folders NOW. Are you sure you want to continue?' /SD IDYES Continue IDNO QuitMe
 
 QuitMe:
   Abort
 
 Continue:
-  IfFileExists $INSTDIR\Uninstall.exe Uninstall NotInstalled
-  
-Uninstall:
   !insertmacro ExecWaitJob '"$INSTDIR\Uninstall.exe /S"'
 
 NotInstalled:
@@ -208,12 +208,15 @@ Section "Uninstall"
 exeTest:
 	${nsProcess::FindProcess} "${EXE_NAME}" $R0
 	StrCmp $R0 0 0 notRunning
-	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION '${APP_NAME} (${EXE_NAME}) is still running. Quit it first and then proceed.' IDOK exeTest IDCANCEL quitMe
+	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION '${APP_NAME} (${EXE_NAME}) is still running. Quit it first and then proceed.' /SD IDOK exeTest IDCANCEL quitMe
 
 quitMe:
   Abort
 
 notRunning:
+	MessageBox MB_YESNO|MB_ICONEXCLAMATION 'Make sure to manually backup all your "data*" user data folders NOW. Are you sure you want to continue?' /SD IDYES continue IDNO quitMe
+
+continue:
   ; Here remove all files, but skip "data" folder.
   Push "$INSTDIR"
   Push "data"
