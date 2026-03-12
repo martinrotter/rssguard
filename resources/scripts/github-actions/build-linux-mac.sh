@@ -99,6 +99,7 @@ if [ $is_linux = true ]; then
   
   SHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
   
+  export OUTNAME=$image_full_name
   export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|rssguard-*-${qt_id}-${os_id}.${image_suffix}.zsync"
   export VERSION=$git_tag
   export ICON=$prefix/share/icons/hicolor/512x512/apps/$app_id.png
@@ -106,6 +107,7 @@ if [ $is_linux = true ]; then
   export DEPLOY_OPENGL=1
   export OUTPUT_APPIMAGE=1
 
+  echo "Outname: $OUTNAME"
   echo "Upinfo: $UPINFO"
   echo "Version: $VERSION"
   echo "Desktop file: $DESKTOP"
@@ -114,8 +116,6 @@ if [ $is_linux = true ]; then
   chmod +x ./quick-sharun
 
   ./quick-sharun /usr/*/rssguard*
-
-  set -- *.AppImage
 else
   mkdir -p "$prefix/Contents/Frameworks"
   mv "$prefix/Contents/MacOS/librssguard.dylib" "$prefix/Contents/Frameworks/"
@@ -133,15 +133,8 @@ else
   find "$prefix" -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'
 
   set -- *.dmg
-fi
-
-image_generated_name="$1"
-mv "$image_generated_name" "$image_full_name"
-
-if [ $is_linux = true ]; then
-  set -- *.AppImage.zsync
-  zsync_name="$1"
-  mv "$zsync_name" "${image_full_name}.zsync"
+  image_generated_name="$1"
+  mv "$image_generated_name" "$image_full_name"
 fi
 
 ls
