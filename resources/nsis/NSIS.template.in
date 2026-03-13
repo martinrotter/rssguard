@@ -120,14 +120,15 @@ Section "!Core" Core
   IfFileExists $INSTDIR\Uninstall.exe Uninstall NotInstalled
   
 Uninstall:
-	MessageBox MB_YESNO|MB_ICONEXCLAMATION 'Make sure to manually backup all your "data*" user data folders NOW. Are you sure you want to continue?' /SD IDYES Continue IDNO QuitMe
+	MessageBox MB_YESNO|MB_ICONEXCLAMATION "Make sure to manually backup all your 'data*' user data folders NOW.$\n$\nAre you sure you want to continue?" /SD IDYES IDYES Continue IDNO QuitMe
 
 QuitMe:
-  Abort
+  SetErrorLevel 1
+  Quit
 
 Continue:
   !insertmacro ExecWaitJob '"$INSTDIR\Uninstall.exe /S"'
-
+  
 NotInstalled:
   SetOutPath "$INSTDIR"
   
@@ -208,13 +209,14 @@ Section "Uninstall"
 exeTest:
 	${nsProcess::FindProcess} "${EXE_NAME}" $R0
 	StrCmp $R0 0 0 notRunning
-	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION '${APP_NAME} (${EXE_NAME}) is still running. Quit it first and then proceed.' /SD IDOK exeTest IDCANCEL quitMe
+	MessageBox MB_OKCANCEL|MB_ICONEXCLAMATION "${APP_NAME} (${EXE_NAME}) is still running.$\n$\nQuit it or kill it manually first and then proceed." /SD IDCANCEL IDOK exeTest IDCANCEL quitMe
 
 quitMe:
-  Abort
+  SetErrorLevel 1
+  Quit
 
 notRunning:
-	MessageBox MB_YESNO|MB_ICONEXCLAMATION 'Make sure to manually backup all your "data*" user data folders NOW. Are you sure you want to continue?' /SD IDYES continue IDNO quitMe
+	MessageBox MB_YESNO|MB_ICONEXCLAMATION "Make sure to manually backup all your 'data*' user data folders NOW.$\n$\nAre you sure you want to continue?" /SD IDYES IDYES continue IDNO quitMe
 
 continue:
   ; Here remove all files, but skip "data" folder.
