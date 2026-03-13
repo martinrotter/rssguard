@@ -13,15 +13,20 @@ Added:
 * Articles are automatically marked as ready when opened in external browser or new internal tab. (#2090)
 * Updated default `Accept` headers according to feed type and also updated default `User-Agent` header. (#2122)
 * Official `AppImage`s now should support delta-updates. (#2138)
+* Nextcloud plugin now uses version 1.3 of the API.
 
 Fixed:
 * Custom external browser was sometimes ignored. (#2102)
 * Search icon was low-quality. (#2104)
 * Some article list filtering options were not working. (#2106)
 * Article-extractor now respects custom feed `HTTP` headers and proxy settings. (#2108)
+* Configurable alignment of article counts in feed list now properly vertically aligns to center.
+* Some QoL updates for the installer.
+* Article previewer now also supports dragging of text. Note that dragging of `URL`s and text can only be done with middle mouse button/wheel press.
 * Article-extractor was completely missing from installers. Jesus. (#2121)
 * Sort order was not properly remembered for some columns. (#2127)
 * Some images were distorted in internal article browser. (#2128)
+* Expanding of items in feed list was bit fixed, particularly when filtering with some search phrase.
 * Some fixes for QuiteRSS import. (#2119)
 
 5.0.3

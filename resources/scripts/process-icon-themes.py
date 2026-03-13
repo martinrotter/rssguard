@@ -189,7 +189,7 @@ for ROOT in ROOTS:
 
     content = f"""[Icon Theme]
 Name={theme_name}
-Comment=Minimal icon theme
+Comment=Custom icon theme
 Directories=icons
 Inherits=hicolor
 
