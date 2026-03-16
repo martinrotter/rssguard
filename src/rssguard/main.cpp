@@ -122,7 +122,7 @@ int main(int argc, char* argv[]) {
            << NONQUOTE_W_SPACE_DOT(QDateTime::currentDateTimeUtc().toString(Qt::DateFormat::ISODate));
 
   // Instantiate base application object.
-  Application application(QSL(APP_LOW_NAME), argc, argv, raw_cli_args);
+  Application application(QSL(APP_LOW_NAME) + QSL(APP_VERSION_MAJOR), argc, argv, raw_cli_args);
 
 #if defined(ENABLE_MEDIAPLAYER_LIBMPV)
   qDebugNN << LOGSEC_CORE << "Setting locale for LC_NUMERIC to C as libmpv requires it.";
