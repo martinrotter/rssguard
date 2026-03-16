@@ -360,12 +360,13 @@ add_subdirectory(src/librssguard)
 add_subdirectory(localization)
 
 # Plugins.
-add_subdirectory(src/librssguard-standard)
 add_subdirectory(src/librssguard-feedly)
 add_subdirectory(src/librssguard-gmail)
 add_subdirectory(src/librssguard-greader)
-add_subdirectory(src/librssguard-ttrss)
 add_subdirectory(src/librssguard-nextcloud)
+add_subdirectory(src/librssguard-standard)
+add_subdirectory(src/librssguard-ttrss)
+add_subdirectory(src/librssguard-xmpp)
 
 # Additional programs.
 add_subdirectory(resources/scripts/standalone/article-extractor)
