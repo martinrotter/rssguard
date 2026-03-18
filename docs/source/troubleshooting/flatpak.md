@@ -62,3 +62,35 @@ After that, restart RSS Guard and follow these steps:
 Your configuration should look similar to this:
 
 ![External tools settings](images/flatpak-external-tools.png "External tools settings")
+
+## Using CSS2RSS
+
+It is possible to use [CSS2RSS](https://github.com/Owyn/CSS2RSS) without breaking the Flatpak sandbox. For this, you will need to run a few commands in a terminal window.
+
+1. Install the appropriate Flatpak SDK so we can use `pip` to install CSS2RSS' dependencies:
+
+```
+flatpak install org.freedesktop.Sdk//25.08
+```
+
+2. Install CSS2RSS' dependencies:
+
+```
+flatpak run --runtime=org.freedesktop.Sdk//25.08 --command=pip io.github.martinrotter.rssguard install beautifulsoup4 maya
+```
+
+3. Download CSS2RSS inside RSS Guard's configuration directory, for easier usage later:
+
+```
+flatpak run --command=curl io.github.martinrotter.rssguard https://raw.githubusercontent.com/Owyn/CSS2RSS/refs/heads/main/css2rss.py -o ~/.var/app/io.github.martinrotter.rssguard/config/rssguard5/css2rss.py
+```
+
+4. Uninstall the Flatpak SDK, as it's not needed anymore:
+
+```
+flatpak uninstall org.freedesktop.Sdk//25.08
+```
+
+And then you can immediatelly start using CSS2RSS by filling out the **Post-processing script** field when you add or edit a feed, like so:
+
+![CSS2RSS post-processing](images/flatpak-post-processing-css2rss.png "CSS2RSS post-processing")
