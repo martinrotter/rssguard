@@ -3,7 +3,6 @@
 #include "src/xmppentrypoint.h"
 
 #include "src/xmppserviceroot.h"
-#include
 
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/definitions/definitions.h>

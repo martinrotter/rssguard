@@ -3,27 +3,14 @@
 #ifndef XMPPSERVICEROOT_H
 #define XMPPSERVICEROOT_H
 
-#include <librssguard/services/abstract/cacheforserviceroot.h>
 #include <librssguard/services/abstract/serviceroot.h>
 
 class XmppNetwork;
 
-class XmppServiceRoot : public ServiceRoot, public CacheForServiceRoot {
+class XmppServiceRoot : public ServiceRoot {
     Q_OBJECT
 
   public:
-    enum class Service {
-      FreshRss = 1,
-      TheOldReader = 2,
-      Bazqux = 4,
-      Reedah = 8,
-      Inoreader = 16,
-      Miniflux = 32,
-      Other = 1024
-    };
-
-    Q_ENUM(Service)
-
     explicit XmppServiceRoot(RootItem* parent = nullptr);
 
     virtual bool isSyncable() const;
@@ -34,10 +21,8 @@ class XmppServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QString code() const;
     virtual QList<QAction*> serviceMenu();
     virtual QString additionalTooltip() const;
-    virtual void saveAllCachedData(bool ignore_errors);
     virtual LabelOperation supportedLabelOperations() const;
     virtual bool supportsFeedAdding() const;
-    virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual void aboutToBeginFeedFetching(const QList<Feed*>& feeds,
@@ -51,23 +36,12 @@ class XmppServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     XmppNetwork* network() const;
 
-    static QString serviceToString(Service service);
-
-  private slots:
-    void importFeeds();
-    void exportFeeds();
-
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
-    void updateTitleIcon();
-
-  private:
     XmppNetwork* m_network;
 };
-
-Q_DECLARE_METATYPE(XmppServiceRoot::Service)
 
 inline XmppNetwork* XmppServiceRoot::network() const {
   return m_network;

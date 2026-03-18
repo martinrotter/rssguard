@@ -415,7 +415,7 @@ elseif(ENABLE_MEDIAPLAYER_LIBMPV)
     REQUIRED
   )
 
-  message(STATUS "Found libmpv: ${LibMPV_LIBRARIES}.")
+  message(STATUS "Found libmpv: '${LibMPV_LIBRARIES}'.")
 endif()
 
 if(ENABLE_ICU)

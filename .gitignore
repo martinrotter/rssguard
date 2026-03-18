@@ -22,4 +22,5 @@ aqtinstall.log
 build-dir/
 build/
 docs/build
+resources/scripts/qxmpp
 resources/scripts/standalone/*/vendor

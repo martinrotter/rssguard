@@ -93,6 +93,7 @@ project(rssguard VERSION ${APP_VERSION} LANGUAGES CXX C)
 # Basic C++ related behavior of cmake.
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -141,8 +142,8 @@ else()
 endif()
 
 # Import Qt libraries.
-set(QT6_MIN_VERSION 6.3.0)
-set(QT5_MIN_VERSION 5.14.0)
+set(QT6_MIN_VERSION 6.5.0)
+set(QT5_MIN_VERSION 5.15.0)
 
 set(QT_COMPONENTS
   Core
@@ -265,6 +266,8 @@ else()
     endmacro()
   endif()
 endif()
+
+message(STATUS "Qt major version: '${QT_VERSION_MAJOR}'.")
 
 # Load git commit hash.
 if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
