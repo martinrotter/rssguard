@@ -31,11 +31,11 @@ class RSSGUARD_DLLSPEC FormAccountDetails : public QDialog {
     T* account() const;
 
   protected slots:
-
     // Applies changes.
     // NOTE: This must be reimplemented in subclasses. Also this base
     // implementation must be called first.
     virtual void apply();
+    virtual void rollBack();
 
   protected:
     void activateTab(int index);

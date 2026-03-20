@@ -12,9 +12,15 @@ set(SOURCES
   src/xmppserviceroot.h
   src/xmppubsubpmanager.cpp
   src/xmppubsubpmanager.h
+
+  src/gui/formeditxmppaccount.cpp
+  src/gui/formeditxmppaccount.h
+  src/gui/xmppaccountdetails.cpp
+  src/gui/xmppaccountdetails.h
 )
 
 set(UI_FILES
+  src/gui/xmppaccountdetails.ui
 )
 
 if(NOT USE_SYSTEM_QXMPP)
@@ -32,8 +38,8 @@ find_library(qxmpp_LIBRARIES
 )
 
 find_path(qxmpp_INCLUDE_DIRS
-  NAMES "QXmppQt${QT_VERSION_MAJOR}/QXmppClient.h"
-  PATH_SUFFIXES "include"
+  NAMES "QXmppClient.h"
+  PATH_SUFFIXES "include" "include/QXmppQt${QT_VERSION_MAJOR}"
   HINTS "${qxmpp_ROOT}"
   NO_CACHE
   REQUIRED

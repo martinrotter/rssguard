@@ -21,10 +21,11 @@ class Notification {
       // RSS Guard started downloading messages for some feed.
       ArticlesFetchingStarted = 3,
 
-      // Login tokens were successfuly refreshed.
+      // Login tokens were successfuly refreshed or login was successful.
+      //
       // NOTE: This is primarily used in accounts which use
       // OAuth or similar mechanism.
-      LoginDataRefreshed = 4,
+      LoginProgressOrSuccessful = 4,
 
       // New RSS Guard version available.
       NewAppVersionAvailable = 5,
@@ -33,7 +34,10 @@ class Notification {
       LoginFailure = 6,
 
       // There was at least one error during fetching articles.
-      ArticlesFetchingError = 7
+      ArticlesFetchingError = 7,
+
+      // Service was disconnected.
+      Logout
     };
 
     explicit Notification(Event event = Event::GeneralEvent,

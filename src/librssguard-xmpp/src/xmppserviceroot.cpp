@@ -65,6 +65,7 @@ QVariantHash XmppServiceRoot::customDatabaseData() const {
   data[QSL("username")] = m_network->username();
   data[QSL("password")] = TextFactory::encrypt(m_network->password());
   data[QSL("domain")] = m_network->domain();
+  data[QSL("services")] = m_network->extraServices();
 
   return data;
 }
@@ -75,6 +76,7 @@ void XmppServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setUsername(data[QSL("username")].toString());
   m_network->setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
   m_network->setDomain(data[QSL("domain")].toString());
+  m_network->setExtraServices(data[QSL("services")].toStringList());
 }
 
 void XmppServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
@@ -98,6 +100,9 @@ void XmppServiceRoot::start(bool freshly_activated) {
     DatabaseQueries::loadRootFromDatabase<Category, XmppFeed>(this);
   }
 
+  updateTitle();
+  m_network->connectToServer();
+
   if (getSubTreeFeeds().isEmpty()) {
     syncIn();
   }
@@ -120,14 +125,14 @@ QString XmppServiceRoot::additionalTooltip() const {
   return source_str + ServiceRoot::additionalTooltip();
 }
 
-ServiceRoot::LabelOperation XmppServiceRoot::supportedLabelOperations() const {
-  return ServiceRoot::LabelOperation::Synchronised;
-}
-
 bool XmppServiceRoot::supportsFeedAdding() const {
   return false;
 }
 
 RootItem* XmppServiceRoot::obtainNewTreeForSyncIn() const {
-  return nullptr;
+  return m_network->obtainServicesNodesTree();
+}
+
+void XmppServiceRoot::updateTitle() {
+  setTitle(m_network->username());
 }

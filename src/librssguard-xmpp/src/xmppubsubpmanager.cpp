@@ -2,13 +2,13 @@
 
 #include "src/xmppubsubpmanager.h"
 
-#include <QXmppQt6/QXmppClient.h>
-#include <QXmppQt6/QXmppConstants_p.h>
-#include <QXmppQt6/QXmppDiscoveryManager.h>
-#include <QXmppQt6/QXmppLogger.h>
-#include <QXmppQt6/QXmppPubSubEvent.h>
-#include <QXmppQt6/QXmppPubSubSubscription.h>
-#include <QXmppQt6/QXmppTask.h>
+#include <QXmppClient.h>
+#include <QXmppConstants_p.h>
+#include <QXmppDiscoveryManager.h>
+#include <QXmppLogger.h>
+#include <QXmppPubSubEvent.h>
+#include <QXmppPubSubSubscription.h>
+#include <QXmppTask.h>
 
 void AtomPubSubBaseItem::writeDomNode(QXmlStreamWriter* writer, const QDomNode& node) {
   if (node.isElement()) {

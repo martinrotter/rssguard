@@ -21,7 +21,6 @@ class XmppServiceRoot : public ServiceRoot {
     virtual QString code() const;
     virtual QList<QAction*> serviceMenu();
     virtual QString additionalTooltip() const;
-    virtual LabelOperation supportedLabelOperations() const;
     virtual bool supportsFeedAdding() const;
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
@@ -38,6 +37,9 @@ class XmppServiceRoot : public ServiceRoot {
 
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
+
+  private:
+    void updateTitle();
 
   private:
     XmppNetwork* m_network;

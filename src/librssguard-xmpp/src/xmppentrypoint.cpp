@@ -2,6 +2,7 @@
 
 #include "src/xmppentrypoint.h"
 
+#include "src/gui/formeditxmppaccount.h"
 #include "src/xmppserviceroot.h"
 
 #include <librssguard/database/databasequeries.h>
@@ -16,10 +17,8 @@ XmppEntryPoint::~XmppEntryPoint() {
 }
 
 ServiceRoot* XmppEntryPoint::createNewRoot() const {
-  // FormEditXmppAccount form_acc(qApp->mainFormWidget());
-  // return form_acc.addEditAccount<XmppServiceRoot>();
-
-  return new XmppServiceRoot();
+  FormEditXmppAccount form_acc(qApp->mainFormWidget());
+  return form_acc.addEditAccount<XmppServiceRoot>();
 }
 
 QList<ServiceRoot*> XmppEntryPoint::initializeSubtree() const {

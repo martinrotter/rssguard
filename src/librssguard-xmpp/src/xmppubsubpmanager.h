@@ -2,9 +2,9 @@
 
 #include <QCoreApplication>
 #include <QDomElement>
-#include <QXmppQt6/QXmppPubSubBaseItem.h>
-#include <QXmppQt6/QXmppPubSubEventHandler.h>
-#include <QXmppQt6/QXmppPubSubManager.h>
+#include <QXmppPubSubBaseItem.h>
+#include <QXmppPubSubEventHandler.h>
+#include <QXmppPubSubManager.h>
 
 class AtomPubSubBaseItem : public QXmppPubSubBaseItem {
   private:

@@ -23,4 +23,4 @@ class XmppFeed : public Feed {
     void removeItself();
 };
 
-#endif // TTRSSFEED_H
+#endif // XMPPFEED_H

@@ -689,12 +689,18 @@ void ServiceRoot::onSyncInFinished(const SyncInResult& result) {
       qDebugNN << LOGSEC_CORE << "New feed tree for sync-in obtained.";
       RootItem* new_tree = *new_tree_pointer;
 
+      if (new_tree == nullptr) {
+        throw ApplicationException(tr("no feed tree obtained"));
+      }
+
       // Remove from feeds model, then from SQL but leave messages intact.
       bool uses_remote_labels = Globals::hasFlag(supportedLabelOperations(), LabelOperation::Synchronised);
 
       auto feed_custom_data = storeCustomFeedsData();
       auto categories_custom_data = storeCustomCategoriesData();
       auto label_custom_data = uses_remote_labels ? storeCustomLabelsData() : QMap<QString, QVariantMap>();
+
+      qDebugNN << LOGSEC_CORE << "New feed tree for sync-in obtained.";
 
       // Remove stuff.
       cleanAllItemsFromModel(uses_remote_labels);

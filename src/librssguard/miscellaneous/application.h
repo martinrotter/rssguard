@@ -47,12 +47,14 @@ struct GuiMessage {
     GuiMessage() {}
     GuiMessage(QString title,
                QString message,
-               QSystemTrayIcon::MessageIcon type = QSystemTrayIcon::MessageIcon::Information)
-      : m_title(std::move(title)), m_message(std::move(message)), m_type(type) {}
+               QSystemTrayIcon::MessageIcon type = QSystemTrayIcon::MessageIcon::Information,
+               QIcon icon = {})
+      : m_title(std::move(title)), m_message(std::move(message)), m_type(type), m_icon(std::move(icon)) {}
 
     QString m_title;
     QString m_message;
     QSystemTrayIcon::MessageIcon m_type;
+    QIcon m_icon;
     FeedDownloadResults m_feedFetchResults;
 };
 
