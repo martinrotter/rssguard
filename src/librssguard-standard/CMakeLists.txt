@@ -23,6 +23,8 @@ set(SOURCES
   src/parsers/atomparser.h
   src/parsers/feedparser.cpp
   src/parsers/feedparser.h
+  src/parsers/gemlogparser.cpp
+  src/parsers/gemlogparser.h
   src/parsers/icalparser.cpp
   src/parsers/icalparser.h
   src/parsers/jsonparser.cpp

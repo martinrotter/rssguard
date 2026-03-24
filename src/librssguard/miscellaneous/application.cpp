@@ -1135,13 +1135,24 @@ void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
   messages = cmd_parser.positionalArguments();
 
   for (const QString& msg : std::as_const(messages)) {
+    if (msg.trimmed().size() < 3) {
+      continue;
+    }
+
+    auto processed_msg = qApp->web()->processFeedUriScheme(msg.trimmed());
+    auto corrected_url = QUrl::fromUserInput(processed_msg);
+
+    if (corrected_url.scheme().isEmpty()) {
+      continue;
+    }
+
     // Application was running, and someone wants to add new feed.
     auto rt = qlinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
       return root->supportsFeedAdding();
     });
 
     if (rt.has_value()) {
-      rt.value()->addNewFeed(nullptr, msg);
+      rt.value()->addNewFeed(nullptr, processed_msg);
     }
     else {
       showGuiMessage(Notification::Event::GeneralEvent,

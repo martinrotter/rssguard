@@ -5,6 +5,7 @@
 #include "src/definitions.h"
 #include "src/gui/formstandardfeeddetails.h"
 #include "src/parsers/atomparser.h"
+#include "src/parsers/gemlogparser.h"
 #include "src/parsers/icalparser.h"
 #include "src/parsers/jsonparser.h"
 #include "src/parsers/rdfparser.h"
@@ -219,6 +220,9 @@ QString StandardFeed::typeToString(StandardFeed::Type type) {
     case Type::iCalendar:
       return QSL("iCalendar");
 
+    case Type::Gemlog:
+      return QSL("Gemlog");
+
     case Type::Rss2X:
     default:
       return QSL("RSS 2.0/2.0.1");
@@ -378,6 +382,7 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
   parsers.append(QSharedPointer<FeedParser>(new RssParser({})));
   parsers.append(QSharedPointer<FeedParser>(new RdfParser({})));
   parsers.append(QSharedPointer<FeedParser>(new IcalParser({})));
+  parsers.append(QSharedPointer<FeedParser>(new GemlogParser({})));
   parsers.append(QSharedPointer<FeedParser>(new JsonParser({})));
   parsers.append(QSharedPointer<FeedParser>(new SitemapParser({})));
 

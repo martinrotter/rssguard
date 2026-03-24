@@ -36,7 +36,8 @@ class StandardFeed : public Feed {
       Atom10 = 3,
       Json = 4,
       Sitemap = 5,
-      iCalendar = 6
+      iCalendar = 6,
+      Gemlog = 7
     };
 
     enum class ArticleDateTimeBehavior {

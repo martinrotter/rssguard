@@ -45,12 +45,12 @@ void Downloader::geminiFinished(const QByteArray& data, const QString& mime) {
   m_lastOutputError = QNetworkReply::NetworkError::NoError;
   m_lastOutputMultipartData = {};
 
-  if (mime.startsWith(QSL(GEMINI_MIME_TYPE))) {
+  /*if (mime.startsWith(QSL(GEMINI_MIME_TYPE))) {
     m_lastOutputData = m_geminiParser.geminiToHtml(data).toUtf8();
   }
-  else {
-    m_lastOutputData = data;
-  }
+  else {*/
+  m_lastOutputData = data;
+  //}
 
   emit completed(m_lastUrl, m_lastOutputError, m_lastHttpStatusCode, m_lastOutputData);
 }

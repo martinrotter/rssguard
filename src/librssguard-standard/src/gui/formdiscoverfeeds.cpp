@@ -5,6 +5,7 @@
 #include "src/definitions.h"
 #include "src/gui/formstandardfeeddetails.h"
 #include "src/parsers/atomparser.h"
+#include "src/parsers/gemlogparser.h"
 #include "src/parsers/icalparser.h"
 #include "src/parsers/jsonparser.h"
 #include "src/parsers/rdfparser.h"
@@ -35,6 +36,7 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
                new RssParser({}),
                new RdfParser({}),
                new IcalParser({}),
+               new GemlogParser({}),
                new JsonParser({}),
                new SitemapParser({})};
 

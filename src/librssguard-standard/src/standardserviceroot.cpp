@@ -8,6 +8,7 @@
 #include "src/gui/formstandardfeeddetails.h"
 #include "src/gui/formstandardimportexport.h"
 #include "src/parsers/atomparser.h"
+#include "src/parsers/gemlogparser.h"
 #include "src/parsers/icalparser.h"
 #include "src/parsers/jsonparser.h"
 #include "src/parsers/rdfparser.h"
@@ -411,6 +412,10 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
     case StandardFeed::Type::iCalendar:
       parser = new IcalParser(formatted_feed_contents);
+      break;
+
+    case StandardFeed::Type::Gemlog:
+      parser = new GemlogParser(formatted_feed_contents);
       break;
 
     case StandardFeed::Type::Sitemap:
