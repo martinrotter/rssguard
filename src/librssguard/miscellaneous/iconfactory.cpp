@@ -112,6 +112,8 @@ QIcon IconFactory::fromByteArray(QByteArray array) {
   in.setVersion(QDataStream::Version::Qt_5_15);
   in >> icon;
   buffer.close();
+
+  qDebugNN << LOGSEC_CORE << "Icon dimensions when deserializing are" << QUOTE_W_SPACE_DOT(icon.availableSizes());
   return icon;
 }
 

@@ -6,6 +6,7 @@
 #include "core/feedsmodel.h"
 #include "core/message.h"
 #include "definitions/typedefs.h"
+#include "exceptions/applicationexception.h"
 #include "services/abstract/rootitem.h"
 
 #include <QJsonDocument>
@@ -31,6 +32,8 @@ class QMenu;
 // service like service account username/password etc.
 class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     Q_OBJECT
+
+    using SyncInResult = std::variant<RootItem*, ApplicationException>;
 
   public:
     enum class LabelOperation {
@@ -240,6 +243,8 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void appendCommonNodes();
 
   signals:
+    void syncInRequested();
+    void syncInFinished(SyncInResult result);
     void proxyChanged(QNetworkProxy proxy);
     void dataChanged(QList<RootItem*> items);
     void dataChangeNotificationTriggered(RootItem* item, FeedsModel::ExternalDataChange change);

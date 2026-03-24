@@ -584,7 +584,9 @@ void NextcloudNetworkFactory::obtainIcons(const QList<Feed*>& feeds, const QNetw
     [&](Feed* fd) {
       QString favicon_direct = fd->property("favicon").toString();
       QByteArray icon_data;
+      QPixmap icon_pixmap;
 
+      /*
       if (!favicon_direct.isEmpty()) {
         auto network_res = NetworkFactory::performNetworkOperation(favicon_direct,
                                                                    timeout,
@@ -598,6 +600,10 @@ void NextcloudNetworkFactory::obtainIcons(const QList<Feed*>& feeds, const QNetw
           QPixmap icon_pixmap;
 
           icon_pixmap.loadFromData(icon_data);
+
+          qDebugNN << LOGSEC_NEXTCLOUD << "Image dimensions when fetching via direct URL"
+                   << QUOTE_W_SPACE(favicon_direct) << "are" << QUOTE_W_SPACE_DOT(icon_pixmap.size());
+
           fd->setIcon(QIcon(icon_pixmap));
           return;
         }
@@ -605,26 +611,44 @@ void NextcloudNetworkFactory::obtainIcons(const QList<Feed*>& feeds, const QNetw
           qCriticalNN << LOGSEC_NEXTCLOUD << "Failed to fetch direct icon for" << QUOTE_W_SPACE_DOT(fd->source());
         }
       }
-
+      */
       if (!fd->source().isEmpty()) {
-        QString hashed_url =
-          QCryptographicHash::hash(fd->source().toUtf8(), QCryptographicHash::Algorithm::Md5).toHex();
-        auto network_res = NetworkFactory::performNetworkOperation(QSL("%1/%2").arg(m_urlFavIcon, hashed_url),
-                                                                   timeout,
-                                                                   QByteArray(),
-                                                                   icon_data,
-                                                                   QNetworkAccessManager::Operation::GetOperation,
-                                                                   headers);
+        // Built-in functionality.
+        auto builtin_res =
+          NetworkFactory::downloadIcon({IconLocation(fd->source(), false)}, timeout, icon_pixmap, {}, custom_proxy);
 
-        if (network_res.m_networkError == QNetworkReply::NetworkError::NoError) {
-          // Icon downloaded, set it up.
-          QPixmap icon_pixmap;
+        if (builtin_res != QNetworkReply::NetworkError::NoError || icon_pixmap.isNull()) {
+          QString hashed_url =
+            QCryptographicHash::hash(fd->source().toUtf8(), QCryptographicHash::Algorithm::Md5).toHex();
+          auto network_res = NetworkFactory::performNetworkOperation(QSL("%1/%2").arg(m_urlFavIcon, hashed_url),
+                                                                     timeout,
+                                                                     QByteArray(),
+                                                                     icon_data,
+                                                                     QNetworkAccessManager::Operation::GetOperation,
+                                                                     headers,
+                                                                     false,
+                                                                     {},
+                                                                     {},
+                                                                     custom_proxy);
 
-          icon_pixmap.loadFromData(icon_data);
-          fd->setIcon(QIcon(icon_pixmap));
+          if (network_res.m_networkError == QNetworkReply::NetworkError::NoError) {
+            // Icon downloaded, set it up.
+            icon_pixmap.loadFromData(icon_data);
+          }
+          else {
+            qCriticalNN << LOGSEC_NEXTCLOUD << "Failed to fetch icon for" << QUOTE_W_SPACE_DOT(fd->source());
+          }
         }
-        else {
-          qCriticalNN << LOGSEC_NEXTCLOUD << "Failed to fetch icon for" << QUOTE_W_SPACE_DOT(fd->source());
+
+        if (!icon_pixmap.isNull()) {
+          if (icon_pixmap.size().width() > 64 || icon_pixmap.size().height() > 64) {
+            qDebugNN << LOGSEC_NEXTCLOUD << "Image dimensions are too big, scaling down the icon for"
+                     << QUOTE_W_SPACE_DOT(fd->source());
+
+            icon_pixmap = icon_pixmap.scaled(64, 64, Qt::AspectRatioMode::KeepAspectRatio);
+          }
+
+          fd->setIcon(QIcon(icon_pixmap));
         }
       }
     });
