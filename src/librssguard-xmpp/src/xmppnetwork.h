@@ -2,6 +2,7 @@
 #define XMPPNETWORK_H
 
 #include <QObject>
+#include <QTimer>
 #include <QXmppConfiguration.h>
 #include <QXmppError.h>
 #include <QXmppLogger.h>
@@ -50,7 +51,7 @@ class XmppNetwork : public QObject {
     void connectToServer();
     void disconnectFromServer();
 
-    RootItem* obtainServicesNodesTree() const;
+    void obtainServicesNodesTree();
 
     // Statics.
     static QStringList defaultExtraServices();
@@ -62,6 +63,10 @@ class XmppNetwork : public QObject {
     void onClientError(const QXmppError& error);
 
   private:
+    void checkService(const QString& jid, RootItem* new_tree);
+    void fetchSubscriptions(const QString& service, RootItem* new_tree);
+
+  private:
     XmppServiceRoot* m_root;
     QXmppClient* m_xmppClient;
     QXmppDiscoveryManager* m_discoveryManager;
@@ -71,6 +76,8 @@ class XmppNetwork : public QObject {
     QString m_password;
     QString m_domain;
     QStringList m_extraServices;
+
+    QTimer m_syncInTimer;
 };
 
 #endif // XMPPNETWORK_H

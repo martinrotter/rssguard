@@ -36,8 +36,8 @@ class XmppServiceRoot : public ServiceRoot {
 
     XmppNetwork* network() const;
 
-  protected:
-    virtual RootItem* obtainNewTreeForSyncIn() const;
+  public slots:
+    virtual void requestSyncIn();
 
   private:
     void updateTitle();

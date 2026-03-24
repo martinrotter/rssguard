@@ -95,6 +95,16 @@ bool XmppServiceRoot::wantsBaggedIdsOfExistingMessages() const {
   return true;
 }
 
+void XmppServiceRoot::requestSyncIn() {
+  if (m_syncInRunning) {
+    return;
+  }
+
+  ServiceRoot::requestSyncIn();
+
+  m_network->obtainServicesNodesTree();
+}
+
 void XmppServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
     DatabaseQueries::loadRootFromDatabase<Category, XmppFeed>(this);
@@ -127,10 +137,6 @@ QString XmppServiceRoot::additionalTooltip() const {
 
 bool XmppServiceRoot::supportsFeedAdding() const {
   return false;
-}
-
-RootItem* XmppServiceRoot::obtainNewTreeForSyncIn() const {
-  return m_network->obtainServicesNodesTree();
 }
 
 void XmppServiceRoot::updateTitle() {

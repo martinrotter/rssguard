@@ -19,6 +19,8 @@ XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
     m_extraServices(defaultExtraServices()) {
   m_discoveryManager->setParent(this);
 
+  m_syncInTimer.setInterval(4000);
+
   m_xmppClient->logger()->setLoggingType(QXmppLogger::LoggingType::SignalLogging);
 
   m_xmppClient->addExtension(m_discoveryManager);
@@ -119,10 +121,75 @@ void XmppNetwork::disconnectFromServer() {
   m_xmppClient->disconnectFromServer();
 }
 
-RootItem* XmppNetwork::obtainServicesNodesTree() const {
+void XmppNetwork::fetchSubscriptions(const QString& service, RootItem* new_tree) {
+  auto task = m_pubSubManager->requestSubscriptions(service);
+
+  task.then(this, [=, this](auto result) {
+    if (auto subs = std::get_if<QList<QXmppPubSubSubscription>>(&result)) {
+      qDebug() << "\nPubSub service:" << service;
+      qDebug() << "Active subscriptions:";
+
+      for (const QXmppPubSubSubscription& sub : *subs) {
+        qDebug() << "  sub:" << sub.node();
+
+        XmppFeed* feed = new XmppFeed();
+
+        feed->setTitle(sub.node());
+        feed->setCustomId(sub.node());
+
+        new_tree->appendChild(feed);
+
+        m_syncInTimer.start();
+      }
+    }
+    else {
+      qDebug() << "Failed fetching subscriptions";
+    }
+  });
+}
+
+void XmppNetwork::checkService(const QString& jid, RootItem* new_tree) {
+  auto task = m_discoveryManager->info(jid);
+
+  task.then(this, [=, this](auto result) {
+    if (QXmppDiscoInfo* info = std::get_if<QXmppDiscoInfo>(&result)) {
+      if (info->features().contains("http://jabber.org/protocol/pubsub")) {
+        fetchSubscriptions(jid, new_tree);
+      }
+    }
+  });
+}
+
+void XmppNetwork::obtainServicesNodesTree() {
   RootItem* root = new RootItem();
 
-  return root;
+  m_syncInTimer.disconnect();
+
+  connect(&m_syncInTimer, &QTimer::timeout, this, [=, this]() {
+    m_syncInTimer.stop();
+    emit m_root->syncInFinished(root);
+  });
+
+  auto task = m_discoveryManager->items(m_xmppClient->configuration().domain());
+
+  task.then(this, [=, this](auto result) {
+    if (auto items = std::get_if<QList<QXmppDiscoveryIq::Item>>(&result)) {
+      QStringList all_services = extraServices();
+
+      for (const QXmppDiscoveryIq::Item& item : *items) {
+        all_services.append(item.jid());
+      }
+
+      all_services.removeDuplicates();
+
+      for (const auto& serv : all_services) {
+        checkService(serv, root);
+      }
+    }
+    else {
+      qDebug() << "Service discovery failed";
+    }
+  });
 }
 
 QStringList XmppNetwork::defaultExtraServices() {
@@ -241,7 +308,7 @@ void XmppNetwork::onClientConnected() {
                                   m_root->icon()));
 
   if (m_root != nullptr && m_root->getSubTreeFeeds().isEmpty()) {
-    m_root->syncIn();
+    m_root->requestSyncIn();
   }
 
   /*
