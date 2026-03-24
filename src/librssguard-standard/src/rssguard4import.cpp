@@ -368,7 +368,6 @@ RootItem* RssGuard4Import::extractFeedsAndCategories(const QSqlDatabase& db) con
              "  Feeds.description, "
              "  Feeds.icon, "
              "  Feeds.source, "
-             ""
              "  Feeds.update_type, "
              "  Feeds.update_interval, "
              "  Feeds.is_off, "

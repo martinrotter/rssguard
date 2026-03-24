@@ -102,10 +102,10 @@ void XmppServiceRoot::start(bool freshly_activated) {
 
   updateTitle();
   m_network->connectToServer();
+}
 
-  if (getSubTreeFeeds().isEmpty()) {
-    syncIn();
-  }
+void XmppServiceRoot::stop() {
+  m_network->disconnectFromServer();
 }
 
 QString XmppServiceRoot::code() const {

@@ -18,6 +18,7 @@ class XmppServiceRoot : public ServiceRoot {
     virtual void editItems(const QList<RootItem*>& items);
     virtual FormAccountDetails* accountSetupDialog() const;
     virtual void start(bool freshly_activated);
+    virtual void stop();
     virtual QString code() const;
     virtual QList<QAction*> serviceMenu();
     virtual QString additionalTooltip() const;

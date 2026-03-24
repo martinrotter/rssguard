@@ -4,6 +4,7 @@
 #include <QObject>
 #include <QXmppConfiguration.h>
 #include <QXmppError.h>
+#include <QXmppLogger.h>
 
 class RootItem;
 class XmppServiceRoot;
@@ -36,6 +37,7 @@ class XmppNetwork : public QObject {
     QStringList extraServices() const;
     void setExtraServices(const QStringList& services);
 
+    XmppServiceRoot* root() const;
     QXmppConfiguration xmppConfiguration() const;
 
     // Managers and clients.
@@ -44,6 +46,7 @@ class XmppNetwork : public QObject {
     PubSubManager* pubSubManager() const;
 
     // API.
+    void ensureClientConnected() const;
     void connectToServer();
     void disconnectFromServer();
 
@@ -53,6 +56,7 @@ class XmppNetwork : public QObject {
     static QStringList defaultExtraServices();
 
   private slots:
+    void onNewLogEntry(QXmppLogger::MessageType type, const QString& text);
     void onClientConnected();
     void onClientDisconnected();
     void onClientError(const QXmppError& error);
