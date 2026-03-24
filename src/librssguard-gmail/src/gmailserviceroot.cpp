@@ -63,36 +63,6 @@ void GmailServiceRoot::replyToEmail() {
   FormAddEditEmail(this, qApp->mainFormWidget()).show(FormAddEditEmail::Mode::Reply, &m_replyToMessage);
 }
 
-RootItem* GmailServiceRoot::obtainNewTreeForSyncIn() const {
-  auto* root = new RootItem();
-  Feed* inbox = new Feed(tr("Inbox"),
-                         QSL(GMAIL_SYSTEM_LABEL_INBOX),
-                         qApp->icons()->fromTheme(QSL("mail-inbox"), QSL("mail-inbox-symbolic")),
-                         root);
-
-  inbox->setKeepOnTop(true);
-
-  root->appendChild(inbox);
-  root
-    ->appendChild(new Feed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root));
-  root->appendChild(new Feed(tr("Drafts"),
-                             QSL(GMAIL_SYSTEM_LABEL_DRAFT),
-                             qApp->icons()->fromTheme(QSL("gtk-edit")),
-                             root));
-  root->appendChild(new Feed(tr("Spam"),
-                             QSL(GMAIL_SYSTEM_LABEL_SPAM),
-                             qApp->icons()->fromTheme(QSL("mail-mark-junk")),
-                             root));
-
-  auto* lblroot = new LabelsNode(root);
-  auto labels = m_network->labels(true, networkProxy());
-
-  lblroot->setChildItems(labels);
-  root->appendChild(lblroot);
-
-  return root;
-}
-
 void GmailServiceRoot::writeNewEmail() {
   FormAddEditEmail(this, qApp->mainFormWidget()).show(FormAddEditEmail::Mode::SendNew);
 }
@@ -151,6 +121,42 @@ CustomMessagePreviewer* GmailServiceRoot::customMessagePreviewer() {
   m_emailPreview->webBrowser()->reloadZoomFactor();
 
   return m_emailPreview.data();
+}
+
+void GmailServiceRoot::requestSyncIn() {
+  if (m_syncInRunning) {
+    return;
+  }
+
+  ServiceRoot::requestSyncIn();
+
+  auto* root = new RootItem();
+  Feed* inbox = new Feed(tr("Inbox"),
+                         QSL(GMAIL_SYSTEM_LABEL_INBOX),
+                         qApp->icons()->fromTheme(QSL("mail-inbox"), QSL("mail-inbox-symbolic")),
+                         root);
+
+  inbox->setKeepOnTop(true);
+
+  root->appendChild(inbox);
+  root
+    ->appendChild(new Feed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root));
+  root->appendChild(new Feed(tr("Drafts"),
+                             QSL(GMAIL_SYSTEM_LABEL_DRAFT),
+                             qApp->icons()->fromTheme(QSL("gtk-edit")),
+                             root));
+  root->appendChild(new Feed(tr("Spam"),
+                             QSL(GMAIL_SYSTEM_LABEL_SPAM),
+                             qApp->icons()->fromTheme(QSL("mail-mark-junk")),
+                             root));
+
+  auto* lblroot = new LabelsNode(root);
+  auto labels = m_network->labels(true, networkProxy());
+
+  lblroot->setChildItems(labels);
+  root->appendChild(lblroot);
+
+  emit syncInFinished(root);
 }
 
 QList<QAction*> GmailServiceRoot::contextMenuMessagesList(const QList<Message>& messages) {
@@ -224,7 +230,7 @@ void GmailServiceRoot::start(bool freshly_activated) {
 
   if (getSubTreeFeeds().isEmpty()) {
     m_network->oauth()->login([this]() {
-      syncIn();
+      requestSyncIn();
     });
   }
   else {

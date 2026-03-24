@@ -29,9 +29,11 @@ ServiceRoot::ServiceRoot(RootItem* parent)
   : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
     m_labelsNode(new LabelsNode(this)), m_probesNode(new SearchsNode(this)), m_unreadNode(new UnreadNode(this)),
     m_accountId(NO_PARENT_CATEGORY), m_networkProxy(QNetworkProxy()), m_nodeShowUnread(true), m_nodeShowImportant(true),
-    m_nodeShowLabels(true), m_nodeShowProbes(true) {
+    m_nodeShowLabels(true), m_nodeShowProbes(true), m_syncInRunning(false) {
   setKind(RootItem::Kind::ServiceRoot);
   appendCommonNodes();
+
+  connect(this, &ServiceRoot::syncInFinished, this, &ServiceRoot::onSyncInFinished);
 }
 
 ServiceRoot::~ServiceRoot() {}
@@ -231,7 +233,7 @@ QList<QAction*> ServiceRoot::serviceMenu() {
       auto* act_sync_tree =
         new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Synchronize folders && other items"), this);
 
-      connect(act_sync_tree, &QAction::triggered, this, &ServiceRoot::syncIn);
+      connect(act_sync_tree, &QAction::triggered, this, &ServiceRoot::requestSyncIn);
       m_serviceMenu.append(act_sync_tree);
 
       auto* cache = toCache();
@@ -598,6 +600,14 @@ void ServiceRoot::restoreCustomLabelsData(const QMap<QString, QVariantMap>& data
   }
 }
 
+bool ServiceRoot::syncInRunning() const {
+  return m_syncInRunning;
+}
+
+void ServiceRoot::setSyncInRunning(bool running) {
+  m_syncInRunning = running;
+}
+
 bool ServiceRoot::nodeShowProbes() const {
   return m_nodeShowProbes;
 }
@@ -662,90 +672,98 @@ FormAccountDetails* ServiceRoot::accountSetupDialog() const {
 
 void ServiceRoot::onDatabaseCleanup() {}
 
-void ServiceRoot::syncIn() {
-  QIcon original_icon = icon();
+void ServiceRoot::requestSyncIn() {
+  m_syncInRunning = true;
+  // QIcon original_icon = icon();
 
-  setIcon(qApp->icons()->fromTheme(QSL("view-refresh")));
+  // setIcon(qApp->icons()->fromTheme(QSL("view-refresh")));
   itemChanged({this});
+}
 
+void ServiceRoot::onSyncInFinished(const SyncInResult& result) {
   try {
-    qDebugNN << LOGSEC_CORE << "Starting sync-in process.";
+    if (auto ex = std::get_if<ApplicationException>(&result)) {
+      throw *ex;
+    }
+    else if (auto new_tree_pointer = std::get_if<RootItem*>(&result)) {
+      qDebugNN << LOGSEC_CORE << "New feed tree for sync-in obtained.";
+      RootItem* new_tree = *new_tree_pointer;
 
-    RootItem* new_tree = obtainNewTreeForSyncIn();
+      // Remove from feeds model, then from SQL but leave messages intact.
+      bool uses_remote_labels = Globals::hasFlag(supportedLabelOperations(), LabelOperation::Synchronised);
 
-    qDebugNN << LOGSEC_CORE << "New feed tree for sync-in obtained.";
+      auto feed_custom_data = storeCustomFeedsData();
+      auto categories_custom_data = storeCustomCategoriesData();
+      auto label_custom_data = uses_remote_labels ? storeCustomLabelsData() : QMap<QString, QVariantMap>();
 
-    // Remove from feeds model, then from SQL but leave messages intact.
-    bool uses_remote_labels = Globals::hasFlag(supportedLabelOperations(), LabelOperation::Synchronised);
+      // Remove stuff.
+      cleanAllItemsFromModel(uses_remote_labels);
 
-    auto feed_custom_data = storeCustomFeedsData();
-    auto categories_custom_data = storeCustomCategoriesData();
-    auto label_custom_data = uses_remote_labels ? storeCustomLabelsData() : QMap<QString, QVariantMap>();
+      // We have new feed, some feeds were maybe removed,
+      // so remove leftover messages and filter assignments.
+      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        // NOTE: We need these primary IDs because - all feed/article/label foreign keys
+        // are realised via physical database ID (not custom ID, this is due to performance).
+        // We need to re-use all existing IDs to retain proper foreign key relations to articles and labels.
+        // So we need to make sure that temporarily vacant ID is not taken by newly created feed or label.
+        int next_primary_id_feeds = DatabaseQueries::highestPrimaryIdFeeds(db) + 1;
+        int next_primary_id_labels = DatabaseQueries::highestPrimaryIdLabels(db) + 1;
 
-    // Remove stuff.
-    cleanAllItemsFromModel(uses_remote_labels);
+        qApp->database()->driver()->setForeignKeyChecksDisabled(db);
 
-    // We have new feed, some feeds were maybe removed,
-    // so remove leftover messages and filter assignments.
-    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-      // NOTE: We need these primary IDs because - all feed/article/label foreign keys
-      // are realised via physical database ID (not custom ID, this is due to performance).
-      // We need to re-use all existing IDs to retain proper foreign key relations to articles and labels.
-      // So we need to make sure that temporarily vacant ID is not taken by newly created feed or label.
-      int next_primary_id_feeds = DatabaseQueries::highestPrimaryIdFeeds(db) + 1;
-      int next_primary_id_labels = DatabaseQueries::highestPrimaryIdLabels(db) + 1;
+        DatabaseQueries::deleteAccountData(db, accountId(), false, uses_remote_labels);
 
-      qApp->database()->driver()->setForeignKeyChecksDisabled(db);
+        // Re-sort items to accomodate current sort order.
+        resortAccountTree(new_tree, categories_custom_data, feed_custom_data);
 
-      DatabaseQueries::deleteAccountData(db, accountId(), false, uses_remote_labels);
+        // Restore some local settings to feeds etc.
+        restoreCustomCategoriesData(categories_custom_data, new_tree->getHashedSubTreeCategories());
+        restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
+        restoreCustomLabelsData(label_custom_data,
+                                dynamic_cast<LabelsNode*>(new_tree->getItemFromSubTree([](const RootItem* it) {
+                                  return it->kind() == RootItem::Kind::Labels;
+                                })));
 
-      // Re-sort items to accomodate current sort order.
-      resortAccountTree(new_tree, categories_custom_data, feed_custom_data);
+        // Model is clean, now store new tree into DB and
+        // set primary IDs of the items.
+        DatabaseQueries::storeAccountTree(db, new_tree, next_primary_id_feeds, next_primary_id_labels, accountId());
 
-      // Restore some local settings to feeds etc.
-      restoreCustomCategoriesData(categories_custom_data, new_tree->getHashedSubTreeCategories());
-      restoreCustomFeedsData(feed_custom_data, new_tree->getHashedSubTreeFeeds());
-      restoreCustomLabelsData(label_custom_data,
-                              dynamic_cast<LabelsNode*>(new_tree->getItemFromSubTree([](const RootItem* it) {
-                                return it->kind() == RootItem::Kind::Labels;
-                              })));
+        DatabaseQueries::purgeLeftoverMessages(db, accountId());
+        DatabaseQueries::purgeLeftoverMessageFilterAssignments(db);
+        DatabaseQueries::purgeLeftoverLabelAssignments(db);
 
-      // Model is clean, now store new tree into DB and
-      // set primary IDs of the items.
-      DatabaseQueries::storeAccountTree(db, new_tree, next_primary_id_feeds, next_primary_id_labels, accountId());
+        qApp->database()->driver()->setForeignKeyChecksEnabled(db);
+      });
 
-      DatabaseQueries::purgeLeftoverMessages(db, accountId());
-      DatabaseQueries::purgeLeftoverMessageFilterAssignments(db);
-      DatabaseQueries::purgeLeftoverLabelAssignments(db);
+      auto chi = new_tree->childItems();
 
-      qApp->database()->driver()->setForeignKeyChecksEnabled(db);
-    });
+      for (RootItem* top_level_item : std::as_const(chi)) {
+        if (top_level_item->kind() != Kind::Labels) {
+          top_level_item->setParent(nullptr);
+          requestItemReassignment(top_level_item, this);
+        }
+        else {
+          // It seems that some labels got synced-in.
+          if (labelsNode() != nullptr) {
+            auto lbl_chi = top_level_item->childItems();
 
-    auto chi = new_tree->childItems();
-
-    for (RootItem* top_level_item : std::as_const(chi)) {
-      if (top_level_item->kind() != Kind::Labels) {
-        top_level_item->setParent(nullptr);
-        requestItemReassignment(top_level_item, this);
-      }
-      else {
-        // It seems that some labels got synced-in.
-        if (labelsNode() != nullptr) {
-          auto lbl_chi = top_level_item->childItems();
-
-          for (RootItem* new_lbl : std::as_const(lbl_chi)) {
-            new_lbl->setParent(nullptr);
-            requestItemReassignment(new_lbl, labelsNode());
+            for (RootItem* new_lbl : std::as_const(lbl_chi)) {
+              new_lbl->setParent(nullptr);
+              requestItemReassignment(new_lbl, labelsNode());
+            }
           }
         }
       }
+
+      new_tree->clearChildren();
+      new_tree->deleteLater();
+
+      updateCounts();
+      informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::AccountSyncedIn);
     }
-
-    new_tree->clearChildren();
-    new_tree->deleteLater();
-
-    updateCounts();
-    informOthersAboutDataChange(this, FeedsModel::ExternalDataChange::AccountSyncedIn);
+    else {
+      throw ApplicationException(tr("unknown data returned from sync-in"));
+    }
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_CORE << "New feed tree for sync-in NOT obtained:" << QUOTE_W_SPACE_DOT(ex.message());
@@ -758,7 +776,8 @@ void ServiceRoot::syncIn() {
                          GuiMessageDestination(true, true));
   }
 
-  setIcon(original_icon);
+  // setIcon(original_icon);
+  m_syncInRunning = false;
   itemChanged(getSubTree<RootItem>());
   requestItemExpand(getSubTree<RootItem>(), true);
 }
@@ -773,10 +792,6 @@ void ServiceRoot::performInitialAssembly(const Assignment& categories,
   probesNode()->loadProbes(probes);
 
   updateCounts();
-}
-
-RootItem* ServiceRoot::obtainNewTreeForSyncIn() const {
-  return nullptr;
 }
 
 QStringList ServiceRoot::customIDsOfMessagesForItem(RootItem* item, ReadStatus target_read) {

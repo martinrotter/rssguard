@@ -43,8 +43,8 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual bool wantsBaggedIdsOfExistingMessages() const;
     virtual CustomMessagePreviewer* customMessagePreviewer();
 
-  protected:
-    virtual RootItem* obtainNewTreeForSyncIn() const;
+  public slots:
+    virtual void requestSyncIn();
 
   private slots:
     void replyToEmail();

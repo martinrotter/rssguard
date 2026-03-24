@@ -46,7 +46,7 @@ void FormTtRssFeedDetails::apply() {
                            {tr("Feed added"),
                             tr("Feed was added, obtaining new tree of feeds now."),
                             QSystemTrayIcon::MessageIcon::Information});
-      QTimer::singleShot(300, root, &TtRssServiceRoot::syncIn);
+      QTimer::singleShot(300, root, &TtRssServiceRoot::requestSyncIn);
     }
     else {
       throw ApplicationException(tr("API returned error code %1").arg(QString::number(response.code())));

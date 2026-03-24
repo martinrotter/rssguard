@@ -94,6 +94,30 @@ QList<Message> FeedlyServiceRoot::obtainNewMessages(Feed* feed,
   }
 }
 
+void FeedlyServiceRoot::requestSyncIn() {
+  if (m_syncInRunning) {
+    return;
+  }
+
+  ServiceRoot::requestSyncIn();
+
+  QThreadPool::globalInstance()->start([this]() {
+    try {
+      auto tree = m_network->collections(true);
+      auto* lblroot = new LabelsNode(tree);
+      auto labels = m_network->tags();
+
+      lblroot->setChildItems(labels);
+      tree->appendChild(lblroot);
+
+      emit syncInFinished(tree);
+    }
+    catch (const ApplicationException& ex) {
+      emit syncInFinished(ex);
+    }
+  });
+}
+
 void FeedlyServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
     DatabaseQueries::loadRootFromDatabase<Category, Feed>(this);
@@ -104,10 +128,10 @@ void FeedlyServiceRoot::start(bool freshly_activated) {
   if (getSubTreeFeeds().isEmpty()) {
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
     m_network->oauth()->login([this]() {
-      syncIn();
+      requestSyncIn();
     });
 #else
-    syncIn();
+    requestSyncIn();
 #endif
   }
 
@@ -231,17 +255,6 @@ ServiceRoot::LabelOperation FeedlyServiceRoot::supportedLabelOperations() const 
 
 void FeedlyServiceRoot::updateTitle() {
   setTitle(QSL("%1 (Feedly)").arg(TextFactory::extractUsernameFromEmail(m_network->username())));
-}
-
-RootItem* FeedlyServiceRoot::obtainNewTreeForSyncIn() const {
-  auto tree = m_network->collections(true);
-  auto* lblroot = new LabelsNode(tree);
-  auto labels = m_network->tags();
-
-  lblroot->setChildItems(labels);
-  tree->appendChild(lblroot);
-
-  return tree;
 }
 
 bool FeedlyServiceRoot::wantsBaggedIdsOfExistingMessages() const {

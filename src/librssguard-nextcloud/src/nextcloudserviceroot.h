@@ -35,6 +35,9 @@ class NextcloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     NextcloudNetworkFactory* network() const;
 
+  public slots:
+    virtual void requestSyncIn();
+
   protected:
     virtual RootItem* obtainNewTreeForSyncIn() const;
 

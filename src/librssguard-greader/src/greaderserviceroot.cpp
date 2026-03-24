@@ -150,6 +150,23 @@ QString GreaderServiceRoot::serviceToString(Service service) {
   }
 }
 
+void GreaderServiceRoot::requestSyncIn() {
+  if (m_syncInRunning) {
+    return;
+  }
+
+  ServiceRoot::requestSyncIn();
+
+  QThreadPool::globalInstance()->start([this]() {
+    try {
+      emit syncInFinished(m_network->categoriesFeedsLabelsTree(true, networkProxy()));
+    }
+    catch (const ApplicationException& ex) {
+      emit syncInFinished(ex);
+    }
+  });
+}
+
 void GreaderServiceRoot::importFeeds() {
   const QString filter_opml20 = tr("OPML 2.0 files (*.opml *.xml)");
   const QString selected_file = FileDialog::openFileName(qApp->mainFormWidget(),
@@ -171,7 +188,7 @@ void GreaderServiceRoot::importFeeds() {
                  tr("Done"),
                  tr("Data imported successfully. Reloading feed tree."));
 
-    syncIn();
+    requestSyncIn();
   }
   catch (const ApplicationException& ex) {
     MsgBox::show({}, QMessageBox::Icon::Critical, tr("Cannot import feeds"), tr("Error: %1").arg(ex.message()));
@@ -235,11 +252,11 @@ void GreaderServiceRoot::start(bool freshly_activated) {
   if (getSubTreeFeeds().isEmpty()) {
     if (m_network->service() == Service::Inoreader) {
       m_network->oauth()->login([this]() {
-        syncIn();
+        requestSyncIn();
       });
     }
     else {
-      syncIn();
+      requestSyncIn();
     }
   }
   else if (m_network->service() == Service::Inoreader) {
@@ -412,8 +429,4 @@ void GreaderServiceRoot::updateTitleIcon() {
       setIcon(GreaderEntryPoint().icon());
       break;
   }
-}
-
-RootItem* GreaderServiceRoot::obtainNewTreeForSyncIn() const {
-  return m_network->categoriesFeedsLabelsTree(true, networkProxy());
 }

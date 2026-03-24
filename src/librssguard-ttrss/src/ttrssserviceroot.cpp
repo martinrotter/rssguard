@@ -58,7 +58,7 @@ void TtRssServiceRoot::start(bool freshly_activated) {
   updateTitle();
 
   if (getSubTreeFeeds().isEmpty()) {
-    syncIn();
+    requestSyncIn();
   }
 }
 
@@ -423,24 +423,37 @@ void TtRssServiceRoot::updateTitle() {
   setTitle(TextFactory::extractUsernameFromEmail(m_network->username()) + QSL(" (Tiny Tiny RSS)"));
 }
 
-RootItem* TtRssServiceRoot::obtainNewTreeForSyncIn() const {
-  TtRssGetFeedsCategoriesResponse feed_cats = m_network->getFeedsCategories(networkProxy());
-  TtRssGetLabelsResponse labels = m_network->getLabels(networkProxy());
-
-  auto lst_error = m_network->lastError();
-
-  if (lst_error == QNetworkReply::NoError) {
-    auto* tree = feed_cats.feedsCategories(m_network, true, networkProxy(), m_network->url());
-    auto* lblroot = new LabelsNode(tree);
-
-    lblroot->setChildItems(labels.labels());
-    tree->appendChild(lblroot);
-
-    return tree;
+void TtRssServiceRoot::requestSyncIn() {
+  if (m_syncInRunning) {
+    return;
   }
-  else {
-    throw NetworkException(lst_error, tr("cannot get list of feeds, network error '%1'").arg(lst_error));
-  }
+
+  ServiceRoot::requestSyncIn();
+
+  QThreadPool::globalInstance()->start([this]() {
+    try {
+      TtRssGetFeedsCategoriesResponse feed_cats = m_network->getFeedsCategories(networkProxy());
+      TtRssGetLabelsResponse labels = m_network->getLabels(networkProxy());
+
+      auto lst_error = m_network->lastError();
+
+      if (lst_error == QNetworkReply::NetworkError::NoError) {
+        auto* tree = feed_cats.feedsCategories(m_network, true, networkProxy(), m_network->url());
+        auto* lblroot = new LabelsNode(tree);
+
+        lblroot->setChildItems(labels.labels());
+        tree->appendChild(lblroot);
+
+        emit syncInFinished(tree);
+      }
+      else {
+        throw NetworkException(lst_error, tr("cannot get list of feeds, network error '%1'").arg(lst_error));
+      }
+    }
+    catch (const ApplicationException& ex) {
+      emit syncInFinished(ex);
+    }
+  });
 }
 
 bool TtRssServiceRoot::wantsBaggedIdsOfExistingMessages() const {

@@ -45,9 +45,7 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
   public slots:
     void shareToPublished();
-
-  protected:
-    virtual RootItem* obtainNewTreeForSyncIn() const;
+    virtual void requestSyncIn();
 
   private:
     void updateTitle();

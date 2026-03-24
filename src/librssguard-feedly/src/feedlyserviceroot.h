@@ -31,8 +31,8 @@ class FeedlyServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     FeedlyNetwork* network() const;
 
-  protected:
-    virtual RootItem* obtainNewTreeForSyncIn() const;
+  public slots:
+    virtual void requestSyncIn();
 
   private:
     void updateTitle();

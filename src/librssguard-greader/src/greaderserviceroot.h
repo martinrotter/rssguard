@@ -53,12 +53,12 @@ class GreaderServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     static QString serviceToString(Service service);
 
+  public slots:
+    virtual void requestSyncIn();
+
   private slots:
     void importFeeds();
     void exportFeeds();
-
-  protected:
-    virtual RootItem* obtainNewTreeForSyncIn() const;
 
   private:
     void updateTitleIcon();

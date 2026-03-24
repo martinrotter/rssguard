@@ -557,11 +557,20 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
     }
 
     case Qt::ItemDataRole::DecorationRole: {
-      if (index.column() == FDS_MODEL_TITLE_INDEX && m_updateDuringFetching) {
-        RootItem* it = itemForIndex(index);
+      if (index.column() == FDS_MODEL_TITLE_INDEX) {
+        if (m_updateDuringFetching) {
+          RootItem* it = itemForIndex(index);
 
-        if (it->isFetching()) {
-          return m_updateItemIcon;
+          if (it->isFetching()) {
+            return m_updateItemIcon;
+          }
+        }
+        else {
+          RootItem* it = itemForIndex(index);
+
+          if (it->kind() == RootItem::Kind::ServiceRoot && it->toServiceRoot()->syncInRunning()) {
+            return qApp->icons()->fromTheme(QSL("view-refresh"));
+          }
         }
       }
 

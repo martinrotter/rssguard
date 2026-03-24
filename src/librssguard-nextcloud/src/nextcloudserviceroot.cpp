@@ -17,6 +17,8 @@
 NextcloudServiceRoot::NextcloudServiceRoot(RootItem* parent)
   : ServiceRoot(parent), m_network(new NextcloudNetworkFactory()) {
   setIcon(NextcloudServiceEntryPoint().icon());
+
+  // connect(this, &NextcloudServiceRoot::syncInRequested, this, &NextcloudServiceRoot::initiateSyncIn);
 }
 
 NextcloudServiceRoot::~NextcloudServiceRoot() {
@@ -62,7 +64,7 @@ void NextcloudServiceRoot::start(bool freshly_activated) {
   updateTitle();
 
   if (getSubTreeFeeds().isEmpty()) {
-    syncIn();
+    requestSyncIn();
   }
 }
 
@@ -72,6 +74,26 @@ QString NextcloudServiceRoot::code() const {
 
 NextcloudNetworkFactory* NextcloudServiceRoot::network() const {
   return m_network;
+}
+
+void NextcloudServiceRoot::requestSyncIn() {
+  if (m_syncInRunning) {
+    return;
+  }
+
+  ServiceRoot::requestSyncIn();
+
+  QThreadPool::globalInstance()->start([this]() {
+    try {
+      auto* feed_cats = m_network->feedsCategories(networkProxy());
+      m_network->obtainIcons(feed_cats->getSubTreeFeeds(), networkProxy());
+
+      emit syncInFinished(feed_cats);
+    }
+    catch (const ApplicationException& ex) {
+      emit syncInFinished(ex);
+    }
+  });
 }
 
 void NextcloudServiceRoot::saveAllCachedData(bool ignore_errors) {

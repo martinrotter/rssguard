@@ -9,6 +9,8 @@
 #include "exceptions/applicationexception.h"
 #include "services/abstract/rootitem.h"
 
+#include <variant>
+
 #include <QJsonDocument>
 #include <QNetworkProxy>
 #include <QPair>
@@ -33,9 +35,9 @@ class QMenu;
 class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     Q_OBJECT
 
+  public:
     using SyncInResult = std::variant<RootItem*, ApplicationException>;
 
-  public:
     enum class LabelOperation {
       Adding = 1,
       Editing = 2,
@@ -228,22 +230,26 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     bool nodeShowProbes() const;
     void setNodeShowProbes(bool enabled);
 
+    bool syncInRunning() const;
+    void setSyncInRunning(bool running);
+
   public slots:
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
     virtual void addNewCategory(RootItem* selected_item);
-    virtual void syncIn();
+
+    virtual void requestSyncIn();
+
+  private slots:
+    void onSyncInFinished(const SyncInResult& result);
 
   protected:
-    // This method should obtain new tree of feed/categories/whatever to perform sync in.
-    virtual RootItem* obtainNewTreeForSyncIn() const;
-
     // Removes all messages/categories/feeds which are
     // associated with this account.
     void cleanAllItemsFromModel(bool clean_labels_too);
     void appendCommonNodes();
 
   signals:
-    void syncInRequested();
+    // void syncInRequested();
     void syncInFinished(SyncInResult result);
     void proxyChanged(QNetworkProxy proxy);
     void dataChanged(QList<RootItem*> items);
@@ -294,6 +300,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     QList<QAction*> m_contextMenuProbes;
     QList<QAction*> m_contextMenuBin;
     QList<QAction*> m_contextMenuLabels;
+    bool m_syncInRunning;
 };
 
 #if QT_VERSION_MAJOR == 6
