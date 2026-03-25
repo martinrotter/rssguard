@@ -18,9 +18,17 @@ class XmppFeed : public Feed {
     virtual bool canBeDeleted() const;
     virtual void deleteItem();
 
+    void storeRealTimeArticle(const Message& message);
+
+    QList<Message> articles() const;
+    void setArticles(const QList<Message>& articles);
+
   private:
     XmppServiceRoot* serviceRoot() const;
     void removeItself();
+
+  private:
+    QList<Message> m_articles;
 };
 
 #endif // XMPPFEED_H

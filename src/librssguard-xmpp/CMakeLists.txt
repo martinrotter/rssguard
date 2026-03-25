@@ -12,6 +12,10 @@ set(SOURCES
   src/xmppserviceroot.h
   src/xmppubsubpmanager.cpp
   src/xmppubsubpmanager.h
+  src/parsers/atomparser.cpp
+  src/parsers/atomparser.h
+  src/parsers/feedparser.cpp
+  src/parsers/feedparser.h
 
   src/gui/formeditxmppaccount.cpp
   src/gui/formeditxmppaccount.h

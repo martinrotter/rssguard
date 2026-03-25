@@ -2,6 +2,10 @@
 
 #include "src/xmppubsubpmanager.h"
 
+#include "src/parsers/atomparser.h"
+
+#include <librssguard/definitions/definitions.h>
+
 #include <QXmppClient.h>
 #include <QXmppConstants_p.h>
 #include <QXmppDiscoveryManager.h>
@@ -10,122 +14,62 @@
 #include <QXmppPubSubSubscription.h>
 #include <QXmppTask.h>
 
-void AtomPubSubBaseItem::writeDomNode(QXmlStreamWriter* writer, const QDomNode& node) {
-  if (node.isElement()) {
-    writeDomElement(writer, node.toElement());
-  }
-  else if (node.isText()) {
-    writer->writeCharacters(node.nodeValue());
-  }
-  else if (node.isCDATASection()) {
-    writer->writeCDATA(node.nodeValue());
-  }
+Message AtomPubSubBaseItem::message() const {
+  return m_message;
 }
 
-void AtomPubSubBaseItem::writeDomElement(QXmlStreamWriter* writer, const QDomElement& element) {
-  if (element.isNull()) {
-    return;
-  }
-
-  writer->writeStartElement(element.tagName());
-
-  // attributes
-  auto attrs = element.attributes();
-  for (int i = 0; i < attrs.count(); ++i) {
-    QDomAttr attr = attrs.item(i).toAttr();
-    writer->writeAttribute(attr.name(), attr.value());
-  }
-
-  // children
-  for (QDomNode child = element.firstChild(); !child.isNull(); child = child.nextSibling()) {
-    writeDomNode(writer, child);
-  }
-
-  writer->writeEndElement();
-}
-
-void AtomPubSubBaseItem::parsePayload(const QDomElement& payloadElement) {
-  payload = payloadElement;
-
+void AtomPubSubBaseItem::parsePayload(const QDomElement& element) {
   QString xml;
   QTextStream stream(&xml);
 
-  payloadElement.save(stream, 2); // 2 = indentation spaces
+  element.save(stream, 0);
 
-  // Atom namespace entries
-  QDomElement e;
+  AtomParser parser(xml);
+  auto messages = parser.messages();
 
-  e = payloadElement.firstChildElement("id");
-  if (!e.isNull()) {
-    aid = e.text();
+  if (messages.isEmpty()) {
+    m_message = Message();
   }
-
-  e = payloadElement.firstChildElement("title");
-  if (!e.isNull()) {
-    title = e.text();
-  }
-
-  e = payloadElement.firstChildElement("content");
-  if (!e.isNull()) {
-    content = e.text();
-  }
-
-  QDomElement authorElem = payloadElement.firstChildElement("author");
-  if (!authorElem.isNull()) {
-    QDomElement nameElem = authorElem.firstChildElement("name");
-    if (!nameElem.isNull()) {
-      author = nameElem.text();
-    }
+  else {
+    m_message = messages.first();
+    m_message.m_customId = id();
   }
 }
 
-void AtomPubSubBaseItem::serializePayload(QXmlStreamWriter* writer) const {
-  if (payload.isNull()) {
-    return;
-  }
-
-  // write the stored XML payload
-  writeDomElement(writer, payload);
-}
+void AtomPubSubBaseItem::serializePayload(QXmlStreamWriter* writer) const {}
 
 PubSubManager::PubSubManager(QObject* parent) : QXmppPubSubManager(), QXmppPubSubEventHandler() {
   setParent(parent);
 }
 
-bool PubSubManager::handlePubSubEvent(const QDomElement& element,
-                                      const QString& pubSubService,
-                                      const QString& nodeName) {
-  qDebug() << "\nPUBSUB EVENT";
-  qDebug() << "service:" << pubSubService;
-  qDebug() << "node:" << nodeName;
-
-  if (QXmppPubSubEvent<AtomPubSubBaseItem>::isPubSubEvent(element)) {
-    QXmppPubSubEvent<AtomPubSubBaseItem> event;
+bool PubSubManager::handlePubSubEvent(const QDomElement& element, const QString& service, const QString& node) {
+  if (QXmppPubSubEvent<QXmppPubSubBaseItem>::isPubSubEvent(element)) {
+    QXmppPubSubEvent<QXmppPubSubBaseItem> event;
     event.parse(element);
 
-    qDebug() << "event:" << event.type();
-
-    if (!event.items().isEmpty()) {
-      QString eid = event.items().constFirst().id();
+    for (const QXmppPubSubBaseItem& item : event.items()) {
+      QString eid = item.id();
       QXmppTask<QXmppPubSubManager::ItemResult<AtomPubSubBaseItem>> task =
-        requestItem<AtomPubSubBaseItem>(pubSubService, nodeName, eid);
+        requestItem<AtomPubSubBaseItem>(service, node, eid);
 
-      task.then(this, [pubSubService, nodeName](auto result) {
+      task.then(this, [service, node, this](auto result) {
         if (AtomPubSubBaseItem* item = std::get_if<AtomPubSubBaseItem>(&result)) {
-          qDebug() << "Got item:" << item->id();
+          emit pushArticleObtained(service, node, item->message());
         }
         else if (QXmppError* err = std::get_if<QXmppError>(&result)) {
-          qDebug() << "Failed to fetch item:" << err->description;
+          qDebugNN << LOGSEC_XMPP << "Failed to fetch item:" << QUOTE_W_SPACE_DOT(err->description);
         }
       });
     }
   }
 
+  /*
   QString xml;
   QTextStream stream(&xml);
   element.save(stream, 2); // indent = 2 spaces
 
   qDebug().noquote() << xml;
+  */
 
   return true;
 }

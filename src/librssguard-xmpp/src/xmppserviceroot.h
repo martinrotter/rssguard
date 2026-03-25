@@ -6,6 +6,7 @@
 #include <librssguard/services/abstract/serviceroot.h>
 
 class XmppNetwork;
+class XmppFeed;
 
 class XmppServiceRoot : public ServiceRoot {
     Q_OBJECT
@@ -38,8 +39,10 @@ class XmppServiceRoot : public ServiceRoot {
 
   public slots:
     virtual void requestSyncIn();
+    void pushArticleObtained(const QString& service, const QString& node, const Message& message);
 
   private:
+    XmppFeed* findFeed(const QString& service, const QString& node) const;
     void updateTitle();
 
   private:

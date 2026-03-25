@@ -87,6 +87,10 @@ QList<Message> XmppServiceRoot::obtainNewMessages(Feed* feed,
                                                   const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                   const QHash<QString, QStringList>& tagged_messages) {
   QList<Message> msgs;
+  auto* xmpp_node = qobject_cast<XmppFeed*>(feed);
+
+  msgs.append(xmpp_node->articles());
+  xmpp_node->setArticles({});
 
   return msgs;
 }
@@ -103,6 +107,34 @@ void XmppServiceRoot::requestSyncIn() {
   ServiceRoot::requestSyncIn();
 
   m_network->obtainServicesNodesTree();
+}
+
+void XmppServiceRoot::pushArticleObtained(const QString& service, const QString& node, const Message& message) {
+  auto* feed = findFeed(service, node);
+
+  if (feed == nullptr) {
+    qApp->showGuiMessage(Notification::Event::ArticlesFetchingError,
+                         GuiMessage(tr("Cannot store article"),
+                                    tr("Cannot save article obtained via push notification because its feed does not "
+                                       "exist. Tray to refresh list of feeds."),
+                                    QSystemTrayIcon::MessageIcon::Critical));
+  }
+  else {
+    feed->storeRealTimeArticle(message);
+
+    if (!feed->isSwitchedOff()) {
+      emit feedFetchRequested({feed});
+    }
+  }
+}
+
+XmppFeed* XmppServiceRoot::findFeed(const QString& service, const QString& node) const {
+  RootItem* feed = getItemFromSubTree([&](const RootItem* item) {
+    return item->kind() == RootItem::Kind::Feed && item->customId() == node && item->parent() != nullptr &&
+           item->parent()->customId() == service;
+  });
+
+  return qobject_cast<XmppFeed*>(feed);
 }
 
 void XmppServiceRoot::start(bool freshly_activated) {

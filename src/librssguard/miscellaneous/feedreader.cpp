@@ -95,6 +95,10 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
   return m_feedServices;
 }
 
+void FeedReader::onFeedFetchRequested(QList<Feed*> feeds) {
+  updateFeeds(feeds, false);
+}
+
 void FeedReader::updateFeeds(const QList<Feed*>& feeds, bool update_switched_off_too) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,

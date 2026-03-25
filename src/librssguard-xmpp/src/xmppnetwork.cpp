@@ -35,6 +35,10 @@ XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
   connect(m_xmppClient, &QXmppClient::connected, this, &XmppNetwork::onClientConnected);
   connect(m_xmppClient, &QXmppClient::disconnected, this, &XmppNetwork::onClientDisconnected);
   connect(m_xmppClient, &QXmppClient::errorOccurred, this, &XmppNetwork::onClientError);
+
+  if (m_root != nullptr) {
+    connect(m_pubSubManager, &PubSubManager::pushArticleObtained, m_root, &::XmppServiceRoot::pushArticleObtained);
+  }
 }
 
 QString XmppNetwork::username() const {

@@ -1,0 +1,113 @@
+// For license of this file, see <project-root-folder>/LICENSE.md.
+
+#ifndef XMPPFEEDPARSER_H
+#define XMPPFEEDPARSER_H
+
+#include <librssguard/core/message.h>
+#include <librssguard/definitions/typedefs.h>
+#include <librssguard/miscellaneous/domdocument.h>
+#include <librssguard/network-web/networkfactory.h>
+
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
+#include <QString>
+
+struct FeedComment {
+    QString m_title;
+    QString m_contents;
+};
+
+// Base class for all XML-based feed parsers.
+class FeedParser {
+  public:
+    enum class DataType {
+      Xml,
+      Json,
+      Other
+    };
+
+    FeedParser();
+    explicit FeedParser(QString data, DataType is_xml = DataType::Xml);
+    virtual ~FeedParser();
+
+    // Returns list of all messages from the feed.
+    virtual QList<Message> messages();
+
+    QString dateTimeFormat() const;
+    void setDateTimeFormat(const QString& dt_format);
+
+    bool dontUseRawXmlSaving() const;
+    void setDontUseRawXmlSaving(bool no_raw_xml_saving);
+
+    std::function<QByteArray(QUrl)> resourceHandler() const;
+    void setResourceHandler(const std::function<QByteArray(QUrl)>& res_handler);
+
+    bool fetchComments() const;
+    void setFetchComments(bool cmnts);
+
+  protected:
+    virtual QString feedAuthor() const;
+
+    // XML.
+    virtual QDomNodeList xmlMessageElements();
+    virtual QString xmlMessageTitle(const QDomElement& msg_element) const;
+    virtual QString xmlMessageUrl(const QDomElement& msg_element) const;
+    virtual QString xmlMessageDescription(const QDomElement& msg_element) const;
+    virtual QString xmlMessageAuthor(const QDomElement& msg_element) const;
+    virtual QDateTime xmlMessageDateCreated(const QDomElement& msg_element);
+    virtual QString xmlMessageId(const QDomElement& msg_element) const;
+    virtual QList<QSharedPointer<MessageEnclosure>> xmlMessageEnclosures(const QDomElement& msg_element) const;
+    virtual QList<QSharedPointer<MessageCategory>> xmlMessageCategories(const QDomElement& msg_element) const;
+    virtual QString xmlMessageRawContents(const QDomElement& msg_element) const;
+
+    // JSON.
+    virtual QJsonArray jsonMessageElements();
+    virtual QString jsonMessageTitle(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageUrl(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageDescription(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageAuthor(const QJsonObject& msg_element) const;
+    virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element);
+    virtual QString jsonMessageId(const QJsonObject& msg_element) const;
+    virtual QList<QSharedPointer<MessageEnclosure>> jsonMessageEnclosures(const QJsonObject& msg_element) const;
+    virtual QList<MessageCategory*> jsonMessageCategories(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageRawContents(const QJsonObject& msg_element) const;
+
+    // Objects.
+    virtual QVariantList objMessageElements();
+    virtual QString objMessageTitle(const QVariant& msg_element) const;
+    virtual QString objMessageUrl(const QVariant& msg_element) const;
+    virtual QString objMessageDescription(const QVariant& msg_element);
+    virtual QString objMessageAuthor(const QVariant& msg_element) const;
+    virtual QDateTime objMessageDateCreated(const QVariant& msg_element);
+    virtual QString objMessageId(const QVariant& msg_element) const;
+    virtual QList<QSharedPointer<MessageEnclosure>> objMessageEnclosures(const QVariant& msg_element) const;
+    virtual QList<MessageCategory*> objMessageCategories(const QVariant& msg_element) const;
+    virtual QString objMessageRawContents(const QVariant& msg_element) const;
+
+  protected:
+    void logUnsuccessfulRequest(const NetworkResult& reply) const;
+    QList<QSharedPointer<MessageEnclosure>> xmlMrssGetEnclosures(const QDomElement& msg_element) const;
+    QString xmlMrssTextFromPath(const QDomElement& msg_element, const QString& xml_path) const;
+    QString xmlRawChild(const QDomElement& container) const;
+    QStringList xmlTextsFromPath(const QDomElement& element,
+                                 const QString& namespace_uri,
+                                 const QString& xml_path,
+                                 bool only_first) const;
+
+    QString formatComments(const QList<FeedComment>& comments) const;
+    QDateTime decideArticleDate(const QString& published, const QString& updated);
+
+  protected:
+    std::function<QByteArray(QUrl)> m_resourceHandler;
+    DataType m_dataType;
+    QString m_data;
+    QString m_dateTimeFormat;
+    DomDocument m_xml;
+    QJsonDocument m_json;
+    QString m_mrssNamespace;
+    bool m_dontUseRawXmlSaving;
+    bool m_fetchComments;
+};
+
+#endif // XMPPFEEDPARSER_H

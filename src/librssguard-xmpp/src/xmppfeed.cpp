@@ -36,8 +36,20 @@ void XmppFeed::deleteItem() {
   serviceRoot()->requestItemRemoval(this, false);
 }
 
+void XmppFeed::storeRealTimeArticle(const Message& message) {
+  m_articles.append(message);
+}
+
 void XmppFeed::removeItself() {
   qApp->database()->worker()->write([&](const QSqlDatabase& db) {
     DatabaseQueries::deleteFeed(db, this, serviceRoot()->accountId());
   });
+}
+
+void XmppFeed::setArticles(const QList<Message>& articles) {
+  m_articles = articles;
+}
+
+QList<Message> XmppFeed::articles() const {
+  return m_articles;
 }
