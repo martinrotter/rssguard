@@ -1,7 +1,6 @@
 #include "src/xmppnetwork.h"
 
 #include "src/xmppfeed.h"
-#include "src/xmppserviceroot.h"
 #include "src/xmppubsubpmanager.h"
 
 #include <librssguard/definitions/definitions.h>
@@ -10,6 +9,7 @@
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/webfactory.h>
 #include <librssguard/services/abstract/category.h>
+#include <qtlinq/qtlinq.h>
 
 #include <QXmppAuthenticationError.h>
 #include <QXmppDiscoveryManager.h>
@@ -25,7 +25,6 @@ XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
   m_discoveryManager->setParent(this);
 
   m_syncInTimer.setSingleShot(true);
-  m_syncInTimer.setInterval(SYNC_IN_IDLE_TIMEOUT);
 
   m_xmppClient->logger()->setLoggingType(QXmppLogger::LoggingType::SignalLogging);
 
@@ -86,10 +85,9 @@ void XmppNetwork::fetchSubscriptions(const QString& service, RootItem* new_tree)
   auto task = m_pubSubManager->requestSubscriptions(service);
 
   task.then(this, [=, this](auto result) {
-    if (auto subs = std::get_if<QList<QXmppPubSubSubscription>>(&result)) {
-      qDebug() << "\nPubSub service:" << service;
-      qDebug() << "Active subscriptions:";
+    m_syncInTimer.start();
 
+    if (auto subs = std::get_if<QList<QXmppPubSubSubscription>>(&result)) {
       if (!subs->isEmpty()) {
         Category* service_folder = new Category();
         QString tld = qApp->web()->urlToTld(QUrl::fromUserInput(service));
@@ -110,8 +108,6 @@ void XmppNetwork::fetchSubscriptions(const QString& service, RootItem* new_tree)
         new_tree->appendChild(service_folder);
 
         for (const QXmppPubSubSubscription& sub : *subs) {
-          qDebug() << "  sub:" << sub.node();
-
           XmppFeed* feed = new XmppFeed();
 
           feed->setTitle(sub.node());
@@ -122,43 +118,97 @@ void XmppNetwork::fetchSubscriptions(const QString& service, RootItem* new_tree)
           service_folder->appendChild(feed);
         }
       }
+    }
+    else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
+      QString desc = XmppSimpleError::fromQXmppError(*error).m_description;
 
-      m_syncInTimer.start();
+      qDebugNN << LOGSEC_XMPP << "Subscription checking failed:" << NONQUOTE_W_SPACE_DOT(desc);
     }
     else {
-      qDebug() << "Failed fetching subscriptions";
+      qDebugNN << LOGSEC_XMPP << "Subscription checking failed with unspecified error.";
+    }
+
+    m_syncInPendingServices.removeAll(service);
+
+    if (m_syncInPendingServices.isEmpty()) {
+      reportSyncInFinish(new_tree);
     }
   });
 }
 
+void XmppNetwork::reportSyncInFinish(const ServiceRoot::SyncInResult& result) {
+  m_syncInTimer.disconnect(this);
+  m_syncInTimer.stop();
+  m_syncInPendingServices.clear();
+
+  emit m_root->syncInFinished(result);
+}
+
+QStringList XmppNetwork::xeps() const {
+  return m_xeps;
+}
+
+QString XmppNetwork::clientState() const {
+  switch (m_xmppClient->state()) {
+    case QXmppClient::DisconnectedState:
+      return tr("disconnected");
+
+    case QXmppClient::ConnectingState:
+      return tr("connecting");
+
+    case QXmppClient::ConnectedState:
+      return tr("connected");
+
+    default:
+      return tr("unknown");
+  }
+}
+
 void XmppNetwork::checkService(const QString& jid, RootItem* new_tree) {
+  m_syncInPendingServices.append(jid);
+
   auto task = m_discoveryManager->info(jid);
 
   task.then(this, [=, this](auto result) {
+    m_syncInTimer.start();
+
     if (QXmppDiscoInfo* info = std::get_if<QXmppDiscoInfo>(&result)) {
       if (info->features().contains(XMPP_PROTOCOL_PUBSUB)) {
         fetchSubscriptions(jid, new_tree);
+        return;
       }
+    }
+    else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
+      QString desc = XmppSimpleError::fromQXmppError(*error).m_description;
+
+      qDebugNN << LOGSEC_XMPP << "Service checking failed:" << NONQUOTE_W_SPACE_DOT(desc);
+    }
+
+    m_syncInPendingServices.removeAll(jid);
+
+    if (m_syncInPendingServices.isEmpty()) {
+      reportSyncInFinish(new_tree);
     }
   });
 }
 
 void XmppNetwork::obtainServicesNodesTree() {
+  m_syncInPendingServices.clear();
+  m_syncInTimer.disconnect(this);
+  m_syncInTimer.stop();
+  m_syncInTimer.setInterval(6000);
+
   RootItem* root = new RootItem();
 
-  m_syncInTimer.disconnect(this);
   connect(&m_syncInTimer, &QTimer::timeout, this, [=, this]() {
-    m_syncInTimer.stop();
-    m_syncInTimer.disconnect(this);
-
-    emit m_root->syncInFinished(root);
+    reportSyncInFinish(root);
   });
 
   auto task = m_discoveryManager->items(m_xmppClient->configuration().domain());
 
-  m_syncInTimer.start();
-
   task.then(this, [=, this](auto result) {
+    m_syncInTimer.start();
+
     if (auto items = std::get_if<QList<QXmppDiscoItem>>(&result)) {
       QStringList all_services = extraServices();
 
@@ -172,9 +222,18 @@ void XmppNetwork::obtainServicesNodesTree() {
         checkService(serv, root);
       }
     }
+    else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
+      delete root;
+
+      QString desc = XmppSimpleError::fromQXmppError(*error).m_description;
+      qDebugNN << LOGSEC_XMPP << "Service discovery failed:" << NONQUOTE_W_SPACE_DOT(desc);
+      reportSyncInFinish(ApplicationException(tr("error during services discovery, %1").arg(desc)));
+    }
     else {
-      qDebugNN << LOGSEC_XMPP << "Service discovery failed. This is a problem.";
-      m_syncInTimer.start(100);
+      delete root;
+
+      qDebugNN << LOGSEC_XMPP << "Service discovery failed with unspecified error. This is a problem.";
+      reportSyncInFinish(ApplicationException(tr("unspecified error during services discovery")));
     }
   });
 }
@@ -237,6 +296,179 @@ QStringList XmppNetwork::defaultExtraServices() {
           QSL("sport.movim.eu")};
 }
 
+QHash<QString, QString> XmppNetwork::xepMappings() {
+  QHash<QString, QString> xeps = {
+    {QSL("gc-1.0"), QSL("XEP-0045")},
+
+    {QSL("http://jabber.org/protocol/activity"), QSL("XEP-0108")},
+    {QSL("http://jabber.org/protocol/address"), QSL("XEP-0033")},
+    {QSL("http://jabber.org/protocol/amp"), QSL("XEP-0079")},
+    {QSL("http://jabber.org/protocol/amp#errors"), QSL("XEP-0079")},
+    {QSL("http://jabber.org/protocol/amp?action=alert"), QSL("XEP-0079")},
+    {QSL("http://jabber.org/protocol/amp?action=drop"), QSL("XEP-0079")},
+    {QSL("http://jabber.org/protocol/amp?action=error"), QSL("XEP-0079")},
+    {QSL("http://jabber.org/protocol/amp?action=notify"), QSL("XEP-0079")},
+    {QSL("http://jabber.org/protocol/amp?condition=deliver"), QSL("XEP-0079")},
+    {QSL("http://jabber.org/protocol/amp?condition=expire-at"), QSL("XEP-0079")},
+    {QSL("http://jabber.org/protocol/amp?condition=match-resource"), QSL("XEP-0079")},
+
+    {QSL("http://jabber.org/protocol/bytestreams"), QSL("XEP-0065")},
+    {QSL("http://jabber.org/protocol/bytestreams#udp"), QSL("XEP-0065")},
+
+    {QSL("http://jabber.org/protocol/caps"), QSL("XEP-0115")},
+    {QSL("http://jabber.org/protocol/caps#optimize"), QSL("XEP-0115")},
+
+    {QSL("http://jabber.org/protocol/chatstates"), QSL("XEP-0085")},
+    {QSL("http://jabber.org/protocol/commands"), QSL("XEP-0050")},
+    {QSL("http://jabber.org/protocol/compress"), QSL("XEP-0138")},
+
+    {QSL("http://jabber.org/protocol/disco#info"), QSL("XEP-0030")},
+    {QSL("http://jabber.org/protocol/disco#items"), QSL("XEP-0030")},
+
+    {QSL("http://jabber.org/protocol/feature-neg"), QSL("XEP-0020")},
+    {QSL("http://jabber.org/protocol/geoloc"), QSL("XEP-0080")},
+    {QSL("http://jabber.org/protocol/http-auth"), QSL("XEP-0072")},
+    {QSL("http://jabber.org/protocol/httpbind"), QSL("XEP-0124")},
+    {QSL("http://jabber.org/protocol/ibb"), QSL("XEP-0047")},
+    {QSL("http://jabber.org/protocol/mood"), QSL("XEP-0107")},
+
+    {QSL("http://jabber.org/protocol/muc"), QSL("XEP-0045")},
+    {QSL("http://jabber.org/protocol/muc#admin"), QSL("XEP-0045")},
+    {QSL("http://jabber.org/protocol/muc#owner"), QSL("XEP-0045")},
+    {QSL("http://jabber.org/protocol/muc#register"), QSL("XEP-0045")},
+    {QSL("http://jabber.org/protocol/muc#roomconfig"), QSL("XEP-0045")},
+    {QSL("http://jabber.org/protocol/muc#roominfo"), QSL("XEP-0045")},
+    {QSL("http://jabber.org/protocol/muc#user"), QSL("XEP-0045")},
+
+    {QSL("http://jabber.org/protocol/offline"), QSL("XEP-0013")},
+    {QSL("http://jabber.org/protocol/physloc"), QSL("XEP-0080")},
+
+    {QSL("http://jabber.org/protocol/pubsub#access-authorize"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#access-open"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#access-presence"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#access-roster"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#access-whitelist"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#auto-create"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#auto-subscribe"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#collections"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#config-node"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#create-and-configure"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#create-nodes"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#delete-any"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#delete-nodes"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#filtered-notifications"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#get-pending"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#instant-nodes"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#item-ids"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#last-published"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#leased-subscription"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#manage-subscription"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#member-affiliation"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#meta-data"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#modify-affiliations"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#multi-collection"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#multi-subscribe"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#outcast-affiliation"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#persistent-items"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#presence-notifications"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#presence-subscribe"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#publish"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#publish-options"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#publisher-affiliation"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#purge-nodes"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#retract-items"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#retrieve-affiliations"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#retrieve-default"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#retrieve-items"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#retrieve-subscriptions"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#subscribe"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#subscription-options"), QSL("XEP-0060")},
+    {QSL("http://jabber.org/protocol/pubsub#subscription-notifications"), QSL("XEP-0060")},
+
+    {QSL("http://jabber.org/protocol/rosterx"), QSL("XEP-0144")},
+    {QSL("http://jabber.org/protocol/sipub"), QSL("XEP-0137")},
+    {QSL("http://jabber.org/protocol/soap"), QSL("XEP-0072")},
+    {QSL("http://jabber.org/protocol/soap#fault"), QSL("XEP-0072")},
+    {QSL("http://jabber.org/protocol/waitinglist"), QSL("XEP-0130")},
+    {QSL("http://jabber.org/protocol/waitinglist/schemes/mailto"), QSL("XEP-0130")},
+    {QSL("http://jabber.org/protocol/waitinglist/schemes/tel"), QSL("XEP-0130")},
+    {QSL("http://jabber.org/protocol/xhtml-im"), QSL("XEP-0071")},
+    {QSL("http://jabber.org/protocol/xdata-layout"), QSL("XEP-0141")},
+    {QSL("http://jabber.org/protocol/xdata-validate"), QSL("XEP-0122")},
+
+    {QSL("jabber:component:accept"), QSL("XEP-0114")},
+    {QSL("jabber:component:connect"), QSL("XEP-0114")},
+    {QSL("jabber:iq:auth"), QSL("XEP-0078")},
+    {QSL("jabber:iq:browse"), QSL("XEP-0011")},
+    {QSL("jabber:iq:gateway"), QSL("XEP-0100")},
+    {QSL("jabber:iq:last"), QSL("XEP-0012")},
+    {QSL("jabber:iq:oob"), QSL("XEP-0066")},
+    {QSL("jabber:iq:pass"), QSL("XEP-0003")},
+    {QSL("jabber:iq:private"), QSL("XEP-0049")},
+    {QSL("jabber:iq:register"), QSL("XEP-0077")},
+    {QSL("jabber:iq:rpc"), QSL("XEP-0009")},
+    {QSL("jabber:iq:search"), QSL("XEP-0055")},
+    {QSL("jabber:iq:time"), QSL("XEP-0202")},
+    {QSL("jabber:iq:version"), QSL("XEP-0092")},
+
+    {QSL("jabber:x:data"), QSL("XEP-0004")},
+    {QSL("jabber:x:delay"), QSL("XEP-0203")},
+    {QSL("jabber:x:encrypted"), QSL("XEP-0027")},
+    {QSL("jabber:x:event"), QSL("XEP-0022")},
+    {QSL("jabber:x:expire"), QSL("XEP-0023")},
+    {QSL("jabber:x:oob"), QSL("XEP-0066")},
+    {QSL("jabber:x:roster"), QSL("XEP-0093")},
+    {QSL("jabber:x:signed"), QSL("XEP-0027")},
+
+    {QSL("msgoffline"), QSL("XEP-0160")},
+
+    {QSL("muc_hidden"), QSL("XEP-0045")},
+    {QSL("muc_membersonly"), QSL("XEP-0045")},
+    {QSL("muc_moderated"), QSL("XEP-0045")},
+    {QSL("muc_nonanonymous"), QSL("XEP-0045")},
+    {QSL("muc_open"), QSL("XEP-0045")},
+    {QSL("muc_passwordprotected"), QSL("XEP-0045")},
+    {QSL("muc_persistent"), QSL("XEP-0045")},
+    {QSL("muc_public"), QSL("XEP-0045")},
+    {QSL("muc_rooms"), QSL("XEP-0045")},
+    {QSL("muc_semianonymous"), QSL("XEP-0045")},
+    {QSL("muc_temporary"), QSL("XEP-0045")},
+    {QSL("muc_unmoderated"), QSL("XEP-0045")},
+    {QSL("muc_unsecured"), QSL("XEP-0045")},
+
+    {QSL("roster:delimiter"), QSL("XEP-0083")},
+
+    {QSL("urn:ietf:rfc:3264"), QSL("XEP-0176")},
+
+    {QSL("urn:xmpp:archive:auto"), QSL("XEP-0136")},
+    {QSL("urn:xmpp:archive:manage"), QSL("XEP-0136")},
+    {QSL("urn:xmpp:archive:manual"), QSL("XEP-0136")},
+    {QSL("urn:xmpp:archive:pref"), QSL("XEP-0136")},
+
+    {QSL("urn:xmpp:avatar:data"), QSL("XEP-0084")},
+    {QSL("urn:xmpp:avatar:metadata"), QSL("XEP-0084")},
+
+    {QSL("urn:xmpp:delay"), QSL("XEP-0203")},
+
+    {QSL("urn:xmpp:jingle:apps:rtp:audio"), QSL("XEP-0167")},
+    {QSL("urn:xmpp:jingle:apps:rtp:video"), QSL("XEP-0167")},
+
+    {QSL("urn:xmpp:ping"), QSL("XEP-0199")},
+    {QSL("urn:xmpp:receipts"), QSL("XEP-0184")},
+    {QSL("urn:xmpp:sid:0"), QSL("XEP-0359")},
+    {QSL("urn:xmpp:ssn"), QSL("XEP-0155")},
+    {QSL("urn:xmpp:time"), QSL("XEP-0202")},
+
+    {QSL("vcard-temp"), QSL("XEP-0054")},
+
+    {QSL("urn:xmpp:caps"), QSL("XEP-0390")},
+    {QSL("urn:xmpp:caps:optimize"), QSL("XEP-0390")},
+
+    {QSL("urn:xmpp:styling:0"), QSL("XEP-0393")}};
+
+  return xeps;
+}
+
 void XmppNetwork::onNewLogEntry(QXmppLogger::MessageType type, const QString& text) {
   qDebugNN << LOGSEC_XMPP << text;
 }
@@ -253,6 +485,29 @@ void XmppNetwork::onClientConnected() {
   if (m_root != nullptr && m_root->getSubTreeFeeds().isEmpty()) {
     m_root->requestSyncIn();
   }
+
+  m_discoveryManager->info(m_xmppClient->configuration().domain()).then(this, [this](auto result) {
+    if (QXmppDiscoInfo* info = std::get_if<QXmppDiscoInfo>(&result)) {
+      auto f = info->features();
+
+      static auto xep_map = xepMappings();
+
+      m_xeps = qlinq::from(f)
+                 .select([](const QString& protocol) -> QString {
+                   return xep_map.value(protocol);
+                 })
+                 .where([](const QString& xep) {
+                   return !xep.isEmpty();
+                 })
+                 .distinct()
+                 .toList();
+    }
+    else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
+      QString desc = XmppSimpleError::fromQXmppError(*error).m_description;
+
+      qDebugNN << LOGSEC_XMPP << "Service checking failed:" << NONQUOTE_W_SPACE_DOT(desc);
+    }
+  });
 }
 
 void XmppNetwork::onClientDisconnected() {
@@ -263,7 +518,9 @@ void XmppNetwork::onClientDisconnected() {
 
 void XmppNetwork::onClientError(const QXmppError& error) {
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                       GuiMessage(tr("XMPP error"), tr("XMPP connection to server %1 is down.").arg(m_domain)));
+                       GuiMessage(tr("XMPP error"),
+                                  tr("XMPP connection to server %1 is down: %1")
+                                    .arg(m_domain, XmppSimpleError::fromQXmppError(error).m_description)));
 }
 
 XmppServiceRoot* XmppNetwork::root() const {

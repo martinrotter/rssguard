@@ -31,6 +31,7 @@ QIcon IconFactory::fromColor(const QColor& color, QChar letter) {
     paint.setPen(Qt::GlobalColor::black);
 
     auto fon = paint.font();
+    fon.setBold(true);
     fon.setPixelSize(40);
     paint.setFont(fon);
 

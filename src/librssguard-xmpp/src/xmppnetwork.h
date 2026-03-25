@@ -1,6 +1,8 @@
 #ifndef XMPPNETWORK_H
 #define XMPPNETWORK_H
 
+#include "src/xmppserviceroot.h"
+
 #include <QObject>
 #include <QTimer>
 #include <QXmppConfiguration.h>
@@ -8,7 +10,6 @@
 #include <QXmppLogger.h>
 
 class RootItem;
-class XmppServiceRoot;
 class PubSubManager;
 class QXmppClient;
 class QXmppDiscoveryManager;
@@ -41,6 +42,10 @@ class XmppNetwork : public QObject {
     XmppServiceRoot* root() const;
     QXmppConfiguration xmppConfiguration() const;
 
+    QStringList xeps() const;
+
+    QString clientState() const;
+
     // Managers and clients.
     QXmppClient* xmppClient() const;
     QXmppDiscoveryManager* discoveryManager() const;
@@ -55,6 +60,8 @@ class XmppNetwork : public QObject {
     // Statics.
     static QStringList defaultExtraServices();
 
+    static QHash<QString, QString> xepMappings();
+
   private slots:
     void onNewLogEntry(QXmppLogger::MessageType type, const QString& text);
     void onClientConnected();
@@ -64,6 +71,7 @@ class XmppNetwork : public QObject {
   private:
     void checkService(const QString& jid, RootItem* new_tree);
     void fetchSubscriptions(const QString& service, RootItem* new_tree);
+    void reportSyncInFinish(const ServiceRoot::SyncInResult& result);
 
   private:
     XmppServiceRoot* m_root;
@@ -75,8 +83,10 @@ class XmppNetwork : public QObject {
     QString m_password;
     QString m_domain;
     QStringList m_extraServices;
-
+    QStringList m_xeps;
     QTimer m_syncInTimer;
+
+    QList<QString> m_syncInPendingServices;
 };
 
 #endif // XMPPNETWORK_H

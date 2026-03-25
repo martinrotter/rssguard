@@ -131,8 +131,9 @@ QList<QAction*> XmppServiceRoot::serviceMenu() {
 }
 
 QString XmppServiceRoot::additionalTooltip() const {
-  QString source_str = tr("User: %1\n").arg(m_network->username());
-  return source_str + ServiceRoot::additionalTooltip();
+  QString source_str = tr("User: %1\nStatus: %2\nSupported XEPs: %3")
+                         .arg(m_network->username(), m_network->clientState(), m_network->xeps().join(QSL(", ")));
+  return source_str + QSL("\n\n") + ServiceRoot::additionalTooltip();
 }
 
 bool XmppServiceRoot::supportsFeedAdding() const {
