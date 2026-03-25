@@ -47,7 +47,6 @@ class XmppNetwork : public QObject {
     PubSubManager* pubSubManager() const;
 
     // API.
-    void ensureClientConnected() const;
     void connectToServer();
     void disconnectFromServer();
 

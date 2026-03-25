@@ -8,10 +8,15 @@
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/miscellaneous/textfactory.h>
+#include <librssguard/network-web/webfactory.h>
+#include <librssguard/services/abstract/category.h>
 
 #include <QXmppAuthenticationError.h>
 #include <QXmppDiscoveryManager.h>
 #include <QXmppPubSubSubscription.h>
+
+#define SYNC_IN_IDLE_TIMEOUT 6000
+#define XMPP_PROTOCOL_PUBSUB QSL("http://jabber.org/protocol/pubsub")
 
 XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
   : QObject(parent), m_root(parent), m_xmppClient(new QXmppClient(this)),
@@ -19,7 +24,8 @@ XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
     m_extraServices(defaultExtraServices()) {
   m_discoveryManager->setParent(this);
 
-  m_syncInTimer.setInterval(4000);
+  m_syncInTimer.setSingleShot(true);
+  m_syncInTimer.setInterval(SYNC_IN_IDLE_TIMEOUT);
 
   m_xmppClient->logger()->setLoggingType(QXmppLogger::LoggingType::SignalLogging);
 
@@ -68,51 +74,6 @@ PubSubManager* XmppNetwork::pubSubManager() const {
   return m_pubSubManager;
 }
 
-void XmppNetwork::ensureClientConnected() const {
-  if (m_xmppClient->isConnected()) {
-    return;
-  }
-
-  QEventLoop loop;
-  QMetaObject::Connection conn1, conn2;
-
-  conn1 = connect(
-    m_xmppClient,
-    &QXmppClient::connected,
-    this,
-    [&]() {
-      loop.quit();
-    },
-    Qt::ConnectionType::QueuedConnection);
-  conn2 = connect(
-    m_xmppClient,
-    &QXmppClient::disconnected,
-    this,
-    [&]() {
-      loop.quit();
-    },
-    Qt::ConnectionType::QueuedConnection);
-
-  // optional timeout
-  QTimer timer;
-  timer.setSingleShot(true);
-
-  connect(&timer, &QTimer::timeout, [&]() {
-    loop.quit();
-  });
-
-  timer.start(10000);
-  loop.exec();
-  disconnect(conn1);
-  disconnect(conn2);
-
-  /*
-  if (!m_xmppClient->isConnected()) {
-    throw ApplicationException(tr("cannot connect to XMPP server"));
-  }
-  */
-}
-
 void XmppNetwork::connectToServer() {
   m_xmppClient->connectToServer(xmppConfiguration());
 }
@@ -129,18 +90,40 @@ void XmppNetwork::fetchSubscriptions(const QString& service, RootItem* new_tree)
       qDebug() << "\nPubSub service:" << service;
       qDebug() << "Active subscriptions:";
 
-      for (const QXmppPubSubSubscription& sub : *subs) {
-        qDebug() << "  sub:" << sub.node();
+      if (!subs->isEmpty()) {
+        Category* service_folder = new Category();
+        QString tld = qApp->web()->urlToTld(QUrl::fromUserInput(service));
+        QPixmap output_icon;
 
-        XmppFeed* feed = new XmppFeed();
+        if (NetworkFactory::downloadIcon({IconLocation(tld, false)}, 5000, output_icon, {}, m_root->networkProxy()) ==
+            QNetworkReply::NetworkError::NoError) {
+          service_folder->setIcon(QIcon(output_icon));
+        }
+        else {
+          service_folder->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(service),
+                                                         service.trimmed()[0]));
+        }
 
-        feed->setTitle(sub.node());
-        feed->setCustomId(sub.node());
+        service_folder->setCustomId(service);
+        service_folder->setTitle(service);
 
-        new_tree->appendChild(feed);
+        new_tree->appendChild(service_folder);
 
-        m_syncInTimer.start();
+        for (const QXmppPubSubSubscription& sub : *subs) {
+          qDebug() << "  sub:" << sub.node();
+
+          XmppFeed* feed = new XmppFeed();
+
+          feed->setTitle(sub.node());
+          feed->setCustomId(sub.node());
+          feed->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(sub.node()),
+                                               sub.node().trimmed()[0]));
+
+          service_folder->appendChild(feed);
+        }
       }
+
+      m_syncInTimer.start();
     }
     else {
       qDebug() << "Failed fetching subscriptions";
@@ -153,7 +136,7 @@ void XmppNetwork::checkService(const QString& jid, RootItem* new_tree) {
 
   task.then(this, [=, this](auto result) {
     if (QXmppDiscoInfo* info = std::get_if<QXmppDiscoInfo>(&result)) {
-      if (info->features().contains("http://jabber.org/protocol/pubsub")) {
+      if (info->features().contains(XMPP_PROTOCOL_PUBSUB)) {
         fetchSubscriptions(jid, new_tree);
       }
     }
@@ -163,20 +146,23 @@ void XmppNetwork::checkService(const QString& jid, RootItem* new_tree) {
 void XmppNetwork::obtainServicesNodesTree() {
   RootItem* root = new RootItem();
 
-  m_syncInTimer.disconnect();
-
+  m_syncInTimer.disconnect(this);
   connect(&m_syncInTimer, &QTimer::timeout, this, [=, this]() {
     m_syncInTimer.stop();
+    m_syncInTimer.disconnect(this);
+
     emit m_root->syncInFinished(root);
   });
 
   auto task = m_discoveryManager->items(m_xmppClient->configuration().domain());
 
+  m_syncInTimer.start();
+
   task.then(this, [=, this](auto result) {
-    if (auto items = std::get_if<QList<QXmppDiscoveryIq::Item>>(&result)) {
+    if (auto items = std::get_if<QList<QXmppDiscoItem>>(&result)) {
       QStringList all_services = extraServices();
 
-      for (const QXmppDiscoveryIq::Item& item : *items) {
+      for (const QXmppDiscoItem& item : *items) {
         all_services.append(item.jid());
       }
 
@@ -187,7 +173,8 @@ void XmppNetwork::obtainServicesNodesTree() {
       }
     }
     else {
-      qDebug() << "Service discovery failed";
+      qDebugNN << LOGSEC_XMPP << "Service discovery failed. This is a problem.";
+      m_syncInTimer.start(100);
     }
   });
 }
@@ -254,50 +241,6 @@ void XmppNetwork::onNewLogEntry(QXmppLogger::MessageType type, const QString& te
   qDebugNN << LOGSEC_XMPP << text;
 }
 
-/*
-void fetchSubscriptions(XmppNetwork* net, QXmppDiscoveryManager* disco, PubSubManager* pubsub, const QString& service) {
-  auto task = pubsub->requestSubscriptions(service);
-
-  task.then(pubsub, [=](auto result) {
-    if (auto subs = std::get_if<QList<QXmppPubSubSubscription>>(&result)) {
-      qDebug() << "\nPubSub service:" << service;
-      qDebug() << "Active subscriptions:";
-
-      for (const QXmppPubSubSubscription& sub : *subs) {
-        XmppFeed* ch = new XmppFeed();
-
-        ch->setTitle(sub.node());
-        ch->setCustomId(sub.node());
-        ch->setSource(sub.node());
-        ch->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(sub.node())));
-
-        net->root()->itemReassignmentRequested(ch, net->root());
-
-        qDebug() << "  sub:" << sub.node();
-
-        // fetchItems(service, sub.node());
-      }
-    }
-    else {
-      qDebug() << "Failed fetching subscriptions";
-    }
-  });
-}
-
-void checkService(XmppNetwork* net, QXmppDiscoveryManager* disco, PubSubManager* pubsub, const QString& jid) {
-  auto task = disco->info(jid);
-
-  task.then(disco, [=](auto result) {
-    if (auto info = std::get_if<QXmppDiscoInfo>(&result)) {
-      if (info->features().contains("http://jabber.org/protocol/pubsub")) {
-        // discoverNodes(disco, pubsub, jid);
-        fetchSubscriptions(net, disco, pubsub, jid);
-      }
-    }
-  });
-}
-*/
-
 void XmppNetwork::onClientConnected() {
   m_xmppClient->configuration().setAutoReconnectionEnabled(true);
 
@@ -310,38 +253,6 @@ void XmppNetwork::onClientConnected() {
   if (m_root != nullptr && m_root->getSubTreeFeeds().isEmpty()) {
     m_root->requestSyncIn();
   }
-
-  /*
-  auto task_discovery = m_discoveryManager->items(m_xmppClient->configuration().domain());
-
-  task_discovery.then(this, [this](auto result) {
-    if (auto items = std::get_if<QList<QXmppDiscoItem>>(&result)) {
-      QStringList add = extraServices();
-      QStringList checked;
-
-      for (const auto& a : add) {
-        if (checked.contains(a)) {
-          continue;
-        }
-
-        checked.append(a);
-        checkService(this, m_discoveryManager, m_pubSubManager, a);
-      }
-
-      for (const auto& item : *items) {
-        if (checked.contains(item.jid())) {
-          continue;
-        }
-
-        checked.append(item.jid());
-        checkService(this, m_discoveryManager, m_pubSubManager, item.jid());
-      }
-    }
-    else {
-      qDebug() << "Service discovery failed";
-    }
-  });
-*/
 }
 
 void XmppNetwork::onClientDisconnected() {

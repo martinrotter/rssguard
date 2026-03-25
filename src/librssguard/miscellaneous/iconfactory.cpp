@@ -16,7 +16,7 @@ IconFactory::IconFactory(QObject* parent) : QObject(parent) {}
 
 IconFactory::~IconFactory() {}
 
-QIcon IconFactory::fromColor(const QColor& color) {
+QIcon IconFactory::fromColor(const QColor& color, QChar letter) {
   QPixmap pxm(64, 64);
 
   pxm.fill(Qt::GlobalColor::transparent);
@@ -26,6 +26,22 @@ QIcon IconFactory::fromColor(const QColor& color) {
   paint.setBrush(color);
   paint.setPen(Qt::GlobalColor::transparent);
   paint.drawEllipse(pxm.rect().marginsRemoved(QMargins(2, 2, 2, 2)));
+
+  if (!letter.isNull()) {
+    paint.setPen(Qt::GlobalColor::black);
+
+    auto fon = paint.font();
+    fon.setPixelSize(40);
+    paint.setFont(fon);
+
+    QFontMetrics fm = paint.fontMetrics();
+    QString s(letter);
+    QRect br = fm.tightBoundingRect(s);
+    int x = pxm.rect().x() + (pxm.rect().width() - br.width()) / 2;
+    int y = pxm.rect().y() + (pxm.rect().height() - br.height()) / 2 - br.top();
+
+    paint.drawText(x, y, s);
+  }
 
   return pxm;
 }

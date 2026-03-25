@@ -217,8 +217,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
         output = icon_pixmap;
 
         if (!output.isNull()) {
-          if (output.width() > 128) {
-            output = output.scaled(QSize(48, 48),
+          if (output.width() > 64) {
+            output = output.scaled(QSize(64, 64),
                                    Qt::AspectRatioMode::KeepAspectRatio,
                                    Qt::TransformationMode::SmoothTransformation);
           }
@@ -229,7 +229,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
     }
     else {
       // Duck Duck Go.
-      QUrl url_full = QUrl(url.m_url);
+      QUrl url_full = QUrl::fromUserInput(url.m_url);
       QString host = url_full.host();
 
       if (host.startsWith(QSL("www."))) {
@@ -267,8 +267,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
           output = icon_pixmap;
 
           if (!output.isNull()) {
-            if (output.width() > 128) {
-              output = output.scaled(QSize(48, 48),
+            if (output.width() > 64) {
+              output = output.scaled(QSize(64, 64),
                                      Qt::AspectRatioMode::KeepAspectRatio,
                                      Qt::TransformationMode::SmoothTransformation);
             }

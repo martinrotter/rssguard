@@ -20,6 +20,8 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     // Strips "<....>" (HTML, XML) tags from given text.
     QString stripTags(QString text);
 
+    QString urlToTld(const QUrl& url);
+
     QString webCacheFolder() const;
 
     // HTML entity unescaping. This method

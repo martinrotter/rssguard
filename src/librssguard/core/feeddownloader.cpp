@@ -440,8 +440,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     feed->setStatus(Feed::Status::SqlError, sql_ex.message());
   }
   catch (const ApplicationException& app_ex) {
-    qCriticalNN << LOGSEC_NETWORK << "Unknown error when fetching feed:"
-                << "message:" << QUOTE_W_SPACE_DOT(app_ex.message());
+    qCriticalNN << LOGSEC_NETWORK << "Unknown error when fetching feed" << QUOTE_W_SPACE(feed->title())
+                << "and the error is" << QUOTE_W_SPACE_DOT(app_ex.message());
 
     m_results.appendErroredFeed(feed, app_ex.message());
     feed->setStatus(Feed::Status::OtherError, app_ex.message());
