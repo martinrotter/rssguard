@@ -68,7 +68,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     static QString getFullArticle(Feed* feed, const QUrl& url, bool plain_text_only);
 
   public slots:
-    void onFeedFetchRequested(QList<Feed*> feeds);
+    void onFeedFetchRequested(const QList<Feed*>& feeds);
     void updateAllFeedsOnStartup();
     void updateAllFeeds();
     void updateManuallyIntervaledFeeds();
@@ -106,6 +106,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     QThread* m_feedDownloaderThread;
     FeedDownloader* m_feedDownloader;
     bool m_feedFetchingPaused;
+    QList<QPointer<Feed>> m_feedsRequestedToFetchByAccounts;
 };
 
 #endif // FEEDREADER_H
