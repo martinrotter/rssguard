@@ -1,5 +1,6 @@
 #include "src/xmppnetwork.h"
 
+#include "src/xmppentrypoint.h"
 #include "src/xmppfeed.h"
 #include "src/xmppubsubpmanager.h"
 
@@ -141,11 +142,20 @@ void XmppNetwork::fetchSubscriptions(const QString& service, RootItem* new_tree)
 }
 
 void XmppNetwork::reportSyncInFinish(const ServiceRoot::SyncInResult& result) {
+  bool should_send = m_xmppClient->isConnected() && m_syncInTimer.isActive();
+
   m_syncInTimer.disconnect(this);
   m_syncInTimer.stop();
   m_syncInPendingServices.clear();
 
-  emit m_root->syncInFinished(result);
+  if (should_send) {
+    emit m_root->syncInFinished(result);
+  }
+  else {
+    qWarningNN
+      << LOGSEC_XMPP
+      << "Finish of sync-in discovery is reported, but either client is not running or sync-in timer is not running.";
+  }
 }
 
 QStringList XmppNetwork::xeps() const {
@@ -473,6 +483,20 @@ QHash<QString, QString> XmppNetwork::xepMappings() {
   return xeps;
 }
 
+void XmppNetwork::reconnect() {
+  if (m_xmppClient->isConnected()) {
+    connect(m_xmppClient,
+            &QXmppClient::disconnected,
+            this,
+            &XmppNetwork::connectToServer,
+            Qt::ConnectionType::SingleShotConnection);
+    disconnectFromServer();
+  }
+  else {
+    connectToServer();
+  }
+}
+
 void XmppNetwork::onNewLogEntry(QXmppLogger::MessageType type, const QString& text) {
   qDebugNN << LOGSEC_XMPP << text;
 }
@@ -484,10 +508,11 @@ void XmppNetwork::onClientConnected() {
                        GuiMessage(tr("XMPP server connected"),
                                   tr("XMPP connection to server %1 is alive.").arg(m_domain),
                                   QSystemTrayIcon::MessageIcon::Information,
-                                  m_root->icon()));
+                                  XmppEntryPoint().icon()));
 
   if (m_root != nullptr && m_root->getSubTreeFeeds().isEmpty()) {
     m_root->requestSyncIn();
+    m_root->requestItemExpand({m_root}, true);
   }
 
   m_discoveryManager->info(m_xmppClient->configuration().domain()).then(this, [this](auto result) {
@@ -498,7 +523,9 @@ void XmppNetwork::onClientConnected() {
 
       m_xeps = qlinq::from(f)
                  .select([](const QString& protocol) -> QString {
-                   return xep_map.value(protocol);
+                   QString xep = xep_map.value(protocol);
+
+                   return xep.isEmpty() ? protocol : xep;
                  })
                  .where([](const QString& xep) {
                    return !xep.isEmpty();
@@ -517,14 +544,16 @@ void XmppNetwork::onClientConnected() {
 void XmppNetwork::onClientDisconnected() {
   qApp->showGuiMessage(Notification::Event::Logout,
                        GuiMessage(tr("XMPP server disconnected"),
-                                  tr("XMPP connection to server %1 is down.").arg(m_domain)));
+                                  tr("XMPP connection to server %1 is down.").arg(m_domain),
+                                  QSystemTrayIcon::MessageIcon::Warning));
 }
 
 void XmppNetwork::onClientError(const QXmppError& error) {
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
                        GuiMessage(tr("XMPP error"),
                                   tr("XMPP connection to server %1 is down: %1")
-                                    .arg(m_domain, XmppSimpleError::fromQXmppError(error).m_description)));
+                                    .arg(m_domain, XmppSimpleError::fromQXmppError(error).m_description),
+                                  QSystemTrayIcon::MessageIcon::Critical));
 }
 
 XmppServiceRoot* XmppNetwork::root() const {

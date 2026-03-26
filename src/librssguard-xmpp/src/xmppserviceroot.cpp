@@ -20,6 +20,8 @@
 #include <librssguard/network-web/oauth2service.h>
 #include <qtlinq/qtlinq.h>
 
+#include <QAction>
+
 XmppServiceRoot::XmppServiceRoot(RootItem* parent) : ServiceRoot(parent), m_network(new XmppNetwork(this)) {
   setIcon(XmppEntryPoint().icon());
 }
@@ -86,6 +88,8 @@ void XmppServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
 QList<Message> XmppServiceRoot::obtainNewMessages(Feed* feed,
                                                   const QHash<ServiceRoot::BagOfMessages, QStringList>& stated_messages,
                                                   const QHash<QString, QStringList>& tagged_messages) {
+  Q_UNUSED(tagged_messages)
+
   QList<Message> msgs;
   auto* xmpp_node = qobject_cast<XmppFeed*>(feed);
   auto async_articles = xmpp_node->articles();
@@ -169,6 +173,11 @@ QString XmppServiceRoot::code() const {
 QList<QAction*> XmppServiceRoot::serviceMenu() {
   if (m_serviceMenu.isEmpty()) {
     ServiceRoot::serviceMenu();
+
+    m_actReconnect = new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("&Reconnect"), this);
+    connect(m_actReconnect, &QAction::triggered, m_network, &XmppNetwork::reconnect);
+
+    m_serviceMenu.append(m_actReconnect);
   }
 
   return m_serviceMenu;

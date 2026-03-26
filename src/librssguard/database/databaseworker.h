@@ -76,18 +76,18 @@ inline T DatabaseWorker::write(const std::function<T(const QSqlDatabase&)>& func
 
 template <typename T>
 inline T DatabaseWorker::read(const std::function<T(const QSqlDatabase&)>& func) {
-  QFuture<T> future = QtConcurrent::run(&m_readThreadPool, [&]() -> T {
-    qDebugNN << LOGSEC_DB << "DB read job (with return) in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
+  // QFuture<T> future = QtConcurrent::run(&m_readThreadPool, [&]() -> T {
+  qDebugNN << LOGSEC_DB << "DB read job (with return) in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
 
-    auto connection = connectionForReading();
+  auto connection = connectionForReading();
 
-    T res = func(connection);
-    return res;
-  });
+  T res = func(connection);
+  return res;
+  //});
 
-  future.waitForFinished();
+  // future.waitForFinished();
 
-  return future.result();
+  // return future.result();
 }
 
 #endif // DBWORKER_H

@@ -54,7 +54,12 @@ bool PubSubManager::handlePubSubEvent(const QDomElement& element, const QString&
 
       task.then(this, [service, node, this](auto result) {
         if (AtomPubSubBaseItem* item = std::get_if<AtomPubSubBaseItem>(&result)) {
-          emit pushArticleObtained(service, node, item->message());
+          if (!item->message().m_customId.isEmpty()) {
+            emit pushArticleObtained(service, node, item->message());
+          }
+          else {
+            qWarningNN << LOGSEC_XMPP << "Passed PubSub item was not properly parsed as an ATOM entry.";
+          }
         }
         else if (QXmppError* err = std::get_if<QXmppError>(&result)) {
           qDebugNN << LOGSEC_XMPP << "Failed to fetch item:" << QUOTE_W_SPACE_DOT(err->description);

@@ -51,16 +51,15 @@ class XmppNetwork : public QObject {
     QXmppDiscoveryManager* discoveryManager() const;
     PubSubManager* pubSubManager() const;
 
-    // API.
-    void connectToServer();
-    void disconnectFromServer();
-
-    void obtainServicesNodesTree();
-
     // Statics.
     static QStringList defaultExtraServices();
-
     static QHash<QString, QString> xepMappings();
+
+  public slots:
+    void connectToServer();
+    void disconnectFromServer();
+    void obtainServicesNodesTree();
+    void reconnect();
 
   private slots:
     void onNewLogEntry(QXmppLogger::MessageType type, const QString& text);

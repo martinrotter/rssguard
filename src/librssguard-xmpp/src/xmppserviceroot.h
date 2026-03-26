@@ -47,6 +47,7 @@ class XmppServiceRoot : public ServiceRoot {
 
   private:
     XmppNetwork* m_network;
+    QAction* m_actReconnect;
 };
 
 inline XmppNetwork* XmppServiceRoot::network() const {
