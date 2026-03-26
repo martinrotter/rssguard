@@ -423,10 +423,6 @@ QString FeedParser::formatComments(const QList<FeedComment>& comments) const {
     .arg(QObject::tr("Comments"), QString::number(comments.size()), comments_markup.join(QL1C('\n')));
 }
 
-QDateTime FeedParser::decideArticleDate(const QString& published, const QString& updated) {
-  return TextFactory::parseDateTime(published, &m_dateTimeFormat);
-}
-
 bool FeedParser::fetchComments() const {
   return m_fetchComments;
 }

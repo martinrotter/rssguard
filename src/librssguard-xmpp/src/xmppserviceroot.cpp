@@ -3,6 +3,7 @@
 #include "src/xmppserviceroot.h"
 
 #include "src/definitions.h"
+#include "src/gui/formeditxmppaccount.h"
 #include "src/xmppentrypoint.h"
 #include "src/xmppfeed.h"
 #include "src/xmppnetwork.h"
@@ -32,7 +33,7 @@ bool XmppServiceRoot::canBeEdited() const {
 }
 
 FormAccountDetails* XmppServiceRoot::accountSetupDialog() const {
-  return nullptr; // new FormEditXmppAccount(qApp->mainFormWidget());
+  return new FormEditXmppAccount(qApp->mainFormWidget());
 }
 
 void XmppServiceRoot::editItems(const QList<RootItem*>& items) {
@@ -50,9 +51,8 @@ void XmppServiceRoot::editItems(const QList<RootItem*>& items) {
   }
 
   if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
-    // QScopedPointer<FormEditXmppAccount> p(qobject_cast<FormEditXmppAccount*>(accountSetupDialog()));
-
-    // p->addEditAccount(this);
+    QScopedPointer<FormEditXmppAccount> p(qobject_cast<FormEditXmppAccount*>(accountSetupDialog()));
+    p->addEditAccount(this);
     return;
   }
 
@@ -88,8 +88,20 @@ QList<Message> XmppServiceRoot::obtainNewMessages(Feed* feed,
                                                   const QHash<QString, QStringList>& tagged_messages) {
   QList<Message> msgs;
   auto* xmpp_node = qobject_cast<XmppFeed*>(feed);
+  auto async_articles = xmpp_node->articles();
 
-  msgs.append(xmpp_node->articles());
+  auto new_async_articles =
+    qlinq::from(async_articles)
+      .where([&](const Message& msg) {
+        return !stated_messages.value(ServiceRoot::BagOfMessages::Read).contains(msg.m_customId) &&
+               !stated_messages.value(ServiceRoot::BagOfMessages::Unread).contains(msg.m_customId) &&
+               !stated_messages.value(ServiceRoot::BagOfMessages::Starred).contains(msg.m_customId);
+      })
+      .toList();
+
+  msgs.append(new_async_articles);
+
+  // Clear it all.
   xmpp_node->setArticles({});
 
   return msgs;

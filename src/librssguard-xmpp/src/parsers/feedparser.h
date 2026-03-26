@@ -96,7 +96,6 @@ class FeedParser {
                                  bool only_first) const;
 
     QString formatComments(const QList<FeedComment>& comments) const;
-    QDateTime decideArticleDate(const QString& published, const QString& updated);
 
   protected:
     std::function<QByteArray(QUrl)> m_resourceHandler;
