@@ -18,6 +18,9 @@ class XmppAccountDetails : public QWidget {
   public:
     explicit XmppAccountDetails(QWidget* parent = nullptr);
 
+    QStringList additionalServices() const;
+    void setAdditionalServices(const QStringList& services);
+
   private slots:
     void performTest(const QNetworkProxy& proxy);
 

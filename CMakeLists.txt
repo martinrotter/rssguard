@@ -132,6 +132,8 @@ option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap fee
 option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." OFF)
 option(ENABLE_MEDIAPLAYER_LIBMPV "Enable built-in media player. Requires libmpv library." ON)
 option(MEDIAPLAYER_FORCE_OPENGL "Use opengl-based render API with libmpv." ON)
+option(USE_SYSTEM_QXMPP "Use qxmpp library from the system." OFF)
+option(BUILD_XMPP_PLUGIN "Build XMPP plugin." OFF)
 
 if(IS_DEVBUILD)
   message(STATUS "Build as development build.")
@@ -369,7 +371,10 @@ add_subdirectory(src/librssguard-greader)
 add_subdirectory(src/librssguard-nextcloud)
 add_subdirectory(src/librssguard-standard)
 add_subdirectory(src/librssguard-ttrss)
-add_subdirectory(src/librssguard-xmpp)
+
+if(BUILD_XMPP_PLUGIN)
+  add_subdirectory(src/librssguard-xmpp)
+endif()
 
 # Additional programs.
 add_subdirectory(resources/scripts/standalone/article-extractor)

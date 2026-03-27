@@ -40,6 +40,14 @@ XmppAccountDetails::XmppAccountDetails(QWidget* parent) : QWidget(parent) {
   onUrlChanged();
 }
 
+QStringList XmppAccountDetails::additionalServices() const {
+  return m_ui.m_txtAdditionalServices->toPlainText().split(QL1C('\n'), SPLIT_BEHAVIOR::SkipEmptyParts);
+}
+
+void XmppAccountDetails::setAdditionalServices(const QStringList& services) {
+  m_ui.m_txtAdditionalServices->setPlainText(services.join(QL1C('\n')));
+}
+
 void XmppAccountDetails::performTest(const QNetworkProxy& proxy) {
   XmppNetwork* factory = new XmppNetwork();
 

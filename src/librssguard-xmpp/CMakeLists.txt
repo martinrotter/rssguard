@@ -27,9 +27,9 @@ set(UI_FILES
   src/gui/xmppaccountdetails.ui
 )
 
-if(NOT USE_SYSTEM_QXMPP)
-  # This will look for prepared library qxmpp in <root>/resources/scripts/qxmpp
-  # and for prepared header files in <root>/resources/scripts/qxmpp/include
+if(NOT USE_SYSTEM_QXMPP AND NOT qxmpp_ROOT)
+  # This will look for prepared library qxmpp in '<root>/resources/scripts/qxmpp'
+  # and for prepared header files in '<root>/resources/scripts/qxmpp/include'.
   set(qxmpp_ROOT "${CMAKE_SOURCE_DIR}/resources/scripts/qxmpp")
   message(STATUS "Using compiled qxmpp.")
 endif()
@@ -52,23 +52,10 @@ find_path(qxmpp_INCLUDE_DIRS
 message(STATUS "Found qxmpp lib: '${qxmpp_LIBRARIES}'.")
 message(STATUS "Found qxmpp headers: '${qxmpp_INCLUDE_DIRS}'.")
 
-#set(CMAKE_CXX_STANDARD 20)
-#set(CMAKE_CXX_STANDARD_REQUIRED ON)
-#set(CMAKE_CXX_EXTENSIONS OFF)
-
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 prepare_rssguard_plugin(${PLUGIN_TARGET})
 
-target_link_libraries(rssguard-xmpp PRIVATE Qt${QT_VERSION_MAJOR}::Core)
-
+target_link_libraries(${PLUGIN_TARGET} PRIVATE Qt${QT_VERSION_MAJOR}::Core ${qxmpp_LIBRARIES})
 target_compile_features(${PLUGIN_TARGET} PRIVATE cxx_std_20)
-
-target_include_directories(${PLUGIN_TARGET} AFTER
-  PRIVATE
-  ${qxmpp_INCLUDE_DIRS}
-)
-
-target_link_libraries(${PLUGIN_TARGET} PRIVATE
-  ${qxmpp_LIBRARIES}
-)
+target_include_directories(${PLUGIN_TARGET} AFTER PRIVATE ${qxmpp_INCLUDE_DIRS})

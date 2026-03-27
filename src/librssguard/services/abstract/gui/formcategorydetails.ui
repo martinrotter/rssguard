@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>455</width>
-    <height>262</height>
+    <width>500</width>
+    <height>270</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -165,26 +165,26 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>TextEditWithStatus</class>
-   <extends>QWidget</extends>
-   <header>texteditwithstatus.h</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
    <class>LineEditWithStatus</class>
    <extends>QWidget</extends>
    <header>lineeditwithstatus.h</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>MultiFeedEditCheckBox</class>
-   <extends>QCheckBox</extends>
-   <header>multifeededitcheckbox.h</header>
-  </customwidget>
-  <customwidget>
    <class>ColorIconToolButton</class>
    <extends>QToolButton</extends>
    <header>colortoolbutton.h</header>
+  </customwidget>
+  <customwidget>
+   <class>TextEditWithStatus</class>
+   <extends>QWidget</extends>
+   <header>texteditwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MultiFeedEditCheckBox</class>
+   <extends>QCheckBox</extends>
+   <header>multifeededitcheckbox.h</header>
   </customwidget>
  </customwidgets>
  <tabstops>

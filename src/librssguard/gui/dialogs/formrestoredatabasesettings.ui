@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>509</width>
-    <height>352</height>
+    <width>525</width>
+    <height>350</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,7 +17,7 @@
    <item row="5" column="0" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
-      <enum>Qt::Vertical</enum>
+      <enum>Qt::Orientation::Vertical</enum>
      </property>
      <property name="sizeHint" stdset="0">
       <size>
@@ -36,7 +36,7 @@
       <item row="0" column="0">
        <widget class="LabelWithStatus" name="m_lblResult" native="true">
         <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
        </widget>
       </item>
@@ -46,10 +46,10 @@
    <item row="6" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
-      <enum>Qt::Horizontal</enum>
+      <enum>Qt::Orientation::Horizontal</enum>
      </property>
      <property name="standardButtons">
-      <set>QDialogButtonBox::Close|QDialogButtonBox::Ok</set>
+      <set>QDialogButtonBox::StandardButton::Close|QDialogButtonBox::StandardButton::Ok</set>
      </property>
     </widget>
    </item>
@@ -69,7 +69,7 @@
       <item row="0" column="1">
        <widget class="LabelWithStatus" name="m_lblSelectFolder" native="true">
         <property name="layoutDirection">
-         <enum>Qt::RightToLeft</enum>
+         <enum>Qt::LayoutDirection::RightToLeft</enum>
         </property>
        </widget>
       </item>

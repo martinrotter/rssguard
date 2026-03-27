@@ -94,6 +94,10 @@ void XmppNetwork::fetchSubscriptions(const QString& service, RootItem* new_tree)
 
     if (auto subs = std::get_if<QList<QXmppPubSubSubscription>>(&result)) {
       if (!subs->isEmpty()) {
+        if (m_syncInSent) {
+          return;
+        }
+
         Category* service_folder = new Category();
         QString tld = qApp->web()->urlToTld(QUrl::fromUserInput(service));
         QPixmap output_icon;
@@ -141,9 +145,10 @@ void XmppNetwork::fetchSubscriptions(const QString& service, RootItem* new_tree)
   });
 }
 
-void XmppNetwork::reportSyncInFinish(const ServiceRoot::SyncInResult& result) {
-  bool should_send = m_xmppClient->isConnected() && m_syncInTimer.isActive();
+void XmppNetwork::reportSyncInFinish(const ServiceRoot::SyncInResult& result, bool timed_out) {
+  bool should_send = !m_syncInSent && m_xmppClient->isConnected();
 
+  m_syncInSent = true;
   m_syncInTimer.disconnect(this);
   m_syncInTimer.stop();
   m_syncInPendingServices.clear();
@@ -154,7 +159,7 @@ void XmppNetwork::reportSyncInFinish(const ServiceRoot::SyncInResult& result) {
   else {
     qWarningNN
       << LOGSEC_XMPP
-      << "Finish of sync-in discovery is reported, but either client is not running or sync-in timer is not running.";
+      << "Finish of sync-in discovery is reported, but either client is not running or the sync-in was already sent.";
   }
 }
 
@@ -178,7 +183,7 @@ QString XmppNetwork::clientState() const {
   }
 }
 
-void XmppNetwork::checkService(const QString& jid, RootItem* new_tree) {
+void XmppNetwork::discoverService(const QString& jid, RootItem* new_tree) {
   m_syncInPendingServices.append(jid);
 
   auto task = m_discoveryManager->info(jid);
@@ -195,7 +200,7 @@ void XmppNetwork::checkService(const QString& jid, RootItem* new_tree) {
     else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
       QString desc = XmppSimpleError::fromQXmppError(*error).m_description;
 
-      qDebugNN << LOGSEC_XMPP << "Service checking failed:" << NONQUOTE_W_SPACE_DOT(desc);
+      qWarningNN << LOGSEC_XMPP << "Service checking failed:" << NONQUOTE_W_SPACE_DOT(desc);
     }
 
     m_syncInPendingServices.removeAll(jid);
@@ -211,12 +216,22 @@ void XmppNetwork::obtainServicesNodesTree() {
   m_syncInTimer.disconnect(this);
   m_syncInTimer.stop();
   m_syncInTimer.setInterval(6000);
+  m_syncInSent = false;
 
   RootItem* root = new RootItem();
 
-  connect(&m_syncInTimer, &QTimer::timeout, this, [=, this]() {
-    reportSyncInFinish(root);
-  });
+  connect(
+    &m_syncInTimer,
+    &QTimer::timeout,
+    this,
+    [=, this]() {
+      reportSyncInFinish(root, true);
+    },
+#if QT_VERSION_MAJOR >= 6
+    Qt::ConnectionType::SingleShotConnection);
+#else
+    Qt::ConnectionType::AutoConnection);
+#endif
 
   auto task = m_discoveryManager->items(m_xmppClient->configuration().domain());
 
@@ -233,7 +248,13 @@ void XmppNetwork::obtainServicesNodesTree() {
       all_services.removeDuplicates();
 
       for (const auto& serv : all_services) {
-        checkService(serv, root);
+        const auto serv_trim = serv.trimmed();
+
+        if (serv_trim.isEmpty()) {
+          continue;
+        }
+
+        discoverService(serv_trim, root);
       }
     }
     else if (QXmppError* error = std::get_if<QXmppError>(&result)) {

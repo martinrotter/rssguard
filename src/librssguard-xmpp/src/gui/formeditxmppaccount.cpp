@@ -23,14 +23,14 @@ void FormEditXmppAccount::apply() {
   bool using_another_acc =
     m_details->m_ui.m_txtUsername->lineEdit()->text() != account<XmppServiceRoot>()->network()->username() ||
     m_details->m_ui.m_txtHost->lineEdit()->text() != account<XmppServiceRoot>()->network()->domain() ||
-    m_proxyDetails->proxy() != account<XmppServiceRoot>()->networkProxy();
+    m_proxyDetails->proxy() != account<XmppServiceRoot>()->networkProxy() ||
+    m_details->additionalServices() != account<XmppServiceRoot>()->network()->extraServices();
 
   // account<XmppServiceRoot>()->network()->logout(m_account->networkProxy());
   account<XmppServiceRoot>()->network()->setDomain(m_details->m_ui.m_txtHost->lineEdit()->text());
   account<XmppServiceRoot>()->network()->setUsername(m_details->m_ui.m_txtUsername->lineEdit()->text());
   account<XmppServiceRoot>()->network()->setPassword(m_details->m_ui.m_txtPassword->lineEdit()->text());
-  account<XmppServiceRoot>()->network()->setExtraServices(m_details->m_ui.m_txtAdditionalServices->toPlainText()
-                                                            .split(QL1C('\n')));
+  account<XmppServiceRoot>()->network()->setExtraServices(m_details->additionalServices());
 
   account<XmppServiceRoot>()->saveAccountDataToDatabase();
   accept();
@@ -62,8 +62,7 @@ void FormEditXmppAccount::loadAccountData() {
   m_details->m_ui.m_txtUsername->lineEdit()->setText(existing_root->network()->username());
   m_details->m_ui.m_txtPassword->lineEdit()->setText(existing_root->network()->password());
   m_details->m_ui.m_txtHost->lineEdit()->setText(existing_root->network()->domain());
-  m_details->m_ui.m_txtAdditionalServices
-    ->setPlainText(existing_root->network()->extraServices().join(TextFactory::newline()));
+  m_details->setAdditionalServices(existing_root->network()->extraServices());
 }
 
 void FormEditXmppAccount::performTest() {

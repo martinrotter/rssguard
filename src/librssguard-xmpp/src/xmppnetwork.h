@@ -68,9 +68,9 @@ class XmppNetwork : public QObject {
     void onClientError(const QXmppError& error);
 
   private:
-    void checkService(const QString& jid, RootItem* new_tree);
+    void discoverService(const QString& jid, RootItem* new_tree);
     void fetchSubscriptions(const QString& service, RootItem* new_tree);
-    void reportSyncInFinish(const ServiceRoot::SyncInResult& result);
+    void reportSyncInFinish(const ServiceRoot::SyncInResult& result, bool timed_out = false);
 
   private:
     XmppServiceRoot* m_root;
@@ -86,6 +86,7 @@ class XmppNetwork : public QObject {
     QTimer m_syncInTimer;
 
     QList<QString> m_syncInPendingServices;
+    bool m_syncInSent;
 };
 
 #endif // XMPPNETWORK_H
