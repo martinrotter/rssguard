@@ -37,20 +37,26 @@
     </widget>
    </item>
    <item>
-    <widget class="QTextBrowser" name="m_txtDetails">
+    <widget class="QLiteHtmlWidget" name="m_txtDetails">
      <property name="frameShape">
       <enum>QFrame::Shape::NoFrame</enum>
      </property>
      <property name="horizontalScrollBarPolicy">
       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOff</enum>
      </property>
-     <property name="openLinks">
-      <bool>false</bool>
-     </property>
+
     </widget>
    </item>
   </layout>
  </widget>
+
+ <customwidgets>
+  <customwidget>
+   <class>QLiteHtmlWidget</class>
+   <extends>QAbstractScrollArea</extends>
+   <header>gui/webviewers/qlitehtml/qlitehtmlwidget.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

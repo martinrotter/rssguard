@@ -316,7 +316,7 @@ void QLiteHtmlWidget::mouseMoveEvent(QMouseEvent* event) {
 
   htmlPos(event->pos(), &viewport_pos, &pos);
 
-  if (Globals::hasFlag(event->buttons(), Qt::MouseButton::MiddleButton) && !m_draggedData.isNull() &&
+  if (Globals::hasFlag(event->buttons(), Qt::MouseButton::LeftButton) && !m_draggedData.isNull() &&
       ((pos - m_dragStartPos).manhattanLength() >= QApplication::startDragDistance())) {
     startDataDrag(m_draggedData);
     m_draggedData.clear();
@@ -351,29 +351,30 @@ void QLiteHtmlWidget::mousePressEvent(QMouseEvent* event) {
 
   htmlPos(event->pos(), &viewport_pos, &pos);
 
-  if (event->button() == Qt::MouseButton::MiddleButton) {
+  if (event->button() == Qt::MouseButton::LeftButton) {
     m_dragStartPos = pos;
     QUrl href = m_documentContainer.linkAt(pos, viewport_pos);
+    auto selected_text = selectedText();
 
     if (!href.isEmpty()) {
       m_draggedData = href;
     }
+    else if (!selected_text.isEmpty() && m_documentContainer.isPointInSelection(pos, viewport_pos)) {
+      m_draggedData = selected_text;
+    }
     else {
-      auto selected_text = selectedText();
-
-      if (!selected_text.isEmpty()) {
-        m_draggedData = selected_text;
-      }
-      else {
-        m_draggedData.clear();
+      m_draggedData.clear();
+      const QVector<QRectF> areas = m_documentContainer.mousePressEvent(pos, viewport_pos, event->button());
+      for (const QRectF& r : areas) {
+        viewport()->update(fromVirtual(r.translated(-scrollPosition())).toRect());
       }
     }
   }
-
-  const QVector<QRectF> areas = m_documentContainer.mousePressEvent(pos, viewport_pos, event->button());
-
-  for (const QRectF& r : areas) {
-    viewport()->update(fromVirtual(r.translated(-scrollPosition())).toRect());
+  else {
+    const QVector<QRectF> areas = m_documentContainer.mousePressEvent(pos, viewport_pos, event->button());
+    for (const QRectF& r : areas) {
+      viewport()->update(fromVirtual(r.translated(-scrollPosition())).toRect());
+    }
   }
 }
 

@@ -15,7 +15,7 @@ ItemDetails::ItemDetails(QWidget* parent) : QWidget(parent) {
   m_ui.m_txtDetails->setAutoFillBackground(false);
   m_ui.m_txtDetails->viewport()->setAutoFillBackground(false);
 
-  connect(m_ui.m_txtDetails, &QTextBrowser::anchorClicked, this, [](const QUrl& link) {
+  connect(m_ui.m_txtDetails, &QLiteHtmlWidget::linkClicked, this, [](const QUrl& link) {
     qApp->web()->openUrlInExternalBrowser(link);
   });
 }
@@ -31,12 +31,12 @@ void ItemDetails::loadItemDetails(RootItem* item) {
                                         48,
                                         Qt::AspectRatioMode::KeepAspectRatio,
                                         Qt::TransformationMode::SmoothTransformation));
-    m_ui.m_txtDetails->setText(QSL("<b>%1</b>").arg(QSL(APP_LONG_NAME)));
+    m_ui.m_txtDetails->setHtml(QSL("<b>%1</b>").arg(QSL(APP_LONG_NAME)));
   }
   else {
     QString tool_tip = item->data(FDS_MODEL_TITLE_INDEX, Qt::ItemDataRole::ToolTipRole).toString();
 
     m_ui.m_lblIcon->setPixmap(item->fullIcon().pixmap({48, 48}));
-    m_ui.m_txtDetails->setText(tool_tip);
+    m_ui.m_txtDetails->setHtml(tool_tip);
   }
 }

@@ -1445,6 +1445,26 @@ void DocumentContainer::setMediaType(MediaType mt) {
   m_mediaType = fromQt(mt);
 }
 
+bool DocumentContainer::isPointInSelection(QPointF document_pos, QPointF viewport_pos) const {
+  if (!m_selection.isValid()) {
+    return false;
+  }
+
+  const Selection::Element element = selectionElementAtPoint(m_document->root(), document_pos, viewport_pos, m_selection.m_mode);
+
+  if (!element.element) {
+    return false;
+  }
+
+  for (const QRectF& r : m_selection.m_selection) {
+    if (r.contains(document_pos)) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 QVector<QRectF> DocumentContainer::mousePressEvent(QPointF document_pos, QPointF viewport_pos, Qt::MouseButton button) {
   if (!m_document || button != Qt::LeftButton) {
     return {};
@@ -1636,6 +1656,14 @@ QUrl DocumentContainer::linkAt(QPointF document_pos, QPointF viewport_pos) const
 
   deepestChildAtPoint(m_document->root(), document_pos, viewport_pos, [&href](const litehtml::element::ptr& e) {
     const litehtml::element::ptr parent = e->parent();
+
+    if (e && e->tag() == litehtml::_a_) {
+      href = e->get_attr("href");
+
+      if (href) {
+        return true;
+      }
+    }
 
     if (parent && parent->tag() == litehtml::_a_) {
       href = parent->get_attr("href");

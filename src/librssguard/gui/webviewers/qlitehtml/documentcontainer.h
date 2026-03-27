@@ -168,6 +168,7 @@ class DocumentContainer : public QObject, litehtml::document_container {
     void setMediaType(MediaType t);
 
     // these return areas to redraw in document space
+    bool isPointInSelection(QPointF document_pos, QPointF viewport_pos) const;
     QVector<QRectF> mousePressEvent(QPointF document_pos, QPointF viewportPosos, Qt::MouseButton button);
     QVector<QRectF> mouseMoveEvent(QPointF documentPoss, QPointF viewport_pos);
     QVector<QRectF> mouseReleaseEvent(QPointF document_pos, QPointF viewport_pos, Qt::MouseButton button);
