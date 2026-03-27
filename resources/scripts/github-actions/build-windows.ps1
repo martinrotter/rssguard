@@ -184,7 +184,7 @@ $qxmpp_root = "$qxmpp_path-build"
 
 cd "$qxmpp_path"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DBUILD_TESTING="OFF" -DBUILD_EXAMPLES="OFF" -DWITH_PKGCONFIG="OFF"
+& "$cmake_path" "." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DBUILD_TESTING="OFF" -DBUILD_EXAMPLES="OFF" -DWITH_PKGCONFIG="OFF"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix "$qxmpp_root"
 
