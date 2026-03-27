@@ -21,7 +21,12 @@ if [[ "$os" == *"ubuntu"* ]]; then
   image_suffix="AppImage"
   prefix="/usr"
 
+if [[ "$use_qt5" == "ON" ]]; then
+  qxmpp="OFF"
+else
   qxmpp="ON"
+fi
+
   libmpv="ON"
   qtmultimedia="OFF"
   app_id="io.github.martinrotter.rssguard"
