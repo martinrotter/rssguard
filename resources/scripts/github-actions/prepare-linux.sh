@@ -35,6 +35,7 @@ pacman -Syu --noconfirm  \
     pipewire-audio       \
     pulseaudio           \
     pulseaudio-alsa      \
+    qxmpp                \
     qt5-base             \
     qt5-declarative      \
     qt5-imageformats     \

@@ -21,6 +21,7 @@ if [[ "$os" == *"ubuntu"* ]]; then
   image_suffix="AppImage"
   prefix="/usr"
 
+  qxmpp="ON"
   libmpv="ON"
   qtmultimedia="OFF"
   app_id="io.github.martinrotter.rssguard"
@@ -31,6 +32,7 @@ else
   image_suffix="dmg"
   prefix="RSS Guard.app"
 
+  qxmpp="OFF"
   libmpv="OFF"
   qtmultimedia="ON"
 fi
@@ -88,7 +90,7 @@ echo "New output file name is: $image_full_name"
 mkdir rssguard-build
 cd rssguard-build
 
-cmake .. -G Ninja -DCMAKE_OSX_ARCHITECTURES="arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="$devbuild_opt" -DBUILD_WITH_QT6="$USE_QT6" -DENABLE_COMPRESSED_SITEMAP="ON" -DIS_DEVBUILD="$devbuild_opt" -DENABLE_ICU="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$qtmultimedia" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET"
+cmake .. -G Ninja -DCMAKE_OSX_ARCHITECTURES="arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="$devbuild_opt" -DBUILD_WITH_QT6="$USE_QT6" -DBUILD_XMPP_PLUGIN="$qxmpp" -DUSE_SYSTEM_QXMPP="ON" -DENABLE_COMPRESSED_SITEMAP="ON" -DIS_DEVBUILD="$devbuild_opt" -DENABLE_ICU="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$qtmultimedia" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET"
 cmake --build .
 cmake --install . --prefix "$prefix"
 
