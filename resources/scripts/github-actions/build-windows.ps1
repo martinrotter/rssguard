@@ -5,7 +5,7 @@ echo "We are building for MS Windows."
 echo "OS: $os; Qt5: $use_qt5"
 
 $git_revlist = git rev-list --tags --max-count=1
-$git_tag = git describe --tags $git_revlist
+$git_tag = $(git describe --tags) 2>$null; if (!$git_tag) { $git_tag = 'unknown' }
 $git_revision = git rev-parse --short HEAD
 $old_pwd = $pwd.Path
 $is_devbuild = $env:GITHUB_REF -notmatch '^refs/tags/[0-9]'
@@ -95,7 +95,7 @@ Invoke-WebRequest -Uri "$zlib_link" -OutFile "$zlib_output"
 if ($use_libmpv -eq "ON") {
   $libmpv_link = Fetch-Latest-Release -OrgRepo "zhongfly/mpv-winbuild" -NameRegex "mpv-dev-x86_64-2.+7z" | Select-Object -ExpandProperty browser_download_url
   $libmpv_output = "mpv.zip"
-  
+
   $ytdlp_link = Fetch-Latest-Release -OrgRepo "yt-dlp/yt-dlp" -NameRegex "yt-dlp.exe" | Select-Object -ExpandProperty browser_download_url
   $ytdlp_output = "yt-dlp.exe"
 

@@ -72,7 +72,7 @@ fi
 cmake --version
 
 # Build application and package it.
-git_tag=$(git describe --tags --abbrev=0)
+git_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "unknown")
 git_revision=$(git rev-parse --short HEAD)
 devbuild_opt=$([[ "$GITHUB_REF" =~ ^refs/tags/[0-9] ]] && echo "OFF" || echo "ON")
 
