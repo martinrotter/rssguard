@@ -220,8 +220,10 @@ Copy-Item -Path "$qt_sqldrivers_path\plugins\sqldrivers\qsqlmysql.dll" -Destinat
 # Copy zlib.
 Copy-Item -Path "$zlib_path\zlib1.dll" -Destination ".\app\" -Verbose
 
-# Copy qxmpp.
-Copy-Item -Path "$qxmpp_root\bin\QXmpp*.dll" -Destination ".\app\" -Verbose
+if ($use_xmpp -eq "ON") {
+  # Copy qxmpp.
+  Copy-Item -Path "$qxmpp_root\bin\QXmpp*.dll" -Destination ".\app\" -Verbose
+}
 
 if ($is_devbuild) {
   # Copy debug symbols.
