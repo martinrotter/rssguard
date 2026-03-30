@@ -52,6 +52,7 @@ if ($use_qt5 -eq "ON") {
   $use_icu = "OFF"
   $use_libmpv = "OFF"
   $use_qtmultimedia = "ON"
+  $use_xmpp = "OFF"
 
   $with_qt6 = "OFF"
 }
@@ -62,6 +63,7 @@ else {
   $use_icu = "ON"
   $use_libmpv = "ON"
   $use_qtmultimedia = "OFF"
+  $use_xmpp = "ON"
 
   $with_qt6 = "ON"
 }
@@ -182,18 +184,20 @@ nmake.exe -f "win32\Makefile.msc"
 $qxmpp_path = "$old_pwd\src\librssguard-xmpp\src\3rd-party\qxmpp"
 $qxmpp_root = "$qxmpp_path-build"
 
-cd "$qxmpp_path"
+if ($use_xmpp -eq "ON") {
+  cd "$qxmpp_path"
 
-& "$cmake_path" "." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DBUILD_TESTING="OFF" -DBUILD_EXAMPLES="OFF" -DWITH_PKGCONFIG="OFF"
-& "$cmake_path" --build .
-& "$cmake_path" --install . --prefix "$qxmpp_root"
+  & "$cmake_path" "." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DBUILD_TESTING="OFF" -DBUILD_EXAMPLES="OFF" -DWITH_PKGCONFIG="OFF"
+  & "$cmake_path" --build .
+  & "$cmake_path" --install . --prefix "$qxmpp_root"
+}
 
 # Build application.
 cd "$old_pwd"
 mkdir "rssguard-build"
 cd "rssguard-build"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="$devbuild_opt" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DIS_DEVBUILD="$devbuild_opt" -DENABLE_ICU="$use_icu" -DICU_ROOT="$icu_path" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DBUILD_XMPP_PLUGIN="ON" -Dqxmpp_ROOT="$qxmpp_root" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="$devbuild_opt" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DIS_DEVBUILD="$devbuild_opt" -DENABLE_ICU="$use_icu" -DICU_ROOT="$icu_path" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DBUILD_XMPP_PLUGIN="ON" -DBUILD_XMPP_PLUGIN="$use_xmpp" -Dqxmpp_ROOT="$qxmpp_root" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
