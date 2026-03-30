@@ -7,7 +7,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](https://github.com/martinrotter/rssguard/issues)
 [![License](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=360000)](https://github.com/martinrotter/rssguard/blob/master/LICENSE.md)
 
-### [Discord server](https://discord.gg/7xbVMPPNqH) | [XMPP Chat](xmpp:rss-guard@conference.movim.eu?join) | [Downloads](https://github.com/martinrotter/rssguard/releases) | [Development builds](https://github.com/martinrotter/rssguard/releases/tag/devbuild5) | [Documentation](https://rssguard.readthedocs.io) | [Translations](https://rssguard.readthedocs.io/en/stable/contrib/localization.html)
+### [Discord chat](https://discord.gg/7xbVMPPNqH) | [XMPP chat](xmpp:rss-guard@conference.movim.eu?join) | [Downloads](https://github.com/martinrotter/rssguard/releases) | [Development builds](https://github.com/martinrotter/rssguard/releases/tag/devbuild5) | [Docs](https://rssguard.readthedocs.io) | [Translations](https://rssguard.readthedocs.io/en/stable/contrib/localization.html)
 
 **RSS Guard** is a fast, lightweight, and customizable feed reader designed for modern users.  
 It runs on **Windows**, **Linux**, **BSD**, **OS/2**, and **macOS**, and supports a wide range of feed formats including **RSS**, **ATOM**, **JSON**, **iCalendar**, and **Sitemap**.
@@ -32,6 +32,12 @@ It can play both audio and video directly using its built-in **mpv**-based (or a
 ### 🌐 Gemini Protocol Support
 
 RSS Guard includes native support for the [Gemini](https://geminiprotocol.net) protocol, allowing it to fetch and display feeds securely over Gemini connections.
+
+---
+
+### <img src="resources/graphics/misc/xmpp.png" width="16"> XMPP Support
+
+RSS Guard includes basic support for the [XMPP PubSub](https://xmpp.org/extensions/xep-0060.html) protocol, allowing it to fetch real-time `ATOM` entries.
 
 ---
 

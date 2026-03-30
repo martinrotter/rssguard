@@ -373,7 +373,11 @@ add_subdirectory(src/librssguard-standard)
 add_subdirectory(src/librssguard-ttrss)
 
 if(BUILD_XMPP_PLUGIN)
-  add_subdirectory(src/librssguard-xmpp)
+  if(BUILD_WITH_QT6)
+    add_subdirectory(src/librssguard-xmpp)
+  else()
+    message(WARNING "XMPP plugin is only available when building with Qt 6.")
+  endif()
 endif()
 
 # Additional programs.
