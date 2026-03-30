@@ -93,6 +93,7 @@ project(rssguard VERSION ${APP_VERSION} LANGUAGES CXX C)
 # Basic C++ related behavior of cmake.
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -131,6 +132,8 @@ option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap fee
 option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." OFF)
 option(ENABLE_MEDIAPLAYER_LIBMPV "Enable built-in media player. Requires libmpv library." ON)
 option(MEDIAPLAYER_FORCE_OPENGL "Use opengl-based render API with libmpv." ON)
+option(USE_SYSTEM_QXMPP "Use qxmpp library from the system." OFF)
+option(BUILD_XMPP_PLUGIN "Build XMPP plugin." OFF)
 
 if(IS_DEVBUILD)
   message(STATUS "Build as development build.")
@@ -141,8 +144,8 @@ else()
 endif()
 
 # Import Qt libraries.
-set(QT6_MIN_VERSION 6.3.0)
-set(QT5_MIN_VERSION 5.14.0)
+set(QT6_MIN_VERSION 6.5.0)
+set(QT5_MIN_VERSION 5.15.0)
 
 set(QT_COMPONENTS
   Core
@@ -266,6 +269,8 @@ else()
   endif()
 endif()
 
+message(STATUS "Qt major version: '${QT_VERSION_MAJOR}'.")
+
 # Load git commit hash.
 if(REVISION_FROM_GIT AND EXISTS "${CMAKE_SOURCE_DIR}/.git")
   execute_process(COMMAND "git" "rev-parse" "--short" "HEAD"
@@ -360,12 +365,16 @@ add_subdirectory(src/librssguard)
 add_subdirectory(localization)
 
 # Plugins.
-add_subdirectory(src/librssguard-standard)
 add_subdirectory(src/librssguard-feedly)
 add_subdirectory(src/librssguard-gmail)
 add_subdirectory(src/librssguard-greader)
-add_subdirectory(src/librssguard-ttrss)
 add_subdirectory(src/librssguard-nextcloud)
+add_subdirectory(src/librssguard-standard)
+add_subdirectory(src/librssguard-ttrss)
+
+if(BUILD_XMPP_PLUGIN)
+  add_subdirectory(src/librssguard-xmpp)
+endif()
 
 # Additional programs.
 add_subdirectory(resources/scripts/standalone/article-extractor)

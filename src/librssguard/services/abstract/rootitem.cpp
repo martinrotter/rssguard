@@ -112,7 +112,7 @@ QVariant RootItem::data(int column, int role) const {
           tool_tip += QSL("<p>%1</p>").arg(extra_tooltip);
         }
 
-        return tool_tip.replace(QSL("\n"), QSL("<br />"));
+        return tool_tip.replace(QSL("\n"), QSL("<br />")).replace(QSL("----"), QSL("<hr />"));
       }
       else if (column == FDS_MODEL_COUNTS_INDEX) {
         //: Tooltip for "unread" column of feed list.

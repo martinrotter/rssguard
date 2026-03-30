@@ -249,7 +249,11 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void appendCommonNodes();
 
   signals:
-    // void syncInRequested();
+    // Called when the account requests article fetch
+    // for some particular feeds.
+    //
+    // For example when those feeds get real-time new articles or something.
+    void feedFetchRequested(QList<Feed*> feeds);
     void syncInFinished(SyncInResult result);
     void proxyChanged(QNetworkProxy proxy);
     void dataChanged(QList<RootItem*> items);

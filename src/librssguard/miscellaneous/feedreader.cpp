@@ -95,6 +95,16 @@ QList<ServiceEntryPoint*> FeedReader::feedServices() {
   return m_feedServices;
 }
 
+void FeedReader::onFeedFetchRequested(const QList<Feed*>& feeds) {
+  for (Feed* feed : feeds) {
+    if (m_feedsRequestedToFetchByAccounts.contains(feed)) {
+      continue;
+    }
+
+    m_feedsRequestedToFetchByAccounts.append(feed);
+  }
+}
+
 void FeedReader::updateFeeds(const QList<Feed*>& feeds, bool update_switched_off_too) {
   if (!qApp->feedUpdateLock()->tryLock()) {
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
@@ -394,13 +404,12 @@ void FeedReader::executeNextAutoUpdate() {
                        });
 
   // Skip this round of auto-updating, but only if user disabled it when main window is active
-  // and there are no caches to synchronize.
-  if ((m_feedFetchingPaused || disable_update_with_window) && full_caches.isEmpty()) {
+  // and there are no caches to synchronize and no feeds forced to fetch by accounts.
+  if ((m_feedFetchingPaused || disable_update_with_window) && full_caches.isEmpty() &&
+      m_feedsRequestedToFetchByAccounts.isEmpty()) {
     qDebugNN << LOGSEC_CORE << "Delaying scheduled feed auto-download for some time since window "
              << "is focused and updates while focused are disabled by the "
              << "user (or paused) and all account caches are empty.";
-
-    // Cannot update, quit.
     return;
   }
 
@@ -440,6 +449,16 @@ void FeedReader::executeNextAutoUpdate() {
   }
 
   QList<Feed*> feeds_for_update = m_feedsModel->feedsForScheduledUpdate(auto_update_now);
+
+  for (const QPointer<Feed>& async_feed_fetch : m_feedsRequestedToFetchByAccounts) {
+    if (async_feed_fetch.isNull() || feeds_for_update.contains(async_feed_fetch.data())) {
+      continue;
+    }
+
+    feeds_for_update.append(async_feed_fetch.data());
+  }
+
+  m_feedsRequestedToFetchByAccounts.clear();
 
   if (!feeds_for_update.isEmpty()) {
     // Request update for given feeds.

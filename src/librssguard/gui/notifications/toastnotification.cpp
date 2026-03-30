@@ -14,6 +14,10 @@ ToastNotification::ToastNotification(Notification::Event event,
                                      QWidget* parent)
   : BaseToastNotification(parent) {
   m_ui.setupUi(this);
+  m_ui.m_lblIcon->setFixedSize({
+    48,
+    48,
+  });
 
   setupHeading(m_ui.m_lblTitle);
   setupCloseButton(m_ui.m_btnClose);
@@ -27,11 +31,10 @@ void ToastNotification::loadNotification(Notification::Event event, const GuiMes
   m_ui.m_lblTitle->setToolTip(msg.m_title);
   m_ui.m_lblBody->setText(msg.m_message);
   m_ui.m_lblBody->setToolTip(msg.m_message);
-
-  m_ui.m_lblIcon->setPixmap(iconForType(msg.m_type)
+  m_ui.m_lblIcon->setPixmap((msg.m_icon.isNull() ? iconForType(msg.m_type) : msg.m_icon)
                               .pixmap({
-                                32,
-                                32,
+                                48,
+                                48,
                               }));
 
   if (action.m_action) {
@@ -57,8 +60,9 @@ QIcon ToastNotification::iconForType(QSystemTrayIcon::MessageIcon icon) const {
       return qApp->icons()->fromTheme(QSL("dialog-error"));
 
     case QSystemTrayIcon::Information:
-    case QSystemTrayIcon::NoIcon:
-    default:
       return qApp->icons()->fromTheme(QSL("dialog-information"));
+
+    default:
+      return QIcon();
   }
 }

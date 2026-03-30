@@ -19,7 +19,7 @@
 #define SERVICE_CODE_FEEDLY    "feedly"
 #define SERVICE_CODE_INOREADER "inoreader"
 #define SERVICE_CODE_GMAIL     "gmail"
-#define SERVICE_CODE_REDDIT    "reddit"
+#define SERVICE_CODE_XMPP      "xmpp"
 
 #define OAUTH_DECRYPTION_KEY 11451167756100761335ul
 #define OAUTH_REDIRECT_URI   "http://localhost"
@@ -172,7 +172,7 @@
 #define LOGSEC_TTRSS          "tt-rss: "
 #define LOGSEC_GMAIL          "gmail: "
 #define LOGSEC_OAUTH          "oauth: "
-#define LOGSEC_REDDIT         "reddit: "
+#define LOGSEC_XMPP           "xmpp: "
 
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f

@@ -15,8 +15,8 @@
 #include "ui_formaccountdetails.h"
 
 FormAccountDetails::FormAccountDetails(const QIcon& icon, QWidget* parent)
-  : QDialog(parent), m_proxyDetails(new NetworkProxyDetails(this)), m_accountDetails(new AccountDetails(this)),
-    m_account(nullptr), m_creatingNew(false), m_ui(new Ui::FormAccountDetails()) {
+  : QDialog(parent), m_ui(new Ui::FormAccountDetails()), m_proxyDetails(new NetworkProxyDetails(this)),
+    m_accountDetails(new AccountDetails(this)), m_account(nullptr), m_creatingNew(false) {
   m_ui->setupUi(this);
 
   m_proxyDetails->setup(false, true);
@@ -45,6 +45,8 @@ void FormAccountDetails::apply() {
                             m_account->probesNode()});
   }
 }
+
+void FormAccountDetails::rollBack() {}
 
 void FormAccountDetails::insertCustomTab(QWidget* custom_tab, const QString& title, int index) {
   m_ui->m_tabWidget->insertTab(index, custom_tab, title);
@@ -84,4 +86,5 @@ void FormAccountDetails::loadAccountData() {
 
 void FormAccountDetails::createConnections() {
   connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormAccountDetails::apply);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &FormAccountDetails::rollBack);
 }

@@ -216,7 +216,7 @@ void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
                             "grant_type=%4")
                       .arg(properClientId(), properClientSecret(), real_refresh_token, QSL("refresh_token"));
 
-  qApp->showGuiMessage(Notification::Event::LoginDataRefreshed,
+  qApp->showGuiMessage(Notification::Event::LoginProgressOrSuccessful,
                        {tr("Logging in via OAuth 2.0..."),
                         tr("Refreshing login tokens for '%1'...").arg(m_tokenUrl.toString()),
                         QSystemTrayIcon::MessageIcon::Information},

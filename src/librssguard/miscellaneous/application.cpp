@@ -193,6 +193,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
                                         true,
                                         QSL("%1/notify.wav").arg(SOUNDS_BUILTIN_DIRECTORY)),
                            Notification(Notification::Event::NewAppVersionAvailable, true),
+                           Notification(Notification::Event::LoginProgressOrSuccessful, true),
                            Notification(Notification::Event::LoginFailure, true)},
                           settings());
   }

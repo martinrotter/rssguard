@@ -102,6 +102,26 @@ QString WebFactory::stripTags(QString text) {
   return text.remove(reg_tags);
 }
 
+QString WebFactory::urlToTld(const QUrl& url) {
+  static QStringList special_tlds = {"co.uk", "com.au", "co.jp"};
+
+  QString host = url.host();
+  QStringList parts = host.split('.');
+
+  if (parts.size() < 2) {
+    return host;
+  }
+
+  QString last_two = parts.mid(parts.size() - 2).join('.');
+  QString last_three = parts.mid(parts.size() - 3).join('.');
+
+  if (special_tlds.contains(last_two) && parts.size() >= 3) {
+    return last_three;
+  }
+
+  return last_two;
+}
+
 QString WebFactory::webCacheFolder() const {
   QString cache_folder = qApp->userDataFolder() + QDir::separator() + QSL("web") + QDir::separator() + QSL("cache");
 

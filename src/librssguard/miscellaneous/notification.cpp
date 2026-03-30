@@ -122,8 +122,9 @@ QList<Notification::Event> Notification::allEvents() {
           Event::NewUnreadArticlesFetched,
           Event::ArticlesFetchingStarted,
           Event::ArticlesFetchingError,
-          Event::LoginDataRefreshed,
+          Event::LoginProgressOrSuccessful,
           Event::LoginFailure,
+          Event::Logout,
           Event::NewAppVersionAvailable};
 }
 
@@ -135,8 +136,8 @@ QString Notification::nameForEvent(Notification::Event event) {
     case Notification::Event::ArticlesFetchingStarted:
       return QObject::tr("Fetching articles right now");
 
-    case Notification::Event::LoginDataRefreshed:
-      return QObject::tr("Login data refreshed");
+    case Notification::Event::LoginProgressOrSuccessful:
+      return QObject::tr("Login progressed or was successful");
 
     case Notification::Event::LoginFailure:
       return QObject::tr("Login failed");
@@ -149,6 +150,9 @@ QString Notification::nameForEvent(Notification::Event event) {
 
     case Notification::Event::ArticlesFetchingError:
       return QObject::tr("Error when fetching articles");
+
+    case Notification::Event::Logout:
+      return QObject::tr("You were logged out or disconnected");
 
     default:
       return QObject::tr("Unknown event");

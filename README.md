@@ -7,7 +7,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/martinrotter/rssguard.svg?maxAge=360)](https://github.com/martinrotter/rssguard/issues)
 [![License](https://img.shields.io/github/license/martinrotter/rssguard.svg?maxAge=360000)](https://github.com/martinrotter/rssguard/blob/master/LICENSE.md)
 
-### [Discord server](https://discord.gg/7xbVMPPNqH) | [Downloads](https://github.com/martinrotter/rssguard/releases) | [Development builds](https://github.com/martinrotter/rssguard/releases/tag/devbuild5) | [Documentation](https://rssguard.readthedocs.io) | [Translations](https://rssguard.readthedocs.io/en/stable/contrib/localization.html)
+### [Discord server](https://discord.gg/7xbVMPPNqH) | [XMPP Chat](xmpp:rss-guard@conference.movim.eu?join) | [Downloads](https://github.com/martinrotter/rssguard/releases) | [Development builds](https://github.com/martinrotter/rssguard/releases/tag/devbuild5) | [Documentation](https://rssguard.readthedocs.io) | [Translations](https://rssguard.readthedocs.io/en/stable/contrib/localization.html)
 
 **RSS Guard** is a fast, lightweight, and customizable feed reader designed for modern users.  
 It runs on **Windows**, **Linux**, **BSD**, **OS/2**, and **macOS**, and supports a wide range of feed formats including **RSS**, **ATOM**, **JSON**, **iCalendar**, and **Sitemap**.

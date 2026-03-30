@@ -251,12 +251,12 @@ QString GmailServiceRoot::code() const {
 }
 
 QString GmailServiceRoot::additionalTooltip() const {
-  return ServiceRoot::additionalTooltip() + QSL("\n") +
-         tr("Authentication status: %1\n"
+  return tr("Authentication status: %1\n"
             "Login tokens expiration: %2")
            .arg(network()->oauth()->isFullyLoggedIn() ? tr("logged-in") : tr("NOT logged-in"),
                 network()->oauth()->tokensExpireIn().isValid() ? network()->oauth()->tokensExpireIn().toString()
-                                                               : QSL("-"));
+                                                               : QSL("-")) +
+         QSL("\n\n") + ServiceRoot::additionalTooltip();
 }
 
 void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
