@@ -15,7 +15,7 @@
 #include <QPointer>
 
 XmppFeed::XmppFeed(RootItem* parent) : Feed(parent) {
-  QTimer::singleShot(5000, this, &XmppFeed::obtainArticles);
+  // QTimer::singleShot(5000, this, &XmppFeed::obtainArticles);
 }
 
 XmppServiceRoot* XmppFeed::serviceRoot() const {
