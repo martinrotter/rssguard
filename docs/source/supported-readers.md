@@ -4,6 +4,7 @@ RSS Guard is multi-account application and supports many web-based feed readers 
 * RSS
 * ATOM
 * RDF
+* [XMPP](features/xmpp)
 * [iCalendar](https://en.wikipedia.org/wiki/ICalendar)
 * [JSON](https://www.jsonfeed.org)
 * [Sitemap](https://en.wikipedia.org/wiki/Sitemaps) (including Sitemap index discovery and compressed sitemaps)
