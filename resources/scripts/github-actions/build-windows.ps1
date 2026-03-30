@@ -57,7 +57,7 @@ if ($use_qt5 -eq "ON") {
   $with_qt6 = "OFF"
 }
 else {
-  $qt_version = "6.11.0"
+  $qt_version = "6.10.2"
   $qt_arch_base = "msvc2022_64"
 
   $use_icu = "ON"
