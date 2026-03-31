@@ -287,7 +287,7 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
     is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal) : message.m_contents;
 
   messages_layout.append(QString(skin.m_layoutMarkup)
-                           .replace(QSL("%article_title%"), message.m_title)
+                           .replace(QSL("%article_title%"), message.m_title.toHtmlEscaped())
                            .replace(QSL("%article_author%"),
                                     message.m_author.isEmpty() ? tr("unknown author") : message.m_author)
                            .replace(QSL("%article_feed%"), message.m_feedTitle)

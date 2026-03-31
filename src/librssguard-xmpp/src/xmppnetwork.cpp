@@ -192,10 +192,10 @@ void XmppNetwork::discoverService(const QString& jid, RootItem* new_tree) {
     m_syncInTimer.start();
 
     if (QXmppDiscoInfo* info = std::get_if<QXmppDiscoInfo>(&result)) {
-      if (info->features().contains(XMPP_PROTOCOL_PUBSUB)) {
-        fetchSubscriptions(jid, new_tree);
-        return;
-      }
+      // if (info->features().contains(XMPP_PROTOCOL_PUBSUB)) {
+      fetchSubscriptions(jid, new_tree);
+      return;
+      //}
     }
     else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
       QString desc = XmppSimpleError::fromQXmppError(*error).m_description;

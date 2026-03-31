@@ -122,9 +122,14 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
   static QRegularExpression reg_whites(QSL("[\\s]{2,}"));
   static QRegularExpression reg_nul(QSL("\\x00"));
   static QRegularExpression reg_news(QSL("([\\n\\r])|(^\\s)"));
+  static QRegularExpression reg_breaks(QSL("<br ?\\/?>"));
 
   // Sanitize title.
-  m_title = qApp->web()->stripTags(WebFactory::unescapeHtml(m_title));
+  //
+  // NOTE: This is just basic sanitization, it is expected
+  // that titles come from plugins without HTML tags but with
+  // escaped HTML entities. This could be changed in the future.
+  m_title = WebFactory::unescapeHtml(m_title);
 
   m_title = m_title
               .trimmed()
@@ -134,6 +139,9 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
 
               // Shrink consecutive whitespaces.
               .replace(reg_whites, QSL(" "))
+
+              // Remove HTML line breaks.
+              .replace(reg_breaks, QSL(" "))
 
               // Remove all newlines and leading white space.
               .remove(reg_news)

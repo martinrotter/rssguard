@@ -27,6 +27,14 @@ QList<StandardFeed*> GemlogParser::discoverFeeds(ServiceRoot* root, const QUrl& 
 
   QString my_url = url.toString();
 
+  if (my_url.startsWith(QSL(URI_SCHEME_HTTP))) {
+    my_url = my_url.mid(QSL(URI_SCHEME_HTTP).size());
+  }
+
+  if (my_url.startsWith(QSL(URI_SCHEME_HTTPS))) {
+    my_url = my_url.mid(QSL(URI_SCHEME_HTTPS).size());
+  }
+
   if (!my_url.startsWith(QSL("gemini://"))) {
     my_url = QSL("gemini://") + my_url;
   }

@@ -337,7 +337,6 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           MessageFilter* msg_filter = filter.data();
 
           tmr.restart();
-
           filtering.filterRun().setIndexOfCurrentFilter(j);
 
           try {

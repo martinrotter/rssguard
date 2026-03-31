@@ -313,6 +313,18 @@ void Downloader::finished() {
   }
 }
 
+void Downloader::cancel() {
+  if (m_activeReply != nullptr) {
+    // Download action timed-out, too slow connection or target is not reachable.
+    m_activeReply->abort();
+  }
+  else {
+    if (m_geminiClient->cancelRequest()) {
+      emit completed(m_geminiClient->targetUrl(), QNetworkReply::NetworkError::TimeoutError, 408);
+    }
+  }
+}
+
 void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {
   if (m_timer->interval() > 0) {
     m_timer->start();
@@ -451,16 +463,6 @@ void Downloader::setProxy(const QNetworkProxy& proxy) {
            << " type:" << QUOTE_W_SPACE_DOT(proxy.type());
 
   m_downloadManager->setProxy(proxy);
-}
-
-void Downloader::cancel() {
-  if (m_activeReply != nullptr) {
-    // Download action timed-out, too slow connection or target is not reachable.
-    m_activeReply->abort();
-  }
-  else {
-    m_geminiClient->cancelRequest();
-  }
 }
 
 void Downloader::appendRawHeaders(const QList<QPair<QByteArray, QByteArray>>& headers) {
