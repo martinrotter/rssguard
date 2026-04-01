@@ -6,12 +6,14 @@
 #include <QObject>
 #include <QTimer>
 #include <QXmppConfiguration.h>
+#include <QXmppDiscoveryIq.h>
 #include <QXmppError.h>
 #include <QXmppLogger.h>
 
 class RootItem;
 class PubSubManager;
 class QXmppClient;
+class QXmppMucManager;
 class QXmppDiscoveryManager;
 
 struct XmppSimpleError {
@@ -36,8 +38,8 @@ class XmppNetwork : public QObject {
     QString domain() const;
     void setDomain(const QString& domain);
 
-    QStringList extraServices() const;
-    void setExtraServices(const QStringList& services);
+    QStringList extraNodes() const;
+    void setExtraNodes(const QStringList& nodes);
 
     XmppServiceRoot* root() const;
     QXmppConfiguration xmppConfiguration() const;
@@ -68,8 +70,10 @@ class XmppNetwork : public QObject {
     void onClientError(const QXmppError& error);
 
   private:
+    void joinRooms();
     void discoverService(const QString& jid, RootItem* new_tree);
-    void fetchSubscriptions(const QString& service, RootItem* new_tree);
+    void fetchPubSubSubscriptions(const QString& service, RootItem* new_tree);
+    void fetchMultiUserChatroom(const QString& chatroom, const QXmppDiscoInfo& info, RootItem* new_tree);
     void reportSyncInFinish(const ServiceRoot::SyncInResult& result, bool timed_out = false);
 
   private:
@@ -77,11 +81,12 @@ class XmppNetwork : public QObject {
     QXmppClient* m_xmppClient;
     QXmppDiscoveryManager* m_discoveryManager;
     PubSubManager* m_pubSubManager;
+    QXmppMucManager* m_mucManager;
 
     QString m_username;
     QString m_password;
     QString m_domain;
-    QStringList m_extraServices;
+    QStringList m_extraNodes;
     QStringList m_xeps;
     QTimer m_syncInTimer;
 

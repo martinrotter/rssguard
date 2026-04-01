@@ -67,7 +67,7 @@ QVariantHash XmppServiceRoot::customDatabaseData() const {
   data[QSL("username")] = m_network->username();
   data[QSL("password")] = TextFactory::encrypt(m_network->password());
   data[QSL("domain")] = m_network->domain();
-  data[QSL("services")] = m_network->extraServices();
+  data[QSL("services")] = m_network->extraNodes();
 
   return data;
 }
@@ -78,7 +78,7 @@ void XmppServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
   m_network->setUsername(data[QSL("username")].toString());
   m_network->setPassword(TextFactory::decrypt(data[QSL("password")].toString()));
   m_network->setDomain(data[QSL("domain")].toString());
-  m_network->setExtraServices(data[QSL("services")].toStringList());
+  m_network->setExtraNodes(data[QSL("services")].toStringList());
 }
 
 void XmppServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,

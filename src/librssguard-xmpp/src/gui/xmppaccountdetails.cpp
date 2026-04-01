@@ -18,6 +18,22 @@ XmppAccountDetails::XmppAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
 
   m_ui.m_lblTestResult->label()->setWordWrap(true);
+
+  m_ui.m_txtAdditionalServices
+    ->setPlaceholderText(tr("IDs of extra services (which contain PubSub nodes) to use for discovery, "
+                            "one ID per line, for example news.movim.eu"));
+
+  m_ui.m_helpAdditionalNodes
+    ->setHelpText(tr("Two kinds of nodes are supported (each on its own line):"
+                     "<ul>"
+                     "<li>PubSub services, for example 'news.movim.eu'</li>"
+                     "<li>direct chatrooms, for example 'rss-guard-testing@conference.movim.eu'</li>"
+                     "</ul>"
+                     "PubSub services are probed for underlying PubSub nodes and chatrooms are added directly if they "
+                     "exist."),
+                  false,
+                  true);
+
   m_ui.m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account"));
   m_ui.m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your TT-RSS account"));
   m_ui.m_txtHost->lineEdit()->setPlaceholderText(tr("URL of your XMPP server"));
@@ -25,9 +41,9 @@ XmppAccountDetails::XmppAccountDetails(QWidget* parent) : QWidget(parent) {
                                   tr("No test done yet."),
                                   tr("Here, results of connection test are shown."));
 
-  setTabOrder(m_ui.m_txtHost->lineEdit(), m_ui.m_txtAdditionalServices);
-  setTabOrder(m_ui.m_txtAdditionalServices, m_ui.m_txtUsername->lineEdit());
   setTabOrder(m_ui.m_txtUsername->lineEdit(), m_ui.m_txtPassword->lineEdit());
+  setTabOrder(m_ui.m_txtPassword->lineEdit(), m_ui.m_txtHost->lineEdit());
+  setTabOrder(m_ui.m_txtHost->lineEdit(), m_ui.m_txtAdditionalServices);
 
   m_ui.m_txtPassword->lineEdit()->setPasswordMode(true);
 

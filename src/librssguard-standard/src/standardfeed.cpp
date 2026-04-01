@@ -75,24 +75,23 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
 }
 
 QString StandardFeed::additionalTooltip() const {
-  QString base_tooltip = Feed::additionalTooltip();
+  QString source_str = tr("Encoding: %1\n"
+                          "Type: %2\n"
+                          "Post-processing script: %3\n"
+                          "Use raw XML saving: %4\n"
+                          "Fetch article comments: %5\n"
+                          "HTTP/2: %6\n"
+                          "Fetch full articles: %7 (plain text only: %8)")
+                         .arg(encoding(),
+                              StandardFeed::typeToString(type()),
+                              m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
+                              !dontUseRawXmlSaving() ? tr("yes") : tr("no"),
+                              fetchCommentsEnabled() ? tr("yes") : tr("no"),
+                              getHttpDescription(),
+                              fetchFullArticles() ? tr("yes") : tr("no"),
+                              fetchFullArticlesInPlainText() ? tr("yes") : tr("no"));
 
-  return base_tooltip + QSL("\n") +
-         tr("Encoding: %1\n"
-            "Type: %2\n"
-            "Post-processing script: %3\n"
-            "Use raw XML saving: %4\n"
-            "Fetch article comments: %5\n"
-            "HTTP/2: %6\n"
-            "Fetch full articles: %7 (plain text only: %8)")
-           .arg(encoding(),
-                StandardFeed::typeToString(type()),
-                m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
-                !dontUseRawXmlSaving() ? tr("yes") : tr("no"),
-                fetchCommentsEnabled() ? tr("yes") : tr("no"),
-                getHttpDescription(),
-                fetchFullArticles() ? tr("yes") : tr("no"),
-                fetchFullArticlesInPlainText() ? tr("yes") : tr("no"));
+  return source_str + QSL("\n\n") + Feed::additionalTooltip();
 }
 
 NetworkFactory::Http2Status StandardFeed::http2Status() const {

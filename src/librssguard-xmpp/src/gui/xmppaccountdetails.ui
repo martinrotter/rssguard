@@ -7,11 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>432</width>
-    <height>396</height>
+    <height>354</height>
    </rect>
   </property>
   <layout class="QFormLayout" name="formLayout">
-   <item row="0" column="0">
+   <item row="1" column="0">
     <widget class="QLabel" name="m_lblHost">
      <property name="text">
       <string>Host</string>
@@ -21,10 +21,53 @@
      </property>
     </widget>
    </item>
-   <item row="0" column="1">
+   <item row="1" column="1">
     <widget class="LineEditWithStatus" name="m_txtHost" native="true"/>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="2" column="0">
+    <widget class="QLabel" name="m_lblAdditionalNodes">
+     <property name="text">
+      <string>Extra nodes</string>
+     </property>
+     <property name="buddy">
+      <cstring>m_txtAdditionalServices</cstring>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPlainTextEdit" name="m_txtAdditionalServices">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QPushButton" name="m_btnTestSetup">
+     <property name="text">
+      <string>&amp;Test setup</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="LabelWithStatus" name="m_lblTestResult" native="true">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="layoutDirection">
+      <enum>Qt::LayoutDirection::RightToLeft</enum>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_helpAdditionalNodes" native="true"/>
+   </item>
+   <item row="0" column="0" colspan="2">
     <widget class="QGroupBox" name="m_gbAuthentication">
      <property name="toolTip">
       <string>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</string>
@@ -68,39 +111,6 @@
      </layout>
     </widget>
    </item>
-   <item row="3" column="0">
-    <widget class="QPushButton" name="m_btnTestSetup">
-     <property name="text">
-      <string>&amp;Test setup</string>
-     </property>
-    </widget>
-   </item>
-   <item row="3" column="1">
-    <widget class="LabelWithStatus" name="m_lblTestResult" native="true">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>0</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="layoutDirection">
-      <enum>Qt::LayoutDirection::RightToLeft</enum>
-     </property>
-    </widget>
-   </item>
-   <item row="1" column="1">
-    <widget class="QPlainTextEdit" name="m_txtAdditionalServices"/>
-   </item>
-   <item row="1" column="0">
-    <widget class="QLabel" name="m_lblAdditionalServices">
-     <property name="text">
-      <string>Extra services</string>
-     </property>
-     <property name="buddy">
-      <cstring>m_txtHost</cstring>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <customwidgets>
@@ -116,7 +126,17 @@
    <header>lineeditwithstatus.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
+   <container>1</container>
+  </customwidget>
  </customwidgets>
+ <tabstops>
+  <tabstop>m_txtAdditionalServices</tabstop>
+  <tabstop>m_btnTestSetup</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

@@ -14,7 +14,9 @@
 
 #include <QXmppAuthenticationError.h>
 #include <QXmppDiscoveryManager.h>
+#include <QXmppMucManager.h>
 #include <QXmppPubSubSubscription.h>
+#include <QXmppUtils.h>
 
 #define SYNC_IN_IDLE_TIMEOUT 6000
 #define XMPP_PROTOCOL_PUBSUB QSL("http://jabber.org/protocol/pubsub")
@@ -22,8 +24,9 @@
 XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
   : QObject(parent), m_root(parent), m_xmppClient(new QXmppClient(this)),
     m_discoveryManager(new QXmppDiscoveryManager()), m_pubSubManager(new PubSubManager(this)),
-    m_extraServices(defaultExtraServices()) {
+    m_mucManager(new QXmppMucManager()), m_extraNodes(defaultExtraServices()) {
   m_discoveryManager->setParent(this);
+  m_mucManager->setParent(this);
 
   m_syncInTimer.setSingleShot(true);
 
@@ -31,6 +34,7 @@ XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
 
   m_xmppClient->addExtension(m_discoveryManager);
   m_xmppClient->addExtension(m_pubSubManager);
+  m_xmppClient->addExtension(m_mucManager);
 
   connect(m_xmppClient->logger(), &QXmppLogger::message, this, &XmppNetwork::onNewLogEntry);
   connect(m_xmppClient, &QXmppClient::connected, this, &XmppNetwork::onClientConnected);
@@ -86,65 +90,6 @@ void XmppNetwork::disconnectFromServer() {
   m_xmppClient->disconnectFromServer();
 }
 
-void XmppNetwork::fetchSubscriptions(const QString& service, RootItem* new_tree) {
-  auto task = m_pubSubManager->requestSubscriptions(service);
-
-  task.then(this, [=, this](auto result) {
-    m_syncInTimer.start();
-
-    if (auto subs = std::get_if<QList<QXmppPubSubSubscription>>(&result)) {
-      if (!subs->isEmpty()) {
-        if (m_syncInSent) {
-          return;
-        }
-
-        Category* service_folder = new Category();
-        QString tld = qApp->web()->urlToTld(QUrl::fromUserInput(service));
-        QPixmap output_icon;
-
-        if (NetworkFactory::downloadIcon({IconLocation(tld, false)}, 5000, output_icon, {}, m_root->networkProxy()) ==
-            QNetworkReply::NetworkError::NoError) {
-          service_folder->setIcon(QIcon(output_icon));
-        }
-        else {
-          service_folder->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(service),
-                                                         service.trimmed()[0]));
-        }
-
-        service_folder->setCustomId(service);
-        service_folder->setTitle(service);
-
-        new_tree->appendChild(service_folder);
-
-        for (const QXmppPubSubSubscription& sub : *subs) {
-          XmppFeed* feed = new XmppFeed();
-
-          feed->setTitle(sub.node());
-          feed->setCustomId(sub.node());
-          feed->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(sub.node()),
-                                               sub.node().trimmed()[0]));
-
-          service_folder->appendChild(feed);
-        }
-      }
-    }
-    else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
-      QString desc = XmppSimpleError::fromQXmppError(*error).m_description;
-
-      qDebugNN << LOGSEC_XMPP << "Subscription checking failed:" << NONQUOTE_W_SPACE_DOT(desc);
-    }
-    else {
-      qDebugNN << LOGSEC_XMPP << "Subscription checking failed with unspecified error.";
-    }
-
-    m_syncInPendingServices.removeAll(service);
-
-    if (m_syncInPendingServices.isEmpty()) {
-      reportSyncInFinish(new_tree);
-    }
-  });
-}
-
 void XmppNetwork::reportSyncInFinish(const ServiceRoot::SyncInResult& result, bool timed_out) {
   bool should_send = !m_syncInSent && m_xmppClient->isConnected();
 
@@ -183,34 +128,6 @@ QString XmppNetwork::clientState() const {
   }
 }
 
-void XmppNetwork::discoverService(const QString& jid, RootItem* new_tree) {
-  m_syncInPendingServices.append(jid);
-
-  auto task = m_discoveryManager->info(jid);
-
-  task.then(this, [=, this](auto result) {
-    m_syncInTimer.start();
-
-    if (QXmppDiscoInfo* info = std::get_if<QXmppDiscoInfo>(&result)) {
-      // if (info->features().contains(XMPP_PROTOCOL_PUBSUB)) {
-      fetchSubscriptions(jid, new_tree);
-      return;
-      //}
-    }
-    else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
-      QString desc = XmppSimpleError::fromQXmppError(*error).m_description;
-
-      qWarningNN << LOGSEC_XMPP << "Service checking failed:" << NONQUOTE_W_SPACE_DOT(desc);
-    }
-
-    m_syncInPendingServices.removeAll(jid);
-
-    if (m_syncInPendingServices.isEmpty()) {
-      reportSyncInFinish(new_tree);
-    }
-  });
-}
-
 void XmppNetwork::obtainServicesNodesTree() {
   m_syncInPendingServices.clear();
   m_syncInTimer.disconnect(this);
@@ -239,7 +156,7 @@ void XmppNetwork::obtainServicesNodesTree() {
     m_syncInTimer.start();
 
     if (auto items = std::get_if<QList<QXmppDiscoItem>>(&result)) {
-      QStringList all_services = extraServices();
+      QStringList all_services = extraNodes();
 
       for (const QXmppDiscoItem& item : *items) {
         all_services.append(item.jid());
@@ -271,6 +188,159 @@ void XmppNetwork::obtainServicesNodesTree() {
       reportSyncInFinish(ApplicationException(tr("unspecified error during services discovery")));
     }
   });
+}
+
+void XmppNetwork::discoverService(const QString& jid, RootItem* new_tree) {
+  m_syncInPendingServices.append(jid);
+
+  auto task = m_discoveryManager->info(jid);
+
+  task.then(this, [=, this](auto result) {
+    m_syncInTimer.start();
+
+    if (QXmppDiscoInfo* info = std::get_if<QXmppDiscoInfo>(&result)) {
+      auto xx = jid;
+      auto info_linq = qlinq::from(info->identities());
+
+      bool has_pubsub = info_linq.any([](const QXmppDiscoIdentity& identity) {
+        return identity.category() == QSL("pubsub");
+      });
+
+      bool is_chatroom = jid.contains(QL1C('@')) && info_linq.any([](const QXmppDiscoIdentity& identity) {
+        return identity.category() == QSL("conference") && identity.type() == QSL("text");
+      }) && qlinq::from(info->features()).any([](const QString& feature) {
+        return feature == QXmpp::Private::ns_muc;
+      });
+
+      if (has_pubsub || is_chatroom) {
+        if (has_pubsub) {
+          fetchPubSubSubscriptions(jid, new_tree);
+        }
+
+        if (is_chatroom) {
+          fetchMultiUserChatroom(jid, *info, new_tree);
+        }
+
+        return;
+      }
+    }
+    else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
+      QString desc = XmppSimpleError::fromQXmppError(*error).m_description;
+
+      qWarningNN << LOGSEC_XMPP << "Service checking failed:" << NONQUOTE_W_SPACE_DOT(desc);
+    }
+
+    m_syncInPendingServices.removeAll(jid);
+
+    if (m_syncInPendingServices.isEmpty()) {
+      reportSyncInFinish(new_tree);
+    }
+  });
+}
+
+void XmppNetwork::fetchPubSubSubscriptions(const QString& service, RootItem* new_tree) {
+  auto task = m_pubSubManager->requestSubscriptions(service);
+
+  task.then(this, [=, this](auto result) {
+    m_syncInTimer.start();
+
+    if (auto subs = std::get_if<QList<QXmppPubSubSubscription>>(&result)) {
+      if (!subs->isEmpty()) {
+        if (m_syncInSent) {
+          return;
+        }
+
+        Category* service_folder = new Category();
+        QString tld = qApp->web()->urlToTld(QUrl::fromUserInput(service));
+        QPixmap output_icon;
+
+        if (NetworkFactory::downloadIcon({IconLocation(tld, false)}, 5000, output_icon, {}, m_root->networkProxy()) ==
+            QNetworkReply::NetworkError::NoError) {
+          service_folder->setIcon(QIcon(output_icon));
+        }
+        else {
+          service_folder->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(service),
+                                                         service.trimmed()[0]));
+        }
+
+        service_folder->setCustomId(service);
+        service_folder->setTitle(service);
+
+        new_tree->appendChild(service_folder);
+
+        for (const QXmppPubSubSubscription& sub : *subs) {
+          XmppFeed* feed = new XmppFeed();
+
+          feed->setType(XmppFeed::Type::PubSubNode);
+          feed->setTitle(sub.node());
+          feed->setCustomId(sub.node());
+          feed->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(sub.node()),
+                                               sub.node().trimmed()[0]));
+
+          service_folder->appendChild(feed);
+        }
+      }
+    }
+    else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
+      QString desc = XmppSimpleError::fromQXmppError(*error).m_description;
+
+      qDebugNN << LOGSEC_XMPP << "Subscription checking failed:" << NONQUOTE_W_SPACE_DOT(desc);
+    }
+    else {
+      qDebugNN << LOGSEC_XMPP << "Subscription checking failed with unspecified error.";
+    }
+
+    m_syncInPendingServices.removeAll(service);
+
+    if (m_syncInPendingServices.isEmpty()) {
+      reportSyncInFinish(new_tree);
+    }
+  });
+}
+
+void XmppNetwork::fetchMultiUserChatroom(const QString& chatroom, const QXmppDiscoInfo& info, RootItem* new_tree) {
+  auto chat_domain = QXmppUtils::jidToDomain(chatroom);
+  RootItem* service_folder = new_tree->getItemFromSubTree([=](const RootItem* child) {
+    return child->kind() == RootItem::Kind::Category && child->title() == chat_domain;
+  });
+
+  if (service_folder == nullptr) {
+    if (m_syncInSent) {
+      return;
+    }
+
+    service_folder = new Category();
+
+    QString tld = qApp->web()->urlToTld(QUrl::fromUserInput(chat_domain));
+    QPixmap output_icon;
+
+    if (NetworkFactory::downloadIcon({IconLocation(tld, false)}, 5000, output_icon, {}, m_root->networkProxy()) ==
+        QNetworkReply::NetworkError::NoError) {
+      service_folder->setIcon(QIcon(output_icon));
+    }
+    else {
+      service_folder->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(chat_domain),
+                                                     chat_domain.trimmed()[0]));
+    }
+
+    service_folder->setCustomId(chat_domain);
+    service_folder->setTitle(chat_domain);
+
+    new_tree->appendChild(service_folder);
+  }
+
+  XmppFeed* feed = new XmppFeed();
+
+  feed->setType(XmppFeed::Type::Chatroom);
+  feed->setTitle(qlinq::from(info.identities())
+                   .first([](const QXmppDiscoIdentity& identity) {
+                     return identity.category() == QSL("conference") && identity.type() == QSL("text");
+                   })
+                   .name());
+  feed->setCustomId(chatroom);
+  feed->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(chatroom), chatroom.trimmed()[0]));
+
+  service_folder->appendChild(feed);
 }
 
 QStringList XmppNetwork::defaultExtraServices() {
@@ -531,9 +601,14 @@ void XmppNetwork::onClientConnected() {
                                   QSystemTrayIcon::MessageIcon::Information,
                                   XmppEntryPoint().icon()));
 
-  if (m_root != nullptr && m_root->getSubTreeFeeds().isEmpty()) {
-    m_root->requestSyncIn();
-    m_root->requestItemExpand({m_root}, true);
+  if (m_root != nullptr) {
+    if (m_root->getSubTreeFeeds().isEmpty()) {
+      m_root->requestSyncIn();
+      m_root->requestItemExpand({m_root}, true);
+    }
+    else {
+      joinRooms();
+    }
   }
 
   m_discoveryManager->info(m_xmppClient->configuration().domain()).then(this, [this](auto result) {
@@ -577,16 +652,26 @@ void XmppNetwork::onClientError(const QXmppError& error) {
                                   QSystemTrayIcon::MessageIcon::Critical));
 }
 
+void XmppNetwork::joinRooms() {
+  auto rooms = m_root->getSubTree<XmppFeed>([](const XmppFeed* fd) {
+    return fd->type() == XmppFeed::Type::Chatroom;
+  });
+
+  for (XmppFeed* room : rooms) {
+    room->join(m_mucManager);
+  }
+}
+
 XmppServiceRoot* XmppNetwork::root() const {
   return m_root;
 }
 
-QStringList XmppNetwork::extraServices() const {
-  return m_extraServices;
+QStringList XmppNetwork::extraNodes() const {
+  return m_extraNodes;
 }
 
-void XmppNetwork::setExtraServices(const QStringList& services) {
-  m_extraServices = services;
+void XmppNetwork::setExtraNodes(const QStringList& nodes) {
+  m_extraNodes = nodes;
 }
 
 QXmppConfiguration XmppNetwork::xmppConfiguration() const {

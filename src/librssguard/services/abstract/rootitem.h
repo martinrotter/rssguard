@@ -139,7 +139,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     // Returns flat list of all items from subtree where this item is a root.
     // Returned list includes this item too.
     template <typename T>
-    QList<T*> getSubTree(std::function<bool(const RootItem*)> tester = nullptr) const;
+    QList<T*> getSubTree(std::function<bool(const T*)> tester = nullptr) const;
 
     QList<RootItem*> getSubTree(RootItem::Kind kind_of_item) const;
     QList<Category*> getSubTreeCategories() const;
@@ -248,7 +248,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
 };
 
 template <typename T>
-QList<T*> RootItem::getSubTree(std::function<bool(const RootItem*)> tester) const {
+QList<T*> RootItem::getSubTree(std::function<bool(const T*)> tester) const {
   QList<T*> children;
   QList<RootItem*> traversable_items;
 
@@ -257,14 +257,17 @@ QList<T*> RootItem::getSubTree(std::function<bool(const RootItem*)> tester) cons
   // Iterate all nested items.
   while (!traversable_items.isEmpty()) {
     RootItem* active_item = traversable_items.takeFirst();
+    T* casted = dynamic_cast<T*>(active_item);
 
-    if (tester) {
-      if (tester(active_item)) {
-        children.append(dynamic_cast<T*>(active_item));
+    if (casted != nullptr) {
+      if (tester) {
+        if (tester(casted)) {
+          children.append(casted);
+        }
       }
-    }
-    else {
-      children.append(dynamic_cast<T*>(active_item));
+      else {
+        children.append(casted);
+      }
     }
 
     traversable_items.append(active_item->childItems());
