@@ -23,16 +23,18 @@ XmppAccountDetails::XmppAccountDetails(QWidget* parent) : QWidget(parent) {
     ->setPlaceholderText(tr("IDs of extra services (which contain PubSub nodes) to use for discovery, "
                             "one ID per line, for example news.movim.eu"));
 
-  m_ui.m_helpAdditionalNodes
-    ->setHelpText(tr("Two kinds of nodes are supported (each on its own line):"
-                     "<ul>"
-                     "<li>PubSub services, for example 'news.movim.eu'</li>"
-                     "<li>direct chatrooms, for example 'rss-guard-testing@conference.movim.eu'</li>"
-                     "</ul>"
-                     "PubSub services are probed for underlying PubSub nodes and chatrooms are added directly if they "
-                     "exist."),
-                  false,
-                  true);
+  m_ui.m_helpAdditionalNodes->setHelpText(tr("Four kinds of nodes are supported (each on its own line):"
+                                             "<ul>"
+                                             "<li>PubSub service directories, for example 'news.movim.eu'</li>"
+                                             "<li>PubSub PEP directories, for example 'user@movim.eu'</li>"
+                                             "<li>direct chatrooms (both private chats and group chats), for example "
+                                             "'chatroom@conference.movim.eu' or 'user@movim.eu'</li>"
+                                             "</ul>"
+                                             "PubSub services or PEPs are probed for underlying PubSub nodes and "
+                                             "chatrooms are added directly if they "
+                                             "exist."),
+                                          false,
+                                          true);
 
   m_ui.m_txtPassword->lineEdit()->setPlaceholderText(tr("Password for your TT-RSS account"));
   m_ui.m_txtUsername->lineEdit()->setPlaceholderText(tr("Username for your TT-RSS account"));
