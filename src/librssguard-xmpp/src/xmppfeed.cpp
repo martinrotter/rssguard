@@ -16,7 +16,7 @@
 #include <QXmppMucManager.h>
 #include <QXmppUtils.h>
 
-XmppFeed::XmppFeed(RootItem* parent) : Feed(parent), m_type(Type::PubSubNode) {
+XmppFeed::XmppFeed(RootItem* parent) : Feed(parent), m_type(Type::PubSubServiceNode), m_mucRoom(nullptr) {
   // QTimer::singleShot(5000, this, &XmppFeed::obtainArticles);
 }
 
@@ -127,55 +127,83 @@ QString XmppFeed::extractXmppMessageTitle(const QString& text) {
   return text;
 }
 
+Message XmppFeed::articleFromXmppMessage(const QXmppMessage& msg) {
+  Message article;
+  QDateTime stamp = !msg.stamp().isValid() ? QDateTime::currentDateTimeUtc() : msg.stamp();
+
+  article.m_author = QXmppUtils::jidToResource(msg.from());
+  article.m_contents = msg.body();
+  article.m_customId = msg.id();
+  article.m_createdFromFeed = msg.stamp().isValid();
+  article.m_created = stamp;
+  article.m_title = msg.subject().isEmpty() ? extractXmppMessageTitle(article.m_contents) : msg.subject();
+
+  return article;
+}
+
+void XmppFeed::onJoinedChanged() {
+  qDebug() << "[JOINED]" << m_mucRoom->jid() << m_mucRoom->isJoined();
+}
+
+void XmppFeed::onError(const QXmppStanza::Error& error) {
+  qDebug() << "[ERROR]" << m_mucRoom->jid() << error.text();
+}
+
+void XmppFeed::onMessageReceived(const QXmppMessage& msg) {
+  if (msg.body().isEmpty()) {
+    return;
+  }
+
+  if (msg.type() == QXmppMessage::Type::Error) {
+    qCriticalNN << LOGSEC_XMPP << "Received real-time chat error message:" << QUOTE_W_SPACE_DOT(msg.body());
+    return;
+  }
+
+  auto* acc = serviceRoot();
+
+  if (acc == nullptr) {
+    return;
+  }
+
+  Message article = articleFromXmppMessage(msg);
+
+  acc->onRealTimeArticleObtained({}, {}, article, this);
+}
+
 void XmppFeed::join(QXmppMucManager* muc_manager) {
   m_mucRoom = muc_manager->addRoom(customId());
 
-  // JOIN STATE
-  QObject::connect(m_mucRoom, &QXmppMucRoom::isJoinedChanged, [this]() {
-    qDebug() << "[JOINED]" << m_mucRoom->jid() << m_mucRoom->isJoined();
-  });
-
-  // ERRORS
-  QObject::connect(m_mucRoom, &QXmppMucRoom::error, [this](const QXmppStanza::Error& err) {
-    qDebug() << "[ERROR]" << m_mucRoom->jid() << err.text();
-  });
-
-  // MESSAGES
-  QObject::connect(m_mucRoom, &QXmppMucRoom::messageReceived, [this](const QXmppMessage& msg) {
-    QString body = msg.body();
-
-    if (body.isEmpty() || msg.type() != QXmppMessage::Type::GroupChat) {
-      return;
-    }
-
-    Message article;
-    QDateTime stamp = !msg.stamp().isValid() ? QDateTime::currentDateTimeUtc() : msg.stamp();
-
-    article.m_author = QXmppUtils::jidToResource(msg.from());
-    article.m_contents = body;
-    article.m_customId = msg.id();
-    article.m_createdFromFeed = msg.stamp().isValid();
-    article.m_created = stamp;
-    article.m_title = msg.subject().isEmpty() ? extractXmppMessageTitle(body) : msg.subject();
-
-    m_articles.append(article);
-
-    if (!isSwitchedOff()) {
-      emit serviceRoot() -> feedFetchRequested({this});
-    }
-  });
+  connect(m_mucRoom.data(), &QXmppMucRoom::isJoinedChanged, this, &XmppFeed::onJoinedChanged);
+  connect(m_mucRoom.data(), &QXmppMucRoom::error, this, &XmppFeed::onError);
+  connect(m_mucRoom.data(), &QXmppMucRoom::messageReceived, this, &XmppFeed::onMessageReceived);
 
   m_mucRoom->setNickName(QSL("rssguard_%1").arg(QString::number(QRandomGenerator::global()->generate())));
   m_mucRoom->join();
 }
 
+void XmppFeed::unjoin() {
+  if (m_mucRoom == nullptr) {
+    return;
+  }
+
+  if (m_mucRoom->isJoined()) {
+    m_mucRoom->leave();
+  }
+}
+
 QString XmppFeed::typeToString(Type type) {
   switch (type) {
-    case Type::PubSubNode:
-      return QSL("PubSub");
+    case Type::PubSubServiceNode:
+      return tr("PubSub (service)");
 
-    case Type::Chatroom:
-      return QSL("MUC");
+    case Type::PubSubPep:
+      return QSL("PubSub (PEP)");
+
+    case Type::SingleUserChat:
+      return tr("single-user chat");
+
+    case Type::MultiUserChatRoom:
+      return tr("multi-user chat (MUC)");
 
     default:
       return QSL("-");

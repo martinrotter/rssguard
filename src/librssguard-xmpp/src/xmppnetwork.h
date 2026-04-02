@@ -1,6 +1,7 @@
 #ifndef XMPPNETWORK_H
 #define XMPPNETWORK_H
 
+#include "src/xmppfeed.h"
 #include "src/xmppserviceroot.h"
 
 #include <QObject>
@@ -68,13 +69,18 @@ class XmppNetwork : public QObject {
     void onClientConnected();
     void onClientDisconnected();
     void onClientError(const QXmppError& error);
+    void onMessageReceived(const QXmppMessage& message);
 
   private:
     void joinRooms();
     void discoverService(const QString& jid, RootItem* new_tree);
-    void fetchPubSubSubscriptions(const QString& service, RootItem* new_tree);
-    void fetchMultiUserChatroom(const QString& chatroom, const QXmppDiscoInfo& info, RootItem* new_tree);
+    void fetchPubSubSubscriptions(const QString& service, XmppFeed::Type pubsub_type, RootItem* new_tree);
+    void fetchChatroom(const QString& chatroom,
+                       const QXmppDiscoInfo& info,
+                       XmppFeed::Type chatroom_type,
+                       RootItem* new_tree);
     void reportSyncInFinish(const ServiceRoot::SyncInResult& result, bool timed_out = false);
+    void finalizeSyncInFinish(const QString& jid_to_remove, RootItem* new_tree);
 
   private:
     XmppServiceRoot* m_root;

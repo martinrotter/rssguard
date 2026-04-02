@@ -3,10 +3,11 @@
 #ifndef XMPPSERVICEROOT_H
 #define XMPPSERVICEROOT_H
 
+#include "src/xmppfeed.h"
+
 #include <librssguard/services/abstract/serviceroot.h>
 
 class XmppNetwork;
-class XmppFeed;
 
 class XmppServiceRoot : public ServiceRoot {
     Q_OBJECT
@@ -35,14 +36,19 @@ class XmppServiceRoot : public ServiceRoot {
                                              const QHash<QString, QStringList>& tagged_messages);
     virtual bool wantsBaggedIdsOfExistingMessages() const;
 
+    XmppFeed* findFeed(const QString& service, const QString& node) const;
+    XmppFeed* findFeed(const QString& jid, XmppFeed::Type type) const;
+
     XmppNetwork* network() const;
 
   public slots:
     virtual void requestSyncIn();
-    void pushArticleObtained(const QString& service, const QString& node, const Message& message);
+    void onRealTimeArticleObtained(const QString& service,
+                                   const QString& node,
+                                   const Message& message,
+                                   XmppFeed* feed = nullptr);
 
   private:
-    XmppFeed* findFeed(const QString& service, const QString& node) const;
     void updateTitle();
 
   private:

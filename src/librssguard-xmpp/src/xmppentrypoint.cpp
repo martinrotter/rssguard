@@ -28,7 +28,7 @@ QList<ServiceRoot*> XmppEntryPoint::initializeSubtree() const {
 }
 
 QString XmppEntryPoint::name() const {
-  return QSL("XMPP (PubSub)");
+  return QSL("XMPP");
 }
 
 QString XmppEntryPoint::code() const {

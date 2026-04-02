@@ -55,7 +55,7 @@ bool PubSubManager::handlePubSubEvent(const QDomElement& element, const QString&
       task.then(this, [service, node, this](auto result) {
         if (AtomPubSubBaseItem* item = std::get_if<AtomPubSubBaseItem>(&result)) {
           if (!item->message().m_customId.isEmpty()) {
-            emit pushArticleObtained(service, node, item->message());
+            emit realTimeArticleObtained(service, node, item->message());
           }
           else {
             qWarningNN << LOGSEC_XMPP << "Passed PubSub item was not properly parsed as an ATOM entry.";
@@ -78,94 +78,3 @@ bool PubSubManager::handlePubSubEvent(const QDomElement& element, const QString&
 
   return true;
 }
-/*
-PubSubExplorer::PubSubExplorer(QXmppClient* client)
-  : QObject(client), m_client(client), m_disco(client->findExtension<QXmppDiscoveryManager>()),
-    m_pubsub(client->findExtension<QXmppPubSubManager>()) {}
-
-void PubSubExplorer::start() {
-  qDebug() << "Connected. Discovering services…";
-  qDebug() << "JID for services:" << m_client->configuration().jid();
-
-  auto task = m_disco->items(m_client->configuration().domain());
-
-  task.then(this, [this](auto result) {
-    if (auto items = std::get_if<QList<QXmppDiscoveryIq::Item>>(&result)) {
-      for (const auto& item : *items) {
-        checkService(item.jid());
-      }
-    }
-    else {
-      qDebug() << "Service discovery failed";
-    }
-  });
-}
-
-void PubSubExplorer::checkService(const QString& jid) {
-  auto task = m_disco->info(jid);
-
-  task.then(this, [this, jid](auto result) {
-    if (auto info = std::get_if<QXmppDiscoInfo>(&result)) {
-      if (info->features().contains("http://jabber.org/protocol/pubsub")) {
-        discoverNodes(jid);
-        fetchSubscriptions(jid);
-      }
-    }
-  });
-}
-
-void PubSubExplorer::discoverNodes(const QString& service) {
-  auto task = m_disco->items(service);
-
-  task.then(this, [service, this](auto result) {
-    if (auto items = std::get_if<QList<QXmppDiscoveryIq::Item>>(&result)) {
-      qDebug() << "\nPubSub service:" << service;
-      qDebug() << "Available nodes:";
-
-      for (const auto& item : *items) {
-        qDebug() << "  node:" << item.node() << "name:" << item.name();
-      }
-    }
-    else {
-      qDebug() << "Failed discovering nodes";
-    }
-  });
-}
-
-void PubSubExplorer::fetchSubscriptions(const QString& service) {
-  auto task = m_pubsub->requestSubscriptions(service);
-
-  task.then(this, [this, service](auto result) {
-    if (auto subs = std::get_if<QList<QXmppPubSubSubscription>>(&result)) {
-      qDebug() << "\nPubSub service:" << service;
-      qDebug() << "Active subscriptions:";
-
-      for (const auto& sub : *subs) {
-        qDebug() << "  sub:" << sub.node();
-
-        // fetchItems(service, sub.node());
-      }
-    }
-    else {
-      qDebug() << "Failed fetching subscriptions";
-    }
-  });
-}
-
-void PubSubExplorer::fetchItems(const QString& service, const QString& node, const QStringList& itemIds) {
-  auto task = m_pubsub->requestItems<AtomPubSubBaseItem>(service, node, itemIds);
-
-  task.then(this, [service, node](auto result) {
-    if (auto items = std::get_if<QXmppPubSubManager::Items<AtomPubSubBaseItem>>(&result)) {
-      qDebug() << "Items for service/node:" << service << node;
-
-      for (const auto& item : items->items) {
-        qDebug() << "  item id:" << item.id();
-      }
-    }
-    else {
-      qDebug() << "Failed fetching items for node:" << node;
-    }
-  });
-}
-*/

@@ -5,9 +5,11 @@
 
 #include <librssguard/services/abstract/feed.h>
 
+#include <QXmppMessage.h>
+#include <QXmppMucManager.h>
+
 class XmppServiceRoot;
 class QXmppMucManager;
-class QXmppMucRoom;
 
 class XmppFeed : public Feed {
     Q_OBJECT
@@ -16,8 +18,10 @@ class XmppFeed : public Feed {
 
   public:
     enum class Type {
-      PubSubNode = 1,
-      Chatroom = 2
+      PubSubServiceNode = 1,
+      PubSubPep = 2,
+      MultiUserChatRoom = 3,
+      SingleUserChat = 4
     };
 
     explicit XmppFeed(RootItem* parent = nullptr);
@@ -38,9 +42,16 @@ class XmppFeed : public Feed {
     void setType(Type type);
 
     void join(QXmppMucManager* muc_manager);
+    void unjoin();
 
     static QString typeToString(Type type);
     static QString extractXmppMessageTitle(const QString& text);
+    static Message articleFromXmppMessage(const QXmppMessage& msg);
+
+  private slots:
+    void onJoinedChanged();
+    void onError(const QXmppStanza::Error& error);
+    void onMessageReceived(const QXmppMessage& msg);
 
   private:
     QString serviceName() const;
@@ -50,7 +61,7 @@ class XmppFeed : public Feed {
   private:
     QList<Message> m_articles;
     Type m_type;
-    QXmppMucRoom* m_mucRoom;
+    QPointer<QXmppMucRoom> m_mucRoom;
 };
 
 #endif // XMPPFEED_H

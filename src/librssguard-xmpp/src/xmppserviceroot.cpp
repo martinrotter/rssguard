@@ -21,6 +21,7 @@
 #include <qtlinq/qtlinq.h>
 
 #include <QAction>
+#include <QXmppUtils.h>
 
 XmppServiceRoot::XmppServiceRoot(RootItem* parent) : ServiceRoot(parent), m_network(new XmppNetwork(this)) {
   setIcon(XmppEntryPoint().icon());
@@ -125,8 +126,11 @@ void XmppServiceRoot::requestSyncIn() {
   m_network->obtainServicesNodesTree();
 }
 
-void XmppServiceRoot::pushArticleObtained(const QString& service, const QString& node, const Message& message) {
-  auto* feed = findFeed(service, node);
+void XmppServiceRoot::onRealTimeArticleObtained(const QString& service,
+                                                const QString& node,
+                                                const Message& message,
+                                                XmppFeed* feed) {
+  feed = feed == nullptr ? findFeed(service, node) : feed;
 
   if (feed == nullptr) {
     qApp->showGuiMessage(Notification::Event::ArticlesFetchingError,
@@ -148,6 +152,17 @@ XmppFeed* XmppServiceRoot::findFeed(const QString& service, const QString& node)
   RootItem* feed = getItemFromSubTree([&](const RootItem* item) {
     return item->kind() == RootItem::Kind::Feed && item->customId() == node && item->parent() != nullptr &&
            item->parent()->customId() == service;
+  });
+
+  return qobject_cast<XmppFeed*>(feed);
+}
+
+XmppFeed* XmppServiceRoot::findFeed(const QString& jid, XmppFeed::Type type) const {
+  QString bare_jid = QXmppUtils::jidToBareJid(jid);
+
+  RootItem* feed = getItemFromSubTree([&](const RootItem* item) {
+    return item->kind() == RootItem::Kind::Feed && item->customId() == bare_jid &&
+           qobject_cast<const XmppFeed*>(item)->type() == type;
   });
 
   return qobject_cast<XmppFeed*>(feed);
