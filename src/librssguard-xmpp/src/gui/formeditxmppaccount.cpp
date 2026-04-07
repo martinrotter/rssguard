@@ -14,7 +14,6 @@ FormEditXmppAccount::FormEditXmppAccount(QWidget* parent)
   activateTab(0);
 
   connect(m_details->m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditXmppAccount::performTest);
-  m_details->m_ui.m_txtHost->setFocus();
 }
 
 void FormEditXmppAccount::apply() {
@@ -63,6 +62,8 @@ void FormEditXmppAccount::loadAccountData() {
   m_details->m_ui.m_txtPassword->lineEdit()->setText(existing_root->network()->password());
   m_details->m_ui.m_txtHost->lineEdit()->setText(existing_root->network()->domain());
   m_details->setAdditionalServices(existing_root->network()->extraNodes());
+
+  m_details->m_ui.m_txtUsername->lineEdit()->setFocus();
 }
 
 void FormEditXmppAccount::performTest() {

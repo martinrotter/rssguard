@@ -49,6 +49,7 @@ XmppAccountDetails::XmppAccountDetails(QWidget* parent) : QWidget(parent) {
 
   m_ui.m_txtPassword->lineEdit()->setPasswordMode(true);
 
+  connect(m_ui.m_txtHost->lineEdit(), &BaseLineEdit::textChanged, this, &XmppAccountDetails::onUrlChanged);
   connect(m_ui.m_txtPassword->lineEdit(), &BaseLineEdit::textChanged, this, &XmppAccountDetails::onPasswordChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textChanged, this, &XmppAccountDetails::onUsernameChanged);
   connect(m_ui.m_txtUsername->lineEdit(), &BaseLineEdit::textEdited, this, &XmppAccountDetails::onUsernameEdited);
@@ -56,6 +57,8 @@ XmppAccountDetails::XmppAccountDetails(QWidget* parent) : QWidget(parent) {
   onPasswordChanged();
   onUsernameChanged();
   onUrlChanged();
+
+  m_ui.m_txtUsername->lineEdit()->setFocus();
 }
 
 QStringList XmppAccountDetails::additionalServices() const {
