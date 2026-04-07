@@ -30,7 +30,9 @@ XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
 
   m_syncInTimer.setSingleShot(true);
 
+  // #if !defined(NDEBUG)
   m_xmppClient->logger()->setLoggingType(QXmppLogger::LoggingType::SignalLogging);
+  // #endif
 
   m_xmppClient->addExtension(m_discoveryManager);
   m_xmppClient->addExtension(m_pubSubManager);
@@ -156,11 +158,7 @@ void XmppNetwork::obtainServicesNodesTree() {
     [=, this]() {
       reportSyncInFinish(root, true);
     },
-#if QT_VERSION_MAJOR >= 6
     Qt::ConnectionType::SingleShotConnection);
-#else
-    Qt::ConnectionType::AutoConnection);
-#endif
 
   auto task = m_discoveryManager->items(m_xmppClient->configuration().domain());
 
@@ -217,7 +215,8 @@ void XmppNetwork::discoverService(const QString& jid, RootItem* new_tree) {
         return identity.category() == QSL("pubsub") && identity.type() == QSL("service");
       });
 
-      bool is_pubsub_pep = info_linq.any([](const QXmppDiscoIdentity& identity) {
+      // Only add PEPs from individual accounts.
+      bool is_pubsub_pep = jid.contains(QL1C('@')) && info_linq.any([](const QXmppDiscoIdentity& identity) {
         return identity.category() == QSL("pubsub") && identity.type() == QSL("pep");
       });
 
@@ -230,6 +229,11 @@ void XmppNetwork::discoverService(const QString& jid, RootItem* new_tree) {
       bool is_chat = jid.contains(QL1C('@')) && info_linq.any([](const QXmppDiscoIdentity& identity) {
         return identity.category() == QSL("account") && identity.type() == QSL("registered");
       });
+
+      qDebugNN << LOGSEC_XMPP << "Discovering services/nodes from"
+               << QUOTE_W_SPACE(jid) "and we found that:" << "\n  PubSub service:" << is_pubsub_service
+               << "\n  PubSub PEP:" << is_pubsub_pep << "\n  single-user chat:" << is_chat
+               << "\n  multi-user chat:" << is_chatroom;
 
       if (is_pubsub_service || is_pubsub_pep || is_chatroom || is_chat) {
         if (is_pubsub_service) {
@@ -271,16 +275,18 @@ void XmppNetwork::fetchPubSubSubscriptions(const QString& service, XmppFeed::Typ
           return;
         }
 
-        Category* service_folder = new Category();
-
-        service_folder->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(service),
-                                                       service.trimmed()[0]));
-        service_folder->setCustomId(service);
-        service_folder->setTitle(service);
-
-        new_tree->appendChild(service_folder);
+        QList<RootItem*> childs;
 
         for (const QXmppPubSubSubscription& sub : *subs) {
+          qDebugNN << LOGSEC_XMPP << "Detected subscription" << QUOTE_W_SPACE(sub.node()) << "from service"
+                   << QUOTE_W_SPACE_DOT(service);
+
+          if (sub.node().contains(QSL("urn:xmpp:microblog:0")) && pubsub_type != XmppFeed::Type::PubSubPep) {
+            qWarningNN << LOGSEC_XMPP << "Microblogs (PEPs) are only supported from individual user accounts. Found in"
+                       << QUOTE_W_SPACE_DOT(service);
+            continue;
+          }
+
           XmppFeed* feed = new XmppFeed();
 
           feed->setType(pubsub_type);
@@ -289,7 +295,31 @@ void XmppNetwork::fetchPubSubSubscriptions(const QString& service, XmppFeed::Typ
           feed->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(sub.node()),
                                                sub.node().trimmed()[0]));
 
-          service_folder->appendChild(feed);
+          childs.append(feed);
+        }
+
+        if (!childs.isEmpty()) {
+          Category* service_folder = XmppServiceRoot::findCategory(new_tree, service);
+          bool is_service_new = false;
+
+          if (service_folder == nullptr) {
+            service_folder = new Category();
+
+            service_folder->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(service),
+                                                           service.trimmed()[0]));
+            service_folder->setCustomId(service);
+            service_folder->setTitle(service);
+
+            is_service_new = true;
+          }
+
+          for (RootItem* ch : childs) {
+            service_folder->appendChild(ch);
+          }
+
+          if (is_service_new) {
+            new_tree->appendChild(service_folder);
+          }
         }
       }
     }
@@ -345,232 +375,95 @@ void XmppNetwork::fetchChatroom(const QString& chatroom,
 }
 
 QStringList XmppNetwork::defaultExtraServices() {
-  return {QSL("alt.movim.eu"),
-          QSL("blabla.movim.eu"),
-          QSL("blog.teftera.com"),
-          QSL("comics.movim.eu"),
-          QSL("comics.xmpp.com"),
-          QSL("comments.chalec.org"),
-          QSL("comments.monocles.eu"),
-          QSL("comments.movim.eu"),
-          QSL("comments.xmpp.earth"),
-          QSL("earth.movim.eu"),
-          QSL("feed.31337.one"),
-          QSL("feed.xmpp.earth"),
-          QSL("gaming.movim.eu"),
-          QSL("news.chalec.org"),
-          QSL("news.movim.eu"),
-          QSL("news.xmpp.com"),
-          QSL("news.xmpp.org"),
-          QSL("nsfw.movim.eu"),
-          QSL("nsfw.xmpp.com"),
-          QSL("pictures.movim.eu"),
-          QSL("pubsub.07f.de"),
-          QSL("pubsub.31337.one"),
-          QSL("pubsub.chalec.org"),
-          QSL("pubsub.chatterboxtown.us"),
-          QSL("pubsub.conversations.im"),
-          QSL("pubsub.dazeilad.eu"),
-          QSL("pubsub.disroot.org"),
-          QSL("pubsub.dw.live"),
-          QSL("pubsub.envs.net"),
-          QSL("pubsub.jabb3r.org"),
-          QSL("pubsub.jabber.cz"),
-          QSL("pubsub.kirgroup.net"),
-          QSL("pubsub.lightwitch.org"),
-          QSL("pubsub.linuxoid.in"),
-          QSL("pubsub.monocles.eu"),
-          QSL("pubsub.movim.eu"),
-          QSL("pubsub.openim.de"),
-          QSL("pubsub.openim.nl"),
-          QSL("pubsub.sakulstar.org"),
-          QSL("pubsub.slavino.sk"),
-          QSL("pubsub.slidge.im"),
-          QSL("pubsub.slrpnk.net"),
-          QSL("pubsub.snug.moe"),
-          QSL("pubsub.suchat.org"),
-          QSL("pubsub.tea.bingo"),
-          QSL("pubsub.thecat.zone"),
-          QSL("pubsub.thrivecommunitygroup.net"),
-          QSL("pubsub.xabber.org"),
-          QSL("pubsub.xmpp.earth"),
-          QSL("pubsub.xmpp.jp"),
-          QSL("pubsub.xmpp.newboerg"),
-          QSL("pubsub.xmpp.social"),
-          QSL("pubsub.yax.im"),
-          QSL("spaces.movim.eu"),
-          QSL("sport.movim.eu")};
+  return {QSL("news.movim.eu")};
 }
 
 QHash<QString, QString> XmppNetwork::xepMappings() {
-  QHash<QString, QString> xeps = {
-    {QSL("gc-1.0"), QSL("XEP-0045")},
+  QHash<QString, QString> xeps = {{QSL("gc-1.0"), QSL("XEP-0045")},
 
-    {QSL("http://jabber.org/protocol/activity"), QSL("XEP-0108")},
-    {QSL("http://jabber.org/protocol/address"), QSL("XEP-0033")},
-    {QSL("http://jabber.org/protocol/amp"), QSL("XEP-0079")},
-    {QSL("http://jabber.org/protocol/amp#errors"), QSL("XEP-0079")},
-    {QSL("http://jabber.org/protocol/amp?action=alert"), QSL("XEP-0079")},
-    {QSL("http://jabber.org/protocol/amp?action=drop"), QSL("XEP-0079")},
-    {QSL("http://jabber.org/protocol/amp?action=error"), QSL("XEP-0079")},
-    {QSL("http://jabber.org/protocol/amp?action=notify"), QSL("XEP-0079")},
-    {QSL("http://jabber.org/protocol/amp?condition=deliver"), QSL("XEP-0079")},
-    {QSL("http://jabber.org/protocol/amp?condition=expire-at"), QSL("XEP-0079")},
-    {QSL("http://jabber.org/protocol/amp?condition=match-resource"), QSL("XEP-0079")},
+                                  {QSL("http://jabber.org/protocol/activity"), QSL("XEP-0108")},
+                                  {QSL("http://jabber.org/protocol/address"), QSL("XEP-0033")},
+                                  {QSL("http://jabber.org/protocol/amp"), QSL("XEP-0079")},
+                                  {QSL("http://jabber.org/protocol/bytestreams"), QSL("XEP-0065")},
+                                  {QSL("http://jabber.org/protocol/bytestreams#udp"), QSL("XEP-0065")},
+                                  {QSL("http://jabber.org/protocol/caps"), QSL("XEP-0115")},
+                                  {QSL("http://jabber.org/protocol/caps#optimize"), QSL("XEP-0115")},
+                                  {QSL("http://jabber.org/protocol/chatstates"), QSL("XEP-0085")},
+                                  {QSL("http://jabber.org/protocol/commands"), QSL("XEP-0050")},
+                                  {QSL("http://jabber.org/protocol/compress"), QSL("XEP-0138")},
+                                  {QSL("http://jabber.org/protocol/disco"), QSL("XEP-0030")},
+                                  {QSL("http://jabber.org/protocol/feature-neg"), QSL("XEP-0020")},
+                                  {QSL("http://jabber.org/protocol/geoloc"), QSL("XEP-0080")},
+                                  {QSL("http://jabber.org/protocol/http-auth"), QSL("XEP-0072")},
+                                  {QSL("http://jabber.org/protocol/httpbind"), QSL("XEP-0124")},
+                                  {QSL("http://jabber.org/protocol/ibb"), QSL("XEP-0047")},
+                                  {QSL("http://jabber.org/protocol/mood"), QSL("XEP-0107")},
+                                  {QSL("http://jabber.org/protocol/muc"), QSL("XEP-0045")},
+                                  {QSL("http://jabber.org/protocol/offline"), QSL("XEP-0013")},
+                                  {QSL("http://jabber.org/protocol/physloc"), QSL("XEP-0080")},
+                                  {QSL("http://jabber.org/protocol/pubsub"), QSL("XEP-0060")},
+                                  {QSL("http://jabber.org/protocol/rsm"), QSL("XEP-0059")},
+                                  {QSL("http://jabber.org/protocol/rosterx"), QSL("XEP-0144")},
+                                  {QSL("http://jabber.org/protocol/sipub"), QSL("XEP-0137")},
+                                  {QSL("http://jabber.org/protocol/soap"), QSL("XEP-0072")},
+                                  {QSL("http://jabber.org/protocol/stats"), QSL("XEP-0039")},
+                                  {QSL("http://jabber.org/protocol/soap"), QSL("XEP-0072")},
+                                  {QSL("http://jabber.org/protocol/waitinglist"), QSL("XEP-0130")},
+                                  {QSL("http://jabber.org/protocol/xhtml-im"), QSL("XEP-0071")},
+                                  {QSL("http://jabber.org/protocol/xdata-layout"), QSL("XEP-0141")},
+                                  {QSL("http://jabber.org/protocol/xdata-validate"), QSL("XEP-0122")},
 
-    {QSL("http://jabber.org/protocol/bytestreams"), QSL("XEP-0065")},
-    {QSL("http://jabber.org/protocol/bytestreams#udp"), QSL("XEP-0065")},
+                                  {QSL("jabber:component:accept"), QSL("XEP-0114")},
+                                  {QSL("jabber:component:connect"), QSL("XEP-0114")},
+                                  {QSL("jabber:iq:auth"), QSL("XEP-0078")},
+                                  {QSL("jabber:iq:browse"), QSL("XEP-0011")},
+                                  {QSL("jabber:iq:gateway"), QSL("XEP-0100")},
+                                  {QSL("jabber:iq:last"), QSL("XEP-0012")},
+                                  {QSL("jabber:iq:oob"), QSL("XEP-0066")},
+                                  {QSL("jabber:iq:pass"), QSL("XEP-0003")},
+                                  {QSL("jabber:iq:private"), QSL("XEP-0049")},
+                                  {QSL("jabber:iq:register"), QSL("XEP-0077")},
+                                  {QSL("jabber:iq:rpc"), QSL("XEP-0009")},
+                                  {QSL("jabber:iq:search"), QSL("XEP-0055")},
+                                  {QSL("jabber:iq:time"), QSL("XEP-0202")},
+                                  {QSL("jabber:iq:version"), QSL("XEP-0092")},
 
-    {QSL("http://jabber.org/protocol/caps"), QSL("XEP-0115")},
-    {QSL("http://jabber.org/protocol/caps#optimize"), QSL("XEP-0115")},
+                                  {QSL("jabber:x:data"), QSL("XEP-0004")},
+                                  {QSL("jabber:x:delay"), QSL("XEP-0203")},
+                                  {QSL("jabber:x:encrypted"), QSL("XEP-0027")},
+                                  {QSL("jabber:x:event"), QSL("XEP-0022")},
+                                  {QSL("jabber:x:expire"), QSL("XEP-0023")},
+                                  {QSL("jabber:x:oob"), QSL("XEP-0066")},
+                                  {QSL("jabber:x:roster"), QSL("XEP-0093")},
+                                  {QSL("jabber:x:signed"), QSL("XEP-0027")},
 
-    {QSL("http://jabber.org/protocol/chatstates"), QSL("XEP-0085")},
-    {QSL("http://jabber.org/protocol/commands"), QSL("XEP-0050")},
-    {QSL("http://jabber.org/protocol/compress"), QSL("XEP-0138")},
+                                  {QSL("msgoffline"), QSL("XEP-0160")},
 
-    {QSL("http://jabber.org/protocol/disco#info"), QSL("XEP-0030")},
-    {QSL("http://jabber.org/protocol/disco#items"), QSL("XEP-0030")},
+                                  {QSL("muc_"), QSL("XEP-0045")},
 
-    {QSL("http://jabber.org/protocol/feature-neg"), QSL("XEP-0020")},
-    {QSL("http://jabber.org/protocol/geoloc"), QSL("XEP-0080")},
-    {QSL("http://jabber.org/protocol/http-auth"), QSL("XEP-0072")},
-    {QSL("http://jabber.org/protocol/httpbind"), QSL("XEP-0124")},
-    {QSL("http://jabber.org/protocol/ibb"), QSL("XEP-0047")},
-    {QSL("http://jabber.org/protocol/mood"), QSL("XEP-0107")},
+                                  {QSL("roster:delimiter"), QSL("XEP-0083")},
 
-    {QSL("http://jabber.org/protocol/muc"), QSL("XEP-0045")},
-    {QSL("http://jabber.org/protocol/muc#admin"), QSL("XEP-0045")},
-    {QSL("http://jabber.org/protocol/muc#owner"), QSL("XEP-0045")},
-    {QSL("http://jabber.org/protocol/muc#register"), QSL("XEP-0045")},
-    {QSL("http://jabber.org/protocol/muc#roomconfig"), QSL("XEP-0045")},
-    {QSL("http://jabber.org/protocol/muc#roominfo"), QSL("XEP-0045")},
-    {QSL("http://jabber.org/protocol/muc#user"), QSL("XEP-0045")},
+                                  {QSL("urn:ietf:rfc:3264"), QSL("XEP-0176")},
 
-    {QSL("http://jabber.org/protocol/offline"), QSL("XEP-0013")},
-    {QSL("http://jabber.org/protocol/physloc"), QSL("XEP-0080")},
+                                  {QSL("urn:xmpp:archive"), QSL("XEP-0136")},
 
-    {QSL("http://jabber.org/protocol/pubsub#access-authorize"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#access-open"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#access-presence"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#access-roster"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#access-whitelist"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#auto-create"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#auto-subscribe"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#collections"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#config-node"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#create-and-configure"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#create-nodes"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#delete-any"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#delete-nodes"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#filtered-notifications"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#get-pending"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#instant-nodes"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#item-ids"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#last-published"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#leased-subscription"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#manage-subscription"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#member-affiliation"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#meta-data"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#modify-affiliations"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#multi-collection"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#multi-subscribe"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#outcast-affiliation"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#persistent-items"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#presence-notifications"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#presence-subscribe"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#publish"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#publish-options"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#publisher-affiliation"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#purge-nodes"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#retract-items"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#retrieve-affiliations"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#retrieve-default"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#retrieve-items"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#retrieve-subscriptions"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#subscribe"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#subscription-options"), QSL("XEP-0060")},
-    {QSL("http://jabber.org/protocol/pubsub#subscription-notifications"), QSL("XEP-0060")},
+                                  {QSL("urn:xmpp:avatar"), QSL("XEP-0084")},
 
-    {QSL("http://jabber.org/protocol/rosterx"), QSL("XEP-0144")},
-    {QSL("http://jabber.org/protocol/sipub"), QSL("XEP-0137")},
-    {QSL("http://jabber.org/protocol/soap"), QSL("XEP-0072")},
-    {QSL("http://jabber.org/protocol/soap#fault"), QSL("XEP-0072")},
-    {QSL("http://jabber.org/protocol/waitinglist"), QSL("XEP-0130")},
-    {QSL("http://jabber.org/protocol/waitinglist/schemes/mailto"), QSL("XEP-0130")},
-    {QSL("http://jabber.org/protocol/waitinglist/schemes/tel"), QSL("XEP-0130")},
-    {QSL("http://jabber.org/protocol/xhtml-im"), QSL("XEP-0071")},
-    {QSL("http://jabber.org/protocol/xdata-layout"), QSL("XEP-0141")},
-    {QSL("http://jabber.org/protocol/xdata-validate"), QSL("XEP-0122")},
+                                  {QSL("urn:xmpp:delay"), QSL("XEP-0203")},
 
-    {QSL("jabber:component:accept"), QSL("XEP-0114")},
-    {QSL("jabber:component:connect"), QSL("XEP-0114")},
-    {QSL("jabber:iq:auth"), QSL("XEP-0078")},
-    {QSL("jabber:iq:browse"), QSL("XEP-0011")},
-    {QSL("jabber:iq:gateway"), QSL("XEP-0100")},
-    {QSL("jabber:iq:last"), QSL("XEP-0012")},
-    {QSL("jabber:iq:oob"), QSL("XEP-0066")},
-    {QSL("jabber:iq:pass"), QSL("XEP-0003")},
-    {QSL("jabber:iq:private"), QSL("XEP-0049")},
-    {QSL("jabber:iq:register"), QSL("XEP-0077")},
-    {QSL("jabber:iq:rpc"), QSL("XEP-0009")},
-    {QSL("jabber:iq:search"), QSL("XEP-0055")},
-    {QSL("jabber:iq:time"), QSL("XEP-0202")},
-    {QSL("jabber:iq:version"), QSL("XEP-0092")},
+                                  {QSL("urn:xmpp:jingle:apps:rtp"), QSL("XEP-0167")},
 
-    {QSL("jabber:x:data"), QSL("XEP-0004")},
-    {QSL("jabber:x:delay"), QSL("XEP-0203")},
-    {QSL("jabber:x:encrypted"), QSL("XEP-0027")},
-    {QSL("jabber:x:event"), QSL("XEP-0022")},
-    {QSL("jabber:x:expire"), QSL("XEP-0023")},
-    {QSL("jabber:x:oob"), QSL("XEP-0066")},
-    {QSL("jabber:x:roster"), QSL("XEP-0093")},
-    {QSL("jabber:x:signed"), QSL("XEP-0027")},
+                                  {QSL("urn:xmpp:ping"), QSL("XEP-0199")},
+                                  {QSL("urn:xmpp:receipts"), QSL("XEP-0184")},
+                                  {QSL("urn:xmpp:sid:0"), QSL("XEP-0359")},
+                                  {QSL("urn:xmpp:ssn"), QSL("XEP-0155")},
+                                  {QSL("urn:xmpp:time"), QSL("XEP-0202")},
 
-    {QSL("msgoffline"), QSL("XEP-0160")},
+                                  {QSL("vcard-temp"), QSL("XEP-0054")},
 
-    {QSL("muc_hidden"), QSL("XEP-0045")},
-    {QSL("muc_membersonly"), QSL("XEP-0045")},
-    {QSL("muc_moderated"), QSL("XEP-0045")},
-    {QSL("muc_nonanonymous"), QSL("XEP-0045")},
-    {QSL("muc_open"), QSL("XEP-0045")},
-    {QSL("muc_passwordprotected"), QSL("XEP-0045")},
-    {QSL("muc_persistent"), QSL("XEP-0045")},
-    {QSL("muc_public"), QSL("XEP-0045")},
-    {QSL("muc_rooms"), QSL("XEP-0045")},
-    {QSL("muc_semianonymous"), QSL("XEP-0045")},
-    {QSL("muc_temporary"), QSL("XEP-0045")},
-    {QSL("muc_unmoderated"), QSL("XEP-0045")},
-    {QSL("muc_unsecured"), QSL("XEP-0045")},
+                                  {QSL("urn:xmpp:caps"), QSL("XEP-0390")},
 
-    {QSL("roster:delimiter"), QSL("XEP-0083")},
-
-    {QSL("urn:ietf:rfc:3264"), QSL("XEP-0176")},
-
-    {QSL("urn:xmpp:archive:auto"), QSL("XEP-0136")},
-    {QSL("urn:xmpp:archive:manage"), QSL("XEP-0136")},
-    {QSL("urn:xmpp:archive:manual"), QSL("XEP-0136")},
-    {QSL("urn:xmpp:archive:pref"), QSL("XEP-0136")},
-
-    {QSL("urn:xmpp:avatar:data"), QSL("XEP-0084")},
-    {QSL("urn:xmpp:avatar:metadata"), QSL("XEP-0084")},
-
-    {QSL("urn:xmpp:delay"), QSL("XEP-0203")},
-
-    {QSL("urn:xmpp:jingle:apps:rtp:audio"), QSL("XEP-0167")},
-    {QSL("urn:xmpp:jingle:apps:rtp:video"), QSL("XEP-0167")},
-
-    {QSL("urn:xmpp:ping"), QSL("XEP-0199")},
-    {QSL("urn:xmpp:receipts"), QSL("XEP-0184")},
-    {QSL("urn:xmpp:sid:0"), QSL("XEP-0359")},
-    {QSL("urn:xmpp:ssn"), QSL("XEP-0155")},
-    {QSL("urn:xmpp:time"), QSL("XEP-0202")},
-
-    {QSL("vcard-temp"), QSL("XEP-0054")},
-
-    {QSL("urn:xmpp:caps"), QSL("XEP-0390")},
-    {QSL("urn:xmpp:caps:optimize"), QSL("XEP-0390")},
-
-    {QSL("urn:xmpp:styling:0"), QSL("XEP-0393")}};
+                                  {QSL("urn:xmpp:styling:0"), QSL("XEP-0393")}};
 
   return xeps;
 }
@@ -612,17 +505,16 @@ void XmppNetwork::onClientConnected() {
     }
   }
 
+  static auto xep_map = xepMappings();
+
   m_discoveryManager->info(m_xmppClient->configuration().domain()).then(this, [this](auto result) {
     if (QXmppDiscoInfo* info = std::get_if<QXmppDiscoInfo>(&result)) {
       auto f = info->features();
 
-      static auto xep_map = xepMappings();
-
       m_xeps = qlinq::from(f)
                  .select([](const QString& protocol) -> QString {
                    QString xep = xep_map.value(protocol);
-
-                   return xep.isEmpty() ? protocol : xep;
+                   return xep;
                  })
                  .where([](const QString& xep) {
                    return !xep.isEmpty();
@@ -670,7 +562,7 @@ void XmppNetwork::onMessageReceived(const QXmppMessage& message) {
     return;
   }
 
-  auto* feed = m_root->findFeed(message.from(), XmppFeed::Type::SingleUserChat);
+  auto* feed = XmppServiceRoot::findFeed(m_root, message.from(), XmppFeed::Type::SingleUserChat);
 
   if (feed != nullptr) {
     m_root->onRealTimeArticleObtained({}, {}, article, feed);

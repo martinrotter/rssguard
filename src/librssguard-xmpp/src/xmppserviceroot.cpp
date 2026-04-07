@@ -21,10 +21,13 @@
 #include <qtlinq/qtlinq.h>
 
 #include <QAction>
+#include <QXmppGlobal.h>
 #include <QXmppUtils.h>
 
 XmppServiceRoot::XmppServiceRoot(RootItem* parent) : ServiceRoot(parent), m_network(new XmppNetwork(this)) {
   setIcon(XmppEntryPoint().icon());
+
+  qDebugNN << LOGSEC_XMPP << "Qxmpp version is:" << NONQUOTE_W_SPACE_DOT(QXmppVersion());
 }
 
 bool XmppServiceRoot::isSyncable() const {
@@ -122,7 +125,6 @@ void XmppServiceRoot::requestSyncIn() {
   }
 
   ServiceRoot::requestSyncIn();
-
   m_network->obtainServicesNodesTree();
 }
 
@@ -130,7 +132,7 @@ void XmppServiceRoot::onRealTimeArticleObtained(const QString& service,
                                                 const QString& node,
                                                 const Message& message,
                                                 XmppFeed* feed) {
-  feed = feed == nullptr ? findFeed(service, node) : feed;
+  feed = feed == nullptr ? findFeed(this, service, node) : feed;
 
   if (feed == nullptr) {
     qApp->showGuiMessage(Notification::Event::ArticlesFetchingError,
@@ -148,8 +150,8 @@ void XmppServiceRoot::onRealTimeArticleObtained(const QString& service,
   }
 }
 
-XmppFeed* XmppServiceRoot::findFeed(const QString& service, const QString& node) const {
-  RootItem* feed = getItemFromSubTree([&](const RootItem* item) {
+XmppFeed* XmppServiceRoot::findFeed(RootItem* xmpp_root, const QString& service, const QString& node) {
+  RootItem* feed = xmpp_root->getItemFromSubTree([&](const RootItem* item) {
     return item->kind() == RootItem::Kind::Feed && item->customId() == node && item->parent() != nullptr &&
            item->parent()->customId() == service;
   });
@@ -157,15 +159,25 @@ XmppFeed* XmppServiceRoot::findFeed(const QString& service, const QString& node)
   return qobject_cast<XmppFeed*>(feed);
 }
 
-XmppFeed* XmppServiceRoot::findFeed(const QString& jid, XmppFeed::Type type) const {
+XmppFeed* XmppServiceRoot::findFeed(RootItem* xmpp_root, const QString& jid, XmppFeed::Type type) {
   QString bare_jid = QXmppUtils::jidToBareJid(jid);
 
-  RootItem* feed = getItemFromSubTree([&](const RootItem* item) {
+  RootItem* feed = xmpp_root->getItemFromSubTree([&](const RootItem* item) {
     return item->kind() == RootItem::Kind::Feed && item->customId() == bare_jid &&
            qobject_cast<const XmppFeed*>(item)->type() == type;
   });
 
   return qobject_cast<XmppFeed*>(feed);
+}
+
+Category* XmppServiceRoot::findCategory(RootItem* xmpp_root, const QString& service) {
+  auto child_linq = qlinq::from(xmpp_root->childItems());
+
+  return qobject_cast<Category*>(child_linq
+                                   .firstOrDefault([=](RootItem* ch) {
+                                     return ch->kind() == RootItem::Kind::Category && ch->customId() == service;
+                                   })
+                                   .value_or(nullptr));
 }
 
 void XmppServiceRoot::start(bool freshly_activated) {
@@ -174,7 +186,7 @@ void XmppServiceRoot::start(bool freshly_activated) {
   }
 
   updateTitle();
-  m_network->connectToServer();
+  m_network->reconnect();
 }
 
 void XmppServiceRoot::stop() {
@@ -199,8 +211,15 @@ QList<QAction*> XmppServiceRoot::serviceMenu() {
 }
 
 QString XmppServiceRoot::additionalTooltip() const {
+  auto xeps_linq = qlinq::from(m_network->xeps());
+  auto xeps_links = xeps_linq
+                      .select([](const QString& xep) {
+                        return QSL("<a href=\"https://xmpp.org/extensions/%2.html\">%1</a>").arg(xep, xep.toLower());
+                      })
+                      .toList();
+
   QString source_str = tr("User: %1\nStatus: %2\nSupported XEPs: %3")
-                         .arg(m_network->username(), m_network->clientState(), m_network->xeps().join(QSL(", ")));
+                         .arg(m_network->username(), m_network->clientState(), xeps_links.join(QSL(", ")));
   return source_str + QSL("\n\n") + ServiceRoot::additionalTooltip();
 }
 

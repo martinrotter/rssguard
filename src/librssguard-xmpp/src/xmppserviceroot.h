@@ -36,8 +36,10 @@ class XmppServiceRoot : public ServiceRoot {
                                              const QHash<QString, QStringList>& tagged_messages);
     virtual bool wantsBaggedIdsOfExistingMessages() const;
 
-    XmppFeed* findFeed(const QString& service, const QString& node) const;
-    XmppFeed* findFeed(const QString& jid, XmppFeed::Type type) const;
+    static XmppFeed* findFeed(RootItem* xmpp_root, const QString& service, const QString& node);
+    static XmppFeed* findFeed(RootItem* xmpp_root, const QString& jid, XmppFeed::Type type);
+
+    static Category* findCategory(RootItem* xmpp_root, const QString& service);
 
     XmppNetwork* network() const;
 

@@ -294,7 +294,10 @@ inline int RootItem::childCount() const {
 
 inline void RootItem::appendChild(RootItem* child) {
   if (child != nullptr) {
-    m_childItems.append(child);
+    if (!m_childItems.contains(child)) {
+      m_childItems.append(child);
+    }
+
     child->setParent(this);
   }
 }
