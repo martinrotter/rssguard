@@ -3,6 +3,8 @@
 #ifndef XMPPFEED_H
 #define XMPPFEED_H
 
+#include "src/xmppcategory.h"
+
 #include <librssguard/services/abstract/feed.h>
 
 #include <QXmppMessage.h>
@@ -17,13 +19,6 @@ class XmppFeed : public Feed {
     friend class FormXmppFeedDetails;
 
   public:
-    enum class Type {
-      PubSubServiceNode = 1,
-      PubSubPep = 2,
-      MultiUserChatRoom = 3,
-      SingleUserChat = 4
-    };
-
     explicit XmppFeed(RootItem* parent = nullptr);
 
     virtual bool canBeDeleted() const;
@@ -38,13 +33,14 @@ class XmppFeed : public Feed {
     QList<Message> articles() const;
     void setArticles(const QList<Message>& articles);
 
-    Type type() const;
-    void setType(Type type);
+    XmppCategory::Type type() const;
 
     void join(QXmppMucManager* muc_manager);
     void unjoin();
 
-    static QString typeToString(Type type);
+    QString service() const;
+    void setService(const QString& service);
+
     static QString extractXmppMessageTitle(const QString& text);
     static Message articleFromXmppMessage(const QXmppMessage& msg);
 
@@ -60,8 +56,8 @@ class XmppFeed : public Feed {
 
   private:
     QList<Message> m_articles;
-    Type m_type;
     QPointer<QXmppMucRoom> m_mucRoom;
+    QString m_service;
 };
 
 #endif // XMPPFEED_H

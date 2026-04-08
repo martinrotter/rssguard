@@ -74,10 +74,10 @@ class XmppNetwork : public QObject {
   private:
     void joinRooms();
     void discoverService(const QString& jid, RootItem* new_tree);
-    void fetchPubSubSubscriptions(const QString& service, XmppFeed::Type pubsub_type, RootItem* new_tree);
+    void fetchPubSubSubscriptions(const QString& service, XmppCategory::Type pubsub_type, RootItem* new_tree);
     void fetchChatroom(const QString& chatroom,
                        const QXmppDiscoInfo& info,
-                       XmppFeed::Type chatroom_type,
+                       XmppCategory::Type chatroom_type,
                        RootItem* new_tree);
     void reportSyncInFinish(const ServiceRoot::SyncInResult& result, bool timed_out = false);
     void finalizeSyncInFinish(const QString& jid_to_remove, RootItem* new_tree);

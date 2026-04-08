@@ -4,6 +4,7 @@
 
 #include "src/definitions.h"
 #include "src/gui/formeditxmppaccount.h"
+#include "src/xmppcategory.h"
 #include "src/xmppentrypoint.h"
 #include "src/xmppfeed.h"
 #include "src/xmppnetwork.h"
@@ -152,14 +153,17 @@ void XmppServiceRoot::onRealTimeArticleObtained(const QString& service,
 
 XmppFeed* XmppServiceRoot::findFeed(RootItem* xmpp_root, const QString& service, const QString& node) {
   RootItem* feed = xmpp_root->getItemFromSubTree([&](const RootItem* item) {
-    return item->kind() == RootItem::Kind::Feed && item->customId() == node && item->parent() != nullptr &&
-           item->parent()->customId() == service;
+    if (item->kind() == RootItem::Kind::Feed && item->customId() == node) {
+      return qobject_cast<const XmppFeed*>(item)->service() == service;
+    }
+
+    return false;
   });
 
   return qobject_cast<XmppFeed*>(feed);
 }
 
-XmppFeed* XmppServiceRoot::findFeed(RootItem* xmpp_root, const QString& jid, XmppFeed::Type type) {
+XmppFeed* XmppServiceRoot::findFeed(RootItem* xmpp_root, const QString& jid, XmppCategory::Type type) {
   QString bare_jid = QXmppUtils::jidToBareJid(jid);
 
   RootItem* feed = xmpp_root->getItemFromSubTree([&](const RootItem* item) {
@@ -170,19 +174,23 @@ XmppFeed* XmppServiceRoot::findFeed(RootItem* xmpp_root, const QString& jid, Xmp
   return qobject_cast<XmppFeed*>(feed);
 }
 
-Category* XmppServiceRoot::findCategory(RootItem* xmpp_root, const QString& service) {
+XmppCategory* XmppServiceRoot::findCategory(RootItem* xmpp_root, XmppCategory::Type type) {
   auto child_linq = qlinq::from(xmpp_root->childItems());
 
-  return qobject_cast<Category*>(child_linq
-                                   .firstOrDefault([=](RootItem* ch) {
-                                     return ch->kind() == RootItem::Kind::Category && ch->customId() == service;
-                                   })
-                                   .value_or(nullptr));
+  return qobject_cast<XmppCategory*>(child_linq
+                                       .firstOrDefault([=](RootItem* ch) {
+                                         if (ch->kind() == RootItem::Kind::Category) {
+                                           return qobject_cast<XmppCategory*>(ch)->type() == type;
+                                         }
+
+                                         return false;
+                                       })
+                                       .value_or(nullptr));
 }
 
 void XmppServiceRoot::start(bool freshly_activated) {
   if (!freshly_activated) {
-    DatabaseQueries::loadRootFromDatabase<Category, XmppFeed>(this);
+    DatabaseQueries::loadRootFromDatabase<XmppCategory, XmppFeed>(this);
   }
 
   updateTitle();

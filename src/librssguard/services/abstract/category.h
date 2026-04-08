@@ -12,6 +12,8 @@ class RSSGUARD_DLLSPEC Category : public RootItem {
     explicit Category(RootItem* parent = nullptr);
     explicit Category(const Category& other);
 
+    virtual QVariantHash customDatabaseData() const;
+    virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual void updateCounts();
     virtual void cleanMessages(bool clean_read_only);
     virtual void markAsReadUnread(ReadStatus status);

@@ -70,6 +70,10 @@ QVariantHash DatabaseQueries::deserializeCustomData(const QString& data) {
   }
 }
 
+void DatabaseQueries::storeCategoryCustomData(const QSqlDatabase& db, Category* category) {
+  storeCustomData(db, QSL("Categories"), category->id(), category->customDatabaseData());
+}
+
 void DatabaseQueries::storeFeedCustomData(const QSqlDatabase& db, Feed* feed) {
   storeCustomData(db, QSL("Feeds"), feed->id(), feed->customDatabaseData());
 }
@@ -1587,9 +1591,16 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db,
   category->setSortOrder(next_sort_order);
 
   q.prepare("UPDATE Categories "
-            "SET parent_id = :parent_id, ordr = :ordr, title = :title, description = :description, date_created = "
-            ":date_created, "
-            "    icon = :icon, account_id = :account_id, custom_id = :custom_id "
+            "SET "
+            "parent_id = :parent_id, "
+            "ordr = :ordr, "
+            "title = :title, "
+            "description = :description, "
+            "date_created = :date_created, "
+            "icon = :icon, "
+            "account_id = :account_id, "
+            "custom_id = :custom_id, "
+            "custom_data = :custom_data "
             "WHERE id = :id;");
   q.bindValue(QSL(":parent_id"), new_parent_id);
   q.bindValue(QSL(":title"), category->title());
@@ -1600,6 +1611,11 @@ void DatabaseQueries::createOverwriteCategory(const QSqlDatabase& db,
   q.bindValue(QSL(":custom_id"), category->customId());
   q.bindValue(QSL(":id"), category->id());
   q.bindValue(QSL(":ordr"), category->sortOrder());
+
+  auto custom_data = category->customDatabaseData();
+  QString serialized_custom_data = serializeCustomData(custom_data);
+
+  q.bindValue(QSL(":custom_data"), serialized_custom_data);
 
   q.exec();
 }

@@ -27,6 +27,7 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QString serializeCustomData(const QVariantHash& data);
     static QVariantHash deserializeCustomData(const QString& data);
 
+    static void storeCategoryCustomData(const QSqlDatabase& db, Category* category);
     static void storeFeedCustomData(const QSqlDatabase& db, Feed* feed);
     static void storeCustomData(const QSqlDatabase& db, const QString& table, int item_id, const QVariantHash& data);
 
@@ -281,6 +282,8 @@ RootItem::Assignment DatabaseQueries::getCategories(const QSqlDatabase& db, int 
     cat->setDescription(q.value(CAT_DB_DESCRIPTION_INDEX).toString());
     cat->setCreationDate(TextFactory::parseDateTime(q.value(CAT_DB_DCREATED_INDEX).value<qint64>()));
     cat->setIcon(qApp->icons()->fromByteArray(q.value(CAT_DB_ICON_INDEX).toByteArray()));
+
+    cat->setCustomDatabaseData(deserializeCustomData(q.value(CAT_DB_CUSTOM_DATA_INDEX).toString()));
 
     categories << pair;
   }

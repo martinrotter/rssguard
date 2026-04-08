@@ -3,6 +3,7 @@
 #ifndef XMPPSERVICEROOT_H
 #define XMPPSERVICEROOT_H
 
+#include "src/xmppcategory.h"
 #include "src/xmppfeed.h"
 
 #include <librssguard/services/abstract/serviceroot.h>
@@ -37,9 +38,9 @@ class XmppServiceRoot : public ServiceRoot {
     virtual bool wantsBaggedIdsOfExistingMessages() const;
 
     static XmppFeed* findFeed(RootItem* xmpp_root, const QString& service, const QString& node);
-    static XmppFeed* findFeed(RootItem* xmpp_root, const QString& jid, XmppFeed::Type type);
+    static XmppFeed* findFeed(RootItem* xmpp_root, const QString& jid, XmppCategory::Type type);
 
-    static Category* findCategory(RootItem* xmpp_root, const QString& service);
+    static XmppCategory* findCategory(RootItem* xmpp_root, XmppCategory::Type type);
 
     XmppNetwork* network() const;
 

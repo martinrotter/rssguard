@@ -15,6 +15,14 @@ Category::Category(const Category& other) : RootItem(other) {
   setKind(RootItem::Kind::Category);
 }
 
+QVariantHash Category::customDatabaseData() const {
+  return {};
+}
+
+void Category::setCustomDatabaseData(const QVariantHash& data) {
+  Q_UNUSED(data)
+}
+
 void Category::updateCounts() {
   QList<Feed*> feeds = getSubTreeFeeds();
 

@@ -24,7 +24,8 @@ CREATE TABLE Categories (
   date_created    BIGINT,
   icon            ^^,
   account_id      INTEGER         NOT NULL,
-  custom_id       TEXT,
+  custom_id       VARCHAR(250),
+  custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */
 
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );

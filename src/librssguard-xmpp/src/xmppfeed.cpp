@@ -16,7 +16,7 @@
 #include <QXmppMucManager.h>
 #include <QXmppUtils.h>
 
-XmppFeed::XmppFeed(RootItem* parent) : Feed(parent), m_type(Type::PubSubServiceNode), m_mucRoom(nullptr) {
+XmppFeed::XmppFeed(RootItem* parent) : Feed(parent), m_mucRoom(nullptr) {
   // QTimer::singleShot(5000, this, &XmppFeed::obtainArticles);
 }
 
@@ -107,12 +107,16 @@ void XmppFeed::removeItself() {
   });
 }
 
-XmppFeed::Type XmppFeed::type() const {
-  return m_type;
+QString XmppFeed::service() const {
+  return m_service;
 }
 
-void XmppFeed::setType(Type type) {
-  m_type = type;
+void XmppFeed::setService(const QString& service) {
+  m_service = service;
+}
+
+XmppCategory::Type XmppFeed::type() const {
+  return parent() == nullptr ? XmppCategory::Type::Unknown : qobject_cast<XmppCategory*>(parent())->type();
 }
 
 QString XmppFeed::extractXmppMessageTitle(const QString& text) {
@@ -191,25 +195,6 @@ void XmppFeed::unjoin() {
   }
 }
 
-QString XmppFeed::typeToString(Type type) {
-  switch (type) {
-    case Type::PubSubServiceNode:
-      return tr("PubSub (service)");
-
-    case Type::PubSubPep:
-      return QSL("PubSub (PEP)");
-
-    case Type::SingleUserChat:
-      return tr("single-user chat");
-
-    case Type::MultiUserChatRoom:
-      return tr("multi-user chat (MUC)");
-
-    default:
-      return QSL("-");
-  }
-}
-
 void XmppFeed::setArticles(const QList<Message>& articles) {
   m_articles = articles;
 }
@@ -225,21 +210,17 @@ QList<Message> XmppFeed::articles() const {
 QVariantHash XmppFeed::customDatabaseData() const {
   QVariantHash data;
 
-  data[QSL("type")] = int(type());
+  data[QSL("service")] = service();
 
   return data;
 }
 
 void XmppFeed::setCustomDatabaseData(const QVariantHash& data) {
-  int type = data[QSL("type")].toInt();
-
-  if (type > 0) {
-    setType(Type(type));
-  }
+  setService(data[QSL("service")].toString());
 }
 
 QString XmppFeed::additionalTooltip() const {
-  QString source_str = tr("Type: %1").arg(typeToString(type()));
+  QString source_str = tr("Type: %1\nService: %2").arg(XmppCategory::typeToString(type()), m_service);
 
   return source_str + QSL("\n\n") + Feed::additionalTooltip();
 }

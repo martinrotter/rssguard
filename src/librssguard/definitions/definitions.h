@@ -208,7 +208,7 @@
 #define APP_DB_SQLITE_FILE   "database.db"
 
 // Keep this in sync with schema versions declared in SQL initialization code.
-#define APP_DB_SCHEMA_VERSION                "100"
+#define APP_DB_SCHEMA_VERSION                "101"
 #define APP_DB_SCHEMA_FIRST_VERSION          "100"
 #define APP_DB_INIT_FILE_PATTERN             "db_init_%1.sql"
 #define APP_DB_UPDATE_FILE_PATTERN           "db_update_%1_%2_%3.sql"
@@ -299,6 +299,7 @@
 #define CAT_DB_ICON_INDEX        6
 #define CAT_DB_ACCOUNT_ID_INDEX  7
 #define CAT_DB_CUSTOM_ID_INDEX   8
+#define CAT_DB_CUSTOM_DATA_INDEX 9
 
 // Indexes of columns as they are DEFINED IN THE TABLE for FEEDS.
 #define FDS_DB_ID_INDEX                        0

@@ -92,6 +92,8 @@
     <file>./graphics/Breeze/icons/media-playback-pause.svg</file>
     <file>./graphics/Breeze/icons/media-playback-start.svg</file>
     <file>./graphics/Breeze/icons/media-playback-stop.svg</file>
+    <file>./graphics/Breeze/icons/message-news.svg</file>
+    <file>./graphics/Breeze/icons/news-subscribe.svg</file>
     <file>./graphics/Breeze/icons/notifications.svg</file>
     <file>./graphics/Breeze/icons/player-volume.svg</file>
     <file>./graphics/Breeze/icons/player-volume-muted.svg</file>
@@ -107,6 +109,9 @@
     <file>./graphics/Breeze/icons/tag-properties.svg</file>
     <file>./graphics/Breeze/icons/text-x-gettext-translation.svg</file>
     <file>./graphics/Breeze/icons/tools.svg</file>
+    <file>./graphics/Breeze/icons/user.svg</file>
+    <file>./graphics/Breeze/icons/user-group-new.svg</file>
+    <file>./graphics/Breeze/icons/user-online.svg</file>
     <file>./graphics/Breeze/icons/user-trash.svg</file>
     <file>./graphics/Breeze/icons/view-fullscreen.svg</file>
     <file>./graphics/Breeze/icons/view-list-details.svg</file>
@@ -208,6 +213,8 @@
     <file>./graphics/Breeze Dark/icons/media-playback-pause.svg</file>
     <file>./graphics/Breeze Dark/icons/media-playback-start.svg</file>
     <file>./graphics/Breeze Dark/icons/media-playback-stop.svg</file>
+    <file>./graphics/Breeze Dark/icons/message-news.svg</file>
+    <file>./graphics/Breeze Dark/icons/news-subscribe.svg</file>
     <file>./graphics/Breeze Dark/icons/notifications.svg</file>
     <file>./graphics/Breeze Dark/icons/player-volume.svg</file>
     <file>./graphics/Breeze Dark/icons/player-volume-muted.svg</file>
@@ -223,6 +230,9 @@
     <file>./graphics/Breeze Dark/icons/tag-properties.svg</file>
     <file>./graphics/Breeze Dark/icons/text-x-gettext-translation.svg</file>
     <file>./graphics/Breeze Dark/icons/tools.svg</file>
+    <file>./graphics/Breeze Dark/icons/user.svg</file>
+    <file>./graphics/Breeze Dark/icons/user-group-new.svg</file>
+    <file>./graphics/Breeze Dark/icons/user-online.svg</file>
     <file>./graphics/Breeze Dark/icons/user-trash.svg</file>
     <file>./graphics/Breeze Dark/icons/view-fullscreen.svg</file>
     <file>./graphics/Breeze Dark/icons/view-list-details.svg</file>

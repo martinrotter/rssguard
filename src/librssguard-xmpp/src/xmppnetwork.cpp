@@ -151,6 +151,11 @@ void XmppNetwork::obtainServicesNodesTree() {
 
   RootItem* root = new RootItem();
 
+  root->appendChild(new XmppCategory(XmppCategory::Type::SingleUserChats));
+  root->appendChild(new XmppCategory(XmppCategory::Type::MultiUserChats));
+  root->appendChild(new XmppCategory(XmppCategory::Type::PubSubServices));
+  root->appendChild(new XmppCategory(XmppCategory::Type::PubSubPeps));
+
   connect(
     &m_syncInTimer,
     &QTimer::timeout,
@@ -237,17 +242,17 @@ void XmppNetwork::discoverService(const QString& jid, RootItem* new_tree) {
 
       if (is_pubsub_service || is_pubsub_pep || is_chatroom || is_chat) {
         if (is_pubsub_service) {
-          fetchPubSubSubscriptions(jid, XmppFeed::Type::PubSubServiceNode, new_tree);
+          fetchPubSubSubscriptions(jid, XmppCategory::Type::PubSubServices, new_tree);
         }
         else if (is_pubsub_pep) {
-          fetchPubSubSubscriptions(jid, XmppFeed::Type::PubSubPep, new_tree);
+          fetchPubSubSubscriptions(jid, XmppCategory::Type::PubSubPeps, new_tree);
         }
 
         if (is_chatroom) {
-          fetchChatroom(jid, *info, XmppFeed::Type::MultiUserChatRoom, new_tree);
+          fetchChatroom(jid, *info, XmppCategory::Type::MultiUserChats, new_tree);
         }
         else if (is_chat) {
-          fetchChatroom(jid, *info, XmppFeed::Type::SingleUserChat, new_tree);
+          fetchChatroom(jid, *info, XmppCategory::Type::SingleUserChats, new_tree);
         }
 
         return;
@@ -263,7 +268,7 @@ void XmppNetwork::discoverService(const QString& jid, RootItem* new_tree) {
   });
 }
 
-void XmppNetwork::fetchPubSubSubscriptions(const QString& service, XmppFeed::Type pubsub_type, RootItem* new_tree) {
+void XmppNetwork::fetchPubSubSubscriptions(const QString& service, XmppCategory::Type pubsub_type, RootItem* new_tree) {
   auto task = m_pubSubManager->requestSubscriptions(service);
 
   task.then(this, [=, this](auto result) {
@@ -281,44 +286,39 @@ void XmppNetwork::fetchPubSubSubscriptions(const QString& service, XmppFeed::Typ
           qDebugNN << LOGSEC_XMPP << "Detected subscription" << QUOTE_W_SPACE(sub.node()) << "from service"
                    << QUOTE_W_SPACE_DOT(service);
 
-          if (sub.node().contains(QSL("urn:xmpp:microblog:0")) && pubsub_type != XmppFeed::Type::PubSubPep) {
+          if (sub.node().contains(QSL("urn:xmpp:microblog:0")) && pubsub_type != XmppCategory::Type::PubSubPeps) {
             qWarningNN << LOGSEC_XMPP << "Microblogs (PEPs) are only supported from individual user accounts. Found in"
                        << QUOTE_W_SPACE_DOT(service);
             continue;
           }
 
+          auto serv = service;
+          auto nod = sub.node();
+
+          if (qlinq::from(childs).any([=](RootItem* ch) {
+                return ch->customId() == sub.node() && qobject_cast<XmppFeed*>(ch)->service() == service;
+              })) {
+            qWarningNN << LOGSEC_XMPP << "The item" << QUOTE_W_SPACE(sub.node())
+                       << "is already added, likely you subscribed to it more than once." << QUOTE_W_SPACE_DOT(service);
+            continue;
+          }
+
           XmppFeed* feed = new XmppFeed();
 
-          feed->setType(pubsub_type);
-          feed->setTitle(sub.node());
+          feed->setTitle(pubsub_type == XmppCategory::Type::PubSubServices ? sub.node() : service);
+          feed->setService(service);
           feed->setCustomId(sub.node());
-          feed->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(sub.node()),
-                                               sub.node().trimmed()[0]));
+          feed->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(feed->title()),
+                                               feed->title().trimmed()[0]));
 
           childs.append(feed);
         }
 
         if (!childs.isEmpty()) {
-          Category* service_folder = XmppServiceRoot::findCategory(new_tree, service);
-          bool is_service_new = false;
-
-          if (service_folder == nullptr) {
-            service_folder = new Category();
-
-            service_folder->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(service),
-                                                           service.trimmed()[0]));
-            service_folder->setCustomId(service);
-            service_folder->setTitle(service);
-
-            is_service_new = true;
-          }
+          XmppCategory* service_folder = XmppServiceRoot::findCategory(new_tree, pubsub_type);
 
           for (RootItem* ch : childs) {
             service_folder->appendChild(ch);
-          }
-
-          if (is_service_new) {
-            new_tree->appendChild(service_folder);
           }
         }
       }
@@ -338,33 +338,16 @@ void XmppNetwork::fetchPubSubSubscriptions(const QString& service, XmppFeed::Typ
 
 void XmppNetwork::fetchChatroom(const QString& chatroom,
                                 const QXmppDiscoInfo& info,
-                                XmppFeed::Type chatroom_type,
+                                XmppCategory::Type chatroom_type,
                                 RootItem* new_tree) {
   auto chat_domain = QXmppUtils::jidToDomain(chatroom);
-  RootItem* service_folder = new_tree->getItemFromSubTree([=](const RootItem* child) {
-    return child->kind() == RootItem::Kind::Category && child->title() == chat_domain;
-  });
-
-  if (service_folder == nullptr) {
-    if (m_syncInSent) {
-      return;
-    }
-
-    service_folder = new Category();
-    service_folder->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(chat_domain),
-                                                   chat_domain.trimmed()[0]));
-    service_folder->setCustomId(chat_domain);
-    service_folder->setTitle(chat_domain);
-
-    new_tree->appendChild(service_folder);
-  }
+  RootItem* service_folder = XmppServiceRoot::findCategory(new_tree, chatroom_type);
 
   XmppFeed* feed = new XmppFeed();
   auto extracted_title = qlinq::from(info.identities()).firstOrDefault([](const QXmppDiscoIdentity& identity) {
     return identity.category() == QSL("conference") && identity.type() == QSL("text");
   });
 
-  feed->setType(chatroom_type);
   feed->setTitle(extracted_title.has_value() ? extracted_title->name() : chatroom);
   feed->setCustomId(chatroom);
   feed->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(chatroom), feed->title().trimmed()[0]));
@@ -562,7 +545,7 @@ void XmppNetwork::onMessageReceived(const QXmppMessage& message) {
     return;
   }
 
-  auto* feed = XmppServiceRoot::findFeed(m_root, message.from(), XmppFeed::Type::SingleUserChat);
+  auto* feed = XmppServiceRoot::findFeed(m_root, message.from(), XmppCategory::Type::SingleUserChats);
 
   if (feed != nullptr) {
     m_root->onRealTimeArticleObtained({}, {}, article, feed);
@@ -574,7 +557,7 @@ void XmppNetwork::onMessageReceived(const QXmppMessage& message) {
 
 void XmppNetwork::joinRooms() {
   auto rooms = m_root->getSubTree<XmppFeed>([](const XmppFeed* fd) {
-    return fd->type() == XmppFeed::Type::MultiUserChatRoom;
+    return fd->type() == XmppCategory::Type::MultiUserChats;
   });
 
   for (XmppFeed* room : rooms) {

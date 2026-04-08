@@ -4,6 +4,8 @@ set(PLUGIN_TARGET "rssguard-xmpp")
 set(SOURCES
   src/xmppentrypoint.cpp
   src/xmppentrypoint.h
+  src/xmppcategory.cpp
+  src/xmppcategory.h
   src/xmppfeed.cpp
   src/xmppfeed.h
   src/xmppnetwork.cpp

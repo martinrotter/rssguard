@@ -1,0 +1,1 @@
+ALTER TABLE Categories ADD COLUMN custom_data TEXT;
