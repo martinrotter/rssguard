@@ -4,12 +4,12 @@ RSS Guard offers basic [`XMPP`](https://xmpp.org) support. The plugin supports t
 * single-user chats
 * multi-user chats
 * [`PubSub`](https://xmpp.org/extensions/xep-0060.html) service nodes
-* `PubSub` [`PEP`](https://xmpp.org/extensions/xep-0163.html) nodes¨
+* `PubSub` [`PEP`](https://xmpp.org/extensions/xep-0163.html) nodes
 
 RSS Guard automatically fetches real-time messages for these nodes, including `ATOM` entries which are pushed for example via `AtomToPubsub`. RSS Guard can also fetch some archived messages.
 
 ```{note}
-RSS Guard uses [qxmpp](https://invent.kde.org/libraries/qxmpp) library for this plugin. The library is has highly asynchronous API, therefore RSS Guard acts asynchronously in some cases as well. For example fetching archived messages is not instant but rather gradual.
+RSS Guard uses [qxmpp](https://invent.kde.org/libraries/qxmpp) library for this plugin. The library has highly asynchronous API, therefore RSS Guard acts asynchronously in some cases as well. For example fetching archived messages is not instant but rather gradual.
 ````
 
 ```{warning}

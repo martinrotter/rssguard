@@ -14,6 +14,7 @@
 class RootItem;
 class PubSubManager;
 class QXmppClient;
+class QXmppMamManager;
 class QXmppMucManager;
 class QXmppDiscoveryManager;
 
@@ -53,6 +54,7 @@ class XmppNetwork : public QObject {
     QXmppClient* xmppClient() const;
     QXmppDiscoveryManager* discoveryManager() const;
     PubSubManager* pubSubManager() const;
+    QXmppMamManager* mamManager() const;
 
     // Statics.
     static QStringList defaultExtraServices();
@@ -88,6 +90,7 @@ class XmppNetwork : public QObject {
     QXmppDiscoveryManager* m_discoveryManager;
     PubSubManager* m_pubSubManager;
     QXmppMucManager* m_mucManager;
+    QXmppMamManager* m_mamManager;
 
     QString m_username;
     QString m_password;

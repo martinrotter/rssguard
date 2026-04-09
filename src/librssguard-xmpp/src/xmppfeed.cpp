@@ -13,6 +13,7 @@
 #include <librssguard/miscellaneous/iconfactory.h>
 
 #include <QPointer>
+#include <QXmppMamManager.h>
 #include <QXmppMucManager.h>
 #include <QXmppUtils.h>
 
@@ -41,7 +42,7 @@ void XmppFeed::deleteItem() {
   serviceRoot()->requestItemRemoval(this, false);
 }
 
-void XmppFeed::obtainArticles() {
+void XmppFeed::obtainPubSubArticles() {
   QStringList existing_article_ids;
 
   qApp->database()->worker()->read([&](const QSqlDatabase& db) {
@@ -49,7 +50,7 @@ void XmppFeed::obtainArticles() {
     existing_article_ids << DatabaseQueries::bagOfMessages(db, ServiceRoot::BagOfMessages::Unread, this);
   });
 
-  auto service = serviceName();
+  auto service = this->service();
 
   if (service.isEmpty()) {
     return;
@@ -97,6 +98,54 @@ void XmppFeed::obtainArticles() {
   });
 }
 
+void XmppFeed::obtainArchivedArticles() {
+  QString param_to = type() == XmppCategory::Type::SingleUserChats ? serviceRoot()->network()->username() : customId();
+  QString param_jid = type() == XmppCategory::Type::SingleUserChats ? customId() : QString();
+
+  serviceRoot()
+    ->network()
+    ->mamManager()
+    ->retrieveMessages(param_to, QString(), param_jid)
+    .then(this, [this](auto result) {
+      if (auto data = std::get_if<QXmppMamManager::RetrievedMessages>(&result)) {
+        for (const QXmppMessage& msg : data->messages) {
+          Message m = articleFromXmppMessage(type(), msg);
+
+          if ((msg.type() != QXmppMessage::Type::Chat && msg.type() != QXmppMessage::Type::GroupChat) ||
+              m.m_contents.isEmpty() || m.m_title.isEmpty() || m.m_customId.isEmpty()) {
+            continue;
+          }
+
+          m_articles.append(m);
+        }
+      }
+      else if (auto err = std::get_if<QXmppError>(&result)) {
+        qDebug() << "MAM error:" << err->description;
+      }
+    });
+}
+
+void XmppFeed::obtainArticles() {
+  switch (type()) {
+    case XmppCategory::SingleUserChats:
+      obtainArchivedArticles();
+      break;
+
+    case XmppCategory::MultiUserChats:
+      obtainArchivedArticles();
+      break;
+
+    case XmppCategory::PubSubServices:
+    case XmppCategory::PubSubPeps:
+      obtainPubSubArticles();
+      break;
+
+    default:
+    case XmppCategory::Unknown:
+      break;
+  }
+}
+
 void XmppFeed::storeRealTimeArticle(const Message& message) {
   m_articles.append(message);
 }
@@ -131,12 +180,25 @@ QString XmppFeed::extractXmppMessageTitle(const QString& text) {
   return text;
 }
 
-Message XmppFeed::articleFromXmppMessage(const QXmppMessage& msg) {
+Message XmppFeed::articleFromXmppMessage(XmppCategory::Type source_type, const QXmppMessage& msg) {
   Message article;
   QDateTime stamp = !msg.stamp().isValid() ? QDateTime::currentDateTimeUtc() : msg.stamp();
 
-  article.m_author = QXmppUtils::jidToResource(msg.from());
-  article.m_contents = msg.body();
+  auto fr = msg.from();
+
+  if (source_type == XmppCategory::Type::SingleUserChats) {
+    article.m_author = QXmppUtils::jidToBareJid(msg.from());
+  }
+  else {
+    article.m_author = QXmppUtils::jidToResource(msg.from());
+  }
+
+  article.m_contents = msg.xhtml();
+
+  if (article.m_contents.isEmpty()) {
+    article.m_contents = msg.body();
+  }
+
   article.m_customId = msg.id();
   article.m_createdFromFeed = msg.stamp().isValid();
   article.m_created = stamp;
@@ -153,7 +215,7 @@ void XmppFeed::onError(const QXmppStanza::Error& error) {
   qDebug() << "[ERROR]" << m_mucRoom->jid() << error.text();
 }
 
-void XmppFeed::onMessageReceived(const QXmppMessage& msg) {
+void XmppFeed::onMucMessageReceived(const QXmppMessage& msg) {
   if (msg.body().isEmpty()) {
     return;
   }
@@ -169,7 +231,7 @@ void XmppFeed::onMessageReceived(const QXmppMessage& msg) {
     return;
   }
 
-  Message article = articleFromXmppMessage(msg);
+  Message article = articleFromXmppMessage(type(), msg);
 
   acc->onRealTimeArticleObtained({}, {}, article, this);
 }
@@ -179,7 +241,7 @@ void XmppFeed::join(QXmppMucManager* muc_manager) {
 
   connect(m_mucRoom.data(), &QXmppMucRoom::isJoinedChanged, this, &XmppFeed::onJoinedChanged);
   connect(m_mucRoom.data(), &QXmppMucRoom::error, this, &XmppFeed::onError);
-  connect(m_mucRoom.data(), &QXmppMucRoom::messageReceived, this, &XmppFeed::onMessageReceived);
+  connect(m_mucRoom.data(), &QXmppMucRoom::messageReceived, this, &XmppFeed::onMucMessageReceived);
 
   m_mucRoom->setNickName(QSL("rssguard_%1").arg(QString::number(QRandomGenerator::global()->generate())));
   m_mucRoom->join();
@@ -197,10 +259,6 @@ void XmppFeed::unjoin() {
 
 void XmppFeed::setArticles(const QList<Message>& articles) {
   m_articles = articles;
-}
-
-QString XmppFeed::serviceName() const {
-  return parent() == nullptr ? QString() : parent()->customId();
 }
 
 QList<Message> XmppFeed::articles() const {

@@ -27,7 +27,6 @@ class XmppFeed : public Feed {
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual QString additionalTooltip() const;
 
-    void obtainArticles();
     void storeRealTimeArticle(const Message& message);
 
     QList<Message> articles() const;
@@ -42,15 +41,20 @@ class XmppFeed : public Feed {
     void setService(const QString& service);
 
     static QString extractXmppMessageTitle(const QString& text);
-    static Message articleFromXmppMessage(const QXmppMessage& msg);
+    static Message articleFromXmppMessage(XmppCategory::Type source_type, const QXmppMessage& msg);
+
+  public slots:
+    void obtainArticles();
 
   private slots:
     void onJoinedChanged();
     void onError(const QXmppStanza::Error& error);
-    void onMessageReceived(const QXmppMessage& msg);
+    void onMucMessageReceived(const QXmppMessage& msg);
 
   private:
-    QString serviceName() const;
+    void obtainPubSubArticles();
+    void obtainArchivedArticles();
+
     XmppServiceRoot* serviceRoot() const;
     void removeItself();
 

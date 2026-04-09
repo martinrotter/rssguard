@@ -7,6 +7,7 @@
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/webfactory.h>
 #include <librssguard/services/abstract/category.h>
@@ -14,6 +15,7 @@
 
 #include <QXmppAuthenticationError.h>
 #include <QXmppDiscoveryManager.h>
+#include <QXmppMamManager.h>
 #include <QXmppMucManager.h>
 #include <QXmppPubSubSubscription.h>
 #include <QXmppUtils.h>
@@ -24,19 +26,24 @@
 XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
   : QObject(parent), m_root(parent), m_xmppClient(new QXmppClient(this)),
     m_discoveryManager(new QXmppDiscoveryManager()), m_pubSubManager(new PubSubManager(this)),
-    m_mucManager(new QXmppMucManager()), m_extraNodes(defaultExtraServices()) {
+    m_mucManager(new QXmppMucManager()), m_mamManager(new QXmppMamManager()), m_extraNodes(defaultExtraServices()) {
   m_discoveryManager->setParent(this);
   m_mucManager->setParent(this);
+  m_mamManager->setParent(this);
 
   m_syncInTimer.setSingleShot(true);
 
-  // #if !defined(NDEBUG)
-  m_xmppClient->logger()->setLoggingType(QXmppLogger::LoggingType::SignalLogging);
-  // #endif
+  if (qApp->settings()->value(GROUP(General), SETTING(General::DisableDebugOutput)).toBool()) {
+    m_xmppClient->logger()->setLoggingType(QXmppLogger::LoggingType::NoLogging);
+  }
+  else {
+    m_xmppClient->logger()->setLoggingType(QXmppLogger::LoggingType::SignalLogging);
+  }
 
   m_xmppClient->addExtension(m_discoveryManager);
   m_xmppClient->addExtension(m_pubSubManager);
   m_xmppClient->addExtension(m_mucManager);
+  m_xmppClient->addExtension(m_mamManager);
 
   connect(m_xmppClient->logger(), &QXmppLogger::message, this, &XmppNetwork::onNewLogEntry);
   connect(m_xmppClient, &QXmppClient::connected, this, &XmppNetwork::onClientConnected);
@@ -49,6 +56,18 @@ XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
             &PubSubManager::realTimeArticleObtained,
             m_root,
             &::XmppServiceRoot::onRealTimeArticleObtained);
+    connect(m_mamManager,
+            &QXmppMamManager::resultsRecieved,
+            this,
+            [](const QString& queryId, const QXmppResultSetReply& resultSetReply, bool complete) {
+              int a = 5;
+            });
+    connect(m_mamManager,
+            &QXmppMamManager::archivedMessageReceived,
+            this,
+            [](const QString& queryId, const QXmppMessage& message) {
+              int b = 6;
+            });
   }
 }
 
@@ -120,6 +139,10 @@ void XmppNetwork::finalizeSyncInFinish(const QString& jid_to_remove, RootItem* n
   if (m_syncInPendingServices.isEmpty()) {
     // reportSyncInFinish(new_tree);
   }
+}
+
+QXmppMamManager* XmppNetwork::mamManager() const {
+  return m_mamManager;
 }
 
 QStringList XmppNetwork::xeps() const {
@@ -539,7 +562,7 @@ void XmppNetwork::onMessageReceived(const QXmppMessage& message) {
     return;
   }
 
-  Message article = XmppFeed::articleFromXmppMessage(message);
+  Message article = XmppFeed::articleFromXmppMessage(XmppCategory::Type::SingleUserChats, message);
 
   if (article.m_contents.isEmpty() || article.m_title.isEmpty()) {
     return;

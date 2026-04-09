@@ -42,10 +42,34 @@ QString AtomParser::xmlMessageAuthor(const QDomElement& msg_element) const {
   QStringList author_str;
 
   for (int i = 0; i < authors.size(); i++) {
+    QString direct_author = authors.at(i).toElement().text();
+
+    if (!direct_author.isEmpty()) {
+      if (direct_author.startsWith(QSL("xmpp:"))) {
+        direct_author = direct_author.mid(5);
+      }
+
+      author_str.append(direct_author);
+      continue;
+    }
+
     QDomNodeList names = authors.at(i).toElement().elementsByTagNameNS(m_atomNamespace, QSL("name"));
 
     if (!names.isEmpty()) {
       author_str.append(names.at(0).toElement().text());
+    }
+    else {
+      names = authors.at(i).toElement().elementsByTagNameNS(m_atomNamespace, QSL("uri"));
+
+      if (!names.isEmpty()) {
+        QString xmpp_uri = names.at(0).toElement().text();
+
+        if (xmpp_uri.startsWith(QSL("xmpp:"))) {
+          xmpp_uri = xmpp_uri.mid(5);
+        }
+
+        author_str.append(xmpp_uri);
+      }
     }
   }
 

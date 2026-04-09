@@ -24,6 +24,7 @@ class XmppServiceRoot : public ServiceRoot {
     virtual void stop();
     virtual QString code() const;
     virtual QList<QAction*> serviceMenu();
+    virtual QList<QAction*> contextMenuFeedsList(const QList<RootItem*>& selected_items);
     virtual QString additionalTooltip() const;
     virtual bool supportsFeedAdding() const;
     virtual QVariantHash customDatabaseData() const;

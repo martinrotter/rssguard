@@ -218,6 +218,24 @@ QList<QAction*> XmppServiceRoot::serviceMenu() {
   return m_serviceMenu;
 }
 
+QList<QAction*> XmppServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items) {
+  auto base_menu = ServiceRoot::contextMenuFeedsList(selected_items);
+
+  if (selected_items.size() == 1) {
+    RootItem* first = selected_items.first();
+
+    if (first->kind() == RootItem::Kind::Feed) {
+      XmppFeed* feed = qobject_cast<XmppFeed*>(first);
+      QAction* action_fetch = new QAction(qApp->icons()->fromTheme(QSL("emblem-shared")), tr("Fetch"), this);
+
+      connect(action_fetch, &QAction::triggered, feed, &XmppFeed::obtainArticles);
+      base_menu.append(action_fetch);
+    }
+  }
+
+  return base_menu;
+}
+
 QString XmppServiceRoot::additionalTooltip() const {
   auto xeps_linq = qlinq::from(m_network->xeps());
   auto xeps_links = xeps_linq
