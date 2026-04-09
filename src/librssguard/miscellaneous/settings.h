@@ -210,6 +210,9 @@ namespace Messages {
   KEY ArticleListPadding;
   VALUE(int) ArticleListPaddingDef;
 
+  KEY ShowFeedIconInFeedColumn;
+  VALUE(bool) ShowFeedIconInFeedColumnDef;
+
   KEY MultilineArticleList;
   VALUE(bool) MultilineArticleListDef;
 

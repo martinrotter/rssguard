@@ -34,7 +34,10 @@ MessagesModel::MessagesModel(QObject* parent)
     m_customTimeFormat(QString()), m_customFormatForDatesOnly(QString()), m_newerArticlesRelativeTime(-1),
     m_selectedItem(nullptr), m_unreadIconType(MessageUnreadIcon::Dot),
     m_multilineListItems(qApp->settings()->value(GROUP(Messages), SETTING(Messages::MultilineArticleList)).toBool()),
-    m_additionalArticleId(0), m_lazyLoading(false) {
+    m_additionalArticleId(0), m_lazyLoading(false),
+    m_showFeedIconInFeedColumn(qApp->settings()
+                                 ->value(GROUP(Messages), SETTING(Messages::ShowFeedIconInFeedColumn))
+                                 .toBool()) {
   updateFeedIconsDisplay();
   updateDateFormat();
   reloadLazyLoading();
@@ -996,6 +999,21 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         QVariant dta = data(idx_important, Qt::ItemDataRole::EditRole);
 
         return dta.toBool() ? m_favoriteIcon : QVariant();
+      }
+      else if (index_column == MSG_MDL_FEED_TITLE_INDEX) {
+        if (m_selectedItem != nullptr && m_showFeedIconInFeedColumn) {
+          QModelIndex idx_feedid = index(idx.row(), MSG_MDL_FEED_ID_INDEX);
+          int feed_id = data(idx_feedid, Qt::ItemDataRole::EditRole).toInt();
+          auto* fd = feedById(feed_id);
+
+          if (fd != nullptr) {
+            auto fd_icon = fd->icon();
+
+            if (!fd_icon.isNull()) {
+              return fd_icon;
+            }
+          }
+        }
       }
       else if (index_column == MSG_MDL_HAS_ENCLOSURES) {
         QModelIndex idx_enc = index(idx.row(), MSG_MDL_HAS_ENCLOSURES);

@@ -188,6 +188,9 @@ DVALUE(int) Messages::ArticleMarkOnSelectionDelayDef = 3000;
 DKEY Messages::ArticleListPadding = "article_list_padding";
 DVALUE(int) Messages::ArticleListPaddingDef = -1;
 
+DKEY Messages::ShowFeedIconInFeedColumn = "show_feed_icon_in_feed_column";
+DVALUE(bool) Messages::ShowFeedIconInFeedColumnDef = false;
+
 DKEY Messages::MultilineArticleList = "multiline_article_list";
 DVALUE(bool) Messages::MultilineArticleListDef = false;
 

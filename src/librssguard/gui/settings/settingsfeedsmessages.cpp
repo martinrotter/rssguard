@@ -82,6 +82,9 @@ void SettingsFeedsMessages::loadUi() {
           this,
           &SettingsFeedsMessages::dirtifySettings);
 
+  connect(m_ui->m_checkShowFeedIconInFeedColumn, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkShowFeedIconInFeedColumn, &QCheckBox::toggled, this, &SettingsFeedsMessages::requireRestart);
+
   connect(m_ui->m_spinRelativeArticleTime, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
     if (value <= 0) {
       m_ui->m_spinRelativeArticleTime->setSuffix(QSL(" ") + tr("days (turned off)"));
@@ -340,6 +343,9 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_cbListsRestrictedShortcuts
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::OnlyBasicShortcutsInLists)).toBool());
 
+  m_ui->m_checkShowFeedIconInFeedColumn
+    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::ShowFeedIconInFeedColumn)).toBool());
+
   m_ui->m_checkMarkReadAfterOpenExtInt
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::MarkReadAfterOpenedExtInt)).toBool());
 
@@ -472,6 +478,10 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages), Messages::ArticleListPadding, m_ui->m_spinPaddingRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowMessages, m_ui->m_spinHeightRowsMessages->value());
   settings()->setValue(GROUP(GUI), GUI::HeightRowFeeds, m_ui->m_spinHeightRowsFeeds->value());
+
+  settings()->setValue(GROUP(Messages),
+                       Messages::ShowFeedIconInFeedColumn,
+                       m_ui->m_checkShowFeedIconInFeedColumn->isChecked());
 
   settings()->setValue(GROUP(Messages),
                        Messages::MarkReadAfterOpenedExtInt,

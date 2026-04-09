@@ -163,6 +163,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     bool m_multilineListItems;
     int m_additionalArticleId;
     bool m_lazyLoading;
+    bool m_showFeedIconInFeedColumn;
 };
 
 Q_DECLARE_METATYPE(MessagesModel::MessageHighlighter)
