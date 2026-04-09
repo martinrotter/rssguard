@@ -12,13 +12,14 @@
 **RSS Guard** is a fast, lightweight, and customizable feed reader designed for modern users.  
 It runs on **Windows**, **Linux**, **BSD**, **OS/2**, and **macOS**, and supports a wide range of feed formats including **RSS**, **ATOM**, **JSON**, **iCalendar**, and **Sitemap**.
 
-Beyond standard feeds, RSS Guard integrates seamlessly with many popular **online feed services**, such as:
+Beyond standard feeds, RSS Guard integrates seamlessly with many popular **online services**, such as:
 
 * [Feedly](https://feedly.com)
 * [Gmail](https://developers.google.com/gmail/api)
 * Google Reader API services — [Bazqux](https://bazqux.com), [FreshRSS](https://freshrss.org), [Inoreader](https://www.inoreader.com), [Miniflux](https://miniflux.app), [Reedah](http://reedah.com), [The Old Reader](https://theoldreader.com), and others
 * [Nextcloud News](https://apps.nextcloud.com/apps/news)
 * [Tiny Tiny RSS](https://tt-rss.org)
+* [XMPP](https://xmpp.org)
 
 ---
 
@@ -37,7 +38,7 @@ RSS Guard includes native support for the [Gemini](https://geminiprotocol.net) p
 
 ### <img src="resources/graphics/misc/xmpp.png" width="16"> XMPP Support
 
-RSS Guard includes basic support for the [XMPP PubSub](https://xmpp.org/extensions/xep-0060.html) protocol, allowing it to fetch real-time `ATOM` entries.
+RSS Guard includes basic support for the `XMPP` [PubSub](https://xmpp.org/extensions/xep-0060.html) protocol, allowing it to fetch real-time `ATOM` entries. It is also able to fetch real-time messages from single-user or multi-user chats.
 
 ---
 
