@@ -476,10 +476,11 @@ QHash<QString, QString> XmppNetwork::xepMappings() {
 
 void XmppNetwork::reconnect() {
   if (m_xmppClient->isConnected()) {
-    QMetaObject::Connection conn_id = connect(m_xmppClient, &QXmppClient::disconnected, this, [&, this]() {
-      disconnect(conn_id);
-      connectToServer();
-    });
+    connect(m_xmppClient,
+            &QXmppClient::disconnected,
+            this,
+            &XmppNetwork::connectToServer,
+            Qt::ConnectionType::SingleShotConnection);
 
     disconnectFromServer();
   }
