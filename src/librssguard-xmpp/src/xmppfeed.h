@@ -44,7 +44,7 @@ class XmppFeed : public Feed {
     static Message articleFromXmppMessage(XmppCategory::Type source_type, const QXmppMessage& msg);
 
   public slots:
-    void obtainArticles();
+    void obtainArticles(bool notify_on_finish = false);
 
   private slots:
     void onJoinedChanged();
@@ -52,8 +52,8 @@ class XmppFeed : public Feed {
     void onMucMessageReceived(const QXmppMessage& msg);
 
   private:
-    void obtainPubSubArticles();
-    void obtainArchivedArticles();
+    void obtainPubSubArticles(bool notify_on_finish);
+    void obtainArchivedArticles(bool notify_on_finish);
 
     XmppServiceRoot* serviceRoot() const;
     void removeItself();

@@ -227,9 +227,11 @@ QList<QAction*> XmppServiceRoot::contextMenuFeedsList(const QList<RootItem*>& se
     if (first->kind() == RootItem::Kind::Feed) {
       XmppFeed* feed = qobject_cast<XmppFeed*>(first);
       QAction* action_fetch =
-        new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Trigger Async Fetch"), this);
+        new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Trigger async fetch"), this);
 
-      connect(action_fetch, &QAction::triggered, feed, &XmppFeed::obtainArticles);
+      connect(action_fetch, &QAction::triggered, feed, [feed]() {
+        feed->obtainArticles(true);
+      });
       base_menu.append(action_fetch);
     }
   }

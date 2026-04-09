@@ -39,13 +39,13 @@ void XmppCategory::setType(Type type) {
 QString XmppCategory::typeToString(Type type) {
   switch (type) {
     case SingleUserChats:
-      return tr("Single-user Chats");
+      return tr("Single-user chats");
 
     case MultiUserChats:
-      return tr("Multi-user Chats");
+      return tr("Multi-user chats");
 
     case PubSubServices:
-      return tr("PubSub Services");
+      return tr("PubSub services");
 
     case PubSubPeps:
       return tr("PubSub PEPs");

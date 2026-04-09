@@ -9914,17 +9914,17 @@ Last login on: %4</source>
     <name>XmppCategory</name>
     <message>
         <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="42"/>
-        <source>Single-user Chats</source>
+        <source>Single-user chats</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="45"/>
-        <source>Multi-user Chats</source>
+        <source>Multi-user chats</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="48"/>
-        <source>PubSub Services</source>
+        <source>PubSub services</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -9941,7 +9941,7 @@ Last login on: %4</source>
 <context>
     <name>XmppFeed</name>
     <message>
-        <location filename="../src/librssguard-xmpp/src/xmppfeed.cpp" line="281"/>
+        <location filename="../src/librssguard-xmpp/src/xmppfeed.cpp" line="286"/>
         <source>Type: %1
 Service: %2</source>
         <translation type="unfinished"></translation>
@@ -10029,11 +10029,11 @@ Service: %2</source>
     </message>
     <message>
         <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="230"/>
-        <source>Trigger Async Fetch</source>
+        <source>Trigger async fetch</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="248"/>
+        <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="250"/>
         <source>User: %1
 Status: %2
 Supported XEPs: %3</source>

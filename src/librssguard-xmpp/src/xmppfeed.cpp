@@ -42,7 +42,7 @@ void XmppFeed::deleteItem() {
   serviceRoot()->requestItemRemoval(this, false);
 }
 
-void XmppFeed::obtainPubSubArticles() {
+void XmppFeed::obtainPubSubArticles(bool notify_on_finish) {
   QStringList existing_article_ids;
 
   qApp->database()->worker()->read([&](const QSqlDatabase& db) {
@@ -84,6 +84,10 @@ void XmppFeed::obtainPubSubArticles() {
 
               m_articles.append(msg);
             }
+
+            if (notify_on_finish) {
+              emit serviceRoot() -> feedFetchRequested({this});
+            }
           };
         });
     }
@@ -98,7 +102,7 @@ void XmppFeed::obtainPubSubArticles() {
   });
 }
 
-void XmppFeed::obtainArchivedArticles() {
+void XmppFeed::obtainArchivedArticles(bool notify_on_finish) {
   QString param_to = type() == XmppCategory::Type::SingleUserChats ? serviceRoot()->network()->username() : customId();
   QString param_jid = type() == XmppCategory::Type::SingleUserChats ? customId() : QString();
 
@@ -106,7 +110,7 @@ void XmppFeed::obtainArchivedArticles() {
     ->network()
     ->mamManager()
     ->retrieveMessages(param_to, QString(), param_jid)
-    .then(this, [this](auto result) {
+    .then(this, [=, this](auto result) {
       if (auto data = std::get_if<QXmppMamManager::RetrievedMessages>(&result)) {
         for (const QXmppMessage& msg : data->messages) {
           Message m = articleFromXmppMessage(type(), msg);
@@ -118,6 +122,10 @@ void XmppFeed::obtainArchivedArticles() {
 
           m_articles.append(m);
         }
+
+        if (notify_on_finish) {
+          emit serviceRoot() -> feedFetchRequested({this});
+        }
       }
       else if (auto err = std::get_if<QXmppError>(&result)) {
         qDebug() << "MAM error:" << err->description;
@@ -125,19 +133,16 @@ void XmppFeed::obtainArchivedArticles() {
     });
 }
 
-void XmppFeed::obtainArticles() {
+void XmppFeed::obtainArticles(bool notify_on_finish) {
   switch (type()) {
     case XmppCategory::SingleUserChats:
-      obtainArchivedArticles();
-      break;
-
     case XmppCategory::MultiUserChats:
-      obtainArchivedArticles();
+      obtainArchivedArticles(notify_on_finish);
       break;
 
     case XmppCategory::PubSubServices:
     case XmppCategory::PubSubPeps:
-      obtainPubSubArticles();
+      obtainPubSubArticles(notify_on_finish);
       break;
 
     default:
