@@ -209,12 +209,14 @@ ContextMenuData WebEngineViewer::provideContextMenuData(QContextMenuEvent* event
   ContextMenuData c;
 
   if (menu_data.mediaUrl().isValid()) {
-    c.m_imgLinkUrl = menu_data.linkUrl();
+    c.m_imgLinkUrl = menu_data.mediaUrl();
   }
 
   if (menu_data.linkUrl().isValid()) {
     c.m_linkUrl = menu_data.linkUrl();
   }
+
+  c.m_selectedText = selectedText();
 
   return c;
 }
@@ -341,6 +343,18 @@ void WebEngineViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent
   actions << createEngineSettingsAction(menu_web_attrs,
                                         tr("PDF viewer enabled"),
                                         QWebEngineSettings::WebAttribute::PdfViewerEnabled);
+#endif
+
+#if QT_VERSION >= 0x060700 // Qt >= 6.7.0
+  actions << createEngineSettingsAction(menu_web_attrs,
+                                        tr("Force dark mode"),
+                                        QWebEngineSettings::WebAttribute::ForceDarkMode);
+#endif
+
+#if QT_VERSION >= 0x060900 // Qt >= 6.9.0
+  actions << createEngineSettingsAction(menu_web_attrs,
+                                        tr("Printing - print headers/footers."),
+                                        QWebEngineSettings::WebAttribute::PrintHeaderAndFooter);
 #endif
 
   menu_web_attrs->addActions(actions);

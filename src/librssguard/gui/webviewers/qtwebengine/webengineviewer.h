@@ -37,7 +37,6 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual QUrl url() const;
     virtual void clear();
 
-    // virtual bool loadExternalResources() const;
     virtual void setLoadExternalResources(bool load_resources);
 
     virtual double verticalScrollBarPosition() const;
