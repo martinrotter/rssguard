@@ -15,7 +15,9 @@
 #include <QImageWriter>
 #include <QTimer>
 
-WebViewer::WebViewer() {}
+WebViewer::WebViewer() {
+  m_loadExternalResources = qApp->settings()->value(GROUP(Browser), SETTING(Browser::LoadExternalResources)).toBool();
+}
 
 WebViewer::~WebViewer() {}
 
@@ -44,6 +46,8 @@ QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {
 }
 
 void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* event) {
+  specific_menu->setTitle(QObject::tr("Context menu for article viewer"));
+
   // Setup the menu.
   m_contextMenuData = provideContextMenuData(event);
   initializeCommonMenuItems();
@@ -237,7 +241,7 @@ void WebViewer::initializeCommonMenuItems() {
   }
 
   m_actionExternalResources.reset(new QAction(qApp->icons()->fromTheme(QSL("applications-internet")),
-                                              QObject::tr("Load external resources")));
+                                              QObject::tr("Load external images")));
   m_actionSaveHtml.reset(new QAction(qApp->icons()->fromTheme(QSL("document-save-as")),
                                      QObject::tr("Save article as...")));
   m_actionOpenExternalBrowser.reset(new QAction(qApp->icons()->fromTheme(QSL("document-open")),

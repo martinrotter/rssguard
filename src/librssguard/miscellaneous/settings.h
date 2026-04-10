@@ -38,6 +38,10 @@ namespace FileDialogPaths {
   KEY ID;
 }
 
+namespace WebEngineAttributes {
+  KEY ID;
+}
+
 namespace MessageBoxDontShows {
   KEY ID;
 }
