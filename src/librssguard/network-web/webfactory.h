@@ -9,6 +9,7 @@
 #include <QObject>
 
 class QMenu;
+class QWebEngineProfile;
 
 class RSSGUARD_DLLSPEC WebFactory : public QObject {
     Q_OBJECT
@@ -16,6 +17,8 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
   public:
     explicit WebFactory(QObject* parent = nullptr);
     virtual ~WebFactory();
+
+    QWebEngineProfile* webEngineProfile() const;
 
     // Strips "<....>" (HTML, XML) tags from given text.
     QString stripTags(QString text);
@@ -44,6 +47,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     static QMap<QString, char16_t> generateUnescapes();
 
     QString m_customUserAgent;
+    QWebEngineProfile* m_webEngineProfile;
 };
 
 #endif // WEBFACTORY_H

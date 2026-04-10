@@ -1,17 +1,13 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "gui/webviewers/webengine/webengineviewer.h"
+#include "gui/webviewers/qtwebengine/webengineviewer.h"
 
 #include "definitions/definitions.h"
-#include "gui/dialogs/formmain.h"
 #include "gui/webbrowser.h"
+#include "gui/webviewers/qtwebengine/webenginepage.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
-#include "miscellaneous/settings.h"
 #include "miscellaneous/skinfactory.h"
-#include "network-web/adblock/adblockicon.h"
-#include "network-web/adblock/adblockmanager.h"
-#include "network-web/webengine/webenginepage.h"
 #include "network-web/webfactory.h"
 
 #include <QFileIconProvider>
@@ -29,12 +25,15 @@
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
 
-WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_browser(nullptr), m_root(nullptr) {
+WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_browser(nullptr) {
   WebEnginePage* page = new WebEnginePage(this);
 
   setPage(page);
-
-  connect(page, &WebEnginePage::fullScreenRequested, this, &WebEngineViewer::onFullScreenRequested);
+  connect(this, &WebEngineViewer::loadFinished, this, [=]() {
+    page->toHtml([&](const QString& htm) {
+      m_html = htm;
+    });
+  });
 }
 
 bool WebEngineViewer::event(QEvent* event) {
@@ -50,55 +49,48 @@ bool WebEngineViewer::event(QEvent* event) {
   return QWebEngineView::event(event);
 }
 
-void WebEngineViewer::onFullScreenRequested(QWebEngineFullScreenRequest request) {
-  request.accept();
-}
-
 WebEnginePage* WebEngineViewer::page() const {
   return qobject_cast<WebEnginePage*>(QWebEngineView::page());
 }
 
-void WebEngineViewer::loadMessages(const QList<Message>& messages, RootItem* root) {
-  auto html_messages = htmlForMessages(messages, root);
+void WebEngineViewer::loadMessage(const Message& message, RootItem* root) {
+  auto url = urlForMessage(message, root);
+  auto html = htmlForMessage(message, root);
 
-  m_root = root;
-  m_messageContents = html_messages.m_html;
-  m_messageBaseUrl = html_messages.m_baseUrl;
+  setHtml(html, url, root);
 
-  bool previously_enabled = isEnabled();
-
-  setEnabled(false);
-  setHtml(m_messageContents, m_messageBaseUrl);
-  setEnabled(previously_enabled);
-
-  page()->runJavaScript(QSL("window.scrollTo(0, 0);"));
+  setVerticalScrollBarPosition(0.0);
 }
 
-PreparedHtml WebEngineViewer::htmlForMessages(const QList<Message>& messages, RootItem* root) const {
-  return qApp->skins()->generateHtmlOfArticles(messages, root, width() * ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH);
+QString WebEngineViewer::htmlForMessage(const Message& message, RootItem* root) const {
+  auto html_message = qApp->skins()->generateHtmlOfArticle(message, root);
+  return html_message;
 }
+
+void WebEngineViewer::loadUrl(const QUrl& url) {}
 
 void WebEngineViewer::clear() {
   bool previously_enabled = isEnabled();
 
   setEnabled(false);
-  setHtml(QSL("<!DOCTYPE html><html><body</body></html>"), QUrl(QSL(INTERNAL_URL_BLANK)));
+  setHtml(QSL("<!DOCTYPE html><html><body</body></html>"));
   setEnabled(previously_enabled);
 }
 
 void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
   event->accept();
 
-#if QT_VERSION_MAJOR == 6
-  QMenu* menu = createStandardContextMenu();
-#else
-  QMenu* menu = page()->createStandardContextMenu();
-#endif
+  /*
+  #if QT_VERSION_MAJOR == 6
+    QMenu* menu = createStandardContextMenu();
+  #else
+    QMenu* menu = page()->createStandardContextMenu();
+  #endif
+    */
 
-  menu->removeAction(page()->action(QWebEnginePage::WebAction::OpenLinkInNewWindow));
+  auto* menu = new QMenu(tr("Context menu for article viewer"), this);
 
-  menu->addAction(qApp->web()->adBlock()->adBlockIcon());
-  menu->addAction(qApp->web()->engineSettingsAction());
+  menu->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, true);
 
   const QPoint pos = event->globalPos();
   QPoint p(pos.x(), pos.y() + 1);
@@ -108,24 +100,24 @@ void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
   menu->popup(p);
 }
 
+/*
 QWebEngineView* WebEngineViewer::createWindow(QWebEnginePage::WebWindowType type) {
   auto* viewer = new WebEngineViewer(this);
-  emit newWindowRequested(viewer);
+  // emit newWindowRequested(viewer);
 
   return viewer;
 }
-
-void WebEngineViewer::openUrlWithExternalTool(ExternalTool tool, const QString& target_url) {
-  tool.run(target_url);
-}
+*/
 
 void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
   m_browser = browser;
 
+  /*
   browser->m_actionBack = pageAction(QWebEnginePage::WebAction::Back);
   browser->m_actionForward = pageAction(QWebEnginePage::WebAction::Forward);
   browser->m_actionReload = pageAction(QWebEnginePage::WebAction::Reload);
   browser->m_actionStop = pageAction(QWebEnginePage::WebAction::Stop);
+*/
 
   // NOTE: Just forward QtWebEngine signals, it's all there.
   connect(this, &QWebEngineView::loadStarted, this, &WebEngineViewer::loadingStarted);
@@ -135,33 +127,20 @@ void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
   connect(this, &QWebEngineView::iconChanged, this, &WebEngineViewer::pageIconChanged);
   connect(this, &QWebEngineView::urlChanged, this, &WebEngineViewer::pageUrlChanged);
 
-  connect(page(), &QWebEnginePage::windowCloseRequested, this, &WebEngineViewer::closeWindowRequested);
-  connect(page(), &QWebEnginePage::linkHovered, this, &WebEngineViewer::linkMouseHighlighted);
+  connect(page(), &WebEnginePage::linkMouseClicked, this, &WebEngineViewer::linkMouseClicked);
+  connect(page(), &WebEnginePage::linkHovered, this, &WebEngineViewer::linkMouseHighlighted);
 }
 
 void WebEngineViewer::findText(const QString& text, bool backwards) {
-  if (backwards) {
-    QWebEngineView::findText(text, QWebEnginePage::FindFlag::FindBackward);
-  }
-  else {
-    QWebEngineView::findText(text);
-  }
+  QWebEngineView::findText(text, backwards ? QWebEnginePage::FindFlag::FindBackward : QWebEnginePage::FindFlag{});
 }
 
-void WebEngineViewer::setUrl(const QUrl& url) {
-  QWebEngineView::setUrl(url);
-}
+void WebEngineViewer::reloadNetworkSettings() {}
 
-void WebEngineViewer::setHtml(const QString& html, const QUrl& base_url) {
-  QWebEngineView::setHtml(html, base_url);
+void WebEngineViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
+  QWebEngineView::setHtml(html, url);
 
   // IOFactory::writeFile("a.html", html.toUtf8());
-}
-
-void WebEngineViewer::setReadabledHtml(const QString& html, const QUrl& base_url) {
-  auto better_html = qApp->skins()->prepareHtml(html, base_url);
-
-  setHtml(better_html.m_html, better_html.m_baseUrl);
 }
 
 double WebEngineViewer::verticalScrollBarPosition() const {
@@ -199,71 +178,14 @@ void WebEngineViewer::setZoomFactor(qreal zoom_factor) {
 }
 
 QString WebEngineViewer::html() const {
-  QEventLoop loop;
-  QString htmll;
-
-  page()->toHtml([&](const QString& htm) {
-    htmll = htm;
-    loop.exit();
-  });
-
-  loop.exec();
-
-  return htmll;
+  return m_html;
 }
 
 QUrl WebEngineViewer::url() const {
   return QWebEngineView::url();
 }
 
-QByteArray WebEngineViewer::getJsEnabledHtml(const QString& url, bool worker_thread) {
-  WebEnginePage* page = new WebEnginePage();
-  WebEngineViewer* viewer = nullptr;
-
-  if (worker_thread) {
-    QMetaObject::invokeMethod(
-      qApp,
-      [&] {
-        // NOTE: Must be created on main thread.
-        viewer = new WebEngineViewer();
-      },
-      Qt::ConnectionType::BlockingQueuedConnection);
-
-    viewer->moveToThread(qApp->thread());
-    page->moveToThread(qApp->thread());
-  }
-  else {
-    viewer = new WebEngineViewer();
-  }
-
-  viewer->setPage(page);
-  viewer->setAttribute(Qt::WidgetAttribute::WA_DontShowOnScreen, true);
-  viewer->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, true);
-
-  QString html;
-
-  if (worker_thread) {
-    QMetaObject::invokeMethod(viewer, "show", Qt::ConnectionType::BlockingQueuedConnection);
-    QMetaObject::invokeMethod(page,
-                              "pageHtml",
-                              Qt::ConnectionType::BlockingQueuedConnection,
-                              Q_RETURN_ARG(QString, html),
-                              Q_ARG(QString, url));
-  }
-  else {
-    viewer->show();
-    html = page->pageHtml(url);
-  }
-
-  page->deleteLater();
-  viewer->close();
-
-  // IOFactory::writeFile("a.html", html.toUtf8());
-
-  return html.toUtf8();
-}
-
-ContextMenuData WebEngineViewer::provideContextMenuData(QContextMenuEvent* event) const {
+ContextMenuData WebEngineViewer::provideContextMenuData(QContextMenuEvent* event) {
 #if QT_VERSION_MAJOR == 6
   auto* menu_pointer = lastContextMenuRequest();
   QWebEngineContextMenuRequest& menu_data = *menu_pointer;
@@ -274,7 +196,7 @@ ContextMenuData WebEngineViewer::provideContextMenuData(QContextMenuEvent* event
   ContextMenuData c;
 
   if (menu_data.mediaUrl().isValid()) {
-    c.m_mediaUrl = menu_data.linkUrl();
+    c.m_imgLinkUrl = menu_data.linkUrl();
   }
 
   if (menu_data.linkUrl().isValid()) {
