@@ -16,13 +16,7 @@ class WebEnginePage : public QWebEnginePage {
     WebEngineViewer* view() const;
 
   signals:
-    void domIsIdle();
-
-  public slots:
-    QString pageHtml(const QString& url);
-
-  private slots:
-    void hideUnwantedElements();
+    void linkMouseClicked(const QUrl& url);
 
   protected:
     virtual void javaScriptAlert(const QUrl& security_origin, const QString& msg);

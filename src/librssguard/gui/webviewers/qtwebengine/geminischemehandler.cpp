@@ -1,6 +1,6 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "network-web/gemini/geminischemehandler.h"
+#include "gui/webviewers/qtwebengine/geminischemehandler.h"
 
 #include "definitions/definitions.h"
 #include "miscellaneous/iofactory.h"
@@ -9,7 +9,7 @@
 #include <QBuffer>
 
 GeminiSchemeHandler::GeminiSchemeHandler(QObject* parent)
-  : QWebEngineUrlSchemeHandler(parent), m_geminiParser(GeminiParser(true)) {}
+  : QWebEngineUrlSchemeHandler(parent), m_geminiParser(GeminiParser()) {}
 
 void GeminiSchemeHandler::requestStarted(QWebEngineUrlRequestJob* request) {
   GeminiClient* gemini_client = new GeminiClient(this);

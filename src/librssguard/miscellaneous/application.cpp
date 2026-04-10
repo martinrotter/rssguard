@@ -17,7 +17,7 @@
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/toolbars/statusbar.h"
 #include "gui/tray/qttrayicon.h"
-#include "gui/webviewers/qlitehtml/qlitehtmlarticleviewer.h"
+#include "gui/webviewers/qtwebengine/webengineviewer.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
@@ -772,7 +772,7 @@ void Application::showGuiMessage(Notification::Event event,
 }
 
 WebViewer* Application::createWebView() {
-  return new QLiteHtmlArticleViewer();
+  return new WebEngineViewer();
   // return new TextBrowserViewer();
 }
 

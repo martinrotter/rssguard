@@ -13,10 +13,16 @@
 #include <QElapsedTimer>
 #include <QProcess>
 #include <QUrl>
+#include <QWebEngineProfile>
 
-WebFactory::WebFactory(QObject* parent) : QObject(parent), m_customUserAgent(QString()) {}
+WebFactory::WebFactory(QObject* parent)
+  : QObject(parent), m_customUserAgent(QString()), m_webEngineProfile(new QWebEngineProfile(QSL(APP_LOW_NAME), this)) {}
 
 WebFactory::~WebFactory() {}
+
+QWebEngineProfile* WebFactory::webEngineProfile() const {
+  return m_webEngineProfile;
+}
 
 bool WebFactory::sendMessageViaEmail(const Message& message) {
   if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool()) {
