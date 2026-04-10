@@ -425,90 +425,14 @@ if(ENABLE_ICU)
   )
 endif()
 
-# QLitehtml-based HTML viewer.
+# QtWebEngine-based HTML viewer.
 list(APPEND SOURCES
-  # gumbo
-  3rd-party/litehtml/src/gumbo/attribute.c
-  3rd-party/litehtml/src/gumbo/char_ref.c
-  3rd-party/litehtml/src/gumbo/error.c
-  3rd-party/litehtml/src/gumbo/parser.c
-  3rd-party/litehtml/src/gumbo/string_buffer.c
-  3rd-party/litehtml/src/gumbo/string_piece.c
-  3rd-party/litehtml/src/gumbo/tag.c
-  3rd-party/litehtml/src/gumbo/tokenizer.c
-  3rd-party/litehtml/src/gumbo/utf8.c
-  3rd-party/litehtml/src/gumbo/util.c
-  3rd-party/litehtml/src/gumbo/vector.c
-
-  # litehtml 
-  3rd-party/litehtml/src/background.cpp
-  3rd-party/litehtml/src/codepoint.cpp
-  3rd-party/litehtml/src/css_borders.cpp
-  3rd-party/litehtml/src/css_length.cpp
-  3rd-party/litehtml/src/css_parser.cpp
-  3rd-party/litehtml/src/css_properties.cpp
-  3rd-party/litehtml/src/css_selector.cpp
-  3rd-party/litehtml/src/css_tokenizer.cpp
-  3rd-party/litehtml/src/document.cpp
-  3rd-party/litehtml/src/document_container.cpp
-  3rd-party/litehtml/src/el_anchor.cpp
-  3rd-party/litehtml/src/el_base.cpp
-  3rd-party/litehtml/src/el_before_after.cpp
-  3rd-party/litehtml/src/el_body.cpp
-  3rd-party/litehtml/src/el_break.cpp
-  3rd-party/litehtml/src/el_cdata.cpp
-  3rd-party/litehtml/src/el_comment.cpp
-  3rd-party/litehtml/src/el_div.cpp
-  3rd-party/litehtml/src/el_font.cpp
-  3rd-party/litehtml/src/el_image.cpp
-  3rd-party/litehtml/src/el_link.cpp
-  3rd-party/litehtml/src/el_para.cpp
-  3rd-party/litehtml/src/el_script.cpp
-  3rd-party/litehtml/src/el_space.cpp
-  3rd-party/litehtml/src/el_style.cpp
-  3rd-party/litehtml/src/el_table.cpp
-  3rd-party/litehtml/src/el_td.cpp
-  3rd-party/litehtml/src/el_text.cpp
-  3rd-party/litehtml/src/el_title.cpp
-  3rd-party/litehtml/src/el_tr.cpp
-  3rd-party/litehtml/src/element.cpp
-  3rd-party/litehtml/src/encodings.cpp
-  3rd-party/litehtml/src/flex_item.cpp
-  3rd-party/litehtml/src/flex_line.cpp
-  3rd-party/litehtml/src/formatting_context.cpp
-  3rd-party/litehtml/src/gradient.cpp
-  3rd-party/litehtml/src/html.cpp
-  3rd-party/litehtml/src/html_microsyntaxes.cpp
-  3rd-party/litehtml/src/html_tag.cpp
-  3rd-party/litehtml/src/iterators.cpp
-  3rd-party/litehtml/src/line_box.cpp
-  3rd-party/litehtml/src/media_query.cpp
-  3rd-party/litehtml/src/num_cvt.cpp
-  3rd-party/litehtml/src/render_block.cpp
-  3rd-party/litehtml/src/render_block_context.cpp
-  3rd-party/litehtml/src/render_flex.cpp
-  3rd-party/litehtml/src/render_image.cpp
-  3rd-party/litehtml/src/render_inline_context.cpp
-  3rd-party/litehtml/src/render_item.cpp
-  3rd-party/litehtml/src/render_table.cpp
-  3rd-party/litehtml/src/string_id.cpp
-  3rd-party/litehtml/src/strtod.cpp
-  3rd-party/litehtml/src/style.cpp
-  3rd-party/litehtml/src/stylesheet.cpp
-  3rd-party/litehtml/src/table.cpp
-  3rd-party/litehtml/src/tstring_view.cpp
-  3rd-party/litehtml/src/url.cpp
-  3rd-party/litehtml/src/url_path.cpp
-  3rd-party/litehtml/src/utf8_strings.cpp
-  3rd-party/litehtml/src/web_color.cpp
-
-  # qlitehtml
-  gui/webviewers/qlitehtml/documentcontainer.cpp
-  gui/webviewers/qlitehtml/documentcontainer.h
-  gui/webviewers/qlitehtml/qlitehtmlwidget.cpp
-  gui/webviewers/qlitehtml/qlitehtmlwidget.h
-  gui/webviewers/qlitehtml/qlitehtmlarticleviewer.cpp
-  gui/webviewers/qlitehtml/qlitehtmlarticleviewer.h
+  gui/webviewers/qtwebengine/webengineviewer.cpp
+  gui/webviewers/qtwebengine/webengineviewer.h
+  gui/webviewers/qtwebengine/webenginepage.cpp
+  gui/webviewers/qtwebengine/webenginepage.h
+  gui/webviewers/qtwebengine/geminischemehandler.cpp
+  gui/webviewers/qtwebengine/geminischemehandler.h
 )
 
 if(MSVC)
@@ -606,6 +530,7 @@ target_link_libraries(rssguard PUBLIC
   Qt${QT_VERSION_MAJOR}::Widgets
   Qt${QT_VERSION_MAJOR}::Xml
   Qt${QT_VERSION_MAJOR}::Concurrent
+  Qt${QT_VERSION_MAJOR}::WebEngineWidgets
 )
 
 if(WIN32)

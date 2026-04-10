@@ -45,7 +45,7 @@
 # Other information:
 #   - supports Windows, Linux, *BSD, macOS, OS/2,
 #   - Qt 5.14.0 or newer is required,
-#   - Qt 6.3.0 or newer is required,
+#   - Qt 6.5.0 or newer is required,
 #   - Go compiler is required for building rssguard-article-extractor,
 #   - cmake 3.14.0 or newer is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules
@@ -157,6 +157,7 @@ set(QT_COMPONENTS
   Widgets
   Xml
   Concurrent
+  WebEngineWidgets
 )
 
 if(WIN32 AND NOT BUILD_WITH_QT6)
