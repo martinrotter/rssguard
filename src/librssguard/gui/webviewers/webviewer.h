@@ -100,7 +100,7 @@ class WebViewer {
     virtual void loadingFinished(bool success) = 0;
 
   protected:
-    void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
+    virtual void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
 
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) = 0;
 

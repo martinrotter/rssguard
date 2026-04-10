@@ -9,6 +9,7 @@
 #include "miscellaneous/externaltool.h"
 
 #include <QWebEngineFullScreenRequest>
+#include <QWebEngineSettings>
 #include <QWebEngineView>
 
 class RootItem;
@@ -36,6 +37,9 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual QUrl url() const;
     virtual void clear();
 
+    // virtual bool loadExternalResources() const;
+    virtual void setLoadExternalResources(bool load_resources);
+
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);
 
@@ -56,12 +60,20 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
 
   protected:
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event);
+    virtual void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
+
     // virtual QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
     virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual bool event(QEvent* event);
 
+  private slots:
+    void onWebEngineAttributeChanged(bool enabled);
+
   private:
     WebEnginePage* page() const;
+    QAction* createEngineSettingsAction(QObject* parent,
+                                        const QString& title,
+                                        QWebEngineSettings::WebAttribute web_attribute);
 
   private:
     WebBrowser* m_browser;
