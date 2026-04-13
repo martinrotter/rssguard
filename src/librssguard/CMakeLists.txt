@@ -217,6 +217,8 @@ set(SOURCES
   gui/webviewers/webviewer.h
   miscellaneous/application.cpp
   miscellaneous/application.h
+  miscellaneous/autosaver.cpp
+  miscellaneous/autosaver.h
   miscellaneous/domdocument.cpp
   miscellaneous/domdocument.h
   miscellaneous/externaltool.cpp
@@ -261,6 +263,8 @@ set(SOURCES
   network-web/gemini/geminiparser.h
   network-web/basenetworkaccessmanager.cpp
   network-web/basenetworkaccessmanager.h
+  network-web/cookiejar.cpp
+  network-web/cookiejar.h
   network-web/downloader.cpp
   network-web/downloader.h
   network-web/httpresponse.cpp

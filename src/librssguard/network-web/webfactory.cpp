@@ -7,6 +7,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/settings.h"
+#include "network-web/cookiejar.h"
 
 #include <QDesktopServices>
 #include <QDir>
@@ -16,9 +17,14 @@
 #include <QWebEngineProfile>
 
 WebFactory::WebFactory(QObject* parent)
-  : QObject(parent), m_customUserAgent(QString()), m_webEngineProfile(new QWebEngineProfile(QSL(APP_LOW_NAME), this)) {}
+  : QObject(parent), m_customUserAgent(QString()), m_webEngineProfile(new QWebEngineProfile(QSL(APP_LOW_NAME), this)),
+    m_cookieJar(new CookieJar(this)) {}
 
-WebFactory::~WebFactory() {}
+WebFactory::~WebFactory() {
+  if (m_cookieJar != nullptr && m_cookieJar->parent() == nullptr) {
+    m_cookieJar->deleteLater();
+  }
+}
 
 QWebEngineProfile* WebFactory::webEngineProfile() const {
   return m_webEngineProfile;
@@ -532,6 +538,10 @@ QMap<QString, char16_t> WebFactory::generateUnescapes() {
   res[QSL("zwnj")] = 0x200c;
 
   return res;
+}
+
+CookieJar* WebFactory::cookieJar() const {
+  return m_cookieJar;
 }
 
 QString WebFactory::customUserAgent() const {

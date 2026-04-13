@@ -7,8 +7,10 @@
 #include "definitions/definitions.h"
 
 #include <QAction>
+#include <QPrinter>
 #include <QUrl>
 
+class QPrinter;
 class QMenu;
 class QContextMenuEvent;
 
@@ -61,6 +63,9 @@ class WebViewer {
     // Clears displayed data.
     virtual void clear() = 0;
 
+    // Printing.
+    virtual void printToPrinter(QPrinter* printer) = 0;
+
     // Displays message and ensure that vertical scrollbar is set to 0 (scrolled to top).
     virtual void loadMessage(const Message& message, RootItem* root) = 0;
 
@@ -81,6 +86,9 @@ class WebViewer {
     // Apply font.
     virtual void applyFont(const QFont& fon) = 0;
 
+    // Appends specific items to context menu.
+    virtual void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
+
     // Zooming.
     virtual bool canZoomIn() const;
     virtual bool canZoomOut() const;
@@ -98,26 +106,31 @@ class WebViewer {
     virtual void loadingStarted() = 0;
     virtual void loadingProgress(int progress) = 0;
     virtual void loadingFinished(bool success) = 0;
+    virtual void openUrlInNewTab(const QUrl& url) = 0;
 
   protected:
-    virtual void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
-
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) = 0;
 
   private:
     void saveHtmlAs();
     void playClickedLinkAsMedia();
     void openClickedLinkInExternalBrowser();
+    void openClickedLinkInNewTab();
+    void printContents();
     void initializeCommonMenuItems();
 
   private:
     bool m_loadExternalResources;
 
     QScopedPointer<QAction> m_actionExternalResources;
+    QScopedPointer<QAction> m_actionPrint;
     QScopedPointer<QAction> m_actionSaveHtml;
+    QScopedPointer<QAction> m_actionOpenNewTab;
     QScopedPointer<QAction> m_actionOpenExternalBrowser;
     QScopedPointer<QAction> m_actionPlayLink;
     ContextMenuData m_contextMenuData;
+
+    QPrinter m_printer;
 };
 
 Q_DECLARE_INTERFACE(WebViewer, "WebViewer")

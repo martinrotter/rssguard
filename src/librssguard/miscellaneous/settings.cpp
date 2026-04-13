@@ -11,10 +11,17 @@
 #include <QLocale>
 #include <QPointer>
 
+DKEY Cookies::ID = "cookies";
 DKEY WebEngineAttributes::ID = "web_engine_attributes";
 DKEY FileDialogPaths::ID = "file_dialog_paths";
 DKEY DialogGeometries::ID = "dialog_geometries";
 DKEY MessageBoxDontShows::ID = "msg_box_dont_show";
+
+// Web.
+DKEY Web::ID = "web";
+
+DKEY Web::FollowLinks = "follow_links";
+DVALUE(bool) Web::FollowLinksDef = true;
 
 // Media player.
 KEY VideoPlayer::ID = "media_player";

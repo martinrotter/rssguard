@@ -8,6 +8,7 @@
 #include <QMap>
 #include <QObject>
 
+class CookieJar;
 class QMenu;
 class QWebEngineProfile;
 
@@ -19,6 +20,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     virtual ~WebFactory();
 
     QWebEngineProfile* webEngineProfile() const;
+    CookieJar* cookieJar() const;
 
     // Strips "<....>" (HTML, XML) tags from given text.
     QString stripTags(QString text);
@@ -48,6 +50,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 
     QString m_customUserAgent;
     QWebEngineProfile* m_webEngineProfile;
+    CookieJar* m_cookieJar;
 };
 
 #endif // WEBFACTORY_H

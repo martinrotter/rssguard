@@ -295,6 +295,54 @@ int TabWidget::addTab(TabContent* widget, const QString& label, TabBar::TabType 
   return index;
 }
 
+int TabWidget::addLinkedBrowser(const QUrl& initial_url) {
+  return addBrowser(false, false, initial_url);
+}
+
+int TabWidget::addBrowser(bool move_after_current, bool make_active, WebBrowser* browser) {
+  int final_index;
+  QString browser_tab_name = tr("Web browser");
+
+  if (move_after_current) {
+    // Insert web browser after current tab.
+    final_index = insertTab(currentIndex() + 1,
+                            browser,
+                            qApp->icons()->fromTheme(QSL("text-html")),
+                            browser_tab_name,
+                            TabBar::TabType::Closable);
+  }
+  else {
+    // Add new browser as the last tab.
+    final_index =
+      addTab(browser, qApp->icons()->fromTheme(QSL("text-html")), browser_tab_name, TabBar::TabType::Closable);
+  }
+
+  // Make connections.
+  connect(browser, &WebBrowser::titleChanged, this, &TabWidget::changeTitle);
+  connect(browser, &WebBrowser::iconChanged, this, &TabWidget::changeIcon);
+
+  // Setup the tab index.
+  browser->setIndex(final_index);
+
+  // Make new web browser active if desired.
+  if (make_active) {
+    setCurrentIndex(final_index);
+    browser->setFocus(Qt::FocusReason::OtherFocusReason);
+  }
+
+  return final_index;
+}
+
+int TabWidget::addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url) {
+  // Create new WebBrowser.
+  WebBrowser* browser = new WebBrowser(nullptr, this);
+  int index = addBrowser(move_after_current, make_active, browser);
+
+  browser->loadUrl(initial_url);
+
+  return index;
+}
+
 int TabWidget::insertTab(int index, QWidget* widget, const QIcon& icon, const QString& label, TabBar::TabType type) {
   const int tab_index = QTabWidget::insertTab(index, widget, icon, label);
 

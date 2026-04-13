@@ -248,7 +248,7 @@ void XmppFeed::join(QXmppMucManager* muc_manager) {
   connect(m_mucRoom.data(), &QXmppMucRoom::error, this, &XmppFeed::onError);
   connect(m_mucRoom.data(), &QXmppMucRoom::messageReceived, this, &XmppFeed::onMucMessageReceived);
 
-  m_mucRoom->setNickName(QSL("rssguard_%1").arg(QString::number(QRandomGenerator::global()->generate())));
+  m_mucRoom->setNickName(serviceRoot()->network()->nickName());
   m_mucRoom->join();
 }
 

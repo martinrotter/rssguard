@@ -5,6 +5,7 @@
 #include "definitions/globals.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
+#include "gui/reusable/baselineedit.h"
 #include "gui/reusable/searchtextwidget.h"
 #include "gui/tabwidget.h"
 #include "gui/webviewers/webviewer.h"
@@ -28,7 +29,8 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
     m_webView(viewer), m_searchWidget(new SearchTextWidget(this)),
     m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                             tr("Open in system web browser"),
-                                            this))
+                                            this)),
+    m_txtLocation(new BaseLineEdit(this))
 #if defined(ENABLE_MEDIAPLAYER)
     ,
     m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
@@ -46,7 +48,8 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
 
   initializeLayout();
 
-  setFocusProxy(dynamic_cast<QWidget*>(m_webView));
+  setFocusProxy(m_txtLocation);
+  setTabOrder(m_txtLocation, m_toolBar);
   setTabOrder(m_toolBar, dynamic_cast<QWidget*>(m_webView));
 
   createConnections();
@@ -62,10 +65,12 @@ void WebBrowser::bindWebView() {
   connect(qobj_viewer, SIGNAL(linkMouseHighlighted(QUrl)), this, SLOT(onLinkMouseHighlighted(QUrl)));
   connect(qobj_viewer, SIGNAL(linkMouseClicked(QUrl)), this, SLOT(onLinkMouseClicked(QUrl)));
   connect(qobj_viewer, SIGNAL(pageTitleChanged(QString)), this, SLOT(onTitleChanged(QString)));
+  connect(qobj_viewer, SIGNAL(pageUrlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
   connect(qobj_viewer, SIGNAL(pageIconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
   connect(qobj_viewer, SIGNAL(loadingStarted()), this, SLOT(onLoadingStarted()));
   connect(qobj_viewer, SIGNAL(loadingProgress(int)), this, SLOT(onLoadingProgress(int)));
   connect(qobj_viewer, SIGNAL(loadingFinished(bool)), this, SLOT(onLoadingFinished(bool)));
+  connect(qobj_viewer, SIGNAL(openUrlInNewTab(QUrl)), this, SLOT(onOpenUrlInNewTab(QUrl)));
 }
 
 void WebBrowser::createConnections() {
@@ -80,6 +85,11 @@ void WebBrowser::createConnections() {
     m_searchWidget->setFocus();
   });
 
+  connect(m_txtLocation,
+          &BaseLineEdit::submitted,
+          this,
+          static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
+
   connect(m_actionOpenInSystemBrowser, &QAction::triggered, this, &WebBrowser::openCurrentSiteInSystemBrowser);
 
 #if defined(ENABLE_MEDIAPLAYER)
@@ -88,6 +98,20 @@ void WebBrowser::createConnections() {
 }
 
 WebBrowser::~WebBrowser() {}
+
+void WebBrowser::updateUrl(const QUrl& url) {
+  m_txtLocation->setText(url.toString());
+}
+
+void WebBrowser::loadUrl(const QUrl& url) {
+  if (url.isValid()) {
+    m_webView->loadUrl(url);
+  }
+}
+
+void WebBrowser::loadUrl(const QString& url) {
+  return loadUrl(QUrl::fromUserInput(url));
+}
 
 double WebBrowser::verticalScrollBarPosition() const {
   return m_webView->verticalScrollBarPosition();
@@ -113,6 +137,11 @@ void WebBrowser::reloadFontSettings() {
 
 void WebBrowser::reloadZoomFactor() {
   m_webView->setZoomFactor(qApp->settings()->value(GROUP(Messages), SETTING(Messages::Zoom)).toDouble());
+}
+
+void WebBrowser::setLocationBoxVisible(bool visible) {
+  m_txtLocationAction->setVisible(visible);
+  m_txtLocation->blockSignals(!visible);
 }
 
 void WebBrowser::onZoomFactorChanged() {
@@ -241,14 +270,19 @@ void WebBrowser::onLinkMouseHighlighted(const QUrl& url) {
 }
 
 void WebBrowser::onLinkMouseClicked(const QUrl& url) {
-  qApp->web()->openUrlInExternalBrowser(url.toString(), true);
+  if (qApp->settings()->value(GROUP(Web), SETTING(Web::FollowLinks)).toBool()) {
+    loadUrl(url);
+  }
+  else {
+    qApp->web()->openUrlInExternalBrowser(url.toString(), true);
 
-  if (qApp->settings()
-        ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
-        .toBool()) {
-    QTimer::singleShot(1000, qApp, []() {
-      qApp->mainForm()->display();
-    });
+    if (qApp->settings()
+          ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
+          .toBool()) {
+      QTimer::singleShot(1000, qApp, []() {
+        qApp->mainForm()->display();
+      });
+    }
   }
 }
 
@@ -265,6 +299,8 @@ void WebBrowser::initializeLayout() {
   m_actionPlayPageInMediaPlayer->setEnabled(false);
   m_toolBar->addAction(m_actionPlayPageInMediaPlayer);
 #endif
+
+  m_txtLocationAction = m_toolBar->addWidget(m_txtLocation);
 
   m_loadingProgress = new QProgressBar(this);
   m_loadingProgress->setFixedHeight(10);
@@ -320,4 +356,8 @@ void WebBrowser::onLoadingFinished(bool success) {
 
   m_loadingProgress->hide();
   m_loadingProgress->setValue(0);
+}
+
+void WebBrowser::onOpenUrlInNewTab(const QUrl& url) {
+  qApp->mainForm()->tabWidget()->addLinkedBrowser(url);
 }
