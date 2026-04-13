@@ -127,21 +127,6 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   specific_menu->addAction(act_copy_link);
   specific_menu->addSeparator();
 
-  auto* act_copy_img_link = new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
-                                        QObject::tr("Copy image link"),
-                                        specific_menu);
-  act_copy_img_link->setEnabled(m_contextMenuData.m_imgLinkUrl.isValid());
-
-  QObject::connect(act_copy_img_link, &QAction::triggered, specific_menu, [this]() {
-    auto* clip = QGuiApplication::clipboard();
-
-    if (clip != nullptr) {
-      clip->setText(m_contextMenuData.m_imgLinkUrl.toString());
-    }
-  });
-
-  specific_menu->addAction(act_copy_img_link);
-
   auto* act_copy_img = new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
                                    QObject::tr("Copy image"),
                                    specific_menu);
@@ -156,6 +141,21 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   });
 
   specific_menu->addAction(act_copy_img);
+
+  auto* act_copy_img_link = new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
+                                        QObject::tr("Copy image link"),
+                                        specific_menu);
+  act_copy_img_link->setEnabled(m_contextMenuData.m_imgLinkUrl.isValid());
+
+  QObject::connect(act_copy_img_link, &QAction::triggered, specific_menu, [this]() {
+    auto* clip = QGuiApplication::clipboard();
+
+    if (clip != nullptr) {
+      clip->setText(m_contextMenuData.m_imgLinkUrl.toString());
+    }
+  });
+
+  specific_menu->addAction(act_copy_img_link);
 
   auto* act_save_img = new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("document-save-as")),
                                    QObject::tr("Save image"),
@@ -184,10 +184,10 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
     }
   });
 
+  specific_menu->addAction(act_save_img);
   specific_menu->addSeparator();
   specific_menu->addAction(m_actionPrint.data());
   specific_menu->addAction(m_actionSaveHtml.data());
-  specific_menu->addAction(act_save_img);
 
   // Rest.
   specific_menu->addSeparator();

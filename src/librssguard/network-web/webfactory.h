@@ -9,6 +9,7 @@
 #include <QObject>
 
 class CookieJar;
+class GeminiSchemeHandler;
 class QMenu;
 class QWebEngineProfile;
 
@@ -35,6 +36,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 
     QString processFeedUriScheme(const QString& url);
 
+    void updateWebEngineProfileSettings();
     void updateProxy();
     bool sendMessageViaEmail(const Message& message);
 
@@ -51,6 +53,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     QString m_customUserAgent;
     QWebEngineProfile* m_webEngineProfile;
     CookieJar* m_cookieJar;
+    GeminiSchemeHandler* m_geminiHandler;
 };
 
 #endif // WEBFACTORY_H
