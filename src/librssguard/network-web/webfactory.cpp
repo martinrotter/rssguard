@@ -4,6 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "gui/messagebox.h"
+#include "gui/webviewers/qtwebengine/geminischemehandler.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/settings.h"
@@ -15,10 +16,48 @@
 #include <QProcess>
 #include <QUrl>
 #include <QWebEngineProfile>
+#include <QWebEngineUrlScheme>
 
 WebFactory::WebFactory(QObject* parent)
   : QObject(parent), m_customUserAgent(QString()), m_webEngineProfile(new QWebEngineProfile(QSL(APP_LOW_NAME), this)),
-    m_cookieJar(new CookieJar(this)) {}
+    m_cookieJar(new CookieJar(this)), m_geminiHandler(new GeminiSchemeHandler(this)) {
+  QWebEngineUrlScheme gemini_scheme("gemini");
+  gemini_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
+
+  QWebEngineUrlScheme::registerScheme(gemini_scheme);
+  m_webEngineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
+}
+
+void WebFactory::updateWebEngineProfileSettings() {
+  QString cache_cache = webCacheFolder() + QDir::separator() + QSL("cache");
+
+  if (!QDir().mkpath(cache_cache)) {
+    qCriticalNN << LOGSEC_NETWORK << "Failed to create web cache folder" << QUOTE_W_SPACE_DOT(cache_cache);
+  }
+  else {
+    m_webEngineProfile->setCachePath(webCacheFolder());
+  }
+
+  QString cache_pers = webCacheFolder() + QDir::separator() + QSL("storage");
+
+  if (!QDir().mkpath(cache_pers)) {
+    qCriticalNN << LOGSEC_NETWORK << "Failed to create web storage folder" << QUOTE_W_SPACE_DOT(cache_cache);
+  }
+  else {
+    m_webEngineProfile->setPersistentStoragePath(cache_pers);
+  }
+
+  m_webEngineProfile->setHttpAcceptLanguage(qApp->localization()->loadedLocale().name().replace(QL1C('_'), QL1C('-')));
+
+  auto custom_ua = qApp->web()->customUserAgent();
+
+  if (custom_ua.isEmpty()) {
+    m_webEngineProfile->setHttpUserAgent(QString::fromLocal8Bit(HTTP_COMPLETE_USERAGENT));
+  }
+  else {
+    m_webEngineProfile->setHttpUserAgent(custom_ua);
+  }
+}
 
 WebFactory::~WebFactory() {
   if (m_cookieJar != nullptr && m_cookieJar->parent() == nullptr) {
@@ -135,7 +174,7 @@ QString WebFactory::urlToTld(const QUrl& url) {
 }
 
 QString WebFactory::webCacheFolder() const {
-  QString cache_folder = qApp->userDataFolder() + QDir::separator() + QSL("web") + QDir::separator() + QSL("cache");
+  QString cache_folder = qApp->userDataFolder() + QDir::separator() + QSL("web");
 
   return cache_folder;
 }

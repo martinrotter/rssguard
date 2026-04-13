@@ -184,6 +184,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   }
 
   m_webFactory->updateProxy();
+  m_webFactory->updateWebEngineProfileSettings();
 
   if (isFirstRun()) {
     m_notifications->save({Notification(Notification::Event::GeneralEvent, true),
