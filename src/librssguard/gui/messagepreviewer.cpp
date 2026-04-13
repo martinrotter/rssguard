@@ -80,9 +80,12 @@ MessagePreviewer::MessagePreviewer(QWidget* parent)
     m_toolBar(new QToolBar(this)), m_msgBrowser(new WebBrowser(nullptr, this)), m_separator(nullptr),
     m_itemDetails(new ItemDetails(this)), m_toolbarVisible(true) {
   m_toolBar->setOrientation(Qt::Orientation::Vertical);
-  // NOTE: To make sure that if we have many labels and short message
-  // that whole toolbar is visible.
-  // m_toolBar->setSizePolicy(m_toolBar->sizePolicy().horizontalPolicy(), QSizePolicy::Policy::MinimumExpanding);
+
+  /*
+  #if defined(NDEBUG)
+    m_msgBrowser->setLocationBoxVisible(false);
+  #endif
+  */
 
   // This layout holds standard article browser on index 0
   // and optional custom browser on index 1.

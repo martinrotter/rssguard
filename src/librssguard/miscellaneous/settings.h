@@ -38,6 +38,17 @@ namespace FileDialogPaths {
   KEY ID;
 }
 
+namespace Cookies {
+  KEY ID;
+}
+
+namespace Web {
+  KEY ID;
+
+  KEY FollowLinks;
+  VALUE(bool) FollowLinksDef;
+} // namespace Web
+
 namespace WebEngineAttributes {
   KEY ID;
 }

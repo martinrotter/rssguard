@@ -165,6 +165,10 @@ QString XmppNetwork::clientState() const {
   }
 }
 
+QString XmppNetwork::nickName() const {
+  return QSL("%1_%2").arg(QSL(APP_LOW_NAME), QXmppUtils::jidToUser(username()));
+}
+
 void XmppNetwork::obtainServicesNodesTree() {
   m_syncInPendingServices.clear();
   m_syncInTimer.disconnect(this);

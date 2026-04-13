@@ -35,7 +35,10 @@ void WebEnginePage::javaScriptAlert(const QUrl& security_origin, const QString& 
 
 bool WebEnginePage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool is_main_frame) {
   if (type == NavigationType::NavigationTypeLinkClicked) {
-    emit linkMouseClicked(url);
+    QTimer::singleShot(500, this, [=]() {
+      emit linkMouseClicked(url);
+    });
+
     return false;
   }
 

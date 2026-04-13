@@ -13,6 +13,8 @@
 #include <QClipboard>
 #include <QFileIconProvider>
 #include <QImageWriter>
+#include <QPrintDialog>
+#include <QPrinter>
 #include <QTimer>
 
 WebViewer::WebViewer() {
@@ -52,7 +54,48 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   m_contextMenuData = provideContextMenuData(event);
   initializeCommonMenuItems();
 
-  // Add common items.
+  // Open.
+  specific_menu->addAction(m_actionOpenNewTab.data());
+  specific_menu->addAction(m_actionOpenExternalBrowser.data());
+  specific_menu->addAction(m_actionPlayLink.data());
+
+  // Tools.
+  if (m_contextMenuData.m_linkUrl.isValid()) {
+    QFileIconProvider icon_provider;
+    QMenu* menu_ext_tools = new QMenu(QObject::tr("Open with external tool"), specific_menu);
+    auto tools = ExternalTool::toolsFromSettings();
+
+    menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
+
+    for (const ExternalTool& tool : std::as_const(tools)) {
+      QAction* act_tool =
+        new QAction(QFileInfo(tool.name().simplified().isEmpty() ? tool.executable() : tool.name().simplified())
+                      .fileName(),
+                    menu_ext_tools);
+
+      act_tool->setIcon(icon_provider.icon(QFileInfo(tool.executable())));
+      act_tool->setToolTip(tool.executable());
+      act_tool->setData(QVariant::fromValue(tool));
+      menu_ext_tools->addAction(act_tool);
+
+      QObject::connect(act_tool, &QAction::triggered, act_tool, [this, act_tool]() {
+        act_tool->data().value<ExternalTool>().run(m_contextMenuData.m_linkUrl.toString());
+      });
+    }
+
+    if (menu_ext_tools->actions().isEmpty()) {
+      QAction* act_not_tools = new QAction("No external tools activated");
+
+      act_not_tools->setEnabled(false);
+      menu_ext_tools->addAction(act_not_tools);
+    }
+
+    specific_menu->addMenu(menu_ext_tools);
+  }
+
+  specific_menu->addSeparator();
+
+  // Copy.
   auto* act_copy_text =
     new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), QObject::tr("Copy text"), specific_menu);
 
@@ -141,61 +184,33 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
     }
   });
 
+  specific_menu->addSeparator();
+  specific_menu->addAction(m_actionPrint.data());
+  specific_menu->addAction(m_actionSaveHtml.data());
   specific_menu->addAction(act_save_img);
 
-  specific_menu->addSeparator();
-  specific_menu->addAction(m_actionSaveHtml.data());
+  // Rest.
   specific_menu->addSeparator();
   specific_menu->addAction(m_actionExternalResources.data());
-  specific_menu->addAction(m_actionOpenExternalBrowser.data());
-  specific_menu->addAction(m_actionPlayLink.data());
 
+  // Enable/disable.
+  m_actionPrint.data()->setEnabled(!html().simplified().isEmpty());
   m_actionSaveHtml.data()->setEnabled(!html().simplified().isEmpty());
+  m_actionOpenNewTab.data()->setEnabled(m_contextMenuData.m_linkUrl.isValid());
   m_actionOpenExternalBrowser.data()->setEnabled(m_contextMenuData.m_linkUrl.isValid());
 
 #if defined(ENABLE_MEDIAPLAYER)
   m_actionPlayLink.data()->setEnabled(m_contextMenuData.m_linkUrl.isValid());
 #endif
-
-  if (m_contextMenuData.m_linkUrl.isValid()) {
-    QFileIconProvider icon_provider;
-    QMenu* menu_ext_tools = new QMenu(QObject::tr("Open with external tool"), specific_menu);
-    auto tools = ExternalTool::toolsFromSettings();
-
-    menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
-
-    for (const ExternalTool& tool : std::as_const(tools)) {
-      QAction* act_tool =
-        new QAction(QFileInfo(tool.name().simplified().isEmpty() ? tool.executable() : tool.name().simplified())
-                      .fileName(),
-                    menu_ext_tools);
-
-      act_tool->setIcon(icon_provider.icon(QFileInfo(tool.executable())));
-      act_tool->setToolTip(tool.executable());
-      act_tool->setData(QVariant::fromValue(tool));
-      menu_ext_tools->addAction(act_tool);
-
-      QObject::connect(act_tool, &QAction::triggered, act_tool, [this, act_tool]() {
-        act_tool->data().value<ExternalTool>().run(m_contextMenuData.m_linkUrl.toString());
-      });
-    }
-
-    if (menu_ext_tools->actions().isEmpty()) {
-      QAction* act_not_tools = new QAction("No external tools activated");
-
-      act_not_tools->setEnabled(false);
-      menu_ext_tools->addAction(act_not_tools);
-    }
-
-    specific_menu->addMenu(menu_ext_tools);
-  }
 }
 
 void WebViewer::saveHtmlAs() {
+  QString filename = (url().isValid() && !url().host().isEmpty()) ? url().host() : QSL("contents");
+
   QString selected_file = FileDialog::saveFileName(nullptr,
-                                                   QObject::tr("Save article in HTML format"),
+                                                   QObject::tr("Save contents in HTML format"),
                                                    qApp->documentsFolder(),
-                                                   QSL("content.html"),
+                                                   QSL("%1.html").arg(filename),
                                                    QObject::tr("HTML files (*.htm *.html)"),
                                                    nullptr,
                                                    GENERAL_REMEMBERED_PATH);
@@ -235,15 +250,38 @@ void WebViewer::openClickedLinkInExternalBrowser() {
   }
 }
 
+void WebViewer::openClickedLinkInNewTab() {
+  auto context_url = m_contextMenuData.m_linkUrl;
+
+  if (context_url.isValid()) {
+    const QUrl resolved_url = (url().isValid() && context_url.isRelative()) ? url().resolved(context_url) : context_url;
+
+    emit openUrlInNewTab(resolved_url);
+  }
+}
+
+void WebViewer::printContents() {
+  QPrintDialog d(&m_printer, qApp->mainFormWidget());
+
+  if (d.exec() != QDialog::DialogCode::Accepted) {
+    return;
+  }
+
+  printToPrinter(&m_printer);
+}
+
 void WebViewer::initializeCommonMenuItems() {
   if (!m_actionOpenExternalBrowser.isNull()) {
     return;
   }
 
+  m_actionPrint.reset(new QAction(qApp->icons()->fromTheme(QSL("document-print"), QSL("printer")),
+                                  QObject::tr("Print...")));
   m_actionExternalResources.reset(new QAction(qApp->icons()->fromTheme(QSL("applications-internet")),
                                               QObject::tr("Load external images")));
-  m_actionSaveHtml.reset(new QAction(qApp->icons()->fromTheme(QSL("document-save-as")),
-                                     QObject::tr("Save article as...")));
+  m_actionSaveHtml.reset(new QAction(qApp->icons()->fromTheme(QSL("document-save-as")), QObject::tr("Save as...")));
+  m_actionOpenNewTab.reset(new QAction(qApp->icons()->fromTheme(QSL("link"), QSL("document-open")),
+                                       QObject::tr("Open in new tab")));
   m_actionOpenExternalBrowser.reset(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                                 QObject::tr("Open in external browser")));
 
@@ -265,6 +303,10 @@ void WebViewer::initializeCommonMenuItems() {
                      openClickedLinkInExternalBrowser();
                    });
 
+  QObject::connect(m_actionOpenNewTab.data(), &QAction::triggered, m_actionOpenNewTab.data(), [this]() {
+    openClickedLinkInNewTab();
+  });
+
   QObject::connect(m_actionExternalResources.data(),
                    &QAction::triggered,
                    m_actionExternalResources.data(),
@@ -272,7 +314,11 @@ void WebViewer::initializeCommonMenuItems() {
                      setLoadExternalResources(checked);
                    });
 
-  QObject::connect(m_actionSaveHtml.data(), &QAction::triggered, m_actionOpenExternalBrowser.data(), [this]() {
+  QObject::connect(m_actionPrint.data(), &QAction::triggered, m_actionPrint.data(), [this]() {
+    printContents();
+  });
+
+  QObject::connect(m_actionSaveHtml.data(), &QAction::triggered, m_actionSaveHtml.data(), [this]() {
     saveHtmlAs();
   });
 

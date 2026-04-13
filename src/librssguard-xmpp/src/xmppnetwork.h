@@ -47,8 +47,8 @@ class XmppNetwork : public QObject {
     QXmppConfiguration xmppConfiguration() const;
 
     QStringList xeps() const;
-
     QString clientState() const;
+    QString nickName() const;
 
     // Managers and clients.
     QXmppClient* xmppClient() const;

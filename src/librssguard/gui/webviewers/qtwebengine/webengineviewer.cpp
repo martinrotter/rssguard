@@ -70,7 +70,14 @@ QString WebEngineViewer::htmlForMessage(const Message& message, RootItem* root) 
   return html_message;
 }
 
-void WebEngineViewer::loadUrl(const QUrl& url) {}
+void WebEngineViewer::loadUrl(const QUrl& url) {
+  if (url.isValid()) {
+    QWebEngineView::load(url);
+  }
+  else {
+    clear();
+  }
+}
 
 void WebEngineViewer::clear() {
   bool previously_enabled = isEnabled();
@@ -78,6 +85,10 @@ void WebEngineViewer::clear() {
   setEnabled(false);
   setHtml(QSL("<!DOCTYPE html><html><body</body></html>"));
   setEnabled(previously_enabled);
+}
+
+void WebEngineViewer::printToPrinter(QPrinter* printer) {
+  QWebEngineView::print(printer);
 }
 
 /*
@@ -94,14 +105,6 @@ void WebEngineViewer::setLoadExternalResources(bool load_resources) {
 
 void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
   event->accept();
-
-  /*
-  #if QT_VERSION_MAJOR == 6
-    QMenu* menu = createStandardContextMenu();
-  #else
-    QMenu* menu = page()->createStandardContextMenu();
-  #endif
-    */
 
   auto* menu = new QMenu(this);
   menu->setAttribute(Qt::WidgetAttribute::WA_DeleteOnClose, true);

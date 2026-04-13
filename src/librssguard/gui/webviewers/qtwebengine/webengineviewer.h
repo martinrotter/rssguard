@@ -8,6 +8,7 @@
 #include "gui/webviewers/webviewer.h"
 #include "miscellaneous/externaltool.h"
 
+#include <QPrinter>
 #include <QWebEngineFullScreenRequest>
 #include <QWebEngineSettings>
 #include <QWebEngineView>
@@ -37,10 +38,14 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual QUrl url() const;
     virtual void clear();
 
+    virtual void printToPrinter(QPrinter* printer);
+
     virtual void setLoadExternalResources(bool load_resources);
 
     virtual double verticalScrollBarPosition() const;
     virtual void setVerticalScrollBarPosition(double pos);
+
+    virtual void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
 
     virtual void applyFont(const QFont& fon);
     virtual qreal zoomFactor() const;
@@ -52,14 +57,13 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     void pageIconChanged(const QIcon& icon);
     void linkMouseHighlighted(const QUrl& url);
     void linkMouseClicked(const QUrl& url);
-
     void loadingStarted();
     void loadingProgress(int progress);
     void loadingFinished(bool success);
+    void openUrlInNewTab(const QUrl& url);
 
   protected:
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event);
-    virtual void processContextMenu(QMenu* specific_menu, QContextMenuEvent* event);
 
     // virtual QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
     virtual void contextMenuEvent(QContextMenuEvent* event);

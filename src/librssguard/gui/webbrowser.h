@@ -19,6 +19,7 @@ class QWidgetAction;
 class QMenu;
 class QLabel;
 
+class BaseLineEdit;
 class TabWidget;
 class WebViewer;
 class SearchTextWidget;
@@ -37,6 +38,8 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void reloadFontSettings();
     void reloadZoomFactor();
 
+    void setLocationBoxVisible(bool visible);
+
     double verticalScrollBarPosition() const;
     void setVerticalScrollBarPosition(double pos);
 
@@ -45,6 +48,8 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 
   public slots:
     void clear(bool also_hide);
+    void loadUrl(const QString& url);
+    void loadUrl(const QUrl& url);
     void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);
     void loadMessage(const Message& message, RootItem* root);
     void setToolBarVisible(bool visible);
@@ -57,6 +62,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     virtual bool eventFilter(QObject* watched, QEvent* event);
 
   private slots:
+    void updateUrl(const QUrl& url);
     void onZoomFactorChanged();
 
 #if defined(ENABLE_MEDIAPLAYER)
@@ -68,6 +74,8 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void onLoadingStarted();
     void onLoadingProgress(int progress);
     void onLoadingFinished(bool success);
+
+    void onOpenUrlInNewTab(const QUrl& url);
 
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
@@ -88,6 +96,8 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     SearchTextWidget* m_searchWidget;
     QProgressBar* m_loadingProgress;
     QAction* m_actionOpenInSystemBrowser;
+    BaseLineEdit* m_txtLocation;
+    QAction* m_txtLocationAction;
 
 #if defined(ENABLE_MEDIAPLAYER)
     QAction* m_actionPlayPageInMediaPlayer;
