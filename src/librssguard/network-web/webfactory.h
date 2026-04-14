@@ -58,6 +58,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     void onDownloadRequested(QWebEngineDownloadRequest* download);
 
   private:
+    void initializeWebEngineAttributeActions();
     QAction* createEngineSettingsAction(QObject* parent,
                                         const QString& title,
                                         QWebEngineSettings::WebAttribute web_attribute);
