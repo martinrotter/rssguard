@@ -63,6 +63,8 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
                                         const QString& title,
                                         QWebEngineSettings::WebAttribute web_attribute);
 
+    static bool isByDefaultDisabledWebEngineAttribute(QWebEngineSettings::WebAttribute web_attribute);
+
     static QMap<QString, char16_t> generateUnescapes();
 
     QString m_customUserAgent;
