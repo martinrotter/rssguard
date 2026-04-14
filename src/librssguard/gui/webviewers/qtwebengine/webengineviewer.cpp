@@ -229,31 +229,6 @@ ContextMenuData WebEngineViewer::provideContextMenuData(QContextMenuEvent* event
   return c;
 }
 
-QAction* WebEngineViewer::createEngineSettingsAction(QObject* parent,
-                                                     const QString& title,
-                                                     QWebEngineSettings::WebAttribute web_attribute) {
-  auto* act = new QAction(title, parent);
-
-  act->setData(web_attribute);
-  act->setCheckable(true);
-  act->setChecked(qApp->settings()->value(WebEngineAttributes::ID, QString::number(int(web_attribute)), true).toBool());
-
-  auto enabl = act->isChecked();
-
-  page()->settings()->setAttribute(web_attribute, enabl);
-  connect(act, &QAction::toggled, this, &WebEngineViewer::onWebEngineAttributeChanged);
-  return act;
-}
-
-void WebEngineViewer::onWebEngineAttributeChanged(bool enabled) {
-  const QAction* const act = qobject_cast<QAction*>(sender());
-
-  QWebEngineSettings::WebAttribute attribute = act->data().value<QWebEngineSettings::WebAttribute>();
-
-  qApp->settings()->setValue(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), enabled);
-  page()->settings()->setAttribute(attribute, act->isChecked());
-}
-
 void WebEngineViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* event) {
   WebViewer::processContextMenu(specific_menu, event);
 
@@ -262,108 +237,7 @@ void WebEngineViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent
   QMenu* menu_web_attrs =
     specific_menu->addMenu(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web attributes"));
 
-  QList<QAction*> actions;
-
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("JS enabled"),
-                                        QWebEngineSettings::WebAttribute::JavascriptEnabled);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("JS can open popup windows"),
-                                        QWebEngineSettings::WebAttribute::JavascriptCanOpenWindows);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("JS can access clipboard"),
-                                        QWebEngineSettings::WebAttribute::JavascriptCanAccessClipboard);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Hyperlinks can get focus"),
-                                        QWebEngineSettings::WebAttribute::LinksIncludedInFocusChain);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Local storage enabled"),
-                                        QWebEngineSettings::WebAttribute::LocalStorageEnabled);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Local content can access remote URLs"),
-                                        QWebEngineSettings::WebAttribute::LocalContentCanAccessRemoteUrls);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("XSS auditing enabled"),
-                                        QWebEngineSettings::WebAttribute::XSSAuditingEnabled);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Spatial navigation enabled"),
-                                        QWebEngineSettings::WebAttribute::SpatialNavigationEnabled);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Local content can access local files"),
-                                        QWebEngineSettings::WebAttribute::LocalContentCanAccessFileUrls);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Hyperlink auditing enabled"),
-                                        QWebEngineSettings::WebAttribute::HyperlinkAuditingEnabled);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Animate scrolling"),
-                                        QWebEngineSettings::WebAttribute::ScrollAnimatorEnabled);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Error pages enabled"),
-                                        QWebEngineSettings::WebAttribute::ErrorPageEnabled);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Plugins enabled"),
-                                        QWebEngineSettings::WebAttribute::PluginsEnabled);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Fullscreen enabled"),
-                                        QWebEngineSettings::WebAttribute::FullScreenSupportEnabled);
-
-#if !defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Screen capture enabled"),
-                                        QWebEngineSettings::WebAttribute::ScreenCaptureEnabled);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("WebGL enabled"),
-                                        QWebEngineSettings::WebAttribute::WebGLEnabled);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Accelerate 2D canvas"),
-                                        QWebEngineSettings::WebAttribute::Accelerated2dCanvasEnabled);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Print element backgrounds"),
-                                        QWebEngineSettings::WebAttribute::PrintElementBackgrounds);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Allow running insecure content"),
-                                        QWebEngineSettings::WebAttribute::AllowRunningInsecureContent);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Allow geolocation on insecure origins"),
-                                        QWebEngineSettings::WebAttribute::AllowGeolocationOnInsecureOrigins);
-#endif
-
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("JS can activate windows"),
-                                        QWebEngineSettings::WebAttribute::AllowWindowActivationFromJavaScript);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Show scrollbars"),
-                                        QWebEngineSettings::WebAttribute::ShowScrollBars);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Media playback with gestures"),
-                                        QWebEngineSettings::WebAttribute::PlaybackRequiresUserGesture);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("WebRTC uses only public interfaces"),
-                                        QWebEngineSettings::WebAttribute::WebRTCPublicInterfacesOnly);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("JS can paste from clipboard"),
-                                        QWebEngineSettings::WebAttribute::JavascriptCanPaste);
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("DNS prefetch enabled"),
-                                        QWebEngineSettings::WebAttribute::DnsPrefetchEnabled);
-
-#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("PDF viewer enabled"),
-                                        QWebEngineSettings::WebAttribute::PdfViewerEnabled);
-#endif
-
-#if QT_VERSION >= 0x060700 // Qt >= 6.7.0
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Force dark mode"),
-                                        QWebEngineSettings::WebAttribute::ForceDarkMode);
-#endif
-
-#if QT_VERSION >= 0x060900 // Qt >= 6.9.0
-  actions << createEngineSettingsAction(menu_web_attrs,
-                                        tr("Printing - print headers/footers."),
-                                        QWebEngineSettings::WebAttribute::PrintHeaderAndFooter);
-#endif
+  QList<QAction*> actions = qApp->web()->webEngineAttributeActions();
 
   menu_web_attrs->addActions(actions);
 }

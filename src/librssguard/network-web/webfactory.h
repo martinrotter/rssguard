@@ -7,10 +7,13 @@
 
 #include <QMap>
 #include <QObject>
+#include <QWebEngineSettings>
 
 class CookieJar;
 class GeminiSchemeHandler;
 class QMenu;
+class QAction;
+class QWebEngineDownloadRequest;
 class QWebEngineProfile;
 
 class RSSGUARD_DLLSPEC WebFactory : public QObject {
@@ -43,20 +46,29 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     QString customUserAgent() const;
     void setCustomUserAgent(const QString& user_agent);
 
+    QList<QAction*> webEngineAttributeActions() const;
+
   public slots:
     bool openUrlInExternalBrowser(const QUrl& url) const;
     bool openUrlInExternalBrowser(const QUrl& url, bool use_external_tools) const;
 
   private slots:
+    void onWebEngineAttributeChanged(bool enabled);
     void onClearHttpCacheCompleted();
+    void onDownloadRequested(QWebEngineDownloadRequest* download);
 
   private:
+    QAction* createEngineSettingsAction(QObject* parent,
+                                        const QString& title,
+                                        QWebEngineSettings::WebAttribute web_attribute);
+
     static QMap<QString, char16_t> generateUnescapes();
 
     QString m_customUserAgent;
     QWebEngineProfile* m_webEngineProfile;
     CookieJar* m_cookieJar;
     GeminiSchemeHandler* m_geminiHandler;
+    QList<QAction*> m_webEngineAttributeActions;
 };
 
 #endif // WEBFACTORY_H
