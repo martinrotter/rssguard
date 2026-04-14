@@ -1,6 +1,6 @@
 Command Line Interface (CLI)
 ============================
-RSS Guard offers CLI. For overview of its features, run `rssguard --help` in your terminal. You will see the overview of the interface.
+RSS Guard offers a CLI. For an overview of its features, run `rssguard --help` in your terminal.
 
 ```
 Usage: rssguard [options] [url-1 ... url-n]
@@ -30,7 +30,7 @@ Arguments:
                                  online feeds which should be added.
 ```
 
-You can add feeds to RSS Guard by passing URLs as the command line parameters too. Feed [URI scheme](https://en.wikipedia.org/wiki/Feed_URI_scheme) is supported, so that you can call RSS Guard like this:
+You can also add feeds to RSS Guard by passing URLs as command-line parameters. The feed [URI scheme](https://en.wikipedia.org/wiki/Feed_URI_scheme) is supported, so you can call RSS Guard like this:
 
 ```powershell
 rssguard.exe "feed://archlinux.org/feeds/news"
@@ -38,4 +38,4 @@ rssguard.exe "feed:https//archlinux.org/feeds/news"
 rssguard.exe "https://archlinux.org/feeds/news"
 ```
 
-In order to easily add the feed directly from your web browser of choice, without copying and pasting the URL manually, you have to open RSS Guard with feed URL passed as an argument. There are [browser extensions](https://addons.mozilla.org/en-US/firefox/addon/open-with/) which will allow you to do it.
+To add a feed directly from your web browser of choice without copying and pasting the URL manually, you have to open RSS Guard with the feed URL passed as an argument. There are [browser extensions](https://addons.mozilla.org/en-US/firefox/addon/open-with/) that allow you to do this.

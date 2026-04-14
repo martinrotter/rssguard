@@ -1,17 +1,17 @@
 Displaying Articles
 ===================
-RSS Guard has built-in GUI component to display articles with good formatting. Below you can see some specific information about supported article display components.
+RSS Guard has a built-in GUI component for displaying articles with good formatting. Below you can find some specific information about the supported article display components.
 
 ## `litehtml`
-The default component for displaying articles is `litehtml`-based. [`litehtml`](http://www.litehtml.com) is lightweight `HTML` viewer which supports almost complete `CSS` and is able to display articles with good formatting. Its main focus is speed and very low memory footprint when compared to much more robust alternatives like `QtWebEngine`. Also, the resulting binaries are much much slimmer. These advantages are sadly complemented by some not-so-good things, see below.
+The default component for displaying articles is based on `litehtml`. [`litehtml`](http://www.litehtml.com) is a lightweight `HTML` viewer that supports almost complete `CSS` support and is able to display articles with good formatting. Its main focus is speed and a very low memory footprint when compared to much more robust alternatives such as `QtWebEngine`. The resulting binaries are also much slimmer. These advantages are unfortunately accompanied by some limitations, listed below.
 
 Here are some key points of this component:
 * No support for direct `PDF` printing.
-* Text and `URL` drag support works only with mouse **MIDDLE** button (wheel) pressed.
+* Text and `URL` drag support works only with the mouse **MIDDLE** button (wheel) pressed.
 * Text selection itself might have some quirks.
-* There is not right-to-left support.
+* There is no right-to-left support.
 * No support for `GIF` animations.
-* No direct media playback (you can of course use bundled media player feature).
+* No direct media playback, although you can of course use the bundled media player feature.
 
 ## `QtWebEngine`
 ```{warning}
