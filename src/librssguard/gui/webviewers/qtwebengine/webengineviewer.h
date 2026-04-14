@@ -38,6 +38,8 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual QUrl url() const;
     virtual void clear();
 
+    virtual void cleanupCache();
+
     virtual void printToPrinter(QPrinter* printer);
 
     virtual void setLoadExternalResources(bool load_resources);

@@ -63,6 +63,8 @@ class WebViewer {
     // Clears displayed data.
     virtual void clear() = 0;
 
+    virtual void cleanupCache() = 0;
+
     // Printing.
     virtual void printToPrinter(QPrinter* printer) = 0;
 

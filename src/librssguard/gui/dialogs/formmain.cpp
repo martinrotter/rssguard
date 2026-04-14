@@ -22,6 +22,7 @@
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/toolbars/statusbar.h"
 #include "gui/tray/trayicon.h"
+#include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
@@ -260,6 +261,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionTabsCloseCurrent;
   actions << m_ui->m_actionTabsCloseAll;
   actions << m_ui->m_actionTabsNewBrowser;
+  actions << m_ui->m_actionCleanupWebCache;
   actions << m_ui->m_actionTabsCloseAllExceptCurrent;
   actions << m_ui->m_actionBrowserScrollUp;
   actions << m_ui->m_actionBrowserScrollDown;
@@ -564,6 +566,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionAboutGuard->setIcon(icon_theme_factory->fromTheme(QSL("help-about")));
   m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme(QSL("system-upgrade")));
   m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
+  m_ui->m_actionCleanupWebCache->setIcon(icon_theme_factory->fromTheme(QSL("internet-web-browser"), QSL("edit-clear")));
   m_ui->m_actionReportBug->setIcon(icon_theme_factory->fromTheme(QSL("call-start")));
   m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
   m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
@@ -834,6 +837,10 @@ void FormMain::createConnections() {
           &QAction::triggered,
           m_ui->m_tabWidget,
           &TabWidget::closeAllTabsExceptCurrent);
+  connect(m_ui->m_actionCleanupWebCache,
+          &QAction::triggered,
+          m_ui->m_tabWidget->feedMessageViewer()->webBrowser(),
+          &WebBrowser::cleanupCache);
   connect(m_ui->m_actionTabsNewBrowser, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::addEmptyBrowser);
   connect(m_ui->m_actionTabsCloseAll, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabs);
   connect(m_ui->m_actionTabsCloseCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeCurrentTab);

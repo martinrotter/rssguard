@@ -108,6 +108,7 @@
     <addaction name="separator"/>
     <addaction name="m_actionReloadSkin"/>
     <addaction name="m_actionCleanupDatabase"/>
+    <addaction name="m_actionCleanupWebCache"/>
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
     <property name="title">
@@ -1024,6 +1025,11 @@
   <action name="m_actionTabsNewBrowser">
    <property name="text">
     <string>New &amp;web browser tab</string>
+   </property>
+  </action>
+  <action name="m_actionCleanupWebCache">
+   <property name="text">
+    <string>Cleanup &amp;web cache</string>
    </property>
   </action>
  </widget>

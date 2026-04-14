@@ -127,6 +127,10 @@ void WebBrowser::scrollDown() {
   setVerticalScrollBarPosition(verticalScrollBarPosition() + WEB_BROWSER_SCROLL_STEP);
 }
 
+void WebBrowser::cleanupCache() {
+  m_webView->cleanupCache();
+}
+
 void WebBrowser::reloadFontSettings() {
   QFont fon;
   fon.fromString(qApp->settings()->value(GROUP(Messages), SETTING(Messages::PreviewerFontStandard)).toString());

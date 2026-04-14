@@ -87,6 +87,11 @@ void WebEngineViewer::clear() {
   setEnabled(previously_enabled);
 }
 
+void WebEngineViewer::cleanupCache() {
+  page()->profile()->clearAllVisitedLinks();
+  page()->profile()->clearHttpCache();
+}
+
 void WebEngineViewer::printToPrinter(QPrinter* printer) {
   QWebEngineView::print(printer);
 }

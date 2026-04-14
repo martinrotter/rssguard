@@ -26,6 +26,11 @@ WebFactory::WebFactory(QObject* parent)
 
   QWebEngineUrlScheme::registerScheme(gemini_scheme);
   m_webEngineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
+
+  connect(m_webEngineProfile,
+          &QWebEngineProfile::clearHttpCacheCompleted,
+          this,
+          &WebFactory::onClearHttpCacheCompleted);
 }
 
 void WebFactory::updateWebEngineProfileSettings() {
@@ -145,6 +150,13 @@ bool WebFactory::openUrlInExternalBrowser(const QUrl& url, bool use_external_too
   }
 
   return result;
+}
+
+void WebFactory::onClearHttpCacheCompleted() {
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       GuiMessage(tr("Web cache cleared"),
+                                  tr("Web cache was cleared. List of visited links was cleared too.")),
+                       GuiMessageDestination(true, false, true));
 }
 
 QString WebFactory::stripTags(QString text) {
