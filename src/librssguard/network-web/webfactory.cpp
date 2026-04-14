@@ -82,9 +82,6 @@ void WebFactory::initializeWebEngineAttributeActions() {
   m_webEngineAttributeActions << createEngineSettingsAction(this,
                                                             tr("Plugins enabled"),
                                                             QWebEngineSettings::WebAttribute::PluginsEnabled);
-  m_webEngineAttributeActions << createEngineSettingsAction(this,
-                                                            tr("Fullscreen enabled"),
-                                                            QWebEngineSettings::WebAttribute::FullScreenSupportEnabled);
 
 #if !defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   m_webEngineAttributeActions << createEngineSettingsAction(this,
@@ -729,18 +726,30 @@ QMap<QString, char16_t> WebFactory::generateUnescapes() {
   return res;
 }
 
+bool WebFactory::isByDefaultDisabledWebEngineAttribute(QWebEngineSettings::WebAttribute web_attribute) {
+  static QList<QWebEngineSettings::WebAttribute> attrs = {QWebEngineSettings::WebAttribute::JavascriptCanAccessClipboard
+#if QT_VERSION >= 0x060700 // Qt >= 6.7.0
+                                                          ,
+                                                          QWebEngineSettings::WebAttribute::ForceDarkMode
+#endif
+  };
+
+  return attrs.contains(web_attribute);
+}
+
 QAction* WebFactory::createEngineSettingsAction(QObject* parent,
                                                 const QString& title,
                                                 QWebEngineSettings::WebAttribute web_attribute) {
   auto* act = new QAction(title, parent);
+  auto enabled = !isByDefaultDisabledWebEngineAttribute(web_attribute);
 
   act->setData(web_attribute);
   act->setCheckable(true);
-  act->setChecked(qApp->settings()->value(WebEngineAttributes::ID, QString::number(int(web_attribute)), true).toBool());
+  act->setChecked(qApp->settings()
+                    ->value(WebEngineAttributes::ID, QString::number(int(web_attribute)), enabled)
+                    .toBool());
 
-  auto enabl = act->isChecked();
-
-  m_webEngineProfile->settings()->setAttribute(web_attribute, enabl);
+  m_webEngineProfile->settings()->setAttribute(web_attribute, enabled);
   connect(act, &QAction::toggled, this, &WebFactory::onWebEngineAttributeChanged);
   return act;
 }
