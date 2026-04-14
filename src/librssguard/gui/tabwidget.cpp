@@ -299,6 +299,10 @@ int TabWidget::addLinkedBrowser(const QUrl& initial_url) {
   return addBrowser(false, false, initial_url);
 }
 
+int TabWidget::addEmptyBrowser() {
+  return addBrowser(false, true);
+}
+
 int TabWidget::addBrowser(bool move_after_current, bool make_active, WebBrowser* browser) {
   int final_index;
   QString browser_tab_name = tr("Web browser");

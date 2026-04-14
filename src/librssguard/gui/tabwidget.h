@@ -80,6 +80,8 @@ class TabWidget : public QTabWidget {
     // selects to "Open link in new tab".
     int addLinkedBrowser(const QUrl& initial_url = QUrl());
 
+    int addEmptyBrowser();
+
     // General method for adding WebBrowsers.
     int addBrowser(bool move_after_current, bool make_active, const QUrl& initial_url = QUrl());
     int addBrowser(bool move_after_current, bool make_active, WebBrowser* browser);

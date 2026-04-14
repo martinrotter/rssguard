@@ -4,7 +4,6 @@
 
 #include "definitions/globals.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/messagebox.h"
 #include "gui/reusable/baselineedit.h"
 #include "gui/reusable/searchtextwidget.h"
 #include "gui/tabwidget.h"
@@ -12,7 +11,6 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
-#include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 
 #include <QJsonObject>
@@ -88,7 +86,7 @@ void WebBrowser::createConnections() {
   connect(m_txtLocation,
           &BaseLineEdit::submitted,
           this,
-          static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrl));
+          static_cast<void (WebBrowser::*)(const QString&)>(&WebBrowser::loadUrlOrSearchPhrase));
 
   connect(m_actionOpenInSystemBrowser, &QAction::triggered, this, &WebBrowser::openCurrentSiteInSystemBrowser);
 
@@ -161,6 +159,16 @@ void WebBrowser::clear(bool also_hide) {
   if (also_hide) {
     hide();
   }
+}
+
+void WebBrowser::loadUrlOrSearchPhrase(const QString& text) {
+  auto url = QUrl::fromUserInput(text.trimmed());
+
+  if (!url.isValid() || url.host().isEmpty() || !text.contains(QL1C('.'))) {
+    url = QUrl::fromUserInput(QSL("https://www.google.com/search?q=%1").arg(QUrl::toPercentEncoding(text.trimmed())));
+  }
+
+  loadUrl(url);
 }
 
 void WebBrowser::setHtml(const QString& html, const QUrl& url, RootItem* root) {
@@ -301,6 +309,7 @@ void WebBrowser::initializeLayout() {
 #endif
 
   m_txtLocationAction = m_toolBar->addWidget(m_txtLocation);
+  m_txtLocation->setPlaceholderText(tr("Enter URL or search phrase here"));
 
   m_loadingProgress = new QProgressBar(this);
   m_loadingProgress->setFixedHeight(10);
@@ -318,6 +327,7 @@ void WebBrowser::initializeLayout() {
   m_layout->setSpacing(0);
 
   m_searchWidget->hide();
+  m_loadingProgress->hide();
 }
 
 void WebBrowser::onLoadingStarted() {

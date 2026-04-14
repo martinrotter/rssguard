@@ -259,6 +259,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionRestoreAllRecycleBins;
   actions << m_ui->m_actionTabsCloseCurrent;
   actions << m_ui->m_actionTabsCloseAll;
+  actions << m_ui->m_actionTabsNewBrowser;
   actions << m_ui->m_actionTabsCloseAllExceptCurrent;
   actions << m_ui->m_actionBrowserScrollUp;
   actions << m_ui->m_actionBrowserScrollDown;
@@ -656,6 +657,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionFeedMoveBottom->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down-double"), QSL("go-down")));
 
   // Tabs & web browser.
+  m_ui->m_actionTabsNewBrowser->setIcon(icon_theme_factory->fromTheme(QSL("internet-web-browser"),
+                                                                      QSL("document-new")));
   m_ui->m_actionTabsCloseAll->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
   m_ui->m_actionTabsCloseCurrent->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
   m_ui->m_actionTabsCloseAllExceptCurrent->setIcon(icon_theme_factory->fromTheme(QSL("window-close")));
@@ -831,6 +834,7 @@ void FormMain::createConnections() {
           &QAction::triggered,
           m_ui->m_tabWidget,
           &TabWidget::closeAllTabsExceptCurrent);
+  connect(m_ui->m_actionTabsNewBrowser, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::addEmptyBrowser);
   connect(m_ui->m_actionTabsCloseAll, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabs);
   connect(m_ui->m_actionTabsCloseCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeCurrentTab);
   connect(tabWidget()->feedMessageViewer()->feedsView()->selectionModel(),

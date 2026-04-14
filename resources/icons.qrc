@@ -28,7 +28,9 @@
     <file>./graphics/Breeze/icons/document-edit.svg</file>
     <file>./graphics/Breeze/icons/document-export.svg</file>
     <file>./graphics/Breeze/icons/document-import.svg</file>
+    <file>./graphics/Breeze/icons/document-new.svg</file>
     <file>./graphics/Breeze/icons/document-open.svg</file>
+    <file>./graphics/Breeze/icons/document-print.svg</file>
     <file>./graphics/Breeze/icons/document-revert.svg</file>
     <file>./graphics/Breeze/icons/document-save-as.svg</file>
     <file>./graphics/Breeze/icons/download.svg</file>
@@ -74,8 +76,10 @@
     <file>./graphics/Breeze/icons/insert-link.svg</file>
     <file>./graphics/Breeze/icons/insert-page-break.svg</file>
     <file>./graphics/Breeze/icons/internet-services.svg</file>
+    <file>./graphics/Breeze/icons/internet-web-browser.svg</file>
     <file>./graphics/Breeze/icons/kmplayer.svg</file>
     <file>./graphics/Breeze/icons/libreoffice-database.svg</file>
+    <file>./graphics/Breeze/icons/link.svg</file>
     <file>./graphics/Breeze/icons/list-add.svg</file>
     <file>./graphics/Breeze/icons/list-remove.svg</file>
     <file>./graphics/Breeze/icons/mail-attachment.svg</file>
@@ -98,6 +102,7 @@
     <file>./graphics/Breeze/icons/player-volume.svg</file>
     <file>./graphics/Breeze/icons/player-volume-muted.svg</file>
     <file>./graphics/Breeze/icons/playlist-sort.svg</file>
+    <file>./graphics/Breeze/icons/printer.svg</file>
     <file>./graphics/Breeze/icons/process-stop.svg</file>
     <file>./graphics/Breeze/icons/sort-name.svg</file>
     <file>./graphics/Breeze/icons/system-search.svg</file>
@@ -107,6 +112,7 @@
     <file>./graphics/Breeze/icons/tag-folder.svg</file>
     <file>./graphics/Breeze/icons/tag-new.svg</file>
     <file>./graphics/Breeze/icons/tag-properties.svg</file>
+    <file>./graphics/Breeze/icons/text-html.svg</file>
     <file>./graphics/Breeze/icons/text-x-gettext-translation.svg</file>
     <file>./graphics/Breeze/icons/tools.svg</file>
     <file>./graphics/Breeze/icons/user.svg</file>
@@ -149,7 +155,9 @@
     <file>./graphics/Breeze Dark/icons/document-edit.svg</file>
     <file>./graphics/Breeze Dark/icons/document-export.svg</file>
     <file>./graphics/Breeze Dark/icons/document-import.svg</file>
+    <file>./graphics/Breeze Dark/icons/document-new.svg</file>
     <file>./graphics/Breeze Dark/icons/document-open.svg</file>
+    <file>./graphics/Breeze Dark/icons/document-print.svg</file>
     <file>./graphics/Breeze Dark/icons/document-revert.svg</file>
     <file>./graphics/Breeze Dark/icons/document-save-as.svg</file>
     <file>./graphics/Breeze Dark/icons/download.svg</file>
@@ -195,8 +203,10 @@
     <file>./graphics/Breeze Dark/icons/insert-link.svg</file>
     <file>./graphics/Breeze Dark/icons/insert-page-break.svg</file>
     <file>./graphics/Breeze Dark/icons/internet-services.svg</file>
+    <file>./graphics/Breeze Dark/icons/internet-web-browser.svg</file>
     <file>./graphics/Breeze Dark/icons/kmplayer.svg</file>
     <file>./graphics/Breeze Dark/icons/libreoffice-database.svg</file>
+    <file>./graphics/Breeze Dark/icons/link.svg</file>
     <file>./graphics/Breeze Dark/icons/list-add.svg</file>
     <file>./graphics/Breeze Dark/icons/list-remove.svg</file>
     <file>./graphics/Breeze Dark/icons/mail-attachment.svg</file>
@@ -219,6 +229,7 @@
     <file>./graphics/Breeze Dark/icons/player-volume.svg</file>
     <file>./graphics/Breeze Dark/icons/player-volume-muted.svg</file>
     <file>./graphics/Breeze Dark/icons/playlist-sort.svg</file>
+    <file>./graphics/Breeze Dark/icons/printer.svg</file>
     <file>./graphics/Breeze Dark/icons/process-stop.svg</file>
     <file>./graphics/Breeze Dark/icons/sort-name.svg</file>
     <file>./graphics/Breeze Dark/icons/system-search.svg</file>
@@ -228,6 +239,7 @@
     <file>./graphics/Breeze Dark/icons/tag-folder.svg</file>
     <file>./graphics/Breeze Dark/icons/tag-new.svg</file>
     <file>./graphics/Breeze Dark/icons/tag-properties.svg</file>
+    <file>./graphics/Breeze Dark/icons/text-html.svg</file>
     <file>./graphics/Breeze Dark/icons/text-x-gettext-translation.svg</file>
     <file>./graphics/Breeze Dark/icons/tools.svg</file>
     <file>./graphics/Breeze Dark/icons/user.svg</file>
