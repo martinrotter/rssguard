@@ -34,26 +34,6 @@ function Fetch-Latest-Release([string]$OrgRepo, [string]$NameRegex) {
   }
 }
 
-function Copy-If-Exists([string]$Source, [string]$Destination, [switch]$Recurse) {
-  if (Test-Path $Source) {
-    if ($Recurse) {
-      Copy-Item -Path $Source -Destination $Destination -Recurse -Force -Verbose
-    }
-    else {
-      Copy-Item -Path $Source -Destination $Destination -Force -Verbose
-    }
-  }
-}
-
-function Copy-WebEngine-Files([string]$QtRoot, [string]$AppRoot) {
-  New-Item -ItemType Directory -Force -Path "$AppRoot\resources" | Out-Null
-  New-Item -ItemType Directory -Force -Path "$AppRoot\qtwebengine_locales" | Out-Null
-
-  Copy-If-Exists -Source "$QtRoot\bin\QtWebEngineProcess.exe" -Destination "$AppRoot\"
-  Copy-If-Exists -Source "$QtRoot\resources\*" -Destination "$AppRoot\resources\" -Recurse
-  Copy-If-Exists -Source "$QtRoot\translations\qtwebengine_locales\*" -Destination "$AppRoot\qtwebengine_locales\" -Recurse
-}
-
 # Prepare environment.
 Install-Module Pscx -Scope CurrentUser -AllowClobber -Force
 Install-Module VSSetup -Scope CurrentUser -AllowClobber -Force
@@ -141,7 +121,7 @@ pip3 install -U pip
 pip3 install -I git+https://github.com/miurahr/aqtinstall
 
 if ($is_qt_6) {
-  aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtimageformats qtmultimedia qt5compat qtwebengine qtwebchannel
+  aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtimageformats qtmultimedia qt5compat qtwebengine qtwebchannel qtpositioning
   aqt install-src -O "$qt_path" windows desktop $qt_version --archives qtbase
 }
 else {
@@ -224,7 +204,6 @@ cd "rssguard-build"
 cd "app"
 windeployqt.exe --verbose 1 --no-compiler-runtime --no-translations --release "rssguard.exe" "rssguard.dll" "." ".\\plugins"
 cd ".."
-Copy-WebEngine-Files -QtRoot "$qt_path\$qt_version\$qt_arch_base" -AppRoot ".\app"
 
 # Copy OpenSSL.
 if ($is_qt_6) {
