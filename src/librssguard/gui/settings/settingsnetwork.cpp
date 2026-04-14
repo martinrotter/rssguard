@@ -29,8 +29,9 @@ void SettingsNetwork::loadUi() {
 
   m_proxyDetails->setup(false, false);
 
-  m_ui->m_tabBrowserProxy->insertTab(1, m_proxyDetails, tr("Network proxy"));
+  m_ui->m_tabBrowserProxy->insertTab(2, m_proxyDetails, tr("Network proxy"));
 
+  connect(m_ui->m_cbFollowHyperlinks, &QCheckBox::STATE_CHANGED, this, &SettingsNetwork::dirtifySettings);
   connect(m_ui->m_cbEnableHttp2, &QCheckBox::STATE_CHANGED, this, &SettingsNetwork::dirtifySettings);
   connect(m_proxyDetails, &NetworkProxyDetails::changed, this, &SettingsNetwork::dirtifySettings);
 
@@ -53,6 +54,7 @@ QIcon SettingsNetwork::icon() const {
 void SettingsNetwork::loadSettings() {
   onBeginLoadSettings();
 
+  m_ui->m_cbFollowHyperlinks->setChecked(settings()->value(GROUP(Web), SETTING(Web::FollowLinks)).toBool());
   m_ui->m_cbEnableHttp2->setChecked(settings()->value(GROUP(Network), SETTING(Network::EnableHttp2)).toBool());
   m_ui->m_txtUserAgent->setText(settings()->value(GROUP(Network), SETTING(Network::CustomUserAgent)).toString());
 
@@ -72,6 +74,7 @@ void SettingsNetwork::loadSettings() {
 void SettingsNetwork::saveSettings() {
   onBeginSaveSettings();
 
+  settings()->setValue(GROUP(Web), Web::FollowLinks, m_ui->m_cbFollowHyperlinks->isChecked());
   settings()->setValue(GROUP(Network), Network::EnableHttp2, m_ui->m_cbEnableHttp2->isChecked());
   settings()->setValue(GROUP(Network), Network::CustomUserAgent, m_ui->m_txtUserAgent->text());
 

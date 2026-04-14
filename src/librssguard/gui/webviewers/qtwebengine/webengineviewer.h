@@ -71,14 +71,8 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual bool event(QEvent* event);
 
-  private slots:
-    void onWebEngineAttributeChanged(bool enabled);
-
   private:
     WebEnginePage* page() const;
-    QAction* createEngineSettingsAction(QObject* parent,
-                                        const QString& title,
-                                        QWebEngineSettings::WebAttribute web_attribute);
 
   private:
     WebBrowser* m_browser;

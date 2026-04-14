@@ -28,7 +28,7 @@ class SettingsNetwork : public SettingsPanel {
 };
 
 inline QString SettingsNetwork::title() const {
-  return tr("Network");
+  return tr("Network & web");
 }
 
 #endif // SETTINGSNETWORK_H

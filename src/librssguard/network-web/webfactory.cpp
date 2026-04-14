@@ -10,11 +10,13 @@
 #include "miscellaneous/settings.h"
 #include "network-web/cookiejar.h"
 
+#include <QClipboard>
 #include <QDesktopServices>
 #include <QDir>
 #include <QElapsedTimer>
 #include <QProcess>
 #include <QUrl>
+#include <QWebEngineDownloadRequest>
 #include <QWebEngineProfile>
 #include <QWebEngineUrlScheme>
 
@@ -31,6 +33,118 @@ WebFactory::WebFactory(QObject* parent)
           &QWebEngineProfile::clearHttpCacheCompleted,
           this,
           &WebFactory::onClearHttpCacheCompleted);
+  connect(m_webEngineProfile, &QWebEngineProfile::downloadRequested, this, &WebFactory::onDownloadRequested);
+
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("JS enabled"),
+                                                            QWebEngineSettings::WebAttribute::JavascriptEnabled);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("JS can open popup windows"),
+                                                            QWebEngineSettings::WebAttribute::JavascriptCanOpenWindows);
+  m_webEngineAttributeActions
+    << createEngineSettingsAction(this,
+                                  tr("JS can access clipboard"),
+                                  QWebEngineSettings::WebAttribute::JavascriptCanAccessClipboard);
+  m_webEngineAttributeActions
+    << createEngineSettingsAction(this,
+                                  tr("Hyperlinks can get focus"),
+                                  QWebEngineSettings::WebAttribute::LinksIncludedInFocusChain);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Local storage enabled"),
+                                                            QWebEngineSettings::WebAttribute::LocalStorageEnabled);
+  m_webEngineAttributeActions
+    << createEngineSettingsAction(this,
+                                  tr("Local content can access remote URLs"),
+                                  QWebEngineSettings::WebAttribute::LocalContentCanAccessRemoteUrls);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("XSS auditing enabled"),
+                                                            QWebEngineSettings::WebAttribute::XSSAuditingEnabled);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Spatial navigation enabled"),
+                                                            QWebEngineSettings::WebAttribute::SpatialNavigationEnabled);
+  m_webEngineAttributeActions
+    << createEngineSettingsAction(this,
+                                  tr("Local content can access local files"),
+                                  QWebEngineSettings::WebAttribute::LocalContentCanAccessFileUrls);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Hyperlink auditing enabled"),
+                                                            QWebEngineSettings::WebAttribute::HyperlinkAuditingEnabled);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Animate scrolling"),
+                                                            QWebEngineSettings::WebAttribute::ScrollAnimatorEnabled);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Error pages enabled"),
+                                                            QWebEngineSettings::WebAttribute::ErrorPageEnabled);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Plugins enabled"),
+                                                            QWebEngineSettings::WebAttribute::PluginsEnabled);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Fullscreen enabled"),
+                                                            QWebEngineSettings::WebAttribute::FullScreenSupportEnabled);
+
+#if !defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Screen capture enabled"),
+                                                            QWebEngineSettings::WebAttribute::ScreenCaptureEnabled);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("WebGL enabled"),
+                                                            QWebEngineSettings::WebAttribute::WebGLEnabled);
+  m_webEngineAttributeActions
+    << createEngineSettingsAction(this,
+                                  tr("Accelerate 2D canvas"),
+                                  QWebEngineSettings::WebAttribute::Accelerated2dCanvasEnabled);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Print element backgrounds"),
+                                                            QWebEngineSettings::WebAttribute::PrintElementBackgrounds);
+  m_webEngineAttributeActions
+    << createEngineSettingsAction(this,
+                                  tr("Allow running insecure content"),
+                                  QWebEngineSettings::WebAttribute::AllowRunningInsecureContent);
+  m_webEngineAttributeActions
+    << createEngineSettingsAction(this,
+                                  tr("Allow geolocation on insecure origins"),
+                                  QWebEngineSettings::WebAttribute::AllowGeolocationOnInsecureOrigins);
+#endif
+
+  m_webEngineAttributeActions
+    << createEngineSettingsAction(this,
+                                  tr("JS can activate windows"),
+                                  QWebEngineSettings::WebAttribute::AllowWindowActivationFromJavaScript);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Show scrollbars"),
+                                                            QWebEngineSettings::WebAttribute::ShowScrollBars);
+  m_webEngineAttributeActions
+    << createEngineSettingsAction(this,
+                                  tr("Media playback with gestures"),
+                                  QWebEngineSettings::WebAttribute::PlaybackRequiresUserGesture);
+  m_webEngineAttributeActions
+    << createEngineSettingsAction(this,
+                                  tr("WebRTC uses only public interfaces"),
+                                  QWebEngineSettings::WebAttribute::WebRTCPublicInterfacesOnly);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("JS can paste from clipboard"),
+                                                            QWebEngineSettings::WebAttribute::JavascriptCanPaste);
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("DNS prefetch enabled"),
+                                                            QWebEngineSettings::WebAttribute::DnsPrefetchEnabled);
+
+#if QT_VERSION >= 0x050D00 // Qt >= 5.13.0
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("PDF viewer enabled"),
+                                                            QWebEngineSettings::WebAttribute::PdfViewerEnabled);
+#endif
+
+#if QT_VERSION >= 0x060700 // Qt >= 6.7.0
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Force dark mode"),
+                                                            QWebEngineSettings::WebAttribute::ForceDarkMode);
+#endif
+
+#if QT_VERSION >= 0x060900 // Qt >= 6.9.0
+  m_webEngineAttributeActions << createEngineSettingsAction(this,
+                                                            tr("Printing - print headers/footers."),
+                                                            QWebEngineSettings::WebAttribute::PrintHeaderAndFooter);
+#endif
 }
 
 void WebFactory::updateWebEngineProfileSettings() {
@@ -157,6 +271,26 @@ void WebFactory::onClearHttpCacheCompleted() {
                        GuiMessage(tr("Web cache cleared"),
                                   tr("Web cache was cleared. List of visited links was cleared too.")),
                        GuiMessageDestination(true, false, true));
+}
+
+void WebFactory::onDownloadRequested(QWebEngineDownloadRequest* download) {
+  if (download->isSavePageDownload() ||
+      download->mimeType().contains(QSL("pdf"), Qt::CaseSensitivity::CaseInsensitive)) {
+    download->accept();
+  }
+  else {
+    QString url = download->url().toString();
+
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("File download"),
+                                    tr("Download of file '%1' was offered.").arg(download->downloadFileName())),
+                         GuiMessageDestination(true, true, false),
+                         GuiAction(tr("Copy file URL"), m_webEngineProfile, [url]() {
+                           QGuiApplication::clipboard()->setText(url);
+                         }));
+
+    download->cancel();
+  }
 }
 
 QString WebFactory::stripTags(QString text) {
@@ -589,6 +723,35 @@ QMap<QString, char16_t> WebFactory::generateUnescapes() {
   res[QSL("zwnj")] = 0x200c;
 
   return res;
+}
+
+QAction* WebFactory::createEngineSettingsAction(QObject* parent,
+                                                const QString& title,
+                                                QWebEngineSettings::WebAttribute web_attribute) {
+  auto* act = new QAction(title, parent);
+
+  act->setData(web_attribute);
+  act->setCheckable(true);
+  act->setChecked(qApp->settings()->value(WebEngineAttributes::ID, QString::number(int(web_attribute)), true).toBool());
+
+  auto enabl = act->isChecked();
+
+  m_webEngineProfile->settings()->setAttribute(web_attribute, enabl);
+  connect(act, &QAction::toggled, this, &WebFactory::onWebEngineAttributeChanged);
+  return act;
+}
+
+void WebFactory::onWebEngineAttributeChanged(bool enabled) {
+  const QAction* const act = qobject_cast<QAction*>(sender());
+
+  QWebEngineSettings::WebAttribute attribute = act->data().value<QWebEngineSettings::WebAttribute>();
+
+  qApp->settings()->setValue(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), enabled);
+  m_webEngineProfile->settings()->setAttribute(attribute, act->isChecked());
+}
+
+QList<QAction*> WebFactory::webEngineAttributeActions() const {
+  return m_webEngineAttributeActions;
 }
 
 CookieJar* WebFactory::cookieJar() const {
