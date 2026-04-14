@@ -35,6 +35,10 @@ WebFactory::WebFactory(QObject* parent)
           &WebFactory::onClearHttpCacheCompleted);
   connect(m_webEngineProfile, &QWebEngineProfile::downloadRequested, this, &WebFactory::onDownloadRequested);
 
+  initializeWebEngineAttributeActions();
+}
+
+void WebFactory::initializeWebEngineAttributeActions() {
   m_webEngineAttributeActions << createEngineSettingsAction(this,
                                                             tr("JS enabled"),
                                                             QWebEngineSettings::WebAttribute::JavascriptEnabled);
