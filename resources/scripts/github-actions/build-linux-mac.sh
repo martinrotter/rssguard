@@ -68,7 +68,7 @@ else
   echo "Qt will be installed to: $QTPATH"
 
   # Install Qt.
-  aqt install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtimageformats" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport" "qtwebengine"
+  aqt install-qt -O "$QTPATH" "$QTTARGET" "desktop" "$QTVERSION" "$QTARCH" -m "qtimageformats" "qtmultimedia" "qt5compat" "qtpositioning" "qtserialport" "qtwebengine" "qtwebchannel"
   aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_cmake"
   aqt install-tool -O "$QTPATH" "$QTTARGET" "desktop" "tools_ninja"
 
