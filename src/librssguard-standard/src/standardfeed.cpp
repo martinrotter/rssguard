@@ -674,7 +674,8 @@ QString StandardFeed::idealHttpAcceptForFeedType(Type type) {
   switch (type) {
     case Type::Rss0X:
     case Type::Rss2X:
-      return QSL("application/rss+xml, application/xml;q=0.9, text/xml;q=0.8");
+      // NOTE: Some RSS sources are very old and do not respond well to specific "Accept" headers. Use generic one.
+      return QSL("*/*"); /*QSL("application/rss+xml, application/xml;q=0.9, text/xml;q=0.8")*/
 
     case Type::Rdf:
       return QSL("application/rdf+xml, application/xml;q=0.9, text/xml;q=0.8");
