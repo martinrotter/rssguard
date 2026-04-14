@@ -236,6 +236,8 @@
     <property name="title">
      <string>Tabs</string>
     </property>
+    <addaction name="m_actionTabsNewBrowser"/>
+    <addaction name="separator"/>
     <addaction name="m_actionTabsCloseCurrent"/>
     <addaction name="m_actionTabsCloseAll"/>
     <addaction name="m_actionTabsCloseAllExceptCurrent"/>
@@ -1017,6 +1019,11 @@
   <action name="m_actionFetchFullSelectedArticles">
    <property name="text">
     <string>&amp;Fetch full contents</string>
+   </property>
+  </action>
+  <action name="m_actionTabsNewBrowser">
+   <property name="text">
+    <string>New &amp;web browser tab</string>
    </property>
   </action>
  </widget>

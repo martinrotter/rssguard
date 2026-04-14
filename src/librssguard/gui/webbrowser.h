@@ -48,6 +48,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 
   public slots:
     void clear(bool also_hide);
+    void loadUrlOrSearchPhrase(const QString& text);
     void loadUrl(const QString& url);
     void loadUrl(const QUrl& url);
     void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);
