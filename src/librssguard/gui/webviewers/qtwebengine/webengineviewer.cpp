@@ -53,8 +53,13 @@ bool WebEngineViewer::event(QEvent* event) {
 }
 
 QList<QAction*> WebEngineViewer::advancedActions() const {
-  return QList<QAction*>{page()->action(QWebEnginePage::WebAction::ReloadAndBypassCache),
-                         page()->action(QWebEnginePage::WebAction::ViewSource)};
+  auto* act_rel = page()->action(QWebEnginePage::WebAction::ReloadAndBypassCache);
+  auto* act_src = page()->action(QWebEnginePage::WebAction::ViewSource);
+
+  act_rel->setText(tr("Reload (bypass cache)"));
+  act_src->setText(tr("View source"));
+
+  return QList<QAction*>{act_rel, act_src};
 }
 
 WebEnginePage* WebEngineViewer::page() const {
