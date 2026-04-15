@@ -78,6 +78,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void onLoadingFinished(bool success);
 
     void onOpenUrlInNewTab(const QUrl& url);
+    void openViewerInNewTab(WebViewer* viewer);
 
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);
@@ -98,8 +99,13 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     SearchTextWidget* m_searchWidget;
     QProgressBar* m_loadingProgress;
     QAction* m_actionOpenInSystemBrowser;
+
+    // Web browsing actions.
+    QAction* m_actionReload;
+    QAction* m_goBack;
+    QAction* m_goForward;
     BaseLineEdit* m_txtLocation;
-    QAction* m_txtLocationAction;
+    QAction* m_actionTxtLocation;
 
 #if defined(ENABLE_MEDIAPLAYER)
     QAction* m_actionPlayPageInMediaPlayer;

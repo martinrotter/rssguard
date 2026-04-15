@@ -69,6 +69,7 @@ void WebBrowser::bindWebView() {
   connect(qobj_viewer, SIGNAL(loadingProgress(int)), this, SLOT(onLoadingProgress(int)));
   connect(qobj_viewer, SIGNAL(loadingFinished(bool)), this, SLOT(onLoadingFinished(bool)));
   connect(qobj_viewer, SIGNAL(openUrlInNewTab(QUrl)), this, SLOT(onOpenUrlInNewTab(QUrl)));
+  connect(qobj_viewer, SIGNAL(openViewerInNewTab(WebViewer*)), this, SLOT(openViewerInNewTab(WebViewer*)));
 }
 
 void WebBrowser::createConnections() {
@@ -142,7 +143,7 @@ void WebBrowser::reloadZoomFactor() {
 }
 
 void WebBrowser::setLocationBoxVisible(bool visible) {
-  m_txtLocationAction->setVisible(visible);
+  m_actionTxtLocation->setVisible(visible);
   m_txtLocation->blockSignals(!visible);
 }
 
@@ -312,7 +313,7 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(m_actionPlayPageInMediaPlayer);
 #endif
 
-  m_txtLocationAction = m_toolBar->addWidget(m_txtLocation);
+  m_actionTxtLocation = m_toolBar->addWidget(m_txtLocation);
   m_txtLocation->setPlaceholderText(tr("Enter URL or search phrase here"));
 
   m_loadingProgress = new QProgressBar(this);
@@ -374,4 +375,8 @@ void WebBrowser::onLoadingFinished(bool success) {
 
 void WebBrowser::onOpenUrlInNewTab(const QUrl& url) {
   qApp->mainForm()->tabWidget()->addLinkedBrowser(url);
+}
+
+void WebBrowser::openViewerInNewTab(WebViewer* viewer) {
+  qApp->mainForm()->tabWidget()->addBrowser(false, false, new WebBrowser(viewer, this));
 }

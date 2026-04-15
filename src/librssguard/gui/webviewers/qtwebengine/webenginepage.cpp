@@ -53,3 +53,9 @@ void WebEnginePage::javaScriptConsoleMessage(JavaScriptConsoleMessageLevel level
 
   qWarningNN << LOGSEC_JS << message << QSL(" (source: %1:%2)").arg(source_id, QString::number(line_number));
 }
+
+QStringList WebEnginePage::chooseFiles(FileSelectionMode mode,
+                                       const QStringList& old_files,
+                                       const QStringList& accepted_mime_types) {
+  return QWebEnginePage::chooseFiles(mode, old_files, accepted_mime_types);
+}

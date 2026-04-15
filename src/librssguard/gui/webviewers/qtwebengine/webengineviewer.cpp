@@ -52,6 +52,11 @@ bool WebEngineViewer::event(QEvent* event) {
   return QWebEngineView::event(event);
 }
 
+QList<QAction*> WebEngineViewer::advancedActions() const {
+  return QList<QAction*>{page()->action(QWebEnginePage::WebAction::ReloadAndBypassCache),
+                         page()->action(QWebEnginePage::WebAction::ViewSource)};
+}
+
 WebEnginePage* WebEngineViewer::page() const {
   return qobject_cast<WebEnginePage*>(QWebEngineView::page());
 }
@@ -121,14 +126,11 @@ void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
   menu->popup(pos);
 }
 
-/*
 QWebEngineView* WebEngineViewer::createWindow(QWebEnginePage::WebWindowType type) {
   auto* viewer = new WebEngineViewer(this);
-  // emit newWindowRequested(viewer);
-
+  emit openViewerInNewTab(viewer);
   return viewer;
 }
-*/
 
 void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
   m_browser = browser;
@@ -233,11 +235,8 @@ void WebEngineViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent
   WebViewer::processContextMenu(specific_menu, event);
 
   specific_menu->addSection(tr("Advanced"));
-
-  QMenu* menu_web_attrs =
-    specific_menu->addMenu(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web attributes"));
-
-  QList<QAction*> actions = qApp->web()->webEngineAttributeActions();
-
-  menu_web_attrs->addActions(actions);
+  specific_menu->addMenu(qApp->icons()->fromTheme(QSL("emblem-system")), tr("Advanced actions"))
+    ->addActions(advancedActions());
+  specific_menu->addMenu(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web attributes"))
+    ->addActions(qApp->web()->webEngineAttributeActions());
 }

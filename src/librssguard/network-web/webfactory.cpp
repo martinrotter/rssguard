@@ -23,18 +23,7 @@
 WebFactory::WebFactory(QObject* parent)
   : QObject(parent), m_customUserAgent(QString()), m_webEngineProfile(new QWebEngineProfile(QSL(APP_LOW_NAME), this)),
     m_cookieJar(new CookieJar(this)), m_geminiHandler(new GeminiSchemeHandler(this)) {
-  QWebEngineUrlScheme gemini_scheme("gemini");
-  gemini_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
-
-  QWebEngineUrlScheme::registerScheme(gemini_scheme);
-  m_webEngineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
-
-  connect(m_webEngineProfile,
-          &QWebEngineProfile::clearHttpCacheCompleted,
-          this,
-          &WebFactory::onClearHttpCacheCompleted);
-  connect(m_webEngineProfile, &QWebEngineProfile::downloadRequested, this, &WebFactory::onDownloadRequested);
-
+  initializeWebEngineProfile();
   initializeWebEngineAttributeActions();
 }
 
@@ -271,7 +260,7 @@ void WebFactory::onClearHttpCacheCompleted() {
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
                        GuiMessage(tr("Web cache cleared"),
                                   tr("Web cache was cleared. List of visited links was cleared too.")),
-                       GuiMessageDestination(true, false, true));
+                       GuiMessageDestination(true, true, true));
 }
 
 void WebFactory::onDownloadRequested(QWebEngineDownloadRequest* download) {
@@ -292,6 +281,20 @@ void WebFactory::onDownloadRequested(QWebEngineDownloadRequest* download) {
 
     download->cancel();
   }
+}
+
+void WebFactory::initializeWebEngineProfile() {
+  QWebEngineUrlScheme gemini_scheme("gemini");
+  gemini_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
+
+  QWebEngineUrlScheme::registerScheme(gemini_scheme);
+  m_webEngineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
+
+  connect(m_webEngineProfile,
+          &QWebEngineProfile::clearHttpCacheCompleted,
+          this,
+          &WebFactory::onClearHttpCacheCompleted);
+  connect(m_webEngineProfile, &QWebEngineProfile::downloadRequested, this, &WebFactory::onDownloadRequested);
 }
 
 QString WebFactory::stripTags(QString text) {
