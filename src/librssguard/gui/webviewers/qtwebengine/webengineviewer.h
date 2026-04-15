@@ -63,15 +63,17 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     void loadingProgress(int progress);
     void loadingFinished(bool success);
     void openUrlInNewTab(const QUrl& url);
+    void openViewerInNewTab(WebViewer* viewer);
 
   protected:
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event);
 
-    // virtual QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
+    virtual QWebEngineView* createWindow(QWebEnginePage::WebWindowType type);
     virtual void contextMenuEvent(QContextMenuEvent* event);
     virtual bool event(QEvent* event);
 
   private:
+    QList<QAction*> advancedActions() const;
     WebEnginePage* page() const;
 
   private:

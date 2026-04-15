@@ -25,6 +25,9 @@ class WebEnginePage : public QWebEnginePage {
                                           const QString& message,
                                           int line_number,
                                           const QString& source_id);
+    virtual QStringList chooseFiles(FileSelectionMode mode,
+                                    const QStringList& old_files,
+                                    const QStringList& accepted_mime_types);
 };
 
 #endif // WEBENGINEPAGE_H

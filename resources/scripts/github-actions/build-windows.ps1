@@ -205,6 +205,9 @@ cd "app"
 windeployqt.exe --verbose 1 --no-compiler-runtime --no-translations --release "rssguard.exe" "rssguard.dll" "." ".\\plugins"
 cd ".."
 
+# Copy some QtWebEngine files.
+Copy-Item -Path "$qt_path\$qt_version\$qt_arch_base\translations\qtwebengine_locales\*.pak" -Destination ".\app\translations\qtwebengine_locales\" -Verbose
+
 # Copy OpenSSL.
 if ($is_qt_6) {
   Copy-Item -Path "$qt_path\$qt_version\$qt_arch_base\plugins\tls\qopensslbackend.dll" -Destination ".\app\tls\" -Verbose

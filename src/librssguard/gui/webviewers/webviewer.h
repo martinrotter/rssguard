@@ -20,7 +20,6 @@ class RootItem;
 struct ContextMenuData {
     QUrl m_linkUrl;
     QUrl m_imgLinkUrl;
-    QPixmap m_img;
     QString m_selectedText;
 };
 
@@ -109,17 +108,26 @@ class WebViewer {
     virtual void loadingProgress(int progress) = 0;
     virtual void loadingFinished(bool success) = 0;
     virtual void openUrlInNewTab(const QUrl& url) = 0;
+    virtual void openViewerInNewTab(WebViewer* viewer) = 0;
 
   protected:
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) = 0;
 
   private:
+    void copySelectedText();
+    void copySelectedLink();
+    void copySelectedImage();
+    void copySelectedImageLink();
+    void saveImageAs();
     void saveHtmlAs();
     void playClickedLinkAsMedia();
     void openClickedLinkInExternalBrowser();
     void openClickedLinkInNewTab();
     void printContents();
     void initializeCommonMenuItems();
+
+  protected:
+    ContextMenuData m_contextMenuData;
 
   private:
     bool m_loadExternalResources;
@@ -130,7 +138,11 @@ class WebViewer {
     QScopedPointer<QAction> m_actionOpenNewTab;
     QScopedPointer<QAction> m_actionOpenExternalBrowser;
     QScopedPointer<QAction> m_actionPlayLink;
-    ContextMenuData m_contextMenuData;
+    QScopedPointer<QAction> m_actionCopyText;
+    QScopedPointer<QAction> m_actionCopyLink;
+    QScopedPointer<QAction> m_actionCopyImage;
+    QScopedPointer<QAction> m_actionSaveImage;
+    QScopedPointer<QAction> m_actionCopyImageLink;
 
     QPrinter m_printer;
 };

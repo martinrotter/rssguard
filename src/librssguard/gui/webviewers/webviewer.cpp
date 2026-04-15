@@ -47,6 +47,61 @@ QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {
   return QString();
 }
 
+void WebViewer::copySelectedText() {
+  auto* clip = QGuiApplication::clipboard();
+
+  if (clip != nullptr && !m_contextMenuData.m_selectedText.trimmed().isEmpty()) {
+    clip->setText(m_contextMenuData.m_selectedText);
+  }
+}
+
+void WebViewer::copySelectedLink() {
+  auto* clip = QGuiApplication::clipboard();
+
+  if (clip != nullptr && m_contextMenuData.m_linkUrl.isValid()) {
+    clip->setText(m_contextMenuData.m_linkUrl.toString());
+  }
+}
+
+void WebViewer::copySelectedImage() {
+  auto* clip = QGuiApplication::clipboard();
+
+  if (clip != nullptr && m_contextMenuData.m_imgLinkUrl.isValid()) {
+    // TODO stahnout img a nastavit
+    // clip->setPixmap(m_contextMenuData.m_img);
+  }
+}
+
+void WebViewer::copySelectedImageLink() {
+  auto* clip = QGuiApplication::clipboard();
+
+  if (clip != nullptr && m_contextMenuData.m_imgLinkUrl.isValid()) {
+    clip->setText(m_contextMenuData.m_imgLinkUrl.toString());
+  }
+}
+
+void WebViewer::saveImageAs() {
+  auto supported_formats = QImageWriter::supportedImageFormats();
+  auto list_formats = qlinq::from(supported_formats)
+                        .select([](const QByteArray& frmt) {
+                          return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
+                        })
+                        .toList();
+
+  QString selected_filter;
+  auto filename = FileDialog::saveFileName(qApp->mainFormWidget(),
+                                           QObject::tr("Save image"),
+                                           qApp->documentsFolder(),
+                                           QObject::tr("image.%1").arg(QSL("png")),
+                                           QObject::tr("Images (%1)").arg(list_formats.join(QL1C(' '))),
+                                           &selected_filter,
+                                           GENERAL_REMEMBERED_PATH);
+
+  if (!filename.isEmpty()) {
+    // m_contextMenuData.m_imgLinkUrl.save(filename);
+  }
+}
+
 void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* event) {
   specific_menu->setTitle(QObject::tr("Context menu for article viewer"));
 
@@ -94,113 +149,30 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   }
 
   specific_menu->addSeparator();
-
-  // Copy.
-  auto* act_copy_text =
-    new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), QObject::tr("Copy text"), specific_menu);
-
-  act_copy_text->setShortcut(QKeySequence(QKeySequence::StandardKey::Copy));
-  act_copy_text->setEnabled(!m_contextMenuData.m_selectedText.isEmpty());
-
-  QObject::connect(act_copy_text, &QAction::triggered, specific_menu, [this]() {
-    auto* clip = QGuiApplication::clipboard();
-
-    if (clip != nullptr) {
-      clip->setText(m_contextMenuData.m_selectedText);
-    }
-  });
-
-  specific_menu->addAction(act_copy_text);
-
-  auto* act_copy_link =
-    new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), QObject::tr("Copy link"), specific_menu);
-  act_copy_link->setEnabled(m_contextMenuData.m_linkUrl.isValid());
-
-  QObject::connect(act_copy_link, &QAction::triggered, specific_menu, [this]() {
-    auto* clip = QGuiApplication::clipboard();
-
-    if (clip != nullptr) {
-      clip->setText(m_contextMenuData.m_linkUrl.toString());
-    }
-  });
-
-  specific_menu->addAction(act_copy_link);
-  specific_menu->addSeparator();
-
-  auto* act_copy_img = new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
-                                   QObject::tr("Copy image"),
-                                   specific_menu);
-  act_copy_img->setEnabled(!m_contextMenuData.m_img.isNull());
-
-  QObject::connect(act_copy_img, &QAction::triggered, specific_menu, [this]() {
-    auto* clip = QGuiApplication::clipboard();
-
-    if (clip != nullptr) {
-      clip->setPixmap(m_contextMenuData.m_img);
-    }
-  });
-
-  specific_menu->addAction(act_copy_img);
-
-  auto* act_copy_img_link = new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
-                                        QObject::tr("Copy image link"),
-                                        specific_menu);
-  act_copy_img_link->setEnabled(m_contextMenuData.m_imgLinkUrl.isValid());
-
-  QObject::connect(act_copy_img_link, &QAction::triggered, specific_menu, [this]() {
-    auto* clip = QGuiApplication::clipboard();
-
-    if (clip != nullptr) {
-      clip->setText(m_contextMenuData.m_imgLinkUrl.toString());
-    }
-  });
-
-  specific_menu->addAction(act_copy_img_link);
-
-  auto* act_save_img = new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("document-save-as")),
-                                   QObject::tr("Save image"),
-                                   specific_menu);
-  act_save_img->setEnabled(!m_contextMenuData.m_img.isNull());
-
-  QObject::connect(act_save_img, &QAction::triggered, specific_menu, [this]() {
-    auto supported_formats = QImageWriter::supportedImageFormats();
-    auto list_formats = qlinq::from(supported_formats)
-                          .select([](const QByteArray& frmt) {
-                            return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
-                          })
-                          .toList();
-
-    QString selected_filter;
-    auto filename = FileDialog::saveFileName(qApp->mainFormWidget(),
-                                             QObject::tr("Save image"),
-                                             qApp->documentsFolder(),
-                                             QObject::tr("image.%1").arg(QSL("png")),
-                                             QObject::tr("Images (%1)").arg(list_formats.join(QL1C(' '))),
-                                             &selected_filter,
-                                             GENERAL_REMEMBERED_PATH);
-
-    if (!filename.isEmpty()) {
-      m_contextMenuData.m_img.save(filename);
-    }
-  });
-
-  specific_menu->addAction(act_save_img);
+  specific_menu->addAction(m_actionCopyText.data());
+  specific_menu->addAction(m_actionCopyLink.data());
+  specific_menu->addAction(m_actionCopyImage.data());
+  specific_menu->addAction(m_actionCopyImageLink.data());
+  specific_menu->addAction(m_actionSaveImage.data());
   specific_menu->addSeparator();
   specific_menu->addAction(m_actionPrint.data());
   specific_menu->addAction(m_actionSaveHtml.data());
-
-  // Rest.
   specific_menu->addSeparator();
   specific_menu->addAction(m_actionExternalResources.data());
 
   // Enable/disable.
-  m_actionPrint.data()->setEnabled(!html().simplified().isEmpty());
-  m_actionSaveHtml.data()->setEnabled(!html().simplified().isEmpty());
-  m_actionOpenNewTab.data()->setEnabled(m_contextMenuData.m_linkUrl.isValid());
-  m_actionOpenExternalBrowser.data()->setEnabled(m_contextMenuData.m_linkUrl.isValid());
+  m_actionPrint->setEnabled(!html().simplified().isEmpty());
+  m_actionSaveHtml->setEnabled(!html().simplified().isEmpty());
+  m_actionOpenNewTab->setEnabled(m_contextMenuData.m_linkUrl.isValid());
+  m_actionOpenExternalBrowser->setEnabled(m_contextMenuData.m_linkUrl.isValid());
+  m_actionCopyText->setEnabled(!m_contextMenuData.m_selectedText.isEmpty());
+  m_actionCopyLink->setEnabled(m_contextMenuData.m_linkUrl.isValid());
+  m_actionCopyImage->setEnabled(m_contextMenuData.m_imgLinkUrl.isValid());
+  m_actionCopyImageLink->setEnabled(m_contextMenuData.m_imgLinkUrl.isValid());
+  m_actionSaveImage->setEnabled(m_contextMenuData.m_imgLinkUrl.isValid());
 
 #if defined(ENABLE_MEDIAPLAYER)
-  m_actionPlayLink.data()->setEnabled(m_contextMenuData.m_linkUrl.isValid());
+  m_actionPlayLink->setEnabled(m_contextMenuData.m_linkUrl.isValid());
 #endif
 }
 
@@ -284,9 +256,16 @@ void WebViewer::initializeCommonMenuItems() {
                                        QObject::tr("Open in new tab")));
   m_actionOpenExternalBrowser.reset(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                                 QObject::tr("Open in external browser")));
-
   m_actionPlayLink.reset(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
                                      QObject::tr("Play in media player")));
+  m_actionCopyText.reset(new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), QObject::tr("Copy text")));
+  m_actionCopyLink.reset(new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), QObject::tr("Copy link")));
+  m_actionCopyImage.reset(new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
+                                      QObject::tr("Copy image")));
+  m_actionCopyImageLink.reset(new QAction(qApp->icons()->fromTheme(QSL("viewimage"), QSL("image-x-generic")),
+                                          QObject::tr("Copy image link")));
+  m_actionSaveImage.reset(new QAction(qApp->icons()->fromTheme(QSL("download"), QSL("document-save-as")),
+                                      QObject::tr("Save image")));
 
 #if !defined(ENABLE_MEDIAPLAYER)
   m_actionPlayLink->setText(m_actionPlayLink->text() + QSL(" ") + QObject::tr("(not supported)"));
@@ -302,28 +281,39 @@ void WebViewer::initializeCommonMenuItems() {
                    [this]() {
                      openClickedLinkInExternalBrowser();
                    });
-
   QObject::connect(m_actionOpenNewTab.data(), &QAction::triggered, m_actionOpenNewTab.data(), [this]() {
     openClickedLinkInNewTab();
   });
-
   QObject::connect(m_actionExternalResources.data(),
                    &QAction::triggered,
                    m_actionExternalResources.data(),
                    [this](bool checked) {
                      setLoadExternalResources(checked);
                    });
-
   QObject::connect(m_actionPrint.data(), &QAction::triggered, m_actionPrint.data(), [this]() {
     printContents();
   });
-
   QObject::connect(m_actionSaveHtml.data(), &QAction::triggered, m_actionSaveHtml.data(), [this]() {
     saveHtmlAs();
   });
-
   QObject::connect(m_actionPlayLink.data(), &QAction::triggered, m_actionPlayLink.data(), [this]() {
     playClickedLinkAsMedia();
+  });
+
+  QObject::connect(m_actionCopyText.data(), &QAction::triggered, m_actionCopyText.data(), [this]() {
+    copySelectedText();
+  });
+  QObject::connect(m_actionCopyLink.data(), &QAction::triggered, m_actionCopyLink.data(), [this]() {
+    copySelectedLink();
+  });
+  QObject::connect(m_actionCopyImage.data(), &QAction::triggered, m_actionCopyImage.data(), [this]() {
+    copySelectedImage();
+  });
+  QObject::connect(m_actionCopyImageLink.data(), &QAction::triggered, m_actionCopyImageLink.data(), [this]() {
+    copySelectedImageLink();
+  });
+  QObject::connect(m_actionSaveImage.data(), &QAction::triggered, m_actionSaveImage.data(), [this]() {
+    saveImageAs();
   });
 }
 
