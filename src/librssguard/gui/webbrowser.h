@@ -52,6 +52,9 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void loadUrlOrSearchPhrase(const QString& text);
     void loadUrl(const QString& url);
     void loadUrl(const QUrl& url);
+    void reloadPage();
+    void goForward();
+    void goBack();
     void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);
     void loadMessage(const Message& message, RootItem* root);
     void setToolBarVisible(bool visible);
@@ -102,8 +105,8 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 
     // Web browsing actions.
     QAction* m_actionReload;
-    QAction* m_goBack;
-    QAction* m_goForward;
+    QAction* m_actionGoBack;
+    QAction* m_actionGoForward;
     BaseLineEdit* m_txtLocation;
     QAction* m_actionTxtLocation;
 

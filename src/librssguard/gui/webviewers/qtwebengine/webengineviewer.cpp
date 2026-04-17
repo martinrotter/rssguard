@@ -110,6 +110,18 @@ void WebEngineViewer::clear() {
   setEnabled(previously_enabled);
 }
 
+void WebEngineViewer::reloadPage() {
+  QWebEngineView::reload();
+}
+
+void WebEngineViewer::goBack() {
+  QWebEngineView::back();
+}
+
+void WebEngineViewer::goForward() {
+  QWebEngineView::forward();
+}
+
 void WebEngineViewer::cleanupCache() {
   page()->profile()->clearAllVisitedLinks();
   page()->profile()->clearHttpCache();

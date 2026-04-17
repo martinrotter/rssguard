@@ -28,6 +28,9 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
     m_actionOpenInSystemBrowser(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                             tr("Open in system web browser"),
                                             this)),
+    m_actionReload(new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Reload"), this)),
+    m_actionGoBack(new QAction(qApp->icons()->fromTheme(QSL("draw-arrow-back")), tr("Go back"), this)),
+    m_actionGoForward(new QAction(qApp->icons()->fromTheme(QSL("draw-arrow-forward")), tr("Go forward"), this)),
     m_txtLocation(new BaseLineEdit(this))
 #if defined(ENABLE_MEDIAPLAYER)
     ,
@@ -84,6 +87,10 @@ void WebBrowser::createConnections() {
     m_searchWidget->setFocus();
   });
 
+  connect(m_actionReload, &QAction::triggered, this, &WebBrowser::reloadPage);
+  connect(m_actionGoBack, &QAction::triggered, this, &WebBrowser::goBack);
+  connect(m_actionGoForward, &QAction::triggered, this, &WebBrowser::goForward);
+
   connect(m_txtLocation,
           &BaseLineEdit::submitted,
           this,
@@ -106,6 +113,20 @@ void WebBrowser::loadUrl(const QUrl& url) {
   if (url.isValid()) {
     m_webView->loadUrl(url);
   }
+}
+
+void WebBrowser::reloadPage() {
+  if (m_webView->url().isValid()) {
+    m_webView->reloadPage();
+  }
+}
+
+void WebBrowser::goForward() {
+  m_webView->goForward();
+}
+
+void WebBrowser::goBack() {
+  m_webView->goBack();
 }
 
 void WebBrowser::loadUrl(const QString& url) {
@@ -314,6 +335,9 @@ void WebBrowser::initializeLayout() {
   m_toolBar->addAction(m_actionPlayPageInMediaPlayer);
 #endif
 
+  m_toolBar->addAction(m_actionGoBack);
+  m_toolBar->addAction(m_actionGoForward);
+  m_toolBar->addAction(m_actionReload);
   m_actionTxtLocation = m_toolBar->addWidget(m_txtLocation);
   m_txtLocation->setPlaceholderText(tr("Enter URL or search phrase here"));
 

@@ -211,10 +211,14 @@ Copy-Item -Path "$qt_path\$qt_version\$qt_arch_base\translations\qtwebengine_loc
 # Copy OpenSSL.
 if ($is_qt_6) {
   Copy-Item -Path "$qt_path\$qt_version\$qt_arch_base\plugins\tls\qopensslbackend.dll" -Destination ".\app\tls\" -Verbose
+  Copy-Item -Path "$openssl_base_path\bin\libcrypto*.dll" -Destination ".\app\" -Verbose
+  Copy-Item -Path "$openssl_base_path\bin\libssl*.dll" -Destination ".\app\" -Verbose
+}
+else {
+  Copy-Item -Path "$qt_path\$qt_version\$qt_arch_base\bin\libcrypto*.dll" -Destination ".\app\" -Verbose
+  Copy-Item -Path "$qt_path\$qt_version\$qt_arch_base\bin\libssl*.dll" -Destination ".\app\" -Verbose
 }
 
-Copy-Item -Path "$openssl_base_path\bin\libcrypto*.dll" -Destination ".\app\" -Verbose
-Copy-Item -Path "$openssl_base_path\bin\libssl*.dll" -Destination ".\app\" -Verbose
 
 # Copy MySQL.
 Copy-Item -Path "$maria_path\lib\libmariadb.dll" -Destination ".\app\" -Verbose
