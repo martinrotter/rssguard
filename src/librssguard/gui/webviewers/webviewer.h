@@ -57,6 +57,12 @@ class WebViewer {
     virtual QString html() const = 0;
     virtual QString plainText() const = 0;
 
+    // Reloads page if there is some URL set.
+    virtual void reloadPage() = 0;
+
+    virtual void goBack() = 0;
+    virtual void goForward() = 0;
+
     // Returns current URL.
     virtual QUrl url() const = 0;
 

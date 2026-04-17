@@ -35,6 +35,8 @@
     <file>./graphics/Breeze/icons/document-save-as.svg</file>
     <file>./graphics/Breeze/icons/download.svg</file>
     <file>./graphics/Breeze/icons/download-all.svg</file>
+    <file>./graphics/Breeze/icons/draw-arrow-back.svg</file>
+    <file>./graphics/Breeze/icons/draw-arrow-forward.svg</file>
     <file>./graphics/Breeze/icons/draw-freehand.svg</file>
     <file>./graphics/Breeze/icons/draw-line.svg</file>
     <file>./graphics/Breeze/icons/draw-star.svg</file>
@@ -162,6 +164,8 @@
     <file>./graphics/Breeze Dark/icons/document-save-as.svg</file>
     <file>./graphics/Breeze Dark/icons/download.svg</file>
     <file>./graphics/Breeze Dark/icons/download-all.svg</file>
+    <file>./graphics/Breeze Dark/icons/draw-arrow-back.svg</file>
+    <file>./graphics/Breeze Dark/icons/draw-arrow-forward.svg</file>
     <file>./graphics/Breeze Dark/icons/draw-freehand.svg</file>
     <file>./graphics/Breeze Dark/icons/draw-line.svg</file>
     <file>./graphics/Breeze Dark/icons/draw-star.svg</file>

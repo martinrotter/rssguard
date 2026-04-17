@@ -38,6 +38,9 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual QString plainText() const;
     virtual QUrl url() const;
     virtual void clear();
+    virtual void reloadPage();
+    virtual void goBack();
+    virtual void goForward();
 
     virtual void cleanupCache();
 
