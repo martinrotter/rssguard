@@ -16,6 +16,8 @@
 
 WebEnginePage::WebEnginePage(QObject* parent) : QWebEnginePage(qApp->web()->webEngineProfile(), parent) {
   setBackgroundColor(Qt::GlobalColor::transparent);
+
+  connect(this, &WebEnginePage::pdfPrintingFinished, this, &WebEnginePage::onPdfPrintingFinished);
 }
 
 WebEngineViewer* WebEnginePage::view() const {
@@ -24,6 +26,25 @@ WebEngineViewer* WebEnginePage::view() const {
 #else
   return qobject_cast<WebEngineViewer*>(QWebEnginePage::view());
 #endif
+}
+
+void WebEnginePage::onPdfPrintingFinished(const QString& file_path, bool success) {
+  if (success) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("PDF printing done"),
+                                    tr("PDF printing to file '%1' has finished.").arg(file_path)),
+                         GuiMessageDestination(true, true, false),
+                         GuiAction(tr("Open destination folder"), this, [file_path]() {
+                           qApp->system()->openFolderFile(file_path);
+                         }));
+  }
+  else {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("PDF printing failed"),
+                                    tr("PDF printing to file '%1' failed.").arg(file_path),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true, false));
+  }
 }
 
 void WebEnginePage::javaScriptAlert(const QUrl& security_origin, const QString& msg) {

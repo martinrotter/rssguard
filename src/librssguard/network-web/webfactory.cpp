@@ -16,9 +16,14 @@
 #include <QElapsedTimer>
 #include <QProcess>
 #include <QUrl>
-#include <QWebEngineDownloadRequest>
 #include <QWebEngineProfile>
 #include <QWebEngineUrlScheme>
+
+#if QT_VERSION_MAJOR < 6
+#include <QWebEngineDownloadItem>
+#else
+#include <QWebEngineDownloadRequest>
+#endif
 
 WebFactory::WebFactory(QObject* parent)
   : QObject(parent), m_customUserAgent(QString()), m_webEngineProfile(new QWebEngineProfile(QSL(APP_LOW_NAME), this)),
@@ -263,7 +268,11 @@ void WebFactory::onClearHttpCacheCompleted() {
                        GuiMessageDestination(true, true, true));
 }
 
+#if QT_VERSION_MAJOR < 6
+void WebFactory::onDownloadRequested(QWebEngineDownloadItem* download) {
+#else
 void WebFactory::onDownloadRequested(QWebEngineDownloadRequest* download) {
+#endif
   if (download->isSavePageDownload() ||
       download->mimeType().contains(QSL("pdf"), Qt::CaseSensitivity::CaseInsensitive)) {
     download->accept();
@@ -290,10 +299,13 @@ void WebFactory::initializeWebEngineProfile() {
   QWebEngineUrlScheme::registerScheme(gemini_scheme);
   m_webEngineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
 
+#if QT_VERSION_MAJOR >= 6
   connect(m_webEngineProfile,
           &QWebEngineProfile::clearHttpCacheCompleted,
           this,
           &WebFactory::onClearHttpCacheCompleted);
+#endif
+
   connect(m_webEngineProfile, &QWebEngineProfile::downloadRequested, this, &WebFactory::onDownloadRequested);
 }
 
@@ -746,7 +758,7 @@ QAction* WebFactory::createEngineSettingsAction(QObject* parent,
   auto* act = new QAction(title, parent);
   auto enabled = !isByDefaultDisabledWebEngineAttribute(web_attribute);
 
-  act->setData(web_attribute);
+  act->setData(int(web_attribute));
   act->setCheckable(true);
   act->setChecked(qApp->settings()
                     ->value(WebEngineAttributes::ID, QString::number(int(web_attribute)), enabled)
@@ -760,7 +772,7 @@ QAction* WebFactory::createEngineSettingsAction(QObject* parent,
 void WebFactory::onWebEngineAttributeChanged(bool enabled) {
   const QAction* const act = qobject_cast<QAction*>(sender());
 
-  QWebEngineSettings::WebAttribute attribute = act->data().value<QWebEngineSettings::WebAttribute>();
+  QWebEngineSettings::WebAttribute attribute = QWebEngineSettings::WebAttribute(act->data().toInt());
 
   qApp->settings()->setValue(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), enabled);
   m_webEngineProfile->settings()->setAttribute(attribute, act->isChecked());

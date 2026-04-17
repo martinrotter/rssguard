@@ -18,6 +18,9 @@ class WebEnginePage : public QWebEnginePage {
   signals:
     void linkMouseClicked(const QUrl& url);
 
+  private slots:
+    void onPdfPrintingFinished(const QString& file_path, bool success);
+
   protected:
     virtual void javaScriptAlert(const QUrl& security_origin, const QString& msg);
     virtual bool acceptNavigationRequest(const QUrl& url, NavigationType type, bool is_main_frame);
