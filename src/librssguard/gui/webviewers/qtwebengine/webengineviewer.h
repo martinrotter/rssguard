@@ -68,6 +68,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
 
   private slots:
     void printToPdf();
+    void saveCompleteWebPage();
 
   protected:
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event);
@@ -85,6 +86,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     QString m_html;
     QString m_plainText;
     QScopedPointer<QAction> m_actionPrintToPdf;
+    QScopedPointer<QAction> m_actionSaveFullPage;
 };
 
 #endif // WEBENGINEVIEWER_H
