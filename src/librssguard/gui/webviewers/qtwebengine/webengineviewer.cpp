@@ -3,6 +3,7 @@
 #include "gui/webviewers/qtwebengine/webengineviewer.h"
 
 #include "definitions/definitions.h"
+#include "gui/dialogs/filedialog.h"
 #include "gui/webbrowser.h"
 #include "gui/webviewers/qtwebengine/webenginepage.h"
 #include "miscellaneous/application.h"
@@ -11,6 +12,7 @@
 #include "miscellaneous/skinfactory.h"
 #include "network-web/webfactory.h"
 
+#include <QAction>
 #include <QFileIconProvider>
 #include <QGraphicsView>
 #include <QTimer>
@@ -26,7 +28,9 @@
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
 
-WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_browser(nullptr) {
+WebEngineViewer::WebEngineViewer(QWidget* parent)
+  : QWebEngineView(parent), m_browser(nullptr),
+    m_actionPrintToPdf(new QAction(qApp->icons()->fromTheme(QSL("document-print")), tr("Print to PDF"), this)) {
   WebEnginePage* page = new WebEnginePage(this);
 
   setPage(page);
@@ -35,6 +39,8 @@ WebEngineViewer::WebEngineViewer(QWidget* parent) : QWebEngineView(parent), m_br
       m_html = htm;
     });
   });
+
+  connect(m_actionPrintToPdf.data(), &QAction::triggered, this, &WebEngineViewer::printToPdf);
 
   WebEngineViewer::setLoadExternalResources(WebViewer::loadExternalResources());
 }
@@ -59,7 +65,7 @@ QList<QAction*> WebEngineViewer::advancedActions() const {
   act_rel->setText(tr("Reload (bypass cache)"));
   act_src->setText(tr("View source"));
 
-  return QList<QAction*>{act_rel, act_src};
+  return QList<QAction*>{m_actionPrintToPdf.data(), act_rel, act_src};
 }
 
 WebEnginePage* WebEngineViewer::page() const {
@@ -103,7 +109,22 @@ void WebEngineViewer::cleanupCache() {
 }
 
 void WebEngineViewer::printToPrinter(QPrinter* printer) {
+#if QT_VERSION_MAJOR < 6
+  page()->print(printer, [](bool success) {
+    if (success) {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage(tr("Done"), tr("Printing is finished.")),
+                           GuiMessageDestination(true, true, true));
+    }
+    else {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage(tr("Error"), tr("Printing failed."), QSystemTrayIcon::MessageIcon::Critical),
+                           GuiMessageDestination(true, true, true));
+    }
+  });
+#else
   QWebEngineView::print(printer);
+#endif
 }
 
 /*
@@ -203,6 +224,23 @@ qreal WebEngineViewer::zoomFactor() const {
 
 void WebEngineViewer::setZoomFactor(qreal zoom_factor) {
   QWebEngineView::setZoomFactor(zoom_factor);
+}
+
+void WebEngineViewer::printToPdf() {
+  QString the_file = QSL("%1.pdf").arg(title());
+  QString selected_file = FileDialog::saveFileName(nullptr,
+                                                   tr("Save page to PDF file"),
+                                                   qApp->documentsFolder(),
+                                                   the_file,
+                                                   tr("PDF files (*.pdf)"),
+                                                   nullptr,
+                                                   GENERAL_REMEMBERED_PATH);
+
+  if (selected_file.isEmpty()) {
+    return;
+  }
+
+  page()->printToPdf(selected_file);
 }
 
 QString WebEngineViewer::html() const {

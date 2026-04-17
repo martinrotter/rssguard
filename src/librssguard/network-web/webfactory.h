@@ -13,8 +13,13 @@ class CookieJar;
 class GeminiSchemeHandler;
 class QMenu;
 class QAction;
-class QWebEngineDownloadRequest;
 class QWebEngineProfile;
+
+#if QT_VERSION_MAJOR < 6
+class QWebEngineDownloadItem;
+#else
+class QWebEngineDownloadRequest;
+#endif
 
 class RSSGUARD_DLLSPEC WebFactory : public QObject {
     Q_OBJECT
@@ -55,7 +60,12 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
   private slots:
     void onWebEngineAttributeChanged(bool enabled);
     void onClearHttpCacheCompleted();
+
+#if QT_VERSION_MAJOR < 6
+    void onDownloadRequested(QWebEngineDownloadItem* download);
+#else
     void onDownloadRequested(QWebEngineDownloadRequest* download);
+#endif
 
   private:
     void initializeWebEngineProfile();

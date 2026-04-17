@@ -127,7 +127,7 @@ if ($is_qt_6) {
 else {
   # Download Qt 5 and store in the same folder structure as Qt 6 from aqtinstall.
   $qt5_root_folder = "qt-$qt_version-dynamic-msvc2022-x86_64"
-  $qt5_link = "https://github.com/martinrotter/qt-minimalistic-builds/releases/download/$qt_version/$qt5_root_folder.7z"
+  $qt5_link = "https://github.com/martinrotter/qt-minimalistic-builds/releases/download/$qt_version-webengine/$qt5_root_folder.7z"
   $qt5_output = "qt5.zip"
 
   mkdir "$qt_path\$qt_version"

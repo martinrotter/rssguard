@@ -170,7 +170,8 @@ void WebBrowser::loadUrlOrSearchPhrase(const QString& text) {
   auto url = QUrl::fromUserInput(text.trimmed());
 
   if (!url.isValid() || url.host().isEmpty() || !text.contains(QL1C('.'))) {
-    url = QUrl::fromUserInput(QSL("https://www.google.com/search?q=%1").arg(QUrl::toPercentEncoding(text.trimmed())));
+    url = QUrl::fromUserInput(QSL("https://www.google.com/search?q=%1")
+                                .arg(QString::fromUtf8(QUrl::toPercentEncoding(text.trimmed()))));
   }
 
   loadUrl(url);
