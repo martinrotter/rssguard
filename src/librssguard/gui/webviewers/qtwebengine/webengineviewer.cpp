@@ -38,6 +38,9 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
     page->toHtml([&](const QString& htm) {
       m_html = htm;
     });
+    page->toPlainText([&](const QString& txt) {
+      m_plainText = txt;
+    });
   });
 
   connect(m_actionPrintToPdf.data(), &QAction::triggered, this, &WebEngineViewer::printToPdf);
@@ -245,6 +248,10 @@ void WebEngineViewer::printToPdf() {
 
 QString WebEngineViewer::html() const {
   return m_html;
+}
+
+QString WebEngineViewer::plainText() const {
+  return m_plainText;
 }
 
 QUrl WebEngineViewer::url() const {

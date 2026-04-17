@@ -179,19 +179,34 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
 void WebViewer::saveHtmlAs() {
   QString filename = (url().isValid() && !url().host().isEmpty()) ? url().host() : QSL("contents");
 
+  QString filter_html = QObject::tr("HTML files (*.htm *.html)");
+  QString filter_plaintext = QObject::tr("Plain text files (*.txt)");
+  QString filter;
+  QString filter_selected;
+
+  filter += filter_html;
+  filter += QSL(";;");
+  filter += filter_plaintext;
+
   QString selected_file = FileDialog::saveFileName(nullptr,
-                                                   QObject::tr("Save contents in HTML format"),
+                                                   QObject::tr("Save contents in HTML or TXT format"),
                                                    qApp->documentsFolder(),
                                                    QSL("%1.html").arg(filename),
-                                                   QObject::tr("HTML files (*.htm *.html)"),
-                                                   nullptr,
+                                                   filter,
+                                                   &filter_selected,
                                                    GENERAL_REMEMBERED_PATH);
 
   if (selected_file.isEmpty()) {
     return;
   }
 
-  IOFactory::writeFile(selected_file, html().toUtf8());
+  if (filter_selected == filter_html) {
+    IOFactory::writeFile(selected_file, html().toUtf8());
+  }
+
+  if (filter_selected == filter_plaintext) {
+    IOFactory::writeFile(selected_file, plainText().toUtf8());
+  }
 }
 
 void WebViewer::playClickedLinkAsMedia() {

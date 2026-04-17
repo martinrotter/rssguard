@@ -35,6 +35,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual void loadUrl(const QUrl& url);
     virtual void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);
     virtual QString html() const;
+    virtual QString plainText() const;
     virtual QUrl url() const;
     virtual void clear();
 
@@ -82,6 +83,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
   private:
     WebBrowser* m_browser;
     QString m_html;
+    QString m_plainText;
     QScopedPointer<QAction> m_actionPrintToPdf;
 };
 

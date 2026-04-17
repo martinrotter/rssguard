@@ -53,8 +53,9 @@ class WebViewer {
     // Set static HTML into the viewer.
     virtual void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr) = 0;
 
-    // Returns current static HTML loaded in the viewer.
+    // Returns current static HTML (or plain text) loaded in the viewer.
     virtual QString html() const = 0;
+    virtual QString plainText() const = 0;
 
     // Returns current URL.
     virtual QUrl url() const = 0;
