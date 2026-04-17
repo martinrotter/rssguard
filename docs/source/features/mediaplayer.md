@@ -1,11 +1,11 @@
 Media Player
 ============
 RSS Guard offers some of the capabilities everyone would expect from a typical podcast client. It offers a built-in media player on some platforms:
-* Some RSS Guard builds offer a `libmpv`-based[^1] media player that supports almost all features offered by `libmpv`, including keyboard and mouse navigation, an on-screen controller, and loading custom configuration files. Also, `yt-dlp` is deployed on some[^2] platforms, which allows convenient YouTube video playback.
+* Some RSS Guard builds offer a `libmpv`-based[^1] media player that supports almost all features offered by `libmpv`, including keyboard and mouse navigation, an on-screen controller, and loading custom configuration files. Also, `yt-dlp` is bundled on some[^2] platforms, which allows convenient YouTube video playback.
 * Some RSS Guard builds include a more basic media player based on the `QtMultimedia` backend. This backend is usually based on `ffmpeg`, so it can play a fairly wide range of media formats.
 
-[^1]: At this point, precompiled binaries for Mac OS X do not have this backend enabled and rely on the `QtMultimedia` backend instead.
-[^2]: `yt-dlp` is contained in binaries for Windows. For other operating systems, I recommend installing `yt-dlp` or `youtube-dl` system-wide and adding it to your `PATH` environment variable. The custom path to the tool can also be tweaked in `mpv.conf`.
+[^1]: Official Windows `win10` packages use this backend. At this point, precompiled binaries for macOS do not have it enabled and rely on the `QtMultimedia` backend instead.
+[^2]: `yt-dlp` is bundled with official Windows `win10` packages. On other operating systems, I recommend installing `yt-dlp` or `youtube-dl` system-wide and adding it to your `PATH` environment variable. The custom path to the tool can also be tweaked in `mpv.conf`.
 
 ## Usage
 This feature is available for each hyperlink URL. You can either right-click any link in the embedded article or web browser, or use the `Articles -> Play in media player` menu item.

@@ -2,41 +2,51 @@ Downloads & Installation
 ========================
 
 ## Downloads
-The official place to download RSS Guard is the [GitHub Releases page](https://github.com/martinrotter/rssguard/releases). You can also download the [development (beta) build](https://github.com/martinrotter/rssguard/releases/tag/devbuild5), which is updated automatically every time the source code changes. There is roughly a 30-minute delay because the compilation step takes some time.
+The official place to download RSS Guard is the [GitHub Releases page](https://github.com/martinrotter/rssguard/releases).
+
+If you want the newest testing build, use the [development (beta) build](https://github.com/martinrotter/rssguard/releases/tag/devbuild5). It is produced automatically by the CI pipeline, so new packages usually appear after the build finishes rather than instantly after each source-code change.
 
 RSS Guard is also available in [repositories of many Linux distributions](https://repology.org/project/rssguard/versions), and via [Flathub](https://flathub.org/apps/search?q=rssguard).
 
 I highly recommend downloading RSS Guard only from trusted sources.
 
+```{warning}
+There is `rssguard.com` website which is completely unrelated to this project and is NOT official place to download RSS Guard binaries. Be very careful!
+```
+
 ## Installation
 ### Windows
 On Windows, there are several ways to install RSS Guard:
 * Portable-style `7z` [packages](https://github.com/martinrotter/rssguard/releases). Simply download and unpack them.
-* [Installers](https://github.com/martinrotter/rssguard/releases) created with [NSIS](https://nsis.sourceforge.io/Main_Page). These are self-contained. You simply install the application and it is ready to use. Note that the installer is written in a clean way and is meant to behave properly. When you uninstall with it, it should remove all traces correctly, while also asking whether you want to keep your data. It also remembers where you installed RSS Guard, so upgrades are easy. Using these installers is the recommended option.
-* Packages created with [Chocolatey](https://community.chocolatey.org/packages/rssguard). These are nice, but unofficial. They work all right.
+* [Installers](https://github.com/martinrotter/rssguard/releases) created with [NSIS](https://nsis.sourceforge.io/Main_Page). These are self-contained and are the recommended option for most users. They support normal upgrades and clean uninstallation, while still letting you keep your data if you want.
+* Packages created with [Chocolatey](https://community.chocolatey.org/packages/rssguard). These are convenient, but unofficial.
 
 ```{note}
 Official RSS Guard Windows packages come in two flavors:
-* `win7` - built with Qt version 5, uses `QtMultimedia` for the [media player](features/mediaplayer), has a smaller installation size, and a smaller memory footprint. You can use this flavor even on newer Windows without any problems.
-* `win10` - built with Qt version 6, uses `libmpv` for the media player and can play almost everything, but has a bigger installation size.
+* `win7` - intended for maximum compatibility, including older Windows systems. It is also fine to use on newer Windows versions.
+* `win10` - intended for modern Windows systems. It includes the newer Qt 6-based build and is the better choice if you want the most feature-complete current Windows package.
+
+If you are unsure which one to choose, start with `win10` on Windows 10 or newer, and use `win7` when compatibility matters more.
 ```
 
 ```{warning}
-RSS Guard binaries provided via the official [download page](https://github.com/martinrotter/rssguard/releases) are NOT digitally signed. This means that you can get a Microsoft Defender SmartScreen popup dialog when launching RSS Guard for the first time, which warns you about risks related to using unsigned software. This is completely harmless.
+RSS Guard binaries provided via the official [download page](https://github.com/martinrotter/rssguard/releases) are not digitally signed. Because of that, Microsoft Defender SmartScreen may show a warning the first time you launch the application.
 ```
 
 ```{attention}
-Note that some MSVC runtime libraries are bundled with RSS Guard, but you might still see errors saying that a DLL is missing. If that happens, I highly recommend installing this [All-in-One runtime DLL pack](https://github.com/abbodi1406/vcredist/releases).
+Most required runtime files are bundled with official packages, but if Windows still reports a missing runtime DLL, installing the current Microsoft Visual C++ redistributables usually fixes it. If you want a broader package, this [All-in-One runtime DLL pack](https://github.com/abbodi1406/vcredist/releases) is also a practical option.
 ```
 
 ### Linux
 The best option is to use official distribution packages if your distribution offers them.
 
-### Mac OS X
+If you prefer a standalone package, official release assets provide an `AppImage`.
+
+### macOS
 `DMG` packages are provided for Mac users.
 
 ```{warning}
-Note that on Mac OS X, in some cases, you have to self-sign the application via the `codesign` utility to make it run.
+On macOS, Gatekeeper may block unsigned applications. If that happens, you may need to remove the quarantine flag or self-sign the application with `codesign`.
 ```
 
 ### KOBO Book Reader
