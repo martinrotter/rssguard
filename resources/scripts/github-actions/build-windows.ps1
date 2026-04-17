@@ -257,8 +257,8 @@ if ($use_libmpv -eq "ON") {
 }
 
 # Remove unneeded files.
-Remove-Item -Verbose ".\app\sqldrivers\qsqlodbc.dll"
-Remove-Item -Verbose ".\app\sqldrivers\qsqlpsql.dll"
+Remove-Item -Verbose ".\app\sqldrivers\qsqlodbc.dll" -ErrorAction SilentlyContinue
+Remove-Item -Verbose ".\app\sqldrivers\qsqlpsql.dll" -ErrorAction SilentlyContinue
 
 if ($is_devbuild) {
   $packagebase = "rssguard-dev-$git_revision"
