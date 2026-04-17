@@ -30,7 +30,10 @@
 
 WebEngineViewer::WebEngineViewer(QWidget* parent)
   : QWebEngineView(parent), m_browser(nullptr),
-    m_actionPrintToPdf(new QAction(qApp->icons()->fromTheme(QSL("document-print")), tr("Print to PDF"), this)) {
+    m_actionPrintToPdf(new QAction(qApp->icons()->fromTheme(QSL("document-print")), tr("Print to PDF"), this)),
+    m_actionSaveFullPage(new QAction(qApp->icons()->fromTheme(QSL("document-save-as"), QSL("download")),
+                                     tr("Save complete webpage"),
+                                     this)) {
   WebEnginePage* page = new WebEnginePage(this);
 
   setPage(page);
@@ -44,6 +47,7 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
   });
 
   connect(m_actionPrintToPdf.data(), &QAction::triggered, this, &WebEngineViewer::printToPdf);
+  connect(m_actionSaveFullPage.data(), &QAction::triggered, this, &WebEngineViewer::saveCompleteWebPage);
 
   WebEngineViewer::setLoadExternalResources(WebViewer::loadExternalResources());
 }
@@ -68,7 +72,7 @@ QList<QAction*> WebEngineViewer::advancedActions() const {
   act_rel->setText(tr("Reload (bypass cache)"));
   act_src->setText(tr("View source"));
 
-  return QList<QAction*>{m_actionPrintToPdf.data(), act_rel, act_src};
+  return QList<QAction*>{m_actionPrintToPdf.data(), m_actionSaveFullPage.data(), act_rel, act_src};
 }
 
 WebEnginePage* WebEngineViewer::page() const {
@@ -244,6 +248,27 @@ void WebEngineViewer::printToPdf() {
   }
 
   page()->printToPdf(selected_file);
+}
+
+void WebEngineViewer::saveCompleteWebPage() {
+  QString the_file = QSL("%1.mhtml").arg(title());
+  QString selected_file = FileDialog::saveFileName(nullptr,
+                                                   tr("Save complete page to file"),
+                                                   qApp->documentsFolder(),
+                                                   the_file,
+                                                   tr("Mime HTML files (*.mhtml)"),
+                                                   nullptr,
+                                                   GENERAL_REMEMBERED_PATH);
+
+  if (selected_file.isEmpty()) {
+    return;
+  }
+
+#if QT_VERSION_MAJOR < 6
+  page()->save(selected_file, QWebEngineDownloadItem::SavePageFormat::MimeHtmlSaveFormat);
+#else
+  page()->save(selected_file, QWebEngineDownloadRequest::SavePageFormat::MimeHtmlSaveFormat);
+#endif
 }
 
 QString WebEngineViewer::html() const {
