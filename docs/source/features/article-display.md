@@ -1,19 +1,33 @@
 Displaying Articles
 ===================
-RSS Guard has a built-in GUI component for displaying articles with good formatting. Below you can find some specific information about the supported article display components.
+RSS Guard uses an embedded `QtWebEngine`-based viewer to display articles with modern HTML and CSS rendering.
 
-## `litehtml`
-The default component for displaying articles is based on `litehtml`. [`litehtml`](http://www.litehtml.com) is a lightweight `HTML` viewer that supports almost complete `CSS` support and is able to display articles with good formatting. Its main focus is speed and a very low memory footprint when compared to much more robust alternatives such as `QtWebEngine`. The resulting binaries are also much slimmer. These advantages are unfortunately accompanied by some limitations, listed below.
+For most users, this means articles are shown with much better layout fidelity than a minimal text-only or lightweight HTML widget. Complex pages, modern styling, and richer embedded content generally behave much closer to what you would expect in a regular web browser.
 
-Here are some key points of this component:
-* No support for direct `PDF` printing.
-* Text and `URL` drag support works only with the mouse **MIDDLE** button (wheel) pressed.
-* Text selection itself might have some quirks.
-* There is no right-to-left support.
-* No support for `GIF` animations.
-* No direct media playback, although you can of course use the bundled media player feature.
+## What You Can Expect
+The built-in article viewer supports:
+* Modern article rendering based on `QtWebEngine`
+* Text search inside the currently displayed article
+* Zooming in and out
+* Opening links in a new tab or in an external browser
+* Printing
+* Printing directly to `PDF`
+* Saving the current page as plain text, `HTML`, or complete webpage archive formats where applicable
 
-## `QtWebEngine`
-```{warning}
-`QtWebEngine` was removed for RSS Guard 5.
-```
+## External Images And Other Remote Content
+RSS Guard can load remote images inside displayed articles. This can improve visual fidelity, but it may also contact third-party servers when an article is opened.
+
+If you prefer stricter privacy, disable loading of external images in the article viewer or leave it disabled by default and enable it only when needed.
+
+## Advanced Actions
+The article viewer context menu contains some advanced actions for power users, such as:
+* Reloading while bypassing cache
+* Viewing page source
+* Tweaking selected `QtWebEngine` web attributes
+
+These options are mainly useful for troubleshooting, privacy tuning, or handling unusual pages.
+
+## Notes
+* The exact rendering can still depend on the RSS/Atom content provided by the feed itself.
+* Some content may open in a dedicated browser tab or in your external browser instead of navigating directly inside the article pane.
+* Features and behavior can differ slightly between platforms and package variants.
