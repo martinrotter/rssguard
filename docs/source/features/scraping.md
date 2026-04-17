@@ -1,89 +1,142 @@
 Scraping Websites
 =================
 ```{warning}
-Only proceed if you consider yourself a power user and you know what you are doing.
+This feature is meant for advanced users. It is powerful, but it is also easier to misconfigure than a normal feed subscription.
 ```
 
-RSS Guard offers an additional advanced feature inspired by [Liferea](https://lzone.de/liferea).
+RSS Guard can work with sources that are not simple, ready-made RSS or Atom URLs. In practice, this gives you three ways to supply feed data:
+* `URL` - RSS Guard downloads data from a normal network address.
+* `Local file` - RSS Guard reads feed data from a file on your computer.
+* `Script` - RSS Guard runs your command and expects valid feed data on standard output.
 
-The goal of this feature is to allow advanced users to use RSS Guard with data sources that do not provide a regular feed. You can use the feature to generate one.
+This is useful when a website does not publish a feed directly, when you need to transform data before RSS Guard reads it, or when you want to build a custom pipeline around external tools.
 
-----
-You can select the type of source for each feed. Currently, these sources are supported:
-* URL - RSS Guard simply downloads the feed file from the given location and behaves as expected.
-* Local file - RSS Guard uses a file in the local filesystem as a feed source.
-* Script - see below.
+## Supported Feed Types
+After RSS Guard receives the source data, it can try to recognize several feed formats automatically, including:
+* `RSS`
+* `Atom`
+* `RDF`
+* `JSON Feed`
+* `Sitemap`
+* `iCalendar`
+* `Gemlog`
 
-## `Script` option
-If you choose the `Script` option, then you cannot provide the URL of your feed. Instead, you rely on a custom script to generate the feed file and provide its contents to [**standard output** (stdout)](https://en.wikipedia.org/wiki/Standard_streams#Standard_output_(stdout)). Data written to standard output should be valid feed data.
+The `Fetch metadata` button can use the supplied source and optional post-processing command to detect the feed type, title, description, encoding, and often the icon too.
 
-The `Fetch it now` button also works with the `Script` option. Therefore, if your source script and optional post-process script together deliver valid feed data to the output, then all important metadata, such as the title or icon of the feed, can be discovered automatically.
+## Source Types
+### `URL`
+This is the normal mode. RSS Guard downloads the remote resource and treats it as feed data.
 
-<img alt="alt-img" src="images/scrape-source-type.png" width="350px">
+Use this when the source already provides a valid feed, or when a remote file becomes a valid feed only after optional post-processing.
 
-Any errors in your script must be written to [**error output** (stderr)](https://en.wikipedia.org/wiki/Standard_streams#Standard_error_(stderr)).
+### `Local file`
+This mode reads feed data from a file path on your local machine.
 
-:::{warning}
-If your path to the executable contains backslashes as directory separators, make sure to escape them with another backslash. Quote each individual argument with double quotes `"arg"` or single quotes `'arg'`, and separate all arguments with spaces. You have to escape some characters inside a double-quoted argument, for example a double quote itself like this: `"arg with \"quoted\" part"`.
+It is useful when another application or scheduled task already generates feed data for you.
 
-Examples (one per line):
+### `Script`
+This mode runs your command and reads its standard output as feed data.
 
+Your script should:
+* write valid feed data to standard output
+* write errors and diagnostics to standard error
+* exit with code `0` on success
+
+RSS Guard runs the command in the RSS Guard [user-data folder](userdata), and the `%data%` [placeholder](userdata.md#data-placeholder) is expanded to that folder automatically.
+
+## Post-Processing Script
+You can optionally define a second command as a post-processing step.
+
+In that case, RSS Guard first obtains the source data from the selected source type and then passes that raw data to the post-processing command through standard input. The post-processing command must then return valid feed data on standard output.
+
+This is often the most practical setup when:
+* one command downloads data
+* another command converts it into a feed format RSS Guard understands
+* you want to reuse the same cleanup or conversion step for multiple feeds
+
+## Data Flow
+```{mermaid}
+flowchart TB
+  src{{"Source type"}}
+  url["Download data from URL"]
+  file["Read data from local file"]
+  scr["Run source script"]
+  pp{{"Post-processing script set?"}}
+  post["Pass source data to post-processing script"]
+  fin["RSS Guard reads the resulting feed data"]
+
+  src-->|URL|url
+  src-->|Local file|file
+  src-->|Script|scr
+  url-->pp
+  file-->pp
+  scr-->pp
+  pp-->|Yes|post
+  pp-->|No|fin
+  post-->fin
 ```
+
+## Command Syntax Tips
+Be careful with quoting, especially on Windows.
+
+If your executable path contains backslashes, escape them properly when needed. Quote individual arguments that contain spaces.
+
+Examples:
+
+```text
 C:\\MyFolder\\My.exe "arg1" "arg2" "my \"quoted\" arg3" 'my "quoted" arg4'
 
 bash "%data%/scripts/download-feed.sh"
 
 %data%\jq.exe '{ version: "1.1", title: "Stars", items: map( . | .title=.full_name | .content_text=.description | .date_published=.pushed_at)}'
 ```
-:::
 
-RSS Guard offers the [placeholder](userdata.md#data-placeholder) `%data%`, which is automatically replaced with the full path to the RSS Guard user-data folder. You can use this placeholder anywhere in your script command line.
+If `Fetch metadata` fails, the most common causes are:
+* the command line is quoted incorrectly
+* the script does not write valid feed data
+* the script writes the real output to standard error instead of standard output
+* the script exits with a non-zero exit code
 
-```{attention}
-The working directory of the process executing the script is set to the RSS Guard [user data](userdata) folder.
+## Advanced Feed Options
+Standard feeds also expose several advanced options that are related to scraping or non-standard sources:
+* custom `HTTP headers`
+* per-feed authentication
+* per-feed proxy settings
+* optional `HTTP/2` preference
+* `Fetch full articles`
+* `Fetch comments for articles`
+* article date preference: `Published` or `Updated`
+
+These settings are especially useful when a site needs extra headers, behaves differently behind a proxy, or provides only partial article contents in the feed itself.
+
+## Warnings
+```{warning}
+Fetching full articles and comments can slow feed updates down significantly. It can also increase database size.
 ```
 
-The format of the post-process script execution line can be seen in the picture below.
-
-<img alt="alt-img" src="images/scrape-post.png" width="350px">
-
-If everything goes well, the script must return `0` as the process exit code, or a non-zero exit code if an error occurred.
-
-The executable file must always be specified, while arguments are optional. Be very careful when quoting arguments. Tested examples of valid execution lines are shown above.
-
-## Dataflow
-After your source feed data is downloaded either via a URL or a custom script, you can optionally post-process it with one more custom script, which will take the **raw source data as input**. It must produce valid feed data to standard output while printing all error messages to standard error.
-
-Here is a small flowchart explaining where and when scripts are used:
-
-```{mermaid}
-flowchart TB
-  src{{"What kind of source was used?"}}
-  url["Download the (feed) data from given URL"]
-  scr["Generate the (feed) data with given script"]
-  pstd{{"Is any post-process script set?"}}
-  pst["Take previously obtained data and feed it to post-process script"]
-  fin["Hand over the resulting feed data to RSS Guard for further processing - saving to DB, etc."]
-
-  src-->|URL|url
-  src-->|Script|scr
-  url-->pstd
-  scr-->pstd
-  pstd-->|Yes|pst
-  pstd-->|No|fin
-  pst-->fin
+```{warning}
+The older raw-XML extraction mode is an edge-case compatibility option. It can help with some slow feeds, but it is not something most users should enable by default.
 ```
 
-A typical post-processing filter might do things such as CSS formatting, localization of content into another language, downloading complete articles, applying some kind of filtering, or removing ads.
+```{warning}
+Scrapers and post-processing commands can break when a website changes its layout, markup, or API responses. If a previously working setup suddenly fails, check the upstream site first.
+```
 
-It is completely up to you whether you decide to use only a `Source` script or to split your custom functionality between a `Source` script and a `Post-process` script. Sometimes you might need different `Source` scripts for different online sources and the same `Post-process` script, and vice versa.
+## Example Uses
+Typical real-world setups include:
+* a script that downloads a web page and converts it into RSS
+* a local file generated by another tool
+* a normal URL feed that is cleaned up with a post-processing command
+* a custom pipeline that enriches articles before RSS Guard imports them
 
 ## Example Scrapers
-There are [examples of website scrapers](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers). Most of them are written in Python 3, so their execution line is similar to `python "script.py"`. Make sure to examine each script for more information on how to use it.
+There are [examples of website scrapers](https://github.com/martinrotter/rssguard/tree/master/resources/scripts/scrapers). Many of them are written in Python 3, so their execution line is usually similar to `python "script.py"`.
+
+Always inspect an example before using it so you know what input it expects and what it outputs.
 
 ## 3rd-party Tools
-Third-party tools for scraping made to work with RSS Guard:
-* [CSS2RSS](https://github.com/Owyn/CSS2RSS) - can be used to scrape websites with CSS selectors.
-* [RSSGuardHelper](https://github.com/pipiscrew/RSSGuardHelper) - another CSS-selector helper.
+Third-party tools made to work with RSS Guard include:
+* [CSS2RSS](https://github.com/Owyn/CSS2RSS) - useful for scraping websites with CSS selectors
+* [RSSGuardHelper](https://github.com/pipiscrew/RSSGuardHelper) - another helper focused on CSS-selector-based extraction
 
-Make sure to give the authors the credit they deserve.
+Please give the authors proper credit for their work.
