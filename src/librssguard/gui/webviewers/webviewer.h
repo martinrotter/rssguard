@@ -106,6 +106,9 @@ class WebViewer {
     virtual void setZoomFactor(qreal zoom_factor) = 0;
 
   signals:
+    virtual void reloadPageEnabledChanged(bool can_go_forward) = 0;
+    virtual void goBackEnabledChanged(bool can_go_back) = 0;
+    virtual void goForwardEnabledChanged(bool can_go_forward) = 0;
     virtual void pageTitleChanged(const QString& new_title) = 0;
     virtual void pageUrlChanged(const QUrl& url) = 0;
     virtual void pageIconChanged(const QIcon&) = 0;
