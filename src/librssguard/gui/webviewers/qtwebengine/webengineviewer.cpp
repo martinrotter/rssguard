@@ -197,18 +197,14 @@ void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
 
   connect(page(), &WebEnginePage::linkMouseClicked, this, &WebEngineViewer::linkMouseClicked);
   connect(page(), &WebEnginePage::linkHovered, this, &WebEngineViewer::linkMouseHighlighted);
-  connect(page()->action(QWebEnginePage::WebAction::Back),
-          &QAction::enabledChanged,
-          this,
-          &WebEngineViewer::goBackEnabledChanged);
-  connect(page()->action(QWebEnginePage::WebAction::Forward),
-          &QAction::enabledChanged,
-          this,
-          &WebEngineViewer::goForwardEnabledChanged);
-  connect(page()->action(QWebEnginePage::WebAction::Reload),
-          &QAction::enabledChanged,
-          this,
-          &WebEngineViewer::reloadPageEnabledChanged);
+
+  m_actionWatcherGoBack.setAction(page()->action(QWebEnginePage::WebAction::Back));
+  m_actionWatcherGoForward.setAction(page()->action(QWebEnginePage::WebAction::Forward));
+  m_actionWatcherReloadPage.setAction(page()->action(QWebEnginePage::WebAction::Reload));
+
+  connect(&m_actionWatcherGoBack, &ActionWatcher::enabledChanged, this, &WebEngineViewer::goBackEnabledChanged);
+  connect(&m_actionWatcherGoForward, &ActionWatcher::enabledChanged, this, &WebEngineViewer::goForwardEnabledChanged);
+  connect(&m_actionWatcherReloadPage, &ActionWatcher::enabledChanged, this, &WebEngineViewer::reloadPageEnabledChanged);
 }
 
 void WebEngineViewer::findText(const QString& text, bool backwards) {

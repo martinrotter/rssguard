@@ -16,6 +16,54 @@
 class RootItem;
 class WebBrowser;
 
+class ActionWatcher : public QObject {
+    Q_OBJECT
+  public:
+    explicit ActionWatcher(QObject* parent = nullptr) : QObject(parent), m_action(nullptr), m_last(false) {}
+
+    QAction* action() const {
+      return m_action;
+    }
+
+    void setAction(QAction* action) {
+      if (m_action == action) {
+        return;
+      }
+
+      if (m_action) {
+        disconnect(m_action, &QAction::changed, this, &ActionWatcher::onChanged);
+      }
+
+      m_action = action;
+
+      if (m_action) {
+        m_last = m_action->isEnabled();
+        connect(m_action, &QAction::changed, this, &ActionWatcher::onChanged);
+      }
+    }
+
+  signals:
+    void enabledChanged(bool enabled);
+
+  private slots:
+    void onChanged() {
+      if (!m_action) {
+        return;
+      }
+
+      bool now = m_action->isEnabled();
+
+      if (now != m_last) {
+        m_last = now;
+        emit enabledChanged(now);
+      }
+    }
+
+  private:
+    QAction* m_action;
+    bool m_last;
+};
+
 class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer {
     Q_OBJECT
     Q_INTERFACES(WebViewer)
@@ -93,6 +141,10 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     QString m_plainText;
     QScopedPointer<QAction> m_actionPrintToPdf;
     QScopedPointer<QAction> m_actionSaveFullPage;
+
+    ActionWatcher m_actionWatcherGoBack;
+    ActionWatcher m_actionWatcherGoForward;
+    ActionWatcher m_actionWatcherReloadPage;
 };
 
 #endif // WEBENGINEVIEWER_H
