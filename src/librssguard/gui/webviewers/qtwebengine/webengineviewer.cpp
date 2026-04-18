@@ -197,6 +197,18 @@ void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
 
   connect(page(), &WebEnginePage::linkMouseClicked, this, &WebEngineViewer::linkMouseClicked);
   connect(page(), &WebEnginePage::linkHovered, this, &WebEngineViewer::linkMouseHighlighted);
+  connect(page()->action(QWebEnginePage::WebAction::Back),
+          &QAction::enabledChanged,
+          this,
+          &WebEngineViewer::goBackEnabledChanged);
+  connect(page()->action(QWebEnginePage::WebAction::Forward),
+          &QAction::enabledChanged,
+          this,
+          &WebEngineViewer::goForwardEnabledChanged);
+  connect(page()->action(QWebEnginePage::WebAction::Reload),
+          &QAction::enabledChanged,
+          this,
+          &WebEngineViewer::reloadPageEnabledChanged);
 }
 
 void WebEngineViewer::findText(const QString& text, bool backwards) {

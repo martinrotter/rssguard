@@ -63,6 +63,10 @@ void WebBrowser::bindWebView() {
 
   auto* qobj_viewer = dynamic_cast<QObject*>(m_webView);
 
+  connect(qobj_viewer, SIGNAL(goBackEnabledChanged(bool)), m_actionGoBack, SLOT(setEnabled(bool)));
+  connect(qobj_viewer, SIGNAL(goForwardEnabledChanged(bool)), m_actionGoForward, SLOT(setEnabled(bool)));
+  connect(qobj_viewer, SIGNAL(reloadPageEnabledChanged(bool)), m_actionReload, SLOT(setEnabled(bool)));
+
   connect(qobj_viewer, SIGNAL(linkMouseHighlighted(QUrl)), this, SLOT(onLinkMouseHighlighted(QUrl)));
   connect(qobj_viewer, SIGNAL(linkMouseClicked(QUrl)), this, SLOT(onLinkMouseClicked(QUrl)));
   connect(qobj_viewer, SIGNAL(pageTitleChanged(QString)), this, SLOT(onTitleChanged(QString)));
@@ -355,6 +359,10 @@ void WebBrowser::initializeLayout() {
   m_layout->addWidget(m_searchWidget);
   m_layout->setContentsMargins({0, 0, 0, 0});
   m_layout->setSpacing(0);
+
+  m_actionGoBack->setEnabled(false);
+  m_actionGoForward->setEnabled(false);
+  m_actionReload->setEnabled(false);
 
   m_searchWidget->hide();
   m_loadingProgress->hide();

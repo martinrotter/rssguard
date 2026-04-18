@@ -58,6 +58,9 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual void setZoomFactor(qreal zoom_factor);
 
   signals:
+    void reloadPageEnabledChanged(bool can_go_forward);
+    void goBackEnabledChanged(bool can_go_back);
+    void goForwardEnabledChanged(bool can_go_forward);
     void pageTitleChanged(const QString& new_title);
     void pageUrlChanged(const QUrl& url);
     void pageIconChanged(const QIcon& icon);
