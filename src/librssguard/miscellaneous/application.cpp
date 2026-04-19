@@ -17,7 +17,6 @@
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/toolbars/statusbar.h"
 #include "gui/tray/qttrayicon.h"
-#include "gui/webviewers/qtwebengine/webengineviewer.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
@@ -28,6 +27,12 @@
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/serviceroot.h"
+
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+#include "gui/webviewers/qtwebengine/webengineviewer.h"
+#else
+#include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
+#endif
 
 #include <iostream>
 
@@ -184,7 +189,10 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   }
 
   m_webFactory->updateProxy();
+
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   m_webFactory->updateWebEngineProfileSettings();
+#endif
 
   if (isFirstRun()) {
     m_notifications->save({Notification(Notification::Event::GeneralEvent, true),
@@ -773,8 +781,11 @@ void Application::showGuiMessage(Notification::Event event,
 }
 
 WebViewer* Application::createWebView() {
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   return new WebEngineViewer();
-  // return new TextBrowserViewer();
+#else
+  return new TextBrowserViewer();
+#endif
 }
 
 bool Application::isWayland() const {

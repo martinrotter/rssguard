@@ -27,6 +27,8 @@
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
 #   RUN_GO_MOD_TIDY - Runs "go mod tidy" when bundling Go-based plugins.
 #   ENABLE_TESTS - Enables some tests.
+#   WEB_ARTICLE_VIEWER_WEBENGINE - Use QtWebEngine-based article/web viewer. If set to "OFF"
+#                                  then very simple QTextBrowser viewer is used.
 #   ENABLE_ICU - Enable direct ICU dependency, used to convert among text encodings.
 #   ENABLE_MEDIAPLAYER_QTMULTIMEDIA - Enable media player (QtMultimedia/ffmpeg implementation).
 #   ENABLE_MEDIAPLAYER_LIBMPV - Enable media player (libmpv implementation). Use "LibMPV_ROOT" variable to specify
@@ -44,7 +46,7 @@
 #
 # Other information:
 #   - supports Windows, Linux, *BSD, macOS, OS/2,
-#   - Qt 5.14.0 or newer is required,
+#   - Qt 5.15.0 or newer is required,
 #   - Qt 6.5.0 or newer is required,
 #   - Go compiler is required for building rssguard-article-extractor,
 #   - cmake 3.14.0 or newer is required,
@@ -134,6 +136,7 @@ option(ENABLE_MEDIAPLAYER_LIBMPV "Enable built-in media player. Requires libmpv 
 option(MEDIAPLAYER_FORCE_OPENGL "Use opengl-based render API with libmpv." ON)
 option(USE_SYSTEM_QXMPP "Use qxmpp library from the system." OFF)
 option(BUILD_XMPP_PLUGIN "Build XMPP plugin." OFF)
+option(WEB_ARTICLE_VIEWER_WEBENGINE "Use QtWebEngine-based article/web viewer." ON)
 
 if(IS_DEVBUILD)
   message(STATUS "Build as development build.")
@@ -153,12 +156,23 @@ set(QT_COMPONENTS
   LinguistTools
   Network
   Qml
+  PrintSupport
   Sql
   Widgets
   Xml
   Concurrent
-  WebEngineWidgets
 )
+
+if (WEB_ARTICLE_VIEWER_WEBENGINE)
+  list(APPEND QT_COMPONENTS WebEngineWidgets)
+  add_compile_definitions(WEB_ARTICLE_VIEWER_WEBENGINE)
+
+  message(STATUS "We will use QtWebEngine-based web viewer.")
+else()
+  add_compile_definitions(WEB_ARTICLE_VIEWER_TEXTBROWSER)
+
+  message(STATUS "We will use QTextBrowser-based web viewer.")
+endif()
 
 if(WIN32 AND NOT BUILD_WITH_QT6)
   list(APPEND QT_COMPONENTS WinExtras)
