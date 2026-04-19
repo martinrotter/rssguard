@@ -429,15 +429,23 @@ if(ENABLE_ICU)
   )
 endif()
 
-# QtWebEngine-based HTML viewer.
-list(APPEND SOURCES
-  gui/webviewers/qtwebengine/webengineviewer.cpp
-  gui/webviewers/qtwebengine/webengineviewer.h
-  gui/webviewers/qtwebengine/webenginepage.cpp
-  gui/webviewers/qtwebengine/webenginepage.h
-  gui/webviewers/qtwebengine/geminischemehandler.cpp
-  gui/webviewers/qtwebengine/geminischemehandler.h
-)
+if(WEB_ARTICLE_VIEWER_WEBENGINE)
+  # QtWebEngine-based HTML viewer.
+  list(APPEND SOURCES
+    gui/webviewers/qtwebengine/webengineviewer.cpp
+    gui/webviewers/qtwebengine/webengineviewer.h
+    gui/webviewers/qtwebengine/webenginepage.cpp
+    gui/webviewers/qtwebengine/webenginepage.h
+    gui/webviewers/qtwebengine/geminischemehandler.cpp
+    gui/webviewers/qtwebengine/geminischemehandler.h
+  )
+else()
+  # QTextBrowser-based simplistic viewer.
+  list(APPEND SOURCES
+    gui/webviewers/qtextbrowser/textbrowserviewer.cpp
+    gui/webviewers/qtextbrowser/textbrowserviewer.h
+  )
+endif()
 
 if(MSVC)
   add_compile_options(/wd4244 /wd4267 /permissive- /utf-8)
@@ -530,12 +538,18 @@ target_link_libraries(rssguard PUBLIC
   Qt${QT_VERSION_MAJOR}::Gui
   Qt${QT_VERSION_MAJOR}::Network
   Qt${QT_VERSION_MAJOR}::Qml
+  Qt${QT_VERSION_MAJOR}::PrintSupport
   Qt${QT_VERSION_MAJOR}::Sql
   Qt${QT_VERSION_MAJOR}::Widgets
   Qt${QT_VERSION_MAJOR}::Xml
   Qt${QT_VERSION_MAJOR}::Concurrent
-  Qt${QT_VERSION_MAJOR}::WebEngineWidgets
 )
+
+if(WEB_ARTICLE_VIEWER_WEBENGINE)
+  target_link_libraries(rssguard PUBLIC
+    Qt${QT_VERSION_MAJOR}::WebEngineWidgets
+  )
+endif()
 
 if(WIN32)
   target_link_libraries(rssguard PUBLIC

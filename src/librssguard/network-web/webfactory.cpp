@@ -4,7 +4,6 @@
 
 #include "definitions/definitions.h"
 #include "gui/messagebox.h"
-#include "gui/webviewers/qtwebengine/geminischemehandler.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/settings.h"
@@ -16,6 +15,10 @@
 #include <QElapsedTimer>
 #include <QProcess>
 #include <QUrl>
+
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+#include "gui/webviewers/qtwebengine/geminischemehandler.h"
+
 #include <QWebEngineProfile>
 #include <QWebEngineUrlScheme>
 
@@ -24,14 +27,23 @@
 #else
 #include <QWebEngineDownloadRequest>
 #endif
+#endif
 
 WebFactory::WebFactory(QObject* parent)
-  : QObject(parent), m_customUserAgent(QString()), m_webEngineProfile(new QWebEngineProfile(QSL(APP_LOW_NAME), this)),
-    m_cookieJar(new CookieJar(this)), m_geminiHandler(new GeminiSchemeHandler(this)) {
+  : QObject(parent)
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+    ,
+    m_webEngineProfile(new QWebEngineProfile(QSL(APP_LOW_NAME), this)), m_geminiHandler(new GeminiSchemeHandler(this))
+#endif
+    ,
+    m_customUserAgent(QString()), m_cookieJar(new CookieJar(this)) {
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   initializeWebEngineProfile();
   initializeWebEngineAttributeActions();
+#endif
 }
 
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
 void WebFactory::initializeWebEngineAttributeActions() {
   m_webEngineAttributeActions << createEngineSettingsAction(this,
                                                             tr("JS enabled"),
@@ -173,14 +185,104 @@ void WebFactory::updateWebEngineProfileSettings() {
   }
 }
 
+QWebEngineProfile* WebFactory::webEngineProfile() const {
+  return m_webEngineProfile;
+}
+
+void WebFactory::onClearHttpCacheCompleted() {
+  qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                       GuiMessage(tr("Web cache cleared"),
+                                  tr("Web cache was cleared. List of visited links was cleared too.")),
+                       GuiMessageDestination(true, true, true));
+}
+
+#if QT_VERSION_MAJOR < 6
+void WebFactory::onDownloadRequested(QWebEngineDownloadItem* download) {
+#else
+void WebFactory::onDownloadRequested(QWebEngineDownloadRequest* download) {
+#endif
+  if (download->isSavePageDownload() ||
+      download->mimeType().contains(QSL("pdf"), Qt::CaseSensitivity::CaseInsensitive)) {
+    download->accept();
+  }
+  else {
+    QString url = download->url().toString();
+
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("File download"),
+                                    tr("Download of file '%1' was offered.").arg(download->downloadFileName())),
+                         GuiMessageDestination(true, true, false),
+                         GuiAction(tr("Copy file URL"), m_webEngineProfile, [url]() {
+                           QGuiApplication::clipboard()->setText(url);
+                         }));
+
+    download->cancel();
+  }
+}
+
+void WebFactory::initializeWebEngineProfile() {
+  QWebEngineUrlScheme gemini_scheme("gemini");
+  gemini_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
+
+  QWebEngineUrlScheme::registerScheme(gemini_scheme);
+  m_webEngineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
+
+#if QT_VERSION_MAJOR >= 6
+  connect(m_webEngineProfile,
+          &QWebEngineProfile::clearHttpCacheCompleted,
+          this,
+          &WebFactory::onClearHttpCacheCompleted);
+#endif
+
+  connect(m_webEngineProfile, &QWebEngineProfile::downloadRequested, this, &WebFactory::onDownloadRequested);
+}
+
+bool WebFactory::isByDefaultDisabledWebEngineAttribute(QWebEngineSettings::WebAttribute web_attribute) {
+  static QList<QWebEngineSettings::WebAttribute> attrs = {QWebEngineSettings::WebAttribute::JavascriptCanAccessClipboard
+#if QT_VERSION >= 0x060700 // Qt >= 6.7.0
+                                                          ,
+                                                          QWebEngineSettings::WebAttribute::ForceDarkMode
+#endif
+  };
+
+  return attrs.contains(web_attribute);
+}
+
+QAction* WebFactory::createEngineSettingsAction(QObject* parent,
+                                                const QString& title,
+                                                QWebEngineSettings::WebAttribute web_attribute) {
+  auto* act = new QAction(title, parent);
+  auto enabled = !isByDefaultDisabledWebEngineAttribute(web_attribute);
+
+  act->setData(int(web_attribute));
+  act->setCheckable(true);
+  act->setChecked(qApp->settings()
+                    ->value(WebEngineAttributes::ID, QString::number(int(web_attribute)), enabled)
+                    .toBool());
+
+  m_webEngineProfile->settings()->setAttribute(web_attribute, enabled);
+  connect(act, &QAction::toggled, this, &WebFactory::onWebEngineAttributeChanged);
+  return act;
+}
+
+void WebFactory::onWebEngineAttributeChanged(bool enabled) {
+  const QAction* const act = qobject_cast<QAction*>(sender());
+
+  QWebEngineSettings::WebAttribute attribute = QWebEngineSettings::WebAttribute(act->data().toInt());
+
+  qApp->settings()->setValue(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), enabled);
+  m_webEngineProfile->settings()->setAttribute(attribute, act->isChecked());
+}
+
+QList<QAction*> WebFactory::webEngineAttributeActions() const {
+  return m_webEngineAttributeActions;
+}
+#endif
+
 WebFactory::~WebFactory() {
   if (m_cookieJar != nullptr && m_cookieJar->parent() == nullptr) {
     m_cookieJar->deleteLater();
   }
-}
-
-QWebEngineProfile* WebFactory::webEngineProfile() const {
-  return m_webEngineProfile;
 }
 
 bool WebFactory::sendMessageViaEmail(const Message& message) {
@@ -259,54 +361,6 @@ bool WebFactory::openUrlInExternalBrowser(const QUrl& url, bool use_external_too
   }
 
   return result;
-}
-
-void WebFactory::onClearHttpCacheCompleted() {
-  qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                       GuiMessage(tr("Web cache cleared"),
-                                  tr("Web cache was cleared. List of visited links was cleared too.")),
-                       GuiMessageDestination(true, true, true));
-}
-
-#if QT_VERSION_MAJOR < 6
-void WebFactory::onDownloadRequested(QWebEngineDownloadItem* download) {
-#else
-void WebFactory::onDownloadRequested(QWebEngineDownloadRequest* download) {
-#endif
-  if (download->isSavePageDownload() ||
-      download->mimeType().contains(QSL("pdf"), Qt::CaseSensitivity::CaseInsensitive)) {
-    download->accept();
-  }
-  else {
-    QString url = download->url().toString();
-
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         GuiMessage(tr("File download"),
-                                    tr("Download of file '%1' was offered.").arg(download->downloadFileName())),
-                         GuiMessageDestination(true, true, false),
-                         GuiAction(tr("Copy file URL"), m_webEngineProfile, [url]() {
-                           QGuiApplication::clipboard()->setText(url);
-                         }));
-
-    download->cancel();
-  }
-}
-
-void WebFactory::initializeWebEngineProfile() {
-  QWebEngineUrlScheme gemini_scheme("gemini");
-  gemini_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
-
-  QWebEngineUrlScheme::registerScheme(gemini_scheme);
-  m_webEngineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
-
-#if QT_VERSION_MAJOR >= 6
-  connect(m_webEngineProfile,
-          &QWebEngineProfile::clearHttpCacheCompleted,
-          this,
-          &WebFactory::onClearHttpCacheCompleted);
-#endif
-
-  connect(m_webEngineProfile, &QWebEngineProfile::downloadRequested, this, &WebFactory::onDownloadRequested);
 }
 
 QString WebFactory::stripTags(QString text) {
@@ -739,47 +793,6 @@ QMap<QString, char16_t> WebFactory::generateUnescapes() {
   res[QSL("zwnj")] = 0x200c;
 
   return res;
-}
-
-bool WebFactory::isByDefaultDisabledWebEngineAttribute(QWebEngineSettings::WebAttribute web_attribute) {
-  static QList<QWebEngineSettings::WebAttribute> attrs = {QWebEngineSettings::WebAttribute::JavascriptCanAccessClipboard
-#if QT_VERSION >= 0x060700 // Qt >= 6.7.0
-                                                          ,
-                                                          QWebEngineSettings::WebAttribute::ForceDarkMode
-#endif
-  };
-
-  return attrs.contains(web_attribute);
-}
-
-QAction* WebFactory::createEngineSettingsAction(QObject* parent,
-                                                const QString& title,
-                                                QWebEngineSettings::WebAttribute web_attribute) {
-  auto* act = new QAction(title, parent);
-  auto enabled = !isByDefaultDisabledWebEngineAttribute(web_attribute);
-
-  act->setData(int(web_attribute));
-  act->setCheckable(true);
-  act->setChecked(qApp->settings()
-                    ->value(WebEngineAttributes::ID, QString::number(int(web_attribute)), enabled)
-                    .toBool());
-
-  m_webEngineProfile->settings()->setAttribute(web_attribute, enabled);
-  connect(act, &QAction::toggled, this, &WebFactory::onWebEngineAttributeChanged);
-  return act;
-}
-
-void WebFactory::onWebEngineAttributeChanged(bool enabled) {
-  const QAction* const act = qobject_cast<QAction*>(sender());
-
-  QWebEngineSettings::WebAttribute attribute = QWebEngineSettings::WebAttribute(act->data().toInt());
-
-  qApp->settings()->setValue(WebEngineAttributes::ID, QString::number(static_cast<int>(attribute)), enabled);
-  m_webEngineProfile->settings()->setAttribute(attribute, act->isChecked());
-}
-
-QList<QAction*> WebFactory::webEngineAttributeActions() const {
-  return m_webEngineAttributeActions;
 }
 
 CookieJar* WebFactory::cookieJar() const {

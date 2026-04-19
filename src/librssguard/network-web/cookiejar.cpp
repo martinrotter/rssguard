@@ -11,12 +11,16 @@
 #include <QDir>
 #include <QNetworkCookie>
 #include <QSettings>
+
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
 #include <QWebEngineCookieStore>
 #include <QWebEngineProfile>
+#endif
 
 #define COOKIE_URL_IDENTIFIER ":COOKIE:"
 
 CookieJar::CookieJar(WebFactory* parent) : QNetworkCookieJar(), m_saver(AutoSaver(this, QSL("saveCookies"), 30, 45)) {
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   if (parent != nullptr) {
     // WebEngine does not store cookies, CookieJar does.
     parent->webEngineProfile()
@@ -24,11 +28,13 @@ CookieJar::CookieJar(WebFactory* parent) : QNetworkCookieJar(), m_saver(AutoSave
 
     m_webEngineCookies = parent->webEngineProfile()->cookieStore();
   }
+#endif
 
   // Load all cookies and also set them into WebEngine store.
   updateSettings();
   loadCookies();
 
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   // When cookies change in WebEngine, they change in main cookie jar too.
   //
   // Also, the synchronization between WebEngine cookie jar and main cookie jar is this:
@@ -41,6 +47,7 @@ CookieJar::CookieJar(WebFactory* parent) : QNetworkCookieJar(), m_saver(AutoSave
   connect(m_webEngineCookies, &QWebEngineCookieStore::cookieRemoved, this, [=](const QNetworkCookie& cookie) {
     deleteCookieInternal(cookie, false);
   });
+#endif
 }
 
 CookieJar::~CookieJar() {
@@ -57,7 +64,7 @@ QList<QNetworkCookie> CookieJar::extractCookiesFromUrl(const QString& url) {
   QStringList cookies_list = cookies_string.split(';');
   QList<QNetworkCookie> cookies;
 
-  for (const QString& single_cookie : cookies_list) {
+  for (const QString& single_cookie : std::as_const(cookies_list)) {
     const QList<QNetworkCookie>& extracted_cookies = QNetworkCookie::parseCookies(single_cookie.toUtf8());
 
     if (extracted_cookies.isEmpty()) {
@@ -111,7 +118,7 @@ void CookieJar::saveCookies() {
   qobject_cast<QSettings*>(sett)->remove(QString());
   sett->endGroup();
 
-  for (const QNetworkCookie& cookie : cookies) {
+  for (const QNetworkCookie& cookie : std::as_const(cookies)) {
     /*if (cookie.isSessionCookie()) {
       continue;
     }*/
@@ -141,7 +148,9 @@ bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool notify_o
     }
 
     if (notify_others) {
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
       m_webEngineCookies->setCookie(cookie);
+#endif
     }
   }
 
@@ -156,7 +165,9 @@ bool CookieJar::updateCookieInternal(const QNetworkCookie& cookie, bool notify_o
     // saveCookies();
 
     if (notify_others) {
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
       m_webEngineCookies->setCookie(cookie);
+#endif
     }
   }
 
@@ -171,7 +182,9 @@ bool CookieJar::deleteCookieInternal(const QNetworkCookie& cookie, bool notify_o
     // saveCookies();
 
     if (notify_others) {
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
       m_webEngineCookies->deleteCookie(cookie);
+#endif
     }
   }
 

@@ -180,13 +180,6 @@ QWebEngineView* WebEngineViewer::createWindow(QWebEnginePage::WebWindowType type
 void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
   m_browser = browser;
 
-  /*
-  browser->m_actionBack = pageAction(QWebEnginePage::WebAction::Back);
-  browser->m_actionForward = pageAction(QWebEnginePage::WebAction::Forward);
-  browser->m_actionReload = pageAction(QWebEnginePage::WebAction::Reload);
-  browser->m_actionStop = pageAction(QWebEnginePage::WebAction::Stop);
-*/
-
   // NOTE: Just forward QtWebEngine signals, it's all there.
   connect(this, &QWebEngineView::loadStarted, this, &WebEngineViewer::loadingStarted);
   connect(this, &QWebEngineView::loadProgress, this, &WebEngineViewer::loadingProgress);
