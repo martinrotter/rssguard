@@ -101,7 +101,7 @@ void TextBrowserViewer::printToPrinter(QPrinter* printer) {
 }
 
 void TextBrowserViewer::cleanupCache() {
-  IOFactory::removeFolder(qApp->web().webCacheFolder());
+  // IOFactory::removeFolder(qApp->web()->webCacheFolder());
 }
 
 double TextBrowserViewer::verticalScrollBarPosition() const {

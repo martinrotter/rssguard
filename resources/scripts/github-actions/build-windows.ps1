@@ -3,7 +3,7 @@ $use_qt5 = $args[1]
 $webengine_viewer = $args[2]
 
 echo "We are building for MS Windows."
-echo "OS: $os; Qt5: $use_qt5"
+echo "OS: $os; Qt5: $use_qt5; WebEngine: $webengine_viewer"
 
 $git_revlist = git rev-list --tags --max-count=1
 $git_tag = git describe --tags $git_revlist

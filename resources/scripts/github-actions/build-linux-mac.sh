@@ -4,6 +4,7 @@ set -e
 
 os="$1"
 use_qt5="$2"
+webengine_viewer="$3"
 
 if [[ "$use_qt5" == "ON" ]]; then
   USE_QT6="OFF"
@@ -48,6 +49,12 @@ else
   qt_id="qt5"
 fi
 
+if [[ "$webengine_viewer" == "ON" ]]; then
+  variant_id="web"
+else
+  variant_id="text"
+fi
+
 # Install needed dependencies.
 if [ $is_linux = true ]; then
   echo "No need to install additional packages."
@@ -84,10 +91,10 @@ git_revision=$(git rev-parse --short HEAD)
 devbuild_opt=$([[ "$GITHUB_REF" =~ ^refs/tags/[0-9] ]] && echo "OFF" || echo "ON")
 
 if [[ "$devbuild_opt" == "ON" ]]; then
-  image_full_name="rssguard-dev-${git_revision}-${qt_id}-${os_id}.${image_suffix}"
+  image_full_name="rssguard-dev-${git_revision}-${variant_id}-${qt_id}-${os_id}.${image_suffix}"
 else
   # This GitHub Actions run was triggered by pushing a tag that starts with a number, so assume it's a stable release.
-  image_full_name="rssguard-${git_tag}-${qt_id}-${os_id}.${image_suffix}"
+  image_full_name="rssguard-${git_tag}-${variant_id}-${qt_id}-${os_id}.${image_suffix}"
 fi
 
 echo "New output file name is: $image_full_name"
@@ -95,7 +102,7 @@ echo "New output file name is: $image_full_name"
 mkdir rssguard-build
 cd rssguard-build
 
-cmake .. -G Ninja -DCMAKE_OSX_ARCHITECTURES="arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="$devbuild_opt" -DBUILD_WITH_QT6="$USE_QT6" -DBUILD_XMPP_PLUGIN="$qxmpp" -DUSE_SYSTEM_QXMPP="ON" -DENABLE_COMPRESSED_SITEMAP="ON" -DIS_DEVBUILD="$devbuild_opt" -DENABLE_ICU="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$qtmultimedia" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET"
+cmake .. -G Ninja -DCMAKE_OSX_ARCHITECTURES="arm64" -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" -DFORCE_BUNDLE_ICONS="ON" -DCMAKE_BUILD_TYPE="MinSizeRel" -DCMAKE_VERBOSE_MAKEFILE="ON" -DCMAKE_INSTALL_PREFIX="$prefix" -DREVISION_FROM_GIT="$devbuild_opt" -DBUILD_WITH_QT6="$USE_QT6" -DWEB_ARTICLE_VIEWER_WEBENGINE="$webengine_viewer" -DBUILD_XMPP_PLUGIN="$qxmpp" -DUSE_SYSTEM_QXMPP="ON" -DENABLE_COMPRESSED_SITEMAP="ON" -DIS_DEVBUILD="$devbuild_opt" -DENABLE_ICU="ON" -DENABLE_MEDIAPLAYER_LIBMPV="$libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$qtmultimedia" -DFEEDLY_CLIENT_ID="$FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$FEEDLY_CLIENT_SECRET"
 cmake --build .
 cmake --install . --prefix "$prefix"
 
