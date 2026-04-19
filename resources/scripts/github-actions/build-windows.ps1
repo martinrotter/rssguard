@@ -49,7 +49,6 @@ if ($use_qt5 -eq "ON") {
   $qt_version_base = "5.15"
   $qt_version = "5.15.18"
 
-
   $use_icu = "OFF"
   $use_libmpv = "OFF"
   $use_qtmultimedia = "ON"
@@ -206,8 +205,10 @@ cd "app"
 windeployqt.exe --verbose 1 --no-compiler-runtime --no-translations --release "rssguard.exe" "rssguard.dll" "." ".\\plugins"
 cd ".."
 
+if ($webengine_viewer -eq "ON") {
 # Copy some QtWebEngine files.
-Copy-Item -Path "$qt_path\$qt_version\$qt_arch_base\translations\qtwebengine_locales\*.pak" -Destination ".\app\translations\qtwebengine_locales\" -Verbose
+  Copy-Item -Path "$qt_path\$qt_version\$qt_arch_base\translations\qtwebengine_locales\*.pak" -Destination ".\app\translations\qtwebengine_locales\" -Verbose
+}
 
 # Copy OpenSSL.
 if ($is_qt_6) {
