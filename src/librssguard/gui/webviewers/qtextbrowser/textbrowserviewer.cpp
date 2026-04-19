@@ -9,7 +9,6 @@
 #include <QContextMenuEvent>
 #include <QFileIconProvider>
 #include <QScrollBar>
-#include <QTextCodec>
 #include <QTextDocumentFragment>
 #include <QTimer>
 #include <QtConcurrent>
