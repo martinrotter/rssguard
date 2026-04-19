@@ -58,10 +58,10 @@ jobs:
           mkdir -p "${TMPDIR}"          
           export TMPDIR
 
-          # Main repository
+          # Main repository.
           git archive --format=tar HEAD | tar -x -C "${TMPDIR}"
 
-          # Submodules (recursive)
+          # Submodules (recursive).
           git submodule foreach --recursive '
             mkdir -p "${TMPDIR}/${path}" &&
             git archive --format=tar HEAD | tar -x -C "${TMPDIR}/${path}"
@@ -70,7 +70,7 @@ jobs:
           # Include go modules.
           ( cd "${TMPDIR}/resources/scripts/standalone/article-extractor" && go mod vendor )
 
-          # Final compressed tarball
+          # Final compressed tarball.
           tar -czf "${TAR_NAME}" -C "${TMPDIR}/.." "$(basename "${TMPDIR}")"
 
       - name: Upload source tarball
@@ -83,7 +83,7 @@ jobs:
     needs:
       - check-build-script
       - source-tarball
-    name: "${{ matrix.os }}; qt5 = ${{ matrix.use_qt5 }}"
+    name: "${{ matrix.os }}; qt5 = ${{ matrix.use_qt5 }}; webengine_viewer = ${{ matrix.webengine_viewer }}"
     runs-on: "${{ matrix.os }}"
     container: ${{ matrix.cont }}
     strategy:
@@ -91,6 +91,7 @@ jobs:
       matrix:
         os: [windows-2022, ubuntu-24.04, macos-15]
         use_qt5: ["ON", "OFF"]
+        webengine_viewer: ["ON", "OFF"]
         include:
           - os: windows-2022
             script_name: .\resources\scripts\github-actions\build-windows.ps1
@@ -126,7 +127,7 @@ jobs:
           submodules: true
 
       - name: Prepare environment and compile application
-        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_qt5 }}"
+        run: ${{ matrix.script_name }} "${{ matrix.os }}" "${{ matrix.use_qt5 }}" "${{ matrix.webengine_viewer }}"
         env:
           FEEDLY_CLIENT_ID: ${{ secrets.FEEDLY_CLIENT_ID }}
           FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}

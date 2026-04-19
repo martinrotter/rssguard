@@ -1,5 +1,6 @@
 $os = $args[0]
 $use_qt5 = $args[1]
+$webengine_viewer = $args[2]
 
 echo "We are building for MS Windows."
 echo "OS: $os; Qt5: $use_qt5"
@@ -197,7 +198,7 @@ cd "$old_pwd"
 mkdir "rssguard-build"
 cd "rssguard-build"
 
-& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="$devbuild_opt" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DIS_DEVBUILD="$devbuild_opt" -DENABLE_ICU="$use_icu" -DICU_ROOT="$icu_path" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DBUILD_XMPP_PLUGIN="ON" -DBUILD_XMPP_PLUGIN="$use_xmpp" -Dqxmpp_ROOT="$qxmpp_root" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET"
+& "$cmake_path" ".." -G Ninja -DCMAKE_BUILD_TYPE="RelWithDebInfo" -DCMAKE_VERBOSE_MAKEFILE="ON" -DBUILD_WITH_QT6="$with_qt6" -DREVISION_FROM_GIT="$devbuild_opt" -DZLIB_ROOT="$zlib_path" -DENABLE_COMPRESSED_SITEMAP="ON" -DIS_DEVBUILD="$devbuild_opt" -DENABLE_ICU="$use_icu" -DICU_ROOT="$icu_path" -DENABLE_MEDIAPLAYER_LIBMPV="$use_libmpv" -DENABLE_MEDIAPLAYER_QTMULTIMEDIA="$use_qtmultimedia" -DLibMPV_ROOT="$libmpv_path" -DWEB_ARTICLE_VIEWER_WEBENGINE="$webengine_viewer" -DBUILD_XMPP_PLUGIN="ON" -DBUILD_XMPP_PLUGIN="$use_xmpp" -Dqxmpp_ROOT="$qxmpp_root" -DFEEDLY_CLIENT_ID="$env:FEEDLY_CLIENT_ID" -DFEEDLY_CLIENT_SECRET="$env:FEEDLY_CLIENT_SECRET"
 & "$cmake_path" --build .
 & "$cmake_path" --install . --prefix app
 
@@ -269,6 +270,13 @@ if ($is_devbuild) {
 }
 else {
   $packagebase = "rssguard-$git_tag"
+}
+
+if ($webengine_viewer -eq "ON") {
+  $packagebase += "-web"
+}
+else {
+  $packagebase += "-text"
 }
 
 if ($is_qt_6) {
