@@ -19,6 +19,8 @@
 
 WebViewer::WebViewer() {
   m_loadExternalResources = qApp->settings()->value(GROUP(Browser), SETTING(Browser::LoadExternalResources)).toBool();
+  m_placeholderImage = qApp->icons()->miscPixmap(QSL("image-placeholder"));
+  m_placeholderImageError = qApp->icons()->miscPixmap(QSL("image-placeholder-error"));
 }
 
 WebViewer::~WebViewer() {}
