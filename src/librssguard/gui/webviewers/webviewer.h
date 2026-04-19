@@ -138,6 +138,8 @@ class WebViewer {
 
   protected:
     ContextMenuData m_contextMenuData;
+    QPixmap m_placeholderImage;
+    QPixmap m_placeholderImageError;
 
   private:
     bool m_loadExternalResources;

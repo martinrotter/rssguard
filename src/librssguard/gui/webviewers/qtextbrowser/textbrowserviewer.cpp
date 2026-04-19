@@ -10,6 +10,7 @@
 #include <QFileIconProvider>
 #include <QScrollBar>
 #include <QTextCodec>
+#include <QTextDocumentFragment>
 #include <QTimer>
 #include <QtConcurrent>
 
@@ -20,12 +21,14 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setFrameShadow(QFrame::Shadow::Plain);
   setTabChangesFocus(true);
   setOpenLinks(false);
+  setOpenExternalLinks(false);
   setWordWrapMode(QTextOption::WrapMode::WordWrap);
 
   viewport()->setAutoFillBackground(false);
   setDocument(m_document.data());
   setReadOnly(true);
 
+  connect(this, &TextBrowserViewer::anchorClicked, this, &TextBrowserViewer::linkMouseClicked);
   connect(this, QOverload<const QUrl&>::of(&QTextBrowser::highlighted), this, &TextBrowserViewer::linkMouseHighlighted);
 }
 
@@ -73,7 +76,7 @@ QString TextBrowserViewer::plainText() const {
 }
 
 QUrl TextBrowserViewer::url() const {
-  return QTextBrowser::source();
+  return m_currentUrl;
 }
 
 void TextBrowserViewer::clear() {
@@ -82,6 +85,8 @@ void TextBrowserViewer::clear() {
 
 QString TextBrowserViewer::htmlForMessage(const Message& messages, RootItem* root) const {
   auto html_message = qApp->skins()->generateHtmlOfArticle(messages, root);
+
+  // html_message = QTextDocumentFragment().fromHtml(html_message).toPlainText();
 
   // Remove other characters which cannot be displayed properly.
   static QRegularExpression exp_symbols("&#x1F[0-9A-F]{3};");
@@ -171,17 +176,20 @@ void TextBrowserViewer::loadMessage(const Message& message, RootItem* root) {
 void TextBrowserViewer::loadUrl(const QUrl& url) {
   emit loadingStarted();
 
-  setSource(url, QTextDocument::ResourceType::HtmlResource);
+  QByteArray output;
+  auto download_res = NetworkFactory::performNetworkOperation(url.toString(),
+                                                              5000,
+                                                              {},
+                                                              output,
+                                                              QNetworkAccessManager::Operation::GetOperation);
 
-  setZoomFactor(m_zoomFactor);
-  setVerticalScrollBarPosition(0.0);
+  setHtml(QString::fromUtf8(output), url);
 
-  emit pageTitleChanged(documentTitle());
-  emit pageUrlChanged(url);
-  emit loadingFinished(true);
+  emit loadingFinished(download_res.m_networkError == QNetworkReply::NetworkError::NoError);
 }
 
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
+  m_currentUrl = url;
   QTextBrowser::setHtml(html);
 
   setZoomFactor(m_zoomFactor);
@@ -196,17 +204,19 @@ TextBrowserDocument::TextBrowserDocument(TextBrowserViewer* parent) : QTextDocum
 }
 
 QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
-  return {};
+  if (QTextDocument::ResourceType(type) = QTextDocument::ResourceType::ImageResource) {
+    return m_viewer->m_placeholderImage;
+  }
+  else {
+    return {};
+  }
 }
 
 ContextMenuData TextBrowserViewer::provideContextMenuData(QContextMenuEvent* event) {
   ContextMenuData c;
 
-  QString anchor = anchorAt(event->pos());
-
-  if (!anchor.isEmpty()) {
-    c.m_linkUrl = anchor;
-  }
+  c.m_linkUrl = anchorAt(event->pos());
+  c.m_selectedText = textCursor().selectedText();
 
   return c;
 }
