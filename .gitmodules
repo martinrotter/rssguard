@@ -13,3 +13,6 @@
 [submodule "src/librssguard-xmpp/src/3rd-party/qxmpp"]
 	path = src/librssguard-xmpp/src/3rd-party/qxmpp
 	url = https://invent.kde.org/libraries/qxmpp.git
+[submodule "src/librssguard/3rd-party/gumbo"]
+	path = src/librssguard/3rd-party/gumbo
+	url = https://codeberg.org/gumbo-parser/gumbo-parser
