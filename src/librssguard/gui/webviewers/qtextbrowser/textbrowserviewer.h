@@ -87,6 +87,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
   private:
     WebBrowser* m_browser;
     QUrl m_currentUrl;
+    QFont m_baseFont;
     qreal m_zoomFactor = 1.0;
     QScopedPointer<TextBrowserDocument> m_document;
 };
