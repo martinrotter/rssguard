@@ -6,7 +6,6 @@
 #include "core/message.h"
 #include "gui/webviewers/qtwebengine/webenginepage.h"
 #include "gui/webviewers/webviewer.h"
-#include "miscellaneous/externaltool.h"
 
 #include <QPrinter>
 #include <QWebEngineFullScreenRequest>

@@ -167,7 +167,10 @@ void WebBrowser::reloadZoomFactor() {
   m_webView->setZoomFactor(qApp->settings()->value(GROUP(Messages), SETTING(Messages::Zoom)).toDouble());
 }
 
-void WebBrowser::setLocationBoxVisible(bool visible) {
+void WebBrowser::setNavigationVisible(bool visible) {
+  m_actionGoBack->setVisible(visible);
+  m_actionGoForward->setVisible(visible);
+  m_actionReload->setVisible(visible);
   m_actionTxtLocation->setVisible(visible);
   m_txtLocation->blockSignals(!visible);
 }

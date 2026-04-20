@@ -112,6 +112,8 @@ void TextBrowserViewer::setVerticalScrollBarPosition(double pos) {
 }
 
 void TextBrowserViewer::applyFont(const QFont& fon) {
+  m_baseFont = fon;
+
   setFont(fon);
   setZoomFactor(zoomFactor());
 }
@@ -137,7 +139,7 @@ void TextBrowserViewer::setZoomFactor(qreal zoom_factor) {
 
   auto fon = font();
 
-  fon.setPointSizeF(fon.pointSizeF() * zoom_factor);
+  fon.setPointSizeF(m_baseFont.pointSizeF() * zoom_factor);
   setFont(fon);
 }
 
