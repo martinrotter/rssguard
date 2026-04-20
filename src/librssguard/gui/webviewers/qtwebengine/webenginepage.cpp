@@ -6,6 +6,7 @@
 #include "gui/webviewers/qtwebengine/webengineviewer.h"
 #include "miscellaneous/application.h"
 #include "network-web/webfactory.h"
+#include "qtlinq/qtlinq.h"
 
 #include <QString>
 #include <QStringList>
@@ -26,6 +27,28 @@ WebEngineViewer* WebEnginePage::view() const {
 #else
   return qobject_cast<WebEngineViewer*>(QWebEnginePage::view());
 #endif
+}
+
+QList<QAction*> WebEnginePage::allPageActions() const {
+  QList<QAction*> acts;
+
+  for (int i = 0; i < QWebEnginePage::WebAction::WebActionCount; i++) {
+    auto* act = action(QWebEnginePage::WebAction(i));
+
+    if (act == nullptr) {
+      continue;
+    }
+
+    acts << act;
+  }
+
+  acts = qlinq::from(acts)
+           .orderBy([](const QAction* act) {
+             return act->text().toLower();
+           })
+           .toList();
+
+  return acts;
 }
 
 void WebEnginePage::onPdfPrintingFinished(const QString& file_path, bool success) {
