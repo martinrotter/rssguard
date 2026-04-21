@@ -158,6 +158,14 @@ void WebEngineViewer::setLoadExternalResources(bool load_resources) {
   page()->settings()->setAttribute(QWebEngineSettings::WebAttribute::AutoLoadImages, load_resources);
 }
 
+bool WebEngineViewer::supportsNavigation() const {
+  return true;
+}
+
+bool WebEngineViewer::supportImagesLoading() const {
+  return true;
+}
+
 void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
   event->accept();
 
