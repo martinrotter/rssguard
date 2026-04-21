@@ -43,6 +43,11 @@ The `web` viewer can load external images and other remote page resources. This 
 
 If you prefer stricter privacy, disable external image loading or use the `text` variant.
 
+## Cookies
+In the `web` variant, cookies accepted or created in RSS Guard's built-in web browser are shared with RSS Guard's internal network stack. This means that if you sign in to a site in the built-in browser and the site stores a cookie, feeds from the same site that require that cookie may start working in RSS Guard too.
+
+This is useful for feeds hidden behind simple cookie-based access, but it is not a replacement for real account synchronization or OAuth-based services. It also only applies to the `web` variant; the lighter `text` variant does not use Qt WebEngine.
+
 ## Which Variant Should I Use?
 If you are unsure, start with the `web` package. It gives the best rendering and the most complete built-in browsing experience.
 
