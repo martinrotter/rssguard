@@ -2,6 +2,7 @@
 
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
 
+#include "3rd-party/gumbo/src/gumbo.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 
@@ -82,8 +83,8 @@ void TextBrowserViewer::clear() {
   setHtml({});
 }
 
-QString TextBrowserViewer::htmlForMessage(const Message& messages, RootItem* root) const {
-  auto html_message = qApp->skins()->generateHtmlOfArticle(messages, root);
+QString TextBrowserViewer::htmlForMessage(const Message& message, RootItem* root) const {
+  auto html_message = qApp->skins()->generateHtmlOfArticle(message, root);
 
   // html_message = QTextDocumentFragment().fromHtml(html_message).toPlainText();
 
@@ -128,6 +129,10 @@ void TextBrowserViewer::goBack() {
 
 void TextBrowserViewer::goForward() {
   QTextBrowser::forward();
+}
+
+bool TextBrowserViewer::supportImagesLoading() const {
+  return false;
 }
 
 qreal TextBrowserViewer::zoomFactor() const {
@@ -189,8 +194,140 @@ void TextBrowserViewer::loadUrl(const QUrl& url) {
   emit loadingFinished(download_res.m_networkError == QNetworkReply::NetworkError::NoError);
 }
 
+// --- helper: HTML escape ---
+static QString escapeHtml(const QString& input) {
+  QString s = input;
+  s.replace("&", "&amp;");
+  s.replace("<", "&lt;");
+  s.replace(">", "&gt;");
+  s.replace("\"", "&quot;");
+  return s;
+}
+
+// --- helper: void elements ---
+static bool isVoidTag(GumboTag tag) {
+  switch (tag) {
+    case GUMBO_TAG_AREA:
+    case GUMBO_TAG_BASE:
+    case GUMBO_TAG_BR:
+    case GUMBO_TAG_COL:
+    case GUMBO_TAG_EMBED:
+    case GUMBO_TAG_HR:
+    case GUMBO_TAG_IMG:
+    case GUMBO_TAG_INPUT:
+    case GUMBO_TAG_LINK:
+    case GUMBO_TAG_META:
+    case GUMBO_TAG_PARAM:
+    case GUMBO_TAG_SOURCE:
+    case GUMBO_TAG_TRACK:
+    case GUMBO_TAG_WBR:
+      return true;
+    default:
+      return false;
+  }
+}
+
+// --- recursive processing ---
+static void processNode(GumboNode* node, QString& out) {
+  if (!node) {
+    return;
+  }
+
+  switch (node->type) {
+    case GUMBO_NODE_TEXT:
+      out += escapeHtml(QString::fromUtf8(node->v.text.text));
+      break;
+
+    case GUMBO_NODE_ELEMENT: {
+      GumboElement& el = node->v.element;
+
+      // 🔴 replace <img>
+      if (el.tag == GUMBO_TAG_IMG) {
+        GumboAttribute* src = gumbo_get_attribute(&el.attributes, "src");
+
+        if (src && src->value) {
+          QString url = escapeHtml(QString::fromUtf8(src->value));
+          out += "<a href=\"" + url + "\">" + url + "</a>";
+        }
+        return;
+      }
+
+      const char* tagName = gumbo_normalized_tagname(el.tag);
+
+      if (tagName && *tagName) {
+        out += "<";
+        out += tagName;
+
+        // attributes
+        GumboVector* attrs = &el.attributes;
+        for (unsigned int i = 0; i < attrs->length; ++i) {
+          auto* attr = static_cast<GumboAttribute*>(attrs->data[i]);
+          out += " ";
+          out += attr->name;
+          out += "=\"";
+          out += escapeHtml(QString::fromUtf8(attr->value));
+          out += "\"";
+        }
+
+        out += ">";
+      }
+
+      // children
+      GumboVector* children = &el.children;
+      for (unsigned int i = 0; i < children->length; ++i) {
+        processNode(static_cast<GumboNode*>(children->data[i]), out);
+      }
+
+      // closing tag
+      if (tagName && *tagName && !isVoidTag(el.tag)) {
+        out += "</";
+        out += tagName;
+        out += ">";
+      }
+
+      break;
+    }
+
+    default:
+      break;
+  }
+}
+
+// --- main function ---
+QString replaceImagesWithLinks(const QString& html) {
+  QByteArray utf8 = html.toUtf8();
+
+  GumboOutput* output = gumbo_parse(utf8.constData());
+  QString result;
+
+  // gumbo wraps fragment into html > body
+  GumboNode* root = output->root;
+
+  if (root->type == GUMBO_NODE_ELEMENT) {
+    GumboVector* rootChildren = &root->v.element.children;
+
+    // najdi <body>
+    for (unsigned int i = 0; i < rootChildren->length; ++i) {
+      GumboNode* node = static_cast<GumboNode*>(rootChildren->data[i]);
+
+      if (node->type == GUMBO_NODE_ELEMENT && node->v.element.tag == GUMBO_TAG_BODY) {
+        GumboVector* bodyChildren = &node->v.element.children;
+
+        for (unsigned int j = 0; j < bodyChildren->length; ++j) {
+          processNode(static_cast<GumboNode*>(bodyChildren->data[j]), result);
+        }
+        break;
+      }
+    }
+  }
+
+  gumbo_destroy_output(&kGumboDefaultOptions, output);
+  return result;
+}
+
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
   m_currentUrl = url;
+
   QTextBrowser::setHtml(html);
 
   setZoomFactor(m_zoomFactor);

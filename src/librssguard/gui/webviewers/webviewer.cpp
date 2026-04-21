@@ -159,8 +159,11 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   specific_menu->addSeparator();
   specific_menu->addAction(m_actionPrint.data());
   specific_menu->addAction(m_actionSaveHtml.data());
-  specific_menu->addSeparator();
-  specific_menu->addAction(m_actionExternalResources.data());
+
+  if (supportImagesLoading()) {
+    specific_menu->addSeparator();
+    specific_menu->addAction(m_actionExternalResources.data());
+  }
 
   // Enable/disable.
   m_actionPrint->setEnabled(!html().simplified().isEmpty());

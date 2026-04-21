@@ -57,6 +57,8 @@ class WebViewer {
     virtual QString html() const = 0;
     virtual QString plainText() const = 0;
 
+    virtual bool supportImagesLoading() const = 0;
+
     // Reloads page if there is some URL set.
     virtual void reloadPage() = 0;
 

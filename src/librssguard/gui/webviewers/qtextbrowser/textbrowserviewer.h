@@ -52,7 +52,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     virtual QUrl url() const;
     virtual void clear();
     virtual void loadMessage(const Message& message, RootItem* root);
-    virtual QString htmlForMessage(const Message& messages, RootItem* root) const;
+    virtual QString htmlForMessage(const Message& message, RootItem* root) const;
     virtual void printToPrinter(QPrinter* printer);
     virtual void cleanupCache();
     virtual double verticalScrollBarPosition() const;
@@ -61,6 +61,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     virtual void reloadPage();
     virtual void goBack();
     virtual void goForward();
+    virtual bool supportImagesLoading() const;
 
     virtual qreal zoomFactor() const;
     virtual void setZoomFactor(qreal zoom_factor);
