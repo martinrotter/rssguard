@@ -249,7 +249,7 @@ void WebViewer::openClickedLinkInNewTab() {
   if (context_url.isValid()) {
     const QUrl resolved_url = (url().isValid() && context_url.isRelative()) ? url().resolved(context_url) : context_url;
 
-    emit openUrlInNewTab(resolved_url);
+    emit openUrlInNewTab(false, resolved_url);
   }
 }
 

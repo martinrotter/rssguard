@@ -4,6 +4,7 @@
 #define TEXTBROWSERVIEWER_H
 
 #include "gui/webviewers/webviewer.h"
+#include "network-web/networkfactory.h"
 
 #include <QNetworkReply>
 #include <QPixmap>
@@ -83,10 +84,13 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     void loadingStarted();
     void loadingProgress(int progress);
     void loadingFinished(bool success);
-    void openUrlInNewTab(const QUrl& url);
+    void openUrlInNewTab(bool open_externally, const QUrl& url);
     void openViewerInNewTab(WebViewer* viewer);
 
   private:
+    void displayDownloadedPage(const QUrl& url, const QByteArray& data, const NetworkResult& res);
+    void justSetHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);
+
     QString convertToHtmlWithoutImages(const QString& html) const;
 
   private:

@@ -116,7 +116,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     void loadingStarted();
     void loadingProgress(int progress);
     void loadingFinished(bool success);
-    void openUrlInNewTab(const QUrl& url);
+    void openUrlInNewTab(bool open_externally, const QUrl& url);
     void openViewerInNewTab(WebViewer* viewer);
 
   private slots:
