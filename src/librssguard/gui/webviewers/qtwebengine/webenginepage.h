@@ -14,6 +14,7 @@ class WebEnginePage : public QWebEnginePage {
     explicit WebEnginePage(QObject* parent = nullptr);
 
     WebEngineViewer* view() const;
+    QList<QAction*> allPageActions() const;
 
   signals:
     void linkMouseClicked(const QUrl& url);

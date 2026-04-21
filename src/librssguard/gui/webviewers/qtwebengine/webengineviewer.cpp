@@ -323,8 +323,9 @@ void WebEngineViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent
   WebViewer::processContextMenu(specific_menu, event);
 
   specific_menu->addSection(tr("Advanced"));
-  specific_menu->addMenu(qApp->icons()->fromTheme(QSL("emblem-system")), tr("Advanced actions"))
-    ->addActions(advancedActions());
+  specific_menu->addMenu(qApp->icons()->fromTheme(QSL("list-add")), tr("Extra actions"))->addActions(advancedActions());
+  specific_menu->addMenu(qApp->icons()->fromTheme(QSL("application-x-executable"), QSL("tools")), tr("Page actions"))
+    ->addActions(page()->allPageActions());
   specific_menu->addMenu(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web attributes"))
     ->addActions(qApp->web()->webEngineAttributeActions());
 }
