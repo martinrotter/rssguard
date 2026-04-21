@@ -109,6 +109,8 @@ Standard feeds also expose several advanced options that are related to scraping
 
 These settings are especially useful when a site needs extra headers, behaves differently behind a proxy, or provides only partial article contents in the feed itself.
 
+If you use the `web` package, cookies from RSS Guard's built-in web browser are shared with normal feed downloads. For some sites, signing in or accepting cookies in the built-in browser can make URL-based feeds from the same site accessible.
+
 ## Warnings
 ```{warning}
 Fetching full articles and comments can slow feed updates down significantly. It can also increase database size.
