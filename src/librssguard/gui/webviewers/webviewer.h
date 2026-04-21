@@ -120,7 +120,7 @@ class WebViewer {
     virtual void loadingStarted() = 0;
     virtual void loadingProgress(int progress) = 0;
     virtual void loadingFinished(bool success) = 0;
-    virtual void openUrlInNewTab(const QUrl& url) = 0;
+    virtual void openUrlInNewTab(bool open_externally, const QUrl& url) = 0;
     virtual void openViewerInNewTab(WebViewer* viewer) = 0;
 
   protected:

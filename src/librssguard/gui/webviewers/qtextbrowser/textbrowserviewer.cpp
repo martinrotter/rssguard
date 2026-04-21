@@ -10,6 +10,7 @@
 
 #include <QBuffer>
 #include <QContextMenuEvent>
+#include <QDomDocument>
 #include <QFileIconProvider>
 #include <QScrollBar>
 #include <QTextDocumentFragment>
@@ -124,6 +125,7 @@ static void processGumboNode(GumboNode* node, QString& out) {
       if (el.tag == GUMBO_TAG_IMG) {
         GumboAttribute* attr_src = gumbo_get_attribute(&el.attributes, "src");
         GumboAttribute* attr_alt = gumbo_get_attribute(&el.attributes, "alt");
+        GumboAttribute* attr_title = gumbo_get_attribute(&el.attributes, "title");
 
         if (attr_src && attr_src->value) {
           QString src = QString::fromUtf8(attr_src->value);
@@ -133,18 +135,24 @@ static void processGumboNode(GumboNode* node, QString& out) {
           if (attr_alt && attr_alt->value && QString::fromUtf8(attr_alt->value).trimmed().size() > 0) {
             link_text = QString::fromUtf8(attr_alt->value).toHtmlEscaped();
           }
+          else if (attr_title && attr_title->value && QString::fromUtf8(attr_title->value).trimmed().size() > 0) {
+            link_text = QString::fromUtf8(attr_title->value).toHtmlEscaped();
+          }
           else {
             QUrl url(src);
 
-            if (url.isValid() && !url.host().isEmpty()) {
-              link_text = QObject::tr("image - ") + url.host().toHtmlEscaped();
+            if (url.isValid() && !url.fileName().trimmed().isEmpty()) {
+              link_text = url.fileName().toHtmlEscaped();
+            }
+            else if (url.isValid() && !url.host().isEmpty()) {
+              link_text = QObject::tr("image") + QSL(" - ") + url.host().toHtmlEscaped();
             }
             else {
               link_text = QObject::tr("image");
             }
           }
 
-          out += QSL("<p><a href=\"%1\">🖼️ %2</a></p>").arg(href, link_text);
+          out += QSL("<br/><a href=\"%1\">🖼️ %2</a><br/>").arg(href, link_text);
         }
 
         return;
@@ -200,25 +208,13 @@ QString TextBrowserViewer::convertToHtmlWithoutImages(const QString& html) const
   QString result;
   GumboNode* root = output->root;
 
-  if (root->type == GUMBO_NODE_ELEMENT) {
-    GumboVector* root_children = &root->v.element.children;
-
-    for (unsigned int i = 0; i < root_children->length; ++i) {
-      GumboNode* node = static_cast<GumboNode*>(root_children->data[i]);
-
-      if (node->type == GUMBO_NODE_ELEMENT && node->v.element.tag == GUMBO_TAG_BODY) {
-        GumboVector* body_children = &node->v.element.children;
-
-        for (unsigned int j = 0; j < body_children->length; ++j) {
-          processGumboNode(static_cast<GumboNode*>(body_children->data[j]), result);
-        }
-
-        break;
-      }
-    }
-  }
+  processGumboNode(root, result);
 
   gumbo_destroy_output(&kGumboDefaultOptions, output);
+
+  // IOFactory::debugWriteFile("orig.html", html.toUtf8());
+  // IOFactory::debugWriteFile("new.html", result.toUtf8());
+
   return result;
 }
 
@@ -243,9 +239,7 @@ void TextBrowserViewer::printToPrinter(QPrinter* printer) {
   QTextBrowser::print(printer);
 }
 
-void TextBrowserViewer::cleanupCache() {
-  // IOFactory::removeFolder(qApp->web()->webCacheFolder());
-}
+void TextBrowserViewer::cleanupCache() {}
 
 double TextBrowserViewer::verticalScrollBarPosition() const {
   return verticalScrollBar()->value();
@@ -311,7 +305,7 @@ void TextBrowserViewer::loadMessage(const Message& message, RootItem* root) {
   auto url = urlForMessage(message, root);
   auto html = htmlForMessage(message, root);
 
-  setHtml(html, url, root);
+  justSetHtml(html, url, root);
 
   emit loadingProgress(50);
 
@@ -326,7 +320,55 @@ void TextBrowserViewer::loadMessage(const Message& message, RootItem* root) {
   emit loadingFinished(true);
 }
 
+void TextBrowserViewer::displayDownloadedPage(const QUrl& url, const QByteArray& data, const NetworkResult& res) {
+  if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+    if (res.m_contentType.startsWith(QSL("image"))) {
+      emit openUrlInNewTab(true, url);
+    }
+    else if (res.m_contentType.contains(QSL("xml"))) {
+      QDomDocument dom;
+
+      if (dom.setContent(data)) {
+        setHtml(Qt::convertFromPlainText(dom.toString(2)), url);
+      }
+      else {
+        setHtml(QString::fromUtf8(data).toHtmlEscaped(), url);
+      }
+    }
+    else {
+      setHtml(QString::fromUtf8(data), url);
+
+      if (url.hasFragment()) {
+        scrollToAnchor(url.fragment());
+      }
+    }
+  }
+  else {
+    QString error = tr("The page cannot be loaded with HTTP/%1 error.").arg(QString::number(res.m_httpCode));
+
+    if (!data.isEmpty()) {
+      error += QSL("\n\n");
+      error += QString::fromUtf8(data);
+    }
+
+    setHtml(Qt::convertFromPlainText(error), url);
+  }
+
+  emit loadingFinished(res.m_networkError == QNetworkReply::NetworkError::NoError);
+}
+
 void TextBrowserViewer::loadUrl(const QUrl& url) {
+  if (url.isRelative() && url.scheme().isEmpty() && url.path().isEmpty() && url.hasFragment()) {
+    // NOTE: We only scroll to anchor.
+    scrollToAnchor(url.fragment());
+
+    auto new_url = this->url();
+    new_url.setFragment(url.fragment());
+
+    emit pageUrlChanged(new_url);
+    return;
+  }
+
   emit loadingStarted();
 
   QByteArray output;
@@ -336,12 +378,14 @@ void TextBrowserViewer::loadUrl(const QUrl& url) {
                                                               output,
                                                               QNetworkAccessManager::Operation::GetOperation);
 
-  setHtml(QString::fromUtf8(output), url);
-
-  emit loadingFinished(download_res.m_networkError == QNetworkReply::NetworkError::NoError);
+  displayDownloadedPage(url, output, download_res);
 }
 
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
+  justSetHtml(convertToHtmlWithoutImages(html), url, root);
+}
+
+void TextBrowserViewer::justSetHtml(const QString& html, const QUrl& url, RootItem* root) {
   m_currentUrl = url;
 
   QTextBrowser::setHtml(html);
