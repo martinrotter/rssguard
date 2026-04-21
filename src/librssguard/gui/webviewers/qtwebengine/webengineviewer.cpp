@@ -4,11 +4,11 @@
 
 #include "definitions/definitions.h"
 #include "gui/dialogs/filedialog.h"
+#include "gui/reusable/scrollablemenu.h"
 #include "gui/webbrowser.h"
 #include "gui/webviewers/qtwebengine/webenginepage.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
-#include "miscellaneous/settings.h"
 #include "miscellaneous/skinfactory.h"
 #include "network-web/webfactory.h"
 
@@ -332,8 +332,13 @@ void WebEngineViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent
 
   specific_menu->addSection(tr("Advanced"));
   specific_menu->addMenu(qApp->icons()->fromTheme(QSL("list-add")), tr("Extra actions"))->addActions(advancedActions());
-  specific_menu->addMenu(qApp->icons()->fromTheme(QSL("application-x-executable"), QSL("tools")), tr("Page actions"))
-    ->addActions(page()->allPageActions());
+
+  auto* page_actions_menu = new ScrollableMenu(tr("Page actions"), specific_menu);
+  page_actions_menu->setActions(page()->allPageActions(), true);
+  page_actions_menu->setIcon(qApp->icons()->fromTheme(QSL("application-x-executable"), QSL("tools")));
+
+  specific_menu->addMenu(page_actions_menu);
+
   specific_menu->addMenu(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web attributes"))
     ->addActions(qApp->web()->webEngineAttributeActions());
 }
