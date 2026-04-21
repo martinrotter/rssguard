@@ -56,6 +56,7 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
   createConnections();
   reloadFontSettings();
   reloadZoomFactor();
+  setNavigationVisible(true);
 }
 
 void WebBrowser::bindWebView() {
@@ -168,9 +169,12 @@ void WebBrowser::reloadZoomFactor() {
 }
 
 void WebBrowser::setNavigationVisible(bool visible) {
-  m_actionGoBack->setVisible(visible);
-  m_actionGoForward->setVisible(visible);
-  m_actionReload->setVisible(visible);
+  const bool is_supported = m_webView->supportsNavigation();
+
+  m_actionGoBack->setVisible(is_supported && visible);
+  m_actionGoForward->setVisible(is_supported && visible);
+  m_actionReload->setVisible(is_supported && visible);
+
   m_actionTxtLocation->setVisible(visible);
   m_txtLocation->blockSignals(!visible);
 }
