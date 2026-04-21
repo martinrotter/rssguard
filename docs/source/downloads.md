@@ -22,11 +22,13 @@ On Windows, there are several ways to install RSS Guard:
 * Packages created with [Chocolatey](https://community.chocolatey.org/packages/rssguard). These are convenient, but unofficial.
 
 ```{note}
-Official RSS Guard Windows packages come in two flavors:
+Official RSS Guard Windows packages come in several flavors. The package name tells you what it contains:
+* `web` - uses the Qt WebEngine-based article and web viewer. This is the most feature-complete viewer and behaves most like a regular browser.
+* `text` - uses the lighter QTextBrowser-based article and web viewer. It has fewer browser-like features, but the package is smaller and simpler.
 * `win7` - intended for maximum compatibility, including older Windows systems. It is also fine to use on newer Windows versions.
-* `win10` - intended for modern Windows systems. It includes the newer Qt 6-based build and is the better choice if you want the most feature-complete current Windows package.
+* `win10` - intended for modern Windows systems. It includes the newer Qt 6-based build.
 
-If you are unsure which one to choose, start with `win10` on Windows 10 or newer, and use `win7` when compatibility matters more.
+If you are unsure which one to choose, start with the `web` + `win10` package on Windows 10 or newer. Use `text` if you prefer a lighter build, and use `win7` when compatibility with older Windows matters more.
 ```
 
 ```{warning}
@@ -40,10 +42,10 @@ Most required runtime files are bundled with official packages, but if Windows s
 ### Linux
 The best option is to use official distribution packages if your distribution offers them.
 
-If you prefer a standalone package, official release assets provide an `AppImage`.
+If you prefer a standalone package, official release assets provide an `AppImage`. AppImage names also include either `web` or `text`, depending on the bundled article/web viewer.
 
 ### macOS
-`DMG` packages are provided for Mac users.
+`DMG` packages are provided for Mac users. Their names also include either `web` or `text`, depending on the bundled article/web viewer.
 
 ```{warning}
 On macOS, Gatekeeper may block unsigned applications. If that happens, you may need to remove the quarantine flag or self-sign the application with `codesign`.
