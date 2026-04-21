@@ -23,14 +23,14 @@
       <widget class="QLabel" name="m_lblIcon">
        <property name="minimumSize">
         <size>
-         <width>90</width>
-         <height>90</height>
+         <width>128</width>
+         <height>128</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>90</width>
-         <height>90</height>
+         <width>128</width>
+         <height>128</height>
         </size>
        </property>
        <property name="styleSheet">

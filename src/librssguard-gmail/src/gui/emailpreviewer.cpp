@@ -57,8 +57,8 @@ void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item, Fe
   Q_UNUSED(feed)
 
   m_message = msg;
-  m_webView->setHtml(msg.m_contents, m_webView->viewer()->urlForMessage(msg, selected_item), selected_item);
 
+  m_webView->loadMessage(msg, selected_item);
   m_ui.m_tbFrom->setText(msg.m_author);
   m_ui.m_tbSubject->setText(msg.m_title);
   m_ui.m_tbTo->setText(QSL("-"));
@@ -72,7 +72,6 @@ void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item, Fe
   }
 
   m_ui.m_btnAttachments->setDisabled(m_ui.m_btnAttachments->menu()->isEmpty());
-
   m_tmrLoadExtraMessageData.start();
 }
 

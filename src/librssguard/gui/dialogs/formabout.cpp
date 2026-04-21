@@ -124,6 +124,7 @@ void FormAbout::loadLicenseAndInformation() {
   m_ui.m_lblDesc->setText(tr("<h4>%7</h4>"
                              "<b>Version:</b> %1 (built on %2/%3)<br/>"
                              "<b>Revision:</b> %4<br/>"
+                             "<b>Variant:</b> %9<br/>"
                              "<b>OS:</b> %8<br/>"
                              "<b>Qt:</b> %5 (compiled against %6)")
                             .arg(qApp->applicationVersion(),
@@ -133,7 +134,12 @@ void FormAbout::loadLicenseAndInformation() {
                                  qVersion(),
                                  QSL(QT_VERSION_STR),
                                  QSL(APP_NAME),
-                                 QSysInfo::prettyProductName()));
+                                 QSysInfo::prettyProductName(),
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+                                 QSL("web")));
+#else
+                                 QSL("text")));
+#endif
   m_ui.m_txtInfo->setText(tr("<body>%5 is a (very) tiny feed reader."
                              "<br><br>This software is distributed under the terms of GNU General "
                              "Public License, version 3."
