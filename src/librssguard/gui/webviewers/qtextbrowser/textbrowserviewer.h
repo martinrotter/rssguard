@@ -62,6 +62,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     virtual void goBack();
     virtual void goForward();
     virtual bool supportImagesLoading() const;
+    virtual bool supportsNavigation() const;
 
     virtual qreal zoomFactor() const;
     virtual void setZoomFactor(qreal zoom_factor);
@@ -84,6 +85,9 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     void loadingFinished(bool success);
     void openUrlInNewTab(const QUrl& url);
     void openViewerInNewTab(WebViewer* viewer);
+
+  private:
+    QString convertToHtmlWithoutImages(const QString& html) const;
 
   private:
     WebBrowser* m_browser;
