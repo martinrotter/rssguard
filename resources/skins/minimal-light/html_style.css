@@ -8,6 +8,10 @@ p {
   margin-bottom: 0.4em;
 }
 
+body {
+  background-color: #fbfbfb;
+}
+
 .article {
   background-color: transparent;
   color: #333;

@@ -10,6 +10,10 @@ p {
   margin-bottom: 0.4em;
 }
 
+body {
+  background-color: $bg_color;
+}
+
 .article {
   background-color: transparent;
   color: $text_color;
