@@ -184,10 +184,12 @@ SectionGroup /e "Plugins"
     File "${PLUGIN_TTRSS}"
   SectionEnd
 
-  Section "XMPP" PluginXmpp
-    SetOutPath "$INSTDIR\plugins"
-    File "${PLUGIN_XMPP}"
-  SectionEnd
+  ${If} ${PLUGIN_XMPP_ENABLED} == 1
+    Section "XMPP" PluginXmpp
+      SetOutPath "$INSTDIR\plugins"
+      File "${PLUGIN_XMPP}"
+    SectionEnd
+  ${EndIf}
 SectionGroupEnd
 
 Section "Desktop Icon" DesktopIcon
@@ -297,8 +299,4 @@ FunctionEnd
 Function .onInit
   IntOp $0 ${SF_SELECTED} | ${SF_RO}
   SectionSetFlags ${Core} $0
-
-  ${If} ${PLUGIN_XMPP_ENABLED} == 0
-    SectionSetFlags ${PluginXmpp} ${SF_RO}
-  ${EndIf}
 FunctionEnd
