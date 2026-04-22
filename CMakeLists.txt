@@ -27,6 +27,7 @@
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
 #   RUN_GO_MOD_TIDY - Runs "go mod tidy" when bundling Go-based plugins.
 #   ENABLE_TESTS - Enables some tests.
+#   BUILD_XMPP_PLUGIN - Builds XMPP plugin. This only works for Qt 6.
 #   WEB_ARTICLE_VIEWER_WEBENGINE - Use QtWebEngine-based article/web viewer. If set to "OFF"
 #                                  then very simple QTextBrowser viewer is used.
 #   ENABLE_ICU - Enable direct ICU dependency, used to convert among text encodings.
@@ -82,7 +83,7 @@ set(APP_AUTHOR "Martin Rotter")
 set(APP_COPYRIGHT "\\251 2011-${YEAR} ${APP_AUTHOR}")
 set(APP_REVERSE_NAME "io.github.martinrotter.rssguard")
 set(APP_DONATE_URL "https://github.com/sponsors/martinrotter")
-set(APP_VERSION "5.0.4")
+set(APP_VERSION "5.1.0")
 string(SUBSTRING "${APP_VERSION}" 0 1 APP_VERSION_MAJOR)
 
 set(APP_URL "https://github.com/martinrotter/rssguard")
@@ -345,6 +346,13 @@ endif()
 
 if(BUILD_MSYS2)
   add_compile_definitions(BUILD_MSYS2)
+endif()
+
+
+if(BUILD_XMPP_PLUGIN AND BUILD_WITH_QT6)
+  set(PLUGIN_XMPP_ENABLED 1)
+else()
+  set(PLUGIN_XMPP_ENABLED 0)
 endif()
 
 # Configure and copy some needed files.

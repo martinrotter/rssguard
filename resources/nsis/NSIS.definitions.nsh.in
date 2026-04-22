@@ -17,3 +17,5 @@
 !define PLUGIN_NEXTCLOUD "@CMAKE_BINARY_DIR@\app\plugins\rssguard-nextcloud.*"
 !define PLUGIN_STANDARD "@CMAKE_BINARY_DIR@\app\plugins\rssguard-standard.*"
 !define PLUGIN_TTRSS "@CMAKE_BINARY_DIR@\app\plugins\rssguard-ttrss.*"
+!define PLUGIN_XMPP "@CMAKE_BINARY_DIR@\app\plugins\rssguard-xmpp.*"
+!define PLUGIN_XMPP_ENABLED "@PLUGIN_XMPP_ENABLED@"
