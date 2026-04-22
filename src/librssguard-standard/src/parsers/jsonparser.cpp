@@ -78,10 +78,8 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       if (feed_link.startsWith(QL1S("//"))) {
         feed_link = QSL(URI_SCHEME_HTTP) + feed_link.mid(2);
       }
-      else if (feed_link.startsWith(QL1C('/'))) {
-        feed_link = url.toString(QUrl::UrlFormattingOption::RemovePath | QUrl::UrlFormattingOption::RemoveQuery |
-                                 QUrl::UrlFormattingOption::StripTrailingSlash) +
-                    feed_link;
+      else {
+        feed_link = url.resolved(feed_link).toString();
       }
 
       QByteArray data;
