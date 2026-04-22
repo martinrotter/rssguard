@@ -360,7 +360,9 @@ void SettingsGui::saveSettings() {
   for (const ColorIconToolButton* clr : children) {
     auto pal = SkinEnums::PaletteColors(clr->objectName().toInt());
 
-    settings()->setValue(GROUP(CustomSkinColors), enumToString<SkinEnums::PaletteColors>(pal), clr->color().name());
+    settings()->setValue(GROUP(CustomSkinColors),
+                         enumToString<SkinEnums::PaletteColors>(pal),
+                         clr->color().isValid() ? clr->color().name() : QString());
   }
 
   // Save tray icon.

@@ -384,7 +384,7 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
         auto key = stringToEnum<SkinEnums::PaletteColors>(en_val);
         QColor value = elem_clr.text();
 
-        if (value.isValid()) {
+        if (!elem_clr.text().isEmpty() && value.isValid()) {
           palette.insert(key, value);
         }
       }
