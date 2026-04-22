@@ -29,22 +29,28 @@ class SkinEnums : public QObject {
       FgSelectedInteresting = 2,
 
       // Paint foreground of some errored items (feeds with error, etc.).
-      FgError = 4,
+      FgError = 3,
 
       // Paint foreground of some errored items WHEN SELECTED (feeds with error, etc.).
-      FgSelectedError = 8,
+      FgSelectedError = 4,
 
       // OK-ish color (background of list with test results of article filter).
-      Allright = 16,
+      Allright = 5,
 
       // Foreground color of items with new articles.
-      FgNewMessages = 32,
+      FgNewMessages = 6,
 
       // Foreground color of selected items with new articles.
-      FgSelectedNewMessages = 64,
+      FgSelectedNewMessages = 7,
 
       // Foreground color of disabled items.
-      FgDisabledFeed = 128
+      FgDisabledFeed = 8,
+
+      // Background of folder items.
+      BgFolder = 9,
+
+      // Background of folder items when selected.
+      BgSelectedFolder = 10
     };
 
     static QString palleteColorText(PaletteColors col);

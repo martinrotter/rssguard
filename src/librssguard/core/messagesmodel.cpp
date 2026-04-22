@@ -914,7 +914,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     }
 
     case Qt::ItemDataRole::ForegroundRole:
-    case HIGHLIGHTED_FOREGROUND_TITLE_ROLE: {
+    case HIGHLIGHTED_FOREGROUND_ROLE: {
       if (Globals::hasFlag(m_messageHighlighter, MessageHighlighter::HighlightImportant)) {
         QModelIndex idx_important = index(idx.row(), MSG_MDL_IMPORTANT_INDEX);
         bool is_important = data(idx_important, Qt::ItemDataRole::EditRole).toBool();

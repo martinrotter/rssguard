@@ -636,6 +636,12 @@ QString SkinEnums::palleteColorText(PaletteColors col) {
     case SkinEnums::PaletteColors::FgDisabledFeed:
       return QObject::tr("disabled items");
 
+    case SkinEnums::PaletteColors::BgFolder:
+      return QObject::tr("folders background");
+
+    case SkinEnums::PaletteColors::BgSelectedFolder:
+      return QObject::tr("folders background (highlighted");
+
     default:
       return {};
   }

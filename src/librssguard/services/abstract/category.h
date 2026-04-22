@@ -12,6 +12,7 @@ class RSSGUARD_DLLSPEC Category : public RootItem {
     explicit Category(RootItem* parent = nullptr);
     explicit Category(const Category& other);
 
+    virtual QVariant data(int column, int role) const;
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual void updateCounts();

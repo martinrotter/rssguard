@@ -46,7 +46,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
 
 QVariant Feed::data(int column, int role) const {
   switch (role) {
-    case HIGHLIGHTED_FOREGROUND_TITLE_ROLE:
+    case HIGHLIGHTED_FOREGROUND_ROLE:
       switch (status()) {
         case Status::NewMessages:
           return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgSelectedNewMessages);

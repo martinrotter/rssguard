@@ -15,6 +15,21 @@ Category::Category(const Category& other) : RootItem(other) {
   setKind(RootItem::Kind::Category);
 }
 
+QVariant Category::data(int column, int role) const {
+  switch (role) {
+    case Qt::ItemDataRole::BackgroundRole: {
+      return qApp->skins()->colorForModel(SkinEnums::PaletteColors::BgFolder);
+    }
+
+    case HIGHLIGHTED_BACKGROUND_ROLE: {
+      return qApp->skins()->colorForModel(SkinEnums::PaletteColors::BgSelectedFolder);
+    }
+
+    default:
+      return RootItem::data(column, role);
+  }
+}
+
 QVariantHash Category::customDatabaseData() const {
   return {};
 }

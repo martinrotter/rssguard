@@ -35,7 +35,13 @@ void StyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
   if (Globals::hasFlag(item_option.state, QStyle::StateFlag::State_Selected) &&
       index.data(Qt::ItemDataRole::ForegroundRole).isValid()) {
     item_option.palette.setColor(QPalette::ColorRole::HighlightedText,
-                                 index.data(HIGHLIGHTED_FOREGROUND_TITLE_ROLE).value<QColor>());
+                                 index.data(HIGHLIGHTED_FOREGROUND_ROLE).value<QColor>());
+  }
+
+  if (Globals::hasFlag(item_option.state, QStyle::StateFlag::State_Selected) &&
+      index.data(Qt::ItemDataRole::BackgroundRole).isValid()) {
+    item_option.palette.setColor(QPalette::ColorRole::Highlight,
+                                 index.data(HIGHLIGHTED_BACKGROUND_ROLE).value<QColor>());
   }
 
   QStyledItemDelegate::paint(painter, item_option, index);
