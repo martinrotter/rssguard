@@ -5423,13 +5423,13 @@ Token 过期时间：%2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="208"/>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="255"/>
       <source>Error in query</source>
-      <translation type="unfinished">Error in query</translation>
+      <translation>查询错误</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="209"/>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="256"/>
       <source>There is something wrong with your query: %1</source>
-      <translation type="unfinished">There is something wrong with your query: %1</translation>
+      <translation>查询出错：%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="271"/>
