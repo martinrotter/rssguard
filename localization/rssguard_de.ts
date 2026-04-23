@@ -50,7 +50,7 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
       <source>Queries</source>
-      <translation type="unfinished">Queries</translation>
+      <translation>Abfragen</translation>
     </message>
   </context>
   <context>
@@ -211,7 +211,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
       <source>newest article(s)</source>
       <translation>
         <numerusform>neueste Artikel</numerusform>
-        <numerusform>neueste(r) Artikel</numerusform>
+        <numerusform>neueste Artikel</numerusform>
       </translation>
     </message>
   </context>
@@ -256,9 +256,9 @@ durch Klicken auf diese Benachrichtigung.</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="95"/>
       <source>%n feeds fetched</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>%n Feeds abgerufen</numerusform>
-        <numerusform>%n feeds fetched</numerusform>
+        <numerusform>%n Feeds abgerufen</numerusform>
       </translation>
     </message>
   </context>
@@ -274,7 +274,7 @@ durch Klicken auf diese Benachrichtigung.</translation>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="45"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_authenticationdetails.h" line="125"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation>Bestimmte Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
+      <translation>Bestimmte Feeds brauchen eine Authentifizierung, z.B. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/authenticationdetails.ui" line="48"/>
@@ -1296,17 +1296,17 @@ Benutzerdefinierte ID des Elements: %5</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="504"/>
       <source>Deleting %n items</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>Lösche %n Elemente</numerusform>
-        <numerusform>Deleting %n items</numerusform>
+        <numerusform>Lösche %n Elemente</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="505"/>
       <source>You are about to completely delete %n items.</source>
-      <translation type="unfinished">
+      <translation>
         <numerusform>Sie sind dabei, %n Elemente vollständig zu löschen.</numerusform>
-        <numerusform>You are about to completely delete %n items.</numerusform>
+        <numerusform>Sie sind dabei, %n Elemente vollständig zu löschen.</numerusform>
       </translation>
     </message>
     <message>
@@ -1622,7 +1622,7 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="36"/>
       <source>Regular expression is not well-formed.</source>
-      <translation>Der reguläre Ausdruck ist nicht wohlgeformt.</translation>
+      <translation>Der reguläre Ausdruck ist nicht richtig formatiert.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="48"/>
@@ -2125,9 +2125,9 @@ Symboldesign-Basisordner -&gt; &quot;%6&quot;</translation>
     <message numerus="yes">
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="146"/>
       <source>Edit %n feeds</source>
-      <translation type="unfinished">
+      <translation>
+        <numerusform>%n Feed bearbeiten</numerusform>
         <numerusform>%n Feeds bearbeiten</numerusform>
-        <numerusform>Edit %n feeds</numerusform>
       </translation>
     </message>
     <message>
@@ -5436,13 +5436,13 @@ Ablauf des Login tokens: %2</translation>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="208"/>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="255"/>
       <source>Error in query</source>
-      <translation type="unfinished">Error in query</translation>
+      <translation>Fehler in Abfrage</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="209"/>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="256"/>
       <source>There is something wrong with your query: %1</source>
-      <translation type="unfinished">There is something wrong with your query: %1</translation>
+      <translation>Etwas ist falsch mit Ihrer Abfrage: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="271"/>
@@ -5840,9 +5840,9 @@ Ablauf des Login tokens: %2</translation>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="698"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="1016"/>
       <source>%n article(s) left after filtering change</source>
-      <translation type="unfinished">
-        <numerusform>%n article(s) left after filtering change</numerusform>
-        <numerusform>%n Artikel nach Filteränderung noch übrig</numerusform>
+      <translation>
+        <numerusform>%n Artikel bleibt nach Filteränderung übrig</numerusform>
+        <numerusform>%n Artikel bleiben nach Filteränderung übrig</numerusform>
       </translation>
     </message>
     <message>
@@ -6086,7 +6086,7 @@ Ablauf des Login tokens: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="81"/>
       <source>Some feeds require authentication, including GMail feeds. BASIC, NTLM-2 and DIGEST-MD5 authentication schemes are supported.</source>
-      <translation>Bestimmte Feeds brauchen eine Authentifizierung, wie z.b. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
+      <translation>Bestimmte Feeds brauchen eine Authentifizierung, z.B. Gmail-Feeds. BASIC, NTLM-2 und DIGEST-MD5 Authentifizierungsmechanismen werden unterstützt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.ui" line="84"/>
@@ -6589,7 +6589,7 @@ Liste aller unterstützten Leser:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="130"/>
       <source>image.%1</source>
-      <translation type="unfinished">image.%1</translation>
+      <translation>Bild.%1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="131"/>
@@ -6676,9 +6676,9 @@ Liste aller unterstützten Leser:</translation>
       <source>%1
 line: %2
 stack: %3</source>
-      <translation type="unfinished">%1
-line: %2
-stack: %3</translation>
+      <translation>%1
+Zeile: %2
+Stapel: %3</translation>
     </message>
   </context>
   <context>
@@ -6774,27 +6774,27 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="29"/>
       <source>Select QuiteRSS database file</source>
-      <translation type="unfinished">Select QuiteRSS database file</translation>
+      <translation>Wähle QuiteRSS Datenbankdatei</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="32"/>
       <source>QuiteRSS DB files (%1)</source>
-      <translation type="unfinished">QuiteRSS DB files (%1)</translation>
+      <translation>QuiteRSS DB Dateien (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="56"/>
       <source>Import data from QuiteRSS</source>
-      <translation type="unfinished">Import data from QuiteRSS</translation>
+      <translation>Importiere Daten aus QuiteRSS</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="63"/>
       <source>Imported articles from %1 feeds...</source>
-      <translation type="unfinished">Imported articles from %1 feeds...</translation>
+      <translation>Artikel aus %1 Feeds importiert...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="167"/>
       <source>skipping article, it has no title and no URL</source>
-      <translation type="unfinished">skipping article, it has no title and no URL</translation>
+      <translation>überspringe Artikel, er hat keinen Titel und keine URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="306"/>
@@ -6804,12 +6804,12 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="416"/>
       <source>missing QuiteRSS tables %1</source>
-      <translation type="unfinished">missing QuiteRSS tables %1</translation>
+      <translation>fehlende QuiteRSS Tabellen %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/quiterssimport.cpp" line="422"/>
       <source>metadata version 17 was expected</source>
-      <translation type="unfinished">metadata version 17 was expected</translation>
+      <translation>Metadatenversion 17 wurde erwartet</translation>
     </message>
   </context>
   <context>
@@ -6860,37 +6860,37 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="31"/>
       <source>Select RSS Guard 4.x database file</source>
-      <translation type="unfinished">Select RSS Guard 4.x database file</translation>
+      <translation>Wähle RSS Guard 4.x Datenbankdatei</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="34"/>
       <source>RSS Guard 4.x DB files (%1)</source>
-      <translation type="unfinished">RSS Guard 4.x DB files (%1)</translation>
+      <translation>RSS Guard 4.x DB Dateien (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="62"/>
       <source>Import data from RSS Guard 4.x</source>
-      <translation type="unfinished">Import data from RSS Guard 4.x</translation>
+      <translation>Importiere Daten aus RSS Guard 4.x</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="69"/>
       <source>Imported articles from %1 feeds...</source>
-      <translation type="unfinished">Imported articles from %1 feeds...</translation>
+      <translation>Artikel aus %1 Feeds importiert...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="210"/>
       <source>skipping article, it has no title and no URL</source>
-      <translation type="unfinished">skipping article, it has no title and no URL</translation>
+      <translation>überspringe Artikel, er hat keinen Titel und keine URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="541"/>
       <source>missing RSS Guard 4.x tables %1</source>
-      <translation type="unfinished">missing RSS Guard 4.x tables %1</translation>
+      <translation>fehlende RSS Guard 4.x Tabellen %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/rssguard4import.cpp" line="547"/>
       <source>metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</source>
-      <translation type="unfinished">metadata version 10 was expected, your DB file comes from too old RSS Guard 4.x</translation>
+      <translation>Metadatenversion 10 wurde erwartet, Ihre DB Datei stammt aus einem zu alten RSS Guard 4.x</translation>
     </message>
   </context>
   <context>
@@ -6926,22 +6926,22 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="69"/>
       <source>Go &amp;up</source>
-      <translation type="unfinished">Go &amp;up</translation>
+      <translation>Nach &amp;oben</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="70"/>
       <source>Go &amp;down</source>
-      <translation type="unfinished">Go &amp;down</translation>
+      <translation>Nach &amp;unten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="116"/>
       <source>%1 %2/%3</source>
-      <translation type="unfinished">%1 %2/%3</translation>
+      <translation>%1 %2/%3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/scrollablemenu.cpp" line="117"/>
       <source>Page</source>
-      <translation type="unfinished">Page</translation>
+      <translation>Seite</translation>
     </message>
   </context>
   <context>
@@ -6954,7 +6954,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/search.cpp" line="85"/>
       <source>SQL &apos;WHERE&apos; clause: %1</source>
-      <translation type="unfinished">SQL &apos;WHERE&apos; clause: %1</translation>
+      <translation>SQL &apos;WHERE&apos;-Klausel: %1</translation>
     </message>
   </context>
   <context>
@@ -7006,12 +7006,12 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="18"/>
       <source>Queries</source>
-      <translation type="unfinished">Queries</translation>
+      <translation>Abfragen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="19"/>
       <source>You can see all your permanent queries here.</source>
-      <translation type="unfinished">You can see all your permanent queries here.</translation>
+      <translation>Hier können Sie alle dauerhaften Abfragen sehen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="70"/>
@@ -7021,7 +7021,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/searchsnode.cpp" line="71"/>
       <source>Problem when creating probe: %1.</source>
-      <translation type="unfinished">Problem when creating probe: %1.</translation>
+      <translation>Fehler beim Erstellen der Probe: %1</translation>
     </message>
   </context>
   <context>
@@ -7044,7 +7044,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="119"/>
       <source>Failed to update selected probe: %1.</source>
-      <translation type="unfinished">Failed to update selected probe: %1.</translation>
+      <translation>Aktualisieren der ausgewählten Probe fehlgeschlagen: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="129"/>
@@ -7059,17 +7059,17 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="178"/>
       <source>New query</source>
-      <translation type="unfinished">New query</translation>
+      <translation>Neue Abfrage</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="190"/>
       <source>Restore recycle bin</source>
-      <translation type="unfinished">Restore recycle bin</translation>
+      <translation>Papierkorb wiederherstellen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="192"/>
       <source>Empty recycle bin</source>
-      <translation type="unfinished">Empty recycle bin</translation>
+      <translation>Papierkorb leeren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="206"/>
@@ -7111,12 +7111,12 @@ Anzahl der deaktivierten Feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="37"/>
       <source>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
-      <translation type="unfinished">On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</translation>
+      <translation>Auf dieser Seite können Sie eine Liste externer Werkzeuge einrichten, die URLs öffnen können. Wenn Sie eine Domäne (ohne vorangestelltes &quot;www.&quot;) eintragen, wird das Werkzeug verwendet um alle geklickten Links dieser Domäne zu öffnen. Sie können mehrere Domänen mit &apos;,&apos; voneinander trennen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="45"/>
       <source>Domain</source>
-      <translation type="unfinished">Domain</translation>
+      <translation>Domain</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="107"/>
@@ -7230,7 +7230,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="318"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="338"/>
       <source>&amp;Edit tool path</source>
-      <translation type="unfinished">&amp;Edit tool path</translation>
+      <translation>&amp;Werkzeugpfad bearbeiten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="27"/>
@@ -7307,7 +7307,7 @@ File filter for external e-mail selection dialog.</extracomment>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.h" line="44"/>
       <source>External apps &amp; tools</source>
-      <translation type="unfinished">External apps &amp; tools</translation>
+      <translation>Externe Anwendungen &amp; Werkzeuge</translation>
     </message>
   </context>
   <context>
@@ -7447,29 +7447,29 @@ File filter for external e-mail selection dialog.</extracomment>
       <source>If enabled then %1 loads articles into article list on demand as you scroll throught the list.
 
 This can tremendously speed up the application if you have hundreds of thousands articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</source>
-      <translation type="unfinished">If enabled then %1 loads articles into article list on demand as you scroll throught the list.
+      <translation>Wenn aktiviert, lädt %1 Artikel beim Scrollen nach Bedarf in die Artikelliste.
 
-This can tremendously speed up the application if you have hundreds of thousands articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</translation>
+Dies kann die Anwendung drastisch beschleunigen, wenn Sie hunderttausende Artikel haben. Gleichzeitig beeinträchtigt dies aber auch die Filterung Ihrer Artikelliste: da nicht alle Artikel auf einmal geladen werden, könnte die Filterung ungenau sein.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="32"/>
       <source>Left</source>
-      <translation type="unfinished">Left</translation>
+      <translation>Links</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="33"/>
       <source>Center</source>
-      <translation type="unfinished">Center</translation>
+      <translation>Zentriert</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="34"/>
       <source>Right</source>
-      <translation type="unfinished">Right</translation>
+      <translation>Rechts</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
       <source>Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
-      <translation type="unfinished">Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</translation>
+      <translation>Tragen Sie das Format für die Artikelanzahl, die neben jedem Feed/Ordner in der Feedliste angezeigt wird, ein. Die Zeichenketten &quot;%all&quot; und &quot;%unread&quot; sind Platzhalter für die aktuelle Anzahl aller (oder aller ungelesener) Artikel.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="56"/>
@@ -7513,7 +7513,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="653"/>
       <source>Feed fetching</source>
-      <translation>Feed wird abgeholt</translation>
+      <translation>Feed abrufen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
@@ -7555,7 +7555,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="647"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
-      <translation>Unterstütze sehr schnell Abhol-Intervalle (unter 10 Sekunden)</translation>
+      <translation>Unterstütze sehr schnelle automatische Abhol-Intervalle (unter 10 Sekunden)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
@@ -7607,7 +7607,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="248"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="659"/>
       <source>Article count alignment</source>
-      <translation type="unfinished">Article count alignment</translation>
+      <translation>Ausrichtung der Artikelzahl</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="261"/>
@@ -7637,7 +7637,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="733"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="694"/>
       <source>Mark articles read after they are opened externally (in browser) or internally (in new tab)</source>
-      <translation type="unfinished">Mark articles read after they are opened externally (in browser) or internally (in new tab)</translation>
+      <translation>Markiere Artikel als gelesen, nachdem sie extern (im Browser) oder intern (in einem neuen Tab) geöffnet wurden.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="268"/>
@@ -7673,7 +7673,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="443"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="677"/>
       <source>Mark existing article unread when its updated version is fetched from the feed</source>
-      <translation type="unfinished">Mark existing article unread when its updated version is fetched from the feed</translation>
+      <translation>Markiere existierenden Artikel als ungelesen, wenn die aktualisierte Version vom Feed geladen wird</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="457"/>
@@ -7703,7 +7703,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="716"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="693"/>
       <source>Use articles lazy-loading</source>
-      <translation type="unfinished">Use articles lazy-loading</translation>
+      <translation>Verwende lazy loading für Artikel</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="334"/>
@@ -7818,7 +7818,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="44"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="66"/>
       <source>Disable CLI debug output (but keep more serious warnings enabled)</source>
-      <translation type="unfinished">Disable CLI debug output (but keep more serious warnings enabled)</translation>
+      <translation>Deaktiviere Kommandozeilen Debug-Ausgabe (aber lasse schwerwiegendere Warnungen aktiviert)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.h" line="30"/>
@@ -7933,7 +7933,7 @@ Beschreibung: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="116"/>
       <location filename="../build/Desktop_Qt_6_9_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="366"/>
       <source>Application font</source>
-      <translation type="unfinished">Application font</translation>
+      <translation>Anwendungsschriftart</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="135"/>
@@ -9088,33 +9088,33 @@ Standard-Feeds laden: Lädt kleine Menge verschiedener interessanter Feeds.</tra
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="679"/>
       <source>Cannot add folder</source>
-      <translation type="unfinished">Cannot add folder</translation>
+      <translation>Kann Ordner nicht hinzufügen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="680"/>
       <source>Cannot add folder because another critical operation is ongoing.</source>
-      <translation type="unfinished">Cannot add folder because another critical operation is ongoing.</translation>
+      <translation>Kann Ordner nicht hinzufügen, weil eine andere kritische Operation läuft.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="735"/>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="744"/>
       <source>Error during file import</source>
-      <translation type="unfinished">Error during file import</translation>
+      <translation>Fehler beim Datei-Import</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="759"/>
       <source>Fetching metadata for %n feeds</source>
-      <translation type="unfinished">
-        <numerusform>Fetching metadata for %n feeds</numerusform>
-        <numerusform>Fetching metadata for %n feeds</numerusform>
+      <translation>
+        <numerusform>Hole Metadaten für %n Feed</numerusform>
+        <numerusform>Hole Metadaten für %n Feeds</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="768"/>
       <source>Fetched %n feeds...</source>
-      <translation type="unfinished">
-        <numerusform>Fetched %n feeds...</numerusform>
-        <numerusform>Fetched %n feeds...</numerusform>
+      <translation>
+        <numerusform>%n Feed abgerufen...</numerusform>
+        <numerusform>%n Feeds abgerufen...</numerusform>
       </translation>
     </message>
     <message>
@@ -9130,12 +9130,12 @@ Standard-Feeds laden: Lädt kleine Menge verschiedener interessanter Feeds.</tra
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="781"/>
       <source>Import from QuiteRSS</source>
-      <translation type="unfinished">Import from QuiteRSS</translation>
+      <translation>Importiere aus QuiteRSS</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="783"/>
       <source>Import from RSS Guard 4.x</source>
-      <translation type="unfinished">Import from RSS Guard 4.x</translation>
+      <translation>Importiere aus RSS Guard 4.x</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="51"/>
@@ -9265,9 +9265,9 @@ Standard-Feeds laden: Lädt kleine Menge verschiedener interessanter Feeds.</tra
     <message numerus="yes">
       <location filename="../src/librssguard/gui/reusable/timespinbox.cpp" line="68"/>
       <source>%n day(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n Tag(e)</numerusform>
-        <numerusform>%n day(s)</numerusform>
+      <translation>
+        <numerusform>%n Tag</numerusform>
+        <numerusform>%n Tage</numerusform>
       </translation>
     </message>
     <message numerus="yes">
@@ -9370,7 +9370,7 @@ Standard-Feeds laden: Lädt kleine Menge verschiedener interessanter Feeds.</tra
     <message>
       <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="43"/>
       <source>Unread news: %1</source>
-      <translation type="unfinished">Unread news: %1</translation>
+      <translation>Ungelesene Nachrichten: %1</translation>
     </message>
   </context>
   <context>
@@ -9650,7 +9650,7 @@ Standard-Feeds laden: Lädt kleine Menge verschiedener interessanter Feeds.</tra
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="114"/>
       <source>Share to published</source>
-      <translation type="unfinished">Share to published</translation>
+      <translation>Teile mit "veröffentlicht"</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="133"/>
@@ -9702,7 +9702,7 @@ Letzte Anmeldung am: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="30"/>
       <source>Open in system web browser</source>
-      <translation type="unfinished">Open in system web browser</translation>
+      <translation>Öffne im Webbrowser des Systems</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="35"/>
