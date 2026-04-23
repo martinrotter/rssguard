@@ -4,7 +4,7 @@ RSS Guard is a multi-account application and supports many web-based feed reader
 * RSS
 * ATOM
 * RDF
-* [XMPP](features/xmpp)
+* [XMPP](features/xmpp)[^5]
 * [iCalendar](https://en.wikipedia.org/wiki/ICalendar)
 * [JSON](https://www.jsonfeed.org)
 * [Sitemap](https://en.wikipedia.org/wiki/Sitemaps) (including sitemap index discovery and compressed sitemaps)
@@ -30,3 +30,5 @@ When it comes to online web-based feed readers, these are supported:
 [^3]: [OAuth](https://en.wikipedia.org/wiki/OAuth) is a secure way of authenticating users in online applications.
 
 [^4]: Tested services are: Bazqux, FreshRSS, Inoreader, Miniflux, Reedah, TheOldReader.
+
+[^5]: XMPP plugin is only available for Qt 6 (`qt6`) builds.
