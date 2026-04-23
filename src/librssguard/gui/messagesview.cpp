@@ -644,7 +644,7 @@ void MessagesView::markSelectedMessagesReadDelayed() {
   if (selected_rows.size() == 1 && current_index.isValid() && !m_processingRightMouseButton &&
       m_articleMarkingPolicy == ArticleMarkingPolicy::MarkWithDelay) {
     const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
-    Message message = m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row());
+    Message message = m_sourceModel->messageForRow(mapped_current_index.row());
 
     m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
     message.m_isRead = true;
@@ -1010,8 +1010,13 @@ void MessagesView::searchMessages(SearchLineEdit::SearchMode mode,
     requestArticleHiding();
   }
   else {
+    auto sel_row = selectionModel()->selectedRows().at(0);
+    auto sel_mapped = m_proxyModel->mapToSource(sel_row);
+    auto msg = m_sourceModel->messageForRow(sel_mapped.row());
+    auto msg_idx = m_proxyModel->mapFromSource(m_sourceModel->indexForMessage(msg.m_id));
+
     // Scroll to selected message, it could become scrolled out due to filter change.
-    scrollTo(selectionModel()->selectedRows().at(0),
+    scrollTo(msg_idx,
              !m_processingAnyMouseButton &&
                  qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
                ? QAbstractItemView::ScrollHint::PositionAtCenter
