@@ -6,7 +6,6 @@
 #include "core/feedsproxymodel.h"
 #include "definitions/definitions.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/dialogs/formprogressworker.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/styleditemdelegate.h"
 #include "gui/reusable/treeviewcolumnsmenu.h"
@@ -454,6 +453,12 @@ void FeedsView::editRecursiveFeeds() {
 
 void FeedsView::changeFilter(FeedsProxyModel::FeedListFilter filter) {
   m_proxyModel->setFeedListFilter(filter);
+
+  QTimer::singleShot(1000, this, [this]() {
+    if (!selectionModel()->selectedRows().isEmpty()) {
+      scrollTo(selectionModel()->selectedRows().at(0), QAbstractItemView::ScrollHint::EnsureVisible);
+    }
+  });
 }
 
 void FeedsView::editSelectedItems() {
@@ -818,6 +823,10 @@ void FeedsView::searchItems(SearchLineEdit::SearchMode mode,
       m_dontSaveExpandState = true;
       expandAll();
       m_dontSaveExpandState = false;
+    }
+
+    if (!selectionModel()->selectedRows().isEmpty()) {
+      scrollTo(selectionModel()->selectedRows().at(0), QAbstractItemView::ScrollHint::EnsureVisible);
     }
   });
 }
