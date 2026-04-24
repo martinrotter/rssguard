@@ -1,3 +1,31 @@
+5.1.0
+-----
+Released on: 2026-04-27
+
+This release brings back built-in web browsing in selected packages, adds a new XMPP plugin and improves article and feed browsing in many places. Downloads are now split into variants, so you can choose either the lighter text-based viewer or the fuller WebEngine-based viewer.
+
+Added:
+* Downloads are now available in two variants: one with `TextBrowserViewer` and one with `WebEngineViewer`.
+* `WebEngineViewer` builds again include a built-in web browser for opening websites and reading articles inside RSS Guard.
+* The built-in browser can now open pages in new tabs, search inside the page, save pages as `MHTML`, export article text and print to `PDF`.
+* Browser actions can now be enabled or disabled depending on which viewer is in use.
+* New experimental `XMPP` plugin was added in supported builds.
+* Gemini pages can now be subscribed to as Gemlogs. (#2158)
+* Feed discovery now finds and resolves more feed links correctly, including relative links. (#2180, #2201)
+* The article list can now show feed icons in the `Feed` column. (#2179)
+* Skins can now color folder backgrounds in the feed list.
+
+Fixed:
+* Folder and account items now show warning color too when a child feed below them is in error state. (#923, #1741)
+* Feed and article filtering keeps the selected item in view more reliably instead of jumping away. (#1741, #2201)
+* Clicking around the article list feels smoother in common cases. (#2197)
+* Escaped HTML in article titles is no longer rendered as real HTML in the article list and header. (#2168)
+* Pages that need accepted cookies or active website session state now work better in `WebEngineViewer` builds because browser cookies are shared with RSS Guard networking.
+* The text-based article viewer was improved in many small ways and now behaves better in everyday use.
+* Handling of pages without images was improved.
+* Invalid custom skin colors are now ignored instead of breaking the look of the application.
+* The selected article count is now shown only when more than one article is selected.
+
 5.0.4
 -----
 Released on: 2026-03-13
