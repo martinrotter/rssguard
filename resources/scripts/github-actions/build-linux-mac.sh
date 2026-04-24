@@ -30,7 +30,6 @@ fi
 
   libmpv="ON"
   qtmultimedia="OFF"
-  app_id="io.github.martinrotter.rssguard"
 else
   echo "We are building for macOS."
   is_linux=false
@@ -50,8 +49,10 @@ else
 fi
 
 if [[ "$webengine_viewer" == "ON" ]]; then
+  app_id="io.github.martinrotter.rssguard"
   variant_id="web"
 else
+  app_id="io.github.martinrotter.rssguardlite"
   variant_id="text"
 fi
 

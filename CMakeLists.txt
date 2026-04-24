@@ -170,6 +170,7 @@ if (WEB_ARTICLE_VIEWER_WEBENGINE)
 
   message(STATUS "We will use QtWebEngine-based web viewer.")
 else()
+  set(APP_REVERSE_NAME "io.github.martinrotter.rssguardlite")
   add_compile_definitions(WEB_ARTICLE_VIEWER_TEXTBROWSER)
 
   message(STATUS "We will use QTextBrowser-based web viewer.")
