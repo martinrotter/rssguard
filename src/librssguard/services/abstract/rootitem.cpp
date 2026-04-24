@@ -17,7 +17,8 @@
 RootItem::RootItem(RootItem* parent_item)
   : QObject(nullptr), m_kind(RootItem::Kind::Root), m_id(NO_PARENT_CATEGORY), m_customId(QString()), m_title(QString()),
     m_description(QString()), m_creationDate(QDateTime::currentDateTimeUtc()), m_keepOnTop(false),
-    m_sortOrder(NO_PARENT_CATEGORY), m_childItems(QList<RootItem*>()), m_parentItem(parent_item), m_deleting(false) {}
+    m_sortOrder(NO_PARENT_CATEGORY), m_childItems(QList<RootItem*>()), m_parentItem(parent_item), m_deleting(false),
+    m_visualStatus(VisualStatus::Normal) {}
 
 RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setTitle(other.title());
@@ -35,6 +36,8 @@ RootItem::RootItem(const RootItem& other) : RootItem(nullptr) {
   setCreationDate(other.creationDate());
   setDescription(other.description());
   setDeleting(other.deleting());
+
+  m_visualStatus = other.m_visualStatus;
 }
 
 RootItem::~RootItem() {
@@ -98,6 +101,10 @@ int RootItem::row() const {
 
 QVariant RootItem::data(int column, int role) const {
   switch (role) {
+    case Qt::ItemDataRole::ForegroundRole:
+    case HIGHLIGHTED_FOREGROUND_ROLE:
+      return visualForegroundColor(role);
+
     case Qt::ItemDataRole::ToolTipRole:
       if (column == FDS_MODEL_TITLE_INDEX) {
         QString tool_tip = QSL("<h2><b>%1</b></h2>").arg(m_title.toHtmlEscaped());
@@ -638,6 +645,81 @@ bool RootItem::isAboutToBeDeleted() const {
   }
 
   return false;
+}
+
+QVariant RootItem::visualForegroundColor(int role) const {
+  switch (m_visualStatus) {
+    case VisualStatus::Error:
+      return qApp->skins()->colorForModel(role == HIGHLIGHTED_FOREGROUND_ROLE
+                                            ? SkinEnums::PaletteColors::FgSelectedError
+                                            : SkinEnums::PaletteColors::FgError);
+    case VisualStatus::NewMessages:
+      return qApp->skins()->colorForModel(role == HIGHLIGHTED_FOREGROUND_ROLE
+                                            ? SkinEnums::PaletteColors::FgSelectedNewMessages
+                                            : SkinEnums::PaletteColors::FgNewMessages);
+    case VisualStatus::Normal:
+    default:
+      return QVariant();
+  }
+}
+
+RootItem::VisualStatus RootItem::visualStatus() const {
+  if (kind() == RootItem::Kind::Feed) {
+    const auto feed_status = toFeed()->status();
+
+    if (Feed::isErrorStatus(feed_status)) {
+      return VisualStatus::Error;
+    }
+    else if (feed_status == Feed::Status::NewMessages) {
+      return VisualStatus::NewMessages;
+    }
+  }
+
+  return m_visualStatus;
+}
+
+void RootItem::recalculateVisualStateRecursively() {
+  for (RootItem* child : childItems()) {
+    child->recalculateVisualStateRecursively();
+  }
+
+  recalculateVisualStatusFromChildren();
+}
+
+void RootItem::recalculateVisualStateUpwards() {
+  RootItem* item = this;
+
+  while (item != nullptr) {
+    item->recalculateVisualStatusFromChildren();
+    item = item->parent();
+  }
+}
+
+void RootItem::recalculateVisualStatusFromChildren() {
+  if (kind() == RootItem::Kind::Feed) {
+    return;
+  }
+
+  VisualStatus aggregated_state = VisualStatus::Normal;
+
+  for (const RootItem* child : std::as_const(m_childItems)) {
+    if (child->kind() != RootItem::Kind::Feed && child->kind() != RootItem::Kind::Category &&
+        child->kind() != RootItem::Kind::ServiceRoot) {
+      continue;
+    }
+
+    const auto child_state = child->visualStatus();
+
+    if (child_state == VisualStatus::Error) {
+      aggregated_state = VisualStatus::Error;
+      break;
+    }
+    else if (child_state == VisualStatus::NewMessages) {
+      aggregated_state = VisualStatus::NewMessages;
+    }
+  }
+
+  m_visualStatus = aggregated_state;
 }
 
 bool RootItem::removeChild(int index) {

@@ -34,6 +34,12 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
       Unknown = 256
     };
 
+    enum class VisualStatus {
+      Normal = 0,
+      NewMessages = 1,
+      Error = 2
+    };
+
     // Holds statuses for messages
     // to be switched importance (starred).
     enum class Importance {
@@ -232,6 +238,14 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
 
     bool isAboutToBeDeleted() const;
 
+    QVariant visualForegroundColor(int role) const;
+
+    VisualStatus visualStatus() const;
+    void recalculateVisualStatusFromChildren();
+
+    void recalculateVisualStateRecursively();
+    void recalculateVisualStateUpwards();
+
   private:
     RootItem::Kind m_kind;
     int m_id;
@@ -245,6 +259,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     QList<RootItem*> m_childItems;
     RootItem* m_parentItem;
     bool m_deleting;
+    VisualStatus m_visualStatus;
 };
 
 template <typename T>

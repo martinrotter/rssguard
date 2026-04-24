@@ -189,8 +189,10 @@ void FeedsModel::removeItem(RootItem* deleting_item, bool reload_counts) {
     QModelIndex parent_index = index.parent();
 
     deleting_item->setDeleting(true);
+
     beginRemoveRows(parent_index, index.row(), index.row());
     parent_item->removeChild(deleting_item);
+    parent_item->recalculateVisualStateUpwards();
     endRemoveRows();
 
     if (reload_counts && deleting_item->kind() != RootItem::Kind::ServiceRoot) {
@@ -214,6 +216,7 @@ void FeedsModel::reassignNodeToNewParent(RootItem* original_node, RootItem* new_
         // Remove the original item from the model...
         beginRemoveRows(indexForItem(original_parent), original_index_of_item, original_index_of_item);
         original_parent->removeChild(original_node);
+        original_parent->recalculateVisualStateUpwards();
         endRemoveRows();
       }
     }
@@ -223,6 +226,7 @@ void FeedsModel::reassignNodeToNewParent(RootItem* original_node, RootItem* new_
     // ... and insert it under the new parent.
     beginInsertRows(indexForItem(new_parent), new_index_of_item, new_index_of_item);
     new_parent->appendChild(original_node);
+    new_parent->recalculateVisualStateUpwards();
     endInsertRows();
   }
 }
@@ -359,6 +363,10 @@ void FeedsModel::notifyWithCounts() {
 }
 
 void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
+  for (RootItem* item : items) {
+    item->recalculateVisualStateUpwards();
+  }
+
   if (items.size() > RELOAD_MODEL_BORDER_NUM) {
     qDebugNN << LOGSEC_FEEDMODEL << "There is request to reload feed model for more than " << RELOAD_MODEL_BORDER_NUM
              << " items, reloading model fully.";

@@ -254,6 +254,8 @@ bool Feed::isErrorStatus(Feed::Status status) {
 void Feed::setStatus(Feed::Status status, const QString& status_text) {
   m_status = status;
   m_statusString = status_text;
+
+  recalculateVisualStateUpwards();
 }
 
 QString Feed::source() const {
