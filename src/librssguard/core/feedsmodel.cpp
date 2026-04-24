@@ -363,9 +363,11 @@ void FeedsModel::notifyWithCounts() {
 }
 
 void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {
+  /*
   for (RootItem* item : items) {
     item->recalculateVisualStateUpwards();
   }
+  */
 
   if (items.size() > RELOAD_MODEL_BORDER_NUM) {
     qDebugNN << LOGSEC_FEEDMODEL << "There is request to reload feed model for more than " << RELOAD_MODEL_BORDER_NUM
