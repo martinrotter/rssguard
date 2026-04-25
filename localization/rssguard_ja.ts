@@ -9962,42 +9962,42 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="260"/>
       <source>Save page to PDF file</source>
-      <translation type="unfinished">Save page to PDF file</translation>
+      <translation>ページを PDF ファイルに保存</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="263"/>
       <source>PDF files (*.pdf)</source>
-      <translation type="unfinished">PDF files (*.pdf)</translation>
+      <translation>PDF ファイル(*.pdf)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="277"/>
       <source>Save complete page to file</source>
-      <translation type="unfinished">Save complete page to file</translation>
+      <translation>ページ全体をファイルに保存</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="280"/>
       <source>Mime HTML files (*.mhtml)</source>
-      <translation type="unfinished">Mime HTML files (*.mhtml)</translation>
+      <translation>Mime HTMLファイル (*.mhtml)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="333"/>
       <source>Advanced</source>
-      <translation type="unfinished">Advanced</translation>
+      <translation>高度</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="334"/>
       <source>Extra actions</source>
-      <translation type="unfinished">Extra actions</translation>
+      <translation>追加アクション</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="336"/>
       <source>Page actions</source>
-      <translation type="unfinished">Page actions</translation>
+      <translation>ページアクション</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="342"/>
       <source>Web attributes</source>
-      <translation type="unfinished">Web attributes</translation>
+      <translation>ウェブ属性</translation>
     </message>
   </context>
   <context>
@@ -10005,167 +10005,167 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="49"/>
       <source>JS enabled</source>
-      <translation type="unfinished">JS enabled</translation>
+      <translation>JS を有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="52"/>
       <source>JS can open popup windows</source>
-      <translation type="unfinished">JS can open popup windows</translation>
+      <translation>JS でポップアップウィンドウを開く</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="56"/>
       <source>JS can access clipboard</source>
-      <translation type="unfinished">JS can access clipboard</translation>
+      <translation>JS でクリップボードにアクセス</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="60"/>
       <source>Hyperlinks can get focus</source>
-      <translation type="unfinished">Hyperlinks can get focus</translation>
+      <translation>ハイパーリンクにフォーカスを当てる</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="63"/>
       <source>Local storage enabled</source>
-      <translation type="unfinished">Local storage enabled</translation>
+      <translation>ローカルストレージを有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="67"/>
       <source>Local content can access remote URLs</source>
-      <translation type="unfinished">Local content can access remote URLs</translation>
+      <translation>ローカルコンテンツからリモート URL にアクセス</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="70"/>
       <source>XSS auditing enabled</source>
-      <translation type="unfinished">XSS auditing enabled</translation>
+      <translation>XSS 監査を有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="73"/>
       <source>Spatial navigation enabled</source>
-      <translation type="unfinished">Spatial navigation enabled</translation>
+      <translation>空間ナビゲーションを有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="77"/>
       <source>Local content can access local files</source>
-      <translation type="unfinished">Local content can access local files</translation>
+      <translation>ローカルコンテンツからローカルファイルにアクセス</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="80"/>
       <source>Hyperlink auditing enabled</source>
-      <translation type="unfinished">Hyperlink auditing enabled</translation>
+      <translation>ハイパーリンク監査を有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="83"/>
       <source>Animate scrolling</source>
-      <translation type="unfinished">Animate scrolling</translation>
+      <translation>スクロールアニメーション</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="86"/>
       <source>Error pages enabled</source>
-      <translation type="unfinished">Error pages enabled</translation>
+      <translation>エラーページを有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="89"/>
       <source>Plugins enabled</source>
-      <translation type="unfinished">Plugins enabled</translation>
+      <translation>プラグインを有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="94"/>
       <source>Screen capture enabled</source>
-      <translation type="unfinished">Screen capture enabled</translation>
+      <translation>スクリーンキャプチャーを有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="97"/>
       <source>WebGL enabled</source>
-      <translation type="unfinished">WebGL enabled</translation>
+      <translation>WebGL を有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="101"/>
       <source>Accelerate 2D canvas</source>
-      <translation type="unfinished">Accelerate 2D canvas</translation>
+      <translation>2D キャンバスを高速化</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="104"/>
       <source>Print element backgrounds</source>
-      <translation type="unfinished">Print element backgrounds</translation>
+      <translation>要素の背景を印刷</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="108"/>
       <source>Allow running insecure content</source>
-      <translation type="unfinished">Allow running insecure content</translation>
+      <translation>安全でないコンテンツの実行を許可</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="112"/>
       <source>Allow geolocation on insecure origins</source>
-      <translation type="unfinished">Allow geolocation on insecure origins</translation>
+      <translation>安全でない発信元での位置情報を許可</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="118"/>
       <source>JS can activate windows</source>
-      <translation type="unfinished">JS can activate windows</translation>
+      <translation>JS でウィンドウを有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="121"/>
       <source>Show scrollbars</source>
-      <translation type="unfinished">Show scrollbars</translation>
+      <translation>スクロールバーを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="125"/>
       <source>Media playback with gestures</source>
-      <translation type="unfinished">Media playback with gestures</translation>
+      <translation>ジェスチャーでメディアを再生</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="129"/>
       <source>WebRTC uses only public interfaces</source>
-      <translation type="unfinished">WebRTC uses only public interfaces</translation>
+      <translation>WebRTC はパブリック インターフェイスのみを使用</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="132"/>
       <source>JS can paste from clipboard</source>
-      <translation type="unfinished">JS can paste from clipboard</translation>
+      <translation>JS でクリップボードからの貼り付けを可能に</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="135"/>
       <source>DNS prefetch enabled</source>
-      <translation type="unfinished">DNS prefetch enabled</translation>
+      <translation>DNS プリフェッチを有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="140"/>
       <source>PDF viewer enabled</source>
-      <translation type="unfinished">PDF viewer enabled</translation>
+      <translation>PDF ビューアを有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="146"/>
       <source>Force dark mode</source>
-      <translation type="unfinished">Force dark mode</translation>
+      <translation>ダークモードに変更</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="152"/>
       <source>Printing - print headers/footers.</source>
-      <translation type="unfinished">Printing - print headers/footers.</translation>
+      <translation>印刷 - ヘッダー/フッターを印刷</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="194"/>
       <source>Web cache cleared</source>
-      <translation type="unfinished">Web cache cleared</translation>
+      <translation>ウェブキャッシュを消去しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="195"/>
       <source>Web cache was cleared. List of visited links was cleared too.</source>
-      <translation type="unfinished">Web cache was cleared. List of visited links was cleared too.</translation>
+      <translation>ウェブキャッシュが消去されました。アクセスしたリンクのリストもクリアされました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="212"/>
       <source>File download</source>
-      <translation type="unfinished">File download</translation>
+      <translation>ファイルをダウンロード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="213"/>
       <source>Download of file &apos;%1&apos; was offered.</source>
-      <translation type="unfinished">Download of file &apos;%1&apos; was offered.</translation>
+      <translation>ファイル &apos;%1&apos; のダウンロードが提供されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="215"/>
       <source>Copy file URL</source>
-      <translation type="unfinished">Copy file URL</translation>
+      <translation>ファイルの URL をコピー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="354"/>
@@ -10188,7 +10188,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="30"/>
       <source>Extra nodes</source>
-      <translation type="unfinished">Extra nodes</translation>
+      <translation>追加ノード</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="50"/>
@@ -10208,7 +10208,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="88"/>
       <source>JID</source>
-      <translation type="unfinished">JID</translation>
+      <translation>JID</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="101"/>
@@ -10218,12 +10218,12 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="23"/>
       <source>IDs of extra services (which contain PubSub nodes) to use for discovery, one ID per line, for example news.movim.eu</source>
-      <translation type="unfinished">IDs of extra services (which contain PubSub nodes) to use for discovery, one ID per line, for example news.movim.eu</translation>
+      <translation>検出に使用する追加サービス（PubSubノードを含む）のIDを1行に1つずつ記述します。例: news.movi​​m.eu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="26"/>
       <source>Four kinds of nodes are supported (each on its own line):&lt;ul&gt;&lt;li&gt;PubSub service directories, for example &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP directories, for example &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;direct chatrooms (both private chats and group chats), for example &apos;chatroom@conference.movim.eu&apos; or &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub services or PEPs are probed for underlying PubSub nodes and chatrooms are added directly if they exist.</source>
-      <translation type="unfinished">Four kinds of nodes are supported (each on its own line):&lt;ul&gt;&lt;li&gt;PubSub service directories, for example &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP directories, for example &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;direct chatrooms (both private chats and group chats), for example &apos;chatroom@conference.movim.eu&apos; or &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub services or PEPs are probed for underlying PubSub nodes and chatrooms are added directly if they exist.</translation>
+      <translation>4 種類のノードがサポートされています (それぞれが別々の行に表示されます): &lt;ul&gt;&lt;li&gt; PubSub サービス ディレクトリ 例: &apos;news.movi​​m.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP ディレクトリ 例: &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt; ダイレクトチャットルーム (プライベートチャットとグループ チャットの両方)、例: &apos;chatroom@conference.movi​​m.eu&apos; または &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub サービスまたは PEP は、基盤となる PubSub ノードを検出するためにプローブされ、チャット ルームが存在する場合は直接追加されます。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="39"/>
@@ -10238,7 +10238,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="41"/>
       <source>URL of your XMPP server</source>
-      <translation type="unfinished">URL of your XMPP server</translation>
+      <translation>XMPP サーバーの URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="43"/>
@@ -10268,22 +10268,22 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="97"/>
       <source>Network error, have you entered correct host, username and password?</source>
-      <translation type="unfinished">Network error, have you entered correct host, username and password?</translation>
+      <translation>ネットワークエラー、ホスト名、ユーザー名、パスワードは正しく入力されていますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="102"/>
       <source>File error: &apos;%1&apos;.</source>
-      <translation type="unfinished">File error: &apos;%1&apos;.</translation>
+      <translation>ファイルエラー: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="103"/>
       <source>File error</source>
-      <translation type="unfinished">File error</translation>
+      <translation>ファイルエラー</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="109"/>
       <source>Client error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">Client error: &apos;%1 - %2&apos;.</translation>
+      <translation>クライアントエラー: &apos;%1 - %2&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="110"/>
