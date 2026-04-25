@@ -28,12 +28,13 @@ TrayIcon::TrayIcon(const QString& id,
                    const QPixmap& normal_icon,
                    const QPixmap& plain_icon,
                    QObject* parent)
-  : QObject(parent), m_id(id), m_title(title), m_normalIcon(normal_icon), m_plainIcon(plain_icon) {
+  : QObject(parent), m_id(id), m_title(title), m_normalIcon(normal_icon), m_plainIcon(plain_icon),
+    m_showUnreadArticlesCount(qApp->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool()) {
   m_font.setBold(true);
 }
 
 void TrayIcon::setNumber(int number) {
-  if (number <= 0 || !qApp->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool()) {
+  if (number <= 0) {
     // Either no unread messages or numbers in tray icon are disabled.
     setToolTip(QSL(APP_LONG_NAME));
     setPixmap(m_normalIcon);
@@ -41,49 +42,56 @@ void TrayIcon::setNumber(int number) {
   }
   else {
     setToolTip(tr("Unread news: %1").arg(QString::number(number)));
-    QPixmap background(m_plainIcon);
-    QPainter tray_painter;
 
-    tray_painter.begin(&background);
-    tray_painter.setPen(Qt::GlobalColor::white);
-    tray_painter.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
-    tray_painter.setRenderHint(QPainter::RenderHint::TextAntialiasing, false);
+    if (m_showUnreadArticlesCount) {
+      QPixmap background(m_plainIcon);
+      QPainter tray_painter;
 
-    // Numbers with more than 3 digits won't be readable, display
-    // infinity symbol in that case.
-    QString num_txt;
+      tray_painter.begin(&background);
+      tray_painter.setPen(Qt::GlobalColor::white);
+      tray_painter.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
+      tray_painter.setRenderHint(QPainter::RenderHint::TextAntialiasing, false);
 
-    if (number >= 100000) {
-      num_txt = QChar(8734);
-    }
-    else if (number >= 1000) {
-      // For example 15k.
-      num_txt = QSL("%1k").arg(number / 1000);
+      // Numbers with more than 3 digits won't be readable, display
+      // infinity symbol in that case.
+      QString num_txt;
+
+      if (number >= 100000) {
+        num_txt = QChar(8734);
+      }
+      else if (number >= 1000) {
+        // For example 15k.
+        num_txt = QSL("%1k").arg(number / 1000);
+      }
+      else {
+        num_txt = QString::number(number);
+      }
+
+      switch (num_txt.size()) {
+        case 3:
+          m_font.setPixelSize(background.width() * 0.55);
+          break;
+
+        case 2:
+          m_font.setPixelSize(background.width() * 0.79);
+          break;
+
+        case 1:
+        default:
+          m_font.setPixelSize(background.width() * 0.88);
+          break;
+      }
+
+      tray_painter.setFont(m_font);
+      tray_painter.drawText(background.rect(), Qt::AlignmentFlag::AlignCenter, num_txt);
+      tray_painter.end();
+
+      setPixmap(background);
     }
     else {
-      num_txt = QString::number(number);
+      setPixmap(m_plainIcon);
     }
 
-    switch (num_txt.size()) {
-      case 3:
-        m_font.setPixelSize(background.width() * 0.55);
-        break;
-
-      case 2:
-        m_font.setPixelSize(background.width() * 0.79);
-        break;
-
-      case 1:
-      default:
-        m_font.setPixelSize(background.width() * 0.88);
-        break;
-    }
-
-    tray_painter.setFont(m_font);
-    tray_painter.drawText(background.rect(), Qt::AlignmentFlag::AlignCenter, num_txt);
-    tray_painter.end();
-
-    setPixmap(background);
     setStatus(TrayIcon::Status::Active);
   }
 }

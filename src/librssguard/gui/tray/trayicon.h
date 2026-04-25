@@ -83,6 +83,7 @@ class TrayIcon : public QObject {
     QPixmap m_normalIcon;
     QPixmap m_plainIcon;
     QFont m_font = QFont();
+    bool m_showUnreadArticlesCount;
 };
 
 #endif // TRAYICON_H

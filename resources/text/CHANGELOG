@@ -23,6 +23,7 @@ Fixed:
 * Pages that need accepted cookies or active website session state now work better in `WebEngineViewer` builds because browser cookies are shared with RSS Guard networking.
 * The text-based article viewer was improved in many small ways and now behaves better in everyday use.
 * Handling of pages without images was improved.
+* Tray icon image now switches correctly when count of unread articles is not enabled. (#2206)
 * Invalid custom skin colors are now ignored instead of breaking the look of the application.
 * The selected article count is now shown only when more than one article is selected.
 

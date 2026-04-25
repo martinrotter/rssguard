@@ -597,19 +597,23 @@ TrayIcon* Application::trayIcon() {
     QPixmap tray_icon;
     QPixmap tray_icon_plain;
 
-    if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool()) {
-      if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool()) {
-        tray_icon = QPixmap(APP_ICON_MONO_PATH);
-        tray_icon_plain = QPixmap(APP_ICON_PLAIN_PATH);
+    const bool monochrome_icon = qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool();
+    const bool colored_unread_icon = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool();
+    const bool show_unread_count = qApp->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool();
+
+    if (monochrome_icon) {
+      tray_icon = QPixmap(APP_ICON_MONO_PATH);
+
+      if (colored_unread_icon) {
+        tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH);
       }
       else {
-        tray_icon = QPixmap(APP_ICON_MONO_PATH);
-        tray_icon_plain = QPixmap(APP_ICON_MONO_PLAIN_PATH);
+        tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_MONO_PLAIN_PATH) : QPixmap(APP_ICON_MONO_PATH);
       }
     }
     else {
       tray_icon = QPixmap(APP_ICON_PATH);
-      tray_icon_plain = QPixmap(APP_ICON_PLAIN_PATH);
+      tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH);
     }
 
     m_trayIcon = new QtTrayIcon(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, m_mainForm);
