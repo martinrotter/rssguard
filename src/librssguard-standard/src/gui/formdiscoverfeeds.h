@@ -20,6 +20,11 @@ class DiscoveredFeedsModel : public AccountCheckModel {
     Q_OBJECT
 
   public:
+    struct DiscoverTask {
+        const FeedParser* m_parser;
+        QString m_url;
+    };
+
     explicit DiscoveredFeedsModel(QObject* parent = {});
 
     virtual QVariant headerData(int section, Qt::Orientation orientation, int role) const;
@@ -45,7 +50,7 @@ class FormDiscoverFeeds : public QDialog {
 
   private slots:
     void discoverFeeds();
-    void onUrlChanged(const QString& new_url);
+    void onUrlChanged();
     void addSingleFeed();
     void importSelectedFeeds();
 

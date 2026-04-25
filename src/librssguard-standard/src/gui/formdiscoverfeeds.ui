@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>593</width>
-    <height>394</height>
+    <height>475</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -25,34 +25,23 @@
     </widget>
    </item>
    <item row="0" column="1">
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <item>
-      <widget class="LineEditWithStatus" name="m_txtUrl" native="true">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>1</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="m_btnDiscover">
-       <property name="text">
-        <string>Discover!</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
+    <widget class="TextEditWithStatus" name="m_txtUrl" native="true">
+     <property name="minimumSize">
+      <size>
+       <width>0</width>
+       <height>100</height>
+      </size>
+     </property>
+    </widget>
    </item>
-   <item row="1" column="0" colspan="2">
+   <item row="2" column="0" colspan="2">
     <widget class="QCheckBox" name="m_cbDiscoverRecursive">
      <property name="text">
       <string>Recursive discovery (can take some time for bigger websites)</string>
      </property>
     </widget>
    </item>
-   <item row="2" column="0" colspan="2">
+   <item row="4" column="0" colspan="2">
     <widget class="QProgressBar" name="m_pbDiscovery">
      <property name="maximumSize">
       <size>
@@ -65,7 +54,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="6" column="0" colspan="2">
     <widget class="QGroupBox" name="m_gbFeeds">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -216,7 +205,7 @@
      </layout>
     </widget>
    </item>
-   <item row="4" column="0" colspan="2">
+   <item row="7" column="0" colspan="2">
     <widget class="QDialogButtonBox" name="m_buttonBox">
      <property name="orientation">
       <enum>Qt::Orientation::Horizontal</enum>
@@ -226,17 +215,38 @@
      </property>
     </widget>
    </item>
+   <item row="3" column="1">
+    <widget class="QPushButton" name="m_btnDiscover">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="text">
+      <string>Discover!</string>
+     </property>
+    </widget>
+   </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>LineEditWithStatus</class>
+   <class>TextEditWithStatus</class>
    <extends>QWidget</extends>
-   <header>lineeditwithstatus.h</header>
+   <header>texteditwithstatus.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
  <tabstops>
+  <tabstop>m_cbDiscoverRecursive</tabstop>
+  <tabstop>m_btnDiscover</tabstop>
+  <tabstop>m_cmbParentCategory</tabstop>
+  <tabstop>m_btnSelecAll</tabstop>
+  <tabstop>m_btnSelectNone</tabstop>
+  <tabstop>m_tvFeeds</tabstop>
+  <tabstop>m_btnAddIndividually</tabstop>
+  <tabstop>m_btnImportSelected</tabstop>
  </tabstops>
  <resources/>
  <connections>

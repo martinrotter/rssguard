@@ -44,7 +44,7 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
   m_btnGoAdvanced
     ->setToolTip(tr("Close this dialog and display dialog for adding individual feeds with advanced options."));
 
-  setTabOrder(m_ui.m_txtUrl->lineEdit(), m_ui.m_btnDiscover);
+  setTabOrder(m_ui.m_txtUrl->textEdit(), m_ui.m_btnDiscover);
   setTabOrder(m_ui.m_btnDiscover, m_ui.m_cbDiscoverRecursive);
   setTabOrder(m_ui.m_cbDiscoverRecursive, m_ui.m_cmbParentCategory);
   setTabOrder(m_ui.m_cmbParentCategory, m_ui.m_btnSelecAll);
@@ -64,7 +64,7 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
     ->setIcon(qApp->icons()->fromTheme(QSL("window-close")));
   m_ui.m_btnDiscover->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
 
-  connect(m_ui.m_txtUrl->lineEdit(), &QLineEdit::textChanged, this, &FormDiscoverFeeds::onUrlChanged);
+  connect(m_ui.m_txtUrl->textEdit(), &QPlainTextEdit::textChanged, this, &FormDiscoverFeeds::onUrlChanged);
   connect(m_ui.m_btnImportSelected, &QPushButton::clicked, this, &FormDiscoverFeeds::importSelectedFeeds);
   connect(m_ui.m_btnSelecAll, &QPushButton::clicked, m_discoveredModel, &DiscoveredFeedsModel::checkAllItems);
   connect(m_ui.m_btnSelectNone, &QPushButton::clicked, m_discoveredModel, &DiscoveredFeedsModel::uncheckAllItems);
@@ -95,14 +95,14 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
   m_ui.m_pbDiscovery->setVisible(false);
 
   if (QUrl(url).isValid()) {
-    m_ui.m_txtUrl->lineEdit()->setText(url);
+    m_ui.m_txtUrl->textEdit()->setPlainText(url);
   }
 
   if (url.isEmpty()) {
-    emit m_ui.m_txtUrl->lineEdit()->textChanged(url);
+    emit m_ui.m_txtUrl->textEdit()->textChanged();
   }
 
-  m_ui.m_txtUrl->lineEdit()->selectAll();
+  m_ui.m_txtUrl->textEdit()->selectAll();
   m_ui.m_txtUrl->setFocus();
 
   if (parent_to_select != nullptr) {
@@ -177,11 +177,24 @@ QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser
 }
 
 void FormDiscoverFeeds::discoverFeeds() {
-  QString url = m_ui.m_txtUrl->lineEdit()->text();
+  QStringList urls =
+    m_ui.m_txtUrl->textEdit()->toPlainText().split(QRegularExpression(QSL("[\r\n]")), SPLIT_BEHAVIOR::SkipEmptyParts);
   bool greedy_discover = m_ui.m_cbDiscoverRecursive->isChecked();
 
+  urls.removeDuplicates();
+
   std::function<QList<StandardFeed*>(const FeedParser*)> func = [=](const FeedParser* parser) -> QList<StandardFeed*> {
-    return discoverFeedsWithParser(parser, url, greedy_discover);
+    QList<StandardFeed*> all_feeds;
+
+    for (const QString& url : urls) {
+      if (!QUrl(url.trimmed()).isValid()) {
+        continue;
+      }
+
+      all_feeds << discoverFeedsWithParser(parser, url.trimmed(), greedy_discover);
+    }
+
+    return all_feeds;
   };
 
   std::function<QList<StandardFeed*>(QList<StandardFeed*>&, const QList<StandardFeed*>&)> reducer =
@@ -212,12 +225,26 @@ void FormDiscoverFeeds::discoverFeeds() {
   setEnabled(false);
 }
 
-void FormDiscoverFeeds::onUrlChanged(const QString& new_url) {
-  if (QUrl(new_url).isValid()) {
-    m_ui.m_txtUrl->setStatus(WidgetWithStatus::StatusType::Ok, tr("URL is valid."));
+void FormDiscoverFeeds::onUrlChanged() {
+  QStringList urls =
+    m_ui.m_txtUrl->textEdit()->toPlainText().split(QRegularExpression(QSL("[\r\n]")), SPLIT_BEHAVIOR::SkipEmptyParts);
+
+  urls.removeDuplicates();
+
+  bool all_valid = true;
+
+  for (const QString& url : std::as_const(urls)) {
+    if (!QUrl(url.trimmed()).isValid()) {
+      all_valid = false;
+      break;
+    }
+  }
+
+  if (!urls.isEmpty() && all_valid) {
+    m_ui.m_txtUrl->setStatus(WidgetWithStatus::StatusType::Ok, tr("All URLs are valid."));
   }
   else {
-    m_ui.m_txtUrl->setStatus(WidgetWithStatus::StatusType::Error, tr("URL is NOT valid."));
+    m_ui.m_txtUrl->setStatus(WidgetWithStatus::StatusType::Error, tr("One or more URLs are invalid."));
   }
 }
 
