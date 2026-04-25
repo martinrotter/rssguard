@@ -82,8 +82,8 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
 
   loadCategories(m_serviceRoot->getSubTreeCategories(), m_serviceRoot);
 
+  m_ui.m_txtUrl->textEdit()->setPlaceholderText(tr("Enter feed URLs, one URL per line"));
   m_ui.m_tvFeeds->setModel(m_discoveredModel);
-
   m_ui.m_tvFeeds->header()->setSectionResizeMode(0, QHeaderView::ResizeMode::Stretch);
   m_ui.m_tvFeeds->header()->setSectionResizeMode(1, QHeaderView::ResizeMode::ResizeToContents);
 
@@ -181,20 +181,25 @@ void FormDiscoverFeeds::discoverFeeds() {
     m_ui.m_txtUrl->textEdit()->toPlainText().split(QRegularExpression(QSL("[\r\n]")), SPLIT_BEHAVIOR::SkipEmptyParts);
   bool greedy_discover = m_ui.m_cbDiscoverRecursive->isChecked();
 
+  for (QString& u : urls) {
+    u = u.trimmed();
+  }
+
   urls.removeDuplicates();
 
-  std::function<QList<StandardFeed*>(const FeedParser*)> func = [=](const FeedParser* parser) -> QList<StandardFeed*> {
-    QList<StandardFeed*> all_feeds;
+  QList<DiscoverTask> tasks;
 
-    for (const QString& url : urls) {
-      if (!QUrl(url.trimmed()).isValid()) {
-        continue;
+  for (const FeedParser* parser : std::as_const(m_parsers)) {
+    for (const QString& url : std::as_const(urls)) {
+      if (QUrl(url).isValid()) {
+        tasks.append({parser, url});
       }
-
-      all_feeds << discoverFeedsWithParser(parser, url.trimmed(), greedy_discover);
     }
+  }
 
-    return all_feeds;
+  std::function<QList<StandardFeed*>(const DiscoverTask&)> func =
+    [=](const DiscoverTask& task) -> QList<StandardFeed*> {
+    return discoverFeedsWithParser(task.m_parser, task.m_url, greedy_discover);
   };
 
   std::function<QList<StandardFeed*>(QList<StandardFeed*>&, const QList<StandardFeed*>&)> reducer =
@@ -211,15 +216,15 @@ void FormDiscoverFeeds::discoverFeeds() {
   };
 
 #if QT_VERSION_MAJOR == 5
-  QFuture<QList<StandardFeed*>> fut = QtConcurrent::mappedReduced<QList<StandardFeed*>>(m_parsers, func, reducer);
+  QFuture<QList<StandardFeed*>> fut = QtConcurrent::mappedReduced<QList<StandardFeed*>>(tasks, func, reducer);
 #else
   QFuture<QList<StandardFeed*>> fut =
-    QtConcurrent::mappedReduced<QList<StandardFeed*>>(qApp->workHorsePool(), m_parsers, func, reducer);
+    QtConcurrent::mappedReduced<QList<StandardFeed*>>(qApp->workHorsePool(), tasks, func, reducer);
 #endif
 
   m_watcherLookup.setFuture(fut);
 
-  m_ui.m_pbDiscovery->setMaximum(m_parsers.size());
+  m_ui.m_pbDiscovery->setMaximum(tasks.size());
   m_ui.m_pbDiscovery->setValue(0);
   m_ui.m_pbDiscovery->setVisible(true);
   setEnabled(false);
