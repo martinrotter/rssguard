@@ -10416,27 +10416,27 @@ Service: %2</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="505"/>
       <source>XMPP connection to server %1 is alive.</source>
-      <translation type="unfinished">XMPP connection to server %1 is alive.</translation>
+      <translation>到服务器 %1 的 XMPP 连接活跃。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="546"/>
       <source>XMPP server disconnected</source>
-      <translation type="unfinished">XMPP server disconnected</translation>
+      <translation>XMPP 服务器连接已断开</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="547"/>
       <source>XMPP connection to server %1 is down.</source>
-      <translation type="unfinished">XMPP connection to server %1 is down.</translation>
+      <translation>到服务器 %1 的 XMPP 连接已关闭。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="553"/>
       <source>XMPP error</source>
-      <translation type="unfinished">XMPP error</translation>
+      <translation>XMPP 错误</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="554"/>
       <source>XMPP connection to server %1 has error: %2</source>
-      <translation type="unfinished">XMPP connection to server %1 has error: %2</translation>
+      <translation>到服务器 %1 的 XMPP 连接有错误：%2</translation>
     </message>
   </context>
   <context>
@@ -10444,7 +10444,7 @@ Service: %2</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="140"/>
       <source>Cannot store article</source>
-      <translation type="unfinished">Cannot store article</translation>
+      <translation>无法存储文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="141"/>
@@ -10454,21 +10454,21 @@ Service: %2</source>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="212"/>
       <source>&amp;Reconnect</source>
-      <translation type="unfinished">&amp;Reconnect</translation>
+      <translation>重新连接(&amp;R)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="230"/>
       <source>Trigger async fetch</source>
-      <translation type="unfinished">Trigger async fetch</translation>
+      <translation>触发异步获取</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="250"/>
       <source>User: %1
 Status: %2
 Supported XEPs: %3</source>
-      <translation type="unfinished">User: %1
-Status: %2
-Supported XEPs: %3</translation>
+      <translation>用户: %1
+状态: %2
+支持的 XEP: %3</translation>
     </message>
   </context>
 </TS>
