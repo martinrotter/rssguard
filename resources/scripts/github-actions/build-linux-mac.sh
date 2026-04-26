@@ -134,13 +134,12 @@ if [ $is_linux = true ]; then
 else
   mkdir -p "$prefix/Contents/Frameworks"
   mv "$prefix/Contents/MacOS/librssguard.dylib" "$prefix/Contents/Frameworks/"
-  install_name_tool -id @rpath/librssguard.dylib "$prefix/Contents/Frameworks/librssguard.dylib"
 
   otool -L "$prefix/Contents/Frameworks/librssguard.dylib"
   otool -L "$prefix/Contents/MacOS/rssguard"
 
   # Deploy to DMG.
-  macdeployqt "$prefix" -dmg -verbose=2
+  macdeployqt "$prefix" -dmg -verbose=2 -codesign=-
 
   otool -L "$prefix/Contents/Frameworks/librssguard.dylib"
   otool -L "$prefix/Contents/MacOS/rssguard"
