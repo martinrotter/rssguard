@@ -77,7 +77,6 @@ elseif(APPLE)
     DESTINATION Contents/Resources
   )
   install(FILES
-    ${CMAKE_SOURCE_DIR}/resources/macosx/Info.plist.in
     ${CMAKE_BINARY_DIR}/Info.plist
     DESTINATION Contents
   )
