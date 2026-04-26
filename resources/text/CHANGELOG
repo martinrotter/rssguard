@@ -11,6 +11,7 @@ Added:
 * Browser actions can now be enabled or disabled depending on which viewer is in use.
 * New experimental `XMPP` plugin was added in supported builds.
 * Gemini pages can now be subscribed to as Gemlogs. (#2158)
+* Highlight color is now inherited from the system. (#2213)
 * Feed discovery now finds and resolves more feed links correctly, including relative links. (#2180, #2201)
 * The article list can now show feed icons in the `Feed` column. (#2179)
 * Skins can now color folder backgrounds in the feed list.
