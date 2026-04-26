@@ -89,8 +89,6 @@ string(SUBSTRING "${APP_VERSION}" 0 1 APP_VERSION_MAJOR)
 set(APP_URL "https://github.com/martinrotter/rssguard")
 set(APP_URL_ISSUES_NEW "https://github.com/martinrotter/rssguard/issues/new/choose")
 
-set(TYPEINFO "????")
-
 project(rssguard VERSION ${APP_VERSION} LANGUAGES CXX C)
 
 # Basic C++ related behavior of cmake.
