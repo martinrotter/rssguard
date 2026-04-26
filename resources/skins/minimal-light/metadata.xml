@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<skin version="6.6.6" base="minimal-base">
+<skin version="6.6.7" base="minimal-base">
   <author>
     <name>martinrotter</name>
   </author>
@@ -35,9 +35,7 @@
   
       <color role="Button">#efefef</color>
       <color role="Shadow">#646464</color>
-      <color role="HighlightedText">#ffffff</color>
       <color role="PlaceholderText">#80000000</color>
-      <color role="Highlight">#73a5b6</color>
     </group>
   
     <group id="Disabled">
@@ -46,7 +44,6 @@
       <color role="ButtonText">#bebebe</color>
       <color role="Dark">#bebebe</color>
       <color role="Shadow">#828282</color>
-      <color role="Highlight">#919191</color>
     </group>
   </style-palette>
 </skin>

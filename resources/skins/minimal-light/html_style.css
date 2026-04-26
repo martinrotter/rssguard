@@ -1,3 +1,8 @@
+::selection {
+  background: palette(Highlight) !important;
+  color: palette(HighlightedText) !important;
+}
+
 img {
   max-width: 98%;
   height: auto;
