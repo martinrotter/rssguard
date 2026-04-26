@@ -27,6 +27,7 @@ target_link_libraries(app PUBLIC
 if(APPLE)
   set_target_properties(app PROPERTIES
     MACOSX_BUNDLE FALSE
+    INSTALL_RPATH "@executable_path/../Frameworks"
   )
 elseif(WIN32)
   target_link_libraries(app PUBLIC
