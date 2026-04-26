@@ -80,8 +80,4 @@ elseif(APPLE)
     ${CMAKE_BINARY_DIR}/Info.plist
     DESTINATION Contents
   )
-  file(WRITE PkgInfo "APPL????")
-  install(FILES PkgInfo
-    DESTINATION Contents
-  )
 endif()
