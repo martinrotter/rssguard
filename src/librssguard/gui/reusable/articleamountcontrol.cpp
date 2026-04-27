@@ -23,6 +23,8 @@ ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
   m_ui.m_cbArticleLimittingCustomize->setChecked(true);
   m_ui.m_dtDateTimeToAvoid->setEnabled(false);
   m_ui.m_spinHoursAvoid->setEnabled(false);
+  m_ui.m_cbNoRemoveImportant->setEnabled(false);
+  m_ui.m_cbNoRemoveUnread->setEnabled(false);
   m_ui.m_spinHoursAvoid->setMode(TimeSpinBox::Mode::DaysHours);
   m_ui.m_dtDateTimeToAvoid
     ->setDisplayFormat(qApp->localization()->loadedLocale().dateTimeFormat(QLocale::FormatType::ShortFormat));
@@ -48,6 +50,9 @@ ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
   connect(m_ui.m_cbMoveToBinNoPurge, &QCheckBox::toggled, this, &ArticleAmountControl::changed);
   connect(m_ui.m_cbNoRemoveImportant, &QCheckBox::toggled, this, &ArticleAmountControl::changed);
   connect(m_ui.m_cbNoRemoveUnread, &QCheckBox::toggled, this, &ArticleAmountControl::changed);
+
+  connect(m_ui.m_cbMoveToBinNoPurge, &QCheckBox::toggled, m_ui.m_cbNoRemoveImportant, &QCheckBox::setEnabled);
+  connect(m_ui.m_cbMoveToBinNoPurge, &QCheckBox::toggled, m_ui.m_cbNoRemoveUnread, &QCheckBox::setEnabled);
 }
 
 void ArticleAmountControl::setForAppWideFeatures(bool app_wide, bool batch_edit) {

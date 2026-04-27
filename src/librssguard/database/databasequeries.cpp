@@ -500,7 +500,6 @@ QList<int> DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& d
     return {};
   }
 
-  // We find datetime stamp of oldest article which will be NOT moved/removed.
   SqlQuery q(db);
   QList<int> removed_ids;
   QStringList removed_ids_set;
@@ -517,21 +516,20 @@ QList<int> DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& d
                   "  Messages.is_read != :is_read "
                   "ORDER BY Messages.date_created DESC "
                   "LIMIT 2000000000 OFFSET :offset;"));
+
+    q.bindValue(QSL(":is_important"), dont_remove_starred ? 1 : 2);
+    q.bindValue(QSL(":is_read"), dont_remove_unread ? 0 : 2);
   }
   else {
     q.prepare(QSL("SELECT Messages.id "
                   "FROM Messages "
                   "WHERE "
-                  "  Messages.feed = :feed AND "
-                  "  (Messages.is_deleted = 1 OR Messages.is_important != :is_important) AND "
-                  "  (Messages.is_deleted = 1 OR Messages.is_read != :is_read) "
-                  "ORDER BY Messages.date_created DESC "
+                  "  Messages.feed = :feed "
+                  "ORDER BY Messages.is_deleted ASC, Messages.date_created DESC "
                   "LIMIT 2000000000 OFFSET :offset;"));
   }
 
   q.bindValue(QSL(":feed"), feed->id());
-  q.bindValue(QSL(":is_important"), dont_remove_starred ? 1 : 2);
-  q.bindValue(QSL(":is_read"), dont_remove_unread ? 0 : 2);
   q.bindValue(QSL(":offset"), amount_to_keep);
 
   q.exec();
