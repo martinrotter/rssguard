@@ -56,7 +56,7 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1143"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1147"/>
       <source>Application is already running.</source>
       <translation>应用程序已经在运行。</translation>
     </message>
@@ -76,17 +76,17 @@
       <translation>未启动设置恢复。请确保输出目录可写。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1172"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1176"/>
       <source>Cannot add feed</source>
       <translation>无法添加订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1173"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1177"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>由于没有活跃的账户可以添加订阅源，因此无法添加订阅源。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1024"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1028"/>
       <source>Unread articles fetched</source>
       <translation>已获取未读文章</translation>
     </message>
@@ -111,7 +111,7 @@ version by clicking this popup notification.</source>
 请点击此弹出通知，查看此版本所包含的新功能。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1142"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1146"/>
       <source>Already running</source>
       <translation>已在运行</translation>
     </message>
@@ -373,7 +373,7 @@ version by clicking this popup notification.</source>
   <context>
     <name>Category</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/category.cpp" line="67"/>
+      <location filename="../src/librssguard/services/abstract/category.cpp" line="82"/>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
@@ -538,12 +538,12 @@ Maybe change used database name in settings and try again. Falling back to SQLit
   <context>
     <name>DiscoveredFeedsModel</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="322"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="354"/>
       <source>Title</source>
       <translation>标题</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="322"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="354"/>
       <source>Type</source>
       <translation>类型</translation>
     </message>
@@ -666,40 +666,40 @@ Maybe change used database name in settings and try again. Falling back to SQLit
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="342"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="344"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>使用全局设置，但全局自动获取文章已被禁用</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="366"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="368"/>
       <source>no errors</source>
       <translation>正常</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="372"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="374"/>
       <source>authentication error</source>
       <translation>身份验证错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="378"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="380"/>
       <source>network error</source>
       <translation>网络错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="328"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="330"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>禁用文章自动获取</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="339"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="341"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>使用全局设置 (%n 分钟后自动获取文章)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="353"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="355"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -707,27 +707,27 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="369"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="371"/>
       <source>has new articles</source>
       <translation>有新文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="375"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="377"/>
       <source>SQL database error</source>
       <translation>SQL 数据库错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="381"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="383"/>
       <source>parsing error</source>
       <translation>解析错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="384"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="386"/>
       <source>error</source>
       <translation>错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="454"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="456"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -1160,215 +1160,215 @@ Item custom ID: %5</source>
   <context>
     <name>FeedsView</name>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="359"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="358"/>
       <source>Cannot edit item</source>
       <translation>无法编辑项目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="469"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="559"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="559"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="474"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="564"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="564"/>
       <source>Cannot delete item</source>
       <translation>无法删除项目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="360"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="359"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
       <translation>由于正在执行另一项关键操作，所选项目无法编辑。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="188"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="187"/>
       <source>Selected account does not support adding of new folders.</source>
       <translation>所选账户不支持添加新文件夹。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="470"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="475"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
       <translation>由于正在执行另一项关键操作，所选项目无法删除。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="243"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="330"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="506"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="330"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="506"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="242"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="329"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="511"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="329"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="511"/>
       <source>Are you sure?</source>
       <translation>你确定吗？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="170"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="169"/>
       <source>Selected account does not support adding of new feeds.</source>
       <translation>所选账户不支持添加新订阅。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="244"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="331"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="331"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="243"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="330"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="330"/>
       <source>Do you really want to clean all articles from selected items?</source>
       <translation>您真的想从选中的项目中清除所有文章吗？</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="260"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="345"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="345"/>
+      <source>Cannot clear items</source>
+      <translation>无法清除项目</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="346"/>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="346"/>
-      <source>Cannot clear items</source>
-      <translation>无法清除项目</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="262"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="347"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="347"/>
       <source>Failed to clear items: %1.</source>
       <translation>清除项目失败： %1。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="272"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
       <translation>真要从所选订阅源中清除所有未加星标的文章吗？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="287"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="286"/>
       <source>Cannot purge feeds</source>
       <translation>无法清除源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="288"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="287"/>
       <source>Failed to purge feeds: %1.</source>
       <translation>清除源失败： %1。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="303"/>
       <source>Enable or disable feeds</source>
       <translation>启用或禁用订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="305"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
       <source>You selected multiple feeds to enable/disable them.</source>
       <translation>您选择了多个源来启用/禁用它们。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="306"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="305"/>
       <source>Do you really want to enable or disable selected feeds?</source>
       <translation>您真的想要启用或禁用选定的源吗？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="380"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="397"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="413"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="397"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="413"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="379"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="396"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="412"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="396"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="412"/>
       <source>Cannot edit items</source>
       <translation>无法编辑项目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="381"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="380"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
       <translation>选定的项目无法编辑。暂不支持此功能。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="398"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="397"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
       <translation>%1 不支持批量编辑来自多个账户的项目。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="414"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="413"/>
       <source>%1 does not support batch editing of items of varying types.</source>
       <translation>%1 不支持批量编辑不同类型的项目。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="424"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="423"/>
       <source>Cannot edit some items</source>
       <translation>无法编辑某些项目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="425"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="424"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
       <translation>部分已选择的项目无法编辑。正在继续编辑其余部分。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="496"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="501"/>
       <source>Some items won&apos;t be deleted</source>
       <translation>有些项目不会被删除</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="497"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="502"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
       <translation>某些已选项目将不会被删除，因为它们无法被删除。</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="504"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="509"/>
       <source>Deleting %n items</source>
       <translation>
         <numerusform>删除 %n 个项目</numerusform>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="505"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="510"/>
       <source>You are about to completely delete %n items.</source>
       <translation>
         <numerusform>您即将完全删除 %n 个项目。</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="560"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="565"/>
       <source>Failed to delete selected item: %1.</source>
       <translation>删除选中项目失败： %1。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="634"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="656"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="656"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="639"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="661"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="661"/>
       <source>Cannot mark item read unread</source>
       <translation>无法标记已读项目为未读</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="635"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="657"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="657"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="640"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="662"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="662"/>
       <source>Failed to mark item read or unread: %1.</source>
       <translation>标记项目已读或未读失败： %1。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="666"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="671"/>
       <source>Mark everything as read</source>
       <translation>将所有标为已读</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="667"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="672"/>
       <source>Do you really want to mark everything as read?</source>
       <translation>真要将所有标为已读吗？</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1044"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1053"/>
       <source>Not supported</source>
       <translation>不支持</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1045"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1054"/>
       <source>Context menus with items from more than one account are not supported.</source>
       <translation>不支持含来自多于一个账户的项目的右键菜单。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1069"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1078"/>
       <source>Menu for feed list</source>
       <translation>订阅源列表菜单</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="968"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="977"/>
       <source>Feed filtered out</source>
       <translation>源已过滤</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="969"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="978"/>
       <source>Your feed is probably filtered out and cannot be revealed.</source>
       <translation>您的订阅源可能已被过滤而无法显示。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="169"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="187"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="187"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="168"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="186"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="186"/>
       <source>Not supported by account</source>
       <translation>账户不支持</translation>
     </message>
@@ -1982,52 +1982,52 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>发现订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
-      <source>URL</source>
-      <translation>URL</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="42"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="226"/>
       <source>Discover!</source>
       <translation>探索！</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="51"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="233"/>
       <source>Recursive discovery (can take some time for bigger websites)</source>
       <translation>递归发现(较大网站可能需要一些时间)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="77"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="59"/>
       <source>Discovered feeds</source>
       <translation>已发现的订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="83"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
+      <source>URLs</source>
+      <translation type="unfinished">URLs</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="65"/>
       <source>Target parent folder</source>
       <translation>目标主文件夹</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="95"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="77"/>
       <source>Select parent item for your feed.</source>
       <translation>为 Feed 选择主项目。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="128"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="110"/>
       <source>Select &amp;all</source>
       <translation>全选 (&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="135"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="117"/>
       <source>&amp;Unselect all</source>
       <translation>取消全选 (&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="190"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="178"/>
       <source>Add single feed with advanced details</source>
       <translation>添加单个订阅并提供详细信息</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="197"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="185"/>
       <source>&amp;Import checked feeds</source>
       <translation>导入已选订阅源 (&amp;I)</translation>
     </message>
@@ -2042,6 +2042,11 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>关闭此对话框，并显示添加个别订阅源的高级选项对话框。</translation>
     </message>
     <message>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="85"/>
+      <source>Enter feed URLs, one URL per line</source>
+      <translation type="unfinished">Enter feed URLs, one URL per line</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="138"/>
       <source>Cannot discover feeds</source>
       <translation>无法发现订阅源</translation>
@@ -2052,17 +2057,17 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>错误：%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="217"/>
-      <source>URL is valid.</source>
-      <translation>URL 有效。</translation>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="249"/>
+      <source>All URLs are valid.</source>
+      <translation type="unfinished">All URLs are valid.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="220"/>
-      <source>URL is NOT valid.</source>
-      <translation>URL 无效。</translation>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="252"/>
+      <source>One or more URLs are invalid.</source>
+      <translation type="unfinished">One or more URLs are invalid.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="289"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="321"/>
       <source>No title</source>
       <translation>无标题</translation>
     </message>
@@ -5872,15 +5877,15 @@ Token 过期时间：%2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="704"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1022"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1022"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1027"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1027"/>
       <source>Filtering changed</source>
       <translation>筛选已更改</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/messagesview.cpp" line="705"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1023"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1023"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1028"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1028"/>
       <source>%n article(s) left after filtering change</source>
       <translation>
         <numerusform>筛选更改后剩下 %n 篇文章</numerusform>
@@ -5897,12 +5902,12 @@ Token 过期时间：%2</translation>
       <translation>因为没有URL无法在媒体播放器中播放</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1047"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1052"/>
       <source>Cannot run external tool</source>
       <translation>无法运行外部工具</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1048"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1053"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>外部工具 &apos;%1&apos; 无法启动。</translation>
     </message>
@@ -6482,6 +6487,16 @@ List of supported readers:</source>
       <translation>已停用的项目</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="640"/>
+      <source>folders background</source>
+      <translation type="unfinished">folders background</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="643"/>
+      <source>folders background (highlighted</source>
+      <translation type="unfinished">folders background (highlighted</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
       <source>User-published articles</source>
       <translation>用户发表的文章</translation>
@@ -6532,25 +6547,25 @@ List of supported readers:</source>
       <translation>XML 格式不正确，%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="311"/>
+      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="309"/>
       <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="186"/>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="188"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="186"/>
       <source>XML is not well-formed, %1, line %2, column %3</source>
       <translation>XML 格式不正确， %1，行 %2，列 %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="320"/>
+      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="318"/>
       <source>not an ATOM feed</source>
       <translation>不是 ATOM feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="130"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="128"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>JSON 错误 &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="134"/>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="166"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="132"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="164"/>
       <source>not a JSON feed</source>
       <translation>不是 JSON feed</translation>
     </message>
@@ -6560,7 +6575,7 @@ List of supported readers:</source>
       <translation>不是 RDF feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="195"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="193"/>
       <source>not a RSS feed</source>
       <translation>不是 RSS feed</translation>
     </message>
@@ -6926,7 +6941,7 @@ stack: %3</source>
   <context>
     <name>RootItem</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="119"/>
+      <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="126"/>
       <source>%n unread article(s).</source>
       <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
       <translation>
@@ -7954,33 +7969,33 @@ This can tremendously speed up the application if you have hundreds of thousands
       <translation>注意对话框/控件皮肤颜色只在某些风格下生效，比如 Fusion。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="116"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="117"/>
       <source>Select new font</source>
       <translation>选择新字体</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="218"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="219"/>
       <source>system style</source>
       <translation>系统样式</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="220"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="221"/>
       <source>default style</source>
       <translation>默认风格</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="180"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="181"/>
       <source>system icon theme</source>
       <extracomment>Label for disabling icon theme.</extracomment>
       <translation>系统图标主题</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="182"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="183"/>
       <source>no icon theme</source>
       <translation>没有图标主题</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="163"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="164"/>
       <source>(Your OS does not support tray icons at the moment.)</source>
       <translation>(你的操作系统目前不支持托盘图标)。</translation>
     </message>
@@ -7995,7 +8010,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <translation>你可以在这里覆盖一些由你的皮肤定义的颜色。有些颜色在整个应用程序中是动态使用的。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="251"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="252"/>
       <source>%1
 
 Version: %2
@@ -8006,7 +8021,7 @@ Description: %3</source>
 描述：%3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="306"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="307"/>
       <source>Fetch color from activated skin</source>
       <translation>从激活的皮肤中获取颜色</translation>
     </message>
@@ -9320,8 +9335,8 @@ Load default feeds: Will load small set of various interesting feeds.</source>
     <name>TabBar</name>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="32"/>
-      <source>Close this tab.</source>
-      <translation>关闭此标签页。</translation>
+      <source>Close this tab</source>
+      <translation type="unfinished">Close this tab</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="33"/>
@@ -9508,7 +9523,7 @@ Load default feeds: Will load small set of various interesting feeds.</source>
   <context>
     <name>TrayIcon</name>
     <message>
-      <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="43"/>
+      <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="44"/>
       <source>Unread news: %1</source>
       <translation>未读新闻: %1</translation>
     </message>
