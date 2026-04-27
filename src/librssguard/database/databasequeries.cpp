@@ -543,6 +543,10 @@ QList<int> DatabaseQueries::removeUnwantedArticlesFromFeed(const QSqlDatabase& d
 
   q.finish();
 
+  if (removed_ids.isEmpty()) {
+    return removed_ids;
+  }
+
   // Then we remove those articles (either purging them or just marking as deleted).
   if (recycle_dont_purge) {
     // We mark all older articles as deleted.
