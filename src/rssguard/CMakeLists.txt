@@ -27,6 +27,7 @@ target_link_libraries(app PUBLIC
 if(APPLE)
   set_target_properties(app PROPERTIES
     MACOSX_BUNDLE FALSE
+    INSTALL_RPATH "@executable_path/../Frameworks"
   )
 elseif(WIN32)
   target_link_libraries(app PUBLIC
@@ -76,12 +77,7 @@ elseif(APPLE)
     DESTINATION Contents/Resources
   )
   install(FILES
-    ${CMAKE_SOURCE_DIR}/resources/macosx/Info.plist.in
     ${CMAKE_BINARY_DIR}/Info.plist
-    DESTINATION Contents
-  )
-  file(WRITE PkgInfo "APPL????")
-  install(FILES PkgInfo
     DESTINATION Contents
   )
 endif()
