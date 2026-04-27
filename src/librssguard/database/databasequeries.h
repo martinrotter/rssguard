@@ -76,10 +76,10 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void restoreBin(const QSqlDatabase& db, int account_id);
 
     // Purge database.
-    static bool removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
-                                               const Feed* feed,
-                                               const Feed::ArticleIgnoreLimit& feed_setup,
-                                               const Feed::ArticleIgnoreLimit& app_setup);
+    static QList<int> removeUnwantedArticlesFromFeed(const QSqlDatabase& db,
+                                                     const Feed* feed,
+                                                     const Feed::ArticleIgnoreLimit& feed_setup,
+                                                     const Feed::ArticleIgnoreLimit& app_setup);
     static void purgeFeedArticles(const QSqlDatabase& db, const QList<Feed*>& feeds);
     static void purgeMessage(const QSqlDatabase& db, int message_id);
 

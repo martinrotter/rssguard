@@ -1242,10 +1242,10 @@ UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
     qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());
   }
 
-  bool anything_removed = feed->removeUnwantedArticles();
+  auto removed_ids = feed->removeUnwantedArticles();
 
   if (recalculate_counts &&
-      (anything_removed || !updated_messages.m_unread.isEmpty() || !updated_messages.m_all.isEmpty())) {
+      (!removed_ids.isEmpty() || !updated_messages.m_unread.isEmpty() || !updated_messages.m_all.isEmpty())) {
     // Something was added or updated in the DB, update numbers.
     feed->updateCounts();
 
@@ -1269,6 +1269,18 @@ UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
       probesNode()->updateCounts();
     }
   }
+
+  updated_messages.m_all = qlinq::from(updated_messages.m_all)
+                             .where([&](const Message& msg) {
+                               return !removed_ids.contains(msg.m_id);
+                             })
+                             .toList();
+
+  updated_messages.m_unread = qlinq::from(updated_messages.m_unread)
+                                .where([&](const Message& msg) {
+                                  return !removed_ids.contains(msg.m_id);
+                                })
+                                .toList();
 
   // NOTE: Do not update model items here. We update only once when all feeds are fetched
   // or separately in downloader, if user has this enabled.

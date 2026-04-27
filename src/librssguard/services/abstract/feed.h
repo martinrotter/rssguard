@@ -106,7 +106,7 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     RtlBehavior rtlBehavior() const;
     void setRtlBehavior(RtlBehavior rtl);
 
-    bool removeUnwantedArticles();
+    QList<int> removeUnwantedArticles();
 
     ArticleIgnoreLimit& articleIgnoreLimit();
     const ArticleIgnoreLimit& articleIgnoreLimit() const;

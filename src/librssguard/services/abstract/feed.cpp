@@ -274,16 +274,15 @@ void Feed::setRtlBehavior(RtlBehavior rtl) {
   m_rtlBehavior = rtl;
 }
 
-bool Feed::removeUnwantedArticles() {
+QList<int> Feed::removeUnwantedArticles() {
   Feed::ArticleIgnoreLimit feed_setup = articleIgnoreLimit();
   Feed::ArticleIgnoreLimit app_setup = Feed::ArticleIgnoreLimit::fromSettings();
 
-  // TODO: testovat
-  bool removed = qApp->database()->worker()->write<bool>([&](const QSqlDatabase& db) {
+  QList<int> removed_ids = qApp->database()->worker()->write<QList<int>>([&](const QSqlDatabase& db) {
     return DatabaseQueries::removeUnwantedArticlesFromFeed(db, this, feed_setup, app_setup);
   });
 
-  return removed;
+  return removed_ids;
 }
 
 void Feed::appendMessageFilter(MessageFilter* filter) {
