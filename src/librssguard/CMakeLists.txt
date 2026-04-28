@@ -541,18 +541,11 @@ target_include_directories(rssguard
 
 
 # gumbo (for QTextBrowser-based article/web viewer)
-if(NOT WEB_ARTICLE_VIEWER_WEBENGINE)
-  if(MSVC)
-    target_include_directories(rssguard
-      PRIVATE
-      ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/gumbo/visualc/include
-    )
-  endif()
-
-  #target_include_directories(rssguard
-  #  PRIVATE
-  #  ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/gumbo/src
-  #)
+if(MSVC)
+  target_include_directories(rssguard
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/gumbo/visualc/include
+  )
 endif()
 
 #target_compile_definitions(rssguard PRIVATE UNICODE _UNICODE _CRT_SECURE_NO_WARNINGS)
