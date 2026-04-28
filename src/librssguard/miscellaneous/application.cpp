@@ -17,6 +17,7 @@
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/toolbars/statusbar.h"
 #include "gui/tray/qttrayicon.h"
+#include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
@@ -30,8 +31,6 @@
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
 #include "gui/webviewers/qtwebengine/webengineviewer.h"
-#else
-#include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
 #endif
 
 #include <iostream>
@@ -786,7 +785,13 @@ void Application::showGuiMessage(Notification::Event event,
 
 WebViewer* Application::createWebView() {
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
-  return new WebEngineViewer();
+  if (m_cmdParser.isSet(QSL(CLI_FORCETEXT_LONG))) {
+    qDebugNN << LOGSEC_GUI << "Forcing QTextBrowser-based article viewer.";
+    return new TextBrowserViewer();
+  }
+  else {
+    return new WebEngineViewer();
+  }
 #else
   return new TextBrowserViewer();
 #endif
@@ -1249,6 +1254,7 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                                      "argument, then the log file will be stored in user data folder."),
                                  QSL("log-file-name"));
   QCommandLineOption debug_output({QSL(CLI_DEBUG_SHORT), QSL(CLI_DEBUG_LONG)}, QSL("Enable \"debug\" CLI output."));
+  QCommandLineOption force_text_viewer(QSL(CLI_FORCETEXT_LONG), QSL("Force QTextBrowser-based article viewer."));
   QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)},
                                   QSL("Force some application style."),
                                   QSL("style-name"));
@@ -1266,6 +1272,7 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
                      custom_data_folder,
                      disable_singleinstance,
                      debug_output,
+                     force_text_viewer,
                      log_to_file,
                      forced_style,
                      custom_ua,
