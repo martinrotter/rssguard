@@ -48,7 +48,7 @@ void StyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
 
   if (m_flashProgress > 0.0 && m_flashIndex.isValid() && index == m_flashIndex) {
     const QTreeView* tree = qobject_cast<const QTreeView*>(option.widget);
-    QRect rowRect(0, option.rect.top(), tree->viewport()->width(), option.rect.height());
+    QRect row_rect(0, option.rect.top(), tree->viewport()->width(), option.rect.height());
 
     QColor c = m_flashColor;
 
@@ -59,7 +59,7 @@ void StyledItemDelegate::paint(QPainter* painter, const QStyleOptionViewItem& op
     c.setAlpha(180 * m_flashProgress);
 
     painter->save();
-    painter->fillRect(rowRect, c);
+    painter->fillRect(row_rect, c);
     painter->restore();
   }
 }

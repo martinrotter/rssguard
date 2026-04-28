@@ -16,14 +16,26 @@ IconFactory::IconFactory(QObject* parent) : QObject(parent) {}
 
 IconFactory::~IconFactory() {}
 
+QColor IconFactory::readableTextColor(const QColor& bg) {
+  // Convert to linear RGB luminance (approximation is fine here).
+  double r = bg.redF();
+  double g = bg.greenF();
+  double b = bg.blueF();
+
+  double luminance = 0.299 * r + 0.587 * g + 0.114 * b;
+
+  // Threshold ~0.5 works well in practice.
+  return (luminance > 0.5) ? Qt::GlobalColor::black : Qt::GlobalColor::white;
+}
+
 QIcon IconFactory::fromColor(const QColor& color, QChar letter) {
   QPixmap pxm(64, 64);
-  QPainter paint(&pxm);
 
   // Fallback: invalid color → draw "missing" icon.
   if (!color.isValid()) {
     pxm.fill(Qt::GlobalColor::white);
 
+    QPainter paint(&pxm);
     QPen pen(Qt::GlobalColor::red);
     pen.setWidth(6);
     paint.setPen(pen);
@@ -34,14 +46,15 @@ QIcon IconFactory::fromColor(const QColor& color, QChar letter) {
   }
   else {
     // Normal icon rendering.
-    pxm.fill(Qt::transparent);
+    pxm.fill(Qt::GlobalColor::transparent);
 
+    QPainter paint(&pxm);
     paint.setBrush(color);
-    paint.setPen(Qt::transparent);
+    paint.setPen(Qt::GlobalColor::transparent);
     paint.drawEllipse(pxm.rect().marginsRemoved(QMargins(2, 2, 2, 2)));
 
     if (!letter.isNull()) {
-      paint.setPen(Qt::black);
+      paint.setPen(readableTextColor(color));
 
       auto fon = paint.font();
       fon.setBold(true);
@@ -56,6 +69,7 @@ QIcon IconFactory::fromColor(const QColor& color, QChar letter) {
       int y = pxm.rect().y() + (pxm.rect().height() - br.height()) / 2 - br.top();
 
       paint.drawText(x, y, s);
+      paint.setPen(Qt::GlobalColor::transparent);
     }
   }
 
