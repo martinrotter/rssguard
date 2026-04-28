@@ -2008,7 +2008,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
       <source>URLs</source>
-      <translation type="unfinished">URLs</translation>
+      <translation>URL's</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="65"/>
@@ -2053,7 +2053,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="85"/>
       <source>Enter feed URLs, one URL per line</source>
-      <translation type="unfinished">Enter feed URLs, one URL per line</translation>
+      <translation>Voer feed URL's in, één URL per regel</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="138"/>
@@ -2068,12 +2068,12 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="249"/>
       <source>All URLs are valid.</source>
-      <translation type="unfinished">All URLs are valid.</translation>
+      <translation>Alle URL's zijn geldig.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="252"/>
       <source>One or more URLs are invalid.</source>
-      <translation type="unfinished">One or more URLs are invalid.</translation>
+      <translation>Een of meerdere URL's zijn ongeldig.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="321"/>
@@ -6513,12 +6513,12 @@ Lijst met ondersteunde lezers:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="640"/>
       <source>folders background</source>
-      <translation type="unfinished">folders background</translation>
+      <translation>mappen achtergrond</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="643"/>
       <source>folders background (highlighted</source>
-      <translation type="unfinished">folders background (highlighted</translation>
+      <translation>mappen achtergrond (geselecteerd</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
@@ -9366,7 +9366,7 @@ Laad standaardfeeds: Zal kleine set van verschillende interessante feeds laden.<
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="32"/>
       <source>Close this tab</source>
-      <translation type="unfinished">Close this tab</translation>
+      <translation>Tabblad sluiten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="33"/>
