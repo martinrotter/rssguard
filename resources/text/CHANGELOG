@@ -9,7 +9,8 @@ Added:
 * `WebEngineViewer` builds again include a built-in web browser for opening websites and reading articles inside RSS Guard.
 * The built-in browser can now open pages in new tabs, search inside the page, save pages as `MHTML`, export article text and print to `PDF`.
 * Browser actions can now be enabled or disabled depending on which viewer is in use.
-* New experimental `XMPP` plugin was added in supported builds.
+* `WebEngineViewer` builds can save articles (or web pages in general) in `MHTML` format (which bundles all images).
+* New experimental `XMPP` plugin was added in supported (Qt 6) builds.
 * Gemini pages can now be subscribed to as Gemlogs. (#2158)
 * Highlight color is now inherited from the system. (#2213)
 * Feed discovery now finds and resolves more feed links correctly, including relative links. (#2180, #2201)
@@ -29,6 +30,7 @@ Fixed:
 * Tray icon image now switches correctly when count of unread articles is not enabled. (#2206)
 * Invalid custom skin colors are now ignored instead of breaking the look of the application.
 * The selected article count is now shown only when more than one article is selected.
+* Many other smaller QoL fixes.
 
 5.0.4
 -----
