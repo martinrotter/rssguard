@@ -128,6 +128,8 @@
 #define CLI_SIN_SHORT "s"
 #define CLI_SIN_LONG  "no-single-instance"
 
+#define CLI_FORCETEXT_LONG "force-text-browser"
+
 #define CLI_USERAGENT_SHORT "u"
 #define CLI_USERAGENT_LONG  "user-agent"
 

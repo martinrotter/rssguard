@@ -371,6 +371,56 @@ set(UI_FILES
   services/abstract/gui/formfeeddetails.ui
 )
 
+# QTextBrowser-based simplistic viewer.
+list(APPEND SOURCES
+  3rd-party/gumbo/src/attribute.c
+  3rd-party/gumbo/src/attribute.h
+  3rd-party/gumbo/src/error.c
+  3rd-party/gumbo/src/error.h
+  3rd-party/gumbo/src/gumbo.h
+  3rd-party/gumbo/src/char_ref.c
+  3rd-party/gumbo/src/char_ref.h
+  3rd-party/gumbo/src/char_ref.rl
+  3rd-party/gumbo/src/insertion_mode.h
+  3rd-party/gumbo/src/parser.c
+  3rd-party/gumbo/src/parser.h
+  3rd-party/gumbo/src/string_buffer.c
+  3rd-party/gumbo/src/string_buffer.h
+  3rd-party/gumbo/src/string_piece.c
+  3rd-party/gumbo/src/string_piece.h
+  3rd-party/gumbo/src/tag.c
+  3rd-party/gumbo/src/tag.in
+  3rd-party/gumbo/src/tag_enum.h
+  3rd-party/gumbo/src/tag_gperf.h
+  3rd-party/gumbo/src/tag_sizes.h
+  3rd-party/gumbo/src/tag_strings.h
+  3rd-party/gumbo/src/token_type.h
+  3rd-party/gumbo/src/tokenizer.c
+  3rd-party/gumbo/src/tokenizer.h
+  3rd-party/gumbo/src/tokenizer_states.h
+  3rd-party/gumbo/src/utf8.c
+  3rd-party/gumbo/src/utf8.h
+  3rd-party/gumbo/src/util.c
+  3rd-party/gumbo/src/util.h
+  3rd-party/gumbo/src/vector.c
+  3rd-party/gumbo/src/vector.h
+
+  gui/webviewers/qtextbrowser/textbrowserviewer.cpp
+  gui/webviewers/qtextbrowser/textbrowserviewer.h
+)
+
+if(WEB_ARTICLE_VIEWER_WEBENGINE)
+  # QtWebEngine-based HTML viewer.
+  list(APPEND SOURCES
+    gui/webviewers/qtwebengine/webengineviewer.cpp
+    gui/webviewers/qtwebengine/webengineviewer.h
+    gui/webviewers/qtwebengine/webenginepage.cpp
+    gui/webviewers/qtwebengine/webenginepage.h
+    gui/webviewers/qtwebengine/geminischemehandler.cpp
+    gui/webviewers/qtwebengine/geminischemehandler.h
+  )
+endif()
+
 if(ENABLE_MEDIAPLAYER)
   list(APPEND SOURCES
     gui/mediaplayer/playerbackend.cpp
@@ -426,56 +476,6 @@ if(ENABLE_ICU)
   find_package(ICU
     REQUIRED
     COMPONENTS uc data
-  )
-endif()
-
-if(WEB_ARTICLE_VIEWER_WEBENGINE)
-  # QtWebEngine-based HTML viewer.
-  list(APPEND SOURCES
-    gui/webviewers/qtwebengine/webengineviewer.cpp
-    gui/webviewers/qtwebengine/webengineviewer.h
-    gui/webviewers/qtwebengine/webenginepage.cpp
-    gui/webviewers/qtwebengine/webenginepage.h
-    gui/webviewers/qtwebengine/geminischemehandler.cpp
-    gui/webviewers/qtwebengine/geminischemehandler.h
-  )
-else()
-  # QTextBrowser-based simplistic viewer.
-  list(APPEND SOURCES
-    3rd-party/gumbo/src/attribute.c
-    3rd-party/gumbo/src/attribute.h
-    3rd-party/gumbo/src/error.c
-    3rd-party/gumbo/src/error.h
-    3rd-party/gumbo/src/gumbo.h
-    3rd-party/gumbo/src/char_ref.c
-    3rd-party/gumbo/src/char_ref.h
-    3rd-party/gumbo/src/char_ref.rl
-    3rd-party/gumbo/src/insertion_mode.h
-    3rd-party/gumbo/src/parser.c
-    3rd-party/gumbo/src/parser.h
-    3rd-party/gumbo/src/string_buffer.c
-    3rd-party/gumbo/src/string_buffer.h
-    3rd-party/gumbo/src/string_piece.c
-    3rd-party/gumbo/src/string_piece.h
-    3rd-party/gumbo/src/tag.c
-    3rd-party/gumbo/src/tag.in
-    3rd-party/gumbo/src/tag_enum.h
-    3rd-party/gumbo/src/tag_gperf.h
-    3rd-party/gumbo/src/tag_sizes.h
-    3rd-party/gumbo/src/tag_strings.h
-    3rd-party/gumbo/src/token_type.h
-    3rd-party/gumbo/src/tokenizer.c
-    3rd-party/gumbo/src/tokenizer.h
-    3rd-party/gumbo/src/tokenizer_states.h
-    3rd-party/gumbo/src/utf8.c
-    3rd-party/gumbo/src/utf8.h
-    3rd-party/gumbo/src/util.c
-    3rd-party/gumbo/src/util.h
-    3rd-party/gumbo/src/vector.c
-    3rd-party/gumbo/src/vector.h
-
-    gui/webviewers/qtextbrowser/textbrowserviewer.cpp
-    gui/webviewers/qtextbrowser/textbrowserviewer.h
   )
 endif()
 
@@ -541,18 +541,11 @@ target_include_directories(rssguard
 
 
 # gumbo (for QTextBrowser-based article/web viewer)
-if(NOT WEB_ARTICLE_VIEWER_WEBENGINE)
-  if(MSVC)
-    target_include_directories(rssguard
-      PRIVATE
-      ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/gumbo/visualc/include
-    )
-  endif()
-
-  #target_include_directories(rssguard
-  #  PRIVATE
-  #  ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/gumbo/src
-  #)
+if(MSVC)
+  target_include_directories(rssguard
+    PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/gumbo/visualc/include
+  )
 endif()
 
 #target_compile_definitions(rssguard PRIVATE UNICODE _UNICODE _CRT_SECURE_NO_WARNINGS)
