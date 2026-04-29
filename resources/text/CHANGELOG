@@ -2,35 +2,32 @@
 -----
 Released on: 2026-04-27
 
-This release brings back built-in web browsing in selected packages, adds a new XMPP plugin and improves article and feed browsing in many places. Downloads are now split into variants, so you can choose either the lighter text-based viewer or the fuller WebEngine-based viewer.
+This release brings back built-in web browsing in selected packages, adds the new experimental XMPP plugin and improves feed discovery, article browsing and packaging in many places. Downloads are now split into viewer-specific variants, so you can choose either the lighter text-based viewer or the fuller WebEngine-based viewer.
 
 Added:
-* Downloads are now available in two variants: one with `TextBrowserViewer` and one with `WebEngineViewer`.
-* `WebEngineViewer` builds again include a built-in web browser for opening websites and reading articles inside RSS Guard.
-* The built-in browser can now open pages in new tabs, search inside the page, save pages as `MHTML`, export article text and print to `PDF`.
-* Browser actions can now be enabled or disabled depending on which viewer is in use.
-* `WebEngineViewer` builds can save articles (or web pages in general) in `MHTML` format (which bundles all images).
-* New experimental `XMPP` plugin was added in supported (Qt 6) builds.
+* Downloads are now split into `TextBrowserViewer` and `WebEngineViewer` variants, the active variant is shown more clearly, Linux app IDs differ by variant, and a command-line option can force the text-based viewer. (#2208, 36e3fa6ff, 088d3f622, fbeeb8e6d)
+* `WebEngineViewer` builds again include a built-in browser which can open pages in new tabs, search inside pages, navigate back and forward, and expose only the actions supported by the active viewer. (39973881f, 63dbf5238, 7f01947e6, f80723900, 8dab10fe5)
+* `WebEngineViewer` builds can save complete web pages as `MHTML`, export page text and print to `PDF`. (a8884775c, 8104bfa21, c84d44f83)
+* New experimental `XMPP` plugin was added in supported (`Qt 6`) builds, including PubSub/PEP discovery, feed fetching, direct `MUC` addresses and more robust reconnect handling. (#2174, 6d3cdf9a1, 156a957d1, 3108cd6df, 384014963)
 * Gemini pages can now be subscribed to as Gemlogs. (#2158)
-* Highlight color is now inherited from the system. (#2213)
-* Feed discovery now finds and resolves more feed links correctly, including relative links. (#2180, #2201)
-* The article list can now show feed icons in the `Feed` column. (#2179)
-* Skins can now color folder backgrounds in the feed list.
+* The article list can now optionally show feed icons in the `Feed` column. (#2179)
+* Feed discovery can now try multiple candidate feed URLs and properly resolve relative links, which improves detection and fixes sites such as VideoHelp. (#2180, 5344d172c, c7444886b, 705246a2d)
+* Skins can now color folder backgrounds in the feed list, and generated fallback icons now use more readable letters. (#2199, 77695b442, f638b6789)
+* RSS Guard 4 and 5 can now run side by side on the same system more safely. (161053bba)
+* Updated translations, including Japanese and Dutch refreshes plus newer Crowdin syncs. (#2202, #2203, #2205, #2209, #2215, #2218, #2219, c145c39f5, a047c2462, 6ba42bb13)
 
 Fixed:
-* Folder and account items now show warning color too when a child feed below them is in error state. (#923, #1741)
-* Feed and article filtering keeps the selected item in view more reliably instead of jumping away. (#1741, #2201)
-* Clicking around the article list feels smoother in common cases. (#2197)
-* Escaped HTML in article titles is no longer rendered as real HTML in the article list and header. (#2168)
-* Pages that need accepted cookies or active website session state now work better in `WebEngineViewer` builds because browser cookies are shared with RSS Guard networking.
-* The text-based article viewer was improved in many small ways and now behaves better in everyday use.
-* Handling of pages without images was improved.
-* Articles which are cleaned during "article limit" step when fetching feeds are not advertised in notifications. (#2212)
-* macOS-related fixes. RSS Guard now should run better on macOS. (#2214)
-* Tray icon image now switches correctly when count of unread articles is not enabled. (#2206)
-* Invalid custom skin colors are now ignored instead of breaking the look of the application.
-* The selected article count is now shown only when more than one article is selected.
-* Many other smaller QoL fixes.
+* Folder and account items now propagate child feed error state, and feed/article list filtering keeps the selected item in view more reliably. (#923, #1741, #2201, c1195f21d)
+* Clicking in the article list feels smoother and selected-article counts are shown only when more than one article is selected. (#2197, 5f7b397dc)
+* Escaped HTML in article titles is no longer rendered as real HTML, and highlighted text in article view now respects system highlight colors. (#2168, #2213)
+* Pages that need accepted cookies or an active website session now work better in `WebEngineViewer` builds because browser cookies are shared with RSS Guard networking. (8dab10fe5)
+* The text-based article viewer was polished in multiple areas, including better handling of pages without images. (e3c775e81, 52e352840)
+* Articles removed by automatic article limiting are no longer reported as newly fetched notifications. (#2212, 3f3ff609f)
+* The tray icon now switches to the colored variant correctly when unread articles are present. (#2206)
+* Invalid custom skin colors are now ignored instead of breaking the look of the application. (3adbfb776)
+* Nextcloud no longer fetches oversized icons that could cause large slowdowns. (f204c1891)
+* macOS builds were cleaned up and should behave more reliably. (#2052, #2214)
+* Official builds and packaging were updated for the new viewer variants and their dependencies, including `QtWebEngine`, `QtSerialPort`, XMPP plugin shipping and related runtime deployment fixes. (c367e9058, 326512e4a, 6dcb4740e, bc570b51c, 9772e67f8)
 
 5.0.4
 -----
