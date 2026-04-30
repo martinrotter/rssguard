@@ -1845,7 +1845,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.ui" line="128"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formcategorydetails.h" line="187"/>
       <source>Select icon for your folder.</source>
-      <translation>フォルダーのアイコンを選択します</translation>
+      <translation>フォルダのアイコンを選択します</translation>
     </message>
   </context>
   <context>
@@ -3317,7 +3317,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="128"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="492"/>
       <source>Enable filter</source>
-      <translation>フィルターを有効にする</translation>
+      <translation>フィルターを有効</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="131"/>
@@ -6482,7 +6482,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="634"/>
       <source>OK-ish color</source>
-      <translation>OKっぽい色</translation>
+      <translation>OK 時の色</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="637"/>
@@ -6497,7 +6497,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="643"/>
       <source>folders background (highlighted</source>
-      <translation>フォルダの背景（ハイライト表示</translation>
+      <translation>フォルダの背景（フォーカスがあるとき）</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
@@ -8138,7 +8138,7 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="189"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="379"/>
       <source>Tray area &amp;&amp; taskbar &amp;&amp; window</source>
-      <translation>トレイエリア ＆ タスクバー ＆ ウィンドウ</translation>
+      <translation>トレイエリア＆タスクバー＆ウィンドウ</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="237"/>
