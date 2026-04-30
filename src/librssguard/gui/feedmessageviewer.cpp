@@ -32,13 +32,16 @@ FeedMessageViewer::FeedMessageViewer(QWidget* parent)
   : TabContent(parent), m_toolBarsEnabled(true), m_listHeadersEnabled(true),
     m_toolBarFeeds(new FeedsToolBar(tr("Toolbar for feeds"), this)),
     m_toolBarMessages(new MessagesToolBar(tr("Toolbar for articles"), this)), m_messagesView(new MessagesView(this)),
-    m_feedsView(new FeedsView(this)), m_messagesBrowser(new MessagePreviewer(this)) {
+    m_feedsView(new FeedsView(this)), m_messagesBrowser(new MessagePreviewer(this)),
+    m_splitterStateSaver(this, QSL("saveSplitterStates"), 5, 1) {
   initialize();
   initializeViews();
   createConnections();
 }
 
 FeedMessageViewer::~FeedMessageViewer() {
+  // m_splitterStateSaver.saveIfNeccessary();
+
   qDebugNN << LOGSEC_GUI << "Destroying FeedMessageViewer instance.";
 }
 
@@ -64,6 +67,9 @@ FeedsToolBar* FeedMessageViewer::feedsToolBar() const {
 
 void FeedMessageViewer::saveSize() {
   Settings* settings = qApp->settings();
+
+  m_splitterStateSaver.saveIfNeccessary();
+  // saveSplitterStates();
 
   settings->setValue(GROUP(GUI), GUI::FeedViewState, QString(m_feedsView->saveHeaderState().toBase64()));
   settings->setValue(GROUP(GUI), GUI::MessageViewState, QString(m_messagesView->saveHeaderState().toBase64()));
@@ -128,14 +134,27 @@ void FeedMessageViewer::normalizeToolbarHeights() {
 }
 
 void FeedMessageViewer::onFeedSplitterResized() {
-  qDebugNN << LOGSEC_GUI << "Feed splitter moved.";
-
-  qApp->settings()->setValue(GROUP(GUI), GUI::SplitterFeeds, toVariant(m_feedSplitter->sizes()));
+  scheduleSplitterStatesSave();
 }
 
 void FeedMessageViewer::onMessageSplitterResized() {
-  qDebugNN << LOGSEC_GUI << "Message splitter moved.";
+  scheduleSplitterStatesSave();
+}
 
+void FeedMessageViewer::saveSplitterStates() {
+  saveFeedSplitterState();
+  saveMessageSplitterState();
+}
+
+void FeedMessageViewer::scheduleSplitterStatesSave() {
+  m_splitterStateSaver.changeOccurred();
+}
+
+void FeedMessageViewer::saveFeedSplitterState() {
+  qApp->settings()->setValue(GROUP(GUI), GUI::SplitterFeeds, toVariant(m_feedSplitter->sizes()));
+}
+
+void FeedMessageViewer::saveMessageSplitterState() {
   QList<int> sizes = m_messageSplitter->sizes();
 
   if (sizes.size() == 2 && (sizes[0] == 0 || sizes[1] == 0)) {

@@ -7,6 +7,7 @@
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
 #include "gui/tabcontent.h"
+#include "miscellaneous/autosaver.h"
 
 class WebBrowser;
 class MessagePreviewer;
@@ -75,6 +76,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
   private slots:
     void onFeedSplitterResized();
     void onMessageSplitterResized();
+    void saveSplitterStates();
     void displayMessage(const Message& message, RootItem* selected_item, Feed* feed);
     void onMessageRemoved(RootItem* root);
 
@@ -82,6 +84,9 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     void initialize();
     void initializeViews();
     void createConnections();
+    void scheduleSplitterStatesSave();
+    void saveFeedSplitterState();
+    void saveMessageSplitterState();
 
   private:
     bool m_toolBarsEnabled;
@@ -96,6 +101,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     QWidget* m_feedsWidget;
     QWidget* m_messagesWidget;
     MessagePreviewer* m_messagesBrowser;
+    AutoSaver m_splitterStateSaver;
 };
 
 #endif // FEEDMESSAGEVIEWER_H
