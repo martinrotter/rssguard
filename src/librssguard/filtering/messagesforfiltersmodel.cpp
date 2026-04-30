@@ -70,6 +70,10 @@ int MessagesForFiltersModel::columnCount(const QModelIndex& parent) const {
 QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const {
   const auto* msg = constMessageForRow(index.row());
 
+  if (msg == nullptr) {
+    return {};
+  }
+
   switch (role) {
     case Qt::ItemDataRole::BackgroundRole: {
       if (index.column() == MFM_MODEL_RESULT) {
