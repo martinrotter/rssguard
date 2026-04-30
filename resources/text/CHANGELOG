@@ -1,6 +1,6 @@
 5.1.0
 -----
-Released on: 2026-04-27
+Released on: 2026-04-30
 
 This release brings back built-in web browsing in selected packages, adds the new experimental XMPP plugin and improves feed discovery, article browsing and packaging in many places. Downloads are now split into viewer-specific variants, so you can choose either the lighter text-based viewer or the fuller WebEngine-based viewer.
 
