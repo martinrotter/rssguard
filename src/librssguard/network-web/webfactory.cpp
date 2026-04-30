@@ -221,10 +221,6 @@ void WebFactory::onDownloadRequested(QWebEngineDownloadRequest* download) {
 }
 
 void WebFactory::initializeWebEngineProfile() {
-  QWebEngineUrlScheme gemini_scheme("gemini");
-  gemini_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
-
-  QWebEngineUrlScheme::registerScheme(gemini_scheme);
   m_webEngineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
 
 #if QT_VERSION_MAJOR >= 6

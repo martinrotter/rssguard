@@ -49,6 +49,10 @@
 #include <QQuickWindow>
 #endif
 
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+#include <QWebEngineUrlScheme>
+#endif
+
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
 #include <QDBusConnection>
 #include <QDBusMessage>
@@ -105,6 +109,13 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
 #if QT_VERSION_MAJOR > 5
   m_workHorsePool = new QThreadPool(this);
+#endif
+
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  QWebEngineUrlScheme gemini_scheme("gemini");
+  gemini_scheme.setSyntax(QWebEngineUrlScheme::Syntax::Host);
+
+  QWebEngineUrlScheme::registerScheme(gemini_scheme);
 #endif
 
   m_webFactory = new WebFactory(this);
@@ -230,6 +241,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   qDebugNN << LOGSEC_CORE << "Global thread pool has"
            << NONQUOTE_W_SPACE(QThreadPool::globalInstance()->maxThreadCount()) << "threads.";
   qDebugNN << LOGSEC_CORE << "Main thread ID:" << QUOTE_W_SPACE_DOT(getThreadID());
+  qDebugNN << LOGSEC_CORE
+           << "Uses system proxy config:" << QUOTE_W_SPACE_DOT(QNetworkProxyFactory::usesSystemConfiguration());
 }
 
 Application::~Application() {

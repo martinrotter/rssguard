@@ -533,7 +533,7 @@ QString SkinFactory::replacePaletteInCss(const QString& css, const QPalette& pal
   const std::function<QString(const QRegularExpressionMatch&)>& replacer =
     [&palette](const QRegularExpressionMatch& match) {
       auto role = stringToEnum<QPalette::ColorRole>(match.captured(1));
-      auto color = palette.color(QPalette::ColorGroup::All, role);
+      auto color = palette.color(role);
 
       return color.isValid() ? color.name() : QSL("#000000");
     };
