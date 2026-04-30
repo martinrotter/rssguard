@@ -52,7 +52,7 @@ class FormMessageFiltersManager : public QDialog {
     void onFeedChecked(RootItem* item, Qt::CheckState state);
 
   private:
-    void updateItemFromFilter(QListWidgetItem* item, MessageFilter* filter);
+    void updateItemFromFilter(QListWidgetItem* item, MessageFilter* filter, const QString& error = {});
     void loadFilterFeedAssignments(MessageFilter* filter, ServiceRoot* account);
     void showFilter(MessageFilter* filter);
     void loadAccount(ServiceRoot* account);

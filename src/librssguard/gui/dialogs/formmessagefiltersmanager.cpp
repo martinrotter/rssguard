@@ -404,14 +404,41 @@ void FormMessageFiltersManager::saveSelectedFilter() {
   fltr->setName(m_ui.m_txtTitle->text());
   fltr->setScript(m_ui.m_txtScript->toPlainText());
 
-  updateItemFromFilter(m_ui.m_listFilters->currentItem(), fltr);
-
-  m_reader->updateMessageFilter(fltr);
+  try {
+    m_reader->updateMessageFilter(fltr);
+    updateItemFromFilter(m_ui.m_listFilters->currentItem(), fltr);
+  }
+  catch (const ApplicationException& ex) {
+    updateItemFromFilter(m_ui.m_listFilters->currentItem(), fltr, ex.message());
+  }
 }
 
-void FormMessageFiltersManager::updateItemFromFilter(QListWidgetItem* item, MessageFilter* filter) {
+void FormMessageFiltersManager::updateItemFromFilter(QListWidgetItem* item,
+                                                     MessageFilter* filter,
+                                                     const QString& error) {
   item->setText(filter->name());
-  item->setForeground(filter->enabled() ? QBrush() : QBrush(Qt::GlobalColor::red));
+
+  if (error.isEmpty()) {
+    item->setIcon({});
+    item->setToolTip(tr("This filter was saved!"));
+    item->setForeground(filter->enabled() ? QBrush()
+                                          : QBrush(qApp->skins()
+                                                     ->colorForModel(SkinEnums::PaletteColors::FgInteresting)
+                                                     .value<QColor>()));
+  }
+  else {
+    item->setIcon(qApp->icons()->fromTheme(QSL("dialog-error")));
+    item->setToolTip(tr("There war an error when saving the filter: %1.").arg(error));
+    item->setForeground(QBrush(qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError).value<QColor>()));
+
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Filter was not saved"),
+                                    tr("There war an error when saving the filter: %1.\n\n"
+                                       "Maybe the filter title is not unique. If that's the case, then change it.")
+                                      .arg(error),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true));
+  }
 }
 
 void FormMessageFiltersManager::loadFilter() {

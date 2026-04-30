@@ -21,6 +21,7 @@ Fixed:
 * Clicking in the article list feels smoother and selected-article counts are shown only when more than one article is selected. (#2197, 5f7b397dc)
 * Escaped HTML in article titles is no longer rendered as real HTML, and highlighted text in article view now respects system highlight colors. (#2168, #2213)
 * Pages that need accepted cookies or an active website session now work better in `WebEngineViewer` builds because browser cookies are shared with RSS Guard networking. (8dab10fe5)
+* App crashed when some filters did not have unique titles. (#2220)
 * The text-based article viewer was polished in multiple areas, including better handling of pages without images. (e3c775e81, 52e352840)
 * Articles removed by automatic article limiting are no longer reported as newly fetched notifications. (#2212, 3f3ff609f)
 * The tray icon now switches to the colored variant correctly when unread articles are present. (#2206)
