@@ -16,6 +16,9 @@ MessagesForFiltersModel::MessagesForFiltersModel(QObject* parent) : QAbstractTab
   m_headerData << tr("Result") << tr("Read") << tr("Important") << tr("Trash") << tr("Title") << tr("Date")
                << tr("Score");
 
+  m_txtTrue = tr("true");
+  m_txtFalse = tr("false");
+
   m_colorOk = qApp->skins()->colorForModel(SkinEnums::PaletteColors::Allright).value<QColor>();
   m_colorError = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError).value<QColor>();
 }
@@ -65,9 +68,7 @@ int MessagesForFiltersModel::columnCount(const QModelIndex& parent) const {
 }
 
 QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const {
-  auto msg = messageForRow(index.row());
-  QString bool_true = tr("true");
-  QString bool_false = tr("false");
+  const auto* msg = constMessageForRow(index.row());
 
   switch (role) {
     case Qt::ItemDataRole::BackgroundRole: {
@@ -93,26 +94,26 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
     case Qt::ItemDataRole::ForegroundRole: {
       if (index.column() != MFM_MODEL_RESULT) {
         QVariant interest = m_colorError;
-        Message msg_original = m_messages[index.row()].m_original;
+        const Message& msg_original = m_messages[index.row()].m_original;
 
         switch (index.column()) {
           case MFM_MODEL_ISREAD:
-            return msg.m_isRead != msg_original.m_isRead ? interest : QVariant();
+            return msg->m_isRead != msg_original.m_isRead ? interest : QVariant();
 
           case MFM_MODEL_ISIMPORTANT:
-            return msg.m_isImportant != msg_original.m_isImportant ? interest : QVariant();
+            return msg->m_isImportant != msg_original.m_isImportant ? interest : QVariant();
 
           case MFM_MODEL_ISDELETED:
-            return msg.m_isDeleted != msg_original.m_isDeleted ? interest : QVariant();
+            return msg->m_isDeleted != msg_original.m_isDeleted ? interest : QVariant();
 
           case MFM_MODEL_TITLE:
-            return msg.m_title != msg_original.m_title ? interest : QVariant();
+            return msg->m_title != msg_original.m_title ? interest : QVariant();
 
           case MFM_MODEL_CREATED:
-            return msg.m_created != msg_original.m_created ? interest : QVariant();
+            return msg->m_created != msg_original.m_created ? interest : QVariant();
 
           case MFM_MODEL_SCORE:
-            return msg.m_score != msg_original.m_score ? interest : QVariant();
+            return msg->m_score != msg_original.m_score ? interest : QVariant();
         }
       }
 
@@ -126,29 +127,29 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
                                                             : QSL("?");
 
         case MFM_MODEL_ISREAD:
-          return msg.m_isRead ? bool_true : bool_false;
+          return msg->m_isRead ? m_txtTrue : m_txtFalse;
 
         case MFM_MODEL_ISIMPORTANT:
-          return msg.m_isImportant ? bool_true : bool_false;
+          return msg->m_isImportant ? m_txtTrue : m_txtFalse;
 
         case MFM_MODEL_ISDELETED:
-          return msg.m_isDeleted ? bool_true : bool_false;
+          return msg->m_isDeleted ? m_txtTrue : m_txtFalse;
 
         case MFM_MODEL_TITLE:
-          return msg.m_title;
+          return msg->m_title;
 
         case MFM_MODEL_CREATED:
-          return msg.m_created;
+          return msg->m_created;
 
         case MFM_MODEL_SCORE:
-          return msg.m_score;
+          return msg->m_score;
       }
 
       break;
     }
 
     case Qt::ItemDataRole::ToolTipRole: {
-      Message msg_original = m_messages[index.row()].m_original;
+      const Message& msg_original = m_messages[index.row()].m_original;
 
       switch (index.column()) {
         case MFM_MODEL_RESULT:
@@ -157,26 +158,26 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
 
         case MFM_MODEL_ISREAD:
           return QSL(VALUE_COMPARISON_FORMAT)
-            .arg(msg.m_isRead ? bool_true : bool_false, msg_original.m_isRead ? bool_true : bool_false);
+            .arg(msg->m_isRead ? m_txtTrue : m_txtFalse, msg_original.m_isRead ? m_txtTrue : m_txtFalse);
 
         case MFM_MODEL_ISIMPORTANT:
           return QSL(VALUE_COMPARISON_FORMAT)
-            .arg(msg.m_isImportant ? bool_true : bool_false, msg_original.m_isImportant ? bool_true : bool_false);
+            .arg(msg->m_isImportant ? m_txtTrue : m_txtFalse, msg_original.m_isImportant ? m_txtTrue : m_txtFalse);
 
         case MFM_MODEL_ISDELETED:
           return QSL(VALUE_COMPARISON_FORMAT)
-            .arg(msg.m_isDeleted ? bool_true : bool_false, msg_original.m_isDeleted ? bool_true : bool_false);
+            .arg(msg->m_isDeleted ? m_txtTrue : m_txtFalse, msg_original.m_isDeleted ? m_txtTrue : m_txtFalse);
 
         case MFM_MODEL_TITLE:
-          return QSL(VALUE_COMPARISON_FORMAT).arg(msg.m_title, msg_original.m_title);
+          return QSL(VALUE_COMPARISON_FORMAT).arg(msg->m_title, msg_original.m_title);
 
         case MFM_MODEL_CREATED:
           return QSL(VALUE_COMPARISON_FORMAT)
-            .arg(msg.m_created.toString(Qt::DateFormat::ISODate),
+            .arg(msg->m_created.toString(Qt::DateFormat::ISODate),
                  msg_original.m_created.toString(Qt::DateFormat::ISODate));
 
         case MFM_MODEL_SCORE:
-          return QSL(VALUE_COMPARISON_FORMAT).arg(QString::number(msg.m_score), QString::number(msg_original.m_score));
+          return QSL(VALUE_COMPARISON_FORMAT).arg(QString::number(msg->m_score), QString::number(msg_original.m_score));
       }
     }
   }
@@ -307,11 +308,11 @@ Message* MessagesForFiltersModel::messageForRow(int row) {
   }
 }
 
-Message MessagesForFiltersModel::messageForRow(int row) const {
+const Message* MessagesForFiltersModel::constMessageForRow(int row) const {
   if (row >= 0 && row < m_messages.size()) {
-    return m_messages[row].m_filtered;
+    return &m_messages[row].m_filtered;
   }
   else {
-    return Message();
+    return nullptr;
   }
 }

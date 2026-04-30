@@ -619,7 +619,7 @@ void MessagesModel::setupHeaderData() {
                 << tr("Labels assigned to the article.");
 }
 
-QList<Message> MessagesModel::messages() const {
+QList<Message>& MessagesModel::messages() {
   return m_messages;
 }
 

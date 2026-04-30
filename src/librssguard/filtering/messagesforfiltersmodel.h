@@ -42,8 +42,8 @@ class MessagesForFiltersModel : public QAbstractTableModel {
     void processFeeds(MessageFilter* fltr, ServiceRoot* account, const QList<RootItem*>& checked);
     void testFilter(MessageFilter* filter, FilteringSystem* engine);
 
-    Message messageForRow(int row) const;
     Message* messageForRow(int row);
+    const Message* constMessageForRow(int row) const;
 
   public slots:
     void setMessages(const QList<Message>& messages);
@@ -60,6 +60,8 @@ class MessagesForFiltersModel : public QAbstractTableModel {
 
     QColor m_colorOk;
     QColor m_colorError;
+    QString m_txtTrue;
+    QString m_txtFalse;
 };
 
 #endif // MESSAGESFORFILTERSMODEL_H
