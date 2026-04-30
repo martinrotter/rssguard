@@ -95,6 +95,7 @@ class MessagesModel : public QAbstractTableModel, public MessagesModelSqlLayer {
     // BATCH messages manipulators.
     void switchBatchMessageImportance(const QModelIndexList& messages);
     void setBatchMessagesDeleted(const QModelIndexList& messages);
+    void switchBatchMessagesRead(const QModelIndexList& messages);
     void setBatchMessagesRead(const QModelIndexList& messages, RootItem::ReadStatus read);
     void setBatchMessagesRestored(const QModelIndexList& messages);
 

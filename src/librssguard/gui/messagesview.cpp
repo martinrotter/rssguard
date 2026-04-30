@@ -846,6 +846,26 @@ void MessagesView::markMessagesBelowUnread() {
   markArticlesFromToReadUnread(row_from, row_to, RootItem::ReadStatus::Unread);
 }
 
+void MessagesView::toggleSelectedMessagesReadUnread() {
+  const QModelIndexList selected_indexes = selectionModel()->selectedRows();
+
+  if (selected_indexes.isEmpty()) {
+    return;
+  }
+
+  const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
+
+  m_sourceModel->switchBatchMessagesRead(mapped_indexes);
+  QModelIndex current_index = selectionModel()->currentIndex();
+
+  if (current_index.isValid() && selected_indexes.size() == 1) {
+    requestArticleDisplay(m_sourceModel->messageForRow(m_proxyModel->mapToSource(current_index).row()));
+  }
+  else {
+    requestArticleHiding();
+  }
+}
+
 void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
   const QModelIndexList selected_indexes = selectionModel()->selectedRows();
 

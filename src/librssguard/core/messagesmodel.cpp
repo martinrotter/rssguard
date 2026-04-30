@@ -1323,6 +1323,67 @@ void MessagesModel::fetchFullArticleContents(const QModelIndexList& articles) {
     });
 }
 
+void MessagesModel::switchBatchMessagesRead(const QModelIndexList& messages) {
+  QStringList message_ids_read;
+  message_ids_read.reserve(messages.size());
+
+  QStringList message_ids_unread;
+  message_ids_unread.reserve(messages.size());
+
+  QList<Message> msgs_read;
+  msgs_read.reserve(messages.size());
+
+  QList<Message> msgs_unread;
+  msgs_unread.reserve(messages.size());
+
+  QModelIndexList changed_indices;
+  changed_indices.reserve(messages.size());
+
+  blockSignals(true);
+
+  // Obtain IDs of all desired messages.
+  for (const QModelIndex& message : messages) {
+    const Message& msg = messageForRow(message.row());
+
+    if (msg.m_isRead) {
+      msgs_unread.append(msg);
+      message_ids_unread.append(QString::number(msg.m_id));
+    }
+    else {
+      msgs_read.append(msg);
+      message_ids_read.append(QString::number(msg.m_id));
+    }
+
+    QModelIndex idx = index(message.row(), MSG_MDL_READ_INDEX);
+    setData(idx, !msg.m_isRead);
+
+    changed_indices.append(idx);
+  }
+
+  blockSignals(false);
+  reloadChangedLayout(changed_indices, true);
+
+  if (!msgs_read.isEmpty()) {
+    m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, msgs_read, RootItem::ReadStatus::Read);
+
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::markMessagesReadUnread(db, message_ids_read, RootItem::ReadStatus::Read);
+    });
+
+    m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, msgs_read, RootItem::ReadStatus::Read);
+  }
+
+  if (!msgs_unread.isEmpty()) {
+    m_selectedItem->account()->onBeforeSetMessagesRead(m_selectedItem, msgs_unread, RootItem::ReadStatus::Unread);
+
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::markMessagesReadUnread(db, message_ids_unread, RootItem::ReadStatus::Unread);
+    });
+
+    m_selectedItem->account()->onAfterSetMessagesRead(m_selectedItem, msgs_unread, RootItem::ReadStatus::Unread);
+  }
+}
+
 void MessagesModel::setBatchMessagesRead(const QModelIndexList& messages, RootItem::ReadStatus read) {
   QStringList message_ids;
   message_ids.reserve(messages.size());

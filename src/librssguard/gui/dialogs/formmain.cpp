@@ -206,6 +206,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionMessagePreviewEnabled;
   actions << m_ui->m_actionEnableDisableFeeds;
   actions << m_ui->m_actionMarkAllItemsRead;
+  actions << m_ui->m_actionToggleArticlesReadUnread;
   actions << m_ui->m_actionMarkSelectedItemsAsRead;
   actions << m_ui->m_actionMarkSelectedItemsAsUnread;
   actions << m_ui->m_actionClearSelectedItems;
@@ -453,6 +454,7 @@ void FormMain::updateMessageButtonsAvailability() {
   m_ui->m_actionRestoreSelectedMessages->setEnabled(atleast_one_message_selected);
   m_ui->m_actionMarkSelectedMessagesAsRead->setEnabled(atleast_one_message_selected);
   m_ui->m_actionMarkSelectedMessagesAsUnread->setEnabled(atleast_one_message_selected);
+  m_ui->m_actionToggleArticlesReadUnread->setEnabled(atleast_one_message_selected);
 
 #if !defined(ENABLE_MEDIAPLAYER)
   m_ui->m_actionPlaySelectedArticlesInMediaPlayer->setText(tr("Play in media player") + QSL(" ") +
@@ -615,6 +617,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionMarkArticlesBelowRead->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down"), QSL("go-down")));
   m_ui->m_actionMarkArticlesBelowUnread->setIcon(icon_theme_factory->fromTheme(QSL("arrow-down"), QSL("go-down")));
 
+  m_ui->m_actionToggleArticlesReadUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedItemsAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
   m_ui->m_actionMarkSelectedItemsAsUnread->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-unread")));
   m_ui->m_actionMarkSelectedMessagesAsRead->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-read")));
@@ -907,6 +910,10 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
           &MessagesView::deleteSelectedMessages);
+  connect(m_ui->m_actionToggleArticlesReadUnread,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::toggleSelectedMessagesReadUnread);
   connect(m_ui->m_actionMarkSelectedMessagesAsRead,
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),

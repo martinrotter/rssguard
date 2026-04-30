@@ -13,6 +13,7 @@ Added:
 * The article list can now optionally show feed icons in the `Feed` column. (#2179)
 * Feed discovery can now try multiple candidate feed URLs and properly resolve relative links, which improves detection and fixes sites such as VideoHelp. (#2180, 5344d172c, c7444886b, 705246a2d)
 * Skins can now color folder backgrounds in the feed list, and generated fallback icons now use more readable letters. (#2199, 77695b442, f638b6789)
+* Ability to toggle article read/unread state with separate menu action. (#2221)
 * RSS Guard 4 and 5 can now run side by side on the same system more safely. (161053bba)
 * Updated translations, including Japanese and Dutch refreshes plus newer Crowdin syncs. (#2202, #2203, #2205, #2209, #2215, #2218, #2219, c145c39f5, a047c2462, 6ba42bb13)
 

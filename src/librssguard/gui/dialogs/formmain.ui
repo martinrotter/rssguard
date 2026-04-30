@@ -206,6 +206,7 @@
     <addaction name="m_actionLoadAllArticles"/>
     <addaction name="separator"/>
     <addaction name="m_actionCopyDataOfSelectedArticles"/>
+    <addaction name="m_actionToggleArticlesReadUnread"/>
     <addaction name="m_actionMarkSelectedMessagesAsRead"/>
     <addaction name="m_actionMarkArticlesAboveRead"/>
     <addaction name="m_actionMarkArticlesBelowRead"/>
@@ -1030,6 +1031,11 @@
   <action name="m_actionCleanupWebCache">
    <property name="text">
     <string>Cleanup &amp;web cache</string>
+   </property>
+  </action>
+  <action name="m_actionToggleArticlesReadUnread">
+   <property name="text">
+    <string>Toggle ar&amp;ticles read/unread</string>
    </property>
   </action>
  </widget>

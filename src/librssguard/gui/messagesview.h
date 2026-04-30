@@ -70,6 +70,7 @@ class MessagesView : public BaseTreeView {
     void sendSelectedMessageViaEmail();
 
     // Works with SELECTED messages only.
+    void toggleSelectedMessagesReadUnread();
     void setSelectedMessagesReadStatus(RootItem::ReadStatus read);
     void markSelectedMessagesRead();
     void markSelectedMessagesUnread();
