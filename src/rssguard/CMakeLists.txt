@@ -1,9 +1,17 @@
+set(SOURCES
+  main.cpp)
+
 if(WIN32)
-  enable_language("RC")
-  add_executable(app main.cpp ${CMAKE_BINARY_DIR}/rssguard.rc)
+  list(APPEND SOURCES
+    ${CMAKE_BINARY_DIR}/rssguard.rc
+    ${CMAKE_SOURCE_DIR}/resources/desktop/rssguard.manifest
+  )
+endif()
+
+add_executable(app ${SOURCES})
+
+if(WIN32)
   set_property(TARGET app PROPERTY WIN32_EXECUTABLE true)
-else()
-  add_executable(app main.cpp)
 endif()
 
 target_compile_definitions(app PRIVATE RSSGUARD_DLLSPEC=Q_DECL_IMPORT)

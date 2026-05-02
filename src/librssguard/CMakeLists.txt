@@ -482,6 +482,12 @@ if(MSVC)
   add_compile_options(/wd4244 /wd4267 /permissive- /utf-8)
 endif()
 
+if(WIN32)
+  list(APPEND SOURCES
+    ${CMAKE_SOURCE_DIR}/resources/desktop/rssguard.manifest
+  )
+endif()
+
 # Add SimpleCrypt.
 list(APPEND SOURCES
   3rd-party/sc/simplecrypt.cpp
