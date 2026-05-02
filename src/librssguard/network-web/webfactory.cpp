@@ -33,10 +33,10 @@ WebFactory::WebFactory(QObject* parent)
   : QObject(parent)
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
     ,
-    m_webEngineProfile(new QWebEngineProfile(QSL(APP_LOW_NAME), this)), m_geminiHandler(new GeminiSchemeHandler(this))
+    m_geminiHandler(new GeminiSchemeHandler(this))
 #endif
     ,
-    m_customUserAgent(QString()), m_cookieJar(new CookieJar(this)) {
+    m_customUserAgent(QString()) {
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   initializeWebEngineProfile();
   initializeWebEngineAttributeActions();
@@ -221,7 +221,10 @@ void WebFactory::onDownloadRequested(QWebEngineDownloadRequest* download) {
 }
 
 void WebFactory::initializeWebEngineProfile() {
+  m_webEngineProfile = new QWebEngineProfile(QSL(APP_LOW_NAME), this);
   m_webEngineProfile->installUrlSchemeHandler("gemini", m_geminiHandler);
+
+  m_cookieJar = new CookieJar(this);
 
 #if QT_VERSION_MAJOR >= 6
   connect(m_webEngineProfile,

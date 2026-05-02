@@ -89,6 +89,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #endif
 #endif
 
+  qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
+
   QString custom_ua;
 
   parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);
