@@ -380,7 +380,7 @@ list(APPEND SOURCES
   3rd-party/gumbo/src/gumbo.h
   3rd-party/gumbo/src/char_ref.c
   3rd-party/gumbo/src/char_ref.h
-  3rd-party/gumbo/src/char_ref.rl
+  3rd-party/gumbo/src/char_ref_gperf.c
   3rd-party/gumbo/src/insertion_mode.h
   3rd-party/gumbo/src/parser.c
   3rd-party/gumbo/src/parser.h
@@ -389,7 +389,6 @@ list(APPEND SOURCES
   3rd-party/gumbo/src/string_piece.c
   3rd-party/gumbo/src/string_piece.h
   3rd-party/gumbo/src/tag.c
-  3rd-party/gumbo/src/tag.in
   3rd-party/gumbo/src/tag_enum.h
   3rd-party/gumbo/src/tag_gperf.h
   3rd-party/gumbo/src/tag_sizes.h
