@@ -1999,7 +1999,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
       <source>URLs</source>
-      <translation type="unfinished">URLs</translation>
+      <translation>URLs</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="65"/>
@@ -2044,7 +2044,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="85"/>
       <source>Enter feed URLs, one URL per line</source>
-      <translation type="unfinished">Enter feed URLs, one URL per line</translation>
+      <translation>输入新闻源URL，每行一个 URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="138"/>
@@ -2059,12 +2059,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="249"/>
       <source>All URLs are valid.</source>
-      <translation type="unfinished">All URLs are valid.</translation>
+      <translation>所有URL都是有效的。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="252"/>
       <source>One or more URLs are invalid.</source>
-      <translation type="unfinished">One or more URLs are invalid.</translation>
+      <translation>一个或多个URL无效。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="321"/>
@@ -6489,12 +6489,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="640"/>
       <source>folders background</source>
-      <translation type="unfinished">folders background</translation>
+      <translation>文件夹背景</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="643"/>
       <source>folders background (highlighted</source>
-      <translation type="unfinished">folders background (highlighted</translation>
+      <translation>文件夹背景(高亮)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
@@ -9336,7 +9336,7 @@ Load default feeds: Will load small set of various interesting feeds.</source>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="32"/>
       <source>Close this tab</source>
-      <translation type="unfinished">Close this tab</translation>
+      <translation>关闭此标签页</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="33"/>
