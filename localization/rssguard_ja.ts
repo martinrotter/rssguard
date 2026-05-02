@@ -2869,7 +2869,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1038"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="876"/>
       <source>Toggle ar&amp;ticles read/unread</source>
-      <translation type="unfinished">Toggle ar&amp;ticles read/unread</translation>
+      <translation>記事の既読 / 未読を切り替える</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
@@ -3229,26 +3229,26 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="423"/>
       <source>This filter was saved!</source>
-      <translation type="unfinished">This filter was saved!</translation>
+      <translation>このフィルターは保存されました！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="431"/>
       <source>There war an error when saving the filter: %1.</source>
-      <translation type="unfinished">There war an error when saving the filter: %1.</translation>
+      <translation>フィルターの保存中にエラーが発生しました: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="435"/>
       <source>Filter was not saved</source>
-      <translation type="unfinished">Filter was not saved</translation>
+      <translation>フィルターは保存されませんでした</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="436"/>
       <source>There war an error when saving the filter: %1.
 
 Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
-      <translation type="unfinished">There war an error when saving the filter: %1.
+      <translation>フィルターの保存中にエラーが発生しました: %1
 
-Maybe the filter title is not unique. If that&apos;s the case, then change it.</translation>
+フィルターのタイトルが重複している可能性があります。その場合は、タイトルを変更してください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="657"/>
@@ -6697,7 +6697,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="358"/>
       <source>Printing is finished on printer %1.</source>
-      <translation type="unfinished">Printing is finished on printer %1.</translation>
+      <translation>プリンター %1 での印刷が完了しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="364"/>
