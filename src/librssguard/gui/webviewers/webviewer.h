@@ -94,6 +94,10 @@ class WebViewer {
     virtual double verticalScrollBarPosition() const = 0;
     virtual void setVerticalScrollBarPosition(double pos) = 0;
 
+    // Called after printing is finished, must be reimplemented by view
+    // and this super-implementation called.
+    virtual void onPrintingFinished(bool success);
+
     // Apply font.
     virtual void applyFont(const QFont& fon) = 0;
 
@@ -159,7 +163,7 @@ class WebViewer {
     QScopedPointer<QAction> m_actionSaveImage;
     QScopedPointer<QAction> m_actionCopyImageLink;
 
-    QPrinter m_printer;
+    QScopedPointer<QPrinter> m_printer;
 };
 
 Q_DECLARE_INTERFACE(WebViewer, "WebViewer")

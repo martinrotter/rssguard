@@ -254,13 +254,17 @@ void WebViewer::openClickedLinkInNewTab() {
 }
 
 void WebViewer::printContents() {
-  QPrintDialog d(&m_printer, qApp->mainFormWidget());
+  if (m_printer.isNull()) {
+    m_printer.reset(new QPrinter());
+  }
+
+  QPrintDialog d(m_printer.data(), qApp->mainFormWidget());
 
   if (d.exec() != QDialog::DialogCode::Accepted) {
     return;
   }
 
-  printToPrinter(&m_printer);
+  printToPrinter(m_printer.data());
 }
 
 void WebViewer::initializeCommonMenuItems() {
@@ -345,4 +349,21 @@ bool WebViewer::loadExternalResources() const {
 void WebViewer::setLoadExternalResources(bool load_resources) {
   m_loadExternalResources = load_resources;
   qApp->settings()->setValue(GROUP(Browser), Browser::LoadExternalResources, load_resources);
+}
+
+void WebViewer::onPrintingFinished(bool success) {
+  if (success) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(QObject::tr("Done"),
+                                    QObject::tr("Printing is finished on printer %1.")
+                                      .arg(m_printer.data()->printerName())),
+                         GuiMessageDestination(true, true, true));
+  }
+  else {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(QObject::tr("Error"),
+                                    QObject::tr("Printing failed."),
+                                    QSystemTrayIcon::MessageIcon::Critical),
+                         GuiMessageDestination(true, true, true));
+  }
 }

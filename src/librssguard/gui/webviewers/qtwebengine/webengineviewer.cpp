@@ -19,7 +19,7 @@
 #include <QToolTip>
 #include <QWheelEvent>
 
-#if QT_VERSION_MAJOR == 6
+#if QT_VERSION_MAJOR >= 6
 #include <QWebEngineContextMenuRequest>
 #else
 #include <QWebEngineContextMenuData>
@@ -48,6 +48,12 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
 
   connect(m_actionPrintToPdf.data(), &QAction::triggered, this, &WebEngineViewer::printToPdf);
   connect(m_actionSaveFullPage.data(), &QAction::triggered, this, &WebEngineViewer::saveCompleteWebPage);
+
+#if QT_VERSION_MAJOR >= 6
+  connect(this, &WebEngineViewer::printFinished, this, [this](bool success) {
+    onPrintingFinished(success);
+  });
+#endif
 
   WebEngineViewer::setLoadExternalResources(WebViewer::loadExternalResources());
 }
@@ -129,7 +135,7 @@ void WebEngineViewer::cleanupCache() {
 
 void WebEngineViewer::printToPrinter(QPrinter* printer) {
 #if QT_VERSION_MAJOR < 6
-  page()->print(printer, [](bool success) {
+  page()->print(printer, [this](bool success) {
     if (success) {
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
                            GuiMessage(tr("Done"), tr("Printing is finished.")),
@@ -140,6 +146,8 @@ void WebEngineViewer::printToPrinter(QPrinter* printer) {
                            GuiMessage(tr("Error"), tr("Printing failed."), QSystemTrayIcon::MessageIcon::Critical),
                            GuiMessageDestination(true, true, true));
     }
+
+    onPrintingFinished(success);
   });
 #else
   QWebEngineView::print(printer);

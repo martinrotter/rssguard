@@ -237,6 +237,7 @@ QString TextBrowserViewer::htmlForMessage(const Message& message, RootItem* root
 
 void TextBrowserViewer::printToPrinter(QPrinter* printer) {
   QTextBrowser::print(printer);
+  onPrintingFinished(true);
 }
 
 void TextBrowserViewer::cleanupCache() {}
