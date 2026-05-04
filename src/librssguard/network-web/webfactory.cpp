@@ -36,11 +36,13 @@ WebFactory::WebFactory(QObject* parent)
     m_geminiHandler(new GeminiSchemeHandler(this))
 #endif
     ,
-    m_customUserAgent(QString()), m_cookieJar(new CookieJar(this)) {
+    m_customUserAgent(QString()) {
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   initializeWebEngineProfile();
   initializeWebEngineAttributeActions();
 #endif
+
+  m_cookieJar = new CookieJar(this);
 }
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
