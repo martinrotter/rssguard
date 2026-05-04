@@ -46,9 +46,8 @@ class NextcloudNetworkFactory {
     RootItem* feedsCategories(const QNetworkProxy& custom_proxy);
 
     // Feed operations.
-    bool deleteFeed(const QString& feed_id, const QNetworkProxy& custom_proxy);
-    bool createFeed(const QString& url, int parent_id, const QNetworkProxy& custom_proxy);
-    bool renameFeed(const QString& new_name, const QString& custom_feed_id, const QNetworkProxy& custom_proxy);
+    void deleteFeed(const QString& feed_id, const QNetworkProxy& custom_proxy);
+    void createFeed(const QString& url, int parent_id, const QNetworkProxy& custom_proxy);
     void obtainIcons(const QList<Feed*>& feeds, const QNetworkProxy& custom_proxy);
 
     // Get messages for given feed.

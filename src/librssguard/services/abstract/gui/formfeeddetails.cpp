@@ -43,6 +43,10 @@ void FormFeedDetails::insertCustomTab(QWidget* custom_tab, const QString& title,
   }
 }
 
+void FormFeedDetails::removeAllTabs() {
+  m_ui->m_tabWidget->clear();
+}
+
 void FormFeedDetails::apply() {
   QList<Feed*> fds = feeds<Feed>();
 

@@ -54,6 +54,8 @@ class RSSGUARD_DLLSPEC FormFeedDetails : public QDialog {
     // than zero, tab is inserted to the last position.
     void insertCustomTab(QWidget* custom_tab, const QString& title, int index = -1);
 
+    void removeAllTabs();
+
     // Sets the feed which will be edited.
     // NOTE: This must be reimplemented in subclasses. Also this
     // base implementation must be called first.

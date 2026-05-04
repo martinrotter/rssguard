@@ -36,6 +36,7 @@ class NextcloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     NextcloudNetworkFactory* network() const;
 
   public slots:
+    virtual void addNewFeed(RootItem* selected_item, const QString& url);
     virtual void requestSyncIn();
 
   protected:

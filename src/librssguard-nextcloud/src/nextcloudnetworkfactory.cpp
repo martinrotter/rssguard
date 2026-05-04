@@ -223,7 +223,7 @@ RootItem* NextcloudNetworkFactory::feedsCategories(const QNetworkProxy& custom_p
   return parent;
 }
 
-bool NextcloudNetworkFactory::deleteFeed(const QString& feed_id, const QNetworkProxy& custom_proxy) {
+void NextcloudNetworkFactory::deleteFeed(const QString& feed_id, const QNetworkProxy& custom_proxy) {
   QString final_url = m_urlDeleteFeed.arg(feed_id);
   QByteArray raw_output;
   QList<QPair<QByteArray, QByteArray>> headers;
@@ -247,17 +247,12 @@ bool NextcloudNetworkFactory::deleteFeed(const QString& feed_id, const QNetworkP
                                             {},
                                             custom_proxy);
 
-  if (network_reply.m_networkError != QNetworkReply::NoError) {
-    qCriticalNN << LOGSEC_NEXTCLOUD << "Obtaining of categories failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
-    return false;
-  }
-  else {
-    return true;
+  if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
+    throw NetworkException(network_reply.m_networkError, QString::fromUtf8(raw_output));
   }
 }
 
-bool NextcloudNetworkFactory::createFeed(const QString& url, int parent_id, const QNetworkProxy& custom_proxy) {
+void NextcloudNetworkFactory::createFeed(const QString& url, int parent_id, const QNetworkProxy& custom_proxy) {
   QJsonObject json;
 
   json[QSL("url")] = url;
@@ -285,53 +280,10 @@ bool NextcloudNetworkFactory::createFeed(const QString& url, int parent_id, cons
                                             {},
                                             custom_proxy);
 
-  if (network_reply.m_networkError != QNetworkReply::NoError) {
-    qCriticalNN << LOGSEC_NEXTCLOUD << "Creating of category failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
-    return false;
-  }
-  else {
-    return true;
-  }
-}
-
-bool NextcloudNetworkFactory::renameFeed(const QString& new_name,
-                                         const QString& custom_feed_id,
-                                         const QNetworkProxy& custom_proxy) {
-  QString final_url = m_urlRenameFeed.arg(custom_feed_id);
-  QByteArray result_raw;
-  QJsonObject json;
-
-  json[QSL("feedTitle")] = new_name;
-
-  QList<QPair<QByteArray, QByteArray>> headers;
-
-  headers << QPair<QByteArray, QByteArray>(HTTP_HEADERS_CONTENT_TYPE, NEXTCLOUD_CONTENT_TYPE_JSON);
-  headers << NetworkFactory::generateBasicAuthHeader(NetworkFactory::NetworkAuthentication::Basic,
-                                                     m_authUsername,
-                                                     m_authPassword);
-
-  NetworkResult network_reply =
-    NetworkFactory::performNetworkOperation(final_url,
-                                            qApp->settings()
-                                              ->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout))
-                                              .toInt(),
-                                            QJsonDocument(json).toJson(QJsonDocument::JsonFormat::Compact),
-                                            result_raw,
-                                            QNetworkAccessManager::Operation::PutOperation,
-                                            headers,
-                                            false,
-                                            {},
-                                            {},
-                                            custom_proxy);
-
   if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
-    qCriticalNN << LOGSEC_NEXTCLOUD << "Renaming of feed failed with error"
-                << QUOTE_W_SPACE_DOT(network_reply.m_networkError);
-    return false;
-  }
-  else {
-    return true;
+    if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
+      throw NetworkException(network_reply.m_networkError, QString::fromUtf8(result_raw));
+    }
   }
 }
 
@@ -368,6 +320,10 @@ QList<Message> NextcloudNetworkFactory::getMessages(int feed_id, const QNetworkP
 
   if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
     throw NetworkException(network_reply.m_networkError, QString::fromUtf8(result_raw));
+  }
+
+  if (result_raw.isEmpty()) {
+    return {};
   }
 
   QList<Message> msgs;

@@ -1,6 +1,6 @@
 5.1.1
 -----
-
+Released on: 2026-05-04
 
 If your RSS Guard crashes on Windows upon article selection, then you might have some DirectX libraries missing. Install them with this command.
 
@@ -8,8 +8,16 @@ If your RSS Guard crashes on Windows upon article selection, then you might have
 dism /Online /Add-Capability /CapabilityName:Tools.Graphics.DirectX~~~~0.0.1.0
 ```
 
+Added:
+* Nextcloud News plugin can now add feeds. (#2065)
+* Official Linux builds now include Qt 5 text-viewer and WebEngine-viewer variants again. (211a74757, 3795eb76d, 8e678c218, 55e4dbd1d)
+* Updated Japanese, Chinese Simplified and Crowdin-managed translations. (#2235, e6e3e171f, 1f2d25ac1)
+
 Fixed:
-* Application hangs and waits for printer to become online. Not anymore hopefully. (#2230)
+* RSS Guard no longer asks Windows to connect to an offline printer while starting, so the application should open normally even when the default printer is unavailable. (#2230)
+* RSS Guard now starts correctly from the Windows startup entry instead of closing almost immediately. (#2234)
+* Gemini links now use the correct scheme handler. (d5a02a7a0)
+* Removed noisy `QPalette` color-group warnings triggered while loading skins. (d5a02a7a0)
 
 5.1.0
 -----

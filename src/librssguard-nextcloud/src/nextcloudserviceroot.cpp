@@ -3,6 +3,7 @@
 #include "src/nextcloudserviceroot.h"
 
 #include "src/gui/formeditnextcloudaccount.h"
+#include "src/gui/formnextcloudfeeddetails.h"
 #include "src/nextcloudfeed.h"
 #include "src/nextcloudnetworkfactory.h"
 #include "src/nextcloudserviceentrypoint.h"
@@ -12,6 +13,7 @@
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/mutex.h>
 #include <librssguard/miscellaneous/textfactory.h>
 
 NextcloudServiceRoot::NextcloudServiceRoot(RootItem* parent)
@@ -49,7 +51,7 @@ void NextcloudServiceRoot::editItems(const QList<RootItem*>& items) {
 }
 
 bool NextcloudServiceRoot::supportsFeedAdding() const {
-  return false;
+  return true;
 }
 
 bool NextcloudServiceRoot::supportsCategoryAdding() const {
@@ -189,4 +191,26 @@ QList<Message> NextcloudServiceRoot::obtainNewMessages(Feed* feed,
   catch (const NetworkException& netEx) {
     throw FeedFetchException(Feed::Status::NetworkError, netEx.message());
   }
+}
+
+void NextcloudServiceRoot::addNewFeed(RootItem* selected_item, const QString& url) {
+  if (!qApp->feedUpdateLock()->tryLock()) {
+    // Lock was not obtained because
+    // it is used probably by feed updater or application
+    // is quitting.
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot add item"),
+                          tr("Cannot add feed because another critical operation is ongoing."),
+                          QSystemTrayIcon::MessageIcon::Warning});
+
+    return;
+  }
+
+  QScopedPointer<FormNextcloudFeedDetails> form_pointer(new FormNextcloudFeedDetails(this,
+                                                                                     selected_item,
+                                                                                     url,
+                                                                                     qApp->mainFormWidget()));
+
+  form_pointer->addEditFeed<NextcloudFeed>();
+  qApp->feedUpdateLock()->unlock();
 }

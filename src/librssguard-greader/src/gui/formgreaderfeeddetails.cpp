@@ -92,8 +92,11 @@ void FormGreaderFeedDetails::loadFeedData() {
   if (!m_isBatchEdit) {
     m_feedDetails = new GreaderFeedDetails(this);
 
-    insertCustomTab(m_feedDetails, tr("General"), 0);
-    activateTab(0);
+    if (m_creatingNew) {
+      removeAllTabs();
+    }
+
+    insertCustomTab(m_feedDetails, tr("General"));
 
     GreaderFeed* fd = feed<GreaderFeed>();
 

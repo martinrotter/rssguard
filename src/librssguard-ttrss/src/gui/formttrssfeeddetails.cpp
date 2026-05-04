@@ -4,6 +4,7 @@
 
 #include "src/definitions.h"
 #include "src/gui/ttrssfeeddetails.h"
+#include "src/ttrssfeed.h"
 #include "src/ttrssnetworkfactory.h"
 #include "src/ttrssserviceroot.h"
 
@@ -47,6 +48,7 @@ void FormTtRssFeedDetails::apply() {
                             tr("Feed was added, refreshing feed tree..."),
                             QSystemTrayIcon::MessageIcon::Information});
       QTimer::singleShot(600, root, &TtRssServiceRoot::requestSyncIn);
+      feed<TtRssFeed>()->deleteLater();
     }
     else {
       throw ApplicationException(tr("API returned error code %1").arg(QString::number(response.code())));
@@ -58,6 +60,7 @@ void FormTtRssFeedDetails::loadFeedData() {
   FormFeedDetails::loadFeedData();
 
   if (m_creatingNew) {
+    removeAllTabs();
     insertCustomTab(m_feedDetails, tr("General"), 0);
     insertCustomTab(m_authDetails, tr("Auth"), 1);
     activateTab(0);
