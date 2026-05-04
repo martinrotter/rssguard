@@ -2,6 +2,8 @@
 
 set -eux
 
+use_qt5="$1"
+
 ARCH="$(uname -m)"
 EXTRA_PACKAGES="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/get-debloated-pkgs.sh"
 
@@ -46,7 +48,14 @@ pacman -Syu --noconfirm  \
     pipewire-audio       \
     pulseaudio           \
     pulseaudio-alsa      \
-    qxmpp                \
+    sndio                \
+    sqlite               \
+    wget                 \
+    xorg-server-xvfb     \
+    zsync
+
+if [[ "$use_qt5" == "ON" ]]; then
+pacman -Syu --noconfirm  \
     qt5-base             \
     qt5-declarative      \
     qt5-imageformats     \
@@ -54,7 +63,10 @@ pacman -Syu --noconfirm  \
     qt5-tools            \
     qt5-wayland          \
     qt5-webengine        \
-    qt5-svg              \
+    qt5-svg
+else
+pacman -Syu --noconfirm  \
+    qxmpp                \
     qt6-base             \
     qt6-declarative      \
     qt6-imageformats     \
@@ -62,12 +74,8 @@ pacman -Syu --noconfirm  \
     qt6-tools            \
     qt6-svg              \
     qt6-webengine        \
-    qt6ct                \
-    sndio                \
-    sqlite               \
-    wget                 \
-    xorg-server-xvfb     \
-    zsync
+    qt6ct
+fi
 
 echo "Installing debloated packages..."
 echo "---------------------------------------------------------------"

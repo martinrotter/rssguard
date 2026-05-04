@@ -115,7 +115,7 @@ jobs:
           python-version: "3.13"
 
       - name: Prepare Linux environment
-        run: ./resources/scripts/github-actions/prepare-linux.sh
+        run: ./resources/scripts/github-actions/prepare-linux.sh "${{ matrix.use_qt5 }}"
         if: matrix.os == 'ubuntu-24.04'
 
       - name: Checkout source code submodules
