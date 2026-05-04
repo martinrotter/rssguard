@@ -44,9 +44,9 @@ void FormTtRssFeedDetails::apply() {
       // Feed was added online.
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
                            {tr("Feed added"),
-                            tr("Feed was added, obtaining new tree of feeds now."),
+                            tr("Feed was added, refreshing feed tree..."),
                             QSystemTrayIcon::MessageIcon::Information});
-      QTimer::singleShot(300, root, &TtRssServiceRoot::requestSyncIn);
+      QTimer::singleShot(600, root, &TtRssServiceRoot::requestSyncIn);
     }
     else {
       throw ApplicationException(tr("API returned error code %1").arg(QString::number(response.code())));

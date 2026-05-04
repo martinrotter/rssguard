@@ -49,7 +49,7 @@ void FormGreaderFeedDetails::apply() {
                              {tr("Feed added"),
                               tr("Feed was added, refreshing feed tree..."),
                               QSystemTrayIcon::MessageIcon::Information});
-        QTimer::singleShot(300, root, &GreaderServiceRoot::requestSyncIn);
+        QTimer::singleShot(600, root, &GreaderServiceRoot::requestSyncIn);
 
         // NOTE: Feed object was not used, delete.
         fd->deleteLater();

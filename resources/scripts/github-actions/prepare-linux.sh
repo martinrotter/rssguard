@@ -8,6 +8,16 @@ EXTRA_PACKAGES="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImage
 pacman-key --init
 pacman -Syy --noconfirm
 pacman -S --noconfirm archlinux-keyring
+pacman-key --recv-keys 72BF227DD76AE5BF --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key 72BF227DD76AE5BF
+
+cat >> /etc/pacman.conf <<'EOF'
+
+[andontie-aur]
+Server = https://aur.andontie.net/$arch
+EOF
+
+pacman -Syy --noconfirm
 
 pacman -Syu --noconfirm  \
     appstream            \
@@ -42,6 +52,7 @@ pacman -Syu --noconfirm  \
     qt5-multimedia       \
     qt5-tools            \
     qt5-wayland          \
+    qt5-webengine        \
     qt5-svg              \
     qt6-base             \
     qt6-declarative      \

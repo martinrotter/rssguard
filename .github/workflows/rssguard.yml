@@ -105,9 +105,6 @@ jobs:
         exclude:
           - os: macos-15
             use_qt5: "ON"
-          - os: ubuntu-24.04
-            use_qt5: "ON"
-            webengine_viewer: "ON"
     steps:
       - name: Checkout source code
         uses: actions/checkout@v6
