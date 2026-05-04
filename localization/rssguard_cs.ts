@@ -56,52 +56,52 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1165"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1167"/>
       <source>Application is already running.</source>
       <translation>Aplikace již běží</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="574"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="576"/>
       <source>Output directory is not writable.</source>
       <translation>Nelze psát do cílové složky</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="582"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="584"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>Soubor nastavení nebyl zkopírován do cílového adresáře.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="601"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="603"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Obnovení nastavení nebylo spuštěno. Ujistěte se, že cílový adresář je zapisovatelný.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1194"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1196"/>
       <source>Cannot add feed</source>
       <translation>Nelze přidat kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1195"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1197"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Kanál nemůže být přidán, protože nemáte aktivovaný žádný účet který umí přidávat kanály.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1046"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1048"/>
       <source>Unread articles fetched</source>
       <translation>Staženy nepřečtené zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="334"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="336"/>
       <source>Go to changelog</source>
       <translation>Zobrazit seznam změn</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="328"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="330"/>
       <source>Welcome</source>
       <translation>Vítejte</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="329"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="331"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -112,7 +112,7 @@ Prosím, zkontrolujte novinky kliknutím
 na tuto bublinu.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1164"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1166"/>
       <source>Already running</source>
       <translation>Již běží</translation>
     </message>
@@ -673,33 +673,33 @@ Zkuste v nastavení změnit název používané databáze a akci opakujte. Přep
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="343"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="347"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>používá globální nastavení, ale globální stahování zpráv je zakázáno</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="367"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="371"/>
       <source>no errors</source>
       <translation>žádné chyby</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="373"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="377"/>
       <source>authentication error</source>
       <translation>chyba autentifikace</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="379"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="383"/>
       <source>network error</source>
       <translation>chyba sítě</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="329"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="333"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>nestahuje zprávy automaticky</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="340"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="344"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>používá globální nastavení (%n minuta do dalšího stahování zpráv)</numerusform>
@@ -709,7 +709,7 @@ Zkuste v nastavení změnit název používané databáze a akci opakujte. Přep
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="354"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="358"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -720,27 +720,27 @@ Zkuste v nastavení změnit název používané databáze a akci opakujte. Přep
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="370"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="374"/>
       <source>has new articles</source>
       <translation>má nové zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="376"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="380"/>
       <source>SQL database error</source>
       <translation>Chyba SQL databáze</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="382"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="386"/>
       <source>parsing error</source>
       <translation>špatný formát kanálu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="385"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="389"/>
       <source>error</source>
       <translation>chyba</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="455"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="459"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -2159,22 +2159,22 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormFeedDetails</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="137"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="141"/>
       <source>Add new feed</source>
       <translation>Přidat nový kanál</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="170"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="174"/>
       <source>Cannot save changes: %1</source>
       <translation>Změny nelze uložit: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="141"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="145"/>
       <source>Edit &quot;%1&quot;</source>
       <translation>Upravit &quot;%1&quot;</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="146"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="150"/>
       <source>Edit %n feeds</source>
       <translation>
         <numerusform>Upravit %n kanál</numerusform>
@@ -2184,42 +2184,42 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="185"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="189"/>
       <source>Fetch articles using global interval</source>
       <translation>Stahovat zprávy dle hlavního nastavení</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="187"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="191"/>
       <source>Fetch articles every</source>
       <translation>Stahovat zprávy každých</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="189"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="193"/>
       <source>Disable auto-fetching of articles</source>
       <translation>Zakázat automatické stahování zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="192"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
       <source>Left-to-right</source>
       <translation>Zleva-do-prava</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="193"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="197"/>
       <source>Right-to-left (everywhere)</source>
       <translation>Zprava-doleva (všude)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="194"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="198"/>
       <source>Right-to-left (everywhere except feed list)</source>
       <translation>Zprava-doleva (všude kromě seznamu kanálů)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="200"/>
       <source>Right-to-left (only in article viewer)</source>
       <translation>Zprava-doleva (pouze náhled zprávy)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="169"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="173"/>
       <source>Cannot save feed properties</source>
       <translation>Nelze uložit vlastnosti kanálu</translation>
     </message>
@@ -2283,7 +2283,7 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
       <translation>Chyba: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="95"/>
+      <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="99"/>
       <source>General</source>
       <translation>Obecné</translation>
     </message>
@@ -3263,22 +3263,22 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="431"/>
-      <source>There war an error when saving the filter: %1.</source>
-      <translation type="unfinished">There war an error when saving the filter: %1.</translation>
+      <source>There was an error when saving the filter: %1.</source>
+      <translation type="unfinished">There was an error when saving the filter: %1.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="436"/>
+      <source>There was an error when saving the filter: %1.
+
+Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
+      <translation type="unfinished">There was an error when saving the filter: %1.
+
+Maybe the filter title is not unique. If that&apos;s the case, then change it.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="435"/>
       <source>Filter was not saved</source>
       <translation type="unfinished">Filter was not saved</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="436"/>
-      <source>There war an error when saving the filter: %1.
-
-Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
-      <translation type="unfinished">There war an error when saving the filter: %1.
-
-Maybe the filter title is not unique. If that&apos;s the case, then change it.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="657"/>
@@ -3510,6 +3510,24 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="516"/>
       <source>Contents</source>
       <translation>Obsah</translation>
+    </message>
+  </context>
+  <context>
+    <name>FormNextcloudFeedDetails</name>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/formnextcloudfeeddetails.cpp" line="38"/>
+      <source>Feed added</source>
+      <translation>Kanál přidán</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/formnextcloudfeeddetails.cpp" line="39"/>
+      <source>Feed was added, refreshing feed tree...</source>
+      <translation>Kanál byl přidán, obnovuji seznam kanálů...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/formnextcloudfeeddetails.cpp" line="51"/>
+      <source>General</source>
+      <translation>Obecné</translation>
     </message>
   </context>
   <context>
@@ -3871,27 +3889,27 @@ Musíte restartovat manuálně.</translation>
   <context>
     <name>FormTtRssFeedDetails</name>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="46"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
       <source>Feed added</source>
       <translation>Kanál přidán</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="61"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="48"/>
+      <source>Feed was added, refreshing feed tree...</source>
+      <translation>Kanál byl přidán, obnovuji seznam kanálů...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="64"/>
       <source>General</source>
       <translation>Obecné</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="62"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="65"/>
       <source>Auth</source>
       <translation>Autorizace</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
-      <source>Feed was added, obtaining new tree of feeds now.</source>
-      <translation>Kanál byl přidán, spouštím obnovení seznamu kanálu.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="52"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="54"/>
       <source>API returned error code %1</source>
       <translation>API vrátilo chybový kód %1</translation>
     </message>
@@ -6353,6 +6371,67 @@ Tokeny vyprší: %2</translation>
     </message>
   </context>
   <context>
+    <name>NextcloudFeedDetails</name>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="14"/>
+      <source>Form</source>
+      <translation>Formulář</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="20"/>
+      <source>Parent folder</source>
+      <translation>Nadřazená složka</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="30"/>
+      <source>Select parent item for your feed.</source>
+      <translation>Zvolte nadřazenou kategorii pro Váš kanál.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="46"/>
+      <source>URL</source>
+      <translation>URL</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="11"/>
+      <source>Full feed URL including scheme</source>
+      <translation>Plné URL zadejte sem</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="12"/>
+      <source>Provide URL for your feed.</source>
+      <translation>Zvolte url Vašeho kanálu.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="21"/>
+      <source>The URL is ok.</source>
+      <translation>URL je v pořádku.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="27"/>
+      <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+      <translation>URL nemá standardní tvar. Začíná vaše URL na &quot;http://&quot; či &quot;https://&quot;?</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="31"/>
+      <source>The URL is empty.</source>
+      <translation>URL je prázdná.</translation>
+    </message>
+  </context>
+  <context>
+    <name>NextcloudServiceRoot</name>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="202"/>
+      <source>Cannot add item</source>
+      <translation>Nelze přidat položku</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="203"/>
+      <source>Cannot add feed because another critical operation is ongoing.</source>
+      <translation>Nelze přidat kanál, protože probíhá jiná kritická operace.</translation>
+    </message>
+  </context>
+  <context>
     <name>OAuth2Service</name>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="90"/>
@@ -7669,7 +7748,7 @@ File filter for external e-mail selection dialog.</extracomment>
   <context>
     <name>SettingsFeedsMessages</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="306"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="309"/>
       <source>Select new font</source>
       <translation>Vybrat písmo</translation>
     </message>
@@ -7723,12 +7802,12 @@ To může výrazně zrychlit aplikaci, pokud máte stovky tisíc článků, ale 
       <translation>se zpožděním</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="90"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="93"/>
       <source>days (turned off)</source>
       <translation>dnů (vypnuto)</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="93"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="96"/>
       <source>day(s)</source>
       <translation>
         <numerusform>den</numerusform>
@@ -7738,299 +7817,305 @@ To může výrazně zrychlit aplikaci, pokud máte stovky tisíc článků, ale 
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="99"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="102"/>
       <source> = unchanged size</source>
       <translation> = původní velikost</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="669"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="676"/>
       <source>Feed fetching</source>
       <translation>Stahování kanálů</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="660"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="667"/>
       <source>Fetch all articles on startup with initial delay of</source>
       <translation>Při startu aplikace aktualizovat všechny kanály s úvodní prodlevou</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="661"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="668"/>
       <source>Auto-fetch articles for all feeds every</source>
       <translation>Stáhnout všechny kanály každých</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="662"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="669"/>
       <source>Only auto-fetch articles if application is unfocused</source>
       <translation>Automaticky stahovat kanály, jen pokud aplikace není na popředí</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="664"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="671"/>
       <source>Feed connection timeout</source>
       <translation>Časový limit stažení souboru kanálu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="666"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="673"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
       <translation>Tento časový limit označuje čas, který si stahovací komponenta vyhradí pro získání souboru každého kanálu. Pokud tento čas vyprší a soubor doposud nebyl získán, tak se aktualizace kanálu ukončí a přejde se na další kanál.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="668"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="675"/>
       <source> ms</source>
       <translation>ms</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="663"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="670"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
       <translation>Podpora pro velmi rychlý aktualizační cyklus kanálů (pod 10 vteřin)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="682"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="690"/>
       <source>Feeds list</source>
       <translation>Seznam kanálů</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="504"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="670"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="699"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="511"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="677"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="707"/>
       <source>Row height</source>
       <translation>Výška položky seznamu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="175"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="671"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="678"/>
       <source>Feed list font</source>
       <translation>Písmo seznamu kanálů</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="187"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="415"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="669"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="672"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="692"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="706"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="422"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="676"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="679"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="700"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="714"/>
       <source>Font preview</source>
       <translation>Náhled písma</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="197"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="425"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="679"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="673"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="693"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="707"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="432"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="686"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="680"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="701"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="715"/>
       <source>&amp;Change font</source>
       <translation>&amp;Změnit písmo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="222"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="674"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="681"/>
       <source>Article count format</source>
       <translation>Formát počtu zpráv</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="248"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="675"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="682"/>
       <source>Article count alignment</source>
       <translation>Zarovnání počtu článků</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="261"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="676"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="683"/>
       <source>Hide article counts if there are no unread articles</source>
       <translation>Skrýt počet zpráv, pokud je nulový</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="275"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="678"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="685"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
       <translation>Povolit pouze základní klávesové zkratky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="282"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="679"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="686"/>
       <source>Display tooltips for feeds and articles</source>
       <translation>Zobrazovat tooltipy</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="289"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="680"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="687"/>
       <source>Strikethrough disabled feed titles</source>
       <translation>Proškrtnout vypnuté kanály</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="302"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="681"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="688"/>
       <source>Also always show article counts from labels and important articles</source>
       <translation type="unfinished">Also always show article counts from labels and important articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="743"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="711"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="309"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="689"/>
+      <source>Propagate feed state to parent nodes</source>
+      <translation type="unfinished">Propagate feed state to parent nodes</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="750"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="719"/>
       <source>Mark articles read after they are opened externally (in browser) or internally (in new tab)</source>
       <translation>Označit články jako přečtené po otevření externě (v prohlížeči) nebo interně (v nové kartě)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="750"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="712"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="757"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="720"/>
       <source>Display feed icon in &quot;Feed&quot; column</source>
       <translation type="unfinished">Display feed icon in &quot;Feed&quot; column</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="268"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="677"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="684"/>
       <source>Update feed list during feed fetching</source>
       <translation>Aktualizovat seznam kanálů během stahování</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="310"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="695"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="317"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="703"/>
       <source>Articles</source>
       <translation>Zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="316"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="683"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="323"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="691"/>
       <source>Remove all read articles from all feeds on application exit</source>
       <translation>Vymazat všechny přečtené zprávy, když se aplikace vypíná</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="330"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="685"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="337"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="693"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
       <translation>Při aktualizaci zpráv ignorovat změny v těle zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="351"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="688"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="358"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="696"/>
       <source>Internal article viewer</source>
       <translation>Zabudovaný prohlížeč zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="453"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="694"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="460"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="702"/>
       <source>Mark existing article unread when its updated version is fetched from the feed</source>
       <translation>Označit existující článek jako nepřečtený, když je z kanálu stažena jeho aktualizovaná verze</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="467"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="696"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="474"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="704"/>
       <source>Unread article icon type</source>
       <translation>Typ indikace nepřečtených článků</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="588"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="702"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="595"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="710"/>
       <source>Use custom date/time format for dates-only</source>
       <translation>Použít vlastní formát datumu/času pouze pro data</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="712"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="708"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="719"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="716"/>
       <source>Upon article selection, mark as read</source>
       <translation>Při výběru článku označit jako přečtené</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="719"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="709"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="726"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="717"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
       <translation>Přepnout seznam článků na RTL rozložení, pokud jsou všechny vybrané kanály RTL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="726"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="710"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="733"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="718"/>
       <source>Use articles lazy-loading</source>
       <translation>Použít líné načítání článků</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="344"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="687"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="351"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="695"/>
       <source>Bring application window to front once article is opened in external web browser</source>
       <translation>Při otevření zprávy v ext. webovém prohlížeči následně přepnout focus zpět na aplikaci</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="409"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="691"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="416"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="699"/>
       <source>Article browser font</source>
       <translation>Písmo prohlížeče zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="337"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="686"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="344"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="694"/>
       <source>Fixup date/time of articles which are in the future</source>
       <translation>Opravovat čas článků, který je chybně z budoucnosti</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="357"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="689"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="364"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
       <source>Display attachments directly in article</source>
       <translation>Zobrazovat obrazové přílohy přímo v článku</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="323"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="684"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="330"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="692"/>
       <source>Keep article viewer always visible</source>
       <translation>Držet panel zobrazení detailu článku stále viditelný</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="366"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="690"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="373"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="698"/>
       <source>Limit height of attachments</source>
       <translation>Omezit výšku příloh</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="461"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="713"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="468"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="721"/>
       <source>Articles list</source>
       <translation>Seznam zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="480"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="487"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="705"/>
       <source>Keep article selection in the middle of the article list viewport</source>
       <translation>Udržovat výběr uprostřed seznamu kanálů</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="487"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="698"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="494"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="706"/>
       <source>Enable multiline items</source>
       <translation>Povolit víceřádkové zobrazení</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="533"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="700"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="540"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="708"/>
       <source>Top/bottom row padding</source>
       <translation>Horní/dolní padding textu v položkách</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="562"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="701"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="569"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="709"/>
       <source>Use custom date/time format</source>
       <translation>Vlastní formát datumu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="614"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="703"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="621"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="711"/>
       <source>Custom date/time format for today&apos;s articles</source>
       <translation>Vlastní formát datumu pro dnešní zprávy</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="657"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="705"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="664"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="713"/>
       <source>Article list font</source>
       <translation>Písmo seznamu zpráv</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="640"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="704"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="647"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="712"/>
       <source>Show relative time for articles not older than</source>
       <translation>Zobrazit relativní čas pro zprávy ne starší než</translation>
     </message>
@@ -8459,8 +8544,8 @@ Popis: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="51"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="95"/>
-      <source>Follow hyperlinks</source>
-      <translation type="unfinished">Follow hyperlinks</translation>
+      <source>Follow hyperlinks inside the application (do not open external web browser)</source>
+      <translation type="unfinished">Follow hyperlinks inside the application (do not open external web browser)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="32"/>
@@ -10326,12 +10411,12 @@ Poslední čas přihlášení: %4</translation>
       <translation type="unfinished">Copy file URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="350"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
       <source>Navigate to website manually</source>
       <translation>Přejít na web ručně</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="354"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
       <translation>%1 nedokázal vaši stránku otevřít v systémovém webovém prohlížeči. Je třeba ji otevřít ručně.</translation>
     </message>
