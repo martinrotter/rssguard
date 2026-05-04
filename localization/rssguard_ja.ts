@@ -6487,7 +6487,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="619"/>
       <source>interesting stuff (highlighted)</source>
-      <translation>未読記事の色 (フォーカスがあるとき)</translation>
+      <translation>未読記事の色 (フォーカス時)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="622"/>
@@ -6497,7 +6497,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="625"/>
       <source>errored items (highlighted)</source>
-      <translation>エラーアイテムの色 (フォーカスがあるとき)</translation>
+      <translation>エラーアイテムの色 (フォーカス時)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="628"/>
@@ -6507,7 +6507,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="631"/>
       <source>items with new articles (highlighted)</source>
-      <translation>新しい記事があるアイテムの色 (フォーカスがあるとき)</translation>
+      <translation>新しい記事があるアイテムの色 (フォーカス時)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="634"/>
@@ -6522,12 +6522,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="640"/>
       <source>folders background</source>
-      <translation>フォルダーの背景</translation>
+      <translation>フォルダの背景</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="643"/>
       <source>folders background (highlighted</source>
-      <translation>フォルダの背景（フォーカスがあるとき）</translation>
+      <translation>フォルダの背景（フォーカス時）</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
