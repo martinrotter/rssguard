@@ -56,52 +56,52 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1165"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1167"/>
       <source>Application is already running.</source>
       <translation>应用程序已经在运行。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="574"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="576"/>
       <source>Output directory is not writable.</source>
       <translation>输出目录不可写。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="582"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="584"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>设置文件未成功复制到输出目录。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="601"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="603"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>未启动设置恢复。请确保输出目录可写。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1194"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1196"/>
       <source>Cannot add feed</source>
       <translation>无法添加订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1195"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1197"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>由于没有活跃的账户可以添加订阅源，因此无法添加订阅源。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1046"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1048"/>
       <source>Unread articles fetched</source>
       <translation>已获取未读文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="334"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="336"/>
       <source>Go to changelog</source>
       <translation>前往更新日志</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="328"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="330"/>
       <source>Welcome</source>
       <translation>欢迎</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="329"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="331"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -111,7 +111,7 @@ version by clicking this popup notification.</source>
 请点击此弹出通知，查看此版本所包含的新功能。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1164"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1166"/>
       <source>Already running</source>
       <translation>已在运行</translation>
     </message>
@@ -666,40 +666,40 @@ Maybe change used database name in settings and try again. Falling back to SQLit
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="343"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="347"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>使用全局设置，但全局自动获取文章已被禁用</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="367"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="371"/>
       <source>no errors</source>
       <translation>正常</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="373"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="377"/>
       <source>authentication error</source>
       <translation>身份验证错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="379"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="383"/>
       <source>network error</source>
       <translation>网络错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="329"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="333"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>禁用文章自动获取</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="340"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="344"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>使用全局设置 (%n 分钟后自动获取文章)</numerusform>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="354"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="358"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -707,27 +707,27 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="370"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="374"/>
       <source>has new articles</source>
       <translation>有新文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="376"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="380"/>
       <source>SQL database error</source>
       <translation>SQL 数据库错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="382"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="386"/>
       <source>parsing error</source>
       <translation>解析错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="385"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="389"/>
       <source>error</source>
       <translation>错误</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="455"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="459"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -2131,64 +2131,64 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
   <context>
     <name>FormFeedDetails</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="137"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="141"/>
       <source>Add new feed</source>
       <translation>添加新订阅源</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="170"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="174"/>
       <source>Cannot save changes: %1</source>
       <translation>无法保存修改：%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="141"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="145"/>
       <source>Edit &quot;%1&quot;</source>
       <translation>编辑 &quot;%1&quot;</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="146"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="150"/>
       <source>Edit %n feeds</source>
       <translation>
         <numerusform>编辑 %n 个订阅源</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="185"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="189"/>
       <source>Fetch articles using global interval</source>
       <translation>使用全局时间间隔获取文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="187"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="191"/>
       <source>Fetch articles every</source>
       <translation>定时获取文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="189"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="193"/>
       <source>Disable auto-fetching of articles</source>
       <translation>禁用文章的自动获取</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="192"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
       <source>Left-to-right</source>
       <translation>从左到右</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="193"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="197"/>
       <source>Right-to-left (everywhere)</source>
       <translation>从右到左（所有地方）</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="194"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="198"/>
       <source>Right-to-left (everywhere except feed list)</source>
       <translation>从右到左（除订阅源列表外的所有地方）</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="200"/>
       <source>Right-to-left (only in article viewer)</source>
       <translation>从右到左（仅文章查看器）</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="169"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="173"/>
       <source>Cannot save feed properties</source>
       <translation>无法保存订阅源属性</translation>
     </message>
@@ -2252,7 +2252,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>错误：%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="95"/>
+      <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="99"/>
       <source>General</source>
       <translation>一般</translation>
     </message>
@@ -3232,22 +3232,22 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="431"/>
-      <source>There war an error when saving the filter: %1.</source>
-      <translation type="unfinished">There war an error when saving the filter: %1.</translation>
+      <source>There was an error when saving the filter: %1.</source>
+      <translation type="unfinished">There was an error when saving the filter: %1.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="436"/>
+      <source>There was an error when saving the filter: %1.
+
+Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
+      <translation type="unfinished">There was an error when saving the filter: %1.
+
+Maybe the filter title is not unique. If that&apos;s the case, then change it.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="435"/>
       <source>Filter was not saved</source>
       <translation type="unfinished">Filter was not saved</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="436"/>
-      <source>There war an error when saving the filter: %1.
-
-Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
-      <translation type="unfinished">There war an error when saving the filter: %1.
-
-Maybe the filter title is not unique. If that&apos;s the case, then change it.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="657"/>
@@ -3479,6 +3479,24 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="516"/>
       <source>Contents</source>
       <translation>内容</translation>
+    </message>
+  </context>
+  <context>
+    <name>FormNextcloudFeedDetails</name>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/formnextcloudfeeddetails.cpp" line="38"/>
+      <source>Feed added</source>
+      <translation>Feed 已添加</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/formnextcloudfeeddetails.cpp" line="39"/>
+      <source>Feed was added, refreshing feed tree...</source>
+      <translation>新闻源已添加，刷新新闻源树...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/formnextcloudfeeddetails.cpp" line="51"/>
+      <source>General</source>
+      <translation>一般</translation>
     </message>
   </context>
   <context>
@@ -3841,27 +3859,27 @@ You have to restart manually.</source>
   <context>
     <name>FormTtRssFeedDetails</name>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="46"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
       <source>Feed added</source>
       <translation>Feed 已添加</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="61"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="48"/>
+      <source>Feed was added, refreshing feed tree...</source>
+      <translation>新闻源已添加，刷新新闻源树...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="64"/>
       <source>General</source>
       <translation>一般</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="62"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="65"/>
       <source>Auth</source>
       <translation>身份验证</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
-      <source>Feed was added, obtaining new tree of feeds now.</source>
-      <translation>添加了Feeds，现在获得了新的Feeds树。</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="52"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="54"/>
       <source>API returned error code %1</source>
       <translation>API返回错误代码%1</translation>
     </message>
@@ -6297,6 +6315,67 @@ Token 过期时间：%2</translation>
     </message>
   </context>
   <context>
+    <name>NextcloudFeedDetails</name>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="14"/>
+      <source>Form</source>
+      <translation>表单</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="20"/>
+      <source>Parent folder</source>
+      <translation>主文件夹</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="30"/>
+      <source>Select parent item for your feed.</source>
+      <translation>为 Feed 选择主项目。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="46"/>
+      <source>URL</source>
+      <translation>URL</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="11"/>
+      <source>Full feed URL including scheme</source>
+      <translation>完整的馈送URL，包括方案</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="12"/>
+      <source>Provide URL for your feed.</source>
+      <translation>为你的馈送提供URL。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="21"/>
+      <source>The URL is ok.</source>
+      <translation>URL 可用。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="27"/>
+      <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+      <translation>URL 不符合标准模式，请确认其是否以 &quot;http://&quot; 或 &quot;https://&quot; 开头。</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="31"/>
+      <source>The URL is empty.</source>
+      <translation>URL 为空。</translation>
+    </message>
+  </context>
+  <context>
+    <name>NextcloudServiceRoot</name>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="202"/>
+      <source>Cannot add item</source>
+      <translation>无法添加项目</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="203"/>
+      <source>Cannot add feed because another critical operation is ongoing.</source>
+      <translation>另一项关键操作正在执行，无法添加 Feed。</translation>
+    </message>
+  </context>
+  <context>
     <name>OAuth2Service</name>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="90"/>
@@ -7598,7 +7677,7 @@ File filter for external e-mail selection dialog.</extracomment>
   <context>
     <name>SettingsFeedsMessages</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="306"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="309"/>
       <source>Select new font</source>
       <translation>选择新字体</translation>
     </message>
@@ -7652,311 +7731,317 @@ This can tremendously speed up the application if you have hundreds of thousands
       <translation>有延迟</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="90"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="93"/>
       <source>days (turned off)</source>
       <translation>天（关闭）</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="93"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="96"/>
       <source>day(s)</source>
       <translation>
         <numerusform>天(s)</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="99"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="102"/>
       <source> = unchanged size</source>
       <translation> ＝大小未变</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="669"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="676"/>
       <source>Feed fetching</source>
       <translation>获取 Feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="660"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="667"/>
       <source>Fetch all articles on startup with initial delay of</source>
       <translation>在启动时获取所有文章，初始延迟为</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="661"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="668"/>
       <source>Auto-fetch articles for all feeds every</source>
       <translation>每隔一段时间自动获取所有Feeds的文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="662"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="669"/>
       <source>Only auto-fetch articles if application is unfocused</source>
       <translation>只在应用程序不集中时自动获取文章</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="664"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="671"/>
       <source>Feed connection timeout</source>
       <translation>Feed 连接超时时间</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="666"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="673"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
       <translation>连接超时是为新消息下载预留的时间间隔，如果超出这个时间，下载将被中断。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="668"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="675"/>
       <source> ms</source>
       <translation> 毫秒</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="663"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="670"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
       <translation>支持非常快的自动获取间隔（小于10秒）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="682"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="690"/>
       <source>Feeds list</source>
       <translation>Feeds列表</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="504"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="670"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="699"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="511"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="677"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="707"/>
       <source>Row height</source>
       <translation>行高</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="175"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="671"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="678"/>
       <source>Feed list font</source>
       <translation>Feed 列表字体</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="187"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="415"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="669"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="672"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="692"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="706"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="422"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="676"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="679"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="700"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="714"/>
       <source>Font preview</source>
       <translation>字体预览</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="197"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="425"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="679"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="673"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="693"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="707"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="432"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="686"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="680"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="701"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="715"/>
       <source>&amp;Change font</source>
       <translation>更改字体 (&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="222"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="674"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="681"/>
       <source>Article count format</source>
       <translation>文章计数格式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="248"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="675"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="682"/>
       <source>Article count alignment</source>
       <translation>文章计数对齐方式</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="261"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="676"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="683"/>
       <source>Hide article counts if there are no unread articles</source>
       <translation>如果没有未读文章，隐藏文章计数</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="275"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="678"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="685"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
       <translation>只允许用基本的键盘快捷键来操作feed/文章列表</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="282"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="679"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="686"/>
       <source>Display tooltips for feeds and articles</source>
       <translation>显示Feeds和文章的工具提示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="289"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="680"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="687"/>
       <source>Strikethrough disabled feed titles</source>
       <translation>在停用的订阅源标题上划横线</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="302"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="681"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="688"/>
       <source>Also always show article counts from labels and important articles</source>
       <translation>也总是显示标签和重要文章的文章数量</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="743"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="711"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="309"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="689"/>
+      <source>Propagate feed state to parent nodes</source>
+      <translation type="unfinished">Propagate feed state to parent nodes</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="750"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="719"/>
       <source>Mark articles read after they are opened externally (in browser) or internally (in new tab)</source>
       <translation>在外部(浏览器)或内部(新标签) 打开文章后标记文章为已读</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="750"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="712"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="757"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="720"/>
       <source>Display feed icon in &quot;Feed&quot; column</source>
       <translation>在 &quot;Feed&quot; 列中显示 Feed 图标</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="268"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="677"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="684"/>
       <source>Update feed list during feed fetching</source>
       <translation>抓取订阅源时更新订阅列表</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="310"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="695"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="317"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="703"/>
       <source>Articles</source>
       <translation>文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="316"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="683"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="323"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="691"/>
       <source>Remove all read articles from all feeds on application exit</source>
       <translation>在应用程序退出时，从所有Feeds中删除所有已读文章</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="330"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="685"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="337"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="693"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
       <translation>在获取新文章时，忽略文章正文的变化</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="351"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="688"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="358"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="696"/>
       <source>Internal article viewer</source>
       <translation>内部文章查看器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="453"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="694"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="460"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="702"/>
       <source>Mark existing article unread when its updated version is fetched from the feed</source>
       <translation>将现有文章标为未读，当从订阅源取得它的更新版本时</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="467"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="696"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="474"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="704"/>
       <source>Unread article icon type</source>
       <translation>未读文章图标类型</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="588"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="702"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="595"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="710"/>
       <source>Use custom date/time format for dates-only</source>
       <translation>仅限日期使用自定义日期/时间格式</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="712"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="708"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="719"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="716"/>
       <source>Upon article selection, mark as read</source>
       <translation>选中文章时标为已读</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="719"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="709"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="726"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="717"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
       <translation>切换文章列表为从右到左布局，如果所有选中的订阅源都是从右到左</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="726"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="710"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="733"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="718"/>
       <source>Use articles lazy-loading</source>
       <translation>使用文章懒加载</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="344"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="687"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="351"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="695"/>
       <source>Bring application window to front once article is opened in external web browser</source>
       <translation>用外部网络浏览器打开文章后，将应用程序窗口移至前面</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="409"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="691"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="416"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="699"/>
       <source>Article browser font</source>
       <translation>文章浏览器的字体</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="337"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="686"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="344"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="694"/>
       <source>Fixup date/time of articles which are in the future</source>
       <translation>修正未来文章的日期/时间</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="357"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="689"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="364"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
       <source>Display attachments directly in article</source>
       <translation>在文章中直接显示附件</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="323"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="684"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="330"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="692"/>
       <source>Keep article viewer always visible</source>
       <translation>始终显示文章查看器</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="366"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="690"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="373"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="698"/>
       <source>Limit height of attachments</source>
       <translation>限制附件高度</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="461"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="713"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="468"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="721"/>
       <source>Articles list</source>
       <translation>文章列表</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="480"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="487"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="705"/>
       <source>Keep article selection in the middle of the article list viewport</source>
       <translation>将文章选择保留在文章列表视窗的中间位置</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="487"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="698"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="494"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="706"/>
       <source>Enable multiline items</source>
       <translation>启用多行项目</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="533"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="700"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="540"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="708"/>
       <source>Top/bottom row padding</source>
       <translation>顶部/底部的行填充</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="562"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="701"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="569"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="709"/>
       <source>Use custom date/time format</source>
       <translation>使用自定义日期/时间格式</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="614"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="703"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="621"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="711"/>
       <source>Custom date/time format for today&apos;s articles</source>
       <translation>为今天的文章自定义日期/时间格式</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="657"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="705"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="664"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="713"/>
       <source>Article list font</source>
       <translation>文章列表字体</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="640"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="704"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="647"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="712"/>
       <source>Show relative time for articles not older than</source>
       <translation>显示相对时间的文章不早于</translation>
     </message>
@@ -8385,8 +8470,8 @@ Description: %3</source>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="51"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="95"/>
-      <source>Follow hyperlinks</source>
-      <translation>跟随超链接</translation>
+      <source>Follow hyperlinks inside the application (do not open external web browser)</source>
+      <translation type="unfinished">Follow hyperlinks inside the application (do not open external web browser)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="32"/>
@@ -10231,12 +10316,12 @@ Last login on: %4</source>
       <translation>复制文件 URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="350"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
       <source>Navigate to website manually</source>
       <translation>导航至网站</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="354"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
       <translation>%1无法用给定的URL启动你的网络浏览器，你需要在你的网络浏览器中手动打开以下网站URL。</translation>
     </message>

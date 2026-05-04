@@ -56,52 +56,52 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1165"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1167"/>
       <source>Application is already running.</source>
       <translation>Sovellus on jo käynnissä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="574"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="576"/>
       <source>Output directory is not writable.</source>
       <translation>Kohdehakemistoon ei voi kirjoittaa.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="582"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="584"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>Asetustiedoston kopiointi kohdehakemistoon epäonnistui.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="601"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="603"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Asetusten palauttamista ei aloitettu. Varmista, että kohdehakemistoon voi tallentaa.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1194"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1196"/>
       <source>Cannot add feed</source>
       <translation>Syötettä ei voi lisätä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1195"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1197"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Syötettä ei voi lisätä, sillä sellaista tiliä ei ole, jolle voitaisiin lisätä syötteitä.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1046"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1048"/>
       <source>Unread articles fetched</source>
       <translation>Lukemattomat artikkelit noudettu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="334"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="336"/>
       <source>Go to changelog</source>
       <translation>Siirry muutoslokiin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="328"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="330"/>
       <source>Welcome</source>
       <translation>Tervetuloa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="329"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="331"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -112,7 +112,7 @@ Tutustu tähän versioon sisältyviin UUSIIN ominaisuuksiin
 napsauttamalla tätä ilmoitusta.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1164"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1166"/>
       <source>Already running</source>
       <translation>Jo käynnissä</translation>
     </message>
@@ -669,33 +669,33 @@ Vaihda käyttämäsi tietokannan nimi asetuksissa ja yritä uudelleen. Palataan 
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="343"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="347"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>käyttää yleisasetuksia, mutta artikkelien yleinen automaatinen nouto on poistettu käytöstä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="367"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="371"/>
       <source>no errors</source>
       <translation>ei virheitä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="373"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="377"/>
       <source>authentication error</source>
       <translation>tunnistautumisvirhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="379"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="383"/>
       <source>network error</source>
       <translation>verkkovirhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="329"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="333"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>ei käytä artikkelien automaattista noutoa</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="340"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="344"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>käyttää yleisiä asetuksia (%n minuutti seuraavaan automaattiseen artikkelien noutoon)</numerusform>
@@ -703,7 +703,7 @@ Vaihda käyttämäsi tietokannan nimi asetuksissa ja yritä uudelleen. Palataan 
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="354"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="358"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -712,27 +712,27 @@ Vaihda käyttämäsi tietokannan nimi asetuksissa ja yritä uudelleen. Palataan 
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="370"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="374"/>
       <source>has new articles</source>
       <translation>sisältää uusia artikkeleja</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="376"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="380"/>
       <source>SQL database error</source>
       <translation>SQL-tietokantavirhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="382"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="386"/>
       <source>parsing error</source>
       <translation>jäsennysvirhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="385"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="389"/>
       <source>error</source>
       <translation>virhe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="455"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="459"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -2141,22 +2141,22 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormFeedDetails</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="137"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="141"/>
       <source>Add new feed</source>
       <translation>Lisää uusi syöte</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="170"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="174"/>
       <source>Cannot save changes: %1</source>
       <translation>Muutoksia ei voi tallentaa: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="141"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="145"/>
       <source>Edit &quot;%1&quot;</source>
       <translation>Muokkaa &quot;%1&quot;</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="146"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="150"/>
       <source>Edit %n feeds</source>
       <translation>
         <numerusform>Muokkaa %n syötettä</numerusform>
@@ -2164,42 +2164,42 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="185"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="189"/>
       <source>Fetch articles using global interval</source>
       <translation>Nouda artikkelit yleistä aikaväliä noudattaen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="187"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="191"/>
       <source>Fetch articles every</source>
       <translation>Nouda artikkelit joka</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="189"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="193"/>
       <source>Disable auto-fetching of articles</source>
       <translation>Poista käytöstä artikkelien automaattinen noutaminen</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="192"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
       <source>Left-to-right</source>
       <translation>Vasemmalta oikealle</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="193"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="197"/>
       <source>Right-to-left (everywhere)</source>
       <translation>Oikealta vasemmalle (kaikkialla)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="194"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="198"/>
       <source>Right-to-left (everywhere except feed list)</source>
       <translation>Oikealta vasemmalle (muualla kuin syöteluettelossa)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="196"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="200"/>
       <source>Right-to-left (only in article viewer)</source>
       <translation>Oikealta vasemmalle (vain artikkelien lukuikkunassa)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="169"/>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.cpp" line="173"/>
       <source>Cannot save feed properties</source>
       <translation>Syötteen ominaisuuksia ei voi tallentaa</translation>
     </message>
@@ -2263,7 +2263,7 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
       <translation>Virhe: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="95"/>
+      <location filename="../src/librssguard-greader/src/gui/formgreaderfeeddetails.cpp" line="99"/>
       <source>General</source>
       <translation>Yleiset</translation>
     </message>
@@ -3243,22 +3243,22 @@ Kuvaketeemojen pääkansio -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="431"/>
-      <source>There war an error when saving the filter: %1.</source>
-      <translation type="unfinished">There war an error when saving the filter: %1.</translation>
+      <source>There was an error when saving the filter: %1.</source>
+      <translation type="unfinished">There was an error when saving the filter: %1.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="436"/>
+      <source>There was an error when saving the filter: %1.
+
+Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
+      <translation type="unfinished">There was an error when saving the filter: %1.
+
+Maybe the filter title is not unique. If that&apos;s the case, then change it.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="435"/>
       <source>Filter was not saved</source>
       <translation type="unfinished">Filter was not saved</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="436"/>
-      <source>There war an error when saving the filter: %1.
-
-Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
-      <translation type="unfinished">There war an error when saving the filter: %1.
-
-Maybe the filter title is not unique. If that&apos;s the case, then change it.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="657"/>
@@ -3490,6 +3490,24 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="516"/>
       <source>Contents</source>
       <translation>Sisältö</translation>
+    </message>
+  </context>
+  <context>
+    <name>FormNextcloudFeedDetails</name>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/formnextcloudfeeddetails.cpp" line="38"/>
+      <source>Feed added</source>
+      <translation>Syöte lisätty</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/formnextcloudfeeddetails.cpp" line="39"/>
+      <source>Feed was added, refreshing feed tree...</source>
+      <translation>Syöte lisättiin. Päivitetään syötteen hakemistorakennetta...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/formnextcloudfeeddetails.cpp" line="51"/>
+      <source>General</source>
+      <translation>Yleiset</translation>
     </message>
   </context>
   <context>
@@ -3851,27 +3869,27 @@ Sinun tulee käynnistää sovellus uudelleen itse.</translation>
   <context>
     <name>FormTtRssFeedDetails</name>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="46"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
       <source>Feed added</source>
       <translation>Syöte lisätty</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="61"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="48"/>
+      <source>Feed was added, refreshing feed tree...</source>
+      <translation>Syöte lisättiin. Päivitetään syötteen hakemistorakennetta...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="64"/>
       <source>General</source>
       <translation>Yleiset</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="62"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="65"/>
       <source>Auth</source>
       <translation>Todennus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="47"/>
-      <source>Feed was added, obtaining new tree of feeds now.</source>
-      <translation>Syöte lisättiin. Haetaan syötteiden hakemistorakenne.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="52"/>
+      <location filename="../src/librssguard-ttrss/src/gui/formttrssfeeddetails.cpp" line="54"/>
       <source>API returned error code %1</source>
       <translation>API palautti virhekoodin %1</translation>
     </message>
@@ -6318,6 +6336,67 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
     </message>
   </context>
   <context>
+    <name>NextcloudFeedDetails</name>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="14"/>
+      <source>Form</source>
+      <translation>Lomake</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="20"/>
+      <source>Parent folder</source>
+      <translation>Pääkansio</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="30"/>
+      <source>Select parent item for your feed.</source>
+      <translation>Valitse syötteelle ylätason kohde.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.ui" line="46"/>
+      <source>URL</source>
+      <translation>Verkko-osoite</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="11"/>
+      <source>Full feed URL including scheme</source>
+      <translation>Syötteen koko verkko-osoite skeemoineen</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="12"/>
+      <source>Provide URL for your feed.</source>
+      <translation>Anna syötteen verkko-osoite.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="21"/>
+      <source>The URL is ok.</source>
+      <translation>Verkko-osoite on OK.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="27"/>
+      <source>The URL does not meet standard pattern. Does your URL start with &quot;http://&quot; or &quot;https://&quot; prefix.</source>
+      <translation>Verkko-osoite ei ole vakiomuotoinen. Varmista, että osoitteen alussa on etuliite http:// tai https://.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/gui/nextcloudfeeddetails.cpp" line="31"/>
+      <source>The URL is empty.</source>
+      <translation>Verkko-osoite on tyhjä.</translation>
+    </message>
+  </context>
+  <context>
+    <name>NextcloudServiceRoot</name>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="202"/>
+      <source>Cannot add item</source>
+      <translation>Tietuetta ei voi lisätä</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-nextcloud/src/nextcloudserviceroot.cpp" line="203"/>
+      <source>Cannot add feed because another critical operation is ongoing.</source>
+      <translation>Syötettä ei voi lisätä, koska toinen tärkeä toiminto on kesken.</translation>
+    </message>
+  </context>
+  <context>
     <name>OAuth2Service</name>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="90"/>
@@ -7624,7 +7703,7 @@ File filter for external e-mail selection dialog.</extracomment>
   <context>
     <name>SettingsFeedsMessages</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="306"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="309"/>
       <source>Select new font</source>
       <translation>Valitse uusi fontti</translation>
     </message>
@@ -7678,12 +7757,12 @@ Tämä voi nopeuttaa sovellusta merkittävästi, jos artikkeleja on satojatuhans
       <translation>viiveellä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="90"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="93"/>
       <source>days (turned off)</source>
       <translation>päivää (poissa käytöstä)</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="93"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="96"/>
       <source>day(s)</source>
       <translation>
         <numerusform>päivä</numerusform>
@@ -7691,299 +7770,305 @@ Tämä voi nopeuttaa sovellusta merkittävästi, jos artikkeleja on satojatuhans
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="99"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="102"/>
       <source> = unchanged size</source>
       <translation> = muuttumaton koko</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="669"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="676"/>
       <source>Feed fetching</source>
       <translation>Syötteiden nouto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="660"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="667"/>
       <source>Fetch all articles on startup with initial delay of</source>
       <translation>Nouda kaikki artikkelit käynnistettäessä käynnistysviiveellä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="661"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="668"/>
       <source>Auto-fetch articles for all feeds every</source>
       <translation>Nouda syötteiden artikkelit automaattisesti joka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="662"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="669"/>
       <source>Only auto-fetch articles if application is unfocused</source>
       <translation>Nouda artikkelit automaattisesti vain, jos sovellus on passiivisena</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="664"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="671"/>
       <source>Feed connection timeout</source>
       <translation>Syötteen yhteyden aikakatkaisu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="666"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="673"/>
       <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
       <translation>Yhteyden aikakatkaisu tarkoittaa syötteen uusien viestien lataamisväliä. Kun kyseinen aika on kulunut umpeen, lataus keskeytetään.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="668"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="675"/>
       <source> ms</source>
       <translation> ms</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="663"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="670"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
       <translation>Tukee erittäin lyhyitä automaattisen noudon aikavälejä (alle 10 sekuntia)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="132"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="682"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="690"/>
       <source>Feeds list</source>
       <translation>Syöteluettelo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="504"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="670"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="699"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="511"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="677"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="707"/>
       <source>Row height</source>
       <translation>Rivin korkeus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="175"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="671"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="678"/>
       <source>Feed list font</source>
       <translation>Syötelistan fontti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="187"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="415"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="669"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="672"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="692"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="706"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="422"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="676"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="679"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="700"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="714"/>
       <source>Font preview</source>
       <translation>Fontin esikatselu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="197"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="425"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="679"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="673"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="693"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="707"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="432"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="686"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="680"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="701"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="715"/>
       <source>&amp;Change font</source>
       <translation>&amp;Vaihda fontti</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="222"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="674"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="681"/>
       <source>Article count format</source>
       <translation>Artikkelimäärän muoto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="248"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="675"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="682"/>
       <source>Article count alignment</source>
       <translation>Artikkelilaskurin kohdistus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="261"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="676"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="683"/>
       <source>Hide article counts if there are no unread articles</source>
       <translation>Piilota artikkelimäärä, jos lukemattomia artikkeleja ei ole</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="275"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="678"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="685"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
       <translation>Salli syöte-/artikkeliluettelossa vain tavallisimmat pikakomennot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="282"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="679"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="686"/>
       <source>Display tooltips for feeds and articles</source>
       <translation>Näytä syötteille ja artikkeleille vain työkaluvihjeitä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="289"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="680"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="687"/>
       <source>Strikethrough disabled feed titles</source>
       <translation>Yliviivaa käytöstä poistetut syötteiden otsikot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="302"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="681"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="688"/>
       <source>Also always show article counts from labels and important articles</source>
       <translation type="unfinished">Also always show article counts from labels and important articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="743"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="711"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="309"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="689"/>
+      <source>Propagate feed state to parent nodes</source>
+      <translation type="unfinished">Propagate feed state to parent nodes</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="750"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="719"/>
       <source>Mark articles read after they are opened externally (in browser) or internally (in new tab)</source>
       <translation>Merkitse artikkelit luetuiksi, kun ne avataan ulkoisesti (selaimessa) tai sisäisesti (uudella välilehdellä)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="750"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="712"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="757"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="720"/>
       <source>Display feed icon in &quot;Feed&quot; column</source>
       <translation type="unfinished">Display feed icon in &quot;Feed&quot; column</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="268"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="677"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="684"/>
       <source>Update feed list during feed fetching</source>
       <translation>Päivitä syöteluettelo noutamisen aikana</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="310"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="695"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="317"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="703"/>
       <source>Articles</source>
       <translation>Artikkelit</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="316"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="683"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="323"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="691"/>
       <source>Remove all read articles from all feeds on application exit</source>
       <translation>Poista kaikki luetut artikkelit kaikista syötteistä, kun sovellus suljetaan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="330"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="685"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="337"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="693"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
       <translation>Ohita artikkelin runkoon tehdyt muutokset, kun uusia artikkeleja noudetaan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="351"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="688"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="358"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="696"/>
       <source>Internal article viewer</source>
       <translation>Sisäinen lukuikkuna</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="453"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="694"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="460"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="702"/>
       <source>Mark existing article unread when its updated version is fetched from the feed</source>
       <translation>Merkitse olemassa oleva artikkeli lukemattomaksi, kun sen päivitetty versio noudetaan syötteestä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="467"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="696"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="474"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="704"/>
       <source>Unread article icon type</source>
       <translation>Lukemattomien artikkelien kuvaketyyppi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="588"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="702"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="595"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="710"/>
       <source>Use custom date/time format for dates-only</source>
       <translation>Käytä mukautettua päivämäärän ja ajan muotoa vain päivämäärille</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="712"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="708"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="719"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="716"/>
       <source>Upon article selection, mark as read</source>
       <translation>Merkitse artikkeli luetuksi, kun se valitaan</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="719"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="709"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="726"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="717"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
       <translation>Muuta artikkeliluettelo RTL-muotoon, jos kaikki valitut syötteet ovat RTL-muotoisia</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="726"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="710"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="733"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="718"/>
       <source>Use articles lazy-loading</source>
       <translation>Käytä artikkelien hidasta latausta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="344"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="687"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="351"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="695"/>
       <source>Bring application window to front once article is opened in external web browser</source>
       <translation>Tuo sovellusikkuna eteen, kun artikkeli avataan ulkoisessa selaimessa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="409"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="691"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="416"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="699"/>
       <source>Article browser font</source>
       <translation>Artikkeliselaimen kirjasintyyppi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="337"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="686"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="344"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="694"/>
       <source>Fixup date/time of articles which are in the future</source>
       <translation>Korjaa tulevaisuuteen merkittyjen artikkelien päivämäärä/kellonaika</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="357"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="689"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="364"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
       <source>Display attachments directly in article</source>
       <translation>Näytä liitteet suoraan artikkelissa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="323"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="684"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="330"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="692"/>
       <source>Keep article viewer always visible</source>
       <translation>Pidä artikkelien lukuikkuna aina näkyvissä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="366"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="690"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="373"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="698"/>
       <source>Limit height of attachments</source>
       <translation>Rajoita liitteiden korkeutta</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="461"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="713"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="468"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="721"/>
       <source>Articles list</source>
       <translation>Artikkeliluettelo</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="480"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="487"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="705"/>
       <source>Keep article selection in the middle of the article list viewport</source>
       <translation>Pidä artikkelinvalinta artikkeliluettelonäkymän keskellä</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="487"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="698"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="494"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="706"/>
       <source>Enable multiline items</source>
       <translation>Ota moniriviset kohteet käyttöön</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="533"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="700"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="540"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="708"/>
       <source>Top/bottom row padding</source>
       <translation>Ylä- tai alarivin täyttö</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="562"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="701"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="569"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="709"/>
       <source>Use custom date/time format</source>
       <translation>Käytä mukautettua päivämäärän ja ajan muotoa</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="614"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="703"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="621"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="711"/>
       <source>Custom date/time format for today&apos;s articles</source>
       <translation>Mukautettu päivämäärän ja ajan muoto tämän päivän artikkeleille</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="657"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="705"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="664"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="713"/>
       <source>Article list font</source>
       <translation>Artikkeliluettelon kirjasintyyppi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="640"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="704"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="647"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="712"/>
       <source>Show relative time for articles not older than</source>
       <translation>Näytä suhteellinen aika artikkeleille, joiden enimmäisikä on</translation>
     </message>
@@ -8412,8 +8497,8 @@ Kuvaus: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="51"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="95"/>
-      <source>Follow hyperlinks</source>
-      <translation type="unfinished">Follow hyperlinks</translation>
+      <source>Follow hyperlinks inside the application (do not open external web browser)</source>
+      <translation type="unfinished">Follow hyperlinks inside the application (do not open external web browser)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="32"/>
@@ -10265,12 +10350,12 @@ Viimeisin kirjautuminen: %4</translation>
       <translation type="unfinished">Copy file URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="350"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
       <source>Navigate to website manually</source>
       <translation>Siirry sivustolle manuaalisesti</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="354"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URL in your web browser manually.</source>
       <translation>%1 ei pystynyt käynnistämään verkkoselainta annetulla verkko-osoitteella. Sinun on avattava alla oleva sivuston osoite manuaalisesti.</translation>
     </message>
