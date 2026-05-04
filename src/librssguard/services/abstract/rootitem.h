@@ -243,7 +243,7 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     VisualStatus visualStatus() const;
     void recalculateVisualStatusFromChildren();
 
-    void recalculateVisualStateRecursively();
+    // void recalculateVisualStateRecursively();
     void recalculateVisualStateUpwards();
 
   private:

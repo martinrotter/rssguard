@@ -85,6 +85,9 @@ void SettingsFeedsMessages::loadUi() {
   connect(m_ui->m_checkShowFeedIconInFeedColumn, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkShowFeedIconInFeedColumn, &QCheckBox::toggled, this, &SettingsFeedsMessages::requireRestart);
 
+  connect(m_ui->m_cbPropagateFeedListStates, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_cbPropagateFeedListStates, &QCheckBox::toggled, this, &SettingsFeedsMessages::requireRestart);
+
   connect(m_ui->m_spinRelativeArticleTime, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
     if (value <= 0) {
       m_ui->m_spinRelativeArticleTime->setSuffix(QSL(" ") + tr("days (turned off)"));
@@ -319,6 +322,8 @@ MessagesView::ArticleMarkingPolicy SettingsFeedsMessages::selectedArticleMarking
 void SettingsFeedsMessages::loadSettings() {
   onBeginLoadSettings();
 
+  m_ui->m_cbPropagateFeedListStates
+    ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::PropagateFeedListStates)).toBool());
   m_ui->m_checkArticleListLazyLoading
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::ArticleListLazyLoading)).toBool());
   m_ui->m_cbUnreadWhenUpdated
@@ -454,6 +459,7 @@ void SettingsFeedsMessages::loadSettings() {
 void SettingsFeedsMessages::saveSettings() {
   onBeginSaveSettings();
 
+  settings()->setValue(GROUP(Feeds), Feeds::PropagateFeedListStates, m_ui->m_cbPropagateFeedListStates->isChecked());
   settings()->setValue(GROUP(Messages),
                        Messages::ArticleListLazyLoading,
                        m_ui->m_checkArticleListLazyLoading->isChecked());

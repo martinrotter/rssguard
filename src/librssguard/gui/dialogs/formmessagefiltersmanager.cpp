@@ -428,12 +428,12 @@ void FormMessageFiltersManager::updateItemFromFilter(QListWidgetItem* item,
   }
   else {
     item->setIcon(qApp->icons()->fromTheme(QSL("dialog-error")));
-    item->setToolTip(tr("There war an error when saving the filter: %1.").arg(error));
+    item->setToolTip(tr("There was an error when saving the filter: %1.").arg(error));
     item->setForeground(QBrush(qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError).value<QColor>()));
 
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          GuiMessage(tr("Filter was not saved"),
-                                    tr("There war an error when saving the filter: %1.\n\n"
+                                    tr("There was an error when saving the filter: %1.\n\n"
                                        "Maybe the filter title is not unique. If that's the case, then change it.")
                                       .arg(error),
                                     QSystemTrayIcon::MessageIcon::Critical),

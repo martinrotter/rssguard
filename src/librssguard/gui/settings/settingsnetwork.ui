@@ -48,7 +48,7 @@
        <item row="0" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbFollowHyperlinks">
          <property name="text">
-          <string>Follow hyperlinks</string>
+          <string>Follow hyperlinks inside the application (do not open external web browser)</string>
          </property>
         </widget>
        </item>

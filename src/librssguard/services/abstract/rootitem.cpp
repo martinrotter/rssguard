@@ -678,6 +678,7 @@ RootItem::VisualStatus RootItem::visualStatus() const {
   return m_visualStatus;
 }
 
+/*
 void RootItem::recalculateVisualStateRecursively() {
   for (RootItem* child : childItems()) {
     child->recalculateVisualStateRecursively();
@@ -685,6 +686,7 @@ void RootItem::recalculateVisualStateRecursively() {
 
   recalculateVisualStatusFromChildren();
 }
+*/
 
 void RootItem::recalculateVisualStateUpwards() {
   RootItem* item = this;

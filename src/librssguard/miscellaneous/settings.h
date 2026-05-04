@@ -95,6 +95,9 @@ namespace Feeds {
   KEY AutoUpdateInterval;
   VALUE(int) AutoUpdateIntervalDef;
 
+  KEY PropagateFeedListStates;
+  VALUE(bool) PropagateFeedListStatesDef;
+
   KEY AutoUpdateEnabled;
   VALUE(bool) AutoUpdateEnabledDef;
 

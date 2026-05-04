@@ -71,6 +71,9 @@ DVALUE(bool) Feeds::PauseFeedFetchingDef = false;
 DKEY Feeds::AutoUpdateInterval = "auto_update_interval";
 DVALUE(int) Feeds::AutoUpdateIntervalDef = DEFAULT_AUTO_UPDATE_INTERVAL;
 
+DKEY Feeds::PropagateFeedListStates = "propagate_feed_list_states";
+DVALUE(bool) Feeds::PropagateFeedListStatesDef = true;
+
 DKEY Feeds::AutoUpdateEnabled = "auto_update_enabled";
 DVALUE(bool) Feeds::AutoUpdateEnabledDef = false;
 

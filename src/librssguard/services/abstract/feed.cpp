@@ -255,6 +255,10 @@ void Feed::setStatus(Feed::Status status, const QString& status_text) {
   m_status = status;
   m_statusString = status_text;
 
+  if (!qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::PropagateFeedListStates)).toBool()) {
+    return;
+  }
+
   recalculateVisualStateUpwards();
 }
 
