@@ -10,15 +10,18 @@ EXTRA_PACKAGES="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImage
 pacman-key --init
 pacman -Syy --noconfirm
 pacman -S --noconfirm archlinux-keyring
-pacman-key --recv-keys bd2ac8c5e989490c --keyserver keyserver.ubuntu.com
-pacman-key --lsign-key bd2ac8c5e989490c
 
-cat >> /etc/pacman.conf <<'EOF'
+if [[ "$use_qt5" == "ON" ]]; then
+    pacman-key --recv-keys bd2ac8c5e989490c --keyserver keyserver.ubuntu.com
+    pacman-key --lsign-key bd2ac8c5e989490c
+
+    cat >> /etc/pacman.conf <<'EOF'
 
 [arcanisrepo]
 Server = https://repo.arcanis.me/arcanisrepo/x86_64
 SigLevel = DatabaseRequired PackageNever TrustedOnly
 EOF
+fi
 
 pacman -Syy --noconfirm
 
