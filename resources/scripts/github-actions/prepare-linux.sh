@@ -8,13 +8,13 @@ EXTRA_PACKAGES="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImage
 pacman-key --init
 pacman -Syy --noconfirm
 pacman -S --noconfirm archlinux-keyring
-pacman-key --recv-keys 72BF227DD76AE5BF --keyserver keyserver.ubuntu.com
-pacman-key --lsign-key 72BF227DD76AE5BF
+pacman-key --recv-keys bd2ac8c5e989490c --keyserver keyserver.ubuntu.com
+pacman-key --lsign-key bd2ac8c5e989490c
 
 cat >> /etc/pacman.conf <<'EOF'
 
-[andontie-aur]
-Server = https://aur.andontie.net/$arch
+[arcanisrepo]
+Server = https://repo.arcanis.me/arcanisrepo/x86_64
 EOF
 
 pacman -Syy --noconfirm
