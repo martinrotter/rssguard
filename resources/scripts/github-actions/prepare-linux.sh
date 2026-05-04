@@ -15,6 +15,7 @@ cat >> /etc/pacman.conf <<'EOF'
 
 [arcanisrepo]
 Server = https://repo.arcanis.me/arcanisrepo/x86_64
+SigLevel = DatabaseRequired PackageNever TrustedOnly
 EOF
 
 pacman -Syy --noconfirm
