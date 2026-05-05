@@ -9,6 +9,7 @@ dism /Online /Add-Capability /CapabilityName:Tools.Graphics.DirectX~~~~0.0.1.0
 ```
 
 Added:
+* Option to keep feed list selection in the middle, switchable in settings. (#2238)
 * Nextcloud News plugin can now add feeds. (#2065)
 * Official Linux builds now include Qt 5 text-viewer and WebEngine-viewer variants again. (211a74757, 3795eb76d, 8e678c218, 55e4dbd1d)
 * Updated Japanese, Chinese Simplified and Crowdin-managed translations. (#2235, e6e3e171f, 1f2d25ac1)

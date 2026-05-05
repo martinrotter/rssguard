@@ -269,21 +269,21 @@
          </property>
         </widget>
        </item>
-       <item row="10" column="0" colspan="2">
+       <item row="11" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbListsRestrictedShortcuts">
          <property name="text">
           <string>Allow only basic keyboard shortcuts for feed/article list</string>
          </property>
         </widget>
        </item>
-       <item row="11" column="0" colspan="2">
+       <item row="12" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkShowTooltips">
          <property name="text">
           <string>Display tooltips for feeds and articles</string>
          </property>
         </widget>
        </item>
-       <item row="13" column="0" colspan="2">
+       <item row="14" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cbStrikethroughDisabledFeeds">
          <property name="text">
           <string>Strikethrough disabled feed titles</string>
@@ -307,6 +307,13 @@
         <widget class="QCheckBox" name="m_cbPropagateFeedListStates">
          <property name="text">
           <string>Propagate feed state to parent nodes</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkKeepFeedsInTheMiddle">
+         <property name="text">
+          <string>Keep feed selection in the middle of the feed list viewport</string>
          </property>
         </widget>
        </item>
@@ -799,6 +806,7 @@
   <tabstop>m_cbAlwaysShowCountsLabelImportant</tabstop>
   <tabstop>m_cbUpdateFeedListDuringFetching</tabstop>
   <tabstop>m_cbPropagateFeedListStates</tabstop>
+  <tabstop>m_checkKeepFeedsInTheMiddle</tabstop>
   <tabstop>m_cbListsRestrictedShortcuts</tabstop>
   <tabstop>m_checkShowTooltips</tabstop>
   <tabstop>m_cbStrikethroughDisabledFeeds</tabstop>

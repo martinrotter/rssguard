@@ -456,7 +456,10 @@ void FeedsView::changeFilter(FeedsProxyModel::FeedListFilter filter) {
 
   QTimer::singleShot(1000, this, [this]() {
     if (!selectionModel()->selectedRows().isEmpty()) {
-      scrollTo(selectionModel()->selectedRows().at(0), QAbstractItemView::ScrollHint::EnsureVisible);
+      scrollTo(selectionModel()->selectedRows().at(0),
+               qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::KeepCursorInCenter)).toBool()
+                 ? QAbstractItemView::ScrollHint::PositionAtCenter
+                 : QAbstractItemView::ScrollHint::EnsureVisible);
     }
   });
 }
@@ -688,7 +691,7 @@ void FeedsView::selectNextItem() {
 
   if (index_next.isValid()) {
     setCurrentIndex(index_next);
-    scrollTo(index_next, QAbstractItemView::ScrollHint::EnsureVisible);
+    // scrollTo(index_next, QAbstractItemView::ScrollHint::EnsureVisible);
   }
 
   setFocus();
@@ -699,7 +702,7 @@ void FeedsView::selectPreviousItem() {
 
   if (index_previous.isValid()) {
     setCurrentIndex(index_previous);
-    scrollTo(index_previous, QAbstractItemView::ScrollHint::EnsureVisible);
+    // scrollTo(index_previous, QAbstractItemView::ScrollHint::EnsureVisible);
   }
 
   setFocus();
@@ -717,7 +720,7 @@ void FeedsView::selectNextUnreadItem() {
 
   if (next_unread_row.isValid()) {
     setCurrentIndex(next_unread_row);
-    scrollTo(next_unread_row, QAbstractItemView::ScrollHint::EnsureVisible);
+    // scrollTo(next_unread_row, QAbstractItemView::ScrollHint::EnsureVisible);
     emit requestViewNextUnreadMessage();
   }
 }
@@ -826,7 +829,10 @@ void FeedsView::searchItems(SearchLineEdit::SearchMode mode,
     }
 
     if (!selectionModel()->selectedRows().isEmpty()) {
-      scrollTo(selectionModel()->selectedRows().at(0), QAbstractItemView::ScrollHint::EnsureVisible);
+      scrollTo(selectionModel()->selectedRows().at(0),
+               qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::KeepCursorInCenter)).toBool()
+                 ? QAbstractItemView::ScrollHint::PositionAtCenter
+                 : QAbstractItemView::ScrollHint::EnsureVisible);
     }
   });
 }
@@ -960,7 +966,10 @@ void FeedsView::revealItem(RootItem* item) {
   auto idx = m_proxyModel->mapFromSource(m_sourceModel->indexForItem(item));
 
   if (idx.isValid()) {
-    scrollTo(idx, QTreeView::ScrollHint::PositionAtCenter);
+    scrollTo(idx,
+             qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::KeepCursorInCenter)).toBool()
+               ? QAbstractItemView::ScrollHint::PositionAtCenter
+               : QAbstractItemView::ScrollHint::EnsureVisible);
     // selectionModel()->setCurrentIndex(idx, QItemSelectionModel::SelectionFlag::NoUpdate);
     // setFocus();
     m_delegate->flashItem(idx, this);
@@ -1020,6 +1029,10 @@ void FeedsView::selectionChanged(const QItemSelection& selected, const QItemSele
   if (!selectedIndexes().isEmpty() &&
       qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoExpandOnSelection)).toBool()) {
     expand(selectedIndexes().constFirst());
+  }
+
+  if (currentIndex().isValid() && qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::KeepCursorInCenter)).toBool()) {
+    scrollTo(currentIndex(), QAbstractItemView::ScrollHint::PositionAtCenter);
   }
 }
 

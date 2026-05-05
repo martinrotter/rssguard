@@ -293,7 +293,10 @@ void FeedMessageViewer::loadMessageToFeedAndArticleList(Feed* feed, const Messag
   }
 
   m_messagesView->setCurrentIndex(idx_map_msg);
-  m_messagesView->scrollTo(idx_map_msg, QAbstractItemView::ScrollHint::PositionAtCenter);
+  m_messagesView->scrollTo(idx_map_msg,
+                           qApp->settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool()
+                             ? QAbstractItemView::ScrollHint::PositionAtCenter
+                             : QAbstractItemView::ScrollHint::EnsureVisible);
 }
 
 void FeedMessageViewer::onMessageRemoved(RootItem* root) {

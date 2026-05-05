@@ -80,6 +80,9 @@ namespace Feeds {
   KEY CountAlignment;
   VALUE(Qt::AlignmentFlag) CountAlignmentDef;
 
+  KEY KeepCursorInCenter;
+  VALUE(bool) KeepCursorInCenterDef;
+
   KEY EnableTooltipsFeedsMessages;
   VALUE(bool) EnableTooltipsFeedsMessagesDef;
 

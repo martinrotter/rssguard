@@ -56,6 +56,9 @@ DVALUE(char*) Feeds::CountFormatDef = "%unread-%all";
 DKEY Feeds::CountAlignment = "count_alignment";
 DVALUE(Qt::AlignmentFlag) Feeds::CountAlignmentDef = Qt::AlignmentFlag::AlignCenter;
 
+DKEY Feeds::KeepCursorInCenter = "keep_cursor_center";
+DVALUE(bool) Feeds::KeepCursorInCenterDef = false;
+
 DKEY Feeds::EnableTooltipsFeedsMessages = "show_tooltips";
 DVALUE(bool) Feeds::EnableTooltipsFeedsMessagesDef = true;
 

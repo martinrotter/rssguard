@@ -139,6 +139,7 @@ void SettingsFeedsMessages::loadUi() {
 
   connect(m_ui->m_checkMarkReadAfterOpenExtInt, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkKeepFeedsInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbArticleViewerAlwaysVisible, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkMessagesDateTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkMessagesDateTimeFormat,
@@ -368,6 +369,8 @@ void SettingsFeedsMessages::loadSettings() {
                    .toBool());
   m_ui->m_checkKeppMessagesInTheMiddle
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool());
+  m_ui->m_checkKeepFeedsInTheMiddle
+    ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::KeepCursorInCenter)).toBool());
   m_ui->m_checkSwitchArticleListRtl
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::SwitchArticleListRtl)).toBool());
   m_ui->m_checkRemoveReadMessagesOnExit
@@ -521,7 +524,7 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages),
                        Messages::BringAppToFrontAfterMessageOpenedExternally,
                        m_ui->m_checkBringToForegroundAfterMsgOpened->isChecked());
-
+  settings()->setValue(GROUP(Feeds), Feeds::KeepCursorInCenter, m_ui->m_checkKeepFeedsInTheMiddle->isChecked());
   settings()->setValue(GROUP(Messages),
                        Messages::KeepCursorInCenter,
                        m_ui->m_checkKeppMessagesInTheMiddle->isChecked());
