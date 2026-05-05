@@ -1,3 +1,10 @@
+5.1.2
+-----
+Released on: 2026-05-XX
+
+Fixed:
+* Initial state of "web attributes" is properly set in WebEngine builds. (#2227)
+
 5.1.1
 -----
 Released on: 2026-05-05

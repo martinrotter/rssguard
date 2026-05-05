@@ -251,13 +251,13 @@ QAction* WebFactory::createEngineSettingsAction(QObject* parent,
                                                 const QString& title,
                                                 QWebEngineSettings::WebAttribute web_attribute) {
   auto* act = new QAction(title, parent);
-  auto enabled = !isByDefaultDisabledWebEngineAttribute(web_attribute);
+  auto default_enabled = !isByDefaultDisabledWebEngineAttribute(web_attribute);
+  auto enabled =
+    qApp->settings()->value(WebEngineAttributes::ID, QString::number(int(web_attribute)), default_enabled).toBool();
 
   act->setData(int(web_attribute));
   act->setCheckable(true);
-  act->setChecked(qApp->settings()
-                    ->value(WebEngineAttributes::ID, QString::number(int(web_attribute)), enabled)
-                    .toBool());
+  act->setChecked(enabled);
 
   m_webEngineProfile->settings()->setAttribute(web_attribute, enabled);
   connect(act, &QAction::toggled, this, &WebFactory::onWebEngineAttributeChanged);
