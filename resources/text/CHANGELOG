@@ -1,6 +1,6 @@
 5.1.1
 -----
-Released on: 2026-05-04
+Released on: 2026-05-05
 
 If your RSS Guard crashes on Windows upon article selection, then you might have some DirectX libraries missing. Install them with this command.
 
