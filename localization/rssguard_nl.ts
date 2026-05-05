@@ -7914,7 +7914,7 @@ Dit kan de applicatie enorm versnellen als je honderdduizenden artikelen hebt, m
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="316"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
       <source>Keep feed selection in the middle of the feed list viewport</source>
-      <translation type="unfinished">Keep feed selection in the middle of the feed list viewport</translation>
+      <translation>Feed selectie in het midden van het weergavegebied van de feed lijst behouden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="757"/>
