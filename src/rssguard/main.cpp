@@ -70,6 +70,11 @@ int main(int argc, char* argv[]) {
 
   qSetMessagePattern(QSL("time=\"%{time process}\" type=\"%{type}\" -> %{message}"));
 
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  qputenv("QT_LOGGING_RULES", "qt.webenginecontext=true;qt.webengine.compositor=true");
+  qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
+#endif
+
   // NOTE: https://github.com/martinrotter/rssguard/issues/1118
   // NOTE: https://bugreports.qt.io/browse/QTBUG-117612
   qputenv("QT_DISABLE_AUDIO_PREPARE", "1");
