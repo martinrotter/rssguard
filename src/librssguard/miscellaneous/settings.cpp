@@ -23,6 +23,18 @@ DKEY Web::ID = "web";
 DKEY Web::FollowLinks = "follow_links";
 DVALUE(bool) Web::FollowLinksDef = true;
 
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+DKEY Web::WebEngineChromiumFlags = "webengine_flags";
+
+#if defined(Q_OS_WIN)
+// Windows.
+DVALUE(QString) Web::WebEngineChromiumFlagsDef = "--enable-smooth-scrolling";
+#else
+// Everywhere else (Flatpak, Linux, macOS, OS/2, whatever).
+DVALUE(QString) Web::WebEngineChromiumFlagsDef = "--enable-smooth-scrolling";
+#endif
+#endif
+
 // Media player.
 KEY VideoPlayer::ID = "media_player";
 

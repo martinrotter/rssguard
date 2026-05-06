@@ -103,6 +103,17 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   initializeFileBasedLogging();
 
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  if (!m_cmdParser.isSet(QSL(CLI_FORCETEXT_LONG)) && qEnvironmentVariableIsEmpty("QTWEBENGINE_CHROMIUM_FLAGS")) {
+    QString flags = settings()->value(GROUP(Browser), SETTING(Web::WebEngineChromiumFlags)).toString().trimmed();
+
+    if (!flags.isEmpty()) {
+      qDebugNN << LOGSEC_CORE << "Setting QTWEBENGINE_CHROMIUM_FLAGS to" << QUOTE_W_SPACE_DOT(flags);
+      qputenv("QTWEBENGINE_CHROMIUM_FLAGS", flags.toLocal8Bit());
+    }
+  }
+#endif
+
   m_localization = new Localization(this);
 
   m_localization->loadActiveLanguage();

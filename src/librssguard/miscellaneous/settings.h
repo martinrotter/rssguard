@@ -47,6 +47,11 @@ namespace Web {
 
   KEY FollowLinks;
   VALUE(bool) FollowLinksDef;
+
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  KEY WebEngineChromiumFlags;
+  VALUE(QString) WebEngineChromiumFlagsDef;
+#endif
 } // namespace Web
 
 namespace WebEngineAttributes {

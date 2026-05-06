@@ -72,10 +72,6 @@ int main(int argc, char* argv[]) {
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   qputenv("QT_LOGGING_RULES", "qt.webenginecontext=true;qt.webengine.compositor=true");
-
-  if (qEnvironmentVariableIsEmpty("QTWEBENGINE_CHROMIUM_FLAGS")) {
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
-  }
 #endif
 
   // NOTE: https://github.com/martinrotter/rssguard/issues/1118
