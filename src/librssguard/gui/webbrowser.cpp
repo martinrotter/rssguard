@@ -69,7 +69,10 @@ void WebBrowser::bindWebView() {
   connect(qobj_viewer, SIGNAL(reloadPageEnabledChanged(bool)), m_actionReload, SLOT(setEnabled(bool)));
 
   connect(qobj_viewer, SIGNAL(linkMouseHighlighted(QUrl)), this, SLOT(onLinkMouseHighlighted(QUrl)));
-  connect(qobj_viewer, SIGNAL(linkMouseClicked(QUrl)), this, SLOT(onLinkMouseClicked(QUrl)));
+  connect(qobj_viewer,
+          SIGNAL(linkMouseClicked(QUrl, LinkNavigationHints)),
+          this,
+          SLOT(onLinkMouseClicked(QUrl, LinkNavigationHints)));
   connect(qobj_viewer, SIGNAL(pageTitleChanged(QString)), this, SLOT(onTitleChanged(QString)));
   connect(qobj_viewer, SIGNAL(pageUrlChanged(QUrl)), this, SLOT(updateUrl(QUrl)));
   connect(qobj_viewer, SIGNAL(pageIconChanged(QIcon)), this, SLOT(onIconChanged(QIcon)));
@@ -316,8 +319,9 @@ void WebBrowser::onLinkMouseHighlighted(const QUrl& url) {
                        {false, false, true});
 }
 
-void WebBrowser::onLinkMouseClicked(const QUrl& url) {
-  if (qApp->settings()->value(GROUP(Web), SETTING(Web::FollowLinks)).toBool()) {
+void WebBrowser::onLinkMouseClicked(const QUrl& url, WebViewer::LinkNavigationHints hints) {
+  if (Globals::hasFlag(hints, WebViewer::LinkNavigationHints::ForceOpenInternal) ||
+      qApp->settings()->value(GROUP(Web), SETTING(Web::FollowLinks)).toBool()) {
     loadUrl(url);
   }
   else {

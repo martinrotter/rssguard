@@ -80,7 +80,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     void pageUrlChanged(const QUrl& url);
     void pageIconChanged(const QIcon&);
     void linkMouseHighlighted(const QUrl& url);
-    void linkMouseClicked(const QUrl& url);
+    void linkMouseClicked(const QUrl& url, LinkNavigationHints hints = LinkNavigationHints::None);
     void loadingStarted();
     void loadingProgress(int progress);
     void loadingFinished(bool success);

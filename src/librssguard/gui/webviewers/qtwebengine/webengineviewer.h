@@ -115,7 +115,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     void pageUrlChanged(const QUrl& url);
     void pageIconChanged(const QIcon& icon);
     void linkMouseHighlighted(const QUrl& url);
-    void linkMouseClicked(const QUrl& url);
+    void linkMouseClicked(const QUrl& url, LinkNavigationHints hints = LinkNavigationHints::None);
     void loadingStarted();
     void loadingProgress(int progress);
     void loadingFinished(bool success);

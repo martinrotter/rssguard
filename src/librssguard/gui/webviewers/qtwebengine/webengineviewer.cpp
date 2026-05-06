@@ -204,7 +204,9 @@ void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
   connect(this, &QWebEngineView::iconChanged, this, &WebEngineViewer::pageIconChanged);
   connect(this, &QWebEngineView::urlChanged, this, &WebEngineViewer::pageUrlChanged);
 
-  connect(page(), &WebEnginePage::linkMouseClicked, this, &WebEngineViewer::linkMouseClicked);
+  connect(page(), &WebEnginePage::linkMouseClicked, this, [this](const QUrl& url) {
+    emit linkMouseClicked(url);
+  });
   connect(page(), &WebEnginePage::linkHovered, this, &WebEngineViewer::linkMouseHighlighted);
 
   m_actionWatcherGoBack.setAction(page()->action(QWebEnginePage::WebAction::Back));
@@ -339,14 +341,20 @@ void WebEngineViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent
   WebViewer::processContextMenu(specific_menu, event);
 
   specific_menu->addSection(tr("Advanced"));
+
+  // Extra actions.
   specific_menu->addMenu(qApp->icons()->fromTheme(QSL("list-add")), tr("Extra actions"))->addActions(advancedActions());
 
+  // Page actions.
   auto* page_actions_menu = new ScrollableMenu(tr("Page actions"), specific_menu);
   page_actions_menu->setActions(page()->allPageActions(), true);
   page_actions_menu->setIcon(qApp->icons()->fromTheme(QSL("application-x-executable"), QSL("tools")));
 
   specific_menu->addMenu(page_actions_menu);
 
+  // Web attributes.
   specific_menu->addMenu(qApp->icons()->fromTheme(QSL("applications-internet")), tr("Web attributes"))
     ->addActions(qApp->web()->webEngineAttributeActions());
+
+  // Diagnostics.
 }

@@ -31,7 +31,9 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   setDocument(m_document.data());
   setReadOnly(true);
 
-  connect(this, &TextBrowserViewer::anchorClicked, this, &TextBrowserViewer::linkMouseClicked);
+  connect(this, &TextBrowserViewer::anchorClicked, this, [this](const QUrl& url) {
+    emit linkMouseClicked(url);
+  });
   connect(this, QOverload<const QUrl&>::of(&QTextBrowser::highlighted), this, &TextBrowserViewer::linkMouseHighlighted);
 }
 

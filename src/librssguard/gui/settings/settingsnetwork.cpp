@@ -2,7 +2,6 @@
 
 #include "gui/settings/settingsnetwork.h"
 
-#include "exceptions/applicationexception.h"
 #include "gui/dialogs/filedialog.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
@@ -10,7 +9,6 @@
 #include "gui/webbrowser.h"
 #include "gui/webviewers/webviewer.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "network-web/webfactory.h"
@@ -37,6 +35,13 @@ void SettingsNetwork::loadUi() {
 
   connect(m_ui->m_txtUserAgent, &QLineEdit::textChanged, this, &SettingsNetwork::dirtifySettings);
   connect(m_ui->m_txtUserAgent, &QLineEdit::textChanged, this, &SettingsNetwork::requireRestart);
+
+#if !defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  m_ui->m_tabWebBackends->removeTab(0);
+#else
+  connect(m_ui->m_txtWebEngineFlags, &QLineEdit::textChanged, this, &SettingsNetwork::dirtifySettings);
+  connect(m_ui->m_txtWebEngineFlags, &QLineEdit::textChanged, this, &SettingsNetwork::requireRestart);
+#endif
 
   SettingsPanel::loadUi();
 }
@@ -68,6 +73,10 @@ void SettingsNetwork::loadSettings() {
                                          settings()->value(GROUP(Proxy), SETTING(Proxy::Username)).toString(),
                                          settings()->password(GROUP(Proxy), SETTING(Proxy::Password)).toString()));
 
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  m_ui->m_txtWebEngineFlags->setText(settings()->value(GROUP(Web), SETTING(Web::WebEngineChromiumFlags)).toString());
+#endif
+
   onEndLoadSettings();
 }
 
@@ -88,6 +97,10 @@ void SettingsNetwork::saveSettings() {
 
   qApp->web()->updateProxy();
   qApp->mainForm()->tabWidget()->feedMessageViewer()->webBrowser()->viewer()->reloadNetworkSettings();
+
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  settings()->setValue(GROUP(Web), Web::WebEngineChromiumFlags, m_ui->m_txtWebEngineFlags->text());
+#endif
 
   onEndSaveSettings();
 }

@@ -5,6 +5,7 @@
 
 #include "core/message.h"
 #include "gui/tabcontent.h"
+#include "gui/webviewers/webviewer.h"
 #include "services/abstract/rootitem.h"
 
 #include <QPointer>
@@ -21,7 +22,6 @@ class QLabel;
 
 class BaseLineEdit;
 class TabWidget;
-class WebViewer;
 class SearchTextWidget;
 
 class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
@@ -61,7 +61,8 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 
   protected slots:
     virtual void onLinkMouseHighlighted(const QUrl& url);
-    virtual void onLinkMouseClicked(const QUrl& url);
+    virtual void onLinkMouseClicked(const QUrl& url,
+                                    WebViewer::LinkNavigationHints hints = WebViewer::LinkNavigationHints::None);
 
   protected:
     virtual bool eventFilter(QObject* watched, QEvent* event);
