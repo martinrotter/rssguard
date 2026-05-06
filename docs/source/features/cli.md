@@ -39,3 +39,9 @@ rssguard.exe "https://archlinux.org/feeds/news"
 ```
 
 To add a feed directly from your web browser of choice without copying and pasting the URL manually, you have to open RSS Guard with the feed URL passed as an argument. There are [browser extensions](https://addons.mozilla.org/en-US/firefox/addon/open-with/) that allow you to do this.
+
+## Logging
+You can log all important events to a text file which is then useful when [reporting](contrib/bugs) bugs. Here is how to do that:
+
+1. Make sure that debugging logging is not disabled in `Settings -> General`.
+2. Launch RSS Guard from command line with `--log "log.txt"` parameter.

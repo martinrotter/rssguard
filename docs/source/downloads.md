@@ -15,12 +15,6 @@ There is `rssguard.com` website which is completely unrelated to this project an
 ```
 
 ## Installation
-### Windows
-On Windows, there are several ways to install RSS Guard:
-* Portable-style `7z` [packages](https://github.com/martinrotter/rssguard/releases). Simply download and unpack them.
-* [Installers](https://github.com/martinrotter/rssguard/releases) created with [NSIS](https://nsis.sourceforge.io/Main_Page). These are self-contained and are the recommended option for most users. They support normal upgrades and clean uninstallation, while still letting you keep your data if you want.
-* Packages created with [Chocolatey](https://community.chocolatey.org/packages/rssguard). These are convenient, but unofficial.
-
 ```{note}
 Official RSS Guard Windows packages come in several flavors. The package name tells you what it contains:
 * `web` - uses the Qt WebEngine-based article and web viewer. This is the most feature-complete viewer and behaves most like a regular browser.
@@ -28,8 +22,13 @@ Official RSS Guard Windows packages come in several flavors. The package name te
 * `win7` - intended for maximum compatibility, including older Windows systems. It is also fine to use on newer Windows versions.
 * `win10` - intended for modern Windows systems. It includes the newer Qt 6-based build.
 
-If you are unsure which one to choose, start with the `web` + `win10` package on Windows 10 or newer. Use `text` if you prefer a lighter build, and use `win7` when compatibility with older Windows matters more.
+If you are unsure which one to choose, start with the `web` + `win10` package on Windows 10 or newer. Use `text` if you prefer a lighter build or you have RSS Guard crashing, and use `win7` when compatibility with older Windows matters more. See more [here](features/article-display).
 ```
+
+### Windows
+On Windows, there are several ways to install RSS Guard:
+* Portable-style `7z` [packages](https://github.com/martinrotter/rssguard/releases). Simply download and unpack them.
+* [Installers](https://github.com/martinrotter/rssguard/releases) created with [NSIS](https://nsis.sourceforge.io/Main_Page). These are self-contained and are the recommended option for most users. They support normal upgrades and clean uninstallation, while still letting you keep your data if you want.
 
 ```{warning}
 RSS Guard binaries provided via the official [download page](https://github.com/martinrotter/rssguard/releases) are not digitally signed. Because of that, Microsoft Defender SmartScreen may show a warning the first time you launch the application.
@@ -37,6 +36,10 @@ RSS Guard binaries provided via the official [download page](https://github.com/
 
 ```{attention}
 Most required runtime files are bundled with official packages, but if Windows still reports a missing runtime DLL, installing the current Microsoft Visual C++ redistributables usually fixes it. If you want a broader package, this [All-in-One runtime DLL pack](https://github.com/abbodi1406/vcredist/releases) is also a practical option.
+
+Also, if your RSS Guard crashes on Windows upon article selection or when starting, then you might have some DirectX libraries missing. Install them with the below command or use dedicated DirectX installers from Microsoft. You can see more information about the crashes if you run RSS Guard with file [logging](features/cli) enabled.
+
+`dism /Online /Add-Capability /CapabilityName:Tools.Graphics.DirectX~~~~0.0.1.0`
 ```
 
 ### Linux
@@ -49,6 +52,10 @@ If you prefer a standalone package, official release assets provide an `AppImage
 
 ```{warning}
 On macOS, Gatekeeper may block unsigned applications. If that happens, you may need to remove the quarantine flag or self-sign the application with `codesign`.
+```
+
+```{attention}
+macOS packages are not that well tested because we do not have macOS-dedicated testers and maintainers.
 ```
 
 ### KOBO Book Reader

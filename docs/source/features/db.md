@@ -8,7 +8,7 @@ The SQLite backend is very simple to use, and no further configuration is needed
 ```
 <user-data-folder>\database\database.db
 ```
-(For the path to the user-data folder, see [this](#userdata) section.)
+For the path to the user-data folder, see [this](userdata) section.
 
 Also note that some new versions of RSS Guard introduce changes to how application data is stored in the database file. When this happens, a backup of your SQLite database file is created automatically.
 

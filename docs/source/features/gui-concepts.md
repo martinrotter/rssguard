@@ -8,10 +8,8 @@ General GUI Concepts & Manipulating Accounts & Adding Feeds
 * There are two toolbars available: a separate toolbar for the feed list and another for the article list.
 
 ```{note}
-Package names contain `web` or `text` to show which article/web viewer is included. The `web` viewer is more browser-like and feature-complete. The `text` viewer is lighter, but some browser actions and complex page rendering features are not available.
+Package names contain `web` or `text` to show which article/web viewer is included. The `web` viewer is more browser-like and feature-complete. The `text` viewer is lighter, but some browser actions and complex page rendering features are not available. See more [here](article-display).
 ```
-
-In the `web` variant, the built-in browser and RSS Guard's normal feed downloader share cookies. If you sign in to a site or accept cookies in the built-in browser, feeds from the same site may be able to use those cookies later.
 
 ----
 When you start RSS Guard for the very first time, you are greeted with the `Add account` dialog, where you select which account you want to use. If you want a classic `RSS/ATOM` feed reader, select the `RSS/RDF/ATOM/JSON` option.
