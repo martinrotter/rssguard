@@ -135,6 +135,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
 
   private:
     QList<QAction*> advancedActions() const;
+    QList<QAction*> diagActions() const;
     WebEnginePage* page() const;
 
   private:
@@ -143,6 +144,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     QString m_plainText;
     QScopedPointer<QAction> m_actionPrintToPdf;
     QScopedPointer<QAction> m_actionSaveFullPage;
+    QScopedPointer<QAction> m_actionDiagGpu;
 
     ActionWatcher m_actionWatcherGoBack;
     ActionWatcher m_actionWatcherGoForward;

@@ -33,7 +33,8 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
     m_actionPrintToPdf(new QAction(qApp->icons()->fromTheme(QSL("document-print")), tr("Print to PDF"), this)),
     m_actionSaveFullPage(new QAction(qApp->icons()->fromTheme(QSL("document-save-as"), QSL("download")),
                                      tr("Save complete webpage"),
-                                     this)) {
+                                     this)),
+    m_actionDiagGpu(new QAction(tr("GPU"), this)) {
   WebEnginePage* page = new WebEnginePage(this);
 
   setPage(page);
@@ -48,6 +49,9 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
 
   connect(m_actionPrintToPdf.data(), &QAction::triggered, this, &WebEngineViewer::printToPdf);
   connect(m_actionSaveFullPage.data(), &QAction::triggered, this, &WebEngineViewer::saveCompleteWebPage);
+  connect(m_actionDiagGpu.data(), &QAction::triggered, this, [this]() {
+    emit openUrlInNewTab(false, QUrl("chrome://gpu"));
+  });
 
 #if QT_VERSION_MAJOR >= 6
   connect(this, &WebEngineViewer::printFinished, this, [this](bool success) {
@@ -79,6 +83,10 @@ QList<QAction*> WebEngineViewer::advancedActions() const {
   act_src->setText(tr("View source"));
 
   return QList<QAction*>{m_actionPrintToPdf.data(), m_actionSaveFullPage.data(), act_rel, act_src};
+}
+
+QList<QAction*> WebEngineViewer::diagActions() const {
+  return QList<QAction*>{m_actionDiagGpu.data()};
 }
 
 WebEnginePage* WebEngineViewer::page() const {
@@ -357,4 +365,5 @@ void WebEngineViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent
     ->addActions(qApp->web()->webEngineAttributeActions());
 
   // Diagnostics.
+  specific_menu->addMenu(qApp->icons()->fromTheme(QSL("redeyes")), tr("Diagnostics"))->addActions(diagActions());
 }
