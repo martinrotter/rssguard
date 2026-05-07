@@ -305,6 +305,8 @@ void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {
 void TextBrowserViewer::loadMessage(const Message& message, RootItem* root) {
   emit loadingStarted();
 
+  m_root = root;
+
   auto url = urlForMessage(message, root);
   auto html = htmlForMessage(message, root);
 
@@ -375,11 +377,18 @@ void TextBrowserViewer::loadUrl(const QUrl& url) {
   emit loadingStarted();
 
   QByteArray output;
-  auto download_res = NetworkFactory::performNetworkOperation(url.toString(),
-                                                              5000,
-                                                              {},
-                                                              output,
-                                                              QNetworkAccessManager::Operation::GetOperation);
+  auto download_res =
+    NetworkFactory::performNetworkOperation(url.toString(),
+                                            5000,
+                                            {},
+                                            output,
+                                            QNetworkAccessManager::Operation::GetOperation,
+                                            {},
+                                            {},
+                                            {},
+                                            {},
+                                            m_root.isNull() ? QNetworkProxy::ProxyType::DefaultProxy
+                                                            : m_root->account()->networkProxyForItem(m_root.data()));
 
   displayDownloadedPage(url, output, download_res);
 }
