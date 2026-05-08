@@ -2868,7 +2868,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1038"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="876"/>
       <source>Toggle ar&amp;ticles read/unread</source>
-      <translation type="unfinished">Toggle ar&amp;ticles read/unread</translation>
+      <translation>切换文章已读/未读(&amp;T)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
@@ -3228,7 +3228,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="423"/>
       <source>This filter was saved!</source>
-      <translation type="unfinished">This filter was saved!</translation>
+      <translation>此过滤器已保存！</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="431"/>
@@ -3240,14 +3240,14 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <source>There was an error when saving the filter: %1.
 
 Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
-      <translation type="unfinished">There was an error when saving the filter: %1.
+      <translation>保存过滤器时出错： %1。
 
-Maybe the filter title is not unique. If that&apos;s the case, then change it.</translation>
+过滤器标题可能不唯一。如果是&apos;的话，则更改它。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="435"/>
       <source>Filter was not saved</source>
-      <translation type="unfinished">Filter was not saved</translation>
+      <translation>过滤器未保存</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="657"/>
@@ -6773,7 +6773,7 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="358"/>
       <source>Printing is finished on printer %1.</source>
-      <translation type="unfinished">Printing is finished on printer %1.</translation>
+      <translation>在 %1 打印机上完成了打印。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="364"/>
@@ -7881,7 +7881,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="309"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="696"/>
       <source>Propagate feed state to parent nodes</source>
-      <translation type="unfinished">Propagate feed state to parent nodes</translation>
+      <translation>向父节点传播源状态</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="316"/>
@@ -8477,7 +8477,7 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="51"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="95"/>
       <source>Follow hyperlinks inside the application (do not open external web browser)</source>
-      <translation type="unfinished">Follow hyperlinks inside the application (do not open external web browser)</translation>
+      <translation>跟随应用程序内的超链接(不打开外部浏览器)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="32"/>
