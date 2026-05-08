@@ -3233,7 +3233,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="431"/>
       <source>There was an error when saving the filter: %1.</source>
-      <translation type="unfinished">There was an error when saving the filter: %1.</translation>
+      <translation>保存过滤器时出错： %1。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="436"/>
@@ -7887,7 +7887,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="316"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
       <source>Keep feed selection in the middle of the feed list viewport</source>
-      <translation type="unfinished">Keep feed selection in the middle of the feed list viewport</translation>
+      <translation>将源选择保持在源列表视口的中间位置</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="757"/>
