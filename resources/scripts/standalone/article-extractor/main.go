@@ -31,6 +31,7 @@ type ProxyConfig struct {
 
 type InputConfig struct {
 	Headers map[string]string `json:"headers"`
+	HTML    string            `json:"html"`
 	Proxy   *ProxyConfig      `json:"proxy"`
 }
 
@@ -177,6 +178,15 @@ func fetchPage(urlStr string, collector *colly.Collector) []byte {
 	return pageHTML
 }
 
+func getPageHTML(urlStr string, cfg InputConfig, collector *colly.Collector) []byte {
+
+	if cfg.HTML != "" {
+		return []byte(cfg.HTML)
+	}
+
+	return fetchPage(urlStr, collector)
+}
+
 func extractArticle(pageHTML []byte, parsedURL *url.URL) readability.Article {
 
 	article, err := readability.FromReader(bytes.NewReader(pageHTML), parsedURL)
@@ -316,7 +326,7 @@ func main() {
 
 	setupProxy(cfg, collector, imageClient)
 
-	pageHTML := fetchPage(urlStr, collector)
+	pageHTML := getPageHTML(urlStr, cfg, collector)
 
 	article := extractArticle(pageHTML, parsedURL)
 
