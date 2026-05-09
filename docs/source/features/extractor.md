@@ -2,27 +2,21 @@ Article Extractor
 =================
 RSS Guard ships a standalone helper named `rssguard-article-extractor`. It is used internally by the `Fetch full articles` feature and by the article-filtering function `msg.fetchFullContents(...)`, but advanced users can also call it directly from scripts or other tools.
 
-The extractor downloads or receives an HTML page, runs readability extraction on it, and writes the extracted article to standard output.
+The extractor takes a web page, finds the main readable article content, and writes that cleaned-up article to standard output. It can either download the page from a URL or process HTML that you already have.
 
-## Location
-In an installed RSS Guard build, the binary is placed next to the main RSS Guard executable.
+## Where to Find It
+The extractor is installed next to the main RSS Guard executable.
 
 Typical names:
 * Windows: `rssguard-article-extractor.exe`
 * Linux/macOS: `rssguard-article-extractor`
 
-When building from source, CMake places it under the RSS Guard build output directory, usually near:
-
-```text
-<build-directory>/src/rssguard/rssguard-article-extractor
-```
-
-## Synopsis
+## Basic Usage
 ```text
 rssguard-article-extractor [options] <url>
 ```
 
-The `<url>` argument is always required. It is used as the page URL when the extractor downloads the page itself, and as the base URL when the HTML is supplied through standard input.
+The URL is required. If you do not pass HTML through standard input, the extractor downloads this URL. If you do pass HTML through standard input, the URL is still used as the article's base address.
 
 ## Options
 | Option | Description |
@@ -32,8 +26,8 @@ The `<url>` argument is always required. It is used as the page URL when the ext
 
 Without `-t`, the extractor writes extracted HTML.
 
-## Standard Input Configuration
-The extractor optionally reads a JSON object from standard input. If no JSON is supplied, default settings are used.
+## Optional JSON Input
+You can pass extra settings as JSON through standard input. If you do not pass JSON, the extractor uses its defaults.
 
 ```json
 {
@@ -54,37 +48,23 @@ The extractor optionally reads a JSON object from standard input. If no JSON is 
 All fields are optional.
 
 ### `headers`
-`headers` is an object whose keys and values are sent with page downloads and image downloads.
+Use `headers` when a site needs a specific user agent, language, cookie, authorization header, or another HTTP header.
 
 If `User-Agent` is not provided, RSS Guard's extractor uses its built-in default browser-like user agent.
 
 ### `html`
-`html` is an optional HTML string. When it is non-empty, the extractor does **not** download `<url>`. Instead, it runs readability extraction on this supplied HTML and uses `<url>` only as the base URL.
+Use `html` when you already have the page contents. When `html` is non-empty, the extractor does **not** download the URL. It cleans up the supplied HTML instead.
 
 This is useful when you already have article HTML, for example from an RSS item, a browser cache, or an [article filter](filters).
 
 ### `proxy`
-`proxy` configures network access for page downloads and remote image downloads.
+Use `proxy` when page downloads or image downloads should go through a proxy.
 
 Supported proxy types:
 * `http`
 * `socks5`
 
 `address` must contain host and port, for example `127.0.0.1:8080`.
-
-## Exit Behavior
-On success, the extractor writes the extracted article to standard output and exits with code `0`.
-
-On error, it writes a diagnostic message to standard error and exits with a non-zero code.
-
-Common error cases include:
-* invalid URL
-* network request failure
-* non-2xx HTTP response when downloading the page
-* invalid proxy configuration
-* readability parsing failure
-
-Image download failures during `-b` are ignored for individual images. If an image cannot be downloaded, its original `src` value is left unchanged.
 
 ## Examples
 ### Extract HTML From a URL
@@ -139,6 +119,13 @@ printf '{"proxy":{"type":"http","address":"127.0.0.1:8080"}}' \
 printf '{"proxy":{"type":"socks5","address":"127.0.0.1:1080","username":"user","password":"pass"}}' \
   | rssguard-article-extractor "https://example.com/article"
 ```
+
+## Errors
+If extraction succeeds, the cleaned article is written to standard output.
+
+If extraction fails, an error is written to standard error. Common causes are an invalid URL, a network failure, an invalid proxy, or a page that cannot be parsed.
+
+When `-b` is used, individual image download failures are not fatal. If an image cannot be downloaded, its original `src` value is left unchanged.
 
 ## Calling From Article Filters
 Article filters can call the extractor directly with `fs.runExecutableGetOutput(...)`. This can be useful when you want readability cleanup for HTML that is already present in `msg.contents`.
