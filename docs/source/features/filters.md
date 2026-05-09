@@ -142,7 +142,7 @@ Here is the complete reference documentation of the functions and properties ava
 | `addEnclosure(String url, String mime_type)`                                  | `void`       | Adds a multimedia attachment to the article. |
 | `removeEnclosure(int index)`                                                  | `Boolean`    | Removes one enclosure from the article according to the index, starting from zero. |
 | `removeAllEnclosures()`                                                       | `void`       | Removes all enclosures from the article. |
-| `fetchFullContents(Boolean plain_text_only)`                                  | `Boolean`    | Fetches fuller article contents for the article, in plain text or HTML form. [^1] |
+| `fetchFullContents(Boolean plain_text_only)`                                  | `Boolean`    | Fetches fuller article contents for the article, in plain text or HTML form by using the [article extractor](extractor). [^1] |
 | `isAlreadyInDatabase(DuplicityCheck criteria)`                                | `Boolean`    | Checks if a matching message is already stored in the database. |
 | `isAlreadyInDatabaseWinkler(DuplicityCheck criteria, Number threshold = 0.1)` | `Boolean`    | Checks if a similar message is already stored in the database by using Jaro-Winkler similarity. |
 | `assignLabel(String label_id)`                                                | `Boolean`    | Assigns a label to the message. The `String` value is the `customId` property of the `Label` type. |
@@ -150,7 +150,7 @@ Here is the complete reference documentation of the functions and properties ava
 | `deassignAllLabels()`                                                         | `void`       | Removes all labels from the message. |
 | `exportCategoriesToLabels(Boolean assign_to_message)`                         | `void`       | Creates RSS Guard labels for all categories of this message and can optionally assign them to the article. [^2] |
 
-[^1]: Fetching fuller contents may issue extra network requests, can slow down feed fetching, and can increase database size significantly.
+[^1]: Fetching fuller contents may issue extra network requests, can slow down feed fetching, and can increase database size significantly. See the [article extractor CLI](extractor) if you want to call the extractor directly from a filter or another script.
 [^2]: This is intended mainly for newly fetched articles. When processing already stored articles from the dialog, this helper may not have anything useful to export.
 
 ### `app`
@@ -332,10 +332,45 @@ function filterMessage() {
 ```js
 /*
  * Fetch fuller contents only for articles that seem new enough to keep.
+ *
+ * This uses RSS Guard's built-in article extractor automatically.
  */
 function filterMessage() {
   if (!msg.isAlreadyInDatabase(Msg.SameCustomId | Msg.AllFeedsSameAccount)) {
     msg.fetchFullContents(false);
+  }
+
+  return Msg.Accept;
+}
+```
+
+```js
+/*
+ * Run RSS Guard's article extractor directly on HTML already stored in msg.contents.
+ *
+ * This is useful when the feed already carries HTML and you want readability cleanup
+ * without downloading the article URL again.
+ */
+function filterMessage() {
+  if (!msg.url || !msg.contents) {
+    return Msg.Accept;
+  }
+
+  const extractor =
+    "C:\\Path\\To\\rssguard-article-extractor.exe";
+
+  const config = JSON.stringify({
+    html: msg.contents
+  });
+
+  const extracted = fs.runExecutableGetOutput(
+    extractor,
+    [msg.url],
+    config
+  );
+
+  if (extracted && extracted.trim()) {
+    msg.contents = extracted.trim();
   }
 
   return Msg.Accept;
