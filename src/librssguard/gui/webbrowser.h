@@ -61,8 +61,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
 
   protected slots:
     virtual void onLinkMouseHighlighted(const QUrl& url);
-    virtual void onLinkMouseClicked(const QUrl& url,
-                                    WebViewer::LinkNavigationHints hints = WebViewer::LinkNavigationHints::None);
+    virtual void onLinkMouseClicked(const QUrl& url, LinkNavigationHints hints = WebViewer::LinkNavigationHints::None);
 
   protected:
     virtual bool eventFilter(QObject* watched, QEvent* event);

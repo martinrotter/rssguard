@@ -23,8 +23,6 @@ struct ContextMenuData {
     QString m_selectedText;
 };
 
-#define ACCEPTABLE_IMAGE_PERCENTUAL_WIDTH 0.97
-
 // Interface for web/article viewers.
 class WebViewer {
   public:
@@ -172,6 +170,8 @@ class WebViewer {
 };
 
 Q_DECLARE_INTERFACE(WebViewer, "WebViewer")
+
+typedef WebViewer::LinkNavigationHints LinkNavigationHints;
 
 inline void WebViewer::zoomIn() {
   setZoomFactor(zoomFactor() + double(ZOOM_FACTOR_STEP));
