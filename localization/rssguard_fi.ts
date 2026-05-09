@@ -5938,8 +5938,8 @@ Kirjautumistunnusten vanhentuminen: %2</translation>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="595"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="595"/>
       <source>%n selected article(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n selected article(s)</numerusform>
+      <translation>
+        <numerusform>%n valittu artikkeli</numerusform>
         <numerusform>%n valittua artikkelia</numerusform>
       </translation>
     </message>
@@ -9566,7 +9566,7 @@ Lataa oletussyötteet: lataa joitakin kiinnostavia syötteitä.</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="352"/>
       <source>The page cannot be loaded with HTTP/%1 error.</source>
-      <translation type="unfinished">The page cannot be loaded with HTTP/%1 error.</translation>
+      <translation>Sivua ei voi ladata sillä olevan HTTP/%1-virheen vuoksi.</translation>
     </message>
   </context>
   <context>
@@ -10050,17 +10050,17 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="31"/>
       <source>Reload</source>
-      <translation type="unfinished">Reload</translation>
+      <translation>Lataa uudelleen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="32"/>
       <source>Go back</source>
-      <translation type="unfinished">Go back</translation>
+      <translation>Palaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="33"/>
       <source>Go forward</source>
-      <translation type="unfinished">Go forward</translation>
+      <translation>Siirry eteenpäin</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="38"/>
@@ -10076,7 +10076,7 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="358"/>
       <source>Enter URL or search phrase here</source>
-      <translation type="unfinished">Enter URL or search phrase here</translation>
+      <translation>Anna verkko-osoite tai hakulauseke tähän</translation>
     </message>
   </context>
   <context>
@@ -10084,37 +10084,37 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="57"/>
       <source>PDF printing done</source>
-      <translation type="unfinished">PDF printing done</translation>
+      <translation>PDF-tulostus on valmis</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="58"/>
       <source>PDF printing to file &apos;%1&apos; has finished.</source>
-      <translation type="unfinished">PDF printing to file &apos;%1&apos; has finished.</translation>
+      <translation>PDF-tulostus tiedostoon &apos;%1&apos; on valmis.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="60"/>
       <source>Open destination folder</source>
-      <translation type="unfinished">Open destination folder</translation>
+      <translation>Avaa kohdekansio</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="66"/>
       <source>PDF printing failed</source>
-      <translation type="unfinished">PDF printing failed</translation>
+      <translation>PDF-tulostus epäonnistui</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="67"/>
       <source>PDF printing to file &apos;%1&apos; failed.</source>
-      <translation type="unfinished">PDF printing to file &apos;%1&apos; failed.</translation>
+      <translation>PDF-tulostus tiedostoon &apos;%1&apos; epäonnistui.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="76"/>
       <source>Website alert</source>
-      <translation type="unfinished">Website alert</translation>
+      <translation>Sivuston ilmoitus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="77"/>
       <source>URL %1 reports this important message: %2</source>
-      <translation type="unfinished">URL %1 reports this important message: %2</translation>
+      <translation>Verkko-osoitteesta %1 tulee seuraava tärkeä viesti: %2</translation>
     </message>
   </context>
   <context>
@@ -10122,27 +10122,27 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="33"/>
       <source>Print to PDF</source>
-      <translation type="unfinished">Print to PDF</translation>
+      <translation>Tulosta PDF-tiedostoon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="35"/>
       <source>Save complete webpage</source>
-      <translation type="unfinished">Save complete webpage</translation>
+      <translation>Tallenna koko verkkosivu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="37"/>
       <source>GPU</source>
-      <translation type="unfinished">GPU</translation>
+      <translation>Näytönohjain</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="82"/>
       <source>Reload (bypass cache)</source>
-      <translation type="unfinished">Reload (bypass cache)</translation>
+      <translation>Lataa uudelleen (ohita välimuisti)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="83"/>
       <source>View source</source>
-      <translation type="unfinished">View source</translation>
+      <translation>Näytä lähde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="149"/>
@@ -10152,7 +10152,7 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="149"/>
       <source>Printing is finished.</source>
-      <translation type="unfinished">Printing is finished.</translation>
+      <translation>Tulostus on valmis.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="154"/>
@@ -10162,52 +10162,52 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="154"/>
       <source>Printing failed.</source>
-      <translation type="unfinished">Printing failed.</translation>
+      <translation>Tulostus epäonnistui.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="278"/>
       <source>Save page to PDF file</source>
-      <translation type="unfinished">Save page to PDF file</translation>
+      <translation>Tallenna sivu PDF-tiedostona</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="281"/>
       <source>PDF files (*.pdf)</source>
-      <translation type="unfinished">PDF files (*.pdf)</translation>
+      <translation>PDF-tiedostot (*.pdf)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="295"/>
       <source>Save complete page to file</source>
-      <translation type="unfinished">Save complete page to file</translation>
+      <translation>Tallenna koko sivu tiedostoon</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="298"/>
       <source>Mime HTML files (*.mhtml)</source>
-      <translation type="unfinished">Mime HTML files (*.mhtml)</translation>
+      <translation>Mime HTML -tiedostot (*.mhtml)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="351"/>
       <source>Advanced</source>
-      <translation type="unfinished">Advanced</translation>
+      <translation>Lisäasetukset</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="354"/>
       <source>Extra actions</source>
-      <translation type="unfinished">Extra actions</translation>
+      <translation>Lisätoiminnot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="357"/>
       <source>Page actions</source>
-      <translation type="unfinished">Page actions</translation>
+      <translation>Sivutoiminnot</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="364"/>
       <source>Web attributes</source>
-      <translation type="unfinished">Web attributes</translation>
+      <translation>Web-attribuutit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="368"/>
       <source>Diagnostics</source>
-      <translation type="unfinished">Diagnostics</translation>
+      <translation>Diagnostiikka</translation>
     </message>
   </context>
   <context>
@@ -10215,107 +10215,107 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="51"/>
       <source>JS enabled</source>
-      <translation type="unfinished">JS enabled</translation>
+      <translation>JS käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="54"/>
       <source>JS can open popup windows</source>
-      <translation type="unfinished">JS can open popup windows</translation>
+      <translation>JS voi avata ponnahdusikkunoita</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="58"/>
       <source>JS can access clipboard</source>
-      <translation type="unfinished">JS can access clipboard</translation>
+      <translation>JS voi käyttää leikepöytää</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="62"/>
       <source>Hyperlinks can get focus</source>
-      <translation type="unfinished">Hyperlinks can get focus</translation>
+      <translation>Hyperlinkkeihin voidaan kohdistaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="65"/>
       <source>Local storage enabled</source>
-      <translation type="unfinished">Local storage enabled</translation>
+      <translation>Paikallinen tallennustila käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="69"/>
       <source>Local content can access remote URLs</source>
-      <translation type="unfinished">Local content can access remote URLs</translation>
+      <translation>Paikallinen sisältö voi käyttää etäosoitteita</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="72"/>
       <source>XSS auditing enabled</source>
-      <translation type="unfinished">XSS auditing enabled</translation>
+      <translation>XSS-auditointi käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="75"/>
       <source>Spatial navigation enabled</source>
-      <translation type="unfinished">Spatial navigation enabled</translation>
+      <translation>Spatiaalinen navigointi käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="79"/>
       <source>Local content can access local files</source>
-      <translation type="unfinished">Local content can access local files</translation>
+      <translation>Paikallinen sisältö voi käyttää paikallisia tiedostoja</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="82"/>
       <source>Hyperlink auditing enabled</source>
-      <translation type="unfinished">Hyperlink auditing enabled</translation>
+      <translation>Hyperlinkkien tarkastus käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="85"/>
       <source>Animate scrolling</source>
-      <translation type="unfinished">Animate scrolling</translation>
+      <translation>Animoi vieritys</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="88"/>
       <source>Error pages enabled</source>
-      <translation type="unfinished">Error pages enabled</translation>
+      <translation>Virhesivut käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="91"/>
       <source>Plugins enabled</source>
-      <translation type="unfinished">Plugins enabled</translation>
+      <translation>Liitännäiset käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="96"/>
       <source>Screen capture enabled</source>
-      <translation type="unfinished">Screen capture enabled</translation>
+      <translation>Näytön tallennus käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="99"/>
       <source>WebGL enabled</source>
-      <translation type="unfinished">WebGL enabled</translation>
+      <translation>WebGL käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="103"/>
       <source>Accelerate 2D canvas</source>
-      <translation type="unfinished">Accelerate 2D canvas</translation>
+      <translation>Kiihdytä 2D-alustaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="106"/>
       <source>Print element backgrounds</source>
-      <translation type="unfinished">Print element backgrounds</translation>
+      <translation>Tulosta elementtien taustat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="110"/>
       <source>Allow running insecure content</source>
-      <translation type="unfinished">Allow running insecure content</translation>
+      <translation>Salli turvattoman sisällön suorittaminen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="114"/>
       <source>Allow geolocation on insecure origins</source>
-      <translation type="unfinished">Allow geolocation on insecure origins</translation>
+      <translation>Salli geopaikannus turvattomista lähteistä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="120"/>
       <source>JS can activate windows</source>
-      <translation type="unfinished">JS can activate windows</translation>
+      <translation>JS voi aktivoida ikkunoita</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="123"/>
       <source>Show scrollbars</source>
-      <translation type="unfinished">Show scrollbars</translation>
+      <translation>Näytä vierityspalkit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="127"/>
@@ -10325,57 +10325,57 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="131"/>
       <source>WebRTC uses only public interfaces</source>
-      <translation type="unfinished">WebRTC uses only public interfaces</translation>
+      <translation>WebRTC käyttää vain julkisia liittymiä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="134"/>
       <source>JS can paste from clipboard</source>
-      <translation type="unfinished">JS can paste from clipboard</translation>
+      <translation>JS voi liittää leikepöydältä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="137"/>
       <source>DNS prefetch enabled</source>
-      <translation type="unfinished">DNS prefetch enabled</translation>
+      <translation>DNS-esihaku käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="142"/>
       <source>PDF viewer enabled</source>
-      <translation type="unfinished">PDF viewer enabled</translation>
+      <translation>PDF-katseluohjelma käytössä</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="148"/>
       <source>Force dark mode</source>
-      <translation type="unfinished">Force dark mode</translation>
+      <translation>Pakota tumma tila</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="154"/>
       <source>Printing - print headers/footers.</source>
-      <translation type="unfinished">Printing - print headers/footers.</translation>
+      <translation>Tulostetaan - tulosta ylä- ja alatunnisteet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="196"/>
       <source>Web cache cleared</source>
-      <translation type="unfinished">Web cache cleared</translation>
+      <translation>Web-välimuisti tyhjennetty</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="197"/>
       <source>Web cache was cleared. List of visited links was cleared too.</source>
-      <translation type="unfinished">Web cache was cleared. List of visited links was cleared too.</translation>
+      <translation>Web-välimuisti tyhjennettiin. Myös luettelo avatuista linkeistä tyhjennettiin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="214"/>
       <source>File download</source>
-      <translation type="unfinished">File download</translation>
+      <translation>Tiedoston lataaminen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="215"/>
       <source>Download of file &apos;%1&apos; was offered.</source>
-      <translation type="unfinished">Download of file &apos;%1&apos; was offered.</translation>
+      <translation>Tiedoston &apos;%1&apos; latausta ehdotettiin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="217"/>
       <source>Copy file URL</source>
-      <translation type="unfinished">Copy file URL</translation>
+      <translation>Kopioi tiedoston verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
@@ -10398,7 +10398,7 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="30"/>
       <source>Extra nodes</source>
-      <translation type="unfinished">Extra nodes</translation>
+      <translation>Ylimääräiset solmut</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="50"/>
@@ -10418,7 +10418,7 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="88"/>
       <source>JID</source>
-      <translation type="unfinished">JID</translation>
+      <translation>JID</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="101"/>
@@ -10428,12 +10428,12 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="23"/>
       <source>IDs of extra services (which contain PubSub nodes) to use for discovery, one ID per line, for example news.movim.eu</source>
-      <translation type="unfinished">IDs of extra services (which contain PubSub nodes) to use for discovery, one ID per line, for example news.movim.eu</translation>
+      <translation>Lisäpalveluiden tunnukset (joissa on PubSub-solmuja) hakua varten; yksi tunnus riviä kohden, esimerkiksi news.movim.eu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="26"/>
       <source>Four kinds of nodes are supported (each on its own line):&lt;ul&gt;&lt;li&gt;PubSub service directories, for example &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP directories, for example &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;direct chatrooms (both private chats and group chats), for example &apos;chatroom@conference.movim.eu&apos; or &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub services or PEPs are probed for underlying PubSub nodes and chatrooms are added directly if they exist.</source>
-      <translation type="unfinished">Four kinds of nodes are supported (each on its own line):&lt;ul&gt;&lt;li&gt;PubSub service directories, for example &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP directories, for example &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;direct chatrooms (both private chats and group chats), for example &apos;chatroom@conference.movim.eu&apos; or &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub services or PEPs are probed for underlying PubSub nodes and chatrooms are added directly if they exist.</translation>
+      <translation>Neljäntyyppisiä solmuja tuetaan (kunhan kukin on omalla rivillään):&lt;ul&gt;&lt;li&gt;PubSub-palveluhakemistot, kuten &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP -hakemistot, kuten &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;suorat keskusteluryhmät (sekä yksityiset että ryhmäkeskustelut), kuten &apos;chatroom@conference.movim.eu&apos; tai &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub-palvelut tai PEP:t tutkitaan niiden taustalla olevien PubSub-solmujen varalta, ja keskusteluryhmät lisätään suoraan, jos sellaisia on.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="39"/>
@@ -10448,7 +10448,7 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="41"/>
       <source>URL of your XMPP server</source>
-      <translation type="unfinished">URL of your XMPP server</translation>
+      <translation>XMPP-palvelimen verkko-osoite</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="43"/>
@@ -10478,47 +10478,47 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="97"/>
       <source>Network error, have you entered correct host, username and password?</source>
-      <translation type="unfinished">Network error, have you entered correct host, username and password?</translation>
+      <translation>Verkkovirhe. Oletko antanut oikean palvelimen, käyttäjänimen ja salasanan?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="102"/>
       <source>File error: &apos;%1&apos;.</source>
-      <translation type="unfinished">File error: &apos;%1&apos;.</translation>
+      <translation>Tiedostovirhe: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="103"/>
       <source>File error</source>
-      <translation type="unfinished">File error</translation>
+      <translation>Tiedostovirhe</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="109"/>
       <source>Client error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">Client error: &apos;%1 - %2&apos;.</translation>
+      <translation>Työaseman virhe: &apos;%1 - %2&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="110"/>
       <source>Client error</source>
-      <translation type="unfinished">Client error</translation>
+      <translation>Työaseman virhe</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="118"/>
       <source>Auth error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">Auth error: &apos;%1 - %2&apos;.</translation>
+      <translation>Todennusvirhe: &apos;%1 - %2&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="119"/>
       <source>Auth error</source>
-      <translation type="unfinished">Auth error</translation>
+      <translation>Todennusvirhe</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="123"/>
       <source>Generic error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Generic error: &apos;%1&apos;.</translation>
+      <translation>Yleinen virhe: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="124"/>
       <source>Generic error</source>
-      <translation type="unfinished">Generic error</translation>
+      <translation>Yleinen virhe</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="202"/>
@@ -10556,22 +10556,22 @@ Viimeisin kirjautuminen: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="42"/>
       <source>Single-user chats</source>
-      <translation type="unfinished">Single-user chats</translation>
+      <translation>Yhden käyttäjän keskustelut</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="45"/>
       <source>Multi-user chats</source>
-      <translation type="unfinished">Multi-user chats</translation>
+      <translation>Usean käyttäjän keskustelut</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="48"/>
       <source>PubSub services</source>
-      <translation type="unfinished">PubSub services</translation>
+      <translation>PubSub-palvelut</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="51"/>
       <source>PubSub PEPs</source>
-      <translation type="unfinished">PubSub PEPs</translation>
+      <translation>PubSub-PEP:t</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="54"/>
@@ -10585,8 +10585,8 @@ Viimeisin kirjautuminen: %4</translation>
       <location filename="../src/librssguard-xmpp/src/xmppfeed.cpp" line="286"/>
       <source>Type: %1
 Service: %2</source>
-      <translation type="unfinished">Type: %1
-Service: %2</translation>
+      <translation>Tyyppi: %1
+Palvelu: %2</translation>
     </message>
   </context>
   <context>
@@ -10594,17 +10594,17 @@ Service: %2</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="155"/>
       <source>disconnected</source>
-      <translation type="unfinished">disconnected</translation>
+      <translation>katkaistu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="158"/>
       <source>connecting</source>
-      <translation type="unfinished">connecting</translation>
+      <translation>yhdistetään</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="161"/>
       <source>connected</source>
-      <translation type="unfinished">connected</translation>
+      <translation>yhdistetty</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="164"/>
@@ -10614,42 +10614,42 @@ Service: %2</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="224"/>
       <source>error during services discovery, %1</source>
-      <translation type="unfinished">error during services discovery, %1</translation>
+      <translation>virhe palveluita haettaessa, %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="230"/>
       <source>unspecified error during services discovery</source>
-      <translation type="unfinished">unspecified error during services discovery</translation>
+      <translation>määrittelemätön virhe palveluhaun aikana</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="504"/>
       <source>XMPP server connected</source>
-      <translation type="unfinished">XMPP server connected</translation>
+      <translation>XMPP-palvelin yhdistetty</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="505"/>
       <source>XMPP connection to server %1 is alive.</source>
-      <translation type="unfinished">XMPP connection to server %1 is alive.</translation>
+      <translation>XMPP-yhteys palvelimeen %1 on käynnissä.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="546"/>
       <source>XMPP server disconnected</source>
-      <translation type="unfinished">XMPP server disconnected</translation>
+      <translation>XMPP-palvelimen yhteys on katkaistu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="547"/>
       <source>XMPP connection to server %1 is down.</source>
-      <translation type="unfinished">XMPP connection to server %1 is down.</translation>
+      <translation>XMPP-yhteys palvelimeen %1 on katkennut.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="553"/>
       <source>XMPP error</source>
-      <translation type="unfinished">XMPP error</translation>
+      <translation>XMPP-virhe</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="554"/>
       <source>XMPP connection to server %1 has error: %2</source>
-      <translation type="unfinished">XMPP connection to server %1 has error: %2</translation>
+      <translation>XMPP-yhteydessä palvelimeen %1 on virhe: %2</translation>
     </message>
   </context>
   <context>
@@ -10657,31 +10657,31 @@ Service: %2</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="140"/>
       <source>Cannot store article</source>
-      <translation type="unfinished">Cannot store article</translation>
+      <translation>Artikkelia ei voi tallentaa</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="141"/>
       <source>Cannot save article obtained via push notification because its feed does not exist. Tray to refresh list of feeds.</source>
-      <translation type="unfinished">Cannot save article obtained via push notification because its feed does not exist. Tray to refresh list of feeds.</translation>
+      <translation>Pikailmoituksen kautta noudettua artikkelia ei voi tallentaa, koska sen syötettä ei ole olemassa. Päivitä syöteluettelo.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="212"/>
       <source>&amp;Reconnect</source>
-      <translation type="unfinished">&amp;Reconnect</translation>
+      <translation>&amp;Yhdistä uudelleen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="230"/>
       <source>Trigger async fetch</source>
-      <translation type="unfinished">Trigger async fetch</translation>
+      <translation>Käynnistä synkronoimaton nouto</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="250"/>
       <source>User: %1
 Status: %2
 Supported XEPs: %3</source>
-      <translation type="unfinished">User: %1
-Status: %2
-Supported XEPs: %3</translation>
+      <translation>Käyttäjä: %1
+Tila: %2
+Tuetut XEP:t: %3</translation>
     </message>
   </context>
 </TS>
