@@ -823,12 +823,12 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="62"/>
       <source>Not fetched on startup</source>
-      <translation type="unfinished">Not fetched on startup</translation>
+      <translation>Non récupéré au démarrage</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="63"/>
       <source>Fetching of feeds on app startup was skipped because auto-fetching is paused.</source>
-      <translation type="unfinished">Fetching of feeds on app startup was skipped because auto-fetching is paused.</translation>
+      <translation>La récupération des flux au démarrage de l'application a été ignorée car la récupération automatique est suspendue.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="112"/>
@@ -1423,7 +1423,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="124"/>
       <source>&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Variant:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (compiled against %6)</source>
-      <translation type="unfinished">&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Variant:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (compiled against %6)</translation>
+      <translation>&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (construit sur %2/%3)&lt;br/&gt;&lt;b&gt;Révision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Variant:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (compilé contre %6)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="143"/>
@@ -2008,7 +2008,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
       <source>URLs</source>
-      <translation type="unfinished">URLs</translation>
+      <translation>URLs</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="65"/>
@@ -2053,7 +2053,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="85"/>
       <source>Enter feed URLs, one URL per line</source>
-      <translation type="unfinished">Enter feed URLs, one URL per line</translation>
+      <translation>Entrez les URLs du flux, une URL par ligne</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="138"/>
@@ -2068,12 +2068,12 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="249"/>
       <source>All URLs are valid.</source>
-      <translation type="unfinished">All URLs are valid.</translation>
+      <translation>Toutes les URLs sont valides.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="252"/>
       <source>One or more URLs are invalid.</source>
-      <translation type="unfinished">One or more URLs are invalid.</translation>
+      <translation>Une ou plusieurs URL sont invalides.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="321"/>
@@ -2873,19 +2873,19 @@ de la fenêtre principale</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1028"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="874"/>
       <source>New &amp;web browser tab</source>
-      <translation type="unfinished">New &amp;web browser tab</translation>
+      <translation>Nouvel onglet &amp;navigateur web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1033"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="875"/>
       <source>Cleanup &amp;web cache</source>
-      <translation type="unfinished">Cleanup &amp;web cache</translation>
+      <translation>Nettoyer le &amp;cache web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1038"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="876"/>
       <source>Toggle ar&amp;ticles read/unread</source>
-      <translation type="unfinished">Toggle ar&amp;ticles read/unread</translation>
+      <translation>Activer/désactiver ar&amp;ticles lues/non lues</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="653"/>
@@ -3254,26 +3254,26 @@ nouveau flux</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="423"/>
       <source>This filter was saved!</source>
-      <translation type="unfinished">This filter was saved!</translation>
+      <translation>Ce filtre a été enregistré!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="431"/>
       <source>There was an error when saving the filter: %1.</source>
-      <translation type="unfinished">There was an error when saving the filter: %1.</translation>
+      <translation>Une erreur s'est produite lors de la sauvegarde du filtre : %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="436"/>
       <source>There was an error when saving the filter: %1.
 
 Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
-      <translation type="unfinished">There was an error when saving the filter: %1.
+      <translation>Une erreur s'est produite lors de l'enregistrement du filtre: %1.
 
-Maybe the filter title is not unique. If that&apos;s the case, then change it.</translation>
+Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-le.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="435"/>
       <source>Filter was not saved</source>
-      <translation type="unfinished">Filter was not saved</translation>
+      <translation>Le filtre n'a pas été enregistré</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="657"/>
@@ -5955,9 +5955,9 @@ supplémentaire</translation>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="595"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="595"/>
       <source>%n selected article(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n selected article(s)</numerusform>
-        <numerusform>%n selected article(s)</numerusform>
+      <translation>
+        <numerusform>%n article sélectionné</numerusform>
+        <numerusform>%n articles sélectionnés</numerusform>
       </translation>
     </message>
     <message>
@@ -6298,12 +6298,12 @@ supplémentaire</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="90"/>
       <source>Unspecified error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Unspecified error: &apos;%1&apos;.</translation>
+      <translation>Erreur non spécifiée: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="91"/>
       <source>Unspecified error, have you entered correct Nextcloud endpoint and password?</source>
-      <translation type="unfinished">Unspecified error, have you entered correct Nextcloud endpoint and password?</translation>
+      <translation>Erreur non spécifiée, avez-vous entré le bon point de terminaison et mot de passe Nextcloud ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="73"/>
@@ -6527,7 +6527,7 @@ Feedly est un éspace sécurisé où vous pouvez organiser et rechercher les suj
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="140"/>
       <source>Login progressed or was successful</source>
-      <translation type="unfinished">Login progressed or was successful</translation>
+      <translation>La connexion a progressé ou a réussi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="146"/>
@@ -6547,7 +6547,7 @@ Feedly est un éspace sécurisé où vous pouvez organiser et rechercher les suj
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="155"/>
       <source>You were logged out or disconnected</source>
-      <translation type="unfinished">You were logged out or disconnected</translation>
+      <translation>Vous vous êtes déconnecté ou vous avez été déconnecté</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="158"/>
@@ -6639,12 +6639,12 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="640"/>
       <source>folders background</source>
-      <translation type="unfinished">folders background</translation>
+      <translation>arrière-plan des dossiers</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="643"/>
       <source>folders background (highlighted</source>
-      <translation type="unfinished">folders background (highlighted</translation>
+      <translation>arrière-plan des dossiers (surligné)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
@@ -6767,7 +6767,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="109"/>
       <source>Context menu for article viewer</source>
-      <translation type="unfinished">Context menu for article viewer</translation>
+      <translation>Menu contextuel pour le visionneur d'articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="95"/>
@@ -6789,22 +6789,22 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="276"/>
       <source>Print...</source>
-      <translation type="unfinished">Print...</translation>
+      <translation>Imprimer...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="278"/>
       <source>Load external images</source>
-      <translation type="unfinished">Load external images</translation>
+      <translation>Charger les images externes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="279"/>
       <source>Save as...</source>
-      <translation type="unfinished">Save as...</translation>
+      <translation>Enregistrer sous...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="281"/>
       <source>Open in new tab</source>
-      <translation type="unfinished">Open in new tab</translation>
+      <translation>Ouvrir dans un nouvel onglet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="357"/>
@@ -6814,7 +6814,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="358"/>
       <source>Printing is finished on printer %1.</source>
-      <translation type="unfinished">Printing is finished on printer %1.</translation>
+      <translation>L'impression est terminée sur l'imprimante %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="364"/>
@@ -6824,7 +6824,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="365"/>
       <source>Printing failed.</source>
-      <translation type="unfinished">Printing failed.</translation>
+      <translation>L'impression a échoué.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="123"/>
@@ -6839,12 +6839,12 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="189"/>
       <source>Plain text files (*.txt)</source>
-      <translation type="unfinished">Plain text files (*.txt)</translation>
+      <translation>Fichiers texte brut (*.txt)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="198"/>
       <source>Save contents in HTML or TXT format</source>
-      <translation type="unfinished">Save contents in HTML or TXT format</translation>
+      <translation>Enregistrer les contenus au format HTML ou TXT</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="283"/>
@@ -6908,37 +6908,37 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/gemlogparser.cpp" line="89"/>
       <source>not a Gemlog</source>
-      <translation type="unfinished">not a Gemlog</translation>
+      <translation>pas un Gemlog</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppentrypoint.cpp" line="39"/>
       <source>Plugin for XMPP which is able to get articles via PubSub real-time push notifications.</source>
-      <translation type="unfinished">Plugin for XMPP which is able to get articles via PubSub real-time push notifications.</translation>
+      <translation>Plugin pour XMPP qui permet d'obtenir des articles via les notifications push en temps réel PubSub.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="627"/>
       <source>network error: &apos;%1&apos;.</source>
-      <translation type="unfinished">network error: &apos;%1&apos;.</translation>
+      <translation>erreur réseau: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="631"/>
       <source>file error: &apos;%1&apos;.</source>
-      <translation type="unfinished">file error: &apos;%1&apos;.</translation>
+      <translation>erreur fichier: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="636"/>
       <source>client error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">client error: &apos;%1 - %2&apos;.</translation>
+      <translation>erreur client: &apos;%1 - %2&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="643"/>
       <source>auth error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">auth error: &apos;%1 - %2&apos;.</translation>
+      <translation>erreur d'authentification: &apos;%1 - %2&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="646"/>
       <source>error: &apos;%1&apos;.</source>
-      <translation type="unfinished">error: &apos;%1&apos;.</translation>
+      <translation>erreur: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="148"/>
@@ -7365,12 +7365,12 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="693"/>
       <source>no feed tree obtained</source>
-      <translation type="unfinished">no feed tree obtained</translation>
+      <translation>aucun arbre de flux obtenu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="771"/>
       <source>unknown data returned from sync-in</source>
-      <translation type="unfinished">unknown data returned from sync-in</translation>
+      <translation>données inconnues retournées depuis la synchronisation</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="778"/>
@@ -7919,19 +7919,19 @@ Ceci peut accélerer de façon très significative l'appli si vous avez des cent
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="302"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="695"/>
       <source>Also always show article counts from labels and important articles</source>
-      <translation type="unfinished">Also always show article counts from labels and important articles</translation>
+      <translation>Toujours afficher le nombre d'articles à partir des étiquettes et des articles importants</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="309"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="696"/>
       <source>Propagate feed state to parent nodes</source>
-      <translation type="unfinished">Propagate feed state to parent nodes</translation>
+      <translation>Propager l'état du flux aux noeuds parents</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="316"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
       <source>Keep feed selection in the middle of the feed list viewport</source>
-      <translation type="unfinished">Keep feed selection in the middle of the feed list viewport</translation>
+      <translation>Garder la sélection de flux au milieu de la fenêtre d'affichage de la liste de flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="757"/>
@@ -7943,7 +7943,7 @@ Ceci peut accélerer de façon très significative l'appli si vous avez des cent
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="764"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="728"/>
       <source>Display feed icon in &quot;Feed&quot; column</source>
-      <translation type="unfinished">Display feed icon in &quot;Feed&quot; column</translation>
+      <translation>Afficher l'icône du flux dans la colonne &quot;Flux&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="268"/>
@@ -8515,13 +8515,13 @@ Déscription: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="45"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="96"/>
       <source>Web</source>
-      <translation type="unfinished">Web</translation>
+      <translation>Web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="51"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="95"/>
       <source>Follow hyperlinks inside the application (do not open external web browser)</source>
-      <translation type="unfinished">Follow hyperlinks inside the application (do not open external web browser)</translation>
+      <translation>Suivre les hyperliens dans l'application (ne pas ouvrir le navigateur web externe)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="32"/>
@@ -8531,7 +8531,7 @@ Déscription: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.h" line="31"/>
       <source>Network &amp; web</source>
-      <translation type="unfinished">Network &amp; web</translation>
+      <translation>Réseau &amp; Web</translation>
     </message>
   </context>
   <context>
@@ -9526,7 +9526,7 @@ Charger les flux par défaut : Un petit ensemble de différents flux intéressan
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="32"/>
       <source>Close this tab</source>
-      <translation type="unfinished">Close this tab</translation>
+      <translation>Fermer cet onglet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabbar.cpp" line="33"/>
@@ -9559,7 +9559,7 @@ Charger les flux par défaut : Un petit ensemble de différents flux intéressan
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="308"/>
       <source>Web browser</source>
-      <translation type="unfinished">Web browser</translation>
+      <translation>Navigateur web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tabwidget.cpp" line="130"/>
@@ -9572,7 +9572,7 @@ Charger les flux par défaut : Un petit ensemble de différents flux intéressan
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="348"/>
       <source>The page cannot be loaded with HTTP/%1 error.</source>
-      <translation type="unfinished">The page cannot be loaded with HTTP/%1 error.</translation>
+      <translation>La page ne peut pas être chargée avec l'erreur HTTP/%1.</translation>
     </message>
   </context>
   <context>
@@ -10056,17 +10056,17 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="31"/>
       <source>Reload</source>
-      <translation type="unfinished">Reload</translation>
+      <translation>Recharger</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="32"/>
       <source>Go back</source>
-      <translation type="unfinished">Go back</translation>
+      <translation>Retour</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="33"/>
       <source>Go forward</source>
-      <translation type="unfinished">Go forward</translation>
+      <translation>Avancer</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="38"/>
@@ -10082,7 +10082,7 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webbrowser.cpp" line="353"/>
       <source>Enter URL or search phrase here</source>
-      <translation type="unfinished">Enter URL or search phrase here</translation>
+      <translation>Entrez l'URL ou la phrase de recherche ici</translation>
     </message>
   </context>
   <context>
@@ -10090,37 +10090,37 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="57"/>
       <source>PDF printing done</source>
-      <translation type="unfinished">PDF printing done</translation>
+      <translation>Impression PDF terminée</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="58"/>
       <source>PDF printing to file &apos;%1&apos; has finished.</source>
-      <translation type="unfinished">PDF printing to file &apos;%1&apos; has finished.</translation>
+      <translation>L'impression PDF vers le fichier &apos;%1&apos; a terminé.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="60"/>
       <source>Open destination folder</source>
-      <translation type="unfinished">Open destination folder</translation>
+      <translation>Ouvrir le dossier destination</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="66"/>
       <source>PDF printing failed</source>
-      <translation type="unfinished">PDF printing failed</translation>
+      <translation>L'impression PDF a échoué</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="67"/>
       <source>PDF printing to file &apos;%1&apos; failed.</source>
-      <translation type="unfinished">PDF printing to file &apos;%1&apos; failed.</translation>
+      <translation>L'impression PDF vers le fichier &apos;%1&apos; a échoué.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="76"/>
       <source>Website alert</source>
-      <translation type="unfinished">Website alert</translation>
+      <translation>Alerte site web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="77"/>
       <source>URL %1 reports this important message: %2</source>
-      <translation type="unfinished">URL %1 reports this important message: %2</translation>
+      <translation>L'URL %1 signale ce message important: %2</translation>
     </message>
   </context>
   <context>
@@ -10128,22 +10128,22 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="33"/>
       <source>Print to PDF</source>
-      <translation type="unfinished">Print to PDF</translation>
+      <translation>Imprimer en PDF</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="35"/>
       <source>Save complete webpage</source>
-      <translation type="unfinished">Save complete webpage</translation>
+      <translation>Enregistrer la page Web complète</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="78"/>
       <source>Reload (bypass cache)</source>
-      <translation type="unfinished">Reload (bypass cache)</translation>
+      <translation>Recharger (contourner le cache)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="79"/>
       <source>View source</source>
-      <translation type="unfinished">View source</translation>
+      <translation>Voir source</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="141"/>
@@ -10153,7 +10153,7 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="141"/>
       <source>Printing is finished.</source>
-      <translation type="unfinished">Printing is finished.</translation>
+      <translation>L'impression est terminée.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="146"/>
@@ -10163,47 +10163,47 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="146"/>
       <source>Printing failed.</source>
-      <translation type="unfinished">Printing failed.</translation>
+      <translation>L'impression a échoué.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="268"/>
       <source>Save page to PDF file</source>
-      <translation type="unfinished">Save page to PDF file</translation>
+      <translation>Enregistrer la page dans un fichier PDF</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="271"/>
       <source>PDF files (*.pdf)</source>
-      <translation type="unfinished">PDF files (*.pdf)</translation>
+      <translation>Fichiers PDF (*.pdf)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="285"/>
       <source>Save complete page to file</source>
-      <translation type="unfinished">Save complete page to file</translation>
+      <translation>Enregistrer la page complète dans un fichier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="288"/>
       <source>Mime HTML files (*.mhtml)</source>
-      <translation type="unfinished">Mime HTML files (*.mhtml)</translation>
+      <translation>Fichiers HTML Mime (*.mhtml)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="341"/>
       <source>Advanced</source>
-      <translation type="unfinished">Advanced</translation>
+      <translation>Avancé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="342"/>
       <source>Extra actions</source>
-      <translation type="unfinished">Extra actions</translation>
+      <translation>Actions supplémentaires</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="344"/>
       <source>Page actions</source>
-      <translation type="unfinished">Page actions</translation>
+      <translation>Actions de la page</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="350"/>
       <source>Web attributes</source>
-      <translation type="unfinished">Web attributes</translation>
+      <translation>Attributs Web</translation>
     </message>
   </context>
   <context>
@@ -10211,167 +10211,167 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="51"/>
       <source>JS enabled</source>
-      <translation type="unfinished">JS enabled</translation>
+      <translation>JavaScript activé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="54"/>
       <source>JS can open popup windows</source>
-      <translation type="unfinished">JS can open popup windows</translation>
+      <translation>JavaScript peut ouvrir des fenêtres pop-up</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="58"/>
       <source>JS can access clipboard</source>
-      <translation type="unfinished">JS can access clipboard</translation>
+      <translation>JavaScript peut accéder au presse-papier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="62"/>
       <source>Hyperlinks can get focus</source>
-      <translation type="unfinished">Hyperlinks can get focus</translation>
+      <translation>Les hyperliens peuvent être focalisés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="65"/>
       <source>Local storage enabled</source>
-      <translation type="unfinished">Local storage enabled</translation>
+      <translation>Stockage local activé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="69"/>
       <source>Local content can access remote URLs</source>
-      <translation type="unfinished">Local content can access remote URLs</translation>
+      <translation>Le contenu local peut accéder aux URLs distantes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="72"/>
       <source>XSS auditing enabled</source>
-      <translation type="unfinished">XSS auditing enabled</translation>
+      <translation>L&apos;audit XSS est activé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="75"/>
       <source>Spatial navigation enabled</source>
-      <translation type="unfinished">Spatial navigation enabled</translation>
+      <translation>Navigation spatiale activée</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="79"/>
       <source>Local content can access local files</source>
-      <translation type="unfinished">Local content can access local files</translation>
+      <translation>Le contenu local peut accéder les fichiers locaux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="82"/>
       <source>Hyperlink auditing enabled</source>
-      <translation type="unfinished">Hyperlink auditing enabled</translation>
+      <translation>Audit de lien hypertexte activé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="85"/>
       <source>Animate scrolling</source>
-      <translation type="unfinished">Animate scrolling</translation>
+      <translation>Animer les défilements</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="88"/>
       <source>Error pages enabled</source>
-      <translation type="unfinished">Error pages enabled</translation>
+      <translation>Pages d'erreurs activées</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="91"/>
       <source>Plugins enabled</source>
-      <translation type="unfinished">Plugins enabled</translation>
+      <translation>Plugins activés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="96"/>
       <source>Screen capture enabled</source>
-      <translation type="unfinished">Screen capture enabled</translation>
+      <translation>Capture d'écran activée</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="99"/>
       <source>WebGL enabled</source>
-      <translation type="unfinished">WebGL enabled</translation>
+      <translation>WebGL activé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="103"/>
       <source>Accelerate 2D canvas</source>
-      <translation type="unfinished">Accelerate 2D canvas</translation>
+      <translation>Accélérer le canevas 2D</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="106"/>
       <source>Print element backgrounds</source>
-      <translation type="unfinished">Print element backgrounds</translation>
+      <translation>Imprimer les fonds d&apos;éléments</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="110"/>
       <source>Allow running insecure content</source>
-      <translation type="unfinished">Allow running insecure content</translation>
+      <translation>Autoriser l&apos;éxécution de contenu insécurisé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="114"/>
       <source>Allow geolocation on insecure origins</source>
-      <translation type="unfinished">Allow geolocation on insecure origins</translation>
+      <translation>Autoriser la géo-localisation d'origines non securisées</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="120"/>
       <source>JS can activate windows</source>
-      <translation type="unfinished">JS can activate windows</translation>
+      <translation>JavaScript peut activer des fenêtres</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="123"/>
       <source>Show scrollbars</source>
-      <translation type="unfinished">Show scrollbars</translation>
+      <translation>Afficher les barres de défilement</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="127"/>
       <source>Media playback with gestures</source>
-      <translation type="unfinished">Media playback with gestures</translation>
+      <translation>Lecture media avec gestes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="131"/>
       <source>WebRTC uses only public interfaces</source>
-      <translation type="unfinished">WebRTC uses only public interfaces</translation>
+      <translation>WebRTC utilise uniquement des interfaces publiques</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="134"/>
       <source>JS can paste from clipboard</source>
-      <translation type="unfinished">JS can paste from clipboard</translation>
+      <translation>JavaScript peut coller depuis le presse-papiers</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="137"/>
       <source>DNS prefetch enabled</source>
-      <translation type="unfinished">DNS prefetch enabled</translation>
+      <translation>Pre-obtention DNS activée</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="142"/>
       <source>PDF viewer enabled</source>
-      <translation type="unfinished">PDF viewer enabled</translation>
+      <translation>Lecteur PDF activé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="148"/>
       <source>Force dark mode</source>
-      <translation type="unfinished">Force dark mode</translation>
+      <translation>Forcer le mode sombre</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="154"/>
       <source>Printing - print headers/footers.</source>
-      <translation type="unfinished">Printing - print headers/footers.</translation>
+      <translation>Impression - imprimer en-têtes/pieds de pages.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="196"/>
       <source>Web cache cleared</source>
-      <translation type="unfinished">Web cache cleared</translation>
+      <translation>Cache Web effacé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="197"/>
       <source>Web cache was cleared. List of visited links was cleared too.</source>
-      <translation type="unfinished">Web cache was cleared. List of visited links was cleared too.</translation>
+      <translation>Le cache Web a été vidé. La liste des liens visités a également été vidé.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="214"/>
       <source>File download</source>
-      <translation type="unfinished">File download</translation>
+      <translation>Téléchargement de fichier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="215"/>
       <source>Download of file &apos;%1&apos; was offered.</source>
-      <translation type="unfinished">Download of file &apos;%1&apos; was offered.</translation>
+      <translation>Le téléchargement du fichier &apos;%1&apos; a été proposé.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="217"/>
       <source>Copy file URL</source>
-      <translation type="unfinished">Copy file URL</translation>
+      <translation>Copier l'URL du fichier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="353"/>
@@ -10394,7 +10394,7 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="30"/>
       <source>Extra nodes</source>
-      <translation type="unfinished">Extra nodes</translation>
+      <translation>Nœuds supplémentaires</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="50"/>
@@ -10414,7 +10414,7 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="88"/>
       <source>JID</source>
-      <translation type="unfinished">JID</translation>
+      <translation>JID</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.ui" line="101"/>
@@ -10424,12 +10424,12 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="23"/>
       <source>IDs of extra services (which contain PubSub nodes) to use for discovery, one ID per line, for example news.movim.eu</source>
-      <translation type="unfinished">IDs of extra services (which contain PubSub nodes) to use for discovery, one ID per line, for example news.movim.eu</translation>
+      <translation>Identifiants de services supplémentaires (qui contiennent des nœuds PubSub) à utiliser pour la découverte - un identifiant par ligne, par exemple news.movim.eu</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="26"/>
       <source>Four kinds of nodes are supported (each on its own line):&lt;ul&gt;&lt;li&gt;PubSub service directories, for example &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP directories, for example &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;direct chatrooms (both private chats and group chats), for example &apos;chatroom@conference.movim.eu&apos; or &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub services or PEPs are probed for underlying PubSub nodes and chatrooms are added directly if they exist.</source>
-      <translation type="unfinished">Four kinds of nodes are supported (each on its own line):&lt;ul&gt;&lt;li&gt;PubSub service directories, for example &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;PubSub PEP directories, for example &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;direct chatrooms (both private chats and group chats), for example &apos;chatroom@conference.movim.eu&apos; or &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;PubSub services or PEPs are probed for underlying PubSub nodes and chatrooms are added directly if they exist.</translation>
+      <translation>Quatre types de nœuds sont pris en charge (chacun sur sa propre ligne) :&lt;ul&gt;&lt;li&gt;Répertoires de services PubSub, par exemple &apos;news.movim.eu&apos;&lt;/li&gt;&lt;li&gt;Répertoires PubSub PEP, par exemple &apos;user@movim.eu&apos;&lt;/li&gt;&lt;li&gt;salles de chat directes (chats privés et chats de groupe), par exemple &apos;chatroom@conference.movim.eu&apos; ou &apos;user@movim.eu&apos;&lt;/li&gt;&lt;/ul&gt;Les services PubSub ou PEP sont sondés pour les nœuds PubSub sous-jacents et les salons de discussion sont ajoutés directement s'ils existent.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="39"/>
@@ -10444,7 +10444,7 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="41"/>
       <source>URL of your XMPP server</source>
-      <translation type="unfinished">URL of your XMPP server</translation>
+      <translation>URL de votre serveur XMPP</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="43"/>
@@ -10474,47 +10474,47 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="97"/>
       <source>Network error, have you entered correct host, username and password?</source>
-      <translation type="unfinished">Network error, have you entered correct host, username and password?</translation>
+      <translation>Erreur réseau, avec vous entré le bon nom d&apos;utilisateur et mot de passe?</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="102"/>
       <source>File error: &apos;%1&apos;.</source>
-      <translation type="unfinished">File error: &apos;%1&apos;.</translation>
+      <translation>Erreur fichier: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="103"/>
       <source>File error</source>
-      <translation type="unfinished">File error</translation>
+      <translation>Erreur fichier</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="109"/>
       <source>Client error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">Client error: &apos;%1 - %2&apos;.</translation>
+      <translation>Erreur client: &apos;%1 - %2&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="110"/>
       <source>Client error</source>
-      <translation type="unfinished">Client error</translation>
+      <translation>Erreur client</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="118"/>
       <source>Auth error: &apos;%1 - %2&apos;.</source>
-      <translation type="unfinished">Auth error: &apos;%1 - %2&apos;.</translation>
+      <translation>Erreur d'authentification: &apos;%1 - %2&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="119"/>
       <source>Auth error</source>
-      <translation type="unfinished">Auth error</translation>
+      <translation>Erreur d’authentification</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="123"/>
       <source>Generic error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Generic error: &apos;%1&apos;.</translation>
+      <translation>Erreur générique: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="124"/>
       <source>Generic error</source>
-      <translation type="unfinished">Generic error</translation>
+      <translation>Erreur générique</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/gui/xmppaccountdetails.cpp" line="202"/>
@@ -10552,22 +10552,22 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="42"/>
       <source>Single-user chats</source>
-      <translation type="unfinished">Single-user chats</translation>
+      <translation>Chats à utilisateur unique</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="45"/>
       <source>Multi-user chats</source>
-      <translation type="unfinished">Multi-user chats</translation>
+      <translation>Chats à utilisateurs multiples</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="48"/>
       <source>PubSub services</source>
-      <translation type="unfinished">PubSub services</translation>
+      <translation>Services PubSub</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="51"/>
       <source>PubSub PEPs</source>
-      <translation type="unfinished">PubSub PEPs</translation>
+      <translation>PEPs PubSub</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppcategory.cpp" line="54"/>
@@ -10581,7 +10581,7 @@ Dernière connection le: %4</translation>
       <location filename="../src/librssguard-xmpp/src/xmppfeed.cpp" line="286"/>
       <source>Type: %1
 Service: %2</source>
-      <translation type="unfinished">Type: %1
+      <translation>Type: %1
 Service: %2</translation>
     </message>
   </context>
@@ -10590,17 +10590,17 @@ Service: %2</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="155"/>
       <source>disconnected</source>
-      <translation type="unfinished">disconnected</translation>
+      <translation>déconnecté</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="158"/>
       <source>connecting</source>
-      <translation type="unfinished">connecting</translation>
+      <translation>connexion en cours…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="161"/>
       <source>connected</source>
-      <translation type="unfinished">connected</translation>
+      <translation>connecté</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="164"/>
@@ -10610,42 +10610,42 @@ Service: %2</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="224"/>
       <source>error during services discovery, %1</source>
-      <translation type="unfinished">error during services discovery, %1</translation>
+      <translation>erreur lors de la découverte des services, %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="230"/>
       <source>unspecified error during services discovery</source>
-      <translation type="unfinished">unspecified error during services discovery</translation>
+      <translation>erreur non spécifiée lors de la découverte des services</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="504"/>
       <source>XMPP server connected</source>
-      <translation type="unfinished">XMPP server connected</translation>
+      <translation>Serveur XMPP connecté</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="505"/>
       <source>XMPP connection to server %1 is alive.</source>
-      <translation type="unfinished">XMPP connection to server %1 is alive.</translation>
+      <translation>La connexion XMPP au serveur %1 est en cours.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="546"/>
       <source>XMPP server disconnected</source>
-      <translation type="unfinished">XMPP server disconnected</translation>
+      <translation>Serveur XMPP déconnecté</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="547"/>
       <source>XMPP connection to server %1 is down.</source>
-      <translation type="unfinished">XMPP connection to server %1 is down.</translation>
+      <translation>La connexion XMPP au serveur %1 est inactive.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="553"/>
       <source>XMPP error</source>
-      <translation type="unfinished">XMPP error</translation>
+      <translation>Erreur XMPP</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="554"/>
       <source>XMPP connection to server %1 has error: %2</source>
-      <translation type="unfinished">XMPP connection to server %1 has error: %2</translation>
+      <translation>La connexion XMPP au serveur %1 comporte une erreur: %2</translation>
     </message>
   </context>
   <context>
@@ -10653,31 +10653,31 @@ Service: %2</translation>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="140"/>
       <source>Cannot store article</source>
-      <translation type="unfinished">Cannot store article</translation>
+      <translation>Impossible de stocker l'article</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="141"/>
       <source>Cannot save article obtained via push notification because its feed does not exist. Tray to refresh list of feeds.</source>
-      <translation type="unfinished">Cannot save article obtained via push notification because its feed does not exist. Tray to refresh list of feeds.</translation>
+      <translation>Impossible d'enregistrer l'article obtenu par notification push car son flux n'existe pas. Essayez de rafraîchir la liste des flux.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="212"/>
       <source>&amp;Reconnect</source>
-      <translation type="unfinished">&amp;Reconnect</translation>
+      <translation>&amp;Reconnecter</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="230"/>
       <source>Trigger async fetch</source>
-      <translation type="unfinished">Trigger async fetch</translation>
+      <translation>Déclencher l'obtention asynchrone</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="250"/>
       <source>User: %1
 Status: %2
 Supported XEPs: %3</source>
-      <translation type="unfinished">User: %1
-Status: %2
-Supported XEPs: %3</translation>
+      <translation>Utilisateur: %1
+Statut: %2
+XEP pris en charge : %3</translation>
     </message>
   </context>
 </TS>
