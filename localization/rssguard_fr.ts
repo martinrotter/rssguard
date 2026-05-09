@@ -56,52 +56,52 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1167"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1176"/>
       <source>Application is already running.</source>
       <translation>L'application est déjà lancée.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="576"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="585"/>
       <source>Output directory is not writable.</source>
       <translation>Le répertoire de destination n'est pas accessible en écriture.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="584"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="593"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>Échec : le fichier de réglages n'a pas été copié dans le répertoire de destination.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="603"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="612"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>La restauration des paramètres n'a pas été initiée. Vérifier que le répertoire de destination est modifiable.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1196"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1205"/>
       <source>Cannot add feed</source>
       <translation>Impossible d'ajouter le flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1197"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1206"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Le flux ne peut pas être ajouté car il n'y aucun compte actif pouvant ajouter des flux.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1048"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1057"/>
       <source>Unread articles fetched</source>
       <translation>Nouveaux articles non lus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="336"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="345"/>
       <source>Go to changelog</source>
       <translation>Consulter le journal des modifications</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="330"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="339"/>
       <source>Welcome</source>
       <translation>Bienvenue</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="331"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="340"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -112,7 +112,7 @@ Découvrez les NOUVEAUTÉS incluses dans cette
 version en cliquant sur cette bulle de notification.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1166"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1175"/>
       <source>Already running</source>
       <translation>Déjà en cours d'exécution</translation>
     </message>
@@ -6941,9 +6941,9 @@ stack: %3</translation>
       <translation>erreur: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="148"/>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="151"/>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="151"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="150"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="153"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="153"/>
       <source>image</source>
       <translation>Image</translation>
     </message>
@@ -8495,36 +8495,48 @@ Déscription: %3</translation>
     <name>SettingsNetwork</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="21"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="94"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="119"/>
       <source>Network</source>
       <translation>Réseau</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="92"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="117"/>
       <source>Enable HTTP/2</source>
       <translation>Activer HTTP/2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="34"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="93"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="118"/>
       <source>Custom User-Agent</source>
       <translation>User-Agent personnalisé</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="45"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="96"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="123"/>
       <source>Web</source>
       <translation>Web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="51"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="95"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="120"/>
       <source>Follow hyperlinks inside the application (do not open external web browser)</source>
       <translation>Suivre les hyperliens dans l'application (ne pas ouvrir le navigateur web externe)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="32"/>
+      <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="59"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="122"/>
+      <source>WebEngine</source>
+      <translation type="unfinished">WebEngine</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="65"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="121"/>
+      <source>Flags</source>
+      <translation type="unfinished">Flags</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="30"/>
       <source>Network proxy</source>
       <translation>Proxy réseau</translation>
     </message>
@@ -9570,7 +9582,7 @@ Charger les flux par défaut : Un petit ensemble de différents flux intéressan
   <context>
     <name>TextBrowserViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="348"/>
+      <location filename="../src/librssguard/gui/webviewers/qtextbrowser/textbrowserviewer.cpp" line="352"/>
       <source>The page cannot be loaded with HTTP/%1 error.</source>
       <translation>La page ne peut pas être chargée avec l'erreur HTTP/%1.</translation>
     </message>
@@ -10074,13 +10086,13 @@ Dernière connection le: %4</translation>
       <translation>Lire dans le lecteur multimédia</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="299"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="303"/>
       <source>No title</source>
       <extracomment>Webbrowser tab title when no title is available.</extracomment>
       <translation>Pas de titre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webbrowser.cpp" line="353"/>
+      <location filename="../src/librssguard/gui/webbrowser.cpp" line="358"/>
       <source>Enter URL or search phrase here</source>
       <translation>Entrez l'URL ou la phrase de recherche ici</translation>
     </message>
@@ -10136,74 +10148,84 @@ Dernière connection le: %4</translation>
       <translation>Enregistrer la page Web complète</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="78"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="37"/>
+      <source>GPU</source>
+      <translation type="unfinished">GPU</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="82"/>
       <source>Reload (bypass cache)</source>
       <translation>Recharger (contourner le cache)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="79"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="83"/>
       <source>View source</source>
       <translation>Voir source</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="141"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="149"/>
       <source>Done</source>
       <translation>Terminé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="141"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="149"/>
       <source>Printing is finished.</source>
       <translation>L'impression est terminée.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="146"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="154"/>
       <source>Error</source>
       <translation>Erreur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="146"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="154"/>
       <source>Printing failed.</source>
       <translation>L'impression a échoué.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="268"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="278"/>
       <source>Save page to PDF file</source>
       <translation>Enregistrer la page dans un fichier PDF</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="271"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="281"/>
       <source>PDF files (*.pdf)</source>
       <translation>Fichiers PDF (*.pdf)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="285"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="295"/>
       <source>Save complete page to file</source>
       <translation>Enregistrer la page complète dans un fichier</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="288"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="298"/>
       <source>Mime HTML files (*.mhtml)</source>
       <translation>Fichiers HTML Mime (*.mhtml)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="341"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="351"/>
       <source>Advanced</source>
       <translation>Avancé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="342"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="354"/>
       <source>Extra actions</source>
       <translation>Actions supplémentaires</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="344"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="357"/>
       <source>Page actions</source>
       <translation>Actions de la page</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="350"/>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="364"/>
       <source>Web attributes</source>
       <translation>Attributs Web</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="368"/>
+      <source>Diagnostics</source>
+      <translation type="unfinished">Diagnostics</translation>
     </message>
   </context>
   <context>
