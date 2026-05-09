@@ -8,6 +8,7 @@ Added:
 
 Fixed:
 * Initial state of "web attributes" is properly set in WebEngine builds. (#2227)
+* Article filter action "Filter articles like this" now uses the article that was actually right-clicked after testing a filter. (#2139)
 
 5.1.1
 -----

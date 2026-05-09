@@ -321,7 +321,19 @@ void FormMessageFiltersManager::filterMessagesLikeThis(const Message& msg) {
 }
 
 void FormMessageFiltersManager::showMessageContextMenu(QPoint pos) {
-  Message* msg = m_msgModel->messageForRow(m_ui.m_treeExistingMessages->indexAt(pos).row());
+  const QModelIndex proxy_idx = m_ui.m_treeExistingMessages->indexAt(pos);
+
+  if (!proxy_idx.isValid()) {
+    return;
+  }
+
+  const QModelIndex source_idx = m_msgProxyModel->mapToSource(proxy_idx);
+
+  if (!source_idx.isValid()) {
+    return;
+  }
+
+  Message* msg = m_msgModel->messageForRow(source_idx.row());
 
   if (msg != nullptr) {
     QMenu menu(tr("Context menu"), m_ui.m_treeExistingMessages);
