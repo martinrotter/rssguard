@@ -414,20 +414,26 @@ void WebBrowser::onLoadingFinished(bool success) {
     }
 
     if (url.isValid()) {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           GuiMessage(url.toString(), url.toString()),
-                           GuiMessageDestination(false, false, true));
+      QTimer::singleShot(200, this, [=]() {
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             GuiMessage(url.toString(), url.toString()),
+                             GuiMessageDestination(false, false, true));
+      });
     }
     else {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           GuiMessage({}, {}),
-                           GuiMessageDestination(false, false, true));
+      QTimer::singleShot(200, this, [=]() {
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             GuiMessage({}, {}),
+                             GuiMessageDestination(false, false, true));
+      });
     }
   }
   else {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         GuiMessage({}, {}),
-                         GuiMessageDestination(false, false, true));
+    QTimer::singleShot(200, this, [=]() {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage({}, {}),
+                           GuiMessageDestination(false, false, true));
+    });
   }
 
   m_loadingProgress->hide();
