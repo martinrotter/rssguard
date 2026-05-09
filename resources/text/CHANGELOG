@@ -2,6 +2,9 @@
 -----
 Released on: 2026-05-XX
 
+Added:
+* Show URL of loaded website in status bar. (#2097)
+
 Fixed:
 * Initial state of "web attributes" is properly set in WebEngine builds. (#2227)
 

@@ -412,6 +412,12 @@ void WebBrowser::onLoadingFinished(bool success) {
       m_actionPlayPageInMediaPlayer->setEnabled(false);
 #endif
     }
+
+    if (url.isValid()) {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage(url.toString(), url.toString()),
+                           GuiMessageDestination(false, false, true));
+    }
   }
 
   m_loadingProgress->hide();
