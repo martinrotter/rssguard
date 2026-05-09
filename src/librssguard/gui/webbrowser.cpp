@@ -418,6 +418,16 @@ void WebBrowser::onLoadingFinished(bool success) {
                            GuiMessage(url.toString(), url.toString()),
                            GuiMessageDestination(false, false, true));
     }
+    else {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage({}, {}),
+                           GuiMessageDestination(false, false, true));
+    }
+  }
+  else {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage({}, {}),
+                         GuiMessageDestination(false, false, true));
   }
 
   m_loadingProgress->hide();
