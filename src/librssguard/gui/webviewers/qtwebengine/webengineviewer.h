@@ -77,7 +77,6 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual void reloadNetworkSettings();
 
     virtual void loadMessage(const Message& message, RootItem* root);
-    virtual QString htmlForMessage(const Message& message, RootItem* root) const;
 
     virtual void loadUrl(const QUrl& url);
     virtual void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);

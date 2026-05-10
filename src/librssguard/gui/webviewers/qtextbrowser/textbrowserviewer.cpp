@@ -6,18 +6,61 @@
 #include "definitions/definitions.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
-#include "miscellaneous/textfactory.h"
 
 #include <cstring>
+#include <utility>
 
-#include <QBuffer>
 #include <QContextMenuEvent>
 #include <QDomDocument>
 #include <QFileIconProvider>
 #include <QScrollBar>
-#include <QTextDocumentFragment>
 #include <QTimer>
-#include <QtConcurrent>
+
+TextBrowserImageDownloader::TextBrowserImageDownloader(QList<QUrl> image_urls,
+                                                       QNetworkProxy custom_proxy,
+                                                       QObject* parent)
+  : QObject(parent), m_imageUrls(std::move(image_urls)), m_customProxy(std::move(custom_proxy)) {}
+
+void TextBrowserImageDownloader::cancel() {
+  m_cancelled = true;
+}
+
+void TextBrowserImageDownloader::downloadImages() {
+  for (int i = 0; i < m_imageUrls.size(); ++i) {
+    if (m_cancelled) {
+      emit downloadFinished(false);
+      return;
+    }
+
+    const QUrl image_url = m_imageUrls.at(i);
+    QByteArray image_data;
+    NetworkResult network_result =
+      NetworkFactory::performNetworkOperation(image_url.toString(),
+                                              10000,
+                                              {},
+                                              image_data,
+                                              QNetworkAccessManager::Operation::GetOperation,
+                                              {},
+                                              false,
+                                              {},
+                                              {},
+                                              m_customProxy);
+
+    QImage image;
+
+    if (network_result.m_networkError == QNetworkReply::NetworkError::NoError) {
+      image.loadFromData(image_data);
+    }
+
+    if (!image.isNull()) {
+      emit imageDownloaded(image_url, image);
+    }
+
+    emit downloadProgress(((i + 1) * 100) / m_imageUrls.size());
+  }
+
+  emit downloadFinished(true);
+}
 
 TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   : QTextBrowser(parent), m_document(new TextBrowserDocument(this)) {
@@ -39,7 +82,13 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
   connect(this, QOverload<const QUrl&>::of(&QTextBrowser::highlighted), this, &TextBrowserViewer::linkMouseHighlighted);
 }
 
-TextBrowserViewer::~TextBrowserViewer() {}
+TextBrowserViewer::~TextBrowserViewer() {
+  abortImageDownloading();
+
+  if (!m_imageDownloadThread.isNull()) {
+    m_imageDownloadThread->wait();
+  }
+}
 
 QSize TextBrowserViewer::sizeHint() const {
   auto doc_size = document()->size().toSize();
@@ -199,34 +248,30 @@ static void processGumboNode(GumboNode* node, QString& out) {
   }
 }
 
-QString TextBrowserViewer::convertToHtmlWithoutImages(const QString& html) const {
-  if (!TextFactory::couldBeHtml(html)) {
-    return html;
+static void collectImageUrlsFromGumboNode(GumboNode* node, QList<QString>& image_urls) {
+  if (node == nullptr || node->type != GUMBO_NODE_ELEMENT) {
+    return;
   }
 
-  QByteArray utf8 = html.toUtf8();
-  GumboOutput* output = gumbo_parse(utf8.constData());
-  QString result;
-  GumboNode* root = output->root;
+  GumboElement& el = node->v.element;
 
-  processGumboNode(root, result);
+  if (el.tag == GUMBO_TAG_IMG) {
+    GumboAttribute* attr_src = gumbo_get_attribute(&el.attributes, "src");
 
-  gumbo_destroy_output(&kGumboDefaultOptions, output);
+    if (attr_src != nullptr && attr_src->value != nullptr) {
+      image_urls.append(QString::fromUtf8(attr_src->value));
+    }
+  }
 
-  // IOFactory::debugWriteFile("orig.html", html.toUtf8());
-  // IOFactory::debugWriteFile("new.html", result.toUtf8());
+  GumboVector* children = &el.children;
 
-  return result;
+  for (unsigned int i = 0; i < children->length; ++i) {
+    collectImageUrlsFromGumboNode(static_cast<GumboNode*>(children->data[i]), image_urls);
+  }
 }
 
 QString TextBrowserViewer::htmlForMessage(const Message& message, RootItem* root) const {
-  auto editable_message = message;
-
-  editable_message.m_contents = convertToHtmlWithoutImages(editable_message.m_contents);
-
-  auto html_message = qApp->skins()->generateHtmlOfArticle(editable_message, root);
-
-  // html_message = QTextDocumentFragment().fromHtml(html_message).toPlainText();
+  auto html_message = WebViewer::htmlForMessage(message, root);
 
   // Remove other characters which cannot be displayed properly.
   static QRegularExpression exp_symbols("&#x1F[0-9A-F]{3};");
@@ -271,11 +316,30 @@ void TextBrowserViewer::goForward() {
 }
 
 bool TextBrowserViewer::supportImagesLoading() const {
-  return false;
+  return true;
 }
 
 bool TextBrowserViewer::supportsNavigation() const {
   return false;
+}
+
+void TextBrowserViewer::setLoadExternalResources(bool load_resources) {
+  WebViewer::setLoadExternalResources(load_resources);
+
+  if (m_currentHtml.isEmpty()) {
+    return;
+  }
+
+  abortImageDownloading();
+  m_downloadedImages.clear();
+
+  emit loadingStarted();
+  justSetHtml(m_currentHtml, m_currentUrl, m_root.data(), true);
+
+  if (!load_resources || !startImageDownloading()) {
+    emit loadingProgress(100);
+    emit loadingFinished(true);
+  }
 }
 
 qreal TextBrowserViewer::zoomFactor() const {
@@ -309,9 +373,7 @@ void TextBrowserViewer::loadMessage(const Message& message, RootItem* root) {
   auto url = urlForMessage(message, root);
   auto html = htmlForMessage(message, root);
 
-  justSetHtml(html, url, root);
-
-  emit loadingProgress(50);
+  bool downloads_started = loadStaticHtml(html, url, root);
 
   QTextOption op;
   op.setTextDirection((message.m_rtlBehavior == RtlBehavior::Everywhere ||
@@ -321,7 +383,10 @@ void TextBrowserViewer::loadMessage(const Message& message, RootItem* root) {
                         : Qt::LayoutDirection::LeftToRight);
   document()->setDefaultTextOption(op);
 
-  emit loadingFinished(true);
+  if (!downloads_started) {
+    emit loadingProgress(100);
+    emit loadingFinished(true);
+  }
 }
 
 void TextBrowserViewer::displayDownloadedPage(const QUrl& url, const QByteArray& data, const NetworkResult& res) {
@@ -333,14 +398,20 @@ void TextBrowserViewer::displayDownloadedPage(const QUrl& url, const QByteArray&
       QDomDocument dom;
 
       if (dom.setContent(data)) {
-        setHtml(Qt::convertFromPlainText(dom.toString(2)), url);
+        if (loadStaticHtml(Qt::convertFromPlainText(dom.toString(2)), url)) {
+          return;
+        }
       }
       else {
-        setHtml(QString::fromUtf8(data).toHtmlEscaped(), url);
+        if (loadStaticHtml(QString::fromUtf8(data).toHtmlEscaped(), url)) {
+          return;
+        }
       }
     }
     else {
-      setHtml(QString::fromUtf8(data), url);
+      if (loadStaticHtml(QString::fromUtf8(data), url)) {
+        return;
+      }
 
       if (url.hasFragment()) {
         scrollToAnchor(url.fragment());
@@ -355,7 +426,7 @@ void TextBrowserViewer::displayDownloadedPage(const QUrl& url, const QByteArray&
       error += QString::fromUtf8(data);
     }
 
-    setHtml(Qt::convertFromPlainText(error), url);
+    loadStaticHtml(Qt::convertFromPlainText(error), url);
   }
 
   emit loadingFinished(res.m_networkError == QNetworkReply::NetworkError::NoError);
@@ -393,19 +464,161 @@ void TextBrowserViewer::loadUrl(const QUrl& url) {
 }
 
 void TextBrowserViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
-  justSetHtml(convertToHtmlWithoutImages(html), url, root);
+  emit loadingStarted();
+
+  if (!loadStaticHtml(html, url, root)) {
+    emit loadingProgress(100);
+    emit loadingFinished(true);
+  }
 }
 
-void TextBrowserViewer::justSetHtml(const QString& html, const QUrl& url, RootItem* root) {
+bool TextBrowserViewer::loadStaticHtml(const QString& html, const QUrl& url, RootItem* root) {
+  abortImageDownloading();
+
+  m_currentHtml = html;
+  m_downloadedImages.clear();
+
+  justSetHtml(html, url, root);
+
+  if (loadExternalResources()) {
+    return startImageDownloading();
+  }
+
+  return false;
+}
+
+void TextBrowserViewer::justSetHtml(const QString& html, const QUrl& url, RootItem* root, bool keep_scroll) {
+  const double scroll_position = verticalScrollBarPosition();
+
   m_currentUrl = url;
+  m_root = root;
+
+  document()->setBaseUrl(url);
 
   QTextBrowser::setHtml(html);
 
   setZoomFactor(m_zoomFactor);
-  setVerticalScrollBarPosition(0.0);
+  setVerticalScrollBarPosition(keep_scroll ? scroll_position : 0.0);
 
   emit pageTitleChanged(documentTitle());
   emit pageUrlChanged(url);
+}
+
+void TextBrowserViewer::abortImageDownloading() {
+  if (!m_imageDownloader.isNull()) {
+    m_imageDownloader->cancel();
+    m_imageDownloader->disconnect(this);
+  }
+
+  if (!m_imageDownloadThread.isNull()) {
+    m_imageDownloadThread->quit();
+  }
+}
+
+bool TextBrowserViewer::startImageDownloading() {
+  const QList<QUrl> image_urls = imageUrlsForHtml(m_currentHtml, m_currentUrl);
+
+  if (image_urls.isEmpty()) {
+    return false;
+  }
+
+  emit loadingProgress(0);
+
+  auto* thread = new QThread(this);
+  auto* downloader = new TextBrowserImageDownloader(image_urls, networkProxyForCurrentRoot());
+
+  m_imageDownloadThread = thread;
+  m_imageDownloader = downloader;
+
+  downloader->moveToThread(thread);
+
+  connect(thread, &QThread::started, downloader, &TextBrowserImageDownloader::downloadImages);
+  connect(downloader, &TextBrowserImageDownloader::downloadFinished, thread, &QThread::quit);
+  connect(downloader,
+          &TextBrowserImageDownloader::imageDownloaded,
+          this,
+          [this, downloader](const QUrl& image_url, const QImage& image) {
+            if (m_imageDownloader != downloader) {
+              return;
+            }
+
+            m_downloadedImages.insert(image_url, image);
+          });
+  connect(downloader, &TextBrowserImageDownloader::downloadProgress, this, [this, downloader](int progress) {
+    if (m_imageDownloader != downloader) {
+      return;
+    }
+
+    emit loadingProgress(progress);
+  });
+  connect(downloader, &TextBrowserImageDownloader::downloadFinished, this, [this, downloader](bool success) {
+    if (m_imageDownloader != downloader) {
+      return;
+    }
+
+    reloadHtmlWithCachedImages();
+
+    emit loadingProgress(100);
+    emit loadingFinished(success);
+
+    m_imageDownloader = nullptr;
+    m_imageDownloadThread = nullptr;
+  });
+  connect(thread, &QThread::finished, downloader, &QObject::deleteLater);
+  connect(thread, &QThread::finished, thread, &QObject::deleteLater);
+
+  thread->start();
+  return true;
+}
+
+void TextBrowserViewer::reloadHtmlWithCachedImages() {
+  justSetHtml(m_currentHtml, m_currentUrl, m_root.data(), true);
+}
+
+QList<QUrl> TextBrowserViewer::imageUrlsForHtml(const QString& html, const QUrl& base_url) const {
+  QList<QString> raw_image_urls;
+  QByteArray utf8 = html.toUtf8();
+  GumboOutput* output = gumbo_parse(utf8.constData());
+
+  collectImageUrlsFromGumboNode(output->root, raw_image_urls);
+  gumbo_destroy_output(&kGumboDefaultOptions, output);
+
+  QList<QUrl> image_urls;
+
+  for (const QString& raw_image_url : std::as_const(raw_image_urls)) {
+    const QUrl image_url(raw_image_url);
+    const QUrl resolved_image_url = image_url.isRelative() ? base_url.resolved(image_url) : image_url;
+
+    if (!resolved_image_url.isValid()) {
+      continue;
+    }
+
+    const QString scheme = resolved_image_url.scheme().toLower();
+
+    if (scheme != QSL("http") && scheme != QSL("https") && scheme != QSL("gemini")) {
+      continue;
+    }
+
+    if (!image_urls.contains(resolved_image_url)) {
+      image_urls.append(resolved_image_url);
+    }
+  }
+
+  return image_urls;
+}
+
+QUrl TextBrowserViewer::resolvedResourceUrl(const QUrl& resource_url) const {
+  if (resource_url.isRelative()) {
+    return m_currentUrl.resolved(resource_url);
+  }
+  else {
+    return resource_url;
+  }
+}
+
+QNetworkProxy TextBrowserViewer::networkProxyForCurrentRoot() const {
+  return m_root.isNull() ? QNetworkProxy::ProxyType::DefaultProxy
+                         : m_root->account()->networkProxyForItem(m_root.data());
 }
 
 TextBrowserDocument::TextBrowserDocument(TextBrowserViewer* parent) : QTextDocument(parent) {
@@ -413,8 +626,24 @@ TextBrowserDocument::TextBrowserDocument(TextBrowserViewer* parent) : QTextDocum
 }
 
 QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
-  if (QTextDocument::ResourceType(type) = QTextDocument::ResourceType::ImageResource) {
-    return m_viewer->m_placeholderImage;
+  if (m_viewer.isNull()) {
+    return {};
+  }
+
+  if (QTextDocument::ResourceType(type) == QTextDocument::ImageResource) {
+    const QUrl image_url = m_viewer->resolvedResourceUrl(name);
+    const auto image = m_viewer->m_downloadedImages.constFind(image_url);
+
+    if (image != m_viewer->m_downloadedImages.constEnd()) {
+      return image.value();
+    }
+
+    if (m_viewer->loadExternalResources() && m_viewer->m_imageDownloader.isNull()) {
+      return m_viewer->m_placeholderImageError;
+    }
+    else {
+      return m_viewer->m_placeholderImage;
+    }
   }
   else {
     return {};
