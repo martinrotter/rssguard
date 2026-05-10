@@ -57,6 +57,9 @@ class RSSGUARD_DLLSPEC NetworkFactory {
 
     // Returns human readable text for given network error.
     static QString networkErrorText(QNetworkReply::NetworkError error_code);
+
+    static bool isNetworkConnectionActive();
+
     static QString sanitizeUrl(const QString& url);
 
     // Performs SYNCHRONOUS favicon download for the site,

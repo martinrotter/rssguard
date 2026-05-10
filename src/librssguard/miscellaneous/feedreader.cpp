@@ -245,6 +245,8 @@ void FeedReader::updateAutoUpdateStatus() {
   m_globalAutoUpdateEnabled = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateEnabled)).toBool();
   m_globalAutoUpdateOnlyUnfocused =
     qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool();
+  m_globalAutoUpdateOnlyIfNetworkConnected =
+    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FetchOnlyWhenNetworkConnected)).toBool();
 
   if (m_globalAutoUpdateFast) {
     // NOTE: In "fast" mode, we set interval to 1 second.
@@ -384,6 +386,14 @@ MessagesModel* FeedReader::messagesModel() const {
 }
 
 void FeedReader::executeNextAutoUpdate() {
+  bool disable_because_disconnected =
+    m_globalAutoUpdateOnlyIfNetworkConnected && !NetworkFactory::isNetworkConnectionActive();
+
+  if (disable_because_disconnected) {
+    qWarningNN << LOGSEC_NETWORK << "Feed auto-fetch is delayed because network is (probably) disconnected.";
+    return;
+  }
+
   bool disable_update_with_window =
     (qApp->mainFormWidget()->isActiveWindow() || QApplication::activeModalWidget() != nullptr) &&
     m_globalAutoUpdateOnlyUnfocused;
@@ -450,7 +460,7 @@ void FeedReader::executeNextAutoUpdate() {
 
   QList<Feed*> feeds_for_update = m_feedsModel->feedsForScheduledUpdate(auto_update_now);
 
-  for (const QPointer<Feed>& async_feed_fetch : m_feedsRequestedToFetchByAccounts) {
+  for (const QPointer<Feed>& async_feed_fetch : std::as_const(m_feedsRequestedToFetchByAccounts)) {
     if (async_feed_fetch.isNull() || feeds_for_update.contains(async_feed_fetch.data())) {
       continue;
     }

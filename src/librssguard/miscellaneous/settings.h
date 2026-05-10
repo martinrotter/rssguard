@@ -97,6 +97,9 @@ namespace Feeds {
   KEY DontAskWhenMarkinAllRead;
   VALUE(bool) DontAskWhenMarkinAllReadDef;
 
+  KEY FetchOnlyWhenNetworkConnected;
+  VALUE(bool) FetchOnlyWhenNetworkConnectedDef;
+
   KEY PauseFeedFetching;
   VALUE(bool) PauseFeedFetchingDef;
 

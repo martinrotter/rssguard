@@ -31,7 +31,7 @@ void SettingsPanel::onEndSaveSettings() {
 }
 
 void SettingsPanel::dirtifySettings() {
-  if (!m_isLoading) {
+  if (!m_isLoading && m_uiLoaded) {
     setIsDirty(true);
     emit settingsChanged();
   }
@@ -46,7 +46,7 @@ void SettingsPanel::setRequiresRestart(bool requiresRestart) {
 }
 
 void SettingsPanel::requireRestart() {
-  if (!m_isLoading) {
+  if (!m_isLoading && m_uiLoaded) {
     setRequiresRestart(true);
   }
 }

@@ -7,10 +7,17 @@
 
 #include <QEventLoop>
 #include <QIcon>
+#include <QNetworkInterface>
 #include <QPixmap>
 #include <QRegularExpression>
 #include <QTextDocument>
 #include <QTimer>
+
+#if QT_VERSION_MAJOR >= 6
+#include <QNetworkInformation>
+#else
+#include <QNetworkConfigurationManager>
+#endif
 
 #define SECS_WHEN_RETRYAFTER_MISSING 120
 
@@ -171,6 +178,46 @@ QString NetworkFactory::networkErrorText(QNetworkReply::NetworkError error_code)
       //: Network status.
       return enumToString(error_code);
   }
+}
+
+bool NetworkFactory::isNetworkConnectionActive() {
+#if QT_VERSION_MAJOR >= 6
+  if (QNetworkInformation::loadDefaultBackend()) {
+    switch (QNetworkInformation::instance()->reachability()) {
+      case QNetworkInformation::Reachability::Disconnected:
+        return false;
+
+      case QNetworkInformation::Reachability::Local:
+      case QNetworkInformation::Reachability::Site:
+      case QNetworkInformation::Reachability::Online:
+        return true;
+
+      case QNetworkInformation::Reachability::Unknown:
+        break;
+    }
+  }
+#else
+  QNetworkConfigurationManager manager;
+
+  if (manager.isOnline()) {
+    return true;
+  }
+#endif
+
+  const auto interfaces = QNetworkInterface::allInterfaces();
+
+  for (const auto& interface : interfaces) {
+    const auto flags = interface.flags();
+    const bool is_active = flags.testFlag(QNetworkInterface::InterfaceFlag::IsUp) &&
+                           flags.testFlag(QNetworkInterface::InterfaceFlag::IsRunning);
+    const bool is_loopback = flags.testFlag(QNetworkInterface::InterfaceFlag::IsLoopBack);
+
+    if (is_active && !is_loopback && !interface.addressEntries().isEmpty()) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 QString NetworkFactory::sanitizeUrl(const QString& url) {

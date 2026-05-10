@@ -92,7 +92,7 @@ void FormSettings::applySettings() {
   QStringList panels_for_restart;
 
   for (SettingsPanel* panel : std::as_const(m_panels)) {
-    if (panel->isDirty() && panel->isLoaded()) {
+    if (panel->isDirty() && panel->isLoaded() && panel->uiLoaded()) {
       panel->saveSettings();
     }
 
