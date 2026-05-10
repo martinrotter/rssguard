@@ -7,15 +7,60 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
+#include "network-web/webfactory.h"
 
 #include <cstring>
 #include <utility>
 
 #include <QContextMenuEvent>
+#include <QCryptographicHash>
+#include <QDir>
 #include <QDomDocument>
+#include <QFile>
 #include <QFileIconProvider>
+#include <QFileInfo>
 #include <QScrollBar>
 #include <QTimer>
+
+QString TextBrowserImageCache::cacheRootFolder() {
+  return qApp->web()->webCacheFolder() + QDir::separator() + QSL("images");
+}
+
+QString TextBrowserImageCache::cacheFilePath(const QUrl& image_url) {
+  const QString host = image_url.host().isEmpty() ? QSL("_unknown") : image_url.host();
+  const QByteArray hash =
+    QCryptographicHash::hash(image_url.toString(QUrl::ComponentFormattingOption::FullyEncoded).toUtf8(),
+                             QCryptographicHash::Algorithm::Md5)
+      .toHex();
+
+  return cacheRootFolder() + QDir::separator() + QString(QUrl::toPercentEncoding(host)) + QDir::separator() +
+         QString::fromLatin1(hash);
+}
+
+bool TextBrowserImageCache::loadImage(const QUrl& image_url, QImage& image) {
+  return image.load(cacheFilePath(image_url));
+}
+
+bool TextBrowserImageCache::saveImage(const QUrl& image_url, const QByteArray& image_data) {
+  const QString file_path = cacheFilePath(image_url);
+  const QFileInfo file_info(file_path);
+
+  if (!QDir().mkpath(file_info.absolutePath())) {
+    return false;
+  }
+
+  QFile file(file_path);
+
+  if (!file.open(QFile::OpenModeFlag::WriteOnly)) {
+    return false;
+  }
+
+  return file.write(image_data) == image_data.size();
+}
+
+void TextBrowserImageCache::cleanup() {
+  IOFactory::removeFolder(cacheRootFolder());
+}
 
 TextBrowserImageDownloader::TextBrowserImageDownloader(QList<QUrl> image_urls,
                                                        QNetworkProxy custom_proxy,
@@ -34,23 +79,29 @@ void TextBrowserImageDownloader::downloadImages() {
     }
 
     const QUrl image_url = m_imageUrls.at(i);
-    QByteArray image_data;
-    NetworkResult network_result =
-      NetworkFactory::performNetworkOperation(image_url.toString(),
-                                              10000,
-                                              {},
-                                              image_data,
-                                              QNetworkAccessManager::Operation::GetOperation,
-                                              {},
-                                              false,
-                                              {},
-                                              {},
-                                              m_customProxy);
-
     QImage image;
 
-    if (network_result.m_networkError == QNetworkReply::NetworkError::NoError) {
-      image.loadFromData(image_data);
+    if (!TextBrowserImageCache::loadImage(image_url, image)) {
+      QByteArray image_data;
+      NetworkResult network_result =
+        NetworkFactory::performNetworkOperation(image_url.toString(),
+                                                10000,
+                                                {},
+                                                image_data,
+                                                QNetworkAccessManager::Operation::GetOperation,
+                                                {},
+                                                false,
+                                                {},
+                                                {},
+                                                m_customProxy);
+
+      if (network_result.m_networkError == QNetworkReply::NetworkError::NoError) {
+        image.loadFromData(image_data);
+
+        if (!image.isNull()) {
+          TextBrowserImageCache::saveImage(image_url, image_data);
+        }
+      }
     }
 
     if (!image.isNull()) {
@@ -308,7 +359,11 @@ void TextBrowserViewer::printToPrinter(QPrinter* printer) {
   onPrintingFinished(true);
 }
 
-void TextBrowserViewer::cleanupCache() {}
+void TextBrowserViewer::cleanupCache() {
+  abortImageDownloading();
+  m_downloadedImages.clear();
+  TextBrowserImageCache::cleanup();
+}
 
 double TextBrowserViewer::verticalScrollBarPosition() const {
   return verticalScrollBar()->value();
