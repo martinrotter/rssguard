@@ -74,8 +74,35 @@ void WebViewer::copySelectedImage() {
   auto* clip = QGuiApplication::clipboard();
 
   if (clip != nullptr && m_contextMenuData.m_imgLinkUrl.isValid()) {
-    // TODO stahnout img a nastavit
-    // clip->setPixmap(m_contextMenuData.m_img);
+    QByteArray out;
+    auto res = NetworkFactory::performNetworkOperation(m_contextMenuData.m_imgLinkUrl.toString(),
+                                                       5000,
+                                                       {},
+                                                       out,
+                                                       QNetworkAccessManager::Operation::GetOperation);
+
+    if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+      QImage img;
+
+      if (img.loadFromData(out)) {
+        QGuiApplication::clipboard()->setImage(img);
+      }
+      else {
+        qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                             GuiMessage(QObject::tr("Image not decoded"),
+                                        QObject::tr("Failed to decode image '%1'.")
+                                          .arg(m_contextMenuData.m_imgLinkUrl.toString())),
+                             GuiMessageDestination(true, true));
+      }
+    }
+    else {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage(QObject::tr("Image not downloaded"),
+                                      QObject::tr("Failed to download image '%1' with error '%2'.")
+                                        .arg(m_contextMenuData.m_imgLinkUrl.toString(),
+                                             NetworkFactory::networkErrorText(res.m_networkError))),
+                           GuiMessageDestination(true, true));
+    }
   }
 }
 
@@ -105,8 +132,24 @@ void WebViewer::saveImageAs() {
                                            GENERAL_REMEMBERED_PATH);
 
   if (!filename.isEmpty()) {
-    // TODO: todo
-    // m_contextMenuData.m_imgLinkUrl.save(filename);
+    QByteArray out;
+    auto res = NetworkFactory::performNetworkOperation(m_contextMenuData.m_imgLinkUrl.toString(),
+                                                       5000,
+                                                       {},
+                                                       out,
+                                                       QNetworkAccessManager::Operation::GetOperation);
+
+    if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+      IOFactory::writeFile(filename, out);
+    }
+    else {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage(QObject::tr("Image not downloaded"),
+                                      QObject::tr("Failed to download image '%1' with error '%2'.")
+                                        .arg(m_contextMenuData.m_imgLinkUrl.toString(),
+                                             NetworkFactory::networkErrorText(res.m_networkError))),
+                           GuiMessageDestination(true, true));
+    }
   }
 }
 

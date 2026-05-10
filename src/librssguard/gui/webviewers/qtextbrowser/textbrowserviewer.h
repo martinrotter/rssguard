@@ -138,6 +138,8 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     void reloadHtmlWithCachedImages();
 
     QList<QUrl> imageUrlsForHtml(const QString& html, const QUrl& base_url) const;
+    QUrl imageUrlAt(const QPoint& pos) const;
+    QUrl imageUrlFromCursor(const QTextCursor& cursor) const;
     QUrl resolvedResourceUrl(const QUrl& resource_url) const;
     QNetworkProxy networkProxyForCurrentRoot() const;
 
