@@ -6,6 +6,7 @@
 #include "definitions/definitions.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/textfactory.h"
 
 #include <cstring>
 #include <utility>
@@ -270,6 +271,27 @@ static void collectImageUrlsFromGumboNode(GumboNode* node, QList<QString>& image
   }
 }
 
+QString TextBrowserViewer::htmlToDisplay(const QString& html) const {
+  return loadExternalResources() ? html : convertToHtmlWithoutImages(html);
+}
+
+QString TextBrowserViewer::convertToHtmlWithoutImages(const QString& html) const {
+  if (!TextFactory::couldBeHtml(html)) {
+    return html;
+  }
+
+  QByteArray utf8 = html.toUtf8();
+  GumboOutput* output = gumbo_parse(utf8.constData());
+  QString result;
+  GumboNode* root = output->root;
+
+  processGumboNode(root, result);
+
+  gumbo_destroy_output(&kGumboDefaultOptions, output);
+
+  return result;
+}
+
 QString TextBrowserViewer::htmlForMessage(const Message& message, RootItem* root) const {
   auto html_message = WebViewer::htmlForMessage(message, root);
 
@@ -334,7 +356,7 @@ void TextBrowserViewer::setLoadExternalResources(bool load_resources) {
   m_downloadedImages.clear();
 
   emit loadingStarted();
-  justSetHtml(m_currentHtml, m_currentUrl, m_root.data(), true);
+  justSetHtml(htmlToDisplay(m_currentHtml), m_currentUrl, m_root.data(), true);
 
   if (!load_resources || !startImageDownloading()) {
     emit loadingProgress(100);
@@ -478,7 +500,7 @@ bool TextBrowserViewer::loadStaticHtml(const QString& html, const QUrl& url, Roo
   m_currentHtml = html;
   m_downloadedImages.clear();
 
-  justSetHtml(html, url, root);
+  justSetHtml(htmlToDisplay(html), url, root);
 
   if (loadExternalResources()) {
     return startImageDownloading();
@@ -572,7 +594,7 @@ bool TextBrowserViewer::startImageDownloading() {
 }
 
 void TextBrowserViewer::reloadHtmlWithCachedImages() {
-  justSetHtml(m_currentHtml, m_currentUrl, m_root.data(), true);
+  justSetHtml(htmlToDisplay(m_currentHtml), m_currentUrl, m_root.data(), true);
 }
 
 QList<QUrl> TextBrowserViewer::imageUrlsForHtml(const QString& html, const QUrl& base_url) const {
