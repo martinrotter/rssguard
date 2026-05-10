@@ -6,6 +6,7 @@
 #include "definitions/definitions.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iofactory.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
 
@@ -20,6 +21,7 @@
 #include <QFileIconProvider>
 #include <QFileInfo>
 #include <QScrollBar>
+#include <QTextImageFormat>
 #include <QTimer>
 
 QString TextBrowserImageCache::cacheRootFolder() {
@@ -693,6 +695,47 @@ QUrl TextBrowserViewer::resolvedResourceUrl(const QUrl& resource_url) const {
   }
 }
 
+QUrl TextBrowserViewer::imageUrlAt(const QPoint& pos) const {
+  QTextCursor cursor = cursorForPosition(pos);
+  QUrl image_url = imageUrlFromCursor(cursor);
+
+  if (image_url.isValid()) {
+    return image_url;
+  }
+
+  if (cursor.position() > 0) {
+    QTextCursor previous_cursor(cursor);
+
+    previous_cursor.movePosition(QTextCursor::MoveOperation::PreviousCharacter);
+    image_url = imageUrlFromCursor(previous_cursor);
+
+    if (image_url.isValid()) {
+      return image_url;
+    }
+  }
+
+  QTextCursor next_cursor(cursor);
+
+  if (next_cursor.movePosition(QTextCursor::MoveOperation::NextCharacter)) {
+    image_url = imageUrlFromCursor(next_cursor);
+  }
+
+  return image_url;
+}
+
+QUrl TextBrowserViewer::imageUrlFromCursor(const QTextCursor& cursor) const {
+  const QTextCharFormat format = cursor.charFormat();
+
+  if (!format.isImageFormat()) {
+    return {};
+  }
+
+  const QTextImageFormat image_format = format.toImageFormat();
+  const QUrl image_url(image_format.name());
+
+  return image_url.isValid() ? resolvedResourceUrl(image_url) : QUrl();
+}
+
 QNetworkProxy TextBrowserViewer::networkProxyForCurrentRoot() const {
   return m_root.isNull() ? QNetworkProxy::ProxyType::DefaultProxy
                          : m_root->account()->networkProxyForItem(m_root.data());
@@ -731,6 +774,7 @@ ContextMenuData TextBrowserViewer::provideContextMenuData(QContextMenuEvent* eve
   ContextMenuData c;
 
   c.m_linkUrl = anchorAt(event->pos());
+  c.m_imgLinkUrl = imageUrlAt(event->pos());
   c.m_selectedText = textCursor().selectedText();
 
   return c;
