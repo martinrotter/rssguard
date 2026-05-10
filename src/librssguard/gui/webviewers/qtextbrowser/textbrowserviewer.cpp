@@ -8,6 +8,8 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/textfactory.h"
 
+#include <cstring>
+
 #include <QBuffer>
 #include <QContextMenuEvent>
 #include <QDomDocument>
@@ -134,10 +136,10 @@ static void processGumboNode(GumboNode* node, QString& out) {
           QString href = src.toHtmlEscaped();
           QString link_text;
 
-          if (attr_alt && attr_alt->value && QString::fromUtf8(attr_alt->value).trimmed().size() > 0) {
+          if (attr_alt && attr_alt->value && strlen(attr_alt->value) > 0) {
             link_text = QString::fromUtf8(attr_alt->value).toHtmlEscaped();
           }
-          else if (attr_title && attr_title->value && QString::fromUtf8(attr_title->value).trimmed().size() > 0) {
+          else if (attr_title && attr_title->value && strlen(attr_title->value) > 0) {
             link_text = QString::fromUtf8(attr_title->value).toHtmlEscaped();
           }
           else {
@@ -147,14 +149,11 @@ static void processGumboNode(GumboNode* node, QString& out) {
               link_text = url.fileName().toHtmlEscaped();
             }
             else if (url.isValid() && !url.host().isEmpty()) {
-              link_text = QObject::tr("image") + QSL(" - ") + url.host().toHtmlEscaped();
-            }
-            else {
-              link_text = QObject::tr("image");
+              link_text = url.host().toHtmlEscaped();
             }
           }
 
-          out += QSL("<br/><a href=\"%1\">🖼️ %2</a><br/>").arg(href, link_text);
+          out += QSL("<br/><a href=\"%1\">🖼️ %2 - %3</a><br/>").arg(href, QObject::tr("image"), link_text);
         }
 
         return;
