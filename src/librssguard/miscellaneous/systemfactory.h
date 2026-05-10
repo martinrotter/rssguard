@@ -43,28 +43,32 @@ class RSSGUARD_DLLSPEC SystemFactory : public QObject {
     explicit SystemFactory(QObject* parent = nullptr);
     virtual ~SystemFactory();
 
+    // Tries to download list with new updates.
+    void checkForUpdates() const;
+
     // Returns current status of auto-start function.
-    SystemFactory::AutoStartStatus autoStartStatus() const;
+    static SystemFactory::AutoStartStatus autoStartStatus();
 
     // Sets new status for auto-start function.
     // Function returns false if setting of
     // new status failed.
-    bool setAutoStartStatus(AutoStartStatus new_status);
+    static bool setAutoStartStatus(AutoStartStatus new_status);
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
     // Returns standard location where auto-start .desktop files
     // should be placed.
-    QString autostartDesktopFileLocation() const;
+    static QString autostartDesktopFileLocation();
 #endif
 
+    // Returns true if detection of Windows Game Mode status is supported.
+    static bool isGameModeDetectionSupported();
+
+    // Returns true if Windows Game Mode is active.
+    // Function returns false on non-Windows/unsupported systems.
+    static bool isGameModeActive();
+
     // Retrieves username of currently logged-in user.
-    QString loggedInUser() const;
-
-    // Tries to download list with new updates.
-    void checkForUpdates() const;
-
-  public slots:
-    void checkForUpdatesOnStartup();
+    static QString loggedInUser();
 
     static QRegularExpression supportedUpdateFiles();
 
@@ -72,6 +76,9 @@ class RSSGUARD_DLLSPEC SystemFactory : public QObject {
     static bool isVersionNewer(const QString& new_version, const QString& base_version);
     static bool isVersionEqualOrNewer(const QString& new_version, const QString& base_version);
     static bool openFolderFile(const QString& file_path);
+
+  public slots:
+    void checkForUpdatesOnStartup();
 
   signals:
     void updatesChecked(QPair<QList<UpdateInfo>, QNetworkReply::NetworkError> updates) const;

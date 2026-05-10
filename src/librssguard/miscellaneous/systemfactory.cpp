@@ -10,6 +10,11 @@
 #include "qtlinq/qtlinq.h"
 
 #if defined(Q_OS_WIN)
+#include <qt_windows.h>
+
+#include <QLibrary>
+#include <QOperatingSystemVersion>
+#include <QSemaphore>
 #include <QSettings>
 #endif
 
@@ -25,6 +30,40 @@
 #include <QVersionNumber>
 
 using UpdateCheck = QPair<UpdateInfo, QNetworkReply::NetworkError>;
+
+#if defined(Q_OS_WIN)
+namespace {
+  constexpr int WINDOWS_10_MAJOR_VERSION = 10;
+  constexpr int WINDOWS_10_1903_BUILD = 18362;
+  constexpr int EFFECTIVE_POWER_MODE_CALLBACK_TIMEOUT = 1000;
+  constexpr ULONG EFFECTIVE_POWER_MODE_V2_VALUE = 2;
+  constexpr int EFFECTIVE_POWER_MODE_GAME_MODE_VALUE = 5;
+
+  using EffectivePowerMode = int;
+  using EffectivePowerModeCallback = VOID(CALLBACK*)(EffectivePowerMode mode, PVOID context);
+  using PowerRegisterForEffectivePowerModeNotificationsFn = HRESULT(WINAPI*)(ULONG version,
+                                                                             EffectivePowerModeCallback callback,
+                                                                             PVOID context,
+                                                                             PVOID* registration_handle);
+  using PowerUnregisterFromEffectivePowerModeNotificationsFn = HRESULT(WINAPI*)(PVOID registration_handle);
+
+  struct EffectivePowerModeState {
+      EffectivePowerMode m_mode = -1;
+      bool m_received = false;
+      QSemaphore m_callbackSemaphore;
+  };
+
+  VOID CALLBACK effectivePowerModeCallback(EffectivePowerMode mode, PVOID context) {
+    auto* state = static_cast<EffectivePowerModeState*>(context);
+
+    if (state != nullptr) {
+      state->m_mode = mode;
+      state->m_received = true;
+      state->m_callbackSemaphore.release();
+    }
+  }
+} // namespace
+#endif
 
 SystemFactory::SystemFactory(QObject* parent) : QObject(parent) {}
 
@@ -42,7 +81,7 @@ QRegularExpression SystemFactory::supportedUpdateFiles() {
 #endif
 }
 
-SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
+SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() {
   // User registry way to auto-start the application on Windows.
 #if defined(Q_OS_WIN)
   QSettings registry_key(QSL("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run"),
@@ -83,8 +122,73 @@ SystemFactory::AutoStartStatus SystemFactory::autoStartStatus() const {
 #endif
 }
 
+bool SystemFactory::isGameModeDetectionSupported() {
+#if defined(Q_OS_WIN)
+  const QOperatingSystemVersion version = QOperatingSystemVersion::current();
+
+  if (version.type() != QOperatingSystemVersion::Windows) {
+    return false;
+  }
+
+  return version.majorVersion() > WINDOWS_10_MAJOR_VERSION ||
+         (version.majorVersion() == WINDOWS_10_MAJOR_VERSION && version.microVersion() >= WINDOWS_10_1903_BUILD);
+#else
+  return false;
+#endif
+}
+
+bool SystemFactory::isGameModeActive() {
+#if defined(Q_OS_WIN)
+  if (!isGameModeDetectionSupported()) {
+    return false;
+  }
+
+  QLibrary power_profile_library(QSL("PowrProf"));
+
+  if (!power_profile_library.load()) {
+    qWarningNN << LOGSEC_CORE << "Cannot load PowrProf.dll for Game Mode detection.";
+    return false;
+  }
+
+  const auto register_notifications = reinterpret_cast<
+    PowerRegisterForEffectivePowerModeNotificationsFn>(power_profile_library
+                                                         .resolve("PowerRegisterForEffectivePowerModeNotifications"));
+  const auto unregister_notifications =
+    reinterpret_cast<PowerUnregisterFromEffectivePowerModeNotificationsFn>(power_profile_library
+                                                                             .resolve("PowerUnregisterFromEffectivePowe"
+                                                                                      "rModeNotifications"));
+
+  if (register_notifications == nullptr || unregister_notifications == nullptr) {
+    qWarningNN << LOGSEC_CORE << "Cannot resolve effective power mode functions for Game Mode detection.";
+    return false;
+  }
+
+  EffectivePowerModeState state;
+  PVOID registration_handle = nullptr;
+  const HRESULT registration_result =
+    register_notifications(EFFECTIVE_POWER_MODE_V2_VALUE, effectivePowerModeCallback, &state, &registration_handle);
+
+  if (registration_result != S_OK) {
+    qWarningNN << LOGSEC_CORE << "Cannot register effective power mode callback for Game Mode detection.";
+    return false;
+  }
+
+  if (registration_handle != nullptr) {
+    state.m_received = state.m_callbackSemaphore.tryAcquire(1, EFFECTIVE_POWER_MODE_CALLBACK_TIMEOUT);
+    unregister_notifications(registration_handle);
+  }
+
+  qDebugNN << LOGSEC_CORE << "Game mode: state received" << QUOTE_W_SPACE(state.m_received) << "with mode"
+           << QUOTE_W_SPACE_DOT(state.m_mode);
+
+  return state.m_received && state.m_mode == EFFECTIVE_POWER_MODE_GAME_MODE_VALUE;
+#else
+  return false;
+#endif
+}
+
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-QString SystemFactory::autostartDesktopFileLocation() const {
+QString SystemFactory::autostartDesktopFileLocation() {
   const QString xdg_config_path(qgetenv("XDG_CONFIG_HOME"));
   QString desktop_file_location;
 
@@ -213,7 +317,7 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
 #endif
 }
 
-QString SystemFactory::loggedInUser() const {
+QString SystemFactory::loggedInUser() {
   QString name = qEnvironmentVariable("USER");
 
   if (name.isEmpty()) {

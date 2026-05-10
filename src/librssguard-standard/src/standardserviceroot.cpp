@@ -554,7 +554,7 @@ void StandardServiceRoot::setCustomDatabaseData(const QVariantHash& data) {
 }
 
 QString StandardServiceRoot::defaultTitle() {
-  return qApp->system()->loggedInUser() + QSL(" (RSS/ATOM/JSON)");
+  return SystemFactory::loggedInUser() + QSL(" (RSS/ATOM/JSON)");
 }
 
 bool StandardServiceRoot::mergeImportExportModel(FeedsImportExportModel* model,

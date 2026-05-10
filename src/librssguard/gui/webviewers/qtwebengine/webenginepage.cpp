@@ -58,7 +58,7 @@ void WebEnginePage::onPdfPrintingFinished(const QString& file_path, bool success
                                     tr("PDF printing to file '%1' has finished.").arg(file_path)),
                          GuiMessageDestination(true, true, false),
                          GuiAction(tr("Open destination folder"), this, [file_path]() {
-                           qApp->system()->openFolderFile(file_path);
+                           SystemFactory::openFolderFile(file_path);
                          }));
   }
   else {

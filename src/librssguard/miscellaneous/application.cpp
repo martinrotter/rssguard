@@ -240,6 +240,15 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   QSslSocket::setActiveBackend(QSL("openssl"));
 #endif
 
+  while (true) {
+    auto aa = m_system->isGameModeActive();
+
+    qDebugNN << LOGSEC_CORE << "power mode " << aa;
+
+    processEvents();
+    QThread::msleep(1000);
+  }
+
   qDebugNN << LOGSEC_CORE << "Platform:" << QUOTE_W_SPACE_DOT(QGuiApplication::platformName());
   qDebugNN << LOGSEC_CORE << "DB version:" << QUOTE_W_SPACE_DOT(qApp->database()->driver()->version());
 

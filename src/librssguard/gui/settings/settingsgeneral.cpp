@@ -49,7 +49,7 @@ void SettingsGeneral::loadSettings() {
     ->setChecked(settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool());
 
   // Load auto-start status.
-  const SystemFactory::AutoStartStatus autostart_status = qApp->system()->autoStartStatus();
+  const SystemFactory::AutoStartStatus autostart_status = SystemFactory::autoStartStatus();
 
   switch (autostart_status) {
     case SystemFactory::AutoStartStatus::Enabled:
@@ -74,10 +74,10 @@ void SettingsGeneral::saveSettings() {
 
   // If auto-start feature is available and user wants to turn it on, then turn it on.
   if (m_ui->m_checkAutostart->isChecked()) {
-    qApp->system()->setAutoStartStatus(SystemFactory::AutoStartStatus::Enabled);
+    SystemFactory::setAutoStartStatus(SystemFactory::AutoStartStatus::Enabled);
   }
   else {
-    qApp->system()->setAutoStartStatus(SystemFactory::AutoStartStatus::Disabled);
+    SystemFactory::setAutoStartStatus(SystemFactory::AutoStartStatus::Disabled);
   }
 
   settings()->setValue(GROUP(General), General::DisableDebugOutput, m_ui->m_checkDisableDebugOutput->isChecked());
