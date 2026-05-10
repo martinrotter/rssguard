@@ -80,6 +80,9 @@ DVALUE(bool) Feeds::StrikethroughDisabledFeedsDef = true;
 DKEY Feeds::DontAskWhenMarkinAllRead = "dont_ask_when_marking_all_read";
 DVALUE(bool) Feeds::DontAskWhenMarkinAllReadDef = false;
 
+DKEY Feeds::FetchOnlyWhenNotGameMode = "fetch_only_when_not_gamemode";
+DVALUE(bool) Feeds::FetchOnlyWhenNotGameModeDef = false;
+
 DKEY Feeds::FetchOnlyWhenNetworkConnected = "fetch_only_when_network";
 DVALUE(bool) Feeds::FetchOnlyWhenNetworkConnectedDef = false;
 

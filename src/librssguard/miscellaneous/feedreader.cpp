@@ -247,6 +247,8 @@ void FeedReader::updateAutoUpdateStatus() {
     qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool();
   m_globalAutoUpdateOnlyIfNetworkConnected =
     qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FetchOnlyWhenNetworkConnected)).toBool();
+  m_globalAutoUpdateOnlyIfNotGameMode =
+    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FetchOnlyWhenNotGameMode)).toBool();
 
   if (m_globalAutoUpdateFast) {
     // NOTE: In "fast" mode, we set interval to 1 second.
@@ -391,6 +393,13 @@ void FeedReader::executeNextAutoUpdate() {
 
   if (disable_because_disconnected) {
     qWarningNN << LOGSEC_NETWORK << "Feed auto-fetch is delayed because network is (probably) disconnected.";
+    return;
+  }
+
+  bool disable_because_gamemode = m_globalAutoUpdateOnlyIfNotGameMode && SystemFactory::isGameModeActive();
+
+  if (disable_because_gamemode) {
+    qWarningNN << LOGSEC_CORE << "Feed auto-fetch is delayed because Game Mode is active.";
     return;
   }
 

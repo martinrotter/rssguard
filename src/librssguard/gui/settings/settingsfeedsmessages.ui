@@ -73,21 +73,21 @@
          </property>
         </widget>
        </item>
-       <item row="3" column="0" colspan="2">
+       <item row="4" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkAutoUpdateOnlyUnfocused">
          <property name="text">
           <string>Only auto-fetch articles if application is unfocused</string>
          </property>
         </widget>
        </item>
-       <item row="4" column="0" colspan="2">
+       <item row="5" column="0" colspan="2">
         <widget class="QCheckBox" name="m_cmbFastAutoUpdate">
          <property name="text">
           <string>Support very fast auto-fetching intervals (under 10 seconds)</string>
          </property>
         </widget>
        </item>
-       <item row="5" column="0">
+       <item row="6" column="0">
         <widget class="QLabel" name="label_3">
          <property name="text">
           <string>Feed connection timeout</string>
@@ -97,7 +97,7 @@
          </property>
         </widget>
        </item>
-       <item row="5" column="1">
+       <item row="6" column="1">
         <widget class="QSpinBox" name="m_spinFeedUpdateTimeout">
          <property name="minimumSize">
           <size>
@@ -122,13 +122,20 @@
          </property>
         </widget>
        </item>
-       <item row="6" column="0" colspan="2">
+       <item row="7" column="0" colspan="2">
         <widget class="ArticleAmountControl" name="m_wdgArticleLimiting" native="true"/>
        </item>
-       <item row="2" column="0" colspan="2">
+       <item row="3" column="0" colspan="2">
         <widget class="QCheckBox" name="m_checkAutoUpdateOnlyIfConnected">
          <property name="text">
           <string>Only auto-fetch articles if network is connected</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0" colspan="2">
+        <widget class="QCheckBox" name="m_checkAutoUpdateOnlyIfNotGameMode">
+         <property name="text">
+          <string>Only auto-fetch articles if Game Mode is not active</string>
          </property>
         </widget>
        </item>
@@ -802,6 +809,7 @@
   <tabstop>m_spinStartupUpdateDelay</tabstop>
   <tabstop>m_checkAutoUpdate</tabstop>
   <tabstop>m_spinAutoUpdateInterval</tabstop>
+  <tabstop>m_checkAutoUpdateOnlyIfNotGameMode</tabstop>
   <tabstop>m_checkAutoUpdateOnlyIfConnected</tabstop>
   <tabstop>m_checkAutoUpdateOnlyUnfocused</tabstop>
   <tabstop>m_cmbFastAutoUpdate</tabstop>

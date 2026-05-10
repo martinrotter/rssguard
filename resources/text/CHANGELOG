@@ -6,6 +6,7 @@ Added:
 * Show URL of loaded website in status bar. (#2097)
 * Article extractor now can be called with existing article `HTML` and thus can run Readability algorithm directly on the existing article data instead of downloading full source web page. (#2252)
 * Auto-fetching articles can now be limited to times when a network connection is active. (#2211)
+* Feed retrieval can now be skipped while Windows Game Mode is active. (#1230)
 
 Fixed:
 * Initial state of "web attributes" is properly set in WebEngine builds. (#2227)

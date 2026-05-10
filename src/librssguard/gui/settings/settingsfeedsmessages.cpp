@@ -57,6 +57,12 @@ void SettingsFeedsMessages::loadUi() {
                                                    "performance of article list with big number of articles."),
                                                 true);
 
+  if (!SystemFactory::isGameModeDetectionSupported()) {
+    m_ui->m_checkAutoUpdateOnlyIfNotGameMode->setText(m_ui->m_checkAutoUpdateOnlyIfNotGameMode->text() + QSL(" ") +
+                                                      tr("(not supported)"));
+    m_ui->m_checkAutoUpdateOnlyIfNotGameMode->setEnabled(false);
+  }
+
   auto unread_icons = enumToStrings<MessagesModel::MessageUnreadIcon>();
 
   for (const auto& unread_icon : unread_icons) {
@@ -85,6 +91,7 @@ void SettingsFeedsMessages::loadUi() {
   connect(m_ui->m_checkShowFeedIconInFeedColumn, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkShowFeedIconInFeedColumn, &QCheckBox::toggled, this, &SettingsFeedsMessages::requireRestart);
 
+  connect(m_ui->m_checkAutoUpdateOnlyIfNotGameMode, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkAutoUpdateOnlyIfConnected, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
 
   connect(m_ui->m_cbPropagateFeedListStates, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -378,6 +385,8 @@ void SettingsFeedsMessages::loadSettings() {
   m_ui->m_checkRemoveReadMessagesOnExit
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool());
   m_ui->m_checkAutoUpdate->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateEnabled)).toBool());
+  m_ui->m_checkAutoUpdateOnlyIfNotGameMode
+    ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::FetchOnlyWhenNotGameMode)).toBool());
   m_ui->m_checkAutoUpdateOnlyIfConnected
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::FetchOnlyWhenNetworkConnected)).toBool());
   m_ui->m_checkAutoUpdateOnlyUnfocused
@@ -535,6 +544,9 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages), Messages::SwitchArticleListRtl, m_ui->m_checkSwitchArticleListRtl->isChecked());
   settings()->setValue(GROUP(Messages), Messages::ClearReadOnExit, m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateEnabled, m_ui->m_checkAutoUpdate->isChecked());
+  settings()->setValue(GROUP(Feeds),
+                       Feeds::FetchOnlyWhenNotGameMode,
+                       m_ui->m_checkAutoUpdateOnlyIfNotGameMode->isChecked());
   settings()->setValue(GROUP(Feeds),
                        Feeds::FetchOnlyWhenNetworkConnected,
                        m_ui->m_checkAutoUpdateOnlyIfConnected->isChecked());
