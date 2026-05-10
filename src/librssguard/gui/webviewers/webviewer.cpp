@@ -49,6 +49,11 @@ QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {
   return QString();
 }
 
+QString WebViewer::htmlForMessage(const Message& message, RootItem* root) const {
+  auto html_message = qApp->skins()->generateHtmlOfArticle(message, root);
+  return html_message;
+}
+
 void WebViewer::copySelectedText() {
   auto* clip = QGuiApplication::clipboard();
 

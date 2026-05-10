@@ -6,10 +6,15 @@
 #include "gui/webviewers/webviewer.h"
 #include "network-web/networkfactory.h"
 
+#include <atomic>
+
+#include <QImage>
+#include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QPixmap>
 #include <QPointer>
 #include <QTextBrowser>
+#include <QThread>
 #include <QTimer>
 
 class QContextMenuEvent;
@@ -17,6 +22,28 @@ class QResizeEvent;
 class WebBrowser;
 
 class TextBrowserViewer;
+
+class RSSGUARD_DLLSPEC TextBrowserImageDownloader : public QObject {
+    Q_OBJECT
+
+  public:
+    explicit TextBrowserImageDownloader(QList<QUrl> image_urls, QNetworkProxy custom_proxy, QObject* parent = nullptr);
+
+    void cancel();
+
+  public slots:
+    void downloadImages();
+
+  signals:
+    void imageDownloaded(const QUrl& image_url, const QImage& image);
+    void downloadProgress(int progress);
+    void downloadFinished(bool success);
+
+  private:
+    QList<QUrl> m_imageUrls;
+    QNetworkProxy m_customProxy;
+    std::atomic_bool m_cancelled = false;
+};
 
 class RSSGUARD_DLLSPEC TextBrowserDocument : public QTextDocument {
     Q_OBJECT
@@ -64,6 +91,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     virtual void goForward();
     virtual bool supportImagesLoading() const;
     virtual bool supportsNavigation() const;
+    virtual void setLoadExternalResources(bool load_resources);
 
     virtual qreal zoomFactor() const;
     virtual void setZoomFactor(qreal zoom_factor);
@@ -89,17 +117,29 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
 
   private:
     void displayDownloadedPage(const QUrl& url, const QByteArray& data, const NetworkResult& res);
-    void justSetHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);
+    bool loadStaticHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);
+    void justSetHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr, bool keep_scroll = false);
 
-    QString convertToHtmlWithoutImages(const QString& html) const;
+    void abortImageDownloading();
+    bool startImageDownloading();
+    void reloadHtmlWithCachedImages();
+
+    QList<QUrl> imageUrlsForHtml(const QString& html, const QUrl& base_url) const;
+    QUrl resolvedResourceUrl(const QUrl& resource_url) const;
+    QNetworkProxy networkProxyForCurrentRoot() const;
 
   private:
     WebBrowser* m_browser;
     QUrl m_currentUrl;
+    QString m_currentHtml;
     QFont m_baseFont;
     qreal m_zoomFactor = 1.0;
     QScopedPointer<TextBrowserDocument> m_document;
     QPointer<RootItem> m_root;
+
+    QPointer<TextBrowserImageDownloader> m_imageDownloader;
+    QPointer<QThread> m_imageDownloadThread;
+    QHash<QUrl, QImage> m_downloadedImages;
 };
 
 #endif // TEXTBROWSERVIEWER_H

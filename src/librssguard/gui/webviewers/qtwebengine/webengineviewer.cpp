@@ -102,11 +102,6 @@ void WebEngineViewer::loadMessage(const Message& message, RootItem* root) {
   setVerticalScrollBarPosition(0.0);
 }
 
-QString WebEngineViewer::htmlForMessage(const Message& message, RootItem* root) const {
-  auto html_message = qApp->skins()->generateHtmlOfArticle(message, root);
-  return html_message;
-}
-
 void WebEngineViewer::loadUrl(const QUrl& url) {
   if (url.isValid()) {
     QWebEngineView::load(url);
