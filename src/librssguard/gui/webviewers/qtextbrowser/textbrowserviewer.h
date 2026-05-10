@@ -23,6 +23,17 @@ class WebBrowser;
 
 class TextBrowserViewer;
 
+class RSSGUARD_DLLSPEC TextBrowserImageCache {
+  public:
+    static QString cacheRootFolder();
+    static QString cacheFilePath(const QUrl& image_url);
+
+    static bool loadImage(const QUrl& image_url, QImage& image);
+    static bool saveImage(const QUrl& image_url, const QByteArray& image_data);
+
+    static void cleanup();
+};
+
 class RSSGUARD_DLLSPEC TextBrowserImageDownloader : public QObject {
     Q_OBJECT
 
