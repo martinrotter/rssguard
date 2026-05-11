@@ -20,6 +20,8 @@
 #include <QFile>
 #include <QFileIconProvider>
 #include <QFileInfo>
+#include <QJsonDocument>
+#include <QJsonParseError>
 #include <QScrollBar>
 #include <QTextImageFormat>
 #include <QTimer>
@@ -474,7 +476,11 @@ void TextBrowserViewer::loadMessage(const Message& message, RootItem* root) {
 
 void TextBrowserViewer::displayDownloadedPage(const QUrl& url, const QByteArray& data, const NetworkResult& res) {
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
-    if (res.m_contentType.startsWith(QSL("image"))) {
+    const QString content_type = res.m_contentType.toLower();
+    const QString path = url.path().toLower();
+
+    // Images handling - either open externally or open as "data:base64".
+    if (content_type.startsWith(QSL("image"))) {
       if (!loadExternalResources()) {
         emit openUrlInNewTab(true, url);
       }
@@ -486,7 +492,8 @@ void TextBrowserViewer::displayDownloadedPage(const QUrl& url, const QByteArray&
         loadStaticHtml(html, url);
       }
     }
-    else if (res.m_contentType.contains(QSL("xml"))) {
+    // XML handling - pretty print.
+    else if (content_type.contains(QSL("xml"))) {
       QDomDocument dom;
 
       if (dom.setContent(data)) {
@@ -496,7 +503,29 @@ void TextBrowserViewer::displayDownloadedPage(const QUrl& url, const QByteArray&
         loadStaticHtml(QString::fromUtf8(data).toHtmlEscaped(), url);
       }
     }
-    else if (res.m_contentType.contains(QSL("html"))) {
+    // JSON handling - pretty print.
+    else if (content_type.contains(QSL("json")) || path.endsWith(QSL(".json"))) {
+      QJsonParseError error;
+      const QJsonDocument doc = QJsonDocument::fromJson(data, &error);
+
+      if (error.error == QJsonParseError::NoError) {
+        loadStaticHtml(Qt::convertFromPlainText(QString::fromUtf8(doc.toJson(QJsonDocument::Indented))), url);
+      }
+      else {
+        loadStaticHtml(Qt::convertFromPlainText(QString::fromUtf8(data)), url);
+      }
+    }
+    // Markdown handling - pretty print.
+    else if (content_type.contains(QSL("markdown")) || content_type.contains(QSL("x-markdown")) ||
+             path.endsWith(QSL(".md")) || path.endsWith(QSL(".markdown")) || path.endsWith(QSL(".mdown")) ||
+             path.endsWith(QSL(".mkd"))) {
+      QTextDocument markdown_doc;
+
+      markdown_doc.setMarkdown(QString::fromUtf8(data));
+      loadStaticHtml(markdown_doc.toHtml(), url);
+    }
+    // HTML handling - display.
+    else if (content_type.contains(QSL("html"))) {
       bool no_images = loadStaticHtml(QString::fromUtf8(data), url);
 
       if (url.hasFragment()) {
@@ -507,6 +536,7 @@ void TextBrowserViewer::displayDownloadedPage(const QUrl& url, const QByteArray&
         return;
       }
     }
+    // Fallback - show as plain text.
     else {
       loadStaticHtml(Qt::convertFromPlainText(QString::fromUtf8(data)), url);
     }
@@ -764,7 +794,7 @@ QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
     return QTextDocument::loadResource(type, name);
   }
 
-  if (QTextDocument::ResourceType(type) != QTextDocument::ResourceType::ImageResource) {
+  if (QTextDocument::ResourceType(type) != QTextDocument::ImageResource) {
     return QTextDocument::loadResource(type, name);
   }
 
