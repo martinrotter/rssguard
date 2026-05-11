@@ -245,7 +245,7 @@ QString SkinFactory::prepareHtml(const QString& inner_html) {
     .replace(QSL("%article_body%"), inner_html);
 }
 
-QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* root) const {
+QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* root, const WebViewer* viewer) const {
   const Skin skin = currentSkin();
   const bool display_enclosures =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool();
@@ -266,12 +266,14 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
                       .replace(QSL("%enclosure_mime%"), enclosure->mimeType());
 
       if (display_enclosures && enclosure->mimeType().startsWith(QSL("image/"))) {
+        const QString image_max_height =
+          forced_img_height > 0 && viewer != nullptr ? viewer->imageCssMaxHeight(forced_img_height) : QString();
+
         // Add thumbnail image.
-        enclosure_images +=
-          QString(skin.m_enclosureImageMarkup)
-            .replace(QSL("%enclosure_url%"), enc_url)
-            .replace(QSL("%enclosure_mime%"), enclosure->mimeType())
-            .replace(QSL("%image_size%"), forced_img_height <= 0 ? QSL("-1") : QString::number(forced_img_height));
+        enclosure_images += QString(skin.m_enclosureImageMarkup)
+                              .replace(QSL("%enclosure_url%"), enc_url)
+                              .replace(QSL("%enclosure_mime%"), enclosure->mimeType())
+                              .replace(QSL("%image_max_height%"), image_max_height);
       }
     }
   }

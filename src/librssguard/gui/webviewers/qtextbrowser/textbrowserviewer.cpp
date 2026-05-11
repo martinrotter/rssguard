@@ -386,6 +386,10 @@ void TextBrowserViewer::reloadPage() {
   QTextBrowser::reload();
 }
 
+QString TextBrowserViewer::imageCssMaxHeight(int height) const {
+  return QSL("height=\"%1\"").arg(height);
+}
+
 void TextBrowserViewer::goBack() {
   QTextBrowser::backward();
 }

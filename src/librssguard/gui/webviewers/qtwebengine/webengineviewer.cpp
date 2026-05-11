@@ -169,6 +169,10 @@ void WebEngineViewer::setLoadExternalResources(bool load_resources) {
   page()->settings()->setAttribute(QWebEngineSettings::WebAttribute::AutoLoadImages, load_resources);
 }
 
+QString WebEngineViewer::imageCssMaxHeight(int height) const {
+  return QSL("style=\"max-height: %1px;\"").arg(height);
+}
+
 bool WebEngineViewer::supportsNavigation() const {
   return true;
 }
