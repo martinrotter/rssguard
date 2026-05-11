@@ -271,7 +271,7 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
           QString(skin.m_enclosureImageMarkup)
             .replace(QSL("%enclosure_url%"), enc_url)
             .replace(QSL("%enclosure_mime%"), enclosure->mimeType())
-            .replace(QSL("%image_size%"), forced_img_height <= 0 ? QSL("none") : QSL("%1px").arg(forced_img_height));
+            .replace(QSL("%image_size%"), forced_img_height <= 0 ? QSL("-1") : QString::number(forced_img_height));
       }
     }
   }
