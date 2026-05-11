@@ -11,6 +11,7 @@
 #include <QException>
 #include <QFutureWatcher>
 #include <QHash>
+#include <QMutex>
 #include <QObject>
 #include <QPair>
 
@@ -92,6 +93,8 @@ class FeedDownloader : public QObject {
     std::atomic<bool> m_isCacheSynchronizationRunning;
     std::atomic<bool> m_stopFetching;
     QMutex m_mutexDb;
+    QMutex m_mutexResults;
+    mutable QMutex m_mutexOverloadedHosts;
     QHash<ServiceRoot*, ApplicationException> m_erroredAccounts;
     QList<FeedUpdateRequest> m_feeds = {};
     QFutureWatcher<FeedUpdateResult> m_watcherLookup;

@@ -67,7 +67,10 @@ void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>&
 
 void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
   m_erroredAccounts.clear();
-  m_results.clear();
+  {
+    QMutexLocker lck(&m_mutexResults);
+    m_results.clear();
+  }
   m_feeds.clear();
   m_stopFetching = false;
 
@@ -175,11 +178,14 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
 }
 
 void FeedDownloader::clearFeedOverload(Feed* feed) {
+  QMutexLocker lck(&m_mutexOverloadedHosts);
+
   m_overloadedHosts.remove(QUrl(feed->source()).host());
 }
 
 bool FeedDownloader::checkIfFeedOverloaded(Feed* feed) const {
   QString hostname = QUrl(feed->source()).host();
+  QMutexLocker lck(&m_mutexOverloadedHosts);
   QDateTime retry_after = m_overloadedHosts.value(hostname);
 
   return retry_after.isValid() && retry_after > QDateTime::currentDateTimeUtc();
@@ -407,13 +413,19 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
              << NONQUOTE_W_SPACE(updated_messages.m_all.size()) << "total messages for feed"
              << QUOTE_W_SPACE(feed->customId()) << "stored in DB.";
 
-    m_results.appendUpdatedFeed(feed, updated_messages.m_unread);
+    {
+      QMutexLocker lck_results(&m_mutexResults);
+      m_results.appendUpdatedFeed(feed, updated_messages.m_unread);
+    }
   }
   catch (const FeedFetchException& feed_ex) {
     qCriticalNN << LOGSEC_NETWORK << "Error when fetching feed:" << QUOTE_W_SPACE(feed_ex.feedStatus())
                 << "message:" << QUOTE_W_SPACE_DOT(feed_ex.message());
 
-    m_results.appendErroredFeed(feed, feed_ex.message());
+    {
+      QMutexLocker lck_results(&m_mutexResults);
+      m_results.appendErroredFeed(feed, feed_ex.message());
+    }
     feed->setStatus(feed_ex.feedStatus(), feed_ex.message());
 
     if (feed_ex.feedStatus() == Feed::Status::NetworkError && !feed_ex.data().isNull()) {
@@ -423,7 +435,10 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           network_result.m_httpCode == HTTP_CODE_UNAVAILABLE) {
         QDateTime safe_dt = NetworkFactory::extractRetryAfter(network_result.m_headers.value(QSL("retry-after")));
 
-        m_overloadedHosts.insert(QUrl(feed->source()).host(), safe_dt);
+        {
+          QMutexLocker lck_hosts(&m_mutexOverloadedHosts);
+          m_overloadedHosts.insert(QUrl(feed->source()).host(), safe_dt);
+        }
 
         qDebugNN << LOGSEC_CORE << "Extracted Retry-After value is" << QUOTE_W_SPACE_DOT(safe_dt);
         qWarningNN << LOGSEC_CORE << "Feed" << QUOTE_W_SPACE_DOT(feed->source())
@@ -435,14 +450,20 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     qCriticalNN << LOGSEC_NETWORK << "SQL error when fetching feed:"
                 << "message:" << QUOTE_W_SPACE_DOT(sql_ex.message());
 
-    m_results.appendErroredFeed(feed, sql_ex.message());
+    {
+      QMutexLocker lck_results(&m_mutexResults);
+      m_results.appendErroredFeed(feed, sql_ex.message());
+    }
     feed->setStatus(Feed::Status::SqlError, sql_ex.message());
   }
   catch (const ApplicationException& app_ex) {
     qCriticalNN << LOGSEC_NETWORK << "Unknown error when fetching feed" << QUOTE_W_SPACE(feed->title())
                 << "and the error is" << QUOTE_W_SPACE_DOT(app_ex.message());
 
-    m_results.appendErroredFeed(feed, app_ex.message());
+    {
+      QMutexLocker lck_results(&m_mutexResults);
+      m_results.appendErroredFeed(feed, app_ex.message());
+    }
     feed->setStatus(Feed::Status::OtherError, app_ex.message());
   }
 
@@ -457,14 +478,21 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 void FeedDownloader::finalizeUpdate() {
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Finished feed updates in thread" << QUOTE_W_SPACE_DOT(getThreadID());
 
-  m_results.setFeedRequests(m_feeds);
+  FeedDownloadResults results;
+
+  {
+    QMutexLocker lck(&m_mutexResults);
+    m_results.setFeedRequests(m_feeds);
+    results = m_results;
+  }
+
   m_feeds.clear();
 
   // Update of feeds has finished.
   // NOTE: This means that now "update lock" can be unlocked
   // and feeds can be added/edited/deleted and application
   // can eventually quit.
-  emit updateFinished(m_results);
+  emit updateFinished(results);
 }
 
 bool FeedDownloader::isCacheSynchronizationRunning() const {
