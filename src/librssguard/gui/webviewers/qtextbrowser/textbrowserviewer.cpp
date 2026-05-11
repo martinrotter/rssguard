@@ -475,30 +475,40 @@ void TextBrowserViewer::loadMessage(const Message& message, RootItem* root) {
 void TextBrowserViewer::displayDownloadedPage(const QUrl& url, const QByteArray& data, const NetworkResult& res) {
   if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     if (res.m_contentType.startsWith(QSL("image"))) {
-      emit openUrlInNewTab(true, url);
+      if (!loadExternalResources()) {
+        emit openUrlInNewTab(true, url);
+      }
+      else {
+        const QString image_data = QString::fromLatin1(data.toBase64());
+        const QString html =
+          QSL("<html><body><img src=\"data:%1;base64,%2\"></body></html>").arg(res.m_contentType, image_data);
+
+        loadStaticHtml(html, url);
+      }
     }
     else if (res.m_contentType.contains(QSL("xml"))) {
       QDomDocument dom;
 
       if (dom.setContent(data)) {
-        if (loadStaticHtml(Qt::convertFromPlainText(dom.toString(2)), url)) {
-          return;
-        }
+        loadStaticHtml(Qt::convertFromPlainText(dom.toString(2)), url);
       }
       else {
-        if (loadStaticHtml(QString::fromUtf8(data).toHtmlEscaped(), url)) {
-          return;
-        }
+        loadStaticHtml(QString::fromUtf8(data).toHtmlEscaped(), url);
       }
     }
-    else {
-      if (loadStaticHtml(QString::fromUtf8(data), url)) {
-        return;
-      }
+    else if (res.m_contentType.contains(QSL("html"))) {
+      bool no_images = loadStaticHtml(QString::fromUtf8(data), url);
 
       if (url.hasFragment()) {
         scrollToAnchor(url.fragment());
       }
+
+      if (no_images) {
+        return;
+      }
+    }
+    else {
+      loadStaticHtml(Qt::convertFromPlainText(QString::fromUtf8(data)), url);
     }
   }
   else {
@@ -751,17 +761,23 @@ TextBrowserDocument::TextBrowserDocument(TextBrowserViewer* parent) : QTextDocum
 
 QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
   if (m_viewer.isNull()) {
-    return {};
+    return QTextDocument::loadResource(type, name);
   }
 
-  if (QTextDocument::ResourceType(type) == QTextDocument::ImageResource) {
-    const QUrl image_url = m_viewer->resolvedResourceUrl(name);
-    const auto image = m_viewer->m_downloadedImages.constFind(image_url);
+  if (QTextDocument::ResourceType(type) != QTextDocument::ResourceType::ImageResource) {
+    return QTextDocument::loadResource(type, name);
+  }
 
-    if (image != m_viewer->m_downloadedImages.constEnd()) {
-      return image.value();
-    }
+  const QUrl image_url = m_viewer->resolvedResourceUrl(name);
+  const auto image = m_viewer->m_downloadedImages.constFind(image_url);
 
+  if (image != m_viewer->m_downloadedImages.constEnd()) {
+    return image.value();
+  }
+
+  const QString scheme = image_url.scheme().toLower();
+
+  if (scheme == QSL("http") || scheme == QSL("https") || scheme == QSL("gemini")) {
     if (m_viewer->loadExternalResources() && m_viewer->m_imageDownloader.isNull()) {
       return m_viewer->m_placeholderImageError;
     }
@@ -769,9 +785,8 @@ QVariant TextBrowserDocument::loadResource(int type, const QUrl& name) {
       return m_viewer->m_placeholderImage;
     }
   }
-  else {
-    return {};
-  }
+
+  return QTextDocument::loadResource(type, name);
 }
 
 ContextMenuData TextBrowserViewer::provideContextMenuData(QContextMenuEvent* event) {

@@ -320,12 +320,19 @@ void WebBrowser::onLinkMouseHighlighted(const QUrl& url) {
 }
 
 void WebBrowser::onLinkMouseClicked(const QUrl& url, LinkNavigationHints hints) {
+  QUrl next_url = m_webView->url();
+
+  // Resolve URL just to be sure.
+  if (next_url.isValid()) {
+    next_url = next_url.resolved(url);
+  }
+
   if (Globals::hasFlag(hints, WebViewer::LinkNavigationHints::ForceOpenInternal) ||
       qApp->settings()->value(GROUP(Web), SETTING(Web::FollowLinks)).toBool()) {
-    loadUrl(url);
+    loadUrl(next_url);
   }
   else {
-    qApp->web()->openUrlInExternalBrowser(url.toString(), true);
+    qApp->web()->openUrlInExternalBrowser(next_url.toString(), true);
 
     if (qApp->settings()
           ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
