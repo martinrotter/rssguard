@@ -37,6 +37,10 @@ class RSSGUARD_DLLSPEC IOFactory {
                                          const QStringList& arguments = {},
                                          const QString& stdin_data = {},
                                          const QString& working_directory = {});
+    static int startProcessGetExitCode(const QString& executable,
+                                       const QStringList& arguments = {},
+                                       const QString& stdin_data = {},
+                                       const QString& working_directory = {});
 
     // Returns contents of a file.
     // Throws exception when no such file exists.

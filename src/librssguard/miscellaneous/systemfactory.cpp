@@ -4,10 +4,14 @@
 
 #include "gui/dialogs/formmain.h"
 #include "gui/dialogs/formupdate.h"
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
 #include "qtlinq/qtlinq.h"
+
+#include <optional>
 
 #if defined(Q_OS_WIN)
 #include <qt_windows.h>
@@ -25,7 +29,9 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QLibrary>
 #include <QProcess>
+#include <QStandardPaths>
 #include <QString>
 #include <QVersionNumber>
 
@@ -60,6 +66,91 @@ namespace {
       state->m_mode = mode;
       state->m_received = true;
       state->m_callbackSemaphore.release();
+    }
+  }
+} // namespace
+#endif
+
+#if defined(Q_OS_LINUX)
+namespace {
+  using GameModeQueryStatusFn = int (*)();
+
+  constexpr int GAME_MODE_QUERY_STATUS_ERROR = -1;
+  constexpr int GAME_MODE_QUERY_STATUS_INACTIVE = 0;
+
+  QStringList gameModeLibraryNames() {
+    return {
+      QSL("gamemode"),
+      QSL("libgamemode.so.0"),
+      QSL("libgamemode.so"),
+    };
+  }
+
+  GameModeQueryStatusFn resolveGameModeQueryStatus() {
+    static QLibrary game_mode_library;
+    static GameModeQueryStatusFn game_mode_query_status = nullptr;
+    static bool resolved = false;
+
+    if (resolved) {
+      return game_mode_query_status;
+    }
+
+    resolved = true;
+
+    for (const QString& library_name : gameModeLibraryNames()) {
+      game_mode_library.setFileName(library_name);
+
+      if (!game_mode_library.load()) {
+        continue;
+      }
+
+      game_mode_query_status =
+        reinterpret_cast<GameModeQueryStatusFn>(game_mode_library.resolve("gamemode_query_status"));
+
+      if (game_mode_query_status != nullptr) {
+        return game_mode_query_status;
+      }
+
+      game_mode_library.unload();
+    }
+
+    return nullptr;
+  }
+
+  bool isGameModeLibraryAvailable() {
+    return resolveGameModeQueryStatus() != nullptr;
+  }
+
+  std::optional<bool> isGameModeActiveViaLibrary() {
+    GameModeQueryStatusFn query_status = resolveGameModeQueryStatus();
+
+    if (query_status == nullptr) {
+      return std::nullopt;
+    }
+
+    const int status = query_status();
+
+    qDebugNN << LOGSEC_CORE << "Game mode: libgamemode status is" << QUOTE_W_SPACE_DOT(status);
+
+    if (status == GAME_MODE_QUERY_STATUS_ERROR) {
+      return std::nullopt;
+    }
+
+    return status > GAME_MODE_QUERY_STATUS_INACTIVE;
+  }
+
+  bool isGameModeActiveViaCli() {
+    try {
+      const QString status = IOFactory::startProcessGetOutput(QSL("gamemoded"), {QSL("-s")}).trimmed().toLower();
+      const bool active = status == QSL("gamemode is active");
+
+      qDebugNN << LOGSEC_CORE << "Game mode: gamemoded status is" << QUOTE_W_SPACE_DOT(status);
+
+      return active;
+    }
+    catch (const ApplicationException& ex) {
+      qWarningNN << LOGSEC_CORE << "Cannot query gamemoded status:" << QUOTE_W_SPACE_DOT(ex.message());
+      return false;
     }
   }
 } // namespace
@@ -132,6 +223,8 @@ bool SystemFactory::isGameModeDetectionSupported() {
 
   return version.majorVersion() > WINDOWS_10_MAJOR_VERSION ||
          (version.majorVersion() == WINDOWS_10_MAJOR_VERSION && version.microVersion() >= WINDOWS_10_1903_BUILD);
+#elif defined(Q_OS_LINUX)
+  return isGameModeLibraryAvailable() || !QStandardPaths::findExecutable(QSL("gamemoded")).isEmpty();
 #else
   return false;
 #endif
@@ -182,6 +275,18 @@ bool SystemFactory::isGameModeActive() {
            << QUOTE_W_SPACE_DOT(state.m_mode);
 
   return state.m_received && state.m_mode == EFFECTIVE_POWER_MODE_GAME_MODE_VALUE;
+#elif defined(Q_OS_LINUX)
+  if (!isGameModeDetectionSupported()) {
+    return false;
+  }
+
+  const std::optional<bool> library_result = isGameModeActiveViaLibrary();
+
+  if (library_result.has_value()) {
+    return library_result.value();
+  }
+
+  return isGameModeActiveViaCli();
 #else
   return false;
 #endif

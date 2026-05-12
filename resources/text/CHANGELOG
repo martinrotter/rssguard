@@ -2,6 +2,9 @@
 -----
 Released on: 2026-05-XX
 
+Added:
+* Feed auto-fetch can now also be delayed while Feral GameMode is active on Linux. (#2265)
+
 Fixed:
 * Fixed possible crash during parallel feed updates.
 

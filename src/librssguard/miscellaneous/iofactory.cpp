@@ -161,6 +161,35 @@ QString IOFactory::startProcessGetOutput(const QString& executable,
   }
 }
 
+int IOFactory::startProcessGetExitCode(const QString& executable,
+                                       const QStringList& arguments,
+                                       const QString& stdin_data,
+                                       const QString& working_directory) {
+  QProcess proc;
+
+  setupProcess(proc, false, executable, arguments, stdin_data, working_directory);
+
+  if (!proc.waitForStarted() || !proc.waitForFinished()) {
+    QString err_output = proc.readAllStandardError().simplified();
+
+    throw ProcessException(proc.exitCode(),
+                           proc.exitStatus(),
+                           proc.error(),
+                           err_output.isEmpty() ? proc.errorString() : err_output);
+  }
+
+  if (proc.exitStatus() != QProcess::ExitStatus::NormalExit) {
+    QString err_output = proc.readAllStandardError().simplified();
+
+    throw ProcessException(proc.exitCode(),
+                           proc.exitStatus(),
+                           proc.error(),
+                           err_output.isEmpty() ? proc.errorString() : err_output);
+  }
+
+  return proc.exitCode();
+}
+
 QByteArray IOFactory::readFile(const QString& file_path) {
   QFile input_file(file_path);
   QByteArray input_data;
