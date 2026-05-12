@@ -90,6 +90,7 @@ namespace {
     auto* dbus_interface = QDBusConnection::sessionBus().interface();
 
     if (dbus_interface == nullptr) {
+      qWarningNN << LOGSEC_CORE << "Game mode: DBus interface is not available.";
       return false;
     }
 
