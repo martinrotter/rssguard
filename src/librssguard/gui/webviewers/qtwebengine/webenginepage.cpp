@@ -8,6 +8,7 @@
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 
+#include <QAuthenticator>
 #include <QString>
 #include <QStringList>
 #include <QTimer>
