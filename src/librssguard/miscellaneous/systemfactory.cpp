@@ -2,9 +2,9 @@
 
 #include "miscellaneous/systemfactory.h"
 
+#include "exceptions/applicationexception.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/dialogs/formupdate.h"
-#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
@@ -38,7 +38,6 @@
 #include <QJsonObject>
 #include <QLibrary>
 #include <QProcess>
-#include <QStandardPaths>
 #include <QString>
 #include <QVersionNumber>
 
@@ -80,67 +79,20 @@ namespace {
 
 #if defined(Q_OS_LINUX)
 namespace {
-  using GameModeQueryStatusFn = int (*)();
-
-  constexpr int GAME_MODE_QUERY_STATUS_ERROR = -1;
-  constexpr int GAME_MODE_QUERY_STATUS_INACTIVE = 0;
-  constexpr const char* GAME_MODE_DBUS_SERVICE = "com.feralinteractive.GameMode";
-  constexpr const char* GAME_MODE_DBUS_PATH = "/com/feralinteractive/GameMode";
-  constexpr const char* GAME_MODE_DBUS_INTERFACE = "com.feralinteractive.GameMode";
-
-  QStringList gameModeLibraryNames() {
-    return {
-      QSL("gamemode"),
-      QSL("libgamemode.so.0"),
-      QSL("libgamemode.so"),
-    };
-  }
-
-  GameModeQueryStatusFn resolveGameModeQueryStatus() {
-    static QLibrary game_mode_library;
-    static GameModeQueryStatusFn game_mode_query_status = nullptr;
-    static bool resolved = false;
-
-    if (resolved) {
-      return game_mode_query_status;
-    }
-
-    resolved = true;
-
-    for (const QString& library_name : gameModeLibraryNames()) {
-      game_mode_library.setFileName(library_name);
-
-      if (!game_mode_library.load()) {
-        continue;
-      }
-
-      game_mode_query_status =
-        reinterpret_cast<GameModeQueryStatusFn>(game_mode_library.resolve("gamemode_query_status"));
-
-      if (game_mode_query_status != nullptr) {
-        return game_mode_query_status;
-      }
-
-      game_mode_library.unload();
-    }
-
-    return nullptr;
-  }
-
-  bool isGameModeLibraryAvailable() {
-    return resolveGameModeQueryStatus() != nullptr;
-  }
+#define GAME_MODE_DBUS_SERVICE   QSL("com.feralinteractive.GameMode");
+#define GAME_MODE_DBUS_PATH      QSL("/com/feralinteractive/GameMode");
+#define GAME_MODE_DBUS_INTERFACE QSL("com.feralinteractive.GameMode");
 
   bool isGameModeDbusAvailable() {
     auto* dbus_interface = QDBusConnection::sessionBus().interface();
 
-    return dbus_interface != nullptr && dbus_interface->isServiceRegistered(QSL(GAME_MODE_DBUS_SERVICE));
+    return dbus_interface != nullptr && dbus_interface->isServiceRegistered(GAME_MODE_DBUS_SERVICE);
   }
 
   std::optional<bool> isGameModeActiveViaDbus() {
-    QDBusInterface game_mode(QSL(GAME_MODE_DBUS_SERVICE),
-                             QSL(GAME_MODE_DBUS_PATH),
-                             QSL(GAME_MODE_DBUS_INTERFACE),
+    QDBusInterface game_mode(GAME_MODE_DBUS_SERVICE,
+                             GAME_MODE_DBUS_PATH,
+                             GAME_MODE_DBUS_INTERFACE,
                              QDBusConnection::sessionBus());
 
     if (!game_mode.isValid()) {
@@ -151,47 +103,14 @@ namespace {
     const QDBusReply<int> reply = game_mode.call(QSL("ClientCount"));
 
     if (!reply.isValid()) {
-      qDebugNN << LOGSEC_CORE << "Game mode: DBus ClientCount query failed:"
-               << QUOTE_W_SPACE_DOT(reply.error().message());
+      qDebugNN << LOGSEC_CORE
+               << "Game mode: DBus ClientCount query failed:" << QUOTE_W_SPACE_DOT(reply.error().message());
       return std::nullopt;
     }
 
     qDebugNN << LOGSEC_CORE << "Game mode: DBus client count is" << QUOTE_W_SPACE_DOT(reply.value());
 
     return reply.value() > 0;
-  }
-
-  std::optional<bool> isGameModeActiveViaLibrary() {
-    GameModeQueryStatusFn query_status = resolveGameModeQueryStatus();
-
-    if (query_status == nullptr) {
-      return std::nullopt;
-    }
-
-    const int status = query_status();
-
-    qDebugNN << LOGSEC_CORE << "Game mode: libgamemode status is" << QUOTE_W_SPACE_DOT(status);
-
-    if (status == GAME_MODE_QUERY_STATUS_ERROR) {
-      return std::nullopt;
-    }
-
-    return status > GAME_MODE_QUERY_STATUS_INACTIVE;
-  }
-
-  bool isGameModeActiveViaCli() {
-    try {
-      const QString status = IOFactory::startProcessGetOutput(QSL("gamemoded"), {QSL("-s")}).trimmed().toLower();
-      const bool active = status == QSL("gamemode is active");
-
-      qDebugNN << LOGSEC_CORE << "Game mode: gamemoded status is" << QUOTE_W_SPACE_DOT(status);
-
-      return active;
-    }
-    catch (const ApplicationException& ex) {
-      qWarningNN << LOGSEC_CORE << "Cannot query gamemoded status:" << QUOTE_W_SPACE_DOT(ex.message());
-      return false;
-    }
   }
 } // namespace
 #endif
@@ -264,8 +183,7 @@ bool SystemFactory::isGameModeDetectionSupported() {
   return version.majorVersion() > WINDOWS_10_MAJOR_VERSION ||
          (version.majorVersion() == WINDOWS_10_MAJOR_VERSION && version.microVersion() >= WINDOWS_10_1903_BUILD);
 #elif defined(Q_OS_LINUX)
-  return isGameModeDbusAvailable() || isGameModeLibraryAvailable() ||
-         !QStandardPaths::findExecutable(QSL("gamemoded")).isEmpty();
+  return isGameModeDbusAvailable();
 #else
   return false;
 #endif
@@ -321,19 +239,13 @@ bool SystemFactory::isGameModeActive() {
     return false;
   }
 
-  const std::optional<bool> dbus_result = isGameModeActiveViaDbus();
+  const std::optional<bool> result = isGameModeActiveViaDbus();
 
-  if (dbus_result.has_value()) {
-    return dbus_result.value();
+  if (result.has_value()) {
+    return result.value();
   }
 
-  const std::optional<bool> library_result = isGameModeActiveViaLibrary();
-
-  if (library_result.has_value()) {
-    return library_result.value();
-  }
-
-  return isGameModeActiveViaCli();
+  return false;
 #else
   return false;
 #endif
