@@ -27,6 +27,7 @@
 #include <QDBusConnectionInterface>
 #include <QDBusInterface>
 #include <QDBusReply>
+#include <QDBusVariant>
 #endif
 
 #include <QDesktopServices>
@@ -39,6 +40,7 @@
 #include <QLibrary>
 #include <QProcess>
 #include <QString>
+#include <QStringList>
 #include <QVersionNumber>
 
 using UpdateCheck = QPair<UpdateInfo, QNetworkReply::NetworkError>;
@@ -79,38 +81,73 @@ namespace {
 
 #if defined(Q_OS_LINUX)
 namespace {
-#define GAME_MODE_DBUS_SERVICE   QSL("com.feralinteractive.GameMode")
-#define GAME_MODE_DBUS_PATH      QSL("/com/feralinteractive/GameMode")
-#define GAME_MODE_DBUS_INTERFACE QSL("com.feralinteractive.GameMode")
+#define GAME_MODE_DBUS_SERVICE    QSL("com.feralinteractive.GameMode")
+#define GAME_MODE_DBUS_PATH       QSL("/com/feralinteractive/GameMode")
+#define GAME_MODE_DBUS_INTERFACE  QSL("com.feralinteractive.GameMode")
+#define DBUS_PROPERTIES_INTERFACE QSL("org.freedesktop.DBus.Properties")
 
   bool isGameModeDbusAvailable() {
     auto* dbus_interface = QDBusConnection::sessionBus().interface();
 
-    return dbus_interface != nullptr && dbus_interface->isServiceRegistered(GAME_MODE_DBUS_SERVICE);
+    if (dbus_interface == nullptr) {
+      return false;
+    }
+
+    if (dbus_interface->isServiceRegistered(GAME_MODE_DBUS_SERVICE)) {
+      return true;
+    }
+
+    const QDBusReply<QStringList> activatable_services = dbus_interface->activatableServiceNames();
+
+    return activatable_services.isValid() && activatable_services.value().contains(GAME_MODE_DBUS_SERVICE);
   }
 
-  std::optional<bool> isGameModeActiveViaDbus() {
-    QDBusInterface game_mode(GAME_MODE_DBUS_SERVICE,
-                             GAME_MODE_DBUS_PATH,
-                             GAME_MODE_DBUS_INTERFACE,
-                             QDBusConnection::sessionBus());
+  std::optional<int> gameModeClientCount() {
+    QDBusInterface properties(GAME_MODE_DBUS_SERVICE,
+                              GAME_MODE_DBUS_PATH,
+                              DBUS_PROPERTIES_INTERFACE,
+                              QDBusConnection::sessionBus());
 
-    if (!game_mode.isValid()) {
-      qDebugNN << LOGSEC_CORE << "Game mode: DBus interface is not available.";
+    if (!properties.isValid()) {
+      qDebugNN << LOGSEC_CORE << "Game mode: DBus properties interface is not available.";
       return std::nullopt;
     }
 
-    const QDBusReply<int> reply = game_mode.call(QSL("ClientCount"));
+    const QDBusReply<QVariant> reply = properties.call(QSL("Get"), GAME_MODE_DBUS_INTERFACE, QSL("ClientCount"));
 
     if (!reply.isValid()) {
       qDebugNN << LOGSEC_CORE
-               << "Game mode: DBus ClientCount query failed:" << QUOTE_W_SPACE_DOT(reply.error().message());
+               << "Game mode: DBus ClientCount property query failed:" << QUOTE_W_SPACE_DOT(reply.error().message());
       return std::nullopt;
     }
 
-    qDebugNN << LOGSEC_CORE << "Game mode: DBus client count is" << QUOTE_W_SPACE_DOT(reply.value());
+    QVariant value = reply.value();
 
-    return reply.value() > 0;
+    if (value.canConvert<QDBusVariant>()) {
+      value = qvariant_cast<QDBusVariant>(value).variant();
+    }
+
+    bool ok = false;
+    const int count = value.toInt(&ok);
+
+    if (!ok) {
+      qDebugNN << LOGSEC_CORE << "Game mode: DBus ClientCount property has unexpected value.";
+      return std::nullopt;
+    }
+
+    return count;
+  }
+
+  std::optional<bool> isGameModeActiveViaDbus() {
+    const std::optional<int> client_count = gameModeClientCount();
+
+    if (!client_count.has_value()) {
+      return std::nullopt;
+    }
+
+    qDebugNN << LOGSEC_CORE << "Game mode: DBus client count is" << QUOTE_W_SPACE_DOT(client_count.value());
+
+    return client_count.value() > 0;
   }
 } // namespace
 #endif
