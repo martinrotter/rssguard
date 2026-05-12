@@ -60,11 +60,11 @@ class RSSGUARD_DLLSPEC SystemFactory : public QObject {
     static QString autostartDesktopFileLocation();
 #endif
 
-    // Returns true if detection of Windows Game Mode status is supported.
+    // Returns true if detection of Game Mode status is supported.
     static bool isGameModeDetectionSupported();
 
-    // Returns true if Windows Game Mode is active.
-    // Function returns false on non-Windows/unsupported systems.
+    // Returns true if Game Mode is active.
+    // Function returns false on unsupported systems.
     static bool isGameModeActive();
 
     // Retrieves username of currently logged-in user.

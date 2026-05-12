@@ -146,7 +146,6 @@ namespace {
     }
 
     qDebugNN << LOGSEC_CORE << "Game mode: DBus client count is" << QUOTE_W_SPACE_DOT(client_count.value());
-
     return client_count.value() > 0;
   }
 } // namespace
