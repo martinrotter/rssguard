@@ -22,6 +22,13 @@
 #include <QSettings>
 #endif
 
+#if defined(Q_OS_LINUX)
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
+#include <QDBusInterface>
+#include <QDBusReply>
+#endif
+
 #include <QDesktopServices>
 #include <QDir>
 #include <QFile>
@@ -77,6 +84,9 @@ namespace {
 
   constexpr int GAME_MODE_QUERY_STATUS_ERROR = -1;
   constexpr int GAME_MODE_QUERY_STATUS_INACTIVE = 0;
+  constexpr const char* GAME_MODE_DBUS_SERVICE = "com.feralinteractive.GameMode";
+  constexpr const char* GAME_MODE_DBUS_PATH = "/com/feralinteractive/GameMode";
+  constexpr const char* GAME_MODE_DBUS_INTERFACE = "com.feralinteractive.GameMode";
 
   QStringList gameModeLibraryNames() {
     return {
@@ -119,6 +129,36 @@ namespace {
 
   bool isGameModeLibraryAvailable() {
     return resolveGameModeQueryStatus() != nullptr;
+  }
+
+  bool isGameModeDbusAvailable() {
+    auto* dbus_interface = QDBusConnection::sessionBus().interface();
+
+    return dbus_interface != nullptr && dbus_interface->isServiceRegistered(QSL(GAME_MODE_DBUS_SERVICE));
+  }
+
+  std::optional<bool> isGameModeActiveViaDbus() {
+    QDBusInterface game_mode(QSL(GAME_MODE_DBUS_SERVICE),
+                             QSL(GAME_MODE_DBUS_PATH),
+                             QSL(GAME_MODE_DBUS_INTERFACE),
+                             QDBusConnection::sessionBus());
+
+    if (!game_mode.isValid()) {
+      qDebugNN << LOGSEC_CORE << "Game mode: DBus interface is not available.";
+      return std::nullopt;
+    }
+
+    const QDBusReply<int> reply = game_mode.call(QSL("ClientCount"));
+
+    if (!reply.isValid()) {
+      qDebugNN << LOGSEC_CORE << "Game mode: DBus ClientCount query failed:"
+               << QUOTE_W_SPACE_DOT(reply.error().message());
+      return std::nullopt;
+    }
+
+    qDebugNN << LOGSEC_CORE << "Game mode: DBus client count is" << QUOTE_W_SPACE_DOT(reply.value());
+
+    return reply.value() > 0;
   }
 
   std::optional<bool> isGameModeActiveViaLibrary() {
@@ -224,7 +264,8 @@ bool SystemFactory::isGameModeDetectionSupported() {
   return version.majorVersion() > WINDOWS_10_MAJOR_VERSION ||
          (version.majorVersion() == WINDOWS_10_MAJOR_VERSION && version.microVersion() >= WINDOWS_10_1903_BUILD);
 #elif defined(Q_OS_LINUX)
-  return isGameModeLibraryAvailable() || !QStandardPaths::findExecutable(QSL("gamemoded")).isEmpty();
+  return isGameModeDbusAvailable() || isGameModeLibraryAvailable() ||
+         !QStandardPaths::findExecutable(QSL("gamemoded")).isEmpty();
 #else
   return false;
 #endif
@@ -278,6 +319,12 @@ bool SystemFactory::isGameModeActive() {
 #elif defined(Q_OS_LINUX)
   if (!isGameModeDetectionSupported()) {
     return false;
+  }
+
+  const std::optional<bool> dbus_result = isGameModeActiveViaDbus();
+
+  if (dbus_result.has_value()) {
+    return dbus_result.value();
   }
 
   const std::optional<bool> library_result = isGameModeActiveViaLibrary();
