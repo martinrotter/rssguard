@@ -50,7 +50,7 @@ QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {
 }
 
 QString WebViewer::htmlForMessage(const Message& message, RootItem* root) const {
-  auto html_message = qApp->skins()->generateHtmlOfArticle(message, root);
+  auto html_message = qApp->skins()->generateHtmlOfArticle(message, root, this);
   return html_message;
 }
 

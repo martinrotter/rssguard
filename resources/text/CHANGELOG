@@ -1,18 +1,35 @@
-5.1.2
+5.1.3
 -----
 Released on: 2026-05-XX
+
+Added:
+* Feed auto-fetch can now also be delayed while Feral GameMode is active on Linux. (#2265)
+
+Fixed:
+* Fixed possible crash during parallel feed updates.
+
+5.1.2
+-----
+Released on: 2026-05-11
 
 Added:
 * Show URL of loaded website in status bar. (#2097)
 * Article extractor now can be called with existing article `HTML` and thus can run Readability algorithm directly on the existing article data instead of downloading full source web page. (#2252)
 * Auto-fetching articles can now be limited to times when a network connection is active. (#2211)
 * Feed retrieval can now be skipped while Windows Game Mode is active. (#1230)
-* The built-in text article viewer can now load external article images on demand. If images are disabled, then clean links are displayed instead. RSS Guard downloads images in the background, reports loading progress and caches them for later use. (#2254)
+* Text-based article viewer can now load remote article images when external resources are enabled, cache them, and show the same article without images when external resources are disabled. (08a2127d9, 561f5b432, 7a179c47c)
+* Text-based article viewer can now display directly opened image files. (4c7819676)
+* Text-based article viewer can now show directly opened JSON files in readable form and render directly opened Markdown files.
+* Updated Japanese translation. (#2262)
 
 Fixed:
 * Initial state of "web attributes" is properly set in WebEngine builds. (#2227)
 * Fix some cases where link does not load in internal browser when clicked.
 * Article filter action "Filter articles like this" now uses the article that was actually right-clicked after testing a filter. (#2139)
+* Image attachments in articles now respect the configured height limit in both text-based and WebEngine-based viewers. (#2254, 8f4abac60, bc247ad0b)
+* Image context menu actions in the text-based viewer can again detect the image under the cursor, copy its URL, copy the image and save it. (c3902db73)
+* Relative links opened from the internal browser are now resolved against the currently loaded page before opening. (4c7819676)
+* Directly opened non-HTML text content is now displayed as text instead of being treated as HTML. (4c7819676)
 
 5.1.1
 -----

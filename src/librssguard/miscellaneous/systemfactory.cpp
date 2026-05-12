@@ -2,12 +2,16 @@
 
 #include "miscellaneous/systemfactory.h"
 
+#include "exceptions/applicationexception.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/dialogs/formupdate.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/systemfactory.h"
 #include "qtlinq/qtlinq.h"
+
+#include <optional>
 
 #if defined(Q_OS_WIN)
 #include <qt_windows.h>
@@ -18,6 +22,13 @@
 #include <QSettings>
 #endif
 
+#if defined(Q_OS_LINUX)
+#include <QDBusConnection>
+#include <QDBusConnectionInterface>
+#include <QDBusInterface>
+#include <QDBusReply>
+#endif
+
 #include <QDesktopServices>
 #include <QDir>
 #include <QFile>
@@ -25,6 +36,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QLibrary>
 #include <QProcess>
 #include <QString>
 #include <QVersionNumber>
@@ -61,6 +73,44 @@ namespace {
       state->m_received = true;
       state->m_callbackSemaphore.release();
     }
+  }
+} // namespace
+#endif
+
+#if defined(Q_OS_LINUX)
+namespace {
+#define GAME_MODE_DBUS_SERVICE   QSL("com.feralinteractive.GameMode")
+#define GAME_MODE_DBUS_PATH      QSL("/com/feralinteractive/GameMode")
+#define GAME_MODE_DBUS_INTERFACE QSL("com.feralinteractive.GameMode")
+
+  bool isGameModeDbusAvailable() {
+    auto* dbus_interface = QDBusConnection::sessionBus().interface();
+
+    return dbus_interface != nullptr && dbus_interface->isServiceRegistered(GAME_MODE_DBUS_SERVICE);
+  }
+
+  std::optional<bool> isGameModeActiveViaDbus() {
+    QDBusInterface game_mode(GAME_MODE_DBUS_SERVICE,
+                             GAME_MODE_DBUS_PATH,
+                             GAME_MODE_DBUS_INTERFACE,
+                             QDBusConnection::sessionBus());
+
+    if (!game_mode.isValid()) {
+      qDebugNN << LOGSEC_CORE << "Game mode: DBus interface is not available.";
+      return std::nullopt;
+    }
+
+    const QDBusReply<int> reply = game_mode.call(QSL("ClientCount"));
+
+    if (!reply.isValid()) {
+      qDebugNN << LOGSEC_CORE
+               << "Game mode: DBus ClientCount query failed:" << QUOTE_W_SPACE_DOT(reply.error().message());
+      return std::nullopt;
+    }
+
+    qDebugNN << LOGSEC_CORE << "Game mode: DBus client count is" << QUOTE_W_SPACE_DOT(reply.value());
+
+    return reply.value() > 0;
   }
 } // namespace
 #endif
@@ -132,6 +182,8 @@ bool SystemFactory::isGameModeDetectionSupported() {
 
   return version.majorVersion() > WINDOWS_10_MAJOR_VERSION ||
          (version.majorVersion() == WINDOWS_10_MAJOR_VERSION && version.microVersion() >= WINDOWS_10_1903_BUILD);
+#elif defined(Q_OS_LINUX)
+  return isGameModeDbusAvailable();
 #else
   return false;
 #endif
@@ -182,6 +234,18 @@ bool SystemFactory::isGameModeActive() {
            << QUOTE_W_SPACE_DOT(state.m_mode);
 
   return state.m_received && state.m_mode == EFFECTIVE_POWER_MODE_GAME_MODE_VALUE;
+#elif defined(Q_OS_LINUX)
+  if (!isGameModeDetectionSupported()) {
+    return false;
+  }
+
+  const std::optional<bool> result = isGameModeActiveViaDbus();
+
+  if (result.has_value()) {
+    return result.value();
+  }
+
+  return false;
 #else
   return false;
 #endif

@@ -69,6 +69,9 @@ class WebViewer {
     virtual void goBack() = 0;
     virtual void goForward() = 0;
 
+    // Returns full HTML attribute which sets "max-height" for the outlying "img".
+    virtual QString imageCssMaxHeight(int height) const = 0;
+
     // Returns current URL.
     virtual QUrl url() const = 0;
 

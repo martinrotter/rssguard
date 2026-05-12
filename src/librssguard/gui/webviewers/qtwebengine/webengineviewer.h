@@ -94,6 +94,8 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
 
     virtual void setLoadExternalResources(bool load_resources);
 
+    virtual QString imageCssMaxHeight(int height) const;
+
     virtual bool supportsNavigation() const;
     virtual bool supportImagesLoading() const;
 
