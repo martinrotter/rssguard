@@ -20,6 +20,9 @@ class WebEnginePage : public QWebEnginePage {
     void linkMouseClicked(const QUrl& url);
 
   private slots:
+    void onProxyAuthenticationRequired(const QUrl& request_url,
+                                       QAuthenticator* authenticator,
+                                       const QString& proxy_host);
     void onPdfPrintingFinished(const QString& file_path, bool success);
 
   protected:

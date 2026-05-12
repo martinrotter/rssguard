@@ -53,7 +53,12 @@ FeedReader::FeedReader(QObject* parent)
 }
 
 void FeedReader::updateAllFeedsOnStartup() {
-  if (!m_feedFetchingPaused) {
+  bool disable_because_gamemode = m_globalAutoUpdateOnlyIfNotGameMode && SystemFactory::isGameModeActive();
+
+  if (disable_because_gamemode) {
+    qWarningNN << LOGSEC_CORE << "Feed auto-fetch on app startup is skipped because Game Mode is active.";
+  }
+  else if (!m_feedFetchingPaused) {
     updateFeeds(m_feedsModel->rootItem()->getSubAutoFetchingEnabledFeeds());
   }
   else {

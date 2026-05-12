@@ -19,6 +19,7 @@ WebEnginePage::WebEnginePage(QObject* parent) : QWebEnginePage(qApp->web()->webE
   setBackgroundColor(Qt::GlobalColor::transparent);
 
   connect(this, &WebEnginePage::pdfPrintingFinished, this, &WebEnginePage::onPdfPrintingFinished);
+  connect(this, &WebEnginePage::proxyAuthenticationRequired, this, &WebEnginePage::onProxyAuthenticationRequired);
 }
 
 WebEngineViewer* WebEnginePage::view() const {
@@ -49,6 +50,12 @@ QList<QAction*> WebEnginePage::allPageActions() const {
            .toList();
 
   return acts;
+}
+
+void WebEnginePage::onProxyAuthenticationRequired(const QUrl& request_url,
+                                                  QAuthenticator* authenticator,
+                                                  const QString& proxy_host) {
+  qDebugNN << LOGSEC_NETWORK << "Proxy authentication for" << QUOTE_W_SPACE(request_url.toString()) << "is required!";
 }
 
 void WebEnginePage::onPdfPrintingFinished(const QString& file_path, bool success) {
