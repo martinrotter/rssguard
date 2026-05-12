@@ -8556,13 +8556,13 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="59"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="122"/>
       <source>WebEngine</source>
-      <translation type="unfinished">WebEngine</translation>
+      <translation>WebEngine</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="65"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="121"/>
       <source>Flags</source>
-      <translation type="unfinished">Flags</translation>
+      <translation>Прапори</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.cpp" line="30"/>
@@ -10192,7 +10192,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="37"/>
       <source>GPU</source>
-      <translation type="unfinished">GPU</translation>
+      <translation>GPU</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="82"/>
@@ -10267,7 +10267,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webengineviewer.cpp" line="368"/>
       <source>Diagnostics</source>
-      <translation type="unfinished">Diagnostics</translation>
+      <translation>Діагностика</translation>
     </message>
   </context>
   <context>
