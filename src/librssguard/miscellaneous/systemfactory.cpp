@@ -79,9 +79,9 @@ namespace {
 
 #if defined(Q_OS_LINUX)
 namespace {
-#define GAME_MODE_DBUS_SERVICE   QSL("com.feralinteractive.GameMode");
-#define GAME_MODE_DBUS_PATH      QSL("/com/feralinteractive/GameMode");
-#define GAME_MODE_DBUS_INTERFACE QSL("com.feralinteractive.GameMode");
+#define GAME_MODE_DBUS_SERVICE   QSL("com.feralinteractive.GameMode")
+#define GAME_MODE_DBUS_PATH      QSL("/com/feralinteractive/GameMode")
+#define GAME_MODE_DBUS_INTERFACE QSL("com.feralinteractive.GameMode")
 
   bool isGameModeDbusAvailable() {
     auto* dbus_interface = QDBusConnection::sessionBus().interface();
