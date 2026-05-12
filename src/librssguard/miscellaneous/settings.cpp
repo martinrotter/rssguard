@@ -458,7 +458,7 @@ DVALUE(QString) General::LanguageDef = QLocale::system().name();
 DKEY Proxy::ID = "proxy";
 
 DKEY Proxy::Type = "proxy_type";
-DVALUE(QNetworkProxy::ProxyType) Proxy::TypeDef = QNetworkProxy::NoProxy;
+DVALUE(QNetworkProxy::ProxyType) Proxy::TypeDef = QNetworkProxy::DefaultProxy;
 
 DKEY Proxy::Host = "host";
 DVALUE(QString) Proxy::HostDef = QString();
