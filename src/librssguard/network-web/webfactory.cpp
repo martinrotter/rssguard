@@ -18,6 +18,7 @@
 #include <QDir>
 #include <QElapsedTimer>
 #include <QProcess>
+#include <QTcpSocket>
 #include <QUrl>
 
 namespace {
@@ -455,9 +456,17 @@ QString WebFactory::injectPacIntoChromiumFlags(const QString& cli_flags, const Q
 void PacServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
   QByteArray http_payload;
   QByteArray reply_message;
+  int status_code = 200;
+  QString status_text = QSL("OK");
+  const QString request_path = request.m_url.path();
+
+  qDebugNN << LOGSEC_NETWORK << "PAC server received request for" << QUOTE_W_SPACE(request_path)
+           << "with method" << QUOTE_W_SPACE_DOT(int(request.m_method));
 
   try {
     if (request.m_method != HttpRequest::Method::Get && request.m_method != HttpRequest::Method::Head) {
+      status_code = 405;
+      status_text = QSL("Method Not Allowed");
       http_payload = QByteArrayLiteral("Method not allowed.");
       reply_message = QSL("HTTP/1.1 405 Method Not Allowed\r\n"
                           "Allow: GET, HEAD\r\n"
@@ -467,8 +476,13 @@ void PacServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
                           "\r\n")
                         .arg(QString::number(http_payload.size()))
                         .toUtf8();
+
+      qWarningNN << LOGSEC_NETWORK << "PAC server rejected request with unsupported method"
+                 << QUOTE_W_SPACE_DOT(int(request.m_method));
     }
-    else if (request.m_url.path() != QSL("/") && request.m_url.path() != QSL("/%1").arg(QSL(PAC_SERVER_FILE))) {
+    else if (request_path != QSL("/") && request_path != QSL("/%1").arg(QSL(PAC_SERVER_FILE))) {
+      status_code = 404;
+      status_text = QSL("Not Found");
       http_payload = QByteArrayLiteral("Not found.");
       reply_message = QSL("HTTP/1.1 404 Not Found\r\n"
                           "Connection: close\r\n"
@@ -477,6 +491,9 @@ void PacServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
                           "\r\n")
                         .arg(QString::number(http_payload.size()))
                         .toUtf8();
+
+      qWarningNN << LOGSEC_NETWORK << "PAC server rejected request for unknown path"
+                 << QUOTE_W_SPACE_DOT(request_path);
     }
     else {
       http_payload = IOFactory::readFile(WebFactory::proxiesPacFilePath());
@@ -488,9 +505,15 @@ void PacServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
                           "\r\n")
                         .arg(QString::number(http_payload.size()))
                         .toUtf8();
+
+      qDebugNN << LOGSEC_NETWORK << "PAC server loaded PAC file from"
+               << QUOTE_W_SPACE(WebFactory::proxiesPacFilePath()) << "with size"
+               << NONQUOTE_W_SPACE_DOT(http_payload.size());
     }
   }
   catch (const ApplicationException& ex) {
+    status_code = 500;
+    status_text = QSL("Internal Server Error");
     http_payload = ex.message().toUtf8();
     reply_message = QSL("HTTP/1.1 500 Internal Server Error\r\n"
                         "Connection: close\r\n"
@@ -499,6 +522,9 @@ void PacServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
                         "\r\n")
                       .arg(QString::number(http_payload.size()))
                       .toUtf8();
+
+    qWarningNN << LOGSEC_NETWORK << "PAC server failed to read PAC file:"
+               << QUOTE_W_SPACE_DOT(ex.message());
   }
 
   if (request.m_method != HttpRequest::Method::Head) {
@@ -507,6 +533,10 @@ void PacServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
 
   socket->write(reply_message);
   socket->disconnectFromHost();
+
+  qDebugNN << LOGSEC_NETWORK << "PAC server answered" << QUOTE_W_SPACE(socket->peerAddress().toString())
+           << "with status" << NONQUOTE_W_SPACE(status_code) << QUOTE_W_SPACE(status_text) << "and payload size"
+           << NONQUOTE_W_SPACE_DOT(http_payload.size());
 }
 
 QList<QAction*> WebFactory::webEngineAttributeActions() const {
