@@ -35,7 +35,7 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
                                      tr("Save complete webpage"),
                                      this)),
     m_actionDiagGpu(new QAction(tr("GPU"), this)) {
-  WebEnginePage* page = new WebEnginePage(this);
+  WebEnginePage* page = new WebEnginePage(false, this);
 
   setPage(page);
   connect(this, &WebEngineViewer::loadFinished, this, [=]() {
@@ -195,9 +195,7 @@ void WebEngineViewer::contextMenuEvent(QContextMenuEvent* event) {
 }
 
 QWebEngineView* WebEngineViewer::createWindow(QWebEnginePage::WebWindowType type) {
-  auto* viewer = new WebEngineViewer(this);
-  emit openViewerInNewTab(viewer);
-  return viewer;
+  return nullptr;
 }
 
 void WebEngineViewer::bindToBrowser(WebBrowser* browser) {
@@ -233,8 +231,6 @@ void WebEngineViewer::reloadNetworkSettings() {}
 
 void WebEngineViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
   QWebEngineView::setHtml(html, url);
-
-  // IOFactory::writeFile("a.html", html.toUtf8());
 }
 
 double WebEngineViewer::verticalScrollBarPosition() const {

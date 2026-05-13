@@ -18,7 +18,8 @@
 #include <QUrlQuery>
 #include <QWebEngineScript>
 
-WebEnginePage::WebEnginePage(QObject* parent) : QWebEnginePage(qApp->web()->webEngineProfile(), parent) {
+WebEnginePage::WebEnginePage(bool is_dummy_page, QObject* parent)
+  : QWebEnginePage(qApp->web()->webEngineProfile(), parent), m_isDummyPage(is_dummy_page) {
   setBackgroundColor(Qt::GlobalColor::transparent);
 
   connect(this, &WebEnginePage::pdfPrintingFinished, this, &WebEnginePage::onPdfPrintingFinished);
@@ -99,6 +100,13 @@ void WebEnginePage::javaScriptAlert(const QUrl& security_origin, const QString& 
 }
 
 bool WebEnginePage::acceptNavigationRequest(const QUrl& url, NavigationType type, bool is_main_frame) {
+  if (m_isDummyPage) {
+    // NOTE: This is "dummy" page, where we only need to extract the url.
+    // We therefore inform about the URL and quit right away.
+    emit linkMouseClicked(url);
+    return false;
+  }
+
   if (type == NavigationType::NavigationTypeLinkClicked) {
     QTimer::singleShot(500, this, [=]() {
       emit linkMouseClicked(url);
@@ -123,4 +131,18 @@ QStringList WebEnginePage::chooseFiles(FileSelectionMode mode,
                                        const QStringList& old_files,
                                        const QStringList& accepted_mime_types) {
   return QWebEnginePage::chooseFiles(mode, old_files, accepted_mime_types);
+}
+
+QWebEnginePage* WebEnginePage::createWindow(WebWindowType type) {
+  auto* page = new WebEnginePage(true, this);
+
+  // NOTE: We create "dummy" page which "accepts" the request and informs
+  // us about the URL, then we destroy the page and continue URL processing
+  // in main page.
+  connect(page, &WebEnginePage::linkMouseClicked, this, [this, page](const QUrl& url) {
+    emit linkMouseClicked(url);
+    page->deleteLater();
+  });
+
+  return page;
 }

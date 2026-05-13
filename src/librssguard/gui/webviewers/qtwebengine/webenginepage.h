@@ -11,7 +11,7 @@ class WebEnginePage : public QWebEnginePage {
     Q_OBJECT
 
   public:
-    explicit WebEnginePage(QObject* parent = nullptr);
+    explicit WebEnginePage(bool is_dummy_page, QObject* parent = nullptr);
 
     WebEngineViewer* view() const;
     QList<QAction*> allPageActions() const;
@@ -26,6 +26,7 @@ class WebEnginePage : public QWebEnginePage {
     void onPdfPrintingFinished(const QString& file_path, bool success);
 
   protected:
+    virtual QWebEnginePage* createWindow(WebWindowType type);
     virtual void javaScriptAlert(const QUrl& security_origin, const QString& msg);
     virtual bool acceptNavigationRequest(const QUrl& url, NavigationType type, bool is_main_frame);
     virtual void javaScriptConsoleMessage(JavaScriptConsoleMessageLevel level,
@@ -35,6 +36,9 @@ class WebEnginePage : public QWebEnginePage {
     virtual QStringList chooseFiles(FileSelectionMode mode,
                                     const QStringList& old_files,
                                     const QStringList& accepted_mime_types);
+
+  private:
+    bool m_isDummyPage;
 };
 
 #endif // WEBENGINEPAGE_H
