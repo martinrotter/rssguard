@@ -19,6 +19,7 @@ localization/*qm
 resources/skins/*/*.map
 aqtinstall.log
 .sass-cache
+.vs
 build-dir/
 build/
 docs/build

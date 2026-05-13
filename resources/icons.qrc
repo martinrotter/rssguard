@@ -106,6 +106,7 @@
     <file>./graphics/Breeze/icons/playlist-sort.svg</file>
     <file>./graphics/Breeze/icons/printer.svg</file>
     <file>./graphics/Breeze/icons/process-stop.svg</file>
+    <file>./graphics/Breeze/icons/redeyes.svg</file>
     <file>./graphics/Breeze/icons/sort-name.svg</file>
     <file>./graphics/Breeze/icons/system-search.svg</file>
     <file>./graphics/Breeze/icons/system-upgrade.svg</file>
@@ -235,6 +236,7 @@
     <file>./graphics/Breeze Dark/icons/playlist-sort.svg</file>
     <file>./graphics/Breeze Dark/icons/printer.svg</file>
     <file>./graphics/Breeze Dark/icons/process-stop.svg</file>
+    <file>./graphics/Breeze Dark/icons/redeyes.svg</file>
     <file>./graphics/Breeze Dark/icons/sort-name.svg</file>
     <file>./graphics/Breeze Dark/icons/system-search.svg</file>
     <file>./graphics/Breeze Dark/icons/system-upgrade.svg</file>

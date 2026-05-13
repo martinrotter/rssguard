@@ -3,12 +3,14 @@
 #include "gui/webviewers/qtwebengine/webenginepage.h"
 
 #include "definitions/definitions.h"
+#include "gui/dialogs/formaskauth.h"
 #include "gui/webviewers/qtwebengine/webengineviewer.h"
 #include "miscellaneous/application.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 
 #include <QAuthenticator>
+#include <QInputDialog>
 #include <QString>
 #include <QStringList>
 #include <QTimer>
@@ -57,6 +59,17 @@ void WebEnginePage::onProxyAuthenticationRequired(const QUrl& request_url,
                                                   QAuthenticator* authenticator,
                                                   const QString& proxy_host) {
   qDebugNN << LOGSEC_NETWORK << "Proxy authentication for" << QUOTE_W_SPACE(request_url.toString()) << "is required!";
+
+  try {
+    auto user_pass = FormAskauth::getUsernamePassword(tr("Proxy '%1' authentication").arg(proxy_host));
+
+    authenticator->setUser(user_pass.first);
+    authenticator->setPassword(user_pass.second);
+  }
+  catch (...) {
+    qWarningNN << LOGSEC_NETWORK << "Authentication for" << QUOTE_W_SPACE(request_url.toString())
+               << "was not provided.";
+  }
 }
 
 void WebEnginePage::onPdfPrintingFinished(const QString& file_path, bool success) {

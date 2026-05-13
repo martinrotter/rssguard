@@ -85,6 +85,8 @@ set(SOURCES
   gui/dialogs/formcopyarticledata.h
   gui/dialogs/formmain.cpp
   gui/dialogs/formmain.h
+  gui/dialogs/formaskauth.cpp
+  gui/dialogs/formaskauth.h
   gui/dialogs/formmessagefiltersmanager.cpp
   gui/dialogs/formmessagefiltersmanager.h
   gui/dialogs/formrestoredatabasesettings.cpp
@@ -337,6 +339,7 @@ set(UI_FILES
   gui/dialogs/formcopyarticledata.ui
   gui/dialogs/formdatabasecleanup.ui
   gui/dialogs/formlog.ui
+  gui/dialogs/formaskauth.ui
   gui/dialogs/formmain.ui
   gui/dialogs/formmessagefiltersmanager.ui
   gui/dialogs/formrestoredatabasesettings.ui
