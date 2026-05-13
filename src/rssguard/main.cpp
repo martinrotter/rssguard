@@ -6,6 +6,7 @@
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
 #include "miscellaneous/application.h"
+#include "network-web/webfactory.h"
 #include "services/abstract/label.h"
 
 #if defined(ENABLE_MEDIAPLAYER_LIBMPV)
@@ -170,6 +171,11 @@ int main(int argc, char* argv[]) {
   qApp->hideOrShowMainForm();
   qApp->feedReader()->loadSavedMessageFilters();
   qApp->feedReader()->feedsModel()->loadActivatedServiceAccounts();
+
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  qApp->web()->generatePacAndStartServer(qApp->feedReader()->feedsModel()->serviceRoots());
+#endif
+
   qApp->showTrayIcon();
 
   main_window.tabWidget()->feedMessageViewer()->respondToMainWindowResizes();

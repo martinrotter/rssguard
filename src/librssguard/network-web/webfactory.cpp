@@ -3,11 +3,15 @@
 #include "network-web/webfactory.h"
 
 #include "definitions/definitions.h"
+#include "exceptions/applicationexception.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/settings.h"
 #include "network-web/cookiejar.h"
+#include "services/abstract/serviceroot.h"
+
+#include <utility>
 
 #include <QClipboard>
 #include <QDesktopServices>
@@ -15,6 +19,66 @@
 #include <QElapsedTimer>
 #include <QProcess>
 #include <QUrl>
+
+namespace {
+  QString pacStringLiteral(const QString& value) {
+    QString escaped;
+    escaped.reserve(value.size() + 2);
+    escaped.append(QL1C('"'));
+
+    for (const QChar& chr : value) {
+      switch (chr.unicode()) {
+        case '\\':
+          escaped.append(QSL("\\\\"));
+          break;
+
+        case '"':
+          escaped.append(QSL("\\\""));
+          break;
+
+        case '\n':
+          escaped.append(QSL("\\n"));
+          break;
+
+        case '\r':
+          escaped.append(QSL("\\r"));
+          break;
+
+        case '\t':
+          escaped.append(QSL("\\t"));
+          break;
+
+        default:
+          escaped.append(chr);
+          break;
+      }
+    }
+
+    escaped.append(QL1C('"'));
+    return escaped;
+  }
+
+  QString pacProxyString(const QNetworkProxy& proxy) {
+    switch (proxy.type()) {
+      case QNetworkProxy::ProxyType::Socks5Proxy:
+        return QSL("SOCKS5 %1:%2").arg(proxy.hostName(), QString::number(proxy.port()));
+
+      case QNetworkProxy::ProxyType::HttpProxy:
+      case QNetworkProxy::ProxyType::HttpCachingProxy:
+      case QNetworkProxy::ProxyType::FtpCachingProxy:
+        return QSL("PROXY %1:%2").arg(proxy.hostName(), QString::number(proxy.port()));
+
+      case QNetworkProxy::ProxyType::NoProxy:
+      case QNetworkProxy::ProxyType::DefaultProxy:
+      default:
+        return QSL("DIRECT");
+    }
+  }
+
+  bool isExplicitProxy(const QNetworkProxy& proxy) {
+    return proxy.type() != QNetworkProxy::ProxyType::DefaultProxy && proxy.type() != QNetworkProxy::ProxyType::NoProxy;
+  }
+} // namespace
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
 #include "gui/webviewers/qtwebengine/geminischemehandler.h"
@@ -273,6 +337,173 @@ void WebFactory::onWebEngineAttributeChanged(bool enabled) {
   m_webEngineProfile->settings()->setAttribute(attribute, act->isChecked());
 }
 
+void WebFactory::generatePacAndStartServer(const QList<ServiceRoot*>& accounts) {
+  // We obtain all proxies.
+  QHash<QString, QNetworkProxy> proxies_per_host;
+
+  if (accounts.size() == 1) {
+    QNetworkProxy account_proxy = accounts.first()->networkProxy();
+
+    if (isExplicitProxy(account_proxy)) {
+      // We use this as fallback.
+      proxies_per_host.insert(QString(), account_proxy);
+    }
+  }
+
+  const bool has_proxy_fallback = proxies_per_host.contains(QString());
+
+  for (ServiceRoot* acc : accounts) {
+    QNetworkProxy account_proxy = acc->networkProxy();
+
+    for (Feed* feed : acc->getSubTreeFeeds()) {
+      QString feed_host = QUrl(feed->source()).host().toLower();
+
+      if (feed_host.isEmpty()) {
+        continue;
+      }
+
+      QNetworkProxy feed_proxy = acc->networkProxyForItem(feed);
+      bool should_insert_rule = false;
+
+      if (has_proxy_fallback) {
+        // Single account with account-level proxy fallback:
+        // only feeds differing from the account proxy need explicit host rules.
+        should_insert_rule = isExplicitProxy(feed_proxy) && feed_proxy != account_proxy;
+      }
+      else {
+        // No global PAC fallback: every explicit account/feed proxy needs its own host rule.
+        should_insert_rule = isExplicitProxy(feed_proxy);
+      }
+
+      if (!should_insert_rule) {
+        continue;
+      }
+
+      if (proxies_per_host.contains(feed_host)) {
+        if (proxies_per_host.value(feed_host) != feed_proxy) {
+          qWarningNN << LOGSEC_NETWORK << "Host" << QUOTE_W_SPACE(feed_host)
+                     << "already has a different proxy rule in PAC file. Keeping the first one.";
+        }
+
+        continue;
+      }
+
+      proxies_per_host.insert(feed_host, feed_proxy);
+    }
+  }
+
+  // We generate PAC file which is saved into %data% folder.
+  const QByteArray pac_data = generatePacFile(proxies_per_host);
+
+  qDebugNN << LOGSEC_NETWORK << "Generated PAC file with" << QUOTE_W_SPACE(proxies_per_host.size())
+           << "proxy rules and size" << QUOTE_W_SPACE_DOT(pac_data.size());
+
+  IOFactory::writeFile(proxiesPacFilePath(), pac_data);
+
+  // We start local HTTP server which server the PAC file.
+  m_pacServer.setListenAddressPort(QSL("http://localhost:%1").arg(PAC_SERVER_PORT), true);
+}
+
+QByteArray WebFactory::generatePacFile(const QHash<QString, QNetworkProxy>& proxies_per_host) {
+  const QString fallback_proxy =
+    pacProxyString(proxies_per_host.value(QString(), QNetworkProxy::ProxyType::DefaultProxy));
+  QString pac;
+
+  pac.reserve(1024 + (proxies_per_host.size() * 96));
+
+  pac += QSL("// This PAC file was generated by RSS Guard.\n");
+  pac += QSL("function FindProxyForURL(url, host) {\n");
+  pac += QSL("  host = host.toLowerCase();\n\n");
+
+  QStringList hosts = proxies_per_host.keys();
+
+  hosts.removeAll(QString());
+  hosts.sort(Qt::CaseSensitivity::CaseInsensitive);
+
+  for (const QString& host : std::as_const(hosts)) {
+    pac += QSL("  if (host == %1) {\n").arg(pacStringLiteral(host.toLower()));
+    pac += QSL("    return %1;\n").arg(pacStringLiteral(pacProxyString(proxies_per_host.value(host))));
+    pac += QSL("  }\n\n");
+  }
+
+  pac += QSL("  return %1;\n").arg(pacStringLiteral(fallback_proxy));
+  pac += QSL("}\n");
+
+  return pac.toUtf8();
+}
+
+QString WebFactory::proxiesPacFilePath() {
+  static QString path = webCacheFolder() + QDir::separator() + QSL(PAC_SERVER_FILE);
+  return path;
+}
+
+QString WebFactory::injectPacIntoChromiumFlags(const QString& cli_flags, const QString& user_flags) {
+  if (cli_flags.contains(QSL("proxy-pac-url")) || user_flags.contains(QSL("proxy-pac-url"))) {
+    return cli_flags + QSL(" ") + user_flags;
+  }
+  else {
+    return QSL("--proxy-pac-url=http://127.0.0.1:%1/%2").arg(QString::number(PAC_SERVER_PORT), QSL(PAC_SERVER_FILE)) +
+           QSL(" ") + cli_flags + QSL(" ") + user_flags;
+  }
+}
+
+void PacServer::answerClient(QTcpSocket* socket, const HttpRequest& request) {
+  QByteArray http_payload;
+  QByteArray reply_message;
+
+  try {
+    if (request.m_method != HttpRequest::Method::Get && request.m_method != HttpRequest::Method::Head) {
+      http_payload = QByteArrayLiteral("Method not allowed.");
+      reply_message = QSL("HTTP/1.1 405 Method Not Allowed\r\n"
+                          "Allow: GET, HEAD\r\n"
+                          "Connection: close\r\n"
+                          "Content-Type: text/plain; charset=utf-8\r\n"
+                          "Content-Length: %1\r\n"
+                          "\r\n")
+                        .arg(QString::number(http_payload.size()))
+                        .toUtf8();
+    }
+    else if (request.m_url.path() != QSL("/") && request.m_url.path() != QSL("/%1").arg(QSL(PAC_SERVER_FILE))) {
+      http_payload = QByteArrayLiteral("Not found.");
+      reply_message = QSL("HTTP/1.1 404 Not Found\r\n"
+                          "Connection: close\r\n"
+                          "Content-Type: text/plain; charset=utf-8\r\n"
+                          "Content-Length: %1\r\n"
+                          "\r\n")
+                        .arg(QString::number(http_payload.size()))
+                        .toUtf8();
+    }
+    else {
+      http_payload = IOFactory::readFile(WebFactory::proxiesPacFilePath());
+      reply_message = QSL("HTTP/1.1 200 OK\r\n"
+                          "Connection: close\r\n"
+                          "Cache-Control: no-cache, no-store, must-revalidate\r\n"
+                          "Content-Type: application/x-ns-proxy-autoconfig; charset=utf-8\r\n"
+                          "Content-Length: %1\r\n"
+                          "\r\n")
+                        .arg(QString::number(http_payload.size()))
+                        .toUtf8();
+    }
+  }
+  catch (const ApplicationException& ex) {
+    http_payload = ex.message().toUtf8();
+    reply_message = QSL("HTTP/1.1 500 Internal Server Error\r\n"
+                        "Connection: close\r\n"
+                        "Content-Type: text/plain; charset=utf-8\r\n"
+                        "Content-Length: %1\r\n"
+                        "\r\n")
+                      .arg(QString::number(http_payload.size()))
+                      .toUtf8();
+  }
+
+  if (request.m_method != HttpRequest::Method::Head) {
+    reply_message.append(http_payload);
+  }
+
+  socket->write(reply_message);
+  socket->disconnectFromHost();
+}
+
 QList<QAction*> WebFactory::webEngineAttributeActions() const {
   return m_webEngineAttributeActions;
 }
@@ -388,7 +619,7 @@ QString WebFactory::urlToTld(const QUrl& url) {
   return last_two;
 }
 
-QString WebFactory::webCacheFolder() const {
+QString WebFactory::webCacheFolder() {
   QString cache_folder = qApp->userDataFolder() + QDir::separator() + QSL("web");
 
   return cache_folder;

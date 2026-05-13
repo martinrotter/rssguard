@@ -5,11 +5,19 @@
 
 #include "core/message.h"
 
+#include <QHash>
+#include <QList>
 #include <QMap>
+#include <QNetworkProxy>
 #include <QObject>
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+#include "network-web/httpserver.h"
+
 #include <QWebEngineSettings>
+
+#define PAC_SERVER_PORT 42751
+#define PAC_SERVER_FILE "proxies.pac"
 
 class QWebEngineProfile;
 class GeminiSchemeHandler;
@@ -24,6 +32,14 @@ class QWebEngineDownloadRequest;
 class CookieJar;
 class QMenu;
 class QAction;
+class ServiceRoot;
+
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+class PacServer : public HttpServer {
+  protected:
+    virtual void answerClient(QTcpSocket* socket, const HttpRequest& request);
+};
+#endif
 
 class RSSGUARD_DLLSPEC WebFactory : public QObject {
     Q_OBJECT
@@ -39,7 +55,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 
     QString urlToTld(const QUrl& url);
 
-    QString webCacheFolder() const;
+    static QString webCacheFolder();
 
     // HTML entity unescaping. This method
     // converts both HTML entity names and numbers to UTF-8 string.
@@ -60,8 +76,13 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   public:
     QWebEngineProfile* webEngineProfile() const;
-    void updateWebEngineProfileSettings();
     QList<QAction*> webEngineAttributeActions() const;
+
+    void updateWebEngineProfileSettings();
+    void generatePacAndStartServer(const QList<ServiceRoot*>& accounts);
+
+    static QString proxiesPacFilePath();
+    static QString injectPacIntoChromiumFlags(const QString& cli_flags, const QString& user_flags);
 
   private slots:
     void onWebEngineAttributeChanged(bool enabled);
@@ -84,12 +105,17 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 #endif
 
   private:
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+    QByteArray generatePacFile(const QHash<QString, QNetworkProxy>& proxies_per_host);
+#endif
+
     static QMap<QString, char16_t> generateUnescapes();
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
     QWebEngineProfile* m_webEngineProfile;
     GeminiSchemeHandler* m_geminiHandler;
     QList<QAction*> m_webEngineAttributeActions;
+    PacServer m_pacServer;
 #endif
 
     QString m_customUserAgent;

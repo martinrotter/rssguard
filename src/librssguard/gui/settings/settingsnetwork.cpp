@@ -39,8 +39,8 @@ void SettingsNetwork::loadUi() {
 #if !defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   m_ui->m_tabWebBackends->removeTab(0);
 #else
-  connect(m_ui->m_txtWebEngineFlags, &QLineEdit::textChanged, this, &SettingsNetwork::dirtifySettings);
-  connect(m_ui->m_txtWebEngineFlags, &QLineEdit::textChanged, this, &SettingsNetwork::requireRestart);
+  connect(m_ui->m_txtWebEngineFlags, &QPlainTextEdit::textChanged, this, &SettingsNetwork::dirtifySettings);
+  connect(m_ui->m_txtWebEngineFlags, &QPlainTextEdit::textChanged, this, &SettingsNetwork::requireRestart);
 #endif
 
   SettingsPanel::loadUi();
@@ -74,7 +74,8 @@ void SettingsNetwork::loadSettings() {
                                          settings()->password(GROUP(Proxy), SETTING(Proxy::Password)).toString()));
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
-  m_ui->m_txtWebEngineFlags->setText(settings()->value(GROUP(Web), SETTING(Web::WebEngineChromiumFlags)).toString());
+  m_ui->m_txtWebEngineFlags
+    ->setPlainText(settings()->value(GROUP(Web), SETTING(Web::WebEngineChromiumFlags)).toString());
 #endif
 
   onEndLoadSettings();
@@ -99,7 +100,7 @@ void SettingsNetwork::saveSettings() {
   qApp->mainForm()->tabWidget()->feedMessageViewer()->webBrowser()->viewer()->reloadNetworkSettings();
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
-  settings()->setValue(GROUP(Web), Web::WebEngineChromiumFlags, m_ui->m_txtWebEngineFlags->text());
+  settings()->setValue(GROUP(Web), Web::WebEngineChromiumFlags, m_ui->m_txtWebEngineFlags->toPlainText());
 #endif
 
   onEndSaveSettings();

@@ -1177,6 +1177,8 @@ void ServiceRoot::onAfterFeedsPurged(const QList<Feed*>& feeds) {
 }
 
 QNetworkProxy ServiceRoot::networkProxyForItem(RootItem* item) const {
+  Q_UNUSED(item)
+
   return networkProxy();
 }
 

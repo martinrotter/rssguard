@@ -104,12 +104,14 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   initializeFileBasedLogging();
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
-  if (!m_cmdParser.isSet(QSL(CLI_FORCETEXT_LONG)) && qEnvironmentVariableIsEmpty("QTWEBENGINE_CHROMIUM_FLAGS")) {
+  if (!m_cmdParser.isSet(QSL(CLI_FORCETEXT_LONG))) {
+    QString existing_flags = qEnvironmentVariable("QTWEBENGINE_CHROMIUM_FLAGS");
     QString flags = settings()->value(GROUP(Web), SETTING(Web::WebEngineChromiumFlags)).toString().trimmed();
+    QString final_flags = WebFactory::injectPacIntoChromiumFlags(existing_flags, flags);
 
-    if (!flags.isEmpty()) {
-      qDebugNN << LOGSEC_CORE << "Setting QTWEBENGINE_CHROMIUM_FLAGS to" << QUOTE_W_SPACE_DOT(flags);
-      qputenv("QTWEBENGINE_CHROMIUM_FLAGS", flags.toLocal8Bit());
+    if (!final_flags.isEmpty()) {
+      qDebugNN << LOGSEC_CORE << "Setting QTWEBENGINE_CHROMIUM_FLAGS to" << QUOTE_W_SPACE_DOT(final_flags);
+      qputenv("QTWEBENGINE_CHROMIUM_FLAGS", final_flags.toLocal8Bit());
     }
   }
 #endif
