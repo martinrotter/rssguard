@@ -81,6 +81,10 @@ namespace {
     return proxy.type() != QNetworkProxy::ProxyType::DefaultProxy && proxy.type() != QNetworkProxy::ProxyType::NoProxy;
   }
 
+  int hostSpecificity(const QString& host) {
+    return host.count(QL1C('.'));
+  }
+
   QString normalizedPacHost(const QString& host) {
     QString normalized_host = host.toLower();
 
@@ -440,7 +444,22 @@ QByteArray WebFactory::generatePacFile(const QHash<QString, QNetworkProxy>& prox
   QStringList hosts = proxies_per_host.keys();
 
   hosts.removeAll(QString());
-  hosts.sort(Qt::CaseSensitivity::CaseInsensitive);
+
+  // Subdomain rules must go first, otherwise a base-domain rule would catch them via dnsDomainIs().
+  std::sort(hosts.begin(), hosts.end(), [](const QString& lhs, const QString& rhs) {
+    const int lhs_specificity = hostSpecificity(lhs);
+    const int rhs_specificity = hostSpecificity(rhs);
+
+    if (lhs_specificity != rhs_specificity) {
+      return lhs_specificity > rhs_specificity;
+    }
+
+    if (lhs.size() != rhs.size()) {
+      return lhs.size() > rhs.size();
+    }
+
+    return lhs < rhs;
+  });
 
   for (const QString& host : std::as_const(hosts)) {
     pac += QSL("  if (hostMatches(host, %1)) {\n").arg(pacStringLiteral(host.toLower()));
