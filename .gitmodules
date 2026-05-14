@@ -16,3 +16,6 @@
 [submodule "src/librssguard/3rd-party/gumbo"]
 	path = src/librssguard/3rd-party/gumbo
 	url = https://codeberg.org/gumbo-parser/gumbo-parser
+[submodule "src/librssguard/3rd-party/qt-publicsuffix"]
+	path = src/librssguard/3rd-party/qt-publicsuffix
+	url = https://github.com/martinrotter/qt-publicsuffix
