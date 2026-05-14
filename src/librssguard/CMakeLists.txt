@@ -423,6 +423,13 @@ if(WEB_ARTICLE_VIEWER_WEBENGINE)
   )
 endif()
 
+list(APPEND SOURCES
+  3rd-party/qt-publicsuffix/publicsuffix.cpp
+  3rd-party/qt-publicsuffix/publicsuffix.h
+  3rd-party/qt-publicsuffix/publicsuffix_data.cpp
+  3rd-party/qt-publicsuffix/publicsuffix_data.h
+)
+
 if(ENABLE_MEDIAPLAYER)
   list(APPEND SOURCES
     gui/mediaplayer/playerbackend.cpp
@@ -544,9 +551,14 @@ target_include_directories(rssguard
 # qtlinq
 target_include_directories(rssguard
   PUBLIC
-  ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/qtlinq/include
+  ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party
 )
 
+# qtlinq
+target_include_directories(rssguard
+  PUBLIC
+  ${CMAKE_CURRENT_SOURCE_DIR}/3rd-party/qtlinq/include
+)
 
 # gumbo (for QTextBrowser-based article/web viewer)
 if(MSVC)
