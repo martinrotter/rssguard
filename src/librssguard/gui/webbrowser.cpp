@@ -80,7 +80,6 @@ void WebBrowser::bindWebView() {
   connect(qobj_viewer, SIGNAL(loadingProgress(int)), this, SLOT(onLoadingProgress(int)));
   connect(qobj_viewer, SIGNAL(loadingFinished(bool)), this, SLOT(onLoadingFinished(bool)));
   connect(qobj_viewer, SIGNAL(openUrlInNewTab(bool, QUrl)), this, SLOT(onOpenUrlInNewTab(bool, QUrl)));
-  connect(qobj_viewer, SIGNAL(openViewerInNewTab(WebViewer*)), this, SLOT(openViewerInNewTab(WebViewer*)));
 }
 
 void WebBrowser::createConnections() {
@@ -454,8 +453,4 @@ void WebBrowser::onOpenUrlInNewTab(bool open_externally, const QUrl& url) {
   else {
     qApp->mainForm()->tabWidget()->addLinkedBrowser(url);
   }
-}
-
-void WebBrowser::openViewerInNewTab(WebViewer* viewer) {
-  qApp->mainForm()->tabWidget()->addBrowser(false, false, new WebBrowser(viewer, this));
 }

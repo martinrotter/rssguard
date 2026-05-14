@@ -61,6 +61,18 @@ void WebEnginePage::onProxyAuthenticationRequired(const QUrl& request_url,
                                                   const QString& proxy_host) {
   qDebugNN << LOGSEC_NETWORK << "Proxy authentication for" << QUOTE_W_SPACE(request_url.toString()) << "is required!";
 
+  if (view() != nullptr && !view()->m_selectedItem.isNull() && !view()->m_feed.isNull()) {
+    auto custom_proxy = view()->m_selectedItem.data()->account()->networkProxyForItem(view()->m_feed.data());
+
+    if (!custom_proxy.user().isEmpty() || !custom_proxy.password().isEmpty()) {
+      qDebugNN << LOGSEC_NETWORK << "Proxy authentication is filled in from feed-specific proxy.";
+
+      authenticator->setUser(custom_proxy.user());
+      authenticator->setPassword(custom_proxy.password());
+      return;
+    }
+  }
+
   try {
     auto user_pass = FormAskauth::getUsernamePassword(tr("Proxy '%1' authentication").arg(proxy_host));
 

@@ -100,7 +100,7 @@ void WebEngineViewer::loadMessage(const Message& message, RootItem* root, Feed* 
   auto url = urlForMessage(message, root);
   auto html = htmlForMessage(message, root);
 
-  setHtml(html, url, root);
+  setHtml(html, url, root, feed);
 
   setVerticalScrollBarPosition(0.0);
 }

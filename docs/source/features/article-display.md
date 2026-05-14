@@ -48,6 +48,17 @@ In the `web` variant, cookies accepted or created in RSS Guard's built-in web br
 
 This is useful for feeds hidden behind simple cookie-based access, but it is not a replacement for real account synchronization or OAuth-based services. It also only applies to the `web` variant; the lighter `text` variant does not use Qt WebEngine.
 
+## Proxy Use
+Both viewer variants can use RSS Guard's account and feed proxy settings, but they do it differently.
+
+The `text` variant uses RSS Guard's internal network code when it downloads a directly opened page or article images. These requests use the proxy configured for the current feed or its account. If there is no current feed context, the system/app default proxy behavior is used.
+
+The `web` variant uses Qt WebEngine, which has its own network stack. RSS Guard therefore generates a local proxy auto-config (`PAC`) file for WebEngine. This allows web pages and article resources to follow per-account and per-feed proxy rules as closely as possible.
+
+For WebEngine proxy rules, RSS Guard matches the feed host and related subdomains. For example, a feed from `feeds.bbc.co.uk` can also cover resources from `images.bbc.co.uk`. More specific rules are checked first, so a feed-specific proxy can still override a broader domain rule.
+
+If a proxy needs authentication, RSS Guard can use credentials saved in the current feed/account proxy settings. If credentials are missing, the `web` variant may ask for them while the page is loading.
+
 ## Which Variant Should I Use?
 If you are unsure, start with the `web` package. It gives the best rendering and the most complete built-in browsing experience.
 

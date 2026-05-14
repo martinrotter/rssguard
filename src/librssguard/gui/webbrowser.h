@@ -81,7 +81,6 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void onLoadingFinished(bool success);
 
     void onOpenUrlInNewTab(bool open_externally, const QUrl& url);
-    void openViewerInNewTab(WebViewer* viewer);
 
     void onTitleChanged(const QString& new_title);
     void onIconChanged(const QIcon& icon);

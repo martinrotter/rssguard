@@ -125,7 +125,6 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     void loadingProgress(int progress);
     void loadingFinished(bool success);
     void openUrlInNewTab(bool open_externally, const QUrl& url);
-    void openViewerInNewTab(WebViewer* viewer);
 
   private:
     void displayDownloadedPage(const QUrl& url, const QByteArray& data, const NetworkResult& res);

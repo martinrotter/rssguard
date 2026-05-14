@@ -3,11 +3,16 @@
 Released on: 2026-05-XX
 
 Added:
-* Feed auto-fetch can now also be delayed while Feral GameMode is active on Linux. (#2265)
+* Feed auto-fetch can now also be delayed while Feral GameMode is active on Linux and startup auto-fetch is skipped when GameMode is already active. (#2265)
+* WebEngine builds can now use RSS Guard generated proxy auto-config (`PAC`) rules so article/web browsing follows per-account and per-feed proxy settings more closely. (#2273)
+* Generated `PAC` rules now also cover related subdomains and use Public Suffix List data, so feeds such as `feeds.bbc.co.uk` can also proxy resources from `images.bbc.co.uk`. (#2273)
+* RSS Guard now asks for proxy credentials when a WebEngine page needs proxy authentication and can fill credentials from the current feed proxy when available. (#2273)
 
 Fixed:
-* Fixed possible crash during parallel feed updates.
-* Hopefully fixed weird behavior when clicking some specific links in the "web" version. (#2272)
+* Parallel feed updates no longer crash when multiple update results are processed at the same time. (64cf52158)
+* Links in WebEngine articles opened from feeds such as Kill the Newsletter now open correctly instead of being swallowed by the embedded page. (#2272)
+* The default proxy setting now uses Qt/system default proxy behavior instead of forcing no proxy. (e0263ad06)
+* WebEngine article loading now keeps the current feed context, so feed-specific proxy credentials remain available while the article page loads. (fdd0f00c8)
 
 5.1.2
 -----

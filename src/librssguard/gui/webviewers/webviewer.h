@@ -133,7 +133,6 @@ class WebViewer {
     virtual void loadingProgress(int progress) = 0;
     virtual void loadingFinished(bool success) = 0;
     virtual void openUrlInNewTab(bool open_externally, const QUrl& url) = 0;
-    virtual void openViewerInNewTab(WebViewer* viewer) = 0;
 
   protected:
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) = 0;

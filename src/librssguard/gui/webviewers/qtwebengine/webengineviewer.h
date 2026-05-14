@@ -68,6 +68,8 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     Q_INTERFACES(WebViewer)
 
   public:
+    friend class WebEnginePage;
+
     explicit WebEngineViewer(QWidget* parent = nullptr);
 
   public:
