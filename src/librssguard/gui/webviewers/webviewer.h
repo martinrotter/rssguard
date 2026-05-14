@@ -5,8 +5,10 @@
 
 #include "core/message.h"
 #include "definitions/definitions.h"
+#include "services/abstract/rootitem.h"
 
 #include <QAction>
+#include <QPointer>
 #include <QPrinter>
 #include <QUrl>
 
@@ -15,7 +17,6 @@ class QMenu;
 class QContextMenuEvent;
 
 class WebBrowser;
-class RootItem;
 
 struct ContextMenuData {
     QUrl m_linkUrl;
@@ -153,6 +154,7 @@ class WebViewer {
     ContextMenuData m_contextMenuData;
     QPixmap m_placeholderImage;
     QPixmap m_placeholderImageError;
+    QPointer<RootItem> m_root;
 
   private:
     bool m_loadExternalResources;

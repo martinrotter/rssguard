@@ -430,6 +430,13 @@ list(APPEND SOURCES
   3rd-party/qt-publicsuffix/publicsuffix_data.h
 )
 
+if(MSVC)
+  set_source_files_properties(3rd-party/qt-publicsuffix/publicsuffix_data.cpp
+    PROPERTIES
+    COMPILE_OPTIONS /bigobj
+  )
+endif()
+
 if(ENABLE_MEDIAPLAYER)
   list(APPEND SOURCES
     gui/mediaplayer/playerbackend.cpp
