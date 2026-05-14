@@ -93,7 +93,10 @@ WebEnginePage* WebEngineViewer::page() const {
   return qobject_cast<WebEnginePage*>(QWebEngineView::page());
 }
 
-void WebEngineViewer::loadMessage(const Message& message, RootItem* root) {
+void WebEngineViewer::loadMessage(const Message& message, RootItem* root, Feed* feed) {
+  m_selectedItem = root;
+  m_feed = feed;
+
   auto url = urlForMessage(message, root);
   auto html = htmlForMessage(message, root);
 
@@ -229,7 +232,10 @@ void WebEngineViewer::findText(const QString& text, bool backwards) {
 
 void WebEngineViewer::reloadNetworkSettings() {}
 
-void WebEngineViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
+void WebEngineViewer::setHtml(const QString& html, const QUrl& url, RootItem* root, Feed* feed) {
+  m_selectedItem = root;
+  m_feed = feed;
+
   QWebEngineView::setHtml(html, url);
 }
 

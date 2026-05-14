@@ -55,8 +55,8 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void reloadPage();
     void goForward();
     void goBack();
-    void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);
-    void loadMessage(const Message& message, RootItem* root);
+    void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr, Feed* feed = nullptr);
+    void loadMessage(const Message& message, RootItem* root, Feed* feed);
     void setToolBarVisible(bool visible);
 
   protected slots:

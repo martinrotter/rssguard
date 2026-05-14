@@ -213,18 +213,18 @@ void WebBrowser::loadUrlOrSearchPhrase(const QString& text) {
   loadUrl(url);
 }
 
-void WebBrowser::setHtml(const QString& html, const QUrl& url, RootItem* root) {
+void WebBrowser::setHtml(const QString& html, const QUrl& url, RootItem* root, Feed* feed) {
   reloadZoomFactor();
 
   m_searchWidget->hide();
-  m_webView->setHtml(html, url, root);
+  m_webView->setHtml(html, url, root, feed);
 }
 
-void WebBrowser::loadMessage(const Message& message, RootItem* root) {
+void WebBrowser::loadMessage(const Message& message, RootItem* root, Feed* feed) {
   reloadZoomFactor();
 
   m_searchWidget->hide();
-  m_webView->loadMessage(message, root);
+  m_webView->loadMessage(message, root, feed);
 }
 
 bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {

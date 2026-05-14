@@ -419,7 +419,7 @@ void TextBrowserViewer::setLoadExternalResources(bool load_resources) {
   m_downloadedImages.clear();
 
   emit loadingStarted();
-  justSetHtml(htmlToDisplay(m_currentHtml), m_currentUrl, m_root.data(), true);
+  justSetHtml(htmlToDisplay(m_currentHtml), m_currentUrl, true);
 
   if (!load_resources || !startImageDownloading()) {
     emit loadingProgress(100);
@@ -450,15 +450,16 @@ void TextBrowserViewer::contextMenuEvent(QContextMenuEvent* event) {
   menu->popup(event->globalPos());
 }
 
-void TextBrowserViewer::loadMessage(const Message& message, RootItem* root) {
+void TextBrowserViewer::loadMessage(const Message& message, RootItem* root, Feed* feed) {
   emit loadingStarted();
 
-  m_root = root;
+  m_selectedItem = root;
+  m_feed = feed;
 
   auto url = urlForMessage(message, root);
   auto html = htmlForMessage(message, root);
 
-  bool downloads_started = loadStaticHtml(html, url, root);
+  bool downloads_started = loadStaticHtml(html, url);
 
   QTextOption op;
   op.setTextDirection((message.m_rtlBehavior == RtlBehavior::Everywhere ||
@@ -570,38 +571,39 @@ void TextBrowserViewer::loadUrl(const QUrl& url) {
   emit loadingStarted();
 
   QByteArray output;
-  auto download_res =
-    NetworkFactory::performNetworkOperation(url.toString(),
-                                            5000,
-                                            {},
-                                            output,
-                                            QNetworkAccessManager::Operation::GetOperation,
-                                            {},
-                                            {},
-                                            {},
-                                            {},
-                                            m_root.isNull() ? QNetworkProxy::ProxyType::DefaultProxy
-                                                            : m_root->account()->networkProxyForItem(m_root.data()));
+  auto download_res = NetworkFactory::performNetworkOperation(url.toString(),
+                                                              5000,
+                                                              {},
+                                                              output,
+                                                              QNetworkAccessManager::Operation::GetOperation,
+                                                              {},
+                                                              {},
+                                                              {},
+                                                              {},
+                                                              networkProxyForCurrentRoot());
 
   displayDownloadedPage(url, output, download_res);
 }
 
-void TextBrowserViewer::setHtml(const QString& html, const QUrl& url, RootItem* root) {
+void TextBrowserViewer::setHtml(const QString& html, const QUrl& url, RootItem* root, Feed* feed) {
   emit loadingStarted();
 
-  if (!loadStaticHtml(html, url, root)) {
+  m_selectedItem = root;
+  m_feed = feed;
+
+  if (!loadStaticHtml(html, url)) {
     emit loadingProgress(100);
     emit loadingFinished(true);
   }
 }
 
-bool TextBrowserViewer::loadStaticHtml(const QString& html, const QUrl& url, RootItem* root) {
+bool TextBrowserViewer::loadStaticHtml(const QString& html, const QUrl& url) {
   abortImageDownloading();
 
   m_currentHtml = html;
   m_downloadedImages.clear();
 
-  justSetHtml(htmlToDisplay(html), url, root);
+  justSetHtml(htmlToDisplay(html), url);
 
   if (loadExternalResources()) {
     return startImageDownloading();
@@ -610,11 +612,10 @@ bool TextBrowserViewer::loadStaticHtml(const QString& html, const QUrl& url, Roo
   return false;
 }
 
-void TextBrowserViewer::justSetHtml(const QString& html, const QUrl& url, RootItem* root, bool keep_scroll) {
+void TextBrowserViewer::justSetHtml(const QString& html, const QUrl& url, bool keep_scroll) {
   const double scroll_position = verticalScrollBarPosition();
 
   m_currentUrl = url;
-  m_root = root;
 
   document()->setBaseUrl(url);
 
@@ -695,7 +696,7 @@ bool TextBrowserViewer::startImageDownloading() {
 }
 
 void TextBrowserViewer::reloadHtmlWithCachedImages() {
-  justSetHtml(htmlToDisplay(m_currentHtml), m_currentUrl, m_root.data(), true);
+  justSetHtml(htmlToDisplay(m_currentHtml), m_currentUrl, true);
 }
 
 QList<QUrl> TextBrowserViewer::imageUrlsForHtml(const QString& html, const QUrl& base_url) const {
@@ -781,8 +782,8 @@ QUrl TextBrowserViewer::imageUrlFromCursor(const QTextCursor& cursor) const {
 }
 
 QNetworkProxy TextBrowserViewer::networkProxyForCurrentRoot() const {
-  return m_root.isNull() ? QNetworkProxy::ProxyType::DefaultProxy
-                         : m_root->account()->networkProxyForItem(m_root.data());
+  return m_selectedItem.isNull() ? QNetworkProxy::ProxyType::DefaultProxy
+                                 : m_selectedItem->account()->networkProxyForItem(m_feed.data());
 }
 
 TextBrowserDocument::TextBrowserDocument(TextBrowserViewer* parent) : QTextDocument(parent) {

@@ -5,6 +5,7 @@
 
 #include "core/message.h"
 #include "definitions/definitions.h"
+#include "services/abstract/feed.h"
 #include "services/abstract/rootitem.h"
 
 #include <QAction>
@@ -55,7 +56,7 @@ class WebViewer {
     virtual void loadUrl(const QUrl& url) = 0;
 
     // Set static HTML into the viewer.
-    virtual void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr) = 0;
+    virtual void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr, Feed* feed = nullptr) = 0;
 
     // Returns current static HTML (or plain text) loaded in the viewer.
     virtual QString html() const = 0;
@@ -85,7 +86,7 @@ class WebViewer {
     virtual void printToPrinter(QPrinter* printer) = 0;
 
     // Displays message and ensure that vertical scrollbar is set to 0 (scrolled to top).
-    virtual void loadMessage(const Message& message, RootItem* root) = 0;
+    virtual void loadMessage(const Message& message, RootItem* root, Feed* feed) = 0;
 
     // Specifies or tweaks the recommended URL of the message.
     virtual QUrl urlForMessage(const Message& message, RootItem* root) const;
@@ -154,7 +155,9 @@ class WebViewer {
     ContextMenuData m_contextMenuData;
     QPixmap m_placeholderImage;
     QPixmap m_placeholderImageError;
-    QPointer<RootItem> m_root;
+
+    QPointer<RootItem> m_selectedItem;
+    QPointer<Feed> m_feed;
 
   private:
     bool m_loadExternalResources;

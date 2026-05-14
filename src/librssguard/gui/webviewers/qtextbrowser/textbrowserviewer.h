@@ -85,12 +85,12 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     virtual void bindToBrowser(WebBrowser* browser);
     virtual void findText(const QString& text, bool backwards);
     virtual void loadUrl(const QUrl& url);
-    virtual void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);
+    virtual void setHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr, Feed* feed = nullptr);
     virtual QString html() const;
     virtual QString plainText() const;
     virtual QUrl url() const;
     virtual void clear();
-    virtual void loadMessage(const Message& message, RootItem* root);
+    virtual void loadMessage(const Message& message, RootItem* root, Feed* feed);
     virtual QString htmlForMessage(const Message& message, RootItem* root) const;
     virtual void printToPrinter(QPrinter* printer);
     virtual void cleanupCache();
@@ -129,8 +129,8 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
 
   private:
     void displayDownloadedPage(const QUrl& url, const QByteArray& data, const NetworkResult& res);
-    bool loadStaticHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr);
-    void justSetHtml(const QString& html, const QUrl& url = {}, RootItem* root = nullptr, bool keep_scroll = false);
+    bool loadStaticHtml(const QString& html, const QUrl& url = {});
+    void justSetHtml(const QString& html, const QUrl& url = {}, bool keep_scroll = false);
     QString htmlToDisplay(const QString& html) const;
     QString convertToHtmlWithoutImages(const QString& html) const;
 
