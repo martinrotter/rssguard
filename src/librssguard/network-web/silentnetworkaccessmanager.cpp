@@ -5,6 +5,7 @@
 #include "definitions/definitions.h"
 
 #include <QAuthenticator>
+#include <QNetworkProxy>
 #include <QNetworkReply>
 
 SilentNetworkAccessManager::SilentNetworkAccessManager(QObject* parent) : BaseNetworkAccessManager(parent) {
@@ -12,7 +13,12 @@ SilentNetworkAccessManager::SilentNetworkAccessManager(QObject* parent) : BaseNe
           &SilentNetworkAccessManager::authenticationRequired,
           this,
           &SilentNetworkAccessManager::onAuthenticationRequired,
-          Qt::DirectConnection);
+          Qt::ConnectionType::DirectConnection);
+  /*connect(this,
+          &SilentNetworkAccessManager::proxyAuthenticationRequired,
+          this,
+          &SilentNetworkAccessManager::onProxyAuthenticationRequired,
+          Qt::ConnectionType::DirectConnection);*/
 }
 
 SilentNetworkAccessManager::~SilentNetworkAccessManager() {
@@ -36,3 +42,11 @@ void SilentNetworkAccessManager::onAuthenticationRequired(QNetworkReply* reply, 
                << "requested authentication but username/password is not available.";
   }
 }
+
+/*
+void SilentNetworkAccessManager::onProxyAuthenticationRequired(const QNetworkProxy& proxy,
+                                                               QAuthenticator* authenticator) {
+  authenticator->setUser(proxy.user());
+  authenticator->setPassword(proxy.password());
+}
+*/

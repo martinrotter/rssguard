@@ -72,6 +72,8 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     virtual bool isFetching() const;
     virtual QVariant data(int column, int role) const;
     virtual QJsonObject articleExtractorSettings();
+    virtual QStringList proxyExtraDomains() const;
+    virtual void setProxyExtraDomains(const QStringList& domains);
 
     void setCountOfAllMessages(int count_all_messages);
     void setCountOfUnreadMessages(int count_unread_messages);

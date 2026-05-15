@@ -13,6 +13,7 @@
 BaseNetworkAccessManager::BaseNetworkAccessManager(QObject* parent)
   : QNetworkAccessManager(parent), m_enableHttp2(false) {
   connect(this, &BaseNetworkAccessManager::sslErrors, this, &BaseNetworkAccessManager::onSslErrors);
+
   loadSettings();
 }
 

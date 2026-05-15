@@ -183,6 +183,14 @@ QJsonObject Feed::articleExtractorSettings() {
   return obj;
 }
 
+QStringList Feed::proxyExtraDomains() const {
+  return {};
+}
+
+void Feed::setProxyExtraDomains(const QStringList& domains) {
+  Q_UNUSED(domains);
+}
+
 int Feed::autoUpdateInterval() const {
   return m_autoUpdateInterval;
 }

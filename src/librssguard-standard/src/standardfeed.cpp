@@ -72,6 +72,7 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_fetchFullArticles = other.fetchFullArticles();
   m_fetchFullArticlesInPlainText = other.fetchFullArticlesInPlainText();
   m_publishedInsteadOfUpdatedTime = other.publishedInsteadOfUpdatedTime();
+  m_proxyExtraDomains = other.proxyExtraDomains();
 }
 
 QString StandardFeed::additionalTooltip() const {
@@ -165,6 +166,7 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("proxy_port")] = networkProxy().port();
   data[QSL("proxy_username")] = networkProxy().user();
   data[QSL("proxy_password")] = TextFactory::encrypt(networkProxy().password());
+  data[QSL("proxy_extra_domains")] = proxyExtraDomains();
 
   return data;
 }
@@ -197,6 +199,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
                       TextFactory::decrypt(data[QSL("proxy_password")].toString()));
 
   setNetworkProxy(proxy);
+  setProxyExtraDomains(data[QSL("proxy_extra_domains")].toStringList());
 }
 
 QString StandardFeed::typeToString(StandardFeed::Type type) {
@@ -476,6 +479,24 @@ QJsonObject StandardFeed::articleExtractorSettings() {
   }
 
   return obj;
+}
+
+QStringList StandardFeed::proxyExtraDomains() const {
+  return m_proxyExtraDomains;
+}
+
+void StandardFeed::setProxyExtraDomains(const QStringList& domains) {
+  m_proxyExtraDomains.clear();
+
+  for (const QString& domain : domains) {
+    const QString normalized_domain = domain.trimmed();
+
+    if (!normalized_domain.isEmpty()) {
+      m_proxyExtraDomains << normalized_domain;
+    }
+  }
+
+  m_proxyExtraDomains.removeDuplicates();
 }
 
 void StandardFeed::removeItself() {
