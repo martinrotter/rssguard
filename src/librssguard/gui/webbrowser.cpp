@@ -331,15 +331,7 @@ void WebBrowser::onLinkMouseClicked(const QUrl& url, LinkNavigationHints hints) 
     loadUrl(next_url);
   }
   else {
-    qApp->web()->openUrlInExternalBrowser(next_url.toString(), true);
-
-    if (qApp->settings()
-          ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
-          .toBool()) {
-      QTimer::singleShot(1000, qApp, []() {
-        qApp->mainForm()->display();
-      });
-    }
+    qApp->web()->openUrlInExternalBrowser({next_url}, true, true);
   }
 }
 

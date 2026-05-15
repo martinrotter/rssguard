@@ -555,6 +555,10 @@ void FormMain::display() {
   raise();
   activateWindow();
 
+  if (QWindow* win = windowHandle()) {
+    win->requestActivate();
+  }
+
   // Raise alert event. Check the documentation for more info on this.
   QApplication::alert(this);
 }

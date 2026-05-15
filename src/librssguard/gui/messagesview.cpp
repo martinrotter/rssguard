@@ -709,25 +709,18 @@ void MessagesView::changeFilter(MessagesProxyModel::MessageListFilter filter) {
 
 void MessagesView::openSelectedSourceMessagesExternally() {
   auto rws = selectionModel()->selectedRows();
+  QList<QUrl> links = qlinq::from(rws)
+                        .select([=](const QModelIndex& index) {
+                          return QUrl(m_sourceModel->messageForRow(m_proxyModel->mapToSource(index).row())
+                                        .m_url.replace(QRegularExpression(QSL("[\\t\\n]")), QString()));
+                        })
+                        .toList();
 
-  for (const QModelIndex& index : std::as_const(rws)) {
-    QString link = m_sourceModel->messageForRow(m_proxyModel->mapToSource(index).row())
-                     .m_url.replace(QRegularExpression(QSL("[\\t\\n]")), QString());
-
-    qApp->web()->openUrlInExternalBrowser(link, true);
-  }
+  qApp->web()->openUrlInExternalBrowser(links, true, true);
 
   if (!selectionModel()->selectedRows().isEmpty() &&
       qApp->settings()->value(GROUP(Messages), SETTING(Messages::MarkReadAfterOpenedExtInt)).toBool()) {
     QTimer::singleShot(0, this, &MessagesView::markSelectedMessagesRead);
-  }
-
-  if (qApp->settings()
-        ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
-        .toBool()) {
-    QTimer::singleShot(1000, this, []() {
-      qApp->mainForm()->display();
-    });
   }
 }
 

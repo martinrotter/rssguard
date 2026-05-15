@@ -4,6 +4,7 @@
 
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
@@ -632,62 +633,118 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
   }
 }
 
+bool WebFactory::openUrlInExternalBrowser(const QUrl& url) const {
+  return openUrlInExternalBrowser(QList<QUrl>{url}, false, false);
+}
+
 bool WebFactory::openUrlInExternalBrowser(const QUrl& url, bool use_external_tools) const {
-  QString my_url = url.toString(QUrl::ComponentFormattingOption::FullyEncoded);
+  return openUrlInExternalBrowser(QList<QUrl>{url}, use_external_tools, false);
+}
 
-  qDebugNN << LOGSEC_NETWORK << "We are trying to open URL" << QUOTE_W_SPACE_DOT(my_url);
+bool WebFactory::openUrlInExternalBrowser(const QList<QUrl>& urls,
+                                          bool use_external_tools,
+                                          bool can_bring_forward_after) const {
+  if (urls.isEmpty()) {
+    return true;
+  }
 
-  if (use_external_tools && !url.host().isEmpty()) {
-    auto tools = ExternalTool::toolsFromSettings();
-    auto tool_for_domain = ExternalTool::toolForDomain(tools, url.host());
+  QStringList failed_urls;
 
-    if (tool_for_domain.has_value()) {
-      auto found_tool_for_domain = tool_for_domain.value();
-      qDebugNN << LOGSEC_NETWORK << "Opening URL via external tool" << QUOTE_W_SPACE_DOT(found_tool_for_domain.name());
-      found_tool_for_domain.run(my_url);
-      return true;
+  const QList<ExternalTool> tools = use_external_tools ? ExternalTool::toolsFromSettings() : QList<ExternalTool>();
+  const bool custom_browser_enabled =
+    qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool();
+  const QString custom_browser =
+    custom_browser_enabled
+      ? qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString()
+      : QString();
+  const QString custom_browser_arguments =
+    custom_browser_enabled
+      ? qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString()
+      : QString();
+  QHash<QString, std::optional<ExternalTool>> external_tools_for_hosts;
+
+  for (const QUrl& url : urls) {
+    QString my_url = url.toString(QUrl::ComponentFormattingOption::FullyEncoded);
+
+    qDebugNN << LOGSEC_NETWORK << "We are trying to open URL" << QUOTE_W_SPACE_DOT(my_url);
+
+    if (use_external_tools && !url.host().isEmpty()) {
+      const QString host = url.host().toLower();
+      auto tool_for_domain = external_tools_for_hosts.value(host);
+
+      if (!external_tools_for_hosts.contains(host)) {
+        tool_for_domain = ExternalTool::toolForDomain(tools, host);
+        external_tools_for_hosts.insert(host, tool_for_domain);
+      }
+
+      if (tool_for_domain.has_value()) {
+        auto found_tool_for_domain = tool_for_domain.value();
+        qDebugNN << LOGSEC_NETWORK << "Opening URL via external tool"
+                 << QUOTE_W_SPACE_DOT(found_tool_for_domain.name());
+
+        if (!found_tool_for_domain.run(my_url)) {
+          qWarningNN << LOGSEC_NETWORK << "External tool failed" << QUOTE_W_SPACE_DOT(found_tool_for_domain.name());
+        }
+        else {
+          continue;
+        }
+      }
+      else {
+        qWarningNN << LOGSEC_NETWORK
+                   << "External tool valid for the given URL was not found. Falling back to external web browser.";
+      }
+    }
+
+    bool opened = false;
+
+    if (custom_browser_enabled) {
+      const QString nice_args = custom_browser_arguments.arg(my_url);
+
+      qDebugNN << LOGSEC_NETWORK << "Arguments for external browser:" << QUOTE_W_SPACE_DOT(nice_args);
+
+      bool started = IOFactory::startProcessDetached(custom_browser, TextFactory::tokenizeProcessArguments(nice_args));
+
+      if (!started) {
+        qDebugNN << LOGSEC_NETWORK << "External web browser call failed.";
+      }
+      else {
+        opened = true;
+      }
     }
     else {
-      qWarningNN << LOGSEC_NETWORK
-                 << "External tool valid for the given URL was not found. Falling back to external web browser.";
+      opened = QDesktopServices::openUrl(my_url);
+    }
+
+    if (!opened) {
+      failed_urls.append(my_url);
     }
   }
 
-  bool result = false;
+  if (!failed_urls.isEmpty()) {
+    failed_urls.removeDuplicates();
 
-  if (qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool()) {
-    const QString browser =
-      qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserExecutable)).toString();
-    const QString arguments =
-      qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserArguments)).toString();
-    const auto nice_args = arguments.arg(my_url);
-
-    qDebugNN << LOGSEC_NETWORK << "Arguments for external browser:" << QUOTE_W_SPACE_DOT(nice_args);
-
-    result = IOFactory::startProcessDetached(browser, TextFactory::tokenizeProcessArguments(nice_args));
-
-    if (!result) {
-      qDebugNN << LOGSEC_NETWORK << "External web browser call failed.";
-    }
-  }
-  else {
-    result = QDesktopServices::openUrl(my_url);
-  }
-
-  if (!result) {
     // We display GUI information that browser was not probably opened.
     MsgBox::show({},
                  QMessageBox::Icon::Critical,
-                 tr("Navigate to website manually"),
+                 tr("Navigate to website(s) manually"),
                  tr("%1 was unable to launch your web browser with the given URL, you need to open the "
-                    "below website URL in your web browser manually.")
+                    "below website URLs in your web browser manually.")
                    .arg(QSL(APP_NAME)),
                  {},
-                 my_url,
+                 failed_urls.join(QSL("\r\n")),
                  QMessageBox::StandardButton::Ok);
   }
+  else if (can_bring_forward_after) {
+    if (qApp->settings()
+          ->value(GROUP(Messages), SETTING(Messages::BringAppToFrontAfterMessageOpenedExternally))
+          .toBool()) {
+      QTimer::singleShot(1000, this, []() {
+        qApp->mainForm()->display();
+      });
+    }
+  }
 
-  return result;
+  return failed_urls.isEmpty();
 }
 
 QString WebFactory::stripTags(QString text) {
@@ -1132,8 +1189,4 @@ QString WebFactory::customUserAgent() const {
 
 void WebFactory::setCustomUserAgent(const QString& user_agent) {
   m_customUserAgent = user_agent;
-}
-
-bool WebFactory::openUrlInExternalBrowser(const QUrl& url) const {
-  return openUrlInExternalBrowser(url, false);
 }
