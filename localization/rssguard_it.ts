@@ -2009,7 +2009,7 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="20"/>
       <source>URLs</source>
-      <translation type="unfinished">URLs</translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="65"/>
@@ -2054,7 +2054,7 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="85"/>
       <source>Enter feed URLs, one URL per line</source>
-      <translation type="unfinished">Enter feed URLs, one URL per line</translation>
+      <translation>Aggiungi gli URL, un URL per riga</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="138"/>
@@ -2069,12 +2069,12 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="249"/>
       <source>All URLs are valid.</source>
-      <translation type="unfinished">All URLs are valid.</translation>
+      <translation>Tutti gli URL sono validi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="252"/>
       <source>One or more URLs are invalid.</source>
-      <translation type="unfinished">One or more URLs are invalid.</translation>
+      <translation>Uno o più URL non sono validi.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="321"/>
@@ -2867,13 +2867,13 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1028"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="874"/>
       <source>New &amp;web browser tab</source>
-      <translation type="unfinished">New &amp;web browser tab</translation>
+      <translation>Nuova scheda del &amp;web browser</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1033"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="875"/>
       <source>Cleanup &amp;web cache</source>
-      <translation type="unfinished">Cleanup &amp;web cache</translation>
+      <translation>Pulisci la cache &amp;web</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1038"/>
@@ -3239,12 +3239,12 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="423"/>
       <source>This filter was saved!</source>
-      <translation type="unfinished">This filter was saved!</translation>
+      <translation>Il filtro è stato salvato!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="431"/>
       <source>There was an error when saving the filter: %1.</source>
-      <translation type="unfinished">There was an error when saving the filter: %1.</translation>
+      <translation>Si è verificato un errore nel salvataggio del filtro: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="436"/>
@@ -3258,7 +3258,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="435"/>
       <source>Filter was not saved</source>
-      <translation type="unfinished">Filter was not saved</translation>
+      <translation>Il filtro non è stato salvato</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="657"/>
@@ -3339,7 +3339,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="88"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="482"/>
       <source>Export</source>
-      <translation type="unfinished">Export</translation>
+      <translation>Esporta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="118"/>
@@ -5109,7 +5109,7 @@ Scadenza dei token di accesso: %2</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="67"/>
       <source>Standard</source>
-      <translation type="unfinished">Standard</translation>
+      <translation>Predefinito</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/3rd-party/richtexteditor/mrichtextedit.cpp" line="67"/>
@@ -5430,7 +5430,7 @@ Scadenza dei token di accesso: %2</translation>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="16"/>
       <source>Trash</source>
-      <translation type="unfinished">Trash</translation>
+      <translation>Cestino</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="19"/>
@@ -5939,9 +5939,9 @@ Scadenza dei token di accesso: %2</translation>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="595"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="595"/>
       <source>%n selected article(s)</source>
-      <translation type="unfinished">
-        <numerusform>%n selected article(s)</numerusform>
-        <numerusform>%n selected article(s)</numerusform>
+      <translation>
+        <numerusform>%n articolo selezionato</numerusform>
+        <numerusform>%n articoli selezionati</numerusform>
       </translation>
     </message>
     <message>
@@ -5949,7 +5949,7 @@ Scadenza dei token di accesso: %2</translation>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="1047"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="1047"/>
       <source>Filtering changed</source>
-      <translation type="unfinished">Filtering changed</translation>
+      <translation>Filtro modificato</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/messagesview.cpp" line="705"/>
@@ -5964,7 +5964,7 @@ Scadenza dei token di accesso: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="743"/>
       <source>No URL</source>
-      <translation type="unfinished">No URL</translation>
+      <translation>Nessun URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="744"/>
@@ -5997,7 +5997,7 @@ Scadenza dei token di accesso: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/messagebox.cpp" line="105"/>
       <source>Do not show again</source>
-      <translation type="unfinished">Do not show again</translation>
+      <translation>Non mostrare ancora</translation>
     </message>
   </context>
   <context>
@@ -6119,7 +6119,7 @@ Scadenza dei token di accesso: %2</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.cpp" line="33"/>
       <source>Use global app setting</source>
-      <translation type="unfinished">Use global app setting</translation>
+      <translation>Usa le impostazioni globali dell'app</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/networkproxydetails.ui" line="14"/>
@@ -6282,7 +6282,7 @@ Scadenza dei token di accesso: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="90"/>
       <source>Unspecified error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Unspecified error: &apos;%1&apos;.</translation>
+      <translation>Errore sconosciuto: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/gui/nextcloudaccountdetails.cpp" line="91"/>
@@ -6777,12 +6777,12 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="279"/>
       <source>Save as...</source>
-      <translation type="unfinished">Save as...</translation>
+      <translation>Salva come...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="281"/>
       <source>Open in new tab</source>
-      <translation type="unfinished">Open in new tab</translation>
+      <translation>Apri in una nuova scheda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="357"/>
