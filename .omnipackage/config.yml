@@ -1,0 +1,328 @@
+# omnipackage config: native DEB/RPM packages for RSS Guard.
+# Docs: https://docs.omnipackage.org
+#
+# Profile: Qt6 + QtWebEngine + QtMultimedia, ICU and compressed sitemap enabled.
+# CMake flags are in the spec/deb templates. The build compiles the bundled Go
+# article-extractor, so the build container needs network access.
+#
+# To publish: generate a signing key (omnipackage gpg generate ... --format base64),
+# set GPG_PRIVATE_KEY_BASE64, and configure a repository below.
+
+# Version from set(APP_VERSION "x.y.z") in CMakeLists.txt (project() uses the variable).
+version_extractors:
+  - name: default
+    provider: "file"
+    file:
+      file: "CMakeLists.txt"
+      regex: 'APP_VERSION "([0-9.]+)"'
+
+common: &common
+  package_name: "rssguard"
+  maintainer: "Oleg Antonyan <oleg.b.antonyan@gmail.com>"
+  homepage: "https://github.com/martinrotter/rssguard"
+  description: "Simple (yet powerful) feed reader"
+
+# Excluded from the staged source tree (gitignore-style; applies to rpm and deb).
+ignore_source_files:
+  - .git
+  - .env
+  - .DS_Store
+  - "*.log"
+  - "*.o"
+  - "*.a"
+  - /build
+  - /CMakeCache.txt
+  - /CMakeFiles
+
+repositories:
+  - name: R2 test repo
+    provider: s3
+    gpg_private_key_base64: "${GPG_PRIVATE_KEY_BASE64}"
+    <<: *common
+    s3:
+      bucket: repositories-test
+      path_in_bucket: "rssguard"
+      bucket_public_url: "https://repositories-test.omnipackage.org"
+      endpoint: "${CLOUDFLARE_R2_ENDPOINT}"
+      access_key_id: "${CLOUDFLARE_R2_ACCESS_KEY_ID}"
+      secret_access_key: "${CLOUDFLARE_R2_SECRET_ACCESS_KEY}"
+      region: auto
+      force_path_style: true
+      cloudflare_zone_id: "${CLOUDFLARE_ZONE_ID}"
+      cloudflare_api_token: "${CLOUDFLARE_API_TOKEN}"
+
+  - name: Local test
+    gpg_private_key_base64: "${GPG_PRIVATE_KEY_BASE64}"
+    provider: localfs
+    <<: *common
+    localfs:
+      path: "/run/media/oleg/c3996ce0-a379-4403-9d64-7d4c0536463f/dev/omnipackage-repos/rssguard"
+
+
+# Fedora / RHEL family. SQLite driver is bundled in qt6-qtbase.
+fedora_rpm: &fedora_rpm
+  <<: *common
+  build_dependencies:
+    - gcc-c++
+    - cmake
+    - ninja-build
+    - make
+    - golang
+    - git
+    - qt6-qtbase-devel
+    - qt6-qttools-devel
+    - qt6-qtdeclarative-devel
+    - qt6-qtwebengine-devel
+    - qt6-qtmultimedia-devel
+    - qt6-qtsvg-devel
+    - libicu-devel
+    - zlib-devel
+    - mesa-libGL-devel
+  rpm:
+    spec_template: ".omnipackage/specfile.spec.liquid"
+
+# openSUSE (package names differ from Fedora).
+opensuse_rpm: &opensuse_rpm
+  <<: *common
+  build_dependencies:
+    - gcc-c++
+    - cmake
+    - ninja
+    - go
+    - git
+    - qt6-base-devel
+    - qt6-tools-devel
+    - qt6-declarative-devel
+    - qt6-webenginecore-devel
+    - qt6-webenginewidgets-devel
+    - qt6-multimedia-devel
+    - qt6-multimediawidgets-devel
+    - qt6-svg-devel
+    - qt6-linguist-devel
+    - libicu-devel
+    - Mesa-libGL-devel
+  runtime_dependencies:
+    - qt6-sql-sqlite     # separate SQLite driver subpackage
+  rpm:
+    spec_template: ".omnipackage/specfile.spec.liquid"
+
+# Leap 15.6 ships Qt 6.6.3, but RSS Guard's WebEngine code needs a Qt 6.7+ API, so build Qt5.
+# Leap's default compiler is GCC 7 (no <filesystem>); use gcc13. Tumbleweed/16.0 use the Qt6 path.
+opensuse_leap_qt5: &opensuse_leap_qt5
+  <<: *common
+  build_with_qt6: "OFF"
+  extra_cmake_args: "-DCMAKE_C_COMPILER=gcc-13 -DCMAKE_CXX_COMPILER=g++-13"
+  build_dependencies:
+    - gcc13-c++
+    - cmake
+    - ninja
+    - go
+    - git
+    - libqt5-qtbase-devel
+    - libqt5-qttools-devel
+    - libqt5-linguist-devel
+    - libqt5-qtdeclarative-devel
+    - libqt5-qtwebengine-devel
+    - libqt5-qtmultimedia-devel
+    - libqt5-qtsvg-devel
+    - libicu-devel
+    - Mesa-libGL-devel
+  rpm:
+    spec_template: ".omnipackage/specfile.spec.liquid"
+
+# AlmaLinux / Rocky 10 (Qt6). Qt6, WebEngine and ninja come from EPEL/CRB, which aren't on the base
+# image and can't go in build_dependencies (installed before before_build_script), so set them up
+# here. --enablerepo=crb works on dnf4 and dnf5; --nobest tolerates EPEL/base version skew.
+el_rpm: &el_rpm
+  <<: *common
+  build_dependencies:
+    - gcc-c++
+    - cmake
+    - make
+    - golang
+    - git
+  before_build_script: >-
+    dnf install -y epel-release &&
+    dnf install -y --nobest --enablerepo=crb
+    ninja-build
+    qt6-qtbase-devel qt6-qttools-devel qt6-qtdeclarative-devel
+    qt6-qtwebengine-devel qt6-qtmultimedia-devel qt6-qtsvg-devel
+    libicu-devel zlib-devel mesa-libGL-devel
+  rpm:
+    spec_template: ".omnipackage/specfile.spec.liquid"
+
+# EL9 on Qt5: EPEL's Qt6 Linguist needs an LLVM EL9 lacks, so build Qt5 (RHEL 9 ships it natively).
+# WebEngine and ninja from EPEL/CRB. EL9's GCC 11 has <filesystem>, so no compiler override.
+el_qt5: &el_qt5
+  <<: *common
+  build_with_qt6: "OFF"
+  build_dependencies:
+    - gcc-c++
+    - cmake
+    - make
+    - golang
+    - git
+  before_build_script: >-
+    dnf install -y epel-release &&
+    dnf install -y --enablerepo=crb
+    ninja-build
+    qt5-qtbase-devel qt5-qttools-devel qt5-qtdeclarative-devel
+    qt5-qtwebengine-devel qt5-qtmultimedia-devel qt5-qtsvg-devel
+    libicu-devel zlib-devel mesa-libGL-devel
+  rpm:
+    spec_template: ".omnipackage/specfile.spec.liquid"
+
+# Mageia (Mandriva naming): qtbase{6,5}-common-devel plus per-module lib64qt{6,5}<module>-devel.
+# Explicit names required: build_dependencies are interpolated unquoted, so cmake()/pkgconfig()
+# provides would break the shell. Cauldron uses Qt6; Mageia 9 (Qt 6.4 < 6.5) uses Qt5.
+mageia_qt6: &mageia_qt6
+  <<: *common
+  build_dependencies:
+    - gcc-c++
+    - cmake
+    - ninja
+    - make
+    - golang
+    - git
+    - qtbase6-common-devel
+    - lib64qt6core-devel
+    - lib64qt6gui-devel
+    - lib64qt6widgets-devel
+    - lib64qt6network-devel
+    - lib64qt6sql-devel
+    - lib64qt6xml-devel
+    - lib64qt6concurrent-devel
+    - lib64qt6printsupport-devel
+    - lib64qt6dbus-devel
+    - lib64qt6opengl-devel
+    - lib64qt6qml-devel
+    - lib64qt6svg-devel
+    - lib64qt6multimedia-devel
+    - lib64qt6multimediawidgets-devel
+    - lib64qt6webengine-devel
+    - lib64qt6tools-devel
+    - lib64icu-devel
+    - lib64zlib-devel
+  rpm:
+    spec_template: ".omnipackage/specfile.spec.liquid"
+
+mageia_qt5: &mageia_qt5
+  <<: *common
+  build_with_qt6: "OFF"
+  build_dependencies:
+    - gcc-c++
+    - cmake
+    - ninja
+    - make
+    - golang
+    - git
+    - qtbase5-common-devel
+    - lib64qt5core-devel
+    - lib64qt5gui-devel
+    - lib64qt5widgets-devel
+    - lib64qt5network-devel
+    - lib64qt5sql-devel
+    - lib64qt5xml-devel
+    - lib64qt5concurrent-devel
+    - lib64qt5printsupport-devel
+    - lib64qt5dbus-devel
+    - lib64qt5opengl-devel
+    - lib64qt5qml-devel
+    - lib64qt5svg-devel
+    - lib64qt5multimedia-devel
+    - lib64qt5multimediawidgets-devel
+    - lib64qt5webengine-devel
+    - qttools5            # lrelease/lupdate
+    - lib64qt5help-devel  # ships Qt5LinguistToolsConfig.cmake (qttools5 doesn't)
+    - lib64icu-devel
+    - lib64zlib-devel
+  rpm:
+    spec_template: ".omnipackage/specfile.spec.liquid"
+
+# Debian / Ubuntu (Qt6).
+deb: &deb
+  <<: *common
+  build_dependencies:
+    - build-essential
+    - cmake
+    - ninja-build
+    - pkg-config
+    - golang-go
+    - qt6-base-dev
+    - qt6-base-dev-tools
+    - qt6-tools-dev
+    - qt6-tools-dev-tools
+    - qt6-l10n-tools
+    - qt6-declarative-dev
+    - qt6-webengine-dev
+    - qt6-multimedia-dev
+    - qt6-svg-dev
+    - libgl-dev
+    - libicu-dev
+    - zlib1g-dev
+  runtime_dependencies:
+    - libqt6sql6-sqlite     # dlopened SQLite driver, not caught by ${shlibs:Depends}
+  deb:
+    debian_templates: ".omnipackage/deb"
+
+# Qt5 DEB build for distros with Qt6 < 6.5 (Ubuntu 24.04, Debian 12). Selected via
+# build_with_qt6=OFF, which deb/rules.liquid reads (Qt6 builds default to ON).
+deb_qt5: &deb_qt5
+  <<: *common
+  build_with_qt6: "OFF"
+  # Debian 12 ships Go 1.19, too old to parse `go 1.25.0` or auto-download a toolchain; fetch Go here.
+  before_build_script: >-
+    curl -fsSL https://go.dev/dl/go1.25.0.linux-$(dpkg --print-architecture).tar.gz -o /tmp/go.tgz &&
+    rm -rf /usr/local/go &&
+    tar -C /usr/local -xzf /tmp/go.tgz &&
+    ln -sf /usr/local/go/bin/go /usr/local/bin/go
+  build_dependencies:
+    - build-essential
+    - cmake
+    - ninja-build
+    - pkg-config
+    - curl
+    - qtbase5-dev
+    - qtbase5-dev-tools
+    - qttools5-dev
+    - qttools5-dev-tools
+    - qtdeclarative5-dev
+    - qtwebengine5-dev
+    - qtmultimedia5-dev
+    - libqt5svg5-dev
+    - libgl-dev
+    - libicu-dev
+    - zlib1g-dev
+  runtime_dependencies:
+    - libqt5sql5-sqlite     # dlopened SQLite driver, not caught by ${shlibs:Depends}
+  deb:
+    debian_templates: ".omnipackage/deb"
+
+# Distros shipping Qt >= 6.5 with WebEngine. EL8 omitted (no usable Qt6 there).
+builds:
+  # Fedora
+  - { distro: "fedora_42",           <<: *fedora_rpm }
+  - { distro: "fedora_43",           <<: *fedora_rpm }
+  - { distro: "fedora_44",           <<: *fedora_rpm }
+  - { distro: "fedora_rawhide",      <<: *fedora_rpm }
+  # openSUSE: Tumbleweed/16.0 Qt6, Leap 15.6 Qt5
+  - { distro: "opensuse_tumbleweed", <<: *opensuse_rpm }
+  - { distro: "opensuse_15.6",       <<: *opensuse_leap_qt5 }
+  - { distro: "opensuse_16.0",       <<: *opensuse_rpm }
+  # Enterprise Linux: EL9 Qt5, EL10 Qt6
+  - { distro: "almalinux_9",         <<: *el_qt5 }
+  - { distro: "almalinux_10",        <<: *el_rpm }
+  - { distro: "rockylinux_9",        <<: *el_qt5 }
+  - { distro: "rockylinux_10",       <<: *el_rpm }
+  # Mageia: Cauldron Qt6, Mageia 9 Qt5
+  - { distro: "mageia_cauldron",     <<: *mageia_qt6 }
+  - { distro: "mageia_9",            <<: *mageia_qt5 }
+  # Debian / Ubuntu (Qt5 where the distro Qt6 is < 6.5)
+  - { distro: "debian_12",           <<: *deb_qt5 }
+  - { distro: "debian_13",           <<: *deb }
+  - { distro: "debian_testing",      <<: *deb }
+  - { distro: "debian_unstable",     <<: *deb }
+  - { distro: "ubuntu_24.04",        <<: *deb_qt5 }
+  - { distro: "ubuntu_25.04",        <<: *deb }
+  - { distro: "ubuntu_25.10",        <<: *deb }
+  - { distro: "ubuntu_26.04",        <<: *deb }
