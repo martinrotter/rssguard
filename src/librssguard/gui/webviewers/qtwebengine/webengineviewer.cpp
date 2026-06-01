@@ -236,7 +236,7 @@ void WebEngineViewer::setHtml(const QString& html, const QUrl& url, RootItem* ro
   m_selectedItem = root;
   m_feed = feed;
 
-  QWebEngineView::setHtml(html, url);
+  QWebEngineView::setHtml(htmlToDisplay(html), url);
 }
 
 double WebEngineViewer::verticalScrollBarPosition() const {

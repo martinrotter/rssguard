@@ -248,7 +248,8 @@ QString SkinFactory::prepareHtml(const QString& inner_html) {
 QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* root, const WebViewer* viewer) const {
   const Skin skin = currentSkin();
   const bool display_enclosures =
-    qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool();
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool() &&
+    viewer->loadExternalResources();
   const int forced_img_height =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
   const bool is_plain = !TextFactory::couldBeHtml(message.m_contents);

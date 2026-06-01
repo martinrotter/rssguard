@@ -7,7 +7,6 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
-#include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
 
 #include <cstring>
@@ -324,27 +323,6 @@ static void collectImageUrlsFromGumboNode(GumboNode* node, QList<QString>& image
   for (unsigned int i = 0; i < children->length; ++i) {
     collectImageUrlsFromGumboNode(static_cast<GumboNode*>(children->data[i]), image_urls);
   }
-}
-
-QString TextBrowserViewer::htmlToDisplay(const QString& html) const {
-  return loadExternalResources() ? html : convertToHtmlWithoutImages(html);
-}
-
-QString TextBrowserViewer::convertToHtmlWithoutImages(const QString& html) const {
-  if (!TextFactory::couldBeHtml(html)) {
-    return html;
-  }
-
-  QByteArray utf8 = html.toUtf8();
-  GumboOutput* output = gumbo_parse(utf8.constData());
-  QString result;
-  GumboNode* root = output->root;
-
-  processGumboNode(root, result);
-
-  gumbo_destroy_output(&kGumboDefaultOptions, output);
-
-  return result;
 }
 
 QString TextBrowserViewer::htmlForMessage(const Message& message, RootItem* root) const {
