@@ -1721,6 +1721,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db,
             "recycle_articles = :recycle_articles, "
             "account_id = :account_id, "
             "custom_id = :custom_id, "
+            "open_articles = :open_articles, "
             "custom_data = :custom_data "
             "WHERE id = :id;");
   q.bindValue(QSL(":title"), feed->title());
@@ -1737,6 +1738,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db,
   q.bindValue(QSL(":ordr"), feed->sortOrder());
   q.bindValue(QSL(":is_off"), feed->isSwitchedOff());
   q.bindValue(QSL(":is_quiet"), feed->isQuiet());
+  q.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
   q.bindValue(QSL(":is_rtl"), int(feed->rtlBehavior()));
 
   const Feed::ArticleIgnoreLimit art = feed->articleIgnoreLimit();

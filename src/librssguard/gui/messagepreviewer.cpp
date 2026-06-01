@@ -9,6 +9,7 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "services/abstract/feed.h"
 #include "services/abstract/gui/custommessagepreviewer.h"
 #include "services/abstract/label.h"
 #include "services/abstract/labelsnode.h"
@@ -166,6 +167,24 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root, Feed*
     show();
 
     if (!same_message) {
+      Feed* article_feed = feed;
+
+      if (article_feed == nullptr) {
+        RootItem* feed_item = root->account()->getItemFromSubTree([message](const RootItem* item) {
+          return item->kind() == RootItem::Kind::Feed && item->id() == message.m_feedId;
+        });
+
+        article_feed = feed_item == nullptr ? nullptr : feed_item->toFeed();
+      }
+
+      if (article_feed != nullptr && article_feed->openArticlesDirectly() && !message.m_url.isEmpty()) {
+        ensureDefaultBrowserVisible();
+
+        m_msgBrowser->setVerticalScrollBarPosition(0.0);
+        m_msgBrowser->loadUrl(message.m_url);
+        return;
+      }
+
       CustomMessagePreviewer* custom_previewer = root->account()->customMessagePreviewer();
 
       if (custom_previewer != nullptr) {

@@ -54,6 +54,7 @@ CREATE TABLE Feeds (
   account_id                INTEGER         NOT NULL,
   custom_id                 VARCHAR(250)    NOT NULL CHECK (custom_id != ''), /* Custom ID cannot be empty, it must contain either service-specific ID, or Feeds/id. */
   custom_data               TEXT, /* Custom column for (serialized) custom account-specific data. */
+  open_articles             INTEGER(1)      NOT NULL DEFAULT 0 CHECK (open_articles >= 0 AND open_articles <= 1),
   
   FOREIGN KEY (account_id) REFERENCES Accounts (id) ON DELETE CASCADE
 );

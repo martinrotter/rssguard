@@ -73,6 +73,10 @@ void FormFeedDetails::apply() {
       fd->setIsQuiet(m_ui->m_cbSuppressFeed->isChecked());
     }
 
+    if (isChangeAllowed(m_ui->m_mcbOpenArticlesAutomatically)) {
+      fd->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
+    }
+
     if (!m_creatingNew) {
       qApp->database()->worker()->write([&](const QSqlDatabase& db) {
         DatabaseQueries::createOverwriteFeed(db, fd, m_serviceRoot->accountId(), fd->parent()->id());
@@ -122,6 +126,7 @@ void FormFeedDetails::loadFeedData() {
   if (m_isBatchEdit) {
     // We hook batch selectors.
     m_ui->m_mcbAutoDownloading->addActionWidget(m_ui->m_wdgAutoUpdate);
+    m_ui->m_mcbOpenArticlesAutomatically->addActionWidget(m_ui->m_cbOpenArticlesAutomatically);
     m_ui->m_mcbDisableFeed->addActionWidget(m_ui->m_cbDisableFeed);
     m_ui->m_mcbSuppressFeed->addActionWidget(m_ui->m_cbSuppressFeed);
     m_ui->m_mcbFeedRtl->addActionWidget(m_ui->m_cmbRtlBehavior);
@@ -154,6 +159,7 @@ void FormFeedDetails::loadFeedData() {
   m_ui->m_cmbAutoUpdateType
     ->setCurrentIndex(m_ui->m_cmbAutoUpdateType->findData(QVariant::fromValue(int(fd->autoUpdateType()))));
   m_ui->m_spinAutoUpdateInterval->setValue(fd->autoUpdateInterval());
+  m_ui->m_cbOpenArticlesAutomatically->setChecked(fd->openArticlesDirectly());
   m_ui->m_cmbRtlBehavior->setCurrentIndex(m_ui->m_cmbRtlBehavior->findData(QVariant::fromValue(fd->rtlBehavior())));
   m_ui->m_cbDisableFeed->setChecked(fd->isSwitchedOff());
   m_ui->m_cbSuppressFeed->setChecked(fd->isQuiet());
