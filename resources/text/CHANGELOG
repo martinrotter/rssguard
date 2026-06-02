@@ -6,6 +6,7 @@ Added:
 * Feed auto-fetch can now also be delayed while Feral GameMode is active on Linux and startup auto-fetch is skipped when GameMode is already active. (#2265)
 * WebEngine builds can now use RSS Guard generated proxy auto-config (`PAC`) rules so article/web browsing follows per-account and per-feed proxy settings more closely. (#2273)
 * Generated `PAC` rules now also cover related subdomains and use Public Suffix List data, so feeds such as `feeds.bbc.co.uk` can also proxy resources from `images.bbc.co.uk`. (#2273)
+* Standard feeds can now define extra proxy domains, useful when article images, stylesheets or other page resources are loaded from a CDN or another domain that should use the same feed proxy. (#2273)
 * RSS Guard now asks for proxy credentials when a WebEngine page needs proxy authentication and can fill credentials from the current feed proxy when available. (#2273)
 
 Fixed:

@@ -135,6 +135,9 @@ class WebViewer {
     virtual void openUrlInNewTab(bool open_externally, const QUrl& url) = 0;
 
   protected:
+    QString htmlToDisplay(const QString& html) const;
+    QString convertToHtmlWithoutImages(const QString& html) const;
+
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) = 0;
 
   private:

@@ -27,6 +27,17 @@ StandardFeedNetworkDetails::StandardFeedNetworkDetails(QWidget* parent) : QWidge
                     QSL("<br/><br/><b>HeaderKey=HeaderValue</b>"),
                   false);
 
+#if !defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  m_ui.m_txtNetworkProxyExtraDomains->setEnabled(false);
+#endif
+
+  m_ui.m_helpNetworkProxyExtraDomains
+    ->setHelpText(tr("Resources (images, CSS, etc.) server from these domains will also be downloaded via proxy, if "
+                     "the proxy is set. Enter each domain on separate line.\n\nThis feature only works on \"web\" "
+                     "version of the app, because on \"text\" version is not needed, as the proxy resolution there is "
+                     "fully automatic."),
+                  false);
+
   m_ui.m_wdgNetworkProxy->setup(true, true);
 
   m_ui.m_cmbEnableHttp2->addItem(tr("Use application settings"),

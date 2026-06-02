@@ -400,7 +400,13 @@ void WebFactory::generatePacAndStartServer(const QList<ServiceRoot*>& accounts) 
     QNetworkProxy account_proxy = acc->networkProxy();
 
     for (Feed* feed : acc->getSubTreeFeeds()) {
-      const QStringList feed_hosts = pacRuleHostsForHost(QUrl(feed->source()).host());
+      QStringList feed_hosts = pacRuleHostsForHost(QUrl(feed->source()).host());
+
+      // We add manually defined domains, which should be driven to the given proxy.
+      //
+      // This is particularly useful when some resources of the page like images or CSS
+      // are located on 3rd-party CDN with totally different domain.
+      feed_hosts.append(feed->proxyExtraDomains());
 
       if (feed_hosts.isEmpty()) {
         continue;

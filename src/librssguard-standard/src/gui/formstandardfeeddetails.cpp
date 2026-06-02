@@ -21,6 +21,7 @@
 #include <QDialogButtonBox>
 #include <QGroupBox>
 #include <QNetworkCookie>
+#include <QStringList>
 
 FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root,
                                                  RootItem* parent_to_select,
@@ -132,6 +133,11 @@ void FormStandardFeedDetails::apply() {
       std_feed->setUseAccountProxy(m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy());
     }
 
+    if (isChangeAllowed(m_networkDetails->m_ui.m_mcbNetworkProxyExtraDomains)) {
+      std_feed
+        ->setProxyExtraDomains(m_networkDetails->m_ui.m_txtNetworkProxyExtraDomains->toPlainText().split(QL1C('\n')));
+    }
+
     if (isChangeAllowed(m_networkDetails->m_ui.m_wdgAuthentication
                           ->findChild<MultiFeedEditCheckBox*>(QSL("m_mcbAuthType")))) {
       std_feed->setProtection(m_networkDetails->m_ui.m_wdgAuthentication->authenticationType());
@@ -239,9 +245,10 @@ void FormStandardFeedDetails::loadFeedData() {
       ->addActionWidget(m_networkDetails->m_ui.m_wdgAuthentication->findChild<QGroupBox*>(QSL("m_gbAuthentication")));
 
     m_networkDetails->m_ui.m_mcbHttpHeaders->addActionWidget(m_networkDetails->m_ui.m_txtHttpHeaders);
-
     m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_lblEnableHttp2);
     m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_cmbEnableHttp2);
+    m_networkDetails->m_ui.m_mcbNetworkProxyExtraDomains
+      ->addActionWidget(m_networkDetails->m_ui.m_txtNetworkProxyExtraDomains);
   }
   else {
     // We hide batch selectors.
@@ -259,6 +266,7 @@ void FormStandardFeedDetails::loadFeedData() {
   m_networkDetails->m_ui.m_wdgAuthentication->setUsername(std_feed->username());
   m_networkDetails->m_ui.m_wdgAuthentication->setPassword(std_feed->password());
   m_networkDetails->m_ui.m_wdgNetworkProxy->setProxy(std_feed->networkProxy(), std_feed->useAccountProxy());
+  m_networkDetails->m_ui.m_txtNetworkProxyExtraDomains->setPlainText(std_feed->proxyExtraDomains().join(QL1C('\n')));
 
   m_networkDetails->loadHttpHeaders(std_feed->httpHeaders());
 

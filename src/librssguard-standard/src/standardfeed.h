@@ -12,6 +12,7 @@
 #include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QPair>
+#include <QStringList>
 
 class StandardServiceRoot;
 
@@ -56,6 +57,9 @@ class StandardFeed : public Feed {
     virtual Qt::ItemFlags additionalFlags(int column) const;
     virtual bool performDragDropChange(RootItem* target_item);
     virtual QJsonObject articleExtractorSettings();
+
+    virtual QStringList proxyExtraDomains() const;
+    virtual void setProxyExtraDomains(const QStringList& domains);
 
     // Other getters/setters.
     Type type() const;
@@ -186,6 +190,7 @@ class StandardFeed : public Feed {
     bool m_fetchFullArticlesInPlainText;
 
     ArticleDateTimeBehavior m_publishedInsteadOfUpdatedTime;
+    QStringList m_proxyExtraDomains;
 };
 
 Q_DECLARE_METATYPE(StandardFeed::SourceType)

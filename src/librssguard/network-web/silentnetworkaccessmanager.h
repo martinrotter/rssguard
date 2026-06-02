@@ -16,9 +16,10 @@ class SilentNetworkAccessManager : public BaseNetworkAccessManager {
     explicit SilentNetworkAccessManager(QObject* parent = nullptr);
     virtual ~SilentNetworkAccessManager();
 
-  public slots:
+  private slots:
     // NOTE: This cannot do any GUI stuff.
     void onAuthenticationRequired(QNetworkReply* reply, QAuthenticator* authenticator);
+    // void onProxyAuthenticationRequired(const QNetworkProxy& proxy, QAuthenticator* authenticator);
 };
 
 #endif // SILENTNETWORKACCESSMANAGER_H

@@ -29,19 +29,35 @@ It is a good choice if you want:
 * a smaller and simpler build
 * readable article display without a full embedded browser engine
 * basic opening of web pages
+* optional loading of remote article images without a full browser engine
 * text search, zooming, printing, and saving as `HTML` or plain text
+* readable display of directly opened image, `XML`, `JSON`, Markdown, `HTML`, and plain-text files
 
 The `text` viewer has important limitations:
-* it does not load article images as normal inline remote images
-* it replaces image content with links or placeholders where possible
+* remote article images are downloaded by RSS Guard and then inserted into the document; this is simpler than normal browser resource loading
+* when external image loading is disabled, image content is replaced with links or placeholders where possible
 * it does not provide full browser navigation
 * complex websites may not render correctly
 * advanced Qt WebEngine actions are not available
 
 ## External Images And Privacy
-The `web` viewer can load external images and other remote page resources. This gives better visual fidelity, but it can contact third-party servers when an article or page is opened.
+Both viewers can load external article images when external resources are enabled. This gives better visual fidelity, but it can contact third-party servers when an article or page is opened.
 
-If you prefer stricter privacy, disable external image loading or use the `text` variant.
+The `web` viewer lets Qt WebEngine load page resources in a browser-like way. The `text` viewer is more limited: it scans article/page `HTML` for images, downloads supported remote image URLs through RSS Guard's network code, caches them, and then displays the cached images in the document.
+
+If you prefer stricter privacy, keep external image loading disabled. In that mode RSS Guard avoids downloading remote images automatically and the `text` viewer shows image links/placeholders where possible.
+
+## Directly Opened Files
+When you open a URL directly in RSS Guard, the active viewer decides how to display it.
+
+The `web` viewer mostly follows normal browser behavior provided by Qt WebEngine.
+
+The `text` viewer downloads the target through RSS Guard and then chooses a readable representation:
+* image files are shown directly when external image loading is enabled; otherwise they are opened externally
+* `XML` files are pretty-printed when possible
+* `JSON` files are pretty-printed when possible
+* Markdown files are rendered to readable `HTML`
+* unknown text-like content is shown as escaped plain text
 
 ## Cookies
 In the `web` variant, cookies accepted or created in RSS Guard's built-in web browser are shared with RSS Guard's internal network stack. This means that if you sign in to a site in the built-in browser and the site stores a cookie, feeds from the same site that require that cookie may start working in RSS Guard too.
@@ -57,6 +73,16 @@ The `web` variant uses Qt WebEngine, which has its own network stack. RSS Guard 
 
 For WebEngine proxy rules, RSS Guard matches the feed host and related subdomains. For example, a feed from `feeds.bbc.co.uk` can also cover resources from `images.bbc.co.uk`. More specific rules are checked first, so a feed-specific proxy can still override a broader domain rule.
 
+Standard feeds can also define extra proxy domains in their feed network settings. Add one host or domain per line when a feed page loads important resources from a different domain, for example a CDN used for images, stylesheets or scripts. Those domains will use the same proxy rule as the feed.
+
+```{warning}
+Extra proxy domains only affect the `web` variant. They are used to generate Qt WebEngine `PAC` rules and do not change how the `text` variant loads resources.
+```
+
+```{warning}
+Proxy `PAC` rules are generated when RSS Guard starts. Restart RSS Guard after changing account proxy, feed proxy or extra proxy domain settings if you need the built-in WebEngine browser to use the new rules immediately.
+```
+
 If a proxy needs authentication, RSS Guard can use credentials saved in the current feed/account proxy settings. If credentials are missing, the `web` variant may ask for them while the page is loading.
 
 ## Which Variant Should I Use?
@@ -67,4 +93,5 @@ Choose the `text` package if you prefer a lighter build, want fewer browser-like
 ## Notes
 * The exact rendering still depends on the feed contents and on the original website.
 * Both viewers share common RSS Guard actions such as opening links externally, opening links in new tabs, copying selected text or links, printing, and playing supported links in the media player when that feature is available.
+* The `text` viewer can show many simple pages, but it is not a full browser engine. JavaScript-heavy websites, complex layouts, advanced CSS and dynamic pages need the `web` variant or an external browser.
 * Some options only appear when the selected viewer supports them.

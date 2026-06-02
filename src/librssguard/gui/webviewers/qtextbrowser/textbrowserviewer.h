@@ -130,8 +130,6 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     void displayDownloadedPage(const QUrl& url, const QByteArray& data, const NetworkResult& res);
     bool loadStaticHtml(const QString& html, const QUrl& url = {});
     void justSetHtml(const QString& html, const QUrl& url = {}, bool keep_scroll = false);
-    QString htmlToDisplay(const QString& html) const;
-    QString convertToHtmlWithoutImages(const QString& html) const;
 
     void abortImageDownloading();
     bool startImageDownloading();

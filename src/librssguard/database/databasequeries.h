@@ -331,6 +331,7 @@ RootItem::Assignment DatabaseQueries::getFeeds(const QSqlDatabase& db,
     feed->setAutoUpdateInterval(q.value(FDS_DB_UPDATE_INTERVAL_INDEX).toInt());
     feed->setIsSwitchedOff(q.value(FDS_DB_IS_OFF_INDEX).toBool());
     feed->setIsQuiet(q.value(FDS_DB_IS_QUIET_INDEX).toBool());
+    feed->setOpenArticlesDirectly(q.value(FDS_DB_OPEN_ARTICLES_INDEX).toBool());
     feed->setRtlBehavior(q.value(FDS_DB_IS_RTL_INDEX).value<RtlBehavior>());
 
     Feed::ArticleIgnoreLimit art;
