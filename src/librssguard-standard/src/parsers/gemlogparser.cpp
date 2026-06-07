@@ -107,11 +107,11 @@ QVariantList GemlogParser::extractFeedEntries(const QString& gemlog) {
   QString gemini_hypertext = QString(gemlog).replace(QSL("\r\n"), QSL("\n")).replace(QSL("\r"), QSL("\n"));
   QStringList lines = gemini_hypertext.split(QL1C('\n'));
 
-  static QRegularExpression exp_link(R"(^=>\s+([^\s]+)\s+(\d{4}-\d{2}-\d{2})\s+(.+)$)");
+  static QRegularExpression exp_link(R"(^=>\s+([^\s]+)\s+(\d{4}-\d{2}-\d{2})[\s:-]+(.+)$)");
 
   QRegularExpressionMatch mtch;
 
-  for (const QString& line : lines) {
+  for (const QString& line : std::as_const(lines)) {
     if ((mtch = exp_link.match(line)).hasMatch()) {
       GemlogEntry entry;
 
