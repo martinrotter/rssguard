@@ -19,7 +19,15 @@
 
 #define COOKIE_URL_IDENTIFIER ":COOKIE:"
 
-CookieJar::CookieJar(WebFactory* parent) : QNetworkCookieJar(), m_saver(AutoSaver(this, QSL("saveCookies"), 30, 45)) {
+CookieJar::CookieJar(WebFactory* parent)
+  : QNetworkCookieJar()
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+    ,
+    m_webEngineCookies(nullptr)
+#endif
+    ,
+    m_ignoreAllCookies(false), m_saver(AutoSaver(this, QSL("saveCookies"), 30, 45)) {
+
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   if (parent != nullptr) {
     // WebEngine does not store cookies, CookieJar does.
@@ -41,12 +49,14 @@ CookieJar::CookieJar(WebFactory* parent) : QNetworkCookieJar(), m_saver(AutoSave
   // - On app startup, both jars are synchronized to have same cookies.
   // - If cookies change in WebEngine jar, the change is propagated to main jar.
   // - If cookies change in main jar, cookies are NOT propagated to WebEngine jar.
-  connect(m_webEngineCookies, &QWebEngineCookieStore::cookieAdded, this, [=](const QNetworkCookie& cookie) {
-    insertCookieInternal(cookie, false, true);
-  });
-  connect(m_webEngineCookies, &QWebEngineCookieStore::cookieRemoved, this, [=](const QNetworkCookie& cookie) {
-    deleteCookieInternal(cookie, false);
-  });
+  if (m_webEngineCookies != nullptr) {
+    connect(m_webEngineCookies, &QWebEngineCookieStore::cookieAdded, this, [=](const QNetworkCookie& cookie) {
+      insertCookie(cookie);
+    });
+    connect(m_webEngineCookies, &QWebEngineCookieStore::cookieRemoved, this, [=](const QNetworkCookie& cookie) {
+      deleteCookieInternal(cookie, false);
+    });
+  }
 #endif
 }
 
@@ -83,6 +93,10 @@ QList<QNetworkCookie> CookieJar::extractCookiesFromUrl(const QString& url) {
 }
 
 void CookieJar::loadCookies() {
+  if (m_ignoreAllCookies) {
+    return;
+  }
+
   Settings* sett = qApp->settings();
   auto keys = sett->allKeys(GROUP(Cookies));
   auto current_dt = QDateTime::currentDateTimeUtc();
@@ -129,11 +143,19 @@ void CookieJar::saveCookies() {
 }
 
 QList<QNetworkCookie> CookieJar::cookiesForUrl(const QUrl& url) const {
+  if (m_ignoreAllCookies) {
+    return {};
+  }
+
   QReadLocker l(&m_lock);
   return QNetworkCookieJar::cookiesForUrl(url);
 }
 
 bool CookieJar::setCookiesFromUrl(const QList<QNetworkCookie>& cookie_list, const QUrl& url) {
+  if (m_ignoreAllCookies) {
+    return false;
+  }
+
   QWriteLocker l(&m_lock);
   return QNetworkCookieJar::setCookiesFromUrl(cookie_list, url);
 }
@@ -149,7 +171,9 @@ bool CookieJar::insertCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
     if (notify_others) {
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
-      m_webEngineCookies->setCookie(cookie);
+      if (m_webEngineCookies != nullptr) {
+        m_webEngineCookies->setCookie(cookie);
+      }
 #endif
     }
   }
@@ -166,7 +190,9 @@ bool CookieJar::updateCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
     if (notify_others) {
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
-      m_webEngineCookies->setCookie(cookie);
+      if (m_webEngineCookies != nullptr) {
+        m_webEngineCookies->setCookie(cookie);
+      }
 #endif
     }
   }
@@ -183,7 +209,9 @@ bool CookieJar::deleteCookieInternal(const QNetworkCookie& cookie, bool notify_o
 
     if (notify_others) {
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
-      m_webEngineCookies->deleteCookie(cookie);
+      if (m_webEngineCookies != nullptr) {
+        m_webEngineCookies->deleteCookie(cookie);
+      }
 #endif
     }
   }
@@ -207,17 +235,27 @@ bool CookieJar::deleteCookie(const QNetworkCookie& cookie) {
 }
 
 void CookieJar::updateSettings() {
-  /*
   m_ignoreAllCookies = qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool();
 
   if (m_ignoreAllCookies) {
+    QWriteLocker l(&m_lock);
+
     setAllCookies({});
     qApp->settings()->remove(GROUP(Cookies));
+
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+    if (m_webEngineCookies != nullptr) {
+      m_webEngineCookies->deleteAllCookies();
+    }
+#endif
   }
-  */
 }
 
 bool CookieJar::updateCookie(const QNetworkCookie& cookie) {
+  if (m_ignoreAllCookies) {
+    return false;
+  }
+
   QWriteLocker l(&m_lock);
   return updateCookieInternal(cookie, false);
 }

@@ -469,6 +469,9 @@ namespace Network {
 
   KEY CustomUserAgent;
   VALUE(QString) CustomUserAgentDef;
+
+  KEY IgnoreAllCookies;
+  VALUE(bool) IgnoreAllCookiesDef;
 } // namespace Network
 
 // General.

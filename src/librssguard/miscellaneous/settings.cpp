@@ -56,6 +56,9 @@ DVALUE(bool) Network::EnableHttp2Def = false;
 DKEY Network::CustomUserAgent = "user_agent";
 DVALUE(QString) Network::CustomUserAgentDef = QString();
 
+DKEY Network::IgnoreAllCookies = "ignore_all_cookies";
+DVALUE(bool) Network::IgnoreAllCookiesDef = false;
+
 // Feeds.
 DKEY Feeds::ID = "feeds";
 
