@@ -30,7 +30,7 @@ SearchLineEdit::SearchLineEdit(const QString& save_identification,
 
   m_tmrSearchPattern = new QTimer(this);
   m_tmrSearchPattern->setSingleShot(true);
-  m_tmrSearchPattern->setInterval(300);
+  m_tmrSearchPattern->setInterval(1000);
 
   m_menu = new QMenu(btn);
 
