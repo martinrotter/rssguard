@@ -15,6 +15,7 @@ Added:
 Fixed:
 * Parallel feed updates no longer crash when multiple update results are processed at the same time. (64cf52158)
 * Links in WebEngine articles opened from feeds such as Kill the Newsletter now open correctly instead of being swallowed by the embedded page. (#2272)
+* Relative article URLs resolution was kinda broken. (#2282)
 * Clicking article URL did not work when the URL had "fragment" set. (#2293)
 * The default proxy setting now uses Qt/system default proxy behavior instead of forcing no proxy. (e0263ad06)
 * WebEngine article loading now keeps the current feed context, so feed-specific proxy credentials remain available while the article page loads. (fdd0f00c8)

@@ -166,10 +166,7 @@ void Message::sanitize(const Feed* feed, bool fix_future_datetimes) {
     QUrl feed_url(feed->source());
 
     if (feed_url.isValid()) {
-      QUrl feed_homepage_url = QUrl(feed_url.scheme() + QSL("://") + feed_url.host());
-
-      feed_homepage_url.setPort(feed_url.port());
-      m_url = feed_homepage_url.resolved(m_url).toString();
+      m_url = feed_url.resolved(m_url).toString();
     }
   }
 
