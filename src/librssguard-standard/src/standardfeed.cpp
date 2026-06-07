@@ -48,6 +48,7 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_httpHeaders = {};
   m_dontUseRawXmlSaving = false;
   m_http2Status = NetworkFactory::Http2Status::DontSet;
+  m_ignoreCookies = false;
   m_fetchCommentsEnabled = false;
   m_useAccountProxy = true;
   m_fetchFullArticles = false;
@@ -67,6 +68,7 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_fetchCommentsEnabled = other.fetchCommentsEnabled();
   m_httpHeaders = other.httpHeaders();
   m_http2Status = other.http2Status();
+  m_ignoreCookies = other.ignoreCookies();
   m_proxy = other.networkProxy();
   m_useAccountProxy = other.useAccountProxy();
   m_fetchFullArticles = other.fetchFullArticles();
@@ -82,13 +84,15 @@ QString StandardFeed::additionalTooltip() const {
                           "Use raw XML saving: %4\n"
                           "Fetch article comments: %5\n"
                           "HTTP/2: %6\n"
-                          "Fetch full articles: %7 (plain text only: %8)")
+                          "Ignore cookies: %7\n"
+                          "Fetch full articles: %8 (plain text only: %9)")
                          .arg(encoding(),
                               StandardFeed::typeToString(type()),
                               m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
                               !dontUseRawXmlSaving() ? tr("yes") : tr("no"),
                               fetchCommentsEnabled() ? tr("yes") : tr("no"),
                               getHttpDescription(),
+                              ignoreCookies() ? tr("yes") : tr("no"),
                               fetchFullArticles() ? tr("yes") : tr("no"),
                               fetchFullArticlesInPlainText() ? tr("yes") : tr("no"));
 
@@ -101,6 +105,14 @@ NetworkFactory::Http2Status StandardFeed::http2Status() const {
 
 void StandardFeed::setHttp2Status(NetworkFactory::Http2Status status) {
   m_http2Status = status;
+}
+
+bool StandardFeed::ignoreCookies() const {
+  return m_ignoreCookies;
+}
+
+void StandardFeed::setIgnoreCookies(bool ignore_cookies) {
+  m_ignoreCookies = ignore_cookies;
 }
 
 bool StandardFeed::canBeDeleted() const {
@@ -154,6 +166,7 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("dont_use_raw_xml_saving")] = dontUseRawXmlSaving();
   data[QSL("http_headers")] = httpHeaders();
   data[QSL("http2_status")] = int(http2Status());
+  data[QSL("ignore_cookies")] = ignoreCookies();
   data[QSL("use_account_proxy")] = useAccountProxy();
 
   data[QSL("fetch_full_articles")] = fetchFullArticles();
@@ -183,6 +196,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setDontUseRawXmlSaving(data[QSL("dont_use_raw_xml_saving")].toBool());
   setHttpHeaders(data[QSL("http_headers")].toHash());
   setHttp2Status(NetworkFactory::Http2Status(data[QSL("http2_status")].toInt()));
+  setIgnoreCookies(data[QSL("ignore_cookies")].toBool());
 
   setFetchFullArticles(data[QSL("fetch_full_articles")].toBool());
   setFetchFullArticlesInPlainText(data[QSL("fetch_full_articles_plain_text")].toBool());
@@ -258,7 +272,9 @@ void StandardFeed::fetchMetadataForItself() {
                               username(),
                               password(),
                               {},
-                              useAccountProxy() ? account()->networkProxy() : networkProxy());
+                              useAccountProxy() ? account()->networkProxy() : networkProxy(),
+                              http2Status(),
+                              ignoreCookies());
 
     // Copy metadata to our object.
     setTitle(metadata.first->title());
@@ -310,7 +326,8 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
                                                             const QString& password,
                                                             const QList<QPair<QByteArray, QByteArray>>& http_headers,
                                                             const QNetworkProxy& custom_proxy,
-                                                            NetworkFactory::Http2Status http2_status) {
+                                                            NetworkFactory::Http2Status http2_status,
+                                                            bool ignore_cookies) {
   auto timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray feed_contents;
   NetworkResult network_result;
@@ -332,7 +349,10 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
                                                              {},
                                                              {},
                                                              custom_proxy,
-                                                             http2_status);
+                                                             http2_status,
+                                                             ignore_cookies
+                                                               ? NetworkFactory::CookiePolicy::IgnoreCookies
+                                                               : NetworkFactory::CookiePolicy::UseSharedCookieJar);
 
     // account->resetHostSpacing(host);
 

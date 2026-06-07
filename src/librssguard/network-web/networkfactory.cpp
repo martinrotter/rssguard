@@ -3,6 +3,8 @@
 #include "network-web/networkfactory.h"
 
 #include "definitions/globals.h"
+#include "miscellaneous/application.h"
+#include "miscellaneous/settings.h"
 #include "network-web/downloader.h"
 
 #include <QEventLoop>
@@ -20,6 +22,17 @@
 #endif
 
 #define SECS_WHEN_RETRYAFTER_MISSING 120
+
+namespace {
+  NetworkFactory::CookiePolicy effectiveCookiePolicy(NetworkFactory::CookiePolicy cookie_policy) {
+    if (cookie_policy == NetworkFactory::CookiePolicy::IgnoreCookies ||
+        qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool()) {
+      return NetworkFactory::CookiePolicy::IgnoreCookies;
+    }
+
+    return NetworkFactory::CookiePolicy::UseSharedCookieJar;
+  }
+} // namespace
 
 QDateTime NetworkFactory::extractRetryAfter(const QString& retry_after_value) {
   if (retry_after_value.simplified().isEmpty()) {
@@ -340,8 +353,9 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       const QString& username,
                                                       const QString& password,
                                                       const QNetworkProxy& custom_proxy,
-                                                      Http2Status http2_status) {
-  Downloader downloader;
+                                                      Http2Status http2_status,
+                                                      CookiePolicy cookie_policy) {
+  Downloader downloader(nullptr, effectiveCookiePolicy(cookie_policy));
   QEventLoop loop;
   NetworkResult result;
 
@@ -386,8 +400,9 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       const QString& username,
                                                       const QString& password,
                                                       const QNetworkProxy& custom_proxy,
-                                                      Http2Status http2_status) {
-  Downloader downloader;
+                                                      Http2Status http2_status,
+                                                      CookiePolicy cookie_policy) {
+  Downloader downloader(nullptr, effectiveCookiePolicy(cookie_policy));
   QEventLoop loop;
   NetworkResult result;
 

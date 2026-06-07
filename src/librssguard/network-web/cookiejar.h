@@ -34,6 +34,7 @@ class CookieJar : public QNetworkCookieJar {
     static QList<QNetworkCookie> extractCookiesFromUrl(const QString& url);
 
   public slots:
+    void clearCookies();
     void loadCookies();
     void saveCookies();
 
@@ -50,6 +51,16 @@ class CookieJar : public QNetworkCookieJar {
     mutable QReadWriteLock m_lock{QReadWriteLock::RecursionMode::Recursive};
     bool m_ignoreAllCookies;
     AutoSaver m_saver;
+};
+
+class DiscardingCookieJar : public QNetworkCookieJar {
+  public:
+    explicit DiscardingCookieJar(QObject* parent = nullptr);
+
+    virtual QList<QNetworkCookie> cookiesForUrl(const QUrl& url) const;
+    virtual bool setCookiesFromUrl(const QList<QNetworkCookie>& cookie_list, const QUrl& url);
+    virtual bool insertCookie(const QNetworkCookie& cookie);
+    virtual bool updateCookie(const QNetworkCookie& cookie);
 };
 
 #endif // COOKIEJAR_H

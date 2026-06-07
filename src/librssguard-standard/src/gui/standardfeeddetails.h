@@ -35,7 +35,8 @@ class StandardFeedDetails : public QWidget {
                        const QString& username,
                        const QString& password,
                        const QList<QPair<QByteArray, QByteArray>>& headers = {},
-                       const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy);
+                       const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy,
+                       bool ignore_cookies = false);
 
     void guessFeed(StandardFeed::SourceType source_type,
                    const QString& source,
@@ -46,7 +47,8 @@ class StandardFeedDetails : public QWidget {
                    const QString& password,
                    const QList<QPair<QByteArray, QByteArray>>& headers = {},
                    const QNetworkProxy& custom_proxy = QNetworkProxy::ProxyType::DefaultProxy,
-                   NetworkFactory::Http2Status http2_status = NetworkFactory::Http2Status::DontSet);
+                   NetworkFactory::Http2Status http2_status = NetworkFactory::Http2Status::DontSet,
+                   bool ignore_cookies = false);
 
     void onTitleChanged(const QString& new_title);
     void onDescriptionChanged(const QString& new_description);

@@ -109,6 +109,7 @@
     <addaction name="m_actionReloadSkin"/>
     <addaction name="m_actionCleanupDatabase"/>
     <addaction name="m_actionCleanupWebCache"/>
+    <addaction name="m_actionDeleteStoredCookies"/>
    </widget>
    <widget class="QMenu" name="m_menuFeeds">
     <property name="title">
@@ -1031,6 +1032,11 @@
   <action name="m_actionCleanupWebCache">
    <property name="text">
     <string>Cleanup &amp;web cache</string>
+   </property>
+  </action>
+  <action name="m_actionDeleteStoredCookies">
+   <property name="text">
+    <string>Delete stored &amp;cookies</string>
    </property>
   </action>
   <action name="m_actionToggleArticlesReadUnread">

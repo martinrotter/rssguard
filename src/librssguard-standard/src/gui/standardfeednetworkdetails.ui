@@ -41,10 +41,24 @@
          </property>
         </widget>
        </item>
-      </layout>
-     </item>
-    </layout>
-   </item>
+     </layout>
+    </item>
+   </layout>
+  </item>
+  <item>
+   <layout class="QHBoxLayout" name="horizontalLayout_9">
+    <item>
+     <widget class="MultiFeedEditCheckBox" name="m_mcbIgnoreCookies"/>
+    </item>
+    <item>
+     <widget class="QCheckBox" name="m_cbIgnoreCookies">
+      <property name="text">
+       <string>Ignore cookies when downloading this feed</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </item>
    <item>
     <widget class="QGroupBox" name="m_gbProxy">
      <property name="title">
@@ -185,6 +199,8 @@
  <tabstops>
   <tabstop>m_mcbEnableHttp2</tabstop>
   <tabstop>m_cmbEnableHttp2</tabstop>
+  <tabstop>m_mcbIgnoreCookies</tabstop>
+  <tabstop>m_cbIgnoreCookies</tabstop>
   <tabstop>m_mcbNetworkProxy</tabstop>
   <tabstop>m_txtNetworkProxyExtraDomains</tabstop>
   <tabstop>m_mcbNetworkProxyExtraDomains</tabstop>

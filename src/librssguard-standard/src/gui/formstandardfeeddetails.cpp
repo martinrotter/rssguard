@@ -62,7 +62,8 @@ void FormStandardFeedDetails::guessFeed() {
                                    m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy()
                                      ? m_serviceRoot->networkProxy()
                                      : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy(),
-                                   m_networkDetails->http2Status());
+                                   m_networkDetails->http2Status(),
+                                   m_networkDetails->m_ui.m_cbIgnoreCookies->isChecked());
 }
 
 void FormStandardFeedDetails::guessIconOnly() {
@@ -76,7 +77,8 @@ void FormStandardFeedDetails::guessIconOnly() {
                                        StandardFeed::httpHeadersToList(m_networkDetails->httpHeaders()),
                                        m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy()
                                          ? m_serviceRoot->networkProxy()
-                                         : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy());
+                                         : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy(),
+                                       m_networkDetails->m_ui.m_cbIgnoreCookies->isChecked());
 }
 
 void FormStandardFeedDetails::onTitleChanged(const QString& title) {
@@ -170,6 +172,10 @@ void FormStandardFeedDetails::apply() {
       std_feed->setHttp2Status(m_networkDetails->http2Status());
     }
 
+    if (isChangeAllowed(m_networkDetails->m_ui.m_mcbIgnoreCookies)) {
+      std_feed->setIgnoreCookies(m_networkDetails->m_ui.m_cbIgnoreCookies->isChecked());
+    }
+
     if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbFetchComments)) {
       std_feed->setFetchCommentsEnabled(m_standardFeedExpDetails->m_ui.m_cbFetchComments->isChecked());
     }
@@ -247,6 +253,7 @@ void FormStandardFeedDetails::loadFeedData() {
     m_networkDetails->m_ui.m_mcbHttpHeaders->addActionWidget(m_networkDetails->m_ui.m_txtHttpHeaders);
     m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_lblEnableHttp2);
     m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_cmbEnableHttp2);
+    m_networkDetails->m_ui.m_mcbIgnoreCookies->addActionWidget(m_networkDetails->m_ui.m_cbIgnoreCookies);
     m_networkDetails->m_ui.m_mcbNetworkProxyExtraDomains
       ->addActionWidget(m_networkDetails->m_ui.m_txtNetworkProxyExtraDomains);
   }
@@ -290,5 +297,6 @@ void FormStandardFeedDetails::loadFeedData() {
       ->setChecked(std_feed->fetchFullArticlesInPlainText());
 
     m_networkDetails->setHttp2Status(std_feed->http2Status());
+    m_networkDetails->m_ui.m_cbIgnoreCookies->setChecked(std_feed->ignoreCookies());
   }
 }

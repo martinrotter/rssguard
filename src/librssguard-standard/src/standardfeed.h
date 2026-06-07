@@ -86,6 +86,9 @@ class StandardFeed : public Feed {
     NetworkFactory::Http2Status http2Status() const;
     void setHttp2Status(NetworkFactory::Http2Status status);
 
+    bool ignoreCookies() const;
+    void setIgnoreCookies(bool ignore_cookies);
+
     // Tries to guess feed hidden under given URL
     // and uses given credentials.
     // Returns pointer to guessed feed (if at least partially
@@ -103,7 +106,8 @@ class StandardFeed : public Feed {
                                                          const QNetworkProxy& custom_proxy =
                                                            QNetworkProxy::ProxyType::DefaultProxy,
                                                          NetworkFactory::Http2Status http2_status =
-                                                           NetworkFactory::Http2Status::DontSet);
+                                                           NetworkFactory::Http2Status::DontSet,
+                                                         bool ignore_cookies = false);
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);
@@ -178,6 +182,7 @@ class StandardFeed : public Feed {
     bool m_dontUseRawXmlSaving;
     QVariantHash m_httpHeaders;
     NetworkFactory::Http2Status m_http2Status;
+    bool m_ignoreCookies;
     bool m_fetchCommentsEnabled;
 
     QNetworkProxy m_proxy;

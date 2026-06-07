@@ -48,6 +48,11 @@ class RSSGUARD_DLLSPEC NetworkFactory {
       Disabled = 2
     };
 
+    enum class CookiePolicy {
+      UseSharedCookieJar = 0,
+      IgnoreCookies = 1
+    };
+
     static QDateTime extractRetryAfter(const QString& retry_after_value);
 
     static QStringList extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html);
@@ -83,7 +88,8 @@ class RSSGUARD_DLLSPEC NetworkFactory {
                                                  const QString& password = QString(),
                                                  const QNetworkProxy& custom_proxy =
                                                    QNetworkProxy::ProxyType::DefaultProxy,
-                                                 Http2Status http2_status = Http2Status::DontSet);
+                                                 Http2Status http2_status = Http2Status::DontSet,
+                                                 CookiePolicy cookie_policy = CookiePolicy::UseSharedCookieJar);
     static NetworkResult performNetworkOperation(const QString& url,
                                                  int timeout,
                                                  QHttpMultiPart* input_data,
@@ -96,7 +102,8 @@ class RSSGUARD_DLLSPEC NetworkFactory {
                                                  const QString& password = QString(),
                                                  const QNetworkProxy& custom_proxy =
                                                    QNetworkProxy::ProxyType::DefaultProxy,
-                                                 Http2Status http2_status = Http2Status::DontSet);
+                                                 Http2Status http2_status = Http2Status::DontSet,
+                                                 CookiePolicy cookie_policy = CookiePolicy::UseSharedCookieJar);
 };
 
 Q_DECLARE_METATYPE(NetworkResult)

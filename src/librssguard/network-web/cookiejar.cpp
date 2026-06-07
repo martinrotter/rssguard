@@ -142,6 +142,19 @@ void CookieJar::saveCookies() {
   }
 }
 
+void CookieJar::clearCookies() {
+  QWriteLocker l(&m_lock);
+
+  setAllCookies({});
+  qApp->settings()->remove(GROUP(Cookies));
+
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  if (m_webEngineCookies != nullptr) {
+    m_webEngineCookies->deleteAllCookies();
+  }
+#endif
+}
+
 QList<QNetworkCookie> CookieJar::cookiesForUrl(const QUrl& url) const {
   if (m_ignoreAllCookies) {
     return {};
@@ -238,16 +251,7 @@ void CookieJar::updateSettings() {
   m_ignoreAllCookies = qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool();
 
   if (m_ignoreAllCookies) {
-    QWriteLocker l(&m_lock);
-
-    setAllCookies({});
-    qApp->settings()->remove(GROUP(Cookies));
-
-#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
-    if (m_webEngineCookies != nullptr) {
-      m_webEngineCookies->deleteAllCookies();
-    }
-#endif
+    clearCookies();
   }
 }
 
@@ -258,6 +262,29 @@ bool CookieJar::updateCookie(const QNetworkCookie& cookie) {
 
   QWriteLocker l(&m_lock);
   return updateCookieInternal(cookie, false);
+}
+
+DiscardingCookieJar::DiscardingCookieJar(QObject* parent) : QNetworkCookieJar(parent) {}
+
+QList<QNetworkCookie> DiscardingCookieJar::cookiesForUrl(const QUrl& url) const {
+  Q_UNUSED(url)
+  return {};
+}
+
+bool DiscardingCookieJar::setCookiesFromUrl(const QList<QNetworkCookie>& cookie_list, const QUrl& url) {
+  Q_UNUSED(cookie_list)
+  Q_UNUSED(url)
+  return false;
+}
+
+bool DiscardingCookieJar::insertCookie(const QNetworkCookie& cookie) {
+  Q_UNUSED(cookie)
+  return false;
+}
+
+bool DiscardingCookieJar::updateCookie(const QNetworkCookie& cookie) {
+  Q_UNUSED(cookie)
+  return false;
 }
 
 /*

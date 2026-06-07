@@ -14,12 +14,12 @@
 #include <QRegularExpression>
 #include <QTimer>
 
-Downloader::Downloader(QObject* parent)
+Downloader::Downloader(QObject* parent, NetworkFactory::CookiePolicy cookie_policy)
   : QObject(parent), m_geminiClient(new GeminiClient(this)), m_geminiParser(GeminiParser()), m_activeReply(nullptr),
     m_downloadManager(new SilentNetworkAccessManager(this)), m_timer(new QTimer(this)), m_inputData(QByteArray()),
     m_inputMultipartData(nullptr), m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
-    m_lastOutputData({}), m_lastOutputError(QNetworkReply::NetworkError::NoError), m_lastHttpStatusCode(0),
-    m_lastHeaders({}) {
+    m_ignoreCookies(cookie_policy == NetworkFactory::CookiePolicy::IgnoreCookies), m_lastOutputData({}),
+    m_lastOutputError(QNetworkReply::NetworkError::NoError), m_lastHttpStatusCode(0), m_lastHeaders({}) {
   m_timer->setInterval(DOWNLOAD_TIMEOUT);
   m_timer->setSingleShot(true);
 
@@ -29,8 +29,13 @@ Downloader::Downloader(QObject* parent)
   connect(m_geminiClient, &GeminiClient::requestComplete, this, &Downloader::geminiFinished);
   connect(m_geminiClient, &GeminiClient::networkError, this, &Downloader::geminiError);
 
-  m_downloadManager->setCookieJar(qApp->web()->cookieJar());
-  qApp->web()->cookieJar()->setParent(nullptr);
+  if (m_ignoreCookies) {
+    m_downloadManager->setCookieJar(new DiscardingCookieJar(m_downloadManager.data()));
+  }
+  else {
+    m_downloadManager->setCookieJar(qApp->web()->cookieJar());
+    qApp->web()->cookieJar()->setParent(nullptr);
+  }
 }
 
 Downloader::~Downloader() {
@@ -281,9 +286,12 @@ void Downloader::finished() {
       m_lastOutputMultipartData = decodeMultipartAnswer(reply);
     }
 
-    QVariant set_cookies_header = reply->header(QNetworkRequest::SetCookieHeader);
+    QVariant set_cookies_header = reply->header(QNetworkRequest::KnownHeaders::SetCookieHeader);
 
-    if (set_cookies_header.isValid()) {
+    if (m_ignoreCookies) {
+      m_lastCookies = {};
+    }
+    else if (set_cookies_header.isValid()) {
       QList<QNetworkCookie> cookies = set_cookies_header.value<QList<QNetworkCookie>>();
 
       m_lastCookies = cookies;

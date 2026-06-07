@@ -29,6 +29,7 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/thread.h"
+#include "network-web/cookiejar.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/recyclebin.h"
 #include "services/abstract/serviceroot.h"
@@ -573,6 +574,7 @@ void FormMain::setupIcons() {
   m_ui->m_actionCheckForUpdates->setIcon(icon_theme_factory->fromTheme(QSL("system-upgrade")));
   m_ui->m_actionCleanupDatabase->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
   m_ui->m_actionCleanupWebCache->setIcon(icon_theme_factory->fromTheme(QSL("internet-web-browser"), QSL("edit-clear")));
+  m_ui->m_actionDeleteStoredCookies->setIcon(icon_theme_factory->fromTheme(QSL("preferences-web-browser-cookies")));
   m_ui->m_actionReportBug->setIcon(icon_theme_factory->fromTheme(QSL("call-start")));
   m_ui->m_actionBackupDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-export")));
   m_ui->m_actionRestoreDatabaseSettings->setIcon(icon_theme_factory->fromTheme(QSL("document-import")));
@@ -815,6 +817,12 @@ void FormMain::createConnections() {
     FormSettings(*this).exec();
   });
   connect(m_ui->m_actionCleanupDatabase, &QAction::triggered, this, &FormMain::showDbCleanupAssistant);
+  connect(m_ui->m_actionDeleteStoredCookies, &QAction::triggered, this, []() {
+    qApp->web()->cookieJar()->clearCookies();
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(tr("Cookies deleted"), tr("Stored cookies were deleted.")),
+                         GuiMessageDestination(true, true));
+  });
   connect(m_ui->m_actionReloadSkin, &QAction::triggered, qApp, []() {
     qApp->reloadCurrentSkin(true);
     qApp->showGuiMessage(Notification::Event::GeneralEvent,

@@ -9,6 +9,8 @@ Added:
 * Standard feeds can now define extra proxy domains, useful when article images, stylesheets or other page resources are loaded from a CDN or another domain that should use the same feed proxy. (#2273)
 * RSS Guard now asks for proxy credentials when a WebEngine page needs proxy authentication and can fill credentials from the current feed proxy when available. (#2273)
 * Network settings again include an option to ignore all cookies, which clears stored cookies and prevents new cookies from being accepted.
+* Standard RSS/ATOM feeds can now individually ignore cookies while downloading feed data.
+* Stored cookies can now be deleted from the `Tools` menu.
 
 Fixed:
 * Parallel feed updates no longer crash when multiple update results are processed at the same time. (64cf52158)
