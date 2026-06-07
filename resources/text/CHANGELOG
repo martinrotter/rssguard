@@ -11,6 +11,7 @@ Added:
 * Network settings again include an option to ignore all cookies, which clears stored cookies and prevents new cookies from being accepted.
 * Standard RSS/ATOM feeds can now individually ignore cookies while downloading feed data.
 * Stored cookies can now be deleted from the `Tools` menu.
+* Support for more benevolent parsing of Gemlog entries (#2295).
 
 Fixed:
 * Parallel feed updates no longer crash when multiple update results are processed at the same time. (64cf52158)

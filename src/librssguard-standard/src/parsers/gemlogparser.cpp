@@ -14,6 +14,10 @@
 
 GemlogParser::GemlogParser(const QString& data) : FeedParser(data, DataType::Other) {
   m_entries = extractFeedEntries(data);
+
+  if (m_entries.isEmpty()) {
+    m_entries = extractFeedAlternativeEntries(data);
+  }
 }
 
 GemlogParser::~GemlogParser() {}
@@ -95,6 +99,41 @@ QString GemlogParser::extractFeedTitle(const QString& gemlog) const {
 
   auto match = exp.match(gemlog);
   return match.captured(1);
+}
+
+QVariantList GemlogParser::extractFeedAlternativeEntries(const QString& gemlog) {
+  QVariantList entries;
+
+  if (gemlog.isEmpty()) {
+    return entries;
+  }
+
+  QString gemini_hypertext = QString(gemlog).replace(QSL("\r\n"), QSL("\n")).replace(QSL("\r"), QSL("\n"));
+  QStringList lines = gemini_hypertext.split(QL1C('\n'));
+
+  static QRegularExpression exp_date(R"(^##\s+(\d{4}-\d{2}-\d{2})$)");
+  static QRegularExpression exp_link(R"(^=>\s+([^\s]+)[\s:-]+(.+)$)");
+
+  QDateTime date_group;
+  QRegularExpressionMatch mtch;
+
+  for (const QString& line : std::as_const(lines)) {
+    if ((mtch = exp_date.match(line)).hasMatch()) {
+      date_group = QDateTime::fromString(mtch.captured(1), QSL("yyyy-MM-dd"));
+    }
+    else if (date_group.isValid() && (mtch = exp_link.match(line)).hasMatch()) {
+      GemlogEntry entry;
+
+      entry.m_link = mtch.captured(1);
+      entry.m_date = date_group;
+      entry.m_title = mtch.captured(2);
+      entry.m_rawData = line;
+
+      entries.append(QVariant::fromValue(entry));
+    }
+  }
+
+  return entries;
 }
 
 QVariantList GemlogParser::extractFeedEntries(const QString& gemlog) {

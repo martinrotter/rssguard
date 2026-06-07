@@ -35,6 +35,8 @@ class GemlogParser : public FeedParser {
 
   private:
     QString extractFeedTitle(const QString& gemlog) const;
+
+    QVariantList extractFeedAlternativeEntries(const QString& gemlog);
     QVariantList extractFeedEntries(const QString& gemlog);
 
     QVariantList m_entries;
