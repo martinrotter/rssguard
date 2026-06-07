@@ -286,6 +286,12 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
       : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
                                                       QLocale::FormatType::ShortFormat);
 
+  QUrl message_url(message.m_url);
+
+  if (message_url.hasFragment()) {
+    message_url.setFragment(QString());
+  }
+
   QString msg_contents =
     is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal) : message.m_contents;
 
@@ -297,7 +303,7 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
                            .replace(QSL("%article_author_full%"),
                                     tr("Written by ") +
                                       (message.m_author.isEmpty() ? tr("unknown author") : message.m_author))
-                           .replace(QSL("%article_url%"), message.m_url)
+                           .replace(QSL("%article_url%"), message_url.toString())
                            .replace(QSL("%article_contents%"), msg_contents)
                            .replace(QSL("%article_date%"), msg_date)
                            .replace(QSL("%enclosures_all%"), enclosures)

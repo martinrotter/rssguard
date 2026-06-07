@@ -162,27 +162,34 @@ QString WebViewer::convertToHtmlWithoutImages(const QString& html) const {
 }
 
 QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {
+  QUrl url;
+
   if (!message.m_url.isEmpty()) {
-    return message.m_url;
+    url = message.m_url;
   }
+  else {
+    auto* feed = root != nullptr ? root->account()
+                                     ->getItemFromSubTree([message](const RootItem* it) {
+                                       return it->kind() == RootItem::Kind::Feed && it->id() == message.m_feedId;
+                                     })
+                                     ->toFeed()
+                                 : nullptr;
 
-  auto* feed = root != nullptr ? root->account()
-                                   ->getItemFromSubTree([message](const RootItem* it) {
-                                     return it->kind() == RootItem::Kind::Feed && it->id() == message.m_feedId;
-                                   })
-                                   ->toFeed()
-                               : nullptr;
+    if (feed != nullptr) {
+      QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
 
-  if (feed != nullptr) {
-    QUrl url(NetworkFactory::sanitizeUrl(feed->source()));
-
-    if (url.isValid()) {
-      QString deducted_url = url.scheme() + QSL("://") + (url.isLocalFile() ? url.toLocalFile() : url.host());
-      return deducted_url;
+      if (url.isValid()) {
+        QString deducted_url = url.scheme() + QSL("://") + (url.isLocalFile() ? url.toLocalFile() : url.host());
+        url = deducted_url;
+      }
     }
   }
 
-  return QString();
+  if (url.isValid() && url.hasFragment()) {
+    url.setFragment(QString());
+  }
+
+  return url;
 }
 
 QString WebViewer::htmlForMessage(const Message& message, RootItem* root) const {
