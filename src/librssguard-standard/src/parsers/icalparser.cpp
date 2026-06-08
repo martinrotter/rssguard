@@ -48,7 +48,7 @@ QList<StandardFeed*> IcalParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       // 1.
       auto guessed_feed = guessFeed(data, res);
 
-      return {guessed_feed.first};
+      return {guessed_feed.m_feed};
     }
     catch (...) {
       qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
@@ -61,8 +61,7 @@ QList<StandardFeed*> IcalParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   return {};
 }
 
-QPair<StandardFeed*, QList<IconLocation>> IcalParser::guessFeed(const QByteArray& content,
-                                                                const NetworkResult& network_res) const {
+GuessedFeedWithIcons IcalParser::guessFeed(const QByteArray& content, const NetworkResult& network_res) const {
   if (network_res.m_contentType.contains(QSL("text/calendar")) || content.startsWith(QSL("BEGIN").toLocal8Bit())) {
     Icalendar calendar;
 
@@ -81,7 +80,7 @@ QPair<StandardFeed*, QList<IconLocation>> IcalParser::guessFeed(const QByteArray
     feed->setTitle(calendar.title());
     feed->setSource(network_res.m_url.toString());
 
-    return QPair<StandardFeed*, QList<IconLocation>>(feed, icon_possible_locations);
+    return {feed, icon_possible_locations};
   }
   else {
     throw ApplicationException(QObject::tr("not an iCalendar"));

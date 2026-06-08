@@ -21,8 +21,7 @@ class GemlogParser : public FeedParser {
 
     virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const;
 
-    virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
-                                                                const NetworkResult& network_res) const;
+    virtual GuessedFeedWithIcons guessFeed(const QByteArray& content, const NetworkResult& network_res) const;
 
     virtual QVariantList objMessageElements();
     virtual QString objMessageTitle(const QVariant& msg_element) const;

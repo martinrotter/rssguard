@@ -129,7 +129,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
       try {
         auto guessed_feed = guessFeed(data, res);
 
-        feeds.insert(my_url, guessed_feed.first);
+        feeds.insert(my_url, guessed_feed.m_feed);
 
         if (!greedy) {
           break;
@@ -153,8 +153,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
   return feeds.values();
 }
 
-QPair<StandardFeed*, QList<IconLocation>> SitemapParser::guessFeed(const QByteArray& content,
-                                                                   const NetworkResult& network_res) const {
+GuessedFeedWithIcons SitemapParser::guessFeed(const QByteArray& content, const NetworkResult& network_res) const {
   QByteArray uncompressed_content;
 
   if (isGzip(content)) {

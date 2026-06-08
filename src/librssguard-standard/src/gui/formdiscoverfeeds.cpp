@@ -168,7 +168,7 @@ QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser
 
   if (NetworkFactory::downloadIcon({{url, false}}, timeout, icon, {}, m_serviceRoot->networkProxy()) ==
       QNetworkReply::NetworkError::NoError) {
-    for (Feed* feed : feeds) {
+    for (Feed* feed : std::as_const(feeds)) {
       feed->setIcon(icon);
     }
   }

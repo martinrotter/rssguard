@@ -410,10 +410,10 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
 
   for (const QSharedPointer<FeedParser>& parser : parsers) {
     try {
-      QPair<StandardFeed*, QList<IconLocation>> res = parser->guessFeed(feed_contents, network_result);
+      GuessedFeedWithIcons res = parser->guessFeed(feed_contents, network_result);
 
-      feed = res.first;
-      icon_possible_locations = res.second;
+      feed = res.m_feed;
+      icon_possible_locations = res.m_icons;
       break;
     }
     catch (const FeedRecognizedButFailedException& format_ex) {

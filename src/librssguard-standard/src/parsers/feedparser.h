@@ -19,6 +19,11 @@ struct FeedComment {
     QString m_contents;
 };
 
+struct GuessedFeedWithIcons {
+    StandardFeed* m_feed = nullptr;
+    QList<IconLocation> m_icons;
+};
+
 // Base class for all XML-based feed parsers.
 class FeedParser {
   public:
@@ -36,9 +41,8 @@ class FeedParser {
     virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const;
 
     // Guesses feed.
-    virtual QPair<StandardFeed*, QList<IconLocation>> guessFeed(const QByteArray& content,
-                                                                const NetworkResult& network_res =
-                                                                  NetworkResult()) const;
+    virtual GuessedFeedWithIcons guessFeed(const QByteArray& content,
+                                           const NetworkResult& network_res = NetworkResult()) const;
 
     // Returns list of all messages from the feed.
     virtual QList<Message> messages();

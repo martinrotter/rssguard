@@ -55,7 +55,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       // 1.
       auto guessed_feed = guessFeed(data, res);
 
-      return {guessed_feed.first};
+      return {guessed_feed.m_feed};
     }
     catch (...) {
       qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
@@ -98,7 +98,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
         try {
           auto guessed_feed = guessFeed(data, res);
 
-          feeds.append(guessed_feed.first);
+          feeds.append(guessed_feed.m_feed);
         }
         catch (const ApplicationException& ex) {
           qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(feed_link)
@@ -117,8 +117,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   return feeds;
 }
 
-QPair<StandardFeed*, QList<IconLocation>> JsonParser::guessFeed(const QByteArray& content,
-                                                                const NetworkResult& network_res) const {
+GuessedFeedWithIcons JsonParser::guessFeed(const QByteArray& content, const NetworkResult& network_res) const {
   if (network_res.m_contentType.contains(QSL("json"), Qt::CaseSensitivity::CaseInsensitive) ||
       content.simplified().startsWith('{')) {
     QJsonParseError json_err;
@@ -158,7 +157,7 @@ QPair<StandardFeed*, QList<IconLocation>> JsonParser::guessFeed(const QByteArray
       icon_possible_locations.append({icon, true});
     }
 
-    return QPair<StandardFeed*, QList<IconLocation>>(feed, icon_possible_locations);
+    return {feed, icon_possible_locations};
   }
   else {
     throw ApplicationException(QObject::tr("not a JSON feed"));

@@ -58,10 +58,10 @@ QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       try {
         auto guessed_feed = guessFeed(IOFactory::readFile(file_path));
 
-        guessed_feed.first->setSourceType(StandardFeed::SourceType::LocalFile);
-        guessed_feed.first->setSource(file_path);
+        guessed_feed.m_feed->setSourceType(StandardFeed::SourceType::LocalFile);
+        guessed_feed.m_feed->setSource(file_path);
 
-        return {guessed_feed.first};
+        return {guessed_feed.m_feed};
       }
       catch (const ApplicationException& ex) {
         qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(file_path)
@@ -73,8 +73,7 @@ QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   return {};
 }
 
-QPair<StandardFeed*, QList<IconLocation>> FeedParser::guessFeed(const QByteArray& content,
-                                                                const NetworkResult& network_res) const {
+GuessedFeedWithIcons FeedParser::guessFeed(const QByteArray& content, const NetworkResult& network_res) const {
   return {};
 }
 
