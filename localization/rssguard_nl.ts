@@ -9122,15 +9122,15 @@ HTTP/2: %6
 Ignore cookies: %7
 Report empty feed as broken: %8
 Fetch full articles: %9 (plain text only: %10)</source>
-      <translation type="unfinished">Encoding: %1
+      <translation>Codering: %1
 Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
+Achteraf-toepassen script: %3
+Ruwe XML opslaan: %4
+Artikel commentaar ophalen: %5
 HTTP/2: %6
-Ignore cookies: %7
-Report empty feed as broken: %8
-Fetch full articles: %9 (plain text only: %10)</translation>
+Cookies negeren: %7
+Meld lege feed als defect: %8
+Fetch volledige artikelen: %9 (platte tekst: %10)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="493"/>
@@ -9400,7 +9400,7 @@ Je kunt ook gegenereerde feedgegevens nabewerken met nog een ander script als je
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="108"/>
       <source>Report feed as broken when it contains no articles</source>
-      <translation type="unfinished">Report feed as broken when it contains no articles</translation>
+      <translation>Rapporteer-feed als defect wanneer het geen artikelen bevat</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="125"/>
@@ -9429,7 +9429,7 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="40"/>
       <source>When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</source>
-      <translation type="unfinished">When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</translation>
+      <translation>Als ingeschakeld, wordt een succesvol gedownloade en ontlede feed die geen artikelen bevat als defect aangemerkt. Lege feeds zijn geldig, dus houd dit uitgeschakeld voor feeds waar geen artikelen worden verwacht.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="46"/>
@@ -9462,7 +9462,7 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="56"/>
       <source>Ignore cookies when downloading this feed</source>
-      <translation type="unfinished">Ignore cookies when downloading this feed</translation>
+      <translation>Cookies negeren bij het downloaden van deze feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="65"/>
@@ -9472,7 +9472,7 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="89"/>
       <source>Extra domains</source>
-      <translation type="unfinished">Extra domains</translation>
+      <translation>Extra domeinnamen</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="113"/>
@@ -9494,9 +9494,9 @@ Deze instelling is handig wanneer onbewerkte XML-parsing van de feed erg traag i
       <source>Resources (images, CSS, etc.) server from these domains will also be downloaded via proxy, if the proxy is set. Enter each domain on separate line.
 
 This feature only works on &quot;web&quot; version of the app, because on &quot;text&quot; version is not needed, as the proxy resolution there is fully automatic.</source>
-      <translation type="unfinished">Resources (images, CSS, etc.) server from these domains will also be downloaded via proxy, if the proxy is set. Enter each domain on separate line.
+      <translation>Bronnen (afbeeldingen, CSS, etc.) server van deze domeinen worden ook gedownload via proxy, als de proxy is ingesteld. Voer elk domein op afzonderlijke regel in.
 
-This feature only works on &quot;web&quot; version of the app, because on &quot;text&quot; version is not needed, as the proxy resolution there is fully automatic.</translation>
+Deze functie werkt alleen op &quot;web&quot; versie van de app, omdat op &quot;tekst&quot; versie niet nodig is, omdat de proxyresolutie er volledig automatisch is.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="43"/>
@@ -10264,7 +10264,7 @@ Laatste login: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="77"/>
       <source>Proxy &apos;%1&apos; authentication</source>
-      <translation type="unfinished">Proxy &apos;%1&apos; authentication</translation>
+      <translation>Proxy &apos;%1&apos; authenticatie</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="91"/>
@@ -10565,12 +10565,12 @@ Laatste login: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="735"/>
       <source>Navigate to website(s) manually</source>
-      <translation type="unfinished">Navigate to website(s) manually</translation>
+      <translation>Navigeer handmatig naar de website(s)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="736"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</source>
-      <translation type="unfinished">%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</translation>
+      <translation>%1 kon uw webbrowser niet starten met de opgegeven URL, u moet de onderstaande website-URL handmatig in uw webbrowser openen.</translation>
     </message>
   </context>
   <context>
