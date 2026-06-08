@@ -104,6 +104,7 @@
     <file>./graphics/Breeze/icons/player-volume.svg</file>
     <file>./graphics/Breeze/icons/player-volume-muted.svg</file>
     <file>./graphics/Breeze/icons/playlist-sort.svg</file>
+    <file>./graphics/Breeze/icons/preferences-web-browser-cookies.svg</file>
     <file>./graphics/Breeze/icons/printer.svg</file>
     <file>./graphics/Breeze/icons/process-stop.svg</file>
     <file>./graphics/Breeze/icons/redeyes.svg</file>
@@ -234,6 +235,7 @@
     <file>./graphics/Breeze Dark/icons/player-volume.svg</file>
     <file>./graphics/Breeze Dark/icons/player-volume-muted.svg</file>
     <file>./graphics/Breeze Dark/icons/playlist-sort.svg</file>
+    <file>./graphics/Breeze Dark/icons/preferences-web-browser-cookies.svg</file>
     <file>./graphics/Breeze Dark/icons/printer.svg</file>
     <file>./graphics/Breeze Dark/icons/process-stop.svg</file>
     <file>./graphics/Breeze Dark/icons/redeyes.svg</file>
