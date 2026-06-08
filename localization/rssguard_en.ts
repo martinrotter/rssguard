@@ -3653,35 +3653,41 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
 <context>
     <name>FormSettings</name>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="110"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="259"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="261"/>
         <source>Critical settings were changed</source>
         <translation>Critical settings were changed</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="114"/>
-        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="141"/>
-        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="141"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="263"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="290"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="265"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="292"/>
         <source>Changed categories of settings:
 %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="138"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="287"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="289"/>
         <source>Some settings are changed and will be lost</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="139"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="288"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="290"/>
         <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="140"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="289"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="291"/>
         <source>Do you really want to close this dialog without saving any settings?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="111"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="260"/>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="262"/>
         <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
@@ -3689,8 +3695,14 @@ You have to restart manually.</source>
     </message>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="14"/>
-        <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formsettings.h" line="76"/>
+        <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formsettings.h" line="85"/>
         <source>Settings</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="20"/>
+        <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formsettings.h" line="86"/>
+        <source>Search settings...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

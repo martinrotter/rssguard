@@ -103,19 +103,19 @@ QString ExternalTool::name() const {
   return m_name;
 }
 
-bool ExternalTool::run(const QString& target) {
+bool ExternalTool::run(const QString& link) {
   if (parameters().isEmpty()) {
-    return IOFactory::startProcessDetached(executable(), {target});
+    return IOFactory::startProcessDetached(executable(), {link});
   }
   else {
     auto pars = parameters();
 
     if (pars.contains(QSL("%1"))) {
       // We replace existing target placeholder.
-      pars = pars.replace(QSL("%1"), target);
+      pars = pars.replace(QSL("%1"), link);
     }
     else {
-      pars += QSL(" '%1'").arg(target);
+      pars += QSL(" '%1'").arg(link);
     }
 
     auto params = TextFactory::tokenizeProcessArguments(pars);

@@ -19,7 +19,7 @@ class ExternalTool {
     QString name() const;
     QStringList domains() const;
 
-    bool run(const QString& target);
+    bool run(const QString& link);
 
     QByteArray toString();
 
