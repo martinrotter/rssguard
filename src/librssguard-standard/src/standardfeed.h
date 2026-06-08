@@ -89,6 +89,43 @@ class StandardFeed : public Feed {
     bool ignoreCookies() const;
     void setIgnoreCookies(bool ignore_cookies);
 
+    QString lastEtag() const;
+    void setLastEtag(const QString& etag);
+
+    QString dateTimeFormat() const;
+    void setDateTimeFormat(const QString& dt_format);
+
+    bool dontUseRawXmlSaving() const;
+    void setDontUseRawXmlSaving(bool no_raw_xml_saving);
+
+    // NOTE: Contains hash table where key is name of HTTP header.
+    QVariantHash httpHeaders() const;
+    void setHttpHeaders(const QVariantHash& http_headers);
+
+    bool fetchCommentsEnabled() const;
+    void setFetchCommentsEnabled(bool enabled);
+
+    bool reportAsBrokenIfEmpty() const;
+    void setReportAsBrokenIfEmpty(bool report);
+
+    int updateTimeout() const;
+    void setUpdateTimeout(int timeout);
+
+    bool useAccountProxy() const;
+    void setUseAccountProxy(bool use);
+
+    QNetworkProxy networkProxy() const;
+    void setNetworkProxy(const QNetworkProxy& new_proxy);
+
+    bool fetchFullArticles() const;
+    void setFetchFullArticles(bool fetch_full_articles);
+
+    bool fetchFullArticlesInPlainText() const;
+    void setFetchFullArticlesInPlainText(bool fetch_full_articles_in_plain_text);
+
+    ArticleDateTimeBehavior publishedInsteadOfUpdatedTime() const;
+    void setPublishedInsteadOfUpdatedTime(ArticleDateTimeBehavior published);
+
     // Tries to guess feed hidden under given URL
     // and uses given credentials.
     // Returns pointer to guessed feed (if at least partially
@@ -113,7 +150,7 @@ class StandardFeed : public Feed {
     static QString typeToString(Type type);
     static QString sourceTypeToString(SourceType type);
 
-    // Scraping + post+processing.
+    // Scraping + post-processing.
     static QStringList prepareExecutionLine(const QString& execution_line);
     static QByteArray generateFeedFileWithScript(const QString& execution_line, int run_timeout);
     static QByteArray postProcessFeedFileWithScript(const QString& execution_line,
@@ -128,40 +165,6 @@ class StandardFeed : public Feed {
     static QString idealHttpAcceptForFeedType(Type type);
 
     static QList<QPair<QByteArray, QByteArray>> httpHeadersToList(const QVariantHash& headers);
-
-    QString lastEtag() const;
-    void setLastEtag(const QString& etag);
-
-    QString dateTimeFormat() const;
-    void setDateTimeFormat(const QString& dt_format);
-
-    bool dontUseRawXmlSaving() const;
-    void setDontUseRawXmlSaving(bool no_raw_xml_saving);
-
-    // NOTE: Contains hash table where key is name of HTTP header.
-    QVariantHash httpHeaders() const;
-    void setHttpHeaders(const QVariantHash& http_headers);
-
-    bool fetchCommentsEnabled() const;
-    void setFetchCommentsEnabled(bool enabled);
-
-    bool reportAsBrokenIfEmpty() const;
-    void setReportAsBrokenIfEmpty(bool report);
-
-    bool useAccountProxy() const;
-    void setUseAccountProxy(bool use);
-
-    QNetworkProxy networkProxy() const;
-    void setNetworkProxy(const QNetworkProxy& new_proxy);
-
-    bool fetchFullArticles() const;
-    void setFetchFullArticles(bool fetch_full_articles);
-
-    bool fetchFullArticlesInPlainText() const;
-    void setFetchFullArticlesInPlainText(bool fetch_full_articles_in_plain_text);
-
-    ArticleDateTimeBehavior publishedInsteadOfUpdatedTime() const;
-    void setPublishedInsteadOfUpdatedTime(ArticleDateTimeBehavior published);
 
   public slots:
     void fetchMetadataForItself();
@@ -188,6 +191,7 @@ class StandardFeed : public Feed {
     bool m_ignoreCookies;
     bool m_fetchCommentsEnabled;
     bool m_reportAsBrokenIfEmpty;
+    int m_updateTimeout;
 
     QNetworkProxy m_proxy;
 

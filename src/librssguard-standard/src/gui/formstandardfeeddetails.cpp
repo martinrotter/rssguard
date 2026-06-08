@@ -172,6 +172,10 @@ void FormStandardFeedDetails::apply() {
       std_feed->setHttp2Status(m_networkDetails->http2Status());
     }
 
+    if (isChangeAllowed(m_networkDetails->m_ui.m_mcbUpdateTimeout)) {
+      std_feed->setUpdateTimeout(m_networkDetails->m_ui.m_spinUpdateTimeout->value());
+    }
+
     if (isChangeAllowed(m_networkDetails->m_ui.m_mcbIgnoreCookies)) {
       std_feed->setIgnoreCookies(m_networkDetails->m_ui.m_cbIgnoreCookies->isChecked());
     }
@@ -257,6 +261,8 @@ void FormStandardFeedDetails::loadFeedData() {
       ->addActionWidget(m_networkDetails->m_ui.m_wdgAuthentication->findChild<QGroupBox*>(QSL("m_gbAuthentication")));
 
     m_networkDetails->m_ui.m_mcbHttpHeaders->addActionWidget(m_networkDetails->m_ui.m_txtHttpHeaders);
+    m_networkDetails->m_ui.m_mcbUpdateTimeout->addActionWidget(m_networkDetails->m_ui.m_lblUpdateTimeout);
+    m_networkDetails->m_ui.m_mcbUpdateTimeout->addActionWidget(m_networkDetails->m_ui.m_spinUpdateTimeout);
     m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_lblEnableHttp2);
     m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_cmbEnableHttp2);
     m_networkDetails->m_ui.m_mcbIgnoreCookies->addActionWidget(m_networkDetails->m_ui.m_cbIgnoreCookies);
@@ -304,6 +310,7 @@ void FormStandardFeedDetails::loadFeedData() {
       ->setChecked(std_feed->fetchFullArticlesInPlainText());
 
     m_networkDetails->setHttp2Status(std_feed->http2Status());
+    m_networkDetails->m_ui.m_spinUpdateTimeout->setValue(std_feed->updateTimeout());
     m_networkDetails->m_ui.m_cbIgnoreCookies->setChecked(std_feed->ignoreCookies());
   }
 }

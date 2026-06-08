@@ -14,6 +14,7 @@ Added:
 * Custom skin colors can now override the feed list article count color separately from feed titles, including a separate highlighted color. (#2275)
 * Settings dialog can now search across available settings and highlight matching controls. (#1754)
 * Standard RSS/ATOM feeds can now optionally be reported as broken when they are valid but contain no articles. (#2039)
+* Standard RSS/ATOM feeds can now override the application-wide feed connection timeout per feed. (#1023)
 * Support for more benevolent parsing of Gemlog entries (#2295).
 
 Fixed:

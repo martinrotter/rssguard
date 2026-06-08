@@ -276,7 +276,12 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   StandardFeed* f = static_cast<StandardFeed*>(feed);
   QString host = QUrl(f->source()).host();
   QByteArray feed_contents;
-  int download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  int download_timeout = f->updateTimeout();
+
+  if (download_timeout <= 0) {
+    download_timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  }
+
   QList<QPair<QByteArray, QByteArray>> headers = {
     {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(f->type()).toLocal8Bit()}};
 
