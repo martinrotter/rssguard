@@ -13,6 +13,8 @@
     <color key="FgError">#eb7467</color>
     <color key="FgSelectedError">#c0392b</color>
     <color key="FgDisabledFeed">#7f8c8d</color>
+    <color key="FgArticleCounts">#9ca3aa</color>
+    <color key="FgSelectedArticleCounts">#ffffff</color>
     <color key="Allright">#4db87a</color>
   </palette>
 

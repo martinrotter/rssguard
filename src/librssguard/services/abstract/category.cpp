@@ -18,11 +18,25 @@ Category::Category(const Category& other) : RootItem(other) {
 QVariant Category::data(int column, int role) const {
   switch (role) {
     case Qt::ItemDataRole::BackgroundRole: {
-      return qApp->skins()->colorForModel(SkinEnums::PaletteColors::BgFolder);
+      auto clr = qApp->skins()->colorForModel(SkinEnums::PaletteColors::BgFolder).value<QColor>();
+
+      if (clr.isValid()) {
+        return clr;
+      }
+      else {
+        return RootItem::data(column, role);
+      }
     }
 
     case HIGHLIGHTED_BACKGROUND_ROLE: {
-      return qApp->skins()->colorForModel(SkinEnums::PaletteColors::BgSelectedFolder);
+      auto clr = qApp->skins()->colorForModel(SkinEnums::PaletteColors::BgSelectedFolder).value<QColor>();
+
+      if (clr.isValid()) {
+        return clr;
+      }
+      else {
+        return RootItem::data(column, role);
+      }
     }
 
     default:

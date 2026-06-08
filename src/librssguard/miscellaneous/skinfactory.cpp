@@ -608,11 +608,13 @@ QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool use_skin_colors
     bool enabled = qApp->settings()->value(GROUP(CustomSkinColors), SETTING(CustomSkinColors::Enabled)).toBool();
 
     if (enabled) {
-      QColor custom_clr = qApp->settings()->value(GROUP(CustomSkinColors), enumToString(type)).toString();
+      QString clr_identifier = qApp->settings()->value(GROUP(CustomSkinColors), enumToString(type)).toString();
 
-      if (custom_clr.isValid()) {
-        return custom_clr;
+      if (clr_identifier.isEmpty()) {
+        return QColor();
       }
+
+      return QColor(clr_identifier);
     }
   }
 
@@ -649,7 +651,13 @@ QString SkinEnums::palleteColorText(PaletteColors col) {
       return QObject::tr("folders background");
 
     case SkinEnums::PaletteColors::BgSelectedFolder:
-      return QObject::tr("folders background (highlighted");
+      return QObject::tr("folders background (highlighted)");
+
+    case SkinEnums::PaletteColors::FgArticleCounts:
+      return QObject::tr("article counts");
+
+    case SkinEnums::PaletteColors::FgSelectedArticleCounts:
+      return QObject::tr("article counts (highlighted)");
 
     default:
       return {};

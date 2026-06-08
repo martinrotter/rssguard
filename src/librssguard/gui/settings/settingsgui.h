@@ -23,6 +23,7 @@ class SettingsGui : public SettingsPanel {
   private slots:
     void updateSkinOptions();
     void resetCustomSkinColor();
+    void clearCustomSkinColor();
 
   private:
     void changeFont(QLabel& lbl);

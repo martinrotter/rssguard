@@ -300,12 +300,16 @@ void SettingsGui::loadSettings() {
   auto palette_enums = enumToStrings<SkinEnums::PaletteColors>();
   int row = 0;
 
-  for (const auto& palette_enum : palette_enums) {
+  for (const auto& palette_enum : std::as_const(palette_enums)) {
     auto* clr_btn = new ColorIconToolButton(this);
     auto* rst_btn = new PlainToolButton(this);
+    auto* clear_btn = new PlainToolButton(this);
 
     rst_btn->setToolTip(tr("Fetch color from activated skin"));
     rst_btn->setIcon(qApp->icons()->fromTheme(QSL("edit-reset")));
+
+    clear_btn->setToolTip(tr("Clear color"));
+    clear_btn->setIcon(qApp->icons()->fromTheme(QSL("edit-clear")));
 
     QColor clr = settings()->value(GROUP(CustomSkinColors), palette_enum.second).toString();
 
@@ -314,8 +318,10 @@ void SettingsGui::loadSettings() {
     }
 
     rst_btn->setObjectName(QString::number(int(palette_enum.first)));
+    clear_btn->setObjectName(QString::number(int(palette_enum.first)));
 
     connect(rst_btn, &PlainToolButton::clicked, this, &SettingsGui::resetCustomSkinColor);
+    connect(clear_btn, &PlainToolButton::clicked, this, &SettingsGui::clearCustomSkinColor);
     connect(clr_btn, &ColorIconToolButton::colorChanged, this, &SettingsGui::dirtifySettings);
 
     clr_btn->setObjectName(QString::number(int(palette_enum.first)));
@@ -325,6 +331,7 @@ void SettingsGui::loadSettings() {
 
     lay->addWidget(clr_btn);
     lay->addWidget(rst_btn);
+    lay->addWidget(clear_btn);
 
     m_ui->m_layoutCustomColors
       ->setWidget(row,
@@ -346,6 +353,12 @@ void SettingsGui::resetCustomSkinColor() {
   clr_btn->setColor(qApp->skins()->colorForModel(pal, true).value<QColor>());
 }
 
+void SettingsGui::clearCustomSkinColor() {
+  auto* clr_btn = m_ui->m_gbCustomSkinColors->findChild<ColorIconToolButton*>(sender()->objectName());
+
+  clr_btn->setColor(QColor());
+}
+
 void SettingsGui::saveSettings() {
   onBeginSaveSettings();
 
@@ -358,7 +371,7 @@ void SettingsGui::saveSettings() {
 
   auto children = m_ui->m_gbCustomSkinColors->findChildren<ColorIconToolButton*>();
 
-  for (const ColorIconToolButton* clr : children) {
+  for (const ColorIconToolButton* clr : std::as_const(children)) {
     auto pal = SkinEnums::PaletteColors(clr->objectName().toInt());
 
     settings()->setValue(GROUP(CustomSkinColors),

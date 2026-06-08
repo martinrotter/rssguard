@@ -50,7 +50,13 @@ class SkinEnums : public QObject {
       BgFolder = 9,
 
       // Background of folder items when selected.
-      BgSelectedFolder = 10
+      BgSelectedFolder = 10,
+
+      // Foreground color of article counts in feed list.
+      FgArticleCounts = 11,
+
+      // Foreground color of article counts in feed list when selected.
+      FgSelectedArticleCounts = 12
     };
 
     static QString palleteColorText(PaletteColors col);

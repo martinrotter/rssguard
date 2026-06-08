@@ -9,6 +9,7 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/skinfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/recyclebin.h"
@@ -595,6 +596,21 @@ QVariant FeedsModel::data(const QModelIndex& index, int role) const {
       else {
         return QVariant();
       }
+
+    case Qt::ItemDataRole::ForegroundRole:
+    case HIGHLIGHTED_FOREGROUND_ROLE:
+      if (index.column() == FDS_MODEL_COUNTS_INDEX) {
+        auto article_counts_color =
+          qApp->skins()->colorForModel(role == HIGHLIGHTED_FOREGROUND_ROLE
+                                         ? SkinEnums::PaletteColors::FgSelectedArticleCounts
+                                         : SkinEnums::PaletteColors::FgArticleCounts);
+
+        if (article_counts_color.value<QColor>().isValid()) {
+          return article_counts_color;
+        }
+      }
+
+      return itemForIndex(index)->data(index.column(), role);
 
     case Qt::ItemDataRole::ToolTipRole:
       // NOTE: Fall-down to "default" if condition not met.
