@@ -16,14 +16,15 @@
 
 Downloader::Downloader(QObject* parent, NetworkFactory::CookiePolicy cookie_policy)
   : QObject(parent), m_geminiClient(new GeminiClient(this)), m_geminiParser(GeminiParser()), m_activeReply(nullptr),
-    m_downloadManager(new SilentNetworkAccessManager(this)), m_timer(new QTimer(this)), m_inputData(QByteArray()),
-    m_inputMultipartData(nullptr), m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
+    m_downloadManager(new SilentNetworkAccessManager(this)), m_geminiTimer(new QTimer(this)),
+    m_geminiTimeout(DOWNLOAD_TIMEOUT), m_inputData(QByteArray()), m_inputMultipartData(nullptr),
+    m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
     m_ignoreCookies(cookie_policy == NetworkFactory::CookiePolicy::IgnoreCookies), m_lastOutputData({}),
     m_lastOutputError(QNetworkReply::NetworkError::NoError), m_lastHttpStatusCode(0), m_lastHeaders({}) {
-  m_timer->setInterval(DOWNLOAD_TIMEOUT);
-  m_timer->setSingleShot(true);
+  m_geminiTimer->setInterval(DOWNLOAD_TIMEOUT);
+  m_geminiTimer->setSingleShot(true);
 
-  connect(m_timer, &QTimer::timeout, this, &Downloader::cancel);
+  connect(m_geminiTimer, &QTimer::timeout, this, &Downloader::cancelGemini);
 
   connect(m_geminiClient, &GeminiClient::redirected, this, &Downloader::geminiRedirect);
   connect(m_geminiClient, &GeminiClient::requestComplete, this, &Downloader::geminiFinished);
@@ -43,7 +44,7 @@ Downloader::~Downloader() {
 }
 
 void Downloader::geminiFinished(const QByteArray& data, const QString& mime) {
-  m_timer->stop();
+  m_geminiTimer->stop();
   m_activeReply = nullptr;
 
   m_lastContentType = mime;
@@ -65,7 +66,7 @@ void Downloader::geminiFinished(const QByteArray& data, const QString& mime) {
 }
 
 void Downloader::geminiError(GeminiClient::NetworkError error, const QString& reason) {
-  m_timer->stop();
+  m_geminiTimer->stop();
   m_activeReply = nullptr;
 
   m_lastContentType = QString();
@@ -130,15 +131,20 @@ void Downloader::manipulateData(const QString& url,
 }
 
 void Downloader::geminiRedirect(const QUrl& uri, bool is_permanent) {
-  m_timer->stop();
+  m_geminiTimer->stop();
 
   QUrl new_url = m_geminiClient->targetUrl().resolved(uri);
 
-  runGeminiRequest(new_url);
+  runGeminiRequest(new_url, m_geminiTimeout);
 }
 
-void Downloader::runGeminiRequest(const QUrl& url) {
-  m_timer->start();
+void Downloader::runGeminiRequest(const QUrl& url, int timeout) {
+  m_geminiTimeout = timeout;
+
+  if (m_geminiTimeout > 0) {
+    m_geminiTimer->start(m_geminiTimeout);
+  }
+
   m_geminiClient->startRequest(url, GeminiClient::RequestOptions::IgnoreTlsErrors);
 }
 
@@ -155,7 +161,7 @@ void Downloader::manipulateData(const QString& url,
   if (m_geminiClient->supportsUrl(sanitized_url)) {
     QUrl gemini_url = QUrl::fromUserInput(sanitized_url);
 
-    runGeminiRequest(gemini_url);
+    runGeminiRequest(gemini_url, timeout);
   }
   else {
     QNetworkRequest request;
@@ -170,8 +176,7 @@ void Downloader::manipulateData(const QString& url,
     m_inputMultipartData = multipart_data;
 
     // Set url for this request and fire it up.
-    m_timer->setInterval(timeout);
-
+    request.setTransferTimeout(timeout);
     request.setUrl(qApp->web()->processFeedUriScheme(sanitized_url));
 
     m_targetProtected = protected_contents;
@@ -210,8 +215,6 @@ void Downloader::finished() {
   auto* reply = qobject_cast<QNetworkReply*>(sender());
 
   QNetworkAccessManager::Operation reply_operation = reply->operation();
-
-  m_timer->stop();
 
   QUrl original_url = reply->property("original_url").toUrl();
 
@@ -327,10 +330,17 @@ void Downloader::finished() {
 
 void Downloader::cancel() {
   if (m_activeReply != nullptr) {
-    // Download action timed-out, too slow connection or target is not reachable.
     m_activeReply->abort();
   }
   else {
+    cancelGemini();
+  }
+}
+
+void Downloader::cancelGemini() {
+  if (m_activeReply == nullptr) {
+    m_geminiTimer->stop();
+
     if (m_geminiClient->cancelRequest()) {
       emit completed(m_geminiClient->targetUrl(), QNetworkReply::NetworkError::TimeoutError, 408);
     }
@@ -338,10 +348,6 @@ void Downloader::cancel() {
 }
 
 void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {
-  if (m_timer->interval() > 0) {
-    m_timer->start();
-  }
-
   emit progress(bytes_received, bytes_total);
 }
 
@@ -399,7 +405,6 @@ QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
 }
 
 void Downloader::runDeleteRequest(const QNetworkRequest& request) {
-  m_timer->start();
   m_activeReply = m_downloadManager->deleteResource(request);
   setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
@@ -407,7 +412,6 @@ void Downloader::runDeleteRequest(const QNetworkRequest& request) {
 }
 
 void Downloader::runPutRequest(const QNetworkRequest& request, const QByteArray& data) {
-  m_timer->start();
   m_activeReply = m_downloadManager->put(request, data);
   setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
@@ -415,7 +419,6 @@ void Downloader::runPutRequest(const QNetworkRequest& request, const QByteArray&
 }
 
 void Downloader::runPostRequest(const QNetworkRequest& request, QHttpMultiPart* multipart_data) {
-  m_timer->start();
   m_activeReply = m_downloadManager->post(request, multipart_data);
   setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
@@ -423,7 +426,6 @@ void Downloader::runPostRequest(const QNetworkRequest& request, QHttpMultiPart* 
 }
 
 void Downloader::runPostRequest(const QNetworkRequest& request, const QByteArray& data) {
-  m_timer->start();
   m_activeReply = m_downloadManager->post(request, data);
   setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
@@ -431,7 +433,6 @@ void Downloader::runPostRequest(const QNetworkRequest& request, const QByteArray
 }
 
 void Downloader::runGetRequest(const QNetworkRequest& request) {
-  m_timer->start();
   m_activeReply = m_downloadManager->get(request);
   setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);

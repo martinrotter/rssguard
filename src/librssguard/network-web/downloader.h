@@ -84,6 +84,8 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
     void completed(const QUrl& url, QNetworkReply::NetworkError status, int http_code, QByteArray contents = {});
 
   private slots:
+    void cancelGemini();
+
     void geminiRedirect(const QUrl& uri, bool is_permanent);
     void geminiFinished(const QByteArray& data, const QString& mime);
     void geminiError(GeminiClient::NetworkError error, const QString& reason);
@@ -110,14 +112,15 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
     void runPostRequest(const QNetworkRequest& request, QHttpMultiPart* multipart_data);
     void runPostRequest(const QNetworkRequest& request, const QByteArray& data);
     void runGetRequest(const QNetworkRequest& request);
-    void runGeminiRequest(const QUrl& url);
+    void runGeminiRequest(const QUrl& url, int timeout);
 
   private:
     GeminiClient* m_geminiClient;
     GeminiParser m_geminiParser;
     QNetworkReply* m_activeReply;
     QScopedPointer<SilentNetworkAccessManager> m_downloadManager;
-    QTimer* m_timer;
+    QTimer* m_geminiTimer;
+    int m_geminiTimeout;
     QHash<QByteArray, QByteArray> m_customHeaders;
     QByteArray m_inputData;
     QHttpMultiPart* m_inputMultipartData;
