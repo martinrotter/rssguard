@@ -473,7 +473,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   delete parser;
 
   if (messages.isEmpty() && f->reportAsBrokenIfEmpty()) {
-    throw FeedFetchException(Feed::Status::ContainsNoArticles);
+    throw FeedFetchException(Feed::Status::ContainsNoArticles, tr("feed is working, but is empty"));
   }
 
   if (f->fetchFullArticles()) {
