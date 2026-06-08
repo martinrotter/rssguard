@@ -36,6 +36,12 @@ StandardFeedExpDetails::StandardFeedExpDetails(QWidget* parent) : QWidget(parent
                                            "fetching can be much much slower with this option enabled."),
                                         true);
 
+  m_ui.m_helpReportAsBrokenIfEmpty
+    ->setHelpText(tr("When enabled, a successfully downloaded and parsed feed which contains no articles will be "
+                     "reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no "
+                     "articles is expected."),
+                  false);
+
   m_ui.m_helpArticleDatePreference
     ->setHelpText(tr("This decides whether 'Published' or 'Updated' timestamp is used when deciding the date and time "
                      "of each article."),

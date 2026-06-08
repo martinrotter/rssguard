@@ -145,6 +145,9 @@ class StandardFeed : public Feed {
     bool fetchCommentsEnabled() const;
     void setFetchCommentsEnabled(bool enabled);
 
+    bool reportAsBrokenIfEmpty() const;
+    void setReportAsBrokenIfEmpty(bool report);
+
     bool useAccountProxy() const;
     void setUseAccountProxy(bool use);
 
@@ -184,6 +187,7 @@ class StandardFeed : public Feed {
     NetworkFactory::Http2Status m_http2Status;
     bool m_ignoreCookies;
     bool m_fetchCommentsEnabled;
+    bool m_reportAsBrokenIfEmpty;
 
     QNetworkProxy m_proxy;
 

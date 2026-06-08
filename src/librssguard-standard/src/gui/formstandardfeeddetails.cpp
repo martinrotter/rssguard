@@ -180,6 +180,10 @@ void FormStandardFeedDetails::apply() {
       std_feed->setFetchCommentsEnabled(m_standardFeedExpDetails->m_ui.m_cbFetchComments->isChecked());
     }
 
+    if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbReportAsBrokenIfEmpty)) {
+      std_feed->setReportAsBrokenIfEmpty(m_standardFeedExpDetails->m_ui.m_cbReportAsBrokenIfEmpty->isChecked());
+    }
+
     if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbFetchFullArticles)) {
       std_feed->setFetchFullArticles(m_standardFeedExpDetails->m_ui.m_cbFetchFullArticles->isChecked());
       std_feed->setFetchFullArticlesInPlainText(m_standardFeedExpDetails->m_ui.m_cbFetchFullArticlesPlainTextOnly
@@ -239,6 +243,8 @@ void FormStandardFeedDetails::loadFeedData() {
       ->addActionWidget(m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml);
     m_standardFeedExpDetails->m_ui.m_mcbFetchComments
       ->addActionWidget(m_standardFeedExpDetails->m_ui.m_cbFetchComments);
+    m_standardFeedExpDetails->m_ui.m_mcbReportAsBrokenIfEmpty
+      ->addActionWidget(m_standardFeedExpDetails->m_ui.m_cbReportAsBrokenIfEmpty);
 
     m_standardFeedExpDetails->m_ui.m_mcbFetchFullArticles
       ->addActionWidget(m_standardFeedExpDetails->m_ui.m_wdgFetchFullArticles);
@@ -292,6 +298,7 @@ void FormStandardFeedDetails::loadFeedData() {
                           ->findData(int(std_feed->publishedInsteadOfUpdatedTime())));
     m_standardFeedExpDetails->m_ui.m_cbDontUseRawXml->setChecked(std_feed->dontUseRawXmlSaving());
     m_standardFeedExpDetails->m_ui.m_cbFetchComments->setChecked(std_feed->fetchCommentsEnabled());
+    m_standardFeedExpDetails->m_ui.m_cbReportAsBrokenIfEmpty->setChecked(std_feed->reportAsBrokenIfEmpty());
     m_standardFeedExpDetails->m_ui.m_cbFetchFullArticles->setChecked(std_feed->fetchFullArticles());
     m_standardFeedExpDetails->m_ui.m_cbFetchFullArticlesPlainTextOnly
       ->setChecked(std_feed->fetchFullArticlesInPlainText());

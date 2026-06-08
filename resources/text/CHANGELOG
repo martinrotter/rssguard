@@ -12,6 +12,7 @@ Added:
 * Standard RSS/ATOM feeds can now individually ignore cookies while downloading feed data.
 * Stored cookies can now be deleted from the `Tools` menu.
 * Custom skin colors can now override the feed list article count color separately from feed titles, including a separate highlighted color. (#2275)
+* Standard RSS/ATOM feeds can now optionally be reported as broken when they are valid but contain no articles. (#2039)
 * Support for more benevolent parsing of Gemlog entries (#2295).
 
 Fixed:

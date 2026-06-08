@@ -466,6 +466,16 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   qDebugNN << LOGSEC_STANDARD << "XML parsing for feed" << QUOTE_W_SPACE(f->title()) << "took"
            << NONQUOTE_W_SPACE(tmr.elapsed()) << "ms.";
 
+  if (!parser->dateTimeFormat().isEmpty()) {
+    f->setDateTimeFormat(parser->dateTimeFormat());
+  }
+
+  delete parser;
+
+  if (messages.isEmpty() && f->reportAsBrokenIfEmpty()) {
+    throw FeedFetchException(Feed::Status::ContainsNoArticles);
+  }
+
   if (f->fetchFullArticles()) {
     for (Message& msg : messages) {
       QUrl url = msg.m_url;
@@ -487,11 +497,6 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     }
   }
 
-  if (!parser->dateTimeFormat().isEmpty()) {
-    f->setDateTimeFormat(parser->dateTimeFormat());
-  }
-
-  delete parser;
   return messages;
 }
 

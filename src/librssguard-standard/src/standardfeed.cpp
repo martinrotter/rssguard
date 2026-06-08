@@ -50,6 +50,7 @@ StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_http2Status = NetworkFactory::Http2Status::DontSet;
   m_ignoreCookies = false;
   m_fetchCommentsEnabled = false;
+  m_reportAsBrokenIfEmpty = false;
   m_useAccountProxy = true;
   m_fetchFullArticles = false;
   m_fetchFullArticlesInPlainText = false;
@@ -66,6 +67,7 @@ StandardFeed::StandardFeed(const StandardFeed& other) : Feed(other) {
   m_password = other.password();
   m_dontUseRawXmlSaving = other.dontUseRawXmlSaving();
   m_fetchCommentsEnabled = other.fetchCommentsEnabled();
+  m_reportAsBrokenIfEmpty = other.reportAsBrokenIfEmpty();
   m_httpHeaders = other.httpHeaders();
   m_http2Status = other.http2Status();
   m_ignoreCookies = other.ignoreCookies();
@@ -85,7 +87,8 @@ QString StandardFeed::additionalTooltip() const {
                           "Fetch article comments: %5\n"
                           "HTTP/2: %6\n"
                           "Ignore cookies: %7\n"
-                          "Fetch full articles: %8 (plain text only: %9)")
+                          "Report empty feed as broken: %8\n"
+                          "Fetch full articles: %9 (plain text only: %10)")
                          .arg(encoding(),
                               StandardFeed::typeToString(type()),
                               m_postProcessScript.isEmpty() ? QSL("-") : m_postProcessScript,
@@ -93,6 +96,7 @@ QString StandardFeed::additionalTooltip() const {
                               fetchCommentsEnabled() ? tr("yes") : tr("no"),
                               getHttpDescription(),
                               ignoreCookies() ? tr("yes") : tr("no"),
+                              reportAsBrokenIfEmpty() ? tr("yes") : tr("no"),
                               fetchFullArticles() ? tr("yes") : tr("no"),
                               fetchFullArticlesInPlainText() ? tr("yes") : tr("no"));
 
@@ -113,6 +117,14 @@ bool StandardFeed::ignoreCookies() const {
 
 void StandardFeed::setIgnoreCookies(bool ignore_cookies) {
   m_ignoreCookies = ignore_cookies;
+}
+
+bool StandardFeed::reportAsBrokenIfEmpty() const {
+  return m_reportAsBrokenIfEmpty;
+}
+
+void StandardFeed::setReportAsBrokenIfEmpty(bool report) {
+  m_reportAsBrokenIfEmpty = report;
 }
 
 bool StandardFeed::canBeDeleted() const {
@@ -167,6 +179,7 @@ QVariantHash StandardFeed::customDatabaseData() const {
   data[QSL("http_headers")] = httpHeaders();
   data[QSL("http2_status")] = int(http2Status());
   data[QSL("ignore_cookies")] = ignoreCookies();
+  data[QSL("report_as_broken_if_empty")] = reportAsBrokenIfEmpty();
   data[QSL("use_account_proxy")] = useAccountProxy();
 
   data[QSL("fetch_full_articles")] = fetchFullArticles();
@@ -197,6 +210,7 @@ void StandardFeed::setCustomDatabaseData(const QVariantHash& data) {
   setHttpHeaders(data[QSL("http_headers")].toHash());
   setHttp2Status(NetworkFactory::Http2Status(data[QSL("http2_status")].toInt()));
   setIgnoreCookies(data[QSL("ignore_cookies")].toBool());
+  setReportAsBrokenIfEmpty(data[QSL("report_as_broken_if_empty")].toBool());
 
   setFetchFullArticles(data[QSL("fetch_full_articles")].toBool());
   setFetchFullArticlesInPlainText(data[QSL("fetch_full_articles_plain_text")].toBool());

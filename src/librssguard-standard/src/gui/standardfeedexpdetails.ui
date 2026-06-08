@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>561</width>
-    <height>229</height>
+    <height>279</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -98,6 +98,23 @@
     </layout>
    </item>
    <item row="6" column="0" colspan="2">
+    <layout class="QHBoxLayout" name="horizontalLayout_6">
+     <item>
+      <widget class="MultiFeedEditCheckBox" name="m_mcbReportAsBrokenIfEmpty"/>
+     </item>
+     <item>
+      <widget class="QCheckBox" name="m_cbReportAsBrokenIfEmpty">
+       <property name="text">
+        <string>Report feed as broken when it contains no articles</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item row="7" column="0" colspan="2">
+    <widget class="HelpSpoiler" name="m_helpReportAsBrokenIfEmpty" native="true"/>
+   </item>
+   <item row="8" column="0" colspan="2">
     <layout class="QHBoxLayout" name="horizontalLayout_3">
      <item>
       <widget class="MultiFeedEditCheckBox" name="m_mcbPublishedInsteadOfUpdated"/>
@@ -123,7 +140,7 @@
    <item row="3" column="0" colspan="2">
     <widget class="HelpSpoiler" name="m_helpFetchFullArticles" native="true"/>
    </item>
-   <item row="7" column="0" colspan="2">
+   <item row="9" column="0" colspan="2">
     <widget class="HelpSpoiler" name="m_helpArticleDatePreference" native="true"/>
    </item>
   </layout>
@@ -149,6 +166,8 @@
   <tabstop>m_cbFetchFullArticlesPlainTextOnly</tabstop>
   <tabstop>m_mcbFetchComments</tabstop>
   <tabstop>m_cbFetchComments</tabstop>
+  <tabstop>m_mcbReportAsBrokenIfEmpty</tabstop>
+  <tabstop>m_cbReportAsBrokenIfEmpty</tabstop>
   <tabstop>m_mcbPublishedInsteadOfUpdated</tabstop>
   <tabstop>m_cmbPublishedInsteadOfUpdated</tabstop>
  </tabstops>
