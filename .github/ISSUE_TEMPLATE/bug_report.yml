@@ -7,8 +7,15 @@ body:
   - type: markdown
     attributes:
       value: |
-        Dear RSS Guard contributor, ALWAYS, ALWAYS, ALWAYS attach DEBUG LOG to your bug report!!!
-        How to generate it see [here](https://rssguard.readthedocs.io/en/stable/contrib/bugs.html).
+        Dear RSS Guard contributor, almost every bug report needs the RSS Guard DEBUG LOG.
+        Please attach it unless you are absolutely sure it is not relevant.
+
+        How to create the debug log is described here:
+        https://rssguard.readthedocs.io/en/stable/contrib/bugs.html#application-debug-log
+
+        If RSS Guard crashes, closes unexpectedly, or disappears, please also provide a crash dump file.
+        How to create a crash dump on Windows with ProcDump is described here:
+        https://rssguard.readthedocs.io/en/stable/contrib/bugs.html#crash-dump-on-windows
 
         Also, only report bugs after testing RSS Guard behavior in LATEST version you can get your hands on. I can understand that maybe your Linux distribution ships RSS Guard which is one or two versions behind upstream but I will NOT fix bugs reported against years old codebase.
 
@@ -43,7 +50,13 @@ body:
   - type: textarea
     attributes:
       label: Debug log
-      description: Paste debug log contents here.
+      description: Paste the debug log contents here, or attach the log file. This is needed for almost every bug report. See https://rssguard.readthedocs.io/en/stable/contrib/bugs.html#application-debug-log.
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Crash dump
+      description: If RSS Guard crashed, attach a dump file or provide a link to it. If RSS Guard did not crash, write "RSS Guard did not crash". See https://rssguard.readthedocs.io/en/stable/contrib/bugs.html#crash-dump-on-windows.
     validations:
       required: true
   - type: textarea
