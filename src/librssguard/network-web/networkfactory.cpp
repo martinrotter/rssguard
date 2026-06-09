@@ -253,11 +253,17 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
       continue;
     }
 
+    QString working_url = url.m_url;
+
+    if (working_url.endsWith(QL1C('/'))) {
+      working_url.chop(1);
+    }
+
     QByteArray icon_data;
 
     if (url.m_isDirect) {
       // Download directly.
-      network_result = performNetworkOperation(url.m_url,
+      network_result = performNetworkOperation(working_url,
                                                timeout,
                                                {},
                                                icon_data,
@@ -283,13 +289,13 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                    Qt::TransformationMode::SmoothTransformation);
           }
 
-          break;
+          return network_result;
         }
       }
     }
     else {
       // Duck Duck Go.
-      QUrl url_full = QUrl::fromUserInput(url.m_url);
+      QUrl url_full = QUrl::fromUserInput(working_url);
       QString host = url_full.host();
 
       if (host.startsWith(QSL("www."))) {
@@ -333,7 +339,7 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                      Qt::TransformationMode::SmoothTransformation);
             }
 
-            break;
+            return network_result;
           }
         }
       }
