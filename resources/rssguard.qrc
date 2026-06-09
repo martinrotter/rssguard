@@ -32,6 +32,9 @@
     <file>graphics/rssguard_mono.png</file>
     <file>graphics/rssguard_plain_mono.png</file>
 
+    <file>graphics/rssguard_mustr.png</file>
+    <file>graphics/rssguard_plain_mustr.png</file>
+
     <file>graphics/misc/bazqux.png</file>
     <file>graphics/misc/feedly.png</file>
     <file>graphics/misc/freshrss.png</file>

@@ -33,6 +33,9 @@ class RSSGUARD_DLLSPEC IconFactory : public QObject {
     static QIcon fromByteArray(QByteArray array);
     static QByteArray toByteArray(const QIcon& icon);
 
+    static QImage recolorImage(QImage image, const QColor& color);
+    static QPixmap recolorPixmap(const QPixmap& pixmap, const QColor& color);
+
     static QPixmap fromByteArray(const QByteArray& array, const QString& format);
     static QByteArray toByteArray(const QPixmap& pixmap, const QString& format);
 

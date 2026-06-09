@@ -637,8 +637,12 @@ TrayIcon* Application::trayIcon() {
       }
     }
     else {
-      tray_icon = QPixmap(APP_ICON_PATH);
-      tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH);
+      // tray_icon = QPixmap(APP_ICON_PATH);
+      // tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH);
+
+      tray_icon = IconFactory::recolorPixmap(QPixmap(QSL(":/graphics/rssguard_mustr.png")), Qt::GlobalColor::blue);
+      tray_icon_plain =
+        IconFactory::recolorPixmap(QPixmap(QSL(":/graphics/rssguard_plain_mustr.png")), Qt::GlobalColor::blue);
     }
 
     m_trayIcon = new QtTrayIcon(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, m_mainForm);

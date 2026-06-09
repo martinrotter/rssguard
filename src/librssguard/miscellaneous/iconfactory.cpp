@@ -180,6 +180,35 @@ QByteArray IconFactory::toByteArray(const QIcon& icon) {
   return array.toBase64();
 }
 
+QImage IconFactory::recolorImage(QImage image, const QColor& color) {
+  image = image.convertToFormat(QImage::Format_ARGB32);
+
+  // This exact RGB value is the deliberate placeholder color used by colorable RSS Guard icon templates.
+  // Only pixels with RGB 255-0-0 are replaced; alpha is preserved.
+  const QRgb placeholder_color = qRgb(255, 0, 0);
+  const int red = color.red();
+  const int green = color.green();
+  const int blue = color.blue();
+
+  for (int y = 0; y < image.height(); ++y) {
+    auto* line = reinterpret_cast<QRgb*>(image.scanLine(y));
+
+    for (int x = 0; x < image.width(); ++x) {
+      const QRgb pixel = line[x];
+
+      if (qRgb(qRed(pixel), qGreen(pixel), qBlue(pixel)) == placeholder_color) {
+        line[x] = qRgba(red, green, blue, qAlpha(pixel));
+      }
+    }
+  }
+
+  return image;
+}
+
+QPixmap IconFactory::recolorPixmap(const QPixmap& pixmap, const QColor& color) {
+  return QPixmap::fromImage(recolorImage(pixmap.toImage(), color));
+}
+
 QPixmap IconFactory::fromByteArray(const QByteArray& array, const QString& format) {
   QPixmap pixmap;
   pixmap.loadFromData(array, format.toLocal8Bit().constData());
