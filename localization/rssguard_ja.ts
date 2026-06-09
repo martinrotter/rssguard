@@ -725,7 +725,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="409"/>
       <source>contains no articles</source>
-      <translation type="unfinished">contains no articles</translation>
+      <translation>記事が含まれていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="412"/>
@@ -1675,24 +1675,24 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="40"/>
       <source>operation was cancelled</source>
-      <translation type="unfinished">operation was cancelled</translation>
+      <translation>操作はキャンセルされました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="46"/>
       <source>Username should not be empty.</source>
-      <translation type="unfinished">Username should not be empty.</translation>
+      <translation>ユーザー名は空にできません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="49"/>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="58"/>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="58"/>
       <source>OK.</source>
-      <translation type="unfinished">OK.</translation>
+      <translation>OK</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="55"/>
       <source>Password should not be empty.</source>
-      <translation type="unfinished">Password should not be empty.</translation>
+      <translation>パスワードは空にできません</translation>
     </message>
   </context>
   <context>
@@ -2262,7 +2262,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="228"/>
       <source>Open articles via their URL automatically</source>
-      <translation type="unfinished">Open articles via their URL automatically</translation>
+      <translation>記事を URL から自動的に開く</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="131"/>
@@ -2922,7 +2922,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1039"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="880"/>
       <source>Delete stored &amp;cookies</source>
-      <translation type="unfinished">Delete stored &amp;cookies</translation>
+      <translation>保存された Cookie を削除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1044"/>
@@ -3223,12 +3223,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="823"/>
       <source>Cookies deleted</source>
-      <translation type="unfinished">Cookies deleted</translation>
+      <translation>Cookie が削除されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="823"/>
       <source>Stored cookies were deleted.</source>
-      <translation type="unfinished">Stored cookies were deleted.</translation>
+      <translation>保存された Cookie が削除されました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="829"/>
@@ -3713,7 +3713,7 @@ You have to restart manually.</source>
       <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formsettings.h" line="86"/>
       <source>Search settings...</source>
-      <translation type="unfinished">Search settings...</translation>
+      <translation>設定を検索…</translation>
     </message>
   </context>
   <context>
@@ -6687,17 +6687,17 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="654"/>
       <source>folders background (highlighted)</source>
-      <translation type="unfinished">folders background (highlighted)</translation>
+      <translation>フォルダの背景（フォーカス時）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="657"/>
       <source>article counts</source>
-      <translation type="unfinished">article counts</translation>
+      <translation>記事数</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="660"/>
       <source>article counts (highlighted)</source>
-      <translation type="unfinished">article counts (highlighted)</translation>
+      <translation>記事数（フォーカス時）</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
@@ -6832,26 +6832,26 @@ List of supported readers:</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="235"/>
       <source>Image not decoded</source>
-      <translation type="unfinished">Image not decoded</translation>
+      <translation>画像がデコードされませんでした</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="236"/>
       <source>Failed to decode image &apos;%1&apos;.</source>
-      <translation type="unfinished">Failed to decode image &apos;%1&apos;.</translation>
+      <translation>画像 &apos;%1&apos; のデコードに失敗しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="243"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="290"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="290"/>
       <source>Image not downloaded</source>
-      <translation type="unfinished">Image not downloaded</translation>
+      <translation>画像がダウンロードされませんでした</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="244"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="291"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="291"/>
       <source>Failed to download image &apos;%1&apos; with error &apos;%2&apos;.</source>
-      <translation type="unfinished">Failed to download image &apos;%1&apos; with error &apos;%2&apos;.</translation>
+      <translation>画像 &apos;%1&apos; のダウンロードに失敗しました。エラー &apos;%2&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="272"/>
@@ -7922,13 +7922,13 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="131"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
       <source>Only auto-fetch articles if network is connected</source>
-      <translation type="unfinished">Only auto-fetch articles if network is connected</translation>
+      <translation>ネットワーク接続時のみ記事を自動取得する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="698"/>
       <source>Only auto-fetch articles if Game Mode is not active</source>
-      <translation type="unfinished">Only auto-fetch articles if Game Mode is not active</translation>
+      <translation>ゲームモードが有効でない場合のみ記事を自動取得する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="146"/>
@@ -8263,7 +8263,7 @@ This can tremendously speed up the application if you have hundreds of thousands
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="311"/>
       <source>Clear color</source>
-      <translation type="unfinished">Clear color</translation>
+      <translation>色をクリア</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="181"/>
@@ -8605,7 +8605,7 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="34"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="127"/>
       <source>Ignore all cookies</source>
-      <translation type="unfinished">Ignore all cookies</translation>
+      <translation>すべての Cookie を無視する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="41"/>
@@ -9097,15 +9097,15 @@ HTTP/2: %6
 Ignore cookies: %7
 Report empty feed as broken: %8
 Fetch full articles: %9 (plain text only: %10)</source>
-      <translation type="unfinished">Encoding: %1
-Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
+      <translation>エンコーディング: %1
+タイプ: %2
+後処理スクリプト: %3
+生のXML保存を使用: %4
+記事のコメントを取得: %5
 HTTP/2: %6
-Ignore cookies: %7
-Report empty feed as broken: %8
-Fetch full articles: %9 (plain text only: %10)</translation>
+Cookieを無視: %7
+空のフィードを破損として報告: %8
+記事全文を取得: %9 (プレーンテキストのみ: %10)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="493"/>
@@ -9375,7 +9375,7 @@ Also, you can post-process generated feed data with yet another script if you wi
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="108"/>
       <source>Report feed as broken when it contains no articles</source>
-      <translation type="unfinished">Report feed as broken when it contains no articles</translation>
+      <translation>記事が含まれていないフィードを破損として報告する</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="125"/>
@@ -9404,7 +9404,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="40"/>
       <source>When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</source>
-      <translation type="unfinished">When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</translation>
+      <translation>有効にすると、正常にダウンロードおよび解析されたフィードであっても記事が含まれていない場合、破損として報告されます。空のフィードは有効なので、記事が含まれていないことが想定されるフィードでは、この設定を無効にしてください。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="46"/>
@@ -9437,7 +9437,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="56"/>
       <source>Ignore cookies when downloading this feed</source>
-      <translation type="unfinished">Ignore cookies when downloading this feed</translation>
+      <translation>このフィードをダウンロードする際に Cookie を無視する</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="65"/>
@@ -9447,7 +9447,7 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="89"/>
       <source>Extra domains</source>
-      <translation type="unfinished">Extra domains</translation>
+      <translation>追加ドメイン</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="113"/>
@@ -9469,9 +9469,9 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <source>Resources (images, CSS, etc.) server from these domains will also be downloaded via proxy, if the proxy is set. Enter each domain on separate line.
 
 This feature only works on &quot;web&quot; version of the app, because on &quot;text&quot; version is not needed, as the proxy resolution there is fully automatic.</source>
-      <translation type="unfinished">Resources (images, CSS, etc.) server from these domains will also be downloaded via proxy, if the proxy is set. Enter each domain on separate line.
+      <translation>プロキシが設定されている場合、これらのドメインのリソース（画像、CSSなど）もプロキシ経由でダウンロードされます。各ドメインは別々の行に入力してください。
 
-This feature only works on &quot;web&quot; version of the app, because on &quot;text&quot; version is not needed, as the proxy resolution there is fully automatic.</translation>
+この機能はアプリの &quot;Web&quot; バージョンでのみ動作します。&quot;text&quot; バージョンではプロキシ解決が完全に自動で行われるため、この機能は不要です。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="43"/>
@@ -10233,7 +10233,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="77"/>
       <source>Proxy &apos;%1&apos; authentication</source>
-      <translation type="unfinished">Proxy &apos;%1&apos; authentication</translation>
+      <translation>プロキシ認証 &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="91"/>
@@ -10534,12 +10534,12 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="735"/>
       <source>Navigate to website(s) manually</source>
-      <translation type="unfinished">Navigate to website(s) manually</translation>
+      <translation>ウェブサイトへ手動で移動してください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="736"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</source>
-      <translation type="unfinished">%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</translation>
+      <translation>%1 は指定された URL でウェブブラウザを起動できませんでした。以下のウェブサイト URL をウェブブラウザで手動で開いてください。</translation>
     </message>
   </context>
   <context>
