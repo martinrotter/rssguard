@@ -1,0 +1,70 @@
+# RPM spec template rendered at build time. Adjust install paths for any
+# additional resources your CMake project installs (icons, .desktop files).
+Name:       {{ package_name }}
+Version:    {{ version }}
+Release:    1%{?dist}
+Summary:    {{ description }}
+License:    GPL-3.0-or-later
+URL:        {{ homepage }}
+Source0:    {{ source_folder_name }}.tar.gz
+Vendor:     OmniPackage
+
+BuildRequires: {{ build_dependencies | join: ' ' }}
+{% if runtime_dependencies.size > 0 %}
+Requires: {{ runtime_dependencies | join: ', ' }}
+{% endif %}
+
+%define debug_package %{nil}
+%define _build_id_links none
+
+%description
+{{ description }}
+
+
+%prep
+%setup -q
+
+
+%build
+# The bundled Go article-extractor is built here; give it a writable module cache/GOPATH and
+# rely on the build container's network for module + toolchain downloads.
+export GOFLAGS="-mod=mod"
+export GOPATH="$PWD/.gopath"
+export GOCACHE="$PWD/.gocache"
+cmake -S . -B _build -G Ninja \
+  -DCMAKE_BUILD_TYPE=Release \
+  -DCMAKE_INSTALL_PREFIX=/usr \
+  -DCMAKE_INSTALL_LIBDIR=%{_lib} \
+  -DBUILD_WITH_QT6={{ build_with_qt6 | default: "ON" }} \
+  -DWEB_ARTICLE_VIEWER_WEBENGINE=ON \
+  -DENABLE_ICU=ON \
+  -DENABLE_COMPRESSED_SITEMAP=ON \
+  -DENABLE_MEDIAPLAYER_QTMULTIMEDIA=ON \
+  -DENABLE_MEDIAPLAYER_LIBMPV=OFF \
+  -DREVISION_FROM_GIT=OFF \
+  -DIS_DEVBUILD=OFF \
+  -DNO_UPDATE_CHECK=ON \
+  {{ extra_cmake_args | default: "" }}
+cmake --build _build %{?_smp_mflags}
+
+
+%install
+DESTDIR=%{buildroot} cmake --install _build
+# This is a runtime package, not a -devel one: drop the installed public headers.
+rm -rf %{buildroot}%{_includedir}/librssguard
+
+
+%files
+%license LICENSE.md
+%attr(755, root, root) %{_bindir}/rssguard
+%attr(755, root, root) %{_bindir}/rssguard-article-extractor
+%{_libdir}/librssguard.so*
+%{_libdir}/rssguard/
+%{_datadir}/applications/io.github.martinrotter.rssguard.desktop
+%{_datadir}/metainfo/io.github.martinrotter.rssguard.metainfo.xml
+%{_datadir}/icons/hicolor/512x512/apps/io.github.martinrotter.rssguard.png
+
+
+%changelog
+* Sat May 30 2026 {{ maintainer }}
+- Initial package release

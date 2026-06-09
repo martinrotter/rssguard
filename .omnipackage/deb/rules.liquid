@@ -1,0 +1,32 @@
+#!/usr/bin/make -f
+# debian.rules — Debian build rules for a CMake project. Indents are TABS.
+# -*- makefile -*-
+
+export DESTROOT=$(CURDIR)/debian/{{ package_name }}
+# export DH_VERBOSE=1
+
+# The bundled Go article-extractor is built during compilation; give it a writable module
+# cache/GOPATH (the build container's network supplies modules + the Go toolchain).
+export GOFLAGS=-mod=mod
+export GOPATH=$(CURDIR)/.gopath
+export GOCACHE=$(CURDIR)/.gocache
+
+%:
+	dh $@ --parallel --buildsystem=cmake
+
+override_dh_auto_configure:
+	dh_auto_configure -- \
+	  -DCMAKE_INSTALL_PREFIX=/usr \
+	  -DBUILD_WITH_QT6={{ build_with_qt6 | default: "ON" }} \
+	  -DWEB_ARTICLE_VIEWER_WEBENGINE=ON \
+	  -DENABLE_ICU=ON \
+	  -DENABLE_COMPRESSED_SITEMAP=ON \
+	  -DENABLE_MEDIAPLAYER_QTMULTIMEDIA=ON \
+	  -DENABLE_MEDIAPLAYER_LIBMPV=OFF \
+	  -DREVISION_FROM_GIT=OFF \
+	  -DIS_DEVBUILD=OFF \
+	  -DNO_UPDATE_CHECK=ON
+
+override_dh_auto_install:
+	dh_auto_install
+	rm -rf $(DESTROOT)/usr/include
