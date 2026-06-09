@@ -234,19 +234,17 @@ if ($use_xmpp -eq "ON") {
   Copy-Item -Path "$qxmpp_root\bin\QXmpp*.dll" -Destination ".\app\" -Verbose
 }
 
-if ($is_devbuild) {
-  # Copy debug symbols.
-  Copy-Item -Path ".\src\librssguard\rssguard.pdb" -Destination ".\app\" -Verbose
+# Copy debug symbols always.
+Copy-Item -Path ".\src\librssguard\rssguard.pdb" -Destination ".\app\" -Verbose
 
-  $plugins = Get-ChildItem -Path ".\src" -Directory | Where-Object { $_.Name -like "librssguard-*" }
+$plugins = Get-ChildItem -Path ".\src" -Directory | Where-Object { $_.Name -like "librssguard-*" }
 
-  foreach ($folder in $plugins) {
-    $pdb_file = "*.pdb"
-    $source_file = Join-Path $folder.FullName $pdb_file
+foreach ($folder in $plugins) {
+  $pdb_file = "*.pdb"
+  $source_file = Join-Path $folder.FullName $pdb_file
 
-    if (Test-Path $source_file) {
-        Copy-Item -Path $source_file -Destination ".\app\plugins\" -Force -Verbose
-    }
+  if (Test-Path $source_file) {
+      Copy-Item -Path $source_file -Destination ".\app\plugins\" -Force -Verbose
   }
 }
 
