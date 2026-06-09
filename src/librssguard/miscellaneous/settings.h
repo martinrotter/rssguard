@@ -400,6 +400,18 @@ namespace GUI {
   KEY MonochromeTrayIcon;
   VALUE(bool) MonochromeTrayIconDef;
 
+  KEY CustomColoredTrayIcon;
+  VALUE(bool) CustomColoredTrayIconDef;
+
+  KEY CustomColoredTrayIconBackground;
+  VALUE(char*) CustomColoredTrayIconBackgroundDef;
+
+  KEY CustomColoredTrayIconText;
+  VALUE(char*) CustomColoredTrayIconTextDef;
+
+  KEY CustomColoredTrayIconAsAppIcon;
+  VALUE(bool) CustomColoredTrayIconAsAppIconDef;
+
   KEY CustomizeAppFont;
   VALUE(bool) CustomizeAppFontDef;
 

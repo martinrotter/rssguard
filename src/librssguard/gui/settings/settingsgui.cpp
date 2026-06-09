@@ -15,8 +15,10 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
+#include <QButtonGroup>
 #include <QDropEvent>
 #include <QFontDialog>
+#include <QRadioButton>
 #include <QStyleFactory>
 
 SettingsGui::SettingsGui(Settings* settings, QWidget* parent) : SettingsPanel(settings, parent), m_ui(nullptr) {}
@@ -63,10 +65,16 @@ void SettingsGui::loadUi() {
           this,
           &SettingsGui::updateSkinOptions);
 
-  connect(m_ui->m_checkMonochromeIcons,
-          &QCheckBox::toggled,
-          m_ui->m_checkColoredIconsWhenArticles,
-          &QCheckBox::setEnabled);
+  m_ui->m_btnCustomColoredIconBackground->setColorOnlyMode(true);
+  m_ui->m_btnCustomColoredIconText->setColorOnlyMode(true);
+
+  auto* tray_icon_style_group = new QButtonGroup(this);
+
+  tray_icon_style_group->setExclusive(true);
+  tray_icon_style_group->addButton(m_ui->m_radioStandardIcon);
+  tray_icon_style_group->addButton(m_ui->m_radioMonochromeIcons);
+  tray_icon_style_group->addButton(m_ui->m_radioCustomColoredIcon);
+
   connect(m_ui->m_cmbIconTheme,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
@@ -81,8 +89,21 @@ void SettingsGui::loadUi() {
   connect(m_ui->m_checkHidden, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkForceAlternativePalette, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkForceAlternativePalette, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
-  connect(m_ui->m_checkMonochromeIcons, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
-  connect(m_ui->m_checkMonochromeIcons, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
+  connect(m_ui->m_radioStandardIcon, &QRadioButton::toggled, this, &SettingsGui::updateCustomColoredIconOptions);
+  connect(m_ui->m_radioStandardIcon, &QRadioButton::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_radioStandardIcon, &QRadioButton::toggled, this, &SettingsGui::requireRestart);
+  connect(m_ui->m_radioMonochromeIcons, &QRadioButton::toggled, this, &SettingsGui::updateCustomColoredIconOptions);
+  connect(m_ui->m_radioMonochromeIcons, &QRadioButton::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_radioMonochromeIcons, &QRadioButton::toggled, this, &SettingsGui::requireRestart);
+  connect(m_ui->m_radioCustomColoredIcon, &QRadioButton::toggled, this, &SettingsGui::updateCustomColoredIconOptions);
+  connect(m_ui->m_radioCustomColoredIcon, &QRadioButton::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_radioCustomColoredIcon, &QRadioButton::toggled, this, &SettingsGui::requireRestart);
+  connect(m_ui->m_checkCustomColoredIconAsAppIcon, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_checkCustomColoredIconAsAppIcon, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
+  connect(m_ui->m_btnCustomColoredIconBackground, &ColorIconToolButton::colorChanged, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_btnCustomColoredIconBackground, &ColorIconToolButton::colorChanged, this, &SettingsGui::requireRestart);
+  connect(m_ui->m_btnCustomColoredIconText, &ColorIconToolButton::colorChanged, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_btnCustomColoredIconText, &ColorIconToolButton::colorChanged, this, &SettingsGui::requireRestart);
   connect(m_ui->m_checkColoredIconsWhenArticles, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkColoredIconsWhenArticles, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
   connect(m_ui->m_checkCountUnreadMessages, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
@@ -107,6 +128,18 @@ void SettingsGui::loadUi() {
   });
 
   SettingsPanel::loadUi();
+}
+
+void SettingsGui::updateCustomColoredIconOptions() {
+  const bool monochrome_enabled = m_ui->m_radioMonochromeIcons->isChecked();
+  const bool custom_enabled = m_ui->m_radioCustomColoredIcon->isChecked();
+
+  m_ui->m_checkColoredIconsWhenArticles->setEnabled(monochrome_enabled);
+  m_ui->m_lblCustomColoredIconBackground->setEnabled(custom_enabled);
+  m_ui->m_btnCustomColoredIconBackground->setEnabled(custom_enabled);
+  m_ui->m_lblCustomColoredIconText->setEnabled(custom_enabled);
+  m_ui->m_btnCustomColoredIconText->setEnabled(custom_enabled);
+  m_ui->m_checkCustomColoredIconAsAppIcon->setEnabled(custom_enabled);
 }
 
 void SettingsGui::changeFont(QLabel& lbl) {
@@ -188,9 +221,30 @@ void SettingsGui::loadSettings() {
     }
   }
 
-  m_ui->m_checkMonochromeIcons->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool());
+  const bool custom_colored_icon = settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIcon)).toBool();
+  const bool monochrome_icon = settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool();
+
+  if (custom_colored_icon) {
+    m_ui->m_radioCustomColoredIcon->setChecked(true);
+  }
+  else if (monochrome_icon) {
+    m_ui->m_radioMonochromeIcons->setChecked(true);
+  }
+  else {
+    m_ui->m_radioStandardIcon->setChecked(true);
+  }
+
   m_ui->m_checkColoredIconsWhenArticles
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool());
+  m_ui->m_checkCustomColoredIconAsAppIcon
+    ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconAsAppIcon)).toBool());
+  m_ui->m_btnCustomColoredIconBackground->setColor(
+    QColor(settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconBackground)).toString()),
+    false);
+  m_ui->m_btnCustomColoredIconText->setColor(
+    QColor(settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconText)).toString()),
+    false);
+  updateCustomColoredIconOptions();
   m_ui->m_checkCountUnreadMessages
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool());
 
@@ -390,8 +444,21 @@ void SettingsGui::saveSettings() {
       qApp->deleteTrayIcon();
     }
   }
-  settings()->setValue(GROUP(GUI), GUI::MonochromeTrayIcon, m_ui->m_checkMonochromeIcons->isChecked());
+  settings()->setValue(GROUP(GUI), GUI::MonochromeTrayIcon, m_ui->m_radioMonochromeIcons->isChecked());
   settings()->setValue(GROUP(GUI), GUI::ColoredBusyTrayIcon, m_ui->m_checkColoredIconsWhenArticles->isChecked());
+  settings()->setValue(GROUP(GUI), GUI::CustomColoredTrayIcon, m_ui->m_radioCustomColoredIcon->isChecked());
+  settings()->setValue(GROUP(GUI),
+                       GUI::CustomColoredTrayIconBackground,
+                       m_ui->m_btnCustomColoredIconBackground->color().name());
+  settings()->setValue(GROUP(GUI), GUI::CustomColoredTrayIconText, m_ui->m_btnCustomColoredIconText->color().name());
+  settings()->setValue(GROUP(GUI),
+                       GUI::CustomColoredTrayIconAsAppIcon,
+                       m_ui->m_checkCustomColoredIconAsAppIcon->isChecked());
+
+  if (m_ui->m_radioCustomColoredIcon->isChecked()) {
+    qApp->icons()->generateCustomColoredIcons(m_ui->m_btnCustomColoredIconBackground->color());
+  }
+
   settings()->setValue(GROUP(GUI), GUI::UnreadNumbersInTrayIcon, m_ui->m_checkCountUnreadMessages->isChecked());
   settings()->setValue(GROUP(GUI), GUI::MainWindowStartsHidden, m_ui->m_checkHidden->isChecked());
   settings()->setValue(GROUP(GUI), GUI::HideMainWindowWhenMinimized, m_ui->m_checkHideWhenMinimized->isChecked());

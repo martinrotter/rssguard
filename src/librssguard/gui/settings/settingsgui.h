@@ -27,6 +27,7 @@ class SettingsGui : public SettingsPanel {
 
   private:
     void changeFont(QLabel& lbl);
+    void updateCustomColoredIconOptions();
 
   private:
     Ui::SettingsGui* m_ui;

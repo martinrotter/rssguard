@@ -3,6 +3,7 @@
 #ifndef TRAYICON_H
 #define TRAYICON_H
 
+#include <QColor>
 #include <QFont>
 #include <QIcon>
 #include <QMenu>
@@ -43,6 +44,7 @@ class TrayIcon : public QObject {
                       const QString& title,
                       const QPixmap& normal_icon,
                       const QPixmap& plain_icon,
+                      const QColor& text_color = Qt::GlobalColor::white,
                       QObject* parent = nullptr);
 
     // Base API.
@@ -82,6 +84,7 @@ class TrayIcon : public QObject {
     QString m_title;
     QPixmap m_normalIcon;
     QPixmap m_plainIcon;
+    QColor m_textColor;
     QFont m_font = QFont();
     bool m_showUnreadArticlesCount;
 };

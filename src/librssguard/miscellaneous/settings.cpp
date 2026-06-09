@@ -383,6 +383,18 @@ DVALUE(bool) GUI::HideMainWindowWhenMinimizedDef = false;
 DKEY GUI::MonochromeTrayIcon = "monochrome_tray_icon";
 DVALUE(bool) GUI::MonochromeTrayIconDef = false;
 
+DKEY GUI::CustomColoredTrayIcon = "custom_colored_tray_icon";
+DVALUE(bool) GUI::CustomColoredTrayIconDef = false;
+
+DKEY GUI::CustomColoredTrayIconBackground = "custom_colored_tray_icon_background";
+DVALUE(char*) GUI::CustomColoredTrayIconBackgroundDef = "#d96a00";
+
+DKEY GUI::CustomColoredTrayIconText = "custom_colored_tray_icon_text";
+DVALUE(char*) GUI::CustomColoredTrayIconTextDef = "#ffffff";
+
+DKEY GUI::CustomColoredTrayIconAsAppIcon = "custom_colored_tray_icon_as_app_icon";
+DVALUE(bool) GUI::CustomColoredTrayIconAsAppIconDef = false;
+
 DKEY GUI::CustomizeAppFont = "custom_app_font";
 DVALUE(bool) GUI::CustomizeAppFontDef = false;
 

@@ -6,10 +6,13 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 
+#include <QColor>
 #include <QDir>
 #include <QHash>
 #include <QIcon>
+#include <QImage>
 #include <QObject>
+#include <QPixmap>
 #include <QString>
 
 class RSSGUARD_DLLSPEC IconFactory : public QObject {
@@ -35,6 +38,13 @@ class RSSGUARD_DLLSPEC IconFactory : public QObject {
 
     static QImage recolorImage(QImage image, const QColor& color);
     static QPixmap recolorPixmap(const QPixmap& pixmap, const QColor& color);
+
+    static QString customColoredIconFolder();
+    static QString customColoredAppIconPath();
+    static QString customColoredTrayIconPath();
+    static QString customColoredTrayIconPlainPath();
+    static bool generateCustomColoredIcons(const QColor& background_color);
+    static bool ensureCustomColoredIcons(const QColor& background_color);
 
     static QPixmap fromByteArray(const QByteArray& array, const QString& format);
     static QByteArray toByteArray(const QPixmap& pixmap, const QString& format);

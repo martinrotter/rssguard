@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>607</width>
-    <height>394</height>
+    <height>470</height>
    </rect>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
@@ -207,34 +207,99 @@
           <property name="fieldGrowthPolicy">
            <enum>QFormLayout::FieldGrowthPolicy::ExpandingFieldsGrow</enum>
           </property>
-          <item row="0" column="0">
-           <widget class="QCheckBox" name="m_checkMonochromeIcons">
+          <item row="0" column="0" colspan="2">
+           <widget class="QRadioButton" name="m_radioStandardIcon">
             <property name="text">
-             <string>Use monochrome icon</string>
+             <string>Use standard icon</string>
             </property>
            </widget>
           </item>
-          <item row="2" column="0">
+          <item row="1" column="0" colspan="2">
+           <widget class="QGroupBox" name="m_grpMonochromeIconStyle">
+            <property name="title">
+             <string>Monochrome icon</string>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_4">
+             <item>
+              <widget class="QRadioButton" name="m_radioMonochromeIcons">
+               <property name="text">
+                <string>Use monochrome icon</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="m_checkColoredIconsWhenArticles">
+               <property name="enabled">
+                <bool>false</bool>
+               </property>
+               <property name="text">
+                <string>Use colored icon when there are unread articles</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="2" column="0" colspan="2">
+           <widget class="QGroupBox" name="m_grpCustomColoredIconStyle">
+            <property name="title">
+             <string>Custom-colored icon</string>
+            </property>
+            <layout class="QFormLayout" name="formLayout_8">
+             <item row="0" column="0" colspan="2">
+              <widget class="QRadioButton" name="m_radioCustomColoredIcon">
+               <property name="text">
+                <string>Use custom-colored icon</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="m_lblCustomColoredIconBackground">
+               <property name="text">
+                <string>Background color</string>
+               </property>
+               <property name="buddy">
+                <cstring>m_btnCustomColoredIconBackground</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="ColorIconToolButton" name="m_btnCustomColoredIconBackground"/>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="m_lblCustomColoredIconText">
+               <property name="text">
+                <string>Text color</string>
+               </property>
+               <property name="buddy">
+                <cstring>m_btnCustomColoredIconText</cstring>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="ColorIconToolButton" name="m_btnCustomColoredIconText"/>
+             </item>
+             <item row="3" column="0" colspan="2">
+              <widget class="QCheckBox" name="m_checkCustomColoredIconAsAppIcon">
+               <property name="text">
+                <string>Use custom-colored icon also as application icon</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item row="3" column="0">
            <widget class="QCheckBox" name="m_checkCountUnreadMessages">
             <property name="text">
              <string>Display count of unread messages</string>
             </property>
            </widget>
           </item>
-          <item row="3" column="0">
+          <item row="4" column="0">
            <widget class="QCheckBox" name="m_checkHideWhenMinimized">
             <property name="text">
              <string>Hide main window when it is minimized</string>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0" colspan="2">
-           <widget class="QCheckBox" name="m_checkColoredIconsWhenArticles">
-            <property name="enabled">
-             <bool>false</bool>
-            </property>
-            <property name="text">
-             <string>Use colored icon when there are unread articles</string>
             </property>
            </widget>
           </item>
@@ -369,6 +434,11 @@
    <header>helpspoiler.h</header>
    <container>1</container>
   </customwidget>
+  <customwidget>
+   <class>ColorIconToolButton</class>
+   <extends>QToolButton</extends>
+   <header>gui/reusable/colortoolbutton.h</header>
+  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>m_tabUi</tabstop>
@@ -382,8 +452,13 @@
   <tabstop>m_gbCustomSkinColors</tabstop>
   <tabstop>m_checkHidden</tabstop>
   <tabstop>m_grpTray</tabstop>
-  <tabstop>m_checkMonochromeIcons</tabstop>
+  <tabstop>m_radioStandardIcon</tabstop>
+  <tabstop>m_radioMonochromeIcons</tabstop>
   <tabstop>m_checkColoredIconsWhenArticles</tabstop>
+  <tabstop>m_radioCustomColoredIcon</tabstop>
+  <tabstop>m_btnCustomColoredIconBackground</tabstop>
+  <tabstop>m_btnCustomColoredIconText</tabstop>
+  <tabstop>m_checkCustomColoredIconAsAppIcon</tabstop>
   <tabstop>m_checkCountUnreadMessages</tabstop>
   <tabstop>m_checkHideWhenMinimized</tabstop>
   <tabstop>m_displayUnreadMessageCountOnTaskBar</tabstop>

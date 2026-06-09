@@ -19,7 +19,7 @@
 
 FormAbout::FormAbout(bool go_to_changelog, QWidget* parent) : QDialog(parent) {
   m_ui.setupUi(this);
-  m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH));
+  m_ui.m_lblIcon->setPixmap(qApp->desktopAwareIcon().pixmap({128, 128}));
   m_ui.m_btnCopyInfo->setIcon(qApp->icons()->fromTheme(QSL("edit-copy")));
   GuiUtilities::applyDialogProperties(*this,
                                       qApp->icons()->fromTheme(QSL("help-about")),

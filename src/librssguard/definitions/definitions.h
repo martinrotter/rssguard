@@ -363,6 +363,8 @@
 #define APP_ICON_SCALABLE_PATH QSL(":/graphics/rssguard.svg")
 #define APP_ICON_PATH          QSL(":/graphics/rssguard.png")
 #define APP_ICON_PLAIN_PATH    QSL(":/graphics/rssguard_plain.png")
+#define APP_ICON_MUSTR_PATH       QSL(":/graphics/rssguard_mustr.png")
+#define APP_ICON_MUSTR_PLAIN_PATH QSL(":/graphics/rssguard_plain_mustr.png")
 
 #define APP_ICON_MONO_PATH       QSL(":/graphics/rssguard_mono.png")
 #define APP_ICON_MONO_PLAIN_PATH QSL(":/graphics/rssguard_plain_mono.png")

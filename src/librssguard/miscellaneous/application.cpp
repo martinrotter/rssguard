@@ -623,29 +623,44 @@ TrayIcon* Application::trayIcon() {
     QPixmap tray_icon_plain;
 
     const bool monochrome_icon = qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool();
+    const bool custom_colored_icon =
+      qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIcon)).toBool();
     const bool colored_unread_icon = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool();
     const bool show_unread_count = qApp->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool();
+    QColor unread_text_color(Qt::GlobalColor::white);
 
-    if (monochrome_icon) {
-      tray_icon = QPixmap(APP_ICON_MONO_PATH);
+    if (custom_colored_icon) {
+      QColor background_color =
+        QColor(qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconBackground)).toString());
+      unread_text_color = QColor(qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconText)).toString());
 
-      if (colored_unread_icon) {
-        tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH);
+      if (IconFactory::ensureCustomColoredIcons(background_color)) {
+        tray_icon = QPixmap(IconFactory::customColoredTrayIconPath());
+        tray_icon_plain = show_unread_count ? QPixmap(IconFactory::customColoredTrayIconPlainPath()) : tray_icon;
+      }
+    }
+
+    if (tray_icon.isNull() || tray_icon_plain.isNull()) {
+      unread_text_color = QColor(Qt::GlobalColor::white);
+
+      if (!custom_colored_icon && monochrome_icon) {
+        tray_icon = QPixmap(APP_ICON_MONO_PATH);
+
+        if (colored_unread_icon) {
+          tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH);
+        }
+        else {
+          tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_MONO_PLAIN_PATH) : QPixmap(APP_ICON_MONO_PATH);
+        }
       }
       else {
-        tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_MONO_PLAIN_PATH) : QPixmap(APP_ICON_MONO_PATH);
+        tray_icon = QPixmap(APP_ICON_PATH);
+        tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH);
       }
     }
-    else {
-      // tray_icon = QPixmap(APP_ICON_PATH);
-      // tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH);
 
-      tray_icon = IconFactory::recolorPixmap(QPixmap(QSL(":/graphics/rssguard_mustr.png")), Qt::GlobalColor::blue);
-      tray_icon_plain =
-        IconFactory::recolorPixmap(QPixmap(QSL(":/graphics/rssguard_plain_mustr.png")), Qt::GlobalColor::blue);
-    }
-
-    m_trayIcon = new QtTrayIcon(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, m_mainForm);
+    m_trayIcon =
+      new QtTrayIcon(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, unread_text_color, m_mainForm);
     m_trayIcon->setMainWindow(m_mainForm);
     m_trayIcon->setContextMenu(m_mainForm->trayMenu());
     m_trayIcon->setToolTip(QSL(APP_NAME));
@@ -660,6 +675,19 @@ TrayIcon* Application::trayIcon() {
 }
 
 QIcon Application::desktopAwareIcon() const {
+  if (settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIcon)).toBool() &&
+      settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconAsAppIcon)).toBool()) {
+    QColor background_color(settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconBackground)).toString());
+
+    if (IconFactory::ensureCustomColoredIcons(background_color)) {
+      QIcon custom_icon(IconFactory::customColoredAppIconPath());
+
+      if (!custom_icon.isNull()) {
+        return custom_icon;
+      }
+    }
+  }
+
   auto from_theme = m_icons->fromTheme(QSL(APP_LOW_NAME));
 
   if (!from_theme.isNull()) {

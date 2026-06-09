@@ -27,8 +27,10 @@ TrayIcon::TrayIcon(const QString& id,
                    const QString& title,
                    const QPixmap& normal_icon,
                    const QPixmap& plain_icon,
+                   const QColor& text_color,
                    QObject* parent)
   : QObject(parent), m_id(id), m_title(title), m_normalIcon(normal_icon), m_plainIcon(plain_icon),
+    m_textColor(text_color.isValid() ? text_color : QColor(Qt::GlobalColor::white)),
     m_showUnreadArticlesCount(qApp->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool()) {
   m_font.setBold(true);
 }
@@ -48,7 +50,7 @@ void TrayIcon::setNumber(int number) {
       QPainter tray_painter;
 
       tray_painter.begin(&background);
-      tray_painter.setPen(Qt::GlobalColor::white);
+      tray_painter.setPen(m_textColor);
       tray_painter.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
       tray_painter.setRenderHint(QPainter::RenderHint::TextAntialiasing, false);
 

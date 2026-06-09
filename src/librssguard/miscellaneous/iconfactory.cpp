@@ -6,6 +6,7 @@
 #include "miscellaneous/settings.h"
 
 #include <QBuffer>
+#include <QFileInfo>
 #include <QGridLayout>
 #include <QPainter>
 #include <QScrollArea>
@@ -207,6 +208,48 @@ QImage IconFactory::recolorImage(QImage image, const QColor& color) {
 
 QPixmap IconFactory::recolorPixmap(const QPixmap& pixmap, const QColor& color) {
   return QPixmap::fromImage(recolorImage(pixmap.toImage(), color));
+}
+
+QString IconFactory::customColoredIconFolder() {
+  return qApp->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER;
+}
+
+QString IconFactory::customColoredAppIconPath() {
+  return customColoredIconFolder() + QDir::separator() + QSL("rssguard_custom_colored.png");
+}
+
+QString IconFactory::customColoredTrayIconPath() {
+  return customColoredAppIconPath();
+}
+
+QString IconFactory::customColoredTrayIconPlainPath() {
+  return customColoredIconFolder() + QDir::separator() + QSL("rssguard_plain_custom_colored.png");
+}
+
+bool IconFactory::generateCustomColoredIcons(const QColor& background_color) {
+  if (!background_color.isValid()) {
+    return false;
+  }
+
+  QDir dir(customColoredIconFolder());
+
+  if (!dir.exists() && !dir.mkpath(QSL("."))) {
+    return false;
+  }
+
+  const QPixmap icon = recolorPixmap(QPixmap(APP_ICON_MUSTR_PATH), background_color);
+  const QPixmap plain_icon = recolorPixmap(QPixmap(APP_ICON_MUSTR_PLAIN_PATH), background_color);
+
+  return !icon.isNull() && !plain_icon.isNull() && icon.save(customColoredAppIconPath(), "PNG") &&
+         plain_icon.save(customColoredTrayIconPlainPath(), "PNG");
+}
+
+bool IconFactory::ensureCustomColoredIcons(const QColor& background_color) {
+  if (QFileInfo::exists(customColoredTrayIconPath()) && QFileInfo::exists(customColoredTrayIconPlainPath())) {
+    return true;
+  }
+
+  return generateCustomColoredIcons(background_color);
 }
 
 QPixmap IconFactory::fromByteArray(const QByteArray& array, const QString& format) {

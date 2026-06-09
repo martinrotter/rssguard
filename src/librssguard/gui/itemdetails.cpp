@@ -26,11 +26,7 @@ void ItemDetails::loadItemDetails(RootItem* item) {
   m_ui.m_txtDetails->verticalScrollBar()->triggerAction(QAbstractSlider::SliderAction::SliderToMinimum);
 
   if (item == nullptr) {
-    m_ui.m_lblIcon->setPixmap(QPixmap(APP_ICON_PATH)
-                                .scaled(48,
-                                        48,
-                                        Qt::AspectRatioMode::KeepAspectRatio,
-                                        Qt::TransformationMode::SmoothTransformation));
+    m_ui.m_lblIcon->setPixmap(qApp->desktopAwareIcon().pixmap({48, 48}));
     m_ui.m_txtDetails->setText(QSL("<b>%1</b>").arg(QSL(APP_LONG_NAME)));
   }
   else {
