@@ -44,19 +44,6 @@ FormAccountDetails* XmppServiceRoot::accountSetupDialog() const {
 }
 
 void XmppServiceRoot::editItems(const QList<RootItem*>& items) {
-  auto feeds = qlinq::from(items).ofType<Feed*>();
-
-  if (!feeds.isEmpty()) {
-    /*QScopedPointer<FormXmppFeedDetails> form_pointer(new FormXmppFeedDetails(this,
-                                                                             nullptr,
-                                                                             {},
-                                                                             qApp->mainFormWidget()));
-
-    form_pointer->addEditFeed<XmppFeed>(feeds.toList());
-    */
-    return;
-  }
-
   if (items.first()->kind() == RootItem::Kind::ServiceRoot) {
     QScopedPointer<FormEditXmppAccount> p(qobject_cast<FormEditXmppAccount*>(accountSetupDialog()));
     p->addEditAccount(this);
