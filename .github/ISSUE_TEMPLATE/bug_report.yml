@@ -11,7 +11,7 @@ body:
         Please attach it unless you are absolutely sure it is not relevant.
 
         How to create the debug log is described here:
-        https://rssguard.readthedocs.io/en/stable/contrib/bugs.html#application-debug-log
+        https://rssguard.readthedocs.io/en/stable/contrib/bugs.html#debug-log
 
         If RSS Guard crashes, closes unexpectedly, or disappears, please also provide a crash dump file.
         How to create a crash dump on Windows with ProcDump is described here:
@@ -50,7 +50,7 @@ body:
   - type: textarea
     attributes:
       label: Debug log
-      description: Paste the debug log contents here, or attach the log file. This is needed for almost every bug report. See https://rssguard.readthedocs.io/en/stable/contrib/bugs.html#application-debug-log.
+      description: Paste the debug log contents here, or attach the log file. This is needed for almost every bug report. See https://rssguard.readthedocs.io/en/stable/contrib/bugs.html#debug-log.
     validations:
       required: true
   - type: textarea

@@ -15,42 +15,50 @@ Please include as much of this information as possible:
 * Your RSS Guard version.
 * Your operating system.
 * Whether the problem happens every time or only sometimes.
-* The application debug log. This is needed for almost every bug report.
+* The debug log. This is needed for almost every bug report.
 * A crash dump file, but only when RSS Guard crashes.
 
-## Application Debug Log
+## Debug Log
 
-If you report a bug, please almost always attach the RSS Guard application debug log.
+If you report a bug, please almost always attach the RSS Guard debug log.
 
 The debug log is useful for crashes, broken feed downloads, account problems, network errors, GUI glitches, startup problems, and many other issues. If you are not sure whether a log is needed, attach it.
 
+There are two ways to get the debug log:
+
+* create a debug log file from the command line
+* display the debug log directly in RSS Guard
+
+The debug log file is usually better for bug reports. The debug log window inside RSS Guard is useful if you are not comfortable with the command line, but it only collects messages while that window is open.
+
 ```{warning}
-The application log can contain private information, such as feed URLs, article titles, account names, server addresses, and network error details.
+The debug log can contain private information, such as feed URLs, article titles, account names, server addresses, and network error details.
 Check the log before attaching it publicly if you use private feeds or private services.
 ```
 
-### Create a Log File
+### Create a Debug Log File
 
-The best log for bug reports is usually a file created from the command line.
+The best debug log for bug reports is usually a file created from the command line.
 
-1. Open `Settings -> General` and make sure `Disable CLI debug output (but keep more serious warnings enabled)` is not checked.
+1. Open `Settings -> General` and make sure CLI debug output is enabled. In current RSS Guard versions, this means `Disable CLI debug output (but keep more serious warnings enabled)` must not be checked.
 2. Close RSS Guard.
-3. Start RSS Guard from a terminal with the `--log` option.
+3. Start RSS Guard from a terminal (Command Line) with the following command:
+
+   ```bash
+   rssguard --debug --log "rssguard.log"
+   ```
+
 4. Reproduce the problem.
 5. Close RSS Guard, so the log file is fully written.
 6. Attach the generated log file to your issue.
 
-The setting above can intentionally hide debug and informational messages from command-line output and log files.
-Warnings and errors are still logged, but the resulting file may miss details needed for harder bugs.
-If you cannot change the setting, or if you want to be sure that debug messages are included for one run, start RSS Guard with both `--debug` and `--log`.
+Use both `--debug` and `--log` for bug reports. The `--debug` option makes sure that debug messages are included for this run. The `--log` option writes those messages to a file.
+
+If you do not use `--debug`, the file can miss details needed for harder bugs, especially when CLI debug output is disabled in settings. Warnings and errors may still be logged, but that is often not enough.
+
+#### Examples
 
 If RSS Guard is available in your `PATH`, this is enough:
-
-```bash
-rssguard --log "rssguard.log"
-```
-
-If you need a more detailed log, add `--debug`:
 
 ```bash
 rssguard --debug --log "rssguard.log"
@@ -59,40 +67,54 @@ rssguard --debug --log "rssguard.log"
 On Windows, you can run RSS Guard from its installation folder or use the full path. Adjust the path if you installed RSS Guard somewhere else:
 
 ```batch
-"%ProgramFiles%\RSS Guard\rssguard.exe" --log "%USERPROFILE%\Desktop\rssguard.log"
+"%ProgramFiles%\RSS Guard\rssguard.exe" --debug --log "%USERPROFILE%\Desktop\rssguard.log"
 ```
 
 For a portable Windows package, open Command Prompt in the unpacked RSS Guard folder and run:
 
 ```batch
-rssguard.exe --log "%USERPROFILE%\Desktop\rssguard.log"
+rssguard.exe --debug --log "%USERPROFILE%\Desktop\rssguard.log"
 ```
 
 On Linux, run:
 
 ```bash
-rssguard --log "$HOME/rssguard.log"
+rssguard --debug --log "$HOME/rssguard.log"
 ```
 
 On macOS, if RSS Guard is installed as an application bundle, run the executable inside the bundle:
 
 ```bash
-/Applications/RSSGuard.app/Contents/MacOS/rssguard --log "$HOME/Desktop/rssguard.log"
+/Applications/RSSGuard.app/Contents/MacOS/rssguard --debug --log "$HOME/Desktop/rssguard.log"
 ```
 
 You can also pass an empty file name. In that case, RSS Guard stores the log file in its user data folder:
 
 ```bash
-rssguard --log ""
+rssguard --debug --log ""
 ```
 
 If RSS Guard does not start normally, start it with logging enabled first, then reproduce the startup problem as far as possible and attach the created log.
 
-```{attention}
-The application log can also be displayed directly in RSS Guard via the `Help > Display application log` menu item.
-Log messages are written to that window only while it is open, although the window itself can be minimized.
-This window can negatively affect RSS Guard performance, so the log file from command-line logging is usually better for bug reports.
-```
+#### Command-Line Logging Notes
+
+On Windows, do not write the debug log into the RSS Guard installation folder, for example `C:\Program Files\RSS Guard 5`. Normal users usually cannot write files there, so the log file may not be created. Write the log to your Desktop, Documents folder, or another folder where you can create files.
+
+If the debug log file cannot be created, RSS Guard may not show an error message on screen.
+
+The debug log file is fully written when RSS Guard closes. If you open the file while RSS Guard is still running, it may look incomplete.
+
+### Display the Debug Log Directly
+
+The debug log can also be displayed directly in RSS Guard via `Help > Display application log`.
+
+This method does not require a terminal or `--log`, so it can be easier if you are not comfortable with the command line.
+
+For the most useful output, open `Settings -> General` and make sure CLI debug output is enabled. In current RSS Guard versions, this means `Disable CLI debug output (but keep more serious warnings enabled)` must not be checked. If that setting is checked, debug and informational messages are hidden from this window too.
+
+Log messages are written to that window only while it is open, although the window itself can be minimized. If you open the window after the problem already happened, earlier messages will not be there.
+
+This window can negatively affect RSS Guard performance, so the debug log file from command-line logging is usually better for bug reports.
 
 ## Crash Dump on Windows
 
