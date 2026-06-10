@@ -27,9 +27,80 @@
 #include <QDir>
 #include <QLocale>
 #include <QRandomGenerator64>
+#include <QRegularExpression>
 #include <QString>
 #include <QStringList>
 #include <QTextDocument>
+
+namespace {
+
+const QStringList& dateTimePatternsCached(bool with_tzs) {
+  static const QStringList patterns_without_tzs = []() {
+    QStringList pat;
+
+    pat << QSL("yyyy-MM-ddTHH:mm:ss");
+    pat << QSL("yyyy-MM-ddTHH:mm:ss.z");
+    pat << QSL("yyyy-MM-ddTHH:mm:ss.zzz");
+    pat << QSL("yyyy-MM-ddThh:mm:ss");
+    pat << QSL("yyyy-MM-dd HH:mm:ss.z");
+
+    pat << QSL("yyyy-MM-ddThh:mm");
+
+    pat << QSL("yyyyMMddThhmmss");
+    pat << QSL("yyyyMMdd");
+    pat << QSL("yyyy");
+
+    pat << QSL("yyyy-MM-dd");
+    pat << QSL("yyyy-MM");
+
+    pat << QSL("MMM dd, yyyy HH:mm:ss");
+    pat << QSL("MMM dd yyyy hh:mm:ss");
+    pat << QSL("MMM d yyyy hh:mm:ss");
+
+    pat << QSL("ddd, dd MMM yyyy HH:mm:ss");
+    pat << QSL("ddd, dd MMM yyyy HH:mm");
+    pat << QSL("ddd, dd MMM yy HH:mm:ss");
+    pat << QSL("ddd, dd MMMM yyyy HH:mm:ss");
+    pat << QSL("ddd, d MMM yyyy HH:mm:ss");
+
+    pat << QSL("ddd, MM/dd/yyyy - HH:mm");
+
+    pat << QSL("dd MMM yyyy hh:mm:ss");
+    pat << QSL("dd MMM yyyy hh:mm");
+    pat << QSL("dd MMM yyyy");
+
+    pat << QSL("d MMM yyyy HH:mm:ss");
+    pat << QSL("d MMM yyyy HH:mm");
+
+    pat << QSL("dd-MM-yyyy - HH:mm");
+
+    pat << QSL("hh:mm:ss");
+    pat << QSL("h:m:s");
+    pat << QSL("h:mm");
+    pat << QSL("H:mm");
+    pat << QSL("h:m");
+    pat << QSL("h.m");
+
+    return pat;
+  }();
+
+  static const QStringList patterns_with_tzs = []() {
+    QStringList pat = patterns_without_tzs;
+
+    for (int i = 0; i < pat.size(); i += 3) {
+      QString base_pattern = pat.value(i);
+
+      pat.insert(i + 1, base_pattern + QSL("t"));
+      pat.insert(i + 2, base_pattern + QSL(" t"));
+    }
+
+    return pat;
+  }();
+
+  return with_tzs ? patterns_with_tzs : patterns_without_tzs;
+}
+
+} // namespace
 
 quint64 TextFactory::s_encryptionKey = 0x0;
 
@@ -168,21 +239,27 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
     }
   }
 
-  input_date.replace(QRegularExpression(QSL("\\.(\\d{3})\\d+")), QSL(".\\1"));
+  static const QRegularExpression extra_milliseconds_rx(QSL("\\.(\\d{3})\\d+"));
+
+  input_date.replace(extra_milliseconds_rx, QSL(".\\1"));
 
   if (input_date.isEmpty()) {
     return QDateTime();
   }
 
-  QLocale locale(QLocale::Language::C);
+  static const QLocale locale(QLocale::Language::C);
+
   QDateTime dt;
-  QStringList date_patterns = dateTimePatterns(true);
+  const QStringList* date_patterns = &dateTimePatternsCached(true);
+  QStringList preferred_date_patterns;
 
   if (used_dt_format != nullptr && !used_dt_format->isEmpty()) {
-    date_patterns.prepend(*used_dt_format);
+    preferred_date_patterns = *date_patterns;
+    preferred_date_patterns.prepend(*used_dt_format);
+    date_patterns = &preferred_date_patterns;
   }
 
-  for (const QString& pattern : std::as_const(date_patterns)) {
+  for (const QString& pattern : std::as_const(*date_patterns)) {
 #if QT_VERSION >= 0x060700 // Qt >= 6.7.0
     dt = locale.toDateTime(input_date, pattern, 2000);
 #else
@@ -216,61 +293,7 @@ QDateTime TextFactory::parseDateTime(qint64 milis_from_epoch) {
 }
 
 QStringList TextFactory::dateTimePatterns(bool with_tzs) {
-  QStringList pat;
-
-  pat << QSL("yyyy-MM-ddTHH:mm:ss");
-  pat << QSL("yyyy-MM-ddTHH:mm:ss.z");
-  pat << QSL("yyyy-MM-ddTHH:mm:ss.zzz");
-  pat << QSL("yyyy-MM-ddThh:mm:ss");
-  pat << QSL("yyyy-MM-dd HH:mm:ss.z");
-
-  pat << QSL("yyyy-MM-ddThh:mm");
-
-  pat << QSL("yyyyMMddThhmmss");
-  pat << QSL("yyyyMMdd");
-  pat << QSL("yyyy");
-
-  pat << QSL("yyyy-MM-dd");
-  pat << QSL("yyyy-MM");
-
-  pat << QSL("MMM dd, yyyy HH:mm:ss");
-  pat << QSL("MMM dd yyyy hh:mm:ss");
-  pat << QSL("MMM d yyyy hh:mm:ss");
-
-  pat << QSL("ddd, dd MMM yyyy HH:mm:ss");
-  pat << QSL("ddd, dd MMM yyyy HH:mm");
-  pat << QSL("ddd, dd MMM yy HH:mm:ss");
-  pat << QSL("ddd, dd MMMM yyyy HH:mm:ss");
-  pat << QSL("ddd, d MMM yyyy HH:mm:ss");
-
-  pat << QSL("ddd, MM/dd/yyyy - HH:mm");
-
-  pat << QSL("dd MMM yyyy hh:mm:ss");
-  pat << QSL("dd MMM yyyy hh:mm");
-  pat << QSL("dd MMM yyyy");
-
-  pat << QSL("d MMM yyyy HH:mm:ss");
-  pat << QSL("d MMM yyyy HH:mm");
-
-  pat << QSL("dd-MM-yyyy - HH:mm");
-
-  pat << QSL("hh:mm:ss");
-  pat << QSL("h:m:s");
-  pat << QSL("h:mm");
-  pat << QSL("H:mm");
-  pat << QSL("h:m");
-  pat << QSL("h.m");
-
-  if (with_tzs) {
-    for (int i = 0; i < pat.size(); i += 3) {
-      QString base_pattern = pat.value(i);
-
-      pat.insert(i + 1, base_pattern + QSL("t"));
-      pat.insert(i + 2, base_pattern + QSL(" t"));
-    }
-  }
-
-  return pat;
+  return dateTimePatternsCached(with_tzs);
 }
 
 QString TextFactory::encrypt(const QString& text, quint64 key) {
