@@ -605,17 +605,18 @@ const Message& MessagesModel::messageForRow(int row) const {
 
 void MessagesModel::setupHeaderData() {
   m_headerData << tr("Id") << tr("Read") << tr("Important") << tr("Deleted") << tr("Permanently deleted")
-               << tr("Feed ID") << tr("Title") << tr("URL") << tr("Author") << tr("Date") << tr("Contents")
-               << tr("Score") << tr("Account ID") << tr("Custom ID") << tr("Custom data") << tr("Feed")
-               << tr("Has attachments") << tr("Assigned labels");
+               << tr("Feed ID") << tr("Title") << tr("URL") << tr("Author") << tr("Published") << tr("Received")
+               << tr("Contents") << tr("Score") << tr("Account ID") << tr("Custom ID") << tr("Custom data")
+               << tr("Feed") << tr("Has attachments") << tr("Assigned labels");
 
   m_tooltipData << tr("ID of the article.") << tr("Is article read?") << tr("Is article important?")
                 << tr("Is article deleted?") << tr("Is article permanently deleted from recycle bin?")
                 << tr("ID of feed which this article belongs to.") << tr("Title of the article.")
                 << tr("Url of the article.") << tr("Author of the article.") << tr("Creation date of the article.")
-                << tr("Contents of the article.") << tr("Score of the article.") << tr("Account ID of the article.")
-                << tr("Custom ID of the article.") << tr("Custom account-specific data of the article.")
-                << tr("Name of feed of the article.") << tr("Indication of attachments presence within the article.")
+                << tr("Date and time when the article was received.") << tr("Contents of the article.")
+                << tr("Score of the article.") << tr("Account ID of the article.") << tr("Custom ID of the article.")
+                << tr("Custom account-specific data of the article.") << tr("Name of feed of the article.")
+                << tr("Indication of attachments presence within the article.")
                 << tr("Labels assigned to the article.");
 }
 
@@ -736,6 +737,9 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         case MSG_MDL_DCREATED_INDEX:
           return msg.m_created;
 
+        case MSG_MDL_DRETRIEVED_INDEX:
+          return msg.m_retrieved;
+
         case MSG_MDL_CONTENTS_INDEX:
           return msg.m_contents;
 
@@ -768,7 +772,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
     case Qt::ItemDataRole::DisplayRole: {
       int index_column = idx.column();
 
-      if (index_column == MSG_MDL_DCREATED_INDEX) {
+      if (index_column == MSG_MDL_DCREATED_INDEX || index_column == MSG_MDL_DRETRIEVED_INDEX) {
         QDateTime utc_dt = data(idx, Qt::ItemDataRole::EditRole).toDateTime();
         QDateTime dt = utc_dt.toLocalTime();
 
@@ -869,7 +873,7 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         else if (idx.column() == MSG_MDL_URL_INDEX) {
           return TextFactory::shorten(data(idx, Qt::ItemDataRole::EditRole).toString(), TEXT_TOOLTIP_LIMIT);
         }
-        else if (idx.column() == MSG_MDL_DCREATED_INDEX) {
+        else if (idx.column() == MSG_MDL_DCREATED_INDEX || idx.column() == MSG_MDL_DRETRIEVED_INDEX) {
           return qApp->localization()
             ->loadedLocale()
             .toString(data(idx, Qt::ItemDataRole::EditRole).toDateTime().toLocalTime(),

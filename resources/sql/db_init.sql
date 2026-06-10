@@ -76,6 +76,7 @@ CREATE TABLE Messages (
   account_id      INTEGER         NOT NULL,
   custom_id       VARCHAR(250),
   custom_data     TEXT, /* Custom column for (serialized) custom account-specific data. */
+  date_retrieved  BIGINT          NOT NULL DEFAULT 0 CHECK (date_retrieved >= 0),
 
   FOREIGN KEY (feed)        REFERENCES Feeds (id)     ON DELETE CASCADE, /* You need to temporarily disable foreign checks for MariaDB when refreshing feeds from 3rd-party online API, otherwise its local messages would be deleted. */
   FOREIGN KEY (account_id)  REFERENCES Accounts (id)  ON DELETE CASCADE

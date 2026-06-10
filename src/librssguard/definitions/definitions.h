@@ -211,7 +211,7 @@
 #define APP_DB_SQLITE_FILE   "database.db"
 
 // Keep this in sync with schema versions declared in SQL initialization code.
-#define APP_DB_SCHEMA_VERSION                "102"
+#define APP_DB_SCHEMA_VERSION                "103"
 #define APP_DB_SCHEMA_FIRST_VERSION          "100"
 #define APP_DB_INIT_FILE_PATTERN             "db_init_%1.sql"
 #define APP_DB_UPDATE_FILE_PATTERN           "db_update_%1_%2_%3.sql"
@@ -264,14 +264,15 @@
 #define MSG_MDL_URL_INDEX         7
 #define MSG_MDL_AUTHOR_INDEX      8
 #define MSG_MDL_DCREATED_INDEX    9
-#define MSG_MDL_CONTENTS_INDEX    10
-#define MSG_MDL_SCORE_INDEX       11
-#define MSG_MDL_ACCOUNT_ID_INDEX  12
-#define MSG_MDL_CUSTOM_ID_INDEX   13
-#define MSG_MDL_CUSTOM_DATA_INDEX 14
-#define MSG_MDL_FEED_TITLE_INDEX  15
-#define MSG_MDL_HAS_ENCLOSURES    16
-#define MSG_MDL_LABELS            17
+#define MSG_MDL_DRETRIEVED_INDEX  10
+#define MSG_MDL_CONTENTS_INDEX    11
+#define MSG_MDL_SCORE_INDEX       12
+#define MSG_MDL_ACCOUNT_ID_INDEX  13
+#define MSG_MDL_CUSTOM_ID_INDEX   14
+#define MSG_MDL_CUSTOM_DATA_INDEX 15
+#define MSG_MDL_FEED_TITLE_INDEX  16
+#define MSG_MDL_HAS_ENCLOSURES    17
+#define MSG_MDL_LABELS            18
 
 // Indexes of columns as they are DEFINED IN THE TABLE for MESSAGES.
 #define MSG_DB_ID_INDEX          0
@@ -284,13 +285,14 @@
 #define MSG_DB_URL_INDEX         7
 #define MSG_DB_AUTHOR_INDEX      8
 #define MSG_DB_DCREATED_INDEX    9
-#define MSG_DB_CONTENTS_INDEX    10
-#define MSG_DB_ENCLOSURES_INDEX  11
-#define MSG_DB_SCORE_INDEX       12
-#define MSG_DB_ACCOUNT_ID_INDEX  13
-#define MSG_DB_CUSTOM_ID_INDEX   14
-#define MSG_DB_CUSTOM_DATA_INDEX 15
-#define MSG_DB_LABELS_IDS        16
+#define MSG_DB_DRETRIEVED_INDEX  10
+#define MSG_DB_CONTENTS_INDEX    11
+#define MSG_DB_ENCLOSURES_INDEX  12
+#define MSG_DB_SCORE_INDEX       13
+#define MSG_DB_ACCOUNT_ID_INDEX  14
+#define MSG_DB_CUSTOM_ID_INDEX   15
+#define MSG_DB_CUSTOM_DATA_INDEX 16
+#define MSG_DB_LABELS_IDS        17
 
 // Indexes of columns as they are DEFINED IN THE TABLE for CATEGORIES.
 #define CAT_DB_ID_INDEX          0

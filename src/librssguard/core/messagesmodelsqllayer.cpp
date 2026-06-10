@@ -22,6 +22,7 @@ MessagesModelSqlLayer::MessagesModelSqlLayer() : m_filter(QSL(DEFAULT_SQL_MESSAG
   m_orderByNames.append(QSL("Messages.url"));
   m_orderByNames.append(QSL("Messages.author"));
   m_orderByNames.append(QSL("Messages.date_created"));
+  m_orderByNames.append(QSL("Messages.date_retrieved"));
   m_orderByNames.append(QSL("Messages.contents"));
   m_orderByNames.append(QSL("Messages.enclosures"));
   m_orderByNames.append(QSL("Messages.score"));
@@ -149,6 +150,9 @@ int MessagesModelSqlLayer::mapColumnToDatabase(int column) const {
 
     case MSG_MDL_DCREATED_INDEX:
       return MSG_DB_DCREATED_INDEX;
+
+    case MSG_MDL_DRETRIEVED_INDEX:
+      return MSG_DB_DRETRIEVED_INDEX;
 
     case MSG_MDL_CONTENTS_INDEX:
       return MSG_DB_CONTENTS_INDEX;

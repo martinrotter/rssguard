@@ -11,6 +11,7 @@
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/category.h"
 
+#include <QDateTime>
 #include <QSqlDriver>
 #include <QUrl>
 #include <QVariant>
@@ -28,6 +29,7 @@ QStringList initMessageTableAttributes() {
   field_names.append(QSL("Messages.url"));
   field_names.append(QSL("Messages.author"));
   field_names.append(QSL("Messages.date_created"));
+  field_names.append(QSL("Messages.date_retrieved"));
   field_names.append(QSL("Messages.contents"));
   field_names.append(QSL("Messages.enclosures"));
   field_names.append(QSL("Messages.score"));
@@ -858,24 +860,28 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
       //   3) they have same AUTHOR AND,
       //   4) they have same TITLE.
       // NOTE: This only applies to messages from standard RSS/ATOM/JSON feeds without ID/GUID.
-      query_select_with_url.prepare(QSL("SELECT id, date_created, is_read, is_important, contents, feed FROM Messages "
+      query_select_with_url.prepare(QSL("SELECT id, date_created, is_read, is_important, contents, feed "
+                                        "FROM Messages "
                                         "WHERE feed = :feed AND title = :title AND url = :url AND author = :author;"));
 
       // When we have custom ID of the message which is service-specific (synchronized services).
       query_select_with_custom_id
-        .prepare(QSL("SELECT id, date_created, is_read, is_important, contents, feed, title, author FROM Messages "
+        .prepare(QSL("SELECT id, date_created, is_read, is_important, contents, feed, title, author "
+                     "FROM Messages "
                      "WHERE custom_id = :custom_id AND account_id = :account_id;"));
 
       // We have custom ID of message, but it is feed-specific not service-specific (standard RSS/ATOM/JSON).
       query_select_with_custom_id_for_feed
-        .prepare(QSL("SELECT id, date_created, is_read, is_important, contents, title, author FROM Messages "
+        .prepare(QSL("SELECT id, date_created, is_read, is_important, contents, title, author "
+                     "FROM Messages "
                      "WHERE custom_id = :custom_id AND feed = :feed;"));
 
       // In some case, messages are already stored in the DB and they all have primary DB ID.
       // This is particularly the case when user runs some message filter manually on existing messages
       // of some feed.
       query_select_with_id
-        .prepare(QSL("SELECT date_created, is_read, is_important, contents, feed, title, author FROM Messages "
+        .prepare(QSL("SELECT date_created, is_read, is_important, contents, feed, title, author "
+                     "FROM Messages "
                      "WHERE id = :id;"));
 
       for (Message& message : messages) {
@@ -1089,7 +1095,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
         .prepare(QSL("UPDATE Messages "
                      "SET title = :title, is_read = :is_read, is_important = :is_important, is_deleted = "
                      ":is_deleted, url = :url, author = :author, score = :score, date_created = :date_created, "
-                     "contents = :contents, enclosures = :enclosures, feed = :feed "
+                     "date_retrieved = :date_retrieved, contents = :contents, enclosures = :enclosures, feed = :feed "
                      "WHERE id = :id;"));
 
       for (int i = 0; i < msgs_to_update.size(); i++) {
@@ -1106,6 +1112,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
         query_update.bindValue(QSL(":url"), unnulifyString(message_update.m_url));
         query_update.bindValue(QSL(":author"), unnulifyString(message_update.m_author));
         query_update.bindValue(QSL(":date_created"), message_update.m_created.toMSecsSinceEpoch());
+        query_update.bindValue(QSL(":date_retrieved"), message_update.m_retrieved.toMSecsSinceEpoch());
         query_update.bindValue(QSL(":contents"), unnulifyString(message_update.m_contents));
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message_update.m_enclosures));
         query_update.bindValue(QSL(":feed"), message_update.m_feedId);
@@ -1142,13 +1149,14 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
 
     QString bulk_insert = QSL("INSERT INTO Messages "
                               "(feed, title, is_read, is_important, is_deleted, url, author, score, date_created, "
-                              "contents, enclosures, custom_id, custom_data, account_id) "
+                              "date_retrieved, contents, enclosures, custom_id, custom_data, account_id) "
                               "VALUES %1;");
 
     qApp->database()->worker()->write([&](const QSqlDatabase& db) {
       for (int i = 0; i < msgs_to_insert.size(); i += 1000) {
         QStringList vals;
         int batch_length = std::min(1000, int(msgs_to_insert.size()) - i);
+        const QDateTime retrieval_time = QDateTime::currentDateTimeUtc();
 
         for (int l = i; l < (i + batch_length); l++) {
           Message* msg = msgs_to_insert[l];
@@ -1160,8 +1168,12 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
             continue;
           }
 
+          if (!msg->m_retrieved.isValid()) {
+            msg->m_retrieved = retrieval_time;
+          }
+
           vals.append(QSL("\n(:feed, ':title', :is_read, :is_important, :is_deleted, "
-                          "':url', ':author', :score, :date_created, ':contents', ':enclosures', "
+                          "':url', ':author', :score, :date_created, :date_retrieved, ':contents', ':enclosures', "
                           "':custom_id', ':custom_data', :account_id)")
                         .replace(QSL(":feed"), QString::number(feed_id))
                         .replace(QSL(":title"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_title)))
@@ -1171,6 +1183,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
                         .replace(QSL(":url"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_url)))
                         .replace(QSL(":author"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_author)))
                         .replace(QSL(":date_created"), QString::number(msg->m_created.toMSecsSinceEpoch()))
+                        .replace(QSL(":date_retrieved"), QString::number(msg->m_retrieved.toMSecsSinceEpoch()))
                         .replace(QSL(":contents"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_contents)))
                         .replace(QSL(":enclosures"),
                                  DatabaseFactory::escapeQuery(Enclosures::encodeEnclosuresToString(msg->m_enclosures)))

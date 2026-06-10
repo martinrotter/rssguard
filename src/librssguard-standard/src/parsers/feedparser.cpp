@@ -264,6 +264,9 @@ QList<Message> FeedParser::messages() {
   // Fixup missing data.
   //
   // NOTE: Message must have "title" field, otherwise it is skipped.
+
+  QDateTime retrieved_time = current_time;
+
   for (int i = 0; i < messages.size(); i++) {
     Message& new_message = messages[i];
 
@@ -288,11 +291,12 @@ QList<Message> FeedParser::messages() {
 
     if (!new_message.m_createdFromFeed) {
       // Date was NOT obtained from the feed, set current date as creation date for the message.
-      // NOTE: Date is lessened by 1 second for each message to allow for more
-      // stable sorting.
-      new_message.m_created = current_time.addSecs(-1);
-      current_time = new_message.m_created;
+      // NOTE: Date is lessened by 1 ms for each message to allow for more stable sorting.
+      new_message.m_created = current_time = current_time.addMSecs(-1);
     }
+
+    // Received date.
+    new_message.m_retrieved = retrieved_time = retrieved_time.addMSecs(1);
 
     // Enclosures, also remove duplicates.
     QStringList enc_urls;

@@ -17,6 +17,7 @@ Added:
 * Standard RSS/ATOM feeds can now override the application-wide feed connection timeout per feed. (#1023)
 * Tray icon can now use a custom background color and unread-count text color, with an option to reuse the generated icon as the application icon. (#1973)
 * Support for more benevolent parsing of Gemlog entries (#2295).
+* Article list can now show when an article was received by RSS Guard. (#947)
 
 Fixed:
 * Parallel feed updates no longer crash when multiple update results are processed at the same time. (64cf52158)

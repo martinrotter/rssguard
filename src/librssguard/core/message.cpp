@@ -98,6 +98,7 @@ Message::Message(const Message& other) {
   m_customId = other.m_customId;
   m_customData = other.m_customData;
   m_created = other.m_created;
+  m_retrieved = other.m_retrieved;
   m_createdFromFeed = other.m_createdFromFeed;
   m_insertedUpdated = other.m_insertedUpdated;
 
@@ -193,6 +194,7 @@ Message Message::fromSqlQuery(const SqlQuery& record, const QHash<QString, Label
   message.m_url = record.value(MSG_DB_URL_INDEX).toString();
   message.m_author = record.value(MSG_DB_AUTHOR_INDEX).toString();
   message.m_created = TextFactory::parseDateTime(record.value(MSG_DB_DCREATED_INDEX).value<qint64>());
+  message.m_retrieved = TextFactory::parseDateTime(record.value(MSG_DB_DRETRIEVED_INDEX).value<qint64>());
   message.m_contents = record.value(MSG_DB_CONTENTS_INDEX).toString();
   message.m_enclosures = Enclosures::decodeEnclosuresFromString(record.value(MSG_DB_ENCLOSURES_INDEX).toString());
   message.m_score = record.value(MSG_DB_SCORE_INDEX).toDouble();
