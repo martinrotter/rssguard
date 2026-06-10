@@ -130,6 +130,7 @@ Here is the complete reference documentation of the functions and properties ava
 | `score`            | `Number`                  | No        | No           | Arbitrary number in the range \<0.0, 100.0\>. Useful for custom ranking and sorting. |
 | `hasEnclosures`    | `Boolean`                 | Yes       | No           | Returns `true` if the article has at least one enclosure or attachment. |
 | `created`          | `Date`                    | No        | No           | Date and time of the message. |
+| `retrieved`        | `Date`                    | No        | No           | Date and time when RSS Guard received this version of the message. |
 | `createdIsMadeup`  | `Boolean`                 | Yes       | No           | Is `true` if the message timestamp was synthesized instead of taken from the source feed. |
 | `isRead`           | `Boolean`                 | No        | Yes          | Is the message read? |
 | `isImportant`      | `Boolean`                 | No        | Yes          | Is the message important? |
@@ -387,6 +388,23 @@ function filterMessage() {
 
   if (age > 7) {
     return Msg.Ignore;
+  }
+
+  return Msg.Accept;
+}
+```
+
+```js
+/*
+ * Purge articles that were received by RSS Guard more than 2 days ago.
+ * This differs from msg.created, which is the publication date from the feed.
+ */
+function filterMessage() {
+  let now = new Date();
+  let age = (now - msg.retrieved) / (1000 * 60 * 60 * 24);
+
+  if (age > 2) {
+    return Msg.Purge;
   }
 
   return Msg.Accept;

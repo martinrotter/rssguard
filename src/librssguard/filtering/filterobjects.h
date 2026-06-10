@@ -26,6 +26,7 @@ class FilterMessage : public QObject {
     Q_PROPERTY(QString contents READ contents WRITE setContents)
     Q_PROPERTY(QString rawContents READ rawContents WRITE setRawContents)
     Q_PROPERTY(QDateTime created READ created WRITE setCreated)
+    Q_PROPERTY(QDateTime retrieved READ retrieved WRITE setRetrieved)
     Q_PROPERTY(bool createdIsMadeup READ createdIsMadeup WRITE setCreatedIsMadeup)
     Q_PROPERTY(double score READ score WRITE setScore)
     Q_PROPERTY(bool isRead READ isRead WRITE setIsRead)
@@ -129,6 +130,9 @@ class FilterMessage : public QObject {
 
     QDateTime created() const;
     void setCreated(const QDateTime& created);
+
+    QDateTime retrieved() const;
+    void setRetrieved(const QDateTime& retrieved);
 
     bool createdIsMadeup() const;
     void setCreatedIsMadeup(bool madeup);

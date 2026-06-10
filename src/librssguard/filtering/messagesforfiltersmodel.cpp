@@ -14,7 +14,7 @@
 
 MessagesForFiltersModel::MessagesForFiltersModel(QObject* parent) : QAbstractTableModel(parent) {
   m_headerData << tr("Result") << tr("Read") << tr("Important") << tr("Trash") << tr("Title") << tr("Date")
-               << tr("Score");
+               << tr("Received") << tr("Score");
 
   m_txtTrue = tr("true");
   m_txtFalse = tr("false");
@@ -116,6 +116,9 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
           case MFM_MODEL_CREATED:
             return msg->m_created != msg_original.m_created ? interest : QVariant();
 
+          case MFM_MODEL_RETRIEVED:
+            return msg->m_retrieved != msg_original.m_retrieved ? interest : QVariant();
+
           case MFM_MODEL_SCORE:
             return msg->m_score != msg_original.m_score ? interest : QVariant();
         }
@@ -144,6 +147,9 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
 
         case MFM_MODEL_CREATED:
           return msg->m_created;
+
+        case MFM_MODEL_RETRIEVED:
+          return msg->m_retrieved;
 
         case MFM_MODEL_SCORE:
           return msg->m_score;
@@ -179,6 +185,11 @@ QVariant MessagesForFiltersModel::data(const QModelIndex& index, int role) const
           return QSL(VALUE_COMPARISON_FORMAT)
             .arg(msg->m_created.toString(Qt::DateFormat::ISODate),
                  msg_original.m_created.toString(Qt::DateFormat::ISODate));
+
+        case MFM_MODEL_RETRIEVED:
+          return QSL(VALUE_COMPARISON_FORMAT)
+            .arg(msg->m_retrieved.toString(Qt::DateFormat::ISODate),
+                 msg_original.m_retrieved.toString(Qt::DateFormat::ISODate));
 
         case MFM_MODEL_SCORE:
           return QSL(VALUE_COMPARISON_FORMAT).arg(QString::number(msg->m_score), QString::number(msg_original.m_score));

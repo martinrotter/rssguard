@@ -14,7 +14,8 @@
 #define MFM_MODEL_ISDELETED   3
 #define MFM_MODEL_TITLE       4
 #define MFM_MODEL_CREATED     5
-#define MFM_MODEL_SCORE       6
+#define MFM_MODEL_RETRIEVED   6
+#define MFM_MODEL_SCORE       7
 
 #define VALUE_COMPARISON_FORMAT "%2  ↴\n%1"
 

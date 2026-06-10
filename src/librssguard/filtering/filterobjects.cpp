@@ -134,6 +134,14 @@ void FilterMessage::setCreated(const QDateTime& created) {
   m_message->m_created = created;
 }
 
+QDateTime FilterMessage::retrieved() const {
+  return m_message->m_retrieved;
+}
+
+void FilterMessage::setRetrieved(const QDateTime& retrieved) {
+  m_message->m_retrieved = retrieved;
+}
+
 bool FilterMessage::createdIsMadeup() const {
   return !m_message->m_createdFromFeed;
 }
