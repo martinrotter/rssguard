@@ -24,13 +24,69 @@ If you report a bug, please almost always attach the RSS Guard application debug
 
 The debug log is useful for crashes, broken feed downloads, account problems, network errors, GUI glitches, startup problems, and many other issues. If you are not sure whether a log is needed, attach it.
 
-See [Logging](../features/cli.md#logging) to learn how to start RSS Guard with logging enabled.
+```{warning}
+The application log can contain private information, such as feed URLs, article titles, account names, server addresses, and network error details.
+Check the log before attaching it publicly if you use private feeds or private services.
+```
 
-After starting RSS Guard with logging enabled:
+### Create a Log File
 
-1. Reproduce the problem.
+The best log for bug reports is usually a file created from the command line.
+
+1. Open `Settings -> General` and make sure `Disable CLI debug output (but keep more serious warnings enabled)` is not checked.
 2. Close RSS Guard.
-3. Attach the generated log file to your issue.
+3. Start RSS Guard from a terminal with the `--log` option.
+4. Reproduce the problem.
+5. Close RSS Guard, so the log file is fully written.
+6. Attach the generated log file to your issue.
+
+The setting above can intentionally hide debug and informational messages from command-line output and log files.
+Warnings and errors are still logged, but the resulting file may miss details needed for harder bugs.
+If you cannot change the setting, or if you want to be sure that debug messages are included for one run, start RSS Guard with both `--debug` and `--log`.
+
+If RSS Guard is available in your `PATH`, this is enough:
+
+```bash
+rssguard --log "rssguard.log"
+```
+
+If you need a more detailed log, add `--debug`:
+
+```bash
+rssguard --debug --log "rssguard.log"
+```
+
+On Windows, you can run RSS Guard from its installation folder or use the full path. Adjust the path if you installed RSS Guard somewhere else:
+
+```batch
+"%ProgramFiles%\RSS Guard\rssguard.exe" --log "%USERPROFILE%\Desktop\rssguard.log"
+```
+
+For a portable Windows package, open Command Prompt in the unpacked RSS Guard folder and run:
+
+```batch
+rssguard.exe --log "%USERPROFILE%\Desktop\rssguard.log"
+```
+
+On Linux, run:
+
+```bash
+rssguard --log "$HOME/rssguard.log"
+```
+
+On macOS, if RSS Guard is installed as an application bundle, run the executable inside the bundle:
+
+```bash
+/Applications/RSSGuard.app/Contents/MacOS/rssguard --log "$HOME/Desktop/rssguard.log"
+```
+
+You can also pass an empty file name. In that case, RSS Guard stores the log file in its user data folder:
+
+```bash
+rssguard --log ""
+```
+
+If RSS Guard does not start normally, start it with logging enabled first, then reproduce the startup problem as far as possible and attach the created log.
 
 ```{attention}
 The application log can also be displayed directly in RSS Guard via the `Help > Display application log` menu item.

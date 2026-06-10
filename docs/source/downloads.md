@@ -37,7 +37,7 @@ RSS Guard binaries provided via the official [download page](https://github.com/
 ```{attention}
 Most required runtime files are bundled with official packages, but if Windows still reports a missing runtime DLL, installing the current Microsoft Visual C++ redistributables usually fixes it. If you want a broader package, this [All-in-One runtime DLL pack](https://github.com/abbodi1406/vcredist/releases) is also a practical option.
 
-Also, if your RSS Guard crashes on Windows upon article selection or when starting, then you might have some DirectX libraries missing. Install them with the below command or use dedicated DirectX installers from Microsoft. You can see more information about the crashes if you run RSS Guard with file [logging](features/cli) enabled.
+Also, if your RSS Guard crashes on Windows upon article selection or when starting, then you might have some DirectX libraries missing. Install them with the below command or use dedicated DirectX installers from Microsoft. You can see more information about the crashes if you run RSS Guard with file [logging](contrib/bugs.md#application-debug-log) enabled.
 
 `dism /Online /Add-Capability /CapabilityName:Tools.Graphics.DirectX~~~~0.0.1.0`
 ```
