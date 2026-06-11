@@ -728,7 +728,7 @@ Veuillez changer le nom de la base de donnée en cours d'utilisation, et réessa
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="409"/>
       <source>contains no articles</source>
-      <translation type="unfinished">contains no articles</translation>
+      <translation>ne contient pas d'articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="412"/>
@@ -1681,24 +1681,24 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="40"/>
       <source>operation was cancelled</source>
-      <translation type="unfinished">operation was cancelled</translation>
+      <translation>opération annulée</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="46"/>
       <source>Username should not be empty.</source>
-      <translation type="unfinished">Username should not be empty.</translation>
+      <translation>Nom d'utilisateur requis.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="49"/>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="58"/>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="58"/>
       <source>OK.</source>
-      <translation type="unfinished">OK.</translation>
+      <translation>OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="55"/>
       <source>Password should not be empty.</source>
-      <translation type="unfinished">Password should not be empty.</translation>
+      <translation>Mot de passe requis.</translation>
     </message>
   </context>
   <context>
@@ -2271,7 +2271,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="228"/>
       <source>Open articles via their URL automatically</source>
-      <translation type="unfinished">Open articles via their URL automatically</translation>
+      <translation>Ouvrir les articles via leur lien automatiquement</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="131"/>
@@ -2938,7 +2938,7 @@ de la fenêtre principale</translation>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1039"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="880"/>
       <source>Delete stored &amp;cookies</source>
-      <translation type="unfinished">Delete stored &amp;cookies</translation>
+      <translation>Supprimer les &amp;cookies enregistrés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1044"/>
@@ -3248,12 +3248,12 @@ nouveau flux</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="823"/>
       <source>Cookies deleted</source>
-      <translation type="unfinished">Cookies deleted</translation>
+      <translation>Cookies supprimés</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="823"/>
       <source>Stored cookies were deleted.</source>
-      <translation type="unfinished">Stored cookies were deleted.</translation>
+      <translation>Les cookies enregistrés ont été supprimés.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="829"/>
@@ -3738,7 +3738,7 @@ Vous devez redémarrer manuellement.</translation>
       <location filename="../src/librssguard/gui/dialogs/formsettings.ui" line="20"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formsettings.h" line="86"/>
       <source>Search settings...</source>
-      <translation type="unfinished">Search settings...</translation>
+      <translation>Paramètres de recherche...</translation>
     </message>
   </context>
   <context>
@@ -6725,17 +6725,17 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="654"/>
       <source>folders background (highlighted)</source>
-      <translation type="unfinished">folders background (highlighted)</translation>
+      <translation>arrière-plan des dossiers (surligné)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="657"/>
       <source>article counts</source>
-      <translation type="unfinished">article counts</translation>
+      <translation>nombre d'articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="660"/>
       <source>article counts (highlighted)</source>
-      <translation type="unfinished">article counts (highlighted)</translation>
+      <translation>nombre d'articles (surligné)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssnetworkfactory.cpp" line="1011"/>
@@ -6870,26 +6870,26 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="235"/>
       <source>Image not decoded</source>
-      <translation type="unfinished">Image not decoded</translation>
+      <translation>Image non décodée</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="236"/>
       <source>Failed to decode image &apos;%1&apos;.</source>
-      <translation type="unfinished">Failed to decode image &apos;%1&apos;.</translation>
+      <translation>Échec du décodage de l'image &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="243"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="290"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="290"/>
       <source>Image not downloaded</source>
-      <translation type="unfinished">Image not downloaded</translation>
+      <translation>Image non téléchargée</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="244"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="291"/>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="291"/>
       <source>Failed to download image &apos;%1&apos; with error &apos;%2&apos;.</source>
-      <translation type="unfinished">Failed to download image &apos;%1&apos; with error &apos;%2&apos;.</translation>
+      <translation>Échec du téléchargement de l'image &apos;%1&apos; avec l'erreur &apos;%2&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="272"/>
@@ -7963,13 +7963,13 @@ Ceci peut accélerer de façon très significative l'appli si vous avez des cent
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="131"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
       <source>Only auto-fetch articles if network is connected</source>
-      <translation type="unfinished">Only auto-fetch articles if network is connected</translation>
+      <translation>Récupérer automatiquement les articles uniquement si le réseau est connecté</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="698"/>
       <source>Only auto-fetch articles if Game Mode is not active</source>
-      <translation type="unfinished">Only auto-fetch articles if Game Mode is not active</translation>
+      <translation>Récupérer automatiquement les articles uniquement si le mode de jeu n'est pas actif</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="146"/>
@@ -8304,7 +8304,7 @@ Ceci peut accélerer de façon très significative l'appli si vous avez des cent
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="311"/>
       <source>Clear color</source>
-      <translation type="unfinished">Clear color</translation>
+      <translation>Supprimer la couleur</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="181"/>
@@ -8646,7 +8646,7 @@ Déscription: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="34"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="127"/>
       <source>Ignore all cookies</source>
-      <translation type="unfinished">Ignore all cookies</translation>
+      <translation>Ignorer tous les cookies</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="41"/>
@@ -9139,15 +9139,15 @@ HTTP/2: %6
 Ignore cookies: %7
 Report empty feed as broken: %8
 Fetch full articles: %9 (plain text only: %10)</source>
-      <translation type="unfinished">Encoding: %1
+      <translation>Encodage: %1
 Type: %2
-Post-processing script: %3
-Use raw XML saving: %4
-Fetch article comments: %5
+Script de post-traitement: %3
+Utiliser la sauvegarde XML brute: %4
+Récupérer les commentaires d'article: %5
 HTTP/2: %6
-Ignore cookies: %7
-Report empty feed as broken: %8
-Fetch full articles: %9 (plain text only: %10)</translation>
+Ignorer les cookies: %7
+Signaler un flux vide comme invalide: %8
+Récupérer les articles complets: %9 (texte brut uniquement: %10)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="493"/>
@@ -9417,7 +9417,7 @@ Vous pouvez aussi post-traiter la data de flux avec encore un autre script si vo
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="108"/>
       <source>Report feed as broken when it contains no articles</source>
-      <translation type="unfinished">Report feed as broken when it contains no articles</translation>
+      <translation>Signaler le flux comme invalide quand il ne contient aucun article</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.ui" line="125"/>
@@ -9446,7 +9446,7 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="40"/>
       <source>When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</source>
-      <translation type="unfinished">When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</translation>
+      <translation>Lorsqu'activé, un flux téléchargé et analysé avec succès qui ne contient aucun article sera signalé comme invalide. Les flux vides sont valides, donc gardez cette option désactivée pour les fils où aucun article n'est attendu.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="46"/>
@@ -9479,7 +9479,7 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="56"/>
       <source>Ignore cookies when downloading this feed</source>
-      <translation type="unfinished">Ignore cookies when downloading this feed</translation>
+      <translation>Ignorer les cookies lors du téléchargement de ce flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="65"/>
@@ -9489,7 +9489,7 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="89"/>
       <source>Extra domains</source>
-      <translation type="unfinished">Extra domains</translation>
+      <translation>Noms de domaines supplémentaires</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="113"/>
@@ -9511,9 +9511,9 @@ Ce paramètre est utile quand l'extraction des données XML brutes du flux est t
       <source>Resources (images, CSS, etc.) server from these domains will also be downloaded via proxy, if the proxy is set. Enter each domain on separate line.
 
 This feature only works on &quot;web&quot; version of the app, because on &quot;text&quot; version is not needed, as the proxy resolution there is fully automatic.</source>
-      <translation type="unfinished">Resources (images, CSS, etc.) server from these domains will also be downloaded via proxy, if the proxy is set. Enter each domain on separate line.
+      <translation>Les serveurs de type ressources (images, CSS, etc.) seront aussi télécharges via proxy, si le proxy est configuré. Entrez un nom de domaine par ligne.
 
-This feature only works on &quot;web&quot; version of the app, because on &quot;text&quot; version is not needed, as the proxy resolution there is fully automatic.</translation>
+Cette fonctionnalité marche que sur la version &quot;web&quot; d'RSS Guard, parce que sur la version &quot;texte&quot; elle n'est pas nécessaire, vu que la resolution de proxy dessus est automatique.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="43"/>
@@ -10281,7 +10281,7 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="77"/>
       <source>Proxy &apos;%1&apos; authentication</source>
-      <translation type="unfinished">Proxy &apos;%1&apos; authentication</translation>
+      <translation>Authentification Proxy &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/qtwebengine/webenginepage.cpp" line="91"/>
@@ -10582,12 +10582,12 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="735"/>
       <source>Navigate to website(s) manually</source>
-      <translation type="unfinished">Navigate to website(s) manually</translation>
+      <translation>Naviguer vers le(s) site(s) web manuellement</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="736"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</source>
-      <translation type="unfinished">%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</translation>
+      <translation>%1 n&apos;a pas pu lancer votre navigateur web avec le lien fourni, vous devez ouvrir le lien ci-dessous dans votre navigateur manuellement.</translation>
     </message>
   </context>
   <context>
