@@ -454,6 +454,8 @@ void FeedsView::editRecursiveFeeds() {
 void FeedsView::changeFilter(FeedsProxyModel::FeedListFilter filter) {
   m_proxyModel->setFeedListFilter(filter);
 
+  QTimer::singleShot(0, this, &FeedsView::loadAllExpandStates);
+
   QTimer::singleShot(1000, this, [this]() {
     if (!selectionModel()->selectedRows().isEmpty()) {
       scrollTo(selectionModel()->selectedRows().at(0),
@@ -886,11 +888,7 @@ void FeedsView::reloadDelayedExpansions() {
   auto expansions = m_delayedItemExpansions;
 
   for (const QModelIndex& idx : expansions) {
-    auto idx_src = m_proxyModel->mapFromSource(idx);
-
-    if (idx_src.isValid()) {
-      setExpanded(idx_src, true);
-    }
+    loadExpandState(idx);
   }
 
   m_dontSaveExpandState = false;
@@ -898,19 +896,19 @@ void FeedsView::reloadDelayedExpansions() {
 }
 
 void FeedsView::loadAllExpandStates() {
-  const Settings* settings = qApp->settings();
   QList<RootItem*> expandable_items;
 
   expandable_items.append(sourceModel()->rootItem()->getSubTree(RootItem::Kind::Category | RootItem::Kind::ServiceRoot |
                                                                 RootItem::Kind::Labels | RootItem::Kind::Probes));
 
-  // Iterate all categories and save their expand statuses.
-  for (const RootItem* item : expandable_items) {
-    const QString setting_name = item->hashCode();
+  m_dontSaveExpandState = true;
 
-    setExpanded(model()->mapFromSource(sourceModel()->indexForItem(item)),
-                settings->value(GROUP(CategoriesExpandStates), setting_name, item->childCount() > 0).toBool());
+  // Iterate all categories and restore their expand statuses.
+  for (const RootItem* item : expandable_items) {
+    loadExpandState(sourceModel()->indexForItem(item));
   }
+
+  m_dontSaveExpandState = false;
 
   sortByColumn(qApp->settings()->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt(),
                static_cast<Qt::SortOrder>(qApp->settings()
@@ -918,9 +916,33 @@ void FeedsView::loadAllExpandStates() {
                                             .toInt()));
 }
 
+void FeedsView::loadExpandState(const QModelIndex& source_idx) {
+  if (!source_idx.isValid()) {
+    return;
+  }
+
+  const QModelIndex proxy_idx = model()->mapFromSource(source_idx);
+
+  if (!proxy_idx.isValid()) {
+    return;
+  }
+
+  const RootItem* item = sourceModel()->itemForIndex(source_idx);
+
+  if (item == nullptr) {
+    return;
+  }
+
+  const QString setting_name = item->hashCode();
+  const bool expanded =
+    qApp->settings()->value(GROUP(CategoriesExpandStates), setting_name, item->childCount() > 0).toBool();
+
+  setExpanded(proxy_idx, expanded);
+}
+
 void FeedsView::reloadItemExpandState(const QModelIndex& source_idx) {
-  //  Model requests to expand some items as they are visible and there is
-  //  a filter active, so they maybe were not visible before.
+  //  Model requests to restore expansion state for items which are visible now
+  //  but maybe were not visible before.
   if (!source_idx.isValid()) {
     return;
   }

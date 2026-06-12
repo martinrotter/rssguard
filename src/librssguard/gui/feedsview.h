@@ -117,6 +117,7 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
 
     void reloadDelayedExpansions();
     void reloadItemExpandState(const QModelIndex& source_idx);
+    void loadExpandState(const QModelIndex& source_idx);
     void markSelectedItemReadStatus(RootItem::ReadStatus read);
     void markAllItemsReadStatus(RootItem::ReadStatus read);
 
