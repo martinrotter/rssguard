@@ -12,7 +12,9 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QByteArray>
 #include <QString>
+#include <QUrl>
 
 struct FeedComment {
     QString m_title;
@@ -22,6 +24,11 @@ struct FeedComment {
 struct GuessedFeedWithIcons {
     StandardFeed* m_feed = nullptr;
     QList<IconLocation> m_icons;
+};
+
+struct DocumentWithUrl {
+    QByteArray m_documentData;
+    QUrl m_documentUrl;
 };
 
 // Base class for all XML-based feed parsers.
@@ -38,7 +45,10 @@ class FeedParser {
     virtual ~FeedParser();
 
     // Returns list of absolute URLs of discovered feeds from provided base URL.
-    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const;
+    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
+                                               const QUrl& url,
+                                               bool greedy,
+                                               const QList<DocumentWithUrl>& documents = {}) const;
 
     // Guesses feed.
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content,
@@ -102,6 +112,8 @@ class FeedParser {
     virtual QString objMessageRawContents(const QVariant& msg_element) const;
 
   protected:
+    static NetworkResult networkResultForDocument(const DocumentWithUrl& document, const QUrl& fallback_url);
+
     void logUnsuccessfulRequest(const NetworkResult& reply) const;
     QList<QSharedPointer<MessageEnclosure>> xmlMrssGetEnclosures(const QDomElement& msg_element) const;
     QString xmlMrssTextFromPath(const QDomElement& msg_element, const QString& xml_path) const;

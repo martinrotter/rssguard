@@ -17,48 +17,37 @@ IcalParser::IcalParser(const QString& data)
 
 IcalParser::~IcalParser() {}
 
-QList<StandardFeed*> IcalParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
-  auto base_result = FeedParser::discoverFeeds(root, url, greedy);
+QList<StandardFeed*> IcalParser::discoverFeeds(ServiceRoot* root,
+                                               const QUrl& url,
+                                               bool greedy,
+                                               const QList<DocumentWithUrl>& documents) const {
+  auto base_result = FeedParser::discoverFeeds(root, url, greedy, documents);
 
   if (!base_result.isEmpty()) {
     return base_result;
   }
 
-  QList<QPair<QByteArray, QByteArray>> headers = {
-    {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::iCalendar).toLocal8Bit()}};
+  Q_UNUSED(root)
 
-  QString my_url = url.toString();
+  QList<StandardFeed*> feeds;
 
   // Test direct URL for a feed.
-  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QByteArray data;
-  auto res = NetworkFactory::performNetworkOperation(my_url,
-                                                     timeout,
-                                                     {},
-                                                     data,
-                                                     QNetworkAccessManager::Operation::GetOperation,
-                                                     headers,
-                                                     {},
-                                                     {},
-                                                     {},
-                                                     root->networkProxy());
+  for (const DocumentWithUrl& document : documents) {
+    const NetworkResult document_result = networkResultForDocument(document, url);
 
-  if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     try {
       // 1.
-      auto guessed_feed = guessFeed(data, res);
+      auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
-      return {guessed_feed.m_feed};
+      feeds.append(guessed_feed.m_feed);
     }
     catch (...) {
-      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(document_result.m_url.toString())
+               << "is not a direct ICAL feed file.";
     }
   }
-  else {
-    logUnsuccessfulRequest(res);
-  }
 
-  return {};
+  return feeds;
 }
 
 GuessedFeedWithIcons IcalParser::guessFeed(const QByteArray& content, const NetworkResult& network_res) const {

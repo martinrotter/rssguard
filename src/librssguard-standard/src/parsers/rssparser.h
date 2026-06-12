@@ -14,7 +14,10 @@ class RssParser : public FeedParser {
     explicit RssParser(const QString& data);
     virtual ~RssParser();
 
-    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const;
+    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
+                                               const QUrl& url,
+                                               bool greedy,
+                                               const QList<DocumentWithUrl>& documents) const;
 
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content, const NetworkResult& network_res) const;
 

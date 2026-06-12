@@ -12,7 +12,10 @@ class JsonParser : public FeedParser {
     explicit JsonParser(const QString& data);
     virtual ~JsonParser();
 
-    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const;
+    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
+                                               const QUrl& url,
+                                               bool greedy,
+                                               const QList<DocumentWithUrl>& documents) const;
 
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content, const NetworkResult& network_res) const;
 

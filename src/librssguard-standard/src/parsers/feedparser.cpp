@@ -47,27 +47,49 @@ FeedParser::FeedParser(QString data, DataType is_xml)
 
 FeedParser::~FeedParser() {}
 
-QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
+QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root,
+                                               const QUrl& url,
+                                               bool greedy,
+                                               const QList<DocumentWithUrl>& documents) const {
   Q_UNUSED(root)
   Q_UNUSED(greedy)
 
   if (url.isLocalFile()) {
-    QString file_path = url.toLocalFile();
+    QList<DocumentWithUrl> local_documents = documents;
 
-    if (QFile::exists(file_path)) {
-      try {
-        auto guessed_feed = guessFeed(IOFactory::readFile(file_path));
+    if (local_documents.isEmpty()) {
+      local_documents.append({{}, url});
+    }
 
-        guessed_feed.m_feed->setSourceType(StandardFeed::SourceType::LocalFile);
-        guessed_feed.m_feed->setSource(file_path);
+    QList<StandardFeed*> feeds;
 
-        return {guessed_feed.m_feed};
+    for (const DocumentWithUrl& document : std::as_const(local_documents)) {
+      const QUrl document_url = document.m_documentUrl.isValid() ? document.m_documentUrl : url;
+
+      if (!document_url.isLocalFile()) {
+        continue;
       }
-      catch (const ApplicationException& ex) {
-        qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(file_path)
-                 << "is not a local feed file:" << NONQUOTE_W_SPACE_DOT(ex.message());
+
+      QString file_path = document_url.toLocalFile();
+
+      if (QFile::exists(file_path)) {
+        try {
+          auto guessed_feed =
+            guessFeed(document.m_documentData.isEmpty() ? IOFactory::readFile(file_path) : document.m_documentData);
+
+          guessed_feed.m_feed->setSourceType(StandardFeed::SourceType::LocalFile);
+          guessed_feed.m_feed->setSource(file_path);
+
+          feeds.append(guessed_feed.m_feed);
+        }
+        catch (const ApplicationException& ex) {
+          qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(file_path)
+                   << "is not a local feed file:" << NONQUOTE_W_SPACE_DOT(ex.message());
+        }
       }
     }
+
+    return feeds;
   }
 
   return {};
@@ -75,6 +97,14 @@ QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
 GuessedFeedWithIcons FeedParser::guessFeed(const QByteArray& content, const NetworkResult& network_res) const {
   return {};
+}
+
+NetworkResult FeedParser::networkResultForDocument(const DocumentWithUrl& document, const QUrl& fallback_url) {
+  NetworkResult result;
+
+  result.m_url = document.m_documentUrl.isValid() ? document.m_documentUrl : fallback_url;
+
+  return result;
 }
 
 QString FeedParser::xmlMessageRawContents(const QDomElement& msg_element) const {

@@ -21,8 +21,11 @@ SitemapParser::SitemapParser(const QString& data) : FeedParser(data) {}
 
 SitemapParser::~SitemapParser() {}
 
-QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
-  auto base_result = FeedParser::discoverFeeds(root, url, greedy);
+QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
+                                                  const QUrl& url,
+                                                  bool greedy,
+                                                  const QList<DocumentWithUrl>& documents) const {
+  auto base_result = FeedParser::discoverFeeds(root, url, greedy, documents);
   QHash<QString, StandardFeed*> feeds;
 
   if (!base_result.isEmpty()) {
@@ -43,7 +46,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
   int sitemap_index_limit = 2;
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-  // 1. Direct URL test. If sitemap index, process its children. If found, stop if non-recursive
+  // 1. Direct document test. If sitemap index, process its children. If found, stop if non-recursive
   //    discovery is chosen.
   // 2. Process "URL/robots.txt" file.
   // 3. Process "URLHOST/robots.txt" file.
@@ -51,7 +54,29 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root, const QUrl&
   // 5. Test "URL/sitemap.xml.gz" endpoint.
 
   // 1.
-  to_process_sitemaps.append(url.toString());
+  for (const DocumentWithUrl& document : documents) {
+    const NetworkResult document_result = networkResultForDocument(document, url);
+    const QString document_url = document_result.m_url.toString();
+
+    try {
+      auto guessed_feed = guessFeed(document.m_documentData, document_result);
+
+      feeds.insert(document_url, guessed_feed.m_feed);
+    }
+    catch (const FeedRecognizedButFailedException& ex) {
+      // This is index.
+      if (sitemap_index_limit-- > 0) {
+        to_process_sitemaps.append(ex.arbitraryData().toStringList());
+      }
+    }
+    catch (const ApplicationException&) {
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(document_url) << "is not a direct sitemap file.";
+    }
+  }
+
+  if (!greedy && !feeds.isEmpty()) {
+    return feeds.values();
+  }
 
   // 2.
   // 3.

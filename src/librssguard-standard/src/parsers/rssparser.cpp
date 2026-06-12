@@ -19,8 +19,11 @@ RssParser::RssParser(const QString& data)
 
 RssParser::~RssParser() {}
 
-QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
-  auto base_result = FeedParser::discoverFeeds(root, url, greedy);
+QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root,
+                                              const QUrl& url,
+                                              bool greedy,
+                                              const QList<DocumentWithUrl>& documents) const {
+  auto base_result = FeedParser::discoverFeeds(root, url, greedy, documents);
 
   if (!base_result.isEmpty()) {
     return base_result;
@@ -37,29 +40,23 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
   QList<QPair<QByteArray, QByteArray>> headers = {
     {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Rss2X).toLocal8Bit()}};
 
-  // Download URL.
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray data;
-  auto res = NetworkFactory::performNetworkOperation(my_url,
-                                                     timeout,
-                                                     {},
-                                                     data,
-                                                     QNetworkAccessManager::Operation::GetOperation,
-                                                     headers,
-                                                     {},
-                                                     {},
-                                                     {},
-                                                     root->networkProxy());
+  NetworkResult res;
 
-  if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+  for (const DocumentWithUrl& document : documents) {
+    const NetworkResult document_result = networkResultForDocument(document, url);
+
     try {
       // 1.
-      auto guessed_feed = guessFeed(data, res);
+      auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
-      return {guessed_feed.m_feed};
+      feeds.append(guessed_feed.m_feed);
+      continue;
     }
     catch (...) {
-      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(document_result.m_url.toString())
+               << "is not a direct RSS feed file.";
     }
 
     // 2.
@@ -69,7 +66,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
 
     rx_href.optimize();
 
-    QRegularExpressionMatchIterator it_rx = rx.globalMatch(QString::fromUtf8(data));
+    QRegularExpressionMatchIterator it_rx = rx.globalMatch(QString::fromUtf8(document.m_documentData));
 
     while (it_rx.hasNext()) {
       QRegularExpressionMatch mat_tx = it_rx.next();
@@ -80,7 +77,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
         feed_link = QSL(URI_SCHEME_HTTP) + feed_link.mid(2);
       }
       else {
-        feed_link = url.resolved(feed_link).toString();
+        feed_link = document_result.m_url.resolved(feed_link).toString();
       }
 
       QByteArray data;
@@ -111,9 +108,6 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
       }
     }
   }
-  else {
-    logUnsuccessfulRequest(res);
-  }
 
   // 3.
   my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash) + QSL("/feed");
@@ -135,7 +129,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
       feeds.append(guessed_feed.m_feed);
     }
     catch (...) {
-      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct RSS feed file.";
     }
   }
   else {
@@ -162,7 +156,7 @@ QList<StandardFeed*> RssParser::discoverFeeds(ServiceRoot* root, const QUrl& url
       feeds.append(guessed_feed.m_feed);
     }
     catch (...) {
-      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct RSS feed file.";
     }
   }
   else {

@@ -20,8 +20,11 @@ JsonParser::JsonParser(const QString& data) : FeedParser(data, DataType::Json) {
 
 JsonParser::~JsonParser() {}
 
-QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
-  auto base_result = FeedParser::discoverFeeds(root, url, greedy);
+QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root,
+                                               const QUrl& url,
+                                               bool greedy,
+                                               const QList<DocumentWithUrl>& documents) const {
+  auto base_result = FeedParser::discoverFeeds(root, url, greedy, documents);
 
   if (!base_result.isEmpty()) {
     return base_result;
@@ -30,35 +33,26 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   QList<QPair<QByteArray, QByteArray>> headers = {
     {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Json).toLocal8Bit()}};
 
-  QString my_url = url.toString();
   QList<StandardFeed*> feeds;
 
   // 1. Test direct URL for a feed.
   // 2. Test embedded JSON feed links from HTML data.
 
-  // Download URL.
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QByteArray data;
-  auto res = NetworkFactory::performNetworkOperation(my_url,
-                                                     timeout,
-                                                     {},
-                                                     data,
-                                                     QNetworkAccessManager::Operation::GetOperation,
-                                                     headers,
-                                                     {},
-                                                     {},
-                                                     {},
-                                                     root->networkProxy());
 
-  if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+  for (const DocumentWithUrl& document : documents) {
+    const NetworkResult document_result = networkResultForDocument(document, url);
+
     try {
       // 1.
-      auto guessed_feed = guessFeed(data, res);
+      auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
-      return {guessed_feed.m_feed};
+      feeds.append(guessed_feed.m_feed);
+      continue;
     }
     catch (...) {
-      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(document_result.m_url.toString())
+               << "is not a direct JSON feed file.";
     }
 
     // 2.
@@ -68,7 +62,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
 
     rx_href.optimize();
 
-    QRegularExpressionMatchIterator it_rx = rx.globalMatch(QString::fromUtf8(data));
+    QRegularExpressionMatchIterator it_rx = rx.globalMatch(QString::fromUtf8(document.m_documentData));
 
     while (it_rx.hasNext()) {
       QRegularExpressionMatch mat_tx = it_rx.next();
@@ -79,7 +73,7 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
         feed_link = QSL(URI_SCHEME_HTTP) + feed_link.mid(2);
       }
       else {
-        feed_link = url.resolved(feed_link).toString();
+        feed_link = document_result.m_url.resolved(feed_link).toString();
       }
 
       QByteArray data;
@@ -109,9 +103,6 @@ QList<StandardFeed*> JsonParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
         logUnsuccessfulRequest(res);
       }
     }
-  }
-  else {
-    logUnsuccessfulRequest(res);
   }
 
   return feeds;
