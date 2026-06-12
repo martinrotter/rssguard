@@ -15,6 +15,9 @@ class RSSGUARD_DLLSPEC PlainToolButton : public QToolButton {
     int padding() const;
     void setPadding(int padding);
 
+    bool attentionBorderVisible() const;
+    void setAttentionBorderVisible(bool visible);
+
   public slots:
     void setChecked(bool checked);
     void reactOnActionChange(QAction* action);
@@ -25,6 +28,7 @@ class RSSGUARD_DLLSPEC PlainToolButton : public QToolButton {
 
   private:
     int m_padding;
+    bool m_attentionBorderVisible;
 };
 
 #endif // CLOSEBUTTON_H

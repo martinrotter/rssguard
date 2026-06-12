@@ -309,6 +309,21 @@ void FeedMessageViewer::onMessageRemoved(RootItem* root) {
 }
 
 void FeedMessageViewer::createConnections() {
+  m_toolBarFeeds->searchBox()->setListFilteredTooltip(tr("Some feeds are hidden by current search or filtering."));
+  m_toolBarMessages->searchBox()->setListFilteredTooltip(tr("Some articles are hidden by current search or filtering."));
+
+  connect(m_feedsView->model(),
+          &FeedsProxyModel::filteredOutItemsChanged,
+          m_toolBarFeeds->searchBox(),
+          &SearchLineEdit::setListFiltered);
+  connect(m_messagesView->model(),
+          &MessagesProxyModel::filteredOutItemsChanged,
+          m_toolBarMessages->searchBox(),
+          &SearchLineEdit::setListFiltered);
+
+  m_toolBarFeeds->searchBox()->setListFiltered(m_feedsView->model()->hasFilteredOutItems());
+  m_toolBarMessages->searchBox()->setListFiltered(m_messagesView->model()->hasFilteredOutItems());
+
   // Filtering & searching.
   connect(m_toolBarMessages, &MessagesToolBar::searchCriteriaChanged, m_messagesView, &MessagesView::searchMessages);
   connect(m_toolBarFeeds, &FeedsToolBar::searchCriteriaChanged, m_feedsView, &FeedsView::searchItems);

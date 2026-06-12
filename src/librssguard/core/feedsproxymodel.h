@@ -3,14 +3,13 @@
 #ifndef FEEDSPROXYMODEL_H
 #define FEEDSPROXYMODEL_H
 
+#include "core/filteringproxymodel.h"
 #include "services/abstract/rootitem.h"
-
-#include <QSortFilterProxyModel>
 
 class FeedsModel;
 class FeedsView;
 
-class FeedsProxyModel : public QSortFilterProxyModel {
+class FeedsProxyModel : public FilteringProxyModel {
     Q_OBJECT
 
   public:

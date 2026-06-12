@@ -18,7 +18,7 @@
 using RootItemPtr = RootItem*;
 
 FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_selectedItem(nullptr), m_sortAlphabetically(false),
+  : FilteringProxyModel(parent), m_sourceModel(source_model), m_selectedItem(nullptr), m_sortAlphabetically(false),
     m_filter(FeedListFilter::NoFiltering) {
   setObjectName(QSL("FeedsProxyModel"));
 
@@ -560,4 +560,6 @@ void FeedsProxyModel::setFeedListFilter(FeedListFilter filter) {
   m_filter = filter;
   invalidateRowsFilter();
 #endif
+
+  scheduleFilteredOutItemsRefresh();
 }

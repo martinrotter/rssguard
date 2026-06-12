@@ -3,6 +3,8 @@ set(SOURCES
   core/articlelistnotificationmodel.h
   core/feeddownloader.cpp
   core/feeddownloader.h
+  core/filteringproxymodel.cpp
+  core/filteringproxymodel.h
   core/feedsmodel.cpp
   core/feedsmodel.h
   core/feedsproxymodel.cpp

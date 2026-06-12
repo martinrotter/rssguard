@@ -10,7 +10,7 @@
 #include <QTimer>
 
 MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* parent)
-  : QSortFilterProxyModel(parent), m_sourceModel(source_model), m_filter(MessageListFilter::NoFiltering) {
+  : FilteringProxyModel(parent), m_sourceModel(source_model), m_filter(MessageListFilter::NoFiltering) {
   setObjectName(QSL("MessagesProxyModel"));
 
   initializeFilters();
@@ -182,6 +182,7 @@ bool MessagesProxyModel::filterAcceptsRow(int source_row, const QModelIndex& sou
 
 void MessagesProxyModel::setMessageListFilter(MessageListFilter filter) {
   m_filter = filter;
+  scheduleFilteredOutItemsRefresh();
   // m_sourceModel->setAdditionalArticleId(0);
 }
 

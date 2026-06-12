@@ -3,12 +3,14 @@
 #ifndef MESSAGESPROXYMODEL_H
 #define MESSAGESPROXYMODEL_H
 
+#include "core/filteringproxymodel.h"
+
 #include <QSortFilterProxyModel>
 
 class MessagesModel;
 class Message;
 
-class MessagesProxyModel : public QSortFilterProxyModel {
+class MessagesProxyModel : public FilteringProxyModel {
     Q_OBJECT
 
   public:

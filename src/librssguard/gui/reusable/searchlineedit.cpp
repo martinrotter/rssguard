@@ -15,7 +15,8 @@
 SearchLineEdit::SearchLineEdit(const QString& save_identification,
                                const QList<CustomSearchChoice>& choices,
                                QWidget* parent)
-  : BaseLineEdit(parent), m_saveIdentification(save_identification) {
+  : BaseLineEdit(parent), m_saveIdentification(save_identification), m_btnSearchOptions(new PlainToolButton(this)),
+    m_listFiltered(false) {
   Qt::CaseSensitivity save_sens = Qt::CaseSensitivity(qApp->settings()
                                                         ->value(m_saveIdentification,
                                                                 QSL("case_sensitivity"),
@@ -26,13 +27,12 @@ SearchLineEdit::SearchLineEdit(const QString& save_identification,
   int save_custom_choice = qApp->settings()->value(m_saveIdentification, QSL("criteria"), choices.at(0).m_data).toInt();
 
   QWidgetAction* act = new QWidgetAction(this);
-  PlainToolButton* btn = new PlainToolButton(this);
 
   m_tmrSearchPattern = new QTimer(this);
   m_tmrSearchPattern->setSingleShot(true);
   m_tmrSearchPattern->setInterval(1000);
 
-  m_menu = new QMenu(btn);
+  m_menu = new QMenu(m_btnSearchOptions);
 
   m_actionGroupChoices = new QActionGroup(this);
   m_actionGroupChoices->setExclusive(true);
@@ -47,11 +47,11 @@ SearchLineEdit::SearchLineEdit(const QString& save_identification,
   m_menu->addSeparator();
 
   // Setup tool button.
-  btn->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
-  btn->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
-  btn->setMenu(m_menu);
+  m_btnSearchOptions->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
+  m_btnSearchOptions->setPopupMode(QToolButton::ToolButtonPopupMode::InstantPopup);
+  m_btnSearchOptions->setMenu(m_menu);
 
-  act->setDefaultWidget(btn);
+  act->setDefaultWidget(m_btnSearchOptions);
 
   addAction(act, QLineEdit::ActionPosition::LeadingPosition);
 
@@ -87,6 +87,41 @@ SearchLineEdit::SearchLineEdit(const QString& save_identification,
   connect(m_menu, &QMenu::triggered, m_tmrSearchPattern, QOverload<>::of(&QTimer::start));
   connect(m_tmrSearchPattern, &QTimer::timeout, this, &SearchLineEdit::startSearch);
   connect(this, &SearchLineEdit::searchCriteriaChanged, this, &SearchLineEdit::saveSearchConfig);
+
+  setListFilteredTooltip(tr("Some items are hidden by current search or filtering."));
+}
+
+bool SearchLineEdit::listFiltered() const {
+  return m_listFiltered;
+}
+
+void SearchLineEdit::setListFilteredTooltip(const QString& tooltip) {
+  m_listFilteredTooltip = tooltip;
+  updateListFilteredVisuals();
+}
+
+void SearchLineEdit::setListFiltered(bool filtered) {
+  if (filtered == m_listFiltered) {
+    return;
+  }
+
+  m_listFiltered = filtered;
+  updateListFilteredVisuals();
+}
+
+void SearchLineEdit::updateListFilteredVisuals() {
+  setProperty("listFiltered", m_listFiltered);
+
+  if (m_listFiltered) {
+    m_btnSearchOptions->setIcon(qApp->icons()->fromTheme(QSL("view-filter"), QSL("system-search")));
+  }
+  else {
+    m_btnSearchOptions->setIcon(qApp->icons()->fromTheme(QSL("system-search"), QSL("system-search")));
+  }
+
+  m_btnSearchOptions->setAttentionBorderVisible(m_listFiltered);
+  setToolTip(m_listFiltered ? m_listFilteredTooltip : QString());
+  update();
 }
 
 void SearchLineEdit::startSearch() {

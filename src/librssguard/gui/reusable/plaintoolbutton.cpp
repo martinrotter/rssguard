@@ -2,16 +2,23 @@
 
 #include "gui/reusable/plaintoolbutton.h"
 
+#include "miscellaneous/application.h"
+#include "miscellaneous/skinfactory.h"
+
 #include <QAction>
+#include <QColor>
 #include <QGuiApplication>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QPainterPath>
+#include <QPen>
 #include <QStyle>
 #include <QStyleOption>
 #include <QToolButton>
+#include <QtGlobal>
 
-PlainToolButton::PlainToolButton(QWidget* parent) : QToolButton(parent), m_padding(0) {}
+PlainToolButton::PlainToolButton(QWidget* parent)
+  : QToolButton(parent), m_padding(0), m_attentionBorderVisible(false) {}
 
 void PlainToolButton::paintEvent(QPaintEvent* e) {
   Q_UNUSED(e)
@@ -51,6 +58,25 @@ void PlainToolButton::paintEvent(QPaintEvent* e) {
 
     p.fillPath(path, QGuiApplication::palette().color(QPalette::ColorRole::Text));
   }
+
+  if (m_attentionBorderVisible) {
+    QColor badge_color = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError).value<QColor>();
+
+    if (!badge_color.isValid()) {
+      badge_color = QColor(220, 35, 35);
+    }
+
+    badge_color.setAlpha(215);
+
+    const qreal badge_size = qMax<qreal>(6.0, qMin(width(), height()) * 0.27);
+    const qreal badge_margin = qMax<qreal>(2.0, badge_size * 0.35);
+    const QRectF badge_rect(badge_margin, badge_margin, badge_size, badge_size);
+
+    p.setOpacity(1.0);
+    p.setPen(QPen(QColor(255, 255, 255, 190), 1.0));
+    p.setBrush(badge_color);
+    p.drawEllipse(badge_rect);
+  }
 }
 
 int PlainToolButton::padding() const {
@@ -59,6 +85,19 @@ int PlainToolButton::padding() const {
 
 void PlainToolButton::setPadding(int padding) {
   m_padding = padding;
+  repaint();
+}
+
+bool PlainToolButton::attentionBorderVisible() const {
+  return m_attentionBorderVisible;
+}
+
+void PlainToolButton::setAttentionBorderVisible(bool visible) {
+  if (visible == m_attentionBorderVisible) {
+    return;
+  }
+
+  m_attentionBorderVisible = visible;
   repaint();
 }
 
