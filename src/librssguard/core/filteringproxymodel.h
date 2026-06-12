@@ -24,7 +24,7 @@ class FilteringProxyModel : public QSortFilterProxyModel {
     void scheduleFilteredOutItemsRefresh();
 
   private:
-    int recursiveRowCount(const QAbstractItemModel* model, const QModelIndex& parent = {}) const;
+    bool containsFilteredOutItems(const QModelIndex& source_parent = {}, const QModelIndex& proxy_parent = {}) const;
     void refreshFilteredOutItemsState();
     void connectModelSignals(const QAbstractItemModel* model);
     void clearSourceConnections();

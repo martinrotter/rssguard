@@ -59,24 +59,34 @@ void FilteringProxyModel::scheduleFilteredOutItemsRefresh() {
   });
 }
 
-int FilteringProxyModel::recursiveRowCount(const QAbstractItemModel* model, const QModelIndex& parent) const {
-  if (model == nullptr) {
-    return 0;
+bool FilteringProxyModel::containsFilteredOutItems(const QModelIndex& source_parent, const QModelIndex& proxy_parent) const {
+  const QAbstractItemModel* src_model = sourceModel();
+
+  if (src_model == nullptr) {
+    return false;
   }
 
-  const int child_count = model->rowCount(parent);
-  int rows = child_count;
+  const int source_rows = src_model->rowCount(source_parent);
+  const int proxy_rows = rowCount(proxy_parent);
 
-  for (int row = 0; row < child_count; ++row) {
-    rows += recursiveRowCount(model, model->index(row, 0, parent));
+  if (source_rows != proxy_rows) {
+    return true;
   }
 
-  return rows;
+  for (int row = 0; row < proxy_rows; ++row) {
+    const QModelIndex proxy_child = index(row, 0, proxy_parent);
+    const QModelIndex source_child = mapToSource(proxy_child);
+
+    if (containsFilteredOutItems(source_child, proxy_child)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 void FilteringProxyModel::refreshFilteredOutItemsState() {
-  const bool has_filtered_out_items =
-    sourceModel() != nullptr && recursiveRowCount(sourceModel()) > recursiveRowCount(this);
+  const bool has_filtered_out_items = containsFilteredOutItems();
 
   if (has_filtered_out_items != m_hasFilteredOutItems) {
     m_hasFilteredOutItems = has_filtered_out_items;
