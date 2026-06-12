@@ -191,10 +191,20 @@ QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser
   QPixmap icon;
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
-  if (!feeds.isEmpty() &&
-      NetworkFactory::downloadIcon({{url.toString(), false}}, timeout, icon, {}, m_serviceRoot->networkProxy()) ==
-        QNetworkReply::NetworkError::NoError) {
-    for (Feed* feed : std::as_const(feeds)) {
+  QHash<QString, QPixmap> icons_by_host;
+
+  for (Feed* feed : std::as_const(feeds)) {
+    QString host = QUrl(feed->source()).host();
+
+    if (icons_by_host.contains(host)) {
+      feed->setIcon(icons_by_host.value(host));
+    }
+    else if (NetworkFactory::downloadIcon({{feed->source(), false}},
+                                          timeout,
+                                          icon,
+                                          {},
+                                          m_serviceRoot->networkProxy()) == QNetworkReply::NetworkError::NoError) {
+      icons_by_host.insert(host, icon);
       feed->setIcon(icon);
     }
   }
