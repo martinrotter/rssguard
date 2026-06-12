@@ -21,26 +21,7 @@ void FilteringProxyModel::setSourceModel(QAbstractItemModel* source_model) {
   QSortFilterProxyModel::setSourceModel(source_model);
 
   if (source_model != nullptr) {
-    m_sourceConnections << connect(source_model,
-                                   &QAbstractItemModel::rowsInserted,
-                                   this,
-                                   &FilteringProxyModel::scheduleFilteredOutItemsRefresh);
-    m_sourceConnections << connect(source_model,
-                                   &QAbstractItemModel::rowsRemoved,
-                                   this,
-                                   &FilteringProxyModel::scheduleFilteredOutItemsRefresh);
-    m_sourceConnections << connect(source_model,
-                                   &QAbstractItemModel::modelReset,
-                                   this,
-                                   &FilteringProxyModel::scheduleFilteredOutItemsRefresh);
-    m_sourceConnections << connect(source_model,
-                                   &QAbstractItemModel::layoutChanged,
-                                   this,
-                                   &FilteringProxyModel::scheduleFilteredOutItemsRefresh);
-    m_sourceConnections << connect(source_model,
-                                   &QAbstractItemModel::dataChanged,
-                                   this,
-                                   &FilteringProxyModel::scheduleFilteredOutItemsRefresh);
+    m_sourceConnections = connectModelSignals(source_model);
   }
 
   scheduleFilteredOutItemsRefresh();
@@ -59,7 +40,8 @@ void FilteringProxyModel::scheduleFilteredOutItemsRefresh() {
   });
 }
 
-bool FilteringProxyModel::containsFilteredOutItems(const QModelIndex& source_parent, const QModelIndex& proxy_parent) const {
+bool FilteringProxyModel::containsFilteredOutItems(const QModelIndex& source_parent,
+                                                   const QModelIndex& proxy_parent) const {
   const QAbstractItemModel* src_model = sourceModel();
 
   if (src_model == nullptr) {
@@ -94,27 +76,17 @@ void FilteringProxyModel::refreshFilteredOutItemsState() {
   }
 }
 
-void FilteringProxyModel::connectModelSignals(const QAbstractItemModel* model) {
-  connect(model,
-          &QAbstractItemModel::rowsInserted,
-          this,
-          &FilteringProxyModel::scheduleFilteredOutItemsRefresh);
-  connect(model,
-          &QAbstractItemModel::rowsRemoved,
-          this,
-          &FilteringProxyModel::scheduleFilteredOutItemsRefresh);
-  connect(model,
-          &QAbstractItemModel::modelReset,
-          this,
-          &FilteringProxyModel::scheduleFilteredOutItemsRefresh);
-  connect(model,
-          &QAbstractItemModel::layoutChanged,
-          this,
-          &FilteringProxyModel::scheduleFilteredOutItemsRefresh);
-  connect(model,
-          &QAbstractItemModel::dataChanged,
-          this,
-          &FilteringProxyModel::scheduleFilteredOutItemsRefresh);
+QList<QMetaObject::Connection> FilteringProxyModel::connectModelSignals(const QAbstractItemModel* model) {
+  if (model == nullptr) {
+    return {};
+  }
+
+  return {
+    connect(model, &QAbstractItemModel::rowsInserted, this, &FilteringProxyModel::scheduleFilteredOutItemsRefresh),
+    connect(model, &QAbstractItemModel::rowsRemoved, this, &FilteringProxyModel::scheduleFilteredOutItemsRefresh),
+    connect(model, &QAbstractItemModel::modelReset, this, &FilteringProxyModel::scheduleFilteredOutItemsRefresh),
+    connect(model, &QAbstractItemModel::layoutChanged, this, &FilteringProxyModel::scheduleFilteredOutItemsRefresh),
+    connect(model, &QAbstractItemModel::dataChanged, this, &FilteringProxyModel::scheduleFilteredOutItemsRefresh)};
 }
 
 void FilteringProxyModel::clearSourceConnections() {

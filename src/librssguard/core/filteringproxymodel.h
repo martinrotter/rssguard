@@ -26,7 +26,7 @@ class FilteringProxyModel : public QSortFilterProxyModel {
   private:
     bool containsFilteredOutItems(const QModelIndex& source_parent = {}, const QModelIndex& proxy_parent = {}) const;
     void refreshFilteredOutItemsState();
-    void connectModelSignals(const QAbstractItemModel* model);
+    QList<QMetaObject::Connection> connectModelSignals(const QAbstractItemModel* model);
     void clearSourceConnections();
 
   private:

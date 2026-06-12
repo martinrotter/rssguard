@@ -196,6 +196,7 @@
     <addaction name="m_actionOpenSelectedSourceArticlesExternally"/>
     <addaction name="m_actionOpenSelectedMessagesInternally"/>
     <addaction name="m_actionGoToMotherFeed"/>
+    <addaction name="m_actionOpenHomepageOfSelectedArticleFeed"/>
     <addaction name="m_actionEditFeedOfSelectedArticle"/>
     <addaction name="m_actionPlaySelectedArticlesInMediaPlayer"/>
     <addaction name="m_actionFetchFullSelectedArticles"/>
@@ -987,6 +988,17 @@
   <action name="m_actionGoToMotherFeed">
    <property name="text">
     <string>Reveal &amp;feed</string>
+   </property>
+  </action>
+  <action name="m_actionOpenHomepageOfSelectedArticleFeed">
+   <property name="text">
+    <string>Open feed &amp;homepage</string>
+   </property>
+   <property name="toolTip">
+    <string>Open homepage of feed belonging to current article</string>
+   </property>
+   <property name="shortcut">
+    <string notr="true"/>
    </property>
   </action>
   <action name="m_actionEnableDisableFeeds">

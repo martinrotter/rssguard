@@ -807,23 +807,15 @@ QString WebFactory::stripTags(QString text) {
 }
 
 QString WebFactory::urlToTld(const QUrl& url) {
-  static QStringList special_tlds = {"co.uk", "com.au", "co.jp"};
+  const QString host = url.host();
 
-  QString host = url.host();
-  QStringList parts = host.split('.');
-
-  if (parts.size() < 2) {
+  if (host.isEmpty()) {
     return host;
   }
 
-  QString last_two = parts.mid(parts.size() - 2).join('.');
-  QString last_three = parts.mid(parts.size() - 3).join('.');
+  const QString registrable_domain = PublicSuffix::registrableDomain(host);
 
-  if (special_tlds.contains(last_two) && parts.size() >= 3) {
-    return last_three;
-  }
-
-  return last_two;
+  return registrable_domain.isEmpty() ? host : registrable_domain;
 }
 
 QString WebFactory::webCacheFolder() {

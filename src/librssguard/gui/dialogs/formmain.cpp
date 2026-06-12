@@ -199,6 +199,7 @@ QList<QAction*> FormMain::allActions() const {
   actions << m_ui->m_actionOpenSelectedSourceArticlesExternally;
   actions << m_ui->m_actionOpenSelectedMessagesInternally;
   actions << m_ui->m_actionGoToMotherFeed;
+  actions << m_ui->m_actionOpenHomepageOfSelectedArticleFeed;
   actions << m_ui->m_actionFetchFullSelectedArticles;
   actions << m_ui->m_actionEditFeedOfSelectedArticle;
   actions << m_ui->m_actionPlaySelectedArticlesInMediaPlayer;
@@ -469,6 +470,7 @@ void FormMain::updateMessageButtonsAvailability() {
   m_ui->m_actionFetchFullSelectedArticles->setEnabled(atleast_one_message_selected);
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setEnabled(atleast_one_message_selected);
   m_ui->m_actionGoToMotherFeed->setEnabled(one_message_selected);
+  m_ui->m_actionOpenHomepageOfSelectedArticleFeed->setEnabled(atleast_one_message_selected);
   m_ui->m_actionEditFeedOfSelectedArticle->setEnabled(one_message_selected);
   m_ui->m_actionCopyDataOfSelectedArticles->setEnabled(atleast_one_message_selected);
   m_ui->m_actionSendMessageViaEmail->setEnabled(one_message_selected);
@@ -634,6 +636,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
   m_ui->m_actionOpenSelectedMessagesInternally->setIcon(icon_theme_factory->fromTheme(QSL("document-open")));
   m_ui->m_actionGoToMotherFeed->setIcon(icon_theme_factory->fromTheme(QSL("application-rss+xml"), QSL("go-jump")));
+  m_ui->m_actionOpenHomepageOfSelectedArticleFeed->setIcon(icon_theme_factory->fromTheme(QSL("go-home"),
+                                                                                         QSL("internet-web-browser")));
   m_ui->m_actionEditFeedOfSelectedArticle->setIcon(icon_theme_factory->fromTheme(QSL("document-edit"),
                                                                                  QSL("application-rss+xml")));
   m_ui->m_actionPlaySelectedArticlesInMediaPlayer->setIcon(icon_theme_factory->fromTheme(QSL("player_play"),
@@ -971,6 +975,11 @@ void FormMain::createConnections() {
           &QAction::triggered,
           tabWidget()->feedMessageViewer()->messagesView(),
           &MessagesView::editFeedOfSelectedMessage);
+
+  connect(m_ui->m_actionOpenHomepageOfSelectedArticleFeed,
+          &QAction::triggered,
+          tabWidget()->feedMessageViewer()->messagesView(),
+          &MessagesView::openHomepageOfSelectedMessageFeed);
 
   connect(m_ui->m_actionFetchFullSelectedArticles,
           &QAction::triggered,
