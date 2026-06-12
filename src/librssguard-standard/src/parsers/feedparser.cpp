@@ -16,10 +16,11 @@
 #include <QFile>
 #include <QRegularExpression>
 
-FeedParser::FeedParser() {}
+FeedParser::FeedParser() : FeedParser({}, DataType::Xml) {}
 
-FeedParser::FeedParser(QString data, DataType is_xml)
-  : m_dataType(is_xml), m_data(data), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")), m_fetchComments(false),
+FeedParser::FeedParser(QString data, DataType data_type)
+  : m_dataType(data_type), m_data(std::move(data)), m_mrssNamespace(QSL("http://search.yahoo.com/mrss/")),
+    m_dontUseRawXmlSaving(false), m_fetchComments(false),
     m_articleDateMode(StandardFeed::ArticleDateTimeBehavior::Published) {
   if (m_data.isEmpty()) {
     return;
@@ -49,10 +50,10 @@ FeedParser::~FeedParser() {}
 
 QList<StandardFeed*> FeedParser::discoverFeeds(ServiceRoot* root,
                                                const QUrl& url,
-                                               bool greedy,
+                                               bool deep_discovery,
                                                const QList<DocumentWithUrl>& documents) const {
   Q_UNUSED(root)
-  Q_UNUSED(greedy)
+  Q_UNUSED(deep_discovery)
 
   if (url.isLocalFile()) {
     QList<DocumentWithUrl> local_documents = documents;
@@ -535,12 +536,12 @@ void FeedParser::setFetchComments(bool cmnts) {
   m_fetchComments = cmnts;
 }
 
-std::function<QByteArray(QUrl)> FeedParser::resourceHandler() const {
+const std::function<QByteArray(const QUrl&)>& FeedParser::resourceHandler() const {
   return m_resourceHandler;
 }
 
-void FeedParser::setResourceHandler(const std::function<QByteArray(QUrl)>& res_handler) {
-  m_resourceHandler = res_handler;
+void FeedParser::setResourceHandler(std::function<QByteArray(const QUrl&)> res_handler) {
+  m_resourceHandler = std::move(res_handler);
 }
 
 bool FeedParser::dontUseRawXmlSaving() const {
@@ -551,7 +552,7 @@ void FeedParser::setDontUseRawXmlSaving(bool no_raw_xml_saving) {
   m_dontUseRawXmlSaving = no_raw_xml_saving;
 }
 
-QString FeedParser::dateTimeFormat() const {
+const QString& FeedParser::dateTimeFormat() const {
   return m_dateTimeFormat;
 }
 

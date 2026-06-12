@@ -9,10 +9,12 @@
 #include <librssguard/definitions/typedefs.h>
 #include <librssguard/miscellaneous/domdocument.h>
 
+#include <functional>
+
+#include <QByteArray>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QByteArray>
 #include <QString>
 #include <QUrl>
 
@@ -41,13 +43,13 @@ class FeedParser {
     };
 
     FeedParser();
-    explicit FeedParser(QString data, DataType is_xml = DataType::Xml);
+    explicit FeedParser(QString data, DataType data_type = DataType::Xml);
     virtual ~FeedParser();
 
     // Returns list of absolute URLs of discovered feeds from provided base URL.
     virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
                                                const QUrl& url,
-                                               bool greedy,
+                                               bool deep_discovery,
                                                const QList<DocumentWithUrl>& documents = {}) const;
 
     // Guesses feed.
@@ -57,14 +59,14 @@ class FeedParser {
     // Returns list of all messages from the feed.
     virtual QList<Message> messages();
 
-    QString dateTimeFormat() const;
+    const QString& dateTimeFormat() const;
     void setDateTimeFormat(const QString& dt_format);
 
     bool dontUseRawXmlSaving() const;
     void setDontUseRawXmlSaving(bool no_raw_xml_saving);
 
-    std::function<QByteArray(QUrl)> resourceHandler() const;
-    void setResourceHandler(const std::function<QByteArray(QUrl)>& res_handler);
+    const std::function<QByteArray(const QUrl&)>& resourceHandler() const;
+    void setResourceHandler(std::function<QByteArray(const QUrl&)> res_handler);
 
     bool fetchComments() const;
     void setFetchComments(bool cmnts);
@@ -127,16 +129,16 @@ class FeedParser {
     QDateTime decideArticleDate(const QString& published, const QString& updated);
 
   protected:
-    std::function<QByteArray(QUrl)> m_resourceHandler;
-    DataType m_dataType;
+    std::function<QByteArray(const QUrl&)> m_resourceHandler;
+    DataType m_dataType = DataType::Xml;
     QString m_data;
     QString m_dateTimeFormat;
     DomDocument m_xml;
     QJsonDocument m_json;
     QString m_mrssNamespace;
-    bool m_dontUseRawXmlSaving;
-    bool m_fetchComments;
-    StandardFeed::ArticleDateTimeBehavior m_articleDateMode;
+    bool m_dontUseRawXmlSaving = false;
+    bool m_fetchComments = false;
+    StandardFeed::ArticleDateTimeBehavior m_articleDateMode = StandardFeed::ArticleDateTimeBehavior::Published;
 };
 
 #endif // FEEDPARSER_H

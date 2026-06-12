@@ -13,7 +13,7 @@ class SitemapParser : public FeedParser {
 
     virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
                                                const QUrl& url,
-                                               bool greedy,
+                                               bool deep_discovery,
                                                const QList<DocumentWithUrl>& documents) const;
 
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content, const NetworkResult& network_res) const;

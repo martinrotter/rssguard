@@ -230,7 +230,7 @@
    <item row="1" column="1">
     <widget class="QCheckBox" name="m_cbDiscoverRecursive">
      <property name="text">
-      <string>Deep discovery (can take some time for bigger websites)</string>
+      <string>Deep discovery (scrapes all hyperlinks and can take some time for bigger websites)</string>
      </property>
     </widget>
    </item>

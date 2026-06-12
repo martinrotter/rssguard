@@ -35,7 +35,7 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
                                      const QString& url,
                                      QWidget* parent)
   : QDialog(parent), m_serviceRoot(service_root), m_discoveredModel(new DiscoveredFeedsModel(this)),
-    m_greedyDiscover(false) {
+    m_deepDiscovery(false) {
   m_ui.setupUi(this);
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("application-rss+xml")));
@@ -181,9 +181,9 @@ FormDiscoverFeeds::~FormDiscoverFeeds() {
 
 QList<StandardFeed*> FormDiscoverFeeds::discoverFeedsWithParser(const FeedParser* parser,
                                                                 const QUrl& url,
-                                                                bool greedy,
+                                                                bool deep_discovery,
                                                                 const QList<DocumentWithUrl>& documents) {
-  auto feeds = parser->discoverFeeds(m_serviceRoot, url, greedy, documents);
+  auto feeds = parser->discoverFeeds(m_serviceRoot, url, deep_discovery, documents);
   QPixmap icon;
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
 
@@ -223,7 +223,7 @@ void FormDiscoverFeeds::discoverFeeds() {
     return;
   }
 
-  m_greedyDiscover = m_ui.m_cbDiscoverRecursive->isChecked();
+  m_deepDiscovery = m_ui.m_cbDiscoverRecursive->isChecked();
 
   std::function<DiscoverDocumentsResult(const DiscoverDocumentsTask&)> func =
     [=](const DiscoverDocumentsTask& task) -> DiscoverDocumentsResult {
@@ -404,7 +404,7 @@ FormDiscoverFeeds::DiscoverDocumentsResult FormDiscoverFeeds::fetchDocumentsForU
     reportProgressStep();
   }
 
-  if (task.m_greedy) {
+  if (task.m_deepDiscovery) {
     appendLinkedDocuments(documents);
   }
 
@@ -457,7 +457,7 @@ void FormDiscoverFeeds::startDiscoveringFeeds(const QHash<QUrl, QList<DocumentWi
 
   std::function<QList<StandardFeed*>(const DiscoverTask&)> func =
     [=](const DiscoverTask& task) -> QList<StandardFeed*> {
-    return discoverFeedsWithParser(task.m_parser, task.m_url, m_greedyDiscover, task.m_documents);
+    return discoverFeedsWithParser(task.m_parser, task.m_url, m_deepDiscovery, task.m_documents);
   };
 
   std::function<QList<StandardFeed*>(QList<StandardFeed*>&, const QList<StandardFeed*>&)> reducer =

@@ -23,13 +23,13 @@ SitemapParser::~SitemapParser() {}
 
 QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
                                                   const QUrl& url,
-                                                  bool greedy,
+                                                  bool deep_discovery,
                                                   const QList<DocumentWithUrl>& documents) const {
-  auto base_result = FeedParser::discoverFeeds(root, url, greedy, documents);
+  auto base_result = FeedParser::discoverFeeds(root, url, deep_discovery, documents);
   QHash<QString, StandardFeed*> feeds;
 
   if (!base_result.isEmpty()) {
-    if (greedy) {
+    if (deep_discovery) {
       for (StandardFeed* base_fd : base_result) {
         feeds.insert(base_fd->source(), base_fd);
       }
@@ -74,7 +74,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
     }
   }
 
-  if (!greedy && !feeds.isEmpty()) {
+  if (!deep_discovery && !feeds.isEmpty()) {
     return feeds.values();
   }
 
@@ -156,7 +156,7 @@ QList<StandardFeed*> SitemapParser::discoverFeeds(ServiceRoot* root,
 
         feeds.insert(my_url, guessed_feed.m_feed);
 
-        if (!greedy) {
+        if (!deep_discovery) {
           break;
         }
       }

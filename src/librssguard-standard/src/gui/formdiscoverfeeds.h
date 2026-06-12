@@ -44,7 +44,7 @@ class FormDiscoverFeeds : public QDialog {
 
     struct DiscoverDocumentsTask {
         QUrl m_url;
-        bool m_greedy;
+        bool m_deepDiscovery;
     };
 
     struct DiscoverDocumentsResult {
@@ -80,7 +80,7 @@ class FormDiscoverFeeds : public QDialog {
 
     QList<StandardFeed*> discoverFeedsWithParser(const FeedParser* parser,
                                                  const QUrl& url,
-                                                 bool greedy,
+                                                 bool deep_discovery,
                                                  const QList<DocumentWithUrl>& documents);
     DiscoverDocumentsResult fetchDocumentsForUrl(const DiscoverDocumentsTask& task);
     void startDiscoveringFeeds(const QHash<QUrl, QList<DocumentWithUrl>>& documents_by_url);
@@ -97,7 +97,7 @@ class FormDiscoverFeeds : public QDialog {
     QFutureWatcher<DiscoverDocumentsResult> m_watcherDocuments;
     QFutureWatcher<QList<StandardFeed*>> m_watcherLookup;
     DiscoveredFeedsModel* m_discoveredModel;
-    bool m_greedyDiscover;
+    bool m_deepDiscovery;
 };
 
 #endif // FORMDISCOVERFEEDS_H

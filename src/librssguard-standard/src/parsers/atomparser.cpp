@@ -27,9 +27,9 @@ AtomParser::~AtomParser() {}
 
 QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
                                                const QUrl& url,
-                                               bool greedy,
+                                               bool deep_discovery,
                                                const QList<DocumentWithUrl>& documents) const {
-  auto base_result = FeedParser::discoverFeeds(root, url, greedy, documents);
+  auto base_result = FeedParser::discoverFeeds(root, url, deep_discovery, documents);
 
   if (!base_result.isEmpty()) {
     return base_result;
@@ -219,7 +219,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
   // 6.
   my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash);
 
-  if (!direct_html_data.isEmpty() && my_url.contains(QSL("youtube"))) {
+  if (!direct_html_data.isEmpty()) {
     QString youtube_channel_id =
       QRegularExpression(QSL("\"externalChannelId\": ?\"([^\"]+)\"")).match(direct_html_data).captured(1);
 

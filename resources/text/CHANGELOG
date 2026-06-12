@@ -18,6 +18,7 @@ Added:
 * Tray icon can now use a custom background color and unread-count text color, with an option to reuse the generated icon as the application icon. (#1973)
 * Support for more benevolent parsing of Gemlog entries (#2295).
 * Article list can now show when an article was received by RSS Guard. (#947)
+* Feed `deep` discovery now actually scrapes all links found in the website and checks if they are feeds or not. This greatly enhances usability of the `deep discovery` mode and discovers many more feeds than before. (#2306)
 
 Fixed:
 * Parallel feed updates no longer crash when multiple update results are processed at the same time. (64cf52158)

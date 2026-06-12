@@ -24,9 +24,9 @@ GemlogParser::~GemlogParser() {}
 
 QList<StandardFeed*> GemlogParser::discoverFeeds(ServiceRoot* root,
                                                  const QUrl& url,
-                                                 bool greedy,
+                                                 bool deep_discovery,
                                                  const QList<DocumentWithUrl>& documents) const {
-  auto base_result = FeedParser::discoverFeeds(root, url, greedy, documents);
+  auto base_result = FeedParser::discoverFeeds(root, url, deep_discovery, documents);
 
   if (!base_result.isEmpty()) {
     return base_result;
