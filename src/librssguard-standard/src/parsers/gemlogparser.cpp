@@ -22,63 +22,44 @@ GemlogParser::GemlogParser(const QString& data) : FeedParser(data, DataType::Oth
 
 GemlogParser::~GemlogParser() {}
 
-QList<StandardFeed*> GemlogParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
-  auto base_result = FeedParser::discoverFeeds(root, url, greedy);
+QList<StandardFeed*> GemlogParser::discoverFeeds(ServiceRoot* root,
+                                                 const QUrl& url,
+                                                 bool deep_discovery,
+                                                 const QList<DocumentWithUrl>& documents) const {
+  auto base_result = FeedParser::discoverFeeds(root, url, deep_discovery, documents);
 
   if (!base_result.isEmpty()) {
     return base_result;
   }
 
-  QString my_url = url.toString();
+  Q_UNUSED(root)
 
-  if (my_url.startsWith(QSL(URI_SCHEME_HTTP))) {
-    my_url = my_url.mid(QSL(URI_SCHEME_HTTP).size());
-  }
-
-  if (my_url.startsWith(QSL(URI_SCHEME_HTTPS))) {
-    my_url = my_url.mid(QSL(URI_SCHEME_HTTPS).size());
-  }
-
-  if (!my_url.startsWith(QSL("gemini://"))) {
-    my_url = QSL("gemini://") + my_url;
-  }
+  QList<StandardFeed*> feeds;
 
   // Test direct URL for a feed.
-  int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
-  QByteArray data;
-  auto res = NetworkFactory::performNetworkOperation(my_url,
-                                                     timeout,
-                                                     {},
-                                                     data,
-                                                     QNetworkAccessManager::Operation::GetOperation,
-                                                     {},
-                                                     {},
-                                                     {},
-                                                     {},
-                                                     root->networkProxy());
+  for (const DocumentWithUrl& document : documents) {
+    const NetworkResult document_result = networkResultForDocument(document, url);
 
-  if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
     try {
       // 1.
-      auto guessed_feed = guessFeed(data, res);
+      auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
-      return {guessed_feed.m_feed};
+      feeds.append(guessed_feed.m_feed);
     }
     catch (...) {
-      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(document_result.m_url.toString())
+               << "is not a direct Gemlog feed file.";
     }
   }
-  else {
-    logUnsuccessfulRequest(res);
-  }
 
-  return {};
+  return feeds;
 }
 
 GuessedFeedWithIcons GemlogParser::guessFeed(const QByteArray& content, const NetworkResult& network_res) const {
-  if (network_res.m_contentType.contains(QSL("text/gemini"))) {
-    QString content_str = QString::fromUtf8(content);
+  const QString content_str = QString::fromUtf8(content);
 
+  if (network_res.m_contentType.contains(QSL("text/gemini")) || !extractFeedEntries(content_str).isEmpty() ||
+      !extractFeedAlternativeEntries(content_str).isEmpty()) {
     auto* feed = new StandardFeed();
 
     feed->setEncoding(QSL(DEFAULT_FEED_ENCODING));
@@ -100,7 +81,7 @@ QString GemlogParser::extractFeedTitle(const QString& gemlog) const {
   return match.captured(1);
 }
 
-QVariantList GemlogParser::extractFeedAlternativeEntries(const QString& gemlog) {
+QVariantList GemlogParser::extractFeedAlternativeEntries(const QString& gemlog) const {
   QVariantList entries;
 
   if (gemlog.isEmpty()) {
@@ -135,7 +116,7 @@ QVariantList GemlogParser::extractFeedAlternativeEntries(const QString& gemlog) 
   return entries;
 }
 
-QVariantList GemlogParser::extractFeedEntries(const QString& gemlog) {
+QVariantList GemlogParser::extractFeedEntries(const QString& gemlog) const {
   QVariantList entries;
 
   if (gemlog.isEmpty()) {

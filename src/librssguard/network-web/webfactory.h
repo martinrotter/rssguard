@@ -5,11 +5,14 @@
 
 #include "core/message.h"
 
+#include <QByteArray>
 #include <QHash>
 #include <QList>
 #include <QMap>
 #include <QNetworkProxy>
 #include <QObject>
+#include <QStringList>
+#include <QUrl>
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
 #include "network-web/httpserver.h"
@@ -56,6 +59,8 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     QString urlToTld(const QUrl& url);
 
     static QString webCacheFolder();
+
+    QStringList extractAllHyperlinks(const QUrl& base_url, const QByteArray& html_data);
 
     // HTML entity unescaping. This method
     // converts both HTML entity names and numbers to UTF-8 string.

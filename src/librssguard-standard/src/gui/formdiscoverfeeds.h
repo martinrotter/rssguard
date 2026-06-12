@@ -11,6 +11,8 @@
 
 #include <QDialog>
 #include <QFutureWatcher>
+#include <QHash>
+#include <QUrl>
 
 class ServiceRoot;
 class RootItem;
@@ -36,7 +38,30 @@ class FormDiscoverFeeds : public QDialog {
   public:
     struct DiscoverTask {
         const FeedParser* m_parser;
-        QString m_url;
+        QUrl m_url;
+        QList<DocumentWithUrl> m_documents;
+    };
+
+    struct DiscoverDocumentsTask {
+        QUrl m_url;
+        bool m_deepDiscovery;
+    };
+
+    struct DiscoverDocumentsResult {
+        QUrl m_url;
+        QList<DocumentWithUrl> m_documents;
+        QList<QUrl> m_linkedUrls;
+    };
+
+    struct DiscoverLinkedDocumentTask {
+        QUrl m_masterUrl;
+        QUrl m_url;
+    };
+
+    struct DiscoverLinkedDocumentResult {
+        QUrl m_masterUrl;
+        DocumentWithUrl m_document;
+        bool m_success = false;
     };
 
     explicit FormDiscoverFeeds(ServiceRoot* service_root,
@@ -56,14 +81,22 @@ class FormDiscoverFeeds : public QDialog {
 
     void onFeedSelectionChanged();
     void onDiscoveryProgress(int progress);
+    void onDocumentsFinished();
+    void onLinkedDocumentsFinished();
     void onDiscoveryFinished();
 
   private:
     StandardFeed* selectedFeed() const;
     RootItem* targetParent() const;
-    
-    void extracted(QList<StandardFeed*>& feeds, QPixmap& icon);
-    QList<StandardFeed*> discoverFeedsWithParser(const FeedParser* parser, const QString& url, bool greedy);
+
+    QList<StandardFeed*> discoverFeedsWithParser(const FeedParser* parser,
+                                                 const QUrl& url,
+                                                 bool deep_discovery,
+                                                 const QList<DocumentWithUrl>& documents);
+    DiscoverDocumentsResult fetchDocumentsForUrl(const DiscoverDocumentsTask& task);
+    DiscoverLinkedDocumentResult fetchLinkedDocument(const DiscoverLinkedDocumentTask& task);
+    void startDiscoveringLinkedDocuments(const QList<DiscoverLinkedDocumentTask>& tasks);
+    void startDiscoveringFeeds(const QHash<QUrl, QList<DocumentWithUrl>>& documents_by_url);
 
     void userWantsAdvanced();
     void loadDiscoveredFeeds(const QList<StandardFeed*>& feeds);
@@ -74,8 +107,12 @@ class FormDiscoverFeeds : public QDialog {
     QPushButton* m_btnGoAdvanced;
     ServiceRoot* m_serviceRoot;
     QList<FeedParser*> m_parsers;
+    QFutureWatcher<DiscoverDocumentsResult> m_watcherDocuments;
+    QFutureWatcher<DiscoverLinkedDocumentResult> m_watcherLinkedDocuments;
     QFutureWatcher<QList<StandardFeed*>> m_watcherLookup;
+    QHash<QUrl, QList<DocumentWithUrl>> m_documentsByUrl;
     DiscoveredFeedsModel* m_discoveredModel;
+    bool m_deepDiscovery;
 };
 
 #endif // FORMDISCOVERFEEDS_H

@@ -9,10 +9,14 @@
 #include <librssguard/definitions/typedefs.h>
 #include <librssguard/miscellaneous/domdocument.h>
 
+#include <functional>
+
+#include <QByteArray>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QString>
+#include <QUrl>
 
 struct FeedComment {
     QString m_title;
@@ -22,6 +26,11 @@ struct FeedComment {
 struct GuessedFeedWithIcons {
     StandardFeed* m_feed = nullptr;
     QList<IconLocation> m_icons;
+};
+
+struct DocumentWithUrl {
+    QByteArray m_documentData;
+    QUrl m_documentUrl;
 };
 
 // Base class for all XML-based feed parsers.
@@ -34,11 +43,14 @@ class FeedParser {
     };
 
     FeedParser();
-    explicit FeedParser(QString data, DataType is_xml = DataType::Xml);
+    explicit FeedParser(QString data, DataType data_type = DataType::Xml);
     virtual ~FeedParser();
 
     // Returns list of absolute URLs of discovered feeds from provided base URL.
-    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const;
+    virtual QList<StandardFeed*> discoverFeeds(ServiceRoot* root,
+                                               const QUrl& url,
+                                               bool deep_discovery,
+                                               const QList<DocumentWithUrl>& documents = {}) const;
 
     // Guesses feed.
     virtual GuessedFeedWithIcons guessFeed(const QByteArray& content,
@@ -47,14 +59,14 @@ class FeedParser {
     // Returns list of all messages from the feed.
     virtual QList<Message> messages();
 
-    QString dateTimeFormat() const;
+    const QString& dateTimeFormat() const;
     void setDateTimeFormat(const QString& dt_format);
 
     bool dontUseRawXmlSaving() const;
     void setDontUseRawXmlSaving(bool no_raw_xml_saving);
 
-    std::function<QByteArray(QUrl)> resourceHandler() const;
-    void setResourceHandler(const std::function<QByteArray(QUrl)>& res_handler);
+    const std::function<QByteArray(const QUrl&)>& resourceHandler() const;
+    void setResourceHandler(std::function<QByteArray(const QUrl&)> res_handler);
 
     bool fetchComments() const;
     void setFetchComments(bool cmnts);
@@ -102,6 +114,8 @@ class FeedParser {
     virtual QString objMessageRawContents(const QVariant& msg_element) const;
 
   protected:
+    static NetworkResult networkResultForDocument(const DocumentWithUrl& document, const QUrl& fallback_url);
+
     void logUnsuccessfulRequest(const NetworkResult& reply) const;
     QList<QSharedPointer<MessageEnclosure>> xmlMrssGetEnclosures(const QDomElement& msg_element) const;
     QString xmlMrssTextFromPath(const QDomElement& msg_element, const QString& xml_path) const;
@@ -115,16 +129,16 @@ class FeedParser {
     QDateTime decideArticleDate(const QString& published, const QString& updated);
 
   protected:
-    std::function<QByteArray(QUrl)> m_resourceHandler;
-    DataType m_dataType;
+    std::function<QByteArray(const QUrl&)> m_resourceHandler;
+    DataType m_dataType = DataType::Xml;
     QString m_data;
     QString m_dateTimeFormat;
     DomDocument m_xml;
     QJsonDocument m_json;
     QString m_mrssNamespace;
-    bool m_dontUseRawXmlSaving;
-    bool m_fetchComments;
-    StandardFeed::ArticleDateTimeBehavior m_articleDateMode;
+    bool m_dontUseRawXmlSaving = false;
+    bool m_fetchComments = false;
+    StandardFeed::ArticleDateTimeBehavior m_articleDateMode = StandardFeed::ArticleDateTimeBehavior::Published;
 };
 
 #endif // FEEDPARSER_H

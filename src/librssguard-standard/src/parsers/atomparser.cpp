@@ -25,8 +25,11 @@ AtomParser::AtomParser(const QString& data) : FeedParser(data) {
 
 AtomParser::~AtomParser() {}
 
-QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& url, bool greedy) const {
-  auto base_result = FeedParser::discoverFeeds(root, url, greedy);
+QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root,
+                                               const QUrl& url,
+                                               bool deep_discovery,
+                                               const QList<DocumentWithUrl>& documents) const {
+  auto base_result = FeedParser::discoverFeeds(root, url, deep_discovery, documents);
 
   if (!base_result.isEmpty()) {
     return base_result;
@@ -49,30 +52,27 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   QList<QPair<QByteArray, QByteArray>> headers = {
     {HTTP_HEADERS_ACCEPT, StandardFeed::idealHttpAcceptForFeedType(StandardFeed::Type::Atom10).toLocal8Bit()}};
 
-  // Download URL.
   int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   QByteArray data;
-  auto res = NetworkFactory::performNetworkOperation(my_url,
-                                                     timeout,
-                                                     {},
-                                                     data,
-                                                     QNetworkAccessManager::Operation::GetOperation,
-                                                     headers,
-                                                     {},
-                                                     {},
-                                                     {},
-                                                     root->networkProxy());
-  QString direct_html_data = QString::fromUtf8(data);
+  NetworkResult res;
+  QString direct_html_data;
 
-  if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+  for (const DocumentWithUrl& document : documents) {
+    const NetworkResult document_result = networkResultForDocument(document, url);
+    const QString document_html_data = QString::fromUtf8(document.m_documentData);
+
+    direct_html_data += document_html_data;
+
     try {
       // 1.
-      auto guessed_feed = guessFeed(data, res);
+      auto guessed_feed = guessFeed(document.m_documentData, document_result);
 
-      return {guessed_feed.m_feed};
+      feeds.append(guessed_feed.m_feed);
+      continue;
     }
     catch (...) {
-      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(document_result.m_url.toString())
+               << "is not a direct ATOM feed file.";
     }
 
     // 2.
@@ -83,7 +83,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
     rx.optimize();
     rx_href.optimize();
 
-    QRegularExpressionMatchIterator it_rx = rx.globalMatch(direct_html_data);
+    QRegularExpressionMatchIterator it_rx = rx.globalMatch(document_html_data);
 
     while (it_rx.hasNext()) {
       QRegularExpressionMatch mat_tx = it_rx.next();
@@ -94,7 +94,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
         feed_link = QSL(URI_SCHEME_HTTP) + feed_link.mid(2);
       }
       else {
-        feed_link = url.resolved(feed_link).toString();
+        feed_link = document_result.m_url.resolved(feed_link).toString();
       }
 
       QByteArray data;
@@ -122,9 +122,6 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       }
     }
   }
-  else {
-    logUnsuccessfulRequest(res);
-  }
 
   // 3.
   my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash) + QSL("/feed");
@@ -146,7 +143,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       feeds.append(guessed_feed.m_feed);
     }
     catch (...) {
-      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct ATOM feed file.";
     }
   }
   else {
@@ -173,7 +170,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
       feeds.append(guessed_feed.m_feed);
     }
     catch (...) {
-      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+      qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct ATOM feed file.";
     }
   }
   else {
@@ -210,7 +207,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
           feeds.append(guessed_feed.m_feed);
         }
         catch (...) {
-          qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+          qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct ATOM feed file.";
         }
       }
       else {
@@ -222,7 +219,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
   // 6.
   my_url = url.toString(QUrl::UrlFormattingOption::StripTrailingSlash);
 
-  if (!direct_html_data.isEmpty() && my_url.contains(QSL("youtube"))) {
+  if (!direct_html_data.isEmpty()) {
     QString youtube_channel_id =
       QRegularExpression(QSL("\"externalChannelId\": ?\"([^\"]+)\"")).match(direct_html_data).captured(1);
 
@@ -252,7 +249,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
           feeds.append(guessed_feed.m_feed);
         }
         catch (...) {
-          qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+          qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct ATOM feed file.";
         }
       }
       else {
@@ -284,7 +281,7 @@ QList<StandardFeed*> AtomParser::discoverFeeds(ServiceRoot* root, const QUrl& ur
         feeds.append(guessed_feed.m_feed);
       }
       catch (...) {
-        qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct feed file.";
+        qDebugNN << LOGSEC_STANDARD << QUOTE_W_SPACE(my_url) << "is not a direct ATOM feed file.";
       }
     }
     else {

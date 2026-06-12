@@ -2,6 +2,7 @@
 
 #include "network-web/webfactory.h"
 
+#include "3rd-party/gumbo/src/gumbo.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/formmain.h"
@@ -121,6 +122,52 @@ namespace {
     }
 
     return rule_hosts;
+  }
+
+  void collectHyperlinksFromGumboNode(GumboNode* node, const QUrl& base_url, QStringList& hyperlinks) {
+    if (node == nullptr) {
+      return;
+    }
+
+    if (node->type == GUMBO_NODE_DOCUMENT) {
+      GumboVector* children = &node->v.document.children;
+
+      for (unsigned int i = 0; i < children->length; i++) {
+        collectHyperlinksFromGumboNode(static_cast<GumboNode*>(children->data[i]), base_url, hyperlinks);
+      }
+
+      return;
+    }
+
+    if (node->type != GUMBO_NODE_ELEMENT) {
+      return;
+    }
+
+    GumboElement& element = node->v.element;
+
+    if (element.tag == GUMBO_TAG_A || element.tag == GUMBO_TAG_AREA) {
+      GumboAttribute* href = gumbo_get_attribute(&element.attributes, "href");
+
+      if (href != nullptr && href->value != nullptr) {
+        const QString raw_href = QString::fromUtf8(href->value).trimmed();
+
+        if (!raw_href.isEmpty()) {
+          const QUrl raw_url(raw_href);
+          const QUrl resolved_url = base_url.resolved(raw_url);
+          const QString resolved_url_string = resolved_url.toString();
+
+          if (resolved_url.isValid() && !resolved_url_string.isEmpty() && !hyperlinks.contains(resolved_url_string)) {
+            hyperlinks << resolved_url_string;
+          }
+        }
+      }
+    }
+
+    GumboVector* children = &element.children;
+
+    for (unsigned int i = 0; i < children->length; i++) {
+      collectHyperlinksFromGumboNode(static_cast<GumboNode*>(children->data[i]), base_url, hyperlinks);
+    }
   }
 } // namespace
 
@@ -783,6 +830,28 @@ QString WebFactory::webCacheFolder() {
   QString cache_folder = qApp->userDataFolder() + QDir::separator() + QSL("web");
 
   return cache_folder;
+}
+
+QStringList WebFactory::extractAllHyperlinks(const QUrl& base_url, const QByteArray& html_data) {
+  QStringList hyperlinks;
+
+  if (html_data.isEmpty()) {
+    return hyperlinks;
+  }
+
+  GumboOutput* output =
+    gumbo_parse_with_options(&kGumboDefaultOptions, html_data.constData(), static_cast<size_t>(html_data.size()));
+
+  if (output == nullptr) {
+    return hyperlinks;
+  }
+
+  collectHyperlinksFromGumboNode(output->root, base_url, hyperlinks);
+  gumbo_destroy_output(&kGumboDefaultOptions, output);
+
+  qDebugNN << hyperlinks;
+
+  return hyperlinks;
 }
 
 QString WebFactory::unescapeHtml(const QString& html) {
