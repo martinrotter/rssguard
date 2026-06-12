@@ -83,6 +83,18 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
           &QFutureWatcher<DiscoverDocumentsResult>::finished,
           this,
           &FormDiscoverFeeds::onDocumentsFinished);
+  connect(&m_watcherDocuments,
+          &QFutureWatcher<DiscoverDocumentsResult>::progressValueChanged,
+          this,
+          &FormDiscoverFeeds::onDiscoveryProgress);
+  connect(&m_watcherLinkedDocuments,
+          &QFutureWatcher<DiscoverLinkedDocumentResult>::finished,
+          this,
+          &FormDiscoverFeeds::onLinkedDocumentsFinished);
+  connect(&m_watcherLinkedDocuments,
+          &QFutureWatcher<DiscoverLinkedDocumentResult>::progressValueChanged,
+          this,
+          &FormDiscoverFeeds::onDiscoveryProgress);
   connect(&m_watcherLookup,
           &QFutureWatcher<QList<StandardFeed*>>::progressValueChanged,
           this,
@@ -137,14 +149,6 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
 
 void FormDiscoverFeeds::onDiscoveryProgress(int progress) {
   m_ui.m_pbDiscovery->setValue(progress);
-}
-
-void FormDiscoverFeeds::onDocumentsProgressMaximumIncreased(int increase) {
-  m_ui.m_pbDiscovery->setMaximum(m_ui.m_pbDiscovery->maximum() + increase);
-}
-
-void FormDiscoverFeeds::onDocumentsProgressStepFinished() {
-  m_ui.m_pbDiscovery->setValue(m_ui.m_pbDiscovery->value() + 1);
 }
 
 void FormDiscoverFeeds::onDiscoveryFinished() {
@@ -240,29 +244,18 @@ void FormDiscoverFeeds::discoverFeeds() {
   m_ui.m_pbDiscovery->setValue(0);
   m_ui.m_pbDiscovery->setVisible(true);
 
-  setEnabled(false);
   m_watcherDocuments.setFuture(fut);
+
+  setEnabled(false);
 }
 
 FormDiscoverFeeds::DiscoverDocumentsResult FormDiscoverFeeds::fetchDocumentsForUrl(const DiscoverDocumentsTask& task) {
   QList<DocumentWithUrl> documents;
+  QList<QUrl> linked_urls;
   const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
   const QList<QPair<QByteArray, QByteArray>> headers = {{HTTP_HEADERS_ACCEPT, QByteArray("*/*")}};
 
-  auto reportProgressMaximumIncrease = [this](int increase) {
-    if (increase > 0) {
-      QMetaObject::invokeMethod(this,
-                                "onDocumentsProgressMaximumIncreased",
-                                Qt::QueuedConnection,
-                                Q_ARG(int, increase));
-    }
-  };
-
-  auto reportProgressStep = [this]() {
-    QMetaObject::invokeMethod(this, "onDocumentsProgressStepFinished", Qt::QueuedConnection);
-  };
-
-  auto appendLinkedDocuments = [&](QList<DocumentWithUrl>& prepared_documents) {
+  auto extractLinkedUrls = [&](const QList<DocumentWithUrl>& prepared_documents) {
     QStringList known_document_urls;
 
     for (const DocumentWithUrl& document : std::as_const(prepared_documents)) {
@@ -272,12 +265,10 @@ FormDiscoverFeeds::DiscoverDocumentsResult FormDiscoverFeeds::fetchDocumentsForU
       known_document_urls << document_url.toString();
     }
 
-    const QList<DocumentWithUrl> base_documents = prepared_documents;
     QStringList queued_document_urls = known_document_urls;
 
-    for (const DocumentWithUrl& document : base_documents) {
+    for (const DocumentWithUrl& document : prepared_documents) {
       QStringList hyperlinks = qApp->web()->extractAllHyperlinks(document.m_documentUrl, document.m_documentData);
-      QList<QUrl> hyperlinks_to_process;
 
       hyperlinks.removeDuplicates();
 
@@ -294,64 +285,9 @@ FormDiscoverFeeds::DiscoverDocumentsResult FormDiscoverFeeds::fetchDocumentsForU
 
         if (hyperlink_url.isLocalFile() || hyperlink_url.scheme() == QSL("http") ||
             hyperlink_url.scheme() == QSL("https")) {
-          hyperlinks_to_process.append(hyperlink_url);
+          linked_urls.append(hyperlink_url);
           queued_document_urls << hyperlink_string;
         }
-      }
-
-      reportProgressMaximumIncrease(hyperlinks_to_process.size());
-
-      for (const QUrl& hyperlink_url : std::as_const(hyperlinks_to_process)) {
-        if (hyperlink_url.isLocalFile()) {
-          const QString file_path = hyperlink_url.toLocalFile();
-
-          if (QFileInfo(file_path).isReadable()) {
-            try {
-              prepared_documents.append({IOFactory::readFile(file_path), hyperlink_url});
-              known_document_urls << hyperlink_url.toString();
-            }
-            catch (const ApplicationException& ex) {
-              qDebugNN << LOGSEC_STANDARD << "Linked local document cannot be read:" << QUOTE_W_SPACE(file_path)
-                       << NONQUOTE_W_SPACE_DOT(ex.message());
-            }
-          }
-          else {
-            qDebugNN << LOGSEC_STANDARD << "Linked local document is not readable:" << QUOTE_W_SPACE_DOT(file_path);
-          }
-        }
-        else if (hyperlink_url.scheme() == QSL("http") || hyperlink_url.scheme() == QSL("https")) {
-          QByteArray data;
-          const QString hyperlink_string = hyperlink_url.toString();
-          NetworkResult res = NetworkFactory::performNetworkOperation(hyperlink_string,
-                                                                      timeout,
-                                                                      {},
-                                                                      data,
-                                                                      QNetworkAccessManager::Operation::GetOperation,
-                                                                      headers,
-                                                                      {},
-                                                                      {},
-                                                                      {},
-                                                                      m_serviceRoot->networkProxy());
-
-          if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
-            QUrl document_url = res.m_url.isValid() ? res.m_url : hyperlink_url;
-
-            document_url.setFragment({});
-
-            const QString document_url_string = document_url.toString();
-
-            if (!known_document_urls.contains(document_url_string)) {
-              prepared_documents.append({data, document_url});
-              known_document_urls << document_url_string;
-            }
-          }
-          else {
-            qDebugNN << LOGSEC_STANDARD << "Linked document download failed for" << QUOTE_W_SPACE(hyperlink_string)
-                     << "with error:" << QUOTE_W_SPACE_DOT(NetworkFactory::networkErrorText(res.m_networkError));
-          }
-        }
-
-        reportProgressStep();
       }
     }
   };
@@ -382,8 +318,6 @@ FormDiscoverFeeds::DiscoverDocumentsResult FormDiscoverFeeds::fetchDocumentsForU
       qDebugNN << LOGSEC_STANDARD << "Base document download failed for" << QUOTE_W_SPACE(task.m_url.toString())
                << "with error:" << QUOTE_W_SPACE_DOT(NetworkFactory::networkErrorText(res.m_networkError));
     }
-
-    reportProgressStep();
   }
   else {
     const QString file_path = input_url.toLocalFile();
@@ -400,19 +334,79 @@ FormDiscoverFeeds::DiscoverDocumentsResult FormDiscoverFeeds::fetchDocumentsForU
     else {
       qDebugNN << LOGSEC_STANDARD << "Base local document is not readable:" << QUOTE_W_SPACE_DOT(file_path);
     }
-
-    reportProgressStep();
   }
 
   if (task.m_deepDiscovery) {
-    appendLinkedDocuments(documents);
+    extractLinkedUrls(documents);
   }
 
-  return {task.m_url, documents};
+  return {task.m_url, documents, linked_urls};
+}
+
+FormDiscoverFeeds::DiscoverLinkedDocumentResult FormDiscoverFeeds::fetchLinkedDocument(const DiscoverLinkedDocumentTask&
+                                                                                         task) {
+  const QUrl input_url = task.m_url;
+
+  if (!input_url.isValid()) {
+    return {task.m_masterUrl, {}, false};
+  }
+
+  if (input_url.isLocalFile()) {
+    const QString file_path = input_url.toLocalFile();
+
+    if (QFileInfo(file_path).isReadable()) {
+      try {
+        return {task.m_masterUrl, {IOFactory::readFile(file_path), input_url}, true};
+      }
+      catch (const ApplicationException& ex) {
+        qDebugNN << LOGSEC_STANDARD << "Linked local document cannot be read:" << QUOTE_W_SPACE(file_path)
+                 << NONQUOTE_W_SPACE_DOT(ex.message());
+      }
+    }
+    else {
+      qDebugNN << LOGSEC_STANDARD << "Linked local document is not readable:" << QUOTE_W_SPACE_DOT(file_path);
+    }
+
+    return {task.m_masterUrl, {}, false};
+  }
+
+  if (input_url.scheme() != QSL("http") && input_url.scheme() != QSL("https")) {
+    return {task.m_masterUrl, {}, false};
+  }
+
+  QByteArray data;
+  const int timeout = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateTimeout)).toInt();
+  const QList<QPair<QByteArray, QByteArray>> headers = {{HTTP_HEADERS_ACCEPT, QByteArray("*/*")}};
+  const QString input_url_string = input_url.toString();
+  NetworkResult res = NetworkFactory::performNetworkOperation(input_url_string,
+                                                              timeout,
+                                                              {},
+                                                              data,
+                                                              QNetworkAccessManager::Operation::GetOperation,
+                                                              headers,
+                                                              {},
+                                                              {},
+                                                              {},
+                                                              m_serviceRoot->networkProxy());
+
+  if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
+    QUrl document_url = res.m_url.isValid() ? res.m_url : input_url;
+
+    document_url.setFragment({});
+
+    return {task.m_masterUrl, {data, document_url}, true};
+  }
+
+  qDebugNN << LOGSEC_STANDARD << "Linked document download failed for" << QUOTE_W_SPACE(input_url_string)
+           << "with error:" << QUOTE_W_SPACE_DOT(NetworkFactory::networkErrorText(res.m_networkError));
+
+  return {task.m_masterUrl, {}, false};
 }
 
 void FormDiscoverFeeds::onDocumentsFinished() {
-  QHash<QUrl, QList<DocumentWithUrl>> documents_by_url;
+  QList<DiscoverLinkedDocumentTask> linked_document_tasks;
+
+  m_documentsByUrl.clear();
 
   try {
     const auto future = m_watcherDocuments.future();
@@ -420,7 +414,11 @@ void FormDiscoverFeeds::onDocumentsFinished() {
     for (int i = 0; i < future.resultCount(); ++i) {
       const DiscoverDocumentsResult result = future.resultAt(i);
 
-      documents_by_url.insert(result.m_url, result.m_documents);
+      m_documentsByUrl.insert(result.m_url, result.m_documents);
+
+      for (const QUrl& linked_url : result.m_linkedUrls) {
+        linked_document_tasks.append({result.m_url, linked_url});
+      }
     }
   }
   catch (const ApplicationException& ex) {
@@ -433,7 +431,82 @@ void FormDiscoverFeeds::onDocumentsFinished() {
     return;
   }
 
-  startDiscoveringFeeds(documents_by_url);
+  if (linked_document_tasks.isEmpty()) {
+    startDiscoveringFeeds(m_documentsByUrl);
+  }
+  else {
+    startDiscoveringLinkedDocuments(linked_document_tasks);
+  }
+}
+
+void FormDiscoverFeeds::startDiscoveringLinkedDocuments(const QList<DiscoverLinkedDocumentTask>& tasks) {
+  std::function<DiscoverLinkedDocumentResult(const DiscoverLinkedDocumentTask&)> func =
+    [=](const DiscoverLinkedDocumentTask& task) -> DiscoverLinkedDocumentResult {
+    return fetchLinkedDocument(task);
+  };
+
+#if QT_VERSION_MAJOR == 5
+  QFuture<DiscoverLinkedDocumentResult> fut = QtConcurrent::mapped(tasks, func);
+#else
+  QFuture<DiscoverLinkedDocumentResult> fut = QtConcurrent::mapped(qApp->workHorsePool(), tasks, func);
+#endif
+
+  m_ui.m_pbDiscovery->setMaximum(tasks.size());
+  m_ui.m_pbDiscovery->setValue(0);
+  m_ui.m_pbDiscovery->setVisible(true);
+
+  m_watcherLinkedDocuments.setFuture(fut);
+}
+
+void FormDiscoverFeeds::onLinkedDocumentsFinished() {
+  try {
+    const auto future = m_watcherLinkedDocuments.future();
+    QHash<QUrl, QStringList> known_document_urls;
+
+    for (auto it = m_documentsByUrl.cbegin(); it != m_documentsByUrl.cend(); ++it) {
+      QStringList urls;
+
+      for (const DocumentWithUrl& document : it.value()) {
+        QUrl document_url = document.m_documentUrl;
+
+        document_url.setFragment({});
+        urls << document_url.toString();
+      }
+
+      known_document_urls.insert(it.key(), urls);
+    }
+
+    for (int i = 0; i < future.resultCount(); ++i) {
+      const DiscoverLinkedDocumentResult result = future.resultAt(i);
+
+      if (!result.m_success) {
+        continue;
+      }
+
+      QUrl document_url = result.m_document.m_documentUrl;
+
+      document_url.setFragment({});
+
+      QStringList& known_urls = known_document_urls[result.m_masterUrl];
+      const QString document_url_string = document_url.toString();
+
+      if (!known_urls.contains(document_url_string)) {
+        m_documentsByUrl[result.m_masterUrl].append(result.m_document);
+        known_urls << document_url_string;
+      }
+    }
+  }
+  catch (const ApplicationException& ex) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot discover feeds"),
+                          tr("Error: %1").arg(ex.message()),
+                          QSystemTrayIcon::MessageIcon::Critical});
+
+    setEnabled(true);
+    return;
+  }
+
+  startDiscoveringFeeds(m_documentsByUrl);
 }
 
 void FormDiscoverFeeds::startDiscoveringFeeds(const QHash<QUrl, QList<DocumentWithUrl>>& documents_by_url) {
@@ -622,6 +695,10 @@ void FormDiscoverFeeds::closeEvent(QCloseEvent* event) {
     // Wait for discovery to finish.
     if (m_watcherDocuments.isRunning()) {
       m_watcherDocuments.waitForFinished();
+    }
+
+    if (m_watcherLinkedDocuments.isRunning()) {
+      m_watcherLinkedDocuments.waitForFinished();
     }
 
     if (m_watcherLookup.isRunning()) {

@@ -50,6 +50,18 @@ class FormDiscoverFeeds : public QDialog {
     struct DiscoverDocumentsResult {
         QUrl m_url;
         QList<DocumentWithUrl> m_documents;
+        QList<QUrl> m_linkedUrls;
+    };
+
+    struct DiscoverLinkedDocumentTask {
+        QUrl m_masterUrl;
+        QUrl m_url;
+    };
+
+    struct DiscoverLinkedDocumentResult {
+        QUrl m_masterUrl;
+        DocumentWithUrl m_document;
+        bool m_success = false;
     };
 
     explicit FormDiscoverFeeds(ServiceRoot* service_root,
@@ -69,9 +81,8 @@ class FormDiscoverFeeds : public QDialog {
 
     void onFeedSelectionChanged();
     void onDiscoveryProgress(int progress);
-    void onDocumentsProgressMaximumIncreased(int increase);
-    void onDocumentsProgressStepFinished();
     void onDocumentsFinished();
+    void onLinkedDocumentsFinished();
     void onDiscoveryFinished();
 
   private:
@@ -83,6 +94,8 @@ class FormDiscoverFeeds : public QDialog {
                                                  bool deep_discovery,
                                                  const QList<DocumentWithUrl>& documents);
     DiscoverDocumentsResult fetchDocumentsForUrl(const DiscoverDocumentsTask& task);
+    DiscoverLinkedDocumentResult fetchLinkedDocument(const DiscoverLinkedDocumentTask& task);
+    void startDiscoveringLinkedDocuments(const QList<DiscoverLinkedDocumentTask>& tasks);
     void startDiscoveringFeeds(const QHash<QUrl, QList<DocumentWithUrl>>& documents_by_url);
 
     void userWantsAdvanced();
@@ -95,7 +108,9 @@ class FormDiscoverFeeds : public QDialog {
     ServiceRoot* m_serviceRoot;
     QList<FeedParser*> m_parsers;
     QFutureWatcher<DiscoverDocumentsResult> m_watcherDocuments;
+    QFutureWatcher<DiscoverLinkedDocumentResult> m_watcherLinkedDocuments;
     QFutureWatcher<QList<StandardFeed*>> m_watcherLookup;
+    QHash<QUrl, QList<DocumentWithUrl>> m_documentsByUrl;
     DiscoveredFeedsModel* m_discoveredModel;
     bool m_deepDiscovery;
 };
