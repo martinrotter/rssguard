@@ -48,6 +48,7 @@ pacman -Syu --noconfirm  \
     mariadb-clients      \
     mpv                  \
     ninja                \
+    patchelf             \
     pipewire-audio       \
     pulseaudio           \
     pulseaudio-alsa      \
