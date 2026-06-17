@@ -8015,7 +8015,7 @@ Ceci peut accélerer de façon très significative l'appli si vous avez des cent
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="236"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="704"/>
       <source>Article count format</source>
-      <translation>Format du compte d&apos;articles</translation>
+      <translation>Format du compteur d&apos;articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="262"/>
