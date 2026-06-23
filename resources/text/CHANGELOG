@@ -1,6 +1,6 @@
 5.2.0
 -----
-Released on: 2026-06-XX
+Released on: 2026-06-23
 
 Added:
 * Feed auto-fetch can now also be delayed while Feral GameMode is active on Linux and startup auto-fetch is skipped when GameMode is already active. (#2265)
