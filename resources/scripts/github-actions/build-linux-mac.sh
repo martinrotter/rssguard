@@ -130,7 +130,7 @@ if [ $is_linux = true ]; then
   wget --retry-connrefused --tries=30 "$SHARUN" -O ./quick-sharun
   chmod +x ./quick-sharun
 
-  ./quick-sharun /usr/*/rssguard*
+  ./quick-sharun /usr/*/rssguard* /usr/lib/libmujs.so*
 else
   mkdir -p "$prefix/Contents/Frameworks"
   mv "$prefix/Contents/MacOS/librssguard.dylib" "$prefix/Contents/Frameworks/"
