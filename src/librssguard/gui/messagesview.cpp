@@ -353,7 +353,6 @@ void MessagesView::setupAppearance() {
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
   header()->setFirstSectionMovable(true);
   header()->setCascadingSectionResizes(false);
-  header()->setStretchLastSection(false);
 
   adjustColumns();
 }
@@ -1053,17 +1052,6 @@ void MessagesView::adjustColumns() {
 
   if (header()->count() > 0 && !m_columnsAdjusted) {
     m_columnsAdjusted = true;
-
-    // Setup column resize strategies.
-    for (int i = 0; i < header()->count(); i++) {
-      if (i == MSG_MDL_TITLE_INDEX) {
-        continue;
-      }
-
-      header()->setSectionResizeMode(i, QHeaderView::ResizeMode::Interactive);
-    }
-
-    header()->setSectionResizeMode(MSG_MDL_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
 
     // Hide columns.
     hideColumn(MSG_MDL_ID_INDEX);

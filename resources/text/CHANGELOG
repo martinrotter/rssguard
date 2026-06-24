@@ -1,3 +1,14 @@
+5.2.1
+-----
+Released on: 2026-06-24
+
+Added:
+* Feed and article lists now share common handling for column visibility, order, width and sort state.
+* Feed list column order is now saved and restored together with other column settings.
+* Column header context menu now offers per-column submenus where visibility and resize mode can be changed.
+* Column resize mode can now be switched between interactive sizing, stretching and resizing to contents, and the selected mode is saved with the column state.
+* Column header context menu can now switch whether the last visible column stretches to fill available space, and this setting is saved with the column state.
+
 5.2.0
 -----
 Released on: 2026-06-23

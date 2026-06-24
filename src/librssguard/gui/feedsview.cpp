@@ -972,7 +972,6 @@ void FeedsView::revealItem(RootItem* item) {
 }
 
 void FeedsView::setupAppearance() {
-  header()->setStretchLastSection(false);
   header()->setCascadingSectionResizes(false);
   header()->setSectionsMovable(false);
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
@@ -1209,16 +1208,6 @@ void FeedsView::adjustColumns() {
   if (header()->count() > 0 && !m_columnsAdjusted) {
     m_columnsAdjusted = true;
 
-    // Setup column resize strategies.
-    for (int i = 0; i < header()->count(); i++) {
-      if (i == FDS_MODEL_TITLE_INDEX) {
-        continue;
-      }
-
-      header()->setSectionResizeMode(i, QHeaderView::ResizeMode::Interactive);
-    }
-
-    header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
     hideColumn(FDS_MODEL_ID_INDEX);
   }
 }

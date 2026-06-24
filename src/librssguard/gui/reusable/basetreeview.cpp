@@ -17,6 +17,7 @@ BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent), m_lastWheelTime
   setAllColumnsShowFocus(true);
   setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
   header()->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
+  header()->setStretchLastSection(true);
 
   connect(header(), &QHeaderView::customContextMenuRequested, this, [this](const QPoint& point) {
     displayColumnsContextMenu(header()->mapToGlobal(point));
@@ -45,11 +46,13 @@ QByteArray BaseTreeView::saveHeaderState() const {
   QJsonObject obj;
 
   obj[QSL("header_count")] = header()->count();
+  obj[QSL("header_stretch_last_section")] = header()->stretchLastSection();
 
   for (int i = 0; i < header()->count(); i++) {
     obj[QSL("header_%1_idx").arg(i)] = header()->visualIndex(i);
     obj[QSL("header_%1_size").arg(i)] = header()->sectionSize(i);
     obj[QSL("header_%1_hidden").arg(i)] = header()->isSectionHidden(i);
+    obj[QSL("header_%1_resize_mode").arg(i)] = int(header()->sectionResizeMode(i));
   }
 
   const ColumnSortStates states = columnSortStates();
@@ -73,15 +76,24 @@ void BaseTreeView::restoreHeaderState(const QByteArray& dta) {
     return;
   }
 
+  header()->setStretchLastSection(obj.contains(QSL("header_stretch_last_section"))
+                                    ? obj[QSL("header_stretch_last_section")].toBool()
+                                    : true);
+
   for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
     const int vi = obj.contains(QSL("header_%1_idx").arg(i)) ? obj[QSL("header_%1_idx").arg(i)].toInt() : i;
     const int ss = obj[QSL("header_%1_size").arg(i)].toInt();
     const bool ish = obj[QSL("header_%1_hidden").arg(i)].toBool();
+    const auto resize_mode =
+      QHeaderView::ResizeMode(obj.contains(QSL("header_%1_resize_mode").arg(i))
+                                ? obj[QSL("header_%1_resize_mode").arg(i)].toInt()
+                                : int(header()->sectionResizeMode(i)));
 
     if (vi >= 0 && vi < header()->count()) {
       header()->swapSections(header()->visualIndex(i), vi);
     }
 
+    header()->setSectionResizeMode(i, resize_mode);
     header()->resizeSection(i, ss);
     header()->setSectionHidden(i, ish);
   }
