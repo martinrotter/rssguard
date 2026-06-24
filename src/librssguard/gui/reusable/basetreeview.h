@@ -3,7 +3,10 @@
 #ifndef BASETREEVIEW_H
 #define BASETREEVIEW_H
 
+#include <QByteArray>
 #include <QElapsedTimer>
+#include <QList>
+#include <QPair>
 #include <QTreeView>
 
 class QContextMenuEvent;
@@ -13,9 +16,13 @@ class RSSGUARD_DLLSPEC BaseTreeView : public QTreeView {
     Q_OBJECT
 
   public:
+    using ColumnSortStates = QList<QPair<int, Qt::SortOrder>>;
+
     explicit BaseTreeView(QWidget* parent = nullptr);
 
     bool isIndexHidden(const QModelIndex& idx) const;
+    virtual QByteArray saveHeaderState() const;
+    virtual void restoreHeaderState(const QByteArray& dta);
 
   protected:
     virtual void wheelEvent(QWheelEvent* event);
@@ -23,6 +30,8 @@ class RSSGUARD_DLLSPEC BaseTreeView : public QTreeView {
     virtual void contextMenuEvent(QContextMenuEvent* event);
 
     void displayColumnsContextMenu(const QPoint& global_pos);
+    virtual ColumnSortStates columnSortStates() const;
+    virtual void restoreColumnSortStates(const ColumnSortStates& states);
 
   private:
     QList<int> m_allowedKeyboardKeys;

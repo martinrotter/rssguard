@@ -8,6 +8,8 @@
 
 #include <QContextMenuEvent>
 #include <QHeaderView>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QKeyEvent>
 #include <QScrollBar>
 
@@ -37,6 +39,66 @@ BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent), m_lastWheelTime
 
 bool BaseTreeView::isIndexHidden(const QModelIndex& idx) const {
   return QTreeView::isIndexHidden(idx);
+}
+
+QByteArray BaseTreeView::saveHeaderState() const {
+  QJsonObject obj;
+
+  obj[QSL("header_count")] = header()->count();
+
+  for (int i = 0; i < header()->count(); i++) {
+    obj[QSL("header_%1_idx").arg(i)] = header()->visualIndex(i);
+    obj[QSL("header_%1_size").arg(i)] = header()->sectionSize(i);
+    obj[QSL("header_%1_hidden").arg(i)] = header()->isSectionHidden(i);
+  }
+
+  const ColumnSortStates states = columnSortStates();
+
+  obj[QSL("sort_count")] = states.size();
+
+  for (int i = 0; i < states.size(); i++) {
+    obj[QSL("sort_%1_column").arg(i)] = states.at(i).first;
+    obj[QSL("sort_%1_order").arg(i)] = states.at(i).second;
+  }
+
+  return QJsonDocument(obj).toJson(QJsonDocument::JsonFormat::Compact);
+}
+
+void BaseTreeView::restoreHeaderState(const QByteArray& dta) {
+  const QJsonObject obj = QJsonDocument::fromJson(dta).object();
+  const int saved_header_count = obj[QSL("header_count")].toInt();
+
+  if (saved_header_count < header()->count()) {
+    qWarningNN << LOGSEC_GUI << "Detected invalid state for tree view" << QUOTE_W_SPACE_DOT(objectName());
+    return;
+  }
+
+  for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
+    const int vi = obj.contains(QSL("header_%1_idx").arg(i)) ? obj[QSL("header_%1_idx").arg(i)].toInt() : i;
+    const int ss = obj[QSL("header_%1_size").arg(i)].toInt();
+    const bool ish = obj[QSL("header_%1_hidden").arg(i)].toBool();
+
+    if (vi >= 0 && vi < header()->count()) {
+      header()->swapSections(header()->visualIndex(i), vi);
+    }
+
+    header()->resizeSection(i, ss);
+    header()->setSectionHidden(i, ish);
+  }
+
+  ColumnSortStates states;
+  const int saved_sort_count = obj[QSL("sort_count")].toInt();
+
+  for (int i = 0; i < saved_sort_count; i++) {
+    const int col = obj[QSL("sort_%1_column").arg(i)].toInt();
+    const auto order = Qt::SortOrder(obj[QSL("sort_%1_order").arg(i)].toInt());
+
+    if (col >= 0 && col < header()->count()) {
+      states.append(QPair<int, Qt::SortOrder>(col, order));
+    }
+  }
+
+  restoreColumnSortStates(states);
 }
 
 void BaseTreeView::wheelEvent(QWheelEvent* event) {
@@ -88,4 +150,22 @@ void BaseTreeView::displayColumnsContextMenu(const QPoint& global_pos) {
   TreeViewColumnsMenu menu(header());
 
   menu.exec(global_pos);
+}
+
+BaseTreeView::ColumnSortStates BaseTreeView::columnSortStates() const {
+  const int column = header()->sortIndicatorSection();
+
+  if (!isSortingEnabled() || column < 0 || column >= header()->count()) {
+    return {};
+  }
+
+  return {QPair<int, Qt::SortOrder>(column, header()->sortIndicatorOrder())};
+}
+
+void BaseTreeView::restoreColumnSortStates(const ColumnSortStates& states) {
+  if (states.isEmpty()) {
+    return;
+  }
+
+  header()->setSortIndicator(states.constFirst().first, states.constFirst().second);
 }

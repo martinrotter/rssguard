@@ -42,9 +42,6 @@ class RSSGUARD_DLLSPEC FeedsView : public BaseTreeView {
     // Saves/loads expand states of all nodes (feeds/categories) of the list to/from settings.
     void loadAllExpandStates();
 
-    QByteArray saveHeaderState() const;
-    void restoreHeaderState(const QByteArray& dta);
-
   public slots:
     void revealItem(RootItem* item);
     void copyUrlOfSelectedFeeds() const;

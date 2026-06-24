@@ -24,7 +24,6 @@
 #include <QClipboard>
 #include <QFileIconProvider>
 #include <QHeaderView>
-#include <QJsonObject>
 #include <QKeyEvent>
 #include <QMenu>
 #include <QProcess>
@@ -65,82 +64,26 @@ void MessagesView::setupArticleMarkingPolicy() {
   m_delayedArticleMarker.setInterval(m_articleMarkingDelay);
 }
 
-QByteArray MessagesView::saveHeaderState() const {
-  QJsonObject obj;
-
-  obj[QSL("header_count")] = header()->count();
-
-  // Store column attributes.
-  for (int i = 0; i < header()->count(); i++) {
-    obj[QSL("header_%1_idx").arg(i)] = header()->visualIndex(i);
-    obj[QSL("header_%1_size").arg(i)] = header()->sectionSize(i);
-    obj[QSL("header_%1_hidden").arg(i)] = header()->isSectionHidden(i);
-  }
-
-  // Store sort attributes.
+BaseTreeView::ColumnSortStates MessagesView::columnSortStates() const {
   SortColumnsAndOrders orders = m_sourceModel->sortColumnAndOrders();
-
-  obj[QSL("sort_count")] = orders.m_columns.size();
+  ColumnSortStates states;
 
   for (int i = 0; i < orders.m_columns.size(); i++) {
-    obj[QSL("sort_%1_order").arg(i)] = orders.m_orders.at(i);
-    obj[QSL("sort_%1_column").arg(i)] = orders.m_columns.at(i);
+    states.append(QPair<int, Qt::SortOrder>(orders.m_columns.at(i), orders.m_orders.at(i)));
   }
 
-  return QJsonDocument(obj).toJson(QJsonDocument::JsonFormat::Compact);
+  return states;
 }
 
-void MessagesView::restoreHeaderState(const QByteArray& dta) {
-  QJsonObject obj = QJsonDocument::fromJson(dta).object();
-  int saved_header_count = obj[QSL("header_count")].toInt();
-
-  if (saved_header_count < header()->count()) {
-    qWarningNN << LOGSEC_GUI << "Detected invalid state for article list.";
-    return;
-  }
-
-  int last_visible_column = 0;
-
-  // Restore column attributes.
-  for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
-    int vi = obj[QSL("header_%1_idx").arg(i)].toInt();
-    int ss = obj[QSL("header_%1_size").arg(i)].toInt();
-    bool ish = obj[QSL("header_%1_hidden").arg(i)].toBool();
-
-    if (vi < header()->count()) {
-      header()->swapSections(header()->visualIndex(i), vi);
-    }
-
-    header()->resizeSection(i, ss);
-    header()->setSectionHidden(i, ish);
-
-    if (!ish && vi > last_visible_column) {
-      last_visible_column = vi;
-    }
-  }
-
-  // Restore sort attributes.
-  int saved_sort_count = obj[QSL("sort_count")].toInt();
-
+void MessagesView::restoreColumnSortStates(const ColumnSortStates& states) {
   m_sourceModel->clearSortStates();
 
-  for (int i = saved_sort_count - 1; i > 0; i--) {
-    auto col = obj[QSL("sort_%1_column").arg(i)].toInt();
-    auto ordr = Qt::SortOrder(obj[QSL("sort_%1_order").arg(i)].toInt());
-
-    if (col < header()->count()) {
-      m_sourceModel->addSortState(col, ordr, false);
-    }
+  for (int i = states.size() - 1; i > 0; i--) {
+    m_sourceModel->addSortState(states.at(i).first, states.at(i).second, false);
   }
 
-  // Use newest sort as active.
-  if (saved_sort_count > 0) {
-    auto newest_col = obj[QSL("sort_0_column")].toInt();
-    auto newest_ordr = Qt::SortOrder(obj[QSL("sort_0_order")].toInt());
-
-    if (newest_col < header()->count()) {
-      header()->setSortIndicator(newest_col, newest_ordr);
-    }
+  if (!states.isEmpty()) {
+    header()->setSortIndicator(states.constFirst().first, states.constFirst().second);
   }
 }
 

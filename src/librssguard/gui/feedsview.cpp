@@ -944,39 +944,6 @@ void FeedsView::reloadItemExpandState(const QModelIndex& source_idx) {
   m_expansionDelayer.start(100);
 }
 
-QByteArray FeedsView::saveHeaderState() const {
-  QJsonObject obj;
-
-  obj[QSL("header_count")] = header()->count();
-
-  // Store column attributes.
-  for (int i = 0; i < header()->count(); i++) {
-    obj[QSL("header_%1_size").arg(i)] = header()->sectionSize(i);
-    obj[QSL("header_%1_hidden").arg(i)] = header()->isSectionHidden(i);
-  }
-
-  return QJsonDocument(obj).toJson(QJsonDocument::JsonFormat::Compact);
-}
-
-void FeedsView::restoreHeaderState(const QByteArray& dta) {
-  QJsonObject obj = QJsonDocument::fromJson(dta).object();
-  int saved_header_count = obj[QSL("header_count")].toInt();
-
-  if (saved_header_count < header()->count()) {
-    qWarningNN << LOGSEC_GUI << "Detected invalid state for feed list.";
-    return;
-  }
-
-  // Restore column attributes.
-  for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
-    int ss = obj[QSL("header_%1_size").arg(i)].toInt();
-    bool ish = obj[QSL("header_%1_hidden").arg(i)].toBool();
-
-    header()->resizeSection(i, ss);
-    header()->setSectionHidden(i, ish);
-  }
-}
-
 void FeedsView::revealItem(RootItem* item) {
   auto idx = m_proxyModel->mapFromSource(m_sourceModel->indexForItem(item));
 

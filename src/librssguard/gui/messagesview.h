@@ -43,9 +43,6 @@ class MessagesView : public BaseTreeView {
 
     void adjustSort(int column, Qt::SortOrder order, bool emit_changed_from_header, bool ignore_multicolumn_sorting);
 
-    QByteArray saveHeaderState() const;
-    void restoreHeaderState(const QByteArray& dta);
-
   public slots:
     void fetchFullSelectedArticles();
     void goToMotherFeed(bool edit_feed_also);
@@ -109,6 +106,8 @@ class MessagesView : public BaseTreeView {
     virtual void mouseMoveEvent(QMouseEvent* event);
     virtual void keyPressEvent(QKeyEvent* event);
     virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
+    virtual ColumnSortStates columnSortStates() const;
+    virtual void restoreColumnSortStates(const ColumnSortStates& states);
 
   private slots:
     void onArticleLabelIdsChanged(const QList<Message>& msgs);
