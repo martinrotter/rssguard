@@ -8623,7 +8623,7 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="58"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="130"/>
       <source>Follow hyperlinks inside the application (do not open external web browser)</source>
-      <translation>アプリケーション内のハイパーリンクをクリックしてください（外部ウェブブラウザを開かないでください）</translation>
+      <translation>アプリケーション内でハイパーリンクを開く（外部ブラウザーで開かない）</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="66"/>
