@@ -18,9 +18,10 @@ BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent), m_lastWheelTime
   setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
   header()->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
   header()->setStretchLastSection(true);
+  header()->setCascadingSectionResizes(false);
 
   connect(header(), &QHeaderView::customContextMenuRequested, this, [this](const QPoint& point) {
-    displayColumnsContextMenu(header()->mapToGlobal(point));
+    displayColumnsContextMenu(header()->mapToGlobal(point), header()->logicalIndexAt(point));
   });
 
   m_allowedKeyboardKeys = {Qt::Key::Key_Back,
@@ -47,6 +48,7 @@ QByteArray BaseTreeView::saveHeaderState() const {
 
   obj[QSL("header_count")] = header()->count();
   obj[QSL("header_stretch_last_section")] = header()->stretchLastSection();
+  obj[QSL("header_cascading_section_resizes")] = header()->cascadingSectionResizes();
 
   for (int i = 0; i < header()->count(); i++) {
     obj[QSL("header_%1_idx").arg(i)] = header()->visualIndex(i);
@@ -79,6 +81,9 @@ void BaseTreeView::restoreHeaderState(const QByteArray& dta) {
   header()->setStretchLastSection(obj.contains(QSL("header_stretch_last_section"))
                                     ? obj[QSL("header_stretch_last_section")].toBool()
                                     : true);
+  header()->setCascadingSectionResizes(obj.contains(QSL("header_cascading_section_resizes"))
+                                         ? obj[QSL("header_cascading_section_resizes")].toBool()
+                                         : false);
 
   for (int i = 0; i < saved_header_count && i < header()->count(); i++) {
     const int vi = obj.contains(QSL("header_%1_idx").arg(i)) ? obj[QSL("header_%1_idx").arg(i)].toInt() : i;
@@ -158,8 +163,8 @@ void BaseTreeView::contextMenuEvent(QContextMenuEvent* event) {
   }
 }
 
-void BaseTreeView::displayColumnsContextMenu(const QPoint& global_pos) {
-  TreeViewColumnsMenu menu(header());
+void BaseTreeView::displayColumnsContextMenu(const QPoint& global_pos, int highlighted_section) {
+  TreeViewColumnsMenu menu(header(), highlighted_section);
 
   menu.exec(global_pos);
 }

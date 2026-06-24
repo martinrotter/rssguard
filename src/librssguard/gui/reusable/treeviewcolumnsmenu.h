@@ -12,7 +12,7 @@ class QActionGroup;
 
 class TreeViewColumnsMenu : public NonClosableMenu {
   public:
-    explicit TreeViewColumnsMenu(QHeaderView* parent);
+    explicit TreeViewColumnsMenu(QHeaderView* parent, int highlighted_section = -1);
 
   protected:
     virtual bool shouldActionClose(QAction* action) const override;
@@ -21,6 +21,9 @@ class TreeViewColumnsMenu : public NonClosableMenu {
     void prepareMenu();
     void showHideColumn(bool toggle);
     void setStretchLastSection(bool stretch);
+    void setCascadingSectionResizes(bool cascade);
+    void autosizeColumn();
+    void autosizeVisibleColumns();
     void setColumnResizeMode();
 
   private:
@@ -32,6 +35,8 @@ class TreeViewColumnsMenu : public NonClosableMenu {
                              QActionGroup* group);
 
     QHeaderView* header();
+
+    int m_highlightedSection;
 };
 
 #endif // TREEVIEWCOLUMNSMENU_H

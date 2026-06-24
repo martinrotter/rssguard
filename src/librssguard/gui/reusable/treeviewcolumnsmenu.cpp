@@ -5,8 +5,10 @@
 #include <QAction>
 #include <QActionGroup>
 #include <QHeaderView>
+#include <QStyle>
 
-TreeViewColumnsMenu::TreeViewColumnsMenu(QHeaderView* parent) : NonClosableMenu(parent) {
+TreeViewColumnsMenu::TreeViewColumnsMenu(QHeaderView* parent, int highlighted_section)
+  : NonClosableMenu(parent), m_highlightedSection(highlighted_section) {
   connect(this, &TreeViewColumnsMenu::aboutToShow, this, &TreeViewColumnsMenu::prepareMenu);
 }
 
@@ -31,6 +33,20 @@ void TreeViewColumnsMenu::prepareMenu() {
   act_stretch_last_section->setChecked(header_view->stretchLastSection());
 
   connect(act_stretch_last_section, &QAction::triggered, this, &TreeViewColumnsMenu::setStretchLastSection);
+
+  QAction* act_cascading_section_resizes = addAction(tr("Cascading section resizes"));
+
+  act_cascading_section_resizes->setCheckable(true);
+  act_cascading_section_resizes->setChecked(header_view->cascadingSectionResizes());
+
+  connect(act_cascading_section_resizes,
+          &QAction::triggered,
+          this,
+          &TreeViewColumnsMenu::setCascadingSectionResizes);
+
+  QAction* act_autosize_visible_columns = addAction(tr("Autosize visible columns"));
+
+  connect(act_autosize_visible_columns, &QAction::triggered, this, &TreeViewColumnsMenu::autosizeVisibleColumns);
 
   addSeparator();
 
@@ -61,6 +77,31 @@ void TreeViewColumnsMenu::setStretchLastSection(bool stretch) {
   header()->setStretchLastSection(stretch);
 }
 
+void TreeViewColumnsMenu::setCascadingSectionResizes(bool cascade) {
+  header()->setCascadingSectionResizes(cascade);
+}
+
+void TreeViewColumnsMenu::autosizeColumn() {
+  auto* send_act = qobject_cast<QAction*>(sender());
+
+  if (send_act == nullptr) {
+    return;
+  }
+
+  const int section = send_act->data().toInt();
+
+  header()->resizeSection(section, header()->sectionSizeHint(section));
+}
+
+void TreeViewColumnsMenu::autosizeVisibleColumns() {
+  for (int i = 0; i < header()->count(); i++) {
+    if (!header()->isSectionHidden(i) &&
+        header()->sectionResizeMode(i) == QHeaderView::ResizeMode::Interactive) {
+      header()->resizeSection(i, header()->sectionSizeHint(i));
+    }
+  }
+}
+
 void TreeViewColumnsMenu::setColumnResizeMode() {
   auto* send_act = qobject_cast<QAction*>(sender());
 
@@ -87,6 +128,13 @@ void TreeViewColumnsMenu::addColumnMenu(int section) {
 
   connect(act_visible, &QAction::triggered, this, &TreeViewColumnsMenu::showHideColumn);
 
+  QAction* act_autosize = menu_column->addAction(tr("Autosize column"));
+
+  act_autosize->setData(section);
+  act_autosize->setEnabled(header_view->sectionResizeMode(section) == QHeaderView::ResizeMode::Interactive);
+
+  connect(act_autosize, &QAction::triggered, this, &TreeViewColumnsMenu::autosizeColumn);
+
   menu_column->addSection(tr("Resize mode"));
 
   auto* group = new QActionGroup(menu_column);
@@ -96,7 +144,11 @@ void TreeViewColumnsMenu::addColumnMenu(int section) {
   addResizeModeAction(menu_column, section, QHeaderView::ResizeMode::Stretch, tr("Stretch"), group);
   addResizeModeAction(menu_column, section, QHeaderView::ResizeMode::ResizeToContents, tr("Resize to contents"), group);
 
-  addMenu(menu_column);
+  QAction* act_column = addMenu(menu_column);
+
+  if (section == m_highlightedSection) {
+    act_column->setIcon(style()->standardIcon(QStyle::StandardPixmap::SP_ArrowRight));
+  }
 }
 
 void TreeViewColumnsMenu::addResizeModeAction(QMenu* menu,

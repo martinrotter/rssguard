@@ -8,6 +8,9 @@ Added:
 * Column header context menu now offers per-column submenus where visibility and resize mode can be changed.
 * Column resize mode can now be switched between interactive sizing, stretching and resizing to contents, and the selected mode is saved with the column state.
 * Column header context menu can now switch whether the last visible column stretches to fill available space, and this setting is saved with the column state.
+* Column header context menu can now switch cascading section resizing, and this setting is saved with the column state.
+* Column header context menu can now autosize a single interactive column or all visible interactive columns.
+* Column header context menu now highlights the column which was right-clicked.
 
 5.2.0
 -----

@@ -29,7 +29,7 @@ class RSSGUARD_DLLSPEC BaseTreeView : public QTreeView {
     virtual void keyPressEvent(QKeyEvent* event);
     virtual void contextMenuEvent(QContextMenuEvent* event);
 
-    void displayColumnsContextMenu(const QPoint& global_pos);
+    void displayColumnsContextMenu(const QPoint& global_pos, int highlighted_section = -1);
     virtual ColumnSortStates columnSortStates() const;
     virtual void restoreColumnSortStates(const ColumnSortStates& states);
 

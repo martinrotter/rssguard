@@ -972,7 +972,6 @@ void FeedsView::revealItem(RootItem* item) {
 }
 
 void FeedsView::setupAppearance() {
-  header()->setCascadingSectionResizes(false);
   header()->setSectionsMovable(false);
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
