@@ -11,6 +11,7 @@
 
 class QContextMenuEvent;
 class QPoint;
+class TreeViewColumnsMenu;
 
 class RSSGUARD_DLLSPEC BaseTreeView : public QTreeView {
     Q_OBJECT
@@ -30,6 +31,7 @@ class RSSGUARD_DLLSPEC BaseTreeView : public QTreeView {
     virtual void contextMenuEvent(QContextMenuEvent* event);
 
     void displayColumnsContextMenu(const QPoint& global_pos, int highlighted_section = -1);
+    virtual bool addColumnsContextMenuItems(TreeViewColumnsMenu* menu, int highlighted_section);
     virtual ColumnSortStates columnSortStates() const;
     virtual void restoreColumnSortStates(const ColumnSortStates& states);
 

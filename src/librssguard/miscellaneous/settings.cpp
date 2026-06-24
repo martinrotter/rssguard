@@ -166,6 +166,9 @@ DVALUE(bool) Messages::ShapeAaDef = true;
 DKEY Messages::ArticleListLazyLoading = "article_list_lazy_loading";
 DVALUE(bool) Messages::ArticleListLazyLoadingDef = false;
 
+DKEY Messages::ArticleListColumnProfiles = "article_list_column_profiles";
+DVALUE(bool) Messages::ArticleListColumnProfilesDef = false;
+
 DKEY Messages::DateTimeToAvoidArticle = "datetime_to_avoid_article";
 DVALUE(QDateTime) Messages::DateTimeToAvoidArticleDef = QDateTime::currentDateTime();
 
@@ -284,6 +287,36 @@ DVALUE(QString) GUI::FeedViewStateDef = QString();
 
 DKEY GUI::MessageViewState = "msg_view_state";
 DVALUE(QString) GUI::MessageViewStateDef = QString();
+
+DKEY GUI::MessageViewStateFeed = "msg_view_state_feed";
+DVALUE(QString) GUI::MessageViewStateFeedDef = QString();
+
+DKEY GUI::MessageViewStateCategory = "msg_view_state_category";
+DVALUE(QString) GUI::MessageViewStateCategoryDef = QString();
+
+DKEY GUI::MessageViewStateAccount = "msg_view_state_account";
+DVALUE(QString) GUI::MessageViewStateAccountDef = QString();
+
+DKEY GUI::MessageViewStateLabels = "msg_view_state_labels";
+DVALUE(QString) GUI::MessageViewStateLabelsDef = QString();
+
+DKEY GUI::MessageViewStateLabel = "msg_view_state_label";
+DVALUE(QString) GUI::MessageViewStateLabelDef = QString();
+
+DKEY GUI::MessageViewStateProbes = "msg_view_state_probes";
+DVALUE(QString) GUI::MessageViewStateProbesDef = QString();
+
+DKEY GUI::MessageViewStateProbe = "msg_view_state_probe";
+DVALUE(QString) GUI::MessageViewStateProbeDef = QString();
+
+DKEY GUI::MessageViewStateImportant = "msg_view_state_important";
+DVALUE(QString) GUI::MessageViewStateImportantDef = QString();
+
+DKEY GUI::MessageViewStateUnread = "msg_view_state_unread";
+DVALUE(QString) GUI::MessageViewStateUnreadDef = QString();
+
+DKEY GUI::MessageViewStateBin = "msg_view_state_bin";
+DVALUE(QString) GUI::MessageViewStateBinDef = QString();
 
 DKEY GUI::SplitterFeeds = "splitter_feeds";
 DVALUE(QList<QVariant>) GUI::SplitterFeedsDef = {};

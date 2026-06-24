@@ -182,6 +182,9 @@ namespace Messages {
   KEY ArticleListLazyLoading;
   VALUE(bool) ArticleListLazyLoadingDef;
 
+  KEY ArticleListColumnProfiles;
+  VALUE(bool) ArticleListColumnProfilesDef;
+
   KEY ArticleMarkOnSelection;
   VALUE(int) ArticleMarkOnSelectionDef;
 
@@ -330,6 +333,36 @@ namespace GUI {
 
   KEY MessageViewState;
   VALUE(QString) MessageViewStateDef;
+
+  KEY MessageViewStateFeed;
+  VALUE(QString) MessageViewStateFeedDef;
+
+  KEY MessageViewStateCategory;
+  VALUE(QString) MessageViewStateCategoryDef;
+
+  KEY MessageViewStateAccount;
+  VALUE(QString) MessageViewStateAccountDef;
+
+  KEY MessageViewStateLabels;
+  VALUE(QString) MessageViewStateLabelsDef;
+
+  KEY MessageViewStateLabel;
+  VALUE(QString) MessageViewStateLabelDef;
+
+  KEY MessageViewStateProbes;
+  VALUE(QString) MessageViewStateProbesDef;
+
+  KEY MessageViewStateProbe;
+  VALUE(QString) MessageViewStateProbeDef;
+
+  KEY MessageViewStateImportant;
+  VALUE(QString) MessageViewStateImportantDef;
+
+  KEY MessageViewStateUnread;
+  VALUE(QString) MessageViewStateUnreadDef;
+
+  KEY MessageViewStateBin;
+  VALUE(QString) MessageViewStateBinDef;
 
   KEY SplitterFeeds;
   VALUE(QList<QVariant>) SplitterFeedsDef;

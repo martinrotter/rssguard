@@ -11,6 +11,7 @@
 #include "gui/messagebox.h"
 #include "gui/reusable/labelsmenu.h"
 #include "gui/reusable/styleditemdelegate.h"
+#include "gui/reusable/treeviewcolumnsmenu.h"
 #include "gui/toolbars/messagestoolbar.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/feedreader.h"
@@ -32,7 +33,7 @@
 
 MessagesView::MessagesView(QWidget* parent)
   : BaseTreeView(parent), m_contextMenu(nullptr), m_columnsAdjusted(false), m_processingAnyMouseButton(false),
-    m_processingRightMouseButton(false) {
+    m_processingRightMouseButton(false), m_currentColumnProfile(ColumnProfile::Default) {
   m_sourceModel = qApp->feedReader()->messagesModel();
   m_proxyModel = qApp->feedReader()->messagesProxyModel();
   m_sourceModel->setView(this);
@@ -41,6 +42,7 @@ MessagesView::MessagesView(QWidget* parent)
   createConnections();
   setModel(m_proxyModel);
   setupAppearance();
+  m_defaultColumnProfileState = saveHeaderState();
   setupArticleMarkingPolicy();
 
   reloadFontSettings();
@@ -62,6 +64,18 @@ void MessagesView::setupArticleMarkingPolicy() {
 
   m_delayedArticleMarker.setSingleShot(true);
   m_delayedArticleMarker.setInterval(m_articleMarkingDelay);
+}
+
+void MessagesView::saveActiveColumnProfile() {
+  qApp->settings()->setValue(GROUP(GUI),
+                             columnProfileSettingsKey(columnProfilesEnabled() ? m_currentColumnProfile
+                                                                              : ColumnProfile::Default),
+                             QString(saveHeaderState().toBase64()));
+}
+
+void MessagesView::restoreInitialColumnProfile() {
+  m_currentColumnProfile = ColumnProfile::Default;
+  restoreColumnProfile(m_currentColumnProfile);
 }
 
 BaseTreeView::ColumnSortStates MessagesView::columnSortStates() const {
@@ -356,6 +370,218 @@ void MessagesView::setupAppearance() {
   adjustColumns();
 }
 
+void MessagesView::switchColumnProfileForItem(RootItem* item) {
+  if (!columnProfilesEnabled()) {
+    m_currentColumnProfile = ColumnProfile::Default;
+    return;
+  }
+
+  const ColumnProfile new_profile = columnProfileForItem(item);
+
+  if (new_profile == m_currentColumnProfile) {
+    return;
+  }
+
+  saveActiveColumnProfile();
+  restoreColumnProfile(new_profile);
+  m_currentColumnProfile = new_profile;
+}
+
+bool MessagesView::addColumnsContextMenuItems(TreeViewColumnsMenu* menu, int highlighted_section) {
+  Q_UNUSED(highlighted_section)
+
+  QAction* act_column_profiles = menu->addAction(tr("Use separate layouts for article sources"));
+
+  act_column_profiles->setCheckable(true);
+  act_column_profiles->setChecked(columnProfilesEnabled());
+  connect(act_column_profiles, &QAction::triggered, this, &MessagesView::setColumnProfilesEnabled);
+
+  return true;
+}
+
+void MessagesView::restoreColumnProfile(ColumnProfile profile) {
+  const QString state = qApp->settings()->value(GROUP(GUI), columnProfileSettingsKey(profile)).toString();
+  const bool old_block = header()->blockSignals(true);
+
+  if (state.isEmpty()) {
+    applyDefaultColumnProfile(profile);
+  }
+  else {
+    restoreHeaderState(QByteArray::fromBase64(state.toLocal8Bit()));
+  }
+
+  header()->blockSignals(old_block);
+}
+
+void MessagesView::applyDefaultColumnProfile(ColumnProfile profile) {
+  restoreHeaderState(m_defaultColumnProfileState);
+
+  QList<int> visible_columns = {MSG_MDL_READ_INDEX,
+                                MSG_MDL_IMPORTANT_INDEX,
+                                MSG_MDL_TITLE_INDEX,
+                                MSG_MDL_AUTHOR_INDEX,
+                                MSG_MDL_DCREATED_INDEX,
+                                MSG_MDL_DRETRIEVED_INDEX};
+
+  switch (profile) {
+    case ColumnProfile::Category:
+    case ColumnProfile::Account:
+      visible_columns.append(MSG_MDL_FEED_TITLE_INDEX);
+      break;
+
+    case ColumnProfile::Labels:
+      visible_columns = {MSG_MDL_READ_INDEX,
+                         MSG_MDL_IMPORTANT_INDEX,
+                         MSG_MDL_TITLE_INDEX,
+                         MSG_MDL_FEED_TITLE_INDEX,
+                         MSG_MDL_LABELS,
+                         MSG_MDL_DCREATED_INDEX,
+                         MSG_MDL_DRETRIEVED_INDEX};
+      break;
+
+    case ColumnProfile::Label:
+      visible_columns.append(MSG_MDL_FEED_TITLE_INDEX);
+      break;
+
+    case ColumnProfile::Probes:
+    case ColumnProfile::Probe:
+      visible_columns = {MSG_MDL_READ_INDEX,
+                         MSG_MDL_IMPORTANT_INDEX,
+                         MSG_MDL_DELETED_INDEX,
+                         MSG_MDL_TITLE_INDEX,
+                         MSG_MDL_FEED_TITLE_INDEX,
+                         MSG_MDL_CONTENTS_INDEX,
+                         MSG_MDL_DCREATED_INDEX,
+                         MSG_MDL_DRETRIEVED_INDEX,
+                         MSG_MDL_SCORE_INDEX};
+      break;
+
+    case ColumnProfile::Important:
+      visible_columns.append(MSG_MDL_FEED_TITLE_INDEX);
+      break;
+
+    case ColumnProfile::Unread:
+      visible_columns = {MSG_MDL_READ_INDEX,
+                         MSG_MDL_TITLE_INDEX,
+                         MSG_MDL_AUTHOR_INDEX,
+                         MSG_MDL_FEED_TITLE_INDEX,
+                         MSG_MDL_DCREATED_INDEX,
+                         MSG_MDL_DRETRIEVED_INDEX};
+      break;
+
+    case ColumnProfile::Bin:
+      visible_columns = {MSG_MDL_READ_INDEX,
+                         MSG_MDL_IMPORTANT_INDEX,
+                         MSG_MDL_DELETED_INDEX,
+                         MSG_MDL_PDELETED_INDEX,
+                         MSG_MDL_TITLE_INDEX,
+                         MSG_MDL_FEED_TITLE_INDEX,
+                         MSG_MDL_DCREATED_INDEX,
+                         MSG_MDL_DRETRIEVED_INDEX};
+      break;
+
+    case ColumnProfile::Default:
+    case ColumnProfile::Feed:
+      break;
+  }
+
+  setColumnProfileVisibility(visible_columns);
+
+  m_sourceModel->clearSortStates();
+  m_sourceModel->addSortState(MSG_MDL_TITLE_INDEX, Qt::SortOrder::AscendingOrder, true);
+  m_sourceModel->addSortState(MSG_MDL_DCREATED_INDEX, Qt::SortOrder::DescendingOrder, true);
+  header()->setSortIndicator(MSG_MDL_DCREATED_INDEX, Qt::SortOrder::DescendingOrder);
+}
+
+void MessagesView::setColumnProfileVisibility(const QList<int>& visible_columns) {
+  for (int i = 0; i < header()->count(); i++) {
+    setColumnHidden(i, !visible_columns.contains(i));
+  }
+}
+
+bool MessagesView::columnProfilesEnabled() const {
+  return qApp->settings()->value(GROUP(Messages), SETTING(Messages::ArticleListColumnProfiles)).toBool();
+}
+
+void MessagesView::setColumnProfilesEnabled(bool enabled) {
+  if (enabled == columnProfilesEnabled()) {
+    return;
+  }
+
+  saveActiveColumnProfile();
+  qApp->settings()->setValue(GROUP(Messages), Messages::ArticleListColumnProfiles, enabled);
+
+  if (enabled) {
+    switchColumnProfileForItem(m_sourceModel->loadedItem());
+  }
+  else {
+    m_currentColumnProfile = ColumnProfile::Default;
+    restoreColumnProfile(m_currentColumnProfile);
+  }
+}
+
+MessagesView::ColumnProfile MessagesView::columnProfileForItem(const RootItem* item) const {
+  if (item == nullptr) {
+    return ColumnProfile::Default;
+  }
+
+  switch (item->kind()) {
+    case RootItem::Kind::Feed:
+      return ColumnProfile::Feed;
+    case RootItem::Kind::Category:
+      return ColumnProfile::Category;
+    case RootItem::Kind::ServiceRoot:
+      return ColumnProfile::Account;
+    case RootItem::Kind::Labels:
+      return ColumnProfile::Labels;
+    case RootItem::Kind::Label:
+      return ColumnProfile::Label;
+    case RootItem::Kind::Probes:
+      return ColumnProfile::Probes;
+    case RootItem::Kind::Probe:
+      return ColumnProfile::Probe;
+    case RootItem::Kind::Important:
+      return ColumnProfile::Important;
+    case RootItem::Kind::Unread:
+      return ColumnProfile::Unread;
+    case RootItem::Kind::Bin:
+      return ColumnProfile::Bin;
+    case RootItem::Kind::Root:
+      return ColumnProfile::Default;
+  }
+
+  return ColumnProfile::Default;
+}
+
+const QString& MessagesView::columnProfileSettingsKey(ColumnProfile profile) const {
+  switch (profile) {
+    case ColumnProfile::Feed:
+      return GUI::MessageViewStateFeed;
+    case ColumnProfile::Category:
+      return GUI::MessageViewStateCategory;
+    case ColumnProfile::Account:
+      return GUI::MessageViewStateAccount;
+    case ColumnProfile::Labels:
+      return GUI::MessageViewStateLabels;
+    case ColumnProfile::Label:
+      return GUI::MessageViewStateLabel;
+    case ColumnProfile::Probes:
+      return GUI::MessageViewStateProbes;
+    case ColumnProfile::Probe:
+      return GUI::MessageViewStateProbe;
+    case ColumnProfile::Important:
+      return GUI::MessageViewStateImportant;
+    case ColumnProfile::Unread:
+      return GUI::MessageViewStateUnread;
+    case ColumnProfile::Bin:
+      return GUI::MessageViewStateBin;
+    case ColumnProfile::Default:
+      return GUI::MessageViewState;
+  }
+
+  return GUI::MessageViewState;
+}
+
 void MessagesView::focusInEvent(QFocusEvent* event) {
   QTreeView::focusInEvent(event);
 
@@ -629,6 +855,8 @@ void MessagesView::markSelectedMessagesReadDelayed() {
 }
 
 void MessagesView::loadItem(RootItem* item) {
+  switchColumnProfileForItem(item);
+
   m_delayedArticleMarker.stop();
 
   const int column = header()->sortIndicatorSection();

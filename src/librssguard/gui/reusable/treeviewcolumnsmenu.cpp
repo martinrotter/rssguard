@@ -12,6 +12,10 @@ TreeViewColumnsMenu::TreeViewColumnsMenu(QHeaderView* parent, int highlighted_se
   connect(this, &TreeViewColumnsMenu::aboutToShow, this, &TreeViewColumnsMenu::prepareMenu);
 }
 
+void TreeViewColumnsMenu::setMenuExtensionBuilder(const MenuExtensionBuilder& builder) {
+  m_menuExtensionBuilder = builder;
+}
+
 bool TreeViewColumnsMenu::shouldActionClose(QAction* action) const {
   if (action != nullptr && action->menu() != nullptr) {
     return true;
@@ -49,6 +53,10 @@ void TreeViewColumnsMenu::prepareMenu() {
   connect(act_autosize_visible_columns, &QAction::triggered, this, &TreeViewColumnsMenu::autosizeVisibleColumns);
 
   addSeparator();
+
+  if (m_menuExtensionBuilder != nullptr && m_menuExtensionBuilder(this)) {
+    addSeparator();
+  }
 
   for (int i = 0; i < header_view->count(); i++) {
     addColumnMenu(i);

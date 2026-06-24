@@ -72,7 +72,7 @@ void FeedMessageViewer::saveSize() {
   // saveSplitterStates();
 
   settings->setValue(GROUP(GUI), GUI::FeedViewState, QString(m_feedsView->saveHeaderState().toBase64()));
-  settings->setValue(GROUP(GUI), GUI::MessageViewState, QString(m_messagesView->saveHeaderState().toBase64()));
+  m_messagesView->saveActiveColumnProfile();
 
   // Store "visibility" of toolbars and list headers.
   settings->setValue(GROUP(GUI), GUI::ToolbarsVisible, m_toolBarsEnabled);
@@ -98,18 +98,7 @@ void FeedMessageViewer::loadSize() {
     m_feedsView->restoreHeaderState(QByteArray::fromBase64(settings_feed_header.toLocal8Bit()));
   }
 
-  QString settings_msg_header = settings->value(GROUP(GUI), SETTING(GUI::MessageViewState)).toString();
-
-  if (!settings_msg_header.isEmpty()) {
-    m_messagesView->restoreHeaderState(QByteArray::fromBase64(settings_msg_header.toLocal8Bit()));
-  }
-  else {
-    // Set default sort column.
-    m_messagesView->adjustSort(MSG_MDL_TITLE_INDEX, Qt::SortOrder::AscendingOrder, false, false);
-    m_messagesView->adjustSort(MSG_MDL_DCREATED_INDEX, Qt::SortOrder::DescendingOrder, false, false);
-
-    // m_messagesView->header()->setSortIndicator(MSG_MDL_TITLE_INDEX, Qt::SortOrder::DescendingOrder);
-  }
+  m_messagesView->restoreInitialColumnProfile();
 }
 
 void FeedMessageViewer::loadMessageViewerFonts() {

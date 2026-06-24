@@ -5,6 +5,8 @@
 
 #include "gui/reusable/nonclosablemenu.h"
 
+#include <functional>
+
 #include <QHeaderView>
 
 class QAction;
@@ -12,7 +14,11 @@ class QActionGroup;
 
 class TreeViewColumnsMenu : public NonClosableMenu {
   public:
+    using MenuExtensionBuilder = std::function<bool(TreeViewColumnsMenu*)>;
+
     explicit TreeViewColumnsMenu(QHeaderView* parent, int highlighted_section = -1);
+
+    void setMenuExtensionBuilder(const MenuExtensionBuilder& builder);
 
   protected:
     virtual bool shouldActionClose(QAction* action) const override;
@@ -36,6 +42,7 @@ class TreeViewColumnsMenu : public NonClosableMenu {
 
     QHeaderView* header();
 
+    MenuExtensionBuilder m_menuExtensionBuilder;
     int m_highlightedSection;
 };
 

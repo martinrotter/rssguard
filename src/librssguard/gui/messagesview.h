@@ -30,6 +30,20 @@ class MessagesView : public BaseTreeView {
       MarkOnlyManually = 2
     };
 
+    enum class ColumnProfile {
+      Default = 0,
+      Feed,
+      Category,
+      Account,
+      Labels,
+      Label,
+      Probes,
+      Probe,
+      Important,
+      Unread,
+      Bin
+    };
+
     explicit MessagesView(QWidget* parent = nullptr);
     virtual ~MessagesView();
 
@@ -40,6 +54,8 @@ class MessagesView : public BaseTreeView {
 
     void reloadFontSettings();
     void setupArticleMarkingPolicy();
+    void saveActiveColumnProfile();
+    void restoreInitialColumnProfile();
 
     void adjustSort(int column, Qt::SortOrder order, bool emit_changed_from_header, bool ignore_multicolumn_sorting);
 
@@ -106,6 +122,7 @@ class MessagesView : public BaseTreeView {
     virtual void mouseMoveEvent(QMouseEvent* event);
     virtual void keyPressEvent(QKeyEvent* event);
     virtual void selectionChanged(const QItemSelection& selected, const QItemSelection& deselected);
+    virtual bool addColumnsContextMenuItems(TreeViewColumnsMenu* menu, int highlighted_section) override;
     virtual ColumnSortStates columnSortStates() const;
     virtual void restoreColumnSortStates(const ColumnSortStates& states);
 
@@ -135,6 +152,14 @@ class MessagesView : public BaseTreeView {
     void createConnections();
     void initializeContextMenu();
     void setupAppearance();
+    void switchColumnProfileForItem(RootItem* item);
+    void restoreColumnProfile(ColumnProfile profile);
+    void applyDefaultColumnProfile(ColumnProfile profile);
+    void setColumnProfileVisibility(const QList<int>& visible_columns);
+    bool columnProfilesEnabled() const;
+    void setColumnProfilesEnabled(bool enabled);
+    ColumnProfile columnProfileForItem(const RootItem* item) const;
+    const QString& columnProfileSettingsKey(ColumnProfile profile) const;
     void requestArticleDisplay(const Message& msg);
     void requestArticleHiding();
 
@@ -145,6 +170,8 @@ class MessagesView : public BaseTreeView {
     bool m_columnsAdjusted;
     bool m_processingAnyMouseButton;
     bool m_processingRightMouseButton;
+    QByteArray m_defaultColumnProfileState;
+    ColumnProfile m_currentColumnProfile;
     ArticleMarkingPolicy m_articleMarkingPolicy;
     int m_articleMarkingDelay;
     QTimer m_delayedArticleMarker;

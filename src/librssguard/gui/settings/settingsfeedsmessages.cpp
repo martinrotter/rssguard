@@ -148,6 +148,7 @@ void SettingsFeedsMessages::loadUi() {
 
   connect(m_ui->m_checkMarkReadAfterOpenExtInt, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkKeppMessagesInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_checkArticleListColumnProfiles, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkKeepFeedsInTheMiddle, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_cbArticleViewerAlwaysVisible, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkMessagesDateTimeFormat, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
@@ -378,6 +379,8 @@ void SettingsFeedsMessages::loadSettings() {
                    .toBool());
   m_ui->m_checkKeppMessagesInTheMiddle
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::KeepCursorInCenter)).toBool());
+  m_ui->m_checkArticleListColumnProfiles
+    ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::ArticleListColumnProfiles)).toBool());
   m_ui->m_checkKeepFeedsInTheMiddle
     ->setChecked(settings()->value(GROUP(Feeds), SETTING(Feeds::KeepCursorInCenter)).toBool());
   m_ui->m_checkSwitchArticleListRtl
@@ -541,6 +544,9 @@ void SettingsFeedsMessages::saveSettings() {
   settings()->setValue(GROUP(Messages),
                        Messages::KeepCursorInCenter,
                        m_ui->m_checkKeppMessagesInTheMiddle->isChecked());
+  settings()->setValue(GROUP(Messages),
+                       Messages::ArticleListColumnProfiles,
+                       m_ui->m_checkArticleListColumnProfiles->isChecked());
   settings()->setValue(GROUP(Messages), Messages::SwitchArticleListRtl, m_ui->m_checkSwitchArticleListRtl->isChecked());
   settings()->setValue(GROUP(Messages), Messages::ClearReadOnExit, m_ui->m_checkRemoveReadMessagesOnExit->isChecked());
   settings()->setValue(GROUP(Feeds), Feeds::AutoUpdateEnabled, m_ui->m_checkAutoUpdate->isChecked());

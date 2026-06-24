@@ -166,7 +166,17 @@ void BaseTreeView::contextMenuEvent(QContextMenuEvent* event) {
 void BaseTreeView::displayColumnsContextMenu(const QPoint& global_pos, int highlighted_section) {
   TreeViewColumnsMenu menu(header(), highlighted_section);
 
+  menu.setMenuExtensionBuilder([this, highlighted_section](TreeViewColumnsMenu* columns_menu) {
+    return addColumnsContextMenuItems(columns_menu, highlighted_section);
+  });
   menu.exec(global_pos);
+}
+
+bool BaseTreeView::addColumnsContextMenuItems(TreeViewColumnsMenu* menu, int highlighted_section) {
+  Q_UNUSED(menu)
+  Q_UNUSED(highlighted_section)
+
+  return false;
 }
 
 BaseTreeView::ColumnSortStates BaseTreeView::columnSortStates() const {
