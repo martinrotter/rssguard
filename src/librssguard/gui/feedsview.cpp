@@ -8,7 +8,6 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/styleditemdelegate.h"
-#include "gui/reusable/treeviewcolumnsmenu.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
@@ -54,12 +53,6 @@ FeedsView::FeedsView(QWidget* parent)
   connect(m_proxyModel, &FeedsProxyModel::indexNotFilteredOutAnymore, this, &FeedsView::reloadItemExpandState);
   connect(this, &FeedsView::expanded, this, &FeedsView::onIndexExpanded);
   connect(this, &FeedsView::collapsed, this, &FeedsView::onIndexCollapsed);
-
-  header()->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
-  connect(header(), &QHeaderView::customContextMenuRequested, this, [=](QPoint point) {
-    TreeViewColumnsMenu mm(header());
-    mm.exec(header()->mapToGlobal(point));
-  });
 
   setModel(m_proxyModel);
   setupAppearance();
@@ -1104,8 +1097,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
     base_menu->exec(event->globalPos());
   }
   else {
-    TreeViewColumnsMenu menu(header());
-    menu.exec(event->globalPos());
+    BaseTreeView::contextMenuEvent(event);
   }
 }
 

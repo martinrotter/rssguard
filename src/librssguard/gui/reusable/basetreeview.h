@@ -6,6 +6,9 @@
 #include <QElapsedTimer>
 #include <QTreeView>
 
+class QContextMenuEvent;
+class QPoint;
+
 class RSSGUARD_DLLSPEC BaseTreeView : public QTreeView {
     Q_OBJECT
 
@@ -17,6 +20,9 @@ class RSSGUARD_DLLSPEC BaseTreeView : public QTreeView {
   protected:
     virtual void wheelEvent(QWheelEvent* event);
     virtual void keyPressEvent(QKeyEvent* event);
+    virtual void contextMenuEvent(QContextMenuEvent* event);
+
+    void displayColumnsContextMenu(const QPoint& global_pos);
 
   private:
     QList<int> m_allowedKeyboardKeys;

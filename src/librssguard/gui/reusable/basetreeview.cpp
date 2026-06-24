@@ -2,15 +2,23 @@
 
 #include "gui/reusable/basetreeview.h"
 
+#include "gui/reusable/treeviewcolumnsmenu.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 
+#include <QContextMenuEvent>
+#include <QHeaderView>
 #include <QKeyEvent>
 #include <QScrollBar>
 
 BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent), m_lastWheelTime(0), m_scrollSpeedFactor(1.0) {
   setAllColumnsShowFocus(true);
   setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
+  header()->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
+
+  connect(header(), &QHeaderView::customContextMenuRequested, this, [this](const QPoint& point) {
+    displayColumnsContextMenu(header()->mapToGlobal(point));
+  });
 
   m_allowedKeyboardKeys = {Qt::Key::Key_Back,
                            Qt::Key::Key_Select,
@@ -65,4 +73,19 @@ void BaseTreeView::keyPressEvent(QKeyEvent* event) {
   else {
     QTreeView::keyPressEvent(event);
   }
+}
+
+void BaseTreeView::contextMenuEvent(QContextMenuEvent* event) {
+  if (!indexAt(event->pos()).isValid()) {
+    displayColumnsContextMenu(event->globalPos());
+  }
+  else {
+    QTreeView::contextMenuEvent(event);
+  }
+}
+
+void BaseTreeView::displayColumnsContextMenu(const QPoint& global_pos) {
+  TreeViewColumnsMenu menu(header());
+
+  menu.exec(global_pos);
 }

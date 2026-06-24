@@ -11,7 +11,6 @@
 #include "gui/messagebox.h"
 #include "gui/reusable/labelsmenu.h"
 #include "gui/reusable/styleditemdelegate.h"
-#include "gui/reusable/treeviewcolumnsmenu.h"
 #include "gui/toolbars/messagestoolbar.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/feedreader.h"
@@ -24,6 +23,7 @@
 
 #include <QClipboard>
 #include <QFileIconProvider>
+#include <QHeaderView>
 #include <QJsonObject>
 #include <QKeyEvent>
 #include <QMenu>
@@ -43,12 +43,6 @@ MessagesView::MessagesView(QWidget* parent)
   setModel(m_proxyModel);
   setupAppearance();
   setupArticleMarkingPolicy();
-
-  header()->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
-  connect(header(), &QHeaderView::customContextMenuRequested, this, [=](QPoint point) {
-    TreeViewColumnsMenu mm(header());
-    mm.exec(header()->mapToGlobal(point));
-  });
 
   reloadFontSettings();
 }
@@ -449,8 +443,7 @@ void MessagesView::contextMenuEvent(QContextMenuEvent* event) {
   const QModelIndex clicked_index = indexAt(event->pos());
 
   if (!clicked_index.isValid()) {
-    TreeViewColumnsMenu menu(header());
-    menu.exec(event->globalPos());
+    BaseTreeView::contextMenuEvent(event);
   }
   else {
     // Context menu is not initialized, initialize.
