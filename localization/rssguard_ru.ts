@@ -56,7 +56,7 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1178"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1210"/>
       <source>Application is already running.</source>
       <translation>Приложение уже запущено</translation>
     </message>
@@ -76,17 +76,17 @@
       <translation>Восстановление настроек не было начато. Убедитесь, что выходной каталог доступен для записи.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1207"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1239"/>
       <source>Cannot add feed</source>
       <translation>Невозможно добавить канал</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1208"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1240"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Канал не может быть добавлен, потому что нет активной учетной записи, которая может добавлять каналы.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1059"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1091"/>
       <source>Unread articles fetched</source>
       <translation>Загружены непрочитанные статьи</translation>
     </message>
@@ -112,7 +112,7 @@ version by clicking this popup notification.</source>
 версию, щелкнув на это всплывающее уведомление.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1177"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1209"/>
       <source>Already running</source>
       <translation>Уже выполняется</translation>
     </message>
@@ -193,13 +193,13 @@ version by clicking this popup notification.</source>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
-      <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts particular article, it can still subsequently ignored and not added to database.</source>
-      <translation>Установка любых ограничений здесь предписывает %1 игнорировать некоторые входящие статьи. Логика запускается ПОСЛЕ фильтров статей, чтобы даже если фильтр принимал определенную статью, она все еще может игнорироваться и не добавлена в базу данных.</translation>
+      <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts a particular article, it can still be subsequently ignored and not added to the database.</source>
+      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts a particular article, it can still be subsequently ignored and not added to the database.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
-      <source>All excessive articles are removed automatically by the application, usually after particular feed is fetched. Articles are either completely purged (including articles from recycle bin) from internal database or are just moved to recycle bin.</source>
-      <translation>Приложение автоматически удаляет все лишние статьи, как правило, после получения определенного канала. Статьи полностью очищаются (включая статьи из Корзины) из внутренней базы данных или просто перемещаются в Корзину.</translation>
+      <source>All excess articles are removed automatically by the application, usually after a particular feed is fetched. Articles are either completely purged (including articles from the recycle bin) from the internal database or are just moved to recycle bin.</source>
+      <translation type="unfinished">All excess articles are removed automatically by the application, usually after a particular feed is fetched. Articles are either completely purged (including articles from the recycle bin) from the internal database or are just moved to recycle bin.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
@@ -545,12 +545,12 @@ Maybe change used database name in settings and try again. Falling back to SQLit
   <context>
     <name>DiscoveredFeedsModel</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="354"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="694"/>
       <source>Title</source>
       <translation>Заголовок</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="354"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="694"/>
       <source>Type</source>
       <translation>Тип</translation>
     </message>
@@ -779,24 +779,34 @@ Item custom ID: %5</translation>
       <translation>Панель инструментов для статей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="268"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="257"/>
       <source>Filtered feed list</source>
       <translation>Список фильтрованных лент</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="269"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="258"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
       <translation>Невозможно выбрать статью в списке статей, так как ваша лента отфильтрована из списка лент.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="287"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="276"/>
       <source>Filtered article list</source>
       <translation>Отфильтрованный список статей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="288"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="277"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
       <translation>Невозможно выбрать статью, так как она скрыта фильтром или удалена.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="301"/>
+      <source>Some feeds are hidden by current search or filtering.</source>
+      <translation type="unfinished">Some feeds are hidden by current search or filtering.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="302"/>
+      <source>Some articles are hidden by current search or filtering.</source>
+      <translation type="unfinished">Some articles are hidden by current search or filtering.</translation>
     </message>
   </context>
   <context>
@@ -1057,9 +1067,9 @@ Item custom ID: %5</translation>
       <translation type="unfinished">Article counts</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="39"/>
-      <source>Titles of feeds/categories.</source>
-      <translation>Заголовки каналов/категорий</translation>
+      <location filename="../src/librssguard/core/feedsmodel.cpp" line="41"/>
+      <source>Counts of unread/all articles.</source>
+      <translation type="unfinished">Counts of unread/all articles.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="31"/>
@@ -1067,14 +1077,14 @@ Item custom ID: %5</translation>
       <translation>Root</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/core/feedsmodel.cpp" line="39"/>
+      <source>Titles of feeds/folders.</source>
+      <translation type="unfinished">Titles of feeds/folders.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="40"/>
       <source>Database ID of each item.</source>
       <translation type="unfinished">Database ID of each item.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/feedsmodel.cpp" line="41"/>
-      <source>Counts of unread/all mesages.</source>
-      <translation>Количество непрочитанных / всех сообщений.</translation>
     </message>
   </context>
   <context>
@@ -1181,145 +1191,145 @@ Item custom ID: %5</translation>
   <context>
     <name>FeedsView</name>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="358"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="351"/>
       <source>Cannot edit item</source>
       <translation>Невозможно редактировать элемент</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="477"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="567"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="567"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="472"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="562"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="562"/>
       <source>Cannot delete item</source>
       <translation>Невозможно удалить элемент</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="359"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="352"/>
       <source>Selected item cannot be edited because another critical operation is ongoing.</source>
       <translation>Выбранный пункт нельзя изменить, потому что выполняется другая важная операция.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="187"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="180"/>
       <source>Selected account does not support adding of new folders.</source>
       <translation type="unfinished">Selected account does not support adding of new folders.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="478"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="473"/>
       <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
       <translation>Выбранный пункт нельзя удалить, потому что выполняется другая важная операция.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="242"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="329"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="514"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="270"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="329"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="514"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="235"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="263"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="322"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="509"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="263"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="322"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="509"/>
       <source>Are you sure?</source>
       <translation>Вы уверены?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="169"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="162"/>
       <source>Selected account does not support adding of new feeds.</source>
       <translation>Выбранный аккаунт не поддерживает добавление новых каналов.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="243"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="330"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="330"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="236"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="323"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="323"/>
       <source>Do you really want to clean all articles from selected items?</source>
       <translation>Вы действительно хотите очистить все статьи от выбранных элементов?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="260"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="345"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="345"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="253"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="338"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="338"/>
       <source>Cannot clear items</source>
       <translation type="unfinished">Cannot clear items</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="261"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="346"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="346"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="254"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="339"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="339"/>
       <source>Failed to clear items: %1.</source>
       <translation type="unfinished">Failed to clear items: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="271"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="264"/>
       <source>Do you really want to purge all non-starred articles from selected feeds?</source>
       <translation type="unfinished">Do you really want to purge all non-starred articles from selected feeds?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="286"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="279"/>
       <source>Cannot purge feeds</source>
       <translation type="unfinished">Cannot purge feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="287"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="280"/>
       <source>Failed to purge feeds: %1.</source>
       <translation type="unfinished">Failed to purge feeds: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="303"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="296"/>
       <source>Enable or disable feeds</source>
       <translation type="unfinished">Enable or disable feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="304"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="297"/>
       <source>You selected multiple feeds to enable/disable them.</source>
       <translation type="unfinished">You selected multiple feeds to enable/disable them.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="305"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="298"/>
       <source>Do you really want to enable or disable selected feeds?</source>
       <translation type="unfinished">Do you really want to enable or disable selected feeds?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="379"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="396"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="412"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="396"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="412"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="372"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="389"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="405"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="389"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="405"/>
       <source>Cannot edit items</source>
       <translation>Невозможность редактирования элементов</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="380"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="373"/>
       <source>Selected items cannot be edited. This is not supported (yet).</source>
       <translation>Выбранные элементы не могут быть отредактированы. Это не поддерживается (пока).</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="397"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="390"/>
       <source>%1 does not support batch editing of items from multiple accounts.</source>
       <translation>%1 не поддерживает пакетное редактирование элементов из нескольких аккаунтов.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="413"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="406"/>
       <source>%1 does not support batch editing of items of varying types.</source>
       <translation>%1 не поддерживает пакетное редактирование элементов разного типа.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="423"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="416"/>
       <source>Cannot edit some items</source>
       <translation>Невозможность редактирования некоторых элементов</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="424"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="417"/>
       <source>Some of selected items cannot be edited. Proceeding to edit the rest.</source>
       <translation>Некоторые из выбранных элементов не могут быть отредактированы. Переход к редактированию других.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="504"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="499"/>
       <source>Some items won&apos;t be deleted</source>
       <translation>Некоторые элементы не будут удалены</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="505"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="500"/>
       <source>Some selected items will not be deleted, because they cannot be deleted.</source>
       <translation>Некоторые выбранные элементы не будут удалены, поскольку их нельзя удалить.</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="512"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="507"/>
       <source>Deleting %n items</source>
       <translation>
         <numerusform>Удаление %n элемента</numerusform>
@@ -1329,7 +1339,7 @@ Item custom ID: %5</translation>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="513"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="508"/>
       <source>You are about to completely delete %n items.</source>
       <translation>
         <numerusform>Вы собираетесь полностью удалить %n элемент.</numerusform>
@@ -1339,63 +1349,63 @@ Item custom ID: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="568"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="563"/>
       <source>Failed to delete selected item: %1.</source>
       <translation type="unfinished">Failed to delete selected item: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="642"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="664"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="664"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="637"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="659"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="659"/>
       <source>Cannot mark item read unread</source>
       <translation type="unfinished">Cannot mark item read unread</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="643"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="665"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="665"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="638"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="660"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="660"/>
       <source>Failed to mark item read or unread: %1.</source>
       <translation type="unfinished">Failed to mark item read or unread: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="674"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="669"/>
       <source>Mark everything as read</source>
       <translation type="unfinished">Mark everything as read</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="675"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="670"/>
       <source>Do you really want to mark everything as read?</source>
       <translation type="unfinished">Do you really want to mark everything as read?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1066"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1046"/>
       <source>Not supported</source>
       <translation type="unfinished">Not supported</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1067"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1047"/>
       <source>Context menus with items from more than one account are not supported.</source>
       <translation type="unfinished">Context menus with items from more than one account are not supported.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="1091"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="1070"/>
       <source>Menu for feed list</source>
       <translation type="unfinished">Menu for feed list</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="986"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="968"/>
       <source>Feed filtered out</source>
       <translation type="unfinished">Feed filtered out</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="987"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="969"/>
       <source>Your feed is probably filtered out and cannot be revealed.</source>
       <translation type="unfinished">Your feed is probably filtered out and cannot be revealed.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="168"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="186"/>
-      <location filename="../src/librssguard/gui/feedsview.cpp" line="186"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="161"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="179"/>
+      <location filename="../src/librssguard/gui/feedsview.cpp" line="179"/>
       <source>Not supported by account</source>
       <translation>Не поддерживается аккаунтом</translation>
     </message>
@@ -2062,11 +2072,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>Исследовать!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="233"/>
-      <source>Recursive discovery (can take some time for bigger websites)</source>
-      <translation type="unfinished">Recursive discovery (can take some time for bigger websites)</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="59"/>
       <source>Discovered feeds</source>
       <translation>Обнаруженные источники</translation>
@@ -2107,42 +2112,51 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>&amp;Импорт проверенных источников</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="43"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="233"/>
+      <source>Deep discovery (scrapes all hyperlinks and can take some time for bigger websites)</source>
+      <translation type="unfinished">Deep discovery (scrapes all hyperlinks and can take some time for bigger websites)</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="51"/>
       <source>Switch to advanced &amp;mode</source>
       <translation type="unfinished">Switch to advanced &amp;mode</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="45"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="53"/>
       <source>Close this dialog and display dialog for adding individual feeds with advanced options.</source>
       <translation>Закройте этот диалог и отобразите диалог добавления отдельных подписок с дополнительными опциями.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="85"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="109"/>
       <source>Enter feed URLs, one URL per line</source>
       <translation type="unfinished">Enter feed URLs, one URL per line</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="138"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="162"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="436"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="511"/>
       <source>Cannot discover feeds</source>
       <translation>Невозможно обнаружить каналы</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="139"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="163"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="437"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="512"/>
       <source>Error: %1</source>
       <translation>Ошибка: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="249"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="589"/>
       <source>All URLs are valid.</source>
       <translation type="unfinished">All URLs are valid.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="252"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="592"/>
       <source>One or more URLs are invalid.</source>
       <translation type="unfinished">One or more URLs are invalid.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="321"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="661"/>
       <source>No title</source>
       <translation>Нет заголовка</translation>
     </message>
@@ -2283,12 +2297,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>Автозагрузка статей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="226"/>
-      <source>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</source>
-      <translation>Выберите стратегию автоматического обновления для этого канала. Стратегия автоматического обновления по умолчанию означает, что канал будет обновляться через интервалы времени, установленные в настройках приложения.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="87"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="228"/>
       <source>Open articles via their URL automatically</source>
@@ -2305,6 +2313,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="230"/>
       <source>Disable this feed</source>
       <translation>Отключить этот канал</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="60"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="226"/>
+      <source>Select the auto-download strategy for articles of this feed. Default auto-download strategy means that new articles of this feed will be downloaded in time intervals set in application settings.</source>
+      <translation type="unfinished">Select the auto-download strategy for articles of this feed. Default auto-download strategy means that new articles of this feed will be downloaded in time intervals set in application settings.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="101"/>
@@ -2352,12 +2366,12 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
   <context>
     <name>FormMain</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="400"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="401"/>
       <source>No possible actions</source>
       <translation>Нет возможных действий</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="359"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="360"/>
       <source>No recycle bin</source>
       <translation>Нет корзины</translation>
     </message>
@@ -2378,850 +2392,862 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="882"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="893"/>
       <source>&amp;File</source>
       <translation>Файл (&amp;F)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="62"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="883"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="894"/>
       <source>&amp;Help</source>
       <translation>Помощь (&amp;H)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="73"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="884"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="895"/>
       <source>&amp;View</source>
       <translation>Вид (&amp;V)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="77"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="885"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="896"/>
       <source>Show/hide</source>
       <translation>Показать/спрятать</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="105"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="887"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="898"/>
       <source>&amp;Tools</source>
       <translation>Инструменты (&amp;T)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="116"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="888"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="899"/>
       <source>F&amp;eeds</source>
       <translation>Каналы (&amp;E)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="120"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="889"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="900"/>
       <source>&amp;Add item</source>
       <translation>Добавить элемент (&amp;A)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="125"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="890"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="901"/>
       <source>&amp;Move</source>
       <translation>Переместить (&amp;M)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="192"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="894"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="905"/>
       <source>Art&amp;icles</source>
       <translation>Статьи (&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="232"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="896"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="233"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="907"/>
       <source>&amp;Accounts</source>
       <translation>Аккаунты (&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="267"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="710"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="268"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="717"/>
       <source>&amp;Quit</source>
       <translation>Выход (&amp;Q)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="270"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="712"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="271"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="719"/>
       <source>Quit the application.</source>
       <translation>Выход из приложения</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="281"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="714"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="282"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="721"/>
       <source>&amp;Settings</source>
       <translation>Настройки (&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="284"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="716"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="285"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="723"/>
       <source>Display settings of the application.</source>
       <translation>Показать настройки приложения.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="292"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="718"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="293"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="725"/>
       <source>&amp;About application</source>
       <translation>О приложении (&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="295"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="720"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="296"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="727"/>
       <source>Displays extra info about this application.</source>
       <translation>Отображает дополнительную информацию об этом приложении.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="309"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="722"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="310"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="729"/>
       <source>&amp;Fullscreen</source>
       <translation>Полный экран (&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="312"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="724"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="313"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="731"/>
       <source>Switch fullscreen mode.</source>
       <translation>Переключиться в полноэкранный режим.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="320"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="726"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="321"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="733"/>
       <source>&amp;Fetch all</source>
       <translation>Обновить все (&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="323"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="728"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="324"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
       <source>Fetch all feeds</source>
       <translation>Обновить все каналы</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="331"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="730"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="332"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="737"/>
       <source>Fetch &amp;selected</source>
       <translation>Обновить выбранные каналы (&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="334"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="732"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="335"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="739"/>
       <source>Fetch selected feeds</source>
       <translation>Обновить выбранные каналы</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="355"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="736"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="356"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="743"/>
       <source>Mark articles &amp;read</source>
       <translation>Пометить статьи как прочитанные (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="358"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="738"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="359"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="745"/>
       <source>Mark selected articles read</source>
       <translation>Пометить выбранные статьи как прочитанные</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="366"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="740"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="367"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="747"/>
       <source>Mark articles &amp;unread</source>
       <translation>Пометить статьи как непрочитанные (&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="369"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="742"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="370"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="749"/>
       <source>Mark selected articles unread</source>
       <translation>Пометить выбранные статьи как непрочитанные</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="377"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="744"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="378"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="751"/>
       <source>Switch &amp;importance</source>
       <translation>Переключить важность (&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="380"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="746"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="381"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="753"/>
       <source>Switch importance of selected articles</source>
       <translation>Переключить важность выбранных статей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="391"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="750"/>
-      <source>Mark all messages (without message filters) from selected items as read.</source>
-      <translation>Отметить все сообщения (без фильтров сообщений) из выбранных элементов как прочитанные.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="402"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="754"/>
-      <source>Mark all messages (without message filters) from selected items as unread.</source>
-      <translation>Отметить все сообщения (без фильтров сообщений) из выбранных элементов как непрочитанные.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="410"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="756"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="411"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="763"/>
       <source>&amp;Delete articles</source>
       <translation>Удалить статьи (&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="342"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="734"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="343"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="741"/>
       <source>&amp;Edit selected items</source>
       <translation>&amp;Редактирование выбранных элементов</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="88"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="886"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="897"/>
       <source>&amp;Focus</source>
       <translation type="unfinished">&amp;Focus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="135"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="891"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="902"/>
       <source>&amp;Sort</source>
       <translation type="unfinished">&amp;Sort</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="148"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="892"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="903"/>
       <source>&amp;Expand/collapse</source>
       <translation type="unfinished">&amp;Expand/collapse</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="157"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="893"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="904"/>
       <source>&amp;Edit items</source>
       <translation type="unfinished">&amp;Edit items</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="225"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="895"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="226"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="906"/>
       <source>&amp;Recycle bins</source>
       <translation type="unfinished">&amp;Recycle bins</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="240"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="897"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="241"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="908"/>
       <source>Tabs</source>
       <translation>Вкладки</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="347"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="735"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="348"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="742"/>
       <source>&amp;Delete selected items</source>
       <translation>&amp;Удалить выбранные элементы</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="388"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="748"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="389"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="755"/>
       <source>Mark selected items &amp;read</source>
       <translation>Пометить выбранные элементы как прочитанные</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="399"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="752"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="400"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="759"/>
       <source>Mark selected items &amp;unread</source>
       <translation>Пометить выбранные элементы как не прочитанные</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="418"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="757"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="419"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="764"/>
       <source>&amp;Clean selected items</source>
       <translation>Очистка выбранных элементов</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="421"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="759"/>
-      <source>Deletes all messages from selected items.</source>
-      <translation>Удалить все сообщения из выбранного элемента.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="429"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="761"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="430"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="768"/>
       <source>Open in &amp;external browser</source>
       <translation>Открыть во внешнем браузере (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="432"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="763"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="433"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="770"/>
       <source>Open selected articles in external browser</source>
       <translation>Открыть выбранные статьи во внешнем браузере</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="440"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="765"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="441"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="772"/>
       <source>Open in &amp;internal browser</source>
       <translation>Открыть во внутреннем браузере (&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="443"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="767"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="444"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="774"/>
       <source>Open selected articles in internal browser</source>
       <translation>Открыть выбранные статьи во внутреннем браузере</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="454"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="769"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="455"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="776"/>
       <source>No actions available</source>
       <translation>Нет доступных действий</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="457"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="771"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="458"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="778"/>
       <source>No actions are available right now.</source>
       <translation>В данный момент нет доступных действий.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="465"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="773"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="466"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="780"/>
       <source>&amp;Mark all read</source>
       <translation>Пометить всё как прочитанное (&amp;M)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="468"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="775"/>
-      <source>Marks all messages in all items read. This does not take message filters into account.</source>
-      <translation>Отметить все сообщения во всех прочитанных элементах. Это действие не учитывает фильтры сообщений.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="479"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="777"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="480"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="784"/>
       <source>Switch main window visibility</source>
       <translation>Переключить видимость главного окна</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="482"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="779"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="483"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="786"/>
       <source>Hides main window if it is visible and shows it if it is hidden.</source>
       <translation>Скрывает главное окно, если оно видно, и показывает его, если оно скрыто.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="496"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="781"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="497"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="788"/>
       <source>&amp;Feed list</source>
       <translation>Список каналов (&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="507"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="785"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="508"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
       <source>&amp;Clean all</source>
       <translation>Очистить все (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="510"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="787"/>
-      <source>Deletes all messages from all items.</source>
-      <translation>Удалить все сообщения из всех элементов.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="518"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="789"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="519"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="796"/>
       <source>&amp;Next item</source>
       <translation>Следующий элемент (&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="526"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="527"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
       <source>&amp;Previous item</source>
       <translation>Предыдущий элемент (&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="534"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="791"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="535"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="798"/>
       <source>&amp;Next article</source>
       <translation>Следующая статья (&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="542"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="792"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="543"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
       <source>&amp;Previous article</source>
       <translation>Предыдущая статья (&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="550"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="793"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="551"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="800"/>
       <source>Check for &amp;updates</source>
       <translation>Проверить обновления (&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="553"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="795"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="554"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
       <source>Check if new update for the application is available for download.</source>
       <translation>Проверить, доступно ли для загрузки новое обновление для приложения.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="567"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="797"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="568"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
       <source>&amp;Main menu</source>
       <translation>Главное меню (&amp;M)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="570"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="799"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="571"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
       <source>Hides or displays the main menu.</source>
       <translation>Скрыть или показать главное меню.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="578"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="801"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="579"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
       <source>Report a &amp;bug...</source>
       <translation>Сообщить об ошибке (&amp;B)...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="589"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="802"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="590"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="809"/>
       <source>&amp;Toolbars</source>
       <translation>Панель инструментов (&amp;T)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="592"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="804"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="593"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="811"/>
       <source>Switch visibility of main toolbars.</source>
       <translation>Переключение видимости основных панелей инструментов.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="606"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="806"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="607"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="813"/>
       <source>&amp;List headers</source>
       <translation>Список заголовков (&amp;L)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="614"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="807"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="615"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
       <source>&amp;Donate...</source>
       <translation>Пожертвовать... (&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="622"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="808"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="623"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="815"/>
       <source>Display &amp;documentation</source>
       <translation>Показать документацию (&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="630"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="809"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="631"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
       <source>&amp;Restore settings</source>
       <translation>Восстановить настройки (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="638"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="810"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="639"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
       <source>&amp;Backup settings</source>
       <translation>Резервная копия настроек (&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="646"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="811"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="647"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
       <source>Switch layout</source>
       <translation>Переключить расположение панелей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="756"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="305"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="305"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="757"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="306"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="834"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="306"/>
       <source>Add new folder</source>
       <translation type="unfinished">Add new folder</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="857"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="843"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="843"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="847"/>
+      <source>Article viewer toolbars</source>
+      <translation type="unfinished">Article viewer toolbars</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="858"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="850"/>
       <source>&amp;Copy data to clipboard</source>
       <translation type="unfinished">&amp;Copy data to clipboard</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="895"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="850"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="896"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="857"/>
       <source>Focus feed search box</source>
       <translation type="unfinished">Focus feed search box</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="900"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="851"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="901"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="858"/>
       <source>Focus article search box</source>
       <translation type="unfinished">Focus article search box</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="905"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="852"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="906"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="859"/>
       <source>Scroll &amp;up preview</source>
       <translation type="unfinished">Scroll &amp;up preview</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="910"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="853"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="911"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="860"/>
       <source>Scroll &amp;down preview</source>
       <translation type="unfinished">Scroll &amp;down preview</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="915"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="854"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="916"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="861"/>
       <source>Rearrange &amp;subfolders alphabetically</source>
       <translation type="unfinished">Rearrange &amp;subfolders alphabetically</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="964"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="865"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="965"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="872"/>
       <source>Reload &amp;skin</source>
       <translation type="unfinished">Reload &amp;skin</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="969"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="866"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="970"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="873"/>
       <source>Focus &amp;feed list</source>
       <translation type="unfinished">Focus &amp;feed list</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="974"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="867"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="975"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="874"/>
       <source>Focus &amp;article list</source>
       <translation type="unfinished">Focus &amp;article list</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="979"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="868"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="980"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="875"/>
       <source>Focus article &amp;preview</source>
       <translation type="unfinished">Focus article &amp;preview</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="984"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="869"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="985"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="876"/>
       <source>&amp;Load all remaining articles</source>
       <translation type="unfinished">&amp;Load all remaining articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="989"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="870"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="990"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="877"/>
       <source>Reveal &amp;feed</source>
       <translation type="unfinished">Reveal &amp;feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="994"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="871"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="995"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="878"/>
+      <source>Open feed &amp;homepage</source>
+      <translation type="unfinished">Open feed &amp;homepage</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="998"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="880"/>
+      <source>Open homepage of feed belonging to current article</source>
+      <translation type="unfinished">Open homepage of feed belonging to current article</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1006"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="882"/>
       <source>&amp;Enable/disable selected feeds</source>
       <translation type="unfinished">&amp;Enable/disable selected feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="999"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="872"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1011"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="883"/>
       <source>Edit &amp;feed of selected article</source>
       <translation type="unfinished">Edit &amp;feed of selected article</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1004"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="873"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1016"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="884"/>
       <source>Mark articles &amp;above read</source>
       <translation type="unfinished">Mark articles &amp;above read</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1009"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="874"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1021"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="885"/>
       <source>Mark articles &amp;below read</source>
       <translation type="unfinished">Mark articles &amp;below read</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1014"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="875"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1026"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="886"/>
       <source>Mark articles &amp;above unread</source>
       <translation type="unfinished">Mark articles &amp;above unread</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1019"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="876"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1031"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="887"/>
       <source>Mark articles &amp;below unread</source>
       <translation type="unfinished">Mark articles &amp;below unread</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1024"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="877"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1036"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="888"/>
       <source>&amp;Fetch full contents</source>
       <translation type="unfinished">&amp;Fetch full contents</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1029"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="878"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1041"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="889"/>
       <source>New &amp;web browser tab</source>
       <translation type="unfinished">New &amp;web browser tab</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1034"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="879"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1046"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="890"/>
       <source>Cleanup &amp;web cache</source>
       <translation type="unfinished">Cleanup &amp;web cache</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1039"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="880"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1051"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="891"/>
       <source>Delete stored &amp;cookies</source>
       <translation type="unfinished">Delete stored &amp;cookies</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1044"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="881"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1056"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="892"/>
       <source>Toggle ar&amp;ticles read/unread</source>
       <translation type="unfinished">Toggle ar&amp;ticles read/unread</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="654"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="812"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="655"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
       <source>Send via e-mail</source>
       <translation>Отправить по электронной почте</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="499"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="783"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="392"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="757"/>
+      <source>Mark all articles (without article filters) from selected items as read.</source>
+      <translation type="unfinished">Mark all articles (without article filters) from selected items as read.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="403"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="761"/>
+      <source>Mark all articles (without article filters) from selected items as unread.</source>
+      <translation type="unfinished">Mark all articles (without article filters) from selected items as unread.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="422"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="766"/>
+      <source>Deletes all articles from selected items.</source>
+      <translation type="unfinished">Deletes all articles from selected items.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="469"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="782"/>
+      <source>Marks all articles in all items read. This does not take article filters into account.</source>
+      <translation type="unfinished">Marks all articles in all items read. This does not take article filters into account.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="500"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="790"/>
       <source>Hides or shows the list of feeds/folders.</source>
       <translation type="unfinished">Hides or shows the list of feeds/folders.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="657"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="814"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="511"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="794"/>
+      <source>Deletes all articles from all items.</source>
+      <translation type="unfinished">Deletes all articles from all items.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="658"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
       <source>Send selected articles via e-mail</source>
       <translation>Отправить выбранные статьи по электронной почте</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="665"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="816"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="666"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
       <source>&amp;Cleanup database</source>
       <translation>Очистить базу данных (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="673"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="817"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="674"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="824"/>
       <source>&amp;Expand/collapse selected item</source>
       <translation>Развернуть/свернуть выбранный элемент (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="681"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="818"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="682"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
       <source>&amp;Add account</source>
       <translation>Добавить аккаунт (&amp;A)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="689"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="819"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="690"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="826"/>
       <source>&amp;Restore articles</source>
       <translation>Восстановить статьи (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="697"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="820"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="698"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="827"/>
       <source>&amp;Restore all recycle bins</source>
       <translation>Восстановить все корзины (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="705"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="821"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="706"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
       <source>&amp;Empty all recycle bins</source>
       <translation>Очистить все корзины (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="713"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="822"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="714"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="829"/>
       <source>Next &amp;unread article</source>
       <translation>Следующая непрочитанная статья (&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="727"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="823"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="728"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="830"/>
       <source>Status bar</source>
       <translation>Строка состояния</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="735"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="824"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="736"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="831"/>
       <source>&amp;Edit selected account</source>
       <translation>Изменить выбранный аккаунт (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="743"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="825"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="744"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="832"/>
       <source>&amp;Delete selected account</source>
       <translation>Удалить выбранный аккаунт (&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="761"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="828"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="762"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="835"/>
       <source>Stop ongoing fetching</source>
       <translation>Остановить получение</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="769"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="829"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="770"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="836"/>
       <source>Close all tabs</source>
       <translation>Закрыть все вкладки</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="774"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="830"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="775"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="837"/>
       <source>Close all tabs except current</source>
       <translation>Закрыть все вкладки кроме текущей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="779"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="831"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="780"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="838"/>
       <source>Go to &amp;next tab</source>
       <translation>Перейти к следующей вкладке (&amp;N)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="784"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="832"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="785"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="839"/>
       <source>Go to &amp;previous tab</source>
       <translation>Перейти к предыдущей вкладке (&amp;P)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="792"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="833"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="793"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="840"/>
       <source>&amp;Enable article preview</source>
       <translation>Включить предпросмотр статей (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="797"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="834"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="798"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="841"/>
       <source>&amp;Copy URL of selected item</source>
       <translation>Копировать URL-адрес выбранного элемента (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="802"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="835"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="803"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="842"/>
       <source>Article &amp;filters</source>
       <translation>Фильтры статей (&amp;F)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="810"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="836"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="811"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="843"/>
       <source>&amp;Show tree expanders</source>
       <translation>Отображать иерархию расширителей (&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="815"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="837"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="816"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="844"/>
       <source>Fetch feeds with &amp;custom auto-download policy</source>
       <translation>Обновить каналы с настроенной политикой автозагрузки (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="823"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="838"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="824"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="845"/>
       <source>Alternate row colors in lists</source>
       <translation>Чередовать цвет фона строк в списках</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="831"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="839"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="832"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="846"/>
       <source>Automatically &amp;expand item when selected</source>
       <translation>Автоматически разворачивать элемент при выборе (&amp;E)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="842"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="840"/>
-      <source>Message viewer toolbars</source>
-      <translation>Панели инструментов средства просмотра сообщений</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="847"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="841"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="848"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="848"/>
       <source>Expand/collapse selected item &amp;recursively</source>
       <translation>Рекурсивно развернуть/свернуть выбранный элемент (&amp;R)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="852"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="842"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="853"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="849"/>
       <source>Close &amp;current tab</source>
       <translation>Закрыть текущую вкладку (&amp;C)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="865"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="844"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="866"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="851"/>
       <source>&amp;Sort alphabetically</source>
       <translation>Сортировать по алфавиту (&amp;S)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="870"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="845"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="871"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="852"/>
       <source>Move &amp;up</source>
       <translation>Вверх (&amp;U)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="875"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="846"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="876"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="853"/>
       <source>Move to &amp;top</source>
       <translation>В начало (&amp;T)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="880"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="847"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="881"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="854"/>
       <source>Move &amp;down</source>
       <translation>Вниз (&amp;D)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="885"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="848"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="886"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="855"/>
       <source>Move to &amp;bottom</source>
       <translation>В конец (&amp;B)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="890"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="849"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="891"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="856"/>
       <source>Display application &amp;log</source>
       <translation>Отображение журнала приложения</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="920"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="855"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="921"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="862"/>
       <source>Rearrange &amp;feeds alphabetically</source>
       <translation>Переставить &amp;каналы в алфавитном порядке</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="928"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="856"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="929"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="863"/>
       <source>You must add new account first</source>
       <translation>Сначала необходимо добавить новую учетную запись</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="931"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="858"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="932"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="865"/>
       <source>You must add new account first.</source>
       <translation>Сначала необходимо добавить новую учетную запись.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="936"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="860"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="937"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="867"/>
       <source>Edit &amp;child feeds</source>
       <translation>Редактирование дочерних лент</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="941"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="861"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="942"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="868"/>
       <source>Edit child feeds (&amp;recursive)</source>
       <translation>Редактирование дочерних лент (&amp;рекурсивно)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="946"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="862"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="947"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="869"/>
       <source>Play in &amp;media player</source>
       <translation>Воспроизвести в медиаплеере (&amp;M)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="954"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="863"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="955"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="870"/>
       <source>&amp;Pause automatic feed fetching</source>
       <translation>&amp;Приостановить получение каналов</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="959"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="864"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="960"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="871"/>
       <source>&amp;Purge selected feeds</source>
       <translation type="unfinished">&amp;Purge selected feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="751"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="315"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="826"/>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="315"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="752"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="316"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="833"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="316"/>
       <source>Add new feed</source>
       <translation>Добавить новый канал</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="366"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="367"/>
       <source>No actions possible</source>
       <translation>Нет возможных действий</translation>
     </message>
@@ -3236,47 +3262,47 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation>Не удается очистить базу данных, т.к. выполняется другое критическое действие.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="461"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="462"/>
       <source>Play in media player</source>
       <translation>Воспроизвести в медиаплеере</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="462"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="463"/>
       <source>(not supported)</source>
       <translation>(не поддерживается)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="533"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="535"/>
       <source>Close opened modal dialogs first.</source>
       <translation>Сначала закройте открытые модальные диалоги.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="823"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="827"/>
       <source>Cookies deleted</source>
       <translation type="unfinished">Cookies deleted</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="823"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="827"/>
       <source>Stored cookies were deleted.</source>
       <translation type="unfinished">Stored cookies were deleted.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="829"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="833"/>
       <source>Skin reloaded</source>
       <translation type="unfinished">Skin reloaded</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="830"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="834"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
       <translation type="unfinished">Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="437"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="438"/>
       <source>Fetching common data</source>
       <translation>Получение общих данных</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="532"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="534"/>
       <source>Close dialogs</source>
       <translation>Закрыть диалоги</translation>
     </message>
@@ -3312,15 +3338,6 @@ Icon themes base folder -&gt; &quot;%6&quot;</translation>
       <translation type="unfinished">Article filter files (*.json)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="188"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="214"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="214"/>
-      <source>Select file article filters export</source>
-      <translation type="unfinished">Select file article filters export</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="207"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="234"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="234"/>
       <source>Cannot export filters, error: &apos;%1&apos;.</source>
       <translation type="unfinished">Cannot export filters, error: &apos;%1&apos;.</translation>
@@ -3350,16 +3367,6 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <translation type="unfinished">Filter was not saved</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="669"/>
-      <source>Script was not beautified, because &apos;clang-format&apos; tool thrown error.</source>
-      <translation>Скрипт не был украшен, потому что инструмент &apos;clang-format&apos; выдавал ошибку.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="678"/>
-      <source>Beautifier was running for too long time</source>
-      <translation>Улучшение кода работало слишком долго</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="679"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation>Скрипт не был улучшен, установлен &apos;clang-format&apos;?</translation>
@@ -3368,6 +3375,18 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="400"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
       <translation>Невозможно сохранить новый фильтр, ошибка: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="188"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="214"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="214"/>
+      <source>Select article filters export file</source>
+      <translation type="unfinished">Select article filters export file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="207"/>
+      <source>Cannot import filters, error: &apos;%1&apos;.</source>
+      <translation type="unfinished">Cannot import filters, error: &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="339"/>
@@ -3383,6 +3402,16 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="388"/>
       <source>New article filter</source>
       <translation>Новый фильтр статей</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="669"/>
+      <source>Script was not beautified, because &apos;clang-format&apos; tool threw an error.</source>
+      <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool threw an error.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="678"/>
+      <source>Beautifier was running for too long</source>
+      <translation type="unfinished">Beautifier was running for too long</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="357"/>
@@ -3632,13 +3661,13 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="48"/>
-      <source>You need to restart application for restoration process to finish.</source>
-      <translation>Вам необходимо перезапустить приложение для завершения процесса восстановления.</translation>
+      <source>You need to restart the application for restoration process to finish.</source>
+      <translation type="unfinished">You need to restart the application for restoration process to finish.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="53"/>
-      <source>Database and/or settings were not copied to restoration directory successully.</source>
-      <translation>База данных и/или настройки не были успешно скопированы в каталог восстановления.</translation>
+      <source>Database and/or settings were not copied to restoration directory successfully.</source>
+      <translation type="unfinished">Database and/or settings were not copied to restoration directory successfully.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="71"/>
@@ -3690,42 +3719,36 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
   <context>
     <name>FormSettings</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="259"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="261"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="276"/>
       <source>Critical settings were changed</source>
       <translation>Критические настройки были изменены</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="263"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="290"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="265"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="292"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="280"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="307"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="307"/>
       <source>Changed categories of settings:
 %1.</source>
       <translation>Изменены категории настроек:
 %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="287"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="289"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="304"/>
       <source>Some settings are changed and will be lost</source>
       <translation>Некоторые настройки изменены и будут потеряны</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="288"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="290"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="305"/>
       <source>Some settings were changed and by cancelling this dialog, you would lose these changes.</source>
       <translation>Некоторые настройки были изменены, и, закрыв это диалоговое окно, вы потеряете эти изменения.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="289"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="291"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="306"/>
       <source>Do you really want to close this dialog without saving any settings?</source>
       <translation>Вы действительно хотите закрыть это диалоговое окно без сохранения каких-либо настроек?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="260"/>
-      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="262"/>
+      <location filename="../src/librssguard/gui/dialogs/formsettings.cpp" line="277"/>
       <source>Some critical settings were changed and will be applied after the application gets restarted. 
 
 You have to restart manually.</source>
@@ -4081,6 +4104,18 @@ currently installed one.</source>
       <translation>Загрузить новые файлы установки.</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="195"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="197"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="197"/>
+      <source>Error occurred</source>
+      <translation type="unfinished">Error occurred</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="196"/>
+      <source>Error occurred while downloading the package.</source>
+      <translation type="unfinished">Error occurred while downloading the package.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="231"/>
       <source>Cannot update application</source>
       <translation>Не удается обновить приложение</translation>
@@ -4103,28 +4138,9 @@ currently installed one.</source>
       <translation>Загрузка успешна</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="195"/>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="197"/>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="197"/>
-      <source>Error occured</source>
-      <translation>Произошла ошибка</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="196"/>
-      <source>Error occured during downloading of the package.</source>
-      <translation>Произошла ошибка при загрузке пакета.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="36"/>
       <source>Go to application website</source>
       <translation>Перейти на сайт приложения.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="88"/>
-      <source>This is new version which can be
-downloaded.</source>
-      <translation>Это новая версия, которая может быть
-загружена.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="189"/>
@@ -4145,6 +4161,13 @@ downloaded.</source>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="37"/>
       <source>Go to application website to get update packages manually.</source>
       <translation>Перейдите на веб-сайт приложения, чтобы получить пакеты обновлений вручную.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="88"/>
+      <source>This is a new version which can be
+downloaded.</source>
+      <translation type="unfinished">This is a new version which can be
+downloaded.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="155"/>
@@ -5534,6 +5557,11 @@ Login tokens expiration: %2</source>
       <translation type="unfinished">Trash</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="17"/>
+      <source>Received</source>
+      <translation type="unfinished">Received</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="19"/>
       <source>true</source>
       <translation>правда</translation>
@@ -5567,7 +5595,7 @@ Login tokens expiration: %2</source>
       <translation>Важное</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="609"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="610"/>
       <source>Feed</source>
       <translation>Канал</translation>
     </message>
@@ -5582,7 +5610,7 @@ Login tokens expiration: %2</source>
       <translation>Автор</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="608"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="609"/>
       <source>Contents</source>
       <translation>Контент</translation>
     </message>
@@ -5610,16 +5638,6 @@ Login tokens expiration: %2</source>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="609"/>
       <source>Score</source>
       <translation>Оценка</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="608"/>
-      <source>Date</source>
-      <translation>Дата</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="382"/>
-      <source>Loading of articles failed, maybe messages could not be downloaded.</source>
-      <translation>Не удалось загрузить статьи, возможно, статьи не могут быть загружены.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="144"/>
@@ -5666,6 +5684,11 @@ Login tokens expiration: %2</source>
       <translation type="unfinished">cannot set model data for column %1</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="382"/>
+      <source>Loading of articles failed, maybe articles could not be downloaded.</source>
+      <translation type="unfinished">Loading of articles failed, maybe articles could not be downloaded.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="429"/>
       <source>Feed not found</source>
       <translation type="unfinished">Feed not found</translation>
@@ -5703,6 +5726,16 @@ Login tokens expiration: %2</source>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="608"/>
       <source>URL</source>
       <translation>URL </translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="608"/>
+      <source>Published</source>
+      <translation type="unfinished">Published</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="608"/>
+      <source>Received</source>
+      <translation type="unfinished">Received</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="609"/>
@@ -5776,11 +5809,16 @@ Login tokens expiration: %2</source>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="616"/>
+      <source>Date and time when the article was received.</source>
+      <translation type="unfinished">Date and time when the article was received.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="617"/>
       <source>Score of the article.</source>
       <translation>Оценка статьи.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="616"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="617"/>
       <source>Account ID of the article.</source>
       <translation>ID аккаунта статьи.</translation>
     </message>
@@ -5790,7 +5828,7 @@ Login tokens expiration: %2</source>
       <translation>Пользовательский ID статьи.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="617"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="618"/>
       <source>Custom account-specific data of the article.</source>
       <translation type="unfinished">Custom account-specific data of the article.</translation>
     </message>
@@ -5800,22 +5838,22 @@ Login tokens expiration: %2</source>
       <translation>Название канала статьи.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="618"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="619"/>
       <source>Indication of attachments presence within the article.</source>
       <translation type="unfinished">Indication of attachments presence within the article.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="619"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="620"/>
       <source>Labels assigned to the article.</source>
       <translation>Метки, присвоенные статье.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="764"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="768"/>
       <source>article model column %1 is out of range</source>
       <translation type="unfinished">article model column %1 is out of range</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="788"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="792"/>
       <source>%n months ago</source>
       <translation>
         <numerusform>%n месяц(ев) назад</numerusform>
@@ -5825,7 +5863,7 @@ Login tokens expiration: %2</source>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="792"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="796"/>
       <source>%n weeks ago</source>
       <translation>
         <numerusform>%n недель(я) назад</numerusform>
@@ -5835,7 +5873,7 @@ Login tokens expiration: %2</source>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="796"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="800"/>
       <source>%n days ago</source>
       <translation>
         <numerusform>%n дня(дней) назад</numerusform>
@@ -5845,12 +5883,12 @@ Login tokens expiration: %2</source>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="800"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="804"/>
       <source>yesterday</source>
       <translation>вчера</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="804"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="808"/>
       <source>%n hours ago</source>
       <translation>
         <numerusform>%n час(часов) назад</numerusform>
@@ -5860,7 +5898,7 @@ Login tokens expiration: %2</source>
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="808"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="812"/>
       <source>%n minutes ago</source>
       <translation>
         <numerusform>%n минут(а) назад</numerusform>
@@ -5870,17 +5908,17 @@ Login tokens expiration: %2</source>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="811"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="815"/>
       <source>just now</source>
       <translation>только что</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="1299"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="1303"/>
       <source>Fetch full article contents</source>
       <translation type="unfinished">Fetch full article contents</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/messagesmodel.cpp" line="1322"/>
+      <location filename="../src/librssguard/core/messagesmodel.cpp" line="1326"/>
       <source>Fetched %n article(s)...</source>
       <translation type="unfinished">
         <numerusform>Fetched %n article(s)...</numerusform>
@@ -6033,24 +6071,39 @@ Login tokens expiration: %2</source>
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="770"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="973"/>
       <source>Problem with starting external e-mail client</source>
       <translation>Проблема с запуском внешнего e-mail клиента</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="771"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="974"/>
       <source>External e-mail client could not be started.</source>
       <translation>Внешний e-mail клиент не может быть запущен.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="444"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="644"/>
       <source>Open with external tool</source>
       <translation>Открыть с помощью внешнего инструмента</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="171"/>
+      <source>Cannot open feed homepage</source>
+      <translation type="unfinished">Cannot open feed homepage</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="172"/>
+      <source>The feed does not have a valid homepage URL.</source>
+      <translation type="unfinished">The feed does not have a valid homepage URL.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="393"/>
+      <source>Use source-specific article list columns</source>
+      <translation type="unfinished">Use source-specific article list columns</translation>
+    </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="594"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="595"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="595"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="795"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="796"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="796"/>
       <source>%n selected article(s)</source>
       <translation type="unfinished">
         <numerusform>%n selected article(s)</numerusform>
@@ -6060,16 +6113,16 @@ Login tokens expiration: %2</source>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="704"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1040"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1040"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="907"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1243"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1243"/>
       <source>Filtering changed</source>
       <translation type="unfinished">Filtering changed</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="705"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1041"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1041"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="908"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1244"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1244"/>
       <source>%n article(s) left after filtering change</source>
       <translation type="unfinished">
         <numerusform>%n article(s) left after filtering change</numerusform>
@@ -6079,32 +6132,32 @@ Login tokens expiration: %2</source>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="736"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="939"/>
       <source>No URL</source>
       <translation>Отсутствует адрес</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="737"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="940"/>
       <source>Article cannot be played in media player as it has no URL</source>
       <translation type="unfinished">Article cannot be played in media player as it has no URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1065"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1268"/>
       <source>Cannot run external tool</source>
       <translation>Не удается открыть внешний инструмент</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1066"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1269"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>Внешний инструмент &apos;%1&apos; не может быть запущен.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="464"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="664"/>
       <source>No external tools activated</source>
       <translation>Ни одна внешняя утилита не была активирована</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="424"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="624"/>
       <source>Context menu for articles</source>
       <translation>Контекстное меню для статей</translation>
     </message>
@@ -6618,12 +6671,12 @@ Feedly is a secure space where you can privately organize and research the topic
 Feedly - это безопасное пространство, где вы можете в частном порядке организовывать и исследовать важные для вас темы и тенденции.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="1907"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="1920"/>
       <source>cannot move item of kind %1</source>
       <translation type="unfinished">cannot move item of kind %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasequeries.cpp" line="2048"/>
+      <location filename="../src/librssguard/database/databasequeries.cpp" line="2061"/>
       <source>Cannot insert article filter, because current database cannot return last inserted row ID.</source>
       <translation>Невозможно вставить фильтр статьи, поскольку текущая база данных не может вернуть идентификатор последней добавленной строки.</translation>
     </message>
@@ -6668,19 +6721,19 @@ Feedly - это безопасное пространство, где вы мо�
       <translation>Загружены новые (непрочитанные) статьи</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="33"/>
+      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="34"/>
       <location filename="../src/librssguard-xmpp/src/parsers/feedparser.cpp" line="32"/>
       <source>XML problem: %1</source>
       <translation>Проблема XML: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="43"/>
+      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="44"/>
       <location filename="../src/librssguard-xmpp/src/parsers/feedparser.cpp" line="42"/>
       <source>JSON problem: %1</source>
       <translation>Проблема JSON: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="454"/>
+      <location filename="../src/librssguard-standard/src/parsers/feedparser.cpp" line="489"/>
       <location filename="../src/librssguard-xmpp/src/parsers/feedparser.cpp" line="423"/>
       <source>Comments</source>
       <translation type="unfinished">Comments</translation>
@@ -6795,70 +6848,70 @@ List of supported readers:</source>
       <translation>внизу справа</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="453"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="476"/>
       <source>escape sequence not completed</source>
       <translation>эскейп-последовательность не завершена</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="457"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="480"/>
       <source>closing &quot; is missing</source>
       <translation>отсутствует закрывающая &quot;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="461"/>
+      <location filename="../src/librssguard/miscellaneous/textfactory.cpp" line="484"/>
       <source>closing &apos; is missing</source>
       <translation>отсутствует закрывающий &apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="179"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="204"/>
       <source>XML is not well-formed, %1</source>
       <translation>XML имеет неправильный формат, %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="308"/>
-      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="185"/>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="185"/>
+      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="305"/>
+      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="177"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="179"/>
       <source>XML is not well-formed, %1, line %2, column %3</source>
       <translation type="unfinished">XML is not well-formed, %1, line %2, column %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="317"/>
+      <location filename="../src/librssguard-standard/src/parsers/atomparser.cpp" line="314"/>
       <source>not an ATOM feed</source>
       <translation>не является каналом ATOM</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="127"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="118"/>
       <source>JSON error &apos;%1&apos;</source>
       <translation>Ошибка JSON &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="131"/>
-      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="163"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="122"/>
+      <location filename="../src/librssguard-standard/src/parsers/jsonparser.cpp" line="154"/>
       <source>not a JSON feed</source>
       <translation>не JSON-канал</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="194"/>
+      <location filename="../src/librssguard-standard/src/parsers/rdfparser.cpp" line="186"/>
       <source>not an RDF feed</source>
       <translation>не является каналом RDF</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="192"/>
+      <location filename="../src/librssguard-standard/src/parsers/rssparser.cpp" line="186"/>
       <source>not a RSS feed</source>
       <translation>не RSS-канал</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="163"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="188"/>
       <source>support for gzipped sitemaps is not enabled</source>
       <translation>поддержка карт сайта в формате gzip не включена</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="192"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="217"/>
       <source>sitemap indices are not supported</source>
       <translation type="unfinished">sitemap indices are not supported</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="196"/>
+      <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="221"/>
       <source>not a Sitemap</source>
       <translation type="unfinished">not a Sitemap</translation>
     </message>
@@ -7004,17 +7057,17 @@ List of supported readers:</source>
       <translation>(не поддерживается)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="72"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="61"/>
       <source>iCalendar error &apos;%1&apos;</source>
       <translation>Ошибка iCalendar &apos;%1&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="86"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="75"/>
       <source>not an iCalendar</source>
       <translation>не iCalendar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="195"/>
+      <location filename="../src/librssguard-standard/src/parsers/icalparser.cpp" line="184"/>
       <source>required iCal data are missing</source>
       <translation>отсутствуют необходимые данные iCal</translation>
     </message>
@@ -7048,7 +7101,7 @@ line: %2
 stack: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/parsers/gemlogparser.cpp" line="92"/>
+      <location filename="../src/librssguard-standard/src/parsers/gemlogparser.cpp" line="73"/>
       <source>not a Gemlog</source>
       <translation type="unfinished">not a Gemlog</translation>
     </message>
@@ -7378,17 +7431,22 @@ stack: %3</translation>
       <translation>С учётом регистра</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="129"/>
+      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="91"/>
+      <source>Some items are hidden by current search or filtering.</source>
+      <translation type="unfinished">Some items are hidden by current search or filtering.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="164"/>
       <source>Fixed text</source>
       <translation>Фиксированный текст</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="132"/>
+      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="167"/>
       <source>Wildcard</source>
       <translation>Спецсимволы подстановки</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="135"/>
+      <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="170"/>
       <source>Regular expression</source>
       <translation>Регулярное выражение</translation>
     </message>
@@ -7404,14 +7462,14 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="39"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="71"/>
-      <source>Find previous occurence</source>
-      <translation>Найти предыдущее вхождение</translation>
+      <source>Find previous occurrence</source>
+      <translation type="unfinished">Find previous occurrence</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchtextwidget.ui" line="49"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_searchtextwidget.h" line="75"/>
-      <source>Find next occurence</source>
-      <translation>Найти следующее вхождение</translation>
+      <source>Find next occurrence</source>
+      <translation type="unfinished">Find next occurrence</translation>
     </message>
   </context>
   <context>
@@ -7466,8 +7524,8 @@ stack: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="132"/>
-      <source>This is not suppported (yet).</source>
-      <translation>Это не поддерживается (пока еще).</translation>
+      <source>This is not supported (yet).</source>
+      <translation type="unfinished">This is not supported (yet).</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="180"/>
@@ -7525,16 +7583,30 @@ Number of disabled feeds: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="781"/>
-      <source>Feeds &amp; categories for account &apos;%1&apos; were not fetched, error: %2</source>
-      <translation>Каналы и категории для учетной записи &apos;%1&apos; не были получены, ошибка: %2</translation>
+      <source>Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</source>
+      <translation type="unfinished">Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</translation>
     </message>
   </context>
   <context>
     <name>SettingsBrowserMail</name>
     <message>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="27"/>
+      <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of the selected article.</source>
+      <translation type="unfinished">Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of the selected article.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="31"/>
+      <source>Placeholders:
+ • %1 - title of the selected article,
+ • %2 - body of the selected article.</source>
+      <translation type="unfinished">Placeholders:
+ • %1 - title of the selected article,
+ • %2 - body of the selected article.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="37"/>
-      <source>On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
-      <translation type="unfinished">On this page, you can setup a list of external tools which can open URLs. If you setup domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</translation>
+      <source>On this page, you can set up a list of external tools which can open URLs. If you set up domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</source>
+      <translation type="unfinished">On this page, you can set up a list of external tools which can open URLs. If you set up domain (without leading &quot;www.&quot;) then the tool will be directly used to open all clicked links from that domain. You can separate multiple domains with &apos;,&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="45"/>
@@ -7589,9 +7661,7 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Внешний веб-браузер</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="154"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="312"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="325"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Если этот флажок не установлен, используется общесистемный веб-браузер по умолчанию.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
@@ -7601,6 +7671,12 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="314"/>
       <source>Use custom external web browser</source>
       <translation>Использовать свой веб-браузер</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="312"/>
+      <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide e-mail client is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+      <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide e-mail client is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="42"/>
@@ -7661,11 +7737,6 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation type="unfinished">&amp;Edit tool path</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="27"/>
-      <source>Note that &quot;%1&quot; (without quotation marks) is placeholder for URL of selected message.</source>
-      <translation>Обратите внимание, что &quot;%1&quot; (без кавычек) - это поле для URL выбранного сообщения.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="135"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="336"/>
       <source>External e-mail client</source>
@@ -7694,15 +7765,6 @@ File filter for external e-mail selection dialog.</extracomment>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="334"/>
       <source>Select client</source>
       <translation>Выберите клиент</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.cpp" line="31"/>
-      <source>Placeholders:
- • %1 - title of selected message,
- • %2 - body of selected message.</source>
-      <translation>Переменные командной строки для параметров приложения:
-• %1 - заголовок выбранного сообщения,
-• %2 - тело выбранного сообщения.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="252"/>
@@ -7742,8 +7804,8 @@ File filter for external e-mail selection dialog.</extracomment>
     <name>SettingsDatabase</name>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="25"/>
-      <source>Note that speed of used MySQL server and latency of used connection medium HEAVILY influences the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or messages.</source>
-      <translation>Обратите внимание, что скорость используемого сервера MySQL и задержки используемого соединения СИЛЬНО влияет на конечную эффективность этого приложения. Использование медленных соединений с БД приводит к плохой производительности при просмотре каналов и сообщений.</translation>
+      <source>Note that speed of the used MySQL server and latency of the used connection medium HEAVILY influence the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or articles.</source>
+      <translation type="unfinished">Note that speed of the used MySQL server and latency of the used connection medium HEAVILY influence the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or articles.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="102"/>
@@ -7792,8 +7854,8 @@ File filter for external e-mail selection dialog.</extracomment>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="154"/>
-      <source>You did not executed any connection test yet.</source>
-      <translation>Вы ещё не выполняли тест соединения.</translation>
+      <source>You did not execute any connection test yet.</source>
+      <translation type="unfinished">You did not execute any connection test yet.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="173"/>
@@ -7866,18 +7928,9 @@ File filter for external e-mail selection dialog.</extracomment>
   <context>
     <name>SettingsFeedsMessages</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="319"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="320"/>
       <source>Select new font</source>
       <translation>Выберите новый шрифт</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="44"/>
-      <source>If enabled then %1 loads articles into article list on demand as you scroll throught the list.
-
-This can tremendously speed up the application if you have hundreds of thousands articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</source>
-      <translation type="unfinished">If enabled then %1 loads articles into article list on demand as you scroll throught the list.
-
-This can tremendously speed up the application if you have hundreds of thousands articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="32"/>
@@ -7895,14 +7948,23 @@ This can tremendously speed up the application if you have hundreds of thousands
       <translation type="unfinished">Right</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="44"/>
+      <source>If enabled then %1 loads articles into article list on demand as you scroll through the list.
+
+This can tremendously speed up the application if you have hundreds of thousands of articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</source>
+      <translation type="unfinished">If enabled then %1 loads articles into article list on demand as you scroll through the list.
+
+This can tremendously speed up the application if you have hundreds of thousands of articles, but it can hinder your article list filtering because not all articles are loaded, thus your filtering could be off.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="52"/>
       <source>Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</source>
       <translation type="unfinished">Enter format for count of articles displayed next to each feed/folder in feed list. Use &quot;%all&quot; and &quot;%unread&quot; strings which are placeholders for the actual count of all (or unread) articles.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="56"/>
-      <source>Note that enabling this might have drastic consequences on performance of article list with big number of articles.</source>
-      <translation>Обратите внимание, что включение этого может иметь серьезные последствия для производительности списка статей с большим количеством статей.</translation>
+      <source>Note that enabling this might have drastic consequences on performance of the article list with many articles.</source>
+      <translation type="unfinished">Note that enabling this might have drastic consequences on performance of the article list with many articles.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.cpp" line="62"/>
@@ -7946,317 +8008,329 @@ This can tremendously speed up the application if you have hundreds of thousands
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="21"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="699"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="706"/>
       <source>Feed fetching</source>
       <translation>Получение канала</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="688"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="695"/>
       <source>Fetch all articles on startup with initial delay of</source>
       <translation>Получить все статьи при запуске приложения с начальной задержкой</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="53"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="689"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="696"/>
       <source>Auto-fetch articles for all feeds every</source>
       <translation>Авто-загрузка статей для всех каналов каждые</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="79"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="690"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
       <source>Only auto-fetch articles if application is unfocused</source>
       <translation>Авто-загрузка статей только когда не в фокусе</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="93"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="692"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="699"/>
       <source>Feed connection timeout</source>
       <translation>Таймаут соединения канала</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="694"/>
-      <source>Connection timeout is time interval which is reserved for downloading new messages for the feed. If this time interval elapses, then download process is aborted.</source>
-      <translation>Тайм-аут соединения является интервалом времени, который зарезервирован для загрузки новых сообщений канала. Если этот интервал времени истечет, то процесс загрузки прерывается.</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="112"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="696"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="703"/>
       <source> ms</source>
       <translation> мс</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="86"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="691"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="698"/>
       <source>Support very fast auto-fetching intervals (under 10 seconds)</source>
       <translation>Поддержка очень быстрой автозагрузки (менее 10 секунд)</translation>
     </message>
     <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="109"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="701"/>
+      <source>Connection timeout is time interval which is reserved for downloading new articles for the feed. If this time interval elapses, then download process is aborted.</source>
+      <translation type="unfinished">Connection timeout is time interval which is reserved for downloading new articles for the feed. If this time interval elapses, then download process is aborted.</translation>
+    </message>
+    <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="131"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="697"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="704"/>
       <source>Only auto-fetch articles if network is connected</source>
       <translation type="unfinished">Only auto-fetch articles if network is connected</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="698"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="705"/>
       <source>Only auto-fetch articles if Game Mode is not active</source>
       <translation type="unfinished">Only auto-fetch articles if Game Mode is not active</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="146"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="714"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="721"/>
       <source>Feeds list</source>
       <translation>Список каналов</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="152"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="532"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="700"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="731"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="542"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="707"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="742"/>
       <source>Row height</source>
       <translation>Высота строки</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="189"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="701"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="708"/>
       <source>Feed list font</source>
       <translation>Шрифт списка каналов </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="201"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="443"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="697"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="702"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="724"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="738"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="707"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="709"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="731"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="749"/>
       <source>Font preview</source>
       <translation>Предпросмотр</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="211"/>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="453"/>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="707"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="703"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="725"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="739"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="717"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="710"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="732"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="750"/>
       <source>&amp;Change font</source>
       <translation>Изменить (&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="236"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="704"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="711"/>
       <source>Article count format</source>
       <translation>Формат счетчика статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="262"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="705"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="712"/>
       <source>Article count alignment</source>
       <translation type="unfinished">Article count alignment</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="275"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="706"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="713"/>
       <source>Hide article counts if there are no unread articles</source>
       <translation>Скрыть количество статей, если нет непрочитанных статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="289"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="708"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="715"/>
       <source>Allow only basic keyboard shortcuts for feed/article list</source>
       <translation>Разрешить только основные сочетания клавиш для ленты новостей / списка статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="296"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="709"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="716"/>
       <source>Display tooltips for feeds and articles</source>
       <translation>Отображать всплывающие подсказки для каналов и статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="303"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="710"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="717"/>
       <source>Strikethrough disabled feed titles</source>
       <translation type="unfinished">Strikethrough disabled feed titles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="316"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="711"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="718"/>
       <source>Also always show article counts from labels and important articles</source>
       <translation type="unfinished">Also always show article counts from labels and important articles</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="323"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="712"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="719"/>
       <source>Propagate feed state to parent nodes</source>
       <translation type="unfinished">Propagate feed state to parent nodes</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="330"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="713"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="720"/>
       <source>Keep feed selection in the middle of the feed list viewport</source>
       <translation type="unfinished">Keep feed selection in the middle of the feed list viewport</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="771"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="743"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="515"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="738"/>
+      <source>Remember article-list columns separately for feeds, folders, accounts, labels, search folders, unread articles, important articles and recycle bin.</source>
+      <translation type="unfinished">Remember article-list columns separately for feeds, folders, accounts, labels, search folders, unread articles, important articles and recycle bin.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="518"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="740"/>
+      <source>Use source-specific article list columns</source>
+      <translation type="unfinished">Use source-specific article list columns</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="764"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="753"/>
+      <source>Use article lazy loading</source>
+      <translation type="unfinished">Use article lazy loading</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="781"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="754"/>
       <source>Mark articles read after they are opened externally (in browser) or internally (in new tab)</source>
       <translation type="unfinished">Mark articles read after they are opened externally (in browser) or internally (in new tab)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="778"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="744"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="788"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="755"/>
       <source>Display feed icon in &quot;Feed&quot; column</source>
       <translation type="unfinished">Display feed icon in &quot;Feed&quot; column</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="282"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="707"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="714"/>
       <source>Update feed list during feed fetching</source>
       <translation>Обновить список каналов во время получения</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="338"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="727"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="734"/>
       <source>Articles</source>
       <translation>Статьи</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="344"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="715"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="722"/>
       <source>Remove all read articles from all feeds on application exit</source>
       <translation>Удалять все прочитанные статьи из всех каналов при выходе</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="358"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="717"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="724"/>
       <source>Ignore changes in article body when new articles are being fetched</source>
       <translation>Игнорировать изменения в теле статьи при получении новых статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="379"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="720"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="727"/>
       <source>Internal article viewer</source>
       <translation>Внутренний просмотрщик статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="481"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="726"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="733"/>
       <source>Mark existing article unread when its updated version is fetched from the feed</source>
       <translation type="unfinished">Mark existing article unread when its updated version is fetched from the feed</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="495"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="728"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="735"/>
       <source>Unread article icon type</source>
       <translation>Тип иконки непрочитанной статьи</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="616"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="734"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="626"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="745"/>
       <source>Use custom date/time format for dates-only</source>
       <translation>Использовать собственный формат даты/времени только для дат</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="740"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="740"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="750"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="751"/>
       <source>Upon article selection, mark as read</source>
       <translation>После выбора статьи отметить как прочитанное</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="747"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="741"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="757"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="752"/>
       <source>Switch article list to RTL layout if all selected feeds are RTL</source>
       <translation>Отображать список статей справа налево, если все выбранные каналы отображаются справа налево</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="754"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="742"/>
-      <source>Use articles lazy-loading</source>
-      <translation type="unfinished">Use articles lazy-loading</translation>
-    </message>
-    <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="372"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="719"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="726"/>
       <source>Bring application window to front once article is opened in external web browser</source>
       <translation>Вывести окно приложения на передний план после открытия статьи во внешнем веб-браузере</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="437"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="723"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="730"/>
       <source>Article browser font</source>
       <translation>Шрифт содержимого статьи</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="365"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="718"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="725"/>
       <source>Fixup date/time of articles which are in the future</source>
       <translation>Исправлять дату/время статей, которые находятся в будущем</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="385"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="721"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="728"/>
       <source>Display attachments directly in article</source>
       <translation>Показывать вложения прямо в статье</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="351"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="716"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="723"/>
       <source>Keep article viewer always visible</source>
       <translation>Постоянно отображать просмотрщик статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="394"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="722"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="729"/>
       <source>Limit height of attachments</source>
       <translation type="unfinished">Limit height of attachments</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="489"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="745"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="756"/>
       <source>Articles list</source>
       <translation>Список статей</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="508"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="729"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="736"/>
       <source>Keep article selection in the middle of the article list viewport</source>
       <translation>Сохранять выделение статьи в среднем окне просмотра списка статей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="515"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="730"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="525"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="741"/>
       <source>Enable multiline items</source>
       <translation>Включить многострочные элементы</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="561"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="732"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="571"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="743"/>
       <source>Top/bottom row padding</source>
       <translation>Отступы верхней/нижней строки</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="590"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="733"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="600"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="744"/>
       <source>Use custom date/time format</source>
       <translation>Использовать собственный формат даты/времени</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="642"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="735"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="652"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="746"/>
       <source>Custom date/time format for today&apos;s articles</source>
       <translation>Собственный формат даты/времени для сегодняшних статей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="685"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="737"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="695"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="748"/>
       <source>Article list font</source>
       <translation>Шрифт списка статей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="668"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="736"/>
+      <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="678"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="747"/>
       <source>Show relative time for articles not older than</source>
       <translation>Показывать относительное время для статей не старше</translation>
     </message>
@@ -8300,73 +8374,73 @@ This can tremendously speed up the application if you have hundreds of thousands
   <context>
     <name>SettingsGui</name>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="35"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="37"/>
       <source>Name</source>
       <translation>Имя</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="35"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="37"/>
       <source>Author</source>
       <translation>Автор</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="35"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="37"/>
       <source>Forced skin colors</source>
       <translation>Принудительные цвета тем</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="44"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="46"/>
       <source>Note that skin colors for dialogs/controls only take effect with some styles, for example with the Fusion style.</source>
       <translation type="unfinished">Note that skin colors for dialogs/controls only take effect with some styles, for example with the Fusion style.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="117"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="150"/>
       <source>Select new font</source>
       <translation>Выберите новый шрифт</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="219"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="273"/>
       <source>system style</source>
       <translation>системный стиль</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="221"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="275"/>
       <source>default style</source>
       <translation>стиль по умолчанию</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="311"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="365"/>
       <source>Clear color</source>
       <translation type="unfinished">Clear color</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="181"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="214"/>
       <source>system icon theme</source>
       <extracomment>Label for disabling icon theme.</extracomment>
       <translation>тема значков системы</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="183"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="216"/>
       <source>no icon theme</source>
       <translation>тема без значков</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="164"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="197"/>
       <source>(Your OS does not support tray icons at the moment.)</source>
       <translation>(Ваша ОС в настоящий момент не поддерживает значки на панели задач.)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="35"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="37"/>
       <source>Forced style</source>
       <translation>Принудительный стиль</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="48"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="50"/>
       <source>You can override some colors defined by your skin here. Some colors are used dynamically throughout the application.</source>
       <translation>Здесь вы можете переопределить некоторые цвета, определенные вашей темой. Некоторые цвета используются динамически во всем приложении.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="252"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="306"/>
       <source>%1
 
 Version: %2
@@ -8377,178 +8451,220 @@ Description: %3</source>
 Описание: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="308"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.cpp" line="362"/>
       <source>Fetch color from activated skin</source>
       <translation>Получить цвет из активированной темы</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="21"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="361"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="430"/>
       <source>Icons &amp;&amp; skins</source>
       <translation>Иконки и темы (&amp;I)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="357"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="426"/>
       <source>Icon theme</source>
       <translation>Тема иконок</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="40"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="358"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="427"/>
       <source>Style</source>
       <translation>Стиль</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="69"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="360"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="429"/>
       <source>Skin</source>
       <translation>Тема</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="116"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="366"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="435"/>
       <source>Application font</source>
       <translation type="unfinished">Application font</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="135"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="363"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="432"/>
       <source>Customize global font</source>
       <translation type="unfinished">Customize global font</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="147"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="364"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="433"/>
       <source>Font preview</source>
       <translation>Предпросмотр</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="157"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="365"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="434"/>
       <source>&amp;Change font</source>
       <translation>Изменить (&amp;C)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="168"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="368"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="437"/>
       <source>Custom skin colors</source>
       <translation>Пользовательские цвета тем</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="177"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="367"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="436"/>
       <source>Customize predefined colors</source>
       <translation>Настроить предопределенные цвета</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="283"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="377"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="348"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="453"/>
       <source>Window</source>
       <translation type="unfinished">Window</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="201"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="369"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="438"/>
       <source>Tray icon</source>
       <translation>Иконка в панели уведомлений</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="213"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="370"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="226"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="441"/>
       <source>Use monochrome icon</source>
       <translation>Использовать монохромный значок</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="220"/>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="253"/>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="289"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="371"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="375"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="378"/>
-      <source>Display count of unread messages</source>
-      <translation>Отображать количество непрочитанных сообщений</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="227"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="372"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="302"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="449"/>
       <source>Hide main window when it is minimized</source>
       <translation>Скрыть главное окно при минимизации</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="59"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="359"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="428"/>
       <source>Use skin colors</source>
       <translation type="unfinished">Use skin colors</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="122"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="362"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="431"/>
       <source>Enable application-wide font anti-aliasing</source>
       <translation type="unfinished">Enable application-wide font anti-aliasing</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="189"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="379"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="455"/>
       <source>Tray area &amp;&amp; taskbar &amp;&amp; window</source>
       <translation type="unfinished">Tray area &amp;&amp; taskbar &amp;&amp; window</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="237"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="373"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="213"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="439"/>
+      <source>Use standard icon</source>
+      <translation type="unfinished">Use standard icon</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="220"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="440"/>
+      <source>Monochrome icon</source>
+      <translation type="unfinished">Monochrome icon</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="236"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="442"/>
       <source>Use colored icon when there are unread articles</source>
       <translation type="unfinished">Use colored icon when there are unread articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="247"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="374"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="246"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="443"/>
+      <source>Custom-colored icon</source>
+      <translation type="unfinished">Custom-colored icon</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="252"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="444"/>
+      <source>Use custom-colored icon</source>
+      <translation type="unfinished">Use custom-colored icon</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="259"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="445"/>
+      <source>Background color</source>
+      <translation type="unfinished">Background color</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="272"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="446"/>
+      <source>Text color</source>
+      <translation type="unfinished">Text color</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="285"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="447"/>
+      <source>Use custom-colored icon also as application icon</source>
+      <translation type="unfinished">Use custom-colored icon also as application icon</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="295"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="318"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="354"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="448"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="451"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="454"/>
+      <source>Display count of unread articles</source>
+      <translation type="unfinished">Display count of unread articles</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="312"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="450"/>
       <source>Taskbar</source>
       <translation type="unfinished">Taskbar</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="263"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="376"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="328"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="452"/>
       <source>Start application minimized (or hidden if configured)</source>
       <translation type="unfinished">Start application minimized (or hidden if configured)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="300"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="385"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="365"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="461"/>
       <source>Tabs</source>
       <translation>Вкладки</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="312"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="380"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="377"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="456"/>
       <source>Close tabs with</source>
       <translation>Закрыть вкладки при помощи</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="318"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="381"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="383"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="457"/>
       <source>Middle mouse button single-click</source>
       <translation>Средней мышки одиночным кликом</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="325"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="382"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="390"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="458"/>
       <source>Left mouse button double-click</source>
       <translation>Двойной щелчок левой кнопкой мыши</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="335"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="383"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="400"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="459"/>
       <source>Open new tabs with left mouse button double-click on tab bar</source>
       <translation>Открыть новую вкладку левой мышкой двойным кликом на панели вкладок</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="342"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="384"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="407"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="460"/>
       <source>Hide tab bar if just one tab is visible</source>
       <translation>Скрыть панель вкладок, если она одна</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsgui.h" line="36"/>
+      <location filename="../src/librssguard/gui/settings/settingsgui.h" line="37"/>
       <source>User interface</source>
       <translation>Интерфейс</translation>
     </message>
@@ -9109,62 +9225,82 @@ If that is the case, then you need to set some time gaps when fetching those fee
   <context>
     <name>StandardFeed</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="95"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="96"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="98"/>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="99"/>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="100"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="101"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="102"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="103"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="105"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="106"/>
       <source>yes</source>
       <translation>да</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="95"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="96"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="98"/>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="99"/>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="100"/>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="101"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="102"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="103"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="105"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="106"/>
       <source>no</source>
       <translation>нет</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="268"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="104"/>
+      <source>%1 ms</source>
+      <translation type="unfinished">%1 ms</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="104"/>
+      <source>application default</source>
+      <translation type="unfinished">application default</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="283"/>
       <source>Script</source>
       <translation>Скрипт</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="271"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="286"/>
       <source>Local file</source>
       <translation>Локальный файл</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="545"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="560"/>
       <source>uses application setting</source>
       <translation type="unfinished">uses application setting</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="548"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="563"/>
       <source>enabled</source>
       <translation type="unfinished">enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="551"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="566"/>
       <source>disabled</source>
       <translation type="unfinished">disabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="554"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="569"/>
       <source>unknown state</source>
       <translation type="unfinished">unknown state</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="274"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="289"/>
       <source>Unknown</source>
       <translation>Неизвестно</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="83"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="508"/>
+      <source>Cannot move feed, detailed information was logged via debug log.</source>
+      <translation>Невозможно переместить канал, подробная информация записана в журнале отладки.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="460"/>
+      <source>feed format not recognized</source>
+      <translation>формат канала не распознан</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="86"/>
       <source>Encoding: %1
 Type: %2
 Post-processing script: %3
@@ -9173,7 +9309,8 @@ Fetch article comments: %5
 HTTP/2: %6
 Ignore cookies: %7
 Report empty feed as broken: %8
-Fetch full articles: %9 (plain text only: %10)</source>
+Feed timeout: %9
+Fetch full articles: %10 (plain text only: %11)</source>
       <translation type="unfinished">Encoding: %1
 Type: %2
 Post-processing script: %3
@@ -9182,20 +9319,11 @@ Fetch article comments: %5
 HTTP/2: %6
 Ignore cookies: %7
 Report empty feed as broken: %8
-Fetch full articles: %9 (plain text only: %10)</translation>
+Feed timeout: %9
+Fetch full articles: %10 (plain text only: %11)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="493"/>
-      <source>Cannot move feed, detailed information was logged via debug log.</source>
-      <translation>Невозможно переместить канал, подробная информация записана в журнале отладки.</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="445"/>
-      <source>feed format not recognized</source>
-      <translation>формат канала не распознан</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="492"/>
+      <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="507"/>
       <source>Cannot move feed</source>
       <translation>Не удается переместить канал</translation>
     </message>
@@ -9507,32 +9635,47 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
       <translation>Форма</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="37"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="27"/>
+      <source>Feed connection timeout</source>
+      <translation>Таймаут соединения канала</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="43"/>
+      <source>Connection timeout reserved for downloading this feed. Set to 0 to use the application-wide timeout.</source>
+      <translation type="unfinished">Connection timeout reserved for downloading this feed. Set to 0 to use the application-wide timeout.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="49"/>
+      <source> ms</source>
+      <translation> мс</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="86"/>
       <source>Enable HTTP/2</source>
       <translation type="unfinished">Enable HTTP/2</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="56"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="105"/>
       <source>Ignore cookies when downloading this feed</source>
       <translation type="unfinished">Ignore cookies when downloading this feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="65"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="114"/>
       <source>Network proxy</source>
       <translation>Сетевой прокси</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="89"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="138"/>
       <source>Extra domains</source>
       <translation type="unfinished">Extra domains</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="113"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="162"/>
       <source>HTTP headers</source>
       <translation type="unfinished">HTTP headers</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="131"/>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="180"/>
       <source>Authentication</source>
       <translation>Аутентификация</translation>
     </message>
@@ -9551,6 +9694,7 @@ This feature only works on &quot;web&quot; version of the app, because on &quot;
 This feature only works on &quot;web&quot; version of the app, because on &quot;text&quot; version is not needed, as the proxy resolution there is fully automatic.</translation>
     </message>
     <message>
+      <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.ui" line="46"/>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="43"/>
       <source>Use application settings</source>
       <translation type="unfinished">Use application settings</translation>
@@ -9577,12 +9721,12 @@ This feature only works on &quot;web&quot; version of the app, because on &quot;
   <context>
     <name>StandardServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="735"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="740"/>
       <source>Error when loading initial feeds</source>
       <translation>Ошибка при загрузке исходных каналов</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="521"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="526"/>
       <source>Fetch metadata</source>
       <translation>Получить метаданные</translation>
     </message>
@@ -9634,28 +9778,33 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       <translation type="unfinished">Load &amp;default feeds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="672"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="481"/>
+      <source>feed is working, but is empty</source>
+      <translation type="unfinished">feed is working, but is empty</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="677"/>
       <source>Some feeds/folders were not imported due to error, check debug log for more details.</source>
       <translation type="unfinished">Some feeds/folders were not imported due to error, check debug log for more details.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="695"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="700"/>
       <source>Cannot add folder</source>
       <translation type="unfinished">Cannot add folder</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="696"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="701"/>
       <source>Cannot add folder because another critical operation is ongoing.</source>
       <translation type="unfinished">Cannot add folder because another critical operation is ongoing.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="751"/>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="760"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="756"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="765"/>
       <source>Error during file import</source>
       <translation type="unfinished">Error during file import</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="775"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="780"/>
       <source>Fetching metadata for %n feeds</source>
       <translation type="unfinished">
         <numerusform>Fetching metadata for %n feeds</numerusform>
@@ -9665,7 +9814,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="784"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="789"/>
       <source>Fetched %n feeds...</source>
       <translation type="unfinished">
         <numerusform>Fetched %n feeds...</numerusform>
@@ -9675,22 +9824,22 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="794"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="799"/>
       <source>Export feeds</source>
       <translation>Экспорт каналов</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="795"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="800"/>
       <source>Import feeds</source>
       <translation>Импорт каналов</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="797"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="802"/>
       <source>Import from QuiteRSS</source>
       <translation type="unfinished">Import from QuiteRSS</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="799"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="804"/>
       <source>Import from RSS Guard 4.x</source>
       <translation type="unfinished">Import from RSS Guard 4.x</translation>
     </message>
@@ -9710,7 +9859,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       <translation>Невозможно добавить канал, потому что выполняется другая важная операция.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="675"/>
+      <location filename="../src/librssguard-standard/src/standardserviceroot.cpp" line="680"/>
       <source>Import was completely successful.</source>
       <translation>Импорт успешно завершён.</translation>
     </message>
@@ -9955,7 +10104,7 @@ Load default feeds: Will load small set of various interesting feeds.</translati
   <context>
     <name>TrayIcon</name>
     <message>
-      <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="44"/>
+      <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="46"/>
       <source>Unread news: %1</source>
       <translation type="unfinished">Unread news: %1</translation>
     </message>
@@ -9971,6 +10120,54 @@ Load default feeds: Will load small set of various interesting feeds.</translati
       <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="18"/>
       <source>Close dialogs</source>
       <translation>Закрыть диалоги</translation>
+    </message>
+  </context>
+  <context>
+    <name>TreeViewColumnsMenu</name>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="34"/>
+      <source>Stretch last column</source>
+      <translation type="unfinished">Stretch last column</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="41"/>
+      <source>Cascading column resizes</source>
+      <translation type="unfinished">Cascading column resizes</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="51"/>
+      <source>Autosize visible columns</source>
+      <translation type="unfinished">Autosize visible columns</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="131"/>
+      <source>Visible</source>
+      <translation type="unfinished">Visible</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="139"/>
+      <source>Autosize column</source>
+      <translation type="unfinished">Autosize column</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="146"/>
+      <source>Resize mode</source>
+      <translation type="unfinished">Resize mode</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="151"/>
+      <source>Interactive</source>
+      <translation type="unfinished">Interactive</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="152"/>
+      <source>Stretch</source>
+      <translation type="unfinished">Stretch</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/reusable/treeviewcolumnsmenu.cpp" line="153"/>
+      <source>Resize to contents</source>
+      <translation type="unfinished">Resize to contents</translation>
     </message>
   </context>
   <context>
@@ -10462,177 +10659,177 @@ Last login on: %4</source>
   <context>
     <name>WebFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="159"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="206"/>
       <source>JS enabled</source>
       <translation type="unfinished">JS enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="162"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="209"/>
       <source>JS can open popup windows</source>
       <translation type="unfinished">JS can open popup windows</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="166"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="213"/>
       <source>JS can access clipboard</source>
       <translation type="unfinished">JS can access clipboard</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="170"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="217"/>
       <source>Hyperlinks can get focus</source>
       <translation type="unfinished">Hyperlinks can get focus</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="173"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="220"/>
       <source>Local storage enabled</source>
       <translation type="unfinished">Local storage enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="177"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="224"/>
       <source>Local content can access remote URLs</source>
       <translation type="unfinished">Local content can access remote URLs</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="180"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="227"/>
       <source>XSS auditing enabled</source>
       <translation type="unfinished">XSS auditing enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="183"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="230"/>
       <source>Spatial navigation enabled</source>
       <translation type="unfinished">Spatial navigation enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="187"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="234"/>
       <source>Local content can access local files</source>
       <translation type="unfinished">Local content can access local files</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="190"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="237"/>
       <source>Hyperlink auditing enabled</source>
       <translation type="unfinished">Hyperlink auditing enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="193"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="240"/>
       <source>Animate scrolling</source>
       <translation type="unfinished">Animate scrolling</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="196"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="243"/>
       <source>Error pages enabled</source>
       <translation type="unfinished">Error pages enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="199"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="246"/>
       <source>Plugins enabled</source>
       <translation type="unfinished">Plugins enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="204"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="251"/>
       <source>Screen capture enabled</source>
       <translation type="unfinished">Screen capture enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="207"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="254"/>
       <source>WebGL enabled</source>
       <translation type="unfinished">WebGL enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="211"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="258"/>
       <source>Accelerate 2D canvas</source>
       <translation type="unfinished">Accelerate 2D canvas</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="214"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="261"/>
       <source>Print element backgrounds</source>
       <translation type="unfinished">Print element backgrounds</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="218"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="265"/>
       <source>Allow running insecure content</source>
       <translation type="unfinished">Allow running insecure content</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="222"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="269"/>
       <source>Allow geolocation on insecure origins</source>
       <translation type="unfinished">Allow geolocation on insecure origins</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="228"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="275"/>
       <source>JS can activate windows</source>
       <translation type="unfinished">JS can activate windows</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="231"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="278"/>
       <source>Show scrollbars</source>
       <translation type="unfinished">Show scrollbars</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="235"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="282"/>
       <source>Media playback with gestures</source>
       <translation type="unfinished">Media playback with gestures</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="239"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="286"/>
       <source>WebRTC uses only public interfaces</source>
       <translation type="unfinished">WebRTC uses only public interfaces</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="242"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="289"/>
       <source>JS can paste from clipboard</source>
       <translation type="unfinished">JS can paste from clipboard</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="245"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="292"/>
       <source>DNS prefetch enabled</source>
       <translation type="unfinished">DNS prefetch enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="250"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="297"/>
       <source>PDF viewer enabled</source>
       <translation type="unfinished">PDF viewer enabled</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="256"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="303"/>
       <source>Force dark mode</source>
       <translation type="unfinished">Force dark mode</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="262"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="309"/>
       <source>Printing - print headers/footers.</source>
       <translation type="unfinished">Printing - print headers/footers.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="304"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
       <source>Web cache cleared</source>
       <translation type="unfinished">Web cache cleared</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="305"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="352"/>
       <source>Web cache was cleared. List of visited links was cleared too.</source>
       <translation type="unfinished">Web cache was cleared. List of visited links was cleared too.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="322"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="369"/>
       <source>File download</source>
       <translation type="unfinished">File download</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="323"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="370"/>
       <source>Download of file &apos;%1&apos; was offered.</source>
       <translation type="unfinished">Download of file &apos;%1&apos; was offered.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="325"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="372"/>
       <source>Copy file URL</source>
       <translation type="unfinished">Copy file URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="735"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="782"/>
       <source>Navigate to website(s) manually</source>
       <translation type="unfinished">Navigate to website(s) manually</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="736"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="783"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</source>
       <translation type="unfinished">%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</translation>
     </message>
@@ -10904,27 +11101,27 @@ Service: %2</translation>
   <context>
     <name>XmppServiceRoot</name>
     <message>
-      <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="140"/>
+      <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="127"/>
       <source>Cannot store article</source>
       <translation type="unfinished">Cannot store article</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="141"/>
+      <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="128"/>
       <source>Cannot save article obtained via push notification because its feed does not exist. Tray to refresh list of feeds.</source>
       <translation type="unfinished">Cannot save article obtained via push notification because its feed does not exist. Tray to refresh list of feeds.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="212"/>
+      <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="199"/>
       <source>&amp;Reconnect</source>
       <translation type="unfinished">&amp;Reconnect</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="230"/>
+      <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="217"/>
       <source>Trigger async fetch</source>
       <translation type="unfinished">Trigger async fetch</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="250"/>
+      <location filename="../src/librssguard-xmpp/src/xmppserviceroot.cpp" line="237"/>
       <source>User: %1
 Status: %2
 Supported XEPs: %3</source>
