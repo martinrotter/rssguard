@@ -185,7 +185,7 @@ bool FormMessageFiltersManager::eventFilter(QObject* watched, QEvent* event) {
 void FormMessageFiltersManager::importFilters() {
   const QString filter = tr("Article filter files (*.json)");
   const QString selected_file = FileDialog::openFileName(qApp->mainFormWidget(),
-                                                         tr("Select file article filters export"),
+                                                         tr("Select article filters export file"),
                                                          qApp->documentsFolder(),
                                                          QSL("filters.json"),
                                                          filter,
@@ -204,14 +204,14 @@ void FormMessageFiltersManager::importFilters() {
     MsgBox::show(this,
                  QMessageBox::Icon::Critical,
                  tr("Error"),
-                 tr("Cannot export filters, error: '%1'.").arg(ex.message()));
+                 tr("Cannot import filters, error: '%1'.").arg(ex.message()));
   }
 }
 
 void FormMessageFiltersManager::exportFilters() {
   const QString filter = tr("Article filter files (*.json)");
   const QString selected_file = FileDialog::saveFileName(qApp->mainFormWidget(),
-                                                         tr("Select file article filters export"),
+                                                         tr("Select article filters export file"),
                                                          qApp->documentsFolder(),
                                                          QSL("filters.json"),
                                                          filter,
@@ -666,7 +666,7 @@ void FormMessageFiltersManager::beautifyScript() {
       MsgBox::show(this,
                    QMessageBox::Icon::Critical,
                    tr("Error"),
-                   tr("Script was not beautified, because 'clang-format' tool thrown error."),
+                   tr("Script was not beautified, because 'clang-format' tool threw an error."),
                    {},
                    err);
     }
@@ -675,7 +675,7 @@ void FormMessageFiltersManager::beautifyScript() {
     proc_clang_format.kill();
     MsgBox::show(this,
                  QMessageBox::Icon::Critical,
-                 tr("Beautifier was running for too long time"),
+                 tr("Beautifier was running for too long"),
                  tr("Script was not beautified, is 'clang-format' installed?"));
   }
 }

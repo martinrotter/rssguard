@@ -45,12 +45,12 @@ void FormRestoreDatabaseSettings::performRestoration() {
                                     : QString());
     m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Ok,
                                 tr("Restoration was initiated. Restart to proceed."),
-                                tr("You need to restart application for restoration process to finish."));
+                                tr("You need to restart the application for restoration process to finish."));
   }
   catch (const ApplicationException& ex) {
     m_ui.m_lblResult->setStatus(WidgetWithStatus::StatusType::Error,
                                 ex.message(),
-                                tr("Database and/or settings were not copied to restoration directory successully."));
+                                tr("Database and/or settings were not copied to restoration directory successfully."));
   }
 }
 

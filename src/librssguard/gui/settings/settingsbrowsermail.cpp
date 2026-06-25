@@ -25,17 +25,17 @@ void SettingsBrowserMail::loadUi() {
   m_ui->setupUi(this);
 
   m_ui->m_lblExternalBrowserInfo->setHelpText(tr("Note that \"%1\" (without quotation marks) "
-                                                 "is placeholder for URL of selected message."),
+                                                 "is placeholder for URL of the selected article."),
                                               false);
 
   m_ui->m_lblExternalEmailInfo->setHelpText(tr("Placeholders:\n"
-                                               " \u2022 %1 - title of selected message,\n"
-                                               " \u2022 %2 - body of selected message."),
+                                               " \u2022 %1 - title of the selected article,\n"
+                                               " \u2022 %2 - body of the selected article."),
                                             false);
 
   m_ui->m_lblToolInfo
-    ->setHelpText(tr("On this page, you can setup a list of external tools which can open URLs. If "
-                     "you setup domain (without leading \"www.\") then the tool will be directly used "
+    ->setHelpText(tr("On this page, you can set up a list of external tools which can open URLs. If "
+                     "you set up domain (without leading \"www.\") then the tool will be directly used "
                      "to open all clicked links from that domain. You can separate multiple domains with ','."),
                   false);
 

@@ -389,7 +389,7 @@
     <string>Mark selected items &amp;read</string>
    </property>
    <property name="toolTip">
-    <string>Mark all messages (without message filters) from selected items as read.</string>
+    <string>Mark all articles (without article filters) from selected items as read.</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -400,7 +400,7 @@
     <string>Mark selected items &amp;unread</string>
    </property>
    <property name="toolTip">
-    <string>Mark all messages (without message filters) from selected items as unread.</string>
+    <string>Mark all articles (without article filters) from selected items as unread.</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -419,7 +419,7 @@
     <string>&amp;Clean selected items</string>
    </property>
    <property name="toolTip">
-    <string>Deletes all messages from selected items.</string>
+    <string>Deletes all articles from selected items.</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -466,7 +466,7 @@
     <string>&amp;Mark all read</string>
    </property>
    <property name="toolTip">
-    <string>Marks all messages in all items read. This does not take message filters into account.</string>
+    <string>Marks all articles in all items read. This does not take article filters into account.</string>
    </property>
    <property name="shortcut">
     <string notr="true"/>
@@ -508,7 +508,7 @@
     <string>&amp;Clean all</string>
    </property>
    <property name="toolTip">
-    <string>Deletes all messages from all items.</string>
+    <string>Deletes all articles from all items.</string>
    </property>
    <property name="shortcut">
     <string notr="true">Ctrl+Shift+C</string>
@@ -840,7 +840,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Message viewer toolbars</string>
+    <string>Article viewer toolbars</string>
    </property>
   </action>
   <action name="m_actionExpandCollapseItemRecursively">

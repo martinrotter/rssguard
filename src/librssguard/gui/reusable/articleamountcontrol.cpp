@@ -10,12 +10,12 @@ ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
   m_ui.m_helpIgnoring
     ->setHelpText(tr("Setting any limitations here will instruct %1 to ignore "
                      "some incoming articles. The logic runs AFTER any article filters so even if your article filter "
-                     "accepts particular article, it can still subsequently ignored and not added to database.")
+                     "accepts a particular article, it can still be subsequently ignored and not added to the database.")
                     .arg(QSL(APP_NAME)),
                   false);
-  m_ui.m_helpLimit->setHelpText(tr("All excessive articles are removed automatically by the application, usually after "
-                                   "particular feed is fetched. Articles are either completely purged (including "
-                                   "articles from recycle bin) from internal "
+  m_ui.m_helpLimit->setHelpText(tr("All excess articles are removed automatically by the application, usually after "
+                                   "a particular feed is fetched. Articles are either completely purged (including "
+                                   "articles from the recycle bin) from the internal "
                                    "database or are just moved to recycle bin."),
                                 false);
 

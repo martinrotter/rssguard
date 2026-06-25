@@ -22,10 +22,10 @@ void SettingsDatabase::loadUi() {
   m_ui = new Ui::SettingsDatabase();
   m_ui->setupUi(this);
 
-  m_ui->m_lblMysqlInfo->setHelpText(tr("Note that speed of used MySQL server and latency of used connection "
-                                       "medium HEAVILY influences the final performance of this application. "
+  m_ui->m_lblMysqlInfo->setHelpText(tr("Note that speed of the used MySQL server and latency of the used connection "
+                                       "medium HEAVILY influence the final performance of this application. "
                                        "Using slow database connections leads to bad performance when browsing "
-                                       "feeds or messages."),
+                                       "feeds or articles."),
                                     false);
 
   m_ui->m_txtMysqlPassword->lineEdit()->setPasswordMode(true);
@@ -151,7 +151,7 @@ void SettingsDatabase::loadSettings() {
   onBeginLoadSettings();
   m_ui->m_lblMysqlTestResult->setStatus(WidgetWithStatus::StatusType::Information,
                                         tr("No connection test triggered so far."),
-                                        tr("You did not executed any connection test yet."));
+                                        tr("You did not execute any connection test yet."));
 
   // Load SQLite.
   auto* lite_driver = qApp->database()->driverForType(DatabaseDriver::DriverType::SQLite);

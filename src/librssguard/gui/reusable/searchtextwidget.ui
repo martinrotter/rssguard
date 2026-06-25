@@ -36,7 +36,7 @@
    <item>
     <widget class="QToolButton" name="m_btnSearchBackward">
      <property name="toolTip">
-      <string>Find previous occurence</string>
+      <string>Find previous occurrence</string>
      </property>
      <property name="text">
       <string/>
@@ -46,7 +46,7 @@
    <item>
     <widget class="QToolButton" name="m_btnSearchForward">
      <property name="toolTip">
-      <string>Find next occurence</string>
+      <string>Find next occurrence</string>
      </property>
      <property name="text">
       <string/>

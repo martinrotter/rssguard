@@ -57,7 +57,7 @@
             <item row="0" column="1">
              <widget class="QComboBox" name="m_cmbAutoUpdateType">
               <property name="toolTip">
-               <string>Select the auto-download strategy for messages of this feed. Default auto-download strategy means that new messges of this feed will be downloaded in time intervals set in application settings.</string>
+               <string>Select the auto-download strategy for articles of this feed. Default auto-download strategy means that new articles of this feed will be downloaded in time intervals set in application settings.</string>
               </property>
              </widget>
             </item>

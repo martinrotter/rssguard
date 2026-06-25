@@ -292,7 +292,7 @@
           <item row="3" column="0">
            <widget class="QCheckBox" name="m_checkCountUnreadMessages">
             <property name="text">
-             <string>Display count of unread messages</string>
+             <string>Display count of unread articles</string>
             </property>
            </widget>
           </item>
@@ -315,7 +315,7 @@
           <item>
            <widget class="QCheckBox" name="m_displayUnreadMessageCountOnTaskBar">
             <property name="text">
-             <string>Display count of unread messages</string>
+             <string>Display count of unread articles</string>
             </property>
            </widget>
           </item>
@@ -351,7 +351,7 @@
           <item>
            <widget class="QCheckBox" name="m_displayUnreadMessageCountOnWindow">
             <property name="text">
-             <string>Display count of unread messages</string>
+             <string>Display count of unread articles</string>
             </property>
            </widget>
           </item>

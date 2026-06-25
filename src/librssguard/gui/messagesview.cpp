@@ -390,7 +390,7 @@ void MessagesView::switchColumnProfileForItem(RootItem* item) {
 bool MessagesView::addColumnsContextMenuItems(TreeViewColumnsMenu* menu, int highlighted_section) {
   Q_UNUSED(highlighted_section)
 
-  QAction* act_column_profiles = menu->addAction(tr("Use separate layouts for article sources"));
+  QAction* act_column_profiles = menu->addAction(tr("Use source-specific article list columns"));
 
   act_column_profiles->setCheckable(true);
   act_column_profiles->setChecked(columnProfilesEnabled());

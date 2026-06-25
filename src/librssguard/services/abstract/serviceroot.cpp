@@ -129,7 +129,7 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
 
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
                        {tr("Unsupported"),
-                        tr("This is not suppported (yet)."),
+                        tr("This is not supported (yet)."),
                         QSystemTrayIcon::MessageIcon::Critical});
 }
 
@@ -778,7 +778,7 @@ void ServiceRoot::onSyncInFinished(const SyncInResult& result) {
 
     qApp->showGuiMessage(Notification::Event::GeneralEvent,
                          GuiMessage(tr("Error when fetching list of feeds"),
-                                    tr("Feeds & categories for account '%1' were not fetched, error: %2")
+                                    tr("Feeds & folders for account '%1' were not fetched, error: %2")
                                       .arg(title(), ex.message()),
                                     QSystemTrayIcon::MessageIcon::Critical),
                          GuiMessageDestination(true, true));

@@ -41,9 +41,9 @@ void SettingsFeedsMessages::loadUi() {
   initializeMessageDateFormats();
 
   m_ui->m_helpArticlesLazyLoading
-    ->setHelpText(tr("If enabled then %1 loads articles into article list on demand as you scroll throught the "
+    ->setHelpText(tr("If enabled then %1 loads articles into article list on demand as you scroll through the "
                      "list.\n\n"
-                     "This can tremendously speed up the application if you have hundreds of thousands articles, but "
+                     "This can tremendously speed up the application if you have hundreds of thousands of articles, but "
                      "it can hinder your article list filtering because not all articles are loaded, thus your "
                      "filtering could be off.")
                     .arg(QSL(APP_NAME)),
@@ -54,7 +54,7 @@ void SettingsFeedsMessages::loadUi() {
                      "which are placeholders for the actual count of all (or unread) articles."),
                   false);
   m_ui->m_helpMultilineArticleList->setHelpText(tr("Note that enabling this might have drastic consequences on "
-                                                   "performance of article list with big number of articles."),
+                                                   "performance of the article list with many articles."),
                                                 true);
 
   if (!SystemFactory::isGameModeDetectionSupported()) {

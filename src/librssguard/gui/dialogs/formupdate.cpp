@@ -85,7 +85,7 @@ void FormUpdate::checkForUpdates() {
                 m_btnUpdate->setVisible(true);
                 m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Ok,
                                             tr("New release available."),
-                                            tr("This is new version which can be\ndownloaded."));
+                                            tr("This is a new version which can be\ndownloaded."));
 
                 if (self_update_supported) {
                   loadAvailableFiles();
@@ -192,9 +192,9 @@ void FormUpdate::updateCompleted(const QUrl& url,
 
     default:
       m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Error,
-                                  tr("Error occured"),
-                                  tr("Error occured during downloading of the package."));
-      m_btnUpdate->setText(tr("Error occured"));
+                                  tr("Error occurred"),
+                                  tr("Error occurred while downloading the package."));
+      m_btnUpdate->setText(tr("Error occurred"));
       break;
   }
 }

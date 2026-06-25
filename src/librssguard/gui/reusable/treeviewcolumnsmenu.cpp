@@ -31,14 +31,14 @@ void TreeViewColumnsMenu::prepareMenu() {
   clear();
   qDeleteAll(child_menus);
 
-  QAction* act_stretch_last_section = addAction(tr("Stretch last section"));
+  QAction* act_stretch_last_section = addAction(tr("Stretch last column"));
 
   act_stretch_last_section->setCheckable(true);
   act_stretch_last_section->setChecked(header_view->stretchLastSection());
 
   connect(act_stretch_last_section, &QAction::triggered, this, &TreeViewColumnsMenu::setStretchLastSection);
 
-  QAction* act_cascading_section_resizes = addAction(tr("Cascading section resizes"));
+  QAction* act_cascading_section_resizes = addAction(tr("Cascading column resizes"));
 
   act_cascading_section_resizes->setCheckable(true);
   act_cascading_section_resizes->setChecked(header_view->cascadingSectionResizes());

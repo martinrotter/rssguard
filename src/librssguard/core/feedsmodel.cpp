@@ -36,9 +36,9 @@ FeedsModel::FeedsModel(QObject* parent) : QAbstractItemModel(parent), m_rootItem
 
   // : Title text in the feed list header.
   m_headerData = {tr("Title"), tr("Item ID"), tr("Article counts")};
-  m_tooltipData = {tr("Titles of feeds/categories."),
+  m_tooltipData = {tr("Titles of feeds/folders."),
                    tr("Database ID of each item."),
-                   tr("Counts of unread/all mesages.")};
+                   tr("Counts of unread/all articles.")};
 
   setupFonts();
   setupCountsAlignment();

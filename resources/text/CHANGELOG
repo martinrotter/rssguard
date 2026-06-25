@@ -11,7 +11,7 @@ Added:
 * Column header context menu can now switch cascading section resizing, and this setting is saved with the column state.
 * Column header context menu can now autosize a single interactive column or all visible interactive columns.
 * Column header context menu now highlights the column which was right-clicked.
-* Article list can now optionally remember separate column layouts for feeds, categories, accounts, labels, search folders, important articles, unread articles and recycle bin. (#1297)
+* Article list can now optionally remember separate column layouts for feeds, folders, accounts, labels, search folders, important articles, unread articles and recycle bin. (#1297)
 
 5.2.0
 -----
