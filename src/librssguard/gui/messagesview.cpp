@@ -143,46 +143,6 @@ void MessagesView::editFeedOfSelectedMessage() {
   goToMotherFeed(true);
 }
 
-void MessagesView::openHomepageOfSelectedMessageFeed() {
-  const QModelIndexList selected_indexes = selectionModel()->selectedRows();
-
-  if (selected_indexes.isEmpty()) {
-    return;
-  }
-
-  QModelIndex target_index = currentIndex();
-
-  if (!target_index.isValid()) {
-    target_index = selected_indexes.first();
-  }
-
-  const Message message = m_sourceModel->messageForRow(m_proxyModel->mapToSource(target_index).row());
-  const Feed* feed = m_sourceModel->feedById(message.m_feedId);
-
-  if (feed == nullptr) {
-    return;
-  }
-
-  QUrl feed_url = QUrl::fromUserInput(qApp->web()->processFeedUriScheme(feed->source()));
-  const QString feed_homepage_host = qApp->web()->urlToTld(feed_url);
-
-  if (feed_homepage_host.isEmpty()) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         GuiMessage(tr("Cannot open feed homepage"),
-                                    tr("The feed does not have a valid homepage URL."),
-                                    QSystemTrayIcon::MessageIcon::Warning),
-                         GuiMessageDestination(true, true));
-    return;
-  }
-
-  QUrl feed_homepage;
-
-  feed_homepage.setScheme(feed_url.scheme().isEmpty() ? QSL("https") : feed_url.scheme());
-  feed_homepage.setHost(feed_homepage_host);
-
-  qApp->web()->openUrlInExternalBrowser(feed_homepage);
-}
-
 void MessagesView::copyDataOfSelectedArticles() const {
   const QModelIndexList selected_indexes = selectionModel()->selectedRows();
 

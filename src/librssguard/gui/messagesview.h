@@ -63,7 +63,6 @@ class MessagesView : public BaseTreeView {
     void fetchFullSelectedArticles();
     void goToMotherFeed(bool edit_feed_also);
     void editFeedOfSelectedMessage();
-    void openHomepageOfSelectedMessageFeed();
 
     void copyDataOfSelectedArticles() const;
 

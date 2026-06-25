@@ -14,6 +14,8 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/templates.h"
+#include "network-web/webfactory.h"
+#include "services/abstract/feed.h"
 
 #include <QAction>
 #include <QDebug>
@@ -23,10 +25,40 @@
 #include <QProgressBar>
 #include <QSplitter>
 #include <QStatusBar>
+#include <QSystemTrayIcon>
 #include <QToolBar>
 #include <QToolButton>
 #include <QVBoxLayout>
 #include <QWidgetAction>
+
+namespace {
+
+void openFeedHomepage(const Feed* feed) {
+  if (feed == nullptr) {
+    return;
+  }
+
+  QUrl feed_url = QUrl::fromUserInput(qApp->web()->processFeedUriScheme(feed->source()));
+  const QString feed_homepage_host = qApp->web()->urlToTld(feed_url);
+
+  if (feed_homepage_host.isEmpty()) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         GuiMessage(FeedMessageViewer::tr("Cannot open feed homepage"),
+                                    FeedMessageViewer::tr("The feed does not have a valid homepage URL."),
+                                    QSystemTrayIcon::MessageIcon::Warning),
+                         GuiMessageDestination(true, true));
+    return;
+  }
+
+  QUrl feed_homepage;
+
+  feed_homepage.setScheme(feed_url.scheme().isEmpty() ? QSL("https") : feed_url.scheme());
+  feed_homepage.setHost(feed_homepage_host);
+
+  qApp->web()->openUrlInExternalBrowser(feed_homepage);
+}
+
+} // namespace
 
 FeedMessageViewer::FeedMessageViewer(QWidget* parent)
   : TabContent(parent), m_toolBarsEnabled(true), m_listHeadersEnabled(true),
@@ -233,6 +265,30 @@ void FeedMessageViewer::alternateRowColorsInLists() {
 
 void FeedMessageViewer::respondToMainWindowResizes() {
   connect(qApp->mainForm(), &FormMain::windowResized, this, &FeedMessageViewer::onMessageSplitterResized);
+}
+
+void FeedMessageViewer::openHomepageOfSelectedArticleFeed() {
+  const QModelIndexList selected_articles = m_messagesView->selectionModel()->selectedRows();
+
+  if (!selected_articles.isEmpty()) {
+    QModelIndex target_index = m_messagesView->currentIndex();
+
+    if (!target_index.isValid()) {
+      target_index = selected_articles.first();
+    }
+
+    const QModelIndex source_index = m_messagesView->model()->mapToSource(target_index);
+    const Message message = m_messagesView->sourceModel()->messageForRow(source_index.row());
+
+    openFeedHomepage(m_messagesView->sourceModel()->feedById(message.m_feedId));
+    return;
+  }
+
+  RootItem* selected_item = m_feedsView->selectedItem();
+
+  if (selected_item != nullptr && selected_item->kind() == RootItem::Kind::Feed) {
+    openFeedHomepage(selected_item->toFeed());
+  }
 }
 
 void FeedMessageViewer::displayMessage(const Message& message, RootItem* selected_item, Feed* feed) {

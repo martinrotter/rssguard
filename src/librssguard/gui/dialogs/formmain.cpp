@@ -447,6 +447,8 @@ void FormMain::updateMessageButtonsAvailability() {
     tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().size() == 1;
   const bool atleast_one_message_selected =
     !tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().isEmpty();
+  const RootItem* selected_feed_item = tabWidget()->feedMessageViewer()->feedsView()->selectedItem();
+  const bool one_feed_selected = selected_feed_item != nullptr && selected_feed_item->kind() == RootItem::Kind::Feed;
 
   m_ui->m_actionMarkArticlesBelowUnread->setEnabled(one_message_selected);
   m_ui->m_actionMarkArticlesAboveUnread->setEnabled(one_message_selected);
@@ -470,7 +472,7 @@ void FormMain::updateMessageButtonsAvailability() {
   m_ui->m_actionFetchFullSelectedArticles->setEnabled(atleast_one_message_selected);
   m_ui->m_actionOpenSelectedSourceArticlesExternally->setEnabled(atleast_one_message_selected);
   m_ui->m_actionGoToMotherFeed->setEnabled(one_message_selected);
-  m_ui->m_actionOpenHomepageOfSelectedArticleFeed->setEnabled(atleast_one_message_selected);
+  m_ui->m_actionOpenHomepageOfSelectedArticleFeed->setEnabled(atleast_one_message_selected || one_feed_selected);
   m_ui->m_actionEditFeedOfSelectedArticle->setEnabled(one_message_selected);
   m_ui->m_actionCopyDataOfSelectedArticles->setEnabled(atleast_one_message_selected);
   m_ui->m_actionSendMessageViaEmail->setEnabled(one_message_selected);
@@ -486,6 +488,8 @@ void FormMain::updateFeedButtonsAvailability() {
   const bool category_selected = anything_selected && selected_item->kind() == RootItem::Kind::Category;
   const bool service_selected = anything_selected && selected_item->kind() == RootItem::Kind::ServiceRoot;
   const bool manual_feed_sort = !m_ui->m_actionSortFeedsAlphabetically->isChecked();
+  const bool atleast_one_message_selected =
+    !tabWidget()->feedMessageViewer()->messagesView()->selectionModel()->selectedRows().isEmpty();
 
   m_ui->m_actionRearrangeFeeds->setEnabled(manual_feed_sort && (service_selected || category_selected));
   m_ui->m_actionRearrangeCategories->setEnabled(manual_feed_sort && (service_selected || category_selected));
@@ -498,6 +502,7 @@ void FormMain::updateFeedButtonsAvailability() {
   m_ui->m_actionPurgeSelectedItems->setEnabled(feed_selected || category_selected || service_selected);
   m_ui->m_actionDeleteSelectedItem->setEnabled(!critical_action_running && anything_selected);
   m_ui->m_actionEditSelectedItem->setEnabled(!critical_action_running && anything_selected);
+  m_ui->m_actionOpenHomepageOfSelectedArticleFeed->setEnabled(atleast_one_message_selected || feed_selected);
   m_ui->m_actionEditChildFeeds->setEnabled(!critical_action_running && (service_selected || category_selected));
   m_ui->m_actionEditChildFeedsRecursive->setEnabled(!critical_action_running &&
                                                     (service_selected || category_selected));
@@ -978,8 +983,8 @@ void FormMain::createConnections() {
 
   connect(m_ui->m_actionOpenHomepageOfSelectedArticleFeed,
           &QAction::triggered,
-          tabWidget()->feedMessageViewer()->messagesView(),
-          &MessagesView::openHomepageOfSelectedMessageFeed);
+          tabWidget()->feedMessageViewer(),
+          &FeedMessageViewer::openHomepageOfSelectedArticleFeed);
 
   connect(m_ui->m_actionFetchFullSelectedArticles,
           &QAction::triggered,

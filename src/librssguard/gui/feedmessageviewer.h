@@ -71,6 +71,7 @@ class RSSGUARD_DLLSPEC FeedMessageViewer : public TabContent {
     void alternateRowColorsInLists();
     void respondToMainWindowResizes();
 
+    void openHomepageOfSelectedArticleFeed();
     void loadMessageToFeedAndArticleList(Feed* feed, const Message& message);
 
   private slots:
