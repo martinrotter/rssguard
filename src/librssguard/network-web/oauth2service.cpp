@@ -365,7 +365,10 @@ bool OAuth2Service::login(const std::function<void()>& functor_when_logged_in) {
     return false;
   }
   else {
-    functor_when_logged_in();
+    if (functor_when_logged_in) {
+      functor_when_logged_in();
+    }
+
     return true;
   }
 }
