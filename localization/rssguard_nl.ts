@@ -762,12 +762,12 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="46"/>
       <source>Cannot open feed homepage</source>
-      <translation type="unfinished">Cannot open feed homepage</translation>
+      <translation>Kan feed homepagina niet openen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="47"/>
       <source>The feed does not have a valid homepage URL.</source>
-      <translation type="unfinished">The feed does not have a valid homepage URL.</translation>
+      <translation>De feed beschikt niet over een geldige homepagina URL.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="65"/>
@@ -6563,12 +6563,12 @@ Logintoken verloopt: %2</translation>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="350"/>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="359"/>
       <source>After-login action failed</source>
-      <translation type="unfinished">After-login action failed</translation>
+      <translation>Actie na aanmelding mislukt</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="354"/>
       <source>Unknown error.</source>
-      <translation type="unfinished">Unknown error.</translation>
+      <translation>Onbekende fout.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="436"/>
@@ -6586,12 +6586,12 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="194"/>
       <source>Authorization did not finish correctly. Go back to %1 and try again.</source>
-      <translation type="unfinished">Authorization did not finish correctly. Go back to %1 and try again.</translation>
+      <translation>Autorisatie is niet correct voltooid. Ga terug naar %1 en probeer het opnieuw.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="196"/>
       <source>Authorization was rejected or failed. Go back to %1 and try again.</source>
-      <translation type="unfinished">Authorization was rejected or failed. Go back to %1 and try again.</translation>
+      <translation>Autorisatie is afgewezen of mislukt. Ga terug naar %1 en probeer het opnieuw.</translation>
     </message>
   </context>
   <context>
@@ -7129,7 +7129,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <source>Login successful</source>
-      <translation type="unfinished">Login successful</translation>
+      <translation>Inloggen gelukt</translation>
     </message>
   </context>
   <context>
