@@ -242,6 +242,10 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   QSslSocket::setActiveBackend(QSL("openssl"));
 #endif
 
+  const QString app_revision = QSL(APP_REVISION).isEmpty() ? QSL("unknown") : QSL(APP_REVISION);
+
+  qDebugNN << LOGSEC_CORE << "RSS Guard version:" << QUOTE_W_SPACE(QSL(APP_VERSION))
+           << "revision:" << QUOTE_W_SPACE_DOT(app_revision);
   qDebugNN << LOGSEC_CORE << "Platform:" << QUOTE_W_SPACE_DOT(QGuiApplication::platformName());
   qDebugNN << LOGSEC_CORE << "DB version:" << QUOTE_W_SPACE_DOT(qApp->database()->driver()->version());
 
