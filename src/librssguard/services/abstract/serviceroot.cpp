@@ -128,9 +128,7 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
   }
 
   qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                       {tr("Unsupported"),
-                        tr("This is not supported (yet)."),
-                        QSystemTrayIcon::MessageIcon::Critical});
+                       {tr("Unsupported"), tr("This is not supported (yet)."), QSystemTrayIcon::MessageIcon::Critical});
 }
 
 void ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
@@ -689,6 +687,7 @@ void ServiceRoot::onSyncInFinished(const SyncInResult& result) {
     }
     else if (auto new_tree_pointer = std::get_if<RootItem*>(&result)) {
       qDebugNN << LOGSEC_CORE << "New feed tree for sync-in obtained.";
+
       RootItem* new_tree = *new_tree_pointer;
 
       if (new_tree == nullptr) {
@@ -701,8 +700,6 @@ void ServiceRoot::onSyncInFinished(const SyncInResult& result) {
       auto feed_custom_data = storeCustomFeedsData();
       auto categories_custom_data = storeCustomCategoriesData();
       auto label_custom_data = uses_remote_labels ? storeCustomLabelsData() : QMap<QString, QVariantMap>();
-
-      qDebugNN << LOGSEC_CORE << "New feed tree for sync-in obtained.";
 
       // Remove stuff.
       cleanAllItemsFromModel(uses_remote_labels);

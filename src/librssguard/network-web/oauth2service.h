@@ -31,7 +31,11 @@
 #include <functional>
 
 #include <QObject>
+#include <QPointer>
 #include <QUrl>
+
+class QNetworkReply;
+class QNetworkRequest;
 
 class RSSGUARD_DLLSPEC OAuth2Service : public QObject {
     Q_OBJECT
@@ -120,6 +124,9 @@ class RSSGUARD_DLLSPEC OAuth2Service : public QObject {
   private:
     QString properClientId() const;
     QString properClientSecret() const;
+    void scheduleLoginFunctor(const std::function<void()>& functor);
+    void runLoginFunctor(const std::function<void()>& functor);
+    bool postTokenRequest(const QNetworkRequest& request, const QString& content);
 
   private:
     QString m_id;
@@ -136,7 +143,10 @@ class RSSGUARD_DLLSPEC OAuth2Service : public QObject {
     QString m_authUrl;
     QString m_scope;
     bool m_useHttpBasicAuthWithClientData;
+    bool m_tokenRequestRunning;
+    int m_loginFunctorGeneration;
     SilentNetworkAccessManager m_networkManager;
+    QPointer<QNetworkReply> m_tokenReply;
     OAuthHttpHandler* m_redirectionHandler;
     std::function<void()> m_functorOnLogin;
 };
