@@ -50,6 +50,7 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
   protected:
     virtual void beforeAddDatabase();
     virtual void afterAddDatabase(QSqlDatabase& database, bool was_initialized);
+    virtual void ensureConnectionUsable(QSqlDatabase& database);
     virtual void setPragmas(SqlQuery& query);
     virtual void updateDatabaseSchema(QSqlDatabase& db, const QString& database_name = {});
 

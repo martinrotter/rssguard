@@ -6,6 +6,7 @@
 #include "definitions/definitions.h"
 #include "miscellaneous/thread.h"
 
+#include <exception>
 #include <functional>
 
 #include <QSqlDatabase>
@@ -53,12 +54,13 @@ inline T DatabaseWorker::write(const std::function<T(const QSqlDatabase&)>& func
     [&]() {
       if (!m_dbWriter.isValid()) {
         qDebugNN << LOGSEC_DB << "DB write setup job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
-        m_dbWriter = connectionForWriting();
       }
 
-      qDebugNN << LOGSEC_DB << "DB write job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
-
       try {
+        m_dbWriter = connectionForWriting();
+
+        qDebugNN << LOGSEC_DB << "DB write job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
+
         res = func(m_dbWriter);
       }
       catch (...) {

@@ -53,6 +53,7 @@ class MariaDbDriver : public DatabaseDriver {
   protected:
     virtual void beforeAddDatabase();
     virtual void afterAddDatabase(QSqlDatabase& database, bool was_initialized);
+    virtual void ensureConnectionUsable(QSqlDatabase& database);
     virtual void setPragmas(SqlQuery& query);
 };
 

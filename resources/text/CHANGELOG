@@ -44,6 +44,7 @@ Fixed:
 * Clicking article URL did not work when the URL had "fragment" set. (#2293)
 * The default proxy setting now uses Qt/system default proxy behavior instead of forcing no proxy. (e0263ad06)
 * WebEngine article loading now keeps the current feed context, so feed-specific proxy credentials remain available while the article page loads. (fdd0f00c8)
+* Stale MariaDB/MySQL database connections are now detected and reopened before use, preventing crashes after the server closes an idle external database connection. (#2146)
 
 5.1.2
 -----

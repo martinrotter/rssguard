@@ -20,14 +20,25 @@ DatabaseWorker::~DatabaseWorker() {
 }
 
 void DatabaseWorker::read(const DbReadFn& func) {
+  std::exception_ptr eptr = nullptr;
+
   QFuture<void> future = QtConcurrent::run(&m_readThreadPool, [&]() {
     qDebugNN << LOGSEC_DB << "DB read job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
 
-    auto connection = connectionForReading();
-    func(connection);
+    try {
+      auto connection = connectionForReading();
+      func(connection);
+    }
+    catch (...) {
+      eptr = std::current_exception();
+    }
   });
 
   future.waitForFinished();
+
+  if (eptr) {
+    std::rethrow_exception(eptr);
+  }
 }
 
 void DatabaseWorker::write(const DbWriteFn& func) {
@@ -38,12 +49,13 @@ void DatabaseWorker::write(const DbWriteFn& func) {
     [&]() {
       if (!m_dbWriter.isValid()) {
         qDebugNN << LOGSEC_DB << "DB write setup job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
-        m_dbWriter = connectionForWriting();
       }
 
-      qDebugNN << LOGSEC_DB << "DB write job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
-
       try {
+        m_dbWriter = connectionForWriting();
+
+        qDebugNN << LOGSEC_DB << "DB write job in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
+
         func(m_dbWriter);
       }
       catch (...) {

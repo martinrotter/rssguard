@@ -209,6 +209,26 @@ void MariaDbDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialize
   database.setDatabaseName(database_name);
 }
 
+void MariaDbDriver::ensureConnectionUsable(QSqlDatabase& database) {
+  if (database.isOpen()) {
+    SqlQuery ping(database);
+
+    if (!ping.exec(QSL("SELECT 1;"), false)) {
+      qWarningNN << LOGSEC_DB << "MariaDB connection" << QUOTE_W_SPACE(database.connectionName())
+                 << "seems to be stale, reconnecting. Error:" << QUOTE_W_SPACE_DOT(ping.lastError().text());
+
+      database.close();
+    }
+  }
+
+  if (!database.isOpen() && !database.open()) {
+    THROW_EX(SqlException, database.lastError());
+  }
+
+  SqlQuery query_db(database);
+  setPragmas(query_db);
+}
+
 QString MariaDbDriver::autoIncrementPrimaryKey() const {
   return QSL("INTEGER AUTO_INCREMENT PRIMARY KEY");
 }

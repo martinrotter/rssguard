@@ -69,12 +69,7 @@ QSqlDatabase DatabaseDriver::connection(const QString& connection_name) {
       afterAddDatabase(database, true);
     }
 
-    if (!database.isOpen() && !database.open()) {
-      qFatal("Database was NOT opened. Delivered error message: %s.", qPrintable(database.lastError().text()));
-    }
-
-    SqlQuery query_db(database);
-    setPragmas(query_db);
+    ensureConnectionUsable(database);
   }
 
   return database;
@@ -84,6 +79,15 @@ void DatabaseDriver::beforeAddDatabase() {}
 
 void DatabaseDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialized) {
   Q_UNUSED(database)
+}
+
+void DatabaseDriver::ensureConnectionUsable(QSqlDatabase& database) {
+  if (!database.isOpen() && !database.open()) {
+    qFatal("Database was NOT opened. Delivered error message: %s.", qPrintable(database.lastError().text()));
+  }
+
+  SqlQuery query_db(database);
+  setPragmas(query_db);
 }
 
 void DatabaseDriver::setPragmas(SqlQuery& query) {
