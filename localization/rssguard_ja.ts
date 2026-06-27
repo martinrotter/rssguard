@@ -56,52 +56,52 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1210"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1214"/>
       <source>Application is already running.</source>
       <translation>アプリケーションは既に実行されています。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="587"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="591"/>
       <source>Output directory is not writable.</source>
       <translation>出力ディレクトリは書き込み可能ではありません。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="595"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="599"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>設定ファイルが出力ディレクトリに正常にコピーされませんでした。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="614"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="618"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>データベースの復元が開始されませんでした。出力ディレクトリが書き込み可能であることを確認してください。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1239"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1243"/>
       <source>Cannot add feed</source>
       <translation>フィードを追加できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1240"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1244"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>フィードを追加できる有効なアカウントがないため、フィードを追加できません。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1091"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1095"/>
       <source>Unread articles fetched</source>
       <translation>未読の記事を取得しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="347"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="351"/>
       <source>Go to changelog</source>
       <translation>更新履歴に移動</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="341"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="345"/>
       <source>Welcome</source>
       <translation>ようこそ</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="342"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="346"/>
       <source>Welcome to %1.
 
 Please, check NEW stuff included in this
@@ -111,7 +111,7 @@ version by clicking this popup notification.</source>
 このバージョンに含まれる新しいものは、ポップアップ通知をクリックして確認してください。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1209"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1213"/>
       <source>Already running</source>
       <translation>既に実行中です</translation>
     </message>
@@ -502,12 +502,12 @@ Number of disabled feeds: %3</source>
   <context>
     <name>DatabaseDriver</name>
     <message>
-      <location filename="../src/librssguard/database/databasedriver.cpp" line="137"/>
+      <location filename="../src/librssguard/database/databasedriver.cpp" line="141"/>
       <source>this database file cannot be used because it comes from old major app version</source>
       <translation>このデータベースファイルは、古いメジャーアプリバージョンから取得されているため使用できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasedriver.cpp" line="143"/>
+      <location filename="../src/librssguard/database/databasedriver.cpp" line="147"/>
       <source>database schema is too new, application requires &lt;= %1 but %2 is installed</source>
       <translation>データベース スキーマが新しすぎます。アプリケーションには &lt;= %1 が必要ですが、%2 がインストールされています</translation>
     </message>
@@ -757,42 +757,52 @@ Item custom ID: %5</source>
   <context>
     <name>FeedMessageViewer</name>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="33"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="46"/>
+      <source>Cannot open feed homepage</source>
+      <translation>フィードのホームページを開けません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="47"/>
+      <source>The feed does not have a valid homepage URL.</source>
+      <translation>フィードに有効なホームページ URL が設定されていません</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="65"/>
       <source>Toolbar for feeds</source>
       <translation>フィードのツールバー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="34"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="66"/>
       <source>Toolbar for articles</source>
       <translation>記事のツールバー</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="257"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="313"/>
       <source>Filtered feed list</source>
       <translation>フィルタリングされたフィードリスト</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="258"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="314"/>
       <source>Cannot select article in article list as your feed is filtered out from feed list.</source>
       <translation>フィードリストからフィードがフィルタリングされているため、記事リストで記事を選択できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="276"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="332"/>
       <source>Filtered article list</source>
       <translation>フィルタリングされた記事リスト</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="277"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="333"/>
       <source>Cannot select article as it seems your article list is filtered or the article was deleted.</source>
       <translation>記事リストがフィルタリングされているか、記事が削除されているようで記事を選択できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="301"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="357"/>
       <source>Some feeds are hidden by current search or filtering.</source>
       <translation>現在の検索やフィルタリングによって、一部のフィードが非表示になっています</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="302"/>
+      <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="358"/>
       <source>Some articles are hidden by current search or filtering.</source>
       <translation>現在の検索やフィルタリングにより、一部の記事が非表示になっています</translation>
     </message>
@@ -911,38 +921,38 @@ Item custom ID: %5</source>
       <translation>インテリジェント同期を選択すると、まだ取得されていない記事や更新された記事のみがダウンロードされます。ネットワーク使用量が大幅に削減され、全体的な同期速度が大幅に改善されますが、フィードに膨大な数の記事が含まれている場合、最初のフィードの取得は遅くなる可能性があります。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="95"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="97"/>
       <source>You did not grant access.</source>
       <translation>アクセスを許可していません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="96"/>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="104"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="98"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="106"/>
       <source>There was error during testing.</source>
       <translation>テスト中にエラーが発生しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="103"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="105"/>
       <source>There is error. %1</source>
       <translation>エラーが発生しました。 %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="117"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="119"/>
       <source>Tested successfully. You may be prompted to login once more.</source>
       <translation>テストに成功しました。もう一度ログインするよう求められるかもしれません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="118"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="120"/>
       <source>Your access was approved.</source>
       <translation>アクセスが承認されました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="149"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="151"/>
       <source>Access granted.</source>
       <translation>アクセスが許可されました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="148"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="150"/>
       <source>Login was successful.</source>
       <translation>ログインに成功しました</translation>
     </message>
@@ -952,32 +962,32 @@ Item custom ID: %5</source>
       <translation>%1ビルドはFeedlyを公式にサポートしています。&quot;開発者アクセストークン&quot;を使用する必要はありません。そのため、該当するフィールドは空のままにしておくことができます。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="154"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="156"/>
       <source>Some problems.</source>
       <translation>いくつかの問題があります</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="162"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="164"/>
       <source>Username cannot be empty.</source>
       <translation>ユーザ名は空にできません。</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="165"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="167"/>
       <source>Username is okay.</source>
       <translation>ユーザー名はOKです</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="179"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="181"/>
       <source>Access token is empty.</source>
       <translation>アクセストークンが空です</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="182"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="184"/>
       <source>Access token is okay.</source>
       <translation>アクセストークンはOKです</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="153"/>
+      <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="155"/>
       <source>Error: &apos;%1&apos;</source>
       <translation>エラー: &apos;%1&apos;</translation>
     </message>
@@ -3232,37 +3242,37 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>別の重要なアクションが実行中のため、データベースをクリーンアップできません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="462"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="464"/>
       <source>Play in media player</source>
       <translation>メディアプレーヤーで再生</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="463"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="465"/>
       <source>(not supported)</source>
       <translation>(サポートされていません)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="535"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="540"/>
       <source>Close opened modal dialogs first.</source>
       <translation>まず開いているモーダルダイアログを閉じます</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="827"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="832"/>
       <source>Cookies deleted</source>
       <translation>Cookie が削除されました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="827"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="832"/>
       <source>Stored cookies were deleted.</source>
       <translation>保存された Cookie が削除されました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="833"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="838"/>
       <source>Skin reloaded</source>
       <translation>スキンを再読み込みしました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="834"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="839"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
       <translation>この機能はスキンのデバッグ専用です。すべてを正しく読み込むには、アプリケーションを再起動してください。</translation>
     </message>
@@ -3272,7 +3282,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>共通データの取得中</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="534"/>
+      <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="539"/>
       <source>Close dialogs</source>
       <translation>ダイアログを閉じる</translation>
     </message>
@@ -4285,12 +4295,12 @@ You can install it now.</source>
       <translation>アクセスが承認されました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="124"/>
+      <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="126"/>
       <source>Empty value is entered.</source>
       <translation>空の値が入力されています</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="128"/>
+      <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="130"/>
       <source>Some value is entered.</source>
       <translation>何らかの値が入力されています</translation>
     </message>
@@ -4310,7 +4320,7 @@ You can install it now.</source>
       <translation>エラーがあります: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="122"/>
+      <location filename="../src/librssguard-gmail/src/gui/gmailaccountdetails.cpp" line="124"/>
       <source>Preconfigured client ID/secret will be used.</source>
       <translation>事前に設定されたクライアントID/シークレットが使用されます</translation>
     </message>
@@ -6022,87 +6032,77 @@ Login tokens expiration: %2</source>
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="973"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="933"/>
       <source>Problem with starting external e-mail client</source>
       <translation>外部 Eメールクライアントの起動に問題があります</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="974"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="934"/>
       <source>External e-mail client could not be started.</source>
       <translation>外部 Eメールクライアントを起動できませんでした</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="644"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="604"/>
       <source>Open with external tool</source>
       <translation>外部ツールで開く</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="171"/>
-      <source>Cannot open feed homepage</source>
-      <translation>フィードのホームページを開けません</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="172"/>
-      <source>The feed does not have a valid homepage URL.</source>
-      <translation>フィードに有効なホームページ URL がありません</translation>
-    </message>
-    <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="393"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="353"/>
       <source>Use source-specific article list columns</source>
       <translation>ソース固有の記事リストの列を使用する</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="795"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="796"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="796"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="755"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="756"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="756"/>
       <source>%n selected article(s)</source>
       <translation>
         <numerusform>%n 件の記事が選択されました</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="907"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1243"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1243"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="867"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1203"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1203"/>
       <source>Filtering changed</source>
       <translation>フィルタリングが変更されました</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="908"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1244"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1244"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="868"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1204"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1204"/>
       <source>%n article(s) left after filtering change</source>
       <translation>
         <numerusform>フィルタリングの変更後、%n 件の記事が残っています</numerusform>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="939"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="899"/>
       <source>No URL</source>
       <translation>URL がありません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="940"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="900"/>
       <source>Article cannot be played in media player as it has no URL</source>
       <translation>記事にはURLがないため、メディア プレーヤーで再生できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1268"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1228"/>
       <source>Cannot run external tool</source>
       <translation>外部ツールを実行できません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1269"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1229"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>外部ツール &apos;%1&apos; を開始できませんでした</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="664"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="624"/>
       <source>No external tools activated</source>
       <translation>有効な外部ツールがありません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="624"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="584"/>
       <source>Context menu for articles</source>
       <translation>記事のコンテキストメニュー</translation>
     </message>
@@ -6515,39 +6515,66 @@ Login tokens expiration: %2</source>
   <context>
     <name>OAuth2Service</name>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="90"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="98"/>
       <source>Click here to login.</source>
       <translation>ここをクリックしてログイン</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="220"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="230"/>
       <source>Logging in via OAuth 2.0...</source>
       <translation>OAuth 2.0 経由でログイン...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="221"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="231"/>
       <source>Refreshing login tokens for &apos;%1&apos;...</source>
       <translation>&apos;%1&apos; のログイントークンを更新しています...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="89"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="97"/>
       <source>You have to login first</source>
       <translation>先にログインする必要があります</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="50"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="55"/>
       <source>You can close this window now. Go back to %1.</source>
       <translation>このウィンドウを閉じることができます。 %1 に戻ります</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="345"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="341"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="350"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="359"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="350"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="359"/>
+      <source>After-login action failed</source>
+      <translation>ログイン後の処理に失敗しました</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="354"/>
+      <source>Unknown error.</source>
+      <translation>不明なエラーが発生しました</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="436"/>
       <source>Failed to start OAuth redirection listener. Maybe your rights are not high enough.</source>
       <translation>OAuth リダイレクトリスナーの起動に失敗しました。おそらくあなたの権限が十分でないのかもしれません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="93"/>
+      <location filename="../src/librssguard/network-web/oauth2service.cpp" line="101"/>
       <source>Login</source>
       <translation>ログイン</translation>
+    </message>
+  </context>
+  <context>
+    <name>OAuthHttpHandler</name>
+    <message>
+      <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="194"/>
+      <source>Authorization did not finish correctly. Go back to %1 and try again.</source>
+      <translation>認証が正常に完了しませんでした。%1 に戻って、もう一度お試しください</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="196"/>
+      <source>Authorization was rejected or failed. Go back to %1 and try again.</source>
+      <translation>認証が拒否されたか、失敗しました。%1 に戻ってもう一度お試しください</translation>
     </message>
   </context>
   <context>
@@ -6689,6 +6716,8 @@ List of supported readers:</source>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/notification.cpp" line="143"/>
+      <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
+      <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <source>Login failed</source>
       <translation>ログイン失敗</translation>
     </message>
@@ -7077,6 +7106,11 @@ stack: %3</source>
       <source>image</source>
       <translation>画像</translation>
     </message>
+    <message>
+      <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
+      <source>Login successful</source>
+      <translation>ログインに成功しました</translation>
+    </message>
   </context>
   <context>
     <name>QtMultimediaBackend</name>
@@ -7452,42 +7486,42 @@ stack: %3</source>
       <translation>サポートされていません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="132"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="131"/>
       <source>This is not supported (yet).</source>
       <translation>これは (まだ) サポートされていません</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="180"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="178"/>
       <source>New query</source>
       <translation>新しいクエリ</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="192"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="190"/>
       <source>Restore recycle bin</source>
       <translation>ゴミ箱を復元</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="194"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="192"/>
       <source>Empty recycle bin</source>
       <translation>ごみ箱を空にする</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="208"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="206"/>
       <source>New label</source>
       <translation>新しいラベル</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="234"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="232"/>
       <source>Synchronize folders &amp;&amp; other items</source>
       <translation>フォルダとその他のアイテムを同期する</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="243"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="241"/>
       <source>Synchronize article cache</source>
       <translation>記事キャッシュを同期する</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="390"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="388"/>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
@@ -7496,22 +7530,22 @@ Number of disabled feeds: %3</source>
 無効化されたフィード数: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="695"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="694"/>
       <source>no feed tree obtained</source>
       <translation>フィードツリーが取得できませんでした</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="773"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="770"/>
       <source>unknown data returned from sync-in</source>
       <translation>sync-in から返された不明なデータ</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="780"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="777"/>
       <source>Error when fetching list of feeds</source>
       <translation>フィードのリストを取得時にエラーが発生しました</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="781"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="778"/>
       <source>Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>アカウント &apos;%1&apos; のフィードとフォルダを取得できませんでした。エラー: %2</translation>
     </message>
