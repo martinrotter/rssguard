@@ -53,14 +53,15 @@ namespace {
     }
   }
 
-  void processGumboNode(GumboNode* node, QString& out) {
+  void processGumboNode(GumboNode* node, QString& out, bool escape_text = true) {
     if (!node) {
       return;
     }
 
     switch (node->type) {
       case GUMBO_NODE_TEXT:
-        out += QString::fromUtf8(node->v.text.text).toHtmlEscaped();
+        out += escape_text ? QString::fromUtf8(node->v.text.text).toHtmlEscaped()
+                           : QString::fromUtf8(node->v.text.text);
         break;
 
       case GUMBO_NODE_ELEMENT: {
@@ -120,9 +121,10 @@ namespace {
         }
 
         GumboVector* children = &el.children;
+        const bool is_raw_text_element = el.tag == GUMBO_TAG_SCRIPT || el.tag == GUMBO_TAG_STYLE;
 
         for (unsigned int i = 0; i < children->length; ++i) {
-          processGumboNode(static_cast<GumboNode*>(children->data[i]), out);
+          processGumboNode(static_cast<GumboNode*>(children->data[i]), out, !is_raw_text_element);
         }
 
         if (tag_name && *tag_name && !isGumboVoidTag(el.tag)) {
