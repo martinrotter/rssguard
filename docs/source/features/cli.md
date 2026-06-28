@@ -42,4 +42,4 @@ To add a feed directly from your web browser of choice without copying and pasti
 
 ## Logging
 RSS Guard can write its standard and error output to a file with the `--log` option.
-For bug reports and step-by-step logging instructions, see [Reporting Bugs or Feature Requests](../contrib/bugs.md#application-debug-log).
+For bug reports and step-by-step logging instructions, see [Reporting Bugs or Feature Requests](../contrib/bugs.md#debug-log).

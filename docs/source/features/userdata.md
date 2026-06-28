@@ -18,5 +18,5 @@ RSS Guard stores its data and settings in a single folder. To find the exact pat
 * Contents of your [article filters](filters) - you can therefore place some scripts under your user-data folder and include them via JavaScript in your article filter.
 * Path to your custom configuration directory for the `libmpv`-based [media player](mediaplayer).
 * Contents of each file included in your custom [skins](skins). Note that in this case, the semantics of `%data%` are slightly different and `%data%` points directly to the base folder of your skin.
-* `source` and `post-process script` attributes for feed [scraping](scraping). You can use the placeholder to load scripts that generate or process the feed from the user's data folder.
+* `source` and `post-process script` attributes for [scripted or processed standard feeds](../services/standard-sources). You can use the placeholder to load scripts that generate or process the feed from the user's data folder.
 * [Notifications](notifications) also support the placeholder in the path to audio files that should be played when some event happens. For example, you could place audio files in your data folder and then use them in a notification with `%data%\audio\new-messages.wav`.

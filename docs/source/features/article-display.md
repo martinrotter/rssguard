@@ -73,7 +73,7 @@ The `web` variant uses Qt WebEngine, which has its own network stack. RSS Guard 
 
 For WebEngine proxy rules, RSS Guard matches the feed host and related subdomains. For example, a feed from `feeds.bbc.co.uk` can also cover resources from `images.bbc.co.uk`. More specific rules are checked first, so a feed-specific proxy can still override a broader domain rule.
 
-Standard feeds can also define extra proxy domains in their feed network settings. Add one host or domain per line when a feed page loads important resources from a different domain, for example a CDN used for images, stylesheets or scripts. Those domains will use the same proxy rule as the feed.
+The [standard feeds plugin](../services/standard.md#per-feed-network-settings) can also define extra proxy domains when article resources are hosted somewhere other than the feed's own domain.
 
 ```{warning}
 Extra proxy domains only affect the `web` variant. They are used to generate Qt WebEngine `PAC` rules and do not change how the `text` variant loads resources.

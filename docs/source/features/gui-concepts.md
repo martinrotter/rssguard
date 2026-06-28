@@ -12,7 +12,7 @@ Package names contain `web` or `text` to show which article/web viewer is includ
 ```
 
 ----
-When you start RSS Guard for the very first time, you are greeted with the `Add account` dialog, where you select which account you want to use. If you want a classic `RSS/ATOM` feed reader, select the `RSS/RDF/ATOM/JSON` option.
+When you start RSS Guard for the first time, the `Add account` dialog lets you choose a service. You can add more accounts later through `Accounts -> Add account`.
 
 <img alt="alt-img" src="images/accounts.png">
 
@@ -20,12 +20,4 @@ Each "account" offers account-specific actions that are accessible in the releva
 
 <img alt="alt-img" src="images/account-menu.png">
 
-To add a new feed to the account, simply use the `Feeds -> Add item -> Add a new feed` menu item. You do not need to know the direct URL of the feed file. It is enough to enter the URL of the website you are interested in, for example `https://www.hltv.org`, and RSS Guard will find all available feed sources.
-
-<img alt="alt-img" src="images/discover-feeds.png">
-
-You can also switch to a more advanced dialog for adding individual feeds.
-
-<img alt="alt-img" src="images/feed-details.png">
-
-In 99% of cases, you only need to enter the feed URL into the `Source` field and then click the `Fetch it now` button, which downloads the feed metadata and fills in all other fields.
+Available actions and setup fields depend on the selected service. See [Supported Feed Readers](../supported-readers) for the available account types. To keep subscriptions directly in RSS Guard, start with [Standard RSS, Atom, JSON and other feeds](../services/standard).

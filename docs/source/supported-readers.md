@@ -1,25 +1,16 @@
 Supported Feed Readers
 ======================
-RSS Guard is a multi-account application and supports many web-based feed readers via built-in plugins. Its `standard` plugin provides support for these feed formats:
-* RSS
-* ATOM
-* RDF
-* [XMPP](features/xmpp)[^5]
-* [iCalendar](https://en.wikipedia.org/wiki/ICalendar)
-* [JSON](https://www.jsonfeed.org)
-* [Sitemap](https://en.wikipedia.org/wiki/Sitemaps) (including sitemap index discovery and compressed sitemaps)
-
-RSS Guard also has built-in support for the [Gemini](https://geminiprotocol.net) protocol, so it can fetch regular feeds over Gemini without any problems.
+RSS Guard is a multi-account application. It can store [standard feeds](services/standard) locally or synchronize with supported online feed readers through service plugins.
 
 When it comes to online web-based feed readers, these are supported:
 
 | Service | Two-way Synchronization | Intelligent Synchronization Algorithm (ISA) [^1] | Synchronized Labels [^2] | OAuth [^3] |
 | :---              | :---:  | :---: | :---: | :---: |
-| Feedly            | Yes | Yes | Yes | Yes (only for official binaries) |
-| Gmail             | Yes | Yes | Yes | Yes |
-| Google Reader API [^4] | Yes | Yes | Yes | Yes (only for Inoreader) |
-| Nextcloud News    | Yes | No | No | No |
-| Tiny Tiny RSS     | Yes | Yes | Yes | No |
+| [Feedly](services/feedly) | Yes | Yes | Yes | Yes (only for official binaries) |
+| [Gmail](services/gmail) | Yes | Yes | Yes | Yes |
+| [Google Reader API](services/google-reader-api) [^4] | Yes | Yes | Yes | Yes (only for Inoreader) |
+| [Nextcloud News](services/nextcloud-news) | Yes | No | No | No |
+| [Tiny Tiny RSS](services/tiny-tiny-rss) | Yes | Yes | Yes | No |
 
 [^1]: Some plugins support the next-generation intelligent synchronization algorithm (ISA), which has several benefits. It usually offers better synchronization speed and transfers much less data over your network connection.
 
@@ -31,4 +22,4 @@ When it comes to online web-based feed readers, these are supported:
 
 [^4]: Tested services are: Bazqux, FreshRSS, Inoreader, Miniflux, Reedah, TheOldReader.
 
-[^5]: XMPP plugin is only available for Qt 6 (`qt6`) builds.
+The **Supported Services** section of this documentation contains setup instructions and a description of each plugin.
