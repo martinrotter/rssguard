@@ -25,6 +25,7 @@
     <file>scripts/mpv/input.conf</file>
 
     <file>graphics/rssguard.ico</file>
+    <file>graphics/banner.png</file>
 
     <file>graphics/rssguard.png</file>
     <file>graphics/rssguard_plain.png</file>

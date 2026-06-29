@@ -35,11 +35,13 @@
 
 #include <iostream>
 
+#include <QEventLoop>
 #include <QLoggingCategory>
 #include <QPainter>
 #include <QPainterPath>
 #include <QProcess>
 #include <QSessionManager>
+#include <QSplashScreen>
 #include <QSslSocket>
 #include <QThreadPool>
 #include <QTimer>
@@ -99,6 +101,25 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_mainForm = nullptr;
   m_logForm = nullptr;
   m_trayIcon = nullptr;
+  m_settings = nullptr;
+  m_webFactory = nullptr;
+  m_system = nullptr;
+  m_skins = nullptr;
+  m_localization = nullptr;
+  m_icons = nullptr;
+  m_database = nullptr;
+  m_notifications = nullptr;
+  m_toastNotifications = nullptr;
+#if QT_VERSION_MAJOR > 5
+  m_workHorsePool = nullptr;
+#endif
+#if defined(Q_OS_WIN)
+  m_windowsTaskBar = nullptr;
+#endif
+
+  initializeSplash();
+  showSplashMessage(tr("Loading settings..."));
+
   m_settings = Settings::setupSettings(this);
 
   initializeFileBasedLogging();
@@ -119,6 +140,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_localization = new Localization(this);
 
   m_localization->loadActiveLanguage();
+  showSplashMessage(tr("Initializing application services..."));
 
 #if QT_VERSION_MAJOR > 5
   m_workHorsePool = new QThreadPool(this);
@@ -141,8 +163,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     (!isWayland() && m_notifications->useToastNotifications()) ? new ToastNotificationsManager(this) : nullptr;
 
 #if defined(Q_OS_WIN)
-  m_windowsTaskBar = nullptr;
-
   const GUID qIID_ITaskbarList4 = {0xc43dc798, 0x95d1, 0x4bea, {0x90, 0x30, 0xbb, 0x99, 0xe2, 0x98, 0x3a, 0x1a}};
   HRESULT task_result = CoCreateInstance(CLSID_TaskbarList,
                                          nullptr,
@@ -169,11 +189,13 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   // Add an extra path for non-system icon themes and set current icon theme
   // and skin.
+  showSplashMessage(tr("Loading appearance..."));
   m_icons->setupSearchPaths();
   m_icons->loadCurrentIconTheme();
 
   reloadCurrentSkin(false);
   setupFont();
+  showSplashMessage(tr("Preparing the application..."));
 
   if (m_toastNotifications != nullptr) {
     connect(m_toastNotifications,
@@ -273,6 +295,47 @@ Application::~Application() {
   m_logForm = nullptr;
 
   qDebugNN << LOGSEC_CORE << "Destroying Application instance.";
+}
+
+void Application::initializeSplash() {
+  QPixmap banner(QSL(":/graphics/banner.png"));
+
+  if (banner.isNull()) {
+    return;
+  }
+
+  banner = banner.scaledToWidth(640, Qt::TransformationMode::SmoothTransformation);
+
+  m_splashScreen.reset(new QSplashScreen(banner));
+  m_splashScreen->show();
+
+  processEvents(QEventLoop::ProcessEventsFlag::ExcludeUserInputEvents);
+}
+
+void Application::showSplashMessage(const QString& message) {
+  if (m_splashScreen == nullptr) {
+    return;
+  }
+
+  m_splashScreen->showMessage(message,
+                              Qt::AlignmentFlag::AlignBottom | Qt::AlignmentFlag::AlignHCenter,
+                              QColor(QSL("#3A2520")));
+  processEvents(QEventLoop::ProcessEventsFlag::ExcludeUserInputEvents);
+}
+
+void Application::finishSplash(QWidget* main_window) {
+  if (m_splashScreen == nullptr) {
+    return;
+  }
+
+  if (main_window != nullptr && main_window->isVisible()) {
+    m_splashScreen->finish(main_window);
+  }
+  else {
+    m_splashScreen->close();
+  }
+
+  m_splashScreen.reset();
 }
 
 void Application::updateCliDebugStatus() {
@@ -627,8 +690,7 @@ TrayIcon* Application::trayIcon() {
     QPixmap tray_icon_plain;
 
     const bool monochrome_icon = qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool();
-    const bool custom_colored_icon =
-      qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIcon)).toBool();
+    const bool custom_colored_icon = qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIcon)).toBool();
     const bool colored_unread_icon = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool();
     const bool show_unread_count = qApp->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool();
     QColor unread_text_color(Qt::GlobalColor::white);
@@ -636,7 +698,8 @@ TrayIcon* Application::trayIcon() {
     if (custom_colored_icon) {
       QColor background_color =
         QColor(qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconBackground)).toString());
-      unread_text_color = QColor(qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconText)).toString());
+      unread_text_color =
+        QColor(qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconText)).toString());
 
       if (IconFactory::ensureCustomColoredIcons(background_color)) {
         tray_icon = QPixmap(IconFactory::customColoredTrayIconPath());

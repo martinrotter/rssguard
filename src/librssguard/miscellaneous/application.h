@@ -32,6 +32,7 @@ class FormMain;
 class FormLog;
 class IconFactory;
 class Mutex;
+class QSplashScreen;
 class WebFactory;
 class NotificationFactory;
 class ToastNotificationsManager;
@@ -97,6 +98,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void reactOnForeignNotifications();
     void hideOrShowMainForm();
     void loadDynamicShortcuts();
+    void showSplashMessage(const QString& message);
+    void finishSplash(QWidget* main_window = nullptr);
     void offerPolls() const;
     void offerChanges();
 
@@ -230,6 +233,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void determineFirstRuns();
     void eliminateFirstRuns();
     void initializeFileBasedLogging();
+    void initializeSplash();
     void displayLogMessageInDialog(const QString& message);
 
   private:
@@ -254,6 +258,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     QScopedPointer<Mutex> m_updateFeedsLock;
 
     QList<QAction*> m_userActions;
+    QScopedPointer<QSplashScreen> m_splashScreen;
     FormMain* m_mainForm;
     FormLog* m_logForm;
     TrayIcon* m_trayIcon;

@@ -139,9 +139,11 @@ int main(int argc, char* argv[]) {
   // Check if another instance is running.
   if (application.isAlreadyRunning()) {
     qWarningNN << LOGSEC_CORE << "Another instance of the application is already running. Notifying it.";
+    application.finishSplash();
     return EXIT_FAILURE;
   }
 
+  application.showSplashMessage(Application::tr("Registering application services..."));
   qApp->setFeedReader(new FeedReader(&application));
 
   // Register needed metatypes.
@@ -165,17 +167,24 @@ int main(int argc, char* argv[]) {
 #endif
 #endif
 
+  application.showSplashMessage(Application::tr("Creating the main window..."));
+
   FormMain main_window;
 
+  application.showSplashMessage(Application::tr("Loading shortcuts..."));
   qApp->loadDynamicShortcuts();
   qApp->hideOrShowMainForm();
+
+  application.showSplashMessage(Application::tr("Loading accounts and article filters..."));
   qApp->feedReader()->loadSavedMessageFilters();
   qApp->feedReader()->feedsModel()->loadActivatedServiceAccounts();
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  application.showSplashMessage(Application::tr("Configuring network services..."));
   qApp->web()->generatePacAndStartServer(qApp->feedReader()->feedsModel()->serviceRoots());
 #endif
 
+  application.showSplashMessage(Application::tr("Starting the notification area icon..."));
   qApp->showTrayIcon();
 
   main_window.tabWidget()->feedMessageViewer()->respondToMainWindowResizes();
@@ -183,6 +192,8 @@ int main(int argc, char* argv[]) {
 
   qApp
     ->parseCmdArgumentsFromOtherInstance(qApp->cmdParser()->positionalArguments().join(QSL(ARGUMENTS_LIST_SEPARATOR)));
+
+  application.finishSplash(&main_window);
 
   return Application::exec();
 }
