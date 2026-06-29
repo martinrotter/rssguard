@@ -17,6 +17,7 @@
 #include <QNetworkReply>
 #include <QPair>
 #include <QPushButton>
+#include <QScrollArea>
 
 FormFeedDetails::FormFeedDetails(ServiceRoot* service_root, QWidget* parent)
   : QDialog(parent), m_ui(new Ui::FormFeedDetails()), m_serviceRoot(service_root) {
@@ -41,6 +42,16 @@ void FormFeedDetails::insertCustomTab(QWidget* custom_tab, const QString& title,
   else {
     m_ui->m_tabWidget->insertTab(index, custom_tab, title);
   }
+}
+
+void FormFeedDetails::insertScrollableCustomTab(QWidget* custom_tab, const QString& title, int index) {
+  auto* scroll_area = new QScrollArea(m_ui->m_tabWidget);
+  scroll_area->setFrameShape(QFrame::Shape::NoFrame);
+  scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+  scroll_area->setWidgetResizable(true);
+  scroll_area->setWidget(custom_tab);
+
+  insertCustomTab(scroll_area, title, index);
 }
 
 void FormFeedDetails::removeAllTabs() {

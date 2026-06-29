@@ -30,9 +30,9 @@ FormStandardFeedDetails::FormStandardFeedDetails(ServiceRoot* service_root,
   : FormFeedDetails(service_root, parent), m_standardFeedDetails(new StandardFeedDetails(this)),
     m_standardFeedExpDetails(new StandardFeedExpDetails(this)), m_networkDetails(new StandardFeedNetworkDetails(this)),
     m_parentToSelect(parent_to_select), m_urlToProcess(url) {
-  insertCustomTab(m_standardFeedDetails, tr("General"), 0);
-  insertCustomTab(m_networkDetails, tr("Network"));
-  insertCustomTab(m_standardFeedExpDetails, tr("Experimental"));
+  insertScrollableCustomTab(m_standardFeedDetails, tr("General"), 0);
+  insertScrollableCustomTab(m_networkDetails, tr("Network"));
+  insertScrollableCustomTab(m_standardFeedExpDetails, tr("Experimental"));
   activateTab(0);
 
   m_standardFeedDetails->setNetworkDetails(m_networkDetails);

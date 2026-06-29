@@ -53,6 +53,7 @@ class RSSGUARD_DLLSPEC FormFeedDetails : public QDialog {
     // Inserts custom tab made by plugin into its editing form. When index is less
     // than zero, tab is inserted to the last position.
     void insertCustomTab(QWidget* custom_tab, const QString& title, int index = -1);
+    void insertScrollableCustomTab(QWidget* custom_tab, const QString& title, int index = -1);
 
     void removeAllTabs();
 
