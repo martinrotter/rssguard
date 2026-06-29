@@ -304,7 +304,7 @@ void Application::initializeSplash() {
     return;
   }
 
-  banner = banner.scaledToWidth(640, Qt::TransformationMode::SmoothTransformation);
+  banner = banner.scaledToWidth(480, Qt::TransformationMode::SmoothTransformation);
 
   m_splashScreen.reset(new QSplashScreen(banner));
   m_splashScreen->show();
