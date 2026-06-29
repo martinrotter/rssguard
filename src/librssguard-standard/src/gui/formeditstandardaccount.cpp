@@ -10,7 +10,7 @@ FormEditStandardAccount::FormEditStandardAccount(QWidget* parent)
   : FormAccountDetails(StandardServiceEntryPoint().icon(), parent),
     m_standardDetails(new StandardAccountDetails(this)) {
 
-  insertCustomTab(m_standardDetails, tr("Account setup"), 0);
+  insertScrollableCustomTab(m_standardDetails, tr("Account setup"), 0);
   activateTab(0);
 }
 

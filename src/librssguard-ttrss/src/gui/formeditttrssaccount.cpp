@@ -10,7 +10,7 @@
 
 FormEditTtRssAccount::FormEditTtRssAccount(QWidget* parent)
   : FormAccountDetails(qApp->icons()->miscIcon(QSL("tt-rss")), parent), m_details(new TtRssAccountDetails(this)) {
-  insertCustomTab(m_details, tr("Server setup"), 0);
+  insertScrollableCustomTab(m_details, tr("Server setup"), 0);
   activateTab(0);
 
   connect(m_details->m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditTtRssAccount::performTest);

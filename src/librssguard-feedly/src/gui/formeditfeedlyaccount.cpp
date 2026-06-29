@@ -14,7 +14,7 @@
 
 FormEditFeedlyAccount::FormEditFeedlyAccount(QWidget* parent)
   : FormAccountDetails(qApp->icons()->miscIcon(QSL("feedly")), parent), m_details(new FeedlyAccountDetails(this)) {
-  insertCustomTab(m_details, tr("Service setup"), 0);
+  insertScrollableCustomTab(m_details, tr("Service setup"), 0);
   activateTab(0);
 
   connect(m_details->m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditFeedlyAccount::performTest);

@@ -41,6 +41,7 @@ class RSSGUARD_DLLSPEC FormAccountDetails : public QDialog {
     void activateTab(int index);
     void clearTabs();
     void insertCustomTab(QWidget* custom_tab, const QString& title, int index);
+    void insertScrollableCustomTab(QWidget* custom_tab, const QString& title, int index);
 
     // Sets the account which will be edited.
     // NOTE: This must be reimplemented in subclasses. Also this

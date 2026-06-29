@@ -11,7 +11,7 @@
 
 FormEditGmailAccount::FormEditGmailAccount(QWidget* parent)
   : FormAccountDetails(qApp->icons()->miscIcon(QSL("gmail")), parent), m_details(new GmailAccountDetails(this)) {
-  insertCustomTab(m_details, tr("Server setup"), 0);
+  insertScrollableCustomTab(m_details, tr("Server setup"), 0);
   activateTab(0);
 
   m_details->m_ui.m_txtUsername->setFocus();

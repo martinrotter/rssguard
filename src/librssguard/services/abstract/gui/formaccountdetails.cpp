@@ -14,6 +14,8 @@
 #include "ui_accountdetails.h"
 #include "ui_formaccountdetails.h"
 
+#include <QScrollArea>
+
 FormAccountDetails::FormAccountDetails(const QIcon& icon, QWidget* parent)
   : QDialog(parent), m_ui(new Ui::FormAccountDetails()), m_proxyDetails(new NetworkProxyDetails(this)),
     m_accountDetails(new AccountDetails(this)), m_account(nullptr), m_creatingNew(false) {
@@ -21,8 +23,8 @@ FormAccountDetails::FormAccountDetails(const QIcon& icon, QWidget* parent)
 
   m_proxyDetails->setup(false, true);
 
-  insertCustomTab(m_accountDetails, tr("Miscellaneous"), 0);
-  insertCustomTab(m_proxyDetails, tr("Network proxy"), 1);
+  insertScrollableCustomTab(m_accountDetails, tr("Miscellaneous"), 0);
+  insertScrollableCustomTab(m_proxyDetails, tr("Network proxy"), 1);
 
   GuiUtilities::applyDialogProperties(*this, icon.isNull() ? qApp->icons()->fromTheme(QSL("emblem-system")) : icon);
   createConnections();
@@ -50,6 +52,16 @@ void FormAccountDetails::rollBack() {}
 
 void FormAccountDetails::insertCustomTab(QWidget* custom_tab, const QString& title, int index) {
   m_ui->m_tabWidget->insertTab(index, custom_tab, title);
+}
+
+void FormAccountDetails::insertScrollableCustomTab(QWidget* custom_tab, const QString& title, int index) {
+  auto* scroll_area = new QScrollArea(m_ui->m_tabWidget);
+  scroll_area->setFrameShape(QFrame::Shape::NoFrame);
+  scroll_area->setHorizontalScrollBarPolicy(Qt::ScrollBarPolicy::ScrollBarAlwaysOff);
+  scroll_area->setWidgetResizable(true);
+  scroll_area->setWidget(custom_tab);
+
+  insertCustomTab(scroll_area, title, index);
 }
 
 void FormAccountDetails::activateTab(int index) {

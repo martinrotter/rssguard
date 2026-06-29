@@ -12,50 +12,16 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QScrollArea" name="m_scroll">
-     <property name="frameShape">
-      <enum>QFrame::Shape::NoFrame</enum>
+    <widget class="QTabWidget" name="m_tabWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>1</verstretch>
+      </sizepolicy>
      </property>
-     <property name="widgetResizable">
-      <bool>true</bool>
+     <property name="currentIndex">
+      <number>-1</number>
      </property>
-     <widget class="QWidget" name="scrollAreaWidgetContents">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>632</width>
-        <height>452</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout">
-       <property name="leftMargin">
-        <number>0</number>
-       </property>
-       <property name="topMargin">
-        <number>0</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <property name="bottomMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QTabWidget" name="m_tabWidget">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-           <horstretch>0</horstretch>
-           <verstretch>1</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="currentIndex">
-          <number>-1</number>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
     </widget>
    </item>
    <item>
@@ -71,8 +37,11 @@
      </property>
     </widget>
    </item>
-  </layout>
+ </layout>
  </widget>
+ <tabstops>
+  <tabstop>m_tabWidget</tabstop>
+ </tabstops>
  <resources/>
  <connections>
   <connection>

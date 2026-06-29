@@ -11,7 +11,7 @@
 FormEditNextcloudAccount::FormEditNextcloudAccount(QWidget* parent)
   : FormAccountDetails(qApp->icons()->miscIcon(QSL("nextcloud")), parent),
     m_details(new NextcloudAccountDetails(this)) {
-  insertCustomTab(m_details, tr("Server setup"), 0);
+  insertScrollableCustomTab(m_details, tr("Server setup"), 0);
   activateTab(0);
 
   connect(m_details->m_ui.m_btnTestSetup, &QPushButton::clicked, this, &FormEditNextcloudAccount::performTest);
