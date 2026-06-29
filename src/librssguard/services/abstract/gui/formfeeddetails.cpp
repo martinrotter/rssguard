@@ -199,6 +199,9 @@ void FormFeedDetails::acceptIfPossible() {
 void FormFeedDetails::initialize() {
   m_ui->setupUi(this);
 
+  m_ui->m_tabWidget->removeTab(m_ui->m_tabWidget->indexOf(m_ui->m_tpCommon));
+  insertScrollableCustomTab(m_ui->m_tpCommon, tr("Common"));
+
   // Setup auto-update options.
   m_ui->m_spinAutoUpdateInterval->setMode(TimeSpinBox::Mode::MinutesSeconds);
   m_ui->m_spinAutoUpdateInterval->setValue(DEFAULT_AUTO_UPDATE_INTERVAL);
