@@ -1,6 +1,6 @@
 5.2.1
 -----
-Released on: 2026-06-24
+Released on: 2026-06-30
 
 Added:
 * Feed and article lists now share common handling for column visibility, order, width and sort state.
