@@ -129,6 +129,13 @@ void FeedMessageViewer::loadSize() {
   if (!settings_feed_header.isEmpty()) {
     m_feedsView->restoreHeaderState(QByteArray::fromBase64(settings_feed_header.toLocal8Bit()));
   }
+  else {
+    const int sort_column = settings->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt();
+    const auto sort_order =
+      static_cast<Qt::SortOrder>(settings->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt());
+
+    m_feedsView->sortByColumn(sort_column, sort_order);
+  }
 
   m_messagesView->restoreInitialColumnProfile();
 }

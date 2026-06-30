@@ -12,6 +12,7 @@
 #include <QJsonObject>
 #include <QKeyEvent>
 #include <QScrollBar>
+#include <QSignalBlocker>
 
 BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent), m_lastWheelTime(0), m_scrollSpeedFactor(1.0) {
   setAllColumnsShowFocus(true);
@@ -89,10 +90,9 @@ void BaseTreeView::restoreHeaderState(const QByteArray& dta) {
     const int vi = obj.contains(QSL("header_%1_idx").arg(i)) ? obj[QSL("header_%1_idx").arg(i)].toInt() : i;
     const int ss = obj[QSL("header_%1_size").arg(i)].toInt();
     const bool ish = obj[QSL("header_%1_hidden").arg(i)].toBool();
-    const auto resize_mode =
-      QHeaderView::ResizeMode(obj.contains(QSL("header_%1_resize_mode").arg(i))
-                                ? obj[QSL("header_%1_resize_mode").arg(i)].toInt()
-                                : int(header()->sectionResizeMode(i)));
+    const auto resize_mode = QHeaderView::ResizeMode(obj.contains(QSL("header_%1_resize_mode").arg(i))
+                                                       ? obj[QSL("header_%1_resize_mode").arg(i)].toInt()
+                                                       : int(header()->sectionResizeMode(i)));
 
     if (vi >= 0 && vi < header()->count()) {
       header()->swapSections(header()->visualIndex(i), vi);
@@ -194,5 +194,12 @@ void BaseTreeView::restoreColumnSortStates(const ColumnSortStates& states) {
     return;
   }
 
-  header()->setSortIndicator(states.constFirst().first, states.constFirst().second);
+  const auto& primary_sort = states.constFirst();
+  const QSignalBlocker header_signal_blocker(header());
+
+  header()->setSortIndicator(primary_sort.first, primary_sort.second);
+
+  if (isSortingEnabled()) {
+    sortByColumn(primary_sort.first, primary_sort.second);
+  }
 }

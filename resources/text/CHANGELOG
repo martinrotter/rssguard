@@ -1,3 +1,10 @@
+5.2.2
+-----
+Released on: 2026-06-30
+
+Fixed:
+* Feed list now correctly applies the restored column and sort order to accounts and feeds loaded during application startup.
+
 5.2.1
 -----
 Released on: 2026-06-30
