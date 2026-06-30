@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>672</width>
-    <height>148</height>
+    <height>175</height>
    </rect>
   </property>
   <layout class="QFormLayout">
@@ -25,7 +25,7 @@
      </property>
     </widget>
    </item>
-   <item row="3" column="0" colspan="2">
+   <item row="4" column="0" colspan="2">
     <spacer name="verticalSpacer">
      <property name="orientation">
       <enum>Qt::Vertical</enum>
@@ -39,6 +39,13 @@
     </spacer>
    </item>
    <item row="2" column="0" colspan="2">
+    <widget class="QCheckBox" name="m_checkShowSplashScreen">
+     <property name="text">
+      <string>Show splash screen during application startup</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0" colspan="2">
     <widget class="QCheckBox" name="m_checkDisableDebugOutput">
      <property name="text">
       <string>Disable CLI debug output (but keep more serious warnings enabled)</string>

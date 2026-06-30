@@ -2,6 +2,9 @@
 -----
 Released on: 2026-06-30
 
+Added:
+* Splash screen displayed during application startup can now be enabled in the general settings and is disabled by default. (#2329)
+
 Fixed:
 * Feed list now correctly applies the restored column and sort order to accounts and feeds loaded during application startup.
 

@@ -117,10 +117,10 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_windowsTaskBar = nullptr;
 #endif
 
-  initializeSplash();
-  showSplashMessage(tr("Loading settings..."));
-
   m_settings = Settings::setupSettings(this);
+
+  initializeSplash();
+  showSplashMessage(tr("Initializing application..."));
 
   initializeFileBasedLogging();
 
@@ -298,6 +298,10 @@ Application::~Application() {
 }
 
 void Application::initializeSplash() {
+  if (!settings()->value(GROUP(General), SETTING(General::ShowSplashScreen)).toBool()) {
+    return;
+  }
+
   QPixmap banner(QSL(":/graphics/banner.png"));
 
   if (banner.isNull()) {

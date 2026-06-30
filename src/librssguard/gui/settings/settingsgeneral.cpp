@@ -25,6 +25,7 @@ void SettingsGeneral::loadUi() {
   connect(m_ui->m_checkDisableDebugOutput, &QCheckBox::STATE_CHANGED, this, &SettingsGeneral::dirtifySettings);
   connect(m_ui->m_checkAutostart, &QCheckBox::STATE_CHANGED, this, &SettingsGeneral::dirtifySettings);
   connect(m_ui->m_checkForUpdatesOnStart, &QCheckBox::STATE_CHANGED, this, &SettingsGeneral::dirtifySettings);
+  connect(m_ui->m_checkShowSplashScreen, &QCheckBox::STATE_CHANGED, this, &SettingsGeneral::dirtifySettings);
 
   SettingsPanel::loadUi();
 }
@@ -47,6 +48,8 @@ void SettingsGeneral::loadSettings() {
 
   m_ui->m_checkForUpdatesOnStart
     ->setChecked(settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool());
+  m_ui->m_checkShowSplashScreen
+    ->setChecked(settings()->value(GROUP(General), SETTING(General::ShowSplashScreen)).toBool());
 
   // Load auto-start status.
   const SystemFactory::AutoStartStatus autostart_status = SystemFactory::autoStartStatus();
@@ -82,6 +85,7 @@ void SettingsGeneral::saveSettings() {
 
   settings()->setValue(GROUP(General), General::DisableDebugOutput, m_ui->m_checkDisableDebugOutput->isChecked());
   settings()->setValue(GROUP(General), General::UpdateOnStartup, m_ui->m_checkForUpdatesOnStart->isChecked());
+  settings()->setValue(GROUP(General), General::ShowSplashScreen, m_ui->m_checkShowSplashScreen->isChecked());
   onEndSaveSettings();
 
   qApp->updateCliDebugStatus();

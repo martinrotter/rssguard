@@ -496,6 +496,9 @@ DVALUE(bool) General::DisableDebugOutputDef = false;
 DKEY General::UpdateOnStartup = "update_on_start";
 DVALUE(bool) General::UpdateOnStartupDef = false;
 
+DKEY General::ShowSplashScreen = "show_splash_screen";
+DVALUE(bool) General::ShowSplashScreenDef = false;
+
 DKEY General::FirstRun = "first_run";
 DVALUE(bool) General::FirstRunDef = true;
 

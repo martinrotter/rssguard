@@ -529,6 +529,9 @@ namespace General {
   KEY UpdateOnStartup;
   VALUE(bool) UpdateOnStartupDef;
 
+  KEY ShowSplashScreen;
+  VALUE(bool) ShowSplashScreenDef;
+
   KEY FirstRun;
   VALUE(bool) FirstRunDef;
 
