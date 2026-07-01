@@ -6,6 +6,7 @@
 #include "miscellaneous/application.h"
 
 #include <QObject>
+#include <QPointer>
 
 class BaseToastNotification;
 class ToastNotification;
@@ -79,7 +80,7 @@ class ToastNotificationsManager : public QObject {
     // and oldest at the end.
     QList<BaseToastNotification*> m_activeNotifications;
 
-    ArticleListNotification* m_articleListNotification;
+    QPointer<ArticleListNotification> m_articleListNotification;
 };
 
 #endif // TOASTNOTIFICATIONSMANAGER_H

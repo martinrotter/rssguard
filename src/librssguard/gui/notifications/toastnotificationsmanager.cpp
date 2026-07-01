@@ -2,11 +2,11 @@
 
 #include "gui/notifications/toastnotificationsmanager.h"
 
-#include "qtlinq/qtlinq.h"
 #include "gui/notifications/articlelistnotification.h"
 #include "gui/notifications/basetoastnotification.h"
 #include "gui/notifications/toastnotification.h"
 #include "miscellaneous/settings.h"
+#include "qtlinq/qtlinq.h"
 
 #include <QRect>
 #include <QScreen>
@@ -78,11 +78,9 @@ void ToastNotificationsManager::resetNotifications(bool reload_existing_notifica
 }
 
 void ToastNotificationsManager::clear() {
-  for (BaseToastNotification* notif : m_activeNotifications) {
-    closeNotification(notif, false);
+  while (!m_activeNotifications.isEmpty()) {
+    closeNotification(m_activeNotifications.constLast(), false);
   }
-
-  m_activeNotifications.clear();
 }
 
 void ToastNotificationsManager::processNotification(BaseToastNotification* notif) {
@@ -287,7 +285,10 @@ void ToastNotificationsManager::removeOutOfBoundsNotifications(int height_to_res
   }) + height_to_reserve >
          available_height) {
     if (!m_activeNotifications.isEmpty()) {
-      m_activeNotifications.takeLast()->deleteLater();
+      BaseToastNotification* oldest_notification = m_activeNotifications.constLast();
+      const bool is_article_list_notification = oldest_notification == m_articleListNotification.data();
+
+      closeNotification(oldest_notification, !is_article_list_notification);
     }
     else {
       break;

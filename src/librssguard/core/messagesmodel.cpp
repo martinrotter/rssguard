@@ -1309,11 +1309,7 @@ void MessagesModel::fetchFullArticleContents(const QModelIndexList& articles) {
       for (Message& msg : msgs) {
         try {
           msg.m_contents = FeedReader::getFullArticle(feedById(msg.m_feedId), msg.m_url, false);
-
-          QList<Message> sub_msgs = {msg};
-
           updateSourceArticle(msg);
-          DatabaseQueries::updateMessages(sub_msgs, feedById(msg.m_feedId), true, false);
         }
         catch (const ApplicationException& ex) {
           qCriticalNN << LOGSEC_CORE << "Cannot fetch full article" << QUOTE_W_SPACE_DOT(ex.message());

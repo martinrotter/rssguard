@@ -7,6 +7,7 @@ Added:
 
 Fixed:
 * Feed list now correctly applies the restored column and sort order to accounts and feeds loaded during application startup.
+* Custom notifications no longer crash when an article-list notification is removed after exceeding the available screen space.
 
 5.2.1
 -----
