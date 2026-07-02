@@ -20,9 +20,9 @@ class GeminiSchemeHandler : public QWebEngineUrlSchemeHandler {
     void onCompleted(const QByteArray& data, const QString& mime);
     void onNetworkError(GeminiClient::NetworkError error, const QString& reason);
 
-    void onJobDeleted(QObject* job);
-
   private:
+    void onJobDeleted(QWebEngineUrlRequestJob* job);
+
     QHash<QWebEngineUrlRequestJob*, GeminiClient*> m_jobs;
     GeminiParser m_geminiParser;
 };

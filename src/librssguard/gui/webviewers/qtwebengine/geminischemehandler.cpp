@@ -20,7 +20,9 @@ void GeminiSchemeHandler::requestStarted(QWebEngineUrlRequestJob* request) {
   connect(gemini_client, &GeminiClient::requestComplete, this, &GeminiSchemeHandler::onCompleted);
   connect(gemini_client, &GeminiClient::networkError, this, &GeminiSchemeHandler::onNetworkError);
 
-  connect(request, &QWebEngineUrlRequestJob::destroyed, this, &GeminiSchemeHandler::onJobDeleted);
+  connect(request, &QWebEngineUrlRequestJob::destroyed, this, [this, request]() {
+    onJobDeleted(request);
+  });
 
   gemini_client->startRequest(request->requestUrl(), GeminiClient::RequestOptions::IgnoreTlsErrors);
 }
@@ -80,15 +82,11 @@ void GeminiSchemeHandler::onNetworkError(GeminiClient::NetworkError error, const
   }
 }
 
-void GeminiSchemeHandler::onJobDeleted(QObject* job) {
-  auto* key = qobject_cast<QWebEngineUrlRequestJob*>(job);
-  auto* gemini_client = m_jobs.value(key);
+void GeminiSchemeHandler::onJobDeleted(QWebEngineUrlRequestJob* job) {
+  auto* gemini_client = m_jobs.take(job);
 
   if (gemini_client != nullptr) {
+    gemini_client->disconnect(this);
     gemini_client->deleteLater();
-  }
-
-  if (key != nullptr) {
-    m_jobs.remove(key);
   }
 }
