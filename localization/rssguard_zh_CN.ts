@@ -758,12 +758,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="46"/>
       <source>Cannot open feed homepage</source>
-      <translation type="unfinished">Cannot open feed homepage</translation>
+      <translation>无法打开Feed主页</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="47"/>
       <source>The feed does not have a valid homepage URL.</source>
-      <translation type="unfinished">The feed does not have a valid homepage URL.</translation>
+      <translation>Feed没有有效的主页 URL。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="65"/>
@@ -6543,12 +6543,12 @@ Token 过期时间：%2</translation>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="350"/>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="359"/>
       <source>After-login action failed</source>
-      <translation type="unfinished">After-login action failed</translation>
+      <translation>登录后操作失败</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="354"/>
       <source>Unknown error.</source>
-      <translation type="unfinished">Unknown error.</translation>
+      <translation>未知错误。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauth2service.cpp" line="436"/>
@@ -6566,12 +6566,12 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="194"/>
       <source>Authorization did not finish correctly. Go back to %1 and try again.</source>
-      <translation type="unfinished">Authorization did not finish correctly. Go back to %1 and try again.</translation>
+      <translation>授权未正确完成。请返回 %1 然后重试。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="196"/>
       <source>Authorization was rejected or failed. Go back to %1 and try again.</source>
-      <translation type="unfinished">Authorization was rejected or failed. Go back to %1 and try again.</translation>
+      <translation>授权被拒绝或失败。请返回 %1 ，然后重试。</translation>
     </message>
   </context>
   <context>
@@ -7106,7 +7106,7 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <source>Login successful</source>
-      <translation type="unfinished">Login successful</translation>
+      <translation>登录成功</translation>
     </message>
   </context>
   <context>
