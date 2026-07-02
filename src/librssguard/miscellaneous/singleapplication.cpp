@@ -63,33 +63,31 @@ void SingleApplication::processMessageFromOtherInstance() {
     return;
   }
 
-  quint32 block_size = 0;
-  QEventLoop loop;
-  QDataStream in(sck);
-
-  in.setVersion(QDataStream::Version::Qt_5_5);
-
   connect(sck, &QLocalSocket::disconnected, sck, &QLocalSocket::deleteLater);
-  connect(sck, &QLocalSocket::readyRead, this, [this, sck, &loop, &in, &block_size]() {
-    if (block_size == 0) {
-      if (sck->bytesAvailable() < int(sizeof(quint32))) {
-        return;
-      }
 
-      in >> block_size;
-    }
+  const auto process_message = [this, sck]() {
+    QDataStream in(sck);
+    quint32 block_size;
+    QString message;
 
-    if (sck->bytesAvailable() < block_size || in.atEnd()) {
+    in.setVersion(QDataStream::Version::Qt_5_5);
+    in.startTransaction();
+    in >> block_size;
+    in >> message;
+
+    if (!in.commitTransaction()) {
       return;
     }
 
-    QString dat;
-    in >> dat;
+    if (quint32(message.size()) != block_size) {
+      sck->disconnectFromServer();
+      return;
+    }
 
-    emit messageReceived(dat);
-    loop.exit();
-  });
+    emit messageReceived(message);
+    sck->disconnectFromServer();
+  };
 
-  sck->flush();
-  loop.exec();
+  connect(sck, &QLocalSocket::readyRead, this, process_message);
+  process_message();
 }
