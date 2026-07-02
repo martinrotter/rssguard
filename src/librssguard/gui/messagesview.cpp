@@ -952,7 +952,7 @@ void MessagesView::markArticlesFromToReadUnread(int row_from, int row_to, RootIt
   QModelIndexList article_idxs;
 
   for (int i = row_from; i <= row_to; i++) {
-    article_idxs.append(m_proxyModel->index(i, MSG_MDL_TITLE_INDEX));
+    article_idxs.append(m_proxyModel->mapToSource(m_proxyModel->index(i, MSG_MDL_TITLE_INDEX)));
   }
 
   m_sourceModel->setBatchMessagesRead(article_idxs, read);
