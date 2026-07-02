@@ -134,6 +134,8 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual bool event(QEvent* event);
 
   private:
+    void cachePageContents();
+
     QList<QAction*> advancedActions() const;
     QList<QAction*> diagActions() const;
     WebEnginePage* page() const;
@@ -142,6 +144,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     WebBrowser* m_browser;
     QString m_html;
     QString m_plainText;
+    quint64 m_contentGeneration = 0;
     QScopedPointer<QAction> m_actionPrintToPdf;
     QScopedPointer<QAction> m_actionSaveFullPage;
     QScopedPointer<QAction> m_actionDiagGpu;
@@ -149,6 +152,9 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     ActionWatcher m_actionWatcherGoBack;
     ActionWatcher m_actionWatcherGoForward;
     ActionWatcher m_actionWatcherReloadPage;
+    QMetaObject::Connection m_printFinishedConnection;
+
+    QSharedPointer<bool> m_lifetimeGuard = QSharedPointer<bool>::create(true);
 };
 
 #endif // WEBENGINEVIEWER_H

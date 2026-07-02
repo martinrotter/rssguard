@@ -11,6 +11,7 @@
 #include <QAction>
 #include <QPointer>
 #include <QPrinter>
+#include <QSharedPointer>
 #include <QUrl>
 
 class QPrinter;
@@ -154,6 +155,8 @@ class WebViewer {
     void initializeCommonMenuItems();
 
   protected:
+    QSharedPointer<QPrinter> currentPrinter() const;
+
     ContextMenuData m_contextMenuData;
     QPixmap m_placeholderImage;
     QPixmap m_placeholderImageError;
@@ -176,7 +179,7 @@ class WebViewer {
     QScopedPointer<QAction> m_actionSaveImage;
     QScopedPointer<QAction> m_actionCopyImageLink;
 
-    QScopedPointer<QPrinter> m_printer;
+    QSharedPointer<QPrinter> m_printer;
 };
 
 Q_DECLARE_INTERFACE(WebViewer, "WebViewer")
@@ -189,6 +192,10 @@ inline void WebViewer::zoomIn() {
 
 inline void WebViewer::zoomOut() {
   setZoomFactor(zoomFactor() - double(ZOOM_FACTOR_STEP));
+}
+
+inline QSharedPointer<QPrinter> WebViewer::currentPrinter() const {
+  return m_printer;
 }
 
 inline bool WebViewer::canZoomIn() const {

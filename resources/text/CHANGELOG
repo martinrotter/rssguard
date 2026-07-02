@@ -12,6 +12,7 @@ Fixed:
 * Update dialog no longer crashes when the server returns no releases.
 * Localization settings no longer crash when translation contributor metadata is empty or malformed.
 * Preview scrolling actions no longer crash when a media player tab is active.
+* WebEngine callbacks no longer access destroyed browser tabs after asynchronous page operations finish.
 
 5.2.1
 -----

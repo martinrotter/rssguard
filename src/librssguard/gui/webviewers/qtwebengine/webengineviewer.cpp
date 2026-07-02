@@ -38,13 +38,15 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
   WebEnginePage* page = new WebEnginePage(false, this);
 
   setPage(page);
-  connect(this, &WebEngineViewer::loadFinished, this, [=]() {
-    page->toHtml([&](const QString& htm) {
-      m_html = htm;
-    });
-    page->toPlainText([&](const QString& txt) {
-      m_plainText = txt;
-    });
+  connect(this, &WebEngineViewer::loadStarted, this, [this]() {
+    ++m_contentGeneration;
+    m_html.clear();
+    m_plainText.clear();
+  });
+  connect(this, &WebEngineViewer::loadFinished, this, [this](bool success) {
+    if (success) {
+      cachePageContents();
+    }
   });
 
   connect(m_actionPrintToPdf.data(), &QAction::triggered, this, &WebEngineViewer::printToPdf);
@@ -52,12 +54,6 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
   connect(m_actionDiagGpu.data(), &QAction::triggered, this, [this]() {
     emit openUrlInNewTab(false, QUrl("chrome://gpu"));
   });
-
-#if QT_VERSION_MAJOR >= 6
-  connect(this, &WebEngineViewer::printFinished, this, [this](bool success) {
-    onPrintingFinished(success);
-  });
-#endif
 
   WebEngineViewer::setLoadExternalResources(WebViewer::loadExternalResources());
 }
@@ -139,23 +135,59 @@ void WebEngineViewer::cleanupCache() {
   page()->profile()->clearHttpCache();
 }
 
+void WebEngineViewer::cachePageContents() {
+  const quint64 content_generation = m_contentGeneration;
+  const QWeakPointer<bool> lifetime_guard = m_lifetimeGuard.toWeakRef();
+
+  page()->toHtml([this, lifetime_guard, content_generation](const QString& html) {
+    const QSharedPointer<bool> guard = lifetime_guard.toStrongRef();
+
+    if (!guard.isNull() && m_contentGeneration == content_generation) {
+      m_html = html;
+    }
+  });
+  page()->toPlainText([this, lifetime_guard, content_generation](const QString& text) {
+    const QSharedPointer<bool> guard = lifetime_guard.toStrongRef();
+
+    if (!guard.isNull() && m_contentGeneration == content_generation) {
+      m_plainText = text;
+    }
+  });
+}
+
 void WebEngineViewer::printToPrinter(QPrinter* printer) {
 #if QT_VERSION_MAJOR < 6
-  page()->print(printer, [this](bool success) {
-    if (success) {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           GuiMessage(tr("Done"), tr("Printing is finished.")),
-                           GuiMessageDestination(true, true, true));
-    }
-    else {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           GuiMessage(tr("Error"), tr("Printing failed."), QSystemTrayIcon::MessageIcon::Critical),
-                           GuiMessageDestination(true, true, true));
-    }
+  const QWeakPointer<bool> lifetime_guard = m_lifetimeGuard.toWeakRef();
+  const QSharedPointer<QPrinter> guarded_printer = currentPrinter();
 
-    onPrintingFinished(success);
+  page()->print(printer, [this, lifetime_guard, guarded_printer](bool success) {
+    Q_UNUSED(guarded_printer)
+
+    const QSharedPointer<bool> guard = lifetime_guard.toStrongRef();
+
+    if (!guard.isNull()) {
+      onPrintingFinished(success);
+    }
   });
 #else
+  disconnect(m_printFinishedConnection);
+
+  const QWeakPointer<bool> lifetime_guard = m_lifetimeGuard.toWeakRef();
+  const QSharedPointer<QPrinter> guarded_printer = currentPrinter();
+
+  m_printFinishedConnection =
+    connect(this, &WebEngineViewer::printFinished, this, [this, lifetime_guard, guarded_printer](bool success) {
+      Q_UNUSED(guarded_printer)
+
+      const QSharedPointer<bool> guard = lifetime_guard.toStrongRef();
+
+      if (!guard.isNull()) {
+        disconnect(m_printFinishedConnection);
+        m_printFinishedConnection = {};
+        onPrintingFinished(success);
+      }
+    });
+
   QWebEngineView::print(printer);
 #endif
 }
