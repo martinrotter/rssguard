@@ -51,53 +51,63 @@ bool FormUpdate::isSelfUpdateSupported() const {
 }
 
 void FormUpdate::checkForUpdates() {
-  connect(qApp->system(),
-          &SystemFactory::updatesChecked,
-          this,
-          [this](const QPair<QList<UpdateInfo>, QNetworkReply::NetworkError>& update) {
-            m_ui.m_buttonBox->setEnabled(true);
-            disconnect(qApp->system(), &SystemFactory::updatesChecked, nullptr, nullptr);
+  m_updatesCheckedConnection =
+    connect(qApp->system(),
+            &SystemFactory::updatesChecked,
+            this,
+            [this](const QPair<QList<UpdateInfo>, QNetworkReply::NetworkError>& update) {
+              m_ui.m_buttonBox->setEnabled(true);
+              disconnect(m_updatesCheckedConnection);
 
-            if (update.second != QNetworkReply::NoError) {
-              m_updateInfo = UpdateInfo();
-              m_ui.m_tabInfo->setEnabled(false);
+              if (update.second != QNetworkReply::NetworkError::NoError) {
+                m_updateInfo = UpdateInfo();
+                m_ui.m_tabInfo->setEnabled(false);
 
-              //: Unknown release.
-              m_ui.m_lblAvailableRelease->setText(tr("unknown"));
-              m_ui.m_txtChanges->clear();
-              m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Error,
-                                          tr("Error: '%1'.").arg(NetworkFactory::networkErrorText(update.second)),
-                                          tr("List with updates was not\ndownloaded successfully."));
-            }
-            else {
-              const bool self_update_supported = isSelfUpdateSupported();
-              m_updateInfo = update.first.at(0);
-              m_ui.m_tabInfo->setEnabled(true);
-              m_ui.m_lblAvailableRelease->setText(m_updateInfo.m_availableVersion);
-
-#if QT_VERSION >= 0x050E00 // Qt >= 5.14.0
-              m_ui.m_txtChanges->setMarkdown(m_updateInfo.m_changes);
-#else
-      m_ui.m_txtChanges->setText(m_updateInfo.m_changes);
-#endif
-
-              if (SystemFactory::isVersionNewer(m_updateInfo.m_availableVersion, QSL(APP_VERSION))) {
-                m_btnUpdate->setVisible(true);
-                m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Ok,
-                                            tr("New release available."),
-                                            tr("This is a new version which can be\ndownloaded."));
-
-                if (self_update_supported) {
-                  loadAvailableFiles();
-                }
+                //: Unknown release.
+                m_ui.m_lblAvailableRelease->setText(tr("unknown"));
+                m_ui.m_txtChanges->clear();
+                m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Error,
+                                            tr("Error: '%1'.").arg(NetworkFactory::networkErrorText(update.second)),
+                                            tr("List with updates was not\ndownloaded successfully."));
               }
               else {
-                m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Warning,
-                                            tr("No new release available."),
-                                            tr("This release is not newer than\ncurrently installed one."));
+                const bool self_update_supported = isSelfUpdateSupported();
+
+                if (update.first.isEmpty()) {
+                  m_updateInfo = UpdateInfo();
+                  m_ui.m_tabInfo->setEnabled(false);
+                  m_ui.m_lblAvailableRelease->clear();
+                  m_ui.m_txtChanges->clear();
+                  m_btnUpdate->setVisible(false);
+                  m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Warning,
+                                              tr("No releases available."),
+                                              tr("There are no available releases."));
+                }
+                else {
+                  m_updateInfo = update.first.at(0);
+
+                  m_ui.m_tabInfo->setEnabled(true);
+                  m_ui.m_lblAvailableRelease->setText(m_updateInfo.m_availableVersion);
+                  m_ui.m_txtChanges->setMarkdown(m_updateInfo.m_changes);
+
+                  if (SystemFactory::isVersionNewer(m_updateInfo.m_availableVersion, QSL(APP_VERSION))) {
+                    m_btnUpdate->setVisible(true);
+                    m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Ok,
+                                                tr("New release available."),
+                                                tr("This is a new version which can be\ndownloaded."));
+
+                    if (self_update_supported) {
+                      loadAvailableFiles();
+                    }
+                  }
+                  else {
+                    m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Warning,
+                                                tr("No new release available."),
+                                                tr("This release is not newer than\ncurrently installed one."));
+                  }
+                }
               }
-            }
-          });
+            });
 
   qApp->system()->checkForUpdates();
 }

@@ -86,18 +86,17 @@ void SettingsLocalization::langMetadataDownloaded(const QUrl& url,
       QJsonDocument stats_doc = QJsonDocument::fromJson(m_dataPercentages);
       QJsonDocument people_doc = QJsonDocument::fromJson(m_dataPeople);
       QJsonArray people_arr = people_doc.object()["data"].toArray();
-      std::vector<QString> people_desc;
+      QStringList people_desc;
 
-      std::transform(people_arr.begin(), people_arr.end(), std::back_inserter(people_desc), [](const QJsonValue& b) {
-        return b.toObject()["data"].toObject()["username"].toString();
-      });
+      for (const QJsonValue& person : people_arr) {
+        const QString username = person.toObject()["data"].toObject()["username"].toString();
 
-      all_translators = std::accumulate(std::next(people_desc.begin()),
-                                        people_desc.end(),
-                                        people_desc.at(0),
-                                        [](const QString& lhs, const QString& rhs) {
-                                          return QString(lhs + ", " + rhs);
-                                        });
+        if (!username.isEmpty()) {
+          people_desc.append(username);
+        }
+      }
+
+      all_translators = people_desc.join(QSL(", "));
 
       for (const QJsonValue& val_lang : stats_doc.object()["data"].toArray()) {
         QString lang_id = val_lang.toObject()["data"].toObject()["languageId"].toString().replace(QSL("-"), QSL("_"));

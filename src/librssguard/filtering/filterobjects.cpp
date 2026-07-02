@@ -77,9 +77,13 @@ void FilterMessage::addEnclosure(const QString& url, const QString& mime_type) c
 }
 
 bool FilterMessage::removeEnclosure(int index) const {
+  if (index < 0 || index >= m_message->m_enclosures.size()) {
+    return false;
+  }
+
   m_message->m_enclosures.removeAt(index);
 
-  return index <= m_message->m_enclosures.size();
+  return true;
 }
 
 void FilterMessage::removeAllEnclosures() const {

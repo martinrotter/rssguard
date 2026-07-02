@@ -420,7 +420,13 @@ void FormMain::updateAccountsMenu() {
 }
 
 void FormMain::updateTabsButtonsAvailability(int index) {
-  m_ui->m_actionTabsCloseCurrent->setEnabled(tabWidget()->tabBar()->tabType(index) == TabBar::TabType::Closable);
+  const bool valid_tab = index >= 0 && index < tabWidget()->count();
+  TabContent* tab_content = valid_tab ? tabWidget()->widget(index) : nullptr;
+
+  m_ui->m_actionTabsCloseCurrent->setEnabled(valid_tab &&
+                                             tabWidget()->tabBar()->tabType(index) == TabBar::TabType::Closable);
+  m_ui->m_actionBrowserScrollUp->setEnabled(tab_content != nullptr && tab_content->webBrowser() != nullptr);
+  m_ui->m_actionBrowserScrollDown->setEnabled(tab_content != nullptr && tab_content->webBrowser() != nullptr);
 }
 
 void FormMain::onFeedUpdatesFinished(const FeedDownloadResults& results) {

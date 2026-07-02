@@ -9,6 +9,7 @@
 #include "ui_formupdate.h"
 
 #include <QDialog>
+#include <QMetaObject>
 #include <QNetworkReply>
 #include <QPushButton>
 
@@ -44,6 +45,7 @@ class RSSGUARD_DLLSPEC FormUpdate : public QDialog {
     Downloader m_downloader;
     QString m_updateFilePath;
     UpdateInfo m_updateInfo;
+    QMetaObject::Connection m_updatesCheckedConnection;
     bool m_readyToInstall = false;
     qint64 m_lastDownloadedBytes = 0;
 };

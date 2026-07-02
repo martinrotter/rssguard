@@ -8,6 +8,10 @@ Added:
 Fixed:
 * Feed list now correctly applies the restored column and sort order to accounts and feeds loaded during application startup.
 * Custom notifications no longer crash when an article-list notification is removed after exceeding the available screen space.
+* Article filters no longer crash the application when attempting to remove an attachment with an invalid index.
+* Update dialog no longer crashes when the server returns no releases.
+* Localization settings no longer crash when translation contributor metadata is empty or malformed.
+* Preview scrolling actions no longer crash when a media player tab is active.
 
 5.2.1
 -----
