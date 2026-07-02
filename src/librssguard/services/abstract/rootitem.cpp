@@ -12,6 +12,7 @@
 #include "services/abstract/search.h"
 #include "services/abstract/serviceroot.h"
 
+#include <QSet>
 #include <QVariant>
 
 RootItem::RootItem(RootItem* parent_item)
@@ -326,10 +327,17 @@ void RootItem::assembleCategories(const Assignment& categories) {
 
   // Add top-level categories.
   while (!editable_categories.isEmpty()) {
+    bool made_progress = false;
+
     for (int i = 0; i < editable_categories.size(); i++) {
       auto cat = editable_categories.at(i);
 
-      if (assignments.contains(cat.first)) {
+      if (cat.second == nullptr) {
+        editable_categories.removeAt(i);
+        i--;
+        made_progress = true;
+      }
+      else if (assignments.contains(cat.first)) {
         // Parent category of this category is already added.
         assignments.value(cat.first)->appendChild(cat.second);
 
@@ -340,7 +348,37 @@ void RootItem::assembleCategories(const Assignment& categories) {
         // added to the final collection.
         editable_categories.removeAt(i);
         i--;
+        made_progress = true;
       }
+    }
+
+    if (!made_progress) {
+      // Break one invalid parent relationship, then let the normal loop
+      // preserve any valid hierarchy below this category.
+      QSet<int> unresolved_ids;
+
+      for (const auto& category : std::as_const(editable_categories)) {
+        unresolved_ids.insert(category.second->id());
+      }
+
+      int recovery_index = 0;
+
+      for (int i = 0; i < editable_categories.size(); i++) {
+        if (!unresolved_ids.contains(editable_categories.at(i).first)) {
+          recovery_index = i;
+          break;
+        }
+      }
+
+      const auto unresolved_category = editable_categories.takeAt(recovery_index);
+      RootItem* category = unresolved_category.second;
+
+      qWarningNN << LOGSEC_CORE << "Folder" << QUOTE_W_SPACE(category->title()) << "with ID"
+                 << NONQUOTE_W_SPACE(category->id()) << "references unavailable parent ID"
+                 << NONQUOTE_W_SPACE_DOT(unresolved_category.first);
+
+      appendChild(category);
+      assignments.insert(category->id(), category);
     }
   }
 }
