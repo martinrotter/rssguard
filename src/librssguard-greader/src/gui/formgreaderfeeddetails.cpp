@@ -72,14 +72,9 @@ void FormGreaderFeedDetails::apply() {
   FormFeedDetails::apply();
 
   if (!m_isBatchEdit) {
-    try {
-      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-        DatabaseQueries::createOverwriteFeed(db, fd, m_serviceRoot->accountId(), parent->id());
-      });
-    }
-    catch (const ApplicationException& ex) {
-      qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
-    }
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createOverwriteFeed(db, fd, m_serviceRoot->accountId(), parent->id());
+    });
 
     m_serviceRoot->requestItemReassignment(fd, parent);
     m_serviceRoot->itemChanged({fd});
