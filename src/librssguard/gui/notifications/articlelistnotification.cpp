@@ -188,8 +188,15 @@ Message ArticleListNotification::selectedMessage() const {
 
 bool ArticleListNotification::eventFilter(QObject* watched, QEvent* event) {
   if (event->type() == QEvent::Type::MouseButtonRelease) {
-    if (dynamic_cast<QMouseEvent*>(event)->button() == Qt::MouseButton::MiddleButton) {
-      openArticleInArticleList();
+    auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
+
+    if (mouse_event->button() == Qt::MouseButton::MiddleButton && watched == m_ui.m_treeArticles->viewport()) {
+      const QModelIndex clicked_index = m_ui.m_treeArticles->indexAt(mouse_event->pos());
+
+      if (clicked_index.isValid()) {
+        m_ui.m_treeArticles->setCurrentIndex(clicked_index);
+        openArticleInArticleList();
+      }
     }
   }
 

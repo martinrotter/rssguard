@@ -385,12 +385,12 @@ void TabWidget::changeTitle(int index, const QString& new_title) {
 }
 
 void TabWidget::fixContentsAfterMove(int from, int to) {
-  from = qMin(from, to);
-  to = qMax(from, to);
+  int my_from = qMin(from, to);
+  int my_to = qMax(from, to);
 
-  for (; from <= to; from++) {
-    auto* content = widget(from);
+  for (; my_from <= my_to; my_from++) {
+    auto* content = widget(my_from);
 
-    content->setIndex(from);
+    content->setIndex(my_from);
   }
 }
