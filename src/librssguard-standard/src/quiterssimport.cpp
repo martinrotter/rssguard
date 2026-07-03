@@ -88,7 +88,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
   while (q.next()) {
     try {
       auto msg = convertArticle(q);
-      QStringList label_ids = q.value(8).toString().split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts);
+      QStringList label_ids = q.value(QSL("label")).toString().split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts);
 
       for (const QString& label_id : std::as_const(label_ids)) {
         auto* target_lbl = lbls.value(label_id);

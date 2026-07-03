@@ -20,6 +20,7 @@ Fixed:
 * Fixed a possible crash while synchronizing XMPP chat rooms with missing names.
 * Feed saving and importing errors no longer cause the application to crash.
 * Feed and folder deletion now uses the correct database connection.
+* Article labels are now correctly preserved when importing from QuiteRSS.
 
 5.2.1
 -----
