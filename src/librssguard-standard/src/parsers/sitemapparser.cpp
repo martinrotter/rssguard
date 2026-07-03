@@ -183,7 +183,9 @@ GuessedFeedWithIcons SitemapParser::guessFeed(const QByteArray& content, const N
 
   if (isGzip(content)) {
 #if defined(ENABLE_COMPRESSED_SITEMAP)
-    QCompressor::gzipDecompress(content, uncompressed_content);
+    if (!QCompressor::gzipDecompress(content, uncompressed_content)) {
+      throw FeedRecognizedButFailedException(QObject::tr("gzip decompression failed"));
+    }
 #else
     throw FeedRecognizedButFailedException(QObject::tr("support for gzipped sitemaps is not enabled"));
 #endif
@@ -192,8 +194,8 @@ GuessedFeedWithIcons SitemapParser::guessFeed(const QByteArray& content, const N
     uncompressed_content = content;
   }
 
-  QString encoding = XmlEncodingDetector::detectXmlEncoding(content);
-  QString xml_contents_encoded = TextFactory::fromEncoding(content, encoding);
+  QString encoding = XmlEncodingDetector::detectXmlEncoding(uncompressed_content);
+  QString xml_contents_encoded = TextFactory::fromEncoding(uncompressed_content, encoding);
 
   // Feed XML was obtained, guess it now.
   DomDocument xml_document;

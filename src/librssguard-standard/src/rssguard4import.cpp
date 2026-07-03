@@ -342,7 +342,7 @@ RootItem* RssGuard4Import::extractFeedsAndCategories(const QSqlDatabase& db) con
     int id = q.value(QSL("id")).toInt();
     int pid = q.value(QSL("parent_id")).toInt();
     QString title = q.value(QSL("title")).toString();
-    QString description = q.value(QSL("title")).toString();
+    QString description = q.value(QSL("description")).toString();
     QByteArray image = q.value(QSL("icon")).toByteArray();
     StandardCategory* cat = new StandardCategory();
 
@@ -390,7 +390,7 @@ RootItem* RssGuard4Import::extractFeedsAndCategories(const QSqlDatabase& db) con
     int pid = q.value(QSL("category")).toInt();
     QString title = q.value(QSL("title")).toString();
     QString source = q.value(QSL("source")).toString();
-    QString description = q.value(QSL("title")).toString();
+    QString description = q.value(QSL("description")).toString();
     QByteArray image = q.value(QSL("icon")).toByteArray();
     QString custom_data = q.value(QSL("custom_data")).toString();
 

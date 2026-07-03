@@ -21,6 +21,8 @@ Fixed:
 * Feed saving and importing errors no longer cause the application to crash.
 * Feed and folder deletion now uses the correct database connection.
 * Article labels are now correctly preserved when importing from QuiteRSS.
+* Feed and folder descriptions are now correctly preserved when importing from RSS Guard 4.x.
+* Fixed discovery of gzip-compressed sitemap feeds.
 
 5.2.1
 -----
