@@ -25,6 +25,7 @@ Fixed:
 * Fixed discovery of gzip-compressed sitemap feeds.
 * Nextcloud feeds referencing missing folders no longer crash account synchronization.
 * Account saving errors no longer cause the application to crash.
+* Failed Tiny Tiny RSS synchronization no longer replaces the local feed tree with an empty one.
 
 5.2.1
 -----

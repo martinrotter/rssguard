@@ -11,6 +11,7 @@
 #include "src/ttrssserviceentrypoint.h"
 
 #include <librssguard/database/databasequeries.h>
+#include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedfetchexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/application.h>
@@ -427,21 +428,42 @@ void TtRssServiceRoot::updateTitle() {
 void TtRssServiceRoot::requestSyncIn() {
   startSyncInTask([this]() -> RootItem* {
     TtRssGetFeedsCategoriesResponse feed_cats = m_network->getFeedsCategories(networkProxy());
-    TtRssGetLabelsResponse labels = m_network->getLabels(networkProxy());
+    const auto feeds_network_error = m_network->lastError();
 
-    auto lst_error = m_network->lastError();
-
-    if (lst_error == QNetworkReply::NetworkError::NoError) {
-      auto* tree = feed_cats.feedsCategories(m_network, true, networkProxy(), m_network->url());
-      auto* lblroot = new LabelsNode(tree);
-
-      lblroot->setChildItems(labels.labels());
-      tree->appendChild(lblroot);
-
-      return tree;
+    if (feeds_network_error != QNetworkReply::NetworkError::NoError) {
+      throw NetworkException(feeds_network_error, tr("cannot get list of feeds"));
     }
 
-    throw NetworkException(lst_error, tr("cannot get list of feeds, network error '%1'").arg(lst_error));
+    if (!feed_cats.isLoaded() || feed_cats.status() != TTRSS_API_STATUS_OK || feed_cats.hasError()) {
+      const QString error = feed_cats.error().isEmpty()
+                              ? tr("API returned status %1").arg(QString::number(feed_cats.status()))
+                              : feed_cats.error();
+
+      throw ApplicationException(tr("cannot get list of feeds: %1").arg(error));
+    }
+
+    TtRssGetLabelsResponse labels = m_network->getLabels(networkProxy());
+    const auto labels_network_error = m_network->lastError();
+
+    if (labels_network_error != QNetworkReply::NetworkError::NoError) {
+      throw NetworkException(labels_network_error, tr("cannot get list of labels"));
+    }
+
+    if (!labels.isLoaded() || labels.status() != TTRSS_API_STATUS_OK || labels.hasError()) {
+      const QString error = labels.error().isEmpty()
+                              ? tr("API returned status %1").arg(QString::number(labels.status()))
+                              : labels.error();
+
+      throw ApplicationException(tr("cannot get list of labels: %1").arg(error));
+    }
+
+    auto* tree = feed_cats.feedsCategories(m_network, true, networkProxy(), m_network->url());
+    auto* lblroot = new LabelsNode(tree);
+
+    lblroot->setChildItems(labels.labels());
+    tree->appendChild(lblroot);
+
+    return tree;
   });
 }
 
