@@ -37,6 +37,9 @@ class RSSGUARD_DLLSPEC FormAccountDetails : public QDialog {
     virtual void apply();
     virtual void rollBack();
 
+  private slots:
+    void acceptIfPossible();
+
   protected:
     void activateTab(int index);
     void clearTabs();

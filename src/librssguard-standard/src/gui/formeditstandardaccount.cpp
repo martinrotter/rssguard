@@ -43,6 +43,4 @@ void FormEditStandardAccount::apply() {
 
   m_account->saveAccountDataToDatabase();
   m_account->itemChanged({m_account});
-
-  accept();
 }

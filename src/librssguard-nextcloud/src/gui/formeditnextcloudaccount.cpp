@@ -37,7 +37,6 @@ void FormEditNextcloudAccount::apply() {
     ->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
 
   account<NextcloudServiceRoot>()->saveAccountDataToDatabase();
-  accept();
 
   if (!m_creatingNew && using_another_acc) {
     account<NextcloudServiceRoot>()->completelyRemoveAllData();

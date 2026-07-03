@@ -2,6 +2,7 @@
 
 #include "services/abstract/gui/formaccountdetails.h"
 
+#include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
@@ -50,6 +51,22 @@ void FormAccountDetails::apply() {
 
 void FormAccountDetails::rollBack() {}
 
+void FormAccountDetails::acceptIfPossible() {
+  try {
+    apply();
+    accept();
+  }
+  catch (const ApplicationException& ex) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot save account properties"),
+                          tr("Cannot save changes: %1").arg(ex.message()),
+                          QSystemTrayIcon::MessageIcon::Critical},
+                         {},
+                         {},
+                         this);
+  }
+}
+
 void FormAccountDetails::insertCustomTab(QWidget* custom_tab, const QString& title, int index) {
   m_ui->m_tabWidget->insertTab(index, custom_tab, title);
 }
@@ -97,6 +114,6 @@ void FormAccountDetails::loadAccountData() {
 }
 
 void FormAccountDetails::createConnections() {
-  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormAccountDetails::apply);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormAccountDetails::acceptIfPossible);
   connect(m_ui->m_buttonBox, &QDialogButtonBox::rejected, this, &FormAccountDetails::rollBack);
 }

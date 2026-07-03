@@ -24,6 +24,7 @@ Fixed:
 * Feed and folder descriptions are now correctly preserved when importing from RSS Guard 4.x.
 * Fixed discovery of gzip-compressed sitemap feeds.
 * Nextcloud feeds referencing missing folders no longer crash account synchronization.
+* Account saving errors no longer cause the application to crash.
 
 5.2.1
 -----

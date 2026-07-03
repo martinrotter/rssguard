@@ -32,7 +32,6 @@ void FormEditXmppAccount::apply() {
   account<XmppServiceRoot>()->network()->setExtraNodes(m_details->additionalServices());
 
   account<XmppServiceRoot>()->saveAccountDataToDatabase();
-  accept();
 
   if (!m_creatingNew && using_another_acc) {
     account<XmppServiceRoot>()->completelyRemoveAllData();

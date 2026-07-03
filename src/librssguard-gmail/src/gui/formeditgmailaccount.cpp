@@ -39,7 +39,6 @@ void FormEditGmailAccount::apply() {
                                                                           ->isChecked());
 
   account<GmailServiceRoot>()->saveAccountDataToDatabase();
-  accept();
 
   if (!m_creatingNew) {
     if (using_another_acc) {

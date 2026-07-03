@@ -41,7 +41,6 @@ void FormEditFeedlyAccount::apply() {
   account<FeedlyServiceRoot>()->network()->setIntelligentSynchronization(m_details->m_ui.m_cbNewAlgorithm->isChecked());
 
   account<FeedlyServiceRoot>()->saveAccountDataToDatabase();
-  accept();
 
   if (!m_creatingNew) {
     if (using_another_acc) {

@@ -40,7 +40,6 @@ void FormEditTtRssAccount::apply() {
     ->setDownloadOnlyUnreadMessages(m_details->m_ui.m_checkDownloadOnlyUnreadMessages->isChecked());
 
   account<TtRssServiceRoot>()->saveAccountDataToDatabase();
-  accept();
 
   if (!m_creatingNew && using_another_acc) {
     account<TtRssServiceRoot>()->completelyRemoveAllData();

@@ -45,7 +45,6 @@ void FormEditGreaderAccount::apply() {
   }
 
   existing_root->saveAccountDataToDatabase();
-  accept();
 
   if (!m_creatingNew) {
     if (using_another_acc) {

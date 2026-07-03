@@ -408,14 +408,9 @@ QString ServiceRoot::additionalTooltip() const {
 }
 
 void ServiceRoot::saveAccountDataToDatabase() {
-  try {
-    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-      DatabaseQueries::createOverwriteAccount(db, this);
-    });
-  }
-  catch (const ApplicationException& ex) {
-    qFatal("Account was not saved into database: '%s'.", qPrintable(ex.message()));
-  }
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    DatabaseQueries::createOverwriteAccount(db, this);
+  });
 }
 
 QVariantHash ServiceRoot::customDatabaseData() const {
