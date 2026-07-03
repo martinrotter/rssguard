@@ -56,7 +56,21 @@ void FormAddEditEmail::show(FormAddEditEmail::Mode mode, Message* original_messa
     m_ui.m_txtSubject->setEnabled(false);
     m_ui.m_txtMessage->setFocus();
 
-    QString message_header = messageHeader(mode, original_message);
+    QString message_header;
+
+    try {
+      message_header = messageHeader(mode, original_message);
+    }
+    catch (const ApplicationException& ex) {
+      qWarningNN << LOGSEC_GMAIL << "Failed to prepare e-mail:" << QUOTE_W_SPACE_DOT(ex.message());
+      MsgBox::show(this,
+                   QMessageBox::Icon::Critical,
+                   tr("Cannot prepare e-mail"),
+                   tr("The e-mail cannot be prepared because some required message details could not be downloaded."),
+                   {},
+                   ex.message());
+      return;
+    }
 
     m_ui.m_txtMessage->setText(QSL("<br/>") + message_header + QSL("<br/>") + m_originalMessage->m_contents);
     m_ui.m_txtMessage->editor()->moveCursor(QTextCursor::MoveOperation::Start);
