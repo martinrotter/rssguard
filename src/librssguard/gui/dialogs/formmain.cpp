@@ -871,6 +871,10 @@ void FormMain::createConnections() {
           &QAction::triggered,
           m_ui->m_tabWidget->feedMessageViewer()->webBrowser(),
           &WebBrowser::cleanupCache);
+  connect(m_ui->m_tabWidget,
+          &TabWidget::emptySpaceDoubleClicked,
+          m_ui->m_actionTabsNewBrowser,
+          &QAction::trigger);
   connect(m_ui->m_actionTabsNewBrowser, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::addEmptyBrowser);
   connect(m_ui->m_actionTabsCloseAll, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeAllTabs);
   connect(m_ui->m_actionTabsCloseCurrent, &QAction::triggered, m_ui->m_tabWidget, &TabWidget::closeCurrentTab);

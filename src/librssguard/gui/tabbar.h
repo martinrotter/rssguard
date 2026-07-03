@@ -38,8 +38,6 @@ class TabBar : public QTabBar {
     void wheelEvent(QWheelEvent* event);
 
   signals:
-
-    // Emmited if empty space on tab bar is double clicked.
     void emptySpaceDoubleClicked();
 };
 

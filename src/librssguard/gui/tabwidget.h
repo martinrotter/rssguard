@@ -11,6 +11,7 @@
 #include <QUrl>
 
 class QMenu;
+class QMouseEvent;
 class PlainToolButton;
 class RootItem;
 class FeedMessageViewer;
@@ -89,7 +90,11 @@ class TabWidget : public QTabWidget {
     void gotoNextTab();
     void gotoPreviousTab();
 
+  signals:
+    void emptySpaceDoubleClicked();
+
   protected:
+    virtual void mouseDoubleClickEvent(QMouseEvent* event);
     virtual void tabInserted(int index);
     virtual void tabRemoved(int index);
 

@@ -88,7 +88,6 @@ void TabBar::mousePressEvent(QMouseEvent* event) {
 
   // Check if user clicked on some tab or on empty space.
   if (tab_index >= 0) {
-    // Check if user clicked tab with middle button.
     // NOTE: This needs to be done here because
     // destination does not know the original event.
     if (Globals::hasFlag(event->button(), Qt::MouseButton::MiddleButton) &&
@@ -107,7 +106,6 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent* event) {
 
   // Check if user clicked on some tab or on empty space.
   if (tab_index >= 0) {
-    // Check if user clicked tab with middle button.
     // NOTE: This needs to be done here because
     // destination does not know the original event.
     if (Globals::hasFlag(event->button(), Qt::MouseButton::LeftButton) &&
@@ -118,7 +116,8 @@ void TabBar::mouseDoubleClickEvent(QMouseEvent* event) {
       }
     }
   }
-  else {
+  else if (Globals::hasFlag(event->button(), Qt::MouseButton::LeftButton) &&
+           qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabNewDoubleClick)).toBool()) {
     emit emptySpaceDoubleClicked();
   }
 }

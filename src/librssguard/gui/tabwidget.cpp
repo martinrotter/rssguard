@@ -23,6 +23,7 @@
 #endif
 
 #include <QMenu>
+#include <QMouseEvent>
 #include <QTimer>
 #include <QToolButton>
 
@@ -82,6 +83,32 @@ void TabWidget::updateAppearance() {
   setTabBarAutoHide(qApp->settings()->value(GROUP(GUI), SETTING(GUI::HideTabBarIfOnlyOneTab)).toBool());
 }
 
+void TabWidget::mouseDoubleClickEvent(QMouseEvent* event) {
+  const QRect tab_bar_geometry = tabBar()->geometry();
+  QRect tab_strip_geometry = tab_bar_geometry;
+
+  if (tabPosition() == QTabWidget::TabPosition::North || tabPosition() == QTabWidget::TabPosition::South) {
+    tab_strip_geometry.setLeft(0);
+    tab_strip_geometry.setRight(width() - 1);
+  }
+  else {
+    tab_strip_geometry.setTop(0);
+    tab_strip_geometry.setBottom(height() - 1);
+  }
+
+  const bool is_empty_tab_strip = tabBar()->isVisible() && tab_strip_geometry.contains(event->pos()) &&
+                                  !tab_bar_geometry.contains(event->pos()) && childAt(event->pos()) == nullptr;
+
+  if (event->button() == Qt::MouseButton::LeftButton && is_empty_tab_strip &&
+      qApp->settings()->value(GROUP(GUI), SETTING(GUI::TabNewDoubleClick)).toBool()) {
+    emit emptySpaceDoubleClicked();
+    event->accept();
+    return;
+  }
+
+  QTabWidget::mouseDoubleClickEvent(event);
+}
+
 void TabWidget::tabInserted(int index) {
   QTabWidget::tabInserted(index);
 
@@ -109,6 +136,7 @@ void TabWidget::tabRemoved(int index) {
 void TabWidget::createConnections() {
   connect(tabBar(), &TabBar::tabCloseRequested, this, &TabWidget::closeTab);
   connect(tabBar(), &TabBar::tabMoved, this, &TabWidget::fixContentsAfterMove);
+  connect(tabBar(), &TabBar::emptySpaceDoubleClicked, this, &TabWidget::emptySpaceDoubleClicked);
 
   connect(feedMessageViewer()->messagesView(),
           &MessagesView::openSingleMessageInNewTab,
