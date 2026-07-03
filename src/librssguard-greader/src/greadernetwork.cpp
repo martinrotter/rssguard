@@ -858,7 +858,6 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
                            QString::fromLocal8Bit(QUrl::toPercentEncoding(password())))
                       .toLocal8Bit();
 
-  qDebugNN << LOGSEC_GREADER << "Arguments for login:" << QUOTE_W_SPACE_DOT(args);
   qDebugNN << LOGSEC_GREADER << "Full loging URL:" << QUOTE_W_SPACE_DOT(full_url);
 
   auto network_result =
@@ -875,7 +874,6 @@ QNetworkReply::NetworkError GreaderNetwork::clientLogin(const QNetworkProxy& pro
                                             proxy);
 
   qDebugNN << LOGSEC_GREADER << "Login network result:" << QUOTE_W_SPACE_DOT(network_result.m_httpCode);
-  qDebugNN << LOGSEC_GREADER << "Login response data:" << QUOTE_W_SPACE_DOT(output);
 
   if (network_result.m_networkError == QNetworkReply::NetworkError::NoError) {
     // Save credentials.

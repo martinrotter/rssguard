@@ -29,6 +29,7 @@ Fixed:
 * Tiny Tiny RSS article attachments now use the correct URL and media type.
 * Failed Gmail account synchronization no longer leaves the account permanently busy.
 * Forwarding a Gmail message no longer crashes when its details cannot be downloaded.
+* GReader-compatible accounts no longer expose sensitive login details in the debug log.
 
 5.2.1
 -----
