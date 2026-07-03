@@ -151,19 +151,8 @@ QString GreaderServiceRoot::serviceToString(Service service) {
 }
 
 void GreaderServiceRoot::requestSyncIn() {
-  if (m_syncInRunning) {
-    return;
-  }
-
-  ServiceRoot::requestSyncIn();
-
-  QThreadPool::globalInstance()->start([this]() {
-    try {
-      emit syncInFinished(m_network->categoriesFeedsLabelsTree(true, networkProxy()));
-    }
-    catch (const ApplicationException& ex) {
-      emit syncInFinished(ex);
-    }
+  startSyncInTask([this]() {
+    return m_network->categoriesFeedsLabelsTree(true, networkProxy());
   });
 }
 

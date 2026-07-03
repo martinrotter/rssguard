@@ -24,6 +24,7 @@ NextcloudServiceRoot::NextcloudServiceRoot(RootItem* parent)
 }
 
 NextcloudServiceRoot::~NextcloudServiceRoot() {
+  waitForSyncInFinished();
   delete m_network;
 }
 
@@ -79,22 +80,8 @@ NextcloudNetworkFactory* NextcloudServiceRoot::network() const {
 }
 
 void NextcloudServiceRoot::requestSyncIn() {
-  if (m_syncInRunning) {
-    return;
-  }
-
-  ServiceRoot::requestSyncIn();
-
-  QThreadPool::globalInstance()->start([this]() {
-    try {
-      auto* feed_cats = m_network->feedsCategories(networkProxy());
-      m_network->obtainIcons(feed_cats->getSubTreeFeeds(), networkProxy());
-
-      emit syncInFinished(feed_cats);
-    }
-    catch (const ApplicationException& ex) {
-      emit syncInFinished(ex);
-    }
+  startSyncInTask([this]() {
+    return obtainNewTreeForSyncIn();
   });
 }
 

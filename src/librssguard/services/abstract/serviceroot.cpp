@@ -25,6 +25,12 @@
 #include "services/abstract/searchsnode.h"
 #include "services/abstract/unreadnode.h"
 
+#include <exception>
+#include <utility>
+
+#include <QThreadPool>
+#include <QtConcurrent>
+
 ServiceRoot::ServiceRoot(RootItem* parent)
   : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
     m_labelsNode(new LabelsNode(this)), m_probesNode(new SearchsNode(this)), m_unreadNode(new UnreadNode(this)),
@@ -36,9 +42,15 @@ ServiceRoot::ServiceRoot(RootItem* parent)
   connect(this, &ServiceRoot::syncInFinished, this, &ServiceRoot::onSyncInFinished);
 }
 
-ServiceRoot::~ServiceRoot() {}
+ServiceRoot::~ServiceRoot() {
+  waitForSyncInFinished();
+}
 
 void ServiceRoot::deleteItem() {
+  if (syncInRunning()) {
+    return;
+  }
+
   qApp->database()->worker()->write([&](const QSqlDatabase& db) {
     DatabaseQueries::deleteAccount(db, this);
   });
@@ -301,7 +313,7 @@ void ServiceRoot::updateCounts() {
 }
 
 bool ServiceRoot::canBeDeleted() const {
-  return true;
+  return !syncInRunning();
 }
 
 void ServiceRoot::completelyRemoveAllData() {
@@ -678,6 +690,36 @@ void ServiceRoot::requestSyncIn() {
 
   // setIcon(qApp->icons()->fromTheme(QSL("view-refresh")));
   itemChanged({this});
+}
+
+void ServiceRoot::startSyncInTask(std::function<RootItem*()> task) {
+  if (m_syncInRunning) {
+    return;
+  }
+
+  ServiceRoot::requestSyncIn();
+
+  m_syncInFuture =
+    QtConcurrent::run(QThreadPool::globalInstance(), [this, task = std::move(task)]() {
+      try {
+        emit syncInFinished(task());
+      }
+      catch (const ApplicationException& ex) {
+        emit syncInFinished(ex);
+      }
+      catch (const std::exception& ex) {
+        emit syncInFinished(ApplicationException(QString::fromUtf8(ex.what())));
+      }
+      catch (...) {
+        emit syncInFinished(ApplicationException(tr("unknown synchronization error")));
+      }
+    });
+}
+
+void ServiceRoot::waitForSyncInFinished() {
+  if (m_syncInFuture.isRunning()) {
+    m_syncInFuture.waitForFinished();
+  }
 }
 
 void ServiceRoot::onSyncInFinished(const SyncInResult& result) {

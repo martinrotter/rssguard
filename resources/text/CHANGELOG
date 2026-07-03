@@ -16,6 +16,7 @@ Fixed:
 * Starting another RSS Guard instance no longer risks freezing the already running application.
 * Closing a tab while a Gemini page is loading no longer risks crashing the application.
 * Invalid folder relationships no longer cause RSS Guard to freeze while loading accounts or imported data.
+* Accounts can no longer be deleted while their feed tree is being synchronized.
 
 5.2.1
 -----

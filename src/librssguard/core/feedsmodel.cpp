@@ -517,6 +517,7 @@ void FeedsModel::stopServiceAccounts() {
   auto serv = serviceRoots();
 
   for (ServiceRoot* account : std::as_const(serv)) {
+    account->waitForSyncInFinished();
     account->stop();
   }
 }

@@ -26,7 +26,8 @@
 XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
   : QObject(parent), m_root(parent), m_xmppClient(new QXmppClient(this)),
     m_discoveryManager(new QXmppDiscoveryManager()), m_pubSubManager(new PubSubManager(this)),
-    m_mucManager(new QXmppMucManager()), m_mamManager(new QXmppMamManager()), m_extraNodes(defaultExtraServices()) {
+    m_mucManager(new QXmppMucManager()), m_mamManager(new QXmppMamManager()), m_extraNodes(defaultExtraServices()),
+    m_syncInSent(true) {
   m_discoveryManager->setParent(this);
   m_mucManager->setParent(this);
   m_mamManager->setParent(this);
@@ -116,20 +117,36 @@ void XmppNetwork::disconnectFromServer() {
 }
 
 void XmppNetwork::reportSyncInFinish(const ServiceRoot::SyncInResult& result, bool timed_out) {
-  bool should_send = !m_syncInSent && m_xmppClient->isConnected();
+  const bool first_report = !m_syncInSent;
+  const bool connected = m_xmppClient->isConnected();
+  const bool should_send_tree = first_report && connected;
+  const auto* result_tree_pointer = std::get_if<RootItem*>(&result);
+  RootItem* result_tree = result_tree_pointer == nullptr ? nullptr : *result_tree_pointer;
 
   m_syncInSent = true;
   m_syncInTimer.disconnect(this);
   m_syncInTimer.stop();
   m_syncInPendingServices.clear();
 
-  if (should_send) {
-    emit m_root->syncInFinished(result);
+  if (result_tree == m_syncInTree.data()) {
+    if (should_send_tree) {
+      m_syncInTree.take();
+    }
+    else {
+      m_syncInTree.reset();
+    }
+  }
+  else if (result_tree == nullptr) {
+    m_syncInTree.reset();
+  }
+
+  if (first_report) {
+    emit m_root->syncInFinished(connected ? result
+                                         : ServiceRoot::SyncInResult(ApplicationException(
+                                             tr("XMPP connection was closed during services discovery"))));
   }
   else {
-    qWarningNN
-      << LOGSEC_XMPP
-      << "Finish of sync-in discovery is reported, but either client is not running or the sync-in was already sent.";
+    qWarningNN << LOGSEC_XMPP << "Finish of sync-in discovery was already reported.";
   }
 }
 
@@ -176,7 +193,8 @@ void XmppNetwork::obtainServicesNodesTree() {
   m_syncInTimer.setInterval(12000);
   m_syncInSent = false;
 
-  RootItem* root = new RootItem();
+  m_syncInTree.reset(new RootItem());
+  RootItem* root = m_syncInTree.data();
 
   root->appendChild(new XmppCategory(XmppCategory::Type::SingleUserChats));
   root->appendChild(new XmppCategory(XmppCategory::Type::MultiUserChats));
@@ -195,6 +213,10 @@ void XmppNetwork::obtainServicesNodesTree() {
   auto task = m_discoveryManager->items(m_xmppClient->configuration().domain());
 
   task.then(this, [=, this](auto result) {
+    if (m_syncInSent) {
+      return;
+    }
+
     m_syncInTimer.start();
 
     if (auto items = std::get_if<QList<QXmppDiscoItem>>(&result)) {
@@ -217,15 +239,11 @@ void XmppNetwork::obtainServicesNodesTree() {
       }
     }
     else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
-      delete root;
-
       QString desc = XmppSimpleError::fromQXmppError(*error).m_description;
       qDebugNN << LOGSEC_XMPP << "Service discovery failed:" << NONQUOTE_W_SPACE_DOT(desc);
       reportSyncInFinish(ApplicationException(tr("error during services discovery, %1").arg(desc)));
     }
     else {
-      delete root;
-
       qDebugNN << LOGSEC_XMPP << "Service discovery failed with unspecified error. This is a problem.";
       reportSyncInFinish(ApplicationException(tr("unspecified error during services discovery")));
     }
@@ -238,6 +256,10 @@ void XmppNetwork::discoverService(const QString& jid, RootItem* new_tree) {
   auto task = m_discoveryManager->info(jid);
 
   task.then(this, [=, this](auto result) {
+    if (m_syncInSent) {
+      return;
+    }
+
     m_syncInTimer.start();
 
     if (QXmppDiscoInfo* info = std::get_if<QXmppDiscoInfo>(&result)) {
@@ -299,14 +321,14 @@ void XmppNetwork::fetchPubSubSubscriptions(const QString& service, XmppCategory:
   auto task = m_pubSubManager->requestSubscriptions(service);
 
   task.then(this, [=, this](auto result) {
+    if (m_syncInSent) {
+      return;
+    }
+
     m_syncInTimer.start();
 
     if (auto subs = std::get_if<QList<QXmppPubSubSubscription>>(&result)) {
       if (!subs->isEmpty()) {
-        if (m_syncInSent) {
-          return;
-        }
-
         QList<RootItem*> childs;
 
         for (const QXmppPubSubSubscription& sub : *subs) {
@@ -542,6 +564,10 @@ void XmppNetwork::onClientConnected() {
 }
 
 void XmppNetwork::onClientDisconnected() {
+  if (!m_syncInSent && m_root->syncInRunning()) {
+    reportSyncInFinish(ApplicationException(tr("XMPP connection was closed during services discovery")));
+  }
+
   qApp->showGuiMessage(Notification::Event::Logout,
                        GuiMessage(tr("XMPP server disconnected"),
                                   tr("XMPP connection to server %1 is down.").arg(m_domain),

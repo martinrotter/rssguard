@@ -29,6 +29,7 @@ TtRssServiceRoot::TtRssServiceRoot(RootItem* parent)
 }
 
 TtRssServiceRoot::~TtRssServiceRoot() {
+  waitForSyncInFinished();
   delete m_network;
 }
 
@@ -424,35 +425,23 @@ void TtRssServiceRoot::updateTitle() {
 }
 
 void TtRssServiceRoot::requestSyncIn() {
-  if (m_syncInRunning) {
-    return;
-  }
+  startSyncInTask([this]() -> RootItem* {
+    TtRssGetFeedsCategoriesResponse feed_cats = m_network->getFeedsCategories(networkProxy());
+    TtRssGetLabelsResponse labels = m_network->getLabels(networkProxy());
 
-  ServiceRoot::requestSyncIn();
+    auto lst_error = m_network->lastError();
 
-  QThreadPool::globalInstance()->start([this]() {
-    try {
-      TtRssGetFeedsCategoriesResponse feed_cats = m_network->getFeedsCategories(networkProxy());
-      TtRssGetLabelsResponse labels = m_network->getLabels(networkProxy());
+    if (lst_error == QNetworkReply::NetworkError::NoError) {
+      auto* tree = feed_cats.feedsCategories(m_network, true, networkProxy(), m_network->url());
+      auto* lblroot = new LabelsNode(tree);
 
-      auto lst_error = m_network->lastError();
+      lblroot->setChildItems(labels.labels());
+      tree->appendChild(lblroot);
 
-      if (lst_error == QNetworkReply::NetworkError::NoError) {
-        auto* tree = feed_cats.feedsCategories(m_network, true, networkProxy(), m_network->url());
-        auto* lblroot = new LabelsNode(tree);
-
-        lblroot->setChildItems(labels.labels());
-        tree->appendChild(lblroot);
-
-        emit syncInFinished(tree);
-      }
-      else {
-        throw NetworkException(lst_error, tr("cannot get list of feeds, network error '%1'").arg(lst_error));
-      }
+      return tree;
     }
-    catch (const ApplicationException& ex) {
-      emit syncInFinished(ex);
-    }
+
+    throw NetworkException(lst_error, tr("cannot get list of feeds, network error '%1'").arg(lst_error));
   });
 }
 

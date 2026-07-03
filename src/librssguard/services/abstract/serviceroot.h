@@ -9,8 +9,10 @@
 #include "exceptions/applicationexception.h"
 #include "services/abstract/rootitem.h"
 
+#include <functional>
 #include <variant>
 
+#include <QFuture>
 #include <QJsonDocument>
 #include <QNetworkProxy>
 #include <QPair>
@@ -232,6 +234,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
 
     bool syncInRunning() const;
     void setSyncInRunning(bool running);
+    void waitForSyncInFinished();
 
   public slots:
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
@@ -247,6 +250,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     // associated with this account.
     void cleanAllItemsFromModel(bool clean_labels_too);
     void appendCommonNodes();
+    void startSyncInTask(std::function<RootItem*()> task);
 
   signals:
     // Called when the account requests article fetch
@@ -305,6 +309,7 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     QList<QAction*> m_contextMenuBin;
     QList<QAction*> m_contextMenuLabels;
     bool m_syncInRunning;
+    QFuture<void> m_syncInFuture;
 };
 
 #if QT_VERSION_MAJOR == 6

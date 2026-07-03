@@ -95,26 +95,15 @@ QList<Message> FeedlyServiceRoot::obtainNewMessages(Feed* feed,
 }
 
 void FeedlyServiceRoot::requestSyncIn() {
-  if (m_syncInRunning) {
-    return;
-  }
+  startSyncInTask([this]() {
+    auto tree = m_network->collections(true);
+    auto* lblroot = new LabelsNode(tree);
+    auto labels = m_network->tags();
 
-  ServiceRoot::requestSyncIn();
+    lblroot->setChildItems(labels);
+    tree->appendChild(lblroot);
 
-  QThreadPool::globalInstance()->start([this]() {
-    try {
-      auto tree = m_network->collections(true);
-      auto* lblroot = new LabelsNode(tree);
-      auto labels = m_network->tags();
-
-      lblroot->setChildItems(labels);
-      tree->appendChild(lblroot);
-
-      emit syncInFinished(tree);
-    }
-    catch (const ApplicationException& ex) {
-      emit syncInFinished(ex);
-    }
+    return tree;
   });
 }
 

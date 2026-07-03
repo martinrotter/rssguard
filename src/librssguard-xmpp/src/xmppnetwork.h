@@ -5,6 +5,7 @@
 #include "src/xmppserviceroot.h"
 
 #include <QObject>
+#include <QScopedPointer>
 #include <QTimer>
 #include <QXmppConfiguration.h>
 #include <QXmppDiscoveryIq.h>
@@ -98,6 +99,7 @@ class XmppNetwork : public QObject {
     QStringList m_extraNodes;
     QStringList m_xeps;
     QTimer m_syncInTimer;
+    QScopedPointer<RootItem> m_syncInTree;
 
     QList<QString> m_syncInPendingServices;
     bool m_syncInSent;

@@ -39,10 +39,8 @@ class NextcloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual void addNewFeed(RootItem* selected_item, const QString& url);
     virtual void requestSyncIn();
 
-  protected:
-    virtual RootItem* obtainNewTreeForSyncIn() const;
-
   private:
+    RootItem* obtainNewTreeForSyncIn() const;
     void updateTitle();
 
   private:
