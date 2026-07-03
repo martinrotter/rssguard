@@ -879,10 +879,9 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
       // In some case, messages are already stored in the DB and they all have primary DB ID.
       // This is particularly the case when user runs some message filter manually on existing messages
       // of some feed.
-      query_select_with_id
-        .prepare(QSL("SELECT date_created, is_read, is_important, contents, feed, title, author "
-                     "FROM Messages "
-                     "WHERE id = :id;"));
+      query_select_with_id.prepare(QSL("SELECT date_created, is_read, is_important, contents, feed, title, author "
+                                       "FROM Messages "
+                                       "WHERE id = :id;"));
 
       for (Message& message : messages) {
         int id_existing_message = -1;
@@ -1215,20 +1214,23 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
             // We can calculate real IDs because of how "auto-increment" algorithms work.
             //   https://www.sqlite.org/autoinc.html
             //   https://mariadb.com/kb/en/auto_increment
-            int last_msg_id = bulk_query.lastInsertId().toInt();
+            int first_msg_id = bulk_query.lastInsertId().toInt();
 
-            for (int l = i, c = 1; l < (i + batch_length); l++, c++) {
+            if (db.driverName() == QSL(APP_DB_SQLITE_DRIVER)) {
+              first_msg_id -= vals.size() - 1;
+            }
+
+            int inserted_index = 0;
+
+            for (int l = i; l < (i + batch_length); l++) {
               Message* msg = msgs_to_insert[l];
 
               if (msg->m_title.isEmpty()) {
-                // This article was not for sure inserted. Tweak
-                // next ID calculation.
-                c--;
                 continue;
               }
 
               msg->m_insertedUpdated = true;
-              msg->m_id = last_msg_id - batch_length + c;
+              msg->m_id = first_msg_id + inserted_index++;
 
               if (!msg->m_isRead) {
                 updated_messages.m_unread.append(*msg);

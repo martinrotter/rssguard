@@ -38,7 +38,7 @@ bool SqlQuery::exec(bool throw_ex) {
 void SqlQuery::logQuery() {
   QString str = lastQuery();
 
-#if QT_VERSION_MAJOR == 5
+#if !defined(NDEBUG) && QT_VERSION_MAJOR == 5
   QMapIterator<QString, QVariant> it(boundValues());
 
   while (it.hasNext()) {
