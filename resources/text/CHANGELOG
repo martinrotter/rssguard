@@ -33,6 +33,7 @@ Fixed:
 * Release debug logs no longer expose values stored in the database.
 * Newly downloaded articles now receive correct database identifiers when using MariaDB.
 * Feed updates can now be cancelled more reliably.
+* Authentication details are no longer forwarded to other websites during redirects.
 
 5.2.1
 -----

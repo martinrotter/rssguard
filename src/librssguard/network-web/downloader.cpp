@@ -211,6 +211,20 @@ static int setNumberOfRedirections(QNetworkReply* reply, int number) {
   return reply->setProperty("redirections_count", number);
 }
 
+static int effectivePort(const QUrl& url) {
+  if (url.port() >= 0) {
+    return url.port();
+  }
+
+  return url.scheme() == QL1S("https") ? 443 : url.scheme() == QL1S("http") ? 80 : -1;
+}
+
+static bool hasSameOrigin(const QUrl& first, const QUrl& second) {
+  return first.scheme().compare(second.scheme(), Qt::CaseSensitivity::CaseInsensitive) == 0 &&
+         first.host().compare(second.host(), Qt::CaseSensitivity::CaseInsensitive) == 0 &&
+         effectivePort(first) == effectivePort(second);
+}
+
 void Downloader::finished() {
   auto* reply = qobject_cast<QNetworkReply*>(sender());
 
@@ -250,6 +264,14 @@ void Downloader::finished() {
     redirection_url = request.url().resolved(redirection_url);
 
     qWarningNN << LOGSEC_NETWORK << "Resolved redirection URL:" << QUOTE_W_SPACE_DOT(redirection_url.toString());
+
+    if (!hasSameOrigin(request.url(), redirection_url)) {
+      request.setRawHeader(HTTP_HEADERS_AUTHORIZATION, {});
+      request.setRawHeader(HTTP_HEADERS_COOKIE, {});
+      m_targetProtected = false;
+      m_targetUsername.clear();
+      m_targetPassword.clear();
+    }
 
     request.setUrl(redirection_url);
 
