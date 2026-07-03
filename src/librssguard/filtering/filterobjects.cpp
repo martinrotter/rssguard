@@ -183,7 +183,7 @@ double FilterMessage::score() const {
 }
 
 void FilterMessage::setScore(double score) {
-  m_message->m_score = score;
+  m_message->m_score = std::min(100.0, std::max(0.0, score));
 }
 
 void FilterMessage::setSystem(FilteringSystem* sys) {
