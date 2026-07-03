@@ -23,6 +23,7 @@ Fixed:
 * Article labels are now correctly preserved when importing from QuiteRSS.
 * Feed and folder descriptions are now correctly preserved when importing from RSS Guard 4.x.
 * Fixed discovery of gzip-compressed sitemap feeds.
+* Nextcloud feeds referencing missing folders no longer crash account synchronization.
 
 5.2.1
 -----

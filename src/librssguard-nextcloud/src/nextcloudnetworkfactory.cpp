@@ -215,7 +215,16 @@ RootItem* NextcloudNetworkFactory::feedsCategories(const QNetworkProxy& custom_p
 
     // NOTE: Starting with News 15.1.0, top-level feeds do not have parent folder ID 0, but JSON "null".
     // Luckily, if folder ID is not convertible to int, then default 0 value is returned.
-    cats.value(QString::number(item[QSL("folderId")].toInt(0)))->appendChild(feed);
+    const QString folder_id = QString::number(item[QSL("folderId")].toInt(0));
+    RootItem* feed_parent = cats.value(folder_id);
+
+    if (feed_parent == nullptr) {
+      qWarningNN << LOGSEC_NEXTCLOUD << "Feed" << QUOTE_W_SPACE(feed->customId()) << "references missing folder"
+                 << QUOTE_W_SPACE(folder_id) << "and will be placed at account root.";
+      feed_parent = parent;
+    }
+
+    feed_parent->appendChild(feed);
     qDebugNN << LOGSEC_NEXTCLOUD << "Custom ID of next fetched processed feed is"
              << QUOTE_W_SPACE_DOT(feed->customId());
   }
