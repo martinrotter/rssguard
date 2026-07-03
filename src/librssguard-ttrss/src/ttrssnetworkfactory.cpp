@@ -1087,8 +1087,8 @@ QList<Message> TtRssGetHeadlinesResponse::messages(ServiceRoot* root) const {
 
       for (const QJsonValue& attachment : std::as_const(json_att)) {
         QJsonObject mapped_attachemnt = attachment.toObject();
-        MessageEnclosure* enclosure = new MessageEnclosure(mapped_attachemnt[QSL("content_type")].toString(),
-                                                           mapped_attachemnt[QSL("content_url")].toString());
+        MessageEnclosure* enclosure = new MessageEnclosure(mapped_attachemnt[QSL("content_url")].toString(),
+                                                           mapped_attachemnt[QSL("content_type")].toString());
 
         message.m_enclosures.append(QSharedPointer<MessageEnclosure>(enclosure));
       }
