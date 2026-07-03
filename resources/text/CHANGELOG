@@ -27,6 +27,7 @@ Fixed:
 * Account saving errors no longer cause the application to crash.
 * Failed Tiny Tiny RSS synchronization no longer replaces the local feed tree with an empty one.
 * Tiny Tiny RSS article attachments now use the correct URL and media type.
+* Failed Gmail account synchronization no longer leaves the account permanently busy.
 
 5.2.1
 -----

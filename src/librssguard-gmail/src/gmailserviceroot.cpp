@@ -16,6 +16,8 @@
 #include <librssguard/network-web/oauth2service.h>
 #include <librssguard/services/abstract/labelsnode.h>
 
+#include <QScopedPointer>
+
 GmailServiceRoot::GmailServiceRoot(RootItem* parent)
   : ServiceRoot(parent), m_network(new GmailNetworkFactory(this)), m_actionReply(nullptr) {
   m_network->setService(this);
@@ -124,39 +126,33 @@ CustomMessagePreviewer* GmailServiceRoot::customMessagePreviewer() {
 }
 
 void GmailServiceRoot::requestSyncIn() {
-  if (m_syncInRunning) {
-    return;
-  }
+  startSyncInTask([this]() -> RootItem* {
+    QScopedPointer<RootItem> root(new RootItem());
+    Feed* inbox = new Feed(tr("Inbox"),
+                           QSL(GMAIL_SYSTEM_LABEL_INBOX),
+                           qApp->icons()->fromTheme(QSL("mail-inbox"), QSL("mail-inbox-symbolic")),
+                           root.data());
 
-  ServiceRoot::requestSyncIn();
+    inbox->setKeepOnTop(true);
 
-  auto* root = new RootItem();
-  Feed* inbox = new Feed(tr("Inbox"),
-                         QSL(GMAIL_SYSTEM_LABEL_INBOX),
-                         qApp->icons()->fromTheme(QSL("mail-inbox"), QSL("mail-inbox-symbolic")),
-                         root);
+    root->appendChild(inbox);
+    root->appendChild(
+      new Feed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root.data()));
+    root->appendChild(
+      new Feed(tr("Drafts"), QSL(GMAIL_SYSTEM_LABEL_DRAFT), qApp->icons()->fromTheme(QSL("gtk-edit")), root.data()));
+    root->appendChild(new Feed(tr("Spam"),
+                               QSL(GMAIL_SYSTEM_LABEL_SPAM),
+                               qApp->icons()->fromTheme(QSL("mail-mark-junk")),
+                               root.data()));
 
-  inbox->setKeepOnTop(true);
+    auto* lblroot = new LabelsNode(root.data());
+    auto labels = m_network->labels(true, networkProxy());
 
-  root->appendChild(inbox);
-  root
-    ->appendChild(new Feed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root));
-  root->appendChild(new Feed(tr("Drafts"),
-                             QSL(GMAIL_SYSTEM_LABEL_DRAFT),
-                             qApp->icons()->fromTheme(QSL("gtk-edit")),
-                             root));
-  root->appendChild(new Feed(tr("Spam"),
-                             QSL(GMAIL_SYSTEM_LABEL_SPAM),
-                             qApp->icons()->fromTheme(QSL("mail-mark-junk")),
-                             root));
+    lblroot->setChildItems(labels);
+    root->appendChild(lblroot);
 
-  auto* lblroot = new LabelsNode(root);
-  auto labels = m_network->labels(true, networkProxy());
-
-  lblroot->setChildItems(labels);
-  root->appendChild(lblroot);
-
-  emit syncInFinished(root);
+    return root.take();
+  });
 }
 
 QList<QAction*> GmailServiceRoot::contextMenuMessagesList(const QList<Message>& messages) {
