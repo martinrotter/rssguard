@@ -367,7 +367,7 @@ void FeedReader::updateManuallyIntervaledFeeds() {
 
 void FeedReader::stopRunningFeedUpdate() {
   if (m_feedDownloader != nullptr) {
-    m_feedDownloader->stopRunningUpdate();
+    QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate", Qt::ConnectionType::BlockingQueuedConnection);
   }
 }
 
@@ -537,7 +537,7 @@ void FeedReader::quit() {
 
   // Stop running updates.
   if (m_feedDownloader != nullptr) {
-    m_feedDownloader->stopRunningUpdate();
+    QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate", Qt::ConnectionType::BlockingQueuedConnection);
 
     if (m_feedDownloader->isUpdateRunning() || m_feedDownloader->isCacheSynchronizationRunning()) {
       QEventLoop loop(this);

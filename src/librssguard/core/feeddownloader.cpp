@@ -22,15 +22,17 @@
 #include <QString>
 #include <QtConcurrentMap>
 
-FeedDownloader::FeedDownloader() : QObject(), m_isCacheSynchronizationRunning(false), m_stopFetching(false) {
+FeedDownloader::FeedDownloader()
+  : QObject(), m_isUpdateRunning(false), m_isCacheSynchronizationRunning(false), m_stopFetching(false),
+    m_watcherLookup(new QFutureWatcher<FeedUpdateResult>(this)) {
   qRegisterMetaType<FeedDownloadResults>("FeedDownloadResults");
 
-  connect(&m_watcherLookup, &QFutureWatcher<FeedUpdateResult>::resultReadyAt, this, [=](int idx) {
-    FeedUpdateResult res = m_watcherLookup.resultAt(idx);
+  connect(m_watcherLookup, &QFutureWatcher<FeedUpdateResult>::resultReadyAt, this, [=](int idx) {
+    FeedUpdateResult res = m_watcherLookup->resultAt(idx);
 
-    emit updateProgress(res.feed, m_watcherLookup.progressValue(), m_watcherLookup.progressMaximum());
+    emit updateProgress(res.feed, m_watcherLookup->progressValue(), m_watcherLookup->progressMaximum());
   });
-  connect(&m_watcherLookup, &QFutureWatcher<FeedUpdateResult>::finished, this, [=]() {
+  connect(m_watcherLookup, &QFutureWatcher<FeedUpdateResult>::finished, this, [=]() {
     finalizeUpdate();
   });
 }
@@ -40,7 +42,7 @@ FeedDownloader::~FeedDownloader() {
 }
 
 bool FeedDownloader::isUpdateRunning() const {
-  return !m_feeds.isEmpty();
+  return m_isUpdateRunning;
 }
 
 void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>& caches, bool emit_signals) {
@@ -66,6 +68,7 @@ void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>&
 }
 
 void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
+  m_isUpdateRunning = !feeds.isEmpty();
   m_erroredAccounts.clear();
   {
     QMutexLocker lck(&m_mutexResults);
@@ -168,7 +171,7 @@ void FeedDownloader::updateFeeds(const QList<Feed*>& feeds) {
       return updateThreadedFeed(fd);
     };
 
-    m_watcherLookup.setFuture(QtConcurrent::mapped(
+    m_watcherLookup->setFuture(QtConcurrent::mapped(
 #if QT_VERSION_MAJOR > 5
       qApp->workHorsePool(),
 #endif
@@ -233,10 +236,11 @@ void FeedDownloader::skipFeedUpdateWithError(ServiceRoot* acc, Feed* feed, const
 void FeedDownloader::stopRunningUpdate() {
   m_stopFetching = true;
 
-  m_watcherLookup.cancel();
-  m_watcherLookup.waitForFinished();
+  m_watcherLookup->cancel();
+  m_watcherLookup->waitForFinished();
 
   m_feeds.clear();
+  m_isUpdateRunning = false;
 }
 
 void FeedDownloader::updateOneFeed(ServiceRoot* acc,
@@ -472,7 +476,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
   }
 
   qDebugNN << LOGSEC_FEEDDOWNLOADER << "Made progress in feed updates, total feeds count "
-           << m_watcherLookup.progressValue() + 1 << "/" << m_feeds.size() << " (id of feed is " << feed->id() << ").";
+           << m_watcherLookup->progressValue() + 1 << "/" << m_feeds.size() << " (id of feed is " << feed->id() << ").";
 }
 
 void FeedDownloader::finalizeUpdate() {
@@ -487,6 +491,7 @@ void FeedDownloader::finalizeUpdate() {
   }
 
   m_feeds.clear();
+  m_isUpdateRunning = false;
 
   // Update of feeds has finished.
   // NOTE: This means that now "update lock" can be unlocked

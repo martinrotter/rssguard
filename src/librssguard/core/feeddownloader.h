@@ -90,6 +90,7 @@ class FeedDownloader : public QObject {
     FeedUpdateResult updateThreadedFeed(const FeedUpdateRequest& fd);
 
   private:
+    std::atomic<bool> m_isUpdateRunning;
     std::atomic<bool> m_isCacheSynchronizationRunning;
     std::atomic<bool> m_stopFetching;
     QMutex m_mutexDb;
@@ -97,7 +98,7 @@ class FeedDownloader : public QObject {
     mutable QMutex m_mutexOverloadedHosts;
     QHash<ServiceRoot*, ApplicationException> m_erroredAccounts;
     QList<FeedUpdateRequest> m_feeds = {};
-    QFutureWatcher<FeedUpdateResult> m_watcherLookup;
+    QFutureWatcher<FeedUpdateResult>* m_watcherLookup;
     FeedDownloadResults m_results;
     QHash<QString, QDateTime> m_overloadedHosts;
 };

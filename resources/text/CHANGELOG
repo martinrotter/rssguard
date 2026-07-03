@@ -32,6 +32,7 @@ Fixed:
 * GReader-compatible accounts no longer expose sensitive login details in the debug log.
 * Release debug logs no longer expose values stored in the database.
 * Newly downloaded articles now receive correct database identifiers when using MariaDB.
+* Feed updates can now be cancelled more reliably.
 
 5.2.1
 -----
