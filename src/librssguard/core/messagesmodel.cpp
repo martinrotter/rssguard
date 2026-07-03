@@ -1029,7 +1029,12 @@ QVariant MessagesModel::data(const QModelIndex& idx, int role) const {
         QVariant dta = data(idx, Qt::ItemDataRole::EditRole);
         int level = std::min(MSG_SCORE_MAX, std::max(MSG_SCORE_MIN, std::floor(dta.toDouble() / 10.0)));
 
-        return m_scoreIcons.at(level);
+        if (level < 0 || level >= m_scoreIcons.size()) {
+          return QVariant();
+        }
+        else {
+          return m_scoreIcons.at(level);
+        }
       }
       else {
         return QVariant();
