@@ -13,6 +13,7 @@ Fixed:
 * Localization settings no longer crash when translation contributor metadata is empty or malformed.
 * Preview scrolling actions no longer crash when a media player tab is active.
 * WebEngine callbacks no longer access destroyed browser tabs after asynchronous page operations finish.
+* Fix marking articles read with delay. (#2315)
 * Starting another RSS Guard instance no longer risks freezing the already running application.
 * Closing a tab while a Gemini page is loading no longer risks crashing the application.
 * Invalid folder relationships no longer cause RSS Guard to freeze while loading accounts or imported data.

@@ -57,6 +57,8 @@ void MessagesView::reloadFontSettings() {
 }
 
 void MessagesView::setupArticleMarkingPolicy() {
+  cancelDelayedArticleMarking();
+
   m_articleMarkingPolicy =
     ArticleMarkingPolicy(qApp->settings()->value(GROUP(Messages), SETTING(Messages::ArticleMarkOnSelection)).toInt());
   m_articleMarkingDelay =
@@ -713,6 +715,8 @@ void MessagesView::mouseMoveEvent(QMouseEvent* event) {
 }
 
 void MessagesView::selectionChanged(const QItemSelection& selected, const QItemSelection& deselected) {
+  cancelDelayedArticleMarking();
+
   const QModelIndexList selected_rows = selectionModel()->selectedRows();
   const QModelIndex current_index = currentIndex();
   const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
@@ -735,7 +739,7 @@ void MessagesView::selectionChanged(const QItemSelection& selected, const QItemS
         }
         else if (m_articleMarkingPolicy == ArticleMarkingPolicy::MarkWithDelay) {
           qDebugNN << LOGSEC_GUI << "(Re)Starting timer to mark article as read with a delay.";
-          m_delayedArticleIndex = current_index;
+          m_delayedArticleId = message.m_id;
           m_delayedArticleMarker.start();
         }
         else {
@@ -796,28 +800,51 @@ void MessagesView::requestArticleHiding() {
   emit currentMessageRemoved(m_sourceModel->loadedItem());
 }
 
+void MessagesView::cancelDelayedArticleMarking() {
+  m_delayedArticleMarker.stop();
+  m_delayedArticleId = 0;
+}
+
 void MessagesView::markSelectedMessagesReadDelayed() {
   qDebugNN << LOGSEC_GUI << "Delay has passed! Marking article as read NOW.";
 
+  const int delayed_article_id = m_delayedArticleId;
+  m_delayedArticleId = 0;
+
   const QModelIndexList selected_rows = selectionModel()->selectedRows();
-  const QModelIndex current_index = m_delayedArticleIndex;
+  const QModelIndex current_index = currentIndex();
+  const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
 
-  if (selected_rows.size() == 1 && current_index.isValid() && !m_processingRightMouseButton &&
-      m_articleMarkingPolicy == ArticleMarkingPolicy::MarkWithDelay) {
-    const QModelIndex mapped_current_index = m_proxyModel->mapToSource(current_index);
-    Message message = m_sourceModel->messageForRow(mapped_current_index.row());
+  if (delayed_article_id == 0 || selected_rows.size() != 1 || !mapped_current_index.isValid() ||
+      !selectionModel()->isRowSelected(current_index.row(), current_index.parent()) || m_processingRightMouseButton ||
+      m_articleMarkingPolicy != ArticleMarkingPolicy::MarkWithDelay) {
+    return;
+  }
 
-    m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
-    message.m_isRead = true;
+  const Message message = m_sourceModel->messageForRow(mapped_current_index.row());
 
-    requestArticleDisplay(message);
+  if (message.m_id != delayed_article_id || message.m_isRead) {
+    return;
+  }
+
+  m_sourceModel->setMessageRead(mapped_current_index.row(), RootItem::ReadStatus::Read);
+
+  const QModelIndex new_current_index = m_proxyModel->mapToSource(currentIndex());
+
+  if (selectionModel()->selectedRows().size() == 1 && new_current_index.isValid() &&
+      selectionModel()->isRowSelected(currentIndex().row(), currentIndex().parent())) {
+    const Message current_message = m_sourceModel->messageForRow(new_current_index.row());
+
+    if (current_message.m_id == delayed_article_id) {
+      requestArticleDisplay(current_message);
+    }
   }
 }
 
 void MessagesView::loadItem(RootItem* item) {
   switchColumnProfileForItem(item);
 
-  m_delayedArticleMarker.stop();
+  cancelDelayedArticleMarking();
 
   const int column = header()->sortIndicatorSection();
   const Qt::SortOrder order = header()->sortIndicatorOrder();
@@ -1003,6 +1030,8 @@ void MessagesView::markMessagesBelowUnread() {
 }
 
 void MessagesView::toggleSelectedMessagesReadUnread() {
+  cancelDelayedArticleMarking();
+
   const QModelIndexList selected_indexes = selectionModel()->selectedRows();
 
   if (selected_indexes.isEmpty()) {
@@ -1023,6 +1052,8 @@ void MessagesView::toggleSelectedMessagesReadUnread() {
 }
 
 void MessagesView::setSelectedMessagesReadStatus(RootItem::ReadStatus read) {
+  cancelDelayedArticleMarking();
+
   const QModelIndexList selected_indexes = selectionModel()->selectedRows();
 
   if (selected_indexes.isEmpty()) {

@@ -161,6 +161,7 @@ class MessagesView : public BaseTreeView {
     const QString& columnProfileSettingsKey(ColumnProfile profile) const;
     void requestArticleDisplay(const Message& msg);
     void requestArticleHiding();
+    void cancelDelayedArticleMarking();
 
   private:
     QMenu* m_contextMenu;
@@ -174,7 +175,7 @@ class MessagesView : public BaseTreeView {
     ArticleMarkingPolicy m_articleMarkingPolicy;
     int m_articleMarkingDelay;
     QTimer m_delayedArticleMarker;
-    QModelIndex m_delayedArticleIndex;
+    int m_delayedArticleId = 0;
 };
 
 inline MessagesProxyModel* MessagesView::model() const {
