@@ -23,6 +23,13 @@
 #define SYNC_IN_IDLE_TIMEOUT 6000
 #define XMPP_PROTOCOL_PUBSUB QSL("http://jabber.org/protocol/pubsub")
 
+namespace {
+  QChar iconLetter(const QString& text) {
+    const QString trimmed_text = text.trimmed();
+    return trimmed_text.isEmpty() ? QChar() : trimmed_text.at(0);
+  }
+} // namespace
+
 XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
   : QObject(parent), m_root(parent), m_xmppClient(new QXmppClient(this)),
     m_discoveryManager(new QXmppDiscoveryManager()), m_pubSubManager(new PubSubManager(this)),
@@ -141,9 +148,10 @@ void XmppNetwork::reportSyncInFinish(const ServiceRoot::SyncInResult& result, bo
   }
 
   if (first_report) {
-    emit m_root->syncInFinished(connected ? result
-                                         : ServiceRoot::SyncInResult(ApplicationException(
-                                             tr("XMPP connection was closed during services discovery"))));
+    emit m_root->syncInFinished(connected
+                                  ? result
+                                  : ServiceRoot::SyncInResult(ApplicationException(tr("XMPP connection was closed "
+                                                                                      "during services discovery"))));
   }
   else {
     qWarningNN << LOGSEC_XMPP << "Finish of sync-in discovery was already reported.";
@@ -358,7 +366,7 @@ void XmppNetwork::fetchPubSubSubscriptions(const QString& service, XmppCategory:
           feed->setService(service);
           feed->setCustomId(sub.node());
           feed->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(feed->title()),
-                                               feed->title().trimmed()[0]));
+                                               iconLetter(feed->title())));
 
           childs.append(feed);
         }
@@ -397,9 +405,11 @@ void XmppNetwork::fetchChatroom(const QString& chatroom,
     return identity.category() == QSL("conference") && identity.type() == QSL("text");
   });
 
-  feed->setTitle(extracted_title.has_value() ? extracted_title->name() : chatroom);
+  const QString room_name = extracted_title.has_value() ? extracted_title->name().trimmed() : QString();
+
+  feed->setTitle(room_name.isEmpty() ? chatroom : room_name);
   feed->setCustomId(chatroom);
-  feed->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(chatroom), feed->title().trimmed()[0]));
+  feed->setIcon(IconFactory::fromColor(TextFactory::generateColorFromText(chatroom), iconLetter(feed->title())));
 
   service_folder->appendChild(feed);
 

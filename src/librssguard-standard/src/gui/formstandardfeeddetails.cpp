@@ -96,7 +96,7 @@ void FormStandardFeedDetails::apply() {
 
   QList<StandardFeed*> fds = feeds<StandardFeed>();
 
-  for (StandardFeed* std_feed : fds) {
+  for (StandardFeed* std_feed : std::as_const(fds)) {
     // Setup data for the feed.
     if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbTitle)) {
       std_feed->setTitle(m_standardFeedDetails->m_ui.m_txtTitle->lineEdit()->text().simplified());
@@ -206,14 +206,9 @@ void FormStandardFeedDetails::apply() {
       new_parent_id = std_feed->parent()->id();
     }
 
-    try {
-      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-        DatabaseQueries::createOverwriteFeed(db, std_feed, m_serviceRoot->accountId(), new_parent_id);
-      });
-    }
-    catch (const ApplicationException& ex) {
-      qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
-    }
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createOverwriteFeed(db, std_feed, m_serviceRoot->accountId(), new_parent_id);
+    });
 
     if (isChangeAllowed(m_standardFeedDetails->m_ui.m_mcbParentCategory)) {
       m_serviceRoot->requestItemReassignment(std_feed, parent);

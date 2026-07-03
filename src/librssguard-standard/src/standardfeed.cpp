@@ -549,7 +549,7 @@ void StandardFeed::setProxyExtraDomains(const QStringList& domains) {
 }
 
 void StandardFeed::removeItself() {
-  qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
     DatabaseQueries::deleteFeed(db, this, account()->accountId());
   });
 }

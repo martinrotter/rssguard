@@ -17,6 +17,9 @@ Fixed:
 * Closing a tab while a Gemini page is loading no longer risks crashing the application.
 * Invalid folder relationships no longer cause RSS Guard to freeze while loading accounts or imported data.
 * Accounts can no longer be deleted while their feed tree is being synchronized.
+* Fixed a possible crash while synchronizing XMPP chat rooms with missing names.
+* Feed saving and importing errors no longer cause the application to crash.
+* Feed and folder deletion now uses the correct database connection.
 
 5.2.1
 -----

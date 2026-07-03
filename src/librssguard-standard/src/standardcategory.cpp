@@ -75,7 +75,7 @@ void StandardCategory::removeItself() {
   }
 
   // Children are removed, remove this standard category too.
-  qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
     DatabaseQueries::deleteCategory(db, this);
   });
 }

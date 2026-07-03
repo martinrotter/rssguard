@@ -639,7 +639,14 @@ void FormDiscoverFeeds::importSelectedFeeds() {
       m_serviceRoot->itemChanged({std_feed});
     }
     catch (const ApplicationException& ex) {
-      qFatal("Cannot save feed: '%s'.", qPrintable(ex.message()));
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           {tr("Cannot import feed"),
+                            tr("Cannot save feed: %1").arg(ex.message()),
+                            QSystemTrayIcon::MessageIcon::Critical},
+                           {},
+                           {},
+                           this);
+      return;
     }
   }
 }
