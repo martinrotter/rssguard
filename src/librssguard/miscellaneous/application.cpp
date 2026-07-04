@@ -25,6 +25,7 @@
 #include "miscellaneous/notificationfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/thread.h"
+#include "network-web/cookiejar.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/serviceroot.h"
@@ -985,6 +986,7 @@ void Application::onAboutToQuit() {
     mainForm()->saveSize();
   }
 
+  web()->cookieJar()->saveCookies();
   settings()->sync();
 }
 
