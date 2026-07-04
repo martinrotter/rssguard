@@ -1304,23 +1304,17 @@ void MessagesModel::fetchFullArticleContents(const QModelIndexList& articles) {
                           })
                           .toList();
 
-  d.doSingleWork(
+  d.doWork<Message>(
     tr("Fetch full article contents"),
-    false,
-    [&](QFutureWatcher<void>& rprt) {
-      int prog = 0;
-      emit rprt.progressRangeChanged(0, msgs.size());
-
-      for (Message& msg : msgs) {
-        try {
-          msg.m_contents = FeedReader::getFullArticle(feedById(msg.m_feedId), msg.m_url, false);
-          updateSourceArticle(msg);
-        }
-        catch (const ApplicationException& ex) {
-          qCriticalNN << LOGSEC_CORE << "Cannot fetch full article" << QUOTE_W_SPACE_DOT(ex.message());
-        }
-
-        emit rprt.progressValueChanged(++prog);
+    true,
+    msgs,
+    [&](Message msg) {
+      try {
+        msg.m_contents = FeedReader::getFullArticle(feedById(msg.m_feedId), msg.m_url, false);
+        updateSourceArticle(msg);
+      }
+      catch (const ApplicationException& ex) {
+        qCriticalNN << LOGSEC_CORE << "Cannot fetch full article" << QUOTE_W_SPACE_DOT(ex.message());
       }
     },
     [](int progress) {
