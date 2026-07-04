@@ -202,4 +202,6 @@ void BaseTreeView::restoreColumnSortStates(const ColumnSortStates& states) {
   if (isSortingEnabled()) {
     sortByColumn(primary_sort.first, primary_sort.second);
   }
+
+  model()->sort(primary_sort.first, primary_sort.second);
 }

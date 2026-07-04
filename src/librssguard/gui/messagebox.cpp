@@ -112,13 +112,13 @@ QMessageBox::StandardButton MsgBox::show(QWidget* parent,
             act.m_function);
   }
 
-  auto dialog_res = msg_box.exec();
+  QMessageBox::StandardButton dialog_res = QMessageBox::StandardButton(msg_box.exec());
 
-  if (dont_show_again) {
+  if (dont_show_again && dialog_res == default_button) {
     MsgBox::setDontShowAgain(dont_show_again_id, dont_show_again);
   }
 
-  if (dialog_res == -1) {
+  if (dialog_res < QMessageBox::StandardButton::NoButton) {
     return QMessageBox::StandardButton::Cancel;
   }
   else {
