@@ -464,8 +464,11 @@ void WebFactory::generatePacAndStartServer(const QList<ServiceRoot*>& accounts) 
 
       if (has_proxy_fallback) {
         // Single account with account-level proxy fallback:
-        // only feeds differing from the account proxy need explicit host rules.
-        should_insert_rule = isExplicitProxy(feed_proxy) && feed_proxy != account_proxy;
+        // feeds with a different explicit proxy or with proxying disabled need host rules.
+        const bool disables_fallback = feed_proxy.type() == QNetworkProxy::ProxyType::NoProxy;
+        const bool uses_different_proxy = isExplicitProxy(feed_proxy) && feed_proxy != account_proxy;
+
+        should_insert_rule = disables_fallback || uses_different_proxy;
       }
       else {
         // No global PAC fallback: every explicit account/feed proxy needs its own host rule.
@@ -476,7 +479,7 @@ void WebFactory::generatePacAndStartServer(const QList<ServiceRoot*>& accounts) 
         continue;
       }
 
-      for (const QString& feed_host : feed_hosts) {
+      for (const QString& feed_host : std::as_const(feed_hosts)) {
         if (proxies_per_host.contains(feed_host)) {
           if (proxies_per_host.value(feed_host) != feed_proxy) {
             qWarningNN << LOGSEC_NETWORK << "Host" << QUOTE_W_SPACE(feed_host)

@@ -440,14 +440,15 @@ bool OAuth2Service::login(const std::function<void()>& functor_when_logged_in) {
     return false;
   }
 
-  bool did_token_expire = tokensExpireIn().isNull() || tokensExpireIn() < QDateTime::currentDateTime().addSecs(-120);
+  bool should_refresh_token =
+    tokensExpireIn().isNull() || tokensExpireIn() < QDateTime::currentDateTime().addSecs(120);
   bool does_token_exist = !refreshToken().isEmpty();
 
   // We refresh current tokens only if:
   //   1. We have some existing refresh token.
   //   AND
-  //   2. We do not know its expiration date or it passed.
-  if (does_token_exist && did_token_expire) {
+  //   2. We do not know its expiration date or it expires soon.
+  if (does_token_exist && should_refresh_token) {
     refreshAccessToken();
     return false;
   }
