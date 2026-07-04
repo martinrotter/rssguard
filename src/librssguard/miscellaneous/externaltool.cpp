@@ -87,6 +87,8 @@ QList<ExternalTool> ExternalTool::toolsFromSettings() {
 }
 
 void ExternalTool::setToolsToSettings(QVector<ExternalTool>& tools) {
+  qApp->settings()->remove(GROUP(ExternalTools));
+
   int i = 0;
 
   for (ExternalTool tool : tools) {
