@@ -5,6 +5,7 @@
 #include "definitions/definitions.h"
 
 #include <QDateTime>
+#include <QRegularExpression>
 
 HttpServer::HttpServer(QObject* parent) : QObject(parent), m_listenAddress(QHostAddress()), m_listenPort(0) {
   connect(&m_httpServer, &QTcpServer::newConnection, this, &HttpServer::clientConnected);
@@ -69,15 +70,18 @@ void HttpServer::setListenAddressPort(const QString& full_uri, bool start_handle
 void HttpServer::clientConnected() {
   QTcpSocket* socket = m_httpServer.nextPendingConnection();
 
-  QObject::connect(socket, &QTcpSocket::disconnected, socket, &QTcpSocket::deleteLater);
-  QObject::connect(socket, &QTcpSocket::readyRead, [this, socket]() {
+  QObject::connect(socket, &QTcpSocket::disconnected, this, [this, socket]() {
+    m_connectedClients.remove(socket);
+    socket->deleteLater();
+  });
+  QObject::connect(socket, &QTcpSocket::readyRead, this, [this, socket]() {
     readReceivedData(socket);
   });
 }
 
 void HttpServer::readReceivedData(QTcpSocket* socket) {
   if (!m_connectedClients.contains(socket)) {
-    m_connectedClients[socket].m_address = QSL(URI_SCHEME_HTTP) + m_httpServer.serverAddress().toString();
+    m_connectedClients[socket].m_address = m_httpServer.serverAddress().toString();
     m_connectedClients[socket].m_port = m_httpServer.serverPort();
   }
 
@@ -112,9 +116,7 @@ void HttpServer::readReceivedData(QTcpSocket* socket) {
     socket->disconnectFromHost();
     m_connectedClients.remove(socket);
   }
-  else if (!request->m_url.isEmpty()) {
-    Q_ASSERT(request->m_state != HttpRequest::State::ReadingUrl);
-
+  else if (request->m_state == HttpRequest::State::ReadingBody) {
     answerClient(socket, *request);
     m_connectedClients.remove(socket);
   }
@@ -198,7 +200,13 @@ bool HttpServer::HttpRequest::readUrl(QTcpSocket* socket) {
       return false;
     }
 
-    m_url.setUrl(m_address + QString::number(m_port) + QString::fromUtf8(m_fragment));
+    QUrl base_url;
+
+    base_url.setScheme(QSL("http"));
+    base_url.setHost(m_address);
+    base_url.setPort(m_port);
+
+    m_url = base_url.resolved(QUrl::fromEncoded(m_fragment));
     m_state = State::ReadingStatus;
 
     if (!m_url.isValid()) {
@@ -226,13 +234,19 @@ bool HttpServer::HttpRequest::readStatus(QTcpSocket* socket) {
   }
 
   if (finished) {
-    if ((std::isdigit(m_fragment.at(m_fragment.size() - 3)) == 0) ||
-        (std::isdigit(m_fragment.at(m_fragment.size() - 1)) == 0)) {
-      qWarningNN << LOGSEC_NETWORK << "Invalid version";
+    static const QRegularExpression version_pattern(QSL("^HTTP/(\\d+)\\.(\\d+)$"));
+    const auto match = version_pattern.match(QString::fromLatin1(m_fragment));
+    bool major_ok;
+    bool minor_ok;
+    const uint major = match.captured(1).toUInt(&major_ok);
+    const uint minor = match.captured(2).toUInt(&minor_ok);
+
+    if (!match.hasMatch() || !major_ok || !minor_ok || major > 255 || minor > 255) {
+      qWarningNN << LOGSEC_NETWORK << "Invalid HTTP version";
       return false;
     }
 
-    m_version = qMakePair(m_fragment.at(m_fragment.size() - 3) - '0', m_fragment.at(m_fragment.size() - 1) - '0');
+    m_version = qMakePair(quint8(major), quint8(minor));
     m_state = State::ReadingHeader;
     m_fragment.clear();
   }
@@ -267,7 +281,7 @@ bool HttpServer::HttpRequest::readHeader(QTcpSocket* socket) {
     }
   }
 
-  return false;
+  return true;
 }
 
 void HttpServer::stop() {
