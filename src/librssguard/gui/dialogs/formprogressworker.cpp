@@ -26,6 +26,7 @@ FormProgressWorker::~FormProgressWorker() {
 }
 
 void FormProgressWorker::requestCancellation() {
+  m_wasCanceled = true;
   m_btnCancel->setEnabled(false);
   emit cancelRequested();
 }
@@ -48,11 +49,7 @@ void FormProgressWorker::setLabel(const QString& label) {
 }
 
 void FormProgressWorker::onFinished() {
-  accept();
-}
-
-void FormProgressWorker::onCanceled() {
-  reject();
+  done(m_wasCanceled ? QDialog::DialogCode::Rejected : QDialog::DialogCode::Accepted);
 }
 
 void FormProgressWorker::setCancelEnabled(bool visible) {
@@ -69,6 +66,7 @@ int FormProgressWorker::doSingleWork(const QString& title,
                                      bool can_cancel,
                                      const std::function<void(QFutureWatcher<void>&)>& work_functor,
                                      const std::function<QString(int)>& label_functor) {
+  m_wasCanceled = false;
   setCancelEnabled(can_cancel);
   setWindowTitle(title);
 
@@ -88,7 +86,6 @@ void FormProgressWorker::setupFuture(QFuture<void>& future,
     setLabel(label_functor(progress));
   });
   connect(&watcher, &QFutureWatcher<void>::finished, this, &FormProgressWorker::onFinished);
-  connect(&watcher, &QFutureWatcher<void>::canceled, this, &FormProgressWorker::onCanceled);
   connect(this, &FormProgressWorker::cancelRequested, &watcher, &QFutureWatcher<void>::cancel);
 
   watcher.setFuture(future);

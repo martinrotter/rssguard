@@ -44,7 +44,6 @@ class RSSGUARD_DLLSPEC FormProgressWorker : public QDialog {
     void setProgress(int progress);
     void setLabel(const QString& label);
     void onFinished();
-    void onCanceled();
 
   private:
     void setupFuture(QFuture<void>& future,
@@ -56,6 +55,7 @@ class RSSGUARD_DLLSPEC FormProgressWorker : public QDialog {
     Ui::FormProgressWorker* m_ui;
     QPushButton* m_btnCancel;
     QFuture<void> m_future;
+    bool m_wasCanceled = false;
 };
 
 template <class TInput>
@@ -64,6 +64,7 @@ inline int FormProgressWorker::doWork(const QString& title,
                                       const QList<TInput>& input,
                                       std::function<void(TInput)> work_functor,
                                       std::function<QString(int)> label_functor) {
+  m_wasCanceled = false;
   setCancelEnabled(can_cancel);
   setWindowTitle(title);
 
