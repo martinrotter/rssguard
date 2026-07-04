@@ -33,30 +33,30 @@
 
 namespace {
 
-void openFeedHomepage(const Feed* feed) {
-  if (feed == nullptr) {
-    return;
+  void openFeedHomepage(const Feed* feed) {
+    if (feed == nullptr) {
+      return;
+    }
+
+    QUrl feed_url = QUrl::fromUserInput(qApp->web()->processFeedUriScheme(feed->source()));
+    const QString feed_homepage_host = qApp->web()->urlToTld(feed_url);
+
+    if (feed_homepage_host.isEmpty()) {
+      qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                           GuiMessage(FeedMessageViewer::tr("Cannot open feed homepage"),
+                                      FeedMessageViewer::tr("The feed does not have a valid homepage URL."),
+                                      QSystemTrayIcon::MessageIcon::Warning),
+                           GuiMessageDestination(true, true));
+      return;
+    }
+
+    QUrl feed_homepage;
+
+    feed_homepage.setScheme(feed_url.scheme().isEmpty() ? QSL("https") : feed_url.scheme());
+    feed_homepage.setHost(feed_homepage_host);
+
+    qApp->web()->openUrlInExternalBrowser(feed_homepage);
   }
-
-  QUrl feed_url = QUrl::fromUserInput(qApp->web()->processFeedUriScheme(feed->source()));
-  const QString feed_homepage_host = qApp->web()->urlToTld(feed_url);
-
-  if (feed_homepage_host.isEmpty()) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         GuiMessage(FeedMessageViewer::tr("Cannot open feed homepage"),
-                                    FeedMessageViewer::tr("The feed does not have a valid homepage URL."),
-                                    QSystemTrayIcon::MessageIcon::Warning),
-                         GuiMessageDestination(true, true));
-    return;
-  }
-
-  QUrl feed_homepage;
-
-  feed_homepage.setScheme(feed_url.scheme().isEmpty() ? QSL("https") : feed_url.scheme());
-  feed_homepage.setHost(feed_homepage_host);
-
-  qApp->web()->openUrlInExternalBrowser(feed_homepage);
-}
 
 } // namespace
 
@@ -128,13 +128,6 @@ void FeedMessageViewer::loadSize() {
 
   if (!settings_feed_header.isEmpty()) {
     m_feedsView->restoreHeaderState(QByteArray::fromBase64(settings_feed_header.toLocal8Bit()));
-  }
-  else {
-    const int sort_column = settings->value(GROUP(GUI), SETTING(GUI::DefaultSortColumnFeeds)).toInt();
-    const auto sort_order =
-      static_cast<Qt::SortOrder>(settings->value(GROUP(GUI), SETTING(GUI::DefaultSortOrderFeeds)).toInt());
-
-    m_feedsView->sortByColumn(sort_column, sort_order);
   }
 
   m_messagesView->restoreInitialColumnProfile();
@@ -362,7 +355,8 @@ void FeedMessageViewer::onMessageRemoved(RootItem* root) {
 
 void FeedMessageViewer::createConnections() {
   m_toolBarFeeds->searchBox()->setListFilteredTooltip(tr("Some feeds are hidden by current search or filtering."));
-  m_toolBarMessages->searchBox()->setListFilteredTooltip(tr("Some articles are hidden by current search or filtering."));
+  m_toolBarMessages->searchBox()
+    ->setListFilteredTooltip(tr("Some articles are hidden by current search or filtering."));
 
   connect(m_feedsView->model(),
           &FeedsProxyModel::filteredOutItemsChanged,

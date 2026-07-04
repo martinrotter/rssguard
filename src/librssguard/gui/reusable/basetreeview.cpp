@@ -190,18 +190,5 @@ BaseTreeView::ColumnSortStates BaseTreeView::columnSortStates() const {
 }
 
 void BaseTreeView::restoreColumnSortStates(const ColumnSortStates& states) {
-  if (states.isEmpty()) {
-    return;
-  }
-
-  const auto& primary_sort = states.constFirst();
-  const QSignalBlocker header_signal_blocker(header());
-
-  header()->setSortIndicator(primary_sort.first, primary_sort.second);
-
-  if (isSortingEnabled()) {
-    sortByColumn(primary_sort.first, primary_sort.second);
-  }
-
-  model()->sort(primary_sort.first, primary_sort.second);
+  Q_UNUSED(states)
 }
