@@ -21,7 +21,7 @@ MediaPlayer::MediaPlayer(QWidget* parent)
                           new LibMpvBackend(qApp, this)
 #endif
                             ),
-    m_muted(false), m_fullscreen(false) {
+    m_muted(false), m_fullscreen(false), m_mainWindowWasFullscreen(false) {
   m_ui.setupUi(this);
 
   m_ui.m_container->setWindowFlags(Qt::WindowType::Widget | Qt::WindowType::FramelessWindowHint);
@@ -202,15 +202,27 @@ void MediaPlayer::setupIcons() {
 }
 
 void MediaPlayer::showPlayerNormal() {
+  auto* main_form = qApp->mainForm();
+
   m_ui.m_controlPanel->setVisible(true);
-  qApp->mainForm()->hideShowObtrusiveGuiElements(true);
-  qApp->mainForm()->switchFullscreenMode();
+  main_form->hideShowObtrusiveGuiElements(true);
+
+  if (main_form->isFullScreen() != m_mainWindowWasFullscreen) {
+    main_form->switchFullscreenMode();
+  }
 }
 
 void MediaPlayer::showPlayerFullscreen() {
+  auto* main_form = qApp->mainForm();
+
+  m_mainWindowWasFullscreen = main_form->isFullScreen();
+
   m_ui.m_controlPanel->setVisible(false);
-  qApp->mainForm()->hideShowObtrusiveGuiElements(false);
-  qApp->mainForm()->switchFullscreenMode();
+  main_form->hideShowObtrusiveGuiElements(false);
+
+  if (!main_form->isFullScreen()) {
+    main_form->switchFullscreenMode();
+  }
 }
 
 void MediaPlayer::switchFullScreen(bool send_event_to_backend) {

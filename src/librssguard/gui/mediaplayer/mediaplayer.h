@@ -77,6 +77,7 @@ class MediaPlayer : public TabContent {
     QIcon m_iconUnmute;
     bool m_muted;
     bool m_fullscreen;
+    bool m_mainWindowWasFullscreen;
 };
 
 #endif // MEDIAPLAYER_H
