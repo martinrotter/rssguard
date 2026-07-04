@@ -140,8 +140,14 @@ TextBrowserViewer::TextBrowserViewer(QWidget* parent)
 TextBrowserViewer::~TextBrowserViewer() {
   abortImageDownloading();
 
-  if (!m_imageDownloadThread.isNull()) {
-    m_imageDownloadThread->wait();
+  const auto download_threads = findChildren<QThread*>(QString(), Qt::FindChildOption::FindDirectChildrenOnly);
+
+  for (QThread* thread : download_threads) {
+    thread->quit();
+  }
+
+  for (QThread* thread : download_threads) {
+    thread->wait();
   }
 }
 
