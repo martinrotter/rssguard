@@ -78,7 +78,7 @@ QString GeminiParser::geminiToHtml(const QByteArray& gemini_data) {
              "</head>"
              "<body>%2</body>"
              "</html>")
-    .arg(title, body);
+    .arg(title.toHtmlEscaped(), body);
 }
 
 QString GeminiParser::beginBlock(State new_mode) {
@@ -134,7 +134,8 @@ QString GeminiParser::parseLink(const QRegularExpressionMatch& mtch) const {
   QString link = mtch.captured(1);
   QString name = mtch.captured(2);
 
-  return QSL("<p>&#128279; <a href=\"%1\">%2</a></p>\n").arg(link, name.isEmpty() ? link : name);
+  return QSL("<p>&#128279; <a href=\"%1\">%2</a></p>\n")
+    .arg(link.toHtmlEscaped(), (name.isEmpty() ? link : name).toHtmlEscaped());
 }
 
 QString GeminiParser::parseHeading(const QRegularExpressionMatch& mtch, QString* clean_header) const {
@@ -146,23 +147,23 @@ QString GeminiParser::parseHeading(const QRegularExpressionMatch& mtch, QString*
     clean_header->append(header);
   }
 
-  return QSL("<h%1>%2</h%1>\n").arg(QString::number(level), header);
+  return QSL("<h%1>%2</h%1>\n").arg(QString::number(level), header.toHtmlEscaped());
 }
 
 QString GeminiParser::parseQuote(const QRegularExpressionMatch& mtch) const {
   QString text = mtch.captured(1);
 
-  return QSL("<p>%1</p>\n").arg(text.simplified().isEmpty() ? QString() : text);
+  return QSL("<p>%1</p>\n").arg(text.simplified().isEmpty() ? QString() : text.toHtmlEscaped());
 }
 
 QString GeminiParser::parseList(const QRegularExpressionMatch& mtch) const {
   QString text = mtch.captured(1);
 
-  return QSL("<li>%1</li>\n").arg(text);
+  return QSL("<li>%1</li>\n").arg(text.toHtmlEscaped());
 }
 
 QString GeminiParser::parseTextInNormalMode(const QString& line) const {
-  return QSL("<p>%1</p>\n").arg(line);
+  return QSL("<p>%1</p>\n").arg(line.toHtmlEscaped());
 }
 
 QString GeminiParser::parseInPreMode(const QString& line) const {

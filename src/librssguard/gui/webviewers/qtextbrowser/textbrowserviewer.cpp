@@ -477,6 +477,12 @@ void TextBrowserViewer::displayDownloadedPage(const QUrl& url, const QByteArray&
         loadStaticHtml(html, url);
       }
     }
+    // Gemini.
+    else if (content_type == QSL(GEMINI_MIME_TYPE)) {
+      QString htmlized_gemini = GeminiParser().geminiToHtml(data);
+
+      loadStaticHtml(htmlized_gemini, url);
+    }
     // XML handling - pretty print.
     else if (content_type.contains(QSL("xml"))) {
       QDomDocument dom;
