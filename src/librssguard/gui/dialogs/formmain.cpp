@@ -787,7 +787,7 @@ void FormMain::hideShowObtrusiveGuiElements(bool show) {
   statusBar()->setVisible(show && m_ui->m_actionSwitchStatusBar->isChecked());
 
   // Menu.
-  m_ui->m_menuBar->setVisible(show && m_ui->m_actionSwitchMainMenu);
+  m_ui->m_menuBar->setVisible(show && m_ui->m_actionSwitchMainMenu->isChecked());
 
   // Tabbar.
   m_ui->m_tabWidget->tabBar()->setVisible(true);
