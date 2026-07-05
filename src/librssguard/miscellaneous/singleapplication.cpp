@@ -6,6 +6,8 @@
 #include <QLocalServer>
 #include <QLocalSocket>
 
+#include <memory>
+
 SingleApplication::SingleApplication(const QString& id, int& argc, char** argv)
   : QApplication(argc, argv), m_id(id), m_server(new QLocalServer(this)) {}
 
@@ -65,17 +67,19 @@ void SingleApplication::processMessageFromOtherInstance() {
 
   connect(sck, &QLocalSocket::disconnected, sck, &QLocalSocket::deleteLater);
 
-  const auto process_message = [this, sck]() {
-    QDataStream in(sck);
+  auto stream = std::make_shared<QDataStream>(sck);
+
+  stream->setVersion(QDataStream::Version::Qt_5_5);
+
+  const auto process_message = [this, sck, stream]() {
     quint32 block_size;
     QString message;
 
-    in.setVersion(QDataStream::Version::Qt_5_5);
-    in.startTransaction();
-    in >> block_size;
-    in >> message;
+    stream->startTransaction();
+    *stream >> block_size;
+    *stream >> message;
 
-    if (!in.commitTransaction()) {
+    if (!stream->commitTransaction()) {
       return;
     }
 
