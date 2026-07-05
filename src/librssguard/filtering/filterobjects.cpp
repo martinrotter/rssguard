@@ -309,7 +309,7 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
     // We check similarity of each article.
     if (m_system->mode() == FilteringSystem::FiteringUseCase::ExistingArticles && id() > 0 && msg.m_id == id()) {
       // NOTE: We skip this message because it is the same one.
-      return false;
+      continue;
     }
 
     JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameTitle, threshold, title(), msg.m_title)

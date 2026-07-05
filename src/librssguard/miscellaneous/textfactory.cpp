@@ -34,71 +34,71 @@
 
 namespace {
 
-const QStringList& dateTimePatternsCached(bool with_tzs) {
-  static const QStringList patterns_without_tzs = []() {
-    QStringList pat;
+  const QStringList& dateTimePatternsCached(bool with_tzs) {
+    static const QStringList patterns_without_tzs = []() {
+      QStringList pat;
 
-    pat << QSL("yyyy-MM-ddTHH:mm:ss");
-    pat << QSL("yyyy-MM-ddTHH:mm:ss.z");
-    pat << QSL("yyyy-MM-ddTHH:mm:ss.zzz");
-    pat << QSL("yyyy-MM-ddThh:mm:ss");
-    pat << QSL("yyyy-MM-dd HH:mm:ss.z");
+      pat << QSL("yyyy-MM-ddTHH:mm:ss");
+      pat << QSL("yyyy-MM-ddTHH:mm:ss.z");
+      pat << QSL("yyyy-MM-ddTHH:mm:ss.zzz");
+      pat << QSL("yyyy-MM-ddThh:mm:ss");
+      pat << QSL("yyyy-MM-dd HH:mm:ss.z");
 
-    pat << QSL("yyyy-MM-ddThh:mm");
+      pat << QSL("yyyy-MM-ddThh:mm");
 
-    pat << QSL("yyyyMMddThhmmss");
-    pat << QSL("yyyyMMdd");
-    pat << QSL("yyyy");
+      pat << QSL("yyyyMMddThhmmss");
+      pat << QSL("yyyyMMdd");
+      pat << QSL("yyyy");
 
-    pat << QSL("yyyy-MM-dd");
-    pat << QSL("yyyy-MM");
+      pat << QSL("yyyy-MM-dd");
+      pat << QSL("yyyy-MM");
 
-    pat << QSL("MMM dd, yyyy HH:mm:ss");
-    pat << QSL("MMM dd yyyy hh:mm:ss");
-    pat << QSL("MMM d yyyy hh:mm:ss");
+      pat << QSL("MMM dd, yyyy HH:mm:ss");
+      pat << QSL("MMM dd yyyy hh:mm:ss");
+      pat << QSL("MMM d yyyy hh:mm:ss");
 
-    pat << QSL("ddd, dd MMM yyyy HH:mm:ss");
-    pat << QSL("ddd, dd MMM yyyy HH:mm");
-    pat << QSL("ddd, dd MMM yy HH:mm:ss");
-    pat << QSL("ddd, dd MMMM yyyy HH:mm:ss");
-    pat << QSL("ddd, d MMM yyyy HH:mm:ss");
+      pat << QSL("ddd, dd MMM yyyy HH:mm:ss");
+      pat << QSL("ddd, dd MMM yyyy HH:mm");
+      pat << QSL("ddd, dd MMM yy HH:mm:ss");
+      pat << QSL("ddd, dd MMMM yyyy HH:mm:ss");
+      pat << QSL("ddd, d MMM yyyy HH:mm:ss");
 
-    pat << QSL("ddd, MM/dd/yyyy - HH:mm");
+      pat << QSL("ddd, MM/dd/yyyy - HH:mm");
 
-    pat << QSL("dd MMM yyyy hh:mm:ss");
-    pat << QSL("dd MMM yyyy hh:mm");
-    pat << QSL("dd MMM yyyy");
+      pat << QSL("dd MMM yyyy hh:mm:ss");
+      pat << QSL("dd MMM yyyy hh:mm");
+      pat << QSL("dd MMM yyyy");
 
-    pat << QSL("d MMM yyyy HH:mm:ss");
-    pat << QSL("d MMM yyyy HH:mm");
+      pat << QSL("d MMM yyyy HH:mm:ss");
+      pat << QSL("d MMM yyyy HH:mm");
 
-    pat << QSL("dd-MM-yyyy - HH:mm");
+      pat << QSL("dd-MM-yyyy - HH:mm");
 
-    pat << QSL("hh:mm:ss");
-    pat << QSL("h:m:s");
-    pat << QSL("h:mm");
-    pat << QSL("H:mm");
-    pat << QSL("h:m");
-    pat << QSL("h.m");
+      pat << QSL("hh:mm:ss");
+      pat << QSL("h:m:s");
+      pat << QSL("h:mm");
+      pat << QSL("H:mm");
+      pat << QSL("h:m");
+      pat << QSL("h.m");
 
-    return pat;
-  }();
+      return pat;
+    }();
 
-  static const QStringList patterns_with_tzs = []() {
-    QStringList pat = patterns_without_tzs;
+    static const QStringList patterns_with_tzs = []() {
+      QStringList pat = patterns_without_tzs;
 
-    for (int i = 0; i < pat.size(); i += 3) {
-      QString base_pattern = pat.value(i);
+      for (int i = 0; i < pat.size(); i += 3) {
+        QString base_pattern = pat.value(i);
 
-      pat.insert(i + 1, base_pattern + QSL("t"));
-      pat.insert(i + 2, base_pattern + QSL(" t"));
-    }
+        pat.insert(i + 1, base_pattern + QSL("t"));
+        pat.insert(i + 2, base_pattern + QSL(" t"));
+      }
 
-    return pat;
-  }();
+      return pat;
+    }();
 
-  return with_tzs ? patterns_with_tzs : patterns_without_tzs;
-}
+    return with_tzs ? patterns_with_tzs : patterns_without_tzs;
+  }
 
 } // namespace
 
@@ -509,6 +509,7 @@ QString TextFactory::fromEncoding(const QByteArray& data, const QString& encodin
   UErrorCode status = U_ZERO_ERROR;
   QByteArray enc = encoding.toUtf8();
   UConverter* conv = ucnv_open(enc.constData(), &status);
+
   if (U_FAILURE(status)) {
     return {};
   }
@@ -528,11 +529,18 @@ QString TextFactory::fromEncoding(const QByteArray& data, const QString& encodin
   return U_SUCCESS(status) ? out : QString{};
 #elif QT_VERSION_MAJOR == 5
   auto* codec = QTextCodec::codecForName(encoding.toLocal8Bit());
+
+  if (codec == nullptr) {
+    qWarningNN << LOGSEC_CORE << "Cannot load encoder for encoding" << QUOTE_W_SPACE_DOT(encoding);
+    return {};
+  }
+
   return codec->toUnicode(data);
 #else
   auto c_encoding_ascii = encoding.toLocal8Bit();
   auto c_encoding = c_encoding_ascii.constData();
   auto decoder = QStringDecoder(c_encoding);
+
   return decoder.decode(data);
 #endif
 }
@@ -541,6 +549,7 @@ QByteArray TextFactory::toEncoding(const QString& str, const QString& encoding) 
 #if defined(HAS_ICU)
   UErrorCode status = U_ZERO_ERROR;
   UConverter* conv = ucnv_open(encoding.toUtf8().constData(), &status);
+
   if (U_FAILURE(status)) {
     return {};
   }
@@ -562,14 +571,22 @@ QByteArray TextFactory::toEncoding(const QString& str, const QString& encoding) 
   ucnv_fromUChars(conv, out.data(), bytesNeeded, u, srcLen, &status);
 
   ucnv_close(conv);
+
   return U_SUCCESS(status) ? out : QByteArray();
 #elif QT_VERSION_MAJOR == 5
   auto* codec = QTextCodec::codecForName(encoding.toLocal8Bit());
+
+  if (codec == nullptr) {
+    qWarningNN << LOGSEC_CORE << "Cannot load encoder for encoding" << QUOTE_W_SPACE_DOT(encoding);
+    return {};
+  }
+
   return codec->fromUnicode(str);
 #else
   auto c_encoding_ascii = encoding.toLocal8Bit();
   auto c_encoding = c_encoding_ascii.constData();
   auto encoder = QStringEncoder(c_encoding);
+
   return encoder.encode(str);
 #endif
 }
