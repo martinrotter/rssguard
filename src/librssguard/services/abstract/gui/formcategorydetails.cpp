@@ -43,7 +43,7 @@ FormCategoryDetails::~FormCategoryDetails() {
 
 void FormCategoryDetails::createConnections() {
   // General connections.
-  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormCategoryDetails::apply);
+  connect(m_ui->m_buttonBox, &QDialogButtonBox::accepted, this, &FormCategoryDetails::acceptIfPossible);
   connect(m_ui->m_txtTitle->lineEdit(), &BaseLineEdit::textChanged, this, &FormCategoryDetails::onTitleChanged);
   connect(m_ui->m_txtDescription->textEdit(), &QPlainTextEdit::textChanged, this, [this]() {
     onDescriptionChanged(m_ui->m_txtDescription->textEdit()->toPlainText());
@@ -141,14 +141,9 @@ void FormCategoryDetails::apply() {
       new_parent_id = cat->parent()->id();
     }
 
-    try {
-      qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-        DatabaseQueries::createOverwriteCategory(db, cat, m_serviceRoot->accountId(), new_parent_id);
-      });
-    }
-    catch (const ApplicationException& ex) {
-      qFatal("Cannot save category: '%s'.", qPrintable(ex.message()));
-    }
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createOverwriteCategory(db, cat, m_serviceRoot->accountId(), new_parent_id);
+    });
 
     if (isChangeAllowed(m_ui->m_mcbParent)) {
       m_serviceRoot->requestItemReassignment(cat, parent);
@@ -160,7 +155,22 @@ void FormCategoryDetails::apply() {
   }
 
   m_serviceRoot->itemChanged(categories<RootItem>());
-  accept();
+}
+
+void FormCategoryDetails::acceptIfPossible() {
+  try {
+    apply();
+    accept();
+  }
+  catch (const ApplicationException& ex) {
+    qApp->showGuiMessage(Notification::Event::GeneralEvent,
+                         {tr("Cannot save folder properties"),
+                          tr("Cannot save changes: %1").arg(ex.message()),
+                          QSystemTrayIcon::MessageIcon::Critical},
+                         {},
+                         {},
+                         this);
+  }
 }
 
 void FormCategoryDetails::onTitleChanged(const QString& new_title) {

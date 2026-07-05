@@ -46,6 +46,7 @@ class RSSGUARD_DLLSPEC FormCategoryDetails : public QDialog {
     virtual void apply();
 
   private slots:
+    void acceptIfPossible();
     void onTitleChanged(const QString& new_title);
     void onDescriptionChanged(const QString& new_description);
 
