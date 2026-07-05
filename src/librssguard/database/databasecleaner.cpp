@@ -58,13 +58,13 @@ void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
   if (which_data.m_removeStarredMessages) {
     progress += difference;
 
-    emit purgeProgress(progress, tr("Removing starred articles..."));
+    emit purgeProgress(progress, tr("Removing important articles..."));
 
     // Remove old messages.
     purgeStarredMessages();
     progress += difference;
 
-    emit purgeProgress(progress, tr("Starred articles purged..."));
+    emit purgeProgress(progress, tr("Important articles purged..."));
   }
 
   if (which_data.m_shrinkDatabase) {

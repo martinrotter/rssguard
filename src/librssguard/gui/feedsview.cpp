@@ -261,7 +261,7 @@ void FeedsView::purgeSelectedFeeds() {
   if (MsgBox::show({},
                    QMessageBox::Icon::Question,
                    tr("Are you sure?"),
-                   tr("Do you really want to purge all non-starred articles from selected feeds?"),
+                   tr("Do you really want to purge all non-important articles from selected feeds?"),
                    {},
                    {},
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,

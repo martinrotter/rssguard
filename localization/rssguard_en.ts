@@ -507,12 +507,12 @@ Number of disabled feeds: %3</source>
     </message>
     <message>
         <location filename="../src/librssguard/database/databasecleaner.cpp" line="61"/>
-        <source>Removing starred articles...</source>
+        <source>Removing important articles...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/librssguard/database/databasecleaner.cpp" line="67"/>
-        <source>Starred articles purged...</source>
+        <source>Important articles purged...</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1222,6 +1222,11 @@ Item custom ID: %5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/librssguard/gui/feedsview.cpp" line="264"/>
+        <source>Do you really want to purge all non-important articles from selected feeds?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="473"/>
         <source>Selected item cannot be deleted because another critical operation is ongoing.</source>
         <translation>Selected item cannot be deleted because another critical operation is ongoing.</translation>
@@ -1261,11 +1266,6 @@ Item custom ID: %5</source>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="339"/>
         <location filename="../src/librssguard/gui/feedsview.cpp" line="339"/>
         <source>Failed to clear items: %1.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/librssguard/gui/feedsview.cpp" line="264"/>
-        <source>Do you really want to purge all non-starred articles from selected feeds?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2058,7 +2058,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
         <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
         <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
-        <source>Remove all starred articles</source>
+        <source>Remove all important articles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

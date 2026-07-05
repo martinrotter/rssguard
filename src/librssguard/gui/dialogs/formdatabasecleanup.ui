@@ -83,7 +83,7 @@
       <item row="1" column="0" colspan="3">
        <widget class="QCheckBox" name="m_checkRemoveStarredMessages">
         <property name="text">
-         <string>Remove all starred articles</string>
+         <string>Remove all important articles</string>
         </property>
        </widget>
       </item>
