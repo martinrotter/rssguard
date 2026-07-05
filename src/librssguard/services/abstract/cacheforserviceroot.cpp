@@ -19,6 +19,8 @@ void CacheForServiceRoot::addLabelsAssignmentsToCache(const QStringList& ids_of_
     return;
   }
 
+  QMutexLocker lck(m_cacheSaveMutex.data());
+
   if (assign) {
     for (const QString& custom_id : ids_of_messages) {
       if (m_cachedLabelDeassignments[lbl_custom_id].contains(custom_id)) {

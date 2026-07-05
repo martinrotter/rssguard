@@ -149,10 +149,10 @@ QJsonObject Feed::articleExtractorSettings() {
   QJsonObject obj;
 
   // User-agent.
-  auto custom_ua = QString::fromLocal8Bit(HTTP_COMPLETE_USERAGENT);
+  auto custom_ua = qApp->web()->customUserAgent();
 
   if (custom_ua.isEmpty()) {
-    custom_ua = qApp->web()->customUserAgent();
+    custom_ua = QString::fromLocal8Bit(HTTP_COMPLETE_USERAGENT);
   }
 
   if (!custom_ua.isEmpty()) {
