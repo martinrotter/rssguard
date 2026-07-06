@@ -1,13 +1,17 @@
 5.2.2
 -----
-Released on: 2026-07-xx
+Released on: 2026-07-06
+
+I used AI help to perform static codebase analysis and the analysis discovered many many bugs vast majority of which I was able to subsequently reproduce. Most of them were crashing bugs. I fixed them but it is possible (and likely) that some other bugs got introduced instead.
+
+I do not plan to add new features for some months now because we need to stabilize the codebase. So only minor feature refinements and bug fixes will be added for some time.
 
 Added:
 * Splash screen displayed during application startup can now be enabled in the general settings and is disabled by default. (#2329)
 
 Fixed:
 * Enhanced contrasts for colors in "minimal-dark" skin. (#2343) 
-* Unselecting highligher in article list did not properly propagate the change. (#2342)
+* Unselecting highlighter in article list did not properly propagate the change. (#2342)
 * Feed list now correctly applies the restored column and sort order to accounts and feeds loaded during application startup.
 * Custom notifications no longer crash when an article-list notification is removed after exceeding the available screen space.
 * Article filters no longer crash the application when attempting to remove an attachment with an invalid index.
