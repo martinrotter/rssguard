@@ -1,11 +1,12 @@
 5.2.2
 -----
-Released on: 2026-06-30
+Released on: 2026-07-xx
 
 Added:
 * Splash screen displayed during application startup can now be enabled in the general settings and is disabled by default. (#2329)
 
 Fixed:
+* Enhanced contrasts for colors in "minimal-dark" skin. (#2343) 
 * Unselecting highligher in article list did not properly propagate the change. (#2342)
 * Feed list now correctly applies the restored column and sort order to accounts and feeds loaded during application startup.
 * Custom notifications no longer crash when an article-list notification is removed after exceeding the available screen space.
