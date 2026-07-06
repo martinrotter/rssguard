@@ -6,6 +6,7 @@ Added:
 * Splash screen displayed during application startup can now be enabled in the general settings and is disabled by default. (#2329)
 
 Fixed:
+* Unselecting highligher in article list did not properly propagate the change. (#2342)
 * Feed list now correctly applies the restored column and sort order to accounts and feeds loaded during application startup.
 * Custom notifications no longer crash when an article-list notification is removed after exceeding the available screen space.
 * Article filters no longer crash the application when attempting to remove an attachment with an invalid index.

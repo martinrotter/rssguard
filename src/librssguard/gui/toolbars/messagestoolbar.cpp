@@ -129,6 +129,7 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
                          .toList();
 
   if (task == MessagesModel::MessageHighlighter::NoHighlighting || checked_tasks.isEmpty()) {
+    task = MessagesModel::MessageHighlighter::NoHighlighting;
     checked_tasks.clear();
 
     // Uncheck everything.
@@ -143,7 +144,7 @@ void MessagesToolBar::handleMessageHighlighterChange(QAction* action) {
   else {
     task = MessagesModel::MessageHighlighter(0);
 
-    for (QAction* tsk : checked_tasks) {
+    for (QAction* tsk : std::as_const(checked_tasks)) {
       task = task | tsk->data().value<MessagesModel::MessageHighlighter>();
     }
   }
