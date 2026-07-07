@@ -1,51 +1,44 @@
 ::selection {
   background: palette(Highlight) !important;
-  color: palette(HighlightedText) !important;
-}
+  color: palette(HighlightedText) !important; }
 
 img {
   max-width: 98%;
-  height: auto;
-}
+  height: auto; }
 
 p {
   margin-top: 0.4em;
-  margin-bottom: 0.4em;
-}
+  margin-bottom: 0.4em; }
 
 body {
-  background-color: #3a3b3d;
-}
+  background-color: #3a3b3d; }
+
+.article-separator {
+  color: #ddd;
+  border-color: #ddd; }
 
 .article {
   background-color: transparent;
   color: #ddd;
-  padding: 0em;
-}
+  padding: 0em; }
 
 .article h1 {
-  font-size: 1.5em;
-}
+  font-size: 1.5em; }
 
 .article h2 {
-  font-size: 1.3em;
-}
+  font-size: 1.3em; }
 
 .article h3 {
-  font-size: 1.25em;
-}
+  font-size: 1.25em; }
 
 .article h4 {
-  font-size: 1.15em;
-}
+  font-size: 1.15em; }
 
 .article h5 {
-  font-size: 1.05em;
-}
+  font-size: 1.05em; }
 
 .article h6 {
-  font-size: 1.02em;
-}
+  font-size: 1.02em; }
 
 .article h1,
 .article h2,
@@ -55,24 +48,20 @@ body {
 .article h6 {
   color: #eee;
   margin-top: 0em;
-  margin-bottom: 0.2em;
-}
+  margin-bottom: 0.2em; }
 
 .article-body a {
   color: #87bdd0;
-  text-decoration: none;
-}
+  text-decoration: none; }
 
 .article-body a:hover {
   color: #bedbe6;
-  text-decoration: underline;
-}
+  text-decoration: underline; }
 
 .article-urls-strip {
   margin-top: 0.5em;
   margin-bottom: 0.5em;
-  line-height: 2.0;
-}
+  line-height: 2.0; }
 
 .article-url {
   text-decoration: none;
@@ -80,13 +69,11 @@ body {
   border-radius: 2px;
   border: 1px solid red;
   background-color: red;
-  color: white;
-}
+  color: white; }
 
 .article-url:hover {
   background-color: #ff4d4d;
-  color: white;
-}
+  color: white; }
 
 .article-enclosure-url {
   text-decoration: none;
@@ -95,17 +82,16 @@ body {
   border-radius: 2px;
   border: 1px solid #73a5b6;
   background-color: #73a5b6;
-  color: white;
-}
+  color: white; }
 
 .article-enclosure-url:hover {
   background-color: #a5c5d0;
-  color: white;
-}
+  color: white; }
 
 .comment {
   border: 1px solid #ddd;
   border-radius: 5px;
   margin: 25px;
-  padding: 5px;
-}
+  padding: 5px; }
+
+/*# sourceMappingURL=html_style.css.map */

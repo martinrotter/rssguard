@@ -19,6 +19,11 @@ body {
   background-color: $bg_color;
 }
 
+.article-separator {
+  color: $text_color;
+  border-color: $text_color;
+}
+
 .article {
   background-color: transparent;
   color: $text_color;
