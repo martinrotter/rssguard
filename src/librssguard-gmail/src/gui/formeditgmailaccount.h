@@ -20,7 +20,7 @@ class FormEditGmailAccount : public FormAccountDetails {
     virtual void apply();
 
   protected:
-    virtual void loadAccountData();
+    virtual bool loadAccountData();
 
   private:
     GmailAccountDetails* m_details;

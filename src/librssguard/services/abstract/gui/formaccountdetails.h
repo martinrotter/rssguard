@@ -49,7 +49,7 @@ class RSSGUARD_DLLSPEC FormAccountDetails : public QDialog {
     // Sets the account which will be edited.
     // NOTE: This must be reimplemented in subclasses. Also this
     // base implementation must be called first.
-    virtual void loadAccountData();
+    virtual bool loadAccountData();
 
   private:
     void createConnections();
@@ -74,7 +74,9 @@ inline T* FormAccountDetails::addEditAccount(T* account_to_edit) {
   }
 
   // Load custom logic for account data loading.
-  loadAccountData();
+  if (!loadAccountData()) {
+    return nullptr;
+  }
 
   if (exec() == QDialog::DialogCode::Accepted) {
     return account<T>();

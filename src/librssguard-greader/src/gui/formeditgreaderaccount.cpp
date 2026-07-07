@@ -55,8 +55,10 @@ void FormEditGreaderAccount::apply() {
   }
 }
 
-void FormEditGreaderAccount::loadAccountData() {
-  FormAccountDetails::loadAccountData();
+bool FormEditGreaderAccount::loadAccountData() {
+  if (!FormAccountDetails::loadAccountData()) {
+    return false;
+  }
 
   GreaderServiceRoot* existing_root = account<GreaderServiceRoot>();
 
@@ -77,6 +79,8 @@ void FormEditGreaderAccount::loadAccountData() {
   m_details->m_ui.m_cbDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
   m_details->m_ui.m_cbNewAlgorithm->setChecked(existing_root->network()->intelligentSynchronization());
   m_details->m_ui.m_dateNewerThan->setDate(existing_root->network()->newerThanFilter());
+
+  return true;
 }
 
 void FormEditGreaderAccount::performTest() {

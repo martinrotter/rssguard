@@ -152,7 +152,8 @@ bool TtRssServiceRoot::canBeEdited() const {
   return true;
 }
 
-void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
+bool TtRssServiceRoot::saveAllCachedData() {
+  bool saved = true;
   auto msg_cache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
@@ -169,7 +170,8 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
                                                                                : UpdateArticle::Mode::SetToFalse,
                                            networkProxy());
 
-      if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
+      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+        saved = false;
         addMessageStatesToCache(ids, key);
       }
     }
@@ -191,7 +193,8 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
                                                                                   : UpdateArticle::Mode::SetToFalse,
                                            networkProxy());
 
-      if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
+      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+        saved = false;
         addMessageStatesToCache(messages, key);
       }
     }
@@ -219,7 +222,8 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
         res = network()->setArticleLabel(messages, label_custom_id, true, networkProxy());
       }
 
-      if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
+      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+        saved = false;
         addLabelsAssignmentsToCache(messages, label_custom_id, true);
       }
     }
@@ -247,11 +251,14 @@ void TtRssServiceRoot::saveAllCachedData(bool ignore_errors) {
         res = network()->setArticleLabel(messages, label_custom_id, false, networkProxy());
       }
 
-      if (!ignore_errors && (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError())) {
+      if (network()->lastError() != QNetworkReply::NetworkError::NoError || res.hasError()) {
+        saved = false;
         addLabelsAssignmentsToCache(messages, label_custom_id, false);
       }
     }
   }
+
+  return saved;
 }
 
 QVariantHash TtRssServiceRoot::customDatabaseData() const {

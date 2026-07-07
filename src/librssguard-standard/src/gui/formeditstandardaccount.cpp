@@ -16,8 +16,10 @@ FormEditStandardAccount::FormEditStandardAccount(QWidget* parent)
 
 FormEditStandardAccount::~FormEditStandardAccount() = default;
 
-void FormEditStandardAccount::loadAccountData() {
-  FormAccountDetails::loadAccountData();
+bool FormEditStandardAccount::loadAccountData() {
+  if (!FormAccountDetails::loadAccountData()) {
+    return false;
+  }
 
   StandardServiceRoot* acc = account<StandardServiceRoot>();
 
@@ -30,6 +32,8 @@ void FormEditStandardAccount::loadAccountData() {
 
   m_standardDetails->m_ui.m_btnIcon->setIcon(acc->fullIcon());
   m_standardDetails->m_ui.m_spinFeedSpacing->setValue(acc->spacingSameHostsRequests());
+
+  return true;
 }
 
 void FormEditStandardAccount::apply() {

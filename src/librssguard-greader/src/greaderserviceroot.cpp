@@ -281,7 +281,8 @@ QString GreaderServiceRoot::additionalTooltip() const {
   return source_str + QSL("\n\n") + ServiceRoot::additionalTooltip();
 }
 
-void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
+bool GreaderServiceRoot::saveAllCachedData() {
+  bool saved = true;
   auto msg_cache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
@@ -292,8 +293,8 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      if (network()->markMessagesRead(key, ids, networkProxy()) != QNetworkReply::NetworkError::NoError &&
-          !ignore_errors) {
+      if (network()->markMessagesRead(key, ids, networkProxy()) != QNetworkReply::NetworkError::NoError) {
+        saved = false;
         addMessageStatesToCache(ids, key);
       }
     }
@@ -310,8 +311,8 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
     if (!messages.isEmpty()) {
       QStringList custom_ids = customIDsOfMessages(messages);
 
-      if (network()->markMessagesStarred(key, custom_ids, networkProxy()) != QNetworkReply::NetworkError::NoError &&
-          !ignore_errors) {
+      if (network()->markMessagesStarred(key, custom_ids, networkProxy()) != QNetworkReply::NetworkError::NoError) {
+        saved = false;
         addMessageStatesToCache(messages, key);
       }
     }
@@ -329,8 +330,8 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
 
       if (!messages.isEmpty()) {
         if (network()->editLabels(label_custom_id, true, messages, networkProxy()) !=
-              QNetworkReply::NetworkError::NoError &&
-            !ignore_errors) {
+            QNetworkReply::NetworkError::NoError) {
+          saved = false;
           addLabelsAssignmentsToCache(messages, label_custom_id, true);
         }
       }
@@ -346,13 +347,15 @@ void GreaderServiceRoot::saveAllCachedData(bool ignore_errors) {
 
       if (!messages.isEmpty()) {
         if (network()->editLabels(label_custom_id, false, messages, networkProxy()) !=
-              QNetworkReply::NetworkError::NoError &&
-            !ignore_errors) {
+            QNetworkReply::NetworkError::NoError) {
+          saved = false;
           addLabelsAssignmentsToCache(messages, label_custom_id, false);
         }
       }
     }
   }
+
+  return saved;
 }
 
 ServiceRoot::LabelOperation GreaderServiceRoot::supportedLabelOperations() const {

@@ -15,7 +15,7 @@ class FormEditStandardAccount : public FormAccountDetails {
     virtual ~FormEditStandardAccount();
 
   protected:
-    virtual void loadAccountData();
+    virtual bool loadAccountData();
 
   protected slots:
     virtual void apply();

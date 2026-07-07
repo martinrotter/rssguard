@@ -49,8 +49,10 @@ void FormEditGmailAccount::apply() {
   }
 }
 
-void FormEditGmailAccount::loadAccountData() {
-  FormAccountDetails::loadAccountData();
+bool FormEditGmailAccount::loadAccountData() {
+  if (!FormAccountDetails::loadAccountData()) {
+    return false;
+  }
 
   m_details->m_oauth = account<GmailServiceRoot>()->network()->oauth();
   m_details->hookNetwork();
@@ -64,4 +66,6 @@ void FormEditGmailAccount::loadAccountData() {
   m_details->m_ui.m_spinLimitMessages->setValue(account<GmailServiceRoot>()->network()->batchSize());
   m_details->m_ui.m_cbDownloadOnlyUnreadMessages
     ->setChecked(account<GmailServiceRoot>()->network()->downloadOnlyUnreadMessages());
+
+  return true;
 }

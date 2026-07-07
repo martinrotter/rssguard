@@ -26,7 +26,7 @@ class NextcloudServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual bool supportsCategoryAdding() const;
     virtual void start(bool freshly_activated);
     virtual QString code() const;
-    virtual void saveAllCachedData(bool ignore_errors);
+    virtual bool saveAllCachedData();
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual QList<Message> obtainNewMessages(Feed* feed,

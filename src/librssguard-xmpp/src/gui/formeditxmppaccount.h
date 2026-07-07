@@ -20,7 +20,7 @@ class FormEditXmppAccount : public FormAccountDetails {
     virtual void rollBack();
 
   protected:
-    virtual void loadAccountData();
+    virtual bool loadAccountData();
 
   private slots:
     void performTest();

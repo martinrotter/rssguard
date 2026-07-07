@@ -135,7 +135,8 @@ QString FeedlyServiceRoot::code() const {
   return FeedlyEntryPoint().code();
 }
 
-void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
+bool FeedlyServiceRoot::saveAllCachedData() {
+  bool saved = true;
   auto msg_cache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
@@ -155,9 +156,8 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
                     << "Failed to synchronize read/unread state with error:" << QUOTE_W_SPACE(net_ex.message())
                     << "and HTTP code" << QUOTE_W_SPACE_DOT(net_ex.networkError());
 
-        if (!ignore_errors) {
-          addMessageStatesToCache(ids, key);
-        }
+        saved = false;
+        addMessageStatesToCache(ids, key);
       }
     }
   }
@@ -182,9 +182,8 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
         qCriticalNN << LOGSEC_FEEDLY << "Failed to synchronize important/unimportant state with error:"
                     << QUOTE_W_SPACE(net_ex.message()) << "and HTTP code" << QUOTE_W_SPACE_DOT(net_ex.networkError());
 
-        if (!ignore_errors) {
-          addMessageStatesToCache(messages, key);
-        }
+        saved = false;
+        addMessageStatesToCache(messages, key);
       }
     }
   }
@@ -206,9 +205,8 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
                     << "Failed to synchronize tag assignments with error:" << QUOTE_W_SPACE(net_ex.message())
                     << "and HTTP code" << QUOTE_W_SPACE_DOT(net_ex.networkError());
 
-        if (!ignore_errors) {
-          addLabelsAssignmentsToCache(messages, label_custom_id, true);
-        }
+        saved = false;
+        addLabelsAssignmentsToCache(messages, label_custom_id, true);
       }
     }
   }
@@ -230,12 +228,13 @@ void FeedlyServiceRoot::saveAllCachedData(bool ignore_errors) {
                     << "Failed to synchronize tag DEassignments with error:" << QUOTE_W_SPACE(net_ex.message())
                     << "and HTTP code" << QUOTE_W_SPACE_DOT(net_ex.networkError());
 
-        if (!ignore_errors) {
-          addLabelsAssignmentsToCache(messages, label_custom_id, false);
-        }
+        saved = false;
+        addLabelsAssignmentsToCache(messages, label_custom_id, false);
       }
     }
   }
+
+  return saved;
 }
 
 ServiceRoot::LabelOperation FeedlyServiceRoot::supportedLabelOperations() const {

@@ -52,8 +52,10 @@ void FormEditXmppAccount::rollBack() {
 */
 }
 
-void FormEditXmppAccount::loadAccountData() {
-  FormAccountDetails::loadAccountData();
+bool FormEditXmppAccount::loadAccountData() {
+  if (!FormAccountDetails::loadAccountData()) {
+    return false;
+  }
 
   XmppServiceRoot* existing_root = account<XmppServiceRoot>();
 
@@ -63,6 +65,8 @@ void FormEditXmppAccount::loadAccountData() {
   m_details->setAdditionalServices(existing_root->network()->extraNodes());
 
   m_details->m_ui.m_txtUsername->lineEdit()->setFocus();
+
+  return true;
 }
 
 void FormEditXmppAccount::performTest() {

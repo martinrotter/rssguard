@@ -171,6 +171,19 @@ void CacheForServiceRoot::setUniqueId(int unique_id) {
   m_uniqueId = unique_id;
 }
 
+void CacheForServiceRoot::clearCachedData() {
+  QMutexLocker lck(m_cacheSaveMutex.data());
+
+  clearCache();
+  saveCacheToFile();
+}
+
+bool CacheForServiceRoot::hasCachedData() {
+  QMutexLocker lck(m_cacheSaveMutex.data());
+
+  return !isEmpty();
+}
+
 CacheSnapshot CacheForServiceRoot::takeMessageCache() {
   QMutexLocker lck(m_cacheSaveMutex.data());
 

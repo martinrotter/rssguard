@@ -110,6 +110,7 @@ if ($use_libmpv -eq "ON") {
 $cmake_path = "$old_pwd\cmake-$cmake_version-windows-x86_64\bin\cmake.exe"
 $zlib_path = "$old_pwd\zlib-$zlib_version"
 $icu_path = "$old_pwd\resources\scripts\icu"
+$vulkan_path = "$old_pwd\resources\scripts\vulkan"
 $libmpv_path = "$old_pwd\mpv"
 $ytdlp_path = "$old_pwd\$ytdlp_output"
 
@@ -258,6 +259,9 @@ if ($use_libmpv -eq "ON") {
   # Copy libmpv and yt-dlp.
   Copy-Item -Path "$libmpv_path\libmpv*.dll" -Destination ".\app\" -Verbose
   Copy-Item -Path "$ytdlp_path" -Destination ".\app\" -Verbose
+
+  # Also copy Vulkan SDK library as it is (optionally) needed by libmpv.
+  Copy-Item -Path "$vulkan_path\vulkan*.dll" -Destination ".\app\" -Verbose
 }
 
 # Remove unneeded files.

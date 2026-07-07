@@ -255,7 +255,8 @@ QString GmailServiceRoot::additionalTooltip() const {
          QSL("\n\n") + ServiceRoot::additionalTooltip();
 }
 
-void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
+bool GmailServiceRoot::saveAllCachedData() {
+  bool saved = true;
   auto msg_cache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
@@ -266,8 +267,8 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
     QStringList ids = i.value();
 
     if (!ids.isEmpty()) {
-      if (network()->markMessagesRead(key, ids, networkProxy()) != QNetworkReply::NetworkError::NoError &&
-          !ignore_errors) {
+      if (network()->markMessagesRead(key, ids, networkProxy()) != QNetworkReply::NetworkError::NoError) {
+        saved = false;
         addMessageStatesToCache(ids, key);
       }
     }
@@ -284,8 +285,8 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
     if (!messages.isEmpty()) {
       QStringList custom_ids = customIDsOfMessages(messages);
 
-      if (network()->markMessagesStarred(key, custom_ids, networkProxy()) != QNetworkReply::NetworkError::NoError &&
-          !ignore_errors) {
+      if (network()->markMessagesStarred(key, custom_ids, networkProxy()) != QNetworkReply::NetworkError::NoError) {
+        saved = false;
         addMessageStatesToCache(messages, key);
       }
     }
@@ -305,6 +306,7 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
       if (res != QNetworkReply::NetworkError::NoError) {
         qCriticalNN << LOGSEC_FEEDLY << "Failed to synchronize tag assignments with error:" << QUOTE_W_SPACE(res);
 
+        saved = false;
         addLabelsAssignmentsToCache(messages, label_custom_id, true);
       }
     }
@@ -324,10 +326,13 @@ void GmailServiceRoot::saveAllCachedData(bool ignore_errors) {
       if (res != QNetworkReply::NetworkError::NoError) {
         qCriticalNN << LOGSEC_FEEDLY << "Failed to synchronize tag deassignments with error:" << QUOTE_W_SPACE(res);
 
+        saved = false;
         addLabelsAssignmentsToCache(messages, label_custom_id, false);
       }
     }
   }
+
+  return saved;
 }
 
 bool GmailServiceRoot::displaysEnclosures() const {

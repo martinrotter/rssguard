@@ -47,8 +47,10 @@ void FormEditTtRssAccount::apply() {
   }
 }
 
-void FormEditTtRssAccount::loadAccountData() {
-  FormAccountDetails::loadAccountData();
+bool FormEditTtRssAccount::loadAccountData() {
+  if (!FormAccountDetails::loadAccountData()) {
+    return false;
+  }
 
   TtRssServiceRoot* existing_root = account<TtRssServiceRoot>();
 
@@ -62,6 +64,8 @@ void FormEditTtRssAccount::loadAccountData() {
   m_details->m_ui.m_checkServerSideUpdate->setChecked(existing_root->network()->forceServerSideUpdate());
   m_details->m_ui.m_checkDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
   m_details->m_ui.m_cbNewAlgorithm->setChecked(existing_root->network()->intelligentSynchronization());
+
+  return true;
 }
 
 void FormEditTtRssAccount::performTest() {

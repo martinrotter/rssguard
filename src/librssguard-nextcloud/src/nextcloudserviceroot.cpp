@@ -85,7 +85,8 @@ void NextcloudServiceRoot::requestSyncIn() {
   });
 }
 
-void NextcloudServiceRoot::saveAllCachedData(bool ignore_errors) {
+bool NextcloudServiceRoot::saveAllCachedData() {
+  bool saved = true;
   auto msg_cache = takeMessageCache();
   QMapIterator<RootItem::ReadStatus, QStringList> i(msg_cache.m_cachedStatesRead);
 
@@ -98,14 +99,14 @@ void NextcloudServiceRoot::saveAllCachedData(bool ignore_errors) {
     if (!ids.isEmpty()) {
       auto res = network()->markMessagesRead(key, ids, networkProxy());
 
-      if (!ignore_errors && res.m_networkError != QNetworkReply::NetworkError::NoError) {
+      if (res.m_networkError != QNetworkReply::NetworkError::NoError) {
+        saved = false;
         addMessageStatesToCache(ids, key);
       }
     }
   }
 
   QMapIterator<RootItem::Importance, QList<Message>> j(msg_cache.m_cachedStatesImportant);
-  QHash<int, Feed*> hashed_feeds = getPrimaryIdHashedSubTreeFeeds();
 
   // Save the actual data important/not important.
   while (j.hasNext()) {
@@ -122,11 +123,14 @@ void NextcloudServiceRoot::saveAllCachedData(bool ignore_errors) {
 
       auto res = network()->markMessagesStarred(key, article_ids, networkProxy());
 
-      if (!ignore_errors && res.m_networkError != QNetworkReply::NetworkError::NoError) {
+      if (res.m_networkError != QNetworkReply::NetworkError::NoError) {
+        saved = false;
         addMessageStatesToCache(messages, key);
       }
     }
   }
+
+  return saved;
 }
 
 void NextcloudServiceRoot::updateTitle() {

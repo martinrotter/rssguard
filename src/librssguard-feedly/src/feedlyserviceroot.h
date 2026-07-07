@@ -20,7 +20,7 @@ class FeedlyServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual FormAccountDetails* accountSetupDialog() const;
     virtual void start(bool freshly_activated);
     virtual QString code() const;
-    virtual void saveAllCachedData(bool ignore_errors);
+    virtual bool saveAllCachedData();
     virtual LabelOperation supportedLabelOperations() const;
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);

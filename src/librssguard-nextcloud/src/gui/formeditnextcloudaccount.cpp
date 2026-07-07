@@ -44,8 +44,10 @@ void FormEditNextcloudAccount::apply() {
   }
 }
 
-void FormEditNextcloudAccount::loadAccountData() {
-  FormAccountDetails::loadAccountData();
+bool FormEditNextcloudAccount::loadAccountData() {
+  if (!FormAccountDetails::loadAccountData()) {
+    return false;
+  }
 
   NextcloudServiceRoot* existing_root = account<NextcloudServiceRoot>();
 
@@ -55,6 +57,8 @@ void FormEditNextcloudAccount::loadAccountData() {
   m_details->m_ui.m_checkDownloadOnlyUnreadMessages->setChecked(existing_root->network()->downloadOnlyUnreadMessages());
   m_details->m_ui.m_checkServerSideUpdate->setChecked(existing_root->network()->forceServerSideUpdate());
   m_details->m_ui.m_spinLimitMessages->setValue(existing_root->network()->batchSize());
+
+  return true;
 }
 
 void FormEditNextcloudAccount::performTest() {

@@ -33,7 +33,7 @@ class TtRssServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     virtual QList<QAction*> contextMenuFeedsList(const QList<RootItem*>& selected_items);
     virtual void addNewFeed(RootItem* selected_item, const QString& url = QString());
     virtual QString additionalTooltip() const;
-    virtual void saveAllCachedData(bool ignore_errors);
+    virtual bool saveAllCachedData();
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual QList<Message> obtainNewMessages(Feed* feed,

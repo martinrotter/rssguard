@@ -18,7 +18,7 @@ class FormEditFeedlyAccount : public FormAccountDetails {
     virtual void apply();
 
   protected:
-    virtual void loadAccountData();
+    virtual bool loadAccountData();
 
   private slots:
     void performTest();

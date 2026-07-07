@@ -4,6 +4,7 @@
 
 #include "exceptions/applicationexception.h"
 #include "gui/guiutilities.h"
+#include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/importantnode.h"
@@ -89,7 +90,7 @@ void FormAccountDetails::clearTabs() {
   m_ui->m_tabWidget->clear();
 }
 
-void FormAccountDetails::loadAccountData() {
+bool FormAccountDetails::loadAccountData() {
   if (m_creatingNew) {
     setWindowTitle(tr("Add new account"));
   }
@@ -99,9 +100,27 @@ void FormAccountDetails::loadAccountData() {
     // Perform last-time operations before account is changed.
     auto* cached_account = dynamic_cast<CacheForServiceRoot*>(m_account);
 
-    if (cached_account != nullptr) {
+    if (cached_account != nullptr && cached_account->hasCachedData()) {
       qWarningNN << LOGSEC_CORE << "Last-time account cache saving before account could be edited.";
-      cached_account->saveAllCachedData(true);
+
+      if (!cached_account->saveAllCachedData()) {
+        const auto answer =
+          MsgBox::show(this,
+                       QMessageBox::Icon::Warning,
+                       tr("Unsynchronized article changes"),
+                       tr("This account has local article changes which could not be synchronized."),
+                       tr("If you continue editing the account, these pending local article changes will be discarded."),
+                       {},
+                       QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::Cancel,
+                       QMessageBox::StandardButton::Cancel);
+
+        if (answer == QMessageBox::StandardButton::Yes) {
+          cached_account->clearCachedData();
+        }
+        else {
+          return false;
+        }
+      }
     }
   }
 
@@ -111,6 +130,8 @@ void FormAccountDetails::loadAccountData() {
   m_accountDetails->m_ui->m_cbUnread->setChecked(m_account->nodeShowUnread());
 
   m_proxyDetails->setProxy(m_account->networkProxy());
+
+  return true;
 }
 
 void FormAccountDetails::createConnections() {

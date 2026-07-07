@@ -51,8 +51,10 @@ void FormEditFeedlyAccount::apply() {
   }
 }
 
-void FormEditFeedlyAccount::loadAccountData() {
-  FormAccountDetails::loadAccountData();
+bool FormEditFeedlyAccount::loadAccountData() {
+  if (!FormAccountDetails::loadAccountData()) {
+    return false;
+  }
 
 #if defined(FEEDLY_OFFICIAL_SUPPORT)
   m_details->m_oauth = account<FeedlyServiceRoot>()->network()->oauth();
@@ -66,6 +68,8 @@ void FormEditFeedlyAccount::loadAccountData() {
     ->setChecked(account<FeedlyServiceRoot>()->network()->downloadOnlyUnreadMessages());
   m_details->m_ui.m_spinLimitMessages->setValue(account<FeedlyServiceRoot>()->network()->batchSize());
   m_details->m_ui.m_cbNewAlgorithm->setChecked(account<FeedlyServiceRoot>()->network()->intelligentSynchronization());
+
+  return true;
 }
 
 void FormEditFeedlyAccount::performTest() {

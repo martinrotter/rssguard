@@ -253,7 +253,7 @@ QList<QAction*> ServiceRoot::serviceMenu() {
           new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Synchronize article cache"), this);
 
         connect(act_sync_cache, &QAction::triggered, this, [cache]() {
-          cache->saveAllCachedData(false);
+          cache->saveAllCachedData();
         });
 
         m_serviceMenu.append(act_sync_cache);

@@ -51,7 +51,7 @@ void FeedDownloader::synchronizeAccountCaches(const QList<CacheForServiceRoot*>&
   for (CacheForServiceRoot* cache : caches) {
     qDebugNN << LOGSEC_FEEDDOWNLOADER << "Synchronizing cache back to server on thread"
              << QUOTE_W_SPACE_DOT(getThreadID());
-    cache->saveAllCachedData(false);
+    cache->saveAllCachedData();
 
     if (m_stopFetching) {
       qWarningNN << LOGSEC_FEEDDOWNLOADER << "Aborting cache synchronization.";

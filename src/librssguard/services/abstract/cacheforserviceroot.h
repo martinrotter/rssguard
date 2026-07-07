@@ -22,7 +22,7 @@ class RSSGUARD_DLLSPEC CacheForServiceRoot {
     explicit CacheForServiceRoot();
     virtual ~CacheForServiceRoot();
 
-    virtual void saveAllCachedData(bool ignore_errors) = 0;
+    virtual bool saveAllCachedData() = 0;
 
     void addLabelsAssignmentsToCache(const QStringList& ids_of_messages, const QString& lbl_custom_id, bool assign);
     void addLabelsAssignmentsToCache(const QList<Message>& ids_of_messages, Label* lbl, bool assign);
@@ -31,6 +31,8 @@ class RSSGUARD_DLLSPEC CacheForServiceRoot {
 
     void loadCacheFromFile();
     void setUniqueId(int unique_id);
+    void clearCachedData();
+    bool hasCachedData();
     bool isEmpty() const;
 
   protected:
@@ -40,8 +42,8 @@ class RSSGUARD_DLLSPEC CacheForServiceRoot {
     CacheSnapshot takeMessageCache();
 
   private:
-    void clearCache();
     void saveCacheToFile();
+    void clearCache();
 
     int m_uniqueId;
     QScopedPointer<QMutex> m_cacheSaveMutex;
