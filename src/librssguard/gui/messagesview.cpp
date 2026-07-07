@@ -203,7 +203,17 @@ void MessagesView::reselectArticle(bool ensure_article_reviewed, bool do_not_mod
   }
 
   if (idx_to_select.isValid()) {
+    auto msg_is_read = m_sourceModel->messageForRow(idx.row()).m_isRead;
+
+    if (!msg_is_read) {
+      m_processingRightMouseButton = true;
+    }
+
     setCurrentIndex(idx_to_select);
+
+    if (!msg_is_read) {
+      m_processingRightMouseButton = false;
+    }
 
     if (!do_not_modify_selection) {
       reselectIndexes({idx_to_select});
@@ -1191,6 +1201,8 @@ void MessagesView::searchMessages(SearchLineEdit::SearchMode mode,
                                   const QString& phrase) {
   qDebugNN << LOGSEC_GUI << "Running search of messages with pattern" << QUOTE_W_SPACE_DOT(phrase);
 
+  m_processingRightMouseButton = true;
+
   switch (mode) {
     case SearchLineEdit::SearchMode::Wildcard:
       m_proxyModel->setFilterWildcard(phrase);
@@ -1212,6 +1224,8 @@ void MessagesView::searchMessages(SearchLineEdit::SearchMode mode,
 
   m_proxyModel->setFilterKeyColumn(where_search == BaseToolBar::SearchFields::SearchTitleOnly ? MSG_MDL_TITLE_INDEX
                                                                                               : -1);
+
+  m_processingRightMouseButton = false;
 
   if (selectionModel()->selectedRows().isEmpty()) {
     requestArticleHiding();
