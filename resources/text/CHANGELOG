@@ -6,6 +6,7 @@ Added:
 * Minimal-* skins now have separator drawn between article header and article body. (#2345)
 
 Fixed:
+* When opening article with external tool from article list, it will get marked if the behavior is enabled in settings. (#2344)
 * When an article is unread and is "selected" via right-mouse click then the column sorting or phrase filtering does not mark the article read anymore. (#2347)
 
 

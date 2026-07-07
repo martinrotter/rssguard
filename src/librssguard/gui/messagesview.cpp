@@ -1260,6 +1260,7 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
   if (sndr != nullptr) {
     auto tool = sndr->data().value<ExternalTool>();
     auto rws = selectionModel()->selectedRows();
+    auto tool_runs = true;
 
     for (const QModelIndex& index : std::as_const(rws)) {
       const QString link =
@@ -1269,12 +1270,18 @@ void MessagesView::openSelectedMessagesWithExternalTool() {
 
       if (!link.isEmpty()) {
         if (!tool.run(link)) {
+          tool_runs = false;
           qApp->showGuiMessage(Notification::Event::GeneralEvent,
                                {tr("Cannot run external tool"),
                                 tr("External tool '%1' could not be started.").arg(tool.executable()),
                                 QSystemTrayIcon::MessageIcon::Critical});
         }
       }
+    }
+
+    if (!rws.isEmpty() && tool_runs &&
+        qApp->settings()->value(GROUP(Messages), SETTING(Messages::MarkReadAfterOpenedExtInt)).toBool()) {
+      QTimer::singleShot(0, this, &MessagesView::markSelectedMessagesRead);
     }
   }
 }
