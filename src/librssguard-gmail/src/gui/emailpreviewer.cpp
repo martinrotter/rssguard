@@ -68,6 +68,11 @@ void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item, Fe
   for (const QSharedPointer<MessageEnclosure>& att : msg.m_enclosures) {
     const QStringList att_id_name = att->url().split(QSL(GMAIL_ATTACHMENT_SEP));
 
+    if (att_id_name.size() != 2 || att_id_name.at(0).isEmpty() || att_id_name.at(1).isEmpty()) {
+      qWarningNN << LOGSEC_GMAIL << "Skipping malformed Gmail attachment data:" << QUOTE_W_SPACE_DOT(att->url());
+      continue;
+    }
+
     m_ui.m_btnAttachments->menu()->addAction(att->mimeType())->setData(att_id_name);
   }
 
@@ -95,8 +100,15 @@ void EmailPreviewer::forwardEmail() {
 }
 
 void EmailPreviewer::downloadAttachment(QAction* act) {
-  const QString attachment_id = act->data().toStringList().at(1);
-  const QString file_name = act->data().toStringList().at(0);
+  const QStringList attachment_data = act->data().toStringList();
+
+  if (attachment_data.size() != 2 || attachment_data.at(0).isEmpty() || attachment_data.at(1).isEmpty()) {
+    qWarningNN << LOGSEC_GMAIL << "Cannot download malformed Gmail attachment.";
+    return;
+  }
+
+  const QString attachment_id = attachment_data.at(1);
+  const QString file_name = attachment_data.at(0);
 
   const QString save_file_name = FileDialog::saveFileName(qApp->mainFormWidget(),
                                                           tr("Save attachment %1").arg(file_name),
