@@ -28,13 +28,17 @@ namespace {
     const QString trimmed_text = text.trimmed();
     return trimmed_text.isEmpty() ? QChar() : trimmed_text.at(0);
   }
+
+  QString pubSubSyncInPendingId(const QString& service, XmppCategory::Type pubsub_type) {
+    return QSL("pubsub:%1:%2").arg(QString::number(int(pubsub_type)), service);
+  }
 } // namespace
 
 XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
   : QObject(parent), m_root(parent), m_xmppClient(new QXmppClient(this)),
     m_discoveryManager(new QXmppDiscoveryManager()), m_pubSubManager(new PubSubManager(this)),
     m_mucManager(new QXmppMucManager()), m_mamManager(new QXmppMamManager()), m_extraNodes(defaultExtraServices()),
-    m_syncInSent(true) {
+    m_syncInSchedulingServices(false), m_syncInSent(true) {
   m_discoveryManager->setParent(this);
   m_mucManager->setParent(this);
   m_mamManager->setParent(this);
@@ -161,8 +165,8 @@ void XmppNetwork::reportSyncInFinish(const ServiceRoot::SyncInResult& result, bo
 void XmppNetwork::finalizeSyncInFinish(const QString& jid_to_remove, RootItem* new_tree) {
   m_syncInPendingServices.removeAll(jid_to_remove);
 
-  if (m_syncInPendingServices.isEmpty()) {
-    // reportSyncInFinish(new_tree);
+  if (m_syncInPendingServices.isEmpty() && !m_syncInSchedulingServices) {
+    reportSyncInFinish(new_tree);
   }
 }
 
@@ -236,6 +240,8 @@ void XmppNetwork::obtainServicesNodesTree() {
 
       all_services.removeDuplicates();
 
+      m_syncInSchedulingServices = true;
+
       for (const auto& serv : all_services) {
         const auto serv_trim = serv.trimmed();
 
@@ -244,6 +250,12 @@ void XmppNetwork::obtainServicesNodesTree() {
         }
 
         discoverService(serv_trim, root);
+      }
+
+      m_syncInSchedulingServices = false;
+
+      if (m_syncInPendingServices.isEmpty() && !m_syncInSent) {
+        reportSyncInFinish(root);
       }
     }
     else if (QXmppError* error = std::get_if<QXmppError>(&result)) {
@@ -312,6 +324,10 @@ void XmppNetwork::discoverService(const QString& jid, RootItem* new_tree) {
           fetchChatroom(jid, *info, XmppCategory::Type::SingleUserChats, new_tree);
         }
 
+        if (!is_chatroom && !is_chat) {
+          finalizeSyncInFinish(jid, new_tree);
+        }
+
         return;
       }
     }
@@ -326,6 +342,9 @@ void XmppNetwork::discoverService(const QString& jid, RootItem* new_tree) {
 }
 
 void XmppNetwork::fetchPubSubSubscriptions(const QString& service, XmppCategory::Type pubsub_type, RootItem* new_tree) {
+  const QString pending_id = pubSubSyncInPendingId(service, pubsub_type);
+  m_syncInPendingServices.append(pending_id);
+
   auto task = m_pubSubManager->requestSubscriptions(service);
 
   task.then(this, [=, this](auto result) {
@@ -389,7 +408,7 @@ void XmppNetwork::fetchPubSubSubscriptions(const QString& service, XmppCategory:
       qDebugNN << LOGSEC_XMPP << "Subscription checking failed with unspecified error.";
     }
 
-    finalizeSyncInFinish(service, new_tree);
+    finalizeSyncInFinish(pending_id, new_tree);
   });
 }
 

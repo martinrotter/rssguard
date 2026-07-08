@@ -102,6 +102,7 @@ class XmppNetwork : public QObject {
     QScopedPointer<RootItem> m_syncInTree;
 
     QList<QString> m_syncInPendingServices;
+    bool m_syncInSchedulingServices;
     bool m_syncInSent;
 };
 
