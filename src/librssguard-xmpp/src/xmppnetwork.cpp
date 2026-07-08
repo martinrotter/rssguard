@@ -393,7 +393,7 @@ void XmppNetwork::fetchPubSubSubscriptions(const QString& service, XmppCategory:
         if (!childs.isEmpty()) {
           XmppCategory* service_folder = XmppServiceRoot::findCategory(new_tree, pubsub_type);
 
-          for (RootItem* ch : childs) {
+          for (RootItem* ch : std::as_const(childs)) {
             service_folder->appendChild(ch);
           }
         }

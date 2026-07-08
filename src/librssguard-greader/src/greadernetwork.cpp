@@ -836,9 +836,14 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
       }
     }
 
-    if (cats.contains(parent_label)) {
-      cats[parent_label]->appendChild(feed);
+    RootItem* feed_parent = cats.value(parent_label, parent);
+
+    if (feed_parent == parent && !parent_label.isEmpty()) {
+      qWarningNN << LOGSEC_GREADER << "Feed" << QUOTE_W_SPACE(id) << "references missing category"
+                 << QUOTE_W_SPACE(parent_label) << "and will be placed at account root.";
     }
+
+    feed_parent->appendChild(feed);
   }
 
   auto* lblroot = new LabelsNode(parent);
