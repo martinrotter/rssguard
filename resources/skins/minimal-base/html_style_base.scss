@@ -20,6 +20,11 @@ body {
 }
 
 .article-separator {
+  height: 0;
+  border: 0;
+
+  border-top: 1px solid $text_color;
+  background: $text_color;
   color: $text_color;
   border-color: $text_color;
 }
