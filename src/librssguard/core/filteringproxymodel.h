@@ -23,6 +23,10 @@ class FilteringProxyModel : public QSortFilterProxyModel {
   protected:
     void scheduleFilteredOutItemsRefresh();
 
+    virtual bool isHierarchicalFilteringModel() const;
+    virtual bool canHideRowsWithoutFilteringIndicator() const;
+    virtual bool isRowHiddenWithoutFilteringIndicator(const QModelIndex& source_index) const;
+
   private:
     bool containsFilteredOutItems(const QModelIndex& source_parent = {}, const QModelIndex& proxy_parent = {}) const;
     void refreshFilteredOutItemsState();

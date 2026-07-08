@@ -6,6 +6,7 @@ Added:
 * Minimal-* skins now have separator drawn between article header and article body. (#2345)
 
 Fixed:
+* Wrong filtering indication when there was no active filter in feed list. (#2352)
 * Fixed some cache-related problems when editing accounts.
 * Vulkan SDK library is deployed now on Windows if needed. (#2350)
 * When opening article with external tool from article list, it will get marked if the behavior is enabled in settings. (#2344)

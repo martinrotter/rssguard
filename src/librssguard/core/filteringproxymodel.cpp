@@ -52,7 +52,32 @@ bool FilteringProxyModel::containsFilteredOutItems(const QModelIndex& source_par
   const int proxy_rows = rowCount(proxy_parent);
 
   if (source_rows != proxy_rows) {
-    return true;
+    if (!canHideRowsWithoutFilteringIndicator()) {
+      return true;
+    }
+
+    for (int row = 0; row < source_rows; ++row) {
+      const QModelIndex source_child = src_model->index(row, 0, source_parent);
+      const QModelIndex proxy_child = mapFromSource(source_child);
+
+      if (!proxy_child.isValid()) {
+        if (!isRowHiddenWithoutFilteringIndicator(source_child)) {
+          return true;
+        }
+
+        continue;
+      }
+
+      if (isHierarchicalFilteringModel() && containsFilteredOutItems(source_child, proxy_child)) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  if (!isHierarchicalFilteringModel()) {
+    return false;
   }
 
   for (int row = 0; row < proxy_rows; ++row) {
@@ -63,6 +88,20 @@ bool FilteringProxyModel::containsFilteredOutItems(const QModelIndex& source_par
       return true;
     }
   }
+
+  return false;
+}
+
+bool FilteringProxyModel::isHierarchicalFilteringModel() const {
+  return false;
+}
+
+bool FilteringProxyModel::canHideRowsWithoutFilteringIndicator() const {
+  return false;
+}
+
+bool FilteringProxyModel::isRowHiddenWithoutFilteringIndicator(const QModelIndex& source_index) const {
+  Q_UNUSED(source_index)
 
   return false;
 }

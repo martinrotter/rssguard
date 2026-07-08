@@ -71,6 +71,9 @@ class FeedsProxyModel : public FilteringProxyModel {
   protected:
     virtual bool lessThan(const QModelIndex& left, const QModelIndex& right) const;
     virtual bool filterAcceptsRow(int source_row, const QModelIndex& source_parent) const;
+    virtual bool isHierarchicalFilteringModel() const;
+    virtual bool canHideRowsWithoutFilteringIndicator() const;
+    virtual bool isRowHiddenWithoutFilteringIndicator(const QModelIndex& source_index) const;
 
   private:
     void initializeFilters();

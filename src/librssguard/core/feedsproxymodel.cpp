@@ -504,6 +504,33 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
   return should_show;
 }
 
+bool FeedsProxyModel::isHierarchicalFilteringModel() const {
+  return true;
+}
+
+bool FeedsProxyModel::canHideRowsWithoutFilteringIndicator() const {
+  return true;
+}
+
+bool FeedsProxyModel::isRowHiddenWithoutFilteringIndicator(const QModelIndex& source_index) const {
+  const RootItem* item = m_sourceModel->itemForIndex(source_index);
+
+  if (item == nullptr) {
+    return false;
+  }
+
+  const ServiceRoot* par_account = item->account();
+
+  if (par_account == nullptr) {
+    return false;
+  }
+
+  return (item->kind() == RootItem::Kind::Important && !par_account->nodeShowImportant()) ||
+         (item->kind() == RootItem::Kind::Unread && !par_account->nodeShowUnread()) ||
+         (item->kind() == RootItem::Kind::Probes && !par_account->nodeShowProbes()) ||
+         (item->kind() == RootItem::Kind::Labels && !par_account->nodeShowLabels());
+}
+
 bool FeedsProxyModel::sortAlphabetically() const {
   return m_sortAlphabetically;
 }
