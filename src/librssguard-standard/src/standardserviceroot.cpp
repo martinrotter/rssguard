@@ -396,7 +396,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   // Feed data are downloaded and encoded.
   // Parse data and obtain messages.
   QList<Message> messages;
-  FeedParser* parser;
+  FeedParser* parser = nullptr;
   QElapsedTimer tmr;
 
   tmr.start();
@@ -432,7 +432,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       break;
 
     default:
-      break;
+      throw FeedFetchException(Feed::Status::ParsingError, tr("unsupported feed type"));
   }
 
   parser->setArticleDateMode(f->publishedInsteadOfUpdatedTime());
