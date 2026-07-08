@@ -1231,7 +1231,7 @@ void MessagesModel::switchBatchMessageImportance(const QModelIndexList& messages
   }
 
   blockSignals(false);
-  reloadChangedLayout(changed_indices);
+  reloadChangedLayout(changed_indices, true);
 
   m_selectedItem->account()->onBeforeSwitchMessageImportance(m_selectedItem, message_states);
 
