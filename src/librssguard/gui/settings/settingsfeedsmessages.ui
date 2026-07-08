@@ -391,7 +391,7 @@
             <item>
              <widget class="QLabel" name="m_lblHeightImageAttachments">
               <property name="text">
-               <string>Limit height of attachments</string>
+               <string>Limit height of embedded attachment images</string>
               </property>
               <property name="buddy">
                <cstring>m_spinHeightImageAttachments</cstring>
@@ -430,6 +430,46 @@
            </layout>
           </item>
           <item row="2" column="0" colspan="2">
+           <layout class="QHBoxLayout" name="horizontalLayout_9">
+            <item>
+             <widget class="QLabel" name="m_lblHeightArticleImages">
+              <property name="text">
+               <string>Limit height of article images</string>
+              </property>
+              <property name="buddy">
+               <cstring>m_spinHeightArticleImages</cstring>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QSpinBox" name="m_spinHeightArticleImages">
+              <property name="minimum">
+               <number>-1</number>
+              </property>
+              <property name="maximum">
+               <number>4000</number>
+              </property>
+              <property name="value">
+               <number>-1</number>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer_8">
+              <property name="orientation">
+               <enum>Qt::Orientation::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>40</width>
+                <height>20</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item row="3" column="0" colspan="2">
            <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
              <widget class="QGroupBox" name="groupBox_4">
@@ -845,6 +885,7 @@
   <tabstop>m_checkBringToForegroundAfterMsgOpened</tabstop>
   <tabstop>m_cbShowEnclosuresDirectly</tabstop>
   <tabstop>m_spinHeightImageAttachments</tabstop>
+  <tabstop>m_spinHeightArticleImages</tabstop>
   <tabstop>m_btnChangeMessagesFont</tabstop>
   <tabstop>m_cmbUnreadIconType</tabstop>
   <tabstop>m_cmbArticleMarkingPolicy</tabstop>

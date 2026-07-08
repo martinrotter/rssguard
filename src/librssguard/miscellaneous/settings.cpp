@@ -143,7 +143,10 @@ DKEY Feeds::ListFont = "list_font";
 DKEY Messages::ID = "messages";
 
 DKEY Messages::LimitArticleImagesHeight = "message_head_image_height";
-DVALUE(int) Messages::LimitArticleImagesHeightDef = 72;
+DVALUE(int) Messages::LimitArticleImagesHeightDef = 0;
+
+DKEY Messages::LimitEnclosureImagesHeight = "enclosure_image_height";
+DVALUE(int) Messages::LimitEnclosureImagesHeightDef = 72;
 
 DKEY Messages::DisplayEnclosuresInMessage = "show_enclosures_in_message";
 DVALUE(bool) Messages::DisplayEnclosuresInMessageDef = false;

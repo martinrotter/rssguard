@@ -161,6 +161,9 @@ namespace Messages {
   KEY LimitArticleImagesHeight;
   VALUE(int) LimitArticleImagesHeightDef;
 
+  KEY LimitEnclosureImagesHeight;
+  VALUE(int) LimitEnclosureImagesHeightDef;
+
   KEY DisplayEnclosuresInMessage;
   VALUE(bool) DisplayEnclosuresInMessageDef;
 

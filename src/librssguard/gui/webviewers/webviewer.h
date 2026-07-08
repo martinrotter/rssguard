@@ -95,6 +95,9 @@ class WebViewer {
     // Returns final HTML generated for the articles.
     virtual QString htmlForMessage(const Message& message, RootItem* root, Feed* feed) const;
 
+    QString convertToHtmlWithoutImages(const QString& html) const;
+    QString convertToHtmlWithLimitedImages(const QString& html) const;
+
     // Enables/disables loading of remote resources like images etc.
     virtual bool loadExternalResources() const;
     virtual void setLoadExternalResources(bool load_resources);
@@ -137,7 +140,6 @@ class WebViewer {
 
   protected:
     QString htmlToDisplay(const QString& html) const;
-    QString convertToHtmlWithoutImages(const QString& html) const;
 
     virtual ContextMenuData provideContextMenuData(QContextMenuEvent* event) = 0;
 

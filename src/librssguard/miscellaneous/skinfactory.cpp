@@ -253,7 +253,9 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
   const bool display_enclosures =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool() &&
     viewer->loadExternalResources();
-  const int forced_img_height =
+  const int forced_enclosure_img_height =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitEnclosureImagesHeight)).toInt();
+  const int forced_article_img_height =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
   const bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
 
@@ -270,8 +272,9 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
                       .replace(QSL("%enclosure_mime%"), enclosure->mimeType());
 
       if (display_enclosures && enclosure->mimeType().startsWith(QSL("image/"))) {
-        const QString image_max_height =
-          forced_img_height > 0 && viewer != nullptr ? viewer->imageCssMaxHeight(forced_img_height) : QString();
+        const QString image_max_height = forced_enclosure_img_height > 0 && viewer != nullptr
+                                           ? viewer->imageCssMaxHeight(forced_enclosure_img_height)
+                                           : QString();
 
         // Add thumbnail image.
         enclosure_images += QString(skin.m_enclosureImageMarkup)
@@ -303,7 +306,9 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
   }
 
   QString msg_contents =
-    is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal) : message.m_contents;
+    is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
+             : (viewer != nullptr && forced_article_img_height > 0 ? viewer->convertToHtmlWithLimitedImages(message.m_contents)
+                                                                    : message.m_contents);
 
   QString date_tooltip = QSL("Received: %1<br/>Published: %2").arg(msg_date_retrieved, msg_date_published);
 

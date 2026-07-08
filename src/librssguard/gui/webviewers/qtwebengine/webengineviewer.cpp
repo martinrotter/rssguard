@@ -205,7 +205,7 @@ void WebEngineViewer::setLoadExternalResources(bool load_resources) {
 }
 
 QString WebEngineViewer::imageCssMaxHeight(int height) const {
-  return QSL("style=\"max-height: %1px;\"").arg(height);
+  return QSL("style=\"max-height: %1px; width: auto;\"").arg(height);
 }
 
 bool WebEngineViewer::supportsNavigation() const {

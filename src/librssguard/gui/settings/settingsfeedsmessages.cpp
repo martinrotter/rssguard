@@ -14,6 +14,7 @@
 
 #include <QFontDialog>
 #include <QLocale>
+#include <QSpinBox>
 #include <QStringList>
 
 SettingsFeedsMessages::SettingsFeedsMessages(Settings* settings, QWidget* parent)
@@ -43,7 +44,8 @@ void SettingsFeedsMessages::loadUi() {
   m_ui->m_helpArticlesLazyLoading
     ->setHelpText(tr("If enabled then %1 loads articles into article list on demand as you scroll through the "
                      "list.\n\n"
-                     "This can tremendously speed up the application if you have hundreds of thousands of articles, but "
+                     "This can tremendously speed up the application if you have hundreds of thousands of articles, "
+                     "but "
                      "it can hinder your article list filtering because not all articles are loaded, thus your "
                      "filtering could be off.")
                     .arg(QSL(APP_NAME)),
@@ -87,6 +89,10 @@ void SettingsFeedsMessages::loadUi() {
           QOverload<int>::of(&QSpinBox::valueChanged),
           this,
           &SettingsFeedsMessages::dirtifySettings);
+  connect(m_ui->m_spinHeightArticleImages,
+          QOverload<int>::of(&QSpinBox::valueChanged),
+          this,
+          &SettingsFeedsMessages::dirtifySettings);
 
   connect(m_ui->m_checkShowFeedIconInFeedColumn, &QCheckBox::toggled, this, &SettingsFeedsMessages::dirtifySettings);
   connect(m_ui->m_checkShowFeedIconInFeedColumn, &QCheckBox::toggled, this, &SettingsFeedsMessages::requireRestart);
@@ -106,13 +112,20 @@ void SettingsFeedsMessages::loadUi() {
     }
   });
 
-  connect(m_ui->m_spinHeightImageAttachments, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
+  auto update_image_height_suffix = [this](QSpinBox* spin_box, int value) {
     if (value <= 0) {
-      m_ui->m_spinHeightImageAttachments->setSuffix(QSL(" px") + tr(" = unchanged size"));
+      spin_box->setSuffix(QSL(" px") + tr(" = unchanged size"));
     }
     else {
-      m_ui->m_spinHeightImageAttachments->setSuffix(QSL(" px"));
+      spin_box->setSuffix(QSL(" px"));
     }
+  };
+
+  connect(m_ui->m_spinHeightImageAttachments, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
+    update_image_height_suffix(m_ui->m_spinHeightImageAttachments, value);
+  });
+  connect(m_ui->m_spinHeightArticleImages, QOverload<int>::of(&QSpinBox::valueChanged), this, [=](int value) {
+    update_image_height_suffix(m_ui->m_spinHeightArticleImages, value);
   });
 
   connect(m_ui->m_cmbArticleMarkingPolicy,
@@ -420,8 +433,10 @@ void SettingsFeedsMessages::loadSettings() {
 
   m_ui->m_cbArticleViewerAlwaysVisible
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::AlwaysDisplayItemPreview)).toBool());
-  m_ui->m_spinHeightImageAttachments
+  m_ui->m_spinHeightArticleImages
     ->setValue(settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt());
+  m_ui->m_spinHeightImageAttachments
+    ->setValue(settings()->value(GROUP(Messages), SETTING(Messages::LimitEnclosureImagesHeight)).toInt());
   m_ui->m_cbShowEnclosuresDirectly
     ->setChecked(settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool());
 
@@ -581,8 +596,9 @@ void SettingsFeedsMessages::saveSettings() {
                        m_ui->m_cbStrikethroughDisabledFeeds->isChecked());
   settings()->setValue(GROUP(Messages), Messages::IgnoreContentsChanges, m_ui->m_cmbIgnoreContentsChanges->isChecked());
   settings()->setValue(GROUP(Messages), Messages::MultilineArticleList, m_ui->m_checkMultilineArticleList->isChecked());
+  settings()->setValue(GROUP(Messages), Messages::LimitArticleImagesHeight, m_ui->m_spinHeightArticleImages->value());
   settings()->setValue(GROUP(Messages),
-                       Messages::LimitArticleImagesHeight,
+                       Messages::LimitEnclosureImagesHeight,
                        m_ui->m_spinHeightImageAttachments->value());
   settings()->setValue(GROUP(Messages),
                        Messages::DisplayEnclosuresInMessage,

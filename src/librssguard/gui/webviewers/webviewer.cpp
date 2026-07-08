@@ -12,13 +12,17 @@
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 
-#include <cstring>
+#include <functional>
+#include <optional>
+#include <utility>
 
 #include <QClipboard>
 #include <QFileIconProvider>
 #include <QImageWriter>
+#include <QList>
 #include <QPrintDialog>
 #include <QPrinter>
+#include <QStringList>
 #include <QTimer>
 
 WebViewer::WebViewer() {
@@ -53,7 +57,129 @@ namespace {
     }
   }
 
-  void processGumboNode(GumboNode* node, QString& out, bool escape_text = true) {
+  struct HtmlAttribute {
+      QString m_name;
+      QString m_value;
+  };
+
+  struct HtmlElement {
+      GumboTag m_tag;
+      QString m_tagName;
+      QList<HtmlAttribute> m_attributes;
+      QStringList m_rawAttributes;
+      QString m_replacementHtml;
+      bool m_hasReplacementHtml = false;
+
+      bool isVoid() const {
+        return isGumboVoidTag(m_tag);
+      }
+
+      QString attributeValue(const QString& name) const {
+        for (const HtmlAttribute& attr : m_attributes) {
+          if (attr.m_name.compare(name, Qt::CaseInsensitive) == 0) {
+            return attr.m_value;
+          }
+        }
+
+        return {};
+      }
+
+      void removeAttribute(const QString& name) {
+        for (auto it = m_attributes.begin(); it != m_attributes.end();) {
+          if (it->m_name.compare(name, Qt::CaseInsensitive) == 0) {
+            it = m_attributes.erase(it);
+          }
+          else {
+            ++it;
+          }
+        }
+      }
+
+      void appendRawAttribute(const QString& attribute) {
+        const QString trimmed_attr = attribute.trimmed();
+
+        if (!trimmed_attr.isEmpty()) {
+          m_rawAttributes.append(trimmed_attr);
+        }
+      }
+
+      void setReplacementHtml(const QString& html) {
+        m_replacementHtml = html;
+        m_hasReplacementHtml = true;
+      }
+  };
+
+  using HtmlElementProcessor = std::function<std::optional<HtmlElement>(HtmlElement)>;
+
+  HtmlElement htmlElementFromGumbo(const GumboElement& element) {
+    HtmlElement html_element;
+
+    html_element.m_tag = element.tag;
+    html_element.m_tagName = QString::fromUtf8(gumbo_normalized_tagname(element.tag));
+
+    const GumboVector* attrs = &element.attributes;
+
+    for (unsigned int i = 0; i < attrs->length; ++i) {
+      auto* attr = static_cast<GumboAttribute*>(attrs->data[i]);
+
+      html_element.m_attributes.append({QString::fromUtf8(attr->name), QString::fromUtf8(attr->value)});
+    }
+
+    return html_element;
+  }
+
+  void appendHtmlElementOpenTag(const HtmlElement& element, QString& out) {
+    out += QSL("<");
+    out += element.m_tagName;
+
+    for (const HtmlAttribute& attr : element.m_attributes) {
+      out += QSL(" ");
+      out += attr.m_name;
+      out += QSL("=\"");
+      out += attr.m_value.toHtmlEscaped();
+      out += QSL("\"");
+    }
+
+    for (const QString& attr : element.m_rawAttributes) {
+      out += QL1C(' ');
+      out += attr;
+    }
+
+    out += QSL(">");
+  }
+
+  QString imageLinkReplacementHtml(const HtmlElement& element) {
+    const QString src = element.attributeValue(QSL("src"));
+
+    if (src.isEmpty()) {
+      return {};
+    }
+
+    const QString href = src.toHtmlEscaped();
+    QString link_text = element.attributeValue(QSL("alt")).toHtmlEscaped();
+
+    if (link_text.isEmpty()) {
+      link_text = element.attributeValue(QSL("title")).toHtmlEscaped();
+    }
+
+    if (link_text.isEmpty()) {
+      QUrl url(src);
+
+      if (url.isValid() && !url.fileName().trimmed().isEmpty()) {
+        link_text = url.fileName().toHtmlEscaped();
+      }
+      else if (url.isValid() && !url.host().isEmpty()) {
+        link_text = url.host().toHtmlEscaped();
+      }
+    }
+
+    return QSL("<br/><a href=\"%1\">&#128247; %2 - %3</a><br/>").arg(href, QObject::tr("image"), link_text);
+  }
+
+  void processGumboNode(GumboNode* node,
+                        QString& out,
+                        const HtmlElementProcessor& element_processor = {},
+                        bool escape_text = true) {
     if (!node) {
       return;
     }
@@ -66,70 +192,43 @@ namespace {
 
       case GUMBO_NODE_ELEMENT: {
         GumboElement& el = node->v.element;
+        HtmlElement html_element = htmlElementFromGumbo(el);
+        const bool has_tag = !html_element.m_tagName.isEmpty();
 
-        if (el.tag == GUMBO_TAG_IMG) {
-          GumboAttribute* attr_src = gumbo_get_attribute(&el.attributes, "src");
-          GumboAttribute* attr_alt = gumbo_get_attribute(&el.attributes, "alt");
-          GumboAttribute* attr_title = gumbo_get_attribute(&el.attributes, "title");
+        if (has_tag) {
+          std::optional<HtmlElement> processed_element;
 
-          if (attr_src && attr_src->value) {
-            QString src = QString::fromUtf8(attr_src->value);
-            QString href = src.toHtmlEscaped();
-            QString link_text;
-
-            if (attr_alt && attr_alt->value && strlen(attr_alt->value) > 0) {
-              link_text = QString::fromUtf8(attr_alt->value).toHtmlEscaped();
-            }
-            else if (attr_title && attr_title->value && strlen(attr_title->value) > 0) {
-              link_text = QString::fromUtf8(attr_title->value).toHtmlEscaped();
-            }
-            else {
-              QUrl url(src);
-
-              if (url.isValid() && !url.fileName().trimmed().isEmpty()) {
-                link_text = url.fileName().toHtmlEscaped();
-              }
-              else if (url.isValid() && !url.host().isEmpty()) {
-                link_text = url.host().toHtmlEscaped();
-              }
-            }
-
-            out += QSL("<br/><a href=\"%1\">📷 %2 - %3</a><br/>").arg(href, QObject::tr("image"), link_text);
+          if (element_processor) {
+            processed_element = element_processor(std::move(html_element));
+          }
+          else {
+            processed_element = std::move(html_element);
           }
 
-          return;
-        }
-
-        const char* tag_name = gumbo_normalized_tagname(el.tag);
-
-        if (tag_name && *tag_name) {
-          out += QSL("<");
-          out += tag_name;
-
-          GumboVector* attrs = &el.attributes;
-
-          for (unsigned int i = 0; i < attrs->length; ++i) {
-            auto* attr = static_cast<GumboAttribute*>(attrs->data[i]);
-            out += QSL(" ");
-            out += attr->name;
-            out += QSL("=\"");
-            out += QString::fromUtf8(attr->value).toHtmlEscaped();
-            out += QSL("\"");
+          if (!processed_element.has_value()) {
+            return;
           }
 
-          out += QSL(">");
+          html_element = std::move(processed_element.value());
+
+          if (html_element.m_hasReplacementHtml) {
+            out += html_element.m_replacementHtml;
+            return;
+          }
+
+          appendHtmlElementOpenTag(html_element, out);
         }
 
         GumboVector* children = &el.children;
         const bool is_raw_text_element = el.tag == GUMBO_TAG_SCRIPT || el.tag == GUMBO_TAG_STYLE;
 
         for (unsigned int i = 0; i < children->length; ++i) {
-          processGumboNode(static_cast<GumboNode*>(children->data[i]), out, !is_raw_text_element);
+          processGumboNode(static_cast<GumboNode*>(children->data[i]), out, element_processor, !is_raw_text_element);
         }
 
-        if (tag_name && *tag_name && !isGumboVoidTag(el.tag)) {
+        if (has_tag && !html_element.isVoid()) {
           out += QSL("</");
-          out += tag_name;
+          out += html_element.m_tagName;
           out += QSL(">");
         }
 
@@ -156,7 +255,49 @@ QString WebViewer::convertToHtmlWithoutImages(const QString& html) const {
   QString result;
   GumboNode* root = output->root;
 
-  processGumboNode(root, result);
+  processGumboNode(root, result, [](HtmlElement element) -> std::optional<HtmlElement> {
+    if (element.m_tag != GUMBO_TAG_IMG) {
+      return element;
+    }
+
+    element.setReplacementHtml(imageLinkReplacementHtml(element));
+
+    return element;
+  });
+
+  gumbo_destroy_output(&kGumboDefaultOptions, output);
+
+  return result;
+}
+
+QString WebViewer::convertToHtmlWithLimitedImages(const QString& html) const {
+  const int height = qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
+
+  if (!TextFactory::couldBeHtml(html) || height <= 0) {
+    return html;
+  }
+
+  const QString limited_img_attribute = imageCssMaxHeight(height);
+
+  if (limited_img_attribute.isEmpty()) {
+    return html;
+  }
+
+  QByteArray utf8 = html.toUtf8();
+  GumboOutput* output = gumbo_parse(utf8.constData());
+  QString result;
+  GumboNode* root = output->root;
+
+  processGumboNode(root, result, [&limited_img_attribute](HtmlElement element) -> std::optional<HtmlElement> {
+    if (element.m_tag == GUMBO_TAG_IMG) {
+      element.removeAttribute(QSL("style"));
+      element.removeAttribute(QSL("width"));
+      element.removeAttribute(QSL("height"));
+      element.appendRawAttribute(limited_img_attribute);
+    }
+
+    return element;
+  });
 
   gumbo_destroy_output(&kGumboDefaultOptions, output);
 
