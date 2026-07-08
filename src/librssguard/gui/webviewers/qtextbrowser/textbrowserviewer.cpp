@@ -331,8 +331,8 @@ static void collectImageUrlsFromGumboNode(GumboNode* node, QList<QString>& image
   }
 }
 
-QString TextBrowserViewer::htmlForMessage(const Message& message, RootItem* root) const {
-  auto html_message = WebViewer::htmlForMessage(message, root);
+QString TextBrowserViewer::htmlForMessage(const Message& message, RootItem* root, Feed* feed) const {
+  auto html_message = WebViewer::htmlForMessage(message, root, feed);
 
   // Remove other characters which cannot be displayed properly.
   static QRegularExpression exp_symbols("&#x1F[0-9A-F]{3};");
@@ -441,7 +441,7 @@ void TextBrowserViewer::loadMessage(const Message& message, RootItem* root, Feed
   m_feed = feed;
 
   auto url = urlForMessage(message, root);
-  auto html = htmlForMessage(message, root);
+  auto html = htmlForMessage(message, root, feed);
 
   bool downloads_started = loadStaticHtml(html, url);
 

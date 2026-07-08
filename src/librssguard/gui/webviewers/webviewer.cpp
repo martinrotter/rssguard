@@ -60,8 +60,8 @@ namespace {
 
     switch (node->type) {
       case GUMBO_NODE_TEXT:
-        out += escape_text ? QString::fromUtf8(node->v.text.text).toHtmlEscaped()
-                           : QString::fromUtf8(node->v.text.text);
+        out +=
+          escape_text ? QString::fromUtf8(node->v.text.text).toHtmlEscaped() : QString::fromUtf8(node->v.text.text);
         break;
 
       case GUMBO_NODE_ELEMENT: {
@@ -194,8 +194,8 @@ QUrl WebViewer::urlForMessage(const Message& message, RootItem* root) const {
   return url;
 }
 
-QString WebViewer::htmlForMessage(const Message& message, RootItem* root) const {
-  auto html_message = qApp->skins()->generateHtmlOfArticle(message, root, this);
+QString WebViewer::htmlForMessage(const Message& message, RootItem* root, Feed* feed) const {
+  auto html_message = qApp->skins()->generateHtmlOfArticle(message, root, feed, this);
   return html_message;
 }
 

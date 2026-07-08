@@ -93,7 +93,7 @@ class WebViewer {
     virtual QUrl urlForMessage(const Message& message, RootItem* root) const;
 
     // Returns final HTML generated for the articles.
-    virtual QString htmlForMessage(const Message& message, RootItem* root) const;
+    virtual QString htmlForMessage(const Message& message, RootItem* root, Feed* feed) const;
 
     // Enables/disables loading of remote resources like images etc.
     virtual bool loadExternalResources() const;

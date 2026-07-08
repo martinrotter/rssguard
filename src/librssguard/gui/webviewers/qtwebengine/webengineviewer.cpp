@@ -94,7 +94,7 @@ void WebEngineViewer::loadMessage(const Message& message, RootItem* root, Feed* 
   m_feed = feed;
 
   auto url = urlForMessage(message, root);
-  auto html = htmlForMessage(message, root);
+  auto html = htmlForMessage(message, root, feed);
 
   setHtml(html, url, root, feed);
 

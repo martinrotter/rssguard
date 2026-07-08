@@ -245,7 +245,10 @@ QString SkinFactory::prepareHtml(const QString& inner_html) {
     .replace(QSL("%article_body%"), inner_html);
 }
 
-QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* root, const WebViewer* viewer) const {
+QString SkinFactory::generateHtmlOfArticle(const Message& message,
+                                           RootItem* root,
+                                           Feed* feed,
+                                           const WebViewer* viewer) const {
   const Skin skin = currentSkin();
   const bool display_enclosures =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool() &&
@@ -279,11 +282,18 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
     }
   }
 
-  QString msg_date =
+  QString msg_date_published =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
       ? message.m_created.toLocalTime()
           .toString(qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString())
       : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
+                                                      QLocale::FormatType::ShortFormat);
+
+  QString msg_date_retrieved =
+    qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
+      ? message.m_retrieved.toLocalTime()
+          .toString(qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString())
+      : qApp->localization()->loadedLocale().toString(message.m_retrieved.toLocalTime(),
                                                       QLocale::FormatType::ShortFormat);
 
   QUrl message_url(message.m_url);
@@ -295,6 +305,8 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
   QString msg_contents =
     is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal) : message.m_contents;
 
+  QString date_tooltip = QSL("Received: %1<br/>Published: %2").arg(msg_date_retrieved, msg_date_published);
+
   messages_layout.append(QString(skin.m_layoutMarkup)
                            .replace(QSL("%article_title%"), message.m_title.toHtmlEscaped())
                            .replace(QSL("%article_author%"),
@@ -305,7 +317,7 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
                                       (message.m_author.isEmpty() ? tr("unknown author") : message.m_author))
                            .replace(QSL("%article_url%"), message_url.toString())
                            .replace(QSL("%article_contents%"), msg_contents)
-                           .replace(QSL("%article_date%"), msg_date)
+                           .replace(QSL("%article_date%"), msg_date_published)
                            .replace(QSL("%enclosures_all%"), enclosures)
                            .replace(QSL("%enclosures_images%"), enclosure_images)
                            .replace(QSL("%article_id%"), QString::number(message.m_id))
@@ -314,7 +326,10 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message, RootItem* roo
                                      message.m_rtlBehavior == RtlBehavior::EverywhereExceptFeedList ||
                                      message.m_rtlBehavior == RtlBehavior::OnlyViewer)
                                       ? QSL("rtl")
-                                      : QSL("ltr")));
+                                      : QSL("ltr"))
+                           .replace(QSL("%feed_tooltip%"), feed == nullptr ? QSL("") : feed->source().toHtmlEscaped())
+                           .replace(QSL("%author_tooltip%"), message.m_author.toHtmlEscaped())
+                           .replace(QSL("%date_tooltip%"), date_tooltip.toHtmlEscaped()));
 
   QString html = QString(skin.m_layoutMarkupWrapper)
                    .replace(QSL("%article_title%"), message.m_title)

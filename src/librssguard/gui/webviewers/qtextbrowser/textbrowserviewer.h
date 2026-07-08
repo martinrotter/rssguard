@@ -91,7 +91,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     virtual QUrl url() const;
     virtual void clear();
     virtual void loadMessage(const Message& message, RootItem* root, Feed* feed);
-    virtual QString htmlForMessage(const Message& message, RootItem* root) const;
+    virtual QString htmlForMessage(const Message& message, RootItem* root, Feed* feed) const;
     virtual void printToPrinter(QPrinter* printer);
     virtual void cleanupCache();
     virtual double verticalScrollBarPosition() const;
