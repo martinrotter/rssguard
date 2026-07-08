@@ -1090,6 +1090,14 @@ QList<Message> GreaderNetwork::decodeStreamContents(ServiceRoot* root,
       QString mime = enc_obj[QSL("type")].toString();
       QString href = enc_obj[QSL("href")].toString();
 
+      if (href.isEmpty()) {
+        href = enc_obj[QSL("url")].toString();
+      }
+
+      if (mime == QSL("image/*")) {
+        mime = QSL("image/jpg");
+      }
+
       message.m_enclosures.append(QSharedPointer<MessageEnclosure>(new MessageEnclosure(href, mime)));
     }
 
