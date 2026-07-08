@@ -23,6 +23,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonParseError>
 
 FeedlyNetwork::FeedlyNetwork(QObject* parent)
   : QObject(parent), m_service(nullptr),
@@ -531,7 +532,19 @@ RootItem* FeedlyNetwork::decodeCollections(const QByteArray& json,
                                            bool obtain_icons,
                                            const QNetworkProxy& proxy,
                                            int timeout) const {
-  QJsonDocument doc = QJsonDocument::fromJson(json);
+  QJsonParseError parse_error;
+  QJsonDocument doc = QJsonDocument::fromJson(json, &parse_error);
+
+  if (parse_error.error != QJsonParseError::NoError) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           tr("Cannot parse Feedly collections JSON response: %1").arg(parse_error.errorString()));
+  }
+
+  if (!doc.isArray()) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           tr("Feedly collections response is not a JSON array."));
+  }
+
   auto* parent = new RootItem();
   QList<QString> used_feeds;
   auto coll = doc.array();
@@ -663,7 +676,19 @@ QList<RootItem*> FeedlyNetwork::tags() {
     throw NetworkException(result.m_networkError, output);
   }
 
-  QJsonDocument json = QJsonDocument::fromJson(output);
+  QJsonParseError parse_error;
+  QJsonDocument json = QJsonDocument::fromJson(output, &parse_error);
+
+  if (parse_error.error != QJsonParseError::NoError) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           tr("Cannot parse Feedly tags JSON response: %1").arg(parse_error.errorString()));
+  }
+
+  if (!json.isArray()) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           tr("Feedly tags response is not a JSON array."));
+  }
+
   QList<RootItem*> lbls;
   auto tags = json.array();
 

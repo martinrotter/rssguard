@@ -20,6 +20,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonParseError>
 
 GreaderNetwork::GreaderNetwork(QObject* parent)
   : QObject(parent), m_root(nullptr), m_service(GreaderServiceRoot::Service::FreshRss), m_username(QString()),
@@ -694,7 +695,7 @@ RootItem* GreaderNetwork::categoriesFeedsLabelsTree(bool obtain_icons, const QNe
     qCriticalNN << LOGSEC_GREADER
                 << "Cannot get feed tree, network error:" << QUOTE_W_SPACE_DOT(result_feeds.m_networkError);
 
-    throw NetworkException(result_labels.m_networkError, output_feeds);
+    throw NetworkException(result_feeds.m_networkError, output_feeds);
   }
 
   return decodeTagsSubscriptions(output_labels, output_feeds, obtain_icons, proxy);
@@ -704,15 +705,45 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
                                                   const QString& feeds,
                                                   bool obtain_icons,
                                                   const QNetworkProxy& proxy) {
+  QJsonParseError categories_parse_error;
+  QJsonDocument categories_doc = QJsonDocument::fromJson(categories.toUtf8(), &categories_parse_error);
+
+  if (categories_parse_error.error != QJsonParseError::NoError) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           tr("Cannot parse GReader labels JSON response: %1")
+                             .arg(categories_parse_error.errorString()));
+  }
+
+  if (!categories_doc.isObject() || !categories_doc.object().value(QSL("tags")).isArray()) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           tr("GReader labels response does not contain a JSON array of labels."));
+  }
+
+  QJsonParseError feeds_parse_error;
+  QJsonDocument feeds_doc = QJsonDocument::fromJson(feeds.toUtf8(), &feeds_parse_error);
+
+  if (feeds_parse_error.error != QJsonParseError::NoError) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           tr("Cannot parse GReader subscriptions JSON response: %1")
+                             .arg(feeds_parse_error.errorString()));
+  }
+
+  if (!feeds_doc.isObject() || !feeds_doc.object().value(QSL("subscriptions")).isArray()) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           tr("GReader subscriptions response does not contain a JSON array of subscriptions."));
+  }
+
   auto* parent = new RootItem();
   QMap<QString, RootItem*> cats;
   QList<RootItem*> lbls;
   QJsonArray json;
+  const QJsonArray subscriptions = feeds_doc.object().value(QSL("subscriptions")).toArray();
+  const QJsonArray tags = categories_doc.object().value(QSL("tags")).toArray();
 
   if (m_service == GreaderServiceRoot::Service::Bazqux || m_service == GreaderServiceRoot::Service::Reedah ||
       m_service == GreaderServiceRoot::Service::Inoreader) {
     // We need to process subscription list first and extract categories.
-    json = QJsonDocument::fromJson(feeds.toUtf8()).object()[QSL("subscriptions")].toArray();
+    json = subscriptions;
 
     for (const QJsonValue& feed : std::as_const(json)) {
       auto subscription = feed.toObject();
@@ -735,7 +766,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
     }
   }
 
-  json = QJsonDocument::fromJson(categories.toUtf8()).object()[QSL("tags")].toArray();
+  json = tags;
   cats.insert(QString(), parent);
 
   for (const QJsonValue& obj : std::as_const(json)) {
@@ -775,7 +806,7 @@ RootItem* GreaderNetwork::decodeTagsSubscriptions(const QString& categories,
     }
   }
 
-  json = QJsonDocument::fromJson(feeds.toUtf8()).object()[QSL("subscriptions")].toArray();
+  json = subscriptions;
 
   for (const QJsonValue& obj : std::as_const(json)) {
     auto subscription = obj.toObject();

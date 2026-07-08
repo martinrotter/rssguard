@@ -14,9 +14,11 @@
 #include <librssguard/services/abstract/rootitem.h>
 #include <utility>
 
+#include <QCoreApplication>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <QJsonParseError>
 #include <QPixmap>
 
 NextcloudNetworkFactory::NextcloudNetworkFactory()
@@ -162,6 +164,38 @@ RootItem* NextcloudNetworkFactory::feedsCategories(const QNetworkProxy& custom_p
     throw NetworkException(network_reply.m_networkError, content_feeds);
   }
 
+  QJsonParseError folders_parse_error;
+  QJsonDocument folders_doc = QJsonDocument::fromJson(content_categories, &folders_parse_error);
+
+  if (folders_parse_error.error != QJsonParseError::NoError) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           QCoreApplication::translate("NextcloudNetworkFactory",
+                                                       "Cannot parse Nextcloud folders JSON response: %1")
+                             .arg(folders_parse_error.errorString()));
+  }
+
+  if (!folders_doc.isObject() || !folders_doc.object().value(QSL("folders")).isArray()) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           QCoreApplication::translate("NextcloudNetworkFactory",
+                                                       "Nextcloud folders response does not contain a JSON array of folders."));
+  }
+
+  QJsonParseError feeds_parse_error;
+  QJsonDocument feeds_doc = QJsonDocument::fromJson(content_feeds, &feeds_parse_error);
+
+  if (feeds_parse_error.error != QJsonParseError::NoError) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           QCoreApplication::translate("NextcloudNetworkFactory",
+                                                       "Cannot parse Nextcloud feeds JSON response: %1")
+                             .arg(feeds_parse_error.errorString()));
+  }
+
+  if (!feeds_doc.isObject() || !feeds_doc.object().value(QSL("feeds")).isArray()) {
+    throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
+                           QCoreApplication::translate("NextcloudNetworkFactory",
+                                                       "Nextcloud feeds response does not contain a JSON array of feeds."));
+  }
+
   auto* parent = new RootItem();
   QMap<QString, RootItem*> cats;
 
@@ -169,7 +203,7 @@ RootItem* NextcloudNetworkFactory::feedsCategories(const QNetworkProxy& custom_p
   cats.insert(QSL("0"), parent);
 
   // Process categories first, then process feeds.
-  auto json_folders = QJsonDocument::fromJson(content_categories).object()[QSL("folders")].toArray();
+  auto json_folders = folders_doc.object().value(QSL("folders")).toArray();
 
   for (const QJsonValue& cat : std::as_const(json_folders)) {
     QJsonObject item = cat.toObject();
@@ -184,7 +218,7 @@ RootItem* NextcloudNetworkFactory::feedsCategories(const QNetworkProxy& custom_p
   }
 
   // We have categories added, now add all feeds.
-  auto json_feeds = QJsonDocument::fromJson(content_feeds).object()[QSL("feeds")].toArray();
+  auto json_feeds = feeds_doc.object().value(QSL("feeds")).toArray();
 
   for (const QJsonValue& fed : std::as_const(json_feeds)) {
     QJsonObject item = fed.toObject();
