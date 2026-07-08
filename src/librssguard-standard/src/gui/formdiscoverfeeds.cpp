@@ -755,6 +755,7 @@ RootItem* DiscoveredFeedsModel::removeItem(const QModelIndex& idx) {
 
   beginRemoveRows(idx.parent(), idx.row(), idx.row());
   it->parent()->removeChild(it);
+  removeCheckState(it);
   endRemoveRows();
 
   return it;
