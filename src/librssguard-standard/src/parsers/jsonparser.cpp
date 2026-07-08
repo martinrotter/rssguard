@@ -159,7 +159,11 @@ QString JsonParser::feedAuthor() const {
   QString global_author = m_json.object()[QSL("author")].toObject()[QSL("name")].toString();
 
   if (global_author.isEmpty()) {
-    global_author = m_json.object()[QSL("authors")].toArray().at(0).toObject()[QSL("name")].toString();
+    const QJsonArray authors = m_json.object()[QSL("authors")].toArray();
+
+    if (!authors.isEmpty()) {
+      global_author = authors.at(0).toObject()[QSL("name")].toString();
+    }
   }
 
   return global_author;
@@ -194,7 +198,9 @@ QString JsonParser::jsonMessageAuthor(const QJsonObject& msg_element) const {
     return msg_element[QSL("author")].toObject()[QSL("name")].toString();
   }
   else if (msg_element.contains(QSL("authors"))) {
-    return msg_element[QSL("authors")].toArray().at(0).toObject()[QSL("name")].toString();
+    const QJsonArray authors = msg_element[QSL("authors")].toArray();
+
+    return authors.isEmpty() ? QString() : authors.at(0).toObject()[QSL("name")].toString();
   }
   else {
     return {};
