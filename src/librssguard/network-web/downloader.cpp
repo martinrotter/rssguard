@@ -477,7 +477,7 @@ QNetworkProxy Downloader::proxy() const {
   return m_downloadManager->proxy();
 }
 
-QMap<QString, QString> Downloader::lastHeaders() const {
+const QMap<QString, QString>& Downloader::lastHeaders() const {
   return m_lastHeaders;
 }
 
@@ -485,11 +485,11 @@ int Downloader::lastHttpStatusCode() const {
   return m_lastHttpStatusCode;
 }
 
-QList<QNetworkCookie> Downloader::lastCookies() const {
+const QList<QNetworkCookie>& Downloader::lastCookies() const {
   return m_lastCookies;
 }
 
-QString Downloader::lastContentType() const {
+const QString& Downloader::lastContentType() const {
   return m_lastContentType;
 }
 
@@ -516,10 +516,10 @@ QNetworkReply::NetworkError Downloader::lastOutputError() const {
   return m_lastOutputError;
 }
 
-QList<HttpResponse> Downloader::lastOutputMultipartData() const {
+const QList<HttpResponse>& Downloader::lastOutputMultipartData() const {
   return m_lastOutputMultipartData;
 }
 
-QByteArray Downloader::lastOutputData() const {
+const QByteArray& Downloader::lastOutputData() const {
   return m_lastOutputData;
 }

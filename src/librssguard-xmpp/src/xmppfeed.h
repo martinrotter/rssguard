@@ -29,7 +29,7 @@ class XmppFeed : public Feed {
 
     void storeRealTimeArticle(const Message& message);
 
-    QList<Message> articles() const;
+    const QList<Message>& articles() const;
     void setArticles(const QList<Message>& articles);
 
     XmppCategory::Type type() const;

@@ -718,7 +718,7 @@ void FeedDownloadResults::clear() {
   m_feedRequests.clear();
 }
 
-QList<FeedUpdateRequest> FeedDownloadResults::feedRequests() const {
+const QList<FeedUpdateRequest>& FeedDownloadResults::feedRequests() const {
   return m_feedRequests;
 }
 
@@ -726,14 +726,14 @@ void FeedDownloadResults::setFeedRequests(const QList<FeedUpdateRequest>& req) {
   m_feedRequests = req;
 }
 
-QSet<ServiceRoot*> FeedDownloadResults::updatedAccounts() const {
+const QSet<ServiceRoot*>& FeedDownloadResults::updatedAccounts() const {
   return m_updatedAccounts;
 }
 
-QHash<Feed*, QString> FeedDownloadResults::erroredFeeds() const {
+const QHash<Feed*, QString>& FeedDownloadResults::erroredFeeds() const {
   return m_erroredFeeds;
 }
 
-QHash<Feed*, QList<Message>> FeedDownloadResults::updatedFeeds() const {
+const QHash<Feed*, QList<Message>>& FeedDownloadResults::updatedFeeds() const {
   return m_updatedFeeds;
 }

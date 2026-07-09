@@ -16,7 +16,7 @@ class ArticleListNotificationModel : public QAbstractListModel {
 
     void setArticles(const QList<Message>& msgs);
 
-    Message message(const QModelIndex& idx) const;
+    const Message& message(const QModelIndex& idx) const;
 
     void nextPage();
     void previousPage();

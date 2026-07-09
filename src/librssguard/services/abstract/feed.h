@@ -102,7 +102,7 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     void setIsQuiet(bool quiet);
 
     void appendMessageFilter(MessageFilter* filter);
-    QList<QPointer<MessageFilter>> messageFilters() const;
+    const QList<QPointer<MessageFilter>>& messageFilters() const;
     void setMessageFilters(const QList<QPointer<MessageFilter>>& messageFilters);
     void removeMessageFilter(MessageFilter* filter);
 

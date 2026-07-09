@@ -84,7 +84,7 @@ QList<Message> XmppServiceRoot::obtainNewMessages(Feed* feed,
 
   QList<Message> msgs;
   auto* xmpp_node = qobject_cast<XmppFeed*>(feed);
-  auto async_articles = xmpp_node->articles();
+  const auto& async_articles = xmpp_node->articles();
 
   auto new_async_articles =
     qlinq::from(async_articles)

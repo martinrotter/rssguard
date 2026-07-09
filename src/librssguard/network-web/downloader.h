@@ -27,13 +27,13 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
     virtual ~Downloader();
 
     // Access to last received full output data/error/content-type.
-    QByteArray lastOutputData() const;
+    const QByteArray& lastOutputData() const;
     QNetworkReply::NetworkError lastOutputError() const;
-    QList<HttpResponse> lastOutputMultipartData() const;
-    QString lastContentType() const;
-    QList<QNetworkCookie> lastCookies() const;
+    const QList<HttpResponse>& lastOutputMultipartData() const;
+    const QString& lastContentType() const;
+    const QList<QNetworkCookie>& lastCookies() const;
     int lastHttpStatusCode() const;
-    QMap<QString, QString> lastHeaders() const;
+    const QMap<QString, QString>& lastHeaders() const;
     QUrl lastUrl() const;
 
     void setHttp2Status(NetworkFactory::Http2Status status);

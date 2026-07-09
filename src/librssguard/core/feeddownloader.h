@@ -27,16 +27,16 @@ struct FeedUpdateRequest {
 // Represents results of batch feed updates.
 class FeedDownloadResults {
   public:
-    QSet<ServiceRoot*> updatedAccounts() const;
-    QHash<Feed*, QString> erroredFeeds() const;
-    QHash<Feed*, QList<Message>> updatedFeeds() const;
+    const QSet<ServiceRoot*>& updatedAccounts() const;
+    const QHash<Feed*, QString>& erroredFeeds() const;
+    const QHash<Feed*, QList<Message>>& updatedFeeds() const;
     QString overview(int how_many_feeds) const;
 
     void appendUpdatedFeed(Feed* feed, const QList<Message>& updated_unread_msgs);
     void appendErroredFeed(Feed* feed, const QString& error);
     void clear();
 
-    QList<FeedUpdateRequest> feedRequests() const;
+    const QList<FeedUpdateRequest>& feedRequests() const;
     void setFeedRequests(const QList<FeedUpdateRequest>& req);
 
   private:

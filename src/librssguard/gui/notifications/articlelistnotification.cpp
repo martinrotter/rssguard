@@ -177,7 +177,7 @@ Feed* ArticleListNotification::selectedFeed(int index) const {
   }
 }
 
-Message ArticleListNotification::selectedMessage() const {
+const Message& ArticleListNotification::selectedMessage() const {
   if (m_ui.m_treeArticles->currentIndex().isValid()) {
     return m_model->message(m_ui.m_treeArticles->currentIndex());
   }
