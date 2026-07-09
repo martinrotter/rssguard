@@ -21,7 +21,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     QStringList getAllGmailRecipients(const QSqlDatabase& db);
 
-    virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
+    virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages, QMenu* parent_menu);
     virtual QList<QAction*> serviceMenu();
     virtual bool isSyncable() const;
     virtual bool canBeEdited() const;

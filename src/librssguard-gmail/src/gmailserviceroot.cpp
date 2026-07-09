@@ -39,24 +39,16 @@ QStringList GmailServiceRoot::getAllGmailRecipients(const QSqlDatabase& db) {
   SqlQuery q(db);
   QStringList rec;
 
-  q.prepare(QSL("SELECT author "
+  q.prepare(QSL("SELECT DISTINCT author "
                 "FROM Messages "
-                "WHERE account_id = :account_id;"));
+                "WHERE account_id = :account_id AND author IS NOT NULL AND author <> '' "
+                "ORDER BY LOWER(author);"));
   q.bindValue(QSL(":account_id"), account_id);
   q.exec();
 
   while (q.next()) {
-    auto aut = q.value(0).toString();
-
-    if (aut.isEmpty()) {
-      continue;
-    }
-
-    rec.append(aut);
+    rec.append(q.value(0).toString());
   }
-
-  rec.removeDuplicates();
-  rec.sort(Qt::CaseSensitivity::CaseInsensitive);
 
   return rec;
 }
@@ -136,10 +128,14 @@ void GmailServiceRoot::requestSyncIn() {
     inbox->setKeepOnTop(true);
 
     root->appendChild(inbox);
-    root->appendChild(
-      new Feed(tr("Sent"), QSL(GMAIL_SYSTEM_LABEL_SENT), qApp->icons()->fromTheme(QSL("mail-sent")), root.data()));
-    root->appendChild(
-      new Feed(tr("Drafts"), QSL(GMAIL_SYSTEM_LABEL_DRAFT), qApp->icons()->fromTheme(QSL("gtk-edit")), root.data()));
+    root->appendChild(new Feed(tr("Sent"),
+                               QSL(GMAIL_SYSTEM_LABEL_SENT),
+                               qApp->icons()->fromTheme(QSL("mail-sent")),
+                               root.data()));
+    root->appendChild(new Feed(tr("Drafts"),
+                               QSL(GMAIL_SYSTEM_LABEL_DRAFT),
+                               qApp->icons()->fromTheme(QSL("gtk-edit")),
+                               root.data()));
     root->appendChild(new Feed(tr("Spam"),
                                QSL(GMAIL_SYSTEM_LABEL_SPAM),
                                qApp->icons()->fromTheme(QSL("mail-mark-junk")),
@@ -155,7 +151,9 @@ void GmailServiceRoot::requestSyncIn() {
   });
 }
 
-QList<QAction*> GmailServiceRoot::contextMenuMessagesList(const QList<Message>& messages) {
+QList<QAction*> GmailServiceRoot::contextMenuMessagesList(const QList<Message>& messages, QMenu* parent_menu) {
+  Q_UNUSED(parent_menu)
+
   if (messages.size() == 1) {
     m_replyToMessage = messages.at(0);
 

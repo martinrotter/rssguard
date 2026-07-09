@@ -362,7 +362,7 @@ void FormMain::updateRecycleBinMenu() {
       no_action->setEnabled(false);
       root_menu->addAction(no_action);
     }
-    else if ((context_menu = activated_root->contextMenuFeedsList({bin})).isEmpty()) {
+    else if ((context_menu = activated_root->contextMenuFeedsList({bin}, root_menu)).isEmpty()) {
       QAction* no_action =
         new QAction(qApp->icons()->fromTheme(QSL("dialog-error")), tr("No actions possible"), m_ui->m_menuRecycleBin);
 

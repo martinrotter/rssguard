@@ -101,8 +101,8 @@ bool TtRssServiceRoot::supportsCategoryAdding() const {
   return false;
 }
 
-QList<QAction*> TtRssServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items) {
-  auto base_menu = ServiceRoot::contextMenuFeedsList(selected_items);
+QList<QAction*> TtRssServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items, QMenu* parent_menu) {
+  auto base_menu = ServiceRoot::contextMenuFeedsList(selected_items, parent_menu);
 
   if (selected_items.size() == 1) {
     auto* first = selected_items.first();

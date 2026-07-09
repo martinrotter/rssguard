@@ -671,7 +671,8 @@ void MessagesView::initializeContextMenu() {
       m_contextMenu->addAction(qApp->mainForm()->m_ui->m_actionRestoreSelectedMessages);
     }
 
-    auto extra_context_menu = m_sourceModel->loadedItem()->account()->contextMenuMessagesList(selected_messages);
+    auto extra_context_menu =
+      m_sourceModel->loadedItem()->account()->contextMenuMessagesList(selected_messages, m_contextMenu);
 
     if (!extra_context_menu.isEmpty()) {
       m_contextMenu->addSeparator();
