@@ -26,6 +26,7 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QProcess>
+#include <QScopedValueRollback>
 #include <QSortFilterProxyModel>
 
 namespace {
@@ -43,7 +44,8 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
                                                      const QList<ServiceRoot*>& accounts,
                                                      QWidget* parent)
   : QDialog(parent), m_feedsModel(new AccountCheckSortedModel(this)), m_rootItem(new RootItem()), m_accounts(accounts),
-    m_reader(reader), m_loadingFilter(false), m_msgProxyModel(new QSortFilterProxyModel(this)),
+    m_reader(reader), m_loadingFilter(false), m_suppressFeedAssignmentConfirmation(false),
+    m_msgProxyModel(new QSortFilterProxyModel(this)),
     m_msgModel(new MessagesForFiltersModel(this)) {
   m_ui.setupUi(this);
 
@@ -119,15 +121,15 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
           &FormMessageFiltersManager::onAccountChanged);
-  connect(m_ui.m_btnCheckAll, &QToolButton::clicked, m_feedsModel->sourceModel(), &AccountCheckModel::checkAllItems);
-  connect(m_ui.m_btnUncheckAll,
-          &QToolButton::clicked,
-          m_feedsModel->sourceModel(),
-          &AccountCheckModel::uncheckAllItems);
+  connect(m_ui.m_btnCheckAll, &QToolButton::clicked, this, &FormMessageFiltersManager::checkAllFeeds);
+  connect(m_ui.m_btnUncheckAll, &QToolButton::clicked, this, &FormMessageFiltersManager::uncheckAllFeeds);
   connect(m_feedsModel->sourceModel(),
           &AccountCheckModel::checkStateChanged,
           this,
           &FormMessageFiltersManager::onFeedChecked);
+  m_feedsModel->sourceModel()->setCheckStateChangeInterceptor([this](RootItem* item, Qt::CheckState state) {
+    return confirmFeedAssignmentChange(item, state);
+  });
   connect(m_ui.m_treeFeeds->selectionModel(),
           &QItemSelectionModel::selectionChanged,
           this,
@@ -528,6 +530,24 @@ void FormMessageFiltersManager::processCheckedFeeds() {
   onFeedChanged();
 }
 
+void FormMessageFiltersManager::checkAllFeeds() {
+  if (!confirmBulkFeedAssignmentChange(Qt::CheckState::Checked)) {
+    return;
+  }
+
+  QScopedValueRollback<bool> confirmation_suppression(m_suppressFeedAssignmentConfirmation, true);
+  m_feedsModel->sourceModel()->checkAllItems();
+}
+
+void FormMessageFiltersManager::uncheckAllFeeds() {
+  if (!confirmBulkFeedAssignmentChange(Qt::CheckState::Unchecked)) {
+    return;
+  }
+
+  QScopedValueRollback<bool> confirmation_suppression(m_suppressFeedAssignmentConfirmation, true);
+  m_feedsModel->sourceModel()->uncheckAllItems();
+}
+
 void FormMessageFiltersManager::onFeedChanged() {
   auto* item = selectedCategoryFeed();
 
@@ -611,6 +631,82 @@ void FormMessageFiltersManager::onFeedChecked(RootItem* item, Qt::CheckState sta
     case Qt::CheckState::PartiallyChecked:
       break;
   }
+}
+
+bool FormMessageFiltersManager::confirmFeedAssignmentChange(RootItem* item, Qt::CheckState state) {
+  if (m_loadingFilter || m_suppressFeedAssignmentConfirmation || item == nullptr ||
+      item->kind() != RootItem::Kind::Category ||
+      state == Qt::CheckState::PartiallyChecked) {
+    return true;
+  }
+
+  MessageFilter* filter = selectedFilter();
+
+  if (filter == nullptr) {
+    return true;
+  }
+
+  const int feed_count = item->getSubTreeFeeds().size();
+
+  if (feed_count <= 0) {
+    return true;
+  }
+
+  const bool assigning = state == Qt::CheckState::Checked;
+  const auto response =
+    MsgBox::show(this,
+                 QMessageBox::Icon::Question,
+                 assigning ? tr("Assign article filter to folder?") : tr("Remove article filter from folder?"),
+                 assigning
+                   ? tr("The article filter '%1' will be assigned to %n feed(s) in folder '%2' and its subfolders.",
+                        nullptr,
+                        feed_count)
+                       .arg(filter->name(), item->title())
+                   : tr("The article filter '%1' will be removed from %n feed(s) in folder '%2' and its subfolders.",
+                        nullptr,
+                        feed_count)
+                       .arg(filter->name(), item->title()),
+                 tr("Do you want to continue?"),
+                 {},
+                 QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                 QMessageBox::StandardButton::No);
+
+  return response == QMessageBox::StandardButton::Yes;
+}
+
+bool FormMessageFiltersManager::confirmBulkFeedAssignmentChange(Qt::CheckState state) {
+  ServiceRoot* account = selectedAccount();
+  MessageFilter* filter = selectedFilter();
+
+  if (account == nullptr || filter == nullptr || state == Qt::CheckState::PartiallyChecked) {
+    return true;
+  }
+
+  const int feed_count = account->getSubTreeFeeds().size();
+
+  if (feed_count <= 0) {
+    return true;
+  }
+
+  const bool assigning = state == Qt::CheckState::Checked;
+  const auto response =
+    MsgBox::show(this,
+                 QMessageBox::Icon::Question,
+                 assigning ? tr("Assign article filter to all feeds?") : tr("Remove article filter from all feeds?"),
+                 assigning ? tr("The article filter '%1' will be assigned to all %n feed(s) in account '%2'.",
+                                nullptr,
+                                feed_count)
+                               .arg(filter->name(), account->title())
+                           : tr("The article filter '%1' will be removed from all %n feed(s) in account '%2'.",
+                                nullptr,
+                                feed_count)
+                               .arg(filter->name(), account->title()),
+                 tr("Do you want to continue?"),
+                 {},
+                 QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                 QMessageBox::StandardButton::No);
+
+  return response == QMessageBox::StandardButton::Yes;
 }
 
 void FormMessageFiltersManager::showFilter(MessageFilter* filter) {

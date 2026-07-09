@@ -5,6 +5,8 @@
 
 #include "services/abstract/rootitem.h"
 
+#include <functional>
+
 #include <QAbstractItemModel>
 #include <QSortFilterProxyModel>
 
@@ -31,6 +33,7 @@ class RSSGUARD_DLLSPEC AccountCheckModel : public QAbstractItemModel {
 
     bool isItemChecked(RootItem* item) const;
     bool setItemChecked(RootItem* item, Qt::CheckState check);
+    void setCheckStateChangeInterceptor(std::function<bool(RootItem*, Qt::CheckState)> interceptor);
 
     // Returns feed/category which lies at the specified index or
     // root item if index is invalid.
@@ -55,6 +58,7 @@ class RSSGUARD_DLLSPEC AccountCheckModel : public QAbstractItemModel {
 
   private:
     QHash<RootItem*, Qt::CheckState> m_checkStates;
+    std::function<bool(RootItem*, Qt::CheckState)> m_checkStateChangeInterceptor;
     bool m_recursiveChange;
 };
 

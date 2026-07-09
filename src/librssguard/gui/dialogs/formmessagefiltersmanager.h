@@ -47,6 +47,8 @@ class FormMessageFiltersManager : public QDialog {
     void loadFilters();
     void testFilter();
     void processCheckedFeeds();
+    void checkAllFeeds();
+    void uncheckAllFeeds();
     void onFeedChanged();
     void onAccountChanged();
     void onFeedChecked(RootItem* item, Qt::CheckState state);
@@ -59,6 +61,8 @@ class FormMessageFiltersManager : public QDialog {
     void loadAccounts();
     void beautifyScript();
     void updateFilterOptions(MessageFilter* filter);
+    bool confirmFeedAssignmentChange(RootItem* item, Qt::CheckState state);
+    bool confirmBulkFeedAssignmentChange(Qt::CheckState state);
 
     RootItem* selectedCategoryFeed() const;
 
@@ -69,6 +73,7 @@ class FormMessageFiltersManager : public QDialog {
     QList<ServiceRoot*> m_accounts;
     FeedReader* m_reader;
     bool m_loadingFilter;
+    bool m_suppressFeedAssignmentConfirmation;
     QSortFilterProxyModel* m_msgProxyModel;
     MessagesForFiltersModel* m_msgModel;
     JsSyntaxHighlighter* m_highlighter;

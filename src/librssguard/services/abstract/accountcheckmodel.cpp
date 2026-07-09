@@ -8,6 +8,8 @@
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/feed.h"
 
+#include <utility>
+
 AccountCheckModel::AccountCheckModel(QObject* parent)
   : QAbstractItemModel(parent), m_rootItem(nullptr), m_recursiveChange(false) {}
 
@@ -222,14 +224,19 @@ QVariant AccountCheckModel::data(const QModelIndex& index, int role) const {
 bool AccountCheckModel::setData(const QModelIndex& index, const QVariant& value, int role) {
   if (index.isValid() && index.column() == 0 && role == Qt::CheckStateRole) {
     RootItem* item = itemForIndex(index);
+    const Qt::CheckState check_state = static_cast<Qt::CheckState>(value.toInt());
 
     if (item == m_rootItem) {
       // Cannot set data on root item.
       return false;
     }
 
+    if (!m_recursiveChange && m_checkStateChangeInterceptor && !m_checkStateChangeInterceptor(item, check_state)) {
+      return false;
+    }
+
     // Change data for the actual item.
-    m_checkStates[item] = static_cast<Qt::CheckState>(value.toInt());
+    m_checkStates[item] = check_state;
     emit dataChanged(index, index);
     emit checkStateChanged(item, m_checkStates[item]);
 
@@ -325,6 +332,10 @@ bool AccountCheckModel::isItemChecked(RootItem* item) const {
 
 bool AccountCheckModel::setItemChecked(RootItem* item, Qt::CheckState check) {
   return setData(indexForItem(item), check, Qt::ItemDataRole::CheckStateRole);
+}
+
+void AccountCheckModel::setCheckStateChangeInterceptor(std::function<bool(RootItem*, Qt::CheckState)> interceptor) {
+  m_checkStateChangeInterceptor = std::move(interceptor);
 }
 
 AccountCheckSortedModel::AccountCheckSortedModel(QObject* parent)

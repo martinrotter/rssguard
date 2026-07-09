@@ -6,6 +6,7 @@ Added:
 * Image height optional limit returns. Now you can set image height separately for enclosures and for main article content. (#2339)
 * Show some additional information when hovering author/feed/date header in article previewer. (#2346)
 * Minimal-* skins now have separator drawn between article header and article body. (#2345)
+* RSS Guard now asks for confirmation before assigning or removing an article filter for all feeds in a folder or by using "Check all"/"Uncheck all". (#2355)
 
 Fixed:
 * Gmail plugin now correctly fills-in full e-mail address of a recipient when the recipient is selected from drop-down list of recipients.
