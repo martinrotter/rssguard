@@ -60,10 +60,32 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
   const bool recurse = Globals::hasFlag(flags, Qt::MatchFlag::MatchRecursive);
   const bool wrap = Globals::hasFlag(flags, Qt::MatchFlag::MatchWrap);
   const bool all_hits = (hits == -1);
-  QString entered_text;
+  const QString entered_text = match_type == Qt::MatchFlag::MatchExactly ? QString() : value.toString();
+  QRegularExpression regular_expression;
   const QModelIndex p = parent(start);
   int from = start.row();
   int to = rowCount(p);
+
+  switch (match_type) {
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+    case Qt::MatchFlag::MatchRegularExpression:
+#else
+    case Qt::MatchFlag::MatchRegExp:
+#endif
+      regular_expression = QRegularExpression(entered_text,
+                                              QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                                QRegularExpression::PatternOption::UseUnicodePropertiesOption);
+      break;
+
+    case Qt::MatchFlag::MatchWildcard:
+      regular_expression = QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
+                                              QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                                QRegularExpression::PatternOption::UseUnicodePropertiesOption);
+      break;
+
+    default:
+      break;
+  }
 
   for (int i = 0; (wrap && i < 2) || (!wrap && i < 1); ++i) {
     for (int r = from; (r < to) && (all_hits || result.count() < hits); ++r) {
@@ -85,10 +107,6 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
 
       // QString based matching.
       else {
-        if (entered_text.isEmpty()) {
-          entered_text = value.toString();
-        }
-
         QString item_text = item_value.toString();
 
         switch (match_type) {
@@ -97,22 +115,14 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
 #else
           case Qt::MatchFlag::MatchRegExp:
 #endif
-            if (QRegularExpression(entered_text,
-                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                     QRegularExpression::PatternOption::UseUnicodePropertiesOption)
-                  .match(item_text)
-                  .hasMatch()) {
+            if (regular_expression.match(item_text).hasMatch()) {
               result.append(idx);
             }
 
             break;
 
           case Qt::MatchFlag::MatchWildcard:
-            if (QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
-                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                     QRegularExpression::PatternOption::UseUnicodePropertiesOption)
-                  .match(item_text)
-                  .hasMatch()) {
+            if (regular_expression.match(item_text).hasMatch()) {
               result.append(idx);
             }
 
@@ -195,8 +205,7 @@ bool FeedsProxyModel::canDropMimeData(const QMimeData* data,
   //
   // Otherwise the target row identifies the item just below the drop target placement insertion line.
   // Dropping after the last row is valid too; in that case there is no concrete target item.
-  QModelIndex target_idx =
-    order_change && row < rowCount(parent) ? mapToSource(index(row, 0, parent)) : target_parent;
+  QModelIndex target_idx = order_change && row < rowCount(parent) ? mapToSource(index(row, 0, parent)) : target_parent;
   RootItem* target_item = m_sourceModel->itemForIndex(target_idx);
   RootItem* target_parent_item = m_sourceModel->itemForIndex(target_parent);
 
