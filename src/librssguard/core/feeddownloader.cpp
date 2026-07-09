@@ -323,6 +323,9 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
                << " microseconds.";
 
       QList<Message> read_msgs, important_msgs;
+      QElapsedTimer tmr_whole;
+
+      tmr_whole.start();
 
       for (int i = 0; i < msgs.size(); i++) {
         Message msg_original(msgs[i]);
@@ -390,6 +393,8 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           msgs.removeAt(i--);
         }
       }
+
+      qDebugNN << LOGSEC_CORE << "Filtering flow took" << NONQUOTE_W_SPACE(tmr_whole.elapsed()) << "miliseconds.";
 
       filtering.pushMessageStatesToServices(read_msgs, important_msgs, feed, acc);
     }

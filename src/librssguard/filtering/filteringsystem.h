@@ -6,6 +6,7 @@
 #include "filtering/filterobjects.h"
 #include "filtering/messagefilter.h"
 
+#include <QHash>
 #include <QJSEngine>
 #include <QObject>
 
@@ -45,6 +46,7 @@ class FilteringSystem : public QObject {
 
   private:
     void initializeEngine();
+    QJSValue prepareFilter(const MessageFilter& filter);
 
   private:
     FiteringUseCase m_mode;
@@ -53,6 +55,7 @@ class FilteringSystem : public QObject {
     QList<Label*> m_availableLabels;
 
     QJSEngine m_engine;
+    QHash<const MessageFilter*, QJSValue> m_preparedFilters;
 
     FilterMessage m_filterMessage;
     FilterFeed m_filterFeed;
