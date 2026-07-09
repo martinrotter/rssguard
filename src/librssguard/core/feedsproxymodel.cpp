@@ -411,23 +411,24 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
 
 bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
   bool should_show = filterAcceptsRowInternal(source_row, source_parent);
+  const auto hidden_index = QPair<int, QModelIndex>(source_row, source_parent);
 
-  if (should_show && m_hiddenIndices.contains(QPair<int, QModelIndex>(source_row, source_parent))) {
+  if (should_show && m_hiddenIndices.contains(hidden_index)) {
     qDebugNN << LOGSEC_CORE << "Item"
              << QUOTE_W_SPACE(m_sourceModel
                                 ->data(m_sourceModel->index(source_row, 0, source_parent), Qt::ItemDataRole::EditRole)
                                 .toString())
              << "was previously hidden and now shows up, restore expansion state.";
 
-    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(QPair<int, QModelIndex>(source_row, source_parent));
+    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(hidden_index);
 
     // Now, item should be displayed and previously it was not.
     // Restore remembered expansion state.
     emit indexNotFilteredOutAnymore(m_sourceModel->index(source_row, 0, source_parent));
   }
 
-  if (!should_show) {
-    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.append(QPair<int, QModelIndex>(source_row, source_parent));
+  if (!should_show && !m_hiddenIndices.contains(hidden_index)) {
+    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.append(hidden_index);
   }
 
   return should_show;
