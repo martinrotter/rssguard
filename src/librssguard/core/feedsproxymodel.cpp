@@ -194,11 +194,13 @@ bool FeedsProxyModel::canDropMimeData(const QMimeData* data,
   // zero, then we are sorting the dragged item.
   //
   // Otherwise the target row identifies the item just below the drop target placement insertion line.
-  QModelIndex target_idx = order_change ? mapToSource(index(row, 0, parent)) : target_parent;
+  // Dropping after the last row is valid too; in that case there is no concrete target item.
+  QModelIndex target_idx =
+    order_change && row < rowCount(parent) ? mapToSource(index(row, 0, parent)) : target_parent;
   RootItem* target_item = m_sourceModel->itemForIndex(target_idx);
   RootItem* target_parent_item = m_sourceModel->itemForIndex(target_parent);
 
-  if (target_item != nullptr) {
+  if (target_parent_item != nullptr && (target_item != nullptr || order_change)) {
     qDebugNN << LOGSEC_FEEDMODEL << "Considering target for drop operation:" << QUOTE_W_SPACE(target_item->title())
              << "with index" << QUOTE_W_SPACE(target_idx)
              << "and target parent:" << QUOTE_W_SPACE_DOT(target_parent_item->title());
@@ -291,19 +293,13 @@ bool FeedsProxyModel::dropMimeData(const QMimeData* data,
       }
 
       if (order_change) {
-        RootItem* place_above_item = m_sourceModel->itemForIndex(mapToSource(index(row, 0, parent)));
-        int target_sort_order = place_above_item->sortOrder();
+        int target_sort_order = sortOrderForDrop(dragged_item, row, parent);
 
         qDebugNN << LOGSEC_FEEDMODEL << "Resorting/placing item" << QUOTE_W_SPACE(dragged_item->title())
-                 << "with sord order" << QUOTE_W_SPACE(dragged_item->sortOrder()) << "above item"
-                 << QUOTE_W_SPACE(place_above_item->title()) << "with new sort order"
+                 << "with sort order" << QUOTE_W_SPACE(dragged_item->sortOrder()) << "to new sort order"
                  << QUOTE_W_SPACE_DOT(target_sort_order);
 
-        if (target_sort_order > dragged_item->sortOrder()) {
-          target_sort_order--;
-        }
-
-        qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        qApp->database()->worker()->write([dragged_item, target_sort_order](const QSqlDatabase& db) {
           DatabaseQueries::moveItem(dragged_item, false, false, target_sort_order, db);
         });
       }
@@ -315,6 +311,41 @@ bool FeedsProxyModel::dropMimeData(const QMimeData* data,
   }
 
   return false;
+}
+
+int FeedsProxyModel::sortOrderForDrop(RootItem* dragged_item, int row, const QModelIndex& parent) const {
+  const int total_rows = rowCount(parent);
+  const int visual_insert_row = qBound(0, row, total_rows);
+  QList<RootItem*> siblings_of_same_kind;
+  int visual_insert_index = 0;
+
+  // Database sorting is always numeric/ascending; proxy visual order can be reversed.
+  for (int visual_row = 0; visual_row < total_rows; ++visual_row) {
+    RootItem* item = m_sourceModel->itemForIndex(mapToSource(index(visual_row, 0, parent)));
+
+    if (item == nullptr || item->kind() != dragged_item->kind()) {
+      continue;
+    }
+
+    if (visual_row < visual_insert_row && item != dragged_item) {
+      ++visual_insert_index;
+    }
+
+    if (item != dragged_item) {
+      siblings_of_same_kind << item;
+    }
+  }
+
+  const int item_count_after_drop = siblings_of_same_kind.size() + 1;
+
+  visual_insert_index = qBound(0, visual_insert_index, siblings_of_same_kind.size());
+
+  if (sortOrder() == Qt::SortOrder::DescendingOrder) {
+    return item_count_after_drop - visual_insert_index - 1;
+  }
+  else {
+    return visual_insert_index;
+  }
 }
 
 bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right) const {

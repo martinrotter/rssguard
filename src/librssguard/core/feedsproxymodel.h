@@ -79,6 +79,7 @@ class FeedsProxyModel : public FilteringProxyModel {
     void initializeFilters();
 
     bool filterAcceptsRowInternal(int source_row, const QModelIndex& source_parent) const;
+    int sortOrderForDrop(RootItem* dragged_item, int row, const QModelIndex& parent) const;
 
     // Source model pointer.
     FeedsModel* m_sourceModel;
