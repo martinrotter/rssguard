@@ -15,10 +15,11 @@
 
 #include <QCloseEvent>
 #include <QPushButton>
+#include <QStandardItem>
 #include <QTextDocumentFragment>
 
 FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
-  : QDialog(parent), m_root(root), m_originalMessage(nullptr), m_possibleRecipients({}) {
+  : QDialog(parent), m_root(root), m_originalMessage(nullptr), m_possibleRecipientsModel(this) {
   m_ui.setupUi(this);
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("mail-message-new")));
@@ -38,13 +39,21 @@ FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
           this,
           &FormAddEditEmail::onOkClicked);
 
-  m_possibleRecipients = qApp->database()->worker()->read<QStringList>([&](const QSqlDatabase& db) {
+  const auto recipients = qApp->database()->worker()->read<QList<GmailRecipient>>([&](const QSqlDatabase& db) {
     return m_root->getAllGmailRecipients(db);
   });
+
+  for (const GmailRecipient& recipient : recipients) {
+    auto* item = new QStandardItem(recipient.m_author);
+
+    item->setData(recipient.m_messageCustomId, EmailRecipientControl::MessageCustomIdRole);
+    m_possibleRecipientsModel.appendRow(item);
+  }
+
   auto ctrls = recipientControls();
 
   for (auto* rec : std::as_const(ctrls)) {
-    rec->setPossibleRecipients(m_possibleRecipients);
+    rec->setPossibleRecipientsModel(&m_possibleRecipientsModel);
   }
 }
 
@@ -138,54 +147,56 @@ void FormAddEditEmail::onOkClicked() {
 
   msg["From"] = username.toStdString();
 
-  auto recipients = recipientControls();
-  QStringList rec_to, rec_cc, rec_bcc, rec_repl;
-
-  for (EmailRecipientControl* ctrl : recipients) {
-    switch (ctrl->recipientType()) {
-      case RecipientType::Cc:
-        rec_cc << ctrl->recipientAddress();
-        break;
-
-      case RecipientType::To:
-        rec_to << ctrl->recipientAddress();
-        break;
-
-      case RecipientType::Bcc:
-        rec_bcc << ctrl->recipientAddress();
-        break;
-
-      case RecipientType::ReplyTo:
-        rec_repl << ctrl->recipientAddress();
-        break;
-    }
-  }
-
-  if (!rec_cc.isEmpty()) {
-    msg["Cc"] = rec_cc.join(',').toStdString();
-  }
-
-  if (!rec_to.isEmpty()) {
-    msg["To"] = rec_to.join(',').toStdString();
-  }
-
-  if (!rec_bcc.isEmpty()) {
-    msg["Bcc"] = rec_bcc.join(',').toStdString();
-  }
-
-  if (!rec_repl.isEmpty()) {
-    msg["Reply-To"] = rec_repl.join(',').toStdString();
-  }
-
-  msg["Subject"] =
-    QSL("=?utf-8?B?%1?=")
-      .arg(QString(m_ui.m_txtSubject->text().toUtf8().toBase64(QByteArray::Base64Option::Base64UrlEncoding)))
-      .toStdString();
-
-  msg.set_html(m_ui.m_txtMessage->toHtml().toStdString());
-  msg.set_header(HTTP_HEADERS_CONTENT_TYPE, "text/html; charset=utf-8");
-
   try {
+    auto recipients = recipientControls();
+    QStringList rec_to, rec_cc, rec_bcc, rec_repl;
+
+    for (EmailRecipientControl* ctrl : recipients) {
+      const QString resolved_address = recipientAddress(ctrl);
+
+      switch (ctrl->recipientType()) {
+        case RecipientType::Cc:
+          rec_cc << resolved_address;
+          break;
+
+        case RecipientType::To:
+          rec_to << resolved_address;
+          break;
+
+        case RecipientType::Bcc:
+          rec_bcc << resolved_address;
+          break;
+
+        case RecipientType::ReplyTo:
+          rec_repl << resolved_address;
+          break;
+      }
+    }
+
+    if (!rec_cc.isEmpty()) {
+      msg["Cc"] = rec_cc.join(',').toStdString();
+    }
+
+    if (!rec_to.isEmpty()) {
+      msg["To"] = rec_to.join(',').toStdString();
+    }
+
+    if (!rec_bcc.isEmpty()) {
+      msg["Bcc"] = rec_bcc.join(',').toStdString();
+    }
+
+    if (!rec_repl.isEmpty()) {
+      msg["Reply-To"] = rec_repl.join(',').toStdString();
+    }
+
+    msg["Subject"] =
+      QSL("=?utf-8?B?%1?=")
+        .arg(QString(m_ui.m_txtSubject->text().toUtf8().toBase64(QByteArray::Base64Option::Base64UrlEncoding)))
+        .toStdString();
+
+    msg.set_html(m_ui.m_txtMessage->toHtml().toStdString());
+    msg.set_header(HTTP_HEADERS_CONTENT_TYPE, "text/html; charset=utf-8");
+
     m_root->network()->sendEmail(msg, m_root->networkProxy(), m_originalMessage);
     accept();
   }
@@ -203,11 +214,69 @@ EmailRecipientControl* FormAddEditEmail::addRecipientRow(const QString& recipien
   auto* mail_rec = new EmailRecipientControl(recipient, this);
 
   connect(mail_rec, &EmailRecipientControl::removalRequested, this, &FormAddEditEmail::removeRecipientRow);
+  connect(mail_rec,
+          &EmailRecipientControl::recipientSelected,
+          this,
+          [this, mail_rec](const QString& message_custom_id, const QString& selected_recipient) {
+            resolveRecipientFromMetadata(mail_rec, message_custom_id, selected_recipient);
+          });
 
-  mail_rec->setPossibleRecipients(m_possibleRecipients);
+  mail_rec->setPossibleRecipientsModel(&m_possibleRecipientsModel);
   m_ui.m_layout->insertRow(m_ui.m_layout->count() - 5, mail_rec);
 
   return mail_rec;
+}
+
+QString FormAddEditEmail::recipientAddress(EmailRecipientControl* ctrl) {
+  const QString address = ctrl->recipientAddress().trimmed();
+
+  if (address.contains(QL1C('@'))) {
+    return address;
+  }
+
+  const QString message_id = ctrl->recipientMessageCustomId();
+
+  if (message_id.isEmpty()) {
+    return address;
+  }
+
+  const auto from_header = m_root->network()->getMessageMetadata(message_id, {QSL("FROM")}, m_root->networkProxy());
+  const QString resolved_address = from_header.value(QSL("From")).trimmed();
+
+  return resolved_address.isEmpty() ? address : resolved_address;
+}
+
+void FormAddEditEmail::resolveRecipientFromMetadata(EmailRecipientControl* ctrl,
+                                                    const QString& message_custom_id,
+                                                    const QString& fallback_recipient) {
+  if (ctrl == nullptr || message_custom_id.isEmpty() || fallback_recipient.contains(QL1C('@'))) {
+    return;
+  }
+
+  try {
+    const auto from_header =
+      m_root->network()->getMessageMetadata(message_custom_id, {QSL("FROM")}, m_root->networkProxy());
+    const QString resolved_address = from_header.value(QSL("From")).trimmed();
+
+    if (!resolved_address.isEmpty()) {
+      updateRecipientInCompleterModel(message_custom_id, resolved_address);
+      ctrl->setRecipientAddress(resolved_address);
+    }
+  }
+  catch (const ApplicationException& ex) {
+    qWarningNN << LOGSEC_GMAIL << "Failed to get recipient metadata:" << QUOTE_W_SPACE_DOT(ex.message());
+  }
+}
+
+void FormAddEditEmail::updateRecipientInCompleterModel(const QString& message_custom_id, const QString& recipient) {
+  for (int row = 0; row < m_possibleRecipientsModel.rowCount(); ++row) {
+    auto* item = m_possibleRecipientsModel.item(row);
+
+    if (item != nullptr && item->data(EmailRecipientControl::MessageCustomIdRole).toString() == message_custom_id) {
+      item->setText(recipient);
+      return;
+    }
+  }
 }
 
 QList<EmailRecipientControl*> FormAddEditEmail::recipientControls() const {

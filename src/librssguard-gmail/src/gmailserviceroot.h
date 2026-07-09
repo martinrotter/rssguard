@@ -10,6 +10,11 @@
 
 class GmailNetworkFactory;
 
+struct GmailRecipient {
+    QString m_author;
+    QString m_messageCustomId;
+};
+
 class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
     Q_OBJECT
 
@@ -19,7 +24,7 @@ class GmailServiceRoot : public ServiceRoot, public CacheForServiceRoot {
 
     GmailNetworkFactory* network() const;
 
-    QStringList getAllGmailRecipients(const QSqlDatabase& db);
+    QList<GmailRecipient> getAllGmailRecipients(const QSqlDatabase& db);
 
     virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages, QMenu* parent_menu);
     virtual QList<QAction*> serviceMenu();

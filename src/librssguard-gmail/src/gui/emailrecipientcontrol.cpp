@@ -13,7 +13,8 @@
 #include <QHBoxLayout>
 #include <QLineEdit>
 
-EmailRecipientControl::EmailRecipientControl(const QString& recipient, QWidget* parent) : QWidget(parent) {
+EmailRecipientControl::EmailRecipientControl(const QString& recipient, QWidget* parent)
+  : QWidget(parent), m_possibleRecipientsModel(nullptr) {
   auto* lay = new QHBoxLayout(this);
 
   lay->addWidget(m_cmbRecipientType = new QComboBox(this));
@@ -34,6 +35,9 @@ EmailRecipientControl::EmailRecipientControl(const QString& recipient, QWidget* 
   m_btnCloseMe->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
 
   connect(m_btnCloseMe, &PlainToolButton::clicked, this, &EmailRecipientControl::removalRequested);
+  connect(m_txtRecipient, &QLineEdit::textEdited, this, [this]() {
+    m_recipientMessageCustomId.clear();
+  });
 
   m_cmbRecipientType->addItem(tr("To"), int(RecipientType::To));
   m_cmbRecipientType->addItem(tr("Cc"), int(RecipientType::Cc));
@@ -50,11 +54,34 @@ QString EmailRecipientControl::recipientAddress() const {
   return m_txtRecipient->text();
 }
 
+QString EmailRecipientControl::recipientMessageCustomId() const {
+  if (!m_recipientMessageCustomId.isEmpty() || m_possibleRecipientsModel == nullptr) {
+    return m_recipientMessageCustomId;
+  }
+
+  const QString current_text = m_txtRecipient->text();
+
+  for (int row = 0; row < m_possibleRecipientsModel->rowCount(); ++row) {
+    const QModelIndex idx = m_possibleRecipientsModel->index(row, 0);
+
+    if (idx.data(Qt::ItemDataRole::DisplayRole).toString() == current_text) {
+      return idx.data(MessageCustomIdRole).toString();
+    }
+  }
+
+  return {};
+}
+
+void EmailRecipientControl::setRecipientAddress(const QString& recipient) {
+  m_txtRecipient->setText(recipient);
+}
+
 RecipientType EmailRecipientControl::recipientType() const {
   return RecipientType(m_cmbRecipientType->currentData(Qt::ItemDataRole::UserRole).toInt());
 }
 
-void EmailRecipientControl::setPossibleRecipients(const QStringList& rec) {
+void EmailRecipientControl::setPossibleRecipientsModel(QAbstractItemModel* model) {
+  m_possibleRecipientsModel = model;
 
   if (m_txtRecipient->completer() != nullptr) {
     auto* old_cmpl = m_txtRecipient->completer();
@@ -63,11 +90,23 @@ void EmailRecipientControl::setPossibleRecipients(const QStringList& rec) {
     old_cmpl->deleteLater();
   }
 
-  QCompleter* cmpl = new QCompleter(rec, m_txtRecipient);
+  if (model == nullptr) {
+    return;
+  }
+
+  QCompleter* cmpl = new QCompleter(model, m_txtRecipient);
 
   cmpl->setFilterMode(Qt::MatchFlag::MatchContains);
   cmpl->setCaseSensitivity(Qt::CaseSensitivity::CaseInsensitive);
   cmpl->setCompletionMode(QCompleter::CompletionMode::UnfilteredPopupCompletion);
+
+  connect(cmpl, qOverload<const QModelIndex&>(&QCompleter::activated), this, [this](const QModelIndex& idx) {
+    m_recipientMessageCustomId = idx.data(MessageCustomIdRole).toString();
+
+    if (!m_recipientMessageCustomId.isEmpty()) {
+      emit recipientSelected(m_recipientMessageCustomId, idx.data(Qt::ItemDataRole::DisplayRole).toString());
+    }
+  });
 
   m_txtRecipient->setCompleter(cmpl);
 }

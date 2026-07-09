@@ -34,20 +34,26 @@ void GmailServiceRoot::updateTitle() {
   setTitle(TextFactory::extractUsernameFromEmail(m_network->username()) + QSL(" (Gmail)"));
 }
 
-QStringList GmailServiceRoot::getAllGmailRecipients(const QSqlDatabase& db) {
+QList<GmailRecipient> GmailServiceRoot::getAllGmailRecipients(const QSqlDatabase& db) {
   int account_id = accountId();
   SqlQuery q(db);
-  QStringList rec;
+  QList<GmailRecipient> rec;
 
-  q.prepare(QSL("SELECT DISTINCT author "
-                "FROM Messages "
-                "WHERE account_id = :account_id AND author IS NOT NULL AND author <> '' "
-                "ORDER BY LOWER(author);"));
+  q.prepare(QSL("SELECT msg.author, msg.custom_id "
+                "FROM Messages msg "
+                "INNER JOIN ( "
+                "  SELECT author, MAX(id) AS id "
+                "  FROM Messages "
+                "  WHERE account_id = :account_id AND author IS NOT NULL AND author <> '' AND custom_id IS NOT NULL "
+                "    AND custom_id <> '' "
+                "  GROUP BY author "
+                ") latest ON latest.id = msg.id "
+                "ORDER BY LOWER(msg.author);"));
   q.bindValue(QSL(":account_id"), account_id);
   q.exec();
 
   while (q.next()) {
-    rec.append(q.value(0).toString());
+    rec.append({q.value(0).toString(), q.value(1).toString()});
   }
 
   return rec;
