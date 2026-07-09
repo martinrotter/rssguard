@@ -84,7 +84,7 @@ QList<Message> XmppServiceRoot::obtainNewMessages(Feed* feed,
 
   QList<Message> msgs;
   auto* xmpp_node = qobject_cast<XmppFeed*>(feed);
-  auto async_articles = xmpp_node->articles();
+  const auto& async_articles = xmpp_node->articles();
 
   auto new_async_articles =
     qlinq::from(async_articles)
@@ -205,16 +205,18 @@ QList<QAction*> XmppServiceRoot::serviceMenu() {
   return m_serviceMenu;
 }
 
-QList<QAction*> XmppServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items) {
-  auto base_menu = ServiceRoot::contextMenuFeedsList(selected_items);
+QList<QAction*> XmppServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items, QMenu* parent_menu) {
+  auto base_menu = ServiceRoot::contextMenuFeedsList(selected_items, parent_menu);
 
   if (selected_items.size() == 1) {
     RootItem* first = selected_items.first();
 
     if (first->kind() == RootItem::Kind::Feed) {
       XmppFeed* feed = qobject_cast<XmppFeed*>(first);
+      QObject* action_parent =
+        parent_menu != nullptr ? static_cast<QObject*>(parent_menu) : static_cast<QObject*>(this);
       QAction* action_fetch =
-        new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Trigger async fetch"), this);
+        new QAction(qApp->icons()->fromTheme(QSL("view-refresh")), tr("Trigger async fetch"), action_parent);
 
       connect(action_fetch, &QAction::triggered, feed, [feed]() {
         feed->obtainArticles(true);

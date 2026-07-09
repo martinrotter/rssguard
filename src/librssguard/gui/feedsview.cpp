@@ -1052,7 +1052,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
 
     auto account = accounts.first();
     QMenu* base_menu = baseContextMenu(items);
-    auto service_specific_items = account->contextMenuFeedsList(items);
+    auto service_specific_items = account->contextMenuFeedsList(items, base_menu);
 
     if (!service_specific_items.isEmpty()) {
       base_menu->addSeparator();
@@ -1060,6 +1060,7 @@ void FeedsView::contextMenuEvent(QContextMenuEvent* event) {
     }
 
     base_menu->exec(event->globalPos());
+    base_menu->deleteLater();
   }
   else {
     BaseTreeView::contextMenuEvent(event);

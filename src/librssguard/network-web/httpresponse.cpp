@@ -4,11 +4,11 @@
 
 HttpResponse::HttpResponse() : m_body(QString()) {}
 
-QString HttpResponse::body() const {
+const QString& HttpResponse::body() const {
   return m_body;
 }
 
-QList<HttpHeader> HttpResponse::headers() const {
+const QList<HttpHeader>& HttpResponse::headers() const {
   return m_headers;
 }
 

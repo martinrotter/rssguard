@@ -45,7 +45,7 @@ class StandardServiceRoot : public ServiceRoot {
                                              const QHash<QString, QStringList>& tagged_messages);
 
     virtual QList<QAction*> serviceMenu();
-    virtual QList<QAction*> contextMenuFeedsList(const QList<RootItem*>& selected_items);
+    virtual QList<QAction*> contextMenuFeedsList(const QList<RootItem*>& selected_items, QMenu* parent_menu);
 
     void spaceHost(const QString& host, const QString& url);
     void resetHostSpacing(const QString& host, const QDateTime& next_dt);

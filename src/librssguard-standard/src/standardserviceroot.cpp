@@ -396,7 +396,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   // Feed data are downloaded and encoded.
   // Parse data and obtain messages.
   QList<Message> messages;
-  FeedParser* parser = nullptr;
+  FeedParser* parser;
   QElapsedTimer tmr;
 
   tmr.start();
@@ -432,7 +432,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
       break;
 
     default:
-      throw FeedFetchException(Feed::Status::ParsingError, tr("unsupported feed type"));
+      break;
   }
 
   parser->setArticleDateMode(f->publishedInsteadOfUpdatedTime());
@@ -505,8 +505,8 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   return messages;
 }
 
-QList<QAction*> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items) {
-  auto base_menu = ServiceRoot::contextMenuFeedsList(selected_items);
+QList<QAction*> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items, QMenu* parent_menu) {
+  auto base_menu = ServiceRoot::contextMenuFeedsList(selected_items, parent_menu);
   auto items_linq = qlinq::from(selected_items);
   QList<QAction*> my_menu;
 
@@ -535,7 +535,8 @@ QList<QAction*> StandardServiceRoot::contextMenuFeedsList(const QList<RootItem*>
   }
 
   if (!my_menu.isEmpty()) {
-    auto* sep = new QAction(this);
+    QObject* action_parent = parent_menu != nullptr ? static_cast<QObject*>(parent_menu) : static_cast<QObject*>(this);
+    auto* sep = new QAction(action_parent);
     sep->setSeparator(true);
 
     base_menu.append(sep);

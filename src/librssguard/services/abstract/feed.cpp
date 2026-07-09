@@ -453,7 +453,7 @@ QString Feed::statusString() const {
   return m_statusString;
 }
 
-QList<QPointer<MessageFilter>> Feed::messageFilters() const {
+const QList<QPointer<MessageFilter>>& Feed::messageFilters() const {
   return m_messageFilters;
 }
 

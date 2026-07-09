@@ -60,10 +60,32 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
   const bool recurse = Globals::hasFlag(flags, Qt::MatchFlag::MatchRecursive);
   const bool wrap = Globals::hasFlag(flags, Qt::MatchFlag::MatchWrap);
   const bool all_hits = (hits == -1);
-  QString entered_text;
+  const QString entered_text = match_type == Qt::MatchFlag::MatchExactly ? QString() : value.toString();
+  QRegularExpression regular_expression;
   const QModelIndex p = parent(start);
   int from = start.row();
   int to = rowCount(p);
+
+  switch (match_type) {
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+    case Qt::MatchFlag::MatchRegularExpression:
+#else
+    case Qt::MatchFlag::MatchRegExp:
+#endif
+      regular_expression = QRegularExpression(entered_text,
+                                              QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                                QRegularExpression::PatternOption::UseUnicodePropertiesOption);
+      break;
+
+    case Qt::MatchFlag::MatchWildcard:
+      regular_expression = QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
+                                              QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                                QRegularExpression::PatternOption::UseUnicodePropertiesOption);
+      break;
+
+    default:
+      break;
+  }
 
   for (int i = 0; (wrap && i < 2) || (!wrap && i < 1); ++i) {
     for (int r = from; (r < to) && (all_hits || result.count() < hits); ++r) {
@@ -85,10 +107,6 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
 
       // QString based matching.
       else {
-        if (entered_text.isEmpty()) {
-          entered_text = value.toString();
-        }
-
         QString item_text = item_value.toString();
 
         switch (match_type) {
@@ -97,22 +115,14 @@ QModelIndexList FeedsProxyModel::match(const QModelIndex& start,
 #else
           case Qt::MatchFlag::MatchRegExp:
 #endif
-            if (QRegularExpression(entered_text,
-                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                     QRegularExpression::PatternOption::UseUnicodePropertiesOption)
-                  .match(item_text)
-                  .hasMatch()) {
+            if (regular_expression.match(item_text).hasMatch()) {
               result.append(idx);
             }
 
             break;
 
           case Qt::MatchFlag::MatchWildcard:
-            if (QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
-                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                     QRegularExpression::PatternOption::UseUnicodePropertiesOption)
-                  .match(item_text)
-                  .hasMatch()) {
+            if (regular_expression.match(item_text).hasMatch()) {
               result.append(idx);
             }
 
@@ -194,11 +204,12 @@ bool FeedsProxyModel::canDropMimeData(const QMimeData* data,
   // zero, then we are sorting the dragged item.
   //
   // Otherwise the target row identifies the item just below the drop target placement insertion line.
-  QModelIndex target_idx = order_change ? mapToSource(index(row, 0, parent)) : target_parent;
+  // Dropping after the last row is valid too; in that case there is no concrete target item.
+  QModelIndex target_idx = order_change && row < rowCount(parent) ? mapToSource(index(row, 0, parent)) : target_parent;
   RootItem* target_item = m_sourceModel->itemForIndex(target_idx);
   RootItem* target_parent_item = m_sourceModel->itemForIndex(target_parent);
 
-  if (target_item != nullptr) {
+  if (target_parent_item != nullptr && (target_item != nullptr || order_change)) {
     qDebugNN << LOGSEC_FEEDMODEL << "Considering target for drop operation:" << QUOTE_W_SPACE(target_item->title())
              << "with index" << QUOTE_W_SPACE(target_idx)
              << "and target parent:" << QUOTE_W_SPACE_DOT(target_parent_item->title());
@@ -291,19 +302,13 @@ bool FeedsProxyModel::dropMimeData(const QMimeData* data,
       }
 
       if (order_change) {
-        RootItem* place_above_item = m_sourceModel->itemForIndex(mapToSource(index(row, 0, parent)));
-        int target_sort_order = place_above_item->sortOrder();
+        int target_sort_order = sortOrderForDrop(dragged_item, row, parent);
 
         qDebugNN << LOGSEC_FEEDMODEL << "Resorting/placing item" << QUOTE_W_SPACE(dragged_item->title())
-                 << "with sord order" << QUOTE_W_SPACE(dragged_item->sortOrder()) << "above item"
-                 << QUOTE_W_SPACE(place_above_item->title()) << "with new sort order"
+                 << "with sort order" << QUOTE_W_SPACE(dragged_item->sortOrder()) << "to new sort order"
                  << QUOTE_W_SPACE_DOT(target_sort_order);
 
-        if (target_sort_order > dragged_item->sortOrder()) {
-          target_sort_order--;
-        }
-
-        qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        qApp->database()->worker()->write([dragged_item, target_sort_order](const QSqlDatabase& db) {
           DatabaseQueries::moveItem(dragged_item, false, false, target_sort_order, db);
         });
       }
@@ -315,6 +320,41 @@ bool FeedsProxyModel::dropMimeData(const QMimeData* data,
   }
 
   return false;
+}
+
+int FeedsProxyModel::sortOrderForDrop(RootItem* dragged_item, int row, const QModelIndex& parent) const {
+  const int total_rows = rowCount(parent);
+  const int visual_insert_row = qBound(0, row, total_rows);
+  QList<RootItem*> siblings_of_same_kind;
+  int visual_insert_index = 0;
+
+  // Database sorting is always numeric/ascending; proxy visual order can be reversed.
+  for (int visual_row = 0; visual_row < total_rows; ++visual_row) {
+    RootItem* item = m_sourceModel->itemForIndex(mapToSource(index(visual_row, 0, parent)));
+
+    if (item == nullptr || item->kind() != dragged_item->kind()) {
+      continue;
+    }
+
+    if (visual_row < visual_insert_row && item != dragged_item) {
+      ++visual_insert_index;
+    }
+
+    if (item != dragged_item) {
+      siblings_of_same_kind << item;
+    }
+  }
+
+  const int item_count_after_drop = siblings_of_same_kind.size() + 1;
+
+  visual_insert_index = qBound(0, visual_insert_index, siblings_of_same_kind.size());
+
+  if (sortOrder() == Qt::SortOrder::DescendingOrder) {
+    return item_count_after_drop - visual_insert_index - 1;
+  }
+  else {
+    return visual_insert_index;
+  }
 }
 
 bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right) const {
@@ -371,23 +411,24 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
 
 bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
   bool should_show = filterAcceptsRowInternal(source_row, source_parent);
+  const auto hidden_index = QPair<int, QModelIndex>(source_row, source_parent);
 
-  if (should_show && m_hiddenIndices.contains(QPair<int, QModelIndex>(source_row, source_parent))) {
+  if (should_show && m_hiddenIndices.contains(hidden_index)) {
     qDebugNN << LOGSEC_CORE << "Item"
              << QUOTE_W_SPACE(m_sourceModel
                                 ->data(m_sourceModel->index(source_row, 0, source_parent), Qt::ItemDataRole::EditRole)
                                 .toString())
              << "was previously hidden and now shows up, restore expansion state.";
 
-    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(QPair<int, QModelIndex>(source_row, source_parent));
+    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(hidden_index);
 
     // Now, item should be displayed and previously it was not.
     // Restore remembered expansion state.
     emit indexNotFilteredOutAnymore(m_sourceModel->index(source_row, 0, source_parent));
   }
 
-  if (!should_show) {
-    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.append(QPair<int, QModelIndex>(source_row, source_parent));
+  if (!should_show && !m_hiddenIndices.contains(hidden_index)) {
+    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.append(hidden_index);
   }
 
   return should_show;

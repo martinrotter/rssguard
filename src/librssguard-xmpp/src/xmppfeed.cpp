@@ -266,7 +266,7 @@ void XmppFeed::setArticles(const QList<Message>& articles) {
   m_articles = articles;
 }
 
-QList<Message> XmppFeed::articles() const {
+const QList<Message>& XmppFeed::articles() const {
   return m_articles;
 }
 

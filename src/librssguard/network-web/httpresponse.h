@@ -12,9 +12,9 @@ class RSSGUARD_DLLSPEC HttpResponse {
   public:
     explicit HttpResponse();
 
-    QString body() const;
+    const QString& body() const;
     void setBody(const QString& body);
-    QList<HttpHeader> headers() const;
+    const QList<HttpHeader>& headers() const;
 
     void appendHeader(const QString& name, const QString& value);
 

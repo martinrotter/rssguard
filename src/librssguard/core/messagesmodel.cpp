@@ -388,15 +388,13 @@ void MessagesModel::loadMessages(RootItem* item, bool keep_additional_article_id
 }
 
 bool MessagesModel::setMessageImportantById(int article_id, RootItem::Importance important) {
-  for (int i = 0; i < rowCount(); i++) {
-    int found_id = data(i, MSG_MDL_ID_INDEX).toInt();
+  auto row = rowForMessage(article_id);
 
-    if (found_id == article_id) {
-      return setData(index(i, MSG_MDL_IMPORTANT_INDEX), int(important));
-    }
+  if (row < 0) {
+    return false;
   }
 
-  return false;
+  return setData(index(row, MSG_MDL_IMPORTANT_INDEX), int(important));
 }
 
 void MessagesModel::highlightMessages(MessagesModel::MessageHighlighter highlighter) {
@@ -1082,16 +1080,13 @@ void MessagesModel::setMessageRead(int row_index, RootItem::ReadStatus read) {
 }
 
 bool MessagesModel::setMessageReadById(int article_id, RootItem::ReadStatus read) {
-  for (int i = 0; i < rowCount(); i++) {
-    int found_id = data(i, MSG_MDL_ID_INDEX).toInt();
+  auto row = rowForMessage(article_id);
 
-    if (found_id == article_id) {
-      bool set = setData(index(i, MSG_MDL_READ_INDEX), int(read));
-      return set;
-    }
+  if (row < 0) {
+    return false;
   }
 
-  return false;
+  return setData(index(row, MSG_MDL_READ_INDEX), int(read));
 }
 
 bool MessagesModel::setMessageLabelsById(const QList<Message>& msgs) {

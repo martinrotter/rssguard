@@ -89,19 +89,45 @@ void FilteringSystem::compareAndWriteArticleStates(Message* msg_original,
 }
 
 FilterMessage::FilteringAction FilteringSystem::filterMessage(const MessageFilter& filter) {
-  QJSValue filter_func = m_engine.evaluate(qApp->replaceUserDataFolderPlaceholder(filter.script(), true));
-
-  if (filter_func.isError()) {
-    throw FilteringException(filter_func);
-  }
-
-  auto filter_output = m_engine.evaluate(QSL("filterMessage()"));
+  QJSValue filter_func = prepareFilter(filter);
+  QJSValue filter_output = filter_func.call();
 
   if (filter_output.isError()) {
     throw FilteringException(filter_output);
   }
 
   return FilterMessage::FilteringAction(filter_output.toInt());
+}
+
+QJSValue FilteringSystem::prepareFilter(const MessageFilter& filter) {
+  const auto* filter_key = &filter;
+  const auto prepared_filter = m_preparedFilters.constFind(filter_key);
+
+  if (prepared_filter != m_preparedFilters.constEnd()) {
+    return prepared_filter.value();
+  }
+
+  // Keep each filter script in its own scope so helper functions/variables from
+  // one filter do not overwrite helpers from another filter in the shared engine.
+  const QString filter_script =
+    QSL("(function() {\n%1\n; return filterMessage;\n})()")
+      .arg(qApp->replaceUserDataFolderPlaceholder(filter.script(), true));
+  QJSValue filter_func = m_engine.evaluate(filter_script, filter.name());
+
+  if (filter_func.isError()) {
+    throw FilteringException(filter_func);
+  }
+
+  if (!filter_func.isCallable()) {
+    const QString error_message =
+      tr("Article filter '%1' does not define a callable filterMessage() function.").arg(filter.name());
+    QJSValue error = m_engine.newErrorObject(QJSValue::TypeError, error_message);
+
+    throw FilteringException(error);
+  }
+
+  m_preparedFilters.insert(filter_key, filter_func);
+  return filter_func;
 }
 
 QJSEngine& FilteringSystem::engine() {

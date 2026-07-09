@@ -172,7 +172,9 @@ RecycleBin* ServiceRoot::recycleBin() const {
   return m_recycleBin;
 }
 
-QList<QAction*> ServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items) {
+QList<QAction*> ServiceRoot::contextMenuFeedsList(const QList<RootItem*>& selected_items, QMenu* parent_menu) {
+  Q_UNUSED(parent_menu)
+
   auto items_linq = qlinq::from(selected_items);
   auto kinds = items_linq
                  .select([](RootItem* it) {
@@ -232,8 +234,10 @@ QList<QAction*> ServiceRoot::contextMenuFeedsList(const QList<RootItem*>& select
   return {};
 }
 
-QList<QAction*> ServiceRoot::contextMenuMessagesList(const QList<Message>& messages) {
+QList<QAction*> ServiceRoot::contextMenuMessagesList(const QList<Message>& messages, QMenu* parent_menu) {
   Q_UNUSED(messages)
+  Q_UNUSED(parent_menu)
+
   return {};
 }
 

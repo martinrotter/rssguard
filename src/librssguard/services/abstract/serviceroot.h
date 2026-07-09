@@ -98,11 +98,11 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     // NOTE: Caller does NOT take ownership of created menu/actions!
     virtual QList<QAction*> addItemMenu();
 
-    // NOTE: Caller does NOT take ownership of created menu/actions!
-    virtual QList<QAction*> contextMenuFeedsList(const QList<RootItem*>& selected_items);
+    // NOTE: Services may parent temporary actions to parent_menu.
+    virtual QList<QAction*> contextMenuFeedsList(const QList<RootItem*>& selected_items, QMenu* parent_menu);
 
-    // NOTE: Caller does NOT take ownership of created menu/actions!
-    virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages);
+    // NOTE: Services may parent temporary actions to parent_menu.
+    virtual QList<QAction*> contextMenuMessagesList(const QList<Message>& messages, QMenu* parent_menu);
 
     // Returns list of specific actions to be shown in main window menu
     // bar in sections "Services -> 'this service'".

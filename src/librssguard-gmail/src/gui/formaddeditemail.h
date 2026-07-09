@@ -6,6 +6,7 @@
 #include "ui_formaddeditemail.h"
 
 #include <QDialog>
+#include <QStandardItemModel>
 
 class GmailServiceRoot;
 class Message;
@@ -34,14 +35,18 @@ class FormAddEditEmail : public QDialog {
     EmailRecipientControl* addRecipientRow(const QString& recipient = QString());
     QString messageHeader(Mode mode, Message* original_message);
     QList<EmailRecipientControl*> recipientControls() const;
+    QString recipientAddress(EmailRecipientControl* ctrl);
+    void resolveRecipientFromMetadata(EmailRecipientControl* ctrl,
+                                      const QString& message_custom_id,
+                                      const QString& fallback_recipient);
+    void updateRecipientInCompleterModel(const QString& message_custom_id, const QString& recipient);
 
   private:
     GmailServiceRoot* m_root;
-
     Ui::FormAddEditEmail m_ui;
     QList<EmailRecipientControl*> m_recipientControls;
     Message* m_originalMessage;
-    QStringList m_possibleRecipients;
+    QStandardItemModel m_possibleRecipientsModel;
 };
 
 #endif // FORMADDEDITEMAIL_H

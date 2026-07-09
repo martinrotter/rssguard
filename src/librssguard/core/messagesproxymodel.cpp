@@ -212,9 +212,31 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start,
   const Qt::CaseSensitivity case_sensitivity = Qt::CaseSensitivity::CaseInsensitive;
   const bool wrap = Globals::hasFlag(flags, Qt::MatchFlag::MatchWrap);
   const bool all_hits = (hits == -1);
-  QString entered_text;
+  const QString entered_text = match_type == Qt::MatchFlag::MatchExactly ? QString() : entered_value.toString();
+  QRegularExpression regular_expression;
   int from = start.row();
   int to = rowCount();
+
+  switch (match_type) {
+#if QT_VERSION >= 0x050F00 // Qt >= 5.15.0
+    case Qt::MatchFlag::MatchRegularExpression:
+#else
+    case Qt::MatchFlag::MatchRegExp:
+#endif
+      regular_expression = QRegularExpression(entered_text,
+                                              QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                                QRegularExpression::PatternOption::UseUnicodePropertiesOption);
+      break;
+
+    case Qt::MatchWildcard:
+      regular_expression = QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
+                                              QRegularExpression::PatternOption::CaseInsensitiveOption |
+                                                QRegularExpression::PatternOption::UseUnicodePropertiesOption);
+      break;
+
+    default:
+      break;
+  }
 
   for (int i = 0; (wrap && i < 2) || (!wrap && i < 1); i++) {
     for (int r = from; (r < to) && (all_hits || result.count() < hits); r++) {
@@ -235,10 +257,6 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start,
 
       // QString based matching.
       else {
-        if (entered_text.isEmpty()) {
-          entered_text = entered_value.toString();
-        }
-
         QString item_text = item_value.toString();
 
         switch (match_type) {
@@ -247,22 +265,14 @@ QModelIndexList MessagesProxyModel::match(const QModelIndex& start,
 #else
           case Qt::MatchFlag::MatchRegExp:
 #endif
-            if (QRegularExpression(entered_text,
-                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                     QRegularExpression::PatternOption::UseUnicodePropertiesOption)
-                  .match(item_text)
-                  .hasMatch()) {
+            if (regular_expression.match(item_text).hasMatch()) {
               result.append(idx);
             }
 
             break;
 
           case Qt::MatchWildcard:
-            if (QRegularExpression(RegexFactory::wildcardToRegularExpression(entered_text),
-                                   QRegularExpression::PatternOption::CaseInsensitiveOption |
-                                     QRegularExpression::PatternOption::UseUnicodePropertiesOption)
-                  .match(item_text)
-                  .hasMatch()) {
+            if (regular_expression.match(item_text).hasMatch()) {
               result.append(idx);
             }
 
