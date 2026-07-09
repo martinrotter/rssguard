@@ -14,9 +14,11 @@
 #include <librssguard/miscellaneous/iconfactory.h>
 
 #include <QCloseEvent>
+#include <QPointer>
 #include <QPushButton>
 #include <QStandardItem>
 #include <QTextDocumentFragment>
+#include <QTimer>
 
 FormAddEditEmail::FormAddEditEmail(GmailServiceRoot* root, QWidget* parent)
   : QDialog(parent), m_root(root), m_originalMessage(nullptr), m_possibleRecipientsModel(this) {
@@ -259,8 +261,14 @@ void FormAddEditEmail::resolveRecipientFromMetadata(EmailRecipientControl* ctrl,
     const QString resolved_address = from_header.value(QSL("From")).trimmed();
 
     if (!resolved_address.isEmpty()) {
+      QPointer<EmailRecipientControl> recipient_ctrl(ctrl);
+
       updateRecipientInCompleterModel(message_custom_id, resolved_address);
-      ctrl->setRecipientAddress(resolved_address);
+      QTimer::singleShot(0, this, [recipient_ctrl, resolved_address]() {
+        if (recipient_ctrl != nullptr) {
+          recipient_ctrl->setRecipientAddress(resolved_address);
+        }
+      });
     }
   }
   catch (const ApplicationException& ex) {

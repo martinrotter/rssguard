@@ -8,6 +8,7 @@ Added:
 * Minimal-* skins now have separator drawn between article header and article body. (#2345)
 
 Fixed:
+* Gmail plugin now correctly fills-in full e-mail address of a recipient when the recipient is selected from drop-down list of recipients.
 * Miniflux sends "weird" enclosure information, so tweak was made to account for it. (#2354)
 * Row state is updated more properly when switching article importance. (#2341)
 * Wrong filtering indication when there was no active filter in feed list. (#2352)
