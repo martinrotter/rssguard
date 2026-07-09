@@ -23,8 +23,21 @@
 
 #include <QDateTime>
 #include <QJSEngine>
+#include <QJsonArray>
+#include <QJsonDocument>
 #include <QProcess>
 #include <QSortFilterProxyModel>
+
+namespace {
+
+QString jsStringLiteral(const QString& value) {
+  const QByteArray json_array = QJsonDocument(QJsonArray({value})).toJson(QJsonDocument::JsonFormat::Compact);
+  const QString literal = QString::fromUtf8(json_array);
+
+  return literal.mid(1, literal.size() - 2);
+}
+
+} // namespace
 
 FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
                                                      const QList<ServiceRoot*>& accounts,
@@ -305,8 +318,8 @@ void FormMessageFiltersManager::filterMessagesLikeThis(const Message& msg) {
         "  var is_message_same =\n"
         "    msg.isRead == %1 &&\n"
         "    msg.isImportant == %2 &&\n"
-        "    msg.title == '%3' &&\n"
-        "    msg.url == '%4';\n"
+        "    msg.title == %3 &&\n"
+        "    msg.url == %4;\n"
         "\n"
         "  if (is_message_same) {\n"
         "    return Msg.Accept;\n"
@@ -315,7 +328,10 @@ void FormMessageFiltersManager::filterMessagesLikeThis(const Message& msg) {
         "    return Msg.Ignore;\n"
         "  }\n"
         "}")
-      .arg(QString::number(int(msg.m_isRead)), QString::number(int(msg.m_isImportant)), msg.m_title, msg.m_url);
+      .arg(QString::number(int(msg.m_isRead)),
+           QString::number(int(msg.m_isImportant)),
+           jsStringLiteral(msg.m_title),
+           jsStringLiteral(msg.m_url));
 
   addNewFilter(filter_script);
 }
