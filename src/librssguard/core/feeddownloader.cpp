@@ -352,30 +352,22 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
           tmr.restart();
           filtering.filterRun().setIndexOfCurrentFilter(j);
 
-          try {
-            FilterMessage::FilteringAction decision = filtering.filterMessage(*msg_filter);
+          FilterMessage::FilteringAction decision = filtering.filterMessage(*msg_filter);
 
-            qDebugNN << LOGSEC_FEEDDOWNLOADER << "Running filter script, it took " << tmr.nsecsElapsed() / 1000
-                     << " microseconds.";
+          qDebugNN << LOGSEC_FEEDDOWNLOADER << "Running filter script, it took " << tmr.nsecsElapsed() / 1000
+                   << " microseconds.";
 
-            switch (decision) {
-              case FilterMessage::FilteringAction::Accept:
-                // Message is normally accepted, it could be tweaked by the filter.
-                continue;
+          switch (decision) {
+            case FilterMessage::FilteringAction::Accept:
+              // Message is normally accepted, it could be tweaked by the filter.
+              continue;
 
-              case FilterMessage::FilteringAction::Ignore:
-              case FilterMessage::FilteringAction::Purge:
-              default:
-                // Remove the message, we do not want it.
-                remove_msg = true;
-                break;
-            }
-          }
-          catch (const FilteringException& ex) {
-            qCriticalNN << LOGSEC_FEEDDOWNLOADER
-                        << "Error when evaluating filtering JS function: " << QUOTE_W_SPACE_DOT(ex.message())
-                        << " Accepting message.";
-            continue;
+            case FilterMessage::FilteringAction::Ignore:
+            case FilterMessage::FilteringAction::Purge:
+            default:
+              // Remove the message, we do not want it.
+              remove_msg = true;
+              break;
           }
 
           // If we reach this point. Then we ignore the message which is by now
@@ -435,6 +427,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       QMutexLocker lck_results(&m_mutexResults);
       m_results.appendErroredFeed(feed, feed_ex.message());
     }
+
     feed->setStatus(feed_ex.feedStatus(), feed_ex.message());
 
     if (feed_ex.feedStatus() == Feed::Status::NetworkError && !feed_ex.data().isNull()) {
@@ -464,6 +457,16 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       m_results.appendErroredFeed(feed, sql_ex.message());
     }
     feed->setStatus(Feed::Status::SqlError, sql_ex.message());
+  }
+  catch (const FilteringException& filter_ex) {
+    qCriticalNN << LOGSEC_NETWORK << "Filtering error when fetching feed" << QUOTE_W_SPACE(feed->title())
+                << "and the error is" << QUOTE_W_SPACE_DOT(filter_ex.message());
+
+    {
+      QMutexLocker lck_results(&m_mutexResults);
+      m_results.appendErroredFeed(feed, filter_ex.message());
+    }
+    feed->setStatus(Feed::Status::FilteringError, filter_ex.message());
   }
   catch (const ApplicationException& app_ex) {
     qCriticalNN << LOGSEC_NETWORK << "Unknown error when fetching feed" << QUOTE_W_SPACE(feed->title())

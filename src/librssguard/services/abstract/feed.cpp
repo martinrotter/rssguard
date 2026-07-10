@@ -66,6 +66,7 @@ QVariant Feed::data(int column, int role) const {
         case Status::AuthError:
         case Status::SqlError:
         case Status::OtherError:
+        case Status::FilteringError:
         case Status::ContainsNoArticles:
           return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgSelectedError);
 
@@ -105,6 +106,7 @@ QVariant Feed::data(int column, int role) const {
         case Status::AuthError:
         case Status::SqlError:
         case Status::OtherError:
+        case Status::FilteringError:
         case Status::ContainsNoArticles:
           return qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError);
 
@@ -407,6 +409,9 @@ QString Feed::getStatusDescription() const {
 
     case Status::ContainsNoArticles:
       return tr("contains no articles");
+
+    case Status::FilteringError:
+      return tr("article filtering error");
 
     default:
       return tr("error");

@@ -52,7 +52,8 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
       OtherError = 5,
       Fetching = 6,
       SqlError = 7,
-      ContainsNoArticles = 8
+      ContainsNoArticles = 8,
+      FilteringError = 9
     };
 
     Q_ENUM(Status)
