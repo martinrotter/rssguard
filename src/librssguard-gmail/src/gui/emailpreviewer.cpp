@@ -7,6 +7,7 @@
 #include "src/gmailserviceroot.h"
 #include "src/gui/formaddeditemail.h"
 
+#include <algorithm>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/gui/dialogs/formprogressworker.h>
@@ -14,6 +15,7 @@
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/network-web/oauth2service.h>
+#include <limits>
 
 #include <QJsonObject>
 
@@ -128,7 +130,6 @@ void EmailPreviewer::downloadAttachment(QAction* act) {
 
     wrkr.doSingleWork(
       tr("Download attachment"),
-      false,
       [&](QFutureWatcher<void>& rprt) {
         Downloader dwnl;
         QEventLoop loop;
@@ -143,9 +144,27 @@ void EmailPreviewer::downloadAttachment(QAction* act) {
 
         emit rprt.progressRangeChanged(0, 0);
 
+        bool range_adjusted = false;
+        int progress_maximum = 0;
+        const auto bytesToKilobytes = [](qint64 bytes) {
+          const qint64 kilobytes = std::clamp<qint64>(bytes / 1000, 0, std::numeric_limits<int>::max());
+
+          return int(kilobytes);
+        };
+
         QObject::connect(&dwnl, &Downloader::completed, &loop, &QEventLoop::quit);
         QObject::connect(&dwnl, &Downloader::progress, &rprt, [&](qint64 bytes_received, qint64 bytes_total) {
-          emit rprt.progressValueChanged(bytes_received / 1000.0);
+          if (!range_adjusted && bytes_total > 0) {
+            range_adjusted = true;
+            progress_maximum = std::max(1, bytesToKilobytes(bytes_total));
+            emit rprt.progressRangeChanged(0, progress_maximum);
+          }
+
+          emit rprt.progressValueChanged(progress_maximum > 0
+                                           ? std::min(bytesToKilobytes(bytes_received), progress_maximum)
+                                           : bytesToKilobytes(bytes_received));
+
+          QThread::msleep(100);
         });
 
         dwnl.appendRawHeader(QSL(HTTP_HEADERS_AUTHORIZATION).toLocal8Bit(), bearer);

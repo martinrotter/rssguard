@@ -71,6 +71,10 @@ The built-in JavaScript environment is based on Qt's `QJSEngine` and includes a 
 
 Each article is available via the global `msg` object. Other globals provide access to the current feed, account, helper functions, run metadata, application logging, and process launching.
 
+```{warning}
+Values that change while filtering, such as `msg.title`, `msg.contents`, `run.indexOfCurrentFilter`, or `run.numberOfAcceptedMessages`, should be read inside `filterMessage()`. Code outside `filterMessage()` is useful for constants and helper functions, but it is prepared once for the current filtering run and should not cache per-article state.
+```
+
 ```{note}
 Some attributes such as `read`, `unread`, and `starred` states are synchronized back to your account's server. So, for example, marking an article as important in a filter may trigger a matching state change on services that support it.
 ```

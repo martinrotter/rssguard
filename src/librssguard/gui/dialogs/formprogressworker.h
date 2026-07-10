@@ -20,7 +20,6 @@ class RSSGUARD_DLLSPEC FormProgressWorker : public QDialog {
     virtual ~FormProgressWorker();
 
     int doSingleWork(const QString& title,
-                     bool can_cancel,
                      const std::function<void(QFutureWatcher<void>&)>& work_functor,
                      const std::function<QString(int)>& label_functor);
 
@@ -72,7 +71,12 @@ inline int FormProgressWorker::doWork(const QString& title,
   QFutureWatcher<void> wat_fut;
 
   setupFuture(m_future, wat_fut, label_functor);
-  return exec();
+
+  const int result = exec();
+
+  m_future.waitForFinished();
+
+  return result;
 }
 
 #endif // FORMPROGRESSWORKER_H

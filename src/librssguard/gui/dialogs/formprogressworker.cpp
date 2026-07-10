@@ -9,6 +9,7 @@
 
 #include <QKeyEvent>
 #include <QPushButton>
+#include <QSharedPointer>
 
 FormProgressWorker::FormProgressWorker(QWidget* parent) : QDialog(parent), m_ui(new Ui::FormProgressWorker()) {
   m_ui->setupUi(this);
@@ -32,6 +33,10 @@ void FormProgressWorker::requestCancellation() {
 }
 
 void FormProgressWorker::changeProgressRange(int from, int to) {
+  if (from == m_ui->m_progress->minimum() && to == m_ui->m_progress->maximum()) {
+    return;
+  }
+
   if (to <= 0 || from < 0) {
     m_ui->m_progress->setRange(0, 0);
   }
@@ -63,18 +68,27 @@ void FormProgressWorker::keyPressEvent(QKeyEvent* event) {
 }
 
 int FormProgressWorker::doSingleWork(const QString& title,
-                                     bool can_cancel,
                                      const std::function<void(QFutureWatcher<void>&)>& work_functor,
                                      const std::function<QString(int)>& label_functor) {
   m_wasCanceled = false;
-  setCancelEnabled(can_cancel);
+  setCancelEnabled(false);
   setWindowTitle(title);
 
-  QFutureWatcher<void> wat_fut;
-  m_future = QtConcurrent::run(work_functor, std::ref(wat_fut));
+  auto wat_fut = QSharedPointer<QFutureWatcher<void>>::create();
+  m_future = QtConcurrent::run([work_functor, wat_fut]() {
+    work_functor(*wat_fut);
+  });
 
-  setupFuture(m_future, wat_fut, label_functor);
-  return exec();
+  setupFuture(m_future, *wat_fut, label_functor);
+
+  const int result = exec();
+
+  // QtConcurrent::run is not generally cancelable. If the dialog exits after a
+  // cancellation request, keep the watcher alive until the worker functor really
+  // stops using the reference it received.
+  m_future.waitForFinished();
+
+  return result;
 }
 
 void FormProgressWorker::setupFuture(QFuture<void>& future,

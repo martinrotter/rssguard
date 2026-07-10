@@ -109,9 +109,8 @@ QJSValue FilteringSystem::prepareFilter(const MessageFilter& filter) {
 
   // Keep each filter script in its own scope so helper functions/variables from
   // one filter do not overwrite helpers from another filter in the shared engine.
-  const QString filter_script =
-    QSL("(function() {\n%1\n; return filterMessage;\n})()")
-      .arg(qApp->replaceUserDataFolderPlaceholder(filter.script(), true));
+  const QString filter_script = QSL("(function() {\n%1\n; return filterMessage;\n})()")
+                                  .arg(qApp->replaceUserDataFolderPlaceholder(filter.script(), true));
   QJSValue filter_func = m_engine.evaluate(filter_script, filter.name());
 
   if (filter_func.isError()) {

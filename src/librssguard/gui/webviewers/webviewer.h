@@ -148,6 +148,7 @@ class WebViewer {
     void copySelectedLink();
     void copySelectedImage();
     void copySelectedImageLink();
+    void downloadSelectedLink();
     void saveImageAs();
     void saveHtmlAs();
     void playClickedLinkAsMedia();
@@ -180,6 +181,7 @@ class WebViewer {
     QScopedPointer<QAction> m_actionCopyImage;
     QScopedPointer<QAction> m_actionSaveImage;
     QScopedPointer<QAction> m_actionCopyImageLink;
+    QScopedPointer<QAction> m_actionDownloadLink;
 
     QSharedPointer<QPrinter> m_printer;
 };
