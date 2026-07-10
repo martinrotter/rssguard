@@ -68,22 +68,22 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="124"/>
       <source>Initializing application...</source>
-      <translation type="unfinished">Initializing application...</translation>
+      <translation>Initialisation de l'application...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="144"/>
       <source>Initializing application services...</source>
-      <translation type="unfinished">Initializing application services...</translation>
+      <translation>Initialisation des services de l'application...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="193"/>
       <source>Loading appearance...</source>
-      <translation type="unfinished">Loading appearance...</translation>
+      <translation>Chargement de l’apparence...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="199"/>
       <source>Preparing the application...</source>
-      <translation type="unfinished">Preparing the application...</translation>
+      <translation>Préparation de l'application en cours...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="667"/>
@@ -513,12 +513,12 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="61"/>
       <source>Removing important articles...</source>
-      <translation type="unfinished">Removing important articles...</translation>
+      <translation>Suppression des articles importants en cours...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="67"/>
       <source>Important articles purged...</source>
-      <translation type="unfinished">Important articles purged...</translation>
+      <translation>Articles importants purgés...</translation>
     </message>
   </context>
   <context>
@@ -1234,7 +1234,7 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="264"/>
       <source>Do you really want to purge all non-important articles from selected feeds?</source>
-      <translation type="unfinished">Do you really want to purge all non-important articles from selected feeds?</translation>
+      <translation>Voulez-vous vraiment purger tous les articles non-importants des flux sélectionnés ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="473"/>
@@ -1537,7 +1537,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="61"/>
       <source>Cannot save account properties</source>
-      <translation type="unfinished">Cannot save account properties</translation>
+      <translation>Impossible d'enregistrer les propriétés du compte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="62"/>
@@ -1574,12 +1574,12 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="68"/>
       <source>Cannot prepare e-mail</source>
-      <translation type="unfinished">Cannot prepare e-mail</translation>
+      <translation>Impossible de préparer l'e-mail</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="69"/>
       <source>The e-mail cannot be prepared because some required message details could not be downloaded.</source>
-      <translation type="unfinished">The e-mail cannot be prepared because some required message details could not be downloaded.</translation>
+      <translation>L'e-mail ne peut pas être préparé car certains détails du message requis n'ont pas pu être téléchargés.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="101"/>
@@ -1883,7 +1883,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="167"/>
       <source>Cannot save folder properties</source>
-      <translation type="unfinished">Cannot save folder properties</translation>
+      <translation>Impossible de sauvegarder les propriétés du dossier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="168"/>
@@ -2073,7 +2073,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="86"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formdatabasecleanup.h" line="194"/>
       <source>Remove all important articles</source>
-      <translation type="unfinished">Remove all important articles</translation>
+      <translation>Supprimer tous les articles importants</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.ui" line="96"/>
@@ -2199,12 +2199,12 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="643"/>
       <source>Cannot import feed</source>
-      <translation type="unfinished">Cannot import feed</translation>
+      <translation>Impossible d'importer le flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="644"/>
       <source>Cannot save feed: %1</source>
-      <translation type="unfinished">Cannot save feed: %1</translation>
+      <translation>Impossible d'enregistrer le flux: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="668"/>
@@ -4231,12 +4231,12 @@ celle actuellement installée.</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="83"/>
       <source>No releases available.</source>
-      <translation type="unfinished">No releases available.</translation>
+      <translation>Pas de nouvelle version disponible.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="84"/>
       <source>There are no available releases.</source>
-      <translation type="unfinished">There are no available releases.</translation>
+      <translation>Il n'y a aucune nouvelle version disponible.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="97"/>
@@ -6976,7 +6976,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="187"/>
       <source>gzip decompression failed</source>
-      <translation type="unfinished">gzip decompression failed</translation>
+      <translation>Échec de la décompression gzip</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/parsers/sitemapparser.cpp" line="190"/>
@@ -7648,7 +7648,7 @@ Nombre de flux désactivés : %3</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="709"/>
       <source>unknown synchronization error</source>
-      <translation type="unfinished">unknown synchronization error</translation>
+      <translation>erreur de synchronisation inconnue</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="731"/>
@@ -8445,7 +8445,7 @@ Ceci peut accélerer de façon très significative l'appli si vous avez des cent
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="44"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgeneral.h" line="72"/>
       <source>Show splash screen during application startup</source>
-      <translation type="unfinished">Show splash screen during application startup</translation>
+      <translation>Afficher l'écran de démarrage au démarrage de l'application</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgeneral.ui" line="51"/>
@@ -10533,28 +10533,28 @@ Dernière connection le: %4</translation>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="434"/>
       <source>cannot get list of feeds</source>
-      <translation type="unfinished">cannot get list of feeds</translation>
+      <translation>impossible d'obtenir la liste des flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="439"/>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="454"/>
       <source>API returned status %1</source>
-      <translation type="unfinished">API returned status %1</translation>
+      <translation>L'API a retourné le statut %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="442"/>
       <source>cannot get list of feeds: %1</source>
-      <translation type="unfinished">cannot get list of feeds: %1</translation>
+      <translation>impossible d'obtenir la liste des flux: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="449"/>
       <source>cannot get list of labels</source>
-      <translation type="unfinished">cannot get list of labels</translation>
+      <translation>impossible d'obtenir la liste des étiquettes</translation>
     </message>
     <message>
       <location filename="../src/librssguard-ttrss/src/ttrssserviceroot.cpp" line="457"/>
       <source>cannot get list of labels: %1</source>
-      <translation type="unfinished">cannot get list of labels: %1</translation>
+      <translation>impossible d'obtenir la liste des étiquettes: %1</translation>
     </message>
   </context>
   <context>
@@ -11115,7 +11115,7 @@ Service: %2</translation>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="153"/>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="578"/>
       <source>XMPP connection was closed during services discovery</source>
-      <translation type="unfinished">XMPP connection was closed during services discovery</translation>
+      <translation>La connexion XMPP a été fermée lors de la découverte des services</translation>
     </message>
     <message>
       <location filename="../src/librssguard-xmpp/src/xmppnetwork.cpp" line="180"/>
