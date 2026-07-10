@@ -3,22 +3,17 @@
 #include "gui/webviewers/webviewer.h"
 
 #include "3rd-party/gumbo/src/gumbo.h"
-#include "exceptions/networkexception.h"
 #include "gui/dialogs/filedialog.h"
 #include "gui/dialogs/formmain.h"
-#include "gui/dialogs/formprogressworker.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
-#include "network-web/downloader.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 
-#include <algorithm>
 #include <functional>
-#include <limits>
 #include <optional>
 #include <utility>
 
@@ -414,91 +409,8 @@ void WebViewer::downloadSelectedLink() {
   }
 
   const QUrl target_url = (url().isValid() && context_url.isRelative()) ? url().resolved(context_url) : context_url;
-  QString suggested_file_name = target_url.fileName();
 
-  if (suggested_file_name.isEmpty()) {
-    suggested_file_name = target_url.host().isEmpty() ? QSL("file") : target_url.host();
-  }
-
-  const QString save_file_name = FileDialog::saveFileName(qApp->mainFormWidget(),
-                                                          QObject::tr("Select file destination"),
-                                                          qApp->documentsFolder(),
-                                                          suggested_file_name,
-                                                          {},
-                                                          nullptr,
-                                                          GENERAL_REMEMBERED_PATH);
-
-  if (save_file_name.isEmpty()) {
-    return;
-  }
-
-  try {
-    FormProgressWorker wrkr(qApp->mainFormWidget());
-    QByteArray data;
-    QNetworkReply::NetworkError download_error = QNetworkReply::NetworkError::NoError;
-
-    wrkr.doSingleWork(
-      QObject::tr("Download file"),
-      [&](QFutureWatcher<void>& rprt) {
-        Downloader dwnl;
-        QEventLoop loop;
-
-        emit rprt.progressRangeChanged(0, 0);
-
-        bool range_adjusted = false;
-        int progress_maximum = 0;
-        const auto bytesToKilobytes = [](qint64 bytes) {
-          const qint64 kilobytes = std::clamp<qint64>(bytes / 1000, 0, std::numeric_limits<int>::max());
-
-          return int(kilobytes);
-        };
-
-        QObject::connect(&dwnl, &Downloader::completed, &loop, &QEventLoop::quit);
-        QObject::connect(&dwnl, &Downloader::progress, &rprt, [&](qint64 bytes_received, qint64 bytes_total) {
-          if (!range_adjusted && bytes_total > 0) {
-            range_adjusted = true;
-            progress_maximum = std::max(1, bytesToKilobytes(bytes_total));
-            emit rprt.progressRangeChanged(0, progress_maximum);
-          }
-
-          emit rprt.progressValueChanged(progress_maximum > 0
-                                           ? std::min(bytesToKilobytes(bytes_received), progress_maximum)
-                                           : bytesToKilobytes(bytes_received));
-        });
-
-        dwnl.downloadFile(target_url.toString());
-        loop.exec();
-
-        download_error = dwnl.lastOutputError();
-        data = dwnl.lastOutputData();
-      },
-      [](int progress) {
-        return QObject::tr("Downloaded %1 kB...").arg(progress);
-      });
-
-    if (download_error == QNetworkReply::NetworkError::NoError) {
-      IOFactory::writeFile(save_file_name, data);
-    }
-    else {
-      throw NetworkException(download_error, QObject::tr("Failed to download file '%1'.").arg(target_url.toString()));
-    }
-  }
-  catch (const NetworkException& net_ex) {
-    MsgBox::show({},
-                 QMessageBox::Icon::Critical,
-                 QObject::tr("Cannot download file"),
-                 QObject::tr("File cannot be downloaded because some network error happened."),
-                 {},
-                 net_ex.message());
-  }
-  catch (const ApplicationException& ex) {
-    MsgBox::show({},
-                 QMessageBox::Icon::Critical,
-                 QObject::tr("Cannot download file"),
-                 QObject::tr("File cannot be downloaded because some general error happened."),
-                 {},
-                 ex.message());
-  }
+  qApp->web()->downloadUrlToFile(target_url);
 }
 
 void WebViewer::saveImageAs() {

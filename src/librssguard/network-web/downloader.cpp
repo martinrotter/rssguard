@@ -19,7 +19,8 @@ Downloader::Downloader(QObject* parent, NetworkFactory::CookiePolicy cookie_poli
     m_downloadManager(new SilentNetworkAccessManager(this)), m_geminiTimer(new QTimer(this)),
     m_geminiTimeout(DOWNLOAD_TIMEOUT), m_inputData(QByteArray()), m_inputMultipartData(nullptr),
     m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
-    m_ignoreCookies(cookie_policy == NetworkFactory::CookiePolicy::IgnoreCookies), m_lastOutputData({}),
+    m_ignoreCookies(cookie_policy == NetworkFactory::CookiePolicy::IgnoreCookies), m_outputDevice(nullptr),
+    m_outputDeviceWriteFailed(false), m_lastOutputData({}),
     m_lastOutputError(QNetworkReply::NetworkError::NoError), m_lastHttpStatusCode(0), m_lastHeaders({}) {
   m_geminiTimer->setInterval(DOWNLOAD_TIMEOUT);
   m_geminiTimer->setSingleShot(true);
@@ -55,12 +56,20 @@ void Downloader::geminiFinished(const QByteArray& data, const QString& mime) {
   m_lastOutputError = QNetworkReply::NetworkError::NoError;
   m_lastOutputMultipartData = {};
 
+  if (!m_outputDevice.isNull()) {
+    m_outputDeviceWriteFailed = m_outputDevice->write(data) != data.size();
+  }
+
   /*if (mime.startsWith(QSL(GEMINI_MIME_TYPE))) {
     m_lastOutputData = m_geminiParser.geminiToHtml(data).toUtf8();
   }
   else {*/
-  m_lastOutputData = data;
+  m_lastOutputData = m_outputDevice.isNull() ? data : QByteArray();
   //}
+
+  if (m_outputDeviceWriteFailed) {
+    m_lastOutputError = QNetworkReply::NetworkError::UnknownNetworkError;
+  }
 
   emit completed(m_lastUrl, m_lastOutputError, m_lastHttpStatusCode, m_lastOutputData);
 }
@@ -86,6 +95,26 @@ void Downloader::downloadFile(const QString& url,
                               bool protected_contents,
                               const QString& username,
                               const QString& password) {
+  resetOutputDevice();
+
+  manipulateData(url,
+                 QNetworkAccessManager::Operation::GetOperation,
+                 QByteArray(),
+                 timeout,
+                 protected_contents,
+                 username,
+                 password);
+}
+
+void Downloader::downloadFile(const QString& url,
+                              QIODevice* output_device,
+                              int timeout,
+                              bool protected_contents,
+                              const QString& username,
+                              const QString& password) {
+  m_outputDevice = output_device;
+  m_outputDeviceWriteFailed = false;
+
   manipulateData(url,
                  QNetworkAccessManager::Operation::GetOperation,
                  QByteArray(),
@@ -101,6 +130,8 @@ void Downloader::uploadFile(const QString& url,
                             bool protected_contents,
                             const QString& username,
                             const QString& password) {
+  resetOutputDevice();
+
   manipulateData(url,
                  QNetworkAccessManager::Operation::PostOperation,
                  data,
@@ -117,6 +148,8 @@ void Downloader::manipulateData(const QString& url,
                                 bool protected_contents,
                                 const QString& username,
                                 const QString& password) {
+  resetOutputDevice();
+
   manipulateData(url, operation, QByteArray(), multipart_data, timeout, protected_contents, username, password);
 }
 
@@ -127,6 +160,8 @@ void Downloader::manipulateData(const QString& url,
                                 bool protected_contents,
                                 const QString& username,
                                 const QString& password) {
+  resetOutputDevice();
+
   manipulateData(url, operation, data, nullptr, timeout, protected_contents, username, password);
 }
 
@@ -305,7 +340,13 @@ void Downloader::finished() {
     // No redirection is indicated. Final file is obtained in our "reply" object.
     // Read the data into output buffer.
     if (m_inputMultipartData == nullptr) {
-      m_lastOutputData = reply->readAll();
+      if (m_outputDevice.isNull()) {
+        m_lastOutputData = reply->readAll();
+      }
+      else {
+        writeReplyDataToOutputDevice(reply);
+        m_lastOutputData = {};
+      }
     }
     else {
       m_lastOutputMultipartData = decodeMultipartAnswer(reply);
@@ -327,7 +368,8 @@ void Downloader::finished() {
 
     m_lastUrl = reply->url();
     m_lastContentType = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader).toString();
-    m_lastOutputError = reply->error();
+    m_lastOutputError =
+      m_outputDeviceWriteFailed ? QNetworkReply::NetworkError::UnknownNetworkError : reply->error();
     m_lastHttpStatusCode = reply->attribute(QNetworkRequest::Attribute::HttpStatusCodeAttribute).toInt();
     m_lastHeaders.clear();
 
@@ -373,10 +415,54 @@ void Downloader::progressInternal(qint64 bytes_received, qint64 bytes_total) {
   emit progress(bytes_received, bytes_total);
 }
 
+void Downloader::readyReadInternal() {
+  auto* reply = qobject_cast<QNetworkReply*>(sender());
+
+  if (reply == nullptr || m_outputDevice.isNull()) {
+    return;
+  }
+
+  const int http_status_code = reply->attribute(QNetworkRequest::Attribute::HttpStatusCodeAttribute).toInt();
+
+  if (reply->attribute(QNetworkRequest::Attribute::RedirectionTargetAttribute).toUrl().isValid() ||
+      (http_status_code >= 300 && http_status_code < 400)) {
+    reply->readAll();
+    return;
+  }
+
+  writeReplyDataToOutputDevice(reply);
+}
+
 void Downloader::setCustomPropsToReply(QNetworkReply* reply) {
   reply->setProperty("protected", m_targetProtected);
   reply->setProperty("username", m_targetUsername);
   reply->setProperty("password", m_targetPassword);
+}
+
+void Downloader::resetOutputDevice() {
+  m_outputDevice = nullptr;
+  m_outputDeviceWriteFailed = false;
+}
+
+void Downloader::writeReplyDataToOutputDevice(QNetworkReply* reply) {
+  if (reply == nullptr || m_outputDevice.isNull() || m_outputDeviceWriteFailed) {
+    return;
+  }
+
+  while (reply->bytesAvailable() > 0) {
+    const QByteArray chunk = reply->read(64 * 1024);
+
+    if (chunk.isEmpty()) {
+      break;
+    }
+
+    if (!m_outputDevice->isWritable() || m_outputDevice->write(chunk) != chunk.size()) {
+      m_outputDeviceWriteFailed = true;
+      qWarningNN << LOGSEC_NETWORK << "Failed to write downloaded data to output device.";
+      reply->abort();
+      return;
+    }
+  }
 }
 
 QList<HttpResponse> Downloader::decodeMultipartAnswer(QNetworkReply* reply) {
@@ -430,6 +516,7 @@ void Downloader::runDeleteRequest(const QNetworkRequest& request) {
   m_activeReply = m_downloadManager->deleteResource(request);
   setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
+  connect(m_activeReply, &QNetworkReply::readyRead, this, &Downloader::readyReadInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
 
@@ -437,6 +524,7 @@ void Downloader::runPutRequest(const QNetworkRequest& request, const QByteArray&
   m_activeReply = m_downloadManager->put(request, data);
   setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
+  connect(m_activeReply, &QNetworkReply::readyRead, this, &Downloader::readyReadInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
 
@@ -444,6 +532,7 @@ void Downloader::runPostRequest(const QNetworkRequest& request, QHttpMultiPart* 
   m_activeReply = m_downloadManager->post(request, multipart_data);
   setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
+  connect(m_activeReply, &QNetworkReply::readyRead, this, &Downloader::readyReadInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
 
@@ -451,6 +540,7 @@ void Downloader::runPostRequest(const QNetworkRequest& request, const QByteArray
   m_activeReply = m_downloadManager->post(request, data);
   setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
+  connect(m_activeReply, &QNetworkReply::readyRead, this, &Downloader::readyReadInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
 
@@ -458,6 +548,7 @@ void Downloader::runGetRequest(const QNetworkRequest& request) {
   m_activeReply = m_downloadManager->get(request);
   setCustomPropsToReply(m_activeReply);
   connect(m_activeReply, &QNetworkReply::downloadProgress, this, &Downloader::progressInternal);
+  connect(m_activeReply, &QNetworkReply::readyRead, this, &Downloader::readyReadInternal);
   connect(m_activeReply, &QNetworkReply::finished, this, &Downloader::finished);
 }
 

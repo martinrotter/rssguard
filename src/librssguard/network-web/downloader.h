@@ -10,9 +10,11 @@
 #include "network-web/networkfactory.h"
 
 #include <QHttpMultiPart>
+#include <QIODevice>
 #include <QNetworkProxy>
 #include <QNetworkReply>
 #include <QObject>
+#include <QPointer>
 #include <QSslError>
 
 class SilentNetworkAccessManager;
@@ -51,6 +53,16 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
 
     // Performs asynchronous download of given file. Redirections are handled.
     void downloadFile(const QString& url,
+                      int timeout = DOWNLOAD_TIMEOUT,
+                      bool protected_contents = false,
+                      const QString& username = QString(),
+                      const QString& password = QString());
+
+    // Writes downloaded data to given device as they arrive. The device must be
+    // open, writable, and alive until completed() is emitted. lastOutputData()
+    // is empty when this overload is used.
+    void downloadFile(const QString& url,
+                      QIODevice* output_device,
                       int timeout = DOWNLOAD_TIMEOUT,
                       bool protected_contents = false,
                       const QString& username = QString(),
@@ -95,6 +107,7 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
 
     // Called when progress of downloaded file changes.
     void progressInternal(qint64 bytes_received, qint64 bytes_total);
+    void readyReadInternal();
 
   private:
     void setCustomPropsToReply(QNetworkReply* reply);
@@ -107,6 +120,8 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
                         bool protected_contents = false,
                         const QString& username = QString(),
                         const QString& password = QString());
+    void resetOutputDevice();
+    void writeReplyDataToOutputDevice(QNetworkReply* reply);
     void runDeleteRequest(const QNetworkRequest& request);
     void runPutRequest(const QNetworkRequest& request, const QByteArray& data);
     void runPostRequest(const QNetworkRequest& request, QHttpMultiPart* multipart_data);
@@ -128,6 +143,8 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
     QString m_targetUsername;
     QString m_targetPassword;
     bool m_ignoreCookies;
+    QPointer<QIODevice> m_outputDevice;
+    bool m_outputDeviceWriteFailed;
 
     // Response data.
     QByteArray m_lastOutputData;

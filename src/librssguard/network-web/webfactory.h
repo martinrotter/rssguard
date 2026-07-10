@@ -78,6 +78,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     bool openUrlInExternalBrowser(const QUrl& url) const;
     bool openUrlInExternalBrowser(const QUrl& url, bool use_external_tools) const;
     bool openUrlInExternalBrowser(const QList<QUrl>& urls, bool use_external_tools, bool can_bring_forward_after) const;
+    bool downloadUrlToFile(const QUrl& url) const;
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   public:

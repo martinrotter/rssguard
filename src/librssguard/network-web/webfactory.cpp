@@ -5,15 +5,22 @@
 #include "3rd-party/gumbo/src/gumbo.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
+#include "exceptions/networkexception.h"
+#include "gui/dialogs/filedialog.h"
 #include "gui/dialogs/formmain.h"
+#include "gui/dialogs/formprogressworker.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/settings.h"
 #include "network-web/cookiejar.h"
+#include "network-web/downloader.h"
 #include "qt-publicsuffix/publicsuffix.h"
 #include "services/abstract/serviceroot.h"
 
+#include <algorithm>
+#include <limits>
+#include <optional>
 #include <utility>
 
 #include <QClipboard>
@@ -21,11 +28,154 @@
 #include <QDesktopServices>
 #include <QDir>
 #include <QElapsedTimer>
+#include <QEventLoop>
+#include <QFile>
+#include <QFileInfo>
+#include <QFutureWatcher>
+#include <QIODevice>
 #include <QProcess>
+#include <QRegularExpression>
 #include <QTcpSocket>
+#include <QTemporaryFile>
 #include <QUrl>
 
 namespace {
+  QString sanitizeDownloadFileName(QString file_name) {
+    file_name = QFileInfo(file_name.trimmed()).fileName();
+
+    static const QRegularExpression invalid_chars(QSL(R"([<>:"/\\|?*\x00-\x1F])"));
+
+    file_name.replace(invalid_chars, QSL("_"));
+
+    while (file_name.endsWith(QL1C('.')) || file_name.endsWith(QL1C(' '))) {
+      file_name.chop(1);
+    }
+
+    return file_name;
+  }
+
+  QString suggestedDownloadFileNameFromUrl(const QUrl& url) {
+    QString file_name = sanitizeDownloadFileName(url.fileName());
+
+    if (file_name.isEmpty()) {
+      file_name = sanitizeDownloadFileName(url.host());
+    }
+
+    return file_name.isEmpty() ? QSL("file") : file_name;
+  }
+
+  QString unquoteHttpHeaderParameter(QString value) {
+    value = value.trimmed();
+
+    if (value.size() >= 2 && value.startsWith(QL1C('"')) && value.endsWith(QL1C('"'))) {
+      value = value.mid(1, value.size() - 2);
+      value.replace(QSL("\\\""), QSL("\""));
+      value.replace(QSL("\\\\"), QSL("\\"));
+    }
+
+    return value;
+  }
+
+  QStringList splitHttpHeaderParameters(const QString& header_value) {
+    QStringList parts;
+    QString part;
+    bool quoted = false;
+    bool escaped = false;
+
+    for (const QChar ch : header_value) {
+      if (escaped) {
+        part.append(ch);
+        escaped = false;
+        continue;
+      }
+
+      if (quoted && ch == QL1C('\\')) {
+        part.append(ch);
+        escaped = true;
+        continue;
+      }
+
+      if (ch == QL1C('"')) {
+        quoted = !quoted;
+        part.append(ch);
+        continue;
+      }
+
+      if (!quoted && ch == QL1C(';')) {
+        parts.append(part.trimmed());
+        part.clear();
+        continue;
+      }
+
+      part.append(ch);
+    }
+
+    if (!part.trimmed().isEmpty()) {
+      parts.append(part.trimmed());
+    }
+
+    return parts;
+  }
+
+  QString fileNameFromContentDisposition(const QMap<QString, QString>& headers) {
+    const QString content_disposition = headers.value(QSL("content-disposition"));
+
+    if (content_disposition.isEmpty()) {
+      return {};
+    }
+
+    QString file_name;
+    QString file_name_ext;
+
+    for (const QString& part : splitHttpHeaderParameters(content_disposition)) {
+      const int eq = part.indexOf(QL1C('='));
+
+      if (eq <= 0) {
+        continue;
+      }
+
+      const QString key = part.left(eq).trimmed().toLower();
+      const QString value = unquoteHttpHeaderParameter(part.mid(eq + 1));
+
+      if (key == QSL("filename*")) {
+        const int first_quote = value.indexOf(QL1C('\''));
+        const int second_quote = first_quote < 0 ? -1 : value.indexOf(QL1C('\''), first_quote + 1);
+        const QString encoded_value = second_quote >= 0 ? value.mid(second_quote + 1) : value;
+
+        file_name_ext = QUrl::fromPercentEncoding(encoded_value.toUtf8());
+      }
+      else if (key == QSL("filename")) {
+        file_name = value;
+      }
+    }
+
+    const QString sanitized_ext = sanitizeDownloadFileName(file_name_ext);
+
+    if (!sanitized_ext.isEmpty()) {
+      return sanitized_ext;
+    }
+
+    return sanitizeDownloadFileName(file_name);
+  }
+
+  void copyDeviceContents(QIODevice& source, QIODevice& destination) {
+    if (!source.seek(0)) {
+      throw ApplicationException(QObject::tr("Cannot read downloaded file data."));
+    }
+
+    while (!source.atEnd()) {
+      const QByteArray chunk = source.read(64 * 1024);
+
+      if (chunk.isEmpty()) {
+        throw ApplicationException(QObject::tr("Cannot read downloaded file data."));
+      }
+
+      if (destination.write(chunk) != chunk.size()) {
+        throw ApplicationException(QObject::tr("Cannot write downloaded file data."));
+      }
+    }
+  }
+
   QString pacStringLiteral(const QString& value) {
     QString escaped;
     escaped.reserve(value.size() + 2);
@@ -695,6 +845,111 @@ bool WebFactory::openUrlInExternalBrowser(const QUrl& url) const {
 
 bool WebFactory::openUrlInExternalBrowser(const QUrl& url, bool use_external_tools) const {
   return openUrlInExternalBrowser(QList<QUrl>{url}, use_external_tools, false);
+}
+
+bool WebFactory::downloadUrlToFile(const QUrl& url) const {
+  if (!url.isValid()) {
+    return false;
+  }
+
+  try {
+    FormProgressWorker wrkr(qApp->mainFormWidget());
+    QTemporaryFile temporary_file;
+    QMap<QString, QString> headers;
+    QNetworkReply::NetworkError download_error = QNetworkReply::NetworkError::NoError;
+
+    if (!temporary_file.open()) {
+      throw ApplicationException(QObject::tr("Cannot create temporary file for download."));
+    }
+
+    wrkr.doSingleWork(
+      QObject::tr("Download file"),
+      [&](QFutureWatcher<void>& rprt) {
+        Downloader dwnl;
+        QEventLoop loop;
+
+        emit rprt.progressRangeChanged(0, 0);
+
+        bool range_adjusted = false;
+        int progress_maximum = 0;
+        const auto bytesToKilobytes = [](qint64 bytes) {
+          const qint64 kilobytes = std::clamp<qint64>(bytes / 1000, 0, std::numeric_limits<int>::max());
+
+          return int(kilobytes);
+        };
+
+        QObject::connect(&dwnl, &Downloader::completed, &loop, &QEventLoop::quit);
+        QObject::connect(&dwnl, &Downloader::progress, &rprt, [&](qint64 bytes_received, qint64 bytes_total) {
+          if (!range_adjusted && bytes_total > 0) {
+            range_adjusted = true;
+            progress_maximum = std::max(1, bytesToKilobytes(bytes_total));
+            emit rprt.progressRangeChanged(0, progress_maximum);
+          }
+
+          emit rprt.progressValueChanged(progress_maximum > 0
+                                           ? std::min(bytesToKilobytes(bytes_received), progress_maximum)
+                                           : bytesToKilobytes(bytes_received));
+        });
+
+        dwnl.downloadFile(url.toString(), &temporary_file);
+        loop.exec();
+
+        download_error = dwnl.lastOutputError();
+        headers = dwnl.lastHeaders();
+      },
+      [](int progress) {
+        return QObject::tr("Downloaded %1 kB...").arg(progress);
+      });
+
+    if (download_error != QNetworkReply::NetworkError::NoError) {
+      throw NetworkException(download_error, QObject::tr("Failed to download file '%1'.").arg(url.toString()));
+    }
+
+    QString suggested_file_name = fileNameFromContentDisposition(headers);
+
+    if (suggested_file_name.isEmpty()) {
+      suggested_file_name = suggestedDownloadFileNameFromUrl(url);
+    }
+
+    const QString save_file_name = FileDialog::saveFileName(qApp->mainFormWidget(),
+                                                            QObject::tr("Select file destination"),
+                                                            qApp->documentsFolder(),
+                                                            suggested_file_name,
+                                                            {},
+                                                            nullptr,
+                                                            GENERAL_REMEMBERED_PATH);
+
+    if (save_file_name.isEmpty()) {
+      return false;
+    }
+
+    QFile output_file(save_file_name);
+
+    if (!output_file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+      throw ApplicationException(QObject::tr("Cannot open file '%1' for writing.").arg(save_file_name));
+    }
+
+    copyDeviceContents(temporary_file, output_file);
+    return true;
+  }
+  catch (const NetworkException& net_ex) {
+    MsgBox::show({},
+                 QMessageBox::Icon::Critical,
+                 QObject::tr("Cannot download file"),
+                 QObject::tr("File cannot be downloaded because some network error happened."),
+                 {},
+                 net_ex.message());
+  }
+  catch (const ApplicationException& ex) {
+    MsgBox::show({},
+                 QMessageBox::Icon::Critical,
+                 QObject::tr("Cannot download file"),
+                 QObject::tr("File cannot be downloaded because some general error happened."),
+                 {},
+                 ex.message());
+  }
+
+  return false;
 }
 
 bool WebFactory::openUrlInExternalBrowser(const QList<QUrl>& urls,
