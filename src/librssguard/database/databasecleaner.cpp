@@ -3,6 +3,7 @@
 #include "database/databasecleaner.h"
 
 #include "database/databasequeries.h"
+#include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/thread.h"
 
@@ -16,70 +17,76 @@ void DatabaseCleaner::purgeDatabaseData(CleanerOrders which_data) {
   // Inform everyone about the start of the process.
   emit purgeStarted();
 
-  const int difference = 99 / 12;
-  int progress = 0;
+  try {
+    const int difference = 99 / 12;
+    int progress = 0;
 
-  if (which_data.m_removeReadMessages) {
-    progress += difference;
+    if (which_data.m_removeReadMessages) {
+      progress += difference;
 
-    emit purgeProgress(progress, tr("Removing read articles..."));
+      emit purgeProgress(progress, tr("Removing read articles..."));
 
-    // Remove read messages.
-    purgeReadMessages();
-    progress += difference;
+      // Remove read messages.
+      purgeReadMessages();
+      progress += difference;
 
-    emit purgeProgress(progress, tr("Read articles purged..."));
+      emit purgeProgress(progress, tr("Read articles purged..."));
+    }
+
+    if (which_data.m_removeRecycleBin) {
+      progress += difference;
+
+      emit purgeProgress(progress, tr("Purging recycle bin..."));
+
+      // Remove read messages.
+      purgeRecycleBin();
+      progress += difference;
+
+      emit purgeProgress(progress, tr("Recycle bin purged..."));
+    }
+
+    if (which_data.m_removeOldMessages) {
+      progress += difference;
+
+      emit purgeProgress(progress, tr("Removing old articles..."));
+
+      // Remove old messages.
+      purgeOldMessages(which_data.m_barrierForRemovingOldMessagesInDays);
+      progress += difference;
+
+      emit purgeProgress(progress, tr("Old articles purged..."));
+    }
+
+    if (which_data.m_removeStarredMessages) {
+      progress += difference;
+
+      emit purgeProgress(progress, tr("Removing important articles..."));
+
+      // Remove old messages.
+      purgeStarredMessages();
+      progress += difference;
+
+      emit purgeProgress(progress, tr("Important articles purged..."));
+    }
+
+    if (which_data.m_shrinkDatabase) {
+      progress += difference;
+
+      emit purgeProgress(progress, tr("Shrinking database file..."));
+
+      // Call driver-specific vacuuming function.
+      qApp->database()->driver()->vacuumDatabase();
+      progress += difference;
+
+      emit purgeProgress(progress, tr("Database file shrinked..."));
+    }
+
+    emit purgeFinished();
   }
-
-  if (which_data.m_removeRecycleBin) {
-    progress += difference;
-
-    emit purgeProgress(progress, tr("Purging recycle bin..."));
-
-    // Remove read messages.
-    purgeRecycleBin();
-    progress += difference;
-
-    emit purgeProgress(progress, tr("Recycle bin purged..."));
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_DB << "Database cleanup failed:" << QUOTE_W_SPACE_DOT(ex.message());
+    emit purgeFailed(ex.message());
   }
-
-  if (which_data.m_removeOldMessages) {
-    progress += difference;
-
-    emit purgeProgress(progress, tr("Removing old articles..."));
-
-    // Remove old messages.
-    purgeOldMessages(which_data.m_barrierForRemovingOldMessagesInDays);
-    progress += difference;
-
-    emit purgeProgress(progress, tr("Old articles purged..."));
-  }
-
-  if (which_data.m_removeStarredMessages) {
-    progress += difference;
-
-    emit purgeProgress(progress, tr("Removing important articles..."));
-
-    // Remove old messages.
-    purgeStarredMessages();
-    progress += difference;
-
-    emit purgeProgress(progress, tr("Important articles purged..."));
-  }
-
-  if (which_data.m_shrinkDatabase) {
-    progress += difference;
-
-    emit purgeProgress(progress, tr("Shrinking database file..."));
-
-    // Call driver-specific vacuuming function.
-    qApp->database()->driver()->vacuumDatabase();
-    progress += difference;
-
-    emit purgeProgress(progress, tr("Database file shrinked..."));
-  }
-
-  emit purgeFinished();
 }
 
 void DatabaseCleaner::purgeStarredMessages() {

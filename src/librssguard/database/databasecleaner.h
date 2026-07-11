@@ -26,6 +26,7 @@ class DatabaseCleaner : public QObject {
     void purgeStarted();
     void purgeProgress(int progress, const QString& description);
     void purgeFinished();
+    void purgeFailed(const QString& error);
 
   public slots:
     void purgeDatabaseData(CleanerOrders which_data);
