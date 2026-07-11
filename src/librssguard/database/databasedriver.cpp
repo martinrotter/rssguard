@@ -2,6 +2,7 @@
 
 #include "database/databasedriver.h"
 
+#include "database/databasefactory.h"
 #include "database/sqlquery.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
@@ -217,7 +218,8 @@ QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
     }
   }
 
-  statements = statements.replaceInStrings(QSL(APP_DB_NAME_PLACEHOLDER), database_name);
+  statements = statements.replaceInStrings(QSL(APP_DB_NAME_PLACEHOLDER),
+                                             DatabaseFactory::escapeIdentifier(database_name));
   statements = statements.replaceInStrings(QSL(APP_DB_AUTO_INC_PRIM_KEY_PLACEHOLDER), autoIncrementPrimaryKey());
   statements = statements.replaceInStrings(QSL(APP_DB_BLOB_PLACEHOLDER), blob());
   statements = statements.replaceInStrings(QSL(APP_DB_TEXT_PLACEHOLDER), text());

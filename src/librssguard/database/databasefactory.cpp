@@ -108,6 +108,10 @@ QString DatabaseFactory::escapeQuery(const QString& query) {
   return QString(query).replace(QSL("'"), QSL("''"));
 }
 
+QString DatabaseFactory::escapeIdentifier(const QString& identifier) {
+  return QSL("`%1`").arg(QString(identifier).replace(QL1C('`'), QSL("``")));
+}
+
 DatabaseDriver::DriverType DatabaseFactory::activeDatabaseDriver() const {
   return m_dbDriver->driverType();
 }

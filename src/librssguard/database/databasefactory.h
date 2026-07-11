@@ -24,6 +24,7 @@ class RSSGUARD_DLLSPEC DatabaseFactory : public QObject {
     DatabaseDriver* driverForType(DatabaseDriver::DriverType d) const;
 
     static QString escapeQuery(const QString& query);
+    static QString escapeIdentifier(const QString& identifier);
 
   private:
     void determineDriver();

@@ -138,7 +138,7 @@ void SqliteDriver::updateDatabaseSchema(QSqlDatabase& db, const QString& databas
     query_db.next();
     const int installed_db_schema = query_db.value(0).toString().toInt();
 
-    if (installed_db_schema > QSL(APP_DB_SCHEMA_FIRST_VERSION).toInt() &&
+    if (installed_db_schema >= QSL(APP_DB_SCHEMA_FIRST_VERSION).toInt() &&
         installed_db_schema < QSL(APP_DB_SCHEMA_VERSION).toInt()) {
       // Now, it would be good to create backup of SQLite DB file.
       if (IOFactory::copyFile(databaseFilePath(), databaseFilePath() + QSL("-v%1.bak").arg(installed_db_schema))) {

@@ -2,6 +2,7 @@
 
 #include "database/mariadbdriver.h"
 
+#include "database/databasefactory.h"
 #include "definitions/definitions.h"
 #include "exceptions/sqlexception.h"
 #include "miscellaneous/application.h"
@@ -180,6 +181,7 @@ QString MariaDbDriver::databaseName() const {
 
 void MariaDbDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialized) {
   const QString database_name = databaseName();
+  const QString escaped_database_name = DatabaseFactory::escapeIdentifier(database_name);
 
   database.setHostName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
   database.setPort(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
@@ -194,11 +196,11 @@ void MariaDbDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialize
     // Ensure the DB exists.
     SqlQuery query_db(database);
 
-    if (!query_db.exec(QSL("USE %1;").arg(database_name), false)) {
+    if (!query_db.exec(QSL("USE %1;").arg(escaped_database_name), false)) {
       const QString create_db = QSL("CREATE DATABASE IF NOT EXISTS %1 "
                                     "CHARACTER SET utf8mb4 "
                                     "COLLATE utf8mb4_unicode_ci;")
-                                  .arg(database_name);
+                                  .arg(escaped_database_name);
 
       // Only create DB, exec "CREATE DATABASE" command.
       query_db.exec(create_db);
