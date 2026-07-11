@@ -58,6 +58,8 @@ void MessagesModel::setupIcons() {
                                                             : qApp->icons()->fromTheme(QSL("mail-mark-unread"));
   m_enclosuresIcon = qApp->icons()->fromTheme(QSL("mail-attachment"));
 
+  m_scoreIcons.clear();
+
   for (int i = int(MSG_SCORE_MIN); i <= int(MSG_SCORE_MAX); i += 10) {
     m_scoreIcons.append(generateIconForScore(double(i)));
   }
