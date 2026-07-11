@@ -12,6 +12,7 @@ Fixed:
 * Article-list notifications now handle paging more reliably.
 * Errors preventing an account's feeds from starting to update are now reported correctly.
 * Failed loading of articles no longer crashes the application when no feed or folder is selected.
+* Weekly article filters now handle local dates and the New Year boundary correctly.
 * Gmail plugin now correctly fills-in full e-mail address of a recipient when the recipient is selected from drop-down list of recipients.
 * Miniflux sends "weird" enclosure information, so tweak was made to account for it. (#2354)
 * Row state is updated more properly when switching article importance. (#2341)

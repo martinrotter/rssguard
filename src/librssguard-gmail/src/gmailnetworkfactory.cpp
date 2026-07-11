@@ -683,7 +683,7 @@ QMap<QString, QString> GmailNetworkFactory::getMessageMetadata(const QString& ms
 QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringList& message_ids,
                                                                 const QString& feed_id,
                                                                 const QNetworkProxy& custom_proxy) {
-  QHash<QString, Message> msgs;
+  QList<Message> msgs;
   int next_message = 0;
   QString bearer = m_oauth2->bearer();
 
@@ -698,17 +698,13 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
 
     for (int window = next_message + 100; next_message < window && next_message < message_ids.size(); next_message++) {
       QString msg_id = message_ids[next_message];
-      Message msg;
       QHttpPart part;
-
-      msg.m_customId = msg_id;
 
       part.setRawHeader(HTTP_HEADERS_CONTENT_TYPE, GMAIL_CONTENT_TYPE_HTTP);
       QString full_msg_endpoint = QSL("GET /gmail/v1/users/me/messages/%1\r\n").arg(msg_id);
 
       part.setBody(full_msg_endpoint.toUtf8());
       multi.append(part);
-      msgs.insert(msg_id, msg);
     }
 
     QList<QPair<QByteArray, QByteArray>> headers;
@@ -734,15 +730,19 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
         QJsonObject msg_doc = QJsonDocument::fromJson(part.body().toUtf8()).object();
         QString msg_id = msg_doc[QSL("id")].toString();
 
-        if (msgs.contains(msg_id)) {
-          Message& msg = msgs[msg_id];
+        if (msg_id.isEmpty()) {
+          continue;
+        }
 
-          if (!fillFullMessage(msg, msg_doc, feed_id)) {
-            qWarningNN << LOGSEC_GMAIL << "Failed to get (or deliberately skipped) full message for custom ID:"
-                       << QUOTE_W_SPACE_DOT(msg.m_customId);
+        Message msg;
+        msg.m_customId = msg_id;
 
-            msgs.remove(msg_id);
-          }
+        if (!fillFullMessage(msg, msg_doc, feed_id)) {
+          qWarningNN << LOGSEC_GMAIL << "Failed to get (or deliberately skipped) full message for custom ID:"
+                     << QUOTE_W_SPACE_DOT(msg.m_customId);
+        }
+        else {
+          msgs.append(msg);
         }
       }
     }
@@ -752,7 +752,7 @@ QList<Message> GmailNetworkFactory::obtainAndDecodeFullMessages(const QStringLis
   }
   while (next_message < message_ids.size());
 
-  return msgs.values();
+  return msgs;
 }
 
 QStringList GmailNetworkFactory::decodeLiteMessages(const QString& messages_json_data, QString& next_page_token) const {
