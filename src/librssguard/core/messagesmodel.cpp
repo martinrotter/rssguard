@@ -206,7 +206,7 @@ void MessagesModel::fetchMoreArticles(int batch_size) {
     }
   }
   catch (const ApplicationException& ex) {
-    if (m_selectedItem->kind() == RootItem::Kind::Probe) {
+    if (m_selectedItem != nullptr && m_selectedItem->kind() == RootItem::Kind::Probe) {
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
                            GuiMessage(tr("Error in query"),
                                       tr("There is something wrong with your query: %1").arg(ex.message()),
@@ -253,7 +253,7 @@ void MessagesModel::fetchInitialArticles(int batch_size) {
     tmr.restart();
   }
   catch (const ApplicationException& ex) {
-    if (m_selectedItem->kind() == RootItem::Kind::Probe) {
+    if (m_selectedItem != nullptr && m_selectedItem->kind() == RootItem::Kind::Probe) {
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
                            GuiMessage(tr("Error in query"),
                                       tr("There is something wrong with your query: %1").arg(ex.message()),

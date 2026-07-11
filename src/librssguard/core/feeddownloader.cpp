@@ -201,6 +201,9 @@ FeedUpdateResult FeedDownloader::updateThreadedFeed(const FeedUpdateRequest& fd)
       ApplicationException root_ex = m_erroredAccounts.value(fd.account);
 
       skipFeedUpdateWithError(fd.account, fd.feed, root_ex);
+
+      QMutexLocker lck_results(&m_mutexResults);
+      m_results.appendErroredFeed(fd.feed, root_ex.message());
     }
     else {
       updateOneFeed(fd.account, fd.feed, fd.stated_messages, fd.tagged_messages);
