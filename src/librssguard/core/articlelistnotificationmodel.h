@@ -12,7 +12,7 @@ class ArticleListNotificationModel : public QAbstractListModel {
 
   public:
     explicit ArticleListNotificationModel(QObject* parent = nullptr);
-    virtual ~ArticleListNotificationModel();
+    ~ArticleListNotificationModel() override = default;
 
     void setArticles(const QList<Message>& msgs);
 
@@ -21,17 +21,17 @@ class ArticleListNotificationModel : public QAbstractListModel {
     void nextPage();
     void previousPage();
 
-    virtual int rowCount(const QModelIndex& parent) const;
-    virtual int columnCount(const QModelIndex& parent) const;
-    virtual QVariant data(const QModelIndex& index, int role) const;
-
-    void reloadWholeLayout();
+    int rowCount(const QModelIndex& parent) const override;
+    int columnCount(const QModelIndex& parent) const override;
+    QVariant data(const QModelIndex& index, int role) const override;
 
   signals:
     void nextPagePossibleChanged(bool possible);
     void previousPagePossibleChanged(bool possible);
 
   private:
+    void emitPageAvailability();
+
     bool nextPageAvailable() const;
     bool previousPageAvailable() const;
 
