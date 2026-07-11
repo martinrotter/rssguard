@@ -491,7 +491,7 @@ void FeedDownloader::finalizeUpdate() {
 
   {
     QMutexLocker lck(&m_mutexResults);
-    m_results.setFeedRequests(m_feeds);
+    m_results.setFeedRequestCount(int(m_feeds.size()));
     results = m_results;
   }
 
@@ -720,15 +720,15 @@ void FeedDownloadResults::clear() {
   m_updatedFeeds.clear();
   m_erroredFeeds.clear();
   m_updatedAccounts.clear();
-  m_feedRequests.clear();
+  m_feedRequestCount = 0;
 }
 
-const QList<FeedUpdateRequest>& FeedDownloadResults::feedRequests() const {
-  return m_feedRequests;
+int FeedDownloadResults::feedRequestCount() const {
+  return m_feedRequestCount;
 }
 
-void FeedDownloadResults::setFeedRequests(const QList<FeedUpdateRequest>& req) {
-  m_feedRequests = req;
+void FeedDownloadResults::setFeedRequestCount(int count) {
+  m_feedRequestCount = count;
 }
 
 const QSet<ServiceRoot*>& FeedDownloadResults::updatedAccounts() const {
