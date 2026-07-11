@@ -181,7 +181,7 @@ void MessagesModel::fetchMoreArticles(int batch_size) {
 
     auto more_messages = fetchMessages(m_hashedLabels, batch_size, m_messages.size());
 
-    m_canFetchMoreArticles = more_messages.size() >= batch_size;
+    m_canFetchMoreArticles = batch_size > 0 && more_messages.size() >= batch_size;
 
     // NOTE: Some message data are NOT fetched from database. Fill them directly into the data here.
     for (Message& msg : more_messages) {
@@ -241,7 +241,7 @@ void MessagesModel::fetchInitialArticles(int batch_size) {
 
   try {
     m_messages = fetchMessages(m_hashedLabels, m_lazyLoading ? batch_size : 0, 0, m_additionalArticleId);
-    m_canFetchMoreArticles = m_messages.size() >= batch_size;
+    m_canFetchMoreArticles = m_lazyLoading && batch_size > 0 && m_messages.size() >= batch_size;
 
     time_fetch = tmr.elapsed();
     tmr.restart();
