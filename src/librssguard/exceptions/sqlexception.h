@@ -11,7 +11,8 @@ class RSSGUARD_DLLSPEC SqlException : public ApplicationException {
   public:
     enum class Type {
       GeneralError,
-      TooOldIncompatibleDbSchema
+      TooOldIncompatibleDbSchema,
+      TooNewIncompatibleDbSchema
     };
 
     explicit SqlException(Type type, const QString& message = {});

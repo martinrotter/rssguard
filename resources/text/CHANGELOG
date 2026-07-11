@@ -14,6 +14,7 @@ Fixed:
 * Failed loading of articles no longer crashes the application when no feed or folder is selected.
 * Weekly article filters now handle local dates and the New Year boundary correctly.
 * Database cleanup errors no longer leave the cleanup dialog unusable.
+* Incompatible external databases no longer cause an unintended fallback to a new local database.
 * Gmail plugin now correctly fills-in full e-mail address of a recipient when the recipient is selected from drop-down list of recipients.
 * Miniflux sends "weird" enclosure information, so tweak was made to account for it. (#2354)
 * Row state is updated more properly when switching article importance. (#2341)
