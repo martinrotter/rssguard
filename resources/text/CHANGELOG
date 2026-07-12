@@ -25,6 +25,7 @@ Fixed:
 * Failed article-filter saves no longer leave the active filter out of sync with its saved version.
 * Invalid article-filter import files now report an error instead of appearing to import successfully.
 * Failed article-filter removals no longer leave the active filtering state inconsistent.
+* Failed article-filter assignment changes no longer leave feeds in an inconsistent state.
 * Gmail plugin now correctly fills-in full e-mail address of a recipient when the recipient is selected from drop-down list of recipients.
 * Miniflux sends "weird" enclosure information, so tweak was made to account for it. (#2354)
 * Row state is updated more properly when switching article importance. (#2341)

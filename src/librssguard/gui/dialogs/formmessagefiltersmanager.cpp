@@ -637,17 +637,37 @@ void FormMessageFiltersManager::onFeedChecked(RootItem* item, Qt::CheckState sta
   }
 
   // Update feed/filter assignemnts.
-  switch (state) {
-    case Qt::CheckState::Checked:
-      m_reader->assignMessageFilterToFeed(feed, selectedFilter());
-      break;
+  MessageFilter* filter = selectedFilter();
 
-    case Qt::CheckState::Unchecked:
-      m_reader->removeMessageFilterToFeedAssignment(feed, selectedFilter());
-      break;
+  if (filter == nullptr) {
+    return;
+  }
 
-    case Qt::CheckState::PartiallyChecked:
-      break;
+  const bool was_assigned = feed->messageFilters().contains(filter);
+
+  try {
+    switch (state) {
+      case Qt::CheckState::Checked:
+        m_reader->assignMessageFilterToFeed(feed, filter);
+        break;
+
+      case Qt::CheckState::Unchecked:
+        m_reader->removeMessageFilterToFeedAssignment(feed, filter);
+        break;
+
+      case Qt::CheckState::PartiallyChecked:
+        break;
+    }
+  }
+  catch (const ApplicationException& ex) {
+    QScopedValueRollback<bool> loading(m_loadingFilter, true);
+
+    m_feedsModel->sourceModel()->setItemChecked(feed,
+                                                was_assigned ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
+    MsgBox::show(this,
+                 QMessageBox::Icon::Critical,
+                 tr("Error"),
+                 tr("Cannot change article-filter assignment, error: '%1'.").arg(ex.message()));
   }
 }
 

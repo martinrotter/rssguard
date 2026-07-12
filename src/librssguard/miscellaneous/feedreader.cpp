@@ -380,17 +380,19 @@ void FeedReader::updateMessageFilter(MessageFilter* filter) {
 }
 
 void FeedReader::assignMessageFilterToFeed(Feed* feed, MessageFilter* filter) {
-  feed->appendMessageFilter(filter);
   qApp->database()->worker()->write([&](const QSqlDatabase& db) {
     DatabaseQueries::assignMessageFilterToFeed(db, feed->id(), filter->id());
   });
+
+  feed->appendMessageFilter(filter);
 }
 
 void FeedReader::removeMessageFilterToFeedAssignment(Feed* feed, MessageFilter* filter) {
-  feed->removeMessageFilter(filter);
   qApp->database()->worker()->write([&](const QSqlDatabase& db) {
     DatabaseQueries::removeMessageFilterFromFeed(db, feed->id(), filter->id());
   });
+
+  feed->removeMessageFilter(filter);
 }
 
 void FeedReader::updateAllFeeds() {
