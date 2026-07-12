@@ -27,6 +27,7 @@ Fixed:
 * Failed article-filter removals no longer leave the active filtering state inconsistent.
 * Failed article-filter assignment changes no longer leave feeds in an inconsistent state.
 * Deferred article-state synchronization is now checked safely while accounts are updating.
+* Deleting an account now also removes its pending article-state cache.
 * Gmail plugin now correctly fills-in full e-mail address of a recipient when the recipient is selected from drop-down list of recipients.
 * Miniflux sends "weird" enclosure information, so tweak was made to account for it. (#2354)
 * Row state is updated more properly when switching article importance. (#2341)
