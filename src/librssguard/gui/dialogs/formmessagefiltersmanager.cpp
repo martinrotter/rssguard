@@ -378,8 +378,16 @@ void FormMessageFiltersManager::removeSelectedFilter() {
                    fltr->name(),
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
                    QMessageBox::StandardButton::No) == QMessageBox::StandardButton::Yes) {
-    m_reader->removeMessageFilter(fltr);
-    delete m_ui.m_listFilters->currentItem();
+    try {
+      m_reader->removeMessageFilter(fltr);
+      delete m_ui.m_listFilters->currentItem();
+    }
+    catch (const ApplicationException& ex) {
+      MsgBox::show(this,
+                   QMessageBox::Icon::Critical,
+                   tr("Error"),
+                   tr("Cannot remove article filter, error: '%1'.").arg(ex.message()));
+    }
   }
 }
 

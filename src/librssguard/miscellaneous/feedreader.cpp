@@ -75,7 +75,7 @@ void FeedReader::updateAllFeedsOnStartup() {
 FeedReader::~FeedReader() {
   qDebugNN << LOGSEC_CORE << "Destroying FeedReader instance.";
 
-  for (ServiceEntryPoint* service : m_feedServices) {
+  for (ServiceEntryPoint* service : std::as_const(m_feedServices)) {
     if (!service->isDynamicallyLoaded()) {
       qDebugNN << LOGSEC_CORE << "Deleting service" << QUOTE_W_SPACE_DOT(service->code());
       delete service;
@@ -194,7 +194,17 @@ QByteArray FeedReader::exportMessageFilters() const {
 
 void FeedReader::importMessageFilters(const QByteArray& data) {
   QJsonParseError err;
-  const QJsonArray arr = QJsonDocument::fromJson(data, &err).array();
+  const QJsonDocument document = QJsonDocument::fromJson(data, &err);
+
+  if (err.error != QJsonParseError::ParseError::NoError) {
+    throw ApplicationException(tr("file contains invalid JSON: %1").arg(err.errorString()));
+  }
+
+  if (!document.isArray()) {
+    throw ApplicationException(tr("file does not contain a filter list"));
+  }
+
+  const QJsonArray arr = document.array();
 
   for (const QJsonValue& json_fltr_val : arr) {
     const QJsonObject& json_fltr = json_fltr_val.toObject();
@@ -318,22 +328,48 @@ MessageFilter* FeedReader::addMessageFilter(const QString& title, const QString&
 }
 
 void FeedReader::removeMessageFilter(MessageFilter* filter) {
-  // Now, remove all references from all feeds.
-  auto all_feeds = m_feedsModel->feedsForIndex();
+  QHash<MessageFilter*, int> old_sort_orders;
 
-  for (auto* feed : all_feeds) {
+  for (MessageFilter* message_filter : std::as_const(m_messageFilters)) {
+    old_sort_orders.insert(message_filter, message_filter->sortOrder());
+  }
+
+  try {
+    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+      QSqlDatabase transaction_db = db;
+
+      if (!transaction_db.transaction()) {
+        throw ApplicationException(tr("Cannot start database transaction when removing article filter."));
+      }
+
+      try {
+        DatabaseQueries::moveMessageFilter(m_messageFilters, filter, false, true, {}, transaction_db);
+        DatabaseQueries::removeMessageFilter(transaction_db, filter->id());
+
+        if (!transaction_db.commit()) {
+          throw ApplicationException(tr("Cannot commit database transaction when removing article filter."));
+        }
+      }
+      catch (...) {
+        transaction_db.rollback();
+        throw;
+      }
+    });
+  }
+  catch (...) {
+    for (auto it = old_sort_orders.cbegin(); it != old_sort_orders.cend(); ++it) {
+      it.key()->setSortOrder(it.value());
+    }
+
+    throw;
+  }
+
+  // Remove all live references only after database removal succeeded.
+  for (Feed* feed : m_feedsModel->feedsForIndex()) {
     feed->removeMessageFilter(filter);
   }
 
-  // Remove from DB.
-  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-    DatabaseQueries::moveMessageFilter(m_messageFilters, filter, false, true, {}, db);
-    DatabaseQueries::removeMessageFilter(db, filter->id());
-  });
-
   m_messageFilters.removeAll(filter);
-
-  // Free from memory as last step.
   filter->deleteLater();
 }
 
