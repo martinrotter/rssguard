@@ -462,7 +462,7 @@ void FeedReader::executeNextAutoUpdate() {
                          }
                        })
                        .where([](CacheForServiceRoot* cache) {
-                         return cache != nullptr && !cache->isEmpty();
+                         return cache != nullptr && cache->hasCachedData();
                        });
 
   // Skip this round of auto-updating, but only if user disabled it when main window is active
