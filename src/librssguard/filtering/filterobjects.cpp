@@ -732,11 +732,11 @@ void FilterApp::setSystem(FilteringSystem* sys) {
 }
 
 QString FilterFeed::title() const {
-  return m_system->feed()->title();
+  return m_system->feed() != nullptr ? m_system->feed()->title() : QString();
 }
 
 QString FilterFeed::customId() const {
-  return m_system->feed()->customId();
+  return m_system->feed() != nullptr ? m_system->feed()->customId() : QString();
 }
 
 void FilterFeed::setSystem(FilteringSystem* sys) {
