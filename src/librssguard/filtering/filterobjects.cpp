@@ -594,7 +594,9 @@ QString jsonProcessXmlElement(const QDomElement& elem) {
 QString FilterUtils::fromXmlToJson(const QString& xml) const {
   DomDocument xml_doc;
 
-  xml_doc.setContent(xml, true);
+  if (!xml_doc.setContent(xml, true)) {
+    return {};
+  }
 
   QString json = QSL("%1").arg(jsonProcessXmlElement(xml_doc.documentElement()));
 

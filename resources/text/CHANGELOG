@@ -20,6 +20,7 @@ Fixed:
 * Invalid article-filter results no longer cause incoming articles to be silently discarded.
 * Article-filter duplicate checks now handle large accounts much faster, particularly when `isAlreadyInDatabase*` functions are used. 
 * Testing an article filter with a folder or account selected no longer crashes when the filter accesses feed details.
+* Article filters now handle malformed XML data correctly.
 * Gmail plugin now correctly fills-in full e-mail address of a recipient when the recipient is selected from drop-down list of recipients.
 * Miniflux sends "weird" enclosure information, so tweak was made to account for it. (#2354)
 * Row state is updated more properly when switching article importance. (#2341)
