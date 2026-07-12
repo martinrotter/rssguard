@@ -430,6 +430,10 @@ void FormMessageFiltersManager::saveSelectedFilter() {
     return;
   }
 
+  const QString old_name = fltr->name();
+  const QString old_script = fltr->script();
+  const bool old_enabled = fltr->enabled();
+
   fltr->setEnabled(m_ui.m_btnEnable->isChecked());
   fltr->setName(m_ui.m_txtTitle->text());
   fltr->setScript(m_ui.m_txtScript->toPlainText());
@@ -439,6 +443,10 @@ void FormMessageFiltersManager::saveSelectedFilter() {
     updateItemFromFilter(m_ui.m_listFilters->currentItem(), fltr);
   }
   catch (const ApplicationException& ex) {
+    fltr->setName(old_name);
+    fltr->setScript(old_script);
+    fltr->setEnabled(old_enabled);
+
     updateItemFromFilter(m_ui.m_listFilters->currentItem(), fltr, ex.message());
   }
 }
