@@ -743,7 +743,8 @@ void FilterFeed::setSystem(FilteringSystem* sys) {
   m_system = sys;
 }
 
-FilterRun::FilterRun(QObject* parent) : QObject(parent), m_numberOfAcceptedMessages(0) {}
+FilterRun::FilterRun(QObject* parent)
+  : QObject(parent), m_indexOfCurrentFilter(0), m_totalCountOfFilters(0), m_numberOfAcceptedMessages(0) {}
 
 int FilterRun::numberOfAcceptedMessages() const {
   return m_numberOfAcceptedMessages;
