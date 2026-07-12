@@ -488,7 +488,9 @@ void FormMessageFiltersManager::testFilter() {
   // Perform per-message filtering.
   auto* selected_fd_cat = selectedCategoryFeed();
   FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles,
-                            selected_fd_cat->kind() == RootItem::Kind::Feed ? selected_fd_cat->toFeed() : nullptr,
+                            selected_fd_cat != nullptr && selected_fd_cat->kind() == RootItem::Kind::Feed
+                              ? selected_fd_cat->toFeed()
+                              : nullptr,
                             selectedAccount());
 
   filtering.filterRun().setTotalCountOfFilters(1);
