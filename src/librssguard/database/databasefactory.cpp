@@ -21,6 +21,17 @@ DatabaseFactory::DatabaseFactory(QObject* parent)
   determineDriver();
 }
 
+DatabaseFactory::~DatabaseFactory() {
+  if (m_dbWorker != nullptr) {
+    QMetaObject::invokeMethod(
+      m_dbWorker,
+      [worker = m_dbWorker.data()]() {
+        delete worker;
+      },
+      Qt::ConnectionType::BlockingQueuedConnection);
+  }
+}
+
 void DatabaseFactory::determineDriver() {
   m_allDbDrivers = {new SqliteDriver(this)};
 

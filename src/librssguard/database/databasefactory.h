@@ -15,6 +15,7 @@ class RSSGUARD_DLLSPEC DatabaseFactory : public QObject {
 
   public:
     explicit DatabaseFactory(QObject* parent = nullptr);
+    virtual ~DatabaseFactory();
 
     // Returns identification of currently active database driver.
     DatabaseDriver::DriverType activeDatabaseDriver() const;

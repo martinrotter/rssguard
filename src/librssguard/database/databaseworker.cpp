@@ -16,7 +16,10 @@ DatabaseWorker::DatabaseWorker() : QObject() {
 DatabaseWorker::~DatabaseWorker() {
   m_readThreadPool.waitForDone(2000);
   m_writeThread.quit();
-  m_writeThread.wait();
+
+  if (QThread::currentThread() != &m_writeThread) {
+    m_writeThread.wait();
+  }
 }
 
 void DatabaseWorker::read(const DbReadFn& func) {
