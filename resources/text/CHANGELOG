@@ -17,6 +17,7 @@ Fixed:
 * Incompatible external databases no longer cause an unintended fallback to a new local database.
 * Articles with custom metadata containing special characters are now stored correctly.
 * MariaDB databases with special characters in their names are now handled correctly.
+* Invalid article-filter results no longer cause incoming articles to be silently discarded.
 * Gmail plugin now correctly fills-in full e-mail address of a recipient when the recipient is selected from drop-down list of recipients.
 * Miniflux sends "weird" enclosure information, so tweak was made to account for it. (#2354)
 * Row state is updated more properly when switching article importance. (#2341)

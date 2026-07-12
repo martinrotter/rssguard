@@ -269,6 +269,7 @@ double jaro_winkler_distance(QString str1, QString str2) {
   for (uint i = 0; i < len2; ++i) {
     if (str1[i] == str2[i]) {
       ++common_prefix;
+      break;
     }
   }
 

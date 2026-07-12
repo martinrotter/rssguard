@@ -96,7 +96,19 @@ FilterMessage::FilteringAction FilteringSystem::filterMessage(const MessageFilte
     throw FilteringException(filter_output);
   }
 
-  return FilterMessage::FilteringAction(filter_output.toInt());
+  const int action = filter_output.toInt();
+
+  if (!filter_output.isNumber() ||
+      (action != int(FilterMessage::FilteringAction::Accept) && action != int(FilterMessage::FilteringAction::Ignore) &&
+       action != int(FilterMessage::FilteringAction::Purge))) {
+    QJSValue error =
+      m_engine.newErrorObject(QJSValue::TypeError,
+                              tr("article filter '%1' must return valid FilteringAction value.").arg(filter.name()));
+
+    throw FilteringException(error);
+  }
+
+  return FilterMessage::FilteringAction(action);
 }
 
 QJSValue FilteringSystem::prepareFilter(const MessageFilter& filter) {
@@ -109,9 +121,8 @@ QJSValue FilteringSystem::prepareFilter(const MessageFilter& filter) {
 
   // Keep each filter script in its own scope so helper functions/variables from
   // one filter do not overwrite helpers from another filter in the shared engine.
-  const QString filter_script =
-    QSL("(function() {\n%1\n; return filterMessage;\n})()")
-      .arg(qApp->replaceUserDataFolderPlaceholder(filter.script(), true));
+  const QString filter_script = QSL("(function() {\n%1\n; return filterMessage;\n})()")
+                                  .arg(qApp->replaceUserDataFolderPlaceholder(filter.script(), true));
   QJSValue filter_func = m_engine.evaluate(filter_script, filter.name());
 
   if (filter_func.isError()) {
