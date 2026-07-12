@@ -524,7 +524,7 @@ Number of disabled feeds: %3</source>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="141"/>
       <source>this database cannot be used because it comes from too old major app version</source>
-      <translation type="unfinished">this database cannot be used because it comes from too old major app version</translation>
+      <translation>このデータベースは、アプリのメジャーバージョンが古すぎるため使用できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="148"/>
@@ -558,12 +558,12 @@ Maybe change used database name in settings and try again. Falling back to SQLit
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="79"/>
       <source>Cannot use database</source>
-      <translation type="unfinished">Cannot use database</translation>
+      <translation>データベースを使用できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="80"/>
       <source>Application cannot start because there is a problem with DB: %1.</source>
-      <translation type="unfinished">Application cannot start because there is a problem with DB: %1.</translation>
+      <translation>データベースに問題があるため、アプリケーションを起動できません: %1</translation>
     </message>
   </context>
   <context>
@@ -1032,22 +1032,22 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="540"/>
       <source>Cannot parse Feedly collections JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Feedly collections JSON response: %1</translation>
+      <translation>Feedly コレクションの JSON レスポンスを解析できません: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="545"/>
       <source>Feedly collections response is not a JSON array.</source>
-      <translation type="unfinished">Feedly collections response is not a JSON array.</translation>
+      <translation>Feedly コレクションのレスポンスが JSON 配列ではありません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="684"/>
       <source>Cannot parse Feedly tags JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Feedly tags JSON response: %1</translation>
+      <translation>Feedly タグの JSON レスポンスを解析できません: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="689"/>
       <source>Feedly tags response is not a JSON array.</source>
-      <translation type="unfinished">Feedly tags response is not a JSON array.</translation>
+      <translation>Feedly タグに関するレスポンスが JSON 配列ではありません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="743"/>
@@ -1454,7 +1454,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="123"/>
       <source>Article filter &apos;%1&apos; does not define a callable filterMessage() function.</source>
-      <translation type="unfinished">Article filter &apos;%1&apos; does not define a callable filterMessage() function.</translation>
+      <translation>記事フィルター &apos;%1&apos; には、呼び出し可能な filterMessage() 関数が定義されていません</translation>
     </message>
   </context>
   <context>
@@ -1589,17 +1589,17 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="110"/>
       <source>Unsynchronized article changes</source>
-      <translation type="unfinished">Unsynchronized article changes</translation>
+      <translation>同期されていない記事の変更があります</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="111"/>
       <source>This account has local article changes which could not be synchronized.</source>
-      <translation type="unfinished">This account has local article changes which could not be synchronized.</translation>
+      <translation>このアカウントには、同期できなかったローカルでの記事の変更が含まれています</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="112"/>
       <source>If you continue editing the account, these pending local article changes will be discarded.</source>
-      <translation type="unfinished">If you continue editing the account, these pending local article changes will be discarded.</translation>
+      <translation>アカウントの編集を続行すると、保留中のローカル記事の変更は破棄されます</translation>
     </message>
   </context>
   <context>
@@ -2076,7 +2076,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="104"/>
       <source>Database cleanup failed.</source>
-      <translation type="unfinished">Database cleanup failed.</translation>
+      <translation>データベースのクリーンアップに失敗しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="109"/>
@@ -3506,25 +3506,25 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="659"/>
       <source>Assign article filter to folder?</source>
-      <translation type="unfinished">Assign article filter to folder?</translation>
+      <translation>フォルダに記事フィルターを割り当てますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="659"/>
       <source>Remove article filter from folder?</source>
-      <translation type="unfinished">Remove article filter from folder?</translation>
+      <translation>フォルダから記事フィルターを削除しますか？</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="661"/>
       <source>The article filter &apos;%1&apos; will be assigned to %n feed(s) in folder &apos;%2&apos; and its subfolders.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be assigned to %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
+      <translation>
+        <numerusform>記事フィルター &apos;%1&apos; は、フォルダー &apos;%2&apos; およびそのサブフォルダー内の %n 件のフィードに適用されます</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="665"/>
       <source>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
+      <translation>
+        <numerusform>記事フィルター &apos;%1&apos; は、フォルダ &apos;%2&apos; とそのサブフォルダ内にある %n 件のフィードから削除されます</numerusform>
       </translation>
     </message>
     <message>
@@ -3532,30 +3532,30 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="704"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="704"/>
       <source>Do you want to continue?</source>
-      <translation type="unfinished">Do you want to continue?</translation>
+      <translation>続行しますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="695"/>
       <source>Assign article filter to all feeds?</source>
-      <translation type="unfinished">Assign article filter to all feeds?</translation>
+      <translation>すべてのフィードに記事フィルターを適用しますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="695"/>
       <source>Remove article filter from all feeds?</source>
-      <translation type="unfinished">Remove article filter from all feeds?</translation>
+      <translation>すべてのフィードから記事フィルターを削除しますか？</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="696"/>
       <source>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</numerusform>
+      <translation>
+        <numerusform>記事フィルター &apos;%1&apos; は、アカウント &apos;%2&apos; 内のすべての %n 件のフィードに適用されます</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="700"/>
       <source>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</numerusform>
+      <translation>
+        <numerusform>アカウント &apos;%2&apos; 内のすべての %n 件のフィードから、記事フィルター &apos;%1&apos; が削除されます</numerusform>
       </translation>
     </message>
     <message>
@@ -4948,22 +4948,22 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="713"/>
       <source>Cannot parse GReader labels JSON response: %1</source>
-      <translation type="unfinished">Cannot parse GReader labels JSON response: %1</translation>
+      <translation>GReader ラベルの JSON レスポンスを解析できません: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="719"/>
       <source>GReader labels response does not contain a JSON array of labels.</source>
-      <translation type="unfinished">GReader labels response does not contain a JSON array of labels.</translation>
+      <translation>GReaderラベルレスポンスには、ラベルの JSON 配列が含まれていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="727"/>
       <source>Cannot parse GReader subscriptions JSON response: %1</source>
-      <translation type="unfinished">Cannot parse GReader subscriptions JSON response: %1</translation>
+      <translation>GReader サブスクリプションの JSON レスポンスを解析できません: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="733"/>
       <source>GReader subscriptions response does not contain a JSON array of subscriptions.</source>
-      <translation type="unfinished">GReader subscriptions response does not contain a JSON array of subscriptions.</translation>
+      <translation>GReader サブスクリプションのレスポンスには、サブスクリプションの JSON 配列が含まれていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1258"/>
@@ -6709,22 +6709,22 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="172"/>
       <source>Cannot parse Nextcloud folders JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Nextcloud folders JSON response: %1</translation>
+      <translation>Nextcloud フォルダの JSON レスポンスを解析できません: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="179"/>
       <source>Nextcloud folders response does not contain a JSON array of folders.</source>
-      <translation type="unfinished">Nextcloud folders response does not contain a JSON array of folders.</translation>
+      <translation>Nextcloud のフォルダのレスポンスには、フォルダの JSON 配列が含まれていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="188"/>
       <source>Cannot parse Nextcloud feeds JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Nextcloud feeds JSON response: %1</translation>
+      <translation>Nextcloud フィードの JSON レスポンスを解析できません: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="195"/>
       <source>Nextcloud feeds response does not contain a JSON array of feeds.</source>
-      <translation type="unfinished">Nextcloud feeds response does not contain a JSON array of feeds.</translation>
+      <translation>Nextcloud のフィードレスポンスには、フィードの JSON 配列が含まれていません</translation>
     </message>
   </context>
   <context>
@@ -8360,13 +8360,13 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="394"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="757"/>
       <source>Limit height of embedded attachment images</source>
-      <translation type="unfinished">Limit height of embedded attachment images</translation>
+      <translation>埋め込み添付画像の高さを制限する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="437"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="758"/>
       <source>Limit height of article images</source>
-      <translation type="unfinished">Limit height of article images</translation>
+      <translation>記事画像の高さを制限する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
