@@ -2,10 +2,15 @@
 
 #include "filtering/filteringsystem.h"
 
+#include "database/sqlquery.h"
+#include "definitions/globals.h"
 #include "exceptions/filteringexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/textfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/labelsnode.h"
+
+#include <QElapsedTimer>
 
 FilteringSystem::FilteringSystem(FiteringUseCase mode, Feed* feed, ServiceRoot* account, QObject* parent)
   : QObject(parent), m_mode(mode), m_feed(feed), m_account(account) {
@@ -109,6 +114,86 @@ FilterMessage::FilteringAction FilteringSystem::filterMessage(const MessageFilte
   }
 
   return FilterMessage::FilteringAction(action);
+}
+
+const QList<FilteringSystem::DuplicateCandidate>&
+FilteringSystem::duplicateCandidates(FilterMessage::DuplicityCheck criteria) {
+  const bool all_feeds_same_account = Globals::hasFlag(criteria, FilterMessage::DuplicityCheck::AllFeedsSameAccount);
+  bool& loaded = all_feeds_same_account ? m_accountDuplicateCandidatesLoaded : m_feedDuplicateCandidatesLoaded;
+  QList<DuplicateCandidate>& candidates =
+    all_feeds_same_account ? m_accountDuplicateCandidates : m_feedDuplicateCandidates;
+
+  if (loaded) {
+    return candidates;
+  }
+
+#ifndef QT_NO_DEBUG
+  QElapsedTimer load_timer;
+
+  load_timer.start();
+#endif
+
+  candidates.clear();
+
+  qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+    SqlQuery query(db);
+
+    if (all_feeds_same_account) {
+      query.prepare(QSL("SELECT id, title, url, author, date_created, custom_id "
+                        "FROM Messages "
+                        "WHERE account_id = :account_id AND is_deleted = 0 AND is_pdeleted = 0;"));
+      query.bindValue(QSL(":account_id"), m_filterAccount.id());
+    }
+    else {
+      query.prepare(QSL("SELECT id, title, url, author, date_created, custom_id "
+                        "FROM Messages "
+                        "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0;"));
+      query.bindValue(QSL(":feed"), m_filterMessage.feedId());
+    }
+
+    query.exec();
+
+    while (query.next()) {
+      DuplicateCandidate candidate;
+
+      candidate.m_id = query.value(0).toInt();
+      candidate.m_title = query.value(1).toString();
+      candidate.m_url = query.value(2).toString();
+      candidate.m_author = query.value(3).toString();
+      candidate.m_created = TextFactory::parseDateTime(query.value(4).value<qint64>());
+      candidate.m_customId = query.value(5).toString();
+
+      candidates.append(candidate);
+    }
+  });
+
+  loaded = true;
+
+#ifndef QT_NO_DEBUG
+  qDebugNN << LOGSEC_ARTICLEFILTER << "Loaded" << NONQUOTE_W_SPACE(candidates.size())
+           << "duplicate-check candidates for" << (all_feeds_same_account ? "account" : "feed") << "in"
+           << NONQUOTE_W_SPACE(load_timer.elapsed()) << "milliseconds.";
+#endif
+
+  return candidates;
+}
+
+void FilteringSystem::removeDuplicateCandidate(int message_id) {
+  const auto remove_candidate = [message_id](QList<DuplicateCandidate>& candidates) {
+    for (int i = candidates.size() - 1; i >= 0; --i) {
+      if (candidates.at(i).m_id == message_id) {
+        candidates.removeAt(i);
+      }
+    }
+  };
+
+  if (m_accountDuplicateCandidatesLoaded) {
+    remove_candidate(m_accountDuplicateCandidates);
+  }
+
+  if (m_feedDuplicateCandidatesLoaded) {
+    remove_candidate(m_feedDuplicateCandidates);
+  }
 }
 
 QJSValue FilteringSystem::prepareFilter(const MessageFilter& filter) {

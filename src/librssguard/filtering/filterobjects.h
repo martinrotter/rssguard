@@ -109,6 +109,7 @@ class FilterMessage : public QObject {
 
     bool hasEnclosures() const;
     int id() const;
+    int feedId() const;
 
     QString customId() const;
     void setCustomId(const QString& custom_id);
@@ -150,8 +151,6 @@ class FilterMessage : public QObject {
     void setScore(double score);
 
   private:
-    int feedId() const;
-
     Message* m_message;
     FilteringSystem* m_system;
 };

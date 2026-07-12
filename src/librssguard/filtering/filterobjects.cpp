@@ -14,6 +14,7 @@
 #include "services/abstract/labelsnode.h"
 
 #include <QHostInfo>
+#include <QElapsedTimer>
 #include <QJsonArray>
 #include <QJsonDocument>
 
@@ -211,9 +212,42 @@ int FilterMessage::id() const {
   return m_message->m_id;
 }
 
-double jaro_winkler_distance(QString str1, QString str2) {
-  qsizetype len1 = str1.size();
-  qsizetype len2 = str2.size();
+bool jaro_winkler_can_have_distance_at_most(const QString& str1, const QString& str2, double threshold) {
+  const qsizetype longer_length = std::max(str1.size(), str2.size());
+  const qsizetype shorter_length = std::min(str1.size(), str2.size());
+
+  if (longer_length == 0) {
+    return threshold >= 0.0;
+  }
+
+  // Even with every character matching and the largest possible prefix bonus,
+  // strings with this length ratio cannot reach the requested similarity.
+  const double maximum_jaro = (double(shorter_length) / double(longer_length) + 2.0) / 3.0;
+  const double maximum_prefix_bonus = std::min(qsizetype(4), shorter_length) * 0.1;
+  const double minimum_distance = 1.0 - (maximum_jaro + maximum_prefix_bonus * (1.0 - maximum_jaro));
+
+  return minimum_distance <= threshold;
+}
+
+struct JaroWinklerWorkspace {
+    std::vector<bool> m_matchedCharacters;
+    std::vector<QChar> m_matchingCharacters;
+
+#ifndef QT_NO_DEBUG
+    qsizetype m_callCount{0};
+    qsizetype m_windowCharacterChecks{0};
+#endif
+};
+
+double jaro_winkler_distance(const QString& first, const QString& second, JaroWinklerWorkspace& workspace) {
+#ifndef QT_NO_DEBUG
+  ++workspace.m_callCount;
+#endif
+
+  const QString* str1 = &first;
+  const QString* str2 = &second;
+  qsizetype len1 = str1->size();
+  qsizetype len2 = str2->size();
 
   if (len1 < len2) {
     std::swap(str1, str2);
@@ -225,17 +259,26 @@ double jaro_winkler_distance(QString str1, QString str2) {
   }
 
   qsizetype delta = std::max(qsizetype(1), len1 / 2) - 1;
-  std::vector<bool> flag(len2, false);
-  std::vector<QChar> ch1_match;
+  std::vector<bool>& flag = workspace.m_matchedCharacters;
+  std::vector<QChar>& ch1_match = workspace.m_matchingCharacters;
+
+  flag.assign(len2, false);
+  ch1_match.clear();
   ch1_match.reserve(len1);
 
-  for (uint idx1 = 0; idx1 < len1; ++idx1) {
-    QChar ch1 = str1[idx1];
+  for (qsizetype idx1 = 0; idx1 < len1; ++idx1) {
+    QChar ch1 = str1->at(idx1);
+    const qsizetype window_start = std::max(qsizetype(0), idx1 - delta);
+    const qsizetype window_end = std::min(len2, idx1 + delta + 1);
 
-    for (uint idx2 = 0; idx2 < len2; ++idx2) {
-      QChar ch2 = str2[idx2];
+    for (qsizetype idx2 = window_start; idx2 < window_end; ++idx2) {
+#ifndef QT_NO_DEBUG
+      ++workspace.m_windowCharacterChecks;
+#endif
 
-      if (idx2 <= idx1 + delta && idx2 + delta >= idx1 && ch1 == ch2 && !flag[idx2]) {
+      QChar ch2 = str2->at(idx2);
+
+      if (ch1 == ch2 && !flag[idx2]) {
         flag[idx2] = true;
         ch1_match.push_back(ch1);
         break;
@@ -251,9 +294,9 @@ double jaro_winkler_distance(QString str1, QString str2) {
 
   size_t transpositions = 0;
 
-  for (uint idx1 = 0, idx2 = 0; idx2 < len2; ++idx2) {
+  for (qsizetype idx1 = 0, idx2 = 0; idx2 < len2; ++idx2) {
     if (flag[idx2]) {
-      if (str2[idx2] != ch1_match[idx1]) {
+      if (str2->at(idx2) != ch1_match[idx1]) {
         ++transpositions;
       }
 
@@ -266,8 +309,8 @@ double jaro_winkler_distance(QString str1, QString str2) {
   size_t common_prefix = 0;
   len2 = std::min(qsizetype(4), len2);
 
-  for (uint i = 0; i < len2; ++i) {
-    if (str1[i] == str2[i]) {
+  for (qsizetype i = 0; i < len2; ++i) {
+    if (str1->at(i) == str2->at(i)) {
       ++common_prefix;
       break;
     }
@@ -278,55 +321,83 @@ double jaro_winkler_distance(QString str1, QString str2) {
 
 #define JARO_WINKLER_DECIDE(attr_check, dupl_check, thres, my_msg_prop, other_msg_prop) \
   if (Globals::hasFlag(attr_check, dupl_check)) {                                       \
-    double dst = jaro_winkler_distance(my_msg_prop, other_msg_prop);                    \
+    double dst = jaro_winkler_distance(my_msg_prop, other_msg_prop, workspace);         \
     if (dst > thres) {                                                                  \
       continue;                                                                         \
     }                                                                                   \
   }
 
 bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double threshold) const {
-  QList<Message> msgs;
-
   try {
-    // TODO: Do not call repeatedly? Maybe get articles once
-    // and reuse them for whole run.
-    if (Globals::hasFlag(criteria, DuplicityCheck::AllFeedsSameAccount)) {
-      msgs = qApp->database()->worker()->read<QList<Message>>([&](const QSqlDatabase& db) {
-        return DatabaseQueries::getUndeletedMessagesForAccount(db, m_system->filterAccount().id(), {});
-      });
+#ifndef QT_NO_DEBUG
+    QElapsedTimer check_timer;
+    qsizetype candidates_checked{0};
+    qsizetype skipped_by_length{0};
+
+    check_timer.start();
+#endif
+
+    const QList<FilteringSystem::DuplicateCandidate>& candidates = m_system->duplicateCandidates(criteria);
+    const QString message_title = title();
+    JaroWinklerWorkspace workspace;
+
+#ifndef QT_NO_DEBUG
+    const auto log_check = [&](bool duplicate_found) {
+      qDebugNN << LOGSEC_ARTICLEFILTER << "Jaro-Winkler duplicate check for" << QUOTE_W_SPACE(message_title)
+               << "examined" << NONQUOTE_W_SPACE(candidates_checked) << "of" << NONQUOTE_W_SPACE(candidates.size())
+               << "candidates," << NONQUOTE_W_SPACE(skipped_by_length) << "skipped by title length,"
+               << NONQUOTE_W_SPACE(workspace.m_callCount) << "Jaro comparisons and"
+               << NONQUOTE_W_SPACE(workspace.m_windowCharacterChecks) << "window character checks in"
+               << NONQUOTE_W_SPACE(check_timer.elapsed()) << "milliseconds; duplicate found:"
+               << (duplicate_found ? "yes." : "no.");
+    };
+#endif
+
+    for (const FilteringSystem::DuplicateCandidate& candidate : candidates) {
+#ifndef QT_NO_DEBUG
+      ++candidates_checked;
+#endif
+
+      // We check similarity of each article.
+      if (m_system->mode() == FilteringSystem::FiteringUseCase::ExistingArticles && id() > 0 &&
+          candidate.m_id == id()) {
+        // NOTE: We skip this message because it is the same one.
+        continue;
+      }
+
+      if (Globals::hasFlag(criteria, DuplicityCheck::SameTitle) &&
+          !jaro_winkler_can_have_distance_at_most(message_title, candidate.m_title, threshold)) {
+#ifndef QT_NO_DEBUG
+        ++skipped_by_length;
+#endif
+        continue;
+      }
+
+      JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameTitle, threshold, message_title, candidate.m_title)
+      JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameUrl, threshold, url(), candidate.m_url)
+      JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameAuthor, threshold, author(), candidate.m_author)
+      JARO_WINKLER_DECIDE(criteria,
+                          DuplicityCheck::SameDateCreated,
+                          threshold,
+                          created().toString(),
+                          candidate.m_created.toString())
+      JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameCustomId, threshold, customId(), candidate.m_customId)
+
+#ifndef QT_NO_DEBUG
+      log_check(true);
+#endif
+      return true;
     }
-    else {
-      msgs = qApp->database()->worker()->read<QList<Message>>([&](const QSqlDatabase& db) {
-        return DatabaseQueries::getUndeletedMessagesForFeed(db, feedId(), {});
-      });
-    }
+
+#ifndef QT_NO_DEBUG
+    log_check(false);
+#endif
+    return false;
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_ARTICLEFILTER << "Query for undeleted articles failed:" << QUOTE_W_SPACE_DOT(ex.message());
     return false;
   }
-
-  foreach (const Message& msg, msgs) {
-    // We check similarity of each article.
-    if (m_system->mode() == FilteringSystem::FiteringUseCase::ExistingArticles && id() > 0 && msg.m_id == id()) {
-      // NOTE: We skip this message because it is the same one.
-      continue;
-    }
-
-    JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameTitle, threshold, title(), msg.m_title)
-    JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameUrl, threshold, url(), msg.m_url)
-    JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameAuthor, threshold, author(), msg.m_author)
-    JARO_WINKLER_DECIDE(criteria,
-                        DuplicityCheck::SameDateCreated,
-                        threshold,
-                        created().toString(),
-                        msg.m_created.toString())
-    JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameCustomId, threshold, customId(), msg.m_customId)
-
-    return true;
-  }
-
-  return false;
 }
 
 bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {

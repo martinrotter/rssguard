@@ -6,6 +6,7 @@
 #include "filtering/filterobjects.h"
 #include "filtering/messagefilter.h"
 
+#include <QDateTime>
 #include <QHash>
 #include <QJSEngine>
 #include <QObject>
@@ -34,6 +35,18 @@ class FilteringSystem : public QObject {
 
     FilterMessage::FilteringAction filterMessage(const MessageFilter& filter);
 
+    struct DuplicateCandidate {
+        int m_id;
+        QString m_title;
+        QString m_url;
+        QString m_author;
+        QDateTime m_created;
+        QString m_customId;
+    };
+
+    const QList<DuplicateCandidate>& duplicateCandidates(FilterMessage::DuplicityCheck criteria);
+    void removeDuplicateCandidate(int message_id);
+
     QJSEngine& engine();
     FilterMessage& message();
     Feed* feed() const;
@@ -56,6 +69,10 @@ class FilteringSystem : public QObject {
 
     QJSEngine m_engine;
     QHash<const MessageFilter*, QJSValue> m_preparedFilters;
+    QList<DuplicateCandidate> m_accountDuplicateCandidates;
+    QList<DuplicateCandidate> m_feedDuplicateCandidates;
+    bool m_accountDuplicateCandidatesLoaded{false};
+    bool m_feedDuplicateCandidatesLoaded{false};
 
     FilterMessage m_filterMessage;
     FilterFeed m_filterFeed;
