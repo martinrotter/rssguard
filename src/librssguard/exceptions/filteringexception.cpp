@@ -10,6 +10,10 @@
 FilteringException::FilteringException(const QJSValue& js_error, const QString& message)
   : ApplicationException(decodeError(js_error, message)) {}
 
+QJSValue::ErrorType FilteringException::errorType() const {
+  return m_errorType;
+}
+
 QString FilteringException::decodeError(const QJSValue& js_error, const QString& message) {
   m_errorType = js_error.errorType();
 
