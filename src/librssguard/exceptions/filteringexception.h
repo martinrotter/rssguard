@@ -11,6 +11,9 @@ class RSSGUARD_DLLSPEC FilteringException : public ApplicationException {
   public:
     explicit FilteringException(const QJSValue& js_error, const QString& message = QString());
 
+    void raise() const override { throw *this; }
+    FilteringException* clone() const override { return new FilteringException(*this); }
+
     QJSValue::ErrorType errorType() const;
 
   private:
