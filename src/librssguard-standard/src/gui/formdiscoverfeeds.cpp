@@ -165,8 +165,7 @@ void FormDiscoverFeeds::setDiscoveryRunning(bool running) {
   m_ui.m_gbFeeds->setEnabled(!running);
   m_ui.m_btnDiscover->setEnabled(!running);
   m_ui.m_btnCancelDiscovery->setEnabled(running);
-  m_btnGoAdvanced->setEnabled(!running);
-  m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Close)->setEnabled(!running);
+  m_ui.m_buttonBox->setEnabled(!running);
 
   if (!running) {
     m_ui.m_btnCancelDiscovery->setText(tr("Cancel"));
