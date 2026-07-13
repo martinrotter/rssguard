@@ -77,13 +77,13 @@ QIcon SettingsDatabase::icon() const {
 }
 
 void SettingsDatabase::mysqlTestConnection() {
-  MariaDbDriver* driv = static_cast<MariaDbDriver*>(qApp->database()->driver());
-  const MariaDbDriver::MariaDbError error_code = driv->testConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
-                                                                      m_ui->m_spinMysqlPort->value(),
-                                                                      m_ui->m_txtMysqlDatabase->lineEdit()->text(),
-                                                                      m_ui->m_txtMysqlUsername->lineEdit()->text(),
-                                                                      m_ui->m_txtMysqlPassword->lineEdit()->text());
-  const QString interpretation = driv->interpretErrorCode(error_code);
+  const MariaDbDriver::MariaDbError error_code =
+    MariaDbDriver::testConnection(m_ui->m_txtMysqlHostname->lineEdit()->text(),
+                                  m_ui->m_spinMysqlPort->value(),
+                                  m_ui->m_txtMysqlDatabase->lineEdit()->text(),
+                                  m_ui->m_txtMysqlUsername->lineEdit()->text(),
+                                  m_ui->m_txtMysqlPassword->lineEdit()->text());
+  const QString interpretation = MariaDbDriver::interpretErrorCode(error_code);
 
   switch (error_code) {
     case MariaDbDriver::MariaDbError::Ok:

@@ -21,12 +21,6 @@ class MariaDbDriver : public DatabaseDriver {
 
     explicit MariaDbDriver(QObject* parent = nullptr);
 
-    MariaDbError testConnection(const QString& hostname,
-                                int port,
-                                const QString& w_database,
-                                const QString& username,
-                                const QString& password);
-
     virtual QString location() const;
     virtual QString humanDriverType() const;
     virtual QString qtDriverCode() const;
@@ -48,7 +42,13 @@ class MariaDbDriver : public DatabaseDriver {
     virtual QString collateNocase() const;
     virtual QString limitOffset(int limit, int offset = 0) const;
 
-    QString interpretErrorCode(MariaDbError error_code) const;
+    static MariaDbError testConnection(const QString& hostname,
+                                       int port,
+                                       const QString& w_database,
+                                       const QString& username,
+                                       const QString& password);
+
+    static QString interpretErrorCode(MariaDbError error_code);
 
   protected:
     virtual void beforeAddDatabase();

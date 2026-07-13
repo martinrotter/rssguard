@@ -69,7 +69,7 @@ QString MariaDbDriver::location() const {
                           databaseName());
 }
 
-QString MariaDbDriver::interpretErrorCode(MariaDbDriver::MariaDbError error_code) const {
+QString MariaDbDriver::interpretErrorCode(MariaDbDriver::MariaDbError error_code) {
   switch (error_code) {
     case MariaDbError::Ok:
       return tr("MySQL server works as expected.");
