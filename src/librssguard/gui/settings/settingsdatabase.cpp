@@ -68,6 +68,7 @@ void SettingsDatabase::loadUi() {
   connect(m_ui->m_txtMysqlHostname->lineEdit(), &BaseLineEdit::textEdited, this, &SettingsDatabase::requireRestart);
   connect(m_ui->m_txtMysqlPassword->lineEdit(), &BaseLineEdit::textEdited, this, &SettingsDatabase::requireRestart);
   connect(m_ui->m_txtMysqlUsername->lineEdit(), &BaseLineEdit::textEdited, this, &SettingsDatabase::requireRestart);
+  connect(m_ui->m_txtMysqlDatabase->lineEdit(), &BaseLineEdit::textEdited, this, &SettingsDatabase::requireRestart);
 
   SettingsPanel::loadUi();
 }
