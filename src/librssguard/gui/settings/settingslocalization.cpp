@@ -131,6 +131,7 @@ void SettingsLocalization::langMetadataDownloaded(const QUrl& url,
 
         it->setText(2, QSL("%1 %").arg(perc_translated > 0 ? QString::number(perc_translated) : QSL("?")));
         it->setIcon(2, IconFactory::fromColor(col_translated));
+        it->setData(2, Qt::ItemDataRole::UserRole, perc_translated);
       }
     }
     else {
@@ -200,7 +201,7 @@ void SettingsLocalization::saveSettings() {
 
   // Save prompt for restart if language has changed.
   if (new_lang != actual_lang) {
-    int perc = m_ui->m_treeLanguages->currentItem()->toolTip(2).toInt();
+    int perc = m_ui->m_treeLanguages->currentItem()->data(2, Qt::ItemDataRole::UserRole).toInt();
 
     if (perc > 0 && perc < 75) {
       const QMessageBox::StandardButton clicked_button = MsgBox::
