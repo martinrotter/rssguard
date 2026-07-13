@@ -43,6 +43,8 @@ void NetworkProxyDetails::setup(bool feed_specific_setting, bool account_wide_se
   connect(m_ui->m_txtProxyPassword, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
   connect(m_ui->m_txtProxyUsername, &QLineEdit::textChanged, this, &NetworkProxyDetails::changed);
   connect(m_ui->m_spinProxyPort, QOverload<int>::of(&QSpinBox::valueChanged), this, &NetworkProxyDetails::changed);
+
+  onProxyTypeChanged(m_ui->m_cmbProxyType->currentIndex());
 }
 
 NetworkProxyDetails::~NetworkProxyDetails() = default;
@@ -66,6 +68,8 @@ void NetworkProxyDetails::setProxy(const QNetworkProxy& proxy, bool use_account_
   m_ui->m_spinProxyPort->setValue(proxy.port());
   m_ui->m_txtProxyUsername->setText(proxy.user());
   m_ui->m_txtProxyPassword->setText(proxy.password());
+
+  // onProxyTypeChanged(m_ui->m_cmbProxyType->currentIndex());
 }
 
 bool NetworkProxyDetails::useAccountProxy() const {
