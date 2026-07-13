@@ -10,6 +10,27 @@ Added:
 * Errors in article filters (like bad syntax) now causes the feed marked as failed (instead of failing silently like it was up until now).
 
 Fixed:
+* Article-list notifications now handle paging more reliably.
+* Errors preventing an account's feeds from starting to update are now reported correctly.
+* Failed loading of articles no longer crashes the application when no feed or folder is selected.
+* Weekly article filters now handle local dates and the New Year boundary correctly.
+* Database cleanup errors no longer leave the cleanup dialog unusable.
+* Incompatible external databases no longer cause an unintended fallback to a new local database.
+* Articles with custom metadata containing special characters are now stored correctly.
+* MariaDB databases with special characters in their names are now handled correctly.
+* Invalid article-filter results no longer cause incoming articles to be silently discarded.
+* Article-filter duplicate checks now handle large accounts much faster, particularly when `isAlreadyInDatabase*` functions are used. 
+* Testing an article filter with a folder or account selected no longer crashes when the filter accesses feed details.
+* Article filters now handle malformed XML data correctly.
+* Article-filter testing no longer crashes when no account or feed is available.
+* Failed article-filter saves no longer leave the active filter out of sync with its saved version.
+* Invalid article-filter import files now report an error instead of appearing to import successfully.
+* Failed article-filter removals no longer leave the active filtering state inconsistent.
+* Failed article-filter assignment changes no longer leave feeds in an inconsistent state.
+* Deferred article-state synchronization is now checked safely while accounts are updating.
+* Deleting an account now also removes its pending article-state cache.
+* Repeated MariaDB connection tests no longer leave temporary database connections behind.
+* Database worker cleanup is now handled safely during application shutdown.
 * Gmail plugin now correctly fills-in full e-mail address of a recipient when the recipient is selected from drop-down list of recipients.
 * Miniflux sends "weird" enclosure information, so tweak was made to account for it. (#2354)
 * Row state is updated more properly when switching article importance. (#2341)

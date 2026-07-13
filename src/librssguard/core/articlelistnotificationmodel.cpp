@@ -10,21 +10,23 @@
 ArticleListNotificationModel::ArticleListNotificationModel(QObject* parent)
   : QAbstractListModel(parent), m_currentPage(0) {}
 
-ArticleListNotificationModel::~ArticleListNotificationModel() {}
-
 void ArticleListNotificationModel::setArticles(const QList<Message>& msgs) {
+  beginResetModel();
   m_currentPage = 0;
   m_articles = msgs;
+  endResetModel();
 
-  reloadWholeLayout();
-  emit nextPagePossibleChanged(nextPageAvailable());
-  emit previousPagePossibleChanged(previousPageAvailable());
+  emitPageAvailability();
 }
 
 const Message& ArticleListNotificationModel::message(const QModelIndex& idx) const {
-  int list_position = (m_currentPage * NOTIFICATIONS_PAGE_SIZE) + idx.row();
+  if (!idx.isValid()) {
+    throw ApplicationException(QSL("message cannot be loaded, wrong index"));
+  }
 
-  if (!idx.isValid() || list_position < 0 || list_position >= m_articles.size()) {
+  const int list_position = (m_currentPage * NOTIFICATIONS_PAGE_SIZE) + idx.row();
+
+  if (list_position < 0 || list_position >= m_articles.size()) {
     throw ApplicationException(QSL("message cannot be loaded, wrong index"));
   }
 
@@ -32,17 +34,30 @@ const Message& ArticleListNotificationModel::message(const QModelIndex& idx) con
 }
 
 void ArticleListNotificationModel::nextPage() {
-  m_currentPage++;
-  reloadWholeLayout();
+  if (!nextPageAvailable()) {
+    return;
+  }
 
-  emit nextPagePossibleChanged(nextPageAvailable());
-  emit previousPagePossibleChanged(previousPageAvailable());
+  beginResetModel();
+  m_currentPage++;
+  endResetModel();
+
+  emitPageAvailability();
 }
 
 void ArticleListNotificationModel::previousPage() {
-  m_currentPage--;
-  reloadWholeLayout();
+  if (!previousPageAvailable()) {
+    return;
+  }
 
+  beginResetModel();
+  m_currentPage--;
+  endResetModel();
+
+  emitPageAvailability();
+}
+
+void ArticleListNotificationModel::emitPageAvailability() {
   emit nextPagePossibleChanged(nextPageAvailable());
   emit previousPagePossibleChanged(previousPageAvailable());
 }
@@ -56,7 +71,7 @@ int ArticleListNotificationModel::rowCount(const QModelIndex& parent) const {
 }
 
 int ArticleListNotificationModel::columnCount(const QModelIndex& parent) const {
-  return 1;
+  return parent.isValid() ? 0 : 1;
 }
 
 QVariant ArticleListNotificationModel::data(const QModelIndex& index, int role) const {
@@ -70,12 +85,7 @@ QVariant ArticleListNotificationModel::data(const QModelIndex& index, int role) 
       return m_articles.at((m_currentPage * NOTIFICATIONS_PAGE_SIZE) + index.row()).m_title;
   }
 
-  return QVariant();
-}
-
-void ArticleListNotificationModel::reloadWholeLayout() {
-  emit layoutAboutToBeChanged();
-  emit layoutChanged();
+  return {};
 }
 
 bool ArticleListNotificationModel::nextPageAvailable() const {

@@ -2,6 +2,7 @@
 
 #include "database/mariadbdriver.h"
 
+#include "database/databasefactory.h"
 #include "definitions/definitions.h"
 #include "exceptions/sqlexception.h"
 #include "miscellaneous/application.h"
@@ -22,6 +23,7 @@ MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostnam
                                                           const QString& username,
                                                           const QString& password) {
   QSqlDatabase database = QSqlDatabase::addDatabase(QSL(APP_DB_MYSQL_DRIVER), QSL(APP_DB_MYSQL_TEST));
+  MariaDbError result = MariaDbError::UnknownError;
 
   database.setHostName(hostname);
   database.setPort(port);
@@ -30,20 +32,16 @@ MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostnam
   database.setDatabaseName(w_database);
 
   if (database.open() && !database.lastError().isValid()) {
-    SqlQuery q(database);
+    {
+      SqlQuery q(database);
 
-    q.exec(QSL("SELECT version();"), false);
+      q.exec(QSL("SELECT version();"), false);
 
-    if (!q.lastError().isValid() && q.next()) {
-      qDebugNN << LOGSEC_DB << "Checked MySQL database, version is" << QUOTE_W_SPACE_DOT(q.value(0).toString());
+      if (!q.lastError().isValid() && q.next()) {
+        qDebugNN << LOGSEC_DB << "Checked MySQL database, version is" << QUOTE_W_SPACE_DOT(q.value(0).toString());
 
-      // Connection succeeded, clean up the mess and return OK status.
-      database.close();
-      return MariaDbError::Ok;
-    }
-    else {
-      database.close();
-      return MariaDbError::UnknownError;
+        result = MariaDbError::Ok;
+      }
     }
   }
   else if (database.lastError().isValid()) {
@@ -52,17 +50,18 @@ MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostnam
     auto nat_int = nat.toInt(&nat_converted);
 
     if (nat_converted) {
-      return static_cast<MariaDbError>(nat_int);
+      result = static_cast<MariaDbError>(nat_int);
     }
     else {
       qWarningNN << LOGSEC_DB << "Failed to recognize MySQL error code:" << QUOTE_W_SPACE_DOT(nat);
-
-      return MariaDbError::UnknownError;
     }
   }
-  else {
-    return MariaDbError::UnknownError;
-  }
+
+  database.close();
+  database = QSqlDatabase();
+  QSqlDatabase::removeDatabase(QSL(APP_DB_MYSQL_TEST));
+
+  return result;
 }
 
 QString MariaDbDriver::location() const {
@@ -180,6 +179,7 @@ QString MariaDbDriver::databaseName() const {
 
 void MariaDbDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialized) {
   const QString database_name = databaseName();
+  const QString escaped_database_name = DatabaseFactory::escapeIdentifier(database_name);
 
   database.setHostName(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLHostname)).toString());
   database.setPort(qApp->settings()->value(GROUP(Database), SETTING(Database::MySQLPort)).toInt());
@@ -194,11 +194,11 @@ void MariaDbDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialize
     // Ensure the DB exists.
     SqlQuery query_db(database);
 
-    if (!query_db.exec(QSL("USE %1;").arg(database_name), false)) {
+    if (!query_db.exec(QSL("USE %1;").arg(escaped_database_name), false)) {
       const QString create_db = QSL("CREATE DATABASE IF NOT EXISTS %1 "
                                     "CHARACTER SET utf8mb4 "
                                     "COLLATE utf8mb4_unicode_ci;")
-                                  .arg(database_name);
+                                  .arg(escaped_database_name);
 
       // Only create DB, exec "CREATE DATABASE" command.
       query_db.exec(create_db);

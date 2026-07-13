@@ -11,6 +11,9 @@ class RSSGUARD_DLLSPEC NetworkException : public ApplicationException {
   public:
     explicit NetworkException(QNetworkReply::NetworkError error, const QString& message = QString());
 
+    void raise() const override { throw *this; }
+    NetworkException* clone() const override { return new NetworkException(*this); }
+
     QNetworkReply::NetworkError networkError() const;
 
   private:

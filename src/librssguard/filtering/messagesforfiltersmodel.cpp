@@ -251,6 +251,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
           qApp->database()->worker()->write([&](const QSqlDatabase& db) {
             DatabaseQueries::purgeMessage(db, msg_filtered->m_id);
           });
+          filtering.removeDuplicateCandidate(msg_filtered->m_id);
         }
         else if (result == FilterMessage::FilteringAction::Ignore) {
           remove_msg = true;

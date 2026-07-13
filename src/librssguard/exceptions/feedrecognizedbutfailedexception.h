@@ -11,6 +11,9 @@ class RSSGUARD_DLLSPEC FeedRecognizedButFailedException : public ApplicationExce
   public:
     explicit FeedRecognizedButFailedException(const QString& message = {}, const QVariant& arbitrary_data = {});
 
+    void raise() const override { throw *this; }
+    FeedRecognizedButFailedException* clone() const override { return new FeedRecognizedButFailedException(*this); }
+
     QVariant arbitraryData() const;
 
   private:

@@ -58,6 +58,8 @@ void MessagesModel::setupIcons() {
                                                             : qApp->icons()->fromTheme(QSL("mail-mark-unread"));
   m_enclosuresIcon = qApp->icons()->fromTheme(QSL("mail-attachment"));
 
+  m_scoreIcons.clear();
+
   for (int i = int(MSG_SCORE_MIN); i <= int(MSG_SCORE_MAX); i += 10) {
     m_scoreIcons.append(generateIconForScore(double(i)));
   }
@@ -179,7 +181,7 @@ void MessagesModel::fetchMoreArticles(int batch_size) {
 
     auto more_messages = fetchMessages(m_hashedLabels, batch_size, m_messages.size());
 
-    m_canFetchMoreArticles = more_messages.size() >= batch_size;
+    m_canFetchMoreArticles = batch_size > 0 && more_messages.size() >= batch_size;
 
     // NOTE: Some message data are NOT fetched from database. Fill them directly into the data here.
     for (Message& msg : more_messages) {
@@ -206,7 +208,7 @@ void MessagesModel::fetchMoreArticles(int batch_size) {
     }
   }
   catch (const ApplicationException& ex) {
-    if (m_selectedItem->kind() == RootItem::Kind::Probe) {
+    if (m_selectedItem != nullptr && m_selectedItem->kind() == RootItem::Kind::Probe) {
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
                            GuiMessage(tr("Error in query"),
                                       tr("There is something wrong with your query: %1").arg(ex.message()),
@@ -239,7 +241,7 @@ void MessagesModel::fetchInitialArticles(int batch_size) {
 
   try {
     m_messages = fetchMessages(m_hashedLabels, m_lazyLoading ? batch_size : 0, 0, m_additionalArticleId);
-    m_canFetchMoreArticles = m_messages.size() >= batch_size;
+    m_canFetchMoreArticles = m_lazyLoading && batch_size > 0 && m_messages.size() >= batch_size;
 
     time_fetch = tmr.elapsed();
     tmr.restart();
@@ -253,7 +255,7 @@ void MessagesModel::fetchInitialArticles(int batch_size) {
     tmr.restart();
   }
   catch (const ApplicationException& ex) {
-    if (m_selectedItem->kind() == RootItem::Kind::Probe) {
+    if (m_selectedItem != nullptr && m_selectedItem->kind() == RootItem::Kind::Probe) {
       qApp->showGuiMessage(Notification::Event::GeneralEvent,
                            GuiMessage(tr("Error in query"),
                                       tr("There is something wrong with your query: %1").arg(ex.message()),

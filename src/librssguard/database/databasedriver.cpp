@@ -2,6 +2,7 @@
 
 #include "database/databasedriver.h"
 
+#include "database/databasefactory.h"
 #include "database/sqlquery.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
@@ -138,14 +139,15 @@ void DatabaseDriver::updateDatabaseSchema(QSqlDatabase& db, const QString& datab
 
     if (installed_db_schema < lowest_version) {
       throw SqlException(SqlException::Type::TooOldIncompatibleDbSchema,
-                         tr("this database file cannot be used because it comes from old major app version"));
+                         tr("this database cannot be used because it comes from too old major app version"));
     }
 
     if (installed_db_schema > current_version) {
       // NOTE: We have too new database version, likely from newer
       // RSS Guard. Abort.
-      throw ApplicationException(tr("database schema is too new, application requires <= %1 but %2 is installed")
-                                   .arg(QString::number(current_version), QString::number(installed_db_schema)));
+      throw SqlException(SqlException::Type::TooNewIncompatibleDbSchema,
+                         tr("database schema is too new, application requires <= %1 but %2 is installed")
+                           .arg(QString::number(current_version), QString::number(installed_db_schema)));
     }
 
     if (installed_db_schema < current_version) {
@@ -216,7 +218,8 @@ QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
     }
   }
 
-  statements = statements.replaceInStrings(QSL(APP_DB_NAME_PLACEHOLDER), database_name);
+  statements = statements.replaceInStrings(QSL(APP_DB_NAME_PLACEHOLDER),
+                                             DatabaseFactory::escapeIdentifier(database_name));
   statements = statements.replaceInStrings(QSL(APP_DB_AUTO_INC_PRIM_KEY_PLACEHOLDER), autoIncrementPrimaryKey());
   statements = statements.replaceInStrings(QSL(APP_DB_BLOB_PLACEHOLDER), blob());
   statements = statements.replaceInStrings(QSL(APP_DB_TEXT_PLACEHOLDER), text());

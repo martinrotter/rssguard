@@ -13,6 +13,9 @@ class RSSGUARD_DLLSPEC FeedFetchException : public ApplicationException {
     //   - other feed status values -> arbitrary data
     explicit FeedFetchException(Feed::Status feed_status, const QString& message = {}, const QVariant& data = {});
 
+    void raise() const override { throw *this; }
+    FeedFetchException* clone() const override { return new FeedFetchException(*this); }
+
     Feed::Status feedStatus() const;
     QVariant data() const;
 

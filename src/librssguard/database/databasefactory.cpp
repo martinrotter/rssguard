@@ -5,6 +5,7 @@
 #include "database/mariadbdriver.h"
 #include "database/sqlitedriver.h"
 #include "exceptions/applicationexception.h"
+#include "exceptions/sqlexception.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
@@ -18,6 +19,17 @@
 DatabaseFactory::DatabaseFactory(QObject* parent)
   : QObject(parent), m_dbDriver(nullptr), m_dbWorker(new DatabaseWorker()) {
   determineDriver();
+}
+
+DatabaseFactory::~DatabaseFactory() {
+  if (m_dbWorker != nullptr) {
+    QMetaObject::invokeMethod(
+      m_dbWorker,
+      [worker = m_dbWorker.data()]() {
+        delete worker;
+      },
+      Qt::ConnectionType::BlockingQueuedConnection);
+  }
 }
 
 void DatabaseFactory::determineDriver() {
@@ -39,11 +51,7 @@ void DatabaseFactory::determineDriver() {
     qFatal("DB driver for '%s' was not found.", qPrintable(db_driver));
   }
 
-  // Try to setup connection and fallback to SQLite.
-  try {
-    m_dbDriver->connection(QSL("DatabaseFactory"));
-  }
-  catch (const ApplicationException& ex) {
+  const auto handle_connection_failure = [this](const ApplicationException& ex) {
     qCriticalNN << LOGSEC_DB << "Failed to reach connection to DB source:" << QUOTE_W_SPACE_DOT(ex.message());
 
     if (m_dbDriver->driverType() != DatabaseDriver::DriverType::SQLite) {
@@ -64,10 +72,30 @@ void DatabaseFactory::determineDriver() {
                    QMessageBox::Icon::Critical,
                    tr("Cannot connect to database"),
                    tr("Connection to your database was not established with error: %1.").arg(ex.message()));
-      // qApp->exit(EXIT_SUCCESS);
-      // qFatal("Connection to the database was not established with error: %s.", qPrintable(ex.message()));
       std::exit(EXIT_FAILURE);
     }
+  };
+
+  // Try to setup connection and fallback to SQLite only for connection failures.
+  try {
+    m_dbDriver->connection(QSL("DatabaseFactory"));
+  }
+  catch (const SqlException& ex) {
+    if (ex.type() == SqlException::Type::TooOldIncompatibleDbSchema ||
+        ex.type() == SqlException::Type::TooNewIncompatibleDbSchema) {
+      qCriticalNN << LOGSEC_DB << "Database schema is incompatible:" << QUOTE_W_SPACE_DOT(ex.message());
+
+      MsgBox::show(nullptr,
+                   QMessageBox::Icon::Critical,
+                   tr("Cannot use database"),
+                   tr("Application cannot start because there is a problem with DB: %1.").arg(ex.message()));
+      std::exit(EXIT_FAILURE);
+    }
+
+    handle_connection_failure(ex);
+  }
+  catch (const ApplicationException& ex) {
+    handle_connection_failure(ex);
   }
 }
 
@@ -89,6 +117,10 @@ DatabaseDriver* DatabaseFactory::driverForType(DatabaseDriver::DriverType d) con
 
 QString DatabaseFactory::escapeQuery(const QString& query) {
   return QString(query).replace(QSL("'"), QSL("''"));
+}
+
+QString DatabaseFactory::escapeIdentifier(const QString& identifier) {
+  return QSL("`%1`").arg(QString(identifier).replace(QL1C('`'), QSL("``")));
 }
 
 DatabaseDriver::DriverType DatabaseFactory::activeDatabaseDriver() const {

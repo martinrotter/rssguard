@@ -30,6 +30,7 @@ FormDatabaseCleanup::FormDatabaseCleanup(QWidget* parent)
   connect(&m_cleaner, &DatabaseCleaner::purgeStarted, this, &FormDatabaseCleanup::onPurgeStarted);
   connect(&m_cleaner, &DatabaseCleaner::purgeProgress, this, &FormDatabaseCleanup::onPurgeProgress);
   connect(&m_cleaner, &DatabaseCleaner::purgeFinished, this, &FormDatabaseCleanup::onPurgeFinished);
+  connect(&m_cleaner, &DatabaseCleaner::purgeFailed, this, &FormDatabaseCleanup::onPurgeFailed);
 
   m_ui->m_spinDays->setValue(DEFAULT_DAYS_TO_DELETE_MSG);
   m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Information, tr("I am ready."), tr("I am ready."));
@@ -96,6 +97,11 @@ void FormDatabaseCleanup::onPurgeFinished() {
                                tr("Database cleanup is completed."));
 
   loadDatabaseInfo();
+}
+
+void FormDatabaseCleanup::onPurgeFailed(const QString& error) {
+  m_ui->m_btnBox->setEnabled(true);
+  m_ui->m_lblResult->setStatus(WidgetWithStatus::StatusType::Error, error, tr("Database cleanup failed."));
 }
 
 void FormDatabaseCleanup::loadDatabaseInfo() {

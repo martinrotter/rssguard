@@ -14,6 +14,9 @@ class RSSGUARD_DLLSPEC ProcessException : public ApplicationException {
                      QProcess::ProcessError error,
                      const QString& message = QString());
 
+    void raise() const override { throw *this; }
+    ProcessException* clone() const override { return new ProcessException(*this); }
+
     QProcess::ExitStatus exitStatus() const;
     int exitCode() const;
     QProcess::ProcessError error() const;

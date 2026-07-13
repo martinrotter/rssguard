@@ -9,6 +9,16 @@
 
 #include <QTimer>
 
+namespace {
+  bool datesAreInSameIsoWeek(const QDate& first, const QDate& second) {
+    int first_week_year;
+    int second_week_year;
+
+    return first.weekNumber(&first_week_year) == second.weekNumber(&second_week_year) &&
+           first_week_year == second_week_year;
+  }
+} // namespace
+
 MessagesProxyModel::MessagesProxyModel(MessagesModel* source_model, QObject* parent)
   : FilteringProxyModel(parent), m_sourceModel(source_model), m_filter(MessageListFilter::NoFiltering) {
   setObjectName(QSL("MessagesProxyModel"));
@@ -77,22 +87,19 @@ void MessagesProxyModel::initializeFilters() {
   };
 
   m_filters[MessageListFilter::ShowThisWeek] = [this](int msg_row_index) {
-    const QDateTime current_dt = QDateTime::currentDateTime();
-    const QDate current_d = current_dt.date();
-    const QDateTime msg_created =
+    const QDate current_date = QDateTime::currentDateTime().date();
+    const QDateTime message_created =
       m_sourceModel->data(msg_row_index, MSG_MDL_DCREATED_INDEX, Qt::ItemDataRole::EditRole).toDateTime();
 
-    return current_d.year() == msg_created.date().year() && current_d.weekNumber() == msg_created.date().weekNumber();
+    return datesAreInSameIsoWeek(current_date, message_created.toLocalTime().date());
   };
 
   m_filters[MessageListFilter::ShowLastWeek] = [this](int msg_row_index) {
-    const QDateTime current_dt = QDateTime::currentDateTime();
-    const QDate current_d = current_dt.date();
-    const QDateTime msg_created =
+    const QDate last_week_date = QDateTime::currentDateTime().date().addDays(-7);
+    const QDateTime message_created =
       m_sourceModel->data(msg_row_index, MSG_MDL_DCREATED_INDEX, Qt::ItemDataRole::EditRole).toDateTime();
 
-    return current_d.addDays(-7).year() == msg_created.date().year() &&
-           current_d.addDays(-7).weekNumber() == msg_created.date().weekNumber();
+    return datesAreInSameIsoWeek(last_week_date, message_created.toLocalTime().date());
   };
 
   m_filters[MessageListFilter::ShowOnlyWithAttachments] = [this](int msg_row_index) {
@@ -103,7 +110,7 @@ void MessagesProxyModel::initializeFilters() {
   };
 
   m_filters[MessageListFilter::ShowOnlyWithScore] = [this](int msg_row_index) {
-    const int msg_score =
+    const double msg_score =
       m_sourceModel->data(msg_row_index, MSG_MDL_SCORE_INDEX, Qt::ItemDataRole::EditRole).toDouble();
 
     return msg_score > MSG_SCORE_MIN;

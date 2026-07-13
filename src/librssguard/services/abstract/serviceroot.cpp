@@ -55,6 +55,10 @@ void ServiceRoot::deleteItem() {
     DatabaseQueries::deleteAccount(db, this);
   });
 
+  if (CacheForServiceRoot* cache = toCache(); cache != nullptr) {
+    cache->clearCachedData();
+  }
+
   stop();
   requestItemRemoval(this, false);
 }

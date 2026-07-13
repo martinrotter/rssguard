@@ -21,6 +21,9 @@ class RSSGUARD_DLLSPEC ScriptException : public ApplicationException {
 
     explicit ScriptException(Reason reason = Reason::OtherError, const QString& message = QString());
 
+    void raise() const override { throw *this; }
+    ScriptException* clone() const override { return new ScriptException(*this); }
+
     Reason reason() const;
 
   private:

@@ -378,8 +378,16 @@ void FormMessageFiltersManager::removeSelectedFilter() {
                    fltr->name(),
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
                    QMessageBox::StandardButton::No) == QMessageBox::StandardButton::Yes) {
-    m_reader->removeMessageFilter(fltr);
-    delete m_ui.m_listFilters->currentItem();
+    try {
+      m_reader->removeMessageFilter(fltr);
+      delete m_ui.m_listFilters->currentItem();
+    }
+    catch (const ApplicationException& ex) {
+      MsgBox::show(this,
+                   QMessageBox::Icon::Critical,
+                   tr("Error"),
+                   tr("Cannot remove article filter, error: '%1'.").arg(ex.message()));
+    }
   }
 }
 
@@ -430,6 +438,10 @@ void FormMessageFiltersManager::saveSelectedFilter() {
     return;
   }
 
+  const QString old_name = fltr->name();
+  const QString old_script = fltr->script();
+  const bool old_enabled = fltr->enabled();
+
   fltr->setEnabled(m_ui.m_btnEnable->isChecked());
   fltr->setName(m_ui.m_txtTitle->text());
   fltr->setScript(m_ui.m_txtScript->toPlainText());
@@ -439,6 +451,10 @@ void FormMessageFiltersManager::saveSelectedFilter() {
     updateItemFromFilter(m_ui.m_listFilters->currentItem(), fltr);
   }
   catch (const ApplicationException& ex) {
+    fltr->setName(old_name);
+    fltr->setScript(old_script);
+    fltr->setEnabled(old_enabled);
+
     updateItemFromFilter(m_ui.m_listFilters->currentItem(), fltr, ex.message());
   }
 }
@@ -488,7 +504,9 @@ void FormMessageFiltersManager::testFilter() {
   // Perform per-message filtering.
   auto* selected_fd_cat = selectedCategoryFeed();
   FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles,
-                            selected_fd_cat->kind() == RootItem::Kind::Feed ? selected_fd_cat->toFeed() : nullptr,
+                            selected_fd_cat != nullptr && selected_fd_cat->kind() == RootItem::Kind::Feed
+                              ? selected_fd_cat->toFeed()
+                              : nullptr,
                             selectedAccount());
 
   filtering.filterRun().setTotalCountOfFilters(1);
@@ -619,17 +637,37 @@ void FormMessageFiltersManager::onFeedChecked(RootItem* item, Qt::CheckState sta
   }
 
   // Update feed/filter assignemnts.
-  switch (state) {
-    case Qt::CheckState::Checked:
-      m_reader->assignMessageFilterToFeed(feed, selectedFilter());
-      break;
+  MessageFilter* filter = selectedFilter();
 
-    case Qt::CheckState::Unchecked:
-      m_reader->removeMessageFilterToFeedAssignment(feed, selectedFilter());
-      break;
+  if (filter == nullptr) {
+    return;
+  }
 
-    case Qt::CheckState::PartiallyChecked:
-      break;
+  const bool was_assigned = feed->messageFilters().contains(filter);
+
+  try {
+    switch (state) {
+      case Qt::CheckState::Checked:
+        m_reader->assignMessageFilterToFeed(feed, filter);
+        break;
+
+      case Qt::CheckState::Unchecked:
+        m_reader->removeMessageFilterToFeedAssignment(feed, filter);
+        break;
+
+      case Qt::CheckState::PartiallyChecked:
+        break;
+    }
+  }
+  catch (const ApplicationException& ex) {
+    QScopedValueRollback<bool> loading(m_loadingFilter, true);
+
+    m_feedsModel->sourceModel()->setItemChecked(feed,
+                                                was_assigned ? Qt::CheckState::Checked : Qt::CheckState::Unchecked);
+    MsgBox::show(this,
+                 QMessageBox::Icon::Critical,
+                 tr("Error"),
+                 tr("Cannot change article-filter assignment, error: '%1'.").arg(ex.message()));
   }
 }
 

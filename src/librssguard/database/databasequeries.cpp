@@ -1187,7 +1187,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
                         .replace(QSL(":enclosures"),
                                  DatabaseFactory::escapeQuery(Enclosures::encodeEnclosuresToString(msg->m_enclosures)))
                         .replace(QSL(":custom_id"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_customId)))
-                        .replace(QSL(":custom_data"), unnulifyString(msg->m_customData))
+                        .replace(QSL(":custom_data"), DatabaseFactory::escapeQuery(unnulifyString(msg->m_customData)))
                         .replace(QSL(":score"), QString::number(msg->m_score))
                         .replace(QSL(":account_id"), QString::number(account_id)));
         }
