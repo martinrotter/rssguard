@@ -5,6 +5,7 @@
 #include "definitions/globals.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/domdocument.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "services/abstract/rootitem.h"
 
@@ -171,9 +172,38 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
     if (skin.hasPalette()) {
       qDebugNN << LOGSEC_GUI << "Activating alternative palette.";
 
-      QToolTip::setPalette(skin.m_stylePalette);
-      QApplication::setPalette(skin.m_stylePalette);
-      QGuiApplication::setPalette(skin.m_stylePalette);
+      QPalette style_palette = skin.m_stylePalette;
+
+      // Keep selected items recognizable after their view loses focus, but make
+      // the inactive state subtly distinct while preserving contrast with its base.
+      const QBrush active_highlight = style_palette.brush(QPalette::ColorGroup::Active, QPalette::ColorRole::Highlight);
+      QColor inactive_highlight = active_highlight.color();
+      const QColor inactive_base = style_palette.color(QPalette::ColorGroup::Inactive, QPalette::ColorRole::Base);
+
+      if (inactive_highlight.isValid() && inactive_base.isValid()) {
+        inactive_highlight =
+          inactive_base.lightnessF() > 0.5 ? inactive_highlight.lighter(115) : inactive_highlight.darker(115);
+      }
+
+      style_palette.setBrush(QPalette::ColorGroup::Inactive,
+                             QPalette::ColorRole::Highlight,
+                             inactive_highlight.isValid() ? QBrush(inactive_highlight) : active_highlight);
+      style_palette.setBrush(QPalette::ColorGroup::Active,
+                             QPalette::ColorRole::HighlightedText,
+                             QBrush(IconFactory::readableTextColor(active_highlight.color())));
+      style_palette.setBrush(QPalette::ColorGroup::Inactive,
+                             QPalette::ColorRole::HighlightedText,
+                             QBrush(IconFactory::readableTextColor(inactive_highlight)));
+
+#if QT_VERSION >= 0x060600 // Qt >= 6.6.0
+      style_palette.setBrush(QPalette::ColorGroup::Inactive,
+                             QPalette::ColorRole::Accent,
+                             style_palette.brush(QPalette::ColorGroup::Active, QPalette::ColorRole::Accent));
+#endif
+
+      QToolTip::setPalette(style_palette);
+      QApplication::setPalette(style_palette);
+      QGuiApplication::setPalette(style_palette);
     }
     // NOTE: Very hacky way of avoiding automatic "dark mode"
     // palettes in some styles. Also in light mode,
@@ -305,10 +335,10 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
     message_url.setFragment(QString());
   }
 
-  QString msg_contents =
-    is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
-             : (viewer != nullptr && forced_article_img_height > 0 ? viewer->convertToHtmlWithLimitedImages(message.m_contents)
-                                                                    : message.m_contents);
+  QString msg_contents = is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
+                                  : (viewer != nullptr && forced_article_img_height > 0
+                                       ? viewer->convertToHtmlWithLimitedImages(message.m_contents)
+                                       : message.m_contents);
 
   QString date_tooltip = QSL("Received: %1<br/>Published: %2").arg(msg_date_retrieved, msg_date_published);
 
