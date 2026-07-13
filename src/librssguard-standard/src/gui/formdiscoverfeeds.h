@@ -72,12 +72,14 @@ class FormDiscoverFeeds : public QDialog {
 
   protected:
     virtual void closeEvent(QCloseEvent* event);
+    virtual void reject();
 
   private slots:
     void discoverFeeds();
     void onUrlChanged();
     void addSingleFeed();
     void importSelectedFeeds();
+    void cancelDiscovery();
 
     void onFeedSelectionChanged();
     void onDiscoveryProgress(int progress);
@@ -97,6 +99,8 @@ class FormDiscoverFeeds : public QDialog {
     DiscoverLinkedDocumentResult fetchLinkedDocument(const DiscoverLinkedDocumentTask& task);
     void startDiscoveringLinkedDocuments(const QList<DiscoverLinkedDocumentTask>& tasks);
     void startDiscoveringFeeds(const QHash<QUrl, QList<DocumentWithUrl>>& documents_by_url);
+    void setDiscoveryRunning(bool running);
+    bool discoveryRunning() const;
 
     void userWantsAdvanced();
     void loadDiscoveredFeeds(const QList<StandardFeed*>& feeds);
@@ -113,6 +117,7 @@ class FormDiscoverFeeds : public QDialog {
     QHash<QUrl, QList<DocumentWithUrl>> m_documentsByUrl;
     DiscoveredFeedsModel* m_discoveredModel;
     bool m_deepDiscovery;
+    bool m_cancelDiscoveryRequested;
 };
 
 #endif // FORMDISCOVERFEEDS_H

@@ -25,6 +25,7 @@
 #include <librssguard/services/abstract/category.h>
 #include <librssguard/services/abstract/serviceroot.h>
 
+#include <QCloseEvent>
 #include <QFileInfo>
 #include <QHash>
 #include <QMetaObject>
@@ -35,7 +36,7 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
                                      const QString& url,
                                      QWidget* parent)
   : QDialog(parent), m_serviceRoot(service_root), m_discoveredModel(new DiscoveredFeedsModel(this)),
-    m_deepDiscovery(false) {
+    m_deepDiscovery(false), m_cancelDiscoveryRequested(false) {
   m_ui.setupUi(this);
 
   GuiUtilities::applyDialogProperties(*this, qApp->icons()->fromTheme(QSL("application-rss+xml")));
@@ -53,7 +54,8 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
     ->setToolTip(tr("Close this dialog and display dialog for adding individual feeds with advanced options."));
 
   setTabOrder(m_ui.m_txtUrl->textEdit(), m_ui.m_btnDiscover);
-  setTabOrder(m_ui.m_btnDiscover, m_ui.m_cbDiscoverRecursive);
+  setTabOrder(m_ui.m_btnDiscover, m_ui.m_btnCancelDiscovery);
+  setTabOrder(m_ui.m_btnCancelDiscovery, m_ui.m_cbDiscoverRecursive);
   setTabOrder(m_ui.m_cbDiscoverRecursive, m_ui.m_cmbParentCategory);
   setTabOrder(m_ui.m_cmbParentCategory, m_ui.m_btnSelecAll);
   setTabOrder(m_ui.m_btnSelecAll, m_ui.m_btnSelectNone);
@@ -71,6 +73,7 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
   m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Close)
     ->setIcon(qApp->icons()->fromTheme(QSL("window-close")));
   m_ui.m_btnDiscover->setIcon(qApp->icons()->fromTheme(QSL("system-search")));
+  m_ui.m_btnCancelDiscovery->setIcon(qApp->icons()->fromTheme(QSL("process-stop")));
 
   connect(m_ui.m_txtUrl->textEdit(), &QPlainTextEdit::textChanged, this, &FormDiscoverFeeds::onUrlChanged);
   connect(m_ui.m_btnImportSelected, &QPushButton::clicked, this, &FormDiscoverFeeds::importSelectedFeeds);
@@ -79,6 +82,7 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
   connect(m_ui.m_btnAddIndividually, &QPushButton::clicked, this, &FormDiscoverFeeds::addSingleFeed);
   connect(m_btnGoAdvanced, &QPushButton::clicked, this, &FormDiscoverFeeds::userWantsAdvanced);
   connect(m_ui.m_btnDiscover, &QPushButton::clicked, this, &FormDiscoverFeeds::discoverFeeds);
+  connect(m_ui.m_btnCancelDiscovery, &QPushButton::clicked, this, &FormDiscoverFeeds::cancelDiscovery);
   connect(&m_watcherDocuments,
           &QFutureWatcher<DiscoverDocumentsResult>::finished,
           this,
@@ -151,8 +155,48 @@ void FormDiscoverFeeds::onDiscoveryProgress(int progress) {
   m_ui.m_pbDiscovery->setValue(progress);
 }
 
+bool FormDiscoverFeeds::discoveryRunning() const {
+  return m_watcherDocuments.isRunning() || m_watcherLinkedDocuments.isRunning() || m_watcherLookup.isRunning();
+}
+
+void FormDiscoverFeeds::setDiscoveryRunning(bool running) {
+  m_ui.m_txtUrl->setEnabled(!running);
+  m_ui.m_cbDiscoverRecursive->setEnabled(!running);
+  m_ui.m_gbFeeds->setEnabled(!running);
+  m_ui.m_btnDiscover->setEnabled(!running);
+  m_ui.m_btnCancelDiscovery->setEnabled(running);
+  m_btnGoAdvanced->setEnabled(!running);
+  m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Close)->setEnabled(!running);
+
+  if (!running) {
+    m_ui.m_btnCancelDiscovery->setText(tr("Cancel"));
+    m_ui.m_btnAddIndividually->setEnabled(selectedFeed() != nullptr);
+  }
+}
+
+void FormDiscoverFeeds::cancelDiscovery() {
+  if (!discoveryRunning()) {
+    return;
+  }
+
+  m_cancelDiscoveryRequested = true;
+  m_ui.m_btnCancelDiscovery->setEnabled(false);
+  m_ui.m_btnCancelDiscovery->setText(tr("Cancelling..."));
+
+  m_watcherDocuments.cancel();
+  m_watcherLinkedDocuments.cancel();
+  m_watcherLookup.cancel();
+}
+
 void FormDiscoverFeeds::onDiscoveryFinished() {
   try {
+    if (m_cancelDiscoveryRequested) {
+      m_ui.m_pbDiscovery->setVisible(false);
+      m_cancelDiscoveryRequested = false;
+      setDiscoveryRunning(false);
+      return;
+    }
+
     auto res = m_watcherLookup.future().result();
 
     loadDiscoveredFeeds(res);
@@ -164,7 +208,7 @@ void FormDiscoverFeeds::onDiscoveryFinished() {
                           QSystemTrayIcon::MessageIcon::Critical});
   }
 
-  setEnabled(true);
+  setDiscoveryRunning(false);
 }
 
 StandardFeed* FormDiscoverFeeds::selectedFeed() const {
@@ -253,10 +297,10 @@ void FormDiscoverFeeds::discoverFeeds() {
   m_ui.m_pbDiscovery->setMaximum(tasks.size());
   m_ui.m_pbDiscovery->setValue(0);
   m_ui.m_pbDiscovery->setVisible(true);
+  m_cancelDiscoveryRequested = false;
 
   m_watcherDocuments.setFuture(fut);
-
-  setEnabled(false);
+  setDiscoveryRunning(true);
 }
 
 FormDiscoverFeeds::DiscoverDocumentsResult FormDiscoverFeeds::fetchDocumentsForUrl(const DiscoverDocumentsTask& task) {
@@ -419,6 +463,13 @@ void FormDiscoverFeeds::onDocumentsFinished() {
   m_documentsByUrl.clear();
 
   try {
+    if (m_cancelDiscoveryRequested) {
+      m_ui.m_pbDiscovery->setVisible(false);
+      m_cancelDiscoveryRequested = false;
+      setDiscoveryRunning(false);
+      return;
+    }
+
     const auto future = m_watcherDocuments.future();
 
     for (int i = 0; i < future.resultCount(); ++i) {
@@ -437,7 +488,7 @@ void FormDiscoverFeeds::onDocumentsFinished() {
                           tr("Error: %1").arg(ex.message()),
                           QSystemTrayIcon::MessageIcon::Critical});
 
-    setEnabled(true);
+    setDiscoveryRunning(false);
     return;
   }
 
@@ -470,6 +521,13 @@ void FormDiscoverFeeds::startDiscoveringLinkedDocuments(const QList<DiscoverLink
 
 void FormDiscoverFeeds::onLinkedDocumentsFinished() {
   try {
+    if (m_cancelDiscoveryRequested) {
+      m_ui.m_pbDiscovery->setVisible(false);
+      m_cancelDiscoveryRequested = false;
+      setDiscoveryRunning(false);
+      return;
+    }
+
     const auto future = m_watcherLinkedDocuments.future();
     QHash<QUrl, QStringList> known_document_urls;
 
@@ -512,7 +570,7 @@ void FormDiscoverFeeds::onLinkedDocumentsFinished() {
                           tr("Error: %1").arg(ex.message()),
                           QSystemTrayIcon::MessageIcon::Critical});
 
-    setEnabled(true);
+    setDiscoveryRunning(false);
     return;
   }
 
@@ -534,7 +592,7 @@ void FormDiscoverFeeds::startDiscoveringFeeds(const QHash<QUrl, QList<DocumentWi
 
   if (tasks.isEmpty()) {
     m_ui.m_pbDiscovery->setVisible(false);
-    setEnabled(true);
+    setDiscoveryRunning(false);
     return;
   }
 
@@ -652,7 +710,7 @@ void FormDiscoverFeeds::importSelectedFeeds() {
 }
 
 void FormDiscoverFeeds::onFeedSelectionChanged() {
-  m_ui.m_btnAddIndividually->setEnabled(selectedFeed() != nullptr);
+  m_ui.m_btnAddIndividually->setEnabled(!discoveryRunning() && selectedFeed() != nullptr);
 }
 
 void FormDiscoverFeeds::userWantsAdvanced() {
@@ -708,27 +766,23 @@ QVariant DiscoveredFeedsModel::headerData(int section, Qt::Orientation orientati
 }
 
 void FormDiscoverFeeds::closeEvent(QCloseEvent* event) {
-  try {
-    // Wait for discovery to finish.
-    if (m_watcherDocuments.isRunning()) {
-      m_watcherDocuments.waitForFinished();
-    }
-
-    if (m_watcherLinkedDocuments.isRunning()) {
-      m_watcherLinkedDocuments.waitForFinished();
-    }
-
-    if (m_watcherLookup.isRunning()) {
-      m_watcherLookup.waitForFinished();
-    }
-  }
-  catch (...) {
+  if (discoveryRunning()) {
+    event->ignore();
+    return;
   }
 
   // Clear all remaining items.
   m_discoveredModel->setRootItem(nullptr);
 
   QDialog::closeEvent(event);
+}
+
+void FormDiscoverFeeds::reject() {
+  if (discoveryRunning()) {
+    return;
+  }
+
+  QDialog::reject();
 }
 
 RootItem* DiscoveredFeedsModel::removeItem(RootItem* it) {
