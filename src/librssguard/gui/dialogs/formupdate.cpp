@@ -3,8 +3,10 @@
 #include "gui/dialogs/formupdate.h"
 
 #include "definitions/definitions.h"
+#include "exceptions/ioexception.h"
 #include "gui/guiutilities.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/iofactory.h"
 #include "network-web/downloader.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
@@ -130,31 +132,20 @@ void FormUpdate::saveUpdateFile(const QByteArray& file_contents) {
   const QString url_file = m_ui.m_listFiles->currentItem()->data(Qt::UserRole).toString();
   const QString temp_directory = qApp->tempFolder();
 
-  if (!temp_directory.isEmpty()) {
-    const QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);
-    QFile output_file(temp_directory + QDir::separator() + output_file_name);
-
-    if (output_file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
-      qDebugNN << "Storing update file to temporary location"
-               << QUOTE_W_SPACE_DOT(QDir::toNativeSeparators(output_file.fileName()));
-
-      output_file.write(file_contents);
-      output_file.flush();
-      output_file.close();
-
-      qDebugNN << "Update file contents was successfuly saved.";
-
-      m_updateFilePath = output_file.fileName();
-      m_readyToInstall = true;
-    }
-    else {
-      qDebugNN << LOGSEC_GUI << "Cannot save downloaded update file because target temporary file '" << output_file_name
-               << "' cannot be opened for writing.";
-    }
+  if (temp_directory.isEmpty()) {
+    throw IOException(tr("No temporary directory is available for the update file."));
   }
-  else {
-    qDebugNN << LOGSEC_GUI << "Cannot save downloaded update file because no TEMP directory is available.";
-  }
+
+  const QString output_file_name = url_file.mid(url_file.lastIndexOf('/') + 1);
+  const QString output_file_path = QDir(temp_directory).filePath(output_file_name);
+
+  qDebugNN << "Storing update file to temporary location"
+           << QUOTE_W_SPACE_DOT(QDir::toNativeSeparators(output_file_path));
+  IOFactory::writeFile(output_file_path, file_contents);
+  qDebugNN << "Update file contents was successfully saved.";
+
+  m_updateFilePath = output_file_path;
+  m_readyToInstall = true;
 }
 
 void FormUpdate::loadAvailableFiles() {
@@ -192,19 +183,35 @@ void FormUpdate::updateCompleted(const QUrl& url,
 
   switch (status) {
     case QNetworkReply::NetworkError::NoError:
-      saveUpdateFile(contents);
-      m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Ok,
-                                  tr("Downloaded successfully"),
-                                  tr("Package was downloaded successfully.\nYou can install it now."));
-      m_btnUpdate->setText(tr("Install"));
-      m_btnUpdate->setEnabled(true);
+      try {
+        saveUpdateFile(contents);
+        m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Ok,
+                                    tr("Downloaded successfully"),
+                                    tr("Package was downloaded successfully.\nYou can install it now."));
+        m_btnUpdate->setText(tr("Install"));
+        m_btnUpdate->setEnabled(true);
+      }
+      catch (const ApplicationException& ex) {
+        m_readyToInstall = false;
+        m_updateFilePath.clear();
+        m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Error,
+                                    tr("Cannot save update file: '%1'").arg(ex.message()),
+                                    tr("Update file could not be saved. Try again or update manually."));
+        m_btnUpdate->setText(tr("Retry download"));
+        m_btnUpdate->setEnabled(true);
+        m_ui.m_listFiles->setEnabled(true);
+      }
       break;
 
     default:
+      m_readyToInstall = false;
+      m_updateFilePath.clear();
       m_ui.m_lblStatus->setStatus(WidgetWithStatus::StatusType::Error,
                                   tr("Error occurred"),
                                   tr("Error occurred while downloading the package."));
-      m_btnUpdate->setText(tr("Error occurred"));
+      m_btnUpdate->setText(tr("Retry download"));
+      m_btnUpdate->setEnabled(true);
+      m_ui.m_listFiles->setEnabled(true);
       break;
   }
 }
@@ -251,6 +258,9 @@ void FormUpdate::startUpdate() {
 #endif
   }
   else if (update_for_this_system) {
+    m_readyToInstall = false;
+    m_updateFilePath.clear();
+    m_lastDownloadedBytes = 0;
     updateProgress(0, 100);
     m_btnUpdate->setText(tr("Downloading update..."));
     m_btnUpdate->setEnabled(false);
