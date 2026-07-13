@@ -31,7 +31,6 @@ FormAddAccount::~FormAddAccount() {
 }
 
 void FormAddAccount::addSelectedAccount() {
-  accept();
   ServiceEntryPoint* point = selectedEntryPoint();
 
   if (point == nullptr) {
@@ -42,6 +41,7 @@ void FormAddAccount::addSelectedAccount() {
 
   if (new_root != nullptr) {
     m_model->addServiceAccount(new_root, true);
+    accept();
   }
   else {
     qDebugNN << LOGSEC_CORE << "Cannot create new account.";
