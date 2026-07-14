@@ -18,6 +18,7 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
   setupHeading(m_ui.m_lblTitle);
   setupCloseButton(m_ui.m_btnClose);
 
+  m_model->setFont(font());
   m_ui.m_treeArticles->viewport()->installEventFilter(this);
 
   m_ui.m_btnNextPage->setIcon(qApp->icons()->fromTheme(QSL("arrow-right"), QSL("stock_right")));
@@ -82,7 +83,7 @@ void ArticleListNotification::loadResults(const QHash<Feed*, QList<Message>>& ne
     return QString::compare(lhs->sanitizedTitle(), rhs->sanitizedTitle(), Qt::CaseSensitivity::CaseInsensitive) < 0;
   });
 
-  for (Feed* fd : ks) {
+  for (Feed* fd : std::as_const(ks)) {
     if (fd->isQuiet()) {
       continue;
     }

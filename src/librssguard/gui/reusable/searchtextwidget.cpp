@@ -33,7 +33,6 @@ void SearchTextWidget::clear() {
 
 void SearchTextWidget::cancelSearch() {
   emit searchCancelled();
-
   hide();
 }
 

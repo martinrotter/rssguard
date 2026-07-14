@@ -13,6 +13,8 @@ class QAction;
 class QActionGroup;
 
 class TreeViewColumnsMenu : public NonClosableMenu {
+    Q_OBJECT
+
   public:
     using MenuExtensionBuilder = std::function<bool(TreeViewColumnsMenu*)>;
 

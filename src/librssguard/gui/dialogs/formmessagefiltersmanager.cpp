@@ -29,6 +29,8 @@
 #include <QScopedValueRollback>
 #include <QSortFilterProxyModel>
 
+#include <algorithm>
+
 namespace {
 
 QString jsStringLiteral(const QString& value) {
@@ -533,9 +535,29 @@ void FormMessageFiltersManager::testFilter() {
 
 void FormMessageFiltersManager::processCheckedFeeds() {
   QList<RootItem*> checked = m_feedsModel->sourceModel()->checkedItems();
+  MessageFilter* filter = selectedFilter();
+  const int checked_feeds = std::count_if(checked.cbegin(), checked.cend(), [](const RootItem* item) {
+    return item->kind() == RootItem::Kind::Feed;
+  });
+
+  if (filter == nullptr || checked_feeds == 0 ||
+      MsgBox::show(this,
+                   QMessageBox::Icon::Question,
+                   tr("Process existing articles?"),
+                   tr("Do you really want to process existing articles in %n checked feed(s) with the selected "
+                      "article filter?",
+                      nullptr,
+                      checked_feeds),
+                   tr("The filter can modify article states or remove articles."),
+                   filter->name(),
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                   QMessageBox::StandardButton::Yes,
+                   QSL("process_existing_articles_with_filter")) != QMessageBox::StandardButton::Yes) {
+    return;
+  }
 
   try {
-    m_msgModel->processFeeds(selectedFilter(), selectedAccount(), checked);
+    m_msgModel->processFeeds(filter, selectedAccount(), checked);
   }
   catch (const ApplicationException& ex) {
     m_ui.m_txtErrors->setTextColor(Qt::GlobalColor::red);

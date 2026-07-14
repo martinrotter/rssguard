@@ -6,6 +6,7 @@
 #include "core/message.h"
 
 #include <QAbstractListModel>
+#include <QFont>
 
 class ArticleListNotificationModel : public QAbstractListModel {
     Q_OBJECT
@@ -15,6 +16,7 @@ class ArticleListNotificationModel : public QAbstractListModel {
     ~ArticleListNotificationModel() override = default;
 
     void setArticles(const QList<Message>& msgs);
+    void setFont(const QFont& font);
 
     const Message& message(const QModelIndex& idx) const;
 
@@ -38,6 +40,8 @@ class ArticleListNotificationModel : public QAbstractListModel {
   private:
     QList<Message> m_articles;
     int m_currentPage;
+    QFont m_fontArticlesNormal;
+    QFont m_fontArticlesUnread;
 };
 
 #endif // ARTICLELISTNOTIFICATIONMODEL_H

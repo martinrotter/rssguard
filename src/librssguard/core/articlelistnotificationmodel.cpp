@@ -7,6 +7,8 @@
 
 #include <algorithm>
 
+#include <QFont>
+
 ArticleListNotificationModel::ArticleListNotificationModel(QObject* parent)
   : QAbstractListModel(parent), m_currentPage(0) {}
 
@@ -17,6 +19,15 @@ void ArticleListNotificationModel::setArticles(const QList<Message>& msgs) {
   endResetModel();
 
   emitPageAvailability();
+}
+
+void ArticleListNotificationModel::setFont(const QFont& font) {
+  m_fontArticlesNormal = font;
+
+  QFont font_bold = font;
+  font_bold.setBold(true);
+
+  m_fontArticlesUnread = font_bold;
 }
 
 const Message& ArticleListNotificationModel::message(const QModelIndex& idx) const {
@@ -79,10 +90,15 @@ QVariant ArticleListNotificationModel::data(const QModelIndex& index, int role) 
     return {};
   }
 
+  const Message& article = m_articles.at((m_currentPage * NOTIFICATIONS_PAGE_SIZE) + index.row());
+
   switch (role) {
     case Qt::ItemDataRole::DisplayRole:
     case Qt::ItemDataRole::ToolTipRole:
-      return m_articles.at((m_currentPage * NOTIFICATIONS_PAGE_SIZE) + index.row()).m_title;
+      return article.m_title;
+
+    case Qt::ItemDataRole::FontRole:
+      return article.m_isRead ? m_fontArticlesNormal : m_fontArticlesUnread;
   }
 
   return {};

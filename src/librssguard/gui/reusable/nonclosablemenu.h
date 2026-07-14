@@ -6,6 +6,8 @@
 #define NONCLOSABLEMENU_H
 
 class NonClosableMenu : public QMenu {
+    Q_OBJECT
+
   public:
     explicit NonClosableMenu(QWidget* parent = nullptr);
     explicit NonClosableMenu(const QString& title, QWidget* parent = nullptr);
