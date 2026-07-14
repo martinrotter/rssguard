@@ -3522,8 +3522,8 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="665"/>
       <source>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
+      <translation>
+        <numerusform>将从 &apos;%2&apos; 文件夹及其子文件夹中的 %n 个订阅源中删除文章过滤器 &apos;%1&apos;。</numerusform>
       </translation>
     </message>
     <message>
@@ -3531,30 +3531,30 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="704"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="704"/>
       <source>Do you want to continue?</source>
-      <translation type="unfinished">Do you want to continue?</translation>
+      <translation>是否继续？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="695"/>
       <source>Assign article filter to all feeds?</source>
-      <translation type="unfinished">Assign article filter to all feeds?</translation>
+      <translation>将文章过滤器分配给所有订阅源？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="695"/>
       <source>Remove article filter from all feeds?</source>
-      <translation type="unfinished">Remove article filter from all feeds?</translation>
+      <translation>从所有源中删除文章过滤器？</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="696"/>
       <source>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</numerusform>
+      <translation>
+        <numerusform>文章过滤器 &apos;%1&apos; 将被分配给 &apos;%2&apos; 账户中的所有 %n 个源。</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="700"/>
       <source>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</numerusform>
+      <translation>
+        <numerusform>将从 &apos;%2&apos; 账户的所有 %n 个源中删除 &apos;%1&apos; 个文章过滤器。</numerusform>
       </translation>
     </message>
     <message>
@@ -4945,22 +4945,22 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="713"/>
       <source>Cannot parse GReader labels JSON response: %1</source>
-      <translation type="unfinished">Cannot parse GReader labels JSON response: %1</translation>
+      <translation>无法解析 GReader 标签 JSON 响应： %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="719"/>
       <source>GReader labels response does not contain a JSON array of labels.</source>
-      <translation type="unfinished">GReader labels response does not contain a JSON array of labels.</translation>
+      <translation>GReader 标签响应不包含 JSON 标签数组。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="727"/>
       <source>Cannot parse GReader subscriptions JSON response: %1</source>
-      <translation type="unfinished">Cannot parse GReader subscriptions JSON response: %1</translation>
+      <translation>无法解析 GReader 订阅 JSON 响应： %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="733"/>
       <source>GReader subscriptions response does not contain a JSON array of subscriptions.</source>
-      <translation type="unfinished">GReader subscriptions response does not contain a JSON array of subscriptions.</translation>
+      <translation>GReader 订阅响应不包含 JSON 数组订阅。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1258"/>
@@ -6706,22 +6706,22 @@ Token 过期时间：%2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="172"/>
       <source>Cannot parse Nextcloud folders JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Nextcloud folders JSON response: %1</translation>
+      <translation>无法解析 Nextcloud 文件夹 JSON 响应： %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="179"/>
       <source>Nextcloud folders response does not contain a JSON array of folders.</source>
-      <translation type="unfinished">Nextcloud folders response does not contain a JSON array of folders.</translation>
+      <translation>Nextcloud 文件夹响应不包含 JSON 文件夹数组。</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="188"/>
       <source>Cannot parse Nextcloud feeds JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Nextcloud feeds JSON response: %1</translation>
+      <translation>无法解析 Nextcloud feeds JSON 响应： %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="195"/>
       <source>Nextcloud feeds response does not contain a JSON array of feeds.</source>
-      <translation type="unfinished">Nextcloud feeds response does not contain a JSON array of feeds.</translation>
+      <translation>Nextcloud feeds 响应不含 JSON 订阅源数组。</translation>
     </message>
   </context>
   <context>
@@ -8357,13 +8357,13 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="394"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="757"/>
       <source>Limit height of embedded attachment images</source>
-      <translation type="unfinished">Limit height of embedded attachment images</translation>
+      <translation>限制内嵌附件图片的高度</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="437"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="758"/>
       <source>Limit height of article images</source>
-      <translation type="unfinished">Limit height of article images</translation>
+      <translation>限制文章图片高度</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
