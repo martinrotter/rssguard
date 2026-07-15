@@ -56,12 +56,12 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1283"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1288"/>
       <source>Application is already running.</source>
       <translation>Програма вже виконується.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="659"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="664"/>
       <source>Output directory is not writable.</source>
       <translation>Цільовий каталог недоступний для запису.</translation>
     </message>
@@ -86,27 +86,27 @@
       <translation type="unfinished">Preparing the application...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="667"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="672"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>Файл налаштувань не було успішно скопійовано до цільового каталогу.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="686"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="691"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>Відновлення налаштувань не було ініційовано. Перевірте можливість запису в цільовий каталог.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1312"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1317"/>
       <source>Cannot add feed</source>
       <translation>Неможливо додати стрічку</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1313"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1318"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Стрічка не може бути додана, тому що немає активного облікового запису, який може додавати стрічки.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1164"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1169"/>
       <source>Unread articles fetched</source>
       <translation>Завантажено непрочитані статті</translation>
     </message>
@@ -131,7 +131,7 @@ version by clicking this popup notification.</source>
 Будь ласка, ознайомтеся зі ЗМІНАМИ, доданими до цієї версії, натиснувши на це повідомлення.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1282"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1287"/>
       <source>Already running</source>
       <translation>Вже виконується</translation>
     </message>
@@ -275,7 +275,7 @@ version by clicking this popup notification.</source>
       <translation>Позначити всі статті як прочитані</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="95"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="96"/>
       <source>%n feeds fetched</source>
       <translation>
         <numerusform>Завантажено %n стрічку</numerusform>
@@ -399,7 +399,7 @@ version by clicking this popup notification.</source>
   <context>
     <name>Category</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/category.cpp" line="96"/>
+      <location filename="../src/librssguard/services/abstract/category.cpp" line="86"/>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
@@ -527,12 +527,12 @@ Number of disabled feeds: %3</source>
   <context>
     <name>DatabaseDriver</name>
     <message>
-      <location filename="../src/librssguard/database/databasedriver.cpp" line="141"/>
+      <location filename="../src/librssguard/database/databasedriver.cpp" line="142"/>
       <source>this database cannot be used because it comes from too old major app version</source>
       <translation type="unfinished">this database cannot be used because it comes from too old major app version</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasedriver.cpp" line="148"/>
+      <location filename="../src/librssguard/database/databasedriver.cpp" line="149"/>
       <source>database schema is too new, application requires &lt;= %1 but %2 is installed</source>
       <translation>схема бази даних є занадто новою, додаток вимагає &lt;= %1, але %2 встановлено</translation>
     </message>
@@ -540,14 +540,14 @@ Number of disabled feeds: %3</source>
   <context>
     <name>DatabaseFactory</name>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="50"/>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="62"/>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="62"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="61"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="73"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="73"/>
       <source>Cannot connect to database</source>
       <translation>Неможливо з'єднатися з базою даних</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="51"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="62"/>
       <source>Connection to your database was not established with error: %1. 
 
 Maybe change used database name in settings and try again. Falling back to SQLite.</source>
@@ -556,17 +556,17 @@ Maybe change used database name in settings and try again. Falling back to SQLit
 Можливо, замініть назву використовуваної бази даних у налаштуваннях та спробуйте ще раз. Повернення до SQLite.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="63"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="74"/>
       <source>Connection to your database was not established with error: %1.</source>
       <translation>З'єднання з вашою базою даних не було встановлено через помилку: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="79"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="90"/>
       <source>Cannot use database</source>
       <translation type="unfinished">Cannot use database</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="80"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="91"/>
       <source>Application cannot start because there is a problem with DB: %1.</source>
       <translation type="unfinished">Application cannot start because there is a problem with DB: %1.</translation>
     </message>
@@ -574,12 +574,12 @@ Maybe change used database name in settings and try again. Falling back to SQLit
   <context>
     <name>DiscoveredFeedsModel</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="701"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="758"/>
       <source>Title</source>
       <translation>Заголовок</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="701"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="758"/>
       <source>Type</source>
       <translation>Тип</translation>
     </message>
@@ -640,33 +640,33 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       <translation>До</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="114"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="116"/>
       <source>Save attachment %1</source>
       <translation>Зберегти вкладення %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="130"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="132"/>
       <source>Download attachment</source>
       <translation>Завантажити вкладення</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="158"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="177"/>
       <source>Downloaded %1 kB...</source>
       <translation>Завантажено %1 kB...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="169"/>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="175"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="188"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="194"/>
       <source>Cannot download attachment</source>
       <translation>Неможливо завантажити вкладення</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="170"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="189"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
       <translation>Вкладення неможливо завантажити, оскільки ви не увійшли до системи.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="176"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="195"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
       <translation>Вкладення неможливо завантажити, оскільки сталася якась загальна помилка.</translation>
     </message>
@@ -702,33 +702,33 @@ Maybe change used database name in settings and try again. Falling back to SQLit
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="367"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="359"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>використовує глобальні налаштування, але глобальне автозавантаження статей вимкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="391"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="383"/>
       <source>no errors</source>
       <translation>без помилок</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="397"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="389"/>
       <source>authentication error</source>
       <translation>помилка автентифікації</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="403"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="395"/>
       <source>network error</source>
       <translation>помилка мережі</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="353"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="345"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>не використовує автозавантаження статей</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="364"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="356"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>використовує глобальні налаштування (%n хвилина до наступного автоматичного завантаження статей)</numerusform>
@@ -738,7 +738,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="378"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="370"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -749,32 +749,37 @@ Maybe change used database name in settings and try again. Falling back to SQLit
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="394"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="386"/>
       <source>has new articles</source>
       <translation>містить нові статті</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="400"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="392"/>
       <source>SQL database error</source>
       <translation>Помилка бази даних SQL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="406"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="398"/>
       <source>parsing error</source>
       <translation>помилка парсингу</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="409"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="401"/>
       <source>contains no articles</source>
       <translation type="unfinished">contains no articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="412"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="404"/>
+      <source>article filtering error</source>
+      <translation type="unfinished">article filtering error</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="407"/>
       <source>error</source>
       <translation>помилка</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="482"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="477"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -851,17 +856,37 @@ Item custom ID: %5</source>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="234"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="200"/>
+      <source>file contains invalid JSON: %1</source>
+      <translation type="unfinished">file contains invalid JSON: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="204"/>
+      <source>file does not contain a filter list</source>
+      <translation type="unfinished">file does not contain a filter list</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="244"/>
       <source>full article content is empty, likely due to required cookies or other problem</source>
       <translation>вміст повної статті порожній, ймовірно, через необхідні файли cookie або іншу проблему</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="496"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="342"/>
+      <source>Cannot start database transaction when removing article filter.</source>
+      <translation type="unfinished">Cannot start database transaction when removing article filter.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="350"/>
+      <source>Cannot commit database transaction when removing article filter.</source>
+      <translation type="unfinished">Cannot commit database transaction when removing article filter.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="534"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Початок автоматичного завантаження статей у деяких стрічках</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="497"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="535"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>Я автоматично завантажу нові статті для %n стрічки.</numerusform>
@@ -871,12 +896,12 @@ Item custom ID: %5</source>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="521"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="559"/>
       <source>Some feeds have errors</source>
       <translation>Деякі стрічки містять помилки</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="522"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="560"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation>Деякі стрічки повернули помилку намагаючись отримати статті.</translation>
     </message>
@@ -1472,7 +1497,12 @@ Item custom ID: %5</source>
   <context>
     <name>FilteringSystem</name>
     <message>
-      <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="123"/>
+      <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="111"/>
+      <source>article filter &apos;%1&apos; must return valid FilteringAction value.</source>
+      <translation type="unfinished">article filter &apos;%1&apos; must return valid FilteringAction value.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="219"/>
       <source>Article filter &apos;%1&apos; does not define a callable filterMessage() function.</source>
       <translation type="unfinished">Article filter &apos;%1&apos; does not define a callable filterMessage() function.</translation>
     </message>
@@ -2184,7 +2214,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>Знайти більше стрічок</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="226"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="228"/>
       <source>Discover!</source>
       <translation>Знайти більше!</translation>
     </message>
@@ -2229,61 +2259,72 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <translation>Імпортувати позначені стрічки (&amp;I)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="233"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="244"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="171"/>
+      <source>Cancel</source>
+      <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="266"/>
       <source>Deep discovery (scrapes all hyperlinks and can take some time for bigger websites)</source>
       <translation type="unfinished">Deep discovery (scrapes all hyperlinks and can take some time for bigger websites)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="51"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="52"/>
       <source>Switch to advanced &amp;mode</source>
       <translation>Перейти в розширений режим (&amp;M)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="53"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="54"/>
       <source>Close this dialog and display dialog for adding individual feeds with advanced options.</source>
       <translation>Закрити поточний діалог та показати діалог для додавання окремих стрічок з розширеними параметрами.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="109"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="113"/>
       <source>Enter feed URLs, one URL per line</source>
       <translation>Введіть URL-адреси, одна URL-адреса в рядку</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="162"/>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="436"/>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="511"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="183"/>
+      <source>Cancelling...</source>
+      <translation type="unfinished">Cancelling...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="205"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="486"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="568"/>
       <source>Cannot discover feeds</source>
       <translation>Неможливо виявити стрічки</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="163"/>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="437"/>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="512"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="206"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="487"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="569"/>
       <source>Error: %1</source>
       <translation>Помилка: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="589"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="646"/>
       <source>All URLs are valid.</source>
       <translation>Усі URL-адреси дійсні.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="592"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="649"/>
       <source>One or more URLs are invalid.</source>
       <translation>Одна або більше URL-адреса не дійсна.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="643"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="700"/>
       <source>Cannot import feed</source>
       <translation type="unfinished">Cannot import feed</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="644"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="701"/>
       <source>Cannot save feed: %1</source>
       <translation type="unfinished">Cannot save feed: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="668"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="725"/>
       <source>No title</source>
       <translation>Без заголовка</translation>
     </message>
@@ -3439,50 +3480,54 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
   <context>
     <name>FormMessageFiltersManager</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="761"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="821"/>
       <source>Cannot find &apos;clang-format&apos;</source>
       <translation>Неможливо знайти &apos;clang-format&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="762"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="822"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
       <translation>Скрипт не було приведено до гарного вигляду, адже інструмент &apos;clang-format&apos; не було знайдено.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="221"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="248"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="417"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="780"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="248"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="417"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="780"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="223"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="250"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="390"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="427"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="691"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="840"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="250"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="390"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="427"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="691"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="840"/>
       <source>Error</source>
       <translation>Помилка</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="201"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="227"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="227"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="203"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="229"/>
       <source>Article filter files (*.json)</source>
       <translation>Файли фільтрів статей (*.json)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="249"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="251"/>
       <source>Cannot export filters, error: &apos;%1&apos;.</source>
       <translation>Неможливо експортувати фільтри, помилка: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="453"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="471"/>
       <source>This filter was saved!</source>
       <translation>Цей фільтр було збережено!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="461"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="479"/>
       <source>There was an error when saving the filter: %1.</source>
       <translation>Сталася помилка під час зберігання фільтру: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="466"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="484"/>
       <source>There was an error when saving the filter: %1.
 
 Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
@@ -3491,59 +3536,89 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
 Можливо, заголовок фільтру не унікальний. Якщо це так - змініть його.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="465"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="483"/>
       <source>Filter was not saved</source>
       <translation>Фільтр не було збережено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="791"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="851"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation>Скрипт не було приведено до гарного вигляду, чи встановлено інструмент &apos;clang-format&apos; ?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="418"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="428"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
       <translation>Неможливо зберегти новий фільтр, помилка: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="203"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="229"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="205"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="231"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="231"/>
       <source>Select article filters export file</source>
       <translation type="unfinished">Select article filters export file</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="222"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="224"/>
       <source>Cannot import filters, error: &apos;%1&apos;.</source>
       <translation type="unfinished">Cannot import filters, error: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="357"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="359"/>
       <source>Context menu</source>
       <translation>Контекстне меню</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="359"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="361"/>
       <source>Filter articles like this</source>
       <translation>Фільтрувати статті на кшталт цього</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="406"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="391"/>
+      <source>Cannot remove article filter, error: &apos;%1&apos;.</source>
+      <translation type="unfinished">Cannot remove article filter, error: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="416"/>
       <source>New article filter</source>
       <translation>Новий фільтр статей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="659"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="546"/>
+      <source>Process existing articles?</source>
+      <translation type="unfinished">Process existing articles?</translation>
+    </message>
+    <message numerus="yes">
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="547"/>
+      <source>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</source>
+      <translation type="unfinished">
+        <numerusform>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</numerusform>
+        <numerusform>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</numerusform>
+        <numerusform>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</numerusform>
+        <numerusform>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</numerusform>
+      </translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="551"/>
+      <source>The filter can modify article states or remove articles.</source>
+      <translation type="unfinished">The filter can modify article states or remove articles.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="692"/>
+      <source>Cannot change article-filter assignment, error: &apos;%1&apos;.</source>
+      <translation type="unfinished">Cannot change article-filter assignment, error: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="719"/>
       <source>Assign article filter to folder?</source>
       <translation type="unfinished">Assign article filter to folder?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="659"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="719"/>
       <source>Remove article filter from folder?</source>
       <translation type="unfinished">Remove article filter from folder?</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="661"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="721"/>
       <source>The article filter &apos;%1&apos; will be assigned to %n feed(s) in folder &apos;%2&apos; and its subfolders.</source>
       <translation type="unfinished">
         <numerusform>The article filter &apos;%1&apos; will be assigned to %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
@@ -3553,7 +3628,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="665"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="725"/>
       <source>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</source>
       <translation type="unfinished">
         <numerusform>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
@@ -3563,24 +3638,24 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="669"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="704"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="704"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="729"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="764"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="764"/>
       <source>Do you want to continue?</source>
       <translation type="unfinished">Do you want to continue?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="695"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="755"/>
       <source>Assign article filter to all feeds?</source>
       <translation type="unfinished">Assign article filter to all feeds?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="695"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="755"/>
       <source>Remove article filter from all feeds?</source>
       <translation type="unfinished">Remove article filter from all feeds?</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="696"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="756"/>
       <source>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</source>
       <translation type="unfinished">
         <numerusform>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</numerusform>
@@ -3590,7 +3665,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="700"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="760"/>
       <source>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</source>
       <translation type="unfinished">
         <numerusform>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</numerusform>
@@ -3600,22 +3675,22 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="781"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="841"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool threw an error.</source>
       <translation type="unfinished">Script was not beautified, because &apos;clang-format&apos; tool threw an error.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="790"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="850"/>
       <source>Beautifier was running for too long</source>
       <translation type="unfinished">Beautifier was running for too long</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="375"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="377"/>
       <source>Are you sure?</source>
       <translation>Ви впевнені?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="376"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="378"/>
       <source>Do you really want to remove selected filter?</source>
       <translation>Ви дійсно бажаєте видалити обраний фільтр?</translation>
     </message>
@@ -3833,7 +3908,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <translation>Діалог</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formprogressworker.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/dialogs/formprogressworker.cpp" line="19"/>
       <source>&amp;Cancel</source>
       <translation>Скасувати (&amp;C)</translation>
     </message>
@@ -3851,27 +3926,27 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <translation>Наразі не виконується жодна операція.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="47"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="49"/>
       <source>Restoration was initiated. Restart to proceed.</source>
       <translation>Ініційовано відновлення. Перезапустіть для продовження.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="48"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="50"/>
       <source>You need to restart the application for restoration process to finish.</source>
       <translation type="unfinished">You need to restart the application for restoration process to finish.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="53"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="55"/>
       <source>Database and/or settings were not copied to restoration directory successfully.</source>
       <translation type="unfinished">Database and/or settings were not copied to restoration directory successfully.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="71"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="73"/>
       <source>Select source directory</source>
       <translation>Оберіть вихідний каталог</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="79"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="81"/>
       <source>Good source directory is specified.</source>
       <translation>Надано прийнятний вихідний каталог.</translation>
     </message>
@@ -4260,132 +4335,152 @@ You have to restart manually.</source>
   <context>
     <name>FormUpdate</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="67"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="69"/>
       <source>unknown</source>
       <extracomment>Unknown release.</extracomment>
       <translation>невідомо</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="71"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="73"/>
       <source>List with updates was not
 downloaded successfully.</source>
       <translation>Перелік оновлень, що
 не були успішно завантажені.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="96"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="98"/>
       <source>New release available.</source>
       <translation>Доступна нова версія.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="70"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="72"/>
       <source>Error: &apos;%1&apos;.</source>
       <translation>Помилка: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="105"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="107"/>
       <source>No new release available.</source>
       <translation>Немає нових доступних версій.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="106"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="108"/>
       <source>This release is not newer than
 currently installed one.</source>
       <translation>Ця версія не є новішою за встановлену.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="32"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="34"/>
       <source>Download new installation files.</source>
       <translation>Завантажити нові інсталяційні файли.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="205"/>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="207"/>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="207"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="198"/>
+      <source>Cannot save update file: &apos;%1&apos;</source>
+      <translation type="unfinished">Cannot save update file: &apos;%1&apos;</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="199"/>
+      <source>Update file could not be saved. Try again or update manually.</source>
+      <translation type="unfinished">Update file could not be saved. Try again or update manually.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="200"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
+      <source>Retry download</source>
+      <translation type="unfinished">Retry download</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="210"/>
       <source>Error occurred</source>
       <translation type="unfinished">Error occurred</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="206"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="211"/>
       <source>Error occurred while downloading the package.</source>
       <translation type="unfinished">Error occurred while downloading the package.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="241"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="248"/>
       <source>Cannot update application</source>
       <translation>Неможливо оновити застосунок</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="118"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="120"/>
       <source>Downloaded %1% (update size is %2 kB).</source>
       <translation>Завантажено %1% (розмір оновлення %2 kB).</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="123"/>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="255"/>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="255"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="125"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="265"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="265"/>
       <source>Downloading update...</source>
       <translation>Завантаження оновлення...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="197"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="189"/>
       <source>Downloaded successfully</source>
       <translation>Завантажено успішно</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="36"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="38"/>
       <source>Go to application website</source>
       <translation>Перейти на вебсайт застосунку</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="199"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="191"/>
       <source>Install</source>
       <translation>Встановити</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="242"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="249"/>
       <source>Cannot launch external updater. Update application manually.</source>
       <translation>Неможливо запустити зовнішній оновлювач. Оновіть програму вручну.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="31"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="33"/>
       <source>Download selected update</source>
       <translation>Завантажити обране оновлення</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="37"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="39"/>
       <source>Go to application website to get update packages manually.</source>
       <translation>Перейти на сайт застосунку для ручного завантаження пакетів оновлень.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="83"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="85"/>
       <source>No releases available.</source>
       <translation type="unfinished">No releases available.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="84"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="86"/>
       <source>There are no available releases.</source>
       <translation type="unfinished">There are no available releases.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="97"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="99"/>
       <source>This is a new version which can be
 downloaded.</source>
       <translation type="unfinished">This is a new version which can be
 downloaded.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="165"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="136"/>
+      <source>No temporary directory is available for the update file.</source>
+      <translation type="unfinished">No temporary directory is available for the update file.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="156"/>
       <source> (size </source>
       <translation> (розмір </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="180"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="171"/>
       <source>Available update files</source>
       <translation>Доступні файли оновлень</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="198"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="190"/>
       <source>Package was downloaded successfully.
 You can install it now.</source>
       <translation>Пакет успішно завантажено.
@@ -5193,19 +5288,19 @@ Login tokens expiration: %2</source>
       <translation>Кількість міток: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="117"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="107"/>
       <source>Cannot create label: %1.</source>
       <translation>Неможливо створити мітку: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="125"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="115"/>
       <source>This account does not allow you to create labels.</source>
       <translation>Цей обліковий запис не дозволяє Вам створювати мітки.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="116"/>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="124"/>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="124"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="106"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="114"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="114"/>
       <source>Not allowed</source>
       <translation>Заборонено</translation>
     </message>
@@ -5534,27 +5629,27 @@ Login tokens expiration: %2</source>
   <context>
     <name>MariaDbDriver</name>
     <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="76"/>
+      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="75"/>
       <source>MySQL server works as expected.</source>
       <translation>Сервер MySQL працює згідно з очікуваннями.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="79"/>
+      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="78"/>
       <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
       <translation>Обрана база даних не існує (поки що). Вона буде створена. Все в порядку.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="84"/>
+      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="83"/>
       <source>No MySQL server is running in the target destination.</source>
       <translation>Жодного сервера MySQL не запущено в цільовому місці призначення.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="87"/>
+      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="86"/>
       <source>Access denied. Invalid username or password used.</source>
       <translation>Відмовлено в доступі. Неправильне ім'я користувача або пароль.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="90"/>
+      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
       <source>Unknown error: &apos;%1&apos;.</source>
       <translation>Невідома помилка: &apos;%1&apos;.</translation>
     </message>
@@ -6296,29 +6391,29 @@ Login tokens expiration: %2</source>
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="971"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="972"/>
       <source>Problem with starting external e-mail client</source>
       <translation>Проблема із запуском зовнішнього клієнта електронної пошти</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="972"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="973"/>
       <source>External e-mail client could not be started.</source>
       <translation>Неможливо запустити зовнішній клієнт електронної пошти.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="616"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="617"/>
       <source>Open with external tool</source>
       <translation>Відкрити за допомогою зовнішнього інструмента</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="365"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="366"/>
       <source>Use source-specific article list columns</source>
       <translation type="unfinished">Use source-specific article list columns</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="770"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="771"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="771"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="772"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="772"/>
       <source>%n selected article(s)</source>
       <translation>
         <numerusform>%n обрана стаття</numerusform>
@@ -6328,16 +6423,16 @@ Login tokens expiration: %2</source>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="905"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1249"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1249"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="906"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
       <source>Filtering changed</source>
       <translation>Фільтрування змінено</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="906"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="907"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1251"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1251"/>
       <source>%n article(s) left after filtering change</source>
       <translation>
         <numerusform>залишилася %n стаття після зміни фільтрування</numerusform>
@@ -6347,32 +6442,32 @@ Login tokens expiration: %2</source>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="937"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="938"/>
       <source>No URL</source>
       <translation>Без URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="938"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="939"/>
       <source>Article cannot be played in media player as it has no URL</source>
       <translation>Стаття не може бути відтворена у медіа плеєрі через відсутність URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1276"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1277"/>
       <source>Cannot run external tool</source>
       <translation>Неможливо запустити зовнішній інструмент</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1277"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1278"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>Зовнішній інструмент &apos;%1&apos; неможливо запустити.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="636"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="637"/>
       <source>No external tools activated</source>
       <translation>Не активовано жодного зовнішнього інструмента</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="596"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="597"/>
       <source>Context menu for articles</source>
       <translation>Контекстне меню для статей</translation>
     </message>
@@ -6873,7 +6968,7 @@ Login tokens expiration: %2</source>
   <context>
     <name>QObject</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="704"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="707"/>
       <source>
 
 + %n other feeds.</source>
@@ -7024,62 +7119,62 @@ List of supported readers:</source>
       <translation>Не вдалося увійти</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="647"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="677"/>
       <source>interesting stuff</source>
       <translation>цікаві штуки</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="650"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="680"/>
       <source>interesting stuff (highlighted)</source>
       <translation>цікаві штуки (виділено)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="653"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="683"/>
       <source>errored items</source>
       <translation>елементи з помилками</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="656"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="686"/>
       <source>errored items (highlighted)</source>
       <translation>елементи з помилками (виділені)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="659"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="689"/>
       <source>items with new articles</source>
       <translation>елементи з новими статтями</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="662"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="692"/>
       <source>items with new articles (highlighted)</source>
       <translation>елементи з новими статтями (виділені)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="665"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="695"/>
       <source>OK-ish color</source>
       <translation>Прийнятний колір</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="668"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="698"/>
       <source>disabled items</source>
       <translation>вимкнені елементи</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="671"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="701"/>
       <source>folders background</source>
       <translation>фон тек</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="674"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="704"/>
       <source>folders background (highlighted)</source>
       <translation type="unfinished">folders background (highlighted)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="677"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="707"/>
       <source>article counts</source>
       <translation type="unfinished">article counts</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="680"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="710"/>
       <source>article counts (highlighted)</source>
       <translation type="unfinished">article counts (highlighted)</translation>
     </message>
@@ -7187,143 +7282,148 @@ List of supported readers:</source>
       <translation>не є Мапою сайту</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="612"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="627"/>
       <source>Copy text</source>
       <translation>Копіювати текст</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="613"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="628"/>
       <source>Copy link</source>
       <translation>Копіювати посилання</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="617"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="633"/>
       <source>Copy image link</source>
       <translation>Копіювати посилання на зображення</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="615"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="631"/>
       <source>Copy image</source>
       <translation>Копіювати зображення</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="443"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="456"/>
       <source>Context menu for article viewer</source>
       <translation>Контекстне меню переглядача статей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="413"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="619"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="619"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="426"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="635"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="635"/>
       <source>Save image</source>
       <translation>Зберегти зображення</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="378"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="379"/>
       <source>Image not decoded</source>
       <translation type="unfinished">Image not decoded</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="379"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="380"/>
       <source>Failed to decode image &apos;%1&apos;.</source>
       <translation type="unfinished">Failed to decode image &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="386"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="433"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="433"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="387"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="446"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="446"/>
       <source>Image not downloaded</source>
       <translation type="unfinished">Image not downloaded</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="387"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="434"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="434"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="388"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="447"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="447"/>
       <source>Failed to download image &apos;%1&apos; with error &apos;%2&apos;.</source>
       <translation type="unfinished">Failed to download image &apos;%1&apos; with error &apos;%2&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="415"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="428"/>
       <source>image.%1</source>
       <translation>зображення. %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="416"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="429"/>
       <source>Images (%1)</source>
       <translation>Зображення (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="602"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="617"/>
       <source>Print...</source>
       <translation>Друкувати...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="604"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="619"/>
       <source>Load external images</source>
       <translation>Завантажити зовнішні зображення</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="605"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="620"/>
       <source>Save as...</source>
       <translation>Зберегти як...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="607"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="622"/>
       <source>Open in new tab</source>
       <translation>Відкрити у новій вкладці</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="683"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="629"/>
+      <source>Download</source>
+      <translation>Завантажити</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="702"/>
       <source>Done</source>
       <translation>Готово</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="684"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="703"/>
       <source>Printing is finished on printer %1.</source>
       <translation>Друк завершено на принтері %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="690"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="709"/>
       <source>Error</source>
       <translation>Помилка</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="691"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="710"/>
       <source>Printing failed.</source>
       <translation>Друк не вдався.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="457"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="470"/>
       <source>Open with external tool</source>
       <translation>Відкрити за допомогою зовнішнього інструмента</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="522"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="537"/>
       <source>HTML files (*.htm *.html)</source>
       <translation>Файли HTML (*.htm *.html)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="523"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="538"/>
       <source>Plain text files (*.txt)</source>
       <translation>Звичайні текстові файли (*.txt)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="532"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="547"/>
       <source>Save contents in HTML or TXT format</source>
       <translation>Зберегти вміст у форматі HTML або TXT</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="609"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="624"/>
       <source>Open in external browser</source>
       <translation>Відкрити в зовнішньому браузері</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="611"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="626"/>
       <source>Play in media player</source>
       <translation>Відтворити у медіа плеєрі</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="622"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="638"/>
       <source>(not supported)</source>
       <translation>(не підтримується)</translation>
     </message>
@@ -7363,7 +7463,7 @@ List of supported readers:</source>
       <translation>Обрати файл, що вже існує</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/exceptions/filteringexception.cpp" line="17"/>
+      <location filename="../src/librssguard/exceptions/filteringexception.cpp" line="21"/>
       <source>%1
 line: %2
 stack: %3</source>
@@ -7407,7 +7507,7 @@ stack: %3</source>
       <translation>помилка: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="176"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="177"/>
       <source>image</source>
       <translation>зображення</translation>
     </message>
@@ -7415,6 +7515,65 @@ stack: %3</source>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <source>Login successful</source>
       <translation type="unfinished">Login successful</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="163"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="170"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="170"/>
+      <source>Cannot read downloaded file data.</source>
+      <translation type="unfinished">Cannot read downloaded file data.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="174"/>
+      <source>Cannot write downloaded file data.</source>
+      <translation type="unfinished">Cannot write downloaded file data.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="862"/>
+      <source>Cannot create temporary file for download.</source>
+      <translation type="unfinished">Cannot create temporary file for download.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="866"/>
+      <source>Download file</source>
+      <translation type="unfinished">Download file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="901"/>
+      <source>Downloaded %1 kB...</source>
+      <translation>Завантажено %1 kB...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="905"/>
+      <source>Failed to download file &apos;%1&apos;.</source>
+      <translation type="unfinished">Failed to download file &apos;%1&apos;.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="915"/>
+      <source>Select file destination</source>
+      <translation type="unfinished">Select file destination</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="929"/>
+      <source>Cannot open file &apos;%1&apos; for writing.</source>
+      <translation type="unfinished">Cannot open file &apos;%1&apos; for writing.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="938"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="946"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="946"/>
+      <source>Cannot download file</source>
+      <translation type="unfinished">Cannot download file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="939"/>
+      <source>File cannot be downloaded because some network error happened.</source>
+      <translation type="unfinished">File cannot be downloaded because some network error happened.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="947"/>
+      <source>File cannot be downloaded because some general error happened.</source>
+      <translation type="unfinished">File cannot be downloaded because some general error happened.</translation>
     </message>
   </context>
   <context>
@@ -7556,12 +7715,12 @@ stack: %3</source>
       <translation>Кошик</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="73"/>
+      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="63"/>
       <source>Are you sure?</source>
       <translation>Ви впевнені?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="74"/>
+      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="64"/>
       <source>Do you really want to empty your recycle bin?</source>
       <translation>Ви дійсно хочете очистити ваш кошик?</translation>
     </message>
@@ -7584,7 +7743,7 @@ stack: %3</source>
   <context>
     <name>RootItem</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="127"/>
+      <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="148"/>
       <source>%n unread article(s).</source>
       <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
       <translation>
@@ -7772,67 +7931,67 @@ stack: %3</source>
   <context>
     <name>ServiceRoot</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="104"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="108"/>
       <source>Cannot update label</source>
       <translation>Неможливо оновити мітку</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="105"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="109"/>
       <source>Failed to update label with new information: %1.</source>
       <translation>Не вдалося оновити мітку новою інформацією: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="132"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="136"/>
       <source>Cannot update probe item</source>
       <translation>Неможливо оновити елемент зонду</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="133"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="137"/>
       <source>Failed to update selected probe: %1.</source>
       <translation>Не вдалося оновити обраний зонд: %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="143"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="147"/>
       <source>Unsupported</source>
       <translation>Не підтримується</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="143"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="147"/>
       <source>This is not supported (yet).</source>
       <translation type="unfinished">This is not supported (yet).</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="192"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="185"/>
       <source>New query</source>
       <translation>Новий запит</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="204"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="197"/>
       <source>Restore recycle bin</source>
       <translation>Відновити елементи кошика</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="206"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="199"/>
       <source>Empty recycle bin</source>
       <translation>Очистити кошик</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="220"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="213"/>
       <source>New label</source>
       <translation>Нова мітка</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="248"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="241"/>
       <source>Synchronize folders &amp;&amp; other items</source>
       <translation>Синхронізувати теки &amp;&amp; інші елементи</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="257"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="250"/>
       <source>Synchronize article cache</source>
       <translation>Синхронізувати кеш статей</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="404"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="397"/>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
@@ -7841,27 +8000,27 @@ Number of disabled feeds: %3</source>
 Кількість вимкнених стрічок: %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="713"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="706"/>
       <source>unknown synchronization error</source>
       <translation type="unfinished">unknown synchronization error</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="735"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="728"/>
       <source>no feed tree obtained</source>
       <translation>дерева стрічки не отримано</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="811"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="804"/>
       <source>unknown data returned from sync-in</source>
       <translation>повернуто невизначені дані після синхронізації</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="818"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="811"/>
       <source>Error when fetching list of feeds</source>
       <translation>Помилка під час завантаження списку стрічок</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="819"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="812"/>
       <source>Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation type="unfinished">Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</translation>
     </message>
@@ -7940,8 +8099,8 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Зовнішній веббраузер</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="154"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="325"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="312"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Якщо відсутнє позначення, тоді використовується веббраузер системи за замовчуванням.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -7952,8 +8111,8 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Використовувати користувацький зовнішній веббраузер</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="312"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="154"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="325"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide e-mail client is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide e-mail client is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -8087,72 +8246,72 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation type="unfinished">Note that speed of the used MySQL server and latency of the used connection medium HEAVILY influence the final performance of this application. Using slow database connections leads to bad performance when browsing feeds or articles.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="102"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="103"/>
       <source>Hostname is empty.</source>
       <translation>Ім'я хоста порожнє.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="105"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="106"/>
       <source>Hostname looks ok.</source>
       <translation>Ім'я хоста в порядку.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="111"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="112"/>
       <source>Username is empty.</source>
       <translation>Ім'я користувача порожнє.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="114"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="115"/>
       <source>Username looks ok.</source>
       <translation>Ім'я користувача в порядку.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="120"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="121"/>
       <source>Password is empty.</source>
       <translation>Пароль порожній.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="123"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="124"/>
       <source>Password looks ok.</source>
       <translation>Пароль в порядку.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="129"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="130"/>
       <source>Working database is empty.</source>
       <translation>Робоча база даних порожня.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="132"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="133"/>
       <source>Working database is ok.</source>
       <translation>Робоча база даних в порядку.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="153"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="154"/>
       <source>No connection test triggered so far.</source>
       <translation>Допоки жодного тесту з'єднання не було активовано.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="154"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="155"/>
       <source>You did not execute any connection test yet.</source>
       <translation type="unfinished">You did not execute any connection test yet.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="173"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="174"/>
       <source>Hostname of your MySQL server</source>
       <translation>Ім'я хоста вашого сервера MySQL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="174"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="175"/>
       <source>Username to login with</source>
       <translation>Ім'я користувача для входу</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="175"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="176"/>
       <source>Password for your username</source>
       <translation>Пароль для вашого користувача</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="176"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="177"/>
       <source>Working database which you have full access to.</source>
       <translation>Робоча база даних до якої Ви маєте повний доступ.</translation>
     </message>
@@ -8997,17 +9156,17 @@ Description: %3</source>
       <translation>Перекладено завдяки: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="209"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="210"/>
       <source>Translators needed!</source>
       <translation>Необхідні перекладачі!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="210"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="211"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
       <translation>Переклад &apos;%1&apos; наразі завершено. Але усі добровольці, здатні надати допомогу з перекладом %2, вітаються.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="212"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="213"/>
       <source>Do you want to help with the translation now?</source>
       <translation>Ви хочете допомогти з перекладом?</translation>
     </message>
@@ -9393,19 +9552,19 @@ Description: %3</source>
   <context>
     <name>SkinFactory</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="321"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="351"/>
       <source>Written by </source>
       <translation>Автор </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="318"/>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="322"/>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="322"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="348"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="352"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="352"/>
       <source>unknown author</source>
       <translation>невідомий автор</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="557"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="587"/>
       <source>file %1 not found</source>
       <translation>файл %1 не знайдено</translation>
     </message>
@@ -10951,177 +11110,177 @@ Last login on: %4</source>
   <context>
     <name>WebFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="206"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="356"/>
       <source>JS enabled</source>
       <translation>JS увімкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="209"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="359"/>
       <source>JS can open popup windows</source>
       <translation>JS може відкривати спливні вікна</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="213"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="363"/>
       <source>JS can access clipboard</source>
       <translation>JS має доступ до буфера обміну</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="217"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
       <source>Hyperlinks can get focus</source>
       <translation>Гіперпосилання можуть отримувати фокус</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="220"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="370"/>
       <source>Local storage enabled</source>
       <translation>Локальне сховище увімкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="224"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="374"/>
       <source>Local content can access remote URLs</source>
       <translation>Локальний вміст має доступ до віддалених URL-адрес</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="227"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="377"/>
       <source>XSS auditing enabled</source>
       <translation>Аудит XSS увімкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="230"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="380"/>
       <source>Spatial navigation enabled</source>
       <translation>Просторову навігацію увімкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="234"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="384"/>
       <source>Local content can access local files</source>
       <translation>Локальний вміст має доступ до локальних файлів</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="237"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="387"/>
       <source>Hyperlink auditing enabled</source>
       <translation>Аудит гіперпосилань увімкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="240"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="390"/>
       <source>Animate scrolling</source>
       <translation>Анімувати прокрутку</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="243"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="393"/>
       <source>Error pages enabled</source>
       <translation>Сторінки помилок увімкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="246"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="396"/>
       <source>Plugins enabled</source>
       <translation>Плагіни увімкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="251"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="401"/>
       <source>Screen capture enabled</source>
       <translation>Захоплення екрану увімкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="254"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="404"/>
       <source>WebGL enabled</source>
       <translation>WebGL увімкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="258"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="408"/>
       <source>Accelerate 2D canvas</source>
       <translation>Прискорити 2D полотно</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="261"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="411"/>
       <source>Print element backgrounds</source>
       <translation>Друкувати фон елементів</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="265"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="415"/>
       <source>Allow running insecure content</source>
       <translation>Дозволити виконання незахищеного вмісту</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="269"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="419"/>
       <source>Allow geolocation on insecure origins</source>
       <translation>Дозволити геолокацію для незахищених джерел</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="275"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="425"/>
       <source>JS can activate windows</source>
       <translation>JS може активувати вікна</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="278"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="428"/>
       <source>Show scrollbars</source>
       <translation>Показувати смуги прокрутки</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="282"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="432"/>
       <source>Media playback with gestures</source>
       <translation>Відтворення медіа жестами</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="286"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="436"/>
       <source>WebRTC uses only public interfaces</source>
       <translation>WebRTC використовує лише публічні інтерфейси</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="289"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="439"/>
       <source>JS can paste from clipboard</source>
       <translation>JS може вставляти вміст із буфера обміну</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="292"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="442"/>
       <source>DNS prefetch enabled</source>
       <translation>Попереднє завантаження DNS увімкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="297"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="447"/>
       <source>PDF viewer enabled</source>
       <translation>Переглядач PDF увімкнено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="303"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="453"/>
       <source>Force dark mode</source>
       <translation>Примусовий темний режим</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="309"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="459"/>
       <source>Printing - print headers/footers.</source>
       <translation>Друк - друкувати верхні / нижні колонтитули.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="501"/>
       <source>Web cache cleared</source>
       <translation>Веб кеш очищено</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="352"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="502"/>
       <source>Web cache was cleared. List of visited links was cleared too.</source>
       <translation>Веб кеш було очищено. Список відвіданих посилань також було очищено.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="369"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="519"/>
       <source>File download</source>
       <translation>Завантаження файлу</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="370"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="520"/>
       <source>Download of file &apos;%1&apos; was offered.</source>
       <translation>Запропоновано завантаження файлу &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="372"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="522"/>
       <source>Copy file URL</source>
       <translation>Копіювати URL файлу</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="785"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="1040"/>
       <source>Navigate to website(s) manually</source>
       <translation type="unfinished">Navigate to website(s) manually</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="786"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="1041"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</source>
       <translation type="unfinished">%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</translation>
     </message>
