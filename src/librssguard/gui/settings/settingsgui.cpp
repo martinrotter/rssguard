@@ -119,6 +119,10 @@ void SettingsGui::loadUi() {
           this,
           &SettingsGui::dirtifySettings);
   connect(m_ui->m_gbCustomSkinColors, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_btnResetAllCustomSkinColors,
+          &QPushButton::clicked,
+          this,
+          &SettingsGui::resetAllCustomSkinColors);
   connect(m_ui->m_displayUnreadMessageCountOnTaskBar, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_displayUnreadMessageCountOnWindow, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_gbAppFont, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
@@ -405,6 +409,16 @@ void SettingsGui::resetCustomSkinColor() {
   SkinEnums::PaletteColors pal = SkinEnums::PaletteColors(sender()->objectName().toInt());
 
   clr_btn->setColor(qApp->skins()->colorForModel(pal, true).value<QColor>());
+}
+
+void SettingsGui::resetAllCustomSkinColors() {
+  const auto color_buttons = m_ui->m_gbCustomSkinColors->findChildren<ColorIconToolButton*>();
+
+  for (ColorIconToolButton* color_button : color_buttons) {
+    const auto palette_color = SkinEnums::PaletteColors(color_button->objectName().toInt());
+
+    color_button->setColor(qApp->skins()->colorForModel(palette_color, true).value<QColor>());
+  }
 }
 
 void SettingsGui::clearCustomSkinColor() {

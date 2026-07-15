@@ -3,6 +3,8 @@
 Released on: 2026-07-XX
 
 Added:
+* Article-list notifications can now switch pages with the mouse wheel while hovering the article list.
+* Custom skin colors can now be reset all at once to the colors defined by the current skin.
 * Image height optional limit returns. Now you can set image height separately for enclosures and for main article content. (#2339)
 * Show some additional information when hovering author/feed/date header in article previewer. (#2346)
 * Minimal-* skins now have separator drawn between article header and article body. (#2345)
@@ -39,7 +41,6 @@ Fixed:
 * Vulkan SDK library is deployed now on Windows if needed. (#2350)
 * When opening article with external tool from article list, it will get marked if the behavior is enabled in settings. (#2344)
 * When an article is unread and is "selected" via right-mouse click then the column sorting or phrase filtering does not mark the article read anymore. (#2347)
-
 
 5.2.2
 -----

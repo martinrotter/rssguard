@@ -179,7 +179,21 @@
          <property name="checkable">
           <bool>true</bool>
          </property>
-         <layout class="QFormLayout" name="m_layoutCustomColors"/>
+         <layout class="QVBoxLayout" name="verticalLayout_11">
+          <item>
+           <widget class="QPushButton" name="m_btnResetAllCustomSkinColors">
+            <property name="toolTip">
+             <string>Reset all custom colors to their values in the current skin</string>
+            </property>
+            <property name="text">
+             <string>Reset all colors</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <layout class="QFormLayout" name="m_layoutCustomColors"/>
+          </item>
+         </layout>
         </widget>
        </item>
       </layout>
