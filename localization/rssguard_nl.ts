@@ -525,7 +525,7 @@ Aantal uitgeschakelde feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="141"/>
       <source>this database cannot be used because it comes from too old major app version</source>
-      <translation type="unfinished">this database cannot be used because it comes from too old major app version</translation>
+      <translation>deze database kan niet worden gebruikt omdat het afkomstig is van een te oude versie van de applicatie</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="148"/>
@@ -559,12 +559,12 @@ Probeer de gebruikte databasenaam in de instellingen aan te passen en probeer he
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="79"/>
       <source>Cannot use database</source>
-      <translation type="unfinished">Cannot use database</translation>
+      <translation>Kan databank niet gebruiken</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="80"/>
       <source>Application cannot start because there is a problem with DB: %1.</source>
-      <translation type="unfinished">Application cannot start because there is a problem with DB: %1.</translation>
+      <translation>Applicatie kan niet starten omdat er een probleem is met DB: %1.</translation>
     </message>
   </context>
   <context>
@@ -1036,22 +1036,22 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="540"/>
       <source>Cannot parse Feedly collections JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Feedly collections JSON response: %1</translation>
+      <translation>Kan Feedly collecties JSON antwoord niet verwerken: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="545"/>
       <source>Feedly collections response is not a JSON array.</source>
-      <translation type="unfinished">Feedly collections response is not a JSON array.</translation>
+      <translation>Feedly verzamelt antwoord is geen JSON array.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="684"/>
       <source>Cannot parse Feedly tags JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Feedly tags JSON response: %1</translation>
+      <translation>Kan Feedly tags JSON antwoord niet verwerken: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="689"/>
       <source>Feedly tags response is not a JSON array.</source>
-      <translation type="unfinished">Feedly tags response is not a JSON array.</translation>
+      <translation>Feedly tags reactie is geen JSON array.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="743"/>
@@ -1460,7 +1460,7 @@ Item ID: %5</translation>
     <message>
       <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="123"/>
       <source>Article filter &apos;%1&apos; does not define a callable filterMessage() function.</source>
-      <translation type="unfinished">Article filter &apos;%1&apos; does not define a callable filterMessage() function.</translation>
+      <translation>Artikelfilter &apos;%1&apos; definieert geen functie voor de aanroep van filterMessage().</translation>
     </message>
   </context>
   <context>
@@ -1595,17 +1595,17 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="110"/>
       <source>Unsynchronized article changes</source>
-      <translation type="unfinished">Unsynchronized article changes</translation>
+      <translation>Niet-gesynchroniseerde artikelwijzigingen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="111"/>
       <source>This account has local article changes which could not be synchronized.</source>
-      <translation type="unfinished">This account has local article changes which could not be synchronized.</translation>
+      <translation>Dit account heeft lokale artikelwijzigingen die niet konden worden gesynchroniseerd.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="112"/>
       <source>If you continue editing the account, these pending local article changes will be discarded.</source>
-      <translation type="unfinished">If you continue editing the account, these pending local article changes will be discarded.</translation>
+      <translation>Als je de account blijft bewerken, worden deze lokale wijzigingen in afwachting van aanpassingen ongedaan gemaakt.</translation>
     </message>
   </context>
   <context>
@@ -2084,7 +2084,7 @@ Icoon thema folder -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="104"/>
       <source>Database cleanup failed.</source>
-      <translation type="unfinished">Database cleanup failed.</translation>
+      <translation>Databank opschonen mislukt.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="109"/>
@@ -3515,27 +3515,27 @@ Misschien is de filter titel niet uniek. Als dat het geval is &apos;verander het
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="659"/>
       <source>Assign article filter to folder?</source>
-      <translation type="unfinished">Assign article filter to folder?</translation>
+      <translation>Artikelfilter toewijzen aan map?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="659"/>
       <source>Remove article filter from folder?</source>
-      <translation type="unfinished">Remove article filter from folder?</translation>
+      <translation>Artikelfilter verwijderen van map?</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="661"/>
       <source>The article filter &apos;%1&apos; will be assigned to %n feed(s) in folder &apos;%2&apos; and its subfolders.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be assigned to %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
-        <numerusform>The article filter &apos;%1&apos; will be assigned to %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
+      <translation>
+        <numerusform>Het artikelfilter &apos;%1&apos; wordt toegewezen aan %n feed(s) in de map &apos;%2&apos; en de bijbehorende submappen.</numerusform>
+        <numerusform>Het artikelfilter &apos;%1&apos; wordt toegewezen aan alle %n feed(s) in account &apos;%2&apos;.</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="665"/>
       <source>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
-        <numerusform>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
+      <translation>
+        <numerusform>Het artikelfilter &apos;%1&apos; zal verwijderd worden uit %n feed(s) in de map &apos;%2&apos; en de bijbehorende submappen.</numerusform>
+        <numerusform>Het artikelfilter &apos;%1&apos; zal verwijderd worden uit %n feed(s) in de map &apos;%2&apos; en de bijbehorende submappen.</numerusform>
       </translation>
     </message>
     <message>
@@ -3543,32 +3543,32 @@ Misschien is de filter titel niet uniek. Als dat het geval is &apos;verander het
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="704"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="704"/>
       <source>Do you want to continue?</source>
-      <translation type="unfinished">Do you want to continue?</translation>
+      <translation>Wil je doorgaan?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="695"/>
       <source>Assign article filter to all feeds?</source>
-      <translation type="unfinished">Assign article filter to all feeds?</translation>
+      <translation>Artikelfilter toewijzen aan alle feeds?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="695"/>
       <source>Remove article filter from all feeds?</source>
-      <translation type="unfinished">Remove article filter from all feeds?</translation>
+      <translation>Artikelfilter van alle feeds verwijderen?</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="696"/>
       <source>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</numerusform>
-        <numerusform>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</numerusform>
+      <translation>
+        <numerusform>Het artikelfilter &apos;%1&apos; wordt toegewezen aan alle %n feed(s) in account &apos;%2&apos;.</numerusform>
+        <numerusform>Het artikelfilter &apos;%1&apos; wordt toegewezen aan alle %n feed(s) in account &apos;%2&apos;.</numerusform>
       </translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="700"/>
       <source>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</source>
-      <translation type="unfinished">
-        <numerusform>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</numerusform>
-        <numerusform>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</numerusform>
+      <translation>
+        <numerusform>Het artikelfilter &apos;%1&apos; zal uit alle %n feed(s) in account &apos;%2&apos; worden verwijderd.</numerusform>
+        <numerusform>Het artikelfilter &apos;%1&apos; zal uit alle %n feed(s) in account &apos;%2&apos; worden verwijderd.</numerusform>
       </translation>
     </message>
     <message>
@@ -4961,22 +4961,22 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="713"/>
       <source>Cannot parse GReader labels JSON response: %1</source>
-      <translation type="unfinished">Cannot parse GReader labels JSON response: %1</translation>
+      <translation>Kan GReader labels JSON antwoord niet verwerken: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="719"/>
       <source>GReader labels response does not contain a JSON array of labels.</source>
-      <translation type="unfinished">GReader labels response does not contain a JSON array of labels.</translation>
+      <translation>Het antwoord van de GReader labels bevat geen JSON reeks labels.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="727"/>
       <source>Cannot parse GReader subscriptions JSON response: %1</source>
-      <translation type="unfinished">Cannot parse GReader subscriptions JSON response: %1</translation>
+      <translation>Kan GReader abonnementen JSON antwoord niet verwerken: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="733"/>
       <source>GReader subscriptions response does not contain a JSON array of subscriptions.</source>
-      <translation type="unfinished">GReader subscriptions response does not contain a JSON array of subscriptions.</translation>
+      <translation>GReader abonnementen antwoord bevat geen JSON array van abonnementen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/greadernetwork.cpp" line="1258"/>
@@ -6730,22 +6730,22 @@ Logintoken verloopt: %2</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="172"/>
       <source>Cannot parse Nextcloud folders JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Nextcloud folders JSON response: %1</translation>
+      <translation>Kan Nextcloud mappen JSON antwoord niet verwerken: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="179"/>
       <source>Nextcloud folders response does not contain a JSON array of folders.</source>
-      <translation type="unfinished">Nextcloud folders response does not contain a JSON array of folders.</translation>
+      <translation>Antwoord van Nextcloud mappen bevat geen JSON-array van mappen.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="188"/>
       <source>Cannot parse Nextcloud feeds JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Nextcloud feeds JSON response: %1</translation>
+      <translation>Kan Nextcloud feeds JSON antwoord niet verwerken: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="195"/>
       <source>Nextcloud feeds response does not contain a JSON array of feeds.</source>
-      <translation type="unfinished">Nextcloud feeds response does not contain a JSON array of feeds.</translation>
+      <translation>Nextcloud feeds antwoord bevat geen JSON array van feeds.</translation>
     </message>
   </context>
   <context>
@@ -8387,13 +8387,13 @@ Dit kan de applicatie enorm versnellen als je honderdduizenden artikelen hebt, m
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="394"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="757"/>
       <source>Limit height of embedded attachment images</source>
-      <translation type="unfinished">Limit height of embedded attachment images</translation>
+      <translation>Limiteer hoogte van ingesloten bijlagen afbeeldingen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="437"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="758"/>
       <source>Limit height of article images</source>
-      <translation type="unfinished">Limit height of article images</translation>
+      <translation>Limiteer hoogte van artikelafbeeldingen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
