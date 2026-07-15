@@ -760,7 +760,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="404"/>
       <source>article filtering error</source>
-      <translation type="unfinished">article filtering error</translation>
+      <translation>記事フィルタリングエラー</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="407"/>
@@ -847,12 +847,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="200"/>
       <source>file contains invalid JSON: %1</source>
-      <translation type="unfinished">file contains invalid JSON: %1</translation>
+      <translation>ファイルに無効な JSON が含まれています: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="204"/>
       <source>file does not contain a filter list</source>
-      <translation type="unfinished">file does not contain a filter list</translation>
+      <translation>ファイルにフィルターリストが含まれていません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="244"/>
@@ -862,12 +862,12 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="342"/>
       <source>Cannot start database transaction when removing article filter.</source>
-      <translation type="unfinished">Cannot start database transaction when removing article filter.</translation>
+      <translation>記事フィルターの削除時にデータベーストランザクションを開始できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="350"/>
       <source>Cannot commit database transaction when removing article filter.</source>
-      <translation type="unfinished">Cannot commit database transaction when removing article filter.</translation>
+      <translation>記事フィルターの削除時にデータベーストランザクションをコミットできません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="534"/>
@@ -1479,7 +1479,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="111"/>
       <source>article filter &apos;%1&apos; must return valid FilteringAction value.</source>
-      <translation type="unfinished">article filter &apos;%1&apos; must return valid FilteringAction value.</translation>
+      <translation>記事フィルター &apos;%1&apos; は有効な FilteringAction 値を返す必要があります</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="219"/>
@@ -2236,7 +2236,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="244"/>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="171"/>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>キャンセル</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="266"/>
@@ -2261,7 +2261,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="183"/>
       <source>Cancelling...</source>
-      <translation type="unfinished">Cancelling...</translation>
+      <translation>キャンセル中…</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="205"/>
@@ -3546,7 +3546,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="391"/>
       <source>Cannot remove article filter, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot remove article filter, error: &apos;%1&apos;.</translation>
+      <translation>記事フィルターを削除できません。エラー: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="416"/>
@@ -3556,24 +3556,24 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="546"/>
       <source>Process existing articles?</source>
-      <translation type="unfinished">Process existing articles?</translation>
+      <translation>既存の記事を処理しますか？</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="547"/>
       <source>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</source>
-      <translation type="unfinished">
-        <numerusform>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</numerusform>
+      <translation>
+        <numerusform>選択された記事フィルターを使用して、チェックされた %n 個のフィード内の既存の記事を処理しますか？</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="551"/>
       <source>The filter can modify article states or remove articles.</source>
-      <translation type="unfinished">The filter can modify article states or remove articles.</translation>
+      <translation>フィルターは記事の状態を変更したり、記事を削除したりする可能性があります</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="692"/>
       <source>Cannot change article-filter assignment, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot change article-filter assignment, error: &apos;%1&apos;.</translation>
+      <translation>記事フィルターの割り当てを変更できません。エラー: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="719"/>
@@ -4332,19 +4332,19 @@ currently installed one.</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="198"/>
       <source>Cannot save update file: &apos;%1&apos;</source>
-      <translation type="unfinished">Cannot save update file: &apos;%1&apos;</translation>
+      <translation>更新ファイルを保存できません: &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="199"/>
       <source>Update file could not be saved. Try again or update manually.</source>
-      <translation type="unfinished">Update file could not be saved. Try again or update manually.</translation>
+      <translation>更新ファイルを保存できませんでした。再試行するか、手動で更新してください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="200"/>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
       <source>Retry download</source>
-      <translation type="unfinished">Retry download</translation>
+      <translation>ダウンロードを再試行</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="210"/>
@@ -4423,7 +4423,7 @@ downloaded.</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="136"/>
       <source>No temporary directory is available for the update file.</source>
-      <translation type="unfinished">No temporary directory is available for the update file.</translation>
+      <translation>更新ファイル用の一時ディレクトリが利用できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="156"/>
@@ -7444,22 +7444,22 @@ stack: %3</source>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="170"/>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="170"/>
       <source>Cannot read downloaded file data.</source>
-      <translation type="unfinished">Cannot read downloaded file data.</translation>
+      <translation>ダウンロードしたファイルデータを読み込めません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="174"/>
       <source>Cannot write downloaded file data.</source>
-      <translation type="unfinished">Cannot write downloaded file data.</translation>
+      <translation>ダウンロードしたファイルデータを書き込めません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="862"/>
       <source>Cannot create temporary file for download.</source>
-      <translation type="unfinished">Cannot create temporary file for download.</translation>
+      <translation>ダウンロード用の一時ファイルを作成できません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="866"/>
       <source>Download file</source>
-      <translation type="unfinished">Download file</translation>
+      <translation>ファイルのダウンロード</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="901"/>
@@ -7469,34 +7469,34 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="905"/>
       <source>Failed to download file &apos;%1&apos;.</source>
-      <translation type="unfinished">Failed to download file &apos;%1&apos;.</translation>
+      <translation>ファイル &apos;%1&apos; のダウンロードに失敗しました</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="915"/>
       <source>Select file destination</source>
-      <translation type="unfinished">Select file destination</translation>
+      <translation>ファイルの保存先を選択</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="929"/>
       <source>Cannot open file &apos;%1&apos; for writing.</source>
-      <translation type="unfinished">Cannot open file &apos;%1&apos; for writing.</translation>
+      <translation>書き込み用にファイル &apos;%1&apos; を開けません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="938"/>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="946"/>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="946"/>
       <source>Cannot download file</source>
-      <translation type="unfinished">Cannot download file</translation>
+      <translation>ファイルをダウンロードできません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="939"/>
       <source>File cannot be downloaded because some network error happened.</source>
-      <translation type="unfinished">File cannot be downloaded because some network error happened.</translation>
+      <translation>ネットワークエラーが発生したため、ファイルをダウンロードできません</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="947"/>
       <source>File cannot be downloaded because some general error happened.</source>
-      <translation type="unfinished">File cannot be downloaded because some general error happened.</translation>
+      <translation>一般的なエラーが発生したため、ファイルをダウンロードできません</translation>
     </message>
   </context>
   <context>
