@@ -39,7 +39,7 @@ class ArticleListNotification : public BaseToastNotification {
     void markAsRead(Feed* feed, const QList<Message>& articles);
 
     Feed* selectedFeed(int index = -1) const;
-    const Message& selectedMessage() const;
+    Message& selectedMessage();
 
   private:
     Ui::ArticleListNotification m_ui;

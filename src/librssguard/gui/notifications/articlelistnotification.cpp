@@ -129,11 +129,28 @@ void ArticleListNotification::showFeed(int index) {
 
 void ArticleListNotification::openArticleInWebBrowser() {
   Feed* fd = selectedFeed();
-  Message msg = selectedMessage();
+  const QModelIndex current_index = m_ui.m_treeArticles->currentIndex();
+  Message& msg = selectedMessage();
 
-  markAsRead(fd, {msg});
+  if (!msg.m_isRead) {
+    const int message_id = msg.m_id;
 
-  emit oneArticleSetReadUnreadById(msg.m_id, RootItem::ReadStatus::Read);
+    markAsRead(fd, {msg});
+    m_model->setMessageRead(current_index, true);
+
+    const auto cached_messages = m_newMessages.find(fd);
+
+    if (cached_messages != m_newMessages.end()) {
+      for (Message& cached_message : cached_messages.value()) {
+        if (cached_message.m_id == message_id) {
+          cached_message.m_isRead = true;
+          break;
+        }
+      }
+    }
+
+    emit oneArticleSetReadUnreadById(message_id, RootItem::ReadStatus::Read);
+  }
 
   if (qApp->web()->openUrlInExternalBrowser(msg.m_url, true) && m_newMessages.size() == 1 &&
       m_newMessages.value(m_newMessages.keys().at(0)).size() == 1) {
@@ -143,11 +160,34 @@ void ArticleListNotification::openArticleInWebBrowser() {
 }
 
 void ArticleListNotification::markAllRead() {
-  for (Feed* fd : m_newMessages.keys()) {
-    markAsRead(fd, m_newMessages.value(fd));
+  bool any_message_marked_read = false;
+
+  for (auto it = m_newMessages.begin(); it != m_newMessages.end(); ++it) {
+    QList<Message> unread_messages;
+
+    for (const Message& message : std::as_const(it.value())) {
+      if (!message.m_isRead) {
+        unread_messages.append(message);
+      }
+    }
+
+    if (unread_messages.isEmpty()) {
+      continue;
+    }
+
+    markAsRead(it.key(), unread_messages);
+
+    for (Message& message : it.value()) {
+      message.m_isRead = true;
+    }
+
+    any_message_marked_read = true;
   }
 
-  emit dataChangeNotificationTriggered(nullptr, FeedsModel::ExternalDataChange::MarkedRead);
+  if (any_message_marked_read) {
+    showFeed(m_ui.m_cmbFeeds->currentIndex());
+    emit dataChangeNotificationTriggered(selectedFeed(), FeedsModel::ExternalDataChange::MarkedAllReadFromNotification);
+  }
 }
 
 void ArticleListNotification::markAsRead(Feed* feed, const QList<Message>& articles) {
@@ -178,7 +218,7 @@ Feed* ArticleListNotification::selectedFeed(int index) const {
   }
 }
 
-const Message& ArticleListNotification::selectedMessage() const {
+Message& ArticleListNotification::selectedMessage() {
   if (m_ui.m_treeArticles->currentIndex().isValid()) {
     return m_model->message(m_ui.m_treeArticles->currentIndex());
   }

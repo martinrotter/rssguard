@@ -24,7 +24,8 @@ class RSSGUARD_DLLSPEC FeedsModel : public QAbstractItemModel {
       RecycleBinRestored,
       AccountSyncedIn,
       FeedFetchFinished,
-      ListFilterChanged
+      ListFilterChanged,
+      MarkedAllReadFromNotification
     };
 
     explicit FeedsModel(QObject* parent = nullptr);

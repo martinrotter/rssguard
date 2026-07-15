@@ -30,7 +30,7 @@ void ArticleListNotificationModel::setFont(const QFont& font) {
   m_fontArticlesUnread = font_bold;
 }
 
-const Message& ArticleListNotificationModel::message(const QModelIndex& idx) const {
+int ArticleListNotificationModel::articlePosition(const QModelIndex& idx) const {
   if (!idx.isValid()) {
     throw ApplicationException(QSL("message cannot be loaded, wrong index"));
   }
@@ -41,7 +41,26 @@ const Message& ArticleListNotificationModel::message(const QModelIndex& idx) con
     throw ApplicationException(QSL("message cannot be loaded, wrong index"));
   }
 
-  return m_articles.at(list_position);
+  return list_position;
+}
+
+Message& ArticleListNotificationModel::message(const QModelIndex& idx) {
+  return m_articles[articlePosition(idx)];
+}
+
+const Message& ArticleListNotificationModel::message(const QModelIndex& idx) const {
+  return m_articles.at(articlePosition(idx));
+}
+
+void ArticleListNotificationModel::setMessageRead(const QModelIndex& idx, bool read) {
+  Message& article = message(idx);
+
+  if (article.m_isRead == read) {
+    return;
+  }
+
+  article.m_isRead = read;
+  emit dataChanged(idx, idx, {Qt::ItemDataRole::FontRole});
 }
 
 void ArticleListNotificationModel::nextPage() {

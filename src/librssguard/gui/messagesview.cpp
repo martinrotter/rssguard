@@ -272,6 +272,7 @@ void MessagesView::reactOnExternalDataChange(RootItem* item, FeedsModel::Externa
     case FeedsModel::ExternalDataChange::DatabaseCleaned:
     case FeedsModel::ExternalDataChange::RecycleBinRestored:
     case FeedsModel::ExternalDataChange::FeedFetchFinished:
+    case FeedsModel::ExternalDataChange::MarkedAllReadFromNotification:
     default: {
       bool articles_could_be_removed = cause == FeedsModel::ExternalDataChange::AccountSyncedIn ||
                                        cause == FeedsModel::ExternalDataChange::DatabaseCleaned ||

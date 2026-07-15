@@ -18,7 +18,9 @@ class ArticleListNotificationModel : public QAbstractListModel {
     void setArticles(const QList<Message>& msgs);
     void setFont(const QFont& font);
 
+    Message& message(const QModelIndex& idx);
     const Message& message(const QModelIndex& idx) const;
+    void setMessageRead(const QModelIndex& idx, bool read);
 
     void nextPage();
     void previousPage();
@@ -33,6 +35,7 @@ class ArticleListNotificationModel : public QAbstractListModel {
 
   private:
     void emitPageAvailability();
+    int articlePosition(const QModelIndex& idx) const;
 
     bool nextPageAvailable() const;
     bool previousPageAvailable() const;
