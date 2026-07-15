@@ -160,6 +160,14 @@ QIcon IconFactory::fromByteArray(QByteArray array) {
   in >> icon;
   buffer.close();
 
+  if (icon.isNull()) {
+    QPixmap pixmap;
+
+    if (pixmap.loadFromData(array)) {
+      icon.addPixmap(pixmap);
+    }
+  }
+
   qDebugNN << LOGSEC_CORE << "Icon dimensions when deserializing are" << QUOTE_W_SPACE_DOT(icon.availableSizes());
   return icon;
 }
