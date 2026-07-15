@@ -148,20 +148,9 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
 }
 
 void ServiceRoot::markAsReadUnread(RootItem::ReadStatus status) {
-  ServiceRoot* service = account();
-  auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
-
-  service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-
-  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-    DatabaseQueries::markAccountReadUnread(db, service->accountId(), status);
+  executeMessagesReadUnreadChange(status, [this, status](const QSqlDatabase& db) {
+    DatabaseQueries::markAccountReadUnread(db, accountId(), status);
   });
-
-  service->onAfterSetMessagesRead(this, {}, status);
-  service->informOthersAboutDataChange(this,
-                                       status == RootItem::ReadStatus::Read
-                                         ? FeedsModel::ExternalDataChange::MarkedRead
-                                         : FeedsModel::ExternalDataChange::MarkedUnread);
 }
 
 void ServiceRoot::cleanMessages(bool clean_read_only) {

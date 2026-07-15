@@ -5,6 +5,8 @@
 
 #include "core/message.h"
 
+#include <functional>
+
 #include <QDateTime>
 #include <QFont>
 #include <QIcon>
@@ -15,6 +17,7 @@ class Label;
 class Search;
 class ServiceRoot;
 class QAction;
+class QSqlDatabase;
 
 // Represents ROOT item of FeedsModel.
 // NOTE: This class is derived to add functionality for
@@ -245,6 +248,10 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
 
     // void recalculateVisualStateRecursively();
     void recalculateVisualStateUpwards();
+
+  protected:
+    void executeMessagesReadUnreadChange(ReadStatus status,
+                                         const std::function<void(const QSqlDatabase&)>& database_operation);
 
   private:
     RootItem::Kind m_kind;

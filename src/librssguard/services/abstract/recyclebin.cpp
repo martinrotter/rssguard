@@ -39,19 +39,9 @@ void RecycleBin::updateCounts() {
 
 void RecycleBin::markAsReadUnread(RootItem::ReadStatus status) {
   ServiceRoot* service = account();
-  auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
-
-  service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-
-  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+  executeMessagesReadUnreadChange(status, [service, status](const QSqlDatabase& db) {
     DatabaseQueries::markBinReadUnread(db, service->accountId(), status);
   });
-
-  service->onAfterSetMessagesRead(this, {}, status);
-  service->informOthersAboutDataChange(this,
-                                       status == RootItem::ReadStatus::Read
-                                         ? FeedsModel::ExternalDataChange::MarkedRead
-                                         : FeedsModel::ExternalDataChange::MarkedUnread);
 }
 
 void RecycleBin::cleanMessages(bool clear_only_read) {

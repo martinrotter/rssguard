@@ -2,6 +2,9 @@
 
 #include "services/abstract/rootitem.h"
 
+#include "core/feedsmodel.h"
+#include "database/databasefactory.h"
+#include "database/databaseworker.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
@@ -13,6 +16,7 @@
 #include "services/abstract/serviceroot.h"
 
 #include <QSet>
+#include <QSqlDatabase>
 #include <QVariant>
 
 RootItem::RootItem(RootItem* parent_item)
@@ -74,6 +78,23 @@ void RootItem::markAsReadUnread(ReadStatus status) {
   for (RootItem* child : std::as_const(m_childItems)) {
     child->markAsReadUnread(status);
   }
+}
+
+void RootItem::executeMessagesReadUnreadChange(
+  ReadStatus status, const std::function<void(const QSqlDatabase&)>& database_operation) {
+  ServiceRoot* service = account();
+  const QStringList message_custom_ids = service->customIDsOfMessagesForItem(this, status);
+
+  service->onBeforeSetMessagesRead(this, message_custom_ids, status);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    database_operation(db);
+  });
+
+  service->onAfterSetMessagesRead(this, {}, status);
+  service->informOthersAboutDataChange(this,
+                                       status == ReadStatus::Read ? FeedsModel::ExternalDataChange::MarkedRead
+                                                                  : FeedsModel::ExternalDataChange::MarkedUnread);
 }
 
 void RootItem::cleanMessages(bool clear_only_read) {

@@ -100,18 +100,7 @@ void Search::cleanMessages(bool clear_only_read) {
 }
 
 void Search::markAsReadUnread(RootItem::ReadStatus status) {
-  ServiceRoot* service = account();
-  auto article_custom_ids = service->customIDsOfMessagesForItem(this, status);
-
-  service->onBeforeSetMessagesRead(this, article_custom_ids, status);
-
-  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+  executeMessagesReadUnreadChange(status, [this, status](const QSqlDatabase& db) {
     DatabaseQueries::markProbeReadUnread(db, this, status);
   });
-
-  service->onAfterSetMessagesRead(this, {}, status);
-  service->informOthersAboutDataChange(this,
-                                       status == RootItem::ReadStatus::Read
-                                         ? FeedsModel::ExternalDataChange::MarkedRead
-                                         : FeedsModel::ExternalDataChange::MarkedUnread);
 }
