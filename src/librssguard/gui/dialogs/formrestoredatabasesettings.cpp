@@ -20,6 +20,8 @@ FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDia
   });
   connect(m_ui.m_groupDatabase, &QGroupBox::toggled, this, &FormRestoreDatabaseSettings::checkOkButton);
   connect(m_ui.m_groupSettings, &QGroupBox::toggled, this, &FormRestoreDatabaseSettings::checkOkButton);
+  connect(m_ui.m_listDatabase, &QListWidget::currentRowChanged, this, &FormRestoreDatabaseSettings::checkOkButton);
+  connect(m_ui.m_listSettings, &QListWidget::currentRowChanged, this, &FormRestoreDatabaseSettings::checkOkButton);
   connect(m_ui.m_buttonBox->button(QDialogButtonBox::StandardButton::Ok),
           &QPushButton::clicked,
           this,
@@ -121,4 +123,5 @@ void FormRestoreDatabaseSettings::selectFolder(QString folder) {
 
   m_ui.m_groupDatabase->setChecked(!available_databases.isEmpty());
   m_ui.m_groupSettings->setChecked(!available_settings.isEmpty());
+  checkOkButton();
 }
