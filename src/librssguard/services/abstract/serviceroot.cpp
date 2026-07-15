@@ -1215,8 +1215,12 @@ QNetworkProxy ServiceRoot::networkProxyForItem(RootItem* item) const {
   return networkProxy();
 }
 
-CacheForServiceRoot* ServiceRoot::toCache() const {
-  return dynamic_cast<CacheForServiceRoot*>(const_cast<ServiceRoot*>(this));
+CacheForServiceRoot* ServiceRoot::toCache() {
+  return dynamic_cast<CacheForServiceRoot*>(this);
+}
+
+const CacheForServiceRoot* ServiceRoot::toCache() const {
+  return dynamic_cast<const CacheForServiceRoot*>(this);
 }
 
 void ServiceRoot::resortAccountTree(RootItem* tree,

@@ -56,12 +56,12 @@
 <context>
     <name>Application</name>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1283"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1288"/>
         <source>Application is already running.</source>
         <translation>Application is already running</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="659"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="664"/>
         <source>Output directory is not writable.</source>
         <translation>Output directory is not writable</translation>
     </message>
@@ -86,27 +86,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="667"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="672"/>
         <source>Settings file not copied to output directory successfully.</source>
         <translation>Settings file not copied to output directory successfully.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="686"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="691"/>
         <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
         <translation>Settings restoration was not initiated. Make sure that output directory is writable.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1312"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1317"/>
         <source>Cannot add feed</source>
         <translation>Cannot add feed</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1313"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1318"/>
         <source>Feed cannot be added because there is no active account which can add feeds.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1164"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1169"/>
         <source>Unread articles fetched</source>
         <translation type="unfinished"></translation>
     </message>
@@ -129,7 +129,7 @@ version by clicking this popup notification.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1282"/>
+        <location filename="../src/librssguard/miscellaneous/application.cpp" line="1287"/>
         <source>Already running</source>
         <translation type="unfinished"></translation>
     </message>
@@ -271,7 +271,7 @@ version by clicking this popup notification.</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="95"/>
+        <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="96"/>
         <source>%n feeds fetched</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -393,7 +393,7 @@ version by clicking this popup notification.</source>
 <context>
     <name>Category</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/category.cpp" line="96"/>
+        <location filename="../src/librssguard/services/abstract/category.cpp" line="86"/>
         <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
@@ -692,33 +692,33 @@ Maybe change used database name in settings and try again. Falling back to SQLit
 <context>
     <name>Feed</name>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="369"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="359"/>
         <source>uses global settings, but global auto-fetching of articles is disabled</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="393"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="383"/>
         <source>no errors</source>
         <translation type="unfinished">no errors</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="399"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="389"/>
         <source>authentication error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="405"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="395"/>
         <source>network error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="355"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="345"/>
         <source>does not use auto-fetching of articles</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="366"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="356"/>
         <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -726,7 +726,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="380"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="370"/>
         <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
         <extracomment>Describes feed auto-update status.</extracomment>
         <translation type="unfinished">
@@ -735,37 +735,37 @@ Maybe change used database name in settings and try again. Falling back to SQLit
         </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="396"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="386"/>
         <source>has new articles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="402"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="392"/>
         <source>SQL database error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="408"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="398"/>
         <source>parsing error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="411"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="401"/>
         <source>contains no articles</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="414"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="404"/>
         <source>article filtering error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="417"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="407"/>
         <source>error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/feed.cpp" line="487"/>
+        <location filename="../src/librssguard/services/abstract/feed.cpp" line="477"/>
         <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -3880,27 +3880,27 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
         <translation>No operation executed yet.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="47"/>
+        <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="49"/>
         <source>Restoration was initiated. Restart to proceed.</source>
         <translation>Restoration was initiated. Restart to proceed.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="48"/>
+        <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="50"/>
         <source>You need to restart the application for restoration process to finish.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="53"/>
+        <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="55"/>
         <source>Database and/or settings were not copied to restoration directory successfully.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="71"/>
+        <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="73"/>
         <source>Select source directory</source>
         <translation>Select source directory</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="79"/>
+        <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="81"/>
         <source>Good source directory is specified.</source>
         <translation>Good source directory is specified.</translation>
     </message>
@@ -5237,19 +5237,19 @@ Login tokens expiration: %2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="117"/>
+        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="107"/>
         <source>Cannot create label: %1.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="125"/>
+        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="115"/>
         <source>This account does not allow you to create labels.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="116"/>
-        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="124"/>
-        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="124"/>
+        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="106"/>
+        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="114"/>
+        <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="114"/>
         <source>Not allowed</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6328,29 +6328,29 @@ Login tokens expiration: %2</source>
 <context>
     <name>MessagesView</name>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="971"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="972"/>
         <source>Problem with starting external e-mail client</source>
         <translation>Problem with starting external e-mail client</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="972"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="973"/>
         <source>External e-mail client could not be started.</source>
         <translation>External e-mail client could not be started.</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="616"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="617"/>
         <source>Open with external tool</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="365"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="366"/>
         <source>Use source-specific article list columns</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="770"/>
         <location filename="../src/librssguard/gui/messagesview.cpp" line="771"/>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="771"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="772"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="772"/>
         <source>%n selected article(s)</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -6358,16 +6358,16 @@ Login tokens expiration: %2</source>
         </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="905"/>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="1249"/>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="1249"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="906"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
         <source>Filtering changed</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="906"/>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="907"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="1251"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="1251"/>
         <source>%n article(s) left after filtering change</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -6375,32 +6375,32 @@ Login tokens expiration: %2</source>
         </translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="937"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="938"/>
         <source>No URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="938"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="939"/>
         <source>Article cannot be played in media player as it has no URL</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="1276"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="1277"/>
         <source>Cannot run external tool</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="1277"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="1278"/>
         <source>External tool &apos;%1&apos; could not be started.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="636"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="637"/>
         <source>No external tools activated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/gui/messagesview.cpp" line="596"/>
+        <location filename="../src/librssguard/gui/messagesview.cpp" line="597"/>
         <source>Context menu for articles</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7632,12 +7632,12 @@ stack: %3</source>
         <translation>Recycle bin</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="73"/>
+        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="63"/>
         <source>Are you sure?</source>
         <translation type="unfinished">Are you sure?</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="74"/>
+        <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="64"/>
         <source>Do you really want to empty your recycle bin?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -7658,7 +7658,7 @@ stack: %3</source>
 <context>
     <name>RootItem</name>
     <message numerus="yes">
-        <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="127"/>
+        <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="148"/>
         <source>%n unread article(s).</source>
         <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
         <translation type="unfinished">
@@ -7874,64 +7874,64 @@ stack: %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="196"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="185"/>
         <source>New query</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="208"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="197"/>
         <source>Restore recycle bin</source>
         <translation type="unfinished">Restore recycle bin</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="210"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="199"/>
         <source>Empty recycle bin</source>
         <translation type="unfinished">Empty recycle bin</translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="224"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="213"/>
         <source>New label</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="252"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="241"/>
         <source>Synchronize folders &amp;&amp; other items</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="261"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="250"/>
         <source>Synchronize article cache</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="408"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="397"/>
         <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="717"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="706"/>
         <source>unknown synchronization error</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="739"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="728"/>
         <source>no feed tree obtained</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="815"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="804"/>
         <source>unknown data returned from sync-in</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="822"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="811"/>
         <source>Error when fetching list of feeds</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="823"/>
+        <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="812"/>
         <source>Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</source>
         <translation type="unfinished"></translation>
     </message>

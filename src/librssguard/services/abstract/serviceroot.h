@@ -174,7 +174,8 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     virtual QNetworkProxy networkProxyForItem(RootItem* item) const;
 
   public:
-    CacheForServiceRoot* toCache() const;
+    CacheForServiceRoot* toCache();
+    const CacheForServiceRoot* toCache() const;
 
     // Account ID corresponds with DB attribute Accounts (id).
     int accountId() const;
