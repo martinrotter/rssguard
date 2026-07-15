@@ -10,6 +10,7 @@
 #include <QItemSelectionModel>
 #include <QMouseEvent>
 #include <QTreeView>
+#include <QWheelEvent>
 
 ArticleListNotification::ArticleListNotification(QWidget* parent)
   : BaseToastNotification(parent), m_model(new ArticleListNotificationModel(this)) {
@@ -19,6 +20,7 @@ ArticleListNotification::ArticleListNotification(QWidget* parent)
   setupCloseButton(m_ui.m_btnClose);
 
   m_model->setFont(font());
+  m_ui.m_treeArticles->installEventFilter(this);
   m_ui.m_treeArticles->viewport()->installEventFilter(this);
 
   m_ui.m_btnNextPage->setIcon(qApp->icons()->fromTheme(QSL("arrow-right"), QSL("stock_right")));
@@ -228,6 +230,25 @@ Message& ArticleListNotification::selectedMessage() {
 }
 
 bool ArticleListNotification::eventFilter(QObject* watched, QEvent* event) {
+  if (event->type() == QEvent::Type::Wheel &&
+      (watched == m_ui.m_treeArticles || watched == m_ui.m_treeArticles->viewport())) {
+    auto* wheel_event = static_cast<QWheelEvent*>(event);
+    const int vertical_delta = !wheel_event->angleDelta().isNull() ? wheel_event->angleDelta().y()
+                                                                    : wheel_event->pixelDelta().y();
+
+    if (vertical_delta != 0) {
+      if (vertical_delta > 0) {
+        m_model->previousPage();
+      }
+      else {
+        m_model->nextPage();
+      }
+
+      wheel_event->accept();
+      return true;
+    }
+  }
+
   if (event->type() == QEvent::Type::MouseButtonRelease) {
     auto* mouse_event = dynamic_cast<QMouseEvent*>(event);
 
