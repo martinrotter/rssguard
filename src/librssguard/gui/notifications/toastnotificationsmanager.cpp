@@ -196,6 +196,11 @@ void ToastNotificationsManager::initializeArticleListNotification() {
           &ArticleListNotification::dataChangeNotificationTriggered,
           this,
           &ToastNotificationsManager::dataChangeNotificationTriggered);
+
+  connect(m_articleListNotification,
+          &ArticleListNotification::oneArticleSetReadUnreadById,
+          this,
+          &ToastNotificationsManager::oneArticleSetReadUnreadById);
 }
 
 void ToastNotificationsManager::hookNotification(BaseToastNotification* notif) {

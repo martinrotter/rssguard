@@ -590,6 +590,11 @@ void Application::setMainForm(FormMain* main_form) {
             &ToastNotificationsManager::dataChangeNotificationTriggered,
             m_mainForm->tabWidget()->feedMessageViewer()->messagesView(),
             &MessagesView::reactOnExternalDataChange);
+
+    connect(m_toastNotifications,
+            &ToastNotificationsManager::oneArticleSetReadUnreadById,
+            m_mainForm->tabWidget()->feedMessageViewer()->messagesView()->sourceModel(),
+            &MessagesModel::setMessageReadById);
   }
 }
 
