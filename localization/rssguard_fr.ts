@@ -56,12 +56,12 @@
   <context>
     <name>Application</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1283"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1288"/>
       <source>Application is already running.</source>
       <translation>L'application est déjà lancée.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="659"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="664"/>
       <source>Output directory is not writable.</source>
       <translation>Le répertoire de destination n'est pas accessible en écriture.</translation>
     </message>
@@ -86,27 +86,27 @@
       <translation>Préparation de l'application en cours...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="667"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="672"/>
       <source>Settings file not copied to output directory successfully.</source>
       <translation>Échec : le fichier de réglages n'a pas été copié dans le répertoire de destination.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="686"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="691"/>
       <source>Settings restoration was not initiated. Make sure that output directory is writable.</source>
       <translation>La restauration des paramètres n'a pas été initiée. Vérifier que le répertoire de destination est modifiable.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1312"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1317"/>
       <source>Cannot add feed</source>
       <translation>Impossible d'ajouter le flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1313"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1318"/>
       <source>Feed cannot be added because there is no active account which can add feeds.</source>
       <translation>Le flux ne peut pas être ajouté car il n'y aucun compte actif pouvant ajouter des flux.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1164"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1169"/>
       <source>Unread articles fetched</source>
       <translation>Nouveaux articles non lus</translation>
     </message>
@@ -132,7 +132,7 @@ Découvrez les NOUVEAUTÉS incluses dans cette
 version en cliquant sur cette bulle de notification.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1282"/>
+      <location filename="../src/librssguard/miscellaneous/application.cpp" line="1287"/>
       <source>Already running</source>
       <translation>Déjà en cours d'exécution</translation>
     </message>
@@ -274,7 +274,7 @@ version en cliquant sur cette bulle de notification.</translation>
       <translation>Marquer tous les articles comme lus</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="95"/>
+      <location filename="../src/librssguard/gui/notifications/articlelistnotification.cpp" line="96"/>
       <source>%n feeds fetched</source>
       <translation>
         <numerusform>%n flux obtenus</numerusform>
@@ -396,7 +396,7 @@ version en cliquant sur cette bulle de notification.</translation>
   <context>
     <name>Category</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/category.cpp" line="96"/>
+      <location filename="../src/librssguard/services/abstract/category.cpp" line="86"/>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
@@ -524,12 +524,12 @@ Nombre de flux désactivés : %3</translation>
   <context>
     <name>DatabaseDriver</name>
     <message>
-      <location filename="../src/librssguard/database/databasedriver.cpp" line="141"/>
+      <location filename="../src/librssguard/database/databasedriver.cpp" line="142"/>
       <source>this database cannot be used because it comes from too old major app version</source>
       <translation type="unfinished">this database cannot be used because it comes from too old major app version</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasedriver.cpp" line="148"/>
+      <location filename="../src/librssguard/database/databasedriver.cpp" line="149"/>
       <source>database schema is too new, application requires &lt;= %1 but %2 is installed</source>
       <translation>le schéma de la base de données est trop nouveau, l'application nécessite &lt;= %1 mais %2 est installé</translation>
     </message>
@@ -537,14 +537,14 @@ Nombre de flux désactivés : %3</translation>
   <context>
     <name>DatabaseFactory</name>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="50"/>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="62"/>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="62"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="61"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="73"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="73"/>
       <source>Cannot connect to database</source>
       <translation>Connexion à la base de données impossible</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="51"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="62"/>
       <source>Connection to your database was not established with error: %1. 
 
 Maybe change used database name in settings and try again. Falling back to SQLite.</source>
@@ -552,17 +552,17 @@ Maybe change used database name in settings and try again. Falling back to SQLit
 Veuillez changer le nom de la base de donnée en cours d'utilisation, et réessayez. Retour à SQLite.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="63"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="74"/>
       <source>Connection to your database was not established with error: %1.</source>
       <translation>La connexion à votre base de données n'a pu s'établir à cause de l'erreur : %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="79"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="90"/>
       <source>Cannot use database</source>
       <translation type="unfinished">Cannot use database</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/databasefactory.cpp" line="80"/>
+      <location filename="../src/librssguard/database/databasefactory.cpp" line="91"/>
       <source>Application cannot start because there is a problem with DB: %1.</source>
       <translation type="unfinished">Application cannot start because there is a problem with DB: %1.</translation>
     </message>
@@ -570,12 +570,12 @@ Veuillez changer le nom de la base de donnée en cours d'utilisation, et réessa
   <context>
     <name>DiscoveredFeedsModel</name>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="701"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="758"/>
       <source>Title</source>
       <translation>Titre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="701"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="758"/>
       <source>Type</source>
       <translation>Type</translation>
     </message>
@@ -636,33 +636,33 @@ Veuillez changer le nom de la base de donnée en cours d'utilisation, et réessa
       <translation>À</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="114"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="116"/>
       <source>Save attachment %1</source>
       <translation>Sauvegarder la pièce jointe %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="130"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="132"/>
       <source>Download attachment</source>
       <translation>Télécharger la pièce jointe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="158"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="177"/>
       <source>Downloaded %1 kB...</source>
       <translation>%1 ko téléchargés...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="169"/>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="175"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="188"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="194"/>
       <source>Cannot download attachment</source>
       <translation>Impossible de télécharger la pièce jointe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="170"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="189"/>
       <source>Attachment cannot be downloaded because you are not logged-in.</source>
       <translation>La pièce jointe n'a pas pu être téléchargée car vous n'êtes pas connecté·e.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="176"/>
+      <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="195"/>
       <source>Attachment cannot be downloaded because some general error happened.</source>
       <translation>La pièce jointe ne peut être téléchargée à cause d'une erreur non spécifiée.</translation>
     </message>
@@ -698,33 +698,33 @@ Veuillez changer le nom de la base de donnée en cours d'utilisation, et réessa
   <context>
     <name>Feed</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="367"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="359"/>
       <source>uses global settings, but global auto-fetching of articles is disabled</source>
       <translation>Ce flux utilise les paramètres globaux, mais l&apos;obtention automatique globale d&apos;articles est désactivée.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="391"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="383"/>
       <source>no errors</source>
       <translation>Pas d&apos;erreurs.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="397"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="389"/>
       <source>authentication error</source>
       <translation>erreur d&apos;authentification</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="403"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="395"/>
       <source>network error</source>
       <translation>erreur réseau</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="353"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="345"/>
       <source>does not use auto-fetching of articles</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>n&apos;utilise pas l&apos;obtention automatique des articles</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="364"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="356"/>
       <source>uses global settings (%n minute(s) to next auto-fetch of articles)</source>
       <translation>
         <numerusform>utilise les paramètres globaux (%n minute avant la prochaine obtention automatique des articles)</numerusform>
@@ -732,7 +732,7 @@ Veuillez changer le nom de la base de donnée en cours d'utilisation, et réessa
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="378"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="370"/>
       <source>uses specific settings (%n minute(s) to next auto-fetching of new articles)</source>
       <extracomment>Describes feed auto-update status.</extracomment>
       <translation>
@@ -741,32 +741,37 @@ Veuillez changer le nom de la base de donnée en cours d'utilisation, et réessa
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="394"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="386"/>
       <source>has new articles</source>
       <translation>a des nouveaux articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="400"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="392"/>
       <source>SQL database error</source>
       <translation>Erreur de base de données SQL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="406"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="398"/>
       <source>parsing error</source>
       <translation>erreur d&apos;analyse syntaxique</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="409"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="401"/>
       <source>contains no articles</source>
       <translation>ne contient pas d'articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="412"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="404"/>
+      <source>article filtering error</source>
+      <translation type="unfinished">article filtering error</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="407"/>
       <source>error</source>
       <translation>erreur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/feed.cpp" line="482"/>
+      <location filename="../src/librssguard/services/abstract/feed.cpp" line="477"/>
       <source>Auto-update status: %1
 Active message filters: %2
 Status: %3
@@ -843,17 +848,37 @@ Identifiant d&apos;élément: %5</translation>
   <context>
     <name>FeedReader</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="234"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="200"/>
+      <source>file contains invalid JSON: %1</source>
+      <translation type="unfinished">file contains invalid JSON: %1</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="204"/>
+      <source>file does not contain a filter list</source>
+      <translation type="unfinished">file does not contain a filter list</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="244"/>
       <source>full article content is empty, likely due to required cookies or other problem</source>
       <translation>Le contenu complet de l'article est vide, possiblement en raison de cookies manquants ou d'un autre problème.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="496"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="342"/>
+      <source>Cannot start database transaction when removing article filter.</source>
+      <translation type="unfinished">Cannot start database transaction when removing article filter.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="350"/>
+      <source>Cannot commit database transaction when removing article filter.</source>
+      <translation type="unfinished">Cannot commit database transaction when removing article filter.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="534"/>
       <source>Starting auto-download of some feeds&apos; articles</source>
       <translation>Lancement du téléchargement automatique des articles de certains flux</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="497"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="535"/>
       <source>I will auto-download new articles for %n feed(s).</source>
       <translation>
         <numerusform>Je vais télécharger automatiquement les nouveaux articles de %n flux.</numerusform>
@@ -861,12 +886,12 @@ Identifiant d&apos;élément: %5</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="521"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="559"/>
       <source>Some feeds have errors</source>
       <translation>Certains flux ont des erreurs</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="522"/>
+      <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="560"/>
       <source>Some feeds threw an error when fetching articles.</source>
       <translation>Certains flux ont lancé une erreur lors de la récupération d'articles.</translation>
     </message>
@@ -1458,7 +1483,12 @@ Identifiant d&apos;élément: %5</translation>
   <context>
     <name>FilteringSystem</name>
     <message>
-      <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="123"/>
+      <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="111"/>
+      <source>article filter &apos;%1&apos; must return valid FilteringAction value.</source>
+      <translation type="unfinished">article filter &apos;%1&apos; must return valid FilteringAction value.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="219"/>
       <source>Article filter &apos;%1&apos; does not define a callable filterMessage() function.</source>
       <translation type="unfinished">Article filter &apos;%1&apos; does not define a callable filterMessage() function.</translation>
     </message>
@@ -2166,7 +2196,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <translation>Trouver des flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="226"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="228"/>
       <source>Discover!</source>
       <translation>Trouver!</translation>
     </message>
@@ -2211,61 +2241,72 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <translation>&amp;Importer les flux sélectionnés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="233"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="244"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="171"/>
+      <source>Cancel</source>
+      <translation type="unfinished">Cancel</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="266"/>
       <source>Deep discovery (scrapes all hyperlinks and can take some time for bigger websites)</source>
       <translation>Découverte profonde (extrait tous les hyperliens et peut prendre un peu de temps pour les sites plus grands)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="51"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="52"/>
       <source>Switch to advanced &amp;mode</source>
       <translation>Mode &amp;avancé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="53"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="54"/>
       <source>Close this dialog and display dialog for adding individual feeds with advanced options.</source>
       <translation>Fermer cette boîte de dialogue et afficher la boîte de dialogue pour ajouter des flux individuels avec des options avancées.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="109"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="113"/>
       <source>Enter feed URLs, one URL per line</source>
       <translation>Entrez les URLs du flux, une URL par ligne</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="162"/>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="436"/>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="511"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="183"/>
+      <source>Cancelling...</source>
+      <translation type="unfinished">Cancelling...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="205"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="486"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="568"/>
       <source>Cannot discover feeds</source>
       <translation>Impossible de découvrir les flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="163"/>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="437"/>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="512"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="206"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="487"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="569"/>
       <source>Error: %1</source>
       <translation>Erreur : %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="589"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="646"/>
       <source>All URLs are valid.</source>
       <translation>Toutes les URLs sont valides.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="592"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="649"/>
       <source>One or more URLs are invalid.</source>
       <translation>Une ou plusieurs URL sont invalides.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="643"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="700"/>
       <source>Cannot import feed</source>
       <translation>Impossible d'importer le flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="644"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="701"/>
       <source>Cannot save feed: %1</source>
       <translation>Impossible d'enregistrer le flux: %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="668"/>
+      <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="725"/>
       <source>No title</source>
       <translation>Pas de titre</translation>
     </message>
@@ -3434,50 +3475,54 @@ nouveau flux</translation>
   <context>
     <name>FormMessageFiltersManager</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="761"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="821"/>
       <source>Cannot find &apos;clang-format&apos;</source>
       <translation>Impossible de trouver &apos;clang-format&apos;</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="762"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="822"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool was not found.</source>
       <translation>Le script n&apos;a pas été embelli, parce-que l&apos;outil &apos;clang-format&apos; n&apos;a pas été trouvé.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="221"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="248"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="417"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="780"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="248"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="417"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="780"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="223"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="250"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="390"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="427"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="691"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="840"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="250"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="390"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="427"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="691"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="840"/>
       <source>Error</source>
       <translation>Erreur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="201"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="227"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="227"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="203"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="229"/>
       <source>Article filter files (*.json)</source>
       <translation>Fichiers de filtres d'articles (*.json)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="249"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="251"/>
       <source>Cannot export filters, error: &apos;%1&apos;.</source>
       <translation>Impossible d'exporter les filtres, erreur : &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="453"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="471"/>
       <source>This filter was saved!</source>
       <translation>Ce filtre a été enregistré!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="461"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="479"/>
       <source>There was an error when saving the filter: %1.</source>
       <translation>Une erreur s'est produite lors de la sauvegarde du filtre : %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="466"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="484"/>
       <source>There was an error when saving the filter: %1.
 
 Maybe the filter title is not unique. If that&apos;s the case, then change it.</source>
@@ -3486,59 +3531,87 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
 Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-le.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="465"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="483"/>
       <source>Filter was not saved</source>
       <translation>Le filtre n'a pas été enregistré</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="791"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="851"/>
       <source>Script was not beautified, is &apos;clang-format&apos; installed?</source>
       <translation>Le script n&apos;a pas été embelli, est-ce que l&apos;outil &apos;clang-format&apos; est installé?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="418"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="428"/>
       <source>Cannot save new filter, error: &apos;%1&apos;.</source>
       <translation>Impossible de sauvegarder le nouveau filtre, erreur: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="203"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="229"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="229"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="205"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="231"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="231"/>
       <source>Select article filters export file</source>
       <translation>Sélectionnez le fichier d'exportation des filtres d'articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="222"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="224"/>
       <source>Cannot import filters, error: &apos;%1&apos;.</source>
       <translation>Impossible d'importer les filtres, erreur: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="357"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="359"/>
       <source>Context menu</source>
       <translation>Menu contextuel</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="359"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="361"/>
       <source>Filter articles like this</source>
       <translation>Filtrer les articles similaires</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="406"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="391"/>
+      <source>Cannot remove article filter, error: &apos;%1&apos;.</source>
+      <translation type="unfinished">Cannot remove article filter, error: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="416"/>
       <source>New article filter</source>
       <translation>Nouveau filtre d&apos;article</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="659"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="546"/>
+      <source>Process existing articles?</source>
+      <translation type="unfinished">Process existing articles?</translation>
+    </message>
+    <message numerus="yes">
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="547"/>
+      <source>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</source>
+      <translation type="unfinished">
+        <numerusform>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</numerusform>
+        <numerusform>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</numerusform>
+      </translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="551"/>
+      <source>The filter can modify article states or remove articles.</source>
+      <translation type="unfinished">The filter can modify article states or remove articles.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="692"/>
+      <source>Cannot change article-filter assignment, error: &apos;%1&apos;.</source>
+      <translation type="unfinished">Cannot change article-filter assignment, error: &apos;%1&apos;.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="719"/>
       <source>Assign article filter to folder?</source>
       <translation type="unfinished">Assign article filter to folder?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="659"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="719"/>
       <source>Remove article filter from folder?</source>
       <translation type="unfinished">Remove article filter from folder?</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="661"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="721"/>
       <source>The article filter &apos;%1&apos; will be assigned to %n feed(s) in folder &apos;%2&apos; and its subfolders.</source>
       <translation type="unfinished">
         <numerusform>The article filter &apos;%1&apos; will be assigned to %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
@@ -3546,7 +3619,7 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="665"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="725"/>
       <source>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</source>
       <translation type="unfinished">
         <numerusform>The article filter &apos;%1&apos; will be removed from %n feed(s) in folder &apos;%2&apos; and its subfolders.</numerusform>
@@ -3554,24 +3627,24 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="669"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="704"/>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="704"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="729"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="764"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="764"/>
       <source>Do you want to continue?</source>
       <translation type="unfinished">Do you want to continue?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="695"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="755"/>
       <source>Assign article filter to all feeds?</source>
       <translation type="unfinished">Assign article filter to all feeds?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="695"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="755"/>
       <source>Remove article filter from all feeds?</source>
       <translation type="unfinished">Remove article filter from all feeds?</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="696"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="756"/>
       <source>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</source>
       <translation type="unfinished">
         <numerusform>The article filter &apos;%1&apos; will be assigned to all %n feed(s) in account &apos;%2&apos;.</numerusform>
@@ -3579,7 +3652,7 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
       </translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="700"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="760"/>
       <source>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</source>
       <translation type="unfinished">
         <numerusform>The article filter &apos;%1&apos; will be removed from all %n feed(s) in account &apos;%2&apos;.</numerusform>
@@ -3587,22 +3660,22 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="781"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="841"/>
       <source>Script was not beautified, because &apos;clang-format&apos; tool threw an error.</source>
       <translation>Le script n&apos;a pas été embelli, parce-que l&apos;outil &apos;clang-format&apos; a renvoyé une erreur.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="790"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="850"/>
       <source>Beautifier was running for too long</source>
       <translation>L&apos;embellisseur prenait trop de temps</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="375"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="377"/>
       <source>Are you sure?</source>
       <translation>Êtes-vous sûr(e)?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="376"/>
+      <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="378"/>
       <source>Do you really want to remove selected filter?</source>
       <translation>Voulez-vous vraiment supprimer le filtre sélectionné?</translation>
     </message>
@@ -3820,7 +3893,7 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
       <translation>Dialogue</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formprogressworker.cpp" line="18"/>
+      <location filename="../src/librssguard/gui/dialogs/formprogressworker.cpp" line="19"/>
       <source>&amp;Cancel</source>
       <translation>&amp;Annuler</translation>
     </message>
@@ -3838,27 +3911,27 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
       <translation>Aucune opération n&apos;a encore été exécutée.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="47"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="49"/>
       <source>Restoration was initiated. Restart to proceed.</source>
       <translation>La restauration a été initiée. Redémarrez pour procéder.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="48"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="50"/>
       <source>You need to restart the application for restoration process to finish.</source>
       <translation>Vous devez redémarrer l&apos;application pour terminer le processus de restauration.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="53"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="55"/>
       <source>Database and/or settings were not copied to restoration directory successfully.</source>
       <translation>La sauvegarde de la base de données et/ou les paramètres dans le répertoire de restauration a échoué.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="71"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="73"/>
       <source>Select source directory</source>
       <translation>Sélectionner répertoire source</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="79"/>
+      <location filename="../src/librssguard/gui/dialogs/formrestoredatabasesettings.cpp" line="81"/>
       <source>Good source directory is specified.</source>
       <translation>Le répertoire source spécifié est bon.</translation>
     </message>
@@ -4247,133 +4320,153 @@ Vous devez redémarrer manuellement.</translation>
   <context>
     <name>FormUpdate</name>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="67"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="69"/>
       <source>unknown</source>
       <extracomment>Unknown release.</extracomment>
       <translation>inconnu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="71"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="73"/>
       <source>List with updates was not
 downloaded successfully.</source>
       <translation>La lite avec les mises à jour
 n&apos;a pas été téléchargée avec succès.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="96"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="98"/>
       <source>New release available.</source>
       <translation>Une nouvelle version est disponible.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="70"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="72"/>
       <source>Error: &apos;%1&apos;.</source>
       <translation>Erreur : &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="105"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="107"/>
       <source>No new release available.</source>
       <translation>Pas de nouvelles versions disponibles.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="106"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="108"/>
       <source>This release is not newer than
 currently installed one.</source>
       <translation>Cette version n&apos;est pas plus récent que
 celle actuellement installée.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="32"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="34"/>
       <source>Download new installation files.</source>
       <translation>Télécharger les nouveaux fichiers d&apos;installation.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="205"/>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="207"/>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="207"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="198"/>
+      <source>Cannot save update file: &apos;%1&apos;</source>
+      <translation type="unfinished">Cannot save update file: &apos;%1&apos;</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="199"/>
+      <source>Update file could not be saved. Try again or update manually.</source>
+      <translation type="unfinished">Update file could not be saved. Try again or update manually.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="200"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
+      <source>Retry download</source>
+      <translation type="unfinished">Retry download</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="210"/>
       <source>Error occurred</source>
       <translation>Une erreur s'est produite</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="206"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="211"/>
       <source>Error occurred while downloading the package.</source>
       <translation>Une erreur s'est produite lors du téléchargement du paquet.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="241"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="248"/>
       <source>Cannot update application</source>
       <translation>Impossible de mettre à jour l&apos;application</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="118"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="120"/>
       <source>Downloaded %1% (update size is %2 kB).</source>
       <translation>%1% téléchargé (la taille de la mise à jour est de %2 kB).</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="123"/>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="255"/>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="255"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="125"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="265"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="265"/>
       <source>Downloading update...</source>
       <translation>Téléchargement de la mise à jour</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="197"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="189"/>
       <source>Downloaded successfully</source>
       <translation>Téléchargement réussi</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="36"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="38"/>
       <source>Go to application website</source>
       <translation>Aller sur le site web de l&apos;application</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="199"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="191"/>
       <source>Install</source>
       <translation>Installer</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="242"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="249"/>
       <source>Cannot launch external updater. Update application manually.</source>
       <translation>Impossible de lancer le metteur à jour externe. Veuillez mettre à jour l&apos;appli manuellement.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="31"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="33"/>
       <source>Download selected update</source>
       <translation>Télécharger la mise à jour sélectionnée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="37"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="39"/>
       <source>Go to application website to get update packages manually.</source>
       <translation>Veuillez visiter le site web de l&apos;appli pour manuellement avoir les mises à jour des paquets.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="83"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="85"/>
       <source>No releases available.</source>
       <translation>Pas de nouvelle version disponible.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="84"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="86"/>
       <source>There are no available releases.</source>
       <translation>Il n'y a aucune nouvelle version disponible.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="97"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="99"/>
       <source>This is a new version which can be
 downloaded.</source>
       <translation>Ceci est une nouvelle version qui peut être
 téléchargée.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="165"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="136"/>
+      <source>No temporary directory is available for the update file.</source>
+      <translation type="unfinished">No temporary directory is available for the update file.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="156"/>
       <source> (size </source>
       <translation>(taille</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="180"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="171"/>
       <source>Available update files</source>
       <translation>Fichiers de mise à jour disponibles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="198"/>
+      <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="190"/>
       <source>Package was downloaded successfully.
 You can install it now.</source>
       <translation>Téléchargement du paquet réussi.
@@ -5181,19 +5274,19 @@ Expiration de jetons d&apos;authentification: %2</translation>
       <translation>Nombre d'étiquettes : %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="117"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="107"/>
       <source>Cannot create label: %1.</source>
       <translation>Impossible de créer l'étiquette : %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="125"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="115"/>
       <source>This account does not allow you to create labels.</source>
       <translation>Ce compte ne vous autorise pas à créer des étiquettes.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="116"/>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="124"/>
-      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="124"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="106"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="114"/>
+      <location filename="../src/librssguard/services/abstract/labelsnode.cpp" line="114"/>
       <source>Not allowed</source>
       <translation>Non autorizé</translation>
     </message>
@@ -5522,27 +5615,27 @@ Expiration de jetons d&apos;authentification: %2</translation>
   <context>
     <name>MariaDbDriver</name>
     <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="76"/>
+      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="75"/>
       <source>MySQL server works as expected.</source>
       <translation>Le serveur MySQL fonctionne parfaitement.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="79"/>
+      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="78"/>
       <source>Selected database does not exist (yet). It will be created. It&apos;s okay.</source>
       <translation>La base de données sélectionnée n&apos;existe pas (encore). Elle sera créée. C&apos;est bon.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="84"/>
+      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="83"/>
       <source>No MySQL server is running in the target destination.</source>
       <translation>Aucun serveur MySQL n&apos;est en cours d&apos;exécution sur la destination choisie.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="87"/>
+      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="86"/>
       <source>Access denied. Invalid username or password used.</source>
       <translation>Accès refusé. Nom d&apos;utilisateur incorrect ou mot de passe utilisé.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="90"/>
+      <location filename="../src/librssguard/database/mariadbdriver.cpp" line="89"/>
       <source>Unknown error: &apos;%1&apos;.</source>
       <translation>Erreur inconnue : &apos;%1&apos;.</translation>
     </message>
@@ -6273,29 +6366,29 @@ supplémentaire</translation>
   <context>
     <name>MessagesView</name>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="971"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="972"/>
       <source>Problem with starting external e-mail client</source>
       <translation>Problème avec le démarrage du client e-mail externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="972"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="973"/>
       <source>External e-mail client could not be started.</source>
       <translation>Le client e-mail externe n&apos;a pas pu démarrer.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="616"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="617"/>
       <source>Open with external tool</source>
       <translation>Ouvrir avec l&apos;outil externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="365"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="366"/>
       <source>Use source-specific article list columns</source>
       <translation>Utiliser les colonnes de liste d'articles spécifiques à la source</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="770"/>
       <location filename="../src/librssguard/gui/messagesview.cpp" line="771"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="771"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="772"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="772"/>
       <source>%n selected article(s)</source>
       <translation>
         <numerusform>%n article sélectionné</numerusform>
@@ -6303,16 +6396,16 @@ supplémentaire</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="905"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1249"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1249"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="906"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
       <source>Filtering changed</source>
       <translation>Filtrage modifié</translation>
     </message>
     <message numerus="yes">
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="906"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1250"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="907"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1251"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1251"/>
       <source>%n article(s) left after filtering change</source>
       <translation>
         <numerusform>%n article restant après la modification de filtrage</numerusform>
@@ -6320,32 +6413,32 @@ supplémentaire</translation>
       </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="937"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="938"/>
       <source>No URL</source>
       <translation>Aucun URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="938"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="939"/>
       <source>Article cannot be played in media player as it has no URL</source>
       <translation>L'article ne peut pas être lu dans le lecteur multimédia car il n'a pas d'URL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1276"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1277"/>
       <source>Cannot run external tool</source>
       <translation>Impossible de lancer l&apos;outil externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="1277"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="1278"/>
       <source>External tool &apos;%1&apos; could not be started.</source>
       <translation>L&apos;outil externe &apos;%1&apos; n&apos;a pas pu démarrer.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="636"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="637"/>
       <source>No external tools activated</source>
       <translation>Aucun outil externe est activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/messagesview.cpp" line="596"/>
+      <location filename="../src/librssguard/gui/messagesview.cpp" line="597"/>
       <source>Context menu for articles</source>
       <translation>Menu contextuel pour les articles</translation>
     </message>
@@ -6846,7 +6939,7 @@ supplémentaire</translation>
   <context>
     <name>QObject</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/core/feeddownloader.cpp" line="704"/>
+      <location filename="../src/librssguard/core/feeddownloader.cpp" line="707"/>
       <source>
 
 + %n other feeds.</source>
@@ -6991,62 +7084,62 @@ Liste d&apos;agrégateurs compatibles:</translation>
       <translation>Connection échoué</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="647"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="677"/>
       <source>interesting stuff</source>
       <translation>trucs intéressants</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="650"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="680"/>
       <source>interesting stuff (highlighted)</source>
       <translation>trucs intéressants (surlignés)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="653"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="683"/>
       <source>errored items</source>
       <translation>éléments erronés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="656"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="686"/>
       <source>errored items (highlighted)</source>
       <translation>éléments erronnés (surlignés)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="659"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="689"/>
       <source>items with new articles</source>
       <translation>éléments avec des nouveaux articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="662"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="692"/>
       <source>items with new articles (highlighted)</source>
       <translation>éléments avec des nouveaux articles (surlignés)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="665"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="695"/>
       <source>OK-ish color</source>
       <translation>Couleur m&apos;ouais</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="668"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="698"/>
       <source>disabled items</source>
       <translation>éléments désactivés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="671"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="701"/>
       <source>folders background</source>
       <translation>arrière-plan des dossiers</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="674"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="704"/>
       <source>folders background (highlighted)</source>
       <translation>arrière-plan des dossiers (surligné)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="677"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="707"/>
       <source>article counts</source>
       <translation>nombre d'articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="680"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="710"/>
       <source>article counts (highlighted)</source>
       <translation>nombre d'articles (surligné)</translation>
     </message>
@@ -7154,143 +7247,148 @@ Liste d&apos;agrégateurs compatibles:</translation>
       <translation>n'est pas une carte-site</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="612"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="627"/>
       <source>Copy text</source>
       <translation>Copier le texte</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="613"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="628"/>
       <source>Copy link</source>
       <translation>Copier le lien</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="617"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="633"/>
       <source>Copy image link</source>
       <translation>Copier le lien de l'image</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="615"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="631"/>
       <source>Copy image</source>
       <translation>Copier l'image</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="443"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="456"/>
       <source>Context menu for article viewer</source>
       <translation>Menu contextuel pour le visionneur d'articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="413"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="619"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="619"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="426"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="635"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="635"/>
       <source>Save image</source>
       <translation>Enregistrer l'image</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="378"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="379"/>
       <source>Image not decoded</source>
       <translation>Image non décodée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="379"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="380"/>
       <source>Failed to decode image &apos;%1&apos;.</source>
       <translation>Échec du décodage de l'image &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="386"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="433"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="433"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="387"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="446"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="446"/>
       <source>Image not downloaded</source>
       <translation>Image non téléchargée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="387"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="434"/>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="434"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="388"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="447"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="447"/>
       <source>Failed to download image &apos;%1&apos; with error &apos;%2&apos;.</source>
       <translation>Échec du téléchargement de l'image &apos;%1&apos; avec l'erreur &apos;%2&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="415"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="428"/>
       <source>image.%1</source>
       <translation>Image.%1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="416"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="429"/>
       <source>Images (%1)</source>
       <translation>Images (%1)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="602"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="617"/>
       <source>Print...</source>
       <translation>Imprimer...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="604"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="619"/>
       <source>Load external images</source>
       <translation>Charger les images externes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="605"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="620"/>
       <source>Save as...</source>
       <translation>Enregistrer sous...</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="607"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="622"/>
       <source>Open in new tab</source>
       <translation>Ouvrir dans un nouvel onglet</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="683"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="629"/>
+      <source>Download</source>
+      <translation>Téléchargement</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="702"/>
       <source>Done</source>
       <translation>Terminé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="684"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="703"/>
       <source>Printing is finished on printer %1.</source>
       <translation>L'impression est terminée sur l'imprimante %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="690"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="709"/>
       <source>Error</source>
       <translation>Erreur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="691"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="710"/>
       <source>Printing failed.</source>
       <translation>L'impression a échoué.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="457"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="470"/>
       <source>Open with external tool</source>
       <translation>Ouvrir avec l&apos;outil externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="522"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="537"/>
       <source>HTML files (*.htm *.html)</source>
       <translation>Fichiers HTML (*.htm *.html)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="523"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="538"/>
       <source>Plain text files (*.txt)</source>
       <translation>Fichiers texte brut (*.txt)</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="532"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="547"/>
       <source>Save contents in HTML or TXT format</source>
       <translation>Enregistrer les contenus au format HTML ou TXT</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="609"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="624"/>
       <source>Open in external browser</source>
       <translation>Ouvrir dans le navigateur externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="611"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="626"/>
       <source>Play in media player</source>
       <translation>Lire dans le lecteur multimédia</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="622"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="638"/>
       <source>(not supported)</source>
       <translation>(non supporté)</translation>
     </message>
@@ -7330,7 +7428,7 @@ Liste d&apos;agrégateurs compatibles:</translation>
       <translation>Sélectionner le fichier existant</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/exceptions/filteringexception.cpp" line="17"/>
+      <location filename="../src/librssguard/exceptions/filteringexception.cpp" line="21"/>
       <source>%1
 line: %2
 stack: %3</source>
@@ -7374,7 +7472,7 @@ stack: %3</translation>
       <translation>erreur: &apos;%1&apos;.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="176"/>
+      <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="177"/>
       <source>image</source>
       <translation>Image</translation>
     </message>
@@ -7382,6 +7480,65 @@ stack: %3</translation>
       <location filename="../src/librssguard/network-web/oauthhttphandler.cpp" line="32"/>
       <source>Login successful</source>
       <translation>Connexion réussie</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="163"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="170"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="170"/>
+      <source>Cannot read downloaded file data.</source>
+      <translation type="unfinished">Cannot read downloaded file data.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="174"/>
+      <source>Cannot write downloaded file data.</source>
+      <translation type="unfinished">Cannot write downloaded file data.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="862"/>
+      <source>Cannot create temporary file for download.</source>
+      <translation type="unfinished">Cannot create temporary file for download.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="866"/>
+      <source>Download file</source>
+      <translation type="unfinished">Download file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="901"/>
+      <source>Downloaded %1 kB...</source>
+      <translation>%1 ko téléchargés...</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="905"/>
+      <source>Failed to download file &apos;%1&apos;.</source>
+      <translation type="unfinished">Failed to download file &apos;%1&apos;.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="915"/>
+      <source>Select file destination</source>
+      <translation type="unfinished">Select file destination</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="929"/>
+      <source>Cannot open file &apos;%1&apos; for writing.</source>
+      <translation type="unfinished">Cannot open file &apos;%1&apos; for writing.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="938"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="946"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="946"/>
+      <source>Cannot download file</source>
+      <translation type="unfinished">Cannot download file</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="939"/>
+      <source>File cannot be downloaded because some network error happened.</source>
+      <translation type="unfinished">File cannot be downloaded because some network error happened.</translation>
+    </message>
+    <message>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="947"/>
+      <source>File cannot be downloaded because some general error happened.</source>
+      <translation type="unfinished">File cannot be downloaded because some general error happened.</translation>
     </message>
   </context>
   <context>
@@ -7523,12 +7680,12 @@ stack: %3</translation>
       <translation>Corbeille</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="73"/>
+      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="63"/>
       <source>Are you sure?</source>
       <translation>Êtes-vous sûr(e)?</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="74"/>
+      <location filename="../src/librssguard/services/abstract/recyclebin.cpp" line="64"/>
       <source>Do you really want to empty your recycle bin?</source>
       <translation>Voulez-vous vraiment vider votre corbeille?</translation>
     </message>
@@ -7549,7 +7706,7 @@ stack: %3</translation>
   <context>
     <name>RootItem</name>
     <message numerus="yes">
-      <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="127"/>
+      <location filename="../src/librssguard/services/abstract/rootitem.cpp" line="148"/>
       <source>%n unread article(s).</source>
       <extracomment>Tooltip for &quot;unread&quot; column of feed list.</extracomment>
       <translation>
@@ -7735,67 +7892,67 @@ stack: %3</translation>
   <context>
     <name>ServiceRoot</name>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="104"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="108"/>
       <source>Cannot update label</source>
       <translation>Impossible de mettre à jour l'étiquette</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="105"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="109"/>
       <source>Failed to update label with new information: %1.</source>
       <translation>Échec de la mise à jour de l'étiquette avec les nouvelles informations : %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="132"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="136"/>
       <source>Cannot update probe item</source>
       <translation>Impossible de mettre à jour l'élément de sonde</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="133"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="137"/>
       <source>Failed to update selected probe: %1.</source>
       <translation>Échec de la mise à jour de la sonde sélectionnée : %1.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="143"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="147"/>
       <source>Unsupported</source>
       <translation>Non-supporté</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="143"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="147"/>
       <source>This is not supported (yet).</source>
       <translation>Ceci n'est pas encore supporté.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="192"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="185"/>
       <source>New query</source>
       <translation>Nouvelle requête</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="204"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="197"/>
       <source>Restore recycle bin</source>
       <translation>Restaurer la corbeille</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="206"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="199"/>
       <source>Empty recycle bin</source>
       <translation>Vider la corbeille</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="220"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="213"/>
       <source>New label</source>
       <translation>Nouvelle étiquette</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="248"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="241"/>
       <source>Synchronize folders &amp;&amp; other items</source>
       <translation>Synchroniser les fichiers &amp;&amp; autres éléments</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="257"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="250"/>
       <source>Synchronize article cache</source>
       <translation>Synchroniser le cache des articles</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="404"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="397"/>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
@@ -7804,27 +7961,27 @@ Nombre de dossiers : %2
 Nombre de flux désactivés : %3</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="713"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="706"/>
       <source>unknown synchronization error</source>
       <translation>erreur de synchronisation inconnue</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="735"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="728"/>
       <source>no feed tree obtained</source>
       <translation>aucun arbre de flux obtenu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="811"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="804"/>
       <source>unknown data returned from sync-in</source>
       <translation>données inconnues retournées depuis la synchronisation</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="818"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="811"/>
       <source>Error when fetching list of feeds</source>
       <translation>Erreur lors de l&apos;obtention de la liste de flux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="819"/>
+      <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="812"/>
       <source>Feeds &amp; folders for account &apos;%1&apos; were not fetched, error: %2</source>
       <translation>Les flux et catégories pour le compte &apos;%1&apos; n&apos;ont pas été obtenus, erreur: %2</translation>
     </message>
@@ -7903,8 +8060,8 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Navigateur web externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="154"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="325"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="312"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide web browser is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Si décoché, alors le navigateur internet du système par défaut est utilisé.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -7915,8 +8072,8 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Utiliser le navigateur web externe</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="27"/>
-      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="312"/>
+      <location filename="../src/librssguard/gui/settings/settingsbrowsermail.ui" line="154"/>
+      <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsbrowsermail.h" line="325"/>
       <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If unchecked, then default system-wide e-mail client is used.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
       <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Si non coché, alors le client de messagerie système par défaut est utilisé.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
@@ -8050,72 +8207,72 @@ File filter for external e-mail selection dialog.</extracomment>
       <translation>Notez que la vitesse du serveur MySQL et la latence du medium de connection utilisé influencent LOURDEMENT la performance définitive de l&apos;appli. Avoir des connections de base de données lentes a comme conséquence une mauvaise performance lors de la navigation de flux ou d'articles.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="102"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="103"/>
       <source>Hostname is empty.</source>
       <translation>Le nom de l&apos;hôte est vide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="105"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="106"/>
       <source>Hostname looks ok.</source>
       <translation>Le nom de l&apos;hôte semble valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="111"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="112"/>
       <source>Username is empty.</source>
       <translation>Le nom d&apos;utilisateur est vide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="114"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="115"/>
       <source>Username looks ok.</source>
       <translation>Le nom d&apos;utilisateur semble valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="120"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="121"/>
       <source>Password is empty.</source>
       <translation>Le mot de passe est vide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="123"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="124"/>
       <source>Password looks ok.</source>
       <translation>Le mot de passe semble valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="129"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="130"/>
       <source>Working database is empty.</source>
       <translation>La base de données fonctionnelle est vide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="132"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="133"/>
       <source>Working database is ok.</source>
       <translation>La base de données fonctionnelle est valide.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="153"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="154"/>
       <source>No connection test triggered so far.</source>
       <translation>Pas de test de connexion déclenché jusqu&apos;ici.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="154"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="155"/>
       <source>You did not execute any connection test yet.</source>
       <translation>Vous n'avez pas encore exécuté de test de connexion.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="173"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="174"/>
       <source>Hostname of your MySQL server</source>
       <translation>Nom de l&apos;hôte de votre serveur MySQL</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="174"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="175"/>
       <source>Username to login with</source>
       <translation>Nom d&apos;utilisateur pour se connecter avec</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="175"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="176"/>
       <source>Password for your username</source>
       <translation>Mot de passe de votre nom d&apos;utilisateur</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="176"/>
+      <location filename="../src/librssguard/gui/settings/settingsdatabase.cpp" line="177"/>
       <source>Working database which you have full access to.</source>
       <translation>Base de données fonctionnelle dont vous avez l&apos;accès total.</translation>
     </message>
@@ -8958,17 +9115,17 @@ Déscription: %3</translation>
       <translation>Traductions fournies par : %1</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="209"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="210"/>
       <source>Translators needed!</source>
       <translation>On a besoin de traducteurs/traductrices!</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="210"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="211"/>
       <source>The translation &apos;%1&apos; is incomplete and anyone able to help with translating %2 is greatly welcomed.</source>
       <translation>La traduction &apos;%1&apos; est incomplète et toutes personnes capables d'aider avec la traduction %2 sont la bienvenue.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="212"/>
+      <location filename="../src/librssguard/gui/settings/settingslocalization.cpp" line="213"/>
       <source>Do you want to help with the translation now?</source>
       <translation>Voulez-vous aider à traduire maintenant?</translation>
     </message>
@@ -9354,19 +9511,19 @@ Déscription: %3</translation>
   <context>
     <name>SkinFactory</name>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="321"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="351"/>
       <source>Written by </source>
       <translation>Écrit par </translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="318"/>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="322"/>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="322"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="348"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="352"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="352"/>
       <source>unknown author</source>
       <translation>auteur inconnu</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="557"/>
+      <location filename="../src/librssguard/miscellaneous/skinfactory.cpp" line="587"/>
       <source>file %1 not found</source>
       <translation>fichier %1 non trouvé</translation>
     </message>
@@ -10897,177 +11054,177 @@ Dernière connection le: %4</translation>
   <context>
     <name>WebFactory</name>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="206"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="356"/>
       <source>JS enabled</source>
       <translation>JavaScript activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="209"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="359"/>
       <source>JS can open popup windows</source>
       <translation>JavaScript peut ouvrir des fenêtres pop-up</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="213"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="363"/>
       <source>JS can access clipboard</source>
       <translation>JavaScript peut accéder au presse-papier</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="217"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="367"/>
       <source>Hyperlinks can get focus</source>
       <translation>Les hyperliens peuvent être focalisés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="220"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="370"/>
       <source>Local storage enabled</source>
       <translation>Stockage local activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="224"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="374"/>
       <source>Local content can access remote URLs</source>
       <translation>Le contenu local peut accéder aux URLs distantes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="227"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="377"/>
       <source>XSS auditing enabled</source>
       <translation>L&apos;audit XSS est activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="230"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="380"/>
       <source>Spatial navigation enabled</source>
       <translation>Navigation spatiale activée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="234"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="384"/>
       <source>Local content can access local files</source>
       <translation>Le contenu local peut accéder les fichiers locaux</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="237"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="387"/>
       <source>Hyperlink auditing enabled</source>
       <translation>Audit de lien hypertexte activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="240"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="390"/>
       <source>Animate scrolling</source>
       <translation>Animer les défilements</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="243"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="393"/>
       <source>Error pages enabled</source>
       <translation>Pages d'erreurs activées</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="246"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="396"/>
       <source>Plugins enabled</source>
       <translation>Plugins activés</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="251"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="401"/>
       <source>Screen capture enabled</source>
       <translation>Capture d'écran activée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="254"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="404"/>
       <source>WebGL enabled</source>
       <translation>WebGL activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="258"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="408"/>
       <source>Accelerate 2D canvas</source>
       <translation>Accélérer le canevas 2D</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="261"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="411"/>
       <source>Print element backgrounds</source>
       <translation>Imprimer les fonds d&apos;éléments</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="265"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="415"/>
       <source>Allow running insecure content</source>
       <translation>Autoriser l&apos;éxécution de contenu insécurisé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="269"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="419"/>
       <source>Allow geolocation on insecure origins</source>
       <translation>Autoriser la géo-localisation d'origines non securisées</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="275"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="425"/>
       <source>JS can activate windows</source>
       <translation>JavaScript peut activer des fenêtres</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="278"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="428"/>
       <source>Show scrollbars</source>
       <translation>Afficher les barres de défilement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="282"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="432"/>
       <source>Media playback with gestures</source>
       <translation>Lecture media avec gestes</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="286"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="436"/>
       <source>WebRTC uses only public interfaces</source>
       <translation>WebRTC utilise uniquement des interfaces publiques</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="289"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="439"/>
       <source>JS can paste from clipboard</source>
       <translation>JavaScript peut coller depuis le presse-papiers</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="292"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="442"/>
       <source>DNS prefetch enabled</source>
       <translation>Pre-obtention DNS activée</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="297"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="447"/>
       <source>PDF viewer enabled</source>
       <translation>Lecteur PDF activé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="303"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="453"/>
       <source>Force dark mode</source>
       <translation>Forcer le mode sombre</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="309"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="459"/>
       <source>Printing - print headers/footers.</source>
       <translation>Impression - imprimer en-têtes/pieds de pages.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="351"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="501"/>
       <source>Web cache cleared</source>
       <translation>Cache Web effacé</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="352"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="502"/>
       <source>Web cache was cleared. List of visited links was cleared too.</source>
       <translation>Le cache Web a été vidé. La liste des liens visités a également été vidé.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="369"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="519"/>
       <source>File download</source>
       <translation>Téléchargement de fichier</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="370"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="520"/>
       <source>Download of file &apos;%1&apos; was offered.</source>
       <translation>Le téléchargement du fichier &apos;%1&apos; a été proposé.</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="372"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="522"/>
       <source>Copy file URL</source>
       <translation>Copier l'URL du fichier</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="785"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="1040"/>
       <source>Navigate to website(s) manually</source>
       <translation>Naviguer vers le(s) site(s) web manuellement</translation>
     </message>
     <message>
-      <location filename="../src/librssguard/network-web/webfactory.cpp" line="786"/>
+      <location filename="../src/librssguard/network-web/webfactory.cpp" line="1041"/>
       <source>%1 was unable to launch your web browser with the given URL, you need to open the below website URLs in your web browser manually.</source>
       <translation>%1 n&apos;a pas pu lancer votre navigateur web avec le lien fourni, vous devez ouvrir le lien ci-dessous dans votre navigateur manuellement.</translation>
     </message>
