@@ -3545,7 +3545,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="391"/>
       <source>Cannot remove article filter, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot remove article filter, error: &apos;%1&apos;.</translation>
+      <translation>无法删除文章过滤器，错误： &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="416"/>
@@ -3555,24 +3555,24 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="546"/>
       <source>Process existing articles?</source>
-      <translation type="unfinished">Process existing articles?</translation>
+      <translation>处理现有文章？</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="547"/>
       <source>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</source>
-      <translation type="unfinished">
-        <numerusform>Do you really want to process existing articles in %n checked feed(s) with the selected article filter?</numerusform>
+      <translation>
+        <numerusform>真的要用选中的文章过滤器处理 %n 个勾选订阅源中的现有文章吗？</numerusform>
       </translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="551"/>
       <source>The filter can modify article states or remove articles.</source>
-      <translation type="unfinished">The filter can modify article states or remove articles.</translation>
+      <translation>过滤器可以修改文章状态或删除文章。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="692"/>
       <source>Cannot change article-filter assignment, error: &apos;%1&apos;.</source>
-      <translation type="unfinished">Cannot change article-filter assignment, error: &apos;%1&apos;.</translation>
+      <translation>无法更改文章过滤器分配，错误： &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="719"/>
@@ -4331,19 +4331,19 @@ currently installed one.</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="198"/>
       <source>Cannot save update file: &apos;%1&apos;</source>
-      <translation type="unfinished">Cannot save update file: &apos;%1&apos;</translation>
+      <translation>无法保存更新文件： &apos;%1&apos;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="199"/>
       <source>Update file could not be saved. Try again or update manually.</source>
-      <translation type="unfinished">Update file could not be saved. Try again or update manually.</translation>
+      <translation>无法保存更新文件。请重试或手动更新。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="200"/>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
       <source>Retry download</source>
-      <translation type="unfinished">Retry download</translation>
+      <translation>重试下载</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="210"/>
@@ -4421,7 +4421,7 @@ downloaded.</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="136"/>
       <source>No temporary directory is available for the update file.</source>
-      <translation type="unfinished">No temporary directory is available for the update file.</translation>
+      <translation>更新文件没有可用的临时目录。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="156"/>
@@ -7441,22 +7441,22 @@ stack: %3</source>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="170"/>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="170"/>
       <source>Cannot read downloaded file data.</source>
-      <translation type="unfinished">Cannot read downloaded file data.</translation>
+      <translation>无法读取下载的文件数据。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="174"/>
       <source>Cannot write downloaded file data.</source>
-      <translation type="unfinished">Cannot write downloaded file data.</translation>
+      <translation>无法写入下载的文件数据。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="862"/>
       <source>Cannot create temporary file for download.</source>
-      <translation type="unfinished">Cannot create temporary file for download.</translation>
+      <translation>无法创建用于下载的临时文件。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="866"/>
       <source>Download file</source>
-      <translation type="unfinished">Download file</translation>
+      <translation>下载文件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="901"/>
@@ -7466,34 +7466,34 @@ stack: %3</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="905"/>
       <source>Failed to download file &apos;%1&apos;.</source>
-      <translation type="unfinished">Failed to download file &apos;%1&apos;.</translation>
+      <translation>无法下载文件 &apos;%1&apos;。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="915"/>
       <source>Select file destination</source>
-      <translation type="unfinished">Select file destination</translation>
+      <translation>选择文件目标</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="929"/>
       <source>Cannot open file &apos;%1&apos; for writing.</source>
-      <translation type="unfinished">Cannot open file &apos;%1&apos; for writing.</translation>
+      <translation>无法打开文件 &apos;%1&apos; 进行写入。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="938"/>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="946"/>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="946"/>
       <source>Cannot download file</source>
-      <translation type="unfinished">Cannot download file</translation>
+      <translation>无法下载文件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="939"/>
       <source>File cannot be downloaded because some network error happened.</source>
-      <translation type="unfinished">File cannot be downloaded because some network error happened.</translation>
+      <translation>无法下载文件，因为发生了一些网络错误。</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="947"/>
       <source>File cannot be downloaded because some general error happened.</source>
-      <translation type="unfinished">File cannot be downloaded because some general error happened.</translation>
+      <translation>文件无法下载，因为发生了一些一般错误。</translation>
     </message>
   </context>
   <context>
