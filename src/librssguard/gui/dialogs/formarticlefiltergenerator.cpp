@@ -531,6 +531,7 @@ FormArticleFilterGenerator::FormArticleFilterGenerator() : QDialog(nullptr) {
   m_ui.m_cmbFallbackDecision->setItemData(0, QSL("Msg.Accept"));
   m_ui.m_cmbFallbackDecision->setItemData(1, QSL("Msg.Ignore"));
   m_ui.m_cmbFallbackDecision->setItemData(2, QSL("Msg.Purge"));
+  m_ui.m_cmbFallbackDecision->setCurrentIndex(1);
   m_ui.m_helpDescription->setHelpText(
     tr("About the visual filter generator"),
     tr("<p><b>Build common article filters without writing JavaScript.</b> "
