@@ -119,7 +119,7 @@ void FormCategoryDetails::apply() {
   QList<Category*> cats = categories<Category>();
   RootItem* parent = m_ui->m_cmbParentCategory->currentData().value<RootItem*>();
 
-  for (Category* cat : cats) {
+  for (Category* cat : std::as_const(cats)) {
     if (isChangeAllowed(m_ui->m_mcbTitle)) {
       cat->setTitle(m_ui->m_txtTitle->lineEdit()->text());
     }
