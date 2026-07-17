@@ -3,6 +3,7 @@
 Released on: 2026-07-XX
 
 Added:
+* Article filters can now be generated with a visual rule builder for common conditions and actions, without writing JavaScript. (#930)
 * Article-list notifications can now switch pages with the mouse wheel while hovering the article list.
 * Custom skin colors can now be reset all at once to the colors defined by the current skin.
 * Image height optional limit returns. Now you can set image height separately for enclosures and for main article content. (#2339)

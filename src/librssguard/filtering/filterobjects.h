@@ -14,6 +14,13 @@ class FilteringSystem;
 class FilterMessage : public QObject {
     Q_OBJECT
 
+    // Safe Q_INVOKABLE actions exposed by the visual article-filter generator.
+    Q_CLASSINFO("articleFilterGeneratorActions",
+                "assignLabel|label|Assign label;"
+                "deassignLabel|label|Remove label;"
+                "deassignAllLabels|none|Remove all labels;"
+                "exportCategoriesToLabels|literal:true|Convert article categories to labels")
+
     Q_PROPERTY(QList<MessageCategory*> categories READ categories)
     Q_PROPERTY(QList<MessageEnclosure*> enclosures READ enclosures)
     Q_PROPERTY(QList<Label*> assignedLabels READ assignedLabels)

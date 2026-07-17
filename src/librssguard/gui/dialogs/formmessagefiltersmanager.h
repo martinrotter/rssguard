@@ -60,6 +60,7 @@ class FormMessageFiltersManager : public QDialog {
     void loadAccount(ServiceRoot* account);
     void loadAccounts();
     void beautifyScript();
+    void generateScript();
     void updateFilterOptions(MessageFilter* filter);
     bool confirmFeedAssignmentChange(RootItem* item, Qt::CheckState state);
     bool confirmBulkFeedAssignmentChange(Qt::CheckState state);

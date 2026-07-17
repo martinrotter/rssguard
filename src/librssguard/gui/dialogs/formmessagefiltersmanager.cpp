@@ -10,6 +10,7 @@
 #include "filtering/messagefilter.h"
 #include "filtering/messagesforfiltersmodel.h"
 #include "gui/dialogs/filedialog.h"
+#include "gui/dialogs/formarticlefiltergenerator.h"
 #include "gui/guiutilities.h"
 #include "gui/messagebox.h"
 #include "gui/reusable/jssyntaxhighlighter.h"
@@ -74,6 +75,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   m_ui.m_btnAddNew->setIcon(qApp->icons()->fromTheme(QSL("list-add")));
   m_ui.m_btnRemoveSelected->setIcon(qApp->icons()->fromTheme(QSL("list-remove")));
   m_ui.m_btnBeautify->setIcon(qApp->icons()->fromTheme(QSL("format-justify-fill")));
+  m_ui.m_btnGenerate->setIcon(qApp->icons()->fromTheme(QSL("document-new"), QSL("list-add")));
   m_ui.m_btnTest->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start")));
   m_ui.m_btnRunOnMessages->setIcon(qApp->icons()->fromTheme(QSL("media-playback-start")));
   m_ui.m_btnDetailedHelp->setIcon(qApp->icons()->fromTheme(QSL("help-contents")));
@@ -119,6 +121,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
   connect(m_ui.m_txtScript, &QPlainTextEdit::textChanged, this, &FormMessageFiltersManager::saveSelectedFilter);
   connect(m_ui.m_btnTest, &QPushButton::clicked, this, &FormMessageFiltersManager::testFilter);
   connect(m_ui.m_btnBeautify, &QPushButton::clicked, this, &FormMessageFiltersManager::beautifyScript);
+  connect(m_ui.m_btnGenerate, &QPushButton::clicked, this, &FormMessageFiltersManager::generateScript);
   connect(m_ui.m_cmbAccounts,
           static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
           this,
@@ -338,6 +341,28 @@ void FormMessageFiltersManager::filterMessagesLikeThis(const Message& msg) {
            jsStringLiteral(msg.m_url));
 
   addNewFilter(filter_script);
+}
+
+void FormMessageFiltersManager::generateScript() {
+  const QString generated_script = FormArticleFilterGenerator::generate();
+
+  if (generated_script.isEmpty()) {
+    return;
+  }
+
+  if (!m_ui.m_txtScript->toPlainText().trimmed().isEmpty() &&
+      MsgBox::show(this,
+                   QMessageBox::Icon::Warning,
+                   tr("Replace existing script?"),
+                   tr("The current article filter script will be replaced by the generated script."),
+                   {},
+                   {},
+                   QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                   QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
+    return;
+  }
+
+  m_ui.m_txtScript->setPlainText(generated_script);
 }
 
 void FormMessageFiltersManager::showMessageContextMenu(QPoint pos) {

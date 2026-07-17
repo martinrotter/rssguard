@@ -285,9 +285,19 @@
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="m_btnBeautify">
+             <widget class="QPushButton" name="m_btnBeautify">
                <property name="text">
                 <string>&amp;Beautify</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="m_btnGenerate">
+               <property name="toolTip">
+                <string>Create a script with a visual rule builder</string>
+               </property>
+               <property name="text">
+                <string>&amp;Generate</string>
                </property>
               </widget>
              </item>

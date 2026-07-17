@@ -89,7 +89,7 @@ HelpSpoiler::HelpSpoiler(QWidget* parent)
 
 void HelpSpoiler::setHelpText(const QString& title, const QString& text, bool is_warning, bool force_html) {
   m_btnToggle->setText(title);
-  setHelpText(text, is_warning);
+  setHelpText(text, is_warning, force_html);
 }
 
 void HelpSpoiler::setHelpText(const QString& text, bool is_warning, bool force_html) {

@@ -29,6 +29,22 @@ The `Existing articles` table is especially useful during testing:
 
 The `Script output` tab shows messages written by `app.log(...)`, and also shows script errors when testing from the dialog.
 
+### Visual filter generator
+
+Select `Generate` next to `Beautify` to create a new filter script without writing JavaScript. The generator replaces the script in the editor only when you select `Generate` in its dialog. Cancelling it leaves the current script unchanged.
+
+Add one or more conditions and choose whether **all** conditions or **at least one** condition must match. The **When conditions match** and **When conditions do not match** tabs each provide their own actions and result. With no conditions, the rule applies the matching tab's actions and result to every article. The available conditions cover article, feed, and account properties such as title, author, URL, contents, read state, score, dates, and attachments. Text conditions can be case-sensitive and can use a regular expression.
+
+In either outcome, the generator can change writable article properties, assign or remove labels, convert article categories to labels, or accept, ignore, or purge the article. The generated script is ordinary JavaScript: you can inspect, test, beautify, and modify it afterwards.
+
+```{note}
+The visual generator intentionally exposes only safe, common operations. Use handwritten scripts for advanced tasks such as duplicate detection, full-content downloading, notifications, external tools, or filesystem access.
+```
+
+```{warning}
+The generator does not import or edit existing scripts. Generating a new script overwrites the editor contents, so copy any handwritten changes you want to keep first.
+```
+
 ```{warning}
 During normal feed fetching, a JavaScript error in a filter does **not** reject the article. RSS Guard logs the error and continues as if the message was accepted. In the testing dialog, the error is shown to you directly.
 ```

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FormArticleFilterGenerator</class>
+ <widget class="QDialog" name="FormArticleFilterGenerator">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>900</width>
+    <height>760</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Article filter generator</string>
+  </property>
+  <layout class="QVBoxLayout" name="m_mainLayout">
+   <item>
+    <widget class="HelpSpoiler" name="m_helpDescription" native="true"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="m_matchLayout">
+     <item>
+      <widget class="QLabel" name="m_lblMatch">
+       <property name="text">
+        <string>Match</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="m_cmbMatchMode">
+       <item><property name="text"><string>all conditions</string></property></item>
+       <item><property name="text"><string>at least one condition</string></property></item>
+      </widget>
+     </item>
+     <item>
+      <spacer name="m_matchSpacer"><property name="orientation"><enum>Qt::Orientation::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="m_gbConditions">
+     <property name="title"><string>Conditions</string></property>
+     <layout class="QVBoxLayout" name="m_conditionsGroupLayout">
+      <item>
+       <widget class="QScrollArea" name="m_scrollConditions">
+        <property name="widgetResizable"><bool>true</bool></property>
+        <widget class="QWidget" name="m_conditionsContainer">
+         <layout class="QVBoxLayout" name="m_conditionsLayout">
+          <property name="leftMargin"><number>0</number></property>
+          <property name="topMargin"><number>0</number></property>
+          <property name="rightMargin"><number>0</number></property>
+          <property name="bottomMargin"><number>0</number></property>
+          <item><spacer name="m_conditionsSpacer"><property name="orientation"><enum>Qt::Orientation::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+         </layout>
+        </widget>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="m_btnAddCondition"><property name="text"><string>Add condition</string></property></widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QTabWidget" name="m_twOutcomes">
+     <property name="currentIndex"><number>0</number></property>
+     <widget class="QWidget" name="m_tabMatching">
+      <attribute name="title"><string>When conditions match</string></attribute>
+      <layout class="QVBoxLayout" name="m_matchingOutcomeLayout">
+       <item>
+        <widget class="QGroupBox" name="m_gbMatchingActions">
+         <property name="title"><string>Actions</string></property>
+         <layout class="QVBoxLayout" name="m_matchingActionsGroupLayout">
+          <item>
+           <widget class="QScrollArea" name="m_scrollActions">
+            <property name="widgetResizable"><bool>true</bool></property>
+            <widget class="QWidget" name="m_actionsContainer">
+             <layout class="QVBoxLayout" name="m_actionsLayout">
+              <property name="leftMargin"><number>0</number></property>
+              <property name="topMargin"><number>0</number></property>
+              <property name="rightMargin"><number>0</number></property>
+              <property name="bottomMargin"><number>0</number></property>
+              <item><spacer name="m_actionsSpacer"><property name="orientation"><enum>Qt::Orientation::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item><widget class="QPushButton" name="m_btnAddMatchingAction"><property name="text"><string>Add action</string></property></widget></item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="m_matchingDecisionLayout">
+         <item><widget class="QLabel" name="m_lblDecision"><property name="text"><string>Result</string></property></widget></item>
+         <item>
+          <widget class="QComboBox" name="m_cmbDecision">
+           <item><property name="text"><string>Accept article</string></property></item>
+           <item><property name="text"><string>Ignore article</string></property></item>
+           <item><property name="text"><string>Purge article</string></property></item>
+          </widget>
+         </item>
+         <item><spacer name="m_matchingDecisionSpacer"><property name="orientation"><enum>Qt::Orientation::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="m_tabFallback">
+      <attribute name="title"><string>When conditions do not match</string></attribute>
+      <layout class="QVBoxLayout" name="m_fallbackOutcomeLayout">
+       <item>
+        <widget class="QGroupBox" name="m_gbFallbackActions">
+         <property name="title"><string>Actions</string></property>
+         <layout class="QVBoxLayout" name="m_fallbackActionsGroupLayout">
+          <item>
+           <widget class="QScrollArea" name="m_scrollFallbackActions">
+            <property name="widgetResizable"><bool>true</bool></property>
+            <widget class="QWidget" name="m_fallbackActionsContainer">
+             <layout class="QVBoxLayout" name="m_fallbackActionsLayout">
+              <property name="leftMargin"><number>0</number></property>
+              <property name="topMargin"><number>0</number></property>
+              <property name="rightMargin"><number>0</number></property>
+              <property name="bottomMargin"><number>0</number></property>
+              <item><spacer name="m_fallbackActionsSpacer"><property name="orientation"><enum>Qt::Orientation::Vertical</enum></property><property name="sizeHint" stdset="0"><size><width>20</width><height>40</height></size></property></spacer></item>
+             </layout>
+            </widget>
+           </widget>
+          </item>
+          <item><widget class="QPushButton" name="m_btnAddFallbackAction"><property name="text"><string>Add action</string></property></widget></item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="m_fallbackDecisionLayout">
+         <item><widget class="QLabel" name="m_lblFallbackDecision"><property name="text"><string>Result</string></property></widget></item>
+         <item>
+          <widget class="QComboBox" name="m_cmbFallbackDecision">
+           <property name="toolTip"><string>Result used when the article does not match the conditions</string></property>
+           <item><property name="text"><string>Accept article</string></property></item>
+           <item><property name="text"><string>Ignore article</string></property></item>
+           <item><property name="text"><string>Purge article</string></property></item>
+          </widget>
+         </item>
+         <item><spacer name="m_fallbackDecisionSpacer"><property name="orientation"><enum>Qt::Orientation::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="m_gbPreview">
+     <property name="title"><string>Generated script</string></property>
+     <layout class="QVBoxLayout" name="m_previewLayout">
+      <item><widget class="QPlainTextEdit" name="m_txtPreview"><property name="readOnly"><bool>true</bool></property></widget></item>
+      <item><widget class="LabelWithStatus" name="m_lblError" native="true"/></item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="m_buttonBox">
+     <property name="standardButtons"><set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set></property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+ <customwidget>
+   <class>LabelWithStatus</class>
+   <extends>QWidget</extends>
+   <header>gui/reusable/labelwithstatus.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>gui/reusable/helpspoiler.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -79,6 +79,8 @@ set(SOURCES
   gui/dialogs/formbackupdatabasesettings.h
   gui/dialogs/formdatabasecleanup.cpp
   gui/dialogs/formdatabasecleanup.h
+  gui/dialogs/formarticlefiltergenerator.cpp
+  gui/dialogs/formarticlefiltergenerator.h
   gui/dialogs/formprogressworker.cpp
   gui/dialogs/formprogressworker.h
   gui/dialogs/formlog.cpp
@@ -342,6 +344,7 @@ set(UI_FILES
   gui/dialogs/formdatabasecleanup.ui
   gui/dialogs/formlog.ui
   gui/dialogs/formaskauth.ui
+  gui/dialogs/formarticlefiltergenerator.ui
   gui/dialogs/formmain.ui
   gui/dialogs/formmessagefiltersmanager.ui
   gui/dialogs/formrestoredatabasesettings.ui
