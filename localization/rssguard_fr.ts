@@ -559,7 +559,7 @@ Veuillez changer le nom de la base de donnée en cours d'utilisation, et réessa
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="90"/>
       <source>Cannot use database</source>
-      <translation type="unfinished">Cannot use database</translation>
+      <translation>Impossible d'utiliser la base de données</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="91"/>
@@ -1076,7 +1076,7 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="689"/>
       <source>Feedly tags response is not a JSON array.</source>
-      <translation type="unfinished">Feedly tags response is not a JSON array.</translation>
+      <translation>La réponse des tags Feedly n'est pas un tableau JSON .</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="743"/>
@@ -1485,7 +1485,7 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="111"/>
       <source>article filter &apos;%1&apos; must return valid FilteringAction value.</source>
-      <translation type="unfinished">article filter &apos;%1&apos; must return valid FilteringAction value.</translation>
+      <translation/>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="219"/>
@@ -2244,7 +2244,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="244"/>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="171"/>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Annuler</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="266"/>
@@ -2269,7 +2269,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="183"/>
       <source>Cancelling...</source>
-      <translation type="unfinished">Cancelling...</translation>
+      <translation>Annulation en cours...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="205"/>
@@ -3580,7 +3580,7 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="546"/>
       <source>Process existing articles?</source>
-      <translation type="unfinished">Process existing articles?</translation>
+      <translation>Traiter les articles existants?</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="547"/>
@@ -3631,7 +3631,7 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="764"/>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="764"/>
       <source>Do you want to continue?</source>
-      <translation type="unfinished">Do you want to continue?</translation>
+      <translation>Voulez-vous continuer?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="755"/>
@@ -4374,7 +4374,7 @@ celle actuellement installée.</translation>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="212"/>
       <source>Retry download</source>
-      <translation type="unfinished">Retry download</translation>
+      <translation>Réessayer le téléchargement</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formupdate.cpp" line="210"/>
@@ -7486,22 +7486,22 @@ stack: %3</translation>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="170"/>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="170"/>
       <source>Cannot read downloaded file data.</source>
-      <translation type="unfinished">Cannot read downloaded file data.</translation>
+      <translation>Impossible de lire les données du fichier téléchargé.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="174"/>
       <source>Cannot write downloaded file data.</source>
-      <translation type="unfinished">Cannot write downloaded file data.</translation>
+      <translation>Impossible d'écrire les données du fichier téléchargé.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="862"/>
       <source>Cannot create temporary file for download.</source>
-      <translation type="unfinished">Cannot create temporary file for download.</translation>
+      <translation>Impossible de créer un fichier temporaire pour le téléchargement.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="866"/>
       <source>Download file</source>
-      <translation type="unfinished">Download file</translation>
+      <translation>Télécharger le fichier</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="901"/>
