@@ -34,7 +34,7 @@ You can also add feeds to RSS Guard by passing URLs as command-line parameters. 
 
 ```powershell
 rssguard.exe "feed://archlinux.org/feeds/news"
-rssguard.exe "feed:https//archlinux.org/feeds/news"
+rssguard.exe "feed:https://archlinux.org/feeds/news"
 rssguard.exe "https://archlinux.org/feeds/news"
 ```
 

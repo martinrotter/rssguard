@@ -26,7 +26,7 @@ The plugin recognizes:
 * Atom 1.0
 * RDF/RSS 1.0
 * JSON Feed 1.0 and 1.1
-* XML sitemaps, including sitemap indexes and compressed sitemaps
+* XML sitemaps, including sitemap indexes; compressed sitemaps when enabled by the build
 * iCalendar
 * Gemlogs
 

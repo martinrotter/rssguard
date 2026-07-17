@@ -77,7 +77,7 @@ These colors are used dynamically for things such as:
 * interesting items
 * errored items
 * disabled items
-* an “OK-ish” status color used in some views
+* an OK-ish status color used in some views
 
 This is useful when you like a skin overall but want better contrast or slightly different highlight colors.
 

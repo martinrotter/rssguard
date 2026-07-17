@@ -11,7 +11,7 @@ RSS Guard `5.x` is NOT really compatible with RSS Guard `4.x`. Double-check all 
 
 There is a migration option displayed when you add a classic `RSS/ATOM` profile or account. So when you start RSS Guard 5 with empty data and are prompted to add your first account, select `RSS/ATOM` and continue until you see the migration dialog.
 
-This migration transfers folders, feeds, articles, article filters, labels, and queries. Article filter feed assignments are not migrated, along with some other things, for technical reasons.
+This migration transfers folders, feeds, articles, article filters, labels, and queries. Imported article filters retain their RSS Guard 4 syntax, so review and adjust them before relying on them. Article filter feed assignments are not migrated, along with some other things, for technical reasons.
 
 You can also trigger the migration manually:
 1. Add a standard RSS/ATOM account or profile via `Accounts -> Add account`.

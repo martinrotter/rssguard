@@ -46,7 +46,7 @@ The generator does not import or edit existing scripts. Generating a new script 
 ```
 
 ```{warning}
-During normal feed fetching, a JavaScript error in a filter does **not** reject the article. RSS Guard logs the error and continues as if the message was accepted. In the testing dialog, the error is shown to you directly.
+During normal feed fetching, a JavaScript error in a filter stops the update of that feed and marks it with a filtering error. In the testing dialog, the error is shown to you directly.
 ```
 
 ```{warning}
@@ -151,7 +151,7 @@ Here is the complete reference documentation of the functions and properties ava
 | `hasEnclosures`    | `Boolean`                 | Yes       | No           | Returns `true` if the article has at least one enclosure or attachment. |
 | `created`          | `Date`                    | No        | No           | Date and time of the message. |
 | `retrieved`        | `Date`                    | No        | No           | Date and time when RSS Guard received this version of the message. |
-| `createdIsMadeup`  | `Boolean`                 | Yes       | No           | Is `true` if the message timestamp was synthesized instead of taken from the source feed. |
+| `createdIsMadeup`  | `Boolean`                 | No        | No           | Is `true` if the message timestamp was synthesized instead of taken from the source feed. |
 | `isRead`           | `Boolean`                 | No        | Yes          | Is the message read? |
 | `isImportant`      | `Boolean`                 | No        | Yes          | Is the message important? |
 | `isDeleted`        | `Boolean`                 | No        | No           | Is the message placed in the recycle bin? |
@@ -244,8 +244,8 @@ Here is the complete reference documentation of the functions and properties ava
 
 | Name(Parameter)                                                                | Return value  | Description |
 | :---                                                                           | :---          | :--- |
-| `runExecutable(String exec, Array<String> params, String stdin_data)`          | `void`        | Launches an external executable with optional parameters and optional standard input, without waiting for it to finish. |
-| `runExecutableGetOutput(String exec, Array<String> params, String stdin_data)` | `String`      | Launches an external executable, waits for it to finish, and returns its standard output as text. |
+| `runExecutable(String exec, Array<String> params, String stdin_data, String working_directory)`          | `void`        | Launches an external executable with optional parameters, standard input, and working directory, without waiting for it to finish. |
+| `runExecutableGetOutput(String exec, Array<String> params, String stdin_data, String working_directory)` | `String`      | Launches an external executable, waits for it to finish, and returns its standard output as text. |
 
 ```{warning}
 External processes launched through `fs` use the RSS Guard user-data folder as the default working directory unless you explicitly pass another one.
@@ -278,8 +278,8 @@ External processes launched through `fs` use the RSS Guard user-data folder as t
 
 | Name       | Type     | Read-only | Description |
 | :---       | :---     | :---:     | :--- |
-| `url`      | `String` | Yes       | URL of the message enclosure. |
-| `mimeType` | `String` | Yes       | MIME type of the message enclosure. |
+| `url`      | `String` | No        | URL of the message enclosure. |
+| `mimeType` | `String` | No        | MIME type of the message enclosure. |
 
 #### `MessageCategory`
 

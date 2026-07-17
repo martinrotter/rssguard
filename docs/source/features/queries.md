@@ -3,7 +3,7 @@ The article list offers a search box to quickly filter displayed articles. If yo
 
 <img alt="alt-img" src="images/query-dialog.png" width="300px">
 
-You can choose a name for your query and, more importantly, the actual search phrase. You need to enter either a valid [regular expression](https://learn.microsoft.com/en-us/dotnet/standard/base-types/regular-expression-language-quick-reference) or an SQL `WHERE` clause that is compatible with the `Messages` [table](https://github.com/martinrotter/rssguard/blob/master/resources/sql/db_init.sql).
+You can choose a name for your query and, more importantly, the actual search phrase. You need to enter either a valid regular expression supported by your database or an SQL `WHERE` clause that is compatible with the `Messages` [table](https://github.com/martinrotter/rssguard/blob/master/resources/sql/db_init.sql).
 
 Then confirm the dialog, and your search will appear in the feed list under the `Queries` item. If you click it, all matching articles will be shown.
 
