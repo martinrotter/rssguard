@@ -201,6 +201,7 @@ QString MessagesModelSqlLayer::orderByClause() const {
   else {
     QStringList sorts;
     QList<int> used_columns;
+    Qt::SortOrder primary_sort_order = Qt::SortOrder::AscendingOrder;
 
     for (int i = 0; i < m_sortColumns.size(); i++) {
       // We need to map model/header column to source database column.
@@ -214,9 +215,25 @@ QString MessagesModelSqlLayer::orderByClause() const {
       }
 
       QString field_name(m_orderByNames[target_column]);
+      Qt::SortOrder sort_order = m_sortOrders[i];
+
+      if (target_column == MSG_DB_ID_INDEX && !sorts.isEmpty()) {
+        // A secondary ID key is an internal tie-breaker, so follow the primary direction.
+        sort_order = primary_sort_order;
+      }
+
+      if (sorts.isEmpty()) {
+        primary_sort_order = sort_order;
+      }
 
       sorts.append(QSL("%1 %2").arg(field_name,
-                                    m_sortOrders[i] == Qt::SortOrder::AscendingOrder ? QSL("ASC") : QSL("DESC")));
+                                    sort_order == Qt::SortOrder::AscendingOrder ? QSL("ASC") : QSL("DESC")));
+    }
+
+    if (!used_columns.contains(MSG_DB_ID_INDEX)) {
+      // Keep the database order stable when all user-selected values are equal.
+      sorts.append(QSL("Messages.id %1")
+                     .arg(primary_sort_order == Qt::SortOrder::AscendingOrder ? QSL("ASC") : QSL("DESC")));
     }
 
     return QL1S("ORDER BY ") + sorts.join(QSL(", "));
