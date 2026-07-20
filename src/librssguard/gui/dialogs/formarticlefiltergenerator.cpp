@@ -5,21 +5,24 @@
 #include "filtering/filterobjects.h"
 #include "gui/guiutilities.h"
 #include "gui/reusable/helpspoiler.h"
-#include "gui/reusable/labelwithstatus.h"
 #include "gui/reusable/jssyntaxhighlighter.h"
+#include "gui/reusable/labelwithstatus.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+
+#include <functional>
+#include <utility>
 
 #include <QCheckBox>
 #include <QComboBox>
 #include <QDialogButtonBox>
 #include <QFontDatabase>
 #include <QHBoxLayout>
-#include <QJsonArray>
-#include <QJsonDocument>
 #include <QJSEngine>
 #include <QJSValue>
+#include <QJsonArray>
+#include <QJsonDocument>
 #include <QLineEdit>
 #include <QLocale>
 #include <QMetaMethod>
@@ -30,52 +33,49 @@
 #include <QVBoxLayout>
 #include <QtAlgorithms>
 
-#include <functional>
-#include <utility>
-
 namespace {
 
-QString jsStringLiteral(const QString& value) {
-  const QByteArray json_array = QJsonDocument(QJsonArray({value})).toJson(QJsonDocument::JsonFormat::Compact);
-  const QString literal = QString::fromUtf8(json_array);
+  QString jsStringLiteral(const QString& value) {
+    const QByteArray json_array = QJsonDocument(QJsonArray({value})).toJson(QJsonDocument::JsonFormat::Compact);
+    const QString literal = QString::fromUtf8(json_array);
 
-  return literal.mid(1, literal.size() - 2);
-}
-
-QString displayName(const QString& identifier) {
-  QString result;
-
-  for (const QChar character : identifier) {
-    if (!result.isEmpty() && character.isUpper()) {
-      result.append(QLatin1Char(' '));
-    }
-
-    result.append(character);
+    return literal.mid(1, literal.size() - 2);
   }
 
-  return result.left(1).toUpper() + result.mid(1);
-}
+  QString displayName(const QString& identifier) {
+    QString result;
 
-bool isSupportedFieldType(int type) {
-  return type == QMetaType::Type::QString || type == QMetaType::Type::Bool || type == QMetaType::Type::Int ||
-         type == QMetaType::Type::Double || type == QMetaType::Type::QDateTime;
-}
+    for (const QChar character : identifier) {
+      if (!result.isEmpty() && character.isUpper()) {
+        result.append(QLatin1Char(' '));
+      }
 
-bool isTextField(int type) {
-  return type == QMetaType::Type::QString;
-}
+      result.append(character);
+    }
 
-bool isBooleanField(int type) {
-  return type == QMetaType::Type::Bool;
-}
+    return result.left(1).toUpper() + result.mid(1);
+  }
 
-bool isDateTimeField(int type) {
-  return type == QMetaType::Type::QDateTime;
-}
+  bool isSupportedFieldType(int type) {
+    return type == QMetaType::Type::QString || type == QMetaType::Type::Bool || type == QMetaType::Type::Int ||
+           type == QMetaType::Type::Double || type == QMetaType::Type::QDateTime;
+  }
 
-bool isNumericField(int type) {
-  return type == QMetaType::Type::Int || type == QMetaType::Type::Double;
-}
+  bool isTextField(int type) {
+    return type == QMetaType::Type::QString;
+  }
+
+  bool isBooleanField(int type) {
+    return type == QMetaType::Type::Bool;
+  }
+
+  bool isDateTimeField(int type) {
+    return type == QMetaType::Type::QDateTime;
+  }
+
+  bool isNumericField(int type) {
+    return type == QMetaType::Type::Int || type == QMetaType::Type::Double;
+  }
 
 } // namespace
 
@@ -115,13 +115,10 @@ class FormArticleFilterGenerator::ConditionRow : public QWidget {
 
       configure();
 
-      connect(m_field,
-              static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-              this,
-              [this]() {
-                configure();
-                changed();
-              });
+      connect(m_field, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, [this]() {
+        configure();
+        changed();
+      });
       connect(m_operator, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, [this]() {
         changed();
       });
@@ -176,13 +173,13 @@ class FormArticleFilterGenerator::ConditionRow : public QWidget {
         const QString milliseconds = QString::number(qint64(days) * 24 * 60 * 60 * 1000);
 
         return operation == QSL("older") ? QSL("%1 > %2").arg(age, milliseconds)
-                                          : QSL("%1 <= %2").arg(age, milliseconds);
+                                         : QSL("%1 <= %2").arg(age, milliseconds);
       }
 
       if (isNumericField(selected_field.m_type)) {
         bool valid = false;
         const double value = selected_field.m_type == QMetaType::Type::Int ? m_value->text().toInt(&valid)
-                                                                             : m_value->text().toDouble(&valid);
+                                                                           : m_value->text().toDouble(&valid);
 
         if (!valid) {
           if (error != nullptr) {
@@ -242,12 +239,13 @@ class FormArticleFilterGenerator::ConditionRow : public QWidget {
           return {};
         }
 
-        return QSL("new RegExp(%1, %2).test(String(%3))").arg(jsStringLiteral(value), flags, selected_field.m_expression);
+        return QSL("new RegExp(%1, %2).test(String(%3))")
+          .arg(jsStringLiteral(value), flags, selected_field.m_expression);
       }
 
-      const QString string_expression =
-        m_caseSensitive->isChecked() ? QSL("String(%1)").arg(selected_field.m_expression)
-                                     : QSL("String(%1).toLowerCase()").arg(selected_field.m_expression);
+      const QString string_expression = m_caseSensitive->isChecked()
+                                          ? QSL("String(%1)").arg(selected_field.m_expression)
+                                          : QSL("String(%1).toLowerCase()").arg(selected_field.m_expression);
       const QString literal = jsStringLiteral(m_caseSensitive->isChecked() ? value : value.toLower());
 
       if (operation == QSL("contains")) {
@@ -368,13 +366,10 @@ class FormArticleFilterGenerator::ActionRow : public QWidget {
 
       configure();
 
-      connect(m_action,
-              static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged),
-              this,
-              [this]() {
-                configure();
-                changed();
-              });
+      connect(m_action, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, [this]() {
+        configure();
+        changed();
+      });
       connect(m_field, static_cast<void (QComboBox::*)(int)>(&QComboBox::currentIndexChanged), this, [this]() {
         configure();
         changed();
@@ -496,7 +491,7 @@ class FormArticleFilterGenerator::ActionRow : public QWidget {
       }
 
       return field.m_type == QMetaType::Type::Int ? QString::number(int(number))
-                                                   : QLocale::c().toString(number, 'g', 15);
+                                                  : QLocale::c().toString(number, 'g', 15);
     }
 
     void changed() {
@@ -532,30 +527,37 @@ FormArticleFilterGenerator::FormArticleFilterGenerator() : QDialog(nullptr) {
   m_ui.m_cmbFallbackDecision->setItemData(1, QSL("Msg.Ignore"));
   m_ui.m_cmbFallbackDecision->setItemData(2, QSL("Msg.Purge"));
   m_ui.m_cmbFallbackDecision->setCurrentIndex(1);
-  m_ui.m_helpDescription->setHelpText(
-    tr("About the visual filter generator"),
-    tr("<p><b>Build common article filters without writing JavaScript.</b> "
-       "Choose actions and results for both matching and non-matching articles.</p>"
-       "<ul>"
-       "<li><b>All conditions</b> requires every condition to match; <b>at least one condition</b> matches any of them.</li>"
-       "<li>Each outcome can change article properties or labels before its result is applied.</li>"
-       "<li>The generated script remains editable, testable, and can be expanded with advanced JavaScript features.</li>"
-       "</ul>"
-       "<p>See the <a href=\"https://rssguard.readthedocs.io/en/stable/features/filters.html\">"
-       "article-filter documentation</a> for the complete scripting reference.</p>"),
-    false,
-    true);
+  m_ui.m_helpDescription
+    ->setHelpText(tr("About the visual filter generator"),
+                  tr("<p><b>Build common article filters without writing JavaScript.</b> "
+                     "Choose actions and results for both matching and non-matching articles.</p>"
+                     "<ul>"
+                     "<li><b>All conditions</b> requires every condition to match; <b>at least one condition</b> "
+                     "matches any of them.</li>"
+                     "<li>Each outcome can change article properties or labels before its result is applied.</li>"
+                     "<li>The generated script remains editable, testable, and can be expanded with advanced "
+                     "JavaScript features.</li>"
+                     "</ul>"
+                     "<p>See the <a href=\"https://rssguard.readthedocs.io/en/stable/features/filters.html\">"
+                     "article-filter documentation</a> for the complete scripting reference.</p>"),
+                  false,
+                  true);
 
   auto addProperties = [this](const QMetaObject& meta_object, const QString& prefix, bool allow_writing) {
     for (int index = meta_object.propertyOffset(); index < meta_object.propertyCount(); index++) {
       const QMetaProperty property = meta_object.property(index);
+
+#if QT_VERSION_MAJOR >= 6
       const int type = property.metaType().id();
+#else
+      const int type = property.userType();
+#endif
 
       if (!isSupportedFieldType(type)) {
         continue;
       }
 
-      const Field field = {prefix + QLatin1Char('.') + QString::fromLatin1(property.name()),
+      const Field field = {prefix + QL1C('.') + QString::fromLatin1(property.name()),
                            displayName(QString::fromLatin1(property.name())),
                            type,
                            allow_writing && property.isWritable()};
@@ -750,24 +752,22 @@ QString FormArticleFilterGenerator::buildScript(QString* error) const {
   const QString decision = m_ui.m_cmbDecision->currentData().toString();
   const QString fallback_decision = m_ui.m_cmbFallbackDecision->currentData().toString();
 
-  auto append_actions = [error](QStringList& lines,
-                                const QList<ActionRow*>& actions,
-                                const QString& branch,
-                                const QString& indentation) {
-    for (int index = 0; index < actions.size(); index++) {
-      const QString action = actions.at(index)->statement(index, branch, indentation, error);
+  auto append_actions =
+    [error](QStringList& lines, const QList<ActionRow*>& actions, const QString& branch, const QString& indentation) {
+      for (int index = 0; index < actions.size(); index++) {
+        const QString action = actions.at(index)->statement(index, branch, indentation, error);
 
-      if (action.isEmpty() && error != nullptr && !error->isEmpty()) {
-        return false;
+        if (action.isEmpty() && error != nullptr && !error->isEmpty()) {
+          return false;
+        }
+
+        if (!action.isEmpty()) {
+          lines.append(action);
+        }
       }
 
-      if (!action.isEmpty()) {
-        lines.append(action);
-      }
-    }
-
-    return true;
-  };
+      return true;
+    };
 
   if (conditions.isEmpty()) {
     QStringList lines = {QSL("/*"),
@@ -803,8 +803,7 @@ QString FormArticleFilterGenerator::buildScript(QString* error) const {
     return {};
   }
 
-  lines << QSL("  return %1;").arg(fallback_decision)
-        << QSL("}");
+  lines << QSL("  return %1;").arg(fallback_decision) << QSL("}");
 
   return lines.join(QLatin1Char('\n'));
 }
