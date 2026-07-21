@@ -1025,11 +1025,12 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
   bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
 
   if (m_mainForm != nullptr) {
-    bool any_count = task_bar_count_enabled && unread_messages > 0;
+    const bool feed_fetching_paused = settings()->value(GROUP(Feeds), SETTING(Feeds::PauseFeedFetching)).toBool();
+    const bool show_overlay = (task_bar_count_enabled && unread_messages > 0) || feed_fetching_paused;
     HRESULT overlay_result;
 
-    if (any_count) {
-      QImage overlay_icon = generateOverlayIcon(unread_messages);
+    if (show_overlay) {
+      QImage overlay_icon = generateOverlayIcon(unread_messages, feed_fetching_paused && unread_messages <= 0);
 
 #if QT_VERSION_MAJOR == 5
       HICON overlay_hicon = QtWin::toHICON(QPixmap::fromImage(overlay_icon));
@@ -1064,37 +1065,26 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
 }
 
 #if defined(Q_OS_WIN)
-QImage Application::generateOverlayIcon(int number) const {
+QImage Application::generateOverlayIcon(int number, bool show_pause) const {
   QImage img(128, 128, QImage::Format::Format_ARGB32);
   QPainter p;
   QString num_txt;
 
-  if (number < 1000) {
-    num_txt = QString::number(number);
-  }
-  else if (number < 100000) {
-    num_txt = QSL("%1k").arg(int(number / 1000));
-  }
-  else {
-    num_txt = QChar(8734);
+  if (!show_pause) {
+    if (number < 1000) {
+      num_txt = QString::number(number);
+    }
+    else if (number < 100000) {
+      num_txt = QSL("%1k").arg(int(number / 1000));
+    }
+    else {
+      num_txt = QChar(8734);
+    }
   }
 
   QPainterPath rounded_rectangle;
   rounded_rectangle.addRoundedRect(QRectF(img.rect()), 15, 15);
-  QFont fon = font();
-
-  if (num_txt.size() == 3) {
-    fon.setPixelSize(img.width() * 0.52);
-  }
-  else if (num_txt.size() == 2) {
-    fon.setPixelSize(img.width() * 0.68);
-  }
-  else {
-    fon.setPixelSize(img.width() * 0.79);
-  }
-
   p.begin(&img);
-  p.setFont(fon);
 
   p.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
   p.setRenderHint(QPainter::RenderHint::TextAntialiasing, true);
@@ -1106,9 +1096,39 @@ QImage Application::generateOverlayIcon(int number) const {
   p.setPen(Qt::GlobalColor::black);
   p.drawPath(rounded_rectangle);
 
-  p.drawText(img.rect().marginsRemoved(QMargins(0, 0, 0, img.height() * 0.05)),
-             num_txt,
-             QTextOption(Qt::AlignmentFlag::AlignCenter));
+  if (show_pause) {
+    const QRectF image_rect(img.rect());
+    const qreal bar_width = image_rect.width() * 0.18;
+    const qreal bar_height = image_rect.height() * 0.56;
+    const qreal bar_gap = image_rect.width() * 0.12;
+    const qreal total_width = (2.0 * bar_width) + bar_gap;
+    const qreal left = image_rect.center().x() - (total_width / 2.0);
+    const qreal top = image_rect.center().y() - (bar_height / 2.0);
+    const qreal corner_radius = bar_width * 0.2;
+
+    p.setPen(Qt::PenStyle::NoPen);
+    p.setBrush(Qt::GlobalColor::black);
+    p.drawRoundedRect(QRectF(left, top, bar_width, bar_height), corner_radius, corner_radius);
+    p.drawRoundedRect(QRectF(left + bar_width + bar_gap, top, bar_width, bar_height), corner_radius, corner_radius);
+  }
+  else {
+    QFont fon = font();
+
+    if (num_txt.size() == 3) {
+      fon.setPixelSize(img.width() * 0.52);
+    }
+    else if (num_txt.size() == 2) {
+      fon.setPixelSize(img.width() * 0.68);
+    }
+    else {
+      fon.setPixelSize(img.width() * 0.79);
+    }
+
+    p.setFont(fon);
+    p.drawText(img.rect().marginsRemoved(QMargins(0, 0, 0, img.height() * 0.05)),
+               num_txt,
+               QTextOption(Qt::AlignmentFlag::AlignCenter));
+  }
   p.end();
 
   return img;

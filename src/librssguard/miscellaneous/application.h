@@ -225,7 +225,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
   private:
 #if defined(Q_OS_WIN)
-    QImage generateOverlayIcon(int number) const;
+    QImage generateOverlayIcon(int number, bool show_pause) const;
 #endif
 
     void setupCustomDataFolder(const QString& data_folder);

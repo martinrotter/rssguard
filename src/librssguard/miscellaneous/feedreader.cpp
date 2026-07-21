@@ -412,6 +412,7 @@ void FeedReader::stopRunningFeedUpdate() {
 void FeedReader::pauseUnpaseFeedFetching(bool pause) {
   m_feedFetchingPaused = pause;
   qApp->settings()->setValue(GROUP(Feeds), Feeds::PauseFeedFetching, pause);
+  m_feedsModel->notifyWithCounts();
 }
 
 bool FeedReader::isFeedUpdateRunning() const {

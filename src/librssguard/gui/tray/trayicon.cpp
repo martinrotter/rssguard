@@ -38,8 +38,43 @@ TrayIcon::TrayIcon(const QString& id,
 void TrayIcon::setNumber(int number) {
   if (number <= 0) {
     // Either no unread messages or numbers in tray icon are disabled.
-    setToolTip(QSL(APP_LONG_NAME));
-    setPixmap(m_normalIcon);
+    const bool feed_fetching_paused = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::PauseFeedFetching)).toBool();
+
+    setToolTip(feed_fetching_paused ? tr("Feed fetching is paused.") : QSL(APP_LONG_NAME));
+
+    if (feed_fetching_paused) {
+      QPixmap background(m_plainIcon);
+      QPainter tray_painter;
+
+      tray_painter.begin(&background);
+      tray_painter.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
+      tray_painter.setRenderHint(QPainter::RenderHint::TextAntialiasing, false);
+
+      // Keep the pause mark visually consistent with the unread-count overlay.
+      const QRectF background_rect(background.rect());
+      const qreal bar_width = background_rect.width() * 0.18;
+      const qreal bar_height = background_rect.height() * 0.56;
+      const qreal bar_gap = background_rect.width() * 0.12;
+      const qreal total_width = (2.0 * bar_width) + bar_gap;
+      const qreal left = background_rect.center().x() - (total_width / 2.0);
+      const qreal top = background_rect.center().y() - (bar_height / 2.0);
+      const qreal corner_radius = bar_width * 0.2;
+
+      tray_painter.setPen(Qt::PenStyle::NoPen);
+      tray_painter.setBrush(m_textColor);
+      tray_painter.drawRoundedRect(QRectF(left, top, bar_width, bar_height), corner_radius, corner_radius);
+      tray_painter.drawRoundedRect(QRectF(left + bar_width + bar_gap, top, bar_width, bar_height),
+                                  corner_radius,
+                                  corner_radius);
+
+      tray_painter.end();
+
+      setPixmap(background);
+    }
+    else {
+      setPixmap(m_normalIcon);
+    }
+
     setStatus(TrayIcon::Status::Passive);
   }
   else {
