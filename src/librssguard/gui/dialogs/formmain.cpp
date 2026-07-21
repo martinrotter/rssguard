@@ -50,6 +50,10 @@
 
 #include <QWindow>
 
+#if defined(Q_OS_WIN)
+#include <ShObjIdl.h>
+#endif
+
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
   : QMainWindow(parent, f), m_ui(new Ui::FormMain), m_statusBar(nullptr) {
   qDebugNN << LOGSEC_GUI << "Creating main application form in thread:" << QUOTE_W_SPACE_DOT(getThreadID());
@@ -273,6 +277,12 @@ QList<QAction*> FormMain::allActions() const {
 
   return actions;
 }
+
+#if defined(Q_OS_WIN)
+QList<QAction*> FormMain::taskbarThumbnailActions() const {
+  return {m_ui->m_actionPauseFeedFetching, m_ui->m_actionUpdateAllItems, m_ui->m_actionSettings};
+}
+#endif
 
 void FormMain::switchFullscreenMode() {
   if (!isFullScreen()) {
@@ -1240,6 +1250,34 @@ void FormMain::showEvent(QShowEvent* event) {
   QMainWindow::showEvent(event);
 
   tabWidget()->feedMessageViewer()->normalizeToolbarHeights();
+}
+
+#if QT_VERSION_MAJOR > 5
+bool FormMain::nativeEvent(const QByteArray& event_type, void* message, qintptr* result) {
+#else
+bool FormMain::nativeEvent(const QByteArray& event_type, void* message, long* result) {
+#endif
+#if defined(Q_OS_WIN)
+  Q_UNUSED(event_type)
+
+  const auto* native_message = static_cast<MSG*>(message);
+  static const UINT taskbar_button_created_message = RegisterWindowMessage(L"TaskbarButtonCreated");
+
+  if (native_message->message == taskbar_button_created_message) {
+    qApp->taskbarThumbnailButtonsCreated();
+  }
+  else if (native_message->message == WM_COMMAND && HIWORD(native_message->wParam) == THBN_CLICKED &&
+           qApp->triggerTaskbarThumbnailButton(LOWORD(native_message->wParam))) {
+    *result = 0;
+    return true;
+  }
+#else
+  Q_UNUSED(event_type)
+  Q_UNUSED(message)
+  Q_UNUSED(result)
+#endif
+
+  return QMainWindow::nativeEvent(event_type, message, result);
 }
 
 void FormMain::hideEvent(QHideEvent* event) {

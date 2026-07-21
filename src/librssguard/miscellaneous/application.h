@@ -162,6 +162,12 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     void setMainForm(FormMain* main_form);
 
+#if defined(Q_OS_WIN)
+    void taskbarThumbnailButtonsCreated();
+    void updateTaskbarThumbnailButtons();
+    bool triggerTaskbarThumbnailButton(quint32 button_id);
+#endif
+
     void backupDatabaseSettings(bool backup_database,
                                 bool backup_settings,
                                 const QString& target_path,
@@ -226,6 +232,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
   private:
 #if defined(Q_OS_WIN)
     QImage generateOverlayIcon(int number, bool show_pause) const;
+    void hideTaskbarThumbnailButtons();
 #endif
 
     void setupCustomDataFolder(const QString& data_folder);
@@ -283,6 +290,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
 #if defined(Q_OS_WIN)
     ITaskbarList4* m_windowsTaskBar;
+    bool m_taskbarThumbnailButtonsReady;
+    bool m_taskbarThumbnailButtonsAdded;
 #endif
 };
 

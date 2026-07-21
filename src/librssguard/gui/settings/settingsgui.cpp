@@ -257,6 +257,13 @@ void SettingsGui::loadSettings() {
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool());
 #endif
 
+#if defined(Q_OS_WIN)
+  m_ui->m_displayTaskbarThumbnailButtons
+    ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::TaskbarThumbnailButtons)).toBool());
+#else
+  m_ui->m_displayTaskbarThumbnailButtons->setVisible(false);
+#endif
+
   m_ui->m_displayUnreadMessageCountOnWindow
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnWindow)).toBool());
 
@@ -481,6 +488,13 @@ void SettingsGui::saveSettings() {
   settings()->setValue(GROUP(GUI),
                        GUI::UnreadNumbersOnTaskBar,
                        m_ui->m_displayUnreadMessageCountOnTaskBar->isChecked());
+#endif
+
+#if defined(Q_OS_WIN)
+  settings()->setValue(GROUP(GUI),
+                       GUI::TaskbarThumbnailButtons,
+                       m_ui->m_displayTaskbarThumbnailButtons->isChecked());
+  qApp->updateTaskbarThumbnailButtons();
 #endif
 
   settings()->setValue(GROUP(GUI), GUI::UnreadNumbersOnWindow, m_ui->m_displayUnreadMessageCountOnWindow->isChecked());

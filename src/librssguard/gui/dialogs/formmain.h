@@ -36,6 +36,11 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     // for given actions.
     QList<QAction*> allActions() const;
 
+#if defined(Q_OS_WIN)
+    // Returns actions mirrored by the Windows taskbar thumbnail toolbar.
+    QList<QAction*> taskbarThumbnailActions() const;
+#endif
+
     // Loads/saves visual state of the application.
     void loadSize();
     void saveSize();
@@ -76,6 +81,11 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     virtual void closeEvent(QCloseEvent* event);
     virtual void showEvent(QShowEvent* event);
     virtual void hideEvent(QHideEvent* event);
+#if QT_VERSION_MAJOR > 5
+    virtual bool nativeEvent(const QByteArray& event_type, void* message, qintptr* result);
+#else
+    virtual bool nativeEvent(const QByteArray& event_type, void* message, long* result);
+#endif
 
   signals:
     void windowResized(const QSize& new_size);

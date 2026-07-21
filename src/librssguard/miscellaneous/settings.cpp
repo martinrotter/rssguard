@@ -453,6 +453,11 @@ DKEY GUI::UnreadNumbersOnTaskBar = "show_unread_numbers_on_task_bar";
 DVALUE(bool) GUI::UnreadNumbersOnTaskBarDef = true;
 #endif
 
+#if defined(Q_OS_WIN)
+DKEY GUI::TaskbarThumbnailButtons = "show_taskbar_thumbnail_buttons";
+DVALUE(bool) GUI::TaskbarThumbnailButtonsDef = true;
+#endif
+
 DKEY GUI::UnreadNumbersOnWindow = "show_unread_numbers_on_window";
 DVALUE(bool) GUI::UnreadNumbersOnWindowDef = true;
 

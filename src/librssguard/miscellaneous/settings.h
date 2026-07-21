@@ -467,6 +467,11 @@ namespace GUI {
   VALUE(bool) UnreadNumbersOnTaskBarDef;
 #endif
 
+#if defined(Q_OS_WIN)
+  KEY TaskbarThumbnailButtons;
+  VALUE(bool) TaskbarThumbnailButtonsDef;
+#endif
+
   KEY UnreadNumbersOnWindow;
   VALUE(bool) UnreadNumbersOnWindowDef;
 

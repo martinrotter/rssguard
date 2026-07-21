@@ -333,6 +333,13 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="m_displayTaskbarThumbnailButtons">
+            <property name="text">
+             <string>Display thumbnail buttons</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>

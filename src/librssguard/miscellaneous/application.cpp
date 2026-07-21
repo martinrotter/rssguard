@@ -36,10 +36,13 @@
 
 #include <iostream>
 
+#include <QAction>
 #include <QEventLoop>
+#include <QIcon>
 #include <QLoggingCategory>
 #include <QPainter>
 #include <QPainterPath>
+#include <QPixmap>
 #include <QProcess>
 #include <QSessionManager>
 #include <QSplashScreen>
@@ -81,6 +84,32 @@
 QFile* s_fileLog = nullptr;
 bool s_disableDebug = false;
 
+#if defined(Q_OS_WIN)
+namespace {
+  constexpr UINT TaskbarButtonPauseFeedFetching = 1;
+  constexpr UINT TaskbarButtonFetchAll = 2;
+  constexpr UINT TaskbarButtonSettings = 3;
+  constexpr UINT TaskbarButtonsCount = 3;
+
+  HICON taskbarButtonIcon(const QIcon& icon) {
+    const QPixmap pixmap = icon.pixmap(QSize(16, 16));
+
+#if QT_VERSION_MAJOR == 5
+    return QtWin::toHICON(pixmap);
+#else
+    return pixmap.toImage().toHICON();
+#endif
+  }
+
+  QString taskbarButtonTooltip(const QAction& action) {
+    QString tooltip = action.text();
+
+    tooltip.remove('&');
+    return tooltip;
+  }
+} // namespace
+#endif
+
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
   : SingleApplication(id, argc, argv), m_rawCliArgs(raw_cli_args), m_updateFeedsLock(new Mutex()) {
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
@@ -116,6 +145,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #endif
 #if defined(Q_OS_WIN)
   m_windowsTaskBar = nullptr;
+  m_taskbarThumbnailButtonsReady = false;
+  m_taskbarThumbnailButtonsAdded = false;
 #endif
 
   m_settings = Settings::setupSettings(this);
@@ -585,6 +616,20 @@ QWidget* Application::mainFormWidget() {
 void Application::setMainForm(FormMain* main_form) {
   m_mainForm = main_form;
 
+#if defined(Q_OS_WIN)
+  const QList<QAction*> taskbar_actions = m_mainForm->taskbarThumbnailActions();
+
+  for (QAction* action : taskbar_actions) {
+#if QT_VERSION_MAJOR > 5
+    connect(action, &QAction::enabledChanged, this, &Application::updateTaskbarThumbnailButtons);
+#else
+    connect(action, &QAction::changed, this, &Application::updateTaskbarThumbnailButtons);
+#endif
+  }
+
+  connect(taskbar_actions.constFirst(), &QAction::toggled, this, &Application::updateTaskbarThumbnailButtons);
+#endif
+
   if (m_toastNotifications != nullptr) {
     connect(m_toastNotifications,
             &ToastNotificationsManager::dataChangeNotificationTriggered,
@@ -597,6 +642,135 @@ void Application::setMainForm(FormMain* main_form) {
             &MessagesModel::setMessageReadById);
   }
 }
+
+#if defined(Q_OS_WIN)
+void Application::taskbarThumbnailButtonsCreated() {
+  m_taskbarThumbnailButtonsReady = true;
+  m_taskbarThumbnailButtonsAdded = false;
+  updateTaskbarThumbnailButtons();
+}
+
+bool Application::triggerTaskbarThumbnailButton(quint32 button_id) {
+  if (m_mainForm == nullptr) {
+    return false;
+  }
+
+  const QList<QAction*> taskbar_actions = m_mainForm->taskbarThumbnailActions();
+  QAction* action = nullptr;
+
+  switch (button_id) {
+    case TaskbarButtonPauseFeedFetching:
+      action = taskbar_actions.value(0);
+      break;
+
+    case TaskbarButtonFetchAll:
+      action = taskbar_actions.value(1);
+      break;
+
+    case TaskbarButtonSettings:
+      action = taskbar_actions.value(2);
+      break;
+
+    default:
+      return false;
+  }
+
+  if (action == nullptr || !action->isEnabled()) {
+    return false;
+  }
+
+  action->trigger();
+  return true;
+}
+
+void Application::updateTaskbarThumbnailButtons() {
+  if (m_mainForm == nullptr || m_windowsTaskBar == nullptr || !m_taskbarThumbnailButtonsReady) {
+    return;
+  }
+
+  const bool show_buttons = settings()->value(GROUP(GUI), SETTING(GUI::TaskbarThumbnailButtons)).toBool();
+
+  if (!show_buttons) {
+    hideTaskbarThumbnailButtons();
+    return;
+  }
+
+  const QList<QAction*> taskbar_actions = m_mainForm->taskbarThumbnailActions();
+
+  if (taskbar_actions.size() != TaskbarButtonsCount) {
+    qCriticalNN << LOGSEC_GUI << "Unexpected number of taskbar thumbnail actions.";
+    return;
+  }
+
+  const QAction* pause_action = taskbar_actions.at(0);
+  const bool feed_fetching_paused = pause_action->isChecked();
+  const QList<QIcon> button_icons = {
+    icons()->fromTheme(feed_fetching_paused ? QSL("media-playback-start") : QSL("media-playback-pause"),
+                       feed_fetching_paused ? QSL("player_play") : QSL("player_pause")),
+    taskbar_actions.at(1)->icon(),
+    taskbar_actions.at(2)->icon()};
+  const QStringList button_tooltips = {feed_fetching_paused ? tr("Resume automatic feed fetching")
+                                                            : tr("Pause automatic feed fetching"),
+                                       taskbarButtonTooltip(*taskbar_actions.at(1)),
+                                       taskbarButtonTooltip(*taskbar_actions.at(2))};
+  const UINT button_ids[] = {TaskbarButtonPauseFeedFetching, TaskbarButtonFetchAll, TaskbarButtonSettings};
+  THUMBBUTTON buttons[TaskbarButtonsCount] = {};
+  HICON button_handles[TaskbarButtonsCount] = {};
+
+  for (UINT i = 0; i < TaskbarButtonsCount; ++i) {
+    THUMBBUTTON& button = buttons[i];
+    const QAction* action = taskbar_actions.at(i);
+
+    button.iId = button_ids[i];
+    button.dwMask = THB_FLAGS | THB_ICON | THB_TOOLTIP;
+    button.dwFlags = action->isEnabled() ? THBF_ENABLED : THBF_DISABLED;
+    button_handles[i] = taskbarButtonIcon(button_icons.at(i));
+    button.hIcon = button_handles[i];
+    button_tooltips.at(i).left(MAX_PATH - 1).toWCharArray(button.szTip);
+  }
+
+  const HWND window_handle = reinterpret_cast<HWND>(m_mainForm->winId());
+  const HRESULT result = m_taskbarThumbnailButtonsAdded
+                           ? m_windowsTaskBar->ThumbBarUpdateButtons(window_handle, TaskbarButtonsCount, buttons)
+                           : m_windowsTaskBar->ThumbBarAddButtons(window_handle, TaskbarButtonsCount, buttons);
+
+  for (HICON button_handle : button_handles) {
+    if (button_handle != nullptr) {
+      DestroyIcon(button_handle);
+    }
+  }
+
+  if (FAILED(result)) {
+    qCriticalNN << LOGSEC_GUI
+                << "Failed to update taskbar thumbnail buttons with HRESULT:" << QUOTE_W_SPACE_DOT(result);
+    return;
+  }
+
+  m_taskbarThumbnailButtonsAdded = true;
+}
+
+void Application::hideTaskbarThumbnailButtons() {
+  if (!m_taskbarThumbnailButtonsAdded || m_mainForm == nullptr || m_windowsTaskBar == nullptr) {
+    return;
+  }
+
+  THUMBBUTTON buttons[TaskbarButtonsCount] = {};
+
+  for (UINT i = 0; i < TaskbarButtonsCount; ++i) {
+    buttons[i].iId = i + 1;
+    buttons[i].dwMask = THB_FLAGS;
+    buttons[i].dwFlags = THBF_HIDDEN;
+  }
+
+  const HRESULT result =
+    m_windowsTaskBar->ThumbBarUpdateButtons(reinterpret_cast<HWND>(m_mainForm->winId()), TaskbarButtonsCount, buttons);
+
+  if (FAILED(result)) {
+    qCriticalNN << LOGSEC_GUI
+                << "Failed to change taskbar thumbnail button visibility with HRESULT:" << QUOTE_W_SPACE_DOT(result);
+  }
+}
+#endif
 
 QString Application::configFolder() const {
   return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::GenericConfigLocation);
