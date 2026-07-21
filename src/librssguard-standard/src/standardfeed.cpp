@@ -19,6 +19,7 @@
 #include <librssguard/exceptions/feedrecognizedbutfailedexception.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/exceptions/scriptexception.h>
+#include <librssguard/miscellaneous/iofactory.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/textfactory.h>
 
@@ -34,9 +35,9 @@
 #include <QProcessEnvironment>
 #include <QScopedPointer>
 #include <QStringLiteral>
-#include <QtGlobal>
 #include <QVariant>
 #include <QXmlStreamReader>
+#include <QtGlobal>
 
 StandardFeed::StandardFeed(RootItem* parent_item) : Feed(parent_item) {
   m_type = Type::Rss0X;
@@ -368,20 +369,20 @@ QPair<StandardFeed*, NetworkResult> StandardFeed::guessFeed(StandardFeed::Source
     QList<QPair<QByteArray, QByteArray>> headers = http_headers;
     headers << NetworkFactory::generateBasicAuthHeader(protection, username, password);
 
-    network_result = NetworkFactory::performNetworkOperation(source,
-                                                             timeout,
-                                                             QByteArray(),
-                                                             feed_contents,
-                                                             QNetworkAccessManager::Operation::GetOperation,
-                                                             headers,
-                                                             false,
-                                                             {},
-                                                             {},
-                                                             custom_proxy,
-                                                             http2_status,
-                                                             ignore_cookies
-                                                               ? NetworkFactory::CookiePolicy::IgnoreCookies
-                                                               : NetworkFactory::CookiePolicy::UseSharedCookieJar);
+    network_result =
+      NetworkFactory::performNetworkOperation(source,
+                                              timeout,
+                                              QByteArray(),
+                                              feed_contents,
+                                              QNetworkAccessManager::Operation::GetOperation,
+                                              headers,
+                                              false,
+                                              {},
+                                              {},
+                                              custom_proxy,
+                                              http2_status,
+                                              ignore_cookies ? NetworkFactory::CookiePolicy::IgnoreCookies
+                                                             : NetworkFactory::CookiePolicy::UseSharedCookieJar);
 
     // account->resetHostSpacing(host);
 

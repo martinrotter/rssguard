@@ -2,6 +2,7 @@
 
 #include "src/gui/emailpreviewer.h"
 
+#include "miscellaneous/iofactory.h"
 #include "src/definitions.h"
 #include "src/gmailnetworkfactory.h"
 #include "src/gmailserviceroot.h"

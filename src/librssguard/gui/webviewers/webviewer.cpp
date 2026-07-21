@@ -8,6 +8,7 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"

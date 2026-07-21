@@ -10,6 +10,7 @@
 #include <librssguard/gui/guiutilities.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/iofactory.h>
 #include <librssguard/services/abstract/category.h>
 
 #include <QTextStream>

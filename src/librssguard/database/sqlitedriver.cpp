@@ -4,6 +4,7 @@
 
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iofactory.h"
 
 #include <QDir>
 #include <QSqlDriver>

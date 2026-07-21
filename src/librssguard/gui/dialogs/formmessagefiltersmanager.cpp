@@ -17,10 +17,13 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/iofactory.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/accountcheckmodel.h"
 #include "services/abstract/feed.h"
+
+#include <algorithm>
 
 #include <QDateTime>
 #include <QJSEngine>
@@ -30,16 +33,14 @@
 #include <QScopedValueRollback>
 #include <QSortFilterProxyModel>
 
-#include <algorithm>
-
 namespace {
 
-QString jsStringLiteral(const QString& value) {
-  const QByteArray json_array = QJsonDocument(QJsonArray({value})).toJson(QJsonDocument::JsonFormat::Compact);
-  const QString literal = QString::fromUtf8(json_array);
+  QString jsStringLiteral(const QString& value) {
+    const QByteArray json_array = QJsonDocument(QJsonArray({value})).toJson(QJsonDocument::JsonFormat::Compact);
+    const QString literal = QString::fromUtf8(json_array);
 
-  return literal.mid(1, literal.size() - 2);
-}
+    return literal.mid(1, literal.size() - 2);
+  }
 
 } // namespace
 
@@ -48,8 +49,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
                                                      QWidget* parent)
   : QDialog(parent), m_feedsModel(new AccountCheckSortedModel(this)), m_rootItem(new RootItem()), m_accounts(accounts),
     m_reader(reader), m_loadingFilter(false), m_suppressFeedAssignmentConfirmation(false),
-    m_msgProxyModel(new QSortFilterProxyModel(this)),
-    m_msgModel(new MessagesForFiltersModel(this)) {
+    m_msgProxyModel(new QSortFilterProxyModel(this)), m_msgModel(new MessagesForFiltersModel(this)) {
   m_ui.setupUi(this);
 
   m_defaultTextColor = m_ui.m_txtErrors->textColor();
@@ -319,26 +319,25 @@ ServiceRoot* FormMessageFiltersManager::selectedAccount() const {
 }
 
 void FormMessageFiltersManager::filterMessagesLikeThis(const Message& msg) {
-  QString filter_script =
-    QSL("function filterMessage() {\n"
-        "  // Adjust the condition to suit your needs.\n"
-        "  var is_message_same =\n"
-        "    msg.isRead == %1 &&\n"
-        "    msg.isImportant == %2 &&\n"
-        "    msg.title == %3 &&\n"
-        "    msg.url == %4;\n"
-        "\n"
-        "  if (is_message_same) {\n"
-        "    return Msg.Accept;\n"
-        "  }\n"
-        "  else {\n"
-        "    return Msg.Ignore;\n"
-        "  }\n"
-        "}")
-      .arg(QString::number(int(msg.m_isRead)),
-           QString::number(int(msg.m_isImportant)),
-           jsStringLiteral(msg.m_title),
-           jsStringLiteral(msg.m_url));
+  QString filter_script = QSL("function filterMessage() {\n"
+                              "  // Adjust the condition to suit your needs.\n"
+                              "  var is_message_same =\n"
+                              "    msg.isRead == %1 &&\n"
+                              "    msg.isImportant == %2 &&\n"
+                              "    msg.title == %3 &&\n"
+                              "    msg.url == %4;\n"
+                              "\n"
+                              "  if (is_message_same) {\n"
+                              "    return Msg.Accept;\n"
+                              "  }\n"
+                              "  else {\n"
+                              "    return Msg.Ignore;\n"
+                              "  }\n"
+                              "}")
+                            .arg(QString::number(int(msg.m_isRead)),
+                                 QString::number(int(msg.m_isImportant)),
+                                 jsStringLiteral(msg.m_title),
+                                 jsStringLiteral(msg.m_url));
 
   addNewFilter(filter_script);
 }
@@ -720,8 +719,7 @@ void FormMessageFiltersManager::onFeedChecked(RootItem* item, Qt::CheckState sta
 
 bool FormMessageFiltersManager::confirmFeedAssignmentChange(RootItem* item, Qt::CheckState state) {
   if (m_loadingFilter || m_suppressFeedAssignmentConfirmation || item == nullptr ||
-      item->kind() != RootItem::Kind::Category ||
-      state == Qt::CheckState::PartiallyChecked) {
+      item->kind() != RootItem::Kind::Category || state == Qt::CheckState::PartiallyChecked) {
     return true;
   }
 

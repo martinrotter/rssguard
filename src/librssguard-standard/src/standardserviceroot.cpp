@@ -30,6 +30,7 @@
 #include <librssguard/gui/messagebox.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/iofactory.h>
 #include <librssguard/miscellaneous/mutex.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/network-web/networkfactory.h>

@@ -5,10 +5,8 @@
 
 #include "core/feeddownloader.h"
 #include "database/databasefactory.h"
-#include "definitions/definitions.h"
 #include "gui/tray/trayicon.h"
 #include "miscellaneous/feedreader.h"
-#include "miscellaneous/iofactory.h"
 #include "miscellaneous/localization.h"
 #include "miscellaneous/notification.h"
 #include "miscellaneous/singleapplication.h"

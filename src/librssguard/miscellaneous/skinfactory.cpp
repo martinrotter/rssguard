@@ -6,6 +6,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/domdocument.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 #include "services/abstract/rootitem.h"
 

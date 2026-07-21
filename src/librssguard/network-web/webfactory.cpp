@@ -12,6 +12,7 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
+#include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 #include "network-web/cookiejar.h"
 #include "network-web/downloader.h"

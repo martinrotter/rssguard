@@ -10,6 +10,7 @@
 #include "database/databasequeries.h"
 #include "gui/dialogs/formmessagefiltersmanager.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/pluginfactory.h"
 #include "miscellaneous/settings.h"

@@ -2,6 +2,7 @@
 
 #include "src/greaderserviceroot.h"
 
+#include "miscellaneous/iofactory.h"
 #include "src/definitions.h"
 #include "src/greaderentrypoint.h"
 #include "src/greaderfeed.h"
