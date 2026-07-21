@@ -5,20 +5,19 @@
 #include "core/feedsmodel.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"
-#include "gui/dialogs/formabout.h"
-#include "gui/dialogs/formlog.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
-#include "gui/messagebox.h"
-#include "gui/messagesview.h"
 #include "gui/notifications/toastnotificationsmanager.h"
 #include "gui/toolbars/feedstoolbar.h"
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/toolbars/statusbar.h"
-#include "gui/tray/qttrayicon.h"
 #include "gui/webviewers/qtextbrowser/textbrowserviewer.h"
+#include "miscellaneous/applicationlifecycle.h"
+#include "miscellaneous/applicationlogmanager.h"
+#include "miscellaneous/applicationpaths.h"
 #include "miscellaneous/feedreader.h"
+#include "miscellaneous/guinotificationcoordinator.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/mutex.h"
@@ -26,7 +25,6 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/thread.h"
 #include "miscellaneous/windowstaskbar.h"
-#include "network-web/cookiejar.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/serviceroot.h"
@@ -35,15 +33,12 @@
 #include "gui/webviewers/qtwebengine/webengineviewer.h"
 #endif
 
-#include <iostream>
-
 #include <QAction>
 #include <QEventLoop>
 #include <QIcon>
 #include <QLoggingCategory>
 #include <QPixmap>
 #include <QProcess>
-#include <QSessionManager>
 #include <QSplashScreen>
 #include <QSslSocket>
 #include <QThreadPool>
@@ -58,23 +53,6 @@
 #include <QWebEngineUrlScheme>
 #endif
 
-#if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-#include <QDBusConnection>
-#include <QDBusMessage>
-#endif
-
-#if defined(Q_OS_WIN)
-#if QT_VERSION_MAJOR == 5
-#include <QtPlatformHeaders/QWindowsWindowFunctions>
-#else
-#include <QWindow>
-#include <QtGui/qpa/qplatformwindow_p.h>
-#endif
-#endif
-
-QFile* s_fileLog = nullptr;
-bool s_disableDebug = false;
-
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
   : SingleApplication(id, argc, argv), m_rawCliArgs(raw_cli_args), m_updateFeedsLock(new Mutex()) {
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
@@ -88,14 +66,14 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   QString custom_ua;
 
+  m_paths.reset(new ApplicationPaths(this));
+  m_logManager.reset(new ApplicationLogManager(this));
   parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);
   qInstallMessageHandler(performLogging);
-
   m_feedReader = nullptr;
-  m_quitLogicDone = false;
+  m_lifecycle.reset(new ApplicationLifecycle(this));
   m_mainForm = nullptr;
-  m_logForm = nullptr;
-  m_trayIcon = nullptr;
+
   m_settings = nullptr;
   m_webFactory = nullptr;
   m_system = nullptr;
@@ -113,7 +91,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   initializeSplash();
   showSplashMessage(tr("Initializing application..."));
 
-  initializeFileBasedLogging();
+  m_logManager->initializeFileBasedLogging();
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   if (!m_cmdParser.isSet(QSL(CLI_FORCETEXT_LONG))) {
@@ -152,6 +130,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_notifications = new NotificationFactory(this);
   m_toastNotifications =
     (!isWayland() && m_notifications->useToastNotifications()) ? new ToastNotificationsManager(this) : nullptr;
+  m_guiNotifications.reset(new GuiNotificationCoordinator(this));
 
 #if defined(Q_OS_WIN)
   m_windowsTaskbar.reset(new WindowsTaskbar(this));
@@ -176,9 +155,9 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
             &Application::loadMessageToFeedAndArticleList);
   }
 
-  connect(this, &Application::aboutToQuit, this, &Application::onAboutToQuit);
-  connect(this, &Application::commitDataRequest, this, &Application::onCommitData);
-  connect(this, &Application::saveStateRequest, this, &Application::onSaveState);
+  connect(this, &Application::aboutToQuit, m_lifecycle.data(), &ApplicationLifecycle::onAboutToQuit);
+  connect(this, &Application::commitDataRequest, m_lifecycle.data(), &ApplicationLifecycle::onCommitData);
+  connect(this, &Application::saveStateRequest, m_lifecycle.data(), &ApplicationLifecycle::onSaveState);
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
   QString app_dir = QString::fromLocal8Bit(qgetenv("APPDIR"));
@@ -257,8 +236,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 }
 
 Application::~Application() {
-  // Disable logging into the form.
-  m_logForm = nullptr;
+  m_logManager->shutdown();
 
   qDebugNN << LOGSEC_CORE << "Destroying Application instance.";
 }
@@ -309,37 +287,11 @@ void Application::finishSplash(QWidget* main_window) {
 }
 
 void Application::updateCliDebugStatus() {
-  s_disableDebug = !m_cmdParser.isSet(QSL(CLI_DEBUG_SHORT)) &&
-                   settings()->value(GROUP(General), SETTING(General::DisableDebugOutput)).toBool();
+  m_logManager->updateCliDebugStatus();
 }
 
 void Application::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& msg) {
-#ifndef QT_NO_DEBUG_OUTPUT
-  if (s_disableDebug && (type == QtMsgType::QtDebugMsg || type == QtMsgType::QtInfoMsg)) {
-    return;
-  }
-
-  static QByteArray newl = TextFactory::newline().toLocal8Bit();
-  QString console_message = qFormatLogMessage(type, context, msg);
-
-  std::cerr << console_message.toStdString() << std::endl;
-
-  if (!QCoreApplication::closingDown() && s_fileLog != nullptr) {
-    s_fileLog->write(console_message.toUtf8());
-    s_fileLog->write(newl);
-  }
-
-  if (qApp != nullptr) {
-    qApp->displayLogMessageInDialog(console_message);
-  }
-  if (type == QtMsgType::QtFatalMsg) {
-    std::exit(EXIT_FAILURE);
-  }
-#else
-  Q_UNUSED(type)
-  Q_UNUSED(context)
-  Q_UNUSED(msg)
-#endif
+  ApplicationLogManager::performLogging(type, context, msg);
 }
 
 void Application::reactOnForeignNotifications() {
@@ -365,26 +317,11 @@ void Application::loadDynamicShortcuts() {
 }
 
 void Application::offerPolls() const {
-  /*
-  if (isFirstRunCurrentVersion()) {
-    qApp->web()->openUrlInExternalBrowser(QSL("https://forms.gle/1dCgqi2p1TEGn73d8"));
-  }
-  */
+  m_guiNotifications->offerPolls();
 }
 
 void Application::offerChanges() {
-  if (isFirstRunCurrentVersion()) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         {tr("Welcome"),
-                          tr("Welcome to %1.\n\nPlease, check NEW stuff included in this\n"
-                             "version by clicking this popup notification.")
-                            .arg(QSL(APP_LONG_NAME)),
-                          QSystemTrayIcon::MessageIcon::Information},
-                         {},
-                         GuiAction(tr("Go to changelog"), qApp->mainForm(), [] {
-                           FormAbout(true, qApp->mainForm()).exec();
-                         }));
-  }
+  m_guiNotifications->offerChanges();
 }
 
 bool Application::isAlreadyRunning() {
@@ -462,44 +399,6 @@ void Application::eliminateFirstRuns() {
   settings()->setValue(GROUP(General), QString(General::FirstRun) + QL1C('_') + APP_VERSION, false);
 }
 
-void Application::initializeFileBasedLogging() {
-  if (!m_cmdParser.isSet(QSL(CLI_LOG_SHORT))) {
-    s_fileLog = nullptr;
-    return;
-  }
-
-  QString log_file = m_cmdParser.value(QSL(CLI_LOG_SHORT)).trimmed();
-
-  if (log_file.isEmpty()) {
-    QString automatic_log_folder = userDataFolder() + QDir::separator() + QSL("logs");
-    QString automatic_log_file = automatic_log_folder + QDir::separator() +
-                                 QSL("%1_%2.log")
-                                   .arg(QSL(APP_LOW_NAME))
-                                   .arg(QDateTime::currentDateTimeUtc().date().weekNumber(), 2, 10, QChar('0'));
-
-    QDir().mkpath(automatic_log_folder);
-
-    s_fileLog = new QFile(automatic_log_file, this);
-  }
-  else {
-    s_fileLog = new QFile(log_file, this);
-  }
-
-  bool log_opened = s_fileLog->open(QIODevice::OpenModeFlag::WriteOnly | QIODevice::OpenModeFlag::Append |
-                                    QIODevice::OpenModeFlag::Unbuffered);
-
-  if (!log_opened) {
-    qWarningNN << LOGSEC_CORE << "Cannot open log file" << QUOTE_W_SPACE(m_cmdParser.value(QSL(CLI_LOG_SHORT)))
-               << "for writing.";
-  }
-}
-
-void Application::displayLogMessageInDialog(const QString& message) {
-  if (m_logForm != nullptr && m_logForm->isVisible()) {
-    emit sendLogToDialog(message);
-  }
-}
-
 ToastNotificationsManager* Application::toastNotifications() const {
   return m_toastNotifications;
 }
@@ -521,10 +420,22 @@ NotificationFactory* Application::notifications() const {
 void Application::setFeedReader(FeedReader* feed_reader) {
   m_feedReader = feed_reader;
 
-  connect(m_feedReader, &FeedReader::feedUpdatesStarted, this, &Application::onFeedUpdatesStarted);
-  connect(m_feedReader, &FeedReader::feedUpdatesProgress, this, &Application::onFeedUpdatesProgress);
-  connect(m_feedReader, &FeedReader::feedUpdatesFinished, this, &Application::onFeedUpdatesFinished);
-  connect(m_feedReader->feedsModel(), &FeedsModel::messageCountsChanged, this, &Application::showMessagesNumber);
+  connect(m_feedReader,
+          &FeedReader::feedUpdatesStarted,
+          m_guiNotifications.data(),
+          &GuiNotificationCoordinator::onFeedUpdatesStarted);
+  connect(m_feedReader,
+          &FeedReader::feedUpdatesProgress,
+          m_guiNotifications.data(),
+          &GuiNotificationCoordinator::onFeedUpdatesProgress);
+  connect(m_feedReader,
+          &FeedReader::feedUpdatesFinished,
+          m_guiNotifications.data(),
+          &GuiNotificationCoordinator::onFeedUpdatesFinished);
+  connect(m_feedReader->feedsModel(),
+          &FeedsModel::messageCountsChanged,
+          m_guiNotifications.data(),
+          &GuiNotificationCoordinator::showMessagesNumber);
 }
 
 IconFactory* Application::icons() {
@@ -559,82 +470,50 @@ void Application::setMainForm(FormMain* main_form) {
 #if defined(Q_OS_WIN)
   if (m_windowsTaskbar != nullptr) {
     m_windowsTaskbar->setThumbnailActions(m_mainForm->taskbarThumbnailActions(),
-                                           icons()->fromTheme(QSL("media-playback-pause"), QSL("player_pause")),
-                                           icons()->fromTheme(QSL("media-playback-start"), QSL("player_play")));
-    m_windowsTaskbar->setThumbnailButtonsEnabled(
-      settings()->value(GROUP(GUI), SETTING(GUI::TaskbarThumbnailButtons)).toBool());
+                                          icons()->fromTheme(QSL("media-playback-pause"), QSL("player_pause")),
+                                          icons()->fromTheme(QSL("media-playback-start"), QSL("player_play")));
+    m_windowsTaskbar
+      ->setThumbnailButtonsEnabled(settings()->value(GROUP(GUI), SETTING(GUI::TaskbarThumbnailButtons)).toBool());
   }
 #endif
 
-  if (m_toastNotifications != nullptr) {
-    connect(m_toastNotifications,
-            &ToastNotificationsManager::dataChangeNotificationTriggered,
-            m_mainForm->tabWidget()->feedMessageViewer()->messagesView(),
-            &MessagesView::reactOnExternalDataChange);
-
-    connect(m_toastNotifications,
-            &ToastNotificationsManager::oneArticleSetReadUnreadById,
-            m_mainForm->tabWidget()->feedMessageViewer()->messagesView()->sourceModel(),
-            &MessagesModel::setMessageReadById);
-  }
+  m_guiNotifications->setMainForm();
 }
 
 QString Application::configFolder() const {
-  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::GenericConfigLocation);
+  return m_paths->configFolder();
 }
 
 QString Application::userDataAppFolder() const {
-  static int major_version = QVersionNumber::fromString(QSL(APP_VERSION)).majorVersion();
-
-  // In "app" folder, we would like to separate all user data into own subfolder,
-  // therefore stick to "data" folder in this mode.
-  return QDir::toNativeSeparators(applicationDirPath() + QDir::separator() + QSL("data%1").arg(major_version));
+  return m_paths->userDataAppFolder();
 }
 
 QString Application::userDataFolder() {
-  if (settings()->type() == SettingsProperties::SettingsType::Custom) {
-    return customDataFolder();
-  }
-  else if (settings()->type() == SettingsProperties::SettingsType::Portable) {
-    return userDataAppFolder();
-  }
-  else {
-    return userDataHomeFolder();
-  }
+  return m_paths->userDataFolder();
 }
 
 QString Application::replaceUserDataFolderPlaceholder(QString text, bool double_escape) const {
-  auto user_data_folder = qApp->userDataFolder();
-
-  return text.replace(QSL(USER_DATA_PLACEHOLDER),
-                      double_escape ? user_data_folder.replace(QDir::separator(), QString(2, QDir::separator()))
-                                    : user_data_folder);
+  return m_paths->replaceUserDataFolderPlaceholder(std::move(text), double_escape);
 }
 
 QStringList Application::replaceUserDataFolderPlaceholder(QStringList texts) const {
-  auto user_data_folder = qApp->userDataFolder();
-
-  return texts.replaceInStrings(QSL(USER_DATA_PLACEHOLDER), user_data_folder);
+  return m_paths->replaceUserDataFolderPlaceholder(std::move(texts));
 }
 
 QString Application::userDataHomeFolder() const {
-  static int major_version = QVersionNumber::fromString(QSL(APP_VERSION)).majorVersion();
-
-  QString pth = configFolder() + QDir::separator() + QSL(APP_LOW_NAME) + QString::number(major_version);
-
-  return pth;
+  return m_paths->userDataHomeFolder();
 }
 
 QString Application::tempFolder() const {
-  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation);
+  return m_paths->tempFolder();
 }
 
 QString Application::documentsFolder() const {
-  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::DocumentsLocation);
+  return m_paths->documentsFolder();
 }
 
 QString Application::homeFolder() const {
-  return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::HomeLocation);
+  return m_paths->homeFolder();
 }
 
 void Application::backupDatabaseSettings(bool backup_database,
@@ -676,60 +555,7 @@ void Application::restoreDatabaseSettings(bool restore_database,
 }
 
 TrayIcon* Application::trayIcon() {
-  if (m_trayIcon == nullptr) {
-    QPixmap tray_icon;
-    QPixmap tray_icon_plain;
-
-    const bool monochrome_icon = qApp->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool();
-    const bool custom_colored_icon = qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIcon)).toBool();
-    const bool colored_unread_icon = qApp->settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool();
-    const bool show_unread_count = qApp->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool();
-    QColor unread_text_color(Qt::GlobalColor::white);
-
-    if (custom_colored_icon) {
-      QColor background_color =
-        QColor(qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconBackground)).toString());
-      unread_text_color =
-        QColor(qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconText)).toString());
-
-      if (IconFactory::ensureCustomColoredIcons(background_color)) {
-        tray_icon = QPixmap(IconFactory::customColoredTrayIconPath());
-        tray_icon_plain = show_unread_count ? QPixmap(IconFactory::customColoredTrayIconPlainPath()) : tray_icon;
-      }
-    }
-
-    if (tray_icon.isNull() || tray_icon_plain.isNull()) {
-      unread_text_color = QColor(Qt::GlobalColor::white);
-
-      if (!custom_colored_icon && monochrome_icon) {
-        tray_icon = QPixmap(APP_ICON_MONO_PATH);
-
-        if (colored_unread_icon) {
-          tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH);
-        }
-        else {
-          tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_MONO_PLAIN_PATH) : QPixmap(APP_ICON_MONO_PATH);
-        }
-      }
-      else {
-        tray_icon = QPixmap(APP_ICON_PATH);
-        tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH);
-      }
-    }
-
-    m_trayIcon =
-      new QtTrayIcon(QSL(APP_LOW_NAME), QSL(APP_NAME), tray_icon, tray_icon_plain, unread_text_color, m_mainForm);
-    m_trayIcon->setMainWindow(m_mainForm);
-    m_trayIcon->setContextMenu(m_mainForm->trayMenu());
-    m_trayIcon->setToolTip(QSL(APP_NAME));
-
-    connect(m_trayIcon, &TrayIcon::activated, m_mainForm, [this]() {
-      m_mainForm->switchVisibility();
-    });
-    connect(m_trayIcon, &TrayIcon::shown, m_feedReader->feedsModel(), &FeedsModel::notifyWithCounts);
-  }
-
-  return m_trayIcon;
+  return m_guiNotifications->trayIcon();
 }
 
 QIcon Application::desktopAwareIcon() const {
@@ -757,126 +583,11 @@ QIcon Application::desktopAwareIcon() const {
 }
 
 void Application::showTrayIcon() {
-  // Display tray icon if it is enabled and available.
-  if (TrayIcon::isSystemTrayDesired()) {
-    qDebugNN << LOGSEC_GUI << "User wants to have tray icon.";
-
-    // Delay avoids race conditions and tray icon is properly displayed.
-    qWarningNN << LOGSEC_GUI << "Showing tray icon with little delay.";
-
-    QTimer::singleShot(
-#if defined(Q_OS_WIN)
-      500,
-#else
-      3000,
-#endif
-      this,
-      [=]() {
-        if (trayIcon()->isAvailable()) {
-          qWarningNN << LOGSEC_GUI << "Tray icon is available, showing now.";
-          trayIcon()->show();
-
-          QGuiApplication::setQuitOnLastWindowClosed(false);
-        }
-        else {
-          m_feedReader->feedsModel()->notifyWithCounts();
-        }
-
-        // NOTE: Below things have to be performed after tray icon is (if enabled)
-        // initialized.
-        offerChanges();
-        offerPolls();
-
-#if defined(Q_OS_WIN)
-#if QT_VERSION_MAJOR == 6
-        // NOTE: Fixes https://github.com/martinrotter/rssguard/issues/953 for Qt 6.
-        using QWindowsWindow = QNativeInterface::Private::QWindowsWindow;
-        if (auto w_w = qApp->mainForm()->windowHandle()->nativeInterface<QWindowsWindow>()) {
-          w_w->setHasBorderInFullScreen(true);
-        }
-#endif
-#endif
-      });
-  }
-  else {
-    m_feedReader->feedsModel()->notifyWithCounts();
-  }
+  m_guiNotifications->showTrayIcon();
 }
 
 void Application::deleteTrayIcon() {
-  if (m_trayIcon != nullptr) {
-    qDebugNN << LOGSEC_CORE << "Disabling tray icon, deleting it and raising main application window.";
-    m_mainForm->display();
-    delete m_trayIcon;
-    m_trayIcon = nullptr;
-
-    // Make sure that application quits when last window is closed.
-    QGuiApplication::setQuitOnLastWindowClosed(true);
-  }
-}
-
-void Application::showGuiMessageCore(Notification::Event event,
-                                     const GuiMessage& msg,
-                                     GuiMessageDestination dest,
-                                     const GuiAction& action,
-                                     QWidget* parent) {
-  bool show_dialog = true;
-
-  if (m_notifications->areNotificationsEnabled()) {
-    auto notification = m_notifications->notificationForEvent(event);
-
-    show_dialog = notification.dialogEnabled();
-
-    if (notification.soundEnabled()) {
-      notification.playSound(this);
-    }
-
-    if (notification.balloonEnabled() && dest.m_tray) {
-      if (notification.event() == Notification::Event::ArticlesFetchingStarted && m_mainForm != nullptr &&
-          m_mainForm->isActiveWindow() && m_mainForm->isVisible()) {
-        // We do not need to display the notification because
-        // user will see that fetching is running because
-        // he will see progress bar.
-        return;
-      }
-
-      if (m_toastNotifications != nullptr) {
-        // Toasts are enabled.
-        m_toastNotifications->showNotification(event, msg, action);
-      }
-      else if (TrayIcon::isSystemTrayDesired() && m_trayIcon->isAvailable()) {
-        // Use tray icon balloons (which are implemented as native notifications on most systems.
-        trayIcon()->showMessage(msg.m_title.simplified().isEmpty() ? Notification::nameForEvent(notification.event())
-                                                                   : msg.m_title,
-                                msg.m_message,
-                                QtTrayIcon::convertIcon(msg.m_type),
-                                TRAY_ICON_BUBBLE_TIMEOUT,
-                                std::move(action.m_action));
-      }
-
-      return;
-    }
-  }
-
-  if (show_dialog && (dest.m_messageBox || msg.m_type == QSystemTrayIcon::MessageIcon::Critical)) {
-    // Tray icon or OSD is not available, display simple text box.
-    MsgBox::show(parent,
-                 QMessageBox::Icon(msg.m_type),
-                 msg.m_title,
-                 msg.m_message,
-                 {},
-                 {},
-                 QMessageBox::StandardButton::Ok,
-                 QMessageBox::StandardButton::Ok,
-                 {},
-                 {MsgBox::CustomBoxAction{action.m_title, action.m_action}});
-  }
-  else if (dest.m_statusBar && mainForm()->statusBar() != nullptr && mainForm()->statusBar()->isVisible()) {
-    mainForm()->statusBar()->showMessage(msg.m_message, 20000);
-  }
-  else {
-    qDebugNN << LOGSEC_CORE << "Silencing GUI message:" << QUOTE_W_SPACE_DOT(msg.m_message);
-  }
+  m_guiNotifications->deleteTrayIcon();
 }
 
 void Application::loadMessageToFeedAndArticleList(Feed* feed, const Message& message) {
@@ -889,14 +600,7 @@ void Application::showGuiMessage(Notification::Event event,
                                  GuiMessageDestination dest,
                                  const GuiAction& action,
                                  QWidget* parent) {
-  QMetaObject::invokeMethod(this,
-                            "showGuiMessageCore",
-                            Qt::ConnectionType::QueuedConnection,
-                            Q_ARG(Notification::Event, event),
-                            Q_ARG(const GuiMessage&, msg),
-                            Q_ARG(GuiMessageDestination, dest),
-                            Q_ARG(const GuiAction&, action),
-                            Q_ARG(QWidget*, parent));
+  m_guiNotifications->showGuiMessage(event, msg, dest, action, parent);
 }
 
 WebViewer* Application::createWebView() {
@@ -915,115 +619,6 @@ WebViewer* Application::createWebView() {
 
 bool Application::isWayland() const {
   return QGuiApplication::platformName() == QSL("wayland");
-}
-
-void Application::onCommitData(QSessionManager& manager) {
-  qDebugNN << LOGSEC_CORE << "OS asked application to commit its data.";
-
-  onAboutToQuit();
-
-  manager.setRestartHint(QSessionManager::RestartHint::RestartNever);
-  manager.release();
-}
-
-void Application::onSaveState(QSessionManager& manager) {
-  qDebugNN << LOGSEC_CORE << "OS asked application to save its state.";
-
-  manager.setRestartHint(QSessionManager::RestartHint::RestartNever);
-  manager.release();
-}
-
-void Application::onAboutToQuit() {
-  if (m_quitLogicDone) {
-    qWarningNN << LOGSEC_CORE << "On-close logic is already done.";
-    return;
-  }
-
-  m_quitLogicDone = true;
-
-  // Make sure that we obtain close lock BEFORE even trying to quit the application.
-  const bool locked_safely = feedUpdateLock()->tryLock(4 * CLOSE_LOCK_TIMEOUT);
-
-  qDebugNN << LOGSEC_CORE << "Cleaning up resources and saving application state.";
-
-  if (locked_safely) {
-    // Application obtained permission to close in a safe way.
-    qDebugNN << LOGSEC_CORE << "Close lock was obtained safely.";
-
-    // We locked the lock to exit peacefully, unlock it to avoid warnings.
-    feedUpdateLock()->unlock();
-  }
-  else {
-    // Request for write lock timed-out. This means
-    // that some critical action can be processed right now.
-    qWarningNN << LOGSEC_CORE << "Close lock timed-out.";
-  }
-
-  qApp->feedReader()->quit();
-
-  try {
-    database()->driver()->saveDatabase();
-  }
-  catch (const ApplicationException& ex) {
-    qCriticalNN << LOGSEC_DB << "Error when saving DB:" << QUOTE_W_SPACE_DOT(ex.message());
-  }
-
-  if (mainForm() != nullptr) {
-    mainForm()->saveSize();
-  }
-
-  web()->cookieJar()->saveCookies();
-  settings()->sync();
-}
-
-void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_unread_messages) {
-  Q_UNUSED(any_feed_has_new_unread_messages)
-
-  if (m_trayIcon != nullptr) {
-    m_trayIcon->setNumber(unread_messages);
-  }
-
-  // Use Qt function to set "badge" number directly in some cases.
-#if defined(Q_OS_MACOS) && QT_VERSION >= 0x060500 // Qt >= 6.5.0
-  qApp->setBadgeNumber(unread_messages);
-#elif defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
-  // Use D-Bus "LauncherEntry" service on Linux.
-  bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
-  QDBusMessage signal = QDBusMessage::createSignal(QSL("/"), QSL("com.canonical.Unity.LauncherEntry"), QSL("Update"));
-
-  signal << QSL("application://%1.desktop").arg(APP_REVERSE_NAME);
-
-  QVariantMap setProperty;
-
-  setProperty.insert("count", qint64(unread_messages));
-  setProperty.insert("count-visible", task_bar_count_enabled && unread_messages > 0);
-
-  signal << setProperty;
-
-  QDBusConnection::sessionBus().send(signal);
-#elif defined(Q_OS_WIN)
-  const bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
-
-  if (m_mainForm != nullptr && m_windowsTaskbar != nullptr && m_windowsTaskbar->isAvailable()) {
-    const bool feed_fetching_paused = settings()->value(GROUP(Feeds), SETTING(Feeds::PauseFeedFetching)).toBool();
-    const bool show_overlay = (task_bar_count_enabled && unread_messages > 0) || feed_fetching_paused;
-    if (show_overlay) {
-      m_windowsTaskbar->setUnreadOverlayIcon(m_mainForm->winId(),
-                                              unread_messages,
-                                              feed_fetching_paused && unread_messages <= 0);
-    }
-    else {
-      m_windowsTaskbar->clearOverlayIcon(m_mainForm->winId());
-    }
-  }
-#endif
-
-  if (m_mainForm != nullptr) {
-    m_mainForm->setWindowTitle((settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnWindow)).toBool() &&
-                                unread_messages > 0)
-                                 ? QSL("[%2] %1").arg(QSL(APP_LONG_NAME), QString::number(unread_messages))
-                                 : QSL(APP_LONG_NAME));
-  }
 }
 
 void Application::setupFont() {
@@ -1048,72 +643,8 @@ void Application::setupFont() {
   QApplication::setFont(fon);
 }
 
-void Application::onFeedUpdatesStarted() {
-#if defined(Q_OS_WIN)
-  const bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
-
-  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskbar != nullptr &&
-      m_windowsTaskbar->isAvailable()) {
-    m_windowsTaskbar->setProgressValue(m_mainForm->winId(), 1, 100);
-  }
-#endif
-}
-
-void Application::onFeedUpdatesProgress(const Feed* feed, int current, int total) {
-#if defined(Q_OS_WIN)
-  const bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
-
-  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskbar != nullptr &&
-      m_windowsTaskbar->isAvailable()) {
-    m_windowsTaskbar->setProgressValue(m_mainForm->winId(), current, total);
-  }
-#endif
-}
-
-void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
-  auto fds = results.updatedFeeds().keys();
-  bool some_unquiet_feed = qlinq::from(fds).any([](Feed* fd) {
-    return !fd->isQuiet();
-  });
-
-  if (some_unquiet_feed) {
-    GuiMessage msg = {tr("Unread articles fetched"), QString(), QSystemTrayIcon::MessageIcon::NoIcon};
-
-    if (m_toastNotifications != nullptr) {
-      // Show custom and richer overview of updated feeds and articles.
-      msg.m_feedFetchResults = results;
-    }
-    else {
-      // Show simpler overview of updated feeds.
-      msg.m_message = results.overview(10);
-    }
-
-    qApp->showGuiMessage(Notification::Event::NewUnreadArticlesFetched, msg);
-  }
-
-#if defined(Q_OS_WIN)
-  const bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
-
-  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskbar != nullptr &&
-      m_windowsTaskbar->isAvailable()) {
-    m_windowsTaskbar->clearProgress(m_mainForm->winId());
-  }
-#endif
-}
-
 void Application::setupCustomDataFolder(const QString& data_folder) {
-  if (!QDir().mkpath(data_folder)) {
-    qCriticalNN << LOGSEC_CORE << "Failed to create custom data path" << QUOTE_W_SPACE(data_folder)
-                << "thus falling back to standard setup.";
-    m_customDataFolder = QString();
-    return;
-  }
-
-  // Disable single instance mode.
-  m_allowMultipleInstances = true;
-
-  // Save custom data folder.
-  m_customDataFolder = data_folder;
+  m_allowMultipleInstances = m_paths->setCustomDataFolder(data_folder);
 }
 
 void Application::setupWorkHorsePool() {
@@ -1270,21 +801,7 @@ void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_arg
 }
 
 void Application::displayLog() {
-  if (m_logForm == nullptr) {
-    m_logForm = new FormLog(m_mainForm);
-
-    connect(this,
-            &Application::sendLogToDialog,
-            m_logForm,
-            &FormLog::appendLogMessage,
-            Qt::ConnectionType::QueuedConnection);
-    connect(m_logForm, &FormLog::finished, this, [this]() {
-      m_logForm->deleteLater();
-      m_logForm = nullptr;
-    });
-  }
-
-  m_logForm->show();
+  m_logManager->displayLog();
 }
 
 void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
@@ -1330,7 +847,7 @@ void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
 }
 
 QString Application::customDataFolder() const {
-  return QDir::toNativeSeparators(m_customDataFolder);
+  return m_paths->customDataFolder();
 }
 
 bool Application::event(QEvent* event) {

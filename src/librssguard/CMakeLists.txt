@@ -219,6 +219,14 @@ set(SOURCES
   gui/toolbars/toolbareditor.h
   gui/webbrowser.cpp
   gui/webbrowser.h
+  miscellaneous/applicationlifecycle.cpp
+  miscellaneous/applicationlifecycle.h
+  miscellaneous/applicationlogmanager.cpp
+  miscellaneous/applicationlogmanager.h
+  miscellaneous/applicationpaths.cpp
+  miscellaneous/applicationpaths.h
+  miscellaneous/guinotificationcoordinator.cpp
+  miscellaneous/guinotificationcoordinator.h
   gui/webviewers/webviewer.cpp
   gui/webviewers/webviewer.h
   miscellaneous/application.cpp

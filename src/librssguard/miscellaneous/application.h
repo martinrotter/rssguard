@@ -27,7 +27,6 @@
 #define qApp (Application::instance())
 
 class FormMain;
-class FormLog;
 class IconFactory;
 class Mutex;
 class QSplashScreen;
@@ -37,6 +36,10 @@ class ToastNotificationsManager;
 class WebViewer;
 class Settings;
 class WindowsTaskbar;
+class ApplicationLifecycle;
+class ApplicationLogManager;
+class ApplicationPaths;
+class GuiNotificationCoordinator;
 
 struct GuiMessage {
   public:
@@ -202,41 +205,25 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     void displayLog();
 
-    void showGuiMessageCore(Notification::Event event,
-                            const GuiMessage& msg,
-                            GuiMessageDestination dest = {},
-                            const GuiAction& action = {},
-                            QWidget* parent = nullptr);
-
   private slots:
     void loadMessageToFeedAndArticleList(Feed* feed, const Message& message);
     void fillCmdArgumentsParser(QCommandLineParser& parser);
-    void onCommitData(QSessionManager& manager);
-    void onSaveState(QSessionManager& manager);
-    void onAboutToQuit();
-    void showMessagesNumber(int unread_messages, bool any_feed_has_new_unread_messages);
-    void onFeedUpdatesStarted();
-    void onFeedUpdatesProgress(const Feed* feed, int current, int total);
-    void onFeedUpdatesFinished(const FeedDownloadResults& results);
-
-  signals:
-    void sendLogToDialog(QString message);
 
   private:
     void setupCustomDataFolder(const QString& data_folder);
     void setupWorkHorsePool();
     void determineFirstRuns();
     void eliminateFirstRuns();
-    void initializeFileBasedLogging();
     void initializeSplash();
-    void displayLogMessageInDialog(const QString& message);
 
   private:
     QStringList m_rawCliArgs;
     QCommandLineParser m_cmdParser;
     FeedReader* m_feedReader;
-
-    bool m_quitLogicDone;
+    QScopedPointer<ApplicationLifecycle> m_lifecycle;
+    QScopedPointer<ApplicationLogManager> m_logManager;
+    QScopedPointer<ApplicationPaths> m_paths;
+    QScopedPointer<GuiNotificationCoordinator> m_guiNotifications;
 
     // This read-write lock is used by application on its close.
     // Application locks this lock for WRITING.
@@ -255,8 +242,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     QList<QAction*> m_userActions;
     QScopedPointer<QSplashScreen> m_splashScreen;
     FormMain* m_mainForm;
-    FormLog* m_logForm;
-    TrayIcon* m_trayIcon;
     Settings* m_settings;
     WebFactory* m_webFactory;
     SystemFactory* m_system;
@@ -273,7 +258,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     bool m_firstRunEver;
     bool m_firstRunCurrentVersion;
-    QString m_customDataFolder;
     bool m_allowMultipleInstances;
 
 #if defined(Q_OS_WIN)
