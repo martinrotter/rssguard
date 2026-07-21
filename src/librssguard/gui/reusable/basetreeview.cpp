@@ -18,7 +18,7 @@ BaseTreeView::BaseTreeView(QWidget* parent) : QTreeView(parent), m_lastWheelTime
   setAllColumnsShowFocus(true);
   setVerticalScrollMode(QAbstractItemView::ScrollPerPixel);
   header()->setContextMenuPolicy(Qt::ContextMenuPolicy::CustomContextMenu);
-  header()->setStretchLastSection(true);
+  header()->setStretchLastSection(false);
   header()->setCascadingSectionResizes(false);
 
   connect(header(), &QHeaderView::customContextMenuRequested, this, [this](const QPoint& point) {
@@ -81,7 +81,7 @@ void BaseTreeView::restoreHeaderState(const QByteArray& dta) {
 
   header()->setStretchLastSection(obj.contains(QSL("header_stretch_last_section"))
                                     ? obj[QSL("header_stretch_last_section")].toBool()
-                                    : true);
+                                    : false);
   header()->setCascadingSectionResizes(obj.contains(QSL("header_cascading_section_resizes"))
                                          ? obj[QSL("header_cascading_section_resizes")].toBool()
                                          : false);

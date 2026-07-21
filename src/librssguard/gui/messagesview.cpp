@@ -339,6 +339,7 @@ void MessagesView::setupAppearance() {
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
   header()->setFirstSectionMovable(true);
+  header()->setSectionResizeMode(MSG_MDL_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
 
   adjustColumns();
 }

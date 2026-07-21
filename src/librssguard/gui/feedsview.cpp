@@ -975,6 +975,7 @@ void FeedsView::setupAppearance() {
   header()->setSectionsMovable(false);
   header()->setDefaultSectionSize(MESSAGES_VIEW_DEFAULT_COL);
   header()->setMinimumSectionSize(MESSAGES_VIEW_MINIMUM_COL);
+  header()->setSectionResizeMode(FDS_MODEL_TITLE_INDEX, QHeaderView::ResizeMode::Stretch);
 
   setUniformRowHeights(true);
   setAnimated(true);
