@@ -20,6 +20,14 @@ class QAction;
 
 class WindowsTaskbar : public QObject {
   public:
+    enum class ProgressState {
+      None,
+      Normal,
+      Error,
+      Paused,
+      Indeterminate
+    };
+
     explicit WindowsTaskbar(QObject* parent = nullptr);
     ~WindowsTaskbar();
 
@@ -32,6 +40,7 @@ class WindowsTaskbar : public QObject {
 
     bool setUnreadOverlayIcon(WId window_id, int number, bool show_pause) const;
     bool clearOverlayIcon(WId window_id) const;
+    bool setProgressState(WId window_id, ProgressState state) const;
     bool setProgressValue(WId window_id, qulonglong current, qulonglong total) const;
     bool clearProgress(WId window_id) const;
 

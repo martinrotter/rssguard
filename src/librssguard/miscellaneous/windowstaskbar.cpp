@@ -46,6 +46,27 @@ QString buttonTooltip(const QAction& action) {
   tooltip.remove('&');
   return tooltip;
 }
+
+TBPFLAG nativeProgressState(WindowsTaskbar::ProgressState state) {
+  switch (state) {
+    case WindowsTaskbar::ProgressState::None:
+      return TBPF_NOPROGRESS;
+
+    case WindowsTaskbar::ProgressState::Normal:
+      return TBPF_NORMAL;
+
+    case WindowsTaskbar::ProgressState::Error:
+      return TBPF_ERROR;
+
+    case WindowsTaskbar::ProgressState::Paused:
+      return TBPF_PAUSED;
+
+    case WindowsTaskbar::ProgressState::Indeterminate:
+      return TBPF_INDETERMINATE;
+  }
+
+  return TBPF_NOPROGRESS;
+}
 } // namespace
 
 WindowsTaskbar::WindowsTaskbar(QObject* parent)
@@ -162,6 +183,12 @@ bool WindowsTaskbar::clearOverlayIcon(WId window_id) const {
   return setOverlayIcon(window_id, {});
 }
 
+bool WindowsTaskbar::setProgressState(WId window_id, ProgressState state) const {
+  return isAvailable() && reportResult(m_taskbar->SetProgressState(reinterpret_cast<HWND>(window_id),
+                                                                    nativeProgressState(state)),
+                                       QSL("set taskbar progress state"));
+}
+
 bool WindowsTaskbar::setOverlayIcon(WId window_id, const QImage& icon) const {
   if (!isAvailable()) {
     return false;
@@ -178,13 +205,13 @@ bool WindowsTaskbar::setOverlayIcon(WId window_id, const QImage& icon) const {
 }
 
 bool WindowsTaskbar::setProgressValue(WId window_id, qulonglong current, qulonglong total) const {
-  return isAvailable() && reportResult(m_taskbar->SetProgressValue(reinterpret_cast<HWND>(window_id), current, total),
-                                       QSL("set taskbar progress value"));
+  return setProgressState(window_id, ProgressState::Normal) &&
+         reportResult(m_taskbar->SetProgressValue(reinterpret_cast<HWND>(window_id), current, total),
+                      QSL("set taskbar progress value"));
 }
 
 bool WindowsTaskbar::clearProgress(WId window_id) const {
-  return isAvailable() && reportResult(m_taskbar->SetProgressState(reinterpret_cast<HWND>(window_id), TBPF_NOPROGRESS),
-                                       QSL("clear taskbar progress"));
+  return setProgressState(window_id, ProgressState::None);
 }
 
 void WindowsTaskbar::updateThumbnailButtons() {

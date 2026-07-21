@@ -296,6 +296,19 @@ void GuiNotificationCoordinator::showMessagesNumber(int unread_messages, bool an
     else {
       taskbar->clearOverlayIcon(m_application->mainForm()->winId());
     }
+
+    if (!task_bar_count_enabled) {
+      taskbar->clearProgress(m_application->mainForm()->winId());
+    }
+    else if (!m_application->feedReader()->isFeedUpdateRunning()) {
+      if (paused) {
+        taskbar->setProgressValue(m_application->mainForm()->winId(), 100, 100);
+        taskbar->setProgressState(m_application->mainForm()->winId(), WindowsTaskbar::ProgressState::Paused);
+      }
+      else {
+        taskbar->clearProgress(m_application->mainForm()->winId());
+      }
+    }
   }
 #endif
 
@@ -313,7 +326,7 @@ void GuiNotificationCoordinator::onFeedUpdatesStarted() {
   auto* taskbar = m_application->windowsTaskbar();
   if (m_application->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool() &&
       m_application->mainForm() != nullptr && taskbar != nullptr && taskbar->isAvailable()) {
-    taskbar->setProgressValue(m_application->mainForm()->winId(), 1, 100);
+    taskbar->setProgressState(m_application->mainForm()->winId(), WindowsTaskbar::ProgressState::Indeterminate);
   }
 #endif
 }
@@ -324,7 +337,12 @@ void GuiNotificationCoordinator::onFeedUpdatesProgress(const Feed* feed, int cur
   auto* taskbar = m_application->windowsTaskbar();
   if (m_application->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool() &&
       m_application->mainForm() != nullptr && taskbar != nullptr && taskbar->isAvailable()) {
-    taskbar->setProgressValue(m_application->mainForm()->winId(), current, total);
+    if (total > 0) {
+      taskbar->setProgressValue(m_application->mainForm()->winId(), current, total);
+    }
+    else {
+      taskbar->setProgressState(m_application->mainForm()->winId(), WindowsTaskbar::ProgressState::Indeterminate);
+    }
   }
 #endif
 }
@@ -351,7 +369,13 @@ void GuiNotificationCoordinator::onFeedUpdatesFinished(const FeedDownloadResults
   auto* taskbar = m_application->windowsTaskbar();
   if (m_application->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool() &&
       m_application->mainForm() != nullptr && taskbar != nullptr && taskbar->isAvailable()) {
-    taskbar->clearProgress(m_application->mainForm()->winId());
+    if (results.erroredFeeds().isEmpty()) {
+      taskbar->clearProgress(m_application->mainForm()->winId());
+    }
+    else {
+      taskbar->setProgressValue(m_application->mainForm()->winId(), 100, 100);
+      taskbar->setProgressState(m_application->mainForm()->winId(), WindowsTaskbar::ProgressState::Error);
+    }
   }
 #endif
 }
