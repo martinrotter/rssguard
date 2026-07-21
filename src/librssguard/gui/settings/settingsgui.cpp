@@ -15,6 +15,10 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 
+#if defined(Q_OS_WIN)
+#include "miscellaneous/windowstaskbar.h"
+#endif
+
 #include <QButtonGroup>
 #include <QDropEvent>
 #include <QFontDialog>
@@ -494,7 +498,9 @@ void SettingsGui::saveSettings() {
   settings()->setValue(GROUP(GUI),
                        GUI::TaskbarThumbnailButtons,
                        m_ui->m_displayTaskbarThumbnailButtons->isChecked());
-  qApp->updateTaskbarThumbnailButtons();
+  if (WindowsTaskbar* taskbar = qApp->windowsTaskbar(); taskbar != nullptr) {
+    taskbar->setThumbnailButtonsEnabled(m_ui->m_displayTaskbarThumbnailButtons->isChecked());
+  }
 #endif
 
   settings()->setValue(GROUP(GUI), GUI::UnreadNumbersOnWindow, m_ui->m_displayUnreadMessageCountOnWindow->isChecked());

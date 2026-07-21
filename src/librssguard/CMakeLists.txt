@@ -223,6 +223,8 @@ set(SOURCES
   gui/webviewers/webviewer.h
   miscellaneous/application.cpp
   miscellaneous/application.h
+  miscellaneous/windowstaskbar.cpp
+  miscellaneous/windowstaskbar.h
   miscellaneous/autosaver.cpp
   miscellaneous/autosaver.h
   miscellaneous/domdocument.cpp

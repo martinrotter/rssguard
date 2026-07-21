@@ -25,6 +25,7 @@
 #include "miscellaneous/notificationfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/thread.h"
+#include "miscellaneous/windowstaskbar.h"
 #include "network-web/cookiejar.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
@@ -40,8 +41,6 @@
 #include <QEventLoop>
 #include <QIcon>
 #include <QLoggingCategory>
-#include <QPainter>
-#include <QPainterPath>
 #include <QPixmap>
 #include <QProcess>
 #include <QSessionManager>
@@ -73,42 +72,8 @@
 #endif
 #endif
 
-#if defined(Q_OS_WIN)
-#include <ShObjIdl.h>
-
-#if QT_VERSION_MAJOR == 5
-#include <QtWinExtras/QtWin>
-#endif
-#endif
-
 QFile* s_fileLog = nullptr;
 bool s_disableDebug = false;
-
-#if defined(Q_OS_WIN)
-namespace {
-  constexpr UINT TaskbarButtonPauseFeedFetching = 1;
-  constexpr UINT TaskbarButtonFetchAll = 2;
-  constexpr UINT TaskbarButtonSettings = 3;
-  constexpr UINT TaskbarButtonsCount = 3;
-
-  HICON taskbarButtonIcon(const QIcon& icon) {
-    const QPixmap pixmap = icon.pixmap(QSize(16, 16));
-
-#if QT_VERSION_MAJOR == 5
-    return QtWin::toHICON(pixmap);
-#else
-    return pixmap.toImage().toHICON();
-#endif
-  }
-
-  QString taskbarButtonTooltip(const QAction& action) {
-    QString tooltip = action.text();
-
-    tooltip.remove('&');
-    return tooltip;
-  }
-} // namespace
-#endif
 
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
   : SingleApplication(id, argc, argv), m_rawCliArgs(raw_cli_args), m_updateFeedsLock(new Mutex()) {
@@ -143,12 +108,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #if QT_VERSION_MAJOR > 5
   m_workHorsePool = nullptr;
 #endif
-#if defined(Q_OS_WIN)
-  m_windowsTaskBar = nullptr;
-  m_taskbarThumbnailButtonsReady = false;
-  m_taskbarThumbnailButtonsAdded = false;
-#endif
-
   m_settings = Settings::setupSettings(this);
 
   initializeSplash();
@@ -195,26 +154,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     (!isWayland() && m_notifications->useToastNotifications()) ? new ToastNotificationsManager(this) : nullptr;
 
 #if defined(Q_OS_WIN)
-  const GUID qIID_ITaskbarList4 = {0xc43dc798, 0x95d1, 0x4bea, {0x90, 0x30, 0xbb, 0x99, 0xe2, 0x98, 0x3a, 0x1a}};
-  HRESULT task_result = CoCreateInstance(CLSID_TaskbarList,
-                                         nullptr,
-                                         CLSCTX_INPROC_SERVER,
-                                         qIID_ITaskbarList4,
-                                         reinterpret_cast<void**>(&m_windowsTaskBar));
-
-  if (FAILED(task_result)) {
-    qCriticalNN << LOGSEC_CORE << "Taskbar integration for Windows failed to initialize with HRESULT:"
-                << QUOTE_W_SPACE_DOT(task_result);
-
-    m_windowsTaskBar = nullptr;
-  }
-  else if (FAILED(m_windowsTaskBar->HrInit())) {
-    qCriticalNN << LOGSEC_CORE << "Taskbar integration for Windows failed to initialize with inner HRESULT:"
-                << QUOTE_W_SPACE_DOT(m_windowsTaskBar->HrInit());
-
-    m_windowsTaskBar->Release();
-    m_windowsTaskBar = nullptr;
-  }
+  m_windowsTaskbar.reset(new WindowsTaskbar(this));
 #endif
 
   determineFirstRuns();
@@ -317,12 +257,6 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 }
 
 Application::~Application() {
-#if defined(Q_OS_WIN)
-  if (m_windowsTaskBar != nullptr) {
-    m_windowsTaskBar->Release();
-  }
-#endif
-
   // Disable logging into the form.
   m_logForm = nullptr;
 
@@ -613,21 +547,23 @@ QWidget* Application::mainFormWidget() {
   return m_mainForm;
 }
 
+#if defined(Q_OS_WIN)
+WindowsTaskbar* Application::windowsTaskbar() const {
+  return m_windowsTaskbar.data();
+}
+#endif
+
 void Application::setMainForm(FormMain* main_form) {
   m_mainForm = main_form;
 
 #if defined(Q_OS_WIN)
-  const QList<QAction*> taskbar_actions = m_mainForm->taskbarThumbnailActions();
-
-  for (QAction* action : taskbar_actions) {
-#if QT_VERSION_MAJOR > 5
-    connect(action, &QAction::enabledChanged, this, &Application::updateTaskbarThumbnailButtons);
-#else
-    connect(action, &QAction::changed, this, &Application::updateTaskbarThumbnailButtons);
-#endif
+  if (m_windowsTaskbar != nullptr) {
+    m_windowsTaskbar->setThumbnailActions(m_mainForm->taskbarThumbnailActions(),
+                                           icons()->fromTheme(QSL("media-playback-pause"), QSL("player_pause")),
+                                           icons()->fromTheme(QSL("media-playback-start"), QSL("player_play")));
+    m_windowsTaskbar->setThumbnailButtonsEnabled(
+      settings()->value(GROUP(GUI), SETTING(GUI::TaskbarThumbnailButtons)).toBool());
   }
-
-  connect(taskbar_actions.constFirst(), &QAction::toggled, this, &Application::updateTaskbarThumbnailButtons);
 #endif
 
   if (m_toastNotifications != nullptr) {
@@ -642,135 +578,6 @@ void Application::setMainForm(FormMain* main_form) {
             &MessagesModel::setMessageReadById);
   }
 }
-
-#if defined(Q_OS_WIN)
-void Application::taskbarThumbnailButtonsCreated() {
-  m_taskbarThumbnailButtonsReady = true;
-  m_taskbarThumbnailButtonsAdded = false;
-  updateTaskbarThumbnailButtons();
-}
-
-bool Application::triggerTaskbarThumbnailButton(quint32 button_id) {
-  if (m_mainForm == nullptr) {
-    return false;
-  }
-
-  const QList<QAction*> taskbar_actions = m_mainForm->taskbarThumbnailActions();
-  QAction* action = nullptr;
-
-  switch (button_id) {
-    case TaskbarButtonPauseFeedFetching:
-      action = taskbar_actions.value(0);
-      break;
-
-    case TaskbarButtonFetchAll:
-      action = taskbar_actions.value(1);
-      break;
-
-    case TaskbarButtonSettings:
-      action = taskbar_actions.value(2);
-      break;
-
-    default:
-      return false;
-  }
-
-  if (action == nullptr || !action->isEnabled()) {
-    return false;
-  }
-
-  action->trigger();
-  return true;
-}
-
-void Application::updateTaskbarThumbnailButtons() {
-  if (m_mainForm == nullptr || m_windowsTaskBar == nullptr || !m_taskbarThumbnailButtonsReady) {
-    return;
-  }
-
-  const bool show_buttons = settings()->value(GROUP(GUI), SETTING(GUI::TaskbarThumbnailButtons)).toBool();
-
-  if (!show_buttons) {
-    hideTaskbarThumbnailButtons();
-    return;
-  }
-
-  const QList<QAction*> taskbar_actions = m_mainForm->taskbarThumbnailActions();
-
-  if (taskbar_actions.size() != TaskbarButtonsCount) {
-    qCriticalNN << LOGSEC_GUI << "Unexpected number of taskbar thumbnail actions.";
-    return;
-  }
-
-  const QAction* pause_action = taskbar_actions.at(0);
-  const bool feed_fetching_paused = pause_action->isChecked();
-  const QList<QIcon> button_icons = {
-    icons()->fromTheme(feed_fetching_paused ? QSL("media-playback-start") : QSL("media-playback-pause"),
-                       feed_fetching_paused ? QSL("player_play") : QSL("player_pause")),
-    taskbar_actions.at(1)->icon(),
-    taskbar_actions.at(2)->icon()};
-  const QStringList button_tooltips = {feed_fetching_paused ? tr("Resume automatic feed fetching")
-                                                            : tr("Pause automatic feed fetching"),
-                                       taskbarButtonTooltip(*taskbar_actions.at(1)),
-                                       taskbarButtonTooltip(*taskbar_actions.at(2))};
-  const UINT button_ids[] = {TaskbarButtonPauseFeedFetching, TaskbarButtonFetchAll, TaskbarButtonSettings};
-  THUMBBUTTON buttons[TaskbarButtonsCount] = {};
-  HICON button_handles[TaskbarButtonsCount] = {};
-
-  for (UINT i = 0; i < TaskbarButtonsCount; ++i) {
-    THUMBBUTTON& button = buttons[i];
-    const QAction* action = taskbar_actions.at(i);
-
-    button.iId = button_ids[i];
-    button.dwMask = THB_FLAGS | THB_ICON | THB_TOOLTIP;
-    button.dwFlags = action->isEnabled() ? THBF_ENABLED : THBF_DISABLED;
-    button_handles[i] = taskbarButtonIcon(button_icons.at(i));
-    button.hIcon = button_handles[i];
-    button_tooltips.at(i).left(MAX_PATH - 1).toWCharArray(button.szTip);
-  }
-
-  const HWND window_handle = reinterpret_cast<HWND>(m_mainForm->winId());
-  const HRESULT result = m_taskbarThumbnailButtonsAdded
-                           ? m_windowsTaskBar->ThumbBarUpdateButtons(window_handle, TaskbarButtonsCount, buttons)
-                           : m_windowsTaskBar->ThumbBarAddButtons(window_handle, TaskbarButtonsCount, buttons);
-
-  for (HICON button_handle : button_handles) {
-    if (button_handle != nullptr) {
-      DestroyIcon(button_handle);
-    }
-  }
-
-  if (FAILED(result)) {
-    qCriticalNN << LOGSEC_GUI
-                << "Failed to update taskbar thumbnail buttons with HRESULT:" << QUOTE_W_SPACE_DOT(result);
-    return;
-  }
-
-  m_taskbarThumbnailButtonsAdded = true;
-}
-
-void Application::hideTaskbarThumbnailButtons() {
-  if (!m_taskbarThumbnailButtonsAdded || m_mainForm == nullptr || m_windowsTaskBar == nullptr) {
-    return;
-  }
-
-  THUMBBUTTON buttons[TaskbarButtonsCount] = {};
-
-  for (UINT i = 0; i < TaskbarButtonsCount; ++i) {
-    buttons[i].iId = i + 1;
-    buttons[i].dwMask = THB_FLAGS;
-    buttons[i].dwFlags = THBF_HIDDEN;
-  }
-
-  const HRESULT result =
-    m_windowsTaskBar->ThumbBarUpdateButtons(reinterpret_cast<HWND>(m_mainForm->winId()), TaskbarButtonsCount, buttons);
-
-  if (FAILED(result)) {
-    qCriticalNN << LOGSEC_GUI
-                << "Failed to change taskbar thumbnail button visibility with HRESULT:" << QUOTE_W_SPACE_DOT(result);
-  }
-}
-#endif
 
 QString Application::configFolder() const {
   return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::GenericConfigLocation);
@@ -1195,38 +1002,19 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
 
   QDBusConnection::sessionBus().send(signal);
 #elif defined(Q_OS_WIN)
-  // Use SetOverlayIcon Windows API method on Windows.
-  bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+  const bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
 
-  if (m_mainForm != nullptr) {
+  if (m_mainForm != nullptr && m_windowsTaskbar != nullptr && m_windowsTaskbar->isAvailable()) {
     const bool feed_fetching_paused = settings()->value(GROUP(Feeds), SETTING(Feeds::PauseFeedFetching)).toBool();
     const bool show_overlay = (task_bar_count_enabled && unread_messages > 0) || feed_fetching_paused;
-    HRESULT overlay_result;
-
     if (show_overlay) {
-      QImage overlay_icon = generateOverlayIcon(unread_messages, feed_fetching_paused && unread_messages <= 0);
-
-#if QT_VERSION_MAJOR == 5
-      HICON overlay_hicon = QtWin::toHICON(QPixmap::fromImage(overlay_icon));
-#else
-      HICON overlay_hicon = overlay_icon.toHICON();
-#endif
-
-      overlay_result =
-        m_windowsTaskBar->SetOverlayIcon(reinterpret_cast<HWND>(m_mainForm->winId()), overlay_hicon, nullptr);
-
-      DestroyIcon(overlay_hicon);
+      m_windowsTaskbar->setUnreadOverlayIcon(m_mainForm->winId(),
+                                              unread_messages,
+                                              feed_fetching_paused && unread_messages <= 0);
     }
     else {
-      overlay_result = m_windowsTaskBar->SetOverlayIcon(reinterpret_cast<HWND>(m_mainForm->winId()), nullptr, nullptr);
+      m_windowsTaskbar->clearOverlayIcon(m_mainForm->winId());
     }
-
-    if (FAILED(overlay_result)) {
-      qCriticalNN << LOGSEC_GUI << "Failed to set overlay icon with HRESULT:" << QUOTE_W_SPACE_DOT(overlay_result);
-    }
-  }
-  else {
-    qCriticalNN << LOGSEC_GUI << "Main form not set for setting numbers.";
   }
 #endif
 
@@ -1237,77 +1025,6 @@ void Application::showMessagesNumber(int unread_messages, bool any_feed_has_new_
                                  : QSL(APP_LONG_NAME));
   }
 }
-
-#if defined(Q_OS_WIN)
-QImage Application::generateOverlayIcon(int number, bool show_pause) const {
-  QImage img(128, 128, QImage::Format::Format_ARGB32);
-  QPainter p;
-  QString num_txt;
-
-  if (!show_pause) {
-    if (number < 1000) {
-      num_txt = QString::number(number);
-    }
-    else if (number < 100000) {
-      num_txt = QSL("%1k").arg(int(number / 1000));
-    }
-    else {
-      num_txt = QChar(8734);
-    }
-  }
-
-  QPainterPath rounded_rectangle;
-  rounded_rectangle.addRoundedRect(QRectF(img.rect()), 15, 15);
-  p.begin(&img);
-
-  p.setRenderHint(QPainter::RenderHint::SmoothPixmapTransform, true);
-  p.setRenderHint(QPainter::RenderHint::TextAntialiasing, true);
-
-  img.fill(Qt::GlobalColor::transparent);
-
-  p.fillPath(rounded_rectangle, Qt::GlobalColor::white);
-
-  p.setPen(Qt::GlobalColor::black);
-  p.drawPath(rounded_rectangle);
-
-  if (show_pause) {
-    const QRectF image_rect(img.rect());
-    const qreal bar_width = image_rect.width() * 0.18;
-    const qreal bar_height = image_rect.height() * 0.56;
-    const qreal bar_gap = image_rect.width() * 0.12;
-    const qreal total_width = (2.0 * bar_width) + bar_gap;
-    const qreal left = image_rect.center().x() - (total_width / 2.0);
-    const qreal top = image_rect.center().y() - (bar_height / 2.0);
-    const qreal corner_radius = bar_width * 0.2;
-
-    p.setPen(Qt::PenStyle::NoPen);
-    p.setBrush(Qt::GlobalColor::black);
-    p.drawRoundedRect(QRectF(left, top, bar_width, bar_height), corner_radius, corner_radius);
-    p.drawRoundedRect(QRectF(left + bar_width + bar_gap, top, bar_width, bar_height), corner_radius, corner_radius);
-  }
-  else {
-    QFont fon = font();
-
-    if (num_txt.size() == 3) {
-      fon.setPixelSize(img.width() * 0.52);
-    }
-    else if (num_txt.size() == 2) {
-      fon.setPixelSize(img.width() * 0.68);
-    }
-    else {
-      fon.setPixelSize(img.width() * 0.79);
-    }
-
-    p.setFont(fon);
-    p.drawText(img.rect().marginsRemoved(QMargins(0, 0, 0, img.height() * 0.05)),
-               num_txt,
-               QTextOption(Qt::AlignmentFlag::AlignCenter));
-  }
-  p.end();
-
-  return img;
-}
-#endif
 
 void Application::setupFont() {
   bool custom_font_enabled = qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomizeAppFont)).toBool();
@@ -1333,22 +1050,22 @@ void Application::setupFont() {
 
 void Application::onFeedUpdatesStarted() {
 #if defined(Q_OS_WIN)
-  // Use SetOverlayIcon Windows API method on Windows.
-  bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+  const bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
 
-  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskBar != nullptr) {
-    m_windowsTaskBar->SetProgressValue(reinterpret_cast<HWND>(m_mainForm->winId()), 1ul, 100ul);
+  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskbar != nullptr &&
+      m_windowsTaskbar->isAvailable()) {
+    m_windowsTaskbar->setProgressValue(m_mainForm->winId(), 1, 100);
   }
 #endif
 }
 
 void Application::onFeedUpdatesProgress(const Feed* feed, int current, int total) {
 #if defined(Q_OS_WIN)
-  // Use SetOverlayIcon Windows API method on Windows.
-  bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+  const bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
 
-  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskBar != nullptr) {
-    m_windowsTaskBar->SetProgressValue(reinterpret_cast<HWND>(m_mainForm->winId()), current, total);
+  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskbar != nullptr &&
+      m_windowsTaskbar->isAvailable()) {
+    m_windowsTaskbar->setProgressValue(m_mainForm->winId(), current, total);
   }
 #endif
 }
@@ -1375,11 +1092,11 @@ void Application::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   }
 
 #if defined(Q_OS_WIN)
-  // Use SetOverlayIcon Windows API method on Windows.
-  bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
+  const bool task_bar_count_enabled = settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool();
 
-  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskBar != nullptr) {
-    m_windowsTaskBar->SetProgressState(reinterpret_cast<HWND>(m_mainForm->winId()), TBPFLAG::TBPF_NOPROGRESS);
+  if (task_bar_count_enabled && m_mainForm != nullptr && m_windowsTaskbar != nullptr &&
+      m_windowsTaskbar->isAvailable()) {
+    m_windowsTaskbar->clearProgress(m_mainForm->winId());
   }
 #endif
 }

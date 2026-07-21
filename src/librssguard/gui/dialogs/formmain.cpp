@@ -52,6 +52,7 @@
 
 #if defined(Q_OS_WIN)
 #include <ShObjIdl.h>
+#include "miscellaneous/windowstaskbar.h"
 #endif
 
 FormMain::FormMain(QWidget* parent, Qt::WindowFlags f)
@@ -1264,10 +1265,12 @@ bool FormMain::nativeEvent(const QByteArray& event_type, void* message, long* re
   static const UINT taskbar_button_created_message = RegisterWindowMessage(L"TaskbarButtonCreated");
 
   if (native_message->message == taskbar_button_created_message) {
-    qApp->taskbarThumbnailButtonsCreated();
+    if (WindowsTaskbar* taskbar = qApp->windowsTaskbar(); taskbar != nullptr) {
+      taskbar->thumbnailButtonsCreated(winId());
+    }
   }
   else if (native_message->message == WM_COMMAND && HIWORD(native_message->wParam) == THBN_CLICKED &&
-           qApp->triggerTaskbarThumbnailButton(LOWORD(native_message->wParam))) {
+           qApp->windowsTaskbar() != nullptr && qApp->windowsTaskbar()->triggerThumbnailButton(LOWORD(native_message->wParam))) {
     *result = 0;
     return true;
   }

@@ -38,10 +38,7 @@ class NotificationFactory;
 class ToastNotificationsManager;
 class WebViewer;
 class Settings;
-
-#if defined(Q_OS_WIN)
-struct ITaskbarList4;
-#endif
+class WindowsTaskbar;
 
 struct GuiMessage {
   public:
@@ -163,9 +160,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void setMainForm(FormMain* main_form);
 
 #if defined(Q_OS_WIN)
-    void taskbarThumbnailButtonsCreated();
-    void updateTaskbarThumbnailButtons();
-    bool triggerTaskbarThumbnailButton(quint32 button_id);
+    WindowsTaskbar* windowsTaskbar() const;
 #endif
 
     void backupDatabaseSettings(bool backup_database,
@@ -230,11 +225,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     void sendLogToDialog(QString message);
 
   private:
-#if defined(Q_OS_WIN)
-    QImage generateOverlayIcon(int number, bool show_pause) const;
-    void hideTaskbarThumbnailButtons();
-#endif
-
     void setupCustomDataFolder(const QString& data_folder);
     void setupWorkHorsePool();
     void determineFirstRuns();
@@ -289,9 +279,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     bool m_allowMultipleInstances;
 
 #if defined(Q_OS_WIN)
-    ITaskbarList4* m_windowsTaskBar;
-    bool m_taskbarThumbnailButtonsReady;
-    bool m_taskbarThumbnailButtonsAdded;
+    QScopedPointer<WindowsTaskbar> m_windowsTaskbar;
 #endif
 };
 
