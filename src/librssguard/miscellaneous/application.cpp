@@ -16,6 +16,7 @@
 #include "miscellaneous/applicationlifecycle.h"
 #include "miscellaneous/applicationlogmanager.h"
 #include "miscellaneous/applicationpaths.h"
+#include "miscellaneous/commandlinecontroller.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/guinotificationcoordinator.h"
 #include "miscellaneous/iconfactory.h"
@@ -54,7 +55,7 @@
 #endif
 
 Application::Application(const QString& id, int& argc, char** argv, const QStringList& raw_cli_args)
-  : SingleApplication(id, argc, argv), m_rawCliArgs(raw_cli_args), m_updateFeedsLock(new Mutex()) {
+  : SingleApplication(id, argc, argv), m_updateFeedsLock(new Mutex()) {
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
   // HACK: Force rendering system to use OpenGL backend.
 #if QT_VERSION_MAJOR < 6
@@ -67,6 +68,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   QString custom_ua;
 
   m_paths.reset(new ApplicationPaths(this));
+  m_commandLine.reset(new CommandLineController(this, m_paths.data(), raw_cli_args));
   m_logManager.reset(new ApplicationLogManager(this));
   parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);
   qInstallMessageHandler(performLogging);
@@ -94,7 +96,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_logManager->initializeFileBasedLogging();
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
-  if (!m_cmdParser.isSet(QSL(CLI_FORCETEXT_LONG))) {
+  if (!cmdParser()->isSet(QSL(CLI_FORCETEXT_LONG))) {
     QString existing_flags = qEnvironmentVariable("QTWEBENGINE_CHROMIUM_FLAGS");
     QString flags = settings()->value(GROUP(Web), SETTING(Web::WebEngineChromiumFlags)).toString().trimmed();
     QString final_flags = WebFactory::injectPacIntoChromiumFlags(existing_flags, flags);
@@ -325,10 +327,7 @@ void Application::offerChanges() {
 }
 
 bool Application::isAlreadyRunning() {
-  return m_allowMultipleInstances
-           ? false
-           : sendMessage((QStringList() << QSL("-%1").arg(QSL(CLI_IS_RUNNING)) << Application::arguments().mid(1))
-                           .join(QSL(ARGUMENTS_LIST_SEPARATOR)));
+  return m_commandLine->isAlreadyRunning();
 }
 
 QStringList Application::builtinSounds() const {
@@ -371,7 +370,7 @@ bool Application::isFirstRunCurrentVersion() const {
 }
 
 QCommandLineParser* Application::cmdParser() {
-  return &m_cmdParser;
+  return m_commandLine->parser();
 }
 
 WebFactory* Application::web() const {
@@ -410,7 +409,7 @@ QThreadPool* Application::workHorsePool() const {
 #endif
 
 QStringList Application::rawCliArgs() const {
-  return m_rawCliArgs;
+  return m_commandLine->rawArguments();
 }
 
 NotificationFactory* Application::notifications() const {
@@ -605,7 +604,7 @@ void Application::showGuiMessage(Notification::Event event,
 
 WebViewer* Application::createWebView() {
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
-  if (m_cmdParser.isSet(QSL(CLI_FORCETEXT_LONG))) {
+  if (cmdParser()->isSet(QSL(CLI_FORCETEXT_LONG))) {
     qDebugNN << LOGSEC_GUI << "Forcing QTextBrowser-based article viewer.";
     return new TextBrowserViewer();
   }
@@ -643,13 +642,9 @@ void Application::setupFont() {
   QApplication::setFont(fon);
 }
 
-void Application::setupCustomDataFolder(const QString& data_folder) {
-  m_allowMultipleInstances = m_paths->setCustomDataFolder(data_folder);
-}
-
 void Application::setupWorkHorsePool() {
   auto ideal_th_count = QThread::idealThreadCount();
-  int custom_threads = m_cmdParser.value(QSL(CLI_THREADS)).toInt();
+  int custom_threads = cmdParser()->value(QSL(CLI_THREADS)).toInt();
   int max_th_count = 0;
 
   // NOTE: Parenthesises are there to fix std::min build.
@@ -699,151 +694,15 @@ void Application::determineFirstRuns() {
 }
 
 void Application::parseCmdArgumentsFromOtherInstance(const QString& message) {
-  if (message.isEmpty()) {
-    qDebugNN << LOGSEC_CORE << "No execution message received from other app instances.";
-    return;
-  }
-
-  qDebugNN << LOGSEC_CORE << "Received" << QUOTE_W_SPACE(message) << "execution message.";
-
-  QStringList messages = message.split(QSL(ARGUMENTS_LIST_SEPARATOR), SPLIT_BEHAVIOR::SkipEmptyParts);
-  QCommandLineParser cmd_parser;
-
-  messages.prepend(qApp->applicationFilePath());
-
-  cmd_parser.addOption(QCommandLineOption({QSL(CLI_QUIT_INSTANCE)}));
-  cmd_parser.addOption(QCommandLineOption({QSL(CLI_IS_RUNNING)}));
-
-  fillCmdArgumentsParser(cmd_parser);
-
-  if (!cmd_parser.parse(messages)) {
-    qCriticalNN << LOGSEC_CORE << cmd_parser.errorText();
-  }
-
-  if (cmd_parser.isSet(QSL(CLI_QUIT_INSTANCE))) {
-    quit();
-    return;
-  }
-  else if (cmd_parser.isSet(QSL(CLI_IS_RUNNING))) {
-    showGuiMessage(Notification::Event::GeneralEvent,
-                   {tr("Already running"),
-                    tr("Application is already running."),
-                    QSystemTrayIcon::MessageIcon::Information});
-    mainForm()->display();
-  }
-
-  messages = cmd_parser.positionalArguments();
-
-  for (const QString& msg : std::as_const(messages)) {
-    if (msg.trimmed().size() < 3) {
-      continue;
-    }
-
-    auto processed_msg = qApp->web()->processFeedUriScheme(msg.trimmed());
-    auto corrected_url = QUrl::fromUserInput(processed_msg);
-
-    if (corrected_url.scheme().isEmpty()) {
-      continue;
-    }
-
-    // Application was running, and someone wants to add new feed.
-    auto rt = qlinq::from(feedReader()->feedsModel()->serviceRoots()).firstOrDefault([](ServiceRoot* root) {
-      return root->supportsFeedAdding();
-    });
-
-    if (rt.has_value()) {
-      rt.value()->addNewFeed(nullptr, processed_msg);
-    }
-    else {
-      showGuiMessage(Notification::Event::GeneralEvent,
-                     {tr("Cannot add feed"),
-                      tr("Feed cannot be added because there is no active account which can add feeds."),
-                      QSystemTrayIcon::MessageIcon::Warning});
-    }
-  }
+  m_commandLine->parseOtherInstanceArguments(message);
 }
 
 void Application::parseCmdArgumentsFromMyInstance(const QStringList& raw_cli_args, QString& custom_ua) {
-  fillCmdArgumentsParser(m_cmdParser);
-
-  m_cmdParser.setApplicationDescription(QSL(APP_NAME));
-  m_cmdParser.setSingleDashWordOptionMode(QCommandLineParser::SingleDashWordOptionMode::ParseAsLongOptions);
-
-  if (!m_cmdParser.parse(raw_cli_args)) {
-    qCriticalNN << LOGSEC_CORE << m_cmdParser.errorText();
-  }
-
-  if (!m_cmdParser.value(QSL(CLI_DAT_SHORT)).isEmpty()) {
-    auto data_folder = QDir::toNativeSeparators(m_cmdParser.value(QSL(CLI_DAT_SHORT)));
-
-    qDebugNN << LOGSEC_CORE << "User wants to use custom directory for user data (and disable single instance mode):"
-             << QUOTE_W_SPACE_DOT(data_folder);
-
-    setupCustomDataFolder(data_folder);
-  }
-  else {
-    m_allowMultipleInstances = false;
-  }
-
-  if (m_cmdParser.isSet(QSL(CLI_HELP_SHORT))) {
-    m_cmdParser.showHelp();
-  }
-  else if (m_cmdParser.isSet(QSL(CLI_VER_SHORT))) {
-    m_cmdParser.showVersion();
-  }
-
-  if (m_cmdParser.isSet(QSL(CLI_SIN_SHORT))) {
-    m_allowMultipleInstances = true;
-    qDebugNN << LOGSEC_CORE << "Explicitly allowing this instance to run.";
-  }
-
-  custom_ua = m_cmdParser.value(QSL(CLI_USERAGENT_SHORT));
+  m_commandLine->parseMyArguments(raw_cli_args, custom_ua);
 }
 
 void Application::displayLog() {
   m_logManager->displayLog();
-}
-
-void Application::fillCmdArgumentsParser(QCommandLineParser& parser) {
-  QCommandLineOption help({QSL(CLI_HELP_SHORT), QSL(CLI_HELP_LONG)}, QSL("Displays overview of CLI."));
-  QCommandLineOption version({QSL(CLI_VER_SHORT), QSL(CLI_VER_LONG)}, QSL("Displays version of the application."));
-  QCommandLineOption
-    custom_data_folder({QSL(CLI_DAT_SHORT), QSL(CLI_DAT_LONG)},
-                       QSL("Use custom folder for user data and disable single instance application mode."),
-                       QSL("user-data-folder"));
-  QCommandLineOption disable_singleinstance({QSL(CLI_SIN_SHORT), QSL(CLI_SIN_LONG)},
-                                            QSL("Allow running of multiple application instances."));
-  QCommandLineOption log_to_file({QSL(CLI_LOG_SHORT), QSL(CLI_LOG_LONG)},
-                                 QSL("Log application standard/error output to file. When empty string is provided as "
-                                     "argument, then the log file will be stored in user data folder."),
-                                 QSL("log-file-name"));
-  QCommandLineOption debug_output({QSL(CLI_DEBUG_SHORT), QSL(CLI_DEBUG_LONG)}, QSL("Enable \"debug\" CLI output."));
-  QCommandLineOption force_text_viewer(QSL(CLI_FORCETEXT_LONG), QSL("Force QTextBrowser-based article viewer."));
-  QCommandLineOption forced_style({QSL(CLI_STYLE_SHORT), QSL(CLI_STYLE_LONG)},
-                                  QSL("Force some application style."),
-                                  QSL("style-name"));
-  QCommandLineOption custom_ua({QSL(CLI_USERAGENT_SHORT), QSL(CLI_USERAGENT_LONG)},
-                               QSL("User custom User-Agent HTTP header for all network requests. This option "
-                                   "takes precedence over User-Agent set via application settings."),
-                               QSL("user-agent"));
-  QCommandLineOption custom_threads(QSL(CLI_THREADS),
-                                    QSL("Specify number of threads. Note that number cannot be higher than %1.")
-                                      .arg(MAX_THREADPOOL_THREADS),
-                                    QSL("count"));
-
-  parser.addOptions({help,
-                     version,
-                     custom_data_folder,
-                     disable_singleinstance,
-                     debug_output,
-                     force_text_viewer,
-                     log_to_file,
-                     forced_style,
-                     custom_ua,
-                     custom_threads});
-  parser.addPositionalArgument(QSL("urls"),
-                               QSL("List of URL addresses pointing to individual online feeds which should be added."),
-                               QSL("[url-1 ... url-n]"));
 }
 
 QString Application::customDataFolder() const {

@@ -225,6 +225,8 @@ set(SOURCES
   miscellaneous/applicationlogmanager.h
   miscellaneous/applicationpaths.cpp
   miscellaneous/applicationpaths.h
+  miscellaneous/commandlinecontroller.cpp
+  miscellaneous/commandlinecontroller.h
   miscellaneous/guinotificationcoordinator.cpp
   miscellaneous/guinotificationcoordinator.h
   gui/webviewers/webviewer.cpp

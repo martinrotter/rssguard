@@ -40,6 +40,7 @@ class ApplicationLifecycle;
 class ApplicationLogManager;
 class ApplicationPaths;
 class GuiNotificationCoordinator;
+class CommandLineController;
 
 struct GuiMessage {
   public:
@@ -207,23 +208,19 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
   private slots:
     void loadMessageToFeedAndArticleList(Feed* feed, const Message& message);
-    void fillCmdArgumentsParser(QCommandLineParser& parser);
-
   private:
-    void setupCustomDataFolder(const QString& data_folder);
     void setupWorkHorsePool();
     void determineFirstRuns();
     void eliminateFirstRuns();
     void initializeSplash();
 
   private:
-    QStringList m_rawCliArgs;
-    QCommandLineParser m_cmdParser;
     FeedReader* m_feedReader;
     QScopedPointer<ApplicationLifecycle> m_lifecycle;
     QScopedPointer<ApplicationLogManager> m_logManager;
     QScopedPointer<ApplicationPaths> m_paths;
     QScopedPointer<GuiNotificationCoordinator> m_guiNotifications;
+    QScopedPointer<CommandLineController> m_commandLine;
 
     // This read-write lock is used by application on its close.
     // Application locks this lock for WRITING.
@@ -258,8 +255,6 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
 
     bool m_firstRunEver;
     bool m_firstRunCurrentVersion;
-    bool m_allowMultipleInstances;
-
 #if defined(Q_OS_WIN)
     QScopedPointer<WindowsTaskbar> m_windowsTaskbar;
 #endif
