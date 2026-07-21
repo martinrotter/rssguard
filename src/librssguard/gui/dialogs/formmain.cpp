@@ -126,6 +126,7 @@ TrayIconMenu* FormMain::trayMenu() {
 
   // Add needed items to the menu.
   tray_menu->addAction(m_ui->m_actionUpdateAllItems);
+  tray_menu->addAction(m_ui->m_actionPauseFeedFetching);
   tray_menu->addAction(m_ui->m_actionMarkAllItemsRead);
   tray_menu->addSeparator();
 
