@@ -189,7 +189,11 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void completelyRemoveAllData();
 
     // Returns counts of updated messages <unread, all>.
-    UpdatedArticles updateMessages(QList<Message>& messages, Feed* feed, bool force_update, bool recalculate_counts);
+    UpdatedArticles updateMessages(QList<Message>& messages,
+                                   Feed* feed,
+                                   bool force_update,
+                                   bool recalculate_counts,
+                                   bool preserve_existing_read_state = true);
 
     // Removes all/read only messages from given underlying feeds.
     void cleanFeeds(const QList<Feed*>& items, bool clean_read_only);

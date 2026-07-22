@@ -1270,12 +1270,14 @@ ServiceRoot::LabelOperation operator&(ServiceRoot::LabelOperation lhs, ServiceRo
 UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
                                             Feed* feed,
                                             bool force_update,
-                                            bool recalculate_counts) {
+                                            bool recalculate_counts,
+                                            bool preserve_existing_read_state) {
   UpdatedArticles updated_messages;
   if (!messages.isEmpty()) {
     qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
 
-    updated_messages = DatabaseQueries::updateMessages(messages, feed, force_update, false);
+    updated_messages =
+      DatabaseQueries::updateMessages(messages, feed, force_update, false, preserve_existing_read_state);
   }
   else {
     qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());

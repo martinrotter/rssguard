@@ -144,7 +144,11 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
-    static UpdatedArticles updateMessages(QList<Message>& messages, Feed* feed, bool force_update, bool force_insert);
+    static UpdatedArticles updateMessages(QList<Message>& messages,
+                                          Feed* feed,
+                                          bool force_update,
+                                          bool force_insert,
+                                          bool preserve_existing_read_state = true);
 
     // Delete account.
     static void deleteAccount(const QSqlDatabase& db, ServiceRoot* account);

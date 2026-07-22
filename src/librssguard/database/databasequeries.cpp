@@ -834,7 +834,8 @@ struct UpdateMessageInfo {
 UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,
-                                                bool force_insert) {
+                                                bool force_insert,
+                                                bool preserve_existing_read_state) {
   if (messages.isEmpty()) {
     return {};
   }
@@ -1055,7 +1056,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
                         (!ignore_contents_changes && message.m_contents != contents_existing_message);
 
           if (cond_1 || cond_2 || cond_3 || force_update) {
-            if (!feed->account()->isSyncable() &&
+            if (preserve_existing_read_state && !feed->account()->isSyncable() &&
                 !qApp->settings()->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool()) {
               // Feed is not syncable, thus we got RSS/JSON/whatever.
               // Article is only updated, so we now prefer to keep original read state

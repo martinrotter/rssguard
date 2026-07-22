@@ -272,7 +272,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
       filtering.pushMessageStatesToServices(read_msgs, important_msgs, it, account);
 
       // Update messages in DB and reload selection.
-      it->account()->updateMessages(msgs, it->toFeed(), true, true);
+      it->account()->updateMessages(msgs, it->toFeed(), true, true, false);
     }
   }
 }
