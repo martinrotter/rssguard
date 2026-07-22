@@ -424,6 +424,10 @@ void FeedMessageViewer::createConnections() {
 void FeedMessageViewer::updateArticleViewerSettings() {
   m_articleViewerAlwaysVisible =
     qApp->settings()->value(GROUP(Messages), SETTING(Messages::AlwaysDisplayItemPreview)).toBool();
+
+  if (m_messagesView->selectionModel()->selectedRows().isEmpty()) {
+    onMessageRemoved(m_messagesView->sourceModel()->loadedItem());
+  }
 }
 
 MessagePreviewer* FeedMessageViewer::messagesBrowser() const {
@@ -440,10 +444,6 @@ void FeedMessageViewer::initialize() {
   m_toolBarMessages->setAllowedAreas(Qt::ToolBarArea::TopToolBarArea);
 
   updateArticleViewerSettings();
-
-  // if (!m_articleViewerAlwaysVisible) {
-  m_messagesBrowser->clear();
-  //}
 
   // Now refresh visual setup.
   refreshVisualProperties();
