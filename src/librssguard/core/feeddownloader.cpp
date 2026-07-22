@@ -685,10 +685,13 @@ QList<Feed*> FeedDownloader::scrambleFeedsWithSameHost(const QList<Feed*>& feeds
 
 QString FeedDownloadResults::overview(int how_many_feeds) const {
   QStringList result;
+  const int number_items_output = qMin(how_many_feeds, m_updatedFeeds.size());
 
-  for (int i = 0, number_items_output = qMin(how_many_feeds, m_updatedFeeds.size()); i < number_items_output; i++) {
-    auto* fd = m_updatedFeeds.keys().at(i);
-    auto msgs = m_updatedFeeds.value(fd);
+  int i = 0;
+
+  for (auto it = m_updatedFeeds.cbegin(); it != m_updatedFeeds.cend() && i < number_items_output; ++it, ++i) {
+    Feed* fd = it.key();
+    const QList<Message>& msgs = it.value();
 
     if (fd->isQuiet()) {
       continue;
