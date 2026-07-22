@@ -98,9 +98,9 @@ void BaseTreeView::restoreHeaderState(const QByteArray& dta) {
       header()->swapSections(header()->visualIndex(i), vi);
     }
 
-    header()->setSectionResizeMode(i, resize_mode);
     header()->resizeSection(i, ss);
     header()->setSectionHidden(i, ish);
+    header()->setSectionResizeMode(i, resize_mode);
   }
 
   ColumnSortStates states;
