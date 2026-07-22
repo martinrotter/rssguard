@@ -470,6 +470,9 @@ namespace GUI {
 #if defined(Q_OS_WIN)
   KEY TaskbarThumbnailButtons;
   VALUE(bool) TaskbarThumbnailButtonsDef;
+
+  KEY TaskbarErrorProgress;
+  VALUE(bool) TaskbarErrorProgressDef;
 #endif
 
   KEY UnreadNumbersOnWindow;

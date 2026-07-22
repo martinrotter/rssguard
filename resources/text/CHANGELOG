@@ -3,6 +3,7 @@
 Released on: 2026-07-XX
 
 Added:
+* Highlighting the Windows taskbar after feed-fetching errors can now be disabled in settings.
 * Article and feed list titles now use available horizontal space by default.
 * Feed fetching can now be paused or resumed from the tray icon menu. When paused and there are no unread articles, a pause symbol is shown in the tray icon and Windows taskbar badge.
 * Windows taskbar previews can now show buttons for pausing feed fetching, fetching all feeds, and opening settings.

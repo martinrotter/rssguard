@@ -128,6 +128,7 @@ void SettingsGui::loadUi() {
           this,
           &SettingsGui::resetAllCustomSkinColors);
   connect(m_ui->m_displayUnreadMessageCountOnTaskBar, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
+  connect(m_ui->m_displayTaskbarErrorProgress, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_displayUnreadMessageCountOnWindow, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_gbAppFont, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_gbAppFont, &QGroupBox::toggled, this, &SettingsGui::requireRestart);
@@ -264,8 +265,11 @@ void SettingsGui::loadSettings() {
 #if defined(Q_OS_WIN)
   m_ui->m_displayTaskbarThumbnailButtons
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::TaskbarThumbnailButtons)).toBool());
+  m_ui->m_displayTaskbarErrorProgress
+    ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::TaskbarErrorProgress)).toBool());
 #else
   m_ui->m_displayTaskbarThumbnailButtons->setVisible(false);
+  m_ui->m_displayTaskbarErrorProgress->setVisible(false);
 #endif
 
   m_ui->m_displayUnreadMessageCountOnWindow
@@ -498,6 +502,7 @@ void SettingsGui::saveSettings() {
   settings()->setValue(GROUP(GUI),
                        GUI::TaskbarThumbnailButtons,
                        m_ui->m_displayTaskbarThumbnailButtons->isChecked());
+  settings()->setValue(GROUP(GUI), GUI::TaskbarErrorProgress, m_ui->m_displayTaskbarErrorProgress->isChecked());
   if (WindowsTaskbar* taskbar = qApp->windowsTaskbar(); taskbar != nullptr) {
     taskbar->setThumbnailButtonsEnabled(m_ui->m_displayTaskbarThumbnailButtons->isChecked());
   }

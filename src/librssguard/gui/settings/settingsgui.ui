@@ -340,6 +340,13 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="m_displayTaskbarErrorProgress">
+            <property name="text">
+             <string>Highlight taskbar when feed fetching fails</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
@@ -483,6 +490,8 @@
   <tabstop>m_checkCountUnreadMessages</tabstop>
   <tabstop>m_checkHideWhenMinimized</tabstop>
   <tabstop>m_displayUnreadMessageCountOnTaskBar</tabstop>
+  <tabstop>m_displayTaskbarThumbnailButtons</tabstop>
+  <tabstop>m_displayTaskbarErrorProgress</tabstop>
   <tabstop>m_displayUnreadMessageCountOnWindow</tabstop>
   <tabstop>m_checkCloseTabsMiddleClick</tabstop>
   <tabstop>m_checkCloseTabsDoubleClick</tabstop>

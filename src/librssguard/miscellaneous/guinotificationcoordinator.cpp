@@ -367,9 +367,11 @@ void GuiNotificationCoordinator::onFeedUpdatesFinished(const FeedDownloadResults
 
 #if defined(Q_OS_WIN)
   auto* taskbar = m_application->windowsTaskbar();
+
   if (m_application->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool() &&
       m_application->mainForm() != nullptr && taskbar != nullptr && taskbar->isAvailable()) {
-    if (results.erroredFeeds().isEmpty()) {
+    if (results.erroredFeeds().isEmpty() ||
+        !m_application->settings()->value(GROUP(GUI), SETTING(GUI::TaskbarErrorProgress)).toBool()) {
       taskbar->clearProgress(m_application->mainForm()->winId());
     }
     else {

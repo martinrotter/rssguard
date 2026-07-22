@@ -456,6 +456,9 @@ DVALUE(bool) GUI::UnreadNumbersOnTaskBarDef = true;
 #if defined(Q_OS_WIN)
 DKEY GUI::TaskbarThumbnailButtons = "show_taskbar_thumbnail_buttons";
 DVALUE(bool) GUI::TaskbarThumbnailButtonsDef = true;
+
+DKEY GUI::TaskbarErrorProgress = "show_taskbar_error_progress";
+DVALUE(bool) GUI::TaskbarErrorProgressDef = true;
 #endif
 
 DKEY GUI::UnreadNumbersOnWindow = "show_unread_numbers_on_window";
