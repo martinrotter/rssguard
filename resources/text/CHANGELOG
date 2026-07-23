@@ -17,6 +17,7 @@ Added:
 * Errors in article filters (like bad syntax) now causes the feed marked as failed (instead of failing silently like it was up until now).
 
 Fixed:
+* Article-list column layouts are now saved reliably when switching between feeds and folders.
 * Article viewer now stays visible when configured to do so.
 * Article list order is now stable when articles have identical values in the selected sort columns. (#2361)
 * Article-list notifications now handle paging more reliably.
