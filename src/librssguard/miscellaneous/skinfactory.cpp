@@ -332,9 +332,12 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
 
   QUrl message_url(message.m_url);
 
+  /*
+   * NOTE: Issue #2367.
   if (message_url.hasFragment()) {
     message_url.setFragment(QString());
   }
+  */
 
   QString msg_contents = is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
                                   : (viewer != nullptr && forced_article_img_height > 0
