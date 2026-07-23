@@ -17,6 +17,7 @@ Added:
 * Errors in article filters (like bad syntax) now causes the feed marked as failed (instead of failing silently like it was up until now).
 
 Fixed:
+* Importing from RSS Guard 4.x now preserves feeds with the same URL in different folders. (#2155)
 * Article preview URLs with anchors now open the complete original address. (#2367)
 * Article-list column layouts are now saved reliably when switching between feeds and folders.
 * Article viewer now stays visible when configured to do so.
