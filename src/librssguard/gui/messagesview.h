@@ -151,7 +151,7 @@ class MessagesView : public BaseTreeView {
     void createConnections();
     void initializeContextMenu();
     void setupAppearance();
-    void switchColumnProfileForItem(RootItem* item);
+    void switchColumnProfileForItem(RootItem* item, bool save_current_profile);
     void restoreColumnProfile(ColumnProfile profile);
     void applyDefaultColumnProfile(ColumnProfile profile);
     void setColumnProfileVisibility(const QList<int>& visible_columns);
