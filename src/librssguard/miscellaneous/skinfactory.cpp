@@ -331,13 +331,12 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
                                                       QLocale::FormatType::ShortFormat);
 
   QUrl message_url(message.m_url);
+  QString blanking;
 
-  /*
-   * NOTE: Issue #2367.
+  // NOTE: Issue #2367.
   if (message_url.hasFragment()) {
-    message_url.setFragment(QString());
+    blanking = QSL("target=\"_blank\"");
   }
-  */
 
   QString msg_contents = is_plain ? Qt::convertFromPlainText(message.m_contents, Qt::WhiteSpaceMode::WhiteSpaceNormal)
                                   : (viewer != nullptr && forced_article_img_height > 0
@@ -355,6 +354,7 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
                                     tr("Written by ") +
                                       (message.m_author.isEmpty() ? tr("unknown author") : message.m_author))
                            .replace(QSL("%article_url%"), message_url.toString())
+                           .replace(QSL("%article_blanking%"), blanking)
                            .replace(QSL("%article_contents%"), msg_contents)
                            .replace(QSL("%article_date%"), msg_date_published)
                            .replace(QSL("%enclosures_all%"), enclosures)
