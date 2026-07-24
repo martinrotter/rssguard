@@ -5,6 +5,7 @@
 #include "gui/dialogs/formmain.h"
 #include "gui/feedmessageviewer.h"
 #include "gui/feedsview.h"
+#include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/label.h"
@@ -170,6 +171,18 @@ int main(int argc, char* argv[]) {
   application.showSplashMessage(Application::tr("Creating the main window..."));
 
   FormMain main_window;
+
+#if defined(Q_OS_WIN) && defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  if (!qApp->cmdParser()->isSet(QSL(CLI_FORCETEXT_LONG))) {
+    application.showSplashMessage(Application::tr("Spinning up QtWebEngine-based browser..."));
+
+    // Initialize the WebEngine compositor while the splash screen still covers the main window.
+    main_window.tabWidget()
+      ->feedMessageViewer()
+      ->webBrowser()
+      ->setHtml(QSL("<!DOCTYPE html><html><body></body></html>"));
+  }
+#endif
 
   application.showSplashMessage(Application::tr("Loading shortcuts..."));
   qApp->loadDynamicShortcuts();

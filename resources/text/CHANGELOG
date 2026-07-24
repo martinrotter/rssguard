@@ -1,3 +1,10 @@
+5.2.4
+-----
+Released on: 2026-07-XX
+
+Fixed:
+* Opening the first article in the WebEngine viewer on Windows no longer briefly flashes the main window.
+
 5.2.3
 -----
 Released on: 2026-07-23
