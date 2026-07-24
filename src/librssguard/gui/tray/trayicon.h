@@ -43,7 +43,8 @@ class TrayIcon : public QObject {
     explicit TrayIcon(const QString& id,
                       const QString& title,
                       const QPixmap& normal_icon,
-                      const QPixmap& plain_icon,
+                      const QPixmap& unread_icon,
+                      const QPixmap& paused_icon,
                       const QColor& text_color = Qt::GlobalColor::white,
                       QObject* parent = nullptr);
 
@@ -83,7 +84,8 @@ class TrayIcon : public QObject {
     QString m_id;
     QString m_title;
     QPixmap m_normalIcon;
-    QPixmap m_plainIcon;
+    QPixmap m_unreadIcon;
+    QPixmap m_pausedIcon;
     QColor m_textColor;
     QFont m_font = QFont();
     bool m_showUnreadArticlesCount;

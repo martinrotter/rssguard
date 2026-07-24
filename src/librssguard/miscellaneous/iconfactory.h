@@ -42,7 +42,7 @@ class RSSGUARD_DLLSPEC IconFactory : public QObject {
     static QString customColoredIconFolder();
     static QString customColoredAppIconPath();
     static QString customColoredTrayIconPath();
-    static QString customColoredTrayIconPlainPath();
+    static QString customColoredTrayIconUnreadPath();
     static bool generateCustomColoredIcons(const QColor& background_color);
     static bool ensureCustomColoredIcons(const QColor& background_color);
 

@@ -47,7 +47,8 @@ GuiNotificationCoordinator::~GuiNotificationCoordinator() {
 TrayIcon* GuiNotificationCoordinator::trayIcon() {
   if (m_trayIcon == nullptr) {
     QPixmap tray_icon;
-    QPixmap tray_icon_plain;
+    QPixmap tray_icon_unread;
+    QPixmap tray_icon_paused;
 
     const bool monochrome_icon =
       m_application->settings()->value(GROUP(GUI), SETTING(GUI::MonochromeTrayIcon)).toBool();
@@ -68,29 +69,33 @@ TrayIcon* GuiNotificationCoordinator::trayIcon() {
 
       if (IconFactory::ensureCustomColoredIcons(background_color)) {
         tray_icon = QPixmap(IconFactory::customColoredTrayIconPath());
-        tray_icon_plain = show_unread_count ? QPixmap(IconFactory::customColoredTrayIconPlainPath()) : tray_icon;
+        tray_icon_unread = show_unread_count ? QPixmap(IconFactory::customColoredTrayIconUnreadPath()) : tray_icon;
+        tray_icon_paused = QPixmap(IconFactory::customColoredTrayIconUnreadPath());
       }
     }
 
-    if (tray_icon.isNull() || tray_icon_plain.isNull()) {
+    if (tray_icon.isNull() || tray_icon_unread.isNull() || tray_icon_paused.isNull()) {
       unread_text_color = QColor(Qt::GlobalColor::white);
 
       if (!custom_colored_icon && monochrome_icon) {
         tray_icon = QPixmap(APP_ICON_MONO_PATH);
-        tray_icon_plain = colored_unread_icon
-                            ? (show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH))
-                            : (show_unread_count ? QPixmap(APP_ICON_MONO_PLAIN_PATH) : QPixmap(APP_ICON_MONO_PATH));
+        tray_icon_unread = colored_unread_icon
+                             ? (show_unread_count ? QPixmap(APP_ICON_UNREAD_PATH) : QPixmap(APP_ICON_PATH))
+                             : (show_unread_count ? QPixmap(APP_ICON_MONO_UNREAD_PATH) : QPixmap(APP_ICON_MONO_PATH));
+        tray_icon_paused = QPixmap(APP_ICON_MONO_UNREAD_PATH);
       }
       else {
         tray_icon = QPixmap(APP_ICON_PATH);
-        tray_icon_plain = show_unread_count ? QPixmap(APP_ICON_PLAIN_PATH) : QPixmap(APP_ICON_PATH);
+        tray_icon_unread = show_unread_count ? QPixmap(APP_ICON_UNREAD_PATH) : QPixmap(APP_ICON_PATH);
+        tray_icon_paused = QPixmap(APP_ICON_UNREAD_PATH);
       }
     }
 
     m_trayIcon = new QtTrayIcon(QSL(APP_LOW_NAME),
                                 QSL(APP_NAME),
                                 tray_icon,
-                                tray_icon_plain,
+                                tray_icon_unread,
+                                tray_icon_paused,
                                 unread_text_color,
                                 m_application->mainForm());
     m_trayIcon->setMainWindow(m_application->mainForm());

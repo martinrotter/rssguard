@@ -26,10 +26,12 @@ bool TrayIconMenu::event(QEvent* event) {
 TrayIcon::TrayIcon(const QString& id,
                    const QString& title,
                    const QPixmap& normal_icon,
-                   const QPixmap& plain_icon,
+                   const QPixmap& unread_icon,
+                   const QPixmap& paused_icon,
                    const QColor& text_color,
                    QObject* parent)
-  : QObject(parent), m_id(id), m_title(title), m_normalIcon(normal_icon), m_plainIcon(plain_icon),
+  : QObject(parent), m_id(id), m_title(title), m_normalIcon(normal_icon), m_unreadIcon(unread_icon),
+    m_pausedIcon(paused_icon),
     m_textColor(text_color.isValid() ? text_color : QColor(Qt::GlobalColor::white)),
     m_showUnreadArticlesCount(qApp->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool()) {
   m_font.setBold(true);
@@ -43,7 +45,7 @@ void TrayIcon::setNumber(int number) {
     setToolTip(feed_fetching_paused ? tr("Feed fetching is paused.") : QSL(APP_LONG_NAME));
 
     if (feed_fetching_paused) {
-      QPixmap background(m_plainIcon);
+      QPixmap background(m_pausedIcon);
       QPainter tray_painter;
 
       tray_painter.begin(&background);
@@ -81,7 +83,7 @@ void TrayIcon::setNumber(int number) {
     setToolTip(tr("Unread news: %1").arg(QString::number(number)));
 
     if (m_showUnreadArticlesCount) {
-      QPixmap background(m_plainIcon);
+      QPixmap background(m_unreadIcon);
       QPainter tray_painter;
 
       tray_painter.begin(&background);
@@ -126,7 +128,7 @@ void TrayIcon::setNumber(int number) {
       setPixmap(background);
     }
     else {
-      setPixmap(m_plainIcon);
+      setPixmap(m_unreadIcon);
     }
 
     setStatus(TrayIcon::Status::Active);

@@ -4,6 +4,7 @@ Released on: 2026-07-XX
 
 Fixed:
 * Opening the first article in the WebEngine viewer on Windows no longer briefly flashes the main window.
+* Paused tray icon now respects the configured monochrome or colored appearance. (#2373)
 
 5.2.3
 -----

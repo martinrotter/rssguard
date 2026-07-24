@@ -15,7 +15,8 @@ class QtTrayIcon : public TrayIcon {
     explicit QtTrayIcon(const QString& id,
                         const QString& title,
                         const QPixmap& normal_icon,
-                        const QPixmap& plain_icon,
+                        const QPixmap& unread_icon,
+                        const QPixmap& paused_icon,
                         const QColor& text_color = Qt::GlobalColor::white,
                         QObject* parent = nullptr);
     virtual ~QtTrayIcon();
