@@ -1757,43 +1757,43 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="293"/>
       <source>Article filter generator</source>
-      <translation type="unfinished">Article filter generator</translation>
+      <translation>記事フィルタージェネレーター</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="25"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="294"/>
       <source>Match</source>
-      <translation type="unfinished">Match</translation>
+      <translation>一致</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="295"/>
       <source>all conditions</source>
-      <translation type="unfinished">all conditions</translation>
+      <translation>すべての条件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="32"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="296"/>
       <source>at least one condition</source>
-      <translation type="unfinished">at least one condition</translation>
+      <translation>少なくとも1つの条件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="42"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="298"/>
       <source>Conditions</source>
-      <translation type="unfinished">Conditions</translation>
+      <translation>条件</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="59"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="299"/>
       <source>Add condition</source>
-      <translation type="unfinished">Add condition</translation>
+      <translation>条件を追加</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="68"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="307"/>
       <source>When conditions match</source>
-      <translation type="unfinished">When conditions match</translation>
+      <translation>条件が一致する場合</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="72"/>
@@ -1801,7 +1801,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="300"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="308"/>
       <source>Actions</source>
-      <translation type="unfinished">Actions</translation>
+      <translation>アクション</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="88"/>
@@ -1809,7 +1809,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="301"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="309"/>
       <source>Add action</source>
-      <translation type="unfinished">Add action</translation>
+      <translation>アクションを追加</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="94"/>
@@ -1825,7 +1825,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="303"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="311"/>
       <source>Accept article</source>
-      <translation type="unfinished">Accept article</translation>
+      <translation>記事を受け入れる</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="98"/>
@@ -1833,7 +1833,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="304"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="312"/>
       <source>Ignore article</source>
-      <translation type="unfinished">Ignore article</translation>
+      <translation>記事を拒否する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="99"/>
@@ -1841,30 +1841,30 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="305"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="313"/>
       <source>Purge article</source>
-      <translation type="unfinished">Purge article</translation>
+      <translation>記事を削除する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="108"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="318"/>
       <source>When conditions do not match</source>
-      <translation type="unfinished">When conditions do not match</translation>
+      <translation>条件が一致しない場合</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="137"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="316"/>
       <source>Result used when the article does not match the conditions</source>
-      <translation type="unfinished">Result used when the article does not match the conditions</translation>
+      <translation>記事が条件に一致しない場合の結果</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="152"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="319"/>
       <source>Generated script</source>
-      <translation type="unfinished">Generated script</translation>
+      <translation>生成されたスクリプト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="92"/>
       <source>Case sensitive</source>
-      <translation type="unfinished">Case sensitive</translation>
+      <translation>大文字と小文字を区別する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="104"/>
@@ -1881,159 +1881,159 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="107"/>
       <source>Remove condition</source>
-      <translation type="unfinished">Remove condition</translation>
+      <translation>条件を削除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="166"/>
       <source>Enter a non-negative age in days for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a non-negative age in days for &apos;%1&apos;.</translation>
+      <translation>&apos;%1&apos; の経過日数を0以上の数値で入力してください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="186"/>
       <source>Enter a valid number for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a valid number for &apos;%1&apos;.</translation>
+      <translation>&apos;%1&apos; に有効な数値を入力してください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="221"/>
       <source>Enter text to match for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter text to match for &apos;%1&apos;.</translation>
+      <translation>&apos;%1&apos; に一致するテキストを入力してください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="235"/>
       <source>The regular expression for &apos;%1&apos; is invalid: %2</source>
-      <translation type="unfinished">The regular expression for &apos;%1&apos; is invalid: %2</translation>
+      <translation>&apos;%1&apos; の正規表現は無効です: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="282"/>
       <source>contains</source>
-      <translation type="unfinished">contains</translation>
+      <translation>を含む</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="283"/>
       <source>does not contain</source>
-      <translation type="unfinished">does not contain</translation>
+      <translation>を含まない</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="284"/>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="296"/>
       <source>equals</source>
-      <translation type="unfinished">equals</translation>
+      <translation>に一致</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="285"/>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="297"/>
       <source>does not equal</source>
-      <translation type="unfinished">does not equal</translation>
+      <translation>に一致しない</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="286"/>
       <source>starts with</source>
-      <translation type="unfinished">starts with</translation>
+      <translation>ではじまる</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="287"/>
       <source>ends with</source>
-      <translation type="unfinished">ends with</translation>
+      <translation>で終わる</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="288"/>
       <source>matches regular expression</source>
-      <translation type="unfinished">matches regular expression</translation>
+      <translation>正規表現に一致</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="289"/>
       <source>Text to match</source>
-      <translation type="unfinished">Text to match</translation>
+      <translation>一致させるテキスト</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="292"/>
       <source>is</source>
-      <translation type="unfinished">is</translation>
+      <translation>がある</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="293"/>
       <source>is not</source>
-      <translation type="unfinished">is not</translation>
+      <translation>がない</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="298"/>
       <source>is greater than</source>
-      <translation type="unfinished">is greater than</translation>
+      <translation>より大きい</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="299"/>
       <source>is at least</source>
-      <translation type="unfinished">is at least</translation>
+      <translation>以上</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="300"/>
       <source>is less than</source>
-      <translation type="unfinished">is less than</translation>
+      <translation>より小さい</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="301"/>
       <source>is at most</source>
-      <translation type="unfinished">is at most</translation>
+      <translation>以下</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="302"/>
       <source>Number</source>
-      <translation type="unfinished">Number</translation>
+      <translation>数値</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="305"/>
       <source>is older than</source>
-      <translation type="unfinished">is older than</translation>
+      <translation>より古い</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="306"/>
       <source>is newer than</source>
-      <translation type="unfinished">is newer than</translation>
+      <translation>より新しい</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="307"/>
       <source>Age in days</source>
-      <translation type="unfinished">Age in days</translation>
+      <translation>経過日数</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="359"/>
       <source>Remove action</source>
-      <translation type="unfinished">Remove action</translation>
+      <translation>アクションを削除</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="418"/>
       <source>Enter a label title for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a label title for &apos;%1&apos;.</translation>
+      <translation>&apos;%1&apos; のラベルのタイトルを入力してください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="462"/>
       <source>Label title</source>
-      <translation type="unfinished">Label title</translation>
+      <translation>ラベルのタイトル</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="462"/>
       <source>Value</source>
-      <translation type="unfinished">Value</translation>
+      <translation>値</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="487"/>
       <source>Enter a valid value for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a valid value for &apos;%1&apos;.</translation>
+      <translation>&apos;%1&apos; に有効な値を入力してください</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="531"/>
       <source>About the visual filter generator</source>
-      <translation type="unfinished">About the visual filter generator</translation>
+      <translation>ビジュアルフィルタージェネレーターについて</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="532"/>
       <source>&lt;p&gt;&lt;b&gt;Build common article filters without writing JavaScript.&lt;/b&gt; Choose actions and results for both matching and non-matching articles.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;All conditions&lt;/b&gt; requires every condition to match; &lt;b&gt;at least one condition&lt;/b&gt; matches any of them.&lt;/li&gt;&lt;li&gt;Each outcome can change article properties or labels before its result is applied.&lt;/li&gt;&lt;li&gt;The generated script remains editable, testable, and can be expanded with advanced JavaScript features.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;See the &lt;a href=&quot;https://rssguard.readthedocs.io/en/stable/features/filters.html&quot;&gt;article-filter documentation&lt;/a&gt; for the complete scripting reference.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;&lt;b&gt;Build common article filters without writing JavaScript.&lt;/b&gt; Choose actions and results for both matching and non-matching articles.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;All conditions&lt;/b&gt; requires every condition to match; &lt;b&gt;at least one condition&lt;/b&gt; matches any of them.&lt;/li&gt;&lt;li&gt;Each outcome can change article properties or labels before its result is applied.&lt;/li&gt;&lt;li&gt;The generated script remains editable, testable, and can be expanded with advanced JavaScript features.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;See the &lt;a href=&quot;https://rssguard.readthedocs.io/en/stable/features/filters.html&quot;&gt;article-filter documentation&lt;/a&gt; for the complete scripting reference.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;&lt;b&gt;JavaScriptを記述することなく、一般的な記事フィルターを作成できます。&lt;/b&gt; 条件に一致する記事と一致しない記事のについて、実行するアクションや結果を選択します。&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;すべての条件&lt;/b&gt;はすべての条件が一致することを求め、&lt;b&gt;少なくとも1つの条件&lt;/b&gt;はいずれかの条件が一致すればよいことを意味します。&lt;/li&gt;&lt;li&gt;各処理（outcome）では、結果が適用される前に記事のプロパティやラベルを変更できます。&lt;/li&gt;&lt;li&gt;生成されたスクリプトは編集やテストが可能であり、高度なJavaScript機能を使って拡張することもできます。&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;スクリプトに関する詳細なリファレンスについては、&lt;a href=&quot;https://rssguard.readthedocs.io/en/stable/features/filters.html&quot;&gt;記事フィルターのドキュメント&lt;/a&gt;をご覧ください。&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="577"/>
       <source>Set article property</source>
-      <translation type="unfinished">Set article property</translation>
+      <translation>記事のプロパティを設定</translation>
     </message>
   </context>
   <context>
@@ -3776,12 +3776,12 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="355"/>
       <source>Replace existing script?</source>
-      <translation type="unfinished">Replace existing script?</translation>
+      <translation>既存のスクリプトを置き換えますか？</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="356"/>
       <source>The current article filter script will be replaced by the generated script.</source>
-      <translation type="unfinished">The current article filter script will be replaced by the generated script.</translation>
+      <translation>現在の記事フィルタースクリプトは生成されたスクリプトに置き換えられます</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="383"/>
@@ -4000,13 +4000,13 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="297"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="518"/>
       <source>Create a script with a visual rule builder</source>
-      <translation type="unfinished">Create a script with a visual rule builder</translation>
+      <translation>ビジュアルルールビルダーを使用してスクリプトを作成</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="300"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="520"/>
       <source>&amp;Generate</source>
-      <translation type="unfinished">&amp;Generate</translation>
+      <translation>ジェネレーター</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="307"/>
@@ -9181,13 +9181,13 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="186"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="464"/>
       <source>Reset all custom colors to their values in the current skin</source>
-      <translation type="unfinished">Reset all custom colors to their values in the current skin</translation>
+      <translation>すべてのカスタムカラーを現在のスキンの値にリセットする</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="189"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="466"/>
       <source>Reset all colors</source>
-      <translation type="unfinished">Reset all colors</translation>
+      <translation>すべての色をリセット</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="203"/>
@@ -9263,13 +9263,13 @@ Description: %3</source>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="339"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="482"/>
       <source>Display thumbnail buttons</source>
-      <translation type="unfinished">Display thumbnail buttons</translation>
+      <translation>サムネイルボタンを表示</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="346"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsgui.h" line="483"/>
       <source>Highlight taskbar when feed fetching fails</source>
-      <translation type="unfinished">Highlight taskbar when feed fetching fails</translation>
+      <translation>フィードの取得に失敗したときにタスクバーをハイライト表示する</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsgui.ui" line="356"/>
@@ -10735,7 +10735,7 @@ OPMLファイルからの読み込み：標準のOPML 2.0ファイルをイン�
     <message>
       <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="43"/>
       <source>Feed fetching is paused.</source>
-      <translation type="unfinished">Feed fetching is paused.</translation>
+      <translation>フィードの取得が一時停止されています</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/tray/trayicon.cpp" line="81"/>
@@ -11474,12 +11474,12 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/miscellaneous/windowstaskbar.cpp" line="254"/>
       <source>Resume automatic feed fetching</source>
-      <translation type="unfinished">Resume automatic feed fetching</translation>
+      <translation>フィードの自動取得を再開</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/windowstaskbar.cpp" line="255"/>
       <source>Pause automatic feed fetching</source>
-      <translation type="unfinished">Pause automatic feed fetching</translation>
+      <translation>フィードの自動取得を一時停止</translation>
     </message>
   </context>
   <context>
