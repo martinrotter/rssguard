@@ -444,6 +444,7 @@ void FormMain::updateTabsButtonsAvailability(int index) {
 void FormMain::onFeedUpdatesFinished(const FeedDownloadResults& results) {
   Q_UNUSED(results)
 
+  m_feedUpdatesStopRequested = false;
   statusBar()->clearProgressFeeds();
   tabWidget()
     ->feedMessageViewer()
@@ -452,11 +453,21 @@ void FormMain::onFeedUpdatesFinished(const FeedDownloadResults& results) {
 }
 
 void FormMain::onFeedUpdatesStarted() {
+  m_feedUpdatesStopRequested = false;
   m_ui->m_actionStopRunningItemsUpdate->setEnabled(true);
   statusBar()->showProgressFeeds(-1, tr("Fetching common data"));
 }
 
+void FormMain::onFeedUpdatesStopRequested() {
+  m_feedUpdatesStopRequested = true;
+  statusBar()->showProgressFeeds(-1, tr("Stopping feed fetching"));
+}
+
 void FormMain::onFeedUpdatesProgress(const Feed* feed, int current, int total) {
+  if (m_feedUpdatesStopRequested) {
+    return;
+  }
+
   statusBar()->showProgressFeeds(int((current * 100.0) / total), feed->sanitizedTitle());
 }
 
@@ -906,6 +917,7 @@ void FormMain::createConnections() {
           &FormMain::updateMessageButtonsAvailability);
   connect(tabWidget(), &TabWidget::currentChanged, this, &FormMain::updateTabsButtonsAvailability);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesStarted, this, &FormMain::onFeedUpdatesStarted);
+  connect(qApp->feedReader(), &FeedReader::feedUpdatesStopRequested, this, &FormMain::onFeedUpdatesStopRequested);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesProgress, this, &FormMain::onFeedUpdatesProgress);
   connect(qApp->feedReader(), &FeedReader::feedUpdatesFinished, this, &FormMain::onFeedUpdatesFinished);
 

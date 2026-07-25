@@ -64,6 +64,7 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     void updateFeedButtonsAvailability();
 
     void onFeedUpdatesStarted();
+    void onFeedUpdatesStopRequested();
     void onFeedUpdatesProgress(const Feed* feed, int current, int total);
     void onFeedUpdatesFinished(const FeedDownloadResults& results);
 
@@ -97,6 +98,7 @@ class RSSGUARD_DLLSPEC FormMain : public QMainWindow {
     QScopedPointer<Ui::FormMain> m_ui;
     QWidgetAction* m_actionToolbarMainMenu;
     StatusBar* m_statusBar;
+    bool m_feedUpdatesStopRequested = false;
 };
 
 #endif // FORMMAIN_H

@@ -2,7 +2,6 @@
 
 #include "miscellaneous/feedreader.h"
 
-#include "core/feeddownloader.h"
 #include "core/feedsmodel.h"
 #include "core/feedsproxymodel.h"
 #include "core/messagesmodel.h"
@@ -405,8 +404,9 @@ void FeedReader::updateManuallyIntervaledFeeds() {
 }
 
 void FeedReader::stopRunningFeedUpdate() {
-  if (m_feedDownloader != nullptr) {
-    QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate", Qt::ConnectionType::BlockingQueuedConnection);
+  if (m_feedDownloader != nullptr && m_feedDownloader->isUpdateRunning()) {
+    QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate", Qt::ConnectionType::QueuedConnection);
+    emit feedUpdatesStopRequested();
   }
 }
 
@@ -577,15 +577,14 @@ void FeedReader::quit() {
 
   // Stop running updates.
   if (m_feedDownloader != nullptr) {
-    QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate", Qt::ConnectionType::BlockingQueuedConnection);
+    QEventLoop loop(this);
 
-    if (m_feedDownloader->isUpdateRunning() || m_feedDownloader->isCacheSynchronizationRunning()) {
-      QEventLoop loop(this);
+    connect(m_feedDownloader, &FeedDownloader::cachesSynchronized, &loop, &QEventLoop::quit);
+    connect(m_feedDownloader, &FeedDownloader::stopRequestProcessed, &loop, &QEventLoop::quit);
+    connect(m_feedDownloader, &FeedDownloader::updateFinished, &loop, &QEventLoop::quit);
 
-      connect(m_feedDownloader, &FeedDownloader::cachesSynchronized, &loop, &QEventLoop::quit);
-      connect(m_feedDownloader, &FeedDownloader::updateFinished, &loop, &QEventLoop::quit);
-      loop.exec();
-    }
+    QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate", Qt::ConnectionType::QueuedConnection);
+    loop.exec();
 
     // Both thread and downloader are auto-deleted when worker thread exits.
     m_feedDownloaderThread->quit();

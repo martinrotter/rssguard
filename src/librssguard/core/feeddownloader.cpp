@@ -239,11 +239,9 @@ void FeedDownloader::skipFeedUpdateWithError(ServiceRoot* acc, Feed* feed, const
 void FeedDownloader::stopRunningUpdate() {
   m_stopFetching = true;
 
-  m_watcherLookup->cancel();
-  m_watcherLookup->waitForFinished();
-
-  m_feeds.clear();
-  m_isUpdateRunning = false;
+  if (!m_isUpdateRunning && !m_isCacheSynchronizationRunning) {
+    emit stopRequestProcessed();
+  }
 }
 
 void FeedDownloader::updateOneFeed(ServiceRoot* acc,
@@ -293,6 +291,10 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
     clearFeedOverload(feed);
 
+    if (m_stopFetching) {
+      return;
+    }
+
     bool fix_future_datetimes =
       qApp->settings()->value(GROUP(Messages), SETTING(Messages::FixupFutureArticleDateTimes)).toBool();
 
@@ -305,6 +307,11 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
     }
 
     QMutexLocker lck(&m_mutexDb);
+
+    if (m_stopFetching) {
+      return;
+    }
+
     QList<QPointer<MessageFilter>> feed_filters = feed->messageFilters();
     auto feed_filters_enabled = qlinq::from(feed_filters)
                                   .where([](const QPointer<MessageFilter>& fltr) {
@@ -331,6 +338,10 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       tmr_whole.start();
 
       for (int i = 0; i < msgs.size(); i++) {
+        if (m_stopFetching) {
+          return;
+        }
+
         Message msg_original(msgs[i]);
         Message* msg_filtered = &msgs[i];
 
@@ -341,6 +352,10 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
         bool remove_msg = false;
 
         for (int j = 0; j < feed_filters_enabled.size(); j++) {
+          if (m_stopFetching) {
+            return;
+          }
+
           QPointer<MessageFilter> filter = feed_filters_enabled.at(j);
 
           if (filter.isNull()) {

@@ -69,6 +69,7 @@ class FeedDownloader : public QObject {
 
   signals:
     void cachesSynchronized();
+    void stopRequestProcessed();
     void updateStarted();
     void updateFinished(FeedDownloadResults updated_feeds);
     void updateProgress(const Feed* feed, int current, int total);

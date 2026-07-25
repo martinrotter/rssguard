@@ -3,6 +3,7 @@
 Released on: 2026-07-XX
 
 Fixed:
+* Stopping feed fetching no longer blocks the application while active downloads are finishing. (#2375)
 * Opening the first article in the WebEngine viewer on Windows no longer briefly flashes the main window.
 * Paused tray icon now respects the configured monochrome or colored appearance. (#2373)
 

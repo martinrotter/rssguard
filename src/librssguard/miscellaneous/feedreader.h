@@ -82,6 +82,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
 
   signals:
     void feedUpdatesStarted();
+    void feedUpdatesStopRequested();
     void feedUpdatesFinished(FeedDownloadResults updated_feeds);
     void feedUpdatesProgress(const Feed* feed, int current, int total);
 
