@@ -70,8 +70,10 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_paths.reset(new ApplicationPaths(this));
   m_commandLine.reset(new CommandLineController(this, m_paths.data(), raw_cli_args));
   m_logManager.reset(new ApplicationLogManager(this));
+
   parseCmdArgumentsFromMyInstance(raw_cli_args, custom_ua);
   qInstallMessageHandler(performLogging);
+
   m_feedReader = nullptr;
   m_lifecycle.reset(new ApplicationLifecycle(this));
   m_mainForm = nullptr;

@@ -9,10 +9,11 @@ using namespace std::chrono_literals;
 QtTrayIcon::QtTrayIcon(const QString& id,
                        const QString& title,
                        const QPixmap& normal_icon,
-                       const QPixmap& plain_icon,
+                       const QPixmap& unread_icon,
+                       const QPixmap& paused_icon,
                        const QColor& text_color,
                        QObject* parent)
-  : TrayIcon(id, title, normal_icon, plain_icon, text_color, parent), m_trayIcon(nullptr) {
+  : TrayIcon(id, title, normal_icon, unread_icon, paused_icon, text_color, parent), m_trayIcon(nullptr) {
   m_tmrDoubleFire.setSingleShot(true);
   m_tmrDoubleFire.setInterval(100ms);
 }

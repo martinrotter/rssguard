@@ -344,8 +344,12 @@ void MessagesView::setupAppearance() {
   adjustColumns();
 }
 
-void MessagesView::switchColumnProfileForItem(RootItem* item) {
+void MessagesView::switchColumnProfileForItem(RootItem* item, bool save_current_profile) {
   if (!columnProfilesEnabled()) {
+    if (save_current_profile) {
+      saveActiveColumnProfile();
+    }
+
     m_currentColumnProfile = ColumnProfile::Default;
     return;
   }
@@ -353,10 +357,17 @@ void MessagesView::switchColumnProfileForItem(RootItem* item) {
   const ColumnProfile new_profile = columnProfileForItem(item);
 
   if (new_profile == m_currentColumnProfile) {
+    if (save_current_profile) {
+      saveActiveColumnProfile();
+    }
+
     return;
   }
 
-  saveActiveColumnProfile();
+  if (save_current_profile) {
+    saveActiveColumnProfile();
+  }
+
   restoreColumnProfile(new_profile);
   m_currentColumnProfile = new_profile;
 }
@@ -486,7 +497,7 @@ void MessagesView::setColumnProfilesEnabled(bool enabled) {
   qApp->settings()->setValue(GROUP(Messages), Messages::ArticleListColumnProfiles, enabled);
 
   if (enabled) {
-    switchColumnProfileForItem(m_sourceModel->loadedItem());
+    switchColumnProfileForItem(m_sourceModel->loadedItem(), false);
   }
   else {
     m_currentColumnProfile = ColumnProfile::Default;
@@ -855,8 +866,7 @@ void MessagesView::markSelectedMessagesReadDelayed() {
 }
 
 void MessagesView::loadItem(RootItem* item) {
-  switchColumnProfileForItem(item);
-
+  switchColumnProfileForItem(item, true);
   cancelDelayedArticleMarking();
 
   const int column = header()->sortIndicatorSection();

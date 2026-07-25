@@ -287,15 +287,6 @@ QList<StandardFeed*> RssGuard4Import::importTree(RootItem* root) const {
       }
       else if (source_item->kind() == RootItem::Kind::Feed) {
         auto* source_feed = qobject_cast<StandardFeed*>(source_item);
-        const auto* feed_with_same_url = target_root_node->getItemFromSubTree([source_feed](const RootItem* it) {
-          return it->kind() == RootItem::Kind::Feed &&
-                 it->toFeed()->source().toLower() == source_feed->source().toLower();
-        });
-
-        if (feed_with_same_url != nullptr) {
-          continue;
-        }
-
         auto* new_feed = new StandardFeed(*source_feed);
 
         // NOTE: Copy IDs.

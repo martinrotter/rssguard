@@ -1,6 +1,14 @@
-5.2.3
+5.2.4
 -----
 Released on: 2026-07-XX
+
+Fixed:
+* Opening the first article in the WebEngine viewer on Windows no longer briefly flashes the main window.
+* Paused tray icon now respects the configured monochrome or colored appearance. (#2373)
+
+5.2.3
+-----
+Released on: 2026-07-23
 
 Added:
 * Highlighting the Windows taskbar after feed-fetching errors can now be disabled in settings.
@@ -17,6 +25,9 @@ Added:
 * Errors in article filters (like bad syntax) now causes the feed marked as failed (instead of failing silently like it was up until now).
 
 Fixed:
+* Importing from RSS Guard 4.x now preserves feeds with the same URL in different folders. (#2155)
+* Article preview URLs with anchors now open the complete original address. (#2367)
+* Article-list column layouts are now saved reliably when switching between feeds and folders.
 * Article viewer now stays visible when configured to do so.
 * Article list order is now stable when articles have identical values in the selected sort columns. (#2361)
 * Article-list notifications now handle paging more reliably.

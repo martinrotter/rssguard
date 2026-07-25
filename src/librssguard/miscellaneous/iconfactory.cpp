@@ -230,7 +230,7 @@ QString IconFactory::customColoredTrayIconPath() {
   return customColoredAppIconPath();
 }
 
-QString IconFactory::customColoredTrayIconPlainPath() {
+QString IconFactory::customColoredTrayIconUnreadPath() {
   return customColoredIconFolder() + QDir::separator() + QSL("rssguard_plain_custom_colored.png");
 }
 
@@ -246,14 +246,14 @@ bool IconFactory::generateCustomColoredIcons(const QColor& background_color) {
   }
 
   const QPixmap icon = recolorPixmap(QPixmap(APP_ICON_MUSTR_PATH), background_color);
-  const QPixmap plain_icon = recolorPixmap(QPixmap(APP_ICON_MUSTR_PLAIN_PATH), background_color);
+  const QPixmap unread_icon = recolorPixmap(QPixmap(APP_ICON_MUSTR_UNREAD_PATH), background_color);
 
-  return !icon.isNull() && !plain_icon.isNull() && icon.save(customColoredAppIconPath(), "PNG") &&
-         plain_icon.save(customColoredTrayIconPlainPath(), "PNG");
+  return !icon.isNull() && !unread_icon.isNull() && icon.save(customColoredAppIconPath(), "PNG") &&
+         unread_icon.save(customColoredTrayIconUnreadPath(), "PNG");
 }
 
 bool IconFactory::ensureCustomColoredIcons(const QColor& background_color) {
-  if (QFileInfo::exists(customColoredTrayIconPath()) && QFileInfo::exists(customColoredTrayIconPlainPath())) {
+  if (QFileInfo::exists(customColoredTrayIconPath()) && QFileInfo::exists(customColoredTrayIconUnreadPath())) {
     return true;
   }
 
