@@ -76,7 +76,9 @@ void EmailPreviewer::loadMessage(const Message& msg, RootItem* selected_item, Fe
       continue;
     }
 
-    m_ui.m_btnAttachments->menu()->addAction(att->mimeType())->setData(att_id_name);
+    m_ui.m_btnAttachments->menu()
+      ->addAction(qApp->icons()->fromTheme(QSL("mail-attachment")), att->mimeType())
+      ->setData(att_id_name);
   }
 
   m_ui.m_btnAttachments->setDisabled(m_ui.m_btnAttachments->menu()->isEmpty());

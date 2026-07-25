@@ -2,6 +2,9 @@
 -----
 Released on: 2026-07-XX
 
+Added:
+* Added icons to more commands and context-menu actions.
+
 Fixed:
 * Stopping feed fetching no longer blocks the application while active downloads are finishing. (#2375)
 * Opening the first article in the WebEngine viewer on Windows no longer briefly flashes the main window.

@@ -34,7 +34,9 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
     m_actionSaveFullPage(new QAction(qApp->icons()->fromTheme(QSL("document-save-as"), QSL("download")),
                                      tr("Save complete webpage"),
                                      this)),
-    m_actionDiagGpu(new QAction(tr("GPU"), this)) {
+    m_actionDiagGpu(new QAction(qApp->icons()->fromTheme(QSL("video-display"), QSL("dialog-information")),
+                                tr("GPU"),
+                                this)) {
   WebEnginePage* page = new WebEnginePage(false, this);
 
   setPage(page);

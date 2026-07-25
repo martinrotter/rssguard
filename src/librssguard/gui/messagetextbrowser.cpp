@@ -82,7 +82,8 @@ void MessageTextBrowser::contextMenuEvent(QContextMenuEvent* event) {
     }
 
     if (menu_ext_tools->actions().isEmpty()) {
-      QAction* act_not_tools = new QAction("No external tools activated");
+      QAction* act_not_tools = new QAction(qApp->icons()->fromTheme(QSL("dialog-information")),
+                                           tr("No external tools activated"));
 
       act_not_tools->setEnabled(false);
       menu_ext_tools->addAction(act_not_tools);

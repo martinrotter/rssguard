@@ -18,7 +18,7 @@ void LabelsMenu::setLabels(const QList<Label*>& labels) {
   m_labelActions.clear();
 
   if (labels.isEmpty()) {
-    QAction* act_not_labels = new QAction(tr("No labels found"));
+    QAction* act_not_labels = new QAction(qApp->icons()->fromTheme(QSL("tag")), tr("No labels found"));
 
     act_not_labels->setEnabled(false);
     setActions({act_not_labels}, false);

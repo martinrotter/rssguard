@@ -12,6 +12,7 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 #include "network-web/cookiejar.h"
@@ -556,7 +557,7 @@ bool WebFactory::isByDefaultDisabledWebEngineAttribute(QWebEngineSettings::WebAt
 QAction* WebFactory::createEngineSettingsAction(QObject* parent,
                                                 const QString& title,
                                                 QWebEngineSettings::WebAttribute web_attribute) {
-  auto* act = new QAction(title, parent);
+  auto* act = new QAction(qApp->icons()->fromTheme(QSL("emblem-system"), QSL("dialog-information")), title, parent);
   auto default_enabled = !isByDefaultDisabledWebEngineAttribute(web_attribute);
   auto enabled =
     qApp->settings()->value(WebEngineAttributes::ID, QString::number(int(web_attribute)), default_enabled).toBool();

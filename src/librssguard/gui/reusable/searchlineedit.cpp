@@ -40,7 +40,7 @@ SearchLineEdit::SearchLineEdit(const QString& save_identification,
   m_actionGroupModes = new QActionGroup(this);
   m_actionGroupModes->setExclusive(true);
 
-  m_actCaseSensitivity = m_menu->addAction(tr("Case-sensitive"));
+  m_actCaseSensitivity = m_menu->addAction(qApp->icons()->fromTheme(QSL("format-text-bold")), tr("Case-sensitive"));
   m_actCaseSensitivity->setCheckable(true);
   m_actCaseSensitivity->setChecked(save_sens == Qt::CaseSensitivity::CaseSensitive);
 
@@ -57,7 +57,8 @@ SearchLineEdit::SearchLineEdit(const QString& save_identification,
 
   // Load predefined modes.
   for (SearchMode mode : {SearchMode::FixedString, SearchMode::Wildcard, SearchMode::RegularExpression}) {
-    QAction* ac = m_actionGroupModes->addAction(m_menu->addAction(titleForMode(mode)));
+    QAction* ac = m_actionGroupModes->addAction(
+      m_menu->addAction(qApp->icons()->fromTheme(QSL("edit-find"), QSL("system-search")), titleForMode(mode)));
 
     ac->setCheckable(true);
     ac->setData(int(mode));
@@ -71,7 +72,8 @@ SearchLineEdit::SearchLineEdit(const QString& save_identification,
 
     // Load custom coices.
     for (const CustomSearchChoice& choice : choices) {
-      QAction* ac = m_actionGroupChoices->addAction(m_menu->addAction(choice.m_title));
+      QAction* ac = m_actionGroupChoices->addAction(
+        m_menu->addAction(qApp->icons()->fromTheme(QSL("system-search")), choice.m_title));
 
       ac->setCheckable(true);
       ac->setData(choice.m_data);

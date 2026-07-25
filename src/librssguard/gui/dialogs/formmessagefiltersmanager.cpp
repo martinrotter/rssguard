@@ -25,6 +25,7 @@
 
 #include <algorithm>
 
+#include <QAction>
 #include <QDateTime>
 #include <QJSEngine>
 #include <QJsonArray>
@@ -382,7 +383,10 @@ void FormMessageFiltersManager::showMessageContextMenu(QPoint pos) {
   if (msg != nullptr) {
     QMenu menu(tr("Context menu"), m_ui.m_treeExistingMessages);
 
-    menu.addAction(tr("Filter articles like this"), this, [=]() {
+    QAction* action_filter_like_this =
+      menu.addAction(qApp->icons()->fromTheme(QSL("system-search")), tr("Filter articles like this"));
+
+    connect(action_filter_like_this, &QAction::triggered, this, [=]() {
       filterMessagesLikeThis(*msg);
     });
     menu.exec(m_ui.m_treeExistingMessages->mapToGlobal(pos));

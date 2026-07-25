@@ -43,6 +43,7 @@
     <file>./graphics/Breeze/icons/edit-clear.svg</file>
     <file>./graphics/Breeze/icons/edit-copy.svg</file>
     <file>./graphics/Breeze/icons/edit-cut.svg</file>
+    <file>./graphics/Breeze/icons/edit-find.svg</file>
     <file>./graphics/Breeze/icons/edit-paste.svg</file>
     <file>./graphics/Breeze/icons/edit-redo.svg</file>
     <file>./graphics/Breeze/icons/edit-reset.svg</file>
@@ -51,8 +52,10 @@
     <file>./graphics/Breeze/icons/edit-undo.svg</file>
     <file>./graphics/Breeze/icons/emblem-favorite.svg</file>
     <file>./graphics/Breeze/icons/emblem-shared.svg</file>
+    <file>./graphics/Breeze/icons/expand-all.svg</file>
     <file>./graphics/Breeze/icons/folder.svg</file>
     <file>./graphics/Breeze/icons/folder-database.svg</file>
+    <file>./graphics/Breeze/icons/format-fill-color.svg</file>
     <file>./graphics/Breeze/icons/format-indent-less.svg</file>
     <file>./graphics/Breeze/icons/format-indent-more.svg</file>
     <file>./graphics/Breeze/icons/format-justify-fill.svg</file>
@@ -123,14 +126,20 @@
     <file>./graphics/Breeze/icons/user-group-new.svg</file>
     <file>./graphics/Breeze/icons/user-online.svg</file>
     <file>./graphics/Breeze/icons/user-trash.svg</file>
+    <file>./graphics/Breeze/icons/video-display.svg</file>
     <file>./graphics/Breeze/icons/view-filter.svg</file>
     <file>./graphics/Breeze/icons/view-fullscreen.svg</file>
     <file>./graphics/Breeze/icons/view-list-details.svg</file>
+    <file>./graphics/Breeze/icons/view-list-tree.svg</file>
+    <file>./graphics/Breeze/icons/view-preview.svg</file>
     <file>./graphics/Breeze/icons/view-refresh.svg</file>
     <file>./graphics/Breeze/icons/view-restore.svg</file>
     <file>./graphics/Breeze/icons/view-sort.svg</file>
+    <file>./graphics/Breeze/icons/view-split-left-right.svg</file>
+    <file>./graphics/Breeze/icons/view-visible.svg</file>
     <file>./graphics/Breeze/icons/viewimage.svg</file>
     <file>./graphics/Breeze/icons/window-close.svg</file>
+    <file>./graphics/Breeze/icons/zoom-fit-best.svg</file>
     <file>./graphics/Breeze/index.theme</file>
     <file>./graphics/Breeze Dark/icons/application-exit.svg</file>
     <file>./graphics/Breeze Dark/icons/application-rss+xml.svg</file>
@@ -175,6 +184,7 @@
     <file>./graphics/Breeze Dark/icons/edit-clear.svg</file>
     <file>./graphics/Breeze Dark/icons/edit-copy.svg</file>
     <file>./graphics/Breeze Dark/icons/edit-cut.svg</file>
+    <file>./graphics/Breeze Dark/icons/edit-find.svg</file>
     <file>./graphics/Breeze Dark/icons/edit-paste.svg</file>
     <file>./graphics/Breeze Dark/icons/edit-redo.svg</file>
     <file>./graphics/Breeze Dark/icons/edit-reset.svg</file>
@@ -183,8 +193,10 @@
     <file>./graphics/Breeze Dark/icons/edit-undo.svg</file>
     <file>./graphics/Breeze Dark/icons/emblem-favorite.svg</file>
     <file>./graphics/Breeze Dark/icons/emblem-shared.svg</file>
+    <file>./graphics/Breeze Dark/icons/expand-all.svg</file>
     <file>./graphics/Breeze Dark/icons/folder.svg</file>
     <file>./graphics/Breeze Dark/icons/folder-database.svg</file>
+    <file>./graphics/Breeze Dark/icons/format-fill-color.svg</file>
     <file>./graphics/Breeze Dark/icons/format-indent-less.svg</file>
     <file>./graphics/Breeze Dark/icons/format-indent-more.svg</file>
     <file>./graphics/Breeze Dark/icons/format-justify-fill.svg</file>
@@ -255,14 +267,20 @@
     <file>./graphics/Breeze Dark/icons/user-group-new.svg</file>
     <file>./graphics/Breeze Dark/icons/user-online.svg</file>
     <file>./graphics/Breeze Dark/icons/user-trash.svg</file>
+    <file>./graphics/Breeze Dark/icons/video-display.svg</file>
     <file>./graphics/Breeze Dark/icons/view-filter.svg</file>
     <file>./graphics/Breeze Dark/icons/view-fullscreen.svg</file>
     <file>./graphics/Breeze Dark/icons/view-list-details.svg</file>
+    <file>./graphics/Breeze Dark/icons/view-list-tree.svg</file>
+    <file>./graphics/Breeze Dark/icons/view-preview.svg</file>
     <file>./graphics/Breeze Dark/icons/view-refresh.svg</file>
     <file>./graphics/Breeze Dark/icons/view-restore.svg</file>
     <file>./graphics/Breeze Dark/icons/view-sort.svg</file>
+    <file>./graphics/Breeze Dark/icons/view-split-left-right.svg</file>
+    <file>./graphics/Breeze Dark/icons/view-visible.svg</file>
     <file>./graphics/Breeze Dark/icons/viewimage.svg</file>
     <file>./graphics/Breeze Dark/icons/window-close.svg</file>
+    <file>./graphics/Breeze Dark/icons/zoom-fit-best.svg</file>
     <file>./graphics/Breeze Dark/index.theme</file>
   </qresource>
 </RCC>

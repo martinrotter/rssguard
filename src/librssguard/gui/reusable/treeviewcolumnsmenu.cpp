@@ -2,6 +2,9 @@
 
 #include "gui/reusable/treeviewcolumnsmenu.h"
 
+#include "miscellaneous/application.h"
+#include "miscellaneous/iconfactory.h"
+
 #include <QAction>
 #include <QActionGroup>
 #include <QHeaderView>
@@ -31,14 +34,17 @@ void TreeViewColumnsMenu::prepareMenu() {
   clear();
   qDeleteAll(child_menus);
 
-  QAction* act_stretch_last_section = addAction(tr("Stretch last column"));
+  QAction* act_stretch_last_section =
+    addAction(qApp->icons()->fromTheme(QSL("view-fullscreen")), tr("Stretch last column"));
 
   act_stretch_last_section->setCheckable(true);
   act_stretch_last_section->setChecked(header_view->stretchLastSection());
 
   connect(act_stretch_last_section, &QAction::triggered, this, &TreeViewColumnsMenu::setStretchLastSection);
 
-  QAction* act_cascading_section_resizes = addAction(tr("Cascading column resizes"));
+  QAction* act_cascading_section_resizes =
+    addAction(qApp->icons()->fromTheme(QSL("view-split-left-right"), QSL("view-list-details")),
+              tr("Cascading column resizes"));
 
   act_cascading_section_resizes->setCheckable(true);
   act_cascading_section_resizes->setChecked(header_view->cascadingSectionResizes());
@@ -48,7 +54,8 @@ void TreeViewColumnsMenu::prepareMenu() {
           this,
           &TreeViewColumnsMenu::setCascadingSectionResizes);
 
-  QAction* act_autosize_visible_columns = addAction(tr("Autosize visible columns"));
+  QAction* act_autosize_visible_columns =
+    addAction(qApp->icons()->fromTheme(QSL("zoom-fit-best"), QSL("view-fullscreen")), tr("Autosize visible columns"));
 
   connect(act_autosize_visible_columns, &QAction::triggered, this, &TreeViewColumnsMenu::autosizeVisibleColumns);
 
@@ -128,7 +135,8 @@ void TreeViewColumnsMenu::addColumnMenu(int section) {
   const QString title =
     header_view->model()->headerData(section, Qt::Orientation::Horizontal, Qt::ItemDataRole::EditRole).toString();
   auto* menu_column = new NonClosableMenu(title, this);
-  QAction* act_visible = menu_column->addAction(tr("Visible"));
+  QAction* act_visible =
+    menu_column->addAction(qApp->icons()->fromTheme(QSL("view-visible"), QSL("view-list-details")), tr("Visible"));
 
   act_visible->setData(section);
   act_visible->setCheckable(true);
@@ -136,7 +144,8 @@ void TreeViewColumnsMenu::addColumnMenu(int section) {
 
   connect(act_visible, &QAction::triggered, this, &TreeViewColumnsMenu::showHideColumn);
 
-  QAction* act_autosize = menu_column->addAction(tr("Autosize column"));
+  QAction* act_autosize =
+    menu_column->addAction(qApp->icons()->fromTheme(QSL("zoom-fit-best"), QSL("view-fullscreen")), tr("Autosize column"));
 
   act_autosize->setData(section);
   act_autosize->setEnabled(header_view->sectionResizeMode(section) == QHeaderView::ResizeMode::Interactive);
@@ -164,7 +173,11 @@ void TreeViewColumnsMenu::addResizeModeAction(QMenu* menu,
                                               QHeaderView::ResizeMode mode,
                                               const QString& title,
                                               QActionGroup* group) {
-  QAction* act = menu->addAction(title);
+  const QString icon_name = mode == QHeaderView::ResizeMode::Interactive
+                              ? QSL("input-mouse")
+                              : mode == QHeaderView::ResizeMode::Stretch ? QSL("view-fullscreen")
+                                                                            : QSL("zoom-fit-best");
+  QAction* act = menu->addAction(qApp->icons()->fromTheme(icon_name, QSL("view-list-details")), title);
 
   act->setCheckable(true);
   act->setChecked(header()->sectionResizeMode(section) == mode);

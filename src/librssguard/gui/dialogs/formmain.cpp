@@ -628,6 +628,22 @@ void FormMain::setupIcons() {
   m_ui->m_actionSwitchMessageViewerToolbars->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
   m_ui->m_actionSwitchStatusBar->setIcon(icon_theme_factory->fromTheme(QSL("dialog-information")));
   m_ui->m_actionSwitchMessageListOrientation->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
+  m_ui->m_actionFocusArticleList->setIcon(icon_theme_factory->fromTheme(QSL("view-list-details")));
+  m_ui->m_actionFocusArticlePreview->setIcon(icon_theme_factory->fromTheme(QSL("text-html")));
+  m_ui->m_actionFocusFeedList->setIcon(icon_theme_factory->fromTheme(QSL("application-rss+xml")));
+  m_ui->m_actionFocusSearchArticles
+    ->setIcon(icon_theme_factory->fromTheme(QSL("edit-find"), QSL("system-search")));
+  m_ui->m_actionFocusSearchFeeds
+    ->setIcon(icon_theme_factory->fromTheme(QSL("edit-find"), QSL("system-search")));
+  m_ui->m_actionMessagePreviewEnabled->setIcon(icon_theme_factory->fromTheme(QSL("view-preview"), QSL("text-html")));
+  m_ui->m_actionNoAccounts->setIcon(icon_theme_factory->fromTheme(QSL("dialog-information")));
+  m_ui->m_actionNoActions->setIcon(icon_theme_factory->fromTheme(QSL("dialog-information")));
+  m_ui->m_actionShowTreeBranches
+    ->setIcon(icon_theme_factory->fromTheme(QSL("view-list-tree"), QSL("format-indent-more")));
+  m_ui->m_actionAlternateColorsInLists
+    ->setIcon(icon_theme_factory->fromTheme(QSL("format-fill-color"), QSL("view-list-details")));
+  m_ui->m_actionAutoExpandItemsWhenSelected
+    ->setIcon(icon_theme_factory->fromTheme(QSL("expand-all"), QSL("format-indent-more")));
   m_ui->m_menuShowHide->setIcon(icon_theme_factory->fromTheme(QSL("view-restore")));
 
   // Feeds/messages.
@@ -642,6 +658,8 @@ void FormMain::setupIcons() {
   m_ui->m_actionUpdateAllItems->setIcon(icon_theme_factory->fromTheme(QSL("download-all"), QSL("download")));
   m_ui->m_actionUpdateSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("download")));
   m_ui->m_actionUpdateSelectedItemsWithCustomTimers->setIcon(icon_theme_factory->fromTheme(QSL("download")));
+  m_ui->m_actionEnableDisableFeeds
+    ->setIcon(icon_theme_factory->fromTheme(QSL("media-playback-start"), QSL("media-playback-pause")));
   m_ui->m_actionClearSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));
   m_ui->m_actionPurgeSelectedItems->setIcon(icon_theme_factory->fromTheme(QSL("edit-clear")));
   m_ui->m_actionClearAllItems->setIcon(icon_theme_factory->fromTheme(QSL("mail-mark-junk")));

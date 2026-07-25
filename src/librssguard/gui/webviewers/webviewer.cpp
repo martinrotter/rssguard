@@ -490,7 +490,8 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
     }
 
     if (menu_ext_tools->actions().isEmpty()) {
-      QAction* act_not_tools = new QAction("No external tools activated");
+      QAction* act_not_tools = new QAction(qApp->icons()->fromTheme(QSL("dialog-information")),
+                                           QObject::tr("No external tools activated"));
 
       act_not_tools->setEnabled(false);
       menu_ext_tools->addAction(act_not_tools);
