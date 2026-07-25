@@ -583,11 +583,13 @@ void FeedReader::quit() {
     connect(m_feedDownloader, &FeedDownloader::stopRequestProcessed, &loop, &QEventLoop::quit);
     connect(m_feedDownloader, &FeedDownloader::updateFinished, &loop, &QEventLoop::quit);
 
+    qDebugNN << LOGSEC_CORE << "Hooked feed fetch stopping signals.";
     QMetaObject::invokeMethod(m_feedDownloader, "stopRunningUpdate", Qt::ConnectionType::QueuedConnection);
+    qDebugNN << LOGSEC_CORE << "Requested feed fetch stop.";
     loop.exec();
-
-    // Both thread and downloader are auto-deleted when worker thread exits.
+    qDebugNN << LOGSEC_CORE << "Feed fetch stop was processed.";
     m_feedDownloaderThread->quit();
+    qDebugNN << LOGSEC_CORE << "Feed downloader thread quits.";
   }
 
   if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
