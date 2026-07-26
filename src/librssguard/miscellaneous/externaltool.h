@@ -8,6 +8,8 @@
 #include <QMetaType>
 #include <QStringList>
 
+class Settings;
+
 class ExternalTool {
   public:
     explicit ExternalTool() = default;
@@ -26,8 +28,8 @@ class ExternalTool {
   public:
     static std::optional<ExternalTool> toolForDomain(const QList<ExternalTool>& tools, const QString& domain);
     static ExternalTool fromString(const QByteArray& str);
-    static QList<ExternalTool> toolsFromSettings();
-    static void setToolsToSettings(QVector<ExternalTool>& tools);
+    static QList<ExternalTool> toolsFromSettings(Settings* settings);
+    static void setToolsToSettings(QVector<ExternalTool>& tools, Settings* settings);
 
   private:
     QString m_name;

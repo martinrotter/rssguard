@@ -5,6 +5,7 @@
 #include "definitions/definitions.h"
 #include "exceptions/ioexception.h"
 #include "gui/guiutilities.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "network-web/downloader.h"

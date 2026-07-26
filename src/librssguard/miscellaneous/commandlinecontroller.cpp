@@ -118,9 +118,9 @@ void CommandLineController::parseOtherInstanceArguments(const QString& message) 
 }
 
 bool CommandLineController::isAlreadyRunning() {
-  return !m_allowMultipleInstances && m_application->sendMessage((QStringList() << QSL("-%1").arg(QSL(CLI_IS_RUNNING))
-                                                                                << Application::arguments().mid(1))
-                                                                   .join(QSL(ARGUMENTS_LIST_SEPARATOR)));
+  return !m_allowMultipleInstances &&
+         m_application->sendMessage((QStringList() << QSL("-%1").arg(QSL(CLI_IS_RUNNING)) << m_rawArguments.mid(1))
+                                      .join(QSL(ARGUMENTS_LIST_SEPARATOR)));
 }
 
 QCommandLineParser* CommandLineController::parser() {

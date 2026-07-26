@@ -14,7 +14,7 @@
 #include <QToolButton>
 #include <QWidgetAction>
 
-IconFactory::IconFactory(QObject* parent) : QObject(parent) {}
+IconFactory::IconFactory(Application* application) : QObject(application), m_application(application) {}
 
 IconFactory::~IconFactory() {}
 
@@ -220,7 +220,7 @@ QPixmap IconFactory::recolorPixmap(const QPixmap& pixmap, const QColor& color) {
 }
 
 QString IconFactory::customColoredIconFolder() {
-  return qApp->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER;
+  return m_application->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER;
 }
 
 QString IconFactory::customColoredAppIconPath() {
@@ -293,8 +293,8 @@ QIcon IconFactory::miscIcon(const QString& name) {
 
 void IconFactory::setupSearchPaths() {
   QStringList paths = {APP_THEME_PATH,
-                       qApp->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER,
-                       qApp->applicationDirPath() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER};
+                       m_application->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER,
+                       m_application->applicationDirPath() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER};
 
   paths.append(QIcon::themeSearchPaths());
   QIcon::setThemeSearchPaths(paths);
@@ -302,11 +302,11 @@ void IconFactory::setupSearchPaths() {
 }
 
 void IconFactory::setCurrentIconTheme(const QString& theme_name) {
-  qApp->settings()->setValue(GROUP(GUI), GUI::IconTheme, theme_name);
+  m_application->settings()->setValue(GROUP(GUI), GUI::IconTheme, theme_name);
 }
 
 QString IconFactory::currentIconTheme() const {
-  return qApp->settings()->value(GROUP(GUI), GUI::IconTheme, QSL(APP_ICON_THEME_DEFAULT)).toString();
+  return m_application->settings()->value(GROUP(GUI), GUI::IconTheme, QSL(APP_ICON_THEME_DEFAULT)).toString();
 }
 
 void IconFactory::loadCurrentIconTheme() {

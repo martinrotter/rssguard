@@ -3,11 +3,14 @@
 #ifndef FORMMAIN_H
 #define FORMMAIN_H
 
+#include "core/feeddownloader.h"
+
 #include "ui_formmain.h"
 
 #include <QMainWindow>
 
 class StatusBar;
+class TrayIconMenu;
 class QWidgetAction;
 
 class RSSGUARD_DLLSPEC FormMain : public QMainWindow {

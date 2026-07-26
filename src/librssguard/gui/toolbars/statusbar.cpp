@@ -6,6 +6,7 @@
 #include "gui/reusable/plaintoolbutton.h"
 #include "gui/reusable/progressbarwithtext.h"
 #include "gui/tabwidget.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"

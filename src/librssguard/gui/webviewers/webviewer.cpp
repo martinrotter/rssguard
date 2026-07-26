@@ -6,6 +6,7 @@
 #include "gui/dialogs/filedialog.h"
 #include "gui/dialogs/formmain.h"
 #include "gui/messagebox.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
@@ -470,7 +471,7 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
   if (m_contextMenuData.m_linkUrl.isValid()) {
     QFileIconProvider icon_provider;
     QMenu* menu_ext_tools = new QMenu(QObject::tr("Open with external tool"), specific_menu);
-    auto tools = ExternalTool::toolsFromSettings();
+    auto tools = ExternalTool::toolsFromSettings(qApp->settings());
 
     menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 
@@ -491,8 +492,8 @@ void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* even
     }
 
     if (menu_ext_tools->actions().isEmpty()) {
-      QAction* act_not_tools = new QAction(qApp->icons()->fromTheme(QSL("dialog-information")),
-                                           QObject::tr("No external tools activated"));
+      QAction* act_not_tools =
+        new QAction(qApp->icons()->fromTheme(QSL("dialog-information")), QObject::tr("No external tools activated"));
 
       act_not_tools->setEnabled(false);
       menu_ext_tools->addAction(act_not_tools);

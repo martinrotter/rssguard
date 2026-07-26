@@ -3,7 +3,6 @@
 #include "miscellaneous/externaltool.h"
 
 #include "definitions/definitions.h"
-#include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
@@ -71,12 +70,12 @@ ExternalTool ExternalTool::fromString(const QByteArray& str) {
   return tool;
 }
 
-QList<ExternalTool> ExternalTool::toolsFromSettings() {
-  QStringList keys = qApp->settings()->allKeys(GROUP(ExternalTools));
+QList<ExternalTool> ExternalTool::toolsFromSettings(Settings* settings) {
+  QStringList keys = settings->allKeys(GROUP(ExternalTools));
   QList<ExternalTool> tools;
 
   for (const QString& key : std::as_const(keys)) {
-    auto data = qApp->settings()->value(GROUP(ExternalTools), key).toByteArray();
+    auto data = settings->value(GROUP(ExternalTools), key).toByteArray();
 
     if (data.isEmpty()) {
       continue;
@@ -88,14 +87,14 @@ QList<ExternalTool> ExternalTool::toolsFromSettings() {
   return tools;
 }
 
-void ExternalTool::setToolsToSettings(QVector<ExternalTool>& tools) {
-  qApp->settings()->remove(GROUP(ExternalTools));
+void ExternalTool::setToolsToSettings(QVector<ExternalTool>& tools, Settings* settings) {
+  settings->remove(GROUP(ExternalTools));
 
   int i = 0;
 
   for (ExternalTool tool : tools) {
     auto data = tool.toString();
-    qApp->settings()->setValue(GROUP(ExternalTools), QString::number(i++), data);
+    settings->setValue(GROUP(ExternalTools), QString::number(i++), data);
   }
 }
 

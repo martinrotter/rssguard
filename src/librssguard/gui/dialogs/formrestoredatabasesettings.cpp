@@ -5,6 +5,7 @@
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/filedialog.h"
 #include "gui/guiutilities.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
 FormRestoreDatabaseSettings::FormRestoreDatabaseSettings(QWidget& parent) : QDialog(&parent) {

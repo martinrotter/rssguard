@@ -185,7 +185,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
     m_webFactory->setCustomUserAgent(custom_ua);
   }
   else {
-    custom_ua = qApp->settings()->value(GROUP(Network), SETTING(Network::CustomUserAgent)).toString();
+    custom_ua = settings()->value(GROUP(Network), SETTING(Network::CustomUserAgent)).toString();
     m_webFactory->setCustomUserAgent(custom_ua);
   }
 
@@ -225,7 +225,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   qDebugNN << LOGSEC_CORE << "RSS Guard version:" << QUOTE_W_SPACE(QSL(APP_VERSION))
            << "revision:" << QUOTE_W_SPACE_DOT(app_revision);
   qDebugNN << LOGSEC_CORE << "Platform:" << QUOTE_W_SPACE_DOT(QGuiApplication::platformName());
-  qDebugNN << LOGSEC_CORE << "DB version:" << QUOTE_W_SPACE_DOT(qApp->database()->driver()->version());
+  qDebugNN << LOGSEC_CORE << "DB version:" << QUOTE_W_SPACE_DOT(database()->driver()->version());
 
 #if QT_VERSION >= 0x060100 // Qt >= 6.1.0
   qDebugNN << LOGSEC_CORE << "OpenSSL backends:" << QUOTE_W_SPACE_DOT(QSslSocket::availableBackends());
@@ -305,7 +305,7 @@ void Application::reactOnForeignNotifications() {
 
 void Application::hideOrShowMainForm() {
   // Display main window.
-  if (qApp->settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool()) {
+  if (settings()->value(GROUP(GUI), SETTING(GUI::MainWindowStartsHidden)).toBool()) {
     qDebugNN << LOGSEC_CORE << "Hiding the main window when the application is starting.";
     mainForm()->switchVisibility(true);
   }
@@ -545,11 +545,11 @@ void Application::restoreDatabaseSettings(bool restore_database,
                                           const QString& source_database_file_path,
                                           const QString& source_settings_file_path) {
   if (restore_database) {
-    qApp->database()->driver()->initiateRestoration(source_database_file_path);
+    database()->driver()->initiateRestoration(source_database_file_path);
   }
 
   if (restore_settings) {
-    if (!qApp->settings()->initiateRestoration(source_settings_file_path)) {
+    if (!settings()->initiateRestoration(source_settings_file_path)) {
       throw ApplicationException(tr("Settings restoration was not initiated. Make sure that output directory is "
                                     "writable."));
     }
@@ -565,8 +565,8 @@ QIcon Application::desktopAwareIcon() const {
       settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconAsAppIcon)).toBool()) {
     QColor background_color(settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconBackground)).toString());
 
-    if (IconFactory::ensureCustomColoredIcons(background_color)) {
-      QIcon custom_icon(IconFactory::customColoredAppIconPath());
+    if (m_icons->ensureCustomColoredIcons(background_color)) {
+      QIcon custom_icon(m_icons->customColoredAppIconPath());
 
       if (!custom_icon.isNull()) {
         return custom_icon;
@@ -624,8 +624,8 @@ bool Application::isWayland() const {
 }
 
 void Application::setupFont() {
-  bool custom_font_enabled = qApp->settings()->value(GROUP(GUI), SETTING(GUI::CustomizeAppFont)).toBool();
-  bool aa_enabled = qApp->settings()->value(GROUP(GUI), SETTING(GUI::FontAntialiasing)).toBool();
+  bool custom_font_enabled = settings()->value(GROUP(GUI), SETTING(GUI::CustomizeAppFont)).toBool();
+  bool aa_enabled = settings()->value(GROUP(GUI), SETTING(GUI::FontAntialiasing)).toBool();
 
   QFont fon = QApplication::font();
 

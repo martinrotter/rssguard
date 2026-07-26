@@ -10,12 +10,14 @@
 #include <librssguard/exceptions/scriptexception.h>
 #include <librssguard/gui/dialogs/filedialog.h>
 #include <librssguard/gui/reusable/lineeditwithstatus.h>
+#include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/settingskeys.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/services/abstract/category.h>
+#include <librssguard/services/abstract/serviceroot.h>
 #include <qtlinq/qtlinq.h>
 
 #include <QClipboard>

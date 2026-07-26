@@ -6,10 +6,12 @@
 #include "src/standardserviceentrypoint.h"
 
 #include <librssguard/gui/dialogs/filedialog.h>
+#include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <qtlinq/qtlinq.h>
 
 #include <QImageReader>
+#include <QMenu>
 
 StandardAccountDetails::StandardAccountDetails(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);

@@ -12,6 +12,7 @@
 #include "gui/toolbars/feedstoolbar.h"
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/webbrowser.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 #include "miscellaneous/templates.h"

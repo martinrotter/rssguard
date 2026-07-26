@@ -7,6 +7,7 @@
 #include <QPointer>
 
 class Application;
+class QFile;
 class FormLog;
 class QMessageLogContext;
 
@@ -28,12 +29,15 @@ class ApplicationLogManager : public QObject {
     void sendLogToDialog(QString message);
 
   private:
+    void closeLogFile();
     void displayLogMessageInDialog(const QString& message);
 
   private:
     static ApplicationLogManager* s_instance;
 
     Application* m_application;
+    QFile* m_fileLog;
+    bool m_disableDebug;
     QPointer<FormLog> m_logForm;
 };
 

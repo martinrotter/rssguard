@@ -13,6 +13,7 @@
 #include "gui/reusable/styleditemdelegate.h"
 #include "gui/reusable/treeviewcolumnsmenu.h"
 #include "gui/toolbars/messagestoolbar.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
@@ -377,8 +378,8 @@ void MessagesView::switchColumnProfileForItem(RootItem* item, bool save_current_
 bool MessagesView::addColumnsContextMenuItems(TreeViewColumnsMenu* menu, int highlighted_section) {
   Q_UNUSED(highlighted_section)
 
-  QAction* act_column_profiles = menu->addAction(qApp->icons()->fromTheme(QSL("view-list-details")),
-                                                  tr("Use source-specific article list columns"));
+  QAction* act_column_profiles =
+    menu->addAction(qApp->icons()->fromTheme(QSL("view-list-details")), tr("Use source-specific article list columns"));
 
   act_column_profiles->setCheckable(true);
   act_column_profiles->setChecked(columnProfilesEnabled());
@@ -630,7 +631,7 @@ void MessagesView::initializeContextMenu() {
   // External tools.
   QFileIconProvider icon_provider;
   QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), m_contextMenu);
-  auto tools = ExternalTool::toolsFromSettings();
+  auto tools = ExternalTool::toolsFromSettings(qApp->settings());
 
   menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 
@@ -649,8 +650,8 @@ void MessagesView::initializeContextMenu() {
   }
 
   if (menu_ext_tools->actions().isEmpty()) {
-    QAction* act_not_tools = new QAction(qApp->icons()->fromTheme(QSL("dialog-information")),
-                                         tr("No external tools activated"));
+    QAction* act_not_tools =
+      new QAction(qApp->icons()->fromTheme(QSL("dialog-information")), tr("No external tools activated"));
 
     act_not_tools->setEnabled(false);
     menu_ext_tools->addAction(act_not_tools);

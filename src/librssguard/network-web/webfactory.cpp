@@ -964,7 +964,8 @@ bool WebFactory::openUrlInExternalBrowser(const QList<QUrl>& urls,
 
   QStringList failed_urls;
 
-  const QList<ExternalTool> tools = use_external_tools ? ExternalTool::toolsFromSettings() : QList<ExternalTool>();
+  const QList<ExternalTool> tools =
+    use_external_tools ? ExternalTool::toolsFromSettings(qApp->settings()) : QList<ExternalTool>();
   const bool custom_browser_enabled =
     qApp->settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalBrowserEnabled)).toBool();
   const QString custom_browser =

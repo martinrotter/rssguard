@@ -4,7 +4,8 @@
 #define ICONFACTORY_H
 
 #include "definitions/definitions.h"
-#include "miscellaneous/application.h"
+
+#include <functional>
 
 #include <QColor>
 #include <QDir>
@@ -15,11 +16,15 @@
 #include <QPixmap>
 #include <QString>
 
+class QAction;
+class Application;
+class QMenu;
+
 class RSSGUARD_DLLSPEC IconFactory : public QObject {
     Q_OBJECT
 
   public:
-    explicit IconFactory(QObject* parent = nullptr);
+    explicit IconFactory(Application* application);
     virtual ~IconFactory();
 
     // Generates round icon of given color.
@@ -39,12 +44,12 @@ class RSSGUARD_DLLSPEC IconFactory : public QObject {
     static QImage recolorImage(QImage image, const QColor& color);
     static QPixmap recolorPixmap(const QPixmap& pixmap, const QColor& color);
 
-    static QString customColoredIconFolder();
-    static QString customColoredAppIconPath();
-    static QString customColoredTrayIconPath();
-    static QString customColoredTrayIconUnreadPath();
-    static bool generateCustomColoredIcons(const QColor& background_color);
-    static bool ensureCustomColoredIcons(const QColor& background_color);
+    QString customColoredIconFolder();
+    QString customColoredAppIconPath();
+    QString customColoredTrayIconPath();
+    QString customColoredTrayIconUnreadPath();
+    bool generateCustomColoredIcons(const QColor& background_color);
+    bool ensureCustomColoredIcons(const QColor& background_color);
 
     static QPixmap fromByteArray(const QByteArray& array, const QString& format);
     static QByteArray toByteArray(const QPixmap& pixmap, const QString& format);
@@ -74,6 +79,9 @@ class RSSGUARD_DLLSPEC IconFactory : public QObject {
 
     // Sets icon theme with given name as the active one and loads it.
     void setCurrentIconTheme(const QString& theme_name);
+
+  private:
+    Application* m_application;
 };
 
 #endif // ICONFACTORY_H

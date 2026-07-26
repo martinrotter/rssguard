@@ -19,31 +19,27 @@
 #include <QFile>
 #include <QLoggingCategory>
 
-namespace {
-  QFile* s_fileLog = nullptr;
-  bool s_disableDebug = false;
-} // namespace
-
 ApplicationLogManager* ApplicationLogManager::s_instance = nullptr;
 
 ApplicationLogManager::ApplicationLogManager(Application* application)
-  : QObject(), m_application(application), m_logForm(nullptr) {
+  : QObject(), m_application(application), m_fileLog(nullptr), m_disableDebug(false), m_logForm(nullptr) {
   s_instance = this;
 }
 
 ApplicationLogManager::~ApplicationLogManager() {
-  shutdown();
   s_instance = nullptr;
+  shutdown();
 }
 
 void ApplicationLogManager::updateCliDebugStatus() {
-  s_disableDebug = !m_application->cmdParser()->isSet(QSL(CLI_DEBUG_SHORT)) &&
+  m_disableDebug = !m_application->cmdParser()->isSet(QSL(CLI_DEBUG_SHORT)) &&
                    m_application->settings()->value(GROUP(General), SETTING(General::DisableDebugOutput)).toBool();
 }
 
 void ApplicationLogManager::initializeFileBasedLogging() {
+  closeLogFile();
+
   if (!m_application->cmdParser()->isSet(QSL(CLI_LOG_SHORT))) {
-    s_fileLog = nullptr;
     return;
   }
 
@@ -57,13 +53,13 @@ void ApplicationLogManager::initializeFileBasedLogging() {
                                          .arg(QDateTime::currentDateTimeUtc().date().weekNumber(), 2, 10, QChar('0'));
 
     QDir().mkpath(automatic_log_folder);
-    s_fileLog = new QFile(automatic_log_file, this);
+    m_fileLog = new QFile(automatic_log_file, this);
   }
   else {
-    s_fileLog = new QFile(log_file, this);
+    m_fileLog = new QFile(log_file, this);
   }
 
-  if (!s_fileLog->open(QIODevice::OpenModeFlag::WriteOnly | QIODevice::OpenModeFlag::Append |
+  if (!m_fileLog->open(QIODevice::OpenModeFlag::WriteOnly | QIODevice::OpenModeFlag::Append |
                        QIODevice::OpenModeFlag::Unbuffered)) {
     qWarningNN << LOGSEC_CORE << "Cannot open log file" << QUOTE_W_SPACE(log_file) << "for writing.";
   }
@@ -89,11 +85,23 @@ void ApplicationLogManager::displayLog() {
 
 void ApplicationLogManager::shutdown() {
   m_logForm = nullptr;
+  closeLogFile();
+}
+
+void ApplicationLogManager::closeLogFile() {
+  if (m_fileLog != nullptr) {
+    m_fileLog->close();
+    delete m_fileLog;
+    m_fileLog = nullptr;
+  }
 }
 
 void ApplicationLogManager::performLogging(QtMsgType type, const QMessageLogContext& context, const QString& message) {
 #ifndef QT_NO_DEBUG_OUTPUT
-  if (s_disableDebug && (type == QtMsgType::QtDebugMsg || type == QtMsgType::QtInfoMsg)) {
+  ApplicationLogManager* manager = s_instance;
+
+  if (manager != nullptr && manager->m_disableDebug &&
+      (type == QtMsgType::QtDebugMsg || type == QtMsgType::QtInfoMsg)) {
     return;
   }
 
@@ -102,13 +110,13 @@ void ApplicationLogManager::performLogging(QtMsgType type, const QMessageLogCont
 
   std::cerr << console_message.toStdString() << std::endl;
 
-  if (!QCoreApplication::closingDown() && s_fileLog != nullptr) {
-    s_fileLog->write(console_message.toUtf8());
-    s_fileLog->write(new_line);
+  if (!QCoreApplication::closingDown() && manager != nullptr && manager->m_fileLog != nullptr) {
+    manager->m_fileLog->write(console_message.toUtf8());
+    manager->m_fileLog->write(new_line);
   }
 
-  if (s_instance != nullptr) {
-    s_instance->displayLogMessageInDialog(console_message);
+  if (manager != nullptr) {
+    manager->displayLogMessageInDialog(console_message);
   }
 
   if (type == QtMsgType::QtFatalMsg) {

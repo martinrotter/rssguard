@@ -28,8 +28,9 @@
 
 #define ARTICLE_EXTRACTOR_NAME "rssguard-article-extractor"
 
-FeedReader::FeedReader(QObject* parent)
-  : QObject(parent), m_autoUpdateTimer(new QTimer(this)), m_feedDownloader(nullptr), m_feedFetchingPaused(false) {
+FeedReader::FeedReader(Application* application)
+  : QObject(application), m_application(application), m_autoUpdateTimer(new QTimer(this)), m_feedDownloader(nullptr),
+    m_feedFetchingPaused(false) {
   m_feedsModel = new FeedsModel(this);
   m_feedsProxyModel = new FeedsProxyModel(m_feedsModel, this);
   m_messagesModel = new MessagesModel(this);
@@ -42,9 +43,12 @@ FeedReader::FeedReader(QObject* parent)
   updateAutoUpdateStatus();
   initializeFeedDownloader();
 
-  if (qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
+  if (m_application->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebugNN << LOGSEC_CORE << "Requesting update for all feeds on application startup.";
-    QTimer::singleShot(qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateStartupDelay)).toDouble() * 1000,
+    QTimer::singleShot(m_application->settings()
+                         ->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateStartupDelay))
+                         .toDouble() *
+                         1000,
                        this,
                        &FeedReader::updateAllFeedsOnStartup);
   }
@@ -64,10 +68,11 @@ void FeedReader::updateAllFeedsOnStartup() {
   }
   else {
     qWarningNN << LOGSEC_CORE << "Feed fetch on startup is skipped, because fetching is paused.";
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         GuiMessage(tr("Not fetched on startup"),
-                                    tr("Fetching of feeds on app startup was skipped because auto-fetching is paused."),
-                                    QSystemTrayIcon::MessageIcon::Warning));
+    m_application->showGuiMessage(
+      Notification::Event::GeneralEvent,
+      GuiMessage(tr("Not fetched on startup"),
+                 tr("Fetching of feeds on app startup was skipped because auto-fetching is paused."),
+                 QSystemTrayIcon::MessageIcon::Warning));
   }
 
   connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
@@ -112,11 +117,12 @@ void FeedReader::onFeedFetchRequested(const QList<Feed*>& feeds) {
 }
 
 void FeedReader::updateFeeds(const QList<Feed*>& feeds, bool update_switched_off_too) {
-  if (!qApp->feedUpdateLock()->tryLock()) {
-    qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                         {tr("Cannot fetch articles at this point"),
-                          tr("You cannot fetch new articles now because another critical operation is ongoing."),
-                          QSystemTrayIcon::MessageIcon::Warning});
+  if (!m_application->feedUpdateLock()->tryLock()) {
+    m_application->showGuiMessage(
+      Notification::Event::GeneralEvent,
+      {tr("Cannot fetch articles at this point"),
+       tr("You cannot fetch new articles now because another critical operation is ongoing."),
+       QSystemTrayIcon::MessageIcon::Warning});
     return;
   }
 
@@ -128,7 +134,7 @@ void FeedReader::updateFeeds(const QList<Feed*>& feeds, bool update_switched_off
                                               .toList();
 
   if (my_feeds.isEmpty()) {
-    qApp->feedUpdateLock()->unlock();
+    m_application->feedUpdateLock()->unlock();
     return;
   }
 
@@ -164,7 +170,7 @@ void FeedReader::initializeFeedDownloader() {
     connect(m_feedDownloader, &FeedDownloader::updateFinished, this, &FeedReader::onFeedUpdatesFinished);
     connect(m_feedDownloader, &FeedDownloader::updateProgress, this, &FeedReader::feedUpdatesProgress);
     connect(m_feedDownloader, &FeedDownloader::updateStarted, this, &FeedReader::feedUpdatesStarted);
-    connect(m_feedDownloader, &FeedDownloader::updateFinished, qApp->feedUpdateLock(), &Mutex::unlock);
+    connect(m_feedDownloader, &FeedDownloader::updateFinished, m_application->feedUpdateLock(), &Mutex::unlock);
 
     m_feedDownloaderThread->start(QThread::Priority::LowPriority);
   }
@@ -217,9 +223,7 @@ void FeedReader::importMessageFilters(const QByteArray& data) {
 }
 
 void FeedReader::showMessageFiltersManager() {
-  FormMessageFiltersManager manager(qApp->feedReader(),
-                                    qApp->feedReader()->feedsModel()->serviceRoots(),
-                                    qApp->mainFormWidget());
+  FormMessageFiltersManager manager(this, m_feedsModel->serviceRoots(), m_application->mainFormWidget());
 
   manager.exec();
 
@@ -251,20 +255,22 @@ QString FeedReader::getFullArticle(Feed* feed, const QUrl& url, bool plain_text_
 void FeedReader::updateAutoUpdateStatus() {
   // Restore global intervals.
   // NOTE: Specific per-feed interval are left intact.
-  m_globalAutoUpdateInterval = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt();
-  m_globalAutoUpdateFast = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FastAutoUpdate)).toBool();
+  m_globalAutoUpdateInterval =
+    m_application->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateInterval)).toInt();
+  m_globalAutoUpdateFast = m_application->settings()->value(GROUP(Feeds), SETTING(Feeds::FastAutoUpdate)).toBool();
 
   if (m_lastAutoUpdate.isNull()) {
     m_lastAutoUpdate = QDateTime::currentDateTimeUtc();
   }
 
-  m_globalAutoUpdateEnabled = qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateEnabled)).toBool();
+  m_globalAutoUpdateEnabled =
+    m_application->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateEnabled)).toBool();
   m_globalAutoUpdateOnlyUnfocused =
-    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool();
+    m_application->settings()->value(GROUP(Feeds), SETTING(Feeds::AutoUpdateOnlyUnfocused)).toBool();
   m_globalAutoUpdateOnlyIfNetworkConnected =
-    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FetchOnlyWhenNetworkConnected)).toBool();
+    m_application->settings()->value(GROUP(Feeds), SETTING(Feeds::FetchOnlyWhenNetworkConnected)).toBool();
   m_globalAutoUpdateOnlyIfNotGameMode =
-    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::FetchOnlyWhenNotGameMode)).toBool();
+    m_application->settings()->value(GROUP(Feeds), SETTING(Feeds::FetchOnlyWhenNotGameMode)).toBool();
 
   if (m_globalAutoUpdateFast) {
     // NOTE: In "fast" mode, we set interval to 1 second.
@@ -302,7 +308,7 @@ void FeedReader::loadSavedMessageFilters() {
   // Load all message filters from database.
   // All plugin services will hook active filters to
   // all feeds.
-  m_messageFilters = qApp->database()->worker()->read<QList<MessageFilter*>>([&](const QSqlDatabase& db) {
+  m_messageFilters = m_application->database()->worker()->read<QList<MessageFilter*>>([&](const QSqlDatabase& db) {
     return DatabaseQueries::getMessageFilters(db);
   });
 
@@ -320,7 +326,7 @@ MessageFilter* FeedReader::addMessageFilter(const QString& title, const QString&
 
   auto unique_title = TextFactory::ensureUniqueName(title, fltr_names);
 
-  auto* fltr = qApp->database()->worker()->write<MessageFilter*>([&](const QSqlDatabase& db) {
+  auto* fltr = m_application->database()->worker()->write<MessageFilter*>([&](const QSqlDatabase& db) {
     return DatabaseQueries::addMessageFilter(db, unique_title, script);
   });
 
@@ -336,7 +342,7 @@ void FeedReader::removeMessageFilter(MessageFilter* filter) {
   }
 
   try {
-    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    m_application->database()->worker()->write([&](const QSqlDatabase& db) {
       QSqlDatabase transaction_db = db;
 
       if (!transaction_db.transaction()) {
@@ -375,13 +381,13 @@ void FeedReader::removeMessageFilter(MessageFilter* filter) {
 }
 
 void FeedReader::updateMessageFilter(MessageFilter* filter) {
-  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+  m_application->database()->worker()->write([&](const QSqlDatabase& db) {
     DatabaseQueries::updateMessageFilter(db, filter);
   });
 }
 
 void FeedReader::assignMessageFilterToFeed(Feed* feed, MessageFilter* filter) {
-  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+  m_application->database()->worker()->write([&](const QSqlDatabase& db) {
     DatabaseQueries::assignMessageFilterToFeed(db, feed->id(), filter->id());
   });
 
@@ -389,7 +395,7 @@ void FeedReader::assignMessageFilterToFeed(Feed* feed, MessageFilter* filter) {
 }
 
 void FeedReader::removeMessageFilterToFeedAssignment(Feed* feed, MessageFilter* filter) {
-  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+  m_application->database()->worker()->write([&](const QSqlDatabase& db) {
     DatabaseQueries::removeMessageFilterFromFeed(db, feed->id(), filter->id());
   });
 
@@ -413,7 +419,7 @@ void FeedReader::stopRunningFeedUpdate() {
 
 void FeedReader::pauseUnpaseFeedFetching(bool pause) {
   m_feedFetchingPaused = pause;
-  qApp->settings()->setValue(GROUP(Feeds), Feeds::PauseFeedFetching, pause);
+  m_application->settings()->setValue(GROUP(Feeds), Feeds::PauseFeedFetching, pause);
   m_feedsModel->notifyWithCounts();
 }
 
@@ -450,9 +456,9 @@ void FeedReader::executeNextAutoUpdate() {
   }
 
   bool disable_update_with_window =
-    (qApp->mainFormWidget()->isActiveWindow() || QApplication::activeModalWidget() != nullptr) &&
+    (m_application->mainFormWidget()->isActiveWindow() || QApplication::activeModalWidget() != nullptr) &&
     m_globalAutoUpdateOnlyUnfocused;
-  auto roots = qApp->feedReader()->feedsModel()->serviceRoots();
+  auto roots = m_feedsModel->serviceRoots();
   auto full_caches = qlinq::from(roots)
                        .select([](ServiceRoot* root) -> CacheForServiceRoot* {
                          auto* cache = root->toCache();
@@ -478,14 +484,14 @@ void FeedReader::executeNextAutoUpdate() {
     return;
   }
 
-  if (!qApp->feedUpdateLock()->tryLock()) {
+  if (!m_application->feedUpdateLock()->tryLock()) {
     qDebugNN << LOGSEC_CORE << "Delaying scheduled feed auto-downloads and message state synchronization for "
              << "some time due to another running update.";
     // Cannot update, quit.
     return;
   }
 
-  qApp->feedUpdateLock()->unlock();
+  m_application->feedUpdateLock()->unlock();
 
   // Resynchronize caches.
   if (!full_caches.isEmpty()) {
@@ -533,10 +539,11 @@ void FeedReader::executeNextAutoUpdate() {
           return !fd->isQuiet();
         })) {
       // NOTE: OSD/bubble informing about performing of scheduled update can be shown now.
-      qApp->showGuiMessage(Notification::Event::ArticlesFetchingStarted,
-                           {tr("Starting auto-download of some feeds' articles"),
-                            tr("I will auto-download new articles for %n feed(s).", nullptr, feeds_for_update.size()),
-                            QSystemTrayIcon::MessageIcon::Information});
+      m_application->showGuiMessage(
+        Notification::Event::ArticlesFetchingStarted,
+        {tr("Starting auto-download of some feeds' articles"),
+         tr("I will auto-download new articles for %n feed(s).", nullptr, feeds_for_update.size()),
+         QSystemTrayIcon::MessageIcon::Information});
     }
   }
 }
@@ -544,7 +551,7 @@ void FeedReader::executeNextAutoUpdate() {
 void FeedReader::onFeedUpdatesFinished(FeedDownloadResults updated_feeds) {
   // NOTE: Keep in sync with the same line in FeedDownloader::updateOneFeed() method.
   const bool update_feed_list =
-    qApp->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool() &&
+    m_application->settings()->value(GROUP(Feeds), SETTING(Feeds::UpdateFeedListDuringFetching)).toBool() &&
     updated_feeds.feedRequestCount() <= 25;
 
   if (!update_feed_list) {
@@ -558,10 +565,10 @@ void FeedReader::onFeedUpdatesFinished(FeedDownloadResults updated_feeds) {
   m_feedsModel->notifyWithCounts();
 
   if (!updated_feeds.erroredFeeds().isEmpty()) {
-    qApp->showGuiMessage(Notification::Event::ArticlesFetchingError,
-                         {tr("Some feeds have errors"),
-                          tr("Some feeds threw an error when fetching articles."),
-                          QSystemTrayIcon::MessageIcon::Warning});
+    m_application->showGuiMessage(Notification::Event::ArticlesFetchingError,
+                                  {tr("Some feeds have errors"),
+                                   tr("Some feeds threw an error when fetching articles."),
+                                   QSystemTrayIcon::MessageIcon::Warning});
   }
 
   emit feedUpdatesFinished(updated_feeds);
@@ -593,7 +600,7 @@ void FeedReader::quit() {
     qDebugNN << LOGSEC_CORE << "Feed downloader thread quits.";
   }
 
-  if (qApp->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
+  if (m_application->settings()->value(GROUP(Messages), SETTING(Messages::ClearReadOnExit)).toBool()) {
     try {
       m_feedsModel->markItemCleared(m_feedsModel->rootItem(), true);
     }

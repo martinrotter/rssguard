@@ -68,10 +68,11 @@ TrayIcon* GuiNotificationCoordinator::trayIcon() {
       unread_text_color =
         QColor(m_application->settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconText)).toString());
 
-      if (IconFactory::ensureCustomColoredIcons(background_color)) {
-        tray_icon = QPixmap(IconFactory::customColoredTrayIconPath());
-        tray_icon_unread = show_unread_count ? QPixmap(IconFactory::customColoredTrayIconUnreadPath()) : tray_icon;
-        tray_icon_paused = QPixmap(IconFactory::customColoredTrayIconUnreadPath());
+      if (m_application->icons()->ensureCustomColoredIcons(background_color)) {
+        tray_icon = QPixmap(m_application->icons()->customColoredTrayIconPath());
+        tray_icon_unread =
+          show_unread_count ? QPixmap(m_application->icons()->customColoredTrayIconUnreadPath()) : tray_icon;
+        tray_icon_paused = QPixmap(m_application->icons()->customColoredTrayIconUnreadPath());
       }
     }
 

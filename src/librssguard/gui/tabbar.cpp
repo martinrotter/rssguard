@@ -5,6 +5,7 @@
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
 #include "gui/reusable/plaintoolbutton.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 

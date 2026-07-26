@@ -3,6 +3,7 @@
 #include "gui/mediaplayer/mediaplayer.h"
 
 #include "gui/dialogs/formmain.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 
 #if defined(ENABLE_MEDIAPLAYER_QTMULTIMEDIA)

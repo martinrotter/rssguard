@@ -65,7 +65,7 @@ void MessageTextBrowser::contextMenuEvent(QContextMenuEvent* event) {
   if (!anchor.isEmpty()) {
     QFileIconProvider icon_provider;
     QMenu* menu_ext_tools = new QMenu(tr("Open with external tool"), menu);
-    auto tools = ExternalTool::toolsFromSettings();
+    auto tools = ExternalTool::toolsFromSettings(qApp->settings());
 
     menu_ext_tools->setIcon(qApp->icons()->fromTheme(QSL("document-open")));
 

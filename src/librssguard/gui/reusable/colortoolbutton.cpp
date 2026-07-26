@@ -2,7 +2,9 @@
 
 #include "gui/reusable/colortoolbutton.h"
 
+#include "definitions/typedefs.h"
 #include "gui/dialogs/filedialog.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
@@ -14,6 +16,7 @@
 #include <QColorDialog>
 #include <QImageReader>
 #include <QInputDialog>
+#include <QMenu>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QPainterPath>

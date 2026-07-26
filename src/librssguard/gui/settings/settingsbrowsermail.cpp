@@ -190,7 +190,7 @@ void SettingsBrowserMail::loadSettings() {
   m_ui->m_grpCustomExternalEmail
     ->setChecked(settings()->value(GROUP(Browser), SETTING(Browser::CustomExternalEmailEnabled)).toBool());
 
-  setExternalTools(ExternalTool::toolsFromSettings());
+  setExternalTools(ExternalTool::toolsFromSettings(settings()));
   onEndLoadSettings();
 }
 
@@ -220,7 +220,7 @@ void SettingsBrowserMail::saveSettings() {
                        m_ui->m_grpCustomExternalEmail->isChecked());
 
   auto tools = externalTools();
-  ExternalTool::setToolsToSettings(tools);
+  ExternalTool::setToolsToSettings(tools, settings());
 
   onEndSaveSettings();
 }

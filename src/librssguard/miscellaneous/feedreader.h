@@ -10,6 +10,7 @@
 
 #include <QObject>
 
+class Application;
 class FeedsModel;
 class MessagesModel;
 class MessagesProxyModel;
@@ -22,7 +23,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     Q_OBJECT
 
   public:
-    explicit FeedReader(QObject* parent = nullptr);
+    explicit FeedReader(Application* application);
     virtual ~FeedReader();
 
     // List of all installed "feed service plugins".
@@ -90,6 +91,7 @@ class RSSGUARD_DLLSPEC FeedReader : public QObject {
     void initializeFeedDownloader();
 
   private:
+    Application* m_application;
     QList<ServiceEntryPoint*> m_feedServices;
     QList<MessageFilter*> m_messageFilters;
     FeedsModel* m_feedsModel;
