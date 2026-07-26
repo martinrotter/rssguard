@@ -1,0 +1,36 @@
+function(add_rssguard_test TEST_TARGET)
+  add_executable(${TEST_TARGET} ${ARGN})
+
+  target_compile_definitions(${TEST_TARGET}
+    PRIVATE
+    RSSGUARD_DLLSPEC=Q_DECL_IMPORT
+  )
+
+  target_link_libraries(${TEST_TARGET}
+    PRIVATE
+    Qt${QT_VERSION_MAJOR}::Test
+    rssguard
+  )
+
+  if(WIN32)
+    add_test(NAME ${TEST_TARGET}
+      COMMAND ${CMAKE_COMMAND} -E env
+        "PATH=$<TARGET_FILE_DIR:rssguard>$<SEMICOLON>$<TARGET_FILE_DIR:Qt${QT_VERSION_MAJOR}::Core>$<SEMICOLON>$ENV{PATH}"
+        $<TARGET_FILE:${TEST_TARGET}>
+    )
+  else()
+    add_test(NAME ${TEST_TARGET} COMMAND ${TEST_TARGET})
+  endif()
+endfunction()
+
+add_rssguard_test(test_globals
+  definitions/test_globals.cpp
+)
+
+add_rssguard_test(test_textfactory
+  miscellaneous/test_textfactory.cpp
+)
+
+add_rssguard_test(test_xmlencodingdetector
+  miscellaneous/test_xmlencodingdetector.cpp
+)
