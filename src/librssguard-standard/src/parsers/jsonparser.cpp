@@ -9,7 +9,9 @@
 #include <librssguard/definitions/typedefs.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedrecognizedbutfailedexception.h>
+#include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/settings.h>
+#include <librssguard/miscellaneous/settingskeys.h>
 #include <librssguard/miscellaneous/textfactory.h>
 
 #include <QJsonArray>

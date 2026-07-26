@@ -10,6 +10,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "miscellaneous/textfactory.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"

@@ -7,6 +7,7 @@
 #include "gui/reusable/searchtextwidget.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/serviceroot.h"
 

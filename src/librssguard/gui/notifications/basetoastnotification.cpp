@@ -4,6 +4,7 @@
 
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 
 #include <chrono>
 

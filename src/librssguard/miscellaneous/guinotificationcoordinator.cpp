@@ -17,6 +17,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/notificationfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "miscellaneous/windowstaskbar.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/feed.h"

@@ -3,8 +3,10 @@
 #include "gui/toolbars/basetoolbar.h"
 
 #include "definitions/definitions.h"
-#include "qtlinq/qtlinq.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
+#include "qtlinq/qtlinq.h"
 
 #include <QFont>
 #include <QPainter>

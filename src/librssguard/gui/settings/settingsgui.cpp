@@ -14,6 +14,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 
 #if defined(Q_OS_WIN)
 #include "miscellaneous/windowstaskbar.h"

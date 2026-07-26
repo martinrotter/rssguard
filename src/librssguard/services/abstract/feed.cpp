@@ -7,6 +7,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/cacheforserviceroot.h"

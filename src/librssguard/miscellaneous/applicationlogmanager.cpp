@@ -7,6 +7,7 @@
 #include "gui/dialogs/formmain.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "miscellaneous/textfactory.h"
 
 #include <cstdlib>

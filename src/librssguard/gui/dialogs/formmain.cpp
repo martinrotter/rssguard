@@ -28,6 +28,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "miscellaneous/thread.h"
 #include "network-web/cookiejar.h"
 #include "network-web/webfactory.h"

@@ -9,6 +9,7 @@
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "qtlinq/qtlinq.h"
 
 #include <QDir>

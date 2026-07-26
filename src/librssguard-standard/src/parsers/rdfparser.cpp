@@ -6,9 +6,12 @@
 #include "src/standardfeed.h"
 
 #include <librssguard/exceptions/applicationexception.h>
+#include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/settings.h>
+#include <librssguard/miscellaneous/settingskeys.h>
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/miscellaneous/xmlencodingdetector.h>
+#include <librssguard/services/abstract/serviceroot.h>
 
 RdfParser::RdfParser(const QString& data)
   : FeedParser(data), m_rdfNamespace(QSL("http://www.w3.org/1999/02/22-rdf-syntax-ns#")),

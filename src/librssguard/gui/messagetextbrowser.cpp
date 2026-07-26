@@ -5,6 +5,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/settingskeys.h"
 #include "network-web/networkfactory.h"
 
 #include <QContextMenuEvent>

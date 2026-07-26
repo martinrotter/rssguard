@@ -261,6 +261,8 @@ set(SOURCES
   miscellaneous/regexfactory.h
   miscellaneous/settings.cpp
   miscellaneous/settings.h
+  miscellaneous/settingskeys.cpp
+  miscellaneous/settingskeys.h
   miscellaneous/settingsproperties.h
   miscellaneous/singleapplication.cpp
   miscellaneous/singleapplication.h

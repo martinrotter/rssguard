@@ -8,6 +8,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 
 SettingsDatabase::SettingsDatabase(Settings* settings, QWidget* parent)
   : SettingsPanel(settings, parent), m_ui(nullptr) {}

@@ -4,10 +4,12 @@
 
 #include "definitions/globals.h"
 #include "gui/notifications/notificationseditor.h"
+#include "gui/notifications/toastnotificationsmanager.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/notificationfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 
 #include <QDir>
 #include <QScreen>
@@ -77,7 +79,7 @@ void SettingsNotifications::loadSettings() {
 
   auto poss = enumToStrings<ToastNotificationsManager::NotificationPosition>();
 
-  for (const auto& pos : poss) {
+  for (const auto& pos : std::as_const(poss)) {
     m_ui->m_cbCustomNotificationsPosition->addItem(ToastNotificationsManager::textForPosition(pos.first), pos.first);
   }
 

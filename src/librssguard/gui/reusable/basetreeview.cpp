@@ -5,6 +5,7 @@
 #include "gui/reusable/treeviewcolumnsmenu.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 
 #include <QContextMenuEvent>
 #include <QHeaderView>

@@ -5,14 +5,13 @@
 #include "definitions/definitions.h"
 #include "gui/mediaplayer/libmpv/libmpvwidget.h"
 #include "gui/mediaplayer/libmpv/qthelper.h"
+#include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
-#include "miscellaneous/textfactory.h"
+#include "miscellaneous/settingskeys.h"
 #include "qtlinq/qtlinq.h"
 
-#include <clocale>
 #include <sstream>
-#include <stdexcept>
 
 #include <QDir>
 #include <QJsonArray>

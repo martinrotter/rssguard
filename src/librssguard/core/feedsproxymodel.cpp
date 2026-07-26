@@ -10,6 +10,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/regexfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "services/abstract/rootitem.h"
 
 #include <QMimeData>

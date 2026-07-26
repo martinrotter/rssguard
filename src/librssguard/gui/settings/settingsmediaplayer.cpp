@@ -5,6 +5,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 
 #if defined(ENABLE_MEDIAPLAYER_LIBMPV)
 #include "gui/dialogs/filedialog.h"

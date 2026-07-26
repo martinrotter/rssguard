@@ -9,6 +9,7 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "miscellaneous/skinfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/feed.h"

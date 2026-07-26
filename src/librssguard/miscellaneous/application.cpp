@@ -24,6 +24,7 @@
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/notificationfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "miscellaneous/thread.h"
 #include "miscellaneous/windowstaskbar.h"
 #include "network-web/webfactory.h"

@@ -15,6 +15,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "network-web/cookiejar.h"
 #include "network-web/downloader.h"
 #include "qt-publicsuffix/publicsuffix.h"

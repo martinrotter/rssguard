@@ -6,6 +6,7 @@
 #include "definitions/globals.h"
 #include "gui/reusable/plaintoolbutton.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 
 #include <QMouseEvent>
 #include <QStyle>

@@ -13,6 +13,7 @@
 #include "gui/toolbars/messagestoolbar.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "miscellaneous/templates.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/feed.h"

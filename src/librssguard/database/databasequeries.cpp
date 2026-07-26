@@ -8,6 +8,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/category.h"
 

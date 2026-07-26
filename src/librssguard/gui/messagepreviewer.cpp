@@ -9,6 +9,7 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/gui/custommessagepreviewer.h"
 #include "services/abstract/label.h"

@@ -5,6 +5,7 @@
 #include "gui/dialogs/filedialog.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "miscellaneous/textfactory.h"
 #include "qtlinq/qtlinq.h"
 

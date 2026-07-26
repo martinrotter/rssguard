@@ -12,6 +12,7 @@
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "network-web/webfactory.h"
 
 #include <QInputDialog>

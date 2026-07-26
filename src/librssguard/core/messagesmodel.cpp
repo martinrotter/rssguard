@@ -11,6 +11,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "qtlinq/qtlinq.h"

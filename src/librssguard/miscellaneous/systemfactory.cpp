@@ -8,6 +8,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 #include "miscellaneous/systemfactory.h"
 #include "qtlinq/qtlinq.h"
 

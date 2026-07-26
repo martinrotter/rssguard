@@ -7,6 +7,7 @@
 #include "exceptions/sqlexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 
 #include <QDir>
 #include <QSqlError>
