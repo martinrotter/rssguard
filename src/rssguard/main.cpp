@@ -7,6 +7,7 @@
 #include "gui/feedsview.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/feedreader.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/label.h"
 
@@ -22,6 +23,8 @@
 #endif
 #endif
 
+#include <QCommandLineParser>
+#include <QNetworkAccessManager>
 #include <QSettings>
 
 #if QT_VERSION_MAJOR == 5

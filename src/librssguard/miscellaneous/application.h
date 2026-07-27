@@ -4,19 +4,14 @@
 #define APPLICATION_H
 
 #include "core/feeddownloader.h"
-#include "database/databasefactory.h"
-#include "gui/tray/trayicon.h"
-#include "miscellaneous/feedreader.h"
-#include "miscellaneous/localization.h"
 #include "miscellaneous/notification.h"
 #include "miscellaneous/singleapplication.h"
-#include "miscellaneous/skinfactory.h"
-#include "miscellaneous/systemfactory.h"
 
 #include <functional>
 
-#include <QCommandLineParser>
+#include <QIcon>
 #include <QList>
+#include <QScopedPointer>
 #include <QSystemTrayIcon>
 
 #if defined(qApp)
@@ -29,12 +24,22 @@
 class FormMain;
 class IconFactory;
 class Mutex;
+class QAction;
+class QCommandLineParser;
 class QSplashScreen;
+class QThreadPool;
+class QWidget;
 class WebFactory;
 class NotificationFactory;
 class ToastNotificationsManager;
 class WebViewer;
 class Settings;
+class DatabaseFactory;
+class FeedReader;
+class Localization;
+class SkinFactory;
+class SystemFactory;
+class TrayIcon;
 class WindowsTaskbar;
 class ApplicationLifecycle;
 class ApplicationLogManager;

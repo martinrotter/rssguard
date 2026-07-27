@@ -5,9 +5,14 @@
 
 #include "definitions/definitions.h"
 
+#include <QByteArray>
 #include <QCoreApplication>
 #include <QProcessEnvironment>
 #include <QStandardPaths>
+#include <QString>
+#include <QStringList>
+
+class QProcess;
 
 class RSSGUARD_DLLSPEC IOFactory {
     Q_DECLARE_TR_FUNCTIONS(IOFactory)

@@ -3,6 +3,7 @@
 #include "miscellaneous/application.h"
 
 #include "core/feedsmodel.h"
+#include "database/databasefactory.h"
 #include "dynamic-shortcuts/dynamicshortcuts.h"
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/formmain.h"
@@ -21,31 +22,39 @@
 #include "miscellaneous/guinotificationcoordinator.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
+#include "miscellaneous/localization.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/notificationfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "miscellaneous/skinfactory.h"
+#include "miscellaneous/systemfactory.h"
 #include "miscellaneous/thread.h"
-#include "miscellaneous/windowstaskbar.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
-#include "services/abstract/serviceroot.h"
+
+#if defined(Q_OS_WIN)
+#include "miscellaneous/windowstaskbar.h"
+#endif
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
 #include "gui/webviewers/qtwebengine/webengineviewer.h"
 #endif
 
-#include <QAction>
+#include <QCommandLineParser>
+#include <QDir>
 #include <QEventLoop>
+#include <QFileInfo>
+#include <QFont>
+#include <QGuiApplication>
 #include <QIcon>
-#include <QLoggingCategory>
+#include <QNetworkProxyFactory>
 #include <QPixmap>
-#include <QProcess>
 #include <QSplashScreen>
 #include <QSslSocket>
+#include <QThread>
 #include <QThreadPool>
 #include <QTimer>
-#include <QVersionNumber>
 
 #if defined(MEDIAPLAYER_LIBMPV_OPENGL)
 #include <QQuickWindow>
@@ -91,7 +100,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 #if QT_VERSION_MAJOR > 5
   m_workHorsePool = nullptr;
 #endif
-  m_settings = Settings::setupSettings(this);
+  m_settings = Settings::setupSettings(m_paths.data(), this);
 
   initializeSplash();
   showSplashMessage(tr("Initializing application..."));
@@ -111,7 +120,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   }
 #endif
 
-  m_localization = new Localization(this);
+  m_localization = new Localization(m_settings, this);
 
   m_localization->loadActiveLanguage();
   showSplashMessage(tr("Initializing application services..."));
@@ -132,7 +141,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_skins = new SkinFactory(this);
   m_icons = new IconFactory(this);
   m_database = new DatabaseFactory(this);
-  m_notifications = new NotificationFactory(this);
+  m_notifications = new NotificationFactory(m_settings, this);
   m_toastNotifications =
     (!isWayland() && m_notifications->useToastNotifications()) ? new ToastNotificationsManager(this) : nullptr;
   m_guiNotifications.reset(new GuiNotificationCoordinator(this));

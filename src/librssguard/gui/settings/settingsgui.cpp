@@ -2,7 +2,6 @@
 
 #include "gui/settings/settingsgui.h"
 
-#include "core/feedsmodel.h"
 #include "core/messagesmodel.h"
 #include "definitions/globals.h"
 #include "gui/dialogs/formmain.h"
@@ -12,9 +11,11 @@
 #include "gui/toolbars/statusbar.h"
 #include "gui/tray/trayicon.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "miscellaneous/skinfactory.h"
 
 #if defined(Q_OS_WIN)
 #include "miscellaneous/windowstaskbar.h"
@@ -105,8 +106,14 @@ void SettingsGui::loadUi() {
   connect(m_ui->m_radioCustomColoredIcon, &QRadioButton::toggled, this, &SettingsGui::requireRestart);
   connect(m_ui->m_checkCustomColoredIconAsAppIcon, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_checkCustomColoredIconAsAppIcon, &QCheckBox::toggled, this, &SettingsGui::requireRestart);
-  connect(m_ui->m_btnCustomColoredIconBackground, &ColorIconToolButton::colorChanged, this, &SettingsGui::dirtifySettings);
-  connect(m_ui->m_btnCustomColoredIconBackground, &ColorIconToolButton::colorChanged, this, &SettingsGui::requireRestart);
+  connect(m_ui->m_btnCustomColoredIconBackground,
+          &ColorIconToolButton::colorChanged,
+          this,
+          &SettingsGui::dirtifySettings);
+  connect(m_ui->m_btnCustomColoredIconBackground,
+          &ColorIconToolButton::colorChanged,
+          this,
+          &SettingsGui::requireRestart);
   connect(m_ui->m_btnCustomColoredIconText, &ColorIconToolButton::colorChanged, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_btnCustomColoredIconText, &ColorIconToolButton::colorChanged, this, &SettingsGui::requireRestart);
   connect(m_ui->m_checkColoredIconsWhenArticles, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
@@ -124,10 +131,7 @@ void SettingsGui::loadUi() {
           this,
           &SettingsGui::dirtifySettings);
   connect(m_ui->m_gbCustomSkinColors, &QGroupBox::toggled, this, &SettingsGui::dirtifySettings);
-  connect(m_ui->m_btnResetAllCustomSkinColors,
-          &QPushButton::clicked,
-          this,
-          &SettingsGui::resetAllCustomSkinColors);
+  connect(m_ui->m_btnResetAllCustomSkinColors, &QPushButton::clicked, this, &SettingsGui::resetAllCustomSkinColors);
   connect(m_ui->m_displayUnreadMessageCountOnTaskBar, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_displayTaskbarErrorProgress, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
   connect(m_ui->m_displayUnreadMessageCountOnWindow, &QCheckBox::toggled, this, &SettingsGui::dirtifySettings);
@@ -248,12 +252,10 @@ void SettingsGui::loadSettings() {
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::ColoredBusyTrayIcon)).toBool());
   m_ui->m_checkCustomColoredIconAsAppIcon
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconAsAppIcon)).toBool());
-  m_ui->m_btnCustomColoredIconBackground->setColor(
-    QColor(settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconBackground)).toString()),
-    false);
-  m_ui->m_btnCustomColoredIconText->setColor(
-    QColor(settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconText)).toString()),
-    false);
+  m_ui->m_btnCustomColoredIconBackground
+    ->setColor(QColor(settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconBackground)).toString()), false);
+  m_ui->m_btnCustomColoredIconText
+    ->setColor(QColor(settings()->value(GROUP(GUI), SETTING(GUI::CustomColoredTrayIconText)).toString()), false);
   updateCustomColoredIconOptions();
   m_ui->m_checkCountUnreadMessages
     ->setChecked(settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersInTrayIcon)).toBool());
@@ -500,9 +502,7 @@ void SettingsGui::saveSettings() {
 #endif
 
 #if defined(Q_OS_WIN)
-  settings()->setValue(GROUP(GUI),
-                       GUI::TaskbarThumbnailButtons,
-                       m_ui->m_displayTaskbarThumbnailButtons->isChecked());
+  settings()->setValue(GROUP(GUI), GUI::TaskbarThumbnailButtons, m_ui->m_displayTaskbarThumbnailButtons->isChecked());
   settings()->setValue(GROUP(GUI), GUI::TaskbarErrorProgress, m_ui->m_displayTaskbarErrorProgress->isChecked());
   if (WindowsTaskbar* taskbar = qApp->windowsTaskbar(); taskbar != nullptr) {
     taskbar->setThumbnailButtonsEnabled(m_ui->m_displayTaskbarThumbnailButtons->isChecked());

@@ -2,6 +2,8 @@
 
 #include "gui/dialogs/formbackupdatabasesettings.h"
 
+#include "database/databasedriver.h"
+#include "database/databasefactory.h"
 #include "exceptions/applicationexception.h"
 #include "gui/dialogs/filedialog.h"
 #include "gui/guiutilities.h"

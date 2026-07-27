@@ -8,8 +8,10 @@
 #include "miscellaneous/localization.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "network-web/downloader.h"
 #include "network-web/webfactory.h"
 
+#include <QDir>
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -89,7 +91,7 @@ void SettingsLocalization::langMetadataDownloaded(const QUrl& url,
       QJsonArray people_arr = people_doc.object()["data"].toArray();
       QStringList people_desc;
 
-      for (const QJsonValue& person : people_arr) {
+      for (const QJsonValue& person : std::as_const(people_arr)) {
         const QString username = person.toObject()["data"].toObject()["username"].toString();
 
         if (!username.isEmpty()) {

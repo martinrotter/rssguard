@@ -5,6 +5,7 @@
 #include "src/definitions.h"
 #include "src/greaderfeed.h"
 
+#include <librssguard/database/databasefactory.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/exceptions/feedfetchexception.h>

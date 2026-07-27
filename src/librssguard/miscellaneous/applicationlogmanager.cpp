@@ -13,6 +13,7 @@
 #include <cstdlib>
 #include <iostream>
 
+#include <QCommandLineParser>
 #include <QCoreApplication>
 #include <QDateTime>
 #include <QDir>

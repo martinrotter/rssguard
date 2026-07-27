@@ -6,6 +6,7 @@
 #include "gui/dialogs/formaskauth.h"
 #include "gui/webviewers/qtwebengine/webengineviewer.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/systemfactory.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 

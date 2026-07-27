@@ -1,8 +1,9 @@
 // For license of this file, see <project-root-folder>/LICENSE.md.
 
-#include "articleamountcontrol.h"
+#include "gui/reusable/articleamountcontrol.h"
 
 #include "miscellaneous/application.h"
+#include "miscellaneous/localization.h"
 
 ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
   m_ui.setupUi(this);
@@ -10,7 +11,8 @@ ArticleAmountControl::ArticleAmountControl(QWidget* parent) : QWidget(parent) {
   m_ui.m_helpIgnoring
     ->setHelpText(tr("Setting any limitations here will instruct %1 to ignore "
                      "some incoming articles. The logic runs AFTER any article filters so even if your article filter "
-                     "accepts a particular article, it can still be subsequently ignored and not added to the database.")
+                     "accepts a particular article, it can still be subsequently ignored and not added to the "
+                     "database.")
                     .arg(QSL(APP_NAME)),
                   false);
   m_ui.m_helpLimit->setHelpText(tr("All excess articles are removed automatically by the application, usually after "

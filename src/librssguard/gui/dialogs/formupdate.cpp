@@ -12,6 +12,7 @@
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
 
+#include <QDir>
 #include <QNetworkReply>
 
 #if defined(Q_OS_WIN)

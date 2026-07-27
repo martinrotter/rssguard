@@ -2,14 +2,15 @@
 
 #include "miscellaneous/settings.h"
 
-#include "miscellaneous/application.h"
+#include "miscellaneous/applicationpaths.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settingskeys.h"
 
-#include <QDebug>
+#include <QApplication>
 #include <QDir>
-#include <QLocale>
-#include <QPointer>
+#include <QFile>
+#include <QFileInfo>
+#include <QFont>
 
 Settings::Settings(const QString& file_name, Format format, SettingsProperties::SettingsType type, QObject* parent)
   : QSettings(file_name, format, parent), m_lock(QReadWriteLock(QReadWriteLock::RecursionMode::Recursive)),
@@ -66,13 +67,13 @@ void Settings::finishRestoration(const QString& desired_settings_file_path) {
   }
 }
 
-Settings* Settings::setupSettings(QObject* parent) {
+Settings* Settings::setupSettings(const ApplicationPaths* paths, QObject* parent) {
   Settings* new_settings;
 
   // If settings file exists (and is writable) in executable file working directory
   // (in subdirectory APP_CFG_PATH), then use it (portable settings).
   // Otherwise use settings file stored in home path.
-  const SettingsProperties properties = determineProperties();
+  const SettingsProperties properties = determineProperties(paths);
 
   finishRestoration(properties.m_absoluteSettingsFileName);
 
@@ -95,14 +96,14 @@ Settings* Settings::setupSettings(QObject* parent) {
   return new_settings;
 }
 
-SettingsProperties Settings::determineProperties() {
+SettingsProperties Settings::determineProperties(const ApplicationPaths* paths) {
   SettingsProperties properties;
 
   properties.m_settingsSuffix = QDir::separator() + QSL(APP_CFG_PATH) + QDir::separator() + QSL(APP_CFG_FILE);
 
-  const QString app_path = qApp->userDataAppFolder();
-  const QString home_path = qApp->userDataHomeFolder();
-  const QString custom_path = qApp->customDataFolder();
+  const QString app_path = paths->userDataAppFolder();
+  const QString home_path = paths->userDataHomeFolder();
+  const QString custom_path = paths->customDataFolder();
 
   if (!custom_path.isEmpty()) {
     // User wants to have his user data in custom folder, okay.
@@ -116,7 +117,7 @@ SettingsProperties Settings::determineProperties() {
     // DO NOT use portable settings for *nix or MSYS2, it is really not used on those platforms.
     const bool will_we_use_portable_settings = false;
 #else
-    const QString exe_path = qApp->applicationDirPath();
+    const QString exe_path = paths->applicationDirPath();
     const QString home_path_file = home_path + properties.m_settingsSuffix;
     const bool portable_settings_available = IOFactory::isFolderWritable(exe_path);
     const bool non_portable_settings_exist = QFile::exists(home_path_file);

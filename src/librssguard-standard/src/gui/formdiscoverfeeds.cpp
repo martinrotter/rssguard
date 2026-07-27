@@ -13,6 +13,7 @@
 #include "src/parsers/sitemapparser.h"
 #include "src/standardfeed.h"
 
+#include <librssguard/database/databasefactory.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/gui/guiutilities.h>

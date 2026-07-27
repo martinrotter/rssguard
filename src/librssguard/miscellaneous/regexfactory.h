@@ -47,7 +47,6 @@
 
 #include "definitions/definitions.h"
 
-#include <QRegularExpression>
 #include <QString>
 
 class RegexFactory {

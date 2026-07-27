@@ -2,15 +2,17 @@
 
 #include "services/abstract/feed.h"
 
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
+#include "miscellaneous/localization.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "miscellaneous/skinfactory.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
-#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/gui/formfeeddetails.h"
 #include "services/abstract/serviceroot.h"
 

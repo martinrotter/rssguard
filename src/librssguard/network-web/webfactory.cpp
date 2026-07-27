@@ -14,6 +14,7 @@
 #include "miscellaneous/externaltool.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
+#include "miscellaneous/localization.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 #include "network-web/cookiejar.h"

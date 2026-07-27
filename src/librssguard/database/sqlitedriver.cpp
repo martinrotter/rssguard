@@ -2,6 +2,7 @@
 
 #include "database/sqlitedriver.h"
 
+#include "database/databasefactory.h"
 #include "exceptions/applicationexception.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"

@@ -3,6 +3,7 @@
 #include "gui/dialogs/formmessagefiltersmanager.h"
 
 #include "core/messagesmodel.h"
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "exceptions/filteringexception.h"
 #include "filtering/filteringsystem.h"
@@ -18,6 +19,7 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
+#include "miscellaneous/skinfactory.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/accountcheckmodel.h"
@@ -30,6 +32,7 @@
 #include <QJSEngine>
 #include <QJsonArray>
 #include <QJsonDocument>
+#include <QMenu>
 #include <QProcess>
 #include <QScopedValueRollback>
 #include <QSortFilterProxyModel>

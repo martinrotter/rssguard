@@ -3,6 +3,7 @@
 #ifndef PLUGINFACTORY_H
 #define PLUGINFACTORY_H
 
+#include <QList>
 #include <QStringList>
 
 class ServiceEntryPoint;

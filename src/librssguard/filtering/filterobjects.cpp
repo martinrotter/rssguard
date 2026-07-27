@@ -2,19 +2,21 @@
 
 #include "filtering/filterobjects.h"
 
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
 #include "exceptions/applicationexception.h"
 #include "filtering/filteringsystem.h"
 #include "miscellaneous/domdocument.h"
+#include "miscellaneous/feedreader.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/textfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/labelsnode.h"
 
-#include <QHostInfo>
 #include <QElapsedTimer>
+#include <QHostInfo>
 #include <QJsonArray>
 #include <QJsonDocument>
 
@@ -348,8 +350,8 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
                << "candidates," << NONQUOTE_W_SPACE(skipped_by_length) << "skipped by title length,"
                << NONQUOTE_W_SPACE(workspace.m_callCount) << "Jaro comparisons and"
                << NONQUOTE_W_SPACE(workspace.m_windowCharacterChecks) << "window character checks in"
-               << NONQUOTE_W_SPACE(check_timer.elapsed()) << "milliseconds; duplicate found:"
-               << (duplicate_found ? "yes." : "no.");
+               << NONQUOTE_W_SPACE(check_timer.elapsed())
+               << "milliseconds; duplicate found:" << (duplicate_found ? "yes." : "no.");
     };
 #endif
 

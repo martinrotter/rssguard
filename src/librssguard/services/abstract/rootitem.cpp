@@ -9,6 +9,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "miscellaneous/skinfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/category.h"
 #include "services/abstract/feed.h"
@@ -81,8 +82,8 @@ void RootItem::markAsReadUnread(ReadStatus status) {
   }
 }
 
-void RootItem::executeMessagesReadUnreadChange(
-  ReadStatus status, const std::function<void(const QSqlDatabase&)>& database_operation) {
+void RootItem::executeMessagesReadUnreadChange(ReadStatus status,
+                                               const std::function<void(const QSqlDatabase&)>& database_operation) {
   ServiceRoot* service = account();
   const QStringList message_custom_ids = service->customIDsOfMessagesForItem(this, status);
 

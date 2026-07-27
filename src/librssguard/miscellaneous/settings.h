@@ -7,14 +7,12 @@
 #include "miscellaneous/settingsproperties.h"
 #include "miscellaneous/textfactory.h"
 
-#include <QByteArray>
-#include <QColor>
-#include <QDateTime>
-#include <QNetworkProxy>
 #include <QReadWriteLock>
 #include <QSettings>
 #include <QStringList>
 #include <QWriteLocker>
+
+class ApplicationPaths;
 
 class RSSGUARD_DLLSPEC Settings : public QSettings {
     Q_OBJECT
@@ -52,10 +50,10 @@ class RSSGUARD_DLLSPEC Settings : public QSettings {
     static void finishRestoration(const QString& desired_settings_file_path);
 
     // Creates settings file in correct location.
-    static Settings* setupSettings(QObject* parent);
+    static Settings* setupSettings(const ApplicationPaths* paths, QObject* parent);
 
     // Returns properties of the actual application-wide settings.
-    static SettingsProperties determineProperties();
+    static SettingsProperties determineProperties(const ApplicationPaths* paths);
 
   private:
     mutable QReadWriteLock m_lock;

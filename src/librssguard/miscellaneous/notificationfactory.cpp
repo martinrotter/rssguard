@@ -2,30 +2,30 @@
 
 #include "miscellaneous/notificationfactory.h"
 
-#include "qtlinq/qtlinq.h"
-#include "definitions/definitions.h"
-#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "qtlinq/qtlinq.h"
+
+#include <utility>
 
 #include <QRegularExpression>
 
-NotificationFactory::NotificationFactory(QObject* parent) : QObject(parent) {}
+NotificationFactory::NotificationFactory(Settings* settings, QObject* parent) : QObject(parent), m_settings(settings) {}
 
 QList<Notification> NotificationFactory::allNotifications() const {
   return m_notifications;
 }
 
 bool NotificationFactory::areNotificationsEnabled() const {
-  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool();
+  return m_settings->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool();
 }
 
 bool NotificationFactory::useToastNotifications() const {
-  return qApp->settings()->value(GROUP(GUI), SETTING(GUI::UseToastNotifications)).toBool();
+  return m_settings->value(GROUP(GUI), SETTING(GUI::UseToastNotifications)).toBool();
 }
 
 Notification NotificationFactory::notificationForEvent(Notification::Event event) const {
-  if (!qApp->settings()->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool()) {
+  if (!m_settings->value(GROUP(GUI), SETTING(GUI::EnableNotifications)).toBool()) {
     return Notification();
   }
 

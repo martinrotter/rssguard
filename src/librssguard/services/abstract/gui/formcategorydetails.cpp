@@ -2,6 +2,7 @@
 
 #include "services/abstract/gui/formcategorydetails.h"
 
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"

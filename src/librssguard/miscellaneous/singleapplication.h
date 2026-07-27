@@ -4,6 +4,7 @@
 #define SINGLEAPPLICATION_H
 
 #include <QApplication>
+#include <QString>
 
 class QLocalServer;
 

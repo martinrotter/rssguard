@@ -3,9 +3,13 @@
 #ifndef SETTINGSKEYS_H
 #define SETTINGSKEYS_H
 
+#include "definitions/definitions.h"
+
 #include <QDateTime>
+#include <QList>
 #include <QNetworkProxy>
 #include <QString>
+#include <QVariant>
 
 #define KEY  RSSGUARD_DLLSPEC extern const QString
 #define DKEY const QString

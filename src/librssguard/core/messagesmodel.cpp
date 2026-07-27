@@ -2,13 +2,16 @@
 
 #include "core/messagesmodel.h"
 
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"
 #include "gui/dialogs/formprogressworker.h"
 #include "gui/messagesview.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/localization.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"

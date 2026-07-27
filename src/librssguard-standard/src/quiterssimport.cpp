@@ -7,6 +7,7 @@
 #include "src/standardfeed.h"
 #include "src/standardserviceroot.h"
 
+#include <librssguard/database/databasefactory.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/database/sqlquery.h>
 #include <librssguard/exceptions/sqlexception.h>

@@ -7,14 +7,17 @@
 #include "miscellaneous/domdocument.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
+#include "miscellaneous/localization.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 #include "services/abstract/rootitem.h"
 
+#include <QCommandLineParser>
 #include <QDir>
 #include <QDomElement>
 #include <QFontDatabase>
 #include <QProcessEnvironment>
+#include <QRegularExpression>
 #include <QStyle>
 #include <QStyleFactory>
 #include <QStyleHints>
@@ -261,7 +264,7 @@ bool SkinFactory::isOsDarkModeEnabled() {
 #if defined(Q_OS_WIN)
   return isWindowsDarkMode();
 #elif QT_VERSION >= 0x060500 // Qt >= 6.5.0
-  return qApp->styleHints()->colorScheme() == Qt::ColorScheme::Dark;
+  return QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark;
 #else
   return false;
 #endif

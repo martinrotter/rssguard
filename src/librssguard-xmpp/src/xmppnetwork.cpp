@@ -10,10 +10,13 @@
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/settingskeys.h>
 #include <librssguard/miscellaneous/textfactory.h>
+#include <librssguard/network-web/networkfactory.h>
 #include <librssguard/network-web/webfactory.h>
 #include <librssguard/services/abstract/category.h>
 #include <qtlinq/qtlinq.h>
 
+#include <QFileDevice>
+#include <QNetworkReply>
 #include <QXmppAuthenticationError.h>
 #include <QXmppDiscoveryManager.h>
 #include <QXmppMamManager.h>

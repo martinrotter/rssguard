@@ -2,6 +2,7 @@
 
 #include "database/databasequeries.h"
 
+#include "database/databasefactory.h"
 #include "database/sqlquery.h"
 #include "definitions/globals.h"
 #include "exceptions/sqlexception.h"

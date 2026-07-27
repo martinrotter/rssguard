@@ -2,6 +2,7 @@
 
 #include "services/abstract/importantnode.h"
 
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"

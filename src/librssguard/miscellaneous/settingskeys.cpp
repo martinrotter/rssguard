@@ -2,7 +2,6 @@
 
 #include "miscellaneous/settingskeys.h"
 
-#include "definitions/definitions.h"
 #include "gui/messagesview.h"
 #include "gui/notifications/toastnotificationsmanager.h"
 

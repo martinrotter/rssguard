@@ -5,6 +5,7 @@
 #include "miscellaneous/application.h"
 
 #include <QDir>
+#include <QUrl>
 
 #if !defined(Q_OS_OS2)
 #include <QMediaPlayer>
@@ -12,6 +13,8 @@
 
 #if QT_VERSION_MAJOR == 6
 #include <QAudioOutput>
+#else
+#include <QMediaContent>
 #endif
 #endif
 

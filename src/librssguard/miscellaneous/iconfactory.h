@@ -7,14 +7,17 @@
 
 #include <functional>
 
+#include <QByteArray>
+#include <QChar>
 #include <QColor>
-#include <QDir>
-#include <QHash>
 #include <QIcon>
 #include <QImage>
+#include <QList>
 #include <QObject>
 #include <QPixmap>
 #include <QString>
+#include <QStringList>
+#include <QUuid>
 
 class QAction;
 class Application;

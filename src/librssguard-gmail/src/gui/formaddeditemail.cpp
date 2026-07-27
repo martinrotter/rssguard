@@ -7,6 +7,7 @@
 #include "src/gmailserviceroot.h"
 #include "src/gui/emailrecipientcontrol.h"
 
+#include <librssguard/database/databasefactory.h>
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/gui/guiutilities.h>
 #include <librssguard/gui/messagebox.h>

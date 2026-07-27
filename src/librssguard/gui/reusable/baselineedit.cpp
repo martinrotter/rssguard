@@ -7,6 +7,7 @@
 
 #include <QAction>
 #include <QKeyEvent>
+#include <QTimer>
 
 BaseLineEdit::BaseLineEdit(QWidget* parent)
   : QLineEdit(parent), m_actShowPassword(new QAction(qApp->icons()->fromTheme(QSL("dialog-password")),

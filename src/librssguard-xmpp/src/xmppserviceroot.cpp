@@ -22,6 +22,7 @@
 #include <qtlinq/qtlinq.h>
 
 #include <QAction>
+#include <QMenu>
 #include <QXmppGlobal.h>
 #include <QXmppUtils.h>
 

@@ -5,8 +5,12 @@
 
 #include <optional>
 
+#include <QByteArray>
+#include <QList>
 #include <QMetaType>
+#include <QString>
 #include <QStringList>
+#include <QVector>
 
 class Settings;
 

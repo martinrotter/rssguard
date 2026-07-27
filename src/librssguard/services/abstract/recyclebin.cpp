@@ -2,6 +2,7 @@
 
 #include "services/abstract/recyclebin.h"
 
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "gui/messagebox.h"
 #include "miscellaneous/application.h"

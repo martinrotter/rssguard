@@ -6,6 +6,7 @@
 #include "definitions/typedefs.h"
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/feedreader.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/textfactory.h"
 #include "services/abstract/category.h"

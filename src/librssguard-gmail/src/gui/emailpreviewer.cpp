@@ -15,10 +15,12 @@
 #include <librssguard/gui/messagebox.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/network-web/downloader.h>
 #include <librssguard/network-web/oauth2service.h>
 #include <limits>
 
 #include <QJsonObject>
+#include <QMenu>
 
 EmailPreviewer::EmailPreviewer(GmailServiceRoot* account, QWidget* parent)
   : CustomMessagePreviewer(parent), m_account(account), m_webView(new WebBrowser(nullptr, this)) {

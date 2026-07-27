@@ -31,9 +31,11 @@
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
 #include <librssguard/miscellaneous/iofactory.h>
+#include <librssguard/miscellaneous/localization.h>
 #include <librssguard/miscellaneous/mutex.h>
 #include <librssguard/miscellaneous/settings.h>
 #include <librssguard/miscellaneous/settingskeys.h>
+#include <librssguard/miscellaneous/systemfactory.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/services/abstract/gui/formcategorydetails.h>
 #include <qtlinq/qtlinq.h>
@@ -44,6 +46,7 @@
 
 #include <QAction>
 #include <QElapsedTimer>
+#include <QMenu>
 #include <QSqlTableModel>
 #include <QStack>
 #include <QThread>

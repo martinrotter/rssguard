@@ -2,6 +2,7 @@
 
 #include "core/feeddownloader.h"
 
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/feedfetchexception.h"
@@ -13,6 +14,7 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 #include "miscellaneous/thread.h"
+#include "network-web/networkfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"

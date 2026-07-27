@@ -2,26 +2,27 @@
 
 #include "miscellaneous/localization.h"
 
-#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 
+#include <utility>
+
+#include <QCoreApplication>
 #include <QDir>
-#include <QFileInfoList>
-#include <QLocale>
+#include <QFileInfo>
 #include <QTranslator>
 
-Localization::Localization(QObject* parent) : QObject(parent) {}
+Localization::Localization(Settings* settings, QObject* parent) : QObject(parent), m_settings(settings) {}
 
 Localization::~Localization() = default;
 
 QString Localization::desiredLanguage() const {
-  return qApp->settings()->value(GROUP(General), SETTING(General::Language)).toString();
+  return m_settings->value(GROUP(General), SETTING(General::Language)).toString();
 }
 
 void Localization::loadActiveLanguage() {
-  auto* qt_translator = new QTranslator(qApp);
-  auto* app_translator = new QTranslator(qApp);
+  auto* qt_translator = new QTranslator(this);
+  auto* app_translator = new QTranslator(this);
   QString desired_localization = desiredLanguage();
 
   qDebugNN << LOGSEC_CORE << "Starting to load active localization. Desired localization is"

@@ -2,10 +2,12 @@
 
 #include "filtering/filteringsystem.h"
 
+#include "database/databasefactory.h"
 #include "database/sqlquery.h"
 #include "definitions/globals.h"
 #include "exceptions/filteringexception.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/localization.h"
 #include "miscellaneous/textfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/labelsnode.h"
@@ -116,8 +118,8 @@ FilterMessage::FilteringAction FilteringSystem::filterMessage(const MessageFilte
   return FilterMessage::FilteringAction(action);
 }
 
-const QList<FilteringSystem::DuplicateCandidate>&
-FilteringSystem::duplicateCandidates(FilterMessage::DuplicityCheck criteria) {
+const QList<FilteringSystem::DuplicateCandidate>& FilteringSystem::duplicateCandidates(FilterMessage::DuplicityCheck
+                                                                                         criteria) {
   const bool all_feeds_same_account = Globals::hasFlag(criteria, FilterMessage::DuplicityCheck::AllFeedsSameAccount);
   bool& loaded = all_feeds_same_account ? m_accountDuplicateCandidatesLoaded : m_feedDuplicateCandidatesLoaded;
   QList<DuplicateCandidate>& candidates =

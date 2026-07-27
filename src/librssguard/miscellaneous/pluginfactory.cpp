@@ -8,6 +8,7 @@
 #include <QCoreApplication>
 #include <QDir>
 #include <QDirIterator>
+#include <QFileInfo>
 #include <QPluginLoader>
 
 PluginFactory::PluginFactory() {}
@@ -37,7 +38,7 @@ QList<ServiceEntryPoint*> PluginFactory::loadPlugins() const {
 
       const QFileInfo& plugin_file = dir_iter.fileInfo();
 
-      qApp->addLibraryPath(plugin_file.absolutePath());
+      QCoreApplication::addLibraryPath(plugin_file.absolutePath());
       QDir::setCurrent(plugin_file.absolutePath());
 
       QPluginLoader loader(plugin_file.absoluteFilePath());

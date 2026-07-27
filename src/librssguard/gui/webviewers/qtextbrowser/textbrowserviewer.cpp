@@ -7,9 +7,10 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
+#include "network-web/gemini/geminiclient.h"
+#include "network-web/gemini/geminiparser.h"
 #include "network-web/webfactory.h"
 
-#include <cstring>
 #include <utility>
 
 #include <QContextMenuEvent>
@@ -21,6 +22,8 @@
 #include <QFileInfo>
 #include <QJsonDocument>
 #include <QJsonParseError>
+#include <QMenu>
+#include <QRegularExpression>
 #include <QScrollBar>
 #include <QTextImageFormat>
 #include <QTimer>

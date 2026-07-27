@@ -3,8 +3,10 @@
 #include "gui/notifications/articlelistnotification.h"
 
 #include "core/articlelistnotificationmodel.h"
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/localization.h"
 #include "network-web/webfactory.h"
 
 #include <QItemSelectionModel>
@@ -233,8 +235,8 @@ bool ArticleListNotification::eventFilter(QObject* watched, QEvent* event) {
   if (event->type() == QEvent::Type::Wheel &&
       (watched == m_ui.m_treeArticles || watched == m_ui.m_treeArticles->viewport())) {
     auto* wheel_event = static_cast<QWheelEvent*>(event);
-    const int vertical_delta = !wheel_event->angleDelta().isNull() ? wheel_event->angleDelta().y()
-                                                                    : wheel_event->pixelDelta().y();
+    const int vertical_delta =
+      !wheel_event->angleDelta().isNull() ? wheel_event->angleDelta().y() : wheel_event->pixelDelta().y();
 
     if (vertical_delta != 0) {
       if (vertical_delta > 0) {

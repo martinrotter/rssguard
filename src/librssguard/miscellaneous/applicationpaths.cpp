@@ -25,6 +25,10 @@ QString ApplicationPaths::homeFolder() const {
   return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::HomeLocation);
 }
 
+QString ApplicationPaths::applicationDirPath() const {
+  return m_application->applicationDirPath();
+}
+
 QString ApplicationPaths::configFolder() const {
   return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::GenericConfigLocation);
 }

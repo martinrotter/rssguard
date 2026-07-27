@@ -2,6 +2,7 @@
 
 #include "miscellaneous/guinotificationcoordinator.h"
 
+#include "core/feeddownloader.h"
 #include "core/feedsmodel.h"
 #include "core/messagesmodel.h"
 #include "gui/dialogs/formabout.h"
@@ -18,9 +19,12 @@
 #include "miscellaneous/notificationfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
-#include "miscellaneous/windowstaskbar.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/feed.h"
+
+#if defined(Q_OS_WIN)
+#include "miscellaneous/windowstaskbar.h"
+#endif
 
 #include <QGuiApplication>
 #include <QMetaObject>

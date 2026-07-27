@@ -2,7 +2,7 @@
 
 #include "miscellaneous/mutex.h"
 
-#include "definitions/definitions.h"
+#include <QMutex>
 
 Mutex::Mutex(QObject* parent) : QObject(parent), m_mutex(new QMutex()), m_isLocked(false) {}
 

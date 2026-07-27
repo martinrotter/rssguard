@@ -11,6 +11,7 @@
 #include "miscellaneous/feedreader.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "miscellaneous/systemfactory.h"
 #include "miscellaneous/textfactory.h"
 
 #include <QFontDialog>

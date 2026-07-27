@@ -25,6 +25,7 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonParseError>
+#include <QTimeZone>
 
 FeedlyNetwork::FeedlyNetwork(QObject* parent)
   : QObject(parent), m_service(nullptr),

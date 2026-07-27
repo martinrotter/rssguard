@@ -2,6 +2,7 @@
 
 #include "core/messagesmodelsqllayer.h"
 
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "definitions/globals.h"

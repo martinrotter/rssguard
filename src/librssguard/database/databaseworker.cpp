@@ -3,6 +3,7 @@
 #include "database/databaseworker.h"
 
 #include "database/databasedriver.h"
+#include "database/databasefactory.h"
 #include "miscellaneous/application.h"
 
 DatabaseWorker::DatabaseWorker() : QObject() {

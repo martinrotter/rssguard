@@ -7,6 +7,8 @@
 #include "miscellaneous/iconfactory.h"
 #include "services/abstract/search.h"
 
+#include <QRegularExpression>
+
 FormAddEditProbe::FormAddEditProbe(QWidget* parent) : QDialog(parent), m_editableProbe(nullptr) {
   m_ui.setupUi(this);
 

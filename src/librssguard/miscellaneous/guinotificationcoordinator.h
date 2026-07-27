@@ -3,7 +3,6 @@
 #ifndef GUINOTIFICATIONCOORDINATOR_H
 #define GUINOTIFICATIONCOORDINATOR_H
 
-#include "core/feeddownloader.h"
 #include "miscellaneous/notification.h"
 
 #include <QObject>
@@ -11,6 +10,7 @@
 
 class Application;
 class Feed;
+class FeedDownloadResults;
 class TrayIcon;
 class QWidget;
 struct GuiAction;

@@ -2,6 +2,7 @@
 
 #include "filtering/messagesforfiltersmodel.h"
 
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/definitions.h"
 #include "exceptions/filteringexception.h"

@@ -5,6 +5,8 @@
 
 #include "definitions/definitions.h"
 
+#include <QList>
+#include <QMetaType>
 #include <QString>
 
 class Application;

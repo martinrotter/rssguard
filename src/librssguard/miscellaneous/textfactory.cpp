@@ -24,6 +24,7 @@
 #include <QStringEncoder>
 #endif
 
+#include <QCryptographicHash>
 #include <QDir>
 #include <QLocale>
 #include <QRandomGenerator64>

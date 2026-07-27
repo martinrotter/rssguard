@@ -9,6 +9,7 @@
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 #include "miscellaneous/textfactory.h"
+#include "network-web/networkfactory.h"
 #include "qtlinq/qtlinq.h"
 
 #include <QApplication>

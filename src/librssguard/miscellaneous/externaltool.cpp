@@ -11,8 +11,8 @@
 #include <utility>
 
 #include <QDir>
+#include <QJsonDocument>
 #include <QJsonObject>
-#include <QObject>
 
 void ExternalTool::sanitizeParameters() {
   m_executable = QDir::toNativeSeparators(m_executable);

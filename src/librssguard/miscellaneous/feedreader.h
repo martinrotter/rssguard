@@ -4,14 +4,16 @@
 #define FEEDREADER_H
 
 #include "core/feeddownloader.h"
-#include "filtering/messagefilter.h"
-#include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/feed.h"
 
+#include <QDateTime>
 #include <QObject>
+#include <QPointer>
 
 class Application;
+class CacheForServiceRoot;
 class FeedsModel;
+class MessageFilter;
 class MessagesModel;
 class MessagesProxyModel;
 class FeedsProxyModel;

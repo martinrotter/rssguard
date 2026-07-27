@@ -7,11 +7,16 @@
 #include "miscellaneous/settingskeys.h"
 
 #include <QBuffer>
+#include <QCryptographicHash>
+#include <QDir>
 #include <QFileInfo>
 #include <QGridLayout>
+#include <QMenu>
 #include <QPainter>
+#include <QRegularExpression>
 #include <QScrollArea>
 #include <QToolButton>
+#include <QUuid>
 #include <QWidgetAction>
 
 IconFactory::IconFactory(Application* application) : QObject(application), m_application(application) {}

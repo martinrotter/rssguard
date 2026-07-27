@@ -3,8 +3,12 @@
 #ifndef MUTEX_H
 #define MUTEX_H
 
-#include <QMutex>
+#include "definitions/definitions.h"
+
 #include <QObject>
+#include <QScopedPointer>
+
+class QMutex;
 
 class RSSGUARD_DLLSPEC Mutex : public QObject {
     Q_OBJECT

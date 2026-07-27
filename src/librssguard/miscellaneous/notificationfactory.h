@@ -13,7 +13,7 @@ class NotificationFactory : public QObject {
     Q_OBJECT
 
   public:
-    explicit NotificationFactory(QObject* parent = nullptr);
+    explicit NotificationFactory(Settings* settings, QObject* parent = nullptr);
 
     QList<Notification> allNotifications() const;
     Notification notificationForEvent(Notification::Event event) const;
@@ -27,6 +27,7 @@ class NotificationFactory : public QObject {
     void save(const QList<Notification>& new_notifications, Settings* settings);
 
   private:
+    Settings* m_settings;
     QList<Notification> m_notifications = {};
 };
 

@@ -2,15 +2,11 @@
 
 #include "miscellaneous/iofactory.h"
 
-#include "definitions/definitions.h"
 #include "exceptions/ioexception.h"
 #include "exceptions/processexception.h"
 
-#include <QDataStream>
 #include <QDir>
 #include <QFile>
-#include <QFileInfo>
-#include <QObject>
 #include <QProcess>
 #include <QTemporaryFile>
 

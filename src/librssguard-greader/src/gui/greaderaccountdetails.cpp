@@ -9,6 +9,7 @@
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/miscellaneous/application.h>
 #include <librssguard/miscellaneous/iconfactory.h>
+#include <librssguard/miscellaneous/localization.h>
 #include <librssguard/network-web/oauth2service.h>
 #include <librssguard/network-web/webfactory.h>
 

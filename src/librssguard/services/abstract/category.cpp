@@ -2,8 +2,10 @@
 
 #include "services/abstract/category.h"
 
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/skinfactory.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/serviceroot.h"
 

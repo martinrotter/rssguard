@@ -15,6 +15,7 @@ class ApplicationPaths {
     QString tempFolder() const;
     QString documentsFolder() const;
     QString homeFolder() const;
+    QString applicationDirPath() const;
     QString configFolder() const;
     QString userDataAppFolder() const;
     QString userDataHomeFolder() const;

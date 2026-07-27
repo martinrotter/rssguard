@@ -6,6 +6,7 @@
 #include "src/greadernetwork.h"
 #include "src/greaderserviceroot.h"
 
+#include <librssguard/database/databasefactory.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/miscellaneous/application.h>

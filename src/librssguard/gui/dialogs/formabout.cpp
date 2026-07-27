@@ -9,8 +9,10 @@
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingsproperties.h"
+#include "miscellaneous/skinfactory.h"
 
 #include <QClipboard>
+#include <QDir>
 #include <QFile>
 #include <QJsonArray>
 #include <QJsonObject>

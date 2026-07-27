@@ -2,12 +2,14 @@
 
 #include "gui/messagepreviewer.h"
 
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "gui/itemdetails.h"
 #include "gui/reusable/labelsmenu.h"
 #include "gui/reusable/scrollablemenu.h"
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/feedreader.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 #include "services/abstract/feed.h"

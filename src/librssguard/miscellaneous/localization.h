@@ -3,9 +3,12 @@
 #ifndef LOCALIZATION_H
 #define LOCALIZATION_H
 
+#include <QList>
 #include <QLocale>
 #include <QObject>
 #include <QString>
+
+class Settings;
 
 struct Language {
     QString m_name;
@@ -17,7 +20,7 @@ class RSSGUARD_DLLSPEC Localization : public QObject {
 
   public:
     // Constructor.
-    explicit Localization(QObject* parent = nullptr);
+    explicit Localization(Settings* settings, QObject* parent = nullptr);
 
     // Destructor.
     virtual ~Localization();
@@ -41,6 +44,7 @@ class RSSGUARD_DLLSPEC Localization : public QObject {
     QLocale loadedLocale() const;
 
   private:
+    Settings* m_settings;
     QString m_loadedLanguage;
     QLocale m_loadedLocale;
 };

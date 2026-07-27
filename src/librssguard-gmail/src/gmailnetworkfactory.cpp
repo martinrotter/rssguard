@@ -5,6 +5,7 @@
 #include "src/definitions.h"
 #include "src/gmailserviceroot.h"
 
+#include <librssguard/database/databasefactory.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/definitions/definitions.h>
 #include <librssguard/exceptions/applicationexception.h>

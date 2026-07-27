@@ -6,7 +6,10 @@
 #include "core/feedsproxymodel.h"
 #include "core/messagesmodel.h"
 #include "core/messagesproxymodel.h"
+#include "database/databasefactory.h"
 #include "database/databasequeries.h"
+#include "exceptions/applicationexception.h"
+#include "filtering/messagefilter.h"
 #include "gui/dialogs/formmessagefiltersmanager.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
@@ -14,11 +17,21 @@
 #include "miscellaneous/pluginfactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "miscellaneous/systemfactory.h"
+#include "network-web/networkfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/cacheforserviceroot.h"
 #include "services/abstract/serviceentrypoint.h"
 #include "services/abstract/serviceroot.h"
 
+#include <utility>
+
+#include <QApplication>
+#include <QCoreApplication>
+#include <QDir>
+#include <QJsonArray>
+#include <QJsonDocument>
+#include <QJsonObject>
 #include <QThread>
 #include <QTimer>
 
@@ -46,8 +59,8 @@ FeedReader::FeedReader(Application* application)
   if (m_application->settings()->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateOnStartup)).toBool()) {
     qDebugNN << LOGSEC_CORE << "Requesting update for all feeds on application startup.";
     QTimer::singleShot(m_application->settings()
-                         ->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateStartupDelay))
-                         .toDouble() *
+                           ->value(GROUP(Feeds), SETTING(Feeds::FeedsUpdateStartupDelay))
+                           .toDouble() *
                          1000,
                        this,
                        &FeedReader::updateAllFeedsOnStartup);
@@ -68,11 +81,11 @@ void FeedReader::updateAllFeedsOnStartup() {
   }
   else {
     qWarningNN << LOGSEC_CORE << "Feed fetch on startup is skipped, because fetching is paused.";
-    m_application->showGuiMessage(
-      Notification::Event::GeneralEvent,
-      GuiMessage(tr("Not fetched on startup"),
-                 tr("Fetching of feeds on app startup was skipped because auto-fetching is paused."),
-                 QSystemTrayIcon::MessageIcon::Warning));
+    m_application
+      ->showGuiMessage(Notification::Event::GeneralEvent,
+                       GuiMessage(tr("Not fetched on startup"),
+                                  tr("Fetching of feeds on app startup was skipped because auto-fetching is paused."),
+                                  QSystemTrayIcon::MessageIcon::Warning));
   }
 
   connect(m_autoUpdateTimer, &QTimer::timeout, this, &FeedReader::executeNextAutoUpdate);
@@ -118,11 +131,11 @@ void FeedReader::onFeedFetchRequested(const QList<Feed*>& feeds) {
 
 void FeedReader::updateFeeds(const QList<Feed*>& feeds, bool update_switched_off_too) {
   if (!m_application->feedUpdateLock()->tryLock()) {
-    m_application->showGuiMessage(
-      Notification::Event::GeneralEvent,
-      {tr("Cannot fetch articles at this point"),
-       tr("You cannot fetch new articles now because another critical operation is ongoing."),
-       QSystemTrayIcon::MessageIcon::Warning});
+    m_application
+      ->showGuiMessage(Notification::Event::GeneralEvent,
+                       {tr("Cannot fetch articles at this point"),
+                        tr("You cannot fetch new articles now because another critical operation is ongoing."),
+                        QSystemTrayIcon::MessageIcon::Warning});
     return;
   }
 
@@ -539,11 +552,12 @@ void FeedReader::executeNextAutoUpdate() {
           return !fd->isQuiet();
         })) {
       // NOTE: OSD/bubble informing about performing of scheduled update can be shown now.
-      m_application->showGuiMessage(
-        Notification::Event::ArticlesFetchingStarted,
-        {tr("Starting auto-download of some feeds' articles"),
-         tr("I will auto-download new articles for %n feed(s).", nullptr, feeds_for_update.size()),
-         QSystemTrayIcon::MessageIcon::Information});
+      m_application->showGuiMessage(Notification::Event::ArticlesFetchingStarted,
+                                    {tr("Starting auto-download of some feeds' articles"),
+                                     tr("I will auto-download new articles for %n feed(s).",
+                                        nullptr,
+                                        feeds_for_update.size()),
+                                     QSystemTrayIcon::MessageIcon::Information});
     }
   }
 }

@@ -6,11 +6,10 @@
 #include "gui/dialogs/formmain.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/applicationpaths.h"
+#include "miscellaneous/feedreader.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/serviceroot.h"
-
-#include <utility>
 
 #include <QCommandLineOption>
 #include <QDir>
