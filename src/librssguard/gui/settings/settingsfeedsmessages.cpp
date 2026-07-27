@@ -69,7 +69,7 @@ void SettingsFeedsMessages::loadUi() {
 
   auto unread_icons = enumToStrings<MessagesModel::MessageUnreadIcon>();
 
-  for (const auto& unread_icon : unread_icons) {
+  for (const auto& unread_icon : std::as_const(unread_icons)) {
     m_ui->m_cmbUnreadIconType->addItem(MessagesModel::descriptionOfUnreadIcon(unread_icon.first),
                                        int(unread_icon.first));
   }
