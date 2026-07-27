@@ -9,7 +9,7 @@
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
-#include "miscellaneous/systemfactory.h"
+#include "network-web/downloader.h"
 #include "qtlinq/qtlinq.h"
 
 #include <optional>
@@ -38,7 +38,6 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QLibrary>
 #include <QProcess>
 #include <QString>
 #include <QStringList>
@@ -153,7 +152,7 @@ namespace {
 } // namespace
 #endif
 
-SystemFactory::SystemFactory(QObject* parent) : QObject(parent) {}
+SystemFactory::SystemFactory(Application* application) : QObject(application), m_application(application) {}
 
 SystemFactory::~SystemFactory() = default;
 
@@ -329,7 +328,7 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
 
   switch (new_status) {
     case AutoStartStatus::Enabled: {
-      QStringList args = qlinq::from(qApp->rawCliArgs())
+      QStringList args = qlinq::from(m_application->rawCliArgs())
                            .select([](const QString& arg) {
                              if (arg.contains(QL1S(" ")) && !arg.startsWith(QL1S("\""))) {
                                return QSL("\"%1\"").arg(arg);
@@ -375,7 +374,7 @@ bool SystemFactory::setAutoStartStatus(AutoStartStatus new_status) {
       try {
         QString desktop_file_contents = QString::fromUtf8(IOFactory::readFile(source_autostart_desktop_file));
 
-        QStringList args = qlinq::from(qApp->rawCliArgs())
+        QStringList args = qlinq::from(m_application->rawCliArgs())
                              .select([](const QString& arg) {
                                if (arg.contains(QL1S(" ")) && !arg.startsWith(QL1S("\""))) {
                                  return QSL("\"%1\"").arg(arg);
@@ -453,23 +452,24 @@ void SystemFactory::checkForUpdates() const {
 
 void SystemFactory::checkForUpdatesOnStartup() {
 #if !defined(NO_UPDATE_CHECK)
-  if (qApp->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
-    QObject::connect(qApp->system(),
+  if (m_application->settings()->value(GROUP(General), SETTING(General::UpdateOnStartup)).toBool()) {
+    QObject::connect(this,
                      &SystemFactory::updatesChecked,
                      this,
-                     [&](const QPair<QList<UpdateInfo>, QNetworkReply::NetworkError>& updates) {
-                       QObject::disconnect(qApp->system(), &SystemFactory::updatesChecked, this, nullptr);
+                     [this](const QPair<QList<UpdateInfo>, QNetworkReply::NetworkError>& updates) {
+                       QObject::disconnect(this, &SystemFactory::updatesChecked, this, nullptr);
 
                        if (!updates.first.isEmpty() && updates.second == QNetworkReply::NetworkError::NoError &&
                            SystemFactory::isVersionNewer(updates.first.at(0).m_availableVersion, QSL(APP_VERSION))) {
-                         qApp->showGuiMessage(Notification::Event::NewAppVersionAvailable,
-                                              {QObject::tr("New version available"),
-                                               QObject::tr("Click the bubble for more information."),
-                                               QSystemTrayIcon::Information},
-                                              {},
-                                              {tr("See new version info"), qApp->mainForm(), [] {
-                                                 FormUpdate(qApp->mainForm()).exec();
-                                               }});
+                         m_application->showGuiMessage(
+                           Notification::Event::NewAppVersionAvailable,
+                           {QObject::tr("New version available"),
+                            QObject::tr("Click the bubble for more information."),
+                            QSystemTrayIcon::Information},
+                           {},
+                           {tr("See new version info"), m_application->mainForm(), [this] {
+                              FormUpdate(m_application->mainForm()).exec();
+                            }});
                        }
                      });
     checkForUpdates();

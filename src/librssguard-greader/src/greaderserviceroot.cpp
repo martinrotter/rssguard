@@ -20,6 +20,8 @@
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/network-web/oauth2service.h>
 
+#include <QAction>
+
 GreaderServiceRoot::GreaderServiceRoot(RootItem* parent) : ServiceRoot(parent), m_network(new GreaderNetwork(this)) {
   setIcon(GreaderEntryPoint().icon());
   m_network->setRoot(this);

@@ -2,8 +2,6 @@
 
 #include "miscellaneous/thread.h"
 
-#include "definitions/definitions.h"
-
 #include <QThread>
 
 #if defined(Q_OS_LINUX)

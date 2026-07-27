@@ -3,19 +3,22 @@
 #ifndef SKINFACTORY_H
 #define SKINFACTORY_H
 
-#include "core/message.h"
-#include "gui/webviewers/webviewer.h"
+#include "definitions/definitions.h"
 
 #include <QColor>
-#include <QFont>
 #include <QHash>
+#include <QList>
 #include <QMetaType>
 #include <QObject>
 #include <QPalette>
 #include <QStringList>
 #include <QVariant>
 
+class Application;
+class Feed;
+class Message;
 class RootItem;
+class WebViewer;
 
 class SkinEnums : public QObject {
     Q_OBJECT
@@ -84,9 +87,7 @@ struct RSSGUARD_DLLSPEC Skin {
     QPalette m_stylePalette;
 
     bool hasPalette() const;
-    QVariant colorForModel(SkinEnums::PaletteColors type,
-                           bool use_skin_colors,
-                           bool ignore_custom_colors = false) const;
+    QVariant colorForModel(SkinEnums::PaletteColors type, bool use_skin_colors = true) const;
 };
 
 uint qHash(const SkinEnums::PaletteColors& key);
@@ -97,7 +98,7 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
     Q_OBJECT
 
   public:
-    explicit SkinFactory(QObject* parent = nullptr);
+    explicit SkinFactory(Application* application);
     virtual ~SkinFactory() = default;
 
     // Loads skin name from settings and sets it as active.
@@ -136,6 +137,8 @@ class RSSGUARD_DLLSPEC SkinFactory : public QObject {
 
     QString loadSkinFile(const QString& skin_folder, const QString& file_name, const QString& base_folder) const;
     QString replacePaletteInCss(const QString& css, const QPalette& palette) const;
+
+    Application* m_application;
 
     // Holds name of the current skin.
     Skin m_currentSkin;

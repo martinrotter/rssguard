@@ -2,8 +2,6 @@
 
 #include "miscellaneous/xmlencodingdetector.h"
 
-#include "definitions/definitions.h"
-
 QString XmlEncodingDetector::extractXmlDeclEncoding(const QString& text) {
   if (!text.trimmed().startsWith(QSL("<?xml"))) {
     return QString();

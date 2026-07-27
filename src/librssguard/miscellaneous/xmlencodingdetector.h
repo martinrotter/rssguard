@@ -4,9 +4,11 @@
 // from Qt sources. All credit goes to its authors.
 
 #pragma once
+
+#include "definitions/definitions.h"
+
 #include <QByteArray>
 #include <QString>
-#include <QtGlobal>
 
 class RSSGUARD_DLLSPEC XmlEncodingDetector {
   public:

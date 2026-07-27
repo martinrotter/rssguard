@@ -2,7 +2,9 @@
 
 #include "miscellaneous/skinfactory.h"
 
+#include "core/message.h"
 #include "definitions/globals.h"
+#include "gui/webviewers/webviewer.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/domdocument.h"
 #include "miscellaneous/iconfactory.h"
@@ -10,21 +12,26 @@
 #include "miscellaneous/localization.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "services/abstract/feed.h"
 #include "services/abstract/rootitem.h"
 
+#include <QApplication>
 #include <QCommandLineParser>
 #include <QDir>
 #include <QDomElement>
-#include <QFontDatabase>
+#include <QGuiApplication>
+#include <QLocale>
 #include <QProcessEnvironment>
 #include <QRegularExpression>
+#include <QSharedPointer>
 #include <QStyle>
-#include <QStyleFactory>
 #include <QStyleHints>
 #include <QTextDocument>
 #include <QToolTip>
+#include <QUrl>
 
-SkinFactory::SkinFactory(QObject* parent) : QObject(parent), m_styleIsFrozen(false), m_forcedSkinColors(false) {}
+SkinFactory::SkinFactory(Application* application)
+  : QObject(application), m_application(application), m_styleIsFrozen(false), m_forcedSkinColors(false) {}
 
 void SkinFactory::loadCurrentSkin(bool replace_existing_qss) {
   QList<QString> skin_names_to_try = {selectedSkinName(), QSL(APP_SKIN_DEFAULT)};
@@ -53,7 +60,15 @@ void SkinFactory::loadCurrentSkin(bool replace_existing_qss) {
 }
 
 QVariant SkinFactory::colorForModel(SkinEnums::PaletteColors type, bool ignore_custom_colors) const {
-  return m_currentSkin.colorForModel(type, m_forcedSkinColors, ignore_custom_colors);
+  if (!ignore_custom_colors &&
+      m_application->settings()->value(GROUP(CustomSkinColors), SETTING(CustomSkinColors::Enabled)).toBool()) {
+    const QString color_identifier =
+      m_application->settings()->value(GROUP(CustomSkinColors), enumToString(type)).toString();
+
+    return color_identifier.isEmpty() ? QVariant::fromValue(QColor()) : QVariant::fromValue(QColor(color_identifier));
+  }
+
+  return m_currentSkin.colorForModel(type, m_forcedSkinColors);
 }
 
 bool SkinFactory::isStyleGoodForAlternativeStylePalette(const QString& style_name) const {
@@ -122,15 +137,15 @@ QPalette qt_fusionPalette(bool dark_appearance) {
 
 void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) {
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
-  auto system_color_scheme = qApp->styleHints()->colorScheme();
+  auto system_color_scheme = QGuiApplication::styleHints()->colorScheme();
 
   qDebugNN << LOGSEC_GUI << "OS defines color scheme:" << QUOTE_W_SPACE_DOT(system_color_scheme);
 #endif
 
-  QString style_name = qApp->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString();
+  QString style_name = m_application->settings()->value(GROUP(GUI), SETTING(GUI::Style)).toString();
   auto env = QProcessEnvironment::systemEnvironment();
   const QString env_forced_style = env.value(QSL("QT_STYLE_OVERRIDE"));
-  const QString cli_forced_style = qApp->cmdParser()->value(QSL(CLI_STYLE_SHORT));
+  const QString cli_forced_style = m_application->cmdParser()->value(QSL(CLI_STYLE_SHORT));
 
   if (env_forced_style.isEmpty() && cli_forced_style.isEmpty()) {
     m_styleIsFrozen = false;
@@ -139,14 +154,14 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
       qDebugNN << LOGSEC_GUI << "Forcing one of skin's declared styles:" << QUOTE_W_SPACE_DOT(skin.m_forcedStyles);
 
       for (const QString& skin_forced_style : skin.m_forcedStyles) {
-        if (qApp->setStyle(skin_forced_style) != nullptr) {
+        if (QApplication::setStyle(skin_forced_style) != nullptr) {
           m_currentStyle = skin_forced_style;
           break;
         }
       }
     }
     else if (!style_name.isEmpty()) {
-      qApp->setStyle(style_name);
+      QApplication::setStyle(style_name);
       m_currentStyle = style_name;
 
       qDebugNN << LOGSEC_GUI << "Setting style:" << QUOTE_W_SPACE_DOT(m_currentStyle);
@@ -155,12 +170,12 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
       // Default style is set. Just use what is already set.
       m_currentStyle = QString();
 
-      qDebugNN << LOGSEC_GUI << "Using default style:" << QUOTE_W_SPACE_DOT(qApp->style()->objectName());
+      qDebugNN << LOGSEC_GUI << "Using default style:" << QUOTE_W_SPACE_DOT(QApplication::style()->objectName());
     }
   }
   else {
     m_styleIsFrozen = true;
-    m_currentStyle = qApp->style()->objectName();
+    m_currentStyle = QApplication::style()->objectName();
 
     qWarningNN << LOGSEC_GUI << "Respecting forced style(s):\n"
                << "  QT_STYLE_OVERRIDE:" << QUOTE_W_SPACE(env_forced_style) << "\n"
@@ -169,9 +184,9 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
   }
 
   m_forcedSkinColors =
-    skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool();
+    skin.m_forcedSkinColors || m_application->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool();
 
-  QString actual_current_style = m_currentStyle.isEmpty() ? qApp->style()->objectName() : m_currentStyle;
+  QString actual_current_style = m_currentStyle.isEmpty() ? QApplication::style()->objectName() : m_currentStyle;
 
   if (m_forcedSkinColors && isStyleGoodForAlternativeStylePalette(actual_current_style)) {
     if (skin.hasPalette()) {
@@ -217,8 +232,8 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
     // https://www.qt.io/blog/dark-mode-on-windows-11-with-qt-6.5
 #if QT_VERSION >= 0x060500 // Qt >= 6.5.0
     else {
-      qApp
-        ->setPalette(qt_fusionPalette(false /*QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark*/));
+      QApplication::
+        setPalette(qt_fusionPalette(false /*QGuiApplication::styleHints()->colorScheme() == Qt::ColorScheme::Dark*/));
     }
 #endif
   }
@@ -226,7 +241,7 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
   QString qss_to_set = skin.m_rawForcedData;
 
   if (m_forcedSkinColors && !skin.m_rawData.isEmpty()) {
-    if (qApp->styleSheet().simplified().isEmpty()) {
+    if (m_application->styleSheet().simplified().isEmpty()) {
       qss_to_set += QSL("\r\n") + skin.m_rawData;
     }
     else {
@@ -236,18 +251,18 @@ void SkinFactory::loadSkinFromData(const Skin& skin, bool replace_existing_qss) 
   }
 
   if (!replace_existing_qss) {
-    qss_to_set = qApp->styleSheet() + QSL("\r\n") + qss_to_set;
+    qss_to_set = m_application->styleSheet() + QSL("\r\n") + qss_to_set;
   }
 
-  qApp->setStyleSheet(qss_to_set);
+  m_application->setStyleSheet(qss_to_set);
 }
 
 void SkinFactory::setCurrentSkinName(const QString& skin_name) {
-  qApp->settings()->setValue(GROUP(GUI), GUI::Skin, skin_name);
+  m_application->settings()->setValue(GROUP(GUI), GUI::Skin, skin_name);
 }
 
 QString SkinFactory::customSkinBaseFolder() const {
-  return qApp->userDataFolder() + QDir::separator() + APP_SKIN_USER_FOLDER;
+  return m_application->userDataFolder() + QDir::separator() + APP_SKIN_USER_FOLDER;
 }
 
 #if defined(Q_OS_WIN)
@@ -271,7 +286,7 @@ bool SkinFactory::isOsDarkModeEnabled() {
 }
 
 QString SkinFactory::selectedSkinName() const {
-  return qApp->settings()->value(GROUP(GUI), GUI::Skin, QSL(APP_SKIN_DEFAULT)).toString();
+  return m_application->settings()->value(GROUP(GUI), GUI::Skin, QSL(APP_SKIN_DEFAULT)).toString();
 }
 
 QString SkinFactory::prepareHtml(const QString& inner_html) {
@@ -286,12 +301,12 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
                                            const WebViewer* viewer) const {
   const Skin skin = currentSkin();
   const bool display_enclosures =
-    qApp->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool() &&
+    m_application->settings()->value(GROUP(Messages), SETTING(Messages::DisplayEnclosuresInMessage)).toBool() &&
     viewer->loadExternalResources();
   const int forced_enclosure_img_height =
-    qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitEnclosureImagesHeight)).toInt();
+    m_application->settings()->value(GROUP(Messages), SETTING(Messages::LimitEnclosureImagesHeight)).toInt();
   const int forced_article_img_height =
-    qApp->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
+    m_application->settings()->value(GROUP(Messages), SETTING(Messages::LimitArticleImagesHeight)).toInt();
   const bool is_plain = !TextFactory::couldBeHtml(message.m_contents);
 
   QString messages_layout;
@@ -321,18 +336,18 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
   }
 
   QString msg_date_published =
-    qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
+    m_application->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
       ? message.m_created.toLocalTime()
-          .toString(qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString())
-      : qApp->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
-                                                      QLocale::FormatType::ShortFormat);
+          .toString(m_application->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString())
+      : m_application->localization()->loadedLocale().toString(message.m_created.toLocalTime(),
+                                                               QLocale::FormatType::ShortFormat);
 
   QString msg_date_retrieved =
-    qApp->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
+    m_application->settings()->value(GROUP(Messages), SETTING(Messages::UseCustomDate)).toBool()
       ? message.m_retrieved.toLocalTime()
-          .toString(qApp->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString())
-      : qApp->localization()->loadedLocale().toString(message.m_retrieved.toLocalTime(),
-                                                      QLocale::FormatType::ShortFormat);
+          .toString(m_application->settings()->value(GROUP(Messages), SETTING(Messages::CustomDateFormat)).toString())
+      : m_application->localization()->loadedLocale().toString(message.m_retrieved.toLocalTime(),
+                                                               QLocale::FormatType::ShortFormat);
 
   QUrl message_url(message.m_url);
   QString blanking;
@@ -525,10 +540,11 @@ Skin SkinFactory::skinInfo(const QString& skin_name, bool* ok) const {
       try {
         auto custom_css = loadSkinFile(skin_folder_no_sep, QSL("html_style.css"), real_base_skin_folder);
         auto target_palette =
-          ((skin.m_forcedSkinColors || qApp->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool()) &&
+          ((skin.m_forcedSkinColors ||
+            m_application->settings()->value(GROUP(GUI), SETTING(GUI::ForcedSkinColors)).toBool()) &&
            skin.hasPalette())
             ? skin.m_stylePalette
-            : qApp->palette();
+            : QApplication::palette();
 
         custom_css = replacePaletteInCss(custom_css, target_palette);
 
@@ -661,21 +677,7 @@ bool Skin::hasPalette() const {
   return m_hasStylePalette;
 }
 
-QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool use_skin_colors, bool ignore_custom_colors) const {
-  if (!ignore_custom_colors) {
-    bool enabled = qApp->settings()->value(GROUP(CustomSkinColors), SETTING(CustomSkinColors::Enabled)).toBool();
-
-    if (enabled) {
-      QString clr_identifier = qApp->settings()->value(GROUP(CustomSkinColors), enumToString(type)).toString();
-
-      if (clr_identifier.isEmpty()) {
-        return QColor();
-      }
-
-      return QColor(clr_identifier);
-    }
-  }
-
+QVariant Skin::colorForModel(SkinEnums::PaletteColors type, bool use_skin_colors) const {
   return (use_skin_colors && m_colorPalette.contains(type)) ? m_colorPalette[type] : QVariant();
 }
 

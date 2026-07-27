@@ -5,8 +5,13 @@
 
 #include "definitions/definitions.h"
 
+#include <QByteArray>
 #include <QDateTime>
-#include <QFontMetrics>
+#include <QString>
+#include <QStringList>
+
+class QColor;
+class QFontMetrics;
 
 class RSSGUARD_DLLSPEC TextFactory {
   private:
@@ -38,6 +43,7 @@ class RSSGUARD_DLLSPEC TextFactory {
     static QStringList dateTimePatterns(bool with_tzs);
     static QString encrypt(const QString& text, quint64 key = 0);
     static QString decrypt(const QString& text, quint64 key = 0);
+    static void initializeSecretEncryptionKey(const QString& settings_directory);
     static QString newline();
     static QString capitalizeFirstLetter(const QString& sts);
     static QStringList tokenizeProcessArguments(const QString& command);
@@ -52,7 +58,7 @@ class RSSGUARD_DLLSPEC TextFactory {
   private:
     static QStringList availableEncodingsInit();
 
-    static quint64 initializeSecretEncryptionKey();
+    static quint64 secretEncryptionKey();
     static quint64 generateSecretEncryptionKey();
 
     static quint64 s_encryptionKey;

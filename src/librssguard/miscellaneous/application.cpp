@@ -29,6 +29,7 @@
 #include "miscellaneous/settingskeys.h"
 #include "miscellaneous/skinfactory.h"
 #include "miscellaneous/systemfactory.h"
+#include "miscellaneous/textfactory.h"
 #include "miscellaneous/thread.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
@@ -101,6 +102,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_workHorsePool = nullptr;
 #endif
   m_settings = Settings::setupSettings(m_paths.data(), this);
+  TextFactory::initializeSecretEncryptionKey(m_settings->pathName());
 
   initializeSplash();
   showSplashMessage(tr("Initializing application..."));

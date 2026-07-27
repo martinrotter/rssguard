@@ -78,10 +78,10 @@ void SettingsGeneral::saveSettings() {
 
   // If auto-start feature is available and user wants to turn it on, then turn it on.
   if (m_ui->m_checkAutostart->isChecked()) {
-    SystemFactory::setAutoStartStatus(SystemFactory::AutoStartStatus::Enabled);
+    qApp->system()->setAutoStartStatus(SystemFactory::AutoStartStatus::Enabled);
   }
   else {
-    SystemFactory::setAutoStartStatus(SystemFactory::AutoStartStatus::Disabled);
+    qApp->system()->setAutoStartStatus(SystemFactory::AutoStartStatus::Disabled);
   }
 
   settings()->setValue(GROUP(General), General::DisableDebugOutput, m_ui->m_checkDisableDebugOutput->isChecked());

@@ -3,6 +3,8 @@
 #ifndef TEMPLATES_H
 #define TEMPLATES_H
 
+#include <QList>
+#include <QVariant>
 #include <QVariantList>
 
 template <class T>

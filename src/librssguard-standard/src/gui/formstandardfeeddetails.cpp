@@ -18,6 +18,7 @@
 #include <librssguard/services/abstract/category.h>
 #include <librssguard/services/abstract/serviceroot.h>
 
+#include <QAction>
 #include <QComboBox>
 #include <QDialogButtonBox>
 #include <QGroupBox>

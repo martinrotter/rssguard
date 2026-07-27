@@ -3,7 +3,7 @@
 #ifndef THREAD_H
 #define THREAD_H
 
-#include <QtGlobal>
+#include "definitions/definitions.h"
 
 RSSGUARD_DLLSPEC qlonglong getThreadID();
 

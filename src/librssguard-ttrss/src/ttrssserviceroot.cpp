@@ -21,6 +21,7 @@
 #include <librssguard/services/abstract/labelsnode.h>
 #include <qtlinq/qtlinq.h>
 
+#include <QAction>
 #include <QPair>
 #include <QSqlTableModel>
 
@@ -457,9 +458,8 @@ void TtRssServiceRoot::requestSyncIn() {
     }
 
     if (!labels.isLoaded() || labels.status() != TTRSS_API_STATUS_OK || labels.hasError()) {
-      const QString error = labels.error().isEmpty()
-                              ? tr("API returned status %1").arg(QString::number(labels.status()))
-                              : labels.error();
+      const QString error =
+        labels.error().isEmpty() ? tr("API returned status %1").arg(QString::number(labels.status())) : labels.error();
 
       throw ApplicationException(tr("cannot get list of labels: %1").arg(error));
     }

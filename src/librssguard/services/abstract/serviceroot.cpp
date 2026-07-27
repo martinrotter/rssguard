@@ -28,6 +28,7 @@
 #include <exception>
 #include <utility>
 
+#include <QAction>
 #include <QThreadPool>
 #include <QtConcurrent>
 
@@ -691,21 +692,20 @@ void ServiceRoot::startSyncInTask(std::function<RootItem*()> task) {
 
   ServiceRoot::requestSyncIn();
 
-  m_syncInFuture =
-    QtConcurrent::run(QThreadPool::globalInstance(), [this, task = std::move(task)]() {
-      try {
-        emit syncInFinished(task());
-      }
-      catch (const ApplicationException& ex) {
-        emit syncInFinished(ex);
-      }
-      catch (const std::exception& ex) {
-        emit syncInFinished(ApplicationException(QString::fromUtf8(ex.what())));
-      }
-      catch (...) {
-        emit syncInFinished(ApplicationException(tr("unknown synchronization error")));
-      }
-    });
+  m_syncInFuture = QtConcurrent::run(QThreadPool::globalInstance(), [this, task = std::move(task)]() {
+    try {
+      emit syncInFinished(task());
+    }
+    catch (const ApplicationException& ex) {
+      emit syncInFinished(ex);
+    }
+    catch (const std::exception& ex) {
+      emit syncInFinished(ApplicationException(QString::fromUtf8(ex.what())));
+    }
+    catch (...) {
+      emit syncInFinished(ApplicationException(tr("unknown synchronization error")));
+    }
+  });
 }
 
 void ServiceRoot::waitForSyncInFinished() {

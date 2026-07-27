@@ -3,14 +3,19 @@
 #ifndef SYSTEMFACTORY_H
 #define SYSTEMFACTORY_H
 
-#include "network-web/downloader.h"
+#include "definitions/definitions.h"
 
-#include <QHash>
+#include <QByteArray>
+#include <QDateTime>
+#include <QList>
 #include <QMetaType>
 #include <QNetworkReply>
 #include <QObject>
 #include <QPair>
-#include <QRegularExpression>
+#include <QString>
+
+class Application;
+class QRegularExpression;
 
 class RSSGUARD_DLLSPEC UpdateUrl {
   public:
@@ -40,7 +45,7 @@ class RSSGUARD_DLLSPEC SystemFactory : public QObject {
       Unavailable
     };
 
-    explicit SystemFactory(QObject* parent = nullptr);
+    explicit SystemFactory(Application* application);
     virtual ~SystemFactory();
 
     // Tries to download list with new updates.
@@ -52,7 +57,7 @@ class RSSGUARD_DLLSPEC SystemFactory : public QObject {
     // Sets new status for auto-start function.
     // Function returns false if setting of
     // new status failed.
-    static bool setAutoStartStatus(AutoStartStatus new_status);
+    bool setAutoStartStatus(AutoStartStatus new_status);
 
 #if defined(Q_OS_UNIX) && !defined(Q_OS_MACOS)
     // Returns standard location where auto-start .desktop files
@@ -86,6 +91,8 @@ class RSSGUARD_DLLSPEC SystemFactory : public QObject {
   private:
     // Performs parsing of downloaded file with list of updates.
     QList<UpdateInfo> parseUpdatesFile(const QByteArray& updates_file) const;
+
+    Application* m_application;
 };
 
 #endif // SYSTEMFACTORY_H

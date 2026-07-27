@@ -5,9 +5,7 @@
 #include "3rd-party/sc/simplecrypt.h"
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
-#include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
-#include "miscellaneous/settings.h"
 
 #if defined(HAS_ICU)
 // Direct ICU.
@@ -24,8 +22,10 @@
 #include <QStringEncoder>
 #endif
 
+#include <QColor>
 #include <QCryptographicHash>
 #include <QDir>
+#include <QFontMetrics>
 #include <QLocale>
 #include <QRandomGenerator64>
 #include <QRegularExpression>
@@ -298,11 +298,11 @@ QStringList TextFactory::dateTimePatterns(bool with_tzs) {
 }
 
 QString TextFactory::encrypt(const QString& text, quint64 key) {
-  return SimpleCrypt(key == 0 ? initializeSecretEncryptionKey() : key).encryptToString(text);
+  return SimpleCrypt(key == 0 ? secretEncryptionKey() : key).encryptToString(text);
 }
 
 QString TextFactory::decrypt(const QString& text, quint64 key) {
-  return SimpleCrypt(key == 0 ? initializeSecretEncryptionKey() : key).decryptToString(text);
+  return SimpleCrypt(key == 0 ? secretEncryptionKey() : key).decryptToString(text);
 }
 
 QString TextFactory::newline() {
@@ -658,32 +658,56 @@ QStringList TextFactory::availableEncodingsInit() {
 #endif
 }
 
-quint64 TextFactory::initializeSecretEncryptionKey() {
+void TextFactory::initializeSecretEncryptionKey(const QString& settings_directory) {
+  if (s_encryptionKey != 0x0) {
+    return;
+  }
+
+  // Check if file with encryption key exists.
+  const QString encryption_file_path = settings_directory + QDir::separator() + ENCRYPTION_FILE_NAME;
+
+  try {
+    bool conversion_successful = false;
+    const quint64 stored_key =
+      QString::fromLocal8Bit(IOFactory::readFile(encryption_file_path)).toULongLong(&conversion_successful);
+
+    if (conversion_successful && stored_key != 0x0) {
+      s_encryptionKey = stored_key;
+      return;
+    }
+  }
+  catch (const ApplicationException&) {
+    // Missing and invalid key files are handled identically below.
+  }
+
+  s_encryptionKey = generateSecretEncryptionKey();
+
+  try {
+    IOFactory::writeFile(encryption_file_path, QString::number(s_encryptionKey).toLocal8Bit());
+  }
+  catch (const ApplicationException& ex) {
+    qCriticalNN << LOGSEC_CORE << "Failed to write newly generated encryption key to file, error"
+                << QUOTE_W_SPACE_DOT(ex.message())
+                << " Now, your passwords won't be readable after you start this application again.";
+  }
+}
+
+quint64 TextFactory::secretEncryptionKey() {
   if (s_encryptionKey == 0x0) {
-    // Check if file with encryption key exists.
-    QString encryption_file_path = qApp->settings()->pathName() + QDir::separator() + ENCRYPTION_FILE_NAME;
-
-    try {
-      s_encryptionKey = quint64(QString(IOFactory::readFile(encryption_file_path)).toULongLong());
-    }
-    catch (ApplicationException&) {
-      // Well, key does not exist or is invalid, generate and save one.
-      s_encryptionKey = generateSecretEncryptionKey();
-
-      try {
-        IOFactory::writeFile(encryption_file_path, QString::number(s_encryptionKey).toLocal8Bit());
-      }
-      catch (ApplicationException& ex) {
-        qCriticalNN << LOGSEC_CORE << "Failed to write newly generated encryption key to file, error"
-                    << QUOTE_W_SPACE_DOT(ex.message())
-                    << " Now, your passwords won't be readable after you start this application again.";
-      }
-    }
+    qCriticalNN << LOGSEC_CORE << "Secret encryption key was not initialized. Using a temporary key.";
+    s_encryptionKey = generateSecretEncryptionKey();
   }
 
   return s_encryptionKey;
 }
 
 quint64 TextFactory::generateSecretEncryptionKey() {
-  return QRandomGenerator64::global()->generate();
+  quint64 key;
+
+  do {
+    key = QRandomGenerator64::global()->generate();
+  }
+  while (key == 0x0);
+
+  return key;
 }
