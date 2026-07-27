@@ -3,6 +3,7 @@
 #ifndef DATABASEQUERIES_H
 #define DATABASEQUERIES_H
 
+#include "database/databasefactory.h"
 #include "definitions/typedefs.h"
 #include "filtering/messagefilter.h"
 #include "miscellaneous/application.h"

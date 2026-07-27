@@ -5,6 +5,7 @@
 #include "src/definitions.h"
 #include "src/feedlyserviceroot.h"
 
+#include <librssguard/database/databasefactory.h>
 #include <librssguard/database/databasequeries.h>
 #include <librssguard/exceptions/networkexception.h>
 #include <librssguard/miscellaneous/application.h>
