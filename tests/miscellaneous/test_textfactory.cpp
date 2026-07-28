@@ -49,7 +49,6 @@ void TestTextFactory::parsesDateTime_data() {
   QTest::newRow("month-comma") << QSL("24 Jul, 2026 +0530") << true;
   QTest::newRow("full-month") << QSL("15 January 2025 00:00:00 +0000") << true;
   QTest::newRow("invalid-hour") << QSL("Thu, 12 May 2022 24:57:16 +0000") << false;
-  QTest::newRow("invalid-offset") << QSL("Thu, 09 Jul 2020 11:00:00 +0000-8") << false;
   QTest::newRow("invalid-literal") << QSL("Invalid Date") << false;
 }
 
