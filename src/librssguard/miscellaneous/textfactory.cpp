@@ -43,7 +43,9 @@ namespace {
       pat << QSL("yyyy-MM-ddTHH:mm:ss.z");
       pat << QSL("yyyy-MM-ddTHH:mm:ss.zzz");
       pat << QSL("yyyy-MM-ddThh:mm:ss");
+      pat << QSL("yyyy-MM-dd HH:mm:ss");
       pat << QSL("yyyy-MM-dd HH:mm:ss.z");
+      pat << QSL("yyyy-MM-dd HH:mm");
 
       pat << QSL("yyyy-MM-ddThh:mm");
 
@@ -63,15 +65,21 @@ namespace {
       pat << QSL("ddd, dd MMM yy HH:mm:ss");
       pat << QSL("ddd, dd MMMM yyyy HH:mm:ss");
       pat << QSL("ddd, d MMM yyyy HH:mm:ss");
+      pat << QSL("ddd, d MMM yyyy 'at' H:mm:ss");
+      pat << QSL("ddd, d MMM yyyy H:m:s");
+      pat << QSL("ddd, d MMMM yyyy H:mm:ss");
+      pat << QSL("dddd, d MMMM yyyy H:mm:ss");
 
       pat << QSL("ddd, MM/dd/yyyy - HH:mm");
 
+      pat << QSL("dd MMM, yyyy");
       pat << QSL("dd MMM yyyy hh:mm:ss");
       pat << QSL("dd MMM yyyy hh:mm");
       pat << QSL("dd MMM yyyy");
 
       pat << QSL("d MMM yyyy HH:mm:ss");
       pat << QSL("d MMM yyyy HH:mm");
+      pat << QSL("d MMMM yyyy HH:mm:ss");
 
       pat << QSL("dd-MM-yyyy - HH:mm");
 
@@ -86,13 +94,18 @@ namespace {
     }();
 
     static const QStringList patterns_with_tzs = []() {
-      QStringList pat = patterns_without_tzs;
+      static const QStringList timezone_suffixes =
+        {QSL("t"), QSL(" t"), QSL("tt"), QSL(" tt"), QSL("ttt"), QSL(" ttt"), QSL("tttt"), QSL(" tttt")};
 
-      for (int i = 0; i < pat.size(); i += 3) {
-        QString base_pattern = pat.value(i);
+      QStringList pat;
+      pat.reserve(patterns_without_tzs.size() * (timezone_suffixes.size() + 1));
 
-        pat.insert(i + 1, base_pattern + QSL("t"));
-        pat.insert(i + 2, base_pattern + QSL(" t"));
+      for (const QString& base_pattern : patterns_without_tzs) {
+        pat.append(base_pattern);
+
+        for (const QString& timezone_suffix : timezone_suffixes) {
+          pat.append(base_pattern + timezone_suffix);
+        }
       }
 
       return pat;
@@ -241,41 +254,67 @@ QDateTime TextFactory::parseDateTime(const QString& date_time, QString* used_dt_
   }
 
   static const QRegularExpression extra_milliseconds_rx(QSL("\\.(\\d{3})\\d+"));
+  static const QRegularExpression trailing_utc_designator_rx(QSL("\\sZ$"));
 
   input_date.replace(extra_milliseconds_rx, QSL(".\\1"));
+  input_date.replace(trailing_utc_designator_rx, QSL(" +0000"));
 
   if (input_date.isEmpty()) {
     return QDateTime();
   }
 
-  static const QLocale locale(QLocale::Language::C);
+  for (const Qt::DateFormat format :
+       {Qt::DateFormat::ISODateWithMs, Qt::DateFormat::ISODate, Qt::DateFormat::RFC2822Date}) {
+    QDateTime standard_dt = QDateTime::fromString(input_date, format);
 
-  QDateTime dt;
-  const QStringList* date_patterns = &dateTimePatternsCached(true);
-  QStringList preferred_date_patterns;
+    if (standard_dt.isValid()) {
+      if (used_dt_format != nullptr) {
+        used_dt_format->clear();
+      }
 
-  if (used_dt_format != nullptr && !used_dt_format->isEmpty()) {
-    preferred_date_patterns = *date_patterns;
-    preferred_date_patterns.prepend(*used_dt_format);
-    date_patterns = &preferred_date_patterns;
+      return standard_dt.toUTC();
+    }
   }
 
-  for (const QString& pattern : std::as_const(*date_patterns)) {
+  static const QLocale locale(QLocale::Language::C);
+
+  const QStringList& date_patterns = dateTimePatternsCached(true);
+  const QString preferred_date_pattern = used_dt_format == nullptr ? QString() : *used_dt_format;
+
+  QDateTime dt;
+
+  const auto try_pattern = [&input_date, used_dt_format, &dt](const QString& pattern) {
 #if QT_VERSION >= 0x060700 // Qt >= 6.7.0
     dt = locale.toDateTime(input_date, pattern, 2000);
 #else
     dt = locale.toDateTime(input_date, pattern);
 #endif
 
-    if (dt.isValid()) {
-      // Make sure that this date/time is considered UTC.
-      dt = dt.toUTC();
+    if (!dt.isValid()) {
+      return false;
+    }
 
-      if (used_dt_format != nullptr) {
-        used_dt_format->clear();
-        used_dt_format->append(pattern);
-      }
+    // Make sure that this date/time is considered UTC.
+    dt = dt.toUTC();
 
+    if (used_dt_format != nullptr) {
+      used_dt_format->clear();
+      used_dt_format->append(pattern);
+    }
+
+    return true;
+  };
+
+  if (!preferred_date_pattern.isEmpty() && try_pattern(preferred_date_pattern)) {
+    return dt;
+  }
+
+  for (const QString& pattern : date_patterns) {
+    if (pattern == preferred_date_pattern) {
+      continue;
+    }
+
+    if (try_pattern(pattern)) {
       return dt;
     }
   }

@@ -188,16 +188,13 @@ RootItem* NextcloudNetworkFactory::feedsCategories(const QNetworkProxy& custom_p
 
   if (feeds_parse_error.error != QJsonParseError::NoError) {
     throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
-                           QCoreApplication::translate("NextcloudNetworkFactory",
-                                                       "Cannot parse Nextcloud feeds JSON response: %1")
+                           QObject::tr("Cannot parse Nextcloud feeds JSON response: %1")
                              .arg(feeds_parse_error.errorString()));
   }
 
   if (!feeds_doc.isObject() || !feeds_doc.object().value(QSL("feeds")).isArray()) {
     throw NetworkException(QNetworkReply::NetworkError::UnknownContentError,
-                           QCoreApplication::
-                             translate("NextcloudNetworkFactory",
-                                       "Nextcloud feeds response does not contain a JSON array of feeds."));
+                           QObject::tr("Nextcloud feeds response does not contain a JSON array of feeds."));
   }
 
   auto* parent = new RootItem();
