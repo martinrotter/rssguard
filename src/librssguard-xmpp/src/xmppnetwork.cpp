@@ -249,7 +249,7 @@ void XmppNetwork::obtainServicesNodesTree() {
 
       m_syncInSchedulingServices = true;
 
-      for (const auto& serv : all_services) {
+      for (const auto& serv : std::as_const(all_services)) {
         const auto serv_trim = serv.trimmed();
 
         if (serv_trim.isEmpty()) {
@@ -651,7 +651,7 @@ void XmppNetwork::joinRooms() {
     return fd->type() == XmppCategory::Type::MultiUserChats;
   });
 
-  for (XmppFeed* room : rooms) {
+  for (XmppFeed* room : std::as_const(rooms)) {
     room->join(m_mucManager);
   }
 }

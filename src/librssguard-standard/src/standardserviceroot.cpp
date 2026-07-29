@@ -322,7 +322,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
     // Update last datetime this host was used.
     // resetHostSpacing(host);
 
-    qDebugNN << network_result.m_cookies;
+    qDebugNN << LOGSEC_STANDARD << "Received" << QUOTE_W_SPACE(network_result.m_cookies.size()) << "HTTP cookies.";
 
     if (network_result.m_networkError != QNetworkReply::NetworkError::NoError) {
       qWarningNN << LOGSEC_STANDARD << "Error" << QUOTE_W_SPACE(network_result.m_networkError)
