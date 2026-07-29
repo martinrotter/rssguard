@@ -329,7 +329,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       tmr.restart();
 
       // Perform per-message filtering.
-      FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles, feed, acc);
+      FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles, feed, acc, qApp);
       filtering.filterRun().setTotalCountOfFilters(feed_filters_enabled.size());
 
       qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000
@@ -651,16 +651,16 @@ QList<Feed*> FeedDownloader::scrambleFeedsWithSameHost(const QList<Feed*>& feeds
 
     // Extract host from URL quickly.
     QString host;
-    int schemeEnd = source.indexOf("://");
+    int schemeEnd = source.indexOf(QSL("://"));
     if (schemeEnd != -1) {
-      int hostStart = schemeEnd + 3;
-      int hostEnd = source.indexOf('/', hostStart);
-      host = (hostEnd != -1) ? source.mid(hostStart, hostEnd - hostStart) : source.mid(hostStart);
+      int host_start = schemeEnd + 3;
+      int host_end = source.indexOf('/', host_start);
+      host = (host_end != -1) ? source.mid(host_start, host_end - host_start) : source.mid(host_start);
     }
     else {
       // No scheme, treat entire source as host.
-      int hostEnd = source.indexOf('/');
-      host = (hostEnd != -1) ? source.left(hostEnd) : source;
+      int host_end = source.indexOf(QL1C('/'));
+      host = (host_end != -1) ? source.left(host_end) : source;
     }
 
     feeds_by_host[host].append(feed);

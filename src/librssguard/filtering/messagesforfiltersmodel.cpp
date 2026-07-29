@@ -13,15 +13,16 @@
 #include "miscellaneous/skinfactory.h"
 #include "services/abstract/labelsnode.h"
 
-MessagesForFiltersModel::MessagesForFiltersModel(QObject* parent) : QAbstractTableModel(parent) {
+MessagesForFiltersModel::MessagesForFiltersModel(Application* app, QObject* parent)
+  : QAbstractTableModel(parent), m_application(app) {
   m_headerData << tr("Result") << tr("Read") << tr("Important") << tr("Trash") << tr("Title") << tr("Date")
                << tr("Received") << tr("Score");
 
   m_txtTrue = tr("true");
   m_txtFalse = tr("false");
 
-  m_colorOk = qApp->skins()->colorForModel(SkinEnums::PaletteColors::Allright).value<QColor>();
-  m_colorError = qApp->skins()->colorForModel(SkinEnums::PaletteColors::FgError).value<QColor>();
+  m_colorOk = m_application->skins()->colorForModel(SkinEnums::PaletteColors::Allright).value<QColor>();
+  m_colorError = m_application->skins()->colorForModel(SkinEnums::PaletteColors::FgError).value<QColor>();
 }
 
 void MessagesForFiltersModel::setMessages(const QList<Message>& messages) {
@@ -224,13 +225,13 @@ Qt::ItemFlags MessagesForFiltersModel::flags(const QModelIndex& index) const {
 void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* account, const QList<RootItem*>& checked) {
   for (RootItem* it : checked) {
     if (it->kind() == RootItem::Kind::Feed) {
-      FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles, it->toFeed(), account);
+      FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles, it->toFeed(), account, qApp);
 
       filtering.filterRun().setTotalCountOfFilters(1);
       filtering.filterRun().setIndexOfCurrentFilter(0);
 
       // We process messages of the feed.
-      QList<Message> msgs = qApp->database()->worker()->read<QList<Message>>([&](const QSqlDatabase& db) {
+      QList<Message> msgs = m_application->database()->worker()->read<QList<Message>>([&](const QSqlDatabase& db) {
         return DatabaseQueries::getUndeletedMessagesForFeed(db, it->id(), account->labelsNode()->getHashedLabels());
       });
 
@@ -249,7 +250,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
           remove_msg = true;
 
           // Purge the message completely and remove leftovers.
-          qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+          m_application->database()->worker()->write([&](const QSqlDatabase& db) {
             DatabaseQueries::purgeMessage(db, msg_filtered->m_id);
           });
           filtering.removeDuplicateCandidate(msg_filtered->m_id);

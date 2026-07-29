@@ -53,7 +53,7 @@ FormMessageFiltersManager::FormMessageFiltersManager(FeedReader* reader,
                                                      QWidget* parent)
   : QDialog(parent), m_feedsModel(new AccountCheckSortedModel(this)), m_rootItem(new RootItem()), m_accounts(accounts),
     m_reader(reader), m_loadingFilter(false), m_suppressFeedAssignmentConfirmation(false),
-    m_msgProxyModel(new QSortFilterProxyModel(this)), m_msgModel(new MessagesForFiltersModel(this)) {
+    m_msgProxyModel(new QSortFilterProxyModel(this)), m_msgModel(new MessagesForFiltersModel(qApp, this)) {
   m_ui.setupUi(this);
 
   m_defaultTextColor = m_ui.m_txtErrors->textColor();
@@ -540,7 +540,8 @@ void FormMessageFiltersManager::testFilter() {
                             selected_fd_cat != nullptr && selected_fd_cat->kind() == RootItem::Kind::Feed
                               ? selected_fd_cat->toFeed()
                               : nullptr,
-                            selectedAccount());
+                            selectedAccount(),
+                            qApp);
 
   filtering.filterRun().setTotalCountOfFilters(1);
   filtering.filterRun().setIndexOfCurrentFilter(0);

@@ -11,6 +11,8 @@
 #include <QJSEngine>
 #include <QObject>
 
+class Application;
+
 class FilteringSystem : public QObject {
     Q_OBJECT
 
@@ -20,7 +22,20 @@ class FilteringSystem : public QObject {
       ExistingArticles
     };
 
-    explicit FilteringSystem(FiteringUseCase mode, Feed* feed, ServiceRoot* account, QObject* parent = nullptr);
+    struct DuplicateCandidate {
+        int m_id;
+        QString m_title;
+        QString m_url;
+        QString m_author;
+        QDateTime m_created;
+        QString m_customId;
+    };
+
+    explicit FilteringSystem(FiteringUseCase mode,
+                             Feed* feed,
+                             ServiceRoot* account,
+                             Application* app,
+                             QObject* parent = nullptr);
 
     void setMessage(Message* message);
 
@@ -34,15 +49,6 @@ class FilteringSystem : public QObject {
                                       QList<Message>& important_msgs);
 
     FilterMessage::FilteringAction filterMessage(const MessageFilter& filter);
-
-    struct DuplicateCandidate {
-        int m_id;
-        QString m_title;
-        QString m_url;
-        QString m_author;
-        QDateTime m_created;
-        QString m_customId;
-    };
 
     const QList<DuplicateCandidate>& duplicateCandidates(FilterMessage::DuplicityCheck criteria);
     void removeDuplicateCandidate(int message_id);
@@ -66,6 +72,7 @@ class FilteringSystem : public QObject {
     Feed* m_feed;
     ServiceRoot* m_account;
     QList<Label*> m_availableLabels;
+    Application* m_application;
 
     QJSEngine m_engine;
     QHash<const MessageFilter*, QJSValue> m_preparedFilters;

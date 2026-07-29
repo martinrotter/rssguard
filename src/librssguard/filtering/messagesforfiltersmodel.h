@@ -21,6 +21,7 @@
 
 class MessageFilter;
 class FilteringSystem;
+class Application;
 
 struct MessageBackupAndOriginal {
     Message m_original;
@@ -31,7 +32,7 @@ class MessagesForFiltersModel : public QAbstractTableModel {
     Q_OBJECT
 
   public:
-    explicit MessagesForFiltersModel(QObject* parent = nullptr);
+    explicit MessagesForFiltersModel(Application* app, QObject* parent = nullptr);
 
     virtual int rowCount(const QModelIndex& parent) const;
     virtual int columnCount(const QModelIndex& parent) const;
@@ -53,6 +54,7 @@ class MessagesForFiltersModel : public QAbstractTableModel {
     QString decisionToText(FilterMessage::FilteringAction dec) const;
 
   private:
+    Application* m_application;
     QList<QString> m_headerData{};
     QList<MessageBackupAndOriginal> m_messages{};
 

@@ -14,8 +14,12 @@
 
 #include <QElapsedTimer>
 
-FilteringSystem::FilteringSystem(FiteringUseCase mode, Feed* feed, ServiceRoot* account, QObject* parent)
-  : QObject(parent), m_mode(mode), m_feed(feed), m_account(account) {
+FilteringSystem::FilteringSystem(FiteringUseCase mode,
+                                 Feed* feed,
+                                 ServiceRoot* account,
+                                 Application* app,
+                                 QObject* parent)
+  : QObject(parent), m_mode(mode), m_feed(feed), m_account(account), m_application(app) {
   initializeEngine();
 
   m_availableLabels =
@@ -137,7 +141,7 @@ const QList<FilteringSystem::DuplicateCandidate>& FilteringSystem::duplicateCand
 
   candidates.clear();
 
-  qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+  m_application->database()->worker()->read([&](const QSqlDatabase& db) {
     SqlQuery query(db);
 
     if (all_feeds_same_account) {
@@ -209,7 +213,7 @@ QJSValue FilteringSystem::prepareFilter(const MessageFilter& filter) {
   // Keep each filter script in its own scope so helper functions/variables from
   // one filter do not overwrite helpers from another filter in the shared engine.
   const QString filter_script = QSL("(function() {\n%1\n; return filterMessage;\n})()")
-                                  .arg(qApp->replaceUserDataFolderPlaceholder(filter.script(), true));
+                                  .arg(m_application->replaceUserDataFolderPlaceholder(filter.script(), true));
   QJSValue filter_func = m_engine.evaluate(filter_script, filter.name());
 
   if (filter_func.isError()) {
@@ -238,7 +242,7 @@ FilterMessage& FilteringSystem::message() {
 
 void FilteringSystem::initializeEngine() {
   m_engine.installExtensions(QJSEngine::Extension::ConsoleExtension | QJSEngine::Extension::GarbageCollectionExtension);
-  m_engine.setUiLanguage(qApp->localization()->loadedLanguage());
+  m_engine.setUiLanguage(m_application->localization()->loadedLanguage());
 
   // msg
   m_engine.globalObject().setProperty(QSL("Msg"), m_engine.newQMetaObject(&FilterMessage::staticMetaObject));
