@@ -11,7 +11,22 @@
 
 class FilteringSystem;
 
-class FilterMessage : public QObject {
+class FilterMechanism : public QObject {
+    Q_OBJECT
+
+  public:
+    explicit FilterMechanism(QObject* parent = nullptr);
+
+    void setSystem(FilteringSystem* system);
+
+  protected:
+    FilteringSystem* system() const;
+
+  private:
+    FilteringSystem* m_system{nullptr};
+};
+
+class FilterMessage : public FilterMechanism {
     Q_OBJECT
 
     // Safe Q_INVOKABLE actions exposed by the visual article-filter generator.
@@ -80,7 +95,6 @@ class FilterMessage : public QObject {
 
     explicit FilterMessage(QObject* parent = nullptr);
 
-    void setSystem(FilteringSystem* sys);
     void setMessage(Message* message);
 
     Q_INVOKABLE bool isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double threshold = 0.1) const;
@@ -159,28 +173,22 @@ class FilterMessage : public QObject {
 
   private:
     Message* m_message;
-    FilteringSystem* m_system;
 };
 
 // Information about the application, access to DB etc.
-class FilterApp : public QObject {
+class FilterApp : public FilterMechanism {
     Q_OBJECT
 
   public:
-    void setSystem(FilteringSystem* sys);
-
     Q_INVOKABLE void showNotification(const QString& title, const QString& text);
     Q_INVOKABLE void log(const QString& message);
 
   signals:
     void logged(const QString& message);
-
-  private:
-    FilteringSystem* m_system;
 };
 
 // Information about current filtering run.
-class FilterRun : public QObject {
+class FilterRun : public FilterMechanism {
     Q_OBJECT
 
   public:
@@ -205,7 +213,7 @@ class FilterRun : public QObject {
     int m_numberOfAcceptedMessages;
 };
 
-class FilterAccount : public QObject {
+class FilterAccount : public FilterMechanism {
     Q_OBJECT
 
   public:
@@ -216,17 +224,12 @@ class FilterAccount : public QObject {
     QString title() const;
     int id() const;
 
-    void setSystem(FilteringSystem* sys);
-
     Q_INVOKABLE QString findLabel(const QString& label_title) const;
     Q_INVOKABLE QString createLabel(const QString& label_title, const QString& hex_color = {});
     QList<Label*> availableLabels() const;
-
-  private:
-    FilteringSystem* m_system;
 };
 
-class FilterFeed : public QObject {
+class FilterFeed : public FilterMechanism {
     Q_OBJECT
 
   public:
@@ -235,14 +238,9 @@ class FilterFeed : public QObject {
 
     QString title() const;
     QString customId() const;
-
-    void setSystem(FilteringSystem* sys);
-
-  private:
-    FilteringSystem* m_system;
 };
 
-class FilterFs : public QObject {
+class FilterFs : public FilterMechanism {
     Q_OBJECT
 
   public:
@@ -254,15 +252,10 @@ class FilterFs : public QObject {
                                    const QStringList& arguments = {},
                                    const QString& stdin_data = {},
                                    const QString& working_directory = {}) const;
-
-    void setSystem(FilteringSystem* sys);
-
-  private:
-    FilteringSystem* m_system;
 };
 
 // Misc utility functions for filtering.
-class FilterUtils : public QObject {
+class FilterUtils : public FilterMechanism {
     Q_OBJECT
 
   public:
@@ -270,8 +263,6 @@ class FilterUtils : public QObject {
 
     explicit FilterUtils(QObject* parent = nullptr);
     virtual ~FilterUtils();
-
-    void setSystem(FilteringSystem* sys);
 
     // Returns hostname or empty string if failed.
     QString hostname() const;
@@ -288,9 +279,6 @@ class FilterUtils : public QObject {
 
     Q_INVOKABLE QString readTextFile(const QString& filename) const;
     Q_INVOKABLE void writeTextFile(const QString& filename, const QString& data) const;
-
-  private:
-    FilteringSystem* m_system;
 };
 
 #endif // FILTEROBJECTS_H

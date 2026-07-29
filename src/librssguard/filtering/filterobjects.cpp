@@ -20,14 +20,24 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 
-FilterMessage::FilterMessage(QObject* parent) : QObject(parent), m_message(nullptr) {}
+FilterMechanism::FilterMechanism(QObject* parent) : QObject(parent) {}
+
+void FilterMechanism::setSystem(FilteringSystem* system) {
+  m_system = system;
+}
+
+FilteringSystem* FilterMechanism::system() const {
+  return m_system;
+}
+
+FilterMessage::FilterMessage(QObject* parent) : FilterMechanism(parent), m_message(nullptr) {}
 
 void FilterMessage::setMessage(Message* message) {
   m_message = message;
 }
 
 bool FilterMessage::assignLabel(const QString& label_custom_id) const {
-  auto lbl = qlinq::from(m_system->availableLabels()).firstOrDefault([label_custom_id](Label* lbl) {
+  auto lbl = qlinq::from(system()->availableLabels()).firstOrDefault([label_custom_id](Label* lbl) {
     return lbl->customId() == label_custom_id;
   });
 
@@ -62,12 +72,12 @@ void FilterMessage::deassignAllLabels() const {
 }
 
 void FilterMessage::exportCategoriesToLabels(bool assign_to_message) const {
-  if (m_system->mode() == FilteringSystem::FiteringUseCase::ExistingArticles) {
+  if (system()->mode() == FilteringSystem::FiteringUseCase::ExistingArticles) {
     return;
   }
 
   for (QSharedPointer<MessageCategory>& cate : m_message->m_categories) {
-    auto lbl = m_system->filterAccount().createLabel(cate->title());
+    auto lbl = system()->filterAccount().createLabel(cate->title());
 
     if (assign_to_message) {
       assignLabel(lbl);
@@ -189,16 +199,12 @@ void FilterMessage::setScore(double score) {
   m_message->m_score = std::min(MSG_SCORE_MAX, std::max(MSG_SCORE_MIN, score));
 }
 
-void FilterMessage::setSystem(FilteringSystem* sys) {
-  m_system = sys;
-}
-
 int FilterMessage::feedId() const {
-  if (m_system->feed() == nullptr || m_system->feed()->customId() == QString::number(NO_PARENT_CATEGORY)) {
+  if (system()->feed() == nullptr || system()->feed()->customId() == QString::number(NO_PARENT_CATEGORY)) {
     return m_message->m_feedId;
   }
   else {
-    return m_system->feed()->id();
+    return system()->feed()->id();
   }
 }
 
@@ -339,7 +345,7 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
     check_timer.start();
 #endif
 
-    const QList<FilteringSystem::DuplicateCandidate>& candidates = m_system->duplicateCandidates(criteria);
+    const QList<FilteringSystem::DuplicateCandidate>& candidates = system()->duplicateCandidates(criteria);
     const QString message_title = title();
     JaroWinklerWorkspace workspace;
 
@@ -361,7 +367,7 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
 #endif
 
       // We check similarity of each article.
-      if (m_system->mode() == FilteringSystem::FiteringUseCase::ExistingArticles && id() > 0 &&
+      if (system()->mode() == FilteringSystem::FiteringUseCase::ExistingArticles && id() > 0 &&
           candidate.m_id == id()) {
         // NOTE: We skip this message because it is the same one.
         continue;
@@ -434,11 +440,11 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   }
 
   where_clauses.append(QSL("account_id = :account_id"));
-  bind_values.append({QSL(":account_id"), m_system->filterAccount().id()});
+  bind_values.append({QSL(":account_id"), system()->filterAccount().id()});
 
   // If we have already message stored in DB, then we also must
   // make sure that we do not match the message against itself.
-  if (m_system->mode() == FilteringSystem::FiteringUseCase::ExistingArticles && id() > 0) {
+  if (system()->mode() == FilteringSystem::FiteringUseCase::ExistingArticles && id() > 0) {
     where_clauses.append(QSL("id != :id"));
     bind_values.append({QSL(":id"), QString::number(id())});
   }
@@ -450,7 +456,7 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   }
 
   QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
-  bool res = qApp->database()->worker()->read<bool>([&](const QSqlDatabase& db) {
+  bool res = system()->application()->database()->worker()->read<bool>([&](const QSqlDatabase& db) {
     SqlQuery q(db);
     q.prepare(full_query);
 
@@ -486,7 +492,7 @@ bool FilterMessage::fetchFullContents(bool plain_text_only) {
   }
 
   try {
-    QString full_contents = FeedReader::getFullArticle(m_system->feed(), url, plain_text_only);
+    QString full_contents = FeedReader::getFullArticle(system()->feed(), url, plain_text_only);
 
     if (full_contents.simplified().isEmpty()) {
       qWarningNN << LOGSEC_CORE << "Empty contents returned from article extractor for URL"
@@ -534,7 +540,7 @@ bool FilterMessage::hasEnclosures() const {
   return !m_message->m_enclosures.isEmpty();
 }
 
-FilterUtils::FilterUtils(QObject* parent) : QObject(parent) {}
+FilterUtils::FilterUtils(QObject* parent) : FilterMechanism(parent) {}
 
 FilterUtils::~FilterUtils() {
   qDebugNN << "Destroying FilterUtils instance.";
@@ -630,11 +636,11 @@ QString FilterFs::runExecutableGetOutput(const QString& executable,
                                          const QString& stdin_data,
                                          const QString& working_directory) const {
   try {
-    auto res =
-      IOFactory::startProcessGetOutput(executable,
-                                       arguments,
-                                       stdin_data,
-                                       working_directory.isEmpty() ? qApp->userDataFolder() : working_directory);
+    auto res = IOFactory::startProcessGetOutput(executable,
+                                                arguments,
+                                                stdin_data,
+                                                working_directory.isEmpty() ? system()->application()->userDataFolder()
+                                                                            : working_directory);
 
     return res;
   }
@@ -651,23 +657,16 @@ void FilterFs::runExecutable(const QString& executable,
     IOFactory::startProcessDetached(executable,
                                     arguments,
                                     stdin_data,
-                                    working_directory.isEmpty() ? qApp->userDataFolder() : working_directory);
+                                    working_directory.isEmpty() ? system()->application()->userDataFolder()
+                                                                : working_directory);
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_JS << "Error when running executable:" << QUOTE_W_SPACE_DOT(ex.message());
   }
 }
 
-void FilterFs::setSystem(FilteringSystem* sys) {
-  m_system = sys;
-}
-
-void FilterUtils::setSystem(FilteringSystem* sys) {
-  m_system = sys;
-}
-
 QString FilterAccount::findLabel(const QString& label_title) const {
-  auto found_lbl = qlinq::from(m_system->availableLabels()).firstOrDefault([label_title](Label* lbl) {
+  auto found_lbl = qlinq::from(system()->availableLabels()).firstOrDefault([label_title](Label* lbl) {
     return lbl->title().toLower() == label_title.toLower();
   });
 
@@ -686,7 +685,7 @@ QString FilterAccount::createLabel(const QString& label_title, const QString& he
     return lbl_id;
   }
 
-  if (!Globals::hasFlag(m_system->account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Adding)) {
+  if (!Globals::hasFlag(system()->account()->supportedLabelOperations(), ServiceRoot::LabelOperation::Adding)) {
     qWarningNN << LOGSEC_CORE << "This account does not support creating labels.";
     return nullptr;
   }
@@ -698,12 +697,12 @@ QString FilterAccount::createLabel(const QString& label_title, const QString& he
 
     new_lbl = new Label(label_title, icon_color);
 
-    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-      DatabaseQueries::createLabel(db, new_lbl, m_system->account()->accountId());
+    system()->application()->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createLabel(db, new_lbl, system()->account()->accountId());
     });
 
-    m_system->account()->requestItemReassignment(new_lbl, m_system->account()->labelsNode(), true);
-    m_system->availableLabels().append(new_lbl);
+    system()->account()->requestItemReassignment(new_lbl, system()->account()->labelsNode(), true);
+    system()->availableLabels().append(new_lbl);
 
     return new_lbl->customId();
   }
@@ -719,7 +718,7 @@ QString FilterAccount::createLabel(const QString& label_title, const QString& he
 }
 
 void FilterApp::showNotification(const QString& title, const QString& text) {
-  qApp->showGuiMessage(Notification::Event::GeneralEvent, GuiMessage(title, text));
+  system()->application()->showGuiMessage(Notification::Event::GeneralEvent, GuiMessage(title, text));
 }
 
 void FilterApp::log(const QString& message) {
@@ -728,27 +727,19 @@ void FilterApp::log(const QString& message) {
 }
 
 QList<Label*> FilterAccount::availableLabels() const {
-  return m_system->availableLabels();
-}
-
-void FilterApp::setSystem(FilteringSystem* sys) {
-  m_system = sys;
+  return system()->availableLabels();
 }
 
 QString FilterFeed::title() const {
-  return m_system->feed() != nullptr ? m_system->feed()->title() : QString();
+  return system()->feed() != nullptr ? system()->feed()->title() : QString();
 }
 
 QString FilterFeed::customId() const {
-  return m_system->feed() != nullptr ? m_system->feed()->customId() : QString();
-}
-
-void FilterFeed::setSystem(FilteringSystem* sys) {
-  m_system = sys;
+  return system()->feed() != nullptr ? system()->feed()->customId() : QString();
 }
 
 FilterRun::FilterRun(QObject* parent)
-  : QObject(parent), m_indexOfCurrentFilter(0), m_totalCountOfFilters(0), m_numberOfAcceptedMessages(0) {}
+  : FilterMechanism(parent), m_indexOfCurrentFilter(0), m_totalCountOfFilters(0), m_numberOfAcceptedMessages(0) {}
 
 int FilterRun::numberOfAcceptedMessages() const {
   return m_numberOfAcceptedMessages;
@@ -775,13 +766,9 @@ void FilterRun::setTotalCountOfFilters(int total) {
 }
 
 QString FilterAccount::title() const {
-  return m_system->account()->title();
+  return system()->account()->title();
 }
 
 int FilterAccount::id() const {
-  return m_system->account() != nullptr ? m_system->account()->accountId() : NO_PARENT_CATEGORY;
-}
-
-void FilterAccount::setSystem(FilteringSystem* sys) {
-  m_system = sys;
+  return system()->account() != nullptr ? system()->account()->accountId() : NO_PARENT_CATEGORY;
 }

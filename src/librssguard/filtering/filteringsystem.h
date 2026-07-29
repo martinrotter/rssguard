@@ -62,6 +62,7 @@ class FilteringSystem : public QObject {
     FilterRun& filterRun();
     FilterAccount& filterAccount();
     FilterApp& filterApp();
+    Application* application() const;
 
   private:
     void initializeEngine();

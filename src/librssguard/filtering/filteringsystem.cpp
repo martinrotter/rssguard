@@ -25,12 +25,12 @@ FilteringSystem::FilteringSystem(FiteringUseCase mode,
   m_availableLabels =
     (m_account != nullptr && m_account->labelsNode() != nullptr) ? m_account->labelsNode()->labels() : QList<Label*>();
 
-  m_filterFeed.setSystem(this);
-  m_filterApp.setSystem(this);
-  m_filterMessage.setSystem(this);
-  m_filterUtils.setSystem(this);
-  m_filterAccount.setSystem(this);
-  m_filterFs.setSystem(this);
+  FilterMechanism* filter_mechanisms[] =
+    {&m_filterMessage, &m_filterFeed, &m_filterAccount, &m_filterApp, &m_filterRun, &m_filterFs, &m_filterUtils};
+
+  for (FilterMechanism* mechanism : filter_mechanisms) {
+    mechanism->setSystem(this);
+  }
 }
 
 void FilteringSystem::setMessage(Message* message) {
@@ -230,6 +230,10 @@ QJSValue FilteringSystem::prepareFilter(const MessageFilter& filter) {
 
   m_preparedFilters.insert(filter_key, filter_func);
   return filter_func;
+}
+
+Application* FilteringSystem::application() const {
+  return m_application;
 }
 
 QJSEngine& FilteringSystem::engine() {
