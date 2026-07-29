@@ -381,8 +381,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
   }
 
   if (!f->postProcessScript().simplified().isEmpty()) {
-    qDebugNN << LOGSEC_STANDARD << "We will process feed data with post-process script"
-             << QUOTE_W_SPACE_DOT(f->postProcessScript());
+    qDebugNN << LOGSEC_STANDARD << "We will process feed data with post-process script.";
 
     try {
       feed_contents =
