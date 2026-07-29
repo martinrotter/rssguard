@@ -6,7 +6,7 @@
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="197"/>
       <source>(folder)</source>
-      <translation type="unfinished">(folder)</translation>
+      <translation>(carpeta)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/accountcheckmodel.cpp" line="200"/>
@@ -44,13 +44,13 @@
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="40"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="82"/>
       <source>Labels</source>
-      <translation type="unfinished">Labels</translation>
+      <translation>Etiquetas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/accountdetails.ui" line="47"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_accountdetails.h" line="83"/>
       <source>Queries</source>
-      <translation type="unfinished">Queries</translation>
+      <translation>Búsquedas</translation>
     </message>
   </context>
   <context>
@@ -63,22 +63,22 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="94"/>
       <source>Initializing application...</source>
-      <translation type="unfinished">Initializing application...</translation>
+      <translation>Iniciando aplicación...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="114"/>
       <source>Initializing application services...</source>
-      <translation type="unfinished">Initializing application services...</translation>
+      <translation>Iniciando servicios de aplicación...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="145"/>
       <source>Loading appearance...</source>
-      <translation type="unfinished">Loading appearance...</translation>
+      <translation>Cargando aspecto...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="151"/>
       <source>Preparing the application...</source>
-      <translation type="unfinished">Preparing the application...</translation>
+      <translation>Preparando la aplicación...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="531"/>
@@ -168,12 +168,12 @@
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="11"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts a particular article, it can still be subsequently ignored and not added to the database.</source>
-      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts a particular article, it can still be subsequently ignored and not added to the database.</translation>
+      <translation>Establecer cualquier limitación aquí indicará a %1 que ignore algunos artículos entrantes. La lógica ejecuta DESPUÉS de cualquier filtro de artículo, así que incluso si su filtro de artículo acepta un artículo particular, aún se puede ignorar posteriormente y sin añadirlo a la base de datos.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="16"/>
       <source>All excess articles are removed automatically by the application, usually after a particular feed is fetched. Articles are either completely purged (including articles from the recycle bin) from the internal database or are just moved to recycle bin.</source>
-      <translation type="unfinished">All excess articles are removed automatically by the application, usually after a particular feed is fetched. Articles are either completely purged (including articles from the recycle bin) from the internal database or are just moved to recycle bin.</translation>
+      <translation>El exceso de artículos son eliminados automáticamente por la aplicación, por lo general después de obtener una fuente particular. Los artículos son purgados completamente (incluyendo artículos en papelera de reciclaje) de la base de datos interna o simplemente se mueven a la papelera.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="22"/>
@@ -354,9 +354,9 @@
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of folders: %2
-Number of disabled feeds: %3</translation>
+      <translation>Número de fuentes: %1
+Número de carpetas: %2
+Número de fuentes inhabilitadas: %3</translation>
     </message>
   </context>
   <context>
@@ -364,32 +364,32 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="23"/>
       <source>Click me!</source>
-      <translation type="unfinished">Click me!</translation>
+      <translation>¡Hazme click!</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="67"/>
       <source>Select new color</source>
-      <translation type="unfinished">Select new color</translation>
+      <translation>Seleccionar nuevo color</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="85"/>
       <source>Enter URL</source>
-      <translation type="unfinished">Enter URL</translation>
+      <translation>Introducir URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="86"/>
       <source>Enter direct URL pointing to the image</source>
-      <translation type="unfinished">Enter direct URL pointing to the image</translation>
+      <translation>Introduzca la URL directa apuntando a la imagen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="109"/>
       <source>Icon not fetched</source>
-      <translation type="unfinished">Icon not fetched</translation>
+      <translation>Icono no obtenido</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="110"/>
       <source>Icon was not fetched due to network error.</source>
-      <translation type="unfinished">Icon was not fetched due to network error.</translation>
+      <translation>El icono no fue obtenido debido a un error de red.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="125"/>
@@ -399,27 +399,27 @@ Number of disabled feeds: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="128"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Imágenes (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="140"/>
       <source>Select new &amp;color...</source>
-      <translation type="unfinished">Select new &amp;color...</translation>
+      <translation>Seleccionar nuevo &amp;color...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="149"/>
       <source>Load icon from &amp;file...</source>
-      <translation type="unfinished">Load icon from &amp;file...</translation>
+      <translation>Cargando icono desde &amp;fichero...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="154"/>
       <source>Download icon from &amp;URL...</source>
-      <translation type="unfinished">Download icon from &amp;URL...</translation>
+      <translation>Descargar icono de &amp;URL...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/colortoolbutton.cpp" line="159"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Usar icono predeterminado del tema de iconos</translation>
     </message>
   </context>
   <context>
@@ -7555,7 +7555,7 @@ Lista de lectores compatibles:</translation>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="430"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Imágenes (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/webviewers/webviewer.cpp" line="618"/>
@@ -8201,9 +8201,9 @@ stack: %3</translation>
       <source>Number of feeds: %1
 Number of folders: %2
 Number of disabled feeds: %3</source>
-      <translation type="unfinished">Number of feeds: %1
-Number of folders: %2
-Number of disabled feeds: %3</translation>
+      <translation>Número de fuentes: %1
+Número de carpetas: %2
+Número de fuentes inhabilitadas: %3</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/serviceroot.cpp" line="706"/>
@@ -9850,7 +9850,7 @@ Descripción: %3</translation>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="22"/>
       <source>Use default icon from icon theme</source>
-      <translation type="unfinished">Use default icon from icon theme</translation>
+      <translation>Usar icono predeterminado del tema de iconos</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="33"/>
@@ -9869,7 +9869,7 @@ Si ese es el caso, es necesario establecer algunos intervalos de tiempo al obten
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="57"/>
       <source>Images (%1)</source>
-      <translation type="unfinished">Images (%1)</translation>
+      <translation>Imágenes (%1)</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardaccountdetails.cpp" line="72"/>
