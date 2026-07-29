@@ -2026,7 +2026,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="462"/>
       <source>Label title</source>
-      <translation type="unfinished">Label title</translation>
+      <translation>Заголовок метки</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="462"/>
@@ -2088,7 +2088,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="58"/>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="58"/>
       <source>OK.</source>
-      <translation type="unfinished">OK.</translation>
+      <translation>OK.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="55"/>
@@ -2500,7 +2500,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="244"/>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.cpp" line="171"/>
       <source>Cancel</source>
-      <translation type="unfinished">Cancel</translation>
+      <translation>Отмена</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formdiscoverfeeds.ui" line="266"/>
@@ -2988,7 +2988,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="135"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="902"/>
       <source>&amp;Sort</source>
-      <translation type="unfinished">&amp;Sort</translation>
+      <translation>&amp;Сортировать</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="148"/>
@@ -3260,7 +3260,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="965"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="872"/>
       <source>Reload &amp;skin</source>
-      <translation type="unfinished">Reload &amp;skin</translation>
+      <translation>Обновить &amp;скин</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="970"/>
@@ -3290,7 +3290,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="990"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="877"/>
       <source>Reveal &amp;feed</source>
-      <translation type="unfinished">Reveal &amp;feed</translation>
+      <translation>Показать &amp;ленту</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="995"/>
@@ -3356,13 +3356,13 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1046"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="890"/>
       <source>Cleanup &amp;web cache</source>
-      <translation type="unfinished">Cleanup &amp;web cache</translation>
+      <translation>Очистка &amp;веб-кэша</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1051"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="891"/>
       <source>Delete stored &amp;cookies</source>
-      <translation type="unfinished">Delete stored &amp;cookies</translation>
+      <translation>Удалить сохранённые &amp;куки</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1056"/>
@@ -3687,22 +3687,22 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="850"/>
       <source>Cookies deleted</source>
-      <translation type="unfinished">Cookies deleted</translation>
+      <translation>Куки удалены</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="850"/>
       <source>Stored cookies were deleted.</source>
-      <translation type="unfinished">Stored cookies were deleted.</translation>
+      <translation>Сохраненные куки были удалены.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="856"/>
       <source>Skin reloaded</source>
-      <translation type="unfinished">Skin reloaded</translation>
+      <translation>Скин перезагружен</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="857"/>
       <source>Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</source>
-      <translation type="unfinished">Note that this feature is only for skin debugging. Restart the application to have everything loaded correctly.</translation>
+      <translation>Обратите внимание, что эта функция только для отладки скина. Перезапустите приложение, чтобы все загружалось правильно.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="456"/>
@@ -3776,7 +3776,7 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="507"/>
       <source>Filter was not saved</source>
-      <translation type="unfinished">Filter was not saved</translation>
+      <translation>Фильтр не сохранен</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.cpp" line="874"/>
@@ -10008,7 +10008,7 @@ If that is the case, then you need to set some time gaps when fetching those fee
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="564"/>
       <source>enabled</source>
-      <translation type="unfinished">enabled</translation>
+      <translation>включено</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeed.cpp" line="567"/>
@@ -10340,12 +10340,12 @@ This setting is useful when raw XML parsing of the feed is very slow, this happe
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="34"/>
       <source>This enables fetching of embedded article comments. Note that if the feed has many articles and each of them has comments, then the whole feed fetching can be much much slower with this option enabled.</source>
-      <translation type="unfinished">This enables fetching of embedded article comments. Note that if the feed has many articles and each of them has comments, then the whole feed fetching can be much much slower with this option enabled.</translation>
+      <translation>Это позволяет получать встроенные комментарии к статье. Обратите внимание, что если канал содержит много статей, и каждый из них имеет комментарии, то загрузка всех каналов может быть намного медленнее при включённой опции.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="40"/>
       <source>When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</source>
-      <translation type="unfinished">When enabled, a successfully downloaded and parsed feed which contains no articles will be reported as broken. Empty feeds are valid, so keep this disabled for feeds where having no articles is expected.</translation>
+      <translation>Если включено, то успешно загруженный и обработанный канал, который не содержит статей, будет нарушен. Пустые каналы действительны, поэтому оставьте это отключенным для фидов, где не ожидается ни одного материала.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeedexpdetails.cpp" line="46"/>
@@ -10438,7 +10438,7 @@ This feature only works on &quot;web&quot; version of the app, because on &quot;
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="45"/>
       <source>Enabled</source>
-      <translation type="unfinished">Enabled</translation>
+      <translation>Включено</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/standardfeednetworkdetails.cpp" line="46"/>
@@ -11423,7 +11423,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="371"/>
       <source>Local storage enabled</source>
-      <translation type="unfinished">Local storage enabled</translation>
+      <translation>Локальное хранение включено</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="375"/>
@@ -11433,12 +11433,12 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="378"/>
       <source>XSS auditing enabled</source>
-      <translation type="unfinished">XSS auditing enabled</translation>
+      <translation>Аудит XSS включён</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="381"/>
       <source>Spatial navigation enabled</source>
-      <translation type="unfinished">Spatial navigation enabled</translation>
+      <translation>Пространственная навигация включена</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="385"/>
@@ -11448,7 +11448,7 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="388"/>
       <source>Hyperlink auditing enabled</source>
-      <translation type="unfinished">Hyperlink auditing enabled</translation>
+      <translation>Аудит гиперссылок включён</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="391"/>
@@ -11458,12 +11458,12 @@ Last login on: %4</source>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="394"/>
       <source>Error pages enabled</source>
-      <translation type="unfinished">Error pages enabled</translation>
+      <translation>Страницы ошибок включены</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="397"/>
       <source>Plugins enabled</source>
-      <translation type="unfinished">Plugins enabled</translation>
+      <translation>Плагины включены</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="402"/>
