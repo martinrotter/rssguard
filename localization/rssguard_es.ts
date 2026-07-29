@@ -467,12 +467,12 @@ Número de fuentes inhabilitadas: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="63"/>
       <source>Removing important articles...</source>
-      <translation type="unfinished">Removing important articles...</translation>
+      <translation>Eliminando artículos importantes...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="69"/>
       <source>Important articles purged...</source>
-      <translation type="unfinished">Important articles purged...</translation>
+      <translation>Artículos destacados purgados...</translation>
     </message>
   </context>
   <context>
@@ -480,12 +480,12 @@ Número de fuentes inhabilitadas: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="142"/>
       <source>this database cannot be used because it comes from too old major app version</source>
-      <translation type="unfinished">this database cannot be used because it comes from too old major app version</translation>
+      <translation>esta base de datos no se puede usar porque es de una versión muy antigua de la aplicación</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="149"/>
       <source>database schema is too new, application requires &lt;= %1 but %2 is installed</source>
-      <translation type="unfinished">database schema is too new, application requires &lt;= %1 but %2 is installed</translation>
+      <translation>el esquema de la base de datos es demasiado nuevo, la aplicación requiere &lt;= %1 pero %2 está instalado</translation>
     </message>
   </context>
   <context>
@@ -502,24 +502,24 @@ Número de fuentes inhabilitadas: %3</translation>
       <source>Connection to your database was not established with error: %1. 
 
 Maybe change used database name in settings and try again. Falling back to SQLite.</source>
-      <translation type="unfinished">Connection to your database was not established with error: %1. 
+      <translation>La conexión a tu base de datos no se estableció con el error: %1. 
 
-Maybe change used database name in settings and try again. Falling back to SQLite.</translation>
+Tal vez cambie el nombre de base de datos utilizada en la configuración e inténtelo de nuevo. Volviendo a SQLite.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="74"/>
       <source>Connection to your database was not established with error: %1.</source>
-      <translation type="unfinished">Connection to your database was not established with error: %1.</translation>
+      <translation>La conexión a tu base de datos no se estableció con el error: %1.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="90"/>
       <source>Cannot use database</source>
-      <translation type="unfinished">Cannot use database</translation>
+      <translation>No se puede utilizar la base de datos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="91"/>
       <source>Application cannot start because there is a problem with DB: %1.</source>
-      <translation type="unfinished">Application cannot start because there is a problem with DB: %1.</translation>
+      <translation>La aplicación no puede iniciarse porque hay un problema con la DB: %1.</translation>
     </message>
   </context>
   <context>
@@ -593,17 +593,17 @@ Maybe change used database name in settings and try again. Falling back to SQLit
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="117"/>
       <source>Save attachment %1</source>
-      <translation type="unfinished">Save attachment %1</translation>
+      <translation>Guardar adjunto %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="133"/>
       <source>Download attachment</source>
-      <translation type="unfinished">Download attachment</translation>
+      <translation>Descargar adjunto</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="178"/>
       <source>Downloaded %1 kB...</source>
-      <translation type="unfinished">Downloaded %1 kB...</translation>
+      <translation>Descargado %1 kB...</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/emailpreviewer.cpp" line="189"/>
@@ -703,7 +703,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="392"/>
       <source>SQL database error</source>
-      <translation type="unfinished">SQL database error</translation>
+      <translation>Error en base de datos SQL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="398"/>
@@ -713,7 +713,7 @@ Maybe change used database name in settings and try again. Falling back to SQLit
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="401"/>
       <source>contains no articles</source>
-      <translation type="unfinished">contains no articles</translation>
+      <translation>no contiene artículos</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="404"/>
@@ -3924,79 +3924,79 @@ Maybe the filter title is not unique. If that&apos;s the case, then change it.</
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="108"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="490"/>
       <source>New filter</source>
-      <translation type="unfinished">New filter</translation>
+      <translation>Nuevo filtro</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="78"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="484"/>
       <source>&amp;Import</source>
-      <translation type="unfinished">&amp;Import</translation>
+      <translation>&amp;Importar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="75"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="482"/>
       <source>Import filters</source>
-      <translation type="unfinished">Import filters</translation>
+      <translation>Importar filtros</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="85"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="486"/>
       <source>Export filters</source>
-      <translation type="unfinished">Export filters</translation>
+      <translation>Exportar filtros</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="88"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="488"/>
       <source>Export</source>
-      <translation type="unfinished">Export</translation>
+      <translation>Exportar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="118"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="494"/>
       <source>Remove filter</source>
-      <translation type="unfinished">Remove filter</translation>
+      <translation>Quitar filtro</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="121"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="496"/>
       <source>Remove</source>
-      <translation type="unfinished">Remove</translation>
+      <translation>Eliminar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="128"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="498"/>
       <source>Enable filter</source>
-      <translation type="unfinished">Enable filter</translation>
+      <translation>Habilitar filtro</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="131"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="500"/>
       <source>Enable</source>
-      <translation type="unfinished">Enable</translation>
+      <translation>Activar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="154"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="502"/>
       <source>Move filter up</source>
-      <translation type="unfinished">Move filter up</translation>
+      <translation>Mover filtro arriba</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="157"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="504"/>
       <source>Up</source>
-      <translation type="unfinished">Up</translation>
+      <translation>Subir</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="164"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="506"/>
       <source>Move filter down</source>
-      <translation type="unfinished">Move filter down</translation>
+      <translation>Mover filtro abajo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="167"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="508"/>
       <source>Down</source>
-      <translation type="unfinished">Down</translation>
+      <translation>Abajo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="178"/>
@@ -7751,7 +7751,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="902"/>
       <source>Downloaded %1 kB...</source>
-      <translation type="unfinished">Downloaded %1 kB...</translation>
+      <translation>Descargado %1 kB...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="906"/>
