@@ -214,11 +214,11 @@ Message XmppFeed::articleFromXmppMessage(XmppCategory::Type source_type, const Q
 }
 
 void XmppFeed::onJoinedChanged() {
-  qDebug() << "[JOINED]" << m_mucRoom->jid() << m_mucRoom->isJoined();
+  qDebugNN << LOGSEC_XMPP << "IS-JOINED changed for room" << QUOTE_W_SPACE(m_mucRoom->jid()) << m_mucRoom->isJoined();
 }
 
 void XmppFeed::onError(const QXmppStanza::Error& error) {
-  qDebug() << "[ERROR]" << m_mucRoom->jid() << error.text();
+  qDebugNN << LOGSEC_XMPP << "ERROR for room" << QUOTE_W_SPACE(m_mucRoom->jid()) << error.text();
 }
 
 void XmppFeed::onMucMessageReceived(const QXmppMessage& msg) {
@@ -227,7 +227,7 @@ void XmppFeed::onMucMessageReceived(const QXmppMessage& msg) {
   }
 
   if (msg.type() == QXmppMessage::Type::Error) {
-    qCriticalNN << LOGSEC_XMPP << "Received real-time chat error message:" << QUOTE_W_SPACE_DOT(msg.body());
+    qCriticalNN << LOGSEC_XMPP << "Received real-time chat error message.";
     return;
   }
 

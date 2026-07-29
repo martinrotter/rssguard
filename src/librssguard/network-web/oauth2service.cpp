@@ -198,7 +198,7 @@ void OAuth2Service::retrieveAccessToken(const QString& auth_code) {
 
   const QString content = query.toString(QUrl::FullyEncoded);
 
-  qDebugNN << LOGSEC_OAUTH << "Posting data for access token retrieval:" << QUOTE_W_SPACE_DOT(content);
+  qDebugNN << LOGSEC_OAUTH << "Posting OAuth access token request.";
   postTokenRequest(network_request, content);
 }
 
@@ -232,7 +232,7 @@ void OAuth2Service::refreshAccessToken(const QString& refresh_token) {
                         QSystemTrayIcon::MessageIcon::Information},
                        {true, false, true});
 
-  qDebugNN << LOGSEC_OAUTH << "Posting data for access token refreshing:" << QUOTE_W_SPACE_DOT(content);
+  qDebugNN << LOGSEC_OAUTH << "Posting OAuth access token refresh request.";
   postTokenRequest(network_request, content);
 }
 
@@ -250,8 +250,6 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
   QJsonDocument json_document = QJsonDocument::fromJson(repl);
   QJsonObject root_obj = json_document.object();
 
-  qDebugNN << LOGSEC_OAUTH << "Token response:" << QUOTE_W_SPACE_DOT(QString::fromUtf8(json_document.toJson()));
-
   if (network_reply->error() != QNetworkReply::NetworkError::NoError) {
     qWarningNN << LOGSEC_OAUTH
                << "Network error when obtaining token response:" << QUOTE_W_SPACE_DOT(network_reply->error());
@@ -264,8 +262,7 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
     QString error = root_obj.value(QSL("error")).toString();
     QString error_description = root_obj.value(QSL("error_description")).toString();
 
-    qWarningNN << LOGSEC_OAUTH << "JSON error when obtaining token response:" << QUOTE_W_SPACE(error)
-               << QUOTE_W_SPACE_DOT(error_description);
+    qWarningNN << LOGSEC_OAUTH << "OAuth token response contains error:" << QUOTE_W_SPACE_DOT(error);
 
     logout();
 
@@ -285,8 +282,7 @@ void OAuth2Service::tokenRequestFinished(QNetworkReply* network_reply) {
       setRefreshToken(refresh_token);
     }
 
-    qDebugNN << LOGSEC_OAUTH << "Obtained refresh token" << QUOTE_W_SPACE(refreshToken()) << "- expires on date/time"
-             << QUOTE_W_SPACE_DOT(tokensExpireIn());
+    qDebugNN << LOGSEC_OAUTH << "OAuth tokens obtained; they expire on" << QUOTE_W_SPACE_DOT(tokensExpireIn());
 
     emit tokensRetrieved(accessToken(), refreshToken(), expires);
 

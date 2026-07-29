@@ -48,6 +48,9 @@ XmppNetwork::XmppNetwork(XmppServiceRoot* parent)
   m_mamManager->setParent(this);
 
   m_syncInTimer.setSingleShot(true);
+  m_xmppClient->logger()->setMessageTypes(QXmppLogger::MessageType::DebugMessage |
+                                          QXmppLogger::MessageType::InformationMessage |
+                                          QXmppLogger::MessageType::WarningMessage);
 
   if (qApp->settings()->value(GROUP(General), SETTING(General::DisableDebugOutput)).toBool()) {
     m_xmppClient->logger()->setLoggingType(QXmppLogger::LoggingType::NoLogging);
@@ -549,6 +552,7 @@ void XmppNetwork::reconnect() {
 }
 
 void XmppNetwork::onNewLogEntry(QXmppLogger::MessageType type, const QString& text) {
+  Q_UNUSED(type)
   qDebugNN << LOGSEC_XMPP << text;
 }
 
@@ -620,7 +624,7 @@ void XmppNetwork::onMessageReceived(const QXmppMessage& message) {
   // Multi-user chats are processed separately.
   // So we deal only with single-user chats here.
   qDebugNN << LOGSEC_XMPP << "Message received:" << "\n  Type: " << message.type() << "\n  From: " << message.from()
-           << "\n  To: " << message.to() << "\n  Body: " << message.body();
+           << "\n  To: " << message.to();
 
   if (message.type() != QXmppMessage::Type::Chat || m_root == nullptr) {
     return;
