@@ -123,6 +123,9 @@ void GreaderServiceRoot::aboutToBeginFeedFetching(const QList<Feed*>& feeds,
   if (m_network->intelligentSynchronization()) {
     m_network->prepareFeedFetching(this, feeds, stated_messages, tagged_messages, networkProxy());
   }
+  else if (m_network->downloadOnlyUnreadMessages()) {
+    m_network->prepareReadStatusSynchronization(this, stated_messages, networkProxy());
+  }
   else {
     m_network->clearPrefetchedMessages();
   }
@@ -225,13 +228,14 @@ QList<Message> GreaderServiceRoot::obtainNewMessages(Feed* feed,
   }
   else {
     msgs = m_network->streamContents(this, feed->customId(), networkProxy());
+    m_network->appendPrefetchedMessages(msgs, feed->customId());
   }
 
   return msgs;
 }
 
 bool GreaderServiceRoot::wantsBaggedIdsOfExistingMessages() const {
-  return m_network->intelligentSynchronization();
+  return m_network->intelligentSynchronization() || m_network->downloadOnlyUnreadMessages();
 }
 
 void GreaderServiceRoot::start(bool freshly_activated) {

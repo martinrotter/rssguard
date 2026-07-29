@@ -45,6 +45,11 @@ class GreaderNetwork : public QObject {
                              const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>& stated_messages,
                              const QHash<QString, QStringList>& tagged_messages,
                              const QNetworkProxy& proxy);
+    void prepareReadStatusSynchronization(GreaderServiceRoot* root,
+                                          const QHash<QString, QHash<ServiceRoot::BagOfMessages, QStringList>>&
+                                            stated_messages,
+                                          const QNetworkProxy& proxy);
+    void appendPrefetchedMessages(QList<Message>& messages, const QString& stream_id);
 
     QList<Message> getMessagesIntelligently(ServiceRoot* root,
                                             const QString& stream_id,

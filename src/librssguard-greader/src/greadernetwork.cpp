@@ -176,9 +176,7 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
     qWarningNN << LOGSEC_GREADER << "Performing global contents fetching.";
 
     QStringList remote_all_ids_list =
-      m_downloadOnlyUnreadMessages
-        ? QStringList()
-        : itemIds(QSL(GREADER_API_FULL_STATE_READING_LIST), false, proxy, -1, m_newerThanFilter);
+      itemIds(QSL(GREADER_API_FULL_STATE_READING_LIST), false, proxy, -1, m_newerThanFilter);
     QStringList remote_unread_ids_list =
       itemIds(QSL(GREADER_API_FULL_STATE_READING_LIST), true, proxy, -1, m_newerThanFilter);
 
@@ -211,15 +209,15 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
       to_download += remote_unread_ids - local_read_ids - local_unread_ids;
     }
 
-    auto moved_read = local_read_ids.intersect(remote_unread_ids);
+    QSet<QString> remote_unread_local_read_ids = local_read_ids;
 
-    to_download += moved_read;
+    remote_unread_local_read_ids.intersect(remote_unread_ids);
+    to_download += remote_unread_local_read_ids;
 
-    if (!m_downloadOnlyUnreadMessages) {
-      auto moved_unread = local_unread_ids.intersect(remote_read_ids);
+    QSet<QString> remote_read_local_unread_ids = local_unread_ids;
 
-      to_download += moved_unread;
-    }
+    remote_read_local_unread_ids.intersect(remote_read_ids);
+    to_download += remote_read_local_unread_ids;
   }
   else {
     qWarningNN << LOGSEC_GREADER << "Performing feed-based contents fetching.";
@@ -238,6 +236,60 @@ void GreaderNetwork::prepareFeedFetching(GreaderServiceRoot* root,
   }
 }
 
+void GreaderNetwork::prepareReadStatusSynchronization(GreaderServiceRoot* root,
+                                                      const QHash<QString,
+                                                                  QHash<ServiceRoot::BagOfMessages, QStringList>>&
+                                                        stated_messages,
+                                                      const QNetworkProxy& proxy) {
+  m_prefetchedMessages.clear();
+
+  QStringList remote_read_ids_list = itemIds(QSL(GREADER_API_FULL_STATE_READ), false, proxy, -1, m_newerThanFilter);
+
+  for (int i = 0; i < remote_read_ids_list.size(); i++) {
+    remote_read_ids_list.replace(i, convertShortStreamIdToLongStreamId(remote_read_ids_list.at(i)));
+  }
+
+  QSet<QString> remote_read_ids = FROM_LIST_TO_SET(QSet<QString>, remote_read_ids_list);
+  QSet<QString> local_unread_ids;
+
+  for (const auto& states : stated_messages) {
+    local_unread_ids.unite(FROM_LIST_TO_SET(QSet<QString>, states.value(ServiceRoot::BagOfMessages::Unread)));
+  }
+
+  QSet<QString> remote_read_local_unread_ids = local_unread_ids;
+
+  remote_read_local_unread_ids.intersect(remote_read_ids);
+
+  QList<QString> to_download(remote_read_local_unread_ids.values());
+
+  if (m_service == GreaderServiceRoot::Service::Reedah) {
+    for (int i = 0; i < to_download.size(); i++) {
+      to_download.replace(i, convertLongStreamIdToShortStreamId(to_download.at(i)));
+    }
+  }
+
+  if (!to_download.isEmpty()) {
+    m_prefetchedMessages = itemContents(root, to_download, proxy);
+  }
+}
+
+void GreaderNetwork::appendPrefetchedMessages(QList<Message>& messages, const QString& stream_id) {
+  auto existing_messages = qlinq::from(messages);
+  QMutexLocker mtx(&m_mutexPrefetchedMessages);
+
+  for (int i = 0; i < m_prefetchedMessages.size(); i++) {
+    auto prefetched_message = m_prefetchedMessages.at(i);
+
+    if (prefetched_message.m_feedCustomId == stream_id &&
+        !existing_messages.any([&prefetched_message](const Message& message) {
+          return message.m_customId == prefetched_message.m_customId;
+        })) {
+      messages.append(prefetched_message);
+      m_prefetchedMessages.removeAt(i--);
+    }
+  }
+}
+
 QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
                                                         const QString& stream_id,
                                                         const QHash<ServiceRoot::BagOfMessages, QStringList>&
@@ -253,8 +305,7 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
     // 2. Get read IDs for a feed.
     // 3. Download messages/contents for missing or changed IDs.
     // 4. Add prefetched starred msgs.
-    QStringList remote_all_ids_list =
-      m_downloadOnlyUnreadMessages ? QStringList() : itemIds(stream_id, false, proxy, -1, m_newerThanFilter);
+    QStringList remote_all_ids_list = itemIds(stream_id, false, proxy, -1, m_newerThanFilter);
     QStringList remote_unread_ids_list = itemIds(stream_id, true, proxy, -1, m_newerThanFilter);
 
     // Convert item IDs to long form.
@@ -288,15 +339,15 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
       to_download += remote_unread_ids - local_read_ids - local_unread_ids;
     }
 
-    auto moved_read = local_read_ids.intersect(remote_unread_ids);
+    QSet<QString> remote_unread_local_read_ids = local_read_ids;
 
-    to_download += moved_read;
+    remote_unread_local_read_ids.intersect(remote_unread_ids);
+    to_download += remote_unread_local_read_ids;
 
-    if (!m_downloadOnlyUnreadMessages) {
-      auto moved_unread = local_unread_ids.intersect(remote_read_ids);
+    QSet<QString> remote_read_local_unread_ids = local_unread_ids;
 
-      to_download += moved_unread;
-    }
+    remote_read_local_unread_ids.intersect(remote_read_ids);
+    to_download += remote_read_local_unread_ids;
 
     QList<QString> to_download_list(to_download.values());
 
@@ -311,20 +362,7 @@ QList<Message> GreaderNetwork::getMessagesIntelligently(ServiceRoot* root,
     }
   }
 
-  // Add prefetched messages.
-  auto iter = qlinq::from(msgs);
-  QMutexLocker mtx(&m_mutexPrefetchedMessages);
-
-  for (int i = 0; i < m_prefetchedMessages.size(); i++) {
-    auto prefetched_msg = m_prefetchedMessages.at(i);
-
-    if (prefetched_msg.m_feedCustomId == stream_id && !iter.any([&prefetched_msg](const Message& ms) {
-          return ms.m_customId == prefetched_msg.m_customId;
-        })) {
-      msgs.append(prefetched_msg);
-      m_prefetchedMessages.removeAt(i--);
-    }
-  }
+  appendPrefetchedMessages(msgs, stream_id);
 
   return msgs;
 }
