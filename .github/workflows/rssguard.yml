@@ -63,8 +63,8 @@ jobs:
 
           # Submodules (recursive).
           git submodule foreach --recursive '
-            mkdir -p "${TMPDIR}/${path}" &&
-            git archive --format=tar HEAD | tar -x -C "${TMPDIR}/${path}"
+            mkdir -p "${TMPDIR}/${displaypath}" &&
+            git archive --format=tar HEAD | tar -x -C "${TMPDIR}/${displaypath}"
           '
 
           # Include go modules.
@@ -135,10 +135,48 @@ jobs:
         if: matrix.os == 'ubuntu-24.04'
         run: ctest --test-dir ./rssguard-build --output-on-failure --no-tests=error
 
+      - name: Validate Windows packages
+        if: matrix.os == 'windows-2022'
+        shell: pwsh
+        run: |
+          foreach ($pattern in @("rssguard-*win*.exe", "rssguard-*win*.7z")) {
+            $files = @(Get-ChildItem -Path "./rssguard-build" -Filter $pattern -File)
+
+            if ($files.Count -ne 1) {
+              throw "Expected exactly one '$pattern' package, found $($files.Count)."
+            }
+          }
+
+      - name: Validate Linux packages
+        if: matrix.os == 'ubuntu-24.04'
+        shell: bash
+        run: |
+          shopt -s nullglob
+          appimages=(./rssguard-build/rssguard-*linux64.AppImage)
+          update_files=(./rssguard-build/rssguard-*linux64.AppImage.zsync)
+
+          if (( ${#appimages[@]} != 1 || ${#update_files[@]} != 1 )); then
+            echo "Expected exactly one AppImage and one zsync file."
+            exit 1
+          fi
+
+      - name: Validate macOS package
+        if: matrix.os == 'macos-15'
+        shell: bash
+        run: |
+          shopt -s nullglob
+          packages=(./rssguard-build/rssguard-*mac64.dmg)
+
+          if (( ${#packages[@]} != 1 )); then
+            echo "Expected exactly one macOS DMG package."
+            exit 1
+          fi
+
       - name: Upload binaries
         uses: actions/upload-artifact@v7
         with:
           name: RSS_Guard-${{ runner.os }}-Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}-${{ matrix.webengine_viewer == 'ON' && 'Web' || 'Text' }}
+          if-no-files-found: error
           path: |
             ./rssguard-build/rssguard-*win*.exe
             ./rssguard-build/rssguard-*win*.7z
