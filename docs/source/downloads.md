@@ -51,6 +51,10 @@ If you prefer a standalone package, official release assets provide an `AppImage
 `DMG` packages are provided for Mac users. Their names also include either `web` or `text`, depending on the bundled article/web viewer.
 
 ```{warning}
+Official macOS packages support the SQLite database backend only. They do not include the MariaDB/MySQL database driver, so existing MariaDB-based installations cannot use these packages.
+```
+
+```{warning}
 On macOS, Gatekeeper may block unsigned applications. If that happens, you may need to remove the quarantine flag or self-sign the application with `codesign`.
 ```
 

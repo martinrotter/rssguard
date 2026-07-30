@@ -140,6 +140,10 @@ else
   otool -L "$prefix/Contents/Frameworks/librssguard.dylib"
   otool -L "$prefix/Contents/MacOS/rssguard"
 
+  # Official macOS packages support SQLite only.
+  test -f "$QT_PLUGIN_PATH/sqldrivers/libqsqlite.dylib"
+  find "$QT_PLUGIN_PATH/sqldrivers" -type f ! -name "libqsqlite.dylib" -print -delete
+
   # Deploy to DMG.
   macdeployqt "$prefix" -dmg -verbose=2 -codesign=-
 

@@ -14,4 +14,8 @@ Also note that some new versions of RSS Guard introduce changes to how applicati
 
 The MariaDB (MySQL) backend is intended for users who want to store their data centrally. You can have a single server on your network and use multiple RSS Guard instances to access the data, but not simultaneously.
 
+```{warning}
+The official macOS packages do not include the MariaDB/MySQL database driver and therefore support SQLite only. MariaDB remains available on platforms and in custom builds that provide a compatible Qt MySQL driver.
+```
+
 For database-related configuration, see the `Settings -> Data storage` dialog section.
