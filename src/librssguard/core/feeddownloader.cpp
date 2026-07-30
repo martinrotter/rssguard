@@ -20,6 +20,8 @@
 #include "services/abstract/feed.h"
 #include "services/abstract/labelsnode.h"
 
+#include <algorithm>
+
 #include <QBitArray>
 #include <QDebug>
 #include <QElapsedTimer>
@@ -422,7 +424,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
         }
       }
 
-      msgs.resize(target_index);
+      msgs.erase(msgs.begin() + target_index, msgs.end());
 
       qDebugNN << LOGSEC_CORE << "Filtering flow took" << NONQUOTE_W_SPACE(tmr_whole.elapsed()) << "miliseconds.";
 
@@ -636,7 +638,7 @@ void FeedDownloader::removeDuplicateMessages(QList<Message>& messages) {
     }
   }
 
-  messages.resize(target_index);
+  messages.erase(messages.begin() + target_index, messages.end());
 }
 
 void FeedDownloader::removeTooOldMessages(Feed* feed, QList<Message>& msgs) {
@@ -666,14 +668,17 @@ void FeedDownloader::removeTooOldMessages(Feed* feed, QList<Message>& msgs) {
     }
 
     if (dt_to_avoid.isValid()) {
-      for (int i = 0; i < msgs.size(); i++) {
-        const auto& mss = msgs.at(i);
+      const auto first_removed = std::remove_if(msgs.begin(), msgs.end(), [&dt_to_avoid](const Message& msg) {
+        const bool remove = msg.m_createdFromFeed && msg.m_created < dt_to_avoid;
 
-        if (mss.m_createdFromFeed && mss.m_created < dt_to_avoid) {
-          qDebugNN << LOGSEC_CORE << "Removing message" << QUOTE_W_SPACE(mss.m_title) << "for being too old.";
-          msgs.removeAt(i--);
+        if (remove) {
+          qDebugNN << LOGSEC_CORE << "Removing message" << QUOTE_W_SPACE(msg.m_title) << "for being too old.";
         }
-      }
+
+        return remove;
+      });
+
+      msgs.erase(first_removed, msgs.end());
     }
   }
 }

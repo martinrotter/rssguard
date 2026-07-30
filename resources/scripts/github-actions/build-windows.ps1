@@ -121,8 +121,8 @@ $ytdlp_path = "$old_pwd\$ytdlp_output"
 $qt_path = "$old_pwd\qt"
 
 # Install "aqtinstall" from its master branch to have latest code.
-pip3 install -U pip
-pip3 install -I git+https://github.com/miurahr/aqtinstall
+python -m pip install -U pip
+python -m pip install -I git+https://github.com/miurahr/aqtinstall
 
 if ($is_qt_6) {
   aqt install-qt -O "$qt_path" windows desktop $qt_version $qt_arch -m qtimageformats qtmultimedia qt5compat qtwebengine qtwebchannel qtpositioning qtserialport
