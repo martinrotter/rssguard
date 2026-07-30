@@ -85,7 +85,7 @@ rssguard --debug --log "$HOME/rssguard.log"
 On macOS, if RSS Guard is installed as an application bundle, run the executable inside the bundle:
 
 ```bash
-/Applications/RSSGuard.app/Contents/MacOS/rssguard --debug --log "$HOME/Desktop/rssguard.log"
+"/Applications/RSS Guard.app/Contents/MacOS/rssguard" --debug --log "$HOME/Desktop/rssguard.log"
 ```
 
 You can also pass an empty file name. In that case, RSS Guard stores the log file in its user data folder:

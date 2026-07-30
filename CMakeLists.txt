@@ -51,7 +51,7 @@
 #   - Qt 5.15.0 or newer is required,
 #   - Qt 6.5.0 or newer is required,
 #   - Go compiler is required for building rssguard-article-extractor,
-#   - cmake 3.14.0 or newer is required,
+#   - cmake 3.21.1 or newer is required,
 #   - if you wish to make packages for Windows, then you must initialize all submodules
 #     within repository before compilation,
 #   - C++ 17 is required.
@@ -71,7 +71,7 @@
 #
 #################################################################
 
-cmake_minimum_required(VERSION 3.14.0)
+cmake_minimum_required(VERSION 3.21.1)
 
 # Global variables describing the project.
 file(STRINGS "resources/text/CHANGELOG" CHANGELOG)

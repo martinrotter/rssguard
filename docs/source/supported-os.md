@@ -7,5 +7,5 @@ RSS Guard is a cross-platform application, and at this point it is known to work
   * PinePhone (smartphone OS)
   * [Inkbox](https://github.com/Szybet/rssguard-inkbox) (e-ink operating system for e-readers)
 * BSD (FreeBSD, OpenBSD, NetBSD, etc.)
-* macOS 10.15+
+* macOS 13+
 * OS/2 (ArcaOS, eComStation)
