@@ -387,6 +387,7 @@ void AccountCheckSortedModel::setRootItem(RootItem* root_item, bool delete_previ
   setSourceModel(nullptr);
   m_sourceModel->setRootItem(root_item, delete_previous_root, with_layout_change);
   setSourceModel(m_sourceModel);
+  sort(0, Qt::SortOrder::AscendingOrder);
 }
 
 void AccountCheckSortedModel::checkAllItems() {

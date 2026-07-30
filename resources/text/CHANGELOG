@@ -7,6 +7,7 @@ Added:
 
 Fixed:
 * Google Reader API accounts now receive read-state changes made in other clients when "Download unread articles only" is enabled. (#2385)
+* Article filters now process batches of downloaded articles much faster, especially when several filters are assigned to a feed.
 * Stopping feed fetching no longer blocks the application while active downloads are finishing. (#2375)
 * Opening the first article in the WebEngine viewer on Windows no longer briefly flashes the main window.
 * Paused tray icon now respects the configured monochrome or colored appearance. (#2373)

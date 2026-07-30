@@ -20,6 +20,7 @@
 #include "services/abstract/feed.h"
 #include "services/abstract/labelsnode.h"
 
+#include <QBitArray>
 #include <QDebug>
 #include <QElapsedTimer>
 #include <QString>
@@ -337,6 +338,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
 
       QList<Message> read_msgs, important_msgs;
       QElapsedTimer tmr_whole;
+      QBitArray retained_messages(msgs.size(), true);
 
       tmr_whole.start();
 
@@ -391,8 +393,7 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
               break;
           }
 
-          // If we reach this point. Then we ignore the message which is by now
-          // already removed, go to next message.
+          // If we reach this point, the message will be removed after filtering.
           break;
         }
 
@@ -403,9 +404,25 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
         filtering.compareAndWriteArticleStates(&msg_original, msg_filtered, read_msgs, important_msgs);
 
         if (remove_msg) {
-          msgs.removeAt(i--);
+          retained_messages.clearBit(i);
         }
       }
+
+      filtering.setMessage(nullptr);
+
+      int target_index = 0;
+
+      for (int source_index = 0; source_index < msgs.size(); ++source_index) {
+        if (retained_messages.testBit(source_index)) {
+          if (target_index != source_index) {
+            msgs[target_index] = msgs[source_index];
+          }
+
+          ++target_index;
+        }
+      }
+
+      msgs.resize(target_index);
 
       qDebugNN << LOGSEC_CORE << "Filtering flow took" << NONQUOTE_W_SPACE(tmr_whole.elapsed()) << "miliseconds.";
 
@@ -534,68 +551,92 @@ bool FeedDownloader::isCacheSynchronizationRunning() const {
 }
 
 void FeedDownloader::removeDuplicateMessages(QList<Message>& messages) {
-  auto idx = 0;
+  if (messages.size() < 2) {
+    return;
+  }
 
-  while (idx < messages.size()) {
-    Message& message = messages[idx];
-    std::function<bool(const Message& a, const Message& b)> is_duplicate;
+  using AnonymousMessageKey = QPair<QString, QPair<QString, QString>>;
 
+  int messages_with_id = 0;
+  int messages_with_custom_id = 0;
+  int anonymous_messages = 0;
+
+  for (const Message& message : std::as_const(messages)) {
     if (message.m_id > 0) {
-      is_duplicate = [](const Message& a, const Message& b) {
-        return a.m_id == b.m_id;
-      };
+      ++messages_with_id;
     }
-    else if (message.m_customId.isEmpty()) {
-      is_duplicate = [](const Message& a, const Message& b) {
-        return std::tie(a.m_title, a.m_url, a.m_author) == std::tie(b.m_title, b.m_url, b.m_author);
-      };
+    else if (!message.m_customId.isEmpty()) {
+      ++messages_with_custom_id;
     }
     else {
-      is_duplicate = [](const Message& a, const Message& b) {
-        return a.m_customId == b.m_customId;
-      };
+      ++anonymous_messages;
     }
-
-    auto next_idx = idx + 1; // Index of next message to check after removing all duplicates.
-    auto last_idx = idx;     // Index of the last kept duplicate.
-
-    idx = next_idx;
-
-    // Remove all duplicate messages, and keep the message with the latest created date.
-    // If the created date is identical for all duplicate messages then keep the last message in the list.
-    while (idx < messages.size()) {
-      auto& last_duplicate = messages[last_idx];
-
-      if (is_duplicate(last_duplicate, messages[idx])) {
-        if (last_duplicate.m_created <= messages[idx].m_created) {
-          // The last seen message was created earlier or at the same date -- keep the current, and remove the last.
-          qWarningNN << LOGSEC_CORE << "Removing article" << QUOTE_W_SPACE(last_duplicate.m_title)
-                     << "before saving articles to DB, because it is duplicate.";
-
-          messages.removeAt(last_idx);
-          if (last_idx + 1 == next_idx) {
-            // The `next_idx` was pointing to the message following the duplicate. With that duplicate removed the
-            // next index needs to be adjusted.
-            next_idx = last_idx;
-          }
-
-          last_idx = idx;
-          ++idx;
-        }
-        else {
-          qWarningNN << LOGSEC_CORE << "Removing article" << QUOTE_W_SPACE(messages[idx].m_title)
-                     << "before saving articles to DB, because it is duplicate.";
-
-          messages.removeAt(idx);
-        }
-      }
-      else {
-        ++idx;
-      }
-    }
-
-    idx = next_idx;
   }
+
+  QHash<int, int> winners_by_id;
+  QHash<QString, int> winners_by_custom_id;
+  QHash<AnonymousMessageKey, int> winners_by_attributes;
+
+  winners_by_id.reserve(messages_with_id);
+  winners_by_custom_id.reserve(messages_with_custom_id);
+  winners_by_attributes.reserve(anonymous_messages);
+
+  auto select_winner = [&messages](auto& winners, const auto& key, int candidate_index) {
+    auto winner = winners.find(key);
+
+    if (winner == winners.end()) {
+      winners.insert(key, candidate_index);
+    }
+    else if (messages.at(winner.value()).m_created <= messages.at(candidate_index).m_created) {
+      // Keep the latest message, or the last one if creation dates are identical.
+      winner.value() = candidate_index;
+    }
+  };
+
+  for (int i = 0; i < messages.size(); ++i) {
+    const Message& message = messages.at(i);
+
+    if (message.m_id > 0) {
+      select_winner(winners_by_id, message.m_id, i);
+    }
+    else if (!message.m_customId.isEmpty()) {
+      select_winner(winners_by_custom_id, message.m_customId, i);
+    }
+    else {
+      select_winner(winners_by_attributes,
+                    AnonymousMessageKey(message.m_title, qMakePair(message.m_url, message.m_author)),
+                    i);
+    }
+  }
+
+  QBitArray retained_messages(messages.size());
+  auto mark_winners = [&retained_messages](const auto& winners) {
+    for (auto winner = winners.cbegin(); winner != winners.cend(); ++winner) {
+      retained_messages.setBit(winner.value());
+    }
+  };
+
+  mark_winners(winners_by_id);
+  mark_winners(winners_by_custom_id);
+  mark_winners(winners_by_attributes);
+
+  int target_index = 0;
+
+  for (int source_index = 0; source_index < messages.size(); ++source_index) {
+    if (retained_messages.testBit(source_index)) {
+      if (target_index != source_index) {
+        messages[target_index] = messages[source_index];
+      }
+
+      ++target_index;
+    }
+    else {
+      qWarningNN << LOGSEC_CORE << "Removing article" << QUOTE_W_SPACE(messages.at(source_index).m_title)
+                 << "before saving articles to DB, because it is duplicate.";
+    }
+  }
+
+  messages.resize(target_index);
 }
 
 void FeedDownloader::removeTooOldMessages(Feed* feed, QList<Message>& msgs) {
