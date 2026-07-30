@@ -1,21 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist SYSTEM "file://localhost/System/Library/DTDs/PropertyList.dtd">
-<plist version="0.9">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+                       "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
 <dict>
-    <key>NSPrincipalClass</key>
-    <string>NSApplication</string>
-    <key>NSHighResolutionCapable</key>
-    <string>True</string>
     <key>CFBundleDevelopmentRegion</key>
-    <string>English</string>
+    <string>en</string>
     <key>CFBundleExecutable</key>
     <string>@CMAKE_PROJECT_NAME@</string>
-    <key>CFBundleGetInfoString</key>
-    <string>@CMAKE_PROJECT_NAME@ (C) 2011-2016 Martin Rotter</string>
     <key>CFBundleIconFile</key>
     <string>@CMAKE_PROJECT_NAME@.icns</string>
     <key>CFBundleIdentifier</key>
-    <string>org.martinrotter.rssguard</string>
+    <string>io.github.martinrotter.rssguard</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleName</key>
@@ -25,18 +20,12 @@
     <key>CFBundleShortVersionString</key>
     <string>@CMAKE_PROJECT_VERSION@</string>
     <key>CFBundleVersion</key>
-    <string>1.0.0</string>
-    <key>CSResourcesFileMapped</key>
-    <true/>
-    <key>LSRequiresCarbon</key>
+    <string>@CMAKE_PROJECT_VERSION@</string>
+    <key>NSHighResolutionCapable</key>
     <true/>
     <key>NSHumanReadableCopyright</key>
-    <string>(C) 2011-2016 Martin Rotter</string>
-<!--
-	<key>NOTE</key>
-    <string>Icon is disabled from dock. Only systray is used.</string>
-    <key>LSUIElement</key>
-    <string>1</string>
--->
+    <string>Copyright (C) 2011-@YEAR@ @APP_AUTHOR@</string>
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
 </dict>
 </plist>
