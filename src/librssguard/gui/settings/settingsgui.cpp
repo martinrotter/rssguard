@@ -506,6 +506,11 @@ void SettingsGui::saveSettings() {
   settings()->setValue(GROUP(GUI), GUI::TaskbarErrorProgress, m_ui->m_displayTaskbarErrorProgress->isChecked());
   if (WindowsTaskbar* taskbar = qApp->windowsTaskbar(); taskbar != nullptr) {
     taskbar->setThumbnailButtonsEnabled(m_ui->m_displayTaskbarThumbnailButtons->isChecked());
+
+    if (!m_ui->m_displayTaskbarErrorProgress->isChecked() && qApp->mainForm() != nullptr &&
+        taskbar->isAvailable()) {
+      taskbar->clearProgress(qApp->mainForm()->winId());
+    }
   }
 #endif
 

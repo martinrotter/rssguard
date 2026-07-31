@@ -335,9 +335,13 @@ void GuiNotificationCoordinator::showMessagesNumber(int unread_messages, bool an
 void GuiNotificationCoordinator::onFeedUpdatesStarted() {
 #if defined(Q_OS_WIN)
   auto* taskbar = m_application->windowsTaskbar();
-  if (m_application->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool() &&
-      m_application->mainForm() != nullptr && taskbar != nullptr && taskbar->isAvailable()) {
-    taskbar->setProgressState(m_application->mainForm()->winId(), WindowsTaskbar::ProgressState::Indeterminate);
+  if (m_application->mainForm() != nullptr && taskbar != nullptr && taskbar->isAvailable()) {
+    if (m_application->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool()) {
+      taskbar->setProgressState(m_application->mainForm()->winId(), WindowsTaskbar::ProgressState::Indeterminate);
+    }
+    else {
+      taskbar->clearProgress(m_application->mainForm()->winId());
+    }
   }
 #endif
 }
@@ -379,8 +383,7 @@ void GuiNotificationCoordinator::onFeedUpdatesFinished(const FeedDownloadResults
 #if defined(Q_OS_WIN)
   auto* taskbar = m_application->windowsTaskbar();
 
-  if (m_application->settings()->value(GROUP(GUI), SETTING(GUI::UnreadNumbersOnTaskBar)).toBool() &&
-      m_application->mainForm() != nullptr && taskbar != nullptr && taskbar->isAvailable()) {
+  if (m_application->mainForm() != nullptr && taskbar != nullptr && taskbar->isAvailable()) {
     if (results.erroredFeeds().isEmpty() ||
         !m_application->settings()->value(GROUP(GUI), SETTING(GUI::TaskbarErrorProgress)).toBool()) {
       taskbar->clearProgress(m_application->mainForm()->winId());
