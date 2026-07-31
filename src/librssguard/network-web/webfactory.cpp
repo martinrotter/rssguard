@@ -488,10 +488,7 @@ void WebFactory::updateWebEngineProfileSettings() {
 
   auto custom_ua = qApp->web()->customUserAgent();
 
-  if (custom_ua.isEmpty()) {
-    m_webEngineProfile->setHttpUserAgent(QString::fromLocal8Bit(HTTP_COMPLETE_USERAGENT));
-  }
-  else {
+  if (!custom_ua.isEmpty()) {
     m_webEngineProfile->setHttpUserAgent(custom_ua);
   }
 }
@@ -841,6 +838,14 @@ bool WebFactory::sendMessageViaEmail(const Message& message) {
                                        .arg(QString(QUrl::toPercentEncoding(message.m_title)),
                                             QString(QUrl::toPercentEncoding(stripTags(message.m_contents)))));
   }
+}
+
+QString WebFactory::defaultUserAgent() const {
+#if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
+  return m_webEngineProfile->httpUserAgent();
+#else
+  return QString::fromLocal8Bit(HTTP_COMPLETE_USERAGENT);
+#endif
 }
 
 bool WebFactory::openUrlInExternalBrowser(const QUrl& url) const {

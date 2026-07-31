@@ -71,6 +71,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
     void updateProxy();
     bool sendMessageViaEmail(const Message& message);
 
+    QString defaultUserAgent() const;
     QString customUserAgent() const;
     void setCustomUserAgent(const QString& user_agent);
 

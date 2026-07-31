@@ -182,12 +182,11 @@
 #define DEFAULT_ZOOM_FACTOR 1.0f
 #define ZOOM_FACTOR_STEP    0.015f
 
-#define HTTP_COMPLETE_USERAGENT                                   \
-  (QByteArrayLiteral("Mozilla/5.0 (Windows NT 10.0; Win64; x64) " \
-                     "AppleWebKit/537.36 (KHTML, like Gecko) "    \
-                     "Chrome/145.0.0.0 "                          \
-                     "Safari/537.36 ") +                          \
-   QByteArrayLiteral(APP_USERAGENT))
+#define HTTP_COMPLETE_USERAGENT                                  \
+  QByteArrayLiteral("Mozilla/5.0 (Windows NT 10.0; Win64; x64) " \
+                    "AppleWebKit/537.36 (KHTML, like Gecko) "    \
+                    "Chrome/150.0.0.0 "                          \
+                    "Safari/537.36")
 
 #define FEED_REGEX_MATCHER          \
   "<link[^>]+type=\"application\\/" \

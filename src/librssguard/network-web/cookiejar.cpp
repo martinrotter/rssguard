@@ -111,8 +111,9 @@ void CookieJar::loadCookies() {
       if (!cookie.isEmpty()) {
         auto cook = cookie.at(0);
 
-        if (cook.expirationDate().toUTC() < current_dt) {
-          cook.setExpirationDate(current_dt.addDays(7));
+        if (!cook.isSessionCookie() && cook.expirationDate().toUTC() < current_dt) {
+          sett->remove(Cookies::ID, cookie_key);
+          continue;
         }
 
         if (!insertCookieInternal(cook, true, false)) {

@@ -101,10 +101,11 @@ QNetworkReply* BaseNetworkAccessManager::createRequest(QNetworkAccessManager::Op
 
   auto custom_ua = qApp->web()->customUserAgent();
   auto existing_ua = new_request.rawHeader(HTTP_HEADERS_USER_AGENT);
+  auto default_ua = qApp->web()->defaultUserAgent();
 
   if (existing_ua.isEmpty()) {
     if (custom_ua.isEmpty()) {
-      new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, HTTP_COMPLETE_USERAGENT);
+      new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, default_ua.toLocal8Bit());
     }
     else {
       new_request.setRawHeader(HTTP_HEADERS_USER_AGENT, custom_ua.toLocal8Bit());
