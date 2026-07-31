@@ -19,6 +19,7 @@
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/settings.h"
+#include "miscellaneous/settingskeys.h"
 
 #include <algorithm>
 
@@ -181,10 +182,11 @@ FormSettings::FormSettings(QWidget& parent)
 
   m_ui.m_listSettings->setMaximumWidth(m_ui.m_listSettings->sizeHintForColumn(0) +
                                        6 * m_ui.m_listSettings->frameWidth());
-  m_ui.m_listSettings->setCurrentRow(0);
+  restoreSelectedSection();
 }
 
 FormSettings::~FormSettings() {
+  saveSelectedSection();
   qDebugNN << LOGSEC_GUI << "Destroying FormSettings distance.";
 }
 
@@ -205,6 +207,31 @@ void FormSettings::openSettingsCategory(int category) {
 
   m_ui.m_stackedSettings->setCurrentIndex(category);
   updateSearchHighlights();
+}
+
+void FormSettings::restoreSelectedSection() {
+  const QString selected_section =
+    m_settings.value(GROUP(GUI), SETTING(GUI::SettingsSelectedSection)).toString();
+  int selected_row = 0;
+
+  for (int i = 0; i < m_panels.size(); ++i) {
+    if (QString::fromLatin1(m_panels.at(i)->metaObject()->className()) == selected_section) {
+      selected_row = i;
+      break;
+    }
+  }
+
+  m_ui.m_listSettings->setCurrentRow(selected_row);
+}
+
+void FormSettings::saveSelectedSection() {
+  const int selected_row = m_ui.m_listSettings->currentRow();
+
+  if (selected_row >= 0 && selected_row < m_panels.size()) {
+    m_settings.setValue(GROUP(GUI),
+                        GUI::SettingsSelectedSection,
+                        QString::fromLatin1(m_panels.at(selected_row)->metaObject()->className()));
+  }
 }
 
 void FormSettings::searchSettings(const QString& phrase) {

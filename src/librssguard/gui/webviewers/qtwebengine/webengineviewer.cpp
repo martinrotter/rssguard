@@ -54,7 +54,7 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
   connect(m_actionPrintToPdf.data(), &QAction::triggered, this, &WebEngineViewer::printToPdf);
   connect(m_actionSaveFullPage.data(), &QAction::triggered, this, &WebEngineViewer::saveCompleteWebPage);
   connect(m_actionDiagGpu.data(), &QAction::triggered, this, [this]() {
-    emit openUrlInNewTab(false, QUrl("chrome://gpu"));
+    emit openUrlInNewTab(false, QUrl(QSL("chrome://gpu")));
   });
 
   WebEngineViewer::setLoadExternalResources(WebViewer::loadExternalResources());

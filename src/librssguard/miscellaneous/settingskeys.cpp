@@ -279,6 +279,9 @@ DVALUE(bool) CustomSkinColors::EnabledDef = false;
 // GUI.
 DKEY GUI::ID = "gui";
 
+DKEY GUI::SettingsSelectedSection = "settings_selected_section";
+DVALUE(QString) GUI::SettingsSelectedSectionDef = QString();
+
 DKEY GUI::FeedViewState = "feed_view_state";
 DVALUE(QString) GUI::FeedViewStateDef = QString();
 

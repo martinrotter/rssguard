@@ -301,6 +301,9 @@ namespace CustomSkinColors {
 namespace GUI {
   KEY ID;
 
+  KEY SettingsSelectedSection;
+  VALUE(QString) SettingsSelectedSectionDef;
+
   KEY EnableNotifications;
   VALUE(bool) EnableNotificationsDef;
 

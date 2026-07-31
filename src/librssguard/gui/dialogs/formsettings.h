@@ -52,6 +52,8 @@ class FormSettings : public QDialog {
     void applyFirstSearchResult();
     void updateSearchHighlights();
     void clearSearch();
+    void restoreSelectedSection();
+    void saveSelectedSection();
 
     static QString normalizedSearchText(const QString& text);
     static QString searchableWidgetText(QWidget* widget);
