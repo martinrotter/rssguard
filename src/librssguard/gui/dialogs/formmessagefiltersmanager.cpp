@@ -28,6 +28,7 @@
 #include <algorithm>
 
 #include <QAction>
+#include <QApplication>
 #include <QDateTime>
 #include <QJSEngine>
 #include <QJsonArray>
@@ -260,27 +261,44 @@ void FormMessageFiltersManager::exportFilters() {
 }
 
 void FormMessageFiltersManager::moveFilterDown() {
-  auto* filter = selectedFilter();
-  auto row = m_ui.m_listFilters->currentRow();
-
-  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-    DatabaseQueries::moveMessageFilter(m_reader->messageFilters(), filter, false, false, filter->sortOrder() + 1, db);
-  });
-
-  m_ui.m_listFilters->insertItem(row + 1, m_ui.m_listFilters->takeItem(row));
-  m_ui.m_listFilters->setCurrentRow(row + 1);
+  moveFilter(true);
 }
 
 void FormMessageFiltersManager::moveFilterUp() {
+  moveFilter(false);
+}
+
+void FormMessageFiltersManager::moveFilter(bool move_down) {
   auto* filter = selectedFilter();
-  auto row = m_ui.m_listFilters->currentRow();
+  const int current_row = m_ui.m_listFilters->currentRow();
+  const int last_row = m_ui.m_listFilters->count() - 1;
+
+  if (filter == nullptr || current_row < 0 || last_row <= 0) {
+    return;
+  }
+
+  const Qt::KeyboardModifiers modifiers = QApplication::keyboardModifiers();
+  int target_row;
+
+  if (modifiers.testFlag(Qt::KeyboardModifier::ControlModifier)) {
+    target_row = move_down ? last_row : 0;
+  }
+  else {
+    const int distance = modifiers.testFlag(Qt::KeyboardModifier::ShiftModifier) ? 5 : 1;
+    target_row = qBound(0, current_row + (move_down ? distance : -distance), last_row);
+  }
+
+  if (target_row == current_row) {
+    return;
+  }
 
   qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-    DatabaseQueries::moveMessageFilter(m_reader->messageFilters(), filter, false, false, filter->sortOrder() - 1, db);
+    DatabaseQueries::moveMessageFilter(m_reader->messageFilters(), filter, false, false, target_row, db);
   });
 
-  m_ui.m_listFilters->insertItem(row - 1, m_ui.m_listFilters->takeItem(row));
-  m_ui.m_listFilters->setCurrentRow(row - 1);
+  auto* item = m_ui.m_listFilters->takeItem(current_row);
+  m_ui.m_listFilters->insertItem(target_row, item);
+  m_ui.m_listFilters->setCurrentItem(item);
 }
 
 void FormMessageFiltersManager::openDocs() {

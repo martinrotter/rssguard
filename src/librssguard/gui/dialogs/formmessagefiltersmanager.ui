@@ -151,7 +151,7 @@
           <item>
            <widget class="QToolButton" name="m_btnUp">
             <property name="toolTip">
-             <string>Move filter up</string>
+             <string>Move filter up. Hold Shift to move by five positions or Ctrl to move to the top.</string>
             </property>
             <property name="text">
              <string>Up</string>
@@ -161,7 +161,7 @@
           <item>
            <widget class="QToolButton" name="m_btnDown">
             <property name="toolTip">
-             <string>Move filter down</string>
+             <string>Move filter down. Hold Shift to move by five positions or Ctrl to move to the bottom.</string>
             </property>
             <property name="text">
              <string>Down</string>
