@@ -83,7 +83,11 @@ void DatabaseDriver::afterAddDatabase(QSqlDatabase& database, bool was_initializ
 }
 
 void DatabaseDriver::ensureConnectionUsable(QSqlDatabase& database) {
-  if (!database.isOpen() && !database.open()) {
+  if (database.isOpen()) {
+    return;
+  }
+
+  if (!database.open()) {
     qFatal("Database was NOT opened. Delivered error message: %s.", qPrintable(database.lastError().text()));
   }
 

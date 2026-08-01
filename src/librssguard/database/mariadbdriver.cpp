@@ -211,6 +211,8 @@ void MariaDbDriver::afterAddDatabase(QSqlDatabase& database, bool was_initialize
 }
 
 void MariaDbDriver::ensureConnectionUsable(QSqlDatabase& database) {
+  bool connection_opened = false;
+
   if (database.isOpen()) {
     SqlQuery ping(database);
 
@@ -222,12 +224,18 @@ void MariaDbDriver::ensureConnectionUsable(QSqlDatabase& database) {
     }
   }
 
-  if (!database.isOpen() && !database.open()) {
-    THROW_EX(SqlException, database.lastError());
+  if (!database.isOpen()) {
+    if (!database.open()) {
+      THROW_EX(SqlException, database.lastError());
+    }
+
+    connection_opened = true;
   }
 
-  SqlQuery query_db(database);
-  setPragmas(query_db);
+  if (connection_opened) {
+    SqlQuery query_db(database);
+    setPragmas(query_db);
+  }
 }
 
 QString MariaDbDriver::autoIncrementPrimaryKey() const {

@@ -10,6 +10,7 @@ Added:
 Fixed:
 * Feed list filtering now remains responsive with very large feed trees.
 * Processing existing articles with filters now remains fast when many articles are ignored.
+* Database operations no longer repeatedly reapply connection settings that are already active.
 * Windows taskbar feed-fetching errors are now highlighted independently of unread article counts.
 * Cloudflare and similar website verification checks now work more reliably. (#2351)
 * Google Reader API accounts now receive read-state changes made in other clients when "Download unread articles only" is enabled. (#2385)
