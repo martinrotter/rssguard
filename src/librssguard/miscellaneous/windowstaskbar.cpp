@@ -19,12 +19,12 @@
 #endif
 
 namespace {
-constexpr quint32 TaskbarButtonPauseFeedFetching = 1;
-constexpr quint32 TaskbarButtonFetchAll = 2;
-constexpr quint32 TaskbarButtonSettings = 3;
-constexpr int TaskbarButtonsCount = 3;
+  constexpr quint32 TaskbarButtonPauseFeedFetching = 1;
+  constexpr quint32 TaskbarButtonFetchAll = 2;
+  constexpr quint32 TaskbarButtonSettings = 3;
+  constexpr int TaskbarButtonsCount = 3;
 
-HICON toHicon(const QImage& image) {
+  HICON toHicon(const QImage& image) {
 #if QT_VERSION_MAJOR == 5
     return QtWin::toHICON(QPixmap::fromImage(image));
 #else
@@ -32,41 +32,41 @@ HICON toHicon(const QImage& image) {
 #endif
   }
 
-HICON toHicon(const QIcon& icon) {
+  HICON toHicon(const QIcon& icon) {
 #if QT_VERSION_MAJOR == 5
     return QtWin::toHICON(icon.pixmap(QSize(16, 16)));
 #else
     return icon.pixmap(QSize(16, 16)).toImage().toHICON();
 #endif
-}
-
-QString buttonTooltip(const QAction& action) {
-  QString tooltip = action.text();
-
-  tooltip.remove('&');
-  return tooltip;
-}
-
-TBPFLAG nativeProgressState(WindowsTaskbar::ProgressState state) {
-  switch (state) {
-    case WindowsTaskbar::ProgressState::None:
-      return TBPF_NOPROGRESS;
-
-    case WindowsTaskbar::ProgressState::Normal:
-      return TBPF_NORMAL;
-
-    case WindowsTaskbar::ProgressState::Error:
-      return TBPF_ERROR;
-
-    case WindowsTaskbar::ProgressState::Paused:
-      return TBPF_PAUSED;
-
-    case WindowsTaskbar::ProgressState::Indeterminate:
-      return TBPF_INDETERMINATE;
   }
 
-  return TBPF_NOPROGRESS;
-}
+  QString buttonTooltip(const QAction& action) {
+    QString tooltip = action.text();
+
+    tooltip.remove('&');
+    return tooltip;
+  }
+
+  TBPFLAG nativeProgressState(WindowsTaskbar::ProgressState state) {
+    switch (state) {
+      case WindowsTaskbar::ProgressState::None:
+        return TBPF_NOPROGRESS;
+
+      case WindowsTaskbar::ProgressState::Normal:
+        return TBPF_NORMAL;
+
+      case WindowsTaskbar::ProgressState::Error:
+        return TBPF_ERROR;
+
+      case WindowsTaskbar::ProgressState::Paused:
+        return TBPF_PAUSED;
+
+      case WindowsTaskbar::ProgressState::Indeterminate:
+        return TBPF_INDETERMINATE;
+    }
+
+    return TBPF_NOPROGRESS;
+  }
 } // namespace
 
 WindowsTaskbar::WindowsTaskbar(QObject* parent)
@@ -109,7 +109,12 @@ bool WindowsTaskbar::isAvailable() const {
 void WindowsTaskbar::setThumbnailActions(const QList<QAction*>& actions,
                                          const QIcon& pause_icon,
                                          const QIcon& resume_icon) {
-  disconnect(nullptr, nullptr, this, nullptr);
+  for (const QPointer<QAction>& action : std::as_const(m_thumbnailActions)) {
+    if (action != nullptr) {
+      action->disconnect(this);
+    }
+  }
+
   m_thumbnailActions.clear();
 
   for (QAction* action : actions) {
@@ -184,9 +189,9 @@ bool WindowsTaskbar::clearOverlayIcon(WId window_id) const {
 }
 
 bool WindowsTaskbar::setProgressState(WId window_id, ProgressState state) const {
-  return isAvailable() && reportResult(m_taskbar->SetProgressState(reinterpret_cast<HWND>(window_id),
-                                                                    nativeProgressState(state)),
-                                       QSL("set taskbar progress state"));
+  return isAvailable() &&
+         reportResult(m_taskbar->SetProgressState(reinterpret_cast<HWND>(window_id), nativeProgressState(state)),
+                      QSL("set taskbar progress state"));
 }
 
 bool WindowsTaskbar::setOverlayIcon(WId window_id, const QImage& icon) const {
@@ -224,9 +229,7 @@ void WindowsTaskbar::updateThumbnailButtons() {
     return;
   }
 
-  const bool updated = setThumbnailButtons(m_thumbnailWindowId,
-                                            thumbnailButtons(true),
-                                            !m_thumbnailButtonsAdded);
+  const bool updated = setThumbnailButtons(m_thumbnailWindowId, thumbnailButtons(true), !m_thumbnailButtonsAdded);
 
   if (updated) {
     m_thumbnailButtonsAdded = true;
@@ -249,10 +252,10 @@ QList<WindowsTaskbar::ThumbnailButton> WindowsTaskbar::thumbnailButtons(bool vis
   const QAction* pause_action = m_thumbnailActions.at(0);
   const bool feed_fetching_paused = pause_action->isChecked();
   const QList<QIcon> icons = {feed_fetching_paused ? m_resumeIcon : m_pauseIcon,
-                               m_thumbnailActions.at(1)->icon(),
-                               m_thumbnailActions.at(2)->icon()};
+                              m_thumbnailActions.at(1)->icon(),
+                              m_thumbnailActions.at(2)->icon()};
   const QStringList tooltips = {feed_fetching_paused ? tr("Resume automatic feed fetching")
-                                                      : tr("Pause automatic feed fetching"),
+                                                     : tr("Pause automatic feed fetching"),
                                 buttonTooltip(*m_thumbnailActions.at(1)),
                                 buttonTooltip(*m_thumbnailActions.at(2))};
   const quint32 ids[] = {TaskbarButtonPauseFeedFetching, TaskbarButtonFetchAll, TaskbarButtonSettings};
@@ -335,8 +338,8 @@ QImage WindowsTaskbar::generateOverlayIcon(int number, bool show_pause) const {
 
 bool WindowsTaskbar::isThumbnailButtonReady() const {
   return isAvailable() && m_thumbnailButtonsReady && m_thumbnailWindowId != 0 &&
-         m_thumbnailActions.size() == TaskbarButtonsCount &&
-         !m_thumbnailActions.at(0).isNull() && !m_thumbnailActions.at(1).isNull() && !m_thumbnailActions.at(2).isNull();
+         m_thumbnailActions.size() == TaskbarButtonsCount && !m_thumbnailActions.at(0).isNull() &&
+         !m_thumbnailActions.at(1).isNull() && !m_thumbnailActions.at(2).isNull();
 }
 
 bool WindowsTaskbar::setThumbnailButtons(WId window_id, const QList<ThumbnailButton>& buttons, bool add) const {

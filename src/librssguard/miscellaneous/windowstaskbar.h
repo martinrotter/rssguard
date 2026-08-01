@@ -32,7 +32,8 @@ class WindowsTaskbar : public QObject {
     ~WindowsTaskbar();
 
     bool isAvailable() const;
-
+    
+    void extracted();
     void setThumbnailActions(const QList<QAction*>& actions, const QIcon& pause_icon, const QIcon& resume_icon);
     void setThumbnailButtonsEnabled(bool enabled);
     void thumbnailButtonsCreated(WId window_id);
