@@ -34,6 +34,20 @@ FeedsProxyModel::FeedsProxyModel(FeedsModel* source_model, QObject* parent)
   setDynamicSortFilter(true);
   setSourceModel(m_sourceModel);
 
+  connect(m_sourceModel, &QAbstractItemModel::modelAboutToBeReset, this, [this]() {
+    if (!m_filteredOutItems.isEmpty()) {
+      qDebugNN << LOGSEC_FEEDMODEL << "Forgetting" << m_filteredOutItems.size()
+               << "filtered-out feed list items before model reset.";
+      m_filteredOutItems.clear();
+    }
+  });
+  connect(m_sourceModel,
+          &QAbstractItemModel::rowsAboutToBeRemoved,
+          this,
+          [this](const QModelIndex& parent, int first, int last) {
+            forgetFilteredItems(parent, first, last);
+          });
+
   // Describes priorities of node types for sorting.
   // Smaller index means that item is "smaller" which
   // means it should be more on top when sorting
@@ -412,28 +426,52 @@ bool FeedsProxyModel::lessThan(const QModelIndex& left, const QModelIndex& right
 }
 
 bool FeedsProxyModel::filterAcceptsRow(int source_row, const QModelIndex& source_parent) const {
-  bool should_show = filterAcceptsRowInternal(source_row, source_parent);
-  const auto hidden_index = QPair<int, QModelIndex>(source_row, source_parent);
+  const QModelIndex source_index = m_sourceModel->index(source_row, 0, source_parent);
+  const RootItem* item = m_sourceModel->itemForIndex(source_index);
+  const bool should_show = filterAcceptsRowInternal(source_index, item);
 
-  if (should_show && m_hiddenIndices.contains(hidden_index)) {
-    qDebugNN << LOGSEC_CORE << "Item"
-             << QUOTE_W_SPACE(m_sourceModel
-                                ->data(m_sourceModel->index(source_row, 0, source_parent), Qt::ItemDataRole::EditRole)
-                                .toString())
+  if (should_show && m_filteredOutItems.remove(item)) {
+    qDebugNN << LOGSEC_CORE << "Item" << QUOTE_W_SPACE(item->title())
              << "was previously hidden and now shows up, restore expansion state.";
-
-    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.removeAll(hidden_index);
 
     // Now, item should be displayed and previously it was not.
     // Restore remembered expansion state.
-    emit indexNotFilteredOutAnymore(m_sourceModel->index(source_row, 0, source_parent));
+    emit indexNotFilteredOutAnymore(source_index);
   }
 
-  if (!should_show && !m_hiddenIndices.contains(hidden_index)) {
-    const_cast<FeedsProxyModel*>(this)->m_hiddenIndices.append(hidden_index);
+  if (!should_show && item != nullptr) {
+    m_filteredOutItems.insert(item);
   }
 
   return should_show;
+}
+
+int FeedsProxyModel::forgetFilteredItem(const QModelIndex& source_index) {
+  int forgotten_items = 0;
+
+  for (int row = 0; row < m_sourceModel->rowCount(source_index); ++row) {
+    forgotten_items += forgetFilteredItem(m_sourceModel->index(row, 0, source_index));
+  }
+
+  const RootItem* item = m_sourceModel->itemForIndex(source_index);
+
+  if (item != nullptr && m_filteredOutItems.remove(item)) {
+    ++forgotten_items;
+  }
+
+  return forgotten_items;
+}
+
+void FeedsProxyModel::forgetFilteredItems(const QModelIndex& source_parent, int first, int last) {
+  int forgotten_items = 0;
+
+  for (int row = first; row <= last; ++row) {
+    forgotten_items += forgetFilteredItem(m_sourceModel->index(row, 0, source_parent));
+  }
+
+  if (forgotten_items > 0) {
+    qDebugNN << LOGSEC_FEEDMODEL << "Forgot" << forgotten_items << "removed filtered-out feed list items.";
+  }
 }
 
 void FeedsProxyModel::initializeFilters() {
@@ -482,14 +520,10 @@ void FeedsProxyModel::initializeFilters() {
   m_filterKeys = m_filters.keys();
 }
 
-bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex& source_parent) const {
-  const QModelIndex idx = m_sourceModel->index(source_row, 0, source_parent);
-
-  if (!idx.isValid()) {
+bool FeedsProxyModel::filterAcceptsRowInternal(const QModelIndex& source_index, const RootItem* item) const {
+  if (!source_index.isValid() || item == nullptr) {
     return false;
   }
-
-  const RootItem* item = m_sourceModel->itemForIndex(idx);
 
   if (m_selectedItem != nullptr && m_selectedItem == item) {
     return true;
@@ -521,7 +555,7 @@ bool FeedsProxyModel::filterAcceptsRowInternal(int source_row, const QModelIndex
 
   // Either basic model matching is successful or "everywhere" is enabled
   // and we find something in item's description.
-  bool should_show_model = QSortFilterProxyModel::filterAcceptsRow(source_row, source_parent);
+  bool should_show_model = QSortFilterProxyModel::filterAcceptsRow(source_index.row(), source_index.parent());
   bool should_show_all_data = filterKeyColumn() < 0 && filterRegularExpression().isValid() &&
                               filterRegularExpression()
                                 .match(item->data(FDS_MODEL_TITLE_INDEX, Qt::ItemDataRole::ToolTipRole).toString())

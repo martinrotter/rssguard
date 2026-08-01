@@ -6,6 +6,8 @@
 #include "core/filteringproxymodel.h"
 #include "services/abstract/rootitem.h"
 
+#include <QSet>
+
 class FeedsModel;
 class FeedsView;
 
@@ -77,8 +79,10 @@ class FeedsProxyModel : public FilteringProxyModel {
 
   private:
     void initializeFilters();
+    int forgetFilteredItem(const QModelIndex& source_index);
+    void forgetFilteredItems(const QModelIndex& source_parent, int first, int last);
 
-    bool filterAcceptsRowInternal(int source_row, const QModelIndex& source_parent) const;
+    bool filterAcceptsRowInternal(const QModelIndex& source_index, const RootItem* item) const;
     int sortOrderForDrop(RootItem* dragged_item, int row, const QModelIndex& parent) const;
 
     // Source model pointer.
@@ -90,7 +94,7 @@ class FeedsProxyModel : public FilteringProxyModel {
     bool m_showNodeLabels;
     bool m_showNodeImportant;
     QList<RootItem::Kind> m_priorities;
-    QList<QPair<int, QModelIndex>> m_hiddenIndices;
+    mutable QSet<const RootItem*> m_filteredOutItems;
 
     FeedListFilter m_filter;
 
