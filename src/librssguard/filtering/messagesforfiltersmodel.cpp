@@ -13,6 +13,8 @@
 #include "miscellaneous/skinfactory.h"
 #include "services/abstract/labelsnode.h"
 
+#include <QBitArray>
+
 MessagesForFiltersModel::MessagesForFiltersModel(Application* app, QObject* parent)
   : QAbstractTableModel(parent), m_application(app) {
   m_headerData << tr("Result") << tr("Read") << tr("Important") << tr("Trash") << tr("Title") << tr("Date")
@@ -236,6 +238,7 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
       });
 
       QList<Message> read_msgs, important_msgs;
+      QBitArray retained_messages(msgs.size(), true);
 
       for (int i = 0; i < msgs.size(); i++) {
         Message* msg_filtered = &msgs[i];
@@ -266,10 +269,25 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
         filtering.compareAndWriteArticleStates(&msg_original, msg_filtered, read_msgs, important_msgs);
 
         if (remove_msg) {
-          // Do not update message.
-          msgs.removeAt(i--);
+          retained_messages.clearBit(i);
         }
       }
+
+      filtering.setMessage(nullptr);
+
+      int target_index = 0;
+
+      for (int source_index = 0; source_index < msgs.size(); ++source_index) {
+        if (retained_messages.testBit(source_index)) {
+          if (target_index != source_index) {
+            msgs[target_index] = msgs[source_index];
+          }
+
+          ++target_index;
+        }
+      }
+
+      msgs.erase(msgs.begin() + target_index, msgs.end());
 
       filtering.pushMessageStatesToServices(read_msgs, important_msgs, it, account);
 
