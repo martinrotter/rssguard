@@ -63,3 +63,7 @@ add_rssguard_test(test_httpresponse
 add_rssguard_test(test_message
   core/test_message.cpp
 )
+
+add_rssguard_test(test_databasequeries
+  database/test_databasequeries.cpp
+)
