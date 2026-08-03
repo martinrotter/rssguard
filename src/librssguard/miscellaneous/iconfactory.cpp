@@ -2,11 +2,12 @@
 
 #include "miscellaneous/iconfactory.h"
 
-#include "miscellaneous/application.h"
+#include "miscellaneous/applicationpaths.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 
 #include <QBuffer>
+#include <QCoreApplication>
 #include <QCryptographicHash>
 #include <QDir>
 #include <QFileInfo>
@@ -19,7 +20,8 @@
 #include <QUuid>
 #include <QWidgetAction>
 
-IconFactory::IconFactory(Application* application) : QObject(application), m_application(application) {}
+IconFactory::IconFactory(ApplicationPaths* paths, Settings* settings, QObject* parent)
+  : QObject(parent), m_applicationPaths(paths), m_settings(settings) {}
 
 IconFactory::~IconFactory() {}
 
@@ -225,7 +227,7 @@ QPixmap IconFactory::recolorPixmap(const QPixmap& pixmap, const QColor& color) {
 }
 
 QString IconFactory::customColoredIconFolder() {
-  return m_application->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER;
+  return m_applicationPaths->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER;
 }
 
 QString IconFactory::customColoredAppIconPath() {
@@ -298,8 +300,8 @@ QIcon IconFactory::miscIcon(const QString& name) {
 
 void IconFactory::setupSearchPaths() {
   QStringList paths = {APP_THEME_PATH,
-                       m_application->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER,
-                       m_application->applicationDirPath() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER};
+                       m_applicationPaths->userDataFolder() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER,
+                       QCoreApplication::applicationDirPath() + QDir::separator() + APP_LOCAL_ICON_THEME_FOLDER};
 
   paths.append(QIcon::themeSearchPaths());
   QIcon::setThemeSearchPaths(paths);
@@ -307,11 +309,11 @@ void IconFactory::setupSearchPaths() {
 }
 
 void IconFactory::setCurrentIconTheme(const QString& theme_name) {
-  m_application->settings()->setValue(GROUP(GUI), GUI::IconTheme, theme_name);
+  m_settings->setValue(GROUP(GUI), GUI::IconTheme, theme_name);
 }
 
 QString IconFactory::currentIconTheme() const {
-  return m_application->settings()->value(GROUP(GUI), GUI::IconTheme, QSL(APP_ICON_THEME_DEFAULT)).toString();
+  return m_settings->value(GROUP(GUI), GUI::IconTheme, QSL(APP_ICON_THEME_DEFAULT)).toString();
 }
 
 void IconFactory::loadCurrentIconTheme() {

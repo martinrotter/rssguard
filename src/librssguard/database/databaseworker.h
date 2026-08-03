@@ -19,11 +19,13 @@
 using DbReadFn = std::function<void(const QSqlDatabase&)>;
 using DbWriteFn = std::function<void(const QSqlDatabase&)>;
 
+class DatabaseDriver;
+
 class RSSGUARD_DLLSPEC DatabaseWorker : public QObject {
     Q_OBJECT
 
   public:
-    explicit DatabaseWorker();
+    explicit DatabaseWorker(DatabaseDriver* driver);
     virtual ~DatabaseWorker();
 
     template <typename T>
@@ -39,6 +41,7 @@ class RSSGUARD_DLLSPEC DatabaseWorker : public QObject {
     QSqlDatabase connectionForWriting() const;
 
   private:
+    DatabaseDriver* m_driver;
     QThreadPool m_readThreadPool;
     QThread m_writeThread;
     QSqlDatabase m_dbWriter;

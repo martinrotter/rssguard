@@ -115,7 +115,7 @@ void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Labe
   }
 
   try {
-    DatabaseQueries::updateMessages(msgs, feed, false, true);
+    DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), msgs, feed, false, true);
   }
   catch (const ApplicationException& ex) {
     qWarningNN << LOGSEC_STANDARD << "Article import from quiterss failed:" << QUOTE_W_SPACE_DOT(ex.message());
@@ -130,7 +130,7 @@ void QuiteRssImport::importLabels(const QList<Label*>& labels) {
   for (Label* lbl : labels) {
     try {
       qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-        DatabaseQueries::createLabel(db, lbl, m_account->accountId());
+        DatabaseQueries::createLabel(qApp->icons(), db, lbl, m_account->accountId());
       });
 
       m_account->requestItemReassignment(lbl, m_account->labelsNode());

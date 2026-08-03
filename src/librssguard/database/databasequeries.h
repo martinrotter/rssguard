@@ -21,6 +21,9 @@
 #include <QMultiMap>
 #include <QSqlError>
 
+class IconFactory;
+class Settings;
+
 class RSSGUARD_DLLSPEC DatabaseQueries {
   public:
     static QStringList messageTableAttributes();
@@ -47,10 +50,14 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static void assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
     static void setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
-    static QList<Label*> getLabelsForAccount(const QSqlDatabase& db, int account_id);
-    static void updateLabel(const QSqlDatabase& db, Label* label);
+    static QList<Label*> getLabelsForAccount(IconFactory* icons, const QSqlDatabase& db, int account_id);
+    static void updateLabel(IconFactory* icons, const QSqlDatabase& db, Label* label);
     static void deleteLabel(const QSqlDatabase& db, Label* label);
-    static void createLabel(const QSqlDatabase& db, Label* label, int account_id, int new_label_id = 0);
+    static void createLabel(IconFactory* icons,
+                            const QSqlDatabase& db,
+                            Label* label,
+                            int account_id,
+                            int new_label_id = 0);
 
     // Probes.
     static void createProbe(const QSqlDatabase& db, Search* probe, int account_id);
@@ -146,7 +153,9 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void storeNewOauthTokens(const QSqlDatabase& db, const QString& refresh_token, int account_id);
     static void createOverwriteAccount(const QSqlDatabase& db, ServiceRoot* account);
 
-    static UpdatedArticles updateMessages(QList<Message>& messages,
+    static UpdatedArticles updateMessages(DatabaseFactory* db_factory,
+                                          Settings* settings,
+                                          QList<Message>& messages,
                                           Feed* feed,
                                           bool force_update,
                                           bool force_insert,
@@ -168,7 +177,8 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static void cleanBin(const QSqlDatabase& db, bool clear_only_read, int account_id);
 
     // Operate feeds/categories.
-    static void storeAccountTree(const QSqlDatabase& db,
+    static void storeAccountTree(IconFactory* icons,
+                                 const QSqlDatabase& db,
                                  RootItem* tree_root,
                                  int next_feed_id,
                                  int next_label_id,
@@ -389,7 +399,7 @@ void DatabaseQueries::loadRootFromDatabase(ServiceRoot* root) {
   qApp->database()->worker()->read([&](const QSqlDatabase& db) {
     categories = DatabaseQueries::getCategories<Categ>(db, root->accountId());
     feeds = DatabaseQueries::getFeeds<Fee>(db, qApp->feedReader()->messageFilters(), root->accountId());
-    labels = DatabaseQueries::getLabelsForAccount(db, root->accountId());
+    labels = DatabaseQueries::getLabelsForAccount(qApp->icons(), db, root->accountId());
     probes = DatabaseQueries::getProbesForAccount(db, root->accountId());
   });
 

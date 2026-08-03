@@ -137,7 +137,7 @@ void RssGuard4Import::importArticles(StandardFeed* feed, const QMap<QString, Lab
   }
 
   try {
-    DatabaseQueries::updateMessages(msgs, feed, false, true);
+    DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), msgs, feed, false, true);
   }
   catch (const ApplicationException& ex) {
     qWarningNN << LOGSEC_STANDARD << "Article import from quiterss failed:" << QUOTE_W_SPACE_DOT(ex.message());
@@ -154,7 +154,7 @@ void RssGuard4Import::importLabels(const QList<Label*>& labels) {
 
     try {
       qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-        DatabaseQueries::createLabel(db, lbl, m_account->accountId());
+        DatabaseQueries::createLabel(qApp->icons(), db, lbl, m_account->accountId());
       });
 
       m_account->requestItemReassignment(lbl, m_account->labelsNode());

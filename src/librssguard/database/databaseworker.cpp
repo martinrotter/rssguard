@@ -3,10 +3,8 @@
 #include "database/databaseworker.h"
 
 #include "database/databasedriver.h"
-#include "database/databasefactory.h"
-#include "miscellaneous/application.h"
 
-DatabaseWorker::DatabaseWorker() : QObject() {
+DatabaseWorker::DatabaseWorker(DatabaseDriver* driver) : QObject(), m_driver(driver) {
   moveToThread(&m_writeThread);
   m_writeThread.start();
 
@@ -74,9 +72,9 @@ void DatabaseWorker::write(const DbWriteFn& func) {
 }
 
 QSqlDatabase DatabaseWorker::connectionForReading() const {
-  return qApp->database()->driver()->threadSafeConnection(CONNECTION_READ);
+  return m_driver->threadSafeConnection(CONNECTION_READ);
 }
 
 QSqlDatabase DatabaseWorker::connectionForWriting() const {
-  return qApp->database()->driver()->connection(CONNECTION_WRITE);
+  return m_driver->connection(CONNECTION_WRITE);
 }

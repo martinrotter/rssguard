@@ -11,8 +11,8 @@
 #include <QSqlDriver>
 #include <QSqlError>
 
-SqliteDriver::SqliteDriver(QObject* parent)
-  : DatabaseDriver(parent), m_databaseFilePath(qApp->userDataFolder() + QDir::separator() + QSL(APP_DB_SQLITE_PATH)) {}
+SqliteDriver::SqliteDriver(const QString& database_directory, QObject* parent)
+  : DatabaseDriver(parent), m_databaseFilePath(database_directory) {}
 
 QString SqliteDriver::location() const {
   return QDir::toNativeSeparators(m_databaseFilePath);

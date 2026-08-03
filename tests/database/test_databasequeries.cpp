@@ -3,7 +3,6 @@
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "database/databaseworker.h"
-#include "miscellaneous/application.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
 #include "services/abstract/feed.h"
@@ -13,6 +12,7 @@
 #include <memory>
 #include <utility>
 
+#include <QCoreApplication>
 #include <QDir>
 #include <QElapsedTimer>
 #include <QLoggingCategory>
@@ -21,17 +21,16 @@
 #include <QSqlQuery>
 #include <QTemporaryDir>
 #include <QTest>
-#include <QUuid>
 
 namespace {
 
-constexpr int existing_per_lookup = 3000;
-constexpr int new_per_lookup = 1000;
+  constexpr int existing_per_lookup = 3000;
+  constexpr int new_per_lookup = 1000;
   constexpr int lookup_kind_count = 3;
 
   class TestServiceRoot : public ServiceRoot {
     public:
-      using ServiceRoot::ServiceRoot;
+      TestServiceRoot() : ServiceRoot(false, nullptr) {}
 
       virtual bool isSyncable() const override {
         return m_isSyncable;
@@ -96,6 +95,10 @@ constexpr int new_per_lookup = 1000;
 class TestDatabaseQueries : public QObject {
     Q_OBJECT
 
+  public:
+    explicit TestDatabaseQueries(DatabaseFactory& database, Settings& settings)
+      : m_database(database), m_settings(settings) {}
+
   private slots:
     void initTestCase();
     void cleanupTestCase();
@@ -103,14 +106,16 @@ class TestDatabaseQueries : public QObject {
     void matchesCustomIdsAcrossSynchronizedAccount();
 
   private:
+    DatabaseFactory& m_database;
+    Settings& m_settings;
     std::unique_ptr<TestServiceRoot> m_account;
     Feed* m_feed = nullptr;
     Feed* m_secondFeed = nullptr;
 };
 
 void TestDatabaseQueries::initTestCase() {
-  qApp->settings()->setValue(GROUP(Messages), Messages::IgnoreContentsChanges, false);
-  qApp->settings()->setValue(GROUP(Messages), Messages::MarkUnreadOnUpdated, false);
+  m_settings.setValue(GROUP(Messages), Messages::IgnoreContentsChanges, false);
+  m_settings.setValue(GROUP(Messages), Messages::MarkUnreadOnUpdated, false);
 
   m_account.reset(new TestServiceRoot());
   m_account->setSortOrder(0);
@@ -127,7 +132,7 @@ void TestDatabaseQueries::initTestCase() {
   m_secondFeed->setSortOrder(1);
   m_account->appendChild(m_secondFeed);
 
-  qApp->database()->worker()->write([this](const QSqlDatabase& database) {
+  m_database.worker()->write([this](const QSqlDatabase& database) {
     DatabaseQueries::createOverwriteAccount(database, m_account.get());
     DatabaseQueries::createOverwriteFeed(database, m_feed, m_account->accountId(), NO_PARENT_CATEGORY);
     DatabaseQueries::createOverwriteFeed(database, m_secondFeed, m_account->accountId(), NO_PARENT_CATEGORY);
@@ -163,7 +168,8 @@ void TestDatabaseQueries::updatesMixedArticleBatch() {
     seeded_messages.append(makeMessage(QSL("anonymous"), i, feed_id, account_id, {}));
   }
 
-  const UpdatedArticles seeded = DatabaseQueries::updateMessages(seeded_messages, m_feed, false, true);
+  const UpdatedArticles seeded =
+    DatabaseQueries::updateMessages(&m_database, &m_settings, seeded_messages, m_feed, false, true);
 
   QCOMPARE(int(seeded.m_all.size()), existing_per_lookup * lookup_kind_count);
   QCOMPARE(seeded.m_unread.size(), seeded.m_all.size());
@@ -220,7 +226,8 @@ void TestDatabaseQueries::updatesMixedArticleBatch() {
   QElapsedTimer timer;
 
   timer.start();
-  const UpdatedArticles updated = DatabaseQueries::updateMessages(incoming_messages, m_feed, false, false);
+  const UpdatedArticles updated =
+    DatabaseQueries::updateMessages(&m_database, &m_settings, incoming_messages, m_feed, false, false);
   const qint64 elapsed_milliseconds = timer.elapsed();
 
   qInfo().nospace() << "updateMessages mixed batch: " << elapsed_milliseconds
@@ -251,7 +258,7 @@ void TestDatabaseQueries::updatesMixedArticleBatch() {
     QVERIFY(message.m_id > 0);
   }
 
-  const DatabaseState state = qApp->database()->worker()->read<DatabaseState>([](const QSqlDatabase& database) {
+  const DatabaseState state = m_database.worker()->read<DatabaseState>([](const QSqlDatabase& database) {
     DatabaseState result;
 
     result.m_messageCount = scalarQuery(database, QSL("SELECT COUNT(*) FROM Messages;"));
@@ -283,7 +290,8 @@ void TestDatabaseQueries::matchesCustomIdsAcrossSynchronizedAccount() {
       .append(makeMessage(QSL("synchronized"), i, m_feed->id(), m_account->accountId(), QSL("synchronized-%1").arg(i)));
   }
 
-  const UpdatedArticles seeded = DatabaseQueries::updateMessages(seeded_messages, m_feed, false, true);
+  const UpdatedArticles seeded =
+    DatabaseQueries::updateMessages(&m_database, &m_settings, seeded_messages, m_feed, false, true);
 
   QCOMPARE(int(seeded.m_all.size()), synchronized_article_count);
 
@@ -297,7 +305,8 @@ void TestDatabaseQueries::matchesCustomIdsAcrossSynchronizedAccount() {
   QElapsedTimer timer;
 
   timer.start();
-  const UpdatedArticles updated = DatabaseQueries::updateMessages(incoming_messages, m_secondFeed, false, false);
+  const UpdatedArticles updated =
+    DatabaseQueries::updateMessages(&m_database, &m_settings, incoming_messages, m_secondFeed, false, false);
   const qint64 elapsed_milliseconds = timer.elapsed();
 
   qInfo().nospace() << "updateMessages synchronized account batch: " << elapsed_milliseconds
@@ -309,10 +318,10 @@ void TestDatabaseQueries::matchesCustomIdsAcrossSynchronizedAccount() {
     QCOMPARE(incoming_messages.at(i).m_id, seeded_messages.at(i).m_id);
   }
 
-  const int synchronized_rows = qApp->database()->worker()->read<int>([](const QSqlDatabase& database) {
+  const int synchronized_rows = m_database.worker()->read<int>([](const QSqlDatabase& database) {
     return scalarQuery(database, QSL("SELECT COUNT(*) FROM Messages WHERE custom_id LIKE 'synchronized-%';"));
   });
-  const int moved_rows = qApp->database()->worker()->read<int>([this](const QSqlDatabase& database) {
+  const int moved_rows = m_database.worker()->read<int>([this](const QSqlDatabase& database) {
     return scalarQuery(database,
                        QSL("SELECT COUNT(*) FROM Messages "
                            "WHERE custom_id LIKE 'synchronized-%' AND feed = %1;")
@@ -325,6 +334,7 @@ void TestDatabaseQueries::matchesCustomIdsAcrossSynchronizedAccount() {
 }
 
 int main(int argc, char* argv[]) {
+  QCoreApplication application(argc, argv);
   QTemporaryDir data_directory;
 
   if (!data_directory.isValid() || !QDir().mkpath(data_directory.filePath(QSL("config")))) {
@@ -336,22 +346,23 @@ int main(int argc, char* argv[]) {
   QCoreApplication::setApplicationVersion(QSL(APP_VERSION));
   QCoreApplication::setOrganizationDomain(QSL(APP_URL));
 
-  const QStringList application_arguments = {QString::fromLocal8Bit(argv[0]), QSL("--data"), data_directory.path()};
-  const QString application_id = QSL("rssguard-test-databasequeries-%1").arg(QUuid::createUuid().toString());
   int result;
 
   {
-    Application application(application_id, argc, argv, application_arguments);
+    Settings settings(data_directory.filePath(QSL("config/config.ini")),
+                      QSettings::Format::IniFormat,
+                      SettingsProperties::SettingsType::Custom);
+    DatabaseFactory database(APP_DB_SQLITE_DRIVER, data_directory.path());
 
     // Keep timing output visible while avoiding thousands of per-query debug messages.
     QLoggingCategory::setFilterRules(QSL("*.debug=false"));
 
-    TestDatabaseQueries test;
+    TestDatabaseQueries test(database, settings);
 
     result = QTest::qExec(&test, argc, argv);
   }
 
-  // Application owns the database worker, so its destruction must precede removal of named connections.
+  // DatabaseFactory owns the worker, so its destruction must precede removal of named connections.
   const QStringList connection_names = QSqlDatabase::connectionNames();
 
   for (const QString& connection_name : connection_names) {

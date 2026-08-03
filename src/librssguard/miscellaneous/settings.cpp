@@ -7,6 +7,7 @@
 #include "miscellaneous/settingskeys.h"
 
 #include <QApplication>
+#include <QCoreApplication>
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -15,7 +16,11 @@
 Settings::Settings(const QString& file_name, Format format, SettingsProperties::SettingsType type, QObject* parent)
   : QSettings(file_name, format, parent), m_lock(QReadWriteLock(QReadWriteLock::RecursionMode::Recursive)),
     m_initializationStatus(type) {
-  Messages::PreviewerFontStandardDef = QFont(QApplication::font().family(), 10).toString();
+  const auto* application = qobject_cast<QApplication*>(QCoreApplication::instance());
+
+  if (application != nullptr) {
+    Messages::PreviewerFontStandardDef = QFont(application->font().family(), 10).toString();
+  }
 }
 
 Settings::~Settings() = default;

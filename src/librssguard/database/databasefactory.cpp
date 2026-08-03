@@ -7,9 +7,6 @@
 #include "exceptions/applicationexception.h"
 #include "exceptions/sqlexception.h"
 #include "gui/messagebox.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/settings.h"
-#include "miscellaneous/settingskeys.h"
 #include "qtlinq/qtlinq.h"
 
 #include <QDir>
@@ -17,9 +14,10 @@
 #include <QSqlResult>
 #include <QVariant>
 
-DatabaseFactory::DatabaseFactory(QObject* parent)
-  : QObject(parent), m_dbDriver(nullptr), m_dbWorker(new DatabaseWorker()) {
-  determineDriver();
+DatabaseFactory::DatabaseFactory(const QString& driver_id, const QString& user_data_folder, QObject* parent)
+  : QObject(parent), m_dbDriver(nullptr), m_dbWorker(nullptr) {
+  determineDriver(driver_id, user_data_folder);
+  m_dbWorker = new DatabaseWorker(m_dbDriver);
 }
 
 DatabaseFactory::~DatabaseFactory() {
@@ -33,23 +31,23 @@ DatabaseFactory::~DatabaseFactory() {
   }
 }
 
-void DatabaseFactory::determineDriver() {
-  m_allDbDrivers = {new SqliteDriver(this)};
+void DatabaseFactory::determineDriver(const QString& driver_id, const QString& user_data_folder) {
+  const QString sqlite_directory = QDir::cleanPath(user_data_folder + QDir::separator() + QSL(APP_DB_SQLITE_PATH));
+
+  m_allDbDrivers = {new SqliteDriver(sqlite_directory, this)};
 
   if (QSqlDatabase::isDriverAvailable(QSL(APP_DB_MYSQL_DRIVER))) {
     m_allDbDrivers.append(new MariaDbDriver(this));
   }
 
-  const QString db_driver = qApp->settings()->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString();
-
   m_dbDriver = qlinq::from(m_allDbDrivers)
-                 .firstOrDefault([db_driver](DatabaseDriver* driv) {
-                   return QString::compare(driv->qtDriverCode(), db_driver, Qt::CaseSensitivity::CaseInsensitive) == 0;
+                 .firstOrDefault([driver_id](DatabaseDriver* driv) {
+                   return QString::compare(driv->qtDriverCode(), driver_id, Qt::CaseSensitivity::CaseInsensitive) == 0;
                  })
                  .value_or(nullptr);
 
   if (m_dbDriver == nullptr) {
-    qFatal("DB driver for '%s' was not found.", qPrintable(db_driver));
+    qFatal("DB driver for '%s' was not found.", qPrintable(driver_id));
   }
 
   const auto handle_connection_failure = [this](const ApplicationException& ex) {

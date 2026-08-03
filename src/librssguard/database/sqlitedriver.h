@@ -9,7 +9,7 @@ class SqliteDriver : public DatabaseDriver {
     Q_OBJECT
 
   public:
-    explicit SqliteDriver(QObject* parent = nullptr);
+    explicit SqliteDriver(const QString& database_directory, QObject* parent = nullptr);
 
     virtual QString location() const;
     virtual DriverType driverType() const;

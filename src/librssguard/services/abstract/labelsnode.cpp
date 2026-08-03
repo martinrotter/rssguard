@@ -94,7 +94,7 @@ void LabelsNode::createLabel() {
     if (new_lbl != nullptr) {
       try {
         qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-          DatabaseQueries::createLabel(db, new_lbl, account()->accountId());
+          DatabaseQueries::createLabel(qApp->icons(), db, new_lbl, account()->accountId());
         });
 
         account()->requestItemReassignment(new_lbl, this);

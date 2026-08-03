@@ -20,14 +20,15 @@
 #include <QUuid>
 
 class QAction;
-class Application;
+class ApplicationPaths;
+class Settings;
 class QMenu;
 
 class RSSGUARD_DLLSPEC IconFactory : public QObject {
     Q_OBJECT
 
   public:
-    explicit IconFactory(Application* application);
+    explicit IconFactory(ApplicationPaths* paths, Settings* settings, QObject* parent = nullptr);
     virtual ~IconFactory();
 
     // Generates round icon of given color.
@@ -84,7 +85,8 @@ class RSSGUARD_DLLSPEC IconFactory : public QObject {
     void setCurrentIconTheme(const QString& theme_name);
 
   private:
-    Application* m_application;
+    ApplicationPaths* m_applicationPaths;
+    Settings* m_settings;
 };
 
 #endif // ICONFACTORY_H

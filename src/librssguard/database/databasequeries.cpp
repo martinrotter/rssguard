@@ -224,7 +224,7 @@ void DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<La
   }
 }
 
-QList<Label*> DatabaseQueries::getLabelsForAccount(const QSqlDatabase& db, int account_id) {
+QList<Label*> DatabaseQueries::getLabelsForAccount(IconFactory* icons, const QSqlDatabase& db, int account_id) {
   QList<Label*> labels;
   SqlQuery q(db);
 
@@ -234,8 +234,7 @@ QList<Label*> DatabaseQueries::getLabelsForAccount(const QSqlDatabase& db, int a
   q.exec();
 
   while (q.next()) {
-    Label* lbl =
-      new Label(q.value(QSL("name")).toString(), qApp->icons()->fromByteArray(q.value(QSL("icon")).toByteArray()));
+    Label* lbl = new Label(q.value(QSL("name")).toString(), icons->fromByteArray(q.value(QSL("icon")).toByteArray()));
 
     lbl->setId(q.value(QSL("id")).toInt());
     lbl->setCustomId(q.value(QSL("custom_id")).toString());
@@ -246,14 +245,14 @@ QList<Label*> DatabaseQueries::getLabelsForAccount(const QSqlDatabase& db, int a
   return labels;
 }
 
-void DatabaseQueries::updateLabel(const QSqlDatabase& db, Label* label) {
+void DatabaseQueries::updateLabel(IconFactory* icons, const QSqlDatabase& db, Label* label) {
   SqlQuery q(db);
 
   q.prepare(QSL("UPDATE Labels "
                 "SET name = :name, icon = :icon "
                 "WHERE id = :id;"));
   q.bindValue(QSL(":name"), label->title());
-  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(label->icon()));
+  q.bindValue(QSL(":icon"), icons->toByteArray(label->icon()));
   q.bindValue(QSL(":id"), label->id());
 
   q.exec();
@@ -268,7 +267,11 @@ void DatabaseQueries::deleteLabel(const QSqlDatabase& db, Label* label) {
   q.exec();
 }
 
-void DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int account_id, int new_label_id) {
+void DatabaseQueries::createLabel(IconFactory* icons,
+                                  const QSqlDatabase& db,
+                                  Label* label,
+                                  int account_id,
+                                  int new_label_id) {
   SqlQuery q(db);
 
   if (new_label_id > 0) {
@@ -282,7 +285,7 @@ void DatabaseQueries::createLabel(const QSqlDatabase& db, Label* label, int acco
   }
 
   q.bindValue(QSL(":name"), label->title());
-  q.bindValue(QSL(":icon"), qApp->icons()->toByteArray(label->icon()));
+  q.bindValue(QSL(":icon"), icons->toByteArray(label->icon()));
   q.bindValue(QSL(":custom_id"), label->customId());
   q.bindValue(QSL(":account_id"), account_id);
   q.exec();
@@ -844,7 +847,9 @@ struct ExistingMessageInfo {
     QString m_author;
 };
 
-UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
+UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
+                                                Settings* settings,
+                                                QList<Message>& messages,
                                                 Feed* feed,
                                                 bool force_update,
                                                 bool force_insert,
@@ -860,7 +865,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
   QVector<UpdateMessageInfo> msgs_to_update;
 
   if (!force_insert) {
-    qApp->database()->worker()->read([&](const QSqlDatabase& db) {
+    db_factory->worker()->read([&](const QSqlDatabase& db) {
       // Prepare queries.
       SqlQuery query_select_with_url(db);
       SqlQuery query_select_with_custom_id(db);
@@ -1053,7 +1058,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
           //        Message update is forced, we want to overwrite message as some arbitrary atribute was changed,
           //        this particularly happens when manual message filter execution happens.
           bool ignore_contents_changes =
-            qApp->settings()->value(GROUP(Messages), SETTING(Messages::IgnoreContentsChanges)).toBool();
+            settings->value(GROUP(Messages), SETTING(Messages::IgnoreContentsChanges)).toBool();
           bool cond_1 =
             !message.m_customId.isEmpty() && feed->account()->isSyncable() &&
             (message.m_created.toMSecsSinceEpoch() != date_existing_message ||
@@ -1070,7 +1075,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
 
           if (cond_1 || cond_2 || cond_3 || force_update) {
             if (preserve_existing_read_state && !feed->account()->isSyncable() &&
-                !qApp->settings()->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool()) {
+                !settings->value(GROUP(Messages), SETTING(Messages::MarkUnreadOnUpdated)).toBool()) {
               // Feed is not syncable, thus we got RSS/JSON/whatever.
               // Article is only updated, so we now prefer to keep original read state
               // pretty much the same way starred state is kept.
@@ -1100,7 +1105,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
   }
 
   if (!msgs_to_update.isEmpty()) {
-    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    db_factory->worker()->write([&](const QSqlDatabase& db) {
       SqlQuery query_update(db);
 
       // Used to update existing messages.
@@ -1165,7 +1170,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
                               "date_retrieved, contents, enclosures, custom_id, custom_data, account_id) "
                               "VALUES %1;");
 
-    qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    db_factory->worker()->write([&](const QSqlDatabase& db) {
       for (int i = 0; i < msgs_to_insert.size(); i += 1000) {
         QStringList vals;
         int batch_length = std::min(1000, int(msgs_to_insert.size()) - i);
@@ -1274,7 +1279,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
 
       if (uses_online_labels) {
         // Store all labels obtained from server.
-        qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+        db_factory->worker()->write([&](const QSqlDatabase& db) {
           setLabelsForMessage(db, message.m_assignedLabels, message);
         });
         // lbls_changed = true;
@@ -1316,7 +1321,7 @@ UpdatedArticles DatabaseQueries::updateMessages(QList<Message>& messages,
     }
   }
 
-  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+  db_factory->worker()->write([&](const QSqlDatabase& db) {
     SqlQuery fixup_custom_ids_query(db);
 
     fixup_custom_ids_query.exec(QSL("UPDATE Messages "
@@ -1459,7 +1464,8 @@ void DatabaseQueries::purgeLeftoverLabelAssignments(const QSqlDatabase& db) {
   q.exec();
 }
 
-void DatabaseQueries::storeAccountTree(const QSqlDatabase& db,
+void DatabaseQueries::storeAccountTree(IconFactory* icons,
+                                       const QSqlDatabase& db,
                                        RootItem* tree_root,
                                        int next_feed_id,
                                        int next_label_id,
@@ -1505,7 +1511,7 @@ void DatabaseQueries::storeAccountTree(const QSqlDatabase& db,
           new_lbl_id = next_label_id++;
         }
 
-        createLabel(db, label, account_id, new_lbl_id);
+        createLabel(icons, db, label, account_id, new_lbl_id);
       }
     }
   }

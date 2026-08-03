@@ -32,13 +32,21 @@
 #include <QThreadPool>
 #include <QtConcurrent>
 
-ServiceRoot::ServiceRoot(RootItem* parent)
-  : RootItem(parent), m_recycleBin(new RecycleBin(this)), m_importantNode(new ImportantNode(this)),
-    m_labelsNode(new LabelsNode(this)), m_probesNode(new SearchsNode(this)), m_unreadNode(new UnreadNode(this)),
-    m_accountId(NO_PARENT_CATEGORY), m_networkProxy(QNetworkProxy()), m_nodeShowUnread(true), m_nodeShowImportant(true),
-    m_nodeShowLabels(true), m_nodeShowProbes(true), m_syncInRunning(false) {
+ServiceRoot::ServiceRoot(RootItem* parent) : ServiceRoot(true, parent) {}
+
+ServiceRoot::ServiceRoot(bool create_common_nodes, RootItem* parent)
+  : RootItem(parent), m_recycleBin(create_common_nodes ? new RecycleBin(this) : nullptr),
+    m_importantNode(create_common_nodes ? new ImportantNode(this) : nullptr),
+    m_labelsNode(create_common_nodes ? new LabelsNode(this) : nullptr),
+    m_probesNode(create_common_nodes ? new SearchsNode(this) : nullptr),
+    m_unreadNode(create_common_nodes ? new UnreadNode(this) : nullptr), m_accountId(NO_PARENT_CATEGORY),
+    m_networkProxy(QNetworkProxy()), m_nodeShowUnread(true), m_nodeShowImportant(true), m_nodeShowLabels(true),
+    m_nodeShowProbes(true), m_syncInRunning(false) {
   setKind(RootItem::Kind::ServiceRoot);
-  appendCommonNodes();
+
+  if (create_common_nodes) {
+    appendCommonNodes();
+  }
 
   connect(this, &ServiceRoot::syncInFinished, this, &ServiceRoot::onSyncInFinished);
 }
@@ -99,7 +107,7 @@ void ServiceRoot::editItems(const QList<RootItem*>& items) {
     if (form.execForEdit(lbl)) {
       try {
         qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-          DatabaseQueries::updateLabel(db, lbl);
+          DatabaseQueries::updateLabel(qApp->icons(), db, lbl);
         });
         itemChanged({lbl});
       }
@@ -765,7 +773,12 @@ void ServiceRoot::onSyncInFinished(const SyncInResult& result) {
 
         // Model is clean, now store new tree into DB and
         // set primary IDs of the items.
-        DatabaseQueries::storeAccountTree(db, new_tree, next_primary_id_feeds, next_primary_id_labels, accountId());
+        DatabaseQueries::storeAccountTree(qApp->icons(),
+                                          db,
+                                          new_tree,
+                                          next_primary_id_feeds,
+                                          next_primary_id_labels,
+                                          accountId());
 
         DatabaseQueries::purgeLeftoverMessages(db, accountId());
         DatabaseQueries::purgeLeftoverMessageFilterAssignments(db);
@@ -1276,8 +1289,13 @@ UpdatedArticles ServiceRoot::updateMessages(QList<Message>& messages,
   if (!messages.isEmpty()) {
     qDebugNN << LOGSEC_CORE << "Updating messages in DB.";
 
-    updated_messages =
-      DatabaseQueries::updateMessages(messages, feed, force_update, false, preserve_existing_read_state);
+    updated_messages = DatabaseQueries::updateMessages(qApp->database(),
+                                                       qApp->settings(),
+                                                       messages,
+                                                       feed,
+                                                       force_update,
+                                                       false,
+                                                       preserve_existing_read_state);
   }
   else {
     qDebugNN << "No messages to be updated/added in DB for feed" << QUOTE_W_SPACE_DOT(feed->customId());

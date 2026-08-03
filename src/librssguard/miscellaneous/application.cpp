@@ -141,8 +141,10 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_webFactory = new WebFactory(this);
   m_system = new SystemFactory(this);
   m_skins = new SkinFactory(this);
-  m_icons = new IconFactory(this);
-  m_database = new DatabaseFactory(this);
+  m_icons = new IconFactory(m_paths.data(), m_settings, this);
+  m_database = new DatabaseFactory(m_settings->value(GROUP(Database), SETTING(Database::ActiveDriver)).toString(),
+                                   userDataFolder(),
+                                   this);
   m_notifications = new NotificationFactory(m_settings, this);
   m_toastNotifications =
     (!isWayland() && m_notifications->useToastNotifications()) ? new ToastNotificationsManager(this) : nullptr;

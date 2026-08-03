@@ -698,7 +698,7 @@ QString FilterAccount::createLabel(const QString& label_title, const QString& he
     new_lbl = new Label(label_title, icon_color);
 
     system()->application()->database()->worker()->write([&](const QSqlDatabase& db) {
-      DatabaseQueries::createLabel(db, new_lbl, system()->account()->accountId());
+      DatabaseQueries::createLabel(system()->application()->icons(), db, new_lbl, system()->account()->accountId());
     });
 
     system()->account()->requestItemReassignment(new_lbl, system()->account()->labelsNode(), true);

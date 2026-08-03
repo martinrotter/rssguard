@@ -251,6 +251,8 @@ class RSSGUARD_DLLSPEC ServiceRoot : public RootItem {
     void onSyncInFinished(const SyncInResult& result);
 
   protected:
+    explicit ServiceRoot(bool create_common_nodes, RootItem* parent);
+
     // Removes all messages/categories/feeds which are
     // associated with this account.
     void cleanAllItemsFromModel(bool clean_labels_too);

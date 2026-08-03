@@ -11,6 +11,7 @@
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/thread.h"
 
+#include <QCoreApplication>
 #include <QDir>
 #include <QRegularExpression>
 #include <QSqlError>
@@ -20,7 +21,8 @@ DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent), m_databaseIni
 
 QSqlDatabase DatabaseDriver::threadSafeConnection(const QString& connection_name) {
   qlonglong thread_id = getThreadID();
-  bool is_main_thread = QThread::currentThread() == qApp->thread();
+  bool is_main_thread = QCoreApplication::instance() != nullptr &&
+                        QThread::currentThread() == QCoreApplication::instance()->thread();
   QSqlDatabase database =
     connection(is_main_thread ? connection_name : QSL("%1_%2").arg(connection_name, QString::number(thread_id)));
 

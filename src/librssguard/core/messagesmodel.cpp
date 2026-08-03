@@ -1133,7 +1133,7 @@ void MessagesModel::updateSourceArticle(const Message& msg) {
   QList<Message> msgs = {msg};
 
   try {
-    DatabaseQueries::updateMessages(msgs, feedById(msg.m_feedId), true, false);
+    DatabaseQueries::updateMessages(qApp->database(), qApp->settings(), msgs, feedById(msg.m_feedId), true, false);
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_MESSAGEMODEL << "Failed to update source article:" << QUOTE_W_SPACE_DOT(ex.message());
