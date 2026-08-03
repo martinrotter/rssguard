@@ -227,7 +227,14 @@ Qt::ItemFlags MessagesForFiltersModel::flags(const QModelIndex& index) const {
 void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* account, const QList<RootItem*>& checked) {
   for (RootItem* it : checked) {
     if (it->kind() == RootItem::Kind::Feed) {
-      FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles, it->toFeed(), account, qApp);
+      FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles,
+                                it->toFeed(),
+                                account,
+                                qApp->applicationPaths(),
+                                qApp->database(),
+                                qApp->icons(),
+                                qApp->localization(),
+                                qApp->guiNotifications());
 
       filtering.filterRun().setTotalCountOfFilters(1);
       filtering.filterRun().setIndexOfCurrentFilter(0);

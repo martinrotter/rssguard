@@ -457,6 +457,14 @@ IconFactory* Application::icons() {
   return m_icons;
 }
 
+ApplicationPaths* Application::applicationPaths() const {
+  return m_paths.data();
+}
+
+GuiNotificationCoordinator* Application::guiNotifications() const {
+  return m_guiNotifications.data();
+}
+
 Settings* Application::settings() const {
   return m_settings;
 }

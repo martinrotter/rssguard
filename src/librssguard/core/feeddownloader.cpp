@@ -332,7 +332,14 @@ void FeedDownloader::updateOneFeed(ServiceRoot* acc,
       tmr.restart();
 
       // Perform per-message filtering.
-      FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles, feed, acc, qApp);
+      FilteringSystem filtering(FilteringSystem::FiteringUseCase::NewArticles,
+                                feed,
+                                acc,
+                                qApp->applicationPaths(),
+                                qApp->database(),
+                                qApp->icons(),
+                                qApp->localization(),
+                                qApp->guiNotifications());
       filtering.filterRun().setTotalCountOfFilters(feed_filters_enabled.size());
 
       qDebugNN << LOGSEC_FEEDDOWNLOADER << "Setting up JS evaluation took " << tmr.nsecsElapsed() / 1000

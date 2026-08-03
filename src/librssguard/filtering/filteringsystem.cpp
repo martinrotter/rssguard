@@ -6,20 +6,27 @@
 #include "database/sqlquery.h"
 #include "definitions/globals.h"
 #include "exceptions/filteringexception.h"
-#include "miscellaneous/application.h"
+#include "miscellaneous/applicationpaths.h"
 #include "miscellaneous/localization.h"
 #include "miscellaneous/textfactory.h"
 #include "qtlinq/qtlinq.h"
 #include "services/abstract/labelsnode.h"
+#include "services/abstract/serviceroot.h"
 
 #include <QElapsedTimer>
 
 FilteringSystem::FilteringSystem(FiteringUseCase mode,
                                  Feed* feed,
                                  ServiceRoot* account,
-                                 Application* app,
+                                 ApplicationPaths* app,
+                                 DatabaseFactory* db_factory,
+                                 IconFactory* icon_factory,
+                                 Localization* localization,
+                                 GuiNotificationCoordinator* gui_notif,
                                  QObject* parent)
-  : QObject(parent), m_mode(mode), m_feed(feed), m_account(account), m_application(app) {
+  : QObject(parent), m_mode(mode), m_feed(feed), m_account(account), m_applicationPaths(app),
+    m_databaseFactory(db_factory), m_iconFactory(icon_factory), m_localization(localization),
+    m_guiNotifications(gui_notif) {
   initializeEngine();
 
   m_availableLabels =
@@ -141,7 +148,7 @@ const QList<FilteringSystem::DuplicateCandidate>& FilteringSystem::duplicateCand
 
   candidates.clear();
 
-  m_application->database()->worker()->read([&](const QSqlDatabase& db) {
+  m_databaseFactory->worker()->read([&](const QSqlDatabase& db) {
     SqlQuery query(db);
 
     if (all_feeds_same_account) {
@@ -213,7 +220,7 @@ QJSValue FilteringSystem::prepareFilter(const MessageFilter& filter) {
   // Keep each filter script in its own scope so helper functions/variables from
   // one filter do not overwrite helpers from another filter in the shared engine.
   const QString filter_script = QSL("(function() {\n%1\n; return filterMessage;\n})()")
-                                  .arg(m_application->replaceUserDataFolderPlaceholder(filter.script(), true));
+                                  .arg(m_applicationPaths->replaceUserDataFolderPlaceholder(filter.script(), true));
   QJSValue filter_func = m_engine.evaluate(filter_script, filter.name());
 
   if (filter_func.isError()) {
@@ -232,8 +239,24 @@ QJSValue FilteringSystem::prepareFilter(const MessageFilter& filter) {
   return filter_func;
 }
 
-Application* FilteringSystem::application() const {
-  return m_application;
+ApplicationPaths* FilteringSystem::applicationPaths() const {
+  return m_applicationPaths;
+}
+
+DatabaseFactory* FilteringSystem::database() const {
+  return m_databaseFactory;
+}
+
+IconFactory* FilteringSystem::icons() const {
+  return m_iconFactory;
+}
+
+Localization* FilteringSystem::localization() const {
+  return m_localization;
+}
+
+GuiNotificationCoordinator* FilteringSystem::guiNotifications() const {
+  return m_guiNotifications;
 }
 
 QJSEngine& FilteringSystem::engine() {
@@ -246,7 +269,7 @@ FilterMessage& FilteringSystem::message() {
 
 void FilteringSystem::initializeEngine() {
   m_engine.installExtensions(QJSEngine::Extension::ConsoleExtension | QJSEngine::Extension::GarbageCollectionExtension);
-  m_engine.setUiLanguage(m_application->localization()->loadedLanguage());
+  m_engine.setUiLanguage(m_localization->loadedLanguage());
 
   // msg
   m_engine.globalObject().setProperty(QSL("Msg"), m_engine.newQMetaObject(&FilterMessage::staticMetaObject));

@@ -28,6 +28,7 @@ namespace {
   constexpr int existing_per_lookup = 3000;
   constexpr int new_per_lookup = 1000;
   constexpr int lookup_kind_count = 3;
+  constexpr int update_only_article_count = 10000;
 
   class TestServiceRoot : public ServiceRoot {
     public:
@@ -104,6 +105,7 @@ class TestDatabaseQueries : public QObject {
     void initTestCase();
     void cleanupTestCase();
     void updatesMixedArticleBatch();
+    void updatesExistingArticles();
     void matchesCustomIdsAcrossSynchronizedAccount();
 
   private:
@@ -277,6 +279,64 @@ void TestDatabaseQueries::updatesMixedArticleBatch() {
   QCOMPARE(state.m_updatedDirectCount, existing_per_lookup);
   QCOMPARE(state.m_updatedCustomCount, existing_per_lookup);
   QCOMPARE(state.m_updatedAnonymousCount, existing_per_lookup);
+}
+
+void TestDatabaseQueries::updatesExistingArticles() {
+  QList<Message> seeded_messages;
+
+  seeded_messages.reserve(update_only_article_count);
+
+  for (int i = 0; i < update_only_article_count; ++i) {
+    seeded_messages.append(makeMessage(QSL("update-only"),
+                                       i,
+                                       m_feed->id(),
+                                       m_account->accountId(),
+                                       QSL("update-only-%1").arg(i)));
+  }
+
+  const UpdatedArticles seeded =
+    DatabaseQueries::updateMessages(&m_database, &m_settings, seeded_messages, m_feed, false, true);
+
+  QCOMPARE(int(seeded.m_all.size()), update_only_article_count);
+
+  QList<Message> incoming_messages = seeded_messages;
+
+  for (int i = 0; i < update_only_article_count; ++i) {
+    incoming_messages[i].m_contents = QSL("update-only changed contents %1").arg(i);
+  }
+
+  QElapsedTimer timer;
+
+  timer.start();
+  const UpdatedArticles updated =
+    DatabaseQueries::updateMessages(&m_database, &m_settings, incoming_messages, m_feed, false, false);
+  const qint64 elapsed_milliseconds = timer.elapsed();
+
+  qInfo().nospace() << "updateMessages existing update batch: " << elapsed_milliseconds
+                    << " ms; updated: " << update_only_article_count;
+
+  QCOMPARE(int(updated.m_all.size()), update_only_article_count);
+  QCOMPARE(int(updated.m_unread.size()), update_only_article_count);
+
+  for (int i = 0; i < update_only_article_count; ++i) {
+    QCOMPARE(incoming_messages.at(i).m_id, seeded_messages.at(i).m_id);
+  }
+
+  const int stored_articles =
+    m_database.worker()->read<int>([](const QSqlDatabase& database) {
+      return scalarQuery(database,
+                         QSL("SELECT COUNT(*) FROM Messages "
+                             "WHERE custom_id LIKE 'update-only-%';"));
+    });
+  const int changed_articles =
+    m_database.worker()->read<int>([](const QSqlDatabase& database) {
+      return scalarQuery(database,
+                         QSL("SELECT COUNT(*) FROM Messages "
+                             "WHERE contents LIKE 'update-only changed contents %';"));
+    });
+
+  QCOMPARE(stored_articles, update_only_article_count);
+  QCOMPARE(changed_articles, update_only_article_count);
 }
 
 void TestDatabaseQueries::matchesCustomIdsAcrossSynchronizedAccount() {

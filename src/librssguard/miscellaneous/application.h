@@ -132,6 +132,8 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     Localization* localization();
     DatabaseFactory* database();
     IconFactory* icons();
+    ApplicationPaths* applicationPaths() const;
+    GuiNotificationCoordinator* guiNotifications() const;
     Settings* settings() const;
     Mutex* feedUpdateLock();
     FormMain* mainForm();

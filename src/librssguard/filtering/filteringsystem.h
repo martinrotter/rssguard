@@ -11,7 +11,11 @@
 #include <QJSEngine>
 #include <QObject>
 
-class Application;
+class ApplicationPaths;
+class DatabaseFactory;
+class GuiNotificationCoordinator;
+class IconFactory;
+class Localization;
 
 class FilteringSystem : public QObject {
     Q_OBJECT
@@ -34,7 +38,11 @@ class FilteringSystem : public QObject {
     explicit FilteringSystem(FiteringUseCase mode,
                              Feed* feed,
                              ServiceRoot* account,
-                             Application* app,
+                             ApplicationPaths* app,
+                             DatabaseFactory* db_factory,
+                             IconFactory* icon_factory,
+                             Localization* localization,
+                             GuiNotificationCoordinator* gui_notif,
                              QObject* parent = nullptr);
 
     void setMessage(Message* message);
@@ -62,7 +70,11 @@ class FilteringSystem : public QObject {
     FilterRun& filterRun();
     FilterAccount& filterAccount();
     FilterApp& filterApp();
-    Application* application() const;
+    ApplicationPaths* applicationPaths() const;
+    DatabaseFactory* database() const;
+    IconFactory* icons() const;
+    Localization* localization() const;
+    GuiNotificationCoordinator* guiNotifications() const;
 
   private:
     void initializeEngine();
@@ -73,7 +85,11 @@ class FilteringSystem : public QObject {
     Feed* m_feed;
     ServiceRoot* m_account;
     QList<Label*> m_availableLabels;
-    Application* m_application;
+    ApplicationPaths* m_applicationPaths;
+    DatabaseFactory* m_databaseFactory;
+    IconFactory* m_iconFactory;
+    Localization* m_localization;
+    GuiNotificationCoordinator* m_guiNotifications;
 
     QJSEngine m_engine;
     QHash<const MessageFilter*, QJSValue> m_preparedFilters;

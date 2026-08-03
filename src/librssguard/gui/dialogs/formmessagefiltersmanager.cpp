@@ -559,7 +559,11 @@ void FormMessageFiltersManager::testFilter() {
                               ? selected_fd_cat->toFeed()
                               : nullptr,
                             selectedAccount(),
-                            qApp);
+                            qApp->applicationPaths(),
+                            qApp->database(),
+                            qApp->icons(),
+                            qApp->localization(),
+                            qApp->guiNotifications());
 
   filtering.filterRun().setTotalCountOfFilters(1);
   filtering.filterRun().setIndexOfCurrentFilter(0);

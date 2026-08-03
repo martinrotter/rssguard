@@ -8,8 +8,11 @@
 #include "definitions/globals.h"
 #include "exceptions/applicationexception.h"
 #include "filtering/filteringsystem.h"
+#include "miscellaneous/applicationpaths.h"
 #include "miscellaneous/domdocument.h"
 #include "miscellaneous/feedreader.h"
+#include "miscellaneous/guinotificationcoordinator.h"
+#include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/textfactory.h"
 #include "qtlinq/qtlinq.h"
@@ -456,7 +459,7 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   }
 
   QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
-  bool res = system()->application()->database()->worker()->read<bool>([&](const QSqlDatabase& db) {
+  bool res = system()->database()->worker()->read<bool>([&](const QSqlDatabase& db) {
     SqlQuery q(db);
     q.prepare(full_query);
 
@@ -639,7 +642,7 @@ QString FilterFs::runExecutableGetOutput(const QString& executable,
     auto res = IOFactory::startProcessGetOutput(executable,
                                                 arguments,
                                                 stdin_data,
-                                                working_directory.isEmpty() ? system()->application()->userDataFolder()
+                                                working_directory.isEmpty() ? system()->applicationPaths()->userDataFolder()
                                                                             : working_directory);
 
     return res;
@@ -657,7 +660,7 @@ void FilterFs::runExecutable(const QString& executable,
     IOFactory::startProcessDetached(executable,
                                     arguments,
                                     stdin_data,
-                                    working_directory.isEmpty() ? system()->application()->userDataFolder()
+                                    working_directory.isEmpty() ? system()->applicationPaths()->userDataFolder()
                                                                 : working_directory);
   }
   catch (const ApplicationException& ex) {
@@ -697,8 +700,8 @@ QString FilterAccount::createLabel(const QString& label_title, const QString& he
 
     new_lbl = new Label(label_title, icon_color);
 
-    system()->application()->database()->worker()->write([&](const QSqlDatabase& db) {
-      DatabaseQueries::createLabel(system()->application()->icons(), db, new_lbl, system()->account()->accountId());
+    system()->database()->worker()->write([&](const QSqlDatabase& db) {
+      DatabaseQueries::createLabel(system()->icons(), db, new_lbl, system()->account()->accountId());
     });
 
     system()->account()->requestItemReassignment(new_lbl, system()->account()->labelsNode(), true);
@@ -718,7 +721,11 @@ QString FilterAccount::createLabel(const QString& label_title, const QString& he
 }
 
 void FilterApp::showNotification(const QString& title, const QString& text) {
-  system()->application()->showGuiMessage(Notification::Event::GeneralEvent, GuiMessage(title, text));
+  system()->guiNotifications()->showGuiMessage(Notification::Event::GeneralEvent,
+                                               GuiMessage(title, text),
+                                               {},
+                                               {},
+                                               nullptr);
 }
 
 void FilterApp::log(const QString& message) {
