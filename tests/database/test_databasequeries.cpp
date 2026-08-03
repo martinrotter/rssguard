@@ -5,6 +5,7 @@
 #include "database/databaseworker.h"
 #include "miscellaneous/settings.h"
 #include "miscellaneous/settingskeys.h"
+#include "miscellaneous/textfactory.h"
 #include "services/abstract/feed.h"
 #include "services/abstract/serviceroot.h"
 
@@ -352,6 +353,9 @@ int main(int argc, char* argv[]) {
     Settings settings(data_directory.filePath(QSL("config/config.ini")),
                       QSettings::Format::IniFormat,
                       SettingsProperties::SettingsType::Custom);
+
+    TextFactory::initializeSecretEncryptionKey(settings.pathName());
+
     DatabaseFactory database(APP_DB_SQLITE_DRIVER, data_directory.path());
 
     // Keep timing output visible while avoiding thousands of per-query debug messages.
