@@ -20,30 +20,29 @@ void CacheForServiceRoot::addLabelsAssignmentsToCache(const QStringList& ids_of_
   }
 
   QMutexLocker lck(m_cacheSaveMutex.data());
+  auto* active_cache = assign ? &m_cachedLabelAssignments : &m_cachedLabelDeassignments;
+  auto* opposite_cache = assign ? &m_cachedLabelDeassignments : &m_cachedLabelAssignments;
+  QStringList& active_ids = (*active_cache)[lbl_custom_id];
+  QStringList& opposite_ids = (*opposite_cache)[lbl_custom_id];
 
-  if (assign) {
-    for (const QString& custom_id : ids_of_messages) {
-      if (m_cachedLabelDeassignments[lbl_custom_id].contains(custom_id)) {
-        // We want to assign this ID but it was marked for deassignment, remove from deassignment.
-        m_cachedLabelDeassignments[lbl_custom_id].removeAll(custom_id);
-      }
-      else {
-        m_cachedLabelAssignments[lbl_custom_id].append(custom_id);
-        m_cachedLabelAssignments[lbl_custom_id].removeDuplicates();
-      }
-    }
+  QSet<QString> requested_ids(ids_of_messages.cbegin(), ids_of_messages.cend());
+  QSet<QString> active_ids_set(active_ids.cbegin(), active_ids.cend());
+  QSet<QString> opposite_ids_set(opposite_ids.cbegin(), opposite_ids.cend());
+  const QSet<QString> cancelled_ids = requested_ids & opposite_ids_set;
+
+  opposite_ids_set.subtract(requested_ids);
+  requested_ids.subtract(cancelled_ids);
+  active_ids_set.unite(requested_ids);
+
+  active_ids = active_ids_set.values();
+  opposite_ids = opposite_ids_set.values();
+
+  if (active_ids.isEmpty()) {
+    active_cache->remove(lbl_custom_id);
   }
-  else {
-    for (const QString& custom_id : ids_of_messages) {
-      if (m_cachedLabelAssignments[lbl_custom_id].contains(custom_id)) {
-        // We want to deassign this ID but it was marked for assignment, remove from assignment.
-        m_cachedLabelAssignments[lbl_custom_id].removeAll(custom_id);
-      }
-      else {
-        m_cachedLabelDeassignments[lbl_custom_id].append(custom_id);
-        m_cachedLabelDeassignments[lbl_custom_id].removeDuplicates();
-      }
-    }
+
+  if (opposite_ids.isEmpty()) {
+    opposite_cache->remove(lbl_custom_id);
   }
 
   saveCacheToFile();
