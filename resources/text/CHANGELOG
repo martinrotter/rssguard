@@ -3,6 +3,7 @@
 Released on: 2026-07-XX
 
 Added:
+* Feed and article searches can now be set to run only after pressing Enter. (#2277)
 * The Settings window now reopens the section that was selected last. (#2365)
 * Article filters can now be moved five positions at a time with Shift, or directly to the top or bottom with Ctrl. (#2320)
 * Added icons to more commands and context-menu actions.

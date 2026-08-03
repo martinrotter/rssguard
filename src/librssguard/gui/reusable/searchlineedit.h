@@ -6,6 +6,7 @@
 #include "gui/reusable/baselineedit.h"
 
 class QActionGroup;
+class QAction;
 class PlainToolButton;
 
 class SearchLineEdit : public BaseLineEdit {
@@ -26,7 +27,7 @@ class SearchLineEdit : public BaseLineEdit {
       RegularExpression = 4
     };
 
-    explicit SearchLineEdit(const QString& save_identification,
+    explicit SearchLineEdit(const QString& object_name,
                             const QList<CustomSearchChoice>& choices,
                             QWidget* parent = nullptr);
 
@@ -37,6 +38,9 @@ class SearchLineEdit : public BaseLineEdit {
     void setListFiltered(bool filtered);
 
   private slots:
+    void onSearchTextChanged(const QString& text);
+    void submitSearch();
+    void onSearchOptionTriggered(QAction* action);
     void startSearch();
     void saveSearchConfig(SearchMode mode, Qt::CaseSensitivity sensitivity, int custom_criteria, const QString& phrase);
 
@@ -51,11 +55,11 @@ class SearchLineEdit : public BaseLineEdit {
     void updateListFilteredVisuals();
 
   private:
-    QString m_saveIdentification;
     QTimer* m_tmrSearchPattern;
     PlainToolButton* m_btnSearchOptions;
     QMenu* m_menu;
     QAction* m_actCaseSensitivity;
+    QAction* m_actIncrementalSearch;
     QActionGroup* m_actionGroupModes;
     QActionGroup* m_actionGroupChoices;
     QString m_listFilteredTooltip;

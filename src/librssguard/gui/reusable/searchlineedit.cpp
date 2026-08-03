@@ -13,19 +13,21 @@
 #include <QTimer>
 #include <QWidgetAction>
 
-SearchLineEdit::SearchLineEdit(const QString& save_identification,
+SearchLineEdit::SearchLineEdit(const QString& object_name,
                                const QList<CustomSearchChoice>& choices,
                                QWidget* parent)
-  : BaseLineEdit(parent), m_saveIdentification(save_identification), m_btnSearchOptions(new PlainToolButton(this)),
-    m_listFiltered(false) {
+  : BaseLineEdit(parent), m_btnSearchOptions(new PlainToolButton(this)), m_listFiltered(false) {
+  setObjectName(object_name);
+
   Qt::CaseSensitivity save_sens = Qt::CaseSensitivity(qApp->settings()
-                                                        ->value(m_saveIdentification,
+                                                        ->value(objectName(),
                                                                 QSL("case_sensitivity"),
                                                                 int(Qt::CaseSensitivity::CaseInsensitive))
                                                         .toInt());
   SearchMode save_mode =
-    SearchMode(qApp->settings()->value(m_saveIdentification, QSL("search_mode"), int(SearchMode::FixedString)).toInt());
-  int save_custom_choice = qApp->settings()->value(m_saveIdentification, QSL("criteria"), choices.at(0).m_data).toInt();
+    SearchMode(qApp->settings()->value(objectName(), QSL("search_mode"), int(SearchMode::FixedString)).toInt());
+  int save_custom_choice = qApp->settings()->value(objectName(), QSL("criteria"), choices.at(0).m_data).toInt();
+  bool incremental_search = qApp->settings()->value(objectName(), QSL("incremental_search"), true).toBool();
 
   QWidgetAction* act = new QWidgetAction(this);
 
@@ -44,6 +46,10 @@ SearchLineEdit::SearchLineEdit(const QString& save_identification,
   m_actCaseSensitivity = m_menu->addAction(qApp->icons()->fromTheme(QSL("format-text-bold")), tr("Case-sensitive"));
   m_actCaseSensitivity->setCheckable(true);
   m_actCaseSensitivity->setChecked(save_sens == Qt::CaseSensitivity::CaseSensitive);
+
+  m_actIncrementalSearch = m_menu->addAction(tr("Search while typing"));
+  m_actIncrementalSearch->setCheckable(true);
+  m_actIncrementalSearch->setChecked(incremental_search);
 
   m_menu->addSeparator();
 
@@ -72,7 +78,7 @@ SearchLineEdit::SearchLineEdit(const QString& save_identification,
   if (!choices.isEmpty()) {
     m_menu->addSeparator();
 
-    // Load custom coices.
+    // Load custom choices.
     for (const CustomSearchChoice& choice : choices) {
       QAction* ac = m_actionGroupChoices->addAction(m_menu->addAction(qApp->icons()->fromTheme(QSL("system-search")),
                                                                       choice.m_title));
@@ -85,14 +91,48 @@ SearchLineEdit::SearchLineEdit(const QString& save_identification,
     // m_actionGroupChoices->actions().first()->setChecked(true);
   }
 
-  // NOTE: When any change is made, (re)start the timer which fires
-  // the signal with delay to avoid throttling.
-  connect(this, &SearchLineEdit::textChanged, m_tmrSearchPattern, QOverload<>::of(&QTimer::start));
-  connect(m_menu, &QMenu::triggered, m_tmrSearchPattern, QOverload<>::of(&QTimer::start));
+  connect(this, &SearchLineEdit::textChanged, this, &SearchLineEdit::onSearchTextChanged);
+  connect(this, &SearchLineEdit::submitted, this, &SearchLineEdit::submitSearch);
+  connect(m_menu, &QMenu::triggered, this, &SearchLineEdit::onSearchOptionTriggered);
   connect(m_tmrSearchPattern, &QTimer::timeout, this, &SearchLineEdit::startSearch);
   connect(this, &SearchLineEdit::searchCriteriaChanged, this, &SearchLineEdit::saveSearchConfig);
 
   setListFilteredTooltip(tr("Some items are hidden by current search or filtering."));
+}
+
+void SearchLineEdit::onSearchTextChanged(const QString& text) {
+  m_tmrSearchPattern->stop();
+
+  if (text.isEmpty()) {
+    startSearch();
+  }
+  else if (m_actIncrementalSearch->isChecked()) {
+    m_tmrSearchPattern->start();
+  }
+}
+
+void SearchLineEdit::submitSearch() {
+  if (text().isEmpty()) {
+    return;
+  }
+
+  m_tmrSearchPattern->stop();
+  startSearch();
+}
+
+void SearchLineEdit::onSearchOptionTriggered(QAction* action) {
+  m_tmrSearchPattern->stop();
+
+  if (action == m_actIncrementalSearch) {
+    qApp->settings()->setValue(objectName(), QSL("incremental_search"), m_actIncrementalSearch->isChecked());
+
+    if (m_actIncrementalSearch->isChecked() && !text().isEmpty()) {
+      m_tmrSearchPattern->start();
+    }
+  }
+  else {
+    startSearch();
+  }
 }
 
 bool SearchLineEdit::listFiltered() const {
@@ -157,9 +197,9 @@ void SearchLineEdit::saveSearchConfig(SearchMode mode,
                                       const QString& phrase) {
   Q_UNUSED(phrase)
 
-  qApp->settings()->setValue(m_saveIdentification, QSL("case_sensitivity"), int(sensitivity));
-  qApp->settings()->setValue(m_saveIdentification, QSL("search_mode"), int(mode));
-  qApp->settings()->setValue(m_saveIdentification, QSL("criteria"), custom_criteria);
+  qApp->settings()->setValue(objectName(), QSL("case_sensitivity"), int(sensitivity));
+  qApp->settings()->setValue(objectName(), QSL("search_mode"), int(mode));
+  qApp->settings()->setValue(objectName(), QSL("criteria"), custom_criteria);
 }
 
 QString SearchLineEdit::titleForMode(SearchMode mode) {
