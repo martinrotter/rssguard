@@ -59,10 +59,21 @@ void ArticleAmountControl::setForAppWideFeatures(bool app_wide, bool batch_edit)
   }
   else {
     connect(m_ui.m_cbAddAnyDateArticles, &QCheckBox::toggled, m_ui.m_gbAvoidOldArticles, &QGroupBox::setDisabled);
-    connect(m_ui.m_cbArticleLimittingCustomize,
-            &QCheckBox::toggled,
-            m_ui.m_wdgArticleLimittingCustomize,
-            &QGroupBox::setEnabled);
+
+    const auto update_limitting_controls = [this, batch_edit]() {
+      const bool enabled = m_ui.m_cbArticleLimittingCustomize->isChecked() &&
+                           (!batch_edit || m_ui.m_mcbArticleLimittingSetup->isChecked());
+
+      m_ui.m_wdgArticleLimittingCustomize->setEnabled(enabled);
+    };
+
+    connect(m_ui.m_cbArticleLimittingCustomize, &QCheckBox::toggled, this, update_limitting_controls);
+
+    if (batch_edit) {
+      connect(m_ui.m_mcbArticleLimittingSetup, &QCheckBox::toggled, this, update_limitting_controls);
+    }
+
+    update_limitting_controls();
   }
 
   if (batch_edit) {
@@ -71,7 +82,6 @@ void ArticleAmountControl::setForAppWideFeatures(bool app_wide, bool batch_edit)
     m_ui.m_mcbAvoidOldArticles->addActionWidget(m_ui.m_wdgAvoidOldArticles);
 
     m_ui.m_mcbArticleLimittingCustomize->addActionWidget(m_ui.m_cbArticleLimittingCustomize);
-    m_ui.m_mcbArticleLimittingSetup->addActionWidget(m_ui.m_wdgArticleLimittingCustomize);
   }
   else {
     // We hide batch selectors.

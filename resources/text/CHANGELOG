@@ -9,6 +9,7 @@ Added:
 * Added icons to more commands and context-menu actions.
 
 Fixed:
+* Article limits changed through "Edit child feeds" now apply correctly to all selected feeds, including recursive edits. (#2392)
 * Feed list filtering now remains responsive with very large feed trees.
 * Processing existing articles with filters now remains fast when many articles are ignored.
 * Database operations no longer repeatedly reapply connection settings that are already active.
