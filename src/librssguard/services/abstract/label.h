@@ -29,6 +29,8 @@ class RSSGUARD_DLLSPEC Label : public RootItem {
   public slots:
     void assignToMessage(const Message& msg, bool reload_feeds_model = true);
     void deassignFromMessage(const Message& msg, bool reload_feeds_model = true);
+    void assignToMessages(const QList<Message>& messages, bool reload_feeds_model = true);
+    void deassignFromMessages(const QList<Message>& messages, bool reload_feeds_model = true);
 
   private:
     int m_totalCount{};

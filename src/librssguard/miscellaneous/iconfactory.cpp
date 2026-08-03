@@ -371,7 +371,7 @@ QStringList IconFactory::installedIconThemes() const {
   filters_index.append(QSL("index.theme"));
   icon_themes_paths.removeDuplicates();
 
-  for (const QString& icon_path : icon_themes_paths) {
+  for (const QString& icon_path : std::as_const(icon_themes_paths)) {
     const QDir icon_dir(icon_path);
     auto icon_paths =
       icon_dir.entryInfoList(QDir::Filter::Dirs | QDir::Filter::NoDotAndDotDot | QDir::Filter::Readable |

@@ -83,6 +83,10 @@ QString SqliteDriver::ddlFilePrefix() const {
   return QSL("sqlite");
 }
 
+QString SqliteDriver::insertIgnore() const {
+  return QSL("INSERT OR IGNORE");
+}
+
 void SqliteDriver::initiateRestoration(const QString& database_package_file) {
   if (!IOFactory::copyFile(database_package_file,
                            m_databaseFilePath + QDir::separator() + BACKUP_NAME_DATABASE + BACKUP_SUFFIX_DATABASE)) {

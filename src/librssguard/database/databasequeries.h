@@ -47,8 +47,11 @@ class RSSGUARD_DLLSPEC DatabaseQueries {
     static QString whereClauseFeeds(const QStringList& feed_ids);
 
     // Labels.
-    static void deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg);
-    static void assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg);
+    static void deassignLabelFromMessages(const QSqlDatabase& db, Label* label, const QList<Message>& messages);
+    static void assignLabelToMessages(const DatabaseDriver* driver,
+                                      const QSqlDatabase& db,
+                                      Label* label,
+                                      const QList<Message>& messages);
     static void setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg);
     static QList<Label*> getLabelsForAccount(IconFactory* icons, const QSqlDatabase& db, int account_id);
     static void updateLabel(IconFactory* icons, const QSqlDatabase& db, Label* label);

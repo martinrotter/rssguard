@@ -44,17 +44,18 @@ void LabelsMenu::changeLabelAssignment(bool assign) {
 
   if (origin != nullptr && lbl != nullptr) {
     try {
+      if (assign) {
+        lbl->assignToMessages(m_messages, false);
+      }
+      else {
+        lbl->deassignFromMessages(m_messages, false);
+      }
+
       for (auto& msg : m_messages) {
-        // NOTE: To avoid duplicates.
         msg.m_assignedLabels.removeAll(lbl);
 
         if (assign) {
-          lbl->assignToMessage(msg, false);
           msg.m_assignedLabels.append(lbl);
-        }
-        else {
-          lbl->deassignFromMessage(msg, false);
-          msg.m_assignedLabels.removeOne(lbl);
         }
       }
 

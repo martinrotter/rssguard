@@ -165,37 +165,50 @@ QString DatabaseQueries::whereClauseFeeds(const QStringList& feed_ids) {
     .arg(filter_clause);
 }
 
-void DatabaseQueries::deassignLabelFromMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
-  SqlQuery q(db);
+void DatabaseQueries::deassignLabelFromMessages(const QSqlDatabase& db, Label* label, const QList<Message>& messages) {
+  constexpr int batch_size = 500;
 
-  q.prepare(QSL("DELETE FROM LabelsInMessages "
-                "WHERE "
-                "  LabelsInMessages.label = :label AND "
-                "  LabelsInMessages.message = :message;"));
-  q.bindValue(QSL(":message"), msg.m_id);
-  q.bindValue(QSL(":label"), label->id());
-  q.exec();
+  for (int offset = 0; offset < messages.size(); offset += batch_size) {
+    const int count = std::min(batch_size, int(messages.size()) - offset);
+    QStringList message_ids;
+
+    message_ids.reserve(count);
+
+    for (int i = offset; i < offset + count; ++i) {
+      message_ids.append(QString::number(messages.at(i).m_id));
+    }
+
+    SqlQuery q(db);
+
+    q.prepare(QSL("DELETE FROM LabelsInMessages "
+                  "WHERE label = :label AND message IN (%1);")
+                .arg(message_ids.join(QSL(", "))));
+    q.bindValue(QSL(":label"), label->id());
+    q.exec();
+  }
 }
 
-void DatabaseQueries::assignLabelToMessage(const QSqlDatabase& db, Label* label, const Message& msg) {
-  bool is_sqlite = db.driverName() == QSL(APP_DB_SQLITE_DRIVER);
-  SqlQuery q(db);
-  QString insert_cmd;
+void DatabaseQueries::assignLabelToMessages(const DatabaseDriver* driver,
+                                            const QSqlDatabase& db,
+                                            Label* label,
+                                            const QList<Message>& messages) {
+  constexpr int batch_size = 500;
 
-  if (is_sqlite) {
-    insert_cmd = QSL("INSERT OR IGNORE");
+  for (int offset = 0; offset < messages.size(); offset += batch_size) {
+    const int count = std::min(batch_size, int(messages.size()) - offset);
+    QStringList values;
+
+    values.reserve(count);
+
+    for (int i = offset; i < offset + count; ++i) {
+      values.append(QSL("(%1, %2)").arg(messages.at(i).m_id).arg(label->id()));
+    }
+
+    SqlQuery q(db);
+
+    q.exec(QSL("%1 INTO LabelsInMessages (message, label) VALUES %2;")
+             .arg(driver->insertIgnore(), values.join(QSL(", "))));
   }
-  else {
-    insert_cmd = QSL("INSERT IGNORE");
-  }
-
-  q.prepare(QSL("%1 INTO LabelsInMessages (message, label) "
-                "VALUES (:message, :label);")
-              .arg(insert_cmd));
-
-  q.bindValue(QSL(":message"), msg.m_id);
-  q.bindValue(QSL(":label"), label->id());
-  q.exec();
 }
 
 void DatabaseQueries::setLabelsForMessage(const QSqlDatabase& db, const QList<Label*>& labels, const Message& msg) {

@@ -18,6 +18,10 @@ QString MariaDbDriver::ddlFilePrefix() const {
   return QSL("mysql");
 }
 
+QString MariaDbDriver::insertIgnore() const {
+  return QSL("INSERT IGNORE");
+}
+
 MariaDbDriver::MariaDbError MariaDbDriver::testConnection(const QString& hostname,
                                                           int port,
                                                           const QString& w_database,

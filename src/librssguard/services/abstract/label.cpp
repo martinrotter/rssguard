@@ -5,6 +5,7 @@
 #include "database/databasefactory.h"
 #include "database/databasequeries.h"
 #include "definitions/globals.h"
+#include "exceptions/sqlexception.h"
 #include "miscellaneous/application.h"
 #include "services/abstract/gui/formaddeditlabel.h"
 #include "services/abstract/serviceroot.h"
@@ -56,26 +57,76 @@ void Label::updateCounts() {
 }
 
 void Label::assignToMessage(const Message& msg, bool reload_feeds_model) {
-  account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, true);
-
-  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-    DatabaseQueries::assignLabelToMessage(db, this, msg);
-  });
-
-  if (reload_feeds_model) {
-    account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, true);
-  }
+  assignToMessages({msg}, reload_feeds_model);
 }
 
 void Label::deassignFromMessage(const Message& msg, bool reload_feeds_model) {
-  account()->onBeforeLabelMessageAssignmentChanged({this}, {msg}, false);
+  deassignFromMessages({msg}, reload_feeds_model);
+}
 
-  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
-    DatabaseQueries::deassignLabelFromMessage(db, this, msg);
+void Label::assignToMessages(const QList<Message>& messages, bool reload_feeds_model) {
+  if (messages.isEmpty()) {
+    return;
+  }
+
+  account()->onBeforeLabelMessageAssignmentChanged({this}, messages, true);
+
+  DatabaseFactory* database = qApp->database();
+
+  database->worker()->write([&](const QSqlDatabase& db) {
+    QSqlDatabase transaction_db = db;
+
+    if (!transaction_db.transaction()) {
+      THROW_EX(SqlException, transaction_db.lastError());
+    }
+
+    try {
+      DatabaseQueries::assignLabelToMessages(database->driver(), transaction_db, this, messages);
+
+      if (!transaction_db.commit()) {
+        THROW_EX(SqlException, transaction_db.lastError());
+      }
+    }
+    catch (...) {
+      transaction_db.rollback();
+      throw;
+    }
   });
 
   if (reload_feeds_model) {
-    account()->onAfterLabelMessageAssignmentChanged({this}, {msg}, false);
+    account()->onAfterLabelMessageAssignmentChanged({this}, messages, true);
+  }
+}
+
+void Label::deassignFromMessages(const QList<Message>& messages, bool reload_feeds_model) {
+  if (messages.isEmpty()) {
+    return;
+  }
+
+  account()->onBeforeLabelMessageAssignmentChanged({this}, messages, false);
+
+  qApp->database()->worker()->write([&](const QSqlDatabase& db) {
+    QSqlDatabase transaction_db = db;
+
+    if (!transaction_db.transaction()) {
+      THROW_EX(SqlException, transaction_db.lastError());
+    }
+
+    try {
+      DatabaseQueries::deassignLabelFromMessages(transaction_db, this, messages);
+
+      if (!transaction_db.commit()) {
+        THROW_EX(SqlException, transaction_db.lastError());
+      }
+    }
+    catch (...) {
+      transaction_db.rollback();
+      throw;
+    }
+  });
+
+  if (reload_feeds_model) {
+    account()->onAfterLabelMessageAssignmentChanged({this}, messages, false);
   }
 }
 

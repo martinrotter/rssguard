@@ -306,7 +306,7 @@ void ServiceRoot::updateCounts() {
     return DatabaseQueries::getMessageCountsForFeeds(db, textualFeedIds(feeds));
   });
 
-  for (Feed* feed : feeds) {
+  for (Feed* feed : std::as_const(feeds)) {
     if (counts.contains(feed->id())) {
       feed->setCountOfUnreadMessages(counts.value(feed->id()).m_unread);
       feed->setCountOfAllMessages(counts.value(feed->id()).m_total);

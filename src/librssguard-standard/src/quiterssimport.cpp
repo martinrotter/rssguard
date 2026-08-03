@@ -347,7 +347,7 @@ RootItem* QuiteRssImport::extractFeedsAndCategories(const QSqlDatabase& db) cons
       parent = root;
     }
 
-    for (RootItem* child : childs) {
+    for (RootItem* child : std::as_const(childs)) {
       parent->appendChild(child);
     }
   }

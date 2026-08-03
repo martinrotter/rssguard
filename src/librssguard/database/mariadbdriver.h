@@ -25,6 +25,7 @@ class MariaDbDriver : public DatabaseDriver {
     virtual QString humanDriverType() const;
     virtual QString qtDriverCode() const;
     virtual QString ddlFilePrefix() const;
+    virtual QString insertIgnore() const;
     virtual DriverType driverType() const;
     virtual void vacuumDatabase();
     virtual void saveDatabase();

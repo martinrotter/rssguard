@@ -15,6 +15,7 @@ class SqliteDriver : public DatabaseDriver {
     virtual DriverType driverType() const;
     virtual void vacuumDatabase();
     virtual QString ddlFilePrefix() const;
+    virtual QString insertIgnore() const;
     virtual void saveDatabase();
     virtual void initiateRestoration(const QString& database_package_file);
     virtual void finishRestoration();
