@@ -412,7 +412,9 @@ void WebBrowser::onLoadingFinished(bool success) {
 #endif
     }
 
-    if (url.isValid()) {
+    const bool display_url = url.isValid() && url.scheme() != QSL("data") && url != QUrl(QSL("about:blank"));
+
+    if (display_url) {
       QTimer::singleShot(200, this, [=]() {
         qApp->showGuiMessage(Notification::Event::GeneralEvent,
                              GuiMessage(url.toString(), url.toString()),
