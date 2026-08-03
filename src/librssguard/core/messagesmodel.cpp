@@ -1096,10 +1096,11 @@ bool MessagesModel::setMessageReadById(int article_id, RootItem::ReadStatus read
 }
 
 bool MessagesModel::setMessageLabelsById(const QList<Message>& msgs) {
-  QMap<int, Message> hashed_msgs;
+  QHash<int, const Message*> messages_by_id;
+  messages_by_id.reserve(msgs.size());
 
-  for (const auto& msg : msgs) {
-    hashed_msgs.insert(msg.m_id, msg);
+  for (const Message& msg : msgs) {
+    messages_by_id.insert(msg.m_id, &msg);
   }
 
   QModelIndexList changed_indices;
@@ -1107,16 +1108,12 @@ bool MessagesModel::setMessageLabelsById(const QList<Message>& msgs) {
 
   blockSignals(true);
 
-  for (int i = 0; i < rowCount(); i++) {
-    auto idx_id = index(i, MSG_MDL_ID_INDEX);
-    auto idx_lbls = index(i, MSG_MDL_LABELS);
-    int found_id = data(idx_id).toInt();
+  for (int row = 0; row < m_messages.size(); ++row) {
+    const auto found = messages_by_id.constFind(m_messages.at(row).m_id);
 
-    if (hashed_msgs.contains(found_id)) {
-      auto article = hashed_msgs.value(found_id);
-
-      setData(idx_lbls, QVariant::fromValue(article.m_assignedLabels));
-      changed_indices.append(idx_lbls);
+    if (found != messages_by_id.cend()) {
+      m_messages[row].m_assignedLabels = found.value()->m_assignedLabels;
+      changed_indices.append(index(row, MSG_MDL_LABELS));
     }
   }
 
