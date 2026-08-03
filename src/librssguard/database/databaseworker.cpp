@@ -13,12 +13,30 @@ DatabaseWorker::DatabaseWorker(DatabaseDriver* driver) : QObject(), m_driver(dri
 }
 
 DatabaseWorker::~DatabaseWorker() {
-  m_readThreadPool.waitForDone(2000);
-  m_writeThread.quit();
+  shutdown();
+}
 
-  if (QThread::currentThread() != &m_writeThread) {
-    m_writeThread.wait();
+void DatabaseWorker::shutdown() {
+  m_readThreadPool.waitForDone();
+
+  if (!m_writeThread.isRunning()) {
+    return;
   }
+
+  Q_ASSERT(QThread::currentThread() != &m_writeThread);
+
+  QThread* owner_thread = QThread::currentThread();
+
+  QMetaObject::invokeMethod(
+    this,
+    [this, owner_thread]() {
+      m_dbWriter = QSqlDatabase();
+      moveToThread(owner_thread);
+    },
+    Qt::ConnectionType::BlockingQueuedConnection);
+
+  m_writeThread.quit();
+  m_writeThread.wait();
 }
 
 void DatabaseWorker::read(const DbReadFn& func) {

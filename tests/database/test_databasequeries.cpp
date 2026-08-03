@@ -366,12 +366,6 @@ int main(int argc, char* argv[]) {
   const QStringList connection_names = QSqlDatabase::connectionNames();
 
   for (const QString& connection_name : connection_names) {
-    {
-      QSqlDatabase database = QSqlDatabase::database(connection_name, false);
-
-      database.close();
-    }
-
     QSqlDatabase::removeDatabase(connection_name);
   }
 

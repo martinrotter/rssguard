@@ -28,6 +28,8 @@ class RSSGUARD_DLLSPEC DatabaseWorker : public QObject {
     explicit DatabaseWorker(DatabaseDriver* driver);
     virtual ~DatabaseWorker();
 
+    void shutdown();
+
     template <typename T>
     T read(const std::function<T(const QSqlDatabase&)>& func);
     void read(const DbReadFn& func);

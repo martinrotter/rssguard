@@ -22,12 +22,8 @@ DatabaseFactory::DatabaseFactory(const QString& driver_id, const QString& user_d
 
 DatabaseFactory::~DatabaseFactory() {
   if (m_dbWorker != nullptr) {
-    QMetaObject::invokeMethod(
-      m_dbWorker,
-      [worker = m_dbWorker.data()]() {
-        delete worker;
-      },
-      Qt::ConnectionType::BlockingQueuedConnection);
+    m_dbWorker->shutdown();
+    delete m_dbWorker;
   }
 }
 
