@@ -78,7 +78,7 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 
   QString custom_ua;
 
-  m_paths.reset(new ApplicationPaths(this));
+  m_paths.reset(new ApplicationPaths(nullptr));
   m_commandLine.reset(new CommandLineController(this, m_paths.data(), raw_cli_args));
   m_logManager.reset(new ApplicationLogManager(this));
 
@@ -102,6 +102,8 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   m_workHorsePool = nullptr;
 #endif
   m_settings = Settings::setupSettings(m_paths.data(), this);
+  m_paths->setSettings(m_settings);
+
   TextFactory::initializeSecretEncryptionKey(m_settings->pathName());
 
   initializeSplash();

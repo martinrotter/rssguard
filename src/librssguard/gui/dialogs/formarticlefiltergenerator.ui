@@ -94,9 +94,9 @@
          <item><widget class="QLabel" name="m_lblDecision"><property name="text"><string>Result</string></property></widget></item>
          <item>
           <widget class="QComboBox" name="m_cmbDecision">
-           <item><property name="text"><string>Accept article</string></property></item>
-           <item><property name="text"><string>Ignore article</string></property></item>
-           <item><property name="text"><string>Purge article</string></property></item>
+           <item><property name="text"><string>Accept - keep article</string></property></item>
+           <item><property name="text"><string>Ignore - do not import or update article</string></property></item>
+           <item><property name="text"><string>Purge - delete stored or discard new article</string></property></item>
           </widget>
          </item>
          <item><spacer name="m_matchingDecisionSpacer"><property name="orientation"><enum>Qt::Orientation::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>
@@ -135,9 +135,9 @@
          <item>
           <widget class="QComboBox" name="m_cmbFallbackDecision">
            <property name="toolTip"><string>Result used when the article does not match the conditions</string></property>
-           <item><property name="text"><string>Accept article</string></property></item>
-           <item><property name="text"><string>Ignore article</string></property></item>
-           <item><property name="text"><string>Purge article</string></property></item>
+           <item><property name="text"><string>Accept - keep article</string></property></item>
+           <item><property name="text"><string>Ignore - do not import or update article</string></property></item>
+           <item><property name="text"><string>Purge - delete stored or discard new article</string></property></item>
           </widget>
          </item>
          <item><spacer name="m_fallbackDecisionSpacer"><property name="orientation"><enum>Qt::Orientation::Horizontal</enum></property><property name="sizeHint" stdset="0"><size><width>40</width><height>20</height></size></property></spacer></item>

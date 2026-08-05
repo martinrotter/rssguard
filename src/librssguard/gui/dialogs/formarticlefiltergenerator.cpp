@@ -4,6 +4,7 @@
 
 #include "filtering/filterobjects.h"
 #include "gui/guiutilities.h"
+#include "gui/messagebox.h"
 #include "gui/reusable/helpspoiler.h"
 #include "gui/reusable/jssyntaxhighlighter.h"
 #include "gui/reusable/labelwithstatus.h"
@@ -526,7 +527,6 @@ FormArticleFilterGenerator::FormArticleFilterGenerator() : QDialog(nullptr) {
   m_ui.m_cmbFallbackDecision->setItemData(0, QSL("Msg.Accept"));
   m_ui.m_cmbFallbackDecision->setItemData(1, QSL("Msg.Ignore"));
   m_ui.m_cmbFallbackDecision->setItemData(2, QSL("Msg.Purge"));
-  m_ui.m_cmbFallbackDecision->setCurrentIndex(1);
   m_ui.m_helpDescription
     ->setHelpText(tr("About the visual filter generator"),
                   tr("<p><b>Build common article filters without writing JavaScript.</b> "
@@ -535,6 +535,8 @@ FormArticleFilterGenerator::FormArticleFilterGenerator() : QDialog(nullptr) {
                      "<li><b>All conditions</b> requires every condition to match; <b>at least one condition</b> "
                      "matches any of them.</li>"
                      "<li>Each outcome can change article properties or labels before its result is applied.</li>"
+                     "<li>For newly downloaded articles, both <b>Ignore</b> and <b>Purge</b> discard the article. "
+                     "Purge additionally deletes an article which is already stored.</li>"
                      "<li>The generated script remains editable, testable, and can be expanded with advanced "
                      "JavaScript features.</li>"
                      "</ul>"
@@ -641,6 +643,23 @@ FormArticleFilterGenerator::FormArticleFilterGenerator() : QDialog(nullptr) {
 
     if (!error.isEmpty()) {
       updatePreview();
+      return;
+    }
+
+    const bool accepts_matching_articles = m_ui.m_cmbDecision->currentData().toString() == QSL("Msg.Accept");
+    const bool accepts_nonmatching_articles =
+      !m_conditionRows.isEmpty() && m_ui.m_cmbFallbackDecision->currentData().toString() == QSL("Msg.Accept");
+
+    if (!accepts_matching_articles && !accepts_nonmatching_articles &&
+        MsgBox::show(this,
+                     QMessageBox::Icon::Warning,
+                     tr("Filter discards every article"),
+                     tr("This filter has no result which accepts an article."),
+                     tr("During automatic feed fetching, every article will be discarded because both Ignore and "
+                        "Purge reject newly downloaded articles. Do you want to generate this filter anyway?"),
+                     {},
+                     QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
+                     QMessageBox::StandardButton::No) != QMessageBox::StandardButton::Yes) {
       return;
     }
 

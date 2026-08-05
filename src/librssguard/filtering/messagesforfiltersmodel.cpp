@@ -230,11 +230,11 @@ void MessagesForFiltersModel::processFeeds(MessageFilter* fltr, ServiceRoot* acc
       FilteringSystem filtering(FilteringSystem::FiteringUseCase::ExistingArticles,
                                 it->toFeed(),
                                 account,
-                                qApp->applicationPaths(),
-                                qApp->database(),
-                                qApp->icons(),
-                                qApp->localization(),
-                                qApp->guiNotifications());
+                                m_application->applicationPaths(),
+                                m_application->database(),
+                                m_application->icons(),
+                                m_application->localization(),
+                                m_application->guiNotifications());
 
       filtering.filterRun().setTotalCountOfFilters(1);
       filtering.filterRun().setIndexOfCurrentFilter(0);

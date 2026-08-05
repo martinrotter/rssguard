@@ -35,6 +35,8 @@ Select `Generate` next to `Beautify` to create a new filter script without writi
 
 Add one or more conditions and choose whether **all** conditions or **at least one** condition must match. The **When conditions match** and **When conditions do not match** tabs each provide their own actions and result. With no conditions, the rule applies the matching tab's actions and result to every article. The available conditions cover article, feed, and account properties such as title, author, URL, contents, read state, score, dates, and attachments. Text conditions can be case-sensitive and can use a regular expression.
 
+The non-matching result defaults to **Accept**. If none of the applicable outcomes accepts articles, the generator warns before creating the script because that filter would discard every newly downloaded article.
+
 In either outcome, the generator can change writable article properties, assign or remove labels, convert article categories to labels, or accept, ignore, or purge the article. The generated script is ordinary JavaScript: you can inspect, test, beautify, and modify it afterwards.
 
 ```{note}

@@ -2,8 +2,6 @@
 
 #include "miscellaneous/applicationpaths.h"
 
-#include "definitions/globals.h"
-#include "miscellaneous/application.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/settings.h"
 
@@ -11,7 +9,7 @@
 #include <QStandardPaths>
 #include <QVersionNumber>
 
-ApplicationPaths::ApplicationPaths(Application* application) : m_application(application) {}
+ApplicationPaths::ApplicationPaths(Settings* settings) : m_settings(settings) {}
 
 QString ApplicationPaths::tempFolder() const {
   return IOFactory::getSystemFolder(QStandardPaths::StandardLocation::TempLocation);
@@ -26,7 +24,7 @@ QString ApplicationPaths::homeFolder() const {
 }
 
 QString ApplicationPaths::applicationDirPath() const {
-  return m_application->applicationDirPath();
+  return QCoreApplication::applicationDirPath();
 }
 
 QString ApplicationPaths::configFolder() const {
@@ -36,8 +34,7 @@ QString ApplicationPaths::configFolder() const {
 QString ApplicationPaths::userDataAppFolder() const {
   static const int major_version = QVersionNumber::fromString(QSL(APP_VERSION)).majorVersion();
 
-  return QDir::toNativeSeparators(m_application->applicationDirPath() + QDir::separator() +
-                                  QSL("data%1").arg(major_version));
+  return QDir::toNativeSeparators(applicationDirPath() + QDir::separator() + QSL("data%1").arg(major_version));
 }
 
 QString ApplicationPaths::userDataHomeFolder() const {
@@ -51,10 +48,10 @@ QString ApplicationPaths::customDataFolder() const {
 }
 
 QString ApplicationPaths::userDataFolder() const {
-  if (m_application->settings()->type() == SettingsProperties::SettingsType::Custom) {
+  if (m_settings->type() == SettingsProperties::SettingsType::Custom) {
     return customDataFolder();
   }
-  else if (m_application->settings()->type() == SettingsProperties::SettingsType::Portable) {
+  else if (m_settings->type() == SettingsProperties::SettingsType::Portable) {
     return userDataAppFolder();
   }
 
@@ -83,4 +80,12 @@ bool ApplicationPaths::setCustomDataFolder(const QString& data_folder) {
 
   m_customDataFolder = data_folder;
   return true;
+}
+
+Settings* ApplicationPaths::settings() const {
+  return m_settings;
+}
+
+void ApplicationPaths::setSettings(Settings* newSettings) {
+  m_settings = newSettings;
 }

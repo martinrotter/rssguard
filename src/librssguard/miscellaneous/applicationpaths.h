@@ -6,11 +6,11 @@
 #include <QString>
 #include <QStringList>
 
-class Application;
+class Settings;
 
 class ApplicationPaths {
   public:
-    explicit ApplicationPaths(Application* application);
+    explicit ApplicationPaths(Settings* settings);
 
     QString tempFolder() const;
     QString documentsFolder() const;
@@ -25,8 +25,11 @@ class ApplicationPaths {
     QStringList replaceUserDataFolderPlaceholder(QStringList texts) const;
     bool setCustomDataFolder(const QString& data_folder);
 
+    Settings* settings() const;
+    void setSettings(Settings* newSettings);
+
   private:
-    Application* m_application;
+    Settings* m_settings;
     QString m_customDataFolder;
 };
 
