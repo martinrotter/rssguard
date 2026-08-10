@@ -68,6 +68,29 @@ namespace {
     return file_name.isEmpty() ? QSL("file") : file_name;
   }
 
+  QString suggestedFilterFromFileName(const QString& file_name) {
+    const QString suffix = QFileInfo(file_name).suffix();
+    static const QRegularExpression safe_suffix(QSL("^[A-Za-z0-9][A-Za-z0-9_+-]*$"));
+
+    if (suffix.isEmpty() || !safe_suffix.match(suffix).hasMatch()) {
+      return QObject::tr("All files (*)");
+    }
+
+    QStringList patterns{QSL("*.%1").arg(suffix)};
+    const QString lowercase_suffix = suffix.toLower();
+    const QString uppercase_suffix = suffix.toUpper();
+
+    if (!patterns.contains(QSL("*.%1").arg(lowercase_suffix))) {
+      patterns.append(QSL("*.%1").arg(lowercase_suffix));
+    }
+
+    if (!patterns.contains(QSL("*.%1").arg(uppercase_suffix))) {
+      patterns.append(QSL("*.%1").arg(uppercase_suffix));
+    }
+
+    return QObject::tr("%1 files (%2)").arg(uppercase_suffix, patterns.join(QL1C(' ')));
+  }
+
   QString unquoteHttpHeaderParameter(QString value) {
     value = value.trimmed();
 
@@ -865,6 +888,7 @@ bool WebFactory::downloadUrlToFile(const QUrl& url) const {
     FormProgressWorker wrkr(qApp->mainFormWidget());
     QTemporaryFile temporary_file;
     QMap<QString, QString> headers;
+    QUrl downloaded_url;
     QNetworkReply::NetworkError download_error = QNetworkReply::NetworkError::NoError;
 
     if (!temporary_file.open()) {
@@ -905,6 +929,7 @@ bool WebFactory::downloadUrlToFile(const QUrl& url) const {
 
         download_error = dwnl.lastOutputError();
         headers = dwnl.lastHeaders();
+        downloaded_url = dwnl.lastUrl();
       },
       [](int progress) {
         return QObject::tr("Downloaded %1 kB...").arg(progress);
@@ -915,16 +940,25 @@ bool WebFactory::downloadUrlToFile(const QUrl& url) const {
     }
 
     QString suggested_file_name = fileNameFromContentDisposition(headers);
+    QString suggested_filter;
+
+    if (suggested_file_name.isEmpty() && downloaded_url.isValid() && !downloaded_url.fileName().isEmpty()) {
+      suggested_file_name = suggestedDownloadFileNameFromUrl(downloaded_url);
+    }
 
     if (suggested_file_name.isEmpty()) {
       suggested_file_name = suggestedDownloadFileNameFromUrl(url);
+    }
+
+    if (!suggested_file_name.isEmpty()) {
+      suggested_filter = suggestedFilterFromFileName(suggested_file_name);
     }
 
     const QString save_file_name = FileDialog::saveFileName(qApp->mainFormWidget(),
                                                             QObject::tr("Select file destination"),
                                                             qApp->documentsFolder(),
                                                             suggested_file_name,
-                                                            {},
+                                                            suggested_filter,
                                                             nullptr,
                                                             GENERAL_REMEMBERED_PATH);
 

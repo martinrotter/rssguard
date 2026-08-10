@@ -9,6 +9,7 @@ Added:
 * Added icons to more commands and context-menu actions.
 
 Fixed:
+* Saving an image from an article now writes the complete image and suggests its actual filename instead of always using `image.png`. (#2399)
 * The visual article-filter generator now uses safer defaults and warns about filters which would discard every newly downloaded article. (#2397)
 * Article limits changed through "Edit child feeds" now apply correctly to all selected feeds, including recursive edits. (#2392)
 * Feed list filtering now remains responsive with very large feed trees.

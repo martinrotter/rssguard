@@ -16,15 +16,12 @@
 #include "miscellaneous/textfactory.h"
 #include "network-web/networkfactory.h"
 #include "network-web/webfactory.h"
-#include "qtlinq/qtlinq.h"
-
 #include <functional>
 #include <optional>
 #include <utility>
 
 #include <QClipboard>
 #include <QFileIconProvider>
-#include <QImageWriter>
 #include <QList>
 #include <QPrintDialog>
 #include <QPrinter>
@@ -419,42 +416,15 @@ void WebViewer::downloadSelectedLink() {
 }
 
 void WebViewer::saveImageAs() {
-  auto supported_formats = QImageWriter::supportedImageFormats();
-  auto list_formats = qlinq::from(supported_formats)
-                        .select([](const QByteArray& frmt) {
-                          return QSL("*.%1").arg(QString::fromLocal8Bit(frmt));
-                        })
-                        .toList();
+  const QUrl context_url = m_contextMenuData.m_imgLinkUrl;
 
-  QString selected_filter;
-  auto filename = FileDialog::saveFileName(qApp->mainFormWidget(),
-                                           QObject::tr("Save image"),
-                                           qApp->documentsFolder(),
-                                           QObject::tr("image.%1").arg(QSL("png")),
-                                           QObject::tr("Images (%1)").arg(list_formats.join(QL1C(' '))),
-                                           &selected_filter,
-                                           GENERAL_REMEMBERED_PATH);
-
-  if (!filename.isEmpty()) {
-    QByteArray out;
-    auto res = NetworkFactory::performNetworkOperation(m_contextMenuData.m_imgLinkUrl.toString(),
-                                                       5000,
-                                                       {},
-                                                       out,
-                                                       QNetworkAccessManager::Operation::GetOperation);
-
-    if (res.m_networkError == QNetworkReply::NetworkError::NoError) {
-      IOFactory::writeFile(filename, out);
-    }
-    else {
-      qApp->showGuiMessage(Notification::Event::GeneralEvent,
-                           GuiMessage(QObject::tr("Image not downloaded"),
-                                      QObject::tr("Failed to download image '%1' with error '%2'.")
-                                        .arg(m_contextMenuData.m_imgLinkUrl.toString(),
-                                             NetworkFactory::networkErrorText(res.m_networkError))),
-                           GuiMessageDestination(true, true));
-    }
+  if (!context_url.isValid()) {
+    return;
   }
+
+  const QUrl image_url = (url().isValid() && context_url.isRelative()) ? url().resolved(context_url) : context_url;
+
+  qApp->web()->downloadUrlToFile(image_url);
 }
 
 void WebViewer::processContextMenu(QMenu* specific_menu, QContextMenuEvent* event) {

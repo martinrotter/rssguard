@@ -20,8 +20,8 @@ Downloader::Downloader(QObject* parent, NetworkFactory::CookiePolicy cookie_poli
     m_geminiTimeout(DOWNLOAD_TIMEOUT), m_inputData(QByteArray()), m_inputMultipartData(nullptr),
     m_targetProtected(false), m_targetUsername(QString()), m_targetPassword(QString()),
     m_ignoreCookies(cookie_policy == NetworkFactory::CookiePolicy::IgnoreCookies), m_outputDevice(nullptr),
-    m_outputDeviceWriteFailed(false), m_lastOutputData({}),
-    m_lastOutputError(QNetworkReply::NetworkError::NoError), m_lastHttpStatusCode(0), m_lastHeaders({}) {
+    m_outputDeviceWriteFailed(false), m_lastOutputData({}), m_lastOutputError(QNetworkReply::NetworkError::NoError),
+    m_lastHttpStatusCode(0), m_lastHeaders({}) {
   m_geminiTimer->setInterval(DOWNLOAD_TIMEOUT);
   m_geminiTimer->setSingleShot(true);
 
@@ -118,6 +118,7 @@ void Downloader::downloadFile(const QString& url,
   manipulateData(url,
                  QNetworkAccessManager::Operation::GetOperation,
                  QByteArray(),
+                 nullptr,
                  timeout,
                  protected_contents,
                  username,
@@ -368,8 +369,7 @@ void Downloader::finished() {
 
     m_lastUrl = reply->url();
     m_lastContentType = reply->header(QNetworkRequest::KnownHeaders::ContentTypeHeader).toString();
-    m_lastOutputError =
-      m_outputDeviceWriteFailed ? QNetworkReply::NetworkError::UnknownNetworkError : reply->error();
+    m_lastOutputError = m_outputDeviceWriteFailed ? QNetworkReply::NetworkError::UnknownNetworkError : reply->error();
     m_lastHttpStatusCode = reply->attribute(QNetworkRequest::Attribute::HttpStatusCodeAttribute).toInt();
     m_lastHeaders.clear();
 
