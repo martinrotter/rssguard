@@ -7,6 +7,7 @@ Added:
 * The Settings window now reopens the section that was selected last. (#2365)
 * Article filters can now be moved five positions at a time with Shift, or directly to the top or bottom with Ctrl. (#2320)
 * Added icons to more commands and context-menu actions.
+* Feed-list deletion confirmations now identify the selected item and show how many feeds and folders it contains. (#2396)
 
 Fixed:
 * Saving an image from an article now writes the complete image and suggests its actual filename instead of always using `image.png`. (#2399)

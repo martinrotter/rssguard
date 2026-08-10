@@ -486,9 +486,11 @@ void FeedsView::deleteSelectedItem() {
   */
 
   QList<RootItem*> selected_items = selectedItems();
-  auto deletable_items = qlinq::from(selected_items).where([](RootItem* it) {
-    return it->canBeDeleted();
-  });
+  QList<RootItem*> deletable_items = qlinq::from(selected_items)
+                                       .where([](RootItem* it) {
+                                         return it->canBeDeleted();
+                                       })
+                                       .toList();
 
   if (deletable_items.isEmpty()) {
     qApp->feedUpdateLock()->unlock();
@@ -502,11 +504,101 @@ void FeedsView::deleteSelectedItem() {
                                     QSystemTrayIcon::MessageIcon::Warning));
   }
 
+  const auto item_kind_name = [](RootItem::Kind kind) {
+    switch (kind) {
+      case RootItem::Kind::Feed:
+        return tr("feed");
+      case RootItem::Kind::Category:
+        return tr("category");
+      case RootItem::Kind::ServiceRoot:
+        return tr("account");
+      case RootItem::Kind::Label:
+        return tr("label");
+      case RootItem::Kind::Probe:
+        return tr("probe");
+      default:
+        return tr("item");
+    }
+  };
+
+  // Only traverse top-level selections so that descendants selected together
+  // with their parent are not counted more than once.
+  QList<RootItem*> deletion_roots;
+
+  for (RootItem* item : deletable_items) {
+    const bool covered_by_selected_parent =
+      std::any_of(deletable_items.cbegin(), deletable_items.cend(), [item](const RootItem* other) {
+        return other != item && item->isChildOf(other);
+      });
+
+    if (!covered_by_selected_parent) {
+      deletion_roots.append(item);
+    }
+  }
+
+  int child_feed_count = 0;
+  int child_category_count = 0;
+
+  for (RootItem* root : std::as_const(deletion_roots)) {
+    QList<RootItem*> descendants = root->childItems();
+
+    while (!descendants.isEmpty()) {
+      RootItem* descendant = descendants.takeLast();
+
+      if (descendant->kind() == RootItem::Kind::Feed) {
+        child_feed_count++;
+      }
+      else if (descendant->kind() == RootItem::Kind::Category) {
+        child_category_count++;
+      }
+
+      descendants.append(descendant->childItems());
+    }
+  }
+
+  QStringList deletion_details;
+
+  if (deletable_items.size() == 1) {
+    const RootItem* item = deletable_items.constFirst();
+
+    deletion_details.append(tr("<li><b>Item:</b> %1</li>").arg(item->title().toHtmlEscaped()));
+    deletion_details.append(tr("<li><b>Type:</b> %1</li>").arg(item_kind_name(item->kind())));
+  }
+  else {
+    QList<RootItem::Kind> selected_kind_order;
+
+    for (const RootItem* item : deletable_items) {
+      if (!selected_kind_order.contains(item->kind())) {
+        selected_kind_order.append(item->kind());
+      }
+    }
+
+    QStringList selected_kinds;
+
+    for (RootItem::Kind kind : std::as_const(selected_kind_order)) {
+      const int kind_count =
+        std::count_if(deletable_items.cbegin(), deletable_items.cend(), [kind](const RootItem* item) {
+          return item->kind() == kind;
+        });
+
+      selected_kinds.append(QSL("%1 (%2)").arg(item_kind_name(kind)).arg(kind_count));
+    }
+
+    deletion_details.append(tr("<li><b>Selected items:</b> %1</li>").arg(deletable_items.size()));
+    deletion_details.append(tr("<li><b>Types:</b> %1</li>").arg(selected_kinds.join(QSL(", "))));
+  }
+
+  deletion_details.append(tr("<li><b>Child feeds:</b> %1</li>").arg(child_feed_count));
+  deletion_details.append(tr("<li><b>Child categories:</b> %1</li>").arg(child_category_count));
+
+  const QString deletion_summary = tr("<p>You are about to completely delete the selected item(s).</p><ul>%1</ul>")
+                                     .arg(deletion_details.join(QString()));
+
   // Ask user first.
   if (MsgBox::show({},
                    QMessageBox::Icon::Question,
                    tr("Deleting %n items", nullptr, int(deletable_items.size())),
-                   tr("You are about to completely delete %n items.", nullptr, int(deletable_items.size())),
+                   deletion_summary,
                    tr("Are you sure?"),
                    QString(),
                    QMessageBox::StandardButton::Yes | QMessageBox::StandardButton::No,
@@ -517,7 +609,7 @@ void FeedsView::deleteSelectedItem() {
     return;
   }
 
-  auto pointed_items = deletable_items
+  auto pointed_items = qlinq::from(deletable_items)
                          .select([](RootItem* it) {
                            return QPointer<RootItem>(it);
                          })
