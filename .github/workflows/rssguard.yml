@@ -214,7 +214,7 @@ jobs:
 
       - name: Update "devbuild5" tag
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
-        uses: richardsimko/update-tag@v2
+        uses: richardsimko/update-tag@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
