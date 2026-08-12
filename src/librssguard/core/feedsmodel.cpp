@@ -361,7 +361,7 @@ void FeedsModel::reloadChangedItem(RootItem* item) {
 }
 
 void FeedsModel::notifyWithCounts() {
-  emit messageCountsChanged(countOfUnreadMessages(), hasAnyFeedNewMessages());
+  emit messageCountsChanged(m_rootItem->countOfUnreadMessagesForGlobalDisplay(), hasAnyFeedNewMessages());
 }
 
 void FeedsModel::onItemDataChanged(const QList<RootItem*>& items) {

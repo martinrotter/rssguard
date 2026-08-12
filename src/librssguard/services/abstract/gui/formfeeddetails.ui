@@ -107,6 +107,23 @@
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_6">
          <item>
+          <widget class="MultiFeedEditCheckBox" name="m_mcbExcludeFromGlobalUnreadCount"/>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="m_cbExcludeFromGlobalUnreadCount">
+           <property name="toolTip">
+            <string>Exclude this feed from unread counts shown in global indicators, such as the tray icon, taskbar, application badge, and window title.</string>
+           </property>
+           <property name="text">
+            <string>Exclude this feed from global unread counters</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
           <widget class="MultiFeedEditCheckBox" name="m_mcbDisableFeed"/>
          </item>
          <item>

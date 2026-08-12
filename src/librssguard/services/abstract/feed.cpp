@@ -47,6 +47,7 @@ Feed::Feed(const Feed& other) : RootItem(other) {
   setRtlBehavior(other.rtlBehavior());
   setIsSwitchedOff(other.isSwitchedOff());
   setIsQuiet(other.isQuiet());
+  setExcludesFromGlobalUnreadCount(other.excludesFromGlobalUnreadCount());
 }
 
 QVariant Feed::data(int column, int role) const {
@@ -210,6 +211,10 @@ int Feed::countOfAllMessages() const {
 
 int Feed::countOfUnreadMessages() const {
   return m_unreadCount;
+}
+
+int Feed::countOfUnreadMessagesForGlobalDisplay() const {
+  return excludesFromGlobalUnreadCount() ? 0 : countOfUnreadMessages();
 }
 
 QVariantHash Feed::customDatabaseData() const {
@@ -429,6 +434,14 @@ bool Feed::isQuiet() const {
 
 void Feed::setIsQuiet(bool quiet) {
   m_isQuiet = quiet;
+}
+
+bool Feed::excludesFromGlobalUnreadCount() const {
+  return m_excludesFromGlobalUnreadCount;
+}
+
+void Feed::setExcludesFromGlobalUnreadCount(bool exclude) {
+  m_excludesFromGlobalUnreadCount = exclude;
 }
 
 QDateTime Feed::lastUpdated() const {

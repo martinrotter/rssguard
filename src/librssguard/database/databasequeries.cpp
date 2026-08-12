@@ -1784,6 +1784,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db,
             "account_id = :account_id, "
             "custom_id = :custom_id, "
             "open_articles = :open_articles, "
+            "exclude_global_unread = :exclude_global_unread, "
             "custom_data = :custom_data "
             "WHERE id = :id;");
   q.bindValue(QSL(":title"), feed->title());
@@ -1801,6 +1802,7 @@ void DatabaseQueries::createOverwriteFeed(const QSqlDatabase& db,
   q.bindValue(QSL(":is_off"), feed->isSwitchedOff());
   q.bindValue(QSL(":is_quiet"), feed->isQuiet());
   q.bindValue(QSL(":open_articles"), feed->openArticlesDirectly());
+  q.bindValue(QSL(":exclude_global_unread"), feed->excludesFromGlobalUnreadCount());
   q.bindValue(QSL(":is_rtl"), int(feed->rtlBehavior()));
 
   const Feed::ArticleIgnoreLimit art = feed->articleIgnoreLimit();

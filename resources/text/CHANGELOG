@@ -11,6 +11,7 @@ Added:
 * Added icons to more commands and context-menu actions.
 * Feed-list deletion confirmations now identify the selected item and show how many feeds and folders it contains. (#2396)
 * Article filter scripts can now retrieve matching stored articles and work with their data.
+* Individual feeds can now be left out of global unread counters. (#1955)
 
 Fixed:
 * Saving an image from an article now writes the complete image and suggests its actual filename instead of always using `image.png`. (#2399)

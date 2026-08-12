@@ -118,6 +118,9 @@ class RSSGUARD_DLLSPEC RootItem : public QObject {
     virtual int countOfUnreadMessages() const;
     virtual int countOfAllMessages() const;
 
+    // Returns unread count used by global indicators, such as the tray icon.
+    virtual int countOfUnreadMessagesForGlobalDisplay() const;
+
     RootItem* parent() const;
     void setParent(RootItem* parent_item);
 

@@ -68,6 +68,7 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     virtual void cleanMessages(bool clean_read_only);
     virtual int countOfAllMessages() const;
     virtual int countOfUnreadMessages() const;
+    virtual int countOfUnreadMessagesForGlobalDisplay() const;
     virtual QVariantHash customDatabaseData() const;
     virtual void setCustomDatabaseData(const QVariantHash& data);
     virtual bool canBeEdited() const;
@@ -101,6 +102,9 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
 
     bool isQuiet() const;
     void setIsQuiet(bool quiet);
+
+    bool excludesFromGlobalUnreadCount() const;
+    void setExcludesFromGlobalUnreadCount(bool exclude);
 
     void appendMessageFilter(MessageFilter* filter);
     const QList<QPointer<MessageFilter>>& messageFilters() const;
@@ -137,6 +141,7 @@ class RSSGUARD_DLLSPEC Feed : public RootItem {
     QDateTime m_lastUpdated;
     bool m_isSwitchedOff;
     bool m_isQuiet;
+    bool m_excludesFromGlobalUnreadCount{};
     bool m_openArticlesDirectly;
     RtlBehavior m_rtlBehavior;
 

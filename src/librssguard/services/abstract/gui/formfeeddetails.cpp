@@ -85,6 +85,10 @@ void FormFeedDetails::apply() {
       fd->setIsQuiet(m_ui->m_cbSuppressFeed->isChecked());
     }
 
+    if (isChangeAllowed(m_ui->m_mcbExcludeFromGlobalUnreadCount)) {
+      fd->setExcludesFromGlobalUnreadCount(m_ui->m_cbExcludeFromGlobalUnreadCount->isChecked());
+    }
+
     if (isChangeAllowed(m_ui->m_mcbOpenArticlesAutomatically)) {
       fd->setOpenArticlesDirectly(m_ui->m_cbOpenArticlesAutomatically->isChecked());
     }
@@ -141,6 +145,7 @@ void FormFeedDetails::loadFeedData() {
     m_ui->m_mcbOpenArticlesAutomatically->addActionWidget(m_ui->m_cbOpenArticlesAutomatically);
     m_ui->m_mcbDisableFeed->addActionWidget(m_ui->m_cbDisableFeed);
     m_ui->m_mcbSuppressFeed->addActionWidget(m_ui->m_cbSuppressFeed);
+    m_ui->m_mcbExcludeFromGlobalUnreadCount->addActionWidget(m_ui->m_cbExcludeFromGlobalUnreadCount);
     m_ui->m_mcbFeedRtl->addActionWidget(m_ui->m_cmbRtlBehavior);
   }
   else {
@@ -175,6 +180,7 @@ void FormFeedDetails::loadFeedData() {
   m_ui->m_cmbRtlBehavior->setCurrentIndex(m_ui->m_cmbRtlBehavior->findData(QVariant::fromValue(fd->rtlBehavior())));
   m_ui->m_cbDisableFeed->setChecked(fd->isSwitchedOff());
   m_ui->m_cbSuppressFeed->setChecked(fd->isQuiet());
+  m_ui->m_cbExcludeFromGlobalUnreadCount->setChecked(fd->excludesFromGlobalUnreadCount());
 
   Feed::ArticleIgnoreLimit art_limit = Feed::ArticleIgnoreLimit(fd->articleIgnoreLimit());
 

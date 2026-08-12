@@ -502,6 +502,7 @@ QMap<QString, QVariantMap> ServiceRoot::storeCustomFeedsData() {
     feed_custom_data.insert(QSL("msg_filters"), QVariant::fromValue(feed->messageFilters()));
     feed_custom_data.insert(QSL("is_off"), feed->isSwitchedOff());
     feed_custom_data.insert(QSL("is_quiet"), feed->isQuiet());
+    feed_custom_data.insert(QSL("exclude_from_global_unread_count"), feed->excludesFromGlobalUnreadCount());
     feed_custom_data.insert(QSL("open_articles_directly"), feed->openArticlesDirectly());
     feed_custom_data.insert(QSL("is_rtl"), QVariant::fromValue(feed->rtlBehavior()));
     feed_custom_data.insert(QSL("article_limit_ignore"), QVariant::fromValue(feed->articleIgnoreLimit()));
@@ -571,6 +572,7 @@ void ServiceRoot::restoreCustomFeedsData(const QMap<QString, QVariantMap>& data,
 
       feed->setIsSwitchedOff(feed_custom_data.value(QSL("is_off")).toBool());
       feed->setIsQuiet(feed_custom_data.value(QSL("is_quiet")).toBool());
+      feed->setExcludesFromGlobalUnreadCount(feed_custom_data.value(QSL("exclude_from_global_unread_count")).toBool());
       feed->setOpenArticlesDirectly(feed_custom_data.value(QSL("open_articles_directly")).toBool());
       feed->setRtlBehavior(feed_custom_data.value(QSL("is_rtl")).value<RtlBehavior>());
 

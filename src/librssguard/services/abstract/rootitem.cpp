@@ -252,6 +252,16 @@ int RootItem::countOfAllMessages() const {
   });
 }
 
+int RootItem::countOfUnreadMessagesForGlobalDisplay() const {
+  return qlinq::from(m_childItems).sum([](RootItem* it) {
+    return (it->kind() == RootItem::Kind::Bin || it->kind() == RootItem::Kind::Important ||
+            it->kind() == RootItem::Kind::Unread || it->kind() == RootItem::Kind::Labels ||
+            it->kind() == RootItem::Kind::Probes)
+             ? 0
+             : std::max(it->countOfUnreadMessagesForGlobalDisplay(), 0);
+  });
+}
+
 bool RootItem::isChildOf(const RootItem* root) const {
   if (root == nullptr) {
     return false;
