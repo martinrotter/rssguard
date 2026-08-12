@@ -168,6 +168,8 @@ Here is the complete reference documentation of the functions and properties ava
 | `fetchFullContents(Boolean plain_text_only)`                                  | `Boolean`    | Fetches fuller article contents for the article, in plain text or HTML form by using the [article extractor](extractor). [^1] |
 | `isAlreadyInDatabase(DuplicityCheck criteria)`                                | `Boolean`    | Checks if a matching message is already stored in the database. |
 | `isAlreadyInDatabaseWinkler(DuplicityCheck criteria, Number threshold = 0.1)` | `Boolean`    | Checks if a similar message is already stored in the database by using Jaro-Winkler similarity. |
+| `getArticleFromDatabase(DuplicityCheck criteria)`                             | `FilterMessage` or `null` | Returns the newest matching stored article. |
+| `getArticleFromDatabaseWinkler(DuplicityCheck criteria, Number threshold = 0.1)` | `FilterMessage` or `null` | Returns the newest stored article matching the Jaro-Winkler similarity threshold. |
 | `assignLabel(String label_id)`                                                | `Boolean`    | Assigns a label to the message. The `String` value is the `customId` property of the `Label` type. |
 | `deassignLabel(String label_id)`                                              | `Boolean`    | Removes a label from the message. The `String` value is the `customId` property of the `Label` type. |
 | `deassignAllLabels()`                                                         | `void`       | Removes all labels from the message. |
@@ -175,6 +177,11 @@ Here is the complete reference documentation of the functions and properties ava
 
 [^1]: Fetching fuller contents may issue extra network requests, can slow down feed fetching, and can increase database size significantly. See the [article extractor CLI](extractor) if you want to call the extractor directly from a filter or another script.
 [^2]: This is intended mainly for newly fetched articles. When processing already stored articles from the dialog, this helper may not have anything useful to export.
+
+```{warning}
+Articles returned by `getArticleFromDatabase*()` are detached copies. You can inspect or modify them and copy their
+properties to `msg`, but changes made directly to a returned article are not written back to the database.
+```
 
 ### `app`
 
@@ -346,6 +353,23 @@ function filterMessage() {
 function filterMessage() {
   if (msg.isAlreadyInDatabaseWinkler(Msg.SameTitle, 0.05)) {
     return Msg.Ignore;
+  }
+
+  return Msg.Accept;
+}
+```
+
+```js
+/*
+ * Reuse contents from the newest stored article with the same URL.
+ */
+function filterMessage() {
+  const previous = msg.getArticleFromDatabase(
+    Msg.SameUrl | Msg.AllFeedsSameAccount
+  );
+
+  if (previous !== null) {
+    msg.contents = previous.contents;
   }
 
   return Msg.Accept;

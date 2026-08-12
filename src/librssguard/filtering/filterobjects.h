@@ -3,11 +3,16 @@
 #ifndef FILTEROBJECTS_H
 #define FILTEROBJECTS_H
 
+#include "core/message.h"
 #include "services/abstract/label.h"
+
+#include <optional>
 
 #include <QDateTime>
 #include <QDomElement>
 #include <QObject>
+#include <QVariant>
+#include <QVector>
 
 class FilteringSystem;
 
@@ -94,11 +99,15 @@ class FilterMessage : public FilterMechanism {
     Q_ENUM(DuplicityCheck)
 
     explicit FilterMessage(QObject* parent = nullptr);
+    explicit FilterMessage(const Message& message, QObject* parent = nullptr);
 
     void setMessage(Message* message);
 
     Q_INVOKABLE bool isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double threshold = 0.1) const;
     Q_INVOKABLE bool isAlreadyInDatabase(DuplicityCheck criteria) const;
+
+    Q_INVOKABLE FilterMessage* getArticleFromDatabaseWinkler(DuplicityCheck criteria, double threshold = 0.1) const;
+    Q_INVOKABLE FilterMessage* getArticleFromDatabase(DuplicityCheck criteria) const;
 
     Q_INVOKABLE bool fetchFullContents(bool plain_text_only);
 
@@ -172,7 +181,15 @@ class FilterMessage : public FilterMechanism {
     void setScore(double score);
 
   private:
-    Message* m_message;
+    using DuplicateBindValues = QVector<QPair<QString, QVariant>>;
+
+    QString duplicateWhereClause(DuplicityCheck criteria, DuplicateBindValues& bind_values) const;
+    std::optional<Message> databaseMessage(const QString& where_clause, const DuplicateBindValues& bind_values) const;
+    FilterMessage* wrapDatabaseMessage(const Message& message) const;
+    int winklerDuplicateId(DuplicityCheck criteria, double threshold) const;
+
+    std::optional<Message> m_ownedMessage;
+    Message* m_message{nullptr};
 };
 
 // Information about the application, access to DB etc.

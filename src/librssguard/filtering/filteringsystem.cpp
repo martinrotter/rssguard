@@ -154,13 +154,15 @@ const QList<FilteringSystem::DuplicateCandidate>& FilteringSystem::duplicateCand
     if (all_feeds_same_account) {
       query.prepare(QSL("SELECT id, title, url, author, date_created, custom_id "
                         "FROM Messages "
-                        "WHERE account_id = :account_id AND is_deleted = 0 AND is_pdeleted = 0;"));
+                        "WHERE account_id = :account_id AND is_deleted = 0 AND is_pdeleted = 0 "
+                        "ORDER BY id DESC;"));
       query.bindValue(QSL(":account_id"), m_filterAccount.id());
     }
     else {
       query.prepare(QSL("SELECT id, title, url, author, date_created, custom_id "
                         "FROM Messages "
-                        "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0;"));
+                        "WHERE feed = :feed AND is_deleted = 0 AND is_pdeleted = 0 "
+                        "ORDER BY id DESC;"));
       query.bindValue(QSL(":feed"), m_filterMessage.feedId());
     }
 

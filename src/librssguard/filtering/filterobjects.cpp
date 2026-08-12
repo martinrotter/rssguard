@@ -20,8 +20,13 @@
 
 #include <QElapsedTimer>
 #include <QHostInfo>
+#include <QJSEngine>
 #include <QJsonArray>
 #include <QJsonDocument>
+
+#if QT_VERSION_MAJOR < 6
+#include <QQmlEngine>
+#endif
 
 FilterMechanism::FilterMechanism(QObject* parent) : QObject(parent) {}
 
@@ -35,7 +40,11 @@ FilteringSystem* FilterMechanism::system() const {
 
 FilterMessage::FilterMessage(QObject* parent) : FilterMechanism(parent), m_message(nullptr) {}
 
+FilterMessage::FilterMessage(const Message& message, QObject* parent)
+  : FilterMechanism(parent), m_ownedMessage(message), m_message(&m_ownedMessage.value()) {}
+
 void FilterMessage::setMessage(Message* message) {
+  m_ownedMessage.reset();
   m_message = message;
 }
 
@@ -338,7 +347,7 @@ double jaro_winkler_distance(const QString& first, const QString& second, JaroWi
     }                                                                                   \
   }
 
-bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double threshold) const {
+int FilterMessage::winklerDuplicateId(DuplicityCheck criteria, double threshold) const {
   try {
 #ifndef QT_NO_DEBUG
     QElapsedTimer check_timer;
@@ -353,14 +362,14 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
     JaroWinklerWorkspace workspace;
 
 #ifndef QT_NO_DEBUG
-    const auto log_check = [&](bool duplicate_found) {
+    const auto log_check = [&](int duplicate_id) {
       qDebugNN << LOGSEC_ARTICLEFILTER << "Jaro-Winkler duplicate check for" << QUOTE_W_SPACE(message_title)
                << "examined" << NONQUOTE_W_SPACE(candidates_checked) << "of" << NONQUOTE_W_SPACE(candidates.size())
                << "candidates," << NONQUOTE_W_SPACE(skipped_by_length) << "skipped by title length,"
                << NONQUOTE_W_SPACE(workspace.m_callCount) << "Jaro comparisons and"
                << NONQUOTE_W_SPACE(workspace.m_windowCharacterChecks) << "window character checks in"
                << NONQUOTE_W_SPACE(check_timer.elapsed())
-               << "milliseconds; duplicate found:" << (duplicate_found ? "yes." : "no.");
+               << "milliseconds; duplicate found:" << (duplicate_id > 0 ? "yes." : "no.");
     };
 #endif
 
@@ -395,26 +404,29 @@ bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double t
       JARO_WINKLER_DECIDE(criteria, DuplicityCheck::SameCustomId, threshold, customId(), candidate.m_customId)
 
 #ifndef QT_NO_DEBUG
-      log_check(true);
+      log_check(candidate.m_id);
 #endif
-      return true;
+
+      return candidate.m_id;
     }
 
 #ifndef QT_NO_DEBUG
-    log_check(false);
+    log_check(0);
 #endif
-    return false;
   }
   catch (const ApplicationException& ex) {
     qCriticalNN << LOGSEC_ARTICLEFILTER << "Query for undeleted articles failed:" << QUOTE_W_SPACE_DOT(ex.message());
-    return false;
   }
+
+  return 0;
 }
 
-bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
-  // Check database according to duplication attribute_check.
+bool FilterMessage::isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double threshold) const {
+  return winklerDuplicateId(criteria, threshold) > 0;
+}
+
+QString FilterMessage::duplicateWhereClause(DuplicityCheck criteria, DuplicateBindValues& bind_values) const {
   QStringList where_clauses;
-  QVector<QPair<QString, QVariant>> bind_values;
 
   // Now we construct the query according to parameter.
   if (Globals::hasFlag(criteria, DuplicityCheck::SameTitle)) {
@@ -449,7 +461,7 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
   // make sure that we do not match the message against itself.
   if (system()->mode() == FilteringSystem::FiteringUseCase::ExistingArticles && id() > 0) {
     where_clauses.append(QSL("id != :id"));
-    bind_values.append({QSL(":id"), QString::number(id())});
+    bind_values.append({QSL(":id"), id()});
   }
 
   if (!Globals::hasFlag(criteria, DuplicityCheck::AllFeedsSameAccount)) {
@@ -458,12 +470,78 @@ bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
     bind_values.append({QSL(":feed"), feedId()});
   }
 
-  QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clauses.join(QSL(" AND ")) + QSL(";");
+  return where_clauses.join(QSL(" AND "));
+}
+
+std::optional<Message> FilterMessage::databaseMessage(const QString& where_clause,
+                                                      const DuplicateBindValues& bind_values) const {
+  QHash<QString, Label*> labels;
+
+  for (Label* label : std::as_const(system()->availableLabels())) {
+    labels.insert(label->customId(), label);
+  }
+
+  return system()->database()->worker()->read<std::optional<Message>>([&](const QSqlDatabase& db) {
+    SqlQuery query(db);
+    query.prepare(QSL("SELECT %1 FROM Messages WHERE %2 ORDER BY Messages.id DESC LIMIT 1;")
+                    .arg(DatabaseQueries::messageTableAttributes().join(QSL(", ")), where_clause));
+
+    for (const auto& bind : bind_values) {
+      query.bindValue(bind.first, bind.second);
+    }
+
+    if (!query.exec(false)) {
+      qWarningNN << LOGSEC_CORE << "Error when loading duplicate message via filtering system, error:"
+                 << QUOTE_W_SPACE_DOT(query.lastError().text());
+      return std::optional<Message>();
+    }
+
+    return query.next() ? std::optional<Message>(Message::fromSqlQuery(query, labels)) : std::optional<Message>();
+  });
+}
+
+FilterMessage* FilterMessage::wrapDatabaseMessage(const Message& message) const {
+  auto* wrapper = new FilterMessage(message);
+
+  wrapper->setSystem(system());
+
+#if QT_VERSION_MAJOR < 6
+  QQmlEngine::setObjectOwnership(wrapper, QQmlEngine::JavaScriptOwnership);
+#else
+  QJSEngine::setObjectOwnership(wrapper, QJSEngine::JavaScriptOwnership);
+#endif
+
+  return wrapper;
+}
+
+FilterMessage* FilterMessage::getArticleFromDatabaseWinkler(DuplicityCheck criteria, double threshold) const {
+  const int duplicate_id = winklerDuplicateId(criteria, threshold);
+
+  if (duplicate_id <= 0) {
+    return nullptr;
+  }
+
+  const auto message = databaseMessage(QSL("Messages.id = :message_id"), {{QSL(":message_id"), duplicate_id}});
+
+  return message.has_value() ? wrapDatabaseMessage(message.value()) : nullptr;
+}
+
+FilterMessage* FilterMessage::getArticleFromDatabase(DuplicityCheck criteria) const {
+  DuplicateBindValues bind_values;
+  const auto message = databaseMessage(duplicateWhereClause(criteria, bind_values), bind_values);
+
+  return message.has_value() ? wrapDatabaseMessage(message.value()) : nullptr;
+}
+
+bool FilterMessage::isAlreadyInDatabase(DuplicityCheck criteria) const {
+  DuplicateBindValues bind_values;
+  const QString where_clause = duplicateWhereClause(criteria, bind_values);
+  const QString full_query = QSL("SELECT COUNT(*) FROM Messages WHERE ") + where_clause + QSL(";");
   bool res = system()->database()->worker()->read<bool>([&](const QSqlDatabase& db) {
     SqlQuery q(db);
     q.prepare(full_query);
 
-    for (const auto& bind : bind_values) {
+    for (const auto& bind : std::as_const(bind_values)) {
       q.bindValue(bind.first, bind.second);
     }
 
@@ -639,11 +717,12 @@ QString FilterFs::runExecutableGetOutput(const QString& executable,
                                          const QString& stdin_data,
                                          const QString& working_directory) const {
   try {
-    auto res = IOFactory::startProcessGetOutput(executable,
-                                                arguments,
-                                                stdin_data,
-                                                working_directory.isEmpty() ? system()->applicationPaths()->userDataFolder()
-                                                                            : working_directory);
+    auto res =
+      IOFactory::startProcessGetOutput(executable,
+                                       arguments,
+                                       stdin_data,
+                                       working_directory.isEmpty() ? system()->applicationPaths()->userDataFolder()
+                                                                   : working_directory);
 
     return res;
   }
