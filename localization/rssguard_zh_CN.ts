@@ -1415,7 +1415,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="594"/>
       <source>&lt;p&gt;You are about to completely delete the selected item(s).&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</source>
-      <translation type="unfinished">&lt;p&gt;You are about to completely delete the selected item(s).&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</translation>
+      <translation>&lt;p&gt;您将完全删除所选项目.&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="600"/>
