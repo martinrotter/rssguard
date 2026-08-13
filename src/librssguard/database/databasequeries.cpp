@@ -1140,7 +1140,8 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
         .prepare(QSL("UPDATE Messages "
                      "SET title = :title, is_read = :is_read, is_important = :is_important, is_deleted = "
                      ":is_deleted, url = :url, author = :author, score = :score, date_created = :date_created, "
-                     "date_retrieved = :date_retrieved, contents = :contents, enclosures = :enclosures, feed = :feed "
+                     "date_retrieved = :date_retrieved, contents = :contents, enclosures = :enclosures, feed = :feed, "
+                     "custom_data = :custom_data "
                      "WHERE id = :id;"));
 
       for (int i = 0; i < msgs_to_update.size(); i++) {
@@ -1161,6 +1162,7 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
         query_update.bindValue(QSL(":contents"), unnulifyString(message_update.m_contents));
         query_update.bindValue(QSL(":enclosures"), Enclosures::encodeEnclosuresToString(message_update.m_enclosures));
         query_update.bindValue(QSL(":feed"), message_update.m_feedId);
+        query_update.bindValue(QSL(":custom_data"), unnulifyString(message_update.m_customData));
         query_update.bindValue(QSL(":score"), message_update.m_score);
         query_update.bindValue(QSL(":id"), message_update.m_id);
 
