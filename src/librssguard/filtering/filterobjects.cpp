@@ -220,6 +220,10 @@ int FilterMessage::feedId() const {
   }
 }
 
+QString FilterMessage::customData() const {
+  return m_message->m_customData;
+}
+
 QString FilterMessage::customId() const {
   return m_message->m_customId;
 }

@@ -143,6 +143,7 @@ Here is the complete reference documentation of the functions and properties ava
 | `categories`       | `Array<MessageCategory>`  | Yes       | No           | List of categories of the article, extracted from the feed. |
 | `enclosures`       | `Array<MessageEnclosure>` | Yes       | No           | List of attachments of the article. |
 | `id`               | `Number`                  | Yes       | No           | ID assigned to the message in the local RSS Guard database. |
+| `customData`       | `String`                  | Yes       | No           | Opaque custom data associated with the article. Its format depends on the article source; structured data may commonly be encoded as JSON. |
 | `customId`         | `String`                  | No        | No           | ID of the message as provided by the remote service or feed file. |
 | `title`            | `String`                  | No        | No           | The message title. |
 | `url`              | `String`                  | No        | No           | The message URL. |

@@ -46,6 +46,7 @@ class FilterMessage : public FilterMechanism {
     Q_PROPERTY(QList<Label*> assignedLabels READ assignedLabels)
     Q_PROPERTY(bool hasEnclosures READ hasEnclosures)
     Q_PROPERTY(int id READ id)
+    Q_PROPERTY(QString customData READ customData)
     Q_PROPERTY(QString customId READ customId WRITE setCustomId)
     Q_PROPERTY(QString title READ title WRITE setTitle)
     Q_PROPERTY(QString url READ url WRITE setUrl)
@@ -140,6 +141,8 @@ class FilterMessage : public FilterMechanism {
     bool hasEnclosures() const;
     int id() const;
     int feedId() const;
+
+    QString customData() const;
 
     QString customId() const;
     void setCustomId(const QString& custom_id);

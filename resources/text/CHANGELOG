@@ -10,7 +10,7 @@ Added:
 * Article filters can now be moved five positions at a time with Shift, or directly to the top or bottom with Ctrl. (#2320)
 * Added icons to more commands and context-menu actions.
 * Feed-list deletion confirmations now identify the selected item and show how many feeds and folders it contains. (#2396)
-* Article filter scripts can now retrieve matching stored articles and work with their data.
+* Article filter scripts can now retrieve matching stored articles and inspect their custom data.
 * Individual feeds can now be left out of global unread counters. (#1955)
 
 Fixed:
