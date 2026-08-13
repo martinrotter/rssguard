@@ -63,6 +63,25 @@ If **Fetch metadata** fails, check that:
 * diagnostics are written to standard error
 * the command exits successfully
 
+## Persistent Custom Article Data
+Generated feeds can attach an arbitrary string to an article. RSS Guard stores this value with the article and exposes it as `msg.customData` to [article filters](../features/filters).
+
+For JSON Feed, place the string in the RSS Guard extension object:
+
+```json
+"_rssguard": {
+  "custom_data": "{\"price\":224.09}"
+}
+```
+
+RSS, Atom and RDF feeds can use the equivalent namespaced element directly inside an item or entry:
+
+```xml
+<rssguard:custom_data xmlns:rssguard="https://github.com/martinrotter/rssguard"><![CDATA[{"price":224.09}]]></rssguard:custom_data>
+```
+
+The value is stored as supplied. It does not have to contain JSON.
+
 ## Related Feed Options
 Scripted and transformed feeds can also use:
 

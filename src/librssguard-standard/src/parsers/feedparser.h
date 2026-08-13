@@ -87,6 +87,7 @@ class FeedParser {
     virtual QString xmlMessageId(const QDomElement& msg_element) const;
     virtual QList<QSharedPointer<MessageEnclosure>> xmlMessageEnclosures(const QDomElement& msg_element) const;
     virtual QList<QSharedPointer<MessageCategory>> xmlMessageCategories(const QDomElement& msg_element) const;
+    virtual QString xmlMessageCustomData(const QDomElement& msg_element) const;
     virtual QString xmlMessageRawContents(const QDomElement& msg_element) const;
 
     // JSON.
@@ -99,6 +100,7 @@ class FeedParser {
     virtual QString jsonMessageId(const QJsonObject& msg_element) const;
     virtual QList<QSharedPointer<MessageEnclosure>> jsonMessageEnclosures(const QJsonObject& msg_element) const;
     virtual QList<MessageCategory*> jsonMessageCategories(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageCustomData(const QJsonObject& msg_element) const;
     virtual QString jsonMessageRawContents(const QJsonObject& msg_element) const;
 
     // Objects.
@@ -111,6 +113,7 @@ class FeedParser {
     virtual QString objMessageId(const QVariant& msg_element) const;
     virtual QList<QSharedPointer<MessageEnclosure>> objMessageEnclosures(const QVariant& msg_element) const;
     virtual QList<MessageCategory*> objMessageCategories(const QVariant& msg_element) const;
+    virtual QString objMessageCustomData(const QVariant& msg_element) const;
     virtual QString objMessageRawContents(const QVariant& msg_element) const;
 
   protected:

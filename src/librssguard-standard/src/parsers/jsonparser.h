@@ -30,6 +30,7 @@ class JsonParser : public FeedParser {
     virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element);
     virtual QString jsonMessageId(const QJsonObject& msg_element) const;
     virtual QList<QSharedPointer<MessageEnclosure>> jsonMessageEnclosures(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageCustomData(const QJsonObject& msg_element) const;
     virtual QString jsonMessageRawContents(const QJsonObject& msg_element) const;
 };
 

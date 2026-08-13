@@ -121,6 +121,16 @@ QString FeedParser::xmlMessageRawContents(const QDomElement& msg_element) const 
   }
 }
 
+QString FeedParser::xmlMessageCustomData(const QDomElement& msg_element) const {
+  for (QDomElement child = msg_element.firstChildElement(); !child.isNull(); child = child.nextSiblingElement()) {
+    if (child.namespaceURI() == QSL(APP_URL) && child.localName() == QSL("custom_data")) {
+      return child.text();
+    }
+  }
+
+  return {};
+}
+
 QJsonArray FeedParser::jsonMessageElements() {
   return {};
 }
@@ -154,6 +164,10 @@ QList<QSharedPointer<MessageEnclosure>> FeedParser::jsonMessageEnclosures(const 
 }
 
 QList<MessageCategory*> FeedParser::jsonMessageCategories(const QJsonObject& msg_element) const {
+  return {};
+}
+
+QString FeedParser::jsonMessageCustomData(const QJsonObject& msg_element) const {
   return {};
 }
 
@@ -197,6 +211,10 @@ QList<MessageCategory*> FeedParser::objMessageCategories(const QVariant& msg_ele
   return {};
 }
 
+QString FeedParser::objMessageCustomData(const QVariant& msg_element) const {
+  return {};
+}
+
 QString FeedParser::objMessageRawContents(const QVariant& msg_element) const {
   return {};
 }
@@ -229,6 +247,7 @@ QList<Message> FeedParser::messages() {
         new_message.m_url = xmlMessageUrl(message_item);
         new_message.m_created = xmlMessageDateCreated(message_item);
         new_message.m_customId = xmlMessageId(message_item);
+        new_message.m_customData = xmlMessageCustomData(message_item);
         new_message.m_rawContents = xmlMessageRawContents(message_item);
         new_message.m_enclosures = xmlMessageEnclosures(message_item);
         new_message.m_enclosures.append(xmlMrssGetEnclosures(message_item));
@@ -257,6 +276,7 @@ QList<Message> FeedParser::messages() {
         new_message.m_url = jsonMessageUrl(message_item);
         new_message.m_created = jsonMessageDateCreated(message_item);
         new_message.m_customId = jsonMessageId(message_item);
+        new_message.m_customData = jsonMessageCustomData(message_item);
         new_message.m_rawContents = jsonMessageRawContents(message_item);
         new_message.m_enclosures = jsonMessageEnclosures(message_item);
 
@@ -281,6 +301,7 @@ QList<Message> FeedParser::messages() {
         new_message.m_url = objMessageUrl(message_item);
         new_message.m_created = objMessageDateCreated(message_item);
         new_message.m_customId = objMessageId(message_item);
+        new_message.m_customData = objMessageCustomData(message_item);
         new_message.m_rawContents = objMessageRawContents(message_item);
         new_message.m_enclosures = objMessageEnclosures(message_item);
 

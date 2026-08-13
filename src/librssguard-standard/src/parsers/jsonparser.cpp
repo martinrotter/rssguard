@@ -234,6 +234,10 @@ QList<QSharedPointer<MessageEnclosure>> JsonParser::jsonMessageEnclosures(const 
   return enc;
 }
 
+QString JsonParser::jsonMessageCustomData(const QJsonObject& msg_element) const {
+  return msg_element.value(QSL("_rssguard")).toObject().value(QSL("custom_data")).toString();
+}
+
 QString JsonParser::jsonMessageRawContents(const QJsonObject& msg_element) const {
   return QJsonDocument(msg_element).toJson(QJsonDocument::JsonFormat::Compact);
 }
