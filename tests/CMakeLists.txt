@@ -60,6 +60,10 @@ add_rssguard_test(test_httpresponse
   network-web/test_httpresponse.cpp
 )
 
+add_rssguard_test(test_webfactory
+  network-web/test_webfactory.cpp
+)
+
 add_rssguard_test(test_message
   core/test_message.cpp
 )

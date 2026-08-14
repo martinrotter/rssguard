@@ -1149,6 +1149,16 @@ QStringList WebFactory::extractAllHyperlinks(const QUrl& base_url, const QByteAr
 }
 
 QString WebFactory::unescapeHtml(const QString& html) {
+  return unescapeHtml(html, char32_t{1}, true);
+}
+
+QString WebFactory::unescapeHtml(const QString& html, char32_t minimum_numeric_code_point) {
+  return unescapeHtml(html, minimum_numeric_code_point, false);
+}
+
+QString WebFactory::unescapeHtml(const QString& html,
+                                 char32_t minimum_numeric_code_point,
+                                 bool unescape_named_entities) {
   if (html.isEmpty()) {
     return html;
   }
@@ -1179,25 +1189,26 @@ QString WebFactory::unescapeHtml(const QString& html) {
         // OK, we have entity.
         if (html.at(pos + 1) == QChar('#')) {
           // We have numbered entity.
-          uint number;
-          QString number_str;
+          int number_start = pos + 2;
+          int number_base = 10;
 
-          if (html.at(pos + 2) == QChar('x')) {
-            // base-16 number.
-            number_str = html.mid(pos + 3, pos_end - pos - 3);
-            number = number_str.toUInt(nullptr, 16);
-          }
-          else {
-            // base-10 number.
-            number_str = html.mid(pos + 2, pos_end - pos - 2);
-            number = number_str.toUInt();
+          if (number_start < pos_end && html.at(number_start).toLower() == QChar('x')) {
+            number_start++;
+            number_base = 16;
           }
 
-          if (number > 0U) {
-            output.append(QString::fromUcs4((const char32_t*)&number, 1));
+          bool is_number = false;
+          const uint number = html.mid(number_start, pos_end - number_start).toUInt(&is_number, number_base);
+          const bool is_unicode_scalar =
+            number > 0U && number <= 0x10FFFFU && !(number >= 0xD800U && number <= 0xDFFFU);
+
+          if (is_number && is_unicode_scalar && number >= static_cast<uint>(minimum_numeric_code_point)) {
+            const char32_t code_point = static_cast<char32_t>(number);
+
+            output.append(QString::fromUcs4(&code_point, 1));
           }
           else {
-            // Failed to convert to number, leave intact.
+            // Invalid or deliberately excluded entity, leave intact.
             output.append(html.mid(pos, pos_end - pos + 1));
           }
 
@@ -1208,15 +1219,13 @@ QString WebFactory::unescapeHtml(const QString& html) {
           // We have named entity.
           auto entity_name = html.mid(pos + 1, pos_end - pos - 1);
 
-          if (entities.contains(entity_name)) {
+          if (unescape_named_entities && entities.contains(entity_name)) {
             // Entity found, proceed.
             output.append(entities.value(entity_name));
           }
           else {
             // Entity NOT found, leave intact.
-            output.append('&');
-            output.append(entity_name);
-            output.append(';');
+            output.append(html.mid(pos, pos_end - pos + 1));
           }
 
           pos = pos_end + 1;

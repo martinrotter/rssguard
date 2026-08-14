@@ -12,6 +12,7 @@
 #include <librssguard/miscellaneous/textfactory.h>
 #include <librssguard/miscellaneous/xmlencodingdetector.h>
 #include <librssguard/network-web/networkfactory.h>
+#include <librssguard/network-web/webfactory.h>
 
 #include <QTextStream>
 
@@ -247,6 +248,10 @@ QString RssParser::xmlMessageDescription(const QDomElement& msg_element) const {
 
   if (description.isEmpty()) {
     description = xmlRawChild(msg_element.elementsByTagName(QSL("description")).at(0).toElement());
+  }
+
+  if (description.contains(QSL("&#")) && !TextFactory::couldBeHtml(description)) {
+    description = WebFactory::unescapeHtml(description, char32_t{0x80});
   }
 
   if (fetchComments()) {

@@ -62,9 +62,11 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 
     QStringList extractAllHyperlinks(const QUrl& base_url, const QByteArray& html_data);
 
-    // HTML entity unescaping. This method
-    // converts both HTML entity names and numbers to UTF-8 string.
+    // HTML entity unescaping. The unrestricted overload converts both named
+    // and numeric entities; the restricted overload converts only numeric
+    // entities at or above the given Unicode code point.
     static QString unescapeHtml(const QString& html);
+    static QString unescapeHtml(const QString& html, char32_t minimum_numeric_code_point);
 
     QString processFeedUriScheme(const QString& url);
 
@@ -118,6 +120,7 @@ class RSSGUARD_DLLSPEC WebFactory : public QObject {
 #endif
 
     static QMap<QString, char16_t> generateUnescapes();
+    static QString unescapeHtml(const QString& html, char32_t minimum_numeric_code_point, bool unescape_named_entities);
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
     QWebEngineProfile* m_webEngineProfile;
