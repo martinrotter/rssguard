@@ -325,9 +325,7 @@ void NextcloudNetworkFactory::createFeed(const QString& url, int parent_id, cons
                                             custom_proxy);
 
   if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
-    if (network_reply.m_networkError != QNetworkReply::NetworkError::NoError) {
-      throw NetworkException(network_reply.m_networkError, QString::fromUtf8(result_raw));
-    }
+    throw NetworkException(network_reply.m_networkError, QString::fromUtf8(result_raw));
   }
 }
 

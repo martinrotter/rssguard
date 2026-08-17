@@ -3,37 +3,32 @@
 #ifndef JSSYNTAXHIGHLIGHTER_H
 #define JSSYNTAXHIGHLIGHTER_H
 
-#include <QRegularExpression>
+#include <QSet>
+#include <QStringList>
 #include <QSyntaxHighlighter>
 
 class JsSyntaxHighlighter : public QSyntaxHighlighter {
     Q_OBJECT
 
   public:
-    JsSyntaxHighlighter(QTextDocument* parent);
+    explicit JsSyntaxHighlighter(QTextDocument* parent);
 
     QStringList jsKeywords() const;
 
   protected:
-    virtual void highlightBlock(const QString& text) override;
+    void highlightBlock(const QString& text) override;
 
   private:
-    struct HighlightingRule {
-        QRegularExpression m_pattern;
-        QTextCharFormat m_format;
-    };
-
-    QList<HighlightingRule> m_highlightingRules;
-
-    QRegularExpression m_commentStartExpression;
-    QRegularExpression m_commentEndExpression;
+    QSet<QString> m_keywords;
+    QSet<QString> m_literals;
 
     QTextCharFormat m_keywordFormat;
     QTextCharFormat m_classFormat;
-    QTextCharFormat m_singleLineCommentFormat;
-    QTextCharFormat m_multiLineCommentFormat;
+    QTextCharFormat m_commentFormat;
     QTextCharFormat m_quotationFormat;
     QTextCharFormat m_functionFormat;
+    QTextCharFormat m_numberFormat;
+    QTextCharFormat m_regexFormat;
 };
 
 #endif // JSSYNTAXHIGHLIGHTER_H

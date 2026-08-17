@@ -7,7 +7,6 @@
 #include "definitions/definitions.h"
 #include "exceptions/applicationexception.h"
 #include "exceptions/sqlexception.h"
-#include "gui/messagebox.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/thread.h"
 
@@ -21,8 +20,8 @@ DatabaseDriver::DatabaseDriver(QObject* parent) : QObject(parent), m_databaseIni
 
 QSqlDatabase DatabaseDriver::threadSafeConnection(const QString& connection_name) {
   qlonglong thread_id = getThreadID();
-  bool is_main_thread = QCoreApplication::instance() != nullptr &&
-                        QThread::currentThread() == QCoreApplication::instance()->thread();
+  bool is_main_thread =
+    QCoreApplication::instance() != nullptr && QThread::currentThread() == QCoreApplication::instance()->thread();
   QSqlDatabase database =
     connection(is_main_thread ? connection_name : QSL("%1_%2").arg(connection_name, QString::number(thread_id)));
 
@@ -224,8 +223,8 @@ QStringList DatabaseDriver::prepareScript(const QString& base_sql_folder,
     }
   }
 
-  statements = statements.replaceInStrings(QSL(APP_DB_NAME_PLACEHOLDER),
-                                             DatabaseFactory::escapeIdentifier(database_name));
+  statements =
+    statements.replaceInStrings(QSL(APP_DB_NAME_PLACEHOLDER), DatabaseFactory::escapeIdentifier(database_name));
   statements = statements.replaceInStrings(QSL(APP_DB_AUTO_INC_PRIM_KEY_PLACEHOLDER), autoIncrementPrimaryKey());
   statements = statements.replaceInStrings(QSL(APP_DB_BLOB_PLACEHOLDER), blob());
   statements = statements.replaceInStrings(QSL(APP_DB_TEXT_PLACEHOLDER), text());
