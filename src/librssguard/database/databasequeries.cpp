@@ -928,12 +928,19 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
 
       const auto execute_lookup = [&existing_messages](SqlQuery& query, const QString& lookup_description) {
         if (!query.exec(false)) {
-          if (query.lastError().isValid()) {
+          const QSqlError lookup_error = query.lastError();
+
+          if (lookup_error.isValid()) {
             qWarningNN << LOGSEC_DB << "Failed to batch-check existing articles by" << lookup_description << ":"
-                       << QUOTE_W_SPACE_DOT(query.lastError().text());
+                       << QUOTE_W_SPACE_DOT(lookup_error.text());
           }
 
           query.finish();
+
+          if (lookup_error.isValid()) {
+            THROW_EX(SqlException, lookup_error);
+          }
+
           return;
         }
 
@@ -959,7 +966,15 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
           existing_messages.insert(message_index, existing_message);
         }
 
+        const QSqlError lookup_error = query.lastError();
+
         query.finish();
+
+        if (lookup_error.isValid()) {
+          qWarningNN << LOGSEC_DB << "Failed while retrieving existing articles by" << lookup_description << ":"
+                     << QUOTE_W_SPACE_DOT(lookup_error.text());
+          THROW_EX(SqlException, lookup_error);
+        }
       };
 
       for (int batch_start = 0; batch_start < direct_id_indices.size(); batch_start += lookup_batch_size) {
@@ -971,8 +986,9 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
         for (int i = batch_start; i < batch_end; ++i) {
           const int placeholder = i - batch_start;
 
-          requested_rows
-            .append(QSL("SELECT :message_index_%1 AS message_index, :lookup_id_%1 AS lookup_id").arg(placeholder));
+          requested_rows.append(QSL("SELECT CAST(:message_index_%1 AS SIGNED INTEGER) AS message_index, "
+                                    ":lookup_id_%1 AS lookup_id")
+                                  .arg(placeholder));
         }
 
         SqlQuery query(db);
@@ -998,8 +1014,9 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
         for (int i = batch_start; i < batch_end; ++i) {
           const int placeholder = i - batch_start;
 
-          requested_rows
-            .append(QSL("SELECT :message_index_%1 AS message_index, :custom_id_%1 AS custom_id").arg(placeholder));
+          requested_rows.append(QSL("SELECT CAST(:message_index_%1 AS SIGNED INTEGER) AS message_index, "
+                                    ":custom_id_%1 AS custom_id")
+                                  .arg(placeholder));
         }
 
         const QString scope_condition =
@@ -1030,8 +1047,8 @@ UpdatedArticles DatabaseQueries::updateMessages(DatabaseFactory* db_factory,
         for (int i = batch_start; i < batch_end; ++i) {
           const int placeholder = i - batch_start;
 
-          requested_rows.append(QSL("SELECT :message_index_%1 AS message_index, :title_%1 AS title, "
-                                    ":url_%1 AS url, :author_%1 AS author")
+          requested_rows.append(QSL("SELECT CAST(:message_index_%1 AS SIGNED INTEGER) AS message_index, "
+                                    ":title_%1 AS title, :url_%1 AS url, :author_%1 AS author")
                                   .arg(placeholder));
         }
 

@@ -1,3 +1,10 @@
+5.2.5
+-----
+Released on: 2026-08-XX
+
+Fixed:
+* MariaDB no longer creates duplicate articles when feeds return more than ten items. (#2410)
+
 5.2.4
 -----
 Released on: 2026-08-17
