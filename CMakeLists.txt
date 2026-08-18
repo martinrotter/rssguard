@@ -26,7 +26,6 @@
 #   IS_FLATPAK_BUILD - Set to "ON" when building RSS Guard with Flatpak.
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
 #   RUN_GO_MOD_TIDY - Runs "go mod tidy" when bundling Go-based plugins.
-#   ENABLE_TESTS - Enables some model tests.
 #   ENABLE_TESTING - Enables unit tests.
 #   BUILD_XMPP_PLUGIN - Builds XMPP plugin. This only works for Qt 6.
 #   WEB_ARTICLE_VIEWER_WEBENGINE - Use QtWebEngine-based article/web viewer. If set to "OFF"
@@ -128,7 +127,6 @@ option(NO_UPDATE_CHECK "Disable automatic checking for new application updates."
 option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
 option(RUN_GO_MOD_TIDY "Runs 'go mod tidy' when bundling Go-based plugins." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
-option(ENABLE_TESTS "Enable in-code Qt model tests." OFF)
 option(ENABLE_TESTING "Enable unit tests." OFF)
 option(ENABLE_ICU "Enable ICU." OFF)
 option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap feeds. Requires zlib." OFF)
@@ -184,12 +182,8 @@ if(NOT OS2)
   list(APPEND QT_COMPONENTS Multimedia)
 endif()
 
-if(ENABLE_TESTS OR ENABLE_TESTING)
+if(ENABLE_TESTING)
   list(APPEND QT_COMPONENTS Test)
-endif()
-
-if(ENABLE_TESTS)
-  message(STATUS "Enabling in-code Qt model tests.")
 endif()
 
 if(FORCE_COLORED_OUTPUT)
@@ -338,10 +332,6 @@ add_compile_definitions(
 
 if(NO_UPDATE_CHECK)
   add_compile_definitions(NO_UPDATE_CHECK)
-endif()
-
-if(ENABLE_TESTS)
-  add_compile_definitions(ENABLE_TESTS)
 endif()
 
 if(IS_FLATPAK_BUILD)

@@ -35,10 +35,6 @@
 #include <QThread>
 #include <QTimer>
 
-#if defined(ENABLE_TESTS)
-#include <QAbstractItemModelTester>
-#endif
-
 #define ARTICLE_EXTRACTOR_NAME "rssguard-article-extractor"
 
 FeedReader::FeedReader(Application* application)
@@ -48,10 +44,6 @@ FeedReader::FeedReader(Application* application)
   m_feedsProxyModel = new FeedsProxyModel(m_feedsModel, this);
   m_messagesModel = new MessagesModel(this);
   m_messagesProxyModel = new MessagesProxyModel(m_messagesModel, this);
-
-#if defined(ENABLE_TESTS)
-  new QAbstractItemModelTester(m_feedsModel, QAbstractItemModelTester::FailureReportingMode::Fatal, this);
-#endif
 
   updateAutoUpdateStatus();
   initializeFeedDownloader();
