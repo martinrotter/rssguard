@@ -22,6 +22,10 @@ It is the best choice if you want:
 
 The tradeoff is size and complexity. Qt WebEngine packages are larger and include more runtime files.
 
+```{warning}
+On some systems, incompatibilities between Qt WebEngine and the graphics driver can cause rendering problems or crashes when articles are opened. See [Qt WebEngine Graphics Problems](../troubleshooting/webengine.md) for targeted workarounds. The `text` variant is not affected by these Qt WebEngine problems.
+```
+
 ## `text` Viewer
 The `text` variant uses QTextBrowser. It is intentionally simpler and lighter.
 

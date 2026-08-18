@@ -18,6 +18,8 @@ Please include as much of this information as possible:
 * The debug log. This is needed for almost every bug report.
 * A crash dump file, but only when RSS Guard crashes.
 
+If the `web` variant crashes while opening an article or reports graphics errors involving `GBM` or `NativePixmap`, first see [Qt WebEngine Graphics Problems](../troubleshooting/webengine.md). These crashes can originate in Qt WebEngine or the graphics driver, and the page describes targeted workarounds and the additional information useful in a report.
+
 ## Debug Log
 
 If you report a bug, please almost always attach the RSS Guard debug log.
