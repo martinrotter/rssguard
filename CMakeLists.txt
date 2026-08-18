@@ -27,6 +27,7 @@
 #   FORCE_BUNDLE_ICONS - Forcibly bundles icons into executables.
 #   RUN_GO_MOD_TIDY - Runs "go mod tidy" when bundling Go-based plugins.
 #   ENABLE_TESTING - Enables unit tests.
+#   ENABLE_BENCHMARKS - Enables benchmarks.
 #   BUILD_XMPP_PLUGIN - Builds XMPP plugin. This only works for Qt 6.
 #   WEB_ARTICLE_VIEWER_WEBENGINE - Use QtWebEngine-based article/web viewer. If set to "OFF"
 #                                  then very simple QTextBrowser viewer is used.
@@ -128,6 +129,7 @@ option(IS_FLATPAK_BUILD "Set to 'ON' when building RSS Guard with Flatpak." OFF)
 option(RUN_GO_MOD_TIDY "Runs 'go mod tidy' when bundling Go-based plugins." OFF)
 option(FORCE_BUNDLE_ICONS "Forcibly bundle icon themes into RSS Guard." OFF)
 option(ENABLE_TESTING "Enable unit tests." OFF)
+option(ENABLE_BENCHMARKS "Enable benchmarks." OFF)
 option(ENABLE_ICU "Enable ICU." OFF)
 option(ENABLE_COMPRESSED_SITEMAP "Enable support for gzip-compressed sitemap feeds. Requires zlib." OFF)
 option(ENABLE_MEDIAPLAYER_QTMULTIMEDIA "Enable built-in media player. Requires QtMultimedia FFMPEG plugin." OFF)
@@ -182,7 +184,7 @@ if(NOT OS2)
   list(APPEND QT_COMPONENTS Multimedia)
 endif()
 
-if(ENABLE_TESTING)
+if(ENABLE_TESTING OR ENABLE_BENCHMARKS)
   list(APPEND QT_COMPONENTS Test)
 endif()
 
@@ -403,9 +405,8 @@ add_subdirectory(resources/scripts/standalone/article-extractor)
 # GUI executable.
 add_subdirectory(src/rssguard)
 
-# Tests.
-if(ENABLE_TESTING)
-  message(STATUS "Enabling unit tests.")
+# Tests and benchmarks.
+if(ENABLE_TESTING OR ENABLE_BENCHMARKS)
   enable_testing()
   add_subdirectory(tests)
 endif()
