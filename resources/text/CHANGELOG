@@ -1,9 +1,10 @@
 5.2.5
 -----
-Released on: 2026-08-19
+Released on: 2026-08-xx
 
 Fixed:
 * MariaDB no longer creates duplicate articles when feeds return more than ten items. (#2410)
+* Opening a file in an already running RSS Guard instance no longer crashes after closing feed discovery. (#2407)
 * Added a couple of fixes in relation to issue #2408:
     * Made UI texts more consistent when talking about "attachments", also fixed in documentation.
     * Changed UI text for "Open articles URL directly..." feature and added help spoiler and tooltip explaining its function to it.

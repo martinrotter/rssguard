@@ -64,28 +64,32 @@ void CommandLineController::parseOtherInstanceArguments(const QString& message) 
   QStringList arguments = message.split(QSL(ARGUMENTS_LIST_SEPARATOR), SPLIT_BEHAVIOR::SkipEmptyParts);
   QCommandLineParser parser;
 
-  arguments.prepend(m_application->applicationFilePath());
+  arguments.prepend(QCoreApplication::applicationFilePath());
   parser.addOption(QCommandLineOption({QSL(CLI_QUIT_INSTANCE)}));
   parser.addOption(QCommandLineOption({QSL(CLI_IS_RUNNING)}));
+
   fillParser(parser);
 
   if (!parser.parse(arguments)) {
     qCriticalNN << LOGSEC_CORE << parser.errorText();
   }
 
+  const QStringList positional_arguments = parser.positionalArguments();
+
   if (parser.isSet(QSL(CLI_QUIT_INSTANCE))) {
-    m_application->quit();
+    QCoreApplication::quit();
     return;
   }
   else if (parser.isSet(QSL(CLI_IS_RUNNING))) {
-    m_application->showGuiMessage(Notification::Event::GeneralEvent,
-                                  {m_application->tr("Already running"),
-                                   m_application->tr("Application is already running."),
-                                   QSystemTrayIcon::MessageIcon::Information});
+    if (positional_arguments.isEmpty()) {
+      m_application->showGuiMessage(Notification::Event::GeneralEvent,
+                                    {QObject::tr("Already running"),
+                                     QObject::tr("Application is already running."),
+                                     QSystemTrayIcon::MessageIcon::Information});
+    }
+
     m_application->mainForm()->display();
   }
-
-  const QStringList positional_arguments = parser.positionalArguments();
 
   for (const QString& argument : positional_arguments) {
     if (argument.trimmed().size() < 3) {
@@ -108,9 +112,8 @@ void CommandLineController::parseOtherInstanceArguments(const QString& message) 
     else {
       m_application
         ->showGuiMessage(Notification::Event::GeneralEvent,
-                         {m_application->tr("Cannot add feed"),
-                          m_application
-                            ->tr("Feed cannot be added because there is no active account which can add feeds."),
+                         {QObject::tr("Cannot add feed"),
+                          QObject::tr("Feed cannot be added because there is no active account which can add feeds."),
                           QSystemTrayIcon::MessageIcon::Warning});
     }
   }

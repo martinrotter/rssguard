@@ -315,7 +315,11 @@ void Application::performLogging(QtMsgType type, const QMessageLogContext& conte
 }
 
 void Application::reactOnForeignNotifications() {
-  connect(this, &Application::messageReceived, this, &Application::parseCmdArgumentsFromOtherInstance);
+  connect(this,
+          &Application::messageReceived,
+          this,
+          &Application::parseCmdArgumentsFromOtherInstance,
+          Qt::ConnectionType::QueuedConnection);
 }
 
 void Application::hideOrShowMainForm() {
