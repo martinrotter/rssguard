@@ -168,7 +168,7 @@
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="12"/>
       <source>Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts a particular article, it can still be subsequently ignored and not added to the database.</source>
-      <translation type="unfinished">Setting any limitations here will instruct %1 to ignore some incoming articles. The logic runs AFTER any article filters so even if your article filter accepts a particular article, it can still be subsequently ignored and not added to the database.</translation>
+      <translation>Nastavením jakýchkoli omezení zde určíte, že má aplikace %1 ignorovat některé příchozí články. Tato logika se spouští AŽ po filtrech článků, takže i když váš filtr určitý článek přijme, může být následně ignorován a nebude přidán do databáze.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="18"/>
@@ -484,7 +484,7 @@ Počet zakázaných kanálů: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="148"/>
       <source>this database cannot be used because it comes from too old major app version</source>
-      <translation type="unfinished">this database cannot be used because it comes from too old major app version</translation>
+      <translation>tuto databázi nelze použít, protože pochází z příliš staré hlavní verze aplikace</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasedriver.cpp" line="155"/>
@@ -518,12 +518,12 @@ Zkuste v nastavení změnit název používané databáze a akci opakujte. Přep
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="85"/>
       <source>Cannot use database</source>
-      <translation type="unfinished">Cannot use database</translation>
+      <translation>Databázi nelze použít</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="86"/>
       <source>Application cannot start because there is a problem with DB: %1.</source>
-      <translation type="unfinished">Application cannot start because there is a problem with DB: %1.</translation>
+      <translation>Aplikaci nelze spustit kvůli problému s databází: %1.</translation>
     </message>
   </context>
   <context>
@@ -721,12 +721,12 @@ Zkuste v nastavení změnit název používané databáze a akci opakujte. Přep
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="409"/>
       <source>contains no articles</source>
-      <translation type="unfinished">contains no articles</translation>
+      <translation>neobsahuje žádné články</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="412"/>
       <source>article filtering error</source>
-      <translation type="unfinished">article filtering error</translation>
+      <translation>chyba filtrování článků</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="415"/>
@@ -760,12 +760,12 @@ Vlastní ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="48"/>
       <source>Cannot open feed homepage</source>
-      <translation type="unfinished">Cannot open feed homepage</translation>
+      <translation>Nelze otevřít domovskou stránku kanálu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="49"/>
       <source>The feed does not have a valid homepage URL.</source>
-      <translation type="unfinished">The feed does not have a valid homepage URL.</translation>
+      <translation>Kanál nemá platnou adresu URL domovské stránky.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="67"/>
@@ -800,12 +800,12 @@ Vlastní ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="359"/>
       <source>Some feeds are hidden by current search or filtering.</source>
-      <translation type="unfinished">Some feeds are hidden by current search or filtering.</translation>
+      <translation>Některé kanály jsou skryty aktuálním vyhledáváním nebo filtrováním.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedmessageviewer.cpp" line="361"/>
       <source>Some articles are hidden by current search or filtering.</source>
-      <translation type="unfinished">Some articles are hidden by current search or filtering.</translation>
+      <translation>Některé články jsou skryty aktuálním vyhledáváním nebo filtrováním.</translation>
     </message>
   </context>
   <context>
@@ -813,12 +813,12 @@ Vlastní ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="220"/>
       <source>file contains invalid JSON: %1</source>
-      <translation type="unfinished">file contains invalid JSON: %1</translation>
+      <translation>soubor obsahuje neplatný JSON: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="224"/>
       <source>file does not contain a filter list</source>
-      <translation type="unfinished">file does not contain a filter list</translation>
+      <translation>soubor neobsahuje seznam filtrů</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="262"/>
@@ -828,12 +828,12 @@ Vlastní ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="362"/>
       <source>Cannot start database transaction when removing article filter.</source>
-      <translation type="unfinished">Cannot start database transaction when removing article filter.</translation>
+      <translation>Při odstraňování filtru článků nelze zahájit databázovou transakci.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="370"/>
       <source>Cannot commit database transaction when removing article filter.</source>
-      <translation type="unfinished">Cannot commit database transaction when removing article filter.</translation>
+      <translation>Při odstraňování filtru článků nelze potvrdit databázovou transakci.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="556"/>
@@ -868,12 +868,12 @@ Vlastní ID: %5</translation>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="86"/>
       <source>Not fetched on startup</source>
-      <translation type="unfinished">Not fetched on startup</translation>
+      <translation>Při spuštění nebyly kanály načteny</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="87"/>
       <source>Fetching of feeds on app startup was skipped because auto-fetching is paused.</source>
-      <translation type="unfinished">Fetching of feeds on app startup was skipped because auto-fetching is paused.</translation>
+      <translation>Načítání kanálů při spuštění aplikace bylo přeskočeno, protože je automatické načítání pozastaveno.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/feedreader.cpp" line="137"/>
@@ -1026,22 +1026,22 @@ Vlastní ID: %5</translation>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="543"/>
       <source>Cannot parse Feedly collections JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Feedly collections JSON response: %1</translation>
+      <translation>Nelze zpracovat odpověď JSON s kolekcemi služby Feedly: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="548"/>
       <source>Feedly collections response is not a JSON array.</source>
-      <translation type="unfinished">Feedly collections response is not a JSON array.</translation>
+      <translation>Odpověď služby Feedly s kolekcemi není pole JSON.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="687"/>
       <source>Cannot parse Feedly tags JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Feedly tags JSON response: %1</translation>
+      <translation>Nelze zpracovat odpověď JSON se štítky služby Feedly: %1</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="692"/>
       <source>Feedly tags response is not a JSON array.</source>
-      <translation type="unfinished">Feedly tags response is not a JSON array.</translation>
+      <translation>Odpověď služby Feedly se štítky není pole JSON.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/feedlynetwork.cpp" line="746"/>
@@ -1108,7 +1108,7 @@ Vlastní ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="42"/>
       <source>Counts of unread/all articles.</source>
-      <translation type="unfinished">Counts of unread/all articles.</translation>
+      <translation>Počty nepřečtených/všech článků.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="32"/>
@@ -1118,7 +1118,7 @@ Vlastní ID: %5</translation>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="40"/>
       <source>Titles of feeds/folders.</source>
-      <translation type="unfinished">Titles of feeds/folders.</translation>
+      <translation>Názvy kanálů/složek.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/feedsmodel.cpp" line="41"/>
@@ -1254,7 +1254,7 @@ Vlastní ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="265"/>
       <source>Do you really want to purge all non-important articles from selected feeds?</source>
-      <translation type="unfinished">Do you really want to purge all non-important articles from selected feeds?</translation>
+      <translation>Opravdu chcete trvale odstranit všechny nedůležité články z vybraných kanálů?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="474"/>
@@ -1370,67 +1370,67 @@ Vlastní ID: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="510"/>
       <source>feed</source>
-      <translation type="unfinished">feed</translation>
+      <translation>kanál</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="512"/>
       <source>category</source>
-      <translation type="unfinished">category</translation>
+      <translation>kategorie</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="514"/>
       <source>account</source>
-      <translation type="unfinished">account</translation>
+      <translation>účet</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="516"/>
       <source>label</source>
-      <translation type="unfinished">label</translation>
+      <translation>štítek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="518"/>
       <source>probe</source>
-      <translation type="unfinished">probe</translation>
+      <translation>dotaz</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="520"/>
       <source>item</source>
-      <translation type="unfinished">item</translation>
+      <translation>položka</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="564"/>
       <source>&lt;li&gt;&lt;b&gt;Item:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Item:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Položka:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="565"/>
       <source>&lt;li&gt;&lt;b&gt;Type:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Type:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Typ:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="587"/>
       <source>&lt;li&gt;&lt;b&gt;Selected items:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Selected items:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Vybrané položky:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="588"/>
       <source>&lt;li&gt;&lt;b&gt;Types:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Types:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Typy:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="591"/>
       <source>&lt;li&gt;&lt;b&gt;Child feeds:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Child feeds:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Podřízené kanály:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="592"/>
       <source>&lt;li&gt;&lt;b&gt;Child categories:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Child categories:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Podřízené kategorie:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="594"/>
       <source>&lt;p&gt;You are about to completely delete the selected item(s).&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</source>
-      <translation type="unfinished">&lt;p&gt;You are about to completely delete the selected item(s).&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</translation>
+      <translation>&lt;p&gt;Chystáte se zcela odstranit vybrané položky.&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="600"/>
@@ -1509,12 +1509,12 @@ Vlastní ID: %5</translation>
     <message>
       <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="124"/>
       <source>article filter &apos;%1&apos; must return valid FilteringAction value.</source>
-      <translation type="unfinished">article filter &apos;%1&apos; must return valid FilteringAction value.</translation>
+      <translation>filtr článků &apos;%1&apos; musí vrátit platnou hodnotu FilteringAction.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/filteringsystem.cpp" line="234"/>
       <source>Article filter &apos;%1&apos; does not define a callable filterMessage() function.</source>
-      <translation type="unfinished">Article filter &apos;%1&apos; does not define a callable filterMessage() function.</translation>
+      <translation>Filtr článků &apos;%1&apos; nedefinuje volatelnou funkci filterMessage().</translation>
     </message>
   </context>
   <context>
@@ -1560,7 +1560,7 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="126"/>
       <source>&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Variant:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (compiled against %6)</source>
-      <translation type="unfinished">&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Version:&lt;/b&gt; %1 (built on %2/%3)&lt;br/&gt;&lt;b&gt;Revision:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Variant:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (compiled against %6)</translation>
+      <translation>&lt;h4&gt;%7&lt;/h4&gt;&lt;b&gt;Verze:&lt;/b&gt; %1 (sestaveno %2/%3)&lt;br/&gt;&lt;b&gt;Revize:&lt;/b&gt; %4&lt;br/&gt;&lt;b&gt;Varianta:&lt;/b&gt; %9&lt;br/&gt;&lt;b&gt;OS:&lt;/b&gt; %8&lt;br/&gt;&lt;b&gt;Qt:&lt;/b&gt; %5 (zkompilováno s %6)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formabout.cpp" line="145"/>
@@ -1629,7 +1629,7 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="62"/>
       <source>Cannot save account properties</source>
-      <translation type="unfinished">Cannot save account properties</translation>
+      <translation>Nelze uložit vlastnosti účtu</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="63"/>
@@ -1649,17 +1649,17 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="110"/>
       <source>Unsynchronized article changes</source>
-      <translation type="unfinished">Unsynchronized article changes</translation>
+      <translation>Nesynchronizované změny článků</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="111"/>
       <source>This account has local article changes which could not be synchronized.</source>
-      <translation type="unfinished">This account has local article changes which could not be synchronized.</translation>
+      <translation>Tento účet obsahuje místní změny článků, které se nepodařilo synchronizovat.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="112"/>
       <source>If you continue editing the account, these pending local article changes will be discarded.</source>
-      <translation type="unfinished">If you continue editing the account, these pending local article changes will be discarded.</translation>
+      <translation>Pokud budete pokračovat v úpravách účtu, tyto čekající místní změny článků budou zahozeny.</translation>
     </message>
   </context>
   <context>
@@ -1681,12 +1681,12 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="80"/>
       <source>Cannot prepare e-mail</source>
-      <translation type="unfinished">Cannot prepare e-mail</translation>
+      <translation>Nelze připravit e-mail</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="81"/>
       <source>The e-mail cannot be prepared because some required message details could not be downloaded.</source>
-      <translation type="unfinished">The e-mail cannot be prepared because some required message details could not be downloaded.</translation>
+      <translation>E-mail nelze připravit, protože se nepodařilo stáhnout některé požadované údaje o zprávě.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="113"/>
@@ -1832,43 +1832,43 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="293"/>
       <source>Article filter generator</source>
-      <translation type="unfinished">Article filter generator</translation>
+      <translation>Generátor filtrů článků</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="25"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="294"/>
       <source>Match</source>
-      <translation type="unfinished">Match</translation>
+      <translation>Splnit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="295"/>
       <source>all conditions</source>
-      <translation type="unfinished">all conditions</translation>
+      <translation>všechny podmínky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="32"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="296"/>
       <source>at least one condition</source>
-      <translation type="unfinished">at least one condition</translation>
+      <translation>alespoň jednu podmínku</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="42"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="298"/>
       <source>Conditions</source>
-      <translation type="unfinished">Conditions</translation>
+      <translation>Podmínky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="59"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="299"/>
       <source>Add condition</source>
-      <translation type="unfinished">Add condition</translation>
+      <translation>Přidat podmínku</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="68"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="307"/>
       <source>When conditions match</source>
-      <translation type="unfinished">When conditions match</translation>
+      <translation>Při splnění podmínek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="72"/>
@@ -1876,7 +1876,7 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="300"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="308"/>
       <source>Actions</source>
-      <translation type="unfinished">Actions</translation>
+      <translation>Akce</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="88"/>
@@ -1884,7 +1884,7 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="301"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="309"/>
       <source>Add action</source>
-      <translation type="unfinished">Add action</translation>
+      <translation>Přidat akci</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="94"/>
@@ -1900,7 +1900,7 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="303"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="311"/>
       <source>Accept - keep article</source>
-      <translation type="unfinished">Accept - keep article</translation>
+      <translation>Přijmout – zachovat článek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="98"/>
@@ -1908,7 +1908,7 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="304"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="312"/>
       <source>Ignore - do not import or update article</source>
-      <translation type="unfinished">Ignore - do not import or update article</translation>
+      <translation>Ignorovat – článek neimportovat ani neaktualizovat</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="99"/>
@@ -1916,30 +1916,30 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="305"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="313"/>
       <source>Purge - delete stored or discard new article</source>
-      <translation type="unfinished">Purge - delete stored or discard new article</translation>
+      <translation>Odstranit – uložený článek smazat, nový zahodit</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="108"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="318"/>
       <source>When conditions do not match</source>
-      <translation type="unfinished">When conditions do not match</translation>
+      <translation>Při nesplnění podmínek</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="137"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="316"/>
       <source>Result used when the article does not match the conditions</source>
-      <translation type="unfinished">Result used when the article does not match the conditions</translation>
+      <translation>Výsledek použitý, když článek nesplňuje podmínky</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="152"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="319"/>
       <source>Generated script</source>
-      <translation type="unfinished">Generated script</translation>
+      <translation>Vygenerovaný skript</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="93"/>
       <source>Case sensitive</source>
-      <translation type="unfinished">Case sensitive</translation>
+      <translation>Rozlišovat velká a malá písmena</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="105"/>
@@ -1956,49 +1956,49 @@ Složka ikon -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="108"/>
       <source>Remove condition</source>
-      <translation type="unfinished">Remove condition</translation>
+      <translation>Odebrat podmínku</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="167"/>
       <source>Enter a non-negative age in days for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a non-negative age in days for &apos;%1&apos;.</translation>
+      <translation>Pro &apos;%1&apos; zadejte nezáporné stáří ve dnech.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="187"/>
       <source>Enter a valid number for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a valid number for &apos;%1&apos;.</translation>
+      <translation>Pro &apos;%1&apos; zadejte platné číslo.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="222"/>
       <source>Enter text to match for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter text to match for &apos;%1&apos;.</translation>
+      <translation>Pro &apos;%1&apos; zadejte text, který se má hledat.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="236"/>
       <source>The regular expression for &apos;%1&apos; is invalid: %2</source>
-      <translation type="unfinished">The regular expression for &apos;%1&apos; is invalid: %2</translation>
+      <translation>Regulární výraz pro &apos;%1&apos; je neplatný: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="283"/>
       <source>contains</source>
-      <translation type="unfinished">contains</translation>
+      <translation>obsahuje</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="284"/>
       <source>does not contain</source>
-      <translation type="unfinished">does not contain</translation>
+      <translation>neobsahuje</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="285"/>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="297"/>
       <source>equals</source>
-      <translation type="unfinished">equals</translation>
+      <translation>rovná se</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="286"/>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="298"/>
       <source>does not equal</source>
-      <translation type="unfinished">does not equal</translation>
+      <translation>nerovná se</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="287"/>
