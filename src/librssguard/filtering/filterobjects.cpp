@@ -518,7 +518,7 @@ FilterMessage* FilterMessage::wrapDatabaseMessage(const Message& message) const 
   return wrapper;
 }
 
-FilterMessage* FilterMessage::getArticleFromDatabaseWinkler(DuplicityCheck criteria, double threshold) const {
+QObject* FilterMessage::getArticleFromDatabaseWinkler(DuplicityCheck criteria, double threshold) const {
   const int duplicate_id = winklerDuplicateId(criteria, threshold);
 
   if (duplicate_id <= 0) {
@@ -530,7 +530,7 @@ FilterMessage* FilterMessage::getArticleFromDatabaseWinkler(DuplicityCheck crite
   return message.has_value() ? wrapDatabaseMessage(message.value()) : nullptr;
 }
 
-FilterMessage* FilterMessage::getArticleFromDatabase(DuplicityCheck criteria) const {
+QObject* FilterMessage::getArticleFromDatabase(DuplicityCheck criteria) const {
   DuplicateBindValues bind_values;
   const auto message = databaseMessage(duplicateWhereClause(criteria, bind_values), bind_values);
 

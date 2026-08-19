@@ -107,8 +107,8 @@ class FilterMessage : public FilterMechanism {
     Q_INVOKABLE bool isAlreadyInDatabaseWinkler(DuplicityCheck criteria, double threshold = 0.1) const;
     Q_INVOKABLE bool isAlreadyInDatabase(DuplicityCheck criteria) const;
 
-    Q_INVOKABLE FilterMessage* getArticleFromDatabaseWinkler(DuplicityCheck criteria, double threshold = 0.1) const;
-    Q_INVOKABLE FilterMessage* getArticleFromDatabase(DuplicityCheck criteria) const;
+    Q_INVOKABLE QObject* getArticleFromDatabaseWinkler(DuplicityCheck criteria, double threshold = 0.1) const;
+    Q_INVOKABLE QObject* getArticleFromDatabase(DuplicityCheck criteria) const;
 
     Q_INVOKABLE bool fetchFullContents(bool plain_text_only);
 
