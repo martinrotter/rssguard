@@ -50,7 +50,7 @@ $ProgressPreference = 'SilentlyContinue'
 # Get and prepare needed dependencies.
 if ($use_qt5 -eq "ON") {
   $qt_version_base = "5.15"
-  $qt_version = "5.15.18"
+  $qt_version = "5.15.19"
 
   $use_icu = "OFF"
   $use_libmpv = "OFF"

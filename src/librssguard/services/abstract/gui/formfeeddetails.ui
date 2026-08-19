@@ -84,11 +84,14 @@
          <item>
           <widget class="QCheckBox" name="m_cbOpenArticlesAutomatically">
            <property name="text">
-            <string>Open articles via their URL automatically</string>
+            <string>Open source webpage instead of RSS Guard article preview</string>
            </property>
           </widget>
          </item>
         </layout>
+       </item>
+       <item>
+        <widget class="HelpSpoiler" name="m_helpOpenArticlesDirectly" native="true"/>
        </item>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -206,6 +209,12 @@
    <class>ArticleAmountControl</class>
    <extends>QWidget</extends>
    <header>articleamountcontrol.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>HelpSpoiler</class>
+   <extends>QWidget</extends>
+   <header>helpspoiler.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

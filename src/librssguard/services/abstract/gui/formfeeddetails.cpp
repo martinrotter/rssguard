@@ -206,6 +206,16 @@ void FormFeedDetails::acceptIfPossible() {
 void FormFeedDetails::initialize() {
   m_ui->setupUi(this);
 
+  m_ui->m_helpOpenArticlesDirectly
+    ->setHelpText(tr("About source webpages"),
+                  tr("When enabled, selecting an article loads its source webpage in RSS Guard instead of the "
+                     "article contents supplied by the feed. The webpage can contain different text, images, media, "
+                     "or formatting.\n\n"
+                     "Attachments supplied by the feed are separate from the webpage and might not appear in it. "
+                     "Playable attachments remain available from the media player button's menu when media player "
+                     "support is enabled."),
+                  false);
+
   m_ui->m_tabWidget->removeTab(m_ui->m_tabWidget->indexOf(m_ui->m_tpCommon));
   insertScrollableCustomTab(m_ui->m_tpCommon, tr("Common"));
 

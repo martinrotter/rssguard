@@ -151,7 +151,7 @@ Here is the complete reference documentation of the functions and properties ava
 | `contents`         | `String`                  | No        | No           | Contents of the message. |
 | `rawContents`      | `String`                  | No        | No           | Raw contents obtained from the remote service or feed. This is usually raw XML or JSON. It is normally useful only for newly fetched articles, not when testing existing ones from the dialog. |
 | `score`            | `Number`                  | No        | No           | Arbitrary number in the range \<0.0, 100.0\>. Useful for custom ranking and sorting. |
-| `hasEnclosures`    | `Boolean`                 | Yes       | No           | Returns `true` if the article has at least one enclosure or attachment. |
+| `hasEnclosures`    | `Boolean`                 | Yes       | No           | Returns `true` if the article has at least one attachment (enclosure). |
 | `created`          | `Date`                    | No        | No           | Date and time of the message. |
 | `retrieved`        | `Date`                    | No        | No           | Date and time when RSS Guard received this version of the message. |
 | `createdIsMadeup`  | `Boolean`                 | No        | No           | Is `true` if the message timestamp was synthesized instead of taken from the source feed. |
@@ -164,8 +164,8 @@ Here is the complete reference documentation of the functions and properties ava
 | Name(Parameters)                                                              | Return value | Description |
 | :---                                                                          | :---         | :--- |
 | `addEnclosure(String url, String mime_type)`                                  | `void`       | Adds a multimedia attachment to the article. |
-| `removeEnclosure(int index)`                                                  | `Boolean`    | Removes one enclosure from the article according to the index, starting from zero. |
-| `removeAllEnclosures()`                                                       | `void`       | Removes all enclosures from the article. |
+| `removeEnclosure(int index)`                                                  | `Boolean`    | Removes one attachment from the article according to the index, starting from zero. |
+| `removeAllEnclosures()`                                                       | `void`       | Removes all attachments from the article. |
 | `fetchFullContents(Boolean plain_text_only)`                                  | `Boolean`    | Fetches fuller article contents for the article, in plain text or HTML form by using the [article extractor](extractor). [^1] |
 | `isAlreadyInDatabase(DuplicityCheck criteria)`                                | `Boolean`    | Checks if a matching message is already stored in the database. |
 | `isAlreadyInDatabaseWinkler(DuplicityCheck criteria, Number threshold = 0.1)` | `Boolean`    | Checks if a similar message is already stored in the database by using Jaro-Winkler similarity. |
@@ -284,12 +284,14 @@ External processes launched through `fs` use the RSS Guard user-data folder as t
 
 #### `MessageEnclosure`
 
+Represents an article attachment (called an enclosure in feed formats and the filtering API).
+
 ##### Properties
 
 | Name       | Type     | Read-only | Description |
 | :---       | :---     | :---:     | :--- |
-| `url`      | `String` | No        | URL of the message enclosure. |
-| `mimeType` | `String` | No        | MIME type of the message enclosure. |
+| `url`      | `String` | No        | URL of the article attachment. |
+| `mimeType` | `String` | No        | MIME type of the article attachment. |
 
 #### `MessageCategory`
 
@@ -503,7 +505,7 @@ function filterMessage() {
 
 ```js
 /*
- * Turn the first enclosure into the main article URL.
+ * Turn the first attachment into the main article URL.
  */
 function filterMessage() {
   if (msg.enclosures.length > 0) {

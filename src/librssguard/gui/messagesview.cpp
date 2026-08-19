@@ -677,8 +677,38 @@ void MessagesView::initializeContextMenu() {
                              qApp->mainForm()->m_ui->m_actionGoToMotherFeed,
                              qApp->mainForm()->m_ui->m_actionOpenHomepageOfSelectedArticleFeed,
                              qApp->mainForm()->m_ui->m_actionEditFeedOfSelectedArticle,
-                             qApp->mainForm()->m_ui->m_actionPlaySelectedArticlesInMediaPlayer,
-                             qApp->mainForm()->m_ui->m_actionCopyDataOfSelectedArticles,
+                             qApp->mainForm()->m_ui->m_actionPlaySelectedArticlesInMediaPlayer});
+
+#if defined(ENABLE_MEDIAPLAYER)
+  if (selected_messages.size() == 1 && !selected_messages.constFirst().m_enclosures.isEmpty()) {
+    QMenu* menu_attachments = new QMenu(tr("Play attachment"), m_contextMenu);
+
+    menu_attachments->setIcon(qApp->icons()->fromTheme(QSL("mail-attachment")));
+
+    for (const QSharedPointer<MessageEnclosure>& enclosure : selected_messages.constFirst().m_enclosures) {
+      if (enclosure.isNull() || enclosure->url().isEmpty()) {
+        continue;
+      }
+
+      QAction* action =
+        menu_attachments->addAction(enclosure->displayName(menu_attachments->actions().size() + 1));
+
+      action->setData(enclosure->url());
+      action->setIcon(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")));
+      action->setToolTip(enclosure->url());
+
+      connect(action, &QAction::triggered, this, [this, action]() {
+        emit playLinkInMediaPlayer(action->data().toString());
+      });
+    }
+
+    if (!menu_attachments->isEmpty()) {
+      m_contextMenu->addMenu(menu_attachments);
+    }
+  }
+#endif
+
+  m_contextMenu->addActions({qApp->mainForm()->m_ui->m_actionCopyDataOfSelectedArticles,
                              qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead,
                              qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread,
                              qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages,

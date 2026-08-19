@@ -33,6 +33,8 @@ class RSSGUARD_DLLSPEC MessageEnclosure : public QObject {
     QString mimeType() const;
     void setMimeType(const QString& mime);
 
+    QString displayName(int fallback_number) const;
+
   private:
     QString m_url;
     QString m_mimeType;

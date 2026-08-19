@@ -53,7 +53,7 @@ The plugin synchronizes:
 * TT-RSS starred state as RSS Guard importance
 * TT-RSS labels and their article assignments
 * Published state
-* article contents and enclosures supplied by TT-RSS
+* article contents and attachments supplied by TT-RSS
 
 Changes to read state, importance, labels and Published state are cached locally and uploaded during synchronization.
 

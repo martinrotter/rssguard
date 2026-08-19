@@ -16,10 +16,12 @@
 
 #include <QJsonObject>
 #include <QKeyEvent>
+#include <QMenu>
 #include <QProgressBar>
 #include <QScrollBar>
 #include <QTimer>
 #include <QToolBar>
+#include <QToolButton>
 #include <QToolTip>
 #include <QWidgetAction>
 
@@ -36,7 +38,7 @@ WebBrowser::WebBrowser(WebViewer* viewer, QWidget* parent)
 #if defined(ENABLE_MEDIAPLAYER)
     ,
     m_actionPlayPageInMediaPlayer(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
-                                              tr("Play in media player"),
+                                              tr("Play current URL in media player"),
                                               this))
 #endif
 {
@@ -157,6 +159,38 @@ void WebBrowser::scrollDown() {
   setVerticalScrollBarPosition(verticalScrollBarPosition() + WEB_BROWSER_SCROLL_STEP);
 }
 
+void WebBrowser::setMediaEnclosures(const QList<QSharedPointer<MessageEnclosure>>& enclosures) {
+#if defined(ENABLE_MEDIAPLAYER)
+  m_menuPlayEnclosures->clear();
+
+  for (const QSharedPointer<MessageEnclosure>& enclosure : enclosures) {
+    if (enclosure.isNull() || enclosure->url().isEmpty()) {
+      continue;
+    }
+
+    QAction* action =
+      m_menuPlayEnclosures->addAction(enclosure->displayName(m_menuPlayEnclosures->actions().size() + 1));
+
+    action->setData(enclosure->url());
+    action->setIcon(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")));
+    action->setToolTip(enclosure->url());
+
+    connect(action, &QAction::triggered, this, [action]() {
+      qApp->mainForm()->tabWidget()->addMediaPlayer(action->data().toString(), true);
+    });
+  }
+
+  const bool has_enclosures = !m_menuPlayEnclosures->isEmpty();
+
+  m_btnPlayPageInMediaPlayer->setMenu(has_enclosures ? m_menuPlayEnclosures : nullptr);
+  m_btnPlayPageInMediaPlayer->setPopupMode(has_enclosures ? QToolButton::ToolButtonPopupMode::MenuButtonPopup
+                                                          : QToolButton::ToolButtonPopupMode::DelayedPopup);
+  updateMediaPlayerButton();
+#else
+  Q_UNUSED(enclosures)
+#endif
+}
+
 void WebBrowser::cleanupCache() {
   m_webView->cleanupCache();
 }
@@ -191,9 +225,15 @@ void WebBrowser::onZoomFactorChanged() {
 void WebBrowser::playCurrentSiteInMediaPlayer() {
   qApp->mainForm()->tabWidget()->addMediaPlayer(m_webView->url().toString(), true);
 }
+
+void WebBrowser::updateMediaPlayerButton() {
+  m_btnPlayPageInMediaPlayer->setEnabled(m_actionPlayPageInMediaPlayer->isEnabled() ||
+                                         !m_menuPlayEnclosures->isEmpty());
+}
 #endif
 
 void WebBrowser::clear(bool also_hide) {
+  setMediaEnclosures({});
   m_webView->clear();
 
   if (also_hide) {
@@ -224,6 +264,7 @@ void WebBrowser::loadMessage(const Message& message, RootItem* root, Feed* feed)
   reloadZoomFactor();
 
   m_searchWidget->hide();
+  setMediaEnclosures(message.m_enclosures);
   m_webView->loadMessage(message, root, feed);
 }
 
@@ -347,7 +388,11 @@ void WebBrowser::initializeLayout() {
 
 #if defined(ENABLE_MEDIAPLAYER)
   m_actionPlayPageInMediaPlayer->setEnabled(false);
-  m_toolBar->addAction(m_actionPlayPageInMediaPlayer);
+  m_menuPlayEnclosures = new QMenu(this);
+  m_btnPlayPageInMediaPlayer = new QToolButton(m_toolBar);
+  m_btnPlayPageInMediaPlayer->setDefaultAction(m_actionPlayPageInMediaPlayer);
+  m_btnPlayPageInMediaPlayer->setPopupMode(QToolButton::ToolButtonPopupMode::DelayedPopup);
+  m_toolBar->addWidget(m_btnPlayPageInMediaPlayer);
 #endif
 
   m_toolBar->addAction(m_actionGoBack);
@@ -385,6 +430,7 @@ void WebBrowser::onLoadingStarted() {
 
 #if defined(ENABLE_MEDIAPLAYER)
   m_actionPlayPageInMediaPlayer->setEnabled(false);
+  updateMediaPlayerButton();
 #endif
 }
 
@@ -402,6 +448,7 @@ void WebBrowser::onLoadingFinished(bool success) {
 
 #if defined(ENABLE_MEDIAPLAYER)
       m_actionPlayPageInMediaPlayer->setEnabled(true);
+      updateMediaPlayerButton();
 #endif
     }
     else {
@@ -409,6 +456,7 @@ void WebBrowser::onLoadingFinished(bool success) {
 
 #if defined(ENABLE_MEDIAPLAYER)
       m_actionPlayPageInMediaPlayer->setEnabled(false);
+      updateMediaPlayerButton();
 #endif
     }
 

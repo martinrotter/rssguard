@@ -59,7 +59,7 @@ The plugin synchronizes:
 * Nextcloud News folders
 * read and unread state
 * Nextcloud News starred state as RSS Guard importance
-* article contents and enclosures supplied by News
+* article contents and attachments supplied by News
 
 Read and starred changes made in RSS Guard are cached locally and sent back to Nextcloud during synchronization.
 

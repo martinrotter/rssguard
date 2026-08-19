@@ -33,8 +33,8 @@ A selectable skin needs a `metadata.xml` file. It can then provide one or more o
 * `html_wrapper.html` - outer HTML wrapper for article pages
 * `html_style.css` - CSS injected into the article wrapper
 * `html_single_message.html` - template for the main article body
-* `html_enclosure_every.html` - template for generic enclosures
-* `html_enclosure_image.html` - template for image enclosures
+* `html_enclosure_every.html` - template for generic attachments (enclosures)
+* `html_enclosure_image.html` - template for image attachments (enclosures)
 
 Not every skin has to provide every file directly.
 
@@ -88,8 +88,8 @@ RSS Guard combines the article templates and CSS to build the final HTML shown i
 * article header layout
 * author, date, and feed placement
 * link styling
-* enclosure rendering
-* image enclosure presentation
+* attachment rendering
+* image attachment presentation
 * left-to-right versus right-to-left layout markers
 
 That makes skins useful not only for the surrounding application UI, but also for the readability of articles themselves.
@@ -104,7 +104,7 @@ For example, article templates can receive values such as:
 * article URL
 * article contents
 * article date
-* enclosure markup
+* attachment markup
 
 The wrapper HTML also uses a `%style%` placeholder for injected article CSS.
 

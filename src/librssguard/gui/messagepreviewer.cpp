@@ -183,6 +183,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root, Feed*
       if (article_feed != nullptr && article_feed->openArticlesDirectly() && !message.m_url.isEmpty()) {
         ensureDefaultBrowserVisible();
 
+        m_msgBrowser->setMediaEnclosures(message.m_enclosures);
         m_msgBrowser->setVerticalScrollBarPosition(0.0);
         m_msgBrowser->loadUrl(message.m_url);
         return;

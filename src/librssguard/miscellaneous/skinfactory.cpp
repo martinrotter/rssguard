@@ -314,11 +314,15 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
   QString enclosure_images;
 
   if (root == nullptr || root->account()->displaysEnclosures()) {
+    int i = 1;
+
     for (const QSharedPointer<MessageEnclosure>& enclosure : message.m_enclosures) {
       QString enc_url = QUrl(enclosure->url()).toString();
+      QString enc_name = enclosure->displayName(i);
 
       enclosures += QString(skin.m_enclosureMarkup)
                       .replace(QSL("%enclosure_url%"), enc_url)
+                      .replace(QSL("%enclosure_name%"), enc_name)
                       .replace(QSL("%enclosure_mime%"), enclosure->mimeType());
 
       if (display_enclosures && enclosure->mimeType().startsWith(QSL("image/"))) {
@@ -332,6 +336,8 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
                               .replace(QSL("%enclosure_mime%"), enclosure->mimeType())
                               .replace(QSL("%image_max_height%"), image_max_height);
       }
+
+      i++;
     }
   }
 

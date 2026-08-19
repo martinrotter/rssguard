@@ -599,7 +599,7 @@ void WebViewer::initializeCommonMenuItems() {
   m_actionOpenExternalBrowser.reset(new QAction(qApp->icons()->fromTheme(QSL("document-open")),
                                                 QObject::tr("Open in external browser")));
   m_actionPlayLink.reset(new QAction(qApp->icons()->fromTheme(QSL("player_play"), QSL("media-playback-start")),
-                                     QObject::tr("Play in media player")));
+                                     QObject::tr("Play link in media player")));
   m_actionCopyText.reset(new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), QObject::tr("Copy text")));
   m_actionCopyLink.reset(new QAction(qApp->icons()->fromTheme(QSL("edit-copy")), QObject::tr("Copy link")));
   m_actionDownloadLink.reset(new QAction(qApp->icons()->fromTheme(QSL("download")), QObject::tr("Download")));

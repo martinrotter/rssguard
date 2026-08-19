@@ -127,7 +127,7 @@ The standard plugin supports:
 * per-feed update intervals
 * conditional HTTP requests using server metadata
 * custom icons, titles and descriptions
-* podcasts and enclosures
+* podcasts and attachments (enclosures)
 * article filters, labels and queries
 * local files, scripts and post-processing
 * full-article extraction
