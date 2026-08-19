@@ -47,6 +47,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void scrollDown();
 
     void setMediaEnclosures(const QList<QSharedPointer<MessageEnclosure>>& enclosures);
+    void loadArticleUrl(const QUrl& url);
 
   public slots:
     void cleanupCache();
@@ -96,6 +97,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     void bindWebView();
     void initializeLayout();
     void createConnections();
+    void prepareArticleLoad();
 
   private:
     QVBoxLayout* m_layout;
@@ -111,6 +113,7 @@ class RSSGUARD_DLLSPEC WebBrowser : public TabContent {
     QAction* m_actionGoForward;
     BaseLineEdit* m_txtLocation;
     QAction* m_actionTxtLocation;
+    bool m_clearNavigationHistoryAfterLoad{};
 
 #if defined(ENABLE_MEDIAPLAYER)
     QAction* m_actionPlayPageInMediaPlayer;

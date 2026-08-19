@@ -166,6 +166,8 @@ void TextBrowserViewer::reloadNetworkSettings() {}
 void TextBrowserViewer::bindToBrowser(WebBrowser* browser) {
   m_browser = browser;
 
+  // NOTE: Undo/redo actions are not forwarded because this viewer does not enable navigation anyway.
+
   installEventFilter(browser);
 }
 
@@ -299,6 +301,10 @@ void TextBrowserViewer::goBack() {
 
 void TextBrowserViewer::goForward() {
   QTextBrowser::forward();
+}
+
+void TextBrowserViewer::clearNavigationHistory() {
+  QTextBrowser::clearHistory();
 }
 
 bool TextBrowserViewer::supportImagesLoading() const {

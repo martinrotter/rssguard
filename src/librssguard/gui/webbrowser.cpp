@@ -125,6 +125,13 @@ void WebBrowser::loadUrl(const QUrl& url) {
   }
 }
 
+void WebBrowser::loadArticleUrl(const QUrl& url) {
+  if (url.isValid()) {
+    prepareArticleLoad();
+    m_webView->loadUrl(url);
+  }
+}
+
 void WebBrowser::reloadPage() {
   if (m_webView->url().isValid()) {
     m_webView->reloadPage();
@@ -265,7 +272,12 @@ void WebBrowser::loadMessage(const Message& message, RootItem* root, Feed* feed)
 
   m_searchWidget->hide();
   setMediaEnclosures(message.m_enclosures);
+  prepareArticleLoad();
   m_webView->loadMessage(message, root, feed);
+}
+
+void WebBrowser::prepareArticleLoad() {
+  m_clearNavigationHistoryAfterLoad = true;
 }
 
 bool WebBrowser::eventFilter(QObject* watched, QEvent* event) {
@@ -440,6 +452,11 @@ void WebBrowser::onLoadingProgress(int progress) {
 }
 
 void WebBrowser::onLoadingFinished(bool success) {
+  if (m_clearNavigationHistoryAfterLoad) {
+    m_webView->clearNavigationHistory();
+    m_clearNavigationHistoryAfterLoad = false;
+  }
+
   if (success) {
     auto url = m_webView->url();
 

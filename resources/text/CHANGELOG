@@ -4,6 +4,10 @@ Released on: 2026-08-XX
 
 Fixed:
 * MariaDB no longer creates duplicate articles when feeds return more than ten items. (#2410)
+* Added a couple of fixes in relation to issue #2408:
+    * Made UI texts more consistent when talking about "attachments", also fixed in documentation.
+    * Changed UI text for "Open articles URL directly..." feature and added help spoiler and tooltip explaining its function to it.
+    * "Play in media player" feature is now expanded and it offers dropdown submenu where user can "play" article attachments. Same behavior was expanded in article list context menu.
 
 5.2.4
 -----

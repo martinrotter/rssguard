@@ -185,7 +185,7 @@ void MessagePreviewer::loadMessage(const Message& message, RootItem* root, Feed*
 
         m_msgBrowser->setMediaEnclosures(message.m_enclosures);
         m_msgBrowser->setVerticalScrollBarPosition(0.0);
-        m_msgBrowser->loadUrl(message.m_url);
+        m_msgBrowser->loadArticleUrl(message.m_url);
         return;
       }
 

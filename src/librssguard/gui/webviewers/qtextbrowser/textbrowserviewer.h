@@ -101,6 +101,7 @@ class RSSGUARD_DLLSPEC TextBrowserViewer : public QTextBrowser, public WebViewer
     virtual QString imageCssMaxHeight(int height) const;
     virtual void goBack();
     virtual void goForward();
+    virtual void clearNavigationHistory();
     virtual bool supportImagesLoading() const;
     virtual bool supportsNavigation() const;
     virtual void setLoadExternalResources(bool load_resources);

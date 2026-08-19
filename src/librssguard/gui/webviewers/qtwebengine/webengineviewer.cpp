@@ -25,6 +25,7 @@
 #include <QWebEngineContextMenuData>
 #endif
 
+#include <QWebEngineHistory>
 #include <QWebEngineProfile>
 #include <QWebEngineSettings>
 
@@ -130,6 +131,10 @@ void WebEngineViewer::goBack() {
 
 void WebEngineViewer::goForward() {
   QWebEngineView::forward();
+}
+
+void WebEngineViewer::clearNavigationHistory() {
+  history()->clear();
 }
 
 void WebEngineViewer::cleanupCache() {

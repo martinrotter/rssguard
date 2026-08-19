@@ -86,6 +86,7 @@ class RSSGUARD_DLLSPEC WebEngineViewer : public QWebEngineView, public WebViewer
     virtual void reloadPage();
     virtual void goBack();
     virtual void goForward();
+    virtual void clearNavigationHistory();
 
     virtual void cleanupCache();
 
