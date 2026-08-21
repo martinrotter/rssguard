@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<artifact-configuration xmlns="http://signpath.io/artifact-configuration/v1">
+  <zip-file>
+    <pe-file-set>
+      <include path="rssguard.exe" />
+      <include path="rssguard.dll" />
+      <include path="rssguard-article-extractor" />
+      <include path="plugins/rssguard-feedly.dll" />
+      <include path="plugins/rssguard-gmail.dll" />
+      <include path="plugins/rssguard-greader.dll" />
+      <include path="plugins/rssguard-nextcloud.dll" />
+      <include path="plugins/rssguard-standard.dll" />
+      <include path="plugins/rssguard-ttrss.dll" />
+      <include path="plugins/rssguard-xmpp.dll" min-matches="0" />
+      <for-each>
+        <authenticode-sign />
+      </for-each>
+    </pe-file-set>
+  </zip-file>
+</artifact-configuration>

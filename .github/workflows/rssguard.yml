@@ -9,6 +9,12 @@ on:
 env:
   ACTIONS_RUNNER_DEBUG: true
   ACTIONS_STEP_DEBUG: true
+  # Sign development builds in addition to tagged releases.
+  SIGN_DEVELOPMENT_BUILDS: "true"
+  SIGNPATH_ORGANIZATION_ID: ab8dccde-cd2b-47ec-aa78-53599d04a2f4
+  SIGNPATH_PROJECT_SLUG: rssguard
+  SIGNPATH_SIGNING_POLICY_SLUG: test-signing
+  SIGNPATH_ARTIFACT_CONFIGURATION_SLUG: initial
 
 jobs:
   check-build-script:
@@ -86,6 +92,9 @@ jobs:
     name: "${{ matrix.os }}; qt5 = ${{ matrix.use_qt5 }}; webengine_viewer = ${{ matrix.webengine_viewer }}"
     runs-on: "${{ matrix.os }}"
     container: ${{ matrix.cont }}
+    permissions:
+      actions: read
+      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -130,6 +139,63 @@ jobs:
           FEEDLY_CLIENT_ID: ${{ secrets.FEEDLY_CLIENT_ID }}
           FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload unsigned Windows binaries
+        if: >-
+          matrix.os == 'windows-2022' &&
+          github.repository == 'martinrotter/rssguard' &&
+          (env.SIGN_DEVELOPMENT_BUILDS == 'true' || startsWith(github.ref, 'refs/tags/'))
+        id: upload-unsigned-windows-binaries
+        uses: actions/upload-artifact@v7
+        with:
+          name: SignPath-input-Qt${{ matrix.use_qt5 == 'ON' && '5' || '6' }}-${{ matrix.webengine_viewer == 'ON' && 'Web' || 'Text' }}
+          if-no-files-found: error
+          retention-days: 1
+          path: |
+            ./rssguard-build/app/rssguard.exe
+            ./rssguard-build/app/rssguard.dll
+            ./rssguard-build/app/rssguard-article-extractor
+            ./rssguard-build/app/plugins/rssguard-*.dll
+
+      - name: Sign Windows binaries
+        if: >-
+          matrix.os == 'windows-2022' &&
+          github.repository == 'martinrotter/rssguard' &&
+          (env.SIGN_DEVELOPMENT_BUILDS == 'true' || startsWith(github.ref, 'refs/tags/'))
+        uses: signpath/github-action-submit-signing-request@v2
+        with:
+          api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
+          organization-id: '${{ env.SIGNPATH_ORGANIZATION_ID }}'
+          project-slug: '${{ env.SIGNPATH_PROJECT_SLUG }}'
+          signing-policy-slug: '${{ env.SIGNPATH_SIGNING_POLICY_SLUG }}'
+          artifact-configuration-slug: '${{ env.SIGNPATH_ARTIFACT_CONFIGURATION_SLUG }}'
+          github-artifact-id: '${{ steps.upload-unsigned-windows-binaries.outputs.artifact-id }}'
+          wait-for-completion: true
+          output-artifact-directory: './rssguard-build/app'
+
+      - name: Verify signed Windows binaries
+        if: >-
+          matrix.os == 'windows-2022' &&
+          github.repository == 'martinrotter/rssguard' &&
+          (env.SIGN_DEVELOPMENT_BUILDS == 'true' || startsWith(github.ref, 'refs/tags/'))
+        shell: pwsh
+        run: |
+          $files = @(
+            Get-Item -LiteralPath "./rssguard-build/app/rssguard.exe"
+            Get-Item -LiteralPath "./rssguard-build/app/rssguard.dll"
+            Get-Item -LiteralPath "./rssguard-build/app/rssguard-article-extractor"
+            Get-ChildItem -Path "./rssguard-build/app/plugins" -Filter "rssguard-*.dll" -File
+          )
+
+          foreach ($file in $files) {
+            $signature = Get-AuthenticodeSignature -LiteralPath $file.FullName
+
+            if ($null -eq $signature.SignerCertificate -or $signature.Status -eq "NotSigned" -or $signature.Status -eq "HashMismatch") {
+              throw "Invalid or missing Authenticode signature for '$($file.FullName)': $($signature.StatusMessage)"
+            }
+
+            Write-Host "Verified Authenticode signature for '$($file.Name)' with status '$($signature.Status)'."
+          }
 
       - name: Package Windows application
         if: matrix.os == 'windows-2022'
@@ -202,10 +268,17 @@ jobs:
       contents: write
 
     steps:
-      - name: Download binaries and source tarball
+      - name: Download binaries
         uses: actions/download-artifact@v8
         with:
+          pattern: RSS_Guard-*
           path: artifacts
+
+      - name: Download source tarball
+        uses: actions/download-artifact@v8
+        with:
+          name: source-tarball
+          path: artifacts/source-tarball
 
       - name: Release development binaries
         if: ${{ !startsWith(github.ref, 'refs/tags/') }}
