@@ -131,6 +131,10 @@ jobs:
           FEEDLY_CLIENT_SECRET: ${{ secrets.FEEDLY_CLIENT_SECRET }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Package Windows application
+        if: matrix.os == 'windows-2022'
+        run: .\resources\scripts\github-actions\package-windows.ps1 "${{ matrix.os }}" "${{ matrix.use_qt5 }}" "${{ matrix.webengine_viewer }}"
+
       - name: Run unit tests
         if: matrix.os == 'ubuntu-24.04'
         run: ctest --test-dir ./rssguard-build --label-exclude benchmark --output-on-failure --no-tests=error

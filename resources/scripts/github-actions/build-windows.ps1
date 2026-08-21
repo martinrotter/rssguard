@@ -8,15 +8,11 @@ $webengine_viewer = $args[2]
 echo "We are building for MS Windows."
 echo "OS: $os; Qt5: $use_qt5; WebEngine: $webengine_viewer"
 
-$git_revlist = git rev-list --tags --max-count=1
-$git_tag = git describe --tags $git_revlist
-$git_revision = git rev-parse --short HEAD
 $old_pwd = $pwd.Path
 $is_devbuild = $env:GITHUB_REF -notmatch '^refs/tags/[0-9]'
 $devbuild_opt = if ($is_devbuild) { "ON" } else { "OFF" }
 
 $7za = "$old_pwd\resources\scripts\7za\7za.exe"
-$nsis = "$old_pwd\resources\scripts\nsis\makensis.exe"
 
 # Functions.
 function Fetch-Latest-Release([string]$OrgRepo, [string]$NameRegex) {
@@ -270,32 +266,3 @@ if ($use_libmpv -eq "ON") {
 # Remove unneeded files.
 Remove-Item -Verbose ".\app\sqldrivers\qsqlodbc.dll" -ErrorAction SilentlyContinue
 Remove-Item -Verbose ".\app\sqldrivers\qsqlpsql.dll" -ErrorAction SilentlyContinue
-
-if ($is_devbuild) {
-  $packagebase = "rssguard-dev-$git_revision"
-}
-else {
-  $packagebase = "rssguard-$git_tag"
-}
-
-if ($webengine_viewer -eq "ON") {
-  $packagebase += "-web"
-}
-else {
-  $packagebase += "-text"
-}
-
-if ($is_qt_6) {
-  $packagebase += "-qt6-win10"
-}
-else {
-  $packagebase += "-qt5-win7"
-}
-
-# Create 7zip package.
-& "$7za" a -t7z -mmt -mx9 "$packagebase.7z" ".\app\*"
-
-# Create NSIS installation package.
-& "$nsis" "/XOutFile $packagebase.exe" ".\NSIS.template.in"
-
-ls
