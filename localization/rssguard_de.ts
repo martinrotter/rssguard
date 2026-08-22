@@ -8802,7 +8802,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="138"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="733"/>
       <source>Only auto-fetch articles if Game Mode is not active</source>
-      <translation type="unfinished">Only auto-fetch articles if Game Mode is not active</translation>
+      <translation>Artikel nur automatisch abrufen, wenn der Spielmodus nicht aktiv ist</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="146"/>
@@ -9569,7 +9569,7 @@ Beschreibung: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="34"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="127"/>
       <source>Ignore all cookies</source>
-      <translation type="unfinished">Ignore all cookies</translation>
+      <translation>Alle Cookies ignorieren</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="41"/>
@@ -9587,7 +9587,7 @@ Beschreibung: %3</translation>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="58"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsnetwork.h" line="130"/>
       <source>Follow hyperlinks inside the application (do not open external web browser)</source>
-      <translation type="unfinished">Follow hyperlinks inside the application (do not open external web browser)</translation>
+      <translation>Hyperlinks innerhalb der Anwendung öffnen (keinen externen Web-Browser öffnen)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.ui" line="66"/>
@@ -9609,7 +9609,7 @@ Beschreibung: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsnetwork.h" line="31"/>
       <source>Network &amp; web</source>
-      <translation type="unfinished">Network &amp; web</translation>
+      <translation>Netzwerk &amp; Web</translation>
     </message>
   </context>
   <context>
