@@ -8902,13 +8902,13 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="394"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="757"/>
       <source>Limit height of embedded attachment images</source>
-      <translation type="unfinished">Limit height of embedded attachment images</translation>
+      <translation>Maximale Höhe eingebetteter Anhang-Bilder</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="437"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="758"/>
       <source>Limit height of article images</source>
-      <translation type="unfinished">Limit height of article images</translation>
+      <translation>Maximale Höhe von Artikelbildern</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="555"/>
@@ -8920,13 +8920,13 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="558"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="769"/>
       <source>Use source-specific article list columns</source>
-      <translation type="unfinished">Use source-specific article list columns</translation>
+      <translation>Quellen-spezifische Spaltenüberschriften für Artikelliste verwenden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="804"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="782"/>
       <source>Use article lazy loading</source>
-      <translation type="unfinished">Use article lazy loading</translation>
+      <translation>Artikel beim Scrollen durch die Artikelliste laden</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="821"/>
@@ -8938,7 +8938,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="828"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="784"/>
       <source>Display feed icon in &quot;Feed&quot; column</source>
-      <translation type="unfinished">Display feed icon in &quot;Feed&quot; column</translation>
+      <translation>Feed-Icon in &quot;Feed&quot; Spalte anzeigen</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="282"/>
@@ -8956,7 +8956,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="344"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="750"/>
       <source>Remove all read articles from all feeds on application exit</source>
-      <translation>Entferne alle gelesenen Artikel von allen Feeds wenn Anwendung geschlossen wird</translation>
+      <translation>Entferne alle gelesenen Artikel von allen Feeds beim Beenden der Anwendung</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="358"/>
@@ -9052,7 +9052,7 @@ This can tremendously speed up the application if you have hundreds of thousands
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="611"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_settingsfeedsmessages.h" line="772"/>
       <source>Top/bottom row padding</source>
-      <translation>Padding der Zeile oben/unten</translation>
+      <translation>Zeilenabstand oben/unten</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/settings/settingsfeedsmessages.ui" line="640"/>
