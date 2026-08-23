@@ -184,7 +184,7 @@
       <location filename="../src/librssguard/gui/reusable/articleamountcontrol.cpp" line="187"/>
       <source>newest article(s)</source>
       <translation>
-        <numerusform>Новая статья(и) </numerusform>
+        <numerusform>новая статья(и)</numerusform>
         <numerusform>Новая статья(и) </numerusform>
         <numerusform>Новая статья(и) </numerusform>
         <numerusform>Новая статья(и) </numerusform>
@@ -1083,7 +1083,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-standard/src/standardfeedsimportexportmodel.cpp" line="426"/>
       <source>Folder </source>
-      <translation>Папка</translation>
+      <translation>Каталог </translation>
     </message>
   </context>
   <context>
@@ -1134,7 +1134,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/core/feedsproxymodel.cpp" line="303"/>
       <source>You can&apos;t transfer dragged item into different account, this is not supported.</source>
-      <translation>Нельзя передать перетаскиваемый пункт в другой аккаунт, это не поддерживается.</translation>
+      <translation>Нельзя передать &apos; перетаскиваемый пункт в другой аккаунт, это не поддерживается.</translation>
     </message>
   </context>
   <context>
@@ -1247,7 +1247,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="181"/>
       <source>Selected account does not support adding of new folders.</source>
-      <translation>Выбранная вами учетная запись (аккаунт) не поддерживает создание новых папок.</translation>
+      <translation>Выбранная вами учетная запись не поддерживает создание новых папок.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="265"/>
@@ -1358,7 +1358,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="502"/>
       <source>Some items won&apos;t be deleted</source>
-      <translation>Некоторые элементы не будут удалены</translation>
+      <translation>Некоторые элементы &apos; не будут удалены</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="503"/>
@@ -3390,7 +3390,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1006"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmain.h" line="882"/>
       <source>&amp;Enable/disable selected feeds</source>
-      <translation>Включить/выключить выбранные каналы</translation>
+      <translation>Включить/выключить Выбранные каналы</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.ui" line="1011"/>
@@ -4505,7 +4505,7 @@ You have to restart manually.</source>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="290"/>
       <source>cannot open file</source>
-      <translation>не удаётся открыть файл</translation>
+      <translation>ошибка открытия файла</translation>
     </message>
     <message>
       <location filename="../src/librssguard-standard/src/gui/formstandardimportexport.cpp" line="349"/>
@@ -5738,7 +5738,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="242"/>
       <source>Not a media file</source>
-      <translation>Не медиа-файл</translation>
+      <translation>Не медиа файл</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/mediaplayer/libmpv/libmpvbackend.cpp" line="245"/>
