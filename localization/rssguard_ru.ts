@@ -750,7 +750,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard/core/feeddownloader.cpp" line="266"/>
       <source>feed is in network cooldown mode due to making too many network requests</source>
-      <translation>лента находится в режиме ожидания из-за слишком большого количества сетевых запросов</translation>
+      <translation>Лента находится в режиме ожидания из-за слишком большого количества сетевых запросов</translation>
     </message>
   </context>
   <context>
