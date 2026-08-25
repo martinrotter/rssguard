@@ -935,7 +935,7 @@ Item custom ID: %5</source>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="39"/>
       <source>Your %1 does not offer official Feedly support, thus you must authorize via special authorization code called &quot;developer access token&quot;. These tokens are usually valid only for 1 month and allow only 250 API calls each day.</source>
-      <translation>%1 Недержку Feedly, поэтому вы должны авторизоваться с помощью специального кода авторизации, который называется «токен доступа разработчика». Эти токены обычно действительны только в течение 1 месяца и допускают только 250 вызовов API в день.</translation>
+      <translation>Ваш %1 не предлагает официальную поддержку Feedly таким образом, вы должны авторизоваться через специальный код авторизации под названием &quot;токен доступа разработчика&quot;. Эти токены обычно действительны только для 1 месяца и разрешены только 250 вызовов API каждый день.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-feedly/src/gui/feedlyaccountdetails.cpp" line="52"/>
@@ -1674,7 +1674,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="33"/>
       <source>Add new recipient.</source>
-      <translation>Добавить получателя</translation>
+      <translation>Добавить получателя.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="80"/>
@@ -1704,7 +1704,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.cpp" line="210"/>
       <source>Your e-mail message wasn&apos;t sent.</source>
-      <translation>Ваше сообщение электронной почты не было отправлено.</translation>
+      <translation>Ваше сообщение электронной почты не было&apos; отправлено.</translation>
     </message>
     <message>
       <location filename="../src/librssguard-gmail/src/gui/formaddeditemail.ui" line="14"/>
@@ -1737,7 +1737,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="23"/>
       <source>Label&apos;s name cannot be empty.</source>
-      <translation>Название метки не может быть пустым.</translation>
+      <translation>Название&apos; метки не может быть пустым.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditlabel.cpp" line="26"/>
@@ -2061,7 +2061,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="307"/>
       <source>is newer than</source>
-      <translation>новее чем</translation>
+      <translation>новее, чем</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="308"/>
@@ -2146,7 +2146,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="40"/>
       <source>operation was cancelled</source>
-      <translation>Операция была отменена</translation>
+      <translation>операция была отменена</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="46"/>
@@ -2231,7 +2231,7 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="26"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formbackupdatabasesettings.h" line="144"/>
       <source>&amp;Select directory</source>
-      <translation>Выбор каталога (&amp;S)</translation>
+      <translation>&amp;Выбор каталога</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formbackupdatabasesettings.ui" line="43"/>
@@ -2410,10 +2410,10 @@ Icon themes base folder -&gt; &quot;%6&quot;</source>
       <location filename="../src/librssguard/gui/dialogs/formdatabasecleanup.cpp" line="63"/>
       <source> day(s)</source>
       <translation>
-        <numerusform>день</numerusform>
-        <numerusform>дня</numerusform>
-        <numerusform>дней</numerusform>
-        <numerusform>дня</numerusform>
+        <numerusform> день</numerusform>
+        <numerusform> дня</numerusform>
+        <numerusform> дней</numerusform>
+        <numerusform> дня</numerusform>
       </translation>
     </message>
     <message>
@@ -5285,7 +5285,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="27"/>
       <source>URL</source>
-      <translation>URL </translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderaccountdetails.ui" line="40"/>
@@ -5373,7 +5373,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="46"/>
       <source>URL</source>
-      <translation>URL </translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard-greader/src/gui/greaderfeeddetails.ui" line="62"/>
@@ -6398,7 +6398,7 @@ Login tokens expiration: %2</source>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="612"/>
       <source>URL</source>
-      <translation>URL </translation>
+      <translation>URL</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="612"/>
@@ -6539,10 +6539,10 @@ Login tokens expiration: %2</source>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="800"/>
       <source>%n weeks ago</source>
       <translation>
-        <numerusform>%n недель(я) назад</numerusform>
-        <numerusform>%n недель(я) назад</numerusform>
-        <numerusform>%n недель(я) назад</numerusform>
-        <numerusform>%n недель(я) назад</numerusform>
+        <numerusform>%n недель(и) назад</numerusform>
+        <numerusform>%n недель(и) назад</numerusform>
+        <numerusform>%n недель(и) назад</numerusform>
+        <numerusform>%n недель(и) назад</numerusform>
       </translation>
     </message>
     <message numerus="yes">
