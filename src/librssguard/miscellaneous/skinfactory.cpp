@@ -318,11 +318,13 @@ QString SkinFactory::generateHtmlOfArticle(const Message& message,
 
     for (const QSharedPointer<MessageEnclosure>& enclosure : message.m_enclosures) {
       QString enc_url = QUrl(enclosure->url()).toString();
-      QString enc_name = enclosure->displayName(i);
+      QString enc_name = enclosure->displayName(i).toHtmlEscaped();
+      QString enc_tooltip = enclosure->displayName(i, 0).toHtmlEscaped();
 
       enclosures += QString(skin.m_enclosureMarkup)
                       .replace(QSL("%enclosure_url%"), enc_url)
                       .replace(QSL("%enclosure_name%"), enc_name)
+                      .replace(QSL("%enclosure_tooltip%"), enc_tooltip)
                       .replace(QSL("%enclosure_mime%"), enclosure->mimeType());
 
       if (display_enclosures && enclosure->mimeType().startsWith(QSL("image/"))) {

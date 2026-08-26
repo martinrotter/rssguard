@@ -1,3 +1,10 @@
+5.2.6
+-----
+Released on: 2026-09-XX
+
+Fixed:
+* Long attachment names no longer take up excessive space in the article preview.
+
 5.2.5
 -----
 Released on: 2026-08-20

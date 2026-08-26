@@ -42,11 +42,15 @@ void MessageEnclosure::setMimeType(const QString& mime) {
   m_mimeType = mime;
 }
 
-QString MessageEnclosure::displayName(int fallback_number) const {
+QString MessageEnclosure::displayName(int fallback_number, int name_length_limit) const {
   QString name = QUrl(m_url).fileName();
 
   if (name.isEmpty()) {
     name = tr("Attachment %1").arg(fallback_number);
+  }
+
+  if (name_length_limit > 0) {
+    name = TextFactory::shorten(name, name_length_limit);
   }
 
   return m_mimeType.isEmpty() ? name : tr("%1 (%2)").arg(name, m_mimeType);
