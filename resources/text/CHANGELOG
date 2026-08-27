@@ -2,6 +2,9 @@
 -----
 Released on: 2026-09-XX
 
+Added:
+* Article data can now be copied immediately using the previously selected format.
+
 Fixed:
 * Long attachment names no longer take up excessive space in the article preview.
 

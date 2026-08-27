@@ -208,6 +208,7 @@
     <addaction name="m_actionLoadAllArticles"/>
     <addaction name="separator"/>
     <addaction name="m_actionCopyDataOfSelectedArticles"/>
+    <addaction name="m_actionCopyDataOfSelectedArticlesWithoutDialog"/>
     <addaction name="m_actionToggleArticlesReadUnread"/>
     <addaction name="m_actionMarkSelectedMessagesAsRead"/>
     <addaction name="m_actionMarkArticlesAboveRead"/>
@@ -855,7 +856,18 @@
   </action>
   <action name="m_actionCopyDataOfSelectedArticles">
    <property name="text">
-    <string>&amp;Copy data to clipboard</string>
+    <string>&amp;Copy article data...</string>
+   </property>
+   <property name="toolTip">
+    <string>Choose the format and copy selected article data to the clipboard</string>
+   </property>
+  </action>
+  <action name="m_actionCopyDataOfSelectedArticlesWithoutDialog">
+   <property name="text">
+    <string>Copy article data (&amp;no dialog)</string>
+   </property>
+   <property name="toolTip">
+    <string>Copy selected article data using the saved format without opening the dialog</string>
    </property>
   </action>
   <action name="m_actionSortFeedsAlphabetically">

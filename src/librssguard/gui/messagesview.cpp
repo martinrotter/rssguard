@@ -149,6 +149,14 @@ void MessagesView::editFeedOfSelectedMessage() {
 }
 
 void MessagesView::copyDataOfSelectedArticles() const {
+  copyDataOfSelectedArticlesImpl(true);
+}
+
+void MessagesView::copyDataOfSelectedArticlesWithoutDialog() const {
+  copyDataOfSelectedArticlesImpl(false);
+}
+
+void MessagesView::copyDataOfSelectedArticlesImpl(bool show_dialog) const {
   const QModelIndexList selected_indexes = selectionModel()->selectedRows();
 
   if (selected_indexes.isEmpty()) {
@@ -156,15 +164,24 @@ void MessagesView::copyDataOfSelectedArticles() const {
   }
 
   const QModelIndexList mapped_indexes = m_proxyModel->mapListToSource(selected_indexes);
-  FormCopyArticleData ask(m_sourceModel, qApp->mainFormWidget());
-  const auto pattern = ask.pattern();
+  std::optional<PatternDecision> pattern;
+
+  if (show_dialog) {
+    FormCopyArticleData ask(m_sourceModel, qApp->mainFormWidget());
+
+    pattern = ask.pattern();
+  }
+  else {
+    pattern = PatternDecision{
+      qApp->settings()->value(GROUP(Messages), SETTING(Messages::CopyArticlePattern)).toString(),
+      qApp->settings()->value(GROUP(Messages), SETTING(Messages::CopyArticleEscapeCsv)).toBool()};
+  }
 
   if (!pattern.has_value()) {
     return;
   }
 
-  const auto dta =
-    m_sourceModel->formattedDataOfArticles(pattern.value().m_pattern, pattern.value().m_escapeCsv, mapped_indexes);
+  const auto dta = m_sourceModel->formattedDataOfArticles(pattern->m_pattern, pattern->m_escapeCsv, mapped_indexes);
 
   if (QGuiApplication::clipboard() != nullptr && !dta.isEmpty()) {
     QGuiApplication::clipboard()->setText(dta, QClipboard::Mode::Clipboard);
@@ -709,6 +726,7 @@ void MessagesView::initializeContextMenu() {
 #endif
 
   m_contextMenu->addActions({qApp->mainForm()->m_ui->m_actionCopyDataOfSelectedArticles,
+                             qApp->mainForm()->m_ui->m_actionCopyDataOfSelectedArticlesWithoutDialog,
                              qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsRead,
                              qApp->mainForm()->m_ui->m_actionMarkSelectedMessagesAsUnread,
                              qApp->mainForm()->m_ui->m_actionSwitchImportanceOfSelectedMessages,

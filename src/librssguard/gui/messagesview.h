@@ -65,6 +65,7 @@ class MessagesView : public BaseTreeView {
     void editFeedOfSelectedMessage();
 
     void copyDataOfSelectedArticles() const;
+    void copyDataOfSelectedArticlesWithoutDialog() const;
 
     // Called after data got changed externally
     // and it needs to be reloaded to the view.
@@ -162,6 +163,7 @@ class MessagesView : public BaseTreeView {
     void requestArticleDisplay(const Message& msg);
     void requestArticleHiding();
     void cancelDelayedArticleMarking();
+    void copyDataOfSelectedArticlesImpl(bool show_dialog) const;
 
   private:
     QMenu* m_contextMenu;
