@@ -63,22 +63,22 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="110"/>
       <source>Initializing application...</source>
-      <translation type="unfinished">Initializing application...</translation>
+      <translation>Inizializzazione applicazione...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="130"/>
       <source>Initializing application services...</source>
-      <translation type="unfinished">Initializing application services...</translation>
+      <translation>Inizializzazione servizi applicazione...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="163"/>
       <source>Loading appearance...</source>
-      <translation type="unfinished">Loading appearance...</translation>
+      <translation>Caricamento aspetto...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="169"/>
       <source>Preparing the application...</source>
-      <translation type="unfinished">Preparing the application...</translation>
+      <translation>Preparazione dell'applicazione...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="557"/>
@@ -467,12 +467,12 @@ Numero di feed disattivati: %3</translation>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="64"/>
       <source>Removing important articles...</source>
-      <translation type="unfinished">Removing important articles...</translation>
+      <translation>Rimozione articoli importanti...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasecleaner.cpp" line="70"/>
       <source>Important articles purged...</source>
-      <translation type="unfinished">Important articles purged...</translation>
+      <translation>Articoli importanti rimossi...</translation>
     </message>
   </context>
   <context>
@@ -514,7 +514,7 @@ Provare a cambiare il nome del database usato nelle impostazioni e riprovare. Ri
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="85"/>
       <source>Cannot use database</source>
-      <translation type="unfinished">Cannot use database</translation>
+      <translation>Impossibile usare database</translation>
     </message>
     <message>
       <location filename="../src/librssguard/database/databasefactory.cpp" line="86"/>
@@ -713,12 +713,12 @@ Provare a cambiare il nome del database usato nelle impostazioni e riprovare. Ri
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="409"/>
       <source>contains no articles</source>
-      <translation type="unfinished">contains no articles</translation>
+      <translation>non contiene articoli</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="412"/>
       <source>article filtering error</source>
-      <translation type="unfinished">article filtering error</translation>
+      <translation>errore di filtraggio articolo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/feed.cpp" line="415"/>
@@ -1375,12 +1375,12 @@ ID personalizzato elemento: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="516"/>
       <source>label</source>
-      <translation type="unfinished">label</translation>
+      <translation>etichetta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="518"/>
       <source>probe</source>
-      <translation type="unfinished">probe</translation>
+      <translation>sonda</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="520"/>
@@ -1826,19 +1826,19 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="25"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="294"/>
       <source>Match</source>
-      <translation type="unfinished">Match</translation>
+      <translation>Corrispondenza</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="295"/>
       <source>all conditions</source>
-      <translation type="unfinished">all conditions</translation>
+      <translation>tutte le condizioni</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="32"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="296"/>
       <source>at least one condition</source>
-      <translation type="unfinished">at least one condition</translation>
+      <translation>almeno una condizione</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="42"/>
@@ -1864,7 +1864,7 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="300"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="308"/>
       <source>Actions</source>
-      <translation type="unfinished">Actions</translation>
+      <translation>Azioni</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="88"/>
@@ -1872,7 +1872,7 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="301"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="309"/>
       <source>Add action</source>
-      <translation type="unfinished">Add action</translation>
+      <translation>Aggiungi azione</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="94"/>
@@ -1888,7 +1888,7 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="303"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="311"/>
       <source>Accept - keep article</source>
-      <translation type="unfinished">Accept - keep article</translation>
+      <translation>Accetta - tieni l'articolo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="98"/>
@@ -1896,7 +1896,7 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="304"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="312"/>
       <source>Ignore - do not import or update article</source>
-      <translation type="unfinished">Ignore - do not import or update article</translation>
+      <translation>Ignora - non importare o aggiornare l'articolo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="99"/>
@@ -1904,30 +1904,30 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="305"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="313"/>
       <source>Purge - delete stored or discard new article</source>
-      <translation type="unfinished">Purge - delete stored or discard new article</translation>
+      <translation>Eliminare - elimina articolo salvato o scarta nuovo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="108"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="318"/>
       <source>When conditions do not match</source>
-      <translation type="unfinished">When conditions do not match</translation>
+      <translation>Quando le condizioni non corrispondono</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="137"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="316"/>
       <source>Result used when the article does not match the conditions</source>
-      <translation type="unfinished">Result used when the article does not match the conditions</translation>
+      <translation>Risultato usato quando l'articolo non corrisponde alle condizioni</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="152"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="319"/>
       <source>Generated script</source>
-      <translation type="unfinished">Generated script</translation>
+      <translation>Script generato</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="93"/>
       <source>Case sensitive</source>
-      <translation type="unfinished">Case sensitive</translation>
+      <translation>Distingui maiuscole</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="105"/>
@@ -1944,17 +1944,17 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="108"/>
       <source>Remove condition</source>
-      <translation type="unfinished">Remove condition</translation>
+      <translation>Rimuovi condizione</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="167"/>
       <source>Enter a non-negative age in days for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a non-negative age in days for &apos;%1&apos;.</translation>
+      <translation>Inserisci un'età non negativa in giorni per &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="187"/>
       <source>Enter a valid number for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a valid number for &apos;%1&apos;.</translation>
+      <translation>Inserisci un numero valido per &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="222"/>
@@ -1964,39 +1964,39 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="236"/>
       <source>The regular expression for &apos;%1&apos; is invalid: %2</source>
-      <translation type="unfinished">The regular expression for &apos;%1&apos; is invalid: %2</translation>
+      <translation>L'espressione regolare per &apos;%1&apos; non è valida: %2</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="283"/>
       <source>contains</source>
-      <translation type="unfinished">contains</translation>
+      <translation>contiene</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="284"/>
       <source>does not contain</source>
-      <translation type="unfinished">does not contain</translation>
+      <translation>non contiene</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="285"/>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="297"/>
       <source>equals</source>
-      <translation type="unfinished">equals</translation>
+      <translation>è uguale a</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="286"/>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="298"/>
       <source>does not equal</source>
-      <translation type="unfinished">does not equal</translation>
+      <translation>non è uguale a</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="287"/>
       <source>starts with</source>
-      <translation type="unfinished">starts with</translation>
+      <translation>inizia con</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="288"/>
       <source>ends with</source>
-      <translation type="unfinished">ends with</translation>
+      <translation>termina con</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="289"/>
@@ -2011,82 +2011,82 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="293"/>
       <source>is</source>
-      <translation type="unfinished">is</translation>
+      <translation>è</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="294"/>
       <source>is not</source>
-      <translation type="unfinished">is not</translation>
+      <translation>non è</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="299"/>
       <source>is greater than</source>
-      <translation type="unfinished">is greater than</translation>
+      <translation>è maggiore di</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="300"/>
       <source>is at least</source>
-      <translation type="unfinished">is at least</translation>
+      <translation>è almeno</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="301"/>
       <source>is less than</source>
-      <translation type="unfinished">is less than</translation>
+      <translation>è minore di</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="302"/>
       <source>is at most</source>
-      <translation type="unfinished">is at most</translation>
+      <translation>è al massimo</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="303"/>
       <source>Number</source>
-      <translation type="unfinished">Number</translation>
+      <translation>Numero</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="306"/>
       <source>is older than</source>
-      <translation type="unfinished">is older than</translation>
+      <translation>è più vecchio di</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="307"/>
       <source>is newer than</source>
-      <translation type="unfinished">is newer than</translation>
+      <translation>è più recente di</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="308"/>
       <source>Age in days</source>
-      <translation type="unfinished">Age in days</translation>
+      <translation>Età in giorni</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="360"/>
       <source>Remove action</source>
-      <translation type="unfinished">Remove action</translation>
+      <translation>Rimuovi azione</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="419"/>
       <source>Enter a label title for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a label title for &apos;%1&apos;.</translation>
+      <translation>Inserisci un titolo etichetta per &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="463"/>
       <source>Label title</source>
-      <translation type="unfinished">Label title</translation>
+      <translation>Titolo etichetta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="463"/>
       <source>Value</source>
-      <translation type="unfinished">Value</translation>
+      <translation>Valore</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="488"/>
       <source>Enter a valid value for &apos;%1&apos;.</source>
-      <translation type="unfinished">Enter a valid value for &apos;%1&apos;.</translation>
+      <translation>Inserire un valore valido per &apos;%1&apos;.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="531"/>
       <source>About the visual filter generator</source>
-      <translation type="unfinished">About the visual filter generator</translation>
+      <translation>Informazioni sul generatore di filtri visivi</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="532"/>
@@ -2141,7 +2141,7 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="46"/>
       <source>Username should not be empty.</source>
-      <translation type="unfinished">Username should not be empty.</translation>
+      <translation>Il nome utente non deve essere vuoto.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="49"/>
@@ -2153,7 +2153,7 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formaskauth.cpp" line="55"/>
       <source>Password should not be empty.</source>
-      <translation type="unfinished">Password should not be empty.</translation>
+      <translation>La password non deve essere vuota.</translation>
     </message>
   </context>
   <context>
@@ -2278,7 +2278,7 @@ Cartella base delle icone -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="168"/>
       <source>Cannot save folder properties</source>
-      <translation type="unfinished">Cannot save folder properties</translation>
+      <translation>Impossibile salvare proprietà della cartella</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formcategorydetails.cpp" line="169"/>
@@ -6171,7 +6171,7 @@ Scadenza dei token di accesso: %2</translation>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="20"/>
       <source>Read</source>
-      <translation>Leggi</translation>
+      <translation>Letto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/filtering/messagesforfiltersmodel.cpp" line="20"/>
@@ -6229,7 +6229,7 @@ Scadenza dei token di accesso: %2</translation>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="611"/>
       <source>Read</source>
-      <translation>Leggi</translation>
+      <translation>Letto</translation>
     </message>
     <message>
       <location filename="../src/librssguard/core/messagesmodel.cpp" line="611"/>
