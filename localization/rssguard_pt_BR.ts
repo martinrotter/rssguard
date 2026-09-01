@@ -63,12 +63,12 @@
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="110"/>
       <source>Initializing application...</source>
-      <translation type="unfinished">Initializing application...</translation>
+      <translation>Inicializando aplicativo...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="130"/>
       <source>Initializing application services...</source>
-      <translation type="unfinished">Initializing application services...</translation>
+      <translation>Inicializando serviços da aplicação...</translation>
     </message>
     <message>
       <location filename="../src/librssguard/miscellaneous/application.cpp" line="163"/>
@@ -1617,7 +1617,7 @@ Pasta raiz de temas de ícones -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="62"/>
       <source>Cannot save account properties</source>
-      <translation type="unfinished">Cannot save account properties</translation>
+      <translation>Não foi possível salvar as propriedades da conta</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="63"/>
@@ -1637,7 +1637,7 @@ Pasta raiz de temas de ícones -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="110"/>
       <source>Unsynchronized article changes</source>
-      <translation type="unfinished">Unsynchronized article changes</translation>
+      <translation>Alterações de artigo não sincronizadas</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaccountdetails.cpp" line="111"/>
@@ -1781,7 +1781,7 @@ Pasta raiz de temas de ícones -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="19"/>
       <source>You can use regular expression or SQL WHERE clause to perform totally custom article queries in the database. See more details in application documentation.</source>
-      <translation type="unfinished">You can use regular expression or SQL WHERE clause to perform totally custom article queries in the database. See more details in application documentation.</translation>
+      <translation>Você pode usar expressão regular ou cláusula SQL WHERE para executar consultas de artigo totalmente personalizadas no banco de dados. Veja mais detalhes na documentação do aplicativo.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formaddeditprobe.cpp" line="26"/>
@@ -1820,43 +1820,43 @@ Pasta raiz de temas de ícones -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="14"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="293"/>
       <source>Article filter generator</source>
-      <translation type="unfinished">Article filter generator</translation>
+      <translation>Gerador de filtros</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="25"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="294"/>
       <source>Match</source>
-      <translation type="unfinished">Match</translation>
+      <translation>Combinar</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="31"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="295"/>
       <source>all conditions</source>
-      <translation type="unfinished">all conditions</translation>
+      <translation>todas as condições</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="32"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="296"/>
       <source>at least one condition</source>
-      <translation type="unfinished">at least one condition</translation>
+      <translation>ao menos uma condição</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="42"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="298"/>
       <source>Conditions</source>
-      <translation type="unfinished">Conditions</translation>
+      <translation>Condições</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="59"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="299"/>
       <source>Add condition</source>
-      <translation type="unfinished">Add condition</translation>
+      <translation>Adicionar condição</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="68"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="307"/>
       <source>When conditions match</source>
-      <translation type="unfinished">When conditions match</translation>
+      <translation>Quando as condições combinarem</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="72"/>
