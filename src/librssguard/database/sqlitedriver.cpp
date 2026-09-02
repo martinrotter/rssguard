@@ -176,7 +176,7 @@ void SqliteDriver::setPragmas(SqlQuery& query) {
   query.exec(foreignKeysEnable());
   query.exec(QSL("PRAGMA encoding = 'UTF-8';"));
   query.exec(QSL("PRAGMA page_size = 32768;"));
-  query.exec(QSL("PRAGMA cache_size = 32768;"));
+  query.exec(QSL("PRAGMA cache_size = -65536;"));
   query.exec(QSL("PRAGMA mmap_size = 100000000;"));
   query.exec(QSL("PRAGMA synchronous = OFF;"));
   query.exec(QSL("PRAGMA temp_store = MEMORY;"));
