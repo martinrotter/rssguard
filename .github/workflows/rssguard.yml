@@ -9,8 +9,8 @@ on:
 env:
   ACTIONS_RUNNER_DEBUG: true
   ACTIONS_STEP_DEBUG: true
-  # Sign development builds in addition to tagged releases.
-  SIGN_DEVELOPMENT_BUILDS: "true"
+  SIGN_DEVELOPMENT_BUILDS: "false"
+  SIGN_STABLE_BUILDS: "false"
   SIGNPATH_ORGANIZATION_ID: ab8dccde-cd2b-47ec-aa78-53599d04a2f4
   SIGNPATH_PROJECT_SLUG: rssguard
   SIGNPATH_SIGNING_POLICY_SLUG: test-signing
@@ -119,6 +119,22 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v7
 
+      - name: Determine Windows signing state
+        if: matrix.os == 'windows-2022'
+        id: windows-signing
+        shell: pwsh
+        run: |
+          $stable_build = $env:GITHUB_REF.StartsWith("refs/tags/", [StringComparison]::Ordinal)
+          $sign_build = if ($stable_build) {
+            $env:SIGN_STABLE_BUILDS -eq "true"
+          }
+          else {
+            $env:SIGN_DEVELOPMENT_BUILDS -eq "true"
+          }
+
+          $sign_build = $sign_build -and $env:GITHUB_REPOSITORY -eq "martinrotter/rssguard"
+          "enabled=$($sign_build.ToString().ToLowerInvariant())" >> $env:GITHUB_OUTPUT
+
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
@@ -142,10 +158,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload unsigned Windows binaries
-        if: >-
-          matrix.os == 'windows-2022' &&
-          github.repository == 'martinrotter/rssguard' &&
-          (env.SIGN_DEVELOPMENT_BUILDS == 'true' || startsWith(github.ref, 'refs/tags/'))
+        if: steps.windows-signing.outputs.enabled == 'true'
         id: upload-unsigned-windows-binaries
         uses: actions/upload-artifact@v7
         with:
@@ -159,10 +172,7 @@ jobs:
             ./rssguard-build/app/plugins/rssguard-*.dll
 
       - name: Sign Windows binaries
-        if: >-
-          matrix.os == 'windows-2022' &&
-          github.repository == 'martinrotter/rssguard' &&
-          (env.SIGN_DEVELOPMENT_BUILDS == 'true' || startsWith(github.ref, 'refs/tags/'))
+        if: steps.windows-signing.outputs.enabled == 'true'
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
@@ -175,10 +185,7 @@ jobs:
           output-artifact-directory: './rssguard-build/app'
 
       - name: Verify signed Windows binaries
-        if: >-
-          matrix.os == 'windows-2022' &&
-          github.repository == 'martinrotter/rssguard' &&
-          (env.SIGN_DEVELOPMENT_BUILDS == 'true' || startsWith(github.ref, 'refs/tags/'))
+        if: steps.windows-signing.outputs.enabled == 'true'
         shell: pwsh
         run: |
           $files = @(
@@ -203,10 +210,7 @@ jobs:
         run: .\resources\scripts\github-actions\package-windows.ps1 "${{ matrix.os }}" "${{ matrix.use_qt5 }}" "${{ matrix.webengine_viewer }}"
 
       - name: Upload unsigned Windows installer
-        if: >-
-          matrix.os == 'windows-2022' &&
-          github.repository == 'martinrotter/rssguard' &&
-          (env.SIGN_DEVELOPMENT_BUILDS == 'true' || startsWith(github.ref, 'refs/tags/'))
+        if: steps.windows-signing.outputs.enabled == 'true'
         id: upload-unsigned-windows-installer
         uses: actions/upload-artifact@v7
         with:
@@ -216,10 +220,7 @@ jobs:
           path: ./rssguard-build/rssguard-*win*.exe
 
       - name: Sign Windows installer
-        if: >-
-          matrix.os == 'windows-2022' &&
-          github.repository == 'martinrotter/rssguard' &&
-          (env.SIGN_DEVELOPMENT_BUILDS == 'true' || startsWith(github.ref, 'refs/tags/'))
+        if: steps.windows-signing.outputs.enabled == 'true'
         uses: signpath/github-action-submit-signing-request@v2
         with:
           api-token: '${{ secrets.SIGNPATH_API_TOKEN }}'
@@ -232,10 +233,7 @@ jobs:
           output-artifact-directory: './rssguard-build'
 
       - name: Verify signed Windows installer
-        if: >-
-          matrix.os == 'windows-2022' &&
-          github.repository == 'martinrotter/rssguard' &&
-          (env.SIGN_DEVELOPMENT_BUILDS == 'true' || startsWith(github.ref, 'refs/tags/'))
+        if: steps.windows-signing.outputs.enabled == 'true'
         shell: pwsh
         run: |
           $installers = @(Get-ChildItem -Path "./rssguard-build" -Filter "rssguard-*win*.exe" -File)
