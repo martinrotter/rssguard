@@ -20,6 +20,7 @@
 #include <librssguard/services/abstract/labelsnode.h>
 
 #include <QSqlError>
+#include <QScopeGuard>
 #include <QStack>
 #include <QtConcurrentMap>
 
@@ -40,6 +41,9 @@ void QuiteRssImport::import() {
   }
 
   QSqlDatabase quiterss_db = dbConnection(m_dbFile, QSL("quiterss"));
+  const auto close_connection = qScopeGuard([this, &quiterss_db]() {
+    closeDbConnection(quiterss_db);
+  });
 
   checkIfQuiteRss(quiterss_db);
 
@@ -68,42 +72,46 @@ void QuiteRssImport::import() {
   m_account->itemChanged(m_account->getSubTree<RootItem>());
 
   delete feed_tree;
-
-  closeDbConnection(quiterss_db);
 }
 
 void QuiteRssImport::importArticles(StandardFeed* feed, const QMap<QString, Label*>& lbls) {
-  QSqlDatabase quiterss_db = dbConnection(m_dbFile, QSL("quiterss_%1").arg(getThreadID()));
   QList<Message> msgs;
 
-  // Load articles and migrate them to RSS Guard.
-  SqlQuery q(quiterss_db);
-  int quiterss_id = feed->property("quiterss_id").toInt();
+  {
+    QSqlDatabase quiterss_db = dbConnection(m_dbFile, QSL("quiterss_%1").arg(getThreadID()));
+    const auto close_connection = qScopeGuard([this, &quiterss_db]() {
+      closeDbConnection(quiterss_db);
+    });
 
-  q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href, read, starred, deleted, label "
-                "FROM news "
-                "WHERE feedId = :feed_id;"));
-  q.bindValue(QSL(":feed_id"), quiterss_id);
-  q.exec();
+    // Load articles and migrate them to RSS Guard.
+    SqlQuery q(quiterss_db);
+    int quiterss_id = feed->property("quiterss_id").toInt();
 
-  while (q.next()) {
-    try {
-      auto msg = convertArticle(q);
-      QStringList label_ids = q.value(QSL("label")).toString().split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts);
+    q.prepare(QSL("SELECT guid, description, title, published, author_name, link_href, read, starred, deleted, label "
+                  "FROM news "
+                  "WHERE feedId = :feed_id;"));
+    q.bindValue(QSL(":feed_id"), quiterss_id);
+    q.exec();
 
-      for (const QString& label_id : std::as_const(label_ids)) {
-        auto* target_lbl = lbls.value(label_id);
+    while (q.next()) {
+      try {
+        auto msg = convertArticle(q);
+        QStringList label_ids = q.value(QSL("label")).toString().split(QL1C(','), SPLIT_BEHAVIOR::SkipEmptyParts);
 
-        if (target_lbl != nullptr) {
-          msg.m_assignedLabelsByFilter.append(target_lbl);
+        for (const QString& label_id : std::as_const(label_ids)) {
+          auto* target_lbl = lbls.value(label_id);
+
+          if (target_lbl != nullptr) {
+            msg.m_assignedLabelsByFilter.append(target_lbl);
+          }
         }
-      }
 
-      msg.sanitize(feed, false);
-      msgs.append(msg);
-    }
-    catch (const ApplicationException& ex) {
-      qWarningNN << LOGSEC_STANDARD << "Article was not converted:" << QUOTE_W_SPACE_DOT(ex.message());
+        msg.sanitize(feed, false);
+        msgs.append(msg);
+      }
+      catch (const ApplicationException& ex) {
+        qWarningNN << LOGSEC_STANDARD << "Article was not converted:" << QUOTE_W_SPACE_DOT(ex.message());
+      }
     }
   }
 
@@ -436,13 +444,19 @@ QSqlDatabase QuiteRssImport::dbConnection(const QString& db_file, const QString&
   }
 
   if (!db.isOpen() && !db.open()) {
-    throw ApplicationException(db.lastError().text());
+    const QString error = db.lastError().text();
+
+    closeDbConnection(db);
+    throw ApplicationException(error);
   }
 
   return db;
 }
 
 void QuiteRssImport::closeDbConnection(QSqlDatabase& db) const {
+  const QString connection_name = db.connectionName();
+
   db.close();
-  QSqlDatabase::removeDatabase(db.connectionName());
+  db = QSqlDatabase();
+  QSqlDatabase::removeDatabase(connection_name);
 }

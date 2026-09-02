@@ -22,6 +22,7 @@
 #include <librssguard/services/abstract/searchsnode.h>
 
 #include <QSqlError>
+#include <QScopeGuard>
 #include <QStack>
 #include <QtConcurrentMap>
 
@@ -42,6 +43,9 @@ void RssGuard4Import::import() {
   }
 
   QSqlDatabase rssguard4_db = dbConnection(m_dbFile, QSL("rssguard4"));
+  const auto close_connection = qScopeGuard([this, &rssguard4_db]() {
+    closeDbConnection(rssguard4_db);
+  });
 
   checkIfRssGuard4(rssguard4_db);
 
@@ -75,57 +79,61 @@ void RssGuard4Import::import() {
 
   qDeleteAll(filters);
   delete feed_tree;
-
-  closeDbConnection(rssguard4_db);
 }
 
 void RssGuard4Import::importArticles(StandardFeed* feed, const QMap<QString, Label*>& lbls) {
-  QSqlDatabase rssguard4_db = dbConnection(m_dbFile, QSL("rssguard4_%1").arg(getThreadID()));
   QList<Message> msgs;
 
-  // Load articles and migrate them to RSS Guard.
-  SqlQuery q(rssguard4_db);
-  int db_id = feed->property("db_id").toInt();
-  int account_id = feed->property("account_id").toInt();
+  {
+    QSqlDatabase rssguard4_db = dbConnection(m_dbFile, QSL("rssguard4_%1").arg(getThreadID()));
+    const auto close_connection = qScopeGuard([this, &rssguard4_db]() {
+      closeDbConnection(rssguard4_db);
+    });
 
-  q.prepare(QSL("SELECT "
-                "  Messages.is_read, "
-                "  Messages.is_important, "
-                "  Messages.is_deleted, "
-                "  Messages.is_pdeleted, "
-                "  Messages.title, "
-                "  Messages.url, "
-                "  Messages.author, "
-                "  Messages.date_created, "
-                "  Messages.contents, "
-                "  Messages.enclosures, "
-                "  Messages.score, "
-                "  Messages.labels, "
-                "  Messages.custom_id "
-                "FROM Messages "
-                "WHERE Messages.account_id = :account_id AND Messages.feed = :feed_id;"));
-  q.bindValue(QSL(":account_id"), account_id);
-  q.bindValue(QSL(":feed_id"), QString::number(db_id));
-  q.exec();
+    // Load articles and migrate them to RSS Guard.
+    SqlQuery q(rssguard4_db);
+    int db_id = feed->property("db_id").toInt();
+    int account_id = feed->property("account_id").toInt();
 
-  while (q.next()) {
-    try {
-      auto msg = convertArticle(q);
-      QStringList label_ids = q.value(11).toString().split(QL1C('.'), SPLIT_BEHAVIOR::SkipEmptyParts);
+    q.prepare(QSL("SELECT "
+                  "  Messages.is_read, "
+                  "  Messages.is_important, "
+                  "  Messages.is_deleted, "
+                  "  Messages.is_pdeleted, "
+                  "  Messages.title, "
+                  "  Messages.url, "
+                  "  Messages.author, "
+                  "  Messages.date_created, "
+                  "  Messages.contents, "
+                  "  Messages.enclosures, "
+                  "  Messages.score, "
+                  "  Messages.labels, "
+                  "  Messages.custom_id "
+                  "FROM Messages "
+                  "WHERE Messages.account_id = :account_id AND Messages.feed = :feed_id;"));
+    q.bindValue(QSL(":account_id"), account_id);
+    q.bindValue(QSL(":feed_id"), QString::number(db_id));
+    q.exec();
 
-      for (const QString& label_id : std::as_const(label_ids)) {
-        auto* target_lbl = lbls.value(label_id);
+    while (q.next()) {
+      try {
+        auto msg = convertArticle(q);
+        QStringList label_ids = q.value(11).toString().split(QL1C('.'), SPLIT_BEHAVIOR::SkipEmptyParts);
 
-        if (target_lbl != nullptr) {
-          msg.m_assignedLabelsByFilter.append(target_lbl);
+        for (const QString& label_id : std::as_const(label_ids)) {
+          auto* target_lbl = lbls.value(label_id);
+
+          if (target_lbl != nullptr) {
+            msg.m_assignedLabelsByFilter.append(target_lbl);
+          }
         }
-      }
 
-      msg.sanitize(feed, false);
-      msgs.append(msg);
-    }
-    catch (const ApplicationException& ex) {
-      qWarningNN << LOGSEC_STANDARD << "Article was not converted:" << QUOTE_W_SPACE_DOT(ex.message());
+        msg.sanitize(feed, false);
+        msgs.append(msg);
+      }
+      catch (const ApplicationException& ex) {
+        qWarningNN << LOGSEC_STANDARD << "Article was not converted:" << QUOTE_W_SPACE_DOT(ex.message());
+      }
     }
   }
 
@@ -551,13 +559,19 @@ QSqlDatabase RssGuard4Import::dbConnection(const QString& db_file, const QString
   }
 
   if (!db.isOpen() && !db.open()) {
-    throw ApplicationException(db.lastError().text());
+    const QString error = db.lastError().text();
+
+    closeDbConnection(db);
+    throw ApplicationException(error);
   }
 
   return db;
 }
 
 void RssGuard4Import::closeDbConnection(QSqlDatabase& db) const {
+  const QString connection_name = db.connectionName();
+
   db.close();
-  QSqlDatabase::removeDatabase(db.connectionName());
+  db = QSqlDatabase();
+  QSqlDatabase::removeDatabase(connection_name);
 }
