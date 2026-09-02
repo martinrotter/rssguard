@@ -69,7 +69,7 @@ else
   QTARCH="clang_64"
 
   QTPATH="$(pwd)/Qt"
-  QTVERSION="6.10.3"
+  QTVERSION="6.11.2"
   QTBIN="$QTPATH/$QTVERSION/$QTOS/bin"
 
   brew install aqtinstall go
