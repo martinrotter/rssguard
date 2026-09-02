@@ -303,7 +303,7 @@ void StandardFeed::fetchMetadataForItself() {
                               true,
                               username(),
                               password(),
-                              {},
+                              httpHeadersToList(httpHeaders()),
                               useAccountProxy() ? account()->networkProxy() : networkProxy(),
                               http2Status(),
                               ignoreCookies());
