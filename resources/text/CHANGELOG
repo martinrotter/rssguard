@@ -6,6 +6,7 @@ Added:
 * Article data can now be copied immediately using the previously selected format.
 
 Fixed:
+* Feed-specific cookie settings are now disabled when cookies are disabled application-wide, without changing saved feed preferences.
 * Fetching feed metadata now respects custom HTTP headers configured for the feed. (#2415)
 * Long attachment names no longer take up excessive space in the article preview.
 

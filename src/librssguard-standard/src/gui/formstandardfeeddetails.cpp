@@ -13,6 +13,8 @@
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/gui/reusable/networkproxydetails.h>
 #include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/settings.h>
+#include <librssguard/miscellaneous/settingskeys.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/network-web/webfactory.h>
 #include <librssguard/services/abstract/category.h>
@@ -178,7 +180,8 @@ void FormStandardFeedDetails::apply() {
       std_feed->setUpdateTimeout(m_networkDetails->m_ui.m_spinUpdateTimeout->value());
     }
 
-    if (isChangeAllowed(m_networkDetails->m_ui.m_mcbIgnoreCookies)) {
+    if (m_networkDetails->m_ui.m_cbIgnoreCookies->isEnabled() &&
+        isChangeAllowed(m_networkDetails->m_ui.m_mcbIgnoreCookies)) {
       std_feed->setIgnoreCookies(m_networkDetails->m_ui.m_cbIgnoreCookies->isChecked());
     }
 
@@ -223,6 +226,9 @@ void FormStandardFeedDetails::apply() {
 void FormStandardFeedDetails::loadFeedData() {
   FormFeedDetails::loadFeedData();
 
+  const bool ignore_all_cookies =
+    qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool();
+
   if (m_isBatchEdit) {
     // We hook batch selectors.
     m_standardFeedDetails->m_ui.m_mcbDescription->addActionWidget(m_standardFeedDetails->m_ui.m_txtDescription);
@@ -262,7 +268,9 @@ void FormStandardFeedDetails::loadFeedData() {
     m_networkDetails->m_ui.m_mcbUpdateTimeout->addActionWidget(m_networkDetails->m_ui.m_spinUpdateTimeout);
     m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_lblEnableHttp2);
     m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_cmbEnableHttp2);
-    m_networkDetails->m_ui.m_mcbIgnoreCookies->addActionWidget(m_networkDetails->m_ui.m_cbIgnoreCookies);
+    if (!ignore_all_cookies) {
+      m_networkDetails->m_ui.m_mcbIgnoreCookies->addActionWidget(m_networkDetails->m_ui.m_cbIgnoreCookies);
+    }
     m_networkDetails->m_ui.m_mcbNetworkProxyExtraDomains
       ->addActionWidget(m_networkDetails->m_ui.m_txtNetworkProxyExtraDomains);
   }
@@ -309,5 +317,14 @@ void FormStandardFeedDetails::loadFeedData() {
     m_networkDetails->setHttp2Status(std_feed->http2Status());
     m_networkDetails->m_ui.m_spinUpdateTimeout->setValue(std_feed->updateTimeout());
     m_networkDetails->m_ui.m_cbIgnoreCookies->setChecked(std_feed->ignoreCookies());
+  }
+
+  if (ignore_all_cookies) {
+    const QString tooltip = tr("Cookies are disabled for all feeds in Settings > Network & web.");
+
+    m_networkDetails->m_ui.m_cbIgnoreCookies->setEnabled(false);
+    m_networkDetails->m_ui.m_cbIgnoreCookies->setToolTip(tooltip);
+    m_networkDetails->m_ui.m_mcbIgnoreCookies->setEnabled(false);
+    m_networkDetails->m_ui.m_mcbIgnoreCookies->setToolTip(tooltip);
   }
 }
