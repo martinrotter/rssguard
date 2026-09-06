@@ -3,6 +3,8 @@
 #ifndef MEMORYDIAGNOSTICS_H
 #define MEMORYDIAGNOSTICS_H
 
+#include "definitions/definitions.h"
+
 #include <atomic>
 
 #include <QElapsedTimer>
@@ -13,7 +15,7 @@ class QTimer;
 // Opt-in runtime diagnostics enabled by --memory-diagnostics. Keeping all
 // counters and platform-specific process inspection here makes the feature
 // easy to remove after the memory investigation is complete.
-class MemoryDiagnostics final : public QObject {
+class RSSGUARD_DLLSPEC MemoryDiagnostics final : public QObject {
   public:
     explicit MemoryDiagnostics(QObject* parent = nullptr);
     ~MemoryDiagnostics() override;
