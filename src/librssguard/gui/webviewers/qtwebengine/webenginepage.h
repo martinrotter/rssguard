@@ -12,6 +12,7 @@ class WebEnginePage : public QWebEnginePage {
 
   public:
     explicit WebEnginePage(bool is_dummy_page, QObject* parent = nullptr);
+    ~WebEnginePage() override;
 
     WebEngineViewer* view() const;
     QList<QAction*> allPageActions() const;
@@ -39,6 +40,7 @@ class WebEnginePage : public QWebEnginePage {
 
   private:
     bool m_isDummyPage;
+    quint64 m_memoryDiagnosticId = 0;
 };
 
 #endif // WEBENGINEPAGE_H

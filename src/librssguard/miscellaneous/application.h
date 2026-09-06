@@ -46,6 +46,7 @@ class ApplicationLogManager;
 class ApplicationPaths;
 class GuiNotificationCoordinator;
 class CommandLineController;
+class MemoryDiagnostics;
 
 struct GuiMessage {
   public:
@@ -228,6 +229,7 @@ class RSSGUARD_DLLSPEC Application : public SingleApplication {
     QScopedPointer<ApplicationPaths> m_paths;
     QScopedPointer<GuiNotificationCoordinator> m_guiNotifications;
     QScopedPointer<CommandLineController> m_commandLine;
+    QScopedPointer<MemoryDiagnostics> m_memoryDiagnostics;
 
     // This read-write lock is used by application on its close.
     // Application locks this lock for WRITING.

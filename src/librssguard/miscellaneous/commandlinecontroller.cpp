@@ -159,6 +159,9 @@ void CommandLineController::fillParser(QCommandLineParser& parser) const {
                                     QSL("Specify number of threads. Note that number cannot be higher than %1.")
                                       .arg(MAX_THREADPOOL_THREADS),
                                     QSL("count"));
+  QCommandLineOption memory_diagnostics(QSL(CLI_MEMORY_DIAGNOSTICS),
+                                        QSL("Periodically log process-tree and WebEngine memory diagnostics. "
+                                            "This is a developmental troubleshooting feature."));
 
   parser.addOptions({help,
                      version,
@@ -169,7 +172,8 @@ void CommandLineController::fillParser(QCommandLineParser& parser) const {
                      log_to_file,
                      forced_style,
                      custom_user_agent,
-                     custom_threads});
+                     custom_threads,
+                     memory_diagnostics});
   parser.addPositionalArgument(QSL("urls"),
                                QSL("List of URL addresses pointing to individual online feeds which should be added."),
                                QSL("[url-1 ... url-n]"));

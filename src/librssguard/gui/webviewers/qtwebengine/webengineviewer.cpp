@@ -9,6 +9,7 @@
 #include "gui/webviewers/qtwebengine/webenginepage.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/iconfactory.h"
+#include "miscellaneous/memorydiagnostics.h"
 #include "miscellaneous/skinfactory.h"
 #include "network-web/webfactory.h"
 
@@ -42,11 +43,14 @@ WebEngineViewer::WebEngineViewer(QWidget* parent)
 
   setPage(page);
   connect(this, &WebEngineViewer::loadStarted, this, [this]() {
+    MemoryDiagnostics::webLoadStarted();
     ++m_contentGeneration;
     m_html.clear();
     m_plainText.clear();
   });
   connect(this, &WebEngineViewer::loadFinished, this, [this](bool success) {
+    MemoryDiagnostics::webLoadFinished(success);
+
     if (success) {
       cachePageContents();
     }
@@ -146,19 +150,28 @@ void WebEngineViewer::cachePageContents() {
   const quint64 content_generation = m_contentGeneration;
   const QWeakPointer<bool> lifetime_guard = m_lifetimeGuard.toWeakRef();
 
+  MemoryDiagnostics::webContentRequestStarted();
   page()->toHtml([this, lifetime_guard, content_generation](const QString& html) {
     const QSharedPointer<bool> guard = lifetime_guard.toStrongRef();
+    const bool apply_result = !guard.isNull() && m_contentGeneration == content_generation;
 
-    if (!guard.isNull() && m_contentGeneration == content_generation) {
+    if (apply_result) {
       m_html = html;
     }
+
+    MemoryDiagnostics::webContentRequestFinished(apply_result);
   });
+
+  MemoryDiagnostics::webContentRequestStarted();
   page()->toPlainText([this, lifetime_guard, content_generation](const QString& text) {
     const QSharedPointer<bool> guard = lifetime_guard.toStrongRef();
+    const bool apply_result = !guard.isNull() && m_contentGeneration == content_generation;
 
-    if (!guard.isNull() && m_contentGeneration == content_generation) {
+    if (apply_result) {
       m_plainText = text;
     }
+
+    MemoryDiagnostics::webContentRequestFinished(apply_result);
   });
 }
 

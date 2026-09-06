@@ -144,6 +144,8 @@
 
 #define CLI_THREADS "threads"
 
+#define CLI_MEMORY_DIAGNOSTICS "memory-diagnostics"
+
 #define HTTP_CODE_NOT_MODIFIED      304
 #define HTTP_CODE_TOO_MANY_REQUESTS 429
 #define HTTP_CODE_UNAVAILABLE       503
@@ -176,6 +178,7 @@
 #define LOGSEC_GMAIL          "gmail: "
 #define LOGSEC_OAUTH          "oauth: "
 #define LOGSEC_XMPP           "xmpp: "
+#define LOGSEC_MEMORY         "memory-diagnostics: "
 
 #define MAX_ZOOM_FACTOR     5.0f
 #define MIN_ZOOM_FACTOR     0.25f

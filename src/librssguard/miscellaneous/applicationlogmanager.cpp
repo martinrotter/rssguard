@@ -34,6 +34,7 @@ ApplicationLogManager::~ApplicationLogManager() {
 
 void ApplicationLogManager::updateCliDebugStatus() {
   m_disableDebug = !m_application->cmdParser()->isSet(QSL(CLI_DEBUG_SHORT)) &&
+                   !m_application->cmdParser()->isSet(QSL(CLI_MEMORY_DIAGNOSTICS)) &&
                    m_application->settings()->value(GROUP(General), SETTING(General::DisableDebugOutput)).toBool();
 }
 

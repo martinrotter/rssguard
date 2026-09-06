@@ -4,6 +4,7 @@ Released on: 2026-09-XX
 
 Added:
 * Article data can now be copied immediately using the previously selected format.
+* Optional command-line memory diagnostics are available for investigating long-running resource usage.
 
 Fixed:
 * Feed-specific cookie settings are now disabled when cookies are disabled application-wide, without changing saved feed preferences.

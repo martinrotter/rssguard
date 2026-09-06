@@ -23,6 +23,7 @@
 #include "miscellaneous/iconfactory.h"
 #include "miscellaneous/iofactory.h"
 #include "miscellaneous/localization.h"
+#include "miscellaneous/memorydiagnostics.h"
 #include "miscellaneous/mutex.h"
 #include "miscellaneous/notificationfactory.h"
 #include "miscellaneous/settings.h"
@@ -110,6 +111,11 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
   showSplashMessage(tr("Initializing application..."));
 
   m_logManager->initializeFileBasedLogging();
+
+  if (cmdParser()->isSet(QSL(CLI_MEMORY_DIAGNOSTICS))) {
+    m_memoryDiagnostics.reset(new MemoryDiagnostics(this));
+    m_memoryDiagnostics->start();
+  }
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
   if (!cmdParser()->isSet(QSL(CLI_FORCETEXT_LONG))) {
@@ -256,6 +262,11 @@ Application::Application(const QString& id, int& argc, char** argv, const QStrin
 }
 
 Application::~Application() {
+  if (m_memoryDiagnostics != nullptr) {
+    m_memoryDiagnostics->recordSnapshot(QSL("application-shutdown"));
+    m_memoryDiagnostics.reset();
+  }
+
   m_logManager->shutdown();
 
   qDebugNN << LOGSEC_CORE << "Destroying Application instance.";
@@ -453,6 +464,15 @@ void Application::setFeedReader(FeedReader* feed_reader) {
           &FeedReader::feedUpdatesFinished,
           m_guiNotifications.data(),
           &GuiNotificationCoordinator::onFeedUpdatesFinished);
+
+  connect(m_feedReader, &FeedReader::feedUpdatesStarted, this, []() {
+    MemoryDiagnostics::requestSnapshot(QSL("feed-fetch-started"));
+  });
+  connect(m_feedReader, &FeedReader::feedUpdatesFinished, this, [](const FeedDownloadResults&) {
+    MemoryDiagnostics::requestSnapshot(QSL("feed-fetch-finished"));
+    MemoryDiagnostics::requestSnapshot(QSL("feed-fetch-settled"), 120000);
+  });
+
   connect(m_feedReader->feedsModel(),
           &FeedsModel::messageCountsChanged,
           m_guiNotifications.data(),

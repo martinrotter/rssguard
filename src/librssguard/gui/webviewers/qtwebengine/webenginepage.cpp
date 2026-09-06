@@ -6,6 +6,7 @@
 #include "gui/dialogs/formaskauth.h"
 #include "gui/webviewers/qtwebengine/webengineviewer.h"
 #include "miscellaneous/application.h"
+#include "miscellaneous/memorydiagnostics.h"
 #include "miscellaneous/systemfactory.h"
 #include "network-web/webfactory.h"
 #include "qtlinq/qtlinq.h"
@@ -21,10 +22,26 @@
 
 WebEnginePage::WebEnginePage(bool is_dummy_page, QObject* parent)
   : QWebEnginePage(qApp->web()->webEngineProfile(), parent), m_isDummyPage(is_dummy_page) {
+  m_memoryDiagnosticId = MemoryDiagnostics::registerWebPage(is_dummy_page);
+
   setBackgroundColor(Qt::GlobalColor::transparent);
+
+  connect(this, &QWebEnginePage::renderProcessPidChanged, this, [this](qint64 process_id) {
+    MemoryDiagnostics::reportWebPageRenderer(m_memoryDiagnosticId, process_id);
+  });
+
+  if (m_memoryDiagnosticId != 0 && is_dummy_page) {
+    QTimer::singleShot(30000, this, [this]() {
+      MemoryDiagnostics::reportLingeringDummyPage(m_memoryDiagnosticId);
+    });
+  }
 
   connect(this, &WebEnginePage::pdfPrintingFinished, this, &WebEnginePage::onPdfPrintingFinished);
   connect(this, &WebEnginePage::proxyAuthenticationRequired, this, &WebEnginePage::onProxyAuthenticationRequired);
+}
+
+WebEnginePage::~WebEnginePage() {
+  MemoryDiagnostics::unregisterWebPage(m_memoryDiagnosticId, m_isDummyPage);
 }
 
 WebEngineViewer* WebEnginePage::view() const {

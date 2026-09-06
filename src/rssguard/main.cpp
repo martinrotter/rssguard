@@ -8,6 +8,7 @@
 #include "gui/webbrowser.h"
 #include "miscellaneous/application.h"
 #include "miscellaneous/feedreader.h"
+#include "miscellaneous/memorydiagnostics.h"
 #include "network-web/webfactory.h"
 #include "services/abstract/label.h"
 
@@ -210,6 +211,7 @@ int main(int argc, char* argv[]) {
     ->parseCmdArgumentsFromOtherInstance(qApp->cmdParser()->positionalArguments().join(QSL(ARGUMENTS_LIST_SEPARATOR)));
 
   application.finishSplash(&main_window);
+  MemoryDiagnostics::requestSnapshot(QSL("application-ready"));
 
   return Application::exec();
 }
