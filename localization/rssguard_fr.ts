@@ -1903,7 +1903,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="305"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="313"/>
       <source>Purge - delete stored or discard new article</source>
-      <translation type="unfinished">Purge - delete stored or discard new article</translation>
+      <translation>Purger - supprimer l'article stocké ou supprimer le nouveau</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="108"/>
@@ -2090,7 +2090,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="532"/>
       <source>&lt;p&gt;&lt;b&gt;Build common article filters without writing JavaScript.&lt;/b&gt; Choose actions and results for both matching and non-matching articles.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;All conditions&lt;/b&gt; requires every condition to match; &lt;b&gt;at least one condition&lt;/b&gt; matches any of them.&lt;/li&gt;&lt;li&gt;Each outcome can change article properties or labels before its result is applied.&lt;/li&gt;&lt;li&gt;For newly downloaded articles, both &lt;b&gt;Ignore&lt;/b&gt; and &lt;b&gt;Purge&lt;/b&gt; discard the article. Purge additionally deletes an article which is already stored.&lt;/li&gt;&lt;li&gt;The generated script remains editable, testable, and can be expanded with advanced JavaScript features.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;See the &lt;a href=&quot;https://rssguard.readthedocs.io/en/stable/features/filters.html&quot;&gt;article-filter documentation&lt;/a&gt; for the complete scripting reference.&lt;/p&gt;</source>
-      <translation type="unfinished">&lt;p&gt;&lt;b&gt;Build common article filters without writing JavaScript.&lt;/b&gt; Choose actions and results for both matching and non-matching articles.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;All conditions&lt;/b&gt; requires every condition to match; &lt;b&gt;at least one condition&lt;/b&gt; matches any of them.&lt;/li&gt;&lt;li&gt;Each outcome can change article properties or labels before its result is applied.&lt;/li&gt;&lt;li&gt;For newly downloaded articles, both &lt;b&gt;Ignore&lt;/b&gt; and &lt;b&gt;Purge&lt;/b&gt; discard the article. Purge additionally deletes an article which is already stored.&lt;/li&gt;&lt;li&gt;The generated script remains editable, testable, and can be expanded with advanced JavaScript features.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;See the &lt;a href=&quot;https://rssguard.readthedocs.io/en/stable/features/filters.html&quot;&gt;article-filter documentation&lt;/a&gt; for the complete scripting reference.&lt;/p&gt;</translation>
+      <translation>&lt;p&gt;&lt;b&gt;Construisez des filtres d'articles commun sans écrire en JavaScript.&lt;/b&gt; Choisissez des actions et des résultats pour des articles correspondants et non-correspondants.&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;b&gt;Toutes les conditions&lt;/b&gt; requièrent que toutes les conditions correspondent; &lt;b&gt;au moins une condition&lt;/b&gt; correspondent à n'importe laquelle d'entre eux.&lt;/li&gt;&lt;li&gt;Chaque résultat peut changer les propriétés ou étiquettes d'articles avant que son résultat soit appliqué.&lt;/li&gt;&lt;li&gt;Pour les nouveaux articles récupérés, les deux &lt;b&gt;Ignorer&lt;/b&gt; et &lt;b&gt;Purger&lt;/b&gt; supprimer l'article. L'action de Purger supprime additionallement un article qui est déjà stocké.&lt;/li&gt;&lt;li&gt;Le script généré reste modifiable, testable, et peut etre étendu avec des fonctionnalités JavaScript avancées.&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;Voir la &lt;a href=&quot;https://rssguard.readthedocs.io/en/stable/features/filters.html&quot;&gt;documentation du filtrage d'articles&lt;/a&gt; pour la référence complète sur le sujet.&lt;/p&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="656"/>
@@ -2105,7 +2105,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="658"/>
       <source>During automatic feed fetching, every article will be discarded because both Ignore and Purge reject newly downloaded articles. Do you want to generate this filter anyway?</source>
-      <translation>Lors de la récupération automatique des flux, chaque article sera supprimé parce que ce filtre à la fois ignore et purge-rejette les nouveaux articles récupérés. Voulez-vous quand même générer ce filtre ?</translation>
+      <translation>Lors de la récupération automatique des flux, chaque article sera supprimé parce que l'action Ignorer et Purger rejettent tous les deux les nouveaux articles récupérés. Voulez-vous quand même générer ce filtre ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="579"/>
