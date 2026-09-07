@@ -1359,67 +1359,67 @@ Identifiant d&apos;élément: %5</translation>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="510"/>
       <source>feed</source>
-      <translation type="unfinished">feed</translation>
+      <translation>flux</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="512"/>
       <source>category</source>
-      <translation type="unfinished">category</translation>
+      <translation>catégorie</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="514"/>
       <source>account</source>
-      <translation type="unfinished">account</translation>
+      <translation>compte</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="516"/>
       <source>label</source>
-      <translation type="unfinished">label</translation>
+      <translation>étiquette</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="518"/>
       <source>probe</source>
-      <translation type="unfinished">probe</translation>
+      <translation>sonde</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="520"/>
       <source>item</source>
-      <translation type="unfinished">item</translation>
+      <translation>élément</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="564"/>
       <source>&lt;li&gt;&lt;b&gt;Item:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Item:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Élément:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="565"/>
       <source>&lt;li&gt;&lt;b&gt;Type:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Type:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Type:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="587"/>
       <source>&lt;li&gt;&lt;b&gt;Selected items:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Selected items:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Éléments sélectionnés:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="588"/>
       <source>&lt;li&gt;&lt;b&gt;Types:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Types:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Types:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="591"/>
       <source>&lt;li&gt;&lt;b&gt;Child feeds:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Child feeds:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Flux sous-jacents:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="592"/>
       <source>&lt;li&gt;&lt;b&gt;Child categories:&lt;/b&gt; %1&lt;/li&gt;</source>
-      <translation type="unfinished">&lt;li&gt;&lt;b&gt;Child categories:&lt;/b&gt; %1&lt;/li&gt;</translation>
+      <translation>&lt;li&gt;&lt;b&gt;Catégories sous-jacentes:&lt;/b&gt; %1&lt;/li&gt;</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/feedsview.cpp" line="594"/>
       <source>&lt;p&gt;You are about to completely delete the selected item(s).&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</source>
-      <translation type="unfinished">&lt;p&gt;You are about to completely delete the selected item(s).&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</translation>
+      <translation>&lt;p&gt;Vous êtes sur le point de supprimer définitivement les éléments sélectionnés.&lt;/p&gt;&lt;ul&gt;%1&lt;/ul&gt;</translation>
     </message>
     <message numerus="yes">
       <location filename="../src/librssguard/gui/feedsview.cpp" line="600"/>
@@ -1887,7 +1887,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="303"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="311"/>
       <source>Accept - keep article</source>
-      <translation type="unfinished">Accept - keep article</translation>
+      <translation>Accepter - garder l'article</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="98"/>
@@ -1895,7 +1895,7 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="304"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formarticlefiltergenerator.h" line="312"/>
       <source>Ignore - do not import or update article</source>
-      <translation type="unfinished">Ignore - do not import or update article</translation>
+      <translation>Ignorer - ne pas importer ou mettre à jour l'article</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.ui" line="99"/>
@@ -2095,17 +2095,17 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="656"/>
       <source>Filter discards every article</source>
-      <translation type="unfinished">Filter discards every article</translation>
+      <translation>Le filtre se débarrasse de chaque article</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="657"/>
       <source>This filter has no result which accepts an article.</source>
-      <translation type="unfinished">This filter has no result which accepts an article.</translation>
+      <translation>Ce filtre n'a pas de résultat qui accepte un article.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="658"/>
       <source>During automatic feed fetching, every article will be discarded because both Ignore and Purge reject newly downloaded articles. Do you want to generate this filter anyway?</source>
-      <translation type="unfinished">During automatic feed fetching, every article will be discarded because both Ignore and Purge reject newly downloaded articles. Do you want to generate this filter anyway?</translation>
+      <translation>Lors de la récupération automatique des flux, chaque article sera supprimé parce que ce filtre à la fois ignore et purge-rejette les nouveaux articles récupérés. Voulez-vous quand même générer ce filtre ?</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formarticlefiltergenerator.cpp" line="579"/>
@@ -2767,13 +2767,13 @@ Dossier mère des icônes de thèmes -&gt; &quot;%6&quot;</translation>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="115"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="249"/>
       <source>Exclude this feed from unread counts shown in global indicators, such as the tray icon, taskbar, application badge, and window title.</source>
-      <translation type="unfinished">Exclude this feed from unread counts shown in global indicators, such as the tray icon, taskbar, application badge, and window title.</translation>
+      <translation>Exclure ce flux des compteurs non lus affichés dans les indicateurs globaux, tels que l'icône de la barre des tâches, la barre des tâches, le badge de l'application et le titre de la fenêtre.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="118"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formfeeddetails.h" line="251"/>
       <source>Exclude this feed from global unread counters</source>
-      <translation type="unfinished">Exclude this feed from global unread counters</translation>
+      <translation>Exclure ce flux des compteurs globaux non lus</translation>
     </message>
     <message>
       <location filename="../src/librssguard/services/abstract/gui/formfeeddetails.ui" line="148"/>
@@ -3752,7 +3752,7 @@ nouveau flux</translation>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="464"/>
       <source>Stopping feed fetching</source>
-      <translation type="unfinished">Stopping feed fetching</translation>
+      <translation>Arrêt de la récupération de flux en cours</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmain.cpp" line="494"/>
@@ -4147,13 +4147,13 @@ Peut-être que le titre du filtre n'est pas unique. Si cela est le cas, changez-
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="154"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="502"/>
       <source>Move filter up. Hold Shift to move by five positions or Ctrl to move to the top.</source>
-      <translation type="unfinished">Move filter up. Hold Shift to move by five positions or Ctrl to move to the top.</translation>
+      <translation>Déplacer le filtre vers le haut. Maintenez la touche Maj enfoncée en cliquant pour le déplacer de cinq positions ou Ctrl pour le déplacer tout en haut.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="164"/>
       <location filename="../build/Desktop_Qt_6_11_0_MSVC2022_64bit-Debug/src/librssguard/ui_formmessagefiltersmanager.h" line="506"/>
       <source>Move filter down. Hold Shift to move by five positions or Ctrl to move to the bottom.</source>
-      <translation type="unfinished">Move filter down. Hold Shift to move by five positions or Ctrl to move to the bottom.</translation>
+      <translation>Déplacer le filtre vers le bas. Maintenez la touche Maj enfoncée en cliquant pour le déplacer de cinq positions ou Ctrl pour le déplacer tout en bas.</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/dialogs/formmessagefiltersmanager.ui" line="223"/>
@@ -7818,12 +7818,12 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="76"/>
       <source>All files (*)</source>
-      <translation type="unfinished">All files (*)</translation>
+      <translation>Tous les fichiers (*)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="91"/>
       <source>%1 files (%2)</source>
-      <translation type="unfinished">%1 files (%2)</translation>
+      <translation>%1 fichiers (%2)</translation>
     </message>
     <message>
       <location filename="../src/librssguard/network-web/webfactory.cpp" line="190"/>
@@ -7887,12 +7887,12 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="191"/>
       <source>Cannot parse Nextcloud feeds JSON response: %1</source>
-      <translation type="unfinished">Cannot parse Nextcloud feeds JSON response: %1</translation>
+      <translation>Impossible d'analyser la réponse JSON des flux Nextcloud: %1 </translation>
     </message>
     <message>
       <location filename="../src/librssguard-nextcloud/src/nextcloudnetworkfactory.cpp" line="197"/>
       <source>Nextcloud feeds response does not contain a JSON array of feeds.</source>
-      <translation type="unfinished">Nextcloud feeds response does not contain a JSON array of feeds.</translation>
+      <translation>La réponse des flux Nextcloud ne contient pas un tableau JSON de flux.</translation>
     </message>
   </context>
   <context>
@@ -8181,7 +8181,7 @@ stack: %3</translation>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="50"/>
       <source>Search while typing</source>
-      <translation type="unfinished">Search while typing</translation>
+      <translation>Rechercher tout en écrivant</translation>
     </message>
     <message>
       <location filename="../src/librssguard/gui/reusable/searchlineedit.cpp" line="100"/>
