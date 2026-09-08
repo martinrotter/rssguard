@@ -26,3 +26,4 @@ docs/build
 docs/html
 resources/scripts/qxmpp
 resources/scripts/standalone/*/vendor
+tmp/
