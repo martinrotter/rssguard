@@ -13,6 +13,8 @@
 #include <librssguard/exceptions/applicationexception.h>
 #include <librssguard/gui/reusable/networkproxydetails.h>
 #include <librssguard/miscellaneous/application.h>
+#include <librssguard/miscellaneous/settings.h>
+#include <librssguard/miscellaneous/settingskeys.h>
 #include <librssguard/network-web/networkfactory.h>
 #include <librssguard/network-web/webfactory.h>
 #include <librssguard/services/abstract/category.h>
@@ -264,6 +266,7 @@ void FormStandardFeedDetails::loadFeedData() {
     m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_cmbEnableHttp2);
     m_networkDetails->m_ui.m_mcbCookiePolicy->addActionWidget(m_networkDetails->m_ui.m_lblCookiePolicy);
     m_networkDetails->m_ui.m_mcbCookiePolicy->addActionWidget(m_networkDetails->m_ui.m_cmbCookiePolicy);
+
     m_networkDetails->m_ui.m_mcbNetworkProxyExtraDomains
       ->addActionWidget(m_networkDetails->m_ui.m_txtNetworkProxyExtraDomains);
   }
@@ -311,4 +314,5 @@ void FormStandardFeedDetails::loadFeedData() {
     m_networkDetails->m_ui.m_spinUpdateTimeout->setValue(std_feed->updateTimeout());
     m_networkDetails->setCookiePolicy(std_feed->cookiePolicy());
   }
+
 }

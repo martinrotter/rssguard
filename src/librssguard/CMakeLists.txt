@@ -249,6 +249,8 @@ set(SOURCES
   miscellaneous/iofactory.h
   miscellaneous/localization.cpp
   miscellaneous/localization.h
+  miscellaneous/memorydiagnostics.cpp
+  miscellaneous/memorydiagnostics.h
   miscellaneous/mutex.cpp
   miscellaneous/mutex.h
   miscellaneous/notification.cpp
@@ -688,6 +690,7 @@ if(APPLE)
   )
 elseif(WIN32)
   target_link_libraries(rssguard PUBLIC
+    psapi
     shell32
     odbc32
   )
