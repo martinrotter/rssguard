@@ -3,9 +3,6 @@
 #include "network-web/networkfactory.h"
 
 #include "definitions/globals.h"
-#include "miscellaneous/application.h"
-#include "miscellaneous/settings.h"
-#include "miscellaneous/settingskeys.h"
 #include "network-web/downloader.h"
 
 #include <QEventLoop>
@@ -24,17 +21,6 @@
 
 #define SECS_WHEN_RETRYAFTER_MISSING 120
 
-namespace {
-  NetworkFactory::CookiePolicy effectiveCookiePolicy(NetworkFactory::CookiePolicy cookie_policy) {
-    if (cookie_policy == NetworkFactory::CookiePolicy::IgnoreCookies ||
-        qApp->settings()->value(GROUP(Network), SETTING(Network::IgnoreAllCookies)).toBool()) {
-      return NetworkFactory::CookiePolicy::IgnoreCookies;
-    }
-
-    return NetworkFactory::CookiePolicy::UseSharedCookieJar;
-  }
-} // namespace
-
 QDateTime NetworkFactory::extractRetryAfter(const QString& retry_after_value) {
   if (retry_after_value.simplified().isEmpty()) {
     return QDateTime::currentDateTimeUtc().addSecs(SECS_WHEN_RETRYAFTER_MISSING);
@@ -51,6 +37,21 @@ QDateTime NetworkFactory::extractRetryAfter(const QString& retry_after_value) {
 
   return QDateTime::fromString(retry_after_value.simplified().replace(QSL("GMT"), QSL("+0000")),
                                QSL("ddd, dd MMM yyyy HH:mm:ss tt"));
+}
+
+NetworkFactory::CookiePolicy NetworkFactory::resolveCookiePolicy(NetworkFactory::CookiePolicy requested,
+                                                                 bool ignore_all_cookies) {
+  switch (requested) {
+    case CookiePolicy::IgnoreCookies:
+      return CookiePolicy::IgnoreCookies;
+
+    case CookiePolicy::AllowCookies:
+      return CookiePolicy::AllowCookies;
+
+    case CookiePolicy::UseApplicationSetting:
+    default:
+      return ignore_all_cookies ? CookiePolicy::IgnoreCookies : CookiePolicy::AllowCookies;
+  }
 }
 
 QStringList NetworkFactory::extractFeedLinksFromHtmlPage(const QUrl& url, const QString& html) {
@@ -246,7 +247,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                                          QPixmap& output,
                                                          const QList<QPair<QByteArray, QByteArray>>& additional_headers,
                                                          const QNetworkProxy& custom_proxy,
-                                                         Http2Status http2_status) {
+                                                         Http2Status http2_status,
+                                                         CookiePolicy cookie_policy) {
   QNetworkReply::NetworkError network_result = QNetworkReply::NetworkError::UnknownNetworkError;
 
   for (const auto& url : urls) {
@@ -274,7 +276,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                                {},
                                                {},
                                                custom_proxy,
-                                               http2_status)
+                                               http2_status,
+                                               cookie_policy)
                          .m_networkError;
 
       if (network_result == QNetworkReply::NetworkError::NoError) {
@@ -324,7 +327,8 @@ QNetworkReply::NetworkError NetworkFactory::downloadIcon(const QList<IconLocatio
                                                  {},
                                                  {},
                                                  custom_proxy,
-                                                 http2_status)
+                                                 http2_status,
+                                                 cookie_policy)
                            .m_networkError;
 
         if (network_result == QNetworkReply::NetworkError::NoError) {
@@ -362,7 +366,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       const QNetworkProxy& custom_proxy,
                                                       Http2Status http2_status,
                                                       CookiePolicy cookie_policy) {
-  Downloader downloader(nullptr, effectiveCookiePolicy(cookie_policy));
+  Downloader downloader(nullptr, cookie_policy);
   QEventLoop loop;
   NetworkResult result;
 
@@ -409,7 +413,7 @@ NetworkResult NetworkFactory::performNetworkOperation(const QString& url,
                                                       const QNetworkProxy& custom_proxy,
                                                       Http2Status http2_status,
                                                       CookiePolicy cookie_policy) {
-  Downloader downloader(nullptr, effectiveCookiePolicy(cookie_policy));
+  Downloader downloader(nullptr, cookie_policy);
   QEventLoop loop;
   NetworkResult result;
 

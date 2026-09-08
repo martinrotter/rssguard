@@ -25,7 +25,8 @@ class RSSGUARD_DLLSPEC Downloader : public QObject {
 
   public:
     explicit Downloader(QObject* parent = nullptr,
-                        NetworkFactory::CookiePolicy cookie_policy = NetworkFactory::CookiePolicy::UseSharedCookieJar);
+                        NetworkFactory::CookiePolicy cookie_policy =
+                          NetworkFactory::CookiePolicy::UseApplicationSetting);
     virtual ~Downloader();
 
     // Access to last received full output data/error/content-type.

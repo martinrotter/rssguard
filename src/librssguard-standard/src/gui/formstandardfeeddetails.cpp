@@ -65,7 +65,7 @@ void FormStandardFeedDetails::guessFeed() {
                                      ? m_serviceRoot->networkProxy()
                                      : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy(),
                                    m_networkDetails->http2Status(),
-                                   m_networkDetails->m_ui.m_cbIgnoreCookies->isChecked());
+                                   m_networkDetails->cookiePolicy());
 }
 
 void FormStandardFeedDetails::guessIconOnly() {
@@ -80,7 +80,7 @@ void FormStandardFeedDetails::guessIconOnly() {
                                        m_networkDetails->m_ui.m_wdgNetworkProxy->useAccountProxy()
                                          ? m_serviceRoot->networkProxy()
                                          : m_networkDetails->m_ui.m_wdgNetworkProxy->proxy(),
-                                       m_networkDetails->m_ui.m_cbIgnoreCookies->isChecked());
+                                       m_networkDetails->cookiePolicy());
 }
 
 void FormStandardFeedDetails::onTitleChanged(const QString& title) {
@@ -178,8 +178,8 @@ void FormStandardFeedDetails::apply() {
       std_feed->setUpdateTimeout(m_networkDetails->m_ui.m_spinUpdateTimeout->value());
     }
 
-    if (isChangeAllowed(m_networkDetails->m_ui.m_mcbIgnoreCookies)) {
-      std_feed->setIgnoreCookies(m_networkDetails->m_ui.m_cbIgnoreCookies->isChecked());
+    if (isChangeAllowed(m_networkDetails->m_ui.m_mcbCookiePolicy)) {
+      std_feed->setCookiePolicy(m_networkDetails->cookiePolicy());
     }
 
     if (isChangeAllowed(m_standardFeedExpDetails->m_ui.m_mcbFetchComments)) {
@@ -262,7 +262,8 @@ void FormStandardFeedDetails::loadFeedData() {
     m_networkDetails->m_ui.m_mcbUpdateTimeout->addActionWidget(m_networkDetails->m_ui.m_spinUpdateTimeout);
     m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_lblEnableHttp2);
     m_networkDetails->m_ui.m_mcbEnableHttp2->addActionWidget(m_networkDetails->m_ui.m_cmbEnableHttp2);
-    m_networkDetails->m_ui.m_mcbIgnoreCookies->addActionWidget(m_networkDetails->m_ui.m_cbIgnoreCookies);
+    m_networkDetails->m_ui.m_mcbCookiePolicy->addActionWidget(m_networkDetails->m_ui.m_lblCookiePolicy);
+    m_networkDetails->m_ui.m_mcbCookiePolicy->addActionWidget(m_networkDetails->m_ui.m_cmbCookiePolicy);
     m_networkDetails->m_ui.m_mcbNetworkProxyExtraDomains
       ->addActionWidget(m_networkDetails->m_ui.m_txtNetworkProxyExtraDomains);
   }
@@ -308,6 +309,6 @@ void FormStandardFeedDetails::loadFeedData() {
 
     m_networkDetails->setHttp2Status(std_feed->http2Status());
     m_networkDetails->m_ui.m_spinUpdateTimeout->setValue(std_feed->updateTimeout());
-    m_networkDetails->m_ui.m_cbIgnoreCookies->setChecked(std_feed->ignoreCookies());
+    m_networkDetails->setCookiePolicy(std_feed->cookiePolicy());
   }
 }

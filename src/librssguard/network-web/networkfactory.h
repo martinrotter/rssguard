@@ -49,9 +49,12 @@ class RSSGUARD_DLLSPEC NetworkFactory {
     };
 
     enum class CookiePolicy {
-      UseSharedCookieJar = 0,
-      IgnoreCookies = 1
+      UseApplicationSetting = 0,
+      IgnoreCookies = 1,
+      AllowCookies = 2
     };
+
+    static CookiePolicy resolveCookiePolicy(CookiePolicy requested, bool ignore_all_cookies);
 
     static QDateTime extractRetryAfter(const QString& retry_after_value);
 
@@ -75,7 +78,8 @@ class RSSGUARD_DLLSPEC NetworkFactory {
                                                     const QList<QPair<QByteArray, QByteArray>>& additional_headers,
                                                     const QNetworkProxy& custom_proxy =
                                                       QNetworkProxy::ProxyType::DefaultProxy,
-                                                    Http2Status http2_status = Http2Status::DontSet);
+                                                    Http2Status http2_status = Http2Status::DontSet,
+                                                    CookiePolicy cookie_policy = CookiePolicy::UseApplicationSetting);
     static NetworkResult performNetworkOperation(const QString& url,
                                                  int timeout,
                                                  const QByteArray& input_data,
@@ -89,7 +93,7 @@ class RSSGUARD_DLLSPEC NetworkFactory {
                                                  const QNetworkProxy& custom_proxy =
                                                    QNetworkProxy::ProxyType::DefaultProxy,
                                                  Http2Status http2_status = Http2Status::DontSet,
-                                                 CookiePolicy cookie_policy = CookiePolicy::UseSharedCookieJar);
+                                                 CookiePolicy cookie_policy = CookiePolicy::UseApplicationSetting);
     static NetworkResult performNetworkOperation(const QString& url,
                                                  int timeout,
                                                  QHttpMultiPart* input_data,
@@ -103,10 +107,11 @@ class RSSGUARD_DLLSPEC NetworkFactory {
                                                  const QNetworkProxy& custom_proxy =
                                                    QNetworkProxy::ProxyType::DefaultProxy,
                                                  Http2Status http2_status = Http2Status::DontSet,
-                                                 CookiePolicy cookie_policy = CookiePolicy::UseSharedCookieJar);
+                                                 CookiePolicy cookie_policy = CookiePolicy::UseApplicationSetting);
 };
 
 Q_DECLARE_METATYPE(NetworkResult)
 Q_DECLARE_METATYPE(NetworkFactory::NetworkAuthentication)
+Q_DECLARE_METATYPE(NetworkFactory::CookiePolicy)
 
 #endif // NETWORKFACTORY_H

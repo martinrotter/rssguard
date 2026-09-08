@@ -28,6 +28,18 @@ QSqlDatabase DatabaseDriver::threadSafeConnection(const QString& connection_name
   return database;
 }
 
+void DatabaseDriver::removeConnection(const QString& connection_name) {
+  if (!QSqlDatabase::contains(connection_name)) {
+    return;
+  }
+
+  QSqlDatabase database = QSqlDatabase::database(connection_name, false);
+
+  database.close();
+  database = QSqlDatabase();
+  QSqlDatabase::removeDatabase(connection_name);
+}
+
 QString DatabaseDriver::limitOffset(int limit, int offset) const {
   if (limit > 0 && offset > 0) {
     return QSL("LIMIT %1 OFFSET %2").arg(QString::number(limit), QString::number(offset));

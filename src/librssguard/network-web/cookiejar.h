@@ -6,9 +6,11 @@
 #include "miscellaneous/autosaver.h"
 
 #include <QNetworkCookieJar>
+#include <QPointer>
 #include <QReadWriteLock>
 
 class WebFactory;
+class SharedCookieJarProxy;
 
 #if defined(WEB_ARTICLE_VIEWER_WEBENGINE)
 class QWebEngineCookieStore;
@@ -39,6 +41,14 @@ class CookieJar : public QNetworkCookieJar {
     void saveCookies();
 
   private:
+    friend class SharedCookieJarProxy;
+
+    QList<QNetworkCookie> cookiesForUrlUnrestricted(const QUrl& url) const;
+    bool setCookiesFromUrlUnrestricted(const QList<QNetworkCookie>& cookie_list, const QUrl& url);
+    bool insertCookieUnrestricted(const QNetworkCookie& cookie);
+    bool updateCookieUnrestricted(const QNetworkCookie& cookie);
+    bool deleteCookieUnrestricted(const QNetworkCookie& cookie);
+
     bool insertCookieInternal(const QNetworkCookie& cookie, bool notify_others, bool should_save);
     bool updateCookieInternal(const QNetworkCookie& cookie, bool notify_others);
     bool deleteCookieInternal(const QNetworkCookie& cookie, bool notify_others);
@@ -50,7 +60,22 @@ class CookieJar : public QNetworkCookieJar {
 
     mutable QReadWriteLock m_lock{QReadWriteLock::RecursionMode::Recursive};
     bool m_ignoreAllCookies;
+    bool m_bypassGlobalPolicy;
     AutoSaver m_saver;
+};
+
+class SharedCookieJarProxy final : public QNetworkCookieJar {
+  public:
+    explicit SharedCookieJarProxy(CookieJar* shared_jar, QObject* parent = nullptr);
+
+    QList<QNetworkCookie> cookiesForUrl(const QUrl& url) const override;
+    bool setCookiesFromUrl(const QList<QNetworkCookie>& cookie_list, const QUrl& url) override;
+    bool insertCookie(const QNetworkCookie& cookie) override;
+    bool updateCookie(const QNetworkCookie& cookie) override;
+    bool deleteCookie(const QNetworkCookie& cookie) override;
+
+  private:
+    QPointer<CookieJar> m_sharedJar;
 };
 
 class DiscardingCookieJar : public QNetworkCookieJar {

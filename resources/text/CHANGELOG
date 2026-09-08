@@ -4,6 +4,7 @@ Released on: 2026-09-XX
 
 Added:
 * Article data can now be copied immediately using the previously selected format.
+* Standard feeds can now inherit, enable, or disable cookie ignoring independently of the application-wide setting. (#2425)
 
 Fixed:
 * Fetching feed metadata now respects custom HTTP headers configured for the feed. (#2415)

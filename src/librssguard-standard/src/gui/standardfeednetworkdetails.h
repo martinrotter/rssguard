@@ -26,6 +26,9 @@ class StandardFeedNetworkDetails : public QWidget {
     void setHttp2Status(NetworkFactory::Http2Status status);
     NetworkFactory::Http2Status http2Status() const;
 
+    void setCookiePolicy(NetworkFactory::CookiePolicy policy);
+    NetworkFactory::CookiePolicy cookiePolicy() const;
+
   private:
     Ui::StandardFeedNetworkDetails m_ui;
 };

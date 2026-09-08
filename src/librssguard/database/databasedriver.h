@@ -21,6 +21,7 @@ class RSSGUARD_DLLSPEC DatabaseDriver : public QObject {
 
     QSqlDatabase connection(const QString& connection_name);
     QSqlDatabase threadSafeConnection(const QString& connection_name);
+    void removeConnection(const QString& connection_name);
 
     void setForeignKeyChecksEnabled(const QSqlDatabase& db);
     void setForeignKeyChecksDisabled(const QSqlDatabase& db);

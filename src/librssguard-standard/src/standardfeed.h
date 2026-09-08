@@ -86,8 +86,8 @@ class StandardFeed : public Feed {
     NetworkFactory::Http2Status http2Status() const;
     void setHttp2Status(NetworkFactory::Http2Status status);
 
-    bool ignoreCookies() const;
-    void setIgnoreCookies(bool ignore_cookies);
+    NetworkFactory::CookiePolicy cookiePolicy() const;
+    void setCookiePolicy(NetworkFactory::CookiePolicy cookie_policy);
 
     QString lastEtag() const;
     void setLastEtag(const QString& etag);
@@ -144,7 +144,8 @@ class StandardFeed : public Feed {
                                                            QNetworkProxy::ProxyType::DefaultProxy,
                                                          NetworkFactory::Http2Status http2_status =
                                                            NetworkFactory::Http2Status::DontSet,
-                                                         bool ignore_cookies = false);
+                                                         NetworkFactory::CookiePolicy cookie_policy =
+                                                           NetworkFactory::CookiePolicy::UseApplicationSetting);
 
     // Converts particular feed type to string.
     static QString typeToString(Type type);
@@ -188,7 +189,7 @@ class StandardFeed : public Feed {
     bool m_dontUseRawXmlSaving;
     QVariantHash m_httpHeaders;
     NetworkFactory::Http2Status m_http2Status;
-    bool m_ignoreCookies;
+    NetworkFactory::CookiePolicy m_cookiePolicy;
     bool m_fetchCommentsEnabled;
     bool m_reportAsBrokenIfEmpty;
     int m_updateTimeout;

@@ -44,6 +44,13 @@ StandardFeedNetworkDetails::StandardFeedNetworkDetails(QWidget* parent) : QWidge
                                  QVariant::fromValue(int(NetworkFactory::Http2Status::DontSet)));
   m_ui.m_cmbEnableHttp2->addItem(tr("Enabled"), QVariant::fromValue(int(NetworkFactory::Http2Status::Enabled)));
   m_ui.m_cmbEnableHttp2->addItem(tr("Disabled"), QVariant::fromValue(int(NetworkFactory::Http2Status::Disabled)));
+
+  m_ui.m_cmbCookiePolicy->addItem(tr("Use application setting"),
+                                  QVariant::fromValue(int(NetworkFactory::CookiePolicy::UseApplicationSetting)));
+  m_ui.m_cmbCookiePolicy->addItem(tr("Always ignore cookies"),
+                                  QVariant::fromValue(int(NetworkFactory::CookiePolicy::IgnoreCookies)));
+  m_ui.m_cmbCookiePolicy->addItem(tr("Always allow cookies"),
+                                  QVariant::fromValue(int(NetworkFactory::CookiePolicy::AllowCookies)));
 }
 
 void StandardFeedNetworkDetails::loadHttpHeaders(const QVariantHash& headers) {
@@ -60,6 +67,15 @@ void StandardFeedNetworkDetails::setHttp2Status(NetworkFactory::Http2Status stat
 
 NetworkFactory::Http2Status StandardFeedNetworkDetails::http2Status() const {
   return static_cast<NetworkFactory::Http2Status>(m_ui.m_cmbEnableHttp2->currentData().toInt());
+}
+
+void StandardFeedNetworkDetails::setCookiePolicy(NetworkFactory::CookiePolicy policy) {
+  const int index = m_ui.m_cmbCookiePolicy->findData(int(policy));
+  m_ui.m_cmbCookiePolicy->setCurrentIndex(index >= 0 ? index : 0);
+}
+
+NetworkFactory::CookiePolicy StandardFeedNetworkDetails::cookiePolicy() const {
+  return static_cast<NetworkFactory::CookiePolicy>(m_ui.m_cmbCookiePolicy->currentData().toInt());
 }
 
 QVariantHash StandardFeedNetworkDetails::httpHeaders() const {

@@ -8,6 +8,7 @@
 
 #include <exception>
 #include <functional>
+#include <optional>
 
 #include <QSqlDatabase>
 #include <QThreadPool>
@@ -83,18 +84,27 @@ inline T DatabaseWorker::write(const std::function<T(const QSqlDatabase&)>& func
 
 template <typename T>
 inline T DatabaseWorker::read(const std::function<T(const QSqlDatabase&)>& func) {
-  // QFuture<T> future = QtConcurrent::run(&m_readThreadPool, [&]() -> T {
-  qDebugNN << LOGSEC_DB << "DB read job (with return) in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
+  std::exception_ptr eptr = nullptr;
+  std::optional<T> result;
 
-  auto connection = connectionForReading();
+  QFuture<void> future = QtConcurrent::run(&m_readThreadPool, [&]() {
+    qDebugNN << LOGSEC_DB << "DB read job (with return) in thread" << NONQUOTE_W_SPACE_DOT(getThreadID());
 
-  T res = func(connection);
-  return res;
-  //});
+    try {
+      result.emplace(func(connectionForReading()));
+    }
+    catch (...) {
+      eptr = std::current_exception();
+    }
+  });
 
-  // future.waitForFinished();
+  future.waitForFinished();
 
-  // return future.result();
+  if (eptr) {
+    std::rethrow_exception(eptr);
+  }
+
+  return std::move(result.value());
 }
 
 #endif // DBWORKER_H

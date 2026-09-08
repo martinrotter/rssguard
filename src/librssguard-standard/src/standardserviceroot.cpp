@@ -316,8 +316,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                               {},
                                               f->useAccountProxy() ? networkProxy() : f->networkProxy(),
                                               f->http2Status(),
-                                              f->ignoreCookies() ? NetworkFactory::CookiePolicy::IgnoreCookies
-                                                                 : NetworkFactory::CookiePolicy::UseSharedCookieJar);
+                                              f->cookiePolicy());
 
     // Update last datetime this host was used.
     // resetHostSpacing(host);
@@ -455,8 +454,7 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
                                               {},
                                               f->useAccountProxy() ? networkProxy() : f->networkProxy(),
                                               f->http2Status(),
-                                              f->ignoreCookies() ? NetworkFactory::CookiePolicy::IgnoreCookies
-                                                                 : NetworkFactory::CookiePolicy::UseSharedCookieJar);
+                                              f->cookiePolicy());
 
     if (resource_result.m_networkError != QNetworkReply::NetworkError::NoError) {
       qWarningNN << LOGSEC_STANDARD << "Failed to fetch resource embedded into feed" << QUOTE_W_SPACE_DOT(url);

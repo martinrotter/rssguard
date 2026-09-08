@@ -74,6 +74,7 @@ void DatabaseFactory::determineDriver(const QString& driver_id, const QString& u
   // Try to setup connection and fallback to SQLite only for connection failures.
   try {
     m_dbDriver->connection(QSL("DatabaseFactory"));
+    m_dbDriver->removeConnection(QSL("DatabaseFactory"));
   }
   catch (const SqlException& ex) {
     if (ex.type() == SqlException::Type::TooOldIncompatibleDbSchema ||
