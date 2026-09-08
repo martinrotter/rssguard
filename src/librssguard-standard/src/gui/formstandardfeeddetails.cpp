@@ -314,5 +314,4 @@ void FormStandardFeedDetails::loadFeedData() {
     m_networkDetails->m_ui.m_spinUpdateTimeout->setValue(std_feed->updateTimeout());
     m_networkDetails->setCookiePolicy(std_feed->cookiePolicy());
   }
-
 }

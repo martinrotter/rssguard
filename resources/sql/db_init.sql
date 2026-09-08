@@ -169,7 +169,7 @@ CREATE INDEX idx_Messages1 ON Messages (account_id, is_deleted, is_pdeleted, is_
 -- !
 CREATE INDEX idx_Messages2 ON Messages (account_id, is_deleted, is_pdeleted, is_important);
 -- !
-CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted);
+CREATE INDEX idx_Messages3 ON Messages (feed, is_deleted, is_pdeleted, is_read);
 -- !
 CREATE INDEX idx_Messages4 ON Messages (custom_id, account_id, feed);
 -- !

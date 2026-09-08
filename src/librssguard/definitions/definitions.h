@@ -213,7 +213,7 @@
 #define APP_DB_SQLITE_FILE   "database.db"
 
 // Keep this in sync with schema versions declared in SQL initialization code.
-#define APP_DB_SCHEMA_VERSION                "104"
+#define APP_DB_SCHEMA_VERSION                "105"
 #define APP_DB_SCHEMA_FIRST_VERSION          "100"
 #define APP_DB_INIT_FILE_PATTERN             "db_init_%1.sql"
 #define APP_DB_UPDATE_FILE_PATTERN           "db_update_%1_%2_%3.sql"
