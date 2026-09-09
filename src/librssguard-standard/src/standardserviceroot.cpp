@@ -14,6 +14,7 @@
 #include "src/parsers/rdfparser.h"
 #include "src/parsers/rssparser.h"
 #include "src/parsers/sitemapparser.h"
+#include "src/parsers/wordpressjsonparser.h"
 #include "src/quiterssimport.h"
 #include "src/rssguard4import.h"
 #include "src/standardcategory.h"
@@ -432,6 +433,10 @@ QList<Message> StandardServiceRoot::obtainNewMessages(Feed* feed,
 
     case StandardFeed::Type::Sitemap:
       parser = new SitemapParser(formatted_feed_contents);
+      break;
+    
+    case StandardFeed::Type::WordpressJson:
+      parser = new WordpressJsonParser(formatted_feed_contents);
       break;
 
     default:

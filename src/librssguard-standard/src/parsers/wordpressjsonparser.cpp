@@ -172,6 +172,45 @@ GuessedFeedWithIcons WordpressJsonParser::guessFeed(const QByteArray& content, c
   }
 }
 
+QString WordpressJsonParser::jsonMessageTitle(const QJsonObject& msg_element) const {
+  return msg_element[QSL("title")]
+        .toObject()[QSL("rendered")]
+        .toString();
+}
+
+QString WordpressJsonParser::jsonMessageUrl(const QJsonObject& msg_element) const {
+  return msg_element[QSL("link")].toString();
+}
+
+// description is named "excerpt" on wordpress context
+QString WordpressJsonParser::jsonMessageDescription(const QJsonObject& msg_element) const {
+  return msg_element[QSL("excerpt")]
+        .toObject()[QSL("rendered")]
+        .toString();
+}
+
+// author is an ID which need call to another endpoint for author...
+QString WordpressJsonParser::jsonMessageAuthor(const QJsonObject& msg_element) const {
+  return QString(); // to replace by API call to gather real user
+}
+
+// on wordpress context, all date could be on Greewich time (GMT)
+QDateTime WordpressJsonParser::jsonMessageDateCreated(const QJsonObject& msg_element) {
+  QString published = msg_element[QSL("date_gmt")].toString();
+  QString updated = msg_element[QSL("modified_gmt")].toString();
+
+  return decideArticleDate(published, updated);
+}
+
+
+QString WordpressJsonParser::jsonMessageId(const QJsonObject& msg_element) const {
+  return msg_element[QSL("id")].toString();
+}
+
+QString WordpressJsonParser::jsonMessageRawContents(const QJsonObject& msg_element) const {
+  return QJsonDocument(msg_element).toJson(QJsonDocument::JsonFormat::Compact);
+}
+
 QJsonArray WordpressJsonParser::jsonMessageElements() {
   return m_json.array(); // override of the json format reader because wordpress return directly a JSON array instead of "items" containing array
 }

@@ -23,6 +23,14 @@ class WordpressJsonParser : public FeedParser { // reuse of JsonParser with the 
     //virtual QString feedAuthor() const;
     virtual QJsonArray jsonMessageElements() override; // override of the json format reader because wordpress return directly a JSON array
 
+    virtual QString jsonMessageTitle(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageUrl(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageDescription(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageAuthor(const QJsonObject& msg_element) const;
+    virtual QDateTime jsonMessageDateCreated(const QJsonObject& msg_element);
+    virtual QString jsonMessageId(const QJsonObject& msg_element) const;
+    virtual QString jsonMessageRawContents(const QJsonObject& msg_element) const;
+
     virtual bool isWordpressItem(const QJsonObject& item) const;
 };
 
