@@ -11,6 +11,7 @@
 #include "src/parsers/rdfparser.h"
 #include "src/parsers/rssparser.h"
 #include "src/parsers/sitemapparser.h"
+#include "src/parsers/wordpressjsonparser.h"
 #include "src/standardfeed.h"
 
 #include <librssguard/database/databasefactory.h>
@@ -49,7 +50,8 @@ FormDiscoverFeeds::FormDiscoverFeeds(ServiceRoot* service_root,
                new IcalParser({}),
                new GemlogParser({}),
                new JsonParser({}),
-               new SitemapParser({})};
+               new SitemapParser({}),
+               new WordpressJsonParser({})};
 
   m_btnGoAdvanced = m_ui.m_buttonBox->addButton(tr("Switch to advanced &mode"), QDialogButtonBox::ButtonRole::NoRole);
   m_btnGoAdvanced
